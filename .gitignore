@@ -1,26 +1,6 @@
-/Alis/**/[Bb]in/**
+/**/**/[Bb]in/**
+/**/**/[Oo]bj/**
 
-
-/Alis/Store/[Bb]in/_
-/Alis/Store/[Oo]bj/_
-/Alis/vs/_
-/Alis/vscode/_
-
-/Alis/Language/[Bb]in/_
-/Alis/Language/[Oo]bj/_
-/Alis/vs/_
-/Alis/vscode/_
-
-/[Aa]ssets/_
-/[Ll]ibrary/
-/[Tt]emp/
-/[Bb]uild/
-/[Ll]ogs/
-/[Mm]emoryCaptures/
-
-!/[Aa]ssets/**/*.meta
-/[Aa]ssets/AssetStoreTools*
-[Aa]ssets/Plugins/Editor/JetBrains*
 
 .vs/
 .vscode/
