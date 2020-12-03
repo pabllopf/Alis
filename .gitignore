@@ -1,14 +1,12 @@
-/**/**/[Bb]in/**
-/**/**/[Oo]bj/**
-
-
 .vs/
 .vscode/
-.gradle/
 
-ExportedObj/
-.consulo/
-*.unityproj
+/**/**/[Bb]in/**
+/**/**/[Oo]bj/**
+/**/vs/**
+/**/vscode/**
+
+
 *.suo
 *.tmp
 *.user
@@ -25,7 +23,3 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
-
-sysinfo.txt
-
-crashlytics-build.properties
