@@ -1,0 +1,59 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\wwwam\\Documents\\Repositorios\\Alis\\Alis\\Alis_Store\\Alis_Store.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\wwwam\\Documents\\Repositorios\\Alis\\Alis\\Alis_Store\\Alis_Store.csproj": {
+      "version": "0.0.1",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\wwwam\\Documents\\Repositorios\\Alis\\Alis\\Alis_Store\\Alis_Store.csproj",
+        "projectName": "Alis_Store",
+        "projectPath": "C:\\Users\\wwwam\\Documents\\Repositorios\\Alis\\Alis\\Alis_Store\\Alis_Store.csproj",
+        "packagesPath": "C:\\Users\\wwwam\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wwwam\\Documents\\Repositorios\\Alis\\Alis\\Alis_Store\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\wwwam\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard1.3"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard1.3": {
+            "targetAlias": "netstandard1.3",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard1.3": {
+          "targetAlias": "netstandard1.3",
+          "dependencies": {
+            "NETStandard.Library": {
+              "target": "Package",
+              "version": "[1.6.1, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\obj\Release\netstandard1.1\Alis_Store.csprojAssemblyReference.cache
+C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\obj\Release\netstandard1.1\Alis_Store.Properties.Resources.resources
+C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\obj\Release\netstandard1.1\Alis_Store.csproj.GenerateResource.cache
+C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\obj\Release\netstandard1.1\Alis_Store.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\obj\Release\netstandard1.1\Alis_Store.AssemblyInfoInputs.cache
+C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\obj\Release\netstandard1.1\Alis_Store.AssemblyInfo.cs
+C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\obj\Release\netstandard1.1\Alis_Store.csproj.CoreCompileInputs.cache

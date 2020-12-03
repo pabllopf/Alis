@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Alis_Store</id>
+    <version>0.0.1</version>
+    <authors>Pablo Perdomo Falcón</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <icon>Alis_Icon.png</icon>
+    <description>Framework to develop videogames.</description>
+    <dependencies>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="12.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\bin\Release\netstandard1.3\Alis_Store.dll" target="lib\netstandard1.3\Alis_Store.dll" />
+    <file src="C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Store\bin\Release\netstandard1.3\Alis_Store.xml" target="lib\netstandard1.3\Alis_Store.xml" />
+    <file src="C:\Users\wwwam\Documents\Repositorios\Alis\Docs\Alis_Icon.png" target="Alis_Icon.png" />
+    <file src="C:\Users\wwwam\Documents\Repositorios\Alis\LICENSE" target="LICENSE" />
+  </files>
+</package>
