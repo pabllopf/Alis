@@ -15,9 +15,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Alis_Language\Language.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Alis\Language\Language.xml</DocumentationFile>
     <WarningLevel>5</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
