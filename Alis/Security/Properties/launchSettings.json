@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Security": {
-      "commandName": "Project",
-      "nativeDebugging": true
-    }
-  }
-}
