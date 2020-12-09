@@ -6,25 +6,11 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Editor.Views.MainWindow"
         Icon="/Assets/Alis_Icon.ico"
-        Title="Editor"
-        Background="Green" MinWidth="300" MinHeight="480" Width="640" Height="200"
-        SizeToContent="WidthAndHeight"
-        RenderOptions.BitmapInterpolationMode="Default"
-        Content="Window_ContentRendered"
-        >
-
-
-    <Border BorderBrush="Black" BorderThickness="5">
-      <Canvas Name="GameArea" ClipToBounds="True" Width="400" Height="400">
-      </Canvas>
-    </Border>
+        Title="Editor">
 
   <Grid>
-    <Button>hOLA</Button>
-    
+    <TextBlock>Hola</TextBlock>
   </Grid>
 
-  
-  
   
 </Window>

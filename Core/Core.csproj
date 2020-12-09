@@ -18,6 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Language\Language.csproj" />
+    <ProjectReference Include="..\Security\Security.csproj" />
     <ProjectReference Include="..\Store\Store.csproj" />
   </ItemGroup>
 

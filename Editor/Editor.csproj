@@ -2,7 +2,15 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
+    <ApplicationIcon></ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Editor\Editor.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Editor\Editor.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Models\" />
