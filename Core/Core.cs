@@ -5,7 +5,7 @@
     using SFML.Graphics;
     using SFML.System;
     using SFML.Window;
-   
+
     public class Core
     {
         public const int TargetFPS = 60;
@@ -15,7 +15,7 @@
 
         public RectangleShape shape;
 
-        public void Start() 
+        public void Start()
         {
             shape = new RectangleShape(new Vector2f(100, 100))
             {
@@ -30,12 +30,12 @@
             sound.Play();
         }
 
-        public bool IsRunning() 
+        public bool IsRunning()
         {
             return window.IsOpen;
         }
 
-        public RenderWindow Run() 
+        public RenderWindow Run()
         {
             window.DispatchEvents();
             window.Clear(Color.White);

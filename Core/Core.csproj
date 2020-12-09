@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,18 +9,23 @@
     <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core\Core.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Language\Language.csproj" />
+    <ProjectReference Include="..\Security\Security.csproj" />
+    <ProjectReference Include="..\Store\Store.csproj" />
+  </ItemGroup>
+
+
   <ItemGroup>
     <PackageReference Include="SFML.Audio" Version="2.5.0" />
     <PackageReference Include="SFML.Graphics" Version="2.5.0" />
     <PackageReference Include="SFML.Net" Version="2.5.0" />
     <PackageReference Include="SFML.System" Version="2.5.0" />
     <PackageReference Include="SFML.Window" Version="2.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Language\Language.csproj" />
-    <ProjectReference Include="..\Security\Security.csproj" />
-    <ProjectReference Include="..\Store\Store.csproj" />
   </ItemGroup>
 
 </Project>
