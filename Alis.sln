@@ -13,7 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Security", "Security\Securi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsFormsApp1", "WindowsFormsApp1\WindowsFormsApp1.csproj", "{33D7BC6C-0928-4201-9871-17053B9B811A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication1", "AvaloniaApplication1\AvaloniaApplication1.csproj", "{F7EBD863-2618-4646-A6A3-FFFBB5CBD892}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaApplication1", "AvaloniaApplication1\AvaloniaApplication1.csproj", "{F7EBD863-2618-4646-A6A3-FFFBB5CBD892}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Editor", "Editor\Editor.csproj", "{907FA07D-1772-458B-9019-24F1C7D6F8A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AvaloniaDockApplication", "AvaloniaDockApplication\AvaloniaDockApplication.csproj", "{AF4EDF04-ADB4-45D0-BC69-75214EE58AD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,14 @@ Global
 		{F7EBD863-2618-4646-A6A3-FFFBB5CBD892}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7EBD863-2618-4646-A6A3-FFFBB5CBD892}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7EBD863-2618-4646-A6A3-FFFBB5CBD892}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907FA07D-1772-458B-9019-24F1C7D6F8A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907FA07D-1772-458B-9019-24F1C7D6F8A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907FA07D-1772-458B-9019-24F1C7D6F8A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907FA07D-1772-458B-9019-24F1C7D6F8A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF4EDF04-ADB4-45D0-BC69-75214EE58AD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF4EDF04-ADB4-45D0-BC69-75214EE58AD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF4EDF04-ADB4-45D0-BC69-75214EE58AD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF4EDF04-ADB4-45D0-BC69-75214EE58AD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
