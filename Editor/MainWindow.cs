@@ -43,6 +43,11 @@
 			ImGui.End();
 		}
 
+		public static void LoadFont() 
+		{
+			ImGui.GetIO().Fonts.AddFontFromFileTTF("C:/Users/wwwam/Documents/Repositorios/Alis/Editor/resources/fonts/Hack-Bold.ttf", 14.0f);
+		}
+
 
 
         public static void LoadStyle() 

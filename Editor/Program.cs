@@ -59,6 +59,7 @@
             io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard | ImGuiConfigFlags.NavEnableGamepad | ImGuiConfigFlags.DockingEnable;
 
 
+
             /* TO CORE 
 
             SFML.Graphics.CircleShape circle = new SFML.Graphics.CircleShape(50);
@@ -68,7 +69,6 @@
             IntPtr intPtr = imGuiController.GetOrCreateImGuiBinding(graphicsDevice.ResourceFactory, texx);
 
             */
-
             MainWindow.LoadStyle();
 
             BottomMenu bottomMenu = new BottomMenu();
@@ -94,6 +94,10 @@
 
                 ImGui.Begin("Example");
                 ImGui.Text("hola");
+                if (ImGui.Button(Icon.ICON_FA_MUSIC + " Pull"))
+                {
+                }
+
                 ImGui.End();
 
                 /*BEST PART DONT DELETE THIS

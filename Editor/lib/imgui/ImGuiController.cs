@@ -7,6 +7,8 @@
     using System.IO;
     using Veldrid;
     using System.Runtime.CompilerServices;
+    using Alis.Editor;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// A modified version of Veldrid.ImGui's ImGuiRenderer.
@@ -53,7 +55,7 @@
         /// <summary>
         /// Constructs a new ImGuiController.
         /// </summary>
-        public ImGuiController(GraphicsDevice gd, OutputDescription outputDescription, int width, int height)
+        public unsafe ImGuiController(GraphicsDevice gd, OutputDescription outputDescription, int width, int height)
         {
             _gd = gd;
             _windowWidth = width;
@@ -62,7 +64,38 @@
             IntPtr context = ImGui.CreateContext();
             ImGui.SetCurrentContext(context);
             var fonts = ImGui.GetIO().Fonts;
-            ImGui.GetIO().Fonts.AddFontDefault();
+            //ImGui.GetIO().Fonts.AddFontDefault();
+            ImGui.GetIO().Fonts.AddFontFromFileTTF("C:/Users/wwwam/Documents/Repositorios/Alis/Editor/resources/fonts/Hack-Bold.ttf", 14.0f);
+
+
+            var nativeConfig = ImGuiNative.ImFontConfig_ImFontConfig();
+            var config = new ImFontConfigPtr(nativeConfig);
+            config.MergeMode = true;
+            config.GlyphMinAdvanceX = 13.0f;
+
+            GCHandle rangeHandle = GCHandle.Alloc(new ushort[] { Icon.ICON_MIN_FA, Icon.ICON_MAX_FA, 0 }, GCHandleType.Pinned);
+
+            ImGui.GetIO().Fonts.AddFontFromFileTTF("C:/Users/wwwam/Documents/Repositorios/Alis/Editor/resources/fonts/Icons.ttf", 14.0f, config, rangeHandle.AddrOfPinnedObject());
+
+
+
+            //builder.AddRanges((IntPtr)Icon.ICON_MIN_FA);
+            //builder.AddRanges((IntPtr)Icon.ICON_MAX_FA);
+
+            //ImVector ranges;
+            //ImFontGlyphRangesBuilderPtr builder = new ImFontGlyphRangesBuilderPtr(ImGuiNative.ImFontGlyphRangesBuilder_ImFontGlyphRangesBuilder());
+            //builder.AddRanges((IntPtr)Icon.ICON_MIN_FA);
+            //builder.AddRanges((IntPtr)Icon.ICON_MAX_FA);
+            //builder.BuildRanges(out ranges);
+
+            //ImFontConfigPtr config = new ImFontConfigPtr();
+            //config.MergeMode = true;
+            //config.GlyphMinAdvanceX = 13.0f;
+            //ImGui.GetIO().Fonts.AddFontFromFileTTF("C:/Users/wwwam/Documents/Repositorios/Alis/Editor/resources/fonts/Icons.ttf", 14.0f, config, ranges.Data);
+
+            //ImWchar icon_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 };
+
+
 
             CreateDeviceResources(gd, outputDescription);
             SetKeyMappings();
