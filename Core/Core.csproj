@@ -1,24 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
-    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core\Core.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Language\Language.csproj" />
-    <ProjectReference Include="..\Security\Security.csproj" />
-    <ProjectReference Include="..\Store\Store.csproj" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="SFML.Audio" Version="2.5.0" />
