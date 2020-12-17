@@ -1,6 +1,8 @@
 ﻿namespace Alis.Editor
 {
     using ImGuiNET;
+    using System;
+
     public class BottomMenu
     {
         private ImGuiWindowFlags imGuiWindowFlags;
@@ -42,6 +44,21 @@
             ImGui.PopStyleColor(4);
         }
 
+        private void StartStylePopPup()
+        {
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 5.0f);
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new System.Numerics.Vector2(15, 15));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new System.Numerics.Vector2(5.0f, 5.0f));
+        }
+
+
+        private void EndStylePopPup()
+        {
+            ImGui.PopStyleVar(3);
+        }
+
+        
+
         public void Draw() 
         {
             StartStyleMenu();
@@ -51,25 +68,65 @@
             {
                 if (ImGui.BeginChild("Child-BottonMenu", new System.Numerics.Vector2(0.0f, 0.0f), true)) 
                 {
-                    if (ImGui.Button("Master")) 
+                    if (ImGui.Button(Icon.ICON_FA_SHARE_ALT + " master"))
+                    {
+                        ImGui.OpenPopup("Branchs");
+                    }
+
+                    ImGui.SameLine();
+
+                    StartStylePopPup();
+                    if (ImGui.BeginPopup("Branchs"))
+                    {
+                        if (ImGui.MenuItem(Icon.ICON_FA_PLUS + " New Branch"))
+                        {
+
+                        }
+
+                        ImGui.Separator();
+
+                        ImGui.Selectable(Icon.ICON_FA_CHECK + " master");
+                        ImGui.Selectable(Icon.ICON_FA_ARROW_RIGHT + " develop");
+
+                        ImGui.EndPopup();
+                    }
+
+                    EndStylePopPup();
+
+                    ImGui.SameLine();
+
+                    if (ImGui.Button(Icon.ICON_FA_RETWEET + " Fetch"))
                     {
                     }
 
                     ImGui.SameLine();
 
-                    if (ImGui.Button("Fetch"))
+                    if (ImGui.Button(Icon.ICON_FA_ARROW_DOWN + " Pull"))
                     {
                     }
 
                     ImGui.SameLine();
 
-                    if (ImGui.Button("Pull"))
+                    if (ImGui.Button(Icon.ICON_FA_ARROW_UP + " Push"))
                     {
                     }
 
                     ImGui.SameLine();
 
-                    if (ImGui.Button("Push"))
+                    if (ImGui.Button(Icon.ICON_FA_EXCLAMATION_TRIANGLE + " 0"))
+                    {
+                    }
+
+                    ImGui.SameLine();
+
+                    if (ImGui.Button(Icon.ICON_FA_EXCLAMATION_CIRCLE + " 0"))
+                    {
+                    }
+
+                    ImGui.SameLine((ImGui.GetWindowSize().X) - 30);
+
+
+                    if (ImGui.Button(Icon.ICON_FA_REFRESH + "", new System.Numerics.Vector2(30, 0)))
                     {
                     }
 

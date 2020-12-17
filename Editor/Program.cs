@@ -13,8 +13,6 @@
 
         public static void Main(string[] args)
         {
-            Console.WriteLine("Starting Alis Editor...");
-
             WindowCreateInfo windowCreateInfo = new WindowCreateInfo(
                 x: 50,
                 y: 50,
@@ -72,6 +70,7 @@
             MainWindow.LoadStyle();
 
             BottomMenu bottomMenu = new BottomMenu();
+            Alis.Editor.Console console = new Alis.Editor.Console();
 
             while (window.Exists)
             {
@@ -80,7 +79,6 @@
 
                 if (!window.Exists)
                 {
-                    Console.WriteLine("Closed window");
                     break;
                 }
 
@@ -89,6 +87,7 @@
                 MainWindow.DockSpace();
 
                 bottomMenu.Draw();
+                console.Draw();
 
                 ImGui.ShowDemoWindow();
 
@@ -132,10 +131,6 @@
             imGuiController.Dispose();
             commandList.Dispose();
             graphicsDevice.Dispose();
-
-
-            Console.WriteLine("Press ANY Key to close this window.");
-            Console.ReadKey();
         }
     }
 }
