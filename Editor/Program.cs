@@ -71,6 +71,7 @@
 
             BottomMenu bottomMenu = new BottomMenu();
             Alis.Editor.Console console = new Alis.Editor.Console();
+            TopMenu topMenu = new TopMenu();
 
             while (window.Exists)
             {
@@ -88,6 +89,7 @@
 
                 bottomMenu.Draw();
                 console.Draw();
+                topMenu.Draw();
 
                 ImGui.ShowDemoWindow();
 
