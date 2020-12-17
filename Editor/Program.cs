@@ -73,6 +73,9 @@
             Alis.Editor.Console console = new Alis.Editor.Console();
             TopMenu topMenu = new TopMenu();
 
+            Inspector inspector = new Inspector();
+            AssetsManager assetsManager = new AssetsManager();
+
             while (window.Exists)
             {
 
@@ -90,16 +93,11 @@
                 bottomMenu.Draw();
                 console.Draw();
                 topMenu.Draw();
+                inspector.Draw();
+                assetsManager.Draw();
 
                 ImGui.ShowDemoWindow();
 
-                ImGui.Begin("Example");
-                ImGui.Text("hola");
-                if (ImGui.Button(Icon.ICON_FA_MUSIC + " Pull"))
-                {
-                }
-
-                ImGui.End();
 
                 /*BEST PART DONT DELETE THIS
                 render.Clear();
