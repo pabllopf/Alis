@@ -57,28 +57,37 @@
                 ImGui.PopStyleVar();
 
 
-                filter.Draw(Icon.ICON_FA_SEARCH + "", -100f);
+                filter.Draw(Icon.ICON_FA_SEARCH + "", ImGui.GetContentRegionAvail().X - 20.0f);
 
                 ImGui.Separator();
 
-                if (ImGui.BeginChild("Assets-Child-Content")) 
+                if (ImGui.BeginChild("Assets-Child-Master")) 
                 {
-                    for (int i = 0; i < 10; i++) 
+                    ImGui.PushStyleColor(ImGuiCol.ChildBg, new System.Numerics.Vector4(1.0f));
+
+                    if (ImGui.BeginChild("Assets-Child-Left", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X /3, ImGui.GetContentRegionAvail().Y)))
                     {
-                        ImGui.Text("hola" + i);
+                        for (int i = 0; i < 10; i++)
+                        {
+                            ImGui.Text("hola" + i);
+                        }
                     }
-                }
 
-                ImGui.EndChild();
+                    ImGui.EndChild();
 
-                ImGui.SameLine();
+                    ImGui.SameLine();
 
-                if (ImGui.BeginChild("Assets-Child-Content"))
-                {
-                    for (int i = 0; i < 10; i++)
+                    if (ImGui.BeginChild("Assets-Child-Right", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X , ImGui.GetContentRegionAvail().Y)))
                     {
-                        ImGui.Text("hola" + i);
+                        for (int i = 0; i < 10; i++)
+                        {
+                            ImGui.Text("hola" + i);
+                        }
                     }
+
+                    ImGui.EndChild();
+
+                    ImGui.PopStyleColor();
                 }
 
                 ImGui.EndChild();
