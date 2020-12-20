@@ -5,25 +5,49 @@
     using System.Linq;
     using Veldrid;
     using Veldrid.StartupUtilities;
+    using SixLabors.ImageSharp.PixelFormats;
+    using System.IO;
 
     public class Program
     {
         private static Veldrid.Sdl2.Sdl2Window window;
         private static GraphicsDevice graphicsDevice;
 
+        private static  BottomMenu bottomMenu;
+        private static Alis.Editor.Console console;
+        private static TopMenu topMenu;
+
+        private static Inspector inspector;
+        private static AssetsManager assetsManager;
+
+        private static System.Numerics.Vector3 _clearColor = new System.Numerics.Vector3(0.45f, 0.55f, 0.6f);
+
+        private static ImGuiController imGuiController;
+
+        private static SFML.Graphics.CircleShape circle;
+        private static SFML.Graphics.RenderTexture render;
+
+        private static Veldrid.Texture texx;
+
+        private static Veldrid.ImageSharp.ImageSharpTexture imageSharpTexture;
+
+        private static IntPtr intPtr;
+
+        private static SixLabors.ImageSharp.Image<Rgba32> image;
+
         public static void Main(string[] args)
         {
             WindowCreateInfo windowCreateInfo = new WindowCreateInfo(
                 x: 50,
                 y: 50,
-                windowWidth: 640,
-                windowHeight: 480,
+                windowWidth: 1280,
+                windowHeight: 640,
                 windowInitialState: WindowState.Normal,
                 windowTitle: "Alis-Editor"
                 );
 
             GraphicsDeviceOptions graphicsDeviceOptions = new GraphicsDeviceOptions(
-                debug: true,
+                debug: false,
                 swapchainDepthFormat: null,
                 syncToVerticalBlank: true
                 );
@@ -36,8 +60,9 @@
 
             CommandList commandList = graphicsDevice.ResourceFactory.CreateCommandList();
 
-            ImGuiController imGuiController = new ImGuiController(
+            imGuiController = new ImGuiController(
               gd: graphicsDevice,
+              window,
               outputDescription: graphicsDevice.MainSwapchain.Framebuffer.OutputDescription,
               width: window.Width,
               height: window.Height
@@ -53,28 +78,21 @@
                 imGuiController.WindowResized(window.Width, window.Height);
             };
 
-            ImGuiIOPtr io = ImGui.GetIO();
-            io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard | ImGuiConfigFlags.NavEnableGamepad | ImGuiConfigFlags.DockingEnable;
 
 
 
-            /* TO CORE 
+            circle = new SFML.Graphics.CircleShape(50);
+            render  = new SFML.Graphics.RenderTexture(512, 512);
 
-            SFML.Graphics.CircleShape circle = new SFML.Graphics.CircleShape(50);
-            render = new SFML.Graphics.RenderTexture(256, 256);
-            Veldrid.ImageSharp.ImageSharpTexture imageSharpTexture = new Veldrid.ImageSharp.ImageSharpTexture("C:/Users/wwwam/Desktop/Editor/Editor/resources/Example3.png");
-            Veldrid.Texture texx = imageSharpTexture.CreateDeviceTexture(graphicsDevice, graphicsDevice.ResourceFactory);
-            IntPtr intPtr = imGuiController.GetOrCreateImGuiBinding(graphicsDevice.ResourceFactory, texx);
 
-            */
             MainWindow.LoadStyle();
 
-            BottomMenu bottomMenu = new BottomMenu();
-            Alis.Editor.Console console = new Alis.Editor.Console();
-            TopMenu topMenu = new TopMenu();
+            bottomMenu = new BottomMenu();
+            console = new Alis.Editor.Console();
+            topMenu = new TopMenu();
 
-            Inspector inspector = new Inspector();
-            AssetsManager assetsManager = new AssetsManager();
+            inspector = new Inspector();
+            assetsManager = new AssetsManager();
 
             while (window.Exists)
             {
@@ -88,49 +106,65 @@
 
                 imGuiController.Update(1.0f / 60.0f, snapshot);
 
-                MainWindow.DockSpace();
-
-                bottomMenu.Draw();
-                console.Draw();
-                topMenu.Draw();
-                inspector.Draw();
-                assetsManager.Draw();
-
-                ImGui.ShowDemoWindow();
-
-
-                /*BEST PART DONT DELETE THIS
-                render.Clear();
-                render.Draw(circle);
-                render.Display();
-                render.Texture.CopyToImage().SaveToFile("C:/Users/wwwam/Desktop/Editor/Editor/resources/Example3.png");
-                imageSharpTexture = new Veldrid.ImageSharp.ImageSharpTexture("C:/Users/wwwam/Desktop/Editor/Editor/resources/Example3.png");
-                intPtr = imGuiController.GetOrCreateImGuiBinding(graphicsDevice.ResourceFactory, texx);
-                
-
-                ImGui.Image(intPtr,
-                    ImGui.GetContentRegionAvail(),
-                    new System.Numerics.Vector2(1, 0),
-                    new System.Numerics.Vector2(0, 1),
-                    new System.Numerics.Vector4(1f),
-                    new System.Numerics.Vector4(1f));
-
-                ImGui.End();*/
-
+                SubmitNewUI();
 
                 commandList.Begin();
                 commandList.SetFramebuffer(graphicsDevice.MainSwapchain.Framebuffer);
-                commandList.ClearColorTarget(0, new RgbaFloat(1f, 0.5f, 1f, 1f));
+                commandList.ClearColorTarget(0, new RgbaFloat(_clearColor.X, _clearColor.Y, _clearColor.Z, 1f));
                 imGuiController.Render(graphicsDevice, commandList);
                 commandList.End();
                 graphicsDevice.SubmitCommands(commandList);
                 graphicsDevice.SwapBuffers(graphicsDevice.MainSwapchain);
+                imGuiController.SwapExtraWindows(graphicsDevice);
             }
 
             graphicsDevice.WaitForIdle();
             imGuiController.Dispose();
             commandList.Dispose();
             graphicsDevice.Dispose();
+        }
+
+        private unsafe static void SubmitNewUI()
+        {
+            bool _showDemoWindow = true;
+            MainWindow.DockSpace();
+
+            bottomMenu.Draw();
+            console.Draw();
+            topMenu.Draw();
+            inspector.Draw();
+            assetsManager.Draw();
+
+            ImGui.SetNextWindowPos(new System.Numerics.Vector2(650, 20), ImGuiCond.FirstUseEver);
+            ImGui.ShowDemoWindow(ref _showDemoWindow);
+
+            if (ImGui.Begin("Scene View"))
+            {
+                render.Clear();
+                render.Draw(circle);
+                render.Display();
+
+                SFML.Graphics.Image renderToImage = render.Texture.CopyToImage();
+                renderToImage.FlipHorizontally();
+
+                image = SixLabors.ImageSharp.Image.LoadPixelData<Rgba32>(renderToImage.Pixels, 512, 512);
+                imageSharpTexture = new Veldrid.ImageSharp.ImageSharpTexture(image, true);
+                texx = imageSharpTexture.CreateDeviceTexture(graphicsDevice, graphicsDevice.ResourceFactory);
+
+                intPtr = imGuiController.GetOrCreateImGuiBinding(graphicsDevice.ResourceFactory, texx);
+                ImGui.Image(intPtr,
+                    ImGui.GetContentRegionAvail(),
+                    new System.Numerics.Vector2(1, 0),
+                    new System.Numerics.Vector2(0, 1),
+                    new System.Numerics.Vector4(1f),
+                    new System.Numerics.Vector4(1f)
+                    );
+            
+            }
+
+            ImGui.End();
+
+
         }
     }
 }

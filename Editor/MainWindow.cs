@@ -16,10 +16,10 @@
 			ImGuiWindowFlags window_flags = ImGuiWindowFlags.MenuBar | ImGuiWindowFlags.NoDocking; 
 			if (opt_fullscreen)
 			{
-                ImGuiViewportPtr viewport = ImGui.GetMainViewport();
-				ImGui.SetNextWindowPos(viewport.GetWorkPos());
-				ImGui.SetNextWindowSize(new System.Numerics.Vector2(viewport.GetWorkSize().X, viewport.GetWorkSize().Y - 25.0f));
-				ImGui.SetNextWindowViewport(viewport.ID);
+				ImGuiViewportPtr viewportPtr = ImGui.GetMainViewport();
+				ImGui.SetNextWindowPos(viewportPtr.Pos + new System.Numerics.Vector2(0.0f, 24.5f));
+				ImGui.SetNextWindowSize(viewportPtr.Size - new System.Numerics.Vector2(0.0f, 50f));
+				ImGui.SetNextWindowViewport(viewportPtr.ID);
 				ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
 				ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
 

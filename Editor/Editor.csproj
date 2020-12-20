@@ -19,10 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ImGui.NET" Version="1.78.0" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <PackageReference Include="ImGui.NET.Docking" Version="1.75.0" />
     <PackageReference Include="Veldrid" Version="4.8.0" />
     <PackageReference Include="Veldrid.ImageSharp" Version="4.8.0" />
     <PackageReference Include="Veldrid.StartupUtilities" Version="4.8.0" />
@@ -36,14 +33,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="shader/GLSL/imgui-vertex.glsl" LogicalName="imgui-vertex.glsl" />
-    <EmbeddedResource Include="shader/GLSL/imgui-frag.glsl" LogicalName="imgui-frag.glsl" />
-    <EmbeddedResource Include="shader/HLSL/imgui-vertex.hlsl.bytes" LogicalName="imgui-vertex.hlsl.bytes" />
-    <EmbeddedResource Include="shader/HLSL/imgui-frag.hlsl.bytes" LogicalName="imgui-frag.hlsl.bytes" />
-    <EmbeddedResource Include="shader/SPIR-V/imgui-vertex.spv" LogicalName="imgui-vertex.spv" />
-    <EmbeddedResource Include="shader/SPIR-V/imgui-frag.spv" LogicalName="imgui-frag.spv" />
-    <EmbeddedResource Include="shader/Metal/imgui-vertex.metallib" LogicalName="imgui-vertex.metallib" />
-    <EmbeddedResource Include="shader/Metal/imgui-frag.metallib" LogicalName="imgui-frag.metallib" />
+    <EmbeddedResource Include="Shaders/GLSL/imgui-vertex.glsl" LogicalName="imgui-vertex.glsl" />
+    <EmbeddedResource Include="Shaders/GLSL/imgui-frag.glsl" LogicalName="imgui-frag.glsl" />
+    <EmbeddedResource Include="Shaders/HLSL/imgui-vertex.hlsl.bytes" LogicalName="imgui-vertex.hlsl.bytes" />
+    <EmbeddedResource Include="Shaders/HLSL/imgui-frag.hlsl.bytes" LogicalName="imgui-frag.hlsl.bytes" />
+    <EmbeddedResource Include="Shaders/SPIR-V/imgui-vertex.spv" LogicalName="imgui-vertex.spv" />
+    <EmbeddedResource Include="Shaders/SPIR-V/imgui-frag.spv" LogicalName="imgui-frag.spv" />
+    <EmbeddedResource Include="Shaders/Metal/imgui-vertex.metallib" LogicalName="imgui-vertex.metallib" />
+    <EmbeddedResource Include="Shaders/Metal/imgui-frag.metallib" LogicalName="imgui-frag.metallib" />
   </ItemGroup>
 
 </Project>

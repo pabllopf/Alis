@@ -23,8 +23,8 @@
         {
             viewport = ImGui.GetMainViewport();
 
-            ImGui.SetNextWindowPos(new System.Numerics.Vector2(viewport.GetWorkPos().X, (viewport.GetWorkSize().Y + viewport.GetWorkPos().Y) - 32.0f));
-            ImGui.SetNextWindowSize(new System.Numerics.Vector2(viewport.GetWorkSize().X, 1.0f));
+            ImGui.SetNextWindowPos(new System.Numerics.Vector2(viewport.Pos.X, (viewport.Size.Y + viewport.Pos.Y) - 32.0f));
+            ImGui.SetNextWindowSize(new System.Numerics.Vector2(viewport.Size.X, 1.0f));
 
             ImGui.PushStyleVar(ImGuiStyleVar.WindowRounding, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
