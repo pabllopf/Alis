@@ -14,7 +14,9 @@
                 ImGuiWindowFlags.NoTitleBar |
                 ImGuiWindowFlags.NoCollapse |
                 ImGuiWindowFlags.NoResize |
-                ImGuiWindowFlags.NoMove;
+                ImGuiWindowFlags.NoMove |
+                ImGuiWindowFlags.NoScrollbar;
+                
 
             viewport = ImGui.GetMainViewport();
         }
@@ -30,7 +32,7 @@
             ImGui.PushStyleVar(ImGuiStyleVar.WindowBorderSize, 0.0f);
             ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new System.Numerics.Vector2(0.0f, 3.0f));
             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0.0f);
-            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new System.Numerics.Vector2(3.0f, 3.0f));
+            ImGui.PushStyleVar(ImGuiStyleVar.FramePadding, new System.Numerics.Vector2(3.0f, 2.0f));
 
             ImGui.PushStyleColor(ImGuiCol.MenuBarBg, new System.Numerics.Vector4(0.040f, 0.090f, 0.152f, 1.000f));
             ImGui.PushStyleColor(ImGuiCol.WindowBg, new System.Numerics.Vector4(0.170f, 0.210f, 0.260f, 1.000f));

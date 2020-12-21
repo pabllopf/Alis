@@ -83,10 +83,11 @@ namespace ImGuiNET
 
             var fonts = ImGui.GetIO().Fonts;
             //ImGui.GetIO().Fonts.AddFontDefault();
-            ImGui.GetIO().Fonts.AddFontFromFileTTF("C:/Users/wwwam/Documents/Repositorios/Alis/Editor/Resources/fonts/Hack-Bold.ttf", 14.0f);
+            ImGui.GetIO().Fonts.AddFontFromFileTTF("C:/Users/wwwam/Documents/Repositorios/Alis/Editor/Resources/fonts/segoeui/Segoe_Bold.ttf", 16.0f);
 
 
-            var nativeConfig = ImGuiNative.ImFontConfig_ImFontConfig();
+
+             var nativeConfig = ImGuiNative.ImFontConfig_ImFontConfig();
             var config = new ImFontConfigPtr(nativeConfig);
             config.MergeMode = true;
             config.GlyphMinAdvanceX = 13.0f;

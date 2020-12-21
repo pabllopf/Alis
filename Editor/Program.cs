@@ -6,7 +6,6 @@
     using Veldrid;
     using Veldrid.StartupUtilities;
     using SixLabors.ImageSharp.PixelFormats;
-    using System.IO;
 
     public class Program
     {
