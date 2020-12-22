@@ -6,6 +6,7 @@
     using Veldrid;
     using Veldrid.StartupUtilities;
     using SixLabors.ImageSharp.PixelFormats;
+    using System.Collections.Generic;
 
     public class Program
     {
@@ -13,7 +14,6 @@
         private static GraphicsDevice graphicsDevice;
 
         private static  BottomMenu bottomMenu;
-        private static Alis.Editor.Console console;
         private static TopMenu topMenu;
 
         private static Inspector inspector;
@@ -33,6 +33,8 @@
         private static IntPtr intPtr;
 
         private static SixLabors.ImageSharp.Image<Rgba32> image;
+
+        private static WidgetManager widget = new WidgetManager();
 
         public static void Main(string[] args)
         {
@@ -84,11 +86,11 @@
             render  = new SFML.Graphics.RenderTexture(512, 512);
 
 
+
             MainWindow.LoadStyle();
 
             bottomMenu = new BottomMenu();
-            console = new Alis.Editor.Console();
-            topMenu = new TopMenu();
+            
 
             inspector = new Inspector();
             assetsManager = new AssetsManager();
@@ -104,6 +106,8 @@
                 }
 
                 imGuiController.Update(1.0f / 60.0f, snapshot);
+
+                widget.Update();
 
                 SubmitNewUI();
 
@@ -126,11 +130,15 @@
         private unsafe static void SubmitNewUI()
         {
             bool _showDemoWindow = true;
+
+
+            
+
+
             MainWindow.DockSpace();
 
             bottomMenu.Draw();
-            console.Draw();
-            topMenu.Draw();
+            
             inspector.Draw();
             assetsManager.Draw();
 

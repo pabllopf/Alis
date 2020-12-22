@@ -4,13 +4,22 @@
     using System;
     using System.Collections.Generic;
 
-    public class TopMenu
+    public class TopMenu : Widget
     {
-        private bool open = true;
+        private string name = "TopMenu";
 
-        public TopMenu() 
+        private bool isOpen = true;
+
+        private EventHandler<EventType> eventHandler;
+
+        public TopMenu( EventHandler<EventType> eventHandler)
         {
-        
+            this.eventHandler = eventHandler;
+        }
+
+        public override string GetName()
+        {
+            return name;
         }
 
         private void OpenTerminal()
@@ -18,7 +27,7 @@
          
         }
 
-        public void Draw() 
+        public override void Draw() 
         {
             if (ImGui.BeginMainMenuBar())
             {
@@ -62,7 +71,7 @@
 
                     if (ImGui.MenuItem(Icon.ICON_FA_POWER_OFF + " Exit", "Alt+F4"))
                     {
-                        open = false;
+                        isOpen = false;
                     }
 
                     ImGui.EndMenu();
@@ -74,7 +83,7 @@
                 {
                     if (ImGui.MenuItem(Icon.ICON_FA_UNDO + " Undo", "CTRL+Z"))
                     {
-
+                        ///
                     }
 
                     if (ImGui.MenuItem(Icon.ICON_FA_REPEAT + " Redo", "CTRL+Y", false, false))
@@ -167,6 +176,11 @@
 
                         }
 
+                        if (ImGui.MenuItem("Console"))
+                        {
+                            eventHandler?.Invoke(this, EventType.OpenConsole);
+                        }
+
                         ImGui.EndMenu();
                     }
 
@@ -220,6 +234,21 @@
 
                 ImGui.EndMainMenuBar();
             }
+        }
+
+        public override void OnLoad()
+        {
+            
+        }
+
+        public override void Open()
+        {
+            isOpen = true;
+        }
+
+        public override void Close()
+        {
+            isOpen = false;
         }
     }
 }

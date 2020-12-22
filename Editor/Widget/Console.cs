@@ -1,6 +1,105 @@
-﻿
+﻿//------------------------------------------------------------------------------------------
+// <author>Pablo Perdomo Falcón</author>
+// <copyright file="Console.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+//------------------------------------------------------------------------------------------
 namespace Alis.Editor
 {
+    using System;
+    using System.Collections.Generic;
+    using ImGuiNET;
+   
+    /// <summary>Console widget </summary>
+    public class Console : Widget
+    {
+        private string name = "Console";
+
+        /// <summary>The filter PTR</summary>
+        private ImGuiTextFilterPtr filterPtr;
+
+        /// <summary>The is open</summary>
+        private bool isOpen;
+
+        /// <summary>The log</summary>
+        private List<string> log = new List<string>();
+
+        private EventHandler<EventType> eventHandler;
+
+        public Console(EventHandler<EventType> eventHandler) 
+        {
+            this.eventHandler = eventHandler;
+            isOpen = true;
+
+            unsafe
+            {
+                ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
+                filterPtr = new ImGuiTextFilterPtr(filterPtr);
+            }
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Console" /> class.</summary>
+        public Console(bool isOpen) 
+        {
+            this.isOpen = isOpen;
+
+            unsafe 
+            {
+                ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
+                filterPtr = new ImGuiTextFilterPtr(filterPtr);
+            }
+        }
+
+
+        /// <summary>Clears this instance.</summary>
+        public void Clear() 
+        {
+            log.Clear();
+        }
+
+        public override string GetName()
+        {
+            return name;
+        }
+
+        public override void Open()
+        {
+            isOpen = true;
+        }
+
+        public override void Close()
+        {
+            isOpen = false;
+        }
+
+        public override void OnLoad()
+        {
+        }
+
+        /// <summary>Draws this instance.</summary>
+        public override void Draw()
+        {
+            if (!isOpen) 
+            {
+                eventHandler?.Invoke(this, EventType.CloseConsole);
+                return;
+            }
+
+            if (ImGui.Begin("Console", ref isOpen))
+            {
+                if (ImGui.Button(Icon.ICON_FA_TRASH + " Clean"))
+                {
+                    Clear();
+                    return;
+                }
+            }
+
+            ImGui.End();
+        }
+
+        
+    }
+}
+
+/*
     using ImGuiNET;
     using System;
     using System.Collections.Generic;
@@ -198,3 +297,4 @@ namespace Alis.Editor
         }
     }
 }
+*/
