@@ -109,7 +109,9 @@
 
                 widget.Update();
 
-                SubmitNewUI();
+                MainWindow.DockSpace();
+
+                //SubmitNewUI();
 
                 commandList.Begin();
                 commandList.SetFramebuffer(graphicsDevice.MainSwapchain.Framebuffer);
@@ -141,7 +143,7 @@
             
             inspector.Draw();
             assetsManager.Draw();
-
+            /*
             ImGui.SetNextWindowPos(new System.Numerics.Vector2(650, 20), ImGuiCond.FirstUseEver);
             ImGui.ShowDemoWindow(ref _showDemoWindow);
 
@@ -169,7 +171,7 @@
             
             }
 
-            ImGui.End();
+            ImGui.End();*/
 
 
         }

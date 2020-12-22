@@ -83,7 +83,7 @@ namespace ImGuiNET
 
             var fonts = ImGui.GetIO().Fonts;
             //ImGui.GetIO().Fonts.AddFontDefault();
-            ImGui.GetIO().Fonts.AddFontFromFileTTF("C:/Users/wwwam/Documents/Repositorios/Alis/Editor/Resources/fonts/segoeui/Segoe_Bold.ttf", 16.0f);
+            ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "/resources/fonts/segoeui/Segoe_Bold.ttf", 16.0f);
 
 
 
@@ -94,9 +94,9 @@ namespace ImGuiNET
 
             GCHandle rangeHandle = GCHandle.Alloc(new ushort[] { Icon.ICON_MIN_FA, Icon.ICON_MAX_FA, 0 }, GCHandleType.Pinned);
 
-            ImGui.GetIO().Fonts.AddFontFromFileTTF("C:/Users/wwwam/Documents/Repositorios/Alis/Editor/Resources/fonts/Icons.ttf", 14.0f, config, rangeHandle.AddrOfPinnedObject());
+            
 
-
+            ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "/resources/fonts/Icons.ttf", 14.0f, config, rangeHandle.AddrOfPinnedObject());
 
             io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
             io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
