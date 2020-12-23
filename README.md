@@ -1,4 +1,4 @@
-[![Author](https://img.shields.io/badge/author-Pablo%20Perdomo%20Falc%C3%B3n-lightgrey.svg?colorB=9900cc&style=flat-square)]()
+[![Author](https://img.shields.io/badge/author-Pablo%20Perdomo%20Falc%C3%B3n-blue)]()
 [![License](https://img.shields.io/badge/license-GPL%20v3.0-blue)]()
 [![Release](https://img.shields.io/badge/Alis-v1.0.0-blue)]()
 
