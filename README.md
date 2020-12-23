@@ -1,4 +1,4 @@
-[`v0.01-alpha`](https://github.com/pabllopf/Alis)
+[![Author](https://img.shields.io/badge/author-Pablo%20Perdomo%20Falc%C3%B3n-lightgrey.svg?colorB=9900cc&style=flat-square)](https://www.danhendricks.com?utm_source=github.com&utm_medium=campaign&utm_content=button&utm_campaign=dmhendricks%2Ffile-icon-vectors)
 
 ![](https://github.com/pabllopf/Alis/blob/main/Docs/Alis_Banner_970x250.png)
 
