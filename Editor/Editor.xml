@@ -4,6 +4,33 @@
         <name>Editor</name>
     </assembly>
     <members>
+        <member name="T:Alis.Editor.Engine">
+            <summary>Manage the engine</summary>
+        </member>
+        <member name="F:Alis.Editor.Engine.args">
+            <summary>The arguments</summary>
+        </member>
+        <member name="M:Alis.Editor.Engine.#ctor(System.String[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Engine" /> class.</summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="P:Alis.Editor.Engine.FirstInstance">
+            <summary>Gets a value indicating whether [first instance].</summary>
+            <value>
+            <c>true</c> if [first instance]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Alis.Editor.Engine.Start">
+            <summary>Starts this instance.</summary>
+            <returns>Return 0 or -1 to indicate the exit value</returns>
+        </member>
+        <member name="T:Alis.Editor.Program">
+            <summary>Run the engine</summary>
+        </member>
+        <member name="M:Alis.Editor.Program.Main(System.String[])">
+            <summary>Mains the specified arguments.</summary>
+            <param name="args">The arguments.</param>
+            <returns>Return 0 or -1 to indicate the exit value.</returns>
+        </member>
         <member name="T:Alis.Editor.Console">
             <summary>Console widget </summary>
         </member>
