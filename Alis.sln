@@ -10,12 +10,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Editor", "Editor\Editor.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{69339297-9538-4FDB-9FCD-07C65E50064B}"
 EndProject
-Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "ApiDoc", "ApiDoc\ApiDoc.shfbproj", "{2E8BE9CF-5F29-4592-9B46-308180E42947}"
-	ProjectSection(ProjectDependencies) = postProject
-		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC} = {77B8DD59-D936-49CD-9459-CAFC36C4B5DC}
-		{69339297-9538-4FDB-9FCD-07C65E50064B} = {69339297-9538-4FDB-9FCD-07C65E50064B}
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,10 +24,6 @@ Global
 		{69339297-9538-4FDB-9FCD-07C65E50064B}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{69339297-9538-4FDB-9FCD-07C65E50064B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69339297-9538-4FDB-9FCD-07C65E50064B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2E8BE9CF-5F29-4592-9B46-308180E42947}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{2E8BE9CF-5F29-4592-9B46-308180E42947}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{2E8BE9CF-5F29-4592-9B46-308180E42947}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2E8BE9CF-5F29-4592-9B46-308180E42947}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
