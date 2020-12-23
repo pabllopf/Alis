@@ -1,7 +1,7 @@
 [![Author](https://img.shields.io/badge/author-Pablo%20Perdomo%20Falc%C3%B3n-blue)]()
 [![License](https://img.shields.io/badge/license-GPL%20v3.0-blue)]()
 [![Release](https://img.shields.io/badge/Alis-v1.0.0-blue)]()
-
+[![Editor](https://shields.io/badge/Editor-Windows%20%7C%20MacOS%20%7C%20Linux-%23989898)()
 
 ![](https://github.com/pabllopf/Alis/blob/main/Docs/Alis_Banner_970x250.png)
 
