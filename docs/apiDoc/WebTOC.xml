@@ -2,55 +2,55 @@
 <HelpTOC>
 
   <HelpTOCNode Title="Welcome to Alis" Url="html/ac92e418-da23-41aa-b170-76dfdb106a21.htm" />
-  <HelpTOCNode Id="ddeaa21c-1f85-4419-b5aa-17c84df070e5" Title="Modules" Url="html/R_Project_ApiDoc.htm">
-    <HelpTOCNode Id="f9f3d0fe-4962-4a86-9509-b7366c89d8f4" Title="Alis Namespaces" Url="html/G_Alis.htm">
-      <HelpTOCNode Id="4caa2efe-289f-46ae-ab49-e7bbea84c3ae" Title="Alis.Core" Url="html/N_Alis_Core.htm">
-        <HelpTOCNode Id="4ed160f2-7b40-4fb0-971c-da78ca54d8dd" Title="Debug Class" Url="html/T_Alis_Core_Debug.htm">
+  <HelpTOCNode Id="4671daba-3a6b-4741-9f64-f3ff1655615e" Title="Modules" Url="html/R_Project_ApiDoc.htm">
+    <HelpTOCNode Id="84ad876e-c5f3-4f92-a7e2-5c1d697ffacf" Title="Alis Namespaces" Url="html/G_Alis.htm">
+      <HelpTOCNode Id="4072b345-06e9-4bbc-99b3-7ed96e078947" Title="Alis.Core" Url="html/N_Alis_Core.htm">
+        <HelpTOCNode Id="c6dbc9b7-5f23-40b8-a42f-7fc5cfe0b0a1" Title="Debug Class" Url="html/T_Alis_Core_Debug.htm">
           <HelpTOCNode Title="Debug Constructor " Url="html/M_Alis_Core_Debug__ctor.htm" />
-          <HelpTOCNode Id="c7025d55-06e1-4c26-aafa-45826c36fe14" Title="Debug Methods" Url="html/Methods_T_Alis_Core_Debug.htm">
+          <HelpTOCNode Id="acea6a67-b97a-43c2-bd9d-052e24c05a51" Title="Debug Methods" Url="html/Methods_T_Alis_Core_Debug.htm">
             <HelpTOCNode Title="Error Method " Url="html/M_Alis_Core_Debug_Error.htm" />
             <HelpTOCNode Title="Log Method " Url="html/M_Alis_Core_Debug_Log.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="adcb2577-d52b-4a2b-833d-90812a776963" Title="Alis.Editor" Url="html/N_Alis_Editor.htm">
-        <HelpTOCNode Id="3f17726a-a35c-4318-b270-51ed9ecdf9fc" Title="AssetsManager Class" Url="html/T_Alis_Editor_AssetsManager.htm">
+      <HelpTOCNode Id="ca883704-0996-4a60-9db0-61049f1878d6" Title="Alis.Editor" Url="html/N_Alis_Editor.htm">
+        <HelpTOCNode Id="4fba0bcc-3aee-4566-9320-dd94a0ff7702" Title="AssetsManager Class" Url="html/T_Alis_Editor_AssetsManager.htm">
           <HelpTOCNode Title="AssetsManager Constructor " Url="html/M_Alis_Editor_AssetsManager__ctor.htm" />
-          <HelpTOCNode Id="868378e2-5b6e-4e02-9e72-c4ab8c6d838e" Title="AssetsManager Methods" Url="html/Methods_T_Alis_Editor_AssetsManager.htm">
+          <HelpTOCNode Id="5da875ed-857a-4c73-a2ff-275c62fc932b" Title="AssetsManager Methods" Url="html/Methods_T_Alis_Editor_AssetsManager.htm">
             <HelpTOCNode Title="Draw Method " Url="html/M_Alis_Editor_AssetsManager_Draw.htm" />
             <HelpTOCNode Title="getPathList Method " Url="html/M_Alis_Editor_AssetsManager_getPathList.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="cf0780ef-e698-4679-9891-2ee15bf3c795" Title="AssetsManager Fields" Url="html/Fields_T_Alis_Editor_AssetsManager.htm">
+          <HelpTOCNode Id="e9af5f6a-669e-464b-9b7d-7a643b012be1" Title="AssetsManager Fields" Url="html/Fields_T_Alis_Editor_AssetsManager.htm">
             <HelpTOCNode Title="filter Field" Url="html/F_Alis_Editor_AssetsManager_filter.htm" />
             <HelpTOCNode Title="isOpen Field" Url="html/F_Alis_Editor_AssetsManager_isOpen.htm" />
             <HelpTOCNode Title="pathExample Field" Url="html/F_Alis_Editor_AssetsManager_pathExample.htm" />
             <HelpTOCNode Title="pathFolders Field" Url="html/F_Alis_Editor_AssetsManager_pathFolders.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="44df5303-b778-4afb-9818-d7dca277cb66" Title="BottomMenu Class" Url="html/T_Alis_Editor_BottomMenu.htm">
+        <HelpTOCNode Id="c51b9b94-99d0-4075-bcd3-b649b862770f" Title="BottomMenu Class" Url="html/T_Alis_Editor_BottomMenu.htm">
           <HelpTOCNode Title="BottomMenu Constructor " Url="html/M_Alis_Editor_BottomMenu__ctor.htm" />
-          <HelpTOCNode Id="bb1a63a9-5db2-44e2-ac60-845b3795540d" Title="BottomMenu Methods" Url="html/Methods_T_Alis_Editor_BottomMenu.htm">
+          <HelpTOCNode Id="3943b24e-26ba-4645-86df-08a749dc2192" Title="BottomMenu Methods" Url="html/Methods_T_Alis_Editor_BottomMenu.htm">
             <HelpTOCNode Title="Draw Method " Url="html/M_Alis_Editor_BottomMenu_Draw.htm" />
             <HelpTOCNode Title="EndStyleMenu Method " Url="html/M_Alis_Editor_BottomMenu_EndStyleMenu.htm" />
             <HelpTOCNode Title="EndStylePopPup Method " Url="html/M_Alis_Editor_BottomMenu_EndStylePopPup.htm" />
             <HelpTOCNode Title="StartStyleMenu Method " Url="html/M_Alis_Editor_BottomMenu_StartStyleMenu.htm" />
             <HelpTOCNode Title="StartStylePopPup Method " Url="html/M_Alis_Editor_BottomMenu_StartStylePopPup.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="2b8d8d16-2a53-48b6-bb87-2c53cd51a036" Title="BottomMenu Fields" Url="html/Fields_T_Alis_Editor_BottomMenu.htm">
+          <HelpTOCNode Id="54ca20c8-93b7-4ff5-9246-b5030a32aeeb" Title="BottomMenu Fields" Url="html/Fields_T_Alis_Editor_BottomMenu.htm">
             <HelpTOCNode Title="imGuiWindowFlags Field" Url="html/F_Alis_Editor_BottomMenu_imGuiWindowFlags.htm" />
             <HelpTOCNode Title="viewport Field" Url="html/F_Alis_Editor_BottomMenu_viewport.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="51c548c1-e6f5-4608-afd0-b356295e56bb" Title="Class1 Class" Url="html/T_Alis_Editor_Class1.htm">
+        <HelpTOCNode Id="0ea34a22-11c9-450f-a5a5-8b01925055d6" Title="Class1 Class" Url="html/T_Alis_Editor_Class1.htm">
           <HelpTOCNode Title="Class1 Constructor " Url="html/M_Alis_Editor_Class1__ctor.htm" />
           <HelpTOCNode Title="Class1 Methods" Url="html/Methods_T_Alis_Editor_Class1.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="6db59c87-79b5-4f2c-957b-2bc6dfe5d853" Title="Console Class" Url="html/T_Alis_Editor_Console.htm">
-          <HelpTOCNode Id="7f661f8b-dd0b-4a3d-8dfb-d33cfccb978d" Title="Console Constructor " Url="html/Overload_Alis_Editor_Console__ctor.htm">
+        <HelpTOCNode Id="3b489030-2f91-4b1d-9658-513fb28c8571" Title="Console Class" Url="html/T_Alis_Editor_Console.htm">
+          <HelpTOCNode Id="1f9c19fc-5c5f-4649-be98-17645d62174f" Title="Console Constructor " Url="html/Overload_Alis_Editor_Console__ctor.htm">
             <HelpTOCNode Title="Console Constructor (Boolean)" Url="html/M_Alis_Editor_Console__ctor.htm" />
             <HelpTOCNode Title="Console Constructor (EventHandler(EventType))" Url="html/M_Alis_Editor_Console__ctor_1.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="7c41bc82-44aa-4170-bbe3-07b042818828" Title="Console Methods" Url="html/Methods_T_Alis_Editor_Console.htm">
+          <HelpTOCNode Id="bf11d011-684b-4d20-9e7a-835c89edec5b" Title="Console Methods" Url="html/Methods_T_Alis_Editor_Console.htm">
             <HelpTOCNode Title="Clear Method " Url="html/M_Alis_Editor_Console_Clear.htm" />
             <HelpTOCNode Title="Close Method " Url="html/M_Alis_Editor_Console_Close.htm" />
             <HelpTOCNode Title="Draw Method " Url="html/M_Alis_Editor_Console_Draw.htm" />
@@ -58,34 +58,34 @@
             <HelpTOCNode Title="OnLoad Method " Url="html/M_Alis_Editor_Console_OnLoad.htm" />
             <HelpTOCNode Title="Open Method " Url="html/M_Alis_Editor_Console_Open.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="36ceabca-a9fc-4b1d-a74b-f9517a0a0e3b" Title="Console Fields" Url="html/Fields_T_Alis_Editor_Console.htm">
+          <HelpTOCNode Id="78ac53aa-ed35-4e08-8426-d6926da8b9f1" Title="Console Fields" Url="html/Fields_T_Alis_Editor_Console.htm">
             <HelpTOCNode Title="filterPtr Field" Url="html/F_Alis_Editor_Console_filterPtr.htm" />
             <HelpTOCNode Title="isOpen Field" Url="html/F_Alis_Editor_Console_isOpen.htm" />
             <HelpTOCNode Title="log Field" Url="html/F_Alis_Editor_Console_log.htm" />
             <HelpTOCNode Title="name Field" Url="html/F_Alis_Editor_Console_name.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="7e976ccf-254f-4d30-b7bf-c07038907a55" Title="Consumer Class" Url="html/T_Alis_Editor_Consumer.htm">
+        <HelpTOCNode Id="14394a1c-3214-4d14-b7bc-b29531cd8bcb" Title="Consumer Class" Url="html/T_Alis_Editor_Consumer.htm">
           <HelpTOCNode Title="Consumer Constructor " Url="html/M_Alis_Editor_Consumer__ctor.htm" />
           <HelpTOCNode Title="Consumer Methods" Url="html/Methods_T_Alis_Editor_Consumer.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="6dae4486-1b80-4503-982b-13e4d63e911a" Title="Engine Class" Url="html/T_Alis_Editor_Engine.htm">
+        <HelpTOCNode Id="58771dda-1346-43d7-afe4-daeed324bd6d" Title="Engine Class" Url="html/T_Alis_Editor_Engine.htm">
           <HelpTOCNode Title="Engine Constructor " Url="html/M_Alis_Editor_Engine__ctor.htm" />
-          <HelpTOCNode Id="ca816ce9-b8f7-4476-8a35-bfe08c876a4e" Title="Engine Properties" Url="html/Properties_T_Alis_Editor_Engine.htm">
+          <HelpTOCNode Id="5fe9352b-e8a7-44f9-aa66-eae408ff0fdb" Title="Engine Properties" Url="html/Properties_T_Alis_Editor_Engine.htm">
             <HelpTOCNode Title="FirstInstance Property " Url="html/P_Alis_Editor_Engine_FirstInstance.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="7315167d-c8e7-49d4-8aba-fe29c6c59096" Title="Engine Methods" Url="html/Methods_T_Alis_Editor_Engine.htm">
+          <HelpTOCNode Id="f239b5e5-1e31-4e7e-bf6d-299d213b3417" Title="Engine Methods" Url="html/Methods_T_Alis_Editor_Engine.htm">
             <HelpTOCNode Title="Start Method " Url="html/M_Alis_Editor_Engine_Start.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="1c13a23d-d200-43ec-a3ee-a51e64ee4f4a" Title="Engine Fields" Url="html/Fields_T_Alis_Editor_Engine.htm">
+          <HelpTOCNode Id="2d3affb9-fe15-4cf3-b604-8280d4806c89" Title="Engine Fields" Url="html/Fields_T_Alis_Editor_Engine.htm">
             <HelpTOCNode Title="args Field" Url="html/F_Alis_Editor_Engine_args.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
         <HelpTOCNode Title="EventType Enumeration" Url="html/T_Alis_Editor_EventType.htm" />
-        <HelpTOCNode Id="eff9df2d-82f9-4ba9-a83c-404fe993aa2a" Title="Icon Class" Url="html/T_Alis_Editor_Icon.htm">
+        <HelpTOCNode Id="1ca1148a-73cc-4289-8076-451274baccf6" Title="Icon Class" Url="html/T_Alis_Editor_Icon.htm">
           <HelpTOCNode Title="Icon Constructor " Url="html/M_Alis_Editor_Icon__ctor.htm" />
           <HelpTOCNode Title="Icon Methods" Url="html/Methods_T_Alis_Editor_Icon.htm" />
-          <HelpTOCNode Id="cc9594a8-1c50-4c31-9e01-b7c3ec051727" Title="Icon Fields" Url="html/Fields_T_Alis_Editor_Icon.htm">
+          <HelpTOCNode Id="8180d9b6-71bc-44ef-b526-4d0480829a62" Title="Icon Fields" Url="html/Fields_T_Alis_Editor_Icon.htm">
             <HelpTOCNode Title="FONT_ICON_FILE_NAME_FA Field" Url="html/F_Alis_Editor_Icon_FONT_ICON_FILE_NAME_FA.htm" />
             <HelpTOCNode Title="ICON_FA_500PX Field" Url="html/F_Alis_Editor_Icon_ICON_FA_500PX.htm" />
             <HelpTOCNode Title="ICON_FA_ADDRESS_BOOK Field" Url="html/F_Alis_Editor_Icon_ICON_FA_ADDRESS_BOOK.htm" />
@@ -766,47 +766,47 @@
             <HelpTOCNode Title="ICON_MIN_FA Field" Url="html/F_Alis_Editor_Icon_ICON_MIN_FA.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="0a9f7a1a-46a1-4248-a62e-8a8fa7128d83" Title="Inspector Class" Url="html/T_Alis_Editor_Inspector.htm">
+        <HelpTOCNode Id="3fdd3e22-0242-4a7f-b38b-8b3b92471828" Title="Inspector Class" Url="html/T_Alis_Editor_Inspector.htm">
           <HelpTOCNode Title="Inspector Constructor " Url="html/M_Alis_Editor_Inspector__ctor.htm" />
-          <HelpTOCNode Id="bd70dd61-5a5c-401f-b941-5eeadd3b295e" Title="Inspector Methods" Url="html/Methods_T_Alis_Editor_Inspector.htm">
+          <HelpTOCNode Id="834002b2-ce80-482e-bc24-075c84f05971" Title="Inspector Methods" Url="html/Methods_T_Alis_Editor_Inspector.htm">
             <HelpTOCNode Title="Draw Method " Url="html/M_Alis_Editor_Inspector_Draw.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="2b7c3ef5-0190-4aed-b1ea-0dcad28f7498" Title="Inspector Fields" Url="html/Fields_T_Alis_Editor_Inspector.htm">
+          <HelpTOCNode Id="a147d15d-e77c-4cae-b88c-3e2663a8fef7" Title="Inspector Fields" Url="html/Fields_T_Alis_Editor_Inspector.htm">
             <HelpTOCNode Title="isOpen Field" Url="html/F_Alis_Editor_Inspector_isOpen.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="7aedd409-dc36-4025-a805-ff8318d425c1" Title="MainWindow Class" Url="html/T_Alis_Editor_MainWindow.htm">
+        <HelpTOCNode Id="da736e11-6f37-4b27-8a62-eff3a6bcc907" Title="MainWindow Class" Url="html/T_Alis_Editor_MainWindow.htm">
           <HelpTOCNode Title="MainWindow Constructor " Url="html/M_Alis_Editor_MainWindow__ctor.htm" />
           <HelpTOCNode Title="MainWindow Constructor " Url="html/M_Alis_Editor_MainWindow__cctor.htm" />
-          <HelpTOCNode Id="adeba430-a677-4f56-84be-9655dc8041ba" Title="MainWindow Methods" Url="html/Methods_T_Alis_Editor_MainWindow.htm">
+          <HelpTOCNode Id="ed4d3333-4658-4027-808b-5ec2acb806e5" Title="MainWindow Methods" Url="html/Methods_T_Alis_Editor_MainWindow.htm">
             <HelpTOCNode Title="DockSpace Method " Url="html/M_Alis_Editor_MainWindow_DockSpace.htm" />
             <HelpTOCNode Title="LoadFont Method " Url="html/M_Alis_Editor_MainWindow_LoadFont.htm" />
             <HelpTOCNode Title="LoadStyle Method " Url="html/M_Alis_Editor_MainWindow_LoadStyle.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="ed62df1c-c561-4995-8f65-d0286194792c" Title="MainWindow Fields" Url="html/Fields_T_Alis_Editor_MainWindow.htm">
+          <HelpTOCNode Id="4a16bc27-40b5-4530-9d0a-9e0afd225ac3" Title="MainWindow Fields" Url="html/Fields_T_Alis_Editor_MainWindow.htm">
             <HelpTOCNode Title="toolbar Field" Url="html/F_Alis_Editor_MainWindow_toolbar.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="d89eafcb-d878-42e1-9442-579b820e4c0c" Title="Program Class" Url="html/T_Alis_Editor_Program.htm">
+        <HelpTOCNode Id="3971a1ae-9fdf-4fcd-a766-8fdb5f4696d8" Title="Program Class" Url="html/T_Alis_Editor_Program.htm">
           <HelpTOCNode Title="Program Constructor " Url="html/M_Alis_Editor_Program__ctor.htm" />
-          <HelpTOCNode Id="1d871944-6025-472b-92d4-5d93204d7145" Title="Program Methods" Url="html/Methods_T_Alis_Editor_Program.htm">
+          <HelpTOCNode Id="066b1d89-5eff-43b0-a116-3c896ebcfa73" Title="Program Methods" Url="html/Methods_T_Alis_Editor_Program.htm">
             <HelpTOCNode Title="Main Method " Url="html/M_Alis_Editor_Program_Main.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="491d2b95-6616-4e1b-b391-f456cc3c6629" Title="ToolBar Class" Url="html/T_Alis_Editor_ToolBar.htm">
+        <HelpTOCNode Id="d205492e-969e-4e3f-9ef5-9fb718cc7dc8" Title="ToolBar Class" Url="html/T_Alis_Editor_ToolBar.htm">
           <HelpTOCNode Title="ToolBar Constructor " Url="html/M_Alis_Editor_ToolBar__ctor.htm" />
           <HelpTOCNode Title="ToolBar Constructor " Url="html/M_Alis_Editor_ToolBar__cctor.htm" />
-          <HelpTOCNode Id="48a4d860-138a-446e-8dd9-dce9a6d3677f" Title="ToolBar Methods" Url="html/Methods_T_Alis_Editor_ToolBar.htm">
+          <HelpTOCNode Id="a243d322-82e6-43f3-b511-1f1b02824649" Title="ToolBar Methods" Url="html/Methods_T_Alis_Editor_ToolBar.htm">
             <HelpTOCNode Title="ClickButton Method " Url="html/M_Alis_Editor_ToolBar_ClickButton.htm" />
             <HelpTOCNode Title="Draw Method " Url="html/M_Alis_Editor_ToolBar_Draw.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="fbf69ed2-1353-424a-b2ff-b634605892d3" Title="ToolBar Fields" Url="html/Fields_T_Alis_Editor_ToolBar.htm">
+          <HelpTOCNode Id="1298e307-fc69-4c5e-b7b7-4a51f0116b54" Title="ToolBar Fields" Url="html/Fields_T_Alis_Editor_ToolBar.htm">
             <HelpTOCNode Title="button Field" Url="html/F_Alis_Editor_ToolBar_button.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="6865210d-374a-46dd-aca3-091267ca950d" Title="TopMenu Class" Url="html/T_Alis_Editor_TopMenu.htm">
+        <HelpTOCNode Id="b5559629-ec11-4549-8d2c-1f818a06f5e7" Title="TopMenu Class" Url="html/T_Alis_Editor_TopMenu.htm">
           <HelpTOCNode Title="TopMenu Constructor " Url="html/M_Alis_Editor_TopMenu__ctor.htm" />
-          <HelpTOCNode Id="08930add-037f-4b49-9021-d62807114e08" Title="TopMenu Methods" Url="html/Methods_T_Alis_Editor_TopMenu.htm">
+          <HelpTOCNode Id="33170a54-7b91-4725-9d9f-cf058f55a9a6" Title="TopMenu Methods" Url="html/Methods_T_Alis_Editor_TopMenu.htm">
             <HelpTOCNode Title="Close Method " Url="html/M_Alis_Editor_TopMenu_Close.htm" />
             <HelpTOCNode Title="Draw Method " Url="html/M_Alis_Editor_TopMenu_Draw.htm" />
             <HelpTOCNode Title="GetName Method " Url="html/M_Alis_Editor_TopMenu_GetName.htm" />
@@ -814,14 +814,14 @@
             <HelpTOCNode Title="Open Method " Url="html/M_Alis_Editor_TopMenu_Open.htm" />
             <HelpTOCNode Title="OpenTerminal Method " Url="html/M_Alis_Editor_TopMenu_OpenTerminal.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="e05761ce-daee-4291-8af0-9c3df9593b74" Title="TopMenu Fields" Url="html/Fields_T_Alis_Editor_TopMenu.htm">
+          <HelpTOCNode Id="c6d651cc-591b-4543-af12-9dbc4f674bce" Title="TopMenu Fields" Url="html/Fields_T_Alis_Editor_TopMenu.htm">
             <HelpTOCNode Title="isOpen Field" Url="html/F_Alis_Editor_TopMenu_isOpen.htm" />
             <HelpTOCNode Title="name Field" Url="html/F_Alis_Editor_TopMenu_name.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="a06cf2c7-ece5-4f32-b967-da88d307fb8f" Title="Widget Class" Url="html/T_Alis_Editor_Widget.htm">
+        <HelpTOCNode Id="c07d435a-7827-4604-b6ae-0ee163fb40d3" Title="Widget Class" Url="html/T_Alis_Editor_Widget.htm">
           <HelpTOCNode Title="Widget Constructor " Url="html/M_Alis_Editor_Widget__ctor.htm" />
-          <HelpTOCNode Id="bdc969b3-1d89-4163-a161-968517d36d52" Title="Widget Methods" Url="html/Methods_T_Alis_Editor_Widget.htm">
+          <HelpTOCNode Id="cf08d1ff-24ba-481b-af13-9477e2f5bfa8" Title="Widget Methods" Url="html/Methods_T_Alis_Editor_Widget.htm">
             <HelpTOCNode Title="Close Method " Url="html/M_Alis_Editor_Widget_Close.htm" />
             <HelpTOCNode Title="Draw Method " Url="html/M_Alis_Editor_Widget_Draw.htm" />
             <HelpTOCNode Title="GetName Method " Url="html/M_Alis_Editor_Widget_GetName.htm" />
@@ -829,18 +829,18 @@
             <HelpTOCNode Title="Open Method " Url="html/M_Alis_Editor_Widget_Open.htm" />
           </HelpTOCNode>
         </HelpTOCNode>
-        <HelpTOCNode Id="fa590c0c-c65e-4caf-90e2-27ac20f5ba59" Title="WidgetManager Class" Url="html/T_Alis_Editor_WidgetManager.htm">
+        <HelpTOCNode Id="6f6bfa3f-9aa9-411d-803a-37a77c51119b" Title="WidgetManager Class" Url="html/T_Alis_Editor_WidgetManager.htm">
           <HelpTOCNode Title="WidgetManager Constructor " Url="html/M_Alis_Editor_WidgetManager__ctor.htm" />
-          <HelpTOCNode Id="c6f8fbe6-dda2-4455-b02e-9bed06f4d317" Title="WidgetManager Methods" Url="html/Methods_T_Alis_Editor_WidgetManager.htm">
+          <HelpTOCNode Id="19a68f6c-11d6-4ad8-a4fb-606c042b0e1a" Title="WidgetManager Methods" Url="html/Methods_T_Alis_Editor_WidgetManager.htm">
             <HelpTOCNode Title="ManageEventHandler Method " Url="html/M_Alis_Editor_WidgetManager_ManageEventHandler.htm" />
             <HelpTOCNode Title="ProcessCloseConsole Method " Url="html/M_Alis_Editor_WidgetManager_ProcessCloseConsole.htm" />
             <HelpTOCNode Title="ProcessOpenConsole Method " Url="html/M_Alis_Editor_WidgetManager_ProcessOpenConsole.htm" />
             <HelpTOCNode Title="Update Method " Url="html/M_Alis_Editor_WidgetManager_Update.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="91c0d728-778e-420b-b62a-c6237b646261" Title="WidgetManager Events" Url="html/Events_T_Alis_Editor_WidgetManager.htm">
+          <HelpTOCNode Id="f8da53ce-0b38-45c1-be4e-2c3fb039e966" Title="WidgetManager Events" Url="html/Events_T_Alis_Editor_WidgetManager.htm">
             <HelpTOCNode Title="EventHandler Event" Url="html/E_Alis_Editor_WidgetManager_EventHandler.htm" />
           </HelpTOCNode>
-          <HelpTOCNode Id="04ae485f-0539-4bb0-a233-3c0a16421857" Title="WidgetManager Fields" Url="html/Fields_T_Alis_Editor_WidgetManager.htm">
+          <HelpTOCNode Id="a08e336d-6055-4671-a37f-c17c1340bfc4" Title="WidgetManager Fields" Url="html/Fields_T_Alis_Editor_WidgetManager.htm">
             <HelpTOCNode Title="pendingEvents Field" Url="html/F_Alis_Editor_WidgetManager_pendingEvents.htm" />
             <HelpTOCNode Title="widgetEvents Field" Url="html/F_Alis_Editor_WidgetManager_widgetEvents.htm" />
             <HelpTOCNode Title="widgets Field" Url="html/F_Alis_Editor_WidgetManager_widgets.htm" />
@@ -849,10 +849,10 @@
         <HelpTOCNode Title="WidgetType Enumeration" Url="html/T_Alis_Editor_WidgetType.htm" />
       </HelpTOCNode>
     </HelpTOCNode>
-    <HelpTOCNode Id="36f5c1d0-3952-41c2-96fc-e7a7c9f27f09" Title="ImGuiNET" Url="html/N_ImGuiNET.htm">
-      <HelpTOCNode Id="90e9ee70-a00f-4430-a26f-6c7e5841ac3f" Title="ImGuiController Class" Url="html/T_ImGuiNET_ImGuiController.htm">
+    <HelpTOCNode Id="4c81f3d5-4d85-4da3-8c88-29b1474fe6e6" Title="ImGuiNET" Url="html/N_ImGuiNET.htm">
+      <HelpTOCNode Id="34371136-e000-4d5f-b031-be1c32aa80fc" Title="ImGuiController Class" Url="html/T_ImGuiNET_ImGuiController.htm">
         <HelpTOCNode Title="ImGuiController Constructor " Url="html/M_ImGuiNET_ImGuiController__ctor.htm" />
-        <HelpTOCNode Id="b8862cf9-90ee-4ff4-86a0-b86cb1774850" Title="ImGuiController Methods" Url="html/Methods_T_ImGuiNET_ImGuiController.htm">
+        <HelpTOCNode Id="4a3ba080-10a2-4a1c-b46c-b0fff8b7b32b" Title="ImGuiController Methods" Url="html/Methods_T_ImGuiNET_ImGuiController.htm">
           <HelpTOCNode Title="ClearCachedImageResources Method " Url="html/M_ImGuiNET_ImGuiController_ClearCachedImageResources.htm" />
           <HelpTOCNode Title="CreateDeviceResources Method " Url="html/M_ImGuiNET_ImGuiController_CreateDeviceResources.htm" />
           <HelpTOCNode Title="CreateWindow Method " Url="html/M_ImGuiNET_ImGuiController_CreateWindow.htm" />
@@ -862,7 +862,7 @@
           <HelpTOCNode Title="GetEmbeddedResourceBytes Method " Url="html/M_ImGuiNET_ImGuiController_GetEmbeddedResourceBytes.htm" />
           <HelpTOCNode Title="GetImageResourceSet Method " Url="html/M_ImGuiNET_ImGuiController_GetImageResourceSet.htm" />
           <HelpTOCNode Title="GetNextImGuiBindingID Method " Url="html/M_ImGuiNET_ImGuiController_GetNextImGuiBindingID.htm" />
-          <HelpTOCNode Id="76bdf998-9341-4633-b0ce-19c4c7e84ed2" Title="GetOrCreateImGuiBinding Method " Url="html/Overload_ImGuiNET_ImGuiController_GetOrCreateImGuiBinding.htm">
+          <HelpTOCNode Id="42503651-56e3-4fa1-a5b9-d3bbb283fb8a" Title="GetOrCreateImGuiBinding Method " Url="html/Overload_ImGuiNET_ImGuiController_GetOrCreateImGuiBinding.htm">
             <HelpTOCNode Title="GetOrCreateImGuiBinding Method (ResourceFactory, Texture)" Url="html/M_ImGuiNET_ImGuiController_GetOrCreateImGuiBinding.htm" />
             <HelpTOCNode Title="GetOrCreateImGuiBinding Method (ResourceFactory, TextureView)" Url="html/M_ImGuiNET_ImGuiController_GetOrCreateImGuiBinding_1.htm" />
           </HelpTOCNode>
@@ -887,7 +887,7 @@
           <HelpTOCNode Title="UpdateMonitors Method " Url="html/M_ImGuiNET_ImGuiController_UpdateMonitors.htm" />
           <HelpTOCNode Title="WindowResized Method " Url="html/M_ImGuiNET_ImGuiController_WindowResized.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="b86d8ed3-2b76-4821-89ca-09f01f41fea0" Title="ImGuiController Fields" Url="html/Fields_T_ImGuiNET_ImGuiController.htm">
+        <HelpTOCNode Id="57f681ab-e90d-47e0-8ae6-0f6e35637a50" Title="ImGuiController Fields" Url="html/Fields_T_ImGuiNET_ImGuiController.htm">
           <HelpTOCNode Title="_altDown Field" Url="html/F_ImGuiNET_ImGuiController__altDown.htm" />
           <HelpTOCNode Title="_autoViewsByTexture Field" Url="html/F_ImGuiNET_ImGuiController__autoViewsByTexture.htm" />
           <HelpTOCNode Title="_controlDown Field" Url="html/F_ImGuiNET_ImGuiController__controlDown.htm" />
@@ -934,10 +934,10 @@
           <HelpTOCNode Title="p_sdl_RaiseWindow Field" Url="html/F_ImGuiNET_ImGuiController_p_sdl_RaiseWindow.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="3fb77931-18cf-4d43-9b27-2717ab521d50" Title="ImGuiController.ResourceSetInfo Structure" Url="html/T_ImGuiNET_ImGuiController_ResourceSetInfo.htm">
+      <HelpTOCNode Id="9d8bdcda-9bd3-479a-ad5c-2511104bad87" Title="ImGuiController.ResourceSetInfo Structure" Url="html/T_ImGuiNET_ImGuiController_ResourceSetInfo.htm">
         <HelpTOCNode Title="ImGuiController.ResourceSetInfo Constructor " Url="html/M_ImGuiNET_ImGuiController_ResourceSetInfo__ctor.htm" />
         <HelpTOCNode Title="ResourceSetInfo Methods" Url="html/Methods_T_ImGuiNET_ImGuiController_ResourceSetInfo.htm" />
-        <HelpTOCNode Id="f4cc6bea-15e9-45ab-b653-7c8ce6da1777" Title="ResourceSetInfo Fields" Url="html/Fields_T_ImGuiNET_ImGuiController_ResourceSetInfo.htm">
+        <HelpTOCNode Id="716f8a19-9b5a-4026-b809-3d4cb7dcea21" Title="ResourceSetInfo Fields" Url="html/Fields_T_ImGuiNET_ImGuiController_ResourceSetInfo.htm">
           <HelpTOCNode Title="ImGuiBinding Field" Url="html/F_ImGuiNET_ImGuiController_ResourceSetInfo_ImGuiBinding.htm" />
           <HelpTOCNode Title="ResourceSet Field" Url="html/F_ImGuiNET_ImGuiController_ResourceSetInfo_ResourceSet.htm" />
         </HelpTOCNode>
@@ -946,12 +946,12 @@
       <HelpTOCNode Title="ImGuiController.SDL_GetGlobalMouseState_t Delegate" Url="html/T_ImGuiNET_ImGuiController_SDL_GetGlobalMouseState_t.htm" />
       <HelpTOCNode Title="ImGuiController.SDL_GetNumVideoDisplays_t Delegate" Url="html/T_ImGuiNET_ImGuiController_SDL_GetNumVideoDisplays_t.htm" />
       <HelpTOCNode Title="ImGuiController.SDL_RaiseWindow_t Delegate" Url="html/T_ImGuiNET_ImGuiController_SDL_RaiseWindow_t.htm" />
-      <HelpTOCNode Id="ece63be7-d9b2-47e3-a402-7c81de8d6f6b" Title="ImGuiListClipper2 Class" Url="html/T_ImGuiNET_ImGuiListClipper2.htm">
+      <HelpTOCNode Id="7b9cbbef-e250-4940-8d58-bd4dbc5d5754" Title="ImGuiListClipper2 Class" Url="html/T_ImGuiNET_ImGuiListClipper2.htm">
         <HelpTOCNode Title="ImGuiListClipper2 Constructor " Url="html/M_ImGuiNET_ImGuiListClipper2__ctor.htm" />
-        <HelpTOCNode Id="fb78c81a-73ee-41e7-855a-f99b329d676f" Title="ImGuiListClipper2 Methods" Url="html/Methods_T_ImGuiNET_ImGuiListClipper2.htm">
+        <HelpTOCNode Id="5bb93e68-2918-49b8-a248-6667e09cc443" Title="ImGuiListClipper2 Methods" Url="html/Methods_T_ImGuiNET_ImGuiListClipper2.htm">
           <HelpTOCNode Title="Begin Method " Url="html/M_ImGuiNET_ImGuiListClipper2_Begin.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="489f728b-b271-48e1-911c-af684081b0b9" Title="ImGuiListClipper2 Fields" Url="html/Fields_T_ImGuiNET_ImGuiListClipper2.htm">
+        <HelpTOCNode Id="c509bccf-1517-4d6b-b5dc-00255aae988a" Title="ImGuiListClipper2 Fields" Url="html/Fields_T_ImGuiNET_ImGuiListClipper2.htm">
           <HelpTOCNode Title="DisplayEnd Field" Url="html/F_ImGuiNET_ImGuiListClipper2_DisplayEnd.htm" />
           <HelpTOCNode Title="DisplayStart Field" Url="html/F_ImGuiNET_ImGuiListClipper2_DisplayStart.htm" />
           <HelpTOCNode Title="ItemsCount Field" Url="html/F_ImGuiNET_ImGuiListClipper2_ItemsCount.htm" />
@@ -960,15 +960,15 @@
           <HelpTOCNode Title="StepNo Field" Url="html/F_ImGuiNET_ImGuiListClipper2_StepNo.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="7566402e-85b3-4120-a683-61e59f3b02f9" Title="MemoryEditor Class" Url="html/T_ImGuiNET_MemoryEditor.htm">
+      <HelpTOCNode Id="b1fff9a5-2086-47ea-86ea-b82881784213" Title="MemoryEditor Class" Url="html/T_ImGuiNET_MemoryEditor.htm">
         <HelpTOCNode Title="MemoryEditor Constructor " Url="html/M_ImGuiNET_MemoryEditor__ctor.htm" />
-        <HelpTOCNode Id="41cb4c20-6533-42f3-a5c1-1b2872806e92" Title="MemoryEditor Methods" Url="html/Methods_T_ImGuiNET_MemoryEditor.htm">
+        <HelpTOCNode Id="19b936b9-1a76-43a7-9c12-816fc57ed871" Title="MemoryEditor Methods" Url="html/Methods_T_ImGuiNET_MemoryEditor.htm">
           <HelpTOCNode Title="Draw Method " Url="html/M_ImGuiNET_MemoryEditor_Draw.htm" />
           <HelpTOCNode Title="FixedHex Method " Url="html/M_ImGuiNET_MemoryEditor_FixedHex.htm" />
           <HelpTOCNode Title="ReplaceChars Method " Url="html/M_ImGuiNET_MemoryEditor_ReplaceChars.htm" />
           <HelpTOCNode Title="TryHexParse Method " Url="html/M_ImGuiNET_MemoryEditor_TryHexParse.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="bd894016-974d-49d2-8037-3dd9404e2d9e" Title="MemoryEditor Fields" Url="html/Fields_T_ImGuiNET_MemoryEditor.htm">
+        <HelpTOCNode Id="cf4aca08-08a8-44df-b5e2-5215462b9df3" Title="MemoryEditor Fields" Url="html/Fields_T_ImGuiNET_MemoryEditor.htm">
           <HelpTOCNode Title="AddrInput Field" Url="html/F_ImGuiNET_MemoryEditor_AddrInput.htm" />
           <HelpTOCNode Title="AllowEdits Field" Url="html/F_ImGuiNET_MemoryEditor_AllowEdits.htm" />
           <HelpTOCNode Title="DataEditingAddr Field" Url="html/F_ImGuiNET_MemoryEditor_DataEditingAddr.htm" />

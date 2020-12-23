@@ -1667,8 +1667,8 @@
   <HelpKINode Title="MainWindow.LoadFont method" Url="html/M_Alis_Editor_MainWindow_LoadFont.htm" />
   <HelpKINode Title="MainWindow.LoadStyle method" Url="html/M_Alis_Editor_MainWindow_LoadStyle.htm" />
   <HelpKINode Title="MainWindow.MainWindow constructor">
-    <HelpKINode Title="MainWindow Constructor " Url="html/M_Alis_Editor_MainWindow__ctor.htm" />
     <HelpKINode Title="MainWindow Constructor " Url="html/M_Alis_Editor_MainWindow__cctor.htm" />
+    <HelpKINode Title="MainWindow Constructor " Url="html/M_Alis_Editor_MainWindow__ctor.htm" />
   </HelpKINode>
   <HelpKINode Title="MainWindow.toolbar field" Url="html/F_Alis_Editor_MainWindow_toolbar.htm" />
   <HelpKINode Title="ManageEventHandler method" Url="html/M_Alis_Editor_WidgetManager_ManageEventHandler.htm" />

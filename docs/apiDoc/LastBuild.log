@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder and Tools" version="2020.3.6.0" projectFile="C:\Users\wwwam\Documents\Repositorios\Alis\ApiDoc\ApiDoc.shfbproj" started="23/12/2020 10:37:18">
+<shfbBuild product="Sandcastle Help File Builder and Tools" version="2020.3.6.0" projectFile="C:\Users\wwwam\Documents\Repositorios\Alis\ApiDoc\ApiDoc.shfbproj" started="23/12/2020 11:05:14">
 <buildStep step="Initializing">
 Finding tools...
 The Sandcastle tools are located in &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\&#39;
@@ -175,7 +175,7 @@ Copying XML comments files
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, Ingl&#233;s (Estados Unidos))...
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
-</plugIn>    Last step completed in 00:00:00,0129
+</plugIn>    Last step completed in 00:00:00,0060
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
@@ -184,7 +184,7 @@ Generating API filter for MRefBuilder...
 <buildStep step="GenerateReflectionInfo">
 Generating reflection information...
 [C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe - GenerateRefInfo.proj]
-Compilaci&#162;n iniciada a las 23/12/2020 10:37:20.
+Compilaci&#162;n iniciada a las 23/12/2020 11:05:16.
 Proyecto &quot;C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\GenerateRefInfo.proj&quot; en nodo 1 (destinos predeterminados).
 PrepareForBuild:
   Creando directorio &quot;obj\Debug\&quot;.
@@ -205,12 +205,12 @@ MRefBuilder : warning : Ignoring unresolved assembly reference: System.Numerics.
   Portions Copyright &#184; 2006-2020, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\MergeDuplicates.xsl&#39;.
 Compilaci&#162;n del proyecto terminada &quot;C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\GenerateRefInfo.proj&quot; (destinos predeterminados).
-    Last step completed in 00:00:01,8631
+    Last step completed in 00:00:02,0325
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
 [C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe - TransformManifest.proj]
-Compilaci&#162;n iniciada a las 23/12/2020 10:37:22.
+Compilaci&#162;n iniciada a las 23/12/2020 11:05:18.
 Proyecto &quot;C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\TransformManifest.proj&quot; en nodo 1 (destinos predeterminados).
 TransformManifest:
   XslTransform (v2020.3.6.0)
@@ -233,11 +233,11 @@ TransformManifest:
   Portions Copyright &#184; 2006-2020, Eric Woodruff, All Rights Reserved.
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\ProductionTransforms\ReflectionToManifest.xsl&#39;.
 Compilaci&#162;n del proyecto terminada &quot;C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\TransformManifest.proj&quot; (destinos predeterminados).
-    Last step completed in 00:00:01,6120
+    Last step completed in 00:00:01,5837
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
-    Last step completed in 00:00:00,3428
+    Last step completed in 00:00:00,8442
 </buildStep>
 <buildStep step="GenerateInheritedDocumentation">
 Generating inherited documentation...
@@ -275,7 +275,7 @@ Merging inherited documentation...
 
 
 Documentation merged successfully
-    Last step completed in 00:00:03,0830
+    Last step completed in 00:00:03,1571
 </buildStep>
 <buildStep step="CopyConceptualContent">
 Copying conceptual content...
@@ -298,16 +298,16 @@ Creating conceptual topic configuration files...
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
 C:\Users\wwwam\Documents\Repositorios\Alis\ApiDoc\icons\Help.png -&gt; C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\Output\Website\icons\Help.png
-    Last step completed in 00:00:00,0080
+    Last step completed in 00:00:00,0040
 </buildStep>
 <buildStep step="MergeTablesOfContents">
 Merging conceptual and additional tables of contents...
-    Last step completed in 00:00:00,0010
+    Last step completed in 00:00:00,0000
 </buildStep>
 <buildStep step="GenerateIntermediateTableOfContents">
 Generating intermediate table of contents file...
 [C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe - GenerateIntermediateTOC.proj]
-Compilaci&#162;n iniciada a las 23/12/2020 10:37:27.
+Compilaci&#162;n iniciada a las 23/12/2020 11:05:24.
 Proyecto &quot;C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\GenerateIntermediateTOC.proj&quot; en nodo 1 (destinos predeterminados).
 GenerateIntermediateTOC:
   XslTransform (v2020.3.6.0)
@@ -316,12 +316,12 @@ GenerateIntermediateTOC:
   Applying XSL transformation &#39;C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\\ProductionTransforms\CreateVSToc.xsl&#39;.
 Compilaci&#162;n del proyecto terminada &quot;C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\GenerateIntermediateTOC.proj&quot; (destinos predeterminados).
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:01,5228
+    Last step completed in 00:00:00,8146
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
     sandcastle.config
-    Last step completed in 00:00:00,7795
+    Last step completed in 00:00:00,3259
 </buildStep>
 <buildStep step="MergeCustomConfigs">
 Merging custom build component configurations
@@ -331,12 +331,12 @@ C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\sandcastle.config
   Updating conceptual topic configurations.
     Skipping component &#39;API Token Resolution&#39;, not used in conceptual build
     Removing unused ExampleComponent.
-    Last step completed in 00:00:00,0090
+    Last step completed in 00:00:00,0050
 </buildStep>
 <buildStep step="BuildTopics">
 Building help topics...
 [C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe - BuildTopics.proj]
-Compilaci&#162;n iniciada a las 23/12/2020 10:37:30.
+Compilaci&#162;n iniciada a las 23/12/2020 11:05:25.
 Proyecto &quot;C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\BuildTopics.proj&quot; en nodo 1 (destinos predeterminados).
 BuildTopics:
   BuildAssembler (v2020.3.6.0)
@@ -1332,11 +1332,11 @@ BuildAssembler : warning : ShowMissingComponent: [G:Alis] Missing &lt;summary&gt
   CopyFromIndexComponent: &quot;reflection&quot; in-memory cache entries used: 4 of 15.
   CopyFromIndexComponent: &quot;comments&quot; in-memory cache entries used: 3 of 30.
 Compilaci&#162;n del proyecto terminada &quot;C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\BuildTopics.proj&quot; (destinos predeterminados).
-    Last step completed in 00:00:19,1757
+    Last step completed in 00:00:20,1307
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
-    Last step completed in 00:00:00,0080
+    Last step completed in 00:00:00,0110
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -1352,7 +1352,7 @@ Processed 921 HTML files
 Sorting keywords and generating See Also indices
 Saving website keyword index to C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\WebKI.xml
 Saving website table of contents to C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\WebTOC.xml
-    Last step completed in 00:00:00,9905
+    Last step completed in 00:00:00,9370
 </buildStep>
 <buildStep step="CopyStandardHelpContent">
 Copying standard help content...
@@ -1434,7 +1434,7 @@ C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyle
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\branding-Website.js -&gt; C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\Output\Website\scripts\branding-Website.js
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\clipboard.min.js -&gt; C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\Output\Website\scripts\clipboard.min.js
 C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\PresentationStyles\VS2013\Web\scripts\jquery-3.3.1.min.js -&gt; C:\Users\wwwam\Documents\Repositorios\Alis\docs\apiDoc\Working\Output\Website\scripts\jquery-3.3.1.min.js
-    Last step completed in 00:00:00,4007
+    Last step completed in 00:00:00,4729
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating website table of contents file...
@@ -1445,7 +1445,7 @@ Generating full-text index for the website...
 
 <plugIn name="Lightweight Website Style" behavior="After" priority="1000">
 Adding lightweight search and TOC elements to each topic...
-</plugIn>    Last step completed in 00:00:05,0435
+</plugIn>    Last step completed in 00:00:05,7493
 </buildStep>
 <buildStep step="CopyingWebsiteFiles">
 Copying website files to output folder...
@@ -1453,15 +1453,15 @@ Copying website files to output folder...
 Copied 500 files
 Copied 1000 files
 Copied 1082 files for the website content
-    Last step completed in 00:00:01,4178
+    Last step completed in 00:00:01,6792
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00,8425
+    Last step completed in 00:00:00,3296
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 23/12/2020 10:37:57.  Total time: 00:00:39,2845
+Build completed successfully at 23/12/2020 11:05:54.  Total time: 00:00:40,2380
 
 </buildStep>
 </shfbBuild>
