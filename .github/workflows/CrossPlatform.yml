@@ -1,5 +1,5 @@
 # Test the cross platform of Editor | Core | Tools
-name: "Cross_Platform"
+name: "Platform Compatibility"
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
 
 jobs:
   job1: 
-    name: Ubuntu
+    name: Ubuntu_18.04
     runs-on: ubuntu-18.04
     strategy:
       fail-fast: true
@@ -23,7 +23,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.301
+          dotnet-version: '5.0.x'
       - name: Cache_Ubuntu
         id: cache-ubuntu
         uses: actions/cache@v2
@@ -40,7 +40,7 @@ jobs:
         
         
   job2: 
-    name: Windows
+    name: Windows_2019
     runs-on: windows-2019
     strategy:
       fail-fast: true
@@ -52,7 +52,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.301
+          dotnet-version: '5.0.x'
       - name: Cache_Windows
         id: cache-windows
         uses: actions/cache@v2
@@ -68,7 +68,7 @@ jobs:
         run: dotnet publish ./Editor/Editor.csproj -p:PublishProfile=WindowsX64      
         
   job3: 
-    name: MacOS
+    name: MacOS_10.15
     runs-on: macos-10.15
     strategy:
       fail-fast: true
@@ -80,7 +80,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.301
+          dotnet-version: '5.0.x'
       - name: Cache_MacOs
         id: cache-macos
         uses: actions/cache@v2
