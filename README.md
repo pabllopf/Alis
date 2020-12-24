@@ -5,9 +5,14 @@
 [![Core](https://shields.io/badge/Core-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
 [![Tools](https://shields.io/badge/Tools-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
 [![Downloads](https://img.shields.io/github/downloads/pabllopf/alis/total.svg)]()
-<img src="https://visitor-badge.laobi.icu/badge?page_id=pabllopf.alis">  
+<img src="https://visitor-badge.laobi.icu/badge?page_id=pabllopf.alis"> 
+
+![Platform Compatibility](https://github.com/pabllopf/Alis/workflows/Platform%20Compatibility/badge.svg?branch=main)
+
+![Discover Vulnerabilities](https://github.com/pabllopf/Alis/workflows/Discover%20Vulnerabilities/badge.svg?branch=main)
 
 ![](https://github.com/pabllopf/Alis/blob/main/Documentation/Alis_Banner_970x250.png)
+
 
 #  Framework Alis
 
