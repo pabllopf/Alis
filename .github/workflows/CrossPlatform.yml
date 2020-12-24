@@ -26,9 +26,6 @@ jobs:
         with:
           path: temp-ubuntu
           key: ${{ runner.os }}-ubuntu    
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1  
         
   job2: 
     name: Test_On_Windows
@@ -45,10 +42,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: temp-windows
-          key: ${{ runner.os }}-windows    
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1   
+          key: ${{ runner.os }}-windows      
         
   job3: 
     name: Test_On_MacOS
@@ -66,6 +60,3 @@ jobs:
         with:
           path: temp-macos
           key: ${{ runner.os }}-macos    
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1   
