@@ -2,9 +2,10 @@
 name: "Discover Vulnerabilities"
 
 on:
+  push:
+    branches: [ main ]
   schedule:
-    - cron: '* * * * *'
-
+    - cron: '0 1 * * *'
 
 jobs:
   job1: 
