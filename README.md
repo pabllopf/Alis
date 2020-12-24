@@ -25,3 +25,10 @@ git push origin :refs/tags/12345
 ![](https://github.com/pabllopf/Alis/blob/main/Documentation/LicenseLimits.png)    
 
 [![](https://github.com/pabllopf/Alis/blob/main/Documentation/ReadMore.png)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
+
+
+
+TAREAS (ACTIONS) QUE SE EJECUTAN EN ESTE REPOSITORIO:
+- [ ] Todas las noches a las 23:00 se lanza la documentación, para tenerlo todo actualizado .
+- [ ] Todas las noches a las 22:00 se lanza los tests.
+- [ ] Cada vez que se sube un commit a la rama master se lanzan las comprobaciones de plafaforma.
