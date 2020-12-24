@@ -9,7 +9,10 @@
 
 ![Platform Compatibility](https://github.com/pabllopf/Alis/workflows/Platform%20Compatibility/badge.svg?branch=main)
 
+![Discover Vulnerabilities](https://github.com/pabllopf/Alis/workflows/Discover%20Vulnerabilities/badge.svg?branch=main)
+
 ![](https://github.com/pabllopf/Alis/blob/main/Documentation/Alis_Banner_970x250.png)
+
 
 #  Framework Alis
 
