@@ -20,7 +20,6 @@ namespace Alis.Editor
             this.args = args;
         }
 
-
         /// <summary>Gets a value indicating whether [first instance].</summary>
         /// <value>
         /// <c>true</c> if [first instance]; otherwise, <c>false</c>.</value>
