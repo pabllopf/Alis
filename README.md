@@ -1,15 +1,15 @@
-[![Author](https://img.shields.io/badge/Author-Pablo%20Perdomo%20Falc%C3%B3n-blue)]()
+[![Author](https://img.shields.io/badge/Author-Pablo%20Perdomo%20Falc%C3%B3n-blue)](https://github.com/pabllopf/)
 [![License](https://img.shields.io/badge/License-GPL%20v3.0-blue)](https://github.com/pabllopf/Alis/blob/main/LICENSE)
 [![Release](https://img.shields.io/github/release/pabllopf/alis.svg)](https://github.com/pabllopf/alis/releases/latest) 
-[![Editor](https://shields.io/badge/Editor-Windows%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
-[![Core](https://shields.io/badge/Core-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
-[![Tools](https://shields.io/badge/Tools-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
 [![Downloads](https://img.shields.io/github/downloads/pabllopf/alis/total.svg)]()
 <img src="https://visitor-badge.laobi.icu/badge?page_id=pabllopf.alis"> 
 
 ![Platform Compatibility](https://github.com/pabllopf/Alis/workflows/PlatformCompatibility/badge.svg?branch=main&event=push)
 ![Discover Vulnerabilities](https://github.com/pabllopf/Alis/workflows/DiscoverVulnerabilities/badge.svg?branch=main&event=schedule)
 
+[![Editor](https://shields.io/badge/Editor-Windows%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
+[![Core](https://shields.io/badge/Core-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
+[![Tools](https://shields.io/badge/Tools-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
 
 
 ![](https://github.com/pabllopf/Alis/blob/main/Documentation/Alis_Banner_970x250.png)
