@@ -7,8 +7,8 @@
 [![Downloads](https://img.shields.io/github/downloads/pabllopf/alis/total.svg)]()
 <img src="https://visitor-badge.laobi.icu/badge?page_id=pabllopf.alis"> 
 
-![Check Platform Compatibility (On Push)](https://github.com/pabllopf/Alis/workflows/PlatformCompatibility/badge.svg?branch=main&event=push)
-![Discover Vulnerabilities (Every day at 1:00 am)](https://github.com/pabllopf/Alis/workflows/DiscoverVulnerabilities/badge.svg?branch=main&event=schedule)
+![Platform Compatibility](https://github.com/pabllopf/Alis/workflows/PlatformCompatibility/badge.svg?branch=main&event=push)
+![Discover Vulnerabilities](https://github.com/pabllopf/Alis/workflows/DiscoverVulnerabilities/badge.svg?branch=main&event=schedule)
 
 ![](https://github.com/pabllopf/Alis/blob/main/Documentation/Alis_Banner_970x250.png)
 
