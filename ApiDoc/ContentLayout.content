@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Topics>
-  <Topic id="ac92e418-da23-41aa-b170-76dfdb106a21" visible="True" isDefault="true" isSelected="true" apiParentMode="InsertAfter" title="Welcome to Alis ">
-    <HelpKeywords>
-      <HelpKeyword index="K" term="Welcome" />
-    </HelpKeywords>
-  </Topic>
-</Topics>

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -51,5 +51,6 @@
       <TargetPath>resources/%(RecursiveDIr)/%(Filename)%(Extension)</TargetPath>
     </ContentWithTargetPath>
   </ItemGroup>
+
 
 </Project>
