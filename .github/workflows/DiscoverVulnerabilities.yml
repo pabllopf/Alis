@@ -5,6 +5,7 @@ on:
   schedule:
     - cron: '* * * * *'
 
+
 jobs:
   job1: 
     name: Ubuntu_18.04

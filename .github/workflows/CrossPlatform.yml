@@ -9,6 +9,8 @@ on:
   schedule:
     - cron: '0 0 * * 1'
 
+
+
 jobs:
   job1: 
     name: Ubuntu_18.04
