@@ -3,13 +3,11 @@ name: "CrossPlatform"
 
 on:
   push:
-    branches: 
-      - master
+    branches: [ main ]
   pull_request:
-    branches:
-      - master
+    branches: [ main ]
   schedule:
-    - cron: "0 0 * * 1"
+    - cron: '0 0 * * 1'
 
 jobs:
   job1: 
@@ -22,6 +20,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2    
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: ${{ matrix.language }}   
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1  
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1  
         
   job2: 
     name: Test_On_Windows
@@ -32,7 +41,18 @@ jobs:
         language: [ 'csharp' ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2    
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: ${{ matrix.language }}   
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1  
+        
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1  
         
   job3: 
     name: Test_On_MacOS
@@ -43,4 +63,15 @@ jobs:
         language: [ 'csharp' ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2    
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v1
+        with:
+          languages: ${{ matrix.language }}   
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1  
+        
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v1  
