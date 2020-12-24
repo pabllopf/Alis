@@ -1,4 +1,4 @@
-# Test the cross platform of Editor | Core | Tools
+# Test Platform Compatibility with diferents platforms.
 name: "Platform Compatibility"
 
 on:

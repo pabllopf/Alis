@@ -1,0 +1,33 @@
+# Discover vulnerabilities of code.
+name: "Discover Vulnerabilities"
+
+on:
+  schedule:
+    - cron: '42 7 * * 6'
+
+jobs:
+  job1: 
+    name: Analize Vulnerabilities
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Cache_Ubuntu-CODE
+          id: cache-ubuntu-CODE
+          uses: actions/cache@v2
+          with:
+            path: temp-ubuntu-CODE
+            key: ${{ runner.os }}-ubuntu-CODE
+
+      - name: Initialize CodeQL
+          uses: github/codeql-action/init@v1
+          with:
+            languages: ${{ matrix.language }}
+
+      - name: Autobuild
+          uses: github/codeql-action/autobuild@v1
+
+      - name: Perform CodeQL Analysis
+          uses: github/codeql-action/analyze@v1
