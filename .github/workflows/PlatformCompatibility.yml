@@ -1,5 +1,5 @@
 # Test Platform Compatibility with diferents platforms.
-name: "Platform Compatibility"
+name: "PlatformCompatibility"
 
 on:
   push:

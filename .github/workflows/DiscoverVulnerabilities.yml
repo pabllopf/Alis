@@ -1,5 +1,5 @@
 # Discover vulnerabilities of code.
-name: "Discover Vulnerabilities"
+name: "DiscoverVulnerabilities"
 
 on:
   schedule:
