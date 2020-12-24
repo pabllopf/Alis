@@ -11,7 +11,7 @@ on:
 
 jobs:
   job1: 
-    name: Test_On_Ubuntu
+    name: Build_On_Ubuntu
     runs-on: ubuntu-18.04
     strategy:
       fail-fast: true
@@ -20,15 +20,27 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2  
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.301
       - name: Cache_Ubuntu
         id: cache-ubuntu
         uses: actions/cache@v2
         with:
           path: temp-ubuntu
-          key: ${{ runner.os }}-ubuntu    
+          key: ${{ runner.os }}-ubuntu
+
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Publish
+        run: dotnet publish ./Editor/Editor.csproj -p:PublishProfile=LinuxX64
+        
         
   job2: 
-    name: Test_On_Windows
+    name: Build_On_Windows
     runs-on: windows-2019
     strategy:
       fail-fast: true
@@ -37,15 +49,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2  
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.301
       - name: Cache_Windows
         id: cache-windows
         uses: actions/cache@v2
         with:
           path: temp-windows
-          key: ${{ runner.os }}-windows      
+          key: ${{ runner.os }}-windows   
+
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Publish
+        run: dotnet publish ./Editor/Editor.csproj -p:PublishProfile=WindowsX64      
         
   job3: 
-    name: Test_On_MacOS
+    name: Build_On_MacOS
     runs-on: macos-10.15
     strategy:
       fail-fast: true
@@ -54,9 +77,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2  
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.301
       - name: Cache_MacOs
         id: cache-macos
         uses: actions/cache@v2
         with:
           path: temp-macos
-          key: ${{ runner.os }}-macos    
+          key: ${{ runner.os }}-macos   
+
+      - name: Restore dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Publish
+        run: dotnet publish ./Editor/Editor.csproj -p:PublishProfile=MacOSX64   
