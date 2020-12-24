@@ -1,5 +1,5 @@
 # Test the cross platform of Editor | Core | Tools
-name: "CrossPlatform"
+name: "Cross_Platform"
 
 on:
   push:
@@ -27,17 +27,8 @@ jobs:
           path: temp-ubuntu
           key: ${{ runner.os }}-ubuntu    
 
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: ${{ matrix.language }}   
-
       - name: Autobuild
         uses: github/codeql-action/autobuild@v1  
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1  
         
   job2: 
     name: Test_On_Windows
@@ -48,18 +39,16 @@ jobs:
         language: [ 'csharp' ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2    
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: actions/checkout@v2  
+      - name: Cache_Windows
+        id: cache-windows
+        uses: actions/cache@v2
         with:
-          languages: ${{ matrix.language }}   
+          path: temp-windows
+          key: ${{ runner.os }}-windows    
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v1  
-        
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1  
+        uses: github/codeql-action/autobuild@v1   
         
   job3: 
     name: Test_On_MacOS
@@ -70,15 +59,13 @@ jobs:
         language: [ 'csharp' ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2    
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: actions/checkout@v2  
+      - name: Cache_MacOs
+        id: cache-macos
+        uses: actions/cache@v2
         with:
-          languages: ${{ matrix.language }}   
+          path: temp-macos
+          key: ${{ runner.os }}-macos    
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v1  
-        
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1  
+        uses: github/codeql-action/autobuild@v1   
