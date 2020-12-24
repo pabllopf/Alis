@@ -1,0 +1,46 @@
+# Test the cross platform of Editor | Core | Tools
+name: "CrossPlatform"
+
+on:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: "0 0 * * 1"
+
+jobs:
+  job1: 
+    name: Test_On_Ubuntu
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: true
+      matrix:
+        language: [ 'csharp' ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2    
+        
+  job2: 
+    name: Test_On_Windows
+    runs-on: windows-2019
+    strategy:
+      fail-fast: true
+      matrix:
+        language: [ 'csharp' ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        
+  job3: 
+    name: Test_On_MacOS
+    runs-on: macos-10.15
+    strategy:
+      fail-fast: true
+      matrix:
+        language: [ 'csharp' ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
