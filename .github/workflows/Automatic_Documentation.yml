@@ -36,4 +36,5 @@ jobs:
         author_name: Automatic_Documentation
         author_email: pabloperdomofalcon@gmail.com
         message: 'Automatic commit of action'
+        push:  true
         
