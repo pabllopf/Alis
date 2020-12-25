@@ -11,7 +11,14 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Cache_doc
+      id: cache-doc
+      uses: actions/cache@v2
+      with:
+        path: temp-doc
+        key: ${{ runner.os }}-doc
     - name: Change Directory 
       run: cd ${{ github.workspace }}/ApiDoc
     - name: Show Directory 
