@@ -28,5 +28,5 @@ jobs:
       run: dir
       
     - name: Build Doc
-      run: D:/a/Alis/Alis/ApiDoc/Doxygen/bin/doxygen
+      run: D:/a/Alis/Alis/ApiDoc/Doxygen/run/doxygen
         
