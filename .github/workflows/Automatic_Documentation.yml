@@ -28,13 +28,13 @@ jobs:
       run: dir
       
     - name: Build Doc
-      run: D:/a/Alis/Alis/ApiDoc/Doxygen/run/doxygen D:/a/Alis/Alis/ApiDoc/ApiDoc
+      run: D:/a/Alis/Alis/ApiDoc/Doxygen/run/doxygen D:/a/Alis/Alis/ApiDocConfig
     
     - name: Update web
       run: |
          git config user.name github-actions
          git config user.email github-actions@github.com
          git add .
-         git commit -m "generated"
+         git commit -m "generated automatic documentation by actions"
          git push
         
