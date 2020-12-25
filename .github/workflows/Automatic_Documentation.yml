@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  Generating_Documentation:
     runs-on: windows-latest
 
     steps:
