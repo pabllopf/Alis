@@ -1,0 +1,19 @@
+name: Automatic_Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Change Directory 
+      run: cd ${{ github.workspace }}/ApiDoc
+    - name: Show Directory 
+      run: dir
+        
