@@ -29,4 +29,12 @@ jobs:
       
     - name: Build Doc
       run: D:/a/Alis/Alis/ApiDoc/Doxygen/run/doxygen D:/a/Alis/Alis/ApiDoc/ApiDoc
+    
+    - name: Update web
+      run: |
+         git config user.name github-actions
+         git config user.email github-actions@github.com
+         git add .
+         git commit -m "generated"
+         git push
         
