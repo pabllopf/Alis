@@ -28,5 +28,5 @@ jobs:
       run: dir
       
     - name: Build Doc
-      run: cd ./ApiDoc && ./Doxygen/bin/doxygen.exe ./ApiDoc
+      run: cd ${{ github.workspace }}/ApiDoc && ${{ github.workspace }}/Doxygen/bin/doxygen.exe ${{ github.workspace }}/ApiDoc
         
