@@ -1,0 +1,32 @@
+name: Automatic_Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Generating_Documentation:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Cache_doc
+      id: cache-doc
+      uses: actions/cache@v2
+      with:
+        path: temp-doc
+        key: ${{ runner.os }}-doc
+      
+    - name: Change Directory 
+      run: cd D:/a/Alis/Alis/ApiDoc
+      
+    - name: Show Directory 
+      run: dir
+      
+    - name: Build Doc
+      run: D:/a/Alis/Alis/ApiDoc/Doxygen/bin/doxygen
+        
