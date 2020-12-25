@@ -25,22 +25,24 @@
 var NAVTREE =
 [
   [ "Alis Framework", "index.html", [
-    [ "Quick Start", "md__pages__quick__start.html", null ],
-    [ "README", "md__c___users_wwwam__documents__repositorios__alis__r_e_a_d_m_e.html", [
-      [ "Framework Alis", "md__c___users_wwwam__documents__repositorios__alis__r_e_a_d_m_e.html#autotoc_md0", [
-        [ "General Public License v3.0", "md__c___users_wwwam__documents__repositorios__alis__r_e_a_d_m_e.html#autotoc_md1", null ]
+    [ "Quick Start", "md__api_doc__pages__quick__start.html", null ],
+    [ "Packages", "namespaces.html", [
+      [ "Packages", "namespaces.html", "namespaces_dup" ],
+      [ "Package Functions", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
-    [ "Documentation", "usergroup0.html", [
-      [ "Packages", "namespaces.html", [
-        [ "Namespaces", "namespaces.html", "namespaces_dup" ],
-        [ "Package Functions", "namespacemembers.html", [
-          [ "All", "namespacemembers.html", null ],
-          [ "Enumerations", "namespacemembers_enum.html", null ]
-        ] ]
-      ] ],
-      [ "Class List", "annotated.html", [
-        [ "Namespaces", "annotated.html", "annotated_dup" ]
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Properties", "functions_prop.html", null ],
+        [ "Events", "functions_evnt.html", null ]
       ] ]
     ] ]
   ] ]
