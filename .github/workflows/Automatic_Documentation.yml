@@ -29,4 +29,12 @@ jobs:
       
     - name: Build Doc
       run: D:/a/Alis/Alis/ApiDoc/Doxygen/run/doxygen D:/a/Alis/Alis/ApiDoc/ApiDoc
+    
+    - name: Update web
+      uses: EndBug/add-and-commit@v6 
+      with:
+        author_name: Automatic_Documentation
+        author_email: pabloperdomofalcon@gmail.com
+        message: 'Automatic commit of action'
+        add: ':/a/Alis/Alis/docs/*'
         
