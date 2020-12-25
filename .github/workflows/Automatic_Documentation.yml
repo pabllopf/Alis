@@ -22,7 +22,7 @@ jobs:
         key: ${{ runner.os }}-doc
       
     - name: Change Directory 
-      run: cd D:/a/Alis/ApiDoc
+      run: cd D:/a/Alis/Alis/ApiDoc
       
     - name: Show Directory 
       run: dir
