@@ -31,13 +31,9 @@ git push origin :refs/tags/12345
 
 
 ## Actions 
-![Platform_Compatibility](https://github.com/pabllopf/Alis/workflows/Platform_Compatibility/badge.svg)
-![Discover_Vulnerabilities](https://github.com/pabllopf/Alis/workflows/Discover_Vulnerabilities/badge.svg)
-![Automatic_Documentation](https://github.com/pabllopf/Alis/workflows/Automatic_Documentation/badge.svg)
+| Action | Description | Run on | Status |
+| --- | --- | --- | --- |
+| Platform Compatibility | Run the framework on different platforms to verify that it is still multiplatform. | Commit(master) | ![Platform_Compatibility](https://github.com/pabllopf/Alis/workflows/Platform_Compatibility/badge.svg) |
+| Discover Vulnerabilities | Analyze vulnerabilities in the code | Every day(1:00 am) | ![Discover_Vulnerabilities](https://github.com/pabllopf/Alis/workflows/Discover_Vulnerabilities/badge.svg) |
+| Automatic Documentation | Generates the documentation automatically and publishes it on the web | Every day(2:00 am)  | ![Automatic_Documentation](https://github.com/pabllopf/Alis/workflows/Automatic_Documentation/badge.svg) |
 
-
-
-TAREAS (ACTIONS) QUE SE EJECUTAN EN ESTE REPOSITORIO:
-- [ ] Todas las noches a las 23:00 se lanza la documentación, para tenerlo todo actualizado .
-- [ ] Todas las noches a las 22:00 se lanza los tests.
-- [ ] Cada vez que se sube un commit a la rama master se lanzan las comprobaciones de plafaforma.
