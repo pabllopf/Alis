@@ -25,6 +25,7 @@
 var NAVTREE =
 [
   [ "Alis Framework", "index.html", [
+    [ "Instalation", "md__api_doc__pages__instalation.html", null ],
     [ "Quick Start", "md__api_doc__pages__quick__start.html", null ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
