@@ -31,9 +31,9 @@ git push origin :refs/tags/12345
 
 
 ## Actions 
-| Action | Description | Execution period | Status |
-| --- | --- | --- | --- |
-| Platform Compatibility | Run the framework on different platforms to verify that it is still multiplatform. | Commit(master) | ![Platform_Compatibility](https://github.com/pabllopf/Alis/workflows/Platform_Compatibility/badge.svg) |
-| Discover Vulnerabilities | Analyze vulnerabilities in the code | Every day(1:00 am) | ![Discover_Vulnerabilities](https://github.com/pabllopf/Alis/workflows/Discover_Vulnerabilities/badge.svg) |
-| Automatic Documentation | Generates the documentation automatically and publishes it on the web | Every day(2:00 am)  | ![Automatic_Documentation](https://github.com/pabllopf/Alis/workflows/Automatic_Documentation/badge.svg) |
+| Action | Description | Run On | Status |
+| --- | --- | ---- | --- |
+| Platform Compatibility | Run the framework on different platforms to verify that it is still multiplatform. | Commit at master | ![Platform_Compatibility](https://github.com/pabllopf/Alis/workflows/Platform_Compatibility/badge.svg) |
+| Discover Vulnerabilities | Analyze vulnerabilities in the code | Every day at 1:00 am | ![Discover_Vulnerabilities](https://github.com/pabllopf/Alis/workflows/Discover_Vulnerabilities/badge.svg) |
+| Automatic Documentation | Generates the documentation automatically and publishes it on the web | Every day at 2:00 am | ![Automatic_Documentation](https://github.com/pabllopf/Alis/workflows/Automatic_Documentation/badge.svg) |
 
