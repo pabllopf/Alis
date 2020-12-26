@@ -10,7 +10,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  Testting_Project:
+  Test:
     # The type of runner that the job will run on
     runs-on: windows-latest
 
@@ -23,7 +23,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '2.0.x'
+          dotnet-version: '2.1.x'
         
       - name: Cache_Test
         id: cache-test
