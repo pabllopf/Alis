@@ -20,8 +20,12 @@
 | Action | Description | Run On | Status |
 | --- | --- | ---- | --- |
 | Platform Compatibility | Run the framework on different platforms to verify that it is still multiplatform. | Commit at master | ![Platform_Compatibility](https://github.com/pabllopf/Alis/workflows/Platform_Compatibility/badge.svg) |
+| Unit Tests| Run the test module to verify that everything works correctly | Commit at master | ![Unit_Tests](https://github.com/pabllopf/Alis/workflows/Unit_Tests/badge.svg) |
 | Discover Vulnerabilities | Analyze vulnerabilities in the code | Every day at 1:00 am | ![Discover_Vulnerabilities](https://github.com/pabllopf/Alis/workflows/Discover_Vulnerabilities/badge.svg) |
 | Automatic Documentation | Generates the documentation automatically and publishes it on the web | Every day at 2:00 am | ![Automatic_Documentation](https://github.com/pabllopf/Alis/workflows/Automatic_Documentation/badge.svg) |
+
+
+
 
 ## Cross Platform
 [![Editor](https://shields.io/badge/Editor-Windows%20%7C%20MacOS%20%7C%20Linux-%23989898)]()

@@ -1,0 +1,40 @@
+# Run test of the framework.
+name: Unit_Tests
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  Testting_Project:
+    # The type of runner that the job will run on
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '2.0.x'
+        
+      - name: Cache_Test
+        id: cache-test
+        uses: actions/cache@v2
+        with:
+          path: temp-test
+          key: ${{ runner.os }}-test
+      
+      - name: Restore dependencies
+        run: dotnet restore 
+      - name: Build
+        run: dotnet build  --configuration Release --no-restore
+      - name: Run Test
+        run: dotnet test

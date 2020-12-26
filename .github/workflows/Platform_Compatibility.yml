@@ -25,7 +25,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.x'
+          dotnet-version: '2.0.x'
       - name: Cache_Ubuntu
         id: cache-ubuntu
         uses: actions/cache@v2
@@ -54,7 +54,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.x'
+          dotnet-version: '2.0.x'
       - name: Cache_Windows
         id: cache-windows
         uses: actions/cache@v2
@@ -82,7 +82,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: '5.0.x'
+          dotnet-version: '2.0.x'
       - name: Cache_MacOs
         id: cache-macos
         uses: actions/cache@v2
