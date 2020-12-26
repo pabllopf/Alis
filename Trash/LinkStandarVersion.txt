@@ -1,1 +1,0 @@
-https://dotnet.microsoft.com/platform/dotnet-standard
