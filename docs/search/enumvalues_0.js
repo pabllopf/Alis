@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['closeconsole_1489',['CloseConsole',['../namespace_alis_1_1_editor.html#a6ac63535291e8982daec328c12baf3e1a2bfd4d356302a22daea9385644496255',1,'Alis::Editor']]],
-  ['console_1490',['Console',['../namespace_alis_1_1_editor.html#a8ec957cd5ea386f0a429156f66cc4af8abccaa4aa80831b76c11240a16447975f',1,'Alis::Editor']]]
+  ['closeconsole_1548',['CloseConsole',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca2bfd4d356302a22daea9385644496255',1,'Alis::Editor::UI::Widgets']]],
+  ['console_1549',['Console',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a75c4c1fad37c48ef5ac7a976e95fdfd8abccaa4aa80831b76c11240a16447975f',1,'Alis::Editor::UI::Widgets']]]
 ];

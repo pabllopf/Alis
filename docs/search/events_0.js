@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['eventhandler_1494',['EventHandler',['../class_alis_1_1_editor_1_1_widget_manager.html#a42f6a4c2efa3640012e7fb21e7d11d7c',1,'Alis::Editor::WidgetManager']]]
+  ['eventhandler_1553',['EventHandler',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a6f448a2be78953dac64b6ec2ee233eef',1,'Alis::Editor::UI::Widgets::WidgetManager']]]
 ];

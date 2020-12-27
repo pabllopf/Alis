@@ -26,7 +26,7 @@ jobs:
       run: dir
       
     - name: Build Doc
-      run: D:/a/Alis/Alis/ApiDoc/Doxygen/run/doxygen D:/a/Alis/Alis/ApiDocConfig
+      run: D:/a/Alis/Alis/ApiDoc/Doxygen/doxygen D:/a/Alis/Alis/ApiDocConfig
     
     - name: Update web
       run: |

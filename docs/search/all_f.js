@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['toolbar_733',['ToolBar',['../class_alis_1_1_editor_1_1_tool_bar.html',1,'Alis.Editor.ToolBar'],['../class_alis_1_1_editor_1_1_main_window.html#a747e2c903d585a868f3bdf166b6fb8bd',1,'Alis.Editor.MainWindow.toolbar()'],['../class_alis_1_1_editor_1_1_tool_bar.html#ac9de0f2374ead22fb8e1760c2c1573c3',1,'Alis.Editor.ToolBar.ToolBar()']]],
-  ['topmenu_734',['TopMenu',['../class_alis_1_1_editor_1_1_top_menu.html',1,'Alis.Editor.TopMenu'],['../class_alis_1_1_editor_1_1_top_menu.html#a1510b02021a4874a2f8f3014abd87852',1,'Alis.Editor.TopMenu.TopMenu()'],['../namespace_alis_1_1_editor.html#a8ec957cd5ea386f0a429156f66cc4af8a04501c36095cc454a235520a6ac650b4',1,'Alis.Editor.TopMenu()']]]
+  ['title_749',['Title',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a304862de473de0527983646c2e0c22d2',1,'Alis::Editor::UI::MainWindow']]],
+  ['topmenu_750',['TopMenu',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html',1,'Alis.Editor.UI.Widgets.TopMenu'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aa7f0b295b5d94725c9ff40fe7bbe0b5d',1,'Alis.Editor.UI.Widgets.TopMenu.TopMenu()'],['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a75c4c1fad37c48ef5ac7a976e95fdfd8a04501c36095cc454a235520a6ac650b4',1,'Alis.Editor.UI.Widgets.TopMenu()']]]
 ];

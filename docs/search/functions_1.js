@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['bottommenu_762',['BottomMenu',['../class_alis_1_1_editor_1_1_bottom_menu.html#a1fbecb2fc668ff5675a22536d45a7693',1,'Alis::Editor::BottomMenu']]]
+  ['bottommenu_792',['BottomMenu',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#a15019ef72174143bb23447d7643d1395',1,'Alis::Editor::UI::Widgets::BottomMenu']]]
 ];

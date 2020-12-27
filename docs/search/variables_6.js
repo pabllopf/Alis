@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['name_1479',['name',['../class_alis_1_1_editor_1_1_console.html#ad0bd8e685f7bc54249703cef3ea4f868',1,'Alis.Editor.Console.name()'],['../class_alis_1_1_editor_1_1_top_menu.html#ab8ac40795ba18073050878aac590257b',1,'Alis.Editor.TopMenu.name()']]]
+  ['graphicsdevice_840',['graphicsDevice',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ac8b67979ab6787bbb3b025725e529354',1,'Alis::Editor::UI::MainWindow']]],
+  ['graphicsdeviceoptions_841',['graphicsDeviceOptions',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6157372611fce4ab3c7e14857b91117c',1,'Alis::Editor::UI::MainWindow']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['toolbar_1483',['toolbar',['../class_alis_1_1_editor_1_1_main_window.html#a747e2c903d585a868f3bdf166b6fb8bd',1,'Alis::Editor::MainWindow']]]
+  ['log_1520',['log',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111',1,'Alis::Editor::UI::Widgets::Console']]]
 ];

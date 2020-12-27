@@ -1,8 +1,19 @@
 var searchData=
 [
-  ['widget_737',['Widget',['../class_alis_1_1_editor_1_1_widget.html',1,'Alis::Editor']]],
-  ['widgetevents_738',['widgetEvents',['../class_alis_1_1_editor_1_1_widget_manager.html#a8122f4cae59bd5b66d88f0412f213ef3',1,'Alis::Editor::WidgetManager']]],
-  ['widgetmanager_739',['WidgetManager',['../class_alis_1_1_editor_1_1_widget_manager.html',1,'Alis.Editor.WidgetManager'],['../class_alis_1_1_editor_1_1_widget_manager.html#abe80632ceecb797ba73f06541388a764',1,'Alis.Editor.WidgetManager.WidgetManager()']]],
-  ['widgets_740',['widgets',['../class_alis_1_1_editor_1_1_widget_manager.html#a4980679f922ca12b0bd9d1cc2a0666c4',1,'Alis::Editor::WidgetManager']]],
-  ['widgettype_741',['WidgetType',['../namespace_alis_1_1_editor.html#a8ec957cd5ea386f0a429156f66cc4af8',1,'Alis::Editor']]]
+  ['warning_754',['Warning',['../class_alis_1_1_editor_1_1_utils_1_1_debug.html#a1445435cf88e1c01ac36d2a73144b07e',1,'Alis::Editor::Utils::Debug']]],
+  ['widget_755',['Widget',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html',1,'Alis::Editor::UI::Widgets']]],
+  ['widgetevents_756',['widgetEvents',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a1348dcf70d1513e8994c324c21b87384',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
+  ['widgetmanager_757',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html',1,'Alis.Editor.UI.Widgets.WidgetManager'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af96d9b68cd7f4e15d96b67e6aa53a01a',1,'Alis.Editor.UI.MainWindow.widgetManager()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a348bb47bcb3bd3cf1fe64ccc193c4aec',1,'Alis.Editor.UI.Widgets.WidgetManager.WidgetManager()']]],
+  ['widgets_758',['widgets',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#ac9f2117e6d4103039e0a3b8a208a525a',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
+  ['widgettype_759',['WidgetType',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a75c4c1fad37c48ef5ac7a976e95fdfd8',1,'Alis::Editor::UI::Widgets']]],
+  ['window_760',['window',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#aef3852a2c040d8f72cf0759c673e1fec',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fclosed_761',['Window_Closed',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a7db139bec0841f028ca2a2488eeb668e',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fclosing_762',['Window_Closing',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a09ba700e6cf0125116b832220eaa673c',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fmoved_763',['Window_Moved',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad57b10d88f3d99a35b081d55e58234bf',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fresized_764',['Window_Resized',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a24e29ff5d83bcacb90d18536fdc5d6ce',1,'Alis::Editor::UI::MainWindow']]],
+  ['windowcreateinfo_765',['windowCreateInfo',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a9e61ecb09bbfe1b238f4c06c019143ae',1,'Alis::Editor::UI::MainWindow']]],
+  ['windowflags_766',['windowFlags',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#a7c05c50d5dd60b8874c6dc567d6d2ab5',1,'Alis.Editor.UI.Widgets.BottomMenu.windowFlags()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a7fe91324e029577943ce8b2e9ffd6252',1,'Alis.Editor.UI.Widgets.DockSpace.windowFlags()']]],
+  ['windowpos_767',['windowPos',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a00171c6b5cb98188869d9bcb0e3b8e1d',1,'Alis::Editor::UI::Widgets::DockSpace']]],
+  ['windowsize_768',['windowSize',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#af4d397792aa86b71b8c670c1f4534ce7',1,'Alis::Editor::UI::Widgets::DockSpace']]],
+  ['windowstate_769',['windowState',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8e4aa438dc885ab957ff565260c85d6d',1,'Alis::Editor::UI::MainWindow']]]
 ];

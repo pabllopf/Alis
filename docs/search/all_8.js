@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['loadfont_712',['LoadFont',['../class_alis_1_1_editor_1_1_main_window.html#a0e28773fcc0052f9cf6907a5250be710',1,'Alis::Editor::MainWindow']]],
-  ['loadstyle_713',['LoadStyle',['../class_alis_1_1_editor_1_1_main_window.html#abeb81e192ef7f043bc7be3cdf5af6583',1,'Alis::Editor::MainWindow']]],
-  ['log_714',['Log',['../class_alis_1_1_core_1_1_debug.html#a8be11ac847455cbb897ca895a6602c9e',1,'Alis.Core.Debug.Log()'],['../class_alis_1_1_editor_1_1_console.html#a60ffb14baa97c7a500a9c851cd5261db',1,'Alis.Editor.Console.log()']]]
+  ['loadstyle_721',['LoadStyle',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8cc1fb41c39355559a7611b60442c31b',1,'Alis::Editor::UI::MainWindow']]],
+  ['log_722',['Log',['../class_alis_1_1_editor_1_1_utils_1_1_debug.html#a20c05fa373393c0f4b3febacf5335737',1,'Alis.Editor.Utils.Debug.Log()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111',1,'Alis.Editor.UI.Widgets.Console.log()']]]
 ];

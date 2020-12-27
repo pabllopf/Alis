@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['pathexample_723',['pathExample',['../class_alis_1_1_editor_1_1_assets_manager.html#ae0382fbee799ca59d5b1c6c72c2791c2',1,'Alis::Editor::AssetsManager']]],
-  ['pathfolders_724',['pathFolders',['../class_alis_1_1_editor_1_1_assets_manager.html#af3d8e1d1d7761b93e4a412bc1d1aa143',1,'Alis::Editor::AssetsManager']]],
-  ['pendingevents_725',['pendingEvents',['../class_alis_1_1_editor_1_1_widget_manager.html#a010796703825dd3389c8f0aa35c8ab65',1,'Alis::Editor::WidgetManager']]],
-  ['processcloseconsole_726',['ProcessCloseConsole',['../class_alis_1_1_editor_1_1_widget_manager.html#a6cdc0ee407ad72f230de1ff301fe5c3b',1,'Alis::Editor::WidgetManager']]],
-  ['processopenconsole_727',['ProcessOpenConsole',['../class_alis_1_1_editor_1_1_widget_manager.html#ad7492cbbc98bb878e8a4f7954011d186',1,'Alis::Editor::WidgetManager']]],
-  ['program_728',['Program',['../class_alis_1_1_editor_1_1_program.html',1,'Alis::Editor']]]
+  ['pathexample_732',['pathExample',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a2c6b618eb8363995b709ceffec16de82',1,'Alis::Editor::UI::Widgets::AssetsManager']]],
+  ['pathfolders_733',['pathFolders',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c',1,'Alis::Editor::UI::Widgets::AssetsManager']]],
+  ['pendingevents_734',['pendingEvents',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a391fa42549ba0857d50ff66f24da2e18',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
+  ['processcloseconsole_735',['ProcessCloseConsole',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a7d7fe5b15cc265b6c61e3bb1a03fe101',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
+  ['processopenconsole_736',['ProcessOpenConsole',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a3a60808bfe09f69e76d31b29c13c27f1',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
+  ['program_737',['Program',['../class_alis_1_1_editor_1_1_program.html',1,'Alis::Editor']]]
 ];
