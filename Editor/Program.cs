@@ -11,7 +11,7 @@ namespace Alis.Editor
     {
         /// <summary>Mains the specified arguments.</summary>
         /// <param name="args">The arguments.</param>
-        /// <returns>Return 0 or -1 to indicate the exit value.</returns>
+        /// <returns>Return -1 or 0</returns>
         [STAThread]
         public static int Main(string[] args) => new Engine(args).Start();
     }

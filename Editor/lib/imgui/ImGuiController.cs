@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using Veldrid.Sdl2;
 using System.Runtime.InteropServices;
 using Alis.Editor;
+using Alis.Editor.Utils;
 
 namespace ImGuiNET
 {

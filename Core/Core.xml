@@ -4,18 +4,5 @@
         <name>Core</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Debug">
-            <summary>
-              <br />
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Debug.Log(System.String)">
-            <summary>Logs the specified message.</summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:Alis.Core.Debug.Error(System.String)">
-            <summary>Errors the specified message.</summary>
-            <param name="message">The message.</param>
-        </member>
     </members>
 </doc>
