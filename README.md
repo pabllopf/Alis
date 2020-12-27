@@ -36,12 +36,13 @@
 
 ## Dependencies
 ### Editor
-
+Imgui
 
 ### Core
+SFML
 
 ### Tools
 
 
 ### Documentation
-
+DOXIGEN
