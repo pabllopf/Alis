@@ -33,7 +33,7 @@ namespace Alis.Editor.UI
         #region VeldridComponents
 
         /// <summary>The window</summary>
-        private static Veldrid.Sdl2.Sdl2Window window;
+        private Veldrid.Sdl2.Sdl2Window window;
 
         /// <summary>The window create information</summary>
         private WindowCreateInfo windowCreateInfo;
@@ -142,7 +142,7 @@ namespace Alis.Editor.UI
 
             controller = new ImGuiController(
             gd: graphicsDevice,
-            window,
+            window: window,
             outputDescription: graphicsDevice.MainSwapchain.Framebuffer.OutputDescription,
             width: window.Width,
             height: window.Height);
