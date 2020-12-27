@@ -13,7 +13,7 @@ namespace Alis.Editor.UI
     using Veldrid.StartupUtilities;
 
     /// <summary>Manage the main window.</summary>
-    internal class MainWindow
+    public class MainWindow
     {
         /// <summary>The title</summary>
         private const string Title = "Alis";
