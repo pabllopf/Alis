@@ -30,16 +30,8 @@
 
 ## Cross Platform
 [![Editor](https://shields.io/badge/Editor-Windows%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
-
-Include a user interface to control better the framework.
-
 [![Core](https://shields.io/badge/Core-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
-
-Include the adapters for render.
-
 [![Tools](https://shields.io/badge/Tools-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
-
-Include the main tools.
 
 
 ## Dependencies
