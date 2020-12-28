@@ -29,6 +29,10 @@ namespace Alis.Editor.UI.Widgets
             EventHandler += ManageEventHandler;
             widgets.Add(new DockSpace(EventHandler));
             widgets.Add(new TopMenu(EventHandler));
+            widgets.Add(new BottomMenu(EventHandler));
+            widgets.Add(new Inspector());
+            widgets.Add(new SceneView());
+            widgets.Add(new AssetsManager());
         }
 
         /// <summary>Occurs when [event handler].</summary>

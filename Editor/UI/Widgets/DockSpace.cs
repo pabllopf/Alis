@@ -74,7 +74,7 @@ namespace Alis.Editor.UI.Widgets
         public override void Draw()
         {
             windowPos = viewportPtr.Pos + extraWindowPos;
-            windowSize = viewportPtr.Size + extraWindowSize;
+            windowSize = viewportPtr.Size - extraWindowSize;
 
             ImGui.SetNextWindowPos(windowPos);
             ImGui.SetNextWindowSize(windowSize);

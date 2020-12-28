@@ -201,6 +201,8 @@ namespace Alis.Editor.UI
                 controller.Update(deltaSeconds, snapshot);
                 widgetManager.Update();
 
+                ImGui.ShowDemoWindow();
+
                 commandList.Begin();
                 commandList.SetFramebuffer(graphicsDevice.MainSwapchain.Framebuffer);
                 commandList.ClearColorTarget(0, clearColor);

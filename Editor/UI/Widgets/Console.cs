@@ -87,13 +87,15 @@ namespace Alis.Editor.UI.Widgets
                 return;
             }
 
+            
+
             if (ImGui.Begin("Console", ref isOpen))
             {
-                ImGui.SameLine();
+                //ImGui.SameLine();
 
-                filterPtr.Draw(Icon.SEARCH + "", -100.0f);
+                //filterPtr.Draw(Icon.SEARCH + "", -100.0f);
 
-                ImGui.SameLine();
+                //ImGui.SameLine();
 
                 if (ImGui.Button(Icon.TRASH + " Clean"))
                 {
