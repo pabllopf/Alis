@@ -10,12 +10,7 @@
 
 > Develop the video games of your dreams.
 
-## General Public License v3.0
-> Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.    
 
-[![License](https://github.com/pabllopf/Alis/blob/main/docs/resources/license/License.png)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
-
-[![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
 
 ## Actions 
 | Action | Description | Run On | Status |
@@ -32,7 +27,6 @@
 [![Editor](https://shields.io/badge/Editor-Windows%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
 [![Core](https://shields.io/badge/Core-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
 [![Tools](https://shields.io/badge/Tools-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
-
 
 ## Dependencies
 ### Editor
@@ -58,12 +52,25 @@ SFML provides a simple interface to the various components of your PC, to ease t
 
 ### Tools
 
-
 ### Documentation with Doxygen
 Generate documentation from source code
 Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL and to some extent D.
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://www.doxygen.nl/index.html)
+
+
+## General Public License v3.0
+> Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works and modifications, which include larger works using a licensed work, under the same license. Copyright and license notices must be preserved. Contributors provide an express grant of patent rights.    
+
+[![License](https://github.com/pabllopf/Alis/blob/main/docs/resources/license/License.png)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
+
+[![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
+
+## Contributor Covenant Code of Conduct
+
+In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
+
+[![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/CODE_OF_CONDUCT.md)
 
 
 
