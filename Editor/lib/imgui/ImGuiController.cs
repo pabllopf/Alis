@@ -93,7 +93,7 @@ namespace ImGuiNET
             config.MergeMode = true;
             config.GlyphMinAdvanceX = 13.0f;
 
-            GCHandle rangeHandle = GCHandle.Alloc(new ushort[] { Icon.ICON_MIN_FA, Icon.ICON_MAX_FA, 0 }, GCHandleType.Pinned);
+            GCHandle rangeHandle = GCHandle.Alloc(new ushort[] { Icon.ICONMINFA, Icon.ICONMAXFA, 0 }, GCHandleType.Pinned);
 
             
 
@@ -155,7 +155,7 @@ namespace ImGuiNET
 
         private void CreateWindow(ImGuiViewportPtr vp)
         {
-            VeldridImGuiWindow window = new VeldridImGuiWindow(_gd, vp);
+            _ = new VeldridImGuiWindow(_gd, vp);
         }
 
         private void DestroyWindow(ImGuiViewportPtr vp)

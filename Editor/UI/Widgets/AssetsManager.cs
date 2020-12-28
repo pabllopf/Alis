@@ -59,7 +59,7 @@ namespace Alis.Editor.UI.Widgets
 
                 ImGui.PopStyleVar();
 
-                filter.Draw(Icon.ICON_FA_SEARCH + string.Empty, ImGui.GetContentRegionAvail().X - 20.0f);
+                filter.Draw(Icon.SEARCH + string.Empty, ImGui.GetContentRegionAvail().X - 20.0f);
 
                 ImGui.Separator();
 
@@ -121,14 +121,11 @@ namespace Alis.Editor.UI.Widgets
         private List<string> GetPathList(string path)
         {
             pathFolders.Clear();
-
-            string directoryName = string.Empty;
-
             string[] folders = path.Split("/");
 
             for (int i = 0; i < folders.Length - 1; i++)
             {
-                directoryName = folders[i];
+                string directoryName = folders[i];
                 pathFolders.Add(directoryName);
             }
 

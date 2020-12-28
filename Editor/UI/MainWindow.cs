@@ -169,7 +169,7 @@ namespace Alis.Editor.UI
             Debug.Log(" > Created Event window.Closing: (" + "Func: " + "Window_Closing" + ")");
 
             window.Moved += Window_Moved;
-            Debug.Log(" > Created Event  window.Moved: (" + "Func: " + "Window_Moved" + ")");
+            Debug.Log(" > Created Event window.Moved: (" + "Func: " + "Window_Moved" + ")");
 
             widgetManager = new WidgetManager();
             Debug.Log(" > Created widgetManager.");

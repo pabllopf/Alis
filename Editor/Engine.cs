@@ -12,9 +12,6 @@ namespace Alis.Editor
     /// <summary>Manage the engine</summary>
     internal class Engine
     {
-        /// <summary>The arguments</summary>
-        private readonly string[] args;
-
         /// <summary>The main window</summary>
         private MainWindow mainWindow;
 
@@ -22,7 +19,6 @@ namespace Alis.Editor
         /// <param name="args">The arguments.</param>
         public Engine(string[] args)
         {
-            this.args = args;
             Debug.Log("Starting Alis...");
             Debug.Log(args.Length > 0 ? " > args:" + string.Join("\n", args) : string.Empty);
         }

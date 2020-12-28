@@ -15,7 +15,7 @@ namespace Alis.Editor.UI.Widgets
         private const string Name = "Console";
 
         /// <summary>The filter PTR</summary>
-        private ImGuiTextFilterPtr filterPtr;
+        private readonly ImGuiTextFilterPtr filterPtr;
 
         /// <summary>The is open</summary>
         private bool isOpen;
@@ -23,8 +23,11 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The log</summary>
         private List<string> log = new List<string>();
 
+        /// <summary>The event handler</summary>
         private EventHandler<EventType> eventHandler;
 
+        /// <summary>Initializes a new instance of the <see cref="Console" /> class.</summary>
+        /// <param name="eventHandler">The event handler.</param>
         public Console(EventHandler<EventType> eventHandler) 
         {
             this.eventHandler = eventHandler;
@@ -33,7 +36,7 @@ namespace Alis.Editor.UI.Widgets
             unsafe
             {
                 ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
-                filterPtr = new ImGuiTextFilterPtr(filterPtr);
+                _ = new ImGuiTextFilterPtr(filterPtr);
             }
         }
 
@@ -45,7 +48,7 @@ namespace Alis.Editor.UI.Widgets
             unsafe 
             {
                 ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
-                filterPtr = new ImGuiTextFilterPtr(filterPtr);
+                _ = new ImGuiTextFilterPtr(filterPtr);
             }
         }
 
@@ -86,7 +89,13 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin("Console", ref isOpen))
             {
-                if (ImGui.Button(Icon.ICON_FA_TRASH + " Clean"))
+                ImGui.SameLine();
+
+                filterPtr.Draw(Icon.SEARCH + "", -100.0f);
+
+                ImGui.SameLine();
+
+                if (ImGui.Button(Icon.TRASH + " Clean"))
                 {
                     Clear();
                     return;
@@ -95,8 +104,6 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.End();
         }
-
-        
     }
 }
 
