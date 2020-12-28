@@ -15,7 +15,7 @@
 
 [![License](https://github.com/pabllopf/Alis/blob/main/docs/resources/license/License.png)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
 
-[![](https://github.com/pabllopf/Alis/blob/main/docs/resources/buttons/ReadMore.png)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
+[![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
 
 ## Actions 
 | Action | Description | Run On | Status |
@@ -43,18 +43,18 @@ Dear ImGui is designed to enable fast iterations and to empower programmers to c
 
 Dear ImGui is particularly suited to integration in games engine (for tooling), real-time 3D applications, fullscreen applications, embedded applications, or any applications on consoles platforms where operating system features are non-standard.
 
-[![](https://img.shields.io/badge/Read%20More-Click-blue)](https://github.com/ocornut/imgui)
+[![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/ocornut/imgui)
 
 #### Veldrid 
 Veldrid is a low-level graphics library for .NET. It can be used to create high-performance 2D and 3D games, simulations, tools, and other graphical applications. Unlike most other .NET graphics libraries, Veldrid is designed to be portable, meaning it is not tied to any particular operating system or native graphics API. With Direct3D, Vulkan, Metal, OpenGL, and OpenGL ES backends, applications built with Veldrid can run on all desktop and mobile platforms without modification.
 
-[![](https://img.shields.io/badge/Read%20More-Click-blue)](https://veldrid.dev/)
+[![](https://img.shields.io/badge/Read%20More--blue)](https://veldrid.dev/)
 
 ### Core
 #### Render 2D with SFML
 SFML provides a simple interface to the various components of your PC, to ease the development of games and multimedia applications. It is composed of five modules: system, window, graphics, audio and network.
 
-[![](https://img.shields.io/badge/Read%20More-Click-blue)](https://www.sfml-dev.org/)
+[![](https://img.shields.io/badge/Read%20More--blue)](https://www.sfml-dev.org/)
 
 ### Tools
 
@@ -63,7 +63,7 @@ SFML provides a simple interface to the various components of your PC, to ease t
 Generate documentation from source code
 Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL and to some extent D.
 
-[![](https://img.shields.io/badge/Read%20More-Click-blue)](https://www.doxygen.nl/index.html)
+[![](https://img.shields.io/badge/Read%20More--blue)](https://www.doxygen.nl/index.html)
 
 
 
