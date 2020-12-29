@@ -4,7 +4,9 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
+    <RuntimeIdentifiers>win10-x64;osx.10.12-x64</RuntimeIdentifiers>
   </PropertyGroup>
+ 
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
