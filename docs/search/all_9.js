@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['main_723',['Main',['../class_alis_1_1_editor_1_1_program.html#a9fb796180095303519fc9195869be1bf',1,'Alis::Editor::Program']]],
-  ['mainwindow_724',['MainWindow',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html',1,'Alis.Editor.UI.MainWindow'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6dc10e9a6782cf94dc3efdcb5fb0e592',1,'Alis.Editor.UI.MainWindow.MainWindow()'],['../class_alis_1_1_editor_1_1_engine.html#af525cb3438223bd0328552c1c10adabb',1,'Alis.Editor.Engine.mainWindow()']]],
-  ['manageeventhandler_725',['ManageEventHandler',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#ae1927fdea1e5a25e0428c35fd1e18aed',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
-  ['memoryeditor_726',['memoryEditor',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afd71c3c6a55d10c9ad607373a37ce529',1,'Alis::Editor::UI::MainWindow']]]
+  ['joomla_381',['JOOMLA',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6cedebf4ea403d01706bdd9081b35452',1,'Alis::Editor::Utils::Icon']]],
+  ['jpy_382',['JPY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a61f219d4a369c6bfd6e4fa0e1a283159',1,'Alis::Editor::Utils::Icon']]],
+  ['jsfiddle_383',['JSFIDDLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aabe8fd0887209dd4a70d326ef37e2d53',1,'Alis::Editor::Utils::Icon']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['mainwindow_1521',['mainWindow',['../class_alis_1_1_editor_1_1_engine.html#af525cb3438223bd0328552c1c10adabb',1,'Alis::Editor::Engine']]],
-  ['memoryeditor_1522',['memoryEditor',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afd71c3c6a55d10c9ad607373a37ce529',1,'Alis::Editor::UI::MainWindow']]]
+  ['joomla_1178',['JOOMLA',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6cedebf4ea403d01706bdd9081b35452',1,'Alis::Editor::Utils::Icon']]],
+  ['jpy_1179',['JPY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a61f219d4a369c6bfd6e4fa0e1a283159',1,'Alis::Editor::Utils::Icon']]],
+  ['jsfiddle_1180',['JSFIDDLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aabe8fd0887209dd4a70d326ef37e2d53',1,'Alis::Editor::Utils::Icon']]]
 ];

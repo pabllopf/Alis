@@ -151,7 +151,7 @@ $(document).ready(function(){initNavTree('_assets_manager_8cs_source.html',''); 
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                ImGui.PopStyleVar();</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ad3c8d80dd799e087348df6a3efec2c37">filter</a>.Draw(<a class="code" href="class_alis_1_1_editor_1_1_utils_1_1_icon.html">Icon</a>.<a class="code" href="class_alis_1_1_editor_1_1_utils_1_1_icon.html#a86762f2230ed22dced5237eb4ddbe700">ICON_FA_SEARCH</a> + <span class="keywordtype">string</span>.Empty, ImGui.GetContentRegionAvail().X - 20.0f);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ad3c8d80dd799e087348df6a3efec2c37">filter</a>.Draw(<a class="code" href="class_alis_1_1_editor_1_1_utils_1_1_icon.html">Icon</a>.<a class="code" href="class_alis_1_1_editor_1_1_utils_1_1_icon.html#a8038ba5e867bfb0add666d1d52935009">SEARCH</a> + <span class="keywordtype">string</span>.Empty, ImGui.GetContentRegionAvail().X - 20.0f);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                ImGui.Separator();</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
@@ -206,24 +206,20 @@ $(document).ready(function(){initNavTree('_assets_manager_8cs_source.html',''); 
 <div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a1a7b79deb71a5779b9a3f54e07c76bf6">  121</a></span>&#160;        <span class="keyword">private</span> List&lt;string&gt; <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a1a7b79deb71a5779b9a3f54e07c76bf6">GetPathList</a>(<span class="keywordtype">string</span> path)</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c">pathFolders</a>.Clear();</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordtype">string</span> directoryName = <span class="keywordtype">string</span>.Empty;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordtype">string</span>[] folders = path.Split(<span class="stringliteral">&quot;/&quot;</span>);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; folders.Length - 1; i++)</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                directoryName = folders[i];</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c">pathFolders</a>.Add(directoryName);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            }</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c">pathFolders</a>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordtype">string</span>[] folders = path.Split(<span class="stringliteral">&quot;/&quot;</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; folders.Length - 1; i++)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                <span class="keywordtype">string</span> directoryName = folders[i];</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c">pathFolders</a>.Add(directoryName);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c">pathFolders</a>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_icon_html_a86762f2230ed22dced5237eb4ddbe700"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_icon.html#a86762f2230ed22dced5237eb4ddbe700">Alis.Editor.Utils.Icon.ICON_FA_SEARCH</a></div><div class="ttdeci">const string ICON_FA_SEARCH</div><div class="ttdef"><b>Definition:</b> <a href="_icon_8cs_source.html#l00015">Icon.cs:15</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_editor_html"><div class="ttname"><a href="namespace_alis_1_1_editor.html">Alis.Editor</a></div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cs_source.html#l00005">Engine.cs:6</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager_html_a0ea6eabea4956e7109efb81a2f26d64c"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a0ea6eabea4956e7109efb81a2f26d64c">Alis.Editor.UI.Widgets.AssetsManager.Name</a></div><div class="ttdeci">const string Name</div><div class="ttdoc">The name</div><div class="ttdef"><b>Definition:</b> <a href="_assets_manager_8cs_source.html#l00015">AssetsManager.cs:15</a></div></div>
 <div class="ttc" id="anamespace_system_1_1_collections_1_1_generic_html"><div class="ttname"><a href="namespace_system_1_1_collections_1_1_generic.html">Generic</a></div></div>
@@ -237,6 +233,7 @@ $(document).ready(function(){initNavTree('_assets_manager_8cs_source.html',''); 
 <div class="ttc" id="anamespace_alis_html"><div class="ttname"><a href="namespace_alis.html">Alis</a></div><div class="ttdef"><b>Definition:</b> <a href="_engine_8cs_source.html#l00005">Engine.cs:6</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager_html_a4b9fc826751bd3462f8b516214f7908b"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a4b9fc826751bd3462f8b516214f7908b">Alis.Editor.UI.Widgets.AssetsManager.OnLoad</a></div><div class="ttdeci">override void OnLoad()</div><div class="ttdoc">Load this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_manager_8cs_source.html#l00040">AssetsManager.cs:40</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager_html"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html">Alis.Editor.UI.Widgets.AssetsManager</a></div><div class="ttdoc">Manage files of project.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_manager_8cs_source.html#l00012">AssetsManager.cs:13</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_icon_html_a8038ba5e867bfb0add666d1d52935009"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_icon.html#a8038ba5e867bfb0add666d1d52935009">Alis.Editor.Utils.Icon.SEARCH</a></div><div class="ttdeci">const string SEARCH</div><div class="ttdoc">The font icon file name</div><div class="ttdef"><b>Definition:</b> <a href="_icon_8cs_source.html#l00026">Icon.cs:26</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager_html_a2c6b618eb8363995b709ceffec16de82"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a2c6b618eb8363995b709ceffec16de82">Alis.Editor.UI.Widgets.AssetsManager.pathExample</a></div><div class="ttdeci">string pathExample</div><div class="ttdoc">The path example</div><div class="ttdef"><b>Definition:</b> <a href="_assets_manager_8cs_source.html#l00024">AssetsManager.cs:24</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager_html_ad3c8d80dd799e087348df6a3efec2c37"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ad3c8d80dd799e087348df6a3efec2c37">Alis.Editor.UI.Widgets.AssetsManager.filter</a></div><div class="ttdeci">ImGuiTextFilterPtr filter</div><div class="ttdoc">The filter</div><div class="ttdef"><b>Definition:</b> <a href="_assets_manager_8cs_source.html#l00018">AssetsManager.cs:18</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager_html_ade5a074bf106857acf104ab2c7fc6dc9"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ade5a074bf106857acf104ab2c7fc6dc9">Alis.Editor.UI.Widgets.AssetsManager.Open</a></div><div class="ttdeci">override void Open()</div><div class="ttdoc">Opens this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_assets_manager_8cs_source.html#l00109">AssetsManager.cs:109</a></div></div>
@@ -249,7 +246,7 @@ $(document).ready(function(){initNavTree('_assets_manager_8cs_source.html',''); 
   <ul>
     <li class="navelem"><a class="el" href="dir_14eca4e58e6d71e3a9859288c1bd2735.html">Editor</a></li><li class="navelem"><a class="el" href="dir_f7d6d090f0bcfa8a66d7f61ab6a0ceb7.html">UI</a></li><li class="navelem"><a class="el" href="dir_871bb0cc41dc9f6e9396da9418080a4a.html">Widgets</a></li><li class="navelem"><b>AssetsManager.cs</b></li>
     <li class="footer">
-      <a>Generated on | Mon Dec 28 2020 |</a>
+      <a>Generated on | Tue Dec 29 2020 |</a>
     </li>
   </ul>
 </div>

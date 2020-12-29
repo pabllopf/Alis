@@ -1,6 +1,19 @@
 var searchData=
 [
-  ['debug_831',['debug',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afd8006f9d242e758b6dff2e20806f748',1,'Alis::Editor::UI::MainWindow']]],
-  ['deltaseconds_832',['deltaSeconds',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6123a6c059f0285be9e8af2ebf832af8',1,'Alis::Editor::UI::MainWindow']]],
-  ['dockspaceflags_833',['dockspaceFlags',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a5df3c0ee290667f536a58299d7953fb0',1,'Alis::Editor::UI::Widgets::DockSpace']]]
+  ['dashcube_1005',['DASHCUBE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9e09a3c2766f306a8b439dc9d7337310',1,'Alis::Editor::Utils::Icon']]],
+  ['database_1006',['DATABASE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a7c926423405dc87a0e2c334313eae083',1,'Alis::Editor::Utils::Icon']]],
+  ['deaf_1007',['DEAF',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a2023b37dbe4b888325ffb10ed61b1ea0',1,'Alis::Editor::Utils::Icon']]],
+  ['debug_1008',['debug',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afd8006f9d242e758b6dff2e20806f748',1,'Alis::Editor::UI::MainWindow']]],
+  ['delicious_1009',['DELICIOUS',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#af6e36fddfc20f02e55f49b17da87feda',1,'Alis::Editor::Utils::Icon']]],
+  ['deltaseconds_1010',['deltaSeconds',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6123a6c059f0285be9e8af2ebf832af8',1,'Alis::Editor::UI::MainWindow']]],
+  ['desktop_1011',['DESKTOP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a7d547e452b977a33ec6bca5df0cb3fcb',1,'Alis::Editor::Utils::Icon']]],
+  ['deviantart_1012',['DEVIANTART',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a58cd762cfb6e02f4444a3eab12d98451',1,'Alis::Editor::Utils::Icon']]],
+  ['diamond_1013',['DIAMOND',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#af034855c26462004e3529f15618ac3a5',1,'Alis::Editor::Utils::Icon']]],
+  ['digg_1014',['DIGG',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae66a031f8a4a4bdfdc53a96d96ddcb22',1,'Alis::Editor::Utils::Icon']]],
+  ['dockspaceflags_1015',['dockspaceFlags',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a5df3c0ee290667f536a58299d7953fb0',1,'Alis::Editor::UI::Widgets::DockSpace']]],
+  ['dotcircleo_1016',['DOTCIRCLEO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a71fa1087b53c83ed44e2c7e677031a29',1,'Alis::Editor::Utils::Icon']]],
+  ['download_1017',['DOWNLOAD',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ad4a913469bf3ca307faec1ac0de86c48',1,'Alis::Editor::Utils::Icon']]],
+  ['dribbble_1018',['DRIBBBLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a2935839074752e91c992beb16307a4f5',1,'Alis::Editor::Utils::Icon']]],
+  ['dropbox_1019',['DROPBOX',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#abd3fcdf621d8c191773ff58da638ea1b',1,'Alis::Editor::Utils::Icon']]],
+  ['drupal_1020',['DRUPAL',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a00cea875e898dc6434d956f3aea70073',1,'Alis::Editor::Utils::Icon']]]
 ];
