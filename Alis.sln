@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Editor", "Editor\Editor.csproj", "{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Editor", "Editor\Editor.csproj", "{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{69339297-9538-4FDB-9FCD-07C65E50064B}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -17,39 +17,48 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\Unit
 		{69339297-9538-4FDB-9FCD-07C65E50064B} = {69339297-9538-4FDB-9FCD-07C65E50064B}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{8D207422-4CB7-40CF-9531-9B1C29004648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Tools\Tools.csproj", "{8D207422-4CB7-40CF-9531-9B1C29004648}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
 		MacOS|Any CPU = MacOS|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Windows|Any CPU = Windows|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.MacOS|Any CPU.ActiveCfg = MacOS|Any CPU
 		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.MacOS|Any CPU.Build.0 = MacOS|Any CPU
+		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.Windows|Any CPU.ActiveCfg = Windows|Any CPU
+		{77B8DD59-D936-49CD-9459-CAFC36C4B5DC}.Windows|Any CPU.Build.0 = Windows|Any CPU
 		{69339297-9538-4FDB-9FCD-07C65E50064B}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{69339297-9538-4FDB-9FCD-07C65E50064B}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{69339297-9538-4FDB-9FCD-07C65E50064B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{69339297-9538-4FDB-9FCD-07C65E50064B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{69339297-9538-4FDB-9FCD-07C65E50064B}.MacOS|Any CPU.ActiveCfg = MacOS|Any CPU
 		{69339297-9538-4FDB-9FCD-07C65E50064B}.MacOS|Any CPU.Build.0 = MacOS|Any CPU
+		{69339297-9538-4FDB-9FCD-07C65E50064B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69339297-9538-4FDB-9FCD-07C65E50064B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69339297-9538-4FDB-9FCD-07C65E50064B}.Windows|Any CPU.ActiveCfg = Windows|Any CPU
+		{69339297-9538-4FDB-9FCD-07C65E50064B}.Windows|Any CPU.Build.0 = Windows|Any CPU
 		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.Debug|Any CPU.ActiveCfg = Release|Any CPU
 		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.MacOS|Any CPU.ActiveCfg = MacOS|Any CPU
 		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.MacOS|Any CPU.Build.0 = MacOS|Any CPU
+		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.Windows|Any CPU.ActiveCfg = Debug|Any CPU
+		{83B27D75-636B-4F3F-B09C-2A3701CAF504}.Windows|Any CPU.Build.0 = Debug|Any CPU
 		{8D207422-4CB7-40CF-9531-9B1C29004648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8D207422-4CB7-40CF-9531-9B1C29004648}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D207422-4CB7-40CF-9531-9B1C29004648}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D207422-4CB7-40CF-9531-9B1C29004648}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8D207422-4CB7-40CF-9531-9B1C29004648}.MacOS|Any CPU.ActiveCfg = MacOS|Any CPU
 		{8D207422-4CB7-40CF-9531-9B1C29004648}.MacOS|Any CPU.Build.0 = MacOS|Any CPU
+		{8D207422-4CB7-40CF-9531-9B1C29004648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D207422-4CB7-40CF-9531-9B1C29004648}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D207422-4CB7-40CF-9531-9B1C29004648}.Windows|Any CPU.ActiveCfg = Release|Any CPU
+		{8D207422-4CB7-40CF-9531-9B1C29004648}.Windows|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

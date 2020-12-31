@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
+    <Configurations>Debug;Release;Windows</Configurations>
     
   </PropertyGroup>
  
@@ -18,6 +19,16 @@
     <DebugType></DebugType>
         <RuntimeIdentifiers>win10-x64;osx.10.12-x64</RuntimeIdentifiers>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+     <DebugType></DebugType>
+    <RuntimeIdentifiers>win10-x64;</RuntimeIdentifiers>
+  </PropertyGroup>
+  
+   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+    <Exec Command="dotnet publish  /p:PublishProfile=WindowsX64 --no-build" />
+  </Target>
   
     
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">

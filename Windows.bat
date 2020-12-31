@@ -1,0 +1,1 @@
+dotnet publish ./Editor/Editor.csproj /p:PublishProfile=WindowsX64 --no-build
