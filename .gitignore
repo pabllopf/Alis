@@ -9,7 +9,7 @@
 /**/[Bb]uild/**
 /**/_/**
 
-
+*.DS_Store
 *.suo
 *.tmp
 *.user
