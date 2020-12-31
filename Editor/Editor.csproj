@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
-    <RuntimeIdentifiers>win10-x64;osx.10.12-x64</RuntimeIdentifiers>
+    
   </PropertyGroup>
  
 
@@ -15,11 +15,26 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType></DebugType>
+        <RuntimeIdentifiers>win10-x64;osx.10.12-x64</RuntimeIdentifiers>
   </PropertyGroup>
   
     
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
-     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+     <RuntimeIdentifiers>osx.10.12-x64</RuntimeIdentifiers>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+     <DebugType></DebugType>
+     <Optimize>true</Optimize>
+     <DocumentationFile>bin\MacOS\netcoreapp3.1\Editor.xml</DocumentationFile>
+     <CustomCommands>
+       <CustomCommands>
+         <Command>
+           <type>AfterBuild</type>
+           <command>${SolutionDir}/MacOSAPP.sh</command>
+           <workingdir>${SolutionDir}</workingdir>
+         </Command>
+       </CustomCommands>
+     </CustomCommands>
   </PropertyGroup>
  
     
