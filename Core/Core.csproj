@@ -5,13 +5,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core\Core.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core\Core.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
+  </PropertyGroup>
+    
+    
   <ItemGroup>
     <PackageReference Include="SFML.Audio" Version="2.5.0" />
     <PackageReference Include="SFML.Graphics" Version="2.5.0" />
