@@ -4,10 +4,10 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
+    using Alis.Editor.Utils;
+    using ImGuiNET;
     using System;
     using System.Collections.Generic;
-    using ImGuiNET;
-    using Alis.Editor.Utils;
 
     /// <summary>Console widget </summary>
     public class Console : Widget
@@ -28,7 +28,7 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>Initializes a new instance of the <see cref="Console" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
-        public Console(EventHandler<EventType> eventHandler) 
+        public Console(EventHandler<EventType> eventHandler)
         {
             this.eventHandler = eventHandler;
             isOpen = true;
@@ -41,11 +41,11 @@ namespace Alis.Editor.UI.Widgets
         }
 
         /// <summary>Initializes a new instance of the <see cref="Console" /> class.</summary>
-        public Console(bool isOpen) 
+        public Console(bool isOpen)
         {
             this.isOpen = isOpen;
 
-            unsafe 
+            unsafe
             {
                 ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
                 _ = new ImGuiTextFilterPtr(filterPtr);
@@ -54,7 +54,7 @@ namespace Alis.Editor.UI.Widgets
 
 
         /// <summary>Clears this instance.</summary>
-        public void Clear() 
+        public void Clear()
         {
             log.Clear();
         }
@@ -81,13 +81,13 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-            if (!isOpen) 
+            if (!isOpen)
             {
                 eventHandler?.Invoke(this, EventType.CloseConsole);
                 return;
             }
 
-            
+
 
             if (ImGui.Begin("Console", ref isOpen))
             {

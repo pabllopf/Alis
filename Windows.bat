@@ -1,1 +1,1 @@
-dotnet publish ./Editor/Editor.csproj /p:PublishProfile=WindowsX64 --no-build
+dotnet publish --runtime win-x64 -c Windows --no-build -p:PublishSingleFile=true -p:PublishReadyToRun=false --self-contained true 

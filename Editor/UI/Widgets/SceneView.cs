@@ -5,8 +5,7 @@
 namespace Alis.Editor.UI.Widgets
 {
     using ImGuiNET;
-    using Alis.Editor.Utils;
-    
+
     /// <summary>Render the core scene.</summary>
     public class SceneView : Widget
     {

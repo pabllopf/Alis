@@ -4,121 +4,62 @@
         <name>Editor</name>
     </assembly>
     <members>
-        <member name="T:Alis.Editor.Engine">
-            <summary>Manage the engine</summary>
+        <member name="T:ImGuiNET.ImGuiController">
+            <summary>
+            A modified version of Veldrid.ImGui's ImGuiRenderer.
+            Manages input for ImGui and handles rendering ImGui's DrawLists with Veldrid.
+            </summary>
         </member>
-        <member name="F:Alis.Editor.Engine.mainWindow">
-            <summary>The main window</summary>
+        <member name="M:ImGuiNET.ImGuiController.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,System.Int32,System.Int32)">
+            <summary>
+            Constructs a new ImGuiController.
+            </summary>
         </member>
-        <member name="M:Alis.Editor.Engine.#ctor(System.String[])">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Engine" /> class.</summary>
-            <param name="args">The arguments.</param>
+        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.TextureView)">
+            <summary>
+            Gets or creates a handle for a texture to be drawn with ImGui.
+            Pass the returned handle to Image() or ImageButton().
+            </summary>
         </member>
-        <member name="P:Alis.Editor.Engine.FirstInstance">
-            <summary>Gets a value indicating whether [first instance].</summary>
-            <value>
-            <c>true</c> if [first instance]; otherwise, <c>false</c>.</value>
+        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.Texture)">
+            <summary>
+            Gets or creates a handle for a texture to be drawn with ImGui.
+            Pass the returned handle to Image() or ImageButton().
+            </summary>
         </member>
-        <member name="M:Alis.Editor.Engine.Start">
-            <summary>Starts this instance.</summary>
-            <returns>Return false or true to indicate the exit value</returns>
+        <member name="M:ImGuiNET.ImGuiController.GetImageResourceSet(System.IntPtr)">
+            <summary>
+            Retrieves the shader texture binding for the given helper handle.
+            </summary>
         </member>
-        <member name="T:Alis.Editor.Program">
-            <summary>Run the engine</summary>
+        <member name="M:ImGuiNET.ImGuiController.RecreateFontDeviceTexture(Veldrid.GraphicsDevice)">
+            <summary>
+            Recreates the device texture used to render text.
+            </summary>
         </member>
-        <member name="M:Alis.Editor.Program.Main(System.String[])">
-            <summary>Mains the specified arguments.</summary>
-            <param name="args">The arguments.</param>
-            <returns>Return -1 or 0</returns>
+        <member name="M:ImGuiNET.ImGuiController.Render(Veldrid.GraphicsDevice,Veldrid.CommandList)">
+            <summary>
+            Renders the ImGui draw list data.
+            This method requires a <see cref="T:Veldrid.GraphicsDevice"/> because it may create new DeviceBuffers if the size of vertex
+            or index data has increased beyond the capacity of the existing buffers.
+            A <see cref="T:Veldrid.CommandList"/> is needed to submit drawing and resource update commands.
+            </summary>
         </member>
-        <member name="T:Alis.Editor.UI.MainWindow">
-            <summary>Manage the main window.</summary>
+        <member name="M:ImGuiNET.ImGuiController.Update(System.Single,Veldrid.InputSnapshot)">
+            <summary>
+            Updates ImGui input and IO configuration state.
+            </summary>
         </member>
-        <member name="F:Alis.Editor.UI.MainWindow.Title">
-            <summary>The title</summary>
+        <member name="M:ImGuiNET.ImGuiController.SetPerFrameImGuiData(System.Single)">
+            <summary>
+            Sets per-frame data based on the associated window.
+            This is called by Update(float).
+            </summary>
         </member>
-        <member name="F:Alis.Editor.UI.MainWindow.StartPosX">
-            <summary>The start position x</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.StartPosY">
-            <summary>The start position y</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.SizeX">
-            <summary>The size x</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.SizeY">
-            <summary>The size y</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.window">
-            <summary>The window</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.windowCreateInfo">
-            <summary>The window create information</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.windowState">
-            <summary>The window state</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.graphicsDevice">
-            <summary>The graphics device</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.graphicsDeviceOptions">
-            <summary>The graphics device options</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.debug">
-            <summary>The debug</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.syncToVerticalBlank">
-            <summary>The synchronize to vertical blank</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.commandList">
-            <summary>The command list</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.controller">
-            <summary>The controller</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.memoryEditor">
-            <summary>The memory editor</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.style">
-            <summary>The style</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.snapshot">
-            <summary>The snapshot</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.clearColor">
-            <summary>The clear color</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.deltaSeconds">
-            <summary>The delta seconds</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.MainWindow.widgetManager">
-            <summary>The widget manager</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.MainWindow.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.MainWindow" /> class.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.MainWindow.Start">
-            <summary>Starts this instance.</summary>
-            <returns>Return false or true</returns>
-        </member>
-        <member name="M:Alis.Editor.UI.MainWindow.Update">
-            <summary>Updates this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.MainWindow.Window_Resized">
-            <summary>Windows the resized.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.MainWindow.Window_Closed">
-            <summary>Windows the closed.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.MainWindow.Window_Closing">
-            <summary>Windows the closing.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.MainWindow.Window_Moved(Veldrid.Point)">
-            <summary>Windows the moved.</summary>
-            <param name="obj">The object.</param>
-        </member>
-        <member name="M:Alis.Editor.UI.MainWindow.LoadStyle">
-            <summary>Loads the style.</summary>
+        <member name="M:ImGuiNET.ImGuiController.Dispose">
+            <summary>
+            Frees all graphics resources used by the renderer.
+            </summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.AssetsManager">
             <summary>Manage files of project.</summary>
@@ -2493,63 +2434,6 @@
         </member>
         <member name="F:Alis.Editor.Utils.Icon.MEETUP">
             <summary>The font icon file name </summary>
-        </member>
-        <member name="T:ImGuiNET.ImGuiController">
-            <summary>
-            A modified version of Veldrid.ImGui's ImGuiRenderer.
-            Manages input for ImGui and handles rendering ImGui's DrawLists with Veldrid.
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.#ctor(Veldrid.GraphicsDevice,Veldrid.Sdl2.Sdl2Window,Veldrid.OutputDescription,System.Int32,System.Int32)">
-            <summary>
-            Constructs a new ImGuiController.
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.TextureView)">
-            <summary>
-            Gets or creates a handle for a texture to be drawn with ImGui.
-            Pass the returned handle to Image() or ImageButton().
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.Texture)">
-            <summary>
-            Gets or creates a handle for a texture to be drawn with ImGui.
-            Pass the returned handle to Image() or ImageButton().
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.GetImageResourceSet(System.IntPtr)">
-            <summary>
-            Retrieves the shader texture binding for the given helper handle.
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.RecreateFontDeviceTexture(Veldrid.GraphicsDevice)">
-            <summary>
-            Recreates the device texture used to render text.
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.Render(Veldrid.GraphicsDevice,Veldrid.CommandList)">
-            <summary>
-            Renders the ImGui draw list data.
-            This method requires a <see cref="T:Veldrid.GraphicsDevice"/> because it may create new DeviceBuffers if the size of vertex
-            or index data has increased beyond the capacity of the existing buffers.
-            A <see cref="T:Veldrid.CommandList"/> is needed to submit drawing and resource update commands.
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.Update(System.Single,Veldrid.InputSnapshot)">
-            <summary>
-            Updates ImGui input and IO configuration state.
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.SetPerFrameImGuiData(System.Single)">
-            <summary>
-            Sets per-frame data based on the associated window.
-            This is called by Update(float).
-            </summary>
-        </member>
-        <member name="M:ImGuiNET.ImGuiController.Dispose">
-            <summary>
-            Frees all graphics resources used by the renderer.
-            </summary>
         </member>
     </members>
 </doc>

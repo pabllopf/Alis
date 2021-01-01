@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Alis.Editor.Utils;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Numerics;
 using System.Reflection;
-using System.IO;
-using Veldrid;
 using System.Runtime.CompilerServices;
-using Alis.Editor.Utils;
 using System.Runtime.InteropServices;
+using Veldrid;
 
 namespace ImGuiNET
 {
@@ -226,25 +226,25 @@ namespace ImGuiNET
             switch (factory.BackendType)
             {
                 case GraphicsBackend.Direct3D11:
-                {
-                    string resourceName = name + ".hlsl.bytes";
-                    return GetEmbeddedResourceBytes(resourceName);
-                }
+                    {
+                        string resourceName = name + ".hlsl.bytes";
+                        return GetEmbeddedResourceBytes(resourceName);
+                    }
                 case GraphicsBackend.OpenGL:
-                {
-                    string resourceName = name + ".glsl";
-                    return GetEmbeddedResourceBytes(resourceName);
-                }
+                    {
+                        string resourceName = name + ".glsl";
+                        return GetEmbeddedResourceBytes(resourceName);
+                    }
                 case GraphicsBackend.Vulkan:
-                {
-                    string resourceName = name + ".spv";
-                    return GetEmbeddedResourceBytes(resourceName);
-                }
+                    {
+                        string resourceName = name + ".spv";
+                        return GetEmbeddedResourceBytes(resourceName);
+                    }
                 case GraphicsBackend.Metal:
-                {
-                    string resourceName = name + ".metallib";
-                    return GetEmbeddedResourceBytes(resourceName);
-                }
+                    {
+                        string resourceName = name + ".metallib";
+                        return GetEmbeddedResourceBytes(resourceName);
+                    }
                 default:
                     throw new NotImplementedException();
             }

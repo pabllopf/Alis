@@ -4,9 +4,9 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
-    using System;
     using Alis.Editor.Utils;
     using ImGuiNET;
+    using System;
 
     /// <summary>Menu of editor</summary>
     public class TopMenu : Widget
@@ -32,7 +32,7 @@ namespace Alis.Editor.UI.Widgets
         }
 
         /// <summary>Draw this instance.</summary>
-        public override void Draw() 
+        public override void Draw()
         {
             if (ImGui.BeginMainMenuBar())
             {

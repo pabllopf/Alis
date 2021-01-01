@@ -1,12 +1,18 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Windows;MacOS</Configurations>
+  </PropertyGroup>
+  
+  <!-- _____________________________ WINDOWS_____________________________________ -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+    <DocumentationFile>Tools.xml</DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-  </PropertyGroup>
-
+  
+  <!-- ______________________________ MACOS _____________________________________ -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
+    
   </PropertyGroup>
 </Project>

@@ -9,7 +9,7 @@ namespace Alis.Editor.Utils
     {
         /// <summary>Logs the specified message.</summary>
         /// <param name="message">The message.</param>
-        public static void Log(string message) 
+        public static void Log(string message)
         {
             System.Console.WriteLine(message);
         }

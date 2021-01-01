@@ -4,10 +4,10 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
-    using System;
-    using System.Numerics;
     using Alis.Editor.Utils;
     using ImGuiNET;
+    using System;
+    using System.Numerics;
 
     /// <summary>Manage the windows. </summary>
     public class DockSpace : Widget
@@ -44,13 +44,13 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>Initializes a new instance of the <see cref="DockSpace" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
-        public DockSpace(EventHandler<EventType> eventHandler) 
+        public DockSpace(EventHandler<EventType> eventHandler)
         {
             this.eventHandler = eventHandler;
 
             dockspaceFlags = ImGuiDockNodeFlags.None;
-            windowFlags = 
-                ImGuiWindowFlags.MenuBar | 
+            windowFlags =
+                ImGuiWindowFlags.MenuBar |
                 ImGuiWindowFlags.NoDocking |
                 ImGuiWindowFlags.NoTitleBar |
                 ImGuiWindowFlags.NoCollapse |

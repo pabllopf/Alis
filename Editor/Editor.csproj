@@ -1,39 +1,28 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
-    <Configurations>Debug;Release;Windows</Configurations>
-    
-  </PropertyGroup>
- 
-
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RuntimeIdentifiers>win-x64;win10-x64;osx.10.11-x64;osx.10.12-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+    <Configurations>Windows;MacOS</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DebugType></DebugType>
-        <RuntimeIdentifiers>win10-x64;osx.10.12-x64</RuntimeIdentifiers>
-  </PropertyGroup>
-
+  <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-     <DebugType></DebugType>
-    <RuntimeIdentifiers>win10-x64;</RuntimeIdentifiers>
+    <DebugType></DebugType>
+    <DocumentationFile>Editor.xml</DocumentationFile>
   </PropertyGroup>
   
-   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
-    <Exec Command="dotnet publish  /p:PublishProfile=WindowsX64 --no-build" />
+   <Target Name="PostBuild" AfterTargets="PostBuildEvent"  Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+    <Exec Command="dotnet publish -c Windows /p:PublishProfile=Windows-x64 --no-build" />
   </Target>
-  
-    
+
+
+  <!-- ______________________________ MACOS _____________________________________ -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
-     <RuntimeIdentifiers>osx.10.12-x64</RuntimeIdentifiers>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
      <DebugType></DebugType>
      <Optimize>true</Optimize>
      <DocumentationFile>bin\MacOS\netcoreapp3.1\Editor.xml</DocumentationFile>
@@ -47,13 +36,12 @@
        </CustomCommands>
      </CustomCommands>
   </PropertyGroup>
- 
-    
-    
-    <ItemGroup>
+
+
+  <!-- _____________________________ IMPORTS ____________________________________ -->
+  <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
-    
     
   <ItemGroup>
     <PackageReference Include="ImGui.NET" Version="1.78.0" />
@@ -61,7 +49,6 @@
     <PackageReference Include="Veldrid.ImageSharp" Version="4.8.0" />
     <PackageReference Include="Veldrid.StartupUtilities" Version="4.8.0" />
   </ItemGroup>
-
 
   <ItemGroup>
     <Content Include="$(ProjectDir)/lib/cimgui/win-x64/cimgui.dll" CopyToOutputDirectory="PreserveNewest" />
@@ -87,5 +74,6 @@
     </ContentWithTargetPath>
   </ItemGroup>
 
-
+ 
+  
 </Project>

@@ -4,9 +4,9 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
-    using System;
     using Editor.Utils;
     using ImGuiNET;
+    using System;
 
     /// <summary>Define the menu.</summary>
     public class BottomMenu : Widget

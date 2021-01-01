@@ -1,22 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <!-- _________________________ GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Configurations>Debug;Release;Windows</Configurations>
+    <Configurations>Windows;MacOS</Configurations>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <!-- _____________________________ WINDOWS_____________________________________ -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>Core.xml</DocumentationFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'" />
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-  </PropertyGroup>
-
+  <!-- ______________________________ MACOS _____________________________________ -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
   </PropertyGroup>
-    
-    
+
+
+  <!-- _____________________________ IMPORTS ____________________________________ -->
   <ItemGroup>
     <PackageReference Include="SFML.Audio" Version="2.5.0" />
     <PackageReference Include="SFML.Graphics" Version="2.5.0" />

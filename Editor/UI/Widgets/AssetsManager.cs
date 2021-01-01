@@ -4,9 +4,9 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
-    using System.Collections.Generic;
     using Alis.Editor.Utils;
     using ImGuiNET;
+    using System.Collections.Generic;
 
     /// <summary>Manage files of project.</summary>
     public class AssetsManager : Widget
@@ -27,7 +27,7 @@ namespace Alis.Editor.UI.Widgets
         private List<string> pathFolders = new List<string>();
 
         /// <summary>Initializes a new instance of the <see cref="AssetsManager" /> class.</summary>
-        public AssetsManager() 
+        public AssetsManager()
         {
             unsafe
             {
@@ -44,11 +44,11 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-            if (ImGui.Begin("Assets", ref isOpen)) 
+            if (ImGui.Begin("Assets", ref isOpen))
             {
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(1.0f, 3.0f));
 
-                foreach (string folderButton in GetPathList(pathExample)) 
+                foreach (string folderButton in GetPathList(pathExample))
                 {
                     if (ImGui.Button(folderButton))
                     {
@@ -63,7 +63,7 @@ namespace Alis.Editor.UI.Widgets
 
                 ImGui.Separator();
 
-                if (ImGui.BeginChild("Assets-Child-Master")) 
+                if (ImGui.BeginChild("Assets-Child-Master"))
                 {
                     ImGui.PushStyleColor(ImGuiCol.ChildBg, new System.Numerics.Vector4(1.0f));
 

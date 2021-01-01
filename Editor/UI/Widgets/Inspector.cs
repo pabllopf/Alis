@@ -13,7 +13,7 @@ namespace Alis.Editor.UI.Widgets
         private const string Name = "Inspector";
 
         /// <summary>Initializes a new instance of the <see cref="Inspector" /> class.</summary>
-        public Inspector() 
+        public Inspector()
         {
         }
 
@@ -26,7 +26,7 @@ namespace Alis.Editor.UI.Widgets
         public override void Draw()
         {
             if (ImGui.Begin("Inspector"))
-            {  
+            {
             }
 
             ImGui.End();
