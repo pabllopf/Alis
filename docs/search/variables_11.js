@@ -1,22 +1,11 @@
 var searchData=
 [
-  ['random_1313',['RANDOM',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9e8660ed5333fd140edf92054d138405',1,'Alis::Editor::Utils::Icon']]],
-  ['ravelry_1314',['RAVELRY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae3d2733f1e5c1e95325002719e1a17a7',1,'Alis::Editor::Utils::Icon']]],
-  ['rebel_1315',['REBEL',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a72ee5dc6620a88d181911f6da31aa398',1,'Alis::Editor::Utils::Icon']]],
-  ['recycle_1316',['RECYCLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a68ca25ccec63b53610d1669069880093',1,'Alis::Editor::Utils::Icon']]],
-  ['reddit_1317',['REDDIT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4bd20b801bbf2e0f38af6b2adccf06f1',1,'Alis::Editor::Utils::Icon']]],
-  ['redditalien_1318',['REDDITALIEN',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4a8aed1ea545f4c058371624a259bd61',1,'Alis::Editor::Utils::Icon']]],
-  ['redditsquare_1319',['REDDITSQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a1d51b51848dbf5f3bfd1e6438648c230',1,'Alis::Editor::Utils::Icon']]],
-  ['refresh_1320',['REFRESH',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a028665af3645c30e8b1fc2400e4802bc',1,'Alis::Editor::Utils::Icon']]],
-  ['registered_1321',['REGISTERED',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a69691981dc4f85167dff84e52edbcfcf',1,'Alis::Editor::Utils::Icon']]],
-  ['renren_1322',['RENREN',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6ff3db7dc7fef6a1ca8c09025ad6f1da',1,'Alis::Editor::Utils::Icon']]],
-  ['repeat_1323',['REPEAT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ad4fb557793f230f12e19f08d9bf709bf',1,'Alis::Editor::Utils::Icon']]],
-  ['reply_1324',['REPLY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a94ed78923d38af72f21ba90f193a6d1e',1,'Alis::Editor::Utils::Icon']]],
-  ['replyall_1325',['REPLYALL',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9647d3f388692be8923f034818b4a4f0',1,'Alis::Editor::Utils::Icon']]],
-  ['retweet_1326',['RETWEET',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a15f1056c87628879805330f3f5c7cf9c',1,'Alis::Editor::Utils::Icon']]],
-  ['road_1327',['ROAD',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae8556f379db17f281c921a692b913a06',1,'Alis::Editor::Utils::Icon']]],
-  ['rocket_1328',['ROCKET',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a3122a33c74d2e2e9401676d925a0b2bb',1,'Alis::Editor::Utils::Icon']]],
-  ['rss_1329',['RSS',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#af56fc9b07951421fa0aaebfece75b16a',1,'Alis::Editor::Utils::Icon']]],
-  ['rsssquare_1330',['RSSSQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a36d7455d10e013a5da9c9d55442de86a',1,'Alis::Editor::Utils::Icon']]],
-  ['rub_1331',['RUB',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5c6c25d76fc159689c62af1052aed747',1,'Alis::Editor::Utils::Icon']]]
+  ['qq_1421',['QQ',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ad7cc96bb7b650dbcf392a65156a7f2e0',1,'Alis::Editor::Utils::Icon']]],
+  ['qrcode_1422',['QRCODE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a8a43b355a0de1ea004e149bb292e8dc4',1,'Alis::Editor::Utils::Icon']]],
+  ['question_1423',['QUESTION',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4f6a15b2114a75cfe890c34d5cda28a0',1,'Alis::Editor::Utils::Icon']]],
+  ['questioncircle_1424',['QUESTIONCIRCLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aaf0ff18dcd13901606311ed754811b80',1,'Alis::Editor::Utils::Icon']]],
+  ['questioncircleo_1425',['QUESTIONCIRCLEO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5a34403fde7a17073e9daf423fb7e059',1,'Alis::Editor::Utils::Icon']]],
+  ['quora_1426',['QUORA',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a7161f5641d6ccb75de3a109f7fca4cc0',1,'Alis::Editor::Utils::Icon']]],
+  ['quoteleft_1427',['QUOTELEFT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a0e01cfa57e381e96de76f00a9eb31182',1,'Alis::Editor::Utils::Icon']]],
+  ['quoteright_1428',['QUOTERIGHT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ab986a42e2f8521cd64e502494f3c5dd4',1,'Alis::Editor::Utils::Icon']]]
 ];

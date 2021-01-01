@@ -1,12 +1,6 @@
 var searchData=
 [
-  ['objectgroup_1253',['OBJECTGROUP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae7d7d5850ee37e42050e67df7c771e3c',1,'Alis::Editor::Utils::Icon']]],
-  ['objectungroup_1254',['OBJECTUNGROUP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5dd8bf26ebdc6dd803be22ec4fd9e514',1,'Alis::Editor::Utils::Icon']]],
-  ['odnoklassniki_1255',['ODNOKLASSNIKI',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ab2ae61f59b28de582be4a582c0b1bc35',1,'Alis::Editor::Utils::Icon']]],
-  ['odnoklassnikisquare_1256',['ODNOKLASSNIKISQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6ede862926637f73c5db2ceb6d8c0025',1,'Alis::Editor::Utils::Icon']]],
-  ['opencart_1257',['OPENCART',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4bb05bf8500f899e0b297bf2bc24e009',1,'Alis::Editor::Utils::Icon']]],
-  ['openid_1258',['OPENID',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a1ae380aef52f62fb5b9a5bf6ace78742',1,'Alis::Editor::Utils::Icon']]],
-  ['opera_1259',['OPERA',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#acd6045fa06db6fb79cb1ad2f97ed7b4f',1,'Alis::Editor::Utils::Icon']]],
-  ['optinmonster_1260',['OPTINMONSTER',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4a1a2a0e2e4625c0a0326324bc3e31ab',1,'Alis::Editor::Utils::Icon']]],
-  ['outdent_1261',['OUTDENT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a588d8915c406173e5f77c049eefbf3ee',1,'Alis::Editor::Utils::Icon']]]
+  ['name_1366',['Name',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a0ea6eabea4956e7109efb81a2f26d64c',1,'Alis.Editor.UI.Widgets.AssetsManager.Name()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#a1af26924cdec1da12afbfa3cf6bef006',1,'Alis.Editor.UI.Widgets.BottomMenu.Name()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae6636fe5db1214a3fd156dc55763ba19',1,'Alis.Editor.UI.Widgets.Console.Name()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a51d42a375c17e24419fc04930020b6cd',1,'Alis.Editor.UI.Widgets.DockSpace.Name()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ab108200698f324be0f0fa28a02a47e64',1,'Alis.Editor.UI.Widgets.Inspector.Name()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a50840cb64957000858364133a4617b11',1,'Alis.Editor.UI.Widgets.SceneView.Name()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a5d8fc2b6ca203e35551b37445169e616',1,'Alis.Editor.UI.Widgets.TopMenu.Name()']]],
+  ['neuter_1367',['NEUTER',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6014d1e46ab9bb37b9aaff1679ee19dc',1,'Alis::Editor::Utils::Icon']]],
+  ['newspapero_1368',['NEWSPAPERO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a087fe02d95f78294607289de46e4b03a',1,'Alis::Editor::Utils::Icon']]]
 ];
