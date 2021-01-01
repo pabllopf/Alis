@@ -15,7 +15,7 @@
     <DocumentationFile>Editor.xml</DocumentationFile>
   </PropertyGroup>
   
-   <Target Name="PostBuild" AfterTargets="PostBuildEvent"  Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+   <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
     <Exec Command="dotnet publish -c Windows /p:PublishProfile=Windows-x64 --no-build" />
   </Target>
 
@@ -30,7 +30,7 @@
        <CustomCommands>
          <Command>
            <type>AfterBuild</type>
-           <command>${SolutionDir}/MacOSAPP.sh</command>
+           <command>${SolutionDir}/buildmacos.sh</command>
            <workingdir>${SolutionDir}</workingdir>
          </Command>
        </CustomCommands>
