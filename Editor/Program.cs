@@ -5,6 +5,8 @@ using Veldrid;
 using Veldrid.Sdl2;
 using Veldrid.StartupUtilities;
 
+using static ImGuiNET.ImGuiNative;
+
 namespace ImGuiNET
 {
     class Program
@@ -36,7 +38,7 @@ namespace ImGuiNET
                 new WindowCreateInfo(50, 50, 1280, 720, WindowState.Normal, "ImGui.NET Sample Program"),
                 new GraphicsDeviceOptions(true, null, true, ResourceBindingModel.Improved, true, true),
                 GraphicsBackend.OpenGL
-                , out _window,
+                ,out _window,
                 out _gd);
             _window.Resized += () =>
             {
@@ -158,9 +160,9 @@ namespace ImGuiNET
                     if ((s_tab_bar_flags & (uint)ImGuiTabBarFlags.FittingPolicyMask) == 0)
                         s_tab_bar_flags |= (uint)ImGuiTabBarFlags.FittingPolicyDefault;
                     if (ImGui.CheckboxFlags("ImGuiTabBarFlags_FittingPolicyResizeDown", ref s_tab_bar_flags, (uint)ImGuiTabBarFlags.FittingPolicyResizeDown))
-                        s_tab_bar_flags &= ~((uint)ImGuiTabBarFlags.FittingPolicyMask ^ (uint)ImGuiTabBarFlags.FittingPolicyResizeDown);
+                s_tab_bar_flags &= ~((uint)ImGuiTabBarFlags.FittingPolicyMask ^ (uint)ImGuiTabBarFlags.FittingPolicyResizeDown);
                     if (ImGui.CheckboxFlags("ImGuiTabBarFlags_FittingPolicyScroll", ref s_tab_bar_flags, (uint)ImGuiTabBarFlags.FittingPolicyScroll))
-                        s_tab_bar_flags &= ~((uint)ImGuiTabBarFlags.FittingPolicyMask ^ (uint)ImGuiTabBarFlags.FittingPolicyScroll);
+                s_tab_bar_flags &= ~((uint)ImGuiTabBarFlags.FittingPolicyMask ^ (uint)ImGuiTabBarFlags.FittingPolicyScroll);
 
                     // Tab Bar
                     string[] names = { "Artichoke", "Beetroot", "Celery", "Daikon" };

@@ -1,22 +1,12 @@
 var searchData=
 [
-  ['random_527',['RANDOM',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9e8660ed5333fd140edf92054d138405',1,'Alis::Editor::Utils::Icon']]],
-  ['ravelry_528',['RAVELRY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae3d2733f1e5c1e95325002719e1a17a7',1,'Alis::Editor::Utils::Icon']]],
-  ['rebel_529',['REBEL',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a72ee5dc6620a88d181911f6da31aa398',1,'Alis::Editor::Utils::Icon']]],
-  ['recycle_530',['RECYCLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a68ca25ccec63b53610d1669069880093',1,'Alis::Editor::Utils::Icon']]],
-  ['reddit_531',['REDDIT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4bd20b801bbf2e0f38af6b2adccf06f1',1,'Alis::Editor::Utils::Icon']]],
-  ['redditalien_532',['REDDITALIEN',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4a8aed1ea545f4c058371624a259bd61',1,'Alis::Editor::Utils::Icon']]],
-  ['redditsquare_533',['REDDITSQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a1d51b51848dbf5f3bfd1e6438648c230',1,'Alis::Editor::Utils::Icon']]],
-  ['refresh_534',['REFRESH',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a028665af3645c30e8b1fc2400e4802bc',1,'Alis::Editor::Utils::Icon']]],
-  ['registered_535',['REGISTERED',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a69691981dc4f85167dff84e52edbcfcf',1,'Alis::Editor::Utils::Icon']]],
-  ['renren_536',['RENREN',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6ff3db7dc7fef6a1ca8c09025ad6f1da',1,'Alis::Editor::Utils::Icon']]],
-  ['repeat_537',['REPEAT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ad4fb557793f230f12e19f08d9bf709bf',1,'Alis::Editor::Utils::Icon']]],
-  ['reply_538',['REPLY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a94ed78923d38af72f21ba90f193a6d1e',1,'Alis::Editor::Utils::Icon']]],
-  ['replyall_539',['REPLYALL',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9647d3f388692be8923f034818b4a4f0',1,'Alis::Editor::Utils::Icon']]],
-  ['retweet_540',['RETWEET',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a15f1056c87628879805330f3f5c7cf9c',1,'Alis::Editor::Utils::Icon']]],
-  ['road_541',['ROAD',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae8556f379db17f281c921a692b913a06',1,'Alis::Editor::Utils::Icon']]],
-  ['rocket_542',['ROCKET',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a3122a33c74d2e2e9401676d925a0b2bb',1,'Alis::Editor::Utils::Icon']]],
-  ['rss_543',['RSS',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#af56fc9b07951421fa0aaebfece75b16a',1,'Alis::Editor::Utils::Icon']]],
-  ['rsssquare_544',['RSSSQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a36d7455d10e013a5da9c9d55442de86a',1,'Alis::Editor::Utils::Icon']]],
-  ['rub_545',['RUB',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5c6c25d76fc159689c62af1052aed747',1,'Alis::Editor::Utils::Icon']]]
+  ['quick_20start_571',['Quick Start',['../md__api_doc__pages__quick__start.html',1,'']]],
+  ['qq_572',['QQ',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ad7cc96bb7b650dbcf392a65156a7f2e0',1,'Alis::Editor::Utils::Icon']]],
+  ['qrcode_573',['QRCODE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a8a43b355a0de1ea004e149bb292e8dc4',1,'Alis::Editor::Utils::Icon']]],
+  ['question_574',['QUESTION',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4f6a15b2114a75cfe890c34d5cda28a0',1,'Alis::Editor::Utils::Icon']]],
+  ['questioncircle_575',['QUESTIONCIRCLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aaf0ff18dcd13901606311ed754811b80',1,'Alis::Editor::Utils::Icon']]],
+  ['questioncircleo_576',['QUESTIONCIRCLEO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5a34403fde7a17073e9daf423fb7e059',1,'Alis::Editor::Utils::Icon']]],
+  ['quora_577',['QUORA',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a7161f5641d6ccb75de3a109f7fca4cc0',1,'Alis::Editor::Utils::Icon']]],
+  ['quoteleft_578',['QUOTELEFT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a0e01cfa57e381e96de76f00a9eb31182',1,'Alis::Editor::Utils::Icon']]],
+  ['quoteright_579',['QUOTERIGHT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ab986a42e2f8521cd64e502494f3c5dd4',1,'Alis::Editor::Utils::Icon']]]
 ];

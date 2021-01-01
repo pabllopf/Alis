@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['key_1181',['KEY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ad8a8bcb1bfe9620dd69f303c85296da2',1,'Alis::Editor::Utils::Icon']]],
-  ['keyboardo_1182',['KEYBOARDO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a8be8af2fb935d7eb1104f754a3d891df',1,'Alis::Editor::Utils::Icon']]],
-  ['krw_1183',['KRW',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#acdbcdc214dfce991a4b89f405490fefb',1,'Alis::Editor::Utils::Icon']]]
+  ['joomla_1296',['JOOMLA',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6cedebf4ea403d01706bdd9081b35452',1,'Alis::Editor::Utils::Icon']]],
+  ['jpy_1297',['JPY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a61f219d4a369c6bfd6e4fa0e1a283159',1,'Alis::Editor::Utils::Icon']]],
+  ['jsfiddle_1298',['JSFIDDLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aabe8fd0887209dd4a70d326ef37e2d53',1,'Alis::Editor::Utils::Icon']]]
 ];
