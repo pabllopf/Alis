@@ -28,6 +28,8 @@ sudo apt-get install libglew1.5-dev libglm-dev
 
 git clone https://github.com/pabllopf/Alis.git
 
+cd Alis
+
 ### To get a simple build
 
 dotnet publish ./Editor/Editor.csproj  -r debian.8-x64 -c Linux -p:PublishSingleFile=true -o ./_/Editor/debian -p:PublishReadyToRun=true --self-contained true
