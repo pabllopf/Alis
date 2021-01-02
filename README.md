@@ -6,33 +6,6 @@
 
 [![](https://github.com/pabllopf/Alis/blob/main/docs/resources/banner/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
 
-(need to upgrade the normal version to vulkan, install and config).
-#### new config for the neviroments
-##### windows
-the windows can go with oengl and direcxt 11
-
-### macos
-the macos can go with metal & opengl
-
-
-#### linux
-### debian:
-need to install opengl with this:
-
-launch this script:
-    or use this command
-
-and open the program:
-
-
-### ubuntu
-
-
-
-
-
-
-
 #  Framework Alis
 
 > Develop the video games of your dreams.
@@ -51,9 +24,19 @@ and open the program:
 | Automatic Documentation | Generates the documentation automatically and publishes it on the web | Every day at 2:00 am | ![Automatic_Documentation](https://github.com/pabllopf/Alis/workflows/Automatic_Documentation/badge.svg) |
 
 
+## Graphics(Editor) 
+| System | OpenGL | Directx11 | Vulkan | Metal |
+| --- | --- | ---- | --- | --- |
+| Windows 10 x64 | ![](https://img.shields.io/badge/-Available-green) | ![](https://img.shields.io/badge/-Available-green) |  |  |
+| Windows 10 x86 | ![](https://img.shields.io/badge/-Available-green) | ![](https://img.shields.io/badge/-Available-green) |  |  |
+| MacOS 10.12 x64 | ![](https://img.shields.io/badge/-Available-green) |  |  |  |
+| MacOS 10.12 x86 | ![](https://img.shields.io/badge/-Available-green) |  |  |  |
+| Linux Debian x64 | ![](https://img.shields.io/badge/-Available-green) |  |  |  |
+| Linux Debian x86 | ![](https://img.shields.io/badge/-Available-green) |  |  |  |
 
-
-
+## Graphics(Core)
+The core give to you the last updates of SFML to render and create simples 2D videogames.
+"In the future the core give more render functions"
 
 ## Dependencies
 ### Editor
