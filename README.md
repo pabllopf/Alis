@@ -6,6 +6,33 @@
 
 [![](https://github.com/pabllopf/Alis/blob/main/docs/resources/banner/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
 
+(need to upgrade the normal version to vulkan, install and config).
+#### new config for the neviroments
+##### windows
+the windows can go with oengl and direcxt 11
+
+### macos
+the macos can go with metal & opengl
+
+
+#### linux
+### debian:
+need to install opengl with this:
+
+launch this script:
+    or use this command
+
+and open the program:
+
+
+### ubuntu
+
+
+
+
+
+
+
 #  Framework Alis
 
 > Develop the video games of your dreams.
