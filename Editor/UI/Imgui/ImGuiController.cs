@@ -70,15 +70,6 @@ namespace ImGuiNET
 
             ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "/resources/fonts/segoeui/Segoe_Bold.ttf", 16.0f);
 
-            unsafe
-            {
-                var nativeConfig = ImGuiNative.ImFontConfig_ImFontConfig();
-                var config = new ImFontConfigPtr(nativeConfig);
-                config.MergeMode = true;
-                config.GlyphMinAdvanceX = 13.0f;
-                GCHandle rangeHandle = GCHandle.Alloc(new ushort[] { Icon.ICONMINFA, Icon.ICONMAXFA, 0 }, GCHandleType.Pinned);
-                ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "/resources/fonts/Icons.ttf", 14.0f, config, rangeHandle.AddrOfPinnedObject());
-            }
 
             ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable;
 
