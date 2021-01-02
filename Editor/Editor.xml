@@ -28,6 +28,9 @@
         <member name="F:Alis.Editor.Engine.graphics">
             <summary>The graphics</summary>
         </member>
+        <member name="F:Alis.Editor.Engine.mainWindow">
+            <summary>The main window</summary>
+        </member>
         <member name="M:Alis.Editor.Engine.#ctor(System.String[])">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Engine" /> class.</summary>
             <param name="args">The arguments.</param>
@@ -67,6 +70,15 @@
         <member name="F:Alis.Editor.Graphics.Vulkan">
             <summary>The graphics 4</summary>
         </member>
+        <member name="F:Alis.Editor.Info.platform">
+            <summary>The platform</summary>
+        </member>
+        <member name="F:Alis.Editor.Info.architecture">
+            <summary>The architecture</summary>
+        </member>
+        <member name="F:Alis.Editor.Info.graphics">
+            <summary>The graphics</summary>
+        </member>
         <member name="T:Alis.Editor.Platform">
             <summary>Platform enabled to use the engine.</summary>
         </member>
@@ -89,6 +101,95 @@
             <summary>Mains the specified arguments.</summary>
             <param name="args">The arguments.</param>
             <returns>Return -1 or 0</returns>
+        </member>
+        <member name="T:Alis.Editor.UI.MainWindow">
+            <summary>Manage the main window.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.Title">
+            <summary>The title</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.StartPosX">
+            <summary>The start position x</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.StartPosY">
+            <summary>The start position y</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.SizeX">
+            <summary>The size x</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.SizeY">
+            <summary>The size y</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.window">
+            <summary>The window</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.windowCreateInfo">
+            <summary>The window create information</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.windowState">
+            <summary>The window state</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.graphicsDevice">
+            <summary>The graphics device</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.graphicsDeviceOptions">
+            <summary>The graphics device options</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.debug">
+            <summary>The debug</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.syncToVerticalBlank">
+            <summary>The synchronize to vertical blank</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.commandList">
+            <summary>The command list</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.controller">
+            <summary>The controller</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.memoryEditor">
+            <summary>The memory editor</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.style">
+            <summary>The style</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.snapshot">
+            <summary>The snapshot</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.clearColor">
+            <summary>The clear color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.deltaSeconds">
+            <summary>The delta seconds</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.widgetManager">
+            <summary>The widget manager</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.MainWindow" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Start(Alis.Editor.Info)">
+            <summary>Starts this instance.</summary>
+            <returns>Return false or true</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Resized">
+            <summary>Windows the resized.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Closed">
+            <summary>Windows the closed.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Closing">
+            <summary>Windows the closing.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Moved(Veldrid.Point)">
+            <summary>Windows the moved.</summary>
+            <param name="obj">The object.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.LoadStyle">
+            <summary>Loads the style.</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.AssetsManager">
             <summary>Manage files of project.</summary>

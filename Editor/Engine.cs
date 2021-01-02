@@ -7,6 +7,7 @@ namespace Alis.Editor
     using System;
     using System.Reflection;
     using System.Threading;
+    using Alis.Editor.UI;
     using Alis.Editor.Utils;
 
     /// <summary>Manage the engine</summary>
@@ -20,6 +21,9 @@ namespace Alis.Editor
 
         /// <summary>The graphics</summary>
         private Graphics graphics;
+
+        /// <summary>The main window</summary>
+        private MainWindow mainWindow;
 
         /// <summary>Initializes a new instance of the <see cref="Engine" /> class.</summary>
         /// <param name="args">The arguments.</param>
@@ -138,8 +142,15 @@ namespace Alis.Editor
                 }
             }
 
+            Info info = new Info(platform, architecture, graphics);
             Debug.Log("Info Platform: " + platform.ToString() + " " + architecture.ToString() + " " + graphics.ToString());
 
+            mainWindow = new MainWindow();           
+            if (!mainWindow.Start(info)) 
+            {
+                Debug.Error("Failed to start the main window. ");
+                return -1;
+            }
 
             Console.WriteLine("Finish process. Please press ANY KEY to close console.");
             Console.ReadKey();
