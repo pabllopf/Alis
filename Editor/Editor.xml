@@ -4,62 +4,91 @@
         <name>Editor</name>
     </assembly>
     <members>
-        <member name="T:ImGuiNET.ImGuiController">
-            <summary>
-            A modified version of Veldrid.ImGui's ImGuiRenderer.
-            Manages input for ImGui and handles rendering ImGui's DrawLists with Veldrid.
-            </summary>
+        <member name="T:Alis.Editor.Architecture">
+            <summary>Define the compatible architectures </summary>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,System.Int32,System.Int32)">
-            <summary>
-            Constructs a new ImGuiController.
-            </summary>
+        <member name="F:Alis.Editor.Architecture.Unsupported">
+            <summary>The unsupported</summary>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.TextureView)">
-            <summary>
-            Gets or creates a handle for a texture to be drawn with ImGui.
-            Pass the returned handle to Image() or ImageButton().
-            </summary>
+        <member name="F:Alis.Editor.Architecture.X64">
+            <summary>The 64 architecture</summary>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.Texture)">
-            <summary>
-            Gets or creates a handle for a texture to be drawn with ImGui.
-            Pass the returned handle to Image() or ImageButton().
-            </summary>
+        <member name="F:Alis.Editor.Architecture.X86">
+            <summary>The 32 architecture</summary>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.GetImageResourceSet(System.IntPtr)">
-            <summary>
-            Retrieves the shader texture binding for the given helper handle.
-            </summary>
+        <member name="T:Alis.Editor.Engine">
+            <summary>Manage the engine</summary>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.RecreateFontDeviceTexture(Veldrid.GraphicsDevice)">
-            <summary>
-            Recreates the device texture used to render text.
-            </summary>
+        <member name="F:Alis.Editor.Engine.platform">
+            <summary>The platform</summary>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.Render(Veldrid.GraphicsDevice,Veldrid.CommandList)">
-            <summary>
-            Renders the ImGui draw list data.
-            This method requires a <see cref="T:Veldrid.GraphicsDevice"/> because it may create new DeviceBuffers if the size of vertex
-            or index data has increased beyond the capacity of the existing buffers.
-            A <see cref="T:Veldrid.CommandList"/> is needed to submit drawing and resource update commands.
-            </summary>
+        <member name="F:Alis.Editor.Engine.architecture">
+            <summary>The architecture</summary>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.Update(System.Single,Veldrid.InputSnapshot)">
-            <summary>
-            Updates ImGui input and IO configuration state.
-            </summary>
+        <member name="F:Alis.Editor.Engine.graphics">
+            <summary>The graphics</summary>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.SetPerFrameImGuiData(System.Single)">
-            <summary>
-            Sets per-frame data based on the associated window.
-            This is called by Update(float).
-            </summary>
+        <member name="M:Alis.Editor.Engine.#ctor(System.String[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Engine" /> class.</summary>
+            <param name="args">The arguments.</param>
         </member>
-        <member name="M:ImGuiNET.ImGuiController.Dispose">
-            <summary>
-            Frees all graphics resources used by the renderer.
-            </summary>
+        <member name="P:Alis.Editor.Engine.FirstInstance">
+            <summary>Gets a value indicating whether [first instance].</summary>
+            <value>
+            <c>true</c> if [first instance]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Alis.Editor.Engine.DetectPlatform">
+            <summary>Gets the detect platform.</summary>
+            <value>The detect platform.</value>
+        </member>
+        <member name="P:Alis.Editor.Engine.DetectArchitecture">
+            <summary>Gets the detect architecture.</summary>
+            <value>The detect architecture.</value>
+        </member>
+        <member name="M:Alis.Editor.Engine.Start">
+            <summary>Starts this instance.</summary>
+            <returns>Return false or true to indicate the exit value</returns>
+        </member>
+        <member name="T:Alis.Editor.Graphics">
+            <summary>Define the compatible graphics</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Unsupported">
+            <summary>The unsupported graphics</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.OpenGL">
+            <summary>The graphics 1</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Directx11">
+            <summary>The graphics 2</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Metal">
+            <summary>The graphics 3</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Vulkan">
+            <summary>The graphics 4</summary>
+        </member>
+        <member name="T:Alis.Editor.Platform">
+            <summary>Platform enabled to use the engine.</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Unsupported">
+            <summary>The unsupported</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Windows">
+            <summary>The windows</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.MacOS">
+            <summary>The mac</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Linux">
+            <summary>The linux</summary>
+        </member>
+        <member name="T:Alis.Editor.Program">
+            <summary>Run the engine</summary>
+        </member>
+        <member name="M:Alis.Editor.Program.Main(System.String[])">
+            <summary>Mains the specified arguments.</summary>
+            <param name="args">The arguments.</param>
+            <returns>Return -1 or 0</returns>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.AssetsManager">
             <summary>Manage files of project.</summary>
@@ -2434,6 +2463,63 @@
         </member>
         <member name="F:Alis.Editor.Utils.Icon.MEETUP">
             <summary>The font icon file name </summary>
+        </member>
+        <member name="T:ImGuiNET.ImGuiController">
+            <summary>
+            A modified version of Veldrid.ImGui's ImGuiRenderer.
+            Manages input for ImGui and handles rendering ImGui's DrawLists with Veldrid.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,System.Int32,System.Int32)">
+            <summary>
+            Constructs a new ImGuiController.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.TextureView)">
+            <summary>
+            Gets or creates a handle for a texture to be drawn with ImGui.
+            Pass the returned handle to Image() or ImageButton().
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.Texture)">
+            <summary>
+            Gets or creates a handle for a texture to be drawn with ImGui.
+            Pass the returned handle to Image() or ImageButton().
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.GetImageResourceSet(System.IntPtr)">
+            <summary>
+            Retrieves the shader texture binding for the given helper handle.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.RecreateFontDeviceTexture(Veldrid.GraphicsDevice)">
+            <summary>
+            Recreates the device texture used to render text.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.Render(Veldrid.GraphicsDevice,Veldrid.CommandList)">
+            <summary>
+            Renders the ImGui draw list data.
+            This method requires a <see cref="T:Veldrid.GraphicsDevice"/> because it may create new DeviceBuffers if the size of vertex
+            or index data has increased beyond the capacity of the existing buffers.
+            A <see cref="T:Veldrid.CommandList"/> is needed to submit drawing and resource update commands.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.Update(System.Single,Veldrid.InputSnapshot)">
+            <summary>
+            Updates ImGui input and IO configuration state.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.SetPerFrameImGuiData(System.Single)">
+            <summary>
+            Sets per-frame data based on the associated window.
+            This is called by Update(float).
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.Dispose">
+            <summary>
+            Frees all graphics resources used by the renderer.
+            </summary>
         </member>
     </members>
 </doc>

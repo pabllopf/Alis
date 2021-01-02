@@ -1,4 +1,25 @@
-﻿using System;
+﻿//----------------------------------------------------------------------------------------------------
+// <author>Pablo Perdomo Falcón</author>
+// <copyright file="Program.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+//----------------------------------------------------------------------------------------------------
+namespace Alis.Editor
+{
+    using System;
+
+    /// <summary>Run the engine</summary>
+    public class Program
+    {
+        /// <summary>Mains the specified arguments.</summary>
+        /// <param name="args">The arguments.</param>
+        /// <returns>Return -1 or 0</returns>
+        [STAThread]
+        public static int Main(string[] args) => new Engine(args).Start();
+    }
+}
+
+
+
+/*using System;
 using System.Linq;
 using System.Numerics;
 using Veldrid;
@@ -202,3 +223,4 @@ namespace ImGuiNET
         }
     }
 }
+*/
