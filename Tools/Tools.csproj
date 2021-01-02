@@ -2,7 +2,7 @@
   <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Configurations>Windows;MacOS</Configurations>
+    <Configurations>Windows;MacOS;Linux</Configurations>
   </PropertyGroup>
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -13,6 +13,9 @@
   
   <!-- ______________________________ MACOS _____________________________________ -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
-    
+  </PropertyGroup>
+  
+  <!-- ______________________________ LINUX _____________________________________ -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'" >
   </PropertyGroup>
 </Project>
