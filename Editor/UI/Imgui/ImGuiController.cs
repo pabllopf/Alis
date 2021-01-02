@@ -68,9 +68,21 @@ namespace ImGuiNET
             // ADD BY ME
             //ImGui.GetIO().Fonts.AddFontDefault();
 
-            ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "/resources/fonts/segoeui/Segoe_Bold.ttf", 16.0f);
+            ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "resources/Segoe_Bold.ttf", 16.0f);
 
-            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "resources/fonts/segoeui/Segoe_Bold.ttf");
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "resources/Segoe_Bold.ttf");
+
+
+            unsafe
+            {
+                var nativeConfig = ImGuiNative.ImFontConfig_ImFontConfig();
+                var config = new ImFontConfigPtr(nativeConfig);
+                config.MergeMode = true;
+                config.GlyphMinAdvanceX = 13.0f;
+                GCHandle rangeHandle = GCHandle.Alloc(new ushort[] { Icon.ICONMINFA, Icon.ICONMAXFA, 0 }, GCHandleType.Pinned);
+                ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "resources/Icons.ttf", 14.0f, config, rangeHandle.AddrOfPinnedObject());
+            }
+
 
             ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable;
 
