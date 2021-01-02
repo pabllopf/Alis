@@ -139,6 +139,10 @@ namespace Alis.Editor
             }
 
             Debug.Log("Info Platform: " + platform.ToString() + " " + architecture.ToString() + " " + graphics.ToString());
+
+
+            Console.WriteLine("Finish process. Please press ANY KEY to close console.");
+            Console.ReadKey();
             return 0;
         }
     }

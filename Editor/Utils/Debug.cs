@@ -28,6 +28,9 @@ namespace Alis.Editor.Utils
             System.Console.BackgroundColor = System.ConsoleColor.Red;
             System.Console.WriteLine(message);
             System.Console.ResetColor();
+
+            System.Console.WriteLine("Press ANY KEY to close console.");
+            System.Console.ReadKey();
         }
 
         /// <summary>Exceptions the specified message.</summary>
