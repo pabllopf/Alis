@@ -31,6 +31,9 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
+        
+      - name: Build
+        run: dotnet build ./Editor/Editor.csproj --configuration Linux  
               
   job2: 
     name: Windows_2019
@@ -55,10 +58,12 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
+        
       - name: Build
-        run: dotnet build ./Editor/Editor.csproj --configuration Windows --no-restore
+        run: dotnet build ./Editor/Editor.csproj --configuration Windows 
+        
       - name: Publish
-        run: dotnet publish ./Editor/Editor.csproj -p:PublishProfile=WindowsX64      
+        run: dotnet publish ./Editor/Editor.csproj -r win-x64 -c Windows -p:PublishSingleFile=true -o ./_/Editor/Windows -p:PublishReadyToRun=true --self-contained true   
         
   job3: 
     name: MacOS_10.15
@@ -83,5 +88,6 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
+        
       - name: Build
-        run: dotnet build ./Editor/Editor.csproj --configuration MacOS --no-restore  
+        run: dotnet build ./Editor/Editor.csproj --configuration MacOS   
