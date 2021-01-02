@@ -70,7 +70,7 @@ namespace ImGuiNET
 
             ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "/resources/fonts/segoeui/Segoe_Bold.ttf", 16.0f);
 
-            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "/resources/fonts/segoeui/Segoe_Bold.ttf");
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "resources/fonts/segoeui/Segoe_Bold.ttf");
 
             ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable;
 
