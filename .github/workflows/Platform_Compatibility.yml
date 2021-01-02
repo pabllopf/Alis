@@ -6,11 +6,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  schedule:
-    - cron: '0 0 * * 1'
-
-
-
+    
 jobs:
   job1: 
     name: Ubuntu_18.04
@@ -35,12 +31,7 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
-      - name: Build
-        run: dotnet build ./Editor/Editor.csproj --configuration Release --no-restore
-      - name: Publish
-        run: dotnet publish ./Editor/Editor.csproj -p:PublishProfile=LinuxX64
-        
-        
+              
   job2: 
     name: Windows_2019
     runs-on: windows-2019
@@ -65,7 +56,7 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build ./Editor/Editor.csproj --configuration Release --no-restore
+        run: dotnet build ./Editor/Editor.csproj --configuration Windows --no-restore
       - name: Publish
         run: dotnet publish ./Editor/Editor.csproj -p:PublishProfile=WindowsX64      
         
@@ -93,6 +84,4 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build ./Editor/Editor.csproj --configuration Release --no-restore
-      - name: Publish
-        run: dotnet publish ./Editor/Editor.csproj -p:PublishProfile=MacOSX64   
+        run: dotnet build ./Editor/Editor.csproj --configuration MacOS --no-restore  
