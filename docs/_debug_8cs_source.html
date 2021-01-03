@@ -122,14 +122,17 @@ $(document).ready(function(){initNavTree('_debug_8cs_source.html',''); initResiz
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            System.Console.BackgroundColor = System.ConsoleColor.Red;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            System.Console.WriteLine(message);</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            System.Console.ResetColor();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_utils_1_1_debug.html#adbd6361e7058d2ac00a9ecf390735d49">   35</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_utils_1_1_debug.html#adbd6361e7058d2ac00a9ecf390735d49">Exception</a>(<span class="keywordtype">string</span> message)</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            System.Console.WriteLine(message);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            System.Console.WriteLine(<span class="stringliteral">&quot;Press ANY KEY to close console.&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            System.Console.ReadKey();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_utils_1_1_debug.html#adbd6361e7058d2ac00a9ecf390735d49">   38</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_utils_1_1_debug.html#adbd6361e7058d2ac00a9ecf390735d49">Exception</a>(<span class="keywordtype">string</span> message)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            System.Console.WriteLine(message);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_debug_html"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_debug.html">Alis.Editor.Utils.Debug</a></div><div class="ttdoc">Manage the messages to show in consoles.</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cs_source.html#l00008">Debug.cs:9</a></div></div>
@@ -137,13 +140,13 @@ $(document).ready(function(){initNavTree('_debug_8cs_source.html',''); initResiz
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_debug_html_a1445435cf88e1c01ac36d2a73144b07e"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_debug.html#a1445435cf88e1c01ac36d2a73144b07e">Alis.Editor.Utils.Debug.Warning</a></div><div class="ttdeci">static void Warning(string message)</div><div class="ttdoc">Warnings the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cs_source.html#l00019">Debug.cs:19</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_editor_1_1_utils_html"><div class="ttname"><a href="namespace_alis_1_1_editor_1_1_utils.html">Alis.Editor.Utils</a></div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cs_source.html#l00005">Debug.cs:6</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_debug_html_a3b293a6fc998104b1c084ca8db069522"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_debug.html#a3b293a6fc998104b1c084ca8db069522">Alis.Editor.Utils.Debug.Error</a></div><div class="ttdeci">static void Error(string message)</div><div class="ttdoc">Errors the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cs_source.html#l00026">Debug.cs:26</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_debug_html_adbd6361e7058d2ac00a9ecf390735d49"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_debug.html#adbd6361e7058d2ac00a9ecf390735d49">Alis.Editor.Utils.Debug.Exception</a></div><div class="ttdeci">static void Exception(string message)</div><div class="ttdoc">Exceptions the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cs_source.html#l00035">Debug.cs:35</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_debug_html_adbd6361e7058d2ac00a9ecf390735d49"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_debug.html#adbd6361e7058d2ac00a9ecf390735d49">Alis.Editor.Utils.Debug.Exception</a></div><div class="ttdeci">static void Exception(string message)</div><div class="ttdoc">Exceptions the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cs_source.html#l00038">Debug.cs:38</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_14eca4e58e6d71e3a9859288c1bd2735.html">Editor</a></li><li class="navelem"><a class="el" href="dir_85fe556759586cc42d66d27972f7781e.html">Utils</a></li><li class="navelem"><b>Debug.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sat Jan 2 2021 |</a>
+      <a>Generated on | Sun Jan 3 2021 |</a>
     </li>
   </ul>
 </div>

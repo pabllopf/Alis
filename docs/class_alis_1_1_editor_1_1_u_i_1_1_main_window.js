@@ -1,7 +1,7 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_main_window =
 [
     [ "MainWindow", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6dc10e9a6782cf94dc3efdcb5fb0e592", null ],
-    [ "Start", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a5948f8397a3f2981cfb91712fe7c6556", null ],
+    [ "Start", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a30c026bbf93f957307260dbbfb6d3d1f", null ],
     [ "Update", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ac20111c6242f912d769e6684940f22a8", null ],
     [ "Window_Resized", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a24e29ff5d83bcacb90d18536fdc5d6ce", null ],
     [ "Window_Closed", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a7db139bec0841f028ca2a2488eeb668e", null ],
@@ -13,6 +13,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_main_window =
     [ "StartPosY", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a4693692d7ee39b88ad1146f956d9db5b", null ],
     [ "SizeX", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af0fc10e093869134313a4e358b3ac43a", null ],
     [ "SizeY", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a04ce5b36114dd43290007b6606615292", null ],
+    [ "font1", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a05ec6fd2f4a3a36845cb684e1c6796ad", null ],
     [ "window", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#aef3852a2c040d8f72cf0759c673e1fec", null ],
     [ "windowCreateInfo", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a9e61ecb09bbfe1b238f4c06c019143ae", null ],
     [ "windowState", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8e4aa438dc885ab957ff565260c85d6d", null ],
