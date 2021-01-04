@@ -38,7 +38,7 @@ namespace Alis.Editor.UI.Widgets
            
             startInfo.FileName = info.Platform.Equals(Platform.Windows) ? "cmd" : 
                 info.Platform.Equals(Platform.MacOS) ? "open - a Terminal" :
-                "terminal";
+                "exo-open --launch TerminalEmulator";
             startInfo.UseShellExecute = true;
             process.StartInfo = startInfo;
         }
