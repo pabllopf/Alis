@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linux_1703',['Linux',['../namespace_alis_1_1_editor.html#a1b4a4903235d70e84b2e2eb5833ec084aedc9f0a5a5d57797bf68e37364743831',1,'Alis::Editor']]]
+  ['exiteditor_1737',['ExitEditor',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca307c5a0101e6dd9d9ea1b04112a63232',1,'Alis::Editor::UI::Widgets']]]
 ];

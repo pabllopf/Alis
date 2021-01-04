@@ -7,13 +7,13 @@ var class_alis_1_1_editor_1_1_u_i_1_1_main_window =
     [ "Window_Closed", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a7db139bec0841f028ca2a2488eeb668e", null ],
     [ "Window_Closing", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a09ba700e6cf0125116b832220eaa673c", null ],
     [ "Window_Moved", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad57b10d88f3d99a35b081d55e58234bf", null ],
+    [ "ShowPreviewMessage", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad529febf4e856987c253b2410d7aa81a", null ],
     [ "LoadStyle", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8cc1fb41c39355559a7611b60442c31b", null ],
     [ "Title", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a304862de473de0527983646c2e0c22d2", null ],
     [ "StartPosX", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ab880cf9e07bb120bfa8339dd3e4c3866", null ],
     [ "StartPosY", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a4693692d7ee39b88ad1146f956d9db5b", null ],
     [ "SizeX", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af0fc10e093869134313a4e358b3ac43a", null ],
     [ "SizeY", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a04ce5b36114dd43290007b6606615292", null ],
-    [ "font1", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a05ec6fd2f4a3a36845cb684e1c6796ad", null ],
     [ "window", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#aef3852a2c040d8f72cf0759c673e1fec", null ],
     [ "windowCreateInfo", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a9e61ecb09bbfe1b238f4c06c019143ae", null ],
     [ "windowState", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8e4aa438dc885ab957ff565260c85d6d", null ],
@@ -28,5 +28,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_main_window =
     [ "snapshot", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afb16f9312d8f8563cf1bed3cf1170722", null ],
     [ "clearColor", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a9c7b96eeaf7aac773c3a0fbfc9b319d6", null ],
     [ "deltaSeconds", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6123a6c059f0285be9e8af2ebf832af8", null ],
-    [ "widgetManager", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af96d9b68cd7f4e15d96b67e6aa53a01a", null ]
+    [ "widgetManager", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af96d9b68cd7f4e15d96b67e6aa53a01a", null ],
+    [ "advice", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a056a8f7822c4f55248a44f3952106f10", null ]
 ];

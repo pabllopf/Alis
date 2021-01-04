@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['x64_1712',['X64',['../namespace_alis_1_1_editor.html#a7605f066486f73752e8b217e90d35981af0851da0e02bf22830828822f578dc8f',1,'Alis::Editor']]],
-  ['x86_1713',['X86',['../namespace_alis_1_1_editor.html#a7605f066486f73752e8b217e90d35981afd1a4608b5b463bc7a41d86a1662d3b7',1,'Alis::Editor']]]
+  ['windows_1746',['Windows',['../namespace_alis_1_1_editor.html#a1b4a4903235d70e84b2e2eb5833ec084aaea23489ce3aa9b6406ebb28e0cda430',1,'Alis::Editor']]]
 ];

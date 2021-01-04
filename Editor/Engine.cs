@@ -6,6 +6,7 @@ namespace Alis.Editor
 {
     using System;
     using System.Reflection;
+    using System.Runtime.InteropServices;
     using System.Threading;
     using Alis.Editor.UI;
     using Alis.Editor.Utils;
@@ -52,9 +53,9 @@ namespace Alis.Editor
             get 
             {
                 return
-                    Environment.OSVersion.Platform.ToString().Contains("Win") ? Platform.Windows :
-                    Environment.OSVersion.Platform.ToString().Contains("Mac") ? Platform.MacOS :
-                    Environment.OSVersion.Platform.ToString().Contains("Unix") ? Platform.Linux :
+                    RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? Platform.Windows :
+                    RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ? Platform.MacOS :
+                    RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? Platform.Linux :
                     Platform.Unsupported;
             }
         }
