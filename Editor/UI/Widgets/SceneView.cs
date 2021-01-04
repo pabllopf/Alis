@@ -10,7 +10,7 @@ namespace Alis.Editor.UI.Widgets
     public class SceneView : Widget
     {
         /// <summary>The name</summary>
-        private const string Name = "SceneView";
+        private const string Name = "Scene";
 
         /// <summary>Closes this instance.</summary>
         public override void Close()
@@ -22,7 +22,7 @@ namespace Alis.Editor.UI.Widgets
         {
             ImGui.SetNextWindowPos(new System.Numerics.Vector2(650, 20), ImGuiCond.FirstUseEver);
 
-            if (ImGui.Begin("Scene View"))
+            if (ImGui.Begin(Name))
             {
                 /*
                 render.Clear();

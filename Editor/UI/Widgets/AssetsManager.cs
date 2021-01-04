@@ -12,7 +12,7 @@ namespace Alis.Editor.UI.Widgets
     public class AssetsManager : Widget
     {
         /// <summary>The name</summary>
-        private const string Name = "AssetsManager";
+        private const string Name = "Assets";
 
         /// <summary>The filter</summary>
         private ImGuiTextFilterPtr filter;
@@ -44,9 +44,10 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-            if (ImGui.Begin("Assets", ref isOpen))
+            if (ImGui.Begin(Name, ref isOpen))
             {
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(1.0f, 3.0f));
+
 
                 foreach (string folderButton in GetPathList(pathExample))
                 {

@@ -35,6 +35,7 @@ namespace Alis.Editor.UI.Widgets
             widgets.Add(new SceneView());
             widgets.Add(new AssetsManager());
             widgets.Add(new Console(EventHandler));
+            widgets.Add(new GameView(EventHandler));
         }
 
         /// <summary>Occurs when [event handler].</summary>
