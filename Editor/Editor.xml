@@ -495,6 +495,9 @@
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.startInfo">
             <summary>The start information</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.aboutState">
+            <summary>The about state</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.exitState">
             <summary>The exit state</summary>
         </member>

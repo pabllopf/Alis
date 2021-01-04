@@ -23,6 +23,9 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The start information</summary>
         private System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
 
+        /// <summary>The about state</summary>
+        private bool aboutState = false;
+
         /// <summary>The exit state</summary>
         private bool exitState = false;
 
@@ -224,6 +227,7 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.MenuItem(Icon.INFOCIRCLE + " About"))
                     {
+                        aboutState = true;
                     }
 
                     ImGui.EndMenu();
@@ -232,6 +236,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.EndMainMenuBar();
             }
 
+            ShowAboutPopup();
             ShowExitPopup();
         }
 
@@ -254,6 +259,23 @@ namespace Alis.Editor.UI.Widgets
         private void OpenTerminal()
         {
             process.Start();
+        }
+
+        private void ShowAboutPopup()
+        {
+            if (aboutState)
+            {
+                ImGui.OpenPopup("About");
+            }
+
+            if (ImGui.BeginPopupModal("About", ref aboutState, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            {
+                ImGui.Text("Version: 1.0.0");
+                ImGui.Text("Author: Pablo Perdomo Falcón");
+                ImGui.Text("Licence: General Public License v3.0");
+
+                ImGui.EndPopup();
+            }
         }
 
         /// <summary>Shows the exit popup.</summary>
