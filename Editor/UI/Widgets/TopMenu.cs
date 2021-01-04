@@ -211,6 +211,7 @@ namespace Alis.Editor.UI.Widgets
                 {
                     if (ImGui.MenuItem(Icon.QUESTIONCIRCLE + " Manual"))
                     {
+                        System.Diagnostics.Process.Start("explorer", "https://pabllopf.github.io/Alis/");
                     }
 
                     ImGui.Separator();
