@@ -31,8 +31,6 @@ namespace Alis.Editor.UI
         /// <summary>The size y</summary>
         private const int SizeY = 640;
 
-        private ImFontPtr font1;
-
         #region VeldridComponents
 
         /// <summary>The window</summary>
@@ -84,6 +82,9 @@ namespace Alis.Editor.UI
         /// <summary>The widget manager</summary>
         private WidgetManager widgetManager;
 
+        /// <summary>The advice</summary>
+        private bool advice = true;
+
         #endregion
 
         /// <summary>Initializes a new instance of the <see cref="MainWindow" /> class.</summary>
@@ -92,8 +93,9 @@ namespace Alis.Editor.UI
             Debug.Log("\nInit the Main Window.");
         }
 
-        /// <summary>Starts this instance.</summary>
-        /// <returns>Return false or true</returns>
+        /// <summary>Starts the specified information.</summary>
+        /// <param name="info">The information.</param>
+        /// <returns>return the exit result.</returns>
         public bool Start(Info info)
         {
             Debug.Log("\nStarting Main Window...");
@@ -180,7 +182,7 @@ namespace Alis.Editor.UI
             window.Moved += Window_Moved;
             Debug.Log(" > Created Event window.Moved: (" + "Func: " + "Window_Moved" + ")");
 
-            widgetManager = new WidgetManager();
+            widgetManager = new WidgetManager(info);
             Debug.Log(" > Created widgetManager.");
 
             deltaSeconds = 1.0f / 60.0f;
@@ -207,13 +209,9 @@ namespace Alis.Editor.UI
                 }
 
                 controller.Update(deltaSeconds, snapshot);
-
-               
-
                 widgetManager.Update();
-
-
                 ImGui.ShowDemoWindow();
+                ShowPreviewMessage();
 
                 commandList.Begin();
                 commandList.SetFramebuffer(graphicsDevice.MainSwapchain.Framebuffer);
@@ -251,6 +249,26 @@ namespace Alis.Editor.UI
         private void Window_Moved(Point obj)
         {
             Debug.Log("EVENT Window Moved: (" + "PosX:" + obj.X + " PosY:" + obj.Y + ")");
+        }
+
+        /// <summary>Shows the preview message.</summary>
+        private void ShowPreviewMessage() 
+        {
+            if (advice)
+            {
+                ImGui.OpenPopup("Alert!!");
+            }
+
+            if (ImGui.BeginPopupModal("Alert!!", ref advice, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            {
+                ImGui.Text("Please note that this is a test version in development.");
+                if (ImGui.Button("Accept", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 35.0f)))
+                {
+                    advice = false;
+                    ImGui.CloseCurrentPopup();
+                }
+                ImGui.EndPopup();
+            }
         }
 
         /// <summary>Loads the style.</summary>

@@ -4,10 +4,10 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
+    using System;
     using Alis.Editor.Utils;
     using ImGuiNET;
-    using System;
-
+    
     /// <summary>Menu of editor</summary>
     public class TopMenu : Widget
     {
@@ -17,11 +17,27 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The event handler</summary>
         private EventHandler<EventType> eventHandler;
 
+        /// <summary>The process</summary>
+        private System.Diagnostics.Process process = new System.Diagnostics.Process();
+        
+        /// <summary>The start information</summary>
+        private System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+
+        /// <summary>The exit state</summary>
+        private bool exitState = false;
+
         /// <summary>Initializes a new instance of the <see cref="TopMenu" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
-        public TopMenu(EventHandler<EventType> eventHandler)
+        /// <param name="info">The information.</param>
+        public TopMenu(EventHandler<EventType> eventHandler, Info info)
         {
             this.eventHandler = eventHandler;
+           
+            startInfo.FileName = info.Platform.Equals(Platform.Windows) ? "cmd" : 
+                info.Platform.Equals(Platform.MacOS) ? "open - a Terminal" :
+                "terminal";
+            startInfo.UseShellExecute = true;
+            process.StartInfo = startInfo;
         }
 
         /// <summary>Gets the name.</summary>
@@ -30,8 +46,6 @@ namespace Alis.Editor.UI.Widgets
         {
             return Name;
         }
-
-        bool popup = false;
 
         /// <summary>Draw this instance.</summary>
         public override void Draw()
@@ -72,7 +86,7 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.MenuItem(Icon.POWEROFF + " Exit", "Alt+F4"))
                     {
-                        eventHandler.Invoke(this, EventType.ExitEditor);
+                        exitState = true;
                     }
 
                     ImGui.EndMenu();
@@ -216,6 +230,8 @@ namespace Alis.Editor.UI.Widgets
 
                 ImGui.EndMainMenuBar();
             }
+
+            ShowExitPopup();
         }
 
         /// <summary>Load this instance.</summary>
@@ -236,6 +252,37 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Opens the terminal.</summary>
         private void OpenTerminal()
         {
+            process.Start();
+        }
+
+        /// <summary>Shows the exit popup.</summary>
+        private void ShowExitPopup()
+        {
+            if (exitState) 
+            {
+                ImGui.OpenPopup("Exit?");
+            }
+
+            if (ImGui.BeginPopupModal("Exit?", ref exitState, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            {
+                ImGui.Text("Are you sure you want to exit?, Please remenber save the project.");
+                if (ImGui.Button("Accept", new System.Numerics.Vector2((ImGui.GetContentRegionAvail().X / 2) - 5.0f, 35.0f)))
+                {
+                    eventHandler.Invoke(this, EventType.ExitEditor);
+                    exitState = false;
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.SameLine();
+
+                if (ImGui.Button("Cancel", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 35.0f)))
+                {
+                    exitState = false;
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.EndPopup();
+            }
         }
     }
 }

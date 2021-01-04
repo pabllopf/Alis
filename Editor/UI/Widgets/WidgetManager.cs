@@ -25,11 +25,11 @@ namespace Alis.Editor.UI.Widgets
         private Stack<EventType> pendingEvents = new Stack<EventType>();
 
         /// <summary>Initializes a new instance of the <see cref="WidgetManager" /> class.</summary>
-        public WidgetManager()
+        public WidgetManager(Info info)
         {
             EventHandler += ManageEventHandler;
             widgets.Add(new DockSpace(EventHandler));
-            widgets.Add(new TopMenu(EventHandler));
+            widgets.Add(new TopMenu(EventHandler, info));
             widgets.Add(new BottomMenu(EventHandler));
             widgets.Add(new Inspector());
             widgets.Add(new SceneView());

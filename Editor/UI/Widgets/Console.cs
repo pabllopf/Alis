@@ -35,13 +35,13 @@ namespace Alis.Editor.UI.Widgets
         #region StateFilters
 
         /// <summary>The filter messages</summary>
-        private bool filterLogs = true;
+        private bool filterLogs = false;
         
         /// <summary>The filter errors</summary>
-        private bool filterErrors = true;
+        private bool filterErrors = false;
 
         /// <summary>The filter warnings</summary>
-        private bool filterWarnings = true;
+        private bool filterWarnings = false;
 
         #endregion
 
@@ -136,9 +136,9 @@ namespace Alis.Editor.UI.Widgets
         }
 
         /// <summary>Prints this instance.</summary>
-        public void Print(string message) 
+        public void Print(string message)
         {
-            if (filterErrors && message.Contains("Error")) 
+            if (filterErrors && message.Contains("Error"))
             {
                 ImGui.TextColored(redColor, message.Replace("Error: ", ""));
                 return;
@@ -154,6 +154,22 @@ namespace Alis.Editor.UI.Widgets
             {
                 ImGui.Text(message.Replace("Log: ", ""));
                 return;
+            }
+
+            if (!filterLogs && !filterWarnings && !filterErrors) 
+            {
+                if (message.Contains("Warning") || message.Contains("Error")) 
+                {
+                    ImGui.TextColored(
+                        message.Contains("Warning") ? yellowColor : redColor,
+                        message.Contains("Warning") ? message.Replace("Warning: ", "") :
+                        message.Replace("Error: ", "")
+                        );
+                }
+                if (message.Contains("Log")) 
+                {
+                    ImGui.Text(message.Replace("Log: ", ""));
+                }
             }
         }
 
@@ -193,24 +209,42 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.SameLine();
 
                 ImGui.PushStyleColor(ImGuiCol.Button, filterWarnings ? buttonPressed : buttonDefault);
-                ImGui.PushStyleColor(ImGuiCol.Text, yellowColor);
+
+                if (log.Find(i => i.Contains("Warning")) != null) 
+                {
+                    ImGui.PushStyleColor(ImGuiCol.Text, yellowColor);
+                }
+
                 if (ImGui.Button(Icon.EXCLAMATIONCIRCLE + ""))
                 {
                     filterWarnings = !filterWarnings;
                 }
-                ImGui.PopStyleColor(2);
+                ImGui.PopStyleColor();
+                if (log.Find(i => i.Contains("Warning")) != null)
+                {
+                    ImGui.PopStyleColor();
+                }
 
                 ImGui.SameLine();
 
                 ImGui.PushStyleColor(ImGuiCol.Button, filterErrors ? buttonPressed : buttonDefault);
-                ImGui.PushStyleColor(ImGuiCol.Text, redColor);
+                
+                if (log.Find(i => i.Contains("Error")) != null)
+                {
+                    ImGui.PushStyleColor(ImGuiCol.Text, redColor);
+                }
 
                 if (ImGui.Button(Icon.EXCLAMATIONTRIANGLE + ""))
                 {
                     filterErrors = !filterErrors;
                 }
                 
-                ImGui.PopStyleColor(2);
+                ImGui.PopStyleColor();
+                if (log.Find(i => i.Contains("Error")) != null)
+                {
+                    ImGui.PopStyleColor();
+                }
+
                 ImGui.PopStyleVar(1);
 
                 ImGui.Separator();

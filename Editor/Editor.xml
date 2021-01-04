@@ -165,12 +165,16 @@
         <member name="F:Alis.Editor.UI.MainWindow.widgetManager">
             <summary>The widget manager</summary>
         </member>
+        <member name="F:Alis.Editor.UI.MainWindow.advice">
+            <summary>The advice</summary>
+        </member>
         <member name="M:Alis.Editor.UI.MainWindow.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.MainWindow" /> class.</summary>
         </member>
         <member name="M:Alis.Editor.UI.MainWindow.Start(Alis.Editor.Info)">
-            <summary>Starts this instance.</summary>
-            <returns>Return false or true</returns>
+            <summary>Starts the specified information.</summary>
+            <param name="info">The information.</param>
+            <returns>return the exit result.</returns>
         </member>
         <member name="M:Alis.Editor.UI.MainWindow.Update">
             <summary>Updates this instance.</summary>
@@ -187,6 +191,9 @@
         <member name="M:Alis.Editor.UI.MainWindow.Window_Moved(Veldrid.Point)">
             <summary>Windows the moved.</summary>
             <param name="obj">The object.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.ShowPreviewMessage">
+            <summary>Shows the preview message.</summary>
         </member>
         <member name="M:Alis.Editor.UI.MainWindow.LoadStyle">
             <summary>Loads the style.</summary>
@@ -482,9 +489,19 @@
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.eventHandler">
             <summary>The event handler</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.process">
+            <summary>The process</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.startInfo">
+            <summary>The start information</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.exitState">
+            <summary>The exit state</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType},Alis.Editor.Info)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.TopMenu" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
+            <param name="info">The information.</param>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.GetName">
             <summary>Gets the name.</summary>
@@ -504,6 +521,9 @@
         </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.OpenTerminal">
             <summary>Opens the terminal.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShowExitPopup">
+            <summary>Shows the exit popup.</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.Widget">
             <summary>Widget define</summary>
@@ -536,7 +556,7 @@
         <member name="F:Alis.Editor.UI.Widgets.WidgetManager.pendingEvents">
             <summary>The pending events</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.#ctor">
+        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.#ctor(Alis.Editor.Info)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.WidgetManager" /> class.</summary>
         </member>
         <member name="E:Alis.Editor.UI.Widgets.WidgetManager.EventHandler">
