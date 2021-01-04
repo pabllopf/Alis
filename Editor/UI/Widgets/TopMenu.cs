@@ -35,14 +35,28 @@ namespace Alis.Editor.UI.Widgets
         public TopMenu(EventHandler<EventType> eventHandler, Info info)
         {
             this.eventHandler = eventHandler;
-           
-            startInfo.FileName = info.Platform.Equals(Platform.Windows) ? "cmd" : 
-                info.Platform.Equals(Platform.MacOS) ? "open - a Terminal" :
-                "exo-open --launch TerminalEmulator";
+
+            if(info.Platform.Equals(Platform.Windows))
+            {
+                startInfo.FileName = "cmd";
+            }
+
+            if(info.Platform.Equals(Platform.MacOS))
+            {
+                startInfo.FileName = "open - a Terminal";
+            }
+
+            if(!info.Platform.Equals(Platform.MacOS) && !info.Platform.Equals(Platform.Windows))
+            {
+                startInfo.FileName = "/bin/bash";
+                startInfo.Arguments = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
+            }
+
+
             startInfo.UseShellExecute = true;
             process.StartInfo = startInfo;
         }
-
+        
         /// <summary>Gets the name.</summary>
         /// <returns>Return name widget</returns>
         public override string GetName()
