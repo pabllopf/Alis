@@ -12,5 +12,9 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>Close Console</summary>
         CloseConsole,
+
+        /// <summary>The exit editor</summary>
+        ExitEditor,
+
     }
 }

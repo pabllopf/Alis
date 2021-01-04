@@ -15,6 +15,7 @@ namespace Alis.Editor.UI.Widgets
         {
             { EventType.OpenConsole, ProcessOpenConsole },
             { EventType.CloseConsole, ProcessCloseConsole },
+            { EventType.ExitEditor, ProcessExitEditor }
         };
 
         /// <summary>The widgets</summary>
@@ -33,6 +34,7 @@ namespace Alis.Editor.UI.Widgets
             widgets.Add(new Inspector());
             widgets.Add(new SceneView());
             widgets.Add(new AssetsManager());
+            widgets.Add(new Console(EventHandler));
         }
 
         /// <summary>Occurs when [event handler].</summary>
@@ -69,6 +71,13 @@ namespace Alis.Editor.UI.Widgets
         {
             obj.widgets.RemoveAll(i => i.GetType() == typeof(Console));
             System.Console.WriteLine("Process Close Console");
+        }
+
+        /// <summary>Processes the exit editor.</summary>
+        private static void ProcessExitEditor(WidgetManager obj) 
+        {
+            Environment.Exit(1);
+            System.Console.WriteLine("Process Exit Editor");
         }
 
         /// <summary>Manages the event handler.</summary>

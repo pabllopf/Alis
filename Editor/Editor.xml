@@ -277,7 +277,10 @@
         <member name="T:Alis.Editor.UI.Widgets.Console">
             <summary>Console widget </summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.Console.filterPtr">
+        <member name="F:Alis.Editor.UI.Widgets.Console.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.filter">
             <summary>The filter PTR</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.Console.isOpen">
@@ -289,15 +292,67 @@
         <member name="F:Alis.Editor.UI.Widgets.Console.eventHandler">
             <summary>The event handler</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.itemSpace">
+            <summary>The item space</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.filterLogs">
+            <summary>The filter messages</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.filterErrors">
+            <summary>The filter errors</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.filterWarnings">
+            <summary>The filter warnings</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.defaultColor">
+            <summary>The default color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.buttonDefault">
+            <summary>The button default</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.buttonPressed">
+            <summary>The button pressed</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.redColor">
+            <summary>The red color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.yellowColor">
+            <summary>The yellow color</summary>
+        </member>
         <member name="M:Alis.Editor.UI.Widgets.Console.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Console" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.Console.#ctor(System.Boolean)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Console" /> class.</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.Console.Clear">
             <summary>Clears this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.GetName">
+            <summary>Gets the name.</summary>
+            <returns>Return name widget</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Open">
+            <summary>Opens this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Close">
+            <summary>Close this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.OnLoad">
+            <summary>Load this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Warning(System.String)">
+            <summary>Warnings the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Error(System.String)">
+            <summary>Errors the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Log(System.String)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Print(System.String)">
+            <summary>Prints this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Console.Draw">
             <summary>Draws this instance.</summary>
@@ -367,6 +422,9 @@
         </member>
         <member name="F:Alis.Editor.UI.Widgets.EventType.CloseConsole">
             <summary>Close Console</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.ExitEditor">
+            <summary>The exit editor</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.Inspector">
             <summary>Manage components of scene.</summary>
@@ -495,6 +553,9 @@
             <summary>Invokes the close console.</summary>
             <param name="obj">The object.</param>
         </member>
+        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.ProcessExitEditor(Alis.Editor.UI.Widgets.WidgetManager)">
+            <summary>Processes the exit editor.</summary>
+        </member>
         <member name="M:Alis.Editor.UI.Widgets.WidgetManager.ManageEventHandler(System.Object,Alis.Editor.UI.Widgets.EventType)">
             <summary>Manages the event handler.</summary>
             <param name="sender">The sender.</param>
@@ -522,10 +583,6 @@
         </member>
         <member name="M:Alis.Editor.Utils.Debug.Error(System.String)">
             <summary>Errors the specified message.</summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:Alis.Editor.Utils.Debug.Exception(System.String)">
-            <summary>Exceptions the specified message.</summary>
             <param name="message">The message.</param>
         </member>
         <member name="T:Alis.Editor.Utils.Icon">

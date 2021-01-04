@@ -31,6 +31,8 @@ namespace Alis.Editor.UI.Widgets
             return Name;
         }
 
+        bool popup = false;
+
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
@@ -70,6 +72,7 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.MenuItem(Icon.POWEROFF + " Exit", "Alt+F4"))
                     {
+                        eventHandler.Invoke(this, EventType.ExitEditor);
                     }
 
                     ImGui.EndMenu();

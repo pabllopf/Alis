@@ -12,10 +12,13 @@ namespace Alis.Editor.UI.Widgets
     /// <summary>Console widget </summary>
     public class Console : Widget
     {
+        public static Console Current; 
+
+        /// <summary>The name</summary>
         private const string Name = "Console";
 
         /// <summary>The filter PTR</summary>
-        private readonly ImGuiTextFilterPtr filterPtr;
+        private ImGuiTextFilterPtr filter;
 
         /// <summary>The is open</summary>
         private bool isOpen;
@@ -25,6 +28,41 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>The event handler</summary>
         private EventHandler<EventType> eventHandler;
+
+        /// <summary>The item space</summary>
+        private System.Numerics.Vector2 itemSpace = new System.Numerics.Vector2(2.0f, 3.0f);
+
+        #region StateFilters
+
+        /// <summary>The filter messages</summary>
+        private bool filterLogs = true;
+        
+        /// <summary>The filter errors</summary>
+        private bool filterErrors = true;
+
+        /// <summary>The filter warnings</summary>
+        private bool filterWarnings = true;
+
+        #endregion
+
+        #region Colors
+
+        /// <summary>The default color</summary>
+        private System.Numerics.Vector4 defaultColor;
+        
+        /// <summary>The button default</summary>
+        private System.Numerics.Vector4 buttonDefault;
+        
+        /// <summary>The button pressed</summary>
+        private System.Numerics.Vector4 buttonPressed = new System.Numerics.Vector4(0.078f, 0.095f, 0.108f, 1.000f);
+        
+        /// <summary>The red color</summary>
+        private System.Numerics.Vector4 redColor = new System.Numerics.Vector4(0.654f, 0.070f, 0.070f, 1.000f);
+        
+        /// <summary>The yellow color</summary>
+        private System.Numerics.Vector4 yellowColor = new System.Numerics.Vector4(0.852f, 0.812f, 0.207f, 1.000f);
+
+        #endregion
 
         /// <summary>Initializes a new instance of the <see cref="Console" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
@@ -36,22 +74,15 @@ namespace Alis.Editor.UI.Widgets
             unsafe
             {
                 ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
-                _ = new ImGuiTextFilterPtr(filterPtr);
+                filter = new ImGuiTextFilterPtr(filterPtr);
             }
+
+            Log("ejemplo");
+            Error("ejemplo");
+            Warning("ejemplo");
+
+            Current = this;
         }
-
-        /// <summary>Initializes a new instance of the <see cref="Console" /> class.</summary>
-        public Console(bool isOpen)
-        {
-            this.isOpen = isOpen;
-
-            unsafe
-            {
-                ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
-                _ = new ImGuiTextFilterPtr(filterPtr);
-            }
-        }
-
 
         /// <summary>Clears this instance.</summary>
         public void Clear()
@@ -59,23 +90,71 @@ namespace Alis.Editor.UI.Widgets
             log.Clear();
         }
 
+        /// <summary>Gets the name.</summary>
+        /// <returns>Return name widget</returns>
         public override string GetName()
         {
             return Name;
         }
 
+        /// <summary>Opens this instance.</summary>
         public override void Open()
         {
             isOpen = true;
         }
 
+        /// <summary>Close this instance.</summary>
         public override void Close()
         {
             isOpen = false;
         }
 
+        /// <summary>Load this instance.</summary>
         public override void OnLoad()
         {
+        }
+
+        /// <summary>Warnings the specified message.</summary>
+        /// <param name="message">The message.</param>
+        public void Warning(string message)
+        {
+            log.Add("Warning: " + message);
+        }
+
+        /// <summary>Errors the specified message.</summary>
+        /// <param name="message">The message.</param>
+        public void Error(string message)
+        {
+            log.Add("Error: " + message);
+        }
+
+        /// <summary>Logs the specified message.</summary>
+        /// <param name="message">The message.</param>
+        public void Log(string message)
+        {
+            log.Add("Log: " + message);
+        }
+
+        /// <summary>Prints this instance.</summary>
+        public void Print(string message) 
+        {
+            if (filterErrors && message.Contains("Error")) 
+            {
+                ImGui.TextColored(redColor, message.Replace("Error: ", ""));
+                return;
+            }
+
+            if (filterWarnings && message.Contains("Warning"))
+            {
+                ImGui.TextColored(yellowColor, message.Replace("Warning: ", ""));
+                return;
+            }
+
+            if (filterLogs && message.Contains("Log"))
+            {
+                ImGui.Text(message.Replace("Log: ", ""));
+                return;
+            }
         }
 
         /// <summary>Draws this instance.</summary>
@@ -87,164 +166,26 @@ namespace Alis.Editor.UI.Widgets
                 return;
             }
 
-
-
             if (ImGui.Begin("Console", ref isOpen))
             {
-                //ImGui.SameLine();
-
-                //filterPtr.Draw(Icon.SEARCH + "", -100.0f);
-
-                //ImGui.SameLine();
-
                 if (ImGui.Button(Icon.TRASH + " Clean"))
                 {
                     Clear();
                     return;
                 }
-            }
-
-            ImGui.End();
-        }
-    }
-}
-
-/*
-    using ImGuiNET;
-    using System;
-    using System.Collections.Generic;
-    public class Console
-    {
-        private ImGuiTextFilterPtr filter;
-
-        private bool filterMessages = false;
-        private bool filterErrors = false;
-        private bool filterWarnings = false;
-
-        private List<String> consoleLog = new List<string>();
-
-        private System.Numerics.Vector2 itemSpacing;
-
-        private System.Numerics.Vector4 defaultColor;
-        private System.Numerics.Vector4 buttonDefault;
-        private System.Numerics.Vector4 buttonPressed = new System.Numerics.Vector4(0.078f, 0.095f, 0.108f, 1.000f);
-        private System.Numerics.Vector4 redColor = new System.Numerics.Vector4(0.879f, 0.205f, 0.205f, 1.000f);
-        private System.Numerics.Vector4 yellowColor = new System.Numerics.Vector4(0.933f, 0.875f, 0.238f, 1.000f);
-
-
-        public unsafe Console()
-        {
-            ImGuiStylePtr style = ImGui.GetStyle();
-            defaultColor = style.Colors[(int)ImGuiCol.Text];
-            buttonDefault = style.Colors[(int)ImGuiCol.Button];
-            itemSpacing = style.ItemSpacing;
-
-            ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
-            filter = new ImGuiTextFilterPtr(filterPtr);
-
-            Message("ejemplo");
-            Error("Error: ejemplo");
-            Warning("Warning: ejemplo");
-        }
-
-        public void Clear()
-        {
-            consoleLog.Clear();
-        }
-
-        public void Warning(string message)
-        {
-            consoleLog.Add(message);
-        }
-
-        public void Error(string message)
-        {
-            consoleLog.Add(message);
-        }
-
-        public void Message(string message)
-        {
-            consoleLog.Add(message);
-        }
-
-        private void Print(string message)
-        {
-            if (filterErrors == true && message.Contains("Error"))
-            {
-                ImGui.TextColored(redColor, message);
-                return;
-            }
-
-            if (filterWarnings == true && message.Contains("Warning"))
-            {
-                ImGui.TextColored(yellowColor, message);
-                return;
-            }
-
-            if (filterMessages == true && !message.Contains("Error") && !message.Contains("Warning"))
-            {
-                ImGui.TextColored(defaultColor, message);
-                return;
-            }
-
-            if (filterErrors == true && filterWarnings == true && (message.Contains("Error") || message.Contains("Warning")))
-            {
-                ImGui.TextColored(
-                    message.Contains("Error") ? redColor : yellowColor,
-                    message);
-                return;
-            }
-
-            if (filterErrors == true && filterMessages == true && (message.Contains("Error") || message.Contains("Warning")))
-            {
-                ImGui.TextColored(
-                    message.Contains("Error") ? redColor : defaultColor,
-                    message);
-                return;
-            }
-
-            if (filterWarnings == true && filterMessages == true && (message.Contains("Error") || message.Contains("Warning")))
-            {
-                ImGui.TextColored(
-                    message.Contains("Warning") ? yellowColor : defaultColor,
-                    message);
-                return;
-            }
-
-            if (filterErrors == false && filterWarnings == false && filterMessages == false)
-            {
-                ImGui.TextColored(
-                    message.Contains("Error") ? redColor :
-                    message.Contains("Warning") ? yellowColor :
-                    defaultColor,
-                    message);
-                return;
-            }
-        }
-
-        public void Draw()
-        {
-            bool isOpen = true;
-            if (ImGui.Begin("Console", ref isOpen)) 
-            {
-                if (ImGui.Button(Icon.ICON_FA_TRASH + " Clean"))
-                {
-                    Clear();
-                    return;
-                }
 
                 ImGui.SameLine();
 
-                filter.Draw(Icon.ICON_FA_SEARCH + "", -100.0f);
+                filter.Draw(Icon.SEARCH + "", -100.0f);
 
                 ImGui.SameLine();
 
-                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(2.0f, 3.0f));
+                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, itemSpace);
 
-                ImGui.PushStyleColor(ImGuiCol.Button, filterMessages ? buttonPressed : buttonDefault);
-                if (ImGui.Button(Icon.ICON_FA_COMMENT + ""))
+                ImGui.PushStyleColor(ImGuiCol.Button, filterLogs ? buttonPressed : buttonDefault);
+                if (ImGui.Button(Icon.COMMENT + ""))
                 {
-                    filterMessages = !filterMessages;
+                    filterLogs = !filterLogs;
                 }
 
                 ImGui.PopStyleColor(1);
@@ -252,43 +193,44 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.SameLine();
 
                 ImGui.PushStyleColor(ImGuiCol.Button, filterWarnings ? buttonPressed : buttonDefault);
-                if (ImGui.Button(Icon.ICON_FA_EXCLAMATION_CIRCLE + ""))
+                ImGui.PushStyleColor(ImGuiCol.Text, yellowColor);
+                if (ImGui.Button(Icon.EXCLAMATIONCIRCLE + ""))
                 {
                     filterWarnings = !filterWarnings;
                 }
-                ImGui.PopStyleColor(1);
+                ImGui.PopStyleColor(2);
 
                 ImGui.SameLine();
 
                 ImGui.PushStyleColor(ImGuiCol.Button, filterErrors ? buttonPressed : buttonDefault);
-                if (ImGui.Button(Icon.ICON_FA_EXCLAMATION_TRIANGLE + ""))
+                ImGui.PushStyleColor(ImGuiCol.Text, redColor);
+
+                if (ImGui.Button(Icon.EXCLAMATIONTRIANGLE + ""))
                 {
-                    filterErrors = filterErrors ? false : true;
+                    filterErrors = !filterErrors;
                 }
-                ImGui.PopStyleColor(1);
+                
+                ImGui.PopStyleColor(2);
                 ImGui.PopStyleVar(1);
 
                 ImGui.Separator();
 
-                if (ImGui.BeginChild("scrolling", new System.Numerics.Vector2(0, 0), false, ImGuiWindowFlags.HorizontalScrollbar)) 
+                if (ImGui.BeginChild("scrolling", new System.Numerics.Vector2(0, 0), false, ImGuiWindowFlags.HorizontalScrollbar))
                 {
                     ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(0, 0));
 
-                    if (filter.IsActive())
+                    for (int i = 0; i < log.Count; i++)
                     {
-                        foreach (string message in consoleLog) 
+                        if (filter.IsActive())
                         {
-                            if (filter.PassFilter(message)) 
+                            if (filter.PassFilter(log[i]))
                             {
-                                Print(message);
+                                Print(log[i]);
                             }
                         }
-                    }
-                    else
-                    {
-                        foreach (string message in consoleLog)
+                        else 
                         {
-                            Print(message);
+                            Print(log[i]);
                         }
                     }
 
@@ -299,12 +241,11 @@ namespace Alis.Editor.UI.Widgets
                         ImGui.SetScrollHereY(1.0f);
                     }
                 }
-               
 
                 ImGui.EndChild();
             }
+
             ImGui.End();
         }
     }
 }
-*/
