@@ -46,7 +46,7 @@ namespace Alis.Editor.UI.Widgets
                 startInfo.FileName = "open - a Terminal";
             }
 
-            if(!info.Platform.Equals(Platform.MacOS) && !info.Platform.Equals(Platform.Windows))
+            if(info.Platform.Equals(Platform.Linux))
             {
                 startInfo.FileName = "/bin/bash";
                 startInfo.Arguments = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
