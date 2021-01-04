@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['openconsole_1656',['OpenConsole',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca937ece2dcf2c932211835a468777de9d',1,'Alis::Editor::UI::Widgets']]]
+  ['directx11_1702',['Directx11',['../namespace_alis_1_1_editor.html#a2ea4ab07fbbf567a72496b2b382faf54ad84640fdd46053818b39dc159e53f8fc',1,'Alis::Editor']]]
 ];

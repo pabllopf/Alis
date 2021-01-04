@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['firstinstance_1548',['FirstInstance',['../class_alis_1_1_editor_1_1_engine.html#a5396252592f9ad7a56757fe745641548',1,'Alis::Editor::Engine']]]
+  ['architecture_1714',['Architecture',['../class_alis_1_1_editor_1_1_info.html#a5461ee7f9de9a1a9ff9e4872a1f326e1',1,'Alis::Editor::Info']]]
 ];
