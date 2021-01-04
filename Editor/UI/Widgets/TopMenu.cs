@@ -43,7 +43,7 @@ namespace Alis.Editor.UI.Widgets
 
             if(info.Platform.Equals(Platform.MacOS))
             {
-                startInfo.FileName = "open - a Terminal";
+                startInfo.FileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
             }
 
             if(info.Platform.Equals(Platform.Linux))

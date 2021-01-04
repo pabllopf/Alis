@@ -23,15 +23,6 @@
      <DebugType></DebugType>
      <Optimize>true</Optimize>
      <DocumentationFile>bin\MacOS\netcoreapp3.1\Editor.xml</DocumentationFile>
-     <CustomCommands>
-       <CustomCommands>
-         <Command>
-           <type>AfterBuild</type>
-           <command>${SolutionDir}/buildmacos.sh</command>
-           <workingdir>${SolutionDir}</workingdir>
-         </Command>
-       </CustomCommands>
-     </CustomCommands>
   </PropertyGroup>
 
 
