@@ -10,8 +10,11 @@ namespace ProjectExample
         static void Main(string[] args)
         {
             string hola = "Hola Mundo";
+            
             LocalData.Save("HolaVar", hola);
+            
             string loadVar = LocalData.Load<string>("HolaVar");
+
 
             Login login = new Login("Pablo", "12345");
             LocalData.Save("LastLogin", login);
