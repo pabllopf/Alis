@@ -12,53 +12,84 @@ namespace Alis.Tools
     /// <typeparam name="T">object to pass the algorithm</typeparam>
     public class Crypted<T> : object
     {
-        /// <summary>create algorithm</summary>
-        private Aes algorithm = Aes.Create();
-
         /// <summary>The data</summary>
         private byte[] data;
+
+        /// <summary>The key</summary>
+        private byte[] key = new byte[0];
+
+        /// <summary>The vector</summary>
+        private byte[] vector = new byte[0];
 
         /// <summary>Initializes a new instance of the <see cref="Crypted{T}" /> class.</summary>
         /// <param name="data">The data.</param>
         public Crypted(T data)
         {
-            Value = (data == null) ? default : data;
+            this.data = Encrypt(data); 
         }
 
-        /// <summary>Gets or sets the value.</summary>
-        /// <value>The value.</value>
-        public T Value
+        /// <summary>Sets the specified data.</summary>
+        /// <param name="data">The data.</param>
+        public void Set(T data) 
         {
-            get
-            {
-                ICryptoTransform decryptor = algorithm.CreateDecryptor(algorithm.Key, algorithm.IV);
+            this.data = Encrypt(data);
+        }
 
-                using (MemoryStream memoryStream = new MemoryStream(data))
-                {
-                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
-                    {
-                        using (StreamReader streamReader = new StreamReader(cryptoStream))
-                        {
-                            return (T)Convert.ChangeType(streamReader.ReadToEnd(), typeof(T));
-                        }
-                    }
-                }
+        /// <summary>Gets this instance.</summary>
+        /// <returns>Return value</returns>
+        public T Get() 
+        {
+            return Decrypt();
+        }
+
+        /// <summary>Encrypts the specified data.</summary>
+        /// <param name="data">The data.</param>
+        /// <returns>Return value.</returns>
+        private byte[] Encrypt(T data) 
+        {
+            Aes algorithm = Aes.Create();
+
+            if (key.Length == 0 || vector.Length == 0) 
+            {
+                key = algorithm.Key;
+                vector = algorithm.IV;
             }
 
-            set
+            algorithm.Key = key;
+            algorithm.IV = vector;
+
+            ICryptoTransform crypto = algorithm.CreateEncryptor(algorithm.Key, algorithm.IV);
+            using (MemoryStream memoryStream = new MemoryStream())
             {
-                ICryptoTransform encryptor = algorithm.CreateEncryptor(algorithm.Key, algorithm.IV);
-
-                using (MemoryStream memoryStream = new MemoryStream())
+                using (CryptoStream cryptoStream = new CryptoStream(memoryStream, crypto, CryptoStreamMode.Write))
                 {
-                    using (CryptoStream cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                    using (StreamWriter streamWriter = new StreamWriter(cryptoStream))
                     {
-                        using (StreamWriter streamWriter = new StreamWriter(cryptoStream))
-                        {
-                            streamWriter.Write(value);
-                        }
+                        streamWriter.Write(data);
+                    }
 
-                        this.data = memoryStream.ToArray();
+                    return memoryStream.ToArray();
+                }
+            }
+        }
+
+        /// <summary>Decrypts this instance.</summary>
+        /// <returns>Return the value</returns>
+        private T Decrypt() 
+        {
+            Aes algorithm = Aes.Create();
+
+            algorithm.Key = key;
+            algorithm.IV = vector;
+
+            ICryptoTransform crypto = algorithm.CreateDecryptor(algorithm.Key, algorithm.IV);
+            using (MemoryStream memoryStream = new MemoryStream(data))
+            {
+                using (CryptoStream cryptoStream = new CryptoStream(memoryStream, crypto, CryptoStreamMode.Read))
+                {
+                    using (StreamReader streamReader = new StreamReader(cryptoStream))
+                    {
+                        return (T)Convert.ChangeType(streamReader.ReadToEnd(), typeof(T));
                     }
                 }
             }

@@ -5,22 +5,38 @@
     </assembly>
     <members>
         <member name="T:Alis.Tools.Crypted`1">
-            <summary>Crypted var in memory</summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="F:Alis.Tools.Crypted`1.aesAlg">
-            <summary>The aes alg</summary>
+            <summary>Control memory Security</summary>
+            <typeparam name="T">object to pass the algorithm</typeparam>
         </member>
         <member name="F:Alis.Tools.Crypted`1.data">
             <summary>The data</summary>
+        </member>
+        <member name="F:Alis.Tools.Crypted`1.key">
+            <summary>The key</summary>
+        </member>
+        <member name="F:Alis.Tools.Crypted`1.vector">
+            <summary>The vector</summary>
         </member>
         <member name="M:Alis.Tools.Crypted`1.#ctor(`0)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Crypted`1" /> class.</summary>
             <param name="data">The data.</param>
         </member>
-        <member name="P:Alis.Tools.Crypted`1.Value">
-            <summary>Gets or sets the value.</summary>
-            <value>The value.</value>
+        <member name="M:Alis.Tools.Crypted`1.Set(`0)">
+            <summary>Sets the specified data.</summary>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Alis.Tools.Crypted`1.Get">
+            <summary>Gets this instance.</summary>
+            <returns>Return value</returns>
+        </member>
+        <member name="M:Alis.Tools.Crypted`1.Encrypt(`0)">
+            <summary>Encrypts the specified data.</summary>
+            <param name="data">The data.</param>
+            <returns>Return value.</returns>
+        </member>
+        <member name="M:Alis.Tools.Crypted`1.Decrypt">
+            <summary>Decrypts this instance.</summary>
+            <returns>Return the value</returns>
         </member>
     </members>
 </doc>
