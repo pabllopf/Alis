@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sceneview_879',['SceneView',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html',1,'Alis::Editor::UI::Widgets']]]
+  ['resourcesetinfo_883',['ResourceSetInfo',['../struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html',1,'ImGuiNET::ImGuiController']]]
 ];
