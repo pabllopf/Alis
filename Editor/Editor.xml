@@ -198,6 +198,38 @@
         <member name="M:Alis.Editor.UI.MainWindow.LoadStyle">
             <summary>Loads the style.</summary>
         </member>
+        <member name="T:Alis.Editor.UI.Widgets.About">
+            <summary>Show the game running</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.About.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.About.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.About.eventHandler">
+            <summary>The event handler</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.About.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.About" /> class.</summary>
+            <param name="eventHandler">The event handler.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.About.OnLoad">
+            <summary>Load this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.About.Open">
+            <summary>Opens this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.About.Close">
+            <summary>Close this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.About.GetName">
+            <summary>Gets the name.</summary>
+            <returns>Return name widget</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.About.Draw">
+            <summary>Draw this instance.</summary>
+        </member>
         <member name="T:Alis.Editor.UI.Widgets.AssetsManager">
             <summary>Manage files of project.</summary>
         </member>
@@ -283,6 +315,9 @@
         </member>
         <member name="T:Alis.Editor.UI.Widgets.Console">
             <summary>Console widget </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.Current">
+            <summary>The current</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.Console.Name">
             <summary>The name</summary>
@@ -559,6 +594,38 @@
         </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShowExitPopup">
             <summary>Shows the exit popup.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.Updater">
+            <summary>Show the game running</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Updater.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Updater.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Updater.eventHandler">
+            <summary>The event handler</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Updater.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Updater" /> class.</summary>
+            <param name="eventHandler">The event handler.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Updater.OnLoad">
+            <summary>Load this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Updater.Open">
+            <summary>Opens this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Updater.Close">
+            <summary>Close this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Updater.GetName">
+            <summary>Gets the name.</summary>
+            <returns>Return name widget</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Updater.Draw">
+            <summary>Draw this instance.</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.Widget">
             <summary>Widget define</summary>

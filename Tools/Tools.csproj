@@ -16,6 +16,6 @@
   </PropertyGroup>
   
   <!-- ______________________________ LINUX _____________________________________ -->
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'" >
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'">
   </PropertyGroup>
 </Project>

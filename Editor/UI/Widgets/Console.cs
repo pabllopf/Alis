@@ -12,6 +12,7 @@ namespace Alis.Editor.UI.Widgets
     /// <summary>Console widget </summary>
     public class Console : Widget
     {
+        /// <summary>The current</summary>
         public static Console Current; 
 
         /// <summary>The name</summary>

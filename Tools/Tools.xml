@@ -4,5 +4,23 @@
         <name>Tools</name>
     </assembly>
     <members>
+        <member name="T:Alis.Tools.Crypted`1">
+            <summary>Crypted var in memory</summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:Alis.Tools.Crypted`1.aesAlg">
+            <summary>The aes alg</summary>
+        </member>
+        <member name="F:Alis.Tools.Crypted`1.data">
+            <summary>The data</summary>
+        </member>
+        <member name="M:Alis.Tools.Crypted`1.#ctor(`0)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Crypted`1" /> class.</summary>
+            <param name="data">The data.</param>
+        </member>
+        <member name="P:Alis.Tools.Crypted`1.Value">
+            <summary>Gets or sets the value.</summary>
+            <value>The value.</value>
+        </member>
     </members>
 </doc>
