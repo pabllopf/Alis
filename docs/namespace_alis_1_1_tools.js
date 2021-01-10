@@ -1,4 +1,6 @@
 var namespace_alis_1_1_tools =
 [
-    [ "Class1", "class_alis_1_1_tools_1_1_class1.html", null ]
+    [ "CloudData", "class_alis_1_1_tools_1_1_cloud_data.html", null ],
+    [ "Crypted", "class_alis_1_1_tools_1_1_crypted.html", "class_alis_1_1_tools_1_1_crypted" ],
+    [ "LocalData", "class_alis_1_1_tools_1_1_local_data.html", "class_alis_1_1_tools_1_1_local_data" ]
 ];
