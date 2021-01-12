@@ -4,8 +4,19 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Tools
 {
+    using System;
+
     /// <summary>Manage the cloud data game.</summary>
     public class CloudData
     {
+        public static void Save<T>(string name, T data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static T Load<T>(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

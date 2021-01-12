@@ -4,6 +4,9 @@
         <name>Tools</name>
     </assembly>
     <members>
+        <member name="T:Alis.Tools.CloudData">
+            <summary>Manage the cloud data game.</summary>
+        </member>
         <member name="T:Alis.Tools.Crypted`1">
             <summary>Control memory Security</summary>
             <typeparam name="T">object to pass the algorithm</typeparam>
