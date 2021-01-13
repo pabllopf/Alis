@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "Tools.Application", "class_tools_1_1_application.html", null ],
     [ "Alis.Tools.CloudData", "class_alis_1_1_tools_1_1_cloud_data.html", null ],
     [ "Alis.Editor.Utils.Debug", "class_alis_1_1_editor_1_1_utils_1_1_debug.html", null ],
     [ "Alis.Editor.Engine", "class_alis_1_1_editor_1_1_engine.html", null ],
