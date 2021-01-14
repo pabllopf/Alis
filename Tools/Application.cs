@@ -13,7 +13,17 @@ namespace Tools
         /// <value>The assets path.</value>
         public static string AssetsPath 
         { 
-            get => Environment.SystemDirectory;
+            get => throw new NotImplementedException();
+        }
+
+        public static string ProjectPath 
+        {
+            get => throw new NotImplementedException();
+        }
+
+        public static string DataPath 
+        {
+            get => throw new NotImplementedException();
         }
     }
 }
