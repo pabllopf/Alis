@@ -111,21 +111,33 @@ $(document).ready(function(){initNavTree('_application_8cs_source.html',''); ini
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_tools_1_1_application.html#a487f9ebc43e2cdfad9aa7c852963accc">   14</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="class_tools_1_1_application.html#a487f9ebc43e2cdfad9aa7c852963accc">AssetsPath</a> </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        { </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keyword">get</span> =&gt; Environment.SystemDirectory;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        }</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_tools_1_1_application.html#a4d5abbe419d888c6d830c8872285ef47">   19</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="class_tools_1_1_application.html#a4d5abbe419d888c6d830c8872285ef47">ProjectPath</a> </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_tools_1_1_application.html#a98847d8370d88d88d633009a6e740553">   24</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">string</span> <a class="code" href="class_tools_1_1_application.html#a98847d8370d88d88d633009a6e740553">DataPath</a> </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keywordflow">throw</span> <span class="keyword">new</span> NotImplementedException();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_tools_html"><div class="ttname"><a href="namespace_tools.html">Tools</a></div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00005">Application.cs:6</a></div></div>
+<div class="ttc" id="aclass_tools_1_1_application_html_a98847d8370d88d88d633009a6e740553"><div class="ttname"><a href="class_tools_1_1_application.html#a98847d8370d88d88d633009a6e740553">Tools.Application.DataPath</a></div><div class="ttdeci">static string DataPath</div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00024">Application.cs:25</a></div></div>
 <div class="ttc" id="aclass_tools_1_1_application_html"><div class="ttname"><a href="class_tools_1_1_application.html">Tools.Application</a></div><div class="ttdoc">Application definitions.</div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00010">Application.cs:11</a></div></div>
+<div class="ttc" id="aclass_tools_1_1_application_html_a4d5abbe419d888c6d830c8872285ef47"><div class="ttname"><a href="class_tools_1_1_application.html#a4d5abbe419d888c6d830c8872285ef47">Tools.Application.ProjectPath</a></div><div class="ttdeci">static string ProjectPath</div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00019">Application.cs:20</a></div></div>
 <div class="ttc" id="aclass_tools_1_1_application_html_a487f9ebc43e2cdfad9aa7c852963accc"><div class="ttname"><a href="class_tools_1_1_application.html#a487f9ebc43e2cdfad9aa7c852963accc">Tools.Application.AssetsPath</a></div><div class="ttdeci">static string AssetsPath</div><div class="ttdoc">Gets the assets path.</div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00014">Application.cs:15</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><b>Application.cs</b></li>
     <li class="footer">
-      <a>Generated on | Thu Jan 14 2021 |</a>
+      <a>Generated on | Fri Jan 15 2021 |</a>
     </li>
   </ul>
 </div>
