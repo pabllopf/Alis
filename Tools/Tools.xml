@@ -4,12 +4,27 @@
         <name>Tools</name>
     </assembly>
     <members>
-        <member name="T:Tools.Application">
-            <summary>Application definitions. </summary>
+        <member name="T:Alis.Tools.Application">
+            <summary>Manage application data.</summary>
         </member>
-        <member name="P:Tools.Application.AssetsPath">
+        <member name="F:Alis.Tools.Application.name">
+            <summary>The name</summary>
+        </member>
+        <member name="P:Alis.Tools.Application.Name">
+            <summary>Gets or sets the name.</summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Alis.Tools.Application.AssetsPath">
             <summary>Gets the assets path.</summary>
             <value>The assets path.</value>
+        </member>
+        <member name="P:Alis.Tools.Application.ProjectPath">
+            <summary>Gets the project path.</summary>
+            <value>The project path.</value>
+        </member>
+        <member name="P:Alis.Tools.Application.DataPath">
+            <summary>Gets the data path.</summary>
+            <value>The data path.</value>
         </member>
         <member name="T:Alis.Tools.CloudData">
             <summary>Manage the cloud data game.</summary>
@@ -179,6 +194,19 @@
             <typeparam name="T">Type data</typeparam>
             <param name="name">The name.</param>
             <returns>Return the value data.</returns>
+        </member>
+        <member name="T:Alis.Tools.Zipper">
+            <summary>Manage zip files. </summary>
+        </member>
+        <member name="M:Alis.Tools.Zipper.Unzip(System.String,System.String)">
+            <summary>Unzips the specified zip file path.</summary>
+            <param name="zipFilePath">The zip file path.</param>
+            <param name="location">The location.</param>
+        </member>
+        <member name="M:Alis.Tools.Zipper.Zip(System.String,System.String[])">
+            <summary>Zips the specified zip file name.</summary>
+            <param name="zipFileName">Name of the zip file.</param>
+            <param name="files">The files.</param>
         </member>
     </members>
 </doc>

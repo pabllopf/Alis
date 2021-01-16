@@ -1,4 +1,5 @@
-﻿using Alis.Tools;
+﻿
+using Alis.Tools;
 using System;
 using System.Diagnostics;
 using System.Reflection;
@@ -9,7 +10,7 @@ namespace ProjectExample
     {
         static void Main(string[] args)
         {
-            Zipper.Zip("", );
+            Console.WriteLine("example:" + new Application());
         }
     }
 }
