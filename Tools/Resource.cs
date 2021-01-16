@@ -1,5 +1,5 @@
 ﻿
-namespace Tools
+namespace Alis.Tools
 {
     using System;
 

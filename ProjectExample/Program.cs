@@ -7,25 +7,30 @@ namespace ProjectExample
 {
     class Program
     {
+        public static string example = "Pirate";
+
         static void Main(string[] args)
         {
-            string hola = "Hola Mundo";
             
-            LocalData.Save("HolaVar", hola);
+            Language.Change += Language_Change;
+
+            Language.TranslateTo(Idiom.English);
             
-            string loadVar = LocalData.Load<string>("HolaVar");
-
-
-            Login login = new Login("Pablo", "12345");
-            LocalData.Save("LastLogin", login);
-
-            Login loginLoaded = LocalData.Load<Login>("LastLogin");
-
-            Console.WriteLine("Last Login:: " + loginLoaded.User + loginLoaded.Passwd );
+            Language.TranslateTo(Idiom.Spanish);
+            
+            Language.TranslateTo(Idiom.French);
+            
+            Language.TranslateTo(Idiom.Italian);
 
             Console.ReadKey();
         }
 
+        private static void Language_Change(object sender, Idiom idiom)
+        {
+            Console.WriteLine("Change to: " + idiom.ToString());
+            example = Language.GetSentence(idiom, "CONTEXT_CLASS_PIRATE");
+            Console.WriteLine("string: " + example + "\n");
+        }
     }
 
     public class Login 

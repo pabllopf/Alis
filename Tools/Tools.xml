@@ -4,6 +4,13 @@
         <name>Tools</name>
     </assembly>
     <members>
+        <member name="T:Tools.Application">
+            <summary>Application definitions. </summary>
+        </member>
+        <member name="P:Tools.Application.AssetsPath">
+            <summary>Gets the assets path.</summary>
+            <value>The assets path.</value>
+        </member>
         <member name="T:Alis.Tools.CloudData">
             <summary>Manage the cloud data game.</summary>
         </member>
@@ -40,6 +47,117 @@
         <member name="M:Alis.Tools.Crypted`1.Decrypt">
             <summary>Decrypts this instance.</summary>
             <returns>Return the value</returns>
+        </member>
+        <member name="T:Alis.Tools.Idiom">
+            <summary>Idioms in the videogame.</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.English">
+            <summary>The english</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.French">
+            <summary>The french</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Spanish">
+            <summary>The spanish</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.German">
+            <summary>The german</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Italian">
+            <summary>The italian</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Portuguese_Brazil">
+            <summary>The portuguese brazil</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Portuguese">
+            <summary>The portuguese</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Russian">
+            <summary>The russian</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Greek">
+            <summary>The greek</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Turkish">
+            <summary>The turkish</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Danish">
+            <summary>The danish</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Norwegian">
+            <summary>The norwegian</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Swedish">
+            <summary>The swedish</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Dutch">
+            <summary>The dutch</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Polish">
+            <summary>The polish</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Finnish">
+            <summary>The finnish</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Japanese">
+            <summary>The japanese</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Simplified_Chinese">
+            <summary>The simplified chinese</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Traditional_Chinese">
+            <summary>The traditional chinese</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Korean">
+            <summary>The korean</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Czech">
+            <summary>The czech</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Hungarian">
+            <summary>The hungarian</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Romanian">
+            <summary>The romanian</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Thai">
+            <summary>The thai</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Bulgarian">
+            <summary>The bulgarian</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Hebrew">
+            <summary>The hebrew</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Arabic">
+            <summary>The arabic</summary>
+        </member>
+        <member name="F:Alis.Tools.Idiom.Bosnian">
+            <summary>The bosnian</summary>
+        </member>
+        <member name="T:Alis.Tools.Language">
+            <summary>Manage the languages of videogame.</summary>
+        </member>
+        <member name="F:Alis.Tools.Language.currentLanguage">
+            <summary>Dictionary of current language</summary>
+        </member>
+        <member name="E:Alis.Tools.Language.Change">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="M:Alis.Tools.Language.TranslateTo(Alis.Tools.Idiom)">
+            <summary>Translates to.</summary>
+            <param name="idiom">The idiom.</param>
+        </member>
+        <member name="M:Alis.Tools.Language.GetSentence(Alis.Tools.Idiom,System.String)">
+            <summary>Gets the sentence.</summary>
+            <param name="idiom">The idiom.</param>
+            <param name="id">The sentence</param>
+            <returns>Return the sentence.</returns>
+        </member>
+        <member name="M:Alis.Tools.Language.GetEncoding(System.String)">
+            <summary>Gets the encoding.</summary>
+            <param name="filename">The filename.</param>
+            <returns>Return the encode</returns>
         </member>
         <member name="T:Alis.Tools.LocalData">
             <summary>Manage the local data game.</summary>
