@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['openconsole_1787',['OpenConsole',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca937ece2dcf2c932211835a468777de9d',1,'Alis::Editor::UI::Widgets']]],
-  ['opengl_1788',['OpenGL',['../namespace_alis_1_1_editor.html#a2ea4ab07fbbf567a72496b2b382faf54a760716b590ee7c0adc25f434f577d8be',1,'Alis::Editor']]]
+  ['finnish_1834',['Finnish',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a9ae099fd082267fa2f2f85664a4f74dc',1,'Alis::Tools']]],
+  ['french_1835',['French',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4aad225f707802ba118c22987186dd38e8',1,'Alis::Tools']]]
 ];

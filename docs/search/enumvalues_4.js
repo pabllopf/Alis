@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['macos_1785',['MacOS',['../namespace_alis_1_1_editor.html#a1b4a4903235d70e84b2e2eb5833ec084a0a5b7edb55b772c60bfa8af868b679cf',1,'Alis::Editor']]],
-  ['metal_1786',['Metal',['../namespace_alis_1_1_editor.html#a2ea4ab07fbbf567a72496b2b382faf54aeaa57a9b4248ce3968e718895e1c2f04',1,'Alis::Editor']]]
+  ['english_1832',['English',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a78463a384a5aa4fad5fa73e2f506ecfc',1,'Alis::Tools']]],
+  ['exiteditor_1833',['ExitEditor',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca307c5a0101e6dd9d9ea1b04112a63232',1,'Alis::Editor::UI::Widgets']]]
 ];

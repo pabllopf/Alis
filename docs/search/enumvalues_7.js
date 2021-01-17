@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['unsupported_1790',['Unsupported',['../namespace_alis_1_1_editor.html#a1b4a4903235d70e84b2e2eb5833ec084ab4080bdf74febf04d578ff105cce9d3f',1,'Alis.Editor.Unsupported()'],['../namespace_alis_1_1_editor.html#a2ea4ab07fbbf567a72496b2b382faf54ab4080bdf74febf04d578ff105cce9d3f',1,'Alis.Editor.Unsupported()'],['../namespace_alis_1_1_editor.html#a7605f066486f73752e8b217e90d35981ab4080bdf74febf04d578ff105cce9d3f',1,'Alis.Editor.Unsupported()']]]
+  ['hebrew_1838',['Hebrew',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4ac6c1f81a46666385fa7d85df7eaf8763',1,'Alis::Tools']]],
+  ['hungarian_1839',['Hungarian',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a7b86112ec6401fd8f06ab5251d1a68fe',1,'Alis::Tools']]]
 ];

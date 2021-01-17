@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['eventhandler_1804',['EventHandler',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a6f448a2be78953dac64b6ec2ee233eef',1,'Alis::Editor::UI::Widgets::WidgetManager']]]
+  ['change_1876',['Change',['../class_alis_1_1_tools_1_1_language.html#a7854b462502ab349672cb8c5f04a2dd2',1,'Alis::Tools::Language']]]
 ];

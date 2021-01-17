@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['topmenu_1789',['TopMenu',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a75c4c1fad37c48ef5ac7a976e95fdfd8a04501c36095cc454a235520a6ac650b4',1,'Alis::Editor::UI::Widgets']]]
+  ['german_1836',['German',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a86bc3115eb4e9873ac96904a4a68e19e',1,'Alis::Tools']]],
+  ['greek_1837',['Greek',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a0aafa497807d5ac9b509656bd13b5283',1,'Alis::Tools']]]
 ];

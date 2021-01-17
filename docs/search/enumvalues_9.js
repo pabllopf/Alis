@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['windows_1792',['Windows',['../namespace_alis_1_1_editor.html#a1b4a4903235d70e84b2e2eb5833ec084aaea23489ce3aa9b6406ebb28e0cda430',1,'Alis::Editor']]]
+  ['japanese_1841',['Japanese',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4af32ced6a9ba164c4b3c047fd1d7c882e',1,'Alis::Tools']]]
 ];

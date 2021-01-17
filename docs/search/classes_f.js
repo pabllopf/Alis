@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zipper_914',['Zipper',['../class_tools_1_1_zipper.html',1,'Tools']]]
+  ['zipper_950',['Zipper',['../class_alis_1_1_tools_1_1_zipper.html',1,'Alis::Tools']]]
 ];

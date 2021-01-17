@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['directx11_1782',['Directx11',['../namespace_alis_1_1_editor.html#a2ea4ab07fbbf567a72496b2b382faf54ad84640fdd46053818b39dc159e53f8fc',1,'Alis::Editor']]]
+  ['bosnian_1824',['Bosnian',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a9dea74f01b9e3ee9ebd867ad7b2d2d18',1,'Alis::Tools']]],
+  ['bulgarian_1825',['Bulgarian',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a60bb3bcc6ff535428a38f76f1059b2d2',1,'Alis::Tools']]]
 ];

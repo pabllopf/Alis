@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vulkan_1791',['Vulkan',['../namespace_alis_1_1_editor.html#a2ea4ab07fbbf567a72496b2b382faf54a38625270231b647116c80bcbc4f9d1d8',1,'Alis::Editor']]]
+  ['italian_1840',['Italian',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a4be8e06d27bca7e1828f2fa9a49ca985',1,'Alis::Tools']]]
 ];
