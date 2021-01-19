@@ -10,6 +10,7 @@ namespace Alis.Editor
     using System.Threading;
     using Alis.Editor.UI;
     using Alis.Editor.Utils;
+    using Alis.Tools;
 
     /// <summary>Manage the engine</summary>
     internal class Engine
@@ -77,6 +78,8 @@ namespace Alis.Editor
         /// <returns>Return false or true to indicate the exit value</returns>
         public int Start()
         {
+            new AudioSource().Play();
+
             if (!FirstInstance)
             {
                 Debug.Error("There is already an 'Alis instance' running.");

@@ -20,7 +20,7 @@
   </PropertyGroup>
 
   <!-- ______________________________ LINUX _____________________________________ -->
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'" >
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
@@ -28,11 +28,13 @@
 
   <!-- _____________________________ IMPORTS ____________________________________ -->
   <ItemGroup>
-    <PackageReference Include="SFML.Audio" Version="2.5.0" />
     <PackageReference Include="SFML.Graphics" Version="2.5.0" />
     <PackageReference Include="SFML.Net" Version="2.5.0" />
     <PackageReference Include="SFML.System" Version="2.5.0" />
     <PackageReference Include="SFML.Window" Version="2.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tools\Tools.csproj" />
   </ItemGroup>
 
 </Project>
