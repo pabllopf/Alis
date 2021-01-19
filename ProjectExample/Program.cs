@@ -10,7 +10,10 @@ namespace ProjectExample
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("example:" + new Application());
+            new AudioSource().Play();
+
+
+            Console.WriteLine("example:" + new Application().ToString());
         }
     }
 }
