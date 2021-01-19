@@ -1,4 +1,5 @@
-﻿using NAudio.Wave;
+﻿
+using SFML.Audio;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -23,16 +24,26 @@ namespace Alis.Tools
 
         public void Play() 
         {
-            var url = "http://media.ch9.ms/ch9/2876/fd36ef30-cfd2-4558-8412-3cf7a0852876/AzureWebJobs103.mp3";
-            using (var mf = new MediaFoundationReader(url))
-            using (var wo = new WaveOutEvent())
+            Music music = new Music(Environment.CurrentDirectory + "/Resources/Example.wav");
+
+            // Display music informations
+            Console.WriteLine("lepidoptera.ogg :");
+            Console.WriteLine(" " + music.Duration + " sec");
+            Console.WriteLine(" " + music.SampleRate + " samples / sec");
+            Console.WriteLine(" " + music.ChannelCount + " channels");
+
+            // Play it
+            music.Play();
+
+            // Loop while the music is playing
+            while (music.Status == SoundStatus.Playing)
             {
-                wo.Init(mf);
-                wo.Play();
-                while (wo.PlaybackState == PlaybackState.Playing)
-                {
-                    Thread.Sleep(1000);
-                }
+                // Display the playing position
+                Console.CursorLeft = 0;
+                Console.Write("Playing... " + music.PlayingOffset + " sec     ");
+
+                // Leave some CPU time for other processes
+                Thread.Sleep(100);
             }
         }
 
