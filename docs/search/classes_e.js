@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['widget_948',['Widget',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html',1,'Alis::Editor::UI::Widgets']]],
-  ['widgetmanager_949',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html',1,'Alis::Editor::UI::Widgets']]]
+  ['vector2_963',['Vector2',['../struct_alis_1_1_tools_1_1_vector2.html',1,'Alis::Tools']]],
+  ['vector3_964',['Vector3',['../struct_alis_1_1_tools_1_1_vector3.html',1,'Alis::Tools']]]
 ];
