@@ -26,6 +26,62 @@
             <summary>Gets the data path.</summary>
             <value>The data path.</value>
         </member>
+        <member name="T:Alis.Tools.AudioSource">
+            <summary>Control the audio of game object.</summary>
+        </member>
+        <member name="F:Alis.Tools.AudioSource.audio">
+            <summary>The audio</summary>
+        </member>
+        <member name="F:Alis.Tools.AudioSource.playOnAwake">
+            <summary>The play on awake</summary>
+        </member>
+        <member name="P:Alis.Tools.AudioSource.PlayOnAwake">
+            <summary>Gets or sets a value indicating whether [play on awake].</summary>
+            <value>
+            <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="E:Alis.Tools.AudioSource.OnPlay">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Tools.AudioSource.OnStop">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Tools.AudioSource.OnPause">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Tools.AudioSource.OnRestart">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
+            <param name="audioFile">The audio file.</param>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.#ctor(System.String,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
+            <param name="audioFile">The audio file.</param>
+            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.#ctor(System.IO.Stream)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
+            <param name="audioStream">The audio stream.</param>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
+            <param name="audioStream">The audio stream.</param>
+            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Play">
+            <summary>Plays this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Stop">
+            <summary>Stops this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Pause">
+            <summary>Pauses this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Restart">
+            <summary>Restarts this instance.</summary>
+        </member>
         <member name="T:Alis.Tools.CloudData">
             <summary>Manage the cloud data game.</summary>
         </member>
@@ -308,14 +364,32 @@
         <member name="T:Alis.Tools.Zipper">
             <summary>Manage zip files. </summary>
         </member>
+        <member name="M:Alis.Tools.Zipper.Zip(System.String)">
+            <summary>Zips the specified directory.</summary>
+            <param name="directory">The directory.</param>
+        </member>
+        <member name="M:Alis.Tools.Zipper.Zip(System.String,System.String)">
+            <summary>Zips the specified directory.</summary>
+            <param name="directory">The directory.</param>
+            <param name="zipName">Name of the zip.</param>
+        </member>
+        <member name="M:Alis.Tools.Zipper.UnZip(System.String)">
+            <summary>Unzips the specified zip file path.</summary>
+            <param name="zipFile">The zip file path.</param>
+        </member>
+        <member name="M:Alis.Tools.Zipper.UnZip(System.String,System.String)">
+            <summary>Unzips the specified zip file path.</summary>
+            <param name="zipFile">The zip file path.</param>
+            <param name="outPutDir"></param>
+        </member>
         <member name="M:Alis.Tools.Zipper.Unzip(System.String,System.String)">
             <summary>Unzips the specified zip file path.</summary>
-            <param name="zipFilePath">The zip file path.</param>
+            <param name="zipFile">The zip file path.</param>
             <param name="location">The location.</param>
         </member>
         <member name="M:Alis.Tools.Zipper.Zip(System.String,System.String[])">
             <summary>Zips the specified zip file name.</summary>
-            <param name="zipFileName">Name of the zip file.</param>
+            <param name="zipFile">Name of the zip file.</param>
             <param name="files">The files.</param>
         </member>
     </members>

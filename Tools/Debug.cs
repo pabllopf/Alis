@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Alis.Tools
+namespace Tools
 {
-    public struct Sound
+    public class Debug
     {
     }
 }
