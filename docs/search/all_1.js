@@ -57,10 +57,12 @@ var searchData=
   ['assistivelisteningsystems_81',['ASSISTIVELISTENINGSYSTEMS',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5801c7f7b7d425e8763d3e4a8e29de3d',1,'Alis::Editor::Utils::Icon']]],
   ['asterisk_82',['ASTERISK',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#abc496aa9934c193f2280e31f096d3b6a',1,'Alis::Editor::Utils::Icon']]],
   ['at_83',['AT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6f1a5b8765e557c9242dd5f4fe03e407',1,'Alis::Editor::Utils::Icon']]],
-  ['audiodescription_84',['AUDIODESCRIPTION',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a62e6f42fd8ffeb6c97d3e3f1d008d7f1',1,'Alis::Editor::Utils::Icon']]],
-  ['editor_85',['Editor',['../namespace_alis_1_1_editor.html',1,'Alis']]],
-  ['tools_86',['Tools',['../namespace_alis_1_1_tools.html',1,'Alis']]],
-  ['ui_87',['UI',['../namespace_alis_1_1_editor_1_1_u_i.html',1,'Alis::Editor']]],
-  ['utils_88',['Utils',['../namespace_alis_1_1_editor_1_1_utils.html',1,'Alis::Editor']]],
-  ['widgets_89',['Widgets',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html',1,'Alis::Editor::UI']]]
+  ['audio_84',['audio',['../class_alis_1_1_tools_1_1_audio_source.html#aef4c8deb9bb06cf0cc094703d39d1376',1,'Alis::Tools::AudioSource']]],
+  ['audiodescription_85',['AUDIODESCRIPTION',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a62e6f42fd8ffeb6c97d3e3f1d008d7f1',1,'Alis::Editor::Utils::Icon']]],
+  ['audiosource_86',['AudioSource',['../class_alis_1_1_tools_1_1_audio_source.html',1,'Alis.Tools.AudioSource'],['../class_alis_1_1_tools_1_1_audio_source.html#ab08a4f10ea4802d69a8befc1ef107834',1,'Alis.Tools.AudioSource.AudioSource()']]],
+  ['editor_87',['Editor',['../namespace_alis_1_1_editor.html',1,'Alis']]],
+  ['tools_88',['Tools',['../namespace_alis_1_1_tools.html',1,'Alis']]],
+  ['ui_89',['UI',['../namespace_alis_1_1_editor_1_1_u_i.html',1,'Alis::Editor']]],
+  ['utils_90',['Utils',['../namespace_alis_1_1_editor_1_1_utils.html',1,'Alis::Editor']]],
+  ['widgets_91',['Widgets',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html',1,'Alis::Editor::UI']]]
 ];
