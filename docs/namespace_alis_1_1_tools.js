@@ -7,7 +7,6 @@ var namespace_alis_1_1_tools =
     [ "Language", "class_alis_1_1_tools_1_1_language.html", "class_alis_1_1_tools_1_1_language" ],
     [ "LocalData", "class_alis_1_1_tools_1_1_local_data.html", "class_alis_1_1_tools_1_1_local_data" ],
     [ "Resource", "class_alis_1_1_tools_1_1_resource.html", "class_alis_1_1_tools_1_1_resource" ],
-    [ "Sound", "struct_alis_1_1_tools_1_1_sound.html", null ],
     [ "Texture", "class_alis_1_1_tools_1_1_texture.html", null ],
     [ "Vector2", "struct_alis_1_1_tools_1_1_vector2.html", "struct_alis_1_1_tools_1_1_vector2" ],
     [ "Vector3", "struct_alis_1_1_tools_1_1_vector3.html", "struct_alis_1_1_tools_1_1_vector3" ],

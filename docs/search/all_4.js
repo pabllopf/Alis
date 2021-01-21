@@ -9,7 +9,7 @@ var searchData=
   ['datainput_251',['DataInput',['../class_im_gui_n_e_t_1_1_memory_editor.html#a0c73932901be3c1dbe7cb5f2c6dd33b1',1,'ImGuiNET::MemoryEditor']]],
   ['datapath_252',['DataPath',['../struct_alis_1_1_tools_1_1_application.html#a3a79efddca8d5618c7b0cc6441478cdc',1,'Alis::Tools::Application']]],
   ['deaf_253',['DEAF',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a2023b37dbe4b888325ffb10ed61b1ea0',1,'Alis::Editor::Utils::Icon']]],
-  ['debug_254',['Debug',['../class_alis_1_1_editor_1_1_utils_1_1_debug.html',1,'Alis.Editor.Utils.Debug'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afd8006f9d242e758b6dff2e20806f748',1,'Alis.Editor.UI.MainWindow.debug()']]],
+  ['debug_254',['Debug',['../class_alis_1_1_editor_1_1_utils_1_1_debug.html',1,'Alis.Editor.Utils.Debug'],['../class_tools_1_1_debug.html',1,'Tools.Debug'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afd8006f9d242e758b6dff2e20806f748',1,'Alis.Editor.UI.MainWindow.debug()']]],
   ['decrypt_255',['Decrypt',['../class_alis_1_1_tools_1_1_crypted.html#a40aa77c7466e2d5c8e0e5004ab08a0f4',1,'Alis::Tools::Crypted']]],
   ['defaultcolor_256',['defaultColor',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a2ef0a54ac44de6a4193b0abe56366101',1,'Alis::Editor::UI::Widgets::Console']]],
   ['delicious_257',['DELICIOUS',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#af6e36fddfc20f02e55f49b17da87feda',1,'Alis::Editor::Utils::Icon']]],

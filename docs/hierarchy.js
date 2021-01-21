@@ -4,6 +4,7 @@ var hierarchy =
     [ "Alis.Tools.AudioSource", "class_alis_1_1_tools_1_1_audio_source.html", null ],
     [ "Alis.Tools.CloudData", "class_alis_1_1_tools_1_1_cloud_data.html", null ],
     [ "Alis.Editor.Utils.Debug", "class_alis_1_1_editor_1_1_utils_1_1_debug.html", null ],
+    [ "Tools.Debug", "class_tools_1_1_debug.html", null ],
     [ "Alis.Editor.Engine", "class_alis_1_1_editor_1_1_engine.html", null ],
     [ "Alis.Editor.Utils.Icon", "class_alis_1_1_editor_1_1_utils_1_1_icon.html", null ],
     [ "IDisposable", null, [
@@ -21,8 +22,8 @@ var hierarchy =
     [ "Alis.Editor.Program", "class_alis_1_1_editor_1_1_program.html", null ],
     [ "Alis.Tools.Resource", "class_alis_1_1_tools_1_1_resource.html", null ],
     [ "ImGuiNET.ImGuiController.ResourceSetInfo", "struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html", null ],
-    [ "Alis.Tools.Sound", "struct_alis_1_1_tools_1_1_sound.html", null ],
     [ "Alis.Tools.Texture", "class_alis_1_1_tools_1_1_texture.html", null ],
+    [ "Tools.Updater", "class_tools_1_1_updater.html", null ],
     [ "Alis.Tools.Vector2", "struct_alis_1_1_tools_1_1_vector2.html", null ],
     [ "Alis.Tools.Vector3", "struct_alis_1_1_tools_1_1_vector3.html", null ],
     [ "Alis.Editor.UI.Widgets.Widget", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html", [

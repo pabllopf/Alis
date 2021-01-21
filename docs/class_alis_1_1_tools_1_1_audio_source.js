@@ -1,7 +1,18 @@
 var class_alis_1_1_tools_1_1_audio_source =
 [
-    [ "AudioSource", "class_alis_1_1_tools_1_1_audio_source.html#ab08a4f10ea4802d69a8befc1ef107834", null ],
+    [ "AudioSource", "class_alis_1_1_tools_1_1_audio_source.html#a4b64effb6a47c8c4b1bc84143895592b", null ],
+    [ "AudioSource", "class_alis_1_1_tools_1_1_audio_source.html#a2dbef00cf9192c166f88ca16416b03a4", null ],
+    [ "AudioSource", "class_alis_1_1_tools_1_1_audio_source.html#a8d62bf2623b54405d8cc56a8c015a0e0", null ],
+    [ "AudioSource", "class_alis_1_1_tools_1_1_audio_source.html#abc1cc3d4e7d6dae04e3a785112cc5ab6", null ],
     [ "Play", "class_alis_1_1_tools_1_1_audio_source.html#a1c74e891e103b1a7e8f27583c336b08c", null ],
-    [ "audio", "class_alis_1_1_tools_1_1_audio_source.html#aef4c8deb9bb06cf0cc094703d39d1376", null ],
-    [ "playonawake", "class_alis_1_1_tools_1_1_audio_source.html#a5f65fd21a78dec17e3637749b33db7df", null ]
+    [ "Stop", "class_alis_1_1_tools_1_1_audio_source.html#a61886e45b838a1f53334a87d62756783", null ],
+    [ "Pause", "class_alis_1_1_tools_1_1_audio_source.html#a6c246ae9a273049d0acc2fdecf5c8e86", null ],
+    [ "Restart", "class_alis_1_1_tools_1_1_audio_source.html#a79973da1ac3ef5da2bbf40cddb37c11a", null ],
+    [ "audio", "class_alis_1_1_tools_1_1_audio_source.html#ac205d9d05b107cae53e667a21d427e33", null ],
+    [ "playOnAwake", "class_alis_1_1_tools_1_1_audio_source.html#a0127baf625f7f52753ae938fe818ee9a", null ],
+    [ "PlayOnAwake", "class_alis_1_1_tools_1_1_audio_source.html#a09881d7fec3e045ca51b9000cd81feac", null ],
+    [ "OnPlay", "class_alis_1_1_tools_1_1_audio_source.html#a62cc399b8e080ccd550ba3c0645f695a", null ],
+    [ "OnStop", "class_alis_1_1_tools_1_1_audio_source.html#aab938428dae14149e28cee34753b4a90", null ],
+    [ "OnPause", "class_alis_1_1_tools_1_1_audio_source.html#ad249c9968b2f562cdb29837c0aa4809c", null ],
+    [ "OnRestart", "class_alis_1_1_tools_1_1_audio_source.html#aefbb0bdff0d08aafe8b8724ccddbc9e2", null ]
 ];
