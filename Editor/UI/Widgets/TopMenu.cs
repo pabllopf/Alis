@@ -73,6 +73,7 @@ namespace Alis.Editor.UI.Widgets
                 {
                     if (ImGui.MenuItem(Icon.FILEO + " New Project"))
                     {
+                        eventHandler.Invoke(null, EventType.OpenCreatorProject);
                     }
 
                     if (ImGui.MenuItem(Icon.FOLDEROPEN + " Open Project"))

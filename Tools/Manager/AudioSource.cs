@@ -9,30 +9,13 @@ namespace Alis.Tools
     using SFML.Audio;
 
     /// <summary>Control the audio of game object.</summary>
-    public class AudioSource
+    public class AudioSource : IComponent
     {
         /// <summary>The audio</summary>
         private readonly Music audio;
 
         /// <summary>The play on awake</summary>
         private bool playOnAwake;
-        
-        /// <summary>Gets or sets a value indicating whether [play on awake].</summary>
-        /// <value>
-        /// <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
-        public bool PlayOnAwake { get => playOnAwake; set => playOnAwake = value; }
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnPlay;
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnStop;
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnPause;
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnRestart;
 
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
         /// <param name="audioFile">The audio file.</param>
@@ -49,11 +32,6 @@ namespace Alis.Tools
         {
             audio = new Music(audioFile);
             this.playOnAwake = playOnAwake;
-
-            if (playOnAwake)
-            {
-                this.Play();
-            }
         }
 
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
@@ -71,18 +49,30 @@ namespace Alis.Tools
         {
             audio = new Music(audioStream);
             this.playOnAwake = playOnAwake;
-
-            if (playOnAwake) 
-            {
-                this.Play();
-            }
         }
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnPlay;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnStop;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnPause;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnRestart;
+
+        /// <summary>Gets or sets a value indicating whether [play on awake].</summary>
+        /// <value>
+        /// <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
+        public bool PlayOnAwake { get => playOnAwake; set => playOnAwake = value; }
 
         /// <summary>Plays this instance.</summary>
         public void Play()
         {
             audio.Play();
-            OnPlay.Invoke(this, true);
+            OnPlay.Invoke(null, true);
         }
 
         /// <summary>Stops this instance.</summary>
@@ -91,7 +81,7 @@ namespace Alis.Tools
             if (audio.Status == SoundStatus.Playing) 
             {
                 audio.Stop();
-                OnStop.Invoke(this, true);
+                OnStop.Invoke(null, true);
             }
         }
 
@@ -101,7 +91,7 @@ namespace Alis.Tools
             if (audio.Status == SoundStatus.Playing)
             {
                 audio.Pause();
-                OnPause.Invoke(this, true);
+                OnPause.Invoke(null, true);
             }
         }
 
@@ -111,18 +101,29 @@ namespace Alis.Tools
             if (audio.Status == SoundStatus.Playing)
             {
                 audio.Stop();
-                OnStop.Invoke(this, true);
             }
 
             if (audio.Status == SoundStatus.Paused)
             {
                 audio.Stop();
-                OnStop.Invoke(this, true);
             }
 
             audio.Play();
-            OnPlay.Invoke(this, true);
-            OnRestart.Invoke(this, true);
+            OnRestart.Invoke(null, true);
+        }
+
+        /// <summary>Starts this instance.</summary>
+        public void Start()
+        {
+            if (playOnAwake) 
+            {
+                audio.Play();
+            }
+        }
+
+        /// <summary>Updates this instance.</summary>
+        public void Update()
+        {
         }
     }
 }

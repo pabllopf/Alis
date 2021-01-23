@@ -10,38 +10,22 @@ namespace ProjectExample
     {
         static void Main(string[] args)
         {
-            AudioSource audio = new AudioSource(Application.ProjectPath + "/Resources/Example.wav");
-            
-            audio.OnPlay += Audio_OnPlay;
-            audio.OnPause += Audio_OnPause;
-            audio.OnStop += Audio_OnStop;
-            audio.OnRestart += Audio_OnRestart;
-            
-            audio.Play();
+            ConfigGame config = new ConfigGame("Example");
+            VideoGame videoGame = new VideoGame(config);
+
+            Scene scene = new Scene("MainMenu");
+
+            GameObject gameObject = new GameObject("Player");
+
+            gameObject.Add(new AudioSource(Application.ProjectPath + "/Resources/Example.wav", true));
+            scene.Add(gameObject);
+            videoGame.Add(scene);
 
 
-            Console.WriteLine("example:" + new Application().ToString());
+     
+            videoGame.Run();
+
             Console.ReadKey();
-        }
-
-        private static void Audio_OnRestart(object sender, bool e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void Audio_OnStop(object sender, bool e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void Audio_OnPause(object sender, bool e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void Audio_OnPlay(object sender, bool e)
-        {
-            Console.WriteLine(sender.ToString() + " playing");
         }
     }
 }

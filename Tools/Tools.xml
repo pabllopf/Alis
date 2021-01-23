@@ -26,62 +26,6 @@
             <summary>Gets the data path.</summary>
             <value>The data path.</value>
         </member>
-        <member name="T:Alis.Tools.AudioSource">
-            <summary>Control the audio of game object.</summary>
-        </member>
-        <member name="F:Alis.Tools.AudioSource.audio">
-            <summary>The audio</summary>
-        </member>
-        <member name="F:Alis.Tools.AudioSource.playOnAwake">
-            <summary>The play on awake</summary>
-        </member>
-        <member name="P:Alis.Tools.AudioSource.PlayOnAwake">
-            <summary>Gets or sets a value indicating whether [play on awake].</summary>
-            <value>
-            <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="E:Alis.Tools.AudioSource.OnPlay">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Tools.AudioSource.OnStop">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Tools.AudioSource.OnPause">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Tools.AudioSource.OnRestart">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="M:Alis.Tools.AudioSource.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
-            <param name="audioFile">The audio file.</param>
-        </member>
-        <member name="M:Alis.Tools.AudioSource.#ctor(System.String,System.Boolean)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
-            <param name="audioFile">The audio file.</param>
-            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
-        </member>
-        <member name="M:Alis.Tools.AudioSource.#ctor(System.IO.Stream)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
-            <param name="audioStream">The audio stream.</param>
-        </member>
-        <member name="M:Alis.Tools.AudioSource.#ctor(System.IO.Stream,System.Boolean)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
-            <param name="audioStream">The audio stream.</param>
-            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
-        </member>
-        <member name="M:Alis.Tools.AudioSource.Play">
-            <summary>Plays this instance.</summary>
-        </member>
-        <member name="M:Alis.Tools.AudioSource.Stop">
-            <summary>Stops this instance.</summary>
-        </member>
-        <member name="M:Alis.Tools.AudioSource.Pause">
-            <summary>Pauses this instance.</summary>
-        </member>
-        <member name="M:Alis.Tools.AudioSource.Restart">
-            <summary>Restarts this instance.</summary>
-        </member>
         <member name="T:Alis.Tools.CloudData">
             <summary>Manage the cloud data game.</summary>
         </member>
@@ -250,6 +194,232 @@
             <typeparam name="T">Type data</typeparam>
             <param name="name">The name.</param>
             <returns>Return the value data.</returns>
+        </member>
+        <member name="T:Alis.Tools.AudioSource">
+            <summary>Control the audio of game object.</summary>
+        </member>
+        <member name="F:Alis.Tools.AudioSource.audio">
+            <summary>The audio</summary>
+        </member>
+        <member name="F:Alis.Tools.AudioSource.playOnAwake">
+            <summary>The play on awake</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
+            <param name="audioFile">The audio file.</param>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.#ctor(System.String,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
+            <param name="audioFile">The audio file.</param>
+            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.#ctor(System.IO.Stream)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
+            <param name="audioStream">The audio stream.</param>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.#ctor(System.IO.Stream,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.AudioSource" /> class.</summary>
+            <param name="audioStream">The audio stream.</param>
+            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
+        </member>
+        <member name="E:Alis.Tools.AudioSource.OnPlay">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Tools.AudioSource.OnStop">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Tools.AudioSource.OnPause">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Tools.AudioSource.OnRestart">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="P:Alis.Tools.AudioSource.PlayOnAwake">
+            <summary>Gets or sets a value indicating whether [play on awake].</summary>
+            <value>
+            <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Play">
+            <summary>Plays this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Stop">
+            <summary>Stops this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Pause">
+            <summary>Pauses this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Restart">
+            <summary>Restarts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.AudioSource.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Tools.ConfigGame">
+            <summary>Define a config. </summary>
+        </member>
+        <member name="F:Alis.Tools.ConfigGame.nameProject">
+            <summary>The name project</summary>
+        </member>
+        <member name="M:Alis.Tools.ConfigGame.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.ConfigGame" /> class.</summary>
+            <param name="nameProject">The name project.</param>
+        </member>
+        <member name="P:Alis.Tools.ConfigGame.NameProject">
+            <summary>Gets or sets the name project.</summary>
+            <value>The name project.</value>
+        </member>
+        <member name="T:Alis.Tools.Debug">
+            <summary>Debug messages.</summary>
+        </member>
+        <member name="M:Alis.Tools.Debug.Log(System.String)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Debug.Warning(System.String)">
+            <summary>Warnings the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Debug.Error(System.String)">
+            <summary>Errors the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:Alis.Tools.GameObject">
+            <summary>Define a game object. </summary>
+        </member>
+        <member name="F:Alis.Tools.GameObject.name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Tools.GameObject.components">
+            <summary>The components</summary>
+        </member>
+        <member name="M:Alis.Tools.GameObject.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.GameObject" /> class.</summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="P:Alis.Tools.GameObject.Name">
+            <summary>Gets the name.</summary>
+            <value>The name.</value>
+        </member>
+        <member name="M:Alis.Tools.GameObject.Add(Alis.Tools.IComponent)">
+            <summary>Adds the specified component.</summary>
+            <param name="component">The component.</param>
+        </member>
+        <member name="M:Alis.Tools.GameObject.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.GameObject.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Tools.IComponent">
+            <summary>Define components.</summary>
+        </member>
+        <member name="M:Alis.Tools.IComponent.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.IComponent.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Tools.Input">
+            <summary>Manage the inputs of game.</summary>
+        </member>
+        <member name="T:Alis.Tools.Scene">
+            <summary>Define a scene.</summary>
+        </member>
+        <member name="F:Alis.Tools.Scene.name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Tools.Scene.gameObjects">
+            <summary>The game objects</summary>
+        </member>
+        <member name="M:Alis.Tools.Scene.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Scene" /> class.</summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="P:Alis.Tools.Scene.Name">
+            <summary>Gets the name.</summary>
+            <value>The name.</value>
+        </member>
+        <member name="M:Alis.Tools.Scene.Add(Alis.Tools.GameObject)">
+            <summary>Adds the specified game object.</summary>
+            <param name="gameObject">The game object.</param>
+        </member>
+        <member name="M:Alis.Tools.Scene.Remove(Alis.Tools.GameObject)">
+            <summary>Removes the specified game object.</summary>
+            <param name="gameObject">The game object.</param>
+        </member>
+        <member name="M:Alis.Tools.Scene.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Scene.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Tools.SceneManager">
+            <summary>Manage the scenes of game.</summary>
+        </member>
+        <member name="T:Alis.Tools.Sprite">
+            <summary>Define sprite to draw on game.</summary>
+        </member>
+        <member name="M:Alis.Tools.Sprite.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Sprite.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Tools.Transform">
+            <summary>Manage the position of the game object on a scene.</summary>
+        </member>
+        <member name="F:Alis.Tools.Transform.position">
+            <summary>The position</summary>
+        </member>
+        <member name="F:Alis.Tools.Transform.rotation">
+            <summary>The rotation</summary>
+        </member>
+        <member name="M:Alis.Tools.Transform.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Transform" /> class.</summary>
+        </member>
+        <member name="P:Alis.Tools.Transform.Position">
+            <summary>Gets or sets the position.</summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:Alis.Tools.Transform.Rotation">
+            <summary>Gets or sets the rotation.</summary>
+            <value>The rotation.</value>
+        </member>
+        <member name="M:Alis.Tools.Transform.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Transform.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Tools.VideoGame">
+            <summary>Define the video game.</summary>
+        </member>
+        <member name="F:Alis.Tools.VideoGame.config">
+            <summary>The configuration</summary>
+        </member>
+        <member name="F:Alis.Tools.VideoGame.scenes">
+            <summary>The scenes</summary>
+        </member>
+        <member name="F:Alis.Tools.VideoGame.isRunning">
+            <summary>The is running</summary>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.#ctor(Alis.Tools.ConfigGame)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.Add(Alis.Tools.Scene)">
+            <summary>Adds the specified scene.</summary>
+            <param name="scene">The scene.</param>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.Remove(Alis.Tools.Scene)">
+            <summary>Removes the specified scene.</summary>
+            <param name="scene">The scene.</param>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.Run">
+            <summary>Runs this instance.</summary>
         </member>
         <member name="T:Alis.Tools.Vector2">
             <summary>Define a vector.</summary>

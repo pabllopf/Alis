@@ -211,7 +211,7 @@ namespace Alis.Editor.UI
                 controller.Update(deltaSeconds, snapshot);
                 widgetManager.Update();
                 ImGui.ShowDemoWindow();
-                ShowPreviewMessage();
+                //ShowPreviewMessage();
 
                 commandList.Begin();
                 commandList.SetFramebuffer(graphicsDevice.MainSwapchain.Framebuffer);

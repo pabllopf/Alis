@@ -78,8 +78,6 @@ namespace Alis.Editor
         /// <returns>Return false or true to indicate the exit value</returns>
         public int Start()
         {
-            AudioSource audioSource = new AudioSource(Application.ProjectPath + "/Resources/Example.wav", true);
-
             if (!FirstInstance)
             {
                 Debug.Error("There is already an 'Alis instance' running.");
