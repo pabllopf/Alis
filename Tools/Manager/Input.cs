@@ -4,8 +4,17 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Tools
 {
+    using System.Diagnostics;
+
     /// <summary>Manage the inputs of game.</summary>
+    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Input
     {
+        /// <summary>Gets the debugger display.</summary>
+        /// <returns>Debug string</returns>
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
+        }
     }
 }

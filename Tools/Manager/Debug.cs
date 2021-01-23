@@ -5,8 +5,10 @@
 namespace Alis.Tools
 {
     using System;
+    using System.Diagnostics;
 
     /// <summary>Debug messages.</summary>
+    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Debug
     {
         /// <summary>Logs the specified message.</summary>
@@ -32,6 +34,13 @@ namespace Alis.Tools
             Console.BackgroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Error: " + message);
             Console.ResetColor();
+        }
+
+        /// <summary>Gets the debugger display.</summary>
+        /// <returns>Debug string</returns>
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
     }
 }

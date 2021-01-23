@@ -5,6 +5,7 @@
 namespace Alis.Tools
 {
     /// <summary>Define a config. </summary>
+    [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class ConfigGame
     {
         /// <summary>The name project</summary>
@@ -22,5 +23,12 @@ namespace Alis.Tools
         /// <summary>Gets or sets the name project.</summary>
         /// <value>The name project.</value>
         public string NameProject { get => nameProject; set => nameProject = value; }
+
+        /// <summary>Gets the debugger display.</summary>
+        /// <returns>Debug string</returns>
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
+        }
     }
 }

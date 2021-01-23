@@ -9,6 +9,7 @@ namespace Alis.Tools
     using SFML.Audio;
 
     /// <summary>Control the audio of game object.</summary>
+    [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class AudioSource : IComponent
     {
         /// <summary>The audio</summary>
@@ -23,6 +24,7 @@ namespace Alis.Tools
         {
             audio = new Music(audioFile);
             playOnAwake = false;
+            Debug.Log("Created a new " + GetType());
         }
 
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
@@ -124,6 +126,13 @@ namespace Alis.Tools
         /// <summary>Updates this instance.</summary>
         public void Update()
         {
+        }
+
+        /// <summary>Gets the debugger display.</summary>
+        /// <returns>Debug string</returns>
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
     }
 }

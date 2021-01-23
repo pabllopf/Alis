@@ -7,6 +7,7 @@ namespace Alis.Tools
     using System.Collections.Generic;
 
     /// <summary>Define a game object. </summary>
+    [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class GameObject
     {
         /// <summary>The name</summary>
@@ -56,6 +57,13 @@ namespace Alis.Tools
         public void Update() 
         {
             components.ForEach(i => i.Update());
+        }
+
+        /// <summary>Gets the debugger display.</summary>
+        /// <returns>Debug string</returns>
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
     }
 }

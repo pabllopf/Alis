@@ -7,6 +7,7 @@ namespace Alis.Tools
     using System.Collections.Generic;
 
     /// <summary>Define the video game.</summary>
+    [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class VideoGame
     {
         /// <summary>The configuration</summary>
@@ -17,6 +18,9 @@ namespace Alis.Tools
 
         /// <summary>The is running</summary>
         private bool isRunning;
+
+        /// <summary>The current scene</summary>
+        private Scene currentScene;
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
@@ -62,14 +66,25 @@ namespace Alis.Tools
         public void Run() 
         {
             isRunning = true;
-            scenes.ForEach(i => i.Start());
+
+            currentScene = scenes[0];
+
+            currentScene.Start();
+
             Debug.Log("Run the videogame.");
             while (isRunning) 
             {
-                scenes.ForEach(i => i.Update());
+                currentScene.Update();
             }
 
             Debug.Log("Exit of videogame.");
+        }
+
+        /// <summary>Gets the debugger display.</summary>
+        /// <returns>Debug string</returns>
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
     }
 }

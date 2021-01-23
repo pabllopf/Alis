@@ -4,7 +4,10 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Tools
 {
+    using System.Diagnostics;
+
     /// <summary>Manage the position of the game object on a scene.</summary>
+    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Transform : IComponent
     {
         /// <summary>The position</summary>
@@ -36,6 +39,13 @@ namespace Alis.Tools
         /// <summary>Updates this instance.</summary>
         public void Update()
         {
+        }
+
+        /// <summary>Gets the debugger display.</summary>
+        /// <returns>Debug string</returns>
+        private string GetDebuggerDisplay()
+        {
+            return ToString();
         }
     }
 }

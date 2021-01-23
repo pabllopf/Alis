@@ -394,33 +394,6 @@
         <member name="M:Alis.Tools.Transform.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="T:Alis.Tools.VideoGame">
-            <summary>Define the video game.</summary>
-        </member>
-        <member name="F:Alis.Tools.VideoGame.config">
-            <summary>The configuration</summary>
-        </member>
-        <member name="F:Alis.Tools.VideoGame.scenes">
-            <summary>The scenes</summary>
-        </member>
-        <member name="F:Alis.Tools.VideoGame.isRunning">
-            <summary>The is running</summary>
-        </member>
-        <member name="M:Alis.Tools.VideoGame.#ctor(Alis.Tools.ConfigGame)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.VideoGame" /> class.</summary>
-            <param name="config">The configuration.</param>
-        </member>
-        <member name="M:Alis.Tools.VideoGame.Add(Alis.Tools.Scene)">
-            <summary>Adds the specified scene.</summary>
-            <param name="scene">The scene.</param>
-        </member>
-        <member name="M:Alis.Tools.VideoGame.Remove(Alis.Tools.Scene)">
-            <summary>Removes the specified scene.</summary>
-            <param name="scene">The scene.</param>
-        </member>
-        <member name="M:Alis.Tools.VideoGame.Run">
-            <summary>Runs this instance.</summary>
-        </member>
         <member name="T:Alis.Tools.Vector2">
             <summary>Define a vector.</summary>
         </member>
@@ -530,6 +503,36 @@
         <member name="M:Alis.Tools.Vector3.GetDebuggerDisplay">
             <summary>Gets the debugger display.</summary>
             <returns>Return the string. </returns>
+        </member>
+        <member name="T:Alis.Tools.VideoGame">
+            <summary>Define the video game.</summary>
+        </member>
+        <member name="F:Alis.Tools.VideoGame.config">
+            <summary>The configuration</summary>
+        </member>
+        <member name="F:Alis.Tools.VideoGame.scenes">
+            <summary>The scenes</summary>
+        </member>
+        <member name="F:Alis.Tools.VideoGame.isRunning">
+            <summary>The is running</summary>
+        </member>
+        <member name="F:Alis.Tools.VideoGame.currentScene">
+            <summary>The current scene</summary>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.#ctor(Alis.Tools.ConfigGame)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.Add(Alis.Tools.Scene)">
+            <summary>Adds the specified scene.</summary>
+            <param name="scene">The scene.</param>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.Remove(Alis.Tools.Scene)">
+            <summary>Removes the specified scene.</summary>
+            <param name="scene">The scene.</param>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.Run">
+            <summary>Runs this instance.</summary>
         </member>
         <member name="T:Alis.Tools.Zipper">
             <summary>Manage zip files. </summary>
