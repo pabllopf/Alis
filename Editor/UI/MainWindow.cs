@@ -6,9 +6,8 @@ namespace Alis.Editor.UI
 {
     using System;
     using System.Linq;
-    using System.Runtime.InteropServices;
     using Alis.Editor.UI.Widgets;
-    using Alis.Editor.Utils;
+    using Alis.Tools;
     using ImGuiNET;
     using Veldrid;
     using Veldrid.StartupUtilities;

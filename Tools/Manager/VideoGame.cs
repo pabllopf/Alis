@@ -75,10 +75,12 @@ namespace Alis.Tools
             while (isRunning) 
             {
                 currentScene.Update();
+                Input.PollEvents();
             }
 
             Debug.Log("Exit of videogame.");
         }
+
 
         /// <summary>Gets the debugger display.</summary>
         /// <returns>Debug string</returns>

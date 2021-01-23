@@ -4,6 +4,7 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Tools
 {
+    using System.Numerics;
     using System.Diagnostics;
 
     /// <summary>Manage the position of the game object on a scene.</summary>
@@ -21,6 +22,15 @@ namespace Alis.Tools
         {
             position = new Vector3();
             rotation = new Vector3();
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
+        /// <param name="position">The position.</param>
+        /// <param name="rotation">The rotation.</param>
+        public Transform(Vector3 position, Vector3 rotation)
+        {
+            this.position = position;
+            this.rotation = rotation;
         }
 
         /// <summary>Gets or sets the position.</summary>

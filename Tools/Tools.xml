@@ -257,6 +257,67 @@
         <member name="M:Alis.Tools.AudioSource.Update">
             <summary>Updates this instance.</summary>
         </member>
+        <member name="M:Alis.Tools.AudioSource.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
+        </member>
+        <member name="T:Alis.Tools.IComponent">
+            <summary>Define components.</summary>
+        </member>
+        <member name="M:Alis.Tools.IComponent.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.IComponent.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Tools.Sprite">
+            <summary>Define sprite to draw on game.</summary>
+        </member>
+        <member name="M:Alis.Tools.Sprite.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Sprite.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Sprite.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
+        </member>
+        <member name="T:Alis.Tools.Transform">
+            <summary>Manage the position of the game object on a scene.</summary>
+        </member>
+        <member name="F:Alis.Tools.Transform.position">
+            <summary>The position</summary>
+        </member>
+        <member name="F:Alis.Tools.Transform.rotation">
+            <summary>The rotation</summary>
+        </member>
+        <member name="M:Alis.Tools.Transform.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Transform" /> class.</summary>
+        </member>
+        <member name="M:Alis.Tools.Transform.#ctor(System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Transform" /> class.</summary>
+            <param name="position">The position.</param>
+            <param name="rotation">The rotation.</param>
+        </member>
+        <member name="P:Alis.Tools.Transform.Position">
+            <summary>Gets or sets the position.</summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:Alis.Tools.Transform.Rotation">
+            <summary>Gets or sets the rotation.</summary>
+            <value>The rotation.</value>
+        </member>
+        <member name="M:Alis.Tools.Transform.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Transform.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Transform.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
+        </member>
         <member name="T:Alis.Tools.ConfigGame">
             <summary>Define a config. </summary>
         </member>
@@ -270,6 +331,10 @@
         <member name="P:Alis.Tools.ConfigGame.NameProject">
             <summary>Gets or sets the name project.</summary>
             <value>The name project.</value>
+        </member>
+        <member name="M:Alis.Tools.ConfigGame.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Tools.Debug">
             <summary>Debug messages.</summary>
@@ -285,6 +350,10 @@
         <member name="M:Alis.Tools.Debug.Error(System.String)">
             <summary>Errors the specified message.</summary>
             <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Debug.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Tools.GameObject">
             <summary>Define a game object. </summary>
@@ -313,17 +382,24 @@
         <member name="M:Alis.Tools.GameObject.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="T:Alis.Tools.IComponent">
-            <summary>Define components.</summary>
-        </member>
-        <member name="M:Alis.Tools.IComponent.Start">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Tools.IComponent.Update">
-            <summary>Updates this instance.</summary>
+        <member name="M:Alis.Tools.GameObject.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Tools.Input">
             <summary>Manage the inputs of game.</summary>
+        </member>
+        <member name="E:Alis.Tools.Input.OnPressKey">
+            <summary>Occurs when [on press key].</summary>
+        </member>
+        <member name="E:Alis.Tools.Input.OnPressKeyOnce">
+            <summary>Occurs when [on press once].</summary>
+        </member>
+        <member name="F:Alis.Tools.Input.keys">
+            <summary>The keys</summary>
+        </member>
+        <member name="M:Alis.Tools.Input.PollEvents">
+            <summary>Polls the events.</summary>
         </member>
         <member name="T:Alis.Tools.Scene">
             <summary>Define a scene.</summary>
@@ -356,153 +432,16 @@
         <member name="M:Alis.Tools.Scene.Update">
             <summary>Updates this instance.</summary>
         </member>
+        <member name="M:Alis.Tools.Scene.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
+        </member>
         <member name="T:Alis.Tools.SceneManager">
             <summary>Manage the scenes of game.</summary>
         </member>
-        <member name="T:Alis.Tools.Sprite">
-            <summary>Define sprite to draw on game.</summary>
-        </member>
-        <member name="M:Alis.Tools.Sprite.Start">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Tools.Sprite.Update">
-            <summary>Updates this instance.</summary>
-        </member>
-        <member name="T:Alis.Tools.Transform">
-            <summary>Manage the position of the game object on a scene.</summary>
-        </member>
-        <member name="F:Alis.Tools.Transform.position">
-            <summary>The position</summary>
-        </member>
-        <member name="F:Alis.Tools.Transform.rotation">
-            <summary>The rotation</summary>
-        </member>
-        <member name="M:Alis.Tools.Transform.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Transform" /> class.</summary>
-        </member>
-        <member name="P:Alis.Tools.Transform.Position">
-            <summary>Gets or sets the position.</summary>
-            <value>The position.</value>
-        </member>
-        <member name="P:Alis.Tools.Transform.Rotation">
-            <summary>Gets or sets the rotation.</summary>
-            <value>The rotation.</value>
-        </member>
-        <member name="M:Alis.Tools.Transform.Start">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Tools.Transform.Update">
-            <summary>Updates this instance.</summary>
-        </member>
-        <member name="T:Alis.Tools.Vector2">
-            <summary>Define a vector.</summary>
-        </member>
-        <member name="F:Alis.Tools.Vector2.x">
-            <summary>The x</summary>
-        </member>
-        <member name="F:Alis.Tools.Vector2.y">
-            <summary>The y</summary>
-        </member>
-        <member name="M:Alis.Tools.Vector2.#ctor(System.Single,System.Single)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Vector2" /> struct.</summary>
-            <param name="x">The x.</param>
-            <param name="y">The y.</param>
-        </member>
-        <member name="P:Alis.Tools.Vector2.X">
-            <summary>Gets or sets the x.</summary>
-            <value>The x.</value>
-        </member>
-        <member name="P:Alis.Tools.Vector2.Y">
-            <summary>Gets or sets the y.</summary>
-            <value>The y.</value>
-        </member>
-        <member name="M:Alis.Tools.Vector2.Set(System.Single,System.Single)">
-            <summary>Sets the specified x.</summary>
-            <param name="x">The x.</param>
-            <param name="y">The y.</param>
-        </member>
-        <member name="M:Alis.Tools.Vector2.Reset">
-            <summary>Resets this instance.</summary>
-        </member>
-        <member name="M:Alis.Tools.Vector2.Equals(System.Object)">
-            <summary>Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.</summary>
-            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
-            <returns>
-            <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
-        </member>
-        <member name="M:Alis.Tools.Vector2.GetHashCode">
-            <summary>Returns a hash code for this instance.</summary>
-            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-        </member>
-        <member name="M:Alis.Tools.Vector2.ToString">
-            <summary>Converts to string.</summary>
-            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
-        </member>
-        <member name="M:Alis.Tools.Vector2.GetDebuggerDisplay">
+        <member name="M:Alis.Tools.SceneManager.GetDebuggerDisplay">
             <summary>Gets the debugger display.</summary>
-            <returns>Return string</returns>
-        </member>
-        <member name="T:Alis.Tools.Vector3">
-            <summary>Define vector</summary>
-        </member>
-        <member name="F:Alis.Tools.Vector3.x">
-            <summary>The x</summary>
-        </member>
-        <member name="F:Alis.Tools.Vector3.y">
-            <summary>The y</summary>
-        </member>
-        <member name="F:Alis.Tools.Vector3.z">
-            <summary>The z</summary>
-        </member>
-        <member name="M:Alis.Tools.Vector3.#ctor(System.Single,System.Single,System.Single)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Vector3" /> struct.</summary>
-            <param name="x">The x.</param>
-            <param name="y">The y.</param>
-            <param name="z">The z.</param>
-        </member>
-        <member name="M:Alis.Tools.Vector3.#ctor(System.Single,System.Single)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Vector3" /> struct.</summary>
-            <param name="x">The x.</param>
-            <param name="y">The y.</param>
-        </member>
-        <member name="P:Alis.Tools.Vector3.X">
-            <summary>Gets or sets the x.</summary>
-            <value>The x.</value>
-        </member>
-        <member name="P:Alis.Tools.Vector3.Y">
-            <summary>Gets or sets the y.</summary>
-            <value>The y.</value>
-        </member>
-        <member name="P:Alis.Tools.Vector3.Z">
-            <summary>Gets or sets the z.</summary>
-            <value>The z.</value>
-        </member>
-        <member name="M:Alis.Tools.Vector3.Set(System.Single,System.Single,System.Single)">
-            <summary>Sets the specified x.</summary>
-            <param name="x">The x.</param>
-            <param name="y">The y.</param>
-            <param name="z">The z.</param>
-        </member>
-        <member name="M:Alis.Tools.Vector3.Reset">
-            <summary>Resets this instance to 0</summary>
-        </member>
-        <member name="M:Alis.Tools.Vector3.Equals(System.Object)">
-            <summary>Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.</summary>
-            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
-            <returns>
-            <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.</returns>
-        </member>
-        <member name="M:Alis.Tools.Vector3.GetHashCode">
-            <summary>Returns a hash code for this instance.</summary>
-            <returns>A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.</returns>
-        </member>
-        <member name="M:Alis.Tools.Vector3.ToString">
-            <summary>Converts to string.</summary>
-            <returns>A <see cref="T:System.String" /> that represents this instance.</returns>
-        </member>
-        <member name="M:Alis.Tools.Vector3.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Return the string. </returns>
+            <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Tools.VideoGame">
             <summary>Define the video game.</summary>
@@ -533,6 +472,10 @@
         </member>
         <member name="M:Alis.Tools.VideoGame.Run">
             <summary>Runs this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Tools.Zipper">
             <summary>Manage zip files. </summary>

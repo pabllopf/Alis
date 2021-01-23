@@ -576,6 +576,9 @@
         <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.isSelect2D">
             <summary>The is select2 d</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.itemSpace">
+            <summary>The item space</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.eventHandler">
             <summary>The event handler</summary>
         </member>
@@ -775,21 +778,6 @@
         </member>
         <member name="F:Alis.Editor.UI.Widgets.WidgetType.TopMenu">
             <summary>The top menu</summary>
-        </member>
-        <member name="T:Alis.Editor.Utils.Debug">
-            <summary>Manage the messages to show in consoles.</summary>
-        </member>
-        <member name="M:Alis.Editor.Utils.Debug.Log(System.String)">
-            <summary>Logs the specified message.</summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:Alis.Editor.Utils.Debug.Warning(System.String)">
-            <summary>Warnings the specified message.</summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:Alis.Editor.Utils.Debug.Error(System.String)">
-            <summary>Errors the specified message.</summary>
-            <param name="message">The message.</param>
         </member>
         <member name="T:Alis.Editor.Utils.Icon">
             <summary>The icons of app.</summary>

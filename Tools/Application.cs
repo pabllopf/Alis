@@ -20,6 +20,11 @@ namespace Alis.Tools
             set => name = value;
         }
 
+        public static string DesktopPath 
+        {
+            get => Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        }
+
         /// <summary>Gets the assets path.</summary>
         /// <value>The assets path.</value>
         public static string AssetsPath 

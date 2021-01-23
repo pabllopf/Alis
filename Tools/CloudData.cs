@@ -11,12 +11,12 @@ namespace Alis.Tools
     {
         public static void Save<T>(string name, T data)
         {
-            throw new NotImplementedException();
+            
         }
 
         public static T Load<T>(string name)
         {
-            throw new NotImplementedException();
+            return default;
         }
 
         public override bool Equals(object obj)

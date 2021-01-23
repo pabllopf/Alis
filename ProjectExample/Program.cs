@@ -1,8 +1,6 @@
 ﻿
 using Alis.Tools;
 using System;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace ProjectExample
 {
@@ -22,10 +20,17 @@ namespace ProjectExample
             videoGame.Add(scene);
 
 
-     
+            Input.OnPressKeyOnce += Input_OnPressKeyOnce;
+
+
             videoGame.Run();
 
             Console.ReadKey();
+        }
+
+        private static void Input_OnPressKeyOnce(object sender, SFML.Window.Keyboard.Key e)
+        {
+            Console.WriteLine("Key: " + e);
         }
     }
 }
