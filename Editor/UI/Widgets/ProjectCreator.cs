@@ -7,6 +7,7 @@ namespace Alis.Editor.UI.Widgets
     using Alis.Tools;
     using ImGuiNET;
     using System;
+    using System.IO;
     using System.Numerics;
     using System.Text;
 
@@ -30,10 +31,10 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The event handler</summary>
         private EventHandler<EventType> eventHandler;
 
-        private byte[] nameBuffer = new byte[256];
+        private string nameBuffer;
 
         /// <summary>The buffer</summary>
-        private byte[] pathBuffer = new byte[256];
+        private string pathBuffer;
 
         private Vector2 sizeMasterChild = new Vector2(550, 200);
         private Vector2 sizeChildLeft = new Vector2();
@@ -46,24 +47,11 @@ namespace Alis.Editor.UI.Widgets
         {
             this.eventHandler = eventHandler;
 
-            byte[] example = Encoding.ASCII.GetBytes("Name");
-
-            for (int i = 0; i < example.Length; i++)
-            {
-                nameBuffer[i] = example[i];
-            }
-
-            example = Encoding.ASCII.GetBytes(Application.DesktopPath);
-
-            for (int i = 0; i < example.Length; i++)
-            {
-                pathBuffer[i] = example[i];
-            }
+            nameBuffer = "AlysProject";
+            pathBuffer = Application.DesktopPath.Replace("\\", "/");
 
             current_item = modes[0];
         }
-
-       
 
         /// <summary>Load this instance.</summary>
         public override void OnLoad()
@@ -77,11 +65,12 @@ namespace Alis.Editor.UI.Widgets
 
         private bool state;
 
+        private string contentDir;
+
 
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-           
             if (!isOpen)
             {
                 eventHandler?.Invoke(this, EventType.CloseCreatorProject);
@@ -95,37 +84,32 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.BeginPopupModal("New Project", ref isOpen, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
             {
+                ImGui.Text("Name: ");
                 ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
-                ImGui.InputText("##Name", nameBuffer, (uint)pathBuffer.Length);
+                ImGui.InputText("##Name", ref nameBuffer, 256);
                 ImGui.PopItemWidth();
 
-                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 3));
+                
 
+                ImGui.Text("Location: ");
+                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 3));
                 ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 27.0f);
                 ImGui.BeginGroup();
-
-                
-                ImGui.InputText("##Path", pathBuffer, (uint)pathBuffer.Length);
-                
-
+                ImGui.InputText("##Path", ref pathBuffer, 256);
                 ImGui.SameLine();
-
                 createButton.X = 27.0f;
                 createButton.Y = 27.0f;
-
-               
                 if (ImGui.Button("...", createButton))
                 {
                 }
-
                 ImGui.PopStyleVar();
                 ImGui.PopItemWidth();
                 ImGui.EndGroup();
 
-                
 
 
 
+                ImGui.Text("Solution: ");
                 ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
                 if (ImGui.BeginCombo("##Mode", current_item))
                 {
@@ -146,67 +130,38 @@ namespace Alis.Editor.UI.Widgets
                 }
                 ImGui.PopItemWidth();
 
-
                 createButton.X = sizeMasterChild.X;
-                createButton.Y = 50.0f;
+                createButton.Y = 45.0f;
                 if (ImGui.Button("Create", createButton))
                 {
+                    CreateProject(nameBuffer, pathBuffer, current_item);
+                    Close();
                 }
             }
             ImGui.EndPopup();
         }
 
+        private void CreateProject(string name, string directory, string current_item)
+        {
+            if (Directory.Exists(directory + "/" + name))
+            {
+                Debug.Error("The project(" + directory + "/" + name + ") already exists.");
+            }
+            else 
+            {
+                Directory.CreateDirectory(directory + "/" + name);
+                Directory.CreateDirectory(directory + "/" + name + "/Assets");
+                Directory.CreateDirectory(directory + "/" + name + "/Config");
 
-                    /*
+                string content = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultPr.txt", Encoding.UTF8);
+                File.WriteAllText(directory + "/" + name + "/" + name + ".csproj", content, Encoding.UTF8);
 
-                    if (ImGui.BeginChild("Project-Child-Left", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y)))
-                    {
-                        
-
-                        if (ImGui.BeginCombo("##combo", current_item)) 
-                        {
-                            for (int n = 0; n < items.Length; n++)
-                            {
-                                bool is_selected = (current_item == items[n]); // You can store your selection however you want, outside or inside your objects
-                                if (ImGui.Selectable(items[n], is_selected))
-                                {
-                                    current_item = items[n];
-                                }
-
-                                if (is_selected) 
-                                {
-                                    ImGui.SetItemDefaultFocus();
-                                }
-                            }
-                            ImGui.EndCombo();
-                        }
-                        }
-
-                        ImGui.EndChild();
-                }
-
-                ImGui.EndChild();
-
-
-                ImGui.InputText("Path", pathBuffer, (uint)pathBuffer.Length);
-
-                ImGui.SameLine();
-
-                if (ImGui.Button("Accept", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 35.0f)))
-                { 
-                }
-
-
-                    ImGui.Text("Please note that this is a test version in development.");
-                if (ImGui.Button("Accept", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 35.0f)))
-                {
-                    isOpen = false;
-                    ImGui.CloseCurrentPopup();
-                }
-                ImGui.EndPopup();
+                content = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultSl.txt", Encoding.UTF8);
+                content = content.Replace("Example", name);
+                File.WriteAllText(directory + "/" + name + "/" + name + ".sln", content, Encoding.UTF8);
             }
         }
-                    */
+
         /// <summary>Opens this instance.</summary>
         public override void Open()
         {
