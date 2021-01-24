@@ -275,7 +275,7 @@
         <member name="F:Alis.Editor.UI.Widgets.AssetsManager.isOpen">
             <summary>The is open</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.pathExample">
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.currentPath">
             <summary>The path example</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.AssetsManager.pathFolders">
@@ -581,6 +581,9 @@
         </member>
         <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.eventHandler">
             <summary>The event handler</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.redColor">
+            <summary>The red color</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.pathBuffer">
             <summary>The buffer</summary>

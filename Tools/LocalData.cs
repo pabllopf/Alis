@@ -60,7 +60,15 @@ namespace Alis.Tools
             }
             else
             {
-                return JsonConvert.DeserializeObject<T>(File.ReadAllText(file));
+                if (File.Exists(file))
+                {
+                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file));
+                }
+                else 
+                {
+                    Save<T>(name, default);
+                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file));
+                }
             }
         }
     }

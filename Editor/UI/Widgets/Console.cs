@@ -119,21 +119,21 @@ namespace Alis.Editor.UI.Widgets
         /// <param name="message">The message.</param>
         public void Warning(string message)
         {
-            log.Add("Warning: " + message);
+            log.Add("Warning: " + message + " [" + DateTime.Today + "]");
         }
 
         /// <summary>Errors the specified message.</summary>
         /// <param name="message">The message.</param>
         public void Error(string message)
         {
-            log.Add("Error: " + message);
+            log.Add("Error: " + message + " [" + DateTime.Today + "]");
         }
 
         /// <summary>Logs the specified message.</summary>
         /// <param name="message">The message.</param>
         public void Log(string message)
         {
-            log.Add("Log: " + message);
+            log.Add("Log: " + message + " [" + DateTime.Today + "]");
         }
 
         /// <summary>Prints this instance.</summary>

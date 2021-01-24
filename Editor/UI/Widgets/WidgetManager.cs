@@ -30,13 +30,21 @@ namespace Alis.Editor.UI.Widgets
         public WidgetManager(Info info)
         {
             EventHandler += ManageEventHandler;
+
             widgets.Add(new DockSpace(EventHandler));
             widgets.Add(new TopMenu(EventHandler, info));
+
+            Console.Current = new Console(EventHandler);
+            widgets.Add(Console.Current);
+            widgets.Add(new ProjectCreator(EventHandler));
+
+           
             widgets.Add(new BottomMenu(EventHandler));
             widgets.Add(new Inspector());
             widgets.Add(new SceneView());
             widgets.Add(new AssetsManager());
-            widgets.Add(new Console(EventHandler));
+
+            
             widgets.Add(new GameView(EventHandler));
         }
 

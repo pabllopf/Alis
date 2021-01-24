@@ -21,7 +21,7 @@ namespace Alis.Editor.UI.Widgets
         private bool isOpen = true;
 
         /// <summary>The path example</summary>
-        private string pathExample = "C:/Users/wwwam/Documents/Repositorios/Alis/Editor/resources/Example3.png";
+        private string currentPath = string.Empty;
 
         /// <summary>The path folders</summary>
         private List<string> pathFolders = new List<string>();
@@ -34,6 +34,13 @@ namespace Alis.Editor.UI.Widgets
                 ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
                 filter = new ImGuiTextFilterPtr(filterPtr);
             }
+
+            Project.OnChangeProject += Project_OnChangeProject;
+        }
+
+        private void Project_OnChangeProject(object sender, bool e)
+        {
+            currentPath = Project.AssetsPath;
         }
 
         /// <summary>Load this instance.</summary>
@@ -49,7 +56,8 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(1.0f, 3.0f));
 
 
-                foreach (string folderButton in GetPathList(pathExample))
+
+                foreach (string folderButton in GetPathList(currentPath))
                 {
                     if (ImGui.Button(folderButton))
                     {
@@ -123,11 +131,19 @@ namespace Alis.Editor.UI.Widgets
         {
             pathFolders.Clear();
             string[] folders = path.Split("/");
-
-            for (int i = 0; i < folders.Length - 1; i++)
+            bool show = false;
+            for (int i = 0; i < folders.Length ; i++)
             {
-                string directoryName = folders[i];
-                pathFolders.Add(directoryName);
+                if (folders[i].Equals("Assets")) 
+                {
+                    show = true;
+                }
+
+                if (show) 
+                {
+                    string directoryName = folders[i];
+                    pathFolders.Add(directoryName);
+                }
             }
 
             return pathFolders;
