@@ -5,6 +5,8 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager =
     [ "ProcessOpenConsole", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a3a60808bfe09f69e76d31b29c13c27f1", null ],
     [ "ProcessCloseConsole", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a7d7fe5b15cc265b6c61e3bb1a03fe101", null ],
     [ "ProcessExitEditor", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a8b70c1d89a05a21ad391e6d50cebbf23", null ],
+    [ "ProcessCloseCreatorProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#ad9aac36b995b2a6422253151019b16a0", null ],
+    [ "ProcessOpenCreatorProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#aedf7502199382596a36cf5f6a5a1673e", null ],
     [ "ManageEventHandler", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#ae1927fdea1e5a25e0428c35fd1e18aed", null ],
     [ "widgetEvents", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a1348dcf70d1513e8994c324c21b87384", null ],
     [ "widgets", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#ac9f2117e6d4103039e0a3b8a208a525a", null ],

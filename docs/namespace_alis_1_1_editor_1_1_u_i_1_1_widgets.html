@@ -126,6 +126,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html">Inspector</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Manage components of scene.  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html">ProjectCreator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create new project.  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html">SceneView</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Render the core scene.  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,9 +147,14 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a353b0dd609521e7b19a46199a5bea45c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45c">EventType</a> { <a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca937ece2dcf2c932211835a468777de9d">EventType.OpenConsole</a>, 
+<tr class="memitem:a353b0dd609521e7b19a46199a5bea45c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45c">EventType</a> { <br />
+&#160;&#160;<a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca937ece2dcf2c932211835a468777de9d">EventType.OpenConsole</a>, 
 <a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca2bfd4d356302a22daea9385644496255">EventType.CloseConsole</a>, 
-<a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca307c5a0101e6dd9d9ea1b04112a63232">EventType.ExitEditor</a>
+<a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45ca307c5a0101e6dd9d9ea1b04112a63232">EventType.ExitEditor</a>, 
+<a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45caad3a3fea0661d8a0e751c903d3613e49">EventType.OpenCreatorProject</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45cadbf5a7ae511bc77401a5f1702cb5740c">EventType.CloseCreatorProject</a>
+<br />
  }</td></tr>
 <tr class="memdesc:a353b0dd609521e7b19a46199a5bea45c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Event Type  <a href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45c">More...</a><br /></td></tr>
 <tr class="separator:a353b0dd609521e7b19a46199a5bea45c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -184,6 +192,10 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="a353b0dd609521e7b19a46199a5bea45ca2bfd4d356302a22daea9385644496255"></a>CloseConsole&#160;</td><td class="fielddoc"><p>Close <a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html" title="Console widget">Console</a> </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a353b0dd609521e7b19a46199a5bea45ca307c5a0101e6dd9d9ea1b04112a63232"></a>ExitEditor&#160;</td><td class="fielddoc"><p>The exit editor </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a353b0dd609521e7b19a46199a5bea45caad3a3fea0661d8a0e751c903d3613e49"></a>OpenCreatorProject&#160;</td><td class="fielddoc"><p>The open creator project </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a353b0dd609521e7b19a46199a5bea45cadbf5a7ae511bc77401a5f1702cb5740c"></a>CloseCreatorProject&#160;</td><td class="fielddoc"><p>The close creator project </p>
 </td></tr>
 </table>
 
@@ -230,7 +242,7 @@ Enumerations</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor.html">Editor</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor_1_1_u_i.html">UI</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html">Widgets</a></li>
     <li class="footer">
-      <a>Generated on | Sat Jan 23 2021 |</a>
+      <a>Generated on | Sun Jan 24 2021 |</a>
     </li>
   </ul>
 </div>
