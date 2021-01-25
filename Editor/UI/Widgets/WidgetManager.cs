@@ -36,7 +36,7 @@ namespace Alis.Editor.UI.Widgets
 
             Console.Current = new Console(EventHandler);
             widgets.Add(Console.Current);
-            widgets.Add(new ProjectCreator(EventHandler));
+            widgets.Add(new ProjectCreator(EventHandler, false, false, true));
 
            
             widgets.Add(new BottomMenu(EventHandler));
@@ -105,7 +105,7 @@ namespace Alis.Editor.UI.Widgets
         {
             if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectCreator)))
             {
-                obj.widgets.Add(new ProjectCreator(obj.EventHandler));
+                obj.widgets.Add(new ProjectCreator(obj.EventHandler, false, true, false));
                 System.Console.WriteLine("Process Open Creator Project");
             }
         }

@@ -275,7 +275,7 @@
         <member name="F:Alis.Editor.UI.Widgets.AssetsManager.isOpen">
             <summary>The is open</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.currentPath">
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.assetPath">
             <summary>The path example</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.AssetsManager.pathFolders">
@@ -588,7 +588,7 @@
         <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.pathBuffer">
             <summary>The buffer</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
+        <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType},System.Boolean,System.Boolean,System.Boolean)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.ProjectCreator" /> class.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.OnLoad">

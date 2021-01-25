@@ -4,6 +4,7 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
+    using Alis.Editor.Utils;
     using Alis.Tools;
     using ImGuiNET;
     using System;
@@ -50,8 +51,12 @@ namespace Alis.Editor.UI.Widgets
 
         private bool messageError = false;
 
+        bool isOpenNewProject;
+        bool isCreateNewProject;
+        bool isFirstOpen;
+
         /// <summary>Initializes a new instance of the <see cref="ProjectCreator" /> class.</summary>
-        public ProjectCreator(EventHandler<EventType> eventHandler)
+        public ProjectCreator(EventHandler<EventType> eventHandler, bool isOpenNewProject, bool isCreateNewProject, bool isFirstOpen)
         {
             this.eventHandler = eventHandler;
 
@@ -65,6 +70,10 @@ namespace Alis.Editor.UI.Widgets
             {
                 showLastProjects = true;
             }
+
+            this.isOpenNewProject = isOpenNewProject;
+            this.isCreateNewProject = isCreateNewProject;
+            this.isFirstOpen = isFirstOpen;
         }
 
         /// <summary>Load this instance.</summary>
@@ -94,33 +103,49 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(8.0f));
             ImGui.PushStyleColor(ImGuiCol.ChildBg, new Vector4(0,0,0,0));
-            ImGui.PushStyleVar(ImGuiStyleVar.ChildBorderSize, 5.0f);
-            
+            ImGui.PushStyleVar(ImGuiStyleVar.ChildBorderSize, 2.0f);
+
+            string name = isCreateNewProject ? "Create Project" : "Project";
 
             if (isOpen)
             {
-                ImGui.OpenPopup("Project");
+                ImGui.OpenPopup(name);
             }
 
-            if (ImGui.BeginPopupModal("Project", ref isOpen, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            
+
+            if (ImGui.BeginPopupModal(name, ref isOpen, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
             {
                 if (ImGui.BeginChild("Master", sizeMasterChild, false))
                 {
-                    if (showLastProjects)
+                    if (showLastProjects && isFirstOpen)
                     {
                         ImGui.PushStyleColor(ImGuiCol.Border, new Vector4(1, 1, 1, 1));
                         if (ImGui.BeginChild("Last Projetcs", new Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y), true))
                         {
                             ImGui.PopStyleColor();
 
+                            ImGui.Text("Recent Projects: ");
+
                             foreach (Project project in lastProjects)
                             {
+                                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(0, 7.0f));
+                                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 0.0f);
                                 ImGui.BeginGroup();
-                                if (ImGui.Button("Name:" + project.NameProject, new Vector2(ImGui.GetContentRegionAvail().X, 30.0f))) 
+                                if (ImGui.Button(project.NameProject, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
                                 {
-                                    OpenProject(project);   
+                                    OpenProject(project);
                                 }
+
+                                ImGui.SameLine();
+
+                                if (ImGui.Button(Icon.TIMESCIRCLEO, new Vector2(30.0f, 30.0f)))
+                                {
+                                    DeleteProject(project);
+                                }
+
                                 ImGui.EndGroup();
+                                ImGui.PopStyleVar(2);
                             }
                         }
 
@@ -189,10 +214,29 @@ namespace Alis.Editor.UI.Widgets
 
                         createButton.X = sizeMasterChild.X;
                         createButton.Y = 45.0f;
-                        if (ImGui.Button("Create", new Vector2(ImGui.GetContentRegionAvail().X, createButton.Y)))
+
+                        
+
+                        float sixeX = isCreateNewProject ? ImGui.GetContentRegionAvail().X / 2 : ImGui.GetContentRegionAvail().X;
+
+                        if (ImGui.Button("Create", new Vector2(sixeX, createButton.Y)))
                         {
                             CreateProject(nameBuffer, pathBuffer, current_item);
                         }
+
+                        if (isCreateNewProject)
+                        {
+                            ImGui.SameLine();
+
+                            if (ImGui.Button("Cancel", new Vector2(ImGui.GetContentRegionAvail().X, createButton.Y)))
+                            {
+                                Close();
+                            }
+
+                            
+                        }
+
+
                     }
 
                     ImGui.EndChild();
@@ -204,6 +248,11 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.PopStyleVar(2);
             ImGui.PopStyleColor();
+        }
+
+        private void DeleteProject(Project project)
+        {
+            throw new NotImplementedException();
         }
 
         private void OpenProject(Project project)

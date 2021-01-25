@@ -68,7 +68,11 @@ namespace ImGuiNET
             // ADD BY ME
             //ImGui.GetIO().Fonts.AddFontDefault();
 
+
+
             ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "resources/Segoe_Bold.ttf", 16.0f);
+
+            
 
             Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "resources/Segoe_Bold.ttf");
 

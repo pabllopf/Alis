@@ -7,6 +7,7 @@ namespace Alis.Editor.UI.Widgets
     using Alis.Editor.Utils;
     using ImGuiNET;
     using System.Collections.Generic;
+    using System.IO;
 
     /// <summary>Manage files of project.</summary>
     public class AssetsManager : Widget
@@ -21,7 +22,9 @@ namespace Alis.Editor.UI.Widgets
         private bool isOpen = true;
 
         /// <summary>The path example</summary>
-        private string currentPath = string.Empty;
+        private string assetPath = string.Empty;
+
+        private string currentDir = string.Empty;
 
         /// <summary>The path folders</summary>
         private List<string> pathFolders = new List<string>();
@@ -40,7 +43,8 @@ namespace Alis.Editor.UI.Widgets
 
         private void Project_OnChangeProject(object sender, bool e)
         {
-            currentPath = Project.AssetsPath;
+            assetPath = Project.AssetsPath;
+            currentDir = assetPath;
         }
 
         /// <summary>Load this instance.</summary>
@@ -57,7 +61,7 @@ namespace Alis.Editor.UI.Widgets
 
 
 
-                foreach (string folderButton in GetPathList(currentPath))
+                foreach (string folderButton in GetPathList(assetPath))
                 {
                     if (ImGui.Button(folderButton))
                     {
@@ -65,6 +69,9 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.SameLine();
                 }
+
+              
+
 
                 ImGui.PopStyleVar();
 
@@ -74,31 +81,51 @@ namespace Alis.Editor.UI.Widgets
 
                 if (ImGui.BeginChild("Assets-Child-Master"))
                 {
-                    ImGui.PushStyleColor(ImGuiCol.ChildBg, new System.Numerics.Vector4(1.0f));
+                    ImGui.PushStyleColor(ImGuiCol.ChildBg, new System.Numerics.Vector4(0,0,0,0));
+                    ImGui.PushStyleVar(ImGuiStyleVar.ChildBorderSize, 2.0f);
 
-                    if (ImGui.BeginChild("Assets-Child-Left", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y)))
+                    if (ImGui.BeginChild("Assets-Child-Left", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y), true))
                     {
-                        for (int i = 0; i < 10; i++)
-                        {
-                            ImGui.Text("hola" + i);
-                        }
+                        
+                        
                     }
 
                     ImGui.EndChild();
 
                     ImGui.SameLine();
 
-                    if (ImGui.BeginChild("Assets-Child-Right", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y)))
+                    if (ImGui.BeginChild("Assets-Child-Right", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
                     {
-                        for (int i = 0; i < 10; i++)
+                        if (!Project.CurrentPath.Equals(string.Empty))
                         {
-                            ImGui.Text("hola" + i);
+                            foreach (string file in Directory.GetFiles(currentDir))
+                            {
+                                ImGui.BeginGroup();
+
+                                string icon = "";
+
+                                if (Path.GetExtension(file).Equals(".txt")) 
+                                {
+                                    icon = Icon.FILEAUDIOO;
+                                }
+
+                              
+                                if (ImGui.Button(icon, new System.Numerics.Vector2(40.0f, 50.0f)))
+                                {
+                                }
+                                
+
+                                ImGui.EndGroup();
+
+                                ImGui.SameLine();
+                            }
                         }
                     }
 
                     ImGui.EndChild();
 
                     ImGui.PopStyleColor();
+                    ImGui.PopStyleVar();
                 }
 
                 ImGui.EndChild();
