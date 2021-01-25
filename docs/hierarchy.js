@@ -27,6 +27,7 @@ var hierarchy =
     ] ],
     [ "Alis.Editor.Program", "class_alis_1_1_editor_1_1_program.html", null ],
     [ "Alis.Editor.Project", "class_alis_1_1_editor_1_1_project.html", null ],
+    [ "Alis.Editor.UI.Project", "class_alis_1_1_editor_1_1_u_i_1_1_project.html", null ],
     [ "Alis.Tools.Resource", "class_alis_1_1_tools_1_1_resource.html", null ],
     [ "ImGuiNET.ImGuiController.ResourceSetInfo", "struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html", null ],
     [ "Alis.Tools.Scene", "class_alis_1_1_tools_1_1_scene.html", null ],

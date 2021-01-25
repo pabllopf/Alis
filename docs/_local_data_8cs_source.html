@@ -148,11 +148,19 @@ $(document).ready(function(){initNavTree('_local_data_8cs_source.html',''); init
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">return</span> JsonConvert.DeserializeObject&lt;T&gt;(File.ReadAllText(file));</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <span class="keywordflow">if</span> (File.Exists(file))</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    <span class="keywordflow">return</span> JsonConvert.DeserializeObject&lt;T&gt;(File.ReadAllText(file));</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    <a class="code" href="class_alis_1_1_tools_1_1_local_data.html#a24edf0f777dae3ab9a258b459510ccb8">Save&lt;T&gt;</a>(name, <span class="keywordflow">default</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                    <span class="keywordflow">return</span> JsonConvert.DeserializeObject&lt;T&gt;(File.ReadAllText(file));</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_alis_1_1_tools_1_1_local_data_html_a24edf0f777dae3ab9a258b459510ccb8"><div class="ttname"><a href="class_alis_1_1_tools_1_1_local_data.html#a24edf0f777dae3ab9a258b459510ccb8">Alis.Tools.LocalData.Save&lt; T &gt;</a></div><div class="ttdeci">static void Save&lt; T &gt;(string name, T data)</div><div class="ttdoc">Saves the specified name.</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8cs_source.html#l00025">LocalData.cs:25</a></div></div>
@@ -166,7 +174,7 @@ $(document).ready(function(){initNavTree('_local_data_8cs_source.html',''); init
   <ul>
     <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><b>LocalData.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Jan 24 2021 |</a>
+      <a>Generated on | Mon Jan 25 2021 |</a>
     </li>
   </ul>
 </div>

@@ -134,6 +134,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
+<tr class="memitem:aea80c6e3af0bf6209660a0ff38035318"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aea80c6e3af0bf6209660a0ff38035318">Project_OnChangeProject</a> (object sender, bool e)</td></tr>
+<tr class="separator:aea80c6e3af0bf6209660a0ff38035318"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a7b79deb71a5779b9a3f54e07c76bf6"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a1a7b79deb71a5779b9a3f54e07c76bf6">GetPathList</a> (string path)</td></tr>
 <tr class="memdesc:a1a7b79deb71a5779b9a3f54e07c76bf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the path list.  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a1a7b79deb71a5779b9a3f54e07c76bf6">More...</a><br /></td></tr>
 <tr class="separator:a1a7b79deb71a5779b9a3f54e07c76bf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -146,9 +148,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a9e4c1121936fe1f8703c6e78f40fc647"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a9e4c1121936fe1f8703c6e78f40fc647">isOpen</a> = true</td></tr>
 <tr class="memdesc:a9e4c1121936fe1f8703c6e78f40fc647"><td class="mdescLeft">&#160;</td><td class="mdescRight">The is open  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a9e4c1121936fe1f8703c6e78f40fc647">More...</a><br /></td></tr>
 <tr class="separator:a9e4c1121936fe1f8703c6e78f40fc647"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c6b618eb8363995b709ceffec16de82"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a2c6b618eb8363995b709ceffec16de82">pathExample</a> = &quot;C:/Users/wwwam/Documents/Repositorios/Alis/Editor/resources/Example3.png&quot;</td></tr>
-<tr class="memdesc:a2c6b618eb8363995b709ceffec16de82"><td class="mdescLeft">&#160;</td><td class="mdescRight">The path example  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a2c6b618eb8363995b709ceffec16de82">More...</a><br /></td></tr>
-<tr class="separator:a2c6b618eb8363995b709ceffec16de82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57c964eada65a2ade6f61858ae679ef6"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a57c964eada65a2ade6f61858ae679ef6">currentPath</a> = string.Empty</td></tr>
+<tr class="memdesc:a57c964eada65a2ade6f61858ae679ef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The path example  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a57c964eada65a2ade6f61858ae679ef6">More...</a><br /></td></tr>
+<tr class="separator:a57c964eada65a2ade6f61858ae679ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2f72286dfe2bc3dac243ca6e3183e1c"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c">pathFolders</a> = new List&lt;string&gt;()</td></tr>
 <tr class="memdesc:aa2f72286dfe2bc3dac243ca6e3183e1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The path folders  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c">More...</a><br /></td></tr>
 <tr class="separator:aa2f72286dfe2bc3dac243ca6e3183e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -186,6 +188,44 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aea80c6e3af0bf6209660a0ff38035318"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea80c6e3af0bf6209660a0ff38035318">&#9670;&nbsp;</a></span>Project_OnChangeProject()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Editor.UI.Widgets.AssetsManager.Project_OnChangeProject </td>
+          <td>(</td>
+          <td class="paramtype">object&#160;</td>
+          <td class="paramname"><em>sender</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00041">41</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
+
+</div>
+</div>
 <a id="a4b9fc826751bd3462f8b516214f7908b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b9fc826751bd3462f8b516214f7908b">&#9670;&nbsp;</a></span>OnLoad()</h2>
 
@@ -213,7 +253,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html#a3ae15c6e33363562c16243f6d5263deb">Alis.Editor.UI.Widgets.Widget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00040">40</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00047">47</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
 
 </div>
 </div>
@@ -244,7 +284,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html#ae9d6b54e8304d7e0f1b4b343bb14fcf6">Alis.Editor.UI.Widgets.Widget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00045">45</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00052">52</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
 
 </div>
 </div>
@@ -276,7 +316,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html#a8ef042cab2be4f9b8503a7840604c935">Alis.Editor.UI.Widgets.Widget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00104">104</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00112">112</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
 
 </div>
 </div>
@@ -307,7 +347,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html#ae65f5dfbb87fbadc73f715118f5efa6e">Alis.Editor.UI.Widgets.Widget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00110">110</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00118">118</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
 
 </div>
 </div>
@@ -338,7 +378,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html#a426038c3a2fee13a7d154d50ff61059f">Alis.Editor.UI.Widgets.Widget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00115">115</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00123">123</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
 
 </div>
 </div>
@@ -375,7 +415,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Return list</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00122">122</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_assets_manager_8cs_source.html#l00130">130</a> of file <a class="el" href="_assets_manager_8cs_source.html">AssetsManager.cs</a>.</p>
 
 </div>
 </div>
@@ -458,8 +498,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a2c6b618eb8363995b709ceffec16de82"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c6b618eb8363995b709ceffec16de82">&#9670;&nbsp;</a></span>pathExample</h2>
+<a id="a57c964eada65a2ade6f61858ae679ef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57c964eada65a2ade6f61858ae679ef6">&#9670;&nbsp;</a></span>currentPath</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -468,7 +508,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Editor.UI.Widgets.AssetsManager.pathExample = &quot;C:/Users/wwwam/Documents/Repositorios/Alis/Editor/resources/Example3.png&quot;</td>
+          <td class="memname">string Alis.Editor.UI.Widgets.AssetsManager.currentPath = string.Empty</td>
         </tr>
       </table>
   </td>
@@ -517,7 +557,7 @@ Static Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor.html">Editor</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor_1_1_u_i.html">UI</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html">Widgets</a></li><li class="navelem"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html">AssetsManager</a></li>
     <li class="footer">
-      <a>Generated on | Sun Jan 24 2021 |</a>
+      <a>Generated on | Mon Jan 25 2021 |</a>
     </li>
   </ul>
 </div>
