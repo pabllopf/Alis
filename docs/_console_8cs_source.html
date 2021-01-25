@@ -194,17 +194,17 @@ $(document).ready(function(){initNavTree('_console_8cs_source.html',''); initRes
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
 <div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a5d88f946aa81621b0a8d1ffd832ab220">  120</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a5d88f946aa81621b0a8d1ffd832ab220">Warning</a>(<span class="keywordtype">string</span> message)</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111">log</a>.Add(<span class="stringliteral">&quot;Warning: &quot;</span> + message);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111">log</a>.Add(<span class="stringliteral">&quot;Warning: &quot;</span> + message + <span class="stringliteral">&quot; [&quot;</span> + DateTime.Today + <span class="stringliteral">&quot;]&quot;</span>);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        }</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a405b35721a9563a38563c877e87a0bb3">  127</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a405b35721a9563a38563c877e87a0bb3">Error</a>(<span class="keywordtype">string</span> message)</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        {</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111">log</a>.Add(<span class="stringliteral">&quot;Error: &quot;</span> + message);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111">log</a>.Add(<span class="stringliteral">&quot;Error: &quot;</span> + message + <span class="stringliteral">&quot; [&quot;</span> + DateTime.Today + <span class="stringliteral">&quot;]&quot;</span>);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        }</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
 <div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a8321283a919029aa62f9c9aa8099889b">  134</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a8321283a919029aa62f9c9aa8099889b">Log</a>(<span class="keywordtype">string</span> message)</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111">log</a>.Add(<span class="stringliteral">&quot;Log: &quot;</span> + message);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111">log</a>.Add(<span class="stringliteral">&quot;Log: &quot;</span> + message + <span class="stringliteral">&quot; [&quot;</span> + DateTime.Today + <span class="stringliteral">&quot;]&quot;</span>);</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        }</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
 <div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a01677bf318218d2481c160f3601517f0">  140</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a01677bf318218d2481c160f3601517f0">Print</a>(<span class="keywordtype">string</span> message)</div>
@@ -400,7 +400,7 @@ $(document).ready(function(){initNavTree('_console_8cs_source.html',''); initRes
   <ul>
     <li class="navelem"><a class="el" href="dir_14eca4e58e6d71e3a9859288c1bd2735.html">Editor</a></li><li class="navelem"><a class="el" href="dir_f7d6d090f0bcfa8a66d7f61ab6a0ceb7.html">UI</a></li><li class="navelem"><a class="el" href="dir_871bb0cc41dc9f6e9396da9418080a4a.html">Widgets</a></li><li class="navelem"><b>Console.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Jan 24 2021 |</a>
+      <a>Generated on | Mon Jan 25 2021 |</a>
     </li>
   </ul>
 </div>
