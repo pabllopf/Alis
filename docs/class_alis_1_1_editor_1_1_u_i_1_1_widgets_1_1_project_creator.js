@@ -1,8 +1,9 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator =
 [
-    [ "ProjectCreator", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#aee9e34cf04c8992e2c0e362afe5c7915", null ],
+    [ "ProjectCreator", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#a370f20ea4ef203e1896223a694c68015", null ],
     [ "OnLoad", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#a2f2457f3a371c19aecca71ac8a2cab1d", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#a522fa0dd4c173918fc7f4d8327256667", null ],
+    [ "DeleteProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#ac5349456dfc515b0f06babb38d5dc74b", null ],
     [ "OpenProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#af7aad27489dabc90edf030d34a4b28fa", null ],
     [ "CreateProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#ae549e77ef570e33508b32e415f919729", null ],
     [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#a39697a702dd05e921e9d2cd81b852531", null ],
@@ -23,6 +24,9 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator =
     [ "createButton", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#a69c9eb72b11e1727b9e3cf9dac9fd0a0", null ],
     [ "lastProjects", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#adf43dc90038a5bb2abd2a169da76b80e", null ],
     [ "messageError", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#abe48aa43938384f1a14eeb16eb374955", null ],
+    [ "isOpenNewProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#a83a9013f33741b2c91d7efb195f53939", null ],
+    [ "isCreateNewProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#ad87484e1fc4839b7d061156ea7a0d2a9", null ],
+    [ "isFirstOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#a82c9814fcbdfe40a0bc2337644f05283", null ],
     [ "current_item", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#a18f68d9259afde15c28d93171cafaa75", null ],
     [ "state", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#ac82baabc26057c00e3aaa1726a11d4d2", null ],
     [ "contentDir", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_creator.html#ab365ba99fe8f2f59a9ae718e28b96a72", null ],
