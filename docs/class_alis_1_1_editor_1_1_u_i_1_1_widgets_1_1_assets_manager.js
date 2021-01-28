@@ -11,6 +11,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager =
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a0ea6eabea4956e7109efb81a2f26d64c", null ],
     [ "filter", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ad3c8d80dd799e087348df6a3efec2c37", null ],
     [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a9e4c1121936fe1f8703c6e78f40fc647", null ],
-    [ "currentPath", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a57c964eada65a2ade6f61858ae679ef6", null ],
+    [ "assetPath", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aaf221e1c458e576c7803046d4267b297", null ],
+    [ "currentDir", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a01d41771c5951c6b88f73ec348974b16", null ],
     [ "pathFolders", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa2f72286dfe2bc3dac243ca6e3183e1c", null ]
 ];
