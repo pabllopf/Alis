@@ -114,7 +114,7 @@ namespace Alis.Editor.UI.Widgets
 
             
 
-            if (ImGui.BeginPopupModal(name, ref isOpen, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            if (ImGui.BeginPopupModal(name, ref isOpen, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoDecoration))
             {
                 if (ImGui.BeginChild("Master", sizeMasterChild, false))
                 {
