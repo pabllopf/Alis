@@ -6,33 +6,55 @@ namespace Alis.Tools
 {
     using System;
     using System.IO;
+    using Newtonsoft.Json;
     using SFML.Audio;
 
     /// <summary>Control the audio of game object.</summary>
     [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
+    [JsonObject(MemberSerialization.OptIn)]
     public class AudioSource : IComponent
     {
+        /// <summary>The file</summary>
+        private string audioFile;
+
         /// <summary>The audio</summary>
-        private readonly Music audio;
+        
+        private Music audio;
 
         /// <summary>The play on awake</summary>
+        
         private bool playOnAwake;
+
 
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
         /// <param name="audioFile">The audio file.</param>
+
+
+        [JsonConstructor]
         public AudioSource(string audioFile)
         {
-            audio = new Music(audioFile);
+            this.audioFile = audioFile;
+            string path = Application.ProjectPath + "/Resources/" + this.audioFile;
+
+            Debug.Warning(path);
+
+            audio = new Music(path);
             playOnAwake = false;
             Debug.Log("Created a new " + GetType());
         }
+
+       
 
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
         /// <param name="audioFile">The audio file.</param>
         /// <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
         public AudioSource(string audioFile, bool playOnAwake)
         {
-            audio = new Music(audioFile);
+            this.audioFile = audioFile;
+            string path = Application.ProjectPath + "/Resources/" + this.audioFile;
+
+
+            audio = new Music(path);
             this.playOnAwake = playOnAwake;
         }
 
@@ -68,7 +90,11 @@ namespace Alis.Tools
         /// <summary>Gets or sets a value indicating whether [play on awake].</summary>
         /// <value>
         /// <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
+        [JsonProperty]
         public bool PlayOnAwake { get => playOnAwake; set => playOnAwake = value; }
+
+        [JsonProperty]
+        public string AudioFile { get => audioFile; set => audioFile = value; }
 
         /// <summary>Plays this instance.</summary>
         public void Play()

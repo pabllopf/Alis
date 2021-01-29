@@ -4,7 +4,9 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Tools
 {
+    using System;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     /// <summary>Define the video game.</summary>
     [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
@@ -12,6 +14,14 @@ namespace Alis.Tools
     {
         /// <summary>The configuration</summary>
         private ConfigGame config;
+
+        public static void Start()
+        {
+            Debug.Log("\n \n Init Load");
+
+            VideoGame videoGame = LocalData.Load<VideoGame>("Alis");
+            videoGame.Run();
+        }
 
         /// <summary>The scenes</summary>
         private List<Scene> scenes;
@@ -21,6 +31,16 @@ namespace Alis.Tools
 
         /// <summary>The current scene</summary>
         private Scene currentScene;
+
+        /// <summary>Gets or sets the configuration.</summary>
+        /// <value>The configuration.</value>
+        public ConfigGame Config { get => config; set => config = value; }
+
+
+        /// <summary>Gets or sets the scenes.</summary>
+        /// <value>The scenes.</value>
+        public List<Scene> Scenes { get => scenes; set => scenes = value; }
+       
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
@@ -40,6 +60,7 @@ namespace Alis.Tools
             {
                 Debug.Log("Added a new scene(" + scene.Name + ") in the Videogame(" + config.NameProject + ")");
                 scenes.Add(scene);
+                currentScene = scenes[0];
             }
             else 
             {

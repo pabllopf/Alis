@@ -2,6 +2,8 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="ConfigGame.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
+using Newtonsoft.Json;
+
 namespace Alis.Tools
 {
     /// <summary>Define a config. </summary>

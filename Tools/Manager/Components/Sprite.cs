@@ -4,10 +4,12 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Tools
 {
+    using Newtonsoft.Json;
     using System.Diagnostics;
 
     /// <summary>Define sprite to draw on game.</summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
+    [JsonObject(MemberSerialization.OptIn)]
     public class Sprite : IComponent
     {
         /// <summary>Starts this instance.</summary>

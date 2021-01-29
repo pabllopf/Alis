@@ -198,6 +198,9 @@
         <member name="T:Alis.Tools.AudioSource">
             <summary>Control the audio of game object.</summary>
         </member>
+        <member name="F:Alis.Tools.AudioSource.audioFile">
+            <summary>The file</summary>
+        </member>
         <member name="F:Alis.Tools.AudioSource.audio">
             <summary>The audio</summary>
         </member>
@@ -368,9 +371,9 @@
             <summary>Initializes a new instance of the <see cref="T:Alis.Tools.GameObject" /> class.</summary>
             <param name="name">The name.</param>
         </member>
-        <member name="P:Alis.Tools.GameObject.Name">
-            <summary>Gets the name.</summary>
-            <value>The name.</value>
+        <member name="P:Alis.Tools.GameObject.Components">
+            <summary>Gets or sets the components.</summary>
+            <value>The components.</value>
         </member>
         <member name="M:Alis.Tools.GameObject.Add(Alis.Tools.IComponent)">
             <summary>Adds the specified component.</summary>
@@ -415,8 +418,12 @@
             <param name="name">The name.</param>
         </member>
         <member name="P:Alis.Tools.Scene.Name">
-            <summary>Gets the name.</summary>
+            <summary>Gets or sets the name.</summary>
             <value>The name.</value>
+        </member>
+        <member name="P:Alis.Tools.Scene.GameObjects">
+            <summary>Gets or sets the game objects.</summary>
+            <value>The game objects.</value>
         </member>
         <member name="M:Alis.Tools.Scene.Add(Alis.Tools.GameObject)">
             <summary>Adds the specified game object.</summary>
@@ -457,6 +464,14 @@
         </member>
         <member name="F:Alis.Tools.VideoGame.currentScene">
             <summary>The current scene</summary>
+        </member>
+        <member name="P:Alis.Tools.VideoGame.Config">
+            <summary>Gets or sets the configuration.</summary>
+            <value>The configuration.</value>
+        </member>
+        <member name="P:Alis.Tools.VideoGame.Scenes">
+            <summary>Gets or sets the scenes.</summary>
+            <value>The scenes.</value>
         </member>
         <member name="M:Alis.Tools.VideoGame.#ctor(Alis.Tools.ConfigGame)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Tools.VideoGame" /> class.</summary>

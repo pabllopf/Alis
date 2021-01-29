@@ -6,15 +6,19 @@ namespace Alis.Tools
 {
     using System.Numerics;
     using System.Diagnostics;
+    using Newtonsoft.Json;
 
     /// <summary>Manage the position of the game object on a scene.</summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
+    [JsonObject(MemberSerialization.OptIn)]
     public class Transform : IComponent
     {
         /// <summary>The position</summary>
+        [JsonProperty]
         private Vector3 position;
 
         /// <summary>The rotation</summary>
+        [JsonProperty]
         private Vector3 rotation;
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>

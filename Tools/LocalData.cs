@@ -39,8 +39,15 @@ namespace Alis.Tools
             }
             else
             {
-                string dataJson = JsonConvert.SerializeObject(data, Formatting.Indented);
-                File.WriteAllText(file, dataJson, Encoding.UTF8);
+                var indented = Formatting.Indented;
+                var settings = new JsonSerializerSettings()
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                };
+
+                string serialized = JsonConvert.SerializeObject(data, indented, settings);
+
+                File.WriteAllText(file, serialized, Encoding.UTF8);
             }
         }
 
@@ -54,6 +61,11 @@ namespace Alis.Tools
             string directory = Environment.CurrentDirectory + "/Data/";
             string file = directory + nameFile;
 
+            var settings = new JsonSerializerSettings()
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+
             if (IsPrimitive(typeof(T)))
             {
                 return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T));
@@ -62,12 +74,12 @@ namespace Alis.Tools
             {
                 if (File.Exists(file))
                 {
-                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file));
+                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
                 }
                 else 
                 {
                     Save<T>(name, default);
-                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file));
+                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
                 }
             }
         }

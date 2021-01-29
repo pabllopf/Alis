@@ -5,6 +5,7 @@
 namespace Alis.Tools
 {
     using System.Diagnostics;
+    using Newtonsoft.Json;
 
     /// <summary>Manage the scenes of game.</summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]

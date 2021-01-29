@@ -5,19 +5,21 @@
 namespace Alis.Tools
 {
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     /// <summary>Define a scene.</summary>
     [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Scene
     {
         /// <summary>The name</summary>
-        private readonly string name;
+        private string name;
 
         /// <summary>The game objects</summary>
         private List<GameObject> gameObjects;
 
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
         /// <param name="name">The name.</param>
+        [JsonConstructor]
         public Scene(string name)
         {
             this.name = name;
@@ -25,9 +27,13 @@ namespace Alis.Tools
             Debug.Log("Created a new " + GetType() + "(" + name + ").");
         }
 
-        /// <summary>Gets the name.</summary>
+        /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
-        public string Name => name;
+        public string Name { get => name; set => name = value; }
+
+        /// <summary>Gets or sets the game objects.</summary>
+        /// <value>The game objects.</value>
+        public List<GameObject> GameObjects { get => gameObjects; set => gameObjects = value; }
 
         /// <summary>Adds the specified game object.</summary>
         /// <param name="gameObject">The game object.</param>

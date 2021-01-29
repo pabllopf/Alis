@@ -4,6 +4,7 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Tools
 {
+    using Newtonsoft.Json;
     using System.Collections.Generic;
 
     /// <summary>Define a game object. </summary>
@@ -11,13 +12,14 @@ namespace Alis.Tools
     public class GameObject
     {
         /// <summary>The name</summary>
-        private readonly string name;
+        private string name;
 
         /// <summary>The components</summary>
         private List<IComponent> components;
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
+        [JsonConstructor]
         public GameObject(string name) 
         {
             this.name = name;
@@ -29,9 +31,13 @@ namespace Alis.Tools
             Debug.Log("Created a new " + GetType() + "(" + name + ").");
         }
 
-        /// <summary>Gets the name.</summary>
-        /// <value>The name.</value>
-        public string Name => name;
+        public string Name { get => name; set => name = value; }
+        
+        /// <summary>Gets or sets the components.</summary>
+        /// <value>The components.</value>
+        public List<IComponent> Components { get => components; set => components = value; }
+
+
 
         /// <summary>Adds the specified component.</summary>
         /// <param name="component">The component.</param>

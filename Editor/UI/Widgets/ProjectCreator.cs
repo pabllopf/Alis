@@ -134,7 +134,10 @@ namespace Alis.Editor.UI.Widgets
                                 ImGui.BeginGroup();
                                 if (ImGui.Button(project.NameProject, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
                                 {
-                                    OpenProject(project);
+                                    if (Directory.Exists(Project.CurrentPath) && Directory.Exists(Project.AssetsPath) && Directory.Exists(Project.ConfigPath))
+                                    {
+                                        OpenProject(project);
+                                    }
                                 }
 
                                 ImGui.SameLine();
@@ -257,6 +260,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void OpenProject(Project project)
         {
+
             Project.AssetsPath = project.AssetsProject;
             Project.Name = project.NameProject;
             Project.CurrentPath = project.PathProject;

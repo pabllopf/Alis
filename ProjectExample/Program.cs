@@ -8,29 +8,33 @@ namespace ProjectExample
     {
         static void Main(string[] args)
         {
-            ConfigGame config = new ConfigGame("Example");
-            VideoGame videoGame = new VideoGame(config);
+            ConfigGame config = new ConfigGame("GameExample");
+            VideoGame game = new VideoGame(config);
 
-            Scene scene = new Scene("MainMenu");
+            Scene scene1 = new Scene("MainMenu");
+            Scene playScene = new Scene("Game");
 
-            GameObject gameObject = new GameObject("Player");
-
-            gameObject.Add(new AudioSource(Application.ProjectPath + "/Resources/Example.wav", true));
-            scene.Add(gameObject);
-            videoGame.Add(scene);
+            GameObject player = new GameObject("Player");
 
 
-            Input.OnPressKeyOnce += Input_OnPressKeyOnce;
+            player.Add(new AudioSource("Example.wav", true));
+
+            //scene1.Add(player);
+            scene1.Add(player);
+            playScene.Add(player);
 
 
-            videoGame.Run();
+            game.Add(scene1);
+            game.Add(playScene);
+
+            LocalData.Save<VideoGame>("Alis", game);
+
+
+            VideoGame.Start();
+
+
 
             Console.ReadKey();
-        }
-
-        private static void Input_OnPressKeyOnce(object sender, SFML.Window.Keyboard.Key e)
-        {
-            Console.WriteLine("Key: " + e);
         }
     }
 }
