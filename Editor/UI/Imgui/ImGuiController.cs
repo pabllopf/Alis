@@ -52,6 +52,8 @@ namespace ImGuiNET
         private readonly List<IDisposable> _ownedResources = new List<IDisposable>();
         private int _lastAssignedID = 100;
 
+        public GraphicsDevice graphicsDevice { get => _gd; set => _gd = value; }
+
         /// <summary>
         /// Constructs a new ImGuiController.
         /// </summary>

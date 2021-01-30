@@ -20,7 +20,13 @@ namespace Alis.Tools
             Debug.Log("\n \n Init Load");
 
             VideoGame videoGame = LocalData.Load<VideoGame>("Alis");
+            Input.OnPressKeyOnce += Input_OnPressKeyOnce;
             videoGame.Run();
+        }
+
+        private static void Input_OnPressKeyOnce(object sender, SFML.Window.Keyboard.Key e)
+        {
+            Debug.Log(e.ToString());
         }
 
         /// <summary>The scenes</summary>
@@ -44,11 +50,24 @@ namespace Alis.Tools
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
+        [JsonConstructor]
         public VideoGame(ConfigGame config) 
         {
             this.config = config;
             scenes = new List<Scene>();
+            Render.Start();
+            Debug.Log("Created a new " + GetType() + "(" + config.NameProject + ").");
+        }
 
+        /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
+        /// <param name="config">The configuration.</param>
+        /// <param name="scene"></param>
+        public VideoGame(ConfigGame config, params Scene[] scene)
+        {
+            this.config = config;
+            scenes = new List<Scene>(scene);
+            currentScene = scenes[0];
+            Render.Start();
             Debug.Log("Created a new " + GetType() + "(" + config.NameProject + ").");
         }
 
@@ -83,6 +102,14 @@ namespace Alis.Tools
             }
         }
 
+        public byte[] PreviewRender() 
+        { 
+            Input.PollEvents();
+            currentScene.Update();
+            Render.Draw();
+            return Render.FrameBytes();
+        }
+
         /// <summary>Runs this instance.</summary>
         public void Run() 
         {
@@ -91,12 +118,14 @@ namespace Alis.Tools
             currentScene = scenes[0];
 
             currentScene.Start();
+            Render.Start();
 
             Debug.Log("Run the videogame.");
             while (isRunning) 
             {
-                currentScene.Update();
                 Input.PollEvents();
+                currentScene.Update();
+                Render.Draw();
             }
 
             Debug.Log("Exit of videogame.");

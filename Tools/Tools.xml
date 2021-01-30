@@ -295,13 +295,17 @@
         <member name="F:Alis.Tools.Transform.rotation">
             <summary>The rotation</summary>
         </member>
+        <member name="F:Alis.Tools.Transform.size">
+            <summary>The size</summary>
+        </member>
         <member name="M:Alis.Tools.Transform.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Transform" /> class.</summary>
         </member>
-        <member name="M:Alis.Tools.Transform.#ctor(System.Numerics.Vector3,System.Numerics.Vector3)">
+        <member name="M:Alis.Tools.Transform.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Transform" /> class.</summary>
             <param name="position">The position.</param>
             <param name="rotation">The rotation.</param>
+            <param name="size"></param>
         </member>
         <member name="P:Alis.Tools.Transform.Position">
             <summary>Gets or sets the position.</summary>
@@ -310,6 +314,10 @@
         <member name="P:Alis.Tools.Transform.Rotation">
             <summary>Gets or sets the rotation.</summary>
             <value>The rotation.</value>
+        </member>
+        <member name="P:Alis.Tools.Transform.Size">
+            <summary>Gets or sets the size.</summary>
+            <value>The size.</value>
         </member>
         <member name="M:Alis.Tools.Transform.Start">
             <summary>Starts this instance.</summary>
@@ -404,6 +412,24 @@
         <member name="M:Alis.Tools.Input.PollEvents">
             <summary>Polls the events.</summary>
         </member>
+        <member name="T:Alis.Tools.Render">
+            <summary>Render define</summary>
+        </member>
+        <member name="F:Alis.Tools.Render.core">
+            <summary>The core</summary>
+        </member>
+        <member name="M:Alis.Tools.Render.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Render.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="T:Alis.Tools.RenderCore">
+            <summary>Render Core define</summary>
+        </member>
+        <member name="M:Alis.Tools.RenderCore.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
         <member name="T:Alis.Tools.Scene">
             <summary>Define a scene.</summary>
         </member>
@@ -416,6 +442,11 @@
         <member name="M:Alis.Tools.Scene.#ctor(System.String)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Scene" /> class.</summary>
             <param name="name">The name.</param>
+        </member>
+        <member name="M:Alis.Tools.Scene.#ctor(System.String,Alis.Tools.GameObject[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Scene" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="gameObject">The game object.</param>
         </member>
         <member name="P:Alis.Tools.Scene.Name">
             <summary>Gets or sets the name.</summary>
@@ -476,6 +507,11 @@
         <member name="M:Alis.Tools.VideoGame.#ctor(Alis.Tools.ConfigGame)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Tools.VideoGame" /> class.</summary>
             <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Alis.Tools.VideoGame.#ctor(Alis.Tools.ConfigGame,Alis.Tools.Scene[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+            <param name="scene"></param>
         </member>
         <member name="M:Alis.Tools.VideoGame.Add(Alis.Tools.Scene)">
             <summary>Adds the specified scene.</summary>

@@ -4,13 +4,63 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
+    using Alis.Tools;
     using ImGuiNET;
+    using SixLabors.ImageSharp.PixelFormats;
+    using SixLabors.ImageSharp;
+    using Veldrid.ImageSharp;
+    using Veldrid;
 
     /// <summary>Render the core scene.</summary>
     public class SceneView : Widget
     {
         /// <summary>The name</summary>
         private const string Name = "Scene";
+
+        private VideoGame game;
+
+        private Image<Rgba32> image;
+
+        private ImageSharpTexture imageSharpTexture;
+
+        private Texture texture;
+
+        private ImGuiController imGuiController;
+
+        private System.IntPtr intPtr;
+
+        public SceneView() 
+        {
+            game = new VideoGame(
+               new ConfigGame("ExampleGame"),
+
+               new Scene(
+                   "MainMenu",
+
+                   new GameObject(
+                       "Player",
+                       new AudioSource("Example.wav", true)
+                   ),
+
+                   new GameObject("Camera")
+               ),
+
+               new Scene(
+                   "PlayGame",
+                   new GameObject("Enemy")
+               )
+           );
+
+            Debug.Warning("Saved the game");
+            LocalData.Save<VideoGame>("Alis", game);
+
+            imGuiController = MainWindow.imGuiController;
+
+            image = Image.LoadPixelData<Rgba32>(game.PreviewRender(), 512, 512);
+            imageSharpTexture = new ImageSharpTexture(image, true);
+            texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
+            intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+        }
 
         /// <summary>Closes this instance.</summary>
         public override void Close()
@@ -24,27 +74,8 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin(Name))
             {
-                /*
-                render.Clear();
-                render.Draw(circle);
-                render.Display();
-
-                SFML.Graphics.Image renderToImage = render.Texture.CopyToImage();
-                renderToImage.FlipHorizontally();
-
-                image = SixLabors.ImageSharp.Image.LoadPixelData<Rgba32>(renderToImage.Pixels, 512, 512);
-                imageSharpTexture = new Veldrid.ImageSharp.ImageSharpTexture(image, true);
-                texx = imageSharpTexture.CreateDeviceTexture(graphicsDevice, graphicsDevice.ResourceFactory);
-
-                intPtr = imGuiController.GetOrCreateImGuiBinding(graphicsDevice.ResourceFactory, texx);
-                ImGui.Image(intPtr,
-                    ImGui.GetContentRegionAvail(),
-                    new System.Numerics.Vector2(1, 0),
-                    new System.Numerics.Vector2(0, 1),
-                    new System.Numerics.Vector4(1f),
-                    new System.Numerics.Vector4(1f)
-                    );
-                */
+                image = Image.LoadPixelData<Rgba32>(game.PreviewRender(), 512, 512);
+                ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
             }
 
             ImGui.End();
@@ -60,6 +91,7 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Called when [load].</summary>
         public override void OnLoad()
         {
+           
         }
 
         /// <summary>Opens this instance.</summary>

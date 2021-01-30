@@ -84,6 +84,8 @@ namespace Alis.Editor.UI
         /// <summary>The advice</summary>
         private bool advice = true;
 
+        public static ImGuiController imGuiController;
+
         #endregion
 
         /// <summary>Initializes a new instance of the <see cref="MainWindow" /> class.</summary>
@@ -157,6 +159,8 @@ namespace Alis.Editor.UI
                 outputDescription: graphicsDevice.MainSwapchain.Framebuffer.OutputDescription,
                 width: window.Width,
                 height: window.Height);
+
+            imGuiController = controller;
 
             Debug.Log(" > ImGuiController: (" +
                "Gd:" + "graphicsDevice" + " | " +

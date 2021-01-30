@@ -1,6 +1,7 @@
 ﻿
 using Alis.Tools;
 using System;
+using System.Collections.Generic;
 
 namespace ProjectExample
 {
@@ -8,33 +9,40 @@ namespace ProjectExample
     {
         static void Main(string[] args)
         {
-            ConfigGame config = new ConfigGame("GameExample");
-            VideoGame game = new VideoGame(config);
-
-            Scene scene1 = new Scene("MainMenu");
-            Scene playScene = new Scene("Game");
-
-            GameObject player = new GameObject("Player");
-
-
-            player.Add(new AudioSource("Example.wav", true));
-
-            //scene1.Add(player);
-            scene1.Add(player);
-            playScene.Add(player);
-
-
-            game.Add(scene1);
-            game.Add(playScene);
-
-            LocalData.Save<VideoGame>("Alis", game);
+            //Build();
 
 
             VideoGame.Start();
 
 
 
-            Console.ReadKey();
+           
+        }
+
+
+        public static void Build() 
+        {
+            VideoGame game = new VideoGame(
+                new ConfigGame("ExampleGame"),
+                
+                new Scene(
+                    "MainMenu", 
+                    
+                    new GameObject(
+                        "Player",
+                        new AudioSource("Example.wav", true)
+                    ),
+                    
+                    new GameObject("Camera")
+                ),
+                
+                new Scene(
+                    "PlayGame", 
+                    new GameObject("Enemy")
+                )
+            );
+
+            LocalData.Save<VideoGame>("Alis", game);
         }
     }
 }

@@ -31,6 +31,20 @@ namespace Alis.Tools
             Debug.Log("Created a new " + GetType() + "(" + name + ").");
         }
 
+        public GameObject(string name, params IComponent[] component)
+        {
+            this.name = name;
+            components = new List<IComponent>
+            {
+                new Transform(),
+            };
+
+            components.AddRange(component);
+
+            Debug.Log("Created a new " + GetType() + "(" + name + ").");
+        }
+
+
         public string Name { get => name; set => name = value; }
         
         /// <summary>Gets or sets the components.</summary>

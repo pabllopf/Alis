@@ -21,20 +21,27 @@ namespace Alis.Tools
         [JsonProperty]
         private Vector3 rotation;
 
+        /// <summary>The size</summary>
+        [JsonProperty]
+        private Vector3 size;
+
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         public Transform()
         {
             position = new Vector3();
             rotation = new Vector3();
+            size = new Vector3();
         }
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The rotation.</param>
-        public Transform(Vector3 position, Vector3 rotation)
+        /// <param name="size"></param>
+        public Transform(Vector3 position, Vector3 rotation, Vector3 size)
         {
             this.position = position;
             this.rotation = rotation;
+            this.size = size;
         }
 
         /// <summary>Gets or sets the position.</summary>
@@ -44,6 +51,10 @@ namespace Alis.Tools
         /// <summary>Gets or sets the rotation.</summary>
         /// <value>The rotation.</value>
         public Vector3 Rotation { get => rotation; set => rotation = value; }
+        
+        /// <summary>Gets or sets the size.</summary>
+        /// <value>The size.</value>
+        public Vector3 Size { get => size; set => size = value; }
 
         /// <summary>Starts this instance.</summary>
         public void Start()
