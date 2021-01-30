@@ -10,7 +10,7 @@ namespace Alis.Editor
     using System.Threading;
     using Alis.Editor.UI;
     using Alis.Editor.Utils;
-    using Alis.Tools;
+    using Alis.Core;
 
     /// <summary>Manage the engine</summary>
     internal class Engine
@@ -156,6 +156,9 @@ namespace Alis.Editor
 
             Console.WriteLine("Finish process. Please press ANY KEY to close console.");
             Console.ReadKey();
+
+            
+
             return 0;
         }
     }

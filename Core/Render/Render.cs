@@ -2,7 +2,7 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Render.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-namespace Alis.Tools
+namespace Alis.Core
 {
     /// <summary>Render define</summary>
     public class Render
@@ -17,6 +17,10 @@ namespace Alis.Tools
             core = new SfmlCore();
         }
 
+        /// <summary>Frames the bytes.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public static byte[] FrameBytes() 
         {
             return core.FramePixels();

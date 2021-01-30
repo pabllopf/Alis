@@ -7,9 +7,10 @@
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DocumentationFile>Core.xml</DocumentationFile>
+    <WarningsAsErrors></WarningsAsErrors>
   </PropertyGroup>
 
 
@@ -32,9 +33,16 @@
     <PackageReference Include="SFML.Net" Version="2.5.0" />
     <PackageReference Include="SFML.System" Version="2.5.0" />
     <PackageReference Include="SFML.Window" Version="2.5.0" />
+    <PackageReference Include="SFML.Audio" Version="2.5.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tools\Tools.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Components\AudioSource.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
   </ItemGroup>
 
 </Project>

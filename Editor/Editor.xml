@@ -103,6 +103,9 @@
         <member name="F:Alis.Editor.Graphics.Vulkan">
             <summary>The graphics 4</summary>
         </member>
+        <member name="T:Alis.Editor.Info">
+            <summary>Info context </summary>
+        </member>
         <member name="F:Alis.Editor.Info.platform">
             <summary>The platform</summary>
         </member>
@@ -111,6 +114,24 @@
         </member>
         <member name="F:Alis.Editor.Info.graphics">
             <summary>The graphics</summary>
+        </member>
+        <member name="M:Alis.Editor.Info.#ctor(Alis.Editor.Platform,Alis.Editor.Architecture,Alis.Editor.Graphics)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Info" /> class.</summary>
+            <param name="platform">The platform.</param>
+            <param name="architecture">The architecture.</param>
+            <param name="graphics">The graphics.</param>
+        </member>
+        <member name="P:Alis.Editor.Info.Platform">
+            <summary>Gets or sets the platform.</summary>
+            <value>The platform.</value>
+        </member>
+        <member name="P:Alis.Editor.Info.Architecture">
+            <summary>Gets or sets the architecture.</summary>
+            <value>The architecture.</value>
+        </member>
+        <member name="P:Alis.Editor.Info.Graphics">
+            <summary>Gets or sets the graphics.</summary>
+            <value>The graphics.</value>
         </member>
         <member name="T:Alis.Editor.Platform">
             <summary>Platform enabled to use the engine.</summary>

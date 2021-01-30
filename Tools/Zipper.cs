@@ -4,7 +4,6 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Tools
 {
-    using System;
     using System.IO;
     using Ionic.Zip;
 

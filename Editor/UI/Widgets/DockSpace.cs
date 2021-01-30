@@ -5,7 +5,7 @@
 namespace Alis.Editor.UI.Widgets
 {
     using Alis.Editor.Utils;
-    using Alis.Tools;
+    using Alis.Core;
     using ImGuiNET;
     using System;
     using System.Numerics;

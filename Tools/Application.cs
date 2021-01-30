@@ -20,6 +20,8 @@ namespace Alis.Tools
             set => name = value;
         }
 
+        /// <summary>Gets the desktop path.</summary>
+        /// <value>The desktop path.</value>
         public static string DesktopPath 
         {
             get => Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
