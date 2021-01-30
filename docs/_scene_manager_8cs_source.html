@@ -106,28 +106,29 @@ $(document).ready(function(){initNavTree('_scene_manager_8cs_source.html',''); i
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_alis_1_1_tools.html">Alis.Tools</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">using</span> System.<a class="code" href="namespace_system_1_1_diagnostics.html">Diagnostics</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    [DebuggerDisplay(<span class="stringliteral">&quot;{&quot;</span> + nameof(GetDebuggerDisplay) + <span class="stringliteral">&quot;(),nq}&quot;</span>)]</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_scene_manager.html">   11</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_alis_1_1_tools_1_1_scene_manager.html">SceneManager</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_scene_manager.html#a70cb1ce1d1e6e51b93e786987df9138e">   15</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> <a class="code" href="class_alis_1_1_tools_1_1_scene_manager.html#a70cb1ce1d1e6e51b93e786987df9138e">GetDebuggerDisplay</a>()</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            <span class="keywordflow">return</span> ToString();</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> Newtonsoft.Json;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    [DebuggerDisplay(<span class="stringliteral">&quot;{&quot;</span> + nameof(GetDebuggerDisplay) + <span class="stringliteral">&quot;(),nq}&quot;</span>)]</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_scene_manager.html">   12</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_alis_1_1_tools_1_1_scene_manager.html">SceneManager</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_scene_manager.html#a70cb1ce1d1e6e51b93e786987df9138e">   16</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> <a class="code" href="class_alis_1_1_tools_1_1_scene_manager.html#a70cb1ce1d1e6e51b93e786987df9138e">GetDebuggerDisplay</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            <span class="keywordflow">return</span> ToString();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_alis_1_1_tools_1_1_scene_manager_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_scene_manager.html">Alis.Tools.SceneManager</a></div><div class="ttdoc">Manage the scenes of game.</div><div class="ttdef"><b>Definition:</b> <a href="_scene_manager_8cs_source.html#l00011">SceneManager.cs:12</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_scene_manager_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_scene_manager.html">Alis.Tools.SceneManager</a></div><div class="ttdoc">Manage the scenes of game.</div><div class="ttdef"><b>Definition:</b> <a href="_scene_manager_8cs_source.html#l00012">SceneManager.cs:13</a></div></div>
 <div class="ttc" id="anamespace_system_1_1_diagnostics_html"><div class="ttname"><a href="namespace_system_1_1_diagnostics.html">Diagnostics</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_tools_1_1_scene_manager_html_a70cb1ce1d1e6e51b93e786987df9138e"><div class="ttname"><a href="class_alis_1_1_tools_1_1_scene_manager.html#a70cb1ce1d1e6e51b93e786987df9138e">Alis.Tools.SceneManager.GetDebuggerDisplay</a></div><div class="ttdeci">string GetDebuggerDisplay()</div><div class="ttdoc">Gets the debugger display.</div><div class="ttdef"><b>Definition:</b> <a href="_scene_manager_8cs_source.html#l00015">SceneManager.cs:15</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_scene_manager_html_a70cb1ce1d1e6e51b93e786987df9138e"><div class="ttname"><a href="class_alis_1_1_tools_1_1_scene_manager.html#a70cb1ce1d1e6e51b93e786987df9138e">Alis.Tools.SceneManager.GetDebuggerDisplay</a></div><div class="ttdeci">string GetDebuggerDisplay()</div><div class="ttdoc">Gets the debugger display.</div><div class="ttdef"><b>Definition:</b> <a href="_scene_manager_8cs_source.html#l00016">SceneManager.cs:16</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_tools_html"><div class="ttname"><a href="namespace_alis_1_1_tools.html">Alis.Tools</a></div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00005">Application.cs:6</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><a class="el" href="dir_fcecc45ed5c87ce224a62b364f4d8a37.html">Manager</a></li><li class="navelem"><b>SceneManager.cs</b></li>
     <li class="footer">
-      <a>Generated on | Fri Jan 29 2021 |</a>
+      <a>Generated on | Sat Jan 30 2021 |</a>
     </li>
   </ul>
 </div>

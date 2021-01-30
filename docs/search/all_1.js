@@ -60,12 +60,13 @@ var searchData=
   ['assistivelisteningsystems_84',['ASSISTIVELISTENINGSYSTEMS',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5801c7f7b7d425e8763d3e4a8e29de3d',1,'Alis::Editor::Utils::Icon']]],
   ['asterisk_85',['ASTERISK',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#abc496aa9934c193f2280e31f096d3b6a',1,'Alis::Editor::Utils::Icon']]],
   ['at_86',['AT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6f1a5b8765e557c9242dd5f4fe03e407',1,'Alis::Editor::Utils::Icon']]],
-  ['audio_87',['audio',['../class_alis_1_1_tools_1_1_audio_source.html#ac205d9d05b107cae53e667a21d427e33',1,'Alis::Tools::AudioSource']]],
+  ['audio_87',['audio',['../class_alis_1_1_tools_1_1_audio_source.html#ab102c711eff1db1fd7084ea8f33295a4',1,'Alis::Tools::AudioSource']]],
   ['audiodescription_88',['AUDIODESCRIPTION',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a62e6f42fd8ffeb6c97d3e3f1d008d7f1',1,'Alis::Editor::Utils::Icon']]],
-  ['audiosource_89',['AudioSource',['../class_alis_1_1_tools_1_1_audio_source.html',1,'Alis.Tools.AudioSource'],['../class_alis_1_1_tools_1_1_audio_source.html#a4b64effb6a47c8c4b1bc84143895592b',1,'Alis.Tools.AudioSource.AudioSource(string audioFile)'],['../class_alis_1_1_tools_1_1_audio_source.html#a2dbef00cf9192c166f88ca16416b03a4',1,'Alis.Tools.AudioSource.AudioSource(string audioFile, bool playOnAwake)'],['../class_alis_1_1_tools_1_1_audio_source.html#a8d62bf2623b54405d8cc56a8c015a0e0',1,'Alis.Tools.AudioSource.AudioSource(Stream audioStream)'],['../class_alis_1_1_tools_1_1_audio_source.html#abc1cc3d4e7d6dae04e3a785112cc5ab6',1,'Alis.Tools.AudioSource.AudioSource(Stream audioStream, bool playOnAwake)']]],
-  ['editor_90',['Editor',['../namespace_alis_1_1_editor.html',1,'Alis']]],
-  ['tools_91',['Tools',['../namespace_alis_1_1_tools.html',1,'Alis']]],
-  ['ui_92',['UI',['../namespace_alis_1_1_editor_1_1_u_i.html',1,'Alis::Editor']]],
-  ['utils_93',['Utils',['../namespace_alis_1_1_editor_1_1_utils.html',1,'Alis::Editor']]],
-  ['widgets_94',['Widgets',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html',1,'Alis::Editor::UI']]]
+  ['audiofile_89',['audioFile',['../class_alis_1_1_tools_1_1_audio_source.html#a952a2bf12d9ada9165a681dca85219d5',1,'Alis.Tools.AudioSource.audioFile()'],['../class_alis_1_1_tools_1_1_audio_source.html#a92e1421023d9f3fbedc20944f2a1dcff',1,'Alis.Tools.AudioSource.AudioFile()']]],
+  ['audiosource_90',['AudioSource',['../class_alis_1_1_tools_1_1_audio_source.html',1,'Alis.Tools.AudioSource'],['../class_alis_1_1_tools_1_1_audio_source.html#a4b64effb6a47c8c4b1bc84143895592b',1,'Alis.Tools.AudioSource.AudioSource(string audioFile)'],['../class_alis_1_1_tools_1_1_audio_source.html#a2dbef00cf9192c166f88ca16416b03a4',1,'Alis.Tools.AudioSource.AudioSource(string audioFile, bool playOnAwake)'],['../class_alis_1_1_tools_1_1_audio_source.html#a8d62bf2623b54405d8cc56a8c015a0e0',1,'Alis.Tools.AudioSource.AudioSource(Stream audioStream)'],['../class_alis_1_1_tools_1_1_audio_source.html#abc1cc3d4e7d6dae04e3a785112cc5ab6',1,'Alis.Tools.AudioSource.AudioSource(Stream audioStream, bool playOnAwake)']]],
+  ['editor_91',['Editor',['../namespace_alis_1_1_editor.html',1,'Alis']]],
+  ['tools_92',['Tools',['../namespace_alis_1_1_tools.html',1,'Alis']]],
+  ['ui_93',['UI',['../namespace_alis_1_1_editor_1_1_u_i.html',1,'Alis::Editor']]],
+  ['utils_94',['Utils',['../namespace_alis_1_1_editor_1_1_utils.html',1,'Alis::Editor']]],
+  ['widgets_95',['Widgets',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html',1,'Alis::Editor::UI']]]
 ];

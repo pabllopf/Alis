@@ -55,7 +55,7 @@ var NAVTREEINDEX =
 "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html#ae9d6b54e8304d7e0f1b4b343bb14fcf6",
 "class_alis_1_1_editor_1_1_utils_1_1_icon.html#a60595ac399dba4d0994cec385ea4a64a",
 "class_alis_1_1_editor_1_1_utils_1_1_icon.html#abaf83442b7f94d057d3b4d31d9803b7d",
-"class_alis_1_1_tools_1_1_language.html#a4743ac951181d4b616afce6bd6e618dd"
+"class_alis_1_1_tools_1_1_input.html#ab9646beed1b3d018397756072e91d2d3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
