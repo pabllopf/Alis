@@ -105,40 +105,42 @@ $(document).ready(function(){initNavTree('_sprite_8cs_source.html',''); initResi
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//-------------------------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_alis_1_1_tools.html">Alis.Tools</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">using</span> System.<a class="code" href="namespace_system_1_1_diagnostics.html">Diagnostics</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    [DebuggerDisplay(<span class="stringliteral">&quot;{&quot;</span> + nameof(GetDebuggerDisplay) + <span class="stringliteral">&quot;(),nq}&quot;</span>)]</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_sprite.html">   11</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_alis_1_1_tools_1_1_sprite.html">Sprite</a> : <a class="code" href="interface_alis_1_1_tools_1_1_i_component.html">IComponent</a></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_sprite.html#a0f6d86af79117f4bfb242ce09605d053">   14</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_sprite.html#a0f6d86af79117f4bfb242ce09605d053">Start</a>()</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_sprite.html#a6060e29ceb406413e6da3d0964995441">   19</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_sprite.html#a6060e29ceb406413e6da3d0964995441">Update</a>()</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        }</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_sprite.html#a18ef242cf17b1b2c621eca36e9af73a6">   25</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> <a class="code" href="class_alis_1_1_tools_1_1_sprite.html#a18ef242cf17b1b2c621eca36e9af73a6">GetDebuggerDisplay</a>()</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="keywordflow">return</span> ToString();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">using</span> Newtonsoft.<a class="code" href="namespace_newtonsoft_1_1_json.html">Json</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> System.Diagnostics;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    [DebuggerDisplay(<span class="stringliteral">&quot;{&quot;</span> + nameof(GetDebuggerDisplay) + <span class="stringliteral">&quot;(),nq}&quot;</span>)]</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    [JsonObject(MemberSerialization.OptIn)]</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_sprite.html">   13</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">class </span><a class="code" href="class_alis_1_1_tools_1_1_sprite.html">Sprite</a> : <a class="code" href="interface_alis_1_1_tools_1_1_i_component.html">IComponent</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_sprite.html#a0f6d86af79117f4bfb242ce09605d053">   16</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_sprite.html#a0f6d86af79117f4bfb242ce09605d053">Start</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        }</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_sprite.html#a6060e29ceb406413e6da3d0964995441">   21</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_sprite.html#a6060e29ceb406413e6da3d0964995441">Update</a>()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_sprite.html#a18ef242cf17b1b2c621eca36e9af73a6">   27</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> <a class="code" href="class_alis_1_1_tools_1_1_sprite.html#a18ef242cf17b1b2c621eca36e9af73a6">GetDebuggerDisplay</a>()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">return</span> ToString();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespace_system_1_1_diagnostics_html"><div class="ttname"><a href="namespace_system_1_1_diagnostics.html">Diagnostics</a></div></div>
-<div class="ttc" id="ainterface_alis_1_1_tools_1_1_i_component_html"><div class="ttname"><a href="interface_alis_1_1_tools_1_1_i_component.html">Alis.Tools.IComponent</a></div><div class="ttdoc">Define components.</div><div class="ttdef"><b>Definition:</b> <a href="_i_component_8cs_source.html#l00008">IComponent.cs:9</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_tools_1_1_sprite_html_a18ef242cf17b1b2c621eca36e9af73a6"><div class="ttname"><a href="class_alis_1_1_tools_1_1_sprite.html#a18ef242cf17b1b2c621eca36e9af73a6">Alis.Tools.Sprite.GetDebuggerDisplay</a></div><div class="ttdeci">string GetDebuggerDisplay()</div><div class="ttdoc">Gets the debugger display.</div><div class="ttdef"><b>Definition:</b> <a href="_sprite_8cs_source.html#l00025">Sprite.cs:25</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_tools_1_1_sprite_html_a0f6d86af79117f4bfb242ce09605d053"><div class="ttname"><a href="class_alis_1_1_tools_1_1_sprite.html#a0f6d86af79117f4bfb242ce09605d053">Alis.Tools.Sprite.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Starts this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_sprite_8cs_source.html#l00014">Sprite.cs:14</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_tools_1_1_sprite_html_a6060e29ceb406413e6da3d0964995441"><div class="ttname"><a href="class_alis_1_1_tools_1_1_sprite.html#a6060e29ceb406413e6da3d0964995441">Alis.Tools.Sprite.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdoc">Updates this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_sprite_8cs_source.html#l00019">Sprite.cs:19</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_tools_1_1_sprite_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_sprite.html">Alis.Tools.Sprite</a></div><div class="ttdoc">Define sprite to draw on game.</div><div class="ttdef"><b>Definition:</b> <a href="_sprite_8cs_source.html#l00011">Sprite.cs:12</a></div></div>
+<div class="ttc" id="anamespace_newtonsoft_1_1_json_html"><div class="ttname"><a href="namespace_newtonsoft_1_1_json.html">Json</a></div></div>
+<div class="ttc" id="ainterface_alis_1_1_tools_1_1_i_component_html"><div class="ttname"><a href="interface_alis_1_1_tools_1_1_i_component.html">Alis.Tools.IComponent</a></div><div class="ttdoc">Define components.</div><div class="ttdef"><b>Definition:</b> <a href="_i_component_8cs_source.html#l00011">IComponent.cs:12</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_sprite_html_a18ef242cf17b1b2c621eca36e9af73a6"><div class="ttname"><a href="class_alis_1_1_tools_1_1_sprite.html#a18ef242cf17b1b2c621eca36e9af73a6">Alis.Tools.Sprite.GetDebuggerDisplay</a></div><div class="ttdeci">string GetDebuggerDisplay()</div><div class="ttdoc">Gets the debugger display.</div><div class="ttdef"><b>Definition:</b> <a href="_sprite_8cs_source.html#l00027">Sprite.cs:27</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_sprite_html_a0f6d86af79117f4bfb242ce09605d053"><div class="ttname"><a href="class_alis_1_1_tools_1_1_sprite.html#a0f6d86af79117f4bfb242ce09605d053">Alis.Tools.Sprite.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Starts this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_sprite_8cs_source.html#l00016">Sprite.cs:16</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_sprite_html_a6060e29ceb406413e6da3d0964995441"><div class="ttname"><a href="class_alis_1_1_tools_1_1_sprite.html#a6060e29ceb406413e6da3d0964995441">Alis.Tools.Sprite.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdoc">Updates this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_sprite_8cs_source.html#l00021">Sprite.cs:21</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_sprite_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_sprite.html">Alis.Tools.Sprite</a></div><div class="ttdoc">Define sprite to draw on game.</div><div class="ttdef"><b>Definition:</b> <a href="_sprite_8cs_source.html#l00013">Sprite.cs:14</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_tools_html"><div class="ttname"><a href="namespace_alis_1_1_tools.html">Alis.Tools</a></div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00005">Application.cs:6</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><a class="el" href="dir_fcecc45ed5c87ce224a62b364f4d8a37.html">Manager</a></li><li class="navelem"><a class="el" href="dir_e95489e1f545dc69319d8966df7085a4.html">Components</a></li><li class="navelem"><b>Sprite.cs</b></li>
     <li class="footer">
-      <a>Generated on | Fri Jan 29 2021 |</a>
+      <a>Generated on | Sat Jan 30 2021 |</a>
     </li>
   </ul>
 </div>
