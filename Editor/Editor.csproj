@@ -82,7 +82,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="resources/**" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Resources/**" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 

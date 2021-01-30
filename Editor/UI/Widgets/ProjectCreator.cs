@@ -67,6 +67,14 @@ namespace Alis.Editor.UI.Widgets
 
             lastProjects = LocalData.Load<List<Project>>("Projects");
 
+            if (lastProjects == null)
+            {
+                lastProjects = new List<Project>();
+                LocalData.Save<List<Project>>("Projects", lastProjects);
+            }
+
+
+
             List<Project> temp = new List<Project>();
             foreach (Project project in lastProjects) 
             {

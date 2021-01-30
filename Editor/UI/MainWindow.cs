@@ -101,6 +101,8 @@ namespace Alis.Editor.UI
         {
             Debug.Log("\nStarting Main Window...");
 
+            windowState = WindowState.Maximized;
+
             windowCreateInfo = new WindowCreateInfo(
                 x: StartPosX,
                 y: StartPosY,
