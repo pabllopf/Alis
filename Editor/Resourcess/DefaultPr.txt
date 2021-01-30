@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!-- ________________________GENERAL CONFIG ___________________________________-->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
+    <RuntimeIdentifiers>win-x64;win10-x64;osx.10.11-x64;osx.10.12-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+    <Configurations>Windows;MacOS;Linux</Configurations>
+  </PropertyGroup>
+
+  <!-- _____________________________ WINDOWS_____________________________________ -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType></DebugType>
+    <DocumentationFile>Editor.xml</DocumentationFile>
+  </PropertyGroup>
+  
+
+
+  <!-- ______________________________ MACOS _____________________________________ -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
+     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+     <DebugType></DebugType>
+     <Optimize>true</Optimize>
+     <DocumentationFile>bin\MacOS\netcoreapp3.1\Editor.xml</DocumentationFile>
+  </PropertyGroup>
+
+
+  <!-- ______________________________ LINUX _____________________________________ -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType />
+    <Optimize>true</Optimize>
+    <DocumentationFile>bin\Linux\netcoreapp3.1\Editor.xml</DocumentationFile>
+  </PropertyGroup>
+
+
+  <!-- _____________________________ IMPORTS ____________________________________ -->
+
+ 
+
+ 
+
+  <ItemGroup>
+    <None Update="resources/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
