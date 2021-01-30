@@ -72,11 +72,11 @@ namespace ImGuiNET
 
 
 
-            ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "resources/Segoe_Bold.ttf", 16.0f);
+            ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "Resources/Segoe_Bold.ttf", 16.0f);
 
             
 
-            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "resources/Segoe_Bold.ttf");
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "Resources/Segoe_Bold.ttf");
 
 
             unsafe
@@ -86,7 +86,7 @@ namespace ImGuiNET
                 config.MergeMode = true;
                 config.GlyphMinAdvanceX = 13.0f;
                 GCHandle rangeHandle = GCHandle.Alloc(new ushort[] { Icon.ICONMINFA, Icon.ICONMAXFA, 0 }, GCHandleType.Pinned);
-                ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "resources/Icons.ttf", 14.0f, config, rangeHandle.AddrOfPinnedObject());
+                ImGui.GetIO().Fonts.AddFontFromFileTTF(AppDomain.CurrentDomain.BaseDirectory + "Resources/Icons.ttf", 14.0f, config, rangeHandle.AddrOfPinnedObject());
             }
 
 
