@@ -43,19 +43,14 @@ namespace Alis.Editor.UI.Widgets
 
         private void Project_OnChangeProject(object sender, bool e)
         {
-            assetPath = Project.AssetsPath;
-            currentDir = assetPath;
-        }
-
-        /// <summary>Load this instance.</summary>
-        public override void OnLoad()
-        {
+            //assetPath = Project.Current.Directory + "/Assets";
+            //currentDir = assetPath;
         }
 
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-            if (ImGui.Begin(Name, ref isOpen))
+            /*if (ImGui.Begin(Name, ref isOpen))
             {
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(1.0f, 3.0f));
 
@@ -96,7 +91,7 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.BeginChild("Assets-Child-Right", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
                     {
-                        if (!Project.CurrentPath.Equals(string.Empty))
+                        if (!Project.Current.Directory.Equals(string.Empty))
                         {
                             foreach (string file in Directory.GetFiles(currentDir))
                             {
@@ -131,14 +126,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.EndChild();
             }
 
-            ImGui.End();
-        }
-
-        /// <summary>Gets the name.</summary>
-        /// <returns>Return name widget</returns>
-        public override string GetName()
-        {
-            return Name;
+            ImGui.End();*/
         }
 
         /// <summary>Opens this instance.</summary>

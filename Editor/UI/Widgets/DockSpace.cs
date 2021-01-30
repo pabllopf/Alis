@@ -65,12 +65,6 @@ namespace Alis.Editor.UI.Widgets
             extraWindowSize = new Vector2(0.0f, 50f);
         }
 
-        /// <summary>Called when [load].</summary>
-        public override void OnLoad()
-        {
-            Debug.Log("DockSpace::OnLoad");
-        }
-
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
@@ -177,14 +171,6 @@ namespace Alis.Editor.UI.Widgets
         public override void Close()
         {
             Debug.Log("DockSpace::Close");
-        }
-
-        /// <summary>Gets the name.</summary>
-        /// <returns>Return name widget</returns>
-        public override string GetName()
-        {
-            Debug.Log("DockSpace::GetName::" + Name);
-            return Name;
         }
 
         /// <summary>Clicks the button.</summary>

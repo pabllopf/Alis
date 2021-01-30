@@ -57,13 +57,6 @@ namespace Alis.Editor.UI.Widgets
             process.StartInfo = startInfo;
         }
         
-        /// <summary>Gets the name.</summary>
-        /// <returns>Return name widget</returns>
-        public override string GetName()
-        {
-            return Name;
-        }
-
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
@@ -253,11 +246,6 @@ namespace Alis.Editor.UI.Widgets
 
             ShowAboutPopup();
             ShowExitPopup();
-        }
-
-        /// <summary>Load this instance.</summary>
-        public override void OnLoad()
-        {
         }
 
         /// <summary>Opens this instance.</summary>

@@ -27,12 +27,6 @@ namespace Alis.Editor.UI.Widgets
             this.eventHandler = eventHandler;
         }
 
-        /// <summary>Load this instance.</summary>
-        public override void OnLoad()
-        {
-            Debug.Log("Game view loaded");
-        }
-
         /// <summary>Opens this instance.</summary>
         public override void Open()
         {
@@ -45,13 +39,6 @@ namespace Alis.Editor.UI.Widgets
         {
             Debug.Log("Game view closed");
             isOpen = false;
-        }
-
-        /// <summary>Gets the name.</summary>
-        /// <returns>Return name widget</returns>
-        public override string GetName()
-        {
-            return Name;
         }
 
         /// <summary>Draw this instance.</summary>

@@ -24,7 +24,7 @@ namespace Alis.Tools
         /// <value>The desktop path.</value>
         public static string DesktopPath 
         {
-            get => Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            get => Environment.GetFolderPath(Environment.SpecialFolder.Desktop).Replace("\\", "/");
         }
 
         /// <summary>Gets the assets path.</summary>

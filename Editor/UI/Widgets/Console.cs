@@ -91,13 +91,6 @@ namespace Alis.Editor.UI.Widgets
             log.Clear();
         }
 
-        /// <summary>Gets the name.</summary>
-        /// <returns>Return name widget</returns>
-        public override string GetName()
-        {
-            return Name;
-        }
-
         /// <summary>Opens this instance.</summary>
         public override void Open()
         {
@@ -108,11 +101,6 @@ namespace Alis.Editor.UI.Widgets
         public override void Close()
         {
             isOpen = false;
-        }
-
-        /// <summary>Load this instance.</summary>
-        public override void OnLoad()
-        {
         }
 
         /// <summary>Warnings the specified message.</summary>

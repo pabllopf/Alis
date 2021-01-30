@@ -21,7 +21,7 @@ namespace Alis.Core
         private Image frame;
 
         /// <summary>The circle</summary>
-        private CircleShape circle = new CircleShape(50f);
+        private CircleShape circle = new CircleShape(100f);
 
         /// <summary>The is closed</summary>
         private bool isClosed;

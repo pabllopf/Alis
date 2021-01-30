@@ -40,11 +40,6 @@ namespace Alis.Editor.UI.Widgets
                 ImGuiWindowFlags.NoScrollbar;
         }
 
-        /// <summary>Load this instance.</summary>
-        public override void OnLoad()
-        {
-        }
-
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
@@ -146,13 +141,6 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Close this instance.</summary>
         public override void Close()
         {
-        }
-
-        /// <summary>Gets the name.</summary>
-        /// <returns>Return name widget</returns>
-        public override string GetName()
-        {
-            return Name;
         }
 
         /// <summary>Starts the style pop pup.</summary>

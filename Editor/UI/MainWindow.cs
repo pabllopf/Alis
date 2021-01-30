@@ -315,7 +315,7 @@ namespace Alis.Editor.UI
             colors[(int)ImGuiCol.TextDisabled] = new System.Numerics.Vector4(0.36f, 0.42f, 0.47f, 1.00f);
             colors[(int)ImGuiCol.WindowBg] = new System.Numerics.Vector4(0.17f, 0.21f, 0.26f, 1.00f);
             colors[(int)ImGuiCol.ChildBg] = new System.Numerics.Vector4(0.17f, 0.21f, 0.26f, 1.00f);
-            colors[(int)ImGuiCol.PopupBg] = new System.Numerics.Vector4(0.08f, 0.08f, 0.08f, 0.94f);
+            colors[(int)ImGuiCol.PopupBg] = new System.Numerics.Vector4(0.08f, 0.08f, 0.08f, 1f);
             colors[(int)ImGuiCol.Border] = new System.Numerics.Vector4(0.08f, 0.11f, 0.12f, 1.00f);
             colors[(int)ImGuiCol.BorderShadow] = new System.Numerics.Vector4(0.00f, 0.00f, 0.00f, 0.00f);
             colors[(int)ImGuiCol.FrameBg] = new System.Numerics.Vector4(0.20f, 0.25f, 0.29f, 1.00f);

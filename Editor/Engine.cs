@@ -154,11 +154,6 @@ namespace Alis.Editor
                 return -1;
             }
 
-            Console.WriteLine("Finish process. Please press ANY KEY to close console.");
-            Console.ReadKey();
-
-            
-
             return 0;
         }
     }

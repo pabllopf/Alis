@@ -36,7 +36,7 @@ namespace Alis.Editor.UI.Widgets
 
             Console.Current = new Console(EventHandler);
             widgets.Add(Console.Current);
-            widgets.Add(new ProjectCreator(EventHandler, false, false, true));
+            widgets.Add(new ProjectManager(EventHandler, true));
 
            
             widgets.Add(new BottomMenu(EventHandler));
@@ -95,7 +95,7 @@ namespace Alis.Editor.UI.Widgets
         /// <param name="obj">The object.</param>
         private static void ProcessCloseCreatorProject(WidgetManager obj)
         {
-            obj.widgets.RemoveAll(i => i.GetType() == typeof(ProjectCreator));
+            obj.widgets.RemoveAll(i => i.GetType() == typeof(ProjectManager));
             System.Console.WriteLine("Process Creator Project");
         }
 
@@ -103,9 +103,9 @@ namespace Alis.Editor.UI.Widgets
         /// <param name="obj">The object.</param>
         private static void ProcessOpenCreatorProject(WidgetManager obj)
         {
-            if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectCreator)))
+            if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectManager)))
             {
-                obj.widgets.Add(new ProjectCreator(obj.EventHandler, false, true, false));
+                obj.widgets.Add(new ProjectManager(obj.EventHandler, false));
                 System.Console.WriteLine("Process Open Creator Project");
             }
         }

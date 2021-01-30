@@ -268,18 +268,11 @@
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.About" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.About.OnLoad">
-            <summary>Load this instance.</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.About.Open">
             <summary>Opens this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.About.Close">
             <summary>Close this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.About.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.About.Draw">
             <summary>Draw this instance.</summary>
@@ -305,15 +298,8 @@
         <member name="M:Alis.Editor.UI.Widgets.AssetsManager.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.AssetsManager" /> class.</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.OnLoad">
-            <summary>Load this instance.</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.AssetsManager.Draw">
             <summary>Draw this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.AssetsManager.Open">
             <summary>Opens this instance.</summary>
@@ -345,9 +331,6 @@
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.BottomMenu" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.BottomMenu.OnLoad">
-            <summary>Load this instance.</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.BottomMenu.Draw">
             <summary>Draw this instance.</summary>
         </member>
@@ -356,10 +339,6 @@
         </member>
         <member name="M:Alis.Editor.UI.Widgets.BottomMenu.Close">
             <summary>Close this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.BottomMenu.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.BottomMenu.StartStylePopPup">
             <summary>Starts the style pop pup.</summary>
@@ -422,18 +401,11 @@
         <member name="M:Alis.Editor.UI.Widgets.Console.Clear">
             <summary>Clears this instance.</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.Console.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.Console.Open">
             <summary>Opens this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Console.Close">
             <summary>Close this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Console.OnLoad">
-            <summary>Load this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Console.Warning(System.String)">
             <summary>Warnings the specified message.</summary>
@@ -490,9 +462,6 @@
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.DockSpace" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.DockSpace.OnLoad">
-            <summary>Called when [load].</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.DockSpace.Draw">
             <summary>Draws this instance.</summary>
         </member>
@@ -501,10 +470,6 @@
         </member>
         <member name="M:Alis.Editor.UI.Widgets.DockSpace.Close">
             <summary>Closes this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.DockSpace.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.DockSpace.ClickButton(System.Int32)">
             <summary>Clicks the button.</summary>
@@ -544,18 +509,11 @@
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.GameView" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.GameView.OnLoad">
-            <summary>Load this instance.</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.GameView.Open">
             <summary>Opens this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.GameView.Close">
             <summary>Close this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.GameView.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.GameView.Draw">
             <summary>Draw this instance.</summary>
@@ -575,58 +533,104 @@
         <member name="M:Alis.Editor.UI.Widgets.Inspector.Draw">
             <summary>Draws this instance.</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.Inspector.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Inspector.OnLoad">
-            <summary>Called when [load].</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.Inspector.Open">
             <summary>Opens this instance.</summary>
         </member>
-        <member name="T:Alis.Editor.UI.Widgets.ProjectCreator">
+        <member name="T:Alis.Editor.UI.Widgets.ProjectManager">
             <summary>Create new project. </summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.name">
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.name">
             <summary>The name</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.isOpen">
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.projects">
+            <summary>The projects</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.isOpen">
             <summary>The is open</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.isSelect2D">
-            <summary>The is select2 d</summary>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.showRecentProjects">
+            <summary>The show recent projects</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.itemSpace">
-            <summary>The item space</summary>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.modes">
+            <summary>The modes</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.eventHandler">
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.currentMode">
+            <summary>The current mode</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.selected">
+            <summary>The selected</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.alreadyExistError">
+            <summary>The already exist error</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.eventHandler">
             <summary>The event handler</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.redColor">
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.sizeWidget">
+            <summary>The size widget</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.sizeChild">
+            <summary>The size child </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.configPopup">
+            <summary>The configuration popup</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.itemSpacing">
+            <summary>The item spacing</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.childBorderSize">
+            <summary>The child border size</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.nameField">
+            <summary>The name field</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.directoryField">
+            <summary>The directory field</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.redColor">
             <summary>The red color</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectCreator.pathBuffer">
-            <summary>The buffer</summary>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.whiteColor">
+            <summary>The white color</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType},System.Boolean,System.Boolean,System.Boolean)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.ProjectCreator" /> class.</summary>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.childBackground">
+            <summary>The child background</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.OnLoad">
-            <summary>Load this instance.</summary>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType},System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.ProjectManager" /> class.</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.Draw">
-            <summary>Draw this instance.</summary>
+        <member name="P:Alis.Editor.UI.Widgets.ProjectManager.Name">
+            <summary>Gets the name.</summary>
+            <value>The name.</value>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.Open">
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Open">
             <summary>Opens this instance.</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.Close">
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Close">
             <summary>Close this instance.</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectCreator.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Draw">
+            <summary>Draw this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.PushStyle">
+            <summary>Pushes the style.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.PopStyle">
+            <summary>Pops the style.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.CreateProject(System.String,System.String,System.String)">
+            <summary>Creates the project.</summary>
+            <param name="name">name project</param>
+            <param name="directory">directory project</param>
+            <param name="mode">mode project</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.OpenProject(Alis.Editor.UI.Project)">
+            <summary>Opens the project.</summary>
+            <param name="project">The project.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.DeleteProject(System.Int32)">
+            <summary>Deletes the project.</summary>
+            <param name="project">The project.</param>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.SceneView">
             <summary>Render the core scene.</summary>
@@ -639,13 +643,6 @@
         </member>
         <member name="M:Alis.Editor.UI.Widgets.SceneView.Draw">
             <summary>Draws this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.SceneView.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.SceneView.OnLoad">
-            <summary>Called when [load].</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.SceneView.Open">
             <summary>Opens this instance.</summary>
@@ -676,15 +673,8 @@
             <param name="eventHandler">The event handler.</param>
             <param name="info">The information.</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.TopMenu.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.Draw">
             <summary>Draw this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.TopMenu.OnLoad">
-            <summary>Load this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.Open">
             <summary>Opens this instance.</summary>
@@ -714,18 +704,11 @@
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Updater" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.Updater.OnLoad">
-            <summary>Load this instance.</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.Updater.Open">
             <summary>Opens this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Updater.Close">
             <summary>Close this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Updater.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Updater.Draw">
             <summary>Draw this instance.</summary>
@@ -733,15 +716,8 @@
         <member name="T:Alis.Editor.UI.Widgets.Widget">
             <summary>Widget define</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.Widget.OnLoad">
-            <summary>Load this instance.</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.Widget.Draw">
             <summary>Draw this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Widget.GetName">
-            <summary>Gets the name.</summary>
-            <returns>Return name widget</returns>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Widget.Open">
             <summary>Opens this instance.</summary>
