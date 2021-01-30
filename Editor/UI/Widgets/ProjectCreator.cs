@@ -66,9 +66,27 @@ namespace Alis.Editor.UI.Widgets
             current_item = modes[0];
 
             lastProjects = LocalData.Load<List<Project>>("Projects");
+
+            List<Project> temp = new List<Project>();
+            foreach (Project project in lastProjects) 
+            {
+                if (Directory.Exists(project.PathProject)) 
+                {
+                    temp.Add(project);
+                }
+            }
+
+            lastProjects = temp;
+
+            LocalData.Save<List<Project>>("Projects", temp);
+
             if (lastProjects != null)
             {
-                showLastProjects = true;
+                if (lastProjects.Count > 0) 
+                {
+                    showLastProjects = true;
+                }
+               
             }
 
             this.isOpenNewProject = isOpenNewProject;
@@ -116,6 +134,7 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.BeginPopupModal(name, ref isOpen, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoDecoration))
             {
+
                 if (ImGui.BeginChild("Master", sizeMasterChild, false))
                 {
                     if (showLastProjects && isFirstOpen)
@@ -129,26 +148,30 @@ namespace Alis.Editor.UI.Widgets
 
                             foreach (Project project in lastProjects)
                             {
-                                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(0, 7.0f));
-                                ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 0.0f);
-                                ImGui.BeginGroup();
-                                if (ImGui.Button(project.NameProject, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
+                                if (Directory.Exists(project.PathProject) && Directory.Exists(project.AssetsProject) && Directory.Exists(project.ConfigPathProject))
                                 {
-                                    if (Directory.Exists(Project.CurrentPath) && Directory.Exists(Project.AssetsPath) && Directory.Exists(Project.ConfigPath))
+                                    ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(0, 7.0f));
+                                    ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 0.0f);
+                                    ImGui.BeginGroup();
+
+                                    if (ImGui.Button(project.NameProject, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
                                     {
+
                                         OpenProject(project);
+
                                     }
+
+
+                                    ImGui.SameLine();
+
+                                    if (ImGui.Button(Icon.TIMESCIRCLEO, new Vector2(30.0f, 30.0f)))
+                                    {
+                                        DeleteProject(lastProjects.IndexOf(project));
+                                    }
+
+                                    ImGui.EndGroup();
+                                    ImGui.PopStyleVar(2);
                                 }
-
-                                ImGui.SameLine();
-
-                                if (ImGui.Button(Icon.TIMESCIRCLEO, new Vector2(30.0f, 30.0f)))
-                                {
-                                    DeleteProject(project);
-                                }
-
-                                ImGui.EndGroup();
-                                ImGui.PopStyleVar(2);
                             }
                         }
 
@@ -253,9 +276,18 @@ namespace Alis.Editor.UI.Widgets
             ImGui.PopStyleColor();
         }
 
-        private void DeleteProject(Project project)
+        private void DeleteProject(int index)
         {
-            throw new NotImplementedException();
+            List<Project> temp = LocalData.Load<List<Project>>("Projects");
+            temp.RemoveAt(index);
+            LocalData.Save<List<Project>>("Projects", temp);
+
+            lastProjects = LocalData.Load<List<Project>>("Projects");
+
+            if (lastProjects.Count <= 0) 
+            {
+                showLastProjects = false;
+            }
         }
 
         private void OpenProject(Project project)
