@@ -190,10 +190,24 @@
             <param name="name">The name.</param>
             <param name="data">The data.</param>
         </member>
+        <member name="M:Alis.Tools.LocalData.Save``1(System.String,System.String,``0)">
+            <summary>Saves the specified name.</summary>
+            <typeparam name="T">Type data</typeparam>
+            <param name="name">The name.</param>
+            <param name="directory"></param>
+            <param name="data">The data.</param>
+        </member>
         <member name="M:Alis.Tools.LocalData.Load``1(System.String)">
             <summary>Loads the specified name.</summary>
             <typeparam name="T">Type data</typeparam>
             <param name="name">The name.</param>
+            <returns>Return the value data.</returns>
+        </member>
+        <member name="M:Alis.Tools.LocalData.Load``1(System.String,System.String)">
+            <summary>Loads the specified name.</summary>
+            <typeparam name="T">Type data</typeparam>
+            <param name="name">The name.</param>
+            <param name="directory"></param>
             <returns>Return the value data.</returns>
         </member>
         <member name="T:Alis.Tools.Zipper">

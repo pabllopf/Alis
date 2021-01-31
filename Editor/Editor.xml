@@ -19,26 +19,82 @@
         <member name="T:Alis.Editor.Project">
             <summary>Project define.</summary>
         </member>
-        <member name="F:Alis.Editor.Project.nameProject">
-            <summary>The name project</summary>
+        <member name="F:Alis.Editor.Project.videoGame">
+            <summary>The video game</summary>
         </member>
-        <member name="F:Alis.Editor.Project.pathProject">
-            <summary>The path project</summary>
+        <member name="F:Alis.Editor.Project.current">
+            <summary>The current</summary>
         </member>
-        <member name="F:Alis.Editor.Project.typeProject">
-            <summary>The type project</summary>
+        <member name="F:Alis.Editor.Project.name">
+            <summary>The name</summary>
         </member>
-        <member name="M:Alis.Editor.Project.#ctor(System.String,System.String,Alis.Editor.TypeProject)">
+        <member name="F:Alis.Editor.Project.directory">
+            <summary>The directory</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.assetsPath">
+            <summary>The assets path</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.configPath">
+            <summary>The configuration path</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.dataPath">
+            <summary>The data path</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.libraryPath">
+            <summary>The library path</summary>
+        </member>
+        <member name="M:Alis.Editor.Project.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Project" /> class.</summary>
-            <param name="nameProject"></param>
-            <param name="pathProject">The path project.</param>
-            <param name="typeProject">The type project.</param>
+            <param name="name">The name.</param>
+            <param name="directory">The directory.</param>
+            <param name="assetsPath">The assets path.</param>
+            <param name="configPath">The configuration path.</param>
+            <param name="dataPath">The data path.</param>
+            <param name="libraryPath">The library path.</param>
         </member>
-        <member name="M:Alis.Editor.Project.Load">
-            <summary>Loads this instance.</summary>
+        <member name="E:Alis.Editor.Project.OnChangeProject">
+            <summary>Occurs when [event handler].</summary>
         </member>
-        <member name="M:Alis.Editor.Project.Create">
-            <summary>Creates this instance.</summary>
+        <member name="P:Alis.Editor.Project.VideoGame">
+            <summary>Gets or sets the video game.</summary>
+            <value>The video game.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.Current">
+            <summary>Gets or sets the current.</summary>
+            <value>The current.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.Name">
+            <summary>Gets or sets the name.</summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.Directory">
+            <summary>Gets or sets the directory.</summary>
+            <value>The directory.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.AssetsPath">
+            <summary>Gets or sets the assets path.</summary>
+            <value>The assets path.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.ConfigPath">
+            <summary>Gets or sets the configuration path.</summary>
+            <value>The configuration path.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.DataPath">
+            <summary>Gets or sets the data path.</summary>
+            <value>The data path.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.LibraryPath">
+            <summary>Gets or sets the library path.</summary>
+            <value>The library path.</value>
+        </member>
+        <member name="M:Alis.Editor.Project.ChangeProject(Alis.Editor.Project,Alis.Core.VideoGame)">
+            <summary>Changes the project.</summary>
+            <param name="project">The project.</param>
+            <param name="game">The game.</param>
+        </member>
+        <member name="M:Alis.Editor.Project.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug method</returns>
         </member>
         <member name="T:Alis.Editor.TypeProject">
             <summary>Type Project</summary>
@@ -624,13 +680,18 @@
             <param name="directory">directory project</param>
             <param name="mode">mode project</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.OpenProject(Alis.Editor.UI.Project)">
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.OpenProject(Alis.Editor.Project)">
             <summary>Opens the project.</summary>
             <param name="project">The project.</param>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.DeleteProject(System.Int32)">
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.DeleteProject(Alis.Editor.Project)">
             <summary>Deletes the project.</summary>
-            <param name="project">The project.</param>
+            <param name="index">The index.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Project_OnChangeProject(System.Object,System.Boolean)">
+            <summary>Projects the on change project.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.SceneView">
             <summary>Render the core scene.</summary>

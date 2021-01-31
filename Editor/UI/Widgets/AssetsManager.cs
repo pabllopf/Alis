@@ -38,7 +38,7 @@ namespace Alis.Editor.UI.Widgets
                 filter = new ImGuiTextFilterPtr(filterPtr);
             }
 
-            Project.OnChangeProject += Project_OnChangeProject;
+            //Project.OnChangeProject += Project_OnChangeProject;
         }
 
         private void Project_OnChangeProject(object sender, bool e)
