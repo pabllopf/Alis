@@ -15,9 +15,6 @@ namespace Alis.Editor.UI
     /// <summary>Manage the main window.</summary>
     public class MainWindow
     {
-        /// <summary>The title</summary>
-        private const string Title = "Alis";
-
         /// <summary>The start position x</summary>
         private const int StartPosX = 50;
 
@@ -29,6 +26,9 @@ namespace Alis.Editor.UI
 
         /// <summary>The size y</summary>
         private const int SizeY = 640;
+
+        /// <summary>The title</summary>
+        private string title = "Alis";
 
         #region VeldridComponents
 
@@ -109,7 +109,7 @@ namespace Alis.Editor.UI
                 windowWidth: SizeX,
                 windowHeight: SizeY,
                 windowInitialState: windowState,
-                windowTitle: Title);
+                windowTitle: title);
 
             Debug.Log(" > WindowCreateInfo: (" +
                "X:" + windowCreateInfo.X + " | " +
@@ -193,10 +193,17 @@ namespace Alis.Editor.UI
             deltaSeconds = 1.0f / 60.0f;
             Debug.Log(" > Delta Seconds: " + deltaSeconds);
 
+            Project.OnChangeProject += Project_OnChangeProject;
+
             LoadStyle();
             Update();
 
             return true;
+        }
+
+        private void Project_OnChangeProject(object sender, bool e)
+        {
+            title = "Alis - " + Project.Current.Name;
         }
 
         /// <summary>Updates this instance.</summary>
@@ -206,6 +213,8 @@ namespace Alis.Editor.UI
 
             while (window.Exists)
             {
+                window.Title = title;
+
                 snapshot = window.PumpEvents();
                 if (!window.Exists)
                 {

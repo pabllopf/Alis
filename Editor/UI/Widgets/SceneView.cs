@@ -18,8 +18,6 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The name</summary>
         private const string Name = "Scene";
 
-        private VideoGame game;
-
         private Image<Rgba32> image;
 
         private ImageSharpTexture imageSharpTexture;
@@ -32,32 +30,17 @@ namespace Alis.Editor.UI.Widgets
 
         public SceneView() 
         {
-            game = new VideoGame(
-               new ConfigGame("ExampleGame"),
-
-               new Scene(
-                   "MainMenu",
-
-                   new GameObject(
-                       "Player",
-                       new AudioSource("Example.wav", true)
-                   ),
-
-                   new GameObject("Camera")
-               ),
-
-               new Scene(
-                   "PlayGame",
-                   new GameObject("Enemy")
-               )
-           );
-
-            Debug.Warning("Saved the game");
-            LocalData.Save<VideoGame>("Alis", game);
-
             imGuiController = MainWindow.imGuiController;
 
-            image = Image.LoadPixelData<Rgba32>(game.PreviewRender(), 512, 512);
+            Project.OnChangeProject += Project_OnChangeProject;
+        }
+
+        /// <summary>Projects the on change project.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Project_OnChangeProject(object sender, bool e)
+        {
+            image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
             imageSharpTexture = new ImageSharpTexture(image, true);
             texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
             intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
@@ -75,8 +58,11 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin(Name))
             {
-                image = Image.LoadPixelData<Rgba32>(game.PreviewRender(), 512, 512);
-                ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
+                if (Project.VideoGame != null) 
+                {
+                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
+                    ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
+                }
             }
 
             ImGui.End();

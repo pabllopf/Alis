@@ -319,7 +319,7 @@ namespace Alis.Editor.UI.Widgets
                     File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
 
                     VideoGame game = new VideoGame(new ConfigGame(name));
-                    LocalData.Save<VideoGame>(name, dataPath, Project.VideoGame);
+                    LocalData.Save<VideoGame>(name, dataPath, game);
 
                     Project.ChangeProject(project, game);
 
@@ -337,7 +337,12 @@ namespace Alis.Editor.UI.Widgets
             if (Directory.Exists(project.Directory))
             {
                 Debug.Warning("Open " + project.Name + project.DataPath + project.Directory + project.AssetsPath + project.ConfigPath + project.LibraryPath);
-                Project.ChangeProject(project, LocalData.Load<VideoGame>(project.Name, project.DataPath));
+
+                VideoGame game = LocalData.Load<VideoGame>(project.Name, project.DataPath);
+
+                Debug.Warning("Videogame: " + game.Config.NameProject);
+
+                Project.ChangeProject(project, game);
                 Close();
             }
             else 

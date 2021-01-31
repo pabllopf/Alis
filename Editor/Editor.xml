@@ -215,9 +215,6 @@
         <member name="T:Alis.Editor.UI.MainWindow">
             <summary>Manage the main window.</summary>
         </member>
-        <member name="F:Alis.Editor.UI.MainWindow.Title">
-            <summary>The title</summary>
-        </member>
         <member name="F:Alis.Editor.UI.MainWindow.StartPosX">
             <summary>The start position x</summary>
         </member>
@@ -229,6 +226,9 @@
         </member>
         <member name="F:Alis.Editor.UI.MainWindow.SizeY">
             <summary>The size y</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.title">
+            <summary>The title</summary>
         </member>
         <member name="F:Alis.Editor.UI.MainWindow.window">
             <summary>The window</summary>
@@ -654,6 +654,8 @@
         </member>
         <member name="M:Alis.Editor.UI.Widgets.ProjectManager.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType},System.Boolean)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.ProjectManager" /> class.</summary>
+            <param name="eventHandler">Controller event</param>
+            <param name="showRecentProjects">show this</param>
         </member>
         <member name="P:Alis.Editor.UI.Widgets.ProjectManager.Name">
             <summary>Gets the name.</summary>
@@ -686,7 +688,7 @@
         </member>
         <member name="M:Alis.Editor.UI.Widgets.ProjectManager.DeleteProject(Alis.Editor.Project)">
             <summary>Deletes the project.</summary>
-            <param name="index">The index.</param>
+            <param name="project">project to delete</param>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Project_OnChangeProject(System.Object,System.Boolean)">
             <summary>Projects the on change project.</summary>
@@ -698,6 +700,11 @@
         </member>
         <member name="F:Alis.Editor.UI.Widgets.SceneView.Name">
             <summary>The name</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.SceneView.Project_OnChangeProject(System.Object,System.Boolean)">
+            <summary>Projects the on change project.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.SceneView.Close">
             <summary>Closes this instance.</summary>

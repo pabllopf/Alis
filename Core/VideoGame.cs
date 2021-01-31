@@ -43,7 +43,12 @@ namespace Alis.Core
         {
             this.config = config;
             scenes = new List<Scene>(scene);
-            currentScene = scenes[0];
+
+            if (scenes.Count > 0)
+            {
+                currentScene = scenes[0];
+            }
+
             Render.Start();
             Debug.Log("Created a new " + GetType() + "(" + config.NameProject + ").");
         }
@@ -102,7 +107,11 @@ namespace Alis.Core
         public byte[] PreviewRender() 
         { 
             Input.PollEvents();
-            currentScene.Update();
+            if (currentScene != null) 
+            {
+                currentScene.Update();
+            }
+            
             Render.Draw();
             return Render.FrameBytes();
         }
