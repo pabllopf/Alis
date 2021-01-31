@@ -1,4 +1,4 @@
-﻿//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="TopMenu.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //----------------------------------------------------------------------------------------------------
@@ -338,7 +338,7 @@ namespace Alis.Editor.UI.Widgets
                 processto.WaitForExit();
 
                 startInfoRun.FileName = "/bin/bash";
-                startInfoRun.Arguments = "/C ./" + Project.Current.Name;
+                startInfoRun.Arguments = "-c \" " + "exo-open --launch TerminalEmulator  && ./" + Project.Current.Name + " \" ";
                 startInfoRun.WorkingDirectory = Project.Current.Directory + "/bin/Linux/debian";
                 startInfoRun.UseShellExecute = true;
                 processRun.StartInfo = startInfoRun;
