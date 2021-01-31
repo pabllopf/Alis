@@ -328,7 +328,22 @@ namespace Alis.Editor.UI.Widgets
             if (info.Platform.Equals(Platform.Linux))
             {
                 startInfogod.FileName = "/bin/bash";
-                startInfogod.Arguments = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
+                startInfogod.Arguments = "-c \" " + "exo-open --launch TerminalEmulator  && dotnet build --configuration Linux" + " \" ";
+                startInfogod.WorkingDirectory = Project.Current.Directory;
+                startInfogod.UseShellExecute = true;
+                processto.StartInfo = startInfogod;
+                processto.Start();
+                Console.Current.Log("Builded");
+
+                processto.WaitForExit();
+
+                startInfoRun.FileName = "/bin/bash";
+                startInfoRun.Arguments = "/C " + Project.Current.Name;
+                startInfoRun.WorkingDirectory = Project.Current.Directory + "/bin/Linux/netcoreapp3.1";
+                startInfoRun.UseShellExecute = true;
+                processRun.StartInfo = startInfoRun;
+                processRun.Start();
+                Console.Current.Log("Running");
             }
 
             
