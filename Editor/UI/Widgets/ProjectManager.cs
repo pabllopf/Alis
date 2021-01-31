@@ -131,6 +131,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 PushStyle();
 
+                ImGui.SetNextWindowPos(new Vector2(ImGui.GetMainViewport().Size.X / 4, ImGui.GetMainViewport().Size.Y / 4));
                 ImGui.OpenPopup(name);
                 if (ImGui.BeginPopupModal(name, ref isOpen, configPopup))
                 {
@@ -238,10 +239,18 @@ namespace Alis.Editor.UI.Widgets
                                 ImGui.TextColored(redColor, "The project '" + nameField + "' already exists.");
                             }
 
-                            sizeChild.X = ImGui.GetContentRegionAvail().X;
-                            sizeChild.Y = 50.0f;
+                            if (!showRecentProjects) 
+                            {
+                                if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 50.0f)))
+                                {
+                                    Close();
+                                }
 
-                            if (ImGui.Button("Create Project", sizeChild))
+                                ImGui.SameLine();
+                            }
+                            
+
+                            if (ImGui.Button("Create Project", new Vector2(ImGui.GetContentRegionAvail().X, 50.0f)))
                             {
                                 CreateProject(nameField, directoryField, currentMode);
                             }
@@ -257,7 +266,7 @@ namespace Alis.Editor.UI.Widgets
             }
             else
             {
-                eventHandler?.Invoke(this, EventType.CloseCreatorProject);
+                eventHandler?.Invoke(this, EventType.CloseCreateProject);
             }
         }
 

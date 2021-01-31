@@ -16,8 +16,8 @@ namespace Alis.Editor.UI.Widgets
             { EventType.OpenConsole, ProcessOpenConsole },
             { EventType.CloseConsole, ProcessCloseConsole },
             { EventType.ExitEditor, ProcessExitEditor },
-            { EventType.OpenCreatorProject, ProcessOpenCreatorProject },
-            { EventType.CloseCreatorProject, ProcessCloseCreatorProject},
+            { EventType.OpenCreateProject, ProcessOpenCreatorProject },
+            { EventType.CloseCreateProject, ProcessCloseCreatorProject},
         };
 
         /// <summary>The widgets</summary>

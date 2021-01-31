@@ -17,9 +17,15 @@ namespace Alis.Editor.UI.Widgets
         ExitEditor,
 
         /// <summary>The open creator project</summary>
-        OpenCreatorProject,
+        OpenCreateProject,
 
         /// <summary>The close creator project</summary>
-        CloseCreatorProject,
+        CloseCreateProject,
+
+        /// <summary>The open project</summary>
+        OpenProject,
+
+        /// <summary>The close project</summary>
+        CloseProject,
     }
 }

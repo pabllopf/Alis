@@ -66,11 +66,12 @@ namespace Alis.Editor.UI.Widgets
                 {
                     if (ImGui.MenuItem(Icon.FILEO + " New Project"))
                     {
-                        eventHandler.Invoke(null, EventType.OpenCreatorProject);
+                        eventHandler.Invoke(null, EventType.OpenCreateProject);
                     }
 
                     if (ImGui.MenuItem(Icon.FOLDEROPEN + " Open Project"))
                     {
+                        eventHandler.Invoke(null, EventType.OpenProject);
                     }
 
                     ImGui.Separator();

@@ -543,11 +543,17 @@
         <member name="F:Alis.Editor.UI.Widgets.EventType.ExitEditor">
             <summary>The exit editor</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.EventType.OpenCreatorProject">
+        <member name="F:Alis.Editor.UI.Widgets.EventType.OpenCreateProject">
             <summary>The open creator project</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.EventType.CloseCreatorProject">
+        <member name="F:Alis.Editor.UI.Widgets.EventType.CloseCreateProject">
             <summary>The close creator project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.OpenProject">
+            <summary>The open project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.CloseProject">
+            <summary>The close project</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.GameView">
             <summary>Show the game running</summary>
