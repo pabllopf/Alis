@@ -31,5 +31,11 @@ namespace Alis.Core
         {
             core.Draw();
         }
+
+        /// <summary>Displays this instance.</summary>
+        public static void Display() 
+        {
+            core.Display(); 
+        }
     }
 }

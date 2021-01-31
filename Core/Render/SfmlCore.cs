@@ -11,6 +11,9 @@ namespace Alis.Core
     /// <summary>Core render</summary>
     internal class SfmlCore : IRenderCore
     {
+        /// <summary>The window</summary>
+        private RenderWindow window;
+
         /// <summary>The video mode</summary>
         private VideoMode videoMode;
         
@@ -32,6 +35,7 @@ namespace Alis.Core
             videoMode = new VideoMode(640, 480);
             isClosed = false;
             render = new RenderTexture(512, 512);
+            
         }
 
         /// <summary>Gets or sets a value indicating whether this instance is closed.</summary>
@@ -53,6 +57,20 @@ namespace Alis.Core
             render.Clear();
             render.Draw(circle);
             render.Display();
+        }
+
+        public void Display() 
+        {
+            if (window == null) 
+            {
+                window = new RenderWindow(VideoMode.DesktopMode, "Game");
+            }
+
+            window.DispatchEvents();
+
+            window.Clear();
+            window.Draw(circle);
+            window.Display();
         }
 
         /// <summary>Handles the Closed event of the RenderWindow control.</summary>

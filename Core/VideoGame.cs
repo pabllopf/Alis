@@ -68,6 +68,9 @@ namespace Alis.Core
 
             VideoGame videoGame = LocalData.Load<VideoGame>("Data", path);
             Input.OnPressKeyOnce += Input_OnPressKeyOnce;
+
+            videoGame.Add(new Scene("hola", new GameObject("player", new Sprite())));
+
             videoGame.Run();
         }
 
@@ -137,7 +140,7 @@ namespace Alis.Core
                 {
                     currentScene.Update();
                 }
-                Render.Draw();
+                Render.Display();
             }
 
             Debug.Log("Exit of videogame.");

@@ -239,8 +239,14 @@
         <member name="M:Alis.Core.Render.Draw">
             <summary>Draws this instance.</summary>
         </member>
+        <member name="M:Alis.Core.Render.Display">
+            <summary>Displays this instance.</summary>
+        </member>
         <member name="T:Alis.Core.SfmlCore">
             <summary>Core render</summary>
+        </member>
+        <member name="F:Alis.Core.SfmlCore.window">
+            <summary>The window</summary>
         </member>
         <member name="F:Alis.Core.SfmlCore.videoMode">
             <summary>The video mode</summary>
