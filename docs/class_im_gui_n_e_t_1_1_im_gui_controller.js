@@ -46,5 +46,6 @@ var class_im_gui_n_e_t_1_1_im_gui_controller =
     [ "_autoViewsByTexture", "class_im_gui_n_e_t_1_1_im_gui_controller.html#a586f99d1087572bb173bd9ecdef317df", null ],
     [ "_viewsById", "class_im_gui_n_e_t_1_1_im_gui_controller.html#ad17d24e5014a6c73c467434a8aa3e1ae", null ],
     [ "_ownedResources", "class_im_gui_n_e_t_1_1_im_gui_controller.html#a36c67daa8de2addf8f3a73839895fadd", null ],
-    [ "_lastAssignedID", "class_im_gui_n_e_t_1_1_im_gui_controller.html#a3324875a640db873cb43d02a0957cba4", null ]
+    [ "_lastAssignedID", "class_im_gui_n_e_t_1_1_im_gui_controller.html#a3324875a640db873cb43d02a0957cba4", null ],
+    [ "graphicsDevice", "class_im_gui_n_e_t_1_1_im_gui_controller.html#a6f4000797866a7f8ddf8dd570605849e", null ]
 ];

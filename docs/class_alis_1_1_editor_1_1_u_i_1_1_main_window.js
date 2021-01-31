@@ -29,5 +29,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_main_window =
     [ "clearColor", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a9c7b96eeaf7aac773c3a0fbfc9b319d6", null ],
     [ "deltaSeconds", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6123a6c059f0285be9e8af2ebf832af8", null ],
     [ "widgetManager", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af96d9b68cd7f4e15d96b67e6aa53a01a", null ],
-    [ "advice", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a056a8f7822c4f55248a44f3952106f10", null ]
+    [ "advice", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a056a8f7822c4f55248a44f3952106f10", null ],
+    [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad2f84c1f1f012137a37a3bbcfaf8c35d", null ]
 ];

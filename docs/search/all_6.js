@@ -52,8 +52,11 @@ var searchData=
   ['forumbee_387',['FORUMBEE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ad472b6ea7fd6a83514b407fcf9759852',1,'Alis::Editor::Utils::Icon']]],
   ['forward_388',['FORWARD',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#acc3d533aa89021e88846badc1845a2e3',1,'Alis::Editor::Utils::Icon']]],
   ['foursquare_389',['FOURSQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9d727c3c4e86b5b49377dad38858ceb4',1,'Alis::Editor::Utils::Icon']]],
-  ['freecodecamp_390',['FREECODECAMP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a7ec94753977d003d4e407ff572df8db3',1,'Alis::Editor::Utils::Icon']]],
-  ['french_391',['French',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4aad225f707802ba118c22987186dd38e8',1,'Alis::Tools']]],
-  ['frowno_392',['FROWNO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ac85d83face1e4f74635eae1759055efe',1,'Alis::Editor::Utils::Icon']]],
-  ['futbolo_393',['FUTBOLO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a06272602dbb975b899c45cd7882dd815',1,'Alis::Editor::Utils::Icon']]]
+  ['frame_390',['frame',['../class_alis_1_1_core_1_1_sfml_core.html#a0e37a9e627c33bf1b3855806b6084b15',1,'Alis::Core::SfmlCore']]],
+  ['framebytes_391',['FrameBytes',['../class_alis_1_1_core_1_1_render.html#ae7eefa0c47884f5c56d8ae319df1854a',1,'Alis::Core::Render']]],
+  ['framepixels_392',['FramePixels',['../class_alis_1_1_core_1_1_sfml_core.html#a18010b399daa8631a5ee1a841c98a98c',1,'Alis::Core::SfmlCore']]],
+  ['freecodecamp_393',['FREECODECAMP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a7ec94753977d003d4e407ff572df8db3',1,'Alis::Editor::Utils::Icon']]],
+  ['french_394',['French',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4aad225f707802ba118c22987186dd38e8',1,'Alis::Tools']]],
+  ['frowno_395',['FROWNO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ac85d83face1e4f74635eae1759055efe',1,'Alis::Editor::Utils::Icon']]],
+  ['futbolo_396',['FUTBOLO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a06272602dbb975b899c45cd7882dd815',1,'Alis::Editor::Utils::Icon']]]
 ];

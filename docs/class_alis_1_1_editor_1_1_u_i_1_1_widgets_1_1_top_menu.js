@@ -1,9 +1,7 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
 [
     [ "TopMenu", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a14548ae759c8952acfd590c2f48b7187", null ],
-    [ "GetName", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a11e62473dddc188ad8fac2675bcf9c00", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7a7a59124aa85ecba691e5229928cc05", null ],
-    [ "OnLoad", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aa83be791b36909eda7763321ccebda76", null ],
     [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a6e88fb7aad91458310fb316d453a77e0", null ],
     [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7a2b7defa707c89fad8bc170a2158f21", null ],
     [ "OpenTerminal", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a5dea8e516b12c82e30416a224f09d265", null ],

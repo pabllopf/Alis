@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['pathproject_2041',['PathProject',['../class_alis_1_1_editor_1_1_u_i_1_1_project.html#ace84d580721b2a7c7c1925a4a5fb4b9b',1,'Alis::Editor::UI::Project']]],
-  ['platform_2042',['Platform',['../class_alis_1_1_editor_1_1_info.html#aa076a1cff03f4f456c8c8141b92d1eb9',1,'Alis::Editor::Info']]],
-  ['playonawake_2043',['PlayOnAwake',['../class_alis_1_1_tools_1_1_audio_source.html#a09881d7fec3e045ca51b9000cd81feac',1,'Alis::Tools::AudioSource']]],
-  ['position_2044',['Position',['../class_alis_1_1_tools_1_1_transform.html#aacdb5e46e0a56d9dce0fe637a8edf121',1,'Alis::Tools::Transform']]],
-  ['projectpath_2045',['ProjectPath',['../struct_alis_1_1_tools_1_1_application.html#a0ea2f5e37b73c7fa1591779188e5c62b',1,'Alis::Tools::Application']]]
+  ['name_2064',['Name',['../class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038',1,'Alis.Core.GameObject.Name()'],['../class_alis_1_1_core_1_1_scene.html#a3c4bb09aa5ac9ce7669a33031b0a6c3f',1,'Alis.Core.Scene.Name()'],['../class_alis_1_1_editor_1_1_u_i_1_1_project.html#aa5531b32888544df0deeb30a6d2b775e',1,'Alis.Editor.UI.Project.Name()'],['../struct_alis_1_1_tools_1_1_application.html#a6a79b0c23f11421eb73059c605e6e6ca',1,'Alis.Tools.Application.Name()']]],
+  ['nameproject_2065',['NameProject',['../class_alis_1_1_core_1_1_config_game.html#a7be9e324492c21a7c9d0cf4f3a14e06a',1,'Alis::Core::ConfigGame']]]
 ];

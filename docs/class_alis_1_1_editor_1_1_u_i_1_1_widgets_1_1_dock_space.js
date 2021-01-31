@@ -1,11 +1,9 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space =
 [
     [ "DockSpace", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a3997b8c69e67da6aa8745656466183cf", null ],
-    [ "OnLoad", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a80577341e7d83d6ea14abe6dace527ab", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#af47909a50c9e4afe2aef4e93ab37596e", null ],
     [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#aa154b3b1d603e7e97ce6ba91633ae589", null ],
     [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a4329437dbce059bf1161aeb04ca73a8c", null ],
-    [ "GetName", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a69edcd54660813f3d553590dceb47625", null ],
     [ "ClickButton", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#aca12c4697a233c615b1f629c23c7ec87", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a51d42a375c17e24419fc04930020b6cd", null ],
     [ "button", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a2d31e53a7fc03a15c3ee726b892fb63f", null ],

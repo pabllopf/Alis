@@ -2,9 +2,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager =
 [
     [ "AssetsManager", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ad99d9a8903a2770c222e7a490a7925bf", null ],
     [ "Project_OnChangeProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aea80c6e3af0bf6209660a0ff38035318", null ],
-    [ "OnLoad", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a4b9fc826751bd3462f8b516214f7908b", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a152318986df146db4a46d3db007007a9", null ],
-    [ "GetName", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa231f578b669c23c3259ad012ea6e882", null ],
     [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ade5a074bf106857acf104ab2c7fc6dc9", null ],
     [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ac8f7d48a4ba241dd0092b71a5f7bad58", null ],
     [ "GetPathList", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a1a7b79deb71a5779b9a3f54e07c76bf6", null ],
