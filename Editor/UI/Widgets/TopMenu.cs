@@ -328,7 +328,7 @@ namespace Alis.Editor.UI.Widgets
             if (info.Platform.Equals(Platform.Linux))
             {
                 startInfogod.FileName = "/bin/bash";
-                startInfogod.Arguments = "-c \" " + "exo-open --launch TerminalEmulator  && dotnet build --configuration Linux" + " \" ";
+                startInfogod.Arguments = "-c \" " + "exo-open --launch TerminalEmulator  && dotnet publish -r debian.8-x64 -c Linux  -o ./bin/Linux/debian --self-contained true" + " \" ";
                 startInfogod.WorkingDirectory = Project.Current.Directory;
                 startInfogod.UseShellExecute = true;
                 processto.StartInfo = startInfogod;
@@ -338,8 +338,8 @@ namespace Alis.Editor.UI.Widgets
                 processto.WaitForExit();
 
                 startInfoRun.FileName = "/bin/bash";
-                startInfoRun.Arguments = "/C " + Project.Current.Name;
-                startInfoRun.WorkingDirectory = Project.Current.Directory + "/bin/Linux/netcoreapp3.1";
+                startInfoRun.Arguments = "/C ./" + Project.Current.Name;
+                startInfoRun.WorkingDirectory = Project.Current.Directory + "/bin/Linux/debian";
                 startInfoRun.UseShellExecute = true;
                 processRun.StartInfo = startInfoRun;
                 processRun.Start();
