@@ -62,11 +62,11 @@ namespace Alis.Core
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
 
         /// <summary>Starts this instance.</summary>
-        public static void Start()
+        public static void Start(string path)
         {
             Debug.Log("\n \n Init Load");
 
-            VideoGame videoGame = LocalData.Load<VideoGame>("Alis");
+            VideoGame videoGame = LocalData.Load<VideoGame>("Data", path);
             Input.OnPressKeyOnce += Input_OnPressKeyOnce;
             videoGame.Run();
         }
@@ -106,7 +106,7 @@ namespace Alis.Core
         /// <returns>Return the data.</returns>
         public byte[] PreviewRender() 
         { 
-            Input.PollEvents();
+            //Input.PollEvents();
             if (currentScene != null) 
             {
                 currentScene.Update();
@@ -121,16 +121,22 @@ namespace Alis.Core
         {
             isRunning = true;
 
-            currentScene = scenes[0];
-
-            currentScene.Start();
+            if (currentScene != null) 
+            {
+                currentScene = scenes[0];
+                currentScene.Start();
+            }
+           
             Render.Start();
 
             Debug.Log("Run the videogame.");
             while (isRunning) 
             {
                 Input.PollEvents();
-                currentScene.Update();
+                if (currentScene != null)
+                {
+                    currentScene.Update();
+                }
                 Render.Draw();
             }
 

@@ -90,7 +90,7 @@ namespace ImGuiNET
             }
 
 
-            ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable;
+            ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable | ImGuiConfigFlags.NavEnableKeyboard;
 
             /////////////
 
@@ -458,6 +458,7 @@ namespace ImGuiNET
             io.KeyMap[(int)ImGuiKey.X] = (int)Key.X;
             io.KeyMap[(int)ImGuiKey.Y] = (int)Key.Y;
             io.KeyMap[(int)ImGuiKey.Z] = (int)Key.Z;
+
         }
 
         private void RenderImDrawData(ImDrawDataPtr draw_data, GraphicsDevice gd, CommandList cl)

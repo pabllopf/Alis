@@ -18,6 +18,7 @@ namespace Alis.Editor.UI.Widgets
             { EventType.ExitEditor, ProcessExitEditor },
             { EventType.OpenCreateProject, ProcessOpenCreatorProject },
             { EventType.CloseCreateProject, ProcessCloseCreatorProject},
+            { EventType.OpenProject, ProcessOpenProject},
         };
 
         /// <summary>The widgets</summary>
@@ -106,7 +107,17 @@ namespace Alis.Editor.UI.Widgets
             if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectManager)))
             {
                 obj.widgets.Add(new ProjectManager(obj.EventHandler, false));
-                System.Console.WriteLine("Process Open Creator Project");
+            }
+        }
+
+        /// <summary>Processes the open project.</summary>
+        /// <param name="obj">The object.</param>
+        /// <exception cref="NotImplementedException"></exception>
+        private static void ProcessOpenProject(WidgetManager obj)
+        {
+            if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectManager)))
+            {
+                obj.widgets.Add(new ProjectManager(obj.EventHandler, true));
             }
         }
 

@@ -742,6 +742,12 @@
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.exitState">
             <summary>The exit state</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.isSavedPressed">
+            <summary>The is saved pressed</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.autoSaveSelected">
+            <summary>The automatic save selected</summary>
+        </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType},Alis.Editor.Info)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.TopMenu" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
@@ -838,6 +844,11 @@
         <member name="M:Alis.Editor.UI.Widgets.WidgetManager.ProcessOpenCreatorProject(Alis.Editor.UI.Widgets.WidgetManager)">
             <summary>Processes the open creator project.</summary>
             <param name="obj">The object.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.ProcessOpenProject(Alis.Editor.UI.Widgets.WidgetManager)">
+            <summary>Processes the open project.</summary>
+            <param name="obj">The object.</param>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.WidgetManager.ManageEventHandler(System.Object,Alis.Editor.UI.Widgets.EventType)">
             <summary>Manages the event handler.</summary>

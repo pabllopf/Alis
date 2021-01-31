@@ -5,7 +5,9 @@
 namespace Alis.Editor.UI.Widgets
 {
     using System;
+    using Alis.Core;
     using Alis.Editor.Utils;
+    using Alis.Tools;
     using ImGuiNET;
     
     /// <summary>Menu of editor</summary>
@@ -29,14 +31,23 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The exit state</summary>
         private bool exitState = false;
 
+        /// <summary>The is saved pressed</summary>
+        private bool isSavedPressed = false;
+
+        /// <summary>The automatic save selected</summary>
+        private bool autoSaveSelected = false;
+
+        private Info info;
+
         /// <summary>Initializes a new instance of the <see cref="TopMenu" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
         /// <param name="info">The information.</param>
         public TopMenu(EventHandler<EventType> eventHandler, Info info)
         {
             this.eventHandler = eventHandler;
+            this.info = info;
 
-            if(info.Platform.Equals(Platform.Windows))
+            if (info.Platform.Equals(Platform.Windows))
             {
                 startInfo.FileName = "cmd";
             }
@@ -56,15 +67,18 @@ namespace Alis.Editor.UI.Widgets
             startInfo.UseShellExecute = true;
             process.StartInfo = startInfo;
         }
-        
+
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
+            ProcessShortcuts();
+
             if (ImGui.BeginMainMenuBar())
             {
                 if (ImGui.BeginMenu("File"))
                 {
-                    if (ImGui.MenuItem(Icon.FILEO + " New Project"))
+                    
+                    if (ImGui.MenuItem(Icon.FILEO + " New Project", "Ctrl+N"))
                     {
                         eventHandler.Invoke(null, EventType.OpenCreateProject);
                     }
@@ -76,22 +90,25 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.FLOPPYO + " Save", "CTRL+S"))
+                    if (ImGui.MenuItem(Icon.FLOPPYO + " Save", "ALT+S"))
                     {
+                        SaveProject();
                     }
 
-                    if (ImGui.MenuItem(Icon.REFRESH + " AutoSave"))
+                    if (ImGui.MenuItem(Icon.REFRESH + " AutoSave -SOON-", false))
                     {
+                        AutoSaveProject();
                     }
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.GAMEPAD + " Build Settings", "CTRL+SHIFT+B"))
+                    if (ImGui.MenuItem(Icon.GAMEPAD + " Build Settings -SOON-", false))
                     {
                     }
 
                     if (ImGui.MenuItem(Icon.PLAYCIRCLEO + " Build and Run", "CTRL+B"))
                     {
+                        BuildAndRun();
                     }
 
                     ImGui.Separator();
@@ -257,6 +274,74 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Close this instance.</summary>
         public override void Close()
         {
+        }
+
+        private void ProcessShortcuts()
+        {
+            if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(101) && !isSavedPressed)
+            {
+                SaveProject();
+                isSavedPressed = true;
+            }
+
+            if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(101) && isSavedPressed)
+            {
+                isSavedPressed = false;
+            }
+        }
+
+        private void BuildAndRun()
+        {
+            Console.Current.Log("Building proyect " + Project.Current.Name);
+            System.Diagnostics.Process processto = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfogod = new System.Diagnostics.ProcessStartInfo();
+
+            System.Diagnostics.Process processRun = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfoRun = new System.Diagnostics.ProcessStartInfo();
+
+            if (info.Platform.Equals(Platform.Windows))
+            {
+                startInfogod.FileName = "cmd";
+                startInfogod.Arguments = "/C dotnet build --configuration Windows";
+                startInfogod.WorkingDirectory = Project.Current.Directory;
+                startInfogod.UseShellExecute = true;
+                processto.StartInfo = startInfogod;
+                processto.Start();
+                Console.Current.Log("Builded");
+
+                processto.WaitForExit();
+
+                startInfoRun.FileName = "cmd";
+                startInfoRun.Arguments = "/C " + Project.Current.Name + ".exe";
+                startInfoRun.WorkingDirectory = Project.Current.Directory + "/bin/Windows/netcoreapp3.1";
+                startInfoRun.UseShellExecute = true;
+                processRun.StartInfo = startInfoRun;
+                processRun.Start();
+                Console.Current.Log("Running");
+            }
+
+            if (info.Platform.Equals(Platform.MacOS))
+            {
+                startInfogod.FileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+            }
+
+            if (info.Platform.Equals(Platform.Linux))
+            {
+                startInfogod.FileName = "/bin/bash";
+                startInfogod.Arguments = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
+            }
+
+            
+        }
+
+        private void AutoSaveProject()
+        {
+        }
+
+        private void SaveProject() 
+        {
+            Console.Current.Log("Saved " + Project.VideoGame.Config.NameProject);
+            LocalData.Save<VideoGame>(Project.Current.Name, Project.Current.DataPath, Project.VideoGame);
         }
 
         /// <summary>Opens the terminal.</summary>

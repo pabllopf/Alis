@@ -327,8 +327,15 @@ namespace Alis.Editor.UI.Widgets
                     string solutionFile = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
                     File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
 
+                    string program = File.ReadAllText(Application.ProjectPath + "/Resources/Program.txt", Encoding.UTF8);
+                    File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
+
+
+                    File.Copy(Application.ProjectPath + "/Resources/Core.dll", libPath + "/" + "Core" + ".dll");
+                    File.Copy(Application.ProjectPath + "/Resources/Tools.dll", libPath + "/" + "Tools" + ".dll");
+
                     VideoGame game = new VideoGame(new ConfigGame(name));
-                    LocalData.Save<VideoGame>(name, dataPath, game);
+                    LocalData.Save<VideoGame>("Data", dataPath, game);
 
                     Project.ChangeProject(project, game);
 
@@ -347,7 +354,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 Debug.Warning("Open " + project.Name + project.DataPath + project.Directory + project.AssetsPath + project.ConfigPath + project.LibraryPath);
 
-                VideoGame game = LocalData.Load<VideoGame>(project.Name, project.DataPath);
+                VideoGame game = LocalData.Load<VideoGame>("Data", project.DataPath);
 
                 Debug.Warning("Videogame: " + game.Config.NameProject);
 

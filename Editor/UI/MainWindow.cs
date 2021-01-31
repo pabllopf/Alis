@@ -214,7 +214,6 @@ namespace Alis.Editor.UI
             while (window.Exists)
             {
                 window.Title = title;
-
                 snapshot = window.PumpEvents();
                 if (!window.Exists)
                 {
@@ -224,7 +223,9 @@ namespace Alis.Editor.UI
 
                 controller.Update(deltaSeconds, snapshot);
                 widgetManager.Update();
-                //ImGui.ShowDemoWindow();
+                ImGui.ShowDemoWindow();
+
+                
                 //ShowPreviewMessage();
 
                 commandList.Begin();

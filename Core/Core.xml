@@ -360,7 +360,7 @@
             <summary>Gets or sets the scenes.</summary>
             <value>The scenes.</value>
         </member>
-        <member name="M:Alis.Core.VideoGame.Start">
+        <member name="M:Alis.Core.VideoGame.Start(System.String)">
             <summary>Starts this instance.</summary>
         </member>
         <member name="M:Alis.Core.VideoGame.Add(Alis.Core.Scene)">
