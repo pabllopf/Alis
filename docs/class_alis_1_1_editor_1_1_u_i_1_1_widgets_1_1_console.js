@@ -2,10 +2,8 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console =
 [
     [ "Console", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a6390bc30cd857d90996d57c14b532782", null ],
     [ "Clear", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a276b21eaf1752a69c4911e75145610f4", null ],
-    [ "GetName", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#aaba4797a03e3d1af5464288de798e4d0", null ],
     [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#af452d01c7b26b42a3c9c94f8730b9672", null ],
     [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ac736d45ad91c093c48aa85c3d98adfc4", null ],
-    [ "OnLoad", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a9a54d6021599cfd5d3214c664c7a39f7", null ],
     [ "Warning", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a5d88f946aa81621b0a8d1ffd832ab220", null ],
     [ "Error", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a405b35721a9563a38563c877e87a0bb3", null ],
     [ "Log", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a8321283a919029aa62f9c9aa8099889b", null ],

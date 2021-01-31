@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['resource_1025',['Resource',['../class_alis_1_1_tools_1_1_resource.html',1,'Alis::Tools']]],
-  ['resourcesetinfo_1026',['ResourceSetInfo',['../struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html',1,'ImGuiNET::ImGuiController']]]
+  ['render_1035',['Render',['../class_alis_1_1_core_1_1_render.html',1,'Alis::Core']]],
+  ['resourcesetinfo_1036',['ResourceSetInfo',['../struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html',1,'ImGuiNET::ImGuiController']]]
 ];
