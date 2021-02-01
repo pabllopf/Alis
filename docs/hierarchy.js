@@ -28,7 +28,6 @@ var hierarchy =
       [ "Alis.Tools.Crypted< T >", "class_alis_1_1_tools_1_1_crypted.html", null ]
     ] ],
     [ "Alis.Editor.Program", "class_alis_1_1_editor_1_1_program.html", null ],
-    [ "Alis.Editor.UI.Project", "class_alis_1_1_editor_1_1_u_i_1_1_project.html", null ],
     [ "Alis.Editor.Project", "class_alis_1_1_editor_1_1_project.html", null ],
     [ "Alis.Core.Render", "class_alis_1_1_core_1_1_render.html", null ],
     [ "ImGuiNET.ImGuiController.ResourceSetInfo", "struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html", null ],

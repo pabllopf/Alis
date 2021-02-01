@@ -40,7 +40,7 @@ var NAVTREE =
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", "functions_vars" ],
         [ "Properties", "functions_prop.html", null ],
         [ "Events", "functions_evnt.html", null ]
@@ -52,10 +52,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#ac27ca524826bd0e07684c64617ac87f4",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a3cf7cd1f3095352e2e051cb64c20a8c7",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9c13725935222cdaa5c6098d3ba3ba28",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#af64c6e97e5ca975ca8516485c2dd5327"
+"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a4329437dbce059bf1161aeb04ca73a8c",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a349bab753a6c7dd0c157e6d5ea12955e",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a955ed66730c65342450920efda1e03dc",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#af02e2089a65ee1cad7d19dd8628fad3e",
+"struct_alis_1_1_tools_1_1_application.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
