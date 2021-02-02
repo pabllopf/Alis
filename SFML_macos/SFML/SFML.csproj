@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -16,9 +16,15 @@
     <PackageReference Include="SFML.System" Version="2.5.0" />
     <PackageReference Include="CSFML" Version="2.5.0" />
   </ItemGroup>
-  
- <ItemGroup>
-    <AssetsSourceFiles Include="SFML/macos/*.*"/>
+
+
+
+  <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <AssetsSourceFiles Include="SFML/macos/**/*.*"/>
   </ItemGroup>
+  
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+    <Copy SourceFiles="@(AssetsSourceFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+  </Target>
     
 </Project>

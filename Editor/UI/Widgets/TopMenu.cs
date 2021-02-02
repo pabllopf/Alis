@@ -345,8 +345,6 @@ namespace Alis.Editor.UI.Widgets
                 processRun.Start();
                 Console.Current.Log("Running");
             }
-
-            
         }
 
         private void AutoSaveProject()
