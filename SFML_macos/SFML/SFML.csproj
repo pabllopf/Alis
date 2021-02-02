@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+        
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RuntimeIdentifiers>osx.10.11-x64;osx.10.12-x64;</RuntimeIdentifiers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SFML.Net" Version="2.5.0" />
+    <PackageReference Include="SFML.Window" Version="2.5.0" />
+    <PackageReference Include="SFML.Graphics" Version="2.5.0" />
+    <PackageReference Include="SFML.Audio" Version="2.5.0" />
+    <PackageReference Include="SFML.System" Version="2.5.0" />
+    <PackageReference Include="CSFML" Version="2.5.0" />
+  </ItemGroup>
+  
+ <ItemGroup>
+    <AssetsSourceFiles Include="SFML/macos/*.*"/>
+  </ItemGroup>
+    
+</Project>
