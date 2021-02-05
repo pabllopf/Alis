@@ -21,13 +21,13 @@ namespace SFML.System
 #endif
 
 #if Macos
-        public const string audio = "./runtimes/osx/x64/csfml-audio";
+        public const string audio = "./Runtimes/osx/x64/csfml-audio.dylib";
 
-        public const string graphics = "./runtimes/osx/x64/csfml-graphics";
+        public const string graphics = "./Runtimes/osx/x64/csfml-graphics.dylib";
 
-        public const string system = "./runtimes/osx/x64/csfml-system";
+        public const string system = "./Runtimes/osx/x64/csfml-system.dylib";
 
-        public const string window = "./runtimes/osx/x64/csfml-window";
+        public const string window = "./Runtimes/osx/x64/csfml-window.dylib";
 
 #endif
 

@@ -20,6 +20,7 @@ namespace SFML.Graphics
         /// <param name="width">Width of the render-texture</param>
         /// <param name="height">Height of the render-texture</param>
         ////////////////////////////////////////////////////////////
+        [Obsolete]
         public RenderTexture(uint width, uint height) :
             this(width, height, false)
         {

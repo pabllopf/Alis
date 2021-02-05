@@ -25,5 +25,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
   </ItemGroup>
-
 </Project>
