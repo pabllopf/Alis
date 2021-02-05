@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- _________________________ GENERAL CONFIG ___________________________________-->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Configurations>Windows;MacOS;Linux</Configurations>
+    <RuntimeIdentifiers>win-x64;win10-x64;osx.10.11-x64;osx.10.12-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+  </PropertyGroup>
+
+
+  <!-- _____________________________ WINDOWS_____________________________________ -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>Core.xml</DocumentationFile>
+    <WarningsAsErrors></WarningsAsErrors>
+  </PropertyGroup>
+
+
+  <!-- ______________________________ MACOS _____________________________________ -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -14,6 +14,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Tools\Tools.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{FED1791D-5129-4574-8291-B415B7990C63}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core-SFML", "Core-SFML\Core-SFML.csproj", "{D3454ECE-38CA-47D9-B785-486FE59E5671}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{CEDF24CB-A4DF-4BBD-ACEA-54D1B45017A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Linux|Any CPU = Linux|Any CPU
@@ -45,6 +49,18 @@ Global
 		{FED1791D-5129-4574-8291-B415B7990C63}.MacOS|Any CPU.Build.0 = MacOS|Any CPU
 		{FED1791D-5129-4574-8291-B415B7990C63}.Windows|Any CPU.ActiveCfg = Windows|Any CPU
 		{FED1791D-5129-4574-8291-B415B7990C63}.Windows|Any CPU.Build.0 = Windows|Any CPU
+		{D3454ECE-38CA-47D9-B785-486FE59E5671}.Linux|Any CPU.ActiveCfg = Linux|Any CPU
+		{D3454ECE-38CA-47D9-B785-486FE59E5671}.Linux|Any CPU.Build.0 = Linux|Any CPU
+		{D3454ECE-38CA-47D9-B785-486FE59E5671}.MacOS|Any CPU.ActiveCfg = MacOS|Any CPU
+		{D3454ECE-38CA-47D9-B785-486FE59E5671}.MacOS|Any CPU.Build.0 = MacOS|Any CPU
+		{D3454ECE-38CA-47D9-B785-486FE59E5671}.Windows|Any CPU.ActiveCfg = Windows|Any CPU
+		{D3454ECE-38CA-47D9-B785-486FE59E5671}.Windows|Any CPU.Build.0 = Windows|Any CPU
+		{CEDF24CB-A4DF-4BBD-ACEA-54D1B45017A8}.Linux|Any CPU.ActiveCfg = Linux|Any CPU
+		{CEDF24CB-A4DF-4BBD-ACEA-54D1B45017A8}.Linux|Any CPU.Build.0 = Linux|Any CPU
+		{CEDF24CB-A4DF-4BBD-ACEA-54D1B45017A8}.MacOS|Any CPU.ActiveCfg = MacOS|Any CPU
+		{CEDF24CB-A4DF-4BBD-ACEA-54D1B45017A8}.MacOS|Any CPU.Build.0 = MacOS|Any CPU
+		{CEDF24CB-A4DF-4BBD-ACEA-54D1B45017A8}.Windows|Any CPU.ActiveCfg = Windows|Any CPU
+		{CEDF24CB-A4DF-4BBD-ACEA-54D1B45017A8}.Windows|Any CPU.Build.0 = Windows|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
