@@ -1,4 +1,5 @@
 ﻿using System;
+using Alis.Core;
 using SFML;
 using SFML.Graphics;
 using SFML.Window;
@@ -7,11 +8,23 @@ namespace SFML
 {
     class Program
     {
-        private static RenderWindow _window;
+        //private static RenderWindow _window;
 
-        [Obsolete]
         static void Main(string[] args)
         {
+            new VideoGame(
+                new ConfigGame("prueba"),
+                new Scene("mainmenu",
+                new GameObject("player")
+                )
+                ).Run();
+
+        }
+    
+
+
+
+            /*
             _window = new RenderWindow(new VideoMode(800, 600), "SFML window");
             _window.SetVisible(true);
             _window.Closed += new EventHandler(OnClosed);
@@ -29,6 +42,6 @@ namespace SFML
         private static void OnClosed(object sender, EventArgs e)
         {
             _window.Close();
-        }
+        }*/
     }
 }

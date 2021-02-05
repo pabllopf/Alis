@@ -357,13 +357,14 @@ namespace SFML.Window
         /// event handler
         /// </summary>
         ////////////////////////////////////////////////////////////
-        [Obsolete]
         public void WaitAndDispatchEvents()
         {
             Event e;
             if (WaitEvent(out e))
             {
+#pragma warning disable CS0612 // El tipo o el miembro están obsoletos
                 CallEventHandler(e);
+#pragma warning restore CS0612 // El tipo o el miembro están obsoletos
             }
         }
 
@@ -372,13 +373,14 @@ namespace SFML.Window
         /// Call the event handlers for each pending event
         /// </summary>
         ////////////////////////////////////////////////////////////
-        [Obsolete]
         public void DispatchEvents()
         {
             Event e;
             while (PollEvent(out e))
             {
+#pragma warning disable CS0612 // El tipo o el miembro están obsoletos
                 CallEventHandler(e);
+#pragma warning restore CS0612 // El tipo o el miembro están obsoletos
             }
         }
 

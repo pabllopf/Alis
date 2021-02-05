@@ -30,21 +30,12 @@
 
   <!-- _____________________________ IMPORTS ____________________________________ -->
   <ItemGroup>
-    <PackageReference Include="SFML.Net" Version="2.5.0" />
-    <PackageReference Include="SFML.Window" Version="2.5.0" />
-    <PackageReference Include="SFML.Graphics" Version="2.5.0" />
-    <PackageReference Include="SFML.Audio" Version="2.5.0" />
-    <PackageReference Include="SFML.System" Version="2.5.0" />
-    <PackageReference Include="CSFML" Version="2.5.0" />
-  </ItemGroup>
-  
-  
-  <ItemGroup>
     <ProjectReference Include="..\Tools\Tools.csproj" />
+    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
   </ItemGroup>
   
   <ItemGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
-    <AssetsSourceFiles Include="lib/SFML/macos/**/*.*"/>
+    <AssetsSourceFiles Include="lib/SFML/macos/**/*.*" />
   </ItemGroup>
 
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">

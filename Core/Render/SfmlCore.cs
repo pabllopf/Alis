@@ -63,7 +63,7 @@ namespace Alis.Core
         {
             if (window == null) 
             {
-                window = new RenderWindow(VideoMode.DesktopMode, "Game");
+                window = new RenderWindow(videoMode, "Game");
             }
 
             window.DispatchEvents();
