@@ -8,16 +8,16 @@ namespace SFML.System
 #if Windows
         /// <summary>Gets the audio.</summary>
         /// <value>The audio.</value>
-        public const string audio = "./runtimes/win/x64/csfml-audio";
+        public const string audio = "./Runtimes/win/x64/csfml-audio";
 
         /// <summary>The graphics</summary>
-        public const string graphics = "./runtimes/win/x64/csfml-graphics";
+        public const string graphics = "./Runtimes/win/x64/csfml-graphics";
 
         /// <summary>The system</summary>
-        public const string system = "./runtimes/win/x64/csfml-system";
+        public const string system = "./Runtimes/win/x64/csfml-system";
 
         /// <summary>The window</summary>
-        public const string window = "./runtimes/win/x64/csfml-window";
+        public const string window = "./Runtimes/win/x64/csfml-window";
 #endif
 
 #if Macos
@@ -32,13 +32,13 @@ namespace SFML.System
 #endif
 
 #if Linux
-        public const string audio = "./runtimes/debian/x64/csfml-audio";
+        public const string audio = "./Runtimes/debian/x64/csfml-audio";
 
-        public const string graphics = "./runtimes/debian/x64/csfml-graphics";
+        public const string graphics = "./Runtimes/debian/x64/csfml-graphics";
 
-        public const string system = "./runtimes/debian/x64/csfml-system";
+        public const string system = "./Runtimes/debian/x64/csfml-system";
 
-        public const string window = "./runtimes/debian/x64/csfml-window";
+        public const string window = "./Runtimes/debian/x64/csfml-window";
 
 #endif
     }

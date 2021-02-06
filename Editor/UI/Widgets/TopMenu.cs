@@ -378,7 +378,6 @@ namespace Alis.Editor.UI.Widgets
                 cleanCommand = "dotnet restore";
                 buildCommand = "dotnet build --configuration Linux";
                 runCommand = "./" + Project.Current.Name;
-
                 workDirRun = Project.Current.Directory + "/bin/Linux/netcoreapp3.1";
             }
 
@@ -388,7 +387,6 @@ namespace Alis.Editor.UI.Widgets
                 cleanCommand = "dotnet restore";
                 buildCommand = "dotnet build --configuration MacOS";
                 runCommand = "./" + Project.Current.Name;
-
                 workDirRun = Project.Current.Directory + "/bin/MacOS/netcoreapp3.1";
             }
 
