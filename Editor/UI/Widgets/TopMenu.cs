@@ -5,6 +5,8 @@
 namespace Alis.Editor.UI.Widgets
 {
     using System;
+    using System.IO;
+    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
     using Alis.Core;
@@ -363,16 +365,99 @@ namespace Alis.Editor.UI.Widgets
 
         private void BuildAsync(Info info)
         {
-            BottomMenu.Current.Loading(true, "Building");
-
             string fileName = "cmd.exe";
-            string commandBuild = "dotnet build --configuration Windows";
+            string cleanCommand = "dotnet restore";
+            string buildCommand = "dotnet build --configuration Windows";
+            string runCommand = Project.Current.Name + ".exe";
+            string workDirRun = Project.Current.Directory + "/bin/Windows/netcoreapp3.1";
 
+
+            if (info.Platform.Equals(Platform.Linux)) 
+            {
+                fileName = "/bin/bash";
+                cleanCommand = "dotnet restore";
+                buildCommand = "dotnet build --configuration Linux";
+                runCommand = "./" + Project.Current.Name;
+
+                workDirRun = Project.Current.Directory + "/bin/Linux/netcoreapp3.1";
+            }
+
+            if (info.Platform.Equals(Platform.MacOS))
+            {
+                fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                cleanCommand = "dotnet restore";
+                buildCommand = "dotnet build --configuration MacOS";
+                runCommand = "./" + Project.Current.Name;
+
+                workDirRun = Project.Current.Directory + "/bin/MacOS/netcoreapp3.1";
+            }
+
+            string projectFile = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultPr.txt", Encoding.UTF8);
+            File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".csproj", projectFile, Encoding.UTF8);
+
+            string solutionFile = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", Project.Current.Name);
+            File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".sln", solutionFile, Encoding.UTF8);
+
+            string program = File.ReadAllText(Application.ProjectPath + "/Resources/Program.txt", Encoding.UTF8);
+            File.WriteAllText(Project.Current.Directory + "/" + "Program" + ".cs", program, Encoding.UTF8);
+
+            DirectoryCopy(Application.ProjectPath + "/Runtimes", Project.Current.Directory + "/Runtimes", true);
+
+            File.Copy(Application.ProjectPath + "/Core.dll", Project.Current.LibraryPath + "/" + "Core" + ".dll", true);
+            File.Copy(Application.ProjectPath + "/Tools.dll", Project.Current.LibraryPath + "/" + "Tools" + ".dll", true);
+            File.Copy(Application.ProjectPath + "/Core-SFML.dll", Project.Current.LibraryPath + "/" + "Core-SFML.dll", true);
+
+
+            RunCommand("Cleaning", fileName, cleanCommand, Project.Current.Directory);
+            RunCommand("Building", fileName, buildCommand, Project.Current.Directory);
+            RunCommand("Running", fileName, runCommand, workDirRun);
+        }
+
+        private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
+        {
+            // Get the subdirectories for the specified directory.
+            DirectoryInfo dir = new DirectoryInfo(sourceDirName);
+
+            if (!dir.Exists)
+            {
+                throw new DirectoryNotFoundException(
+                    "Source directory does not exist or could not be found: "
+                    + sourceDirName);
+            }
+
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            // If the destination directory doesn't exist, create it.       
+            Directory.CreateDirectory(destDirName);
+
+            // Get the files in the directory and copy them to the new location.
+            FileInfo[] files = dir.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                string tempPath = Path.Combine(destDirName, file.Name);
+                file.CopyTo(tempPath, true);
+            }
+
+            // If copying subdirectories, copy them and their contents to new location.
+            if (copySubDirs)
+            {
+                foreach (DirectoryInfo subdir in dirs)
+                {
+                    string tempPath = Path.Combine(destDirName, subdir.Name);
+                    DirectoryCopy(subdir.FullName, tempPath, copySubDirs);
+                }
+            }
+        }
+
+
+        private void RunCommand(string message, string fileName, string commandBuild, string WorkingDirectory) 
+        {
+            BottomMenu.Current.Loading(true, message);
 
             System.Diagnostics.Process buildProcess = new System.Diagnostics.Process();
 
             buildProcess.StartInfo.FileName = fileName;
-            buildProcess.StartInfo.WorkingDirectory = Project.Current.Directory;
+            buildProcess.StartInfo.WorkingDirectory = WorkingDirectory;
             buildProcess.StartInfo.CreateNoWindow = false;
             buildProcess.StartInfo.RedirectStandardInput = true;
             buildProcess.StartInfo.RedirectStandardOutput = true;

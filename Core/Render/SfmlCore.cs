@@ -64,6 +64,7 @@ namespace Alis.Core
             if (window == null) 
             {
                 window = new RenderWindow(videoMode, "Game");
+                window.Closed += Window_Closed;
             }
 
             window.DispatchEvents();
@@ -71,6 +72,12 @@ namespace Alis.Core
             window.Clear();
             window.Draw(circle);
             window.Display();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            window.Close();
+            Environment.Exit(1);
         }
 
         /// <summary>Handles the Closed event of the RenderWindow control.</summary>

@@ -29,13 +29,6 @@
 
 
   <!-- _____________________________ IMPORTS ____________________________________ -->
-  <ItemGroup>
-    <PackageReference Include="SFML.Graphics" Version="2.5.0" />
-    <PackageReference Include="SFML.Net" Version="2.5.0" />
-    <PackageReference Include="SFML.System" Version="2.5.0" />
-    <PackageReference Include="SFML.Window" Version="2.5.0" />
-    <PackageReference Include="SFML.Audio" Version="2.5.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="DotNetZip" Version="1.15.0" />
@@ -51,9 +44,15 @@
     <Reference Include="Tools">
       <HintPath>Lib\Tools.dll</HintPath>
     </Reference>
+
+     <Reference Include="Core-SFML">
+      <HintPath>Lib\Core-SFML.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
- 
+  <ItemGroup>
+    <None Update="Runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="Assets/**" CopyToOutputDirectory="PreserveNewest" />

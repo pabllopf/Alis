@@ -78,10 +78,6 @@ namespace Alis.Editor.UI.Widgets
                 filter = new ImGuiTextFilterPtr(filterPtr);
             }
 
-            Log("ejemplo");
-            Error("ejemplo");
-            Warning("ejemplo");
-
             Current = this;
         }
 

@@ -30,6 +30,9 @@ namespace Alis.Editor.UI.Widgets
 
         private bool stateLoading = false;
 
+        private float counter = 1.5f;
+        private string effect = "/";
+
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
         public static BottomMenu Current { get => current; set => current = value; }
@@ -74,6 +77,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 if (ImGui.BeginChild("Child-BottonMenu", new System.Numerics.Vector2(0.0f, 0.0f), true))
                 {
+                    /*
                     if (ImGui.Button(Icon.SHAREALT + " master"))
                     {
                         ImGui.OpenPopup("Branchs");
@@ -127,16 +131,24 @@ namespace Alis.Editor.UI.Widgets
                     if (ImGui.Button(Icon.EXCLAMATIONCIRCLE + " 0"))
                     {
                     }
-
+                    */
                     if (stateLoading) 
                     {
-                        ImGui.SameLine(ImGui.GetWindowSize().X - 130);
+                        
 
-                        ImGui.Text(messageLoading);
+                        counter -= 0.1f;
 
-                        ImGui.SameLine();
+                        if (counter <= 0)
+                        {
+                            counter = 1.5f;
 
-                        if (ImGui.Button(Icon.REFRESH + string.Empty, new System.Numerics.Vector2(30, 0)))
+
+                            effect = effect.Equals("/") ? "-" : effect.Equals("-") ? "\\": "/";
+                        }
+
+                        ImGui.SameLine(ImGui.GetWindowSize().X - ((messageLoading.Length + effect.Length + 4) * 10));
+
+                        if (ImGui.Button(messageLoading + " [" + effect + "]", new System.Numerics.Vector2((messageLoading.Length + effect.Length + 4)  * 10, 0)))
                         {
                         }
                     }
