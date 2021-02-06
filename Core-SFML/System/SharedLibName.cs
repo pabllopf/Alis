@@ -32,13 +32,13 @@ namespace SFML.System
 #endif
 
 #if Linux
-        public const string audio = "./Runtimes/debian/x64/csfml-audio";
+        public const string audio = "./Runtimes/debian/x64/csfml-audio.so";
 
-        public const string graphics = "./Runtimes/debian/x64/csfml-graphics";
+        public const string graphics = "./Runtimes/debian/x64/csfml-graphics.so";
 
-        public const string system = "./Runtimes/debian/x64/csfml-system";
+        public const string system = "./Runtimes/debian/x64/csfml-system.so";
 
-        public const string window = "./Runtimes/debian/x64/csfml-window";
+        public const string window = "./Runtimes/debian/x64/csfml-window.so";
 
 #endif
     }
