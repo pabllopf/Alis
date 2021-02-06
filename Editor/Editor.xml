@@ -371,6 +371,9 @@
         <member name="T:Alis.Editor.UI.Widgets.BottomMenu">
             <summary>Define the menu.</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.BottomMenu.current">
+            <summary>The current</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.BottomMenu.Name">
             <summary>The name</summary>
         </member>
@@ -382,6 +385,10 @@
         </member>
         <member name="F:Alis.Editor.UI.Widgets.BottomMenu.windowFlags">
             <summary>The window flags</summary>
+        </member>
+        <member name="P:Alis.Editor.UI.Widgets.BottomMenu.Current">
+            <summary>Gets or sets the current.</summary>
+            <value>The current.</value>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.BottomMenu.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.BottomMenu" /> class.</summary>
@@ -474,6 +481,11 @@
         <member name="M:Alis.Editor.UI.Widgets.Console.Log(System.String)">
             <summary>Logs the specified message.</summary>
             <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Log(System.String,System.Boolean)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+            <param name="date">if set to <c>true</c> [date].</param>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Console.Print(System.String)">
             <summary>Prints this instance.</summary>

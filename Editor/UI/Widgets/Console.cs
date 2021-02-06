@@ -124,6 +124,21 @@ namespace Alis.Editor.UI.Widgets
             log.Add("Log: " + message + " [" + DateTime.Today + "]");
         }
 
+        /// <summary>Logs the specified message.</summary>
+        /// <param name="message">The message.</param>
+        /// <param name="date">if set to <c>true</c> [date].</param>
+        public void Log(string message, bool date)
+        {
+            if (date)
+            {
+                log.Add("Log: " + message + " [" + DateTime.Today + "]");
+            }
+            else 
+            {
+                log.Add("Log: " + message);
+            }
+        }
+
         /// <summary>Prints this instance.</summary>
         public void Print(string message)
         {

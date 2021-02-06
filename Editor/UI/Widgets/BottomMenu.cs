@@ -11,6 +11,9 @@ namespace Alis.Editor.UI.Widgets
     /// <summary>Define the menu.</summary>
     public class BottomMenu : Widget
     {
+        /// <summary>The current</summary>
+        private static BottomMenu current; 
+
         /// <summary>The name</summary>
         private const string Name = "BottonMenu";
 
@@ -22,6 +25,14 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>The window flags</summary>
         private ImGuiWindowFlags windowFlags;
+
+        private string messageLoading = string.Empty;
+
+        private bool stateLoading = false;
+
+        /// <summary>Gets or sets the current.</summary>
+        /// <value>The current.</value>
+        public static BottomMenu Current { get => current; set => current = value; }
 
         /// <summary>Initializes a new instance of the <see cref="BottomMenu" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
@@ -117,11 +128,20 @@ namespace Alis.Editor.UI.Widgets
                     {
                     }
 
-                    ImGui.SameLine(ImGui.GetWindowSize().X - 30);
-
-                    if (ImGui.Button(Icon.REFRESH + string.Empty, new System.Numerics.Vector2(30, 0)))
+                    if (stateLoading) 
                     {
+                        ImGui.SameLine(ImGui.GetWindowSize().X - 130);
+
+                        ImGui.Text(messageLoading);
+
+                        ImGui.SameLine();
+
+                        if (ImGui.Button(Icon.REFRESH + string.Empty, new System.Numerics.Vector2(30, 0)))
+                        {
+                        }
                     }
+
+                   
 
                     ImGui.EndChild();
                 }
@@ -132,6 +152,13 @@ namespace Alis.Editor.UI.Widgets
             ImGui.PopStyleVar(5);
             ImGui.PopStyleColor(4);
         }
+
+        public void Loading(bool state, string message) 
+        {
+            this.messageLoading = message;
+            this.stateLoading = state;
+        }
+
 
         /// <summary>Opens this instance.</summary>
         public override void Open()

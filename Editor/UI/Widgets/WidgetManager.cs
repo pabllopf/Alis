@@ -37,10 +37,12 @@ namespace Alis.Editor.UI.Widgets
 
             Console.Current = new Console(EventHandler);
             widgets.Add(Console.Current);
+            
             widgets.Add(new ProjectManager(EventHandler, true));
 
-           
-            widgets.Add(new BottomMenu(EventHandler));
+            BottomMenu.Current = new BottomMenu(EventHandler);
+            widgets.Add(BottomMenu.Current);
+
             widgets.Add(new Inspector());
             widgets.Add(new SceneView());
             widgets.Add(new AssetsManager());

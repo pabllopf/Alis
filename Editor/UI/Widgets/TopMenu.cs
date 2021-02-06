@@ -5,11 +5,13 @@
 namespace Alis.Editor.UI.Widgets
 {
     using System;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Alis.Core;
     using Alis.Editor.Utils;
     using Alis.Tools;
     using ImGuiNET;
-    
+
     /// <summary>Menu of editor</summary>
     public class TopMenu : Widget
     {
@@ -21,7 +23,7 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>The process</summary>
         private System.Diagnostics.Process process = new System.Diagnostics.Process();
-        
+
         /// <summary>The start information</summary>
         private System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
 
@@ -52,12 +54,12 @@ namespace Alis.Editor.UI.Widgets
                 startInfo.FileName = "cmd";
             }
 
-            if(info.Platform.Equals(Platform.MacOS))
+            if (info.Platform.Equals(Platform.MacOS))
             {
                 startInfo.FileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
             }
 
-            if(info.Platform.Equals(Platform.Linux))
+            if (info.Platform.Equals(Platform.Linux))
             {
                 startInfo.FileName = "/bin/bash";
                 startInfo.Arguments = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
@@ -77,7 +79,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 if (ImGui.BeginMenu("File"))
                 {
-                    
+
                     if (ImGui.MenuItem(Icon.FILEO + " New Project", "Ctrl+N"))
                     {
                         eventHandler.Invoke(null, EventType.OpenCreateProject);
@@ -292,8 +294,20 @@ namespace Alis.Editor.UI.Widgets
 
         private void BuildAndRun()
         {
-            Console.Current.Log("Building proyect " + Project.Current.Name);
-            System.Diagnostics.Process processto = new System.Diagnostics.Process();
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+
+                BuildAsync(info);
+            }).Start();
+
+
+            
+
+
+
+
+            /*System.Diagnostics.Process processto = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfogod = new System.Diagnostics.ProcessStartInfo();
 
             System.Diagnostics.Process processRun = new System.Diagnostics.Process();
@@ -344,7 +358,50 @@ namespace Alis.Editor.UI.Widgets
                 processRun.StartInfo = startInfoRun;
                 processRun.Start();
                 Console.Current.Log("Running");
+            }*/
+        }
+
+        private void BuildAsync(Info info)
+        {
+            BottomMenu.Current.Loading(true, "Building");
+
+            string fileName = "cmd.exe";
+            string commandBuild = "dotnet build --configuration Windows";
+
+
+            System.Diagnostics.Process buildProcess = new System.Diagnostics.Process();
+
+            buildProcess.StartInfo.FileName = fileName;
+            buildProcess.StartInfo.WorkingDirectory = Project.Current.Directory;
+            buildProcess.StartInfo.CreateNoWindow = false;
+            buildProcess.StartInfo.RedirectStandardInput = true;
+            buildProcess.StartInfo.RedirectStandardOutput = true;
+            buildProcess.StartInfo.UseShellExecute = false;
+            buildProcess.Start();
+            buildProcess.StandardInput.WriteLine(commandBuild);
+            buildProcess.StandardInput.Flush();
+            buildProcess.StandardInput.Close();
+            buildProcess.WaitForExit();
+
+            string[] sentences = buildProcess.StandardOutput.ReadToEnd().Split("\n");
+            for (int i = 0; i < sentences.Length; i++)
+            {
+                if (sentences[i].Contains("warning"))
+                {
+                    Console.Current.Warning(sentences[i]);
+                    continue;
+                }
+
+                if (sentences[i].Contains("error") || sentences[i].Contains("failed") || sentences[i].Contains("exception"))
+                {
+                    Console.Current.Error(sentences[i]);
+                    continue;
+                }
+
+                Console.Current.Log(sentences[i], false);
             }
+
+            BottomMenu.Current.Loading(false, "");
         }
 
         private void AutoSaveProject()
