@@ -87,14 +87,14 @@ namespace Alis.Editor.UI.Widgets
                         eventHandler.Invoke(null, EventType.OpenCreateProject);
                     }
 
-                    if (ImGui.MenuItem(Icon.FOLDEROPEN + " Open Project"))
+                    if (ImGui.MenuItem(Icon.FOLDEROPEN + " Open Project", "Ctrl+O"))
                     {
                         eventHandler.Invoke(null, EventType.OpenProject);
                     }
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.FLOPPYO + " Save", "ALT+S"))
+                    if (ImGui.MenuItem(Icon.FLOPPYO + " Save", "Ctrl+S"))
                     {
                         SaveProject();
                     }
@@ -110,7 +110,7 @@ namespace Alis.Editor.UI.Widgets
                     {
                     }
 
-                    if (ImGui.MenuItem(Icon.PLAYCIRCLEO + " Build and Run", "CTRL+B"))
+                    if (ImGui.MenuItem(Icon.PLAYCIRCLEO + " Build and Run", "Ctrl+B"))
                     {
                         BuildAndRun();
                     }
@@ -127,35 +127,35 @@ namespace Alis.Editor.UI.Widgets
 
                 if (ImGui.BeginMenu("Edit"))
                 {
-                    if (ImGui.MenuItem(Icon.UNDO + " Undo", "CTRL+Z"))
+                    if (ImGui.MenuItem(Icon.UNDO + " Undo -SOON-", false))
                     {
                     }
 
-                    if (ImGui.MenuItem(Icon.REPEAT + " Redo", "CTRL+Y", false, false))
-                    {
-                    }
-
-                    ImGui.Separator();
-
-                    if (ImGui.MenuItem(Icon.SCISSORS + " Cut", "CTRL+X"))
-                    {
-                    }
-
-                    if (ImGui.MenuItem(Icon.FILESO + " Copy", "CTRL+C"))
-                    {
-                    }
-
-                    if (ImGui.MenuItem(Icon.CLIPBOARD + " Paste", "CTRL+V"))
+                    if (ImGui.MenuItem(Icon.REPEAT + " Redo -SOON-", false))
                     {
                     }
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.WRENCH + " Projects Settings"))
+                    if (ImGui.MenuItem(Icon.SCISSORS + " Cut -SOON-", false))
                     {
                     }
 
-                    if (ImGui.MenuItem(Icon.COG + " Preferences"))
+                    if (ImGui.MenuItem(Icon.FILESO + " Copy -SOON-", false))
+                    {
+                    }
+
+                    if (ImGui.MenuItem(Icon.CLIPBOARD + " Paste -SOON-", false))
+                    {
+                    }
+
+                    ImGui.Separator();
+
+                    if (ImGui.MenuItem(Icon.WRENCH + " Projects Settings -SOON- ", false))
+                    {
+                    }
+
+                    if (ImGui.MenuItem(Icon.COG + " Preferences -SOON-", false  ))
                     {
                     }
 
@@ -164,7 +164,7 @@ namespace Alis.Editor.UI.Widgets
 
                 if (ImGui.BeginMenu("Tools"))
                 {
-                    if (ImGui.MenuItem(Icon.TERMINAL + " Terminal", "CTRL+T"))
+                    if (ImGui.MenuItem(Icon.TERMINAL + " Terminal", "Ctrl+T"))
                     {
                         OpenTerminal();
                     }
@@ -249,7 +249,7 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.SUPERPOWERS + " Check for Updates"))
+                    if (ImGui.MenuItem(Icon.SUPERPOWERS + " Check for Updates -SOON- ", false ))
                     {
                     }
 
@@ -280,6 +280,12 @@ namespace Alis.Editor.UI.Widgets
         {
         }
 
+        private bool isOpenNewProject = false;
+
+        private bool isOpenProject = false;
+
+        private bool isBuildAndRun = false;
+
         private void ProcessShortcuts()
         {
             if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(101) && !isSavedPressed)
@@ -291,6 +297,39 @@ namespace Alis.Editor.UI.Widgets
             if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(101) && isSavedPressed)
             {
                 isSavedPressed = false;
+            }
+
+            if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(96) && !isSavedPressed)
+            {
+                eventHandler.Invoke(null, EventType.OpenCreateProject);
+                isOpenNewProject = true;
+            }
+
+            if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(96) && isSavedPressed)
+            {
+                isOpenNewProject = false;
+            }
+
+            if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(97) && !isSavedPressed)
+            {
+                eventHandler.Invoke(null, EventType.OpenProject);
+                isOpenProject = true;
+            }
+
+            if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(97) && isSavedPressed)
+            {
+                isOpenProject = false;
+            }
+
+            if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(84) && !isSavedPressed)
+            {
+                BuildAndRun();
+                isBuildAndRun = true;
+            }
+
+            if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(84) && isSavedPressed)
+            {
+                isBuildAndRun = false;
             }
         }
 
