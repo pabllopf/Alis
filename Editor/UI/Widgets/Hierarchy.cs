@@ -83,22 +83,6 @@ namespace Alis.Editor.UI.Widgets
                         ImGui.PopStyleVar();
                         ImGui.PopStyleColor();
                     }
-
-                  
-
-
-
-                    /*if (ImGui.BeginChild(Icon.SQUARE + Project.VideoGame.Scenes[0].Name, ImGui.GetContentRegionAvail()))
-                    {
-                        foreach (GameObject obj in Project.VideoGame.Scenes[0].GameObjects)
-                        {
-                            if (ImGui.Button(Icon.SQUARE + " " + obj.Name))
-                            {
-                                SelectGameObject(obj);
-                            }
-                        }
-                    }
-                    ImGui.EndChild();*/
                 }
             }
 
@@ -109,9 +93,16 @@ namespace Alis.Editor.UI.Widgets
 
         private void AddNewGameObjectToScene(Scene scene)
         {
+            while (scene.GameObjects.Contains(new GameObject("GameObject " + i + " "))) 
+            {
+                i++;
+            }
+
             scene.Add(new GameObject("GameObject " + i++ + " "));
 
             LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+
+            Inspector.Current.Focus = true;
         }
 
         private void AddNewGameObjectToScene()
@@ -121,6 +112,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void SelectGameObject(GameObject obj)
         {
+            Inspector.Current.Focus = true;
             Inspector.Current.GameObject = obj;
         }
 

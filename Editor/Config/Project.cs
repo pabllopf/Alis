@@ -58,7 +58,7 @@ namespace Alis.Editor
 
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        public static VideoGame VideoGame { get => videoGame; }
+        public static VideoGame VideoGame { get => videoGame; set => videoGame = value; }
 
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>

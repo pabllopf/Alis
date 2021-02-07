@@ -25,20 +25,6 @@
             <param name="path"></param>
             <param name="playOnAwake"></param>
         </member>
-        <member name="M:Alis.Core.AudioSource.#ctor(System.String,System.Boolean)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>
-            <param name="audioFile">The audio file.</param>
-            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
-        </member>
-        <member name="M:Alis.Core.AudioSource.#ctor(System.IO.Stream)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>
-            <param name="audioStream">The audio stream.</param>
-        </member>
-        <member name="M:Alis.Core.AudioSource.#ctor(System.IO.Stream,System.Boolean)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>
-            <param name="audioStream">The audio stream.</param>
-            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
-        </member>
         <member name="E:Alis.Core.AudioSource.OnPlay">
             <summary>Occurs when [change].</summary>
         </member>
@@ -60,6 +46,10 @@
             <summary>Gets or sets the audio file.</summary>
             <value>The audio file.</value>
         </member>
+        <member name="P:Alis.Core.AudioSource.Path">
+            <summary>Gets or sets the path.</summary>
+            <value>The path.</value>
+        </member>
         <member name="M:Alis.Core.AudioSource.Play">
             <summary>Plays this instance.</summary>
         </member>
@@ -77,6 +67,7 @@
         </member>
         <member name="M:Alis.Core.AudioSource.Update">
             <summary>Updates this instance.</summary>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.AudioSource.GetDebuggerDisplay">
             <summary>Gets the debugger display.</summary>

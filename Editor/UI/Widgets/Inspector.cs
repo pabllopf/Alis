@@ -21,8 +21,11 @@ namespace Alis.Editor.UI.Widgets
 
         private GameObject gameObject;
 
+        private bool focus;
+
         public static Inspector Current { get => current; set => current = value; }
         public  GameObject GameObject { get => gameObject; set => gameObject = value; }
+        public bool Focus { get => focus; set => focus = value; }
 
         /// <summary>Initializes a new instance of the <see cref="Inspector" /> class.</summary>
         public Inspector()
@@ -34,9 +37,18 @@ namespace Alis.Editor.UI.Widgets
         {
         }
 
+        
+
+
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
+            if (focus) 
+            {
+                ImGui.SetNextWindowFocus();
+                focus = false;
+            }
+
             if (ImGui.Begin("Inspector"))
             {
                 if (Project.Current != null) 
@@ -75,7 +87,24 @@ namespace Alis.Editor.UI.Widgets
                 {
                     if (ImGui.TreeNodeEx("AudioSource", ImGuiTreeNodeFlags.AllowItemOverlap))
                     {
-                        ImGui.Text("Position");
+                        string nameFile = ((AudioSource)component).AudioFile;
+                        if (ImGui.InputText("File Name", ref nameFile, 256, ImGuiInputTextFlags.EnterReturnsTrue)) 
+                        {
+                            ((AudioSource)component).AudioFile = nameFile;
+                            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+                        }
+
+                        bool state = ((AudioSource)component).PlayOnAwake;
+
+                        if (ImGui.Checkbox("Play On Awake", ref state)) 
+                        {
+                            ((AudioSource)component).PlayOnAwake = state;
+                            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+                        }
+
+
+
+
                         ImGui.TreePop();
                     }
                 }
@@ -121,7 +150,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void AddNewAudiosource()
         {
-            gameObject.Add(new AudioSource("Example.wav", Project.Current.AssetsPath + "/", true));
+            gameObject.Add(new AudioSource("", Project.Current.AssetsPath + "/", true));
             LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
         }
 

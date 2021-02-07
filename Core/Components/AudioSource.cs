@@ -35,47 +35,27 @@ namespace Alis.Core
         public AudioSource(string audioFile, string path, bool playOnAwake)
         {
             this.audioFile = audioFile;
-            
             this.path = path;
-
-            if (!File.Exists(path + audioFile)) 
+            this.playOnAwake = playOnAwake;
+            if (!audioFile.Equals(string.Empty))
             {
-                path = Application.AssetsPath;
+                this.path = path;
+
+                if (!File.Exists(path + audioFile))
+                {
+                    path = Application.AssetsPath;
+                }
+
+                if (File.Exists(path + audioFile)) 
+                {
+                    audio = new Music(path + audioFile);
+                    this.playOnAwake = playOnAwake;
+                }
             }
-
-            Debug.Warning(path);
-
-            audio = new Music(path + audioFile);
-            this.playOnAwake = playOnAwake;
-            Debug.Log("Created a new " + GetType());
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
-        /// <param name="audioFile">The audio file.</param>
-        /// <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
-        public AudioSource(string audioFile, bool playOnAwake)
-        {
-            this.audioFile = audioFile;
-            string path = Application.ProjectPath + "/Resources/" + this.audioFile;
-            audio = new Music(path);
-            this.playOnAwake = playOnAwake;
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
-        /// <param name="audioStream">The audio stream.</param>
-        public AudioSource(Stream audioStream)
-        {
-            audio = new Music(audioStream);
-            playOnAwake = false;
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
-        /// <param name="audioStream">The audio stream.</param>
-        /// <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
-        public AudioSource(Stream audioStream, bool playOnAwake)
-        {
-            audio = new Music(audioStream);
-            this.playOnAwake = playOnAwake;
+            else
+            {
+                Debug.Warning("Audio Name dont exists. ");
+            }
         }
 
         /// <summary>Occurs when [change].</summary>
@@ -101,60 +81,81 @@ namespace Alis.Core
         [JsonProperty]
         public string AudioFile { get => audioFile; set => audioFile = value; }
 
+        /// <summary>Gets or sets the path.</summary>
+        /// <value>The path.</value>
+        [JsonProperty]
+        public string Path { get => path; set => path = value; }
+
         /// <summary>Plays this instance.</summary>
         public void Play()
         {
-            audio.Play();
-            OnPlay.Invoke(null, true);
+            if (audio != null) 
+            {
+                audio.Play();
+                OnPlay.Invoke(null, true);
+            }
         }
 
         /// <summary>Stops this instance.</summary>
         public void Stop() 
         {
-            if (audio.Status == SoundStatus.Playing) 
+            if (audio != null)
             {
-                audio.Stop();
-                OnStop.Invoke(null, true);
+                if (audio.Status == SoundStatus.Playing)
+                {
+                    audio.Stop();
+                    OnStop.Invoke(null, true);
+                }
             }
         }
 
         /// <summary>Pauses this instance.</summary>
         public void Pause()
         {
-            if (audio.Status == SoundStatus.Playing)
+            if (audio != null)
             {
-                audio.Pause();
-                OnPause.Invoke(null, true);
+                if (audio.Status == SoundStatus.Playing)
+                {
+                    audio.Pause();
+                    OnPause.Invoke(null, true);
+                }
             }
         }
 
         /// <summary>Restarts this instance.</summary>
-        public void Restart() 
+        public void Restart()
         {
-            if (audio.Status == SoundStatus.Playing)
+            if (audio != null)
             {
-                audio.Stop();
-            }
+                if (audio.Status == SoundStatus.Playing)
+                {
+                    audio.Stop();
+                }
 
-            if (audio.Status == SoundStatus.Paused)
-            {
-                audio.Stop();
-            }
+                if (audio.Status == SoundStatus.Paused)
+                {
+                    audio.Stop();
+                }
 
-            audio.Play();
-            OnRestart.Invoke(null, true);
+                audio.Play();
+                OnRestart.Invoke(null, true);
+            }
         }
 
         /// <summary>Starts this instance.</summary>
         public void Start()
         {
-            if (playOnAwake) 
+            if (audio != null)
             {
-                audio.Play();
+                if (playOnAwake)
+                {
+                    audio.Play();
+                }
             }
         }
 
         /// <summary>Updates this instance.</summary>
+        /// <exception cref="NotImplementedException"></exception>
         public void Update()
         {
         }
