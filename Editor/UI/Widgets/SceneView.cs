@@ -32,6 +32,7 @@ namespace Alis.Editor.UI.Widgets
         {
             imGuiController = MainWindow.imGuiController;
 
+
             Project.OnChangeProject += Project_OnChangeProject;
         }
 
@@ -54,6 +55,8 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
+            
+
             ImGui.SetNextWindowPos(new System.Numerics.Vector2(650, 20), ImGuiCond.FirstUseEver);
 
             if (ImGui.Begin(Name))

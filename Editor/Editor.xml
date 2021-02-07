@@ -570,6 +570,9 @@
         <member name="T:Alis.Editor.UI.Widgets.GameView">
             <summary>Show the game running</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.current">
+            <summary>The current</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.GameView.Name">
             <summary>The name</summary>
         </member>
@@ -578,6 +581,30 @@
         </member>
         <member name="F:Alis.Editor.UI.Widgets.GameView.eventHandler">
             <summary>The event handler</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.imGuiController">
+            <summary>The im GUI controller</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.isGaming">
+            <summary>The is gaming</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.intPtr">
+            <summary>The int PTR</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.focus">
+            <summary>The focus</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.resolution">
+            <summary>The modes</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.currentResolution">
+            <summary>The current mode</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.selected">
+            <summary>The selected</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.configPopup">
+            <summary>The configuration popup</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.GameView.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.GameView" /> class.</summary>
@@ -591,6 +618,24 @@
         </member>
         <member name="M:Alis.Editor.UI.Widgets.GameView.Draw">
             <summary>Draw this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.Hierarchy">
+            <summary>Manage components of scene.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Hierarchy.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Hierarchy.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Inspector" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Hierarchy.Close">
+            <summary>Closes this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Hierarchy.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Hierarchy.Open">
+            <summary>Opens this instance.</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.Inspector">
             <summary>Manage components of scene.</summary>

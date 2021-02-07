@@ -18,6 +18,9 @@ namespace Alis.Core
         /// <summary>The file</summary>
         private string audioFile;
 
+        /// <summary>The path</summary>
+        private string path;
+
         /// <summary>The audio</summary>
         private Music audio;
 
@@ -26,16 +29,24 @@ namespace Alis.Core
 
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
         /// <param name="audioFile">The audio file.</param>
+        /// <param name="path"></param>
+        /// <param name="playOnAwake"></param>
         [JsonConstructor]
-        public AudioSource(string audioFile)
+        public AudioSource(string audioFile, string path, bool playOnAwake)
         {
             this.audioFile = audioFile;
-            string path = Application.ProjectPath + "/Resources/" + this.audioFile;
+            
+            this.path = path;
+
+            if (!File.Exists(path + audioFile)) 
+            {
+                path = Application.AssetsPath;
+            }
 
             Debug.Warning(path);
 
-            audio = new Music(path);
-            playOnAwake = false;
+            audio = new Music(path + audioFile);
+            this.playOnAwake = playOnAwake;
             Debug.Log("Created a new " + GetType());
         }
 

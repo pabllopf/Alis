@@ -8,7 +8,6 @@ namespace Alis.Editor.UI.Widgets
     using System.IO;
     using System.Text;
     using System.Threading;
-    using System.Threading.Tasks;
     using Alis.Core;
     using Alis.Editor.Utils;
     using Alis.Tools;

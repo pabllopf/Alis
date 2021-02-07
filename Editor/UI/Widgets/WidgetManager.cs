@@ -43,12 +43,16 @@ namespace Alis.Editor.UI.Widgets
             BottomMenu.Current = new BottomMenu(EventHandler);
             widgets.Add(BottomMenu.Current);
 
-            widgets.Add(new Inspector());
+            Inspector.Current = new Inspector();
+            widgets.Add(Inspector.Current);
             widgets.Add(new SceneView());
             widgets.Add(new AssetsManager());
 
-            
-            widgets.Add(new GameView(EventHandler));
+            GameView.Current = new GameView(EventHandler);
+            widgets.Add(GameView.Current);
+
+            Hierarchy.Current = new Hierarchy();
+            widgets.Add(Hierarchy.Current);
         }
 
         /// <summary>Occurs when [event handler].</summary>
@@ -74,7 +78,8 @@ namespace Alis.Editor.UI.Widgets
         {
             if (!obj.widgets.Exists(i => i.GetType() == typeof(Console)))
             {
-                obj.widgets.Add(new Console(obj.EventHandler));
+                Console.Current = new Console(obj.EventHandler);
+                obj.widgets.Add(Console.Current);
                 System.Console.WriteLine("Process Open Console");
             }
         }

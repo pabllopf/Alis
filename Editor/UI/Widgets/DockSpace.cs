@@ -146,7 +146,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.SameLine((ImGui.GetWindowSize().X / 2) - 50);
 
                 ImGui.PushStyleColor(ImGuiCol.Button, (button[6] == 1) ? buttonPressed : buttonDefault);
-                if (ImGui.Button(Icon.PLAY, new System.Numerics.Vector2(30, 0)))
+                if (ImGui.Button(Icon.PLAY, new Vector2(30, 0)))
                 {
                     ClickButton(6);
                 }
@@ -175,8 +175,24 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>Clicks the button.</summary>
         /// <param name="v">The v.</param>
-        private static void ClickButton(int v)
+        private void ClickButton(int index)
         {
+            button[index] = button[index] == 1 ? 0 : 1;
+            
+            if (index == 6 && GameView.Current != null)
+            {
+                if (!GameView.Current.IsGaming && button[index] == 1)
+                {
+                    GameView.Current.IsGaming = true;
+                    GameView.Current.Focus = true;
+                    BottomMenu.Current.Loading(true, "Running Preview");
+                }
+                else 
+                {
+                    BottomMenu.Current.Loading(false, "");
+                    GameView.Current.IsGaming = false;
+                }
+            }
         }
     }
 }

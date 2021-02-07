@@ -10,15 +10,20 @@
         <member name="F:Alis.Core.AudioSource.audioFile">
             <summary>The file</summary>
         </member>
+        <member name="F:Alis.Core.AudioSource.path">
+            <summary>The path</summary>
+        </member>
         <member name="F:Alis.Core.AudioSource.audio">
             <summary>The audio</summary>
         </member>
         <member name="F:Alis.Core.AudioSource.playOnAwake">
             <summary>The play on awake</summary>
         </member>
-        <member name="M:Alis.Core.AudioSource.#ctor(System.String)">
+        <member name="M:Alis.Core.AudioSource.#ctor(System.String,System.String,System.Boolean)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>
             <param name="audioFile">The audio file.</param>
+            <param name="path"></param>
+            <param name="playOnAwake"></param>
         </member>
         <member name="M:Alis.Core.AudioSource.#ctor(System.String,System.Boolean)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>

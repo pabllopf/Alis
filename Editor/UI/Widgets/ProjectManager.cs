@@ -334,7 +334,7 @@ namespace Alis.Editor.UI.Widgets
                     File.Copy(Application.ProjectPath + "/Resources/Core.dll", libPath + "/" + "Core" + ".dll");
                     File.Copy(Application.ProjectPath + "/Resources/Tools.dll", libPath + "/" + "Tools" + ".dll");
 
-                    VideoGame game = new VideoGame(new ConfigGame(name));
+                    VideoGame game = new VideoGame(new ConfigGame(name), new Scene("Default"));
                     LocalData.Save<VideoGame>("Data", dataPath, game);
 
                     Project.ChangeProject(project, game);
