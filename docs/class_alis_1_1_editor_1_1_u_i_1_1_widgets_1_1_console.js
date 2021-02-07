@@ -7,6 +7,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console =
     [ "Warning", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a5d88f946aa81621b0a8d1ffd832ab220", null ],
     [ "Error", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a405b35721a9563a38563c877e87a0bb3", null ],
     [ "Log", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a8321283a919029aa62f9c9aa8099889b", null ],
+    [ "Log", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a46e20be0c039ddd9c483984a07c9c33d", null ],
     [ "Print", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a01677bf318218d2481c160f3601517f0", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#acc7f1314638fd32510b9e6296289ec81", null ],
     [ "Current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a23b61cae063e6a20e0c3236fafc513e6", null ],

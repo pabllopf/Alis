@@ -4,6 +4,7 @@ var class_alis_1_1_core_1_1_sfml_core =
     [ "FramePixels", "class_alis_1_1_core_1_1_sfml_core.html#a18010b399daa8631a5ee1a841c98a98c", null ],
     [ "Draw", "class_alis_1_1_core_1_1_sfml_core.html#a6ccf29575a3f1016b6e6f5df6297e4ca", null ],
     [ "Display", "class_alis_1_1_core_1_1_sfml_core.html#ad382eea2704c1adee0e6ffbc65ad9ec6", null ],
+    [ "Window_Closed", "class_alis_1_1_core_1_1_sfml_core.html#aa8798fe1ca7df0d6809425a15c3b38d3", null ],
     [ "RenderWindow_Closed", "class_alis_1_1_core_1_1_sfml_core.html#a0bab8d75080f68b3e56fbd3a3907cf7f", null ],
     [ "window", "class_alis_1_1_core_1_1_sfml_core.html#a0e1fc840b0dc86045ec8dad5040a9b00", null ],
     [ "videoMode", "class_alis_1_1_core_1_1_sfml_core.html#a89ea6d6a6f8fef18e797240aff812858", null ],

@@ -6,6 +6,9 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7a2b7defa707c89fad8bc170a2158f21", null ],
     [ "ProcessShortcuts", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#acea4099e14843a7cc57fb831fc2a192e", null ],
     [ "BuildAndRun", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a00e4bd8e97753fdc5d92c61446e9e980", null ],
+    [ "BuildAsync", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a99972a6cec6d7a6de5845545c7dc210c", null ],
+    [ "DirectoryCopy", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a97198bf2fa62b1a209d0dab23fa69cf3", null ],
+    [ "RunCommand", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aedc308b6bc424f35a2ccd7d8d5faa634", null ],
     [ "AutoSaveProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8a7751410949da5d7da865ca5b809477", null ],
     [ "SaveProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a2c178482a82b82e7e89d231f60fef0b8", null ],
     [ "OpenTerminal", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a5dea8e516b12c82e30416a224f09d265", null ],
@@ -19,5 +22,8 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "exitState", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a9bb56323b5924feb6313689ab0a34af6", null ],
     [ "isSavedPressed", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ac70d8a2d0eda57d65c7bb92b7956b73c", null ],
     [ "autoSaveSelected", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a68d29d377de5e5f30e69569af5edc882", null ],
-    [ "info", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a646ffa79860203349d72f0ceb728ce02", null ]
+    [ "info", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a646ffa79860203349d72f0ceb728ce02", null ],
+    [ "isOpenNewProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a1d2c48c3c9072feba25d5ed42f8fbc21", null ],
+    [ "isOpenProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aa3cce385598b698280b837e34e79657b", null ],
+    [ "isBuildAndRun", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a42437ad9e4beb2e0b90a869d9a35949f", null ]
 ];
