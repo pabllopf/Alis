@@ -348,6 +348,9 @@
         <member name="F:Alis.Editor.UI.Widgets.AssetsManager.assetPath">
             <summary>The path example</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.currentDirRight">
+            <summary>The current dir</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.AssetsManager.pathFolders">
             <summary>The path folders</summary>
         </member>
