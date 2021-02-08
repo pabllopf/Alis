@@ -42,6 +42,7 @@ var hierarchy =
       [ "Alis.Editor.UI.Widgets.Console", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html", null ],
       [ "Alis.Editor.UI.Widgets.DockSpace", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html", null ],
       [ "Alis.Editor.UI.Widgets.GameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html", null ],
+      [ "Alis.Editor.UI.Widgets.Hierarchy", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html", null ],
       [ "Alis.Editor.UI.Widgets.Inspector", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html", null ],
       [ "Alis.Editor.UI.Widgets.ProjectManager", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html", null ],
       [ "Alis.Editor.UI.Widgets.SceneView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html", null ],

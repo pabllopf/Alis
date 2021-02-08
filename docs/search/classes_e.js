@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['videogame_1063',['VideoGame',['../class_alis_1_1_core_1_1_video_game.html',1,'Alis::Core']]]
+  ['updater_1079',['Updater',['../class_tools_1_1_updater.html',1,'Tools.Updater'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_updater.html',1,'Alis.Editor.UI.Widgets.Updater']]]
 ];

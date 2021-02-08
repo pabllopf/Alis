@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['scene_1055',['Scene',['../class_alis_1_1_core_1_1_scene.html',1,'Alis::Core']]],
-  ['scenemanager_1056',['SceneManager',['../class_alis_1_1_core_1_1_scene_manager.html',1,'Alis::Core']]],
-  ['sceneview_1057',['SceneView',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html',1,'Alis::Editor::UI::Widgets']]],
-  ['sfmlcore_1058',['SfmlCore',['../class_alis_1_1_core_1_1_sfml_core.html',1,'Alis::Core']]],
-  ['sprite_1059',['Sprite',['../class_alis_1_1_core_1_1_sprite.html',1,'Alis::Core']]]
+  ['render_1070',['Render',['../class_alis_1_1_core_1_1_render.html',1,'Alis::Core']]],
+  ['resourcesetinfo_1071',['ResourceSetInfo',['../struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html',1,'ImGuiNET::ImGuiController']]]
 ];

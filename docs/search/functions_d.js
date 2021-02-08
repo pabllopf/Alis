@@ -1,17 +1,14 @@
 var searchData=
 [
-  ['save_3c_20t_20_3e_1166',['Save&lt; T &gt;',['../class_alis_1_1_tools_1_1_local_data.html#a24edf0f777dae3ab9a258b459510ccb8',1,'Alis.Tools.LocalData.Save&lt; T &gt;(string name, T data)'],['../class_alis_1_1_tools_1_1_local_data.html#a277ed46663aced1043ea2552ae714db3',1,'Alis.Tools.LocalData.Save&lt; T &gt;(string name, string directory, T data)']]],
-  ['saveproject_1167',['SaveProject',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a2c178482a82b82e7e89d231f60fef0b8',1,'Alis::Editor::UI::Widgets::TopMenu']]],
-  ['scene_1168',['Scene',['../class_alis_1_1_core_1_1_scene.html#a07c8fdf10e17c15209059624db9d9985',1,'Alis.Core.Scene.Scene(string name)'],['../class_alis_1_1_core_1_1_scene.html#a8392a58cef058cec165cc9f1d3a39cb0',1,'Alis.Core.Scene.Scene(string name, params GameObject[] gameObject)']]],
-  ['sceneview_1169',['SceneView',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a337c86da53c2dad3d3d4cc9aa4c2a9e8',1,'Alis::Editor::UI::Widgets::SceneView']]],
-  ['set_1170',['Set',['../class_alis_1_1_tools_1_1_crypted.html#a8672038f7d3ac2a41240140c4b21a815',1,'Alis::Tools::Crypted']]],
-  ['setkeymappings_1171',['SetKeyMappings',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#ad0822a166d32dcfcc84d6dad00186bf3',1,'ImGuiNET::ImGuiController']]],
-  ['setperframeimguidata_1172',['SetPerFrameImGuiData',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#ac70cbce2c2fee1064b5661a8f9bec9de',1,'ImGuiNET::ImGuiController']]],
-  ['sfmlcore_1173',['SfmlCore',['../class_alis_1_1_core_1_1_sfml_core.html#a760da0467163b5e79b4fbc908fbaa2b1',1,'Alis::Core::SfmlCore']]],
-  ['showaboutpopup_1174',['ShowAboutPopup',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a1e8fe286f3bac3bc2132f71fbd0a01e5',1,'Alis::Editor::UI::Widgets::TopMenu']]],
-  ['showexitpopup_1175',['ShowExitPopup',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a82ac8c0d3647fcef762e1a9f0fe6bf19',1,'Alis::Editor::UI::Widgets::TopMenu']]],
-  ['showpreviewmessage_1176',['ShowPreviewMessage',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad529febf4e856987c253b2410d7aa81a',1,'Alis::Editor::UI::MainWindow']]],
-  ['start_1177',['Start',['../class_alis_1_1_core_1_1_audio_source.html#a19e1599dd5e3c67a87b62607dc3b0b67',1,'Alis.Core.AudioSource.Start()'],['../interface_alis_1_1_core_1_1_i_component.html#a07ee9489799085300936acd90dc7cd59',1,'Alis.Core.IComponent.Start()'],['../class_alis_1_1_core_1_1_sprite.html#aa94955fceee6969e489ce3236ca7ec89',1,'Alis.Core.Sprite.Start()'],['../class_alis_1_1_core_1_1_transform.html#ab2d13135db4107822d9e6cdb62c5df54',1,'Alis.Core.Transform.Start()'],['../class_alis_1_1_core_1_1_game_object.html#a082f7df608dda8a8e86ae89e9316077d',1,'Alis.Core.GameObject.Start()'],['../class_alis_1_1_core_1_1_render.html#ad606fe8b250b7b03e42cc0dcf7db34ad',1,'Alis.Core.Render.Start()'],['../class_alis_1_1_core_1_1_scene.html#af7ef00a5745acf6c9d904f93fecaa0de',1,'Alis.Core.Scene.Start()'],['../class_alis_1_1_core_1_1_video_game.html#a5598b4cb035677c29520ee60399de727',1,'Alis.Core.VideoGame.Start()'],['../class_alis_1_1_editor_1_1_engine.html#ae9712fa015c59776596087a0775f38c2',1,'Alis.Editor.Engine.Start()'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a30c026bbf93f957307260dbbfb6d3d1f',1,'Alis.Editor.UI.MainWindow.Start()']]],
-  ['startstylepoppup_1178',['StartStylePopPup',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#a0417f4f4c38a962a41896513a8486abd',1,'Alis::Editor::UI::Widgets::BottomMenu']]],
-  ['stop_1179',['Stop',['../class_alis_1_1_core_1_1_audio_source.html#aacfc95db7ee9367dff5b4609087d7b59',1,'Alis::Core::AudioSource']]]
+  ['recreatefontdevicetexture_1177',['RecreateFontDeviceTexture',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#aabe80519519580e1bdee0d11d01cd506',1,'ImGuiNET::ImGuiController']]],
+  ['remove_1178',['Remove',['../class_alis_1_1_core_1_1_scene.html#a3b839d8c22909863f865ff33b46070ac',1,'Alis.Core.Scene.Remove()'],['../class_alis_1_1_core_1_1_video_game.html#a2c4e87ca391fc299daec4c00d40b58da',1,'Alis.Core.VideoGame.Remove()']]],
+  ['render_1179',['Render',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a4807307e17c1da984c79279e5b8d1194',1,'ImGuiNET::ImGuiController']]],
+  ['rendergame_1180',['RenderGame',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a4f817e82a6d09ef25e22d09e5885b8dc',1,'Alis::Editor::UI::Widgets::GameView']]],
+  ['renderimdrawdata_1181',['RenderImDrawData',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a63e4e820cc59c3982d731921a1304aa8',1,'ImGuiNET::ImGuiController']]],
+  ['renderwindow_5fclosed_1182',['RenderWindow_Closed',['../class_alis_1_1_core_1_1_sfml_core.html#a0bab8d75080f68b3e56fbd3a3907cf7f',1,'Alis::Core::SfmlCore']]],
+  ['replacechars_1183',['ReplaceChars',['../class_im_gui_n_e_t_1_1_memory_editor.html#a45651e61607d7bde3b58a22b77c70da4',1,'ImGuiNET::MemoryEditor']]],
+  ['resourcesetinfo_1184',['ResourceSetInfo',['../struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html#a2c9b3c38a72240257bfc794e23951fe0',1,'ImGuiNET::ImGuiController::ResourceSetInfo']]],
+  ['restart_1185',['Restart',['../class_alis_1_1_core_1_1_audio_source.html#aed972b67a03b94849ef1b1c909b2edd9',1,'Alis::Core::AudioSource']]],
+  ['run_1186',['Run',['../class_alis_1_1_core_1_1_video_game.html#a6df7ec503ca4acdb8a4de3a7f5dd877a',1,'Alis::Core::VideoGame']]],
+  ['runcommand_1187',['RunCommand',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aedc308b6bc424f35a2ccd7d8d5faa634',1,'Alis::Editor::UI::Widgets::TopMenu']]]
 ];
