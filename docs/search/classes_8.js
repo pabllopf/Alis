@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['mainwindow_1048',['MainWindow',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html',1,'Alis::Editor::UI']]],
-  ['memoryeditor_1049',['MemoryEditor',['../class_im_gui_n_e_t_1_1_memory_editor.html',1,'ImGuiNET']]]
+  ['language_1063',['Language',['../class_alis_1_1_tools_1_1_language.html',1,'Alis::Tools']]],
+  ['localdata_1064',['LocalData',['../class_alis_1_1_tools_1_1_local_data.html',1,'Alis::Tools']]]
 ];

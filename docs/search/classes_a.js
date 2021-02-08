@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['render_1053',['Render',['../class_alis_1_1_core_1_1_render.html',1,'Alis::Core']]],
-  ['resourcesetinfo_1054',['ResourceSetInfo',['../struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html',1,'ImGuiNET::ImGuiController']]]
+  ['program_1067',['Program',['../class_alis_1_1_editor_1_1_program.html',1,'Alis::Editor']]],
+  ['project_1068',['Project',['../class_alis_1_1_editor_1_1_project.html',1,'Alis::Editor']]],
+  ['projectmanager_1069',['ProjectManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html',1,'Alis::Editor::UI::Widgets']]]
 ];

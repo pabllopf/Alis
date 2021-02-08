@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['load_3c_20t_20_3e_1127',['Load&lt; T &gt;',['../class_alis_1_1_tools_1_1_local_data.html#a2195baefa277aa8f7073fa1ccf65bc1b',1,'Alis.Tools.LocalData.Load&lt; T &gt;(string name)'],['../class_alis_1_1_tools_1_1_local_data.html#a7960e16970a6e1c906269943f11242b5',1,'Alis.Tools.LocalData.Load&lt; T &gt;(string name, string directory)']]],
-  ['loadembeddedshadercode_1128',['LoadEmbeddedShaderCode',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a9bfa83904ed239be7138366e9457601c',1,'ImGuiNET::ImGuiController']]],
-  ['loading_1129',['Loading',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#afafafadda154745478089fa27cd22c68',1,'Alis::Editor::UI::Widgets::BottomMenu']]],
-  ['loadstyle_1130',['LoadStyle',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8cc1fb41c39355559a7611b60442c31b',1,'Alis::Editor::UI::MainWindow']]],
-  ['log_1131',['Log',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a8321283a919029aa62f9c9aa8099889b',1,'Alis.Editor.UI.Widgets.Console.Log(string message)'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a46e20be0c039ddd9c483984a07c9c33d',1,'Alis.Editor.UI.Widgets.Console.Log(string message, bool date)'],['../class_alis_1_1_core_1_1_debug.html#ad990f6ff994240e5054dd6f6ae0fb2fd',1,'Alis.Core.Debug.Log()']]]
+  ['imguicontroller_1142',['ImGuiController',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a986a34ca0e387cbead184e1b78fed369',1,'ImGuiNET::ImGuiController']]],
+  ['imguilistclipper2_1143',['ImGuiListClipper2',['../class_im_gui_n_e_t_1_1_im_gui_list_clipper2.html#a10ecad43a46fd907cf7dfb658bdc3e78',1,'ImGuiNET::ImGuiListClipper2']]],
+  ['info_1144',['Info',['../class_alis_1_1_editor_1_1_info.html#aa4f0ef2b60becff79372dcb3fcef278f',1,'Alis::Editor::Info']]],
+  ['input_5fonpresskeyonce_1145',['Input_OnPressKeyOnce',['../class_alis_1_1_core_1_1_video_game.html#a8ee252d710e2305ae2cfcf14524413bb',1,'Alis::Core::VideoGame']]],
+  ['inspector_1146',['Inspector',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aff5a5891ae05f7179fc64b2aae47ac11',1,'Alis::Editor::UI::Widgets::Inspector']]],
+  ['isprimitive_1147',['IsPrimitive',['../class_alis_1_1_tools_1_1_local_data.html#a03af504f46878fdb505e1e0bddc05bb3',1,'Alis::Tools::LocalData']]]
 ];
