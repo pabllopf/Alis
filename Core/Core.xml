@@ -19,11 +19,12 @@
         <member name="F:Alis.Core.AudioSource.playOnAwake">
             <summary>The play on awake</summary>
         </member>
-        <member name="M:Alis.Core.AudioSource.#ctor(System.String,System.String,System.Boolean)">
+        <member name="M:Alis.Core.AudioSource.#ctor(System.String,System.String,System.Boolean,System.Single)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>
             <param name="audioFile">The audio file.</param>
             <param name="path"></param>
             <param name="playOnAwake"></param>
+            <param name="volume"></param>
         </member>
         <member name="E:Alis.Core.AudioSource.OnPlay">
             <summary>Occurs when [change].</summary>
@@ -49,6 +50,10 @@
         <member name="P:Alis.Core.AudioSource.Path">
             <summary>Gets or sets the path.</summary>
             <value>The path.</value>
+        </member>
+        <member name="P:Alis.Core.AudioSource.Volume">
+            <summary>Gets or sets the volume.</summary>
+            <value>The volume.</value>
         </member>
         <member name="M:Alis.Core.AudioSource.Play">
             <summary>Plays this instance.</summary>

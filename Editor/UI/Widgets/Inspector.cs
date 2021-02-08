@@ -74,51 +74,104 @@ namespace Alis.Editor.UI.Widgets
 
             foreach (IComponent component in gameObject.Components)
             {
-                if (component.GetType().Equals(typeof(Transform)))
+                if (ImGui.TreeNodeEx(component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
                 {
-                    if (ImGui.TreeNodeEx("Transform", ImGuiTreeNodeFlags.AllowItemOverlap))
+                    foreach (var propertyInfo in component.GetType().GetProperties())
                     {
-                        ImGui.Text("Position");
-                        ImGui.TreePop();
-                    }
-                }
-
-                if (component.GetType().Equals(typeof(AudioSource)))
-                {
-                    if (ImGui.TreeNodeEx("AudioSource", ImGuiTreeNodeFlags.AllowItemOverlap))
-                    {
-                        string nameFile = ((AudioSource)component).AudioFile;
-                        if (ImGui.InputText("File Name", ref nameFile, 256, ImGuiInputTextFlags.EnterReturnsTrue)) 
+                        if (propertyInfo.PropertyType.Equals(typeof(string)))
                         {
-                            ((AudioSource)component).AudioFile = nameFile;
-                            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+                            string content = (string)propertyInfo.GetValue(component) ?? "";
+
+                            if (ImGui.InputText(propertyInfo.Name, ref content, 256, ImGuiInputTextFlags.EnterReturnsTrue))
+                            {
+                                propertyInfo.SetValue(component, content);
+                            }
                         }
 
-                        bool state = ((AudioSource)component).PlayOnAwake;
-
-                        if (ImGui.Checkbox("Play On Awake", ref state)) 
+                        if (propertyInfo.PropertyType.Equals(typeof(int)))
                         {
-                            ((AudioSource)component).PlayOnAwake = state;
-                            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+                            int content = (int)propertyInfo.GetValue(component);
+                            if (ImGui.InputInt(propertyInfo.Name, ref content, 1))
+                            {
+                                propertyInfo.SetValue(component, content);
+                            }
+                        }
+
+                        if (propertyInfo.PropertyType.Equals(typeof(float)))
+                        {
+                            float content = (float)propertyInfo.GetValue(component);
+                            if (ImGui.InputFloat(propertyInfo.Name, ref content, 0.1f))
+                            {
+                                propertyInfo.SetValue(component, content);
+                            }
+                        }
+
+                        if (propertyInfo.PropertyType.Equals(typeof(bool)))
+                        {
+                            bool content = (bool)propertyInfo.GetValue(component);
+                            if (ImGui.Checkbox(propertyInfo.Name, ref content))
+                            {
+                                propertyInfo.SetValue(component, content);
+                            }
                         }
 
 
+                        if (propertyInfo.PropertyType.Equals(typeof(Vector2)))
+                        {
+                            Vector2 content = (Vector2)propertyInfo.GetValue(component);
+                            if (ImGui.SliderFloat("X", ref content.X, - float.MaxValue, float.MaxValue)) 
+                            {
+                                propertyInfo.SetValue(component, content);
+                            }
+
+                            ImGui.NextColumn();
+
+                            if (ImGui.SliderFloat("Y", ref content.Y, -float.MaxValue, float.MaxValue))
+                            {
+                                propertyInfo.SetValue(component, content);
+                            }
+                        }
+
+                        if (propertyInfo.PropertyType.Equals(typeof(Vector3)))
+                        {
+                            ImGui.Text(propertyInfo.Name);
+                            ImGui.Columns(3, propertyInfo.Name, true);
+                            Vector3 content = (Vector3)propertyInfo.GetValue(component);
+                            float x = content.X;
+
+                            if (ImGui.InputFloat("X" + "## " + propertyInfo.Name, ref x))
+                            {
+                                content.X = x;
+                                propertyInfo.SetValue(component, content);
+                            }
+
+                            ImGui.NextColumn();
+
+                            float y = content.Y;
+                            if (ImGui.InputFloat("Y" + "## " + propertyInfo.Name, ref y))
+                            {
+                                content.Y = y;
+                                propertyInfo.SetValue(component, content);
+                            }
+
+                            ImGui.NextColumn();
+
+                            float z = content.Z;
+                            if (ImGui.InputFloat("Z" + "## " + propertyInfo.Name, ref z))
+                            {
+                                content.Z = z;
+                                propertyInfo.SetValue(component, content);
+                            }
+                            ImGui.Columns(1);
+                        }
 
 
-                        ImGui.TreePop();
                     }
-                }
 
-                if (component.GetType().Equals(typeof(Sprite)))
-                {
-                    if (ImGui.TreeNodeEx("Sprite", ImGuiTreeNodeFlags.AllowItemOverlap))
-                    {
-                        ImGui.Text("Position");
-                        ImGui.TreePop();
-                    }
+                    ImGui.TreePop();
                 }
             }
-            
+              
            // ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
             if (ImGui.Button(Icon.PLUSSQUARE + " Add Component"))
             {
@@ -150,7 +203,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void AddNewAudiosource()
         {
-            gameObject.Add(new AudioSource("", Project.Current.AssetsPath + "/", true));
+            gameObject.Add(new AudioSource("", Project.Current.AssetsPath + "/", true, 1));
             LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
         }
 

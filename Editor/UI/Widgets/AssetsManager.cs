@@ -216,19 +216,13 @@ namespace Alis.Editor.UI.Widgets
                 }
             }
 
-            Console.Current.Warning("Move to:" + result);
-
             currentDirRight = result;
         }
 
         private List<string> GetNameDir(string currentDirRight) 
         {
             string pathrelative = Path.GetRelativePath(Project.Current.AssetsPath, currentDirRight).Replace("\\", "/").Replace(".", "");
-            Console.Current.Warning(pathrelative);
-
             string[] path = pathrelative.Split("/");
-
-
 
             List<string> list = new List<string>();
             list.Add("Assets");
@@ -241,8 +235,7 @@ namespace Alis.Editor.UI.Widgets
                 }
                 
             }
-            
-            
+
             return list;
         }
 

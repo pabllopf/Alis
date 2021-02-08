@@ -12,13 +12,13 @@ namespace SFML
 
         static void Main(string[] args)
         {
-            new VideoGame(
-                new ConfigGame("prueba"),
-                new Scene("mainmenu",
-                new GameObject("player")
-                )
-                ).Run();
+            var info = typeof(AudioSource).GetProperties();
 
+            foreach (var propertyInfo in info) 
+            {
+                Console.WriteLine("Name: " + propertyInfo.Name + " type: " + propertyInfo.PropertyType);
+            }
+           
         }
     
 

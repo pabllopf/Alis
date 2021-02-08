@@ -18,6 +18,8 @@ namespace Alis.Core
         /// <summary>The file</summary>
         private string audioFile;
 
+        private float volume;
+
         /// <summary>The path</summary>
         private string path;
 
@@ -31,12 +33,14 @@ namespace Alis.Core
         /// <param name="audioFile">The audio file.</param>
         /// <param name="path"></param>
         /// <param name="playOnAwake"></param>
+        /// <param name="volume"></param>
         [JsonConstructor]
-        public AudioSource(string audioFile, string path, bool playOnAwake)
+        public AudioSource(string audioFile, string path, bool playOnAwake, float volume)
         {
             this.audioFile = audioFile;
             this.path = path;
             this.playOnAwake = playOnAwake;
+            this.volume = volume;
             if (!audioFile.Equals(string.Empty))
             {
                 this.path = path;
@@ -85,6 +89,11 @@ namespace Alis.Core
         /// <value>The path.</value>
         [JsonProperty]
         public string Path { get => path; set => path = value; }
+
+        /// <summary>Gets or sets the volume.</summary>
+        /// <value>The volume.</value>
+        [JsonProperty]
+        public float Volume { get => volume; set => volume = value; }
 
         /// <summary>Plays this instance.</summary>
         public void Play()
