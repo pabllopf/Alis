@@ -83,7 +83,7 @@ namespace Alis.Editor.UI.Widgets
         {
             imGuiController = MainWindow.imGuiController;
 
-            image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
+            image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
             imageSharpTexture = new ImageSharpTexture(image, true);
             texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
 
@@ -188,21 +188,21 @@ namespace Alis.Editor.UI.Widgets
             {
                 if (currentResolution.Equals("1:1"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
+                    image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
                     float size = (ImGui.GetContentRegionAvail().X <= ImGui.GetContentRegionAvail().Y) ? ImGui.GetContentRegionAvail().X : ImGui.GetContentRegionAvail().Y;
                     ImGui.Image(intPtr, new Vector2(size));
                 }
 
                 if (currentResolution.Equals("4:3"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 384);
+                    image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 384);
                     float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
                     ImGui.Image(intPtr, new Vector2(size / 0.75f, size));
                 }
 
                 if (currentResolution.Equals("16:9"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 288);
+                    image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 288);
                     float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
                     ImGui.Image(intPtr, new Vector2(size / 0.5625f, size));
                 }

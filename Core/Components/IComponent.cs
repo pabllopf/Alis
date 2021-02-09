@@ -13,7 +13,15 @@ namespace Alis.Core
         /// <summary>Starts this instance.</summary>
         void Start();
 
+        /// <summary>Starts the specified transform.</summary>
+        /// <param name="transform">The transform.</param>
+        void Start(ref Transform transform);
+
         /// <summary>Updates this instance.</summary>
         void Update();
+
+        /// <summary>Updates the specified transform.</summary>
+        /// <param name="transform">The transform.</param>
+        void Update(ref Transform transform);
     }
 }

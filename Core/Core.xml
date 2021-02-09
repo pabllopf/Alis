@@ -70,9 +70,15 @@
         <member name="M:Alis.Core.AudioSource.Start">
             <summary>Starts this instance.</summary>
         </member>
+        <member name="M:Alis.Core.AudioSource.Start(Alis.Core.Transform@)">
+            <summary>Starts this instance.</summary>
+        </member>
         <member name="M:Alis.Core.AudioSource.Update">
             <summary>Updates this instance.</summary>
-            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Core.AudioSource.Update(Alis.Core.Transform@)">
+            <summary>Updates the specified transform.</summary>
+            <param name="transform">The transform.</param>
         </member>
         <member name="M:Alis.Core.AudioSource.GetDebuggerDisplay">
             <summary>Gets the debugger display.</summary>
@@ -84,21 +90,67 @@
         <member name="M:Alis.Core.IComponent.Start">
             <summary>Starts this instance.</summary>
         </member>
+        <member name="M:Alis.Core.IComponent.Start(Alis.Core.Transform@)">
+            <summary>Starts the specified transform.</summary>
+            <param name="transform">The transform.</param>
+        </member>
         <member name="M:Alis.Core.IComponent.Update">
             <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.IComponent.Update(Alis.Core.Transform@)">
+            <summary>Updates the specified transform.</summary>
+            <param name="transform">The transform.</param>
         </member>
         <member name="T:Alis.Core.Sprite">
             <summary>Define sprite to draw on game.</summary>
         </member>
+        <member name="F:Alis.Core.Sprite.imageFile">
+            <summary>The image file</summary>
+        </member>
+        <member name="F:Alis.Core.Sprite.path">
+            <summary>The path</summary>
+        </member>
+        <member name="F:Alis.Core.Sprite.sprite">
+            <summary>The sprite</summary>
+        </member>
+        <member name="F:Alis.Core.Sprite.texture">
+            <summary>The texture</summary>
+        </member>
+        <member name="F:Alis.Core.Sprite.invalidFile">
+            <summary>The invalid file</summary>
+        </member>
+        <member name="M:Alis.Core.Sprite.#ctor(System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sprite" /> class.</summary>
+            <param name="imageFile">The image file.</param>
+            <param name="path"></param>
+        </member>
+        <member name="P:Alis.Core.Sprite.ImageFile">
+            <summary>Gets or sets the image file.</summary>
+            <value>The image file.</value>
+        </member>
+        <member name="P:Alis.Core.Sprite.Path">
+            <summary>Gets or sets the path.</summary>
+            <value>The path.</value>
+        </member>
         <member name="M:Alis.Core.Sprite.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Sprite.Start(Alis.Core.Transform@)">
             <summary>Starts this instance.</summary>
         </member>
         <member name="M:Alis.Core.Sprite.Update">
             <summary>Updates this instance.</summary>
         </member>
+        <member name="M:Alis.Core.Sprite.Update(Alis.Core.Transform@)">
+            <summary>Updates the specified transform.</summary>
+            <param name="transform">The transform.</param>
+        </member>
         <member name="M:Alis.Core.Sprite.GetDebuggerDisplay">
             <summary>Gets the debugger display.</summary>
             <returns>Debug string</returns>
+        </member>
+        <member name="M:Alis.Core.Sprite.CheckTexture">
+            <summary>Checks the texture.</summary>
         </member>
         <member name="T:Alis.Core.Transform">
             <summary>Manage the position of the game object on a scene.</summary>
@@ -136,8 +188,15 @@
         <member name="M:Alis.Core.Transform.Start">
             <summary>Starts this instance.</summary>
         </member>
+        <member name="M:Alis.Core.Transform.Start(Alis.Core.Transform@)">
+            <summary>Starts this instance.</summary>
+        </member>
         <member name="M:Alis.Core.Transform.Update">
             <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Transform.Update(Alis.Core.Transform@)">
+            <summary>Updates the specified transform.</summary>
+            <param name="transform">The transform.</param>
         </member>
         <member name="M:Alis.Core.Transform.GetDebuggerDisplay">
             <summary>Gets the debugger display.</summary>
@@ -216,73 +275,61 @@
         <member name="M:Alis.Core.Input.PollEvents">
             <summary>Polls the events.</summary>
         </member>
-        <member name="T:Alis.Core.IRenderCore">
-            <summary>Render Core define</summary>
-        </member>
-        <member name="M:Alis.Core.IRenderCore.Draw">
-            <summary>Draws this instance.</summary>
-        </member>
         <member name="T:Alis.Core.Render">
             <summary>Render define</summary>
         </member>
-        <member name="F:Alis.Core.Render.core">
-            <summary>The core</summary>
+        <member name="F:Alis.Core.Render.current">
+            <summary>The current</summary>
         </member>
-        <member name="M:Alis.Core.Render.Start">
-            <summary>Starts this instance.</summary>
+        <member name="F:Alis.Core.Render.title">
+            <summary>The title</summary>
+        </member>
+        <member name="F:Alis.Core.Render.renderWindow">
+            <summary>The window</summary>
+        </member>
+        <member name="F:Alis.Core.Render.renderTexture">
+            <summary>The window</summary>
+        </member>
+        <member name="F:Alis.Core.Render.videoMode">
+            <summary>The video mode</summary>
+        </member>
+        <member name="F:Alis.Core.Render.frame">
+            <summary>The frame</summary>
+        </member>
+        <member name="F:Alis.Core.Render.sprites">
+            <summary>The sprites</summary>
+        </member>
+        <member name="P:Alis.Core.Render.Current">
+            <summary>Gets or sets the current.</summary>
+            <value>The current.</value>
+        </member>
+        <member name="M:Alis.Core.Render.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Render" /> class.</summary>
         </member>
         <member name="M:Alis.Core.Render.FrameBytes">
             <summary>Frames the bytes.</summary>
-            <returns>
-              <br />
-            </returns>
+            <returns>Return the frame.</returns>
         </member>
-        <member name="M:Alis.Core.Render.Draw">
-            <summary>Draws this instance.</summary>
+        <member name="M:Alis.Core.Render.RenderDisplay">
+            <summary>Renders the display.</summary>
         </member>
-        <member name="M:Alis.Core.Render.Display">
-            <summary>Displays this instance.</summary>
-        </member>
-        <member name="T:Alis.Core.SfmlCore">
-            <summary>Core render</summary>
-        </member>
-        <member name="F:Alis.Core.SfmlCore.window">
-            <summary>The window</summary>
-        </member>
-        <member name="F:Alis.Core.SfmlCore.videoMode">
-            <summary>The video mode</summary>
-        </member>
-        <member name="F:Alis.Core.SfmlCore.render">
-            <summary>The render</summary>
-        </member>
-        <member name="F:Alis.Core.SfmlCore.frame">
-            <summary>The frame</summary>
-        </member>
-        <member name="F:Alis.Core.SfmlCore.circle">
-            <summary>The circle</summary>
-        </member>
-        <member name="F:Alis.Core.SfmlCore.isClosed">
-            <summary>The is closed</summary>
-        </member>
-        <member name="M:Alis.Core.SfmlCore.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SfmlCore" /> class.</summary>
-        </member>
-        <member name="P:Alis.Core.SfmlCore.IsClosed">
-            <summary>Gets or sets a value indicating whether this instance is closed.</summary>
-            <value>
-            <c>true</c> if this instance is closed; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="M:Alis.Core.SfmlCore.FramePixels">
-            <summary>Frames the pixels.</summary>
-            <returns>Return data</returns>
-        </member>
-        <member name="M:Alis.Core.SfmlCore.Draw">
-            <summary>Draws this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.SfmlCore.RenderWindow_Closed(System.Object,System.EventArgs)">
-            <summary>Handles the Closed event of the RenderWindow control.</summary>
+        <member name="M:Alis.Core.Render.Window_Closed(System.Object,System.EventArgs)">
+            <summary>Handles the Closed event of the Window control.</summary>
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:Alis.Core.Render.AddNewSprite(SFML.Graphics.Sprite)">
+            <summary>Adds the new sprite.</summary>
+            <param name="sprite">The sprite.</param>
+        </member>
+        <member name="M:Alis.Core.Render.DeleteSprite(SFML.Graphics.Sprite)">
+            <summary>Deletes the sprite.</summary>
+            <param name="sprite">The sprite.</param>
+        </member>
+        <member name="M:Alis.Core.Render.Exits(SFML.Graphics.Sprite)">
+            <summary>Exitses the specified sprite.</summary>
+            <param name="sprite">The sprite.</param>
+            <returns>Return</returns>
         </member>
         <member name="T:Alis.Core.Scene">
             <summary>Define a scene.</summary>
@@ -381,6 +428,10 @@
         <member name="M:Alis.Core.VideoGame.PreviewRender">
             <summary>Previews the render.</summary>
             <returns>Return the data.</returns>
+        </member>
+        <member name="M:Alis.Core.VideoGame.PreviewPlaying">
+            <summary>Previews the playing.</summary>
+            <returns> </returns>
         </member>
         <member name="M:Alis.Core.VideoGame.Run">
             <summary>Runs this instance.</summary>

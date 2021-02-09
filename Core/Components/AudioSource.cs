@@ -163,10 +163,22 @@ namespace Alis.Core
             }
         }
 
+
+        /// <summary>Starts this instance.</summary>
+        public void Start(ref Transform transform)
+        {
+        }
+
         /// <summary>Updates this instance.</summary>
-        /// <exception cref="NotImplementedException"></exception>
         public void Update()
         {
+        }
+
+        /// <summary>Updates the specified transform.</summary>
+        /// <param name="transform">The transform.</param>
+        public void Update(ref Transform transform)
+        {
+
         }
 
         /// <summary>Gets the debugger display.</summary>

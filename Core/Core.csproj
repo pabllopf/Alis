@@ -9,7 +9,7 @@
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>Core.xml</DocumentationFile>
     <WarningsAsErrors></WarningsAsErrors>
   </PropertyGroup>

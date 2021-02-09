@@ -42,7 +42,7 @@ namespace Alis.Editor.UI.Widgets
 
                 if (Project.Current != null)
                 {
-                    foreach (Scene scene in Project.VideoGame.Scenes)
+                    foreach (Scene scene in Project.Current.VideoGame.Scenes)
                     {
                         ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
                         ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
@@ -100,7 +100,7 @@ namespace Alis.Editor.UI.Widgets
 
             scene.Add(new GameObject("GameObject " + i++ + " "));
 
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
 
             Inspector.Current.Focus = true;
         }

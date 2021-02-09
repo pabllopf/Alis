@@ -73,6 +73,7 @@ namespace Alis.Core
         /// <summary>Starts this instance.</summary>
         public void Start() 
         {
+            Debug.Log("Loaded " + this.name);
             gameObjects.ForEach(i => i.Start());
         }
 

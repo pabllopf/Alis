@@ -30,9 +30,12 @@ namespace Alis.Core
         [JsonConstructor]
         public VideoGame(ConfigGame config) 
         {
+            Render.Current = new Render();
+            Input.OnPressKeyOnce += Input_OnPressKeyOnce;
+
             this.config = config;
             scenes = new List<Scene>();
-            Render.Start();
+
             Debug.Log("Created a new " + GetType() + "(" + config.NameProject + ").");
         }
 
@@ -41,36 +44,38 @@ namespace Alis.Core
         /// <param name="scene">the scenes of game</param>
         public VideoGame(ConfigGame config, params Scene[] scene)
         {
+            Render.Current = new Render();
+            Input.OnPressKeyOnce += Input_OnPressKeyOnce;
+
             this.config = config;
             scenes = new List<Scene>(scene);
 
             if (scenes.Count > 0)
             {
                 currentScene = scenes[0];
+                currentScene.Start();
+                Debug.Warning("CurrentScene: " + currentScene.Name);
             }
 
-            Render.Start();
             Debug.Log("Created a new " + GetType() + "(" + config.NameProject + ").");
         }
 
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
+        [JsonProperty]
         public ConfigGame Config { get => config; set => config = value; }
 
         /// <summary>Gets or sets the scenes.</summary>
         /// <value>The scenes.</value>
+        [JsonProperty]
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
 
         /// <summary>Starts this instance.</summary>
         public static void Start(string path)
         {
             Debug.Log("\n \n Init Load");
-
             VideoGame videoGame = LocalData.Load<VideoGame>("Data", path);
             Input.OnPressKeyOnce += Input_OnPressKeyOnce;
-
-            videoGame.Add(new Scene("hola", new GameObject("player", new Sprite())));
-
             videoGame.Run();
         }
 
@@ -108,39 +113,56 @@ namespace Alis.Core
         /// <summary>Previews the render.</summary>
         /// <returns>Return the data.</returns>
         public byte[] PreviewRender() 
-        { 
-            //Input.PollEvents();
-            if (currentScene != null) 
+        {
+            scenes.ForEach(i => i.Update());
+            return Render.Current.FrameBytes();
+        }
+
+        private bool starder = false;
+
+        /// <summary>Previews the playing.</summary>
+        /// <returns> </returns>
+        public byte[] PreviewPlaying() 
+        {
+            if (starder == false) 
             {
-                currentScene.Update();
+                starder = true;
+                currentScene.Start();
             }
             
-            Render.Draw();
-            return Render.FrameBytes();
+
+            if (scenes.Count > 0)
+            {
+                currentScene = scenes[0];
+                Debug.Warning("CurrentScene: " + currentScene.Name);
+            }
+
+            Input.PollEvents();
+            currentScene.Update();
+            return Render.Current.FrameBytes();
         }
 
         /// <summary>Runs this instance.</summary>
         public void Run() 
         {
-            isRunning = true;
-
-            if (currentScene != null) 
+            if (currentScene == null)
             {
                 currentScene = scenes[0];
-                currentScene.Start();
+                Debug.Warning("CurrentScene: " + currentScene.Name);
             }
-           
-            Render.Start();
+
+            currentScene = scenes[0];
+
+            isRunning = true;
+
+            currentScene.Start();
 
             Debug.Log("Run the videogame.");
             while (isRunning) 
             {
                 Input.PollEvents();
-                if (currentScene != null)
-                {
-                    currentScene.Update();
-                }
-                Render.Display();
+                currentScene.Update();
+                Render.Current.RenderDisplay();
             }
 
             Debug.Log("Exit of videogame.");

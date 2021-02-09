@@ -30,7 +30,7 @@ namespace Alis.Core
         {
             position = new Vector3();
             rotation = new Vector3();
-            size = new Vector3();
+            size = new Vector3(1f);
         }
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
@@ -61,9 +61,21 @@ namespace Alis.Core
         { 
         }
 
+        /// <summary>Starts this instance.</summary>
+        public void Start(ref Transform transform)
+        {
+        }
+
         /// <summary>Updates this instance.</summary>
         public void Update()
         {
+        }
+
+        /// <summary>Updates the specified transform.</summary>
+        /// <param name="transform">The transform.</param>
+        public void Update(ref Transform transform)
+        {
+            
         }
 
         /// <summary>Gets the debugger display.</summary>

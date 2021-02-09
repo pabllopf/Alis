@@ -13,7 +13,7 @@ namespace Alis.Editor
     public class Project
     {
         /// <summary>The video game</summary>
-        private static VideoGame videoGame;
+        private VideoGame videoGame;
 
         /// <summary>The current</summary>
         private static Project current;
@@ -58,7 +58,7 @@ namespace Alis.Editor
 
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        public static VideoGame VideoGame { get => videoGame; set => videoGame = value; }
+        public VideoGame VideoGame { get => videoGame; set => videoGame = value; }
 
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
@@ -94,7 +94,7 @@ namespace Alis.Editor
         public static void ChangeProject(Project project, VideoGame game) 
         {
             current = project;
-            videoGame = game;
+            current.VideoGame = game;
             OnChangeProject.Invoke(null, true);
         }
 

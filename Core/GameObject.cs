@@ -17,15 +17,18 @@ namespace Alis.Core
         /// <summary>The components</summary>
         private List<IComponent> components;
 
+        private Transform transform;
+
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
         [JsonConstructor]
         public GameObject(string name) 
         {
             this.name = name;
+            transform = new Transform();
             components = new List<IComponent>
             {
-                new Transform()
+                transform
             };
 
             Debug.Log("Created a new " + GetType() + "(" + name + ").");
@@ -37,9 +40,10 @@ namespace Alis.Core
         public GameObject(string name, params IComponent[] component)
         {
             this.name = name;
+            transform = new Transform();
             components = new List<IComponent>
             {
-                new Transform(),
+                transform
             };
 
             components.AddRange(component);
@@ -73,12 +77,14 @@ namespace Alis.Core
         public void Start() 
         {
             components.ForEach(i => i.Start());
+            components.ForEach(i => i.Start(ref transform));
         }
 
         /// <summary>Updates this instance.</summary>
         public void Update() 
         {
             components.ForEach(i => i.Update());
+            components.ForEach(i => i.Update(ref transform));
         }
 
         /// <summary>Gets the debugger display.</summary>

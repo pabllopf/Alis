@@ -204,13 +204,11 @@ namespace Alis.Editor.UI.Widgets
         private void AddNewAudiosource()
         {
             gameObject.Add(new AudioSource("", Project.Current.AssetsPath + "/", true, 1));
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
         }
 
         private void AddNewSprite()
         {
-            gameObject.Add(new Sprite());
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+            gameObject.Add(new Sprite("", Project.Current.AssetsPath + "/"));
         }
 
         private void SelectGameObject(GameObject obj)

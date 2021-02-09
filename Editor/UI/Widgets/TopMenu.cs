@@ -531,8 +531,8 @@ namespace Alis.Editor.UI.Widgets
 
         private void SaveProject() 
         {
-            Console.Current.Log("Saved " + Project.VideoGame.Config.NameProject);
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+            Console.Current.Log("Saved " + Project.Current.VideoGame.Config.NameProject);
+            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
         }
 
         /// <summary>Opens the terminal.</summary>
