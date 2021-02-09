@@ -13,6 +13,7 @@ namespace Alis.Editor.UI.Widgets
     using SixLabors.ImageSharp;
     using Veldrid.ImageSharp;
     using Veldrid;
+    using System.Runtime.InteropServices;
 
     /// <summary>Show the game running</summary>
     public class GameView : Widget
@@ -190,27 +191,64 @@ namespace Alis.Editor.UI.Widgets
                 {
                     image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
                     float size = (ImGui.GetContentRegionAvail().X <= ImGui.GetContentRegionAvail().Y) ? ImGui.GetContentRegionAvail().X : ImGui.GetContentRegionAvail().Y;
-                    ImGui.Image(intPtr, new Vector2(size));
+                    Render(new Vector2(size));
                 }
 
                 if (currentResolution.Equals("4:3"))
                 {
                     image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 384);
                     float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
-                    ImGui.Image(intPtr, new Vector2(size / 0.75f, size));
+                    Render(new Vector2(size / 0.75f, size));
                 }
 
                 if (currentResolution.Equals("16:9"))
                 {
                     image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 288);
                     float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
-                    ImGui.Image(intPtr, new Vector2(size / 0.5625f, size));
+
+                    Render(new Vector2(size / 0.5625f, size));
                 }
             }
             else
             {
                 ImGui.Image((IntPtr)0, ImGui.GetContentRegionAvail(), new Vector2(1, 0), new Vector2(0, 1), new Vector4(0f), new Vector4(1f));
             }
+        }
+
+        private void Render(Vector2 vector2) 
+        {
+            image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
+            imageSharpTexture = new ImageSharpTexture(image, true);
+
+            unsafe
+            {
+                for (int level = 0; level < imageSharpTexture.MipLevels; level++)
+                {
+                    Image<Rgba32> image = imageSharpTexture.Images[level];
+                    if (!image.TryGetSinglePixelSpan(out Span<Rgba32> pixelSpan))
+                    {
+                        throw new VeldridException("Unable to get image pixelspan.");
+                    }
+                    fixed (void* pin = &MemoryMarshal.GetReference(pixelSpan))
+                    {
+                        imGuiController.graphicsDevice.UpdateTexture(
+                            texture,
+                            (IntPtr)pin,
+                            (uint)(imageSharpTexture.PixelSizeInBytes * image.Width * image.Height),
+                            0,
+                            0,
+                            0,
+                            (uint)image.Width,
+                            (uint)image.Height,
+                            1,
+                            (uint)level,
+                            0);
+                    }
+                }
+            }
+
+            intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+            ImGui.Image(intPtr, vector2);
         }
     }
 }

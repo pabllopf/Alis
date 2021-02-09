@@ -61,9 +61,7 @@ namespace Alis.Core
                     renderTexture.Draw(sprite);
 
                 }
-                Debug.Log("count sprites: " + sprites.Count);
             }
-
 
             renderTexture.Smooth = true;
             renderTexture.Display();
@@ -101,6 +99,7 @@ namespace Alis.Core
         private void Window_Closed(object sender, EventArgs e)
         {
             renderWindow.Close();
+            Environment.Exit(0);
             Debug.Log("EVENT: Close render window. ");
         }
 
