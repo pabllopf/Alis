@@ -6,6 +6,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view =
     [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a0e68fa9812638d131d8300e6e28b6925", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a40e9de4ad0976cdcb7397b1322a4814d", null ],
     [ "RenderGame", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a4f817e82a6d09ef25e22d09e5885b8dc", null ],
+    [ "Render", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ab7c1103c3df83f4951603ea409f22ec8", null ],
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a4dc2f66c0d0aaa742fbda0d5890fa9a5", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ad994deb885bfaed2cc713b3a039b8f03", null ],
     [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ae780b204305e8a00299b93165b39fc0e", null ],

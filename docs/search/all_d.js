@@ -23,7 +23,7 @@ var searchData=
   ['medkit_608',['MEDKIT',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a11019a560d2dd172566da3450ae1c3ff',1,'Alis::Editor::Utils::Icon']]],
   ['meetup_609',['MEETUP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a61a73f5e356b7bf304627d122a594b49',1,'Alis::Editor::Utils::Icon']]],
   ['meho_610',['MEHO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9b47f9bdfbb198ddfc60efb66e73a12a',1,'Alis::Editor::Utils::Icon']]],
-  ['memoryeditor_611',['MemoryEditor',['../class_im_gui_n_e_t_1_1_memory_editor.html',1,'ImGuiNET.MemoryEditor'],['../class_im_gui_n_e_t_1_1_memory_editor.html#a77fcc43e7a2e091e5cee04e20899e1b0',1,'ImGuiNET.MemoryEditor.MemoryEditor()'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afd71c3c6a55d10c9ad607373a37ce529',1,'Alis.Editor.UI.MainWindow.memoryEditor()']]],
+  ['memoryeditor_611',['MemoryEditor',['../class_im_gui_n_e_t_1_1_memory_editor.html',1,'ImGuiNET.MemoryEditor'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afd71c3c6a55d10c9ad607373a37ce529',1,'Alis.Editor.UI.MainWindow.memoryEditor()'],['../class_im_gui_n_e_t_1_1_memory_editor.html#a77fcc43e7a2e091e5cee04e20899e1b0',1,'ImGuiNET.MemoryEditor.MemoryEditor()']]],
   ['mercury_612',['MERCURY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a01c13325f41e9b1b645041de3bc60ae0',1,'Alis::Editor::Utils::Icon']]],
   ['messageloading_613',['messageLoading',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#a37106f05ef1785dfeb822bf8a12252f3',1,'Alis::Editor::UI::Widgets::BottomMenu']]],
   ['metal_614',['Metal',['../namespace_alis_1_1_editor.html#a2ea4ab07fbbf567a72496b2b382faf54aeaa57a9b4248ce3968e718895e1c2f04',1,'Alis::Editor']]],

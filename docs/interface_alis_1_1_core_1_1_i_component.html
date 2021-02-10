@@ -113,9 +113,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a07ee9489799085300936acd90dc7cd59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_alis_1_1_core_1_1_i_component.html#a07ee9489799085300936acd90dc7cd59">Start</a> ()</td></tr>
 <tr class="memdesc:a07ee9489799085300936acd90dc7cd59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts this instance.  <a href="interface_alis_1_1_core_1_1_i_component.html#a07ee9489799085300936acd90dc7cd59">More...</a><br /></td></tr>
 <tr class="separator:a07ee9489799085300936acd90dc7cd59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9026366c37d079d398ccdd2f126fa49"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_alis_1_1_core_1_1_i_component.html#af9026366c37d079d398ccdd2f126fa49">Start</a> (ref <a class="el" href="class_alis_1_1_core_1_1_transform.html">Transform</a> transform)</td></tr>
+<tr class="memdesc:af9026366c37d079d398ccdd2f126fa49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the specified transform.  <a href="interface_alis_1_1_core_1_1_i_component.html#af9026366c37d079d398ccdd2f126fa49">More...</a><br /></td></tr>
+<tr class="separator:af9026366c37d079d398ccdd2f126fa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1d7ae69b3ddd5ddab7fb14d095956741"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_alis_1_1_core_1_1_i_component.html#a1d7ae69b3ddd5ddab7fb14d095956741">Update</a> ()</td></tr>
 <tr class="memdesc:a1d7ae69b3ddd5ddab7fb14d095956741"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates this instance.  <a href="interface_alis_1_1_core_1_1_i_component.html#a1d7ae69b3ddd5ddab7fb14d095956741">More...</a><br /></td></tr>
 <tr class="separator:a1d7ae69b3ddd5ddab7fb14d095956741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a7b4e49a7fa7bed161a1eb62b677617"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_alis_1_1_core_1_1_i_component.html#a1a7b4e49a7fa7bed161a1eb62b677617">Update</a> (ref <a class="el" href="class_alis_1_1_core_1_1_transform.html">Transform</a> transform)</td></tr>
+<tr class="memdesc:a1a7b4e49a7fa7bed161a1eb62b677617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the specified transform.  <a href="interface_alis_1_1_core_1_1_i_component.html#a1a7b4e49a7fa7bed161a1eb62b677617">More...</a><br /></td></tr>
+<tr class="separator:a1a7b4e49a7fa7bed161a1eb62b677617"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Define components. </p>
@@ -123,7 +129,7 @@ Public Member Functions</h2></td></tr>
 <p class="definition">Definition at line <a class="el" href="_i_component_8cs_source.html#l00011">11</a> of file <a class="el" href="_i_component_8cs_source.html">IComponent.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a07ee9489799085300936acd90dc7cd59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a07ee9489799085300936acd90dc7cd59">&#9670;&nbsp;</a></span>Start()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a07ee9489799085300936acd90dc7cd59">&#9670;&nbsp;</a></span>Start() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,8 +149,36 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="af9026366c37d079d398ccdd2f126fa49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9026366c37d079d398ccdd2f126fa49">&#9670;&nbsp;</a></span>Start() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.IComponent.Start </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="class_alis_1_1_core_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>transform</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Starts the specified transform. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">transform</td><td>The transform.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_alis_1_1_core_1_1_transform.html#a020a0b3a71781daf720da103bac856ef">Alis.Core.Transform</a>, <a class="el" href="class_alis_1_1_core_1_1_sprite.html#a377d3bf98b8bc0217e6c895693e002ab">Alis.Core.Sprite</a>, and <a class="el" href="class_alis_1_1_core_1_1_audio_source.html#a3363d90eafd6e89b87917cae8287a92d">Alis.Core.AudioSource</a>.</p>
+
+</div>
+</div>
 <a id="a1d7ae69b3ddd5ddab7fb14d095956741"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d7ae69b3ddd5ddab7fb14d095956741">&#9670;&nbsp;</a></span>Update()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d7ae69b3ddd5ddab7fb14d095956741">&#9670;&nbsp;</a></span>Update() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,6 +198,34 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a1a7b4e49a7fa7bed161a1eb62b677617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a7b4e49a7fa7bed161a1eb62b677617">&#9670;&nbsp;</a></span>Update() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.IComponent.Update </td>
+          <td>(</td>
+          <td class="paramtype">ref <a class="el" href="class_alis_1_1_core_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>transform</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the specified transform. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">transform</td><td>The transform.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="class_alis_1_1_core_1_1_transform.html#a2ce6ea2b439033bef9d90ef0f5a38b12">Alis.Core.Transform</a>, <a class="el" href="class_alis_1_1_core_1_1_sprite.html#ac2c4dc6840131ce099edb8f80fbc774d">Alis.Core.Sprite</a>, and <a class="el" href="class_alis_1_1_core_1_1_audio_source.html#aceb814ea877fcaddbdb099d92f1681c6">Alis.Core.AudioSource</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 
@@ -171,7 +233,7 @@ Public Member Functions</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="interface_alis_1_1_core_1_1_i_component.html">IComponent</a></li>
     <li class="footer">
-      <a>Generated on | Tue Feb 9 2021 |</a>
+      <a>Generated on | Wed Feb 10 2021 |</a>
     </li>
   </ul>
 </div>
