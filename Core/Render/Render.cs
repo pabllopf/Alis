@@ -41,7 +41,7 @@ namespace Alis.Core
         public Render() 
         {
             this.title = "Example";
-            this.videoMode = new VideoMode(640, 380);
+            this.videoMode = new VideoMode(1024, 640);
             this.renderTexture = new RenderTexture(512, 512);
             this.sprites = new List<SFML.Graphics.Sprite>();
 

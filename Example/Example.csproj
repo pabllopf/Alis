@@ -17,6 +17,10 @@
   </PropertyGroup>
 
 
+  <ItemGroup>
+    <None Update="Assets/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  
   <!-- ______________________________ MACOS _____________________________________ -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>

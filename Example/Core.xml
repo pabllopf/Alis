@@ -4,5 +4,12 @@
         <name>Example</name>
     </assembly>
     <members>
+        <member name="T:SFML.Program">
+            <summary>Example of videogame.</summary>
+        </member>
+        <member name="M:SFML.Program.Main(System.String[])">
+            <summary>Defines the entry point of the application.</summary>
+            <param name="args">The arguments.</param>
+        </member>
     </members>
 </doc>
