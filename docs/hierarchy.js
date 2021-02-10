@@ -17,9 +17,6 @@ var hierarchy =
     [ "ImGuiNET.ImGuiListClipper2", "class_im_gui_n_e_t_1_1_im_gui_list_clipper2.html", null ],
     [ "Alis.Editor.Info", "class_alis_1_1_editor_1_1_info.html", null ],
     [ "Alis.Core.Input", "class_alis_1_1_core_1_1_input.html", null ],
-    [ "Alis.Core.IRenderCore", "interface_alis_1_1_core_1_1_i_render_core.html", [
-      [ "Alis.Core.SfmlCore", "class_alis_1_1_core_1_1_sfml_core.html", null ]
-    ] ],
     [ "Alis.Tools.Language", "class_alis_1_1_tools_1_1_language.html", null ],
     [ "Alis.Tools.LocalData", "class_alis_1_1_tools_1_1_local_data.html", null ],
     [ "Alis.Editor.UI.MainWindow", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html", null ],

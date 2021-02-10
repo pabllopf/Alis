@@ -8,6 +8,7 @@ var class_alis_1_1_core_1_1_game_object =
     [ "GetDebuggerDisplay", "class_alis_1_1_core_1_1_game_object.html#a5828e8077af8c82ffa97fc8760058828", null ],
     [ "name", "class_alis_1_1_core_1_1_game_object.html#a2e3f57fcb6b0325da516d5558815c75c", null ],
     [ "components", "class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f", null ],
+    [ "transform", "class_alis_1_1_core_1_1_game_object.html#a3520564e92a749313dc6d2e8e938e304", null ],
     [ "Name", "class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038", null ],
     [ "Components", "class_alis_1_1_core_1_1_game_object.html#ac40450ebc08ebbd39676cf28261ec34d", null ]
 ];
