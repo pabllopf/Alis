@@ -266,7 +266,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void AddNewSprite()
         {
-            gameObject.Add(new Sprite("", Project.Current.AssetsPath + "/"));
+            gameObject.Add(new Sprite("", Project.Current.AssetsPath + "/", 0));
         }
 
         private void AddNewAnimator()

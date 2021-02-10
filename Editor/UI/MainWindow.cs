@@ -223,7 +223,7 @@ namespace Alis.Editor.UI
 
                 controller.Update(deltaSeconds, snapshot);
                 widgetManager.Update();
-                ImGui.ShowDemoWindow();
+                //ImGui.ShowDemoWindow();
 
                 
                 //ShowPreviewMessage();

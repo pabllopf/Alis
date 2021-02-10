@@ -22,6 +22,9 @@ namespace Alis.Core
         /// <summary>The path</summary>
         private string path;
 
+        /// <summary>The depth</summary>
+        private int depth;
+
         /// <summary>The sprite</summary>
         private SFML.Graphics.Sprite sprite;
 
@@ -35,10 +38,11 @@ namespace Alis.Core
         /// <param name="imageFile">The image file.</param>
         /// <param name="path"></param>
         [JsonConstructor]
-        public Sprite(string imageFile, string path)
+        public Sprite(string imageFile, string path, int depth)
         {
             this.imageFile = imageFile;
             this.path = path;
+            this.depth = depth;
             CheckTexture();
         }
 
@@ -58,9 +62,9 @@ namespace Alis.Core
                     {
                         if (Render.Current != null)
                         {
-                            if (Render.Current.Exits(sprite))
+                            if (Render.Current.Exits(this))
                             {
-                                Render.Current.DeleteSprite(sprite);
+                                Render.Current.DeleteSprite(this);
                                 sprite = null;
                                 texture = null;
                             }
@@ -87,9 +91,9 @@ namespace Alis.Core
                     {
                         if (Render.Current != null)
                         {
-                            if (Render.Current.Exits(sprite))
+                            if (Render.Current.Exits(this))
                             {
-                                Render.Current.DeleteSprite(sprite);
+                                Render.Current.DeleteSprite(this);
                                 sprite = null;
                                 texture = null;
                             }
@@ -100,6 +104,9 @@ namespace Alis.Core
         }
 
         public SFML.Graphics.Sprite GetSprite { get => sprite; set => sprite = value; }
+
+        [JsonProperty]
+        public int Depth { get => depth; set => depth = value; }
 
         /// <summary>Starts this instance.</summary>
         public void Start()
@@ -145,12 +152,12 @@ namespace Alis.Core
 
                     if (Render.Current != null)
                     {
-                        if (Render.Current.Exits(sprite))
+                        if (Render.Current.Exits(this))
                         {
-                            Render.Current.DeleteSprite(sprite);
+                            Render.Current.DeleteSprite(this);
                         }
 
-                        Render.Current.AddNewSprite(sprite);
+                        Render.Current.AddNewSprite(this);
                     }
 
                     return;
@@ -159,9 +166,9 @@ namespace Alis.Core
                 {
                     if (Render.Current != null)
                     {
-                        if (!Render.Current.Exits(sprite))
+                        if (!Render.Current.Exits(this))
                         {
-                            Render.Current.AddNewSprite(sprite);
+                            Render.Current.AddNewSprite(this);
                         }
                     }
                 }
@@ -178,12 +185,12 @@ namespace Alis.Core
 
                     if (Render.Current != null) 
                     {
-                        if (Render.Current.Exits(sprite))
+                        if (Render.Current.Exits(this))
                         {
-                            Render.Current.DeleteSprite(sprite);
+                            Render.Current.DeleteSprite(this);
                         }
 
-                        Render.Current.AddNewSprite(sprite);
+                        Render.Current.AddNewSprite(this);
                     }
 
                     return;
@@ -192,9 +199,9 @@ namespace Alis.Core
                 {
                     if (Render.Current != null)
                     {
-                        if (!Render.Current.Exits(sprite))
+                        if (!Render.Current.Exits(this))
                         {
-                            Render.Current.AddNewSprite(sprite);
+                            Render.Current.AddNewSprite(this);
                         }
                     }
                 }

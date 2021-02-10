@@ -108,6 +108,9 @@
         <member name="F:Alis.Core.Sprite.path">
             <summary>The path</summary>
         </member>
+        <member name="F:Alis.Core.Sprite.depth">
+            <summary>The depth</summary>
+        </member>
         <member name="F:Alis.Core.Sprite.sprite">
             <summary>The sprite</summary>
         </member>
@@ -117,7 +120,7 @@
         <member name="F:Alis.Core.Sprite.invalidFile">
             <summary>The invalid file</summary>
         </member>
-        <member name="M:Alis.Core.Sprite.#ctor(System.String,System.String)">
+        <member name="M:Alis.Core.Sprite.#ctor(System.String,System.String,System.Int32)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sprite" /> class.</summary>
             <param name="imageFile">The image file.</param>
             <param name="path"></param>
@@ -281,15 +284,15 @@
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
         </member>
-        <member name="M:Alis.Core.Render.AddNewSprite(SFML.Graphics.Sprite)">
+        <member name="M:Alis.Core.Render.AddNewSprite(Alis.Core.Sprite)">
             <summary>Adds the new sprite.</summary>
             <param name="sprite">The sprite.</param>
         </member>
-        <member name="M:Alis.Core.Render.DeleteSprite(SFML.Graphics.Sprite)">
+        <member name="M:Alis.Core.Render.DeleteSprite(Alis.Core.Sprite)">
             <summary>Deletes the sprite.</summary>
             <param name="sprite">The sprite.</param>
         </member>
-        <member name="M:Alis.Core.Render.Exits(SFML.Graphics.Sprite)">
+        <member name="M:Alis.Core.Render.Exits(Alis.Core.Sprite)">
             <summary>Exitses the specified sprite.</summary>
             <param name="sprite">The sprite.</param>
             <returns>Return</returns>

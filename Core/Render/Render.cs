@@ -6,6 +6,7 @@ using SFML.Graphics;
 using SFML.Window;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Alis.Core
 {
@@ -31,7 +32,7 @@ namespace Alis.Core
         private SFML.Graphics.Image frame;
 
         /// <summary>The sprites</summary>
-        private List<SFML.Graphics.Sprite> sprites;
+        private List<Sprite> sprites;
 
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
@@ -41,9 +42,9 @@ namespace Alis.Core
         public Render() 
         {
             this.title = "Example";
-            this.videoMode = new VideoMode(1024, 640);
+            this.videoMode = new VideoMode(512, 320);
             this.renderTexture = new RenderTexture(512, 512);
-            this.sprites = new List<SFML.Graphics.Sprite>();
+            this.sprites = new List<Sprite>();
 
             Debug.Log("Start the render");
         }
@@ -56,10 +57,10 @@ namespace Alis.Core
 
             if (sprites.Count > 0) 
             {
-                foreach (SFML.Graphics.Sprite sprite in sprites)
+                sprites = sprites.OrderBy(o => o.Depth).ToList();
+                foreach (Sprite sprite in sprites)
                 {
-                    renderTexture.Draw(sprite);
-
+                    renderTexture.Draw(sprite.GetSprite);
                 }
             }
 
@@ -82,12 +83,11 @@ namespace Alis.Core
             renderWindow.DispatchEvents();
             renderWindow.Clear();
 
-           
 
-            foreach (SFML.Graphics.Sprite sprite in sprites)
+            sprites = sprites.OrderBy(o => o.Depth).ToList();
+            foreach (Sprite sprite in sprites)
             {
-                renderWindow.Draw(sprite);
-
+                renderWindow.Draw(sprite.GetSprite);
             }
 
             renderWindow.Display();
@@ -105,36 +105,36 @@ namespace Alis.Core
 
         /// <summary>Adds the new sprite.</summary>
         /// <param name="sprite">The sprite.</param>
-        public void AddNewSprite(SFML.Graphics.Sprite sprite) 
+        public void AddNewSprite(Sprite sprite) 
         {
-            List<SFML.Graphics.Sprite> spir = sprites;
+            List<Sprite> spir = sprites;
 
             if (!spir.Contains(sprite))
             {
                 spir.Add(sprite);
                 Debug.Warning("Add a sprite " + sprite.ToString());
                 renderTexture.Clear();
-                renderTexture.Draw(sprite);
+                renderTexture.Draw(sprite.GetSprite);
                 renderTexture.Display();
             }
             else
             {
-                Debug.Warning("Sprite alredy exits." + " Sprite: " + sprite.Texture.ToString());
+                Debug.Warning("Sprite alredy exits." + " Sprite: " + sprite.GetSprite.Texture.ToString());
             }
 
             sprites = spir;
         }
 
-        internal SFML.Graphics.Sprite GetSprite(SFML.Graphics.Sprite sprite)
+        internal Sprite GetSprite(Sprite sprite)
         {
             return sprites[sprites.IndexOf(sprite)];
         }
 
         /// <summary>Deletes the sprite.</summary>
         /// <param name="sprite">The sprite.</param>
-        public void DeleteSprite(SFML.Graphics.Sprite sprite) 
+        public void DeleteSprite(Sprite sprite) 
         {
-            List<SFML.Graphics.Sprite> spir = sprites;
+            List<Sprite> spir = sprites;
             
             if (spir.Count > 0)
             {
@@ -153,7 +153,7 @@ namespace Alis.Core
         /// <summary>Exitses the specified sprite.</summary>
         /// <param name="sprite">The sprite.</param>
         /// <returns>Return</returns>
-        public bool Exits(SFML.Graphics.Sprite sprite)
+        public bool Exits(Sprite sprite)
         {
             if (sprites == null || sprites.Count == 0) 
             {
