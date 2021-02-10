@@ -89,16 +89,9 @@ namespace Alis.Editor.UI.Widgets
             ImGui.End();
         }
 
-        private int i = 0;
-
         private void AddNewGameObjectToScene(Scene scene)
         {
-            while (scene.GameObjects.Contains(new GameObject("GameObject " + i + " "))) 
-            {
-                i++;
-            }
-
-            scene.Add(new GameObject("GameObject " + i++ + " "));
+            scene.Add(new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f))));
 
             LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
 

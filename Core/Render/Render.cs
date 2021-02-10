@@ -125,6 +125,11 @@ namespace Alis.Core
             sprites = spir;
         }
 
+        internal SFML.Graphics.Sprite GetSprite(SFML.Graphics.Sprite sprite)
+        {
+            return sprites[sprites.IndexOf(sprite)];
+        }
+
         /// <summary>Deletes the sprite.</summary>
         /// <param name="sprite">The sprite.</param>
         public void DeleteSprite(SFML.Graphics.Sprite sprite) 

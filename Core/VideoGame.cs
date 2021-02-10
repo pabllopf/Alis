@@ -129,7 +129,6 @@ namespace Alis.Core
                 starder = true;
                 currentScene.Start();
             }
-            
 
             if (scenes.Count > 0)
             {

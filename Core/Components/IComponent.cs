@@ -10,18 +10,12 @@ namespace Alis.Core
     [JsonObject(MemberSerialization.OptIn)]
     public interface IComponent
     {
-        /// <summary>Starts this instance.</summary>
-        void Start();
-
         /// <summary>Starts the specified transform.</summary>
-        /// <param name="transform">The transform.</param>
-        void Start(ref Transform transform);
-
-        /// <summary>Updates this instance.</summary>
-        void Update();
+        /// <param name="gameObject"></param>
+        void Start(GameObject gameObject);
 
         /// <summary>Updates the specified transform.</summary>
-        /// <param name="transform">The transform.</param>
-        void Update(ref Transform transform);
+        /// <param name="gameObject"></param>
+        void Update(GameObject gameObject);
     }
 }

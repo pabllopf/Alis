@@ -5,6 +5,8 @@
 namespace Alis.Core
 {
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Numerics;
     using Newtonsoft.Json;
 
     /// <summary>Define a scene.</summary>
@@ -51,8 +53,25 @@ namespace Alis.Core
         {
             if (!gameObjects.Contains(gameObject))
             {
-                Debug.Log("Added a new GameObject(" + gameObject.Name + ") in the Scene(" + name + ")");
-                gameObjects.Add(gameObject);
+                GameObject obj = gameObjects.Find(i => i.Name.Equals(gameObject.Name));
+
+                if (obj != null)
+                {
+                    int i = 0;
+                    while (gameObjects.Find(j => j.Name.Equals(obj.Name + " " + i)) != null)
+                    {
+                        i++;
+                    }
+
+                    gameObject.Name += " " + i;
+                    Debug.Log("Added a new GameObject(" + gameObject.Name + ") in the Scene(" + name + ")");
+                    gameObjects.Add(gameObject);
+                }
+                else 
+                {
+                    Debug.Log("Added a new GameObject(" + gameObject.Name + ") in the Scene(" + name + ")");
+                    gameObjects.Add(gameObject);
+                }
             }
             else 
             {

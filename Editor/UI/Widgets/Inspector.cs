@@ -10,6 +10,7 @@ namespace Alis.Editor.UI.Widgets
     using System;
     using System.Numerics;
     using Alis.Tools;
+    using System.Collections.Generic;
 
     /// <summary>Manage components of scene.</summary>
     public class Inspector : Widget
@@ -72,6 +73,44 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.AlignTextToFramePadding();
 
+            foreach (var propertyInfo in gameObject.Transform.GetType().GetProperties())
+            {
+                if (propertyInfo.PropertyType.Equals(typeof(Vector3)))
+                {
+                    ImGui.Text(propertyInfo.Name);
+                    ImGui.Columns(3, propertyInfo.Name, true);
+                    Vector3 content = (Vector3)propertyInfo.GetValue(gameObject.Transform);
+                    float x = content.X;
+
+                    if (ImGui.InputFloat("X" + "## " + propertyInfo.Name, ref x))
+                    {
+                        content.X = x;
+                        propertyInfo.SetValue(gameObject.Transform, content);
+                    }
+
+                    ImGui.NextColumn();
+
+                    float y = content.Y;
+                    if (ImGui.InputFloat("Y" + "## " + propertyInfo.Name, ref y))
+                    {
+                        content.Y = y;
+                        propertyInfo.SetValue(gameObject.Transform, content);
+                    }
+
+                    ImGui.NextColumn();
+
+                    float z = content.Z;
+                    if (ImGui.InputFloat("Z" + "## " + propertyInfo.Name, ref z))
+                    {
+                        content.Z = z;
+                        propertyInfo.SetValue(gameObject.Transform, content);
+                    }
+                    ImGui.Columns(1);
+                }
+
+            }
+
+
             foreach (IComponent component in gameObject.Components)
             {
                 if (ImGui.TreeNodeEx(component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
@@ -115,11 +154,25 @@ namespace Alis.Editor.UI.Widgets
                             }
                         }
 
+                        if (propertyInfo.PropertyType.Equals(typeof(List<string>)))
+                        {
+                            List<string> content = (List<string>)propertyInfo.GetValue(component);
+                            foreach (string row in content) 
+                            {
+                                string rowContent = row;
+                                if (ImGui.InputText(row + "## " + content.IndexOf(row), ref rowContent, 256, ImGuiInputTextFlags.EnterReturnsTrue))
+                                {
+                                    content[content.IndexOf(row)] = rowContent;
+                                    propertyInfo.SetValue(component, content);
+                                }
+                            }
+                        }
+
 
                         if (propertyInfo.PropertyType.Equals(typeof(Vector2)))
                         {
                             Vector2 content = (Vector2)propertyInfo.GetValue(component);
-                            if (ImGui.SliderFloat("X", ref content.X, - float.MaxValue, float.MaxValue)) 
+                            if (ImGui.SliderFloat("X", ref content.X, -float.MaxValue, float.MaxValue))
                             {
                                 propertyInfo.SetValue(component, content);
                             }
@@ -191,6 +244,11 @@ namespace Alis.Editor.UI.Widgets
                     AddNewSprite();
                 }
 
+                if (ImGui.MenuItem("New Animator"))
+                {
+                    AddNewAnimator();
+                }
+
                 ImGui.EndPopup();
             }
 
@@ -209,6 +267,11 @@ namespace Alis.Editor.UI.Widgets
         private void AddNewSprite()
         {
             gameObject.Add(new Sprite("", Project.Current.AssetsPath + "/"));
+        }
+
+        private void AddNewAnimator()
+        {
+            gameObject.Add(new Animator(new System.Collections.Generic.List<string>() { ""}));
         }
 
         private void SelectGameObject(GameObject obj)

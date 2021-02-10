@@ -99,6 +99,8 @@ namespace Alis.Core
             }
         }
 
+        public SFML.Graphics.Sprite GetSprite { get => sprite; set => sprite = value; }
+
         /// <summary>Starts this instance.</summary>
         public void Start()
         {
@@ -106,20 +108,21 @@ namespace Alis.Core
         }
 
         /// <summary>Starts this instance.</summary>
-        public void Start(ref Transform transform)
-        {
-        }
-
-        /// <summary>Updates this instance.</summary>
-        public void Update()
+        public void Start(GameObject gameObject)
         {
         }
 
         /// <summary>Updates the specified transform.</summary>
-        /// <param name="transform">The transform.</param>
-        public void Update(ref Transform transform)
+        /// <param name="gameObject"></param>
+        public void Update(GameObject gameObject)
         {
             CheckTexture();
+            if (sprite != null && texture != null) 
+            {
+                sprite.Position = new SFML.System.Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
+                sprite.Scale = new SFML.System.Vector2f(gameObject.Transform.Size.X, gameObject.Transform.Size.Y);
+                sprite.Rotation = gameObject.Transform.Rotation.Y;
+            }
         }
 
         /// <summary>Gets the debugger display.</summary>
