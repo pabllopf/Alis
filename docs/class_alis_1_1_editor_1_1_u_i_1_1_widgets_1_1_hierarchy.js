@@ -10,6 +10,5 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy =
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html#af0777235c6a03300e8646bf060d40b11", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html#ae4dc794c75dc877f46a1e7a1041587ab", null ],
     [ "childBackground", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html#a38d0c5d34ba2ac3c41399a25bf6c6e2d", null ],
-    [ "i", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html#a1687f9f5354f10bb644b2adf69905091", null ],
     [ "Current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html#a861a71b1f05d342ecf2b64aa33f3a19b", null ]
 ];

@@ -1,14 +1,15 @@
 var hierarchy =
 [
     [ "Alis.Tools.Application", "struct_alis_1_1_tools_1_1_application.html", null ],
+    [ "Core.Asset", "class_core_1_1_asset.html", null ],
     [ "Alis.Core.ConfigGame", "class_alis_1_1_core_1_1_config_game.html", null ],
     [ "Alis.Core.Debug", "class_alis_1_1_core_1_1_debug.html", null ],
     [ "Alis.Editor.Engine", "class_alis_1_1_editor_1_1_engine.html", null ],
     [ "Alis.Core.GameObject", "class_alis_1_1_core_1_1_game_object.html", null ],
     [ "Alis.Core.IComponent", "interface_alis_1_1_core_1_1_i_component.html", [
+      [ "Alis.Core.Animator", "class_alis_1_1_core_1_1_animator.html", null ],
       [ "Alis.Core.AudioSource", "class_alis_1_1_core_1_1_audio_source.html", null ],
-      [ "Alis.Core.Sprite", "class_alis_1_1_core_1_1_sprite.html", null ],
-      [ "Alis.Core.Transform", "class_alis_1_1_core_1_1_transform.html", null ]
+      [ "Alis.Core.Sprite", "class_alis_1_1_core_1_1_sprite.html", null ]
     ] ],
     [ "Alis.Editor.Utils.Icon", "class_alis_1_1_editor_1_1_utils_1_1_icon.html", null ],
     [ "IDisposable", null, [
@@ -30,6 +31,7 @@ var hierarchy =
     [ "ImGuiNET.ImGuiController.ResourceSetInfo", "struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html", null ],
     [ "Alis.Core.Scene", "class_alis_1_1_core_1_1_scene.html", null ],
     [ "Alis.Core.SceneManager", "class_alis_1_1_core_1_1_scene_manager.html", null ],
+    [ "Alis.Core.Transform", "class_alis_1_1_core_1_1_transform.html", null ],
     [ "Tools.Updater", "class_tools_1_1_updater.html", null ],
     [ "Alis.Core.VideoGame", "class_alis_1_1_core_1_1_video_game.html", null ],
     [ "Alis.Editor.UI.Widgets.Widget", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html", [
