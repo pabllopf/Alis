@@ -41,6 +41,10 @@ namespace Alis.Editor.UI.Widgets
 
         private string[] videoFormat = new string[] { ".mp4" };
 
+        private List<string> templist = new List<string>();
+
+        private bool stateOfView = true;
+
         /// <summary>Initializes a new instance of the <see cref="AssetsManager" /> class.</summary>
         public AssetsManager()
         {
@@ -59,6 +63,19 @@ namespace Alis.Editor.UI.Widgets
             currentDirRight = assetPath;
         }
 
+        public void ButtonSpecial() 
+        {
+            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
+            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
+            if (ImGui.Button((stateOfView ? Icon.LOWVISION : Icon.EYE) + ""))
+            {
+                stateOfView = !stateOfView;
+            }
+            ImGui.PopStyleVar();
+            ImGui.PopStyleColor();
+            ImGui.SameLine();
+        }
+
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
@@ -67,6 +84,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(1.0f, 3.0f));
                 ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
+
 
                 if (Project.Current != null)
                 {
@@ -87,13 +105,27 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PopStyleVar(2);
                 ImGui.PopStyleColor();
 
+
                 filter.Draw(Icon.SEARCH + string.Empty, ImGui.GetContentRegionAvail().X - 20.0f);
+
+                if (filter.IsActive()) 
+                {
+                    templist.Clear();
+                    foreach (string file in Directory.GetFiles(Project.Current.AssetsPath,"*", SearchOption.AllDirectories)) 
+                    {
+                        if (filter.PassFilter(Path.GetFileName(file))) 
+                        {
+                            templist.Add(file);
+                        }
+                    }
+                }
 
                 ImGui.Separator();
 
                 if (ImGui.BeginChild("Assets-Child-Master"))
                 {
-                    if (ImGui.BeginChild("Assets-Child-Left", new Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y), true))
+
+                    if (ImGui.BeginChild("Assets-Child-Left", new Vector2((ImGui.GetWindowWidth() <= ImGui.GetWindowHeight()) ? ImGui.GetContentRegionAvail().X : ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y), true))
                     {
                         if (Project.Current != null)
                         {
@@ -102,7 +134,7 @@ namespace Alis.Editor.UI.Widgets
                             if (Project.Current != null)
                             {
                                 ShowTree(Project.Current.AssetsPath);
-                               
+
                             }
 
                             ImGui.PopStyleVar();
@@ -114,81 +146,48 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.SameLine();
 
-
-                    if (ImGui.BeginChild("Assets-Child-Right", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
+                    if (ImGui.GetWindowWidth() > ImGui.GetWindowHeight())
                     {
-                        ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
-                        ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
-                        if (Project.Current != null)
+
+                        if (ImGui.BeginChild("Assets-Child-Right", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true, ImGuiWindowFlags.AlwaysAutoResize))
                         {
-                            foreach (string directory in Directory.GetDirectories(currentDirRight)) 
+                            ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
+                            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
+                            if (Project.Current != null)
                             {
-                                ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0f, 0.5f));
-
-                                if (ImGui.Button(Icon.FOLDERO + " " + Path.GetFileName(Path.GetDirectoryName(directory + "/t.txt")), new Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
+                                if (!filter.IsActive())
                                 {
-                                    ChangeDir(directory);
-                                }
+                                    foreach (string directory in Directory.GetDirectories(currentDirRight))
+                                    {
+                                        ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0f, 0.5f));
 
-                                ImGui.PopStyleVar();
+                                        if (ImGui.Button(Icon.FOLDERO + " " + Path.GetFileName(Path.GetDirectoryName(directory + "/t.txt")), new Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
+                                        {
+                                            ChangeDir(directory);
+                                        }
+
+                                        ImGui.PopStyleVar();
+                                    }
+
+
+                                    ShowFiles(currentDirRight);
+                                }
+                                else
+                                {
+                                    foreach (string file in templist)
+                                    {
+                                        ShowFile(file);
+                                    }
+                                }
                             }
 
-
-                            foreach (string file in Directory.GetFiles(currentDirRight))
-                            {
-                                ImGui.BeginGroup();
-
-                                string icon = "";
-
-                                for (int i = 0; i < audiosFormat.Length; i++) 
-                                {
-                                    if (Path.GetExtension(file).Contains(audiosFormat[i])) 
-                                    {
-                                        icon = Icon.FILEAUDIOO;
-                                    }
-                                }
-
-                                for (int i = 0; i < filesFormat.Length; i++)
-                                {
-                                    if (Path.GetExtension(file).Contains(filesFormat[i]))
-                                    {
-                                        icon = Icon.FILETEXT;
-                                    }
-                                }
-
-                                for (int i = 0; i < imagesFormat.Length; i++)
-                                {
-                                    if (Path.GetExtension(file).Contains(imagesFormat[i]))
-                                    {
-                                        icon = Icon.FILEIMAGEO;
-                                    }
-                                }
-
-                                for (int i = 0; i < videoFormat.Length; i++)
-                                {
-                                    if (Path.GetExtension(file).Contains(videoFormat[i]))
-                                    {
-                                        icon = Icon.FILEVIDEOO;
-                                    }
-                                }
-
-                                ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0f, 0.5f));
-
-                                if (ImGui.Button(icon + " " + Path.GetFileName(file), new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
-                                {
-                                }
-
-                                ImGui.PopStyleVar();
-
-                                ImGui.EndGroup();
-                            }
+                            ImGui.PopStyleVar();
+                            ImGui.PopStyleColor();
                         }
 
-                        ImGui.PopStyleVar();
-                        ImGui.PopStyleColor();
-                    }
+                        ImGui.EndChild();
 
-                    ImGui.EndChild();
+                    }
                 }
 
                 ImGui.EndChild();
@@ -196,6 +195,123 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.End();
 
+        }
+
+        private void ShowFile(string file)
+        {
+            ImGui.BeginGroup();
+
+            string icon = "";
+
+            for (int i = 0; i < audiosFormat.Length; i++)
+            {
+                if (Path.GetExtension(file).Contains(audiosFormat[i]))
+                {
+                    icon = Icon.FILEAUDIOO;
+                }
+            }
+
+            for (int i = 0; i < filesFormat.Length; i++)
+            {
+                if (Path.GetExtension(file).Contains(filesFormat[i]))
+                {
+                    icon = Icon.FILETEXT;
+                }
+            }
+
+            for (int i = 0; i < imagesFormat.Length; i++)
+            {
+                if (Path.GetExtension(file).Contains(imagesFormat[i]))
+                {
+                    icon = Icon.FILEIMAGEO;
+                }
+            }
+
+            for (int i = 0; i < videoFormat.Length; i++)
+            {
+                if (Path.GetExtension(file).Contains(videoFormat[i]))
+                {
+                    icon = Icon.FILEVIDEOO;
+                }
+            }
+
+
+
+            if (!icon.Equals(""))
+            {
+                ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0f, 0.5f));
+
+                if (ImGui.Button(icon + " " + Path.GetFileName(file), new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
+                {
+                }
+                ImGui.PopStyleVar();
+            }
+
+
+
+
+
+            ImGui.EndGroup();
+        }
+
+        private void ShowFiles(string currentDir)
+        {
+            foreach (string file in Directory.GetFiles(currentDir))
+            {
+                ImGui.BeginGroup();
+
+                string icon = "";
+
+                for (int i = 0; i < audiosFormat.Length; i++)
+                {
+                    if (Path.GetExtension(file).Contains(audiosFormat[i]))
+                    {
+                        icon = Icon.FILEAUDIOO;
+                    }
+                }
+
+                for (int i = 0; i < filesFormat.Length; i++)
+                {
+                    if (Path.GetExtension(file).Contains(filesFormat[i]))
+                    {
+                        icon = Icon.FILETEXT;
+                    }
+                }
+
+                for (int i = 0; i < imagesFormat.Length; i++)
+                {
+                    if (Path.GetExtension(file).Contains(imagesFormat[i]))
+                    {
+                        icon = Icon.FILEIMAGEO;
+                    }
+                }
+
+                for (int i = 0; i < videoFormat.Length; i++)
+                {
+                    if (Path.GetExtension(file).Contains(videoFormat[i]))
+                    {
+                        icon = Icon.FILEVIDEOO;
+                    }
+                }
+
+                
+
+                if (!icon.Equals("")) 
+                {
+                    ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0f, 0.5f));
+
+                    if (ImGui.Button(icon + " " + Path.GetFileName(file), new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
+                    {
+                    }
+                    ImGui.PopStyleVar();
+                }
+
+              
+
+               
+
+                ImGui.EndGroup();
+            }
         }
 
         private void MoveToDir(string folderButton)
@@ -243,7 +359,7 @@ namespace Alis.Editor.UI.Widgets
         {
             foreach (string directory in Directory.GetDirectories(currentDir))
             {
-                if (ImGui.TreeNodeEx(Path.GetFileName(Path.GetDirectoryName(directory + "/t.txt")), ImGuiTreeNodeFlags.OpenOnArrow | ImGuiTreeNodeFlags.OpenOnDoubleClick))
+                if (ImGui.TreeNodeEx(Icon.FOLDERO + " " + Path.GetFileName(Path.GetDirectoryName(directory + "/t.txt")), ImGuiTreeNodeFlags.OpenOnArrow | ImGuiTreeNodeFlags.OpenOnDoubleClick))
                 {
                     if (ImGui.IsItemClicked() && (ImGui.GetMousePos().X - ImGui.GetItemRectMin().X) > ImGui.GetTreeNodeToLabelSpacing())
                     {
@@ -251,6 +367,10 @@ namespace Alis.Editor.UI.Widgets
                     }
 
                     ShowTree(directory);
+
+                    ShowFiles(directory);
+
+                    
 
                     ImGui.TreePop();
                 }

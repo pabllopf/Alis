@@ -16,7 +16,11 @@ namespace SFML
                     new Scene("MainMenu",
                         new GameObject("Player",
                             new Transform(new Vector3(0f), new Vector3(0f),new Vector3(1)), 
-                            new Sprite("alis.png", Application.ProjectPath)),
+                            new Sprite("alis.png", Application.ProjectPath, 1)),
+
+                          new GameObject("Player",
+                            new Transform(new Vector3(100f), new Vector3(1f), new Vector3(1)),
+                            new Sprite("alis.png", Application.ProjectPath, -1)),
 
                         new GameObject("SoundTrack",
                             new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1)),

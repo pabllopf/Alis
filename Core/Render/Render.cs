@@ -83,10 +83,9 @@ namespace Alis.Core
             renderWindow.DispatchEvents();
             renderWindow.Clear();
 
-
-            sprites = sprites.OrderBy(o => o.Depth).ToList();
-            foreach (Sprite sprite in sprites)
+            foreach (Sprite sprite in sprites.OrderBy(o => o.Depth).ToList())
             {
+                Debug.Log("sprite:::" + sprite.ImageFile + " " + sprite.Depth);
                 renderWindow.Draw(sprite.GetSprite);
             }
 
