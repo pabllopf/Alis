@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['imguinet_1102',['ImGuiNET',['../namespace_im_gui_n_e_t.html',1,'']]]
+  ['core_1114',['Core',['../namespace_core.html',1,'']]]
 ];

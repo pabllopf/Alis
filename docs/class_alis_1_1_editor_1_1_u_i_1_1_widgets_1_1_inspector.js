@@ -6,6 +6,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector =
     [ "SeeObjComponents", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aa6daac505fce5bba2d1f315a1606f9bb", null ],
     [ "AddNewAudiosource", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a3aa2da7e86b2c1fd5928a9acf48953a1", null ],
     [ "AddNewSprite", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a7c89bf9c2c1f9b15735c6cc85be0116c", null ],
+    [ "AddNewAnimator", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ab7e1d73e5511b56cdfe5046c4e016b7a", null ],
     [ "SelectGameObject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a91228a192cde55c754448336e7db2694", null ],
     [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae0dda2c2775c8951977b2fd892464961", null ],
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a755faebf2288ba972b6d24ef320b2350", null ],
