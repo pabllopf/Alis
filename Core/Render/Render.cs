@@ -46,6 +46,8 @@ namespace Alis.Core
             this.renderTexture = new RenderTexture(512, 512);
             this.sprites = new List<Sprite>();
 
+           
+
             Debug.Log("Start the render");
         }
 
@@ -78,15 +80,20 @@ namespace Alis.Core
             {
                 renderWindow = new RenderWindow(videoMode, title);
                 renderWindow.Closed += Window_Closed;
+                Debug.Log("Create window");
             }
 
             renderWindow.DispatchEvents();
             renderWindow.Clear();
 
-            foreach (Sprite sprite in sprites.OrderBy(o => o.Depth).ToList())
+            if (sprites.Count > 0)
             {
-                Debug.Log("sprite:::" + sprite.ImageFile + " " + sprite.Depth);
-                renderWindow.Draw(sprite.GetSprite);
+                sprites = sprites.OrderBy(o => o.Depth).ToList();
+                foreach (Sprite sprite in sprites)
+                {
+                    //Debug.Log("sprite:::" + sprite.ImageFile + " " + sprite.Depth);
+                    renderWindow.Draw(sprite.GetSprite);
+                }
             }
 
             renderWindow.Display();

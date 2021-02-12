@@ -6,6 +6,7 @@ namespace Alis.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading;
     using Alis.Tools;
     using Newtonsoft.Json;
 
@@ -144,12 +145,6 @@ namespace Alis.Core
         /// <summary>Runs this instance.</summary>
         public void Run() 
         {
-            if (currentScene == null)
-            {
-                currentScene = scenes[0];
-                Debug.Warning("CurrentScene: " + currentScene.Name);
-            }
-
             currentScene = scenes[0];
 
             isRunning = true;
@@ -157,11 +152,15 @@ namespace Alis.Core
             currentScene.Start();
 
             Debug.Log("Run the videogame.");
+
+
             while (isRunning) 
             {
                 Input.PollEvents();
                 currentScene.Update();
                 Render.Current.RenderDisplay();
+
+                Thread.Sleep(1);
             }
 
             Debug.Log("Exit of videogame.");
