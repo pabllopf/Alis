@@ -2,7 +2,10 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager =
 [
     [ "AssetsManager", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ad99d9a8903a2770c222e7a490a7925bf", null ],
     [ "Project_OnChangeProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aea80c6e3af0bf6209660a0ff38035318", null ],
+    [ "ButtonSpecial", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a761e9ee883286b02f9f7b1cb5dcc7faa", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a152318986df146db4a46d3db007007a9", null ],
+    [ "ShowFile", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#abba07054aacedcf2391313d663acf97b", null ],
+    [ "ShowFiles", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a02b3191ebfd6caaae98cf2ab3a9ff2c3", null ],
     [ "MoveToDir", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a96905d8029281b270abf12b08c70c5de", null ],
     [ "GetNameDir", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ac436fd3c26f3b99fb34df658c92d5983", null ],
     [ "ShowTree", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a4d8770133668ce4ac4253bb8bdec4656", null ],
@@ -19,5 +22,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager =
     [ "imagesFormat", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aa8fe21d62e7f674b7194d02891354678", null ],
     [ "audiosFormat", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ac44e3543b02983153a39c4b4361968bd", null ],
     [ "filesFormat", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ad727d629980191b3ffd753be64913543", null ],
-    [ "videoFormat", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a6027fef8b9dafcb136ffdc01f4d4a3f8", null ]
+    [ "videoFormat", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a6027fef8b9dafcb136ffdc01f4d4a3f8", null ],
+    [ "templist", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a2a7ead11b67a9eb5965f02f18490925d", null ],
+    [ "stateOfView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#aaebd3ca6c8e681f69e67d69b4d3244ee", null ]
 ];
