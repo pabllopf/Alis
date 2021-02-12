@@ -54,5 +54,6 @@ var searchData=
   ['button_158',['button',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a2d31e53a7fc03a15c3ee726b892fb63f',1,'Alis::Editor::UI::Widgets::DockSpace']]],
   ['buttondefault_159',['buttonDefault',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae59aa98b309aaec3d473f39216931d65',1,'Alis::Editor::UI::Widgets::Console']]],
   ['buttonpressed_160',['buttonPressed',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a1e9e5730bba9195af552ddb33c5d4b15',1,'Alis::Editor::UI::Widgets::Console']]],
-  ['buysellads_161',['BUYSELLADS',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ab5a4a2cd6ec03ba7729201ed2d40d96d',1,'Alis::Editor::Utils::Icon']]]
+  ['buttonspecial_161',['ButtonSpecial',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a761e9ee883286b02f9f7b1cb5dcc7faa',1,'Alis::Editor::UI::Widgets::AssetsManager']]],
+  ['buysellads_162',['BUYSELLADS',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ab5a4a2cd6ec03ba7729201ed2d40d96d',1,'Alis::Editor::Utils::Icon']]]
 ];
