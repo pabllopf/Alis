@@ -125,16 +125,29 @@ namespace Alis.Editor.UI.Widgets
                 if (ImGui.BeginChild("Assets-Child-Master"))
                 {
 
+                    
+
                     if (ImGui.BeginChild("Assets-Child-Left", new Vector2((ImGui.GetWindowWidth() <= ImGui.GetWindowHeight()) ? ImGui.GetContentRegionAvail().X : ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y), true))
                     {
                         if (Project.Current != null)
                         {
                             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
                             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
-                            if (Project.Current != null)
-                            {
-                                ShowTree(Project.Current.AssetsPath);
 
+                            if (!filter.IsActive())
+                            {
+                                if (Project.Current != null)
+                                {
+                                    ShowTree(Project.Current.AssetsPath);
+
+                                }
+                            }
+                            else 
+                            {
+                                foreach (string file in templist)
+                                {
+                                    ShowFile(file);
+                                }
                             }
 
                             ImGui.PopStyleVar();
@@ -143,6 +156,8 @@ namespace Alis.Editor.UI.Widgets
                     }
 
                     ImGui.EndChild();
+
+
 
                     ImGui.SameLine();
 
