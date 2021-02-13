@@ -1,5 +1,6 @@
 ﻿using Alis.Core;
 using Alis.Tools;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace SFML
@@ -16,17 +17,80 @@ namespace SFML
                     new Scene("MainMenu",
                         new GameObject("Player",
                             new Transform(new Vector3(0f), new Vector3(0f),new Vector3(1)), 
-                            new Sprite("alis.png", Application.ProjectPath, 1)),
-
-                          new GameObject("Player",
-                            new Transform(new Vector3(100f), new Vector3(1f), new Vector3(1)),
-                            new Sprite("alis.png", Application.ProjectPath, -1)),
+                            new Sprite("tile000.png", Application.ProjectPath, 1),
+                            new Move(),
+                            new Animator(0, 
+                                new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
+                                new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
+                                new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
+                                new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
+                            )
+                        ),
 
                         new GameObject("SoundTrack",
                             new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1)),
-                            new AudioSource("soundtrack.wav", Application.ProjectPath, true, 1f))
+                            new AudioSource("menu.wav", Application.ProjectPath, true, 1f))
                     )
             ).Run();
         }
-    }       
+
+
+    }
+
+
+    /// <summary>
+    ///   <br />
+    /// </summary>
+    public class Move : IComponent
+    {
+        private Transform transform;
+
+        private Animator animator;
+
+        /// <summary>Starts the specified transform.</summary>
+        /// <param name="gameObject"></param>
+        public void Start(GameObject gameObject)
+        {
+            Input.OnPressKey += Input_OnPressKey;
+
+            animator = (Animator)gameObject.Components.Find(i => i.GetType().Equals(typeof(Animator)));
+            transform = gameObject.Transform;
+
+            //throw new global::System.NotImplementedException();
+        }
+
+        private void Input_OnPressKey(object sender, Window.Keyboard.Key key)
+        {
+            if (key.Equals(Window.Keyboard.Key.S)) 
+            {
+                animator.State = 0;
+                transform.Position += new Vector3(0, 0.1f, 0);
+            }
+
+            if (key.Equals(Window.Keyboard.Key.D))
+            {
+                animator.State = 1;
+                transform.Position += new Vector3(0.1f, 0, 0);
+            }
+
+            if (key.Equals(Window.Keyboard.Key.W))
+            {
+                animator.State = 2;
+                transform.Position += new Vector3(0, -0.1f, 0);
+            }
+
+            if (key.Equals(Window.Keyboard.Key.A))
+            {
+                animator.State = 3;
+                transform.Position += new Vector3(-0.1f, 0, 0);
+            }
+        }
+
+        /// <summary>Updates the specified transform.</summary>
+        /// <param name="gameObject"></param>
+        public void Update(GameObject gameObject)
+        {
+            //throw new global::System.NotImplementedException();
+        }
+    }
 }

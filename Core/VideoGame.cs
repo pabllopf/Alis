@@ -159,8 +159,6 @@ namespace Alis.Core
                 Input.PollEvents();
                 currentScene.Update();
                 Render.Current.RenderDisplay();
-
-                Thread.Sleep(1);
             }
 
             Debug.Log("Exit of videogame.");

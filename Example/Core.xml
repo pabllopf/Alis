@@ -11,5 +11,18 @@
             <summary>Defines the entry point of the application.</summary>
             <param name="args">The arguments.</param>
         </member>
+        <member name="T:SFML.Move">
+            <summary>
+              <br />
+            </summary>
+        </member>
+        <member name="M:SFML.Move.Start(Alis.Core.GameObject)">
+            <summary>Starts the specified transform.</summary>
+            <param name="gameObject"></param>
+        </member>
+        <member name="M:SFML.Move.Update(Alis.Core.GameObject)">
+            <summary>Updates the specified transform.</summary>
+            <param name="gameObject"></param>
+        </member>
     </members>
 </doc>

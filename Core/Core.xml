@@ -4,12 +4,92 @@
         <name>Core</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Animator">
-            <summary>Define components.</summary>
+        <member name="T:Alis.Core.Animation">
+            <summary>Define animation of sprite.</summary>
         </member>
-        <member name="P:Alis.Core.Animator.Images">
-            <summary>Gets or sets the images.</summary>
-            <value>The images.</value>
+        <member name="F:Alis.Core.Animation.name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Core.Animation.state">
+            <summary>The state</summary>
+        </member>
+        <member name="F:Alis.Core.Animation.images">
+            <summary>The images</summary>
+        </member>
+        <member name="F:Alis.Core.Animation.textures">
+            <summary>The textures</summary>
+        </member>
+        <member name="F:Alis.Core.Animation.index">
+            <summary>The index</summary>
+        </member>
+        <member name="F:Alis.Core.Animation.speed">
+            <summary>The speed</summary>
+        </member>
+        <member name="M:Alis.Core.Animation.#ctor(System.String,System.Int32,System.Single,System.String[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Animation" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="state">The state.</param>
+            <param name="speed">The speed.</param>
+            <param name="images">The images.</param>
+        </member>
+        <member name="P:Alis.Core.Animation.Name">
+            <summary>Gets or sets the name.</summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Alis.Core.Animation.State">
+            <summary>Gets or sets the state.</summary>
+            <value>The state.</value>
+        </member>
+        <member name="P:Alis.Core.Animation.Speed">
+            <summary>Gets or sets the speed.</summary>
+            <value>The speed.</value>
+        </member>
+        <member name="P:Alis.Core.Animation.Texture">
+            <summary>Gets the texture.</summary>
+            <value>The texture.</value>
+        </member>
+        <member name="M:Alis.Core.Animation.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="T:Alis.Core.Animator">
+            <summary>Define animation of sprite.</summary>
+        </member>
+        <member name="F:Alis.Core.Animator.sprite">
+            <summary>The sprite</summary>
+        </member>
+        <member name="F:Alis.Core.Animator.state">
+            <summary>The state</summary>
+        </member>
+        <member name="F:Alis.Core.Animator.clock">
+            <summary>The clock</summary>
+        </member>
+        <member name="F:Alis.Core.Animator.animations">
+            <summary>The animations</summary>
+        </member>
+        <member name="M:Alis.Core.Animator.#ctor(System.Int32,Alis.Core.Animation[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Animator" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="state">The state.</param>
+            <param name="animations">The animations.</param>
+        </member>
+        <member name="P:Alis.Core.Animator.State">
+            <summary>Gets or sets the state.</summary>
+            <value>The state.</value>
+        </member>
+        <member name="M:Alis.Core.Animator.Start(Alis.Core.GameObject)">
+            <summary>Starts the specified transform.</summary>
+            <param name="gameObject"></param>
+        </member>
+        <member name="M:Alis.Core.Animator.Update(Alis.Core.GameObject)">
+            <summary>Updates the specified transform.</summary>
+            <param name="gameObject"></param>
+        </member>
+        <member name="M:Alis.Core.Animator.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>return display</returns>
         </member>
         <member name="T:Alis.Core.AudioSource">
             <summary>Control the audio of game object.</summary>
