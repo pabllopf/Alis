@@ -308,7 +308,6 @@ namespace Alis.Editor.UI.Widgets
 
         private static void DrawListField(IComponent component, PropertyInfo property)
         {
-
         }
 
 

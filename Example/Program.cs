@@ -15,21 +15,8 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
-            Type type = typeof(IComponent);
-            IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(p => type.IsAssignableFrom(p));
 
-            foreach (var component in types) 
-            {
-                if (!component.Name.Equals("IComponent")) 
-                {
-                    Console.WriteLine("Component: " + component.Name);
-                }
-                
-            }
-
-            /*
+            
             new VideoGame(
                 new ConfigGame("Example"),
                     new Scene("MainMenu",
@@ -49,7 +36,7 @@ namespace SFML
                             new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1)),
                             new AudioSource("menu.wav", Application.ProjectPath, true, 1f))
                     )
-            ).Run();*/
+            ).Run();
         }
 
 
