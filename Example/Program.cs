@@ -1,6 +1,8 @@
 ﻿using Alis.Core;
 using Alis.Tools;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 
 namespace SFML
@@ -8,10 +10,26 @@ namespace SFML
     /// <summary>Example of videogame.</summary>
     public class Program
     {
+
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
+            Type type = typeof(IComponent);
+            IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => type.IsAssignableFrom(p));
+
+            foreach (var component in types) 
+            {
+                if (!component.Name.Equals("IComponent")) 
+                {
+                    Console.WriteLine("Component: " + component.Name);
+                }
+                
+            }
+
+            /*
             new VideoGame(
                 new ConfigGame("Example"),
                     new Scene("MainMenu",
@@ -31,7 +49,7 @@ namespace SFML
                             new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1)),
                             new AudioSource("menu.wav", Application.ProjectPath, true, 1f))
                     )
-            ).Run();
+            ).Run();*/
         }
 
 

@@ -16,6 +16,9 @@ namespace Alis.Core
     [JsonObject(MemberSerialization.OptIn)]
     public class Sprite : IComponent
     {
+        /// <summary>The icon</summary>
+        private readonly string icon = "\uf1fc";
+
         /// <summary>The image file</summary>
         private string imageFile;
 
@@ -78,35 +81,20 @@ namespace Alis.Core
         /// <summary>Gets or sets the path.</summary>
         /// <value>The path.</value>
         [JsonProperty]
-        public string Path
-        {
-            get => path;
-            set
-            {
-                path = value;
-                if (!File.Exists(path + imageFile))
-                {
-                    Debug.Log("invalidFile name file to: " + path + imageFile);
-                    if (sprite != null && texture != null)
-                    {
-                        if (Render.Current != null)
-                        {
-                            if (Render.Current.Exits(this))
-                            {
-                                Render.Current.DeleteSprite(this);
-                                sprite = null;
-                                texture = null;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        public string Path => path;
 
+        /// <summary>Gets or sets the get sprite.</summary>
+        /// <value>The get sprite.</value>
         public SFML.Graphics.Sprite GetSprite { get => sprite; set => sprite = value; }
 
+        /// <summary>Gets or sets the depth.</summary>
+        /// <value>The depth.</value>
         [JsonProperty]
         public int Depth { get => depth; set => depth = value; }
+
+        /// <summary>Gets the icon.</summary>
+        /// <value>The icon.</value>
+        public string Icon => icon;
 
         /// <summary>Starts this instance.</summary>
         public void Start()

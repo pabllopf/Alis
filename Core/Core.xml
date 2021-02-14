@@ -57,6 +57,9 @@
         <member name="T:Alis.Core.Animator">
             <summary>Define animation of sprite.</summary>
         </member>
+        <member name="F:Alis.Core.Animator.icon">
+            <summary>The icon</summary>
+        </member>
         <member name="F:Alis.Core.Animator.sprite">
             <summary>The sprite</summary>
         </member>
@@ -79,6 +82,14 @@
             <summary>Gets or sets the state.</summary>
             <value>The state.</value>
         </member>
+        <member name="P:Alis.Core.Animator.Icon">
+            <summary>Gets the icon.</summary>
+            <value>The icon.</value>
+        </member>
+        <member name="P:Alis.Core.Animator.Animations">
+            <summary>Gets or sets the animations.</summary>
+            <value>The animations.</value>
+        </member>
         <member name="M:Alis.Core.Animator.Start(Alis.Core.GameObject)">
             <summary>Starts the specified transform.</summary>
             <param name="gameObject"></param>
@@ -93,6 +104,9 @@
         </member>
         <member name="T:Alis.Core.AudioSource">
             <summary>Control the audio of game object.</summary>
+        </member>
+        <member name="F:Alis.Core.AudioSource.icon">
+            <summary>The icon</summary>
         </member>
         <member name="F:Alis.Core.AudioSource.audioFile">
             <summary>The file</summary>
@@ -142,6 +156,10 @@
             <summary>Gets or sets the volume.</summary>
             <value>The volume.</value>
         </member>
+        <member name="P:Alis.Core.AudioSource.Icon">
+            <summary>Gets the icon.</summary>
+            <value>The icon.</value>
+        </member>
         <member name="M:Alis.Core.AudioSource.Play">
             <summary>Plays this instance.</summary>
         </member>
@@ -182,6 +200,9 @@
         <member name="T:Alis.Core.Sprite">
             <summary>Define sprite to draw on game.</summary>
         </member>
+        <member name="F:Alis.Core.Sprite.icon">
+            <summary>The icon</summary>
+        </member>
         <member name="F:Alis.Core.Sprite.imageFile">
             <summary>The image file</summary>
         </member>
@@ -213,6 +234,18 @@
             <summary>Gets or sets the path.</summary>
             <value>The path.</value>
         </member>
+        <member name="P:Alis.Core.Sprite.GetSprite">
+            <summary>Gets or sets the get sprite.</summary>
+            <value>The get sprite.</value>
+        </member>
+        <member name="P:Alis.Core.Sprite.Depth">
+            <summary>Gets or sets the depth.</summary>
+            <value>The depth.</value>
+        </member>
+        <member name="P:Alis.Core.Sprite.Icon">
+            <summary>Gets the icon.</summary>
+            <value>The icon.</value>
+        </member>
         <member name="M:Alis.Core.Sprite.Start">
             <summary>Starts this instance.</summary>
         </member>
@@ -229,6 +262,55 @@
         </member>
         <member name="M:Alis.Core.Sprite.CheckTexture">
             <summary>Checks the texture.</summary>
+        </member>
+        <member name="T:Alis.Core.Transform">
+            <summary>Manage the position of the game object on a scene.</summary>
+        </member>
+        <member name="F:Alis.Core.Transform.icon">
+            <summary>The icon</summary>
+        </member>
+        <member name="F:Alis.Core.Transform.position">
+            <summary>The position</summary>
+        </member>
+        <member name="F:Alis.Core.Transform.rotation">
+            <summary>The rotation</summary>
+        </member>
+        <member name="F:Alis.Core.Transform.size">
+            <summary>The size</summary>
+        </member>
+        <member name="M:Alis.Core.Transform.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
+            <param name="position">The position.</param>
+            <param name="rotation">The rotation.</param>
+            <param name="size">size object</param>
+        </member>
+        <member name="P:Alis.Core.Transform.Position">
+            <summary>Gets or sets the position.</summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:Alis.Core.Transform.Rotation">
+            <summary>Gets or sets the rotation.</summary>
+            <value>The rotation.</value>
+        </member>
+        <member name="P:Alis.Core.Transform.Size">
+            <summary>Gets or sets the size.</summary>
+            <value>The size.</value>
+        </member>
+        <member name="P:Alis.Core.Transform.Icon">
+            <summary>Gets the icon.</summary>
+            <value>The icon.</value>
+        </member>
+        <member name="M:Alis.Core.Transform.Start(Alis.Core.GameObject)">
+            <summary>Starts the specified transform.</summary>
+            <param name="gameObject"></param>
+        </member>
+        <member name="M:Alis.Core.Transform.Update(Alis.Core.GameObject)">
+            <summary>Updates the specified transform.</summary>
+            <param name="gameObject"></param>
+        </member>
+        <member name="M:Alis.Core.Transform.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Core.ConfigGame">
             <summary>Define a config. </summary>
@@ -425,40 +507,6 @@
             <summary>Manage the scenes of game.</summary>
         </member>
         <member name="M:Alis.Core.SceneManager.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
-        </member>
-        <member name="T:Alis.Core.Transform">
-            <summary>Manage the position of the game object on a scene.</summary>
-        </member>
-        <member name="F:Alis.Core.Transform.position">
-            <summary>The position</summary>
-        </member>
-        <member name="F:Alis.Core.Transform.rotation">
-            <summary>The rotation</summary>
-        </member>
-        <member name="F:Alis.Core.Transform.size">
-            <summary>The size</summary>
-        </member>
-        <member name="M:Alis.Core.Transform.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
-            <param name="position">The position.</param>
-            <param name="rotation">The rotation.</param>
-            <param name="size">size object</param>
-        </member>
-        <member name="P:Alis.Core.Transform.Position">
-            <summary>Gets or sets the position.</summary>
-            <value>The position.</value>
-        </member>
-        <member name="P:Alis.Core.Transform.Rotation">
-            <summary>Gets or sets the rotation.</summary>
-            <value>The rotation.</value>
-        </member>
-        <member name="P:Alis.Core.Transform.Size">
-            <summary>Gets or sets the size.</summary>
-            <value>The size.</value>
-        </member>
-        <member name="M:Alis.Core.Transform.GetDebuggerDisplay">
             <summary>Gets the debugger display.</summary>
             <returns>Debug string</returns>
         </member>

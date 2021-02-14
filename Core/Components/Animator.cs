@@ -14,6 +14,9 @@ namespace Alis.Core
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Animator : IComponent
     {
+        /// <summary>The icon</summary>
+        private readonly string icon = "\uf03d";
+
         /// <summary>The sprite</summary>
         private Sprite sprite;
 
@@ -36,7 +39,7 @@ namespace Alis.Core
             this.state = state;
             this.animations = new List<Animation>();
             this.clock = new Clock();
-            List<Animation> temp = animations.ToList().OrderBy(o => o.State).ToList();
+            List<Animation> temp = animations !=null ? animations.ToList().OrderBy(o => o.State).ToList() : new List<Animation>();
 
             foreach (Animation anim in temp) 
             {
@@ -55,6 +58,15 @@ namespace Alis.Core
         /// <value>The state.</value>
         [JsonProperty]
         public int State { get => state; set => state = value; }
+
+        /// <summary>Gets the icon.</summary>
+        /// <value>The icon.</value>
+        public string Icon => icon;
+
+        /// <summary>Gets or sets the animations.</summary>
+        /// <value>The animations.</value>
+        [JsonProperty]
+        public List<Animation> Animations { get => animations; set => animations = value; }
 
         /// <summary>Starts the specified transform.</summary>
         /// <param name="gameObject"></param>

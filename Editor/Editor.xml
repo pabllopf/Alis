@@ -649,14 +649,14 @@
         <member name="M:Alis.Editor.UI.Widgets.Inspector.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Inspector" /> class.</summary>
         </member>
+        <member name="M:Alis.Editor.UI.Widgets.Inspector.Open">
+            <summary>Opens this instance.</summary>
+        </member>
         <member name="M:Alis.Editor.UI.Widgets.Inspector.Close">
             <summary>Closes this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Inspector.Draw">
             <summary>Draws this instance.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Inspector.Open">
-            <summary>Opens this instance.</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.ProjectManager">
             <summary>Create new project. </summary>

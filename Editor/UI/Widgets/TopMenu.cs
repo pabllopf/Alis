@@ -340,69 +340,12 @@ namespace Alis.Editor.UI.Widgets
 
                 BuildAsync(info);
             }).Start();
-
-
-            
-
-
-
-
-            /*System.Diagnostics.Process processto = new System.Diagnostics.Process();
-            System.Diagnostics.ProcessStartInfo startInfogod = new System.Diagnostics.ProcessStartInfo();
-
-            System.Diagnostics.Process processRun = new System.Diagnostics.Process();
-            System.Diagnostics.ProcessStartInfo startInfoRun = new System.Diagnostics.ProcessStartInfo();
-
-            if (info.Platform.Equals(Platform.Windows))
-            {
-                startInfogod.FileName = "cmd";
-                startInfogod.Arguments = "/C dotnet build --configuration Windows";
-                startInfogod.WorkingDirectory = Project.Current.Directory;
-                startInfogod.UseShellExecute = true;
-                processto.StartInfo = startInfogod;
-                processto.Start();
-                Console.Current.Log("Builded");
-
-                processto.WaitForExit();
-
-                startInfoRun.FileName = "cmd";
-                startInfoRun.Arguments = "/C " + Project.Current.Name + ".exe";
-                startInfoRun.WorkingDirectory = Project.Current.Directory + "/bin/Windows/netcoreapp3.1";
-                startInfoRun.UseShellExecute = true;
-                processRun.StartInfo = startInfoRun;
-                processRun.Start();
-                Console.Current.Log("Running");
-            }
-
-            if (info.Platform.Equals(Platform.MacOS))
-            {
-                startInfogod.FileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
-            }
-
-            if (info.Platform.Equals(Platform.Linux))
-            {
-                startInfogod.FileName = "/bin/bash";
-                startInfogod.Arguments = "-c \" " + "exo-open --launch TerminalEmulator  && dotnet publish -r debian.8-x64 -c Linux  -o ./bin/Linux/debian --self-contained true" + " \" ";
-                startInfogod.WorkingDirectory = Project.Current.Directory;
-                startInfogod.UseShellExecute = true;
-                processto.StartInfo = startInfogod;
-                processto.Start();
-                Console.Current.Log("Builded");
-
-                processto.WaitForExit();
-
-                startInfoRun.FileName = "/bin/bash";
-                startInfoRun.Arguments = "-c \" " + "exo-open --launch TerminalEmulator  && ./" + Project.Current.Name + " \" ";
-                startInfoRun.WorkingDirectory = Project.Current.Directory + "/bin/Linux/debian";
-                startInfoRun.UseShellExecute = true;
-                processRun.StartInfo = startInfoRun;
-                processRun.Start();
-                Console.Current.Log("Running");
-            }*/
         }
 
         private void BuildAsync(Info info)
         {
+            LocalData.Save("Data", Project.Current.VideoGame);
+
             string fileName = "cmd.exe";
             string cleanCommand = "dotnet restore";
             string buildCommand = "dotnet build --configuration Windows";

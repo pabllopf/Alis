@@ -81,6 +81,7 @@ namespace Alis.Core
 
         /// <summary>Gets the texture.</summary>
         /// <value>The texture.</value>
+        [JsonProperty]
         public Texture Texture
         {
             get

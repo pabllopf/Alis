@@ -11,10 +11,35 @@ namespace Alis.Editor.UI.Widgets
     using System.Numerics;
     using Alis.Tools;
     using System.Collections.Generic;
+    using System.Reflection;
+    using System.Linq;
 
     /// <summary>Manage components of scene.</summary>
     public class Inspector : Widget
     {
+        private readonly Dictionary<Type, Action<IComponent, PropertyInfo>> fields = new Dictionary<Type, Action<IComponent, PropertyInfo>>()
+        {
+            { typeof(bool), DrawBoolField },
+            { typeof(string), DrawStringField },
+            { typeof(int), DrawIntField },
+            { typeof(float), DrawFloatField },
+            { typeof(byte), DrawByteField },
+            { typeof(long), DrawLongField },
+            { typeof(double), DrawDoubleField },
+            { typeof(Vector2), DrawVector2Field },
+            { typeof(Vector3), DrawVector3Field },
+            { typeof(List<>), DrawListField },
+        };
+
+       
+
+        private readonly Dictionary<Type, Action<GameObject>> constructors = new Dictionary<Type, Action<GameObject>>()
+        {
+            { typeof(Sprite), NewSprite },
+            { typeof(Animator), NewAnimator },
+            { typeof(AudioSource), NewAudiosource }
+        };
+
         private static Inspector current;
 
         /// <summary>The name</summary>
@@ -25,11 +50,16 @@ namespace Alis.Editor.UI.Widgets
         private bool focus;
 
         public static Inspector Current { get => current; set => current = value; }
-        public  GameObject GameObject { get => gameObject; set => gameObject = value; }
+        public GameObject GameObject { get => gameObject; set => gameObject = value; }
         public bool Focus { get => focus; set => focus = value; }
 
         /// <summary>Initializes a new instance of the <see cref="Inspector" /> class.</summary>
         public Inspector()
+        {
+        }
+
+        /// <summary>Opens this instance.</summary>
+        public override void Open()
         {
         }
 
@@ -38,13 +68,10 @@ namespace Alis.Editor.UI.Widgets
         {
         }
 
-        
-
-
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-            if (focus) 
+            if (focus)
             {
                 ImGui.SetNextWindowFocus();
                 focus = false;
@@ -52,9 +79,9 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin("Inspector"))
             {
-                if (Project.Current != null) 
+                if (Project.Current != null)
                 {
-                    if (gameObject != null) 
+                    if (gameObject != null)
                     {
                         SeeObjComponents(gameObject);
                     }
@@ -64,226 +91,240 @@ namespace Alis.Editor.UI.Widgets
             ImGui.End();
         }
 
-        private Vector4 childBackground = new Vector4(0, 0, 0, 0);
-
         private void SeeObjComponents(GameObject gameObject)
         {
-            ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
-            ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
+            ImGui.BeginGroup();
+            ImGui.BeginChild("GameObject-Child", new Vector2(ImGui.GetContentRegionAvail().X, 80.0f), true);
 
-            ImGui.AlignTextToFramePadding();
+            string content = gameObject.Name;
 
-            foreach (var propertyInfo in gameObject.Transform.GetType().GetProperties())
+            ImGui.Text("Name: ");
+
+            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 25.0f);
+
+            if (ImGui.InputText(Icon.CUBE  + " ##" + gameObject.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
             {
-                if (propertyInfo.PropertyType.Equals(typeof(Vector3)))
-                {
-                    ImGui.Text(propertyInfo.Name);
-                    ImGui.Columns(3, propertyInfo.Name, true);
-                    Vector3 content = (Vector3)propertyInfo.GetValue(gameObject.Transform);
-                    float x = content.X;
-
-                    if (ImGui.InputFloat("X" + "## " + propertyInfo.Name, ref x))
-                    {
-                        content.X = x;
-                        propertyInfo.SetValue(gameObject.Transform, content);
-                    }
-
-                    ImGui.NextColumn();
-
-                    float y = content.Y;
-                    if (ImGui.InputFloat("Y" + "## " + propertyInfo.Name, ref y))
-                    {
-                        content.Y = y;
-                        propertyInfo.SetValue(gameObject.Transform, content);
-                    }
-
-                    ImGui.NextColumn();
-
-                    float z = content.Z;
-                    if (ImGui.InputFloat("Z" + "## " + propertyInfo.Name, ref z))
-                    {
-                        content.Z = z;
-                        propertyInfo.SetValue(gameObject.Transform, content);
-                    }
-                    ImGui.Columns(1);
-                }
-
+                gameObject.Name = content;
             }
 
+            ImGui.PopItemWidth();
+
+
+            ImGui.EndChild();
+            ImGui.EndGroup();
+
+
+            ImGui.BeginGroup();
+            ImGui.AlignTextToFramePadding();
+            if (ImGui.TreeNodeEx(gameObject.Transform.Icon + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+            {
+                foreach (PropertyInfo property in gameObject.Transform.GetType().GetProperties())
+                {
+                    foreach (KeyValuePair<Type, Action<IComponent, PropertyInfo>> field in fields)
+                    {
+                        if (field.Key.Equals(property.PropertyType) && property.CanWrite)
+                        {
+                            field.Value.Invoke((IComponent)gameObject.Transform, property);
+                        }
+                    }
+                }
+
+                ImGui.TreePop();
+            }
+
+            ImGui.EndGroup();
 
             foreach (IComponent component in gameObject.Components)
             {
-                if (ImGui.TreeNodeEx(component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+                ImGui.BeginGroup();
+                ImGui.AlignTextToFramePadding();
+                if (ImGui.TreeNodeEx(component.GetType().GetProperties().ToList().Find(i => i.Name.Equals("Icon")).GetValue(component) + " " + component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
                 {
-                    foreach (var propertyInfo in component.GetType().GetProperties())
+                    foreach (PropertyInfo property in component.GetType().GetProperties())
                     {
-                        if (propertyInfo.PropertyType.Equals(typeof(string)))
+                        foreach (KeyValuePair<Type, Action<IComponent, PropertyInfo>> field in fields)
                         {
-                            string content = (string)propertyInfo.GetValue(component) ?? "";
-
-                            if (ImGui.InputText(propertyInfo.Name, ref content, 256, ImGuiInputTextFlags.EnterReturnsTrue))
+                            if (field.Key.Equals(property.PropertyType) && property.CanWrite)
                             {
-                                propertyInfo.SetValue(component, content);
+                                field.Value.Invoke(component, property);
                             }
                         }
-
-                        if (propertyInfo.PropertyType.Equals(typeof(int)))
-                        {
-                            int content = (int)propertyInfo.GetValue(component);
-                            if (ImGui.InputInt(propertyInfo.Name, ref content, 1))
-                            {
-                                propertyInfo.SetValue(component, content);
-                            }
-                        }
-
-                        if (propertyInfo.PropertyType.Equals(typeof(float)))
-                        {
-                            float content = (float)propertyInfo.GetValue(component);
-                            if (ImGui.InputFloat(propertyInfo.Name, ref content, 0.1f))
-                            {
-                                propertyInfo.SetValue(component, content);
-                            }
-                        }
-
-                        if (propertyInfo.PropertyType.Equals(typeof(bool)))
-                        {
-                            bool content = (bool)propertyInfo.GetValue(component);
-                            if (ImGui.Checkbox(propertyInfo.Name, ref content))
-                            {
-                                propertyInfo.SetValue(component, content);
-                            }
-                        }
-
-                        if (propertyInfo.PropertyType.Equals(typeof(List<string>)))
-                        {
-                            List<string> content = (List<string>)propertyInfo.GetValue(component);
-                            foreach (string row in content) 
-                            {
-                                string rowContent = row;
-                                if (ImGui.InputText(row + "## " + content.IndexOf(row), ref rowContent, 256, ImGuiInputTextFlags.EnterReturnsTrue))
-                                {
-                                    content[content.IndexOf(row)] = rowContent;
-                                    propertyInfo.SetValue(component, content);
-                                }
-                            }
-                        }
-
-
-                        if (propertyInfo.PropertyType.Equals(typeof(Vector2)))
-                        {
-                            Vector2 content = (Vector2)propertyInfo.GetValue(component);
-                            if (ImGui.SliderFloat("X", ref content.X, -float.MaxValue, float.MaxValue))
-                            {
-                                propertyInfo.SetValue(component, content);
-                            }
-
-                            ImGui.NextColumn();
-
-                            if (ImGui.SliderFloat("Y", ref content.Y, -float.MaxValue, float.MaxValue))
-                            {
-                                propertyInfo.SetValue(component, content);
-                            }
-                        }
-
-                        if (propertyInfo.PropertyType.Equals(typeof(Vector3)))
-                        {
-                            ImGui.Text(propertyInfo.Name);
-                            ImGui.Columns(3, propertyInfo.Name, true);
-                            Vector3 content = (Vector3)propertyInfo.GetValue(component);
-                            float x = content.X;
-
-                            if (ImGui.InputFloat("X" + "## " + propertyInfo.Name, ref x))
-                            {
-                                content.X = x;
-                                propertyInfo.SetValue(component, content);
-                            }
-
-                            ImGui.NextColumn();
-
-                            float y = content.Y;
-                            if (ImGui.InputFloat("Y" + "## " + propertyInfo.Name, ref y))
-                            {
-                                content.Y = y;
-                                propertyInfo.SetValue(component, content);
-                            }
-
-                            ImGui.NextColumn();
-
-                            float z = content.Z;
-                            if (ImGui.InputFloat("Z" + "## " + propertyInfo.Name, ref z))
-                            {
-                                content.Z = z;
-                                propertyInfo.SetValue(component, content);
-                            }
-                            ImGui.Columns(1);
-                        }
-
-
                     }
 
                     ImGui.TreePop();
                 }
+
+                ImGui.EndGroup();
             }
-              
-           // ImGui.SetNextItemWidth(ImGui.GetContentRegionAvail().X);
-            if (ImGui.Button(Icon.PLUSSQUARE + " Add Component"))
+
+            if (ImGui.Button("Add Component", new Vector2(ImGui.GetContentRegionAvail().X, 30f)))
             {
                 ImGui.OpenPopup("ElementList");
             }
-           
 
             if (ImGui.BeginPopup("ElementList"))
             {
-                if (ImGui.MenuItem("New Audiosource"))
-                {
-                    AddNewAudiosource();
-                }
 
-                if (ImGui.MenuItem("New Sprite"))
-                {
-                    AddNewSprite();
-                }
+                Type type = typeof(IComponent);
+                IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
+                    .SelectMany(s => s.GetTypes())
+                    .Where(p => type.IsAssignableFrom(p));
 
-                if (ImGui.MenuItem("New Animator"))
+                foreach (Type component in types)
                 {
-                    AddNewAnimator();
+                    if (!component.Name.Equals("IComponent") && !component.Name.Equals("Transform"))
+                    {
+                        if (ImGui.MenuItem(component.Name))
+                        {
+                            constructors[component].Invoke(gameObject);
+                        }
+                    }
                 }
-
-                ImGui.EndPopup();
             }
-
-           // ImGui.PopItemWidth();
-
-
-            ImGui.PopStyleVar();
-            ImGui.PopStyleColor();
         }
 
-        private void AddNewAudiosource()
+        private static void DrawStringField(IComponent component, PropertyInfo property)
+        {
+            string content = (string)property.GetValue(component) ?? "";
+
+            if (ImGui.InputText(property.Name, ref content, 512))
+            {
+                property.SetValue(component, content);
+            }
+        }
+
+        private static void DrawBoolField(IComponent component, PropertyInfo property)
+        {
+            bool content = (bool)property.GetValue(component);
+            if (ImGui.Checkbox(property.Name, ref content))
+            {
+                property.SetValue(component, content);
+            }
+        }
+
+        private static void DrawFloatField(IComponent component, PropertyInfo property)
+        {
+            float content = (float)property.GetValue(component);
+            if (ImGui.InputFloat(property.Name, ref content, 0.1f))
+            {
+                property.SetValue(component, content);
+            }
+        }
+
+        private static void DrawIntField(IComponent component, PropertyInfo property)
+        {
+            int content = (int)property.GetValue(component);
+            if (ImGui.InputInt(property.Name, ref content, 1))
+            {
+                property.SetValue(component, content);
+            }
+        }
+
+        private static void DrawByteField(IComponent component, PropertyInfo property)
+        {
+            int content = (int)property.GetValue(component);
+            if (ImGui.InputInt(property.Name, ref content, 1))
+            {
+                property.SetValue(component, content);
+            }
+        }
+
+        private static void DrawLongField(IComponent component, PropertyInfo property)
+        {
+            int content = (int)property.GetValue(component);
+            if (ImGui.InputInt(property.Name, ref content, 1))
+            {
+                property.SetValue(component, content);
+            }
+        }
+
+        private static void DrawDoubleField(IComponent component, PropertyInfo property)
+        {
+            double content = (double)property.GetValue(component);
+            if (ImGui.InputDouble(property.Name, ref content, 1))
+            {
+                property.SetValue(component, content);
+            }
+        }
+
+        private static void DrawVector2Field(IComponent component, PropertyInfo property)
+        {
+            ImGui.Text(property.Name);
+            ImGui.Columns(2, property.Name, true);
+            Vector2 content = (Vector2)property.GetValue(component);
+            float x = content.X;
+
+            if (ImGui.InputFloat("X" + "## " + property.Name, ref x))
+            {
+                content.X = x;
+                property.SetValue(component, content);
+            }
+
+            ImGui.NextColumn();
+
+            float y = content.Y;
+            if (ImGui.InputFloat("Y" + "## " + property.Name, ref y))
+            {
+                content.Y = y;
+                property.SetValue(component, content);
+            }
+
+            ImGui.Columns(1);
+        }
+
+        private static void DrawVector3Field(IComponent component, PropertyInfo property)
+        {
+            ImGui.Text(property.Name);
+            ImGui.Columns(3, property.Name, true);
+            Vector3 content = (Vector3)property.GetValue(component);
+            float x = content.X;
+
+            if (ImGui.InputFloat("X" + "## " + property.Name, ref x))
+            {
+                content.X = x;
+                property.SetValue(component, content);
+            }
+
+            ImGui.NextColumn();
+
+            float y = content.Y;
+            if (ImGui.InputFloat("Y" + "## " + property.Name, ref y))
+            {
+                content.Y = y;
+                property.SetValue(component, content);
+            }
+
+            ImGui.NextColumn();
+
+            float z = content.Z;
+            if (ImGui.InputFloat("Z" + "## " + property.Name, ref z))
+            {
+                content.Z = z;
+                property.SetValue(component, content);
+            }
+
+            ImGui.Columns(1);
+        }
+
+        private static void DrawListField(IComponent component, PropertyInfo property)
+        {
+
+        }
+
+
+        private static void NewAudiosource(GameObject gameObject)
         {
             gameObject.Add(new AudioSource("", Project.Current.AssetsPath + "/", true, 1));
         }
 
-        private void AddNewSprite()
+        private static void NewAnimator(GameObject gameObject)
+        {
+            gameObject.Add(new Animator(0));
+        }
+
+        private static void NewSprite(GameObject gameObject)
         {
             gameObject.Add(new Sprite("", Project.Current.AssetsPath + "/", 0));
         }
-
-        private void AddNewAnimator()
-        {
-            gameObject.Add(new Animator(new System.Collections.Generic.List<string>() { ""}));
-        }
-
-        private void SelectGameObject(GameObject obj)
-        {
-            
-        }
-
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-        }
-
-        
     }
 }

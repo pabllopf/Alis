@@ -10,8 +10,11 @@ namespace Alis.Core
 
     /// <summary>Manage the position of the game object on a scene.</summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
-    public class Transform 
+    public class Transform : IComponent
     {
+        /// <summary>The icon</summary>
+        private readonly string icon = "\uf0b2";
+
         /// <summary>The position</summary>
         private Vector3 position;
 
@@ -47,7 +50,23 @@ namespace Alis.Core
         /// <value>The size.</value>
         [JsonProperty]
         public Vector3 Size { get => size; set => size = value; }
-      
+
+        /// <summary>Gets the icon.</summary>
+        /// <value>The icon.</value>
+        public string Icon => icon;
+
+        /// <summary>Starts the specified transform.</summary>
+        /// <param name="gameObject"></param>
+        public void Start(GameObject gameObject)
+        {
+        }
+
+        /// <summary>Updates the specified transform.</summary>
+        /// <param name="gameObject"></param>
+        public void Update(GameObject gameObject)
+        {
+        }
+
         /// <summary>Gets the debugger display.</summary>
         /// <returns>Debug string</returns>
         private string GetDebuggerDisplay()

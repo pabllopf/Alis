@@ -15,6 +15,9 @@ namespace Alis.Core
     [JsonObject(MemberSerialization.OptIn)]
     public class AudioSource : IComponent
     {
+        /// <summary>The icon</summary>
+        private readonly string icon = "\uf001";
+
         /// <summary>The file</summary>
         private string audioFile;
 
@@ -90,12 +93,16 @@ namespace Alis.Core
         /// <summary>Gets or sets the path.</summary>
         /// <value>The path.</value>
         [JsonProperty]
-        public string Path { get => path; set => path = value; }
+        public string Path { get => path; }
 
         /// <summary>Gets or sets the volume.</summary>
         /// <value>The volume.</value>
         [JsonProperty]
         public float Volume { get => volume; set => volume = value; }
+
+        /// <summary>Gets the icon.</summary>
+        /// <value>The icon.</value>
+        public string Icon => icon;
 
         /// <summary>Plays this instance.</summary>
         public void Play()
