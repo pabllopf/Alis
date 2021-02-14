@@ -1,5 +1,6 @@
 var namespace_alis_1_1_core =
 [
+    [ "Animation", "class_alis_1_1_core_1_1_animation.html", "class_alis_1_1_core_1_1_animation" ],
     [ "Animator", "class_alis_1_1_core_1_1_animator.html", "class_alis_1_1_core_1_1_animator" ],
     [ "AudioSource", "class_alis_1_1_core_1_1_audio_source.html", "class_alis_1_1_core_1_1_audio_source" ],
     [ "ConfigGame", "class_alis_1_1_core_1_1_config_game.html", "class_alis_1_1_core_1_1_config_game" ],

@@ -1,15 +1,12 @@
 var class_alis_1_1_core_1_1_animator =
 [
-    [ "Animator", "class_alis_1_1_core_1_1_animator.html#a67d9bf212076e30e132524edba0c1f95", null ],
-    [ "AddNewImage", "class_alis_1_1_core_1_1_animator.html#abebdc659258bd42b760467dd80d308ce", null ],
-    [ "DeletImage", "class_alis_1_1_core_1_1_animator.html#a39fa79bbc9aaa93bfc3a5eefc24bfce0", null ],
+    [ "Animator", "class_alis_1_1_core_1_1_animator.html#a9d7fb141c457542f6c290621e7c477a4", null ],
     [ "Start", "class_alis_1_1_core_1_1_animator.html#ab89408c85077903accbc306a7fff21b4", null ],
     [ "Update", "class_alis_1_1_core_1_1_animator.html#a36dd8f7e3e5c863f5ffb4273ad23645a", null ],
-    [ "render", "class_alis_1_1_core_1_1_animator.html#a4fc39081da3023da79904b06aa8a87be", null ],
-    [ "images", "class_alis_1_1_core_1_1_animator.html#af9802d5e85896a82fcc186df41c9fc3d", null ],
-    [ "sprite", "class_alis_1_1_core_1_1_animator.html#a05ce39f440da3605612cd9b064331610", null ],
-    [ "index", "class_alis_1_1_core_1_1_animator.html#a84dcb2491a19b760af728477e413ac4d", null ],
-    [ "count", "class_alis_1_1_core_1_1_animator.html#a024ae10db55a40aeab59010d66083baa", null ],
-    [ "Images", "class_alis_1_1_core_1_1_animator.html#a8803c4d958bf10fb3143d8a40c106ac5", null ],
-    [ "Count", "class_alis_1_1_core_1_1_animator.html#ad8e27d7b839098b855f9038c58646fed", null ]
+    [ "GetDebuggerDisplay", "class_alis_1_1_core_1_1_animator.html#ab733bbbb0922223b370d4db3676dfb47", null ],
+    [ "sprite", "class_alis_1_1_core_1_1_animator.html#af25166b7b54323fb8805d170ae022983", null ],
+    [ "state", "class_alis_1_1_core_1_1_animator.html#ad5935e9e5ea9a49f6b461c68f4daf738", null ],
+    [ "clock", "class_alis_1_1_core_1_1_animator.html#aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8", null ],
+    [ "animations", "class_alis_1_1_core_1_1_animator.html#a7ac26ee0dc1aa1944632cc2a14de4891", null ],
+    [ "State", "class_alis_1_1_core_1_1_animator.html#a66b4866240df5b3061fafa21b64dd146", null ]
 ];

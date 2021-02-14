@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['debug_1079',['Debug',['../class_alis_1_1_core_1_1_debug.html',1,'Alis::Core']]],
-  ['dockspace_1080',['DockSpace',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html',1,'Alis::Editor::UI::Widgets']]]
+  ['debug_1083',['Debug',['../class_alis_1_1_core_1_1_debug.html',1,'Alis::Core']]],
+  ['dockspace_1084',['DockSpace',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html',1,'Alis::Editor::UI::Widgets']]]
 ];

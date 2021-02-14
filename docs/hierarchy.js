@@ -1,5 +1,6 @@
 var hierarchy =
 [
+    [ "Alis.Core.Animation", "class_alis_1_1_core_1_1_animation.html", null ],
     [ "Alis.Tools.Application", "struct_alis_1_1_tools_1_1_application.html", null ],
     [ "Core.Asset", "class_core_1_1_asset.html", null ],
     [ "Alis.Core.ConfigGame", "class_alis_1_1_core_1_1_config_game.html", null ],

@@ -98,6 +98,7 @@ $(document).ready(function(){initNavTree('class_alis_1_1_core_1_1_animator.html'
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_alis_1_1_core_1_1_animator-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -105,19 +106,16 @@ $(document).ready(function(){initNavTree('class_alis_1_1_core_1_1_animator.html'
 </div><!--header-->
 <div class="contents">
 
-<p>Define components.  
+<p>Define animation of sprite.  
  <a href="class_alis_1_1_core_1_1_animator.html#details">More...</a></p>
 
 <p>Inherits <a class="el" href="interface_alis_1_1_core_1_1_i_component.html">Alis.Core.IComponent</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a67d9bf212076e30e132524edba0c1f95"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a67d9bf212076e30e132524edba0c1f95">Animator</a> (List&lt; string &gt; <a class="el" href="class_alis_1_1_core_1_1_animator.html#af9802d5e85896a82fcc186df41c9fc3d">images</a>)</td></tr>
-<tr class="separator:a67d9bf212076e30e132524edba0c1f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abebdc659258bd42b760467dd80d308ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#abebdc659258bd42b760467dd80d308ce">AddNewImage</a> (string name)</td></tr>
-<tr class="separator:abebdc659258bd42b760467dd80d308ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39fa79bbc9aaa93bfc3a5eefc24bfce0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a39fa79bbc9aaa93bfc3a5eefc24bfce0">DeletImage</a> (string name)</td></tr>
-<tr class="separator:a39fa79bbc9aaa93bfc3a5eefc24bfce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d7fb141c457542f6c290621e7c477a4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a9d7fb141c457542f6c290621e7c477a4">Animator</a> (int <a class="el" href="class_alis_1_1_core_1_1_animator.html#ad5935e9e5ea9a49f6b461c68f4daf738">state</a>, params <a class="el" href="class_alis_1_1_core_1_1_animation.html">Animation</a>[] <a class="el" href="class_alis_1_1_core_1_1_animator.html#a7ac26ee0dc1aa1944632cc2a14de4891">animations</a>)</td></tr>
+<tr class="memdesc:a9d7fb141c457542f6c290621e7c477a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_alis_1_1_core_1_1_animator.html" title="Define animation of sprite.">Animator</a> class.  <a href="class_alis_1_1_core_1_1_animator.html#a9d7fb141c457542f6c290621e7c477a4">More...</a><br /></td></tr>
+<tr class="separator:a9d7fb141c457542f6c290621e7c477a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab89408c85077903accbc306a7fff21b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#ab89408c85077903accbc306a7fff21b4">Start</a> (<a class="el" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> gameObject)</td></tr>
 <tr class="memdesc:ab89408c85077903accbc306a7fff21b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the specified transform.  <a href="class_alis_1_1_core_1_1_animator.html#ab89408c85077903accbc306a7fff21b4">More...</a><br /></td></tr>
 <tr class="separator:ab89408c85077903accbc306a7fff21b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,32 +125,38 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a8803c4d958bf10fb3143d8a40c106ac5"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a8803c4d958bf10fb3143d8a40c106ac5">Images</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a8803c4d958bf10fb3143d8a40c106ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the images.  <a href="class_alis_1_1_core_1_1_animator.html#a8803c4d958bf10fb3143d8a40c106ac5">More...</a><br /></td></tr>
-<tr class="separator:a8803c4d958bf10fb3143d8a40c106ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8e27d7b839098b855f9038c58646fed"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#ad8e27d7b839098b855f9038c58646fed">Count</a><code> [get, set]</code></td></tr>
-<tr class="separator:ad8e27d7b839098b855f9038c58646fed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66b4866240df5b3061fafa21b64dd146"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a66b4866240df5b3061fafa21b64dd146">State</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a66b4866240df5b3061fafa21b64dd146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the state.  <a href="class_alis_1_1_core_1_1_animator.html#a66b4866240df5b3061fafa21b64dd146">More...</a><br /></td></tr>
+<tr class="separator:a66b4866240df5b3061fafa21b64dd146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab733bbbb0922223b370d4db3676dfb47"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#ab733bbbb0922223b370d4db3676dfb47">GetDebuggerDisplay</a> ()</td></tr>
+<tr class="memdesc:ab733bbbb0922223b370d4db3676dfb47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the debugger display.  <a href="class_alis_1_1_core_1_1_animator.html#ab733bbbb0922223b370d4db3676dfb47">More...</a><br /></td></tr>
+<tr class="separator:ab733bbbb0922223b370d4db3676dfb47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a4fc39081da3023da79904b06aa8a87be"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a4fc39081da3023da79904b06aa8a87be">render</a></td></tr>
-<tr class="separator:a4fc39081da3023da79904b06aa8a87be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9802d5e85896a82fcc186df41c9fc3d"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#af9802d5e85896a82fcc186df41c9fc3d">images</a></td></tr>
-<tr class="separator:af9802d5e85896a82fcc186df41c9fc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05ce39f440da3605612cd9b064331610"><td class="memItemLeft" align="right" valign="top">SFML.Graphics.Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a05ce39f440da3605612cd9b064331610">sprite</a></td></tr>
-<tr class="separator:a05ce39f440da3605612cd9b064331610"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84dcb2491a19b760af728477e413ac4d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a84dcb2491a19b760af728477e413ac4d">index</a> = 0</td></tr>
-<tr class="separator:a84dcb2491a19b760af728477e413ac4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a024ae10db55a40aeab59010d66083baa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a024ae10db55a40aeab59010d66083baa">count</a> = 0</td></tr>
-<tr class="separator:a024ae10db55a40aeab59010d66083baa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af25166b7b54323fb8805d170ae022983"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_alis_1_1_core_1_1_sprite.html">Sprite</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#af25166b7b54323fb8805d170ae022983">sprite</a></td></tr>
+<tr class="memdesc:af25166b7b54323fb8805d170ae022983"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sprite  <a href="class_alis_1_1_core_1_1_animator.html#af25166b7b54323fb8805d170ae022983">More...</a><br /></td></tr>
+<tr class="separator:af25166b7b54323fb8805d170ae022983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5935e9e5ea9a49f6b461c68f4daf738"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#ad5935e9e5ea9a49f6b461c68f4daf738">state</a></td></tr>
+<tr class="memdesc:ad5935e9e5ea9a49f6b461c68f4daf738"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state  <a href="class_alis_1_1_core_1_1_animator.html#ad5935e9e5ea9a49f6b461c68f4daf738">More...</a><br /></td></tr>
+<tr class="separator:ad5935e9e5ea9a49f6b461c68f4daf738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8"><td class="memItemLeft" align="right" valign="top">Clock&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8">clock</a></td></tr>
+<tr class="memdesc:aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The clock  <a href="class_alis_1_1_core_1_1_animator.html#aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8">More...</a><br /></td></tr>
+<tr class="separator:aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ac26ee0dc1aa1944632cc2a14de4891"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="class_alis_1_1_core_1_1_animation.html">Animation</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_animator.html#a7ac26ee0dc1aa1944632cc2a14de4891">animations</a></td></tr>
+<tr class="memdesc:a7ac26ee0dc1aa1944632cc2a14de4891"><td class="mdescLeft">&#160;</td><td class="mdescRight">The animations  <a href="class_alis_1_1_core_1_1_animator.html#a7ac26ee0dc1aa1944632cc2a14de4891">More...</a><br /></td></tr>
+<tr class="separator:a7ac26ee0dc1aa1944632cc2a14de4891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Define components. </p>
+<div class="textblock"><p>Define animation of sprite. </p>
 
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00012">12</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00015">15</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a67d9bf212076e30e132524edba0c1f95"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67d9bf212076e30e132524edba0c1f95">&#9670;&nbsp;</a></span>Animator()</h2>
+<a id="a9d7fb141c457542f6c290621e7c477a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d7fb141c457542f6c290621e7c477a4">&#9670;&nbsp;</a></span>Animator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -160,58 +164,38 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">Alis.Core.Animator.Animator </td>
           <td>(</td>
-          <td class="paramtype">List&lt; string &gt;&#160;</td>
-          <td class="paramname"><em>images</em></td><td>)</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>state</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">params <a class="el" href="class_alis_1_1_core_1_1_animation.html">Animation</a>[]&#160;</td>
+          <td class="paramname"><em>animations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00025">25</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+<p>Initializes a new instance of the <a class="el" href="class_alis_1_1_core_1_1_animator.html" title="Define animation of sprite.">Animator</a> class. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name.</td></tr>
+    <tr><td class="paramname">state</td><td>The state.</td></tr>
+    <tr><td class="paramname">animations</td><td>The animations.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00034">34</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="abebdc659258bd42b760467dd80d308ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abebdc659258bd42b760467dd80d308ce">&#9670;&nbsp;</a></span>AddNewImage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Alis.Core.Animator.AddNewImage </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00053">53</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
-
-</div>
-</div>
-<a id="a39fa79bbc9aaa93bfc3a5eefc24bfce0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39fa79bbc9aaa93bfc3a5eefc24bfce0">&#9670;&nbsp;</a></span>DeletImage()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Alis.Core.Animator.DeletImage </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>name</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00058">58</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
-
-</div>
-</div>
 <a id="ab89408c85077903accbc306a7fff21b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab89408c85077903accbc306a7fff21b4">&#9670;&nbsp;</a></span>Start()</h2>
 
@@ -238,7 +222,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_alis_1_1_core_1_1_i_component.html#ae57379e745e02f997e8fc5a962c2da38">Alis.Core.IComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00063">63</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00061">61</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
 
 </div>
 </div>
@@ -268,13 +252,43 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="interface_alis_1_1_core_1_1_i_component.html#aafe6ead6a899b5c0cfd2940c03037989">Alis.Core.IComponent</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00071">71</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00072">72</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab733bbbb0922223b370d4db3676dfb47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab733bbbb0922223b370d4db3676dfb47">&#9670;&nbsp;</a></span>GetDebuggerDisplay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Alis.Core.Animator.GetDebuggerDisplay </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the debugger display. </p>
+<dl class="section return"><dt>Returns</dt><dd>return display</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00086">86</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="a4fc39081da3023da79904b06aa8a87be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fc39081da3023da79904b06aa8a87be">&#9670;&nbsp;</a></span>render</h2>
+<a id="af25166b7b54323fb8805d170ae022983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af25166b7b54323fb8805d170ae022983">&#9670;&nbsp;</a></span>sprite</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -283,7 +297,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;string&gt; Alis.Core.Animator.render</td>
+          <td class="memname"><a class="el" href="class_alis_1_1_core_1_1_sprite.html">Sprite</a> Alis.Core.Animator.sprite</td>
         </tr>
       </table>
   </td>
@@ -293,60 +307,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00014">14</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
-
-</div>
-</div>
-<a id="af9802d5e85896a82fcc186df41c9fc3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9802d5e85896a82fcc186df41c9fc3d">&#9670;&nbsp;</a></span>images</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt;string&gt; Alis.Core.Animator.images</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00016">16</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
-
-</div>
-</div>
-<a id="a05ce39f440da3605612cd9b064331610"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a05ce39f440da3605612cd9b064331610">&#9670;&nbsp;</a></span>sprite</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">SFML.Graphics.Sprite Alis.Core.Animator.sprite</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>The sprite </p>
 
 <p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00018">18</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
 
 </div>
 </div>
-<a id="a84dcb2491a19b760af728477e413ac4d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84dcb2491a19b760af728477e413ac4d">&#9670;&nbsp;</a></span>index</h2>
+<a id="ad5935e9e5ea9a49f6b461c68f4daf738"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5935e9e5ea9a49f6b461c68f4daf738">&#9670;&nbsp;</a></span>state</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -355,7 +323,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Alis.Core.Animator.index = 0</td>
+          <td class="memname">int Alis.Core.Animator.state</td>
         </tr>
       </table>
   </td>
@@ -365,12 +333,14 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00020">20</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+<p>The state </p>
+
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00021">21</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
 
 </div>
 </div>
-<a id="a024ae10db55a40aeab59010d66083baa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a024ae10db55a40aeab59010d66083baa">&#9670;&nbsp;</a></span>count</h2>
+<a id="aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8">&#9670;&nbsp;</a></span>clock</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -379,7 +349,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Alis.Core.Animator.count = 0</td>
+          <td class="memname">Clock Alis.Core.Animator.clock</td>
         </tr>
       </table>
   </td>
@@ -389,13 +359,41 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00022">22</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+<p>The clock </p>
+
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00024">24</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7ac26ee0dc1aa1944632cc2a14de4891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ac26ee0dc1aa1944632cc2a14de4891">&#9670;&nbsp;</a></span>animations</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;<a class="el" href="class_alis_1_1_core_1_1_animation.html">Animation</a>&gt; Alis.Core.Animator.animations</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The animations </p>
+
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00027">27</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a8803c4d958bf10fb3143d8a40c106ac5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8803c4d958bf10fb3143d8a40c106ac5">&#9670;&nbsp;</a></span>Images</h2>
+<a id="a66b4866240df5b3061fafa21b64dd146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a66b4866240df5b3061fafa21b64dd146">&#9670;&nbsp;</a></span>State</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -404,7 +402,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">List&lt;string&gt; Alis.Core.Animator.Images</td>
+          <td class="memname">int Alis.Core.Animator.State</td>
         </tr>
       </table>
   </td>
@@ -414,34 +412,10 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Gets or sets the images. </p>
-<p>The images.</p>
+<p>Gets or sets the state. </p>
+<p>The state.</p>
 
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00035">35</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
-
-</div>
-</div>
-<a id="ad8e27d7b839098b855f9038c58646fed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8e27d7b839098b855f9038c58646fed">&#9670;&nbsp;</a></span>Count</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Alis.Core.Animator.Count</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00045">45</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_animator_8cs_source.html#l00057">57</a> of file <a class="el" href="_animator_8cs_source.html">Animator.cs</a>.</p>
 
 </div>
 </div>
@@ -452,7 +426,7 @@ Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="class_alis_1_1_core_1_1_animator.html">Animator</a></li>
     <li class="footer">
-      <a>Generated on | Sat Feb 13 2021 |</a>
+      <a>Generated on | Sun Feb 14 2021 |</a>
     </li>
   </ul>
 </div>
