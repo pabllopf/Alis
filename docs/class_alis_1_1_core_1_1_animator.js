@@ -4,9 +4,12 @@ var class_alis_1_1_core_1_1_animator =
     [ "Start", "class_alis_1_1_core_1_1_animator.html#ab89408c85077903accbc306a7fff21b4", null ],
     [ "Update", "class_alis_1_1_core_1_1_animator.html#a36dd8f7e3e5c863f5ffb4273ad23645a", null ],
     [ "GetDebuggerDisplay", "class_alis_1_1_core_1_1_animator.html#ab733bbbb0922223b370d4db3676dfb47", null ],
+    [ "icon", "class_alis_1_1_core_1_1_animator.html#a08d2cb01a584a275a6d8da36c9dc1e33", null ],
     [ "sprite", "class_alis_1_1_core_1_1_animator.html#af25166b7b54323fb8805d170ae022983", null ],
     [ "state", "class_alis_1_1_core_1_1_animator.html#ad5935e9e5ea9a49f6b461c68f4daf738", null ],
     [ "clock", "class_alis_1_1_core_1_1_animator.html#aaf7b7d7ad7e5e10feb8d9ba8bd0efbe8", null ],
     [ "animations", "class_alis_1_1_core_1_1_animator.html#a7ac26ee0dc1aa1944632cc2a14de4891", null ],
-    [ "State", "class_alis_1_1_core_1_1_animator.html#a66b4866240df5b3061fafa21b64dd146", null ]
+    [ "Icon", "class_alis_1_1_core_1_1_animator.html#a680cdc2cc26599036c10e6c440cae623", null ],
+    [ "State", "class_alis_1_1_core_1_1_animator.html#a66b4866240df5b3061fafa21b64dd146", null ],
+    [ "Animations", "class_alis_1_1_core_1_1_animator.html#a77c12294dba8337f3a3d4ae72aeded91", null ]
 ];
