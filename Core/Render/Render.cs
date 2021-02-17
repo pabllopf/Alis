@@ -37,6 +37,8 @@ namespace Alis.Core
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
         public static Render Current { get => current; set => current = value; }
+        public RenderTexture RenderTexture { get => renderTexture; set => renderTexture = value; }
+        public RenderWindow RenderWindow { get => renderWindow; set => renderWindow = value; }
 
         /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
         public Render() 

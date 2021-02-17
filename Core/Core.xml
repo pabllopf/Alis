@@ -186,6 +186,12 @@
             <summary>Gets the debugger display.</summary>
             <returns>Debug string</returns>
         </member>
+        <member name="T:Alis.Core.Camera">
+            <summary>Define a camera</summary>
+        </member>
+        <member name="F:Alis.Core.Camera.icon">
+            <summary>The icon</summary>
+        </member>
         <member name="T:Alis.Core.IComponent">
             <summary>Define components.</summary>
         </member>

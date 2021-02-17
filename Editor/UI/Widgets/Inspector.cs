@@ -13,6 +13,7 @@ namespace Alis.Editor.UI.Widgets
     using System.Collections.Generic;
     using System.Reflection;
     using System.Linq;
+    using SFML.System;
 
     /// <summary>Manage components of scene.</summary>
     public class Inspector : Widget
@@ -27,18 +28,22 @@ namespace Alis.Editor.UI.Widgets
             { typeof(long), DrawLongField },
             { typeof(double), DrawDoubleField },
             { typeof(Vector2), DrawVector2Field },
+            { typeof(Vector2f), DrawVector2fField },
             { typeof(Vector3), DrawVector3Field },
             { typeof(List<>), DrawListField },
         };
 
-       
+
 
         private readonly Dictionary<Type, Action<GameObject>> constructors = new Dictionary<Type, Action<GameObject>>()
         {
             { typeof(Sprite), NewSprite },
             { typeof(Animator), NewAnimator },
-            { typeof(AudioSource), NewAudiosource }
+            { typeof(AudioSource), NewAudiosource },
+            { typeof(Camera), NewCamera }
         };
+
+      
 
         private static Inspector current;
 
@@ -272,6 +277,31 @@ namespace Alis.Editor.UI.Widgets
             ImGui.Columns(1);
         }
 
+        private static void DrawVector2fField(IComponent component, PropertyInfo property)
+        {
+            ImGui.Text(property.Name);
+            ImGui.Columns(2, property.Name, true);
+            Vector2f content = (Vector2f)property.GetValue(component);
+            float x = content.X;
+
+            if (ImGui.InputFloat("X" + "## " + property.Name, ref x))
+            {
+                content.X = x;
+                property.SetValue(component, content);
+            }
+
+            ImGui.NextColumn();
+
+            float y = content.Y;
+            if (ImGui.InputFloat("Y" + "## " + property.Name, ref y))
+            {
+                content.Y = y;
+                property.SetValue(component, content);
+            }
+
+            ImGui.Columns(1);
+        }
+
         private static void DrawVector3Field(IComponent component, PropertyInfo property)
         {
             ImGui.Text(property.Name);
@@ -324,6 +354,11 @@ namespace Alis.Editor.UI.Widgets
         private static void NewSprite(GameObject gameObject)
         {
             gameObject.Add(new Sprite("", Project.Current.AssetsPath + "/", 0));
+        }
+
+        private static void NewCamera(GameObject gameObject)
+        {
+            gameObject.Add(new Camera(new SFML.System.Vector2f(0f, 0f), new SFML.System.Vector2f(640f, 380f)));
         }
     }
 }

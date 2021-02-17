@@ -29,7 +29,13 @@ namespace SFML
                                 new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
                                 new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
                                 new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
-                            )
+                            ),
+
+                            new Camera( new System.Vector2f(0,0), new System.Vector2f(640,380))
+                        ),
+                         new GameObject("Player",
+                            new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1)),
+                            new Sprite("tile000.png", Application.ProjectPath, 0)
                         ),
 
                         new GameObject("SoundTrack",
