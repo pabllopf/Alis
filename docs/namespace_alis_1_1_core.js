@@ -3,6 +3,7 @@ var namespace_alis_1_1_core =
     [ "Animation", "class_alis_1_1_core_1_1_animation.html", "class_alis_1_1_core_1_1_animation" ],
     [ "Animator", "class_alis_1_1_core_1_1_animator.html", "class_alis_1_1_core_1_1_animator" ],
     [ "AudioSource", "class_alis_1_1_core_1_1_audio_source.html", "class_alis_1_1_core_1_1_audio_source" ],
+    [ "Camera", "class_alis_1_1_core_1_1_camera.html", "class_alis_1_1_core_1_1_camera" ],
     [ "ConfigGame", "class_alis_1_1_core_1_1_config_game.html", "class_alis_1_1_core_1_1_config_game" ],
     [ "Debug", "class_alis_1_1_core_1_1_debug.html", "class_alis_1_1_core_1_1_debug" ],
     [ "GameObject", "class_alis_1_1_core_1_1_game_object.html", "class_alis_1_1_core_1_1_game_object" ],

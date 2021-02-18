@@ -15,5 +15,7 @@ var class_alis_1_1_core_1_1_render =
     [ "videoMode", "class_alis_1_1_core_1_1_render.html#aadf15e918ceae0e7ce9c055d5f6bd006", null ],
     [ "frame", "class_alis_1_1_core_1_1_render.html#a562d1956564b815f16066843a3dccb5e", null ],
     [ "sprites", "class_alis_1_1_core_1_1_render.html#aad767fad736a06797aa718b6002289b9", null ],
-    [ "Current", "class_alis_1_1_core_1_1_render.html#afb3919239a034a993e540548123c9be8", null ]
+    [ "Current", "class_alis_1_1_core_1_1_render.html#afb3919239a034a993e540548123c9be8", null ],
+    [ "RenderTexture", "class_alis_1_1_core_1_1_render.html#a3f3568dd2f1a7485cedf6e33c4cf61b8", null ],
+    [ "RenderWindow", "class_alis_1_1_core_1_1_render.html#a1d18530e607cca9af8a676dea6f55a3a", null ]
 ];

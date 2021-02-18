@@ -10,6 +10,7 @@ var hierarchy =
     [ "Alis.Core.IComponent", "interface_alis_1_1_core_1_1_i_component.html", [
       [ "Alis.Core.Animator", "class_alis_1_1_core_1_1_animator.html", null ],
       [ "Alis.Core.AudioSource", "class_alis_1_1_core_1_1_audio_source.html", null ],
+      [ "Alis.Core.Camera", "class_alis_1_1_core_1_1_camera.html", null ],
       [ "Alis.Core.Sprite", "class_alis_1_1_core_1_1_sprite.html", null ],
       [ "Alis.Core.Transform", "class_alis_1_1_core_1_1_transform.html", null ]
     ] ],
