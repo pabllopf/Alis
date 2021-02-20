@@ -52,12 +52,8 @@ namespace Alis.Core
                     {
                         Render.Current.RenderWindow.SetView(view);
                     }
-                    else
-                    {
-                        var posObj = new Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
-                        var posCamera = view.Center;
-                        view.Center = posObj;
-                    }
+
+                    view.Center = new Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
                 }
 
                 if (Render.Current.RenderTexture != null)
@@ -66,12 +62,7 @@ namespace Alis.Core
                     {
                         Render.Current.RenderTexture.SetView(view);
                     }
-                    else
-                    {
-                        var posObj = new Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
-                        var posCamera = view.Center;
-                        view.Center = posObj;
-                    }
+                    view.Center = new Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
                 }
             }
 
