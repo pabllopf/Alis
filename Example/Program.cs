@@ -34,7 +34,7 @@ namespace SFML
                             new Camera( new System.Vector2f(0,0), new System.Vector2f(640,380))
                         ),
                          new GameObject("Player",
-                            new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1)),
+                            new Transform(new Vector3(4f), new Vector3(0f), new Vector3(1)),
                             new Sprite("tile000.png", Application.ProjectPath, 0)
                         ),
 

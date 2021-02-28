@@ -29,6 +29,7 @@ namespace Alis.Core
             Debug.Log("Created a new " + GetType() + "(" + name + ").");
         }
 
+
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="gameObject">The game object.</param>
