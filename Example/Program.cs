@@ -18,7 +18,7 @@ namespace SFML
 
             
             new VideoGame(
-                new ConfigGame("Example"),
+                new Config("Example"),
                     new Scene("MainMenu",
                         new GameObject("Player",
                             new Transform(new Vector3(0f), new Vector3(0f),new Vector3(1)), 

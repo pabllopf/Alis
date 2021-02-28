@@ -48,6 +48,14 @@ namespace Alis.Core
         /// <value>The game objects.</value>
         public List<GameObject> GameObjects { get => gameObjects; set => gameObjects = value; }
 
+        public VideoGame VideoGame
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /// <summary>Adds the specified game object.</summary>
         /// <param name="gameObject">The game object.</param>
         public void Add(GameObject gameObject) 

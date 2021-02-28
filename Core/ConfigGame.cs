@@ -5,30 +5,24 @@
 namespace Alis.Core
 {
     /// <summary>Define a config. </summary>
-    [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
-    public class ConfigGame
+    public class Config
     {
-        /// <summary>The name project</summary>
-        private string nameProject = "DefaultName";
+        /// <summary>
+        /// The name proyect
+        /// </summary>
+        private string name = "DefaultName";
 
-        /// <summary>Initializes a new instance of the <see cref="ConfigGame" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="nameProject">The name project.</param>
-        public ConfigGame(string nameProject)
+        public Config(string nameProject)
         {
-            this.nameProject = nameProject;
+            this.name = nameProject;
 
             Debug.Log("Created a new " + GetType() + ".");
         }
 
         /// <summary>Gets or sets the name project.</summary>
         /// <value>The name project.</value>
-        public string NameProject { get => nameProject; set => nameProject = value; }
-
-        /// <summary>Gets the debugger display.</summary>
-        /// <returns>Debug string</returns>
-        private string GetDebuggerDisplay()
-        {
-            return ToString();
-        }
+        public string NameProject { get => name; set => name = value; }
     }
 }
