@@ -8,7 +8,7 @@ namespace Alis.Core
     using System.Collections.Generic;
 
     /// <summary>Manage the inputs of game.</summary>
-    public static class Input
+    public class Input
     {
         /// <summary>The keys</summary>
         private static List<SFML.Window.Keyboard.Key> keys = new List<SFML.Window.Keyboard.Key>();

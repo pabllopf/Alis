@@ -2,12 +2,19 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Alis.Core.VideoGame">
     <Position X="3.25" Y="2" Width="1.5" />
+    <AssociationLine Name="Render" Type="Alis.Core.Render">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.224" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQCAAAAAiAAAAAAiAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQCAAAAAiAAAAAAiAAAAIAAEAAAAAAAABAAAAAQAAA=</HashCode>
       <FileName>VideoGame.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Config" />
+      <Property Name="Render" />
+      <Property Name="Input" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Scenes" />
@@ -31,7 +38,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Debug">
-    <Position X="1.25" Y="7.25" Width="1.5" />
+    <Position X="2" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEAAAAAAAAQAAAAAAABAAAAkAAAABAAAAAAAAAAA=</HashCode>
       <FileName>Debug.cs</FileName>
@@ -54,7 +61,7 @@
     <Position X="13.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Component.cs</FileName>
+      <FileName>Components\Component.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Sprite">
@@ -124,8 +131,29 @@
       <FileName>Components\AudioSource.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Alis.Core.Asset">
+    <Position X="2" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Asset.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Render">
+    <Position X="4.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAEAAAEMCAAAKAgAACAAHAAAAAAUSAAAA=</HashCode>
+      <FileName>Render\Render.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Input">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAYAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Input\Input.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Enum Name="Alis.Core.Level">
-    <Position X="3.5" Y="8" Width="1.5" />
+    <Position X="4.25" Y="13.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAA=</HashCode>
       <FileName>Level.cs</FileName>

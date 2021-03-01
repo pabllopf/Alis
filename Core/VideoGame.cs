@@ -25,6 +25,9 @@ namespace Alis.Core
         /// </summary>
         private Config config;
 
+        /// <summary>The render</summary>
+        private Render render;
+
         /// <summary>
         /// Contructor of videogame
         /// </summary>
@@ -46,6 +49,17 @@ namespace Alis.Core
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
         
         public Config Config { get => config; set => config = value; }
+        public Render Render { get => render; set => render = value; }
+
+        public Input Input
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+
 
 
 
