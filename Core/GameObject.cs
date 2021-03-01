@@ -58,6 +58,14 @@ namespace Alis.Core
         [JsonProperty]
         public List<IComponent> Components { get => components; set => components = (value == null ? new List<IComponent>() : value); }
 
+        public Component Component
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         /// <summary>Adds the specified component.</summary>
         /// <param name="component">The component.</param>
         public void Add(IComponent component)
@@ -68,7 +76,7 @@ namespace Alis.Core
             }
             else 
             {
-                Debug.Warning("Gameobject alredy containts the component " + component.GetType());
+                
             }
         }
 
@@ -82,7 +90,7 @@ namespace Alis.Core
             }
             else
             {
-                Debug.Warning("Gameobject dont containts the component " + component.GetType());
+                
             }
         }
 

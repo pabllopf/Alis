@@ -318,23 +318,21 @@
             <summary>Gets the debugger display.</summary>
             <returns>Debug string</returns>
         </member>
-        <member name="T:Alis.Core.ConfigGame">
+        <member name="T:Alis.Core.Config">
             <summary>Define a config. </summary>
         </member>
-        <member name="F:Alis.Core.ConfigGame.nameProject">
-            <summary>The name project</summary>
+        <member name="F:Alis.Core.Config.name">
+            <summary>
+            The name proyect
+            </summary>
         </member>
-        <member name="M:Alis.Core.ConfigGame.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.ConfigGame" /> class.</summary>
-            <param name="nameProject">The name project.</param>
+        <member name="M:Alis.Core.Config.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Config" /> class.</summary>
+            <param name="name">The name of videogame.</param>
         </member>
-        <member name="P:Alis.Core.ConfigGame.NameProject">
+        <member name="P:Alis.Core.Config.Name">
             <summary>Gets or sets the name project.</summary>
             <value>The name project.</value>
-        </member>
-        <member name="M:Alis.Core.ConfigGame.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Core.GameObject">
             <summary>Define a game object. </summary>
@@ -517,67 +515,46 @@
             <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Core.VideoGame">
-            <summary>Define the video game.</summary>
-        </member>
-        <member name="F:Alis.Core.VideoGame.config">
-            <summary>The configuration</summary>
+            <summary>
+            Build your videogame
+            </summary>
+            <remarks>Define a videogame</remarks>
         </member>
         <member name="F:Alis.Core.VideoGame.scenes">
-            <summary>The scenes</summary>
+            <summary>
+            the scenes of the videogame
+            </summary>
         </member>
-        <member name="F:Alis.Core.VideoGame.isRunning">
-            <summary>The is running</summary>
+        <member name="F:Alis.Core.VideoGame.config">
+            <summary>
+            the config of videogame
+            </summary>
         </member>
-        <member name="F:Alis.Core.VideoGame.currentScene">
-            <summary>The current scene</summary>
+        <member name="M:Alis.Core.VideoGame.#ctor(Alis.Core.Config)">
+            <summary>
+            Contructor of videogame
+            </summary>
+            <param name="config">Config of videogame</param>
         </member>
-        <member name="M:Alis.Core.VideoGame.#ctor(Alis.Core.ConfigGame)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.VideoGame" /> class.</summary>
-            <param name="config">The configuration.</param>
-        </member>
-        <member name="M:Alis.Core.VideoGame.#ctor(Alis.Core.ConfigGame,Alis.Core.Scene[])">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.VideoGame" /> class.</summary>
-            <param name="config">The configuration.</param>
-            <param name="scene">the scenes of game</param>
+        <member name="M:Alis.Core.VideoGame.Finalize">
+            <summary>
+            Destructor of the videogame
+            </summary>
         </member>
         <member name="P:Alis.Core.VideoGame.Config">
-            <summary>Gets or sets the configuration.</summary>
-            <value>The configuration.</value>
+            <summary>
+            the config of videogame
+            </summary>
         </member>
-        <member name="P:Alis.Core.VideoGame.Scenes">
-            <summary>Gets or sets the scenes.</summary>
-            <value>The scenes.</value>
+        <member name="M:Alis.Core.VideoGame.Start">
+            <summary>
+            Start the videogame
+            </summary>
         </member>
-        <member name="M:Alis.Core.VideoGame.Start(System.String)">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.VideoGame.Add(Alis.Core.Scene)">
-            <summary>Adds the specified scene.</summary>
-            <param name="scene">The scene.</param>
-        </member>
-        <member name="M:Alis.Core.VideoGame.Remove(Alis.Core.Scene)">
-            <summary>Removes the specified scene.</summary>
-            <param name="scene">The scene.</param>
-        </member>
-        <member name="M:Alis.Core.VideoGame.PreviewRender">
-            <summary>Previews the render.</summary>
-            <returns>Return the data.</returns>
-        </member>
-        <member name="M:Alis.Core.VideoGame.PreviewPlaying">
-            <summary>Previews the playing.</summary>
-            <returns> </returns>
-        </member>
-        <member name="M:Alis.Core.VideoGame.Run">
-            <summary>Runs this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.VideoGame.Input_OnPressKeyOnce(System.Object,SFML.Window.Keyboard.Key)">
-            <summary>Inputs the on press key once.</summary>
-            <param name="sender">The sender.</param>
-            <param name="e">The e.</param>
-        </member>
-        <member name="M:Alis.Core.VideoGame.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
+        <member name="M:Alis.Core.VideoGame.Update">
+            <summary>
+            Update every frame the videogame
+            </summary>
         </member>
     </members>
 </doc>

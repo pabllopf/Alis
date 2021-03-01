@@ -10,7 +10,7 @@ namespace Alis.Core
 
     /// <summary>Manage the position of the game object on a scene.</summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
-    public class Transform : IComponent
+    public class Transform
     {
         /// <summary>The icon</summary>
         private readonly string icon = "\uf0b2";
@@ -54,6 +54,14 @@ namespace Alis.Core
         /// <summary>Gets the icon.</summary>
         /// <value>The icon.</value>
         public string Icon => icon;
+
+        public GameObject GameObject
+        {
+            get => default;
+            set
+            {
+            }
+        }
 
         /// <summary>Starts the specified transform.</summary>
         /// <param name="gameObject"></param>

@@ -12,7 +12,7 @@ namespace Alis.Core
 
     /// <summary>Define animation of sprite.</summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
-    public class Animator : IComponent
+    public class Animator : Component
     {
         /// <summary>The icon</summary>
         private readonly string icon = "\uf03d";
@@ -79,6 +79,11 @@ namespace Alis.Core
             }
         }
 
+        public override void Start()
+        {
+            throw new System.NotImplementedException();
+        }
+
         /// <summary>Updates the specified transform.</summary>
         /// <param name="gameObject"></param>
         public void Update(GameObject gameObject)
@@ -91,6 +96,11 @@ namespace Alis.Core
                     clock.Restart();
                 }
             }
+        }
+
+        public override void Update()
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>Gets the debugger display.</summary>

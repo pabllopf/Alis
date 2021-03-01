@@ -13,7 +13,7 @@ namespace Alis.Core
     /// <summary>Control the audio of game object.</summary>
     [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     [JsonObject(MemberSerialization.OptIn)]
-    public class AudioSource : IComponent
+    public class AudioSource : Component
     {
         /// <summary>The icon</summary>
         private readonly string icon = "\uf001";
@@ -191,6 +191,16 @@ namespace Alis.Core
         private string GetDebuggerDisplay()
         {
             return ToString();
+        }
+
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }

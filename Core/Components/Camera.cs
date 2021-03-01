@@ -10,7 +10,7 @@ namespace Alis.Core
 
     /// <summary>Define a camera</summary>
     [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
-    public class Camera : IComponent
+    public class Camera : Component
     {
         /// <summary>The icon</summary>
         private readonly string icon = "\uf1fc";
@@ -40,6 +40,11 @@ namespace Alis.Core
             Debug.Log("Define a camera on " + gameObject.Name + " gameobject");
         }
 
+        public override void Start()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void Update(GameObject gameObject)
         {
             
@@ -66,6 +71,11 @@ namespace Alis.Core
                 }
             }
 
+        }
+
+        public override void Update()
+        {
+            throw new System.NotImplementedException();
         }
 
         private string GetDebuggerDisplay()

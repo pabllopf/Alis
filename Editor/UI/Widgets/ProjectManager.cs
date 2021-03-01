@@ -356,7 +356,7 @@ namespace Alis.Editor.UI.Widgets
 
                 VideoGame game = LocalData.Load<VideoGame>("Data", project.DataPath);
 
-                Debug.Warning("Videogame: " + game.Config.NameProject);
+                Debug.Warning("Videogame: " + game.Config.Name);
 
                 Project.ChangeProject(project, game);
                 Close();

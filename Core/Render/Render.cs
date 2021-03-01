@@ -32,7 +32,7 @@ namespace Alis.Core
         private SFML.Graphics.Image frame;
 
         /// <summary>The sprites</summary>
-        private List<Sprite> sprites;
+        private List<SFML.Graphics.Sprite> sprites;
 
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
@@ -46,7 +46,7 @@ namespace Alis.Core
             this.title = "Example";
             this.videoMode = new VideoMode(512, 320);
             this.renderTexture = new RenderTexture(512, 512);
-            this.sprites = new List<Sprite>();
+            this.sprites = new List<SFML.Graphics.Sprite>();
 
            
 
@@ -62,7 +62,7 @@ namespace Alis.Core
             if (sprites.Count > 0) 
             {
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
-                foreach (Sprite sprite in sprites)
+                foreach (SFML.Graphics.Sprite sprite in sprites)
                 {
                     renderTexture.Draw(sprite.GetSprite);
                 }
@@ -91,7 +91,7 @@ namespace Alis.Core
             if (sprites.Count > 0)
             {
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
-                foreach (Sprite sprite in sprites)
+                foreach (SFML.Graphics.Sprite sprite in sprites)
                 {
                     //Debug.Log("sprite:::" + sprite.ImageFile + " " + sprite.Depth);
                     renderWindow.Draw(sprite.GetSprite);
@@ -113,9 +113,9 @@ namespace Alis.Core
 
         /// <summary>Adds the new sprite.</summary>
         /// <param name="sprite">The sprite.</param>
-        public void AddNewSprite(Sprite sprite) 
+        public void AddNewSprite(SFML.Graphics.Sprite sprite) 
         {
-            List<Sprite> spir = sprites;
+            List<SFML.Graphics.Sprite> spir = sprites;
 
             if (!spir.Contains(sprite))
             {
@@ -133,16 +133,16 @@ namespace Alis.Core
             sprites = spir;
         }
 
-        internal Sprite GetSprite(Sprite sprite)
+        internal SFML.Graphics.Sprite GetSprite(SFML.Graphics.Sprite sprite)
         {
             return sprites[sprites.IndexOf(sprite)];
         }
 
         /// <summary>Deletes the sprite.</summary>
         /// <param name="sprite">The sprite.</param>
-        public void DeleteSprite(Sprite sprite) 
+        public void DeleteSprite(SFML.Graphics.Sprite sprite) 
         {
-            List<Sprite> spir = sprites;
+            List<SFML.Graphics.Sprite> spir = sprites;
             
             if (spir.Count > 0)
             {
@@ -161,7 +161,7 @@ namespace Alis.Core
         /// <summary>Exitses the specified sprite.</summary>
         /// <param name="sprite">The sprite.</param>
         /// <returns>Return</returns>
-        public bool Exits(Sprite sprite)
+        public bool Exits(SFML.Graphics.Sprite sprite)
         {
             if (sprites == null || sprites.Count == 0) 
             {
