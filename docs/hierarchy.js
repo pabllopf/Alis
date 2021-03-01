@@ -3,7 +3,9 @@ var hierarchy =
     [ "Alis.Core.Animation", "class_alis_1_1_core_1_1_animation.html", null ],
     [ "Alis.Tools.Application", "struct_alis_1_1_tools_1_1_application.html", null ],
     [ "Core.Asset", "class_core_1_1_asset.html", null ],
-    [ "Alis.Core.ConfigGame", "class_alis_1_1_core_1_1_config_game.html", null ],
+    [ "Core.Components.Collision", "class_core_1_1_components_1_1_collision.html", null ],
+    [ "Alis.Core.Component", "class_alis_1_1_core_1_1_component.html", null ],
+    [ "Alis.Core.Config", "class_alis_1_1_core_1_1_config.html", null ],
     [ "Alis.Core.Debug", "class_alis_1_1_core_1_1_debug.html", null ],
     [ "Alis.Editor.Engine", "class_alis_1_1_editor_1_1_engine.html", null ],
     [ "Alis.Core.GameObject", "class_alis_1_1_core_1_1_game_object.html", null ],
@@ -28,6 +30,7 @@ var hierarchy =
     [ "object", null, [
       [ "Alis.Tools.Crypted< T >", "class_alis_1_1_tools_1_1_crypted.html", null ]
     ] ],
+    [ "Alis.Core.Physics", "class_alis_1_1_core_1_1_physics.html", null ],
     [ "Alis.Editor.Program", "class_alis_1_1_editor_1_1_program.html", null ],
     [ "Alis.Editor.Project", "class_alis_1_1_editor_1_1_project.html", null ],
     [ "Alis.Core.Render", "class_alis_1_1_core_1_1_render.html", null ],

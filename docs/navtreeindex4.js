@@ -1,12 +1,5 @@
 var NAVTREEINDEX4 =
 {
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#abb736019a3022068875725c30606920a":[3,0,0,1,1,0,232],
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#abbc1e394430a2b972f855dd28c1c0690":[3,0,0,1,1,0,238],
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#abc1a59ec18c927a06886b50b201f60a1":[3,0,0,1,1,0,492],
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#abc496aa9934c193f2280e31f096d3b6a":[3,0,0,1,1,0,102],
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#abcb162ea7d23bbf33bb318885fecd4ff":[3,0,0,1,1,0,542],
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#abd3fcdf621d8c191773ff58da638ea1b":[3,0,0,1,1,0,330],
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#abdf3ce4b6c164b97f9b02b252bb11e83":[3,0,0,1,1,0,234],
 "class_alis_1_1_editor_1_1_utils_1_1_icon.html#abe1507d3f1c2e977ba093d340cf9b9dd":[3,0,0,1,1,0,576],
 "class_alis_1_1_editor_1_1_utils_1_1_icon.html#abe414df5ccb649b1a815b9c4339f0958":[3,0,0,1,1,0,94],
 "class_alis_1_1_editor_1_1_utils_1_1_icon.html#abe4f6f151e54419663e883dcd429491a":[3,0,0,1,1,0,558],
@@ -219,7 +212,8 @@ var NAVTREEINDEX4 =
 "class_alis_1_1_tools_1_1_zipper.html#a35c840d5abc95c442b4a9940aed85a64":[3,0,0,2,4,2],
 "class_alis_1_1_tools_1_1_zipper.html#a7c747baa073953cb8f1bcaa3235e521e":[3,0,0,2,4,5],
 "class_alis_1_1_tools_1_1_zipper.html#ae17a047ac34149e13121fd275700bd05":[3,0,0,2,4,4],
-"class_core_1_1_asset.html":[3,0,1,0],
+"class_core_1_1_asset.html":[3,0,1,1],
+"class_core_1_1_components_1_1_collision.html":[3,0,1,0,0],
 "class_im_gui_n_e_t_1_1_im_gui_controller.html":[3,0,2,0],
 "class_im_gui_n_e_t_1_1_im_gui_controller.html#a0a2c2be408a406ea17f3929fb4909829":[3,0,2,0,20],
 "class_im_gui_n_e_t_1_1_im_gui_controller.html#a0f974d46c6759a35d72e80e24d44a556":[3,0,2,0,33],
@@ -249,5 +243,11 @@ var NAVTREEINDEX4 =
 "class_im_gui_n_e_t_1_1_im_gui_controller.html#a94f45dd3dfc6c58501c20bbd1b68e5fc":[3,0,2,0,27],
 "class_im_gui_n_e_t_1_1_im_gui_controller.html#a986a34ca0e387cbead184e1b78fed369":[3,0,2,0,1],
 "class_im_gui_n_e_t_1_1_im_gui_controller.html#a9a573cc0df8c53c7ba5b69acc3d27d4d":[3,0,2,0,42],
-"class_im_gui_n_e_t_1_1_im_gui_controller.html#a9bfa83904ed239be7138366e9457601c":[3,0,2,0,10]
+"class_im_gui_n_e_t_1_1_im_gui_controller.html#a9bfa83904ed239be7138366e9457601c":[3,0,2,0,10],
+"class_im_gui_n_e_t_1_1_im_gui_controller.html#a9d2173e046d7efc6ef9447b65bcd79cd":[3,0,2,0,30],
+"class_im_gui_n_e_t_1_1_im_gui_controller.html#aa2e6f8f93aa1937fe38f856833e0358f":[3,0,2,0,5],
+"class_im_gui_n_e_t_1_1_im_gui_controller.html#aa4107f86e6666d803a68f0d2c1c64786":[3,0,2,0,40],
+"class_im_gui_n_e_t_1_1_im_gui_controller.html#aabe80519519580e1bdee0d11d01cd506":[3,0,2,0,12],
+"class_im_gui_n_e_t_1_1_im_gui_controller.html#aad0fef01d0db1340b5b373f59d6ff62a":[3,0,2,0,22],
+"class_im_gui_n_e_t_1_1_im_gui_controller.html#ab865fe69ab301e47dc3516a9d70bb64b":[3,0,2,0,37]
 };
