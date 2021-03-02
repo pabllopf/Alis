@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['components_1139',['Components',['../namespace_core_1_1_components.html',1,'Core']]],
-  ['core_1140',['Core',['../namespace_core.html',1,'']]]
+  ['imguinet_1140',['ImGuiNET',['../namespace_im_gui_n_e_t.html',1,'']]]
 ];

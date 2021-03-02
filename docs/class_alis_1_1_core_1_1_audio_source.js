@@ -9,6 +9,8 @@ var class_alis_1_1_core_1_1_audio_source =
     [ "Start", "class_alis_1_1_core_1_1_audio_source.html#a968b50dc743a8e2ec4b29a10747aeee6", null ],
     [ "Update", "class_alis_1_1_core_1_1_audio_source.html#a1cb13000361ef1e45e5f582d47c12b86", null ],
     [ "GetDebuggerDisplay", "class_alis_1_1_core_1_1_audio_source.html#ac959eb2cec03f0cb615d92e52109f892", null ],
+    [ "Start", "class_alis_1_1_core_1_1_audio_source.html#a58235d44884a90ec5a8155143dcba7d8", null ],
+    [ "Update", "class_alis_1_1_core_1_1_audio_source.html#a56e9c5e76bba1b689003bc515b14e487", null ],
     [ "icon", "class_alis_1_1_core_1_1_audio_source.html#ac456a84682e0673178d2db2bb081a830", null ],
     [ "audioFile", "class_alis_1_1_core_1_1_audio_source.html#a0637d84d2fc231c489ef81eb281f1a3f", null ],
     [ "volume", "class_alis_1_1_core_1_1_audio_source.html#a9571b67d2bc619f18177b9ff4ca1e2cb", null ],

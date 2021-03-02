@@ -96,24 +96,28 @@ $(document).ready(function(){initNavTree('class_alis_1_1_core_1_1_component.html
 
 <div class="header">
   <div class="summary">
-<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_alis_1_1_core_1_1_component-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">Alis.Core.Component Class Reference</div>  </div>
+<div class="title">Alis.Core.Component Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Inherited by <a class="el" href="class_alis_1_1_core_1_1_animator.html">Alis.Core.Animator</a>, <a class="el" href="class_alis_1_1_core_1_1_audio_source.html">Alis.Core.AudioSource</a>, <a class="el" href="class_alis_1_1_core_1_1_camera.html">Alis.Core.Camera</a>, <a class="el" href="class_alis_1_1_core_1_1_collision.html">Alis.Core.Collision</a>, <a class="el" href="class_alis_1_1_core_1_1_physics.html">Alis.Core.Physics</a>, and <a class="el" href="class_alis_1_1_core_1_1_sprite.html">Alis.Core.Sprite</a>.</p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
-Private Member Functions</h2></td></tr>
-<tr class="memitem:ae0dde78ceaf3470adadc2e4b3b9935fe"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_component.html#ae0dde78ceaf3470adadc2e4b3b9935fe">GetDebuggerDisplay</a> ()</td></tr>
-<tr class="separator:ae0dde78ceaf3470adadc2e4b3b9935fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:afe2afe58bc8c009bd213e9d63cb4113d"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_component.html#afe2afe58bc8c009bd213e9d63cb4113d">Start</a> ()</td></tr>
+<tr class="separator:afe2afe58bc8c009bd213e9d63cb4113d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d7c53ee7651377933af15d930429d45"><td class="memItemLeft" align="right" valign="top">abstract void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_component.html#a4d7c53ee7651377933af15d930429d45">Update</a> ()</td></tr>
+<tr class="separator:a4d7c53ee7651377933af15d930429d45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_component_8cs_source.html#l00006">6</a> of file <a class="el" href="_component_8cs_source.html">Component.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_component_8cs_source.html#l00003">3</a> of file <a class="el" href="_component_8cs_source.html">Component.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae0dde78ceaf3470adadc2e4b3b9935fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0dde78ceaf3470adadc2e4b3b9935fe">&#9670;&nbsp;</a></span>GetDebuggerDisplay()</h2>
+<a id="afe2afe58bc8c009bd213e9d63cb4113d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe2afe58bc8c009bd213e9d63cb4113d">&#9670;&nbsp;</a></span>Start()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -122,7 +126,7 @@ Private Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Core.Component.GetDebuggerDisplay </td>
+          <td class="memname">abstract void Alis.Core.Component.Start </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -130,12 +134,39 @@ Private Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_component_8cs_source.html#l00010">10</a> of file <a class="el" href="_component_8cs_source.html">Component.cs</a>.</p>
+<p>Implemented in <a class="el" href="class_alis_1_1_core_1_1_sprite.html#a14e971c76fc2a7e5bc48436573a822b9">Alis.Core.Sprite</a>, <a class="el" href="class_alis_1_1_core_1_1_physics.html#aec3c46d8d96ac43d9b76e9b6ddebbe6b">Alis.Core.Physics</a>, <a class="el" href="class_alis_1_1_core_1_1_collision.html#a905c73375f991a18a13b606afd5b342f">Alis.Core.Collision</a>, <a class="el" href="class_alis_1_1_core_1_1_camera.html#acfc7e091d0484b96244d29d29e7ce852">Alis.Core.Camera</a>, <a class="el" href="class_alis_1_1_core_1_1_audio_source.html#a58235d44884a90ec5a8155143dcba7d8">Alis.Core.AudioSource</a>, <a class="el" href="class_alis_1_1_core_1_1_audio_source.html#a19e1599dd5e3c67a87b62607dc3b0b67">Alis.Core.AudioSource</a>, and <a class="el" href="class_alis_1_1_core_1_1_animator.html#ac0fb201eefb8a5b1015f5839baf46860">Alis.Core.Animator</a>.</p>
+
+</div>
+</div>
+<a id="a4d7c53ee7651377933af15d930429d45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d7c53ee7651377933af15d930429d45">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">abstract void Alis.Core.Component.Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="class_alis_1_1_core_1_1_sprite.html#a8420172edc7f9d9104a8261d811c5ecd">Alis.Core.Sprite</a>, <a class="el" href="class_alis_1_1_core_1_1_physics.html#ae1a8f98b893d0c8b8a97d81c810e35d1">Alis.Core.Physics</a>, <a class="el" href="class_alis_1_1_core_1_1_collision.html#a86300e768d75cbf5622752f8a45fe0c9">Alis.Core.Collision</a>, <a class="el" href="class_alis_1_1_core_1_1_camera.html#a369377c239b18d0857ca83631e18a5ff">Alis.Core.Camera</a>, <a class="el" href="class_alis_1_1_core_1_1_audio_source.html#a56e9c5e76bba1b689003bc515b14e487">Alis.Core.AudioSource</a>, and <a class="el" href="class_alis_1_1_core_1_1_animator.html#ab297eec7d63ccbb034e6a18e05bcce56">Alis.Core.Animator</a>.</p>
 
 </div>
 </div>
@@ -146,7 +177,7 @@ Private Member Functions</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="class_alis_1_1_core_1_1_component.html">Component</a></li>
     <li class="footer">
-      <a>Generated on | Mon Mar 1 2021 |</a>
+      <a>Generated on | Tue Mar 2 2021 |</a>
     </li>
   </ul>
 </div>

@@ -13,5 +13,6 @@ var class_alis_1_1_core_1_1_game_object =
     [ "components", "class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f", null ],
     [ "Name", "class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038", null ],
     [ "Transform", "class_alis_1_1_core_1_1_game_object.html#ae887b58a6ce772d8fe233d882a1a61e9", null ],
-    [ "Components", "class_alis_1_1_core_1_1_game_object.html#a1823daaef43bbac68057b6241d41b97a", null ]
+    [ "Components", "class_alis_1_1_core_1_1_game_object.html#a1823daaef43bbac68057b6241d41b97a", null ],
+    [ "Component", "class_alis_1_1_core_1_1_game_object.html#a56c41886636ce7d41f8558687437bcd7", null ]
 ];
