@@ -4,6 +4,7 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using System;
     using System.Diagnostics;
     using System.Numerics;
     using Newtonsoft.Json;
@@ -12,9 +13,6 @@ namespace Alis.Core
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Transform
     {
-        /// <summary>The icon</summary>
-        private readonly string icon = "\uf0b2";
-
         /// <summary>The position</summary>
         private Vector3 position;
 
@@ -23,6 +21,21 @@ namespace Alis.Core
 
         /// <summary>The size</summary>
         private Vector3 size;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnCreate;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnPositionChange;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnRotationChange;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnSizeChange;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnDestroy;
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         /// <param name="position">The position.</param>
@@ -34,6 +47,21 @@ namespace Alis.Core
             this.position = position;
             this.rotation = rotation;
             this.size = size;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
+        public Transform()
+        {
+            this.position = new Vector3(0f);
+            this.rotation = new Vector3(0f);
+            this.size = new Vector3(1f);
+        }
+
+        /// <summary>Finalizes an instance of the <see cref="Transform" /> class.</summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        ~Transform()
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>Gets or sets the position.</summary>
@@ -50,30 +78,6 @@ namespace Alis.Core
         /// <value>The size.</value>
         [JsonProperty]
         public Vector3 Size { get => size; set => size = value; }
-
-        /// <summary>Gets the icon.</summary>
-        /// <value>The icon.</value>
-        public string Icon => icon;
-
-        public GameObject GameObject
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        /// <summary>Starts the specified transform.</summary>
-        /// <param name="gameObject"></param>
-        public void Start(GameObject gameObject)
-        {
-        }
-
-        /// <summary>Updates the specified transform.</summary>
-        /// <param name="gameObject"></param>
-        public void Update(GameObject gameObject)
-        {
-        }
 
         /// <summary>Gets the debugger display.</summary>
         /// <returns>Debug string</returns>

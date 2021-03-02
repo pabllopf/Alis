@@ -66,6 +66,7 @@ namespace Alis.Core
             }
         }
 
+       
         /// <summary>Adds the specified component.</summary>
         /// <param name="component">The component.</param>
         public void Add(IComponent component)
