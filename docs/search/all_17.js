@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['warning_1034',['Warning',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a5d88f946aa81621b0a8d1ffd832ab220',1,'Alis.Editor.UI.Widgets.Console.Warning()'],['../class_alis_1_1_core_1_1_debug.html#a0774f5cc0945c050e115fb80baed775b',1,'Alis.Core.Debug.Warning()']]],
+  ['warning_1034',['Warning',['../class_alis_1_1_core_1_1_debug.html#a7eff8f03368deee2a5a925ccf1986693',1,'Alis.Core.Debug.Warning()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a5d88f946aa81621b0a8d1ffd832ab220',1,'Alis.Editor.UI.Widgets.Console.Warning()'],['../class_alis_1_1_core_1_1_debug.html#a0774f5cc0945c050e115fb80baed775b',1,'Alis.Core.Debug.Warning()']]],
   ['weibo_1035',['WEIBO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a0ca103678b13f898c92e0754a377e083',1,'Alis::Editor::Utils::Icon']]],
   ['weixin_1036',['WEIXIN',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9e95c6f1b4738aadd2db01cfcc5e1c29',1,'Alis::Editor::Utils::Icon']]],
   ['whatsapp_1037',['WHATSAPP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aab6c257e7ecd38885728fcd346ba16cb',1,'Alis::Editor::Utils::Icon']]],
@@ -9,7 +9,7 @@ var searchData=
   ['whitecolor_1040',['whiteColor',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a96de88dc00047e6aaff8171c6140aa96',1,'Alis::Editor::UI::Widgets::ProjectManager']]],
   ['widget_1041',['Widget',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html',1,'Alis::Editor::UI::Widgets']]],
   ['widgetevents_1042',['widgetEvents',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a1348dcf70d1513e8994c324c21b87384',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
-  ['widgetmanager_1043',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html',1,'Alis.Editor.UI.Widgets.WidgetManager'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af96d9b68cd7f4e15d96b67e6aa53a01a',1,'Alis.Editor.UI.MainWindow.widgetManager()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a46a106d3f3ef5a4c409d70a44132b63f',1,'Alis.Editor.UI.Widgets.WidgetManager.WidgetManager()']]],
+  ['widgetmanager_1043',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html',1,'Alis.Editor.UI.Widgets.WidgetManager'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a46a106d3f3ef5a4c409d70a44132b63f',1,'Alis.Editor.UI.Widgets.WidgetManager.WidgetManager()'],['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af96d9b68cd7f4e15d96b67e6aa53a01a',1,'Alis.Editor.UI.MainWindow.widgetManager()']]],
   ['widgets_1044',['widgets',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#ac9f2117e6d4103039e0a3b8a208a525a',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
   ['widgettype_1045',['WidgetType',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a75c4c1fad37c48ef5ac7a976e95fdfd8',1,'Alis::Editor::UI::Widgets']]],
   ['wifi_1046',['WIFI',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9097e162964bbc173403f922284c9604',1,'Alis::Editor::Utils::Icon']]],

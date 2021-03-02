@@ -126,7 +126,7 @@ $(document).ready(function(){initNavTree('_game_object_8cs_source.html',''); ini
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            this.components = <span class="keyword">new</span> List&lt;IComponent&gt;();</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        }</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#ae54add8b80220c438dc86b80e3695f4a">   39</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#ae54add8b80220c438dc86b80e3695f4a">GameObject</a>(<span class="keywordtype">string</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e3f57fcb6b0325da516d5558815c75c">name</a>, <a class="code" href="class_alis_1_1_core_1_1_transform.html">Transform</a> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a3520564e92a749313dc6d2e8e938e304">transform</a>, params <a class="code" href="interface_alis_1_1_core_1_1_i_component.html">IComponent</a>[] <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>)</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#ae54add8b80220c438dc86b80e3695f4a">   39</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#ae54add8b80220c438dc86b80e3695f4a">GameObject</a>(<span class="keywordtype">string</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e3f57fcb6b0325da516d5558815c75c">name</a>, <a class="code" href="class_alis_1_1_core_1_1_transform.html">Transform</a> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a3520564e92a749313dc6d2e8e938e304">transform</a>, params IComponent[] <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>)</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            this.name = <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e3f57fcb6b0325da516d5558815c75c">name</a>;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            this.transform = <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a3520564e92a749313dc6d2e8e938e304">transform</a> ?? <span class="keyword">new</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#ae887b58a6ce772d8fe233d882a1a61e9">Transform</a>(<span class="keyword">new</span> Vector3(0f), <span class="keyword">new</span> Vector3(0f), <span class="keyword">new</span> Vector3(1f));</div>
@@ -142,164 +142,170 @@ $(document).ready(function(){initNavTree('_game_object_8cs_source.html',''); ini
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        [JsonProperty]</div>
 <div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a1823daaef43bbac68057b6241d41b97a">   59</a></span>&#160;        <span class="keyword">public</span> List&lt;IComponent&gt; <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a1823daaef43bbac68057b6241d41b97a">Components</a> { <span class="keyword">get</span> =&gt; <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>; <span class="keyword">set</span> =&gt; <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a> = (value == <span class="keyword">null</span> ? <span class="keyword">new</span> List&lt;IComponent&gt;() : value); }</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a816ce735b6117c77bee9dd39dc55c557">   63</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a816ce735b6117c77bee9dd39dc55c557">Add</a>(<a class="code" href="interface_alis_1_1_core_1_1_i_component.html">IComponent</a> component)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Contains(component))</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Add(component);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">else</span> </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <a class="code" href="class_alis_1_1_core_1_1_debug.html">Debug</a>.<a class="code" href="class_alis_1_1_core_1_1_debug.html#a0774f5cc0945c050e115fb80baed775b">Warning</a>(<span class="stringliteral">&quot;Gameobject alredy containts the component &quot;</span> + component.GetType());</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#ab53b4a3780c52a2a7473486a2b66a11b">   77</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#ab53b4a3780c52a2a7473486a2b66a11b">Remove</a>(<a class="code" href="interface_alis_1_1_core_1_1_i_component.html">IComponent</a> component) </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Contains(component))</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Remove(component);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <a class="code" href="class_alis_1_1_core_1_1_debug.html">Debug</a>.<a class="code" href="class_alis_1_1_core_1_1_debug.html#a0774f5cc0945c050e115fb80baed775b">Warning</a>(<span class="stringliteral">&quot;Gameobject dont containts the component &quot;</span> + component.GetType());</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a082f7df608dda8a8e86ae89e9316077d">   90</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a082f7df608dda8a8e86ae89e9316077d">Start</a>()</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.ForEach(i =&gt; i.Start(<span class="keyword">this</span>));</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a11ae051dde35da31cedb62ac7deba328">   96</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a11ae051dde35da31cedb62ac7deba328">Update</a>()</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.ForEach(i =&gt; i.Update(<span class="keyword">this</span>));</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a767daa99395ad029ef4c19f54ec70e13">  104</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a767daa99395ad029ef4c19f54ec70e13">Exits</a>(<a class="code" href="interface_alis_1_1_core_1_1_i_component.html">IComponent</a> component) =&gt; <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Contains(component);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a5828e8077af8c82ffa97fc8760058828">  108</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a5828e8077af8c82ffa97fc8760058828">GetDebuggerDisplay</a>()</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">return</span> ToString();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    } </div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">/*</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">        private List&lt;IComponent&gt; components;</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">        </span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">        public GameObject(string name) </span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">            this.name = name;</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">            transform = new Transform(new System.Numerics.Vector3(0f), new System.Numerics.Vector3(0f), new System.Numerics.Vector3(1f));</span></div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">            components = new List&lt;IComponent&gt;</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">                transform</span></div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">            };</span></div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">            Debug.Log(&quot;Created a new &quot; + GetType() + &quot;(&quot; + name + &quot;).&quot;);</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">        public GameObject(string name, Transform transform, params IComponent[] component) </span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">            this.name = name;</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">            this.transform = transform;</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">            </span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">            Debug.Warning(&quot; x: &quot;+ this.transform.Position.X + &quot; y: &quot; + this.transform.Position.Y + &quot; z: &quot; + this.transform.Position.Z);</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">            </span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">            components = new List&lt;IComponent&gt;</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">                transform</span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">            };</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">            if (component != null) </span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">                components.AddRange(component);</span></div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">            </span></div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">            Debug.Log(&quot;Created a new &quot; + GetType() + &quot;(&quot; + name + &quot;).&quot;);</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a56c41886636ce7d41f8558687437bcd7">   61</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> <a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <span class="keyword">get</span> =&gt; <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="keyword">set</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a816ce735b6117c77bee9dd39dc55c557">   71</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a816ce735b6117c77bee9dd39dc55c557">Add</a>(IComponent component)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Contains(component))</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Add(component);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#ab53b4a3780c52a2a7473486a2b66a11b">   85</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#ab53b4a3780c52a2a7473486a2b66a11b">Remove</a>(IComponent component) </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Contains(component))</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Remove(component);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a082f7df608dda8a8e86ae89e9316077d">   98</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a082f7df608dda8a8e86ae89e9316077d">Start</a>()</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.ForEach(i =&gt; i.Start(<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a11ae051dde35da31cedb62ac7deba328">  104</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a11ae051dde35da31cedb62ac7deba328">Update</a>()</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.ForEach(i =&gt; i.Update(<span class="keyword">this</span>));</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a767daa99395ad029ef4c19f54ec70e13">  112</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a767daa99395ad029ef4c19f54ec70e13">Exits</a>(IComponent component) =&gt; <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a> != <span class="keyword">null</span> &amp;&amp; <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">components</a>.Contains(component);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_game_object.html#a5828e8077af8c82ffa97fc8760058828">  116</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">string</span> <a class="code" href="class_alis_1_1_core_1_1_game_object.html#a5828e8077af8c82ffa97fc8760058828">GetDebuggerDisplay</a>()</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keywordflow">return</span> ToString();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    } </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">        private List&lt;IComponent&gt; components;</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">        </span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">        public GameObject(string name) </span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">            this.name = name;</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">            transform = new Transform(new System.Numerics.Vector3(0f), new System.Numerics.Vector3(0f), new System.Numerics.Vector3(1f));</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">            components = new List&lt;IComponent&gt;</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">                transform</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">            };</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">            Debug.Log(&quot;Created a new &quot; + GetType() + &quot;(&quot; + name + &quot;).&quot;);</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">        public GameObject(string name, Transform transform, params IComponent[] component) </span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">            this.name = name;</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">            this.transform = transform;</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">            </span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">            Debug.Warning(&quot; x: &quot;+ this.transform.Position.X + &quot; y: &quot; + this.transform.Position.Y + &quot; z: &quot; + this.transform.Position.Z);</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">            </span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">            components = new List&lt;IComponent&gt;</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">                transform</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">            };</span></div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">        [JsonConstructor]</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">        public GameObject(string name, params IComponent[] component)</span></div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">            this.name = name;</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">            if (component != null) </span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">                components.AddRange(component);</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">            </span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">            Debug.Log(&quot;Created a new &quot; + GetType() + &quot;(&quot; + name + &quot;).&quot;);</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">        }</span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">            if (component != null)</span></div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">                components.AddRange(component);</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">                if (!components.Any(i =&gt; i.GetType().Equals(typeof(Transform))))</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">                {</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">                    transform = new Transform(new System.Numerics.Vector3(0f), new System.Numerics.Vector3(0f), new System.Numerics.Vector3(1f));</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">                }</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">                else </span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">                {</span></div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">                    Debug.Log(&quot;loaded transform&quot;);</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">                }</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">            Debug.Log(&quot;Created a new &quot; + GetType() + &quot;(&quot; + name + &quot;).&quot;);</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">        [JsonProperty]</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">        public string Name { get =&gt; name; set =&gt; name = value; }</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">        [JsonConstructor]</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">        public GameObject(string name, params IComponent[] component)</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">            this.name = name;</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">            if (component != null)</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">                components.AddRange(component);</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">                if (!components.Any(i =&gt; i.GetType().Equals(typeof(Transform))))</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">                    transform = new Transform(new System.Numerics.Vector3(0f), new System.Numerics.Vector3(0f), new System.Numerics.Vector3(1f));</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">                else </span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">                    Debug.Log(&quot;loaded transform&quot;);</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">            }</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">        [JsonProperty]</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">        public List&lt;IComponent&gt; Components { get =&gt; components; set =&gt; components = value; }</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">        [JsonProperty]</span></div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">        public Transform Transform { get =&gt; transform; set =&gt; transform = value; }</span></div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">        public void Add(IComponent component) </span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">            if (components.Exists(i =&gt; i.GetType() == component.GetType()))</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">                Debug.Warning(&quot;This component (&quot; + component.GetType() + &quot;) already exists in the GameObject(&quot; + name + &quot;).&quot;);</span></div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">            else </span></div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">                components.Add(component);</span></div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">        public void Start() </span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">            components.ForEach(i =&gt; i.Start());</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">            components.ForEach(i =&gt; i.Start(ref transform));</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">        public void Update() </span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">            components.ForEach(i =&gt; i.Update());</span></div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">            components.ForEach(i =&gt; i.Update(transform));</span></div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">        private string GetDebuggerDisplay()</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">            Debug.Log(&quot;Created a new &quot; + GetType() + &quot;(&quot; + name + &quot;).&quot;);</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">        [JsonProperty]</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">        public string Name { get =&gt; name; set =&gt; name = value; }</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">        [JsonProperty]</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">        public List&lt;IComponent&gt; Components { get =&gt; components; set =&gt; components = value; }</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">        [JsonProperty]</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">        public Transform Transform { get =&gt; transform; set =&gt; transform = value; }</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">        public void Add(IComponent component) </span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">            if (components.Exists(i =&gt; i.GetType() == component.GetType()))</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">                Debug.Warning(&quot;This component (&quot; + component.GetType() + &quot;) already exists in the GameObject(&quot; + name + &quot;).&quot;);</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">            else </span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">                components.Add(component);</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">        public void Start() </span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">            components.ForEach(i =&gt; i.Start());</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">            components.ForEach(i =&gt; i.Start(ref transform));</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">        public void Update() </span></div>
 <div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">        {</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">            return ToString();</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">        }</span></div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">    }*/</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">            components.ForEach(i =&gt; i.Update());</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">            components.ForEach(i =&gt; i.Update(transform));</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">        private string GetDebuggerDisplay()</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">            return ToString();</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">    }*/</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_newtonsoft_1_1_json_html"><div class="ttname"><a href="namespace_newtonsoft_1_1_json.html">Json</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_transform_html"><div class="ttname"><a href="class_alis_1_1_core_1_1_transform.html">Alis.Core.Transform</a></div><div class="ttdoc">Manage the position of the game object on a scene.</div><div class="ttdef"><b>Definition:</b> <a href="_transform_8cs_source.html#l00013">Transform.cs:14</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a3520564e92a749313dc6d2e8e938e304"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a3520564e92a749313dc6d2e8e938e304">Alis.Core.GameObject.transform</a></div><div class="ttdeci">Transform transform</div><div class="ttdoc">The transform</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00019">GameObject.cs:19</a></div></div>
-<div class="ttc" id="ainterface_alis_1_1_core_1_1_i_component_html"><div class="ttname"><a href="interface_alis_1_1_core_1_1_i_component.html">Alis.Core.IComponent</a></div><div class="ttdoc">Define components.</div><div class="ttdef"><b>Definition:</b> <a href="_i_component_8cs_source.html#l00011">IComponent.cs:12</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a8257c30378bf66e98be8e5481358c038"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038">Alis.Core.GameObject.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Gets or sets the name.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00049">GameObject.cs:49</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a6031d43584decfd40e3da592c94ec318"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a6031d43584decfd40e3da592c94ec318">Alis.Core.GameObject.GameObject</a></div><div class="ttdeci">GameObject(string name, Transform transform)</div><div class="ttdoc">Initializes a new instance of the GameObject class.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00028">GameObject.cs:28</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a5828e8077af8c82ffa97fc8760058828"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a5828e8077af8c82ffa97fc8760058828">Alis.Core.GameObject.GetDebuggerDisplay</a></div><div class="ttdeci">string GetDebuggerDisplay()</div><div class="ttdoc">Gets the debugger display.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00108">GameObject.cs:108</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_html"><div class="ttname"><a href="namespace_alis_1_1_core.html">Alis.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_animation_8cs_source.html#l00005">Animation.cs:6</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a5828e8077af8c82ffa97fc8760058828"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a5828e8077af8c82ffa97fc8760058828">Alis.Core.GameObject.GetDebuggerDisplay</a></div><div class="ttdeci">string GetDebuggerDisplay()</div><div class="ttdoc">Gets the debugger display.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00116">GameObject.cs:116</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_html"><div class="ttname"><a href="namespace_alis_1_1_core.html">Alis.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_8cs_source.html#l00005">Asset.cs:6</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a2e9b66bd59f4c36ceee7a2fdab29ab2f"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a2e9b66bd59f4c36ceee7a2fdab29ab2f">Alis.Core.GameObject.components</a></div><div class="ttdeci">List&lt; IComponent &gt; components</div><div class="ttdoc">The components</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00022">GameObject.cs:22</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a082f7df608dda8a8e86ae89e9316077d"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a082f7df608dda8a8e86ae89e9316077d">Alis.Core.GameObject.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Starts this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00090">GameObject.cs:90</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a11ae051dde35da31cedb62ac7deba328"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a11ae051dde35da31cedb62ac7deba328">Alis.Core.GameObject.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdoc">Updates this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00096">GameObject.cs:96</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a082f7df608dda8a8e86ae89e9316077d"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a082f7df608dda8a8e86ae89e9316077d">Alis.Core.GameObject.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdoc">Starts this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00098">GameObject.cs:98</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a11ae051dde35da31cedb62ac7deba328"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a11ae051dde35da31cedb62ac7deba328">Alis.Core.GameObject.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdoc">Updates this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00104">GameObject.cs:104</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_ae54add8b80220c438dc86b80e3695f4a"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#ae54add8b80220c438dc86b80e3695f4a">Alis.Core.GameObject.GameObject</a></div><div class="ttdeci">GameObject(string name, Transform transform, params IComponent[] components)</div><div class="ttdoc">Initializes a new instance of the GameObject class.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00039">GameObject.cs:39</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_ab53b4a3780c52a2a7473486a2b66a11b"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#ab53b4a3780c52a2a7473486a2b66a11b">Alis.Core.GameObject.Remove</a></div><div class="ttdeci">void Remove(IComponent component)</div><div class="ttdoc">Removes the specified component.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00077">GameObject.cs:77</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_ab53b4a3780c52a2a7473486a2b66a11b"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#ab53b4a3780c52a2a7473486a2b66a11b">Alis.Core.GameObject.Remove</a></div><div class="ttdeci">void Remove(IComponent component)</div><div class="ttdoc">Removes the specified component.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00085">GameObject.cs:85</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_ae887b58a6ce772d8fe233d882a1a61e9"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#ae887b58a6ce772d8fe233d882a1a61e9">Alis.Core.GameObject.Transform</a></div><div class="ttdeci">Transform Transform</div><div class="ttdoc">Gets or sets the transform.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00054">GameObject.cs:54</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_debug_html"><div class="ttname"><a href="class_alis_1_1_core_1_1_debug.html">Alis.Core.Debug</a></div><div class="ttdoc">Debug messages.</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cs_source.html#l00012">Debug.cs:13</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_debug_html_a0774f5cc0945c050e115fb80baed775b"><div class="ttname"><a href="class_alis_1_1_core_1_1_debug.html#a0774f5cc0945c050e115fb80baed775b">Alis.Core.Debug.Warning</a></div><div class="ttdeci">static void Warning(string message)</div><div class="ttdoc">Warnings the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_debug_8cs_source.html#l00023">Debug.cs:23</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a816ce735b6117c77bee9dd39dc55c557"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a816ce735b6117c77bee9dd39dc55c557">Alis.Core.GameObject.Add</a></div><div class="ttdeci">void Add(IComponent component)</div><div class="ttdoc">Adds the specified component.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00063">GameObject.cs:63</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_component_html"><div class="ttname"><a href="class_alis_1_1_core_1_1_component.html">Alis.Core.Component</a></div><div class="ttdef"><b>Definition:</b> <a href="_component_8cs_source.html#l00003">Component.cs:4</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a816ce735b6117c77bee9dd39dc55c557"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a816ce735b6117c77bee9dd39dc55c557">Alis.Core.GameObject.Add</a></div><div class="ttdeci">void Add(IComponent component)</div><div class="ttdoc">Adds the specified component.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00071">GameObject.cs:71</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html">Alis.Core.GameObject</a></div><div class="ttdoc">Define a game object.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00013">GameObject.cs:14</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a767daa99395ad029ef4c19f54ec70e13"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a767daa99395ad029ef4c19f54ec70e13">Alis.Core.GameObject.Exits</a></div><div class="ttdeci">bool Exits(IComponent component)</div><div class="ttdoc">Exitses the specified component.</div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a1823daaef43bbac68057b6241d41b97a"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a1823daaef43bbac68057b6241d41b97a">Alis.Core.GameObject.Components</a></div><div class="ttdeci">List&lt; IComponent &gt;? Components</div><div class="ttdoc">Gets or sets the components.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00059">GameObject.cs:59</a></div></div>
@@ -309,7 +315,7 @@ $(document).ready(function(){initNavTree('_game_object_8cs_source.html',''); ini
   <ul>
     <li class="navelem"><a class="el" href="dir_c6310732a22f63c0c2fc5595561e68f1.html">Core</a></li><li class="navelem"><b>GameObject.cs</b></li>
     <li class="footer">
-      <a>Generated on | Mon Mar 1 2021 |</a>
+      <a>Generated on | Tue Mar 2 2021 |</a>
     </li>
   </ul>
 </div>

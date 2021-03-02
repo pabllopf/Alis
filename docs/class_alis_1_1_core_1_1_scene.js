@@ -10,6 +10,5 @@ var class_alis_1_1_core_1_1_scene =
     [ "name", "class_alis_1_1_core_1_1_scene.html#a9840a12f8f3d96df86e8b3b37c5133ab", null ],
     [ "gameObjects", "class_alis_1_1_core_1_1_scene.html#abe85b853d66036756875eac2e7b2cb0a", null ],
     [ "Name", "class_alis_1_1_core_1_1_scene.html#a3c4bb09aa5ac9ce7669a33031b0a6c3f", null ],
-    [ "GameObjects", "class_alis_1_1_core_1_1_scene.html#a3786692d8a09b5e089f54a8bc1289989", null ],
-    [ "VideoGame", "class_alis_1_1_core_1_1_scene.html#a294b93f6998375c84f670dc6242a7503", null ]
+    [ "GameObjects", "class_alis_1_1_core_1_1_scene.html#a3786692d8a09b5e089f54a8bc1289989", null ]
 ];

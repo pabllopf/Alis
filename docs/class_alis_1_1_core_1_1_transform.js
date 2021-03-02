@@ -11,5 +11,6 @@ var class_alis_1_1_core_1_1_transform =
     [ "Icon", "class_alis_1_1_core_1_1_transform.html#a445125af6827ef1cf21372f413c3ad57", null ],
     [ "Position", "class_alis_1_1_core_1_1_transform.html#a9efdc08196ef26d99193bd606dc537e2", null ],
     [ "Rotation", "class_alis_1_1_core_1_1_transform.html#a1f61421fbb671293585f333fb2b5ab00", null ],
-    [ "Size", "class_alis_1_1_core_1_1_transform.html#a825e28e4aad7b8d41fa3628eb3ee5979", null ]
+    [ "Size", "class_alis_1_1_core_1_1_transform.html#a825e28e4aad7b8d41fa3628eb3ee5979", null ],
+    [ "GameObject", "class_alis_1_1_core_1_1_transform.html#aba52d17076a37ebc9ecab3ec0051247c", null ]
 ];
