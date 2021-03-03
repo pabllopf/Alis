@@ -5,39 +5,84 @@
 namespace Alis.Core
 {
     using Newtonsoft.Json;
-    using System.Diagnostics;
+    using System;
+    using Alis.Tools;
 
-    /// <summary>Define a config. </summary>
-    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
+    /// <summary>Define the config of videogame</summary>
+    [JsonObject(MemberSerialization.OptIn)]
     public class Config
     {
-        /// <summary>
-        /// The name proyect
-        /// </summary>
-        private string name = "DefaultName";
+        /// <summary>The name</summary>
+        private string name;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnCreate;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnDestroy;
+
+        /// <summary>Occurs when [on change name].</summary>
+        public event EventHandler<bool> OnChangeName;
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="name">The name of videogame.</param>
         [JsonConstructor()]
         public Config(string name)
         {
-            this.name = name;
+            this.name = name ?? "AlisGame";
+
+            OnCreate += Config_OnCreate;
+            OnDestroy += Config_OnDestroy; 
+            OnChangeName += Config_OnChangeName;
+
+            OnCreate?.Invoke(null, true);
+
+            Debug.Log("Memory used after create object {" + GC.GetTotalMemory(true) + "}");
         }
 
+        /// <summary>Finalizes an instance of the <see cref="Config" /> class.</summary>
         ~Config()
         {
-            throw new System.NotImplementedException();
+            GC.Collect();
+            OnDestroy?.Invoke(null, true);
+            Debug.Log("Memory used after full collection: {" + GC.GetTotalMemory(true) + "}");
         }
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
-        public string Name { get => name; set => name = value; }
-
-        /// <summary>Gets the debugger display.</summary>
-        /// <returns>Return message</returns>
-        private string GetDebuggerDisplay()
+        [JsonProperty]
+        public string Name
         {
-            return ToString();
+            get { return name; }
+            set
+            {
+                OnChangeName?.Invoke(null, true);
+                name = value;
+            }
+        }
+
+        /// <summary>Configurations the on create.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Config_OnCreate(object sender, bool e)
+        {
+            Debug.EventLog("Create new " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
+        }
+
+        /// <summary>Configurations the on destroy.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Config_OnDestroy(object sender, bool e)
+        {
+            Debug.EventLog("Destroy " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
+        }
+
+        /// <summary>Configurations the name of the on change.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Config_OnChangeName(object sender, bool e)
+        {
+            Debug.EventLog("Change name of videogame to " + name);
         }
     }
 }

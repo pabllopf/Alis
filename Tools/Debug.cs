@@ -2,7 +2,7 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Debug.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-namespace Alis.Core
+namespace Alis.Tools
 {
     using System;
     using System.Diagnostics;
@@ -11,6 +11,8 @@ namespace Alis.Core
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Debug
     {
+        private static Level level;
+
         /// <summary>Logs the specified message.</summary>
         /// <param name="message">The message.</param>
         public static void Log(string message)
@@ -41,6 +43,11 @@ namespace Alis.Core
         private string GetDebuggerDisplay()
         {
             return ToString();
+        }
+
+        public static void EventLog(string message)
+        {
+            Console.WriteLine("EVENT: " + message);
         }
     }
 }

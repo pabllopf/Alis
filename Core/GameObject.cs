@@ -9,7 +9,6 @@ namespace Alis.Core
     using System.Numerics;
 
     /// <summary>Define a game object. </summary>
-    [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class GameObject
     {
         /// <summary>The name</summary>
@@ -19,7 +18,73 @@ namespace Alis.Core
         private Transform transform;
 
         /// <summary>The components</summary>
-        private List<IComponent> components;
+        private List<Component> components;
+
+        /// <summary>Gets or sets the name.</summary>
+        /// <value>The name.</value>
+        [JsonProperty]
+        public string Name { get => name; set => name = value; }
+
+        /// <summary>Gets or sets the transform.</summary>
+        /// <value>The transform.</value>
+        [JsonProperty]
+        public Transform Transform { get => transform; set => transform = value; }
+
+        /// <summary>Gets or sets the components.</summary>
+        /// <value>The components.</value>
+        [JsonProperty]
+        public List<Component> Components { get => components; set => components = value; }
+        
+        /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="transform">The transform.</param>
+        [JsonConstructor]
+        public GameObject(string name, Transform transform)
+        {
+            this.name = name;
+            this.transform = transform ?? new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f));
+            this.components = new List<Component>();
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="transform">The transform.</param>
+        /// <param name="components">The components.</param>
+        public GameObject(string name, Transform transform, params Component[] components)
+        {
+            this.name = name;
+            this.transform = transform ?? new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f));
+            this.components = components != null ? new List<Component>(components) : new List<Component>();
+        }
+
+        public void AddComponent<T>(T component)
+        {
+        
+        }
+
+        public void GetComponent<T>(T component)
+        {
+
+        }
+
+        public void DeleteComponent(Component component)
+        {
+
+        }
+
+
+
+    }
+}
+        /*
+        /// <summary>The name</summary>
+        private string name;
+
+        /// <summary>The transform</summary>
+        private Transform transform;
+
+        /// <summary>The components</summary>
+        private List<Component> components;
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
@@ -29,18 +94,18 @@ namespace Alis.Core
         {
             this.name = name;
             this.transform = transform ?? new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f));
-            this.components = new List<IComponent>();
+            this.components = new List<Component>();
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="transform">The transform.</param>
         /// <param name="components">The components.</param>
-        public GameObject(string name, Transform transform, params IComponent[] components)
+        public GameObject(string name, Transform transform, params Component[] components)
         {
             this.name = name;
             this.transform = transform ?? new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f));
-            this.components = components != null ? new List<IComponent>(components) : new List<IComponent>();
+            this.components = components != null ? new List<Component>(components) : new List<Component>();
         }
 
         /// <summary>Gets or sets the name.</summary>
@@ -56,7 +121,7 @@ namespace Alis.Core
         /// <summary>Gets or sets the components.</summary>
         /// <value>The components.</value>
         [JsonProperty]
-        public List<IComponent> Components { get => components; set => components = (value == null ? new List<IComponent>() : value); }
+        public List<Component> Components { get => components; set => components = (value == null ? new List<IComponent>() : value); }
 
         public Component Component
         {
@@ -69,7 +134,7 @@ namespace Alis.Core
        
         /// <summary>Adds the specified component.</summary>
         /// <param name="component">The component.</param>
-        public void Add(IComponent component)
+        public void Add(Component component)
         {
             if (!components.Contains(component))
             {
@@ -83,7 +148,7 @@ namespace Alis.Core
 
         /// <summary>Removes the specified component.</summary>
         /// <param name="component">The component.</param>
-        public void Remove(IComponent component) 
+        public void Remove(Component component) 
         {
             if (components.Contains(component))
             {

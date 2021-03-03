@@ -160,23 +160,13 @@ namespace Alis.Core
             }
         }
 
-        /// <summary>Starts this instance.</summary>
-        public void Start()
-        {
-           
-        }
+
 
 
         /// <summary>Starts this instance.</summary>
         public void Start(GameObject gameObject)
         {
-            if (audio != null)
-            {
-                if (playOnAwake)
-                {
-                    audio.Play();
-                }
-            }
+            
         }
 
         /// <summary>Updates the specified transform.</summary>
@@ -195,7 +185,13 @@ namespace Alis.Core
 
         public override void Start()
         {
-            throw new NotImplementedException();
+            if (audio != null)
+            {
+                if (playOnAwake)
+                {
+                    audio.Play();
+                }
+            }
         }
 
         public override void Update()

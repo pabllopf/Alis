@@ -2,6 +2,7 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Render.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
+using Alis.Tools;
 using SFML.Graphics;
 using SFML.Window;
 using System;
@@ -59,14 +60,14 @@ namespace Alis.Core
         {
             renderTexture.Clear(Color.Black);
 
-            if (sprites.Count > 0) 
+            /*if (sprites.Count > 0) 
             {
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
                 foreach (SFML.Graphics.Sprite sprite in sprites)
                 {
                     renderTexture.Draw(sprite.GetSprite);
                 }
-            }
+            }*/
 
             renderTexture.Smooth = true;
             renderTexture.Display();
@@ -81,14 +82,14 @@ namespace Alis.Core
             if (renderWindow == null) 
             {
                 renderWindow = new RenderWindow(videoMode, title);
-                renderWindow.Closed += Window_Closed;
+                //renderWindow.Closed += Window_Closed;
                 Debug.Log("Create window");
             }
 
             renderWindow.DispatchEvents();
             renderWindow.Clear();
 
-            if (sprites.Count > 0)
+            /*if (sprites.Count > 0)
             {
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
                 foreach (SFML.Graphics.Sprite sprite in sprites)
@@ -96,7 +97,7 @@ namespace Alis.Core
                     //Debug.Log("sprite:::" + sprite.ImageFile + " " + sprite.Depth);
                     renderWindow.Draw(sprite.GetSprite);
                 }
-            }
+            }*/
 
             renderWindow.Display();
         }
@@ -122,12 +123,12 @@ namespace Alis.Core
                 spir.Add(sprite);
                 Debug.Warning("Add a sprite " + sprite.ToString());
                 renderTexture.Clear();
-                renderTexture.Draw(sprite.GetSprite);
+                //renderTexture.Draw(sprite.GetSprite);
                 renderTexture.Display();
             }
             else
             {
-                Debug.Warning("Sprite alredy exits." + " Sprite: " + sprite.GetSprite.Texture.ToString());
+                Debug.Warning("Sprite alredy exits." + " Sprite: "  );//sprite.GetSprite.Texture.ToString());
             }
 
             sprites = spir;

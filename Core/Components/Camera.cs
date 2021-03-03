@@ -4,12 +4,12 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using Alis.Tools;
     using Newtonsoft.Json;
     using SFML.Graphics;
     using SFML.System;
 
     /// <summary>Define a camera</summary>
-    [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Camera : Component
     {
         /// <summary>The icon</summary>
@@ -37,7 +37,7 @@ namespace Alis.Core
 
         public void Start(GameObject gameObject)
         {
-            Debug.Log("Define a camera on " + gameObject.Name + " gameobject");
+            //Debug.Log("Define a camera on " + gameObject.Name + " gameobject");
         }
 
         public override void Start()
@@ -58,7 +58,7 @@ namespace Alis.Core
                         Render.Current.RenderWindow.SetView(view);
                     }
 
-                    view.Center = new Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
+                    //view.Center = new Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
                 }
 
                 if (Render.Current.RenderTexture != null)
@@ -67,7 +67,7 @@ namespace Alis.Core
                     {
                         Render.Current.RenderTexture.SetView(view);
                     }
-                    view.Center = new Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
+                    //view.Center = new Vector2f(gameObject.Transform.Position.X, gameObject.Transform.Position.Y);
                 }
             }
 

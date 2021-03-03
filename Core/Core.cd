@@ -4,24 +4,22 @@
     <Position X="3.25" Y="2" Width="1.5" />
     <AssociationLine Name="Render" Type="Alis.Core.Render">
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.224" Y="0.11" />
+        <Position X="0.11" Y="0.224" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQCAAAAAiAAAAAAiAAAAIAAEAAAAAAAABAAAAAQAAA=</HashCode>
+      <HashCode>AAQHAAAAAiAAAAAAEAAAAAAgECAAABAAABAABAAQAgQ=</HashCode>
       <FileName>VideoGame.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Config" />
       <Property Name="Render" />
       <Property Name="Input" />
+      <Property Name="SceneManager" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Scenes" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.Scene">
-    <Position X="5.75" Y="1.75" Width="1.5" />
+    <Position X="9" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAYAAAAEACAABAAACAAABAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Scene.cs</FileName>
@@ -33,45 +31,29 @@
   <Class Name="Alis.Core.Config">
     <Position X="0.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAACAAAAAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIABAAAAAAAAAAAAAAAAAAQAACAEAAAgAEAAAAAAACA=</HashCode>
       <FileName>Config.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Debug">
-    <Position X="2" Y="12.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAEAAAAAAAAQAAAAAAABAAAAkAAAABAAAAAAAAAAA=</HashCode>
-      <FileName>Debug.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Level" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="Alis.Core.GameObject">
-    <Position X="8.75" Y="1.5" Width="1.5" />
-    <AssociationLine Name="Transform" Type="Alis.Core.Transform">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.11" Y="0.634" />
-      </MemberNameLabel>
-    </AssociationLine>
+    <Position X="11.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAAAAAACAAAIAACACABAQAAAAEAAAAAABAAEAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAIAIAAAACABAQAEAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Component" />
-      <Property Name="Transform" />
-    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Components" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.Component">
-    <Position X="13.25" Y="2" Width="1.5" />
+    <Position X="14.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Component.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Sprite">
-    <Position X="12" Y="4" Width="1.5" />
+    <Position X="12.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Sprite.cs</FileName>
@@ -142,25 +124,28 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Render">
-    <Position X="4.75" Y="5.5" Width="1.5" />
+    <Position X="4.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAEAAAEMCAAAKAgAACAAHAAAAAAUSAAAA=</HashCode>
       <FileName>Render\Render.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Input">
-    <Position X="0.75" Y="5.75" Width="1.5" />
+    <Position X="0.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAYAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>Input\Input.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="Alis.Core.Level">
-    <Position X="4.25" Y="13.5" Width="1.5" />
+  <Class Name="Alis.Core.SceneManager">
+    <Position X="6.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAA=</HashCode>
-      <FileName>Level.cs</FileName>
+      <HashCode>AAIBAAAFAAAAEAgBgAAACIAIgCUAAAAAAAAAAEEACAA=</HashCode>
+      <FileName>SceneManager.cs</FileName>
     </TypeIdentifier>
-  </Enum>
+    <ShowAsCollectionAssociation>
+      <Property Name="Scenes" />
+    </ShowAsCollectionAssociation>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -52,23 +52,12 @@ namespace SFML
     /// <summary>
     ///   <br />
     /// </summary>
-    public class Move : IComponent
+    public class Move : Component
     {
         private Transform transform;
 
         private Animator animator;
 
-        /// <summary>Starts the specified transform.</summary>
-        /// <param name="gameObject"></param>
-        public void Start(GameObject gameObject)
-        {
-            Input.OnPressKey += Input_OnPressKey;
-
-            animator = (Animator)gameObject.Components.Find(i => i.GetType().Equals(typeof(Animator)));
-            transform = gameObject.Transform;
-
-            //throw new global::System.NotImplementedException();
-        }
 
         private void Input_OnPressKey(object sender, Window.Keyboard.Key key)
         {
@@ -102,6 +91,20 @@ namespace SFML
         public void Update(GameObject gameObject)
         {
             //throw new global::System.NotImplementedException();
+        }
+
+        public override void Start()
+        {
+            Input.OnPressKey += Input_OnPressKey;
+
+            animator = (Animator)gameObject.Components.Find(i => i.GetType().Equals(typeof(Animator)));
+            transform = gameObject.Transform;
+
+        }
+
+        public override void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }
