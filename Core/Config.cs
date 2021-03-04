@@ -10,7 +10,7 @@ namespace Alis.Core
 
     /// <summary>Define the config of videogame</summary>
     [JsonObject(MemberSerialization.OptIn)]
-    public class Config
+    public class Config 
     {
         /// <summary>The name</summary>
         private string name;
@@ -30,59 +30,39 @@ namespace Alis.Core
         public Config(string name)
         {
             this.name = name ?? "AlisGame";
-
+            
             OnCreate += Config_OnCreate;
-            OnDestroy += Config_OnDestroy; 
+            OnDestroy += Config_OnDestroy;
             OnChangeName += Config_OnChangeName;
 
             OnCreate?.Invoke(null, true);
-
-            Debug.Log("Memory used after create object {" + GC.GetTotalMemory(true) + "}");
         }
 
         /// <summary>Finalizes an instance of the <see cref="Config" /> class.</summary>
-        ~Config()
-        {
-            GC.Collect();
-            OnDestroy?.Invoke(null, true);
-            Debug.Log("Memory used after full collection: {" + GC.GetTotalMemory(true) + "}");
-        }
+        ~Config() => OnDestroy?.Invoke(null, true);
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
         [JsonProperty]
-        public string Name
-        {
-            get { return name; }
-            set
-            {
-                OnChangeName?.Invoke(null, true);
-                name = value;
-            }
-        }
+        public string Name { get => name; set { name = value; OnChangeName?.Invoke(null, true); }}
+
+        #region Events
 
         /// <summary>Configurations the on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnCreate(object sender, bool e)
-        {
-            Debug.EventLog("Create new " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
-        }
+        private void Config_OnCreate(object sender, bool e) => Debug.Event(this);
 
         /// <summary>Configurations the on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnDestroy(object sender, bool e)
-        {
-            Debug.EventLog("Destroy " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
-        }
+        private void Config_OnDestroy(object sender, bool e) => Debug.Event(this);
 
         /// <summary>Configurations the name of the on change.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnChangeName(object sender, bool e)
-        {
-            Debug.EventLog("Change name of videogame to " + name);
-        }
+        private void Config_OnChangeName(object sender, bool e) => Debug.Event(this);
+
+        #endregion
     }
 }

@@ -4,6 +4,14 @@
         <name>Core</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Asset">
+            <summary>Find any asset of the videogame.</summary>
+        </member>
+        <member name="M:Alis.Core.Asset.Load">
+            <summary>
+            Get the path of the asset.
+            </summary>
+        </member>
         <member name="T:Alis.Core.Animation">
             <summary>Define animation of sprite.</summary>
         </member>
@@ -98,10 +106,6 @@
             <summary>Updates the specified transform.</summary>
             <param name="gameObject"></param>
         </member>
-        <member name="M:Alis.Core.Animator.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>return display</returns>
-        </member>
         <member name="T:Alis.Core.AudioSource">
             <summary>Control the audio of game object.</summary>
         </member>
@@ -172,9 +176,6 @@
         <member name="M:Alis.Core.AudioSource.Restart">
             <summary>Restarts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.AudioSource.Start">
-            <summary>Starts this instance.</summary>
-        </member>
         <member name="M:Alis.Core.AudioSource.Start(Alis.Core.GameObject)">
             <summary>Starts this instance.</summary>
         </member>
@@ -192,88 +193,8 @@
         <member name="F:Alis.Core.Camera.icon">
             <summary>The icon</summary>
         </member>
-        <member name="T:Alis.Core.IComponent">
-            <summary>Define components.</summary>
-        </member>
-        <member name="M:Alis.Core.IComponent.Start(Alis.Core.GameObject)">
-            <summary>Starts the specified transform.</summary>
-            <param name="gameObject"></param>
-        </member>
-        <member name="M:Alis.Core.IComponent.Update(Alis.Core.GameObject)">
-            <summary>Updates the specified transform.</summary>
-            <param name="gameObject"></param>
-        </member>
-        <member name="T:Alis.Core.Sprite">
-            <summary>Define sprite to draw on game.</summary>
-        </member>
-        <member name="F:Alis.Core.Sprite.icon">
-            <summary>The icon</summary>
-        </member>
-        <member name="F:Alis.Core.Sprite.imageFile">
-            <summary>The image file</summary>
-        </member>
-        <member name="F:Alis.Core.Sprite.path">
-            <summary>The path</summary>
-        </member>
-        <member name="F:Alis.Core.Sprite.depth">
-            <summary>The depth</summary>
-        </member>
-        <member name="F:Alis.Core.Sprite.sprite">
-            <summary>The sprite</summary>
-        </member>
-        <member name="F:Alis.Core.Sprite.texture">
-            <summary>The texture</summary>
-        </member>
-        <member name="F:Alis.Core.Sprite.invalidFile">
-            <summary>The invalid file</summary>
-        </member>
-        <member name="M:Alis.Core.Sprite.#ctor(System.String,System.String,System.Int32)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sprite" /> class.</summary>
-            <param name="imageFile">The image file.</param>
-            <param name="path"></param>
-        </member>
-        <member name="P:Alis.Core.Sprite.ImageFile">
-            <summary>Gets or sets the image file.</summary>
-            <value>The image file.</value>
-        </member>
-        <member name="P:Alis.Core.Sprite.Path">
-            <summary>Gets or sets the path.</summary>
-            <value>The path.</value>
-        </member>
-        <member name="P:Alis.Core.Sprite.GetSprite">
-            <summary>Gets or sets the get sprite.</summary>
-            <value>The get sprite.</value>
-        </member>
-        <member name="P:Alis.Core.Sprite.Depth">
-            <summary>Gets or sets the depth.</summary>
-            <value>The depth.</value>
-        </member>
-        <member name="P:Alis.Core.Sprite.Icon">
-            <summary>Gets the icon.</summary>
-            <value>The icon.</value>
-        </member>
-        <member name="M:Alis.Core.Sprite.Start">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Sprite.Start(Alis.Core.GameObject)">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Sprite.Update(Alis.Core.GameObject)">
-            <summary>Updates the specified transform.</summary>
-            <param name="gameObject"></param>
-        </member>
-        <member name="M:Alis.Core.Sprite.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
-        </member>
-        <member name="M:Alis.Core.Sprite.CheckTexture">
-            <summary>Checks the texture.</summary>
-        </member>
         <member name="T:Alis.Core.Transform">
             <summary>Manage the position of the game object on a scene.</summary>
-        </member>
-        <member name="F:Alis.Core.Transform.icon">
-            <summary>The icon</summary>
         </member>
         <member name="F:Alis.Core.Transform.position">
             <summary>The position</summary>
@@ -284,11 +205,33 @@
         <member name="F:Alis.Core.Transform.size">
             <summary>The size</summary>
         </member>
+        <member name="E:Alis.Core.Transform.OnCreate">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnPositionChange">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnRotationChange">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnSizeChange">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnDestroy">
+            <summary>Occurs when [change].</summary>
+        </member>
         <member name="M:Alis.Core.Transform.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
             <param name="position">The position.</param>
             <param name="rotation">The rotation.</param>
             <param name="size">size object</param>
+        </member>
+        <member name="M:Alis.Core.Transform.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.Transform.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
+            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="P:Alis.Core.Transform.Position">
             <summary>Gets or sets the position.</summary>
@@ -302,37 +245,50 @@
             <summary>Gets or sets the size.</summary>
             <value>The size.</value>
         </member>
-        <member name="P:Alis.Core.Transform.Icon">
-            <summary>Gets the icon.</summary>
-            <value>The icon.</value>
-        </member>
-        <member name="M:Alis.Core.Transform.Start(Alis.Core.GameObject)">
-            <summary>Starts the specified transform.</summary>
-            <param name="gameObject"></param>
-        </member>
-        <member name="M:Alis.Core.Transform.Update(Alis.Core.GameObject)">
-            <summary>Updates the specified transform.</summary>
-            <param name="gameObject"></param>
-        </member>
         <member name="M:Alis.Core.Transform.GetDebuggerDisplay">
             <summary>Gets the debugger display.</summary>
             <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Core.Config">
-            <summary>Define a config. </summary>
+            <summary>Define the config of videogame</summary>
         </member>
         <member name="F:Alis.Core.Config.name">
-            <summary>
-            The name proyect
-            </summary>
+            <summary>The name</summary>
+        </member>
+        <member name="E:Alis.Core.Config.OnCreate">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Config.OnDestroy">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Config.OnChangeName">
+            <summary>Occurs when [on change name].</summary>
         </member>
         <member name="M:Alis.Core.Config.#ctor(System.String)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Config" /> class.</summary>
             <param name="name">The name of videogame.</param>
         </member>
+        <member name="M:Alis.Core.Config.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Config" /> class.</summary>
+        </member>
         <member name="P:Alis.Core.Config.Name">
-            <summary>Gets or sets the name project.</summary>
-            <value>The name project.</value>
+            <summary>Gets or sets the name.</summary>
+            <value>The name.</value>
+        </member>
+        <member name="M:Alis.Core.Config.Config_OnCreate(System.Object,System.Boolean)">
+            <summary>Configurations the on create.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.Config.Config_OnDestroy(System.Object,System.Boolean)">
+            <summary>Configurations the on destroy.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.Config.Config_OnChangeName(System.Object,System.Boolean)">
+            <summary>Configurations the name of the on change.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
         </member>
         <member name="T:Alis.Core.GameObject">
             <summary>Define a game object. </summary>
@@ -346,17 +302,6 @@
         <member name="F:Alis.Core.GameObject.components">
             <summary>The components</summary>
         </member>
-        <member name="M:Alis.Core.GameObject.#ctor(System.String,Alis.Core.Transform)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.GameObject" /> class.</summary>
-            <param name="name">The name.</param>
-            <param name="transform">The transform.</param>
-        </member>
-        <member name="M:Alis.Core.GameObject.#ctor(System.String,Alis.Core.Transform,Alis.Core.IComponent[])">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.GameObject" /> class.</summary>
-            <param name="name">The name.</param>
-            <param name="transform">The transform.</param>
-            <param name="components">The components.</param>
-        </member>
         <member name="P:Alis.Core.GameObject.Name">
             <summary>Gets or sets the name.</summary>
             <value>The name.</value>
@@ -369,28 +314,16 @@
             <summary>Gets or sets the components.</summary>
             <value>The components.</value>
         </member>
-        <member name="M:Alis.Core.GameObject.Add(Alis.Core.IComponent)">
-            <summary>Adds the specified component.</summary>
-            <param name="component">The component.</param>
+        <member name="M:Alis.Core.GameObject.#ctor(System.String,Alis.Core.Transform)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.GameObject" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="transform">The transform.</param>
         </member>
-        <member name="M:Alis.Core.GameObject.Remove(Alis.Core.IComponent)">
-            <summary>Removes the specified component.</summary>
-            <param name="component">The component.</param>
-        </member>
-        <member name="M:Alis.Core.GameObject.Start">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.GameObject.Update">
-            <summary>Updates this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.GameObject.Exits(Alis.Core.IComponent)">
-            <summary>Exitses the specified component.</summary>
-            <param name="component">The component.</param>
-            <returns>Return true if exits the component</returns>
-        </member>
-        <member name="M:Alis.Core.GameObject.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
+        <member name="M:Alis.Core.GameObject.#ctor(System.String,Alis.Core.Transform,Alis.Core.Component[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.GameObject" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="transform">The transform.</param>
+            <param name="components">The components.</param>
         </member>
         <member name="T:Alis.Core.Input">
             <summary>Manage the inputs of game.</summary>
@@ -450,15 +383,15 @@
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
         </member>
-        <member name="M:Alis.Core.Render.AddNewSprite(Alis.Core.Sprite)">
+        <member name="M:Alis.Core.Render.AddNewSprite(SFML.Graphics.Sprite)">
             <summary>Adds the new sprite.</summary>
             <param name="sprite">The sprite.</param>
         </member>
-        <member name="M:Alis.Core.Render.DeleteSprite(Alis.Core.Sprite)">
+        <member name="M:Alis.Core.Render.DeleteSprite(SFML.Graphics.Sprite)">
             <summary>Deletes the sprite.</summary>
             <param name="sprite">The sprite.</param>
         </member>
-        <member name="M:Alis.Core.Render.Exits(Alis.Core.Sprite)">
+        <member name="M:Alis.Core.Render.Exits(SFML.Graphics.Sprite)">
             <summary>Exitses the specified sprite.</summary>
             <param name="sprite">The sprite.</param>
             <returns>Return</returns>
@@ -508,27 +441,111 @@
             <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Core.SceneManager">
-            <summary>Manage the scenes of game.</summary>
+            <summary>Manage the scenes of the videogame.</summary>
         </member>
-        <member name="M:Alis.Core.SceneManager.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
+        <member name="F:Alis.Core.SceneManager.current">
+            <summary>The current</summary>
         </member>
-        <member name="T:Alis.Core.VideoGame">
+        <member name="F:Alis.Core.SceneManager.scenes">
+            <summary>The scenes</summary>
+        </member>
+        <member name="F:Alis.Core.SceneManager.currentScene">
+            <summary>The current scene</summary>
+        </member>
+        <member name="P:Alis.Core.SceneManager.Scenes">
+            <summary>Gets or sets the scenes.</summary>
+            <value>The scenes.</value>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnCreate">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnAddScene">
+            <summary>Occurs when [on add scene].</summary>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnDeleteScene">
+            <summary>Occurs when [on delete scene].</summary>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnLoadScene">
+            <summary>Occurs when [on load scene].</summary>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnDestroy">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="M:Alis.Core.SceneManager.#ctor(System.Collections.Generic.List{Alis.Core.Scene})">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SceneManager" /> class.</summary>
+            <param name="scenes">The scenes.</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.#ctor">
             <summary>
-            Build your videogame
+            Initializes a new instance of the <see cref="T:Alis.Core.SceneManager"/> class.
             </summary>
-            <remarks>Define a videogame</remarks>
         </member>
-        <member name="F:Alis.Core.VideoGame.scenes">
-            <summary>
-            the scenes of the videogame
-            </summary>
+        <member name="M:Alis.Core.SceneManager.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.SceneManager" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.SceneManager.Add(Alis.Core.Scene)">
+            <summary>Adds the scene.</summary>
+            <param name="scene">The scene.</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.Delete(Alis.Core.Scene)">
+            <summary>Deletes the scene.</summary>
+            <param name="scene">The scene.</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.Exits(Alis.Core.Scene)">
+            <summary>Exitses the specified scene.</summary>
+            <param name="scene">The scene.</param>
+            <returns>Return true if exits a scene on the videogame.</returns>
+        </member>
+        <member name="M:Alis.Core.SceneManager.LoadScene(System.String)">
+            <summary>Loads the scene.</summary>
+            <param name="name">The name.</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnCreate(System.Object,System.Boolean)">
+            <summary>Scenes the manager on create.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnDestroy(System.Object,System.Boolean)">
+            <summary>Scenes the manager on destroy.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnLoadScene(System.Object,System.Boolean)">
+            <summary>Scenes the manager on load scene.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnDeleteScene(System.Object,System.Boolean)">
+            <summary>Scenes the manager on delete scene.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnAddScene(System.Object,System.Boolean)">
+            <summary>Scenes the manager on add scene.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Alis.Core.VideoGame" -->
+        <member name="F:Alis.Core.VideoGame.sceneManager">
+            <summary>The scene manager</summary>
         </member>
         <member name="F:Alis.Core.VideoGame.config">
-            <summary>
-            the config of videogame
-            </summary>
+            <summary>The configuration</summary>
+        </member>
+        <member name="F:Alis.Core.VideoGame.render">
+            <summary>The render</summary>
+        </member>
+        <member name="F:Alis.Core.VideoGame.input">
+            <summary>The input</summary>
+        </member>
+        <member name="E:Alis.Core.VideoGame.OnCreate">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.VideoGame.OnStart">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.VideoGame.OnDestroy">
+            <summary>Occurs when [change].</summary>
         </member>
         <member name="M:Alis.Core.VideoGame.#ctor(Alis.Core.Config)">
             <summary>
@@ -536,15 +553,27 @@
             </summary>
             <param name="config">Config of videogame</param>
         </member>
+        <member name="M:Alis.Core.VideoGame.#ctor(Alis.Core.Config,Alis.Core.Scene[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+            <param name="scene">The scene.</param>
+        </member>
         <member name="M:Alis.Core.VideoGame.Finalize">
             <summary>
             Destructor of the videogame
             </summary>
         </member>
         <member name="P:Alis.Core.VideoGame.Config">
-            <summary>
-            the config of videogame
-            </summary>
+            <summary>Gets or sets the configuration.</summary>
+            <value>The configuration.</value>
+        </member>
+        <member name="P:Alis.Core.VideoGame.Render">
+            <summary>Gets or sets the render.</summary>
+            <value>The render.</value>
+        </member>
+        <member name="P:Alis.Core.VideoGame.Input">
+            <summary>Gets or sets the input.</summary>
+            <value>The input.</value>
         </member>
         <member name="M:Alis.Core.VideoGame.Start">
             <summary>
@@ -555,6 +584,21 @@
             <summary>
             Update every frame the videogame
             </summary>
+        </member>
+        <member name="M:Alis.Core.VideoGame.VideoGame_OnCreate(System.Object,System.Boolean)">
+            <summary>Videoes the game on create.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.VideoGame.VideoGame_OnDestroy(System.Object,System.Boolean)">
+            <summary>Videoes the game on destroy.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.VideoGame.VideoGame_OnStart(System.Object,System.Boolean)">
+            <summary>Videoes the game on start.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
         </member>
     </members>
 </doc>

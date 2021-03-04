@@ -12,7 +12,6 @@
       <FileName>VideoGame.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Config" />
       <Property Name="Render" />
       <Property Name="Input" />
       <Property Name="SceneManager" />
@@ -95,7 +94,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAACAAAAAAQABAAEAAEAQACBAEAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAQABAAEAAEAQACBAEAAAA=</HashCode>
       <FileName>Components\Animator.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>

@@ -13,6 +13,11 @@ namespace Alis.Core
             
         }
 
+        public Sprite(string name, string path, int depth)
+        {
+
+        }
+
         public override void Start()
         {
             

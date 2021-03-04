@@ -54,11 +54,11 @@ namespace Alis.Core
                     if (File.Exists(Application.AssetsPath + image))
                     {
                         textures.Add(new Texture(Application.AssetsPath + image));
-                        Debug.Warning("Sprite dont exits " + image);
+                       // Debug.Warning("Sprite dont exits " + image);
                     }
                     else 
                     {
-                        Debug.Warning("Sprite dont exits " + image);
+                        //Debug.Warning("Sprite dont exits " + image);
                     }
                 }
             }

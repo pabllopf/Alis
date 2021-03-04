@@ -107,7 +107,7 @@ namespace Alis.Core
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void VideoGame_OnCreate(object sender, bool e)
         {
-            Debug.EventLog("Create new " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
+            Debug.Event("Create new " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
         }
 
         /// <summary>Videoes the game on destroy.</summary>
@@ -115,7 +115,7 @@ namespace Alis.Core
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void VideoGame_OnDestroy(object sender, bool e)
         {
-            Debug.EventLog("Destroy " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
+            Debug.Event("Destroy " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
         }
 
         /// <summary>Videoes the game on start.</summary>
@@ -123,7 +123,7 @@ namespace Alis.Core
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void VideoGame_OnStart(object sender, bool e)
         {
-            Debug.EventLog("Start the videogame " + config.Name);
+            Debug.Event("Start the videogame " + config.Name);
         }
     }
 }

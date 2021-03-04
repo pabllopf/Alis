@@ -132,26 +132,26 @@ namespace Alis.Core
         /// <summary>Scenes the manager on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnCreate(object sender, bool e) => Debug.EventLog("Create new " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
+        private void SceneManager_OnCreate(object sender, bool e) => Debug.Event("Create new " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
 
         /// <summary>Scenes the manager on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDestroy(object sender, bool e) => Debug.EventLog("Destroy " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
+        private void SceneManager_OnDestroy(object sender, bool e) => Debug.Event("Destroy " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
 
         /// <summary>Scenes the manager on load scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnLoadScene(object sender, bool e) => Debug.EventLog("Load scene");
+        private void SceneManager_OnLoadScene(object sender, bool e) => Debug.Event("Load scene");
 
         /// <summary>Scenes the manager on delete scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDeleteScene(object sender, bool e) => Debug.EventLog("Delete scene");
+        private void SceneManager_OnDeleteScene(object sender, bool e) => Debug.Event("Delete scene");
 
         /// <summary>Scenes the manager on add scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnAddScene(object sender, bool e) => Debug.EventLog("Add scene");
+        private void SceneManager_OnAddScene(object sender, bool e) => Debug.Event("Add scene");
     }
 }

@@ -86,13 +86,13 @@ namespace Alis.Core
         /// <summary>Starts this instance.</summary>
         public void Start() 
         {
-            gameObjects.ForEach(i => i.Start());
+            //gameObjects.ForEach(i => i.Start());
         }
 
         /// <summary>Updates this instance.</summary>
         public void Update()
         {
-            gameObjects.ForEach(i => i.Update());
+           // gameObjects.ForEach(i => i.Update());
         }
 
         /// <summary>Gets the debugger display.</summary>

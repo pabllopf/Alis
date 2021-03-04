@@ -5,12 +5,11 @@
 namespace Alis.Core
 {
     using System;
-    using System.Diagnostics;
+    using Alis.Tools;
     using System.Numerics;
     using Newtonsoft.Json;
 
     /// <summary>Manage the position of the game object on a scene.</summary>
-    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Transform
     {
         /// <summary>The position</summary>
@@ -52,9 +51,24 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         public Transform()
         {
+
+            var memory = 0.0;
+            using (System.Diagnostics.Process proc = System.Diagnostics.Process.GetCurrentProcess())
+            {
+                memory = proc.PrivateMemorySize64 / 1024;
+            }
+
             this.position = new Vector3(0f);
             this.rotation = new Vector3(0f);
             this.size = new Vector3(1f);
+
+            var memory2 = 0.0;
+            using (System.Diagnostics.Process proc = System.Diagnostics.Process.GetCurrentProcess())
+            {
+                memory2 = proc.PrivateMemorySize64 / 1024;
+            }
+
+            Debug.Log("Memory: " + (memory2 - memory) + "kB | " + memory + " kB");
         }
 
         /// <summary>Finalizes an instance of the <see cref="Transform" /> class.</summary>

@@ -5,13 +5,12 @@
 namespace Alis.Core
 {
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
     using Newtonsoft.Json;
     using SFML.System;
+    using Alis.Tools;
 
     /// <summary>Define animation of sprite.</summary>
-    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Animator : Component
     {
         /// <summary>The icon</summary>
@@ -92,8 +91,8 @@ namespace Alis.Core
             {
                 if (clock.ElapsedTime.AsSeconds() >= animations[state].Speed)
                 {
-                    sprite.GetSprite.Texture = animations[state].Texture;
-                    clock.Restart();
+                    //sprite.GetSprite.Texture = animations[state].Texture;
+                    //clock.Restart();
                 }
             }
         }
@@ -101,13 +100,6 @@ namespace Alis.Core
         public override void Update()
         {
             throw new System.NotImplementedException();
-        }
-
-        /// <summary>Gets the debugger display.</summary>
-        /// <returns>return display</returns>
-        private string GetDebuggerDisplay()
-        {
-            return ToString();
         }
     }
 }
