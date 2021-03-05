@@ -46,7 +46,7 @@ namespace Alis.Core
         [JsonConstructor]
         public SceneManager(List<Scene> scenes)
         {
-            this.scenes = scenes ?? new List<Scene> { new Scene("Default") };
+            this.scenes = scenes ?? throw new ArgumentNullException(nameof(scenes));
 
             OnCreate += SceneManager_OnCreate;
             OnAddScene += SceneManager_OnAddScene;
@@ -81,14 +81,8 @@ namespace Alis.Core
             current = this;
         }
 
-
         /// <summary>Finalizes an instance of the <see cref="SceneManager" /> class.</summary>
-        ~SceneManager()
-        {
-            GC.Collect();
-            OnDestroy?.Invoke(null, true);
-            Debug.Log("Memory used after full collection: {" + GC.GetTotalMemory(true) + "}");
-        }
+        ~SceneManager() => OnDestroy?.Invoke(null, true);
 
         /// <summary>Adds the scene.</summary>
         /// <param name="scene">The scene.</param>
@@ -112,14 +106,13 @@ namespace Alis.Core
             }
         }
 
+        /// <summary>Updates this instance.</summary>
+        internal void Update() => scenes.ForEach(i => i.Update());
+
         /// <summary>Exitses the specified scene.</summary>
         /// <param name="scene">The scene.</param>
         /// <returns>Return true if exits a scene on the videogame.</returns>
-        public bool Exits(Scene scene) 
-        {
-            Debug.Log("Check if exits the scene: " + scene.Name);
-            return scenes.Contains(scene);
-        }
+        public bool Exits(Scene scene) => scenes.Contains(scene);
 
         /// <summary>Loads the scene.</summary>
         /// <param name="name">The name.</param>
@@ -132,26 +125,26 @@ namespace Alis.Core
         /// <summary>Scenes the manager on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnCreate(object sender, bool e) => Debug.Event("Create new " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
+        private void SceneManager_OnCreate(object sender, bool e) => Debug.Event(this);
 
         /// <summary>Scenes the manager on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDestroy(object sender, bool e) => Debug.Event("Destroy " + this.GetType() + " instancie. {" + this.GetHashCode() + "}");
+        private void SceneManager_OnDestroy(object sender, bool e) => Debug.Event(this);
 
         /// <summary>Scenes the manager on load scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnLoadScene(object sender, bool e) => Debug.Event("Load scene");
+        private void SceneManager_OnLoadScene(object sender, bool e) => Debug.Event(this);
 
         /// <summary>Scenes the manager on delete scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDeleteScene(object sender, bool e) => Debug.Event("Delete scene");
+        private void SceneManager_OnDeleteScene(object sender, bool e) => Debug.Event(this);
 
         /// <summary>Scenes the manager on add scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnAddScene(object sender, bool e) => Debug.Event("Add scene");
+        private void SceneManager_OnAddScene(object sender, bool e) => Debug.Event(this);
     }
 }

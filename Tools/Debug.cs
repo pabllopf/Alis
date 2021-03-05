@@ -82,7 +82,7 @@ namespace Alis.Tools
 
         public static void Event<T>(T obj)
         {
-            Console.WriteLine("Event: " + obj.GetType().FullName + "." + new StackTrace().GetFrame(1).GetMethod().ToString());
+            Console.WriteLine("Event: " + obj.GetType().FullName + "." + new StackTrace().GetFrame(1).GetMethod().Name.Split('_')[1]);
         }
 
         public static void Event<T>(T obj, string message)

@@ -193,6 +193,14 @@
         <member name="F:Alis.Core.Camera.icon">
             <summary>The icon</summary>
         </member>
+        <member name="M:Alis.Core.Collision.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Collision" /> class.</summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Core.Collision.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Collision" /> class.</summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
         <member name="T:Alis.Core.Transform">
             <summary>Manage the position of the game object on a scene.</summary>
         </member>
@@ -255,6 +263,13 @@
         <member name="F:Alis.Core.Config.name">
             <summary>The name</summary>
         </member>
+        <member name="M:Alis.Core.Config.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Config" /> class.</summary>
+            <param name="name">The name of videogame.</param>
+        </member>
+        <member name="M:Alis.Core.Config.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Config" /> class.</summary>
+        </member>
         <member name="E:Alis.Core.Config.OnCreate">
             <summary>Occurs when [change].</summary>
         </member>
@@ -263,13 +278,6 @@
         </member>
         <member name="E:Alis.Core.Config.OnChangeName">
             <summary>Occurs when [on change name].</summary>
-        </member>
-        <member name="M:Alis.Core.Config.#ctor(System.String)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Config" /> class.</summary>
-            <param name="name">The name of videogame.</param>
-        </member>
-        <member name="M:Alis.Core.Config.Finalize">
-            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Config" /> class.</summary>
         </member>
         <member name="P:Alis.Core.Config.Name">
             <summary>Gets or sets the name.</summary>
@@ -491,6 +499,9 @@
             <summary>Deletes the scene.</summary>
             <param name="scene">The scene.</param>
         </member>
+        <member name="M:Alis.Core.SceneManager.Update">
+            <summary>Updates this instance.</summary>
+        </member>
         <member name="M:Alis.Core.SceneManager.Exits(Alis.Core.Scene)">
             <summary>Exitses the specified scene.</summary>
             <param name="scene">The scene.</param>
@@ -525,12 +536,14 @@
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:Alis.Core.VideoGame" -->
-        <member name="F:Alis.Core.VideoGame.sceneManager">
-            <summary>The scene manager</summary>
+        <member name="T:Alis.Core.VideoGame">
+            <summary>Define the game.</summary>
         </member>
         <member name="F:Alis.Core.VideoGame.config">
             <summary>The configuration</summary>
+        </member>
+        <member name="F:Alis.Core.VideoGame.sceneManager">
+            <summary>The scene manager</summary>
         </member>
         <member name="F:Alis.Core.VideoGame.render">
             <summary>The render</summary>
@@ -538,20 +551,13 @@
         <member name="F:Alis.Core.VideoGame.input">
             <summary>The input</summary>
         </member>
-        <member name="E:Alis.Core.VideoGame.OnCreate">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Core.VideoGame.OnStart">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Core.VideoGame.OnDestroy">
-            <summary>Occurs when [change].</summary>
+        <member name="F:Alis.Core.VideoGame.isRunning">
+            <summary>The is running</summary>
         </member>
         <member name="M:Alis.Core.VideoGame.#ctor(Alis.Core.Config)">
-            <summary>
-            Contructor of videogame
-            </summary>
-            <param name="config">Config of videogame</param>
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+            <exception cref="T:System.ArgumentNullException">config null</exception>
         </member>
         <member name="M:Alis.Core.VideoGame.#ctor(Alis.Core.Config,Alis.Core.Scene[])">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.VideoGame" /> class.</summary>
@@ -559,9 +565,19 @@
             <param name="scene">The scene.</param>
         </member>
         <member name="M:Alis.Core.VideoGame.Finalize">
-            <summary>
-            Destructor of the videogame
-            </summary>
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.VideoGame" /> class.</summary>
+        </member>
+        <member name="E:Alis.Core.VideoGame.OnCreate">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.VideoGame.OnStart">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.VideoGame.OnUpdate">
+            <summary>Occurs when [on update].</summary>
+        </member>
+        <member name="E:Alis.Core.VideoGame.OnDestroy">
+            <summary>Occurs when [change].</summary>
         </member>
         <member name="P:Alis.Core.VideoGame.Config">
             <summary>Gets or sets the configuration.</summary>
@@ -575,28 +591,37 @@
             <summary>Gets or sets the input.</summary>
             <value>The input.</value>
         </member>
+        <member name="P:Alis.Core.VideoGame.SceneManager">
+            <summary>Gets or sets the scene manager.</summary>
+            <value>The scene manager.</value>
+        </member>
+        <member name="M:Alis.Core.VideoGame.Run">
+            <summary>Runs this instance.</summary>
+            <returns>Return the value</returns>
+        </member>
         <member name="M:Alis.Core.VideoGame.Start">
-            <summary>
-            Start the videogame
-            </summary>
+            <summary>Starts this instance.</summary>
+            <returns>Return false if fail something.</returns>
         </member>
         <member name="M:Alis.Core.VideoGame.Update">
-            <summary>
-            Update every frame the videogame
-            </summary>
+            <summary>Updates this instance.</summary>
+            <returns>Return false if fail something.</returns>
+        </member>
+        <member name="M:Alis.Core.VideoGame.InitEvents">
+            <summary>Initializes the events.</summary>
         </member>
         <member name="M:Alis.Core.VideoGame.VideoGame_OnCreate(System.Object,System.Boolean)">
-            <summary>Videoes the game on create.</summary>
+            <summary>Video the game on create.</summary>
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
         </member>
         <member name="M:Alis.Core.VideoGame.VideoGame_OnDestroy(System.Object,System.Boolean)">
-            <summary>Videoes the game on destroy.</summary>
+            <summary>Video the game on destroy.</summary>
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
         </member>
         <member name="M:Alis.Core.VideoGame.VideoGame_OnStart(System.Object,System.Boolean)">
-            <summary>Videoes the game on start.</summary>
+            <summary>Video the game on start.</summary>
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
         </member>

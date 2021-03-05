@@ -4,10 +4,10 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using Newtonsoft.Json;
     using System;
     using Alis.Tools;
-
+    using Newtonsoft.Json;
+    
     /// <summary>Define the config of videogame</summary>
     [JsonObject(MemberSerialization.OptIn)]
     public class Config 
@@ -15,22 +15,13 @@ namespace Alis.Core
         /// <summary>The name</summary>
         private string name;
 
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnCreate;
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnDestroy;
-
-        /// <summary>Occurs when [on change name].</summary>
-        public event EventHandler<bool> OnChangeName;
-
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="name">The name of videogame.</param>
-        [JsonConstructor()]
+        [JsonConstructor]
         public Config(string name)
         {
-            this.name = name ?? "AlisGame";
-            
+            this.name = name ?? throw new ArgumentNullException(nameof(name));
+
             OnCreate += Config_OnCreate;
             OnDestroy += Config_OnDestroy;
             OnChangeName += Config_OnChangeName;
@@ -41,10 +32,27 @@ namespace Alis.Core
         /// <summary>Finalizes an instance of the <see cref="Config" /> class.</summary>
         ~Config() => OnDestroy?.Invoke(null, true);
 
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnCreate;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnDestroy;
+
+        /// <summary>Occurs when [on change name].</summary>
+        public event EventHandler<bool> OnChangeName;
+
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
         [JsonProperty]
-        public string Name { get => name; set { name = value; OnChangeName?.Invoke(null, true); }}
+        public string Name
+        {
+            get => name;
+            set
+            {
+                OnChangeName?.Invoke(null, true);
+                name = value;
+            }
+        }
 
         #region Events
 

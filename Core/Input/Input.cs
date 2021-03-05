@@ -20,7 +20,7 @@ namespace Alis.Core
         public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKeyOnce;
 
         /// <summary>Polls the events.</summary>
-        internal static void PollEvents()
+        private static void PollEvents()
         {
             foreach (SFML.Window.Keyboard.Key key in Enum.GetValues(typeof(SFML.Window.Keyboard.Key)))
             {
@@ -31,7 +31,7 @@ namespace Alis.Core
                         keys.Add(key);
                         if (OnPressKeyOnce != null)
                         {
-                            OnPressKeyOnce.Invoke(null, key);
+                            OnPressKeyOnce?.Invoke(null, key);
                         }
                     }
                 }
@@ -40,7 +40,7 @@ namespace Alis.Core
                 {
                     if (OnPressKey != null)
                     {
-                        OnPressKey.Invoke(null, key);
+                        OnPressKey?.Invoke(null, key);
                     }
                 }
 
@@ -49,6 +49,11 @@ namespace Alis.Core
                     keys.Remove(key);
                 }
             }
+        }
+
+        internal void Update()
+        {
+            PollEvents();
         }
     }
 }

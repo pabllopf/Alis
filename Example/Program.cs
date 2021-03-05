@@ -45,14 +45,26 @@ namespace SFML
             );*/
 
 
+            //Config config = new Config("neame");
+
+            //VideoGame game = new VideoGame(config);
+
+            //game.Run();
+
             Config config = new Config("neame");
-            config.Name = "trce";
-            
+
+            config.OnChangeName += Config_OnCreate;
+
+            config.Name = "hola";
 
             Console.ReadLine();
         }
 
+        private static void Config_OnCreate(object sender, bool e)
+        {
+            Console.WriteLine("hola tete");
 
+        }
     }
 
 
