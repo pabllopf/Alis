@@ -12,7 +12,7 @@ var hierarchy =
       [ "Alis.Core.Sprite", "class_alis_1_1_core_1_1_sprite.html", null ]
     ] ],
     [ "Alis.Core.Config", "class_alis_1_1_core_1_1_config.html", null ],
-    [ "Alis.Core.Debug", "class_alis_1_1_core_1_1_debug.html", null ],
+    [ "Alis.Tools.Debug", "class_alis_1_1_tools_1_1_debug.html", null ],
     [ "Alis.Editor.Engine", "class_alis_1_1_editor_1_1_engine.html", null ],
     [ "Alis.Core.GameObject", "class_alis_1_1_core_1_1_game_object.html", null ],
     [ "Alis.Editor.Utils.Icon", "class_alis_1_1_editor_1_1_utils_1_1_icon.html", null ],

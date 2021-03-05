@@ -5,7 +5,6 @@ var class_alis_1_1_core_1_1_animator =
     [ "Start", "class_alis_1_1_core_1_1_animator.html#ac0fb201eefb8a5b1015f5839baf46860", null ],
     [ "Update", "class_alis_1_1_core_1_1_animator.html#a36dd8f7e3e5c863f5ffb4273ad23645a", null ],
     [ "Update", "class_alis_1_1_core_1_1_animator.html#ab297eec7d63ccbb034e6a18e05bcce56", null ],
-    [ "GetDebuggerDisplay", "class_alis_1_1_core_1_1_animator.html#ab733bbbb0922223b370d4db3676dfb47", null ],
     [ "icon", "class_alis_1_1_core_1_1_animator.html#a08d2cb01a584a275a6d8da36c9dc1e33", null ],
     [ "sprite", "class_alis_1_1_core_1_1_animator.html#af25166b7b54323fb8805d170ae022983", null ],
     [ "state", "class_alis_1_1_core_1_1_animator.html#ad5935e9e5ea9a49f6b461c68f4daf738", null ],
