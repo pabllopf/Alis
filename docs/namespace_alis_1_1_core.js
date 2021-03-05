@@ -8,7 +8,6 @@ var namespace_alis_1_1_core =
     [ "Collision", "class_alis_1_1_core_1_1_collision.html", "class_alis_1_1_core_1_1_collision" ],
     [ "Component", "class_alis_1_1_core_1_1_component.html", "class_alis_1_1_core_1_1_component" ],
     [ "Config", "class_alis_1_1_core_1_1_config.html", "class_alis_1_1_core_1_1_config" ],
-    [ "Debug", "class_alis_1_1_core_1_1_debug.html", "class_alis_1_1_core_1_1_debug" ],
     [ "GameObject", "class_alis_1_1_core_1_1_game_object.html", "class_alis_1_1_core_1_1_game_object" ],
     [ "Input", "class_alis_1_1_core_1_1_input.html", "class_alis_1_1_core_1_1_input" ],
     [ "Physics", "class_alis_1_1_core_1_1_physics.html", "class_alis_1_1_core_1_1_physics" ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['level_2170',['Level',['../namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c',1,'Alis::Core']]]
+  ['level_2222',['Level',['../namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a',1,'Alis::Tools']]]
 ];
