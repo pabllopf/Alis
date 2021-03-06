@@ -228,6 +228,27 @@
         <member name="T:Alis.Tools.Logger">
             <summary>Debug messages.</summary>
         </member>
+        <member name="F:Alis.Tools.Logger.listener">
+            <summary>The listener</summary>
+        </member>
+        <member name="F:Alis.Tools.Logger.level">
+            <summary>The level</summary>
+        </member>
+        <member name="M:Alis.Tools.Logger.Info">
+            <summary>Informations this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Logger.Log(System.String)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Logger.Warning(System.String)">
+            <summary>Warnings the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Logger.Error(System.String)">
+            <summary>Errors the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
         <member name="T:Alis.Tools.Zipper">
             <summary>Manage zip files. </summary>
         </member>

@@ -51,15 +51,14 @@ namespace SFML
 
             //game.Run();
 
-            Config config = new Config("neame");
+            new VideoGame(
+                new Config("Hola Mundo"),
 
-            config.OnChangeName += Config_OnCreate;
+                    new Scene("Main Menu"),
 
-            config.Name = "hola";
+                    new Scene("GamePlay")
 
-            Logger.Log("This is a test");
-            Logger.Warning("This is a test");
-            Logger.Error("This is a test");
+            ).Run();
 
             Console.ReadLine();
         }

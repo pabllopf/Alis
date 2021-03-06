@@ -34,6 +34,8 @@ namespace Alis.Core
         [JsonConstructor]
         public VideoGame(Config config)
         {
+            Logger.Info();
+
             this.config = config ?? throw new ArgumentNullException(nameof(config));
 
             this.sceneManager = new SceneManager(new List<Scene>() { new Scene("Default") });
@@ -48,6 +50,8 @@ namespace Alis.Core
         /// <param name="scene">The scene.</param>
         public VideoGame(Config config, params Scene[] scene)
         {
+            Logger.Info();
+
             this.config = config ?? throw new ArgumentNullException(nameof(config));
 
             this.sceneManager = new SceneManager(new List<Scene>(scene ?? throw new ArgumentNullException(nameof(scene))));
@@ -93,12 +97,18 @@ namespace Alis.Core
 
         /// <summary>Runs this instance.</summary>
         /// <returns>Return the value</returns>
-        public bool Run() => Start() && Update();
+        public bool Run()
+        {
+            Logger.Info();
+            return Start() && Update();
+        }
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return false if fail something.</returns>
         private bool Start()
         {
+            Logger.Info();
+            
             OnStart?.Invoke(null, true);
 
             return true;

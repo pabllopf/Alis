@@ -46,6 +46,8 @@ namespace Alis.Core
         [JsonConstructor]
         public SceneManager(List<Scene> scenes)
         {
+            Logger.Info();
+
             this.scenes = scenes ?? throw new ArgumentNullException(nameof(scenes));
 
             OnCreate += SceneManager_OnCreate;
@@ -66,6 +68,8 @@ namespace Alis.Core
         /// </summary>
         public SceneManager()
         {
+            Logger.Info();
+
             this.scenes = new List<Scene>{new Scene("Default")};
 
             OnCreate += SceneManager_OnCreate;
@@ -88,10 +92,17 @@ namespace Alis.Core
         /// <param name="scene">The scene.</param>
         public void Add(Scene scene)
         {
-            if (!scenes.Contains(scene))
+            Logger.Info();
+
+            if (scenes.Find(i => i.Name.Equals(scene.Name)) == null)
             {
                 scenes.Add(scene);
                 OnAddScene.Invoke(null, true);
+                Logger.Log("Add new " + scene.GetType() + "(" + scene.Name + ")");
+            }
+            else
+            {
+                Logger.Warning("This " + scene.GetType() + "(" + scene.Name + ")" + " alredy exits");
             }
         }
 
@@ -99,10 +110,17 @@ namespace Alis.Core
         /// <param name="scene">The scene.</param>
         public void Delete(Scene scene)
         {
-            if (scenes.Contains(scene)) 
+            Logger.Info();
+
+            if (scenes.Find(i => i.Name.Equals(scene.Name)) != null)
             {
                 scenes.Remove(scene);
                 OnDeleteScene.Invoke(null, true);
+                Logger.Log("Delete the " + scene.GetType() + "(" + scene.Name + ")");
+            }
+            else
+            {
+                Logger.Warning("This " + scene.GetType() + "(" + scene.Name + ")" + " dont`t exits");
             }
         }
 
@@ -112,12 +130,18 @@ namespace Alis.Core
         /// <summary>Exitses the specified scene.</summary>
         /// <param name="scene">The scene.</param>
         /// <returns>Return true if exits a scene on the videogame.</returns>
-        public bool Exits(Scene scene) => scenes.Contains(scene);
+        public bool Exits(Scene scene)
+        {
+            Logger.Info();
+            return scenes.Contains(scene);
+        }
 
         /// <summary>Loads the scene.</summary>
         /// <param name="name">The name.</param>
         public static void LoadScene(string name) 
         {
+            Logger.Info();
+
             current.currentScene = current.scenes.Find(i => i.Name.Equals(name));
             current.OnLoadScene.Invoke(null, true);
         }

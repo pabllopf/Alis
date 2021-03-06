@@ -10,7 +10,7 @@ namespace Alis.Tools
     using System.Reflection;
 
     /// <summary>Debug messages.</summary>
-    public class Logger
+    public static class Logger
     {
         /// <summary>The listener</summary>
         private static TextWriterTraceListener listener = new TextWriterTraceListener(Console.Out);
@@ -45,9 +45,8 @@ namespace Alis.Tools
                 }
 
                 type = stack.GetFrame(1).GetMethod().IsConstructor ? "CONSTRUCTOR" :
-                       stack.GetFrame(1).GetMethod().Name.Contains("_") ? "EVENT      " :
-                       stack.GetFrame(1).GetMethod().IsGenericMethod ? "METHOD     " :
-                                                                            "DESTRUCTOR ";
+                       stack.GetFrame(1).GetMethod().Name.Contains("_") ? "EVENT      " : "METHOD     ";
+
 
                 if (level == Level.Verbose)
                 {
