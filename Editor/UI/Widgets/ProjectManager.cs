@@ -113,14 +113,14 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Opens this instance.</summary>
         public override void Open()
         {
-            Debug.Log(this.GetType() + ":Open");
+            Logger.Log(this.GetType() + ":Open");
             isOpen = true;
         }
 
         /// <summary>Close this instance.</summary>
         public override void Close()
         {
-            Debug.Log(this.GetType() + ":Close");
+            Logger.Log(this.GetType() + ":Close");
             isOpen = false;
         }
 
@@ -310,7 +310,7 @@ namespace Alis.Editor.UI.Widgets
                     string libPath = directory + "/" + name + "/Lib";
 
                     Project project = new Project(name, dir, assetPath, configPath, dataPath, libPath);
-                    Debug.Warning("Project: " + name + " at " + dir);
+                    Logger.Warning("Project: " + name + " at " + dir);
 
                     projects.Add(project);
                     LocalData.Save<List<Project>>("Projects", projects);
@@ -352,11 +352,11 @@ namespace Alis.Editor.UI.Widgets
         {
             if (Directory.Exists(project.Directory))
             {
-                Debug.Warning("Open " + project.Name + project.DataPath + project.Directory + project.AssetsPath + project.ConfigPath + project.LibraryPath);
+                Logger.Warning("Open " + project.Name + project.DataPath + project.Directory + project.AssetsPath + project.ConfigPath + project.LibraryPath);
 
                 VideoGame game = LocalData.Load<VideoGame>("Data", project.DataPath);
 
-                Debug.Warning("Videogame: " + game.Config.Name);
+                Logger.Warning("Videogame: " + game.Config.Name);
 
                 Project.ChangeProject(project, game);
                 Close();
@@ -393,7 +393,7 @@ namespace Alis.Editor.UI.Widgets
         private void Project_OnChangeProject(object sender, bool e)
         {
             Console.Current.Log("Open " + Project.Current.Name + " at " + Project.Current.Directory);
-            Debug.Log("EVENT: project " + Project.Current.Name + " at " + Project.Current.Directory);
+            Logger.Log("EVENT: project " + Project.Current.Name + " at " + Project.Current.Directory);
         }
     }
 }

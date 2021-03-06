@@ -64,25 +64,6 @@
             <summary>Decrypts this instance.</summary>
             <returns>Return the value</returns>
         </member>
-        <member name="T:Alis.Tools.Debug">
-            <summary>Debug messages.</summary>
-        </member>
-        <member name="M:Alis.Tools.Debug.Log(System.String)">
-            <summary>Logs the specified message.</summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:Alis.Tools.Debug.Warning(System.String)">
-            <summary>Warnings the specified message.</summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:Alis.Tools.Debug.Error(System.String)">
-            <summary>Errors the specified message.</summary>
-            <param name="message">The message.</param>
-        </member>
-        <member name="M:Alis.Tools.Debug.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
-        </member>
         <member name="T:Alis.Tools.Idiom">
             <summary>Idioms in the videogame.</summary>
         </member>
@@ -197,17 +178,17 @@
         <member name="T:Alis.Tools.Level">
             <summary>Define level of the logs</summary>
         </member>
-        <member name="F:Alis.Tools.Level.All">
-            <summary>All</summary>
+        <member name="F:Alis.Tools.Level.Verbose">
+            <summary>Include file options</summary>
         </member>
         <member name="F:Alis.Tools.Level.Info">
             <summary>The information</summary>
         </member>
+        <member name="F:Alis.Tools.Level.Normal">
+            <summary>The normal log</summary>
+        </member>
         <member name="F:Alis.Tools.Level.Critical">
             <summary>The critical</summary>
-        </member>
-        <member name="F:Alis.Tools.Level.Nothing">
-            <summary>The nothing</summary>
         </member>
         <member name="T:Alis.Tools.LocalData">
             <summary>Manage the local data game.</summary>
@@ -243,6 +224,9 @@
             <param name="name">The name.</param>
             <param name="directory"></param>
             <returns>Return the value data.</returns>
+        </member>
+        <member name="T:Alis.Tools.Logger">
+            <summary>Debug messages.</summary>
         </member>
         <member name="T:Alis.Tools.Zipper">
             <summary>Manage zip files. </summary>

@@ -135,17 +135,17 @@ namespace Alis.Core
         /// <summary>Video the game on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void VideoGame_OnCreate(object sender, bool e) => Debug.Event(this);
+        private void VideoGame_OnCreate(object sender, bool e) => Logger.Info();
 
         /// <summary>Video the game on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void VideoGame_OnDestroy(object sender, bool e) => Debug.Event(this);
+        private void VideoGame_OnDestroy(object sender, bool e) => Logger.Info();
 
         /// <summary>Video the game on start.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void VideoGame_OnStart(object sender, bool e) => Debug.Event(this);
+        private void VideoGame_OnStart(object sender, bool e) => Logger.Info();
 
         #endregion
     }

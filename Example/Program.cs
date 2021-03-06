@@ -57,12 +57,16 @@ namespace SFML
 
             config.Name = "hola";
 
+            Logger.Log("This is a test");
+            Logger.Warning("This is a test");
+            Logger.Error("This is a test");
+
             Console.ReadLine();
         }
 
         private static void Config_OnCreate(object sender, bool e)
         {
-            Console.WriteLine("hola tete");
+           
 
         }
     }

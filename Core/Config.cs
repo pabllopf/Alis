@@ -20,6 +20,8 @@ namespace Alis.Core
         [JsonConstructor]
         public Config(string name)
         {
+            Logger.Info();
+
             this.name = name ?? throw new ArgumentNullException(nameof(name));
 
             OnCreate += Config_OnCreate;
@@ -59,17 +61,17 @@ namespace Alis.Core
         /// <summary>Configurations the on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnCreate(object sender, bool e) => Debug.Event(this);
+        private void Config_OnCreate(object sender, bool e) => Logger.Info();
 
         /// <summary>Configurations the on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnDestroy(object sender, bool e) => Debug.Event(this);
+        private void Config_OnDestroy(object sender, bool e) => Logger.Info();
 
         /// <summary>Configurations the name of the on change.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnChangeName(object sender, bool e) => Debug.Event(this);
+        private void Config_OnChangeName(object sender, bool e) => Logger.Info();
 
         #endregion
     }

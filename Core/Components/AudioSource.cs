@@ -56,14 +56,14 @@ namespace Alis.Core
                 if (File.Exists(path + audioFile)) 
                 {
                     audio = new Music(path + audioFile);
-                    Debug.Warning("Audio Name  exists. " + path + audioFile);
+                    Logger.Warning("Audio Name  exists. " + path + audioFile);
 
                     this.playOnAwake = playOnAwake;
                 }
             }
             else
             {
-                Debug.Warning("Audio Name dont exists. ");
+                Logger.Warning("Audio Name dont exists. ");
             }
         }
 

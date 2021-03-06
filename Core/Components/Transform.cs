@@ -68,7 +68,7 @@ namespace Alis.Core
                 memory2 = proc.PrivateMemorySize64 / 1024;
             }
 
-            Debug.Log("Memory: " + (memory2 - memory) + "kB | " + memory + " kB");
+            Logger.Log("Memory: " + (memory2 - memory) + "kB | " + memory + " kB");
         }
 
         /// <summary>Finalizes an instance of the <see cref="Transform" /> class.</summary>

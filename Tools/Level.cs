@@ -7,16 +7,16 @@ namespace Alis.Tools
     /// <summary>Define level of the logs</summary>
     internal enum Level
     {
-        /// <summary>All</summary>
-        All,
+        /// <summary>Include file options</summary>
+        Verbose,
 
         /// <summary>The information</summary>
         Info,
 
+        /// <summary>The normal log</summary>
+        Normal,
+
         /// <summary>The critical</summary>
         Critical,
-
-        /// <summary>The nothing</summary>
-        Nothing,
     }
 }

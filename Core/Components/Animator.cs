@@ -44,7 +44,7 @@ namespace Alis.Core
             {
                 if (this.animations.Any(i => i.State == anim.State))
                 {
-                    Debug.Warning("Animations in " + GetType() + " with the same state. ");
+                    Logger.Warning("Animations in " + GetType() + " with the same state. ");
                 }
                 else 
                 {
@@ -74,7 +74,7 @@ namespace Alis.Core
             if (gameObject.Components.Any(i => i.GetType().Equals(typeof(Sprite))))
             {
                 sprite = (Sprite)gameObject.Components.Find(i => i.GetType().Equals(typeof(Sprite)));
-                Debug.Log("Init " + GetType() + " of " + gameObject.Name + " gameobject.");
+                Logger.Log("Init " + GetType() + " of " + gameObject.Name + " gameobject.");
             }
         }
 

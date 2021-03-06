@@ -51,7 +51,7 @@ namespace Alis.Core
 
            
 
-            Debug.Log("Start the render");
+            Logger.Log("Start the render");
         }
 
         /// <summary>Frames the bytes.</summary>
@@ -83,7 +83,7 @@ namespace Alis.Core
             {
                 renderWindow = new RenderWindow(videoMode, title);
                 //renderWindow.Closed += Window_Closed;
-                Debug.Log("Create window");
+                Logger.Log("Create window");
             }
 
             renderWindow.DispatchEvents();
@@ -109,7 +109,7 @@ namespace Alis.Core
         {
             renderWindow.Close();
             Environment.Exit(0);
-            Debug.Log("EVENT: Close render window. ");
+            Logger.Log("EVENT: Close render window. ");
         }
 
         /// <summary>Adds the new sprite.</summary>
@@ -121,14 +121,14 @@ namespace Alis.Core
             if (!spir.Contains(sprite))
             {
                 spir.Add(sprite);
-                Debug.Warning("Add a sprite " + sprite.ToString());
+                Logger.Warning("Add a sprite " + sprite.ToString());
                 renderTexture.Clear();
                 //renderTexture.Draw(sprite.GetSprite);
                 renderTexture.Display();
             }
             else
             {
-                Debug.Warning("Sprite alredy exits." + " Sprite: "  );//sprite.GetSprite.Texture.ToString());
+                Logger.Warning("Sprite alredy exits." + " Sprite: "  );//sprite.GetSprite.Texture.ToString());
             }
 
             sprites = spir;
@@ -150,7 +150,7 @@ namespace Alis.Core
                 if (spir.Contains(sprite))
                 {
                     spir.Remove(sprite);
-                    Debug.Log("Delete a sprite " + sprite.ToString());
+                    Logger.Log("Delete a sprite " + sprite.ToString());
                     renderTexture.Clear();
                     renderTexture.Display();
                 }

@@ -125,26 +125,26 @@ namespace Alis.Core
         /// <summary>Scenes the manager on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnCreate(object sender, bool e) => Debug.Event(this);
+        private void SceneManager_OnCreate(object sender, bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDestroy(object sender, bool e) => Debug.Event(this);
+        private void SceneManager_OnDestroy(object sender, bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on load scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnLoadScene(object sender, bool e) => Debug.Event(this);
+        private void SceneManager_OnLoadScene(object sender, bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on delete scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDeleteScene(object sender, bool e) => Debug.Event(this);
+        private void SceneManager_OnDeleteScene(object sender, bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on add scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnAddScene(object sender, bool e) => Debug.Event(this);
+        private void SceneManager_OnAddScene(object sender, bool e) => Logger.Info();
     }
 }
