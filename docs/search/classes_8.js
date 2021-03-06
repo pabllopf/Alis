@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['language_1145',['Language',['../class_alis_1_1_tools_1_1_language.html',1,'Alis::Tools']]],
-  ['localdata_1146',['LocalData',['../class_alis_1_1_tools_1_1_local_data.html',1,'Alis::Tools']]]
+  ['language_1150',['Language',['../class_alis_1_1_tools_1_1_language.html',1,'Alis::Tools']]],
+  ['localdata_1151',['LocalData',['../class_alis_1_1_tools_1_1_local_data.html',1,'Alis::Tools']]]
 ];

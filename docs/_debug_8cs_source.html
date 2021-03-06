@@ -174,7 +174,7 @@ $(document).ready(function(){initNavTree('_debug_8cs_source.html',''); initResiz
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
 <div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_debug.html#ae4bc760ed3be957dda1e5f089417b3fb">   83</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_debug.html#ae4bc760ed3be957dda1e5f089417b3fb">Event&lt;T&gt;</a>(T obj)</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            Console.WriteLine(<span class="stringliteral">&quot;Event: &quot;</span> + obj.GetType().FullName + <span class="stringliteral">&quot;.&quot;</span> + <span class="keyword">new</span> StackTrace().GetFrame(1).GetMethod().ToString());</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            Console.WriteLine(<span class="stringliteral">&quot;Event: &quot;</span> + obj.GetType().FullName + <span class="stringliteral">&quot;.&quot;</span> + <span class="keyword">new</span> StackTrace().GetFrame(1).GetMethod().Name.Split(<span class="charliteral">&#39;_&#39;</span>)[1]);</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        }</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_debug.html#ae5a893b1420ac2b558936dc08c785dd4">   88</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_debug.html#ae4bc760ed3be957dda1e5f089417b3fb">Event&lt;T&gt;</a>(T obj, <span class="keywordtype">string</span> message)</div>
@@ -204,7 +204,7 @@ $(document).ready(function(){initNavTree('_debug_8cs_source.html',''); initResiz
   <ul>
     <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><b>Debug.cs</b></li>
     <li class="footer">
-      <a>Generated on | Fri Mar 5 2021 |</a>
+      <a>Generated on | Sat Mar 6 2021 |</a>
     </li>
   </ul>
 </div>
