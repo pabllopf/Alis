@@ -464,6 +464,10 @@
             <summary>Gets or sets the scenes.</summary>
             <value>The scenes.</value>
         </member>
+        <member name="P:Alis.Core.SceneManager.CurrentScene">
+            <summary>Gets or sets the current scene.</summary>
+            <value>The current scene.</value>
+        </member>
         <member name="E:Alis.Core.SceneManager.OnCreate">
             <summary>Occurs when [change].</summary>
         </member>

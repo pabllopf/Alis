@@ -93,6 +93,7 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the scene manager.</summary>
         /// <value>The scene manager.</value>
+        [JsonProperty]
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
 
         /// <summary>Runs this instance.</summary>

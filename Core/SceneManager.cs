@@ -24,7 +24,13 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the scenes.</summary>
         /// <value>The scenes.</value>
+        [JsonProperty]
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
+
+        /// <summary>Gets or sets the current scene.</summary>
+        /// <value>The current scene.</value>
+        [JsonProperty]
+        public Scene CurrentScene { get => currentScene; set => currentScene = value; }
 
         /// <summary>Occurs when [change].</summary>
         public event EventHandler<bool> OnCreate;

@@ -51,14 +51,16 @@ namespace SFML
 
             //game.Run();
 
-            new VideoGame(
+            VideoGame video = new VideoGame(
                 new Config("Hola Mundo"),
 
                     new Scene("Main Menu"),
 
                     new Scene("GamePlay")
 
-            ).Run();
+            );
+
+            LocalData.Save("Example", video);
 
             Console.ReadLine();
         }
