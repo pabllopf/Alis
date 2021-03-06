@@ -2,8 +2,11 @@
 using Alis.Tools;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SFML
 {
@@ -13,122 +16,55 @@ namespace SFML
 
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
+            Console.WriteLine(Test_Normal());
 
-            /*
-            new VideoGame(
-                new Config("Example"),
-                    new Scene("MainMenu",
-                        new GameObject("Player",
-                            new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1)),
-                            new Sprite("tile000.png", Application.ProjectPath, 1),
-                            new Move(),
-                            new Animator(0,
-                                new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
-                                new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
-                                new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
-                                new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
-                            ),
-
-                            new Camera(new System.Vector2f(0, 0), new System.Vector2f(640, 380))
-                        ),
-                         new GameObject("Player",
-                            new Transform(new Vector3(4f), new Vector3(0f), new Vector3(1)),
-                            new Sprite("tile000.png", Application.ProjectPath, 0)
-                        ),
-
-                        new GameObject("SoundTrack",
-                            new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1)),
-                            new AudioSource("menu.wav", Application.ProjectPath, true, 1f))
-                    )
-            );*/
-
-
-            //Config config = new Config("neame");
-
-            //VideoGame game = new VideoGame(config);
-
-            //game.Run();
-
-            VideoGame video = new VideoGame(
-                new Config("Hola Mundo"),
-
-                    new Scene("Main Menu"),
-
-                    new Scene("GamePlay")
-
-            );
-
-            LocalData.Save("Example", video);
+            Console.WriteLine(await Test_Task());
 
             Console.ReadLine();
         }
 
-        private static void Config_OnCreate(object sender, bool e)
+        private static async Task<string> Test_Task()
         {
-           
+            var watch = new Stopwatch();
+            watch.Start();
 
+            await Task.WhenAll(
+            Launch(1),
+            Launch(2),
+            Launch(3),
+            Launch(4),
+            Launch(5));
+
+
+
+            watch.Stop();
+            return $"Total Test_Normal Time: " + watch.ElapsedMilliseconds + " ms";
         }
-    }
 
-
-    /// <summary>
-    ///   <br />
-    /// </summary>
-    public class Move : Component
-    {
-        private Transform transform;
-
-        private Animator animator;
-
-
-        private void Input_OnPressKey(object sender, Window.Keyboard.Key key)
+        private static async Task Launch(int i) 
         {
-            if (key.Equals(Window.Keyboard.Key.S)) 
+            await Task.Delay(1000);
+            Console.WriteLine("Run one threead" + i);
+        } 
+
+
+        public static string Test_Normal() 
+        {
+            var watch = new Stopwatch();
+            string result = "";
+            watch.Start();
+            for (int j = 0; j < 5; j++)
             {
-                animator.State = 0;
-                transform.Position += new Vector3(0, 0.1f, 0);
+                Thread.Sleep(1000);
+                Console.WriteLine("Run one threead" + j);
             }
 
-            if (key.Equals(Window.Keyboard.Key.D))
-            {
-                animator.State = 1;
-                transform.Position += new Vector3(0.1f, 0, 0);
-            }
-
-            if (key.Equals(Window.Keyboard.Key.W))
-            {
-                animator.State = 2;
-                transform.Position += new Vector3(0, -0.1f, 0);
-            }
-
-            if (key.Equals(Window.Keyboard.Key.A))
-            {
-                animator.State = 3;
-                transform.Position += new Vector3(-0.1f, 0, 0);
-            }
+            watch.Stop();
+            return $"Total Test_Normal Time: " + watch.ElapsedMilliseconds + " ms";
         }
 
-        /// <summary>Updates the specified transform.</summary>
-        /// <param name="gameObject"></param>
-        public void Update(GameObject gameObject)
-        {
-            //throw new global::System.NotImplementedException();
-        }
 
-        public override void Start()
-        {
-            Input.OnPressKey += Input_OnPressKey;
-
-            //animator = (Animator)gameObject.Components.Find(i => i.GetType().Equals(typeof(Animator)));
-            //transform = gameObject.Transform;
-
-        }
-
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
