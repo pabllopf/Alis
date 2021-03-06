@@ -5,6 +5,7 @@
 namespace Alis.Core
 {
     using System.Collections.Generic;
+    using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Define a scene.</summary>
@@ -92,7 +93,8 @@ namespace Alis.Core
         /// <summary>Updates this instance.</summary>
         public void Update()
         {
-           // gameObjects.ForEach(i => i.Update());
+            Logger.Log("Example");
+           //gameObjects.ForEach(i => i.Update());
         }
 
         /// <summary>Gets the debugger display.</summary>

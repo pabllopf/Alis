@@ -18,47 +18,51 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static async Task Main(string[] args)
         {
-            Console.WriteLine(Test_Normal());
+            List<Scene> scenes = Enumerable.Repeat(new Scene("name"), 100).ToList();
 
-            Console.WriteLine(await Test_Task());
+            string name = Test_Normal(scenes);
+            string name2 = await Test_Task(scenes);
+
+            Console.WriteLine(name);
+            Console.WriteLine(name2);
+            //Console.WriteLine();
 
             Console.ReadLine();
         }
 
-        private static async Task<string> Test_Task()
+        private static async Task<string> Test_Task(List<Scene> scenes)
         {
             var watch = new Stopwatch();
             watch.Start();
 
-            await Task.WhenAll(
-            Launch(1),
-            Launch(2),
-            Launch(3),
-            Launch(4),
-            Launch(5));
+            List<Task> launcher = new List<Task>();
 
+            for (int i = 0; i < scenes.Count;i++) 
+            {
+                launcher.Add(Launch(scenes[i]));
+            }
 
+            await Task.WhenAll(launcher);
 
             watch.Stop();
-            return $"Total Test_Normal Time: " + watch.ElapsedMilliseconds + " ms";
+            return $"Total Test_With_Task Time: " + watch.ElapsedMilliseconds + " ms";
         }
 
-        private static async Task Launch(int i) 
+        private static async Task Launch(Scene scene) 
         {
-            await Task.Delay(1000);
-            Console.WriteLine("Run one threead" + i);
+            scene.Update();
         } 
 
 
-        public static string Test_Normal() 
+        public static string Test_Normal(List<Scene> scenes) 
         {
             var watch = new Stopwatch();
             string result = "";
             watch.Start();
-            for (int j = 0; j < 5; j++)
+
+            foreach (Scene scene in scenes) 
             {
-                Thread.Sleep(1000);
-                Console.WriteLine("Run one threead" + j);
+                scene.Update();
             }
 
             watch.Stop();
