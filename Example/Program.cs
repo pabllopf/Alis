@@ -18,18 +18,57 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static async Task Main(string[] args)
         {
-            List<Scene> scenes = Enumerable.Repeat(new Scene("name"), 100).ToList();
-
-            string name = Test_Normal(scenes);
-            string name2 = await Test_Task(scenes);
+            string name = Test_Normal(100);
+            string name2 = await Test_Task(100);
 
             Console.WriteLine(name);
             Console.WriteLine(name2);
-            //Console.WriteLine();
 
             Console.ReadLine();
         }
 
+        private static async Task<string> Test_Task(int size)
+        {
+            var watch = new Stopwatch();
+            watch.Start();
+
+            List<Task> tasks = new List<Task>();
+
+            await Task.Run(() => 
+            {
+                for (int i = 0; i < size; i++)
+                {
+                    tasks.Add(ProcessAsync());
+                }
+            });
+
+            await Task.WhenAll(tasks);
+
+            watch.Stop();
+            return $"Total Test_Task Time: " + watch.ElapsedMilliseconds + " ms";
+        }
+
+        private static async Task ProcessAsync() 
+        {
+            await Task.Delay(100);
+        }
+
+        private static string Test_Normal(int size) 
+        {
+            var watch = new Stopwatch();
+            watch.Start();
+
+            for (int i =0; i < size;i++) 
+            {
+                Thread.Sleep(100);
+            }
+
+            watch.Stop();
+            return $"Total Test_Normal Time: " + watch.ElapsedMilliseconds + " ms";
+        }
+
+
+        /*
         private static async Task<string> Test_Task(List<Scene> scenes)
         {
             var watch = new Stopwatch();
@@ -68,7 +107,7 @@ namespace SFML
             watch.Stop();
             return $"Total Test_Normal Time: " + watch.ElapsedMilliseconds + " ms";
         }
-
+        */
 
     }
 }
