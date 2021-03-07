@@ -138,15 +138,20 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Task.Delay(1000).Wait();
+                while (isRunning) 
+                {
+                    Task.Delay(1000).Wait();
 
-                Task.WaitAll
-                (
-                    input.Update(),
-                    render.Update(),
-                    sceneManager.Update()
-                );
-                
+                    Task.WaitAll
+                    (
+                        input.Update(),
+                        render.Update(),
+                        sceneManager.Update()
+                    );
+
+                    isRunning = false;
+                }
+
                 watch.Stop();
                 Console.WriteLine($" Time to Update One Frame Videogame: 1000 + " + (watch.ElapsedMilliseconds - 1000) + " ms");
             });

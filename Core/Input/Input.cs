@@ -15,13 +15,13 @@ namespace Alis.Core
     public class Input
     {
         /// <summary>The keys</summary>
-        private static List<Key> keys = new List<Key>();
+        private List<Key> keys = new List<Key>();
 
         /// <summary>Occurs when [on press key].</summary>
-        public static event EventHandler<Key> OnPressKey;
+        public event EventHandler<Key> OnPressKey;
 
         /// <summary>Occurs when [on press once].</summary>
-        public static event EventHandler<Key> OnPressKeyOnce;
+        public event EventHandler<Key> OnPressKeyOnce;
 
         public Input()
         {
@@ -40,11 +40,17 @@ namespace Alis.Core
 
                 foreach (Key key in Enum.GetValues(typeof(Key)))
                 {
-                    tasks.Add(PullTask(key));
+                    if (IsKeyPressed(key))
+                    {
+                        tasks.Add(PullTask(key));
+                    }
                 }
 
-                Task.WhenAll(tasks);
-
+                if (tasks.Count > 0) 
+                {
+                    Task.WaitAll(tasks.ToArray());
+                }
+               
                 watch.Stop();
                 Console.WriteLine($"    Time to Input: " + watch.ElapsedMilliseconds + " ms");
             });
@@ -52,123 +58,129 @@ namespace Alis.Core
 
         private Task PullTask(Key key) 
         {
-            return new Task(()=> 
+            return Task.Factory.StartNew(()=> 
             {
+                var watch = new Stopwatch();
+                watch.Start();
+
                 Task.Delay(1000).Wait();
 
                 if (IsKeyPressed(key))
                 {
                     if (!keys.Contains(key))
                     {
+                        Console.WriteLine("Key presed: " + key);
                         keys.Add(key);
-                        if (OnPressKeyOnce != null)
-                        {
-                            OnPressKeyOnce?.Invoke(null, key);
-                        }
+                        OnPressKeyOnce?.Invoke(null, key);
                     }
                 }
 
                 if (IsKeyPressed(key))
                 {
-                    if (OnPressKey != null)
-                    {
-                        OnPressKey?.Invoke(null, key);
-                    }
+                    Console.WriteLine("Key presed: " + key);
+                    OnPressKey?.Invoke(null, key);
                 }
 
                 if (!IsKeyPressed(key) && keys.Contains(key))
                 {
                     keys.Remove(key);
                 }
+
+                watch.Stop();
+                Console.WriteLine($"        Time to Press: "+ key + " " + watch.ElapsedMilliseconds + " ms");
             });
         }
-
     }
 }
 
-        /*
-        /// <summary>The keys</summary>
-        private static List<SFML.Window.Keyboard.Key> keys = new List<SFML.Window.Keyboard.Key>();
+/*
+/// <summary>The keys</summary>
+private static List<SFML.Window.Keyboard.Key> keys = new List<SFML.Window.Keyboard.Key>();
 
-        /// <summary>Occurs when [on press key].</summary>
-        public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKey;
+/// <summary>Occurs when [on press key].</summary>
+public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKey;
 
-        /// <summary>Occurs when [on press once].</summary>
-        public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKeyOnce;
+/// <summary>Occurs when [on press once].</summary>
+public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKeyOnce;
 
-        /// <summary>Polls the events.</summary>
-        private static void PollEvents()
+/// <summary>Polls the events.</summary>
+private static void PollEvents()
+{
+    foreach (SFML.Window.Keyboard.Key key in Enum.GetValues(typeof(SFML.Window.Keyboard.Key)))
+    {
+        if (SFML.Window.Keyboard.IsKeyPressed(key))
         {
-            foreach (SFML.Window.Keyboard.Key key in Enum.GetValues(typeof(SFML.Window.Keyboard.Key)))
+            if (!keys.Contains(key))
             {
-                if (SFML.Window.Keyboard.IsKeyPressed(key))
+                keys.Add(key);
+                if (OnPressKeyOnce != null)
                 {
-                    if (!keys.Contains(key))
-                    {
-                        keys.Add(key);
-                        if (OnPressKeyOnce != null)
-                        {
-                            OnPressKeyOnce?.Invoke(null, key);
-                        }
-                    }
-                }
-
-                if (SFML.Window.Keyboard.IsKeyPressed(key))
-                {
-                    if (OnPressKey != null)
-                    {
-                        OnPressKey?.Invoke(null, key);
-                    }
-                }
-
-                if (!SFML.Window.Keyboard.IsKeyPressed(key) && keys.Contains(key))
-                {
-                    keys.Remove(key);
+                    OnPressKeyOnce?.Invoke(null, key);
                 }
             }
         }
 
-        internal async Task Update()
+        if (SFML.Window.Keyboard.IsKeyPressed(key))
         {
-            await Task.Run(()=> 
+            if (OnPressKey != null)
             {
-                List<Task> tasks = new List<Task>();
-
-                foreach (SFML.Window.Keyboard.Key key in Enum.GetValues(typeof(SFML.Window.Keyboard.Key)))
-                {
-                    tasks.Add(PollInputAsync(key));
-                }
-
-                Task.WhenAll(tasks).Wait();
-            });
+                if (IsKeyPressed(key))
+        {
+            Console.WriteLine("Key presed: " + key);
+            keys.Add(key);
+            OnPressKeyOnce?.Invoke(null, key);
+        }
+            }
         }
 
-        private async Task PollInputAsync(SFML.Window.Keyboard.Key key)
+        if (!SFML.Window.Keyboard.IsKeyPressed(key) && keys.Contains(key))
         {
-            if (SFML.Window.Keyboard.IsKeyPressed(key))
-            {
-                if (!keys.Contains(key))
-                {
-                    keys.Add(key);
-                    if (OnPressKeyOnce != null)
-                    {
-                        OnPressKeyOnce?.Invoke(null, key);
-                    }
-                }
-
-                if (SFML.Window.Keyboard.IsKeyPressed(key))
-                {
-                    if (OnPressKey != null)
-                    {
-                        OnPressKey?.Invoke(null, key);
-                    }
-                }
-
-                if (!SFML.Window.Keyboard.IsKeyPressed(key) && keys.Contains(key))
-                {
-                    keys.Remove(key);
-                }
-            }
+            keys.Remove(key);
         }
     }
+}
+
+internal async Task Update()
+{
+    await Task.Run(()=> 
+    {
+        List<Task> tasks = new List<Task>();
+
+        foreach (SFML.Window.Keyboard.Key key in Enum.GetValues(typeof(SFML.Window.Keyboard.Key)))
+        {
+            tasks.Add(PollInputAsync(key));
+        }
+
+        Task.WhenAll(tasks).Wait();
+    });
+}
+
+private async Task PollInputAsync(SFML.Window.Keyboard.Key key)
+{
+    if (SFML.Window.Keyboard.IsKeyPressed(key))
+    {
+        if (!keys.Contains(key))
+        {
+            keys.Add(key);
+            if (OnPressKeyOnce != null)
+            {
+                OnPressKeyOnce?.Invoke(null, key);
+            }
+        }
+
+        if (SFML.Window.Keyboard.IsKeyPressed(key))
+        {
+            if (OnPressKey != null)
+            {
+                OnPressKey?.Invoke(null, key);
+            }
+        }
+
+        if (!SFML.Window.Keyboard.IsKeyPressed(key) && keys.Contains(key))
+        {
+            keys.Remove(key);
+        }
+    }
+}
+}
 }*/
