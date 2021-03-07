@@ -4,9 +4,12 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using Alis.Tools;
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.Numerics;
+    using System.Threading.Tasks;
 
     /// <summary>Define a game object. </summary>
     public class GameObject
@@ -72,8 +75,20 @@ namespace Alis.Core
 
         }
 
+        internal async Task Update()
+        {
+            await Task.Run(()=> 
+            {
+                List<Task> result = new List<Task>();
 
+                foreach (Component component in components) 
+                {
+                    result.Add(Task.Run(() => component.Update()));
+                }
 
+                Task.WhenAll(result).Wait();
+            });   
+        }
     }
 }
         /*

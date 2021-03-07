@@ -6,6 +6,7 @@ namespace Alis.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
@@ -128,19 +129,28 @@ namespace Alis.Core
         {
             return await Task.Run(() =>
             {
+                var watch = new Stopwatch();
+                watch.Start();
+
                 Logger.Info();
 
                 while (isRunning)
                 {
                     OnUpdate?.Invoke(null, true);
 
-                    Task.Run(() => input.Update()).Wait();
-                    Task.Run(() => render.Update()).Wait();
-                    Task.Run(() => sceneManager.Update()).Wait();
+                    Task.WaitAll
+                    (
+                        input.Update(),
+                        sceneManager.Update(),
+                        render.Update()
+                    );
 
-                    Task.Delay(2000).Wait();
+
+                    isRunning = false;
                 }
 
+                watch.Stop();
+                Console.WriteLine($"Total One Frame Time: " + watch.ElapsedMilliseconds + " ms");
                 return true;
             });
         }

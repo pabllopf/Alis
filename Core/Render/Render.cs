@@ -8,6 +8,7 @@ using SFML.Window;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Alis.Core
 {
@@ -44,14 +45,14 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
         public Render() 
         {
-            this.title = "Example";
+            /*this.title = "Example";
             this.videoMode = new VideoMode(512, 320);
             this.renderTexture = new RenderTexture(512, 512);
             this.sprites = new List<SFML.Graphics.Sprite>();
+            */
 
-           
 
-            Logger.Log("Start the render");
+            Logger.Info();
         }
 
         /// <summary>Frames the bytes.</summary>
@@ -139,10 +140,7 @@ namespace Alis.Core
             return sprites[sprites.IndexOf(sprite)];
         }
 
-        internal void Update()
-        {
-            Logger.Info();
-        }
+        internal async Task Update() => await Task.Run(() => Logger.Info());
 
         /// <summary>Deletes the sprite.</summary>
         /// <param name="sprite">The sprite.</param>

@@ -5,11 +5,11 @@
 namespace Alis.Core
 {
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Define a scene.</summary>
-    [System.Diagnostics.DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Scene
     {
         /// <summary>The name</summary>
@@ -91,17 +91,22 @@ namespace Alis.Core
         }
 
         /// <summary>Updates this instance.</summary>
-        public void Update()
+        public async Task Update()
         {
-            Logger.Log("Example");
-           //gameObjects.ForEach(i => i.Update());
+            await Task.Run(()=> 
+            {
+                List<Task> tasks = new List<Task>();
+
+                foreach (GameObject gameObject in gameObjects)
+                {
+                    tasks.Add(GameObjectAsync(gameObject));
+                }
+
+                Logger.Log("Num of gameobjects task: " + tasks.Count);
+                Task.WhenAll(tasks).Wait();
+            });
         }
 
-        /// <summary>Gets the debugger display.</summary>
-        /// <returns>Debug string</returns>
-        private string GetDebuggerDisplay()
-        {
-            return ToString();
-        }
+        private async Task GameObjectAsync(GameObject gameObject) => await gameObject.Update();
     }
 }

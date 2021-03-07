@@ -444,10 +444,6 @@
         <member name="M:Alis.Core.Scene.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Scene.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
-        </member>
         <member name="T:Alis.Core.SceneManager">
             <summary>Manage the scenes of the videogame.</summary>
         </member>

@@ -1,24 +1,22 @@
 ﻿namespace Alis.Core
 {
+    using Alis.Tools;
     using System.Diagnostics;
-
-
-    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Physics : Component
     {
+        public Physics() 
+        {
+        
+        }
+
         public override void Start()
         {
-            throw new System.NotImplementedException();
+
         }
 
         public override void Update()
         {
-            throw new System.NotImplementedException();
-        }
-
-        private string GetDebuggerDisplay()
-        {
-            return ToString();
+            Logger.Log("Update Physics " + this.GetHashCode());
         }
     }
 }

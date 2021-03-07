@@ -7,6 +7,7 @@ namespace Alis.Core
     using Alis.Tools;
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     /// <summary>Manage the inputs of game.</summary>
     public class Input
@@ -52,10 +53,47 @@ namespace Alis.Core
             }
         }
 
-        internal void Update()
+        internal async Task Update()
         {
-            Logger.Info();
-            //PollEvents();
+            await Task.Run(()=> 
+            {
+                List<Task> tasks = new List<Task>();
+
+                foreach (SFML.Window.Keyboard.Key key in Enum.GetValues(typeof(SFML.Window.Keyboard.Key)))
+                {
+                    tasks.Add(PollInputAsync(key));
+                }
+
+                Task.WhenAll(tasks).Wait();
+            });
+        }
+
+        private async Task PollInputAsync(SFML.Window.Keyboard.Key key)
+        {
+            if (SFML.Window.Keyboard.IsKeyPressed(key))
+            {
+                if (!keys.Contains(key))
+                {
+                    keys.Add(key);
+                    if (OnPressKeyOnce != null)
+                    {
+                        OnPressKeyOnce?.Invoke(null, key);
+                    }
+                }
+
+                if (SFML.Window.Keyboard.IsKeyPressed(key))
+                {
+                    if (OnPressKey != null)
+                    {
+                        OnPressKey?.Invoke(null, key);
+                    }
+                }
+
+                if (!SFML.Window.Keyboard.IsKeyPressed(key) && keys.Contains(key))
+                {
+                    keys.Remove(key);
+                }
+            }
         }
     }
 }

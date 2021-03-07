@@ -6,6 +6,7 @@ namespace Alis.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
 
@@ -131,11 +132,8 @@ namespace Alis.Core
         }
 
         /// <summary>Updates this instance.</summary>
-        internal void Update()
-        {
-            Logger.Info();
-            //scenes.ForEach(i => i.Update());
-        }
+        internal async Task Update() => await currentScene.Update();
+                                      
 
         /// <summary>Exitses the specified scene.</summary>
         /// <param name="scene">The scene.</param>

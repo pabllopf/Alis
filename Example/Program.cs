@@ -18,17 +18,34 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static async Task Main(string[] args)
         {
+            var watch = new Stopwatch();
+            watch.Start();
             new VideoGame(
-                new Config("Example")
+                new Config("Example"),
+                    new Scene("First", 
+                        new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite(),
+                            new Physics(),
+                            new Sprite(),
+                            new Physics()
+                        ),
+
+                        new GameObject("Player2", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite()
+                        )
+                    )
             ).Run();
 
-            /*string name = Test_Normal(1000);
-            string name2 = await Test_Task(1000);
+            watch.Stop();
+            Console.WriteLine($"Total Videogame Time: " + watch.ElapsedMilliseconds + " ms");
+            
+            /*string name = Test_Normal(100);
+            string name2 = await Test_Task(100);
 
             Console.WriteLine(name);
             Console.WriteLine(name2);
-            */
-            Console.ReadLine();
+            
+            Console.ReadLine();*/
         }
 
         private static async Task<string> Test_Task(int size)
@@ -36,25 +53,30 @@ namespace SFML
             var watch = new Stopwatch();
             watch.Start();
 
-            List<Task> tasks = new List<Task>();
-
-            await Task.Run(() => 
-            {
-                for (int i = 0; i < size; i++)
-                {
-                    tasks.Add(ProcessAsync());
-                }
-            });
-
-            await Task.WhenAll(tasks);
-
+            await Task.WhenAll(GenerateTasks(size)); 
+            
             watch.Stop();
             return $"Total Test_Task Time: " + watch.ElapsedMilliseconds + " ms";
         }
 
-        private static async Task ProcessAsync() 
+        private static List<Task> GenerateTasks(int size)
         {
-            await Task.Delay(100);
+
+
+            List<Task> result = new List<Task>();
+
+            for (int i = 0; i < size; i++)
+            {
+                result.Add(ProcessAsync(i));
+            }
+
+            return result;
+        }
+
+        private static async Task ProcessAsync(int i ) 
+        {
+            await Task.Delay(new Random().Next(10, 100));
+            Console.WriteLine("Process: " + i);
         }
 
         private static string Test_Normal(int size) 
@@ -64,7 +86,7 @@ namespace SFML
 
             for (int i =0; i < size;i++) 
             {
-                Thread.Sleep(100);
+                Thread.Sleep(new Random().Next(10, 100));
             }
 
             watch.Stop();

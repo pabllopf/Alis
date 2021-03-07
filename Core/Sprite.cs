@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alis.Tools;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -25,7 +26,7 @@ namespace Alis.Core
 
         public override void Update()
         {
-            throw new NotImplementedException();
+            Logger.Log("Update sprite");
         }
 
         private string GetDebuggerDisplay()
