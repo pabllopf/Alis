@@ -12,6 +12,20 @@ namespace Alis.Core
     /// <summary>Define a camera</summary>
     public class Camera : Component
     {
+        public Camera()
+        {
+        }
+
+        public override void Start()
+        {
+        }
+
+        public override void Update()
+        {
+        }
+    }
+}
+        /*
         /// <summary>The icon</summary>
         private readonly string icon = "\uf1fc";
 
@@ -83,4 +97,4 @@ namespace Alis.Core
             return ToString();
         }
     }
-}
+}*/

@@ -6,6 +6,7 @@ namespace Alis.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
@@ -14,6 +15,33 @@ namespace Alis.Core
     [JsonObject(MemberSerialization.OptIn)]
     public class SceneManager
     {
+        private List<Scene> scenes;
+
+        public SceneManager()
+        {
+        }
+
+        public SceneManager(List<Scene> scenes)
+        {
+            this.scenes = scenes;
+        }
+
+        public Task Update()
+        {
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+
+                Task.Delay(1000).Wait();
+
+                watch.Stop();
+                Console.WriteLine($"    Time to Update a Scene: " + watch.ElapsedMilliseconds + " ms");
+            });
+        }
+    }
+}
+        /*
         /// <summary>The current</summary>
         private static SceneManager current;
 
@@ -179,4 +207,4 @@ namespace Alis.Core
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void SceneManager_OnAddScene(object sender, bool e) => Logger.Info();
     }
-}
+}*/

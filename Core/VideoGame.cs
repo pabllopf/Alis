@@ -107,51 +107,48 @@ namespace Alis.Core
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
 
         /// <summary>Runs this instance.</summary>
-        public void Run() => Task.Run(() => StartAsync().Result && UpdateAsync().Result).Wait();
+        public void Run()
+        {
+            StartAsync().Wait();
+            UpdateAsync().Wait();
+        }
 
         /// <summary>Starts the asynchronous.</summary>
         /// <returns>Start the videogame.</returns>
-        private async Task<bool> StartAsync() 
+        private async Task StartAsync()
         {
-            return await Task.Run(() => 
+            await Task.Run(() =>
             {
-                Logger.Info();
-                
-                OnStart?.Invoke(null, true);
+                var watch = new Stopwatch();
+                watch.Start();
 
-                return true;
+                Task.Delay(1000).Wait();
+
+                watch.Stop();
+                Console.WriteLine($" Time to Start Videogame: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
         /// <summary>Updates the asynchronous.</summary>
         /// <returns>Update the videogame</returns>
-        private async Task<bool> UpdateAsync()
+        private async Task UpdateAsync()
         {
-            return await Task.Run(() =>
+            await Task.Run(() =>
             {
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Logger.Info();
+                Task.Delay(1000).Wait();
 
-                while (isRunning)
-                {
-                    OnUpdate?.Invoke(null, true);
-
-                    Task.WaitAll
-                    (
-                        input.Update(),
-                        sceneManager.Update(),
-                        render.Update()
-                    );
-
-
-                    isRunning = false;
-                }
-
+                Task.WaitAll
+                (
+                    input.Update(),
+                    render.Update(),
+                    sceneManager.Update()
+                );
+                
                 watch.Stop();
-                Console.WriteLine($"Total One Frame Time: " + watch.ElapsedMilliseconds + " ms");
-                return true;
+                Console.WriteLine($" Time to Update One Frame Videogame: 1000 + " + (watch.ElapsedMilliseconds - 1000) + " ms");
             });
         }
 

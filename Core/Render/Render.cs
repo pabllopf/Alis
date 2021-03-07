@@ -7,6 +7,7 @@ using SFML.Graphics;
 using SFML.Window;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,6 +16,26 @@ namespace Alis.Core
     /// <summary>Render define</summary>
     public class Render
     {
+        public Render()
+        {
+        }
+
+        public Task Update()
+        {
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+
+                Task.Delay(1000).Wait();
+
+                watch.Stop();
+                Console.WriteLine($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
+            });
+        }
+    }
+}
+        /*
         /// <summary>The current</summary>
         private static Render current;
 
@@ -45,11 +66,11 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
         public Render() 
         {
-            /*this.title = "Example";
+            this.title = "Example";
             this.videoMode = new VideoMode(512, 320);
             this.renderTexture = new RenderTexture(512, 512);
             this.sprites = new List<SFML.Graphics.Sprite>();
-            */
+            
 
 
             Logger.Info();
@@ -61,14 +82,14 @@ namespace Alis.Core
         {
             renderTexture.Clear(Color.Black);
 
-            /*if (sprites.Count > 0) 
+            if (sprites.Count > 0) 
             {
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
                 foreach (SFML.Graphics.Sprite sprite in sprites)
                 {
                     renderTexture.Draw(sprite.GetSprite);
                 }
-            }*/
+            }
 
             renderTexture.Smooth = true;
             renderTexture.Display();
@@ -90,7 +111,7 @@ namespace Alis.Core
             renderWindow.DispatchEvents();
             renderWindow.Clear();
 
-            /*if (sprites.Count > 0)
+            if (sprites.Count > 0)
             {
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
                 foreach (SFML.Graphics.Sprite sprite in sprites)
@@ -98,7 +119,7 @@ namespace Alis.Core
                     //Debug.Log("sprite:::" + sprite.ImageFile + " " + sprite.Depth);
                     renderWindow.Draw(sprite.GetSprite);
                 }
-            }*/
+            }
 
             renderWindow.Display();
         }
@@ -176,3 +197,4 @@ namespace Alis.Core
         }
     }
 }
+*/

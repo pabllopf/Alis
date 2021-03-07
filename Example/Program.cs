@@ -20,6 +20,7 @@ namespace SFML
         {
             var watch = new Stopwatch();
             watch.Start();
+            
             new VideoGame(
                 new Config("Example"),
                     new Scene("First", 

@@ -190,9 +190,6 @@
         <member name="T:Alis.Core.Camera">
             <summary>Define a camera</summary>
         </member>
-        <member name="F:Alis.Core.Camera.icon">
-            <summary>The icon</summary>
-        </member>
         <member name="M:Alis.Core.Collision.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Collision" /> class.</summary>
             <exception cref="T:System.NotImplementedException"></exception>
@@ -345,64 +342,8 @@
         <member name="E:Alis.Core.Input.OnPressKeyOnce">
             <summary>Occurs when [on press once].</summary>
         </member>
-        <member name="M:Alis.Core.Input.PollEvents">
-            <summary>Polls the events.</summary>
-        </member>
         <member name="T:Alis.Core.Render">
             <summary>Render define</summary>
-        </member>
-        <member name="F:Alis.Core.Render.current">
-            <summary>The current</summary>
-        </member>
-        <member name="F:Alis.Core.Render.title">
-            <summary>The title</summary>
-        </member>
-        <member name="F:Alis.Core.Render.renderWindow">
-            <summary>The window</summary>
-        </member>
-        <member name="F:Alis.Core.Render.renderTexture">
-            <summary>The window</summary>
-        </member>
-        <member name="F:Alis.Core.Render.videoMode">
-            <summary>The video mode</summary>
-        </member>
-        <member name="F:Alis.Core.Render.frame">
-            <summary>The frame</summary>
-        </member>
-        <member name="F:Alis.Core.Render.sprites">
-            <summary>The sprites</summary>
-        </member>
-        <member name="P:Alis.Core.Render.Current">
-            <summary>Gets or sets the current.</summary>
-            <value>The current.</value>
-        </member>
-        <member name="M:Alis.Core.Render.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Render" /> class.</summary>
-        </member>
-        <member name="M:Alis.Core.Render.FrameBytes">
-            <summary>Frames the bytes.</summary>
-            <returns>Return the frame.</returns>
-        </member>
-        <member name="M:Alis.Core.Render.RenderDisplay">
-            <summary>Renders the display.</summary>
-        </member>
-        <member name="M:Alis.Core.Render.Window_Closed(System.Object,System.EventArgs)">
-            <summary>Handles the Closed event of the Window control.</summary>
-            <param name="sender">The source of the event.</param>
-            <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
-        </member>
-        <member name="M:Alis.Core.Render.AddNewSprite(SFML.Graphics.Sprite)">
-            <summary>Adds the new sprite.</summary>
-            <param name="sprite">The sprite.</param>
-        </member>
-        <member name="M:Alis.Core.Render.DeleteSprite(SFML.Graphics.Sprite)">
-            <summary>Deletes the sprite.</summary>
-            <param name="sprite">The sprite.</param>
-        </member>
-        <member name="M:Alis.Core.Render.Exits(SFML.Graphics.Sprite)">
-            <summary>Exitses the specified sprite.</summary>
-            <param name="sprite">The sprite.</param>
-            <returns>Return</returns>
         </member>
         <member name="T:Alis.Core.Scene">
             <summary>Define a scene.</summary>
@@ -446,95 +387,6 @@
         </member>
         <member name="T:Alis.Core.SceneManager">
             <summary>Manage the scenes of the videogame.</summary>
-        </member>
-        <member name="F:Alis.Core.SceneManager.current">
-            <summary>The current</summary>
-        </member>
-        <member name="F:Alis.Core.SceneManager.scenes">
-            <summary>The scenes</summary>
-        </member>
-        <member name="F:Alis.Core.SceneManager.currentScene">
-            <summary>The current scene</summary>
-        </member>
-        <member name="P:Alis.Core.SceneManager.Scenes">
-            <summary>Gets or sets the scenes.</summary>
-            <value>The scenes.</value>
-        </member>
-        <member name="P:Alis.Core.SceneManager.CurrentScene">
-            <summary>Gets or sets the current scene.</summary>
-            <value>The current scene.</value>
-        </member>
-        <member name="E:Alis.Core.SceneManager.OnCreate">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Core.SceneManager.OnAddScene">
-            <summary>Occurs when [on add scene].</summary>
-        </member>
-        <member name="E:Alis.Core.SceneManager.OnDeleteScene">
-            <summary>Occurs when [on delete scene].</summary>
-        </member>
-        <member name="E:Alis.Core.SceneManager.OnLoadScene">
-            <summary>Occurs when [on load scene].</summary>
-        </member>
-        <member name="E:Alis.Core.SceneManager.OnDestroy">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="M:Alis.Core.SceneManager.#ctor(System.Collections.Generic.List{Alis.Core.Scene})">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SceneManager" /> class.</summary>
-            <param name="scenes">The scenes.</param>
-        </member>
-        <member name="M:Alis.Core.SceneManager.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.SceneManager"/> class.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.SceneManager.Finalize">
-            <summary>Finalizes an instance of the <see cref="T:Alis.Core.SceneManager" /> class.</summary>
-        </member>
-        <member name="M:Alis.Core.SceneManager.Add(Alis.Core.Scene)">
-            <summary>Adds the scene.</summary>
-            <param name="scene">The scene.</param>
-        </member>
-        <member name="M:Alis.Core.SceneManager.Delete(Alis.Core.Scene)">
-            <summary>Deletes the scene.</summary>
-            <param name="scene">The scene.</param>
-        </member>
-        <member name="M:Alis.Core.SceneManager.Update">
-            <summary>Updates this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.SceneManager.Exits(Alis.Core.Scene)">
-            <summary>Exitses the specified scene.</summary>
-            <param name="scene">The scene.</param>
-            <returns>Return true if exits a scene on the videogame.</returns>
-        </member>
-        <member name="M:Alis.Core.SceneManager.LoadScene(System.String)">
-            <summary>Loads the scene.</summary>
-            <param name="name">The name.</param>
-        </member>
-        <member name="M:Alis.Core.SceneManager.SceneManager_OnCreate(System.Object,System.Boolean)">
-            <summary>Scenes the manager on create.</summary>
-            <param name="sender">The sender.</param>
-            <param name="e">if set to <c>true</c> [e].</param>
-        </member>
-        <member name="M:Alis.Core.SceneManager.SceneManager_OnDestroy(System.Object,System.Boolean)">
-            <summary>Scenes the manager on destroy.</summary>
-            <param name="sender">The sender.</param>
-            <param name="e">if set to <c>true</c> [e].</param>
-        </member>
-        <member name="M:Alis.Core.SceneManager.SceneManager_OnLoadScene(System.Object,System.Boolean)">
-            <summary>Scenes the manager on load scene.</summary>
-            <param name="sender">The sender.</param>
-            <param name="e">if set to <c>true</c> [e].</param>
-        </member>
-        <member name="M:Alis.Core.SceneManager.SceneManager_OnDeleteScene(System.Object,System.Boolean)">
-            <summary>Scenes the manager on delete scene.</summary>
-            <param name="sender">The sender.</param>
-            <param name="e">if set to <c>true</c> [e].</param>
-        </member>
-        <member name="M:Alis.Core.SceneManager.SceneManager_OnAddScene(System.Object,System.Boolean)">
-            <summary>Scenes the manager on add scene.</summary>
-            <param name="sender">The sender.</param>
-            <param name="e">if set to <c>true</c> [e].</param>
         </member>
         <member name="T:Alis.Core.VideoGame">
             <summary>Define the game.</summary>
