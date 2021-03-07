@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['newanimator_1275',['NewAnimator',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb',1,'Alis::Editor::UI::Widgets::Inspector']]],
-  ['newaudiosource_1276',['NewAudiosource',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf',1,'Alis::Editor::UI::Widgets::Inspector']]],
-  ['newcamera_1277',['NewCamera',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9',1,'Alis::Editor::UI::Widgets::Inspector']]],
-  ['newsprite_1278',['NewSprite',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829',1,'Alis::Editor::UI::Widgets::Inspector']]]
+  ['newanimator_1269',['NewAnimator',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb',1,'Alis::Editor::UI::Widgets::Inspector']]],
+  ['newaudiosource_1270',['NewAudiosource',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf',1,'Alis::Editor::UI::Widgets::Inspector']]],
+  ['newcamera_1271',['NewCamera',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9',1,'Alis::Editor::UI::Widgets::Inspector']]],
+  ['newsprite_1272',['NewSprite',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829',1,'Alis::Editor::UI::Widgets::Inspector']]]
 ];
