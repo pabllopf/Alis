@@ -18,12 +18,16 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static async Task Main(string[] args)
         {
-            string name = Test_Normal(100);
-            string name2 = await Test_Task(100);
+            new VideoGame(
+                new Config("Example")
+            ).Run();
+
+            /*string name = Test_Normal(1000);
+            string name2 = await Test_Task(1000);
 
             Console.WriteLine(name);
             Console.WriteLine(name2);
-
+            */
             Console.ReadLine();
         }
 

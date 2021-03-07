@@ -16,7 +16,7 @@ namespace Alis.Tools
         private static TextWriterTraceListener listener = new TextWriterTraceListener(Console.Out);
 
         /// <summary>The level</summary>
-        private static Level level = Level.Normal;
+        private static Level level = Level.Info;
 
         /// <summary>Informations this instance.</summary>
         public static void Info()
@@ -45,7 +45,7 @@ namespace Alis.Tools
                 }
 
                 type = stack.GetFrame(1).GetMethod().IsConstructor ? "CONSTRUCTOR" :
-                       stack.GetFrame(1).GetMethod().Name.Contains("_") ? "EVENT      " : "METHOD     ";
+                       stack.GetFrame(1).GetMethod().Name.Contains("On") ? "EVENT      " : "METHOD     ";
 
 
                 if (level == Level.Verbose)

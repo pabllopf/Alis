@@ -6,6 +6,7 @@ namespace Alis.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
 
@@ -41,7 +42,11 @@ namespace Alis.Core
             this.sceneManager = new SceneManager(new List<Scene>() { new Scene("Default") });
 
             this.input = new Input();
-            
+
+            this.render = new Render();
+
+            isRunning = true;
+
             InitEvents();
         }
 
@@ -57,7 +62,11 @@ namespace Alis.Core
             this.sceneManager = new SceneManager(new List<Scene>(scene ?? throw new ArgumentNullException(nameof(scene))));
 
             this.input = new Input();
-            
+
+            this.render = new Render();
+
+            isRunning = true;
+
             InitEvents();
         }
 
@@ -97,13 +106,56 @@ namespace Alis.Core
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
 
         /// <summary>Runs this instance.</summary>
+        public void Run() => Task.Run(() => StartAsync().Result && UpdateAsync().Result).Wait();
+
+        /// <summary>Starts the asynchronous.</summary>
+        /// <returns>Start the videogame.</returns>
+        private async Task<bool> StartAsync() 
+        {
+            return await Task.Run(() => 
+            {
+                Logger.Info();
+                
+                OnStart?.Invoke(null, true);
+
+                return true;
+            });
+        }
+
+        /// <summary>Updates the asynchronous.</summary>
+        /// <returns>Update the videogame</returns>
+        private async Task<bool> UpdateAsync()
+        {
+            return await Task.Run(() =>
+            {
+                Logger.Info();
+
+                while (isRunning)
+                {
+                    OnUpdate?.Invoke(null, true);
+
+                    Task.Run(() => input.Update()).Wait();
+                    Task.Run(() => render.Update()).Wait();
+                    Task.Run(() => sceneManager.Update()).Wait();
+
+                    Task.Delay(2000).Wait();
+                }
+
+                return true;
+            });
+        }
+
+
+        /*
+        /// <summary>Runs this instance.</summary>
         /// <returns>Return the value</returns>
         public bool Run()
         {
             Logger.Info();
             return Start() && Update();
-        }
+        }*/
 
+        /*
         /// <summary>Starts this instance.</summary>
         /// <returns>Return false if fail something.</returns>
         private bool Start()
@@ -129,7 +181,7 @@ namespace Alis.Core
             }
 
             return true;
-        }
+        }*/
 
         #region Events
 

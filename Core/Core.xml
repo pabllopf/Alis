@@ -601,15 +601,14 @@
         </member>
         <member name="M:Alis.Core.VideoGame.Run">
             <summary>Runs this instance.</summary>
-            <returns>Return the value</returns>
         </member>
-        <member name="M:Alis.Core.VideoGame.Start">
-            <summary>Starts this instance.</summary>
-            <returns>Return false if fail something.</returns>
+        <member name="M:Alis.Core.VideoGame.StartAsync">
+            <summary>Starts the asynchronous.</summary>
+            <returns>Start the videogame.</returns>
         </member>
-        <member name="M:Alis.Core.VideoGame.Update">
-            <summary>Updates this instance.</summary>
-            <returns>Return false if fail something.</returns>
+        <member name="M:Alis.Core.VideoGame.UpdateAsync">
+            <summary>Updates the asynchronous.</summary>
+            <returns>Update the videogame</returns>
         </member>
         <member name="M:Alis.Core.VideoGame.InitEvents">
             <summary>Initializes the events.</summary>

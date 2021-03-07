@@ -131,7 +131,11 @@ namespace Alis.Core
         }
 
         /// <summary>Updates this instance.</summary>
-        internal void Update() => scenes.ForEach(i => i.Update());
+        internal void Update()
+        {
+            Logger.Info();
+            //scenes.ForEach(i => i.Update());
+        }
 
         /// <summary>Exitses the specified scene.</summary>
         /// <param name="scene">The scene.</param>
