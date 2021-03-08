@@ -151,6 +151,10 @@ namespace Alis.Core
         {
             return Task.Run(()=> 
             {
+                var watch = new Stopwatch();
+                watch.Start();
+
+
                 for (int i = init; i <= end - 1; i++) 
                 {
                     currentScene.GameObjects[i].Update();
@@ -160,6 +164,9 @@ namespace Alis.Core
                 {
                     currentScene.GameObjects[end].Update();
                 }
+
+                watch.Stop();
+                Console.WriteLine($"    Time to Update the GameObjects: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
