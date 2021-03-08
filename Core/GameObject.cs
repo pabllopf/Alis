@@ -75,19 +75,9 @@ namespace Alis.Core
 
         }
 
-        internal async Task Update()
+        internal void  Update()
         {
-            await Task.Run(()=> 
-            {
-                List<Task> result = new List<Task>();
-
-                foreach (Component component in components) 
-                {
-                    result.Add(Task.Run(() => component.Update()));
-                }
-
-                Task.WhenAll(result).Wait();
-            });   
+            Console.WriteLine("update gameobject+ " + name); 
         }
     }
 }

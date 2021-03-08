@@ -33,13 +33,33 @@ namespace SFML
 
                         new GameObject("Player2", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite()
+                        ),
+                        new GameObject("Player23", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite()
+                        ),
+                        new GameObject("Player214", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite()
+                        ),
+                        new GameObject("Player224", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite()
+                        ),
+                        new GameObject("Player234", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite()
+                        ),
+                        new GameObject("Player244", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite()
+                        ),
+                        new GameObject("Player2474", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite()
                         )
                     )
             ).Run();
 
             watch.Stop();
             Console.WriteLine($"Total Videogame Time: " + watch.ElapsedMilliseconds + " ms");
-            
+
+            Console.WriteLine("Procesesor: " + Environment.ProcessorCount);
+
             /*string name = Test_Normal(100);
             string name2 = await Test_Task(100);
 

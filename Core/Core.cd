@@ -8,7 +8,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAQHAAAAAiAAAARAEAAAAAAgECAAABAAABAABAEQAgY=</HashCode>
+      <HashCode>AAAHAAAAAgAAAARAEAAAAAAgECAAABgAARAABAEQAgY=</HashCode>
       <FileName>VideoGame.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -21,7 +21,7 @@
   <Class Name="Alis.Core.Scene">
     <Position X="9" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAAAAEACAABAAACAAABAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAYAACAEACAABAAAAAAABAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Scene.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -38,7 +38,7 @@
   <Class Name="Alis.Core.GameObject">
     <Position X="11.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAIAIAAAACABAQAEAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAIAIAAAACABAQAEAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -65,21 +65,21 @@
   <Class Name="Alis.Core.Collision">
     <Position X="14.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Collision.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Camera">
     <Position X="16.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAwAAAAAACAAgAAACIAAAAAAAAAAAAAAAQAAAAEIAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Camera.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physics">
     <Position X="18.5" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Physics.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -129,21 +129,21 @@
   <Class Name="Alis.Core.Render">
     <Position X="4.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQAAAEAAAEMCAAAKAgAACAAHAAAAAAUSAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Render\Render.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Input">
     <Position X="0.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAIAAAYAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAIACAYAAAEAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Input\Input.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.SceneManager">
     <Position X="6.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYBAAAFAAAAEAgBgAAACIAIgCUAAAAAAAAAAEEACAA=</HashCode>
+      <HashCode>AAQBAAAFACAAEAgBgAAIAIAIACQAAAAAAAAAAAEACAA=</HashCode>
       <FileName>SceneManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>

@@ -17,6 +17,8 @@ namespace Alis.Core
         /// <summary>The keys</summary>
         private List<Key> keys = new List<Key>();
 
+        private Array keysHist;
+
         /// <summary>Occurs when [on press key].</summary>
         public event EventHandler<Key> OnPressKey;
 
@@ -25,9 +27,24 @@ namespace Alis.Core
 
         public Input()
         {
+            keysHist = Enum.GetValues(typeof(Key));
         }
 
-        public Task Update() 
+        internal Task Start()
+        {
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+
+                Task.Delay(1000).Wait();
+
+                watch.Stop();
+                Console.WriteLine($"  Time to Start INPUT: " + watch.ElapsedMilliseconds + " ms");
+            });
+        }
+
+        internal Task Update() 
         {
             return Task.Run(() =>
             {

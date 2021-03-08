@@ -91,9 +91,9 @@ namespace Alis.Core
         }
 
         /// <summary>Updates this instance.</summary>
-        public async Task Update()
+        public void Update()
         {
-            await Task.Run(()=> 
+            /*await Task.Run(()=> 
             {
                 List<Task> tasks = new List<Task>();
 
@@ -104,9 +104,9 @@ namespace Alis.Core
 
                 Logger.Log("Num of gameobjects task: " + tasks.Count);
                 Task.WhenAll(tasks).Wait();
-            });
+            });*/
         }
 
-        private async Task GameObjectAsync(GameObject gameObject) => await gameObject.Update();
+        //private async Task GameObjectAsync(GameObject gameObject) => await gameObject.Update();
     }
 }

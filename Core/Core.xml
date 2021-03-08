@@ -388,6 +388,72 @@
         <member name="T:Alis.Core.SceneManager">
             <summary>Manage the scenes of the videogame.</summary>
         </member>
+        <member name="F:Alis.Core.SceneManager.scenes">
+            <summary>The scenes</summary>
+        </member>
+        <member name="F:Alis.Core.SceneManager.currentScene">
+            <summary>The current scene</summary>
+        </member>
+        <member name="P:Alis.Core.SceneManager.Scenes">
+            <summary>Gets or sets the scenes.</summary>
+            <value>The scenes.</value>
+        </member>
+        <member name="P:Alis.Core.SceneManager.CurrentScene">
+            <summary>Gets or sets the current scene.</summary>
+            <value>The current scene.</value>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnCreate">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnAddScene">
+            <summary>Occurs when [on add scene].</summary>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnDeleteScene">
+            <summary>Occurs when [on delete scene].</summary>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnLoadScene">
+            <summary>Occurs when [on load scene].</summary>
+        </member>
+        <member name="E:Alis.Core.SceneManager.OnDestroy">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="M:Alis.Core.SceneManager.#ctor(System.Collections.Generic.List{Alis.Core.Scene})">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SceneManager" /> class.</summary>
+            <param name="scenes">The scenes.</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.SceneManager"/> class.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.SceneManager.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.SceneManager" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnCreate(System.Object,System.Boolean)">
+            <summary>Scenes the manager on create.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnDestroy(System.Object,System.Boolean)">
+            <summary>Scenes the manager on destroy.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnLoadScene(System.Object,System.Boolean)">
+            <summary>Scenes the manager on load scene.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnDeleteScene(System.Object,System.Boolean)">
+            <summary>Scenes the manager on delete scene.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SceneManager.SceneManager_OnAddScene(System.Object,System.Boolean)">
+            <summary>Scenes the manager on add scene.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
         <member name="T:Alis.Core.VideoGame">
             <summary>Define the game.</summary>
         </member>

@@ -107,33 +107,38 @@ namespace Alis.Core
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
 
         /// <summary>Runs this instance.</summary>
-        public void Run()
-        {
-            StartAsync().Wait();
-            UpdateAsync().Wait();
-        }
+        public bool Run() => StartAsync().Result && UpdateAsync().Result;
 
         /// <summary>Starts the asynchronous.</summary>
         /// <returns>Start the videogame.</returns>
-        private async Task StartAsync()
+        private async Task<bool> StartAsync()
         {
-            await Task.Run(() =>
+            return await Task.Run(() =>
             {
                 var watch = new Stopwatch();
                 watch.Start();
 
                 Task.Delay(1000).Wait();
 
+                Task.WaitAll
+                (
+                    input.Start(),
+                    render.Start(),
+                    sceneManager.Start()
+                );
+
                 watch.Stop();
                 Console.WriteLine($" Time to Start Videogame: " + watch.ElapsedMilliseconds + " ms");
+
+                return true;
             });
         }
 
         /// <summary>Updates the asynchronous.</summary>
         /// <returns>Update the videogame</returns>
-        private async Task UpdateAsync()
+        private async Task<bool> UpdateAsync()
         {
-            await Task.Run(() =>
+            return await Task.Run(() =>
             {
                 var watch = new Stopwatch();
                 watch.Start();
@@ -154,6 +159,8 @@ namespace Alis.Core
 
                 watch.Stop();
                 Console.WriteLine($" Time to Update One Frame Videogame: 1000 + " + (watch.ElapsedMilliseconds - 1000) + " ms");
+
+                return true;
             });
         }
 

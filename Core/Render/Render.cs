@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alis.Core
@@ -18,6 +19,20 @@ namespace Alis.Core
     {
         public Render()
         {
+        }
+
+        internal Task Start()
+        {
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+
+                Task.Delay(1000).Wait();
+
+                watch.Stop();
+                Console.WriteLine($"  Time to Start render: " + watch.ElapsedMilliseconds + " ms");
+            });
         }
 
         public Task Update()

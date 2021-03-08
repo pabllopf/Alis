@@ -15,36 +15,6 @@ namespace Alis.Core
     [JsonObject(MemberSerialization.OptIn)]
     public class SceneManager
     {
-        private List<Scene> scenes;
-
-        public SceneManager()
-        {
-        }
-
-        public SceneManager(List<Scene> scenes)
-        {
-            this.scenes = scenes;
-        }
-
-        public Task Update()
-        {
-            return Task.Run(() =>
-            {
-                var watch = new Stopwatch();
-                watch.Start();
-
-                Task.Delay(1000).Wait();
-
-                watch.Stop();
-                Console.WriteLine($"    Time to Update a Scene: " + watch.ElapsedMilliseconds + " ms");
-            });
-        }
-    }
-}
-        /*
-        /// <summary>The current</summary>
-        private static SceneManager current;
-
         /// <summary>The scenes</summary>
         private List<Scene> scenes;
 
@@ -94,8 +64,6 @@ namespace Alis.Core
             OnCreate.Invoke(null, true);
 
             currentScene = scenes[0];
-
-            current = this;
         }
 
         /// <summary>
@@ -105,7 +73,7 @@ namespace Alis.Core
         {
             Logger.Info();
 
-            this.scenes = new List<Scene>{new Scene("Default")};
+            scenes = new List<Scene> { new Scene("Default") };
 
             OnCreate += SceneManager_OnCreate;
             OnAddScene += SceneManager_OnAddScene;
@@ -116,70 +84,83 @@ namespace Alis.Core
             OnCreate.Invoke(null, true);
 
             currentScene = scenes[0];
-
-            current = this;
         }
 
         /// <summary>Finalizes an instance of the <see cref="SceneManager" /> class.</summary>
         ~SceneManager() => OnDestroy?.Invoke(null, true);
 
-        /// <summary>Adds the scene.</summary>
-        /// <param name="scene">The scene.</param>
-        public void Add(Scene scene)
+        internal Task Start()
         {
-            Logger.Info();
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
 
-            if (scenes.Find(i => i.Name.Equals(scene.Name)) == null)
-            {
-                scenes.Add(scene);
-                OnAddScene.Invoke(null, true);
-                Logger.Log("Add new " + scene.GetType() + "(" + scene.Name + ")");
-            }
-            else
-            {
-                Logger.Warning("This " + scene.GetType() + "(" + scene.Name + ")" + " alredy exits");
-            }
+                Task.Delay(1000).Wait();
+
+                watch.Stop();
+                Console.WriteLine($"  Time to Start scene manager: " + watch.ElapsedMilliseconds + " ms");
+            });
         }
 
-        /// <summary>Deletes the scene.</summary>
-        /// <param name="scene">The scene.</param>
-        public void Delete(Scene scene)
+        public Task Update()
         {
-            Logger.Info();
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
 
-            if (scenes.Find(i => i.Name.Equals(scene.Name)) != null)
-            {
-                scenes.Remove(scene);
-                OnDeleteScene.Invoke(null, true);
-                Logger.Log("Delete the " + scene.GetType() + "(" + scene.Name + ")");
-            }
-            else
-            {
-                Logger.Warning("This " + scene.GetType() + "(" + scene.Name + ")" + " dont`t exits");
-            }
+                Task.Delay(1000).Wait();
+
+                int numTask = (currentScene.GameObjects.Count / Environment.ProcessorCount) + 1;
+                List<Task> tasks = new List<Task>(numTask);
+
+                int index = 0;
+
+                for (int i = 0; i < currentScene.GameObjects.Count; i++) 
+                {
+                    if (index == numTask)
+                    {
+                        tasks.Add(ProcessGameObjects(i - index, i, false));
+                        index = 0;
+                    }
+                    else
+                    {
+                        if (i == currentScene.GameObjects.Count - 1)
+                        {
+                            tasks.Add(ProcessGameObjects(i - index, i, true));
+                            index = 0;
+                        }
+                    }
+
+                    index++;
+                }
+
+                Task.WaitAll(tasks.ToArray());
+
+                Console.WriteLine("DIVISION: " + numTask);
+                Console.WriteLine("GAMEOBJECTS: " + currentScene.GameObjects.Count);
+                Console.WriteLine("PROCESORS: " + Environment.ProcessorCount);
+
+                watch.Stop();
+                Console.WriteLine($"    Time to Update a Scene: " + watch.ElapsedMilliseconds + " ms");
+            });
         }
 
-        /// <summary>Updates this instance.</summary>
-        internal async Task Update() => await currentScene.Update();
-                                      
-
-        /// <summary>Exitses the specified scene.</summary>
-        /// <param name="scene">The scene.</param>
-        /// <returns>Return true if exits a scene on the videogame.</returns>
-        public bool Exits(Scene scene)
+        private Task ProcessGameObjects(int init, int end, bool isLast) 
         {
-            Logger.Info();
-            return scenes.Contains(scene);
-        }
+            return Task.Run(()=> 
+            {
+                for (int i = init; i <= end - 1; i++) 
+                {
+                    currentScene.GameObjects[i].Update();
+                }
 
-        /// <summary>Loads the scene.</summary>
-        /// <param name="name">The name.</param>
-        public static void LoadScene(string name) 
-        {
-            Logger.Info();
-
-            current.currentScene = current.scenes.Find(i => i.Name.Equals(name));
-            current.OnLoadScene.Invoke(null, true);
+                if (isLast) 
+                {
+                    currentScene.GameObjects[end].Update();
+                }
+            });
         }
 
         /// <summary>Scenes the manager on create.</summary>
@@ -207,4 +188,4 @@ namespace Alis.Core
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void SceneManager_OnAddScene(object sender, bool e) => Logger.Info();
     }
-}*/
+}
