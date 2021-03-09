@@ -133,7 +133,8 @@ namespace Alis.Tools
                 fullName = fullName.Replace(".ctor", "Contructor");
 
                 Console.BackgroundColor = ConsoleColor.DarkRed;
-                Trace.WriteLine(date + " " + type + " " + fullName + " | " + message + "\nERROR " + Environment.StackTrace.Trim());
+                string result = date + " " + type + " " + fullName + " | " + message + "\nERROR " + Environment.StackTrace.Trim();
+                Trace.WriteLine(result);
                 Console.ResetColor();
             }
         }

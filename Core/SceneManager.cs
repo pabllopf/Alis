@@ -154,6 +154,7 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
+                Task.Delay(1000).Wait();
 
                 for (int i = init; i <= end - 1; i++) 
                 {

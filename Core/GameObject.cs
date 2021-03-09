@@ -4,12 +4,11 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using Alis.Tools;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Numerics;
-    using System.Threading.Tasks;
 
     /// <summary>Define a game object. </summary>
     public class GameObject
@@ -60,25 +59,15 @@ namespace Alis.Core
             this.components = components != null ? new List<Component>(components) : new List<Component>();
         }
 
-        public void AddComponent<T>(T component)
-        {
-        
-        }
+        public void AddComponent(params Component[] component) => components.AddRange((component ?? throw new ArgumentNullException(nameof(component))).Except(components));
 
-        public void GetComponent<T>(T component)
-        {
+        public void RemoveComponent(params Component[] component) => components.RemoveAll(match: i => (component ?? throw new ArgumentNullException(nameof(component))).Contains(i));
 
-        }
+        public T GetComponent<T>() where T : Component => (T)components.Find(i => i.GetType().Equals(typeof(T))) ?? throw new ArgumentNullException(nameof(T));
 
-        public void DeleteComponent(Component component)
-        {
+        internal void Start() => components.ForEach(i => i.Start());
 
-        }
-
-        internal void  Update()
-        {
-            Console.WriteLine("update gameobject+ " + name); 
-        }
+        internal void Update() => components.ForEach(i => i.Update());
     }
 }
         /*
