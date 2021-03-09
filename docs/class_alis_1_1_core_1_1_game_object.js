@@ -5,7 +5,7 @@ var class_alis_1_1_core_1_1_game_object =
     [ "AddComponent< T >", "class_alis_1_1_core_1_1_game_object.html#aaad86b01bd24e1ecaf49c550fa87269a", null ],
     [ "GetComponent< T >", "class_alis_1_1_core_1_1_game_object.html#ab60d410f850cc80a5706144d9bcad953", null ],
     [ "DeleteComponent", "class_alis_1_1_core_1_1_game_object.html#afe6b961112adbc9b8c123fae8db4a12a", null ],
-    [ "Update", "class_alis_1_1_core_1_1_game_object.html#a946f2d93a68a99159a2e6896acb92d68", null ],
+    [ "Update", "class_alis_1_1_core_1_1_game_object.html#a11ae051dde35da31cedb62ac7deba328", null ],
     [ "name", "class_alis_1_1_core_1_1_game_object.html#a2e3f57fcb6b0325da516d5558815c75c", null ],
     [ "transform", "class_alis_1_1_core_1_1_game_object.html#a3520564e92a749313dc6d2e8e938e304", null ],
     [ "components", "class_alis_1_1_core_1_1_game_object.html#af0cf58571aaa2f589bd2f2875ff0d258", null ],
