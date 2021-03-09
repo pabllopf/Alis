@@ -12,247 +12,95 @@
             Get the path of the asset.
             </summary>
         </member>
-        <member name="T:Alis.Core.Animation">
-            <summary>Define animation of sprite.</summary>
-        </member>
-        <member name="F:Alis.Core.Animation.name">
-            <summary>The name</summary>
-        </member>
-        <member name="F:Alis.Core.Animation.state">
-            <summary>The state</summary>
-        </member>
-        <member name="F:Alis.Core.Animation.images">
-            <summary>The images</summary>
-        </member>
-        <member name="F:Alis.Core.Animation.textures">
-            <summary>The textures</summary>
-        </member>
-        <member name="F:Alis.Core.Animation.index">
-            <summary>The index</summary>
-        </member>
-        <member name="F:Alis.Core.Animation.speed">
-            <summary>The speed</summary>
-        </member>
-        <member name="M:Alis.Core.Animation.#ctor(System.String,System.Int32,System.Single,System.String[])">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Animation" /> class.</summary>
-            <param name="name">The name.</param>
-            <param name="state">The state.</param>
-            <param name="speed">The speed.</param>
-            <param name="images">The images.</param>
-        </member>
-        <member name="P:Alis.Core.Animation.Name">
-            <summary>Gets or sets the name.</summary>
-            <value>The name.</value>
-        </member>
-        <member name="P:Alis.Core.Animation.State">
-            <summary>Gets or sets the state.</summary>
-            <value>The state.</value>
-        </member>
-        <member name="P:Alis.Core.Animation.Speed">
-            <summary>Gets or sets the speed.</summary>
-            <value>The speed.</value>
-        </member>
-        <member name="P:Alis.Core.Animation.Texture">
-            <summary>Gets the texture.</summary>
-            <value>The texture.</value>
-        </member>
-        <member name="M:Alis.Core.Animation.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>
-              <br />
-            </returns>
-        </member>
         <member name="T:Alis.Core.Animator">
-            <summary>Define animation of sprite.</summary>
+            <summary>Define a component</summary>
         </member>
-        <member name="F:Alis.Core.Animator.icon">
-            <summary>The icon</summary>
-        </member>
-        <member name="F:Alis.Core.Animator.sprite">
-            <summary>The sprite</summary>
-        </member>
-        <member name="F:Alis.Core.Animator.state">
-            <summary>The state</summary>
-        </member>
-        <member name="F:Alis.Core.Animator.clock">
-            <summary>The clock</summary>
-        </member>
-        <member name="F:Alis.Core.Animator.animations">
-            <summary>The animations</summary>
-        </member>
-        <member name="M:Alis.Core.Animator.#ctor(System.Int32,Alis.Core.Animation[])">
+        <member name="M:Alis.Core.Animator.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Animator" /> class.</summary>
-            <param name="name">The name.</param>
-            <param name="state">The state.</param>
-            <param name="animations">The animations.</param>
         </member>
-        <member name="P:Alis.Core.Animator.State">
-            <summary>Gets or sets the state.</summary>
-            <value>The state.</value>
-        </member>
-        <member name="P:Alis.Core.Animator.Icon">
-            <summary>Gets the icon.</summary>
-            <value>The icon.</value>
-        </member>
-        <member name="P:Alis.Core.Animator.Animations">
-            <summary>Gets or sets the animations.</summary>
-            <value>The animations.</value>
-        </member>
-        <member name="M:Alis.Core.Animator.Start(Alis.Core.GameObject)">
-            <summary>Starts the specified transform.</summary>
-            <param name="gameObject"></param>
-        </member>
-        <member name="M:Alis.Core.Animator.Update(Alis.Core.GameObject)">
-            <summary>Updates the specified transform.</summary>
-            <param name="gameObject"></param>
-        </member>
-        <member name="T:Alis.Core.AudioSource">
-            <summary>Control the audio of game object.</summary>
-        </member>
-        <member name="F:Alis.Core.AudioSource.icon">
-            <summary>The icon</summary>
-        </member>
-        <member name="F:Alis.Core.AudioSource.audioFile">
-            <summary>The file</summary>
-        </member>
-        <member name="F:Alis.Core.AudioSource.path">
-            <summary>The path</summary>
-        </member>
-        <member name="F:Alis.Core.AudioSource.audio">
-            <summary>The audio</summary>
-        </member>
-        <member name="F:Alis.Core.AudioSource.playOnAwake">
-            <summary>The play on awake</summary>
-        </member>
-        <member name="M:Alis.Core.AudioSource.#ctor(System.String,System.String,System.Boolean,System.Single)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>
-            <param name="audioFile">The audio file.</param>
-            <param name="path"></param>
-            <param name="playOnAwake"></param>
-            <param name="volume"></param>
-        </member>
-        <member name="E:Alis.Core.AudioSource.OnPlay">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Core.AudioSource.OnStop">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Core.AudioSource.OnPause">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="E:Alis.Core.AudioSource.OnRestart">
-            <summary>Occurs when [change].</summary>
-        </member>
-        <member name="P:Alis.Core.AudioSource.PlayOnAwake">
-            <summary>Gets or sets a value indicating whether [play on awake].</summary>
-            <value>
-            <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
-        </member>
-        <member name="P:Alis.Core.AudioSource.AudioFile">
-            <summary>Gets or sets the audio file.</summary>
-            <value>The audio file.</value>
-        </member>
-        <member name="P:Alis.Core.AudioSource.Path">
-            <summary>Gets or sets the path.</summary>
-            <value>The path.</value>
-        </member>
-        <member name="P:Alis.Core.AudioSource.Volume">
-            <summary>Gets or sets the volume.</summary>
-            <value>The volume.</value>
-        </member>
-        <member name="P:Alis.Core.AudioSource.Icon">
-            <summary>Gets the icon.</summary>
-            <value>The icon.</value>
-        </member>
-        <member name="M:Alis.Core.AudioSource.Play">
-            <summary>Plays this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.AudioSource.Stop">
-            <summary>Stops this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.AudioSource.Pause">
-            <summary>Pauses this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.AudioSource.Restart">
-            <summary>Restarts this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.AudioSource.Start(Alis.Core.GameObject)">
+        <member name="M:Alis.Core.Animator.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.AudioSource.Update(Alis.Core.GameObject)">
-            <summary>Updates the specified transform.</summary>
-            <param name="transform">The transform.</param>
+        <member name="M:Alis.Core.Animator.Update">
+            <summary>Updates this instance.</summary>
         </member>
-        <member name="M:Alis.Core.AudioSource.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
+        <member name="T:Alis.Core.AudioSource">
+            <summary>Define a component</summary>
+        </member>
+        <member name="M:Alis.Core.AudioSource.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.AudioSource.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.AudioSource.Update">
+            <summary>Updates this instance.</summary>
         </member>
         <member name="T:Alis.Core.Camera">
-            <summary>Define a camera</summary>
+            <summary>Define a component</summary>
+        </member>
+        <member name="M:Alis.Core.Camera.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Camera" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.Camera.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Camera.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Core.Collision">
+            <summary>Define a component</summary>
         </member>
         <member name="M:Alis.Core.Collision.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Collision" /> class.</summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Alis.Core.Collision.Finalize">
-            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Collision" /> class.</summary>
-            <exception cref="T:System.NotImplementedException"></exception>
+        <member name="M:Alis.Core.Collision.Start">
+            <summary>Starts this instance.</summary>
         </member>
-        <member name="T:Alis.Core.Transform">
-            <summary>Manage the position of the game object on a scene.</summary>
+        <member name="M:Alis.Core.Collision.Update">
+            <summary>Updates this instance.</summary>
         </member>
-        <member name="F:Alis.Core.Transform.position">
-            <summary>The position</summary>
+        <member name="T:Alis.Core.Component">
+            <summary>Define a component</summary>
         </member>
-        <member name="F:Alis.Core.Transform.rotation">
-            <summary>The rotation</summary>
+        <member name="M:Alis.Core.Component.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Component" /> class.</summary>
         </member>
-        <member name="F:Alis.Core.Transform.size">
-            <summary>The size</summary>
+        <member name="M:Alis.Core.Component.Awake">
+            <summary>Awakes this instance.</summary>
         </member>
-        <member name="E:Alis.Core.Transform.OnCreate">
-            <summary>Occurs when [change].</summary>
+        <member name="M:Alis.Core.Component.OnEnable">
+            <summary>Called when [enable].</summary>
         </member>
-        <member name="E:Alis.Core.Transform.OnPositionChange">
-            <summary>Occurs when [change].</summary>
+        <member name="M:Alis.Core.Component.Start">
+            <summary>Starts this instance.</summary>
         </member>
-        <member name="E:Alis.Core.Transform.OnRotationChange">
-            <summary>Occurs when [change].</summary>
+        <member name="M:Alis.Core.Component.BeforeUpdate">
+            <summary>Afters the update.</summary>
         </member>
-        <member name="E:Alis.Core.Transform.OnSizeChange">
-            <summary>Occurs when [change].</summary>
+        <member name="M:Alis.Core.Component.Update">
+            <summary>Updates this instance.</summary>
         </member>
-        <member name="E:Alis.Core.Transform.OnDestroy">
-            <summary>Occurs when [change].</summary>
+        <member name="M:Alis.Core.Component.AfterUpdate">
+            <summary>Afters the update.</summary>
         </member>
-        <member name="M:Alis.Core.Transform.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
-            <param name="position">The position.</param>
-            <param name="rotation">The rotation.</param>
-            <param name="size">size object</param>
+        <member name="M:Alis.Core.Component.OnDisable">
+            <summary>Called when [disable].</summary>
         </member>
-        <member name="M:Alis.Core.Transform.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
+        <member name="M:Alis.Core.Component.OnDestroy">
+            <summary>Called when [destroy].</summary>
         </member>
-        <member name="M:Alis.Core.Transform.Finalize">
-            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
-            <exception cref="T:System.NotImplementedException"></exception>
+        <member name="T:Alis.Core.Physics">
+            <summary>Define a component</summary>
         </member>
-        <member name="P:Alis.Core.Transform.Position">
-            <summary>Gets or sets the position.</summary>
-            <value>The position.</value>
+        <member name="M:Alis.Core.Physics.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physics" /> class.</summary>
         </member>
-        <member name="P:Alis.Core.Transform.Rotation">
-            <summary>Gets or sets the rotation.</summary>
-            <value>The rotation.</value>
+        <member name="M:Alis.Core.Physics.Start">
+            <summary>Starts this instance.</summary>
         </member>
-        <member name="P:Alis.Core.Transform.Size">
-            <summary>Gets or sets the size.</summary>
-            <value>The size.</value>
-        </member>
-        <member name="M:Alis.Core.Transform.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug string</returns>
+        <member name="M:Alis.Core.Physics.Update">
+            <summary>Updates this instance.</summary>
         </member>
         <member name="T:Alis.Core.Config">
             <summary>Define the config of videogame</summary>
@@ -341,6 +189,45 @@
         </member>
         <member name="E:Alis.Core.Input.OnPressKeyOnce">
             <summary>Occurs when [on press once].</summary>
+        </member>
+        <member name="T:Alis.Core.Level">
+            <summary>Define level of the logs</summary>
+        </member>
+        <member name="F:Alis.Core.Level.Verbose">
+            <summary>Include file options</summary>
+        </member>
+        <member name="F:Alis.Core.Level.Info">
+            <summary>The information</summary>
+        </member>
+        <member name="F:Alis.Core.Level.Normal">
+            <summary>The normal log</summary>
+        </member>
+        <member name="F:Alis.Core.Level.Critical">
+            <summary>The critical</summary>
+        </member>
+        <member name="T:Alis.Core.Logger">
+            <summary>Debug messages.</summary>
+        </member>
+        <member name="F:Alis.Core.Logger.listener">
+            <summary>The listener</summary>
+        </member>
+        <member name="F:Alis.Core.Logger.level">
+            <summary>The level</summary>
+        </member>
+        <member name="M:Alis.Core.Logger.Info">
+            <summary>Informations this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Logger.Log(System.String)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Core.Logger.Warning(System.String)">
+            <summary>Warnings the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Core.Logger.Error(System.String)">
+            <summary>Errors the specified message.</summary>
+            <param name="message">The message.</param>
         </member>
         <member name="T:Alis.Core.Render">
             <summary>Render define</summary>
@@ -453,6 +340,62 @@
             <summary>Scenes the manager on add scene.</summary>
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="T:Alis.Core.Transform">
+            <summary>Manage the position of the game object on a scene.</summary>
+        </member>
+        <member name="F:Alis.Core.Transform.position">
+            <summary>The position</summary>
+        </member>
+        <member name="F:Alis.Core.Transform.rotation">
+            <summary>The rotation</summary>
+        </member>
+        <member name="F:Alis.Core.Transform.size">
+            <summary>The size</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnCreate">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnPositionChange">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnRotationChange">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnSizeChange">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.Transform.OnDestroy">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="M:Alis.Core.Transform.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
+            <param name="position">The position.</param>
+            <param name="rotation">The rotation.</param>
+            <param name="size">size object</param>
+        </member>
+        <member name="M:Alis.Core.Transform.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.Transform.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Transform" /> class.</summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="P:Alis.Core.Transform.Position">
+            <summary>Gets or sets the position.</summary>
+            <value>The position.</value>
+        </member>
+        <member name="P:Alis.Core.Transform.Rotation">
+            <summary>Gets or sets the rotation.</summary>
+            <value>The rotation.</value>
+        </member>
+        <member name="P:Alis.Core.Transform.Size">
+            <summary>Gets or sets the size.</summary>
+            <value>The size.</value>
+        </member>
+        <member name="M:Alis.Core.Transform.GetDebuggerDisplay">
+            <summary>Gets the debugger display.</summary>
+            <returns>Debug string</returns>
         </member>
         <member name="T:Alis.Core.VideoGame">
             <summary>Define the game.</summary>

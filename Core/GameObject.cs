@@ -37,8 +37,7 @@ namespace Alis.Core
         public List<Component> Components { get => components; set => components = value; }
 
         public GameObject() 
-        {
-        
+        { 
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
