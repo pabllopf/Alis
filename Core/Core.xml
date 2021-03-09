@@ -319,7 +319,7 @@
             <summary>Gets or sets the components.</summary>
             <value>The components.</value>
         </member>
-        <member name="M:Alis.Core.GameObject.#ctor(System.String,Alis.Core.Transform)">
+        <member name="M:Alis.Core.GameObject.#ctor(System.String)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.GameObject" /> class.</summary>
             <param name="name">The name.</param>
             <param name="transform">The transform.</param>

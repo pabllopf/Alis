@@ -21,7 +21,7 @@
   <Class Name="Alis.Core.Scene">
     <Position X="9" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYAACAEACAABAAAAAAABAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAYAAAAEACAABAAAAAAABAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Scene.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -38,22 +38,12 @@
   <Class Name="Alis.Core.GameObject">
     <Position X="11.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAIAIAAAACABAQAEAAEAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAIAIAAAACABAQAAAAEAAAEAAAAAAAAAAA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Transform" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Components" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Alis.Core.Component">
-    <Position X="14.5" Y="2" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Components\Component.cs</FileName>
-    </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Sprite">
     <Position X="12.5" Y="6" Width="1.5" />
@@ -143,12 +133,19 @@
   <Class Name="Alis.Core.SceneManager">
     <Position X="6.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQBAAAFACAAEAgBgAAIAIAIACQAAAAAAAAAAAEACAA=</HashCode>
+      <HashCode>AAQBAAAFACAAEAgBgAAKAIAIACQAAAAAAAAAAAEACAA=</HashCode>
       <FileName>SceneManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Scenes" />
     </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Alis.Core.Component">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\Component.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
