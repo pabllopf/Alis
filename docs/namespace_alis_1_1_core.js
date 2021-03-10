@@ -1,6 +1,5 @@
 var namespace_alis_1_1_core =
 [
-    [ "Animation", "class_alis_1_1_core_1_1_animation.html", "class_alis_1_1_core_1_1_animation" ],
     [ "Animator", "class_alis_1_1_core_1_1_animator.html", "class_alis_1_1_core_1_1_animator" ],
     [ "Asset", "class_alis_1_1_core_1_1_asset.html", "class_alis_1_1_core_1_1_asset" ],
     [ "AudioSource", "class_alis_1_1_core_1_1_audio_source.html", "class_alis_1_1_core_1_1_audio_source" ],
@@ -10,6 +9,7 @@ var namespace_alis_1_1_core =
     [ "Config", "class_alis_1_1_core_1_1_config.html", "class_alis_1_1_core_1_1_config" ],
     [ "GameObject", "class_alis_1_1_core_1_1_game_object.html", "class_alis_1_1_core_1_1_game_object" ],
     [ "Input", "class_alis_1_1_core_1_1_input.html", "class_alis_1_1_core_1_1_input" ],
+    [ "Logger", "class_alis_1_1_core_1_1_logger.html", "class_alis_1_1_core_1_1_logger" ],
     [ "Physics", "class_alis_1_1_core_1_1_physics.html", "class_alis_1_1_core_1_1_physics" ],
     [ "Render", "class_alis_1_1_core_1_1_render.html", "class_alis_1_1_core_1_1_render" ],
     [ "Scene", "class_alis_1_1_core_1_1_scene.html", "class_alis_1_1_core_1_1_scene" ],

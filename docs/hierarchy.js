@@ -1,19 +1,19 @@
 var hierarchy =
 [
-    [ "Alis.Core.Animation", "class_alis_1_1_core_1_1_animation.html", null ],
     [ "Alis.Tools.Application", "struct_alis_1_1_tools_1_1_application.html", null ],
     [ "Alis.Core.Asset", "class_alis_1_1_core_1_1_asset.html", null ],
-    [ "Alis.Core.Component", "class_alis_1_1_core_1_1_component.html", [
-      [ "Alis.Core.Animator", "class_alis_1_1_core_1_1_animator.html", null ],
-      [ "Alis.Core.AudioSource", "class_alis_1_1_core_1_1_audio_source.html", null ],
-      [ "Alis.Core.Camera", "class_alis_1_1_core_1_1_camera.html", null ],
-      [ "Alis.Core.Collision", "class_alis_1_1_core_1_1_collision.html", null ],
-      [ "Alis.Core.Physics", "class_alis_1_1_core_1_1_physics.html", null ],
-      [ "Alis.Core.Sprite", "class_alis_1_1_core_1_1_sprite.html", null ]
-    ] ],
     [ "Alis.Core.Config", "class_alis_1_1_core_1_1_config.html", null ],
     [ "Alis.Editor.Engine", "class_alis_1_1_editor_1_1_engine.html", null ],
-    [ "Alis.Core.GameObject", "class_alis_1_1_core_1_1_game_object.html", null ],
+    [ "Alis.Core.GameObject", "class_alis_1_1_core_1_1_game_object.html", [
+      [ "Alis.Core.Component", "class_alis_1_1_core_1_1_component.html", [
+        [ "Alis.Core.Animator", "class_alis_1_1_core_1_1_animator.html", null ],
+        [ "Alis.Core.AudioSource", "class_alis_1_1_core_1_1_audio_source.html", null ],
+        [ "Alis.Core.Camera", "class_alis_1_1_core_1_1_camera.html", null ],
+        [ "Alis.Core.Collision", "class_alis_1_1_core_1_1_collision.html", null ],
+        [ "Alis.Core.Physics", "class_alis_1_1_core_1_1_physics.html", null ],
+        [ "Alis.Core.Sprite", "class_alis_1_1_core_1_1_sprite.html", null ]
+      ] ]
+    ] ],
     [ "Alis.Editor.Utils.Icon", "class_alis_1_1_editor_1_1_utils_1_1_icon.html", null ],
     [ "IDisposable", null, [
       [ "ImGuiNET.ImGuiController", "class_im_gui_n_e_t_1_1_im_gui_controller.html", null ]
@@ -23,7 +23,7 @@ var hierarchy =
     [ "Alis.Core.Input", "class_alis_1_1_core_1_1_input.html", null ],
     [ "Alis.Tools.Language", "class_alis_1_1_tools_1_1_language.html", null ],
     [ "Alis.Tools.LocalData", "class_alis_1_1_tools_1_1_local_data.html", null ],
-    [ "Alis.Tools.Logger", "class_alis_1_1_tools_1_1_logger.html", null ],
+    [ "Alis.Core.Logger", "class_alis_1_1_core_1_1_logger.html", null ],
     [ "Alis.Editor.UI.MainWindow", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html", null ],
     [ "ImGuiNET.MemoryEditor", "class_im_gui_n_e_t_1_1_memory_editor.html", null ],
     [ "object", null, [
