@@ -14,10 +14,9 @@ namespace SFML
     /// <summary>Example of videogame.</summary>
     public class Program
     {
-
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
             var watch = new Stopwatch();
             watch.Start();

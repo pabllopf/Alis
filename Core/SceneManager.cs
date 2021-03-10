@@ -98,11 +98,64 @@ namespace Alis.Core
 
                 Task.Delay(1000).Wait();
 
+                int numTask = (currentScene.GameObjects.Count / Environment.ProcessorCount) + 1;
+                List<Task> tasks = new List<Task>(numTask);
+
+                int index = 0;
+
+                for (int i = 0; i < currentScene.GameObjects.Count; i++)
+                {
+                    if (index == numTask)
+                    {
+                        tasks.Add(ProcessGameObjectsStart(i - index, i, false));
+                        index = 0;
+                    }
+                    else
+                    {
+                        if (i == currentScene.GameObjects.Count - 1)
+                        {
+                            tasks.Add(ProcessGameObjectsStart(i - index, i, true));
+                            index = 0;
+                        }
+                    }
+
+                    index++;
+                }
+
+                Task.WaitAll(tasks.ToArray());
+
                 watch.Stop();
                 Console.WriteLine($"  Time to Start scene manager: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
+        private Task ProcessGameObjectsStart(int init, int end, bool isLast)
+        {
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+
+                Task.Delay(1000).Wait();
+
+                for (int i = init; i <= end - 1; i++)
+                {
+                    currentScene.GameObjects[i].Start();
+                }
+
+                if (isLast)
+                {
+                    currentScene.GameObjects[end].Start();
+                }
+
+                watch.Stop();
+                Console.WriteLine($"    Time to start the GameObjects: " + watch.ElapsedMilliseconds + " ms");
+            });
+        }
+
+
+        /// <summary>Updates this instance.</summary>
+        /// <returns>return none</returns>
         public Task Update()
         {
             return Task.Run(() =>

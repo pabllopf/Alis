@@ -9,12 +9,19 @@ namespace Alis.Core.Components
     /// <summary>Define a component</summary>
     public class Physics : Component
     {
+        /// <summary>Initializes a new instance of the <see cref="Physics" /> class.</summary>
         public Physics() 
         {
         }
 
+        
+
         /// <summary>Starts this instance.</summary>
         public override void Start()
+        {
+        }
+
+        public override void BeforeUpdate()
         {
             
         }

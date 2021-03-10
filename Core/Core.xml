@@ -63,29 +63,68 @@
         <member name="T:Alis.Core.Components.Component">
             <summary>Define a component</summary>
         </member>
-        <member name="M:Alis.Core.Components.Component.Start">
-            <summary>Starts this instance.</summary>
+        <member name="F:Alis.Core.Components.Component.gameObject">
+            <summary>The game object</summary>
         </member>
-        <member name="M:Alis.Core.Components.Component.Update">
-            <summary>Updates this instance.</summary>
+        <member name="F:Alis.Core.Components.Component.active">
+            <summary>The is enabled</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Components.Component" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Components.Component" /> class.</summary>
+        </member>
+        <member name="E:Alis.Core.Components.Component.OnCreate">
+            <summary>Occurs when [on create].</summary>
         </member>
         <member name="E:Alis.Core.Components.Component.OnEnable">
-            <summary>Called when [enable].</summary>
-        </member>
-        <member name="E:Alis.Core.Components.Component.OnBeforeUpdate">
-            <summary>Afters the update.</summary>
-        </member>
-        <member name="E:Alis.Core.Components.Component.OnAfterUpdate">
-            <summary>Afters the update.</summary>
+            <summary>Occurs when [on enable].</summary>
         </member>
         <member name="E:Alis.Core.Components.Component.OnDisable">
-            <summary>Called when [disable].</summary>
+            <summary>Occurs when [on disable].</summary>
         </member>
         <member name="E:Alis.Core.Components.Component.OnDestroy">
-            <summary>Called when [destroy].</summary>
+            <summary>Occurs when [on destroy].</summary>
+        </member>
+        <member name="P:Alis.Core.Components.Component.GameObject">
+            <summary>Gets or sets the game object.</summary>
+            <value>The game object.</value>
+        </member>
+        <member name="P:Alis.Core.Components.Component.Active">
+            <summary>Gets or sets a value indicating whether this <see cref="T:Alis.Core.Components.Component" /> is active.</summary>
+            <value>
+            <c>true</c> if active; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Alis.Core.Components.Component.Create">
+            <summary>Creates this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.Enable">
+            <summary>Enable this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.BeforeUpdate">
+            <summary>Before the update.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.Start">
+            <summary>Start this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.Update">
+            <summary>Update this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.AfterUpdate">
+            <summary>After the update.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.Disable">
+            <summary>Disable this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Component.Destroy">
+            <summary>Destroy this instance.</summary>
         </member>
         <member name="T:Alis.Core.Components.Physics">
             <summary>Define a component</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Physics.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Components.Physics" /> class.</summary>
         </member>
         <member name="M:Alis.Core.Components.Physics.Start">
             <summary>Starts this instance.</summary>

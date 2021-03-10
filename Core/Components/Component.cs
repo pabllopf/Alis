@@ -13,23 +13,28 @@ namespace Alis.Core.Components
         /// <summary>The game object</summary>
         private GameObject gameObject;
 
+        /// <summary>The is enabled</summary>
+        private bool active;
+
+        /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
+        protected Component()
+        {
+            OnCreate?.Invoke(this, true);
+            Create();
+        }
+
+        /// <summary>Finalizes an instance of the <see cref="Component" /> class.</summary>
+        ~Component()
+        {
+            OnDestroy?.Invoke(this, true);
+            Destroy();
+        }
+
         /// <summary>Occurs when [on create].</summary>
         public event EventHandler<bool> OnCreate;
 
         /// <summary>Occurs when [on enable].</summary>
         public event EventHandler<bool> OnEnable;
-
-        /// <summary>Occurs when [on start].</summary>
-        public event EventHandler<bool> OnStart;
-
-        /// <summary>Occurs when [on before update].</summary>
-        public event EventHandler<bool> OnBeforeUpdate;
-
-        /// <summary>Occurs when [on update].</summary>
-        public event EventHandler<bool> OnUpdate;
-
-        /// <summary>Occurs when [on after update].</summary>
-        public event EventHandler<bool> OnAfterUpdate;
 
         /// <summary>Occurs when [on disable].</summary>
         public event EventHandler<bool> OnDisable;
@@ -42,21 +47,47 @@ namespace Alis.Core.Components
         [JsonIgnore]
         public GameObject GameObject { get => gameObject; set => gameObject = value; }
 
+        /// <summary>Gets or sets a value indicating whether this <see cref="Component" /> is active.</summary>
+        /// <value>
+        /// <c>true</c> if active; otherwise, <c>false</c>.</value>
+        [JsonProperty]
+        public bool Active
+        {
+            get => active; 
+            set
+            {
+                active = value;
+                if (active)
+                {
+                    OnEnable?.Invoke(this, true);
+                    Enable();
+                }
+                else 
+                {
+                    OnDisable?.Invoke(this, true);
+                    Disable();
+                }
+            }
+        }
+
+        /// <summary>Creates this instance.</summary>
+        public virtual void Create()
+        {
+        }
+
         /// <summary>Enable this instance.</summary>
         public virtual void Enable() 
         {
-            OnEnable?.Invoke(this, true);
         }
 
-        /// <summary>Await this instance.</summary>
-        public virtual void Await() 
+        /// <summary>Awakes this instance.</summary>
+        public virtual void Awake()
         {
         }
 
         /// <summary>Before the update.</summary>
         public virtual void BeforeUpdate() 
         {
-            OnBeforeUpdate?.Invoke(this, true);
         }
 
         /// <summary>Start this instance.</summary>
@@ -68,37 +99,16 @@ namespace Alis.Core.Components
         /// <summary>After the update.</summary>
         public virtual void AfterUpdate() 
         {
-            OnAfterUpdate?.Invoke(this, true);
-        }
-
-        /// <summary>Collision the enter.</summary>
-        /// <param name="collision">The collision.</param>
-        public virtual void CollisionEnter(Collision collision) 
-        {
-        }
-
-        /// <summary>Collision the exit.</summary>
-        /// <param name="collision">The collision.</param>
-        public virtual void CollisionExit(Collision collision)
-        {
-        }
-
-        /// <summary>Collision the state.</summary>
-        /// <param name="collision">The collision.</param>
-        public virtual void CollisionState(Collision collision)
-        {
         }
 
         /// <summary>Disable this instance.</summary>
         public virtual void Disable() 
         {
-            OnDisable?.Invoke(this, true);
         }
 
         /// <summary>Destroy this instance.</summary>
         public virtual void Destroy() 
         {
-            OnDestroy?.Invoke(this, true);
         }
     }
 }
