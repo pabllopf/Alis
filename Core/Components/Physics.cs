@@ -16,6 +16,7 @@ namespace Alis.Core.Components
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
+            
         }
 
         /// <summary>Updates this instance.</summary>
