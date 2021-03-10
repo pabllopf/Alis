@@ -4,37 +4,38 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using System;
+    using Newtonsoft.Json;
+
     /// <summary>Define a component</summary>
-    public abstract class Component : GameObject
+    public abstract class Component
     {
         /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
-        public Component() => Logger.Info();
+        public Component() => OnCreate?.Invoke(null, true);
 
-        /// <summary>Awakes this instance.</summary>
-        public  virtual void Awake() => Logger.Info();
+        ~Component() => OnDestroy?.Invoke(null, true);
+
+        public event EventHandler<bool> OnCreate;
 
         /// <summary>Called when [enable].</summary>
-        public virtual void OnEnable() => Logger.Info();
+        public event EventHandler<bool> OnEnable;
 
         /// <summary>Starts this instance.</summary>
         public new abstract void Start();
 
         /// <summary>Afters the update.</summary>
-        public virtual void BeforeUpdate() => Logger.Info();
+        public event EventHandler<bool> OnBeforeUpdate;
 
         /// <summary>Updates this instance.</summary>
         public new abstract void Update();
 
-        /// <summary>Fixeds the update.</summary>
-        public virtual void FixedUpdate() => Logger.Info();
-
         /// <summary>Afters the update.</summary>
-        public virtual void AfterUpdate() => Logger.Info();
+        public event EventHandler<bool> OnAfterUpdate;
 
         /// <summary>Called when [disable].</summary>
-        public virtual void OnDisable() => Logger.Info();
+        public event EventHandler<bool> OnDisable;
 
         /// <summary>Called when [destroy].</summary>
-        public virtual void OnDestroy() => Logger.Info();
+        public event EventHandler<bool> OnDestroy;
     }
 }

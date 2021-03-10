@@ -38,74 +38,43 @@
   <Class Name="Alis.Core.GameObject">
     <Position X="11.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAIAIAAAACABAQAAAAEAAAEAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQBAAAAACAIAEAAAACABAAAACAEAAAMAAAAAEAACAA=</HashCode>
       <FileName>GameObject.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Transform" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Alis.Core.Sprite">
-    <Position X="12.5" Y="6" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Sprite.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Collision">
-    <Position X="14.5" Y="4.5" Width="1.5" />
+    <Position X="13" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Collision.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Camera">
-    <Position X="16.5" Y="3.75" Width="1.5" />
+  <Class Name="Alis.Core.Sprite">
+    <Position X="15" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Components\Camera.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Physics">
-    <Position X="18.5" Y="4" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Components\Physics.cs</FileName>
+      <FileName>Sprite.cs</FileName>
+      <NewMemberFileName>Components\Camera.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Transform">
     <Position X="8.5" Y="6.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAABAAQAAAAAgIAwCICAIAAAACCAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Components\Transform.cs</FileName>
+      <FileName>Transform.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Animator">
-    <Position X="20.75" Y="3.75" Width="1.5" />
-    <AssociationLine Name="Animations" Type="Alis.Core.Animation">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.093" Y="0.346" />
-      </MemberNameLabel>
-    </AssociationLine>
+    <Position X="21.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAQABAAEAAEAQACBAEAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Animator.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Animations" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Alis.Core.Animation">
-    <Position X="20.75" Y="8.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAACAAAAAQBEAAEAQAEAAIABAABAAA=</HashCode>
-      <FileName>Components\Animation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.AudioSource">
-    <Position X="23" Y="4" Width="1.5" />
+    <Position X="19.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAQgAAAAQCAAAAIACAACAAgBAAAIAAAAoUJAABECAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\AudioSource.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -141,10 +110,24 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.Component">
-    <Position X="14.5" Y="2" Width="1.5" />
+    <Position X="15" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAACAAAEAAAAAAAAAAACAAAAAIAAAAAEAACAA=</HashCode>
+      <FileName>Components\Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Physics">
+    <Position X="17" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Components\Component.cs</FileName>
+      <FileName>Components\Physics.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Camera">
+    <Position X="23.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Components\Camera.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

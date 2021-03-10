@@ -4,37 +4,48 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Numerics;
+    using Newtonsoft.Json;
 
     /// <summary>Define a game object. </summary>
     public class GameObject
     {
         /// <summary>The name</summary>
+        [JsonProperty]
         private string name;
 
         /// <summary>The transform</summary>
+        [JsonProperty]
         private Transform transform;
 
         /// <summary>The components</summary>
+        [JsonProperty]
         private List<Component> components;
 
-        /// <summary>Gets or sets the name.</summary>
-        /// <value>The name.</value>
-        [JsonProperty]
         public string Name { get => name; set => name = value; }
-
-        /// <summary>Gets or sets the transform.</summary>
-        /// <value>The transform.</value>
-        [JsonProperty]
+        
         public Transform Transform { get => transform; set => transform = value; }
-
-        /// <summary>Gets or sets the components.</summary>
-        /// <value>The components.</value>
-        [JsonProperty]
+        
         public List<Component> Components { get => components; set => components = value; }
+
+        public event EventHandler<bool> OnCreate;
+
+        /// <summary>Called when [enable].</summary>
+        public event EventHandler<bool> OnEnable;
+
+        /// <summary>Afters the update.</summary>
+        public event EventHandler<bool> OnBeforeUpdate;
+
+        /// <summary>Afters the update.</summary>
+        public event EventHandler<bool> OnAfterUpdate;
+
+        /// <summary>Called when [disable].</summary>
+        public event EventHandler<bool> OnDisable;
+
+        /// <summary>Called when [destroy].</summary>
+        public event EventHandler<bool> OnDestroy;
 
         public GameObject() 
         { 

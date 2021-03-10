@@ -1,37 +1,27 @@
 ﻿using Alis.Tools;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text;
-
+//-------------------------------------------------------------------------------------------------
+// <author>Pablo Perdomo Falcón</author>
+// <copyright file="Camera.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+//-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
+    /// <summary>Define a component</summary>
     public class Sprite : Component
     {
+        /// <summary>Initializes a new instance of the <see cref="Camera" /> class.</summary>
         public Sprite()
         {
-            
         }
 
-        public Sprite(string name, string path, int depth)
-        {
-
-        }
-
+        /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            
         }
 
+        /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            Logger.Log("Update sprite");
-        }
-
-        private string GetDebuggerDisplay()
-        {
-            return ToString();
         }
     }
 }

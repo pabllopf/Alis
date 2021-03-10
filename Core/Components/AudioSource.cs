@@ -10,7 +10,7 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
         public AudioSource()
         {
-        } 
+        }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()

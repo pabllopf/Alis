@@ -20,10 +20,10 @@ namespace SFML
         {
             var watch = new Stopwatch();
             watch.Start();
-            
-            new VideoGame(
+
+            var game = new VideoGame(
                 new Config("Example"),
-                    new Scene("First", 
+                    new Scene("First",
                         new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite(),
                             new Physics(),
@@ -53,12 +53,16 @@ namespace SFML
                             new Sprite()
                         )
                     )
-            ).Run();
+            );
+
+            game.Run();
 
             watch.Stop();
             Console.WriteLine($"Total Videogame Time: " + watch.ElapsedMilliseconds + " ms");
 
             Console.WriteLine("Procesesor: " + Environment.ProcessorCount);
+
+            LocalData.Save("Example", game);
 
             /*string name = Test_Normal(100);
             string name2 = await Test_Task(100);

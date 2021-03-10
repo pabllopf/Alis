@@ -66,28 +66,25 @@
         <member name="M:Alis.Core.Component.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Component" /> class.</summary>
         </member>
-        <member name="M:Alis.Core.Component.Awake">
-            <summary>Awakes this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.OnEnable">
+        <member name="E:Alis.Core.Component.OnEnable">
             <summary>Called when [enable].</summary>
         </member>
         <member name="M:Alis.Core.Component.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.BeforeUpdate">
+        <member name="E:Alis.Core.Component.OnBeforeUpdate">
             <summary>Afters the update.</summary>
         </member>
         <member name="M:Alis.Core.Component.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Component.AfterUpdate">
+        <member name="E:Alis.Core.Component.OnAfterUpdate">
             <summary>Afters the update.</summary>
         </member>
-        <member name="M:Alis.Core.Component.OnDisable">
+        <member name="E:Alis.Core.Component.OnDisable">
             <summary>Called when [disable].</summary>
         </member>
-        <member name="M:Alis.Core.Component.OnDestroy">
+        <member name="E:Alis.Core.Component.OnDestroy">
             <summary>Called when [destroy].</summary>
         </member>
         <member name="T:Alis.Core.Physics">
@@ -155,17 +152,20 @@
         <member name="F:Alis.Core.GameObject.components">
             <summary>The components</summary>
         </member>
-        <member name="P:Alis.Core.GameObject.Name">
-            <summary>Gets or sets the name.</summary>
-            <value>The name.</value>
+        <member name="E:Alis.Core.GameObject.OnEnable">
+            <summary>Called when [enable].</summary>
         </member>
-        <member name="P:Alis.Core.GameObject.Transform">
-            <summary>Gets or sets the transform.</summary>
-            <value>The transform.</value>
+        <member name="E:Alis.Core.GameObject.OnBeforeUpdate">
+            <summary>Afters the update.</summary>
         </member>
-        <member name="P:Alis.Core.GameObject.Components">
-            <summary>Gets or sets the components.</summary>
-            <value>The components.</value>
+        <member name="E:Alis.Core.GameObject.OnAfterUpdate">
+            <summary>Afters the update.</summary>
+        </member>
+        <member name="E:Alis.Core.GameObject.OnDisable">
+            <summary>Called when [disable].</summary>
+        </member>
+        <member name="E:Alis.Core.GameObject.OnDestroy">
+            <summary>Called when [destroy].</summary>
         </member>
         <member name="M:Alis.Core.GameObject.#ctor(System.String)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.GameObject" /> class.</summary>
@@ -340,6 +340,18 @@
             <summary>Scenes the manager on add scene.</summary>
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="T:Alis.Core.Sprite">
+            <summary>Define a component</summary>
+        </member>
+        <member name="M:Alis.Core.Sprite.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Camera" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.Sprite.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Sprite.Update">
+            <summary>Updates this instance.</summary>
         </member>
         <member name="T:Alis.Core.Transform">
             <summary>Manage the position of the game object on a scene.</summary>
