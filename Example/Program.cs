@@ -1,4 +1,5 @@
 ﻿using Alis.Core;
+using Alis.Core.Components;
 using Alis.Tools;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace SFML
                             new Physics()
                         ),
 
-                        new GameObject("Player2", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                       new GameObject("Player2", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite()
                         ),
                         new GameObject("Player23", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),

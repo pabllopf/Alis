@@ -2,32 +2,36 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Component.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-namespace Alis.Core
+namespace Alis.Core.Components
 {
     using System;
     using Newtonsoft.Json;
 
     /// <summary>Define a component</summary>
-    public abstract class Component
+    public abstract class Component 
     {
-        /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
-        public Component() => OnCreate?.Invoke(null, true);
+        private GameObject gameObject;
 
-        ~Component() => OnDestroy?.Invoke(null, true);
+        [JsonIgnore]
+        public GameObject GameObject { get => gameObject; set => gameObject = value; }
+
+        /// <summary>Starts this instance.</summary>
+        public abstract void Start();
+
+        /// <summary>Updates this instance.</summary>
+        public abstract void Update();
 
         public event EventHandler<bool> OnCreate;
 
         /// <summary>Called when [enable].</summary>
         public event EventHandler<bool> OnEnable;
 
-        /// <summary>Starts this instance.</summary>
-        public new abstract void Start();
+        public event EventHandler<bool> OnStart;
 
         /// <summary>Afters the update.</summary>
         public event EventHandler<bool> OnBeforeUpdate;
 
-        /// <summary>Updates this instance.</summary>
-        public new abstract void Update();
+        public event EventHandler<bool> OnUpdate;
 
         /// <summary>Afters the update.</summary>
         public event EventHandler<bool> OnAfterUpdate;

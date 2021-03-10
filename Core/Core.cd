@@ -36,20 +36,23 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.GameObject">
-    <Position X="11.25" Y="2.25" Width="1.5" />
+    <Position X="11.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQBAAAAACAIAEAAAACABAAAACAEAAAMAAAAAEAACAA=</HashCode>
+      <HashCode>AAQBAAAAACAIAEAAAACABAQAACAEAAAMAAAAAEAACAA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="components" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Alis.Core.Collision">
+  <Class Name="Alis.Core.Components.Collision">
     <Position X="13" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Collision.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Sprite">
+  <Class Name="Alis.Core.Components.Sprite">
     <Position X="15" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -64,14 +67,14 @@
       <FileName>Transform.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Animator">
+  <Class Name="Alis.Core.Components.Animator">
     <Position X="21.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Animator.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.AudioSource">
+  <Class Name="Alis.Core.Components.AudioSource">
     <Position X="19.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -109,21 +112,24 @@
       <Property Name="Scenes" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Alis.Core.Component">
-    <Position X="15" Y="2.75" Width="1.5" />
+  <Class Name="Alis.Core.Components.Component">
+    <Position X="15" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQBAAAAACAAAEAAAAAAAAAAACAAAAAIAAAAAEAACAA=</HashCode>
+      <HashCode>AAQBAAAAACAAAEAAEAAAAAAAACAAAAAIAgAAAEMACAA=</HashCode>
       <FileName>Components\Component.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GameObject" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physics">
+  <Class Name="Alis.Core.Components.Physics">
     <Position X="17" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Components\Physics.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Camera">
+  <Class Name="Alis.Core.Components.Camera">
     <Position X="23.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

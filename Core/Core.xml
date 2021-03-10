@@ -12,91 +12,97 @@
             Get the path of the asset.
             </summary>
         </member>
-        <member name="T:Alis.Core.Animator">
+        <member name="T:Alis.Core.Components.Animator">
             <summary>Define a component</summary>
         </member>
-        <member name="M:Alis.Core.Animator.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Animator" /> class.</summary>
+        <member name="M:Alis.Core.Components.Animator.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Components.Animator" /> class.</summary>
         </member>
-        <member name="M:Alis.Core.Animator.Start">
+        <member name="M:Alis.Core.Components.Animator.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Animator.Update">
+        <member name="M:Alis.Core.Components.Animator.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="T:Alis.Core.AudioSource">
+        <member name="T:Alis.Core.Components.AudioSource">
             <summary>Define a component</summary>
         </member>
-        <member name="M:Alis.Core.AudioSource.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.AudioSource" /> class.</summary>
+        <member name="M:Alis.Core.Components.AudioSource.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Components.AudioSource" /> class.</summary>
         </member>
-        <member name="M:Alis.Core.AudioSource.Start">
+        <member name="M:Alis.Core.Components.AudioSource.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.AudioSource.Update">
+        <member name="M:Alis.Core.Components.AudioSource.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="T:Alis.Core.Camera">
+        <member name="T:Alis.Core.Components.Camera">
             <summary>Define a component</summary>
         </member>
-        <member name="M:Alis.Core.Camera.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Camera" /> class.</summary>
+        <member name="M:Alis.Core.Components.Camera.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Components.Camera" /> class.</summary>
         </member>
-        <member name="M:Alis.Core.Camera.Start">
+        <member name="M:Alis.Core.Components.Camera.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Camera.Update">
+        <member name="M:Alis.Core.Components.Camera.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="T:Alis.Core.Collision">
+        <member name="T:Alis.Core.Components.Collision">
             <summary>Define a component</summary>
         </member>
-        <member name="M:Alis.Core.Collision.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Collision" /> class.</summary>
+        <member name="M:Alis.Core.Components.Collision.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Components.Collision" /> class.</summary>
         </member>
-        <member name="M:Alis.Core.Collision.Start">
+        <member name="M:Alis.Core.Components.Collision.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Collision.Update">
+        <member name="M:Alis.Core.Components.Collision.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="T:Alis.Core.Component">
+        <member name="T:Alis.Core.Components.Component">
             <summary>Define a component</summary>
         </member>
-        <member name="M:Alis.Core.Component.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Component" /> class.</summary>
+        <member name="M:Alis.Core.Components.Component.Start">
+            <summary>Starts this instance.</summary>
         </member>
-        <member name="E:Alis.Core.Component.OnEnable">
+        <member name="M:Alis.Core.Components.Component.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="E:Alis.Core.Components.Component.OnEnable">
             <summary>Called when [enable].</summary>
         </member>
-        <member name="M:Alis.Core.Component.Start">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="E:Alis.Core.Component.OnBeforeUpdate">
+        <member name="E:Alis.Core.Components.Component.OnBeforeUpdate">
             <summary>Afters the update.</summary>
         </member>
-        <member name="M:Alis.Core.Component.Update">
-            <summary>Updates this instance.</summary>
-        </member>
-        <member name="E:Alis.Core.Component.OnAfterUpdate">
+        <member name="E:Alis.Core.Components.Component.OnAfterUpdate">
             <summary>Afters the update.</summary>
         </member>
-        <member name="E:Alis.Core.Component.OnDisable">
+        <member name="E:Alis.Core.Components.Component.OnDisable">
             <summary>Called when [disable].</summary>
         </member>
-        <member name="E:Alis.Core.Component.OnDestroy">
+        <member name="E:Alis.Core.Components.Component.OnDestroy">
             <summary>Called when [destroy].</summary>
         </member>
-        <member name="T:Alis.Core.Physics">
+        <member name="T:Alis.Core.Components.Physics">
             <summary>Define a component</summary>
         </member>
-        <member name="M:Alis.Core.Physics.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physics" /> class.</summary>
-        </member>
-        <member name="M:Alis.Core.Physics.Start">
+        <member name="M:Alis.Core.Components.Physics.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Physics.Update">
+        <member name="M:Alis.Core.Components.Physics.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Core.Components.Sprite">
+            <summary>Define a component</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Sprite.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Components.Camera" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Sprite.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Components.Sprite.Update">
             <summary>Updates this instance.</summary>
         </member>
         <member name="T:Alis.Core.Config">
@@ -172,7 +178,7 @@
             <param name="name">The name.</param>
             <param name="transform">The transform.</param>
         </member>
-        <member name="M:Alis.Core.GameObject.#ctor(System.String,Alis.Core.Transform,Alis.Core.Component[])">
+        <member name="M:Alis.Core.GameObject.#ctor(System.String,Alis.Core.Transform,Alis.Core.Components.Component[])">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.GameObject" /> class.</summary>
             <param name="name">The name.</param>
             <param name="transform">The transform.</param>
@@ -340,18 +346,6 @@
             <summary>Scenes the manager on add scene.</summary>
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
-        </member>
-        <member name="T:Alis.Core.Sprite">
-            <summary>Define a component</summary>
-        </member>
-        <member name="M:Alis.Core.Sprite.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Camera" /> class.</summary>
-        </member>
-        <member name="M:Alis.Core.Sprite.Start">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Sprite.Update">
-            <summary>Updates this instance.</summary>
         </member>
         <member name="T:Alis.Core.Transform">
             <summary>Manage the position of the game object on a scene.</summary>

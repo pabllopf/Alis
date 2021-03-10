@@ -7,10 +7,11 @@ namespace Alis.Core
     using System;
     using System.Collections.Generic;
     using System.Numerics;
+    using Alis.Core.Components;
     using Newtonsoft.Json;
 
     /// <summary>Define a game object. </summary>
-    public class GameObject
+    public  class GameObject
     {
         /// <summary>The name</summary>
         [JsonProperty]
@@ -27,8 +28,6 @@ namespace Alis.Core
         public string Name { get => name; set => name = value; }
         
         public Transform Transform { get => transform; set => transform = value; }
-        
-        public List<Component> Components { get => components; set => components = value; }
 
         public event EventHandler<bool> OnCreate;
 
@@ -65,7 +64,7 @@ namespace Alis.Core
         public GameObject(string name, Transform transform)
         {
             this.name = name ?? throw new ArgumentNullException(nameof(name));
-            transform = transform ?? throw new ArgumentNullException(nameof(transform));
+            this.transform = transform ?? throw new ArgumentNullException(nameof(transform));
             components = new List<Component>();
         }
 
@@ -77,7 +76,16 @@ namespace Alis.Core
         {
             this.name = name ?? throw new ArgumentNullException(nameof(name));
             this.transform = transform ?? throw new ArgumentNullException(nameof(transform));
-            this.components = new List<Component>(components ?? throw new ArgumentNullException(nameof(components)));
+            this.components = new List<Component>();
+
+            for (int index = 0; index < components.Length ; index++) 
+            {
+                if (this.components.Find(i => i.GetType().Equals(components[index].GetType())) is null) 
+                {
+                    components[index].GameObject = this;
+                    this.components.Add(components[index]);
+                }
+            }
         }
 
         public void AddComponent(Component component)
@@ -86,6 +94,7 @@ namespace Alis.Core
             {
                 if (!components[index].GetType().Equals(component.GetType()))
                 {
+                    component.GameObject = this;
                     components.Add(component);
                 }
             }
@@ -98,6 +107,7 @@ namespace Alis.Core
                 if (components[index].GetType().Equals(component.GetType()))
                 {
                     components.Remove(component);
+                    component.GameObject = null;
                 }
             }
         }
