@@ -14,7 +14,7 @@ namespace Alis.Core.Components
         private GameObject gameObject;
 
         /// <summary>The is enabled</summary>
-        private bool active;
+        private bool active = true;
 
         /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
         protected Component()

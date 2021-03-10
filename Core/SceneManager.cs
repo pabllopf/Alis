@@ -140,12 +140,18 @@ namespace Alis.Core
 
                 for (int i = init; i <= end - 1; i++)
                 {
-                    currentScene.GameObjects[i].Start();
+                    if (currentScene.GameObjects[i].Active)
+                    {
+                        currentScene.GameObjects[i].Start();
+                    }
                 }
 
                 if (isLast)
                 {
-                    currentScene.GameObjects[end].Start();
+                    if (currentScene.GameObjects[end].Active) 
+                    {
+                        currentScene.GameObjects[end].Start();
+                    }
                 }
 
                 watch.Stop();
@@ -211,12 +217,18 @@ namespace Alis.Core
 
                 for (int i = init; i <= end - 1; i++) 
                 {
-                    currentScene.GameObjects[i].Update();
+                    if (currentScene.GameObjects[i].Active) 
+                    {
+                        currentScene.GameObjects[i].Update();
+                    }
                 }
 
                 if (isLast) 
                 {
-                    currentScene.GameObjects[end].Update();
+                    if (currentScene.GameObjects[end].Active)
+                    {
+                        currentScene.GameObjects[end].Update();
+                    }
                 }
 
                 watch.Stop();

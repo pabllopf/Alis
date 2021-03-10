@@ -17,6 +17,9 @@ namespace Alis.Core
         [JsonProperty]
         private string name;
 
+        /// <summary>The active</summary>
+        private bool active = true;
+
         /// <summary>The transform</summary>
         [JsonProperty]
         private Transform transform;
@@ -93,12 +96,6 @@ namespace Alis.Core
         /// <summary>Called when [enable].</summary>
         public event EventHandler<bool> OnEnable;
 
-        /// <summary>After the update.</summary>
-        public event EventHandler<bool> OnBeforeUpdate;
-
-        /// <summary>After the update.</summary>
-        public event EventHandler<bool> OnAfterUpdate;
-
         /// <summary>Called when [disable].</summary>
         public event EventHandler<bool> OnDisable;
 
@@ -112,6 +109,26 @@ namespace Alis.Core
         /// <summary>Gets or sets the transform.</summary>
         /// <value>The transform.</value>
         public Transform Transform { get => transform; set => transform = value; }
+        
+        /// <summary>Gets or sets a value indicating whether this <see cref="GameObject" /> is active.</summary>
+        /// <value>
+        /// <c>true</c> if active; otherwise, <c>false</c>.</value>
+        public bool Active
+        {
+            get => active; 
+            set
+            {
+                active = value;
+                if (active)
+                {
+                    OnEnable?.Invoke(this, true);
+                }
+                else 
+                {
+                    OnDisable?.Invoke(this, true);
+                }
+            }
+        }
 
         /// <summary>Adds the component.</summary>
         /// <param name="component">The component.</param>
@@ -162,8 +179,11 @@ namespace Alis.Core
         {
             for (int index = 0; index < components.Count; index++) 
             {
-                components[index].Awake();
-                components[index].Start();
+                if (components[index].Active)
+                {
+                    components[index].Awake();
+                    components[index].Start();
+                }
             }
         }
 
@@ -172,9 +192,12 @@ namespace Alis.Core
         {
             for (int index = 0; index < components.Count; index++)
             {
-                components[index].BeforeUpdate();
-                components[index].Update();
-                components[index].AfterUpdate();
+                if (components[index].Active) 
+                {
+                    components[index].BeforeUpdate();
+                    components[index].Update();
+                    components[index].AfterUpdate();
+                }
             }
         }
     }
