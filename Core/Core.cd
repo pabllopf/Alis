@@ -38,9 +38,12 @@
   <Class Name="Alis.Core.GameObject">
     <Position X="11.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQBAAAAACAIAEAAAACABAQAACAEAAAMAAAAAEAACAA=</HashCode>
+      <HashCode>AAQBAAAAACAIAAAAAACABAQAACAEAAAsAAAAIAAACAA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Transform" />
+    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Field Name="components" />
     </ShowAsCollectionAssociation>
@@ -61,7 +64,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Transform">
-    <Position X="8.5" Y="6.5" Width="2.25" />
+    <Position X="8.75" Y="7.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAABAAQAAAAAgIAwCICAIAAAACCAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Transform.cs</FileName>
@@ -115,7 +118,7 @@
   <Class Name="Alis.Core.Components.Component">
     <Position X="15" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQhAAAAQCAAAAAAAAAACAAAACBAAEAoAgAgIAIACAA=</HashCode>
+      <HashCode>AAQhAAAAQCAAAAAAAAAACAAAACBAAEAoAgAgIAIACEA=</HashCode>
       <FileName>Components\Component.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -125,7 +128,7 @@
   <Class Name="Alis.Core.Components.Physics">
     <Position X="17" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAQCAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAQCAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Components\Physics.cs</FileName>
     </TypeIdentifier>
   </Class>
