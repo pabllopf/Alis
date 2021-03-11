@@ -2,14 +2,8 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Render.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-using Alis.Tools;
-using SFML.Graphics;
-using SFML.Window;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Alis.Core

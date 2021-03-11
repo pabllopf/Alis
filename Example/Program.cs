@@ -1,5 +1,4 @@
 ﻿using Alis.Core;
-using Alis.Core.Components;
 using Alis.Tools;
 using System;
 using System.Collections.Generic;
@@ -23,8 +22,8 @@ namespace SFML
 
             var game = new VideoGame(
                 new Config("Example"),
-                    new Scene("First",
-                        new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                    new Scene("First")
+                        /*new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite(),
                             new Physics(),
                             new Sprite(),
@@ -51,8 +50,8 @@ namespace SFML
                         ),
                         new GameObject("Player2474", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite()
-                        )
-                    )
+                        )*/
+                    
             );
 
             game.Run();
