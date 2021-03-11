@@ -4,6 +4,7 @@ var class_alis_1_1_core_1_1_scene_manager =
     [ "SceneManager", "class_alis_1_1_core_1_1_scene_manager.html#a4c2f62c5455b692855ecf7e286bd66b1", null ],
     [ "~SceneManager", "class_alis_1_1_core_1_1_scene_manager.html#a86825b9a201a29d19e06b3280f7a7f21", null ],
     [ "Start", "class_alis_1_1_core_1_1_scene_manager.html#a40245cd24ea6542842033bb3bd6cafd6", null ],
+    [ "ProcessGameObjectsStart", "class_alis_1_1_core_1_1_scene_manager.html#ab0df4d5312cf854ee8f0a99d7a185faa", null ],
     [ "Update", "class_alis_1_1_core_1_1_scene_manager.html#a715d6802aaff5274af9979b856952bc2", null ],
     [ "ProcessGameObjects", "class_alis_1_1_core_1_1_scene_manager.html#ad78d266701f8e15c8de21ba80dfa4872", null ],
     [ "SceneManager_OnCreate", "class_alis_1_1_core_1_1_scene_manager.html#a08925abf8cfb9a0ab354c012adddb630", null ],

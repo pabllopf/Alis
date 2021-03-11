@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['warning_1315',['Warning',['../class_alis_1_1_core_1_1_logger.html#a08cacb24576edab3a6897af17c56b65f',1,'Alis.Core.Logger.Warning()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a5d88f946aa81621b0a8d1ffd832ab220',1,'Alis.Editor.UI.Widgets.Console.Warning()']]],
-  ['widgetmanager_1316',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a46a106d3f3ef5a4c409d70a44132b63f',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
-  ['window_5fclosed_1317',['Window_Closed',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a7db139bec0841f028ca2a2488eeb668e',1,'Alis::Editor::UI::MainWindow']]],
-  ['window_5fclosing_1318',['Window_Closing',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a09ba700e6cf0125116b832220eaa673c',1,'Alis::Editor::UI::MainWindow']]],
-  ['window_5fmoved_1319',['Window_Moved',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad57b10d88f3d99a35b081d55e58234bf',1,'Alis::Editor::UI::MainWindow']]],
-  ['window_5fresized_1320',['Window_Resized',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a24e29ff5d83bcacb90d18536fdc5d6ce',1,'Alis::Editor::UI::MainWindow']]],
-  ['windowresized_1321',['WindowResized',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a22e8772d281981a0b595df87f9143fb3',1,'ImGuiNET::ImGuiController']]]
+  ['warning_1325',['Warning',['../class_alis_1_1_core_1_1_logger.html#a08cacb24576edab3a6897af17c56b65f',1,'Alis.Core.Logger.Warning()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a5d88f946aa81621b0a8d1ffd832ab220',1,'Alis.Editor.UI.Widgets.Console.Warning()']]],
+  ['widgetmanager_1326',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a46a106d3f3ef5a4c409d70a44132b63f',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
+  ['window_5fclosed_1327',['Window_Closed',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a7db139bec0841f028ca2a2488eeb668e',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fclosing_1328',['Window_Closing',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a09ba700e6cf0125116b832220eaa673c',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fmoved_1329',['Window_Moved',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad57b10d88f3d99a35b081d55e58234bf',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fresized_1330',['Window_Resized',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a24e29ff5d83bcacb90d18536fdc5d6ce',1,'Alis::Editor::UI::MainWindow']]],
+  ['windowresized_1331',['WindowResized',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a22e8772d281981a0b595df87f9143fb3',1,'ImGuiNET::ImGuiController']]]
 ];
