@@ -22,9 +22,9 @@ namespace SFML
 
             var game = new VideoGame(
                 new Config("Example"),
-                    new Scene("First")
-                        /*new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite(),
+                    new Scene("First",
+                        new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                           new Sprite(),
                             new Physics(),
                             new Sprite(),
                             new Physics()
@@ -50,8 +50,8 @@ namespace SFML
                         ),
                         new GameObject("Player2474", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite()
-                        )*/
-                    
+                        )
+                    )
             );
 
             game.Run();
@@ -62,6 +62,30 @@ namespace SFML
             Console.WriteLine("Procesesor: " + Environment.ProcessorCount);
 
             LocalData.Save("Example", game);
+
+            Console.WriteLine("\n");
+
+
+            var gameloaded = LocalData.Load<VideoGame>("Example");
+
+            watch = new Stopwatch();
+            watch.Start();
+            gameloaded.Run();
+
+            watch.Stop();
+            Console.WriteLine($"Total Videogame Loaded Time: " + watch.ElapsedMilliseconds + " ms");
+
+            Console.WriteLine("\n");
+
+
+
+            watch = new Stopwatch();
+            watch.Start();
+
+            VideoGame.LoadOfFile("Example");
+
+            watch.Stop();
+            Console.WriteLine($"Total Videogame Loaded of FILE Time: " + watch.ElapsedMilliseconds + " ms");
 
             /*string name = Test_Normal(100);
             string name2 = await Test_Task(100);

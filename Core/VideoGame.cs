@@ -9,59 +9,42 @@ namespace Alis.Core
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
+    using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Define the game.</summary>
-    [JsonObject(MemberSerialization.OptIn)]
     public class VideoGame
     {
-        /// <summary>The configuration</summary>
-        [JsonProperty]
+        /// <summary>The configuration</summary> 
+        [NotNull]
         private Config config;
 
         /// <summary>The scene manager</summary>
-        [JsonProperty]
+        [NotNull]
         private SceneManager sceneManager;
 
         /// <summary>The render</summary>
-        [JsonProperty]
+        [NotNull]
         private Render render;
 
         /// <summary>The input</summary>
-        [JsonProperty]
+        [NotNull]
         private Input input;
 
         /// <summary>The is running</summary>
-        [JsonProperty]
+        [NotNull]
         private bool isRunning;
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
-        /// <exception cref="ArgumentNullException">config null</exception>
+        /// <param name="scenes">The scene.</param>        
         [JsonConstructor]
-        public VideoGame([NotNull] Config config)
+        public VideoGame([NotNull] Config config, [NotNull] params Scene[] scenes)
         {
             this.config = config;
-            sceneManager = new SceneManager(new List<Scene>() { new Scene("Default") });
-            input = new Input();
-            render = new Render();
-            isRunning = true;
 
-            OnCreate += VideoGame_OnCreate;
-            OnStart += VideoGame_OnStart;
-            OnUpdate += VideoGame_OnUpdate;
-            OnDestroy += VideoGame_OnDestroy;
+            sceneManager = scenes is null ? new SceneManager() : new SceneManager(new List<Scene>(scenes));
 
-            OnCreate.Invoke(this, true);
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="scene">The scene.</param>
-        public VideoGame([NotNull] Config config, [NotNull] params Scene[] scene)
-        {
-            this.config = config;
-            sceneManager = new SceneManager(new List<Scene>(scene));
             input = new Input();
             render = new Render();
             isRunning = true;
@@ -91,26 +74,43 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
+        [NotNull]
+        [JsonProperty]
         public Config Config { get => config; set => config = value; }
 
         /// <summary>Gets or sets the render.</summary>
         /// <value>The render.</value>
+        [NotNull]
+        [JsonProperty]
         public Render Render { get => render; set => render = value; }
-        
+
         /// <summary>Gets or sets the input.</summary>
         /// <value>The input.</value>
+        [NotNull]
+        [JsonProperty]
         public Input Input { get => input; set => input = value; }
 
         /// <summary>Gets or sets the scene manager.</summary>
         /// <value>The scene manager.</value>
+        [NotNull]
+        [JsonProperty]
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
+
+        /// <summary>Loads the of file.</summary>
+        /// <param name="file">The file.</param>
+        public static void LoadOfFile(string file) 
+        {
+            LocalData.Load<VideoGame>(file).Run();
+        }
 
         /// <summary>Runs this instance.</summary>
         /// <returns>return true</returns>
+        [return: NotNull]
         public bool Run() => StartAsync().Result && UpdateAsync().Result;
 
         /// <summary>Starts the asynchronous.</summary>
         /// <returns>Start the videogame.</returns>
+        [return: NotNull]
         private async Task<bool> StartAsync()
         {
             return await Task.Run(() =>
@@ -133,6 +133,7 @@ namespace Alis.Core
 
         /// <summary>Updates the asynchronous.</summary>
         /// <returns>Update the videogame</returns>
+        [return: NotNull]
         private async Task<bool> UpdateAsync()
         {
             return await Task.Run(() =>

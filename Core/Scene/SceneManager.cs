@@ -12,20 +12,22 @@ namespace Alis.Core
     using Newtonsoft.Json;
 
     /// <summary>Manage the scenes of the videogame.</summary>
-    [JsonObject(MemberSerialization.OptIn)]
     public class SceneManager
     {
         /// <summary>The scenes</summary>
         [JsonProperty]
+        [NotNull]
         private List<Scene> scenes;
 
         /// <summary>The current scene</summary>
         [JsonProperty]
+        [NotNull]
         private Scene currentScene;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SceneManager"/> class.
         /// </summary>
+        [JsonConstructor]
         public SceneManager()
         {
             scenes = new List<Scene> { new Scene("Default") };
@@ -40,7 +42,6 @@ namespace Alis.Core
 
         /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
         /// <param name="scenes">The scenes.</param>
-        [JsonConstructor]
         public SceneManager([NotNull] List<Scene> scenes)
         {
             this.scenes = scenes;
@@ -67,14 +68,17 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the scenes.</summary>
         /// <value>The scenes.</value>
+        [NotNull]
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
 
         /// <summary>Gets or sets the current scene.</summary>
         /// <value>The current scene.</value>
+        [NotNull]
         public Scene CurrentScene { get => currentScene; set => currentScene = value; }
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
+        [return: NotNull]
         internal Task Start()
         {
             return Task.Run(() =>
@@ -93,6 +97,7 @@ namespace Alis.Core
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
+        [return: NotNull]
         internal Task Update()
         {
             return Task.Run(() =>
@@ -114,27 +119,27 @@ namespace Alis.Core
         /// <summary>Scenes the manager on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnCreate(object sender, bool e) => Logger.Info();
+        private void SceneManager_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDestroy(object sender, bool e) => Logger.Info();
+        private void SceneManager_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on load scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnLoadScene(object sender, bool e) => Logger.Info();
+        private void SceneManager_OnLoadScene([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on delete scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDeleteScene(object sender, bool e) => Logger.Info();
+        private void SceneManager_OnDeleteScene([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on add scene.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnAddScene(object sender, bool e) => Logger.Info();
+        private void SceneManager_OnAddScene([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
     }

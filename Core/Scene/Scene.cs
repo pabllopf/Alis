@@ -16,10 +16,12 @@ namespace Alis.Core
     {
         /// <summary>The name</summary>
         [JsonProperty]
+        [NotNull]
         private string name;
 
         /// <summary>The game objects</summary>
         [JsonProperty]
+        [NotNull]
         private List<GameObject> gameObjects;
 
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
@@ -73,15 +75,17 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
+        [NotNull]
         public string Name { get => name; set => name = value; }
 
         /// <summary>Gets or sets the game objects.</summary>
         /// <value>The game objects.</value>
+        [NotNull]
         public List<GameObject> GameObjects { get => gameObjects; set => gameObjects = value; }
 
         /// <summary>Adds the specified game object.</summary>
         /// <param name="gameObject">The game object.</param>
-        public void Add(GameObject gameObject) 
+        public void Add([NotNull] GameObject gameObject) 
         {
             if (gameObjects.Find(i => i.Name.Equals(gameObject.Name)) is null) 
             {
@@ -91,7 +95,7 @@ namespace Alis.Core
 
         /// <summary>Removes the specified game object.</summary>
         /// <param name="gameObject">The game object.</param>
-        public void Remove(GameObject gameObject) 
+        public void Remove([NotNull] GameObject gameObject) 
         {
             if (gameObjects.Find(i => i.Name.Equals(gameObject.Name)) != null)
             {
@@ -101,6 +105,7 @@ namespace Alis.Core
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
+        [return: NotNull]
         internal Task Start()
         {
             return Task.Run(() =>
@@ -143,6 +148,7 @@ namespace Alis.Core
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
+        [return: NotNull]
         internal Task Update()
         {
             return Task.Run(() =>
@@ -188,7 +194,8 @@ namespace Alis.Core
         /// <param name="end">The end.</param>
         /// <param name="isLast">if set to <c>true</c> [is last].</param>
         /// <returns>Return none.</returns>
-        private Task ProcessGameObjectsStart(int init, int end, bool isLast)
+        [return: NotNull]
+        private Task ProcessGameObjectsStart([NotNull] int init, [NotNull] int end, [NotNull] bool isLast)
         {
             return Task.Run(() =>
             {
@@ -223,7 +230,8 @@ namespace Alis.Core
         /// <param name="end">The end.</param>
         /// <param name="isLast">if set to <c>true</c> [is last].</param>
         /// <returns>Return none</returns>
-        private Task ProcessGameObjectsUpdate(int init, int end, bool isLast)
+        [return: NotNull]
+        private Task ProcessGameObjectsUpdate([NotNull] int init, [NotNull] int end, [NotNull] bool isLast)
         {
             return Task.Run(() =>
             {
@@ -258,12 +266,12 @@ namespace Alis.Core
         /// <summary>Scenes the on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Scene_OnCreate(object sender, bool e) => Logger.Info();
+        private void Scene_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Scenes the on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Scene_OnDestroy(object sender, bool e) => Logger.Info();
+        private void Scene_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
     }

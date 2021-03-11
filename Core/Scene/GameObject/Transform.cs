@@ -10,18 +10,22 @@ namespace Alis.Core
     using Newtonsoft.Json;
 
     /// <summary>Manage the position of the game object on a scene.</summary>
+    [JsonObject(MemberSerialization.OptIn)]
     public class Transform
     {
         /// <summary>The position</summary>
         [JsonProperty]
+        [NotNull]
         private Vector3 position;
 
         /// <summary>The rotation</summary>
         [JsonProperty]
+        [NotNull]
         private Vector3 rotation;
 
         /// <summary>The size</summary>
         [JsonProperty]
+        [NotNull]
         private Vector3 size;
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
@@ -97,6 +101,7 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the position.</summary>
         /// <value>The position.</value>
+        [NotNull]
         public Vector3 Position
         {
             get => position; 
@@ -109,6 +114,7 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the rotation.</summary>
         /// <value>The rotation.</value>
+        [NotNull]
         public Vector3 Rotation
         {
             get => rotation; 
@@ -121,6 +127,7 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the size.</summary>
         /// <value>The size.</value>
+        [NotNull]
         public Vector3 Size
         {
             get => size; 
@@ -136,27 +143,27 @@ namespace Alis.Core
         /// <summary>Transforms the on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Transform_OnCreate(object sender, bool e) => Logger.Info();
+        private void Transform_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Transforms the on position change.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Transform_OnPositionChange(object sender, bool e) => Logger.Info();
+        private void Transform_OnPositionChange([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Transforms the on rotation change.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Transform_OnRotationChange(object sender, bool e) => Logger.Info();
+        private void Transform_OnRotationChange([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Transforms the on size change.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Transform_OnSizeChange(object sender, bool e) => Logger.Info();
+        private void Transform_OnSizeChange([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Transforms the on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Transform_OnDestroy(object sender, bool e) => Logger.Info();
+        private void Transform_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
     }

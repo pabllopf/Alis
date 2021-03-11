@@ -5,17 +5,20 @@
 namespace Alis.Core
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using Newtonsoft.Json;
 
     /// <summary>Define a component</summary>
     public abstract class Component 
     {
         /// <summary>The game object</summary>
+        [NotNull]
         [JsonIgnore]
         private GameObject gameObject;
 
         /// <summary>The is enabled</summary>
         [JsonProperty]
+        [NotNull]
         private bool active = true;
 
         /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
@@ -52,13 +55,10 @@ namespace Alis.Core
         /// <summary>Occurs when [on destroy].</summary>
         public event EventHandler<bool> OnDestroy;
 
-        /// <summary>Gets or sets the game object.</summary>
-        /// <value>The game object.</value>
-        public GameObject GameObject { get => gameObject; set => gameObject = value; }
-
         /// <summary>Gets or sets a value indicating whether this <see cref="Component" /> is active.</summary>
         /// <value>
         /// <c>true</c> if active; otherwise, <c>false</c>.</value>
+        [NotNull]
         public bool Active
         {
             get => active; 
@@ -119,27 +119,34 @@ namespace Alis.Core
         {
         }
 
+        /// <summary>Attaches to.</summary>
+        /// <param name="gameObject">The game object.</param>
+        internal void AttachTo([NotNull] GameObject gameObject) 
+        {
+            this.gameObject = gameObject;
+        }
+
         #region DefineEvents
 
         /// <summary>Components the on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Component_OnCreate(object sender, bool e) => Logger.Info();
+        private void Component_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Components the on enable.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Component_OnEnable(object sender, bool e) => Logger.Info();
+        private void Component_OnEnable([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Components the on disable.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Component_OnDisable(object sender, bool e) => Logger.Info();
+        private void Component_OnDisable([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Components the on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Component_OnDestroy(object sender, bool e) => Logger.Info();
+        private void Component_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
     }

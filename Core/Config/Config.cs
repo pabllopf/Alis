@@ -13,8 +13,7 @@ namespace Alis.Core
     public class Config 
     {
         /// <summary>The name</summary>
-        [NotNull]
-        [JsonProperty]
+        [NotNull]      
         private string name;
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
@@ -46,6 +45,7 @@ namespace Alis.Core
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>  
         [NotNull]
+        [JsonProperty]
         public string Name
         {
             get => name;

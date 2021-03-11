@@ -9,7 +9,7 @@
     </AssociationLine>
     <AssociationLine Name="Input" Type="Alis.Core.Input" ManuallyRouted="true">
       <Path>
-        <Point X="4.219" Y="6.641" />
+        <Point X="4.219" Y="6.833" />
         <Point X="4.219" Y="7.458" />
         <Point X="3.942" Y="7.458" />
         <Point X="3.942" Y="9.115" />
@@ -17,7 +17,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAHAAAIAgAAAABAEAAAAAAgECAAABgAARAABAEQAgY=</HashCode>
+      <HashCode>AAQHAAAIAgAAAABAEAAAAAAgECAAABgAARAABAEQAgY=</HashCode>
       <FileName>VideoGame.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -47,7 +47,7 @@
   <Class Name="Alis.Core.GameObject">
     <Position X="12.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQBAAgAQCAIAAAAAACAJAQAACAGAAAsAAAAIAAACAA=</HashCode>
+      <HashCode>AAQBAAgAQCAIAIAAAACAJAQAACAGAAAsAAAAIAAACAA=</HashCode>
       <FileName>Scene\GameObject\GameObject.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -124,12 +124,9 @@
   <Class Name="Alis.Core.Component">
     <Position X="15.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQhABAAQCAAAIAAAAAACAACACBAAEAoAgAgIQIACEA=</HashCode>
+      <HashCode>AAQhABAAQCAAAIAAAAAACAQCACBAAEAoAgAgIQAACEA=</HashCode>
       <FileName>Scene\GameObject\Component\Component.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="GameObject" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physics">
     <Position X="17.5" Y="8.5" Width="1.5" />

@@ -14,18 +14,22 @@ namespace Alis.Core
     {
         /// <summary>The name</summary>
         [JsonProperty]
+        [NotNull]
         private string name;
 
         /// <summary>The active</summary>
         [JsonProperty]
+        [NotNull]
         private bool active = true;
 
         /// <summary>The transform</summary>
         [JsonProperty]
+        [NotNull]
         private Transform transform;
 
         /// <summary>The components</summary>
         [JsonProperty]
+        [NotNull]
         private List<Component> components;
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -95,7 +99,7 @@ namespace Alis.Core
             {
                 if (this.components.Find(i => i.GetType().Equals(components[index].GetType())) is null) 
                 {
-                    components[index].GameObject = this;
+                    components[index].AttachTo(this);
                     this.components.Add(components[index]);
                 }
             }
@@ -125,15 +129,18 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
+        [NotNull]
         public string Name { get => name; set => name = value; }
 
         /// <summary>Gets or sets the transform.</summary>
         /// <value>The transform.</value>
+        [NotNull]
         public Transform Transform { get => transform; set => transform = value; }
-        
+
         /// <summary>Gets or sets a value indicating whether this <see cref="GameObject" /> is active.</summary>
         /// <value>
         /// <c>true</c> if active; otherwise, <c>false</c>.</value>
+        [NotNull]
         public bool Active
         {
             get => active; 
@@ -151,15 +158,20 @@ namespace Alis.Core
             }
         }
 
+        /// <summary>Gets or sets the components.</summary>
+        /// <value>The components.</value>
+        [NotNull]
+        public List<Component> Components { get => components; }
+
         /// <summary>Adds the component.</summary>
         /// <param name="component">The component.</param>
-        public void AddComponent(Component component)
+        public void AddComponent([NotNull] Component component)
         {
             for (int index = 0; index < components.Count; index++)
             {
                 if (!components[index].GetType().Equals(component.GetType()))
                 {
-                    component.GameObject = this;
+                    component.AttachTo(this);
                     components.Add(component);
                 }
             }
@@ -167,7 +179,7 @@ namespace Alis.Core
 
         /// <summary>Removes the component.</summary>
         /// <param name="component">The component.</param>
-        public void RemoveComponent(Component component)
+        public void RemoveComponent([NotNull] Component component)
         {
             for (int index = 0; index < components.Count; index++)
             {
@@ -181,6 +193,7 @@ namespace Alis.Core
         /// <summary>Gets the component.</summary>
         /// <typeparam name="T">general type</typeparam>
         /// <returns>Return the component</returns>
+        [return: MaybeNull]
         public T? GetComponent<T>() where T : Component
         {
             for (int index = 0; index < components.Count; index++) 
@@ -195,6 +208,7 @@ namespace Alis.Core
         }
 
         /// <summary>Starts this instance.</summary>
+        [return: NotNull]
         internal void Start()
         {
             for (int index = 0; index < components.Count; index++) 
@@ -208,6 +222,7 @@ namespace Alis.Core
         }
 
         /// <summary>Updates this instance.</summary>
+        [return: NotNull]
         internal void Update()
         {
             for (int index = 0; index < components.Count; index++)
@@ -226,22 +241,22 @@ namespace Alis.Core
         /// <summary>Games the object on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void GameObject_OnCreate(object sender, bool e) => Logger.Info();
+        private void GameObject_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Games the object on enable.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void GameObject_OnEnable(object sender, bool e) => Logger.Info();
+        private void GameObject_OnEnable([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Games the object on disable.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void GameObject_OnDisable(object sender, bool e) => Logger.Info();
+        private void GameObject_OnDisable([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Games the object on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void GameObject_OnDestroy(object sender, bool e) => Logger.Info();
+        private void GameObject_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
     }
