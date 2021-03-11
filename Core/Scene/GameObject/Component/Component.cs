@@ -11,12 +11,15 @@ namespace Alis.Core
     public abstract class Component 
     {
         /// <summary>The game object</summary>
+        [JsonIgnore]
         private GameObject gameObject;
 
         /// <summary>The is enabled</summary>
+        [JsonProperty]
         private bool active = true;
 
         /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
+        [JsonConstructor]
         protected Component()
         {
             gameObject = new GameObject();
@@ -51,13 +54,11 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the game object.</summary>
         /// <value>The game object.</value>
-        [JsonIgnore]
         public GameObject GameObject { get => gameObject; set => gameObject = value; }
 
         /// <summary>Gets or sets a value indicating whether this <see cref="Component" /> is active.</summary>
         /// <value>
         /// <c>true</c> if active; otherwise, <c>false</c>.</value>
-        [JsonProperty]
         public bool Active
         {
             get => active; 
