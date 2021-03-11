@@ -5,6 +5,7 @@
 namespace Alis.Core
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using Newtonsoft.Json;
     
     /// <summary>Define the config of videogame</summary>
@@ -12,22 +13,22 @@ namespace Alis.Core
     public class Config 
     {
         /// <summary>The name</summary>
+        [NotNull]
+        [JsonProperty]
         private string name;
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="name">The name of videogame.</param>
         [JsonConstructor]
-        public Config(string name)
+        public Config([NotNull] string name)
         {
-            Logger.Info();
-
-            this.name = name ?? throw new ArgumentNullException(nameof(name));
+            this.name = name;
 
             OnCreate += Config_OnCreate;
             OnDestroy += Config_OnDestroy;
             OnChangeName += Config_OnChangeName;
 
-            OnCreate?.Invoke(null, true);
+            OnCreate.Invoke(this, true);
         }
 
         /// <summary>Finalizes an instance of the <see cref="Config" /> class.</summary>
@@ -43,15 +44,15 @@ namespace Alis.Core
         public event EventHandler<bool> OnChangeName;
 
         /// <summary>Gets or sets the name.</summary>
-        /// <value>The name.</value>
-        [JsonProperty]
+        /// <value>The name.</value>  
+        [NotNull]
         public string Name
         {
             get => name;
             set
             {
-                OnChangeName?.Invoke(null, true);
                 name = value;
+                OnChangeName.Invoke(this, true);
             }
         }
 
@@ -60,17 +61,17 @@ namespace Alis.Core
         /// <summary>Configurations the on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnCreate(object sender, bool e) => Logger.Info();
+        private void Config_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Configurations the on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnDestroy(object sender, bool e) => Logger.Info();
+        private void Config_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Configurations the name of the on change.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnChangeName(object sender, bool e) => Logger.Info();
+        private void Config_OnChangeName([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
     }

@@ -52,6 +52,10 @@ namespace Alis.Core
 
                 Task.Delay(1000).Wait();
 
+                ConsoleKeyInfo key = Console.ReadKey();
+
+                Console.WriteLine("Press:" + key.KeyChar);
+
                 watch.Stop();
                 Console.WriteLine($"  Time to PULL: " + watch.ElapsedMilliseconds + " ms");
             });

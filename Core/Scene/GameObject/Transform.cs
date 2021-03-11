@@ -62,7 +62,7 @@ namespace Alis.Core
         /// <param name="rotation">The rotation.</param>
         /// <param name="size">The size.</param>
         [JsonConstructor]
-        public Transform([NotNull]Vector3 position, [NotNull]Vector3 rotation, [NotNull]Vector3 size)
+        public Transform([NotNull] Vector3 position, [NotNull] Vector3 rotation, [NotNull] Vector3 size)
         {
             this.position = position;
             this.rotation = rotation;
@@ -78,10 +78,7 @@ namespace Alis.Core
         }
 
         /// <summary>Finalizes an instance of the <see cref="Transform" /> class.</summary>
-        ~Transform()
-        {
-            OnDestroy.Invoke(this, true);
-        }
+        ~Transform() => OnDestroy.Invoke(this, true);
 
         /// <summary>Occurs when [change].</summary>
         public event EventHandler<bool> OnCreate;

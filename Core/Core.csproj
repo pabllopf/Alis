@@ -29,5 +29,14 @@
   <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
     <Copy SourceFiles="@(AssetsSourceFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
   </Target>
+  <ItemGroup>
+    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="VideoGame.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+  </ItemGroup>
   
 </Project>

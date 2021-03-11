@@ -7,6 +7,7 @@ namespace Alis.Core
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
 
@@ -15,63 +16,66 @@ namespace Alis.Core
     public class VideoGame
     {
         /// <summary>The configuration</summary>
+        [JsonProperty]
         private Config config;
 
         /// <summary>The scene manager</summary>
+        [JsonProperty]
         private SceneManager sceneManager;
-       
+
         /// <summary>The render</summary>
+        [JsonProperty]
         private Render render;
 
         /// <summary>The input</summary>
+        [JsonProperty]
         private Input input;
 
         /// <summary>The is running</summary>
+        [JsonProperty]
         private bool isRunning;
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
         /// <exception cref="ArgumentNullException">config null</exception>
         [JsonConstructor]
-        public VideoGame(Config config)
+        public VideoGame([NotNull] Config config)
         {
-            Logger.Info();
-
-            this.config = config ?? throw new ArgumentNullException(nameof(config));
-
-            this.sceneManager = new SceneManager(new List<Scene>() { new Scene("Default") });
-
-            this.input = new Input();
-
-            this.render = new Render();
-
+            this.config = config;
+            sceneManager = new SceneManager(new List<Scene>() { new Scene("Default") });
+            input = new Input();
+            render = new Render();
             isRunning = true;
 
-            InitEvents();
+            OnCreate += VideoGame_OnCreate;
+            OnStart += VideoGame_OnStart;
+            OnUpdate += VideoGame_OnUpdate;
+            OnDestroy += VideoGame_OnDestroy;
+
+            OnCreate.Invoke(this, true);
         }
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
         /// <param name="scene">The scene.</param>
-        public VideoGame(Config config, params Scene[] scene)
+        public VideoGame([NotNull] Config config, [NotNull] params Scene[] scene)
         {
-            Logger.Info();
-
-            this.config = config ?? throw new ArgumentNullException(nameof(config));
-
-            this.sceneManager = new SceneManager(new List<Scene>(scene ?? throw new ArgumentNullException(nameof(scene))));
-
-            this.input = new Input();
-
-            this.render = new Render();
-
+            this.config = config;
+            sceneManager = new SceneManager(new List<Scene>(scene));
+            input = new Input();
+            render = new Render();
             isRunning = true;
 
-            InitEvents();
+            OnCreate += VideoGame_OnCreate;
+            OnStart += VideoGame_OnStart;
+            OnUpdate += VideoGame_OnUpdate;
+            OnDestroy += VideoGame_OnDestroy;
+
+            OnCreate.Invoke(this, true);
         }
 
         /// <summary>Finalizes an instance of the <see cref="VideoGame" /> class.</summary>
-        ~VideoGame() => OnDestroy?.Invoke(null, true);
+        ~VideoGame() => OnDestroy.Invoke(this, true);
 
         /// <summary>Occurs when [change].</summary>
         public event EventHandler<bool> OnCreate;
@@ -87,25 +91,22 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
-        [JsonProperty]
         public Config Config { get => config; set => config = value; }
 
         /// <summary>Gets or sets the render.</summary>
         /// <value>The render.</value>
-        [JsonProperty]
         public Render Render { get => render; set => render = value; }
         
         /// <summary>Gets or sets the input.</summary>
         /// <value>The input.</value>
-        [JsonProperty]
         public Input Input { get => input; set => input = value; }
 
         /// <summary>Gets or sets the scene manager.</summary>
         /// <value>The scene manager.</value>
-        [JsonProperty]
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
 
         /// <summary>Runs this instance.</summary>
+        /// <returns>return true</returns>
         public bool Run() => StartAsync().Result && UpdateAsync().Result;
 
         /// <summary>Starts the asynchronous.</summary>
@@ -119,12 +120,9 @@ namespace Alis.Core
 
                 Task.Delay(1000).Wait();
 
-                Task.WaitAll
-                (
-                    input.Start(),
-                    render.Start(),
-                    sceneManager.Start()
-                );
+                OnStart.Invoke(this, true);
+
+                Task.WaitAll(input.Start(), render.Start(), sceneManager.Start());
 
                 watch.Stop();
                 Console.WriteLine($" Time to Start Videogame: " + watch.ElapsedMilliseconds + " ms");
@@ -146,12 +144,9 @@ namespace Alis.Core
                 {
                     Task.Delay(1000).Wait();
 
-                    Task.WaitAll
-                    (
-                        input.Update(),
-                        render.Update(),
-                        sceneManager.Update()
-                    );
+                    OnUpdate.Invoke(this, true);
+
+                    Task.WaitAll(input.Update(), render.Update(), sceneManager.Update());
 
                     isRunning = false;
                 }
@@ -163,70 +158,29 @@ namespace Alis.Core
             });
         }
 
-
-        /*
-        /// <summary>Runs this instance.</summary>
-        /// <returns>Return the value</returns>
-        public bool Run()
-        {
-            Logger.Info();
-            return Start() && Update();
-        }*/
-
-        /*
-        /// <summary>Starts this instance.</summary>
-        /// <returns>Return false if fail something.</returns>
-        private bool Start()
-        {
-            Logger.Info();
-            
-            OnStart?.Invoke(null, true);
-
-            return true;
-        }
-
-        /// <summary>Updates this instance.</summary>
-        /// <returns>Return false if fail something.</returns>
-        private bool Update()
-        {
-            isRunning = true;
-            while (isRunning) 
-            {
-                OnUpdate?.Invoke(null, true);
-
-                input.Update();
-                sceneManager.Update();
-            }
-
-            return true;
-        }*/
-
         #region Events
-
-        /// <summary>Initializes the events.</summary>
-        private void InitEvents() 
-        {
-            OnCreate += VideoGame_OnCreate;
-            OnStart += VideoGame_OnStart;
-            OnDestroy += VideoGame_OnDestroy;
-
-            OnCreate?.Invoke(null, true);
-        }
 
         /// <summary>Video the game on create.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void VideoGame_OnCreate(object sender, bool e) => Logger.Info();
+        private void VideoGame_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Video the game on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void VideoGame_OnDestroy(object sender, bool e) => Logger.Info();
+        private void VideoGame_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Video the game on start.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void VideoGame_OnStart(object sender, bool e) => Logger.Info();
+        private void VideoGame_OnStart([NotNull] object sender, [NotNull] bool e) => Logger.Info();
+
+        /// <summary>Video the game on update.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void VideoGame_OnUpdate([NotNull] object sender, [NotNull] bool e)
+        {
+        }
 
         #endregion
     }

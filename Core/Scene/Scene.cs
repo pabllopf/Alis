@@ -4,35 +4,72 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Threading.Tasks;
     using Newtonsoft.Json;
 
     /// <summary>Define a scene.</summary>
     public class Scene
     {
         /// <summary>The name</summary>
+        [JsonProperty]
         private string name;
 
         /// <summary>The game objects</summary>
+        [JsonProperty]
         private List<GameObject> gameObjects;
+
+        /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
+        public Scene()
+        {
+            name = "Default Scene";
+            gameObjects = new List<GameObject>();
+
+            OnCreate += Scene_OnCreate;
+            OnDestroy += Scene_OnDestroy;
+
+            OnCreate.Invoke(this, true);
+        }
 
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
         /// <param name="name">The name.</param>
         [JsonConstructor]
-        public Scene(string name)
+        public Scene([NotNull] string name)
         {
             this.name = name;
             gameObjects = new List<GameObject>();
+
+            OnCreate += Scene_OnCreate;
+            OnDestroy += Scene_OnDestroy;
+
+            OnCreate.Invoke(this, true);
         }
 
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
         /// <param name="name">The name.</param>
-        /// <param name="gameObject">The game object.</param>
-        public Scene(string name, params GameObject[] gameObject)
+        /// <param name="gameObjects">The game objects.</param>
+        public Scene([NotNull] string name, [NotNull] params GameObject[] gameObjects)
         {
             this.name = name;
-            gameObjects = new List<GameObject>(gameObject);
+            this.gameObjects = new List<GameObject>(gameObjects);
+
+            OnCreate += Scene_OnCreate;
+            OnDestroy += Scene_OnDestroy;
+
+            OnCreate.Invoke(this, true);
         }
+
+        /// <summary>Finalizes an instance of the <see cref="Scene" /> class.</summary>
+        ~Scene() => OnDestroy.Invoke(this, true);
+
+        /// <summary>Occurs when [on create].</summary>
+        public event EventHandler<bool> OnCreate;
+
+        /// <summary>Called when [destroy].</summary>
+        public event EventHandler<bool> OnDestroy;
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
@@ -46,29 +83,9 @@ namespace Alis.Core
         /// <param name="gameObject">The game object.</param>
         public void Add(GameObject gameObject) 
         {
-            if (!gameObjects.Contains(gameObject))
+            if (gameObjects.Find(i => i.Name.Equals(gameObject.Name)) is null) 
             {
-                GameObject obj = gameObjects.Find(i => i.Name.Equals(gameObject.Name));
-
-                if (obj != null)
-                {
-                    int i = 0;
-                    while (gameObjects.Find(j => j.Name.Equals(obj.Name + " " + i)) != null)
-                    {
-                        i++;
-                    }
-
-                    gameObject.Name += " " + i;
-                    gameObjects.Add(gameObject);
-                }
-                else 
-                {
-                    gameObjects.Add(gameObject);
-                }
-            }
-            else 
-            {
-                
+                gameObjects.Add(gameObject);
             }
         }
 
@@ -76,35 +93,178 @@ namespace Alis.Core
         /// <param name="gameObject">The game object.</param>
         public void Remove(GameObject gameObject) 
         {
-            if (gameObjects.Contains(gameObject))
+            if (gameObjects.Find(i => i.Name.Equals(gameObject.Name)) != null)
             {
                 gameObjects.Remove(gameObject);
             }
         }
 
         /// <summary>Starts this instance.</summary>
-        public void Start() 
+        /// <returns>Return none</returns>
+        internal Task Start()
         {
-            //gameObjects.ForEach(i => i.Start());
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+
+                Task.Delay(1000).Wait();
+
+                int numTask = (gameObjects.Count / Environment.ProcessorCount) + 1;
+                List<Task> tasks = new List<Task>(numTask);
+
+                int index = 0;
+
+                for (int i = 0; i < gameObjects.Count; i++)
+                {
+                    if (index == numTask)
+                    {
+                        tasks.Add(ProcessGameObjectsStart(i - index, i, false));
+                        index = 0;
+                    }
+                    else
+                    {
+                        if (i == gameObjects.Count - 1)
+                        {
+                            tasks.Add(ProcessGameObjectsStart(i - index, i, true));
+                            index = 0;
+                        }
+                    }
+
+                    index++;
+                }
+
+                Task.WaitAll(tasks.ToArray());
+
+                watch.Stop();
+                Console.WriteLine($"  Time to Start scene loaded: " + watch.ElapsedMilliseconds + " ms");
+            });
         }
 
         /// <summary>Updates this instance.</summary>
-        public void Update()
+        /// <returns>Return none</returns>
+        internal Task Update()
         {
-            /*await Task.Run(()=> 
+            return Task.Run(() =>
             {
-                List<Task> tasks = new List<Task>();
+                var watch = new Stopwatch();
+                watch.Start();
 
-                foreach (GameObject gameObject in gameObjects)
+                Task.Delay(1000).Wait();
+
+                int numTask = (gameObjects.Count / Environment.ProcessorCount) + 1;
+                List<Task> tasks = new List<Task>(numTask);
+
+                int index = 0;
+
+                for (int i = 0; i < gameObjects.Count; i++)
                 {
-                    tasks.Add(GameObjectAsync(gameObject));
+                    if (index == numTask)
+                    {
+                        tasks.Add(ProcessGameObjectsUpdate(i - index, i, false));
+                        index = 0;
+                    }
+                    else
+                    {
+                        if (i == gameObjects.Count - 1)
+                        {
+                            tasks.Add(ProcessGameObjectsUpdate(i - index, i, true));
+                            index = 0;
+                        }
+                    }
+
+                    index++;
                 }
 
-                Logger.Log("Num of gameobjects task: " + tasks.Count);
-                Task.WhenAll(tasks).Wait();
-            });*/
+                Task.WaitAll(tasks.ToArray());
+
+                watch.Stop();
+                Console.WriteLine($"  Time to Update scene loaded: " + watch.ElapsedMilliseconds + " ms");
+            });
         }
 
-        //private async Task GameObjectAsync(GameObject gameObject) => await gameObject.Update();
+        /// <summary>Processes the game objects start.</summary>
+        /// <param name="init">The initialize.</param>
+        /// <param name="end">The end.</param>
+        /// <param name="isLast">if set to <c>true</c> [is last].</param>
+        /// <returns>Return none.</returns>
+        private Task ProcessGameObjectsStart(int init, int end, bool isLast)
+        {
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+
+                Task.Delay(1000).Wait();
+
+                for (int i = init; i <= end - 1; i++)
+                {
+                    if (gameObjects[i].Active)
+                    {
+                        gameObjects[i].Start();
+                    }
+                }
+
+                if (isLast)
+                {
+                    if (gameObjects[end].Active)
+                    {
+                        gameObjects[end].Start();
+                    }
+                }
+
+                watch.Stop();
+                Console.WriteLine($"    Time to start the GameObjects: " + watch.ElapsedMilliseconds + " ms");
+            });
+        }
+
+        /// <summary>Processes the game objects update.</summary>
+        /// <param name="init">The initialize.</param>
+        /// <param name="end">The end.</param>
+        /// <param name="isLast">if set to <c>true</c> [is last].</param>
+        /// <returns>Return none</returns>
+        private Task ProcessGameObjectsUpdate(int init, int end, bool isLast)
+        {
+            return Task.Run(() =>
+            {
+                var watch = new Stopwatch();
+                watch.Start();
+
+                Task.Delay(1000).Wait();
+
+                for (int i = init; i <= end - 1; i++)
+                {
+                    if (gameObjects[i].Active)
+                    {
+                        gameObjects[i].Update();
+                    }
+                }
+
+                if (isLast)
+                {
+                    if (gameObjects[end].Active)
+                    {
+                        gameObjects[end].Update();
+                    }
+                }
+
+                watch.Stop();
+                Console.WriteLine($"    Time to update the GameObjects: " + watch.ElapsedMilliseconds + " ms");
+            });
+        }
+
+        #region DefineEvents
+
+        /// <summary>Scenes the on create.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Scene_OnCreate(object sender, bool e) => Logger.Info();
+
+        /// <summary>Scenes the on destroy.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Scene_OnDestroy(object sender, bool e) => Logger.Info();
+
+        #endregion
     }
 }

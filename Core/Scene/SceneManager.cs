@@ -7,6 +7,7 @@ namespace Alis.Core
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
 
@@ -15,29 +16,48 @@ namespace Alis.Core
     public class SceneManager
     {
         /// <summary>The scenes</summary>
+        [JsonProperty]
         private List<Scene> scenes;
 
         /// <summary>The current scene</summary>
+        [JsonProperty]
         private Scene currentScene;
 
-        /// <summary>Gets or sets the scenes.</summary>
-        /// <value>The scenes.</value>
-        [JsonProperty]
-        public List<Scene> Scenes { get => scenes; set => scenes = value; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneManager"/> class.
+        /// </summary>
+        public SceneManager()
+        {
+            scenes = new List<Scene> { new Scene("Default") };
+            currentScene = scenes[0];
 
-        /// <summary>Gets or sets the current scene.</summary>
-        /// <value>The current scene.</value>
-        [JsonProperty]
-        public Scene CurrentScene { get => currentScene; set => currentScene = value; }
+            OnCreate += SceneManager_OnCreate;
+            OnLoadScene += SceneManager_OnLoadScene;
+            OnDestroy += SceneManager_OnDestroy;
+
+            OnCreate.Invoke(null, true);
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
+        /// <param name="scenes">The scenes.</param>
+        [JsonConstructor]
+        public SceneManager([NotNull] List<Scene> scenes)
+        {
+            this.scenes = scenes;
+            currentScene = scenes[0];
+
+            OnCreate += SceneManager_OnCreate;
+            OnLoadScene += SceneManager_OnLoadScene;
+            OnDestroy += SceneManager_OnDestroy;
+
+            OnCreate.Invoke(null, true);
+        }
+
+        /// <summary>Finalizes an instance of the <see cref="SceneManager" /> class.</summary>
+        ~SceneManager() => OnDestroy.Invoke(null, true);
 
         /// <summary>Occurs when [change].</summary>
         public event EventHandler<bool> OnCreate;
-
-        /// <summary>Occurs when [on add scene].</summary>
-        public event EventHandler<bool> OnAddScene;
-
-        /// <summary>Occurs when [on delete scene].</summary>
-        public event EventHandler<bool> OnDeleteScene;
 
         /// <summary>Occurs when [on load scene].</summary>
         public event EventHandler<bool> OnLoadScene;
@@ -45,49 +65,16 @@ namespace Alis.Core
         /// <summary>Occurs when [change].</summary>
         public event EventHandler<bool> OnDestroy;
 
-        /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
-        /// <param name="scenes">The scenes.</param>
-        [JsonConstructor]
-        public SceneManager(List<Scene> scenes)
-        {
-            Logger.Info();
+        /// <summary>Gets or sets the scenes.</summary>
+        /// <value>The scenes.</value>
+        public List<Scene> Scenes { get => scenes; set => scenes = value; }
 
-            this.scenes = scenes ?? throw new ArgumentNullException(nameof(scenes));
+        /// <summary>Gets or sets the current scene.</summary>
+        /// <value>The current scene.</value>
+        public Scene CurrentScene { get => currentScene; set => currentScene = value; }
 
-            OnCreate += SceneManager_OnCreate;
-            OnAddScene += SceneManager_OnAddScene;
-            OnDeleteScene += SceneManager_OnDeleteScene;
-            OnLoadScene += SceneManager_OnLoadScene;
-            OnDestroy += SceneManager_OnDestroy;
-
-            OnCreate.Invoke(null, true);
-
-            currentScene = scenes[0];
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SceneManager"/> class.
-        /// </summary>
-        public SceneManager()
-        {
-            Logger.Info();
-
-            scenes = new List<Scene> { new Scene("Default") };
-
-            OnCreate += SceneManager_OnCreate;
-            OnAddScene += SceneManager_OnAddScene;
-            OnDeleteScene += SceneManager_OnDeleteScene;
-            OnLoadScene += SceneManager_OnLoadScene;
-            OnDestroy += SceneManager_OnDestroy;
-
-            OnCreate.Invoke(null, true);
-
-            currentScene = scenes[0];
-        }
-
-        /// <summary>Finalizes an instance of the <see cref="SceneManager" /> class.</summary>
-        ~SceneManager() => OnDestroy?.Invoke(null, true);
-
+        /// <summary>Starts this instance.</summary>
+        /// <returns>Return none</returns>
         internal Task Start()
         {
             return Task.Run(() =>
@@ -97,71 +84,16 @@ namespace Alis.Core
 
                 Task.Delay(1000).Wait();
 
-                int numTask = (currentScene.GameObjects.Count / Environment.ProcessorCount) + 1;
-                List<Task> tasks = new List<Task>(numTask);
-
-                int index = 0;
-
-                for (int i = 0; i < currentScene.GameObjects.Count; i++)
-                {
-                    if (index == numTask)
-                    {
-                        tasks.Add(ProcessGameObjectsStart(i - index, i, false));
-                        index = 0;
-                    }
-                    else
-                    {
-                        if (i == currentScene.GameObjects.Count - 1)
-                        {
-                            tasks.Add(ProcessGameObjectsStart(i - index, i, true));
-                            index = 0;
-                        }
-                    }
-
-                    index++;
-                }
-
-                Task.WaitAll(tasks.ToArray());
+                currentScene.Start().Wait();
 
                 watch.Stop();
                 Console.WriteLine($"  Time to Start scene manager: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
-        private Task ProcessGameObjectsStart(int init, int end, bool isLast)
-        {
-            return Task.Run(() =>
-            {
-                var watch = new Stopwatch();
-                watch.Start();
-
-                Task.Delay(1000).Wait();
-
-                for (int i = init; i <= end - 1; i++)
-                {
-                    if (currentScene.GameObjects[i].Active)
-                    {
-                        currentScene.GameObjects[i].Start();
-                    }
-                }
-
-                if (isLast)
-                {
-                    if (currentScene.GameObjects[end].Active) 
-                    {
-                        currentScene.GameObjects[end].Start();
-                    }
-                }
-
-                watch.Stop();
-                Console.WriteLine($"    Time to start the GameObjects: " + watch.ElapsedMilliseconds + " ms");
-            });
-        }
-
-
         /// <summary>Updates this instance.</summary>
-        /// <returns>return none</returns>
-        public Task Update()
+        /// <returns>Return none</returns>
+        internal Task Update()
         {
             return Task.Run(() =>
             {
@@ -170,70 +102,14 @@ namespace Alis.Core
 
                 Task.Delay(1000).Wait();
 
-                int numTask = (currentScene.GameObjects.Count / Environment.ProcessorCount) + 1;
-                List<Task> tasks = new List<Task>(numTask);
-
-                int index = 0;
-
-                for (int i = 0; i < currentScene.GameObjects.Count; i++) 
-                {
-                    if (index == numTask)
-                    {
-                        tasks.Add(ProcessGameObjects(i - index, i, false));
-                        index = 0;
-                    }
-                    else
-                    {
-                        if (i == currentScene.GameObjects.Count - 1)
-                        {
-                            tasks.Add(ProcessGameObjects(i - index, i, true));
-                            index = 0;
-                        }
-                    }
-
-                    index++;
-                }
-
-                Task.WaitAll(tasks.ToArray());
-
-                Console.WriteLine("DIVISION: " + numTask);
-                Console.WriteLine("GAMEOBJECTS: " + currentScene.GameObjects.Count);
-                Console.WriteLine("PROCESORS: " + Environment.ProcessorCount);
+                currentScene.Update().Wait();
 
                 watch.Stop();
-                Console.WriteLine($"    Time to Update a Scene: " + watch.ElapsedMilliseconds + " ms");
+                Console.WriteLine($"  Time to Update scene manager: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
-        private Task ProcessGameObjects(int init, int end, bool isLast) 
-        {
-            return Task.Run(()=> 
-            {
-                var watch = new Stopwatch();
-                watch.Start();
-
-                Task.Delay(1000).Wait();
-
-                for (int i = init; i <= end - 1; i++) 
-                {
-                    if (currentScene.GameObjects[i].Active) 
-                    {
-                        currentScene.GameObjects[i].Update();
-                    }
-                }
-
-                if (isLast) 
-                {
-                    if (currentScene.GameObjects[end].Active)
-                    {
-                        currentScene.GameObjects[end].Update();
-                    }
-                }
-
-                watch.Stop();
-                Console.WriteLine($"    Time to Update the GameObjects: " + watch.ElapsedMilliseconds + " ms");
-            });
-        }
+        #region DefineEvents
 
         /// <summary>Scenes the manager on create.</summary>
         /// <param name="sender">The sender.</param>
@@ -259,5 +135,7 @@ namespace Alis.Core
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void SceneManager_OnAddScene(object sender, bool e) => Logger.Info();
+
+        #endregion
     }
 }

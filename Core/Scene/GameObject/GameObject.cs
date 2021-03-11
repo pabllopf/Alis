@@ -7,7 +7,6 @@ namespace Alis.Core
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Numerics;
     using Newtonsoft.Json;
 
     /// <summary>Define a game object.</summary>
@@ -33,7 +32,7 @@ namespace Alis.Core
         public GameObject() 
         {
             name = "GameObject";
-            transform = new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f));
+            transform = new Transform();
             components = new List<Component>();
 
             OnCreate += GameObject_OnCreate;
@@ -51,7 +50,7 @@ namespace Alis.Core
         public GameObject([NotNull] string name)
         {
             this.name = name;
-            transform = new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f));
+            transform = new Transform();
             components = new List<Component>();
 
             OnCreate += GameObject_OnCreate;
@@ -110,10 +109,7 @@ namespace Alis.Core
         }
 
         /// <summary>Finalizes an instance of the <see cref="GameObject" /> class.</summary>
-        ~GameObject()
-        {
-            OnDestroy?.Invoke(this, true);
-        }
+        ~GameObject() => OnDestroy?.Invoke(this, true);
 
         /// <summary>Occurs when [on create].</summary>
         public event EventHandler<bool> OnCreate;
