@@ -15,7 +15,7 @@ namespace SFML
     {
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var watch = new Stopwatch();
             watch.Start();
@@ -24,35 +24,39 @@ namespace SFML
                 new Config("Example"),
                     new Scene("First",
                         new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                           new Sprite(),
-                            new Physics(),
                             new Sprite(),
-                            new Physics()
+                            new Animator(0,
+                                new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
+                                new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
+                                new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
+                                new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
+                            ),
+                            new Move()
                         ),
 
-                       new GameObject("Player2", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite()
+                       new GameObject("SoundTrack", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new AudioSource()
                         ),
                         new GameObject("Player23", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite()
+                            new Physics()
                         ),
                         new GameObject("Player214", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite()
+                            new Physics()
                         ),
                         new GameObject("Player224", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite()
+                            new Physics()
                         ),
                         new GameObject("Player234", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite()
+                            new Physics()
                         ),
                         new GameObject("Player244", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite()
+                            new Physics()
                         ),
                         new GameObject("Player2474", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite()
                         )
                     )
-            );
+            ); 
 
             game.Run();
 
@@ -90,13 +94,14 @@ namespace SFML
             watch.Stop();
             Console.WriteLine($"Total Videogame Loaded of FILE Time: " + watch.ElapsedMilliseconds + " ms");
 
-            /*string name = Test_Normal(100);
+            
+            string name = Test_Normal(100);
             string name2 = await Test_Task(100);
 
             Console.WriteLine(name);
             Console.WriteLine(name2);
             
-            Console.ReadLine();*/
+            Console.ReadLine();
         }
 
         private static async Task<string> Test_Task(int size)
@@ -143,48 +148,60 @@ namespace SFML
             watch.Stop();
             return $"Total Test_Normal Time: " + watch.ElapsedMilliseconds + " ms";
         }
-
-
-        /*
-        private static async Task<string> Test_Task(List<Scene> scenes)
-        {
-            var watch = new Stopwatch();
-            watch.Start();
-
-            List<Task> launcher = new List<Task>();
-
-            for (int i = 0; i < scenes.Count;i++) 
-            {
-                launcher.Add(Launch(scenes[i]));
-            }
-
-            await Task.WhenAll(launcher);
-
-            watch.Stop();
-            return $"Total Test_With_Task Time: " + watch.ElapsedMilliseconds + " ms";
-        }
-
-        private static async Task Launch(Scene scene) 
-        {
-            scene.Update();
-        } 
-
-
-        public static string Test_Normal(List<Scene> scenes) 
-        {
-            var watch = new Stopwatch();
-            string result = "";
-            watch.Start();
-
-            foreach (Scene scene in scenes) 
-            {
-                scene.Update();
-            }
-
-            watch.Stop();
-            return $"Total Test_Normal Time: " + watch.ElapsedMilliseconds + " ms";
-        }
-        */
-
     }
+
+
+    /// <summary>
+    ///   <br />
+    /// </summary>
+    public class Move : Component
+    {
+        private Transform transform;
+
+        private Animator animator;
+
+        public override void Start()
+        {
+            Input.OnPressKey += Input_OnPressKey;
+
+            animator = GetGameObject().GetComponent<Animator>();
+            transform = GetGameObject().Transform;
+        }
+
+        public override void Update()
+        {
+        }
+
+        private void Input_OnPressKey(object sender, Window.Keyboard.Key key)
+        {
+            if (key.Equals(Window.Keyboard.Key.S))
+            {
+                Console.WriteLine("Press s");
+                animator.State = 0;
+                transform.Position += new Vector3(0, 1, 0);
+            }
+
+            if (key.Equals(Window.Keyboard.Key.D))
+            {
+                Console.WriteLine("Press d");
+                animator.State = 1;
+                transform.Position += new Vector3(1f, 0, 0);
+            }
+
+            if (key.Equals(Window.Keyboard.Key.W))
+            {
+                Console.WriteLine("Press w");
+                animator.State = 2;
+                transform.Position += new Vector3(0, -1f, 0);
+            }
+
+            if (key.Equals(Window.Keyboard.Key.A))
+            {
+                Console.WriteLine("Press a");
+                animator.State = 3;
+                transform.Position += new Vector3(-1f, 0, 0);
+            }
+        }
+    }
+
 }

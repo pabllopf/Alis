@@ -17,8 +17,10 @@ namespace Alis.Core
     /// <summary>Render define</summary>
     public class Render
     {
+        /// <summary>The current</summary>
         private static Render current;
 
+        /// <summary>The configuration</summary>
         [JsonProperty]
         [NotNull]
         private readonly Config config;
@@ -27,13 +29,20 @@ namespace Alis.Core
         [NotNull]
         private RenderWindow renderWindow;
 
+        /// <summary>The render texture</summary>
+        [NotNull]
+        private RenderTexture renderTexture;
+
+        /// <summary>The frame</summary>
+        [NotNull]
+        private SFML.Graphics.Image frame;
+
         /// <summary>The video mode</summary>
         [NotNull]
         private VideoMode videoMode;
 
         /// <summary>The sprites</summary>
         [NotNull]
-        [JsonProperty]
         private List<Sprite> sprites;
 
         /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
@@ -70,8 +79,40 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the sprites.</summary>
         /// <value>The sprites.</value>
+        [JsonProperty]
         public List<Sprite> Sprites { get => sprites; set => sprites = value; }
+
+        /// <summary>Gets or sets the current.</summary>
+        /// <value>The current.</value>
+        [JsonIgnore]
         public static Render Current { get => current; set => current = value; }
+
+        /// <summary>Frames the bytes.</summary>
+        /// <returns>Return none</returns>
+        public byte[] FrameBytes()
+        {
+            if (renderTexture is null) 
+            {
+                renderTexture = new RenderTexture(512, 512);
+            }
+            
+            renderTexture.Clear();
+
+            if (sprites.Count > 0)
+            {
+                sprites = sprites.OrderBy(o => o.Depth).ToList();
+                foreach (Sprite sprite in sprites)
+                {
+                    renderTexture.Draw(sprite.GetDraw());
+                }
+            }
+
+            renderTexture.Smooth = true;
+            renderTexture.Display();
+
+            frame = renderTexture.Texture.CopyToImage();
+            return frame.Pixels;
+        }
 
         /// <summary>Adds the sprite.</summary>
         /// <param name="sprite">The sprite.</param>
@@ -127,12 +168,12 @@ namespace Alis.Core
             renderWindow.DispatchEvents();
             renderWindow.Clear();
 
-            if (sprites.Count > 0) 
+            if (sprites.Count > 0)
             {
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
                 foreach (Sprite sprite in sprites)
                 {
-                    Console.WriteLine("Render: " + sprite.GetType()); 
+                    Console.WriteLine("Render: " + sprite.GetType());
                     renderWindow.Draw(sprite.GetDraw());
                 }
             }
@@ -145,23 +186,27 @@ namespace Alis.Core
             Console.WriteLine($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
         }
 
-        private void RenderWindow_Closed(object sender, EventArgs e)
-        {
-            Exit();
-        }
-
         /// <summary>Exits this instance.</summary>
         internal void Exit()
         {
-            if (renderWindow != null) 
+            if (renderWindow != null)
             {
-                if (renderWindow.IsOpen) 
+                if (renderWindow.IsOpen)
                 {
                     renderWindow.Clear();
                     renderWindow.Close();
                     renderWindow.Dispose();
                 }
             }
+        }
+
+        /// <summary>Handles the Closed event of the RenderWindow control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        private void RenderWindow_Closed(object sender, EventArgs e)
+        {
+            Exit();
+            Environment.Exit(0);
         }
 
         #region DefineEvents
@@ -189,166 +234,3 @@ namespace Alis.Core
         #endregion
     }
 }
-        /*
-        /// <summary>The current</summary>
-        private static Render current;
-
-        /// <summary>The title</summary>
-        private string title;
-
-        /// <summary>The window</summary>
-        private RenderWindow renderWindow;
-
-        /// <summary>The window</summary>
-        private RenderTexture renderTexture;
-
-        /// <summary>The video mode</summary>
-        private VideoMode videoMode;
-
-        /// <summary>The frame</summary>
-        private SFML.Graphics.Image frame;
-
-        /// <summary>The sprites</summary>
-        private List<SFML.Graphics.Sprite> sprites;
-
-        /// <summary>Gets or sets the current.</summary>
-        /// <value>The current.</value>
-        public static Render Current { get => current; set => current = value; }
-        public RenderTexture RenderTexture { get => renderTexture; set => renderTexture = value; }
-        public RenderWindow RenderWindow { get => renderWindow; set => renderWindow = value; }
-
-        /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
-        public Render() 
-        {
-            this.title = "Example";
-            this.videoMode = new VideoMode(512, 320);
-            this.renderTexture = new RenderTexture(512, 512);
-            this.sprites = new List<SFML.Graphics.Sprite>();
-            
-
-
-            Logger.Info();
-        }
-
-        /// <summary>Frames the bytes.</summary>
-        /// <returns>Return the frame.</returns>
-        public byte[] FrameBytes()
-        {
-            renderTexture.Clear(Color.Black);
-
-            if (sprites.Count > 0) 
-            {
-                sprites = sprites.OrderBy(o => o.Depth).ToList();
-                foreach (SFML.Graphics.Sprite sprite in sprites)
-                {
-                    renderTexture.Draw(sprite.GetSprite);
-                }
-            }
-
-            renderTexture.Smooth = true;
-            renderTexture.Display();
-
-            frame = renderTexture.Texture.CopyToImage();
-            return frame.Pixels;
-        }
-
-        /// <summary>Renders the display.</summary>
-        public void RenderDisplay() 
-        {
-            if (renderWindow == null) 
-            {
-                renderWindow = new RenderWindow(videoMode, title);
-                //renderWindow.Closed += Window_Closed;
-                Logger.Log("Create window");
-            }
-
-            renderWindow.DispatchEvents();
-            renderWindow.Clear();
-
-            if (sprites.Count > 0)
-            {
-                sprites = sprites.OrderBy(o => o.Depth).ToList();
-                foreach (SFML.Graphics.Sprite sprite in sprites)
-                {
-                    //Debug.Log("sprite:::" + sprite.ImageFile + " " + sprite.Depth);
-                    renderWindow.Draw(sprite.GetSprite);
-                }
-            }
-
-            renderWindow.Display();
-        }
-
-        /// <summary>Handles the Closed event of the Window control.</summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            renderWindow.Close();
-            Environment.Exit(0);
-            Logger.Log("EVENT: Close render window. ");
-        }
-
-        /// <summary>Adds the new sprite.</summary>
-        /// <param name="sprite">The sprite.</param>
-        public void AddNewSprite(SFML.Graphics.Sprite sprite) 
-        {
-            List<SFML.Graphics.Sprite> spir = sprites;
-
-            if (!spir.Contains(sprite))
-            {
-                spir.Add(sprite);
-                Logger.Warning("Add a sprite " + sprite.ToString());
-                renderTexture.Clear();
-                //renderTexture.Draw(sprite.GetSprite);
-                renderTexture.Display();
-            }
-            else
-            {
-                Logger.Warning("Sprite alredy exits." + " Sprite: "  );//sprite.GetSprite.Texture.ToString());
-            }
-
-            sprites = spir;
-        }
-
-        internal SFML.Graphics.Sprite GetSprite(SFML.Graphics.Sprite sprite)
-        {
-            return sprites[sprites.IndexOf(sprite)];
-        }
-
-        internal async Task Update() => await Task.Run(() => Logger.Info());
-
-        /// <summary>Deletes the sprite.</summary>
-        /// <param name="sprite">The sprite.</param>
-        public void DeleteSprite(SFML.Graphics.Sprite sprite) 
-        {
-            List<SFML.Graphics.Sprite> spir = sprites;
-            
-            if (spir.Count > 0)
-            {
-                if (spir.Contains(sprite))
-                {
-                    spir.Remove(sprite);
-                    Logger.Log("Delete a sprite " + sprite.ToString());
-                    renderTexture.Clear();
-                    renderTexture.Display();
-                }
-            }
-
-            sprites = spir;
-        }
-
-        /// <summary>Exitses the specified sprite.</summary>
-        /// <param name="sprite">The sprite.</param>
-        /// <returns>Return</returns>
-        public bool Exits(SFML.Graphics.Sprite sprite)
-        {
-            if (sprites == null || sprites.Count == 0) 
-            {
-                return false;
-            }
-
-            return sprites.Contains(sprite);
-        }
-    }
-}
-*/

@@ -100,6 +100,7 @@ namespace Alis.Core
 
         /// <summary>Loads the of file.</summary>
         /// <param name="file">The file.</param>
+        [return: NotNull]
         public static VideoGame LoadOfFile(string file) 
         {
             return LocalData.Load<VideoGame>(file);
@@ -107,7 +108,6 @@ namespace Alis.Core
 
         /// <summary>Runs this instance.</summary>
         /// <returns>return true</returns>
-        [return: NotNull]
         public void Run()
         {
             Start();
@@ -133,45 +133,34 @@ namespace Alis.Core
             }).Wait();
         }
 
-        /// <summary>Updates the asynchronous.</summary>
-        /// <returns>Update the videogame</returns>
-        [return: NotNull]
-        private bool Update()
+        /// <summary>Updates this instance.</summary>
+        private void Update()
         {
             while (isRunning) 
             {
                 var watch = new Stopwatch();
                 watch.Start();
+                
                 Task.Run(() =>
                 {
-                  
-
                     OnUpdate.Invoke(this, true);
                     Task.WaitAll(input.Update(), sceneManager.Update());
-
-                  
                 }).Wait();
 
                 render.Update();
 
-                Task.Delay(1000).Wait();
-
-                isRunning = false;
+                //isRunning = false;
 
                 watch.Stop();
-                Console.WriteLine($" Time to Update One Frame Videogame: 1000 + " + (watch.ElapsedMilliseconds) + " ms");
+                Console.WriteLine($" Time to Update One Frame Videogame: " + (watch.ElapsedMilliseconds) + " ms");
 
+                //Task.Delay(1000).Wait();
             }
 
             render.Exit();
-
-
-
-
-            return true;
         }
 
-        #region Events
+        #region DefineEvents
 
         /// <summary>Video the game on create.</summary>
         /// <param name="sender">The sender.</param>

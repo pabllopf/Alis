@@ -12,8 +12,8 @@
         <Point X="4.219" Y="6.833" />
         <Point X="4.219" Y="7.458" />
         <Point X="3.942" Y="7.458" />
-        <Point X="3.942" Y="9.115" />
-        <Point X="3" Y="9.115" />
+        <Point X="3.942" Y="10.168" />
+        <Point X="3" Y="10.168" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -64,7 +64,7 @@
   <Class Name="Alis.Core.Sprite">
     <Position X="15.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAIAAAAAAAgAAAAIAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAgBAAAAIEBAAABAgAAAAIAAAAAA=</HashCode>
       <FileName>Scene\GameObject\Component\Sprite.cs</FileName>
       <NewMemberFileName>Components\Camera.cs</NewMemberFileName>
     </TypeIdentifier>
@@ -77,16 +77,19 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Animator">
-    <Position X="21.25" Y="8.5" Width="1.5" />
+    <Position X="21.75" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAQABAAEAAEAAACBAAAAAA=</HashCode>
       <FileName>Scene\GameObject\Component\Animator.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="animations" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.AudioSource">
     <Position X="19.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAQgQAAAQCAAAAAAAAAEAAkBAAAIAAAAoEBAABECAAA=</HashCode>
       <FileName>Scene\GameObject\Component\AudioSource.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -100,14 +103,14 @@
   <Class Name="Alis.Core.Render">
     <Position X="4.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAEIAACAAAAAAAIAAAIAAAAACAAAA=</HashCode>
+      <HashCode>AAQDAAAAgCAAAEAAEMCAAAIAgCAEIABAIIAAAQGAAAA=</HashCode>
       <FileName>Render\Render.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Input">
     <Position X="1.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAIACAYAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>Input\Input.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -124,7 +127,7 @@
   <Class Name="Alis.Core.Component">
     <Position X="15.75" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQhABAAQCAAAIAAAAAACAQCACBAAEAoAgAgIQAACEA=</HashCode>
+      <HashCode>AAQhABAAQCAAAIAAAAAACAQCACBAAEAoAgggIQAACEA=</HashCode>
       <FileName>Scene\GameObject\Component\Component.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -136,10 +139,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Camera">
-    <Position X="23.25" Y="8.5" Width="1.5" />
+    <Position X="24" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Scene\GameObject\Component\Camera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Animation">
+    <Position X="21.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAQBEAAEAQAEAAIABAABAAA=</HashCode>
+      <FileName>Scene\GameObject\Component\Animation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

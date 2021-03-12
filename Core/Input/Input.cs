@@ -5,12 +5,22 @@
 namespace Alis.Core
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Threading.Tasks;
 
     /// <summary>Manage the inputs of game.</summary>
     public class Input
     {
+        /// <summary>The keys</summary>
+        private static List<SFML.Window.Keyboard.Key> keys = new List<SFML.Window.Keyboard.Key>();
+
+        /// <summary>Occurs when [on press key].</summary>
+        public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKey;
+
+        /// <summary>Occurs when [on press once].</summary>
+        public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKeyOnce;
+
         public Input()
         {
         }
@@ -36,27 +46,43 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
+                PollEvents();
+
                 watch.Stop();
                 Console.WriteLine($"  Time to UPDATE: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
-        private Task PullTask() 
+        /// <summary>Polls the events.</summary>
+        internal static void PollEvents()
         {
-            return Task.Run(() =>
+            foreach (SFML.Window.Keyboard.Key key in Enum.GetValues(typeof(SFML.Window.Keyboard.Key)))
             {
-                var watch = new Stopwatch();
-                watch.Start();
+                if (SFML.Window.Keyboard.IsKeyPressed(key))
+                {
+                    if (!keys.Contains(key))
+                    {
+                        keys.Add(key);
+                        if (OnPressKeyOnce != null)
+                        {
+                            OnPressKeyOnce.Invoke(null, key);
+                        }
+                    }
+                }
 
-                Task.Delay(1000).Wait();
+                if (SFML.Window.Keyboard.IsKeyPressed(key))
+                {
+                    if (OnPressKey != null)
+                    {
+                        OnPressKey.Invoke(null, key);
+                    }
+                }
 
-                ConsoleKeyInfo key = Console.ReadKey();
-
-                Console.WriteLine("Press:" + key.KeyChar);
-
-                watch.Stop();
-                Console.WriteLine($"  Time to PULL: " + watch.ElapsedMilliseconds + " ms");
-            });
+                if (!SFML.Window.Keyboard.IsKeyPressed(key) && keys.Contains(key))
+                {
+                    keys.Remove(key);
+                }
+            }
         }
     }
 }

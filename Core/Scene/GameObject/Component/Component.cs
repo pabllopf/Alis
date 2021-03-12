@@ -126,7 +126,7 @@ namespace Alis.Core
             this.gameObject = gameObject;
         }
 
-        internal GameObject GetGameObject() 
+        public GameObject GetGameObject() 
         {
             return this.gameObject;
         }

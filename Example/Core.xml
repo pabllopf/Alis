@@ -11,5 +11,10 @@
             <summary>Defines the entry point of the application.</summary>
             <param name="args">The arguments.</param>
         </member>
+        <member name="T:SFML.Move">
+            <summary>
+              <br />
+            </summary>
+        </member>
     </members>
 </doc>
