@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['widget_1148',['Widget',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html',1,'Alis::Editor::UI::Widgets']]],
-  ['widgetmanager_1149',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html',1,'Alis::Editor::UI::Widgets']]]
+  ['queryexpression_3228',['QueryExpression',['../class_newtonsoft_1_1_json_1_1_linq_1_1_json_path_1_1_query_expression.html',1,'Newtonsoft::Json::Linq::JsonPath']]],
+  ['queryfilter_3229',['QueryFilter',['../class_newtonsoft_1_1_json_1_1_linq_1_1_json_path_1_1_query_filter.html',1,'Newtonsoft::Json::Linq::JsonPath']]],
+  ['queryscanfilter_3230',['QueryScanFilter',['../class_newtonsoft_1_1_json_1_1_linq_1_1_json_path_1_1_query_scan_filter.html',1,'Newtonsoft::Json::Linq::JsonPath']]]
 ];

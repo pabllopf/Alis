@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['widgettype_2195',['WidgetType',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a75c4c1fad37c48ef5ac7a976e95fdfd8',1,'Alis::Editor::UI::Widgets']]]
+  ['idiom_5829',['Idiom',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4',1,'Alis::Tools']]]
 ];

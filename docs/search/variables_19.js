@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['yahoo_2180',['YAHOO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a460699ff89650b3cd92c026044bcfe79',1,'Alis::Editor::Utils::Icon']]],
-  ['ycombinator_2181',['YCOMBINATOR',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a736b2c31d351c419bc2a4f6f6aa350fa',1,'Alis::Editor::Utils::Icon']]],
-  ['yellowcolor_2182',['yellowColor',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a94e954b1cf3d180d20b13ea422c7c24a',1,'Alis::Editor::UI::Widgets::Console']]],
-  ['yelp_2183',['YELP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a782441333618cf829ea1aa2aafa73eba',1,'Alis::Editor::Utils::Icon']]],
-  ['yoast_2184',['YOAST',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a90f1b66ffe56ecfe3721a3f824976e1d',1,'Alis::Editor::Utils::Icon']]],
-  ['youtube_2185',['YOUTUBE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9ce071cfcc862dedda5dec19d321dff5',1,'Alis::Editor::Utils::Icon']]],
-  ['youtubeplay_2186',['YOUTUBEPLAY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae1ff490215f9c3a734709b773f66a1ad',1,'Alis::Editor::Utils::Icon']]],
-  ['youtubesquare_2187',['YOUTUBESQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a45bb282787b85d73ccad84b0a3d6370b',1,'Alis::Editor::Utils::Icon']]]
+  ['yahoo_5800',['YAHOO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a460699ff89650b3cd92c026044bcfe79',1,'Alis::Editor::Utils::Icon']]],
+  ['ycombinator_5801',['YCOMBINATOR',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a736b2c31d351c419bc2a4f6f6aa350fa',1,'Alis::Editor::Utils::Icon']]],
+  ['year_5802',['Year',['../struct_newtonsoft_1_1_json_1_1_utilities_1_1_date_time_parser.html#a8999ce730b9b2515803b3624db399fa6',1,'Newtonsoft::Json::Utilities::DateTimeParser']]],
+  ['yellowcolor_5803',['yellowColor',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a94e954b1cf3d180d20b13ea422c7c24a',1,'Alis::Editor::UI::Widgets::Console']]],
+  ['yelp_5804',['YELP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a782441333618cf829ea1aa2aafa73eba',1,'Alis::Editor::Utils::Icon']]],
+  ['yoast_5805',['YOAST',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a90f1b66ffe56ecfe3721a3f824976e1d',1,'Alis::Editor::Utils::Icon']]],
+  ['youtube_5806',['YOUTUBE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9ce071cfcc862dedda5dec19d321dff5',1,'Alis::Editor::Utils::Icon']]],
+  ['youtubeplay_5807',['YOUTUBEPLAY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae1ff490215f9c3a734709b773f66a1ad',1,'Alis::Editor::Utils::Icon']]],
+  ['youtubesquare_5808',['YOUTUBESQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a45bb282787b85d73ccad84b0a3d6370b',1,'Alis::Editor::Utils::Icon']]]
 ];

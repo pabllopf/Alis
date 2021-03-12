@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['topmenu_1144',['TopMenu',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html',1,'Alis::Editor::UI::Widgets']]],
-  ['transform_1145',['Transform',['../class_alis_1_1_core_1_1_transform.html',1,'Alis::Core']]]
+  ['namingstrategy_3220',['NamingStrategy',['../class_newtonsoft_1_1_json_1_1_serialization_1_1_naming_strategy.html',1,'Newtonsoft::Json::Serialization']]]
 ];

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Alis Framework: Core/Logger.cs Source File</title>
+<title>Alis Framework: Core/Debug/Logger.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -105,10 +105,10 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//-------------------------------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_alis_1_1_core.html">Alis.Core</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> System.<a class="code" href="namespace_system_1_1_diagnostics.html">Diagnostics</a>;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">using</span> System.IO;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">using</span> System.Reflection;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Diagnostics;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Reflection;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_logger.html">   13</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="class_alis_1_1_core_1_1_logger.html">Logger</a></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                StackTrace stack = <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">DateTime</a>.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordtype">string</span> fileName = Path.GetFileName(stack.GetFrame(1).GetFileName());</div>
@@ -171,7 +171,7 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                StackTrace stack = <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">DateTime</a>.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;LOG        &quot;</span>;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
@@ -193,7 +193,7 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                StackTrace stack = <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">DateTime</a>.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;WARNING    &quot;</span>;</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
@@ -217,7 +217,7 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                StackTrace stack = <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">DateTime</a>.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;ERROR      &quot;</span>;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
@@ -234,21 +234,22 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a86f99ba4c2f51aa5873d715233fbadef"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a86f99ba4c2f51aa5873d715233fbadef">Alis.Core.Logger.Info</a></div><div class="ttdeci">static void Info()</div><div class="ttdoc">Informations this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00022">Logger.cs:22</a></div></div>
-<div class="ttc" id="anamespace_system_1_1_diagnostics_html"><div class="ttname"><a href="namespace_system_1_1_diagnostics.html">Diagnostics</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_html"><div class="ttname"><a href="namespace_alis_1_1_core.html">Alis.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_asset_8cs_source.html#l00005">Asset.cs:6</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_html"><div class="ttname"><a href="namespace_alis_1_1_core.html">Alis.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_config_8cs_source.html#l00005">Config.cs:6</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_html_a5b1648bfd6f46e4c7029f109c32dc35c"><div class="ttname"><a href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Alis.Core.Level</a></div><div class="ttdeci">Level</div><div class="ttdoc">Define level of the logs</div><div class="ttdef"><b>Definition:</b> <a href="_level_8cs_source.html#l00008">Level.cs:9</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a1d8e5391600ce1c13fd8585a8c939049"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">Alis.Core.Logger.listener</a></div><div class="ttdeci">static TextWriterTraceListener listener</div><div class="ttdoc">The listener</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00016">Logger.cs:16</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_aeafaefee65f88364bebfd0c7c0eaf6d1"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#aeafaefee65f88364bebfd0c7c0eaf6d1">Alis.Core.Logger.Error</a></div><div class="ttdeci">static void Error(string message)</div><div class="ttdoc">Errors the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00117">Logger.cs:117</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a1421a7aef85389ef6d8ee5bbe64d98a4"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a1421a7aef85389ef6d8ee5bbe64d98a4">Alis.Core.Logger.Log</a></div><div class="ttdeci">static void Log(string message)</div><div class="ttdoc">Logs the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00067">Logger.cs:67</a></div></div>
+<div class="ttc" id="anamespace_newtonsoft_1_1_json_html_abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">Newtonsoft.Json.DateParseHandling.None</a></div><div class="ttdeci">@ None</div><div class="ttdoc">Date formatted strings are not parsed to a date type and are read as strings.</div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a283b29cc15a30e910b29de7ef2b2800f"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">Alis.Core.Logger.level</a></div><div class="ttdeci">static Level level</div><div class="ttdoc">The level</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00019">Logger.cs:19</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a08cacb24576edab3a6897af17c56b65f"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a08cacb24576edab3a6897af17c56b65f">Alis.Core.Logger.Warning</a></div><div class="ttdeci">static void Warning(string message)</div><div class="ttdoc">Warnings the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00091">Logger.cs:91</a></div></div>
+<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_linq_bridge_8cs_source.html#l03058">LinqBridge.cs:3059</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html">Alis.Core.Logger</a></div><div class="ttdoc">Debug messages.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00013">Logger.cs:14</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_c6310732a22f63c0c2fc5595561e68f1.html">Core</a></li><li class="navelem"><b>Logger.cs</b></li>
+    <li class="navelem"><a class="el" href="dir_c6310732a22f63c0c2fc5595561e68f1.html">Core</a></li><li class="navelem"><a class="el" href="dir_59c10b51c8380b58e1f1bb38ac61eeb3.html">Debug</a></li><li class="navelem"><b>Logger.cs</b></li>
     <li class="footer">
-      <a>Generated on | Thu Mar 11 2021 |</a>
+      <a>Generated on | Fri Mar 12 2021 |</a>
     </li>
   </ul>
 </div>
