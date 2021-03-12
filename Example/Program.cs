@@ -65,11 +65,14 @@ namespace SFML
 
             Console.WriteLine("\n");
 
+            Thread.Sleep(5000);
+
 
             var gameloaded = LocalData.Load<VideoGame>("Example");
 
             watch = new Stopwatch();
             watch.Start();
+
             gameloaded.Run();
 
             watch.Stop();
@@ -77,12 +80,12 @@ namespace SFML
 
             Console.WriteLine("\n");
 
-
+            Thread.Sleep(5000);
 
             watch = new Stopwatch();
             watch.Start();
 
-            VideoGame.LoadOfFile("Example");
+            VideoGame.LoadOfFile("Example").Run();
 
             watch.Stop();
             Console.WriteLine($"Total Videogame Loaded of FILE Time: " + watch.ElapsedMilliseconds + " ms");

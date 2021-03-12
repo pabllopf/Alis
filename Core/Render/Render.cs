@@ -2,19 +2,63 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Render.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-
 namespace Alis.Core
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using SFML.Graphics;
+    using SFML.Window;
+    using Newtonsoft.Json;
+
     /// <summary>Render define</summary>
     public class Render
     {
-        public Render()
+        [JsonProperty]
+        private Config config;
+
+        /// <summary>The window</summary>
+        [NotNull]
+        private RenderWindow renderWindow;
+
+        /// <summary>The video mode</summary>
+        [NotNull]
+        private VideoMode videoMode;
+
+        /// <summary>The sprites</summary>
+        [NotNull]
+        [JsonProperty]
+        private List<Sprite> sprites;
+
+        /// <summary>The circle</summary>
+        private CircleShape circle;
+
+        /// <summary>Gets or sets the sprites.</summary>
+        /// <value>The sprites.</value>
+        public List<Sprite> Sprites { get => sprites; set => sprites = value; }
+
+        /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
+        [JsonConstructor]
+        public Render([NotNull] Config config)
         {
+            this.config = config;
+
+            videoMode = new VideoMode(512, 320);
+            sprites = new List<Sprite>();
         }
 
+        private void RenderWindow_Closed(object sender, EventArgs e)
+        {
+            renderWindow.Close();
+            Environment.Exit(0);
+        }
+
+        /// <summary>Starts this instance.</summary>
+        /// <returns>Return none</returns>
+        [return: NotNull]
         internal Task Start()
         {
             return Task.Run(() =>
@@ -29,18 +73,45 @@ namespace Alis.Core
             });
         }
 
-        public Task Update()
+        /// <summary>Updates this instance.</summary>
+        /// <returns>Return none</returns>
+        public void Update()
         {
-            return Task.Run(() =>
+            var watch = new Stopwatch();
+            watch.Start();
+
+            if (renderWindow is null) 
             {
-                var watch = new Stopwatch();
-                watch.Start();
+                renderWindow = new RenderWindow(videoMode, config.Name);
+                renderWindow.SetActive(true);
 
-                Task.Delay(1000).Wait();
+                circle = new CircleShape(50f);
+            }
 
-                watch.Stop();
-                Console.WriteLine($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
-            });
+
+            renderWindow.DispatchEvents();
+            renderWindow.Clear(Color.Blue);
+
+
+            renderWindow.Draw(circle);
+
+            renderWindow.Display();
+
+            watch.Stop();
+            Console.WriteLine($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
+        }
+
+        internal void Exit()
+        {
+            if (renderWindow != null) 
+            {
+                if (renderWindow.IsOpen) 
+                {
+                    renderWindow.Clear();
+                    renderWindow.Close();
+                    renderWindow.Dispose();
+                }
+            }
         }
     }
 }

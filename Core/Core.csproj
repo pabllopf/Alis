@@ -31,7 +31,6 @@
   </Target>
   <ItemGroup>
     <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
-    <ProjectReference Include="..\Tools\Tools.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="VideoGame.cs">

@@ -50,7 +50,6 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <exception cref="ArgumentNullException">name exception</exception>
-        [JsonConstructor]
         public GameObject([NotNull] string name)
         {
             this.name = name;

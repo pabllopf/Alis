@@ -156,8 +156,6 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Task.Delay(1000).Wait();
-
                 int numTask = (gameObjects.Count / Environment.ProcessorCount) + 1;
                 List<Task> tasks = new List<Task>(numTask);
 
@@ -202,8 +200,6 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Task.Delay(1000).Wait();
-
                 for (int i = init; i <= end - 1; i++)
                 {
                     if (gameObjects[i].Active)
@@ -238,7 +234,6 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Task.Delay(1000).Wait();
 
                 for (int i = init; i <= end - 1; i++)
                 {

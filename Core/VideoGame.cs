@@ -41,12 +41,14 @@ namespace Alis.Core
         [JsonConstructor]
         public VideoGame([NotNull] Config config, [NotNull] params Scene[] scenes)
         {
-            this.config = config;
+            this.config = config is null ? new Config("Default") : config;
 
             sceneManager = scenes is null ? new SceneManager() : new SceneManager(new List<Scene>(scenes));
 
+            Console.WriteLine("Name: " + this.config.Name);
+
             input = new Input();
-            render = new Render();
+            render = new Render(this.config);
             isRunning = true;
 
             OnCreate += VideoGame_OnCreate;
@@ -98,65 +100,75 @@ namespace Alis.Core
 
         /// <summary>Loads the of file.</summary>
         /// <param name="file">The file.</param>
-        public static void LoadOfFile(string file) 
+        public static VideoGame LoadOfFile(string file) 
         {
-            LocalData.Load<VideoGame>(file).Run();
+            return LocalData.Load<VideoGame>(file);
         }
 
         /// <summary>Runs this instance.</summary>
         /// <returns>return true</returns>
         [return: NotNull]
-        public bool Run() => StartAsync().Result && UpdateAsync().Result;
+        public void Run()
+        {
+            Start();
+            Update();
+        }
 
         /// <summary>Starts the asynchronous.</summary>
         /// <returns>Start the videogame.</returns>
         [return: NotNull]
-        private async Task<bool> StartAsync()
+        private void Start()
         {
-            return await Task.Run(() =>
+            Task.Run(() =>
             {
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Task.Delay(1000).Wait();
-
                 OnStart.Invoke(this, true);
 
-                Task.WaitAll(input.Start(), render.Start(), sceneManager.Start());
+                Task.WaitAll(input.Start(), sceneManager.Start());
 
                 watch.Stop();
                 Console.WriteLine($" Time to Start Videogame: " + watch.ElapsedMilliseconds + " ms");
-
-                return true;
-            });
+            }).Wait();
         }
 
         /// <summary>Updates the asynchronous.</summary>
         /// <returns>Update the videogame</returns>
         [return: NotNull]
-        private async Task<bool> UpdateAsync()
+        private bool Update()
         {
-            return await Task.Run(() =>
+            while (isRunning) 
             {
                 var watch = new Stopwatch();
                 watch.Start();
-
-                while (isRunning) 
+                Task.Run(() =>
                 {
-                    Task.Delay(1000).Wait();
+                  
 
                     OnUpdate.Invoke(this, true);
+                    Task.WaitAll(input.Update(), sceneManager.Update());
 
-                    Task.WaitAll(input.Update(), render.Update(), sceneManager.Update());
+                  
+                }).Wait();
 
-                    isRunning = false;
-                }
+                render.Update();
+
+                Task.Delay(1000).Wait();
+
+                isRunning = false;
 
                 watch.Stop();
-                Console.WriteLine($" Time to Update One Frame Videogame: 1000 + " + (watch.ElapsedMilliseconds - 1000) + " ms");
+                Console.WriteLine($" Time to Update One Frame Videogame: 1000 + " + (watch.ElapsedMilliseconds) + " ms");
 
-                return true;
-            });
+            }
+
+            render.Exit();
+
+
+
+
+            return true;
         }
 
         #region Events

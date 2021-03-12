@@ -15,12 +15,10 @@ namespace Alis.Core
     public class SceneManager
     {
         /// <summary>The scenes</summary>
-        [JsonProperty]
         [NotNull]
         private List<Scene> scenes;
 
         /// <summary>The current scene</summary>
-        [JsonProperty]
         [NotNull]
         private Scene currentScene;
 
@@ -69,11 +67,13 @@ namespace Alis.Core
         /// <summary>Gets or sets the scenes.</summary>
         /// <value>The scenes.</value>
         [NotNull]
+        [JsonProperty]
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
 
         /// <summary>Gets or sets the current scene.</summary>
         /// <value>The current scene.</value>
         [NotNull]
+        [JsonProperty]
         public Scene CurrentScene { get => currentScene; set => currentScene = value; }
 
         /// <summary>Starts this instance.</summary>
@@ -104,8 +104,6 @@ namespace Alis.Core
             {
                 var watch = new Stopwatch();
                 watch.Start();
-
-                Task.Delay(1000).Wait();
 
                 currentScene.Update().Wait();
 

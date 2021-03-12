@@ -36,8 +36,6 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Task.Delay(1000).Wait();
-
                 watch.Stop();
                 Console.WriteLine($"  Time to UPDATE: " + watch.ElapsedMilliseconds + " ms");
             });
