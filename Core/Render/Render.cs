@@ -45,6 +45,8 @@ namespace Alis.Core
         [NotNull]
         private List<Sprite> sprites;
 
+        private List<RectangleShape> collisions;
+
         /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
         /// <param name="config">The configuration.</param>
         [JsonConstructor]
@@ -53,6 +55,7 @@ namespace Alis.Core
             this.config = config;
             videoMode = new VideoMode(512, 320);
             sprites = new List<Sprite>();
+            collisions = new List<RectangleShape>();
 
             OnCreate += Render_OnCreate;
             OnStart += Render_OnStart;
@@ -96,6 +99,10 @@ namespace Alis.Core
         /// <value>The render window.</value>
         [JsonIgnore]
         public RenderWindow RenderWindow { get => renderWindow; set => renderWindow = value; }
+        
+        /// <summary>Gets or sets the collisions.</summary>
+        /// <value>The collisions.</value>
+        public List<RectangleShape> Collisions { get => collisions; set => collisions = value; }
 
         /// <summary>Frames the bytes.</summary>
         /// <returns>Return none</returns>
@@ -131,6 +138,14 @@ namespace Alis.Core
             if (!sprites.Contains(sprite)) 
             {
                 sprites.Add(sprite);
+            }
+        }
+
+        internal void AddCollision(RectangleShape rectangle)
+        {
+            if (!collisions.Contains(rectangle))
+            {
+                collisions.Add(rectangle);
             }
         }
 
@@ -185,6 +200,14 @@ namespace Alis.Core
                 {
                     Logger.Log("Render: " + sprite.GetType());
                     renderWindow.Draw(sprite.GetDraw());
+                }
+            }
+
+            if (collisions.Count > 0)
+            {
+                foreach (RectangleShape rectangle in collisions)
+                {
+                    renderWindow.Draw(rectangle);
                 }
             }
 

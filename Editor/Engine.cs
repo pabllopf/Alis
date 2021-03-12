@@ -9,7 +9,6 @@ namespace Alis.Editor
     using System.Runtime.InteropServices;
     using System.Threading;
     using Alis.Editor.UI;
-    using Alis.Editor.Utils;
     using Alis.Core;
 
     /// <summary>Manage the engine</summary>

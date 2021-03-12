@@ -23,8 +23,9 @@ namespace SFML
             new VideoGame(
                 new Config("Example"),
                     new Scene("First",
-                       new GameObject("Player24724", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite()
+                       new GameObject("Player24724", new Transform(new Vector3(10f, 10f, 0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite(),
+                            new Collision()
                         ),
 
                         new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
@@ -36,14 +37,16 @@ namespace SFML
                                 new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
                             ),
                             new Move(),
-                            new Camera(new System.Vector2f(0, 0), new System.Vector2f(640, 380))
+                            new Camera(new System.Vector2f(0, 0), new System.Vector2f(640, 380)),
+                            new Collision()
                         ),
 
                        new GameObject("SoundTrack", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new AudioSource()
                         ),
-                        new GameObject("Player2474", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                        new GameObject("Player2474", new Transform(new Vector3(-5f), new Vector3(0f), new Vector3(1f)),
                             new Sprite()
+                            
                         )
                     )
             ).Run();
@@ -133,28 +136,28 @@ namespace SFML
         {
             if (key.Equals(Window.Keyboard.Key.S))
             {
-                Console.WriteLine("Press s");
+                //Console.WriteLine("Press s");
                 animator.State = 0;
                 transform.Position += new Vector3(0, 1, 0);
             }
 
             if (key.Equals(Window.Keyboard.Key.D))
             {
-                Console.WriteLine("Press d");
+                //Console.WriteLine("Press d");
                 animator.State = 1;
                 transform.Position += new Vector3(1f, 0, 0);
             }
 
             if (key.Equals(Window.Keyboard.Key.W))
             {
-                Console.WriteLine("Press w");
+                //Console.WriteLine("Press w");
                 animator.State = 2;
                 transform.Position += new Vector3(0, -1f, 0);
             }
 
             if (key.Equals(Window.Keyboard.Key.A))
             {
-                Console.WriteLine("Press a");
+                //Console.WriteLine("Press a");
                 animator.State = 3;
                 transform.Position += new Vector3(-1f, 0, 0);
             }
