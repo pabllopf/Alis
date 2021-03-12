@@ -82,6 +82,11 @@ namespace Alis.Core
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
+            if (!Render.Current.Sprites.Contains(this))
+            {
+                Render.Current.AddSprite(this);
+            }
+
             var pos = GetGameObject().Transform.Position;
             sprite.Position = new SFML.System.Vector2f(pos.X, pos.Y);
 

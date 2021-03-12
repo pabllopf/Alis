@@ -23,7 +23,12 @@ namespace SFML
             new VideoGame(
                 new Config("Example"),
                     new Scene("First",
-                       new GameObject("Player24724", new Transform(new Vector3(10f, 40f, 0f), new Vector3(0f), new Vector3(1f)),
+                       new GameObject("Player24724", new Transform(new Vector3(10f, 50f, 0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite(),
+                            new Collision()
+                        ),
+
+                        new GameObject("Player72", new Transform(new Vector3(60f, 40f, 0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite(),
                             new Collision()
                         ),
