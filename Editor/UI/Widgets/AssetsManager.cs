@@ -395,7 +395,7 @@ namespace Alis.Editor.UI.Widgets
         private void ChangeDir(string directory)
         {
             currentDirRight = directory;
-            Debug.Log("CurrentDir:" + currentDirRight);
+            Logger.Log("CurrentDir:" + currentDirRight);
         }
 
         /// <summary>Opens this instance.</summary>

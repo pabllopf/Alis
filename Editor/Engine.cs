@@ -31,8 +31,8 @@ namespace Alis.Editor
         /// <param name="args">The arguments.</param>
         public Engine(string[] args)
         {
-            Debug.Log("Starting Alis...");
-            Debug.Log(args.Length > 0 ? " > args:" + string.Join("\n", args) : string.Empty);
+            Logger.Log("Starting Alis...");
+            Logger.Log(args.Length > 0 ? " > args:" + string.Join("\n", args) : string.Empty);
         }
 
         /// <summary>Gets a value indicating whether [first instance].</summary>
@@ -80,21 +80,21 @@ namespace Alis.Editor
         {
             if (!FirstInstance)
             {
-                Debug.Error("There is already an 'Alis instance' running.");
+                Logger.Error("There is already an 'Alis instance' running.");
                 return -1;
             }
 
             platform = DetectPlatform;
             if (platform.Equals(Platform.Unsupported)) 
             {
-                Debug.Error("Platform unsupported. Please use Windows or MacOS or Linux system.");
+                Logger.Error("Platform unsupported. Please use Windows or MacOS or Linux system.");
                 return -1;
             }
             
             architecture = DetectArchitecture;
             if (architecture.Equals(Architecture.Unsupported)) 
             {
-                Debug.Error("unsupported architecture. Please use x86 or x64 architecture system.");
+                Logger.Error("unsupported architecture. Please use x86 or x64 architecture system.");
                 return -1;
             }
 
@@ -112,7 +112,7 @@ namespace Alis.Editor
 
                 if (graphics.Equals(Graphics.Unsupported))
                 {
-                    Debug.Error("Unsupported graphics for windows. Please install ( opengl 2.0+ or Directx 11+ or Vulkan 1.0+ ).");
+                    Logger.Error("Unsupported graphics for windows. Please install ( opengl 2.0+ or Directx 11+ or Vulkan 1.0+ ).");
                     return -1;
                 }
             }
@@ -126,7 +126,7 @@ namespace Alis.Editor
 
                 if (graphics.Equals(Graphics.Unsupported))
                 {
-                    Debug.Error("Unsupported graphics for macos. Please install ( opengl 2.0+ or metal 1.0+ or Vulkan 1.0+ ).");
+                    Logger.Error("Unsupported graphics for macos. Please install ( opengl 2.0+ or metal 1.0+ or Vulkan 1.0+ ).");
                     return -1;
                 }
             }
@@ -139,18 +139,18 @@ namespace Alis.Editor
 
                 if (graphics.Equals(Graphics.Unsupported))
                 {
-                    Debug.Error("Unsupported graphics for linux. Please install ( opengl 2.0+ or Vulkan 1.0+ ).");
+                    Logger.Error("Unsupported graphics for linux. Please install ( opengl 2.0+ or Vulkan 1.0+ ).");
                     return -1;
                 }
             }
 
             Info info = new Info(platform, architecture, graphics);
-            Debug.Log("Info Platform: " + platform.ToString() + " " + architecture.ToString() + " " + graphics.ToString());
+            Logger.Log("Info Platform: " + platform.ToString() + " " + architecture.ToString() + " " + graphics.ToString());
 
             mainWindow = new MainWindow();           
             if (!mainWindow.Start(info)) 
             {
-                Debug.Error("Failed to start the main window. ");
+                Logger.Error("Failed to start the main window. ");
                 return -1;
             }
 

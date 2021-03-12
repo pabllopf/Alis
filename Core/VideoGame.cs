@@ -11,6 +11,8 @@ namespace Alis.Core
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
+    using SFML.Audio;
+    using SFML.System;
 
     /// <summary>Define the game.</summary>
     public class VideoGame
@@ -35,6 +37,8 @@ namespace Alis.Core
         [NotNull]
         private bool isRunning;
 
+        private Clock clock = new Clock();
+
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
         /// <param name="scenes">The scene.</param>        
@@ -50,6 +54,8 @@ namespace Alis.Core
             input = new Input();
             render = new Render(this.config);
             isRunning = true;
+
+            this.clock = new Clock();
 
             OnCreate += VideoGame_OnCreate;
             OnStart += VideoGame_OnStart;
@@ -129,8 +135,19 @@ namespace Alis.Core
                 Task.WaitAll(input.Start(), sceneManager.Start());
 
                 watch.Stop();
-                Console.WriteLine($" Time to Start Videogame: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($" Time to Start Videogame: " + watch.ElapsedMilliseconds + " ms");
             }).Wait();
+        }
+
+        public byte[] PreviewRender() 
+        {
+            Task.Run(() =>
+            {
+                OnUpdate.Invoke(this, true);
+                Task.WaitAll(input.Update(), sceneManager.Update());
+            }).Wait();
+
+            return render.FrameBytes();
         }
 
         /// <summary>Updates this instance.</summary>
@@ -138,26 +155,35 @@ namespace Alis.Core
         {
             while (isRunning) 
             {
-                var watch = new Stopwatch();
-                watch.Start();
-                
-                Task.Run(() =>
+                if (clock.ElapsedTime.AsMilliseconds() >= 0.1f)
                 {
-                    OnUpdate.Invoke(this, true);
-                    Task.WaitAll(input.Update(), sceneManager.Update());
-                }).Wait();
+                    var watch = new Stopwatch();
+                    watch.Start();
 
-                render.Update();
+                    Task.Run(() =>
+                    {
+                        OnUpdate.Invoke(this, true);
+                        Task.WaitAll(input.Update(), sceneManager.Update());
+                    }).Wait();
 
-                //isRunning = false;
+                    //isRunning = false;
 
-                watch.Stop();
-                Console.WriteLine($" Time to Update One Frame Videogame: " + (watch.ElapsedMilliseconds) + " ms");
+                    watch.Stop();
+                    Logger.Log($" Time to Update One Frame Videogame: " + (watch.ElapsedMilliseconds) + " ms");
 
-                //Task.Delay(1000).Wait();
+                    render.Update();
+
+                    //Task.Delay(1000).Wait();
+                    clock.Restart();
+                }
+
+               
             }
 
             render.Exit();
+
+            GC.Collect();
+            GC.WaitForFullGCComplete();
         }
 
         #region DefineEvents

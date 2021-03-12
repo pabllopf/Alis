@@ -13,6 +13,9 @@ namespace Alis.Core
     [JsonObject(MemberSerialization.OptIn)]
     public class Transform
     {
+        /// <summary>The icon</summary>
+        private readonly string icon = "\uf03d";
+
         /// <summary>The position</summary>
         [JsonProperty]
         [NotNull]
@@ -137,6 +140,10 @@ namespace Alis.Core
                 OnSizeChange.Invoke(this, true);
             }
         }
+
+        /// <summary>Gets the icon.</summary>
+        /// <value>The icon.</value>
+        public string Icon => icon;
 
         #region DefineEvents
 

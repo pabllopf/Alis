@@ -91,7 +91,7 @@ namespace Alis.Editor.UI
         /// <summary>Initializes a new instance of the <see cref="MainWindow" /> class.</summary>
         public MainWindow()
         {
-            Debug.Log("\nInit the Main Window.");
+            Logger.Log("\nInit the Main Window.");
         }
 
         /// <summary>Starts the specified information.</summary>
@@ -99,7 +99,7 @@ namespace Alis.Editor.UI
         /// <returns>return the exit result.</returns>
         public bool Start(Info info)
         {
-            Debug.Log("\nStarting Main Window...");
+            Logger.Log("\nStarting Main Window...");
 
             windowState = WindowState.Maximized;
 
@@ -111,7 +111,7 @@ namespace Alis.Editor.UI
                 windowInitialState: windowState,
                 windowTitle: title);
 
-            Debug.Log(" > WindowCreateInfo: (" +
+            Logger.Log(" > WindowCreateInfo: (" +
                "X:" + windowCreateInfo.X + " | " +
                "Y:" + windowCreateInfo.Y + " | " +
                "WindowWidth:" + windowCreateInfo.WindowWidth + " | " +
@@ -127,7 +127,7 @@ namespace Alis.Editor.UI
             swapchainDepthFormat: null,
             syncToVerticalBlank: syncToVerticalBlank);
 
-            Debug.Log(" > GraphicsDeviceOptions: (" +
+            Logger.Log(" > GraphicsDeviceOptions: (" +
                 "Debug:" + debug + " | " +
                 "SwapchainDepthFormat:" + "null" + " | " +
                 "SyncToVerticalBlank:" + syncToVerticalBlank + ")");
@@ -145,7 +145,7 @@ namespace Alis.Editor.UI
             window: out window,
             gd: out graphicsDevice);
 
-            Debug.Log(" > Window&GraphicsDevice: (" +
+            Logger.Log(" > Window&GraphicsDevice: (" +
                 "Info:" + "windowCreateInfo" + " | " +
                 "Device:" + "graphicsDeviceOptions" + " | " +
                 "preferredBackend:" + graphicsBackend.ToString() + " | " + 
@@ -154,7 +154,7 @@ namespace Alis.Editor.UI
 
             commandList = graphicsDevice.ResourceFactory.CreateCommandList();
 
-            Debug.Log(" > CommandList: (" + commandList.ToString() + ")");
+            Logger.Log(" > CommandList: (" + commandList.ToString() + ")");
 
             controller = new ImGuiController(
                 gd: graphicsDevice,
@@ -164,7 +164,7 @@ namespace Alis.Editor.UI
 
             imGuiController = controller;
 
-            Debug.Log(" > ImGuiController: (" +
+            Logger.Log(" > ImGuiController: (" +
                "Gd:" + "graphicsDevice" + " | " +
                "OutputDescription:" + "outputDescription" + " | " +
                "Width:" + window.Width + " | " +
@@ -173,25 +173,25 @@ namespace Alis.Editor.UI
             memoryEditor = new MemoryEditor();
             Random random = new Random();
             byte[] memoryEditorData = Enumerable.Range(0, 1024).Select(i => (byte)random.Next(255)).ToArray();
-            Debug.Log(" > MemoryEditor: (" + "Size: " + memoryEditorData.Length + ")");
+            Logger.Log(" > MemoryEditor: (" + "Size: " + memoryEditorData.Length + ")");
 
             window.Resized += Window_Resized;
-            Debug.Log(" > Created Event window.Resized: (" + "Func: " + "Window_Resized" + ")");
+            Logger.Log(" > Created Event window.Resized: (" + "Func: " + "Window_Resized" + ")");
 
             window.Closed += Window_Closed;
-            Debug.Log(" > Created Event window.Closed: (" + "Func: " + "Window_Closed" + ")");
+            Logger.Log(" > Created Event window.Closed: (" + "Func: " + "Window_Closed" + ")");
 
             window.Closing += Window_Closing;
-            Debug.Log(" > Created Event window.Closing: (" + "Func: " + "Window_Closing" + ")");
+            Logger.Log(" > Created Event window.Closing: (" + "Func: " + "Window_Closing" + ")");
 
             window.Moved += Window_Moved;
-            Debug.Log(" > Created Event window.Moved: (" + "Func: " + "Window_Moved" + ")");
+            Logger.Log(" > Created Event window.Moved: (" + "Func: " + "Window_Moved" + ")");
 
             widgetManager = new WidgetManager(info);
-            Debug.Log(" > Created widgetManager.");
+            Logger.Log(" > Created widgetManager.");
 
             deltaSeconds = 1.0f / 60.0f;
-            Debug.Log(" > Delta Seconds: " + deltaSeconds);
+            Logger.Log(" > Delta Seconds: " + deltaSeconds);
 
             Project.OnChangeProject += Project_OnChangeProject;
 
@@ -209,7 +209,7 @@ namespace Alis.Editor.UI
         /// <summary>Updates this instance.</summary>
         private void Update()
         {
-            Debug.Log("\nRunning Alis...");
+            Logger.Log("\nRunning Alis...");
 
             while (window.Exists)
             {
@@ -217,7 +217,7 @@ namespace Alis.Editor.UI
                 snapshot = window.PumpEvents();
                 if (!window.Exists)
                 {
-                    Debug.Log("Windows not Exists.");
+                    Logger.Log("Windows not Exists.");
                     break;
                 }
 
@@ -244,26 +244,26 @@ namespace Alis.Editor.UI
             graphicsDevice.MainSwapchain.Resize((uint)window.Width, (uint)window.Height);
             controller.WindowResized(window.Width, window.Height);
 
-            Debug.Log("EVENT Window Resized: (" + "Width:" + window.Width + " Height:" + window.Height + ")");
+            Logger.Log("EVENT Window Resized: (" + "Width:" + window.Width + " Height:" + window.Height + ")");
         }
 
         /// <summary>Windows the closed.</summary>
         private void Window_Closed()
         {
-            Debug.Log("EVENT Window Closed: (" + "true" + ")");
+            Logger.Log("EVENT Window Closed: (" + "true" + ")");
         }
 
         /// <summary>Windows the closing.</summary>
         private void Window_Closing()
         {
-            Debug.Log("EVENT Window Closing: (" + "true" + ")");
+            Logger.Log("EVENT Window Closing: (" + "true" + ")");
         }
 
         /// <summary>Windows the moved.</summary>
         /// <param name="obj">The object.</param>
         private void Window_Moved(Point obj)
         {
-            Debug.Log("EVENT Window Moved: (" + "PosX:" + obj.X + " PosY:" + obj.Y + ")");
+            Logger.Log("EVENT Window Moved: (" + "PosX:" + obj.X + " PosY:" + obj.Y + ")");
         }
 
         /// <summary>Shows the preview message.</summary>
@@ -289,7 +289,7 @@ namespace Alis.Editor.UI
         /// <summary>Loads the style.</summary>
         private void LoadStyle()
         {
-            Debug.Log(" > Loaded main style.");
+            Logger.Log(" > Loaded main style.");
             clearColor = new RgbaFloat(1.0f, 1.0f, 1.0f, 1.0f);
 
             style = ImGui.GetStyle();

@@ -91,7 +91,7 @@ namespace Alis.Core
                 currentScene.Start().Wait();
 
                 watch.Stop();
-                Console.WriteLine($"  Time to Start scene manager: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"  Time to Start scene manager: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -108,7 +108,7 @@ namespace Alis.Core
                 currentScene.Update().Wait();
 
                 watch.Stop();
-                Console.WriteLine($"  Time to Update scene manager: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"  Time to Update scene manager: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 

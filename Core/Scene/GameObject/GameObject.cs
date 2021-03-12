@@ -164,7 +164,7 @@ namespace Alis.Core
 
         /// <summary>Adds the component.</summary>
         /// <param name="component">The component.</param>
-        public void AddComponent([NotNull] Component component)
+        public void Add([NotNull] Component component)
         {
             for (int index = 0; index < components.Count; index++)
             {
@@ -178,7 +178,7 @@ namespace Alis.Core
 
         /// <summary>Removes the component.</summary>
         /// <param name="component">The component.</param>
-        public void RemoveComponent([NotNull] Component component)
+        public void Remove([NotNull] Component component)
         {
             for (int index = 0; index < components.Count; index++)
             {

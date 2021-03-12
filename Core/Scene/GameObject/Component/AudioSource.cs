@@ -50,12 +50,21 @@ namespace Alis.Core
             this.playOnAwake = playOnAwake;
             this.volume = volume;
 
-            audio = new Music(audioFile);
+            if (!audioFile.Equals(string.Empty)) 
+            {
+                audio = new Music(audioFile);
+            }
+            
 
             OnPlay += AudioSource_OnPlay;
             OnStop += AudioSource_OnStop;
             OnPause += AudioSource_OnPause;
             OnRestart += AudioSource_OnRestart;
+        }
+
+        ~AudioSource()
+        {
+            Stop();
         }
 
         /// <summary>Occurs when [change].</summary>

@@ -9,7 +9,6 @@ namespace Alis.Editor.UI.Widgets
     using Alis.Editor.Utils;
     using System;
     using System.Numerics;
-    using Alis.Tools;
     using System.Collections.Generic;
     using System.Reflection;
     using System.Linq;
@@ -18,7 +17,7 @@ namespace Alis.Editor.UI.Widgets
     /// <summary>Manage components of scene.</summary>
     public class Inspector : Widget
     {
-        private readonly Dictionary<Type, Action<IComponent, PropertyInfo>> fields = new Dictionary<Type, Action<IComponent, PropertyInfo>>()
+        private readonly Dictionary<Type, Action<Component, PropertyInfo>> fields = new Dictionary<Type, Action<Component, PropertyInfo>>()
         {
             { typeof(bool), DrawBoolField },
             { typeof(string), DrawStringField },
@@ -125,11 +124,11 @@ namespace Alis.Editor.UI.Widgets
             {
                 foreach (PropertyInfo property in gameObject.Transform.GetType().GetProperties())
                 {
-                    foreach (KeyValuePair<Type, Action<IComponent, PropertyInfo>> field in fields)
+                    foreach (KeyValuePair<Type, Action<Component, PropertyInfo>> field in fields)
                     {
                         if (field.Key.Equals(property.PropertyType) && property.CanWrite)
                         {
-                            field.Value.Invoke((IComponent)gameObject.Transform, property);
+                            //field.Value.Invoke((Component)gameObject.Transform, property);
                         }
                     }
                 }
@@ -139,7 +138,7 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.EndGroup();
 
-            foreach (IComponent component in gameObject.Components)
+            foreach (Component component in gameObject.Components)
             {
                 ImGui.BeginGroup();
                 ImGui.AlignTextToFramePadding();
@@ -147,7 +146,7 @@ namespace Alis.Editor.UI.Widgets
                 {
                     foreach (PropertyInfo property in component.GetType().GetProperties())
                     {
-                        foreach (KeyValuePair<Type, Action<IComponent, PropertyInfo>> field in fields)
+                        foreach (KeyValuePair<Type, Action<Component, PropertyInfo>> field in fields)
                         {
                             if (field.Key.Equals(property.PropertyType) && property.CanWrite)
                             {
@@ -170,14 +169,14 @@ namespace Alis.Editor.UI.Widgets
             if (ImGui.BeginPopup("ElementList"))
             {
 
-                Type type = typeof(IComponent);
+                Type type = typeof(Component);
                 IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
                     .SelectMany(s => s.GetTypes())
                     .Where(p => type.IsAssignableFrom(p));
 
                 foreach (Type component in types)
                 {
-                    if (!component.Name.Equals("IComponent") && !component.Name.Equals("Transform"))
+                    if (!component.Name.Equals("Component") && !component.Name.Equals("Transform"))
                     {
                         if (ImGui.MenuItem(component.Name))
                         {
@@ -188,7 +187,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawStringField(IComponent component, PropertyInfo property)
+        private static void DrawStringField(Component component, PropertyInfo property)
         {
             string content = (string)property.GetValue(component) ?? "";
 
@@ -198,7 +197,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawBoolField(IComponent component, PropertyInfo property)
+        private static void DrawBoolField(Component component, PropertyInfo property)
         {
             bool content = (bool)property.GetValue(component);
             if (ImGui.Checkbox(property.Name, ref content))
@@ -207,7 +206,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawFloatField(IComponent component, PropertyInfo property)
+        private static void DrawFloatField(Component component, PropertyInfo property)
         {
             float content = (float)property.GetValue(component);
             if (ImGui.InputFloat(property.Name, ref content, 0.1f))
@@ -216,7 +215,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawIntField(IComponent component, PropertyInfo property)
+        private static void DrawIntField(Component component, PropertyInfo property)
         {
             int content = (int)property.GetValue(component);
             if (ImGui.InputInt(property.Name, ref content, 1))
@@ -225,7 +224,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawByteField(IComponent component, PropertyInfo property)
+        private static void DrawByteField(Component component, PropertyInfo property)
         {
             int content = (int)property.GetValue(component);
             if (ImGui.InputInt(property.Name, ref content, 1))
@@ -234,7 +233,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawLongField(IComponent component, PropertyInfo property)
+        private static void DrawLongField(Component component, PropertyInfo property)
         {
             int content = (int)property.GetValue(component);
             if (ImGui.InputInt(property.Name, ref content, 1))
@@ -243,7 +242,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawDoubleField(IComponent component, PropertyInfo property)
+        private static void DrawDoubleField(Component component, PropertyInfo property)
         {
             double content = (double)property.GetValue(component);
             if (ImGui.InputDouble(property.Name, ref content, 1))
@@ -252,7 +251,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawVector2Field(IComponent component, PropertyInfo property)
+        private static void DrawVector2Field(Component component, PropertyInfo property)
         {
             ImGui.Text(property.Name);
             ImGui.Columns(2, property.Name, true);
@@ -277,7 +276,7 @@ namespace Alis.Editor.UI.Widgets
             ImGui.Columns(1);
         }
 
-        private static void DrawVector2fField(IComponent component, PropertyInfo property)
+        private static void DrawVector2fField(Component component, PropertyInfo property)
         {
             ImGui.Text(property.Name);
             ImGui.Columns(2, property.Name, true);
@@ -302,7 +301,7 @@ namespace Alis.Editor.UI.Widgets
             ImGui.Columns(1);
         }
 
-        private static void DrawVector3Field(IComponent component, PropertyInfo property)
+        private static void DrawVector3Field(Component component, PropertyInfo property)
         {
             ImGui.Text(property.Name);
             ImGui.Columns(3, property.Name, true);
@@ -336,29 +335,29 @@ namespace Alis.Editor.UI.Widgets
             ImGui.Columns(1);
         }
 
-        private static void DrawListField(IComponent component, PropertyInfo property)
+        private static void DrawListField(Component component, PropertyInfo property)
         {
         }
 
 
         private static void NewAudiosource(GameObject gameObject)
         {
-            gameObject.Add(new AudioSource("", Project.Current.AssetsPath + "/", true, 1));
+            gameObject.Add(new AudioSource(Project.Current.AssetsPath + "/" + "", true, 1));
         }
 
         private static void NewAnimator(GameObject gameObject)
         {
-            gameObject.Add(new Animator(0));
+            gameObject.Add(new Animator());
         }
 
         private static void NewSprite(GameObject gameObject)
         {
-            gameObject.Add(new Sprite("", Project.Current.AssetsPath + "/", 0));
+            gameObject.Add(new Sprite());
         }
 
         private static void NewCamera(GameObject gameObject)
         {
-            gameObject.Add(new Camera(new SFML.System.Vector2f(0f, 0f), new SFML.System.Vector2f(640f, 380f)));
+            gameObject.Add(new Camera(new Vector2f(0f, 0f), new Vector2f(640f, 380f)));
         }
     }
 }

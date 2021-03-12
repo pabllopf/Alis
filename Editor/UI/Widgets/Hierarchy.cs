@@ -42,7 +42,7 @@ namespace Alis.Editor.UI.Widgets
 
                 if (Project.Current != null)
                 {
-                    foreach (Scene scene in Project.Current.VideoGame.Scenes)
+                    foreach (Scene scene in Project.Current.VideoGame.SceneManager.Scenes)
                     {
                         ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
                         ImGui.PushStyleColor(ImGuiCol.Button, childBackground);

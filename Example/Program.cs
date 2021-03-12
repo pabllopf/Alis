@@ -20,9 +20,13 @@ namespace SFML
             var watch = new Stopwatch();
             watch.Start();
 
-            var game = new VideoGame(
+            new VideoGame(
                 new Config("Example"),
                     new Scene("First",
+                       new GameObject("Player24724", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
+                            new Sprite()
+                        ),
+
                         new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite(),
                             new Animator(0,
@@ -31,69 +35,25 @@ namespace SFML
                                 new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
                                 new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
                             ),
-                            new Move()
+                            new Move(),
+                            new Camera(new System.Vector2f(0, 0), new System.Vector2f(640, 380))
                         ),
 
                        new GameObject("SoundTrack", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new AudioSource()
                         ),
-                        new GameObject("Player23", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Physics()
-                        ),
-                        new GameObject("Player214", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Physics()
-                        ),
-                        new GameObject("Player224", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Physics()
-                        ),
-                        new GameObject("Player234", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Physics()
-                        ),
-                        new GameObject("Player244", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Physics()
-                        ),
                         new GameObject("Player2474", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
                             new Sprite()
                         )
                     )
-            ); 
-
-            game.Run();
+            ).Run();
 
             watch.Stop();
-            Console.WriteLine($"Total Videogame Time: " + watch.ElapsedMilliseconds + " ms");
-
-            Console.WriteLine("Procesesor: " + Environment.ProcessorCount);
-
-            LocalData.Save("Example", game);
-
-            Console.WriteLine("\n");
-
-            Thread.Sleep(5000);
+            Console.WriteLine($"RESULT: Videogame Time: " + watch.ElapsedMilliseconds + " ms \n");
 
 
-            var gameloaded = LocalData.Load<VideoGame>("Example");
-
-            watch = new Stopwatch();
-            watch.Start();
-
-            gameloaded.Run();
-
-            watch.Stop();
-            Console.WriteLine($"Total Videogame Loaded Time: " + watch.ElapsedMilliseconds + " ms");
-
-            Console.WriteLine("\n");
-
-            Thread.Sleep(5000);
-
-            watch = new Stopwatch();
-            watch.Start();
-
-            VideoGame.LoadOfFile("Example").Run();
-
-            watch.Stop();
-            Console.WriteLine($"Total Videogame Loaded of FILE Time: " + watch.ElapsedMilliseconds + " ms");
-
+            Thread.Sleep(1000);
+            Console.WriteLine("RUN TEST TASK vs NORMAL: ");
             
             string name = Test_Normal(100);
             string name2 = await Test_Task(100);
@@ -117,8 +77,6 @@ namespace SFML
 
         private static List<Task> GenerateTasks(int size)
         {
-
-
             List<Task> result = new List<Task>();
 
             for (int i = 0; i < size; i++)
@@ -132,7 +90,6 @@ namespace SFML
         private static async Task ProcessAsync(int i ) 
         {
             await Task.Delay(new Random().Next(10, 100));
-            Console.WriteLine("Process: " + i);
         }
 
         private static string Test_Normal(int size) 

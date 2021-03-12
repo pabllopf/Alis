@@ -11,6 +11,9 @@ namespace Alis.Core
     /// <summary>Define a component</summary>
     public abstract class Component 
     {
+        /// <summary>The icon</summary>
+        private readonly string icon = "\uf03d";
+
         /// <summary>The game object</summary>
         [NotNull]
         [JsonIgnore]
@@ -77,6 +80,10 @@ namespace Alis.Core
                 }
             }
         }
+
+        /// <summary>Gets the icon.</summary>
+        /// <value>The icon.</value>
+        public string Icon => icon;
 
         /// <summary>Creates this instance.</summary>
         public virtual void Create()

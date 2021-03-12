@@ -39,6 +39,7 @@
   <!-- _____________________________ IMPORTS ____________________________________ -->
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Tools\Tools.csproj" />
   </ItemGroup>
     
   <ItemGroup>

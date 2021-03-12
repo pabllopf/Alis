@@ -35,7 +35,7 @@ namespace Alis.Core
                 Task.Delay(1000).Wait();
 
                 watch.Stop();
-                Console.WriteLine($"  Time to Start INPUT: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"  Time to Start INPUT: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -49,7 +49,7 @@ namespace Alis.Core
                 PollEvents();
 
                 watch.Stop();
-                Console.WriteLine($"  Time to UPDATE: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"  Time to UPDATE INPUT: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 

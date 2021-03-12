@@ -164,13 +164,13 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Opens this instance.</summary>
         public override void Open()
         {
-            Debug.Log("DockSpace::Open");
+            Logger.Log("DockSpace::Open");
         }
 
         /// <summary>Closes this instance.</summary>
         public override void Close()
         {
-            Debug.Log("DockSpace::Close");
+            Logger.Log("DockSpace::Close");
         }
 
         /// <summary>Clicks the button.</summary>

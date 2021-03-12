@@ -142,7 +142,7 @@ namespace Alis.Core
                 Task.WaitAll(tasks.ToArray());
 
                 watch.Stop();
-                Console.WriteLine($"  Time to Start scene loaded: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"  Time to Start scene loaded: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -183,7 +183,7 @@ namespace Alis.Core
                 Task.WaitAll(tasks.ToArray());
 
                 watch.Stop();
-                Console.WriteLine($"  Time to Update scene loaded: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"  Time to Update scene loaded: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -217,7 +217,7 @@ namespace Alis.Core
                 }
 
                 watch.Stop();
-                Console.WriteLine($"    Time to start the GameObjects: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"    Time to start the GameObjects: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -252,7 +252,7 @@ namespace Alis.Core
                 }
 
                 watch.Stop();
-                Console.WriteLine($"    Time to update the GameObjects: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"    Time to update the GameObjects: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 

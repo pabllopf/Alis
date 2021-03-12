@@ -30,14 +30,14 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Opens this instance.</summary>
         public override void Open()
         {
-            Debug.Log("Game view Opened");
+            Logger.Log("Game view Opened");
             isOpen = true;
         }
 
         /// <summary>Close this instance.</summary>
         public override void Close()
         {
-            Debug.Log("Game view closed");
+            Logger.Log("Game view closed");
             isOpen = false;
         }
 

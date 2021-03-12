@@ -87,6 +87,16 @@ namespace Alis.Core
         [JsonIgnore]
         public static Render Current { get => current; set => current = value; }
 
+        /// <summary>Gets or sets the render texture.</summary>
+        /// <value>The render texture.</value>
+        [JsonIgnore]
+        public RenderTexture RenderTexture { get => renderTexture; set => renderTexture = value; }
+
+        /// <summary>Gets or sets the render window.</summary>
+        /// <value>The render window.</value>
+        [JsonIgnore]
+        public RenderWindow RenderWindow { get => renderWindow; set => renderWindow = value; }
+
         /// <summary>Frames the bytes.</summary>
         /// <returns>Return none</returns>
         public byte[] FrameBytes()
@@ -148,7 +158,7 @@ namespace Alis.Core
                 OnStart.Invoke(this, true);
 
                 watch.Stop();
-                Console.WriteLine($"  Time to Start render: " + watch.ElapsedMilliseconds + " ms");
+                Logger.Log($"  Time to Start render: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -173,7 +183,7 @@ namespace Alis.Core
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
                 foreach (Sprite sprite in sprites)
                 {
-                    Console.WriteLine("Render: " + sprite.GetType());
+                    Logger.Log("Render: " + sprite.GetType());
                     renderWindow.Draw(sprite.GetDraw());
                 }
             }
@@ -183,7 +193,7 @@ namespace Alis.Core
             OnUpdate.Invoke(this, true);
 
             watch.Stop();
-            Console.WriteLine($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
+            Logger.Log($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
         }
 
         /// <summary>Exits this instance.</summary>
