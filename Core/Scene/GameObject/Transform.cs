@@ -31,6 +31,20 @@ namespace Alis.Core
         [NotNull]
         private Vector3 size;
 
+        private float xPos;
+
+        private float yPos;
+
+        private float zPos;
+
+        private bool goUp = true;
+
+        private bool goDown = true;
+
+        private bool goLeft = true;
+
+        private bool goRight = true;
+
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         public Transform()
         {
@@ -108,11 +122,6 @@ namespace Alis.Core
         public Vector3 Position
         {
             get => position; 
-            set
-            {
-                position = value;
-                OnPositionChange.Invoke(this, true);
-            }
         }
 
         /// <summary>Gets or sets the rotation.</summary>
@@ -144,6 +153,70 @@ namespace Alis.Core
         /// <summary>Gets the icon.</summary>
         /// <value>The icon.</value>
         public string Icon => icon;
+
+        public float XPos
+        {
+            get => xPos; 
+            set
+            {
+                if (value != position.X)
+                {
+                    if (value < position.X && goLeft)
+                    {
+                        position.X = value;
+                        xPos = value;
+                        OnPositionChange.Invoke(this, true);
+                    }
+
+                    if (value > position.X && goRight)
+                    {
+                        position.X = value;
+                        xPos = value;
+                        OnPositionChange.Invoke(this, true);
+                    }
+                }
+            }
+        }
+        public float YPos
+        {
+            get => yPos; set
+            {
+                if (value != position.Y)
+                {
+                    if (value < position.Y && goUp) 
+                    {
+                        position.Y = value;
+                        yPos = value;
+                        OnPositionChange.Invoke(this, true);
+                    }
+
+                    if (value > position.Y && goDown)
+                    {
+                        position.Y = value;
+                        yPos = value;
+                        OnPositionChange.Invoke(this, true);
+                    }
+                }
+            }
+        }
+        public float ZPos
+        {
+            get => zPos; 
+            set
+            {
+                if (value != position.Z) 
+                {
+                    position.Z = value;
+                    zPos = value;
+                    OnPositionChange.Invoke(this, true);
+                }
+            }
+        }
+
+        public bool GoUp { get => goUp; set => goUp = value; }
+        public bool GoDown { get => goDown; set => goDown = value; }
+        public bool GoLeft { get => goLeft; set => goLeft = value; }
+        public bool GoRight { get => goRight; set => goRight = value; }
 
         #region DefineEvents
 

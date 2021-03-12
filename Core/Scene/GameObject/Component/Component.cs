@@ -126,6 +126,23 @@ namespace Alis.Core
         {
         }
 
+
+        /// <summary>Destroy this instance.</summary>
+        public virtual void OnCollionEnter(Collision collision)
+        {
+        }
+
+        /// <summary>Destroy this instance.</summary>
+        public virtual void OnCollionExit(Collision collision)
+        {
+        }
+
+        /// <summary>Destroy this instance.</summary>
+        public virtual void OnCollionStay(Collision collision)
+        {
+        }
+
+
         /// <summary>Attaches to.</summary>
         /// <param name="gameObject">The game object.</param>
         internal void AttachTo([NotNull] GameObject gameObject) 

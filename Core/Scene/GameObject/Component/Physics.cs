@@ -9,19 +9,43 @@ namespace Alis.Core
     /// <summary>Define a component</summary>
     public class Physics : Component
     {
+        private Transform transform;
+
+        private bool test;
+
+        private bool isStatic;
+
         /// <summary>Initializes a new instance of the <see cref="Physics" /> class.</summary>
         public Physics() 
         {
+            test = true;
+        }
+
+        public override void OnCollionEnter(Collision collision)
+        {
+            Console.WriteLine("Collsion dentro");
+
+           
+        }
+
+        public override void OnCollionExit(Collision collision)
+        {
+            Console.WriteLine("Collision saliente");
+        }
+
+        public override void OnCollionStay(Collision collision)
+        {
+            if (test) 
+            {
+                Console.WriteLine("Collision chocando");
+                test = false;
+            }
         }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-        }
-
-        /// <summary>Before the update.</summary>
-        public override void BeforeUpdate()
-        { 
+            this.transform = this.GetGameObject().Transform;
         }
 
         /// <summary>Updates this instance.</summary>
