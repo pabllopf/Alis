@@ -8,17 +8,20 @@ namespace Alis.Core
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
     using System.Threading.Tasks;
     using SFML.Graphics;
     using SFML.Window;
     using Newtonsoft.Json;
+    using System.Linq;
 
     /// <summary>Render define</summary>
     public class Render
     {
+        private static Render current;
+
         [JsonProperty]
-        private Config config;
+        [NotNull]
+        private readonly Config config;
 
         /// <summary>The window</summary>
         [NotNull]
@@ -33,32 +36,65 @@ namespace Alis.Core
         [JsonProperty]
         private List<Sprite> sprites;
 
-        /// <summary>The circle</summary>
-        private CircleShape circle;
-
-        /// <summary>Gets or sets the sprites.</summary>
-        /// <value>The sprites.</value>
-        public List<Sprite> Sprites { get => sprites; set => sprites = value; }
-
         /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
+        /// <param name="config">The configuration.</param>
         [JsonConstructor]
         public Render([NotNull] Config config)
         {
             this.config = config;
-
             videoMode = new VideoMode(512, 320);
             sprites = new List<Sprite>();
+
+            OnCreate += Render_OnCreate;
+            OnStart += Render_OnStart;
+            OnUpdate += Render_OnUpdate;
+            OnDestroy += Render_OnDestroy;
+
+            current = this;
         }
 
-        private void RenderWindow_Closed(object sender, EventArgs e)
+        /// <summary>Finalizes an instance of the <see cref="Render" /> class.</summary>
+        ~Render() => OnDestroy.Invoke(this, true);
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnCreate;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnStart;
+
+        /// <summary>Occurs when [on update].</summary>
+        public event EventHandler<bool> OnUpdate;
+
+        /// <summary>Occurs when [change].</summary>
+        public event EventHandler<bool> OnDestroy;
+
+        /// <summary>Gets or sets the sprites.</summary>
+        /// <value>The sprites.</value>
+        public List<Sprite> Sprites { get => sprites; set => sprites = value; }
+        public static Render Current { get => current; set => current = value; }
+
+        /// <summary>Adds the sprite.</summary>
+        /// <param name="sprite">The sprite.</param>
+        internal void AddSprite(Sprite sprite) 
         {
-            renderWindow.Close();
-            Environment.Exit(0);
+            if (!sprites.Contains(sprite)) 
+            {
+                sprites.Add(sprite);
+            }
+        }
+
+        /// <summary>Deletes the sprite.</summary>
+        /// <param name="sprite">The sprite.</param>
+        internal void DeleteSprite(Sprite sprite)
+        {
+            if (sprites.Contains(sprite))
+            {
+                sprites.Remove(sprite);
+            }
         }
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
-        [return: NotNull]
         internal Task Start()
         {
             return Task.Run(() =>
@@ -68,6 +104,8 @@ namespace Alis.Core
 
                 Task.Delay(1000).Wait();
 
+                OnStart.Invoke(this, true);
+
                 watch.Stop();
                 Console.WriteLine($"  Time to Start render: " + watch.ElapsedMilliseconds + " ms");
             });
@@ -75,7 +113,7 @@ namespace Alis.Core
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
-        public void Update()
+        internal void Update()
         {
             var watch = new Stopwatch();
             watch.Start();
@@ -83,24 +121,36 @@ namespace Alis.Core
             if (renderWindow is null) 
             {
                 renderWindow = new RenderWindow(videoMode, config.Name);
-                renderWindow.SetActive(true);
-
-                circle = new CircleShape(50f);
+                renderWindow.Closed += RenderWindow_Closed;
             }
 
-
             renderWindow.DispatchEvents();
-            renderWindow.Clear(Color.Blue);
+            renderWindow.Clear();
 
-
-            renderWindow.Draw(circle);
+            if (sprites.Count > 0) 
+            {
+                sprites = sprites.OrderBy(o => o.Depth).ToList();
+                foreach (Sprite sprite in sprites)
+                {
+                    Console.WriteLine("Render: " + sprite.GetType()); 
+                    renderWindow.Draw(sprite.GetDraw());
+                }
+            }
 
             renderWindow.Display();
+
+            OnUpdate.Invoke(this, true);
 
             watch.Stop();
             Console.WriteLine($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
         }
 
+        private void RenderWindow_Closed(object sender, EventArgs e)
+        {
+            Exit();
+        }
+
+        /// <summary>Exits this instance.</summary>
         internal void Exit()
         {
             if (renderWindow != null) 
@@ -113,6 +163,30 @@ namespace Alis.Core
                 }
             }
         }
+
+        #region DefineEvents
+
+        /// <summary>Renders the on create.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Render_OnCreate(object sender, bool e) => Logger.Info();
+
+        /// <summary>Renders the on start.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Render_OnStart(object sender, bool e) => Logger.Info();
+
+        /// <summary>Renders the on update.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Render_OnUpdate(object sender, bool e) => Logger.Info();
+
+        /// <summary>Renders the on destroy.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void Render_OnDestroy(object sender, bool e) => Logger.Info();
+
+        #endregion
     }
 }
         /*

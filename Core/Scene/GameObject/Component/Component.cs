@@ -126,6 +126,11 @@ namespace Alis.Core
             this.gameObject = gameObject;
         }
 
+        internal GameObject GetGameObject() 
+        {
+            return this.gameObject;
+        }
+
         #region DefineEvents
 
         /// <summary>Components the on create.</summary>
