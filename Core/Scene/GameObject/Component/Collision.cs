@@ -130,7 +130,13 @@ namespace Alis.Core
                         this.GetGameObject().Transform.GoDown = true;
                         this.GetGameObject().Transform.GoLeft = true;
                         this.GetGameObject().Transform.GoRight = true;
-                        Render.Current.Collisions[Render.Current.Collisions.IndexOf(rectangle)].OutlineColor = Color.Green;
+
+                        if (Render.Current.Collisions.Count > 0) 
+                        {
+                            Render.Current.Collisions[Render.Current.Collisions.IndexOf(rectangle)].OutlineColor = Color.Green;
+                        }
+
+                       
                     }
                 }
             }
