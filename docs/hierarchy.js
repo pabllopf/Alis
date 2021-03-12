@@ -1,8 +1,10 @@
 var hierarchy =
 [
+    [ "Alis.Core.Animation", "class_alis_1_1_core_1_1_animation.html", null ],
     [ "Alis.Tools.Application", "struct_alis_1_1_tools_1_1_application.html", null ],
     [ "Alis.Core.Asset", "class_alis_1_1_core_1_1_asset.html", null ],
     [ "Attribute", null, [
+      [ "Newtonsoft.Json.JsonConstructorAttribute", "class_newtonsoft_1_1_json_1_1_json_constructor_attribute.html", null ],
       [ "Newtonsoft.Json.JsonContainerAttribute", "class_newtonsoft_1_1_json_1_1_json_container_attribute.html", [
         [ "Newtonsoft.Json.JsonArrayAttribute", "class_newtonsoft_1_1_json_1_1_json_array_attribute.html", null ],
         [ "Newtonsoft.Json.JsonDictionaryAttribute", "class_newtonsoft_1_1_json_1_1_json_dictionary_attribute.html", null ],

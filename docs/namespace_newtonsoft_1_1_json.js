@@ -10,6 +10,7 @@ var namespace_newtonsoft_1_1_json =
     [ "IArrayPool", "interface_newtonsoft_1_1_json_1_1_i_array_pool.html", "interface_newtonsoft_1_1_json_1_1_i_array_pool" ],
     [ "IJsonLineInfo", "interface_newtonsoft_1_1_json_1_1_i_json_line_info.html", "interface_newtonsoft_1_1_json_1_1_i_json_line_info" ],
     [ "JsonArrayAttribute", "class_newtonsoft_1_1_json_1_1_json_array_attribute.html", "class_newtonsoft_1_1_json_1_1_json_array_attribute" ],
+    [ "JsonConstructorAttribute", "class_newtonsoft_1_1_json_1_1_json_constructor_attribute.html", null ],
     [ "JsonContainerAttribute", "class_newtonsoft_1_1_json_1_1_json_container_attribute.html", "class_newtonsoft_1_1_json_1_1_json_container_attribute" ],
     [ "JsonConvert", "class_newtonsoft_1_1_json_1_1_json_convert.html", "class_newtonsoft_1_1_json_1_1_json_convert" ],
     [ "JsonConverter", "class_newtonsoft_1_1_json_1_1_json_converter.html", null ],

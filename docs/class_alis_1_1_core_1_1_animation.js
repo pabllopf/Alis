@@ -1,7 +1,6 @@
 var class_alis_1_1_core_1_1_animation =
 [
     [ "Animation", "class_alis_1_1_core_1_1_animation.html#ac7756002de8b6975373920f89933fca3", null ],
-    [ "GetDebuggerDisplay", "class_alis_1_1_core_1_1_animation.html#a2c9f690d1796cdbf98236d2150e646c8", null ],
     [ "name", "class_alis_1_1_core_1_1_animation.html#ab7ef387cd1251d4126b426670c5a8358", null ],
     [ "state", "class_alis_1_1_core_1_1_animation.html#aba51c38c6c62b7d0c9a85a8f569dd65f", null ],
     [ "images", "class_alis_1_1_core_1_1_animation.html#a483a8518146840f6ddde0f214effea08", null ],
