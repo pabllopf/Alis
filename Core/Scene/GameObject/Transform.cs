@@ -31,19 +31,32 @@ namespace Alis.Core
         [NotNull]
         private Vector3 size;
 
+        /// <summary>The x position</summary>
         private float xPos;
 
+        /// <summary>The y position</summary>
         private float yPos;
 
+        /// <summary>The z position</summary>
         private float zPos;
 
-        private bool goUp = true;
+        /// <summary>The go up</summary>
+        private bool canGoUp = true;
 
-        private bool goDown = true;
+        /// <summary>The go down</summary>
+        private bool canGoDown = true;
 
-        private bool goLeft = true;
+        /// <summary>The go left</summary>
+        private bool canGoLeft = true;
 
-        private bool goRight = true;
+        /// <summary>The go right</summary>
+        private bool canGoRight = true;
+
+        /// <summary>The can go inside</summary>
+        private bool canGoInside = true;
+
+        /// <summary>The can go out</summary>
+        private bool canGoOut = true;
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         public Transform()
@@ -116,7 +129,7 @@ namespace Alis.Core
         /// <summary>Occurs when [change].</summary>
         public event EventHandler<bool> OnDestroy;
 
-        /// <summary>Gets or sets the position.</summary>
+        /// <summary>Gets the position.</summary>
         /// <value>The position.</value>
         [NotNull]
         public Vector3 Position
@@ -154,6 +167,8 @@ namespace Alis.Core
         /// <value>The icon.</value>
         public string Icon => icon;
 
+        /// <summary>Gets or sets the x position.</summary>
+        /// <value>The x position.</value>
         public float XPos
         {
             get => xPos; 
@@ -161,14 +176,14 @@ namespace Alis.Core
             {
                 if (value != position.X)
                 {
-                    if (value < position.X && goLeft)
+                    if (value < position.X && canGoLeft)
                     {
                         position.X = value;
                         xPos = value;
                         OnPositionChange.Invoke(this, true);
                     }
 
-                    if (value > position.X && goRight)
+                    if (value > position.X && canGoRight)
                     {
                         position.X = value;
                         xPos = value;
@@ -177,20 +192,23 @@ namespace Alis.Core
                 }
             }
         }
+
+        /// <summary>Gets or sets the y position.</summary>
+        /// <value>The y position.</value>
         public float YPos
         {
             get => yPos; set
             {
                 if (value != position.Y)
                 {
-                    if (value < position.Y && goUp) 
+                    if (value < position.Y && canGoUp) 
                     {
                         position.Y = value;
                         yPos = value;
                         OnPositionChange.Invoke(this, true);
                     }
 
-                    if (value > position.Y && goDown)
+                    if (value > position.Y && canGoDown)
                     {
                         position.Y = value;
                         yPos = value;
@@ -199,6 +217,9 @@ namespace Alis.Core
                 }
             }
         }
+
+        /// <summary>Gets or sets the z position.</summary>
+        /// <value>The z position.</value>
         public float ZPos
         {
             get => zPos; 
@@ -206,17 +227,52 @@ namespace Alis.Core
             {
                 if (value != position.Z) 
                 {
-                    position.Z = value;
-                    zPos = value;
-                    OnPositionChange.Invoke(this, true);
+                    if (value < position.Z && canGoOut)
+                    {
+                        position.Z = value;
+                        zPos = value;
+                        OnPositionChange.Invoke(this, true);
+                    }
+                    
+                    if (value > position.Z && canGoInside)
+                    {
+                        position.Z = value;
+                        zPos = value;
+                        OnPositionChange.Invoke(this, true);
+                    }
                 }
             }
         }
 
-        public bool GoUp { get => goUp; set => goUp = value; }
-        public bool GoDown { get => goDown; set => goDown = value; }
-        public bool GoLeft { get => goLeft; set => goLeft = value; }
-        public bool GoRight { get => goRight; set => goRight = value; }
+        /// <summary>Gets or sets a value indicating whether [go up].</summary>
+        /// <value>
+        /// <c>true</c> if [go up]; otherwise, <c>false</c>.</value>
+        internal bool CanGoUp { get => canGoUp; set => canGoUp = value; }
+        
+        /// <summary>Gets or sets a value indicating whether [go down].</summary>
+        /// <value>
+        /// <c>true</c> if [go down]; otherwise, <c>false</c>.</value>
+        internal bool CanGoDown { get => canGoDown; set => canGoDown = value; }
+
+        /// <summary>Gets or sets a value indicating whether [go left].</summary>
+        /// <value>
+        /// <c>true</c> if [go left]; otherwise, <c>false</c>.</value>
+        internal bool CanGoLeft { get => canGoLeft; set => canGoLeft = value; }
+
+        /// <summary>Gets or sets a value indicating whether [go right].</summary>
+        /// <value>
+        /// <c>true</c> if [go right]; otherwise, <c>false</c>.</value>
+        internal bool CanGoRight { get => canGoRight; set => canGoRight = value; }
+
+        /// <summary>Gets or sets a value indicating whether this instance can go inside.</summary>
+        /// <value>
+        /// <c>true</c> if this instance can go inside; otherwise, <c>false</c>.</value>
+        internal bool CanGoInside { get => canGoInside; set => canGoInside = value; }
+
+        /// <summary>Gets or sets a value indicating whether this instance can go out.</summary>
+        /// <value>
+        /// <c>true</c> if this instance can go out; otherwise, <c>false</c>.</value>
+        internal bool CanGoOut { get => canGoOut; set => canGoOut = value; }
 
         #region DefineEvents
 

@@ -89,25 +89,25 @@ namespace Alis.Core
                             if (rectangleShape.GetGlobalBounds().Contains(midleTop.X, midleTop.Y))
                             {
                                 Console.WriteLine("Chocando la parte de arriba de " + this.GetGameObject().Name);
-                                this.GetGameObject().Transform.GoUp = false;
+                                this.GetGameObject().Transform.CanGoUp = false;
                             }
 
                             if (rectangleShape.GetGlobalBounds().Contains(midleDown.X, midleDown.Y))
                             {
                                 Console.WriteLine("Chocando la parte de abajo de " + this.GetGameObject().Name);
-                                this.GetGameObject().Transform.GoDown = false;
+                                this.GetGameObject().Transform.CanGoDown = false;
                             }
 
                             if (rectangleShape.GetGlobalBounds().Contains(midleLeft.X, midleLeft.Y))
                             {
                                 Console.WriteLine("Chocando la parte izquierda de " + this.GetGameObject().Name);
-                                this.GetGameObject().Transform.GoLeft = false;
+                                this.GetGameObject().Transform.CanGoLeft = false;
                             }
 
                             if (rectangleShape.GetGlobalBounds().Contains(midleRight.X, midleRight.Y))
                             {
                                 Console.WriteLine("Chocando la parte derecha de " + this.GetGameObject().Name);
-                                this.GetGameObject().Transform.GoRight = false;
+                                this.GetGameObject().Transform.CanGoRight = false;
                             }
                         }
                     }
@@ -115,22 +115,22 @@ namespace Alis.Core
                     {
                         if (!rectangleShape.GetGlobalBounds().Contains(midleTop.X, midleTop.Y))
                         {
-                            this.GetGameObject().Transform.GoUp = true;
+                            this.GetGameObject().Transform.CanGoUp = true;
                         }
 
                         if (!rectangleShape.GetGlobalBounds().Contains(midleDown.X, midleDown.Y))
                         {
-                            this.GetGameObject().Transform.GoDown = true;
+                            this.GetGameObject().Transform.CanGoDown = true;
                         }
 
                         if (!rectangleShape.GetGlobalBounds().Contains(midleLeft.X, midleLeft.Y))
                         {
-                            this.GetGameObject().Transform.GoLeft = true;
+                            this.GetGameObject().Transform.CanGoLeft = true;
                         }
 
                         if (!rectangleShape.GetGlobalBounds().Contains(midleRight.X, midleRight.Y))
                         {
-                            this.GetGameObject().Transform.GoRight = true;
+                            this.GetGameObject().Transform.CanGoRight = true;
                         }
                     }
                 }
