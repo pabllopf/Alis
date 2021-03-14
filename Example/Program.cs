@@ -17,6 +17,11 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static async Task Main(string[] args)
         {
+
+            Console.WriteLine(AssetManager.Load("tile00k0.png"));
+
+
+            /*
             var watch = new Stopwatch();
             watch.Start();
 
@@ -66,7 +71,7 @@ namespace SFML
             Console.WriteLine(name);
             Console.WriteLine(name2);
             
-            Console.ReadLine();
+            Console.ReadLine();*/
         }
 
         private static async Task<string> Test_Task(int size)
