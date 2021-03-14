@@ -21,7 +21,7 @@ namespace SFML
             var watch = new Stopwatch();
             watch.Start();
 
-            new VideoGame(
+            var game = new VideoGame(
                 new Config("Example"),
                     new Scene("First",
                        new GameObject("Player24724", new Transform(new Vector3(10f, 50f, 0f), new Vector3(0f), new Vector3(1f)),
@@ -52,10 +52,12 @@ namespace SFML
                             new AudioSource()
                         )
                     )
-            ).Run();
+            );
 
             watch.Stop();
             Console.WriteLine($"RESULT: Videogame Time: " + watch.ElapsedMilliseconds + " ms \n");
+
+            LocalData.Save("Example", game);
 
 
             Thread.Sleep(1000);
