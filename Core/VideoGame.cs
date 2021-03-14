@@ -166,7 +166,7 @@ namespace Alis.Core
                         Task.WaitAll(input.Update(), sceneManager.Update());
                     }).Wait();
 
-                    isRunning = false;
+                    //isRunning = false;
 
                     watch.Stop();
                     Logger.Log($" Time to Update One Frame Videogame: " + (watch.ElapsedMilliseconds) + " ms");

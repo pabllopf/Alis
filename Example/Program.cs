@@ -54,6 +54,8 @@ namespace SFML
                     )
             );
 
+            game.Run();
+
             watch.Stop();
             Console.WriteLine($"RESULT: Videogame Time: " + watch.ElapsedMilliseconds + " ms \n");
 

@@ -45,7 +45,7 @@ namespace Alis.Core
             pathFile = AssetManager.Load(audioFile);
 
             playOnAwake = true;
-            volume = 1;
+            volume = 100;
             loop = true;
 
             audio = new Music(pathFile);
@@ -127,7 +127,7 @@ namespace Alis.Core
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (audio.Status != SoundStatus.Playing && loop && playOnAwake) 
+            if (audio.Status != SoundStatus.Playing && loop) 
             {
                 Play();
             }
@@ -141,6 +141,7 @@ namespace Alis.Core
                 audio.Volume = volume;
                 audio.Play();
                 OnPlay.Invoke(null, true);
+                playOnAwake = false;
             }
         }
 
