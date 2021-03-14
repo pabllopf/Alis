@@ -23,44 +23,52 @@ namespace SFML
 
             var game = new VideoGame(
                 new Config("Example"),
-                    new Scene("First",
-                       new GameObject("Player24724", new Transform(new Vector3(10f, 50f, 0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite("tile000.png"),
-                            new Collision()
-                        ),
+                new Scene("First",
+                    new GameObject("Player",
+                        new Transform(new Vector3(0F), new Vector3(0f), new Vector3(2f)),
+                        new AudioSource("menu.wav"),
+                        new Sprite("tile000.png"),
+                        new Collision(),
+                        new Camera(new System.Vector2f(0, 0), new System.Vector2f(640, 380)),
 
-                        new GameObject("Player72", new Transform(new Vector3(60f, 40f, 0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite("tile000.png"),
-                            new Collision()
-                        ),
-
-                        new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite("tile000.png", 1),
-                            new Animator(0,
+                        new Animator(0,
                                 new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
                                 new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
                                 new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
                                 new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
-                            ),
-                            new Move(),
-                            new Camera(new System.Vector2f(0, 0), new System.Vector2f(640, 380)),
-                            new Collision(),
-                            new Physics()
                         ),
+                        new Move()
+                    ),
 
-                       new GameObject("SoundTrack", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new AudioSource("menu.wav")
-                        )
+                    new GameObject("Player3",
+                        new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
+                        new Sprite("tile001.png"),
+                        new Collision()
+                    ),
+
+                     new GameObject("Playere3",
+                        new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
+                        new Sprite("tile001.png"),
+                        new Collision()
                     )
-            );
+                )
+            ); 
 
-            game.Run();
+            //game.Run();
 
             watch.Stop();
             Console.WriteLine($"RESULT: Videogame Time: " + watch.ElapsedMilliseconds + " ms \n");
 
             LocalData.Save("Example", game);
 
+
+
+            Thread.Sleep(2000);
+
+            Console.WriteLine("load game");
+
+            var gameloaded = LocalData.Load<VideoGame>("Example");
+            gameloaded.Run();
 
             Thread.Sleep(1000);
             Console.WriteLine("RUN TEST TASK vs NORMAL: ");

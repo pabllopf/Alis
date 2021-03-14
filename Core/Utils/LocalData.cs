@@ -7,6 +7,7 @@ namespace Alis.Tools
     using Newtonsoft.Json;
     using System;
     using System.IO;
+    using System.Runtime.Serialization.Formatters;
     using System.Text;
 
     /// <summary>Manage the local data game.</summary>
@@ -40,8 +41,10 @@ namespace Alis.Tools
             else
             {
                 var indented = Formatting.Indented;
-                var settings = new JsonSerializerSettings()
+
+                var settings = new JsonSerializerSettings
                 {
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
                     TypeNameHandling = TypeNameHandling.All
                 };
 
@@ -73,8 +76,9 @@ namespace Alis.Tools
             else
             {
                 var indented = Formatting.Indented;
-                var settings = new JsonSerializerSettings()
+                var settings = new JsonSerializerSettings
                 {
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
                     TypeNameHandling = TypeNameHandling.All
                 };
 
@@ -94,8 +98,9 @@ namespace Alis.Tools
             string directory = Environment.CurrentDirectory + "/Data/";
             string file = directory + nameFile;
 
-            var settings = new JsonSerializerSettings()
+            var settings = new JsonSerializerSettings
             {
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
                 TypeNameHandling = TypeNameHandling.All
             };
 
@@ -127,8 +132,9 @@ namespace Alis.Tools
             string nameFile = name + ".json";
             string file = directory + "/" + nameFile;
 
-            var settings = new JsonSerializerSettings()
+            var settings = new JsonSerializerSettings
             {
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
                 TypeNameHandling = TypeNameHandling.All
             };
 

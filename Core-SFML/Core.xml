@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Alis.Core-SFML</name>
+        <name>Core-SFML</name>
     </assembly>
     <members>
         <member name="T:SFML.Audio.Listener">

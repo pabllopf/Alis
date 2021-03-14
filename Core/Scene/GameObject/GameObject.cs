@@ -7,33 +7,51 @@ namespace Alis.Core
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using Newtonsoft.Json;
 
     /// <summary>Define a game object.</summary>
     public class GameObject
     {
         /// <summary>The name</summary>
-        [JsonProperty]
         [NotNull]
         private string name;
 
         /// <summary>The active</summary>
-        [JsonProperty]
         [NotNull]
         private bool active = true;
 
         /// <summary>The transform</summary>
-        [JsonProperty]
         [NotNull]
         private Transform transform;
 
         /// <summary>The components</summary>
-        [JsonProperty]
         [NotNull]
         private List<Component> components;
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
-        public GameObject() 
+        /// <param name="name">The name.</param>
+        /// <param name="transform">The transform.</param>
+        /// <param name="components">The components.</param>
+        [JsonConstructor]
+        public GameObject([NotNull] string name, [NotNull] Transform transform, [NotNull] List<Component> components)
+        {
+            this.name = name;
+            this.transform = transform;
+            this.components = components;
+            this.components.ForEach(i => i.AttachTo(this));
+
+            OnCreate += GameObject_OnCreate;
+            OnEnable += GameObject_OnEnable;
+            OnDisable += GameObject_OnDisable;
+            OnDestroy += GameObject_OnDestroy;
+
+            OnCreate.Invoke(this, true);
+        }
+
+
+        /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
+        public GameObject()
         {
             name = "GameObject";
             transform = new Transform();
@@ -129,11 +147,13 @@ namespace Alis.Core
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
         [NotNull]
+        [JsonProperty]
         public string Name { get => name; set => name = value; }
 
         /// <summary>Gets or sets the transform.</summary>
         /// <value>The transform.</value>
         [NotNull]
+        [JsonProperty]
         public Transform Transform { get => transform; set => transform = value; }
 
         /// <summary>Gets or sets a value indicating whether this <see cref="GameObject" /> is active.</summary>
@@ -159,20 +179,19 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the components.</summary>
         /// <value>The components.</value>
-        [NotNull]
-        public List<Component> Components { get => components; }
+        public List<Component> Components { get => components; set => components = value; }
+
+
 
         /// <summary>Adds the component.</summary>
         /// <param name="component">The component.</param>
         public void Add([NotNull] Component component)
         {
-            for (int index = 0; index < components.Count; index++)
+            if (components.Find(i => i.GetType().Equals(component.GetType())) == null) 
             {
-                if (!components[index].GetType().Equals(component.GetType()))
-                {
-                    component.AttachTo(this);
-                    components.Add(component);
-                }
+                component.AttachTo(this);
+                components.Add(component);
+                Console.WriteLine("Add new component " + component.GetType());
             }
         }
 
@@ -210,6 +229,8 @@ namespace Alis.Core
         [return: NotNull]
         internal void Start()
         {
+            components = components.OrderBy(i => i.Priority()).ToList();
+
             for (int index = 0; index < components.Count; index++) 
             {
                 if (components[index].Active)

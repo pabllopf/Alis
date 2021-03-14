@@ -37,25 +37,48 @@ namespace Alis.Core
         [NotNull]
         private bool isRunning;
 
+        /// <summary>The clock</summary>
+        [NotNull]
         private Clock clock = new Clock();
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
-        /// <param name="scenes">The scene.</param>        
+        /// <param name="scenes">The scenes.</param>
         [JsonConstructor]
-        public VideoGame([NotNull] Config config, [NotNull] params Scene[] scenes)
+        public VideoGame([NotNull] Config config, [NotNull] List<Scene> scenes)
         {
-            this.config = config is null ? new Config("Default") : config;
+            this.config = config;
 
-            sceneManager = scenes is null ? new SceneManager() : new SceneManager(new List<Scene>(scenes));
-
-            Console.WriteLine("Name: " + this.config.Name);
-
-            input = new Input();
-            render = new Render(this.config);
-            isRunning = true;
+            render = new Render(config);
+            input = new Input(config);
 
             this.clock = new Clock();
+            isRunning = true;
+
+            sceneManager = new SceneManager(scenes);
+
+            OnCreate += VideoGame_OnCreate;
+            OnStart += VideoGame_OnStart;
+            OnUpdate += VideoGame_OnUpdate;
+            OnDestroy += VideoGame_OnDestroy;
+
+            OnCreate.Invoke(this, true);
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
+        /// <param name="config">The configuration.</param>
+        /// <param name="scenes">The scene.</param>        
+        public VideoGame([NotNull] Config config, [NotNull] params Scene[] scenes)
+        {
+            this.config = config;
+
+            render = new Render(config);
+            input = new Input(config);
+
+            this.clock = new Clock();
+            isRunning = true;
+
+            sceneManager = new SceneManager(scenes);
 
             OnCreate += VideoGame_OnCreate;
             OnStart += VideoGame_OnStart;
@@ -83,25 +106,23 @@ namespace Alis.Core
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
         [NotNull]
-        [JsonProperty]
         public Config Config { get => config; set => config = value; }
 
         /// <summary>Gets or sets the render.</summary>
         /// <value>The render.</value>
         [NotNull]
-        [JsonProperty]
+        [JsonIgnore]
         public Render Render { get => render; set => render = value; }
 
         /// <summary>Gets or sets the input.</summary>
         /// <value>The input.</value>
         [NotNull]
-        [JsonProperty]
+        [JsonIgnore]
         public Input Input { get => input; set => input = value; }
 
         /// <summary>Gets or sets the scene manager.</summary>
         /// <value>The scene manager.</value>
         [NotNull]
-        [JsonProperty]
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
 
         /// <summary>Loads the of file.</summary>
@@ -111,6 +132,15 @@ namespace Alis.Core
         {
             return LocalData.Load<VideoGame>(file);
         }
+
+        /// <summary>Loads the of file.</summary>
+        /// <param name="file">The file.</param>
+        [return: NotNull]
+        public static void RunOfFile()
+        {
+            LocalData.Load<VideoGame>("Data", Environment.CurrentDirectory + "/Data").Run();
+        }
+
 
         /// <summary>Runs this instance.</summary>
         /// <returns>return true</returns>
@@ -137,15 +167,15 @@ namespace Alis.Core
                 watch.Stop();
                 Logger.Log($" Time to Start Videogame: " + watch.ElapsedMilliseconds + " ms");
             }).Wait();
+
+            render.Start();
         }
+
+        private bool firstTime = true;
 
         public byte[] PreviewRender() 
         {
-            Task.Run(() =>
-            {
-                OnUpdate.Invoke(this, true);
-                Task.WaitAll(input.Update(), sceneManager.Update());
-            }).Wait();
+            Task.WaitAll(input.Update(), sceneManager.Update());
 
             return render.FrameBytes();
         }

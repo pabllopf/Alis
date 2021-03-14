@@ -82,24 +82,20 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the sprites.</summary>
         /// <value>The sprites.</value>
-        [JsonProperty]
         public List<Sprite> Sprites { get => sprites; set => sprites = value; }
 
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
-        [JsonIgnore]
         public static Render Current { get => current; set => current = value; }
 
         /// <summary>Gets or sets the render texture.</summary>
         /// <value>The render texture.</value>
-        [JsonIgnore]
         public RenderTexture RenderTexture { get => renderTexture; set => renderTexture = value; }
 
         /// <summary>Gets or sets the render window.</summary>
         /// <value>The render window.</value>
-        [JsonIgnore]
         public RenderWindow RenderWindow { get => renderWindow; set => renderWindow = value; }
-        
+
         /// <summary>Gets or sets the collisions.</summary>
         /// <value>The collisions.</value>
         public List<RectangleShape> Collisions { get => collisions; set => collisions = value; }
@@ -112,7 +108,7 @@ namespace Alis.Core
             {
                 renderTexture = new RenderTexture(512, 512);
             }
-            
+
             renderTexture.Clear();
 
             if (sprites.Count > 0)
@@ -124,8 +120,16 @@ namespace Alis.Core
                 }
             }
 
-            renderTexture.Smooth = true;
+            if (collisions.Count > 0)
+            {
+                foreach (RectangleShape rectangle in collisions)
+                {
+                    renderTexture.Draw(rectangle);
+                }
+            }
+
             renderTexture.Display();
+
 
             frame = renderTexture.Texture.CopyToImage();
             return frame.Pixels;
@@ -135,10 +139,7 @@ namespace Alis.Core
         /// <param name="sprite">The sprite.</param>
         internal void AddSprite(Sprite sprite) 
         {
-            if (!sprites.Contains(sprite)) 
-            {
-                sprites.Add(sprite);
-            }
+            sprites.Add(sprite);
         }
 
         internal void AddCollision(RectangleShape rectangle)

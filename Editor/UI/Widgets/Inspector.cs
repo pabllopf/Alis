@@ -17,7 +17,7 @@ namespace Alis.Editor.UI.Widgets
     /// <summary>Manage components of scene.</summary>
     public class Inspector : Widget
     {
-        private readonly Dictionary<Type, Action<Component, PropertyInfo>> fields = new Dictionary<Type, Action<Component, PropertyInfo>>()
+        private static Dictionary<Type, Action<Component, PropertyInfo>> fields = new Dictionary<Type, Action<Component, PropertyInfo>>()
         {
             { typeof(bool), DrawBoolField },
             { typeof(string), DrawStringField },
@@ -29,7 +29,17 @@ namespace Alis.Editor.UI.Widgets
             { typeof(Vector2), DrawVector2Field },
             { typeof(Vector2f), DrawVector2fField },
             { typeof(Vector3), DrawVector3Field },
-            { typeof(List<>), DrawListField },
+            { typeof(List<Animation>), DrawListField },
+        };
+
+        private static Dictionary<Type, string> icons = new Dictionary<Type, string>()
+        {
+            {  typeof(Transform), Icon.ARROWSALT },
+            {  typeof(Collision), Icon.CUBE },
+            {  typeof(Camera), Icon.VIDEOCAMERA },
+            {  typeof(Animator), Icon.PLAYCIRCLE},
+            {  typeof(Sprite), Icon.PICTUREO },
+            {  typeof(AudioSource), Icon.MUSIC },
         };
 
 
@@ -39,10 +49,9 @@ namespace Alis.Editor.UI.Widgets
             { typeof(Sprite), NewSprite },
             { typeof(Animator), NewAnimator },
             { typeof(AudioSource), NewAudiosource },
-            { typeof(Camera), NewCamera }
+            { typeof(Camera), NewCamera },
+            { typeof(Collision), NewCollision }
         };
-
-      
 
         private static Inspector current;
 
@@ -120,16 +129,13 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.BeginGroup();
             ImGui.AlignTextToFramePadding();
-            if (ImGui.TreeNodeEx(gameObject.Transform.Icon + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+            if (ImGui.TreeNodeEx(icons[typeof(Transform)] + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
             {
                 foreach (PropertyInfo property in gameObject.Transform.GetType().GetProperties())
                 {
-                    foreach (KeyValuePair<Type, Action<Component, PropertyInfo>> field in fields)
+                    if (property.PropertyType.Equals(typeof(Vector3))) 
                     {
-                        if (field.Key.Equals(property.PropertyType) && property.CanWrite)
-                        {
-                            //field.Value.Invoke((Component)gameObject.Transform, property);
-                        }
+                        DrawVector3(gameObject.Transform, property);
                     }
                 }
 
@@ -142,7 +148,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 ImGui.BeginGroup();
                 ImGui.AlignTextToFramePadding();
-                if (ImGui.TreeNodeEx(component.GetType().GetProperties().ToList().Find(i => i.Name.Equals("Icon")).GetValue(component) + " " + component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+                if (ImGui.TreeNodeEx(icons[component.GetType()] + " " + component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
                 {
                     foreach (PropertyInfo property in component.GetType().GetProperties())
                     {
@@ -335,14 +341,173 @@ namespace Alis.Editor.UI.Widgets
             ImGui.Columns(1);
         }
 
-        private static void DrawListField(Component component, PropertyInfo property)
+        private static void DrawVector3(Transform transform, PropertyInfo property)
         {
+            ImGui.Text(property.Name);
+            ImGui.Columns(3, property.Name, true);
+            Vector3 content = (Vector3)property.GetValue(transform);
+            float x = content.X;
+
+            if (ImGui.InputFloat("X" + "## " + property.Name, ref x))
+            {
+                content.X = x;
+                property.SetValue(transform, content);
+            }
+
+            ImGui.NextColumn();
+
+            float y = content.Y;
+            if (ImGui.InputFloat("Y" + "## " + property.Name, ref y))
+            {
+                content.Y = y;
+                property.SetValue(transform, content);
+            }
+
+            ImGui.NextColumn();
+
+            float z = content.Z;
+            if (ImGui.InputFloat("Z" + "## " + property.Name, ref z))
+            {
+                content.Z = z;
+                property.SetValue(transform, content);
+            }
+
+            ImGui.Columns(1);
         }
 
+        private static void DrawListField(Component component, PropertyInfo prop)
+        {
+            //List<Animation> list = (List<Animation>)prop.GetValue(component);
+
+            List<Animation> list = (List<Animation>)prop.GetValue(component);
+
+            if (ImGui.Button("+", new Vector2(30, 30)))
+            {
+                Console.Current.Log("Add new element");
+                list.Add(new Animation());
+                prop.SetValue(component, list);
+
+                Console.Current.Log("" + list.Count);
+            }
+
+            ImGui.SameLine();
+
+            if (ImGui.Button("-", new Vector2(30, 30)))
+            {
+                if (list.Count > 0) 
+                {
+                    list.RemoveAt(list.Count - 1);
+                }
+                
+                prop.SetValue(component, list);
+
+                Console.Current.Log("" + list.Count);
+            }
+
+            ImGui.SameLine();
+
+            ImGui.Text("Animation");
+
+            ImGui.Text("Tree Animations: ");
+
+            foreach (Animation animation in list)
+            {
+                ImGui.Separator();
+
+                ImGui.Text("Animation " + list.IndexOf(animation));
+
+                string content = (string)animation.Name ?? "";
+
+                if (ImGui.InputText("Name " + "## " + list.IndexOf(animation), ref content, 512))
+                {
+                    animation.Name = content;
+                }
+
+                float content2 = (float)animation.Speed;
+                if (ImGui.InputFloat("Speed " + "## " + list.IndexOf(animation), ref content2))
+                {
+                    animation.Speed = content2;
+                }
+
+                int content3 = (int)animation.State;
+                if (ImGui.InputInt("State " + "## " + list.IndexOf(animation), ref content3))
+                {
+                    animation.State = content3;
+                }
+
+                List<string> images = animation.Images;
+
+                if (ImGui.Button("+" + "## " + list.IndexOf(animation), new Vector2(30, 30)))
+                {
+                    images.Add("Default.png");
+                    animation.Images = images;
+                    prop.SetValue(component, list);
+                }
+
+                ImGui.SameLine();
+
+                if (ImGui.Button("-" + "## " + list.IndexOf(animation), new Vector2(30, 30)))
+                {
+                    if (images.Count > 0)
+                    {
+                        images.RemoveAt(list.Count - 1);
+
+                        animation.Images = images;
+                        prop.SetValue(component, list);
+                    }
+                }
+                ImGui.SameLine();
+
+                ImGui.Text("Images");
+
+                for (int i = 0; i < images.Count; i++) 
+                {
+                    string cont = (string)images[i] ?? "";
+
+                    if (ImGui.InputText("Name " + "##" + list.IndexOf(animation) + i, ref cont, 512))
+                    {
+                        string change = cont;
+                        images[i] = change;
+
+                        animation.Images = images;
+                        prop.SetValue(component, list);
+                    }
+                }
+
+
+                ImGui.Separator();
+
+                
+
+            }
+
+            
+            
+
+
+            /*foreach (Animation animation in list)
+            {
+                foreach (PropertyInfo property in animation.GetType().GetProperties())
+                {
+                    foreach (KeyValuePair<Type, Action<Component, PropertyInfo>> field in fields)
+                    {
+                        if (field.Key.Equals(property.PropertyType) && property.CanWrite)
+                        {
+                            field.Value.Invoke(component, property);
+                        }
+                    }
+                }
+            }*/
+        }
+
+        private static void NewCollision(GameObject obj)
+        {
+            obj.Add(new Collision());
+        }
 
         private static void NewAudiosource(GameObject gameObject)
         {
-            gameObject.Add(new AudioSource(Project.Current.AssetsPath + "/" + "", true, 1));
+            gameObject.Add(new AudioSource());
         }
 
         private static void NewAnimator(GameObject gameObject)
@@ -352,7 +517,7 @@ namespace Alis.Editor.UI.Widgets
 
         private static void NewSprite(GameObject gameObject)
         {
-            gameObject.Add(new Sprite());
+            gameObject.Add(new Sprite(""));
         }
 
         private static void NewCamera(GameObject gameObject)

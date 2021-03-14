@@ -13,21 +13,15 @@ namespace Alis.Core
     [JsonObject(MemberSerialization.OptIn)]
     public class Transform
     {
-        /// <summary>The icon</summary>
-        private readonly string icon = "\uf03d";
-
         /// <summary>The position</summary>
-        [JsonProperty]
         [NotNull]
         private Vector3 position;
 
         /// <summary>The rotation</summary>
-        [JsonProperty]
         [NotNull]
         private Vector3 rotation;
 
         /// <summary>The size</summary>
-        [JsonProperty]
         [NotNull]
         private Vector3 size;
 
@@ -57,6 +51,28 @@ namespace Alis.Core
 
         /// <summary>The can go out</summary>
         private bool canGoOut = true;
+
+        /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
+        /// <param name="position">The position.</param>
+        /// <param name="rotation">The rotation.</param>
+        /// <param name="size">The size.</param>
+        [JsonConstructor]
+        public Transform([NotNull] Vector3 position, [NotNull] Vector3 rotation, [NotNull] Vector3 size)
+        {
+            this.position = position;
+            this.rotation = rotation;
+            this.size = size;
+
+            OnCreate += Transform_OnCreate;
+            OnPositionChange += Transform_OnPositionChange;
+            OnRotationChange += Transform_OnRotationChange;
+            OnSizeChange += Transform_OnSizeChange;
+            OnDestroy += Transform_OnDestroy;
+
+            OnCreate.Invoke(this, true);
+
+            Console.WriteLine(position + "" + rotation + "" + size);
+        }
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         public Transform()
@@ -91,26 +107,6 @@ namespace Alis.Core
             OnCreate.Invoke(this, true);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
-        /// <param name="position">The position.</param>
-        /// <param name="rotation">The rotation.</param>
-        /// <param name="size">The size.</param>
-        [JsonConstructor]
-        public Transform([NotNull] Vector3 position, [NotNull] Vector3 rotation, [NotNull] Vector3 size)
-        {
-            this.position = position;
-            this.rotation = rotation;
-            this.size = size;
-
-            OnCreate += Transform_OnCreate;
-            OnPositionChange += Transform_OnPositionChange;
-            OnRotationChange += Transform_OnRotationChange;
-            OnSizeChange += Transform_OnSizeChange;
-            OnDestroy += Transform_OnDestroy;
-
-            OnCreate.Invoke(this, true);
-        }
-
         /// <summary>Finalizes an instance of the <see cref="Transform" /> class.</summary>
         ~Transform() => OnDestroy.Invoke(this, true);
 
@@ -132,14 +128,21 @@ namespace Alis.Core
         /// <summary>Gets the position.</summary>
         /// <value>The position.</value>
         [NotNull]
+        [JsonProperty]
         public Vector3 Position
         {
-            get => position; 
+            get => position;
+            set
+            {
+                position = value;
+                OnPositionChange.Invoke(this, true);
+            }
         }
 
         /// <summary>Gets or sets the rotation.</summary>
         /// <value>The rotation.</value>
         [NotNull]
+        [JsonProperty]
         public Vector3 Rotation
         {
             get => rotation; 
@@ -153,6 +156,7 @@ namespace Alis.Core
         /// <summary>Gets or sets the size.</summary>
         /// <value>The size.</value>
         [NotNull]
+        [JsonProperty]
         public Vector3 Size
         {
             get => size; 
@@ -162,10 +166,6 @@ namespace Alis.Core
                 OnSizeChange.Invoke(this, true);
             }
         }
-
-        /// <summary>Gets the icon.</summary>
-        /// <value>The icon.</value>
-        public string Icon => icon;
 
         /// <summary>Gets or sets the x position.</summary>
         /// <value>The x position.</value>

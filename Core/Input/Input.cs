@@ -21,7 +21,7 @@ namespace Alis.Core
         /// <summary>Occurs when [on press once].</summary>
         public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKeyOnce;
 
-        public Input()
+        public Input(Config config)
         {
         }
 

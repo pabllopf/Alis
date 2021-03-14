@@ -11,16 +11,12 @@ namespace Alis.Core
     /// <summary>Define a component</summary>
     public abstract class Component 
     {
-        /// <summary>The icon</summary>
-        private readonly string icon = "\uf03d";
-
         /// <summary>The game object</summary>
         [NotNull]
         [JsonIgnore]
         private GameObject gameObject;
 
         /// <summary>The is enabled</summary>
-        [JsonProperty]
         [NotNull]
         private bool active = true;
 
@@ -80,10 +76,6 @@ namespace Alis.Core
                 }
             }
         }
-
-        /// <summary>Gets the icon.</summary>
-        /// <value>The icon.</value>
-        public string Icon => icon;
 
         /// <summary>Creates this instance.</summary>
         public virtual void Create()
@@ -178,5 +170,10 @@ namespace Alis.Core
         private void Component_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
+
+        public virtual int Priority()
+        {
+            return 8;
+        }
     }
 }

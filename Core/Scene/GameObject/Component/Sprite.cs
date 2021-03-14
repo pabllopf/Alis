@@ -33,9 +33,13 @@ namespace Alis.Core
         public Sprite([NotNull] string image)
         {
             this.image = image;
-            pathImage = AssetManager.Load(image);
             depth = 0;
-            sprite = new SFML.Graphics.Sprite(new SFML.Graphics.Texture(pathImage));
+
+            if (!image.Equals(string.Empty))
+            {
+                pathImage = AssetManager.Load(image);
+                sprite = new SFML.Graphics.Sprite(new SFML.Graphics.Texture(pathImage));
+            }
 
             OnDraw += Sprite_OnDraw;
         }
@@ -47,9 +51,13 @@ namespace Alis.Core
         public Sprite([NotNull] string image, [NotNull] int depth)
         {
             this.image = image;
-            pathImage = AssetManager.Load(image);
             this.depth = depth;
-            sprite = new SFML.Graphics.Sprite(new SFML.Graphics.Texture(pathImage));
+
+            if (!image.Equals(string.Empty))
+            {
+                pathImage = AssetManager.Load(image);
+                sprite = new SFML.Graphics.Sprite(new SFML.Graphics.Texture(pathImage));
+            }
 
             OnDraw += Sprite_OnDraw;
         }
@@ -61,28 +69,61 @@ namespace Alis.Core
         /// <value>The image.</value>
         [NotNull]
         [JsonProperty]
-        public string Image { get => image; set => image = value; }
+        public string Image
+        {
+            get 
+            { 
+                return image; 
+            }
+            set
+            {
+                image = value;
+                if (!image.Equals(string.Empty)) 
+                {
+                    if (AssetManager.Load(image) != null) 
+                    {
+                        pathImage = AssetManager.Load(image);
+                        sprite = new SFML.Graphics.Sprite(new SFML.Graphics.Texture(pathImage));
+                        if (Render.Current.Sprites.Contains(this)) 
+                        {
+                            Render.Current.Sprites[Render.Current.Sprites.IndexOf(this)] = this;
+                        }
+                        else 
+                        {
+                            Render.Current.Sprites.Add(this);
+                        }
+                    }
+                    else 
+                    {
+                        if (Render.Current.Sprites.Contains(this))
+                        {
+                            Render.Current.Sprites.Remove(this);
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Gets or sets the depth.</summary>
         /// <value>The depth.</value>
         [NotNull]
         [JsonProperty]
         public int Depth { get => depth; set => depth = value; }
-        
+
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            var pos = GetGameObject().Transform.Position;
-            sprite.Position = new SFML.System.Vector2f(pos.X, pos.Y);
-
-            var rot = GetGameObject().Transform.Rotation;
-            sprite.Rotation = rot.Y;
-
-            var size = GetGameObject().Transform.Size;
-            sprite.Scale = new SFML.System.Vector2f(size.X, size.Y);
-
-            if (!Render.Current.Sprites.Contains(this))
+            if (sprite != null)
             {
+                var pos = GetGameObject().Transform.Position;
+                sprite.Position = new SFML.System.Vector2f(pos.X, pos.Y);
+
+                var rot = GetGameObject().Transform.Rotation;
+                sprite.Rotation = rot.Y;
+
+                var size = GetGameObject().Transform.Size;
+                sprite.Scale = new SFML.System.Vector2f(size.X, size.Y);
+
                 Render.Current.AddSprite(this);
             }
         }
@@ -90,19 +131,22 @@ namespace Alis.Core
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (!Render.Current.Sprites.Contains(this))
+            if (sprite != null)
             {
-                Render.Current.AddSprite(this);
+                var pos = GetGameObject().Transform.Position;
+                sprite.Position = new SFML.System.Vector2f(pos.X, pos.Y);
+
+                var rot = GetGameObject().Transform.Rotation;
+                sprite.Rotation = rot.Y;
+
+                var size = GetGameObject().Transform.Size;
+                sprite.Scale = new SFML.System.Vector2f(size.X, size.Y);
             }
+        }
 
-            var pos = GetGameObject().Transform.Position;
-            sprite.Position = new SFML.System.Vector2f(pos.X, pos.Y);
-
-            var rot = GetGameObject().Transform.Rotation;
-            sprite.Rotation = rot.Y;
-
-            var size = GetGameObject().Transform.Size;
-            sprite.Scale = new SFML.System.Vector2f(size.X, size.Y);
+        public override int Priority()
+        {
+            return 0;
         }
 
         /// <summary>Gets the draw.</summary>

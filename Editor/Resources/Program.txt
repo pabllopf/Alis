@@ -11,5 +11,5 @@ public class Program
     /// <param name="args">The arguments.</param>
     /// <returns>Return -1 or 0</returns>
     [STAThread]
-    public static void Main(string[] args) => VideoGame.Start(Environment.CurrentDirectory + "/Data/");
+    public static void Main(string[] args) => VideoGame.RunOfFile();
 }

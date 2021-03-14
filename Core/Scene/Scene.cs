@@ -15,34 +15,21 @@ namespace Alis.Core
     public class Scene
     {
         /// <summary>The name</summary>
-        [JsonProperty]
         [NotNull]
         private string name;
 
         /// <summary>The game objects</summary>
-        [JsonProperty]
         [NotNull]
         private List<GameObject> gameObjects;
 
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
-        public Scene()
-        {
-            name = "Default Scene";
-            gameObjects = new List<GameObject>();
-
-            OnCreate += Scene_OnCreate;
-            OnDestroy += Scene_OnDestroy;
-
-            OnCreate.Invoke(this, true);
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
         /// <param name="name">The name.</param>
+        /// <param name="gameObjects">The game objects.</param>
         [JsonConstructor]
-        public Scene([NotNull] string name)
+        public Scene([NotNull] string name, [NotNull] List<GameObject> gameObjects) 
         {
             this.name = name;
-            gameObjects = new List<GameObject>();
+            this.gameObjects = gameObjects;
 
             OnCreate += Scene_OnCreate;
             OnDestroy += Scene_OnDestroy;
@@ -76,11 +63,13 @@ namespace Alis.Core
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
         [NotNull]
+        [JsonProperty]
         public string Name { get => name; set => name = value; }
 
         /// <summary>Gets or sets the game objects.</summary>
         /// <value>The game objects.</value>
         [NotNull]
+        [JsonProperty]
         public List<GameObject> GameObjects { get => gameObjects; set => gameObjects = value; }
 
         /// <summary>Adds the specified game object.</summary>
@@ -113,30 +102,11 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Task.Delay(1000).Wait();
+                List<Task> tasks = new List<Task>();
 
-                int numTask = (gameObjects.Count / Environment.ProcessorCount) + 1;
-                List<Task> tasks = new List<Task>(numTask);
-
-                int index = 0;
-
-                for (int i = 0; i < gameObjects.Count; i++)
+                foreach (GameObject obj in gameObjects) 
                 {
-                    if (index == numTask)
-                    {
-                        tasks.Add(ProcessGameObjectsStart(i - index, i, false));
-                        index = 0;
-                    }
-                    else
-                    {
-                        if (i == gameObjects.Count - 1)
-                        {
-                            tasks.Add(ProcessGameObjectsStart(i - index, i, true));
-                            index = 0;
-                        }
-                    }
-
-                    index++;
+                    tasks.Add(StartObject(obj));
                 }
 
                 Task.WaitAll(tasks.ToArray());
@@ -146,8 +116,9 @@ namespace Alis.Core
             });
         }
 
-        /// <summary>Updates this instance.</summary>
-        /// <returns>Return none</returns>
+        private Task StartObject(GameObject gameObject) => Task.Run(() => gameObject.Start());
+
+
         [return: NotNull]
         internal Task Update()
         {
@@ -156,28 +127,11 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
-                int numTask = (gameObjects.Count / Environment.ProcessorCount) + 1;
-                List<Task> tasks = new List<Task>(numTask);
+                List<Task> tasks = new List<Task>();
 
-                int index = 0;
-
-                for (int i = 0; i < gameObjects.Count; i++)
+                foreach (GameObject obj in gameObjects)
                 {
-                    if (index == numTask)
-                    {
-                        tasks.Add(ProcessGameObjectsUpdate(i - index, i, false));
-                        index = 0;
-                    }
-                    else
-                    {
-                        if (i == gameObjects.Count - 1)
-                        {
-                            tasks.Add(ProcessGameObjectsUpdate(i - index, i, true));
-                            index = 0;
-                        }
-                    }
-
-                    index++;
+                    tasks.Add(UpdateObject(obj));
                 }
 
                 Task.WaitAll(tasks.ToArray());
@@ -187,74 +141,7 @@ namespace Alis.Core
             });
         }
 
-        /// <summary>Processes the game objects start.</summary>
-        /// <param name="init">The initialize.</param>
-        /// <param name="end">The end.</param>
-        /// <param name="isLast">if set to <c>true</c> [is last].</param>
-        /// <returns>Return none.</returns>
-        [return: NotNull]
-        private Task ProcessGameObjectsStart([NotNull] int init, [NotNull] int end, [NotNull] bool isLast)
-        {
-            return Task.Run(() =>
-            {
-                var watch = new Stopwatch();
-                watch.Start();
-
-                for (int i = init; i <= end - 1; i++)
-                {
-                    if (gameObjects[i].Active)
-                    {
-                        gameObjects[i].Start();
-                    }
-                }
-
-                if (isLast)
-                {
-                    if (gameObjects[end].Active)
-                    {
-                        gameObjects[end].Start();
-                    }
-                }
-
-                watch.Stop();
-                Logger.Log($"    Time to start the GameObjects: " + watch.ElapsedMilliseconds + " ms");
-            });
-        }
-
-        /// <summary>Processes the game objects update.</summary>
-        /// <param name="init">The initialize.</param>
-        /// <param name="end">The end.</param>
-        /// <param name="isLast">if set to <c>true</c> [is last].</param>
-        /// <returns>Return none</returns>
-        [return: NotNull]
-        private Task ProcessGameObjectsUpdate([NotNull] int init, [NotNull] int end, [NotNull] bool isLast)
-        {
-            return Task.Run(() =>
-            {
-                var watch = new Stopwatch();
-                watch.Start();
-
-
-                for (int i = init; i <= end - 1; i++)
-                {
-                    if (gameObjects[i].Active)
-                    {
-                        gameObjects[i].Update();
-                    }
-                }
-
-                if (isLast)
-                {
-                    if (gameObjects[end].Active)
-                    {
-                        gameObjects[end].Update();
-                    }
-                }
-
-                watch.Stop();
-                Logger.Log($"    Time to update the GameObjects: " + watch.ElapsedMilliseconds + " ms");
-            });
-        }
+        private Task UpdateObject(GameObject gameObject) => Task.Run(() => gameObject.Update());
 
         #region DefineEvents
 

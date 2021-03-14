@@ -7,71 +7,93 @@ namespace Alis.Core
     using Newtonsoft.Json;
     using SFML.System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
     /// <summary>Define a component</summary>
     public class Animator : Component
     {
         /// <summary>The sprite</summary>
+        [NotNull]
+        [JsonIgnore]
         private Sprite sprite;
 
         /// <summary>The state</summary>
+        [NotNull]
         private int state;
 
         /// <summary>The clock</summary>
+        [NotNull]
+        [JsonIgnore]
         private Clock clock;
 
         /// <summary>The animations</summary>
+        [NotNull]
         private List<Animation> animations;
 
-        /// <summary>Initializes a new instance of the <see cref="Animator" /> class.</summary>
-        public Animator()
+        public Animator() 
         {
+            this.state = 0;
+            this.animations = new List<Animation>();
+            clock = new Clock();
         }
+
+        [JsonConstructor]
+        public Animator([NotNull] int state, [NotNull] List<Animation> animations) 
+        {
+
+            this.state = state;
+            this.animations = animations.OrderBy(o => o.State).ToList();
+            clock = new Clock();
+        }
+
 
         /// <summary>Initializes a new instance of the <see cref="Animator" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="state">The state.</param>
         /// <param name="animations">The animations.</param>
-        [JsonConstructor]
-        public Animator(int state, params Animation[] animations)
+        public Animator([NotNull] int state, [NotNull] params Animation[] animations)
         {
             this.state = state;
-            this.animations = new List<Animation>();
-            this.clock = new Clock();
-            List<Animation> temp = animations != null ? animations.ToList().OrderBy(o => o.State).ToList() : new List<Animation>();
-
-            foreach (Animation anim in temp)
-            {
-                this.animations.Add(anim);
-            }
+            this.animations = animations.ToList().OrderBy(o => o.State).ToList();
+            clock = new Clock();
         }
 
         /// <summary>Gets or sets the state.</summary>
         /// <value>The state.</value>
-        [JsonProperty]
         public int State { get => state; set => state = value; }
 
         /// <summary>Gets or sets the animations.</summary>
         /// <value>The animations.</value>
-        [JsonProperty]
         public List<Animation> Animations { get => animations; set => animations = value; }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            sprite = GetGameObject().GetComponent<Sprite>();
+            sprite = GetGameObject().GetComponent<Sprite>() ?? throw new System.Exception("GameObject " + this.GetGameObject().Name + "dont content a Sprite");
+        }
+
+        public override int Priority()
+        {
+            return 2;
         }
 
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (sprite != null)
+            if (sprite != null && sprite.Image != string.Empty)
             {
-                if (clock.ElapsedTime.AsSeconds() >= animations[state].Speed)
+                if (state < animations.Count)
                 {
-                    sprite.GetDraw().Texture = animations[state].Texture;
-                    clock.Restart();
+                    if (animations.Count > 0) 
+                    {
+                        if (clock.ElapsedTime.AsSeconds() >= animations[state].Speed)
+                        {
+                            sprite.GetDraw().Texture = animations[state].Texture;
+                            clock.Restart();
+                        }
+                    }
+                   
                 }
             }
         }

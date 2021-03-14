@@ -37,6 +37,21 @@ namespace Alis.Core
         [NotNull]
         private Music audio;
 
+        private bool isdefault;
+
+        public AudioSource() 
+        {
+            isdefault = true;
+            playOnAwake = true;
+            volume = 100;
+            loop = true;
+
+            OnPlay += AudioSource_OnPlay;
+            OnStop += AudioSource_OnStop;
+            OnPause += AudioSource_OnPause;
+            OnRestart += AudioSource_OnRestart;
+        }
+
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
         /// <param name="audioFile">The audio file.</param>
         public AudioSource([NotNull] string audioFile) 
@@ -46,6 +61,7 @@ namespace Alis.Core
 
             playOnAwake = true;
             volume = 100;
+            isdefault = true;
             loop = true;
 
             audio = new Music(pathFile);
@@ -70,6 +86,8 @@ namespace Alis.Core
             this.playOnAwake = playOnAwake;
             this.volume = volume;
             this.loop = loop;
+
+            isdefault = true;
 
             audio = new Music(pathFile);
 
@@ -109,86 +127,89 @@ namespace Alis.Core
         [NotNull]
         [JsonProperty]
         public float Volume { get => volume; set => volume = value; }
-       
+
         /// <summary>Gets or sets a value indicating whether this <see cref="AudioSource" /> is loop.</summary>
         /// <value>
         /// <c>true</c> if loop; otherwise, <c>false</c>.</value>
+        [NotNull]
+        [JsonProperty]
         public bool Loop { get => loop; set => loop = value; }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            if (playOnAwake)
+            if (audio != null) 
             {
-                Play();
+                if (playOnAwake)
+                {
+                    Play();
+                }
             }
+
+            isdefault = false;
         }
 
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (audio.Status != SoundStatus.Playing && loop) 
+            if (audio != null && !isdefault)
             {
-                Play();
+                if (audio.Status != SoundStatus.Playing && loop)
+                {
+                    Play();
+                }
             }
         }
 
         /// <summary>Plays this instance.</summary>
         public void Play()
         {
-            if (audio != null)
-            {
-                audio.Volume = volume;
-                audio.Play();
-                OnPlay.Invoke(null, true);
-                playOnAwake = false;
-            }
+            audio.Volume = volume;
+            audio.Play();
+            OnPlay.Invoke(null, true);
+            playOnAwake = false;
         }
 
         /// <summary>Stops this instance.</summary>
         public void Stop()
         {
-            if (audio != null)
+            if (audio.Status == SoundStatus.Playing)
             {
-                if (audio.Status == SoundStatus.Playing)
-                {
-                    audio.Stop();
-                    OnStop.Invoke(null, true);
-                }
+                audio.Stop();
+                OnStop.Invoke(null, true);
             }
         }
 
         /// <summary>Pauses this instance.</summary>
         public void Pause()
         {
-            if (audio != null)
+            if (audio.Status == SoundStatus.Playing)
             {
-                if (audio.Status == SoundStatus.Playing)
-                {
-                    audio.Pause();
-                    OnPause.Invoke(null, true);
-                }
+                audio.Pause();
+                OnPause.Invoke(null, true);
             }
+        }
+
+        public override int Priority()
+        {
+            return 3;
         }
 
         /// <summary>Restarts this instance.</summary>
         public void Restart()
         {
-            if (audio != null)
+            if (audio.Status == SoundStatus.Playing)
             {
-                if (audio.Status == SoundStatus.Playing)
-                {
-                    audio.Stop();
-                }
-
-                if (audio.Status == SoundStatus.Paused)
-                {
-                    audio.Stop();
-                }
-
-                audio.Play();
-                OnRestart.Invoke(null, true);
+                audio.Stop();
             }
+
+            if (audio.Status == SoundStatus.Paused)
+            {
+                audio.Stop();
+            }
+
+            audio.Play();
+            OnRestart.Invoke(null, true);
         }
 
         #region DefineEvents

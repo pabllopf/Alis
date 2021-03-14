@@ -11,6 +11,8 @@ namespace Alis.Core
     /// <summary>Find any asset of the videogame.</summary>
     public static class AssetManager
     {
+        private static string workPath = string.Empty;
+
         /// <summary>The assets</summary>
         private static Dictionary<string, string> assets = new Dictionary<string, string>();
 
@@ -18,30 +20,42 @@ namespace Alis.Core
         /// <value>The assets path.</value>
         public static string AssetsPath => Environment.CurrentDirectory + "/Assets/";
 
+        /// <summary>Gets or sets the work path.</summary>
+        /// <value>The work path.</value>
+        public static void SetWorkPath(string message) 
+        {
+            workPath = message;
+        }
+
         /// <summary>Loads the specified name.</summary>
         /// <param name="file">The name.</param>
         /// <returns>Return the path of assset</returns>
         public static string Load(string file)
         {
-            if(assets.ContainsKey(file))
+            if (assets.ContainsKey(file))
             {
                 return assets[file];
             }
 
-            foreach (string path in Directory.GetFiles(AssetsPath, "*", SearchOption.AllDirectories))
-            {
-                if (Path.GetFileName(path).Equals(file))
-                {
-                    if (!assets.ContainsKey(file))
-                    {
-                        assets.Add(file, path);
-                    }
+            string tempPath = !workPath.Equals(string.Empty) ? workPath : AssetsPath;
 
-                    return path;
+            if (Directory.Exists(tempPath))
+            {
+                foreach (string path in Directory.GetFiles(tempPath, "*", SearchOption.AllDirectories))
+                {
+                    if (Path.GetFileName(path).Equals(file))
+                    {
+                        if (!assets.ContainsKey(file))
+                        {
+                            assets.Add(file, path);
+                        }
+
+                        return path;
+                    }
                 }
             }
 
-            throw new Exception("The asset " + file + " dont exit on the directory " + AssetsPath);
+            return null;
         }
     }
 }

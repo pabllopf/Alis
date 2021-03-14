@@ -334,6 +334,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void BuildAndRun()
         {
+            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
             new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;

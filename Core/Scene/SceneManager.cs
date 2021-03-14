@@ -22,32 +22,39 @@ namespace Alis.Core
         [NotNull]
         private Scene currentScene;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SceneManager"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
+        /// <param name="scenes">The scenes.</param>
         [JsonConstructor]
-        public SceneManager()
+        public SceneManager([NotNull] List<Scene> scenes)
         {
-            scenes = new List<Scene> { new Scene("Default") };
-            currentScene = scenes[0];
+            this.scenes = scenes;
 
             OnCreate += SceneManager_OnCreate;
             OnLoadScene += SceneManager_OnLoadScene;
             OnDestroy += SceneManager_OnDestroy;
+
+            if (scenes != null) 
+            {
+                currentScene = scenes[0];
+            }
 
             OnCreate.Invoke(null, true);
         }
 
         /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
         /// <param name="scenes">The scenes.</param>
-        public SceneManager([NotNull] List<Scene> scenes)
+        public SceneManager([NotNull] Scene[] scenes)
         {
-            this.scenes = scenes;
-            currentScene = scenes[0];
+            this.scenes = new List<Scene>(scenes);
 
             OnCreate += SceneManager_OnCreate;
             OnLoadScene += SceneManager_OnLoadScene;
             OnDestroy += SceneManager_OnDestroy;
+
+            if (scenes != null)
+            {
+                currentScene = scenes[0];
+            }
 
             OnCreate.Invoke(null, true);
         }
@@ -67,14 +74,7 @@ namespace Alis.Core
         /// <summary>Gets or sets the scenes.</summary>
         /// <value>The scenes.</value>
         [NotNull]
-        [JsonProperty]
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
-
-        /// <summary>Gets or sets the current scene.</summary>
-        /// <value>The current scene.</value>
-        [NotNull]
-        [JsonProperty]
-        public Scene CurrentScene { get => currentScene; set => currentScene = value; }
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
@@ -86,9 +86,15 @@ namespace Alis.Core
                 var watch = new Stopwatch();
                 watch.Start();
 
-                Task.Delay(1000).Wait();
+                if (scenes.Count == 0) 
+                {
+                    scenes.Add(new Scene("Default"));
+                }
 
+                currentScene = scenes[0];
                 currentScene.Start().Wait();
+
+                Console.WriteLine("Start first scene: " + currentScene.Name);
 
                 watch.Stop();
                 Logger.Log($"  Time to Start scene manager: " + watch.ElapsedMilliseconds + " ms");

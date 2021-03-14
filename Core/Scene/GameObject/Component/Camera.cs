@@ -19,27 +19,27 @@ namespace Alis.Core
 
         private Vector2f size;
 
-        /// <summary>Initializes a new instance of the <see cref="Camera" /> class.</summary>
-        public Camera()
-        {
-        }
-
         [JsonConstructor]
         public Camera(Vector2f center, Vector2f size)
         {
+            this.center = center;
+            this.size = size;
             view = new View(center, size);
         }
 
-        [JsonProperty]
         public Vector2f Center { get => center; set => center = value; }
 
-        [JsonProperty]
         public Vector2f Size { get => size; set => size = value; }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
             transform = this.GetGameObject().Transform;
+        }
+
+        public override int Priority()
+        {
+            return 6;
         }
 
         /// <summary>Updates this instance.</summary>
@@ -64,7 +64,7 @@ namespace Alis.Core
                         Render.Current.RenderTexture.SetView(view);
                     }
 
-                    view.Center = new Vector2f(transform.Position.X, transform.Position.Y);
+                    //view.Center = new Vector2f(transform.Position.X, transform.Position.Y);
                 }
             }
         }
