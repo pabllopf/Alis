@@ -49,7 +49,7 @@ namespace SFML
                         ),
 
                        new GameObject("SoundTrack", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new AudioSource()
+                            new AudioSource("menu.wav")
                         )
                     )
             );

@@ -13,25 +13,42 @@ namespace Alis.Core
     public class AudioSource : Component
     {
         /// <summary>The file</summary>
+        [NotNull]
         private string audioFile;
 
+        /// <summary>The path file</summary>
+        [NotNull]
+        private string pathFile;
+
         /// <summary>The play on awake</summary>
+        [NotNull]
         private bool playOnAwake;
 
+        /// <summary>The loop</summary>
+        [NotNull]
+        private bool loop;
+
         /// <summary>The volume</summary>
+        [NotNull]
         private float volume;
 
         /// <summary>The audio</summary>
+        [JsonIgnore]
+        [NotNull]
         private Music audio;
 
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>
-        public AudioSource()
+        /// <param name="audioFile">The audio file.</param>
+        public AudioSource([NotNull] string audioFile) 
         {
-            audioFile = string.Empty;
+            this.audioFile = audioFile;
+            pathFile = AssetManager.Load(audioFile);
+
             playOnAwake = true;
             volume = 1;
+            loop = true;
 
-            audio = new Music("C:/Users/wwwam/Documents/Repositorios/Alis/Example/bin/Windows/netcoreapp3.1/Assets/menu.wav");
+            audio = new Music(pathFile);
 
             OnPlay += AudioSource_OnPlay;
             OnStop += AudioSource_OnStop;
@@ -43,28 +60,23 @@ namespace Alis.Core
         /// <param name="audioFile">The audio file.</param>
         /// <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
         /// <param name="volume">The volume.</param>
+        /// <param name="loop">define is loop</param>
         [JsonConstructor]
-        public AudioSource([NotNull] string audioFile, [NotNull] bool playOnAwake, [NotNull] float volume)
+        public AudioSource([NotNull] string audioFile, [NotNull] bool playOnAwake, [NotNull] float volume, [NotNull] bool loop)
         {
             this.audioFile = audioFile;
+            pathFile = AssetManager.Load(audioFile);
+
             this.playOnAwake = playOnAwake;
             this.volume = volume;
+            this.loop = loop;
 
-            if (!audioFile.Equals(string.Empty)) 
-            {
-                audio = new Music(audioFile);
-            }
-            
+            audio = new Music(pathFile);
 
             OnPlay += AudioSource_OnPlay;
             OnStop += AudioSource_OnStop;
             OnPause += AudioSource_OnPause;
             OnRestart += AudioSource_OnRestart;
-        }
-
-        ~AudioSource()
-        {
-            Stop();
         }
 
         /// <summary>Occurs when [change].</summary>
@@ -81,7 +93,27 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the audio file.</summary>
         /// <value>The audio file.</value>
+        [NotNull]
+        [JsonProperty]
         public string AudioFile { get => audioFile; set => audioFile = value; }
+
+        /// <summary>Gets or sets a value indicating whether [play on awake].</summary>
+        /// <value>
+        /// <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
+        [NotNull]
+        [JsonProperty]
+        public bool PlayOnAwake { get => playOnAwake; set => playOnAwake = value; }
+
+        /// <summary>Gets or sets the volume.</summary>
+        /// <value>The volume.</value>
+        [NotNull]
+        [JsonProperty]
+        public float Volume { get => volume; set => volume = value; }
+       
+        /// <summary>Gets or sets a value indicating whether this <see cref="AudioSource" /> is loop.</summary>
+        /// <value>
+        /// <c>true</c> if loop; otherwise, <c>false</c>.</value>
+        public bool Loop { get => loop; set => loop = value; }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()
@@ -95,6 +127,10 @@ namespace Alis.Core
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
+            if (audio.Status != SoundStatus.Playing && loop && playOnAwake) 
+            {
+                Play();
+            }
         }
 
         /// <summary>Plays this instance.</summary>
@@ -102,6 +138,7 @@ namespace Alis.Core
         {
             if (audio != null)
             {
+                audio.Volume = volume;
                 audio.Play();
                 OnPlay.Invoke(null, true);
             }
@@ -158,22 +195,22 @@ namespace Alis.Core
         /// <summary>Audio the source on restart.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void AudioSource_OnRestart(object sender, bool e) => Logger.Info();
+        private void AudioSource_OnRestart([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Audio the source on pause.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void AudioSource_OnPause(object sender, bool e) => Logger.Info();
+        private void AudioSource_OnPause([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Audio the source on stop.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void AudioSource_OnStop(object sender, bool e) => Logger.Info();
+        private void AudioSource_OnStop([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Audio the source on play.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void AudioSource_OnPlay(object sender, bool e) => Logger.Info();
+        private void AudioSource_OnPlay([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
     }
