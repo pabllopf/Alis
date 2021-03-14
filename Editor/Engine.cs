@@ -26,6 +26,9 @@ namespace Alis.Editor
         /// <summary>The main window</summary>
         private MainWindow mainWindow;
 
+        /// <summary>The information</summary>
+        private Info info;
+
         /// <summary>Initializes a new instance of the <see cref="Engine" /> class.</summary>
         /// <param name="args">The arguments.</param>
         public Engine(string[] args)
@@ -143,7 +146,7 @@ namespace Alis.Editor
                 }
             }
 
-            Info info = new Info(platform, architecture, graphics);
+            info = new Info(platform, architecture, graphics);
             Logger.Log("Info Platform: " + platform.ToString() + " " + architecture.ToString() + " " + graphics.ToString());
 
             mainWindow = new MainWindow();           
