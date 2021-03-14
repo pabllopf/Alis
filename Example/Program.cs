@@ -17,11 +17,7 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static async Task Main(string[] args)
         {
-
-            Console.WriteLine(AssetManager.Load("tile00k0.png"));
-
-
-            /*
+            
             var watch = new Stopwatch();
             watch.Start();
 
@@ -29,17 +25,17 @@ namespace SFML
                 new Config("Example"),
                     new Scene("First",
                        new GameObject("Player24724", new Transform(new Vector3(10f, 50f, 0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite(),
+                            new Sprite("tile000.png"),
                             new Collision()
                         ),
 
                         new GameObject("Player72", new Transform(new Vector3(60f, 40f, 0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite(),
+                            new Sprite("tile000.png"),
                             new Collision()
                         ),
 
                         new GameObject("Player", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)),
-                            new Sprite(),
+                            new Sprite("tile000.png", 1),
                             new Animator(0,
                                 new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
                                 new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
@@ -70,8 +66,8 @@ namespace SFML
 
             Console.WriteLine(name);
             Console.WriteLine(name2);
-            
-            Console.ReadLine();*/
+
+            Console.ReadLine();
         }
 
         private static async Task<string> Test_Task(int size)
