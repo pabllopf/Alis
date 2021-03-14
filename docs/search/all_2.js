@@ -19,7 +19,7 @@ var searchData=
   ['bed_414',['BED',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a0f85108084bb47eae718b23a5ff2a75c',1,'Alis::Editor::Utils::Icon']]],
   ['beer_415',['BEER',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a12fad6dd23f4f03b17be455fae3460ef',1,'Alis::Editor::Utils::Icon']]],
   ['beforeself_416',['BeforeSelf',['../class_newtonsoft_1_1_json_1_1_linq_1_1_j_token.html#a56a92b1a6d0949b3df521a6f0d348dbc',1,'Newtonsoft::Json::Linq::JToken']]],
-  ['beforeupdate_417',['BeforeUpdate',['../class_alis_1_1_core_1_1_component.html#ad36770eeee55f3eacd93d3d7345303b6',1,'Alis.Core.Component.BeforeUpdate()'],['../class_alis_1_1_core_1_1_physics.html#a7305b691287669ebe363f522b000c7ab',1,'Alis.Core.Physics.BeforeUpdate()']]],
+  ['beforeupdate_417',['BeforeUpdate',['../class_alis_1_1_core_1_1_component.html#ad36770eeee55f3eacd93d3d7345303b6',1,'Alis::Core::Component']]],
   ['begin_418',['Begin',['../class_im_gui_n_e_t_1_1_im_gui_list_clipper2.html#a8bc1b757d6400c773375f9fa7a2f3ba4',1,'ImGuiNET::ImGuiListClipper2']]],
   ['behance_419',['BEHANCE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a86c2b31ef67f22e0b215e1ba7d5c8298',1,'Alis::Editor::Utils::Icon']]],
   ['behancesquare_420',['BEHANCESQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#acebbec62e588d0731550fb52b87ae06c',1,'Alis::Editor::Utils::Icon']]],

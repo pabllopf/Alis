@@ -7,5 +7,6 @@ var class_alis_1_1_core_1_1_collision =
     [ "isDefault", "class_alis_1_1_core_1_1_collision.html#aa7c48bd1c7cc4fee5b2892e165aa1e25", null ],
     [ "transform", "class_alis_1_1_core_1_1_collision.html#abb2ba12dd9a569bae771a5b9241bfd10", null ],
     [ "rectangle", "class_alis_1_1_core_1_1_collision.html#a948f24776d9de640109703667e6a8743", null ],
-    [ "border", "class_alis_1_1_core_1_1_collision.html#a2a5630b72ec64049c21f2ebbd38c4008", null ]
+    [ "border", "class_alis_1_1_core_1_1_collision.html#a2a5630b72ec64049c21f2ebbd38c4008", null ],
+    [ "isTrigger", "class_alis_1_1_core_1_1_collision.html#a1bf8651fa0ca2593962fc85719751f78", null ]
 ];
