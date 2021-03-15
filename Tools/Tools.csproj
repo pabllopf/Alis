@@ -20,7 +20,7 @@
     <RepositoryType>Public</RepositoryType>
     <PackageTags>Videogames Alis Tools Free</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>PabloPerdomoFalcon.pfx</AssemblyOriginatorKeyFile>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
   </PropertyGroup>

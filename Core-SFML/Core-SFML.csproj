@@ -8,7 +8,7 @@
     <AssemblyName>Core-SFML</AssemblyName>
 	<LangVersion>8.0</LangVersion>
 	<Nullable>enable</Nullable>
-	<PackageId>Alis.Core-SFML</PackageId>
+	<PackageId>Core-SFML</PackageId>
 	<Authors>Pablo Perdomo Falcón</Authors>
 	<Product>Alis</Product>
 	<Description>Include the core dependecie with SFML.</Description>
@@ -23,7 +23,7 @@
 	<NeutralLanguage>en</NeutralLanguage>
 	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	<SignAssembly>true</SignAssembly>
+	<SignAssembly>false</SignAssembly>
 	<AssemblyOriginatorKeyFile>Pablo Perdomo Falcón.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 

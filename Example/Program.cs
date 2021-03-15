@@ -68,7 +68,7 @@ namespace SFML
             Console.WriteLine("load game");
 
             var gameloaded = LocalData.Load<VideoGame>("Example");
-            gameloaded.Run();
+            //gameloaded.Run();
 
             Thread.Sleep(1000);
             Console.WriteLine("RUN TEST TASK vs NORMAL: ");

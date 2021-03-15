@@ -10,7 +10,7 @@
 	<ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-	<PackageId>Alis.Core</PackageId>
+	<PackageId>Core</PackageId>
 	<Authors>Pablo Perdomo Falcón</Authors>
 	<Product>Alis</Product>
 	<Description>Build the videogames of you dreams with ALIS!!. This is the core, and include all logic to build your game using this framework.</Description>
@@ -23,14 +23,14 @@
 	<PackageTags>Videogames Alis Cross-Platform</PackageTags>
 	<PackageReleaseNotes>This is the first stable version.</PackageReleaseNotes>
 	<NeutralLanguage>en</NeutralLanguage>
-	<SignAssembly>true</SignAssembly>
+	<SignAssembly>false</SignAssembly>
 	<AssemblyOriginatorKeyFile>PabloPerdomoFalcon.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <DocumentationFile>C:\Users\es42250209z\Downloads\Repositorios\Alis\Core\Core.xml</DocumentationFile>
+    <DocumentationFile></DocumentationFile>
   </PropertyGroup>
 
   <!-- ______________________________ MACOS _____________________________________ -->

@@ -66,7 +66,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Animator">
-    <Position X="23.75" Y="16.5" Width="2.25" />
+    <Position X="22.75" Y="16.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAEAAAAAAAQABAAEAAEAAACBAAAAAA=</HashCode>
       <FileName>Scene\GameObject\Component\Animator.cs</FileName>
@@ -107,7 +107,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.Component">
-    <Position X="17" Y="8.75" Width="2" />
+    <Position X="17.75" Y="8.75" Width="2" />
     <TypeIdentifier>
       <HashCode>ACQhABAAQCAAAIAEAAABCAQCACBAAEAoAgggIQAADEA=</HashCode>
       <FileName>Scene\GameObject\Component\Component.cs</FileName>
