@@ -6,6 +6,7 @@ var class_alis_1_1_editor_1_1_engine =
     [ "architecture", "class_alis_1_1_editor_1_1_engine.html#a2bbd42cfe97fea3ca431e18710262573", null ],
     [ "graphics", "class_alis_1_1_editor_1_1_engine.html#ad3d3fc3499589d124af25f33b7dd7995", null ],
     [ "mainWindow", "class_alis_1_1_editor_1_1_engine.html#af525cb3438223bd0328552c1c10adabb", null ],
+    [ "info", "class_alis_1_1_editor_1_1_engine.html#a4458d9735f1bc51112380adbb262816e", null ],
     [ "FirstInstance", "class_alis_1_1_editor_1_1_engine.html#a5396252592f9ad7a56757fe745641548", null ],
     [ "DetectPlatform", "class_alis_1_1_editor_1_1_engine.html#a83249099eb9b7badca3fcb4a10d225c3", null ],
     [ "DetectArchitecture", "class_alis_1_1_editor_1_1_engine.html#a561cf6f0c329b4f0defc5948a2b56be6", null ]

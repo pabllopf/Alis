@@ -1,8 +1,10 @@
 var class_alis_1_1_core_1_1_video_game =
 [
+    [ "VideoGame", "class_alis_1_1_core_1_1_video_game.html#ad2a3f35e4a2086e621fad80e98993c93", null ],
     [ "VideoGame", "class_alis_1_1_core_1_1_video_game.html#a28dda6a0b68f1ee682a6744ffc869d28", null ],
     [ "~VideoGame", "class_alis_1_1_core_1_1_video_game.html#ab2bc38a085e5dffd01ec0b26961b24f9", null ],
     [ "LoadOfFile", "class_alis_1_1_core_1_1_video_game.html#ab7403a79ad21541ef0c66864ab98fab3", null ],
+    [ "RunOfFile", "class_alis_1_1_core_1_1_video_game.html#a2999b68e76c86ceb2054e21917623ef8", null ],
     [ "Run", "class_alis_1_1_core_1_1_video_game.html#a6df7ec503ca4acdb8a4de3a7f5dd877a", null ],
     [ "Start", "class_alis_1_1_core_1_1_video_game.html#ac6bf503352c1cebfee412bab91d44b0c", null ],
     [ "PreviewRender", "class_alis_1_1_core_1_1_video_game.html#a84ebfd0f05cbfd694ad857a45c67d875", null ],
@@ -17,6 +19,7 @@ var class_alis_1_1_core_1_1_video_game =
     [ "input", "class_alis_1_1_core_1_1_video_game.html#af7eac2cc84b422572acc4e6a354b0644", null ],
     [ "isRunning", "class_alis_1_1_core_1_1_video_game.html#aad8fa89e8ad977ac8b6e216cf09013d9", null ],
     [ "clock", "class_alis_1_1_core_1_1_video_game.html#a28a88d402705cf0e44fd23ada297249c", null ],
+    [ "firstTime", "class_alis_1_1_core_1_1_video_game.html#a2b4972e68ee547c436ed025bb314f984", null ],
     [ "Config", "class_alis_1_1_core_1_1_video_game.html#a07dacee97f33889bfebadb8fbccd1187", null ],
     [ "Render", "class_alis_1_1_core_1_1_video_game.html#ac9041a9550ff0965a14c2f35afcc4887", null ],
     [ "Input", "class_alis_1_1_core_1_1_video_game.html#a82e03cd93128605924d690a5f9e6e2e2", null ],

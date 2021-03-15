@@ -2,7 +2,7 @@ var hierarchy =
 [
     [ "Alis.Core.Animation", "class_alis_1_1_core_1_1_animation.html", null ],
     [ "Alis.Tools.Application", "struct_alis_1_1_tools_1_1_application.html", null ],
-    [ "Alis.Core.Asset", "class_alis_1_1_core_1_1_asset.html", null ],
+    [ "Alis.Core.AssetManager", "class_alis_1_1_core_1_1_asset_manager.html", null ],
     [ "Attribute", null, [
       [ "Newtonsoft.Json.JsonConstructorAttribute", "class_newtonsoft_1_1_json_1_1_json_constructor_attribute.html", null ],
       [ "Newtonsoft.Json.JsonContainerAttribute", "class_newtonsoft_1_1_json_1_1_json_container_attribute.html", [
@@ -47,7 +47,6 @@ var hierarchy =
       [ "Alis.Core.AudioSource", "class_alis_1_1_core_1_1_audio_source.html", null ],
       [ "Alis.Core.Camera", "class_alis_1_1_core_1_1_camera.html", null ],
       [ "Alis.Core.Collision", "class_alis_1_1_core_1_1_collision.html", null ],
-      [ "Alis.Core.Physics", "class_alis_1_1_core_1_1_physics.html", null ],
       [ "Alis.Core.Sprite", "class_alis_1_1_core_1_1_sprite.html", null ]
     ] ],
     [ "Alis.Core.Config", "class_alis_1_1_core_1_1_config.html", null ],
