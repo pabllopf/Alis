@@ -6,6 +6,20 @@
 	<Nullable>enable</Nullable>
     <Configurations>Windows;MacOS;Linux</Configurations>
     <UserSecretsId>66c36b4b-e0fb-4937-aa9f-3b3645bf46b1</UserSecretsId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageId>Alis.Tools</PackageId>
+    <Authors>Pablo Perdomo Falcón</Authors>
+    <Product>Alis</Product>
+    <Description>The main tools of Alis. Use this tools in your projects without problems.</Description>
+    <Copyright>GNU General Public License v3.0</Copyright>
+    <PackageIcon>logo.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://pabllopf.github.io/Alis/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/pabllopf/pabllopf</RepositoryUrl>
+    <RepositoryType>Public</RepositoryType>
+    <PackageTags>Videogames Alis Tools Free</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -24,6 +38,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Tools.xml" />
+    <None Include="..\docs\resources\logo\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
   
   <ItemGroup>

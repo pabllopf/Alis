@@ -8,6 +8,23 @@
     <AssemblyName>Core-SFML</AssemblyName>
 	<LangVersion>8.0</LangVersion>
 	<Nullable>enable</Nullable>
+	<PackageId>Alis.Core-SFML</PackageId>
+	<Authors>Pablo Perdomo Falcón</Authors>
+	<Product>Alis</Product>
+	<Description>Include the core dependecie with SFML.</Description>
+	<Copyright>GNU General Public License v3.0</Copyright>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<RepositoryUrl>https://github.com/pabllopf/pabllopf</RepositoryUrl>
+	<PackageProjectUrl>https://pabllopf.github.io/Alis/</PackageProjectUrl>
+	<PackageIcon>logo.png</PackageIcon>
+	<RepositoryType>Public</RepositoryType>
+	<PackageTags>Videogame SFML Alis cross-platform framework</PackageTags>
+	<PackageReleaseNotes>The first stable version.</PackageReleaseNotes>
+	<NeutralLanguage>en</NeutralLanguage>
+	<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<SignAssembly>true</SignAssembly>
+	<AssemblyOriginatorKeyFile>Pablo Perdomo Falcón.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -49,6 +66,31 @@
   
   <ItemGroup>
     <None Update="Runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+    <None Include="..\docs\resources\logo\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
     
      
