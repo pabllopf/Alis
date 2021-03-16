@@ -319,6 +319,8 @@ var hierarchy =
     [ "Newtonsoft.Json.Utilities.ReflectionObject", "class_newtonsoft_1_1_json_1_1_utilities_1_1_reflection_object.html", null ],
     [ "Newtonsoft.Json.Utilities.ReflectionUtils", "class_newtonsoft_1_1_json_1_1_utilities_1_1_reflection_utils.html", null ],
     [ "Alis.Core.Render", "class_alis_1_1_core_1_1_render.html", null ],
+    [ "Tools.Properties.Resources", "class_tools_1_1_properties_1_1_resources.html", null ],
+    [ "Core.Properties.Resources", "class_core_1_1_properties_1_1_resources.html", null ],
     [ "ImGuiNET.ImGuiController.ResourceSetInfo", "struct_im_gui_n_e_t_1_1_im_gui_controller_1_1_resource_set_info.html", null ],
     [ "Alis.Core.Scene", "class_alis_1_1_core_1_1_scene.html", null ],
     [ "Alis.Core.SceneManager", "class_alis_1_1_core_1_1_scene_manager.html", null ],
