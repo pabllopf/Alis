@@ -28,6 +28,7 @@ jobs:
     - name: Setup NuGet.exe for use with actions
       uses: brandedoutcast/publish-nuget@v2.5.5
       with:
-        PROJECT_FILE_PATH:  /Core/Core.csproj
+        PROJECT_FILE_PATH:  ./Core/Core.csproj
         TAG_FORMAT: "*"
+        VERSION_REGEX: "*"
         NUGET_KEY: ${{secrets.NUGET}}
