@@ -2,15 +2,15 @@
 name: "Discover_Vulnerabilities"
 
 on:
-  schedule:
-    - cron: '0 1 * * *'
+  push:
+    branches: [ main ] 
 
 jobs:
   job1: 
     name: Testing Vulnerabilities
     runs-on: windows-2019
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         language: [ 'csharp' ]
     steps:
