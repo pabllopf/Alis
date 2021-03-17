@@ -3,7 +3,9 @@ name: "Platform_Compatibility"
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
     
 jobs:
   job1: 
