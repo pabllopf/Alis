@@ -25,9 +25,6 @@ jobs:
     - name: Build
       run: dotnet build --configuration Windows
     
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
-
     - name: Setup NuGet.exe for use with actions
       uses: brandedoutcast/publish-nuget@v2.5.5
       with:
