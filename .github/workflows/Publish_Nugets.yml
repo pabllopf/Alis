@@ -30,4 +30,5 @@ jobs:
       with:
         PROJECT_FILE_PATH:  ./Core/Core.csproj
         TAG_FORMAT: "*"
+        VERSION_REGEX: "*"
         NUGET_KEY: ${{secrets.NUGET}}
