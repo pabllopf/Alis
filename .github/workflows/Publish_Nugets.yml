@@ -22,13 +22,23 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     
-    - name: Build
-      run: dotnet build --configuration Windows
-    
-    - name: Setup NuGet.exe for use with actions
+    - name: Publish Alis.Core Nuget
       uses: rohith/publish-nuget@v2
       with:
         PROJECT_FILE_PATH:  ./Core/Core.csproj
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
         NUGET_KEY: ${{secrets.NUGET}}
         
+    - name: Publish Alis.Core-SFML Nuget
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH:  ./Core-SFML/Core-SFML.csproj
+        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+        NUGET_KEY: ${{secrets.NUGET}}
+        
+    - name: Publish Alis.Tools Nuget
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH:  ./Tools/Tools.csproj
+        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+        NUGET_KEY: ${{secrets.NUGET}}
