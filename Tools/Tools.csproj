@@ -11,7 +11,7 @@
     <PackageId>Alis.Tools</PackageId>
     <Authors>Pablo Perdomo Falcón</Authors>
     <Product>Alis</Product>
-    <Description>The main tools of Alis. Use this tools in your projects without problems.</Description>
+    <Description>The "Alis.Tools" include several tools that will facilitate your day to day developing multiplatform projects. And remember ... it's multiplatform and free!!</Description>
     <Copyright>GNU General Public License v3.0</Copyright>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -23,6 +23,8 @@
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>PabloPerdomoFalcon.pfx</AssemblyOriginatorKeyFile>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
