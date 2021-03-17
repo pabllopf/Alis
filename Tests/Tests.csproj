@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Configurations>Windows;MacOS;Linux</Configurations>
     <AssemblyName>Tests</AssemblyName>
     <RootNamespace></RootNamespace>

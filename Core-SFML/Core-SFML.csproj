@@ -41,7 +41,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>Macos</DefineConstants>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
 
   
@@ -51,6 +51,7 @@
     <DebugType />
     <Optimize>true</Optimize>
     <DefineConstants>Linux</DefineConstants>
+	  <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>bin\Linux\netcoreapp3.1\Editor.xml</DocumentationFile>
   </PropertyGroup>
  
