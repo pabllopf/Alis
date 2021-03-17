@@ -23,8 +23,9 @@
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>PabloPerdomoFalcon.pfx</AssemblyOriginatorKeyFile>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+	  <AssemblyVersion>1.1.0.0</AssemblyVersion>
+	  <FileVersion>1.1.0.0</FileVersion>
+	  <Version>1.1.0</Version>
   </PropertyGroup>
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
