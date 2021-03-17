@@ -26,9 +26,7 @@ jobs:
       run: dotnet build --configuration Windows
     
     - name: Setup NuGet.exe for use with actions
-      uses: brandedoutcast/publish-nuget@v2.5.5
+      uses: rohith/publish-nuget@v2
       with:
         PROJECT_FILE_PATH:  ./Core/Core.csproj
-        TAG_FORMAT: "*"
-        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
         NUGET_KEY: ${{secrets.NUGET}}
