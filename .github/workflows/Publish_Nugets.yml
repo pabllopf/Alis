@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  Nugets:
 
     runs-on: ubuntu-latest
 
@@ -29,8 +29,8 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
     - name: Setup NuGet.exe for use with actions
-      uses: brandedoutcast/publish-nuget@2.5.5
+      uses: brandedoutcast/publish-nuget@v2.5.5
       with:
-        PROJECT_FILE_PATH: /Core/Core.csproj
+        PROJECT_FILE_PATH:  /Core/Core.csproj
         TAG_FORMAT: "*"
         NUGET_KEY: ${{secrets.NUGET}}
