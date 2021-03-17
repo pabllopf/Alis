@@ -1,0 +1,36 @@
+name: .NET
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build
+      run: dotnet build --configuration Windows
+    
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+
+    - name: Setup NuGet.exe for use with actions
+      uses: brandedoutcast/publish-nuget@2.5.5
+      with:
+        PROJECT_FILE_PATH: /Core/Core.csproj
+        TAG_FORMAT: "*"
+        NUGET_KEY: ${{secrets.NUGET}}
