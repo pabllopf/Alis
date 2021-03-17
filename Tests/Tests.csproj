@@ -2,7 +2,7 @@
   <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Configurations>Windows;MacOS;Linux</Configurations>
+    <Configurations>Windows;MacOS;Linux;Release</Configurations>
     <AssemblyName>Tests</AssemblyName>
     <RootNamespace></RootNamespace>
   </PropertyGroup>
@@ -10,6 +10,7 @@
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
 
   <!-- ______________________________ MACOS _____________________________________ -->
