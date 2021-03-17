@@ -3,7 +3,7 @@ name: "Discover_Vulnerabilities"
 
 on:
   push:
-    branches: [ main ] 
+    branches: [ main, develop ] 
 
 jobs:
   job1: 
