@@ -33,7 +33,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Alis Framework
-   &#160;<span id="projectnumber">1.0.0</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">Develop the video games of your dreams.</div>
   </td>
@@ -119,6 +119,8 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a7e0fac579830b95ed9a38a6f576eb0d2"><td class="memItemLeft" align="right" valign="top">static Encoding&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_language.html#a7e0fac579830b95ed9a38a6f576eb0d2">GetEncoding</a> (string filename)</td></tr>
 <tr class="memdesc:a7e0fac579830b95ed9a38a6f576eb0d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the encoding.  <a href="class_alis_1_1_tools_1_1_language.html#a7e0fac579830b95ed9a38a6f576eb0d2">More...</a><br /></td></tr>
 <tr class="separator:a7e0fac579830b95ed9a38a6f576eb0d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a255361f4233b9804880241c0a60ed913"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_language.html#a255361f4233b9804880241c0a60ed913">SetConfig</a> (string fileWithExtension, string path)</td></tr>
+<tr class="separator:a255361f4233b9804880241c0a60ed913"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="events"></a>
 Events</h2></td></tr>
@@ -131,6 +133,10 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:a4743ac951181d4b616afce6bd6e618dd"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_language.html#a4743ac951181d4b616afce6bd6e618dd">currentLanguage</a> = new Dictionary&lt;string, string&gt;()</td></tr>
 <tr class="memdesc:a4743ac951181d4b616afce6bd6e618dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary of current language  <a href="class_alis_1_1_tools_1_1_language.html#a4743ac951181d4b616afce6bd6e618dd">More...</a><br /></td></tr>
 <tr class="separator:a4743ac951181d4b616afce6bd6e618dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af749e8729371a2b653dcbcdc057a0af1"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_language.html#af749e8729371a2b653dcbcdc057a0af1">directory</a> = Environment.CurrentDirectory + &quot;/Resources&quot;</td></tr>
+<tr class="separator:af749e8729371a2b653dcbcdc057a0af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27a1c17f70efbc6664c513f2dc65ed20"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_language.html#a27a1c17f70efbc6664c513f2dc65ed20">file</a> = &quot;Languages.csv&quot;</td></tr>
+<tr class="separator:a27a1c17f70efbc6664c513f2dc65ed20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manage the languages of videogame. </p>
@@ -169,7 +175,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00024">24</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00028">28</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
 
 </div>
 </div>
@@ -217,7 +223,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Return the sentence.</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00033">33</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00037">37</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
 
 </div>
 </div>
@@ -254,7 +260,45 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Return the encode</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00058">58</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00062">62</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
+
+</div>
+</div>
+<a id="a255361f4233b9804880241c0a60ed913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a255361f4233b9804880241c0a60ed913">&#9670;&nbsp;</a></span>SetConfig()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Alis.Tools.Language.SetConfig </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fileWithExtension</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00089">89</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
 
 </div>
 </div>
@@ -282,6 +326,54 @@ Static Private Attributes</h2></td></tr>
 <p>Dictionary of current language </p>
 
 <p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00017">17</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
+
+</div>
+</div>
+<a id="af749e8729371a2b653dcbcdc057a0af1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af749e8729371a2b653dcbcdc057a0af1">&#9670;&nbsp;</a></span>directory</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Alis.Tools.Language.directory = Environment.CurrentDirectory + &quot;/Resources&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00022">22</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
+
+</div>
+</div>
+<a id="a27a1c17f70efbc6664c513f2dc65ed20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27a1c17f70efbc6664c513f2dc65ed20">&#9670;&nbsp;</a></span>file</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Alis.Tools.Language.file = &quot;Languages.csv&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_language_8cs_source.html#l00024">24</a> of file <a class="el" href="_language_8cs_source.html">Language.cs</a>.</p>
 
 </div>
 </div>
@@ -319,7 +411,7 @@ Static Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_tools.html">Tools</a></li><li class="navelem"><a class="el" href="class_alis_1_1_tools_1_1_language.html">Language</a></li>
     <li class="footer">
-      <a>Generated on | Wed Mar 17 2021 |</a>
+      <a>Generated on | Sat Mar 20 2021 |</a>
     </li>
   </ul>
 </div>
