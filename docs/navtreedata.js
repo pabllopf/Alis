@@ -38,7 +38,7 @@ var NAVTREE =
     [ "4. Tools", "md__api_doc__pages_4_8_tools.html", [
       [ "4.1 Quick Start", "md__api_doc__pages_4_8_tools.html#autotoc_md8", null ],
       [ "4.2 Crypted", "md__api_doc__pages_4_8_tools.html#autotoc_md9", null ],
-      [ "4.4 Application", "md__api_doc__pages_4_8_tools.html#autotoc_md10", null ],
+      [ "4.3 Language", "md__api_doc__pages_4_8_tools.html#autotoc_md10", null ],
       [ "4.6 Updater", "md__api_doc__pages_4_8_tools.html#autotoc_md11", null ]
     ] ],
     [ "5. Code of Conduct", "md__api_doc__pages_5_8_code_of_conduct.html", [

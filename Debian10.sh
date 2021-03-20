@@ -32,7 +32,7 @@ sudo apt-get install -y g++;
 sudo apt-get install -y mesa-common-dev;
 sudo apt-get install -y build-essential;
 sudo apt-get install -y libglew1.5-dev libglm-dev ;
-sudo apt-get install -y libicu60
+sudo apt-get install -y libicu60;
 
 # Build and Run
 
