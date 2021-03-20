@@ -1,11 +1,15 @@
 var NAVTREEINDEX19 =
 {
-"namespace_newtonsoft_1_1_json_1_1_utilities_1_1_linq_bridge.html":[7,0,3,0,5,0],
+"namespace_newtonsoft_1_1_json_1_1_serialization.html":[8,0,3,0,4],
+"namespace_newtonsoft_1_1_json_1_1_serialization.html":[7,0,3,0,4],
+"namespace_newtonsoft_1_1_json_1_1_utilities.html":[7,0,3,0,5],
+"namespace_newtonsoft_1_1_json_1_1_utilities.html":[8,0,3,0,5],
 "namespace_newtonsoft_1_1_json_1_1_utilities_1_1_linq_bridge.html":[8,0,3,0,5,0],
+"namespace_newtonsoft_1_1_json_1_1_utilities_1_1_linq_bridge.html":[7,0,3,0,5,0],
 "namespace_system.html":[7,0,4],
 "namespace_system.html":[8,0,4],
-"namespace_system_1_1_runtime.html":[8,0,4,0],
 "namespace_system_1_1_runtime.html":[7,0,4,0],
+"namespace_system_1_1_runtime.html":[8,0,4,0],
 "namespace_system_1_1_runtime_1_1_compiler_services.html":[8,0,4,0,0],
 "namespace_system_1_1_runtime_1_1_compiler_services.html":[7,0,4,0,0],
 "namespace_tools.html":[7,0,5],

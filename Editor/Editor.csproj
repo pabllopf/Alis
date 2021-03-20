@@ -50,7 +50,6 @@
   </ItemGroup>
     
   <ItemGroup>
-    <PackageReference Include="Alis.Tools" Version="1.1.0" />
     <PackageReference Include="ImGui.NET" Version="1.78.0" />
     <PackageReference Include="Veldrid" Version="4.8.0" />
     <PackageReference Include="Veldrid.ImageSharp" Version="4.8.0" />
