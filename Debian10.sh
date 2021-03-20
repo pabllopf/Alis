@@ -6,8 +6,8 @@ sudo apt-get dist-upgrade -y;
 sudo apt-get install -y wget;
 
 
-sudo wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
-sudo dpkg -i packages-microsoft-prod.deb
+sudo wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb;
+sudo dpkg -i packages-microsoft-prod.deb;
 
 sudo apt-get update;
 

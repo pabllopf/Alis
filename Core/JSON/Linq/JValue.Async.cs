@@ -52,7 +52,6 @@ namespace Newtonsoft.Json.Linq
                 JsonConverter? matchingConverter = JsonSerializer.GetMatchingConverter(converters, _value.GetType());
                 if (matchingConverter != null && matchingConverter.CanWrite)
                 {
-                    // TODO: Call WriteJsonAsync when it exists.
                     matchingConverter.WriteJson(writer, _value, JsonSerializer.CreateDefault());
                     return AsyncUtils.CompletedTask;
                 }

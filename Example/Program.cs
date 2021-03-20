@@ -13,11 +13,25 @@ namespace SFML
     /// <summary>Example of videogame.</summary>
     public class Program
     {
+        private static Crypted<string> passwd = new Crypted<string>("");
+
+
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
         public static async Task Main(string[] args)
         {
-            
+            Language.SetConfig("Languages.csv", Environment.CurrentDirectory + "/Resources");
+
+
+            Language.TranslateTo(Idiom.English);
+
+
+
+
+            /*string decrypt = passwd.Get();
+            passwd.Set("12345");
+
+
             var watch = new Stopwatch();
             watch.Start();
 
@@ -79,7 +93,7 @@ namespace SFML
             Console.WriteLine(name);
             Console.WriteLine(name2);
 
-            Console.ReadLine();
+            Console.ReadLine();*/
         }
 
         private static async Task<string> Test_Task(int size)

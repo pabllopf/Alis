@@ -351,7 +351,7 @@ namespace Alis.Editor.UI.Widgets
             string cleanCommand = "dotnet restore";
             string buildCommand = "dotnet build --configuration Windows";
             string runCommand = Project.Current.Name + ".exe";
-            string workDirRun = Project.Current.Directory + "/bin/Windows/netcoreapp3.1";
+            string workDirRun = Project.Current.Directory + "/bin/Windows/net5.0";
 
 
             if (info.Platform.Equals(Platform.Linux)) 
@@ -360,7 +360,7 @@ namespace Alis.Editor.UI.Widgets
                 cleanCommand = "dotnet restore";
                 buildCommand = "dotnet build --configuration Linux";
                 runCommand = "./" + Project.Current.Name;
-                workDirRun = Project.Current.Directory + "/bin/Linux/netcoreapp3.1";
+                workDirRun = Project.Current.Directory + "/bin/Linux/net5.0";
             }
 
             if (info.Platform.Equals(Platform.MacOS))
@@ -369,7 +369,7 @@ namespace Alis.Editor.UI.Widgets
                 cleanCommand = "dotnet restore";
                 buildCommand = "dotnet build --configuration MacOS";
                 runCommand = "./" + Project.Current.Name;
-                workDirRun = Project.Current.Directory + "/bin/MacOS/netcoreapp3.1";
+                workDirRun = Project.Current.Directory + "/bin/MacOS/net5.0";
             }
 
             string projectFile = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultPr.txt", Encoding.UTF8);

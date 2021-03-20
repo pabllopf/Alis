@@ -1,19 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
 	<LangVersion>8.0</LangVersion>
-	<Nullable>enable</Nullable>
+	<Nullable>disable</Nullable>
     <Configurations>Windows;MacOS;Linux;Release</Configurations>
     <UserSecretsId>66c36b4b-e0fb-4937-aa9f-3b3645bf46b1</UserSecretsId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageId>Alis.Tools</PackageId>
+    <PackageId>Tools</PackageId>
     <Authors>Pablo Perdomo Falcón</Authors>
     <Product>Alis</Product>
-    <Description>The "Alis.Tools" include several tools that will facilitate your day to day developing multiplatform projects. And remember ... it's multiplatform and free!!</Description>
+    <Description>The "Alis.Tools" include several tools that will facilitate your day to day developing multiplatform projects. And remember ... it's multiplatform and free!!
+</Description>
     <Copyright>GNU General Public License v3.0</Copyright>
-    <PackageIcon>logo.png</PackageIcon>
+    <PackageIcon>Alis.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://pabllopf.github.io/Alis/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/pabllopf/pabllopf</RepositoryUrl>
@@ -22,16 +23,20 @@
     <NeutralLanguage>en</NeutralLanguage>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>PabloPerdomoFalcon.pfx</AssemblyOriginatorKeyFile>
-    <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Alis.ico</ApplicationIcon>
 	  <AssemblyVersion>1.1.0.0</AssemblyVersion>
 	  <FileVersion>1.1.0.0</FileVersion>
 	  <Version>1.1.0</Version>
+	  <AssemblyName>Tools</AssemblyName>
+	  <RootNamespace>Tools</RootNamespace>
   </PropertyGroup>
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
     <DocumentationFile>Tools.xml</DocumentationFile>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>5</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>Tools.xml</DocumentationFile>
@@ -48,11 +53,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Tools.xml" />
-    <None Include="..\docs\resources\logo\logo.png">
+    <None Include="Docs\Alis.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="..\LICENSE">
+    <None Include="Docs\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
@@ -75,5 +80,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Docs\" />
   </ItemGroup>
 </Project>

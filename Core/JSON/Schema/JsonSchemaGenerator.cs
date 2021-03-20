@@ -277,7 +277,6 @@ namespace Newtonsoft.Json.Schema
 
             if (converter != null)
             {
-                // todo: Add GetSchema to JsonConverter and use here?
                 CurrentSchema.Type = JsonSchemaType.Any;
             }
             else

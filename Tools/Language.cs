@@ -11,13 +11,17 @@ namespace Alis.Tools
     using System.Text;
 
     /// <summary>Manage the languages of videogame.</summary>
-    public class Language
+    public static class Language
     {
         /// <summary>Dictionary of current language</summary>
         private static Dictionary<string, string> currentLanguage = new Dictionary<string, string>();
 
         /// <summary>Occurs when [change].</summary>
         public static event EventHandler<Idiom> Change;
+
+        private static string directory = Environment.CurrentDirectory + "/Resources";
+
+        private static string file = "Languages.csv";
 
         /// <summary>Translates to.</summary>
         /// <param name="idiom">The idiom.</param>
@@ -79,6 +83,22 @@ namespace Alis.Tools
                     return new UTF32Encoding(true, true);
                 default:
                     return Encoding.ASCII;
+            }
+        }
+
+        public static void SetConfig(string fileWithExtension, string path)
+        {
+            string directory = Environment.CurrentDirectory + "/Resources/";
+            string file = directory + "Languages.csv";
+
+            if (!Directory.Exists(directory))
+            {
+                throw new DirectoryNotFoundException(directory);
+            }
+
+            if (!File.Exists(file))
+            {
+                throw new FileNotFoundException(file);
             }
         }
     }
