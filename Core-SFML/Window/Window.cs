@@ -430,7 +430,6 @@ namespace SFML.Window
         protected Window(IntPtr cPointer, int dummy) :
             base(cPointer)
         {
-            // TODO : find a cleaner way of separating this constructor from Window(IntPtr handle)
         }
 
         ////////////////////////////////////////////////////////////

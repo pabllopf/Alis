@@ -1,0 +1,6 @@
+#  Framework Alis
+> Framework for the development of multiplatform videogames (available for Windows | MacOs | Linux | IOS | Android). Easy integration with any project and totally free!!
+
+[![Editor](https://shields.io/badge/Editor-Windows%20%7C%20MacOS%20%7C%20Linux-%23989898)]() [![Core](https://shields.io/badge/Core-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]() [![Tools](https://shields.io/badge/Tools-Windows%20%7C%20IOS%20%7C%20Android%20%7C%20MacOS%20%7C%20Linux-%23989898)]()
+
+[![Release](https://img.shields.io/github/release/pabllopf/alis.svg)](https://github.com/pabllopf/alis/releases/latest) [![License](https://img.shields.io/badge/License-GPL%20v3.0-blue)](https://github.com/pabllopf/Alis/blob/main/LICENSE) [![Downloads](https://img.shields.io/github/downloads/pabllopf/alis/total.svg)]() [![Web](https://img.shields.io/website?down_color=red&down_message=failed&up_color=blue&up_message=active&url=https%3A%2F%2Fpabllopf.github.io%2FAlis%2F)](https://pabllopf.github.io/Alis/index.html)

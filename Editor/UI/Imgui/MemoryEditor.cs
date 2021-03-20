@@ -240,9 +240,6 @@ namespace ImGuiNET
         }
     }
 
-    //Not a proper translation, because ImGuiListClipper uses imgui's internal api.
-    //Thus SetCursorPosYAndSetupDummyPrevLine isn't reimplemented, but SetCursorPosY + SetNextWindowContentSize seems to be working well instead.
-    //TODO expose clipper through newer cimgui version
     internal class ImGuiListClipper2
     {
         public float StartPosY;

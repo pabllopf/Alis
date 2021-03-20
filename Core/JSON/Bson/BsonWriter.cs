@@ -516,8 +516,6 @@ namespace Newtonsoft.Json.Bson
             {
                 throw JsonWriterException.Create(this, "An object id must be 12 bytes", null);
             }
-
-            // hack to update the writer state
             SetWriteState(JsonToken.Undefined, null);
             AddValue(value, BsonType.Oid);
         }
@@ -530,8 +528,6 @@ namespace Newtonsoft.Json.Bson
         public void WriteRegex(string pattern, string options)
         {
             ValidationUtils.ArgumentNotNull(pattern, nameof(pattern));
-
-            // hack to update the writer state
             SetWriteState(JsonToken.Undefined, null);
             AddToken(new BsonRegex(pattern, options));
         }
