@@ -20,7 +20,15 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static async Task Main(string[] args)
         {
-            string decrypt = passwd.Get();
+            Language.SetConfig("Languages.csv", Environment.CurrentDirectory + "/Resources");
+
+
+            Language.TranslateTo(Idiom.English);
+
+
+
+
+            /*string decrypt = passwd.Get();
             passwd.Set("12345");
 
 
@@ -85,7 +93,7 @@ namespace SFML
             Console.WriteLine(name);
             Console.WriteLine(name2);
 
-            Console.ReadLine();
+            Console.ReadLine();*/
         }
 
         private static async Task<string> Test_Task(int size)
