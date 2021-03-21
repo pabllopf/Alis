@@ -50,6 +50,7 @@
   <!-- ______________________________ LINUX _____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'">
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core\Core.xml</DocumentationFile>
   </PropertyGroup>
 
 

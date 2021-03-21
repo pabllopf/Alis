@@ -60,7 +60,7 @@
     <DebugType />
     <Optimize>true</Optimize>
     <DefineConstants>Linux</DefineConstants>
-    <DocumentationFile>bin\Linux\netcoreapp3.1\Editor.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core-SFML\Core-SFML.xml</DocumentationFile>
   </PropertyGroup>
  
 
