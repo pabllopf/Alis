@@ -149,6 +149,7 @@ namespace SFML
 
         private Animator animator;
 
+        /// <summary>Start this instance.</summary>
         public override void Start()
         {
             Input.OnPressKey += Input_OnPressKey;

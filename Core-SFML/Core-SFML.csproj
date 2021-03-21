@@ -4,7 +4,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <Configurations>Windows;MacOS;Linux;Release</Configurations>
-    <RuntimeIdentifiers>win-x64;win10-x64;osx.10.11-x64;osx.10.12-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
+    <RuntimeIdentifiers>win-x86;win-x64;win10-x64;win10-x86;osx.10.11-x64;osx.10.12-x64;debian.8-x64;debian.10-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
     <AssemblyName>Core-SFML</AssemblyName>
 	<LangVersion>9.0</LangVersion>
 	<Nullable>enable</Nullable>
@@ -60,7 +60,7 @@
     <DebugType />
     <Optimize>true</Optimize>
     <DefineConstants>Linux</DefineConstants>
-    <DocumentationFile>bin\Linux\netcoreapp3.1\Editor.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core-SFML\Core-SFML.xml</DocumentationFile>
   </PropertyGroup>
  
 

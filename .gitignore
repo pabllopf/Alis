@@ -10,6 +10,8 @@
 
 /**/_/**
 
+/**/**/_/**
+
 **/.DS_Store
 *DS_Store
 *.DS_Store
@@ -21,10 +23,15 @@
 *.booproj
 *.svd
 *.pdb
+*.zip
+*.deb
+*.tar
 *.mdb
 *.opendb
 *StyleCop.Cache
 *.collabignore
+*Settings.StyleCop
+*.StyleCop
 
 *.pidb.meta
 *.pdb.meta

@@ -19,8 +19,10 @@ namespace Alis.Tools
         /// <summary>Occurs when [change].</summary>
         public static event EventHandler<Idiom> Change;
 
+        /// <summary>The directory</summary>
         private static string directory = Environment.CurrentDirectory + "/Resources";
 
+        /// <summary>The file</summary>
         private static string file = "Languages.csv";
 
         /// <summary>Translates to.</summary>
