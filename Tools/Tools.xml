@@ -160,6 +160,12 @@
         <member name="E:Alis.Tools.Language.Change">
             <summary>Occurs when [change].</summary>
         </member>
+        <member name="F:Alis.Tools.Language.directory">
+            <summary>The directory</summary>
+        </member>
+        <member name="F:Alis.Tools.Language.file">
+            <summary>The file</summary>
+        </member>
         <member name="M:Alis.Tools.Language.TranslateTo(Alis.Tools.Idiom)">
             <summary>Translates to.</summary>
             <param name="idiom">The idiom.</param>
