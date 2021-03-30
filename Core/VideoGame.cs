@@ -6,7 +6,9 @@ namespace Alis.Core
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
+    using System.Threading;
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
@@ -151,13 +153,6 @@ namespace Alis.Core
         [JsonIgnore]
         public bool IsNewFrame { get => config.TimeManager.IsNewFrame(); }
 
-        /// <summary>Gets a value indicating whether this instance is new second.</summary>
-        /// <value>
-        /// <c>true</c> if this instance is new second; otherwise, <c>false</c>.</value>
-        [NotNull]
-        [JsonIgnore]
-        public bool IsNewSecond { get => config.TimeManager.IsNewSecond(); }
-
         /// <summary>Loads the of file.</summary>
         /// <param name="file">The file.</param>
         /// <returns>Return game.</returns>
@@ -190,10 +185,8 @@ namespace Alis.Core
                     {
                         Update();
                     }
-                    else if (IsNewSecond)
-                    {
-                        FixedUpdate();
-                    }
+
+                    FixedUpdate();
                 }
                 else 
                 {
@@ -235,7 +228,7 @@ namespace Alis.Core
         private void FixedUpdate() 
         {
             Task.WaitAll(input.FixedUpdate(), sceneManager.FixedUpdate());
-            render.Update();
+            
 
             OnFixedUpdate?.Invoke(this, true);
         }

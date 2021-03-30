@@ -1,0 +1,7 @@
+﻿
+namespace Core
+{
+    class WindowsManager
+    {
+    }
+}

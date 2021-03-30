@@ -200,14 +200,6 @@ namespace Alis.Core
                 }
             }
 
-            if (collisions.Count > 0)
-            {
-                foreach (RectangleShape rectangle in collisions)
-                {
-                    renderWindow.Draw(rectangle);
-                }
-            }
-
             renderWindow.Display();
 
             OnUpdate.Invoke(this, true);

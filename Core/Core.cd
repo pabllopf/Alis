@@ -8,9 +8,9 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Config" />
-      <Property Name="SceneManager" />
       <Property Name="Render" />
       <Property Name="Input" />
+      <Property Name="SceneManager" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.TimeManager">
@@ -127,9 +127,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Config">
-    <Position X="4" Y="2.25" Width="1.5" />
+    <Position X="3.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIABAAAAAAAAAAAAAAAAAgQAACIEAAAgAEAAAAAAACA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgQAAAIEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Config\Config.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

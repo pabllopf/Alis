@@ -186,6 +186,8 @@ namespace SFML
 
         private Animator animator;
 
+        private int speed = 1;
+
         /// <summary>Start this instance.</summary>
         public override void Start()
         {
@@ -205,28 +207,28 @@ namespace SFML
             {
                 //Console.WriteLine("Press s");
                 animator.State = 0;
-                transform.YPos += 1;
+                transform.YPos += 1  * speed;
             }
 
             if (key.Equals(Window.Keyboard.Key.D))
             {
                 //Console.WriteLine("Press d");
                 animator.State = 1;
-                transform.XPos += 1;
+                transform.XPos += 1  * speed;
             }
 
             if (key.Equals(Window.Keyboard.Key.W))
             {
                 //Console.WriteLine("Press w");
                 animator.State = 2;
-                transform.YPos -= 1;
+                transform.YPos -= 1  * speed;
             }
 
             if (key.Equals(Window.Keyboard.Key.A))
             {
                 //Console.WriteLine("Press a");
                 animator.State = 3;
-                transform.XPos -= 1;
+                transform.XPos -= 1  * speed;
             }
         }
     }

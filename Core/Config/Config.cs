@@ -4,9 +4,7 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
-    using Alis.Tools;
     using Newtonsoft.Json;
     
     /// <summary>Define the config of videogame</summary>
@@ -22,67 +20,33 @@ namespace Alis.Core
         private TimeManager timeManager;
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
-        /// <param name="name">The name of videogame.</param>
-        [JsonConstructor]
+        /// <param name="name">The name.</param>
         public Config([NotNull] string name)
         {
             this.name = name;
-            timeManager = new TimeManager(0.01f, 0.03f, 1.00f, 30.00f, 120.00f);
-
-            OnCreate += Config_OnCreate;
-            OnDestroy += Config_OnDestroy;
-            OnChangeName += Config_OnChangeName;
-
-            OnCreate.Invoke(this, true);
+            timeManager = new TimeManager(0.01f, 1.00f, 60.0f, false);
         }
 
-        /// <summary>Finalizes an instance of the <see cref="Config" /> class.</summary>
-        ~Config() => OnDestroy?.Invoke(null, true);
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnCreate;
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnDestroy;
-
-        /// <summary>Occurs when [on change name].</summary>
-        public event EventHandler<bool> OnChangeName;
-
-        /// <summary>Gets or sets the name.</summary>
-        /// <value>The name.</value>  
-        [NotNull]
-        [JsonProperty("Name")]
-        public string Name
+        /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="timeManager">The time manager.</param>
+        [JsonConstructor]
+        public Config([NotNull] string name, [NotNull] TimeManager timeManager)
         {
-            get => name;
-            set
-            {
-                name = value;
-                OnChangeName.Invoke(this, true);
-            }
+            this.name = name;
+            this.timeManager = timeManager;
         }
 
+        /// <summary>Gets the name.</summary>
+        /// <value>The name.</value>
         [NotNull]
-        [JsonProperty("TimeManager")]
-        public TimeManager TimeManager { get => timeManager; set => timeManager = value; }
+        [JsonProperty("_Name")]
+        public string Name { get => name; }
 
-        #region Events
-
-        /// <summary>Configurations the on create.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Configurations the on destroy.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Configurations the name of the on change.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnChangeName([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        #endregion
+        /// <summary>Gets the time manager.</summary>
+        /// <value>The time manager.</value>
+        [NotNull]
+        [JsonProperty("_TimeManager")]
+        public TimeManager TimeManager { get => timeManager; }
     }
 }
