@@ -4,6 +4,7 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using Alis.Tools;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;

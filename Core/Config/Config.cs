@@ -6,6 +6,7 @@ namespace Alis.Core
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using Alis.Tools;
     using Newtonsoft.Json;
     
     /// <summary>Define the config of videogame</summary>
@@ -26,7 +27,7 @@ namespace Alis.Core
         public Config([NotNull] string name)
         {
             this.name = name;
-            timeManager = new TimeManager(0.01f, 0.03f, 1.00f, 30.00f, 60.00f);
+            timeManager = new TimeManager(0.01f, 0.03f, 1.00f, 30.00f, 120.00f);
 
             OnCreate += Config_OnCreate;
             OnDestroy += Config_OnDestroy;

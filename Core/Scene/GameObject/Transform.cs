@@ -7,6 +7,7 @@ namespace Alis.Core
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Numerics;
+    using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Manage the position of the game object on a scene.</summary>

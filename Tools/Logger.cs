@@ -2,12 +2,10 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Debug.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-namespace Alis.Core
+namespace Alis.Tools
 {
     using System;
     using System.Diagnostics;
-    using System.IO;
-    using System.Reflection;
 
     /// <summary>Debug messages.</summary>
     public static class Logger
@@ -21,11 +19,11 @@ namespace Alis.Core
         /// <summary>Informations this instance.</summary>
         public static void Info()
         {
-            if (level == Level.Verbose || level == Level.Info) 
+            if (level == Level.Verbose || level == Level.Info)
             {
                 Console.WriteLine("[" + DateTime.Now.ToString() + "]" + " INFO " + new StackTrace(true).GetFrame(1).GetMethod().ReflectedType.FullName + "." + new StackTrace(true).GetFrame(1).ToString());
             }
-                
+
 
             /*if (level == Level.Verbose || level == Level.Info)
             {

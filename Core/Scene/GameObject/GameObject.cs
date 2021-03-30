@@ -8,6 +8,7 @@ namespace Alis.Core
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Define a game object.</summary>

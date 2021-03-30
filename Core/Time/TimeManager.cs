@@ -4,7 +4,6 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using System;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using Newtonsoft.Json;
@@ -73,31 +72,31 @@ namespace Alis.Core
         /// <summary>Gets or sets the time step.</summary>
         /// <value>The time step.</value>
         [NotNull]
-        [JsonProperty("TimeStep_")]
+        [JsonProperty("_TimeStep")]
         public float TimeStep { get => timeStep; set => timeStep = value; }
 
         /// <summary>Gets or sets the maximum time per frame.</summary>
         /// <value>The maximum time per frame.</value>
         [NotNull]
-        [JsonProperty("MaxTimePerFrame_")]
+        [JsonProperty("_MaxTimePerFrame")]
         public float MaxTimePerFrame { get => maxTimePerFrame; set => maxTimePerFrame = value; }
 
         /// <summary>Gets or sets the time scale.</summary>
         /// <value>The time scale.</value>
         [NotNull]
-        [JsonProperty("TimeScale_")]
+        [JsonProperty("_TimeScale")]
         public float TimeScale { get => timeScale; set => timeScale = value; }
 
         /// <summary>Gets or sets the minimum frame rate.</summary>
         /// <value>The minimum frame rate.</value>
         [NotNull]
-        [JsonProperty("MinFrameRate_")]
+        [JsonProperty("_MinFrameRate")]
         public float MinFrameRate { get => minFrameRate; set => minFrameRate = value; }
         
         /// <summary>Gets or sets the maximum frame rate.</summary>
         /// <value>The maximum frame rate.</value>
         [NotNull]
-        [JsonProperty("MaxFrameRate_")]
+        [JsonProperty("_MaxFrameRate")]
         public float MaxFrameRate { get => maxFrameRate; set => maxFrameRate = value; }
 
         /// <summary>Determines whether [is new frame].</summary>

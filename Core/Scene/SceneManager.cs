@@ -10,6 +10,7 @@ namespace Alis.Core
     using System.Diagnostics.CodeAnalysis;
     using System.Threading;
     using System.Threading.Tasks;
+    using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Manage the scenes of the videogame.</summary>
@@ -75,6 +76,7 @@ namespace Alis.Core
         /// <summary>Gets or sets the scenes.</summary>
         /// <value>The scenes.</value>
         [NotNull]
+        [JsonProperty("_Scenes")]
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
 
         internal Task Awake()
@@ -92,9 +94,6 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                var watch = new Stopwatch();
-                watch.Start();
-
                 if (scenes.Count == 0) 
                 {
                     scenes.Add(new Scene("Default"));
@@ -102,11 +101,6 @@ namespace Alis.Core
 
                 currentScene = scenes[0];
                 currentScene.Start().Wait();
-
-                Console.WriteLine("Start first scene: " + currentScene.Name);
-
-                watch.Stop();
-                Logger.Log($"  Time to Start scene manager: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -117,13 +111,7 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                var watch = new Stopwatch();
-                watch.Start();
-
                 currentScene.Update().Wait();
-
-                watch.Stop();
-                Logger.Log($"  Time to Update scene manager: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 

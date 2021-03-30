@@ -6,9 +6,9 @@ namespace Alis.Core
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
+    using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Define a scene.</summary>
@@ -99,9 +99,6 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                var watch = new Stopwatch();
-                watch.Start();
-
                 List<Task> tasks = new List<Task>();
 
                 foreach (GameObject obj in gameObjects) 
@@ -110,9 +107,6 @@ namespace Alis.Core
                 }
 
                 Task.WaitAll(tasks.ToArray());
-
-                watch.Stop();
-                Logger.Log($"  Time to Start scene loaded: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -124,9 +118,6 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                var watch = new Stopwatch();
-                watch.Start();
-
                 List<Task> tasks = new List<Task>();
 
                 foreach (GameObject obj in gameObjects)
@@ -135,9 +126,6 @@ namespace Alis.Core
                 }
 
                 Task.WaitAll(tasks.ToArray());
-
-                watch.Stop();
-                Logger.Log($"  Time to Update scene loaded: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 

@@ -6,12 +6,10 @@ namespace Alis.Core
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
-    using SFML.System;
 
     /// <summary>Define the game.</summary>
     public class VideoGame
@@ -125,7 +123,7 @@ namespace Alis.Core
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
         [NotNull]
-        [JsonProperty("Config")]
+        [JsonProperty("_Config")]
         public Config Config { get => config; set => config = value; }
 
         /// <summary>Gets or sets the render.</summary>
@@ -143,7 +141,7 @@ namespace Alis.Core
         /// <summary>Gets or sets the scene manager.</summary>
         /// <value>The scene manager.</value>
         [NotNull]
-        [JsonProperty("SceneManager_")]
+        [JsonProperty("_SceneManager")]
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
 
         /// <summary>Gets a value indicating whether this instance is new frame.</summary>
@@ -192,11 +190,14 @@ namespace Alis.Core
                     {
                         Update();
                     }
-
-                    if (IsNewSecond) 
+                    else if (IsNewSecond)
                     {
                         FixedUpdate();
                     }
+                }
+                else 
+                {
+                    Stop();
                 }
             }
 

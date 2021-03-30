@@ -13,6 +13,7 @@ namespace Alis.Core
     using SFML.Window;
     using Newtonsoft.Json;
     using System.Linq;
+    using Alis.Tools;
 
     /// <summary>Render define</summary>
     public class Render
@@ -164,7 +165,6 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                Console.WriteLine("awake input");
             }).IsCompletedSuccessfully;
         }
 
@@ -182,9 +182,6 @@ namespace Alis.Core
         /// <returns>Return none</returns>
         internal bool Update()
         {
-            var watch = new Stopwatch();
-            watch.Start();
-
             if (renderWindow is null) 
             {
                 renderWindow = new RenderWindow(videoMode, config.Name);
@@ -199,7 +196,6 @@ namespace Alis.Core
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
                 foreach (Sprite sprite in sprites)
                 {
-                    Logger.Log("Render: " + sprite.GetType());
                     renderWindow.Draw(sprite.GetDraw());
                 }
             }
@@ -215,9 +211,6 @@ namespace Alis.Core
             renderWindow.Display();
 
             OnUpdate.Invoke(this, true);
-
-            watch.Stop();
-            Logger.Log($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
 
             return true;
         }
@@ -236,6 +229,11 @@ namespace Alis.Core
             }
         }
 
+        internal void Stop()
+        {
+
+        }
+
         /// <summary>Handles the Closed event of the RenderWindow control.</summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
@@ -244,6 +242,7 @@ namespace Alis.Core
             Exit();
             Environment.Exit(0);
         }
+
 
         #region DefineEvents
 
@@ -261,11 +260,6 @@ namespace Alis.Core
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void Render_OnUpdate(object sender, bool e) => Logger.Info();
-
-        internal void Stop()
-        {
-            
-        }
 
         /// <summary>Renders the on destroy.</summary>
         /// <param name="sender">The sender.</param>

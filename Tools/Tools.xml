@@ -213,6 +213,21 @@
             <param name="sender">The sender.</param>
             <param name="e">The e.</param>
         </member>
+        <member name="T:Alis.Tools.Level">
+            <summary>Define level of the logs</summary>
+        </member>
+        <member name="F:Alis.Tools.Level.Verbose">
+            <summary>Include file options</summary>
+        </member>
+        <member name="F:Alis.Tools.Level.Info">
+            <summary>The information</summary>
+        </member>
+        <member name="F:Alis.Tools.Level.Normal">
+            <summary>The normal log</summary>
+        </member>
+        <member name="F:Alis.Tools.Level.Critical">
+            <summary>The critical</summary>
+        </member>
         <member name="T:Alis.Tools.LocalData">
             <summary>Manage the local data game.</summary>
         </member>
@@ -249,6 +264,30 @@
             <param name="type">The type.</param>
             <returns>
             <c>true</c> if the specified type is primitive; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Alis.Tools.Logger">
+            <summary>Debug messages.</summary>
+        </member>
+        <member name="F:Alis.Tools.Logger.listener">
+            <summary>The listener</summary>
+        </member>
+        <member name="F:Alis.Tools.Logger.level">
+            <summary>The level</summary>
+        </member>
+        <member name="M:Alis.Tools.Logger.Info">
+            <summary>Informations this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Logger.Log(System.String)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Logger.Warning(System.String)">
+            <summary>Warnings the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Logger.Error(System.String)">
+            <summary>Errors the specified message.</summary>
+            <param name="message">The message.</param>
         </member>
         <member name="T:Alis.Tools.Zipper">
             <summary>Manage zip files. </summary>
