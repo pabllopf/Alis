@@ -4,6 +4,7 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using Alis.Tools;
     using Newtonsoft.Json;
     using SFML.Graphics;
     using System.Collections.Generic;

@@ -372,20 +372,20 @@ namespace Alis.Editor.UI.Widgets
                 workDirRun = Project.Current.Directory + "/bin/MacOS/net5.0";
             }
 
-            string projectFile = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultPr.txt", Encoding.UTF8);
+            string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
             File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".csproj", projectFile, Encoding.UTF8);
 
-            string solutionFile = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", Project.Current.Name);
+            string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", Project.Current.Name);
             File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".sln", solutionFile, Encoding.UTF8);
 
-            string program = File.ReadAllText(Application.ProjectPath + "/Resources/Program.txt", Encoding.UTF8);
+            string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
             File.WriteAllText(Project.Current.Directory + "/" + "Program" + ".cs", program, Encoding.UTF8);
 
-            DirectoryCopy(Application.ProjectPath + "/Runtimes", Project.Current.Directory + "/Runtimes", true);
+            DirectoryCopy(Application.ProjectFolder + "/Runtimes", Project.Current.Directory + "/Runtimes", true);
 
-            File.Copy(Application.ProjectPath + "/Core.dll", Project.Current.LibraryPath + "/" + "Core" + ".dll", true);
-            File.Copy(Application.ProjectPath + "/Tools.dll", Project.Current.LibraryPath + "/" + "Tools" + ".dll", true);
-            File.Copy(Application.ProjectPath + "/Core-SFML.dll", Project.Current.LibraryPath + "/" + "Core-SFML.dll", true);
+            File.Copy(Application.ProjectFolder + "/Core.dll", Project.Current.LibraryPath + "/" + "Core" + ".dll", true);
+            File.Copy(Application.ProjectFolder + "/Tools.dll", Project.Current.LibraryPath + "/" + "Tools" + ".dll", true);
+            File.Copy(Application.ProjectFolder + "/Core-SFML.dll", Project.Current.LibraryPath + "/" + "Core-SFML.dll", true);
 
 
             RunCommand("Cleaning", fileName, cleanCommand, Project.Current.Directory);

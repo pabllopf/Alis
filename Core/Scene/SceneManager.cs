@@ -76,6 +76,14 @@ namespace Alis.Core
         [NotNull]
         public List<Scene> Scenes { get => scenes; set => scenes = value; }
 
+        internal Task Awake()
+        {
+            return Task.Run(() =>
+            {
+                Console.WriteLine("awake scene manager");
+            });
+        }
+
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
@@ -118,12 +126,26 @@ namespace Alis.Core
             });
         }
 
-        #region DefineEvents
+        internal Task FixedUpdate()
+        {
+            return Task.Run(() =>
+            {
+            });
+        }
 
-        /// <summary>Scenes the manager on create.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
+        internal Task Exit()
+        {
+            return Task.Run(() =>
+            {
+            });
+        }
+
+            #region DefineEvents
+
+            /// <summary>Scenes the manager on create.</summary>
+            /// <param name="sender">The sender.</param>
+            /// <param name="e">if set to <c>true</c> [e].</param>
+            private void SceneManager_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on destroy.</summary>
         /// <param name="sender">The sender.</param>

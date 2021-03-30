@@ -160,27 +160,27 @@ namespace Alis.Core
             }
         }
 
-        /// <summary>Starts this instance.</summary>
-        /// <returns>Return none</returns>
-        internal Task Start()
+        internal bool Awake()
         {
             return Task.Run(() =>
             {
-                var watch = new Stopwatch();
-                watch.Start();
+                Console.WriteLine("awake input");
+            }).IsCompletedSuccessfully;
+        }
 
-                Task.Delay(1000).Wait();
+        /// <summary>Starts this instance.</summary>
+        /// <returns>Return none</returns>
+        internal bool Start()
+        {
+            return Task.Run(() =>
+            {
 
-                OnStart.Invoke(this, true);
-
-                watch.Stop();
-                Logger.Log($"  Time to Start render: " + watch.ElapsedMilliseconds + " ms");
-            });
+            }).IsCompleted;
         }
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
-        internal void Update()
+        internal bool Update()
         {
             var watch = new Stopwatch();
             watch.Start();
@@ -218,6 +218,8 @@ namespace Alis.Core
 
             watch.Stop();
             Logger.Log($"    Time to RENDER: " + watch.ElapsedMilliseconds + " ms");
+
+            return true;
         }
 
         /// <summary>Exits this instance.</summary>

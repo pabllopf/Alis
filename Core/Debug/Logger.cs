@@ -16,12 +16,18 @@ namespace Alis.Core
         private static TextWriterTraceListener listener = new TextWriterTraceListener(Console.Out);
 
         /// <summary>The level</summary>
-        private static Level level = Level.Critical;
+        private static Level level = Level.Verbose;
 
         /// <summary>Informations this instance.</summary>
         public static void Info()
         {
-            if (level == Level.Verbose || level == Level.Info)
+            if (level == Level.Verbose || level == Level.Info) 
+            {
+                Console.WriteLine("[" + DateTime.Now.ToString() + "]" + " INFO " + new StackTrace(true).GetFrame(1).GetMethod().ReflectedType.FullName + "." + new StackTrace(true).GetFrame(1).ToString());
+            }
+                
+
+            /*if (level == Level.Verbose || level == Level.Info)
             {
                 if (!Trace.Listeners.Contains(listener))
                 {
@@ -59,7 +65,7 @@ namespace Alis.Core
                     fullName = fullName.Replace(".ctor", "Contructor");
                     Trace.WriteLine(date + " " + type + " " + fullName + "(" + param + ")");
                 }
-            }
+            }*/
         }
 
         /// <summary>Logs the specified message.</summary>

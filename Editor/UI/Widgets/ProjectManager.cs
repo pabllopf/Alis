@@ -70,7 +70,7 @@ namespace Alis.Editor.UI.Widgets
         private string nameField = "AlysProject";
 
         /// <summary>The directory field</summary>
-        private string directoryField = Application.DesktopPath;
+        private string directoryField = Application.DesktopFolder;
 
         #endregion
 
@@ -324,18 +324,18 @@ namespace Alis.Editor.UI.Widgets
 
                     AssetManager.SetWorkPath(project.AssetsPath + "/");
 
-                    string projectFile = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultPr.txt", Encoding.UTF8);
+                    string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
                     File.WriteAllText(dir + "/" + name + ".csproj", projectFile, Encoding.UTF8);
 
-                    string solutionFile = File.ReadAllText(Application.ProjectPath + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
+                    string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
                     File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
 
-                    string program = File.ReadAllText(Application.ProjectPath + "/Resources/Program.txt", Encoding.UTF8);
+                    string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
                     File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
 
 
-                    File.Copy(Application.ProjectPath + "/Resources/Core.dll", libPath + "/" + "Core" + ".dll");
-                    File.Copy(Application.ProjectPath + "/Resources/Tools.dll", libPath + "/" + "Tools" + ".dll");
+                    File.Copy(Application.ProjectFolder + "/Resources/Core.dll", libPath + "/" + "Core" + ".dll");
+                    File.Copy(Application.ProjectFolder + "/Resources/Tools.dll", libPath + "/" + "Tools" + ".dll");
 
                     VideoGame game = new VideoGame(new Config(name), new Scene("Default"));
                     LocalData.Save<VideoGame>("Data", dataPath, game);

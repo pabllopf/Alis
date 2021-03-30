@@ -6,6 +6,7 @@ namespace Alis.Core
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using Alis.Tools;
     using Newtonsoft.Json;
    
     /// <summary>Define a component</summary>

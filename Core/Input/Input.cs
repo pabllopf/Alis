@@ -25,6 +25,14 @@ namespace Alis.Core
         {
         }
 
+        internal Task Awake() 
+        {
+            return Task.Run(() => 
+            {
+                Console.WriteLine("awake input");
+            });
+        }
+
         internal Task Start()
         {
             return Task.Run(() =>
@@ -50,6 +58,20 @@ namespace Alis.Core
 
                 watch.Stop();
                 Logger.Log($"  Time to UPDATE INPUT: " + watch.ElapsedMilliseconds + " ms");
+            });
+        }
+
+        internal Task FixedUpdate()
+        {
+            return Task.Run(() =>
+            {
+            });
+        }
+
+        internal Task Exit()
+        {
+            return Task.Run(() =>
+            {
             });
         }
 

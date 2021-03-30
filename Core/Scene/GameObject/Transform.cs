@@ -70,8 +70,6 @@ namespace Alis.Core
             OnDestroy += Transform_OnDestroy;
 
             OnCreate.Invoke(this, true);
-
-            Console.WriteLine(position + "" + rotation + "" + size);
         }
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>

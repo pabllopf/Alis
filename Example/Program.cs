@@ -18,12 +18,45 @@ namespace SFML
 
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
-        public static async Task Main(string[] args)
+        public static void Main(string[] args)
         {
-            Language.SetConfig("Languages.csv", Environment.CurrentDirectory + "/Resources");
+            new VideoGame(
+                new Config("Example"),
+                new Scene("First",
+                    new GameObject("Player",
+                        new Transform(new Vector3(0F), new Vector3(0f), new Vector3(2f)),
+                        new AudioSource("menu.wav"),
+                        new Sprite("tile000.png"),
+                        new Collision(),
+                        new Camera(new System.Vector2f(0, 0), new System.Vector2f(640, 380)),
+
+                        new Animator(0,
+                                new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
+                                new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
+                                new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
+                                new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
+                        ),
+                        new Move()
+                    ),
+
+                    new GameObject("Player3",
+                        new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
+                        new Sprite("tile001.png"),
+                        new Collision()
+                    ),
+
+                     new GameObject("Playere3",
+                        new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
+                        new Sprite("tile001.png"),
+                        new Collision()
+                    )
+                )
+            ).Run();
 
 
-            Language.TranslateTo(Idiom.English);
+            // Console.WriteLine("HHOLA");
+
+            //Language.TranslateTo(Idiom.English);
 
 
 

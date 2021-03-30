@@ -6,6 +6,7 @@ namespace Alis.Tools
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using System.Text;
@@ -16,20 +17,25 @@ namespace Alis.Tools
         /// <summary>Dictionary of current language</summary>
         private static Dictionary<string, string> currentLanguage = new Dictionary<string, string>();
 
-        /// <summary>Occurs when [change].</summary>
-        public static event EventHandler<Idiom> Change;
-
         /// <summary>The directory</summary>
         private static string directory = Environment.CurrentDirectory + "/Resources";
 
-        /// <summary>The file</summary>
-        private static string file = "Languages.csv";
+        /// <summary>Occurs when [change].</summary>
+        public static event EventHandler<Idiom> OnChange;
+
+        /// <summary>Initializes the <see cref="Language" /> class.</summary>
+        static Language()
+        {
+            OnChange += Language_OnChange;
+        }
+
+   
 
         /// <summary>Translates to.</summary>
         /// <param name="idiom">The idiom.</param>
-        public static void TranslateTo(Idiom idiom) 
+        public static void TranslateTo(Idiom idiom)
         {
-            Change.Invoke(null, idiom);
+            OnChange?.Invoke(idiom, idiom);
         }
 
         /// <summary>Gets the sentence.</summary>
@@ -88,20 +94,14 @@ namespace Alis.Tools
             }
         }
 
-        public static void SetConfig(string fileWithExtension, string path)
-        {
-            string directory = Environment.CurrentDirectory + "/Resources/";
-            string file = directory + "Languages.csv";
+        #region Define_Events
 
-            if (!Directory.Exists(directory))
-            {
-                throw new DirectoryNotFoundException(directory);
-            }
+        /// <summary>Languages the on change.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The e.</param>
+        [return: NotNull]
+        private static void Language_OnChange([NotNull] object sender, [NotNull] Idiom e) => Console.WriteLine("");
 
-            if (!File.Exists(file))
-            {
-                throw new FileNotFoundException(file);
-            }
-        }
+        #endregion
     }
 }
