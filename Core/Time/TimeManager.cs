@@ -4,6 +4,8 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using System;
+    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using Newtonsoft.Json;
     
@@ -12,7 +14,7 @@ namespace Alis.Core
     {
         /// <summary>The time step</summary>
         [NotNull]
-        private float timeStep = 0.01f;
+        private float timeStep = 0.02f;
 
         /// <summary>The maximum time per frame</summary>
         [NotNull]
@@ -30,6 +32,22 @@ namespace Alis.Core
         [NotNull]
         private float maxFrameRate = 60.0f;
 
+        /// <summary>The frame counter</summary>
+        [NotNull]
+        private int frameCounter;
+
+        /// <summary>The watch</summary>
+        [NotNull]
+        private Stopwatch watch;
+
+        /// <summary>The frame rate</summary>
+        [NotNull]
+        private double frameRate;
+
+        /// <summary>The second counetr</summary>
+        [NotNull]
+        private double secondCounter;
+
         /// <summary>Initializes a new instance of the <see cref="TimeManager" /> class.</summary>
         /// <param name="timeStep">The time step.</param>
         /// <param name="maxTimePerFrame">The maximum time per frame.</param>
@@ -44,36 +62,80 @@ namespace Alis.Core
             this.timeScale = timeScale;
             this.minFrameRate = minFrameRate;
             this.maxFrameRate = maxFrameRate;
+
+            frameRate = maxFrameRate;
+
+            frameCounter = 0;
+            watch = new Stopwatch();
+            watch.Start();
         }
 
         /// <summary>Gets or sets the time step.</summary>
         /// <value>The time step.</value>
         [NotNull]
-        [JsonProperty("TimeStep")]
+        [JsonProperty("TimeStep_")]
         public float TimeStep { get => timeStep; set => timeStep = value; }
 
         /// <summary>Gets or sets the maximum time per frame.</summary>
         /// <value>The maximum time per frame.</value>
         [NotNull]
-        [JsonProperty("MaxTimePerFrame")]
+        [JsonProperty("MaxTimePerFrame_")]
         public float MaxTimePerFrame { get => maxTimePerFrame; set => maxTimePerFrame = value; }
 
         /// <summary>Gets or sets the time scale.</summary>
         /// <value>The time scale.</value>
         [NotNull]
-        [JsonProperty("TimeScale")]
+        [JsonProperty("TimeScale_")]
         public float TimeScale { get => timeScale; set => timeScale = value; }
 
         /// <summary>Gets or sets the minimum frame rate.</summary>
         /// <value>The minimum frame rate.</value>
         [NotNull]
-        [JsonProperty("MinFrameRate")]
+        [JsonProperty("MinFrameRate_")]
         public float MinFrameRate { get => minFrameRate; set => minFrameRate = value; }
         
         /// <summary>Gets or sets the maximum frame rate.</summary>
         /// <value>The maximum frame rate.</value>
         [NotNull]
-        [JsonProperty("MaxFrameRate")]
+        [JsonProperty("MaxFrameRate_")]
         public float MaxFrameRate { get => maxFrameRate; set => maxFrameRate = value; }
+
+        /// <summary>Determines whether [is new frame].</summary>
+        /// <returns>
+        /// <c>true</c> if [is new frame]; otherwise, <c>false</c>.</returns>
+        [return: NotNull]
+        public bool IsNewFrame() 
+        {
+            frameCounter++;
+            frameRate = (frameCounter / ((double)watch.Elapsed.TotalMilliseconds)) * timeScale;
+
+            if (frameRate >= maxFrameRate) 
+            {
+                frameCounter = 0;
+                watch.Restart();
+                
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>Determines whether [is new second].</summary>
+        /// <returns>
+        /// <c>true</c> if [is new second]; otherwise, <c>false</c>.</returns>
+        [return: NotNull]
+        public bool IsNewSecond() 
+        {
+            secondCounter = (double)watch.ElapsedMilliseconds / 1000;
+
+            if (secondCounter >= timeStep)
+            {
+                watch.Reset();
+                secondCounter = 0;
+                return true;
+            }
+
+            return false;
+        }
     }
 }

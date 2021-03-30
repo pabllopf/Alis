@@ -20,7 +20,7 @@ namespace SFML
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
-            new VideoGame(
+            var game = new VideoGame(
                 new Config("Example"),
                 new Scene("First",
                     new GameObject("Player",
@@ -51,7 +51,11 @@ namespace SFML
                         new Collision()
                     )
                 )
-            ).Run();
+            );
+
+            LocalData.Save("Example", game);
+
+            game.Run();
 
 
             // Console.WriteLine("HHOLA");

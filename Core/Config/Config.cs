@@ -16,12 +16,17 @@ namespace Alis.Core
         [NotNull]      
         private string name;
 
+        /// <summary>The time manager</summary>
+        [NotNull]
+        private TimeManager timeManager;
+
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="name">The name of videogame.</param>
         [JsonConstructor]
         public Config([NotNull] string name)
         {
             this.name = name;
+            timeManager = new TimeManager(0.01f, 0.03f, 1.00f, 30.00f, 60.00f);
 
             OnCreate += Config_OnCreate;
             OnDestroy += Config_OnDestroy;
@@ -45,7 +50,7 @@ namespace Alis.Core
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>  
         [NotNull]
-        [JsonProperty]
+        [JsonProperty("Name")]
         public string Name
         {
             get => name;
@@ -55,6 +60,10 @@ namespace Alis.Core
                 OnChangeName.Invoke(this, true);
             }
         }
+
+        [NotNull]
+        [JsonProperty("TimeManager")]
+        public TimeManager TimeManager { get => timeManager; set => timeManager = value; }
 
         #region Events
 

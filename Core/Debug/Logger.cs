@@ -16,7 +16,7 @@ namespace Alis.Core
         private static TextWriterTraceListener listener = new TextWriterTraceListener(Console.Out);
 
         /// <summary>The level</summary>
-        private static Level level = Level.Verbose;
+        private static Level level = Level.Critical;
 
         /// <summary>Informations this instance.</summary>
         public static void Info()
