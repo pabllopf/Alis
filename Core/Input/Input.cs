@@ -106,5 +106,12 @@ namespace Alis.Core
                 }
             }
         }
+
+        internal Task Stop()
+        {
+            return Task.Run(() =>
+            {
+            });
+        }
     }
 }

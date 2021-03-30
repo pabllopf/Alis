@@ -262,6 +262,11 @@ namespace Alis.Core
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void Render_OnUpdate(object sender, bool e) => Logger.Info();
 
+        internal void Stop()
+        {
+            
+        }
+
         /// <summary>Renders the on destroy.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>

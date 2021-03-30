@@ -8,6 +8,7 @@ namespace Alis.Core
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
+    using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
 
@@ -140,12 +141,19 @@ namespace Alis.Core
             });
         }
 
-            #region DefineEvents
+        internal Task Stop()
+        {
+            return Task.Run(() =>
+            {
+            });
+        }
 
-            /// <summary>Scenes the manager on create.</summary>
-            /// <param name="sender">The sender.</param>
-            /// <param name="e">if set to <c>true</c> [e].</param>
-            private void SceneManager_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
+        #region DefineEvents
+
+        /// <summary>Scenes the manager on create.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private void SceneManager_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Scenes the manager on destroy.</summary>
         /// <param name="sender">The sender.</param>

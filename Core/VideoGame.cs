@@ -11,7 +11,6 @@ namespace Alis.Core
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
-    using SFML.Audio;
     using SFML.System;
 
     /// <summary>Define the game.</summary>
@@ -41,22 +40,16 @@ namespace Alis.Core
         [NotNull]
         private bool isStopped;
 
-        /// <summary>The clock</summary>
-        [NotNull]
-        private Clock clock = new Clock();
-
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
-        /// <param name="scenes">The scenes.</param>
-        [JsonConstructor]
-        internal VideoGame([NotNull] Config config, [NotNull] List<Scene> scenes)
+        /// <param name="scenes">The scene.</param>        
+        public VideoGame([NotNull] Config config, [NotNull] params Scene[] scenes)
         {
             this.config = config;
 
             render = new Render(config);
             input = new Input(config);
 
-            this.clock = new Clock();
             isRunning = true;
             isStopped = false;
 
@@ -76,15 +69,15 @@ namespace Alis.Core
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
-        /// <param name="scenes">The scene.</param>        
-        public VideoGame([NotNull] Config config, [NotNull] params Scene[] scenes)
+        /// <param name="scenes">The scenes.</param>
+        [JsonConstructor]
+        internal VideoGame([NotNull] Config config, [NotNull] List<Scene> scenes)
         {
             this.config = config;
 
             render = new Render(config);
             input = new Input(config);
 
-            this.clock = new Clock();
             isRunning = true;
             isStopped = false;
 
@@ -98,7 +91,6 @@ namespace Alis.Core
             OnStop += VideoGame_OnStop;
             OnExit += VideoGame_OnExit;
             OnDestroy += VideoGame_OnDestroy;
-
 
             OnCreate.Invoke(this, true);
         }
@@ -154,7 +146,7 @@ namespace Alis.Core
         [JsonProperty("SceneManager_")]
         public SceneManager SceneManager { get => sceneManager; set => sceneManager = value; }
 
-        /// <summary>Gets or sets a value indicating whether this instance is new frame.</summary>
+        /// <summary>Gets a value indicating whether this instance is new frame.</summary>
         /// <value>
         /// <c>true</c> if this instance is new frame; otherwise, <c>false</c>.</value>
         [NotNull]
@@ -170,16 +162,24 @@ namespace Alis.Core
 
         /// <summary>Loads the of file.</summary>
         /// <param name="file">The file.</param>
+        /// <returns>Return game.</returns>
         [return: NotNull]
         public static VideoGame LoadOfFile(string file) => LocalData.Load<VideoGame>(file);
 
-        /// <summary>Loads the of file.</summary>
-        /// <param name="file">The file.</param>
+        /// <summary>Runs the of file.</summary>
         [return: NotNull]
         public static void RunOfFile() => LocalData.Load<VideoGame>("Data", Environment.CurrentDirectory + "/Data").Run();
 
+        /// <summary>Previews the render.</summary>
+        /// <returns>Preview render</returns>
+        public byte[] PreviewRender()
+        {
+            Task.WaitAll(input.Update(), sceneManager.Update());
+
+            return render.FrameBytes();
+        }
+
         /// <summary>Runs this instance.</summary>
-        /// <returns>return true</returns>
         public void Run() 
         {
             Awake();
@@ -203,26 +203,16 @@ namespace Alis.Core
             Exit();
         }
 
-        public byte[] PreviewRender()
-        {
-            Task.WaitAll(input.Update(), sceneManager.Update());
-
-            return render.FrameBytes();
-        }
-
         /// <summary>Awakes this instance.</summary>
-        /// <returns>Init the videogame</returns>
         private void Awake()
         {
             Task.WaitAll(input.Awake(), sceneManager.Awake());
-            
             render.Awake();
 
             OnAwake?.Invoke(this, true);
         }
 
         /// <summary>Starts this instance.</summary>
-        /// <returns>Return true if start all.</returns>
         private void Start()
         {
             Task.WaitAll(input.Start(), sceneManager.Start());
@@ -252,6 +242,8 @@ namespace Alis.Core
         /// <summary>Stops this instance.</summary>
         private void Stop()
         {
+            Task.WaitAll(input.Stop(), sceneManager.Stop());
+            render.Stop();
             OnStop?.Invoke(this, true);
         }
 
@@ -259,8 +251,8 @@ namespace Alis.Core
         private void Exit() 
         {
             Task.WaitAll(input.Exit(), sceneManager.Exit());
-            
             render.Exit();
+
             OnExit?.Invoke(this, true);
         }
 
@@ -286,22 +278,22 @@ namespace Alis.Core
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void VideoGame_OnUpdate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
-        /// <summary>Videoes the game on exit.</summary>
+        /// <summary>Video the game on exit.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void VideoGame_OnExit([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
-        /// <summary>Videoes the game on stop.</summary>
+        /// <summary>Video the game on stop.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void VideoGame_OnStop([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
-        /// <summary>Videoes the game on fixed update.</summary>
+        /// <summary>Video the game on fixed update.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void VideoGame_OnFixedUpdate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
-        /// <summary>Videoes the game on awake.</summary>
+        /// <summary>Video the game on awake.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void VideoGame_OnAwake([NotNull] object sender, [NotNull] bool e) => Logger.Info();
