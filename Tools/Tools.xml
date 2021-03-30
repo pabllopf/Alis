@@ -216,12 +216,6 @@
         <member name="T:Alis.Tools.LocalData">
             <summary>Manage the local data game.</summary>
         </member>
-        <member name="M:Alis.Tools.LocalData.IsPrimitive(System.Type)">
-            <summary>Determines whether the specified type is primitive.</summary>
-            <param name="type">The type.</param>
-            <returns>
-            <c>true</c> if the specified type is primitive; otherwise, <c>false</c>.</returns>
-        </member>
         <member name="M:Alis.Tools.LocalData.Save``1(System.String,``0)">
             <summary>Saves the specified name.</summary>
             <typeparam name="T">Type data</typeparam>
@@ -232,7 +226,7 @@
             <summary>Saves the specified name.</summary>
             <typeparam name="T">Type data</typeparam>
             <param name="name">The name.</param>
-            <param name="directory"></param>
+            <param name="directory">directory to load file</param>
             <param name="data">The data.</param>
         </member>
         <member name="M:Alis.Tools.LocalData.Load``1(System.String)">
@@ -240,13 +234,21 @@
             <typeparam name="T">Type data</typeparam>
             <param name="name">The name.</param>
             <returns>Return the value data.</returns>
+            <exception cref="T:System.NullReferenceException">When try to load null data</exception>
         </member>
         <member name="M:Alis.Tools.LocalData.Load``1(System.String,System.String)">
             <summary>Loads the specified name.</summary>
             <typeparam name="T">Type data</typeparam>
             <param name="name">The name.</param>
-            <param name="directory"></param>
-            <returns>Return the value data.</returns>
+            <param name="directory">The directory.</param>
+            <returns>Return data</returns>
+            <exception cref="T:System.NullReferenceException">When try to load null data</exception>
+        </member>
+        <member name="M:Alis.Tools.LocalData.IsPrimitive(System.Type)">
+            <summary>Determines whether the specified type is primitive.</summary>
+            <param name="type">The type.</param>
+            <returns>
+            <c>true</c> if the specified type is primitive; otherwise, <c>false</c>.</returns>
         </member>
         <member name="T:Alis.Tools.Zipper">
             <summary>Manage zip files. </summary>

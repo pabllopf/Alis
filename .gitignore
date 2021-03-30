@@ -29,8 +29,6 @@
 *.opendb
 *StyleCop.Cache
 *.collabignore
-*Settings.StyleCop
-*.StyleCop
 
 *.pidb.meta
 *.pdb.meta

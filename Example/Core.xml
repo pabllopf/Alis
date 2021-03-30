@@ -16,5 +16,8 @@
               <br />
             </summary>
         </member>
+        <member name="M:SFML.Move.Start">
+            <summary>Start this instance.</summary>
+        </member>
     </members>
 </doc>
