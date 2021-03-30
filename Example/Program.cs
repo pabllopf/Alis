@@ -197,39 +197,40 @@ namespace SFML
             transform = GetGameObject().Transform;
         }
 
-        public override void Update()
-        {
-        }
-
         private void Input_OnPressKey(object sender, Window.Keyboard.Key key)
         {
             if (key.Equals(Window.Keyboard.Key.S))
             {
                 //Console.WriteLine("Press s");
                 animator.State = 0;
-                transform.YPos += 1  * speed;
+                transform.YPos += 1 * speed;
             }
 
             if (key.Equals(Window.Keyboard.Key.D))
             {
                 //Console.WriteLine("Press d");
                 animator.State = 1;
-                transform.XPos += 1  * speed;
+                transform.XPos += 1 * speed;
             }
 
             if (key.Equals(Window.Keyboard.Key.W))
             {
                 //Console.WriteLine("Press w");
                 animator.State = 2;
-                transform.YPos -= 1  * speed;
+                transform.YPos -= 1 * speed;
             }
 
             if (key.Equals(Window.Keyboard.Key.A))
             {
                 //Console.WriteLine("Press a");
                 animator.State = 3;
-                transform.XPos -= 1  * speed;
+                transform.XPos -= 1 * speed;
             }
+        }
+
+
+        public override void Update()
+        {
         }
     }
 

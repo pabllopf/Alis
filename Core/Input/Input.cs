@@ -4,23 +4,22 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using Alis.Tools;
+    using SFML.Window;
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Threading.Tasks;
 
     /// <summary>Manage the inputs of game.</summary>
-    public class Input
+    public class Input 
     {
         /// <summary>The keys</summary>
-        private static List<SFML.Window.Keyboard.Key> keys = new List<SFML.Window.Keyboard.Key>();
+        private static List<Keyboard.Key> keys = new List<Keyboard.Key>();
 
         /// <summary>Occurs when [on press key].</summary>
-        public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKey;
+        public static event EventHandler<Keyboard.Key> OnPressKey;
 
         /// <summary>Occurs when [on press once].</summary>
-        public static event EventHandler<SFML.Window.Keyboard.Key> OnPressKeyOnce;
+        public static event EventHandler<Keyboard.Key> OnPressKeyOnce;
 
         public Input(Config config)
         {
@@ -30,7 +29,6 @@ namespace Alis.Core
         {
             return Task.Run(() => 
             {
-                Console.WriteLine("awake input");
             });
         }
 
@@ -38,13 +36,6 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                var watch = new Stopwatch();
-                watch.Start();
-
-                Task.Delay(1000).Wait();
-
-                watch.Stop();
-                Logger.Log($"  Time to Start INPUT: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -52,13 +43,7 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                var watch = new Stopwatch();
-                watch.Start();
-
                 PollEvents();
-
-                watch.Stop();
-                Logger.Log($"  Time to UPDATE INPUT: " + watch.ElapsedMilliseconds + " ms");
             });
         }
 
@@ -79,34 +64,26 @@ namespace Alis.Core
         /// <summary>Polls the events.</summary>
         internal static void PollEvents()
         {
-            foreach (SFML.Window.Keyboard.Key key in Enum.GetValues(typeof(SFML.Window.Keyboard.Key)))
+            foreach (Keyboard.Key key in Enum.GetValues(typeof(Keyboard.Key)))
             {
-                if (SFML.Window.Keyboard.IsKeyPressed(key))
+                if (Keyboard.IsKeyPressed(key) && !keys.Contains(key))
                 {
-                    if (!keys.Contains(key))
-                    {
-                        keys.Add(key);
-                        if (OnPressKeyOnce != null)
-                        {
-                            OnPressKeyOnce.Invoke(null, key);
-                        }
-                    }
+                    keys.Add(key);
+                    OnPressKeyOnce?.Invoke(key, key);
                 }
 
-                if (SFML.Window.Keyboard.IsKeyPressed(key))
+                if (Keyboard.IsKeyPressed(key))
                 {
-                    if (OnPressKey != null)
-                    {
-                        OnPressKey.Invoke(null, key);
-                    }
+                    OnPressKey?.Invoke(key, key);
                 }
-
-                if (!SFML.Window.Keyboard.IsKeyPressed(key) && keys.Contains(key))
+               
+                if (!Keyboard.IsKeyPressed(key) && keys.Contains(key))
                 {
                     keys.Remove(key);
                 }
             }
         }
+
 
         internal Task Stop()
         {
