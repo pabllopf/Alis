@@ -12,10 +12,6 @@ namespace Alis.Core
     /// <summary>Manage the time in the game.</summary>
     public class TimeManager
     {
-        /// <summary>The current</summary>
-        [AllowNull]
-        private static TimeManager current;
-
         /// <summary>The time step</summary>
         [NotNull]
         private float timeStep;
@@ -51,8 +47,6 @@ namespace Alis.Core
 
             watch = new Stopwatch();
             watch.Start();
-
-            current = this;
         }
 
         /// <summary>Initializes a new instance of the <see cref="TimeManager" /> class.</summary>
@@ -67,8 +61,6 @@ namespace Alis.Core
 
             watch = new Stopwatch();
             watch.Start();
-
-            current = this;
         }
 
         /// <summary>Initializes a new instance of the <see cref="TimeManager" /> class.</summary>
@@ -84,8 +76,6 @@ namespace Alis.Core
 
             watch = new Stopwatch();
             watch.Start();
-
-            current = this;
         }
 
         /// <summary>Initializes a new instance of the <see cref="TimeManager" /> class.</summary>
@@ -103,8 +93,6 @@ namespace Alis.Core
 
             watch = new Stopwatch();
             watch.Start();
-
-            current = this;
         }
 
         /// <summary>Gets or sets the time step.</summary>
@@ -131,10 +119,6 @@ namespace Alis.Core
         [NotNull]
         [JsonProperty("_LimitFrameRate")]
         public bool LimitFrameRate { get => limitFrameRate; set => limitFrameRate = value; }
-
-        /// <summary>Gets the time.</summary>
-        /// <value>The time.</value>
-        public static float Time => (float)(TimeSpan.FromSeconds(1 / current.frameRate).TotalMilliseconds - current.watch.ElapsedMilliseconds);
 
         /// <summary>Determines whether [is new frame].</summary>
         /// <returns>
