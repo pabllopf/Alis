@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <!-- _________________________ GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -27,9 +27,9 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
+    <Folder Include="Assets\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
   </ItemGroup>
 </Project>

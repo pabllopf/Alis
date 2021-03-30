@@ -119,7 +119,7 @@ namespace Alis.Core
         {
         }
 
-
+        /*
         /// <summary>Destroy this instance.</summary>
         public virtual void OnCollionEnter(Collision collision)
         {
@@ -133,7 +133,7 @@ namespace Alis.Core
         /// <summary>Destroy this instance.</summary>
         public virtual void OnCollionStay(Collision collision)
         {
-        }
+        }*/
 
 
         /// <summary>Attaches to.</summary>

@@ -4,7 +4,6 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using SFML.Window;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -12,84 +11,57 @@ namespace Alis.Core
     /// <summary>Manage the inputs of game.</summary>
     public class Input 
     {
+        private Config config;
+
         /// <summary>The keys</summary>
-        private static List<Keyboard.Key> keys = new List<Keyboard.Key>();
+        private static List<Keyboard> keys = new List<Keyboard>();
 
         /// <summary>Occurs when [on press key].</summary>
-        public static event EventHandler<Keyboard.Key> OnPressKey;
+        public static event EventHandler<Keyboard> OnPressKey;
 
         /// <summary>Occurs when [on press once].</summary>
-        public static event EventHandler<Keyboard.Key> OnPressKeyOnce;
+        public static event EventHandler<Keyboard> OnPressKeyOnce;
 
         public Input(Config config)
         {
+            this.config = config;
         }
 
-        internal Task Awake() 
-        {
-            return Task.Run(() => 
-            {
-            });
-        }
+        public virtual Task Awake() { return Task.Run(() => { }); }
 
-        internal Task Start()
-        {
-            return Task.Run(() =>
-            {
-            });
-        }
+        public virtual Task Start() { return Task.Run(() => { }); }
 
-        internal Task Update() 
-        {
-            return Task.Run(() =>
-            {
-                PollEvents();
-            });
-        }
+        public virtual Task Update() { return Task.Run(() => { }); }
 
-        internal Task FixedUpdate()
-        {
-            return Task.Run(() =>
-            {
-            });
-        }
-
-        internal Task Exit()
-        {
-            return Task.Run(() =>
-            {
-            });
-        }
+        public virtual Task FixedUpdate() { return Task.Run(() => { }); }
 
         /// <summary>Polls the events.</summary>
-        internal static void PollEvents()
+        internal void PollEvents()
         {
-            foreach (Keyboard.Key key in Enum.GetValues(typeof(Keyboard.Key)))
+            foreach (Keyboard key in Enum.GetValues(typeof(Keyboard)))
             {
-                if (Keyboard.IsKeyPressed(key) && !keys.Contains(key))
+                if (IsKeyPressed(key) && !keys.Contains(key))
                 {
                     keys.Add(key);
                     OnPressKeyOnce?.Invoke(key, key);
                 }
 
-                if (Keyboard.IsKeyPressed(key))
+                if (IsKeyPressed(key))
                 {
                     OnPressKey?.Invoke(key, key);
                 }
-               
-                if (!Keyboard.IsKeyPressed(key) && keys.Contains(key))
+
+                if (!IsKeyPressed(key) && keys.Contains(key))
                 {
                     keys.Remove(key);
                 }
             }
         }
 
+        internal virtual bool IsKeyPressed(Keyboard key) { return true; }
 
-        internal Task Stop()
-        {
-            return Task.Run(() =>
-            {
-            });
-        }
+        internal virtual Task Stop() { return Task.Run(()=> { }); }
+
+        internal virtual Task Exit() { return Task.Run(() => { }); }
     }
 }

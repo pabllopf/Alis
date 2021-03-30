@@ -60,7 +60,6 @@
     <Copy SourceFiles="@(AssetsSourceFiles)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
   </Target>
   <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
     <ProjectReference Include="..\Tools\Tools.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -89,5 +88,5 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>  
+  </ItemGroup>
 </Project>

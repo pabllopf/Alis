@@ -1,14 +1,15 @@
-﻿using Alis.Core;
+﻿
+
+using Alis.Core;
 using Alis.Tools;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SFML
+namespace Alis
 {
     /// <summary>Example of videogame.</summary>
     public class Program
@@ -28,15 +29,13 @@ namespace SFML
                         new AudioSource("menu.wav"),
                         new Sprite("tile000.png"),
                         new Collision(),
-                        new Camera(new System.Vector2f(0, 0), new System.Vector2f(640, 380)),
 
                         new Animator(0,
                                 new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
                                 new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
                                 new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
                                 new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
-                        ),
-                        new Move()
+                        )
                     ),
 
                     new GameObject("Player3",
@@ -176,7 +175,7 @@ namespace SFML
         }
     }
 
-
+    /*
     /// <summary>
     ///   <br />
     /// </summary>
@@ -232,6 +231,6 @@ namespace SFML
         public override void Update()
         {
         }
-    }
+    }*/
 
 }
