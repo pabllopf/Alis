@@ -2,7 +2,7 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Animation.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-namespace Alis.Core
+namespace Alis.Core.SFML
 {
     using Alis.Tools;
     using global::SFML.Graphics;
@@ -86,8 +86,7 @@ namespace Alis.Core
                 if (AssetManager.Load(image) != null) 
                 {
                     textures.Add(new Texture(AssetManager.Load(image)));
-                }
-              
+                }            
             }
         }
 

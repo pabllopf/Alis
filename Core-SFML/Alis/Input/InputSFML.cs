@@ -1,65 +1,44 @@
 ﻿namespace Alis.Core.SFML
 {
+    using global::SFML.Window;
+    using System;
     using System.Threading.Tasks;
 
+    /// <summary>Define the input</summary>
     public class InputSFML : Input
     {
+        /// <summary>Initializes a new instance of the <see cref="InputSFML" /> class.</summary>
+        /// <param name="config">The configuration.</param>
         public InputSFML(Config config) : base(config)
         {
+            Console.WriteLine("Define the input sfml");
         }
 
+        /// <summary>Awakes this instance.</summary>
+        /// <returns>Return none</returns>
         public override Task Awake()
-        {
-            return Task.Run(()=> { });
-        }
-
-        public override Task FixedUpdate()
-        {
-            return Task.Run(() => { });
-        }
-
-        public override Task Start()
-        {
-            return Task.Run(() => { });
-        }
-
-        public override Task Update()
-        {
-            return Task.Run(() => { });
-        }
-    }
-}
-
-
-/*
- /// <summary>The keys</summary>
-        private static List<Keyboard> keys = new List<Keyboard>();
-
-        /// <summary>Occurs when [on press key].</summary>
-        public static event EventHandler<Keyboard> OnPressKey;
-
-        /// <summary>Occurs when [on press once].</summary>
-        public static event EventHandler<Keyboard> OnPressKeyOnce;
-
-        public Input(Config config)
-        {
-        }
-
-        internal Task Awake() 
-        {
-            return Task.Run(() => 
-            {
-            });
-        }
-
-        internal Task Start()
         {
             return Task.Run(() =>
             {
+
             });
         }
 
-        internal Task Update() 
+
+        /// <summary>Starts this instance.</summary>
+        /// <returns>Return none</returns>
+        public override Task Start()
+        {
+            return Task.Run(() =>
+            {
+
+            });
+        }
+
+
+        /// <summary>Updates this instance.</summary>
+        /// <returns>Return none</returns>
+        public override Task Update()
         {
             return Task.Run(() =>
             {
@@ -67,50 +46,58 @@
             });
         }
 
-        internal Task FixedUpdate()
+        /// <summary>Fixed the update.</summary>
+        /// <returns>Return none</returns>
+        public override Task FixedUpdate()
         {
             return Task.Run(() =>
             {
+
             });
         }
 
-        internal Task Exit()
+        /// <summary>Stops this instance.</summary>
+        /// <returns>Return none</returns>
+        public override Task Stop()
         {
             return Task.Run(() =>
             {
+
+            });
+        }
+
+        /// <summary>Exits this instance.</summary>
+        /// <returns>Return none</returns>
+        public override Task Exit()
+        {
+            return Task.Run(()=> 
+            {
+            
             });
         }
 
         /// <summary>Polls the events.</summary>
-        internal void PollEvents()
+        public override void PollEvents()
         {
-            foreach (Keyboard key in Enum.GetValues(typeof(Keyboard)))
+            foreach (Core.Keyboard key in Enum.GetValues(typeof(Core.Keyboard)))
             {
-                if (IsKeyPressed(key) && !keys.Contains(key))
+                var test = (Keyboard.Key)Enum.Parse(typeof(Keyboard.Key), key.ToString());
+                if (Keyboard.IsKeyPressed(test))
                 {
-                    keys.Add(key);
-                    OnPressKeyOnce?.Invoke(key, key);
+                    Keys.Add(key);
+                    PressKeyOnce(key);
                 }
 
-                if (IsKeyPressed(key))
+                if (Keyboard.IsKeyPressed(test))
                 {
-                    OnPressKey?.Invoke(key, key);
+                    PressKey(key);
                 }
-               
-                if (!IsKeyPressed(key) && keys.Contains(key))
+
+                if (!Keyboard.IsKeyPressed(test) && Keys.Contains(key))
                 {
-                    keys.Remove(key);
+                    Keys.Remove(key);
                 }
             }
         }
-
-        internal abstract bool IsKeyPressed(Keyboard key);
-
-        internal Task Stop()
-        {
-            return Task.Run(() =>
-            {
-            });
-        }
- 
- */
+    }
+}

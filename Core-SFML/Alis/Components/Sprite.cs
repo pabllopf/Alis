@@ -2,7 +2,7 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Sprite.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-namespace Alis.Core
+namespace Alis.Core.SFML
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -79,29 +79,30 @@ namespace Alis.Core
             set
             {
                 image = value;
-                /*if (!image.Equals(string.Empty)) 
+                
+                if (!image.Equals(string.Empty)) 
                 {
                     if (AssetManager.Load(image) != null) 
                     {
                         pathImage = AssetManager.Load(image);
                         sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
-                        if (Render.Current.Sprites.Contains(this)) 
+                        if (Render.Current.GetDraws<Sprite>().Contains(this)) 
                         {
-                            Render.Current.Sprites[Render.Current.Sprites.IndexOf(this)] = this;
+                            Render.Current.GetDraws<Sprite>()[Render.Current.GetDraws<Sprite>().IndexOf(this)] = this;
                         }
                         else 
                         {
-                            Render.Current.Sprites.Add(this);
+                            Render.Current.GetDraws<Sprite>().Add(this);
                         }
                     }
                     else 
                     {
-                        if (Render.Current.Sprites.Contains(this))
+                        if (Render.Current.GetDraws<Sprite>().Contains(this))
                         {
-                            Render.Current.Sprites.Remove(this);
+                            Render.Current.GetDraws<Sprite>().Remove(this);
                         }
                     }
-                }*/
+                }
             }
         }
 
@@ -114,7 +115,7 @@ namespace Alis.Core
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            /*if (sprite != null)
+            if (sprite != null)
             {
                 var pos = GetGameObject().Transform.Position;
                 sprite.Position = new global::SFML.System.Vector2f(pos.X, pos.Y);
@@ -125,8 +126,8 @@ namespace Alis.Core
                 var size = GetGameObject().Transform.Size;
                 sprite.Scale = new global::SFML.System.Vector2f(size.X, size.Y);
 
-                Render.Current.AddSprite(this);
-            }*/
+                Render.Current.AddDraw(this);
+            }
         }
 
         /// <summary>Updates this instance.</summary>
@@ -145,10 +146,7 @@ namespace Alis.Core
             }
         }
 
-        public override int Priority()
-        {
-            return 0;
-        }
+        public override int Priority() => 0;
 
         /// <summary>Gets the draw.</summary>
         /// <returns>Return none</returns>

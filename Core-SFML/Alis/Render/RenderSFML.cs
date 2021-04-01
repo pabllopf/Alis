@@ -1,48 +1,23 @@
 ﻿namespace Alis.Core.SFML
 {
+    using global::SFML.Graphics;
+    using global::SFML.Window;
+    using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
 
-    internal class RenderSFML : Render
+    /// <summary>Implement the render. </summary>
+    public class RenderSFML : Render
     {
-        public RenderSFML([NotNull] Config config) : base(config)
-        {
-        }
-
-        public override void Awake()
-        {
-        }
-
-        public override void Start()
-        {
-        }
-
-        public override void Update()
-        {
-        }
-
-        public override void Stop()
-        {
-        }
-
-        public override void Exit()
-        {
-        }
-
-        public override byte[] FrameBytes()
-        {
-            return default;
-        }
-    }
-}
-        
-        /*/// <summary>The current</summary>
-        private static Render current;
+        /// <summary>The render SFML</summary>
+        private static RenderSFML renderSFML;
 
         /// <summary>The configuration</summary>
         [NotNull]
-        private readonly Config config;
+        private Config config;
 
-        /// <summary>The window</summary>
+        /// <summary>The render window</summary>
         [NotNull]
         private RenderWindow renderWindow;
 
@@ -60,50 +35,107 @@
 
         /// <summary>The sprites</summary>
         [NotNull]
-        private List<Sprite> sprites;
+        private static List<Sprite> sprites;
 
+        /// <summary>The collisions</summary>
+        [NotNull]
         private List<RectangleShape> collisions;
-
-        /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
-        /// <param name="config">The configuration.</param>
-        public Render([NotNull] Config config)
-        {
-            this.config = config;
-            videoMode = new VideoMode(512, 320);
-            sprites = new List<Sprite>();
-            collisions = new List<RectangleShape>();
-
-            OnCreate += Render_OnCreate;
-            OnStart += Render_OnStart;
-            OnUpdate += Render_OnUpdate;
-            OnDestroy += Render_OnDestroy;
-
-            current = this;
-        }
-
-        /// <summary>Gets or sets the sprites.</summary>
-        /// <value>The sprites.</value>
-        public List<Sprite> Sprites { get => sprites; set => sprites = value; }
-
-        /// <summary>Gets or sets the current.</summary>
-        /// <value>The current.</value>
-        public static Render Current { get => current; set => current = value; }
-
-        /// <summary>Gets or sets the render texture.</summary>
-        /// <value>The render texture.</value>
-        public RenderTexture RenderTexture { get => renderTexture; set => renderTexture = value; }
-
-        /// <summary>Gets or sets the render window.</summary>
-        /// <value>The render window.</value>
-        public RenderWindow RenderWindow { get => renderWindow; set => renderWindow = value; }
 
         /// <summary>Gets or sets the collisions.</summary>
         /// <value>The collisions.</value>
         public List<RectangleShape> Collisions { get => collisions; set => collisions = value; }
+       
+        /// <summary>Gets the render window.</summary>
+        /// <value>The render window.</value>
+        public RenderWindow RenderWindow { get => renderWindow;  }
+
+        /// <summary>Gets the render texture.</summary>
+        /// <value>The render texture.</value>
+        public RenderTexture RenderTexture { get => renderTexture; }
+        
+        /// <summary>Gets or sets the render SFML.</summary>
+        /// <value>The render SFML.</value>
+        public static RenderSFML CurrentRenderSFML { get => renderSFML; set => renderSFML = value; }
+
+        /// <summary>Initializes a new instance of the <see cref="RenderSFML" /> class.</summary>
+        /// <param name="config">The configuration.</param>
+        public RenderSFML([NotNull] Config config) : base(config)
+        {
+            this.config = config;
+
+            videoMode = new VideoMode(512, 320);
+            sprites = new List<Sprite>();
+            collisions = new List<RectangleShape>();
+
+            Current = this;
+            renderSFML = this;
+        }
+
+        /// <summary>Awakes this instance.</summary>
+        /// <returns>Return none</returns>
+        public override void Awake()
+        {
+        }
+
+        /// <summary>Starts this instance.</summary>
+        /// <returns>Return none</returns>
+        public override void Start()
+        {
+        }
+
+        /// <summary>Fixed the update.</summary>
+        public override void FixedUpdate()
+        {
+        }
+
+        /// <summary>Updates this instance.</summary>
+        /// <returns>Return none</returns>
+        public override void Update()
+        {
+            if (renderWindow is null)
+            {
+                renderWindow = new RenderWindow(videoMode, config.Name);
+                renderWindow.Closed += RenderWindow_Closed;
+            }
+
+            renderWindow.DispatchEvents();
+            renderWindow.Clear();
+
+            if (sprites.Count > 0)
+            {
+                foreach (Sprite sprite in sprites)
+                {
+                    renderWindow.Draw(sprite.GetDraw());
+                }
+            }
+
+            renderWindow.Display();
+        }
+
+        /// <summary>Stops this instance.</summary>
+        /// <returns>Return none</returns>
+        public override void Stop()
+        {
+        }
+
+        /// <summary>Exits this instance.</summary>
+        /// <returns>Return none</returns>
+        public override void Exit()
+        {
+            if (renderWindow != null)
+            {
+                if (renderWindow.IsOpen)
+                {
+                    renderWindow.Clear();
+                    renderWindow.Close();
+                    renderWindow.Dispose();
+                }
+            }
+        }
 
         /// <summary>Frames the bytes.</summary>
-        /// <returns>Return none</returns>
-        public byte[] FrameBytes()
+        /// <returns>Return the frame in bytes.</returns>
+        public override byte[] FrameBytes()
         {
             if (renderTexture is null)
             {
@@ -114,7 +146,6 @@
 
             if (sprites.Count > 0)
             {
-                sprites = sprites.OrderBy(o => o.Depth).ToList();
                 foreach (Sprite sprite in sprites)
                 {
                     renderTexture.Draw(sprite.GetDraw());
@@ -131,100 +162,36 @@
 
             renderTexture.Display();
 
-
             frame = renderTexture.Texture.CopyToImage();
             return frame.Pixels;
         }
 
-        /// <summary>Adds the sprite.</summary>
-        /// <param name="sprite">The sprite.</param>
-        internal void AddSprite(Sprite sprite)
+        /// <summary>Adds the draw.</summary>
+        /// <param name="draw">The draw.</param>
+        public override void AddDraw([NotNull] Component draw)
         {
-            sprites.Add(sprite);
-        }
-
-        internal void AddCollision(RectangleShape rectangle)
-        {
-            if (!collisions.Contains(rectangle))
+            if(sprites != null) 
             {
-                collisions.Add(rectangle);
-            }
-        }
-
-        /// <summary>Deletes the sprite.</summary>
-        /// <param name="sprite">The sprite.</param>
-        internal void DeleteSprite(Sprite sprite)
-        {
-            if (sprites.Contains(sprite))
-            {
-                sprites.Remove(sprite);
-            }
-        }
-
-        internal bool Awake()
-        {
-            return Task.Run(() =>
-            {
-            }).IsCompletedSuccessfully;
-        }
-
-        /// <summary>Starts this instance.</summary>
-        /// <returns>Return none</returns>
-        internal bool Start()
-        {
-            return Task.Run(() =>
-            {
-
-            }).IsCompleted;
-        }
-
-        /// <summary>Updates this instance.</summary>
-        /// <returns>Return none</returns>
-        internal bool Update()
-        {
-            if (renderWindow is null)
-            {
-                renderWindow = new RenderWindow(videoMode, config.Name);
-                renderWindow.Closed += RenderWindow_Closed;
-            }
-
-            renderWindow.DispatchEvents();
-            renderWindow.Clear();
-
-            if (sprites.Count > 0)
-            {
+                sprites.Add((Sprite)draw);
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
-                foreach (Sprite sprite in sprites)
-                {
-                    renderWindow.Draw(sprite.GetDraw());
-                }
-            }
-
-            renderWindow.Display();
-
-            OnUpdate.Invoke(this, true);
-
-            return true;
+            }          
         }
 
-        /// <summary>Exits this instance.</summary>
-        internal void Exit()
+        /// <summary>Removes the specified draw.</summary>
+        /// <param name="draw">The draw.</param>
+        public override void Remove(Component draw)
         {
-            if (renderWindow != null)
+            if (sprites != null)
             {
-                if (renderWindow.IsOpen)
-                {
-                    renderWindow.Clear();
-                    renderWindow.Close();
-                    renderWindow.Dispose();
-                }
+                sprites.Remove(sprites.Find(i => i.GetType().Equals(draw)));
+                sprites = sprites.OrderBy(o => o.Depth).ToList();
             }
         }
 
-        internal void Stop()
-        {
-
-        }
+        /// <summary>Gets the draws.</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>Return a list</returns>
+        public override List<T> GetDraws<T>() => new((IEnumerable<T>)sprites);
 
         /// <summary>Handles the Closed event of the RenderWindow control.</summary>
         /// <param name="sender">The source of the event.</param>
@@ -235,4 +202,4 @@
             Environment.Exit(0);
         }
     }
-}*/
+}

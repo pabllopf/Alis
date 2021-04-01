@@ -1,6 +1,7 @@
 ﻿
 
 using Alis.Core;
+using Alis.Core.SFML;
 using Alis.Tools;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,9 @@ namespace Alis
                                 new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
                                 new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
                                 new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
-                        )
+                        ),
+                        new Move(),
+                        new Camera(new Vector2(0f), new Vector2(640, 380))
                     ),
 
                     new GameObject("Player3",
@@ -175,7 +178,7 @@ namespace Alis
         }
     }
 
-    /*
+    
     /// <summary>
     ///   <br />
     /// </summary>
@@ -190,47 +193,46 @@ namespace Alis
         /// <summary>Start this instance.</summary>
         public override void Start()
         {
-            Input.OnPressKey += Input_OnPressKey;
+            Input.OnPressKey += Input_OnPressKey1;
 
             animator = GetGameObject().GetComponent<Animator>();
             transform = GetGameObject().Transform;
         }
 
-        private void Input_OnPressKey(object sender, Window.Keyboard.Key key)
+        private void Input_OnPressKey1(object sender, Keyboard key)
         {
-            if (key.Equals(Window.Keyboard.Key.S))
+            if (key.Equals(Keyboard.S))
             {
-                //Console.WriteLine("Press s");
+                Console.WriteLine("Press s");
                 animator.State = 0;
                 transform.YPos += 1 * speed;
             }
 
-            if (key.Equals(Window.Keyboard.Key.D))
+            if (key.Equals(Keyboard.D))
             {
-                //Console.WriteLine("Press d");
+                Console.WriteLine("Press d");
                 animator.State = 1;
                 transform.XPos += 1 * speed;
             }
 
-            if (key.Equals(Window.Keyboard.Key.W))
+            if (key.Equals(Keyboard.W))
             {
-                //Console.WriteLine("Press w");
+                Console.WriteLine("Press w");
                 animator.State = 2;
                 transform.YPos -= 1 * speed;
             }
 
-            if (key.Equals(Window.Keyboard.Key.A))
+            if (key.Equals(Keyboard.A))
             {
-                //Console.WriteLine("Press a");
+                Console.WriteLine("Press a");
                 animator.State = 3;
                 transform.XPos -= 1 * speed;
             }
         }
 
-
         public override void Update()
         {
         }
-    }*/
+    }
 
 }

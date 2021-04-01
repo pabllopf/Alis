@@ -2,10 +2,8 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Collision.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-namespace Alis.Core
+namespace Alis.Core.SFML
 {
-    using global::SFML.Graphics;
-    using global::SFML.System;
     using Newtonsoft.Json;
     using System.Numerics;
 
@@ -16,7 +14,7 @@ namespace Alis.Core
         
         private Transform transform;
 
-        private RectangleShape rectangle;
+        //private RectangleShape rectangle;
 
         private Vector2 border;
 
@@ -57,41 +55,42 @@ namespace Alis.Core
             this.border = border;
             this.isTrigger = isTrigger;
 
-            rectangle = new RectangleShape(new Vector2f(border.X, border.Y));
+           /* rectangle = new RectangleShape(new Vector2f(border.X, border.Y));
 
             rectangle.FillColor = Color.Transparent;
             rectangle.OutlineColor = Color.Green;
-            rectangle.OutlineThickness = 1f;
+            rectangle.OutlineThickness = 1f;*/
         }
 
         /// <summary>Initializes a new instance of the <see cref="Collision" /> class.</summary>
         public Collision()
         {
             border = new Vector2(1, 1);
-            rectangle = new RectangleShape(new Vector2f(border.X, border.Y));
+           /* rectangle = new RectangleShape(new Vector2f(border.X, border.Y));
 
             rectangle.FillColor = Color.Transparent;
             rectangle.OutlineColor = Color.Green;
             rectangle.OutlineThickness = 1f;
-            isTrigger = false;
+            isTrigger = false;*/
         }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            transform = GetGameObject().Transform;
+            /*
+            //transform = GetGameObject().Transform;
 
             var texture = GetGameObject().GetComponent<Sprite>().GetDraw().Texture;
             border = new Vector2(texture.Size.X, texture.Size.Y);
-            rectangle = new RectangleShape(new Vector2f(border.X * transform.Size.X, border.Y * transform.Size.Y));
+            //rectangle = new RectangleShape(new Vector2f(border.X * transform.Size.X, border.Y * transform.Size.Y));
 
             rectangle.FillColor = Color.Transparent;
             rectangle.OutlineColor = Color.Green;
             rectangle.OutlineThickness = 1f;
 
-            rectangle.Position = new Vector2f(transform.Position.X, transform.Position.Y);
+           // rectangle.Position = new Vector2f(transform.Position.X, transform.Position.Y);
 
-            //Render.Current.AddCollision(rectangle);
+            //Render.Current.AddCollision(rectangle);*/
         }
 
         public override int Priority()

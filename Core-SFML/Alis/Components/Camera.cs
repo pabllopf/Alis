@@ -2,71 +2,90 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Camera.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
-namespace Alis.Core
+namespace Alis.Core.SFML
 {
+    using System.Numerics;
+    using Newtonsoft.Json;
     using global::SFML.Graphics;
     using global::SFML.System;
-    using Newtonsoft.Json;
-
+    
     /// <summary>Define a component</summary>
     public class Camera : Component
     {
-        private Transform transform;
+        /// <summary>The transform</summary>
+        private Core.Transform transform;
 
+        /// <summary>The view</summary>
         private View view;
 
+        /// <summary>The center</summary>
         private Vector2f center;
 
+        /// <summary>The size</summary>
         private Vector2f size;
 
-        [JsonConstructor]
-        public Camera(Vector2f center, Vector2f size)
+        /// <summary>Initializes a new instance of the <see cref="Camera" /> class.</summary>
+        /// <param name="size">resolution of camera.</param>
+        public Camera(Vector2 size)
         {
-            this.center = center;
-            this.size = size;
-            view = new View(center, size);
+            center = new Vector2f(0f, 0f);
+            this.size = new Vector2f(size.X, size.Y);
+            view = new View(center, this.size);
+
+            transform = new Core.Transform();
         }
 
-        public Vector2f Center { get => center; set => center = value; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Camera"/> class.
+        /// </summary>
+        /// <param name="center">The center.</param>
+        /// <param name="size">The size.</param>
+        [JsonConstructor]
+        public Camera(Vector2 center, Vector2 size)
+        {
+            this.center = new Vector2f(center.X, center.Y);
+            this.size = new Vector2f(size.X, size.Y);
+            view = new View(this.center, this.size);
 
-        public Vector2f Size { get => size; set => size = value; }
+            transform = new Core.Transform();
+        }
 
-        /// <summary>Starts this instance.</summary>
+        /// <summary>Start this instance.</summary>
         public override void Start()
         {
-            transform = this.GetGameObject().Transform;
+            transform = GetGameObject().Transform;
         }
 
-        public override int Priority()
-        {
-            return 6;
-        }
-
-        /// <summary>Updates this instance.</summary>
+        /// <summary>Update this instance.</summary>
+        /// TODO Correct the camera to fix the movement of sprites. (probaly is the transform).
         public override void Update()
         {
-            /*if (Render.Current != null)
+            if (RenderSFML.CurrentRenderSFML != null)
             {
-                if (Render.Current.RenderWindow != null)
+                if (RenderSFML.CurrentRenderSFML.RenderWindow != null)
                 {
-                    if (!Render.Current.RenderWindow.GetView().Equals(view))
+                    if (!RenderSFML.CurrentRenderSFML.RenderWindow.GetView().Equals(view))
                     {
-                        Render.Current.RenderWindow.SetView(view);
+                        RenderSFML.CurrentRenderSFML.RenderWindow.SetView(view);
                     }
 
                     view.Center = new Vector2f(transform.Position.X, transform.Position.Y);
                 }
 
-                if (Render.Current.RenderTexture != null)
+                if (RenderSFML.CurrentRenderSFML.RenderTexture != null)
                 {
-                    if (!Render.Current.RenderTexture.GetView().Equals(view))
+                    if (!RenderSFML.CurrentRenderSFML.RenderTexture.GetView().Equals(view))
                     {
-                        Render.Current.RenderTexture.SetView(view);
+                        RenderSFML.CurrentRenderSFML.RenderTexture.SetView(view);
                     }
 
-                    //view.Center = new Vector2f(transform.Position.X, transform.Position.Y);
+                    view.Center = new Vector2f(transform.Position.X, transform.Position.Y);
                 }
-            }*/
+            }
         }
+
+        /// <summary>this instance.</summary>
+        /// <returns>Return order of process.</returns>
+        public override int Priority() => 6;
     }
 }

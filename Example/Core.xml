@@ -11,5 +11,13 @@
             <summary>Defines the entry point of the application.</summary>
             <param name="args">The arguments.</param>
         </member>
+        <member name="T:Alis.Move">
+            <summary>
+              <br />
+            </summary>
+        </member>
+        <member name="M:Alis.Move.Start">
+            <summary>Start this instance.</summary>
+        </member>
     </members>
 </doc>

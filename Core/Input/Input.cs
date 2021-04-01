@@ -4,17 +4,37 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using Alis.Tools;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
     /// <summary>Manage the inputs of game.</summary>
-    public class Input 
+    public class Input
     {
+        /// <summary>The configuration</summary>
+        [NotNull]
         private Config config;
 
         /// <summary>The keys</summary>
-        private static List<Keyboard> keys = new List<Keyboard>();
+        [AllowNull]
+        private static List<Keyboard> keys;
+
+        /// <summary>Initializes the <see cref="Input" /> class.</summary>
+        static Input() 
+        {
+            Keys = new List<Keyboard>();
+            OnPressKey += Input_OnPressKey;
+            OnPressKeyOnce += Input_OnPressKeyOnce;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Input" /> class.</summary>
+        /// <param name="config">The configuration.</param>
+        public Input(Config config)
+        {
+            this.config = config;
+        }
 
         /// <summary>Occurs when [on press key].</summary>
         public static event EventHandler<Keyboard> OnPressKey;
@@ -22,46 +42,64 @@ namespace Alis.Core
         /// <summary>Occurs when [on press once].</summary>
         public static event EventHandler<Keyboard> OnPressKeyOnce;
 
-        public Input(Config config)
-        {
-            this.config = config;
-        }
+        /// <summary>Gets or sets the keys.</summary>
+        /// <value>The keys.</value>
+        public static List<Keyboard> Keys { get => keys; set => keys = value; }
 
-        public virtual Task Awake() { return Task.Run(() => { }); }
+        /// <summary>Awakes this instance.</summary>
+        /// <returns>Return none</returns>
+        /// <exception cref="NotImplementedException">Not Implemented</exception>
+        public virtual Task Awake() => throw new NotImplementedException(GetType().FullName);
 
-        public virtual Task Start() { return Task.Run(() => { }); }
+        /// <summary>Starts this instance.</summary>
+        /// <returns>Return none</returns>
+        /// <exception cref="NotImplementedException">Not Implemented</exception>
+        public virtual Task Start() => throw new NotImplementedException(GetType().FullName);
 
-        public virtual Task Update() { return Task.Run(() => { }); }
+        /// <summary>Updates this instance.</summary>
+        /// <returns>Return none</returns>
+        /// <exception cref="NotImplementedException">Not Implemented</exception>
+        public virtual Task Update() => throw new NotImplementedException(GetType().FullName);
 
-        public virtual Task FixedUpdate() { return Task.Run(() => { }); }
+        /// <summary>Fixed the update.</summary>
+        /// <returns>Return none</returns>
+        /// <exception cref="NotImplementedException">Not Implemented</exception>
+        public virtual Task FixedUpdate() => throw new NotImplementedException(GetType().FullName);
+
+        /// <summary>Stops this instance.</summary>
+        /// <returns>Return none</returns>
+        /// <exception cref="NotImplementedException">Not Implemented</exception>
+        public virtual Task Stop() => throw new NotImplementedException(GetType().FullName);
+
+        /// <summary>Exits this instance.</summary>
+        /// <returns>Return none</returns>
+        /// <exception cref="NotImplementedException">Not Implemented</exception>
+        public virtual Task Exit() => throw new NotImplementedException(GetType().FullName);
 
         /// <summary>Polls the events.</summary>
-        internal void PollEvents()
-        {
-            foreach (Keyboard key in Enum.GetValues(typeof(Keyboard)))
-            {
-                if (IsKeyPressed(key) && !keys.Contains(key))
-                {
-                    keys.Add(key);
-                    OnPressKeyOnce?.Invoke(key, key);
-                }
+        /// <exception cref="NotImplementedException">Not Implemented</exception>
+        public virtual void PollEvents() => throw new NotImplementedException(GetType().FullName);
 
-                if (IsKeyPressed(key))
-                {
-                    OnPressKey?.Invoke(key, key);
-                }
+        /// <summary>Presses the key.</summary>
+        /// <param name="key">The key.</param>
+        public void PressKey(Keyboard key) => OnPressKey?.Invoke(this, key);
 
-                if (!IsKeyPressed(key) && keys.Contains(key))
-                {
-                    keys.Remove(key);
-                }
-            }
-        }
+        /// <summary>Presses the key once.</summary>
+        /// <param name="key">The key.</param>
+        public void PressKeyOnce(Keyboard key) => OnPressKeyOnce?.Invoke(this, key);
 
-        internal virtual bool IsKeyPressed(Keyboard key) { return true; }
+        #region Define Events
 
-        internal virtual Task Stop() { return Task.Run(()=> { }); }
+        /// <summary>Inputs the on press key.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="keyboard">The keyboard.</param>
+        private static void Input_OnPressKey([NotNull] object sender, [NotNull] Keyboard keyboard) => Logger.Info();
 
-        internal virtual Task Exit() { return Task.Run(() => { }); }
+        /// <summary>Inputs the on press key once.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="keyboard">The keyboard.</param>
+        private static void Input_OnPressKeyOnce([NotNull] object sender, [NotNull] Keyboard keyboard) => Logger.Info();
+
+        #endregion
     }
 }

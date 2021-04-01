@@ -334,7 +334,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void BuildAndRun()
         {
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
+            LocalData.Save<Game>("Data", Project.Current.DataPath, Project.Current.VideoGame);
             new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
@@ -476,7 +476,7 @@ namespace Alis.Editor.UI.Widgets
         private void SaveProject() 
         {
             Console.Current.Log("Saved " + Project.Current.VideoGame.Config.Name);
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
+            LocalData.Save<Game>("Data", Project.Current.DataPath, Project.Current.VideoGame);
         }
 
         /// <summary>Opens the terminal.</summary>

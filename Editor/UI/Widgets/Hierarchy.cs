@@ -93,7 +93,7 @@ namespace Alis.Editor.UI.Widgets
         {
             scene.Add(new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f))));
 
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
+            LocalData.Save<Game>("Data", Project.Current.DataPath, Project.Current.VideoGame);
 
             Inspector.Current.Focus = true;
         }
