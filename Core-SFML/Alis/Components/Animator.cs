@@ -93,7 +93,6 @@ namespace Alis.Core.SFML
                             clock.Restart();
                         }
                     }
-                   
                 }
             }
         }

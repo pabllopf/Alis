@@ -28,7 +28,8 @@
 	  <FileVersion>1.1.0.0</FileVersion>
 	  <Version>1.1.0</Version>
 	  <AssemblyName>Tools</AssemblyName>
-	  <RootNamespace>Tools</RootNamespace>    
+	  <RootNamespace>Tools</RootNamespace>
+
   </PropertyGroup>
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -37,43 +38,23 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningLevel>5</WarningLevel>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+
   </PropertyGroup>
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>Tools.xml</DocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
-
   
   <!-- ______________________________ MACOS _____________________________________ -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
-  
   <!-- ______________________________ LINUX _____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'">
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <DefineConstants>TRACE</DefineConstants>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <None Remove="App.config" />
-    <None Remove="Tools.xml" />
-    <ApplicationDefinition Include="App.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </ApplicationDefinition>
-    <None Include="Docs\Alis.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="Docs\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="DotNetZip" Version="1.15.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -99,8 +80,15 @@
   </ItemGroup>
   
   <ItemGroup>
-    <None Update="apsetting.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="Docs\Alis.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Docs\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+  
+
 </Project>

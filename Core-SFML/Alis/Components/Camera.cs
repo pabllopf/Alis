@@ -19,21 +19,10 @@ namespace Alis.Core.SFML
         private View view;
 
         /// <summary>The center</summary>
-        private Vector2f center;
+        private Vector2 center;
 
         /// <summary>The size</summary>
-        private Vector2f size;
-
-        /// <summary>Initializes a new instance of the <see cref="Camera" /> class.</summary>
-        /// <param name="size">resolution of camera.</param>
-        public Camera(Vector2 size)
-        {
-            center = new Vector2f(0f, 0f);
-            this.size = new Vector2f(size.X, size.Y);
-            view = new View(center, this.size);
-
-            transform = new Core.Transform();
-        }
+        private Vector2 size;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Camera"/> class.
@@ -43,12 +32,30 @@ namespace Alis.Core.SFML
         [JsonConstructor]
         public Camera(Vector2 center, Vector2 size)
         {
-            this.center = new Vector2f(center.X, center.Y);
-            this.size = new Vector2f(size.X, size.Y);
-            view = new View(this.center, this.size);
+            this.center =center;
+            this.size = size;
+            view = new View(new Vector2f(this.center.X, this.center.Y), new Vector2f(this.size.X, this.size.Y));
 
             transform = new Core.Transform();
         }
+
+        /// <summary>Initializes a new instance of the <see cref="Camera" /> class.</summary>
+        /// <param name="size">resolution of camera.</param>
+        public Camera(Vector2 size)
+        {
+            center = new Vector2(0f, 0f);
+            this.size = size;
+            view = new View(new Vector2f(this.center.X, this.center.Y), new Vector2f(this.size.X, this.size.Y));
+
+            transform = new Core.Transform();
+        }
+
+        [JsonProperty("_Size")]
+        public Vector2 Size { get => size; set => size = value; }
+
+        [JsonProperty("_Center")]
+        public Vector2 Center { get => center; set => center = value; }
+
 
         /// <summary>Start this instance.</summary>
         public override void Start()

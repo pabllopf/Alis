@@ -87,7 +87,7 @@
             <summary>Gets or sets the library path.</summary>
             <value>The library path.</value>
         </member>
-        <member name="M:Alis.Editor.Project.ChangeProject(Alis.Editor.Project,Alis.Core.VideoGame)">
+        <member name="M:Alis.Editor.Project.ChangeProject(Alis.Editor.Project,Alis.Core.SFML.VideoGame)">
             <summary>Changes the project.</summary>
             <param name="project">The project.</param>
             <param name="game">The game.</param>

@@ -198,10 +198,6 @@
         <member name="F:Alis.Core.SFML.Camera.size">
             <summary>The size</summary>
         </member>
-        <member name="M:Alis.Core.SFML.Camera.#ctor(System.Numerics.Vector2)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Camera" /> class.</summary>
-            <param name="size"></param>
-        </member>
         <member name="M:Alis.Core.SFML.Camera.#ctor(System.Numerics.Vector2,System.Numerics.Vector2)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.SFML.Camera"/> class.
@@ -209,15 +205,20 @@
             <param name="center">The center.</param>
             <param name="size">The size.</param>
         </member>
+        <member name="M:Alis.Core.SFML.Camera.#ctor(System.Numerics.Vector2)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Camera" /> class.</summary>
+            <param name="size">resolution of camera.</param>
+        </member>
         <member name="M:Alis.Core.SFML.Camera.Start">
             <summary>Start this instance.</summary>
         </member>
         <member name="M:Alis.Core.SFML.Camera.Update">
             <summary>Update this instance.</summary>
+            TODO Correct the camera to fix the movement of sprites. (probaly is the transform).
         </member>
         <member name="M:Alis.Core.SFML.Camera.Priority">
-            <summary>Priorities this instance.</summary>
-            <returns>Retur order of process.</returns>
+            <summary>this instance.</summary>
+            <returns>Return order of process.</returns>
         </member>
         <member name="T:Alis.Core.SFML.Collision">
             <summary>Define a component</summary>
@@ -411,6 +412,14 @@
             <summary>Handles the Closed event of the RenderWindow control.</summary>
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.LoadOfFile(System.String)">
+            <summary>Loads the of file.</summary>
+            <param name="file">The file.</param>
+            <returns>Return game.</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.RunOfFile">
+            <summary>Runs the of file.</summary>
         </member>
         <member name="T:CoreSFML.Properties.Resources">
             <summary>

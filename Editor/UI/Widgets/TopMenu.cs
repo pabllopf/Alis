@@ -9,6 +9,7 @@ namespace Alis.Editor.UI.Widgets
     using System.Text;
     using System.Threading;
     using Alis.Core;
+    using Alis.Core.SFML;
     using Alis.Editor.Utils;
     using Alis.Tools;
     using ImGuiNET;
@@ -334,7 +335,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void BuildAndRun()
         {
-            LocalData.Save<Game>("Data", Project.Current.DataPath, Project.Current.VideoGame);
+            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
             new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
@@ -476,7 +477,7 @@ namespace Alis.Editor.UI.Widgets
         private void SaveProject() 
         {
             Console.Current.Log("Saved " + Project.Current.VideoGame.Config.Name);
-            LocalData.Save<Game>("Data", Project.Current.DataPath, Project.Current.VideoGame);
+            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
         }
 
         /// <summary>Opens the terminal.</summary>

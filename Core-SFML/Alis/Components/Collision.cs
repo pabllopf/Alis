@@ -4,6 +4,8 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core.SFML
 {
+    using global::SFML.Graphics;
+    using global::SFML.System;
     using Newtonsoft.Json;
     using System.Numerics;
 
@@ -12,9 +14,9 @@ namespace Alis.Core.SFML
     {
         private bool isDefault;
         
-        private Transform transform;
+        private Core.Transform transform;
 
-        //private RectangleShape rectangle;
+        private RectangleShape rectangle;
 
         private Vector2 border;
 
@@ -29,17 +31,17 @@ namespace Alis.Core.SFML
             {
                 update = false;
                 border = value;
-               /* if (Render.Current.Collisions.Contains(rectangle))
+                if (RenderSFML.CurrentRenderSFML.Collisions.Contains(rectangle))
                 {
-                    Render.Current.Collisions[Render.Current.Collisions.IndexOf(rectangle)].Size = new Vector2f(value.X, value.Y);
+                    RenderSFML.CurrentRenderSFML.Collisions[RenderSFML.CurrentRenderSFML.Collisions.IndexOf(rectangle)].Size = new Vector2f(value.X, value.Y);
                 }
                 else 
                 {
                     rectangle.Size = new Vector2f(value.X, value.Y);
-                    Render.Current.Collisions.Add(rectangle);
+                    RenderSFML.CurrentRenderSFML.Collisions.Add(rectangle);
                 }
 
-                update = true;*/
+                update = true;
             }
         }
 
@@ -55,42 +57,41 @@ namespace Alis.Core.SFML
             this.border = border;
             this.isTrigger = isTrigger;
 
-           /* rectangle = new RectangleShape(new Vector2f(border.X, border.Y));
+            rectangle = new RectangleShape(new Vector2f(border.X, border.Y));
 
             rectangle.FillColor = Color.Transparent;
             rectangle.OutlineColor = Color.Green;
-            rectangle.OutlineThickness = 1f;*/
+            rectangle.OutlineThickness = 1f;
         }
 
         /// <summary>Initializes a new instance of the <see cref="Collision" /> class.</summary>
         public Collision()
         {
             border = new Vector2(1, 1);
-           /* rectangle = new RectangleShape(new Vector2f(border.X, border.Y));
+            rectangle = new RectangleShape(new Vector2f(border.X, border.Y));
 
             rectangle.FillColor = Color.Transparent;
             rectangle.OutlineColor = Color.Green;
             rectangle.OutlineThickness = 1f;
-            isTrigger = false;*/
+            isTrigger = false;
         }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            /*
-            //transform = GetGameObject().Transform;
+            transform = GetGameObject().Transform;
 
-            var texture = GetGameObject().GetComponent<Sprite>().GetDraw().Texture;
+            Texture? texture = GetGameObject().GetComponent<Sprite>().GetDraw().Texture;
             border = new Vector2(texture.Size.X, texture.Size.Y);
-            //rectangle = new RectangleShape(new Vector2f(border.X * transform.Size.X, border.Y * transform.Size.Y));
+            rectangle = new RectangleShape(new Vector2f(border.X * transform.Size.X, border.Y * transform.Size.Y));
 
             rectangle.FillColor = Color.Transparent;
             rectangle.OutlineColor = Color.Green;
             rectangle.OutlineThickness = 1f;
 
-           // rectangle.Position = new Vector2f(transform.Position.X, transform.Position.Y);
+            rectangle.Position = new Vector2f(transform.Position.X, transform.Position.Y);
 
-            //Render.Current.AddCollision(rectangle);*/
+            RenderSFML.CurrentRenderSFML.Collisions.Add(rectangle);
         }
 
         public override int Priority()
@@ -101,15 +102,15 @@ namespace Alis.Core.SFML
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            /*if (rectangle != null && update)
+            if (rectangle != null && update)
             {
-                if (!Render.Current.Collisions.Contains(rectangle)) 
+                if (!RenderSFML.CurrentRenderSFML.Collisions.Contains(rectangle)) 
                 {
-                    Render.Current.AddCollision(rectangle);
+                    RenderSFML.CurrentRenderSFML.Collisions.Add(rectangle);
                 }
 
                 rectangle.Position = new Vector2f(GetGameObject().Transform.Position.X, GetGameObject().Transform.Position.Y);
-                foreach (RectangleShape rectangleShape in Render.Current.Collisions)
+                foreach (RectangleShape rectangleShape in RenderSFML.CurrentRenderSFML.Collisions)
                 {
                     if (!rectangleShape.Equals(rectangle))
                     {
@@ -124,7 +125,7 @@ namespace Alis.Core.SFML
                         var midleRight = new Vector2f(downRight.X, ((downRight.Y - rightTop.Y) / 2) + rightTop.Y);
 
 
-                        if (Render.Current.Collisions.Find(i => (i != rectangle) && i.GetGlobalBounds().Intersects(rectangle.GetGlobalBounds())) != null)
+                        if (RenderSFML.CurrentRenderSFML.Collisions.Find(i => (i != rectangle) && i.GetGlobalBounds().Intersects(rectangle.GetGlobalBounds())) != null)
                         {
                             GetGameObject().Components.ForEach(i => i.OnCollionStay(this));
 
@@ -175,7 +176,7 @@ namespace Alis.Core.SFML
                         }
                     }
                 }
-            }*/
+            }
         }
     }
 }

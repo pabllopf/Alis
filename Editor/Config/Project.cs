@@ -7,13 +7,14 @@ namespace Alis.Editor
     using System;
     using System.Diagnostics;
     using Alis.Core;
-  
+    using Alis.Core.SFML;
+
     /// <summary>Project define.</summary>
     [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Project
     {
         /// <summary>The video game</summary>
-        private Game videoGame;
+        private VideoGame videoGame;
 
         /// <summary>The current</summary>
         private static Project current;
@@ -58,7 +59,7 @@ namespace Alis.Editor
 
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        public Game VideoGame { get => videoGame; set => videoGame = value; }
+        public VideoGame VideoGame { get => videoGame; set => videoGame = value; }
 
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
@@ -91,7 +92,7 @@ namespace Alis.Editor
         /// <summary>Changes the project.</summary>
         /// <param name="project">The project.</param>
         /// <param name="game">The game.</param>
-        public static void ChangeProject(Project project, Game game) 
+        public static void ChangeProject(Project project, VideoGame game) 
         {
             current = project;
             current.VideoGame = game;

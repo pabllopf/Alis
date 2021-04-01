@@ -9,6 +9,7 @@ namespace Alis.Editor.UI.Widgets
     using ImGuiNET;
     using System;
     using System.Numerics;
+    using Alis.Tools;
 
     /// <summary>Manage the windows. </summary>
     public class DockSpace : Widget

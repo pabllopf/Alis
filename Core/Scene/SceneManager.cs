@@ -43,24 +43,6 @@ namespace Alis.Core
             OnCreate.Invoke(null, true);
         }
 
-        /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
-        /// <param name="scenes">The scenes.</param>
-        public SceneManager([NotNull] Scene[] scenes)
-        {
-            this.scenes = new List<Scene>(scenes);
-
-            OnCreate += SceneManager_OnCreate;
-            OnLoadScene += SceneManager_OnLoadScene;
-            OnDestroy += SceneManager_OnDestroy;
-
-            if (scenes != null)
-            {
-                currentScene = scenes[0];
-            }
-
-            OnCreate.Invoke(null, true);
-        }
-
         /// <summary>Finalizes an instance of the <see cref="SceneManager" /> class.</summary>
         ~SceneManager() => OnDestroy.Invoke(null, true);
 

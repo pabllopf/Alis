@@ -246,32 +246,32 @@ namespace Alis.Core
         /// <summary>Gets or sets a value indicating whether [go up].</summary>
         /// <value>
         /// <c>true</c> if [go up]; otherwise, <c>false</c>.</value>
-        internal bool CanGoUp { get => canGoUp; set => canGoUp = value; }
-        
+        public bool CanGoUp { get => canGoUp; set => canGoUp = value; }
+
         /// <summary>Gets or sets a value indicating whether [go down].</summary>
         /// <value>
         /// <c>true</c> if [go down]; otherwise, <c>false</c>.</value>
-        internal bool CanGoDown { get => canGoDown; set => canGoDown = value; }
+        public bool CanGoDown { get => canGoDown; set => canGoDown = value; }
 
         /// <summary>Gets or sets a value indicating whether [go left].</summary>
         /// <value>
         /// <c>true</c> if [go left]; otherwise, <c>false</c>.</value>
-        internal bool CanGoLeft { get => canGoLeft; set => canGoLeft = value; }
+        public bool CanGoLeft { get => canGoLeft; set => canGoLeft = value; }
 
         /// <summary>Gets or sets a value indicating whether [go right].</summary>
         /// <value>
         /// <c>true</c> if [go right]; otherwise, <c>false</c>.</value>
-        internal bool CanGoRight { get => canGoRight; set => canGoRight = value; }
+        public bool CanGoRight { get => canGoRight; set => canGoRight = value; }
 
         /// <summary>Gets or sets a value indicating whether this instance can go inside.</summary>
         /// <value>
         /// <c>true</c> if this instance can go inside; otherwise, <c>false</c>.</value>
-        internal bool CanGoInside { get => canGoInside; set => canGoInside = value; }
+        public bool CanGoInside { get => canGoInside; set => canGoInside = value; }
 
         /// <summary>Gets or sets a value indicating whether this instance can go out.</summary>
         /// <value>
         /// <c>true</c> if this instance can go out; otherwise, <c>false</c>.</value>
-        internal bool CanGoOut { get => canGoOut; set => canGoOut = value; }
+        public bool CanGoOut { get => canGoOut; set => canGoOut = value; }
 
         #region DefineEvents
 

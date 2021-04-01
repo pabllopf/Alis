@@ -13,6 +13,7 @@ namespace Alis.Editor.UI.Widgets
     using System.Reflection;
     using System.Linq;
     using SFML.System;
+    using Alis.Core.SFML;
 
     /// <summary>Manage components of scene.</summary>
     public class Inspector : Widget
@@ -522,7 +523,7 @@ namespace Alis.Editor.UI.Widgets
 
         private static void NewCamera(GameObject gameObject)
         {
-            gameObject.Add(new Camera(new Vector2f(0f, 0f), new Vector2f(640f, 380f)));
+            gameObject.Add(new Camera(new Vector2(0f, 0f), new Vector2(640f, 380f)));
         }
     }
 }

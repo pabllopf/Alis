@@ -42,8 +42,36 @@ namespace Alis.Core
 
         /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
         /// <param name="config">The configuration.</param>
-        /// <param name="scenes">The scene.</param>        
-        public Game([NotNull] Config config, [NotNull] params Scene[] scenes)
+        /// <param name="sceneManager">The scene manager.</param>
+        [JsonConstructor]
+        public Game([NotNull] Config config, [NotNull] SceneManager sceneManager)
+        {
+            this.config = config;
+
+            render = new Render(config);
+            input = new Input(config);
+
+            isRunning = true;
+            isStopped = false;
+
+            this.sceneManager = sceneManager;
+
+            OnCreate += VideoGame_OnCreate;
+            OnAwake += VideoGame_OnAwake;
+            OnStart += VideoGame_OnStart;
+            OnUpdate += VideoGame_OnUpdate;
+            OnFixedUpdate += VideoGame_OnFixedUpdate;
+            OnStop += VideoGame_OnStop;
+            OnExit += VideoGame_OnExit;
+            OnDestroy += VideoGame_OnDestroy;
+
+            OnCreate.Invoke(this, true);
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
+        /// <param name="config">The configuration.</param>
+        /// <param name="scenes">The scenes.</param>
+        public Game([NotNull] Config config, [NotNull] List<Scene> scenes)
         {
             this.config = config;
 
@@ -69,9 +97,8 @@ namespace Alis.Core
 
         /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
         /// <param name="config">The configuration.</param>
-        /// <param name="scenes">The scenes.</param>
-        [JsonConstructor]
-        internal Game([NotNull] Config config, [NotNull] List<Scene> scenes)
+        /// <param name="scenes">The scene.</param>        
+        public Game([NotNull] Config config, [NotNull] params Scene[] scenes)
         {
             this.config = config;
 
@@ -81,7 +108,7 @@ namespace Alis.Core
             isRunning = true;
             isStopped = false;
 
-            sceneManager = new SceneManager(scenes);
+            sceneManager = new SceneManager(new List<Scene>(scenes));
 
             OnCreate += VideoGame_OnCreate;
             OnAwake += VideoGame_OnAwake;
@@ -94,6 +121,8 @@ namespace Alis.Core
 
             OnCreate.Invoke(this, true);
         }
+
+        
 
         /// <summary>Finalizes an instance of the <see cref="Game" /> class.</summary>
         ~Game() => OnDestroy.Invoke(this, true);

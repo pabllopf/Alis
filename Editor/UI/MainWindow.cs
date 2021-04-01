@@ -11,6 +11,7 @@ namespace Alis.Editor.UI
     using ImGuiNET;
     using Veldrid;
     using Veldrid.StartupUtilities;
+    using Alis.Tools;
 
     /// <summary>Manage the main window.</summary>
     public class MainWindow

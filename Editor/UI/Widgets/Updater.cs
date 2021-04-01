@@ -6,6 +6,7 @@ namespace Alis.Editor.UI.Widgets
 {
     using System;
     using Alis.Core;
+    using Alis.Tools;
     using ImGuiNET;
 
     /// <summary>Show the game running</summary>

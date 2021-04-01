@@ -10,6 +10,7 @@ namespace Alis.Editor.UI.Widgets
     using System;
     using System.Numerics;
     using Alis.Tools;
+    using Alis.Core.SFML;
 
     /// <summary>Manage components of scene.</summary>
     public class Hierarchy : Widget
@@ -93,7 +94,7 @@ namespace Alis.Editor.UI.Widgets
         {
             scene.Add(new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f))));
 
-            LocalData.Save<Game>("Data", Project.Current.DataPath, Project.Current.VideoGame);
+            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
 
             Inspector.Current.Focus = true;
         }

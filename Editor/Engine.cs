@@ -10,6 +10,7 @@ namespace Alis.Editor
     using System.Threading;
     using Alis.Editor.UI;
     using Alis.Core;
+    using Alis.Tools;
 
     /// <summary>Manage the engine</summary>
     internal class Engine

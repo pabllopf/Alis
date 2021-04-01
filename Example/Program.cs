@@ -22,7 +22,7 @@ namespace Alis
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
-            var game = new VideoGame(
+            VideoGame game = new VideoGame(
                 new Config("Example"),
                 new Scene("First",
                     new GameObject("Player",
@@ -56,9 +56,14 @@ namespace Alis
             );
 
             LocalData.Save("Example", game);
+            Console.WriteLine("Saved game.");
 
-            game.Run();
+            //game.Run();
 
+            Thread.Sleep(1000);
+
+            Console.WriteLine("Loading game.");
+            LocalData.Load<VideoGame>("Example").Run();
 
             // Console.WriteLine("HHOLA");
 

@@ -14,6 +14,7 @@ namespace Alis.Editor.UI.Widgets
     using Veldrid.ImageSharp;
     using Veldrid;
     using System.Runtime.InteropServices;
+    using Alis.Tools;
 
     /// <summary>Show the game running</summary>
     public class GameView : Widget
