@@ -37,6 +37,7 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>Core.xml</DocumentationFile>
     <DefineConstants>Windows</DefineConstants>
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
 	<!-- _____________________________ Release _____________________________________ -->

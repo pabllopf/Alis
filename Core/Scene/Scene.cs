@@ -95,7 +95,7 @@ namespace Alis.Core
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        internal Task Start()
+        public Task Start()
         {
             return Task.Run(() =>
             {
@@ -114,7 +114,7 @@ namespace Alis.Core
 
 
         [return: NotNull]
-        internal Task Update()
+        public Task Update()
         {
             return Task.Run(() =>
             {

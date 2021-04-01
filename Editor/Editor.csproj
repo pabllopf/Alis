@@ -19,6 +19,7 @@
     <DebugType></DebugType>
     <DocumentationFile>Editor.xml</DocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Optimize>true</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
