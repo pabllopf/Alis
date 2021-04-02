@@ -114,22 +114,7 @@ namespace Alis.Core
 
 
         [return: NotNull]
-        public Task Update()
-        {
-            return Task.Run(() =>
-            {
-                List<Task> tasks = new List<Task>();
-
-                foreach (GameObject obj in gameObjects)
-                {
-                    tasks.Add(UpdateObject(obj));
-                }
-
-                Task.WaitAll(tasks.ToArray());
-            });
-        }
-
-        private Task UpdateObject(GameObject gameObject) => Task.Run(() => gameObject.Update());
+        public Task Update() => Task.Run(() => gameObjects.ForEach(i => i.Update()));
 
         #region DefineEvents
 

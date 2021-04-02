@@ -8,6 +8,7 @@ namespace Alis.Core
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
 
@@ -188,12 +189,7 @@ namespace Alis.Core
         /// <param name="component">The component.</param>
         public void Add([NotNull] Component component)
         {
-            if (components.Find(i => i.GetType().Equals(component.GetType())) == null) 
-            {
-                component.AttachTo(this);
-                components.Add(component);
-                Console.WriteLine("Add new component " + component.GetType());
-            }
+            components.Add(component);
         }
 
         /// <summary>Removes the component.</summary>
@@ -244,18 +240,7 @@ namespace Alis.Core
 
         /// <summary>Updates this instance.</summary>
         [return: NotNull]
-        internal void Update()
-        {
-            for (int index = 0; index < components.Count; index++)
-            {
-                if (components[index].Active) 
-                {
-                    components[index].BeforeUpdate();
-                    components[index].Update();
-                    components[index].AfterUpdate();
-                }
-            }
-        }
+        public void Update() => Parallel.ForEach(components, component => component.Update());
 
         #region DefineEvents
 
