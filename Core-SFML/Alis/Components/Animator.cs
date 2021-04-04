@@ -70,12 +70,7 @@ namespace Alis.Core.SFML
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            sprite = GetGameObject().GetComponent<Sprite>() ?? throw new System.Exception("GameObject " + this.GetGameObject().Name + "dont content a Sprite");
-        }
-
-        public override int Priority()
-        {
-            return 2;
+            sprite = this.GameObject.Get<Sprite>() ?? throw new System.Exception("GameObject " + this.GameObject.Name + "dont content a Sprite");
         }
 
         /// <summary>Updates this instance.</summary>

@@ -79,9 +79,9 @@ namespace Alis.Core.SFML
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            transform = GetGameObject().Transform;
+            transform = GameObject.Transform;
 
-            Texture? texture = GetGameObject().GetComponent<Sprite>().GetDraw().Texture;
+            Texture? texture = GameObject.Get<Sprite>().GetDraw().Texture;
             border = new Vector2(texture.Size.X, texture.Size.Y);
             rectangle = new RectangleShape(new Vector2f(border.X * transform.Size.X, border.Y * transform.Size.Y));
 
@@ -94,11 +94,6 @@ namespace Alis.Core.SFML
             RenderSFML.CurrentRenderSFML.Collisions.Add(rectangle);
         }
 
-        public override int Priority()
-        {
-            return 1;
-        }
-
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
@@ -109,7 +104,7 @@ namespace Alis.Core.SFML
                     RenderSFML.CurrentRenderSFML.Collisions.Add(rectangle);
                 }
 
-                rectangle.Position = new Vector2f(GetGameObject().Transform.Position.X, GetGameObject().Transform.Position.Y);
+                rectangle.Position = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
                 foreach (RectangleShape rectangleShape in RenderSFML.CurrentRenderSFML.Collisions)
                 {
                     if (!rectangleShape.Equals(rectangle))
@@ -127,28 +122,31 @@ namespace Alis.Core.SFML
 
                         if (RenderSFML.CurrentRenderSFML.Collisions.Find(i => (i != rectangle) && i.GetGlobalBounds().Intersects(rectangle.GetGlobalBounds())) != null)
                         {
-                            GetGameObject().Components.ForEach(i => i.OnCollionStay(this));
+                            foreach (Component component in GameObject.Components) 
+                            {
+                                component.OnCollionStay(this);
+                            }
 
                             if (!isTrigger)
                             {
                                 if (rectangleShape.GetGlobalBounds().Contains(midleTop.X, midleTop.Y))
                                 {
-                                    this.GetGameObject().Transform.CanGoUp = false;
+                                    this.GameObject.Transform.CanGoUp = false;
                                 }
 
                                 if (rectangleShape.GetGlobalBounds().Contains(midleDown.X, midleDown.Y))
                                 {
-                                    this.GetGameObject().Transform.CanGoDown = false;
+                                    this.GameObject.Transform.CanGoDown = false;
                                 }
 
                                 if (rectangleShape.GetGlobalBounds().Contains(midleLeft.X, midleLeft.Y))
                                 {
-                                    this.GetGameObject().Transform.CanGoLeft = false;
+                                    this.GameObject.Transform.CanGoLeft = false;
                                 }
 
                                 if (rectangleShape.GetGlobalBounds().Contains(midleRight.X, midleRight.Y))
                                 {
-                                    this.GetGameObject().Transform.CanGoRight = false;
+                                    this.GameObject.Transform.CanGoRight = false;
                                 }
                             }
                         }
@@ -156,22 +154,22 @@ namespace Alis.Core.SFML
                         {
                             if (!rectangleShape.GetGlobalBounds().Contains(midleTop.X, midleTop.Y))
                             {
-                                this.GetGameObject().Transform.CanGoUp = true;
+                                this.GameObject.Transform.CanGoUp = true;
                             }
 
                             if (!rectangleShape.GetGlobalBounds().Contains(midleDown.X, midleDown.Y))
                             {
-                                this.GetGameObject().Transform.CanGoDown = true;
+                                this.GameObject.Transform.CanGoDown = true;
                             }
 
                             if (!rectangleShape.GetGlobalBounds().Contains(midleLeft.X, midleLeft.Y))
                             {
-                                this.GetGameObject().Transform.CanGoLeft = true;
+                                this.GameObject.Transform.CanGoLeft = true;
                             }
 
                             if (!rectangleShape.GetGlobalBounds().Contains(midleRight.X, midleRight.Y))
                             {
-                                this.GetGameObject().Transform.CanGoRight = true;
+                                this.GameObject.Transform.CanGoRight = true;
                             }
                         }
                     }

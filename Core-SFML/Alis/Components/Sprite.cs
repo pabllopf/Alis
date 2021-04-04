@@ -117,13 +117,13 @@ namespace Alis.Core.SFML
         {
             if (sprite != null)
             {
-                var pos = GetGameObject().Transform.Position;
+                var pos = GameObject.Transform.Position;
                 sprite.Position = new global::SFML.System.Vector2f(pos.X, pos.Y);
 
-                var rot = GetGameObject().Transform.Rotation;
+                var rot = GameObject.Transform.Rotation;
                 sprite.Rotation = rot.Y;
 
-                var size = GetGameObject().Transform.Size;
+                var size = GameObject.Transform.Size;
                 sprite.Scale = new global::SFML.System.Vector2f(size.X, size.Y);
 
                 Render.Current.AddDraw(this);
@@ -135,18 +135,16 @@ namespace Alis.Core.SFML
         {
             if (sprite != null)
             {
-                var pos = GetGameObject().Transform.Position;
+                var pos = GameObject.Transform.Position;
                 sprite.Position = new global::SFML.System.Vector2f(pos.X, pos.Y);
 
-                var rot = GetGameObject().Transform.Rotation;
+                var rot = GameObject.Transform.Rotation;
                 sprite.Rotation = rot.Y;
 
-                var size = GetGameObject().Transform.Size;
+                var size = GameObject.Transform.Size;
                 sprite.Scale = new global::SFML.System.Vector2f(size.X, size.Y);
             }
         }
-
-        public override int Priority() => 0;
 
         /// <summary>Gets the draw.</summary>
         /// <returns>Return none</returns>

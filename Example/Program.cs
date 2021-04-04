@@ -200,7 +200,7 @@ namespace Alis
         {
             Input.OnPressKey += Input_OnPressKey1;
 
-            animator = GetGameObject().GetComponent<Animator>();
+            animator = GetGameObject().Get<Animator>();
             transform = GetGameObject().Transform;
         }
 

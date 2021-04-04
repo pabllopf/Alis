@@ -5,83 +5,100 @@
 namespace Alis.Core
 {
     using System;
-    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Define a game object.</summary>
     public class GameObject
     {
+        /// <summary>The transform</summary>
+        [NotNull]
+        private readonly Transform transform;
+
+        /// <summary>The components</summary>
+        [AllowNull]
+        private readonly Component[] components;
+
         /// <summary>The name</summary>
         [NotNull]
         private string name;
 
         /// <summary>The active</summary>
         [NotNull]
-        private bool active = true;
+        private bool isActive;
 
-        /// <summary>The transform</summary>
+        /// <summary>The is static</summary>
         [NotNull]
-        private Transform transform;
+        private bool isStatic;
 
-        /// <summary>The components</summary>
-        [NotNull]
-        private List<Component> components;
+        /// <summary>The last component</summary>
+        [AllowNull]
+        private Component lastComponentReturned;
+
+        /// <summary>The last component deleted</summary>
+        [AllowNull]
+        private Component lastComponentDeleted;
+
+        /// <summary>The last component deleted</summary>
+        [AllowNull]
+        private Component lastComponentAdded;
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="transform">The transform.</param>
         /// <param name="components">The components.</param>
         [JsonConstructor]
-        public GameObject([NotNull] string name, [NotNull] Transform transform, [NotNull] List<Component> components)
+        public GameObject([NotNull] string name, [NotNull] Transform transform, [NotNull] bool isActive, [NotNull] bool isStatic, [NotNull] Component[] components)
         {
+            if (components.Length > 10)
+            {
+                throw new ArgumentException("The limit size of components[] is 10. ");
+            }
+
             this.name = name;
             this.transform = transform;
-            this.components = components;
-            this.components.ForEach(i => i.AttachTo(this));
+            this.components = new Component[10];
 
-            OnCreate += GameObject_OnCreate;
+            for (int i = 0; i < components.Length; i++) 
+            {
+                this.components[i] = components[i];
+                this.components[i].AttachTo(this);
+            }
+
+            this.isActive = isActive;
+            this.isStatic = isStatic;
+
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
-            OnDestroy += GameObject_OnDestroy;
-
-            OnCreate.Invoke(this, true);
         }
-
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         public GameObject()
         {
             name = "GameObject";
             transform = new Transform();
-            components = new List<Component>();
+            components = new Component[10];
 
-            OnCreate += GameObject_OnCreate;
+            isActive = true;
+            isStatic = true;
+
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
-            OnDestroy += GameObject_OnDestroy;
-
-            OnCreate.Invoke(this, true);
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
-        /// <exception cref="ArgumentNullException">name exception</exception>
         public GameObject([NotNull] string name)
         {
             this.name = name;
             transform = new Transform();
-            components = new List<Component>();
+            components = new Component[10];
 
-            OnCreate += GameObject_OnCreate;
+            isActive = true;
+            isStatic = true;
+            
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
-            OnDestroy += GameObject_OnDestroy;
-
-            OnCreate.Invoke(this, true);
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -94,14 +111,13 @@ namespace Alis.Core
         {
             this.name = name;
             this.transform = transform;
-            components = new List<Component>();
+            components = new Component[10];
 
-            OnCreate += GameObject_OnCreate;
+            isActive = true;
+            isStatic = true;
+
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
-            OnDestroy += GameObject_OnDestroy;
-
-            OnCreate.Invoke(this, true);
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -110,32 +126,27 @@ namespace Alis.Core
         /// <param name="components">The components.</param>
         public GameObject([NotNull] string name, [NotNull] Transform transform, [NotNull] params Component[] components)
         {
-            this.name = name;
-            this.transform = transform;
-            this.components = new List<Component>();
-
-            for (int index = 0; index < components.Length; index++) 
+            if (components.Length > 10) 
             {
-                if (this.components.Find(i => i.GetType().Equals(components[index].GetType())) is null) 
-                {
-                    components[index].AttachTo(this);
-                    this.components.Add(components[index]);
-                }
+                throw new ArgumentException("The limit size of components[] is " + 10);
             }
 
-            OnCreate += GameObject_OnCreate;
+            this.name = name;
+            this.transform = transform;
+            this.components = new Component[10];
+
+            for (int i = 0; i < components.Length; i++)
+            {
+                this.components[i] = components[i];
+                this.components[i].AttachTo(this);
+            }
+
+            isActive = true;
+            isStatic = false;
+
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
-            OnDestroy += GameObject_OnDestroy;
-
-            OnCreate.Invoke(this, true);
         }
-
-        /// <summary>Finalizes an instance of the <see cref="GameObject" /> class.</summary>
-        ~GameObject() => OnDestroy?.Invoke(this, true);
-
-        /// <summary>Occurs when [on create].</summary>
-        public event EventHandler<bool> OnCreate;
 
         /// <summary>Called when [enable].</summary>
         public event EventHandler<bool> OnEnable;
@@ -143,32 +154,30 @@ namespace Alis.Core
         /// <summary>Called when [disable].</summary>
         public event EventHandler<bool> OnDisable;
 
-        /// <summary>Called when [destroy].</summary>
-        public event EventHandler<bool> OnDestroy;
-
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
         [NotNull]
-        [JsonProperty]
+        [JsonProperty("_Name")]
         public string Name { get => name; set => name = value; }
 
         /// <summary>Gets or sets the transform.</summary>
         /// <value>The transform.</value>
         [NotNull]
-        [JsonProperty]
-        public Transform Transform { get => transform; set => transform = value; }
+        [JsonProperty("_Transform")]
+        public Transform Transform { get => transform; }
 
         /// <summary>Gets or sets a value indicating whether this <see cref="GameObject" /> is active.</summary>
         /// <value>
         /// <c>true</c> if active; otherwise, <c>false</c>.</value>
         [NotNull]
-        public bool Active
+        [JsonProperty("_IsActive")]
+        public bool IsActive
         {
-            get => active; 
+            get => isActive; 
             set
             {
-                active = value;
-                if (active)
+                isActive = value;
+                if (isActive)
                 {
                     OnEnable?.Invoke(this, true);
                 }
@@ -179,28 +188,88 @@ namespace Alis.Core
             }
         }
 
-        /// <summary>Gets or sets the components.</summary>
+        /// <summary>Gets or sets a value indicating whether this instance is static.</summary>
+        /// <value>
+        /// <c>true</c> if this instance is static; otherwise, <c>false</c>.</value>
+        [NotNull]
+        [JsonProperty("_IsStatic")]
+        public bool IsStatic { get => isStatic; set => isStatic = value; }
+
+        /// <summary>Gets the components.</summary>
         /// <value>The components.</value>
-        public List<Component> Components { get => components; set => components = value; }
+        [NotNull]
+        [JsonProperty("_Components")]
+        public Component[] Components { get => components; }
 
-
-
-        /// <summary>Adds the component.</summary>
-        /// <param name="component">The component.</param>
-        public void Add([NotNull] Component component)
+        /// <summary>Determines whether this instance contains the object.</summary>
+        /// <typeparam name="T">component to contais</typeparam>
+        public bool Contains<T>() where T : Component
         {
-            components.Add(component);
+            for (int i = 0; i < components.Length; i++)
+            {
+                if (components[i] is not null)
+                {
+                    if (components[i].GetType().Equals(typeof(T))) 
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
-        /// <summary>Removes the component.</summary>
+        /// <summary>Adds the specified component.</summary>
+        /// <typeparam name="T">general type</typeparam>
         /// <param name="component">The component.</param>
-        public void Remove([NotNull] Component component)
+        /// <exception cref="ArgumentException">You can`t add a component that alredy exits in the gameobject.
+        /// or
+        /// This gameobject is FULL, the limit size of components[] is 10.</exception>
+        public void Add<T>([NotNull] T component) where T : Component
         {
-            for (int index = 0; index < components.Count; index++)
+            if (lastComponentAdded is not null && lastComponentAdded.GetType().Equals(component.GetType())) 
             {
-                if (components[index].GetType().Equals(component.GetType()))
+                throw new ArgumentException("You can`t add a component that alredy exits in the gameobject.");
+            }
+
+            if (Contains<T>())
+            {
+                throw new ArgumentException("You can`t add a component that alredy exits in the gameobject.");
+            }
+
+            for (int i = 0; i < components.Length; i++) 
+            {
+                if (components[i] is null || !components[i].IsActive)
                 {
-                    components.Remove(component);
+                    components[i] = component;
+                    lastComponentAdded = components[i];
+                    components[i].IsActive = true;
+                    return;
+                }
+            }
+
+            throw new ArgumentException("This gameobject is FULL, the limit size of components[] is 10.");
+        }
+
+        /// <summary>Removes this instance.</summary>
+        /// <typeparam name="T">general type</typeparam>
+        public void Remove<T>() where T : Component
+        {
+            if (lastComponentDeleted is not null && lastComponentDeleted.GetType().Equals(typeof(T)))
+            {
+                lastComponentDeleted.IsActive = false;
+                return;
+            }
+
+            for (int i = 0; i < components.Length; i++) 
+            {
+                if (components[i] is not null)
+                {
+                    if (components[i].GetType().Equals(typeof(T))) 
+                    {
+                        lastComponentDeleted = components[i];
+                        components[i].IsActive = false;
+                    }
                 }
             }
         }
@@ -209,60 +278,110 @@ namespace Alis.Core
         /// <typeparam name="T">general type</typeparam>
         /// <returns>Return the component</returns>
         [return: MaybeNull]
-        public T? GetComponent<T>() where T : Component
+        public T Get<T>() where T : Component
         {
-            for (int index = 0; index < components.Count; index++) 
+            if (lastComponentReturned is not null && lastComponentReturned.GetType().Equals(typeof(T))) 
             {
-                if (components[index].GetType().Equals(typeof(T))) 
+                return (T)lastComponentReturned;
+            }
+
+            if (lastComponentAdded is not null && lastComponentAdded.GetType().Equals(typeof(T)))
+            {
+                return (T)lastComponentAdded;
+            }
+
+            if (lastComponentDeleted is not null && lastComponentDeleted.GetType().Equals(typeof(T)))
+            {
+                return (T)lastComponentDeleted;
+            }
+
+            for (int i = 0; i < components.Length;i++) 
+            {
+                if (components[i].GetType().Equals(typeof(T))) 
                 {
-                    return (T)components[index];
+                    lastComponentReturned = components[i];
+                    return (T)components[i];
                 }
             }
 
-            return default;
+            return null;
+        }
+
+        /// <summary>Awake this instance.</summary>
+        public void Awake()
+        {
+            if (isActive)
+            {
+                for (int i = 0; i < components.Length; i++)
+                {
+                    if (components[i] is not null)
+                    {
+                        components[i].Awake();
+                    }
+                }
+            }
         }
 
         /// <summary>Starts this instance.</summary>
-        [return: NotNull]
-        internal void Start()
+        public void Start()
         {
-            components = components.OrderBy(i => i.Priority()).ToList();
-
-            for (int index = 0; index < components.Count; index++) 
+            if (isActive)
             {
-                if (components[index].Active)
+                for (int i = 0; i < components.Length; i++)
                 {
-                    components[index].Awake();
-                    components[index].Start();
+                    if (components[i] is not null)
+                    {
+                        components[i].Start();
+                    }
                 }
             }
         }
 
         /// <summary>Updates this instance.</summary>
-        [return: NotNull]
-        public void Update() => Parallel.ForEach(components, component => component.Update());
+        public void Update()
+        {
+            if (isActive && !isStatic)
+            {
+                for (int i = 0; i < components.Length; i++)
+                {
+                    if (components[i] is not null)
+                    {
+                        components[i].Update();
+                    }
+                }
+            }
+        }
+
+        /// <summary>Fixed Update this instance.</summary>
+        public void FixedUpdate()
+        {
+            if (isActive && !isStatic)
+            {
+                for (int i = 0; i < components.Length; i++)
+                {
+                    if (components[i] is not null)
+                    {
+                        components[i].FixedUpdate();
+                    }
+                }
+            }
+        }
 
         #region DefineEvents
-
-        /// <summary>Games the object on create.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void GameObject_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Games the object on enable.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void GameObject_OnEnable([NotNull] object sender, [NotNull] bool e) => Logger.Info();
+        private void GameObject_OnEnable([NotNull] object sender, [NotNull] bool e) 
+        {
+        }
 
         /// <summary>Games the object on disable.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void GameObject_OnDisable([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Games the object on destroy.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void GameObject_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
+        private void GameObject_OnDisable([NotNull] object sender, [NotNull] bool e) 
+        {
+        }
 
         #endregion
     }

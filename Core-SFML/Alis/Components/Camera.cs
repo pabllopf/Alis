@@ -60,7 +60,7 @@ namespace Alis.Core.SFML
         /// <summary>Start this instance.</summary>
         public override void Start()
         {
-            transform = GetGameObject().Transform;
+            transform = GameObject.Transform;
         }
 
         /// <summary>Update this instance.</summary>
@@ -90,9 +90,5 @@ namespace Alis.Core.SFML
                 }
             }
         }
-
-        /// <summary>this instance.</summary>
-        /// <returns>Return order of process.</returns>
-        public override int Priority() => 6;
     }
 }

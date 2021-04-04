@@ -191,11 +191,6 @@ namespace Alis.Core.SFML
             }
         }
 
-        public override int Priority()
-        {
-            return 3;
-        }
-
         /// <summary>Restarts this instance.</summary>
         public void Restart()
         {
