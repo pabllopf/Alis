@@ -68,6 +68,7 @@ namespace Alis.Core
             this.isActive = isActive;
             this.isStatic = isStatic;
 
+
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
         }
@@ -209,7 +210,7 @@ namespace Alis.Core
             {
                 if (components[i] is not null)
                 {
-                    if (components[i].GetType().Equals(typeof(T))) 
+                    if (components[i].GetType().Equals(typeof(T)) && components[i].IsActive) 
                     {
                         return true;
                     }
@@ -278,29 +279,29 @@ namespace Alis.Core
         /// <typeparam name="T">general type</typeparam>
         /// <returns>Return the component</returns>
         [return: MaybeNull]
-        public T Get<T>() where T : Component
+        public T? Get<T>() where T : Component
         {
             if (lastComponentReturned is not null && lastComponentReturned.GetType().Equals(typeof(T))) 
             {
-                return (T)lastComponentReturned;
+                return (T?)lastComponentReturned;
             }
 
             if (lastComponentAdded is not null && lastComponentAdded.GetType().Equals(typeof(T)))
             {
-                return (T)lastComponentAdded;
+                return (T?)lastComponentAdded;
             }
 
             if (lastComponentDeleted is not null && lastComponentDeleted.GetType().Equals(typeof(T)))
             {
-                return (T)lastComponentDeleted;
+                return (T?)lastComponentDeleted;
             }
 
             for (int i = 0; i < components.Length;i++) 
             {
-                if (components[i].GetType().Equals(typeof(T))) 
+                if (components[i] is not null && components[i].GetType().Equals(typeof(T))) 
                 {
                     lastComponentReturned = components[i];
-                    return (T)components[i];
+                    return (T?)components[i];
                 }
             }
 

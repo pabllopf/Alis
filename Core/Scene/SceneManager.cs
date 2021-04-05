@@ -82,7 +82,7 @@ namespace Alis.Core
                 }
 
                 currentScene = scenes[0];
-                currentScene.Start().Wait();
+                currentScene.Start();
             });
         }
 
@@ -93,7 +93,7 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                currentScene.Update().Wait();
+                currentScene.Update();
             });
         }
 

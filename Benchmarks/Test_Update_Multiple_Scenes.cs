@@ -18,14 +18,16 @@ namespace Benchmarks
     public class Test_Update_Multiple_Scenes
     {
         /// <summary>The number of game objects</summary>
-        [Params(1000000)]
-        public int numOfGameObjects = 1000000;
+        [Params(1024)]
+        public int numOfGameObjects = 1024;
 
-        [Params(10)]
-        public int numOfComponents = 10;
+        [Params(1)]
+        public int numOfComponents = 1;
 
         /// <summary>The game objects</summary>
         private GameObject[] gameObjects;
+
+        private Scene scene;
 
         /// <summary>Setups this instance.</summary>
         [GlobalSetup]
@@ -33,17 +35,22 @@ namespace Benchmarks
         {
             gameObjects = new GameObject[numOfGameObjects];
 
-            Parallel.For(0, numOfGameObjects, i => 
+            scene = new Scene("Test");
+
+            for (int i = 0; i < numOfGameObjects; i++)
             {
                 List<Component> components = new List<Component>();
 
-                for (int j = 0; j < numOfComponents; j++) 
+                for (int j = 0; j < numOfComponents; j++)
                 {
                     components.Add(new Sprite(""));
                 }
 
-                gameObjects[i] = new GameObject("gameobject" + i, new Transform(), components.ToArray());
-            });
+                var gameobject = new GameObject("gameobject" + i, new Transform(), components.ToArray());
+
+                gameObjects[i] = gameobject;
+                scene.Add(gameobject);
+            }
         }
 
         /// <summary>Tests the update simple for.</summary>
@@ -174,6 +181,12 @@ namespace Benchmarks
             }
 
             Task.WaitAll(tasks);
+        }
+
+        [Benchmark]
+        public void Test_The_Current_Implementation() 
+        {
+            scene.Update();
         }
     }
 }
