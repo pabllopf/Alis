@@ -1,13 +1,12 @@
 ﻿//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
-// <copyright file="Scene.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+// <copyright file="Game.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
 namespace Core
 {
     using NUnit.Framework;
 
-    /// <summary>Define test of scenes.</summary>
-    internal class Scene
+    internal class Game
     {
         #region Variables
 
@@ -34,3 +33,4 @@ namespace Core
         #endregion
     }
 }
+
