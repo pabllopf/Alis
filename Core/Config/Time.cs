@@ -10,7 +10,7 @@ namespace Alis.Core
     using Newtonsoft.Json;
     
     /// <summary>Manage the time in the game.</summary>
-    public class TimeManager
+    public class Time
     {
         /// <summary>The time step</summary>
         [NotNull]
@@ -36,9 +36,9 @@ namespace Alis.Core
         [NotNull]
         private TimeSpan targetElapsedTime;
 
-        /// <summary>Initializes a new instance of the <see cref="TimeManager" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="Time" /> class.</summary>
         /// <param name="timeStep">The time step.</param>
-        public TimeManager(float timeStep)
+        public Time(float timeStep)
         {
             this.timeStep = timeStep;
             this.timeScale = 1.0f;
@@ -49,10 +49,10 @@ namespace Alis.Core
             watch.Start();
         }
 
-        /// <summary>Initializes a new instance of the <see cref="TimeManager" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="Time" /> class.</summary>
         /// <param name="timeStep">The time step.</param>
         /// <param name="timeScale">The time scale.</param>
-        public TimeManager(float timeStep, float timeScale)
+        public Time(float timeStep, float timeScale)
         {
             this.timeStep = timeStep;
             this.timeScale = timeScale;
@@ -63,11 +63,11 @@ namespace Alis.Core
             watch.Start();
         }
 
-        /// <summary>Initializes a new instance of the <see cref="TimeManager" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="Time" /> class.</summary>
         /// <param name="timeStep">The time step.</param>
         /// <param name="timeScale">The time scale.</param>
         /// <param name="frameRate">The frame rate.</param>
-        public TimeManager(float timeStep, float timeScale, float frameRate)
+        public Time(float timeStep, float timeScale, float frameRate)
         {
             this.timeStep = timeStep;
             this.timeScale = timeScale;
@@ -78,13 +78,13 @@ namespace Alis.Core
             watch.Start();
         }
 
-        /// <summary>Initializes a new instance of the <see cref="TimeManager" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="Time" /> class.</summary>
         /// <param name="timeStep">The time step.</param>
         /// <param name="timeScale">The time scale.</param>
         /// <param name="frameRate">The frame rate.</param>
         /// <param name="limitFrameRate">if set to <c>true</c> [limit frame rate].</param>
         [JsonConstructor]
-        public TimeManager(float timeStep, float timeScale, float frameRate, bool limitFrameRate)
+        public Time(float timeStep, float timeScale, float frameRate, bool limitFrameRate)
         {
             this.timeStep = timeStep;
             this.timeScale = timeScale;

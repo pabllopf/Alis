@@ -6,7 +6,7 @@ namespace Core
 {
     using NUnit.Framework;
 
-    internal class TimeManager
+    internal class Time
     {
         #region Variables
 

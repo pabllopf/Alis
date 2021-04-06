@@ -6,6 +6,7 @@ namespace Core
 {
     using NUnit.Framework;
 
+    /// <summary>Define test of game.</summary>
     internal class Game
     {
         #region Variables

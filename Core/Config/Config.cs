@@ -17,21 +17,21 @@ namespace Alis.Core
 
         /// <summary>The time manager</summary>
         [NotNull]
-        private TimeManager timeManager;
+        private Time timeManager;
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="name">The name.</param>
         public Config([NotNull] string name)
         {
             this.name = name;
-            timeManager = new TimeManager(0.01f, 1.00f, 60.0f, false);
+            timeManager = new Time(0.01f, 1.00f, 60.0f, false);
         }
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="timeManager">The time manager.</param>
         [JsonConstructor]
-        public Config([NotNull] string name, [NotNull] TimeManager timeManager)
+        public Config([NotNull] string name, [NotNull] Time timeManager)
         {
             this.name = name;
             this.timeManager = timeManager;
@@ -47,6 +47,6 @@ namespace Alis.Core
         /// <value>The time manager.</value>
         [NotNull]
         [JsonProperty("_TimeManager")]
-        public TimeManager TimeManager { get => timeManager; }
+        public Time TimeManager { get => timeManager; }
     }
 }
