@@ -11,13 +11,15 @@ namespace Alis.Core
     /// <summary>Define a game object.</summary>
     public class GameObject
     {
+        /// <summary>The maximum number components</summary>
+        private const int MaxNumComponents = 10;
+
         /// <summary>The transform</summary>
         [NotNull]
         private readonly Transform transform;
 
-        /// <summary>The components</summary>
-        [AllowNull]
-        private readonly Component[] components;
+        /// <summary>The span</summary>
+        private readonly Memory<Component> components;
 
         /// <summary>The name</summary>
         [NotNull]
@@ -57,17 +59,17 @@ namespace Alis.Core
 
             this.name = name;
             this.transform = transform;
-            this.components = new Component[10];
+            this.components = new Memory<Component>(new Component[MaxNumComponents]);
 
-            for (int i = 0; i < components.Length; i++) 
+            Span<Component> span = components.AsSpan();
+            for (int i = 0; i < span.Length; i++) 
             {
-                this.components[i] = components[i];
-                this.components[i].AttachTo(this);
+                span[i] = components[i];
+                span[i].AttachTo(this);
             }
 
             this.isActive = isActive;
             this.isStatic = isStatic;
-
 
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
@@ -78,7 +80,7 @@ namespace Alis.Core
         {
             name = "GameObject";
             transform = new Transform();
-            components = new Component[10];
+            components = new Memory<Component>(new Component[MaxNumComponents]);
 
             isActive = true;
             isStatic = true;
@@ -93,11 +95,11 @@ namespace Alis.Core
         {
             this.name = name;
             transform = new Transform();
-            components = new Component[10];
+            components = new Memory<Component>(new Component[MaxNumComponents]);
 
             isActive = true;
             isStatic = true;
-            
+
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
         }
@@ -112,7 +114,7 @@ namespace Alis.Core
         {
             this.name = name;
             this.transform = transform;
-            components = new Component[10];
+            components = new Memory<Component>(new Component[MaxNumComponents]);
 
             isActive = true;
             isStatic = true;
@@ -127,19 +129,20 @@ namespace Alis.Core
         /// <param name="components">The components.</param>
         public GameObject([NotNull] string name, [NotNull] Transform transform, [NotNull] params Component[] components)
         {
-            if (components.Length > 10) 
+            if (components.Length > MaxNumComponents) 
             {
-                throw new ArgumentException("The limit size of components[] is " + 10);
+                throw new ArgumentException("The limit size of components[] is " + MaxNumComponents);
             }
 
             this.name = name;
             this.transform = transform;
-            this.components = new Component[10];
+            this.components = new Memory<Component>(new Component[MaxNumComponents]);
 
-            for (int i = 0; i < components.Length; i++)
+            Span<Component> span = components.AsSpan();
+            for (int i = 0; i < span.Length; i++)
             {
-                this.components[i] = components[i];
-                this.components[i].AttachTo(this);
+                span[i] = components[i];
+                span[i].AttachTo(this);
             }
 
             isActive = true;
@@ -200,17 +203,18 @@ namespace Alis.Core
         /// <value>The components.</value>
         [NotNull]
         [JsonProperty("_Components")]
-        public Component[] Components { get => components; }
+        public Component[] Components { get => components.ToArray(); }
 
         /// <summary>Determines whether this instance contains the object.</summary>
         /// <typeparam name="T">component to contais</typeparam>
         public bool Contains<T>() where T : Component
         {
-            for (int i = 0; i < components.Length; i++)
+            Span<Component> span = components.Span;
+            for (int i = 0; i < span.Length; i++)
             {
-                if (components[i] is not null)
+                if (span[i] is not null)
                 {
-                    if (components[i].GetType().Equals(typeof(T)) && components[i].IsActive) 
+                    if (span[i].GetType().Equals(typeof(T)) && span[i].IsActive) 
                     {
                         return true;
                     }
@@ -238,13 +242,14 @@ namespace Alis.Core
                 throw new ArgumentException("You can`t add a component that alredy exits in the gameobject.");
             }
 
+            Span<Component> span = components.Span;
             for (int i = 0; i < components.Length; i++) 
             {
-                if (components[i] is null || !components[i].IsActive)
+                if (span[i] is null || !span[i].IsActive)
                 {
-                    components[i] = component;
-                    lastComponentAdded = components[i];
-                    components[i].IsActive = true;
+                    span[i] = component;
+                    lastComponentAdded = span[i];
+                    span[i].IsActive = true;
                     return;
                 }
             }
@@ -262,14 +267,15 @@ namespace Alis.Core
                 return;
             }
 
+            Span<Component> span = components.Span;
             for (int i = 0; i < components.Length; i++) 
             {
-                if (components[i] is not null)
+                if (span[i] is not null)
                 {
-                    if (components[i].GetType().Equals(typeof(T))) 
+                    if (span[i].GetType().Equals(typeof(T))) 
                     {
-                        lastComponentDeleted = components[i];
-                        components[i].IsActive = false;
+                        lastComponentDeleted = span[i];
+                        span[i].IsActive = false;
                     }
                 }
             }
@@ -296,12 +302,13 @@ namespace Alis.Core
                 return (T?)lastComponentDeleted;
             }
 
+            Span<Component> span = components.Span;
             for (int i = 0; i < components.Length;i++) 
             {
-                if (components[i] is not null && components[i].GetType().Equals(typeof(T))) 
+                if (span[i] is not null && span[i].GetType().Equals(typeof(T))) 
                 {
-                    lastComponentReturned = components[i];
-                    return (T?)components[i];
+                    lastComponentReturned = span[i];
+                    return (T?)span[i];
                 }
             }
 
@@ -313,12 +320,10 @@ namespace Alis.Core
         {
             if (isActive)
             {
-                for (int i = 0; i < components.Length; i++)
+                Span<Component> span = components.Span;
+                for (int i = 0; i < span.Length; i++)
                 {
-                    if (components[i] is not null)
-                    {
-                        components[i].Awake();
-                    }
+                    span[i]?.Awake();
                 }
             }
         }
@@ -328,12 +333,10 @@ namespace Alis.Core
         {
             if (isActive)
             {
-                for (int i = 0; i < components.Length; i++)
+                Span<Component> span = components.Span;
+                for (int i = 0; i < span.Length; i++)
                 {
-                    if (components[i] is not null)
-                    {
-                        components[i].Start();
-                    }
+                    span[i]?.Start();
                 }
             }
         }
@@ -343,12 +346,10 @@ namespace Alis.Core
         {
             if (isActive && !isStatic)
             {
-                for (int i = 0; i < components.Length; i++)
+                Span<Component> span = components.Span;
+                for(int i = 0; i < span.Length; i++)
                 {
-                    if (components[i] is not null)
-                    {
-                        components[i].Update();
-                    }
+                    span[i]?.Update();
                 }
             }
         }
@@ -358,12 +359,10 @@ namespace Alis.Core
         {
             if (isActive && !isStatic)
             {
-                for (int i = 0; i < components.Length; i++)
+                Span<Component> span = components.Span;
+                for (int i = 0; i < span.Length; i++)
                 {
-                    if (components[i] is not null)
-                    {
-                        components[i].FixedUpdate();
-                    }
+                    span[i]?.FixedUpdate();
                 }
             }
         }
