@@ -20,6 +20,13 @@ namespace Core
 
         #endregion
 
+        #region Default
+
+        [Test]
+        public void True() => Assert.True(true);
+
+        #endregion
+
         #region Check Generals Cases
 
         /// <summary>Checks the maximum size.</summary>

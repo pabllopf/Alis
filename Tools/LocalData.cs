@@ -43,7 +43,7 @@ namespace Alis.Tools
 
                 var settings = new JsonSerializerSettings
                 {
-                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
                     TypeNameHandling = TypeNameHandling.All
                 };
 
@@ -82,7 +82,7 @@ namespace Alis.Tools
                 var indented = Formatting.Indented;
                 var settings = new JsonSerializerSettings
                 {
-                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
                     TypeNameHandling = TypeNameHandling.All
                 };
 
@@ -104,9 +104,19 @@ namespace Alis.Tools
             string directory = Environment.CurrentDirectory + "/Data/";
             string file = directory + nameFile;
 
+            if (!Directory.Exists(directory)) 
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            if (!File.Exists(file)) 
+            {
+                throw new FileNotFoundException();
+            }
+
             var settings = new JsonSerializerSettings
             {
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
                 TypeNameHandling = TypeNameHandling.All
             };
 
@@ -142,7 +152,7 @@ namespace Alis.Tools
 
             var settings = new JsonSerializerSettings
             {
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
                 TypeNameHandling = TypeNameHandling.All
             };
 

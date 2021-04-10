@@ -20,7 +20,7 @@ namespace Core
 
         #endregion
 
-        #region Check Generals Cases
+        #region Default
 
         /// <summary>Checks the maximum size.</summary>
         [Test]
