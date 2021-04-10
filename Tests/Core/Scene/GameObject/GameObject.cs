@@ -145,7 +145,7 @@ namespace Core
 
         /// <summary>Tries to add component that exits.</summary>
         [Test]
-        public void Try_To_Add_Component_That_Exits() => Assert.Throws<ArgumentException>(() => gameObjectWithOneElement.Add(new Sprite("")));
+        public void Try_To_Add_Component_That_Exits() => Assert.Throws<Exception>(() => gameObjectWithOneElement.Add(new Sprite("")));
 
         #endregion
     }

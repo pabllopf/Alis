@@ -261,12 +261,12 @@ namespace Alis.Core
         {
             if (componentAdded != null && componentAdded.GetType().Equals(component.GetType())) 
             {
-                Logger.Error("Component '" + component.GetType().Name + "' already exists on gameobject '" + name + "' (CASE: previously component added)");
+                throw Logger.Error("Component '" + component.GetType().Name + "' already exists on gameobject '" + name + "' (CASE: previously component added)");
             }
 
             if (Contains<T>())
             {
-                Logger.Error("Component '" + component.GetType().Name + "' already exists on gameobject '" + name + "' (CASE: getting previously component returned)");
+                throw Logger.Error("Component '" + component.GetType().Name + "' already exists on gameobject '" + name + "' (CASE: getting previously component returned)");
             }
 
             Span<Component> span = components.Span;
@@ -281,7 +281,7 @@ namespace Alis.Core
                 }
             }
 
-            Logger.Error("Gameobject '" + name + "' is FULL, the limit size of components[] is " + MaxNumComponents);
+            throw Logger.Error("Gameobject '" + name + "' is FULL, the limit size of components[] is " + MaxNumComponents);
         }
 
         /// <summary>Removes this instance.</summary>
