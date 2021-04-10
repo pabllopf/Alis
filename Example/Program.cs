@@ -6,6 +6,7 @@ using Alis.Tools;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
@@ -65,7 +66,10 @@ namespace Alis
 
 
             Console.WriteLine("Loading game.");
-            LocalData.Load<VideoGame>("Example").Run();
+            //LocalData.Load<VideoGame>("Example").Run();
+
+           
+
 
             // Console.WriteLine("HHOLA");
 

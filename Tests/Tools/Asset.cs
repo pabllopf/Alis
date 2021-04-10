@@ -1,13 +1,14 @@
 ﻿//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
-// <copyright file="Crypted.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+// <copyright file="Asset.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
 namespace Tools
 {
-    using NUnit.Framework;
     using System;
     using System.IO;
+    using NUnit.Framework;
 
+    /// <summary>Define test for assets</summary>
     internal class Asset
     {
         #region Setup
@@ -39,10 +40,11 @@ namespace Tools
         {
             Assert.Multiple(() =>
             {
-                Assert.IsNull(Alis.Tools.Asset.Load(""));
+                Assert.IsNull(Alis.Tools.Asset.Load(string.Empty));
             });
         }
 
+        /// <summary>Tries the load path file.</summary>
         [Test]
         public void Try_Load_Path_File()
         {

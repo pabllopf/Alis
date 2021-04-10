@@ -6,6 +6,7 @@ namespace Alis.Tools
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
 
     /// <summary>Find any asset of the videogame.</summary>
@@ -30,6 +31,7 @@ namespace Alis.Tools
         /// <summary>Loads the specified name.</summary>
         /// <param name="file">The name.</param>
         /// <returns>Return the path of assset</returns>
+        [return: MaybeNull]
         public static string Load(string file)
         {
             if (assets.ContainsKey(file))
