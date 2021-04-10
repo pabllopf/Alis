@@ -70,8 +70,11 @@ namespace Alis.Core
             Span<Component> span = this.components.Span;
             for (int i = 0; i < components.Length; i++)
             {
-                span[i] = components[i];
-                span[i].AttachTo(this);
+                if (components[i] != null) 
+                {
+                    span[i] = components[i];
+                    span[i].AttachTo(this);
+                }
             }
 
             componentAdded = span.Length > 0 ? span[(span.Length - 1)] : null;
@@ -157,8 +160,11 @@ namespace Alis.Core
             Span<Component> span = this.components.Span;
             for (int i = 0; i < components.Length; i++)
             {
-                span[i] = components[i];
-                span[i].AttachTo(this);
+                if (components[i] != null)
+                {
+                    span[i] = components[i];
+                    span[i].AttachTo(this);
+                }
             }
 
             componentAdded = span.Length > 0 ? span[span.Length - 1] : null;
@@ -375,7 +381,6 @@ namespace Alis.Core
         public void Awake()
         {
             Span<Component> span = components.Span;
-            Logger.Log("Span : " + span.Length);
             for (int i = 0; i < span.Length; i++)
             {
                 if (span[i] != null)
@@ -423,6 +428,26 @@ namespace Alis.Core
                 {
                     span[i]?.FixedUpdate();
                 }
+            }
+        }
+
+        /// <summary>Stops this instance.</summary>
+        internal void Stop()
+        {
+            Span<Component> span = components.Span;
+            for (int i = 0; i < span.Length; i++)
+            {
+                span[i]?.Stop();
+            }
+        }
+
+        /// <summary>Exits this instance.</summary>
+        internal void Exit()
+        {
+            Span<Component> span = components.Span;
+            for (int i = 0; i < span.Length; i++)
+            {
+                span[i]?.Exit();
             }
         }
 

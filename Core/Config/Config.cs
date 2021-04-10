@@ -24,7 +24,7 @@ namespace Alis.Core
         public Config([NotNull] string name)
         {
             this.name = name;
-            timeManager = new Time(0.01f, 1.00f, 60.0f, false);
+            timeManager = new Time(0.01f, 1.00f, 120.0f, false);
         }
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>

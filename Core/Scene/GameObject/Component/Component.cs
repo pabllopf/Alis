@@ -4,6 +4,7 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using Newtonsoft.Json;
 
@@ -95,6 +96,16 @@ namespace Alis.Core
         /// <summary>Called when [collision stay].</summary>
         /// <param name="collision">The collision.</param>
         public virtual void OnCollionStay(Component collision)
+        {
+        }
+
+        /// <summary>Stops this instance.</summary>
+        public virtual void Stop()
+        {
+        }
+
+        /// <summary>Exits this instance.</summary>
+        public virtual void Exit()
         {
         }
 

@@ -59,13 +59,13 @@ namespace Alis
             LocalData.Save("Example", game);
             Console.WriteLine("Saved game.");
 
-            game.Run();
+            //game.Run();
 
             Thread.Sleep(1000);
 
 
-            //Console.WriteLine("Loading game.");
-            //LocalData.Load<VideoGame>("Example").Run();
+            Console.WriteLine("Loading game.");
+            LocalData.Load<VideoGame>("Example").Run();
 
             // Console.WriteLine("HHOLA");
 
