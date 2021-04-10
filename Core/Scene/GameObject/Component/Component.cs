@@ -20,17 +20,12 @@ namespace Alis.Core
         private bool active;
 
         /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
-        protected Component()
-        {
-            this.active = true;
-        }
+        protected Component() => active = true;
 
         /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
+        /// <param name="active">if set to <c>true</c> [active].</param>
         [JsonConstructor]
-        protected Component(bool active)
-        {
-            this.active = active;
-        }
+        protected Component(bool active) => this.active = active;
 
         /// <summary>Gets or sets a value indicating whether this <see cref="Component" /> is active.</summary>
         /// <value>
@@ -56,6 +51,7 @@ namespace Alis.Core
 
         /// <summary>Gets the game object.</summary>
         /// <value>The game object.</value>
+        [JsonIgnore]
         public GameObject GameObject { get => gameObject; }
 
         /// <summary>Enable this instance.</summary>
@@ -74,7 +70,7 @@ namespace Alis.Core
         /// <summary>Update this instance.</summary>
         public abstract void Update();
 
-        /// <summary>Fixeds the update.</summary>
+        /// <summary>Fixed the update.</summary>
         public virtual void FixedUpdate()
         {
         }
@@ -84,17 +80,20 @@ namespace Alis.Core
         {
         }
 
-        /// <summary>Destroy this instance.</summary>
+        /// <summary>Called when [collision enter].</summary>
+        /// <param name="collision">The collision.</param>
         public virtual void OnCollionEnter(Component collision)
         {
         }
 
-        /// <summary>Destroy this instance.</summary>
+        /// <summary>Called when [collision exit].</summary>
+        /// <param name="collision">The collision.</param>
         public virtual void OnCollionExit(Component collision)
         {
         }
 
-        /// <summary>Destroy this instance.</summary>
+        /// <summary>Called when [collision stay].</summary>
+        /// <param name="collision">The collision.</param>
         public virtual void OnCollionStay(Component collision)
         {
         }

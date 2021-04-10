@@ -14,7 +14,7 @@ namespace Alis.Tools
         private static TextWriterTraceListener listener = new TextWriterTraceListener(Console.Out);
 
         /// <summary>The level</summary>
-        private static Level level = Level.Critical;
+        private static Level level = Level.Normal;
 
         /// <summary>Informations this instance.</summary>
         public static void Info()
@@ -86,7 +86,7 @@ namespace Alis.Tools
 
                 fullName = fullName.Replace(".ctor", "Contructor");
 
-                Trace.WriteLine(date + " " + type + " " + fullName + " | " + message);
+                Trace.WriteLine(date + " " + type + " " + fullName + "()" + " | " + message);
             }
         }
 
@@ -111,36 +111,35 @@ namespace Alis.Tools
                 fullName = fullName.Replace(".ctor", "Contructor");
 
                 Console.BackgroundColor = ConsoleColor.DarkYellow;
-                Trace.WriteLine(date + " " + type + " " + fullName + " | " + message);
+                Trace.WriteLine(date + " " + type + " " + fullName + "()" + " | " + message);
                 Console.ResetColor();
             }
         }
 
         /// <summary>Errors the specified message.</summary>
         /// <param name="message">The message.</param>
-        public static void Error(string message)
+        public static Exception Error(string message)
         {
-            if (level == Level.Verbose || level == Level.Info || level == Level.Normal || level == Level.Critical)
+            if (!Trace.Listeners.Contains(listener))
             {
-                if (!Trace.Listeners.Contains(listener))
-                {
-                    Trace.Listeners.Add(listener);
-                    Trace.AutoFlush = true;
-                }
-
-                StackTrace stack = new StackTrace(true);
-
-                string date = "[" + DateTime.Now.ToString() + "]";
-                string type = "ERROR      ";
-                string fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + "." + stack.GetFrame(1).GetMethod().Name;
-
-                fullName = fullName.Replace(".ctor", "Contructor");
-
-                Console.BackgroundColor = ConsoleColor.DarkRed;
-                string result = date + " " + type + " " + fullName + " | " + message + "\nERROR " + Environment.StackTrace.Trim();
-                Trace.WriteLine(result);
-                Console.ResetColor();
+                Trace.Listeners.Add(listener);
+                Trace.AutoFlush = true;
             }
+
+            StackTrace stack = new StackTrace(true);
+
+            string date = "[" + DateTime.Now.ToString() + "]";
+            string type = "ERROR      ";
+            string fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + "." + stack.GetFrame(1).GetMethod().Name;
+
+            fullName = fullName.Replace(".ctor", "Contructor");
+
+            Console.BackgroundColor = ConsoleColor.DarkRed;
+            string result = date + " " + type + " " + fullName + " | " + message + "\nERROR " + Environment.StackTrace.Trim();
+            Trace.WriteLine(result);
+            Console.ResetColor();
+
+            return new Exception(result);
         }
     }
 }

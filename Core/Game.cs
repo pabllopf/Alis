@@ -5,10 +5,7 @@
 namespace Alis.Core
 {
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
-    using System.Threading;
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
@@ -56,43 +53,12 @@ namespace Alis.Core
 
             this.sceneManager = sceneManager;
 
-            OnCreate += VideoGame_OnCreate;
             OnAwake += VideoGame_OnAwake;
             OnStart += VideoGame_OnStart;
             OnUpdate += VideoGame_OnUpdate;
             OnFixedUpdate += VideoGame_OnFixedUpdate;
             OnStop += VideoGame_OnStop;
             OnExit += VideoGame_OnExit;
-            OnDestroy += VideoGame_OnDestroy;
-
-            OnCreate.Invoke(this, true);
-        }
-
-        /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="scenes">The scenes.</param>
-        public Game([NotNull] Config config, [NotNull] List<Scene> scenes)
-        {
-            this.config = config;
-
-            render = new Render(config);
-            input = new Input(config);
-
-            isRunning = true;
-            isStopped = false;
-
-            sceneManager = new SceneManager(scenes);
-
-            OnCreate += VideoGame_OnCreate;
-            OnAwake += VideoGame_OnAwake;
-            OnStart += VideoGame_OnStart;
-            OnUpdate += VideoGame_OnUpdate;
-            OnFixedUpdate += VideoGame_OnFixedUpdate;
-            OnStop += VideoGame_OnStop;
-            OnExit += VideoGame_OnExit;
-            OnDestroy += VideoGame_OnDestroy;
-
-            OnCreate.Invoke(this, true);
         }
 
         /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
@@ -108,27 +74,15 @@ namespace Alis.Core
             isRunning = true;
             isStopped = false;
 
-            sceneManager = new SceneManager(new List<Scene>(scenes));
+            sceneManager = new SceneManager(scenes);
 
-            OnCreate += VideoGame_OnCreate;
             OnAwake += VideoGame_OnAwake;
             OnStart += VideoGame_OnStart;
             OnUpdate += VideoGame_OnUpdate;
             OnFixedUpdate += VideoGame_OnFixedUpdate;
             OnStop += VideoGame_OnStop;
             OnExit += VideoGame_OnExit;
-            OnDestroy += VideoGame_OnDestroy;
-
-            OnCreate.Invoke(this, true);
         }
-
-        
-
-        /// <summary>Finalizes an instance of the <see cref="Game" /> class.</summary>
-        ~Game() => OnDestroy.Invoke(this, true);
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnCreate;
 
         /// <summary>Occurs when [on awake].</summary>
         public event EventHandler<bool> OnAwake;
@@ -147,9 +101,6 @@ namespace Alis.Core
 
         /// <summary>Occurs when [on exit].</summary>
         public event EventHandler<bool> OnExit;
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnDestroy;
 
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
@@ -280,16 +231,6 @@ namespace Alis.Core
         }
 
         #region DefineEvents
-
-        /// <summary>Video the game on create.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void VideoGame_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Video the game on destroy.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void VideoGame_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         /// <summary>Video the game on start.</summary>
         /// <param name="sender">The sender.</param>

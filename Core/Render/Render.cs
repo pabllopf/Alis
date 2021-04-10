@@ -7,76 +7,60 @@ namespace Alis.Core
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
-    using System.Threading.Tasks;
+    using Alis.Tools;
 
     /// <summary>Render define</summary>
     public class Render
     {
+        /// <summary>The current</summary>
+        [AllowNull]
+        private static Render current;
+
         /// <summary>The configuration</summary>
         [NotNull]
         private Config config;
-
-        /// <summary>The current</summary>
-        private static Render current;
-
-        /// <summary>Gets or sets the current.</summary>
-        /// <value>The current.</value>
-        public static Render Current { get => current; set => current = value; }
 
         /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
         /// <param name="config">The configuration.</param>
         public Render(Config config) => this.config = config;
 
+        /// <summary>Gets or sets the current.</summary>
+        /// <value>The current.</value>
+        public static Render Current { get => current; set => current = value; }
+
         /// <summary>Frames the bytes.</summary>
         /// <returns>Return the frame in bytes.</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public virtual byte[] FrameBytes() => throw new NotImplementedException(GetType().FullName);
+        public virtual byte[] FrameBytes() => throw Logger.Error(GetType().FullName);
 
         /// <summary>Awakes this instance.</summary>
-        /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual void Awake() => throw new NotImplementedException(GetType().FullName);
+        public virtual void Awake() => throw Logger.Error(GetType().FullName);
 
         /// <summary>Starts this instance.</summary>
-        /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual void Start() => throw new NotImplementedException(GetType().FullName);
+        public virtual void Start() => throw Logger.Error(GetType().FullName);
 
         /// <summary>Updates this instance.</summary>
-        /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual void Update() => throw new NotImplementedException(GetType().FullName);
+        public virtual void Update() => throw Logger.Error(GetType().FullName);
 
         /// <summary>Fixed the update.</summary>
-        /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual void FixedUpdate() => throw new NotImplementedException(GetType().FullName);
+        public virtual void FixedUpdate() => throw Logger.Error(GetType().FullName);
 
         /// <summary>Stops this instance.</summary>
-        /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual void Stop() => throw new NotImplementedException(GetType().FullName);
+        public virtual void Stop() => throw Logger.Error(GetType().FullName);
 
         /// <summary>Exits this instance.</summary>
-        /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual void Exit() => throw new NotImplementedException(GetType().FullName);
+        public virtual void Exit() => throw Logger.Error(GetType().FullName);
 
         /// <summary>Gets the draws.</summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">type list</typeparam>
         /// <returns>Return a list</returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public virtual List<T> GetDraws<T>() => throw new NotImplementedException("GetDraws");
+        public virtual List<T> GetDraws<T>() => throw Logger.Error("GetDraws");
 
         /// <summary>Adds the draw.</summary>
         /// <param name="draw">The draw.</param>
-        /// <exception cref="NotImplementedException"></exception>
-        public virtual void AddDraw([NotNull] Component draw) => throw new NotImplementedException("AddDraw");
+        public virtual void AddDraw([NotNull] Component draw) => throw Logger.Error("AddDraw");
 
         /// <summary>Removes the specified draw.</summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="draw">The draw.</param>
-        /// <exception cref="NotImplementedException"></exception>
-        public virtual void Remove([NotNull] Component draw) => throw new NotImplementedException("Remove");
+        public virtual void Remove([NotNull] Component draw) => throw Logger.Error("Remove");
     }
 }

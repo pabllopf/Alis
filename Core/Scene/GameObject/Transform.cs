@@ -124,7 +124,7 @@ namespace Alis.Core
         /// <summary>Occurs when [change].</summary>
         public event EventHandler<bool> OnDestroy;
 
-        /// <summary>Gets the position.</summary>
+        /// <summary>Gets or sets the position.</summary>
         /// <value>The position.</value>
         [NotNull]
         [JsonProperty]

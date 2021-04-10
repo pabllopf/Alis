@@ -40,6 +40,7 @@ namespace Alis.Core.SFML
             {
                 pathImage = AssetManager.Load(image);
                 sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
+                Logger.Log("Loaded the sprite(" + image + ") '");
             }
 
             OnDraw += Sprite_OnDraw;
@@ -127,6 +128,8 @@ namespace Alis.Core.SFML
                 sprite.Scale = new global::SFML.System.Vector2f(size.X, size.Y);
 
                 Render.Current.AddDraw(this);
+
+                
             }
         }
 

@@ -5,10 +5,7 @@
 namespace Alis.Core
 {
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
-    using System.Threading;
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
@@ -16,9 +13,12 @@ namespace Alis.Core
     /// <summary>Manage the scenes of the videogame.</summary>
     public class SceneManager
     {
+        /// <summary>The maximum number scene</summary>
+        private const int MaxNumScene = 100;
+
         /// <summary>The scenes</summary>
         [NotNull]
-        private List<Scene> scenes;
+        private Memory<Scene> scenes;
 
         /// <summary>The current scene</summary>
         [NotNull]
@@ -27,45 +27,35 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
         /// <param name="scenes">The scenes.</param>
         [JsonConstructor]
-        public SceneManager([NotNull] List<Scene> scenes)
+        public SceneManager([NotNull] Scene[] scenes)
         {
-            this.scenes = scenes;
-
-            OnCreate += SceneManager_OnCreate;
-            OnLoadScene += SceneManager_OnLoadScene;
-            OnDestroy += SceneManager_OnDestroy;
-
-            if (scenes != null) 
+            this.scenes = new Memory<Scene>(new Scene[MaxNumScene]);
+            Span<Scene> span = this.scenes.Span;
+            for (int i = 0; i < scenes.Length; i++) 
             {
-                currentScene = scenes[0];
+                if (span[i] == null) 
+                {
+                    span[i] = scenes[i];
+                }       
             }
 
-            OnCreate.Invoke(null, true);
+            currentScene = scenes.Length > 0 ? scenes[0] : new Scene("default");
+            Logger.Log("Defined the scene '" + currentScene.Name + "'");
         }
-
-        /// <summary>Finalizes an instance of the <see cref="SceneManager" /> class.</summary>
-        ~SceneManager() => OnDestroy.Invoke(null, true);
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnCreate;
-
-        /// <summary>Occurs when [on load scene].</summary>
-        public event EventHandler<bool> OnLoadScene;
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnDestroy;
 
         /// <summary>Gets or sets the scenes.</summary>
         /// <value>The scenes.</value>
         [NotNull]
         [JsonProperty("_Scenes")]
-        public List<Scene> Scenes { get => scenes; set => scenes = value; }
+        public Scene[] Scenes { get => scenes.ToArray();}
 
+        /// <summary>Awakes this instance.</summary>
+        /// <returns>Awake scene.</returns>
         internal Task Awake()
         {
             return Task.Run(() =>
             {
-                Console.WriteLine("awake scene manager");
+                currentScene?.Awake();
             });
         }
 
@@ -76,13 +66,8 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                if (scenes.Count == 0) 
-                {
-                    scenes.Add(new Scene("Default"));
-                }
-
-                currentScene = scenes[0];
-                currentScene.Start();
+                currentScene?.Start();
+                Logger.Log("Start the scene '" + currentScene?.Name + "'");
             });
         }
 
@@ -93,58 +78,40 @@ namespace Alis.Core
         {
             return Task.Run(() =>
             {
-                currentScene.Update();
+                currentScene?.Update();
             });
         }
 
+        /// <summary>Fixeds the update.</summary>
+        /// <returns>Return none</returns>
         internal Task FixedUpdate()
         {
             return Task.Run(() =>
             {
+                currentScene?.FixedUpdate();
             });
         }
 
+        /// <summary>Exits this instance.</summary>
+        /// <returns>Return none</returns>
         internal Task Exit()
         {
             return Task.Run(() =>
             {
+                currentScene?.Exit();
+                Logger.Log("Exit the scene '" + currentScene?.Name + "'");
             });
         }
 
+        /// <summary>Stops this instance.</summary>
+        /// <returns>Return none</returns>
         internal Task Stop()
         {
             return Task.Run(() =>
             {
+                currentScene?.Stop();
+                Logger.Log("Stop the scene '" + currentScene?.Name + "'");
             });
         }
-
-        #region DefineEvents
-
-        /// <summary>Scenes the manager on create.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Scenes the manager on destroy.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Scenes the manager on load scene.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnLoadScene([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Scenes the manager on delete scene.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnDeleteScene([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Scenes the manager on add scene.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void SceneManager_OnAddScene([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        #endregion
     }
 }

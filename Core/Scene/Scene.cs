@@ -7,6 +7,7 @@ namespace Alis.Core
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
+    using Alis.Tools;
     using Newtonsoft.Json;
 
     /// <summary>Define a scene.</summary>
@@ -300,36 +301,38 @@ namespace Alis.Core
         /// <summary>Awakes this instance.</summary>
         public void Awake() 
         {
-            if (numGameObjects > 0)
+            if (limitJustOneProcessor)
             {
-                if (limitJustOneProcessor)
+                for (int i = 0; i < gameObjects.Length; i++)
                 {
-                    for (int i = 0; i < numGameObjects; i++)
+                    if (gameObjects[i] != null)
                     {
-                        gameObjects[i]?.Awake();
+                        gameObjects[i].Awake();
+                        Logger.Log("Awake the gameobject (" + gameObjects[i].Name + ") ' of scene '" + name + "'");
                     }
                 }
-                else
+                Logger.Log("Awake the gameobjects (" + gameObjects.Length + ") ' of scene '" + name + "'");
+            }
+            else
+            {
+                for (int i = 0; i < procesor; i++)
                 {
-                    for (int i = 0; i < procesor; i++)
-                    {
-                        int init = i * sizeBlocksOfTasks;
-                        int end = ((i + 1) * sizeBlocksOfTasks) > numGameObjects ? numGameObjects : ((i + 1) * sizeBlocksOfTasks);
+                    int init = i * sizeBlocksOfTasks;
+                    int end = ((i + 1) * sizeBlocksOfTasks) > numGameObjects ? numGameObjects : ((i + 1) * sizeBlocksOfTasks);
 
-                        if (init <= end)
+                    if (init <= end)
+                    {
+                        tasks[i] = Task.Run(() =>
                         {
-                            tasks[i] = Task.Run(() =>
+                            for (int j = init; j < end; j++)
                             {
-                                for (int j = init; j < end; j++)
-                                {
-                                    gameObjects[i]?.Awake();
-                                }
-                            });
-                        }
+                                gameObjects[i]?.Awake();
+                            }
+                        });
                     }
-
-                    Task.WaitAll(tasks);
                 }
+
+                Task.WaitAll(tasks);
             }
         }
 
@@ -337,36 +340,40 @@ namespace Alis.Core
         /// <returns>Return none</returns>
         public void Start()
         {
-            if (numGameObjects > 0)
+            if (limitJustOneProcessor)
             {
-                if (limitJustOneProcessor)
+                for (int i = 0; i < gameObjects.Length; i++)
                 {
-                    for (int i = 0; i < numGameObjects; i++)
+                    if (gameObjects[i] != null)
                     {
-                        gameObjects[i]?.Start();
+                        gameObjects[i].Start();
+                        Logger.Log("Start the gameobject (" + gameObjects[i].Name + ") ' of scene '" + name + "'");
                     }
                 }
-                else
+                Logger.Log("Start the gameobjects (" + gameObjects.Length + ") ' of scene '" + name + "'");
+            }
+            else
+            {
+                for (int i = 0; i < procesor; i++)
                 {
-                    for (int i = 0; i < procesor; i++)
-                    {
-                        int init = i * sizeBlocksOfTasks;
-                        int end = ((i + 1) * sizeBlocksOfTasks) > numGameObjects ? numGameObjects : ((i + 1) * sizeBlocksOfTasks);
+                    int init = i * sizeBlocksOfTasks;
+                    int end = ((i + 1) * sizeBlocksOfTasks) > numGameObjects ? numGameObjects : ((i + 1) * sizeBlocksOfTasks);
 
-                        if (init <= end)
+                    if (init <= end)
+                    {
+                        tasks[i] = Task.Run(() =>
                         {
-                            tasks[i] = Task.Run(() =>
+                            for (int j = init; j < end; j++)
                             {
-                                for (int j = init; j < end; j++)
-                                {
-                                    gameObjects[i]?.Start();
-                                }
-                            });
-                        }
-                    }
+                                gameObjects[i]?.Start();
+                            }
 
-                    Task.WaitAll(tasks);
+                            Logger.Log("Start the gameobjects (" + gameObjects.Length + ") ' of scene " + name + "'");
+                        });
+                    }
                 }
+
+                Task.WaitAll(tasks);
             }
         }
 
@@ -440,6 +447,22 @@ namespace Alis.Core
                     Task.WaitAll(tasks);
                 }
             }
+        }
+
+        /// <summary>
+        /// Exits this instance.
+        /// </summary>
+        /// <returns></returns>
+        internal void Exit()
+        {
+        }
+
+        /// <summary>
+        /// Stops this instance.
+        /// </summary>
+        /// <returns></returns>
+        internal void Stop()
+        {
         }
 
         #region DefineEvents

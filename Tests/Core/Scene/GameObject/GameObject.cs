@@ -28,6 +28,9 @@ namespace Core
         /// <summary>The game object to delete element</summary>
         private Alis.Core.GameObject gameObjectToDeleteElement;
 
+        /// <summary>The game object with nothing</summary>
+        private Alis.Core.GameObject gameObjectWithNothing;
+
         /// <summary>The sprite</summary>
         private Sprite sprite;
 
@@ -52,6 +55,8 @@ namespace Core
 
             gameObjectToDeleteElement = new Alis.Core.GameObject("GameObject 6");
             gameObjectToDeleteElement.Add(sprite);
+
+            gameObjectWithNothing = new Alis.Core.GameObject("GameObject 7");
         }
 
         #endregion
@@ -84,7 +89,7 @@ namespace Core
 
         /// <summary>Trues this instance.</summary>
         [Test]
-        public void Delete_A_Component() => Assert.Multiple(() => { Assert.DoesNotThrow(() => gameObjectToDeleteElement.Remove<Sprite>()); Assert.IsFalse(gameObjectToDeleteElement.Contains<Sprite>()); });
+        public void Delete_A_Component() => Assert.Multiple(() => { Assert.DoesNotThrow(() => gameObjectToDeleteElement.Delete<Sprite>()); Assert.IsFalse(gameObjectToDeleteElement.Contains<Sprite>()); });
 
         #endregion
 
@@ -93,6 +98,9 @@ namespace Core
         /// <summary>Trues this instance.</summary>
         [Test]
         public void Get_A_Component() => Assert.AreEqual(sprite, gameObjectWithOneElement.Get<Sprite>());
+
+        [Test]
+        public void Get_A_Component_With_Added_Previus() => Assert.Multiple(() => { Assert.DoesNotThrow(() => gameObjectWithNothing.Add(sprite)); Assert.AreEqual(sprite, gameObjectWithNothing.Get<Sprite>()); });
 
         /// <summary>Gets a component dont exits.</summary>
         [Test]
@@ -125,7 +133,7 @@ namespace Core
 
         /// <summary>Determines whether [contains a component].</summary>
         [Test]
-        public void Check_Is_Static_When_Use_Default_Contruct() => Assert.IsTrue(gameObjectDefault.IsStatic);
+        public void Check_Is_NOT_Static_When_Use_Default_Contruct() => Assert.IsFalse(gameObjectDefault.IsStatic);
 
         #endregion
 
