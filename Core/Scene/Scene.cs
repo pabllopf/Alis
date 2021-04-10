@@ -13,21 +13,21 @@ namespace Alis.Core
     /// <summary>Define a scene.</summary>
     public class Scene
     {
-        /// <summary>The maximum number of gameobject by scene</summary>
+        /// <summary>The maximum number of game object by scene</summary>
         [JsonIgnore]
         private const int MaxNumOfGameobjectByScene = 1024;
 
-        /// <summary>The procesor</summary>
+        /// <summary>The processor</summary>
         [JsonIgnore]
-        private static readonly int procesor = Environment.ProcessorCount;
+        private static readonly int Processor = Environment.ProcessorCount;
 
         /// <summary>The size blocks of tasks</summary>
         [JsonIgnore]
-        private static readonly int sizeBlocksOfTasks = (MaxNumOfGameobjectByScene / procesor ) + 1;
+        private static readonly int SizeBlocksOfTasks = (MaxNumOfGameobjectByScene / Processor) + 1;
 
         /// <summary>The task</summary>
         [JsonIgnore]
-        private readonly Task[] tasks = new Task[procesor];
+        private readonly Task[] tasks = new Task[Processor];
 
         /// <summary>The game objects</summary>
         [NotNull]
@@ -65,6 +65,7 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="gameObjects">The game objects.</param>
+        /// <param name="isActive">if set to <c>true</c> [is active].</param>
         [JsonConstructor]
         public Scene([NotNull] string name, [NotNull] GameObject[] gameObjects, bool isActive) 
         {
@@ -83,7 +84,7 @@ namespace Alis.Core
                 }
             }
 
-            limitJustOneProcessor = ((lastIndex / procesor) + 1) <= procesor;
+            limitJustOneProcessor = ((lastIndex / Processor) + 1) <= Processor;
 
             OnLoad += Scene_OnLoad;
         }
@@ -107,7 +108,25 @@ namespace Alis.Core
                 }
             }
 
-            limitJustOneProcessor = ((lastIndex / procesor) + 1) <= procesor;
+            isActive = true;
+
+            limitJustOneProcessor = ((lastIndex / Processor) + 1) <= Processor;
+
+            OnLoad += Scene_OnLoad;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="gameObjects">The game objects.</param>
+        public Scene([NotNull] string name)
+        {
+            this.name = name;
+            gameObjects = new Memory<GameObject>(new GameObject[MaxNumOfGameobjectByScene]);
+            
+            lastIndex = 0;
+            isActive = true;
+
+            limitJustOneProcessor = ((lastIndex / Processor) + 1) <= Processor;
 
             OnLoad += Scene_OnLoad;
         }
@@ -121,7 +140,7 @@ namespace Alis.Core
         [JsonProperty("_Name")]
         public string Name { get => name; set => name = value; }
 
-        /// <summary>Gets or sets the game objects.</summary>
+        /// <summary>Gets the game objects.</summary>
         /// <value>The game objects.</value>
         [NotNull]
         [JsonProperty("_GameObjects")]
@@ -158,7 +177,7 @@ namespace Alis.Core
             Span<GameObject> span = gameObjects.Span;
             for (int i = 0; i < lastIndex; i++)
             {
-                if (span[i].Name.Equals(gameObject.Name) && span[i].IsActive) 
+                if (span[i] != null && span[i].Equals(gameObject) && span[i].IsActive) 
                 {
                     return true;
                 }
@@ -169,7 +188,7 @@ namespace Alis.Core
 
         /// <summary>Adds the specified game object.</summary>
         /// <param name="gameObject">The game object.</param>
-        /// <exception cref="ArgumentException">You can`t add more GameObject (" + gameObject.Name + "). The limit is " + MaxNumOfGameobjectByScene</exception>
+        /// <exception cref="ArgumentException">You can`t add more GameObject (" + gameObject.Name + "). The limit is " + Max Of Game object By Scene</exception>
         public void Add([NotNull] GameObject gameObject) 
         {
             if (gameObjectAdded != null && gameObjectAdded.Equals(gameObject))
@@ -191,12 +210,12 @@ namespace Alis.Core
                     gameObjectAdded = span[i];
                     span[i].IsActive = true;
 
-                    if (i > lastIndex) 
+                    if (i >= lastIndex) 
                     {
-                        lastIndex = i;
+                        lastIndex++;
                     }
 
-                    limitJustOneProcessor = ((lastIndex / procesor) + 1) <= procesor;
+                    limitJustOneProcessor = ((lastIndex / Processor) + 1) <= Processor;
 
                     return;
                 }
@@ -221,7 +240,7 @@ namespace Alis.Core
                 {
                     span[i].IsActive = false;
                     gameObjectDeleted = span[i];
-                    limitJustOneProcessor = ((lastIndex / procesor) + 1) <= procesor;
+                    limitJustOneProcessor = ((lastIndex / Processor) + 1) <= Processor;
                     return;
                 }
             }
@@ -229,11 +248,9 @@ namespace Alis.Core
             Logger.Warning("Scene '" + name + "'" + " dont`t contains " + gameObject.Name + " (CASE: didn't find anything)");
         }
 
-        /// <summary>
-        /// Finds the specified name.
-        /// </summary>
+        /// <summary>Finds the specified name.</summary>
         /// <param name="name">The name.</param>
-        /// <returns></returns>
+        /// <returns>Return a game object.</returns>
         [return: MaybeNull]
         public GameObject Find([NotNull] string name)
         {
@@ -284,17 +301,17 @@ namespace Alis.Core
             }
             else 
             {
-                for (int i = 0; i < procesor; i++)
+                for (int i = 0; i < Processor; i++)
                 {
-                    int init = i * sizeBlocksOfTasks;
-                    int end = ((i + 1) * sizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * sizeBlocksOfTasks);
+                    int init = i * SizeBlocksOfTasks;
+                    int end = ((i + 1) * SizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * SizeBlocksOfTasks);
                     
                     if (init <= end)
                     {
                         tasks[i] = Task.Run(() =>
                         {
                             Span<GameObject> span = gameObjects.Span;
-                            for (int j = init; j < end;j++) 
+                            for (int j = init; j < end; j++) 
                             {
                                 if (span[j] != null) 
                                 {
@@ -310,8 +327,7 @@ namespace Alis.Core
             }
         }
 
-        /// <summary>Starts this instance.</summary>
-        /// <returns>Return none</returns>
+        /// <summary>Start this instance.</summary>
         public void Start()
         {
             if (limitJustOneProcessor)
@@ -329,10 +345,10 @@ namespace Alis.Core
             }
             else
             {
-                for (int i = 0; i < procesor; i++)
+                for (int i = 0; i < Processor; i++)
                 {
-                    int init = i * sizeBlocksOfTasks;
-                    int end = ((i + 1) * sizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * sizeBlocksOfTasks);
+                    int init = i * SizeBlocksOfTasks;
+                    int end = ((i + 1) * SizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * SizeBlocksOfTasks);
 
                     if (init <= end)
                     {
@@ -355,7 +371,7 @@ namespace Alis.Core
             }
         }
 
-        /// <summary>Fixeds the update.</summary>
+        /// <summary>Fixe the update.</summary>
         public void Update()
         {
             if (limitJustOneProcessor)
@@ -371,10 +387,10 @@ namespace Alis.Core
             }
             else
             {
-                for (int i = 0; i < procesor; i++)
+                for (int i = 0; i < Processor; i++)
                 {
-                    int init = i * sizeBlocksOfTasks;
-                    int end = ((i + 1) * sizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * sizeBlocksOfTasks);
+                    int init = i * SizeBlocksOfTasks;
+                    int end = ((i + 1) * SizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * SizeBlocksOfTasks);
 
                     if (init <= end)
                     {
@@ -412,10 +428,10 @@ namespace Alis.Core
             }
             else
             {
-                for (int i = 0; i < procesor; i++)
+                for (int i = 0; i < Processor; i++)
                 {
-                    int init = i * sizeBlocksOfTasks;
-                    int end = ((i + 1) * sizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * sizeBlocksOfTasks);
+                    int init = i * SizeBlocksOfTasks;
+                    int end = ((i + 1) * SizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * SizeBlocksOfTasks);
 
                     if (init <= end)
                     {
@@ -437,10 +453,7 @@ namespace Alis.Core
             }
         }
 
-        /// <summary>
-        /// Exits this instance.
-        /// </summary>
-        /// <returns></returns>
+        /// <summary>Exits this instance.</summary>
         internal void Exit()
         {
             if (limitJustOneProcessor)
@@ -456,10 +469,10 @@ namespace Alis.Core
             }
             else
             {
-                for (int i = 0; i < procesor; i++)
+                for (int i = 0; i < Processor; i++)
                 {
-                    int init = i * sizeBlocksOfTasks;
-                    int end = ((i + 1) * sizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * sizeBlocksOfTasks);
+                    int init = i * SizeBlocksOfTasks;
+                    int end = ((i + 1) * SizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * SizeBlocksOfTasks);
 
                     if (init <= end)
                     {
@@ -481,10 +494,7 @@ namespace Alis.Core
             }
         }
 
-        /// <summary>
-        /// Stops this instance.
-        /// </summary>
-        /// <returns></returns>
+        /// <summary>Stops this instance.</summary>
         internal void Stop()
         {
             if (limitJustOneProcessor)
@@ -500,10 +510,10 @@ namespace Alis.Core
             }
             else
             {
-                for (int i = 0; i < procesor; i++)
+                for (int i = 0; i < Processor; i++)
                 {
-                    int init = i * sizeBlocksOfTasks;
-                    int end = ((i + 1) * sizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * sizeBlocksOfTasks);
+                    int init = i * SizeBlocksOfTasks;
+                    int end = ((i + 1) * SizeBlocksOfTasks) > lastIndex ? lastIndex : ((i + 1) * SizeBlocksOfTasks);
 
                     if (init <= end)
                     {
