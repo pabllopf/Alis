@@ -308,12 +308,7 @@
         <member name="M:Alis.Tools.Zipper.UnZip(System.String,System.String)">
             <summary>Unzips the specified zip file path.</summary>
             <param name="zipFile">The zip file path.</param>
-            <param name="outPutDir"></param>
-        </member>
-        <member name="M:Alis.Tools.Zipper.Unzip(System.String,System.String)">
-            <summary>Unzips the specified zip file path.</summary>
-            <param name="zipFile">The zip file path.</param>
-            <param name="location">The location.</param>
+            <param name="outPutDir">output directory</param>
         </member>
         <member name="M:Alis.Tools.Zipper.Zip(System.String,System.String[])">
             <summary>Zips the specified zip file name.</summary>
