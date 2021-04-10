@@ -18,7 +18,7 @@ namespace Alis.Core
 
         /// <summary>The scenes</summary>
         [NotNull]
-        private Memory<Scene> scenes;
+        private readonly Memory<Scene> scenes;
 
         /// <summary>The current scene</summary>
         [NotNull]
@@ -47,7 +47,13 @@ namespace Alis.Core
         /// <value>The scenes.</value>
         [NotNull]
         [JsonProperty("_Scenes")]
-        public Scene[] Scenes { get => scenes.ToArray();}
+        public Scene[] Scenes => scenes.ToArray();
+
+        /// <summary>Gets the current scene.</summary>
+        /// <value>The current scene.</value>
+        [NotNull]
+        [JsonProperty("_CurrentScene")]
+        public Scene CurrentScene => currentScene;
 
         /// <summary>Awakes this instance.</summary>
         /// <returns>Awake scene.</returns>
