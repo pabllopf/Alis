@@ -59,9 +59,9 @@ namespace Alis.Core.SFML
 
             foreach (string image in images)
             {
-                if (AssetManager.Load(image) != null)
+                if (Asset.Load(image) != null)
                 {
-                    textures.Add(new Texture(AssetManager.Load(image)));
+                    textures.Add(new Texture(Asset.Load(image)));
                 }
             }
         }
@@ -83,9 +83,9 @@ namespace Alis.Core.SFML
 
             foreach (string image in images)
             {
-                if (AssetManager.Load(image) != null) 
+                if (Asset.Load(image) != null) 
                 {
-                    textures.Add(new Texture(AssetManager.Load(image)));
+                    textures.Add(new Texture(Asset.Load(image)));
                 }            
             }
         }

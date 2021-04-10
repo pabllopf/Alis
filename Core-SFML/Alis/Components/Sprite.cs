@@ -38,7 +38,7 @@ namespace Alis.Core.SFML
 
             if (!image.Equals(string.Empty))
             {
-                pathImage = AssetManager.Load(image);
+                pathImage = Asset.Load(image);
                 sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
                 Logger.Log("Loaded the sprite(" + image + ") '");
             }
@@ -57,7 +57,7 @@ namespace Alis.Core.SFML
 
             if (!image.Equals(string.Empty))
             {
-                pathImage = AssetManager.Load(image);
+                pathImage = Asset.Load(image);
                 sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
             }
 
@@ -83,9 +83,9 @@ namespace Alis.Core.SFML
                 
                 if (!image.Equals(string.Empty)) 
                 {
-                    if (AssetManager.Load(image) != null) 
+                    if (Asset.Load(image) != null) 
                     {
-                        pathImage = AssetManager.Load(image);
+                        pathImage = Asset.Load(image);
                         sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
                         if (Render.Current.GetDraws<Sprite>().Contains(this)) 
                         {

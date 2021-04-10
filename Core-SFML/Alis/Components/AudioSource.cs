@@ -59,7 +59,7 @@ namespace Alis.Core.SFML
         public AudioSource([NotNull] string audioFile) 
         {
             this.audioFile = audioFile;
-            pathFile = AssetManager.Load(audioFile);
+            pathFile = Asset.Load(audioFile);
 
             playOnAwake = true;
             volume = 100;
@@ -83,7 +83,7 @@ namespace Alis.Core.SFML
         public AudioSource([NotNull] string audioFile, [NotNull] bool playOnAwake, [NotNull] float volume, [NotNull] bool loop)
         {
             this.audioFile = audioFile ?? "";
-            pathFile = AssetManager.Load(this.audioFile);
+            pathFile = Asset.Load(this.audioFile);
 
             this.playOnAwake = playOnAwake;
             this.volume = volume;

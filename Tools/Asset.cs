@@ -9,7 +9,7 @@ namespace Alis.Tools
     using System.IO;
 
     /// <summary>Find any asset of the videogame.</summary>
-    public static class AssetManager
+    public static class Asset
     {
         private static string workPath = string.Empty;
 

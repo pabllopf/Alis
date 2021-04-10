@@ -323,7 +323,7 @@ namespace Alis.Editor.UI.Widgets
                     Directory.CreateDirectory(dataPath);
                     Directory.CreateDirectory(libPath);
 
-                    AssetManager.SetWorkPath(project.AssetsPath + "/");
+                    Asset.SetWorkPath(project.AssetsPath + "/");
 
                     string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
                     File.WriteAllText(dir + "/" + name + ".csproj", projectFile, Encoding.UTF8);
@@ -358,7 +358,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 Logger.Warning("Open " + project.Name + project.DataPath + project.Directory + project.AssetsPath + project.ConfigPath + project.LibraryPath);
 
-                AssetManager.SetWorkPath(project.AssetsPath + "/");
+                Asset.SetWorkPath(project.AssetsPath + "/");
 
                 VideoGame game = LocalData.Load<VideoGame>("Data", project.DataPath);
 
@@ -400,7 +400,7 @@ namespace Alis.Editor.UI.Widgets
         {
             Console.Current.Log("Open " + Project.Current.Name + " at " + Project.Current.Directory);
             Logger.Log("EVENT: project " + Project.Current.Name + " at " + Project.Current.Directory);
-            AssetManager.SetWorkPath(Project.Current.AssetsPath + "/");
+            Asset.SetWorkPath(Project.Current.AssetsPath + "/");
         }
     }
 }
