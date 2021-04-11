@@ -5,6 +5,7 @@
 namespace Core
 {
     using NUnit.Framework;
+    using System;
 
     /// <summary>Define test of scenes.</summary>
     internal class Scene
@@ -123,6 +124,17 @@ namespace Core
                 Alis.Core.GameObject enemy = new Alis.Core.GameObject("Enemy2");
                 sceneToAddElement.Add(enemy);
                 Assert.IsTrue(sceneToAddElement.Contains(enemy));
+            });
+        }
+
+        [Test]
+        public void Add_A_Gameobject_That_Exits()
+        {
+            Assert.Multiple(() =>
+            {
+                Alis.Core.GameObject enemy = new Alis.Core.GameObject("Enemy2");
+                sceneToAddElement.Add(enemy);
+                Assert.Throws<Exception>(() => sceneToAddElement.Add(enemy));
             });
         }
 

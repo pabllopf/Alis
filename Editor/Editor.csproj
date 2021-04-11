@@ -5,7 +5,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
     <RuntimeIdentifiers>win-x86;win-x64;win10-x64;win10-x86;osx.10.11-x64;osx.10.12-x64;debian.8-x64;debian.10-x64;ubuntu.16.04-x64</RuntimeIdentifiers>
-    <Configurations>Windows;MacOS;Linux;Release</Configurations>
+    <Configurations>Windows;MacOS;Linux;Release;Debug</Configurations>
     <SignAssembly>true</SignAssembly>
     <Version>1.1.0</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
@@ -21,11 +21,20 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <Optimize>true</Optimize>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType />
+    <DocumentationFile>Editor.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <Optimize>true</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType />
     <DocumentationFile>Editor.xml</DocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DefineConstants></DefineConstants>
   </PropertyGroup>
   
 

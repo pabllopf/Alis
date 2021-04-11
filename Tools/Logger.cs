@@ -17,6 +17,7 @@ namespace Alis.Tools
         private static Level level = Level.Normal;
 
         /// <summary>Informations this instance.</summary>
+        [Conditional("DEBUG")]
         public static void Info()
         {
             if (level == Level.Verbose || level == Level.Info)
@@ -68,6 +69,7 @@ namespace Alis.Tools
 
         /// <summary>Logs the specified message.</summary>
         /// <param name="message">The message.</param>
+        [Conditional("DEBUG")]
         public static void Log(string message)
         {
             if (level == Level.Verbose || level == Level.Info || level == Level.Normal)
@@ -92,6 +94,7 @@ namespace Alis.Tools
 
         /// <summary>Warnings the specified message.</summary>
         /// <param name="message">The message.</param>
+        [Conditional("DEBUG")]
         public static void Warning(string message)
         {
             if (level == Level.Verbose || level == Level.Info || level == Level.Normal)

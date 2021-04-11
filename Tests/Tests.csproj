@@ -2,7 +2,7 @@
   <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Configurations>Windows;MacOS;Linux;Release</Configurations>
+    <Configurations>Windows;MacOS;Linux;Release;Debug</Configurations>
     <AssemblyName>Tests</AssemblyName>
     <RootNamespace></RootNamespace>
   </PropertyGroup>
@@ -10,7 +10,12 @@
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants></DefineConstants>
+  </PropertyGroup>
 
 
   <!-- ______________________________ MACOS _____________________________________ -->

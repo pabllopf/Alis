@@ -5,6 +5,7 @@
 namespace Alis.Core
 {
     using System;
+    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
     using Alis.Tools;
@@ -13,6 +14,37 @@ namespace Alis.Core
     /// <summary>Define a scene.</summary>
     public class Scene
     {
+        #region Const Messages
+
+        /// <summary>The don't find game object</summary>
+        private const string DontFindGameObject = "Don't find the gameobject '{0}' on the scene '{1}'.";
+
+        /// <summary>The find game object</summary>
+        private const string FindGameObject = "Find the gameobject '{0}' on the scene '{1}'.";
+
+        /// <summary>The limit number game object</summary>
+        private const string LimitNumGameObject = "Limit of gameobjects in the scene '{0}' is {1} gameobjects.";
+
+        /// <summary>The delete game object</summary>
+        private const string DeleteGameObject = "Delete the gameobject '{0}' on the scene '{1}'.";
+
+        /// <summary>The don't delete game object</summary>
+        private const string DontDeleteGameObject = "Can't delete the gameobject '{0}' on the scene '{1}' because don`t exits on the scene.";
+
+        /// <summary>The add game object</summary>
+        private const string AddGameObject = "Add the gameobject '{0}' on the scene '{1}'.";
+
+        /// <summary>The contains game object</summary>
+        private const string ContainsGameObject = "Exits the gameobject '{0}' on the scene '{1}'.";
+
+        /// <summary>The don't contains game object</summary>
+        private const string DontContainsGameObject = "Dont`t exits the gameobject '{0}' on the scene '{1}'.";
+
+        /// <summary>The don't add same game object</summary>
+        private const string DontAddSameGameObject = "Gameobject '{0}' alredy exits on the scene '{1}'. You cannot add two identical gameobject to the scene.";
+
+        #endregion
+
         /// <summary>The maximum number of game object by scene</summary>
         [JsonIgnore]
         private const int MaxNumOfGameobjectByScene = 1024;
@@ -33,10 +65,6 @@ namespace Alis.Core
         [NotNull]
         private readonly Memory<GameObject> gameObjects;
 
-        /// <summary>The last index</summary>
-        [NotNull]
-        private int lastIndex;
-
         /// <summary>The name</summary>
         [NotNull]
         private string name;
@@ -45,22 +73,14 @@ namespace Alis.Core
         [NotNull]
         private bool isActive;
 
+        /// <summary>The last index</summary>
+        [NotNull]
+        private int lastIndex;
+
         /// <summary>The limit just one processor</summary>
         [NotNull]
         [JsonIgnore]
         private bool limitJustOneProcessor;
-
-        /// <summary>The game object added</summary>
-        [AllowNull]
-        private GameObject gameObjectAdded;
-
-        /// <summary>The game object deleted</summary>
-        [AllowNull]
-        private GameObject gameObjectDeleted;
-
-        /// <summary>The game object returned</summary>
-        [AllowNull]
-        private GameObject gameObjectReturned;
 
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
         /// <param name="name">The name.</param>
@@ -117,7 +137,6 @@ namespace Alis.Core
 
         /// <summary>Initializes a new instance of the <see cref="Scene" /> class.</summary>
         /// <param name="name">The name.</param>
-        /// <param name="gameObjects">The game objects.</param>
         public Scene([NotNull] string name)
         {
             this.name = name;
@@ -177,75 +196,59 @@ namespace Alis.Core
             Span<GameObject> span = gameObjects.Span;
             for (int i = 0; i < lastIndex; i++)
             {
-                if (span[i] != null && span[i].Equals(gameObject) && span[i].IsActive) 
+                if (span[i] != null && span[i].IsActive && span[i].Equals(gameObject)) 
                 {
+                    Logger.Log(string.Format(ContainsGameObject, span[i].Name, this.name));
                     return true;
                 }
             }
 
+            Logger.Log(string.Format(DontContainsGameObject, gameObject.Name, this.name));
             return false;
         }
 
         /// <summary>Adds the specified game object.</summary>
         /// <param name="gameObject">The game object.</param>
-        /// <exception cref="ArgumentException">You can`t add more GameObject (" + gameObject.Name + "). The limit is " + Max Of Game object By Scene</exception>
-        public void Add([NotNull] GameObject gameObject) 
+        public void Add([NotNull] GameObject gameObject)
         {
-            if (gameObjectAdded != null && gameObjectAdded.Equals(gameObject))
-            {
-                throw Logger.Error("This gameobject '" + gameObject.Name + "' alredy exits in the scene '" + name + "'");
-            }
-
             if (Contains(gameObject)) 
             {
-                throw Logger.Error("This gameobject '" + gameObject.Name + "' alredy exits in the scene '" + name + "'");
+                throw Logger.Error(string.Format(DontAddSameGameObject, gameObject.Name, this.name));
             }
 
             Span<GameObject> span = gameObjects.Span;
             for (int i = 0; i < span.Length; i++)
             {
-                if (span[i] is null || !span[i].IsActive)
+                if (span[i] == null || span[i].IsActive == false)
                 {
+                    gameObject.IsActive = true;
                     span[i] = gameObject;
-                    gameObjectAdded = span[i];
-                    span[i].IsActive = true;
-
-                    if (i >= lastIndex) 
-                    {
-                        lastIndex++;
-                    }
-
+                    lastIndex++;
                     limitJustOneProcessor = ((lastIndex / Processor) + 1) <= Processor;
-
+                    Logger.Log(string.Format(AddGameObject, span[i].Name, this.name));
                     return;
                 }
             }
 
-            throw new ArgumentException("You can`t add more GameObject (" + gameObject.Name + "). The limit is " + MaxNumOfGameobjectByScene);
+            Logger.Warning(string.Format(LimitNumGameObject, gameObject.Name, this.name));
         }
 
         /// <summary>Removes the specified game object.</summary>
         /// <param name="gameObject">The game object.</param>
         public void Remove([NotNull] GameObject gameObject)
         {
-            if (!Contains(gameObject))
-            {
-                throw new ArgumentException("This gameobject (" + gameObject.Name + ") dont`t exits in the scene (" + name + ")");
-            }
-
             Span<GameObject> span = gameObjects.Span;
             for (int i = 0; i < lastIndex; i++)
             {
-                if (span[i] != null && span[i].IsActive) 
+                if (span[i] != null && span[i].Name.Equals(gameObject.Name) && span[i].IsActive)
                 {
                     span[i].IsActive = false;
-                    gameObjectDeleted = span[i];
-                    limitJustOneProcessor = ((lastIndex / Processor) + 1) <= Processor;
-                    return;
+                    Logger.Log(string.Format(DeleteGameObject, span[i].Name, this.name));
+                    break;
                 }
             }
 
-            Logger.Warning("Scene '" + name + "'" + " dont`t contains " + gameObject.Name + " (CASE: didn't find anything)");
+            Logger.Warning(string.Format(DontDeleteGameObject, gameObject.Name, this.name));
         }
 
         /// <summary>Finds the specified name.</summary>
@@ -254,32 +257,17 @@ namespace Alis.Core
         [return: MaybeNull]
         public GameObject Find([NotNull] string name)
         {
-            if (name == null || name.Equals(string.Empty)) 
-            {
-                throw Logger.Error("The name is Empty or Null. Please introduce a valid name. Scene " + name);
-            }
-
-            if (gameObjectAdded != null && gameObjectAdded.Name.Equals(name) && gameObjectAdded.IsActive) 
-            {
-                return gameObjectAdded;
-            }
-
-            if (gameObjectReturned != null && gameObjectReturned.Name.Equals(name) && gameObjectReturned.IsActive)
-            {
-                return gameObjectReturned;
-            }
-
             Span<GameObject> span = gameObjects.Span;
             for (int i = 0; i < lastIndex; i++)
             {
                 if (span[i] != null && span[i].Name.Equals(name) && span[i].IsActive)
                 {
-                    gameObjectReturned = span[i];
+                    Logger.Log(string.Format(FindGameObject, name, this.name));
                     return span[i];
                 }
             }
 
-            Logger.Warning("Scene '" + this.name + "'" + " dont`t contains " + name + " (CASE: didn't find anything)");
+            Logger.Warning(string.Format(DontFindGameObject, name, this.name));
             return null;
         }
 
@@ -296,8 +284,6 @@ namespace Alis.Core
                         span[i].Awake();
                     }
                 }
-
-                Logger.Log("Awake the '" + lastIndex + "' gameobject of scene '" + name + "'" + "( CASE: normal programming)");
             }
             else 
             {
@@ -322,7 +308,6 @@ namespace Alis.Core
                     }
                 }
 
-                Logger.Log("Awake the '" + lastIndex + "' gameobject of scene '" + name + "'" + "( CASE: parallel programming)");
                 Task.WaitAll(tasks);
             }
         }
@@ -340,8 +325,6 @@ namespace Alis.Core
                         span[i].Start();
                     }
                 }
-
-                Logger.Log("Awake the '" + lastIndex + "' gameobject of scene '" + name + "'" + "( CASE: normal programming)");
             }
             else
             {
@@ -366,7 +349,6 @@ namespace Alis.Core
                     }
                 }
 
-                Logger.Log("Awake the '" + lastIndex + "' gameobject of scene '" + name + "'" + "( CASE: parallel programming)");
                 Task.WaitAll(tasks);
             }
         }

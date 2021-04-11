@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>9.0</LangVersion>
     <Nullable>enable</Nullable>
-    <Configurations>Windows;MacOS;Linux;Release</Configurations>
+    <Configurations>Windows;MacOS;Linux;Release;Debug</Configurations>
     <UserSecretsId>66c36b4b-e0fb-4937-aa9f-3b3645bf46b1</UserSecretsId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -39,7 +39,16 @@
     <WarningLevel>5</WarningLevel>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <Optimize>true</Optimize>
+    <DefineConstants></DefineConstants>
 
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Tools.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>5</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
