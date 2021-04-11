@@ -12,6 +12,37 @@ namespace Alis.Core
     /// <summary>Define a game object.</summary>
     public class GameObject
     {
+        #region Const Messages
+
+        /// <summary>The don't find component</summary>
+        private const string DontFindComponent = "Don't find the component '{0}' on the gameobject '{1}'.";
+
+        /// <summary>The find component</summary>
+        private const string FindComponent = "Find the component '{0}' on the gameobject '{1}'.";
+
+        /// <summary>The limit number component</summary>
+        private const string LimitNumComponent = "Limit of component in the gameobject '{0}' is {1} components.";
+
+        /// <summary>The delete component</summary>
+        private const string DeleteComponent = "Delete the component '{0}' on the gameobject '{1}'.";
+
+        /// <summary>The don't delete component</summary>
+        private const string DontDeleteComponent = "Can't delete the component '{0}' on the gameobject '{1}' because don`t exits on the gameobject.";
+
+        /// <summary>The add component</summary>
+        private const string AddComponent = "Add the component '{0}' on the gameobject '{1}'.";
+
+        /// <summary>The contains component</summary>
+        private const string ContainsComponent = "Exits the component '{0}' on the gameobject '{1}'.";
+
+        /// <summary>The don't contains component</summary>
+        private const string DontContainsComponent = "Dont`t exits the component '{0}' on the gameobject '{1}'.";
+
+        /// <summary>The don't add same component</summary>
+        private const string DontAddSameComponent = "Component '{0}' alredy exits on the gameobject '{1}'. You can not add two identical component to the gameobject.";
+
+        #endregion
+
         /// <summary>The maximum number components</summary>
         [NotNull]
         private const int MaxNumComponents = 10;
@@ -36,18 +67,6 @@ namespace Alis.Core
         [NotNull]
         private bool isStatic;
 
-        /// <summary>The component returned</summary>
-        [AllowNull]
-        private Component componentReturned;
-
-        /// <summary>The last component deleted</summary>
-        [AllowNull]
-        private Component componentDeleted;
-
-        /// <summary>The last component deleted</summary>
-        [AllowNull]
-        private Component componentAdded;
-
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="transform">The transform.</param>
@@ -60,7 +79,7 @@ namespace Alis.Core
         {
             if (components.Length > 10)
             {
-                throw new ArgumentException("The limit size of components[] is 10. ");
+                throw Logger.Error("The limit size of components[] is " + MaxNumComponents);
             }
 
             this.name = name;
@@ -77,15 +96,13 @@ namespace Alis.Core
                 }
             }
 
-            componentAdded = span.Length > 0 ? span[(span.Length - 1)] : null;
-            componentDeleted = span.Length > 0 ? span[0] : null;
-            componentReturned = span.Length > 0 ? span[0] : null;
-
             this.isActive = isActive;
             this.isStatic = isStatic;
 
             OnEnable += GameObject_OnEnable;
             OnDisable += GameObject_OnDisable;
+
+            Logger.Info();
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -102,6 +119,8 @@ namespace Alis.Core
             OnDisable += GameObject_OnDisable;
 
             IsActive = true;
+
+            Logger.Info();
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -119,6 +138,8 @@ namespace Alis.Core
             OnDisable += GameObject_OnDisable;
             
             IsActive = true;
+
+            Logger.Info();
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -140,6 +161,8 @@ namespace Alis.Core
             OnDisable += GameObject_OnDisable;
 
             IsActive = true;
+
+            Logger.Info();
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -150,7 +173,7 @@ namespace Alis.Core
         {
             if (components.Length > MaxNumComponents) 
             {
-                throw new ArgumentException("The limit size of components[] is " + MaxNumComponents);
+                throw Logger.Error("The limit size of components[] is " + MaxNumComponents);
             }
 
             this.name = name;
@@ -167,10 +190,6 @@ namespace Alis.Core
                 }
             }
 
-            componentAdded = span.Length > 0 ? span[span.Length - 1] : null;
-            componentDeleted = span.Length > 0 ? span[0] : null;
-            componentReturned = span.Length > 0 ? span[0] : null;
-
             isActive = true;
             isStatic = false;
 
@@ -178,6 +197,8 @@ namespace Alis.Core
             OnDisable += GameObject_OnDisable;
 
             IsActive = true;
+
+            Logger.Info();
         }
 
         /// <summary>Called when [enable].</summary>
@@ -242,31 +263,25 @@ namespace Alis.Core
             Span<Component> span = components.Span;
             for (int i = 0; i < span.Length; i++)
             {
-                if (span[i] != null)
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(typeof(T)))
                 {
-                    if (span[i].GetType().Equals(typeof(T)) && span[i].IsActive) 
-                    {
-                        return true;
-                    }
+                    Logger.Log(string.Format(ContainsComponent, typeof(T).FullName, this.name));
+                    return true;
                 }
             }
 
+            Logger.Log(string.Format(DontContainsComponent, typeof(T).FullName, this.name));
             return false;
         }
 
         /// <summary>Adds the specified component.</summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">Type component</typeparam>
         /// <param name="component">The component.</param>
         public void Add<T>([NotNull] T component) where T : Component
         {
-            if (componentAdded != null && componentAdded.GetType().Equals(component.GetType())) 
-            {
-                throw Logger.Error("Component '" + component.GetType().Name + "' already exists on gameobject '" + name + "' (CASE: previously component added)");
-            }
-
             if (Contains<T>())
             {
-                throw Logger.Error("Component '" + component.GetType().Name + "' already exists on gameobject '" + name + "' (CASE: getting previously component returned)");
+                throw Logger.Error(string.Format(DontAddSameComponent, typeof(T).FullName, this.name));
             }
 
             Span<Component> span = components.Span;
@@ -275,65 +290,31 @@ namespace Alis.Core
                 if (span[i] is null || !span[i].IsActive)
                 {
                     span[i] = component;
-                    componentAdded = span[i];
                     span[i].IsActive = true;
+                    Logger.Log(string.Format(AddComponent, typeof(T).FullName, this.name));
                     return;
                 }
             }
 
-            throw Logger.Error("Gameobject '" + name + "' is FULL, the limit size of components[] is " + MaxNumComponents);
+            Logger.Warning(string.Format(LimitNumComponent, typeof(T).FullName, this.name));
         }
 
         /// <summary>Removes this instance.</summary>
         /// <typeparam name="T">general type</typeparam>
         public void Delete<T>() where T : Component
         {
-            if (componentDeleted != null && componentDeleted.GetType().Equals(typeof(T)))
-            {
-                Logger.Warning("Can`t delete the component '" + componentDeleted.GetType().Name + "' of gameobject '" + name + "' that was deleted previously");
-                componentDeleted.IsActive = false;
-                return;
-            }
-
-            if (componentReturned != null && componentReturned.GetType().Equals(typeof(T)) && componentReturned.IsActive)
-            {
-                Logger.Log("the component '" + componentReturned.GetType().Name + "' was deleted from gameobject '" + name + "'" + " (CASE: getting previously component returned)");
-                componentReturned.IsActive = false;
-                componentDeleted = componentReturned;
-                return;
-            }
-
-            if (componentAdded != null && componentAdded.GetType().Equals(typeof(T)) && componentAdded.IsActive)
-            {
-                Logger.Log("the component '" + componentAdded.GetType().Name + "' was deleted from gameobject '" + name + "'" + " (CASE: getting previously component added)");
-                componentAdded.IsActive = false;
-                componentDeleted = componentAdded;
-                return;
-            }
-
             Span<Component> span = components.Span;
             for (int i = 0; i < components.Length; i++) 
             {
-                if (span[i] != null)
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(typeof(T)))
                 {
-                    if (span[i].GetType().Equals(typeof(T))) 
-                    {
-                        if (span[i].IsActive)
-                        {
-                            Logger.Log("the component '" + span[i].GetType().Name + "' was deleted from gameobject '" + name + "'" + " (CASE: deleting component by search)");
-                            componentDeleted = span[i];
-                            span[i].IsActive = false;
-                        }
-                        else
-                        {
-                            Logger.Warning("'" + typeof(T).Name + "'" + " can`t delete a '" + name + "' that was deleted previously " + " (CASE: component not active)");
-                            return;
-                        }
-                    }
+                    Logger.Log(string.Format(DeleteComponent, typeof(T).FullName, this.name));
+                    span[i].IsActive = false;
+                    return;
                 }
             }
 
-            Logger.Warning("'" + name + "'" + " dont`t contains " + typeof(T).Name + " (CASE: didn't find anything)");
+            Logger.Warning(string.Format(DontDeleteComponent, typeof(T).FullName, this.name));
         }
 
         /// <summary>Gets the component.</summary>
@@ -342,38 +323,17 @@ namespace Alis.Core
         [return: MaybeNull]
         public T? Get<T>() where T : Component
         {
-            if (componentReturned != null && componentReturned.IsActive && componentReturned.GetType().Equals(typeof(T))) 
-            {
-                Logger.Log("the component '" + componentReturned.GetType().Name + "' was obtained from gameobject '" + name + "'" + " (CASE: getting previously component returned)");
-                return (T?)componentReturned;
-            }
-
-            if (componentAdded != null && componentAdded.IsActive && componentAdded.GetType().Equals(typeof(T)))
-            {
-                Logger.Log("the component '" + componentAdded.GetType().Name + "' was obtained from gameobject '" + name + "'" + " (CASE: getting previously component added)");
-                return (T?)componentAdded;
-            }
-
             Span<Component> span = components.Span;
             for (int i = 0; i < components.Length; i++) 
             {
-                if (span[i] != null && span[i].GetType().Equals(typeof(T))) 
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(typeof(T))) 
                 {
-                    if (span[i].IsActive)
-                    {
-                        Logger.Log("the component '" + span[i].GetType().Name + "' was obtained from gameobject '" + name + "'" + " (CASE: getting component by search)");
-                        componentReturned = span[i];
-                        return (T?)span[i];
-                    }
-                    else 
-                    {
-                        Logger.Warning("'" + typeof(T).Name + "'" + " exits on gameobject '" + name + "' but it`s NOT active " + " (CASE: component not active)");
-                        return null;
-                    }
+                    Logger.Log(string.Format(FindComponent, typeof(T).FullName, this.name));
+                    return (T?)span[i];
                 }
             }
 
-            Logger.Warning("'" + name + "'" + " dont`t contains " + typeof(T).Name + " (CASE: didn't find anything)");
+            Logger.Warning(string.Format(DontFindComponent, typeof(T).FullName, this.name));
             return null;
         }
 
@@ -386,7 +346,6 @@ namespace Alis.Core
                 if (span[i] != null)
                 {
                     span[i].Awake();
-                    Logger.Log("AWAKE:  the component(" + span[i].GetType().Name + ") '");
                 }
             }
         }
@@ -400,7 +359,6 @@ namespace Alis.Core
                 if (span[i] != null)
                 {
                     span[i].Start();
-                    Logger.Log("START:  the component(" + span[i].GetType().Name + ") '");
                 }
             }
         }
