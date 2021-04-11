@@ -13,8 +13,21 @@ namespace Alis.Core
     /// <summary>Manage the scenes of the videogame.</summary>
     public class SceneManager
     {
+        /// <summary>The change scene</summary>
+        [NotNull]
+        private const string ChangeScene = "Change scene of {0} to {1}. ";
+
+        /// <summary>The don't change scene</summary>
+        [NotNull]
+        private const string DontChangeScene = "Don`t change scene of {0} to {1} because scene {1} dont' exits.";
+
         /// <summary>The maximum number scene</summary>
+        [NotNull]
         private const int MaxNumScene = 100;
+
+        /// <summary>The current</summary>
+        [AllowNull]
+        private static SceneManager current;
 
         /// <summary>The scenes</summary>
         [NotNull]
@@ -40,7 +53,10 @@ namespace Alis.Core
             }
 
             currentScene = scenes.Length > 0 ? scenes[0] : new Scene("default");
-            Logger.Log("Defined the scene '" + currentScene.Name + "'");
+
+            current = this;
+
+            Logger.Info();
         }
 
         /// <summary>Gets or sets the scenes.</summary>
@@ -55,69 +71,56 @@ namespace Alis.Core
         [JsonProperty("_CurrentScene")]
         public Scene CurrentScene => currentScene;
 
+        /// <summary>Loads the specified name.</summary>
+        /// <param name="name">The name.</param>
+        public static void Load(string name)
+        {
+            Span<Scene> span = current.scenes.Span;
+            for (int i = 0; i < span.Length; i++)
+            {
+                if (span[i] != null && span[i].Name.Equals(name))
+                {
+                    Logger.Log(string.Format(ChangeScene, name, current.currentScene.Name));
+                    current.currentScene.IsActive = false;
+                    current.currentScene = span[i];
+                    current.currentScene.IsActive = true;
+
+                    current.Awake().Wait();
+                    current.Start().Wait();
+                    return;
+                }
+            }
+
+            Logger.Warning(string.Format(DontChangeScene, name, current.currentScene.Name));
+        }
+
         /// <summary>Awakes this instance.</summary>
         /// <returns>Awake scene.</returns>
-        internal Task Awake()
-        {
-            return Task.Run(() =>
-            {
-                currentScene?.Awake();
-            });
-        }
+        internal Task Awake() => Task.Run(() => currentScene?.Awake());
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        internal Task Start()
-        {
-            return Task.Run(() =>
-            {
-                currentScene?.Start();
-                Logger.Log("Start the scene '" + currentScene?.Name + "'");
-            });
-        }
+        internal Task Start() => Task.Run(() => currentScene?.Start());
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        internal Task Update()
-        {
-            return Task.Run(() =>
-            {
-                currentScene?.Update();
-            });
-        }
+        internal Task Update() => Task.Run(() => currentScene?.Update());
 
-        /// <summary>Fixeds the update.</summary>
+        /// <summary>Fix the update.</summary>
         /// <returns>Return none</returns>
-        internal Task FixedUpdate()
-        {
-            return Task.Run(() =>
-            {
-                currentScene?.FixedUpdate();
-            });
-        }
+        [return: NotNull]
+        internal Task FixedUpdate() => Task.Run(() => currentScene?.FixedUpdate());
 
         /// <summary>Exits this instance.</summary>
         /// <returns>Return none</returns>
-        internal Task Exit()
-        {
-            return Task.Run(() =>
-            {
-                currentScene?.Exit();
-                Logger.Log("Exit the scene '" + currentScene?.Name + "'");
-            });
-        }
+        [return: NotNull]
+        internal Task Exit() => Task.Run(() => currentScene?.Exit());
 
         /// <summary>Stops this instance.</summary>
         /// <returns>Return none</returns>
-        internal Task Stop()
-        {
-            return Task.Run(() =>
-            {
-                currentScene?.Stop();
-                Logger.Log("Stop the scene '" + currentScene?.Name + "'");
-            });
-        }
+        [return: NotNull]
+        internal Task Stop() => Task.Run(() => currentScene?.Stop());
     }
 }

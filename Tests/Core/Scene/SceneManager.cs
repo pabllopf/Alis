@@ -56,6 +56,17 @@ namespace Core
             });
         }
 
+        /// <summary>Tries the change current scene.</summary>
+        [Test]
+        public void Try_Change_Current_Scene()
+        {
+            Assert.Multiple(() =>
+            {
+                Alis.Core.SceneManager.Load("Exampe2");
+                Assert.AreEqual(scene2, sceneManager.CurrentScene);
+            });
+        }
+
         /// <summary>Haves the 100 scenes.</summary>
         [Test]
         public void Have_100_scenes()
