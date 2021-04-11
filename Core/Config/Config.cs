@@ -5,6 +5,7 @@
 namespace Alis.Core
 {
     using System.Diagnostics.CodeAnalysis;
+    using Alis.Tools;
     using Newtonsoft.Json;
     
     /// <summary>Define the config of videogame</summary>
@@ -13,18 +14,19 @@ namespace Alis.Core
     {
         /// <summary>The name</summary>
         [NotNull]      
-        private string name;
+        private readonly string name;
 
         /// <summary>The time manager</summary>
         [NotNull]
-        private Time timeManager;
+        private readonly Time time;
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="name">The name.</param>
         public Config([NotNull] string name)
         {
             this.name = name;
-            timeManager = new Time(0.01f, 1.00f, 120.0f, false);
+            time = new Time(0.01f, 1.00f, 120.0f, false);
+            Logger.Info();
         }
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
@@ -34,19 +36,20 @@ namespace Alis.Core
         public Config([NotNull] string name, [NotNull] Time timeManager)
         {
             this.name = name;
-            this.timeManager = timeManager;
+            this.time = timeManager;
+            Logger.Info();
         }
 
         /// <summary>Gets the name.</summary>
         /// <value>The name.</value>
         [NotNull]
         [JsonProperty("_Name")]
-        public string Name { get => name; }
+        public string Name => name;
 
         /// <summary>Gets the time manager.</summary>
         /// <value>The time manager.</value>
         [NotNull]
-        [JsonProperty("_TimeManager")]
-        public Time TimeManager { get => timeManager; }
+        [JsonProperty("_Time")]
+        public Time Time => time;
     }
 }

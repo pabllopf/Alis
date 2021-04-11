@@ -21,7 +21,7 @@ namespace Benchmarks
 
         private GameObject gameObject;
 
-        private string name = "GameObject0";
+        private readonly string name = "GameObject0";
 
         private List<GameObject> gameObjects;
 

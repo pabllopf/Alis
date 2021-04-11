@@ -1,6 +1,6 @@
 ﻿//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
-// <copyright file="TimeManager.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+// <copyright file="Time.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
@@ -30,7 +30,7 @@ namespace Alis.Core
 
         /// <summary>The watch</summary>
         [NotNull]
-        private Stopwatch watch;
+        private readonly Stopwatch watch;
 
         /// <summary>The target elapsed time</summary>
         [NotNull]

@@ -1,6 +1,6 @@
 ﻿//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
-// <copyright file="Config.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+// <copyright file="Keyboard.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
@@ -235,34 +235,34 @@ namespace Alis.Core
         /// <summary>Down arrow</summary>
         Down,
 
-        /// <summary>The numpad 0 key</summary>
+        /// <summary>The number 0 key</summary>
         Numpad0,
 
-        /// <summary>The numpad 1 key</summary>
+        /// <summary>The number 1 key</summary>
         Numpad1,
 
-        /// <summary>The numpad 2 key</summary>
+        /// <summary>The number 2 key</summary>
         Numpad2,
 
-        /// <summary>The numpad 3 key</summary>
+        /// <summary>The number 3 key</summary>
         Numpad3,
 
-        /// <summary>The numpad 4 key</summary>
+        /// <summary>The number 4 key</summary>
         Numpad4,
 
-        /// <summary>The numpad 5 key</summary>
+        /// <summary>The number 5 key</summary>
         Numpad5,
 
-        /// <summary>The numpad 6 key</summary>
+        /// <summary>The number 6 key</summary>
         Numpad6,
 
-        /// <summary>The numpad 7 key</summary>
+        /// <summary>The number 7 key</summary>
         Numpad7,
 
-        /// <summary>The numpad 8 key</summary>
+        /// <summary>The number 8 key</summary>
         Numpad8,
 
-        /// <summary>The numpad 9 key</summary>
+        /// <summary>The number 9 key</summary>
         Numpad9,
 
         /// <summary>The F1 key</summary>

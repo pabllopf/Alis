@@ -4,29 +4,40 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using Alis.Tools;
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
+    using Alis.Tools;
+    using Newtonsoft.Json;
 
     /// <summary>Manage the inputs of game.</summary>
     public class Input
     {
-        /// <summary>The configuration</summary>
+        #region Const Messages
+
+        /// <summary>The message</summary>
         [NotNull]
-        private Config config;
+        private const string ErrorMessage = "Implement the method {0}";
+
+        #endregion
 
         /// <summary>The keys</summary>
         [AllowNull]
         private static List<Keyboard> keys;
 
-        /// <summary>Initializes the <see cref="Input" /> class.</summary>
+        /// <summary>The configuration</summary>
+        [NotNull]
+        private readonly Config config;
+
+        /// <summary> Initializes static members of the <see cref="Input"/> class. </summary>
         static Input() 
         {
             Keys = new List<Keyboard>();
             OnPressKey += Input_OnPressKey;
             OnPressKeyOnce += Input_OnPressKeyOnce;
+
+            Logger.Info();
         }
 
         /// <summary>Initializes a new instance of the <see cref="Input" /> class.</summary>
@@ -34,6 +45,8 @@ namespace Alis.Core
         public Input(Config config)
         {
             this.config = config;
+            Logger.Log("Print time: " + config.Time.TimeStep);
+            Logger.Info();
         }
 
         /// <summary>Occurs when [on press key].</summary>
@@ -46,39 +59,45 @@ namespace Alis.Core
         /// <value>The keys.</value>
         public static List<Keyboard> Keys { get => keys; set => keys = value; }
 
+        /// <summary>Gets the configuration.</summary>
+        /// <value>The configuration.</value>
+        [NotNull]
+        [JsonIgnore]
+        public Config Config => config;
+
         /// <summary>Awakes this instance.</summary>
         /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual Task Awake() => throw new NotImplementedException(GetType().FullName);
+        /// <exception cref="Logger.Error">Not Implemented</exception>
+        public virtual Task Awake() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual Task Start() => throw new NotImplementedException(GetType().FullName);
+        /// <exception cref="Logger.Error">Not Implemented</exception>
+        public virtual Task Start() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual Task Update() => throw new NotImplementedException(GetType().FullName);
+        /// <exception cref="Logger.Error">Not Implemented</exception>
+        public virtual Task Update() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Fixed the update.</summary>
         /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual Task FixedUpdate() => throw new NotImplementedException(GetType().FullName);
+        /// <exception cref="Logger.Error">Not Implemented</exception>
+        public virtual Task FixedUpdate() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Stops this instance.</summary>
         /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual Task Stop() => throw new NotImplementedException(GetType().FullName);
+        /// <exception cref="Logger.Error">Not Implemented</exception>
+        public virtual Task Stop() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Exits this instance.</summary>
         /// <returns>Return none</returns>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual Task Exit() => throw new NotImplementedException(GetType().FullName);
+        /// <exception cref="Logger.Error">Not Implemented</exception>
+        public virtual Task Exit() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Polls the events.</summary>
-        /// <exception cref="NotImplementedException">Not Implemented</exception>
-        public virtual void PollEvents() => throw new NotImplementedException(GetType().FullName);
+        /// <exception cref="Logger.Error">Not Implemented</exception>
+        public virtual void PollEvents() => throw Logger.Error(string.Format(ErrorMessage, string.Format(ErrorMessage, GetType().FullName)));
 
         /// <summary>Presses the key.</summary>
         /// <param name="key">The key.</param>

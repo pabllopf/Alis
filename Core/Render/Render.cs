@@ -7,6 +7,7 @@ namespace Alis.Core
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using Alis.Tools;
+    using Newtonsoft.Json;
 
     /// <summary>Render define</summary>
     public class Render
@@ -17,7 +18,7 @@ namespace Alis.Core
 
         /// <summary>The configuration</summary>
         [NotNull]
-        private Config config;
+        private readonly Config config;
 
         /// <summary>Initializes a new instance of the <see cref="Render" /> class.</summary>
         /// <param name="config">The configuration.</param>
@@ -26,6 +27,12 @@ namespace Alis.Core
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
         public static Render Current { get => current; set => current = value; }
+
+        /// <summary>Gets the configuration.</summary>
+        /// <value>The configuration.</value>
+        [NotNull]
+        [JsonIgnore]
+        public Config Config => config;
 
         /// <summary>Frames the bytes.</summary>
         /// <returns>Return the frame in bytes.</returns>

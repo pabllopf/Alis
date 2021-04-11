@@ -11,10 +11,10 @@ namespace Alis.Tools
     public static class Logger
     {
         /// <summary>The listener</summary>
-        private static TextWriterTraceListener listener = new TextWriterTraceListener(Console.Out);
+        private static readonly TextWriterTraceListener listener = new(Console.Out);
 
         /// <summary>The level</summary>
-        private static Level level = Level.Normal;
+        private static readonly Level level = Level.Normal;
 
         /// <summary>Informations this instance.</summary>
         [Conditional("DEBUG")]
@@ -80,7 +80,7 @@ namespace Alis.Tools
                     Trace.AutoFlush = true;
                 }
 
-                StackTrace stack = new StackTrace(true);
+                StackTrace stack = new(true);
 
                 string date = "[" + DateTime.Now.ToString() + "]";
                 string type = "LOG        ";
@@ -105,7 +105,7 @@ namespace Alis.Tools
                     Trace.AutoFlush = true;
                 }
 
-                StackTrace stack = new StackTrace(true);
+                StackTrace stack = new(true);
 
                 string date = "[" + DateTime.Now.ToString() + "]";
                 string type = "WARNING    ";
@@ -129,7 +129,7 @@ namespace Alis.Tools
                 Trace.AutoFlush = true;
             }
 
-            StackTrace stack = new StackTrace(true);
+            StackTrace stack = new(true);
 
             string date = "[" + DateTime.Now.ToString() + "]";
             string type = "ERROR      ";

@@ -1,6 +1,6 @@
 ﻿//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
-// <copyright file="VideoGame.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+// <copyright file="Game.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
@@ -31,11 +31,11 @@ namespace Alis.Core
 
         /// <summary>The is running</summary>
         [NotNull]
-        private bool isRunning;
+        private readonly bool isRunning;
 
         /// <summary>The is stopped</summary>
         [NotNull]
-        private bool isStopped;
+        private readonly bool isStopped;
 
         /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
         /// <param name="config">The configuration.</param>
@@ -131,7 +131,7 @@ namespace Alis.Core
         /// <c>true</c> if this instance is new frame; otherwise, <c>false</c>.</value>
         [NotNull]
         [JsonIgnore]
-        public bool IsNewFrame { get => config.TimeManager.IsNewFrame(); }
+        public bool IsNewFrame { get => config.Time.IsNewFrame(); }
 
         /// <summary>Loads the of file.</summary>
         /// <param name="file">The file.</param>
@@ -208,7 +208,6 @@ namespace Alis.Core
         private void FixedUpdate() 
         {
             Task.WaitAll(input.FixedUpdate(), sceneManager.FixedUpdate());
-            
 
             OnFixedUpdate?.Invoke(this, true);
         }
