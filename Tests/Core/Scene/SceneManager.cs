@@ -30,7 +30,6 @@ namespace Core
         {
             scene = new Alis.Core.Scene("Exampe");
             scene2 = new Alis.Core.Scene("Exampe2");
-
             sceneManager = new Alis.Core.SceneManager(new Alis.Core.Scene[] { scene, scene2 });
         }
 
