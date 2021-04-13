@@ -503,7 +503,7 @@ namespace Alis.Editor.UI.Widgets
 
         private static void NewCollision(GameObject obj)
         {
-            obj.Add(new Collision());
+            obj.Add(new Collision(new Vector2(10, 10), false));
         }
 
         private static void NewAudiosource(GameObject gameObject)

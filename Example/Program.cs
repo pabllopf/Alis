@@ -22,8 +22,21 @@ namespace Alis
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
+
+            /*VideoGame game = new VideoGame(new Config("name"), new Scene("Example"));
+            LocalData.Save("Data", game);
+
+            Thread.Sleep(2000);
+            var gameloaded = LocalData.Load<VideoGame>("Data");
+
+            //var configloaded = LocalData.Load<Config>("Data2");
+
+            
+            gameloaded.Run();*/
+
+
             VideoGame game = new VideoGame(
-                new Config("Example"),
+                new Config("Example33"),
                 new Scene("First",
                     new GameObject("Player",
                         new Transform(new Vector3(0F), new Vector3(0f), new Vector3(2f)),
@@ -55,16 +68,19 @@ namespace Alis
                 )
             );
 
-
             LocalData.Save("Example", game);
             Console.WriteLine("Saved game.");
 
-            game.Run();
+            //game.Run();
 
-            //Thread.Sleep(2000);
+            Thread.Sleep(2000);
 
             //Console.WriteLine("Loading game.");
-            //LocalData.Load<VideoGame>("Example").Run();
+            var gameloaded = LocalData.Load<VideoGame>("Example");
+
+            //Console.WriteLine(gameloaded.Config.Name + ": nombre");
+
+            gameloaded.Run();
 
             // Console.WriteLine("HHOLA");
 

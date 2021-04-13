@@ -43,7 +43,7 @@ namespace Alis.Tools
 
                 var settings = new JsonSerializerSettings
                 {
-                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
                     TypeNameHandling = TypeNameHandling.All
                 };
 
@@ -82,7 +82,7 @@ namespace Alis.Tools
                 var indented = Formatting.Indented;
                 var settings = new JsonSerializerSettings
                 {
-                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
                     TypeNameHandling = TypeNameHandling.All
                 };
 
@@ -97,7 +97,7 @@ namespace Alis.Tools
         /// <param name="name">The name.</param>
         /// <returns>Return the value data.</returns>
         /// <exception cref="NullReferenceException">When try to load null data</exception>
-        [return: NotNull]
+        [return: MaybeNull]
         public static T Load<T>([NotNull] string name)
         {
             string nameFile = name + ".json";
@@ -111,29 +111,29 @@ namespace Alis.Tools
 
             if (!File.Exists(file)) 
             {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException("hola fichero no se encuentra " + file);
             }
 
             var settings = new JsonSerializerSettings
             {
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
                 TypeNameHandling = TypeNameHandling.All
             };
 
             if (IsPrimitive(typeof(T)))
             {
-                return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException(typeof(T).GetType().FullName);
+                return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("esto es una variable primitiva" + typeof(T).GetType().FullName);
             }
             else
             {
                 if (File.Exists(file))
                 {
-                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings) ?? throw new NullReferenceException(typeof(T).GetType().FullName);
+                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
                 }
                 else 
                 {
                     Save<T>(name, (T)Activator.CreateInstance(typeof(T).GetType()));
-                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings) ?? throw new NullReferenceException(typeof(T).GetType().FullName);
+                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace Alis.Tools
 
             var settings = new JsonSerializerSettings
             {
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
                 TypeNameHandling = TypeNameHandling.All
             };
 

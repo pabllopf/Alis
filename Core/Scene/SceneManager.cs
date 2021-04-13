@@ -35,7 +35,7 @@ namespace Alis.Core
 
         /// <summary>The scenes</summary>
         [NotNull]
-        private readonly Memory<Scene> scenes;
+        private Memory<Scene> scenes;
 
         /// <summary>The current scene</summary>
         [NotNull]
@@ -49,7 +49,6 @@ namespace Alis.Core
 
         /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
         /// <param name="scenes">The scenes.</param>
-        [JsonConstructor]
         public SceneManager([NotNull] Scene[] scenes)
         {
             this.scenes = new Memory<Scene>(new Scene[MaxNumScene]);
@@ -62,11 +61,34 @@ namespace Alis.Core
                 }       
             }
 
-            currentScene = scenes.Length > 0 ? scenes[0] : new Scene("default");
+            currentScene = this.scenes.Span.Length > 0 ? this.scenes.Span[0] : new Scene("Default");
 
             current = this;
             
             Logger.Info();
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
+        /// <param name="scenes">The scenes.</param>
+        /// <param name="currentScene">The current scene.</param>
+        [JsonConstructor]
+        internal SceneManager([NotNull] Scene[] scenes, [NotNull] Scene currentScene)
+        {
+            this.scenes = new Memory<Scene>(new Scene[MaxNumScene]);
+            Span<Scene> span = this.scenes.Span;
+            for (int i = 0; i < scenes.Length; i++)
+            {
+                if (span[i] == null)
+                {
+                    span[i] = scenes[i];
+                }
+            }
+
+            this.currentScene = currentScene ?? (this.scenes.Span.Length > 0 ? this.scenes.Span[0] : new Scene("Default"));
+
+            current = this;
+
+            Logger.Warning("Build the scene manager from json.");
         }
 
         /// <summary>Occurs when [on change scene].</summary>
@@ -76,13 +98,13 @@ namespace Alis.Core
         /// <value>The scenes.</value>
         [NotNull]
         [JsonProperty("_Scenes")]
-        public Scene[] Scenes => scenes.ToArray();
+        public Scene[] Scenes { get => scenes.ToArray(); set => scenes = new Memory<Scene>(value); }
 
-        /// <summary>Gets the current scene.</summary>
+        /// <summary>Gets or sets the current scene.</summary>
         /// <value>The current scene.</value>
         [NotNull]
         [JsonProperty("_CurrentScene")]
-        public Scene CurrentScene => currentScene;
+        public Scene CurrentScene { get => currentScene; set => currentScene = value; }
 
         /// <summary>Loads the specified name.</summary>
         /// <param name="name">The name.</param>

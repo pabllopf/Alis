@@ -31,35 +31,11 @@ namespace Alis.Core
 
         /// <summary>The is running</summary>
         [NotNull]
-        private readonly bool isRunning;
+        private bool isRunning;
 
         /// <summary>The is stopped</summary>
         [NotNull]
-        private readonly bool isStopped;
-
-        /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
-        /// <param name="config">The configuration.</param>
-        /// <param name="sceneManager">The scene manager.</param>
-        [JsonConstructor]
-        public Game([NotNull] Config config, [NotNull] SceneManager sceneManager)
-        {
-            this.config = config;
-
-            render = new Render(config);
-            input = new Input(config);
-
-            isRunning = true;
-            isStopped = false;
-
-            this.sceneManager = sceneManager;
-
-            OnAwake += VideoGame_OnAwake;
-            OnStart += VideoGame_OnStart;
-            OnUpdate += VideoGame_OnUpdate;
-            OnFixedUpdate += VideoGame_OnFixedUpdate;
-            OnStop += VideoGame_OnStop;
-            OnExit += VideoGame_OnExit;
-        }
+        private bool isStopped;
 
         /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
         /// <param name="config">The configuration.</param>
@@ -82,6 +58,32 @@ namespace Alis.Core
             OnFixedUpdate += VideoGame_OnFixedUpdate;
             OnStop += VideoGame_OnStop;
             OnExit += VideoGame_OnExit;
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
+        /// <param name="config">The configuration.</param>
+        /// <param name="sceneManager">The scene manager.</param>
+        [JsonConstructor]
+        public Game(Config config, SceneManager sceneManager)
+        {
+            this.config = config ?? new Config("Default");
+
+            render = new Render(this.config);
+            input = new Input(this.config);
+
+            isRunning = true;
+            isStopped = false;
+
+            this.sceneManager = sceneManager ?? new SceneManager(new Scene[] { new Scene("Default") });
+
+            OnAwake += VideoGame_OnAwake;
+            OnStart += VideoGame_OnStart;
+            OnUpdate += VideoGame_OnUpdate;
+            OnFixedUpdate += VideoGame_OnFixedUpdate;
+            OnStop += VideoGame_OnStop;
+            OnExit += VideoGame_OnExit;
+
+            Logger.Warning("Build the videogame of json");
         }
 
         /// <summary>Occurs when [on awake].</summary>

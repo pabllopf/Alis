@@ -414,14 +414,6 @@
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
         </member>
-        <member name="M:Alis.Core.SFML.VideoGame.LoadOfFile(System.String)">
-            <summary>Loads the of file.</summary>
-            <param name="file">The file.</param>
-            <returns>Return game.</returns>
-        </member>
-        <member name="M:Alis.Core.SFML.VideoGame.RunOfFile">
-            <summary>Runs the of file.</summary>
-        </member>
         <member name="T:CoreSFML.Properties.Resources">
             <summary>
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.

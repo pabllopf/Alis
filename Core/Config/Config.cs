@@ -14,11 +14,11 @@ namespace Alis.Core
     {
         /// <summary>The name</summary>
         [NotNull]      
-        private readonly string name;
+        private string name;
 
         /// <summary>The time manager</summary>
         [NotNull]
-        private readonly Time time;
+        private Time time;
 
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
         /// <param name="name">The name.</param>
@@ -33,23 +33,24 @@ namespace Alis.Core
         /// <param name="name">The name.</param>
         /// <param name="timeManager">The time manager.</param>
         [JsonConstructor]
-        public Config([NotNull] string name, [NotNull] Time timeManager)
+        public Config([NotNull] string name, [NotNull] Time time)
         {
             this.name = name;
-            this.time = timeManager;
-            Logger.Info();
+            this.time = time;
+            Logger.Warning("Build config with json");
         }
 
         /// <summary>Gets the name.</summary>
         /// <value>The name.</value>
         [NotNull]
         [JsonProperty("_Name")]
-        public string Name => name;
+        public string Name { get => name; set => name = value; }
 
         /// <summary>Gets the time manager.</summary>
         /// <value>The time manager.</value>
         [NotNull]
         [JsonProperty("_Time")]
-        public Time Time => time;
+        public Time Time { get => time; set => time = value; }
+
     }
 }
