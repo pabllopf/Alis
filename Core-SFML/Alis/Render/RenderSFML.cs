@@ -2,8 +2,10 @@
 {
     using global::SFML.Graphics;
     using global::SFML.Window;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
 
@@ -39,22 +41,26 @@
 
         /// <summary>The collisions</summary>
         [NotNull]
-        private List<RectangleShape> collisions;
+        private List<RectangleShape> collisions = new List<RectangleShape>();
 
         /// <summary>Gets or sets the collisions.</summary>
         /// <value>The collisions.</value>
+        [JsonIgnore]
         public List<RectangleShape> Collisions { get => collisions; set => collisions = value; }
-       
+
         /// <summary>Gets the render window.</summary>
         /// <value>The render window.</value>
+        [JsonIgnore]
         public RenderWindow RenderWindow { get => renderWindow;  }
 
         /// <summary>Gets the render texture.</summary>
         /// <value>The render texture.</value>
+        [JsonIgnore]
         public RenderTexture RenderTexture { get => renderTexture; }
         
         /// <summary>Gets or sets the render SFML.</summary>
         /// <value>The render SFML.</value>
+        [JsonIgnore]
         public static RenderSFML CurrentRenderSFML { get => renderSFML; set => renderSFML = value; }
 
         /// <summary>Initializes a new instance of the <see cref="RenderSFML" /> class.</summary>
@@ -109,7 +115,21 @@
                 }
             }
 
+            RenderRectangle();
+
             renderWindow.Display();
+        }
+
+        [Conditional("DEBUG")]
+        private void RenderRectangle() 
+        {
+            if (collisions.Count > 0)
+            {
+                foreach (RectangleShape collision in collisions)
+                {
+                    renderWindow.Draw(collision);
+                }
+            }
         }
 
         /// <summary>Stops this instance.</summary>

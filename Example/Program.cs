@@ -29,7 +29,7 @@ namespace Alis
                         new Transform(new Vector3(0F), new Vector3(0f), new Vector3(2f)),
                         new AudioSource("menu.wav"),
                         new Sprite("tile000.png"),
-                        //new Collision(),
+                        new Collision(new Vector2(30, 55), false),
 
                         new Animator(0,
                                 new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
@@ -43,8 +43,8 @@ namespace Alis
 
                     new GameObject("Player3",
                         new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
-                        new Sprite("tile001.png")
-                        //new Collision()
+                        new Sprite("tile001.png"),
+                        new Collision(new Vector2(30, 55), false)
                     ),
 
                      new GameObject("Playere3",
@@ -59,13 +59,12 @@ namespace Alis
             LocalData.Save("Example", game);
             Console.WriteLine("Saved game.");
 
-            //game.Run();
+            game.Run();
 
-            Thread.Sleep(1000);
+            //Thread.Sleep(2000);
 
-
-            Console.WriteLine("Loading game.");
-            LocalData.Load<VideoGame>("Example").Run();
+            //Console.WriteLine("Loading game.");
+            //LocalData.Load<VideoGame>("Example").Run();
 
             // Console.WriteLine("HHOLA");
 

@@ -43,7 +43,7 @@ namespace Alis.Tools
 
                 var settings = new JsonSerializerSettings
                 {
-                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
                     TypeNameHandling = TypeNameHandling.All
                 };
 
@@ -82,7 +82,7 @@ namespace Alis.Tools
                 var indented = Formatting.Indented;
                 var settings = new JsonSerializerSettings
                 {
-                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
                     TypeNameHandling = TypeNameHandling.All
                 };
 
@@ -116,7 +116,7 @@ namespace Alis.Tools
 
             var settings = new JsonSerializerSettings
             {
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
                 TypeNameHandling = TypeNameHandling.All
             };
 
@@ -152,7 +152,7 @@ namespace Alis.Tools
 
             var settings = new JsonSerializerSettings
             {
-                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Full,
                 TypeNameHandling = TypeNameHandling.All
             };
 

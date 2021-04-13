@@ -219,19 +219,24 @@
         <member name="T:Alis.Core.SFML.Collision">
             <summary>Define a component</summary>
         </member>
+        <member name="F:Alis.Core.SFML.Collision.isTrigger">
+            <summary>The is trigger</summary>
+        </member>
         <member name="M:Alis.Core.SFML.Collision.#ctor(System.Numerics.Vector2,System.Boolean)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Collision" /> class.</summary>
             <param name="border">The border.</param>
             <param name="isTrigger">if set to <c>true</c> [is trigger].</param>
         </member>
-        <member name="M:Alis.Core.SFML.Collision.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Collision" /> class.</summary>
+        <member name="P:Alis.Core.SFML.Collision.IsTrigger">
+            <summary>Gets or sets a value indicating whether this instance is trigger.</summary>
+            <value>
+            <c>true</c> if this instance is trigger; otherwise, <c>false</c>.</value>
         </member>
         <member name="M:Alis.Core.SFML.Collision.Start">
-            <summary>Starts this instance.</summary>
+            <summary>Start this instance.</summary>
         </member>
         <member name="M:Alis.Core.SFML.Collision.Update">
-            <summary>Updates this instance.</summary>
+            <summary>Update this instance.</summary>
         </member>
         <member name="T:Alis.Core.SFML.Sprite">
             <summary>Define a component</summary>
