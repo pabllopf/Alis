@@ -22,6 +22,9 @@ namespace Alis
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
+            VideoGame.Builder.Build().Run();
+
+
 
             /*VideoGame game = new VideoGame(new Config("name"), new Scene("Example"));
             LocalData.Save("Data", game);
@@ -35,7 +38,7 @@ namespace Alis
             gameloaded.Run();*/
 
 
-            VideoGame game = new VideoGame(
+           /* VideoGame game = new VideoGame(
                 new Config("Example33"),
                 new Scene("First",
                     new GameObject("Player",
@@ -80,7 +83,7 @@ namespace Alis
 
             //Console.WriteLine(gameloaded.Config.Name + ": nombre");
 
-            gameloaded.Run();
+            gameloaded.Run();*/
 
             // Console.WriteLine("HHOLA");
 

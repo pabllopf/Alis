@@ -134,7 +134,7 @@ namespace Alis.Core
         [NotNull]
         [JsonIgnore]
         public bool IsNewFrame { get => config.Time.IsNewFrame(); }
-
+       
         /// <summary>Loads the of file.</summary>
         /// <param name="file">The file.</param>
         /// <returns>Return game.</returns>
@@ -230,6 +230,19 @@ namespace Alis.Core
 
             OnExit?.Invoke(this, true);
         }
+
+
+
+        public partial class Builder 
+        {
+            private static Game game = new Game(new Config("Default"));
+
+            public static Game Build() 
+            {
+                return game;
+            }
+        }
+
 
         #region DefineEvents
 

@@ -24,6 +24,15 @@
             Render = new RenderSFML(Config);
         }
 
+        public static class Builder
+        {
+            private static VideoGame game = new VideoGame(new Config("Default"));
+
+            public static VideoGame Build()
+            {
+                return game;
+            }
+        }
     }
 }
 
