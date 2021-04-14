@@ -54,8 +54,8 @@ namespace Alis
 
 
                                 .Scene(Scene.Builder().Name("SecondScene").Build())
-                .Build())
-            .Build()
+                    .Build())
+                .Build()
             .Run();
 
            /*game.Run();
