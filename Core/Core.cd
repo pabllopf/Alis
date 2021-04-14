@@ -2,13 +2,6 @@
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Alis.Core.Game">
     <Position X="6.75" Y="1.75" Width="1.5" />
-    <NestedTypes>
-      <Class Name="Alis.Core.Game.Builder" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Game.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAQHAAAYQiAAAADAEAAAAAAAEAAQABBAIHIBBAEQAEY=</HashCode>
       <FileName>Game.cs</FileName>
@@ -29,8 +22,15 @@
   </Class>
   <Class Name="Alis.Core.Scene">
     <Position X="13.5" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Core.Scene.SceneBuilder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scene\Scene.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>ARbAAAAEAiACBAAAUAAAJBQiAAAMAAgQIAAAAAAUIEA=</HashCode>
+      <HashCode>ARbAAAAEAiACBAAAUAAAJBwiAAAMAAgQIAAAAAAUIEA=</HashCode>
       <FileName>Scene\Scene.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -39,8 +39,15 @@
   </Class>
   <Class Name="Alis.Core.SceneManager">
     <Position X="10.5" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Core.SceneManager.SceneManagerBuilder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scene\SceneManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAQAgAAIAiAAAkgAgAAIAIAAgAAAAAAAIEAAAAAAAkA=</HashCode>
+      <HashCode>AAQAgAAIAiAAAkgAgAAIAIgAgAAQAAAAIEAAAAAAAkA=</HashCode>
       <FileName>Scene\SceneManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -53,8 +60,15 @@
   </Class>
   <Class Name="Alis.Core.GameObject">
     <Position X="17.5" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Core.GameObject.GameObjectBuilder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scene\GameObject\GameObject.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAYBAAgAAjAIAIBgEACAABRIEBEGCAAIJAAAAAAQKEg=</HashCode>
+      <HashCode>AAYBAAgAAjAIAIBgEACAABxIEBEGCAAIJAAAAAAQKEg=</HashCode>
       <FileName>Scene\GameObject\GameObject.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>

@@ -5,6 +5,7 @@
 namespace Alis.Core
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
@@ -196,7 +197,7 @@ namespace Alis.Core
             Span<GameObject> span = gameObjects.Span;
             for (int i = 0; i < lastIndex; i++)
             {
-                if (span[i] != null && span[i].IsActive && span[i].Equals(gameObject)) 
+                if (span[i] != null && span[i].IsActive && span[i].Name.Equals(gameObject.Name)) 
                 {
                     Logger.Log(string.Format(ContainsGameObject, span[i].Name, this.name));
                     return true;
@@ -525,5 +526,52 @@ namespace Alis.Core
         private void Scene_OnLoad([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
+
+        public static SceneBuilder Builder() => new SceneBuilder();
+
+        public class SceneBuilder
+        {
+            /// <summary>The current</summary>
+            [AllowNull]
+            private static SceneBuilder current;
+
+            [AllowNull]
+            private string name;
+
+            [AllowNull]
+            private List<GameObject> gameObjects;
+
+            /// <summary>Initializes a new instance of the <see cref="VideoGameBuilder" /> class.</summary>
+            public SceneBuilder() => current ??= this;
+
+            /// <summary>Sets the name.</summary>
+            /// <param name="name">The name.</param>
+            /// <returns>return scene </returns>
+            public SceneBuilder Name(string name) 
+            {
+                current.name = name;
+                return current;
+            }
+
+            /// <summary>Adds the game object.</summary>
+            /// <param name="gameObject">The game object.</param>
+            /// <returns>return scene </returns>
+            public SceneBuilder GameObject(GameObject gameObject) 
+            {
+                current.gameObjects ??= new List<GameObject>();
+                current.gameObjects.Add(gameObject);
+                return current;
+            }
+
+            /// <summary>Builds this instance.</summary>
+            /// <returns>Return the build. </returns>
+            public Scene Build()
+            {
+                current.name ??= "Default";
+                current.gameObjects ??= new List<GameObject>();
+
+                return new Scene(current.name, current.gameObjects.ToArray());
+            }
+        }
     }
 }

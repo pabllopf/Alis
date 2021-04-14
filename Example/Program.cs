@@ -22,9 +22,54 @@ namespace Alis
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
-            VideoGame.Builder.Build().Run();
+            VideoGame.Builder()
+                .Config(new Config("Alis"))
+                .SceneManager(SceneManager.Builder()
+                                .Scene(Scene.Builder()
+                                            .Name("MainScene")
+                                            .GameObject(GameObject.Builder()
+                                                            .Name("player")
+                                                            .Transform(new Transform(new Vector3(-5.0f), new Vector3(0.0f), new Vector3(2.0f)))
+                                                            .Component(new Sprite("tile000.png"))
+                                                            .Component(new AudioSource("menu.wav"))
+                                                            .Component(new Collision(new Vector2(30, 55), false))
+                                                            .Component(new Animator(0,
+                                                                        new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
+                                                                        new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
+                                                                        new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
+                                                                        new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
+                                                            ))
+
+                                                            .Component(new Move())
+                                                            .Component(new Camera(new Vector2(0f), new Vector2(640, 380)))
+                                                            .Build())
+
+                                            .GameObject(GameObject.Builder()
+                                                            .Name("enemy")
+                                                            .Transform(new Transform(new Vector3(45.0f), new Vector3(0.0f), new Vector3(2.0f)))
+                                                            .Component(new Sprite("tile001.png"))
+                                                            .Component(new Collision(new Vector2(30, 55), false))
+                                                            .Build())
+                                            .Build())
 
 
+                                .Scene(Scene.Builder().Name("SecondScene").Build())
+                .Build())
+            .Build()
+            .Run();
+
+           /*game.Run();
+
+            
+
+            LocalData.Save("game", game);
+
+            var gameloaded = LocalData.Load<VideoGame>("game");
+
+            
+            
+            
+            gameloaded.Run();*/
 
             /*VideoGame game = new VideoGame(new Config("name"), new Scene("Example"));
             LocalData.Save("Data", game);
@@ -38,52 +83,52 @@ namespace Alis
             gameloaded.Run();*/
 
 
-           /* VideoGame game = new VideoGame(
-                new Config("Example33"),
-                new Scene("First",
-                    new GameObject("Player",
-                        new Transform(new Vector3(0F), new Vector3(0f), new Vector3(2f)),
-                        new AudioSource("menu.wav"),
-                        new Sprite("tile000.png"),
-                        new Collision(new Vector2(30, 55), false),
+            /* VideoGame game = new VideoGame(
+                 new Config("Example33"),
+                 new Scene("First",
+                     new GameObject("Player",
+                         new Transform(new Vector3(0F), new Vector3(0f), new Vector3(2f)),
+                         new AudioSource("menu.wav"),
+                         new Sprite("tile000.png"),
+                         new Collision(new Vector2(30, 55), false),
 
-                        new Animator(0,
-                                new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
-                                new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
-                                new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
-                                new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
-                        ),
-                        new Move(),
-                        new Camera(new Vector2(0f), new Vector2(640, 380))
-                    ),
+                         new Animator(0,
+                                 new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
+                                 new Animation("MoveRight", 1, 0.1f, "tile017.png", "tile018.png", "tile019.png", "tile020.png"),
+                                 new Animation("MoveUp", 2, 0.1f, "tile034.png", "tile035.png", "tile036.png", "tile037.png"),
+                                 new Animation("MoveLeft", 3, 0.1f, "tile051.png", "tile052.png", "tile053.png", "tile054.png")
+                         ),
+                         new Move(),
+                         new Camera(new Vector2(0f), new Vector2(640, 380))
+                     ),
 
-                    new GameObject("Player3",
-                        new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
-                        new Sprite("tile001.png"),
-                        new Collision(new Vector2(30, 55), false)
-                    ),
+                     new GameObject("Player3",
+                         new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
+                         new Sprite("tile001.png"),
+                         new Collision(new Vector2(30, 55), false)
+                     ),
 
-                     new GameObject("Playere3",
-                        new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
-                        new Sprite("tile001.png")
-                        //new Collision()
-                    )
-                )
-            );
+                      new GameObject("Playere3",
+                         new Transform(new Vector3(15f), new Vector3(0f), new Vector3(2f)),
+                         new Sprite("tile001.png")
+                         //new Collision()
+                     )
+                 )
+             );
 
-            LocalData.Save("Example", game);
-            Console.WriteLine("Saved game.");
+             LocalData.Save("Example", game);
+             Console.WriteLine("Saved game.");
 
-            //game.Run();
+             //game.Run();
 
-            Thread.Sleep(2000);
+             Thread.Sleep(2000);
 
-            //Console.WriteLine("Loading game.");
-            var gameloaded = LocalData.Load<VideoGame>("Example");
+             //Console.WriteLine("Loading game.");
+             var gameloaded = LocalData.Load<VideoGame>("Example");
 
-            //Console.WriteLine(gameloaded.Config.Name + ": nombre");
+             //Console.WriteLine(gameloaded.Config.Name + ": nombre");
 
-            gameloaded.Run();*/
+             gameloaded.Run();*/
 
             // Console.WriteLine("HHOLA");
 

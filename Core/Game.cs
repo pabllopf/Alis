@@ -231,19 +231,6 @@ namespace Alis.Core
             OnExit?.Invoke(this, true);
         }
 
-
-
-        public partial class Builder 
-        {
-            private static Game game = new Game(new Config("Default"));
-
-            public static Game Build() 
-            {
-                return game;
-            }
-        }
-
-
         #region DefineEvents
 
         /// <summary>Video the game on start.</summary>

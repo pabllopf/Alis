@@ -414,6 +414,51 @@
             <param name="sender">The source of the event.</param>
             <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
         </member>
+        <member name="T:Alis.Core.SFML.VideoGame">
+            <summary>Video game</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.#ctor(Alis.Core.Config,Alis.Core.SceneManager)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+            <param name="sceneManager">The scene manager.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.#ctor(Alis.Core.Config,Alis.Core.Scene[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+            <param name="scenes">The scene.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.Builder">
+            <summary>The builder</summary>
+        </member>
+        <member name="T:Alis.Core.SFML.VideoGame.VideoGameBuilder">
+            <summary>Video Game Builder</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.VideoGame.VideoGameBuilder.current">
+            <summary>The current</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.VideoGame.VideoGameBuilder.config">
+            <summary>The configuration</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.VideoGame.VideoGameBuilder.sceneManager">
+            <summary>The scene manager</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.VideoGame.VideoGameBuilder" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.Config(Alis.Core.Config)">
+            <summary>Configurations the specified configuration.</summary>
+            <param name="config">The configuration.</param>
+            <returns>Return the video game builder</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.SceneManager(Alis.Core.SceneManager)">
+            <summary>Scenes the manager.</summary>
+            <param name="sceneManager">The scene manager.</param>
+            <returns>Return the scene manager. </returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.Build">
+            <summary>Builds this instance.</summary>
+            <returns>Return the build.</returns>
+        </member>
         <member name="T:CoreSFML.Properties.Resources">
             <summary>
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.

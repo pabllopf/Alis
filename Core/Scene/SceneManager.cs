@@ -5,6 +5,7 @@
 namespace Alis.Core
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
     using Alis.Tools;
@@ -49,16 +50,20 @@ namespace Alis.Core
 
         /// <summary>Initializes a new instance of the <see cref="SceneManager" /> class.</summary>
         /// <param name="scenes">The scenes.</param>
-        public SceneManager([NotNull] Scene[] scenes)
+        public SceneManager([NotNull] params Scene[] scenes)
         {
             this.scenes = new Memory<Scene>(new Scene[MaxNumScene]);
             Span<Scene> span = this.scenes.Span;
-            for (int i = 0; i < scenes.Length; i++) 
+
+            if (scenes != null) 
             {
-                if (span[i] == null) 
+                for (int i = 0; i < scenes.Length; i++)
                 {
-                    span[i] = scenes[i];
-                }       
+                    if (span[i] == null)
+                    {
+                        span[i] = scenes[i];
+                    }
+                }
             }
 
             currentScene = this.scenes.Span.Length > 0 ? this.scenes.Span[0] : new Scene("Default");
@@ -131,6 +136,19 @@ namespace Alis.Core
             Logger.Warning(string.Format(DontChangeScene, name, current.currentScene.Name));
         }
 
+        public void AddScene(Scene scene) 
+        {
+            Span<Scene> span = this.scenes.Span;
+            for (int i = 0; i < scenes.Length; i++)
+            {
+                if (span[i] == null)
+                {
+                    span[i] = scene;
+                    return;
+                }
+            }
+        }
+
         /// <summary>Awakes this instance.</summary>
         /// <returns>Awake scene.</returns>
         internal Task Awake() => Task.Run(() => currentScene?.Awake());
@@ -168,5 +186,40 @@ namespace Alis.Core
         private static void SceneManager_OnChangeScene([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
+
+        /// <summary>The builder</summary>
+        public static SceneManagerBuilder Builder() => new SceneManagerBuilder();
+
+        /// <summary> Scene Manager Builder</summary>
+        public class SceneManagerBuilder
+        {
+            /// <summary>The current</summary>
+            [AllowNull]
+            private static SceneManagerBuilder current;
+
+            [AllowNull]
+            private List<Scene> scenes;
+
+            /// <summary>Initializes a new instance of the <see cref="VideoGameBuilder" /> class.</summary>
+            public SceneManagerBuilder() => current ??= this;
+
+            /// <summary>Adds the scene.</summary>
+            /// <param name="scene">The scene.</param>
+            /// <returns>Return the builder</returns>
+            public SceneManagerBuilder Scene(Scene scene) 
+            {
+                current.scenes ??= new List<Scene>();
+                current.scenes.Add(scene);
+                return current;
+            }
+
+            /// <summary>Builds this instance.</summary>
+            /// <returns>Build the scene manager</returns>
+            public SceneManager Build()
+            {
+                current.scenes ??= new List<Scene>();
+                return new SceneManager(current.scenes.ToArray());
+            }
+        }
     }
 }

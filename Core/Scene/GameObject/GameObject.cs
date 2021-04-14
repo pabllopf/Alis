@@ -5,6 +5,7 @@
 namespace Alis.Core
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using Alis.Tools;
     using Newtonsoft.Json;
@@ -49,7 +50,7 @@ namespace Alis.Core
 
         /// <summary>The transform</summary>
         [NotNull]
-        private readonly Transform transform;
+        private Transform transform;
 
         /// <summary>The span</summary>
         [NotNull]
@@ -422,5 +423,70 @@ namespace Alis.Core
         private void GameObject_OnDisable([NotNull] object sender, [NotNull] bool e) => Logger.Info();
 
         #endregion
+
+
+        public static GameObjectBuilder Builder() => new GameObjectBuilder();
+
+        public class GameObjectBuilder
+        {
+            /// <summary>The current</summary>
+            [AllowNull]
+            private GameObjectBuilder current;
+
+            /// <summary>The name</summary>
+            [AllowNull]
+            private string name;
+
+            /// <summary>The transform</summary>
+            [AllowNull]
+            private Transform transform;
+
+            /// <summary>The components</summary>
+            [AllowNull]
+            private List<Component> components;
+
+            /// <summary>Initializes a new instance of the <see cref="VideoGameBuilder" /> class.</summary>
+            public GameObjectBuilder() => current ??= this;
+
+            /// <summary>Sets the name.</summary>
+            /// <param name="name">The name.</param>
+            /// <returns>return game object.</returns>
+            public GameObjectBuilder Name(string name)
+            {
+                current.name = name;
+                return current;
+            }
+
+            /// <summary>Adds the component.</summary>
+            /// <typeparam name="T"></typeparam>
+            /// <param name="component">The component.</param>
+            /// <returns>return game object.</returns>
+            public GameObjectBuilder Component<T>(T component) where T : Component 
+            {
+                current.components ??= new List<Component>();
+                current.components.Add(component);
+                return current;
+            }
+
+            /// <summary>Transforms the specified transform.</summary>
+            /// <param name="transform">The transform.</param>
+            /// <returns> </returns>
+            public GameObjectBuilder Transform(Transform transform) 
+            {
+                current.transform = transform;
+                return current;
+            }
+
+            /// <summary>Builds this instance.</summary>
+            /// <returns>Return the build. </returns>
+            public GameObject Build()
+            {
+                current.name ??= "GameObject";
+                current.transform ??= new Transform();
+                current.components ??= new List<Component>();
+
+                return new GameObject(current.name, current.transform, current.components.ToArray());
+            }
+        }
     }
 }
