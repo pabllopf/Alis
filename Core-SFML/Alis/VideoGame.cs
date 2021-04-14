@@ -75,6 +75,28 @@
 
                 return new VideoGame(current.config, current.sceneManager);
             }
+
+            /// <summary>Builds the specified game.</summary>
+            /// <param name="game">The game.</param>
+            /// <returns>Return the build.</returns>
+            public VideoGame Build(out VideoGame game)
+            {
+                current.config ??= new Config("Default");
+                current.sceneManager ??= new SceneManager();
+
+                game = new VideoGame(current.config, current.sceneManager);
+
+                return game;
+            }
+
+            /// <summary>Runs this instance.</summary>
+            public void Run()
+            {
+                current.config ??= new Config("Default");
+                current.sceneManager ??= new SceneManager();
+
+                new VideoGame(current.config, current.sceneManager).Run();
+            }
         }
     }
 }

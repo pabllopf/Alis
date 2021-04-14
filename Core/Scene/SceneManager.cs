@@ -195,7 +195,7 @@ namespace Alis.Core
         {
             /// <summary>The current</summary>
             [AllowNull]
-            private static SceneManagerBuilder current;
+            private SceneManagerBuilder current;
 
             [AllowNull]
             private List<Scene> scenes;

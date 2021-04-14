@@ -143,5 +143,67 @@ namespace Alis.Core
                 return true;
             }
         }
+
+        /// <summary>The builder</summary>
+        public static TimeBuilder Builder() => new TimeBuilder();
+
+        /// <summary> Scene Manager Builder</summary>
+        public class TimeBuilder
+        {
+            /// <summary>The current</summary>
+            [AllowNull]
+            private TimeBuilder current;
+
+            /// <summary>The time</summary>
+            [AllowNull]
+            private Time time = new Time(0.01f, 1.0f, 60.0f, false);
+
+            /// <summary>Initializes a new instance of the <see cref="VideoGameBuilder" /> class.</summary>
+            public TimeBuilder() => current ??= this;
+
+            /// <summary>Times the step.</summary>
+            /// <param name="timeStep">The time step.</param>
+            /// <returns>Time Builder</returns>
+            public TimeBuilder TimeStep(float timeStep)
+            {
+                current.time.timeStep = timeStep;
+                return current;
+            }
+
+            /// <summary>Times the scale.</summary>
+            /// <param name="timeScale">The time scale.</param>
+            /// <returns>Time Builder</returns>
+            public TimeBuilder TimeScale(float timeScale)
+            {
+                current.time.timeScale = timeScale;
+                return current;
+            }
+
+            /// <summary>Frames the rate.</summary>
+            /// <param name="frameRate">The frame rate.</param>
+            /// <returns>Time Builder</returns>
+            public TimeBuilder FrameRate(float frameRate)
+            {
+                current.time.frameRate = frameRate;
+                return current;
+            }
+
+            /// <summary>Limits the frame rate.</summary>
+            /// <param name="limitFrameRate">if set to <c>true</c> [limit frame rate].</param>
+            /// <returns>Time Builder</returns>
+            public TimeBuilder LimitFrameRate(bool limitFrameRate)
+            {
+                current.time.limitFrameRate = limitFrameRate;
+                return current;
+            }
+
+
+            /// <summary>Builds this instance.</summary>
+            /// <returns>Build the scene manager</returns>
+            public Time Build()
+            {
+                return new Time(current.time.timeStep, current.time.timeScale, current.time.frameRate, current.time.limitFrameRate);
+            }
+        }
     }
 }

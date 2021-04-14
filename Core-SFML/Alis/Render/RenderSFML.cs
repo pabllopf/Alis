@@ -100,7 +100,9 @@
         {
             if (renderWindow is null)
             {
-                renderWindow = new RenderWindow(videoMode, config.Name);
+                videoMode = new VideoMode((uint)config.Window.Resolution.X, (uint)config.Window.Resolution.Y);
+                Styles styles = config.Window.WindowState == WindowState.FullScreen ? Styles.Fullscreen : Styles.Default;
+                renderWindow = new RenderWindow(videoMode, config.Name + "-" + config.Author, styles);
                 renderWindow.Closed += RenderWindow_Closed;
             }
 

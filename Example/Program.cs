@@ -22,8 +22,23 @@ namespace Alis
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
+            VideoGame game = new VideoGame(new Config("Default"));
+
             VideoGame.Builder()
-                .Config(new Config("Alis"))
+                .Config(Config.Builder()
+                            .Name("Alis Game")
+                            .Author("Pablo Perdomo Falcón")
+                            .Time(Time.Builder()
+                                .TimeStep(0.01f)
+                                .TimeScale(1.0f)
+                                .LimitFrameRate(false)
+                                .Build())
+                            .Window(WindowManager.Builder()
+                                    .Resolution(1024, 640)
+                                    .WindowState(WindowState.Normal)
+                                    .Build())
+                            .Build())
+
                 .SceneManager(SceneManager.Builder()
                                 .Scene(Scene.Builder()
                                             .Name("MainScene")
@@ -52,24 +67,29 @@ namespace Alis
                                                             .Build())
                                             .Build())
 
-
                                 .Scene(Scene.Builder().Name("SecondScene").Build())
-                    .Build())
-                .Build()
-            .Run();
+                  .Build())
+            .Build(out game);
 
-           /*game.Run();
-
-            
+            Thread.Sleep(1000);
 
             LocalData.Save("game", game);
 
-            var gameloaded = LocalData.Load<VideoGame>("game");
+            Thread.Sleep(1000);
 
-            
-            
-            
-            gameloaded.Run();*/
+            var gameloaded  = LocalData.Load<VideoGame>("game");
+            gameloaded.Run();
+
+            /*
+
+             LocalData.Save("game", game);
+
+             var gameloaded = LocalData.Load<VideoGame>("game");
+
+
+
+
+             gameloaded.Run();*/
 
             /*VideoGame game = new VideoGame(new Config("name"), new Scene("Example"));
             LocalData.Save("Data", game);

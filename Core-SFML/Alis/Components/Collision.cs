@@ -5,6 +5,7 @@
 namespace Alis.Core.SFML
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Numerics;
     using Alis.Tools;
     using Newtonsoft.Json;
 
@@ -75,6 +76,10 @@ namespace Alis.Core.SFML
         [NotNull]
         [JsonProperty("_IsTrigger")]
         public bool IsTrigger { get => isTrigger; set => isTrigger = value; }
+
+        [NotNull]
+        [JsonProperty("_Border")]
+        public Vector2 Border { get => border; set => border = value; }
 
         /// <summary>Start this instance.</summary>
         public override void Start()

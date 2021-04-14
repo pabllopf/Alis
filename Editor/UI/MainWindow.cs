@@ -40,7 +40,7 @@ namespace Alis.Editor.UI
         private WindowCreateInfo windowCreateInfo;
 
         /// <summary>The window state</summary>
-        private WindowState windowState;
+        private Veldrid.WindowState windowState;
 
         /// <summary>The graphics device</summary>
         private GraphicsDevice graphicsDevice;
@@ -102,7 +102,7 @@ namespace Alis.Editor.UI
         {
             Logger.Log("\nStarting Main Window...");
 
-            windowState = WindowState.Maximized;
+            windowState = Veldrid.WindowState.Maximized;
 
             windowCreateInfo = new WindowCreateInfo(
                 x: StartPosX,

@@ -101,8 +101,15 @@
   </Class>
   <Class Name="Alis.Core.Config">
     <Position X="3.75" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Core.Config.ConfigBuilder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Config\Config.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAAAAAQA=</HashCode>
       <FileName>Config\Config.cs</FileName>
     </TypeIdentifier>
   </Class>

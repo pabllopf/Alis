@@ -459,6 +459,14 @@
             <summary>Builds this instance.</summary>
             <returns>Return the build.</returns>
         </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.Build(Alis.Core.SFML.VideoGame@)">
+            <summary>Builds the specified game.</summary>
+            <param name="game">The game.</param>
+            <returns>Return the build.</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.Run">
+            <summary>Runs this instance.</summary>
+        </member>
         <member name="T:CoreSFML.Properties.Resources">
             <summary>
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
