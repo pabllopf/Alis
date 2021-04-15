@@ -78,6 +78,8 @@ namespace Alis.Editor
         [return: NotNull]
         public int Start()
         {
+            Logger.Log("Starting engine");
+
             if (!FirstInstance)
             {
                 throw Logger.Error("There is already an 'Alis instance' running.");

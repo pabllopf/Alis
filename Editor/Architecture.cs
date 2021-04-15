@@ -8,12 +8,12 @@ namespace Alis.Editor
     public enum Architecture
     {
         /// <summary>The unsupported</summary>
-        Unsupported,
+        Unsupported = 0,
 
         /// <summary>The 64 architecture</summary>
-        X64,
+        X64 = 1,
 
         /// <summary>The 32 architecture</summary>
-        X86
+        X86 = 2
     }
 }

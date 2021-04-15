@@ -4,148 +4,42 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
-    using Alis.Tools;
-    using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using Alis.Tools;
 
     /// <summary>Widget Manager</summary>
     public class WidgetManager
     {
-        /// <summary>The widget events</summary>
-        private readonly Dictionary<EventType, Action<WidgetManager>> widgetEvents = new Dictionary<EventType, Action<WidgetManager>>()
-        {
-            { EventType.OpenConsole, ProcessOpenConsole },
-            { EventType.CloseConsole, ProcessCloseConsole },
-            { EventType.ExitEditor, ProcessExitEditor },
-            { EventType.OpenCreateProject, ProcessOpenCreatorProject },
-            { EventType.CloseCreateProject, ProcessCloseCreatorProject},
-            { EventType.OpenProject, ProcessOpenProject},
-        };
-
         /// <summary>The widgets</summary>
-        private List<Widget> widgets = new List<Widget>();
+        [NotNull]
+        private List<Widget> widgets;
 
-        /// <summary>The pending events</summary>
-        private Stack<EventType> pendingEvents = new Stack<EventType>();
+        /// <summary>The information</summary>
+        [NotNull]
+        private Info info;
 
         /// <summary>Initializes a new instance of the <see cref="WidgetManager" /> class.</summary>
         public WidgetManager(Info info)
         {
-            EventHandler += ManageEventHandler;
+            widgets = new List<Widget>();
 
-            widgets.Add(new DockSpace(EventHandler));
-            
-            widgets.Add(new TopMenu(EventHandler, info));
-            widgets.Add(new BottomMenu(EventHandler));
-
-            widgets.Add(new ProjectManager(EventHandler, true));
-
-            widgets.Add(new Console(EventHandler));
-
-            widgets.Add(new SceneView());
-
-            /*
-            
-
-           
-            widgets.Add(BottomMenu.Current);
-
-            Inspector.Current = new Inspector();
-            widgets.Add(Inspector.Current);
-            widgets.Add(new SceneView());
-            widgets.Add(new AssetsManager());
-
-            GameView.Current = new GameView(EventHandler);
-            widgets.Add(GameView.Current);
-
-            Hierarchy.Current = new Hierarchy();
-            widgets.Add(Hierarchy.Current);*/
-
+            widgets.Add(new DockSpace());
+            widgets.Add(new Console());
+          
             Logger.Info();
         }
-
-        /// <summary>Occurs when [event handler].</summary>
-        public event EventHandler<EventType> EventHandler;
 
         /// <summary>Draws this instance.</summary>
         public void Update()
         {
-            for (int i = 0; i < pendingEvents.Count; i++)
-            {
-                widgetEvents[pendingEvents.Pop()](this);
-            }
-
             for (int i = 0; i < widgets.Count; i++)
             {
-                widgets[i].Draw();
+                if (widgets[i] != null) 
+                {
+                    widgets[i].Draw();
+                }
             }
-        }
-
-        /// <summary>Invokes the open console.</summary>
-        /// <param name="obj">The object.</param>
-        private static void ProcessOpenConsole(WidgetManager obj)
-        {
-            if (!obj.widgets.Exists(i => i.GetType() == typeof(Console)))
-            {
-                Console.Current = new Console(obj.EventHandler);
-                obj.widgets.Add(Console.Current);
-                Logger.Log("Process Open Console");
-            }
-        }
-
-        /// <summary>Invokes the close console.</summary>
-        /// <param name="obj">The object.</param>
-        private static void ProcessCloseConsole(WidgetManager obj)
-        {
-            obj.widgets.RemoveAll(i => i.GetType() == typeof(Console));
-            Logger.Log("Process Close Console");
-        }
-
-        /// <summary>Processes the exit editor.</summary>
-        private static void ProcessExitEditor(WidgetManager obj) 
-        {
-            Environment.Exit(1);
-            Logger.Log("Process Exit Editor");
-        }
-
-        /// <summary>Processes the creator project.</summary>
-        /// <param name="obj">The object.</param>
-        private static void ProcessCloseCreatorProject(WidgetManager obj)
-        {
-            obj.widgets.RemoveAll(i => i.GetType() == typeof(ProjectManager));
-            Logger.Log("Process Creator Project");
-        }
-
-        /// <summary>Processes the open creator project.</summary>
-        /// <param name="obj">The object.</param>
-        private static void ProcessOpenCreatorProject(WidgetManager obj)
-        {
-            if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectManager)))
-            {
-                obj.widgets.Add(new ProjectManager(obj.EventHandler, false));
-                Logger.Log("Add new WidgetManager + ProjectManager");
-            }
-        }
-
-        /// <summary>Processes the open project.</summary>
-        /// <param name="obj">The object.</param>
-        /// <exception cref="NotImplementedException"></exception>
-        private static void ProcessOpenProject(WidgetManager obj)
-        {
-            if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectManager)))
-            {
-                obj.widgets.Add(new ProjectManager(obj.EventHandler, true));
-                Logger.Log("Add new WidgetManager + ProjectManager");
-            }
-        }
-
-        /// <summary>Manages the event handler.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The e.</param>
-        private void ManageEventHandler(object sender, EventType e)
-        {
-            pendingEvents.Push(e);
-            Logger.Log("Generated New Event " + e.ToString());
         }
     }
 }

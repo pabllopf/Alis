@@ -76,7 +76,7 @@ namespace ImGuiNET
 
             
 
-            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "Resources/Segoe_Bold.ttf");
+            //Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory + "Resources/Segoe_Bold.ttf");
 
 
             unsafe
