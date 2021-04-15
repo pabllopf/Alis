@@ -39,7 +39,7 @@ namespace Alis.Editor.UI.Widgets
             imGuiController = MainWindow.imGuiController;
 
 
-            Project.OnChangeProject += Project_OnChangeProject;
+            Project.OnChange += Project_OnChangeProject;
         }
 
         /// <summary>Projects the on change project.</summary>
@@ -47,7 +47,7 @@ namespace Alis.Editor.UI.Widgets
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void Project_OnChangeProject(object sender, bool e)
         {
-            image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
+            image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
             imageSharpTexture = new ImageSharpTexture(image, true);
             texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
             intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
@@ -67,9 +67,9 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin(Name))
             {
-                if (Project.Current != null) 
+                if (Project.VideoGame != null && Project.Current != null) 
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
+                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
                     imageSharpTexture = new ImageSharpTexture(image, true);
 
                     unsafe

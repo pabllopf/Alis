@@ -19,19 +19,13 @@
         <member name="T:Alis.Editor.Project">
             <summary>Project define.</summary>
         </member>
-        <member name="F:Alis.Editor.Project.videoGame">
-            <summary>The video game</summary>
-        </member>
         <member name="F:Alis.Editor.Project.current">
             <summary>The current</summary>
-        </member>
-        <member name="F:Alis.Editor.Project.name">
-            <summary>The name</summary>
         </member>
         <member name="F:Alis.Editor.Project.directory">
             <summary>The directory</summary>
         </member>
-        <member name="F:Alis.Editor.Project.assetsPath">
+        <member name="F:Alis.Editor.Project.assetPath">
             <summary>The assets path</summary>
         </member>
         <member name="F:Alis.Editor.Project.configPath">
@@ -40,24 +34,25 @@
         <member name="F:Alis.Editor.Project.dataPath">
             <summary>The data path</summary>
         </member>
-        <member name="F:Alis.Editor.Project.libraryPath">
+        <member name="F:Alis.Editor.Project.libPath">
             <summary>The library path</summary>
+        </member>
+        <member name="M:Alis.Editor.Project.#ctor(System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Project" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="directory">The directory.</param>
         </member>
         <member name="M:Alis.Editor.Project.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Project" /> class.</summary>
             <param name="name">The name.</param>
             <param name="directory">The directory.</param>
-            <param name="assetsPath">The assets path.</param>
+            <param name="assetPath">The asset path.</param>
             <param name="configPath">The configuration path.</param>
             <param name="dataPath">The data path.</param>
-            <param name="libraryPath">The library path.</param>
+            <param name="libPath">The library path.</param>
         </member>
-        <member name="E:Alis.Editor.Project.OnChangeProject">
-            <summary>Occurs when [event handler].</summary>
-        </member>
-        <member name="P:Alis.Editor.Project.VideoGame">
-            <summary>Gets or sets the video game.</summary>
-            <value>The video game.</value>
+        <member name="E:Alis.Editor.Project.OnChange">
+            <summary>Occurs when [on change].</summary>
         </member>
         <member name="P:Alis.Editor.Project.Current">
             <summary>Gets or sets the current.</summary>
@@ -72,8 +67,8 @@
             <value>The directory.</value>
         </member>
         <member name="P:Alis.Editor.Project.AssetsPath">
-            <summary>Gets or sets the assets path.</summary>
-            <value>The assets path.</value>
+            <summary>Gets or sets the asset path.</summary>
+            <value>The asset path.</value>
         </member>
         <member name="P:Alis.Editor.Project.ConfigPath">
             <summary>Gets or sets the configuration path.</summary>
@@ -87,14 +82,14 @@
             <summary>Gets or sets the library path.</summary>
             <value>The library path.</value>
         </member>
-        <member name="M:Alis.Editor.Project.ChangeProject(Alis.Editor.Project,Alis.Core.SFML.VideoGame)">
-            <summary>Changes the project.</summary>
-            <param name="project">The project.</param>
-            <param name="game">The game.</param>
+        <member name="P:Alis.Editor.Project.VideoGame">
+            <summary>Gets or sets the video game.</summary>
+            <value>The video game.</value>
         </member>
-        <member name="M:Alis.Editor.Project.GetDebuggerDisplay">
-            <summary>Gets the debugger display.</summary>
-            <returns>Debug method</returns>
+        <member name="M:Alis.Editor.Project.Project_OnChange(System.Object,System.Boolean)">
+            <summary>Projects the on change.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
         </member>
         <member name="T:Alis.Editor.TypeProject">
             <summary>Type Project</summary>
@@ -108,20 +103,11 @@
         <member name="T:Alis.Editor.Engine">
             <summary>Manage the engine</summary>
         </member>
-        <member name="F:Alis.Editor.Engine.platform">
-            <summary>The platform</summary>
-        </member>
-        <member name="F:Alis.Editor.Engine.architecture">
-            <summary>The architecture</summary>
-        </member>
-        <member name="F:Alis.Editor.Engine.graphics">
-            <summary>The graphics</summary>
-        </member>
-        <member name="F:Alis.Editor.Engine.mainWindow">
-            <summary>The main window</summary>
-        </member>
         <member name="F:Alis.Editor.Engine.info">
             <summary>The information</summary>
+        </member>
+        <member name="F:Alis.Editor.Engine.args">
+            <summary>The arguments</summary>
         </member>
         <member name="M:Alis.Editor.Engine.#ctor(System.String[])">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Engine" /> class.</summary>
@@ -180,6 +166,9 @@
             <param name="architecture">The architecture.</param>
             <param name="graphics">The graphics.</param>
         </member>
+        <member name="M:Alis.Editor.Info.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Info" /> class.</summary>
+        </member>
         <member name="P:Alis.Editor.Info.Platform">
             <summary>Gets or sets the platform.</summary>
             <value>The platform.</value>
@@ -209,9 +198,6 @@
         </member>
         <member name="T:Alis.Editor.Program">
             <summary>Run the engine</summary>
-        </member>
-        <member name="F:Alis.Editor.Program.engine">
-            <summary>The engine</summary>
         </member>
         <member name="M:Alis.Editor.Program.Main(System.String[])">
             <summary>Mains the specified arguments.</summary>

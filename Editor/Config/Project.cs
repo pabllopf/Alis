@@ -4,103 +4,140 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor
 {
-    using System;
-    using System.Diagnostics;
-    using Alis.Core;
     using Alis.Core.SFML;
+    using Alis.Tools;
+    using Newtonsoft.Json;
+    using System;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>Project define.</summary>
-    [DebuggerDisplay("{" + nameof(GetDebuggerDisplay) + "(),nq}")]
     public class Project
     {
-        /// <summary>The video game</summary>
-        private VideoGame videoGame;
-
         /// <summary>The current</summary>
+        [AllowNull]
         private static Project current;
 
-        /// <summary>The name</summary>
+        [AllowNull]
+        private static VideoGame game;
+
+        [NotNull]
         private string name;
 
         /// <summary>The directory</summary>
+        [NotNull]
         private string directory;
 
         /// <summary>The assets path</summary>
-        private string assetsPath;
+        [NotNull]
+        private string assetPath;
 
         /// <summary>The configuration path</summary>
+        [NotNull]
         private string configPath;
 
         /// <summary>The data path</summary>
+        [NotNull]
         private string dataPath;
 
         /// <summary>The library path</summary>
-        private string libraryPath;
+        [NotNull]
+        private string libPath;
+
+        static Project() 
+        {
+            OnChange += Project_OnChange;
+        }
+
+       
 
         /// <summary>Initializes a new instance of the <see cref="Project" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="directory">The directory.</param>
-        /// <param name="assetsPath">The assets path.</param>
-        /// <param name="configPath">The configuration path.</param>
-        /// <param name="dataPath">The data path.</param>
-        /// <param name="libraryPath">The library path.</param>
-        public Project(string name, string directory, string assetsPath, string configPath, string dataPath, string libraryPath)
+        public Project(string name, string directory)
         {
             this.name = name;
             this.directory = directory;
-            this.assetsPath = assetsPath;
-            this.configPath = configPath;
-            this.dataPath = dataPath;
-            this.libraryPath = libraryPath;
+            assetPath = directory + "/" + name + "/Assets";
+            configPath = directory + "/" + name + "/Config";
+            dataPath = directory + "/" + name + "/Data";
+            libPath = directory + "/" + name + "/Lib";
+
+            current ??= this;
         }
 
-        /// <summary>Occurs when [event handler].</summary>
-        public static event EventHandler<bool> OnChangeProject;
+        /// <summary>Initializes a new instance of the <see cref="Project" /> class.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="directory">The directory.</param>
+        /// <param name="assetPath">The asset path.</param>
+        /// <param name="configPath">The configuration path.</param>
+        /// <param name="dataPath">The data path.</param>
+        /// <param name="libPath">The library path.</param>
+        [JsonConstructor]
+        public Project(string name, string directory, string assetPath, string configPath, string dataPath, string libPath)
+        {
+            this.name = name;
+            this.directory = directory;
+            this.assetPath = assetPath;
+            this.configPath = configPath;
+            this.dataPath = dataPath;
+            this.libPath = libPath;
 
-        /// <summary>Gets or sets the video game.</summary>
-        /// <value>The video game.</value>
-        public VideoGame VideoGame { get => videoGame; set => videoGame = value; }
+            current ??= this;
+        }
+
+        /// <summary>Occurs when [on change].</summary>
+        public static event EventHandler<bool> OnChange;
 
         /// <summary>Gets or sets the current.</summary>
         /// <value>The current.</value>
-        public static Project Current { get => current; }
+        [NotNull]
+        [JsonIgnore]
+        public static Project Current
+        {
+            get => current; set
+            {
+                current = value;
+            }
+        }
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
+        [JsonProperty("_Name")]
         public string Name { get => name; set => name = value; }
-        
+
         /// <summary>Gets or sets the directory.</summary>
         /// <value>The directory.</value>
+        [JsonProperty("_Directory")]
         public string Directory { get => directory; set => directory = value; }
-        
-        /// <summary>Gets or sets the assets path.</summary>
-        /// <value>The assets path.</value>
-        public string AssetsPath { get => assetsPath; set => assetsPath = value; }
+
+        /// <summary>Gets or sets the asset path.</summary>
+        /// <value>The asset path.</value>
+        [JsonProperty("_AssetPath")]
+        public string AssetsPath { get => assetPath; set => assetPath = value; }
 
         /// <summary>Gets or sets the configuration path.</summary>
         /// <value>The configuration path.</value>
+        [JsonProperty("_ConfigPath")]
         public string ConfigPath { get => configPath; set => configPath = value; }
 
         /// <summary>Gets or sets the data path.</summary>
         /// <value>The data path.</value>
+        [JsonProperty("_DataPath")]
         public string DataPath { get => dataPath; set => dataPath = value; }
-
+        
         /// <summary>Gets or sets the library path.</summary>
         /// <value>The library path.</value>
-        public string LibraryPath { get => libraryPath; set => libraryPath = value; }
+        [JsonProperty("_LibPath")]
+        public string LibraryPath { get => libPath; set => libPath = value; }
 
-        /// <summary>Changes the project.</summary>
-        /// <param name="project">The project.</param>
-        /// <param name="game">The game.</param>
-        public static void ChangeProject(Project project, VideoGame game) 
-        {
-            current = project;
-            current.VideoGame = game;
-            OnChangeProject.Invoke(null, true);
-        }
+        /// <summary>Gets or sets the video game.</summary>
+        /// <value>The video game.</value>
+        [JsonIgnore]
+        public static VideoGame VideoGame { get => game; set => game = value; }
 
-        /// <summary>Gets the debugger display.</summary>
-        /// <returns>Debug method</returns>
-        private string GetDebuggerDisplay() => ToString();
+        /// <summary>Projects the on change.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        private static void Project_OnChange(object sender, bool e) => Logger.Info();
     }
 }

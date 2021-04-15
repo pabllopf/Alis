@@ -147,7 +147,7 @@ namespace Alis.Core
 
         /// <summary>Previews the render.</summary>
         /// <returns>Preview render</returns>
-        public byte[] PreviewRender()
+        public virtual byte[] PreviewRender()
         {
             Task.WaitAll(input.Update(), sceneManager.Update());
 
@@ -198,7 +198,7 @@ namespace Alis.Core
         }
 
         /// <summary>Update every frame the videogame.</summary>
-        private void Update()
+        public void Update()
         {
             Task.WaitAll(input.Update(), sceneManager.Update());
             render.Update();

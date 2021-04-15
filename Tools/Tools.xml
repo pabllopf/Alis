@@ -251,6 +251,14 @@
             <returns>Return the value data.</returns>
             <exception cref="T:System.NullReferenceException">When try to load null data</exception>
         </member>
+        <member name="M:Alis.Tools.LocalData.Load``1(System.String,``0)">
+            <summary>Loads the specified name.</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name">The name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>Return the value data.</returns>
+            <exception cref="T:System.NullReferenceException">Reading a empty file (primitive var)" + typeof(T).GetType().FullName</exception>
+        </member>
         <member name="M:Alis.Tools.LocalData.Load``1(System.String,System.String)">
             <summary>Loads the specified name.</summary>
             <typeparam name="T">Type data</typeparam>

@@ -7,19 +7,16 @@ namespace Alis.Editor
     /// <summary>Define the compatible graphics</summary>
     public enum Graphics
     {
-        /// <summary>The unsupported graphics</summary>
-        Unsupported,
-
         /// <summary>The graphics 1</summary>
-        OpenGL,
+        OpenGL = 0,
 
         /// <summary>The graphics 2</summary>
-        Directx11,
+        Directx11 = 1,
 
         /// <summary>The graphics 3</summary>
-        Metal,
+        Metal = 2,
 
         /// <summary>The graphics 4</summary>
-        Vulkan
+        Vulkan = 3,
     }
 }

@@ -41,6 +41,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DefineConstants>Windows</DefineConstants>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>Core.xml</DocumentationFile>
     <DefineConstants>TRACE;DEBUG;Windows</DefineConstants>

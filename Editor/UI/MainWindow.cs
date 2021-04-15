@@ -87,18 +87,21 @@ namespace Alis.Editor.UI
 
         public static ImGuiController imGuiController;
 
+        private Info info;
+
         #endregion
 
         /// <summary>Initializes a new instance of the <see cref="MainWindow" /> class.</summary>
-        public MainWindow()
+        public MainWindow(Info info)
         {
-            Logger.Log("\nInit the Main Window.");
+            this.info = info;
+            Logger.Info();
         }
 
         /// <summary>Starts the specified information.</summary>
         /// <param name="info">The information.</param>
         /// <returns>return the exit result.</returns>
-        public bool Start(Info info)
+        public int Start()
         {
             Logger.Log("\nStarting Main Window...");
 
@@ -194,17 +197,17 @@ namespace Alis.Editor.UI
             deltaSeconds = 1.0f / 60.0f;
             Logger.Log(" > Delta Seconds: " + deltaSeconds);
 
-            Project.OnChangeProject += Project_OnChangeProject;
+            Project.OnChange += Project_OnChangeProject;
 
             LoadStyle();
             Update();
 
-            return true;
+            return 1;
         }
 
         private void Project_OnChangeProject(object sender, bool e)
         {
-            title = "Alis - " + Project.Current.Name;
+            title = "Alis - " + Project.Current?.Name;
         }
 
         /// <summary>Updates this instance.</summary>

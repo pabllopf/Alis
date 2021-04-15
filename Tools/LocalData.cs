@@ -109,9 +109,48 @@ namespace Alis.Tools
                 Directory.CreateDirectory(directory);
             }
 
-            if (!File.Exists(file)) 
+            var settings = new JsonSerializerSettings
             {
-                throw new FileNotFoundException("hola fichero no se encuentra " + file);
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            if (IsPrimitive(typeof(T)))
+            {
+                Logger.Log("Load: " + file);
+                return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("Reading a empty file (primitive var)" + typeof(T).GetType().FullName);
+            }
+            else
+            {
+                if (File.Exists(file))
+                {
+                    Logger.Log("Load: " + file);
+                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
+                }
+                else 
+                {
+                    Logger.Warning("File dont exits. " + file);
+                    return default;
+                }
+            }
+        }
+
+        /// <summary>Loads the specified name.</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">The name.</param>
+        /// <param name="defaultValue">The default value.</param>
+        /// <returns>Return the value data.</returns>
+        /// <exception cref="NullReferenceException">Reading a empty file (primitive var)" + typeof(T).GetType().FullName</exception>
+        [return: MaybeNull]
+        public static T Load<T>([NotNull] string name, T defaultValue)
+        {
+            string nameFile = name + ".json";
+            string directory = Environment.CurrentDirectory + "/Data/";
+            string file = directory + nameFile;
+
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
             }
 
             var settings = new JsonSerializerSettings
@@ -122,17 +161,19 @@ namespace Alis.Tools
 
             if (IsPrimitive(typeof(T)))
             {
-                return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("esto es una variable primitiva" + typeof(T).GetType().FullName);
+                Logger.Log("Load: " + file);
+                return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("Reading a empty file (primitive var)" + typeof(T).GetType().FullName);
             }
             else
             {
                 if (File.Exists(file))
                 {
+                    Logger.Log("Load: " + file);
                     return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
                 }
-                else 
+                else
                 {
-                    Save<T>(name, (T)Activator.CreateInstance(typeof(T).GetType()));
+                    Save<T>(name, defaultValue);
                     return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
                 }
             }
@@ -168,7 +209,36 @@ namespace Alis.Tools
                 }
                 else
                 {
-                    Save<T>(name, (T)Activator.CreateInstance(typeof(T).GetType()));
+                    return default;
+                }
+            }
+        }
+
+        [return: NotNull]
+        public static T Load<T>([NotNull] string name, [NotNull] string directory, T defaultdata)
+        {
+            string nameFile = name + ".json";
+            string file = directory + "/" + nameFile;
+
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            if (IsPrimitive(typeof(T)))
+            {
+                return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException(typeof(T).GetType().FullName);
+            }
+            else
+            {
+                if (File.Exists(file))
+                {
+                    return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings) ?? throw new NullReferenceException(typeof(T).GetType().FullName);
+                }
+                else
+                {
+                    Save<T>(name, defaultdata);
                     return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings) ?? throw new NullReferenceException(typeof(T).GetType().FullName);
                 }
             }

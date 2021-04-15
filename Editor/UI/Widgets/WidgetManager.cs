@@ -4,6 +4,7 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
+    using Alis.Tools;
     using System;
     using System.Collections.Generic;
 
@@ -33,14 +34,20 @@ namespace Alis.Editor.UI.Widgets
             EventHandler += ManageEventHandler;
 
             widgets.Add(new DockSpace(EventHandler));
-            widgets.Add(new TopMenu(EventHandler, info));
-
-            Console.Current = new Console(EventHandler);
-            widgets.Add(Console.Current);
             
+            widgets.Add(new TopMenu(EventHandler, info));
+            widgets.Add(new BottomMenu(EventHandler));
+
             widgets.Add(new ProjectManager(EventHandler, true));
 
-            BottomMenu.Current = new BottomMenu(EventHandler);
+            widgets.Add(new Console(EventHandler));
+
+            widgets.Add(new SceneView());
+
+            /*
+            
+
+           
             widgets.Add(BottomMenu.Current);
 
             Inspector.Current = new Inspector();
@@ -52,7 +59,9 @@ namespace Alis.Editor.UI.Widgets
             widgets.Add(GameView.Current);
 
             Hierarchy.Current = new Hierarchy();
-            widgets.Add(Hierarchy.Current);
+            widgets.Add(Hierarchy.Current);*/
+
+            Logger.Info();
         }
 
         /// <summary>Occurs when [event handler].</summary>
@@ -80,7 +89,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 Console.Current = new Console(obj.EventHandler);
                 obj.widgets.Add(Console.Current);
-                System.Console.WriteLine("Process Open Console");
+                Logger.Log("Process Open Console");
             }
         }
 
@@ -89,14 +98,14 @@ namespace Alis.Editor.UI.Widgets
         private static void ProcessCloseConsole(WidgetManager obj)
         {
             obj.widgets.RemoveAll(i => i.GetType() == typeof(Console));
-            System.Console.WriteLine("Process Close Console");
+            Logger.Log("Process Close Console");
         }
 
         /// <summary>Processes the exit editor.</summary>
         private static void ProcessExitEditor(WidgetManager obj) 
         {
             Environment.Exit(1);
-            System.Console.WriteLine("Process Exit Editor");
+            Logger.Log("Process Exit Editor");
         }
 
         /// <summary>Processes the creator project.</summary>
@@ -104,7 +113,7 @@ namespace Alis.Editor.UI.Widgets
         private static void ProcessCloseCreatorProject(WidgetManager obj)
         {
             obj.widgets.RemoveAll(i => i.GetType() == typeof(ProjectManager));
-            System.Console.WriteLine("Process Creator Project");
+            Logger.Log("Process Creator Project");
         }
 
         /// <summary>Processes the open creator project.</summary>
@@ -114,6 +123,7 @@ namespace Alis.Editor.UI.Widgets
             if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectManager)))
             {
                 obj.widgets.Add(new ProjectManager(obj.EventHandler, false));
+                Logger.Log("Add new WidgetManager + ProjectManager");
             }
         }
 
@@ -125,6 +135,7 @@ namespace Alis.Editor.UI.Widgets
             if (!obj.widgets.Exists(i => i.GetType() == typeof(ProjectManager)))
             {
                 obj.widgets.Add(new ProjectManager(obj.EventHandler, true));
+                Logger.Log("Add new WidgetManager + ProjectManager");
             }
         }
 
@@ -134,7 +145,7 @@ namespace Alis.Editor.UI.Widgets
         private void ManageEventHandler(object sender, EventType e)
         {
             pendingEvents.Push(e);
-            System.Console.WriteLine("Generated New Event " + e.ToString());
+            Logger.Log("Generated New Event " + e.ToString());
         }
     }
 }

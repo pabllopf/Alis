@@ -52,6 +52,8 @@ namespace Alis.Editor.UI.Widgets
                 ImGuiWindowFlags.NoResize |
                 ImGuiWindowFlags.NoMove |
                 ImGuiWindowFlags.NoScrollbar;
+
+            current = this;
         }
 
         /// <summary>Draw this instance.</summary>

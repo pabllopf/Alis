@@ -93,18 +93,19 @@ namespace Alis.Editor.UI.Widgets
         /// <param name="showRecentProjects">show this</param>
         public ProjectManager(EventHandler<EventType> eventHandler, bool showRecentProjects)
         {
+            Logger.Info();
             this.eventHandler = eventHandler;
             isOpen = true;
             currentMode = modes[0];
             this.showRecentProjects = showRecentProjects;
 
-            projects = LocalData.Load<List<Project>>("Projects");
+            projects = LocalData.Load<List<Project>>("Projects", new List<Project>());
             if (projects == null) 
             {
                 projects = new List<Project>();
             }
 
-            Project.OnChangeProject += Project_OnChangeProject;
+            Project.OnChange += Project_OnChangeProject;
         }
 
         /// <summary>Gets the name.</summary>
@@ -293,61 +294,66 @@ namespace Alis.Editor.UI.Widgets
         /// <param name="mode">mode project</param>
         private void CreateProject(string name, string directory, string mode) 
         {
-            if (!Directory.Exists(directoryField + "/" + nameField))
+            if (!Directory.Exists(directory + "/" + name)) 
             {
-                List<Project> temp = LocalData.Load<List<Project>>("Projects");
+                string dir = directory + "/" + name;
+                string assetPath = directory + "/" + name + "/Assets";
+                string configPath = directory + "/" + name + "/Config";
+                string dataPath = directory + "/" + name + "/Data";
+                string libPath = directory + "/" + name + "/Lib";
+
+                Project project = new Project(name, dir);
+                Logger.Log("Create project " + " name: " + name + " directory: " + dir);
 
 
-                if (temp == null)
-                {
-                    temp = new List<Project>();
-                }
-
-                if (!temp.Any(i => (i.Directory + "/" + i.Name).Equals(directory + "/" + name)))
-                {
-                    string dir = directory + "/" + name;
-                    string assetPath = directory + "/" + name + "/Assets";
-                    string configPath = directory + "/" + name + "/Config";
-                    string dataPath = directory + "/" + name + "/Data";
-                    string libPath = directory + "/" + name + "/Lib";
-
-                    Project project = new Project(name, dir, assetPath, configPath, dataPath, libPath);
-                    Logger.Warning("Project: " + name + " at " + dir);
-
-                    projects.Add(project);
-                    LocalData.Save<List<Project>>("Projects", projects);
-
-                    Directory.CreateDirectory(dir);
-                    Directory.CreateDirectory(assetPath);
-                    Directory.CreateDirectory(configPath);
-                    Directory.CreateDirectory(dataPath);
-                    Directory.CreateDirectory(libPath);
-
-                    Asset.SetWorkPath(project.AssetsPath + "/");
-
-                    string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
-                    File.WriteAllText(dir + "/" + name + ".csproj", projectFile, Encoding.UTF8);
-
-                    string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
-                    File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
-
-                    string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
-                    File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
+                projects.Add(project);
+                LocalData.Save<List<Project>>("Projects", projects);
+                Logger.Log("Saves the project in file");
 
 
-                    File.Copy(Application.ProjectFolder + "/Resources/Core.dll", libPath + "/" + "Core" + ".dll");
-                    File.Copy(Application.ProjectFolder + "/Resources/Tools.dll", libPath + "/" + "Tools" + ".dll");
 
-                    VideoGame game = new VideoGame (new Config(name), new Scene("Default"));
-                    LocalData.Save<VideoGame>("Data", dataPath, game);
+                Directory.CreateDirectory(dir);
+                Directory.CreateDirectory(assetPath);
+                Directory.CreateDirectory(configPath);
+                Directory.CreateDirectory(dataPath);
+                Directory.CreateDirectory(libPath);
 
-                    Project.ChangeProject(project, game);
+                Logger.Log("Create directorys of project.");
 
-                    LocalData.Save<Project>(name, dir, project);
+                string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
+                File.WriteAllText(dir + "/" + name + ".csproj", projectFile, Encoding.UTF8);
+                Logger.Log("Created .csproj");
 
-                    Close();
-                }
+                string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
+                File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
+                Logger.Log("Created .sln");
+
+                string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
+                File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
+                Logger.Log("Created Program.cs");
+
+                File.Copy(Application.ProjectFolder + "/Resources/Core-SFML.dll", libPath + "/" + "Core-SFML" + ".dll");
+                File.Copy(Application.ProjectFolder + "/Resources/Core.dll", libPath + "/" + "Core" + ".dll");
+                File.Copy(Application.ProjectFolder + "/Resources/Tools.dll", libPath + "/" + "Tools" + ".dll");
+                Logger.Log("Copied .DLLS");
+
+                VideoGame game = VideoGame.Builder()
+                                            .Config(Config.Builder().Name(name).Build())
+                                            .SceneManager(SceneManager.Builder().Scene(new Scene("Default")).Build())
+                                            .Build();
+
+                Logger.Log("Created default game");
+
+                LocalData.Save<VideoGame>("Data", dataPath, game);
+
+                Logger.Log("Saved default game");
+
+                Project.Current = project;
+                Project.VideoGame = game;
+
+                Close();
             }
+
         }
 
         /// <summary>Opens the project.</summary>
@@ -360,11 +366,11 @@ namespace Alis.Editor.UI.Widgets
 
                 Asset.SetWorkPath(project.AssetsPath + "/");
 
-                VideoGame game = LocalData.Load<VideoGame>("Data", project.DataPath);
+                VideoGame game = LocalData.Load<VideoGame>("Data", project.DataPath, new VideoGame(new Config("default")));
 
                 Logger.Warning("Videogame: " + game.Config.Name);
 
-                Project.ChangeProject(project, game);
+                //Project.ChangeProject(project, game);
                 Close();
             }
             else 
@@ -396,11 +402,8 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Projects the on change project.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Project_OnChangeProject(object sender, bool e)
-        {
-            Console.Current.Log("Open " + Project.Current.Name + " at " + Project.Current.Directory);
-            Logger.Log("EVENT: project " + Project.Current.Name + " at " + Project.Current.Directory);
-            Asset.SetWorkPath(Project.Current.AssetsPath + "/");
-        }
+        private void Project_OnChangeProject(object sender, bool e) => Logger.Info();
     }
+
+
 }

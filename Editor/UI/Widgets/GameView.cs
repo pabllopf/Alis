@@ -78,20 +78,21 @@ namespace Alis.Editor.UI.Widgets
 
             currentResolution = resolution[2];
 
-            Project.OnChangeProject += Project_OnChangeProject;
+            Project.OnChange += Project_OnChangeProject;
         }
 
         private void Project_OnChangeProject(object sender, bool e)
         {
-            imGuiController = MainWindow.imGuiController;
+            if (MainWindow.imGuiController != null) 
+            {
+                imGuiController = MainWindow.imGuiController;
 
-            image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
-            imageSharpTexture = new ImageSharpTexture(image, true);
-            texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
+                image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
+                imageSharpTexture = new ImageSharpTexture(image, true);
+                texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
 
-            intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
-
-         
+                intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+            }
         }
 
         /// <summary>Opens this instance.</summary>
@@ -190,21 +191,21 @@ namespace Alis.Editor.UI.Widgets
             {
                 if (currentResolution.Equals("1:1"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
+                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
                     float size = (ImGui.GetContentRegionAvail().X <= ImGui.GetContentRegionAvail().Y) ? ImGui.GetContentRegionAvail().X : ImGui.GetContentRegionAvail().Y;
                     Render(new Vector2(size));
                 }
 
                 if (currentResolution.Equals("4:3"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 384);
+                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 384);
                     float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
                     Render(new Vector2(size / 0.75f, size));
                 }
 
                 if (currentResolution.Equals("16:9"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 288);
+                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 288);
                     float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
 
                     Render(new Vector2(size / 0.5625f, size));
@@ -218,7 +219,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void Render(Vector2 vector2) 
         {
-            image = Image.LoadPixelData<Rgba32>(Project.Current.VideoGame.PreviewRender(), 512, 512);
+            image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
             imageSharpTexture = new ImageSharpTexture(image, true);
 
             unsafe

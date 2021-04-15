@@ -335,7 +335,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void BuildAndRun()
         {
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
+            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
             new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
@@ -346,7 +346,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void BuildAsync(Info info)
         {
-            LocalData.Save("Data", Project.Current.VideoGame);
+            LocalData.Save("Data", Project.VideoGame);
 
             string fileName = "cmd.exe";
             string cleanCommand = "dotnet restore";
@@ -476,8 +476,8 @@ namespace Alis.Editor.UI.Widgets
 
         private void SaveProject() 
         {
-            Console.Current.Log("Saved " + Project.Current.VideoGame.Config.Name);
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.Current.VideoGame);
+            Console.Current.Log("Saved " + Project.VideoGame.Config.Name);
+            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
         }
 
         /// <summary>Opens the terminal.</summary>
