@@ -8,7 +8,7 @@
     <UserSecretsId>66c36b4b-e0fb-4937-aa9f-3b3645bf46b1</UserSecretsId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageId>Tools</PackageId>
+    <PackageId>Alis.Tools</PackageId>
     <Authors>Pablo Perdomo Falcón</Authors>
     <Product>Alis</Product>
     <Description>The "Alis.Tools" include several tools that will facilitate your day to day developing multiplatform projects. And remember ... it's multiplatform and free!!
@@ -31,6 +31,31 @@
 	  <RootNamespace>Tools</RootNamespace>
 
   </PropertyGroup>
+  
+  <configuration>
+    <packageSources>
+        <clear />
+        <add key="github" value="https://nuget.pkg.github.com/OWNER/index.json" />
+    </packageSources>
+    <packageSourceCredentials>
+        <github>
+            <add key="Username" value="USERNAME" />
+            <add key="ClearTextPassword" value="TOKEN" />
+        </github>
+    </packageSourceCredentials>
+</configuration>
+  <configuration>
+    <packageSources>
+      <clear />
+      <add key="github" value="https://nuget.pkg.github.com/OWNER/index.json" />
+    </packageSources>
+    <packageSourceCredentials>
+      <github>
+        <add key="Username" value="USERNAME" />
+        <add key="ClearTextPassword" value="TOKEN" />
+      </github>
+    </packageSourceCredentials>
+  https://github.com/pabllopf/alisPabllopf
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
