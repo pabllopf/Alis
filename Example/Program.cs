@@ -8,6 +8,7 @@ namespace Example
     using Alis.Core.SFML;
     using System.Numerics;
 
+
     /// <summary>Example of videogame.</summary>
     public class Program
     {
