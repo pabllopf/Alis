@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-	<LangVersion>8.0</LangVersion>
-	<Nullable>disable</Nullable>
-    <Configurations>Windows;MacOS;Linux;Release</Configurations>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <Configurations>Windows;MacOS;Linux;Release;Debug</Configurations>
     <UserSecretsId>66c36b4b-e0fb-4937-aa9f-3b3645bf46b1</UserSecretsId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -26,9 +26,10 @@
     <ApplicationIcon>Alis.ico</ApplicationIcon>
 	  <AssemblyVersion>1.1.0.0</AssemblyVersion>
 	  <FileVersion>1.1.0.0</FileVersion>
-	  <Version>1.1.0</Version>
+	  <Version>1.2.0</Version>
 	  <AssemblyName>Tools</AssemblyName>
 	  <RootNamespace>Tools</RootNamespace>
+
   </PropertyGroup>
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -37,37 +38,36 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <WarningLevel>5</WarningLevel>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>true</Optimize>
+    <DefineConstants></DefineConstants>
+
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Tools.xml</DocumentationFile>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>5</WarningLevel>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+  </PropertyGroup>
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>Tools.xml</DocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
-
   
   <!-- ______________________________ MACOS _____________________________________ -->
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MacOS|AnyCPU' ">
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
-  
   <!-- ______________________________ LINUX _____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Linux|AnyCPU'">
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <None Remove="Tools.xml" />
-    <None Include="Docs\Alis.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="Docs\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="DotNetZip" Version="1.15.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   
   <ItemGroup>
@@ -88,4 +88,17 @@
   <ItemGroup>
     <Folder Include="Docs\" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="Docs\Alis.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="Docs\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  
+
 </Project>

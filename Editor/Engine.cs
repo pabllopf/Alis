@@ -5,41 +5,36 @@
 namespace Alis.Editor
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
     using System.Runtime.InteropServices;
     using System.Threading;
     using Alis.Editor.UI;
-    using Alis.Core;
+    using Alis.Tools;
 
     /// <summary>Manage the engine</summary>
     internal class Engine
     {
-        /// <summary>The platform</summary>
-        private Platform platform;
-
-        /// <summary>The architecture</summary>
-        private Architecture architecture;
-
-        /// <summary>The graphics</summary>
-        private Graphics graphics;
-
-        /// <summary>The main window</summary>
-        private MainWindow mainWindow;
-
         /// <summary>The information</summary>
+        [NotNull]
         private Info info;
+
+        /// <summary>The arguments</summary>
+        [NotNull]
+        private string[] args; 
 
         /// <summary>Initializes a new instance of the <see cref="Engine" /> class.</summary>
         /// <param name="args">The arguments.</param>
-        public Engine(string[] args)
+        public Engine([NotNull] string[] args)
         {
-            Logger.Log("Starting Alis...");
-            Logger.Log(args.Length > 0 ? " > args:" + string.Join("\n", args) : string.Empty);
+            this.args = args;
+            info = new Info();
         }
 
         /// <summary>Gets a value indicating whether [first instance].</summary>
         /// <value>
         /// <c>true</c> if [first instance]; otherwise, <c>false</c>.</value>
+        [NotNull]
         private static bool FirstInstance
         {
             get
@@ -51,6 +46,7 @@ namespace Alis.Editor
 
         /// <summary>Gets the detect platform.</summary>
         /// <value>The detect platform.</value>
+        [NotNull]
         private static Platform DetectPlatform 
         {
             get 
@@ -65,6 +61,7 @@ namespace Alis.Editor
 
         /// <summary>Gets the detect architecture.</summary>
         /// <value>The detect architecture.</value>
+        [NotNull]
         private static Architecture DetectArchitecture 
         {
             get 
@@ -78,85 +75,44 @@ namespace Alis.Editor
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return false or true to indicate the exit value</returns>
+        [return: NotNull]
         public int Start()
         {
+            Logger.Log("Starting engine");
+
             if (!FirstInstance)
             {
-                Logger.Error("There is already an 'Alis instance' running.");
-                return -1;
+                throw Logger.Error("There is already an 'Alis instance' running.");
             }
 
-            platform = DetectPlatform;
+            Logger.Log("Running single instance mode.");
+
+            Platform platform = DetectPlatform;
             if (platform.Equals(Platform.Unsupported)) 
             {
-                Logger.Error("Platform unsupported. Please use Windows or MacOS or Linux system.");
-                return -1;
+                throw Logger.Error("Platform unsupported. Please use Windows | MacOS | Linux system.");
             }
-            
-            architecture = DetectArchitecture;
+
+            Logger.Log("Platform = " + platform);
+
+            Architecture architecture = DetectArchitecture;
             if (architecture.Equals(Architecture.Unsupported)) 
             {
-                Logger.Error("unsupported architecture. Please use x86 or x64 architecture system.");
-                return -1;
+                throw Logger.Error("unsupported architecture. Please use x86 or x64 architecture system.");
             }
 
-            bool dirext11 = Veldrid.GraphicsDevice.IsBackendSupported(Veldrid.GraphicsBackend.Direct3D11);
-            bool metal = Veldrid.GraphicsDevice.IsBackendSupported(Veldrid.GraphicsBackend.Metal);
+            Logger.Log("Architecture = " + architecture);
+
+            Graphics graphics = Graphics.OpenGL;
             bool opengl = Veldrid.GraphicsDevice.IsBackendSupported(Veldrid.GraphicsBackend.OpenGL);
-            bool vulkan = Veldrid.GraphicsDevice.IsBackendSupported(Veldrid.GraphicsBackend.Vulkan);
-
-            if (platform.Equals(Platform.Windows)) 
+            if (!opengl) 
             {
-                graphics = dirext11 ? Graphics.Directx11 :
-                           opengl ? Graphics.OpenGL :
-                           vulkan ? Graphics.Vulkan :
-                           Graphics.Unsupported;
-
-                if (graphics.Equals(Graphics.Unsupported))
-                {
-                    Logger.Error("Unsupported graphics for windows. Please install ( opengl 2.0+ or Directx 11+ or Vulkan 1.0+ ).");
-                    return -1;
-                }
+                throw Logger.Error("Alis use only OpenGL!. Please install the last version of OpenGL 3.0+");
             }
 
-            if (platform.Equals(Platform.MacOS))
-            {
-                graphics = opengl ? Graphics.OpenGL :
-                           metal ? Graphics.Metal :
-                           vulkan ? Graphics.Vulkan :
-                           Graphics.Unsupported;
+            Logger.Log("API Graphics = OpenGL");
 
-                if (graphics.Equals(Graphics.Unsupported))
-                {
-                    Logger.Error("Unsupported graphics for macos. Please install ( opengl 2.0+ or metal 1.0+ or Vulkan 1.0+ ).");
-                    return -1;
-                }
-            }
-
-            if (platform.Equals(Platform.Linux))
-            {
-                graphics = opengl ? Graphics.OpenGL :
-                           vulkan ? Graphics.Vulkan :
-                           Graphics.Unsupported;
-
-                if (graphics.Equals(Graphics.Unsupported))
-                {
-                    Logger.Error("Unsupported graphics for linux. Please install ( opengl 2.0+ or Vulkan 1.0+ ).");
-                    return -1;
-                }
-            }
-
-            info = new Info(platform, architecture, graphics);
-            Logger.Log("Info Platform: " + platform.ToString() + " " + architecture.ToString() + " " + graphics.ToString());
-
-            mainWindow = new MainWindow();           
-            if (!mainWindow.Start(info)) 
-            {
-                Logger.Error("Failed to start the main window. ");
-                return -1;
-            }
-
-            return 0;
+            return new MainWindow(new Info(platform, architecture, graphics)).Start();
         }
     }
 }

@@ -4,8 +4,9 @@
 //-------------------------------------------------------------------------------------------------
 namespace Alis.Core
 {
-    using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Numerics;
+    using Alis.Tools;
     using Newtonsoft.Json;
     
     /// <summary>Define the config of videogame</summary>
@@ -16,63 +17,166 @@ namespace Alis.Core
         [NotNull]      
         private string name;
 
+        /// <summary>The author</summary>
+        [NotNull]
+        private string author;
+
+        /// <summary>The time manager</summary>
+        [NotNull]
+        private Time time;
+
+        /// <summary>The window</summary>
+        [NotNull]
+        private WindowManager window;
+
         /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
-        /// <param name="name">The name of videogame.</param>
-        [JsonConstructor]
+        /// <param name="name">The name.</param>
         public Config([NotNull] string name)
         {
             this.name = name;
-
-            OnCreate += Config_OnCreate;
-            OnDestroy += Config_OnDestroy;
-            OnChangeName += Config_OnChangeName;
-
-            OnCreate.Invoke(this, true);
+            author = "Alis Framework";
+            time = new Time(0.01f, 1.00f, 120.0f, false);
+            window = new WindowManager(WindowState.Normal, new Vector2(1024, 640));
+            Logger.Info();
         }
 
-        /// <summary>Finalizes an instance of the <see cref="Config" /> class.</summary>
-        ~Config() => OnDestroy?.Invoke(null, true);
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnCreate;
-
-        /// <summary>Occurs when [change].</summary>
-        public event EventHandler<bool> OnDestroy;
-
-        /// <summary>Occurs when [on change name].</summary>
-        public event EventHandler<bool> OnChangeName;
-
-        /// <summary>Gets or sets the name.</summary>
-        /// <value>The name.</value>  
-        [NotNull]
-        [JsonProperty]
-        public string Name
+        /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="time">The time.</param>
+        public Config([NotNull] string name, [NotNull] Time time)
         {
-            get => name;
-            set
+            this.name = name;
+            author = "Alis Framework";
+            this.time = time;
+            window = new WindowManager(WindowState.Normal, new Vector2(1024, 640));
+            Logger.Info();
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="timeManager">The time manager.</param>
+        public Config([NotNull] string name, [NotNull] Time time, [NotNull] WindowManager window)
+        {
+            this.name = name;
+            author = "Alis Framework";
+            this.time = time;
+            this.window = window;
+            Logger.Info();
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="Config" /> class.</summary>
+        /// <param name="name">The name.</param>
+        /// <param name="timeManager">The time manager.</param>
+        [JsonConstructor]
+        public Config([NotNull] string name, [NotNull] string author, [NotNull] Time time, [NotNull] WindowManager window)
+        {
+            this.author = author;
+            this.name = name;
+            this.time = time;
+            this.window = window;
+            Logger.Info();
+        }
+
+        /// <summary>Gets the name.</summary>
+        /// <value>The name.</value>
+        [NotNull]
+        [JsonProperty("_Name")]
+        public string Name { get => name; set => name = value; }
+
+        /// <summary>Gets or sets the author.</summary>
+        /// <value>The author.</value>
+        [NotNull]
+        [JsonProperty("_Author")]
+        public string Author { get => author; set => author = value; }
+
+        /// <summary>Gets the time manager.</summary>
+        /// <value>The time manager.</value>
+        [NotNull]
+        [JsonProperty("_Time")]
+        public Time Time { get => time; set => time = value; }
+
+        /// <summary>Gets or sets the window.</summary>
+        /// <value>The window.</value>
+        [NotNull]
+        [JsonProperty("_Window")]
+        public WindowManager Window { get => window; set => window = value; }
+
+        /// <summary>The builder</summary>
+        public static ConfigBuilder Builder() => new ConfigBuilder();
+
+        /// <summary> Scene Manager Builder</summary>
+        public class ConfigBuilder
+        {
+            /// <summary>The current</summary>
+            [AllowNull]
+            private  ConfigBuilder current;
+
+            /// <summary>The author</summary>
+            [AllowNull]
+            private string author;
+
+            /// <summary>The name</summary>
+            [AllowNull]
+            private string name;
+
+            /// <summary>The time</summary>
+            [AllowNull]
+            private Time time;
+
+            /// <summary>The window</summary>
+            [AllowNull]
+            private WindowManager window;
+
+            /// <summary>Initializes a new instance of the <see cref="VideoGameBuilder" /> class.</summary>
+            public ConfigBuilder() => current ??= this;
+
+            /// <summary>Names the specified name.</summary>
+            /// <param name="name">The name.</param>
+            /// <returns>Return the builder</returns>
+            public ConfigBuilder Name(string name)
             {
-                name = value;
-                OnChangeName.Invoke(this, true);
+                current.name = name;
+                return current;
+            }
+
+            /// <summary>Authors the specified author.</summary>
+            /// <param name="author">The author.</param>
+            /// <returns>Return the builder</returns>
+            public ConfigBuilder Author(string author)
+            {
+                current.author = author;
+                return current;
+            }
+
+            /// <summary>Times the specified time.</summary>
+            /// <param name="time">The time.</param>
+            /// <returns>Return the builder</returns>
+            public ConfigBuilder Time(Time time)
+            {
+                current.time = time;
+                return current;
+            }
+
+            /// <summary>Windows the specified window.</summary>
+            /// <param name="window">The window.</param>
+            /// <returns>Return the builder</returns>
+            public ConfigBuilder Window(WindowManager window)
+            {
+                current.window = window;
+                return current;
+            }
+
+            /// <summary>Builds this instance.</summary>
+            /// <returns>Build the scene manager</returns>
+            public Config Build()
+            {
+                current.author ??= "Alis Framework";
+                current.time ??= new Time(0.01f, 1.00f, 60.0f, false);
+                current.name ??= "Default";
+                current.window ??= new WindowManager(WindowState.Normal, new Vector2(1024, 640));
+
+                return new Config(current.name, current.author, current.time, current.window);
             }
         }
-
-        #region Events
-
-        /// <summary>Configurations the on create.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnCreate([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Configurations the on destroy.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnDestroy([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        /// <summary>Configurations the name of the on change.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Config_OnChangeName([NotNull] object sender, [NotNull] bool e) => Logger.Info();
-
-        #endregion
     }
 }

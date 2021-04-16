@@ -22,30 +22,44 @@ namespace Alis.Tools
 
         /// <summary>Gets the desktop path.</summary>
         /// <value>The desktop path.</value>
-        public static string DesktopPath 
+        public static string DesktopFolder 
         {
             get => Environment.GetFolderPath(Environment.SpecialFolder.Desktop).Replace("\\", "/");
         }
 
+        /// <summary>Gets the documents path.</summary>
+        /// <value>The documents path.</value>
+        public static string DocumentsFolder
+        {
+            get => Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).Replace("\\", "/");
+        }
+
         /// <summary>Gets the assets path.</summary>
         /// <value>The assets path.</value>
-        public static string AssetsPath 
+        public static string AssetsFolder 
         { 
             get => Environment.CurrentDirectory + "/Assets/";
         }
 
         /// <summary>Gets the project path.</summary>
         /// <value>The project path.</value>
-        public static string ProjectPath 
+        public static string ProjectFolder 
         {
             get => Environment.CurrentDirectory;
         }
 
         /// <summary>Gets the data path.</summary>
         /// <value>The data path.</value>
-        public static string DataPath 
+        public static string PersistenceDataFolder
         {
             get => Environment.SystemDirectory + "/Data/";
+        }
+
+        /// <summary>Gets the temporary data folder.</summary>
+        /// <value>The temporary data folder.</value>
+        public static string TempDataFolder
+        {
+            get => Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Replace("\\", "/");
         }
     }
 }

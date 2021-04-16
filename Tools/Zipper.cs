@@ -40,7 +40,6 @@ namespace Alis.Tools
                 finalDir += dir + "/";   
             }
             
-
             using (ZipFile zip = new ZipFile())
             {
                 foreach (string file in files)
@@ -48,6 +47,7 @@ namespace Alis.Tools
                     zip.AddFile(file, string.Empty);
                 }
 
+                Logger.Log(finalDir + zipName);
                 zip.Save(finalDir + zipName);
             }
         }
@@ -82,7 +82,6 @@ namespace Alis.Tools
                 finalDir += dir + "/";
             }
 
-
             using (ZipFile zip = new ZipFile())
             {
                 foreach (string file in files)
@@ -102,6 +101,7 @@ namespace Alis.Tools
             {
                 throw new FileNotFoundException(zipFile);
             }
+
             string outPutDir = Path.GetDirectoryName(zipFile);
             using (ZipFile zip = ZipFile.Read(zipFile))
             {
@@ -111,7 +111,7 @@ namespace Alis.Tools
 
         /// <summary>Unzips the specified zip file path.</summary>
         /// <param name="zipFile">The zip file path.</param>
-        /// <param name="outPutDir"></param>
+        /// <param name="outPutDir">output directory</param>
         public static void UnZip(string zipFile, string outPutDir)
         {
             if (!File.Exists(zipFile))
@@ -127,21 +127,6 @@ namespace Alis.Tools
             using (ZipFile zip = ZipFile.Read(zipFile))
             {
                 zip.ExtractAll(outPutDir, ExtractExistingFileAction.OverwriteSilently);
-            }
-        }
-
-
-
-        /// <summary>Unzips the specified zip file path.</summary>
-        /// <param name="zipFile">The zip file path.</param>
-        /// <param name="location">The location.</param>
-        public static void Unzip(string zipFile, string location)
-        {
-            Directory.CreateDirectory(location);
-
-            using (ZipFile zip = ZipFile.Read(zipFile))
-            {
-                zip.ExtractAll(location, ExtractExistingFileAction.OverwriteSilently);
             }
         }
 

@@ -7,6 +7,7 @@ namespace Alis.Tools
     using System;
     using System.IO;
     using System.Security.Cryptography;
+    using System.Text;
 
     /// <summary>Control memory Security</summary>
     /// <typeparam name="T">object to pass the algorithm</typeparam>
@@ -89,7 +90,7 @@ namespace Alis.Tools
                 {
                     using (StreamReader streamReader = new StreamReader(cryptoStream))
                     {
-                        return (T)Convert.ChangeType(streamReader.ReadToEnd(), typeof(T));
+                        return (T)Convert.ChangeType(streamReader.ReadToEnd(), typeof(T)) ?? throw new NullReferenceException(typeof(T).GetType().FullName);
                     }
                 }
             }

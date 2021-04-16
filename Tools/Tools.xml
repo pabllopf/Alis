@@ -14,21 +14,48 @@
             <summary>Gets or sets the name.</summary>
             <value>The name.</value>
         </member>
-        <member name="P:Alis.Tools.Application.DesktopPath">
+        <member name="P:Alis.Tools.Application.DesktopFolder">
             <summary>Gets the desktop path.</summary>
             <value>The desktop path.</value>
         </member>
-        <member name="P:Alis.Tools.Application.AssetsPath">
+        <member name="P:Alis.Tools.Application.DocumentsFolder">
+            <summary>Gets the documents path.</summary>
+            <value>The documents path.</value>
+        </member>
+        <member name="P:Alis.Tools.Application.AssetsFolder">
             <summary>Gets the assets path.</summary>
             <value>The assets path.</value>
         </member>
-        <member name="P:Alis.Tools.Application.ProjectPath">
+        <member name="P:Alis.Tools.Application.ProjectFolder">
             <summary>Gets the project path.</summary>
             <value>The project path.</value>
         </member>
-        <member name="P:Alis.Tools.Application.DataPath">
+        <member name="P:Alis.Tools.Application.PersistenceDataFolder">
             <summary>Gets the data path.</summary>
             <value>The data path.</value>
+        </member>
+        <member name="P:Alis.Tools.Application.TempDataFolder">
+            <summary>Gets the temporary data folder.</summary>
+            <value>The temporary data folder.</value>
+        </member>
+        <member name="T:Alis.Tools.Asset">
+            <summary>Find any asset of the videogame.</summary>
+        </member>
+        <member name="F:Alis.Tools.Asset.assets">
+            <summary>The assets</summary>
+        </member>
+        <member name="P:Alis.Tools.Asset.AssetsPath">
+            <summary>Gets the assets path.</summary>
+            <value>The assets path.</value>
+        </member>
+        <member name="M:Alis.Tools.Asset.SetWorkPath(System.String)">
+            <summary>Gets or sets the work path.</summary>
+            <value>The work path.</value>
+        </member>
+        <member name="M:Alis.Tools.Asset.Load(System.String)">
+            <summary>Loads the specified name.</summary>
+            <param name="file">The name.</param>
+            <returns>Return the path of assset</returns>
         </member>
         <member name="T:Alis.Tools.Crypted`1">
             <summary>Control memory Security</summary>
@@ -157,14 +184,14 @@
         <member name="F:Alis.Tools.Language.currentLanguage">
             <summary>Dictionary of current language</summary>
         </member>
-        <member name="E:Alis.Tools.Language.Change">
-            <summary>Occurs when [change].</summary>
-        </member>
         <member name="F:Alis.Tools.Language.directory">
             <summary>The directory</summary>
         </member>
-        <member name="F:Alis.Tools.Language.file">
-            <summary>The file</summary>
+        <member name="E:Alis.Tools.Language.OnChange">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="M:Alis.Tools.Language.#cctor">
+            <summary>Initializes the <see cref="T:Alis.Tools.Language" /> class.</summary>
         </member>
         <member name="M:Alis.Tools.Language.TranslateTo(Alis.Tools.Idiom)">
             <summary>Translates to.</summary>
@@ -180,6 +207,95 @@
             <summary>Gets the encoding.</summary>
             <param name="filename">The filename.</param>
             <returns>Return the encode</returns>
+        </member>
+        <member name="M:Alis.Tools.Language.Language_OnChange(System.Object,Alis.Tools.Idiom)">
+            <summary>Languages the on change.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The e.</param>
+        </member>
+        <member name="T:Alis.Tools.Level">
+            <summary>Define level of the logs</summary>
+        </member>
+        <member name="F:Alis.Tools.Level.Verbose">
+            <summary>Include file options</summary>
+        </member>
+        <member name="F:Alis.Tools.Level.Info">
+            <summary>The information</summary>
+        </member>
+        <member name="F:Alis.Tools.Level.Normal">
+            <summary>The normal log</summary>
+        </member>
+        <member name="F:Alis.Tools.Level.Critical">
+            <summary>The critical</summary>
+        </member>
+        <member name="T:Alis.Tools.LocalData">
+            <summary>Manage the local data game.</summary>
+        </member>
+        <member name="M:Alis.Tools.LocalData.Save``1(System.String,``0)">
+            <summary>Saves the specified name.</summary>
+            <typeparam name="T">Type data</typeparam>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Alis.Tools.LocalData.Save``1(System.String,System.String,``0)">
+            <summary>Saves the specified name.</summary>
+            <typeparam name="T">Type data</typeparam>
+            <param name="name">The name.</param>
+            <param name="directory">directory to load file</param>
+            <param name="data">The data.</param>
+        </member>
+        <member name="M:Alis.Tools.LocalData.Load``1(System.String)">
+            <summary>Loads the specified name.</summary>
+            <typeparam name="T">Type data</typeparam>
+            <param name="name">The name.</param>
+            <returns>Return the value data.</returns>
+            <exception cref="T:System.NullReferenceException">When try to load null data</exception>
+        </member>
+        <member name="M:Alis.Tools.LocalData.Load``1(System.String,``0)">
+            <summary>Loads the specified name.</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name">The name.</param>
+            <param name="defaultValue">The default value.</param>
+            <returns>Return the value data.</returns>
+            <exception cref="T:System.NullReferenceException">Reading a empty file (primitive var)" + typeof(T).GetType().FullName</exception>
+        </member>
+        <member name="M:Alis.Tools.LocalData.Load``1(System.String,System.String)">
+            <summary>Loads the specified name.</summary>
+            <typeparam name="T">Type data</typeparam>
+            <param name="name">The name.</param>
+            <param name="directory">The directory.</param>
+            <returns>Return data</returns>
+            <exception cref="T:System.NullReferenceException">When try to load null data</exception>
+        </member>
+        <member name="M:Alis.Tools.LocalData.IsPrimitive(System.Type)">
+            <summary>Determines whether the specified type is primitive.</summary>
+            <param name="type">The type.</param>
+            <returns>
+            <c>true</c> if the specified type is primitive; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Alis.Tools.Logger">
+            <summary>Debug messages.</summary>
+        </member>
+        <member name="F:Alis.Tools.Logger.listener">
+            <summary>The listener</summary>
+        </member>
+        <member name="F:Alis.Tools.Logger.level">
+            <summary>The level</summary>
+        </member>
+        <member name="M:Alis.Tools.Logger.Info">
+            <summary>Informations this instance.</summary>
+        </member>
+        <member name="M:Alis.Tools.Logger.Log(System.String)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Logger.Warning(System.String)">
+            <summary>Warnings the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Tools.Logger.Error(System.String)">
+            <summary>Errors the specified message.</summary>
+            <param name="message">The message.</param>
         </member>
         <member name="T:Alis.Tools.Zipper">
             <summary>Manage zip files. </summary>
@@ -200,12 +316,7 @@
         <member name="M:Alis.Tools.Zipper.UnZip(System.String,System.String)">
             <summary>Unzips the specified zip file path.</summary>
             <param name="zipFile">The zip file path.</param>
-            <param name="outPutDir"></param>
-        </member>
-        <member name="M:Alis.Tools.Zipper.Unzip(System.String,System.String)">
-            <summary>Unzips the specified zip file path.</summary>
-            <param name="zipFile">The zip file path.</param>
-            <param name="location">The location.</param>
+            <param name="outPutDir">output directory</param>
         </member>
         <member name="M:Alis.Tools.Zipper.Zip(System.String,System.String[])">
             <summary>Zips the specified zip file name.</summary>

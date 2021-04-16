@@ -44,6 +44,8 @@
 
   <ItemGroup>
     <None Update="Runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+     <PackageReference Include="DotNetZip" Version="1.15.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -3,6 +3,7 @@
 // <copyright file="Program.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //----------------------------------------------------------------------------------------------------
 using Alis.Core;
+using Alis.Core.SFML;
 using System;
 /// <summary>Run the engine</summary>
 public class Program
