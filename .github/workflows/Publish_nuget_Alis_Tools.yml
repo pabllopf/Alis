@@ -1,0 +1,36 @@
+name: Publish_Nuget_Tools
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Nugets:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build 
+      run: dotnet build -c Linux ./Tools/Tools.csproj
+    
+    - name: publish on version change
+      id: publish_nuget
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH: Tools/Tools.csproj
+        PACKAGE_NAME: Tools
+        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+        NUGET_KEY: ${{secrets.EXAMPLE}}
+        NUGET_SOURCE: https://api.nuget.org
