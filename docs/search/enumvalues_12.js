@@ -1,12 +1,11 @@
 var searchData=
 [
-  ['thai_6214',['Thai',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a43ddc789bcea4177a14791f6c9a03b28',1,'Alis::Tools']]],
-  ['threedimensional_6215',['ThreeDimensional',['../namespace_alis_1_1_editor.html#afdfd76197c96727cc4059c5e3167fa05ae53e6a468bc80e076b0d8c3f17f7251e',1,'Alis::Editor']]],
-  ['timespan_6216',['TimeSpan',['../namespace_newtonsoft_1_1_json_1_1_utilities.html#a787d663dae046e8e0260e039bf559bd7a36ccd3ba5e96096e08abdd7f1d0940fb',1,'Newtonsoft.Json.Utilities.TimeSpan()'],['../namespace_newtonsoft_1_1_json_1_1_linq.html#aea17b92a9899808a5af23de0768c5537a36ccd3ba5e96096e08abdd7f1d0940fb',1,'Newtonsoft.Json.Linq.TimeSpan()']]],
-  ['timespannullable_6217',['TimeSpanNullable',['../namespace_newtonsoft_1_1_json_1_1_utilities.html#a787d663dae046e8e0260e039bf559bd7a5c66a911dfbf9a2fcb2a6a104265c89c',1,'Newtonsoft::Json::Utilities']]],
-  ['timestamp_6218',['TimeStamp',['../namespace_newtonsoft_1_1_json_1_1_bson.html#a292d4dc454f1df48dec7754a1dba7627a0a87878e34978e388b8cdaff2b730a12',1,'Newtonsoft::Json::Bson']]],
-  ['topmenu_6219',['TopMenu',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a75c4c1fad37c48ef5ac7a976e95fdfd8a04501c36095cc454a235520a6ac650b4',1,'Alis::Editor::UI::Widgets']]],
-  ['traditional_5fchinese_6220',['Traditional_Chinese',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a7f442fb6ac13f9a590171bf44e9eb426',1,'Alis::Tools']]],
-  ['turkish_6221',['Turkish',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4ac1612bbdebfa45467e8ab814e08daff1',1,'Alis::Tools']]],
-  ['twodimensional_6222',['TwoDimensional',['../namespace_alis_1_1_editor.html#afdfd76197c96727cc4059c5e3167fa05a5c439358dbee64daba17b27a722983ff',1,'Alis::Editor']]]
+  ['s_2561',['S',['../namespace_alis_1_1_core.html#a4015fdaf743e6680503bd648e8ceea73a5dbc98dcc983a70728bd082d1a47546e',1,'Alis::Core']]],
+  ['semicolon_2562',['Semicolon',['../namespace_alis_1_1_core.html#a4015fdaf743e6680503bd648e8ceea73a9806fa37a3ecd39bf637c203aa011ed0',1,'Alis::Core']]],
+  ['simplified_5fchinese_2563',['Simplified_Chinese',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a5a6f5a97e4034c3519866ddaeb0ee71d',1,'Alis::Tools']]],
+  ['slash_2564',['Slash',['../namespace_alis_1_1_core.html#a4015fdaf743e6680503bd648e8ceea73a358cfe58715d680d9ab09f82e4010cbc',1,'Alis::Core']]],
+  ['space_2565',['Space',['../namespace_alis_1_1_core.html#a4015fdaf743e6680503bd648e8ceea73ad511f8439ecde36647437fbba67a4394',1,'Alis::Core']]],
+  ['spanish_2566',['Spanish',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4acb5480c32e71778852b08ae1e8712775',1,'Alis::Tools']]],
+  ['subtract_2567',['Subtract',['../namespace_alis_1_1_core.html#a4015fdaf743e6680503bd648e8ceea73a1d9baf077ee87921f57a8fe42d510b65',1,'Alis::Core']]],
+  ['swedish_2568',['Swedish',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a41171a0fcd362ce98b5f0f11398713b6',1,'Alis::Tools']]]
 ];

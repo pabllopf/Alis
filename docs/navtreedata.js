@@ -93,7 +93,6 @@ var NAVTREE =
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
-        [ "Functions", "namespacemembers_func.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
@@ -105,8 +104,7 @@ var NAVTREE =
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", "functions_vars" ],
-        [ "Enumerations", "functions_enum.html", null ],
-        [ "Properties", "functions_prop.html", "functions_prop" ],
+        [ "Properties", "functions_prop.html", null ],
         [ "Events", "functions_evnt.html", null ]
       ] ]
     ] ]
@@ -116,25 +114,12 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_alis_1_1_core_1_1_sprite.html#a8074e7a18a0e9b693da1915f992b6da3",
-"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a48270620a40824e1abe8aebc4dedf68e",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a25b4883da93b6e387f44b3c86c3f3466",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a82aa89e213c1a09a11087e2f17e4e18e",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae309804c86c0ef22d6b5562c996035ad",
-"class_newtonsoft_1_1_json_1_1_bson_1_1_bson_reader.html#a1cfec9adaa30ad2b65f1fed5349ec131",
-"class_newtonsoft_1_1_json_1_1_json_convert.html#a6da256d42760acb21d62aeacbe015a7d",
-"class_newtonsoft_1_1_json_1_1_json_serializer.html#a645b5236fac58c4980d2ecc4de1a6c64",
-"class_newtonsoft_1_1_json_1_1_json_validating_reader.html#a324bab4bc0705ad728ce006912b9888f",
-"class_newtonsoft_1_1_json_1_1_linq_1_1_j_constructor.html#a8088fbf09f2ab5ab22b725d0c572efd6",
-"class_newtonsoft_1_1_json_1_1_linq_1_1_j_token.html#a540e372d78cb6cc335ad16eae537452b",
-"class_newtonsoft_1_1_json_1_1_linq_1_1_json_path_1_1_boolean_query_expression.html#a219b345f2a8bb10115a0e4a39f182732",
-"class_newtonsoft_1_1_json_1_1_schema_1_1_json_schema_model_builder.html#a415d493ebb50b1795ce8edcbcbda9aaf",
-"class_newtonsoft_1_1_json_1_1_serialization_1_1_json_object_contract.html#a2e411bae00cd658e0a4ce5ad57dda660",
-"class_newtonsoft_1_1_json_1_1_serialization_1_1_json_type_reflector.html#adfc6452bbc036914369b0585d95cbccd",
-"class_newtonsoft_1_1_json_1_1_utilities_1_1_date_time_utils.html#a75dc58a16284b3a6b05478d5166105cc",
-"class_newtonsoft_1_1_json_1_1_utilities_1_1_linq_bridge_1_1_enumerable.html#a9c83e08b5b3ef191ce328c4339499b0b",
-"class_newtonsoft_1_1_json_1_1_utilities_1_1_validation_utils.html#a8a70ca3e89e83f34deaedd12db6deebe",
-"namespace_newtonsoft_1_1_json_1_1_serialization.html"
+"class_alis_1_1_core_1_1_time.html#a262c45e05db7f89d91e6cfe3b5428aae",
+"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ab7c1103c3df83f4951603ea409f22ec8",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a2b0d30398a9b0bc293c710119fdfab29",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a889575b88ee0089e60da4f9ef8b0bb42",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae8395408a48705f59056d0dc59a6efc7",
+"functions_vars.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

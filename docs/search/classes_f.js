@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['pathfilter_3305',['PathFilter',['../class_newtonsoft_1_1_json_1_1_linq_1_1_json_path_1_1_path_filter.html',1,'Newtonsoft::Json::Linq::JsonPath']]],
-  ['program_3306',['Program',['../class_alis_1_1_editor_1_1_program.html',1,'Alis::Editor']]],
-  ['project_3307',['Project',['../class_alis_1_1_editor_1_1_project.html',1,'Alis::Editor']]],
-  ['projectmanager_3308',['ProjectManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html',1,'Alis::Editor::UI::Widgets']]]
+  ['widget_1321',['Widget',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html',1,'Alis::Editor::UI::Widgets']]],
+  ['widgetmanager_1322',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html',1,'Alis::Editor::UI::Widgets']]],
+  ['windowmanager_1323',['WindowManager',['../class_alis_1_1_core_1_1_window_manager.html',1,'Alis::Core']]],
+  ['windowmanagerbuilder_1324',['WindowManagerBuilder',['../class_alis_1_1_core_1_1_window_manager_1_1_window_manager_builder.html',1,'Alis::Core::WindowManager']]]
 ];

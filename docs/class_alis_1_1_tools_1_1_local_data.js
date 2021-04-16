@@ -1,8 +1,10 @@
 var class_alis_1_1_tools_1_1_local_data =
 [
-    [ "IsPrimitive", "class_alis_1_1_tools_1_1_local_data.html#a03af504f46878fdb505e1e0bddc05bb3", null ],
-    [ "Save< T >", "class_alis_1_1_tools_1_1_local_data.html#a24edf0f777dae3ab9a258b459510ccb8", null ],
-    [ "Save< T >", "class_alis_1_1_tools_1_1_local_data.html#a277ed46663aced1043ea2552ae714db3", null ],
-    [ "Load< T >", "class_alis_1_1_tools_1_1_local_data.html#a2195baefa277aa8f7073fa1ccf65bc1b", null ],
-    [ "Load< T >", "class_alis_1_1_tools_1_1_local_data.html#a7960e16970a6e1c906269943f11242b5", null ]
+    [ "Save< T >", "class_alis_1_1_tools_1_1_local_data.html#a2822b7f78777e41d93b4868431ad8443", null ],
+    [ "Save< T >", "class_alis_1_1_tools_1_1_local_data.html#ab363601ba48992f09a8f5fa0fdcb5d9f", null ],
+    [ "Load< T >", "class_alis_1_1_tools_1_1_local_data.html#aa04a962832b3777fc892c2253868b963", null ],
+    [ "Load< T >", "class_alis_1_1_tools_1_1_local_data.html#a4e264b50dd35f4e3a8a6707eb8b37cc1", null ],
+    [ "Load< T >", "class_alis_1_1_tools_1_1_local_data.html#a32c1f76c4399ba47ddcd4875871be2cd", null ],
+    [ "Load< T >", "class_alis_1_1_tools_1_1_local_data.html#ab9477920cbc1a7c72b7e840dfab91623", null ],
+    [ "IsPrimitive", "class_alis_1_1_tools_1_1_local_data.html#ac27f1ae945942e6f3e918c1a7ce1eb42", null ]
 ];

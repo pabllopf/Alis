@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['kebabcasenamingstrategy_4036',['KebabCaseNamingStrategy',['../class_newtonsoft_1_1_json_1_1_serialization_1_1_kebab_case_naming_strategy.html#aac4e833812541083290d57bd4b12ce53',1,'Newtonsoft.Json.Serialization.KebabCaseNamingStrategy.KebabCaseNamingStrategy(bool processDictionaryKeys, bool overrideSpecifiedNames)'],['../class_newtonsoft_1_1_json_1_1_serialization_1_1_kebab_case_naming_strategy.html#ab311c70be902e072511a7ec794f21f1d',1,'Newtonsoft.Json.Serialization.KebabCaseNamingStrategy.KebabCaseNamingStrategy(bool processDictionaryKeys, bool overrideSpecifiedNames, bool processExtensionDataNames)'],['../class_newtonsoft_1_1_json_1_1_serialization_1_1_kebab_case_naming_strategy.html#afc245b7c7f7775f3dbe5a264044f78ee',1,'Newtonsoft.Json.Serialization.KebabCaseNamingStrategy.KebabCaseNamingStrategy()']]]
+  ['main_1442',['Main',['../class_alis_1_1_editor_1_1_program.html#a9fb796180095303519fc9195869be1bf',1,'Alis::Editor::Program']]],
+  ['mainwindow_1443',['MainWindow',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a34cf3c5728e743f8bd294ee5ac5f865d',1,'Alis::Editor::UI::MainWindow']]],
+  ['memoryeditor_1444',['MemoryEditor',['../class_im_gui_n_e_t_1_1_memory_editor.html#a77fcc43e7a2e091e5cee04e20899e1b0',1,'ImGuiNET::MemoryEditor']]],
+  ['movetodir_1445',['MoveToDir',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a96905d8029281b270abf12b08c70c5de',1,'Alis::Editor::UI::Widgets::AssetsManager']]]
 ];

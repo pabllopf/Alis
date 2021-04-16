@@ -1,9 +1,15 @@
 var searchData=
 [
-  ['base64encoder_6263',['Base64Encoder',['../class_newtonsoft_1_1_json_1_1_json_text_writer.html#a6b530427dc76240533c844c6e1a9da57',1,'Newtonsoft::Json::JsonTextWriter']]],
-  ['binarytype_6264',['BinaryType',['../class_newtonsoft_1_1_json_1_1_bson_1_1_bson_binary.html#af1ffa343e341ffc1339d00c62eb40e47',1,'Newtonsoft::Json::Bson::BsonBinary']]],
-  ['binder_6265',['Binder',['../class_newtonsoft_1_1_json_1_1_json_serializer.html#a788521aa7affa0b4e4186e583fcae5d9',1,'Newtonsoft.Json.JsonSerializer.Binder()'],['../class_newtonsoft_1_1_json_1_1_json_serializer_settings.html#a2cc010a79505bb23b514441b8a0918f8',1,'Newtonsoft.Json.JsonSerializerSettings.Binder()'],['../class_newtonsoft_1_1_json_1_1_serialization_1_1_json_serializer_proxy.html#af8815e864a582b853e499b86d38ada14',1,'Newtonsoft.Json.Serialization.JsonSerializerProxy.Binder()']]],
-  ['border_6266',['Border',['../class_alis_1_1_core_1_1_collision.html#a793d750f5cdeacd60159bc32bb02cfb5',1,'Alis::Core::Collision']]],
-  ['buildertypename_6267',['BuilderTypeName',['../class_newtonsoft_1_1_json_1_1_utilities_1_1_immutable_collections_utils_1_1_immutable_collection_type_info.html#ad39d126c85f2bd4c5aca92b012c2d981',1,'Newtonsoft::Json::Utilities::ImmutableCollectionsUtils::ImmutableCollectionTypeInfo']]],
-  ['bytecount_6268',['ByteCount',['../class_newtonsoft_1_1_json_1_1_bson_1_1_bson_string.html#af59224d2fd2897b87ea8757a98f80571',1,'Newtonsoft::Json::Bson::BsonString']]]
+  ['cangodown_2595',['CanGoDown',['../class_alis_1_1_core_1_1_transform.html#abd02d23ad786f40f5e1202c8f19ce810',1,'Alis::Core::Transform']]],
+  ['cangoinside_2596',['CanGoInside',['../class_alis_1_1_core_1_1_transform.html#a3051dd2196c4d19721420bf151486e97',1,'Alis::Core::Transform']]],
+  ['cangoleft_2597',['CanGoLeft',['../class_alis_1_1_core_1_1_transform.html#af17fb26adfe50672acc4b530df1f9fc4',1,'Alis::Core::Transform']]],
+  ['cangoout_2598',['CanGoOut',['../class_alis_1_1_core_1_1_transform.html#a221ea3297f2efd9c1f4b3271bb877580',1,'Alis::Core::Transform']]],
+  ['cangoright_2599',['CanGoRight',['../class_alis_1_1_core_1_1_transform.html#a233435399036eb4066c0d8bd970eca25',1,'Alis::Core::Transform']]],
+  ['cangoup_2600',['CanGoUp',['../class_alis_1_1_core_1_1_transform.html#a8f8f57c4d04aaa3985af6f608356e5f4',1,'Alis::Core::Transform']]],
+  ['components_2601',['Components',['../class_alis_1_1_core_1_1_game_object.html#a577c4c1ca6df864c9be8582ecdb04049',1,'Alis::Core::GameObject']]],
+  ['config_2602',['Config',['../class_alis_1_1_core_1_1_game.html#a935f80548bb24810948b6d3af3fb249c',1,'Alis::Core::Game']]],
+  ['configpath_2603',['ConfigPath',['../class_alis_1_1_editor_1_1_project.html#a65ca053f50e661799439ae3ea1a95e23',1,'Alis::Editor::Project']]],
+  ['culture_2604',['Culture',['../class_core_1_1_properties_1_1_resources.html#a9d41aeb5267781affdff39857b1ae65d',1,'Core.Properties.Resources.Culture()'],['../class_tools_1_1_properties_1_1_resources.html#a770c31b155ff494391cdca7a23fb9131',1,'Tools.Properties.Resources.Culture()']]],
+  ['current_2605',['Current',['../class_alis_1_1_core_1_1_render.html#afb3919239a034a993e540548123c9be8',1,'Alis.Core.Render.Current()'],['../class_alis_1_1_editor_1_1_project.html#a1923b5c57962f5f3955c632ddfc689c9',1,'Alis.Editor.Project.Current()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#ad180b9040fbe6457e0ee471993501b04',1,'Alis.Editor.UI.Widgets.BottomMenu.Current()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a23b61cae063e6a20e0c3236fafc513e6',1,'Alis.Editor.UI.Widgets.Console.Current()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a0588f4f0ab93e42f7ce93cd746732fcb',1,'Alis.Editor.UI.Widgets.GameView.Current()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html#a861a71b1f05d342ecf2b64aa33f3a19b',1,'Alis.Editor.UI.Widgets.Hierarchy.Current()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae59d71b0d03e9bccf18f52f7be23a6a5',1,'Alis.Editor.UI.Widgets.Inspector.Current()']]],
+  ['currentscene_2606',['CurrentScene',['../class_alis_1_1_core_1_1_scene_manager.html#a5a981dc8e3ef3d92026180baf5c7e621',1,'Alis::Core::SceneManager']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['key_6405',['Key',['../class_newtonsoft_1_1_json_1_1_utilities_1_1_linq_bridge_1_1_enumerable_1_1_grouping.html#aa60aa2931599674886d16af5b018e4a7',1,'Newtonsoft.Json.Utilities.LinqBridge.Enumerable.Grouping.Key()'],['../interface_newtonsoft_1_1_json_1_1_utilities_1_1_linq_bridge_1_1_i_grouping.html#ac3c14dbc02cdb3fee35266a71ffccdab',1,'Newtonsoft.Json.Utilities.LinqBridge.IGrouping.Key()']]],
-  ['keycontract_6406',['KeyContract',['../class_newtonsoft_1_1_json_1_1_serialization_1_1_json_dictionary_contract.html#a743e4cc256ecab64ff9df3c7a5d236df',1,'Newtonsoft::Json::Serialization::JsonDictionaryContract']]],
-  ['keys_6407',['Keys',['../class_newtonsoft_1_1_json_1_1_linq_1_1_j_property_keyed_collection.html#a5fbf1ba039a19f0fc0c6adcbcb9f2a30',1,'Newtonsoft.Json.Linq.JPropertyKeyedCollection.Keys()'],['../class_newtonsoft_1_1_json_1_1_utilities_1_1_dictionary_wrapper.html#a453c6958308466a3ba0f2b8d3215df48',1,'Newtonsoft.Json.Utilities.DictionaryWrapper.Keys()'],['../class_newtonsoft_1_1_json_1_1_utilities_1_1_dictionary_wrapper.html#a083b86a50f40daf4c3465229eac7fb35',1,'Newtonsoft.Json.Utilities.DictionaryWrapper.Keys()']]]
+  ['render_2633',['Render',['../class_alis_1_1_core_1_1_game.html#ac0fe35a9ccbd3722b29d0b3322d91257',1,'Alis::Core::Game']]],
+  ['resolution_2634',['Resolution',['../class_alis_1_1_core_1_1_window_manager.html#aa6a50ca00f0240c788ee2d6471da34d4',1,'Alis::Core::WindowManager']]],
+  ['resourcemanager_2635',['ResourceManager',['../class_core_1_1_properties_1_1_resources.html#ad90a88b53859a2c7ee37c3a0a6e1ec88',1,'Core.Properties.Resources.ResourceManager()'],['../class_tools_1_1_properties_1_1_resources.html#a1b57c1c1e7d4242af29bf6c24679c959',1,'Tools.Properties.Resources.ResourceManager()']]],
+  ['rotation_2636',['Rotation',['../class_alis_1_1_core_1_1_transform.html#a1f61421fbb671293585f333fb2b5ab00',1,'Alis::Core::Transform']]]
 ];
