@@ -23,11 +23,10 @@ jobs:
       run: dotnet restore
       
     - name: Build 
-      run: dotnet build -c Window ./Tools/Tools.csproj
+      run: dotnet build -c Linux ./Tools/Tools.csproj
     
     - name: Publish Nuget
       uses: rohith/publish-nuget@v2
       with:
-        PROJECT_FILE_PATH:  ./Tools/Tools.csproj
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
         NUGET_KEY: ${{secrets.EXAMPLE}}
