@@ -11,7 +11,7 @@
 	<PackageId>Alis.Core-SFML</PackageId>
 	<Authors>Pablo Perdomo Falcón</Authors>
 	<Product>Alis</Product>
-	<Description>The "Alis.Core-SFML" include the library "SFML.NET 2.5" with fully configured to import and use in your project. And remember ... it's multiplatform and free!!
+	<Description>The "Alis.Core-SFML" include the implementation of library "SFML.NET 2.5" with fully configured to import and use in your project. And remember ... it's multiplatform and free!!
 </Description>
 	<Copyright>GNU General Public License v3.0</Copyright>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -28,7 +28,7 @@
 	<AssemblyOriginatorKeyFile>Pablo Perdomo Falcón.pfx</AssemblyOriginatorKeyFile>
 	  <AssemblyVersion>1.1.0.0</AssemblyVersion>
 	  <FileVersion>1.1.0.0</FileVersion>
-	  <Version>1.1.0</Version>
+	  <Version>1.2.0</Version>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->

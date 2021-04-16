@@ -17,12 +17,6 @@ namespace Alis.Editor.UI.Widgets
     /// <summary>Menu of editor</summary>
     public class TopMenu : Widget
     {
-        /// <summary>The name</summary>
-        private const string Name = "TopMenu";
-
-        /// <summary>The event handler</summary>
-        private EventHandler<EventType> eventHandler;
-
         /// <summary>The process</summary>
         private System.Diagnostics.Process process = new System.Diagnostics.Process();
 
@@ -41,14 +35,14 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The automatic save selected</summary>
         private bool autoSaveSelected = false;
 
+        /// <summary>The information</summary>
         private Info info;
 
         /// <summary>Initializes a new instance of the <see cref="TopMenu" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
         /// <param name="info">The information.</param>
-        public TopMenu(EventHandler<EventType> eventHandler, Info info)
+        public TopMenu(Info info)
         {
-            this.eventHandler = eventHandler;
             this.info = info;
 
             if (info.Platform.Equals(Platform.Windows))
@@ -84,12 +78,12 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.MenuItem(Icon.FILEO + " New Project", "Ctrl+N"))
                     {
-                        eventHandler.Invoke(null, EventType.OpenCreateProject);
+                        //eventHandler.Invoke(null, EventType.OpenCreateProject);
                     }
 
                     if (ImGui.MenuItem(Icon.FOLDEROPEN + " Open Project", "Ctrl+O"))
                     {
-                        eventHandler.Invoke(null, EventType.OpenProject);
+                        //eventHandler.Invoke(null, EventType.OpenProject);
                     }
 
                     ImGui.Separator();
@@ -211,7 +205,7 @@ namespace Alis.Editor.UI.Widgets
 
                         if (ImGui.MenuItem("Console"))
                         {
-                            eventHandler?.Invoke(this, EventType.OpenConsole);
+                            //eventHandler?.Invoke(this, EventType.OpenConsole);
                         }
 
                         ImGui.EndMenu();
@@ -301,7 +295,7 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(96) && !isSavedPressed)
             {
-                eventHandler.Invoke(null, EventType.OpenCreateProject);
+                //eventHandler.Invoke(null, EventType.OpenCreateProject);
                 isOpenNewProject = true;
             }
 
@@ -312,7 +306,7 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(97) && !isSavedPressed)
             {
-                eventHandler.Invoke(null, EventType.OpenProject);
+                //eventHandler.Invoke(null, EventType.OpenProject);
                 isOpenProject = true;
             }
 
@@ -516,7 +510,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.Text("Are you sure you want to exit?, Please remenber save the project.");
                 if (ImGui.Button("Accept", new System.Numerics.Vector2((ImGui.GetContentRegionAvail().X / 2) - 5.0f, 35.0f)))
                 {
-                    eventHandler.Invoke(this, EventType.ExitEditor);
+                    //eventHandler.Invoke(this, EventType.ExitEditor);
                     exitState = false;
                     ImGui.CloseCurrentPopup();
                 }

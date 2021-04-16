@@ -11,6 +11,10 @@ namespace Alis.Editor.UI.Widgets
     /// <summary>Widget Manager</summary>
     public class WidgetManager
     {
+        /// <summary>The current</summary>
+        [AllowNull]
+        private WidgetManager current;
+
         /// <summary>The widgets</summary>
         [NotNull]
         private List<Widget> widgets;
@@ -25,6 +29,8 @@ namespace Alis.Editor.UI.Widgets
             widgets = new List<Widget>();
 
             widgets.Add(new DockSpace());
+            widgets.Add(new TopMenu(info));
+
             widgets.Add(new Console());
           
             Logger.Info();
@@ -40,6 +46,11 @@ namespace Alis.Editor.UI.Widgets
                     widgets[i].Draw();
                 }
             }
+        }
+
+        public void AddWidget(Widget widget) 
+        {
+            
         }
     }
 }
