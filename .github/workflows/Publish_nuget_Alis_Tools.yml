@@ -25,8 +25,12 @@ jobs:
     - name: Build 
       run: dotnet build -c Linux ./Tools/Tools.csproj
     
-    - name: Publish Nuget
+    - name: publish on version change
+      id: publish_nuget
       uses: rohith/publish-nuget@v2
       with:
+        PROJECT_FILE_PATH: Tools/Tools.csproj
+        PACKAGE_NAME: Tools
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
         NUGET_KEY: ${{secrets.EXAMPLE}}
+        NUGET_SOURCE: https://api.nuget.org
