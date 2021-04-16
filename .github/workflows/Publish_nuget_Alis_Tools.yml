@@ -30,4 +30,4 @@ jobs:
       with:
         PROJECT_FILE_PATH:  ./Tools/Tools.csproj
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-        NUGET_KEY: ${{secrets.NUGET}}
+        NUGET_KEY: ${{secrets.EXAMPLE}}
