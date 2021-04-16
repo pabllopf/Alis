@@ -1,4 +1,4 @@
-name: Publish Nugets
+name: Publish_Nuget_Tools
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 jobs:
   Nugets:
 
-    runs-on: window-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
