@@ -1,0 +1,33 @@
+name: Publish Nugets
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Nugets:
+
+    runs-on: window-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build 
+      run: dotnet build -c Window ./Tools/Tools.csproj
+    
+    - name: Publish Alis.Tools Nuget
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH:  ./Tools/Tools.csproj
+        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+        NUGET_KEY: ${{secrets.NUGET}}
