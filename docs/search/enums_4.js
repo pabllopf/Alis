@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['eventtype_5981',['EventType',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45c',1,'Alis::Editor::UI::Widgets']]]
+  ['keyboard_2432',['Keyboard',['../namespace_alis_1_1_core.html#a4015fdaf743e6680503bd648e8ceea73',1,'Alis::Core']]]
 ];

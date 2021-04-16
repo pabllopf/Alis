@@ -1,6 +1,7 @@
 var class_alis_1_1_editor_1_1_info =
 [
-    [ "Info", "class_alis_1_1_editor_1_1_info.html#aa4f0ef2b60becff79372dcb3fcef278f", null ],
+    [ "Info", "class_alis_1_1_editor_1_1_info.html#a7aa83a8d4ab129e90418df71a45bb2dd", null ],
+    [ "Info", "class_alis_1_1_editor_1_1_info.html#a84dc9cf2cbc870bcb8f2647547d3319f", null ],
     [ "platform", "class_alis_1_1_editor_1_1_info.html#a5ac4c25e108644f880535e38abc7191f", null ],
     [ "architecture", "class_alis_1_1_editor_1_1_info.html#abd46a1d214c0b214e07bc385d1ea4757", null ],
     [ "graphics", "class_alis_1_1_editor_1_1_info.html#a1ca9c43ae0071868efb325caccf37b7c", null ],

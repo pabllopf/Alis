@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Alis Framework: Core/Debug/Logger.cs Source File</title>
+<title>Alis Framework: Tools/Logger.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -103,153 +103,158 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// &lt;author&gt;Pablo Perdomo Falcón&lt;/author&gt;</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// &lt;copyright file=&quot;Debug.cs&quot; company=&quot;Pabllopf&quot;&gt;GNU General Public License v3.0&lt;/copyright&gt;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//-------------------------------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_alis_1_1_core.html">Alis.Core</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_alis_1_1_tools.html">Alis.Tools</a></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;{</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Diagnostics;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.IO;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">using</span> <a class="code" href="namespace_system.html">System</a>.Reflection;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_logger.html">   13</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="class_alis_1_1_core_1_1_logger.html">Logger</a></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    {</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">   16</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> TextWriterTraceListener <a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a> = <span class="keyword">new</span> TextWriterTraceListener(Console.Out);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">   19</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a> <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> = <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Critical;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_logger.html#a86f99ba4c2f51aa5873d715233fbadef">   22</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_logger.html#a86f99ba4c2f51aa5873d715233fbadef">Info</a>()</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Verbose || <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Info)</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                <span class="keywordflow">if</span> (!Trace.Listeners.Contains(<a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a>))</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;                {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                    Trace.Listeners.Add(<a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a>);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                    Trace.AutoFlush = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                }</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                StackTrace stack = <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">DateTime</a>.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <span class="keywordtype">string</span> fileName = Path.GetFileName(stack.GetFrame(1).GetFileName());</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                <span class="keywordtype">string</span> line = stack.GetFrame(1).GetFileLineNumber().ToString();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                <span class="keywordtype">string</span> param = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                ParameterInfo[] parameters = stack.GetFrame(1).GetMethod().GetParameters();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; parameters.Length; i++)</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;                {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    param += parameters[i].ParameterType + <span class="stringliteral">&quot; &quot;</span> + parameters[i].Name + ((i &lt; parameters.Length - 1) ? <span class="stringliteral">&quot;, &quot;</span> : <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                type = stack.GetFrame(1).GetMethod().IsConstructor ? <span class="stringliteral">&quot;CONSTRUCTOR&quot;</span> :</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                       stack.GetFrame(1).GetMethod().Name.Contains(<span class="stringliteral">&quot;On&quot;</span>) ? <span class="stringliteral">&quot;EVENT      &quot;</span> : <span class="stringliteral">&quot;METHOD     &quot;</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Verbose)</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    fullName = fullName.Replace(<span class="stringliteral">&quot;.ctor&quot;</span>, <span class="stringliteral">&quot;Contructor&quot;</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                    Trace.WriteLine(date + <span class="stringliteral">&quot; &quot;</span> + type + <span class="stringliteral">&quot; &quot;</span> + fullName + <span class="stringliteral">&quot;(&quot;</span> + param + <span class="stringliteral">&quot;)&quot;</span> + <span class="stringliteral">&quot; File:&quot;</span> + fileName + <span class="stringliteral">&quot; Line:&quot;</span> + line);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Info)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                    fullName = fullName.Replace(<span class="stringliteral">&quot;.ctor&quot;</span>, <span class="stringliteral">&quot;Contructor&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    Trace.WriteLine(date + <span class="stringliteral">&quot; &quot;</span> + type + <span class="stringliteral">&quot; &quot;</span> + fullName + <span class="stringliteral">&quot;(&quot;</span> + param + <span class="stringliteral">&quot;)&quot;</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_logger.html#a1421a7aef85389ef6d8ee5bbe64d98a4">   67</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_logger.html#a1421a7aef85389ef6d8ee5bbe64d98a4">Log</a>(<span class="keywordtype">string</span> message)</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Verbose || <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Info || <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Normal)</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">if</span> (!Trace.Listeners.Contains(<a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a>))</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                    Trace.Listeners.Add(<a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a>);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                    Trace.AutoFlush = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                }</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                StackTrace stack = <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">DateTime</a>.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;LOG        &quot;</span>;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keyword">using</span> System;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;    <span class="keyword">using</span> System.<a class="code" href="namespace_system_1_1_diagnostics.html">Diagnostics</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_logger.html">   11</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="class_alis_1_1_tools_1_1_logger.html">Logger</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    {</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">   14</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly TextWriterTraceListener <a class="code" href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">listener</a> = <span class="keyword">new</span>(Console.Out);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">   17</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> readonly <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a> <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> = <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Normal;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        [Conditional(<span class="stringliteral">&quot;DEBUG&quot;</span>)]</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_logger.html#a1a0588f68577005db5d2ed86ec21635c">   21</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a1a0588f68577005db5d2ed86ec21635c">Info</a>()</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Verbose || <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Info)</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;                Console.WriteLine(<span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span> + <span class="stringliteral">&quot; INFO &quot;</span> + <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>).GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>).GetFrame(1).ToString());</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="comment">/*if (level == Level.Verbose || level == Level.Info)</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">                if (!Trace.Listeners.Contains(listener))</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">                    Trace.Listeners.Add(listener);</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">                    Trace.AutoFlush = true;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">                StackTrace stack = new StackTrace(true);</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">                string date = &quot;[&quot; + DateTime.Now.ToString() + &quot;]&quot;;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">                string type = &quot;&quot;;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">                string fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + &quot;.&quot; + stack.GetFrame(1).GetMethod().Name;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">                string fileName = Path.GetFileName(stack.GetFrame(1).GetFileName());</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">                string line = stack.GetFrame(1).GetFileLineNumber().ToString();</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">                string param = &quot;&quot;;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">                ParameterInfo[] parameters = stack.GetFrame(1).GetMethod().GetParameters();</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">                for (int i = 0; i &lt; parameters.Length; i++)</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">                    param += parameters[i].ParameterType + &quot; &quot; + parameters[i].Name + ((i &lt; parameters.Length - 1) ? &quot;, &quot; : &quot;&quot;);</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">                type = stack.GetFrame(1).GetMethod().IsConstructor ? &quot;CONSTRUCTOR&quot; :</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">                       stack.GetFrame(1).GetMethod().Name.Contains(&quot;On&quot;) ? &quot;EVENT      &quot; : &quot;METHOD     &quot;;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">                if (level == Level.Verbose)</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">                    fullName = fullName.Replace(&quot;.ctor&quot;, &quot;Contructor&quot;);</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">                    Trace.WriteLine(date + &quot; &quot; + type + &quot; &quot; + fullName + &quot;(&quot; + param + &quot;)&quot; + &quot; File:&quot; + fileName + &quot; Line:&quot; + line);</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">                if (level == Level.Info)</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">                    fullName = fullName.Replace(&quot;.ctor&quot;, &quot;Contructor&quot;);</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">                    Trace.WriteLine(date + &quot; &quot; + type + &quot; &quot; + fullName + &quot;(&quot; + param + &quot;)&quot;);</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">            }*/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        [Conditional(<span class="stringliteral">&quot;DEBUG&quot;</span>)]</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_logger.html#a4377c11cb5d762bf040ff04610a94701">   73</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a4377c11cb5d762bf040ff04610a94701">Log</a>(<span class="keywordtype">string</span> message)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Verbose || <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Info || <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Normal)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">if</span> (!Trace.Listeners.Contains(<a class="code" href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">listener</a>))</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    Trace.Listeners.Add(<a class="code" href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">listener</a>);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                    Trace.AutoFlush = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                }</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                fullName = fullName.Replace(<span class="stringliteral">&quot;.ctor&quot;</span>, <span class="stringliteral">&quot;Contructor&quot;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                StackTrace stack = <span class="keyword">new</span>(<span class="keyword">true</span>);</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                Trace.WriteLine(date + <span class="stringliteral">&quot; &quot;</span> + type + <span class="stringliteral">&quot; &quot;</span> + fullName + <span class="stringliteral">&quot; | &quot;</span> + message);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;LOG        &quot;</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_logger.html#a08cacb24576edab3a6897af17c56b65f">   91</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_logger.html#a08cacb24576edab3a6897af17c56b65f">Warning</a>(<span class="keywordtype">string</span> message)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Verbose || <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Info || <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Normal)</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                <span class="keywordflow">if</span> (!Trace.Listeners.Contains(<a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a>))</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                {</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    Trace.Listeners.Add(<a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a>);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                    Trace.AutoFlush = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                }</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                StackTrace stack = <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">DateTime</a>.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;WARNING    &quot;</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                fullName = fullName.Replace(<span class="stringliteral">&quot;.ctor&quot;</span>, <span class="stringliteral">&quot;Contructor&quot;</span>);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                Console.BackgroundColor = ConsoleColor.DarkYellow;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                Trace.WriteLine(date + <span class="stringliteral">&quot; &quot;</span> + type + <span class="stringliteral">&quot; &quot;</span> + fullName + <span class="stringliteral">&quot; | &quot;</span> + message);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                Console.ResetColor();</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            }</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class_alis_1_1_core_1_1_logger.html#aeafaefee65f88364bebfd0c7c0eaf6d1">  117</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_core_1_1_logger.html#aeafaefee65f88364bebfd0c7c0eaf6d1">Error</a>(<span class="keywordtype">string</span> message)</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Verbose || <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Info || <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Normal || <a class="code" href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">level</a> == <a class="code" href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Level</a>.Critical)</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">if</span> (!Trace.Listeners.Contains(<a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a>))</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                    Trace.Listeners.Add(<a class="code" href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">listener</a>);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                    Trace.AutoFlush = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                StackTrace stack = <span class="keyword">new</span> StackTrace(<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + <a class="code" href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">DateTime</a>.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;ERROR      &quot;</span>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                fullName = fullName.Replace(<span class="stringliteral">&quot;.ctor&quot;</span>, <span class="stringliteral">&quot;Contructor&quot;</span>);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                Console.BackgroundColor = ConsoleColor.DarkRed;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordtype">string</span> result = date + <span class="stringliteral">&quot; &quot;</span> + type + <span class="stringliteral">&quot; &quot;</span> + fullName + <span class="stringliteral">&quot; | &quot;</span> + message + <span class="stringliteral">&quot;\nERROR &quot;</span> + Environment.StackTrace.Trim();</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                Trace.WriteLine(result);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                Console.ResetColor();</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            }</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        }</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                fullName = fullName.Replace(<span class="stringliteral">&quot;.ctor&quot;</span>, <span class="stringliteral">&quot;Contructor&quot;</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                Trace.WriteLine(date + <span class="stringliteral">&quot; &quot;</span> + type + <span class="stringliteral">&quot; &quot;</span> + fullName + <span class="stringliteral">&quot;()&quot;</span> + <span class="stringliteral">&quot; | &quot;</span> + message);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        [Conditional(<span class="stringliteral">&quot;DEBUG&quot;</span>)]</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_logger.html#a63d087775d79b158326173fc361d43b7">   98</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a63d087775d79b158326173fc361d43b7">Warning</a>(<span class="keywordtype">string</span> message)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Verbose || <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Info || <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Normal)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">if</span> (!Trace.Listeners.Contains(<a class="code" href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">listener</a>))</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    Trace.Listeners.Add(<a class="code" href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">listener</a>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                    Trace.AutoFlush = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                StackTrace stack = <span class="keyword">new</span>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;WARNING    &quot;</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                fullName = fullName.Replace(<span class="stringliteral">&quot;.ctor&quot;</span>, <span class="stringliteral">&quot;Contructor&quot;</span>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                Console.BackgroundColor = ConsoleColor.DarkYellow;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                Trace.WriteLine(date + <span class="stringliteral">&quot; &quot;</span> + type + <span class="stringliteral">&quot; &quot;</span> + fullName + <span class="stringliteral">&quot;()&quot;</span> + <span class="stringliteral">&quot; | &quot;</span> + message);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                Console.ResetColor();</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="class_alis_1_1_tools_1_1_logger.html#a01846314c9e4dbee35022f1a3e27ce5c">  124</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> Exception <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a01846314c9e4dbee35022f1a3e27ce5c">Error</a>(<span class="keywordtype">string</span> message)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">if</span> (!Trace.Listeners.Contains(<a class="code" href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">listener</a>))</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                Trace.Listeners.Add(<a class="code" href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">listener</a>);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                Trace.AutoFlush = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            StackTrace stack = <span class="keyword">new</span>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordtype">string</span> date = <span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordtype">string</span> type = <span class="stringliteral">&quot;ERROR      &quot;</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordtype">string</span> fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + <span class="stringliteral">&quot;.&quot;</span> + stack.GetFrame(1).GetMethod().Name;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            fullName = fullName.Replace(<span class="stringliteral">&quot;.ctor&quot;</span>, <span class="stringliteral">&quot;Contructor&quot;</span>);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            Console.BackgroundColor = ConsoleColor.DarkRed;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            <span class="keywordtype">string</span> result = date + <span class="stringliteral">&quot; &quot;</span> + type + <span class="stringliteral">&quot; &quot;</span> + fullName + <span class="stringliteral">&quot; | &quot;</span> + message + <span class="stringliteral">&quot;\nERROR &quot;</span> + Environment.StackTrace.Trim();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            Trace.WriteLine(result);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            Console.ResetColor();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">new</span> Exception(result);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a86f99ba4c2f51aa5873d715233fbadef"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a86f99ba4c2f51aa5873d715233fbadef">Alis.Core.Logger.Info</a></div><div class="ttdeci">static void Info()</div><div class="ttdoc">Informations this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00022">Logger.cs:22</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_html"><div class="ttname"><a href="namespace_alis_1_1_core.html">Alis.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_config_8cs_source.html#l00005">Config.cs:6</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_html_a5b1648bfd6f46e4c7029f109c32dc35c"><div class="ttname"><a href="namespace_alis_1_1_core.html#a5b1648bfd6f46e4c7029f109c32dc35c">Alis.Core.Level</a></div><div class="ttdeci">Level</div><div class="ttdoc">Define level of the logs</div><div class="ttdef"><b>Definition:</b> <a href="_level_8cs_source.html#l00008">Level.cs:9</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a1d8e5391600ce1c13fd8585a8c939049"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a1d8e5391600ce1c13fd8585a8c939049">Alis.Core.Logger.listener</a></div><div class="ttdeci">static TextWriterTraceListener listener</div><div class="ttdoc">The listener</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00016">Logger.cs:16</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_aeafaefee65f88364bebfd0c7c0eaf6d1"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#aeafaefee65f88364bebfd0c7c0eaf6d1">Alis.Core.Logger.Error</a></div><div class="ttdeci">static void Error(string message)</div><div class="ttdoc">Errors the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00117">Logger.cs:117</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a1421a7aef85389ef6d8ee5bbe64d98a4"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a1421a7aef85389ef6d8ee5bbe64d98a4">Alis.Core.Logger.Log</a></div><div class="ttdeci">static void Log(string message)</div><div class="ttdoc">Logs the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00067">Logger.cs:67</a></div></div>
-<div class="ttc" id="anamespace_newtonsoft_1_1_json_html_abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754"><div class="ttname"><a href="namespace_newtonsoft_1_1_json.html#abf9b1842d77d9fdb8e1565fe51de3643a6adf97f83acf6453d4a6a4b1070f3754">Newtonsoft.Json.DateParseHandling.None</a></div><div class="ttdeci">@ None</div><div class="ttdoc">Date formatted strings are not parsed to a date type and are read as strings.</div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a283b29cc15a30e910b29de7ef2b2800f"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a283b29cc15a30e910b29de7ef2b2800f">Alis.Core.Logger.level</a></div><div class="ttdeci">static Level level</div><div class="ttdoc">The level</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00019">Logger.cs:19</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html_a08cacb24576edab3a6897af17c56b65f"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html#a08cacb24576edab3a6897af17c56b65f">Alis.Core.Logger.Warning</a></div><div class="ttdeci">static void Warning(string message)</div><div class="ttdoc">Warnings the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00091">Logger.cs:91</a></div></div>
-<div class="ttc" id="anamespace_system_html"><div class="ttname"><a href="namespace_system.html">System</a></div><div class="ttdef"><b>Definition:</b> <a href="_linq_bridge_8cs_source.html#l03058">LinqBridge.cs:3059</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_logger_html"><div class="ttname"><a href="class_alis_1_1_core_1_1_logger.html">Alis.Core.Logger</a></div><div class="ttdoc">Debug messages.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00013">Logger.cs:14</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html_a01846314c9e4dbee35022f1a3e27ce5c"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html#a01846314c9e4dbee35022f1a3e27ce5c">Alis.Tools.Logger.Error</a></div><div class="ttdeci">static Exception Error(string message)</div><div class="ttdoc">Errors the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00124">Logger.cs:124</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html_a63d087775d79b158326173fc361d43b7"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html#a63d087775d79b158326173fc361d43b7">Alis.Tools.Logger.Warning</a></div><div class="ttdeci">static void Warning(string message)</div><div class="ttdoc">Warnings the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00098">Logger.cs:98</a></div></div>
+<div class="ttc" id="anamespace_system_1_1_diagnostics_html"><div class="ttname"><a href="namespace_system_1_1_diagnostics.html">Diagnostics</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_tools_html_a97fc70faa936b2e7b751b4d67cd2e75a"><div class="ttname"><a href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Alis.Tools.Level</a></div><div class="ttdeci">Level</div><div class="ttdoc">Define level of the logs</div><div class="ttdef"><b>Definition:</b> <a href="_level_8cs_source.html#l00008">Level.cs:9</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html_a4377c11cb5d762bf040ff04610a94701"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html#a4377c11cb5d762bf040ff04610a94701">Alis.Tools.Logger.Log</a></div><div class="ttdeci">static void Log(string message)</div><div class="ttdoc">Logs the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00073">Logger.cs:73</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html_a1a0588f68577005db5d2ed86ec21635c"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html#a1a0588f68577005db5d2ed86ec21635c">Alis.Tools.Logger.Info</a></div><div class="ttdeci">static void Info()</div><div class="ttdoc">Informations this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00021">Logger.cs:21</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html_a25e0168b71d3ed2af58abd5b76fa8293"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html#a25e0168b71d3ed2af58abd5b76fa8293">Alis.Tools.Logger.level</a></div><div class="ttdeci">static readonly Level level</div><div class="ttdoc">The level</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00017">Logger.cs:17</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html">Alis.Tools.Logger</a></div><div class="ttdoc">Debug messages.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00011">Logger.cs:12</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html_ac7eeda4477fe23ed9c6f14ec1b3c1d35"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">Alis.Tools.Logger.listener</a></div><div class="ttdeci">static readonly TextWriterTraceListener listener</div><div class="ttdoc">The listener</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00014">Logger.cs:14</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_tools_html"><div class="ttname"><a href="namespace_alis_1_1_tools.html">Alis.Tools</a></div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00005">Application.cs:6</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_c6310732a22f63c0c2fc5595561e68f1.html">Core</a></li><li class="navelem"><a class="el" href="dir_59c10b51c8380b58e1f1bb38ac61eeb3.html">Debug</a></li><li class="navelem"><b>Logger.cs</b></li>
+    <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><b>Logger.cs</b></li>
     <li class="footer">
-      <a>Generated on | Fri Mar 26 2021 |</a>
+      <a>Generated on | Fri Apr 16 2021 |</a>
     </li>
   </ul>
 </div>

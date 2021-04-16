@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['idiom_5986',['Idiom',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4',1,'Alis::Tools']]]
+  ['typeproject_2435',['TypeProject',['../namespace_alis_1_1_editor.html#afdfd76197c96727cc4059c5e3167fa05',1,'Alis::Editor']]]
 ];

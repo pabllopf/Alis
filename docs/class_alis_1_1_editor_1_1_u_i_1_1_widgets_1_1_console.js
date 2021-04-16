@@ -1,6 +1,6 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console =
 [
-    [ "Console", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a6390bc30cd857d90996d57c14b532782", null ],
+    [ "Console", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afaeda174177dc3cce05af3b0d4f3ba18", null ],
     [ "Clear", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a276b21eaf1752a69c4911e75145610f4", null ],
     [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#af452d01c7b26b42a3c9c94f8730b9672", null ],
     [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ac736d45ad91c093c48aa85c3d98adfc4", null ],
@@ -10,8 +10,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console =
     [ "Log", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a46e20be0c039ddd9c483984a07c9c33d", null ],
     [ "Print", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a01677bf318218d2481c160f3601517f0", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#acc7f1314638fd32510b9e6296289ec81", null ],
-    [ "Current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a23b61cae063e6a20e0c3236fafc513e6", null ],
-    [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae6636fe5db1214a3fd156dc55763ba19", null ],
+    [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a505bd3aca96ad652ff9bf525f8bab3a0", null ],
     [ "filter", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a52016ee79c83782c73ca48cbed5d21da", null ],
     [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a67944b7d60ee9bb8303977edb6014056", null ],
     [ "log", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae5287e5503e3dd33bbbef00378463111", null ],
@@ -24,5 +23,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console =
     [ "buttonDefault", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ae59aa98b309aaec3d473f39216931d65", null ],
     [ "buttonPressed", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a1e9e5730bba9195af552ddb33c5d4b15", null ],
     [ "redColor", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#aeaacf4aad5be4c88f7e15ce02693e1c4", null ],
-    [ "yellowColor", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a94e954b1cf3d180d20b13ea422c7c24a", null ]
+    [ "yellowColor", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a94e954b1cf3d180d20b13ea422c7c24a", null ],
+    [ "Current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a23b61cae063e6a20e0c3236fafc513e6", null ]
 ];

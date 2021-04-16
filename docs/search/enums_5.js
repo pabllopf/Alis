@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['floatformathandling_5982',['FloatFormatHandling',['../namespace_newtonsoft_1_1_json.html#adb2c9bdd46de5b945997a56cd235e1ca',1,'Newtonsoft::Json']]],
-  ['floatparsehandling_5983',['FloatParseHandling',['../namespace_newtonsoft_1_1_json.html#ac833a8f0afa72531374388abcc1c674f',1,'Newtonsoft::Json']]],
-  ['formatting_5984',['Formatting',['../namespace_newtonsoft_1_1_json.html#af878fd4844fca20f79f1568c052ed700',1,'Newtonsoft::Json']]]
+  ['level_2433',['Level',['../namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a',1,'Alis::Tools']]]
 ];
