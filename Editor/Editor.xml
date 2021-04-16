@@ -267,6 +267,9 @@
         <member name="T:Alis.Editor.UI.Widgets.WidgetManager">
             <summary>Widget Manager</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.current">
+            <summary>The current</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.WidgetManager.widgets">
             <summary>The widgets</summary>
         </member>
@@ -758,12 +761,6 @@
         <member name="T:Alis.Editor.UI.Widgets.TopMenu">
             <summary>Menu of editor</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.TopMenu.Name">
-            <summary>The name</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.TopMenu.eventHandler">
-            <summary>The event handler</summary>
-        </member>
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.process">
             <summary>The process</summary>
         </member>
@@ -782,7 +779,10 @@
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.autoSaveSelected">
             <summary>The automatic save selected</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType},Alis.Editor.Info)">
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.info">
+            <summary>The information</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(Alis.Editor.Info)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.TopMenu" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
             <param name="info">The information.</param>
