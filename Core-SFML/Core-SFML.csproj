@@ -26,9 +26,9 @@
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<SignAssembly>false</SignAssembly>
 	<AssemblyOriginatorKeyFile>Pablo Perdomo Falcón.pfx</AssemblyOriginatorKeyFile>
-	  <AssemblyVersion>1.2.3.0</AssemblyVersion>
-	  <FileVersion>1.2.3.0</FileVersion>
-	  <Version>1.2.3</Version>
+	  <AssemblyVersion>1.2.4.0</AssemblyVersion>
+	  <FileVersion>1.2.4.0</FileVersion>
+	  <Version>1.2.4</Version>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -82,156 +82,156 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="csfml-audio.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="csfml-Graphics.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="csfml-graphics.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="csfml-network.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="csfml-System.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="csfml-system.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack><PackagePath>lib\$(TargetFramework)</PackagePath>
+      <Pack>True</Pack><PackagePath></PackagePath>
     </Content>
     <Content Include="csfml-Window.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="csfml-window.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libcimgui.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libcsfml-audio.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libcsfml-graphics.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libcsfml-system.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libcsfml-window.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsdl2.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-audio.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-audio.so.2.5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-audio.so.2.5.1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-graphics.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-graphics.so.2.5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-system.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-system.so.2.5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-window.so">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libsfml-window.so.2.5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="libuv.dylib">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
     <Content Include="openal32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       <Pack>True</Pack>
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
+      <PackagePath></PackagePath>
     </Content>
   </ItemGroup>
   
@@ -245,6 +245,7 @@
 
   
   <ItemGroup>
+    <None Pack="True" Update="runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
     <None Include="..\docs\resources\logo\logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
