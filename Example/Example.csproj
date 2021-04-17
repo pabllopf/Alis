@@ -16,6 +16,7 @@
     <WarningsAsErrors></WarningsAsErrors>
     <DefineConstants></DefineConstants>
   </PropertyGroup>
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
@@ -23,6 +24,7 @@
     <WarningsAsErrors />
     <DefineConstants></DefineConstants>
   </PropertyGroup>
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
@@ -31,6 +33,11 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <PackageReference Include="Alis.Core-SFML" Version="*" />
+  </ItemGroup>
+  
 
   <ItemGroup>
     <None Update="Assets/**" CopyToOutputDirectory="PreserveNewest" />
@@ -43,8 +50,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
   </ItemGroup>
 </Project>
