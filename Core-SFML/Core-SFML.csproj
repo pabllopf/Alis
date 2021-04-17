@@ -245,7 +245,6 @@
 
   
   <ItemGroup>
-    <None Pack="True" Update="runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
     <None Include="..\docs\resources\logo\logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

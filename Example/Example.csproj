@@ -32,7 +32,6 @@
     <WarningsAsErrors />
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
-  
 
   <ItemGroup>
     <None Update="Assets/**" CopyToOutputDirectory="PreserveNewest" />
@@ -45,8 +44,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
   </ItemGroup>
 </Project>
