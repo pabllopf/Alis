@@ -57,9 +57,9 @@ namespace Tools
         {
             Assert.Multiple(() =>
             {
-                AudioSource audio = new AudioSource();
-                Alis.Tools.LocalData.Save("Audio", audio);
-                Assert.AreEqual(audio, Alis.Tools.LocalData.Load<AudioSource>("Audio"));
+                Alis.Core.SFML.Sprite sprite = new Alis.Core.SFML.Sprite("");
+                Alis.Tools.LocalData.Save("Sprite", sprite);
+                Assert.DoesNotThrow(() => Alis.Tools.LocalData.Load<Sprite>("Sprite"));
             });
         }
 
@@ -69,7 +69,7 @@ namespace Tools
         {
             Assert.Multiple(() =>
             {
-                Assert.Throws<FileNotFoundException>(() => Alis.Tools.LocalData.Load<AudioSource>("Example_12"));
+                Assert.IsNull(Alis.Tools.LocalData.Load<Sprite>("Example_12"));
             });
         }
     }
