@@ -24,9 +24,9 @@
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>PabloPerdomoFalcon.pfx</AssemblyOriginatorKeyFile>
     <ApplicationIcon>Alis.ico</ApplicationIcon>
-    <AssemblyVersion>1.2.6.0</AssemblyVersion>
-    <FileVersion>1.2.6.0</FileVersion>
-    <Version>1.2.6</Version>
+    <AssemblyVersion>1.2.8.0</AssemblyVersion>
+    <FileVersion>1.2.8.0</FileVersion>
+    <Version>1.2.8</Version>
 	  <AssemblyName>Tools</AssemblyName>
 	  <RootNamespace>Tools</RootNamespace>
 

@@ -26,9 +26,9 @@
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<SignAssembly>false</SignAssembly>
 	<AssemblyOriginatorKeyFile>Pablo Perdomo Falcón.pfx</AssemblyOriginatorKeyFile>
-	  <AssemblyVersion>1.2.6.0</AssemblyVersion>
-	  <FileVersion>1.2.6.0</FileVersion>
-	  <Version>1.2.6</Version>
+	 <AssemblyVersion>1.2.8.0</AssemblyVersion>
+    <FileVersion>1.2.8.0</FileVersion>
+    <Version>1.2.8</Version>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -72,175 +72,8 @@
     <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core-SFML\Core-SFML.xml</DocumentationFile>
   </PropertyGroup>
 
-
-
- 
-  <ItemGroup>
-    <Content Include="lib\netstandard2.1\csfml-Audio.dll">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\csfml-audio.dylib">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\csfml-Graphics.dll">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\csfml-graphics.dylib">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\csfml-network.dylib">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\csfml-System.dll">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\csfml-system.dylib">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\csfml-Window.dll">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\csfml-window.dylib">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libcimgui.dylib">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libcsfml-audio.so">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libcsfml-graphics.so">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libcsfml-system.so">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libcsfml-window.so">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsdl2.dylib">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-audio.so">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-audio.so.2.5">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-audio.so.2.5.1">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-graphics.so">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-graphics.so.2.5">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-system.so">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-system.so.2.5">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-window.so">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libsfml-window.so.2.5">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\libuv.dylib">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-    <Content Include="lib\netstandard2.1\openal32.dll">
-      <PackagePath>lib\$(TargetFramework)</PackagePath>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      <Pack>True</Pack>
-    </Content>
-  </ItemGroup>
   
-  
-  <ItemGroup>
-    <Folder Include="SFML\Audio\" />
-    <Folder Include="SFML\Graphics\" />
-    <Folder Include="SFML\Window\" />
-    <Folder Include="SFML\System\" />
-  </ItemGroup>
+
 
   
   <ItemGroup>
@@ -254,8 +87,10 @@
     </None>
   </ItemGroup>
 
+
   
   <ItemGroup>
+     <PackageReference Include="SFML.Net" Version="2.5.0" />
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
