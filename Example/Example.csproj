@@ -32,11 +32,6 @@
     <WarningsAsErrors />
     <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
-
-
-  <ItemGroup>
-    <PackageReference Include="Alis.Core-SFML" Version="*" />
-  </ItemGroup>
   
 
   <ItemGroup>
@@ -50,5 +45,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
   </ItemGroup>
 </Project>
