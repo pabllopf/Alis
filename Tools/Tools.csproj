@@ -17,7 +17,7 @@
     <PackageIcon>Alis.png</PackageIcon>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://pabllopf.github.io/Alis/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/pabllopf/pabllopf</RepositoryUrl>
+    <RepositoryUrl>https://github.com/pabllopf/Alis</RepositoryUrl>
     <RepositoryType>Public</RepositoryType>
     <PackageTags>Videogames Alis Tools Free</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
@@ -29,9 +29,8 @@
     <Version>1.2.8</Version>
 	  <AssemblyName>Tools</AssemblyName>
 	  <RootNamespace>Tools</RootNamespace>
-
   </PropertyGroup>
-  
+
   
   
   <!-- _____________________________ WINDOWS_____________________________________ -->
