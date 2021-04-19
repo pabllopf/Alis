@@ -72,16 +72,6 @@ namespace Alis.Editor.UI.Widgets
         {
         }
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-        }
-
-        /// <summary>Closes this instance.</summary>
-        public override void Close()
-        {
-        }
-
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
@@ -385,11 +375,11 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Button("+", new Vector2(30, 30)))
             {
-                Console.Current.Log("Add new element");
+                Console.Log("Add new element");
                 list.Add(new Animation());
                 prop.SetValue(component, list);
 
-                Console.Current.Log("" + list.Count);
+                Console.Log("" + list.Count);
             }
 
             ImGui.SameLine();
@@ -403,7 +393,7 @@ namespace Alis.Editor.UI.Widgets
                 
                 prop.SetValue(component, list);
 
-                Console.Current.Log("" + list.Count);
+                Console.Log("" + list.Count);
             }
 
             ImGui.SameLine();

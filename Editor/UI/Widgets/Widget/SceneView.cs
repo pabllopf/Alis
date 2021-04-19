@@ -53,11 +53,6 @@ namespace Alis.Editor.UI.Widgets
             intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
         }
 
-        /// <summary>Closes this instance.</summary>
-        public override void Close()
-        {
-        }
-
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
@@ -105,11 +100,6 @@ namespace Alis.Editor.UI.Widgets
             }
 
             ImGui.End();
-        }
-
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
         }
     }
 }

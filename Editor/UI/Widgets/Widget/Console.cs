@@ -87,37 +87,25 @@ namespace Alis.Editor.UI.Widgets
             log.Clear();
         }
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-            isOpen = true;
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-            isOpen = false;
-        }
-
         /// <summary>Warnings the specified message.</summary>
         /// <param name="message">The message.</param>
-        public void Warning(string message)
+        public static void Warning(string message)
         {
-            log.Add("Warning: " + message + " [" + DateTime.Today + "]");
+            current?.log?.Add("[" + DateTime.Today + "]" + "  Warning: " + message + "");
         }
 
         /// <summary>Errors the specified message.</summary>
         /// <param name="message">The message.</param>
-        public void Error(string message)
+        public static void Error(string message)
         {
-            log.Add("Error: " + message + " [" + DateTime.Today + "]");
+            current?.log?.Add("[" + DateTime.Today + "]" + "  Error: " + message + "");
         }
 
         /// <summary>Logs the specified message.</summary>
         /// <param name="message">The message.</param>
-        public void Log(string message)
+        public static void Log(string message)
         {
-            log.Add("Log: " + message + " [" + DateTime.Today + "]");
+            current?.log?.Add("[" + DateTime.Today + "]" + "  Log: " + message + "");
         }
 
         /// <summary>Logs the specified message.</summary>

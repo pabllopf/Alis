@@ -5,70 +5,296 @@
 namespace Alis.Editor.UI.Widgets
 {
     using System;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Text;
     using System.Threading;
-    using Alis.Core;
     using Alis.Core.SFML;
     using Alis.Editor.Utils;
     using Alis.Tools;
     using ImGuiNET;
 
-    /// <summary>Menu of editor</summary>
+    /// <summary>
+    /// Menu of editor
+    /// </summary>
+    /// <seealso cref="Alis.Editor.UI.Widgets.Widget" />
     public class TopMenu : Widget
     {
+        #region Texts UI
+
+        /// <summary>The new project</summary>
+        [NotNull]
+        private static string newProject;
+
+        /// <summary>The open project</summary>
+        [NotNull]
+        private static string openProject;
+
+        /// <summary>The save project</summary>
+        [NotNull]
+        private static string saveProject;
+
+        /// <summary>The automatic save</summary>
+        [NotNull]
+        private static string autoSave;
+
+        /// <summary>The build settings</summary>
+        [NotNull]
+        private static string buildSettings;
+
+        /// <summary>The build and run</summary>
+        [NotNull]
+        private static string buildAndRun;
+
+        /// <summary>The exit</summary>
+        [NotNull]
+        private static string exit;
+
+        /// <summary>The exit</summary>
+        [NotNull]
+        private static string messageSaveGame;
+
+        #endregion
+
         /// <summary>The process</summary>
-        private System.Diagnostics.Process process = new System.Diagnostics.Process();
+        [NotNull]
+        private Process process;
 
         /// <summary>The start information</summary>
-        private System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-
-        /// <summary>The about state</summary>
-        private bool aboutState = false;
-
-        /// <summary>The exit state</summary>
-        private bool exitState = false;
-
-        /// <summary>The is saved pressed</summary>
-        private bool isSavedPressed = false;
-
-        /// <summary>The automatic save selected</summary>
-        private bool autoSaveSelected = false;
+        [NotNull]
+        private ProcessStartInfo startInfo;
 
         /// <summary>The information</summary>
+        [NotNull]
         private Info info;
 
-        /// <summary>Initializes a new instance of the <see cref="TopMenu" /> class.</summary>
-        /// <param name="eventHandler">The event handler.</param>
+        /// <summary>The time span</summary>
+        [NotNull]
+        private Stopwatch watch;
+
+        #region State Vars
+
+        /// <summary>The is autosave active</summary>
+        [NotNull]
+        private bool autosaveMode;
+
+        /// <summary>The timer automatic save</summary>
+        [NotNull]
+        private int timerAutoSave;
+
+        #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TopMenu"/> class.
+        /// </summary>
         /// <param name="info">The information.</param>
         public TopMenu(Info info)
         {
             this.info = info;
 
-            if (info.Platform.Equals(Platform.Windows))
-            {
-                startInfo.FileName = "cmd";
-            }
+            startInfo = new ProcessStartInfo();
+            process = new Process();
 
-            if (info.Platform.Equals(Platform.MacOS))
-            {
-                startInfo.FileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
-            }
+            watch = new Stopwatch();
+            watch.Start();
 
-            if (info.Platform.Equals(Platform.Linux))
-            {
-                startInfo.FileName = "/bin/bash";
-                startInfo.Arguments = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
-            }
+            timerAutoSave = 60;
 
+            TextManager.OnChangeIdiom += TextManager_OnChangeIdiom;
 
-            startInfo.UseShellExecute = true;
-            process.StartInfo = startInfo;
+            autosaveMode = LocalData.Load("Autosave", false);
+
+            LoadTexts();
         }
 
-        /// <summary>Draw this instance.</summary>
+        /// <summary>
+        /// Draws this instance.
+        /// </summary>
+        /// <returns>Return none</returns>
         public override void Draw()
         {
+            if (autosaveMode) 
+            {
+                CheckAutoSaveMode();
+            }
+
+            if (ImGui.BeginMainMenuBar())
+            {
+                if (ImGui.BeginMenu("File"))
+                {
+                    if (ImGui.MenuItem(label: newProject, shortcut: "Ctrl+N"))
+                    {
+                        NewProject();
+                    }
+
+                    if (ImGui.MenuItem(label: openProject, shortcut: "Ctrl+O"))
+                    {
+                        OpenProject();
+                    }
+
+                    ImGui.Separator();
+
+                    if (ImGui.MenuItem(label: saveProject, shortcut: "Ctrl+S"))
+                    {
+                        SaveProject();
+                    }
+
+                    if (ImGui.MenuItem(label: autoSave + (autosaveMode ? timerAutoSave - (int)watch.Elapsed.TotalSeconds + "s": ""), "", autosaveMode))
+                    {
+                        AutoSaveProject();
+                    }
+
+                    ImGui.Separator();
+
+                    if (ImGui.MenuItem(buildSettings, false))
+                    {
+                        BuildSettings();
+                    }
+
+                    if (ImGui.MenuItem(buildAndRun, "Ctrl+B"))
+                    {
+                        BuildAndRun();
+                    }
+
+                    ImGui.Separator();
+
+                    if (ImGui.MenuItem(exit, "Alt+F4"))
+                    {
+                        Exit();
+                    }
+
+                    ImGui.EndMenu();
+                }
+
+                ImGui.EndMainMenuBar();
+            }
+        }
+
+        #region Load Texts
+
+        /// <summary>
+        /// Loads the texts.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void LoadTexts()
+        {
+            newProject = Icon.FILEO + TextManager.Get(Sentence.NewProject);
+            openProject = Icon.FOLDEROPEN + TextManager.Get(Sentence.OpenProject);
+            saveProject = Icon.FLOPPYO + TextManager.Get(Sentence.SaveProject);
+            autoSave = Icon.REFRESH + TextManager.Get(Sentence.AutoSave);
+            buildSettings = Icon.GAMEPAD + TextManager.Get(Sentence.BuildSettings);
+            buildAndRun = Icon.GAMEPAD + TextManager.Get(Sentence.BuildAndRun);
+            exit = Icon.POWEROFF + TextManager.Get(Sentence.Exit);
+
+            messageSaveGame = TextManager.Get(Sentence.MessageSaveGame);
+        }
+
+        #endregion
+
+        #region File Menu
+
+        /// <summary>
+        /// Creates new project.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void NewProject()
+        {
+
+        }
+
+        /// <summary>
+        /// Opens the project.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void OpenProject()
+        {
+
+        }
+
+        /// <summary>
+        /// Saves the project.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void SaveProject()
+        {
+            if (Project.VideoGame is not null)
+            {
+                LocalData.Save("Data", Project.Current.DataPath, Project.VideoGame);
+                Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
+            }
+            else 
+            {
+                Console.Error(string.Format(messageSaveGame, "'Game not loaded'"));
+            }
+        }
+
+        /// <summary>
+        /// Automatics the save project.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void AutoSaveProject()
+        {
+            autosaveMode = !autosaveMode;
+            LocalData.Save("Autosave", autosaveMode);
+        }
+
+        /// <summary>
+        /// Checks the automatic save mode.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void CheckAutoSaveMode() 
+        {
+            if (watch.Elapsed.TotalSeconds >= timerAutoSave) 
+            {
+                watch.Restart();
+                SaveProject();
+            }
+        }
+
+        /// <summary>
+        /// Builds the settings.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void BuildSettings()
+        {
+
+        }
+
+        /// <summary>
+        /// Builds the and run.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void BuildAndRun()
+        {
+
+        }
+
+        /// <summary>
+        /// Exits this instance.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void Exit()
+        {
+        }
+
+        #endregion
+
+        #region Events
+
+        /// <summary>Texts the manager on change idiom.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        /// <returns>Run the event</returns>
+        private void TextManager_OnChangeIdiom([NotNull] object sender, [NotNull] bool e) => LoadTexts();
+
+        #endregion
+    }
+}
+
+            
+
+            /*
             ProcessShortcuts();
 
             if (ImGui.BeginMainMenuBar())
@@ -78,12 +304,10 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.MenuItem(Icon.FILEO + " New Project", "Ctrl+N"))
                     {
-                        //eventHandler.Invoke(null, EventType.OpenCreateProject);
                     }
 
                     if (ImGui.MenuItem(Icon.FOLDEROPEN + " Open Project", "Ctrl+O"))
                     {
-                        //eventHandler.Invoke(null, EventType.OpenProject);
                     }
 
                     ImGui.Separator();
@@ -249,7 +473,9 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.INFOCIRCLE + " About"))
+                    if (ImGui.MenuItem
+            
+            (Icon.INFOCIRCLE + " About"))
                     {
                         aboutState = true;
                     }
@@ -261,27 +487,13 @@ namespace Alis.Editor.UI.Widgets
             }
 
             ShowAboutPopup();
-            ShowExitPopup();
-        }
+            ShowExitPopup();*/
+        /*}
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-        }
-
-        private bool isOpenNewProject = false;
-
-        private bool isOpenProject = false;
-
-        private bool isBuildAndRun = false;
 
         private void ProcessShortcuts()
-        {
+        {*/
+            /*
             if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(101) && !isSavedPressed)
             {
                 SaveProject();
@@ -324,9 +536,9 @@ namespace Alis.Editor.UI.Widgets
             if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(84) && isSavedPressed)
             {
                 isBuildAndRun = false;
-            }
-        }
-
+            }*/
+        //}
+        /*
         private void BuildAndRun()
         {
             LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
@@ -464,15 +676,7 @@ namespace Alis.Editor.UI.Widgets
             BottomMenu.Current.Loading(false, "");
         }
 
-        private void AutoSaveProject()
-        {
-        }
 
-        private void SaveProject() 
-        {
-            Console.Current.Log("Saved " + Project.VideoGame.Config.Name);
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
-        }
 
         /// <summary>Opens the terminal.</summary>
         private void OpenTerminal()
@@ -482,7 +686,7 @@ namespace Alis.Editor.UI.Widgets
 
         private void ShowAboutPopup()
         {
-            if (aboutState)
+          /*  if (aboutState)
             {
                 ImGui.OpenPopup("About");
             }
@@ -494,13 +698,13 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.Text("Licence: General Public License v3.0");
 
                 ImGui.EndPopup();
-            }
-        }
+            }*/
+        //}
 
         /// <summary>Shows the exit popup.</summary>
-        private void ShowExitPopup()
-        {
-            if (exitState) 
+        /*private void ShowExitPopup()
+        {*/
+           /* if (exitState) 
             {
                 ImGui.OpenPopup("Exit?");
             }
@@ -524,7 +728,32 @@ namespace Alis.Editor.UI.Widgets
                 }
 
                 ImGui.EndPopup();
-            }
-        }
+            }*/
+        /*}
     }
 }
+*/
+
+/*
+ 
+
+if (info.Platform.Equals(Platform.Windows))
+            {
+                startInfo.FileName = "cmd";
+            }
+
+            if (info.Platform.Equals(Platform.MacOS))
+            {
+                startInfo.FileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+            }
+
+            if (info.Platform.Equals(Platform.Linux))
+            {
+                startInfo.FileName = "/bin/bash";
+                startInfo.Arguments = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
+            }
+
+ startInfo.UseShellExecute = true;
+            process.StartInfo = startInfo;
+
+ * */

@@ -112,20 +112,6 @@ namespace Alis.Editor.UI.Widgets
         /// <value>The name.</value>
         public string Name => name;
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-            Logger.Log(this.GetType() + ":Open");
-            isOpen = true;
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-            Logger.Log(this.GetType() + ":Close");
-            isOpen = false;
-        }
-
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
@@ -245,7 +231,6 @@ namespace Alis.Editor.UI.Widgets
                             {
                                 if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 50.0f)))
                                 {
-                                    Close();
                                 }
 
                                 ImGui.SameLine();
@@ -350,8 +335,6 @@ namespace Alis.Editor.UI.Widgets
 
                 Project.Current = project;
                 Project.VideoGame = game;
-
-                Close();
             }
 
         }
@@ -371,7 +354,6 @@ namespace Alis.Editor.UI.Widgets
                 Logger.Warning("Videogame: " + game.Config.Name);
 
                 //Project.ChangeProject(project, game);
-                Close();
             }
             else 
             {

@@ -27,10 +27,6 @@ namespace Alis.Editor.UI.Widgets
         {
         }
 
-        /// <summary>Closes this instance.</summary>
-        public override void Close()
-        {
-        }
 
         private Vector4 childBackground = new Vector4(0, 0, 0, 0);
 
@@ -108,11 +104,6 @@ namespace Alis.Editor.UI.Widgets
         {
             Inspector.Current.Focus = true;
             Inspector.Current.GameObject = obj;
-        }
-
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
         }
     }
 }

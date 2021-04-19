@@ -26,13 +26,14 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Initializes a new instance of the <see cref="WidgetManager" /> class.</summary>
         public WidgetManager(Info info)
         {
-            widgets = new List<Widget>();
+            widgets = new List<Widget>
+            {
+                new DockSpace(),
+                new TopMenu(info),
+                new BottomMenu(),
+                new Console()
+            };
 
-            widgets.Add(new DockSpace());
-            widgets.Add(new TopMenu(info));
-
-            widgets.Add(new Console());
-          
             Logger.Info();
         }
 

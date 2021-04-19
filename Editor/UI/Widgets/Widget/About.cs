@@ -29,20 +29,6 @@ namespace Alis.Editor.UI.Widgets
             this.eventHandler = eventHandler;
         }
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-            Logger.Log("Game view Opened");
-            isOpen = true;
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-            Logger.Log("Game view closed");
-            isOpen = false;
-        }
-
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {

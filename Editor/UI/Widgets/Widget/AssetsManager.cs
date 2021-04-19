@@ -402,15 +402,6 @@ namespace Alis.Editor.UI.Widgets
             Logger.Log("CurrentDir:" + currentDirRight);
         }
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-        }
 
         /// <summary>Gets the path list.</summary>
         /// <param name="path">The path.</param>

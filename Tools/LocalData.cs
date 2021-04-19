@@ -161,8 +161,16 @@ namespace Alis.Tools
 
             if (IsPrimitive(typeof(T)))
             {
-                Logger.Log("Load: " + file);
-                return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("Reading a empty file (primitive var)" + typeof(T).GetType().FullName);
+                if (File.Exists(file))
+                {
+                    Logger.Log("Load: " + file);
+                    return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("Reading a empty file (primitive var)" + typeof(T).GetType().FullName);
+                }
+                else 
+                {
+                    Save<T>(name, defaultValue);
+                    return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("Reading a empty file (primitive var)" + typeof(T).GetType().FullName);
+                }
             }
             else
             {

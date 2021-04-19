@@ -29,8 +29,6 @@ namespace Alis.Tools
             OnChange += Language_OnChange;
         }
 
-   
-
         /// <summary>Translates to.</summary>
         /// <param name="idiom">The idiom.</param>
         public static void TranslateTo(Idiom idiom)
