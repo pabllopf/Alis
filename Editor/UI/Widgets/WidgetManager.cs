@@ -4,9 +4,12 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
     using Alis.Tools;
+    using ImGuiNET;
 
     /// <summary>Widget Manager</summary>
     public class WidgetManager
@@ -31,9 +34,11 @@ namespace Alis.Editor.UI.Widgets
                 new DockSpace(),
                 new TopMenu(info),
                 new BottomMenu(),
+                new Inspector(),
                 new Console()
             };
 
+            DefaultView();
             Logger.Info();
         }
 
@@ -52,6 +57,24 @@ namespace Alis.Editor.UI.Widgets
         public void AddWidget(Widget widget) 
         {
             
+        }
+
+        private void DefaultView()
+        {
+            string file = Environment.CurrentDirectory + "/custom.ini";
+            if (File.Exists(file))
+            {
+                ImGui.LoadIniSettingsFromDisk(file);
+            }
+            else
+            {
+                string filetemp = Environment.CurrentDirectory + "/Resources/Default.ini";
+                if (File.Exists(filetemp))
+                {
+                    ImGui.LoadIniSettingsFromDisk(filetemp);
+                    ImGui.SaveIniSettingsToDisk(file);
+                }
+            }
         }
     }
 }

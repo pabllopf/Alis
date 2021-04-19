@@ -1,6 +1,6 @@
 ﻿//----------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
-// <copyright file="Console.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
+// <copyright file="Sentence.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI
 {
@@ -30,5 +30,14 @@ namespace Alis.Editor.UI
 
         /// <summary>The message save game</summary>
         MessageSaveGame = 7,
+
+        /// <summary>The message exit</summary>
+        MessageExit = 8,
+
+        /// <summary>The yes</summary>
+        Yes = 9,
+
+        /// <summary>The no</summary>
+        No = 10,
     }
 }

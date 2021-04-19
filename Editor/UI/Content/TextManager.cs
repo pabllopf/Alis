@@ -34,7 +34,7 @@ namespace Alis.Editor.UI
         {
             directory ??= Environment.CurrentDirectory + "/Resources/";
             file ??= directory + "Editor.csv";
-
+           
             keys ??= new Dictionary<int, string>();
             idiom = LocalData.Load<Idiom>("Language", Idiom.English);
 

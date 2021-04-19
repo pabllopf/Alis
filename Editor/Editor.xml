@@ -237,6 +237,15 @@
         <member name="F:Alis.Editor.UI.Sentence.MessageSaveGame">
             <summary>The message save game</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Sentence.MessageExit">
+            <summary>The message exit</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.Yes">
+            <summary>The yes</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.No">
+            <summary>The no</summary>
+        </member>
         <member name="T:Alis.Editor.UI.TextManager">
             <summary>Control the texts of the editor.</summary>
         </member>
@@ -790,6 +799,15 @@
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.messageSaveGame">
             <summary>The exit</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.messageExit">
+            <summary>The exit</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.yes">
+            <summary>The yes</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.no">
+            <summary>The no</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.process">
             <summary>The process</summary>
         </member>
@@ -802,11 +820,17 @@
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.watch">
             <summary>The time span</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.exitState">
+            <summary>The exit state</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.autosaveMode">
             <summary>The is autosave active</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.timerAutoSave">
             <summary>The timer automatic save</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.aboutState">
+            <summary>The is saved pressed</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(Alis.Editor.Info)">
             <summary>
@@ -873,6 +897,104 @@
             Exits this instance.
             </summary>
             <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.CheckIsExit">
+            <summary>
+            Checks the is exit.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.Cut">
+            <summary>
+            Cuts this instance.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.OpenTerminal">
+            <summary>
+            Opens the terminal.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.DefaultView">
+            <summary>
+            Defaults the view.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.WideView">
+            <summary>
+            Wides the view.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.TallView">
+            <summary>
+            Talls the view.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.CheckIsAbout">
+            <summary>
+            Checks the is about.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.CheckShortCuts">
+            <summary>
+            Checks the short cuts.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortNewProject">
+            <summary>
+            Shorts the new project.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortSaveGame">
+            <summary>
+            Shorts the save game.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortOpenProject">
+            <summary>
+            Shorts the open project.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortBuildAndRun">
+            <summary>
+            Shorts the automatic save.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortAutosave">
+            <summary>
+            Shorts the autosave.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.RunCommand(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Runs the command.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="fileName">Name of the file.</param>
+            <param name="commandBuild">The command build.</param>
+            <param name="WorkingDirectory">The working directory.</param>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.DirectoryCopy(System.String,System.String,System.Boolean)">
+            <summary>
+            Directories the copy.
+            </summary>
+            <param name="sourceDirName">Name of the source dir.</param>
+            <param name="destDirName">Name of the dest dir.</param>
+            <param name="copySubDirs">if set to <c>true</c> [copy sub dirs].</param>
+            <returns></returns>
+            <exception cref="T:System.IO.DirectoryInfo">sourceDirName</exception>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.TextManager_OnChangeIdiom(System.Object,System.Boolean)">
             <summary>Texts the manager on change idiom.</summary>

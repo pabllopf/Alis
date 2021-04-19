@@ -161,10 +161,10 @@ namespace Alis.Editor.UI.Widgets
             ImGui.PopStyleColor(4);
         }
 
-        public void Loading(bool state, string message) 
+        public static void Loading(bool state, string message) 
         {
-            this.messageLoading = message;
-            this.stateLoading = state;
+            current.messageLoading = message;
+            current.stateLoading = state;
         }
 
 
