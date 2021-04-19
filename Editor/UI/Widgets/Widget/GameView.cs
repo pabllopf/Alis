@@ -28,9 +28,6 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The is open</summary>
         private bool isOpen = true;
 
-        /// <summary>The event handler</summary>
-        private EventHandler<EventType> eventHandler;
-
         /// <summary>The im GUI controller</summary>
         private ImGuiController imGuiController;
 
@@ -70,9 +67,8 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>Initializes a new instance of the <see cref="GameView" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
-        public GameView(EventHandler<EventType> eventHandler)
+        public GameView()
         {
-            this.eventHandler = eventHandler;
             defaulSize = ImGui.GetWindowSize();
             defaultPos = ImGui.GetWindowPos();
 

@@ -348,7 +348,7 @@
         <member name="F:Alis.Editor.UI.Widgets.WidgetManager.info">
             <summary>The information</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.#ctor(Alis.Editor.Info)">
+        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.#ctor(Alis.Editor.Info,ImGuiNET.ImGuiController)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.WidgetManager" /> class.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.WidgetManager.Update">
@@ -597,9 +597,6 @@
         <member name="F:Alis.Editor.UI.Widgets.GameView.isOpen">
             <summary>The is open</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.GameView.eventHandler">
-            <summary>The event handler</summary>
-        </member>
         <member name="F:Alis.Editor.UI.Widgets.GameView.imGuiController">
             <summary>The im GUI controller</summary>
         </member>
@@ -624,7 +621,7 @@
         <member name="F:Alis.Editor.UI.Widgets.GameView.configPopup">
             <summary>The configuration popup</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.GameView.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
+        <member name="M:Alis.Editor.UI.Widgets.GameView.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.GameView" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>

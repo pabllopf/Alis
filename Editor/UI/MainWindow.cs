@@ -180,7 +180,7 @@ namespace Alis.Editor.UI
             RgbaFloat clearColor = new RgbaFloat(1.0f, 1.0f, 1.0f, 1.0f);
             Logger.Log("Define the background color. " + clearColor.ToString());
 
-            WidgetManager widgetManager = new WidgetManager(info);
+            WidgetManager widgetManager = new WidgetManager(info, imGuiController);
             Logger.Log("Create widget manager" + widgetManager.ToString());
 
             while (window.Exists)
@@ -189,7 +189,7 @@ namespace Alis.Editor.UI
                 imGuiController.Update(deltaSeconds, snapshot);
 
 #if DEBUG
-                ImGui.ShowDemoWindow();
+               /// ImGui.ShowDemoWindow();
 #endif
                 widgetManager.Update();
 

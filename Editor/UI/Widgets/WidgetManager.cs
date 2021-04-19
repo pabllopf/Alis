@@ -27,7 +27,7 @@ namespace Alis.Editor.UI.Widgets
         private Info info;
 
         /// <summary>Initializes a new instance of the <see cref="WidgetManager" /> class.</summary>
-        public WidgetManager(Info info)
+        public WidgetManager(Info info, ImGuiController imGuiController)
         {
             widgets = new List<Widget>
             {
@@ -35,6 +35,10 @@ namespace Alis.Editor.UI.Widgets
                 new TopMenu(info),
                 new BottomMenu(),
                 new Inspector(),
+                new AssetsManager(),
+                new Hierarchy(),
+                new SceneView(imGuiController),
+                new GameView(),
                 new Console()
             };
 
