@@ -95,7 +95,12 @@
 
                 if (!Keyboard.IsKeyPressed(test) && Keys.Contains(key))
                 {
-                    Keys.Remove(key);
+                    while (Keys.Contains(key)) 
+                    {
+                        Keys.Remove(key);
+                    }
+
+                    ReleaseKey(key);
                 }
             }
         }

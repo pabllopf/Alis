@@ -35,9 +35,9 @@ namespace Alis.Editor.UI.Widgets
         {
             if (ImGui.Begin("Hierarchy"))
             {
-                /*
-                if (Project.VideoGame != null)
+                if (Project.VideoGame is not null) 
                 {
+
                     ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
                     ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
 
@@ -52,7 +52,7 @@ namespace Alis.Editor.UI.Widgets
                     {
                         if (ImGui.MenuItem("New GameObject"))
                         {
-                            AddNewGameObjectToScene(Project.VideoGame.SceneManager.CurrentScene);
+                            AddNewGameObjectToScene();
                         }
 
                         ImGui.EndPopup();
@@ -63,83 +63,60 @@ namespace Alis.Editor.UI.Widgets
 
                     foreach (GameObject obj in Project.VideoGame.SceneManager.CurrentScene.GameObjects)
                     {
-                        if (ImGui.Button(obj.Name))
+                        if (obj is not null) 
                         {
-                            SelectGameObject(obj);
+                            if (ImGui.Button(obj.Name, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
+                            {
+                                SelectGameObject(obj);
+                            }
+
+                            ImGui.SameLine();
+
+                            if (ImGui.Button(Icon.ALIGNJUSTIFY + "###" + obj.Name))
+                            {
+                                ImGui.OpenPopup("ElementList " + "###" + obj.Name);
+                            }
+
+                            if (ImGui.BeginPopup("ElementList " + "###" + obj.Name))
+                            {
+                                if (ImGui.MenuItem("Delete" +"###" + obj.Name))
+                                {
+                                    DeleteGameObjectOfScene(obj);
+                                }
+
+                                ImGui.EndPopup();
+                            }
                         }
                     }
+                }
+            }
 
-                */
-                    ImGui.End();
-                //}
+            ImGui.End();
+        }
+                
+        private void AddNewGameObjectToScene()
+        {
+            if (Project.VideoGame is not null)
+            {
+                GameObject obj = new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)));
+                int index = 0;
+                while (Project.VideoGame.SceneManager.CurrentScene.Contains(obj)) 
+                {
+                    obj.Name = "GameObject" + "_" + index;
+                    index++;
+                }
+                Project.VideoGame.SceneManager.CurrentScene.Add(obj);
+                LocalData.Save<VideoGame>("Data", Project.Get().DataPath1, Project.VideoGame);
             }
         }
 
-            /* if (ImGui.Begin("Hierarchy"))
-             {
-
-
-                 if (Project.Current != null)
-                 {
-                     foreach (Scene scene in Project.VideoGame.SceneManager.Scenes)
-                     {
-                         ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
-                         ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
-
-                         ImGui.AlignTextToFramePadding();
-
-                         bool treeopen = ImGui.TreeNodeEx("Scene: " + scene.Name, ImGuiTreeNodeFlags.AllowItemOverlap);
-
-                         ImGui.SameLine();
-
-                         if (ImGui.Button(Icon.PLUSSQUARE))
-                         {
-                             ImGui.OpenPopup("ElementList");
-                         }
-
-                         if (ImGui.BeginPopup("ElementList"))
-                         {
-                             if (ImGui.MenuItem("New GameObject"))
-                             {
-                                 AddNewGameObjectToScene(scene);
-                             }
-
-                             ImGui.EndPopup();
-                         }
-                         if (treeopen)
-                         {
-                             foreach (GameObject obj in scene.GameObjects) 
-                             {
-                                 if (ImGui.Button(obj.Name))
-                                 {
-                                     SelectGameObject(obj);
-                                 }
-                             }
-
-                             ImGui.TreePop();
-                         }
-
-                         ImGui.PopStyleVar();
-                         ImGui.PopStyleColor();
-                     }
-                 }
-             }
-
-             ImGui.End();*/
-        
-
-        private void AddNewGameObjectToScene(Scene scene)
+        private void DeleteGameObjectOfScene(GameObject obj)
         {
-            /*scene.Add(new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f))));
-
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
-
-            Inspector.Current.Focus = true;*/
-        }
-
-        private void AddNewGameObjectToScene()
-        {
-            throw new NotImplementedException();
+            if (Project.VideoGame is not null)
+            {
+                Project.VideoGame.SceneManager.CurrentScene.Remove(obj);
+                LocalData.Save<VideoGame>("Data", Project.Get().DataPath1, Project.VideoGame);
+            }
         }
 
         private void SelectGameObject(GameObject obj)

@@ -174,7 +174,7 @@ namespace Alis.Editor.UI.Widgets
 
             #region Cancel Create Project Button
 
-            if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 50.0f)))
+            if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 25.0f)))
             {
                 CancelFileDialog();
             }
@@ -185,7 +185,7 @@ namespace Alis.Editor.UI.Widgets
 
             #region Create Project Button
 
-            if (ImGui.Button(takeFile ? "Open Project" : "Open Folder", new Vector2(ImGui.GetContentRegionAvail().X, 50.0f)))
+            if (ImGui.Button(takeFile ? "Open Project" : "Open Folder", new Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
             {
                 OpenSelected(elementTaked);
             }

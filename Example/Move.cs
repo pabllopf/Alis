@@ -6,7 +6,8 @@ namespace Example
 {
     using Alis.Core;
     using Alis.Core.SFML;
-  
+    using Alis.Tools;
+
     /// <summary>Define a component to move player.</summary>
     public class Move : Component
     {
@@ -25,11 +26,21 @@ namespace Example
             // Define a event control to check input and move player.
             Input.OnPressKey += Input_OnPressKey;
 
+            Input.OnReleaseOnce += Input_OnReleaseOnce;
+
             // Load the animator of player.
             animator = GameObject.Get<Animator>();
 
             // Load transform of player 
             transform = GameObject.Transform;
+        }
+
+        private void Input_OnReleaseOnce(object sender, Keyboard key)
+        {
+            if (key.Equals(Keyboard.S))
+            {
+                Logger.Log("Key s" + "out");
+            }
         }
 
         /// <summary>Inputs the on press key1.</summary>

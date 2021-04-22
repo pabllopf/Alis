@@ -55,6 +55,9 @@ namespace Alis.Core
         /// <summary>Occurs when [on press once].</summary>
         public static event EventHandler<Keyboard> OnPressKeyOnce;
 
+        /// <summary>Occurs when [on release once].</summary>
+        public static event EventHandler<Keyboard> OnReleaseOnce;
+
         /// <summary>Gets or sets the keys.</summary>
         /// <value>The keys.</value>
         public static List<Keyboard> Keys { get => keys; set => keys = value; }
@@ -106,6 +109,10 @@ namespace Alis.Core
         /// <summary>Presses the key once.</summary>
         /// <param name="key">The key.</param>
         public void PressKeyOnce(Keyboard key) => OnPressKeyOnce?.Invoke(this, key);
+
+        /// <summary>Releases the key.</summary>
+        /// <param name="key">The key.</param>
+        public void ReleaseKey(Keyboard key) => OnReleaseOnce?.Invoke(this, key);
 
         #region Define Events
 

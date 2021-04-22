@@ -46,6 +46,6 @@
     <Folder Include="Assets\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Alis.Core-SFML" Version="1.2.8" />
+    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
   </ItemGroup>
 </Project>

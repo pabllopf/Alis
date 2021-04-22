@@ -84,6 +84,12 @@ namespace Alis.Editor
             current = project;
         }
 
+        public static Project Get()
+        {
+            return current;
+        }
+
+
         /// <summary>Occurs when [on change].</summary>
         public static event EventHandler<bool> OnChange;
 
@@ -118,5 +124,6 @@ namespace Alis.Editor
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
         private static void Project_OnChange(object sender, bool e) => Logger.Info();
+
     }
 }

@@ -400,7 +400,8 @@ namespace Alis.Editor.UI.Widgets
 
             VideoGame game = VideoGame.Builder()
                                             .Config(Config.Builder().Name("Alis Game").Build())
-                                            .SceneManager(SceneManager.Builder().Scene(new Scene("Default")).Build())
+                                            .SceneManager(SceneManager.Builder().Scene(
+                                                Scene.Builder().GameObject(new GameObject("Default")).Build()).Build())
                                             .Build();
 
             LocalData.Save("Data", project.DataPath1, game);
