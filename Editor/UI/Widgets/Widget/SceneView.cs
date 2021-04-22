@@ -56,7 +56,7 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-            ImGui.SetNextWindowPos(new System.Numerics.Vector2(650, 20), ImGuiCond.FirstUseEver);
+            /*ImGui.SetNextWindowPos(new System.Numerics.Vector2(650, 20), ImGuiCond.FirstUseEver);
 
             if (ImGui.Begin(Name))
             {
@@ -97,7 +97,7 @@ namespace Alis.Editor.UI.Widgets
                 }
             }
 
-            ImGui.End();
+            ImGui.End();*/
         }
     }
 }

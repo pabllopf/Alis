@@ -8,6 +8,7 @@ namespace Alis.Editor.UI.Widgets
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
+    using System.Linq;
     using Alis.Tools;
     using ImGuiNET;
 
@@ -16,7 +17,7 @@ namespace Alis.Editor.UI.Widgets
     {
         /// <summary>The current</summary>
         [AllowNull]
-        private WidgetManager current;
+        private static WidgetManager current;
 
         /// <summary>The widgets</summary>
         [NotNull]
@@ -31,6 +32,7 @@ namespace Alis.Editor.UI.Widgets
         {
             widgets = new List<Widget>
             {
+                new ProjectManager(true),
                 new DockSpace(),
                 new TopMenu(info),
                 new BottomMenu(),
@@ -42,6 +44,8 @@ namespace Alis.Editor.UI.Widgets
                 new Console()
             };
 
+            current ??= this;
+
             DefaultView();
             Logger.Info();
         }
@@ -49,11 +53,11 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public void Update()
         {
-            for (int i = 0; i < widgets.Count; i++)
+            foreach (Widget widget in widgets.ToList()) 
             {
-                if (widgets[i] != null) 
+                if (widget != null) 
                 {
-                    widgets[i].Draw();
+                    widget.Draw();
                 }
             }
         }
@@ -78,6 +82,23 @@ namespace Alis.Editor.UI.Widgets
                     ImGui.LoadIniSettingsFromDisk(filetemp);
                     ImGui.SaveIniSettingsToDisk(file);
                 }
+            }
+        }
+
+        public static void Add(Widget widget)
+        {
+            if (current.widgets.Find(i => i.GetType().Equals(widget.GetType())) == null) 
+            {
+                current.widgets.Add(widget);
+            }
+        }
+
+        public static void Delete(Widget widget)
+        {
+            Widget widgettemp = current.widgets.Find(i => i.GetType().Equals(widget.GetType()));
+            if (widgettemp != null)
+            {
+                current.widgets.Remove(widgettemp);
             }
         }
     }

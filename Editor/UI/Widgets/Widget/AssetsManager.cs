@@ -60,11 +60,11 @@ namespace Alis.Editor.UI.Widgets
 
         private void Project_OnChangeProject(object sender, bool e)
         {
-            if (Project.Current != null) 
+           /* if (Project.Current != null) 
             {
                 assetPath = Project.Current.AssetsPath;
                 currentDirRight = assetPath;
-            }
+            }*/
         }
 
         public void ButtonSpecial() 
@@ -83,7 +83,7 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-            if (ImGui.Begin(Name, ref isOpen)) 
+            /*if (ImGui.Begin(Name, ref isOpen)) 
             {
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(1.0f, 3.0f));
                 ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
@@ -212,7 +212,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.EndChild();
             }
 
-            ImGui.End();
+            ImGui.End();*/
 
         }
 
@@ -356,7 +356,7 @@ namespace Alis.Editor.UI.Widgets
 
         private List<string> GetNameDir(string currentDirRight) 
         {
-            string pathrelative = Path.GetRelativePath(Project.Current.AssetsPath, currentDirRight).Replace("\\", "/").Replace(".", "");
+            /*string pathrelative = Path.GetRelativePath(Project.Current.AssetsPath, currentDirRight).Replace("\\", "/").Replace(".", "");
             string[] path = pathrelative.Split("/");
 
             List<string> list = new List<string>();
@@ -371,7 +371,9 @@ namespace Alis.Editor.UI.Widgets
                 
             }
 
-            return list;
+            return list;*/
+
+            return new List<string>();
         }
 
         private void ShowTree(string currentDir)

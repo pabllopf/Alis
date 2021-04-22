@@ -48,8 +48,6 @@ namespace Alis.Editor
             OnChange += Project_OnChange;
         }
 
-       
-
         /// <summary>Initializes a new instance of the <see cref="Project" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="directory">The directory.</param>
@@ -61,8 +59,6 @@ namespace Alis.Editor
             configPath = directory + "/" + name + "/Config";
             dataPath = directory + "/" + name + "/Data";
             libPath = directory + "/" + name + "/Lib";
-
-            current ??= this;
         }
 
         /// <summary>Initializes a new instance of the <see cref="Project" /> class.</summary>
@@ -81,24 +77,10 @@ namespace Alis.Editor
             this.configPath = configPath;
             this.dataPath = dataPath;
             this.libPath = libPath;
-
-            current ??= this;
         }
 
         /// <summary>Occurs when [on change].</summary>
         public static event EventHandler<bool> OnChange;
-
-        /// <summary>Gets or sets the current.</summary>
-        /// <value>The current.</value>
-        [NotNull]
-        [JsonIgnore]
-        public static Project Current
-        {
-            get => current; set
-            {
-                current = value;
-            }
-        }
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>

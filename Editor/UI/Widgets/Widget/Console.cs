@@ -8,6 +8,7 @@ namespace Alis.Editor.UI.Widgets
     using ImGuiNET;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>Console widget </summary>
     public class Console : Widget
@@ -29,6 +30,9 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>The item space</summary>
         private System.Numerics.Vector2 itemSpace = new System.Numerics.Vector2(2.0f, 3.0f);
+
+        [NotNull]
+        private bool focus = false;
 
         #region StateFilters
 
@@ -92,6 +96,7 @@ namespace Alis.Editor.UI.Widgets
         public static void Warning(string message)
         {
             current?.log?.Add("[" + DateTime.Today + "]" + "  Warning: " + message + "");
+            current?.Focus();
         }
 
         /// <summary>Errors the specified message.</summary>
@@ -99,6 +104,7 @@ namespace Alis.Editor.UI.Widgets
         public static void Error(string message)
         {
             current?.log?.Add("[" + DateTime.Today + "]" + "  Error: " + message + "");
+            current?.Focus();
         }
 
         /// <summary>Logs the specified message.</summary>
@@ -106,6 +112,7 @@ namespace Alis.Editor.UI.Widgets
         public static void Log(string message)
         {
             current?.log?.Add("[" + DateTime.Today + "]" + "  Log: " + message + "");
+            current?.Focus();
         }
 
         /// <summary>Logs the specified message.</summary>
@@ -121,6 +128,14 @@ namespace Alis.Editor.UI.Widgets
             {
                 current?.log?.Add("Log: " + message + "");
             }
+
+            current?.Focus();
+        }
+
+        /// <summary>Focuses this instance.</summary>
+        private void Focus()
+        {
+            focus = true;
         }
 
         /// <summary>Prints this instance.</summary>
@@ -154,6 +169,7 @@ namespace Alis.Editor.UI.Widgets
                         message.Replace("Error: ", "")
                         );
                 }
+
                 if (message.Contains("Log")) 
                 {
                     ImGui.Text(message.Replace("Log: ", ""));
@@ -168,6 +184,12 @@ namespace Alis.Editor.UI.Widgets
             {
                 eventHandler?.Invoke(this, EventType.CloseConsole);
                 return;
+            }
+
+            if (focus)
+            {
+                ImGui.SetNextWindowFocus();
+                focus = false;
             }
 
             if (ImGui.Begin("Console", ref isOpen))

@@ -54,10 +54,6 @@
         <member name="E:Alis.Editor.Project.OnChange">
             <summary>Occurs when [on change].</summary>
         </member>
-        <member name="P:Alis.Editor.Project.Current">
-            <summary>Gets or sets the current.</summary>
-            <value>The current.</value>
-        </member>
         <member name="P:Alis.Editor.Project.Name">
             <summary>Gets or sets the name.</summary>
             <value>The name.</value>
@@ -225,7 +221,7 @@
         <member name="F:Alis.Editor.UI.Sentence.AutoSave">
             <summary>The automatic save</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Sentence.BuildSettings">
+        <member name="F:Alis.Editor.UI.Sentence.Build">
             <summary>The build settings</summary>
         </member>
         <member name="F:Alis.Editor.UI.Sentence.BuildAndRun">
@@ -509,6 +505,9 @@
             <param name="message">The message.</param>
             <param name="date">if set to <c>true</c> [date].</param>
         </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Focus">
+            <summary>Focuses this instance.</summary>
+        </member>
         <member name="M:Alis.Editor.UI.Widgets.Console.Print(System.String)">
             <summary>Prints this instance.</summary>
         </member>
@@ -584,6 +583,48 @@
         </member>
         <member name="F:Alis.Editor.UI.Widgets.EventType.CloseProject">
             <summary>The close project</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.FileDialog">
+            <summary>File Dialog</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.currentDirRight">
+            <summary>The current dir</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.filter">
+            <summary>The filter</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.sizeWidget">
+            <summary>The size widget</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.sizeChild">
+            <summary>The size child </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.configPopup">
+            <summary>The configuration popup</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.itemSpacing">
+            <summary>The item spacing</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.childBorderSize">
+            <summary>The child border size</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.redColor">
+            <summary>The red color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.whiteColor">
+            <summary>The white color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.childBackground">
+            <summary>The child background</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.FileDialog.PopStyle">
+            <summary>Pops the style.</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.GameView">
             <summary>Show the game running</summary>
@@ -661,29 +702,14 @@
         <member name="F:Alis.Editor.UI.Widgets.ProjectManager.name">
             <summary>The name</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.projects">
-            <summary>The projects</summary>
-        </member>
         <member name="F:Alis.Editor.UI.Widgets.ProjectManager.isOpen">
             <summary>The is open</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.ProjectManager.showRecentProjects">
             <summary>The show recent projects</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.modes">
-            <summary>The modes</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.currentMode">
-            <summary>The current mode</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.selected">
-            <summary>The selected</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.alreadyExistError">
-            <summary>The already exist error</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.eventHandler">
-            <summary>The event handler</summary>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.projects">
+            <summary>The projects</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.ProjectManager.sizeWidget">
             <summary>The size widget</summary>
@@ -706,6 +732,15 @@
         <member name="F:Alis.Editor.UI.Widgets.ProjectManager.directoryField">
             <summary>The directory field</summary>
         </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.modes">
+            <summary>The modes</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.currentMode">
+            <summary>The current mode</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.selected">
+            <summary>The selected</summary>
+        </member>
         <member name="F:Alis.Editor.UI.Widgets.ProjectManager.redColor">
             <summary>The red color</summary>
         </member>
@@ -715,42 +750,21 @@
         <member name="F:Alis.Editor.UI.Widgets.ProjectManager.childBackground">
             <summary>The child background</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType},System.Boolean)">
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.#ctor(System.Boolean)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.ProjectManager" /> class.</summary>
-            <param name="eventHandler">Controller event</param>
             <param name="showRecentProjects">show this</param>
-        </member>
-        <member name="P:Alis.Editor.UI.Widgets.ProjectManager.Name">
-            <summary>Gets the name.</summary>
-            <value>The name.</value>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Draw">
             <summary>Draw this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Close">
+            <summary>Closes this instance.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.ProjectManager.PushStyle">
             <summary>Pushes the style.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.ProjectManager.PopStyle">
             <summary>Pops the style.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.CreateProject(System.String,System.String,System.String)">
-            <summary>Creates the project.</summary>
-            <param name="name">name project</param>
-            <param name="directory">directory project</param>
-            <param name="mode">mode project</param>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.OpenProject(Alis.Editor.Project)">
-            <summary>Opens the project.</summary>
-            <param name="project">The project.</param>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.DeleteProject(Alis.Editor.Project)">
-            <summary>Deletes the project.</summary>
-            <param name="project">project to delete</param>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Project_OnChangeProject(System.Object,System.Boolean)">
-            <summary>Projects the on change project.</summary>
-            <param name="sender">The sender.</param>
-            <param name="e">if set to <c>true</c> [e].</param>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.SceneView">
             <summary>Render the core scene.</summary>
@@ -784,7 +798,7 @@
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.autoSave">
             <summary>The automatic save</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.TopMenu.buildSettings">
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.build">
             <summary>The build settings</summary>
         </member>
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.buildAndRun">
@@ -877,7 +891,7 @@
             </summary>
             <returns>Return none</returns>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.TopMenu.BuildSettings">
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.Build">
             <summary>
             Builds the settings.
             </summary>
@@ -961,6 +975,12 @@
             </summary>
             <returns>return none</returns>
         </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortBuild">
+            <summary>
+            Shorts the build.
+            </summary>
+            <returns>Return game</returns>
+        </member>
         <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortBuildAndRun">
             <summary>
             Shorts the automatic save.
@@ -1008,12 +1028,8 @@
         <member name="F:Alis.Editor.UI.Widgets.Updater.isOpen">
             <summary>The is open</summary>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.Updater.eventHandler">
-            <summary>The event handler</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Updater.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
+        <member name="M:Alis.Editor.UI.Widgets.Updater.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Updater" /> class.</summary>
-            <param name="eventHandler">The event handler.</param>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Updater.Draw">
             <summary>Draw this instance.</summary>

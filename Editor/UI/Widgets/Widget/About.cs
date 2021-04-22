@@ -4,11 +4,8 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
-    using Alis.Editor.Utils;
-    using Alis.Core;
     using ImGuiNET;
     using System;
-    using Alis.Tools;
 
     /// <summary>Show the game running</summary>
     public class About : Widget

@@ -33,7 +33,7 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-            if (ImGui.Begin("Hierarchy"))
+           /* if (ImGui.Begin("Hierarchy"))
             {
                
 
@@ -83,16 +83,16 @@ namespace Alis.Editor.UI.Widgets
                 }
             }
 
-            ImGui.End();
+            ImGui.End();*/
         }
 
         private void AddNewGameObjectToScene(Scene scene)
         {
-            scene.Add(new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f))));
+            /*scene.Add(new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f))));
 
             LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
 
-            Inspector.Current.Focus = true;
+            Inspector.Current.Focus = true;*/
         }
 
         private void AddNewGameObjectToScene()

@@ -20,7 +20,7 @@ namespace Alis.Editor.UI
         AutoSave = 3,
 
         /// <summary>The build settings</summary>
-        BuildSettings = 4,
+        Build = 4,
 
         /// <summary>The build and run</summary>
         BuildAndRun = 5,

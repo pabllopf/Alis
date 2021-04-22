@@ -75,7 +75,7 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-            if (focus)
+            /*if (focus)
             {
                 ImGui.SetNextWindowFocus();
                 focus = false;
@@ -92,7 +92,7 @@ namespace Alis.Editor.UI.Widgets
                 }
             }
 
-            ImGui.End();
+            ImGui.End();*/
         }
 
         private void SeeObjComponents(GameObject gameObject)

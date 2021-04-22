@@ -3,14 +3,14 @@
 1; Open Project; Abrir Proyecto;
 2; Save; Guardar;
 3; AutoSave ; Guardado Automático  ;
-4; Build Settings -SOON-; Configuración Compilación;
-5; Build And Run; Compila y Lanza;
+4; Build; Compilar;
+5; Build And Run; Compilar y Lanzar;
 6; Exit; Salir;
 7; Saved game name: {0}.; Juego guardado nombre: {0}.;
 8; Are you sure you want to exit the editor? Remember to save the project before.; Está seguro que desea salir del editor?. Recuerda guardar el proyecto antes.;
 9; Accept; Si;
 10; Cancel; No;
-11;;;
+11;ejemplo;;
 12;;;
 13;;;
 14;;;
