@@ -33,58 +33,100 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-           /* if (ImGui.Begin("Hierarchy"))
+            if (ImGui.Begin("Hierarchy"))
             {
-               
-
-                if (Project.Current != null)
+                /*
+                if (Project.VideoGame != null)
                 {
-                    foreach (Scene scene in Project.VideoGame.SceneManager.Scenes)
+                    ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
+                    ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
+
+                    ImGui.AlignTextToFramePadding();
+
+                    if (ImGui.Button(Icon.PLUSSQUARE))
                     {
-                        ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
-                        ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
-
-                        ImGui.AlignTextToFramePadding();
-
-                        bool treeopen = ImGui.TreeNodeEx("Scene: " + scene.Name, ImGuiTreeNodeFlags.AllowItemOverlap);
-
-                        ImGui.SameLine();
-
-                        if (ImGui.Button(Icon.PLUSSQUARE))
-                        {
-                            ImGui.OpenPopup("ElementList");
-                        }
-
-                        if (ImGui.BeginPopup("ElementList"))
-                        {
-                            if (ImGui.MenuItem("New GameObject"))
-                            {
-                                AddNewGameObjectToScene(scene);
-                            }
-
-                            ImGui.EndPopup();
-                        }
-                        if (treeopen)
-                        {
-                            foreach (GameObject obj in scene.GameObjects) 
-                            {
-                                if (ImGui.Button(obj.Name))
-                                {
-                                    SelectGameObject(obj);
-                                }
-                            }
-                           
-                            ImGui.TreePop();
-                        }
-
-                        ImGui.PopStyleVar();
-                        ImGui.PopStyleColor();
+                        ImGui.OpenPopup("ElementList");
                     }
-                }
-            }
 
-            ImGui.End();*/
+                    if (ImGui.BeginPopup("ElementList"))
+                    {
+                        if (ImGui.MenuItem("New GameObject"))
+                        {
+                            AddNewGameObjectToScene(Project.VideoGame.SceneManager.CurrentScene);
+                        }
+
+                        ImGui.EndPopup();
+                    }
+
+                    ImGui.PopStyleVar();
+                    ImGui.PopStyleColor();
+
+                    foreach (GameObject obj in Project.VideoGame.SceneManager.CurrentScene.GameObjects)
+                    {
+                        if (ImGui.Button(obj.Name))
+                        {
+                            SelectGameObject(obj);
+                        }
+                    }
+
+                */
+                    ImGui.End();
+                //}
+            }
         }
+
+            /* if (ImGui.Begin("Hierarchy"))
+             {
+
+
+                 if (Project.Current != null)
+                 {
+                     foreach (Scene scene in Project.VideoGame.SceneManager.Scenes)
+                     {
+                         ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
+                         ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
+
+                         ImGui.AlignTextToFramePadding();
+
+                         bool treeopen = ImGui.TreeNodeEx("Scene: " + scene.Name, ImGuiTreeNodeFlags.AllowItemOverlap);
+
+                         ImGui.SameLine();
+
+                         if (ImGui.Button(Icon.PLUSSQUARE))
+                         {
+                             ImGui.OpenPopup("ElementList");
+                         }
+
+                         if (ImGui.BeginPopup("ElementList"))
+                         {
+                             if (ImGui.MenuItem("New GameObject"))
+                             {
+                                 AddNewGameObjectToScene(scene);
+                             }
+
+                             ImGui.EndPopup();
+                         }
+                         if (treeopen)
+                         {
+                             foreach (GameObject obj in scene.GameObjects) 
+                             {
+                                 if (ImGui.Button(obj.Name))
+                                 {
+                                     SelectGameObject(obj);
+                                 }
+                             }
+
+                             ImGui.TreePop();
+                         }
+
+                         ImGui.PopStyleVar();
+                         ImGui.PopStyleColor();
+                     }
+                 }
+             }
+
+             ImGui.End();*/
+        
 
         private void AddNewGameObjectToScene(Scene scene)
         {
@@ -102,8 +144,8 @@ namespace Alis.Editor.UI.Widgets
 
         private void SelectGameObject(GameObject obj)
         {
-            Inspector.Current.Focus = true;
-            Inspector.Current.GameObject = obj;
+            //Inspector.Current.Focus = true;
+            //Inspector.Current.GameObject = obj;
         }
     }
 }

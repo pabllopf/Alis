@@ -53,12 +53,12 @@ namespace Alis.Editor
         /// <param name="directory">The directory.</param>
         public Project(string name, string directory)
         {
-            this.name = name;
-            this.directory = directory;
-            assetPath = directory + "/" + name + "/Assets";
-            configPath = directory + "/" + name + "/Config";
-            dataPath = directory + "/" + name + "/Data";
-            libPath = directory + "/" + name + "/Lib";
+            this.name = name.Replace("\\", "/"); 
+            this.directory = directory.Replace("\\", "/"); ;
+            assetPath = (directory + "/" + name + "/Assets").Replace("\\", "/");
+            configPath = (directory + "/" + name + "/Config").Replace("\\", "/");
+            dataPath = (directory + "/" + name + "/Data").Replace("\\", "/"); 
+            libPath = (directory + "/" + name + "/Lib").Replace("\\", "/"); 
         }
 
         /// <summary>Initializes a new instance of the <see cref="Project" /> class.</summary>

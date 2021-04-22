@@ -143,7 +143,7 @@ namespace Alis.Editor.UI.Widgets
         {
             if (!takeFile) 
             {
-                elementTaked = currentDirRight;
+                elementTaked = currentDirRight.Replace("\\", "/"); ;
             }
 
             ImGui.InputText(takeFile ? "File" : "Directory",ref elementTaked, 128);
@@ -207,7 +207,7 @@ namespace Alis.Editor.UI.Widgets
             }
             else 
             {
-                elementTaked = currentDirRight;
+                elementTaked = currentDirRight.Replace("\\", "/");
                 confirmedElement = true;
                 Close();
             }

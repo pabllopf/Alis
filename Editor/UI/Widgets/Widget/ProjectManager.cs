@@ -121,30 +121,42 @@ namespace Alis.Editor.UI.Widgets
                 Console.Log(Path.GetFileNameWithoutExtension(fileDialog.ElementTaked));
                 Console.Log(Path.GetDirectoryName(fileDialog.ElementTaked));
 
-                Project project = LocalData.Load<Project>(Path.GetFileNameWithoutExtension(fileDialog.ElementTaked), Path.GetDirectoryName(fileDialog.ElementTaked));
-                if (projects.Find(i => i.Name.Equals(project.Name) && i.Directory.Equals(project.Directory)) != null)
+                string nameTemp = Path.GetFileNameWithoutExtension(fileDialog.ElementTaked);
+                string pathTemp = Path.GetDirectoryName(fileDialog.ElementTaked);
+                
+                Project project = LocalData.Load<Project>(nameTemp, pathTemp);
+                if (project != null) 
                 {
-                    Console.Error("Project alredy exits.");
-                }
-                else 
-                {
-                    if (!Directory.Exists(project.Directory + "/" + project.Name))
+                    if (projects.Find(i => i.Name.Equals(project.Name) && i.Directory.Equals(project.Directory)) != null)
                     {
-                        Console.Error("Directory dont exits");
+                        Console.Error("Project alredy exits.");
                     }
                     else 
                     {
+                        pathTemp = Directory.GetParent(pathTemp).ToString();
+                        Console.Log(pathTemp);
+
+                        Console.Warning("Try to load " + project.Directory + "/" + project.Name);
+
+                        if (!Directory.Exists(project.Directory + "/" + project.Name))
+                        {
+                            string nameProject = project.Name;
+                            project = new Project(nameProject,  pathTemp);
+                            LocalData.Save<Project>("Project", project.Directory + "/" + project.Name, project);
+                        }
+
                         projects.Add(project);
                         LocalData.Save(nameFileToSave, projects);
                         Project.Set(project);
+                        /*
+                        Project.VideoGame = LocalData.Load<VideoGame>("Data", project.DataPath1);
 
                         Console.Warning("Loaded project: " + project.Name);
-
+                        Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
+                       */
                         Close();
                     }
                 }
-
-                Console.Log("File: " + fileDialog.ElementTaked);
             }
 
             if (directoryDialog.ConfirmedElement) 
@@ -385,13 +397,13 @@ namespace Alis.Editor.UI.Widgets
             File.Copy(Environment.CurrentDirectory + "/Tools.dll", project.LibPath + "/" + "Tools" + ".dll");
 
             VideoGame game = VideoGame.Builder()
-                                            .Config(Config.Builder().Name(name).Build())
+                                            .Config(Config.Builder().Name("Alis Game").Build())
                                             .SceneManager(SceneManager.Builder().Scene(new Scene("Default")).Build())
                                             .Build();
 
-            LocalData.Save<VideoGame>("Data", project.DataPath1, game);
+            LocalData.Save("Data", project.DataPath1, game);
 
-            LocalData.Save<Project>("Project", dir, project);
+            LocalData.Save("Project", dir, project);
 
             Logger.Log("Saved default game");
 
@@ -414,7 +426,25 @@ namespace Alis.Editor.UI.Widgets
 
         private void OpenProject(Project project) 
         {
-        
+            Project temp = projects.Find(i => i.Name.Equals(project.Name) && i.Directory.Equals(project.Directory));
+            if (temp != null)
+            {
+                if (!Directory.Exists(temp.Directory + "/" + temp.Name)) 
+                {
+                    projects.Remove(temp);
+                    LocalData.Save(nameFileToSave, projects);
+                    return;
+                }
+
+                Project.Set(project);
+
+                Project.VideoGame = LocalData.Load<VideoGame>("Data", project.DataPath1);
+
+                Console.Warning("Loaded project: " + project.Name);
+                Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
+
+                Close();
+            }
         }
 
         private void CancelCreateProject() 
