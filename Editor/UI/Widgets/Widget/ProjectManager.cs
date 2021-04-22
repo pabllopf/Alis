@@ -148,12 +148,14 @@ namespace Alis.Editor.UI.Widgets
                         projects.Add(project);
                         LocalData.Save(nameFileToSave, projects);
                         Project.Set(project);
-                        /*
+
+                        Console.Log("Data file on " + project.DataPath1 + "/Data.json");
+
                         Project.VideoGame = LocalData.Load<VideoGame>("Data", project.DataPath1);
 
                         Console.Warning("Loaded project: " + project.Name);
                         Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
-                       */
+                       
                         Close();
                     }
                 }
