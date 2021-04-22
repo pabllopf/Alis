@@ -60,6 +60,8 @@ namespace Alis.Editor.UI.Widgets
 
         private FileDialog fileDialog;
 
+        private FileDialog directoryDialog;
+
         /// <summary>The name field</summary>
         private string nameField = "AlysProject";
 
@@ -102,6 +104,7 @@ namespace Alis.Editor.UI.Widgets
 
 
             fileDialog = new FileDialog(Environment.CurrentDirectory, true, ".json", new string[] { "*", ".json" });
+            directoryDialog = new FileDialog(Environment.CurrentDirectory, false, "*", new string[] { "*"});
 
             Logger.Info();
         }
@@ -143,6 +146,13 @@ namespace Alis.Editor.UI.Widgets
 
                 Console.Log("File: " + fileDialog.ElementTaked);
             }
+
+            if (directoryDialog.ConfirmedElement) 
+            {
+                directoryField = directoryDialog.ElementTaked;
+                Console.Warning("Select the direcotry " + directoryDialog.ElementTaked);
+            }
+
 
             PushStyle();
 
@@ -244,6 +254,7 @@ namespace Alis.Editor.UI.Widgets
 
                 if (ImGui.Button("...", new Vector2(27.0f)))
                 {
+                    DirectorySelector();
                 }
 
                 ImGui.PopStyleVar();
@@ -320,6 +331,13 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
+        private void DirectorySelector()
+        {
+            directoryDialog = new FileDialog(Environment.CurrentDirectory, false, "*", new string[] { "*" });
+            directoryDialog.OpenDialog();
+
+        }
+
         #endregion
 
 
@@ -330,12 +348,57 @@ namespace Alis.Editor.UI.Widgets
                 projects.Add(project);
                 LocalData.Save(nameFileToSave, projects);
 
+                GenerateFiles(project);
+
+
                 Console.Log("Created project '" + project.Name + "'on: " + project.Directory);
             }
             else 
             {
                 Console.Warning("You can create a project that alredy exits.");
             }
+        }
+
+        private void GenerateFiles(Project project)
+        {
+            string dir = project.Directory + "/" + project.Name;
+            Directory.CreateDirectory(dir);
+            Directory.CreateDirectory(project.AssetPath);
+            Directory.CreateDirectory(project.ConfigPath1);
+            Directory.CreateDirectory(project.DataPath1);
+            Directory.CreateDirectory(project.LibPath);
+
+            string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
+            File.WriteAllText(dir + "/" + name + ".csproj", projectFile, Encoding.UTF8);
+            Logger.Log("Created .csproj");
+
+            string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
+            File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
+            Logger.Log("Created .sln");
+
+            string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
+            File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
+            Logger.Log("Created Program.cs");
+
+            File.Copy(Environment.CurrentDirectory + "/Core-SFML.dll", project.LibPath + "/" + "Core-SFML" + ".dll");
+            File.Copy(Environment.CurrentDirectory + "/Core.dll", project.LibPath + "/" + "Core" + ".dll");
+            File.Copy(Environment.CurrentDirectory + "/Tools.dll", project.LibPath + "/" + "Tools" + ".dll");
+
+            VideoGame game = VideoGame.Builder()
+                                            .Config(Config.Builder().Name(name).Build())
+                                            .SceneManager(SceneManager.Builder().Scene(new Scene("Default")).Build())
+                                            .Build();
+
+            LocalData.Save<VideoGame>("Data", project.DataPath1, game);
+
+            LocalData.Save<Project>("Project", dir, project);
+
+            Logger.Log("Saved default game");
+
+            Project.Set(project);
+            Project.VideoGame = game;
+
+            Close();
         }
 
         private void OpenProject()
@@ -378,228 +441,6 @@ namespace Alis.Editor.UI.Widgets
             isOpen = false;
             WidgetManager.Delete(this);
         }
-
-
-        /*
-        if (ImGui.BeginChild("Master-Child-Right", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
-        {
-            ImGui.PopStyleColor();
-
-            ImGui.Text("Name: ");
-            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
-            ImGui.InputText("##Name", ref nameField, 256);
-            ImGui.PopItemWidth();
-
-            ImGui.Text("Directory: ");
-            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 3));
-            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 27.0f);
-            ImGui.BeginGroup();
-            ImGui.InputText("##Path", ref directoryField, 256);
-            ImGui.SameLine();
-
-            if (ImGui.Button("...", new Vector2(27.0f)))
-            {
-            }
-
-            ImGui.PopStyleVar();
-            ImGui.PopItemWidth();
-            ImGui.EndGroup();
-
-            ImGui.Text("Solution: ");
-            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
-            if (ImGui.BeginCombo("##Mode", currentMode))
-            {
-                for (int n = 0; n < modes.Length; n++)
-                {
-                    selected = currentMode == modes[n];
-                    if (ImGui.Selectable(modes[n], selected))
-                    {
-                        currentMode = modes[n];
-                    }
-
-                    if (selected)
-                    {
-                        ImGui.SetItemDefaultFocus();
-                    }
-                }
-
-                ImGui.EndCombo();
-            }
-
-            ImGui.PopItemWidth();
-
-            if (Directory.Exists(directoryField + "/" + nameField))
-            {
-                ImGui.TextColored(redColor, "The project '" + nameField + "' already exists.");
-            }
-
-            if (!showRecentProjects)
-            {
-                if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 50.0f)))
-                {
-                }
-
-                ImGui.SameLine();
-            }
-
-
-            if (ImGui.Button("Create Project", new Vector2(ImGui.GetContentRegionAvail().X, 50.0f)))
-            {
-                CreateProject(nameField, directoryField, currentMode);
-            }
-
-            ImGui.EndChild();
-        }*/
-
-
-
-
-
-
-
-
-        /*
-            if (isOpen)
-            {
-                PushStyle();
-
-                ImGui.SetNextWindowPos(new Vector2(ImGui.GetMainViewport().Size.X / 4, ImGui.GetMainViewport().Size.Y / 4));
-                ImGui.OpenPopup(name);
-                if (ImGui.BeginPopupModal(name, ref isOpen, configPopup))
-                {
-                    if (ImGui.BeginChild("Master", sizeWidget, false))
-                    {
-                        sizeChild.X = ImGui.GetContentRegionAvail().X / 3;
-                        sizeChild.Y = ImGui.GetContentRegionAvail().Y - 70;
-
-                        if (showRecentProjects)
-                        {
-                            ImGui.BeginGroup();
-                            ImGui.PushStyleColor(ImGuiCol.Border, whiteColor);
-                            if (ImGui.BeginChild("Master-Child-Left", sizeChild, true))
-                            {
-                                ImGui.PopStyleColor();
-
-                                ImGui.Text("Recent Projects: ");
-
-                                foreach (Project project in projects)
-                                {
-                                    ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(0, 7.0f));
-                                    ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 0.0f);
-                                    ImGui.BeginGroup();
-
-                                    if (ImGui.Button(project.Name, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
-                                    {
-                                        OpenProject(project);
-                                    }
-
-                                    ImGui.SameLine();
-
-                                    if (ImGui.Button(Icon.TIMESCIRCLEO + "##" + projects.IndexOf(project), new Vector2(30.0f, 30.0f)))
-                                    {
-                                        DeleteProject(project);
-                                    }
-
-                                    ImGui.EndGroup();
-                                    ImGui.PopStyleVar(2);
-                                }
-
-                                ImGui.EndChild();
-
-                                sizeChild.Y = 50.0f;
-
-                                if (ImGui.Button("Open Project", sizeChild)) 
-                                {
-                                }
-
-                                ImGui.EndGroup();
-                            }
-
-                            ImGui.SameLine();
-                        }
-
-                        ImGui.PushStyleColor(ImGuiCol.Border, whiteColor);
-                        if (ImGui.BeginChild("Master-Child-Right", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
-                        {
-                            ImGui.PopStyleColor();
-
-                            ImGui.Text("Name: ");
-                            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
-                            ImGui.InputText("##Name", ref nameField, 256);
-                            ImGui.PopItemWidth();
-
-                            ImGui.Text("Directory: ");
-                            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 3));
-                            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 27.0f);
-                            ImGui.BeginGroup();
-                            ImGui.InputText("##Path", ref directoryField, 256);
-                            ImGui.SameLine();
-
-                            if (ImGui.Button("...", new Vector2(27.0f)))
-                            {
-                            }
-
-                            ImGui.PopStyleVar();
-                            ImGui.PopItemWidth();
-                            ImGui.EndGroup();
-
-                            ImGui.Text("Solution: ");
-                            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
-                            if (ImGui.BeginCombo("##Mode", currentMode))
-                            {
-                                for (int n = 0; n < modes.Length; n++)
-                                {
-                                    selected = currentMode == modes[n];
-                                    if (ImGui.Selectable(modes[n], selected))
-                                    {
-                                        currentMode = modes[n];
-                                    }
-
-                                    if (selected)
-                                    {
-                                        ImGui.SetItemDefaultFocus();
-                                    }
-                                }
-
-                                ImGui.EndCombo();
-                            }
-
-                            ImGui.PopItemWidth();
-
-                            if (Directory.Exists(directoryField + "/" + nameField))
-                            {
-                                ImGui.TextColored(redColor, "The project '" + nameField + "' already exists.");
-                            }
-
-                            if (!showRecentProjects) 
-                            {
-                                if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 50.0f)))
-                                {
-                                }
-
-                                ImGui.SameLine();
-                            }
-
-
-                            if (ImGui.Button("Create Project", new Vector2(ImGui.GetContentRegionAvail().X, 50.0f)))
-                            {
-                                CreateProject(nameField, directoryField, currentMode);
-                            }
-
-                            ImGui.EndChild();
-                        }
-                    }
-
-                    ImGui.EndChild();
-                }
-
-                PopStyle();
-            }
-            else
-            {
-                eventHandler?.Invoke(this, EventType.CloseCreateProject);
-            }
-        }*/
 
         /// <summary>Pushes the style.</summary>
         private void PushStyle() 

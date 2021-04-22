@@ -141,6 +141,11 @@ namespace Alis.Editor.UI.Widgets
 
         private void ShowElementTaker()
         {
+            if (!takeFile) 
+            {
+                elementTaked = currentDirRight;
+            }
+
             ImGui.InputText(takeFile ? "File" : "Directory",ref elementTaked, 128);
             
             ImGui.SameLine();
@@ -180,7 +185,7 @@ namespace Alis.Editor.UI.Widgets
 
             #region Create Project Button
 
-            if (ImGui.Button("Create Project", new Vector2(ImGui.GetContentRegionAvail().X, 50.0f)))
+            if (ImGui.Button(takeFile ? "Open Project" : "Open Folder", new Vector2(ImGui.GetContentRegionAvail().X, 50.0f)))
             {
                 OpenSelected(elementTaked);
             }
@@ -191,8 +196,18 @@ namespace Alis.Editor.UI.Widgets
 
         private void OpenSelected(string elementTaked)
         {
-            if (!elementTaked.Equals(string.Empty)) 
+            if (takeFile)
             {
+
+                if (!elementTaked.Equals(string.Empty))
+                {
+                    confirmedElement = true;
+                    Close();
+                }
+            }
+            else 
+            {
+                elementTaked = currentDirRight;
                 confirmedElement = true;
                 Close();
             }
