@@ -79,6 +79,24 @@ namespace Alis.Editor.UI.Widgets
 
         public string ElementTaked { get => elementTaked; set => elementTaked = value; }
 
+        private bool confirmedElement = false;
+
+        public bool ConfirmedElement
+        {
+            get
+            {
+                if (confirmedElement)
+                {
+                    confirmedElement = false;
+                    return true;
+                }
+                else 
+                {
+                    return false;
+                }
+            }
+        }
+
         #endregion
 
         public FileDialog(string defaultDir, bool takeFile, string defaultFormat, string[] formats)
@@ -173,12 +191,17 @@ namespace Alis.Editor.UI.Widgets
 
         private void OpenSelected(string elementTaked)
         {
-
-            Close();
+            if (!elementTaked.Equals(string.Empty)) 
+            {
+                confirmedElement = true;
+                Close();
+            }
         }
 
         private void CancelFileDialog()
         {
+            confirmedElement = false;
+            elementTaked = string.Empty;
             Close();
         }
 
@@ -355,6 +378,10 @@ namespace Alis.Editor.UI.Widgets
 
                 if (ImGui.Button(Icon.FILETEXT + " " + Path.GetFileName(file), new Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
                 {
+                    if (takeFile) 
+                    {
+                        elementTaked = file;
+                    }
                 }
 
                 ImGui.PopStyleVar();

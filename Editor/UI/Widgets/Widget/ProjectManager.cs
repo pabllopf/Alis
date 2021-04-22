@@ -113,8 +113,34 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-            if (!fileDialog.ElementTaked.Equals(string.Empty))
+            if (fileDialog.ConfirmedElement)
             {
+                Console.Log(Path.GetFileNameWithoutExtension(fileDialog.ElementTaked));
+                Console.Log(Path.GetDirectoryName(fileDialog.ElementTaked));
+
+                Project project = LocalData.Load<Project>(Path.GetFileNameWithoutExtension(fileDialog.ElementTaked), Path.GetDirectoryName(fileDialog.ElementTaked));
+                if (projects.Find(i => i.Name.Equals(project.Name) && i.Directory.Equals(project.Directory)) != null)
+                {
+                    Console.Error("Project alredy exits.");
+                }
+                else 
+                {
+                    if (!Directory.Exists(project.Directory + "/" + project.Name))
+                    {
+                        Console.Error("Directory dont exits");
+                    }
+                    else 
+                    {
+                        projects.Add(project);
+                        LocalData.Save(nameFileToSave, projects);
+                        Project.Set(project);
+
+                        Console.Warning("Loaded project: " + project.Name);
+
+                        Close();
+                    }
+                }
+
                 Console.Log("File: " + fileDialog.ElementTaked);
             }
 
@@ -347,7 +373,11 @@ namespace Alis.Editor.UI.Widgets
         }
 
         /// <summary>Closes this instance.</summary>
-        private void Close() => isOpen = false;
+        private void Close()
+        {
+            isOpen = false;
+            WidgetManager.Delete(this);
+        }
 
 
         /*

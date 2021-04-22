@@ -62,22 +62,6 @@
             <summary>Gets or sets the directory.</summary>
             <value>The directory.</value>
         </member>
-        <member name="P:Alis.Editor.Project.AssetsPath">
-            <summary>Gets or sets the asset path.</summary>
-            <value>The asset path.</value>
-        </member>
-        <member name="P:Alis.Editor.Project.ConfigPath">
-            <summary>Gets or sets the configuration path.</summary>
-            <value>The configuration path.</value>
-        </member>
-        <member name="P:Alis.Editor.Project.DataPath">
-            <summary>Gets or sets the data path.</summary>
-            <value>The data path.</value>
-        </member>
-        <member name="P:Alis.Editor.Project.LibraryPath">
-            <summary>Gets or sets the library path.</summary>
-            <value>The library path.</value>
-        </member>
         <member name="P:Alis.Editor.Project.VideoGame">
             <summary>Gets or sets the video game.</summary>
             <value>The video game.</value>

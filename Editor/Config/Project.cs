@@ -69,14 +69,19 @@ namespace Alis.Editor
         /// <param name="dataPath">The data path.</param>
         /// <param name="libPath">The library path.</param>
         [JsonConstructor]
-        public Project(string name, string directory, string assetPath, string configPath, string dataPath, string libPath)
+        public Project(string name, string directory, string assetPath1, string configPath2, string dataPath3, string libPath4)
         {
             this.name = name;
             this.directory = directory;
-            this.assetPath = assetPath;
-            this.configPath = configPath;
-            this.dataPath = dataPath;
-            this.libPath = libPath;
+            assetPath = assetPath1;
+            configPath = configPath2;
+            dataPath = dataPath3;
+            libPath = libPath4;
+        }
+
+        public static void Set(Project project) 
+        {
+            current = project;
         }
 
         /// <summary>Occurs when [on change].</summary>
@@ -92,30 +97,22 @@ namespace Alis.Editor
         [JsonProperty("_Directory")]
         public string Directory { get => directory; set => directory = value; }
 
-        /// <summary>Gets or sets the asset path.</summary>
-        /// <value>The asset path.</value>
-        [JsonProperty("_AssetPath")]
-        public string AssetsPath { get => assetPath; set => assetPath = value; }
-
-        /// <summary>Gets or sets the configuration path.</summary>
-        /// <value>The configuration path.</value>
-        [JsonProperty("_ConfigPath")]
-        public string ConfigPath { get => configPath; set => configPath = value; }
-
-        /// <summary>Gets or sets the data path.</summary>
-        /// <value>The data path.</value>
-        [JsonProperty("_DataPath")]
-        public string DataPath { get => dataPath; set => dataPath = value; }
-        
-        /// <summary>Gets or sets the library path.</summary>
-        /// <value>The library path.</value>
-        [JsonProperty("_LibPath")]
-        public string LibraryPath { get => libPath; set => libPath = value; }
-
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
         [JsonIgnore]
         public static VideoGame VideoGame { get => game; set => game = value; }
+
+        [JsonProperty("_AssetPath")]
+        public string AssetPath { get => assetPath; set => assetPath = value; }
+        
+        [JsonProperty("_ConfigPath")]
+        public string ConfigPath1 { get => configPath; set => configPath = value; }
+        
+        [JsonProperty("_DataPath")]
+        public string DataPath1 { get => dataPath; set => dataPath = value; }
+
+        [JsonProperty("_LibPath")]
+        public string LibPath { get => libPath; set => libPath = value; }
 
         /// <summary>Projects the on change.</summary>
         /// <param name="sender">The sender.</param>
