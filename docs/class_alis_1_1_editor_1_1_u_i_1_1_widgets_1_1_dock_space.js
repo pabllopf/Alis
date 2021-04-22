@@ -3,8 +3,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space =
     [ "DockSpace", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a0404cd9c8b61e73f7bfa3455401ed0d0", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#af47909a50c9e4afe2aef4e93ab37596e", null ],
     [ "PlayGame", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#aa8e59b5343949207e298f007c1c2dc08", null ],
-    [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#aa154b3b1d603e7e97ce6ba91633ae589", null ],
-    [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a4329437dbce059bf1161aeb04ca73a8c", null ],
     [ "ClickButton", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#abf00b4a7814c5716bf874b2d725a9ef8", null ],
     [ "button", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a2d31e53a7fc03a15c3ee726b892fb63f", null ],
     [ "dockspaceFlags", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#a5df3c0ee290667f536a58299d7953fb0", null ],

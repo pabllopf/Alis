@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['input_2620',['Input',['../class_alis_1_1_core_1_1_game.html#a589c313950642086a3870ea149134079',1,'Alis::Core::Game']]],
-  ['isactive_2621',['IsActive',['../class_alis_1_1_core_1_1_component.html#a0ee320aa3d917c76248b28e3a1f7a6c9',1,'Alis.Core.Component.IsActive()'],['../class_alis_1_1_core_1_1_game_object.html#a0d1f02923728fa2fa520d0733b2e407f',1,'Alis.Core.GameObject.IsActive()'],['../class_alis_1_1_core_1_1_scene.html#a53e4a7ca8aa5f06f1ad64901fe6d9d1c',1,'Alis.Core.Scene.IsActive()']]],
-  ['isgaming_2622',['IsGaming',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#adb321a845a90cb3d3f298326d202c1b3',1,'Alis::Editor::UI::Widgets::GameView']]],
-  ['isnewframe_2623',['IsNewFrame',['../class_alis_1_1_core_1_1_game.html#a62da645395a9f9384b9bd962b473a7a8',1,'Alis::Core::Game']]],
-  ['isstatic_2624',['IsStatic',['../class_alis_1_1_core_1_1_game_object.html#a1fa0208c2a17a7f893ee9e8a408282d8',1,'Alis::Core::GameObject']]]
+  ['gameobject_2726',['GameObject',['../class_alis_1_1_core_1_1_component.html#a2b92fc6c16abe86327b83fcc24cfd4fb',1,'Alis.Core.Component.GameObject()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ac26b99295b51cd47b63e4c2273f6c251',1,'Alis.Editor.UI.Widgets.Inspector.GameObject()']]],
+  ['gameobjects_2727',['GameObjects',['../class_alis_1_1_core_1_1_scene.html#aab06d433c43ea6a59eaa3a434c0857fe',1,'Alis::Core::Scene']]],
+  ['graphics_2728',['Graphics',['../class_alis_1_1_editor_1_1_info.html#a1252a9b4772efe3966475ba9ec41d13b',1,'Alis::Editor::Info']]],
+  ['graphicsdevice_2729',['graphicsDevice',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a6f4000797866a7f8ddf8dd570605849e',1,'ImGuiNET::ImGuiController']]]
 ];
