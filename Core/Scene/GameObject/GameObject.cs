@@ -275,6 +275,22 @@ namespace Alis.Core
             return false;
         }
 
+        public bool Contains(Component component) 
+        {
+            Span<Component> span = components.Span;
+            for (int i = 0; i < span.Length; i++)
+            {
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(component.GetType()))
+                {
+                    Logger.Log(string.Format(ContainsComponent, component.GetType().FullName, this.name));
+                    return true;
+                }
+            }
+
+            Logger.Log(string.Format(DontContainsComponent, component.GetType().FullName, this.name));
+            return false;
+        }
+
         /// <summary>Adds the specified component.</summary>
         /// <typeparam name="T">Type component</typeparam>
         /// <param name="component">The component.</param>

@@ -24,6 +24,15 @@ namespace Alis.Core.SFML
         /// <summary>The size</summary>
         private Vector2 size;
 
+        public Camera()
+        {
+            this.center = new Vector2(0);
+            this.size = new Vector2(640, 480);
+            view = new View(new Vector2f(this.center.X, this.center.Y), new Vector2f(this.size.X, this.size.Y));
+
+            transform = new Core.Transform();
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Camera"/> class.
         /// </summary>

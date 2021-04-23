@@ -29,6 +29,21 @@ namespace Alis.Core.SFML
         [JsonIgnore]
         private global::SFML.Graphics.Sprite sprite;
 
+        public Sprite()
+        {
+            this.image = string.Empty;
+            depth = 0;
+
+            if (!image.Equals(string.Empty))
+            {
+                pathImage = Asset.Load(image);
+                sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
+                Logger.Log("Loaded the sprite(" + image + ") '");
+            }
+
+            OnDraw += Sprite_OnDraw;
+        }
+
         /// <summary>Initializes a new instance of the <see cref="Sprite" /> class.</summary>
         /// <param name="image">The image.</param>
         public Sprite([NotNull] string image)

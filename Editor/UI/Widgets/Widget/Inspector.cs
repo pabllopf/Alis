@@ -43,17 +43,6 @@ namespace Alis.Editor.UI.Widgets
             {  typeof(AudioSource), Icon.MUSIC },
         };
 
-
-
-        private readonly Dictionary<Type, Action<GameObject>> constructors = new Dictionary<Type, Action<GameObject>>()
-        {
-            { typeof(Sprite), NewSprite },
-            { typeof(Animator), NewAnimator },
-            { typeof(AudioSource), NewAudiosource },
-            { typeof(Camera), NewCamera },
-            { typeof(Collision), NewCollision }
-        };
-
         private static Inspector current;
 
         /// <summary>The name</summary>
@@ -104,6 +93,8 @@ namespace Alis.Editor.UI.Widgets
 
         private void SeeObjComponents(GameObject gameObject)
         {
+            #region Block Name 
+
             ImGui.BeginChild("GameObject-Child", new Vector2(ImGui.GetContentRegionAvail().X, 80.0f), true);
 
             string content = gameObject.Name;
@@ -118,20 +109,19 @@ namespace Alis.Editor.UI.Widgets
             }
 
             ImGui.PopItemWidth();
-            
-
             ImGui.EndChild();
-        }
 
+            #endregion
 
-            /*
+            #region Transform 
+
             ImGui.BeginGroup();
             ImGui.AlignTextToFramePadding();
             if (ImGui.TreeNodeEx(icons[typeof(Transform)] + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
             {
                 foreach (PropertyInfo property in gameObject.Transform.GetType().GetProperties())
                 {
-                    if (property.PropertyType.Equals(typeof(Vector3))) 
+                    if (property.PropertyType.Equals(typeof(Vector3)))
                     {
                         DrawVector3(gameObject.Transform, property);
                     }
@@ -142,6 +132,57 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.EndGroup();
 
+            #endregion
+
+            #region add component 
+
+            if (ImGui.Button("Add Component", new Vector2(ImGui.GetContentRegionAvail().X, 30f)))
+            {
+                ImGui.OpenPopup("ElementList");
+            }
+
+            if (ImGui.BeginPopup("ElementList"))
+            {
+                Type type = typeof(Component);
+                IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
+                    .SelectMany(s => s.GetTypes())
+                    .Where(p => type.IsAssignableFrom(p));
+
+                foreach (Type component in types)
+                {
+                    if (!component.Name.Equals("Component") && !component.Name.Equals("Transform"))
+                    {
+                        if (ImGui.MenuItem(component.Name))
+                        {
+                            AddComponent(component, gameObject);
+                        }
+                    }
+                }
+
+              
+
+            }
+
+            #endregion
+        }
+
+        private void AddComponent(Type component, GameObject gameObject) 
+        {
+
+            Component temp = (Component)Activator.CreateInstance(component);
+
+            if (!gameObject.Contains(temp)) 
+            {
+                gameObject.Add(temp);
+                Console.Log("Add " + component.FullName + " on " + gameObject.Name);
+            }
+            else 
+            {
+                Console.Warning("Alredy exits Add " + component.FullName + " on " + gameObject.Name);
+            }
+        }
+        
+        /*
             foreach (Component component in gameObject.Components)
             {
                 ImGui.BeginGroup();
@@ -190,6 +231,74 @@ namespace Alis.Editor.UI.Widgets
                 }
             }*/
         
+
+
+        /*
+        ImGui.BeginGroup();
+        ImGui.AlignTextToFramePadding();
+        if (ImGui.TreeNodeEx(icons[typeof(Transform)] + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+        {
+            foreach (PropertyInfo property in gameObject.Transform.GetType().GetProperties())
+            {
+                if (property.PropertyType.Equals(typeof(Vector3))) 
+                {
+                    DrawVector3(gameObject.Transform, property);
+                }
+            }
+
+            ImGui.TreePop();
+        }
+
+        ImGui.EndGroup();
+
+        foreach (Component component in gameObject.Components)
+        {
+            ImGui.BeginGroup();
+            ImGui.AlignTextToFramePadding();
+            if (ImGui.TreeNodeEx(icons[component.GetType()] + " " + component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+            {
+                foreach (PropertyInfo property in component.GetType().GetProperties())
+                {
+                    foreach (KeyValuePair<Type, Action<Component, PropertyInfo>> field in fields)
+                    {
+                        if (field.Key.Equals(property.PropertyType) && property.CanWrite)
+                        {
+                            field.Value.Invoke(component, property);
+                        }
+                    }
+                }
+
+                ImGui.TreePop();
+            }
+
+            ImGui.EndGroup();
+        }
+
+        if (ImGui.Button("Add Component", new Vector2(ImGui.GetContentRegionAvail().X, 30f)))
+        {
+            ImGui.OpenPopup("ElementList");
+        }
+
+        if (ImGui.BeginPopup("ElementList"))
+        {
+
+            Type type = typeof(Component);
+            IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => type.IsAssignableFrom(p));
+
+            foreach (Type component in types)
+            {
+                if (!component.Name.Equals("Component") && !component.Name.Equals("Transform"))
+                {
+                    if (ImGui.MenuItem(component.Name))
+                    {
+                        constructors[component].Invoke(gameObject);
+                    }
+                }
+            }
+        }*/
+
 
         private static void DrawStringField(Component component, PropertyInfo property)
         {

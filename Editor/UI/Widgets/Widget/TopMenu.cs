@@ -9,6 +9,7 @@ namespace Alis.Editor.UI.Widgets
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Numerics;
+    using System.Reflection;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
@@ -430,7 +431,13 @@ namespace Alis.Editor.UI.Widgets
 
                     Task.Delay(1000).Wait();
                     BottomMenu.Loading(false, "");
+
+                    Build();
+
+                    LoadAsembly();
                 });
+
+                
             }
             else
             {
@@ -438,6 +445,28 @@ namespace Alis.Editor.UI.Widgets
                 Console.Error(string.Format(messageSaveGame, "'Game not loaded'"));
             }
         }
+
+        private void LoadAsembly() 
+        {
+            string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/" + Project.Get().Name + ".dll";
+
+            if (info.Platform.Equals(Platform.Linux)) 
+            {
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/" + Project.Get().Name + ".dll";
+            }
+
+            if (info.Platform.Equals(Platform.MacOS))
+            {
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll"; 
+            }
+            
+
+            if (File.Exists(workDirRun))
+            {
+                Project.Get().DLL1 = Assembly.LoadFile(workDirRun);
+            }
+        }
+
 
         /// <summary>
         /// Automatics the save project.
@@ -472,8 +501,6 @@ namespace Alis.Editor.UI.Widgets
         private void Build()
         {
             Console.Log("Build");
-            SaveProject();
-
             if (Project.VideoGame is not null)
             {
                 Task.Run(() =>

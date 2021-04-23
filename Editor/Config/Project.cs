@@ -9,6 +9,7 @@ namespace Alis.Editor
     using Newtonsoft.Json;
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
 
     /// <summary>Project define.</summary>
     public class Project
@@ -43,7 +44,13 @@ namespace Alis.Editor
         [NotNull]
         private string libPath;
 
-        static Project() 
+        private Assembly DLL;
+
+
+    
+
+
+    static Project() 
         {
             OnChange += Project_OnChange;
         }
@@ -59,6 +66,8 @@ namespace Alis.Editor
             configPath = (directory + "/" + name + "/Config").Replace("\\", "/");
             dataPath = (directory + "/" + name + "/Data").Replace("\\", "/"); 
             libPath = (directory + "/" + name + "/Lib").Replace("\\", "/"); 
+
+            
         }
 
         /// <summary>Initializes a new instance of the <see cref="Project" /> class.</summary>
@@ -119,6 +128,9 @@ namespace Alis.Editor
 
         [JsonProperty("_LibPath")]
         public string LibPath { get => libPath; set => libPath = value; }
+        
+        [JsonIgnore]
+        public Assembly DLL1 { get => DLL; set => DLL = value; }
 
         /// <summary>Projects the on change.</summary>
         /// <param name="sender">The sender.</param>
