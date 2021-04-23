@@ -383,11 +383,11 @@ namespace Alis.Editor.UI.Widgets
             Directory.CreateDirectory(project.LibPath);
 
             string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
-            File.WriteAllText(dir + "/" + name + ".csproj", projectFile, Encoding.UTF8);
+            File.WriteAllText(dir + "/" + project.Name + ".csproj", projectFile, Encoding.UTF8);
             Logger.Log("Created .csproj");
 
-            string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
-            File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
+            string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", project.Name);
+            File.WriteAllText(dir + "/" + project.Name + ".sln", solutionFile, Encoding.UTF8);
             Logger.Log("Created .sln");
 
             string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
@@ -492,111 +492,6 @@ namespace Alis.Editor.UI.Widgets
             ImGui.PopStyleColor();
             ImGui.PopStyleVar(2);
         }
-
-        /// <summary>Creates the project.</summary>
-        /// <param name="name">name project</param>
-        /// <param name="directory">directory project</param>
-        /// <param name="mode">mode project</param>
-       
-            /*if (!Directory.Exists(directory + "/" + name)) 
-            {
-                string dir = directory + "/" + name;
-                string assetPath = directory + "/" + name + "/Assets";
-                string configPath = directory + "/" + name + "/Config";
-                string dataPath = directory + "/" + name + "/Data";
-                string libPath = directory + "/" + name + "/Lib";
-
-                Project project = new Project(name, dir);
-                Logger.Log("Create project " + " name: " + name + " directory: " + dir);
-
-
-                projects.Add(project);
-                LocalData.Save<List<Project>>("Projects", projects);
-                Logger.Log("Saves the project in file");
-
-
-
-                Directory.CreateDirectory(dir);
-                Directory.CreateDirectory(assetPath);
-                Directory.CreateDirectory(configPath);
-                Directory.CreateDirectory(dataPath);
-                Directory.CreateDirectory(libPath);
-
-                Logger.Log("Create directorys of project.");
-
-                string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
-                File.WriteAllText(dir + "/" + name + ".csproj", projectFile, Encoding.UTF8);
-                Logger.Log("Created .csproj");
-
-                string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
-                File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
-                Logger.Log("Created .sln");
-
-                string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
-                File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
-                Logger.Log("Created Program.cs");
-
-                File.Copy(Application.ProjectFolder + "/Resources/Core-SFML.dll", libPath + "/" + "Core-SFML" + ".dll");
-                File.Copy(Application.ProjectFolder + "/Resources/Core.dll", libPath + "/" + "Core" + ".dll");
-                File.Copy(Application.ProjectFolder + "/Resources/Tools.dll", libPath + "/" + "Tools" + ".dll");
-                Logger.Log("Copied .DLLS");
-
-                VideoGame game = VideoGame.Builder()
-                                            .Config(Config.Builder().Name(name).Build())
-                                            .SceneManager(SceneManager.Builder().Scene(new Scene("Default")).Build())
-                                            .Build();
-
-                Logger.Log("Created default game");
-
-                LocalData.Save<VideoGame>("Data", dataPath, game);
-
-                Logger.Log("Saved default game");
-
-                Project.Current = project;
-                Project.VideoGame = game;
-            }
-            */
-        
-
-        /// <summary>Opens the project.</summary>
-        /// <param name="project">The project.</param>
-        /*private void OpenProject(Project project) 
-        {
-            /*if (Directory.Exists(project.Directory))
-            {
-                Logger.Warning("Open " + project.Name + project.DataPath + project.Directory + project.AssetsPath + project.ConfigPath + project.LibraryPath);
-
-                Asset.SetWorkPath(project.AssetsPath + "/");
-
-                VideoGame game = LocalData.Load<VideoGame>("Data", project.DataPath, new VideoGame(new Config("default")));
-
-                Logger.Warning("Videogame: " + game.Config.Name);
-
-                //Project.ChangeProject(project, game);
-            }
-            else 
-            {
-                DeleteProject(project);
-            }*/
-
-        /// <summary>Deletes the project.</summary>
-        /// <param name="project">project to delete</param>
-
-           /* List<Project> temp = LocalData.Load<List<Project>>("Projects");
-
-            if (temp == null)
-            {
-                temp = new List<Project>();
-            }
-
-            Project projectDelete = temp.Find(i => i.Name.Equals(project.Name));
-            if (projectDelete != null) 
-            {
-                temp.Remove(projectDelete);
-                LocalData.Save("Projects", temp);
-                projects = temp;
-            }*/
-        
     }
 
 }

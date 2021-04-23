@@ -26,26 +26,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
   </PropertyGroup>
-
-
-
   <ItemGroup>
-    <Reference Include="Core">
-      <HintPath>Lib\Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Tools">
-      <HintPath>Lib\Tools.dll</HintPath>
-    </Reference>
-
-     <Reference Include="Core-SFML">
-      <HintPath>Lib\Core-SFML.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Alis.Core-SFML" Version="*" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="Runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
-     <PackageReference Include="DotNetZip" Version="1.15.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>

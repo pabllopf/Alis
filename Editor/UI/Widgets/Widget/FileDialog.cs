@@ -56,7 +56,7 @@ namespace Alis.Editor.UI.Widgets
         private Vector2 sizeChild = new Vector2(0f, 0f);
 
         /// <summary>The configuration popup</summary>
-        private ImGuiWindowFlags configPopup = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoDecoration;
+        private ImGuiWindowFlags configPopup = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoDecoration;
 
         /// <summary>The item spacing</summary>
         private Vector2 itemSpacing = new Vector2(8.0f, 8.0f);
@@ -174,7 +174,7 @@ namespace Alis.Editor.UI.Widgets
 
             #region Cancel Create Project Button
 
-            if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 25.0f)))
+            if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 40.0f)))
             {
                 CancelFileDialog();
             }
@@ -185,7 +185,7 @@ namespace Alis.Editor.UI.Widgets
 
             #region Create Project Button
 
-            if (ImGui.Button(takeFile ? "Open Project" : "Open Folder", new Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
+            if (ImGui.Button(takeFile ? "Open Project" : "Open Folder", new Vector2(ImGui.GetContentRegionAvail().X, 40.0f)))
             {
                 OpenSelected(elementTaked);
             }
@@ -278,7 +278,7 @@ namespace Alis.Editor.UI.Widgets
             ImGui.Separator();
 
             ImGui.PushStyleColor(ImGuiCol.Border, whiteColor);
-            if (ImGui.BeginChild("Master-Child-Left", new Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y - 70), true))
+            if (ImGui.BeginChild("Master-Child-Left", new Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y - 100), true))
             {
                 ImGui.PopStyleColor();
 
@@ -312,7 +312,7 @@ namespace Alis.Editor.UI.Widgets
         private void ShowRightSize()
         {
             ImGui.PushStyleColor(ImGuiCol.Border, whiteColor);
-            if (ImGui.BeginChild("Master-Child-Right", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y - 70), true))
+            if (ImGui.BeginChild("Master-Child-Right", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y - 100), true))
             {
                 ImGui.PopStyleColor();
 

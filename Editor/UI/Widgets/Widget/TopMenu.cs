@@ -398,6 +398,7 @@ namespace Alis.Editor.UI.Widgets
         private void NewProject()
         {
             Console.Log("New Project");
+            WidgetManager.Add(new ProjectManager(false));
         }
 
         /// <summary>
@@ -407,6 +408,7 @@ namespace Alis.Editor.UI.Widgets
         private void OpenProject()
         {
             Console.Log("Open Project");
+            WidgetManager.Add(new ProjectManager(true));
         }
 
         /// <summary>
@@ -415,18 +417,17 @@ namespace Alis.Editor.UI.Widgets
         /// <returns>Return none</returns>
         private void SaveProject()
         {
-           /* if (Project.VideoGame is not null)
+            if (Project.VideoGame is not null) 
             {
-                LocalData.Save("Data", Project.Current.DataPath, Project.VideoGame);
+                LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
                 Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
-
                 ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
             }
-            else 
+            else
             {
                 ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
                 Console.Error(string.Format(messageSaveGame, "'Game not loaded'"));
-            }*/
+            }
         }
 
         /// <summary>
@@ -461,26 +462,22 @@ namespace Alis.Editor.UI.Widgets
         /// <returns>Return none</returns>
         private void Build()
         {
-            Console.Log("Build Settings");
+            Console.Log("Build");
             SaveProject();
 
-            /*if (Project.Current is not null)
+            if (Project.VideoGame is not null)
             {
                 Task.Run(() =>
                 {
                     string fileName = "cmd.exe";
                     string cleanCommand = "dotnet restore";
                     string buildCommand = "dotnet build --configuration Windows";
-                    string runCommand = Project.Current.Name + ".exe";
-                    string workDirRun = Project.Current.Directory + "/bin/Windows/net5.0";
 
                     if (info.Platform.Equals(Platform.Linux))
                     {
                         fileName = "/bin/bash";
                         cleanCommand = "dotnet restore";
                         buildCommand = "dotnet build --configuration Linux";
-                        runCommand = "./" + Project.Current.Name;
-                        workDirRun = Project.Current.Directory + "/bin/Linux/net5.0";
                     }
 
                     if (info.Platform.Equals(Platform.MacOS))
@@ -488,33 +485,16 @@ namespace Alis.Editor.UI.Widgets
                         fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
                         cleanCommand = "dotnet restore";
                         buildCommand = "dotnet build --configuration MacOS";
-                        runCommand = "./" + Project.Current.Name;
-                        workDirRun = Project.Current.Directory + "/bin/MacOS/net5.0";
                     }
 
-                    string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
-                    File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".csproj", projectFile, Encoding.UTF8);
-
-                    string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", Project.Current.Name);
-                    File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".sln", solutionFile, Encoding.UTF8);
-
-                    string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
-                    File.WriteAllText(Project.Current.Directory + "/" + "Program" + ".cs", program, Encoding.UTF8);
-
-                    DirectoryCopy(Application.ProjectFolder + "/Runtimes", Project.Current.Directory + "/Runtimes", true);
-
-                    File.Copy(Application.ProjectFolder + "/Core.dll", Project.Current.LibraryPath + "/" + "Core" + ".dll", true);
-                    File.Copy(Application.ProjectFolder + "/Tools.dll", Project.Current.LibraryPath + "/" + "Tools" + ".dll", true);
-                    File.Copy(Application.ProjectFolder + "/Core-SFML.dll", Project.Current.LibraryPath + "/" + "Core-SFML.dll", true);
-
-                    RunCommand("Cleaning", fileName, cleanCommand, Project.Current.Directory, true);
-                    RunCommand("Building", fileName, buildCommand, Project.Current.Directory, true);
+                    RunCommand("Cleaning", fileName, cleanCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+                    RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
                 });
             }
             else
             {
                 Console.Warning("Project not loaded.");
-            }*/
+            }
         }
 
         /// <summary>
@@ -523,26 +503,28 @@ namespace Alis.Editor.UI.Widgets
         /// <returns>Return none</returns>
         private void BuildAndRun()
         {
-            /*Console.Log("Build And Run");
+            Console.Log("Build And Run");
             SaveProject();
 
-            if (Project.Current is not null)
+            if (Project.VideoGame is not null)
             {
                 Task.Run(() =>
                 {
                     string fileName = "cmd.exe";
                     string cleanCommand = "dotnet restore";
                     string buildCommand = "dotnet build --configuration Windows";
-                    string runCommand = Project.Current.Name + ".exe";
-                    string workDirRun = Project.Current.Directory + "/bin/Windows/net5.0";
+
+                    string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0";
+                    string runCommand = Project.Get().Name + ".exe";
 
                     if (info.Platform.Equals(Platform.Linux))
                     {
                         fileName = "/bin/bash";
                         cleanCommand = "dotnet restore";
                         buildCommand = "dotnet build --configuration Linux";
-                        runCommand = "./" + Project.Current.Name;
-                        workDirRun = Project.Current.Directory + "/bin/Linux/net5.0";
+
+                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0";
+                        runCommand = "./" + Project.Get().Name;
                     }
 
                     if (info.Platform.Equals(Platform.MacOS))
@@ -550,34 +532,20 @@ namespace Alis.Editor.UI.Widgets
                         fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
                         cleanCommand = "dotnet restore";
                         buildCommand = "dotnet build --configuration MacOS";
-                        runCommand = "./" + Project.Current.Name;
-                        workDirRun = Project.Current.Directory + "/bin/MacOS/net5.0";
+
+                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0";
+                        runCommand = "./" + Project.Get().Name;
                     }
 
-                    string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
-                    File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".csproj", projectFile, Encoding.UTF8);
-
-                    string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", Project.Current.Name);
-                    File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".sln", solutionFile, Encoding.UTF8);
-
-                    string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
-                    File.WriteAllText(Project.Current.Directory + "/" + "Program" + ".cs", program, Encoding.UTF8);
-
-                    DirectoryCopy(Application.ProjectFolder + "/Runtimes", Project.Current.Directory + "/Runtimes", true);
-
-                    File.Copy(Application.ProjectFolder + "/Core.dll", Project.Current.LibraryPath + "/" + "Core" + ".dll", true);
-                    File.Copy(Application.ProjectFolder + "/Tools.dll", Project.Current.LibraryPath + "/" + "Tools" + ".dll", true);
-                    File.Copy(Application.ProjectFolder + "/Core-SFML.dll", Project.Current.LibraryPath + "/" + "Core-SFML.dll", true);
-
-                    RunCommand("Cleaning", fileName, cleanCommand, Project.Current.Directory, true);
-                    RunCommand("Building", fileName, buildCommand, Project.Current.Directory,true);
+                    RunCommand("Cleaning", fileName, cleanCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+                    RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
                     RunCommand("Running", fileName, runCommand, workDirRun, true);
                 });
             }
-            else 
+            else
             {
                 Console.Warning("Project not loaded.");
-            }*/
+            }
         }
 
         /// <summary>
