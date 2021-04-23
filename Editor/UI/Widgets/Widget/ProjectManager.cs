@@ -9,6 +9,7 @@ namespace Alis.Editor.UI.Widgets
     using System.IO;
     using System.Linq;
     using System.Numerics;
+    using System.Reflection;
     using System.Text;
     using Alis.Core;
     using Alis.Core.SFML;
@@ -77,6 +78,8 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The selected</summary>
         private bool selected = true;
 
+        private Info info;
+
         #endregion
 
         #region Colors
@@ -96,8 +99,9 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>Initializes a new instance of the <see cref="ProjectManager" /> class.</summary>
         /// <param name="showRecentProjects">show this</param>
-        public ProjectManager(bool showRecentProjects)
+        public ProjectManager(bool showRecentProjects, Info info)
         {
+            this.info = info;
             isOpen = true;
             this.showRecentProjects = showRecentProjects;
             projects = LocalData.Load(nameFileToSave, new List<Project>());
@@ -413,6 +417,8 @@ namespace Alis.Editor.UI.Widgets
             Project.Set(project);
             Project.VideoGame = game;
 
+            
+
             Close();
         }
 
@@ -441,10 +447,14 @@ namespace Alis.Editor.UI.Widgets
 
                 Project.Set(project);
 
+                LoadAsembly();
+
                 Project.VideoGame = LocalData.Load<VideoGame>("Data", project.DataPath1);
 
                 Console.Warning("Loaded project: " + project.Name);
                 Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
+
+                
 
                 Close();
             }
@@ -492,6 +502,28 @@ namespace Alis.Editor.UI.Widgets
             ImGui.PopStyleColor();
             ImGui.PopStyleVar(2);
         }
+
+        private void LoadAsembly()
+        {
+            string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/" + Project.Get().Name + ".dll";
+
+            if (info.Platform.Equals(Platform.Linux))
+            {
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/" + Project.Get().Name + ".dll";
+            }
+
+            if (info.Platform.Equals(Platform.MacOS))
+            {
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll";
+            }
+
+
+            if (File.Exists(workDirRun))
+            {
+                Project.Get().DLL1 = Assembly.LoadFile(workDirRun);
+            }
+        }
+
     }
 
 }

@@ -32,7 +32,7 @@ namespace Alis.Editor.UI.Widgets
         {
             widgets = new List<Widget>
             {
-                new ProjectManager(true),
+                new ProjectManager(true, info),
                 new DockSpace(),
                 new TopMenu(info),
                 new BottomMenu(),

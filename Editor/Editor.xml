@@ -734,7 +734,7 @@
         <member name="F:Alis.Editor.UI.Widgets.ProjectManager.childBackground">
             <summary>The child background</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.#ctor(System.Boolean)">
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.#ctor(System.Boolean,Alis.Editor.Info)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.ProjectManager" /> class.</summary>
             <param name="showRecentProjects">show this</param>
         </member>

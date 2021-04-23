@@ -132,6 +132,8 @@ namespace Alis.Editor.UI.Widgets
             exitState = false;
 
             LoadTexts();
+
+
         }
 
         #endregion
@@ -400,7 +402,7 @@ namespace Alis.Editor.UI.Widgets
         private void NewProject()
         {
             Console.Log("New Project");
-            WidgetManager.Add(new ProjectManager(false));
+            WidgetManager.Add(new ProjectManager(false, info));
         }
 
         /// <summary>
@@ -410,7 +412,8 @@ namespace Alis.Editor.UI.Widgets
         private void OpenProject()
         {
             Console.Log("Open Project");
-            WidgetManager.Add(new ProjectManager(true));
+            WidgetManager.Add(new ProjectManager(true, info));
+            
         }
 
         /// <summary>
@@ -573,8 +576,7 @@ namespace Alis.Editor.UI.Widgets
                         runCommand = "./" + Project.Get().Name;
                     }
 
-                    RunCommand("Cleaning", fileName, cleanCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
-                    RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+
                     RunCommand("Running", fileName, runCommand, workDirRun, true);
                 });
             }

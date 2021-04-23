@@ -158,9 +158,6 @@ namespace Alis.Editor.UI.Widgets
                         }
                     }
                 }
-
-              
-
             }
 
             #endregion
