@@ -33,16 +33,6 @@ namespace Alis.Editor.UI.Widgets
             { typeof(List<Animation>), DrawListField },
         };
 
-        private static Dictionary<Type, string> icons = new Dictionary<Type, string>()
-        {
-            {  typeof(Transform), Icon.ARROWSALT },
-            {  typeof(Collision), Icon.CUBE },
-            {  typeof(Camera), Icon.VIDEOCAMERA },
-            {  typeof(Animator), Icon.PLAYCIRCLE},
-            {  typeof(Sprite), Icon.PICTUREO },
-            {  typeof(AudioSource), Icon.MUSIC },
-        };
-
         private static Inspector current;
 
         /// <summary>The name</summary>
@@ -117,7 +107,7 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.BeginGroup();
             ImGui.AlignTextToFramePadding();
-            if (ImGui.TreeNodeEx(icons[typeof(Transform)] + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+            if (ImGui.TreeNodeEx(Icon.CUBE + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
             {
                 foreach (PropertyInfo property in gameObject.Transform.GetType().GetProperties())
                 {
@@ -131,6 +121,36 @@ namespace Alis.Editor.UI.Widgets
             }
 
             ImGui.EndGroup();
+
+            #endregion
+
+            #region Show elements
+
+            foreach (Component component in gameObject.Components)
+            {
+                if (component is not null) 
+                {
+                    ImGui.BeginGroup();
+                    ImGui.AlignTextToFramePadding();
+                    if (ImGui.TreeNodeEx(Icon.CUBE + " " + component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+                    {
+                        foreach (PropertyInfo property in component.GetType().GetProperties())
+                        {
+                            foreach (KeyValuePair<Type, Action<Component, PropertyInfo>> field in fields)
+                            {
+                                if (property.CanWrite)
+                                {
+                                    ShowComponent(component, property);
+                                }
+                            }
+                        }
+
+                        ImGui.TreePop();
+                    }
+
+                    ImGui.EndGroup();
+                }
+            }
 
             #endregion
 
@@ -161,6 +181,11 @@ namespace Alis.Editor.UI.Widgets
             }
 
             #endregion
+        }
+
+        private void ShowComponent(Component component, PropertyInfo property) 
+        {
+            
         }
 
         private void AddComponent(Type component, GameObject gameObject) 

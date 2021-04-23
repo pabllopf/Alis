@@ -857,7 +857,7 @@
             </summary>
             <returns>Return none</returns>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.TopMenu.SaveProject">
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.SaveProject(System.Boolean)">
             <summary>
             Saves the project.
             </summary>

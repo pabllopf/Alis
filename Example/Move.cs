@@ -20,6 +20,8 @@ namespace Example
         /// <summary>The speed of movement.</summary>
         private int speed = 1;
 
+        public int Speed { get => speed; set => speed = value; }
+
         /// <summary>Start this instance. Init all that you need.</summary>
         public override void Start()
         {

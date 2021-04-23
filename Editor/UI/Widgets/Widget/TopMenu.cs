@@ -172,7 +172,7 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.MenuItem(label: saveProject, shortcut: "Ctrl+S"))
                     {
-                        SaveProject();
+                        SaveProject(true);
                     }
 
                     if (ImGui.MenuItem(label: autoSave + (autosaveMode ? timerAutoSave - (int)watch.Elapsed.TotalSeconds + "s": ""), "Ctrl+Alt+S", autosaveMode))
@@ -420,7 +420,7 @@ namespace Alis.Editor.UI.Widgets
         /// Saves the project.
         /// </summary>
         /// <returns>Return none</returns>
-        private void SaveProject()
+        private void SaveProject(bool build)
         {
             if (Project.VideoGame is not null) 
             {
@@ -435,7 +435,13 @@ namespace Alis.Editor.UI.Widgets
                     Task.Delay(1000).Wait();
                     BottomMenu.Loading(false, "");
 
-                    Build();
+                    if (build) 
+                    {
+                        Build();
+
+                        BottomMenu.Loading(false, "");
+                    }
+                    
 
                     LoadAsembly();
                 });
@@ -492,7 +498,7 @@ namespace Alis.Editor.UI.Widgets
                 if (watch.Elapsed.TotalSeconds >= timerAutoSave)
                 {
                     watch.Restart();
-                    SaveProject();
+                    SaveProject(true);
                 }
             }
         }
@@ -543,7 +549,7 @@ namespace Alis.Editor.UI.Widgets
         private void BuildAndRun()
         {
             Console.Log("Build And Run");
-            SaveProject();
+            SaveProject(false);
 
             if (Project.VideoGame is not null)
             {
@@ -790,7 +796,7 @@ namespace Alis.Editor.UI.Widgets
         {
             if (ImGui.IsKeyDown(3) && !ImGui.IsKeyDown(5) && ImGui.IsKeyReleased(101))
             {
-                SaveProject();
+                SaveProject(true);
             }
         }
 
