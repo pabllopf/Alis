@@ -1,6 +1,6 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager =
 [
-    [ "ProjectManager", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#ab27c87c0b4391b92e235d00bb8fb4c20", null ],
+    [ "ProjectManager", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a6d473252f2035b79070161128fa15adf", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a9cc145a3f1c3ea7f83f09e1628a4965a", null ],
     [ "ShowRecentProjects", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a1333e8ba9765e4943f0a13b64d013f74", null ],
     [ "ShowCreateProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#af0806f9d71a337eff20855cb000a0ca3", null ],
@@ -14,6 +14,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager =
     [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a2f1b7ed2efc9dce3e7d7df562cac4970", null ],
     [ "PushStyle", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#af991eeb1c49a9a052582f4b3420e1374", null ],
     [ "PopStyle", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a13565c1700ff0cb16919dffd622b3f65", null ],
+    [ "LoadAsembly", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a7d4a7c55d213c46e36d3c35b0027cbe0", null ],
     [ "nameFileToSave", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a47535fe9b0a878be5eaebec05e50d24e", null ],
     [ "name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a51ef8495b94add611779a76aed4895eb", null ],
     [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#afda8a694ce12dd7171432efff3559e27", null ],
@@ -31,6 +32,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager =
     [ "modes", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a8f9c89b872515f365b21249fff411003", null ],
     [ "currentMode", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a4ecf533bd8f8eec6633922d7dfd2b4a3", null ],
     [ "selected", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a04ec04000cf392590a8a6dd5a8d8753f", null ],
+    [ "info", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#af8296f8b69e192dfa291be4781ee6625", null ],
     [ "redColor", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a1b45035e886377f6f4913a9c0750984c", null ],
     [ "whiteColor", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a96de88dc00047e6aaff8171c6140aa96", null ],
     [ "childBackground", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#ae2eb10abea1a7dad4d0ee4654dccbd8c", null ]

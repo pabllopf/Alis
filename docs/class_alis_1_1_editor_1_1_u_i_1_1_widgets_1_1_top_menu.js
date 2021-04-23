@@ -6,6 +6,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "NewProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ac7b67e9eb7b1331f4f2641d558a7dfd7", null ],
     [ "OpenProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a2e3c9065899c54db924068d1a53ec14e", null ],
     [ "SaveProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a2c178482a82b82e7e89d231f60fef0b8", null ],
+    [ "LoadAsembly", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a55ea45e1fa9282cacc785749b9d648a2", null ],
     [ "AutoSaveProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8a7751410949da5d7da865ca5b809477", null ],
     [ "CheckAutoSaveMode", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a4836cc67c536fd8d74f712d28593b79f", null ],
     [ "Build", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aea0d5c22084b76635416256e31c4a63f", null ],
