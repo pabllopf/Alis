@@ -11,6 +11,7 @@ namespace Alis.Editor.UI.Widgets
     using System.Numerics;
     using Alis.Tools;
     using Alis.Core.SFML;
+    using System.Linq;
 
     /// <summary>Manage components of scene.</summary>
     public class Hierarchy : Widget
@@ -41,7 +42,24 @@ namespace Alis.Editor.UI.Widgets
                     ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
                     ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
 
-                    ImGui.AlignTextToFramePadding();
+                    ImGui.BeginChild("GameObject-Child", new Vector2(ImGui.GetContentRegionAvail().X, 80.0f), true);
+
+                    Scene scene = Project.VideoGame.SceneManager.Scenes.ToList().Find(i => i.Name.Equals(Project.VideoGame.SceneManager.CurrentScene.Name));
+
+                    string content = scene.Name;
+
+                    ImGui.Text("Scene: ");
+
+                    ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 25.0f);
+
+                    if (ImGui.InputText(Icon.CUBE + " ##" + scene.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
+                    {
+                        scene.Name = content;
+                    }
+
+                    ImGui.PopItemWidth();
+
+                    ImGui.SameLine();
 
                     if (ImGui.Button(Icon.PLUSSQUARE))
                     {
@@ -61,10 +79,16 @@ namespace Alis.Editor.UI.Widgets
                     ImGui.PopStyleVar();
                     ImGui.PopStyleColor();
 
+                    ImGui.EndChild();
+
                     foreach (GameObject obj in Project.VideoGame.SceneManager.CurrentScene.GameObjects)
                     {
                         if (obj is not null) 
                         {
+                            ImGui.AlignTextToFramePadding();
+
+                            ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
+
                             if (ImGui.Button(obj.Name, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
                             {
                                 SelectGameObject(obj);
@@ -86,6 +110,8 @@ namespace Alis.Editor.UI.Widgets
 
                                 ImGui.EndPopup();
                             }
+
+                            ImGui.PopStyleColor();
                         }
                     }
                 }
@@ -119,10 +145,6 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private void SelectGameObject(GameObject obj)
-        {
-            //Inspector.Current.Focus = true;
-            //Inspector.Current.GameObject = obj;
-        }
+        private void SelectGameObject(GameObject obj) => Inspector.ShowGameObject(obj);
     }
 }

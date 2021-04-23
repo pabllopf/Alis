@@ -70,12 +70,19 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Initializes a new instance of the <see cref="Inspector" /> class.</summary>
         public Inspector()
         {
+            current = this;
+        }
+
+        public static void ShowGameObject(GameObject gameObject) 
+        {
+            current.focus = true;
+            current.gameObject = gameObject;
         }
 
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-            /*if (focus)
+            if (focus)
             {
                 ImGui.SetNextWindowFocus();
                 focus = false;
@@ -83,21 +90,20 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin("Inspector"))
             {
-                if (Project.Current != null)
+                if (Project.VideoGame is not null)
                 {
                     if (gameObject != null)
                     {
-                        //SeeObjComponents(gameObject);
+                        SeeObjComponents(gameObject);
                     }
                 }
             }
 
-            ImGui.End();*/
+            ImGui.End();
         }
 
         private void SeeObjComponents(GameObject gameObject)
         {
-            ImGui.BeginGroup();
             ImGui.BeginChild("GameObject-Child", new Vector2(ImGui.GetContentRegionAvail().X, 80.0f), true);
 
             string content = gameObject.Name;
@@ -106,18 +112,19 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 25.0f);
 
-            if (ImGui.InputText(Icon.CUBE  + " ##" + gameObject.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
+            if (ImGui.InputText(Icon.CUBE + " ##" + gameObject.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
             {
                 gameObject.Name = content;
             }
 
             ImGui.PopItemWidth();
-
+            
 
             ImGui.EndChild();
-            ImGui.EndGroup();
+        }
 
 
+            /*
             ImGui.BeginGroup();
             ImGui.AlignTextToFramePadding();
             if (ImGui.TreeNodeEx(icons[typeof(Transform)] + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
@@ -181,8 +188,8 @@ namespace Alis.Editor.UI.Widgets
                         }
                     }
                 }
-            }
-        }
+            }*/
+        
 
         private static void DrawStringField(Component component, PropertyInfo property)
         {
