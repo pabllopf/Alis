@@ -149,7 +149,7 @@ $(document).ready(function(){initNavTree('_file_dialog_8cs_source.html',''); ini
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#af18806f2ea272cf7d01fb9d60f056403">   56</a></span>&#160;        <span class="keyword">private</span> Vector2 <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#af18806f2ea272cf7d01fb9d60f056403">sizeChild</a> = <span class="keyword">new</span> Vector2(0f, 0f);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#af2543f72382fa8c5e9b5392002c28edd">   59</a></span>&#160;        <span class="keyword">private</span> ImGuiWindowFlags <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#af2543f72382fa8c5e9b5392002c28edd">configPopup</a> = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoDecoration;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#af2543f72382fa8c5e9b5392002c28edd">   59</a></span>&#160;        <span class="keyword">private</span> ImGuiWindowFlags <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#af2543f72382fa8c5e9b5392002c28edd">configPopup</a> = ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoSavedSettings | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoDecoration;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a6f903e3d6c4db2a519af9fb44d2511cc">   62</a></span>&#160;        <span class="keyword">private</span> Vector2 <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a6f903e3d6c4db2a519af9fb44d2511cc">itemSpacing</a> = <span class="keyword">new</span> Vector2(8.0f, 8.0f);</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
@@ -262,7 +262,7 @@ $(document).ready(function(){initNavTree('_file_dialog_8cs_source.html',''); ini
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">            #region Cancel Create Project Button</span></div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;Cancel &quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X / 2, 25.0f)))</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;Cancel &quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X / 2, 40.0f)))</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            {</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#ac30284514f18921c1db33e8cbea76d1e">CancelFileDialog</a>();</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
@@ -273,7 +273,7 @@ $(document).ready(function(){initNavTree('_file_dialog_8cs_source.html',''); ini
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">            #region Create Project Button</span></div>
 <div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a98c16ddb4555c33ccf351e21bc7256af">takeFile</a> ? <span class="stringliteral">&quot;Open Project&quot;</span> : <span class="stringliteral">&quot;Open Folder&quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a98c16ddb4555c33ccf351e21bc7256af">takeFile</a> ? <span class="stringliteral">&quot;Open Project&quot;</span> : <span class="stringliteral">&quot;Open Folder&quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X, 40.0f)))</div>
 <div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            {</div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#aecdaa2fc73a0eb9eac476e17eecb6c68">OpenSelected</a>(<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#aee757cad709c9649d177c53c2dd38eaa">elementTaked</a>);</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            }</div>
@@ -366,7 +366,7 @@ $(document).ready(function(){initNavTree('_file_dialog_8cs_source.html',''); ini
 <div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            ImGui.Separator();</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
 <div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            ImGui.PushStyleColor(ImGuiCol.Border, <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a0fdeb50b13972a8c14ffeb6db5f75adb">whiteColor</a>);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordflow">if</span> (ImGui.BeginChild(<span class="stringliteral">&quot;Master-Child-Left&quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y - 70), <span class="keyword">true</span>))</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordflow">if</span> (ImGui.BeginChild(<span class="stringliteral">&quot;Master-Child-Left&quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y - 100), <span class="keyword">true</span>))</div>
 <div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            {</div>
 <div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                ImGui.PopStyleColor();</div>
 <div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
@@ -400,7 +400,7 @@ $(document).ready(function(){initNavTree('_file_dialog_8cs_source.html',''); ini
 <div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a6e50a265f57882a9b8c2791232d8df91">  312</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a6e50a265f57882a9b8c2791232d8df91">ShowRightSize</a>()</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            ImGui.PushStyleColor(ImGuiCol.Border, <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a0fdeb50b13972a8c14ffeb6db5f75adb">whiteColor</a>);</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">if</span> (ImGui.BeginChild(<span class="stringliteral">&quot;Master-Child-Right&quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y - 70), <span class="keyword">true</span>))</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <span class="keywordflow">if</span> (ImGui.BeginChild(<span class="stringliteral">&quot;Master-Child-Right&quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y - 100), <span class="keyword">true</span>))</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            {</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                ImGui.PopStyleColor();</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
@@ -628,7 +628,7 @@ $(document).ready(function(){initNavTree('_file_dialog_8cs_source.html',''); ini
   <ul>
     <li class="navelem"><a class="el" href="dir_14eca4e58e6d71e3a9859288c1bd2735.html">Editor</a></li><li class="navelem"><a class="el" href="dir_f7d6d090f0bcfa8a66d7f61ab6a0ceb7.html">UI</a></li><li class="navelem"><a class="el" href="dir_871bb0cc41dc9f6e9396da9418080a4a.html">Widgets</a></li><li class="navelem"><a class="el" href="dir_dae505ba62e1646fedac02bad787222c.html">Widget</a></li><li class="navelem"><b>FileDialog.cs</b></li>
     <li class="footer">
-      <a>Generated on | Thu Apr 22 2021 |</a>
+      <a>Generated on | Fri Apr 23 2021 |</a>
     </li>
   </ul>
 </div>
