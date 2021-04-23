@@ -10,6 +10,7 @@ namespace Alis.Editor.UI.Widgets
     using System.IO;
     using System.Numerics;
     using System.Text;
+    using System.Threading;
     using System.Threading.Tasks;
     using Alis.Editor.Utils;
     using Alis.Tools;
@@ -419,9 +420,17 @@ namespace Alis.Editor.UI.Widgets
         {
             if (Project.VideoGame is not null) 
             {
-                LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
-                Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
-                ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
+                Task.Run(()=> 
+                {
+                    BottomMenu.Loading(true, "Saving");
+
+                    LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
+                    Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
+                    ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
+
+                    Task.Delay(1000).Wait();
+                    BottomMenu.Loading(false, "");
+                });
             }
             else
             {
