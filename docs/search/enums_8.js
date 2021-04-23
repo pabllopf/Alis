@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['windowstate_2436',['WindowState',['../namespace_alis_1_1_core.html#a3436ff977bea85cd7d287b9a74b107c1',1,'Alis::Core']]]
+  ['typeproject_2533',['TypeProject',['../namespace_alis_1_1_editor.html#afdfd76197c96727cc4059c5e3167fa05',1,'Alis::Editor']]]
 ];

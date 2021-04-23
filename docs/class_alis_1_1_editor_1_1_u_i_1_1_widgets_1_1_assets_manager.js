@@ -10,8 +10,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager =
     [ "GetNameDir", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ac436fd3c26f3b99fb34df658c92d5983", null ],
     [ "ShowTree", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a4d8770133668ce4ac4253bb8bdec4656", null ],
     [ "ChangeDir", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a152ad5c2b85fc91b5d74b68f55f182a8", null ],
-    [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ade5a074bf106857acf104ab2c7fc6dc9", null ],
-    [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ac8f7d48a4ba241dd0092b71a5f7bad58", null ],
     [ "GetPathList", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a1a7b79deb71a5779b9a3f54e07c76bf6", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a0ea6eabea4956e7109efb81a2f26d64c", null ],
     [ "filter", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ad3c8d80dd799e087348df6a3efec2c37", null ],

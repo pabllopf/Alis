@@ -1,8 +1,6 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector =
 [
     [ "Inspector", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aff5a5891ae05f7179fc64b2aae47ac11", null ],
-    [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae0dda2c2775c8951977b2fd892464961", null ],
-    [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a3ddedd26f78b7d64426a173be627594b", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a28b1bf5d1eefab12f30688e1bc7942d3", null ],
     [ "SeeObjComponents", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aa6daac505fce5bba2d1f315a1606f9bb", null ],
     [ "DrawStringField", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6496fd05228073c8cf7fcb4c9f9a3429", null ],
