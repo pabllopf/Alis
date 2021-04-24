@@ -15,6 +15,7 @@ var class_alis_1_1_editor_1_1_project =
     [ "dataPath", "class_alis_1_1_editor_1_1_project.html#a118e723ce72f388a6aaba82938dcf99f", null ],
     [ "libPath", "class_alis_1_1_editor_1_1_project.html#adeb9e6cb2f8b2a40f98e020865e5d434", null ],
     [ "DLL", "class_alis_1_1_editor_1_1_project.html#aae135300ddaec5043e4b8bc606f5d7c5", null ],
+    [ "context", "class_alis_1_1_editor_1_1_project.html#a81eb6c4111bbb9c7eecaa1fc79444e59", null ],
     [ "Name", "class_alis_1_1_editor_1_1_project.html#a816bf34fd840f6f14bc96035dd5aedbf", null ],
     [ "Directory", "class_alis_1_1_editor_1_1_project.html#a23f2ab62d43d74f822ae072eec82f516", null ],
     [ "VideoGame", "class_alis_1_1_editor_1_1_project.html#a761a009001269a66e24158c719818e5a", null ],
@@ -23,5 +24,6 @@ var class_alis_1_1_editor_1_1_project =
     [ "DataPath1", "class_alis_1_1_editor_1_1_project.html#affcdd19f00ce9ca349d4ca8e6a1adbb9", null ],
     [ "LibPath", "class_alis_1_1_editor_1_1_project.html#aaebce888f6c3770baa3c05452d51aefd", null ],
     [ "DLL1", "class_alis_1_1_editor_1_1_project.html#aa3319d688d8a971d15b21c6d0f40b4a6", null ],
+    [ "Context", "class_alis_1_1_editor_1_1_project.html#a52e7569e65c4317e880aa781c4f5b2b3", null ],
     [ "OnChange", "class_alis_1_1_editor_1_1_project.html#a6bd38dd6677d8947ffc00a544ba867c2", null ]
 ];

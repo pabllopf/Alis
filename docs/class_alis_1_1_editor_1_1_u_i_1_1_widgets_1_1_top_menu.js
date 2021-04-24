@@ -1,11 +1,12 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
 [
+    [ "SimpleUnloadableAssemblyLoadContext", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context" ],
     [ "TopMenu", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a89d3910596459cddbebce4070fcb3570", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7a7a59124aa85ecba691e5229928cc05", null ],
     [ "LoadTexts", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ad85615420411a815a0d2f32bcaee3bac", null ],
     [ "NewProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ac7b67e9eb7b1331f4f2641d558a7dfd7", null ],
     [ "OpenProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a2e3c9065899c54db924068d1a53ec14e", null ],
-    [ "SaveProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a2c178482a82b82e7e89d231f60fef0b8", null ],
+    [ "SaveProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a72b11dfbd14c16a82872a490eb56cab0", null ],
     [ "LoadAsembly", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a55ea45e1fa9282cacc785749b9d648a2", null ],
     [ "AutoSaveProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8a7751410949da5d7da865ca5b809477", null ],
     [ "CheckAutoSaveMode", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a4836cc67c536fd8d74f712d28593b79f", null ],
@@ -27,6 +28,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "ShortBuildAndRun", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ae1b16c18da775c02bdc2b65c6e03c841", null ],
     [ "ShortAutosave", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a4d5c545ef93215ab448a132116960c9b", null ],
     [ "RunCommand", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7123365be30f61a4a54aeddaf1f3bfac", null ],
+    [ "OpenVisualStudio", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ae8e8f78c7cd22e340f53e602f0e18134", null ],
     [ "DirectoryCopy", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a97198bf2fa62b1a209d0dab23fa69cf3", null ],
     [ "TextManager_OnChangeIdiom", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a88ec52c8bf62641ca76d8d38b23b9f6c", null ],
     [ "newProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ab2d0d4dff7f6f3310e395f9ca58706d3", null ],

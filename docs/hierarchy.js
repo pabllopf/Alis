@@ -1,6 +1,9 @@
 var hierarchy =
 [
     [ "Alis.Tools.Application", "struct_alis_1_1_tools_1_1_application.html", null ],
+    [ "AssemblyLoadContext", null, [
+      [ "Alis.Editor.UI.Widgets.TopMenu.SimpleUnloadableAssemblyLoadContext", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context.html", null ]
+    ] ],
     [ "Alis.Tools.Asset", "class_alis_1_1_tools_1_1_asset.html", null ],
     [ "Alis.Core.Component", "class_alis_1_1_core_1_1_component.html", null ],
     [ "Alis.Core.Config", "class_alis_1_1_core_1_1_config.html", null ],
