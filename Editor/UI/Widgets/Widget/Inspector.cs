@@ -14,6 +14,7 @@ namespace Alis.Editor.UI.Widgets
     using System.Linq;
     using SFML.System;
     using Alis.Core.SFML;
+    using System.IO;
 
     /// <summary>Manage components of scene.</summary>
     public class Inspector : Widget
@@ -107,7 +108,7 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.BeginGroup();
             ImGui.AlignTextToFramePadding();
-            if (ImGui.TreeNodeEx(Icon.CUBE + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+            if (ImGui.TreeNodeEx(Icon.ARROWSALT + " " + gameObject.Transform.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
             {
                 foreach (PropertyInfo property in gameObject.Transform.GetType().GetProperties())
                 {
@@ -138,9 +139,9 @@ namespace Alis.Editor.UI.Widgets
                         {
                             foreach (KeyValuePair<Type, Action<Component, PropertyInfo>> field in fields)
                             {
-                                if (property.CanWrite)
+                                if (field.Key.Equals(property.PropertyType) && property.CanWrite)
                                 {
-                                    ShowComponent(component, property);
+                                    field.Value.Invoke(component, property);
                                 }
                             }
                         }
@@ -165,6 +166,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 Type type = typeof(Component);
                 IEnumerable<Type> types = AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(i => i.GetName().Name.Equals("Core-SFML") || i.GetName().Name.Equals("Core"))
                     .SelectMany(s => s.GetTypes())
                     .Where(p => type.IsAssignableFrom(p));
 
@@ -178,6 +180,25 @@ namespace Alis.Editor.UI.Widgets
                         }
                     }
                 }
+
+                if (Project.Get().DLL1 != null) 
+                {
+                    type = typeof(Component);
+                    types = Project.Get().DLL1.GetTypes()
+                    .Where(p => type.IsAssignableFrom(p));
+
+                    foreach (Type component in types)
+                    {
+                        if (!component.Name.Equals("Component") && !component.Name.Equals("Transform"))
+                        {
+                            if (ImGui.MenuItem(component.Name))
+                            {
+                                AddComponent(component, gameObject);
+                            }
+                        }
+                    }
+                }
+
             }
 
             #endregion

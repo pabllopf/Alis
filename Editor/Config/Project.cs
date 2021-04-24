@@ -10,6 +10,7 @@ namespace Alis.Editor
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Reflection;
+    using System.Runtime.Loader;
 
     /// <summary>Project define.</summary>
     public class Project
@@ -45,9 +46,11 @@ namespace Alis.Editor
         private string libPath;
 
         private Assembly DLL;
+        private AssemblyLoadContext context;
 
 
-    
+
+
 
 
     static Project() 
@@ -131,6 +134,7 @@ namespace Alis.Editor
         
         [JsonIgnore]
         public Assembly DLL1 { get => DLL; set => DLL = value; }
+        public AssemblyLoadContext Context { get => context; set => context = value; }
 
         /// <summary>Projects the on change.</summary>
         /// <param name="sender">The sender.</param>

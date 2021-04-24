@@ -10,12 +10,17 @@ namespace Alis.Editor.UI.Widgets
     using System.Linq;
     using System.Numerics;
     using System.Reflection;
+    using System.Runtime.Loader;
     using System.Text;
+    using System.Threading.Tasks;
     using Alis.Core;
     using Alis.Core.SFML;
     using Alis.Editor.Utils;
     using Alis.Tools;
     using ImGuiNET;
+    using Microsoft.Extensions.DependencyModel;
+    using Microsoft.Extensions.DependencyModel.Resolution;
+    using static Alis.Editor.UI.Widgets.ProjectManager;
 
     /// <summary>Create new project. </summary>
     public class ProjectManager : Widget
@@ -368,7 +373,7 @@ namespace Alis.Editor.UI.Widgets
 
                 GenerateFiles(project);
 
-
+                LoadAsembly();
                 Console.Log("Created project '" + project.Name + "'on: " + project.Directory);
             }
             else 
@@ -503,6 +508,7 @@ namespace Alis.Editor.UI.Widgets
             ImGui.PopStyleVar(2);
         }
 
+
         private void LoadAsembly()
         {
             string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/" + Project.Get().Name + ".dll";
@@ -517,10 +523,9 @@ namespace Alis.Editor.UI.Widgets
                 workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll";
             }
 
-
-            if (File.Exists(workDirRun))
+            if (File.Exists(workDirRun)) 
             {
-                Project.Get().DLL1 = Assembly.LoadFile(workDirRun);
+                Project.Get().DLL1 = Assembly.Load(File.ReadAllBytes(workDirRun));
             }
         }
 

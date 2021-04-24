@@ -12,6 +12,8 @@ namespace Alis.Editor.UI.Widgets
     using Alis.Tools;
     using Alis.Core.SFML;
     using System.Linq;
+    using System.Collections.Generic;
+    using System.Reflection;
 
     /// <summary>Manage components of scene.</summary>
     public class Hierarchy : Widget
@@ -59,7 +61,7 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.PopItemWidth();
 
-                    ImGui.SameLine();
+                    ImGui.EndChild();
 
                     if (ImGui.Button(Icon.PLUSSQUARE))
                     {
@@ -79,12 +81,14 @@ namespace Alis.Editor.UI.Widgets
                     ImGui.PopStyleVar();
                     ImGui.PopStyleColor();
 
-                    ImGui.EndChild();
+                    
 
                     foreach (GameObject obj in Project.VideoGame.SceneManager.CurrentScene.GameObjects)
                     {
                         if (obj is not null) 
                         {
+                            UpdateGameObject(obj);
+
                             ImGui.AlignTextToFramePadding();
 
                             ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
@@ -119,7 +123,48 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.End();
         }
-                
+
+        private void UpdateGameObject(GameObject obj)
+        {
+            if (Project.Get().DLL1 != null) 
+            {
+                for (int i = 0; i <  obj.Components.Length; i++) 
+                {
+                    if (obj.Components[i] != null) 
+                    {
+                        Component compo = obj.Components[i];
+                        Type type = typeof(Component);
+                        IEnumerable<Type> types = Project.Get().DLL1.GetTypes()
+                        .Where(p => type.IsAssignableFrom(p));
+                        Type final = types.First(i => i.Name.Equals(compo.GetType().Name));
+
+                        if (final.FullName.Equals(obj.Components[i].GetType().FullName) && !final.Assembly.Equals(obj.Components[i].GetType().Assembly)) 
+                        {
+                            Console.Warning("Create new intencie of " + final.FullName + " on " + obj.Name);
+
+                            Component tempCompo = (Component)Activator.CreateInstance(final);
+
+                            foreach (PropertyInfo property in tempCompo.GetType().GetProperties())
+                            {
+                                PropertyInfo info = compo.GetType().GetProperty(property.Name);
+                                if (info != null) 
+                                {
+                                    if (property.CanWrite && info.CanWrite && info.Name.Equals(property.Name))
+                                    {
+                                        property.SetValue(tempCompo, info.GetValue(compo));
+                                    }
+                                }
+
+                                
+                            }
+
+                            obj.Set(tempCompo, i);
+                        }
+                    }
+                }
+            }
+        }
+
         private void AddNewGameObjectToScene()
         {
             if (Project.VideoGame is not null)
@@ -145,6 +190,9 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private void SelectGameObject(GameObject obj) => Inspector.ShowGameObject(obj);
+        private void SelectGameObject(GameObject obj)
+        {
+            Inspector.ShowGameObject(obj);
+        }
     }
 }

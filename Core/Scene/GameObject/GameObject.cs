@@ -354,6 +354,33 @@ namespace Alis.Core
             return null;
         }
 
+        /// <summary>Gets the component.</summary>
+        /// <typeparam name="T">general type</typeparam>
+        /// <returns>Return the component</returns>
+        [return: MaybeNull]
+        public Component Get(Component component)
+        {
+            Span<Component> span = components.Span;
+            for (int i = 0; i < components.Length; i++)
+            {
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(component.GetType()))
+                {
+                    Logger.Log(string.Format(FindComponent, component.GetType().FullName, this.name));
+                    return span[i];
+                }
+            }
+
+            Logger.Warning(string.Format(DontFindComponent, component.GetType().FullName, this.name));
+            return null;
+        }
+
+        [return: MaybeNull]
+        public void Set(Component component, int pos)
+        {
+            components.Span[pos] = component;
+        }
+
+
         /// <summary>Awake this instance.</summary>
         public void Awake()
         {

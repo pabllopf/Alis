@@ -8,14 +8,17 @@ namespace Alis.Editor.UI.Widgets
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
+    using System.Linq;
     using System.Numerics;
     using System.Reflection;
+    using System.Runtime.Loader;
     using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
     using Alis.Editor.Utils;
     using Alis.Tools;
     using ImGuiNET;
+    using Microsoft.Extensions.DependencyModel;
 
     /// <summary>
     /// Menu of editor
@@ -424,29 +427,20 @@ namespace Alis.Editor.UI.Widgets
         {
             if (Project.VideoGame is not null) 
             {
-                Task.Run(()=> 
+                BottomMenu.Loading(true, "Saving");
+
+                LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
+                Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
+                ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
+
+                Task.Delay(1000).Wait();
+                BottomMenu.Loading(false, "");
+
+                if (build) 
                 {
-                    BottomMenu.Loading(true, "Saving");
+                    Build();
+                }
 
-                    LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
-                    Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
-                    ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
-
-                    Task.Delay(1000).Wait();
-                    BottomMenu.Loading(false, "");
-
-                    if (build) 
-                    {
-                        Build();
-
-                        BottomMenu.Loading(false, "");
-                    }
-                    
-
-                    LoadAsembly();
-                });
-
-                
             }
             else
             {
@@ -455,27 +449,36 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private void LoadAsembly() 
+
+        private void LoadAsembly()
         {
             string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/" + Project.Get().Name + ".dll";
 
-            if (info.Platform.Equals(Platform.Linux)) 
+            if (info.Platform.Equals(Platform.Linux))
             {
                 workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/" + Project.Get().Name + ".dll";
             }
 
             if (info.Platform.Equals(Platform.MacOS))
             {
-                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll"; 
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll";
             }
-            
 
             if (File.Exists(workDirRun))
             {
-                Project.Get().DLL1 = Assembly.LoadFile(workDirRun);
+                Project.Get().DLL1 = Assembly.Load(File.ReadAllBytes(workDirRun));
             }
         }
 
+        class SimpleUnloadableAssemblyLoadContext : AssemblyLoadContext
+        {
+            public SimpleUnloadableAssemblyLoadContext()
+               : base(isCollectible: true)
+            {
+            }
+
+            protected override Assembly Load(AssemblyName assemblyName) => null;
+        }
 
         /// <summary>
         /// Automatics the save project.
@@ -510,6 +513,8 @@ namespace Alis.Editor.UI.Widgets
         private void Build()
         {
             Console.Log("Build");
+            SaveProject(false);
+
             if (Project.VideoGame is not null)
             {
                 Task.Run(() =>
@@ -534,6 +539,8 @@ namespace Alis.Editor.UI.Widgets
 
                     RunCommand("Cleaning", fileName, cleanCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
                     RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+
+                    LoadAsembly();
                 });
             }
             else
@@ -549,7 +556,6 @@ namespace Alis.Editor.UI.Widgets
         private void BuildAndRun()
         {
             Console.Log("Build And Run");
-            SaveProject(false);
 
             if (Project.VideoGame is not null)
             {
@@ -582,8 +588,14 @@ namespace Alis.Editor.UI.Widgets
                         runCommand = "./" + Project.Get().Name;
                     }
 
+                    RunCommand("Cleaning", fileName, cleanCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+                    RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+
+                    LoadAsembly();
 
                     RunCommand("Running", fileName, runCommand, workDirRun, true);
+
+
                 });
             }
             else
