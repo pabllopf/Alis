@@ -52,16 +52,16 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.Text("Scene: ");
 
-                    ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 25.0f);
+                    ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 40.0f);
 
-                    if (ImGui.InputText(Icon.CUBE + " ##" + scene.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
+                    if (ImGui.InputText("##" + scene.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
                     {
                         scene.Name = content;
                     }
 
                     ImGui.PopItemWidth();
 
-                    ImGui.EndChild();
+                    ImGui.SameLine();
 
                     if (ImGui.Button(Icon.PLUSSQUARE))
                     {
@@ -77,6 +77,13 @@ namespace Alis.Editor.UI.Widgets
 
                         ImGui.EndPopup();
                     }
+
+
+                   
+
+                    ImGui.EndChild();
+
+                   
 
                     ImGui.PopStyleVar();
                     ImGui.PopStyleColor();
