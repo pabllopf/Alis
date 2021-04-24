@@ -100,7 +100,7 @@ namespace Alis.Editor.UI.Widgets
 
                             ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
 
-                            if (ImGui.Button(obj.Name, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
+                            if (ImGui.Button(obj.Name, new Vector2(ImGui.GetContentRegionAvail().X - 35.0f, 30.0f)))
                             {
                                 SelectGameObject(obj);
                             }

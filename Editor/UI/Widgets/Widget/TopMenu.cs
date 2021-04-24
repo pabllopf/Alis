@@ -432,25 +432,15 @@ namespace Alis.Editor.UI.Widgets
         {
             if (Project.VideoGame is not null) 
             {
-                Task.Run(()=> 
-                {
-                    BottomMenu.Loading(true, "Saving");
+                BottomMenu.Loading(true, "Saving");
 
-                    LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
-                    Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
-                    ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
+                Project.VideoGame.SceneManager.Scenes[0] = Project.VideoGame.SceneManager.CurrentScene;
 
-                    Task.Delay(1000).Wait();
-                    BottomMenu.Loading(false, "");
+                LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
+                Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
+                ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
 
-                    if (build)
-                    {
-                        Build();
-                    }
-                });
-
-              
-
+                BottomMenu.Loading(false, "");
             }
             else
             {
@@ -565,6 +555,7 @@ namespace Alis.Editor.UI.Widgets
         private void BuildAndRun()
         {
             Console.Log("Build And Run");
+            SaveProject(false);
 
             if (Project.VideoGame is not null)
             {
@@ -597,7 +588,8 @@ namespace Alis.Editor.UI.Widgets
                         runCommand = "./" + Project.Get().Name;
                     }
 
-                    RunCommand("Cleaning", fileName, cleanCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+
+
                     RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
 
                     LoadAsembly();

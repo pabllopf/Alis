@@ -407,6 +407,8 @@ namespace Alis.Editor.UI.Widgets
             File.Copy(Environment.CurrentDirectory + "/Core.dll", project.LibPath + "/" + "Core" + ".dll");
             File.Copy(Environment.CurrentDirectory + "/Tools.dll", project.LibPath + "/" + "Tools" + ".dll");
 
+            File.Copy(Environment.CurrentDirectory + "/Resources/Segoe.ttf", project.AssetPath + "/" + "Segoe.ttf");
+
             VideoGame game = VideoGame.Builder()
                                             .Config(Config.Builder().Name("Alis Game").Build())
                                             .SceneManager(SceneManager.Builder().Scene(
