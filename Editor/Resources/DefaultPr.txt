@@ -27,7 +27,7 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Alis.Core-SFML" Version="*" />
+   <PackageReference Include="Alis.Core-SFML" Version="1.2.9" />
   </ItemGroup>
 
   <ItemGroup>

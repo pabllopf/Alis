@@ -39,9 +39,9 @@ namespace Alis.Editor.UI.Widgets
                 new Inspector(),
                 new AssetsManager(info),
                 new Hierarchy(),
+                new Console(),
                 new SceneView(imGuiController),
-                new GameView(),
-                new Console()
+                new GameView()
             };
 
             current ??= this;

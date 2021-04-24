@@ -94,30 +94,30 @@ namespace Alis.Core.SFML
             }
             set
             {
+                Logger.Warning("change value to: " + value);
                 image = value;
-                
-                if (!image.Equals(string.Empty)) 
+
+                Check();
+            }
+        }
+
+        private void Check() 
+        {
+            if (Asset.Load(image) != null)
+            {
+                pathImage = Asset.Load(image);
+
+                Logger.Warning("PATH: " + pathImage);
+
+                sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
+
+                if (!Render.Current.GetDraws<Sprite>().Contains(this))
                 {
-                    if (Asset.Load(image) != null) 
-                    {
-                        pathImage = Asset.Load(image);
-                        sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
-                        if (Render.Current.GetDraws<Sprite>().Contains(this)) 
-                        {
-                            Render.Current.GetDraws<Sprite>()[Render.Current.GetDraws<Sprite>().IndexOf(this)] = this;
-                        }
-                        else 
-                        {
-                            Render.Current.GetDraws<Sprite>().Add(this);
-                        }
-                    }
-                    else 
-                    {
-                        if (Render.Current.GetDraws<Sprite>().Contains(this))
-                        {
-                            Render.Current.GetDraws<Sprite>().Remove(this);
-                        }
-                    }
+                    Render.Current.AddDraw(this);
+                }
+                else
+                {
+                    Render.Current.GetDraws<Sprite>().Find(i => i.Equals(this)).sprite = sprite;
                 }
             }
         }
@@ -143,8 +143,6 @@ namespace Alis.Core.SFML
                 sprite.Scale = new global::SFML.System.Vector2f(size.X, size.Y);
 
                 Render.Current.AddDraw(this);
-
-                
             }
         }
 
@@ -161,6 +159,10 @@ namespace Alis.Core.SFML
 
                 var size = GameObject.Transform.Size;
                 sprite.Scale = new global::SFML.System.Vector2f(size.X, size.Y);
+            }
+            else 
+            {
+                Check();
             }
         }
 

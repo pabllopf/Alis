@@ -424,8 +424,6 @@ namespace Alis.Editor.UI.Widgets
             Project.Set(project);
             Project.VideoGame = game;
 
-            
-
             Close();
         }
 
@@ -461,7 +459,7 @@ namespace Alis.Editor.UI.Widgets
                 Console.Warning("Loaded project: " + project.Name);
                 Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
 
-                
+
 
                 Close();
             }

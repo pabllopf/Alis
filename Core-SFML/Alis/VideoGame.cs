@@ -2,6 +2,7 @@
 {
     using Newtonsoft.Json;
     using System.Diagnostics.CodeAnalysis;
+    using System.Threading.Tasks;
 
     /// <summary>Video game</summary>
     public class VideoGame : Game
@@ -25,6 +26,12 @@
         {
             Input = new InputSFML(Config);
             Render = new RenderSFML(Config);
+        }
+
+        public override byte[] PreviewRender()
+        {
+            base.PreviewRender();
+            return RenderSFML.CurrentRenderSFML.FrameBytes();
         }
 
         /// <summary>The builder</summary>
