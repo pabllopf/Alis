@@ -467,8 +467,6 @@ namespace Alis.Editor.UI.Widgets
 
         private void CancelCreateProject() 
         {
-
-
             Close();
             Console.Log("CancelCreateProject");
         }
