@@ -11,6 +11,7 @@ var class_alis_1_1_core_1_1_input =
     [ "PollEvents", "class_alis_1_1_core_1_1_input.html#a24e9c6319b1bb0fb165226712451992f", null ],
     [ "PressKey", "class_alis_1_1_core_1_1_input.html#a46fb31ad888a173a5026d001e9baaf60", null ],
     [ "PressKeyOnce", "class_alis_1_1_core_1_1_input.html#a40022047af8442504266859604bffb0b", null ],
+    [ "ReleaseKey", "class_alis_1_1_core_1_1_input.html#aeaea7b07e10f869bb0f5742c33ca84a0", null ],
     [ "Input_OnPressKey", "class_alis_1_1_core_1_1_input.html#aa83bf732f3d07928d405cf99bbafbe67", null ],
     [ "Input_OnPressKeyOnce", "class_alis_1_1_core_1_1_input.html#a63676693d7dc30446662d557c646f989", null ],
     [ "ErrorMessage", "class_alis_1_1_core_1_1_input.html#a75865bad8c0b7a4b2ace822592028d47", null ],
@@ -19,5 +20,6 @@ var class_alis_1_1_core_1_1_input =
     [ "Config", "class_alis_1_1_core_1_1_input.html#ae3a0a969e9a35e028b5b3619a5c9ace3", null ],
     [ "Keys", "class_alis_1_1_core_1_1_input.html#a59f66fb3f2436c0218ffec2e537a800f", null ],
     [ "OnPressKey", "class_alis_1_1_core_1_1_input.html#a93e0be103fba618ab47c5b51db992636", null ],
-    [ "OnPressKeyOnce", "class_alis_1_1_core_1_1_input.html#a16d56472c213f7a38600be4e59c41067", null ]
+    [ "OnPressKeyOnce", "class_alis_1_1_core_1_1_input.html#a16d56472c213f7a38600be4e59c41067", null ],
+    [ "OnReleaseOnce", "class_alis_1_1_core_1_1_input.html#a6290051e5aa3380fcb0c65f9d1e08194", null ]
 ];

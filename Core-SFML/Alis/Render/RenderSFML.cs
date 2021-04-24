@@ -174,14 +174,6 @@
                 }
             }
 
-            if (collisions.Count > 0)
-            {
-                foreach (RectangleShape rectangle in collisions)
-                {
-                    renderTexture.Draw(rectangle);
-                }
-            }
-
             renderTexture.Display();
 
             frame = renderTexture.Texture.CopyToImage();

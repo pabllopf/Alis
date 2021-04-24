@@ -15,10 +15,10 @@
 </Description>
 	<Copyright>GNU General Public License v3.0</Copyright>
 	<PackageLicenseFile>LICENSE</PackageLicenseFile>
-	<RepositoryUrl>https://github.com/pabllopf/Alis</RepositoryUrl>
+
 	<PackageProjectUrl>https://pabllopf.github.io/Alis/</PackageProjectUrl>
 	<PackageIcon>logo.png</PackageIcon>
-	<RepositoryType>Public</RepositoryType>
+	
 	<PackageTags>SFML Alis Multi-Platform Framework VideoGame Games Windows Linux MacOs Android IOS Free</PackageTags>
 	<PackageReleaseNotes>Includes new package configuration for nuget center.</PackageReleaseNotes>
 	<NeutralLanguage>en</NeutralLanguage>
@@ -26,14 +26,16 @@
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	<SignAssembly>false</SignAssembly>
 	<AssemblyOriginatorKeyFile>Pablo Perdomo Falcón.pfx</AssemblyOriginatorKeyFile>
-	 <AssemblyVersion>1.2.8.0</AssemblyVersion>
-    <FileVersion>1.2.8.0</FileVersion>
-    <Version>1.2.8</Version>
+	 <AssemblyVersion>1.2.9.0</AssemblyVersion>
+    <FileVersion>1.2.9.0</FileVersion>
+    <Version>1.2.9</Version>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RepositoryUrl>https://github.com/pabllopf/Alis/</RepositoryUrl>
+    <RepositoryType>Public</RepositoryType>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>Core.xml</DocumentationFile>
     <DefineConstants>Windows</DefineConstants>

@@ -52,6 +52,20 @@ namespace Alis.Core.SFML
         }*/
 
 
+        public Collision()
+        {
+            this.border = new Vector2(1, 1);
+            this.isTrigger = false;
+
+            rectangle = new global::SFML.Graphics.RectangleShape(new global::SFML.System.Vector2f(this.border.X, this.border.Y));
+
+            rectangle.FillColor = global::SFML.Graphics.Color.Transparent;
+            rectangle.OutlineColor = global::SFML.Graphics.Color.Green;
+            rectangle.OutlineThickness = 1f;
+
+            Logger.Info();
+        }
+
         /// <summary>Initializes a new instance of the <see cref="Collision" /> class.</summary>
         /// <param name="border">The border.</param>
         /// <param name="isTrigger">if set to <c>true</c> [is trigger].</param>

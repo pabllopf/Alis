@@ -17,9 +17,6 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The name</summary>
         private const string Name = "BottonMenu";
 
-        /// <summary>The event handler</summary>
-        private EventHandler<EventType> eventHandler;
-
         /// <summary>The viewport</summary>
         private ImGuiViewportPtr viewport;
 
@@ -38,11 +35,8 @@ namespace Alis.Editor.UI.Widgets
         public static BottomMenu Current { get => current; set => current = value; }
 
         /// <summary>Initializes a new instance of the <see cref="BottomMenu" /> class.</summary>
-        /// <param name="eventHandler">The event handler.</param>
-        public BottomMenu(EventHandler<EventType> eventHandler)
+        public BottomMenu()
         {
-            this.eventHandler = eventHandler;
-
             viewport = ImGui.GetMainViewport();
 
             windowFlags =
@@ -167,22 +161,12 @@ namespace Alis.Editor.UI.Widgets
             ImGui.PopStyleColor(4);
         }
 
-        public void Loading(bool state, string message) 
+        public static void Loading(bool state, string message) 
         {
-            this.messageLoading = message;
-            this.stateLoading = state;
+            current.messageLoading = message;
+            current.stateLoading = state;
         }
 
-
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-        }
 
         /// <summary>Starts the style pop pup.</summary>
         private void StartStylePopPup()

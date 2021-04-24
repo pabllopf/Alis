@@ -4,16 +4,20 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
+    using System.Linq;
     using Alis.Tools;
+    using ImGuiNET;
 
     /// <summary>Widget Manager</summary>
     public class WidgetManager
     {
         /// <summary>The current</summary>
         [AllowNull]
-        private WidgetManager current;
+        private static WidgetManager current;
 
         /// <summary>The widgets</summary>
         [NotNull]
@@ -24,26 +28,36 @@ namespace Alis.Editor.UI.Widgets
         private Info info;
 
         /// <summary>Initializes a new instance of the <see cref="WidgetManager" /> class.</summary>
-        public WidgetManager(Info info)
+        public WidgetManager(Info info, ImGuiController imGuiController)
         {
-            widgets = new List<Widget>();
+            widgets = new List<Widget>
+            {
+                new ProjectManager(true, info),
+                new DockSpace(),
+                new TopMenu(info),
+                new BottomMenu(),
+                new Inspector(),
+                new AssetsManager(info),
+                new Hierarchy(),
+                new Console(),
+                new SceneView(imGuiController),
+                new GameView()
+            };
 
-            widgets.Add(new DockSpace());
-            widgets.Add(new TopMenu(info));
+            current ??= this;
 
-            widgets.Add(new Console());
-          
+            DefaultView();
             Logger.Info();
         }
 
         /// <summary>Draws this instance.</summary>
         public void Update()
         {
-            for (int i = 0; i < widgets.Count; i++)
+            foreach (Widget widget in widgets.ToList()) 
             {
-                if (widgets[i] != null) 
+                if (widget != null) 
                 {
-                    widgets[i].Draw();
+                    widget.Draw();
                 }
             }
         }
@@ -51,6 +65,41 @@ namespace Alis.Editor.UI.Widgets
         public void AddWidget(Widget widget) 
         {
             
+        }
+
+        private void DefaultView()
+        {
+            string file = Environment.CurrentDirectory + "/custom.ini";
+            if (File.Exists(file))
+            {
+                ImGui.LoadIniSettingsFromDisk(file);
+            }
+            else
+            {
+                string filetemp = Environment.CurrentDirectory + "/Resources/Default.ini";
+                if (File.Exists(filetemp))
+                {
+                    ImGui.LoadIniSettingsFromDisk(filetemp);
+                    ImGui.SaveIniSettingsToDisk(file);
+                }
+            }
+        }
+
+        public static void Add(Widget widget)
+        {
+            if (current.widgets.Find(i => i.GetType().Equals(widget.GetType())) == null) 
+            {
+                current.widgets.Add(widget);
+            }
+        }
+
+        public static void Delete(Widget widget)
+        {
+            Widget widgettemp = current.widgets.Find(i => i.GetType().Equals(widget.GetType()));
+            if (widgettemp != null)
+            {
+                current.widgets.Remove(widgettemp);
+            }
         }
     }
 }

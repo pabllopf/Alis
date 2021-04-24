@@ -41,17 +41,6 @@
         <member name="T:Alis.Tools.Asset">
             <summary>Find any asset of the videogame.</summary>
         </member>
-        <member name="F:Alis.Tools.Asset.assets">
-            <summary>The assets</summary>
-        </member>
-        <member name="P:Alis.Tools.Asset.AssetsPath">
-            <summary>Gets the assets path.</summary>
-            <value>The assets path.</value>
-        </member>
-        <member name="M:Alis.Tools.Asset.SetWorkPath(System.String)">
-            <summary>Gets or sets the work path.</summary>
-            <value>The work path.</value>
-        </member>
         <member name="M:Alis.Tools.Asset.Load(System.String)">
             <summary>Loads the specified name.</summary>
             <param name="file">The name.</param>

@@ -9,11 +9,5 @@ namespace Alis.Editor.UI.Widgets
     {
         /// <summary>Draw this instance.</summary>
         public abstract void Draw();
-
-        /// <summary>Opens this instance.</summary>
-        public abstract void Open();
-
-        /// <summary>Close this instance.</summary>
-        public abstract void Close();
     }
 }

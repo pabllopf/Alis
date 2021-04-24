@@ -164,12 +164,6 @@ namespace Alis.Editor.UI.Widgets
             Logger.Log("Play Game");
         }
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open() => Logger.Log("DockSpace::Open");
-
-        /// <summary>Closes this instance.</summary>
-        public override void Close() => Logger.Log("DockSpace::Close");
-
         /// <summary>Clicks the button.</summary>
         /// <param name="v">The v.</param>
         private void ClickButton(int index)

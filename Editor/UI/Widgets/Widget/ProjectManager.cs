@@ -9,42 +9,39 @@ namespace Alis.Editor.UI.Widgets
     using System.IO;
     using System.Linq;
     using System.Numerics;
+    using System.Reflection;
+    using System.Runtime.Loader;
     using System.Text;
+    using System.Threading.Tasks;
     using Alis.Core;
     using Alis.Core.SFML;
     using Alis.Editor.Utils;
     using Alis.Tools;
     using ImGuiNET;
+    using Microsoft.Extensions.DependencyModel;
+    using Microsoft.Extensions.DependencyModel.Resolution;
+    using static Alis.Editor.UI.Widgets.ProjectManager;
 
     /// <summary>Create new project. </summary>
     public class ProjectManager : Widget
     {
+        #region General Vars
+
+        private const string nameFileToSave = "ListProjects";
+
         /// <summary>The name</summary>
-        private readonly string name = "ProjectManager";
+        private readonly string name = "Project Manager";
+
+        /// <summary>The is open</summary>
+        private bool isOpen;
+
+        /// <summary>The show recent projects</summary>
+        private bool showRecentProjects;
 
         /// <summary>The projects</summary>
         private List<Project> projects;
 
-        /// <summary>The is open</summary>
-        private bool isOpen = false;
-
-        /// <summary>The show recent projects</summary>
-        private bool showRecentProjects = false;
-
-        /// <summary>The modes</summary>
-        private string[] modes = new string[] { "2D Videogame -SFML Core- " };
-
-        /// <summary>The current mode</summary>
-        private string currentMode;
-
-        /// <summary>The selected</summary>
-        private bool selected;
-
-        /// <summary>The already exist error</summary>
-        private bool alreadyExistError;
-
-        /// <summary>The event handler</summary>
-        private EventHandler<EventType> eventHandler;
+        #endregion
 
         #region Config
 
@@ -67,11 +64,26 @@ namespace Alis.Editor.UI.Widgets
 
         #region Fields
 
+        private FileDialog fileDialog;
+
+        private FileDialog directoryDialog;
+
         /// <summary>The name field</summary>
         private string nameField = "AlysProject";
 
         /// <summary>The directory field</summary>
         private string directoryField = Application.DesktopFolder;
+
+        /// <summary>The modes</summary>
+        private string[] modes = new string[] { "2D Videogame SFML-Alis" };
+
+        /// <summary>The current mode</summary>
+        private string currentMode = "2D Videogame SFML-Alis";
+
+        /// <summary>The selected</summary>
+        private bool selected = true;
+
+        private Info info;
 
         #endregion
 
@@ -88,188 +100,394 @@ namespace Alis.Editor.UI.Widgets
 
         #endregion
 
+        #region Constructor
+
         /// <summary>Initializes a new instance of the <see cref="ProjectManager" /> class.</summary>
-        /// <param name="eventHandler">Controller event</param>
         /// <param name="showRecentProjects">show this</param>
-        public ProjectManager(EventHandler<EventType> eventHandler, bool showRecentProjects)
+        public ProjectManager(bool showRecentProjects, Info info)
         {
-            Logger.Info();
-            this.eventHandler = eventHandler;
+            this.info = info;
             isOpen = true;
-            currentMode = modes[0];
             this.showRecentProjects = showRecentProjects;
+            projects = LocalData.Load(nameFileToSave, new List<Project>());
 
-            projects = LocalData.Load<List<Project>>("Projects", new List<Project>());
-            if (projects == null) 
-            {
-                projects = new List<Project>();
-            }
 
-            Project.OnChange += Project_OnChangeProject;
+            fileDialog = new FileDialog(Environment.CurrentDirectory, true, ".json", new string[] { "*", ".json" });
+            directoryDialog = new FileDialog(Environment.CurrentDirectory, false, "*", new string[] { "*"});
+
+            Logger.Info();
         }
 
-        /// <summary>Gets the name.</summary>
-        /// <value>The name.</value>
-        public string Name => name;
+        #endregion
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-            Logger.Log(this.GetType() + ":Open");
-            isOpen = true;
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-            Logger.Log(this.GetType() + ":Close");
-            isOpen = false;
-        }
+        #region Draw
 
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-            if (isOpen)
+            if (fileDialog.ConfirmedElement)
             {
-                PushStyle();
+                Console.Log(Path.GetFileNameWithoutExtension(fileDialog.ElementTaked));
+                Console.Log(Path.GetDirectoryName(fileDialog.ElementTaked));
 
-                ImGui.SetNextWindowPos(new Vector2(ImGui.GetMainViewport().Size.X / 4, ImGui.GetMainViewport().Size.Y / 4));
-                ImGui.OpenPopup(name);
-                if (ImGui.BeginPopupModal(name, ref isOpen, configPopup))
+                string nameTemp = Path.GetFileNameWithoutExtension(fileDialog.ElementTaked);
+                string pathTemp = Path.GetDirectoryName(fileDialog.ElementTaked);
+                
+                Project project = LocalData.Load<Project>(nameTemp, pathTemp);
+                if (project != null) 
                 {
-                    if (ImGui.BeginChild("Master", sizeWidget, false))
+                    if (projects.Find(i => i.Name.Equals(project.Name) && i.Directory.Equals(project.Directory)) != null)
                     {
-                        sizeChild.X = ImGui.GetContentRegionAvail().X / 3;
-                        sizeChild.Y = ImGui.GetContentRegionAvail().Y - 70;
-
-                        if (showRecentProjects)
-                        {
-                            ImGui.BeginGroup();
-                            ImGui.PushStyleColor(ImGuiCol.Border, whiteColor);
-                            if (ImGui.BeginChild("Master-Child-Left", sizeChild, true))
-                            {
-                                ImGui.PopStyleColor();
-
-                                ImGui.Text("Recent Projects: ");
-
-                                foreach (Project project in projects)
-                                {
-                                    ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(0, 7.0f));
-                                    ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 0.0f);
-                                    ImGui.BeginGroup();
-
-                                    if (ImGui.Button(project.Name, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
-                                    {
-                                        OpenProject(project);
-                                    }
-
-                                    ImGui.SameLine();
-
-                                    if (ImGui.Button(Icon.TIMESCIRCLEO + "##" + projects.IndexOf(project), new Vector2(30.0f, 30.0f)))
-                                    {
-                                        DeleteProject(project);
-                                    }
-
-                                    ImGui.EndGroup();
-                                    ImGui.PopStyleVar(2);
-                                }
-
-                                ImGui.EndChild();
-
-                                sizeChild.Y = 50.0f;
-
-                                if (ImGui.Button("Open Project", sizeChild)) 
-                                {
-                                }
-
-                                ImGui.EndGroup();
-                            }
-
-                            ImGui.SameLine();
-                        }
-
-                        ImGui.PushStyleColor(ImGuiCol.Border, whiteColor);
-                        if (ImGui.BeginChild("Master-Child-Right", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
-                        {
-                            ImGui.PopStyleColor();
-
-                            ImGui.Text("Name: ");
-                            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
-                            ImGui.InputText("##Name", ref nameField, 256);
-                            ImGui.PopItemWidth();
-
-                            ImGui.Text("Directory: ");
-                            ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 3));
-                            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 27.0f);
-                            ImGui.BeginGroup();
-                            ImGui.InputText("##Path", ref directoryField, 256);
-                            ImGui.SameLine();
-                            
-                            if (ImGui.Button("...", new Vector2(27.0f)))
-                            {
-                            }
-
-                            ImGui.PopStyleVar();
-                            ImGui.PopItemWidth();
-                            ImGui.EndGroup();
-
-                            ImGui.Text("Solution: ");
-                            ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
-                            if (ImGui.BeginCombo("##Mode", currentMode))
-                            {
-                                for (int n = 0; n < modes.Length; n++)
-                                {
-                                    selected = currentMode == modes[n];
-                                    if (ImGui.Selectable(modes[n], selected))
-                                    {
-                                        currentMode = modes[n];
-                                    }
-
-                                    if (selected)
-                                    {
-                                        ImGui.SetItemDefaultFocus();
-                                    }
-                                }
-
-                                ImGui.EndCombo();
-                            }
-
-                            ImGui.PopItemWidth();
-
-                            if (Directory.Exists(directoryField + "/" + nameField))
-                            {
-                                ImGui.TextColored(redColor, "The project '" + nameField + "' already exists.");
-                            }
-
-                            if (!showRecentProjects) 
-                            {
-                                if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 50.0f)))
-                                {
-                                    Close();
-                                }
-
-                                ImGui.SameLine();
-                            }
-                            
-
-                            if (ImGui.Button("Create Project", new Vector2(ImGui.GetContentRegionAvail().X, 50.0f)))
-                            {
-                                CreateProject(nameField, directoryField, currentMode);
-                            }
-
-                            ImGui.EndChild();
-                        }
+                        Console.Error("Project alredy exits.");
                     }
+                    else 
+                    {
+                        pathTemp = Directory.GetParent(pathTemp).ToString();
+                        Console.Log(pathTemp);
+
+                        Console.Warning("Try to load " + project.Directory + "/" + project.Name);
+
+                        if (!Directory.Exists(project.Directory + "/" + project.Name))
+                        {
+                            string nameProject = project.Name;
+                            project = new Project(nameProject,  pathTemp);
+                            LocalData.Save<Project>("Project", project.Directory + "/" + project.Name, project);
+                        }
+
+                        projects.Add(project);
+                        LocalData.Save(nameFileToSave, projects);
+                        Project.Set(project);
+
+                        Console.Log("Data file on " + project.DataPath1 + "/Data.json");
+
+                        Project.VideoGame = LocalData.Load<VideoGame>("Data", project.DataPath1);
+
+                        Console.Warning("Loaded project: " + project.Name);
+                        Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
+                       
+                        Close();
+                    }
+                }
+            }
+
+            if (directoryDialog.ConfirmedElement) 
+            {
+                directoryField = directoryDialog.ElementTaked;
+                Console.Warning("Select the direcotry " + directoryDialog.ElementTaked);
+            }
+
+
+            PushStyle();
+
+            ImGui.OpenPopup(name);
+            if (ImGui.BeginPopupModal(name, ref isOpen, configPopup))
+            {
+                if (ImGui.BeginChild("Master", sizeWidget, false))
+                {
+                    ShowRecentProjects();
+                    ShowCreateProject();
 
                     ImGui.EndChild();
                 }
-                
-                PopStyle();
             }
-            else
+
+            PopStyle();
+        }
+
+        #endregion
+
+        #region Show Recent Projects
+        
+        private void ShowRecentProjects() 
+        {
+            if (showRecentProjects)
             {
-                eventHandler?.Invoke(this, EventType.CloseCreateProject);
+                ImGui.BeginGroup();
+                ImGui.PushStyleColor(ImGuiCol.Border, whiteColor);
+                if (ImGui.BeginChild("Master-Child-Left", new Vector2(ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y - 70), true))
+                {
+                    ImGui.PopStyleColor();
+
+                    ImGui.Text("Recent Projects: ");
+
+                    foreach (Project project in projects.ToList())
+                    {
+                        ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 7.0f));
+                        ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 0.0f);
+                        ImGui.BeginGroup();
+
+                        if (ImGui.Button(project.Name, new Vector2(ImGui.GetContentRegionAvail().X - 30.0f, 30.0f)))
+                        {
+                            OpenProject(project);
+                        }
+
+                        ImGui.SameLine();
+
+                        if (ImGui.Button(Icon.TIMESCIRCLEO + "##" + projects.IndexOf(project), new Vector2(30.0f, 30.0f)))
+                        {
+                            DeleteProject(project);
+                        }
+
+                        ImGui.EndGroup();
+                        ImGui.PopStyleVar(2);
+                    }
+
+                    ImGui.EndChild();
+
+                    if (ImGui.Button("Open Project", new Vector2(ImGui.GetContentRegionAvail().X / 3, 50.0f)))
+                    {
+                        OpenProject();
+                    }
+
+                    ImGui.EndGroup();
+                }
+
+                ImGui.SameLine();
             }
+        }
+
+        #endregion
+
+        #region ShowCreateProject
+
+        private void ShowCreateProject()
+        {
+            ImGui.PushStyleColor(ImGuiCol.Border, whiteColor);
+            if (ImGui.BeginChild("Master-Child-Right", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true))
+            {
+                ImGui.PopStyleColor();
+
+                #region Name project
+
+                ImGui.Text("Name: ");
+                ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
+                ImGui.InputText("##Name", ref nameField, 256);
+                ImGui.PopItemWidth();
+
+                #endregion
+
+                #region Directory select
+
+                ImGui.Text("Directory: ");
+                ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 3));
+                ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 27.0f);
+                ImGui.BeginGroup();
+                ImGui.InputText("##Path", ref directoryField, 256);
+                ImGui.SameLine();
+
+                if (ImGui.Button("...", new Vector2(27.0f)))
+                {
+                    DirectorySelector();
+                }
+
+                ImGui.PopStyleVar();
+                ImGui.PopItemWidth();
+                ImGui.EndGroup();
+
+                #endregion
+
+                #region Mode Videogame
+
+                ImGui.Text("Solution: ");
+                ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X);
+                if (ImGui.BeginCombo("##Mode", currentMode))
+                {
+                    for (int n = 0; n < modes.Length; n++)
+                    {
+                        selected = currentMode == modes[n];
+                        if (ImGui.Selectable(modes[n], selected))
+                        {
+                            currentMode = modes[n];
+                        }
+
+                        if (selected)
+                        {
+                            ImGui.SetItemDefaultFocus();
+                        }
+                    }
+
+                    ImGui.EndCombo();
+                }
+
+                ImGui.PopItemWidth();
+
+                #endregion
+
+                #region Error Control
+
+                if (Directory.Exists(directoryField + "/" + nameField))
+                {
+                    ImGui.TextColored(redColor, "The project '" + nameField + "' already exists.");
+                }
+
+                if (projects.Find(i => i.Name.Equals(nameField) && i.Directory.Equals(directoryField)) is not null) 
+                {
+                    ImGui.TextColored(redColor, "The project '" + nameField + "' already exits on the list.");
+                }
+
+                #endregion
+
+                #region Cancel Create Project Button
+
+                if (!showRecentProjects)
+                {
+                    if (ImGui.Button("Cancel ", new Vector2(ImGui.GetContentRegionAvail().X / 2, 50.0f)))
+                    {
+                        CancelCreateProject();
+                    }
+
+                    ImGui.SameLine();
+                }
+
+                #endregion
+
+                #region Create Project Button
+
+                if (ImGui.Button("Create Project", new Vector2(ImGui.GetContentRegionAvail().X, 50.0f)))
+                {
+                    CreateProject(new Project(nameField, directoryField));
+                }
+
+                #endregion
+
+                ImGui.EndChild();
+            }
+        }
+
+        private void DirectorySelector()
+        {
+            directoryDialog = new FileDialog(Environment.CurrentDirectory, false, "*", new string[] { "*" });
+            directoryDialog.OpenDialog();
+
+        }
+
+        #endregion
+
+
+        private void CreateProject(Project project)
+        {
+            if (projects.Find(i => i.Name.Equals(project.Name) && i.Directory.Equals(project.Directory)) is null)
+            {
+                projects.Add(project);
+                LocalData.Save(nameFileToSave, projects);
+
+                GenerateFiles(project);
+
+                LoadAsembly();
+                Console.Log("Created project '" + project.Name + "'on: " + project.Directory);
+            }
+            else 
+            {
+                Console.Warning("You can create a project that alredy exits.");
+            }
+        }
+
+        private void GenerateFiles(Project project)
+        {
+            string dir = project.Directory + "/" + project.Name;
+            Directory.CreateDirectory(dir);
+            Directory.CreateDirectory(project.AssetPath);
+            Directory.CreateDirectory(project.ConfigPath1);
+            Directory.CreateDirectory(project.DataPath1);
+            Directory.CreateDirectory(project.LibPath);
+
+            string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
+            File.WriteAllText(dir + "/" + project.Name + ".csproj", projectFile, Encoding.UTF8);
+            Logger.Log("Created .csproj");
+
+            string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", project.Name);
+            File.WriteAllText(dir + "/" + project.Name + ".sln", solutionFile, Encoding.UTF8);
+            Logger.Log("Created .sln");
+
+            string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
+            File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
+            Logger.Log("Created Program.cs");
+
+            File.Copy(Environment.CurrentDirectory + "/Core-SFML.dll", project.LibPath + "/" + "Core-SFML" + ".dll");
+            File.Copy(Environment.CurrentDirectory + "/Core.dll", project.LibPath + "/" + "Core" + ".dll");
+            File.Copy(Environment.CurrentDirectory + "/Tools.dll", project.LibPath + "/" + "Tools" + ".dll");
+
+            File.Copy(Environment.CurrentDirectory + "/Resources/Segoe.ttf", project.AssetPath + "/" + "Segoe.ttf");
+
+            VideoGame game = VideoGame.Builder()
+                                            .Config(Config.Builder().Name("Alis Game").Build())
+                                            .SceneManager(SceneManager.Builder().Scene(
+                                                Scene.Builder().GameObject(new GameObject("Default")).Build()).Build())
+                                            .Build();
+
+            LocalData.Save("Data", project.DataPath1, game);
+
+            LocalData.Save("Project", dir, project);
+
+            Logger.Log("Saved default game");
+
+            Project.Set(project);
+            Project.VideoGame = game;
+
+            Close();
+        }
+
+        private void OpenProject()
+        {
+            Console.Log("OpenProject");
+
+            fileDialog = new FileDialog(Environment.CurrentDirectory, true, ".json" , new string[] { "*", ".json"});
+
+            fileDialog.OpenDialog();
+
+            
+        }
+
+        private void OpenProject(Project project) 
+        {
+            Project temp = projects.Find(i => i.Name.Equals(project.Name) && i.Directory.Equals(project.Directory));
+            if (temp != null)
+            {
+                if (!Directory.Exists(temp.Directory + "/" + temp.Name)) 
+                {
+                    projects.Remove(temp);
+                    LocalData.Save(nameFileToSave, projects);
+                    return;
+                }
+
+                Project.Set(project);
+
+                LoadAsembly();
+
+                Project.VideoGame = LocalData.Load<VideoGame>("Data", project.DataPath1);
+
+                Console.Warning("Loaded project: " + project.Name);
+                Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
+
+
+
+                Close();
+            }
+        }
+
+        private void CancelCreateProject() 
+        {
+
+
+            Close();
+            Console.Log("CancelCreateProject");
+        }
+
+        private void DeleteProject(Project project)
+        {
+            if (projects.Find(i => i.Name.Equals(project.Name) && i.Directory.Equals(project.Directory)) is not null)
+            {
+                projects.RemoveAt(projects.IndexOf(project));
+                LocalData.Save(nameFileToSave, projects);
+                Console.Warning("Delete");
+            }
+        }
+
+        /// <summary>Closes this instance.</summary>
+        private void Close()
+        {
+            isOpen = false;
+            WidgetManager.Delete(this);
         }
 
         /// <summary>Pushes the style.</summary>
@@ -279,6 +497,8 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, itemSpacing);
             ImGui.PushStyleVar(ImGuiStyleVar.ChildBorderSize, childBorderSize);
+
+            ImGui.SetNextWindowPos(new Vector2(ImGui.GetMainViewport().Size.X / 4, ImGui.GetMainViewport().Size.Y / 4));
         }
 
         /// <summary>Pops the style.</summary>
@@ -288,122 +508,27 @@ namespace Alis.Editor.UI.Widgets
             ImGui.PopStyleVar(2);
         }
 
-        /// <summary>Creates the project.</summary>
-        /// <param name="name">name project</param>
-        /// <param name="directory">directory project</param>
-        /// <param name="mode">mode project</param>
-        private void CreateProject(string name, string directory, string mode) 
+
+        private void LoadAsembly()
         {
-            if (!Directory.Exists(directory + "/" + name)) 
+            string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/" + Project.Get().Name + ".dll";
+
+            if (info.Platform.Equals(Platform.Linux))
             {
-                string dir = directory + "/" + name;
-                string assetPath = directory + "/" + name + "/Assets";
-                string configPath = directory + "/" + name + "/Config";
-                string dataPath = directory + "/" + name + "/Data";
-                string libPath = directory + "/" + name + "/Lib";
-
-                Project project = new Project(name, dir);
-                Logger.Log("Create project " + " name: " + name + " directory: " + dir);
-
-
-                projects.Add(project);
-                LocalData.Save<List<Project>>("Projects", projects);
-                Logger.Log("Saves the project in file");
-
-
-
-                Directory.CreateDirectory(dir);
-                Directory.CreateDirectory(assetPath);
-                Directory.CreateDirectory(configPath);
-                Directory.CreateDirectory(dataPath);
-                Directory.CreateDirectory(libPath);
-
-                Logger.Log("Create directorys of project.");
-
-                string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
-                File.WriteAllText(dir + "/" + name + ".csproj", projectFile, Encoding.UTF8);
-                Logger.Log("Created .csproj");
-
-                string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", name);
-                File.WriteAllText(dir + "/" + name + ".sln", solutionFile, Encoding.UTF8);
-                Logger.Log("Created .sln");
-
-                string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
-                File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
-                Logger.Log("Created Program.cs");
-
-                File.Copy(Application.ProjectFolder + "/Resources/Core-SFML.dll", libPath + "/" + "Core-SFML" + ".dll");
-                File.Copy(Application.ProjectFolder + "/Resources/Core.dll", libPath + "/" + "Core" + ".dll");
-                File.Copy(Application.ProjectFolder + "/Resources/Tools.dll", libPath + "/" + "Tools" + ".dll");
-                Logger.Log("Copied .DLLS");
-
-                VideoGame game = VideoGame.Builder()
-                                            .Config(Config.Builder().Name(name).Build())
-                                            .SceneManager(SceneManager.Builder().Scene(new Scene("Default")).Build())
-                                            .Build();
-
-                Logger.Log("Created default game");
-
-                LocalData.Save<VideoGame>("Data", dataPath, game);
-
-                Logger.Log("Saved default game");
-
-                Project.Current = project;
-                Project.VideoGame = game;
-
-                Close();
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/" + Project.Get().Name + ".dll";
             }
 
-        }
-
-        /// <summary>Opens the project.</summary>
-        /// <param name="project">The project.</param>
-        private void OpenProject(Project project) 
-        {
-            if (Directory.Exists(project.Directory))
+            if (info.Platform.Equals(Platform.MacOS))
             {
-                Logger.Warning("Open " + project.Name + project.DataPath + project.Directory + project.AssetsPath + project.ConfigPath + project.LibraryPath);
-
-                Asset.SetWorkPath(project.AssetsPath + "/");
-
-                VideoGame game = LocalData.Load<VideoGame>("Data", project.DataPath, new VideoGame(new Config("default")));
-
-                Logger.Warning("Videogame: " + game.Config.Name);
-
-                //Project.ChangeProject(project, game);
-                Close();
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll";
             }
-            else 
+
+            if (File.Exists(workDirRun)) 
             {
-                DeleteProject(project);
+                Project.Get().DLL1 = Assembly.Load(File.ReadAllBytes(workDirRun));
             }
         }
 
-        /// <summary>Deletes the project.</summary>
-        /// <param name="project">project to delete</param>
-        private void DeleteProject(Project project) 
-        {
-            List<Project> temp = LocalData.Load<List<Project>>("Projects");
-
-            if (temp == null)
-            {
-                temp = new List<Project>();
-            }
-
-            Project projectDelete = temp.Find(i => i.Name.Equals(project.Name));
-            if (projectDelete != null) 
-            {
-                temp.Remove(projectDelete);
-                LocalData.Save("Projects", temp);
-                projects = temp;
-            }
-        }
-
-        /// <summary>Projects the on change project.</summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">if set to <c>true</c> [e].</param>
-        private void Project_OnChangeProject(object sender, bool e) => Logger.Info();
     }
-
 
 }

@@ -1,6 +1,9 @@
 var hierarchy =
 [
     [ "Alis.Tools.Application", "struct_alis_1_1_tools_1_1_application.html", null ],
+    [ "AssemblyLoadContext", null, [
+      [ "Alis.Editor.UI.Widgets.TopMenu.SimpleUnloadableAssemblyLoadContext", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context.html", null ]
+    ] ],
     [ "Alis.Tools.Asset", "class_alis_1_1_tools_1_1_asset.html", null ],
     [ "Alis.Core.Component", "class_alis_1_1_core_1_1_component.html", null ],
     [ "Alis.Core.Config", "class_alis_1_1_core_1_1_config.html", null ],
@@ -35,6 +38,7 @@ var hierarchy =
     [ "Alis.Core.Scene.SceneBuilder", "class_alis_1_1_core_1_1_scene_1_1_scene_builder.html", null ],
     [ "Alis.Core.SceneManager", "class_alis_1_1_core_1_1_scene_manager.html", null ],
     [ "Alis.Core.SceneManager.SceneManagerBuilder", "class_alis_1_1_core_1_1_scene_manager_1_1_scene_manager_builder.html", null ],
+    [ "Alis.Editor.UI.TextManager", "class_alis_1_1_editor_1_1_u_i_1_1_text_manager.html", null ],
     [ "Alis.Core.Time", "class_alis_1_1_core_1_1_time.html", null ],
     [ "Alis.Core.Time.TimeBuilder", "class_alis_1_1_core_1_1_time_1_1_time_builder.html", null ],
     [ "Alis.Core.Transform", "class_alis_1_1_core_1_1_transform.html", null ],
@@ -45,6 +49,7 @@ var hierarchy =
       [ "Alis.Editor.UI.Widgets.BottomMenu", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html", null ],
       [ "Alis.Editor.UI.Widgets.Console", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html", null ],
       [ "Alis.Editor.UI.Widgets.DockSpace", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html", null ],
+      [ "Alis.Editor.UI.Widgets.FileDialog", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html", null ],
       [ "Alis.Editor.UI.Widgets.GameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html", null ],
       [ "Alis.Editor.UI.Widgets.Hierarchy", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html", null ],
       [ "Alis.Editor.UI.Widgets.Inspector", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html", null ],

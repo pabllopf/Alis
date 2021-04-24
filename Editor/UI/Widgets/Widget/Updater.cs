@@ -5,9 +5,8 @@
 namespace Alis.Editor.UI.Widgets
 {
     using System;
-    using Alis.Core;
-    using Alis.Tools;
     using ImGuiNET;
+    using Alis.Tools;
 
     /// <summary>Show the game running</summary>
     public class Updater : Widget
@@ -18,28 +17,10 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The is open</summary>
         private bool isOpen = true;
 
-        /// <summary>The event handler</summary>
-        private EventHandler<EventType> eventHandler;
-
         /// <summary>Initializes a new instance of the <see cref="Updater" /> class.</summary>
-        /// <param name="eventHandler">The event handler.</param>
-        public Updater(EventHandler<EventType> eventHandler)
+        public Updater()
         {
-            this.eventHandler = eventHandler;
-        }
-
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-            Logger.Log("Game view Opened");
-            isOpen = true;
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-            Logger.Log("Game view closed");
-            isOpen = false;
+            Logger.Info();
         }
 
         /// <summary>Draw this instance.</summary>

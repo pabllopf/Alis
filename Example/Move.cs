@@ -6,7 +6,8 @@ namespace Example
 {
     using Alis.Core;
     using Alis.Core.SFML;
-  
+    using Alis.Tools;
+
     /// <summary>Define a component to move player.</summary>
     public class Move : Component
     {
@@ -19,11 +20,15 @@ namespace Example
         /// <summary>The speed of movement.</summary>
         private int speed = 1;
 
+        public int Speed { get => speed; set => speed = value; }
+
         /// <summary>Start this instance. Init all that you need.</summary>
         public override void Start()
         {
             // Define a event control to check input and move player.
             Input.OnPressKey += Input_OnPressKey;
+
+            //Input.OnReleaseOnce += Input_OnReleaseOnce;
 
             // Load the animator of player.
             animator = GameObject.Get<Animator>();
@@ -31,6 +36,15 @@ namespace Example
             // Load transform of player 
             transform = GameObject.Transform;
         }
+
+        /*
+        private void Input_OnReleaseOnce(object sender, Keyboard key)
+        {
+            if (key.Equals(Keyboard.S))
+            {
+                Logger.Log("Key s" + "out");
+            }
+        }*/
 
         /// <summary>Inputs the on press key1.</summary>
         /// <param name="sender">The sender.</param>

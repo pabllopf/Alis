@@ -26,6 +26,8 @@ namespace Alis.Editor.UI.Widgets
 
         private Image<Rgba32> image;
 
+        private byte[] data;
+
         private ImageSharpTexture imageSharpTexture;
 
         private Texture texture;
@@ -34,9 +36,9 @@ namespace Alis.Editor.UI.Widgets
 
         private System.IntPtr intPtr;
 
-        public SceneView() 
+        public SceneView(ImGuiController imGuiController) 
         {
-            //imGuiController = MainWindow.imGuiController;
+            this.imGuiController = imGuiController;
 
 
             Project.OnChange += Project_OnChangeProject;
@@ -47,27 +49,62 @@ namespace Alis.Editor.UI.Widgets
         /// <param name="e">if set to <c>true</c> [e].</param>
         private void Project_OnChangeProject(object sender, bool e)
         {
-            image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
-            imageSharpTexture = new ImageSharpTexture(image, true);
-            texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
-            intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
-        }
-
-        /// <summary>Closes this instance.</summary>
-        public override void Close()
-        {
+            data = null;
+            image = null;
         }
 
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-            
-
-            ImGui.SetNextWindowPos(new System.Numerics.Vector2(650, 20), ImGuiCond.FirstUseEver);
+            if (Project.VideoGame is not null && data is null && image is null)
+            {
+                Console.Warning("Create image of" + Project.Get().Name);
+                data = Project.VideoGame.PreviewRender();
+                image = Image.LoadPixelData<Rgba32>(data, 512, 512);
+                imageSharpTexture = new ImageSharpTexture(image, true);
+                texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
+                intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+            }
 
             if (ImGui.Begin(Name))
             {
-                if (Project.VideoGame != null && Project.Current != null) 
+                if (Project.Get() != null && Project.VideoGame != null) 
+                {
+                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
+                    imageSharpTexture = new ImageSharpTexture(image, true);
+
+                    unsafe
+                    {
+                        for (int level = 0; level < imageSharpTexture.MipLevels; level++)
+                        {
+                            Image<Rgba32> image = imageSharpTexture.Images[level];
+                            if (!image.TryGetSinglePixelSpan(out Span<Rgba32> pixelSpan))
+                            {
+                                throw new VeldridException("Unable to get image pixelspan.");
+                            }
+                            fixed (void* pin = &MemoryMarshal.GetReference(pixelSpan))
+                            {
+                                imGuiController.graphicsDevice.UpdateTexture(
+                                    texture,
+                                    (IntPtr)pin,
+                                    (uint)(imageSharpTexture.PixelSizeInBytes * image.Width * image.Height),
+                                    0,
+                                    0,
+                                    0,
+                                    (uint)image.Width,
+                                    (uint)image.Height,
+                                    1,
+                                    (uint)level,
+                                    0);
+                            }
+                        }
+                    }
+
+                    intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+                    ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
+                }
+
+                /*if (Project.VideoGame != null && Project.Current != null) 
                 {
                     image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
                     imageSharpTexture = new ImageSharpTexture(image, true);
@@ -103,13 +140,9 @@ namespace Alis.Editor.UI.Widgets
                     ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
                 }
             }
-
+                */
+            }
             ImGui.End();
-        }
-
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
         }
     }
 }

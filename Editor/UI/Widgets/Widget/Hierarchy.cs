@@ -11,6 +11,9 @@ namespace Alis.Editor.UI.Widgets
     using System.Numerics;
     using Alis.Tools;
     using Alis.Core.SFML;
+    using System.Linq;
+    using System.Collections.Generic;
+    using System.Reflection;
 
     /// <summary>Manage components of scene.</summary>
     public class Hierarchy : Widget
@@ -27,10 +30,6 @@ namespace Alis.Editor.UI.Widgets
         {
         }
 
-        /// <summary>Closes this instance.</summary>
-        public override void Close()
-        {
-        }
 
         private Vector4 childBackground = new Vector4(0, 0, 0, 0);
 
@@ -39,50 +38,92 @@ namespace Alis.Editor.UI.Widgets
         {
             if (ImGui.Begin("Hierarchy"))
             {
-               
-
-                if (Project.Current != null)
+                if (Project.VideoGame is not null) 
                 {
-                    foreach (Scene scene in Project.VideoGame.SceneManager.Scenes)
+
+                    ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
+                    ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
+
+                    ImGui.BeginChild("GameObject-Child", new Vector2(ImGui.GetContentRegionAvail().X, 80.0f), true);
+
+                    Scene scene = Project.VideoGame.SceneManager.Scenes.ToList().Find(i => i.Name.Equals(Project.VideoGame.SceneManager.CurrentScene.Name));
+
+                    string content = scene.Name;
+
+                    ImGui.Text("Scene: ");
+
+                    ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 40.0f);
+
+                    if (ImGui.InputText("##" + scene.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
                     {
-                        ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
-                        ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
+                        scene.Name = content;
+                    }
 
-                        ImGui.AlignTextToFramePadding();
+                    ImGui.PopItemWidth();
 
-                        bool treeopen = ImGui.TreeNodeEx("Scene: " + scene.Name, ImGuiTreeNodeFlags.AllowItemOverlap);
+                    ImGui.SameLine();
 
-                        ImGui.SameLine();
+                    if (ImGui.Button(Icon.PLUSSQUARE))
+                    {
+                        ImGui.OpenPopup("ElementList");
+                    }
 
-                        if (ImGui.Button(Icon.PLUSSQUARE))
+                    if (ImGui.BeginPopup("ElementList"))
+                    {
+                        if (ImGui.MenuItem("New GameObject"))
                         {
-                            ImGui.OpenPopup("ElementList");
+                            AddNewGameObjectToScene();
                         }
 
-                        if (ImGui.BeginPopup("ElementList"))
+                        ImGui.EndPopup();
+                    }
+
+
+                   
+
+                    ImGui.EndChild();
+
+                   
+
+                    ImGui.PopStyleVar();
+                    ImGui.PopStyleColor();
+
+                    
+
+                    foreach (GameObject obj in Project.VideoGame.SceneManager.CurrentScene.GameObjects)
+                    {
+                        if (obj is not null) 
                         {
-                            if (ImGui.MenuItem("New GameObject"))
+                            UpdateGameObject(obj);
+
+                            ImGui.AlignTextToFramePadding();
+
+                            ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
+
+                            if (ImGui.Button(obj.Name, new Vector2(ImGui.GetContentRegionAvail().X - 35.0f, 30.0f)))
                             {
-                                AddNewGameObjectToScene(scene);
+                                SelectGameObject(obj);
                             }
 
-                            ImGui.EndPopup();
-                        }
-                        if (treeopen)
-                        {
-                            foreach (GameObject obj in scene.GameObjects) 
+                            ImGui.SameLine();
+
+                            if (ImGui.Button(Icon.ALIGNJUSTIFY + "###" + obj.Name))
                             {
-                                if (ImGui.Button(obj.Name))
+                                ImGui.OpenPopup("ElementList " + "###" + obj.Name);
+                            }
+
+                            if (ImGui.BeginPopup("ElementList " + "###" + obj.Name))
+                            {
+                                if (ImGui.MenuItem("Delete" +"###" + obj.Name))
                                 {
-                                    SelectGameObject(obj);
+                                    DeleteGameObjectOfScene(obj);
                                 }
-                            }
-                           
-                            ImGui.TreePop();
-                        }
 
-                        ImGui.PopStyleVar();
-                        ImGui.PopStyleColor();
+                                ImGui.EndPopup();
+                            }
+
+                            ImGui.PopStyleColor();
+                        }
                     }
                 }
             }
@@ -90,29 +131,82 @@ namespace Alis.Editor.UI.Widgets
             ImGui.End();
         }
 
-        private void AddNewGameObjectToScene(Scene scene)
+        private void UpdateGameObject(GameObject obj)
         {
-            scene.Add(new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f))));
+            if (Project.Get().DLL1 != null) 
+            {
+                List<Component> tempList = obj.Components.ToList();
+                Type[] ty = Project.Get().DLL1.GetTypes();
 
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
+                for (int i = 0; i < tempList.Count; i++) 
+                {
+                    if (tempList[i] != null) 
+                    {
+                        Component compo = tempList[i];
+                        Type type = typeof(Component);
+                        IEnumerable<Type> types = ty
+                        .Where(p => type.IsAssignableFrom(p));
 
-            Inspector.Current.Focus = true;
+                        if (types.Any(i => i.Name.Equals(compo.GetType().Name))) 
+                        {
+                            Type final = types.First(i => i.Name.Equals(compo.GetType().Name));
+
+                            if (final.FullName.Equals(obj.Components[i].GetType().FullName) && !final.Assembly.Equals(obj.Components[i].GetType().Assembly)) 
+                            {
+                                Console.Warning("Create new intencie of " + final.FullName + " on " + obj.Name);
+
+                                Component tempCompo = (Component)Activator.CreateInstance(final);
+
+                                foreach (PropertyInfo property in tempCompo.GetType().GetProperties())
+                                {
+                                    PropertyInfo info = compo.GetType().GetProperty(property.Name);
+                                    if (info != null) 
+                                    {
+                                        if (property.CanWrite && info.CanWrite && info.Name.Equals(property.Name))
+                                        {
+                                            property.SetValue(tempCompo, info.GetValue(compo));
+                                        }
+                                    }
+
+
+                                }
+
+                                obj.Set(tempCompo, i);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void AddNewGameObjectToScene()
         {
-            throw new NotImplementedException();
+            if (Project.VideoGame is not null)
+            {
+                GameObject obj = new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)));
+                int index = 0;
+                while (Project.VideoGame.SceneManager.CurrentScene.Contains(obj)) 
+                {
+                    obj.Name = "GameObject" + "_" + index;
+                    index++;
+                }
+                Project.VideoGame.SceneManager.CurrentScene.Add(obj);
+                LocalData.Save<VideoGame>("Data", Project.Get().DataPath1, Project.VideoGame);
+            }
+        }
+
+        private void DeleteGameObjectOfScene(GameObject obj)
+        {
+            if (Project.VideoGame is not null)
+            {
+                Project.VideoGame.SceneManager.CurrentScene.Remove(obj);
+                LocalData.Save<VideoGame>("Data", Project.Get().DataPath1, Project.VideoGame);
+            }
         }
 
         private void SelectGameObject(GameObject obj)
         {
-            Inspector.Current.Focus = true;
-            Inspector.Current.GameObject = obj;
-        }
-
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
+            Inspector.ShowGameObject(obj);
         }
     }
 }

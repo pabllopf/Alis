@@ -4,11 +4,8 @@
 //----------------------------------------------------------------------------------------------------
 namespace Alis.Editor.UI.Widgets
 {
-    using Alis.Editor.Utils;
-    using Alis.Core;
     using ImGuiNET;
     using System;
-    using Alis.Tools;
 
     /// <summary>Show the game running</summary>
     public class About : Widget
@@ -27,20 +24,6 @@ namespace Alis.Editor.UI.Widgets
         public About(EventHandler<EventType> eventHandler)
         {
             this.eventHandler = eventHandler;
-        }
-
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-            Logger.Log("Game view Opened");
-            isOpen = true;
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-            Logger.Log("Game view closed");
-            isOpen = false;
         }
 
         /// <summary>Draw this instance.</summary>

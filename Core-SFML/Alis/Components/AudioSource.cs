@@ -35,7 +35,7 @@ namespace Alis.Core.SFML
 
         /// <summary>The audio</summary>
         [JsonIgnore]
-        [NotNull]
+        [AllowNull]
         private Music audio;
 
         private bool isdefault;
@@ -43,6 +43,7 @@ namespace Alis.Core.SFML
         public AudioSource() 
         {
             audioFile = "";
+            pathFile = Asset.Load(this.audioFile) ?? "";
             isdefault = true;
             playOnAwake = true;
             volume = 100;
@@ -59,14 +60,17 @@ namespace Alis.Core.SFML
         public AudioSource([NotNull] string audioFile) 
         {
             this.audioFile = audioFile;
-            pathFile = Asset.Load(audioFile);
+            pathFile = Asset.Load(this.audioFile) ?? "";
 
             playOnAwake = true;
             volume = 100;
             isdefault = true;
             loop = true;
 
-            audio = new Music(pathFile);
+            if (!pathFile.Equals(string.Empty))
+            {
+                audio = new Music(pathFile);
+            }
 
             OnPlay += AudioSource_OnPlay;
             OnStop += AudioSource_OnStop;
@@ -83,7 +87,7 @@ namespace Alis.Core.SFML
         public AudioSource([NotNull] string audioFile, [NotNull] bool playOnAwake, [NotNull] float volume, [NotNull] bool loop)
         {
             this.audioFile = audioFile ?? "";
-            pathFile = Asset.Load(this.audioFile);
+            pathFile = Asset.Load(this.audioFile) ?? "";
 
             this.playOnAwake = playOnAwake;
             this.volume = volume;
@@ -91,7 +95,10 @@ namespace Alis.Core.SFML
 
             isdefault = true;
 
-            audio = new Music(pathFile);
+            if (!pathFile.Equals(string.Empty)) 
+            {
+                audio = new Music(pathFile);
+            }
 
             OnPlay += AudioSource_OnPlay;
             OnStop += AudioSource_OnStop;
@@ -166,47 +173,59 @@ namespace Alis.Core.SFML
         /// <summary>Plays this instance.</summary>
         public void Play()
         {
-            audio.Volume = volume;
-            audio.Play();
-            OnPlay.Invoke(null, true);
-            playOnAwake = false;
+            if (audio != null)
+            {
+                audio.Volume = volume;
+                audio.Play();
+                OnPlay?.Invoke(null, true);
+                playOnAwake = false;
+            }
         }
 
         /// <summary>Stops this instance.</summary>
         public void Stop()
         {
-            if (audio.Status == SoundStatus.Playing)
+            if (audio != null)
             {
-                audio.Stop();
-                OnStop.Invoke(null, true);
+                if (audio.Status == SoundStatus.Playing)
+                {
+                    audio.Stop();
+                    OnStop?.Invoke(null, true);
+                }
             }
         }
 
         /// <summary>Pauses this instance.</summary>
         public void Pause()
         {
-            if (audio.Status == SoundStatus.Playing)
+            if (audio != null)
             {
-                audio.Pause();
-                OnPause.Invoke(null, true);
+                if (audio.Status == SoundStatus.Playing)
+                {
+                    audio.Pause();
+                    OnPause?.Invoke(null, true);
+                }
             }
         }
 
         /// <summary>Restarts this instance.</summary>
         public void Restart()
         {
-            if (audio.Status == SoundStatus.Playing)
+            if (audio != null)
             {
-                audio.Stop();
-            }
+                if (audio.Status == SoundStatus.Playing)
+                {
+                    audio.Stop();
+                }
 
-            if (audio.Status == SoundStatus.Paused)
-            {
-                audio.Stop();
-            }
+                if (audio.Status == SoundStatus.Paused)
+                {
+                    audio.Stop();
+                }
 
-            audio.Play();
-            OnRestart.Invoke(null, true);
+                audio.Play();
+                OnRestart?.Invoke(null, true);
+            }
         }
 
         #region DefineEvents

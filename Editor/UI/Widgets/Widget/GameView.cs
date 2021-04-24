@@ -28,9 +28,6 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The is open</summary>
         private bool isOpen = true;
 
-        /// <summary>The event handler</summary>
-        private EventHandler<EventType> eventHandler;
-
         /// <summary>The im GUI controller</summary>
         private ImGuiController imGuiController;
 
@@ -70,15 +67,14 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>Initializes a new instance of the <see cref="GameView" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
-        public GameView(EventHandler<EventType> eventHandler)
+        public GameView()
         {
-            this.eventHandler = eventHandler;
             defaulSize = ImGui.GetWindowSize();
             defaultPos = ImGui.GetWindowPos();
 
             currentResolution = resolution[2];
 
-            Project.OnChange += Project_OnChangeProject;
+            //Project.OnChange += Project_OnChangeProject;
         }
 
         private void Project_OnChangeProject(object sender, bool e)
@@ -96,18 +92,6 @@ namespace Alis.Editor.UI.Widgets
         }
 
         /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-            Logger.Log("Game view Opened");
-            isOpen = true;
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-            Logger.Log("Game view closed");
-            isOpen = false;
-        }
 
         private Vector2 defaulSize;
         private Vector2 defaultPos;

@@ -9,6 +9,8 @@ namespace Alis.Editor
     using Newtonsoft.Json;
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
+    using System.Runtime.Loader;
 
     /// <summary>Project define.</summary>
     public class Project
@@ -43,26 +45,32 @@ namespace Alis.Editor
         [NotNull]
         private string libPath;
 
+        private Assembly DLL;
+        private AssemblyLoadContext context;
+
+
+
+
+
+
         static Project() 
         {
             OnChange += Project_OnChange;
         }
-
-       
 
         /// <summary>Initializes a new instance of the <see cref="Project" /> class.</summary>
         /// <param name="name">The name.</param>
         /// <param name="directory">The directory.</param>
         public Project(string name, string directory)
         {
-            this.name = name;
-            this.directory = directory;
-            assetPath = directory + "/" + name + "/Assets";
-            configPath = directory + "/" + name + "/Config";
-            dataPath = directory + "/" + name + "/Data";
-            libPath = directory + "/" + name + "/Lib";
+            this.name = name.Replace("\\", "/"); 
+            this.directory = directory.Replace("\\", "/"); ;
+            assetPath = (directory + "/" + name + "/Assets").Replace("\\", "/");
+            configPath = (directory + "/" + name + "/Config").Replace("\\", "/");
+            dataPath = (directory + "/" + name + "/Data").Replace("\\", "/"); 
+            libPath = (directory + "/" + name + "/Lib").Replace("\\", "/"); 
 
-            current ??= this;
+            
         }
 
         /// <summary>Initializes a new instance of the <see cref="Project" /> class.</summary>
@@ -73,32 +81,29 @@ namespace Alis.Editor
         /// <param name="dataPath">The data path.</param>
         /// <param name="libPath">The library path.</param>
         [JsonConstructor]
-        public Project(string name, string directory, string assetPath, string configPath, string dataPath, string libPath)
+        public Project(string name, string directory, string assetPath1, string configPath2, string dataPath3, string libPath4)
         {
             this.name = name;
             this.directory = directory;
-            this.assetPath = assetPath;
-            this.configPath = configPath;
-            this.dataPath = dataPath;
-            this.libPath = libPath;
-
-            current ??= this;
+            assetPath = assetPath1;
+            configPath = configPath2;
+            dataPath = dataPath3;
+            libPath = libPath4;
         }
 
-        /// <summary>Occurs when [on change].</summary>
-        public static event EventHandler<bool> OnChange;
-
-        /// <summary>Gets or sets the current.</summary>
-        /// <value>The current.</value>
-        [NotNull]
-        [JsonIgnore]
-        public static Project Current
+        public static void Set(Project project) 
         {
-            get => current; set
-            {
-                current = value;
-            }
+            current = project;
+
+            OnChange?.Invoke(null, true);
         }
+
+        public static Project Get()
+        {
+            return current;
+        }
+
+        public static event EventHandler<bool> OnChange;
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
@@ -110,34 +115,31 @@ namespace Alis.Editor
         [JsonProperty("_Directory")]
         public string Directory { get => directory; set => directory = value; }
 
-        /// <summary>Gets or sets the asset path.</summary>
-        /// <value>The asset path.</value>
-        [JsonProperty("_AssetPath")]
-        public string AssetsPath { get => assetPath; set => assetPath = value; }
-
-        /// <summary>Gets or sets the configuration path.</summary>
-        /// <value>The configuration path.</value>
-        [JsonProperty("_ConfigPath")]
-        public string ConfigPath { get => configPath; set => configPath = value; }
-
-        /// <summary>Gets or sets the data path.</summary>
-        /// <value>The data path.</value>
-        [JsonProperty("_DataPath")]
-        public string DataPath { get => dataPath; set => dataPath = value; }
-        
-        /// <summary>Gets or sets the library path.</summary>
-        /// <value>The library path.</value>
-        [JsonProperty("_LibPath")]
-        public string LibraryPath { get => libPath; set => libPath = value; }
-
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
         [JsonIgnore]
         public static VideoGame VideoGame { get => game; set => game = value; }
 
+        [JsonProperty("_AssetPath")]
+        public string AssetPath { get => assetPath; set => assetPath = value; }
+        
+        [JsonProperty("_ConfigPath")]
+        public string ConfigPath1 { get => configPath; set => configPath = value; }
+        
+        [JsonProperty("_DataPath")]
+        public string DataPath1 { get => dataPath; set => dataPath = value; }
+
+        [JsonProperty("_LibPath")]
+        public string LibPath { get => libPath; set => libPath = value; }
+        
+        [JsonIgnore]
+        public Assembly DLL1 { get => DLL; set => DLL = value; }
+        public AssemblyLoadContext Context { get => context; set => context = value; }
+
         /// <summary>Projects the on change.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">if set to <c>true</c> [e].</param>
         private static void Project_OnChange(object sender, bool e) => Logger.Info();
+
     }
 }

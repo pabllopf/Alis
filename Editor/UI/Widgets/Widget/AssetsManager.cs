@@ -10,14 +10,18 @@ namespace Alis.Editor.UI.Widgets
     using ImGuiNET;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.IO;
     using System.Numerics;
+    using System.Threading.Tasks;
 
     /// <summary>Manage files of project.</summary>
     public class AssetsManager : Widget
     {
         /// <summary>The name</summary>
         private const string Name = "Assets";
+
+        private Info info;
 
         /// <summary>The filter</summary>
         private ImGuiTextFilterPtr filter;
@@ -47,22 +51,24 @@ namespace Alis.Editor.UI.Widgets
         private bool stateOfView = true;
 
         /// <summary>Initializes a new instance of the <see cref="AssetsManager" /> class.</summary>
-        public AssetsManager()
+        public AssetsManager(Info info)
         {
+            this.info = info;
+
             unsafe
             {
                 ImGuiTextFilter* filterPtr = ImGuiNative.ImGuiTextFilter_ImGuiTextFilter(null);
                 filter = new ImGuiTextFilterPtr(filterPtr);
             }
 
-            Project.OnChange += Project_OnChangeProject;
+            Project.OnChange += Project_OnChange;
         }
 
-        private void Project_OnChangeProject(object sender, bool e)
+        private void Project_OnChange(object sender, bool e)
         {
-            if (Project.Current != null) 
+            if (Project.Get() is not null) 
             {
-                assetPath = Project.Current.AssetsPath;
+                assetPath = Project.Get().AssetPath;
                 currentDirRight = assetPath;
             }
         }
@@ -89,8 +95,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
                 ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
 
-
-                if (Project.Current != null)
+                if (Project.Get() != null)
                 {
                     foreach (string folderButton in GetNameDir(currentDirRight))
                     {
@@ -98,6 +103,7 @@ namespace Alis.Editor.UI.Widgets
                         {
                             MoveToDir(folderButton);
                         }
+
                         ImGui.SameLine();
 
                         ImGui.Text("/");
@@ -115,7 +121,7 @@ namespace Alis.Editor.UI.Widgets
                 if (filter.IsActive()) 
                 {
                     templist.Clear();
-                    foreach (string file in Directory.GetFiles(Project.Current.AssetsPath,"*", SearchOption.AllDirectories)) 
+                    foreach (string file in Directory.GetFiles(Project.Get().AssetPath,"*", SearchOption.AllDirectories)) 
                     {
                         if (filter.PassFilter(Path.GetFileName(file))) 
                         {
@@ -133,16 +139,16 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.BeginChild("Assets-Child-Left", new Vector2((ImGui.GetWindowWidth() <= ImGui.GetWindowHeight()) ? ImGui.GetContentRegionAvail().X : ImGui.GetContentRegionAvail().X / 3, ImGui.GetContentRegionAvail().Y), true))
                     {
-                        if (Project.Current != null)
+                        if (Project.Get() != null)
                         {
                             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
                             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
 
                             if (!filter.IsActive())
                             {
-                                if (Project.Current != null)
+                                if (Project.Get() != null)
                                 {
-                                    ShowTree(Project.Current.AssetsPath);
+                                    ShowTree(Project.Get().AssetPath);
 
                                 }
                             }
@@ -168,11 +174,11 @@ namespace Alis.Editor.UI.Widgets
                     if (ImGui.GetWindowWidth() > ImGui.GetWindowHeight())
                     {
 
-                        if (ImGui.BeginChild("Assets-Child-Right", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true, ImGuiWindowFlags.AlwaysAutoResize))
+                        if (ImGui.BeginChild("Assets-Child-Right", new Vector2(ImGui.GetContentRegionAvail().X, ImGui.GetContentRegionAvail().Y), true, ImGuiWindowFlags.AlwaysAutoResize))
                         {
                             ImGui.PushStyleColor(ImGuiCol.Button, new Vector4(0, 0, 0, 0));
                             ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
-                            if (Project.Current != null)
+                            if (Project.Get() != null)
                             {
                                 if (!filter.IsActive())
                                 {
@@ -213,14 +219,14 @@ namespace Alis.Editor.UI.Widgets
             }
 
             ImGui.End();
-
+            
         }
 
         private void ShowFile(string file)
         {
             ImGui.BeginGroup();
 
-            string icon = "";
+            string icon = Icon.FILEO;
 
             for (int i = 0; i < audiosFormat.Length; i++)
             {
@@ -260,7 +266,7 @@ namespace Alis.Editor.UI.Widgets
             {
                 ImGui.PushStyleVar(ImGuiStyleVar.ButtonTextAlign, new Vector2(0f, 0.5f));
 
-                if (ImGui.Button(icon + " " + Path.GetFileName(file), new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
+                if (ImGui.Button(icon + " " + Path.GetFileName(file), new Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
                 {
                 }
                 ImGui.PopStyleVar();
@@ -275,11 +281,11 @@ namespace Alis.Editor.UI.Widgets
 
         private void ShowFiles(string currentDir)
         {
-            foreach (string file in Directory.GetFiles(currentDir))
+            foreach (string file in Directory.GetFiles(currentDir, "*"))
             {
                 ImGui.BeginGroup();
 
-                string icon = "";
+                string icon = Icon.FILEO;
 
                 for (int i = 0; i < audiosFormat.Length; i++)
                 {
@@ -321,6 +327,10 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.Button(icon + " " + Path.GetFileName(file), new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 25.0f)))
                     {
+                        if (Path.GetExtension(file).Contains(".cs")) 
+                        {
+                            OpenVisualStudio();
+                        }
                     }
                     ImGui.PopStyleVar();
                 }
@@ -331,6 +341,32 @@ namespace Alis.Editor.UI.Widgets
 
                 ImGui.EndGroup();
             }
+        }
+
+        private void OpenVisualStudio()
+        {
+            Console.Warning("Open VISUAL STUDIO");
+
+            Task.Run(() =>
+            {
+                string fileName = "cmd.exe";
+                string RUN = Project.Get().Name + ".sln";
+
+                if (info.Platform.Equals(Platform.Linux))
+                {
+                    fileName = "/bin/bash";
+                    RUN = "dotnet restore";
+                }
+
+                if (info.Platform.Equals(Platform.MacOS))
+                {
+                    fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                    RUN = "dotnet restore";
+                }
+
+                RunCommand("Building", fileName, RUN, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+            });
+
         }
 
         private void MoveToDir(string folderButton)
@@ -356,7 +392,7 @@ namespace Alis.Editor.UI.Widgets
 
         private List<string> GetNameDir(string currentDirRight) 
         {
-            string pathrelative = Path.GetRelativePath(Project.Current.AssetsPath, currentDirRight).Replace("\\", "/").Replace(".", "");
+            string pathrelative = Path.GetRelativePath(Project.Get().AssetPath, currentDirRight).Replace("\\", "/").Replace(".", "");
             string[] path = pathrelative.Split("/");
 
             List<string> list = new List<string>();
@@ -393,7 +429,11 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.TreePop();
                 }
+
+               
             }
+
+            ShowFiles(currentDir);
         }
 
         private void ChangeDir(string directory)
@@ -402,15 +442,6 @@ namespace Alis.Editor.UI.Widgets
             Logger.Log("CurrentDir:" + currentDirRight);
         }
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-        }
 
         /// <summary>Gets the path list.</summary>
         /// <param name="path">The path.</param>
@@ -436,5 +467,63 @@ namespace Alis.Editor.UI.Widgets
 
             return pathFolders;
         }
+
+        #region Run CMD 
+
+        /// <summary>
+        /// Runs the command.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="commandBuild">The command build.</param>
+        /// <param name="WorkingDirectory">The working directory.</param>
+        /// <returns>Return none</returns>
+        private void RunCommand(string message, string fileName, string commandBuild, string WorkingDirectory, bool messages)
+        {
+            if (messages)
+            {
+                BottomMenu.Loading(true, message);
+            }
+
+            Process buildProcess = new Process();
+
+            buildProcess.StartInfo.FileName = fileName;
+            buildProcess.StartInfo.WorkingDirectory = WorkingDirectory;
+            buildProcess.StartInfo.CreateNoWindow = false;
+            buildProcess.StartInfo.RedirectStandardInput = true;
+            buildProcess.StartInfo.RedirectStandardOutput = true;
+            buildProcess.StartInfo.UseShellExecute = false;
+            buildProcess.Start();
+            buildProcess.StandardInput.WriteLine(commandBuild);
+            buildProcess.StandardInput.Flush();
+            buildProcess.StandardInput.Close();
+            buildProcess.WaitForExit();
+
+            string[] sentences = buildProcess.StandardOutput.ReadToEnd().Split("\n");
+            for (int i = 0; i < sentences.Length; i++)
+            {
+                if (sentences[i].Contains("warning"))
+                {
+                    Console.Warning(sentences[i]);
+                    continue;
+                }
+
+                if (sentences[i].Contains("error") || sentences[i].Contains("failed") || sentences[i].Contains("exception"))
+                {
+                    Console.Error(sentences[i]);
+                    continue;
+                }
+
+                Console.Log(sentences[i], false);
+            }
+
+            if (messages)
+            {
+                BottomMenu.Loading(false, "");
+            }
+        }
+
+        #endregion
+
     }
 }

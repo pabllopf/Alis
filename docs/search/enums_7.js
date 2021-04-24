@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['typeproject_2435',['TypeProject',['../namespace_alis_1_1_editor.html#afdfd76197c96727cc4059c5e3167fa05',1,'Alis::Editor']]]
+  ['sentence_2541',['Sentence',['../namespace_alis_1_1_editor_1_1_u_i.html#ad39d1bacb8fd07bb4f435c66be1c798a',1,'Alis::Editor::UI']]]
 ];

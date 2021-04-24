@@ -275,6 +275,22 @@ namespace Alis.Core
             return false;
         }
 
+        public bool Contains(Component component) 
+        {
+            Span<Component> span = components.Span;
+            for (int i = 0; i < span.Length; i++)
+            {
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(component.GetType()))
+                {
+                    Logger.Log(string.Format(ContainsComponent, component.GetType().FullName, this.name));
+                    return true;
+                }
+            }
+
+            Logger.Log(string.Format(DontContainsComponent, component.GetType().FullName, this.name));
+            return false;
+        }
+
         /// <summary>Adds the specified component.</summary>
         /// <typeparam name="T">Type component</typeparam>
         /// <param name="component">The component.</param>
@@ -310,13 +326,30 @@ namespace Alis.Core
                 if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(typeof(T)))
                 {
                     Logger.Log(string.Format(DeleteComponent, typeof(T).FullName, this.name));
-                    span[i].IsActive = false;
+                    span[i] = null;
                     return;
                 }
             }
 
             Logger.Warning(string.Format(DontDeleteComponent, typeof(T).FullName, this.name));
         }
+
+        public void Delete(Component component) 
+        {
+            Span<Component> span = components.Span;
+            for (int i = 0; i < components.Length; i++)
+            {
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(component.GetType()))
+                {
+                    Logger.Log(string.Format(DeleteComponent, component.GetType().FullName, this.name));
+                    span[i] = null;
+                    return;
+                }
+            }
+
+            Logger.Warning(string.Format(DontDeleteComponent, component.GetType().FullName, this.name));
+        }
+
 
         /// <summary>Gets the component.</summary>
         /// <typeparam name="T">general type</typeparam>
@@ -337,6 +370,33 @@ namespace Alis.Core
             Logger.Warning(string.Format(DontFindComponent, typeof(T).FullName, this.name));
             return null;
         }
+
+        /// <summary>Gets the component.</summary>
+        /// <typeparam name="T">general type</typeparam>
+        /// <returns>Return the component</returns>
+        [return: MaybeNull]
+        public Component Get(Component component)
+        {
+            Span<Component> span = components.Span;
+            for (int i = 0; i < components.Length; i++)
+            {
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(component.GetType()))
+                {
+                    Logger.Log(string.Format(FindComponent, component.GetType().FullName, this.name));
+                    return span[i];
+                }
+            }
+
+            Logger.Warning(string.Format(DontFindComponent, component.GetType().FullName, this.name));
+            return null;
+        }
+
+        [return: MaybeNull]
+        public void Set(Component component, int pos)
+        {
+            components.Span[pos] = component;
+        }
+
 
         /// <summary>Awake this instance.</summary>
         public void Awake()

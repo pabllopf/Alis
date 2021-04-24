@@ -28,7 +28,14 @@ namespace Alis.Editor
         public Engine([NotNull] string[] args)
         {
             this.args = args;
+
+            for (int i = 0; i < args.Length;i++) 
+            {
+                Logger.Log("Arg '" + i + "' " + args[i]);
+            }
+
             info = new Info();
+            Logger.Info();
         }
 
         /// <summary>Gets a value indicating whether [first instance].</summary>
@@ -40,6 +47,12 @@ namespace Alis.Editor
             get
             {
                 _ = new Mutex(true, Assembly.GetEntryAssembly().FullName, out bool created);
+                
+                if (!created) 
+                {
+                    Logger.Warning("You can`t open more than 1 intancie of Alis.");
+                }
+
                 return created;
             }
         }

@@ -243,8 +243,8 @@ namespace Alis.Core
             {
                 if (span[i] != null && span[i].Name.Equals(gameObject.Name) && span[i].IsActive)
                 {
-                    span[i].IsActive = false;
                     Logger.Log(string.Format(DeleteGameObject, span[i].Name, this.name));
+                    span[i] = null;
                     break;
                 }
             }

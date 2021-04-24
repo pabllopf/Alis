@@ -5,6 +5,7 @@ var namespace_alis_1_1_editor_1_1_u_i_1_1_widgets =
     [ "BottomMenu", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu" ],
     [ "Console", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console" ],
     [ "DockSpace", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space" ],
+    [ "FileDialog", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog" ],
     [ "GameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view" ],
     [ "Hierarchy", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_hierarchy" ],
     [ "Inspector", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector" ],

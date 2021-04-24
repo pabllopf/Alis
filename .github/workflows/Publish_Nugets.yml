@@ -19,9 +19,6 @@ jobs:
       with:
         dotnet-version: 5.0.x
     
-    - name: Restore dependencies
-      run: dotnet restore
-    
     - name: Publish Alis.Core Nuget
       uses: rohith/publish-nuget@v2
       with:

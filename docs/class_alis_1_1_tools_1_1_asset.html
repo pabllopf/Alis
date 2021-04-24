@@ -97,7 +97,6 @@ $(document).ready(function(){initNavTree('class_alis_1_1_tools_1_1_asset.html','
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_alis_1_1_tools_1_1_asset-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -110,63 +109,20 @@ $(document).ready(function(){initNavTree('class_alis_1_1_tools_1_1_asset.html','
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ae4dd0b94acfdafd2b6d22583dd5097fb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_asset.html#ae4dd0b94acfdafd2b6d22583dd5097fb">SetWorkPath</a> (string message)</td></tr>
-<tr class="memdesc:ae4dd0b94acfdafd2b6d22583dd5097fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the work path.  <a href="class_alis_1_1_tools_1_1_asset.html#ae4dd0b94acfdafd2b6d22583dd5097fb">More...</a><br /></td></tr>
-<tr class="separator:ae4dd0b94acfdafd2b6d22583dd5097fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97114d987400dc5ab5b97258c715b222"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_asset.html#a97114d987400dc5ab5b97258c715b222">Load</a> (string file)</td></tr>
 <tr class="memdesc:a97114d987400dc5ab5b97258c715b222"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the specified name.  <a href="class_alis_1_1_tools_1_1_asset.html#a97114d987400dc5ab5b97258c715b222">More...</a><br /></td></tr>
 <tr class="separator:a97114d987400dc5ab5b97258c715b222"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:ac25baf4f013d2381071dbb9037bb5e1e"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_asset.html#ac25baf4f013d2381071dbb9037bb5e1e">AssetsPath</a> =&gt; Environment.CurrentDirectory + &quot;/Assets/&quot;</td></tr>
-<tr class="memdesc:ac25baf4f013d2381071dbb9037bb5e1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the assets path.  <a href="class_alis_1_1_tools_1_1_asset.html#ac25baf4f013d2381071dbb9037bb5e1e">More...</a><br /></td></tr>
-<tr class="separator:ac25baf4f013d2381071dbb9037bb5e1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
-<tr class="memitem:a692da48682dafb23e8f5c843ca17b7f8"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_asset.html#a692da48682dafb23e8f5c843ca17b7f8">workPath</a> = string.Empty</td></tr>
+<tr class="memitem:a692da48682dafb23e8f5c843ca17b7f8"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_asset.html#a692da48682dafb23e8f5c843ca17b7f8">workPath</a> = Environment.CurrentDirectory</td></tr>
 <tr class="separator:a692da48682dafb23e8f5c843ca17b7f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74b8960dceba020dabb26423f946c014"><td class="memItemLeft" align="right" valign="top">static Dictionary&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_asset.html#a74b8960dceba020dabb26423f946c014">assets</a> = new Dictionary&lt;string, string&gt;()</td></tr>
-<tr class="memdesc:a74b8960dceba020dabb26423f946c014"><td class="mdescLeft">&#160;</td><td class="mdescRight">The assets  <a href="class_alis_1_1_tools_1_1_asset.html#a74b8960dceba020dabb26423f946c014">More...</a><br /></td></tr>
-<tr class="separator:a74b8960dceba020dabb26423f946c014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Find any asset of the videogame. </p>
 
 <p class="definition">Definition at line <a class="el" href="_asset_8cs_source.html#l00013">13</a> of file <a class="el" href="_asset_8cs_source.html">Asset.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="ae4dd0b94acfdafd2b6d22583dd5097fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4dd0b94acfdafd2b6d22583dd5097fb">&#9670;&nbsp;</a></span>SetWorkPath()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void Alis.Tools.Asset.SetWorkPath </td>
-          <td>(</td>
-          <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>message</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets or sets the work path. </p>
-<p>The work path.</p>
-
-<p class="definition">Definition at line <a class="el" href="_asset_8cs_source.html#l00026">26</a> of file <a class="el" href="_asset_8cs_source.html">Asset.cs</a>.</p>
-
-</div>
-</div>
 <a id="a97114d987400dc5ab5b97258c715b222"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a97114d987400dc5ab5b97258c715b222">&#9670;&nbsp;</a></span>Load()</h2>
 
@@ -200,7 +156,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Return the path of assset</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_asset_8cs_source.html#l00035">35</a> of file <a class="el" href="_asset_8cs_source.html">Asset.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_asset_8cs_source.html#l00021">21</a> of file <a class="el" href="_asset_8cs_source.html">Asset.cs</a>.</p>
 
 </div>
 </div>
@@ -215,7 +171,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Tools.Asset.workPath = string.Empty</td>
+          <td class="memname">string Alis.Tools.Asset.workPath = Environment.CurrentDirectory</td>
         </tr>
       </table>
   </td>
@@ -229,59 +185,6 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a74b8960dceba020dabb26423f946c014"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74b8960dceba020dabb26423f946c014">&#9670;&nbsp;</a></span>assets</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Dictionary&lt;string, string&gt; Alis.Tools.Asset.assets = new Dictionary&lt;string, string&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The assets </p>
-
-<p class="definition">Definition at line <a class="el" href="_asset_8cs_source.html#l00018">18</a> of file <a class="el" href="_asset_8cs_source.html">Asset.cs</a>.</p>
-
-</div>
-</div>
-<a id="ac25baf4f013d2381071dbb9037bb5e1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac25baf4f013d2381071dbb9037bb5e1e">&#9670;&nbsp;</a></span>AssetsPath</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Alis.Tools.Asset.AssetsPath =&gt; Environment.CurrentDirectory + &quot;/Assets/&quot;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets the assets path. </p>
-<p>The assets path.</p>
-
-<p class="definition">Definition at line <a class="el" href="_asset_8cs_source.html#l00022">22</a> of file <a class="el" href="_asset_8cs_source.html">Asset.cs</a>.</p>
-
-</div>
-</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 
@@ -289,7 +192,7 @@ Static Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_tools.html">Tools</a></li><li class="navelem"><a class="el" href="class_alis_1_1_tools_1_1_asset.html">Asset</a></li>
     <li class="footer">
-      <a>Generated on | Wed Apr 21 2021 |</a>
+      <a>Generated on | Sat Apr 24 2021 |</a>
     </li>
   </ul>
 </div>

@@ -8,6 +8,7 @@ namespace Alis.Editor.UI.Widgets
     using ImGuiNET;
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>Console widget </summary>
     public class Console : Widget
@@ -29,6 +30,9 @@ namespace Alis.Editor.UI.Widgets
 
         /// <summary>The item space</summary>
         private System.Numerics.Vector2 itemSpace = new System.Numerics.Vector2(2.0f, 3.0f);
+
+        [NotNull]
+        private bool focus = false;
 
         #region StateFilters
 
@@ -87,52 +91,51 @@ namespace Alis.Editor.UI.Widgets
             log.Clear();
         }
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
-        {
-            isOpen = true;
-        }
-
-        /// <summary>Close this instance.</summary>
-        public override void Close()
-        {
-            isOpen = false;
-        }
-
         /// <summary>Warnings the specified message.</summary>
         /// <param name="message">The message.</param>
-        public void Warning(string message)
+        public static void Warning(string message)
         {
-            log.Add("Warning: " + message + " [" + DateTime.Today + "]");
+            current?.log?.Add("[" + DateTime.Today + "]" + "  Warning: " + message + "");
+            current?.Focus();
         }
 
         /// <summary>Errors the specified message.</summary>
         /// <param name="message">The message.</param>
-        public void Error(string message)
+        public static void Error(string message)
         {
-            log.Add("Error: " + message + " [" + DateTime.Today + "]");
+            current?.log?.Add("[" + DateTime.Today + "]" + "  Error: " + message + "");
+            current?.Focus();
         }
 
         /// <summary>Logs the specified message.</summary>
         /// <param name="message">The message.</param>
-        public void Log(string message)
+        public static void Log(string message)
         {
-            log.Add("Log: " + message + " [" + DateTime.Today + "]");
+            current?.log?.Add("[" + DateTime.Today + "]" + "  Log: " + message + "");
+            current?.Focus();
         }
 
         /// <summary>Logs the specified message.</summary>
         /// <param name="message">The message.</param>
         /// <param name="date">if set to <c>true</c> [date].</param>
-        public void Log(string message, bool date)
+        public static void Log(string message, bool date)
         {
             if (date)
             {
-                log.Add("Log: " + message + " [" + DateTime.Today + "]");
+                current?.log?.Add("[" + DateTime.Today + "]" + "  Log: " + message + "");
             }
             else 
             {
-                log.Add("Log: " + message);
+                current?.log?.Add("Log: " + message + "");
             }
+
+            current?.Focus();
+        }
+
+        /// <summary>Focuses this instance.</summary>
+        private void Focus()
+        {
+            focus = true;
         }
 
         /// <summary>Prints this instance.</summary>
@@ -166,6 +169,7 @@ namespace Alis.Editor.UI.Widgets
                         message.Replace("Error: ", "")
                         );
                 }
+
                 if (message.Contains("Log")) 
                 {
                     ImGui.Text(message.Replace("Log: ", ""));
@@ -180,6 +184,12 @@ namespace Alis.Editor.UI.Widgets
             {
                 eventHandler?.Invoke(this, EventType.CloseConsole);
                 return;
+            }
+
+            if (focus)
+            {
+                ImGui.SetNextWindowFocus();
+                focus = false;
             }
 
             if (ImGui.Begin("Console", ref isOpen))

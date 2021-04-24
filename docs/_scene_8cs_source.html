@@ -300,8 +300,8 @@ $(document).ready(function(){initNavTree('_scene_8cs_source.html',''); initResiz
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            {</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <span class="keywordflow">if</span> (span[i] != <span class="keyword">null</span> &amp;&amp; span[i].<a class="code" href="class_alis_1_1_core_1_1_scene.html#a3c4bb09aa5ac9ce7669a33031b0a6c3f">Name</a>.Equals(gameObject.Name) &amp;&amp; span[i].IsActive)</div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                {</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    span[i].IsActive = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                    <a class="code" href="class_alis_1_1_tools_1_1_logger.html">Logger</a>.<a class="code" href="class_alis_1_1_tools_1_1_logger.html#a4377c11cb5d762bf040ff04610a94701">Log</a>(<span class="keywordtype">string</span>.Format(<a class="code" href="class_alis_1_1_core_1_1_scene.html#a0b3dce53024d166aacfb64e905245dfb">DeleteGameObject</a>, span[i].<a class="code" href="class_alis_1_1_core_1_1_scene.html#a3c4bb09aa5ac9ce7669a33031b0a6c3f">Name</a>, this.name));</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    <a class="code" href="class_alis_1_1_tools_1_1_logger.html">Logger</a>.<a class="code" href="class_alis_1_1_tools_1_1_logger.html#a4377c11cb5d762bf040ff04610a94701">Log</a>(<span class="keywordtype">string</span>.Format(<a class="code" href="class_alis_1_1_core_1_1_scene.html#a0b3dce53024d166aacfb64e905245dfb">DeleteGameObject</a>, span[i].<a class="code" href="class_alis_1_1_core_1_1_scene.html#a3c4bb09aa5ac9ce7669a33031b0a6c3f">Name</a>, this.name));</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                    span[i] = <span class="keyword">null</span>;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                    <span class="keywordflow">break</span>;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                }</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            }</div>
@@ -675,7 +675,7 @@ $(document).ready(function(){initNavTree('_scene_8cs_source.html',''); initResiz
   <ul>
     <li class="navelem"><a class="el" href="dir_c6310732a22f63c0c2fc5595561e68f1.html">Core</a></li><li class="navelem"><a class="el" href="dir_d269e3345ef4c8df17de3e7278ab3770.html">Scene</a></li><li class="navelem"><b>Scene.cs</b></li>
     <li class="footer">
-      <a>Generated on | Wed Apr 21 2021 |</a>
+      <a>Generated on | Sat Apr 24 2021 |</a>
     </li>
   </ul>
 </div>

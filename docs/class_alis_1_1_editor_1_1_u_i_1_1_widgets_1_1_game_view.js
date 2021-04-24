@@ -1,16 +1,13 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view =
 [
-    [ "GameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a48270620a40824e1abe8aebc4dedf68e", null ],
+    [ "GameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a88d4ad9b7f70ff116c936cecef21cbae", null ],
     [ "Project_OnChangeProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ad8ee5e9a51a5e69e2601d12b7494aef8", null ],
-    [ "Open", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a9b57208113d3ba6c42abdb1d00ba48d0", null ],
-    [ "Close", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a0e68fa9812638d131d8300e6e28b6925", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a40e9de4ad0976cdcb7397b1322a4814d", null ],
     [ "RenderGame", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a4f817e82a6d09ef25e22d09e5885b8dc", null ],
     [ "Render", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ab7c1103c3df83f4951603ea409f22ec8", null ],
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a4dc2f66c0d0aaa742fbda0d5890fa9a5", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ad994deb885bfaed2cc713b3a039b8f03", null ],
     [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ae780b204305e8a00299b93165b39fc0e", null ],
-    [ "eventHandler", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ae4bdbb7e833572722ab8d9ba2717f19d", null ],
     [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a14890afeb6801a3dbfd0ec9f58e570c8", null ],
     [ "isGaming", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ad6850cdf7ec58b3f8ac8530c2fe02ceb", null ],
     [ "intPtr", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ab65db78b40e3a699486dd2b81c0be1eb", null ],

@@ -5,124 +5,215 @@
 namespace Alis.Editor.UI.Widgets
 {
     using System;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
+    using System.Linq;
+    using System.Numerics;
+    using System.Reflection;
+    using System.Runtime.Loader;
     using System.Text;
     using System.Threading;
-    using Alis.Core;
-    using Alis.Core.SFML;
+    using System.Threading.Tasks;
     using Alis.Editor.Utils;
     using Alis.Tools;
     using ImGuiNET;
+    using Microsoft.Extensions.DependencyModel;
 
-    /// <summary>Menu of editor</summary>
+    /// <summary>
+    /// Menu of editor
+    /// </summary>
+    /// <seealso cref="Alis.Editor.UI.Widgets.Widget" />
     public class TopMenu : Widget
     {
+        #region Texts UI
+
+        /// <summary>The new project</summary>
+        [NotNull]
+        private static string newProject;
+
+        /// <summary>The open project</summary>
+        [NotNull]
+        private static string openProject;
+
+        /// <summary>The save project</summary>
+        [NotNull]
+        private static string saveProject;
+
+        /// <summary>The automatic save</summary>
+        [NotNull]
+        private static string autoSave;
+
+        /// <summary>The build settings</summary>
+        [NotNull]
+        private static string build;
+
+        /// <summary>The build and run</summary>
+        [NotNull]
+        private static string buildAndRun;
+
+        /// <summary>The exit</summary>
+        [NotNull]
+        private static string exit;
+
+        /// <summary>The exit</summary>
+        [NotNull]
+        private static string messageSaveGame;
+
+        /// <summary>The exit</summary>
+        [NotNull]
+        private static string messageExit;
+
+        /// <summary>The yes</summary>
+        [NotNull]
+        private static string yes;
+
+        /// <summary>The no</summary>
+        [NotNull]
+        private static string no;
+
+        #endregion
+
+        #region State Vars
+
         /// <summary>The process</summary>
-        private System.Diagnostics.Process process = new System.Diagnostics.Process();
+        [NotNull]
+        private Process process;
 
         /// <summary>The start information</summary>
-        private System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-
-        /// <summary>The about state</summary>
-        private bool aboutState = false;
-
-        /// <summary>The exit state</summary>
-        private bool exitState = false;
-
-        /// <summary>The is saved pressed</summary>
-        private bool isSavedPressed = false;
-
-        /// <summary>The automatic save selected</summary>
-        private bool autoSaveSelected = false;
+        [NotNull]
+        private ProcessStartInfo startInfo;
 
         /// <summary>The information</summary>
+        [NotNull]
         private Info info;
 
-        /// <summary>Initializes a new instance of the <see cref="TopMenu" /> class.</summary>
-        /// <param name="eventHandler">The event handler.</param>
+        /// <summary>The time span</summary>
+        [NotNull]
+        private Stopwatch watch;
+
+        /// <summary>The exit state</summary>
+        [NotNull]
+        private bool exitState;
+
+        /// <summary>The is autosave active</summary>
+        [NotNull]
+        private bool autosaveMode;
+
+        /// <summary>The timer automatic save</summary>
+        [NotNull]
+        private int timerAutoSave;
+
+        /// <summary>The is saved pressed</summary>
+        [NotNull]
+        private bool aboutState = false;
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TopMenu"/> class.
+        /// </summary>
         /// <param name="info">The information.</param>
         public TopMenu(Info info)
         {
             this.info = info;
 
-            if (info.Platform.Equals(Platform.Windows))
-            {
-                startInfo.FileName = "cmd";
-            }
+            startInfo = new ProcessStartInfo();
+            process = new Process();
 
-            if (info.Platform.Equals(Platform.MacOS))
-            {
-                startInfo.FileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
-            }
+            watch = new Stopwatch();
+            watch.Start();
 
-            if (info.Platform.Equals(Platform.Linux))
-            {
-                startInfo.FileName = "/bin/bash";
-                startInfo.Arguments = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
-            }
+            timerAutoSave = 60;
+
+            TextManager.OnChangeIdiom += TextManager_OnChangeIdiom;
+
+            autosaveMode = LocalData.Load("Autosave", false);
+
+            exitState = false;
+
+            LoadTexts();
 
 
-            startInfo.UseShellExecute = true;
-            process.StartInfo = startInfo;
         }
 
-        /// <summary>Draw this instance.</summary>
+        #endregion
+
+        #region Draw
+
+        /// <summary>
+        /// Draws this instance.
+        /// </summary>
+        /// <returns>Return none</returns>
         public override void Draw()
         {
-            ProcessShortcuts();
+            CheckShortCuts();
+            CheckIsExit();
+            CheckIsAbout();
+            CheckAutoSaveMode();
 
             if (ImGui.BeginMainMenuBar())
             {
+
+                #region File Menu
+                
                 if (ImGui.BeginMenu("File"))
                 {
-
-                    if (ImGui.MenuItem(Icon.FILEO + " New Project", "Ctrl+N"))
+                    if (ImGui.MenuItem(label: newProject, shortcut: "Ctrl+N"))
                     {
-                        //eventHandler.Invoke(null, EventType.OpenCreateProject);
+                        NewProject();
                     }
 
-                    if (ImGui.MenuItem(Icon.FOLDEROPEN + " Open Project", "Ctrl+O"))
+                    if (ImGui.MenuItem(label: openProject, shortcut: "Ctrl+O"))
                     {
-                        //eventHandler.Invoke(null, EventType.OpenProject);
+                        OpenProject();
                     }
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.FLOPPYO + " Save", "Ctrl+S"))
+                    if (ImGui.MenuItem(label: saveProject, shortcut: "Ctrl+S"))
                     {
-                        SaveProject();
+                        SaveProject(true);
                     }
 
-                    if (ImGui.MenuItem(Icon.REFRESH + " AutoSave -SOON-", false))
+                    if (ImGui.MenuItem(label: autoSave + (autosaveMode ? timerAutoSave - (int)watch.Elapsed.TotalSeconds + "s": ""), "Ctrl+Alt+S", autosaveMode))
                     {
                         AutoSaveProject();
                     }
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.GAMEPAD + " Build Settings -SOON-", false))
+                    if (ImGui.MenuItem(build, "Ctrl+B"))
                     {
+                        Build();
                     }
 
-                    if (ImGui.MenuItem(Icon.PLAYCIRCLEO + " Build and Run", "Ctrl+B"))
+                    if (ImGui.MenuItem(buildAndRun, "Ctrl+Alt+B"))
                     {
                         BuildAndRun();
                     }
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.POWEROFF + " Exit", "Alt+F4"))
+                    if (ImGui.MenuItem(exit, "Alt+F4"))
                     {
-                        exitState = true;
+                        Exit();
                     }
 
                     ImGui.EndMenu();
                 }
 
+                #endregion
+
+                #region Edit Menu
+
                 if (ImGui.BeginMenu("Edit"))
                 {
                     if (ImGui.MenuItem(Icon.UNDO + " Undo -SOON-", false))
                     {
+                        Cut();
                     }
 
                     if (ImGui.MenuItem(Icon.REPEAT + " Redo -SOON-", false))
@@ -149,12 +240,16 @@ namespace Alis.Editor.UI.Widgets
                     {
                     }
 
-                    if (ImGui.MenuItem(Icon.COG + " Preferences -SOON-", false  ))
+                    if (ImGui.MenuItem(Icon.COG + " Preferences -SOON-", false))
                     {
                     }
 
                     ImGui.EndMenu();
                 }
+
+                #endregion
+
+                #region Tools Menu
 
                 if (ImGui.BeginMenu("Tools"))
                 {
@@ -163,8 +258,17 @@ namespace Alis.Editor.UI.Widgets
                         OpenTerminal();
                     }
 
+                    if (ImGui.MenuItem(Icon.LISTALT + " Visual Studio", "Ctrl+Alt+V"))
+                    {
+                        OpenVisualStudio();
+                    }
+
                     ImGui.EndMenu();
                 }
+
+                #endregion
+
+                #region Window Menu
 
                 if (ImGui.BeginMenu("Window"))
                 {
@@ -172,14 +276,17 @@ namespace Alis.Editor.UI.Widgets
                     {
                         if (ImGui.MenuItem("Default"))
                         {
+                            DefaultView();
                         }
 
                         if (ImGui.MenuItem("Tall"))
                         {
+                            TallView();
                         }
 
                         if (ImGui.MenuItem("Wide"))
                         {
+                            WideView();
                         }
 
                         ImGui.EndMenu();
@@ -205,7 +312,6 @@ namespace Alis.Editor.UI.Widgets
 
                         if (ImGui.MenuItem("Console"))
                         {
-                            //eventHandler?.Invoke(this, EventType.OpenConsole);
                         }
 
                         ImGui.EndMenu();
@@ -234,16 +340,20 @@ namespace Alis.Editor.UI.Widgets
                     ImGui.EndMenu();
                 }
 
+                #endregion
+
+                #region Help Menu
+
                 if (ImGui.BeginMenu("Help"))
                 {
                     if (ImGui.MenuItem(Icon.QUESTIONCIRCLE + " Manual"))
                     {
-                        System.Diagnostics.Process.Start("explorer", "https://pabllopf.github.io/Alis/");
+                        Task.Run(() => Process.Start("explorer", "https://pabllopf.github.io/Alis/"));
                     }
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.SUPERPOWERS + " Check for Updates -SOON- ", false ))
+                    if (ImGui.MenuItem(Icon.SUPERPOWERS + " Check for Updates -SOON- ", false))
                     {
                     }
 
@@ -257,137 +367,601 @@ namespace Alis.Editor.UI.Widgets
                     ImGui.EndMenu();
                 }
 
-                ImGui.EndMainMenuBar();
+                #endregion
+
             }
 
-            ShowAboutPopup();
-            ShowExitPopup();
+            ImGui.EndMainMenuBar();
         }
 
-        /// <summary>Opens this instance.</summary>
-        public override void Open()
+        #endregion
+
+        #region Load Texts
+
+        /// <summary>
+        /// Loads the texts.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void LoadTexts()
         {
+            newProject = Icon.FILEO + TextManager.Get(Sentence.NewProject);
+            openProject = Icon.FOLDEROPEN + TextManager.Get(Sentence.OpenProject);
+            saveProject = Icon.FLOPPYO + TextManager.Get(Sentence.SaveProject);
+            autoSave = Icon.REFRESH + TextManager.Get(Sentence.AutoSave);
+            build = Icon.GAMEPAD + TextManager.Get(Sentence.Build);
+            buildAndRun = Icon.GAMEPAD + TextManager.Get(Sentence.BuildAndRun);
+            exit = Icon.POWEROFF + TextManager.Get(Sentence.Exit);
+
+            messageSaveGame = TextManager.Get(Sentence.MessageSaveGame);
+            messageExit = TextManager.Get(Sentence.MessageExit);
+
+            yes = TextManager.Get(Sentence.Yes);
+            no = TextManager.Get(Sentence.No);
         }
 
-        /// <summary>Close this instance.</summary>
-        public override void Close()
+        #endregion
+
+        #region File Menu
+
+        /// <summary>
+        /// Creates new project.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void NewProject()
         {
+            Console.Log("New Project");
+            WidgetManager.Add(new ProjectManager(false, info));
         }
 
-        private bool isOpenNewProject = false;
-
-        private bool isOpenProject = false;
-
-        private bool isBuildAndRun = false;
-
-        private void ProcessShortcuts()
+        /// <summary>
+        /// Opens the project.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void OpenProject()
         {
-            if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(101) && !isSavedPressed)
-            {
-                SaveProject();
-                isSavedPressed = true;
-            }
+            Console.Log("Open Project");
+            WidgetManager.Add(new ProjectManager(true, info));
+            
+        }
 
-            if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(101) && isSavedPressed)
+        /// <summary>
+        /// Saves the project.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void SaveProject(bool build)
+        {
+            if (Project.VideoGame is not null) 
             {
-                isSavedPressed = false;
-            }
+                BottomMenu.Loading(true, "Saving");
 
-            if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(96) && !isSavedPressed)
-            {
-                //eventHandler.Invoke(null, EventType.OpenCreateProject);
-                isOpenNewProject = true;
-            }
+                Project.VideoGame.SceneManager.Scenes[0] = Project.VideoGame.SceneManager.CurrentScene;
 
-            if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(96) && isSavedPressed)
-            {
-                isOpenNewProject = false;
-            }
+                LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
+                Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
+                ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
 
-            if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(97) && !isSavedPressed)
-            {
-                //eventHandler.Invoke(null, EventType.OpenProject);
-                isOpenProject = true;
+                BottomMenu.Loading(false, "");
             }
-
-            if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(97) && isSavedPressed)
+            else
             {
-                isOpenProject = false;
-            }
-
-            if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(84) && !isSavedPressed)
-            {
-                BuildAndRun();
-                isBuildAndRun = true;
-            }
-
-            if (!ImGui.IsKeyPressed(3) && !ImGui.IsKeyDown(84) && isSavedPressed)
-            {
-                isBuildAndRun = false;
+                ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
+                Console.Error(string.Format(messageSaveGame, "'Game not loaded'"));
             }
         }
 
+
+        private void LoadAsembly()
+        {
+            string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/" + Project.Get().Name + ".dll";
+
+            if (info.Platform.Equals(Platform.Linux))
+            {
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/" + Project.Get().Name + ".dll";
+            }
+
+            if (info.Platform.Equals(Platform.MacOS))
+            {
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll";
+            }
+
+            if (File.Exists(workDirRun))
+            {
+                Project.Get().DLL1 = Assembly.Load(File.ReadAllBytes(workDirRun));
+            }
+        }
+
+        class SimpleUnloadableAssemblyLoadContext : AssemblyLoadContext
+        {
+            public SimpleUnloadableAssemblyLoadContext()
+               : base(isCollectible: true)
+            {
+            }
+
+            protected override Assembly Load(AssemblyName assemblyName) => null;
+        }
+
+        /// <summary>
+        /// Automatics the save project.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void AutoSaveProject()
+        {
+            autosaveMode = !autosaveMode;
+            LocalData.Save("Autosave", autosaveMode);
+        }
+
+        /// <summary>
+        /// Checks the automatic save mode.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void CheckAutoSaveMode() 
+        {
+            if (autosaveMode)
+            {
+                if (watch.Elapsed.TotalSeconds >= timerAutoSave)
+                {
+                    watch.Restart();
+                    SaveProject(true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Builds the settings.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void Build()
+        {
+            Console.Log("Build");
+            SaveProject(false);
+
+            if (Project.VideoGame is not null)
+            {
+                Task.Run(() =>
+                {
+                    string fileName = "cmd.exe";
+                    string cleanCommand = "dotnet restore";
+                    string buildCommand = "dotnet build --configuration Windows";
+
+                    if (info.Platform.Equals(Platform.Linux))
+                    {
+                        fileName = "/bin/bash";
+                        cleanCommand = "dotnet restore";
+                        buildCommand = "dotnet build --configuration Linux";
+                    }
+
+                    if (info.Platform.Equals(Platform.MacOS))
+                    {
+                        fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                        cleanCommand = "dotnet restore";
+                        buildCommand = "dotnet build --configuration MacOS";
+                    }
+
+                    RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+
+                    LoadAsembly();
+                });
+            }
+            else
+            {
+                Console.Warning("Project not loaded.");
+            }
+        }
+
+        /// <summary>
+        /// Builds the and run.
+        /// </summary>
+        /// <returns>Return none</returns>
         private void BuildAndRun()
         {
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
+            Console.Log("Build And Run");
+            SaveProject(false);
 
-                BuildAsync(info);
-            }).Start();
+            if (Project.VideoGame is not null)
+            {
+                Task.Run(() =>
+                {
+                    string fileName = "cmd.exe";
+                    string cleanCommand = "dotnet restore";
+                    string buildCommand = "dotnet build --configuration Windows";
+
+                    string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0";
+                    string runCommand = Project.Get().Name + ".exe";
+
+                    if (info.Platform.Equals(Platform.Linux))
+                    {
+                        fileName = "/bin/bash";
+                        cleanCommand = "dotnet restore";
+                        buildCommand = "dotnet build --configuration Linux";
+
+                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0";
+                        runCommand = "./" + Project.Get().Name;
+                    }
+
+                    if (info.Platform.Equals(Platform.MacOS))
+                    {
+                        fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                        cleanCommand = "dotnet restore";
+                        buildCommand = "dotnet build --configuration MacOS";
+
+                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0";
+                        runCommand = "./" + Project.Get().Name;
+                    }
+
+
+
+                    RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+
+                    LoadAsembly();
+
+                    RunCommand("Running", fileName, runCommand, workDirRun, true);
+
+
+                });
+            }
+            else
+            {
+                Console.Warning("Project not loaded.");
+            }
         }
 
-        private void BuildAsync(Info info)
+        /// <summary>
+        /// Exits this instance.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void Exit()
         {
-            LocalData.Save("Data", Project.VideoGame);
+            Console.Log("Exit to Editor");
+            exitState = !exitState;
+        }
 
+        /// <summary>
+        /// Checks the is exit.
+        /// </summary>
+        /// <returns>Return none</returns>
+        private void CheckIsExit() 
+        {
+            if (exitState)
+            {
+                ImGui.OpenPopup(exit);
+            }
+
+            if (ImGui.BeginPopupModal(exit, ref exitState, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            {
+                ImGui.Text(messageExit);
+                if (ImGui.Button(yes, new Vector2((ImGui.GetContentRegionAvail().X / 2) - 5.0f, 35.0f)))
+                {
+                    exitState = false;
+                    ImGui.CloseCurrentPopup();
+                    Environment.Exit(1);
+                }
+
+                ImGui.SameLine();
+
+                if (ImGui.Button(no, new Vector2(ImGui.GetContentRegionAvail().X, 35.0f)))
+                {
+                    exitState = false;
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.EndPopup();
+            }
+        }
+
+        #endregion
+
+        #region Edit Menu
+
+        /// <summary>
+        /// Cuts this instance.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void Cut() 
+        {
+        }
+
+        #endregion
+
+        #region Tools Menu
+
+        /// <summary>
+        /// Opens the terminal.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void OpenTerminal()
+        {
             string fileName = "cmd.exe";
-            string cleanCommand = "dotnet restore";
-            string buildCommand = "dotnet build --configuration Windows";
-            string runCommand = Project.Current.Name + ".exe";
-            string workDirRun = Project.Current.Directory + "/bin/Windows/net5.0";
+            string comand = "start cmd";
+            string workDirRun = Environment.CurrentDirectory;
 
-
-            if (info.Platform.Equals(Platform.Linux)) 
+            if (info.Platform.Equals(Platform.Linux))
             {
                 fileName = "/bin/bash";
-                cleanCommand = "dotnet restore";
-                buildCommand = "dotnet build --configuration Linux";
-                runCommand = "./" + Project.Current.Name;
-                workDirRun = Project.Current.Directory + "/bin/Linux/net5.0";
+                comand = "-c \" " + "exo-open --launch TerminalEmulator" + " \"";
             }
 
             if (info.Platform.Equals(Platform.MacOS))
             {
                 fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
-                cleanCommand = "dotnet restore";
-                buildCommand = "dotnet build --configuration MacOS";
-                runCommand = "./" + Project.Current.Name;
-                workDirRun = Project.Current.Directory + "/bin/MacOS/net5.0";
             }
 
-            string projectFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultPr.txt", Encoding.UTF8);
-            File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".csproj", projectFile, Encoding.UTF8);
-
-            string solutionFile = File.ReadAllText(Application.ProjectFolder + "/Resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", Project.Current.Name);
-            File.WriteAllText(Project.Current.Directory + "/" + Project.Current.Name + ".sln", solutionFile, Encoding.UTF8);
-
-            string program = File.ReadAllText(Application.ProjectFolder + "/Resources/Program.txt", Encoding.UTF8);
-            File.WriteAllText(Project.Current.Directory + "/" + "Program" + ".cs", program, Encoding.UTF8);
-
-            DirectoryCopy(Application.ProjectFolder + "/Runtimes", Project.Current.Directory + "/Runtimes", true);
-
-            File.Copy(Application.ProjectFolder + "/Core.dll", Project.Current.LibraryPath + "/" + "Core" + ".dll", true);
-            File.Copy(Application.ProjectFolder + "/Tools.dll", Project.Current.LibraryPath + "/" + "Tools" + ".dll", true);
-            File.Copy(Application.ProjectFolder + "/Core-SFML.dll", Project.Current.LibraryPath + "/" + "Core-SFML.dll", true);
-
-
-            RunCommand("Cleaning", fileName, cleanCommand, Project.Current.Directory);
-            RunCommand("Building", fileName, buildCommand, Project.Current.Directory);
-            RunCommand("Running", fileName, runCommand, workDirRun);
+            Task.Run(() => RunCommand("Open Terminal", fileName, comand, workDirRun, false));
         }
 
+        #endregion
+
+        #region Window Menu
+
+        /// <summary>
+        /// Defaults the view.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void DefaultView() 
+        {
+            string file = Environment.CurrentDirectory + "/Resources/Default.ini";
+            if (File.Exists(file))
+            {
+                ImGui.LoadIniSettingsFromDisk(file);
+                Console.Log("Default View");
+            }
+            else 
+            {
+                Console.Warning("Default View cant be loaded because file dont exits " + file);
+            }
+        }
+
+        /// <summary>
+        /// Wides the view.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void WideView() 
+        {
+            string file = Environment.CurrentDirectory + "/Resources/Wide.ini";
+            if (File.Exists(file))
+            {
+                ImGui.LoadIniSettingsFromDisk(file);
+                Console.Log("Wide View");
+            }
+            else
+            {
+                Console.Warning("Wide View cant be loaded because file dont exits " + file);
+            }
+        }
+
+        /// <summary>
+        /// Talls the view.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void TallView() 
+        {
+            string file = Environment.CurrentDirectory + "/Resources/Tall.ini";
+            if (File.Exists(file))
+            {
+                ImGui.LoadIniSettingsFromDisk(file);
+                Console.Log("Tall View");
+            }
+            else
+            {
+                Console.Warning("Tall View cant be loaded because file dont exits " + file);
+            }
+        }
+
+        #endregion
+
+        #region Help Menu
+
+        /// <summary>
+        /// Checks the is about.
+        /// </summary>
+        /// <returns></returns>
+        private void CheckIsAbout()
+        {
+            if (aboutState)
+            {
+                ImGui.OpenPopup("About");
+            }
+
+            if (ImGui.BeginPopupModal("About", ref aboutState, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            {
+                ImGui.Text("Version: 1.2.8");
+                ImGui.Text("Author: Pablo Perdomo Falcón");
+                ImGui.Text("Licence: General Public License v3.0");
+
+                ImGui.EndPopup();
+            }
+        }
+
+        #endregion
+
+        #region Shortcuts
+
+        /// <summary>
+        /// Checks the short cuts.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void CheckShortCuts() 
+        {
+            ShortNewProject();
+            ShortOpenProject();
+            ShortSaveGame();
+            ShortAutosave();
+            ShortBuild();
+            ShortBuildAndRun();
+        }
+
+        /// <summary>
+        /// Shorts the new project.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void ShortNewProject() 
+        {
+            if (ImGui.IsKeyDown(3) && ImGui.IsKeyReleased(96))
+            {
+                NewProject();
+            }
+        }
+
+        /// <summary>
+        /// Shorts the save game.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void ShortSaveGame() 
+        {
+            if (ImGui.IsKeyDown(3) && !ImGui.IsKeyDown(5) && ImGui.IsKeyReleased(101))
+            {
+                SaveProject(true);
+            }
+        }
+
+        /// <summary>
+        /// Shorts the open project.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void ShortOpenProject() 
+        {
+            if (ImGui.IsKeyDown(3) && ImGui.IsKeyReleased(97))
+            {
+                OpenProject();
+            }
+        }
+
+        /// <summary>
+        /// Shorts the build.
+        /// </summary>
+        /// <returns>Return game</returns>
+        private void ShortBuild()
+        {
+            if (ImGui.IsKeyDown(3) && ImGui.IsKeyReleased(84))
+            {
+                Build();
+            }
+        }
+
+        /// <summary>
+        /// Shorts the automatic save.
+        /// </summary>
+        /// <returns>return none</returns>
+        private void ShortBuildAndRun() 
+        {
+            if (ImGui.IsKeyDown(3) && ImGui.IsKeyDown(5) && ImGui.IsKeyReleased(84))
+            {
+                BuildAndRun();
+            }
+        }
+
+        /// <summary>
+        /// Shorts the autosave.
+        /// </summary>
+        /// <returns></returns>
+        private void ShortAutosave()
+        {
+            if (ImGui.IsKeyDown(3) && ImGui.IsKeyDown(5) && ImGui.IsKeyReleased(101))
+            {
+                autosaveMode = !autosaveMode;
+                Console.Log("Autosave mode: " + autosaveMode);
+            }
+        }
+
+        #endregion
+
+        #region Run CMD 
+
+        /// <summary>
+        /// Runs the command.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="commandBuild">The command build.</param>
+        /// <param name="WorkingDirectory">The working directory.</param>
+        /// <returns>Return none</returns>
+        private void RunCommand(string message, string fileName, string commandBuild, string WorkingDirectory, bool messages)
+        {
+            if (messages) 
+            {
+                BottomMenu.Loading(true, message);
+            }
+
+            Process buildProcess = new Process();
+
+            buildProcess.StartInfo.FileName = fileName;
+            buildProcess.StartInfo.WorkingDirectory = WorkingDirectory;
+            buildProcess.StartInfo.CreateNoWindow = false;
+            buildProcess.StartInfo.RedirectStandardInput = true;
+            buildProcess.StartInfo.RedirectStandardOutput = true;
+            buildProcess.StartInfo.UseShellExecute = false;
+            buildProcess.Start();
+            buildProcess.StandardInput.WriteLine(commandBuild);
+            buildProcess.StandardInput.Flush();
+            buildProcess.StandardInput.Close();
+            buildProcess.WaitForExit();
+
+            string[] sentences = buildProcess.StandardOutput.ReadToEnd().Split("\n");
+            for (int i = 0; i < sentences.Length; i++)
+            {
+                if (sentences[i].Contains("warning"))
+                {
+                    Console.Warning(sentences[i]);
+                    continue;
+                }
+
+                if (sentences[i].Contains("error") || sentences[i].Contains("failed") || sentences[i].Contains("exception"))
+                {
+                    Console.Error(sentences[i]);
+                    continue;
+                }
+
+                Console.Log(sentences[i], false);
+            }
+
+            if (messages)
+            {
+                BottomMenu.Loading(false, "");
+            }
+        }
+
+        #endregion
+
+        #region OPEN VISUAL STUDIO
+
+        private void OpenVisualStudio()
+        {
+            Console.Warning("Open VISUAL STUDIO");
+
+            Task.Run(() =>
+            {
+                string fileName = "cmd.exe";
+                string RUN = Project.Get().Name + ".sln";
+
+                if (info.Platform.Equals(Platform.Linux))
+                {
+                    fileName = "/bin/bash";
+                    RUN = Project.Get().Name + ".sln";
+                }
+
+                if (info.Platform.Equals(Platform.MacOS))
+                {
+                    fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                    RUN = Project.Get().Name + ".sln";
+                }
+
+                RunCommand("Building", fileName, RUN, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+            });
+
+        }
+
+        #endregion
+
+
+        #region Directory Copy 
+
+        /// <summary>
+        /// Directories the copy.
+        /// </summary>
+        /// <param name="sourceDirName">Name of the source dir.</param>
+        /// <param name="destDirName">Name of the dest dir.</param>
+        /// <param name="copySubDirs">if set to <c>true</c> [copy sub dirs].</param>
+        /// <returns></returns>
+        /// <exception cref="DirectoryInfo">sourceDirName</exception>
         private static void DirectoryCopy(string sourceDirName, string destDirName, bool copySubDirs)
         {
             // Get the subdirectories for the specified directory.
@@ -424,107 +998,16 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
+        #endregion
 
-        private void RunCommand(string message, string fileName, string commandBuild, string WorkingDirectory) 
-        {
-            BottomMenu.Current.Loading(true, message);
+        #region Events
 
-            System.Diagnostics.Process buildProcess = new System.Diagnostics.Process();
+        /// <summary>Texts the manager on change idiom.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">if set to <c>true</c> [e].</param>
+        /// <returns>Run the event</returns>
+        private void TextManager_OnChangeIdiom([NotNull] object sender, [NotNull] bool e) => LoadTexts();
 
-            buildProcess.StartInfo.FileName = fileName;
-            buildProcess.StartInfo.WorkingDirectory = WorkingDirectory;
-            buildProcess.StartInfo.CreateNoWindow = false;
-            buildProcess.StartInfo.RedirectStandardInput = true;
-            buildProcess.StartInfo.RedirectStandardOutput = true;
-            buildProcess.StartInfo.UseShellExecute = false;
-            buildProcess.Start();
-            buildProcess.StandardInput.WriteLine(commandBuild);
-            buildProcess.StandardInput.Flush();
-            buildProcess.StandardInput.Close();
-            buildProcess.WaitForExit();
-
-            string[] sentences = buildProcess.StandardOutput.ReadToEnd().Split("\n");
-            for (int i = 0; i < sentences.Length; i++)
-            {
-                if (sentences[i].Contains("warning"))
-                {
-                    Console.Current.Warning(sentences[i]);
-                    continue;
-                }
-
-                if (sentences[i].Contains("error") || sentences[i].Contains("failed") || sentences[i].Contains("exception"))
-                {
-                    Console.Current.Error(sentences[i]);
-                    continue;
-                }
-
-                Console.Current.Log(sentences[i], false);
-            }
-
-            BottomMenu.Current.Loading(false, "");
-        }
-
-        private void AutoSaveProject()
-        {
-        }
-
-        private void SaveProject() 
-        {
-            Console.Current.Log("Saved " + Project.VideoGame.Config.Name);
-            LocalData.Save<VideoGame>("Data", Project.Current.DataPath, Project.VideoGame);
-        }
-
-        /// <summary>Opens the terminal.</summary>
-        private void OpenTerminal()
-        {
-            process.Start();
-        }
-
-        private void ShowAboutPopup()
-        {
-            if (aboutState)
-            {
-                ImGui.OpenPopup("About");
-            }
-
-            if (ImGui.BeginPopupModal("About", ref aboutState, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
-            {
-                ImGui.Text("Version: 1.0.0");
-                ImGui.Text("Author: Pablo Perdomo Falcón");
-                ImGui.Text("Licence: General Public License v3.0");
-
-                ImGui.EndPopup();
-            }
-        }
-
-        /// <summary>Shows the exit popup.</summary>
-        private void ShowExitPopup()
-        {
-            if (exitState) 
-            {
-                ImGui.OpenPopup("Exit?");
-            }
-
-            if (ImGui.BeginPopupModal("Exit?", ref exitState, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
-            {
-                ImGui.Text("Are you sure you want to exit?, Please remenber save the project.");
-                if (ImGui.Button("Accept", new System.Numerics.Vector2((ImGui.GetContentRegionAvail().X / 2) - 5.0f, 35.0f)))
-                {
-                    //eventHandler.Invoke(this, EventType.ExitEditor);
-                    exitState = false;
-                    ImGui.CloseCurrentPopup();
-                }
-
-                ImGui.SameLine();
-
-                if (ImGui.Button("Cancel", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 35.0f)))
-                {
-                    exitState = false;
-                    ImGui.CloseCurrentPopup();
-                }
-
-                ImGui.EndPopup();
-            }
-        }
+        #endregion
     }
 }
