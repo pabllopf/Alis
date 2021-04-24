@@ -17,8 +17,7 @@
 	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
 	  <PackageProjectUrl>https://pabllopf.github.io/Alis/</PackageProjectUrl>
 	  <PackageIcon>logo.png</PackageIcon>
-	  <RepositoryUrl>https://github.com/pabllopf/Alis/</RepositoryUrl>
-	  <RepositoryType>Public</RepositoryType>
+	  
 	  <PackageTags>Alis Core Entity-Component-System Multi-Platform Framework VideoGame Games Windows Linux MacOs Android IOS Free</PackageTags>
 	  <PackageReleaseNotes>This is the first stable version.</PackageReleaseNotes>
 	  <NeutralLanguage>en</NeutralLanguage>
@@ -31,6 +30,8 @@
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Windows|AnyCPU'">
+    <RepositoryUrl>https://github.com/pabllopf/Alis/</RepositoryUrl>
+    <RepositoryType>Public</RepositoryType>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile></DocumentationFile>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
