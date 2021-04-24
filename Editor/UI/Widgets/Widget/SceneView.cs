@@ -39,7 +39,7 @@ namespace Alis.Editor.UI.Widgets
             this.imGuiController = imGuiController;
 
 
-            Project.OnChange += Project_OnChangeProject;
+            //Project.OnChange += Project_OnChangeProject;
         }
 
         /// <summary>Projects the on change project.</summary>

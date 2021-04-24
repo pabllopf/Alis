@@ -74,7 +74,7 @@ namespace Alis.Editor.UI.Widgets
 
             currentResolution = resolution[2];
 
-            Project.OnChange += Project_OnChangeProject;
+            //Project.OnChange += Project_OnChangeProject;
         }
 
         private void Project_OnChangeProject(object sender, bool e)

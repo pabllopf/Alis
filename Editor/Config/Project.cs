@@ -53,7 +53,7 @@ namespace Alis.Editor
 
 
 
-    static Project() 
+        static Project() 
         {
             OnChange += Project_OnChange;
         }
@@ -94,6 +94,8 @@ namespace Alis.Editor
         public static void Set(Project project) 
         {
             current = project;
+
+            OnChange?.Invoke(null, true);
         }
 
         public static Project Get()
@@ -101,8 +103,6 @@ namespace Alis.Editor
             return current;
         }
 
-
-        /// <summary>Occurs when [on change].</summary>
         public static event EventHandler<bool> OnChange;
 
         /// <summary>Gets or sets the name.</summary>

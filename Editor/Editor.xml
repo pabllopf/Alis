@@ -51,9 +51,6 @@
             <param name="dataPath">The data path.</param>
             <param name="libPath">The library path.</param>
         </member>
-        <member name="E:Alis.Editor.Project.OnChange">
-            <summary>Occurs when [on change].</summary>
-        </member>
         <member name="P:Alis.Editor.Project.Name">
             <summary>Gets or sets the name.</summary>
             <value>The name.</value>
@@ -374,7 +371,7 @@
         <member name="F:Alis.Editor.UI.Widgets.AssetsManager.pathFolders">
             <summary>The path folders</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.#ctor">
+        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.#ctor(Alis.Editor.Info)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.AssetsManager" /> class.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.AssetsManager.Draw">
@@ -384,6 +381,16 @@
             <summary>Gets the path list.</summary>
             <param name="path">The path.</param>
             <returns>Return list</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.RunCommand(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Runs the command.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="fileName">Name of the file.</param>
+            <param name="commandBuild">The command build.</param>
+            <param name="WorkingDirectory">The working directory.</param>
+            <returns>Return none</returns>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.BottomMenu">
             <summary>Define the menu.</summary>

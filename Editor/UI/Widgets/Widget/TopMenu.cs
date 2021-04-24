@@ -258,6 +258,11 @@ namespace Alis.Editor.UI.Widgets
                         OpenTerminal();
                     }
 
+                    if (ImGui.MenuItem(Icon.LISTALT + " Visual Studio", "Ctrl+Alt+V"))
+                    {
+                        OpenVisualStudio();
+                    }
+
                     ImGui.EndMenu();
                 }
 
@@ -427,19 +432,24 @@ namespace Alis.Editor.UI.Widgets
         {
             if (Project.VideoGame is not null) 
             {
-                BottomMenu.Loading(true, "Saving");
-
-                LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
-                Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
-                ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
-
-                Task.Delay(1000).Wait();
-                BottomMenu.Loading(false, "");
-
-                if (build) 
+                Task.Run(()=> 
                 {
-                    Build();
-                }
+                    BottomMenu.Loading(true, "Saving");
+
+                    LocalData.Save("Data", Project.Get().DataPath1, Project.VideoGame);
+                    Console.Log(string.Format(messageSaveGame, Project.VideoGame.Config.Name));
+                    ImGui.SaveIniSettingsToDisk(Environment.CurrentDirectory + "/custom.ini");
+
+                    Task.Delay(1000).Wait();
+                    BottomMenu.Loading(false, "");
+
+                    if (build)
+                    {
+                        Build();
+                    }
+                });
+
+              
 
             }
             else
@@ -537,7 +547,6 @@ namespace Alis.Editor.UI.Widgets
                         buildCommand = "dotnet build --configuration MacOS";
                     }
 
-                    RunCommand("Cleaning", fileName, cleanCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
                     RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
 
                     LoadAsembly();
@@ -919,6 +928,37 @@ namespace Alis.Editor.UI.Widgets
         }
 
         #endregion
+
+        #region OPEN VISUAL STUDIO
+
+        private void OpenVisualStudio()
+        {
+            Console.Warning("Open VISUAL STUDIO");
+
+            Task.Run(() =>
+            {
+                string fileName = "cmd.exe";
+                string RUN = Project.Get().Name + ".sln";
+
+                if (info.Platform.Equals(Platform.Linux))
+                {
+                    fileName = "/bin/bash";
+                    RUN = Project.Get().Name + ".sln";
+                }
+
+                if (info.Platform.Equals(Platform.MacOS))
+                {
+                    fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                    RUN = Project.Get().Name + ".sln";
+                }
+
+                RunCommand("Building", fileName, RUN, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+            });
+
+        }
+
+        #endregion
+
 
         #region Directory Copy 
 

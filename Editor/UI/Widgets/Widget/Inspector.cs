@@ -34,6 +34,8 @@ namespace Alis.Editor.UI.Widgets
             { typeof(List<Animation>), DrawListField },
         };
 
+        private Vector4 childBackground = new Vector4(0, 0, 0, 0);
+
         private static Inspector current;
 
         /// <summary>The name</summary>
@@ -127,10 +129,15 @@ namespace Alis.Editor.UI.Widgets
 
             #region Show elements
 
+
+
             foreach (Component component in gameObject.Components)
             {
                 if (component is not null) 
                 {
+                    ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
+                    ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
+
                     ImGui.BeginGroup();
                     ImGui.AlignTextToFramePadding();
                     if (ImGui.TreeNodeEx(Icon.CUBE + " " + component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
@@ -150,6 +157,28 @@ namespace Alis.Editor.UI.Widgets
                     }
 
                     ImGui.EndGroup();
+
+                    ImGui.SameLine();
+
+                    if (ImGui.Button(Icon.PLUSSQUARE))
+                    {
+                        ImGui.OpenPopup("ElementList" + "###" + component.GetType().Name);
+                    }
+
+                    if (ImGui.BeginPopup("ElementList" + "###" + component.GetType().Name))
+                    {
+                        if (ImGui.MenuItem("Delete" + "###" + component.GetType().Name))
+                        {
+                            gameObject.Delete(component);
+                        }
+
+                        ImGui.EndPopup();
+                    }
+
+                    ImGui.PopStyleVar();
+                    ImGui.PopStyleColor();
+
+                  
                 }
             }
 

@@ -326,13 +326,30 @@ namespace Alis.Core
                 if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(typeof(T)))
                 {
                     Logger.Log(string.Format(DeleteComponent, typeof(T).FullName, this.name));
-                    span[i].IsActive = false;
+                    span[i] = null;
                     return;
                 }
             }
 
             Logger.Warning(string.Format(DontDeleteComponent, typeof(T).FullName, this.name));
         }
+
+        public void Delete(Component component) 
+        {
+            Span<Component> span = components.Span;
+            for (int i = 0; i < components.Length; i++)
+            {
+                if (span[i] != null && span[i].IsActive && span[i].GetType().Equals(component.GetType()))
+                {
+                    Logger.Log(string.Format(DeleteComponent, component.GetType().FullName, this.name));
+                    span[i] = null;
+                    return;
+                }
+            }
+
+            Logger.Warning(string.Format(DontDeleteComponent, component.GetType().FullName, this.name));
+        }
+
 
         /// <summary>Gets the component.</summary>
         /// <typeparam name="T">general type</typeparam>

@@ -128,37 +128,44 @@ namespace Alis.Editor.UI.Widgets
         {
             if (Project.Get().DLL1 != null) 
             {
-                for (int i = 0; i <  obj.Components.Length; i++) 
+                List<Component> tempList = obj.Components.ToList();
+                Type[] ty = Project.Get().DLL1.GetTypes();
+
+                for (int i = 0; i < tempList.Count; i++) 
                 {
-                    if (obj.Components[i] != null) 
+                    if (tempList[i] != null) 
                     {
-                        Component compo = obj.Components[i];
+                        Component compo = tempList[i];
                         Type type = typeof(Component);
-                        IEnumerable<Type> types = Project.Get().DLL1.GetTypes()
+                        IEnumerable<Type> types = ty
                         .Where(p => type.IsAssignableFrom(p));
-                        Type final = types.First(i => i.Name.Equals(compo.GetType().Name));
 
-                        if (final.FullName.Equals(obj.Components[i].GetType().FullName) && !final.Assembly.Equals(obj.Components[i].GetType().Assembly)) 
+                        if (types.Any(i => i.Name.Equals(compo.GetType().Name))) 
                         {
-                            Console.Warning("Create new intencie of " + final.FullName + " on " + obj.Name);
+                            Type final = types.First(i => i.Name.Equals(compo.GetType().Name));
 
-                            Component tempCompo = (Component)Activator.CreateInstance(final);
-
-                            foreach (PropertyInfo property in tempCompo.GetType().GetProperties())
+                            if (final.FullName.Equals(obj.Components[i].GetType().FullName) && !final.Assembly.Equals(obj.Components[i].GetType().Assembly)) 
                             {
-                                PropertyInfo info = compo.GetType().GetProperty(property.Name);
-                                if (info != null) 
+                                Console.Warning("Create new intencie of " + final.FullName + " on " + obj.Name);
+
+                                Component tempCompo = (Component)Activator.CreateInstance(final);
+
+                                foreach (PropertyInfo property in tempCompo.GetType().GetProperties())
                                 {
-                                    if (property.CanWrite && info.CanWrite && info.Name.Equals(property.Name))
+                                    PropertyInfo info = compo.GetType().GetProperty(property.Name);
+                                    if (info != null) 
                                     {
-                                        property.SetValue(tempCompo, info.GetValue(compo));
+                                        if (property.CanWrite && info.CanWrite && info.Name.Equals(property.Name))
+                                        {
+                                            property.SetValue(tempCompo, info.GetValue(compo));
+                                        }
                                     }
+
+
                                 }
 
-                                
+                                obj.Set(tempCompo, i);
                             }
-
-                            obj.Set(tempCompo, i);
                         }
                     }
                 }
