@@ -1,8 +1,10 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector =
 [
     [ "Inspector", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aff5a5891ae05f7179fc64b2aae47ac11", null ],
+    [ "ShowGameObject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae4f7a5a5f356fa79239ee9fb5839427e", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a28b1bf5d1eefab12f30688e1bc7942d3", null ],
     [ "SeeObjComponents", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aa6daac505fce5bba2d1f315a1606f9bb", null ],
+    [ "AddComponent", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299", null ],
     [ "DrawStringField", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6496fd05228073c8cf7fcb4c9f9a3429", null ],
     [ "DrawBoolField", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a76471a55bc8f99b5c5b3a09d3b26d5da", null ],
     [ "DrawFloatField", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a5f69b9b97e50b90eb88a1da49ec739f7", null ],
@@ -22,7 +24,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector =
     [ "NewCamera", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9", null ],
     [ "fields", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a2c8114201c29b2e04bf4a0c3274b0e45", null ],
     [ "icons", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a303731627f5f7b3b5a0c250034cf737c", null ],
-    [ "constructors", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aa4dbad19111c943f9b48a2f07c8da850", null ],
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a755faebf2288ba972b6d24ef320b2350", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ab108200698f324be0f0fa28a02a47e64", null ],
     [ "gameObject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5", null ],
