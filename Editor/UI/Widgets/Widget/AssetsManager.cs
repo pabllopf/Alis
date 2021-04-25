@@ -89,6 +89,12 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
+            if (!isOpen)
+            {
+                WidgetManager.Delete(this);
+                return;
+            }
+
             if (ImGui.Begin(Name, ref isOpen)) 
             {
                 ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new System.Numerics.Vector2(1.0f, 3.0f));

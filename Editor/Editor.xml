@@ -834,7 +834,7 @@
         <member name="F:Alis.Editor.UI.Widgets.TopMenu.aboutState">
             <summary>The is saved pressed</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(Alis.Editor.Info)">
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(Alis.Editor.Info,ImGuiNET.ImGuiController)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.TopMenu"/> class.
             </summary>
@@ -1009,21 +1009,6 @@
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
             <returns>Run the event</returns>
-        </member>
-        <member name="T:Alis.Editor.UI.Widgets.Updater">
-            <summary>Show the game running</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.Updater.Name">
-            <summary>The name</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.Updater.isOpen">
-            <summary>The is open</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Updater.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Updater" /> class.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Updater.Draw">
-            <summary>Draw this instance.</summary>
         </member>
         <member name="T:Alis.Editor.Utils.Icon">
             <summary>The icons of app.</summary>

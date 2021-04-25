@@ -182,7 +182,7 @@ namespace Alis.Editor.UI.Widgets
         {
             if (!isOpen)
             {
-                eventHandler?.Invoke(this, EventType.CloseConsole);
+                WidgetManager.Delete(this);
                 return;
             }
 

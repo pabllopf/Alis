@@ -68,20 +68,24 @@ namespace Alis.Editor.UI.Widgets
             get => current.isGaming; 
             set
             {
-                current.isGaming = value;
-
-                if (current.isGaming == false) 
+                if (current != null) 
                 {
-                    SceneView.Focus();
+                    current.isGaming = value;
 
-                    current.isStarted = false;
-
-                    if (Project.VideoGame != null) 
+                    if (current.isGaming == false)
                     {
-                        Project.VideoGame.StopPreviewRenderGame();
+                        SceneView.Focus();
+
+                        current.isStarted = false;
+
+                        if (Project.VideoGame != null)
+                        {
+                            Project.VideoGame.StopPreviewRenderGame();
+                        }
+
                     }
-                    
                 }
+               
             }
         }
 
@@ -101,7 +105,8 @@ namespace Alis.Editor.UI.Widgets
 
             IsGaming = false;
 
-            
+            data = null;
+            image = null;
 
             Project.OnChange += Project_OnChangeProject;
         }
@@ -123,6 +128,12 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
+            if (!isOpen)
+            {
+                WidgetManager.Delete(this);
+                return;
+            }
+
             if (Project.VideoGame is not null && data is null && image is null)
             {
                 Console.Warning("Create image of" + Project.Get().Name);
@@ -140,45 +151,16 @@ namespace Alis.Editor.UI.Widgets
             }
 
 
-            if (ImGui.Begin(Name, ref isOpen))
+            if (ImGui.Begin("Game View", ref isOpen))
             {
-                ImGui.PushStyleColor(ImGuiCol.Button, (fullscreen) ? buttonPressed : buttonDefault);
-                if (ImGui.Button("Full Screen"))
-                {
-                    fullscreen = !fullscreen;
-                }
-
-                ImGui.PopStyleColor();
-
-                ImGui.SameLine();
-
-                ImGui.PushItemWidth(100);
-                if (ImGui.BeginCombo("##Mode", currentResolution))
-                {
-                    for (int n = 0; n < resolution.Length; n++)
-                    {
-                        selected = currentResolution == resolution[n];
-                        if (ImGui.Selectable(resolution[n], selected))
-                        {
-                            currentResolution = resolution[n];
-                        }
-
-                        if (selected)
-                        {
-                            ImGui.SetItemDefaultFocus();
-                        }
-                    }
-
-                    ImGui.EndCombo();
-                }
-                ImGui.PopItemWidth();
-
                 if (Project.VideoGame is not null && isGaming) 
                 {
                     Render(new Vector2(512, 512));
                 }
-
-               
+                else
+                {
+                    ImGui.Image((IntPtr)0, ImGui.GetContentRegionAvail(), new Vector2(1, 0), new Vector2(0, 1), new Vector4(0f), new Vector4(1f));
+                }
 
                 ImGui.Separator();
             }
@@ -260,7 +242,15 @@ namespace Alis.Editor.UI.Widgets
                 }
 
                 intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+
+                ImGui.PushStyleColor(ImGuiCol.Border, new Vector4(0.654f, 0.070f, 0.070f, 1.000f));
+                ImGui.BeginChild("GameObject-Child", new Vector2(ImGui.GetContentRegionAvail().X,ImGui.GetContentRegionAvail().Y), true);
                 ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
+
+                ImGui.EndChild();
+
+                ImGui.PopStyleColor();
+
             }
         }
     }

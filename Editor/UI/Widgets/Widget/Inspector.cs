@@ -42,6 +42,8 @@ namespace Alis.Editor.UI.Widgets
 
         private GameObject gameObject;
 
+        private bool isOpen = true;
+
         private bool focus;
 
         public static Inspector Current { get => current; set => current = value; }
@@ -63,13 +65,19 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
+            if (!isOpen)
+            {
+                WidgetManager.Delete(this);
+                return;
+            }
+
             if (focus)
             {
                 ImGui.SetNextWindowFocus();
                 focus = false;
             }
 
-            if (ImGui.Begin("Inspector"))
+            if (ImGui.Begin("Inspector", ref isOpen))
             {
                 if (Project.VideoGame is not null)
                 {

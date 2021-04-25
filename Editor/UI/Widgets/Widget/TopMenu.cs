@@ -110,15 +110,18 @@ namespace Alis.Editor.UI.Widgets
 
         #endregion
 
+        private ImGuiController imGuiController;
+
         #region Constructor
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TopMenu"/> class.
         /// </summary>
         /// <param name="info">The information.</param>
-        public TopMenu(Info info)
+        public TopMenu(Info info, ImGuiController imGuiController)
         {
             this.info = info;
+            this.imGuiController = imGuiController;
 
             startInfo = new ProcessStartInfo();
             process = new Process();
@@ -302,9 +305,14 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.BeginMenu(Icon.COGS + " General"))
                     {
-                        if (ImGui.MenuItem("Objects"))
+                        if (ImGui.MenuItem("Maker"))
                         {
-                            OpenObjectsView();
+                            OpenMakerView();
+                        }
+
+                        if (ImGui.MenuItem("Inspector"))
+                        {
+                            OpenInspectorView();
                         }
 
                         if (ImGui.MenuItem("Assets"))
@@ -322,12 +330,12 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.BeginMenu(Icon.VIDEOCAMERA + " Rendering"))
                     {
-                        if (ImGui.MenuItem("Scene View"))
+                        if (ImGui.MenuItem("Scene"))
                         {
                             OpenSceneView();
                         }
 
-                        if (ImGui.MenuItem("Game View"))
+                        if (ImGui.MenuItem("Game"))
                         {
                             OpenGameView();
                         }
@@ -342,6 +350,11 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.BeginMenu(Icon.HEADPHONES + " Audio"))
                     {
+                        if (ImGui.MenuItem("Audio Player"))
+                        {
+                            OpenAudioPlayer();
+                        }
+
                         ImGui.EndMenu();
                     }
 
@@ -387,29 +400,39 @@ namespace Alis.Editor.UI.Widgets
             ImGui.EndMainMenuBar();
         }
 
-        private void OpenAssetsView()
+        private void OpenAudioPlayer()
         {
-            throw new NotImplementedException();
+            WidgetManager.Add(new AudioPlayer());
         }
 
-        private void OpenObjectsView()
+        private void OpenMakerView()
         {
-            throw new NotImplementedException();
+            WidgetManager.Add(new Maker());
+        }
+
+        private void OpenAssetsView()
+        {
+            WidgetManager.Add(new AssetsManager(info));
+        }
+
+        private void OpenInspectorView()
+        {
+            WidgetManager.Add(new Inspector());
         }
 
         private void OpenConsoleView()
         {
-            throw new NotImplementedException();
+            WidgetManager.Add(new Console());
         }
 
         private void OpenSceneView()
         {
-            throw new NotImplementedException();
+            WidgetManager.Add(new SceneView(imGuiController));
         }
 
         private void OpenGameView()
         {
-            throw new NotImplementedException();
+            WidgetManager.Add(new GameView(imGuiController));
         }
 
         #endregion

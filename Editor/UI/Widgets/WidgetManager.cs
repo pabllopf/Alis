@@ -30,11 +30,13 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Initializes a new instance of the <see cref="WidgetManager" /> class.</summary>
         public WidgetManager(Info info, ImGuiController imGuiController)
         {
+            current ??= this;
+
             widgets = new List<Widget>
             {
                 new ProjectManager(true, info),
                 new DockSpace(),
-                new TopMenu(info),
+                new TopMenu(info, imGuiController),
                 new BottomMenu(),
                 new Inspector(),
                 new AssetsManager(info),
@@ -43,8 +45,6 @@ namespace Alis.Editor.UI.Widgets
                 new SceneView(imGuiController),
                 new GameView(imGuiController)
             };
-
-            current ??= this;
 
             DefaultView();
             Logger.Info();
@@ -60,11 +60,6 @@ namespace Alis.Editor.UI.Widgets
                     widget.Draw();
                 }
             }
-        }
-
-        public void AddWidget(Widget widget) 
-        {
-            
         }
 
         private void DefaultView()

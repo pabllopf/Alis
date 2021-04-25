@@ -10,9 +10,7 @@ namespace Alis.Editor.UI.Widgets
     using SixLabors.ImageSharp;
     using Veldrid.ImageSharp;
     using Veldrid;
-    using Alis.Tools;
 
-    using SixLabors.ImageSharp.Advanced;
     using System;
     using System.IO;
     using System.Runtime.CompilerServices;
@@ -38,6 +36,8 @@ namespace Alis.Editor.UI.Widgets
 
         private System.IntPtr intPtr;
 
+        private bool isOpen = true;
+
         private bool focus = false;
 
         public SceneView(ImGuiController imGuiController) 
@@ -61,6 +61,13 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
+            if (!isOpen)
+            {
+                WidgetManager.Delete(this);
+                return;
+            }
+
+
             if (Project.VideoGame is not null && data is null && image is null)
             {
                 Console.Warning("Create image of" + Project.Get().Name);
@@ -78,7 +85,7 @@ namespace Alis.Editor.UI.Widgets
             }
 
 
-            if (ImGui.Begin(Name))
+            if (ImGui.Begin(Name, ref isOpen))
             {
                 if (Project.Get() != null && Project.VideoGame != null) 
                 {

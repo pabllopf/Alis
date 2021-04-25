@@ -20,6 +20,8 @@ namespace Alis.Editor.UI.Widgets
     {
         private static Maker current;
 
+        private bool isOpen = true;
+
         /// <summary>The name</summary>
         private const string Name = "Maker";
 
@@ -36,7 +38,13 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draws this instance.</summary>
         public override void Draw()
         {
-            if (ImGui.Begin("Maker"))
+            if (!isOpen)
+            {
+                WidgetManager.Delete(this);
+                return;
+            }
+
+            if (ImGui.Begin("Maker", ref isOpen))
             {
                 if (Project.VideoGame is not null) 
                 {
