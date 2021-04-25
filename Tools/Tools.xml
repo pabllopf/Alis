@@ -41,6 +41,9 @@
         <member name="T:Alis.Tools.Asset">
             <summary>Find any asset of the videogame.</summary>
         </member>
+        <member name="F:Alis.Tools.Asset.files">
+            <summary>The files</summary>
+        </member>
         <member name="F:Alis.Tools.Asset.workPath">
             <summary>The work path</summary>
         </member>
