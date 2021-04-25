@@ -12,5 +12,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view =
     [ "texture", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a0a6c516330e39e942299a4e7f4348775", null ],
     [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a04ed2fe07f78376830d354777525fd21", null ],
     [ "intPtr", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a692ea010a688b021162670d976ffd692", null ],
+    [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a5077d73396d3bf3258d2bb7a0537c07d", null ],
     [ "focus", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#adb62957ef6e842b206d2634c76c83219", null ]
 ];

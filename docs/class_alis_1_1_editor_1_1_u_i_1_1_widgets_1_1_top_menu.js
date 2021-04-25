@@ -1,10 +1,12 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
 [
     [ "SimpleUnloadableAssemblyLoadContext", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context" ],
-    [ "TopMenu", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a89d3910596459cddbebce4070fcb3570", null ],
+    [ "TopMenu", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a4dd606b04642fbd575ffbf5ff2b00d0f", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7a7a59124aa85ecba691e5229928cc05", null ],
+    [ "OpenAudioPlayer", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a251be10fc95292455c3820fab0e79c6e", null ],
+    [ "OpenMakerView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a3574ba20d5248e816440302f80b935d0", null ],
     [ "OpenAssetsView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ad846ea2f5bd292308414338a7c18f79d", null ],
-    [ "OpenObjectsView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#abcdb04b8c5ede672881e0f15fdb5b895", null ],
+    [ "OpenInspectorView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#adc119dae5ade91ef645da9eb9f5ebedc", null ],
     [ "OpenConsoleView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a22d60895a56e2f25a75c769fa1edd151", null ],
     [ "OpenSceneView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a62826c28bed11420769b11f97785fe9e", null ],
     [ "OpenGameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#af17844da38655682bf6b1c7ce6d387e9", null ],
@@ -54,5 +56,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "exitState", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a9bb56323b5924feb6313689ab0a34af6", null ],
     [ "autosaveMode", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a040392be9c9c936e978d53bc40a33c2d", null ],
     [ "timerAutoSave", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a70455f4bf5eda87d7653ff975570b5c9", null ],
-    [ "aboutState", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8fd2e66652ab98a57ed00f244dc6945a", null ]
+    [ "aboutState", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8fd2e66652ab98a57ed00f244dc6945a", null ],
+    [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8ac194f4ab596abe9ba1573dd59740e7", null ]
 ];

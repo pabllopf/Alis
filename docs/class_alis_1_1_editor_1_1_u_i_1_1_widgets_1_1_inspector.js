@@ -28,6 +28,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector =
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a755faebf2288ba972b6d24ef320b2350", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ab108200698f324be0f0fa28a02a47e64", null ],
     [ "gameObject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5", null ],
+    [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ab1ab0c807d86fb718aa85b768dbc626d", null ],
     [ "focus", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a015189167e8b3608892593cdf57e351e", null ],
     [ "Current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae59d71b0d03e9bccf18f52f7be23a6a5", null ],
     [ "GameObject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ac26b99295b51cd47b63e4c2273f6c251", null ],
