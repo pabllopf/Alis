@@ -38,13 +38,10 @@ namespace Alis.Core.SFML
         [AllowNull]
         private Music audio;
 
-        private bool isdefault;
-
         public AudioSource() 
         {
             audioFile = "";
             pathFile = Asset.Load(this.audioFile) ?? "";
-            isdefault = true;
             playOnAwake = true;
             volume = 100;
             loop = true;
@@ -64,13 +61,8 @@ namespace Alis.Core.SFML
 
             playOnAwake = true;
             volume = 100;
-            isdefault = true;
             loop = true;
 
-            if (!pathFile.Equals(string.Empty))
-            {
-                audio = new Music(pathFile);
-            }
 
             OnPlay += AudioSource_OnPlay;
             OnStop += AudioSource_OnStop;
@@ -92,13 +84,6 @@ namespace Alis.Core.SFML
             this.playOnAwake = playOnAwake;
             this.volume = volume;
             this.loop = loop;
-
-            isdefault = true;
-
-            if (!pathFile.Equals(string.Empty)) 
-            {
-                audio = new Music(pathFile);
-            }
 
             OnPlay += AudioSource_OnPlay;
             OnStop += AudioSource_OnStop;
@@ -147,27 +132,44 @@ namespace Alis.Core.SFML
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            if (audio != null) 
+            if (audio != null)
             {
                 if (playOnAwake)
                 {
                     Play();
                 }
+
+                if (loop)
+                {
+                    audio.Loop = true;
+                }
+            }
+            else 
+            {
+                pathFile = Asset.Load(this.audioFile) ?? "";
+
+                if (!pathFile.Equals(string.Empty))
+                {
+                    audio = new Music(pathFile);
+
+                    if (playOnAwake)
+                    {
+                        Play();
+                    }
+
+                    if (loop)
+                    {
+                        audio.Loop = true;
+                    }
+                }
             }
 
-            isdefault = false;
+            
         }
 
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (audio != null && !isdefault)
-            {
-                if (audio.Status != SoundStatus.Playing && loop)
-                {
-                    Play();
-                }
-            }
         }
 
         /// <summary>Plays this instance.</summary>
@@ -178,7 +180,6 @@ namespace Alis.Core.SFML
                 audio.Volume = volume;
                 audio.Play();
                 OnPlay?.Invoke(null, true);
-                playOnAwake = false;
             }
         }
 
@@ -225,6 +226,24 @@ namespace Alis.Core.SFML
 
                 audio.Play();
                 OnRestart?.Invoke(null, true);
+            }
+        }
+
+        public override void Exit()
+        {
+            if (audio != null)
+            {
+                if (audio.Status == SoundStatus.Playing)
+                {
+                    audio.Stop();
+                }
+
+                if (audio.Status == SoundStatus.Paused)
+                {
+                    audio.Stop();
+                }
+
+                audio = null;
             }
         }
 

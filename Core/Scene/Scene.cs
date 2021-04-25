@@ -445,7 +445,7 @@ namespace Alis.Core
         }
 
         /// <summary>Exits this instance.</summary>
-        internal void Exit()
+        public void Exit()
         {
             if (limitJustOneProcessor)
             {

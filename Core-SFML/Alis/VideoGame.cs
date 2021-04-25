@@ -43,6 +43,30 @@
             return RenderSFML.CurrentRenderSFML.FrameBytes();
         }
 
+
+        public  byte[] PreviewRenderGame(bool start) 
+        {
+            if (start)
+            {
+                SceneManager.Scenes[0]?.Start();
+                Logger.Log("Start scene preview");
+                SceneManager.Scenes[0]?.Update();
+            }
+            else 
+            {
+
+                SceneManager.Scenes[0]?.Update();
+            }
+
+            return RenderSFML.CurrentRenderSFML.FrameBytes();
+        }
+
+        public void StopPreviewRenderGame() 
+        {
+            SceneManager.Scenes[0].Exit();
+        }
+
+
         /// <summary>Loads the of file.</summary>
         /// <param name="file">The file.</param>
         /// <returns>Return game.</returns>

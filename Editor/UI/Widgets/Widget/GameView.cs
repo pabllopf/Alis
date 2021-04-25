@@ -63,8 +63,26 @@ namespace Alis.Editor.UI.Widgets
 
         private bool fullscreen = false;
 
-        public static bool IsGaming { get => current.isGaming; set => current.isGaming = value; }
-        
+        public static bool IsGaming
+        {
+            get => current.isGaming; 
+            set
+            {
+                current.isGaming = value;
+
+                if (current.isGaming == false) 
+                {
+                    current.isStarted = false;
+
+                    if (Project.VideoGame != null) 
+                    {
+                        Project.VideoGame.StopPreviewRenderGame();
+                    }
+                    
+                }
+            }
+        }
+
         public static bool Focus { get => current.focus; set => current.focus = value; }
 
         /// <summary>Initializes a new instance of the <see cref="GameView" /> class.</summary>
@@ -195,11 +213,20 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
+        private bool isStarted = false;
+
         private void Render(Vector2 vector2) 
         {
             if (Project.Get() != null && Project.VideoGame != null)
             {
-                data = Project.VideoGame.PreviewRender();
+                if (isGaming && isStarted == false) 
+                {
+                    isStarted = true;
+                    data = Project.VideoGame.PreviewRenderGame(true);
+                }
+
+                data = Project.VideoGame.PreviewRenderGame(false);
+
                 image = Image.LoadPixelData<Rgba32>(data, (int)vector2.X, (int)vector2.Y);
                 imageSharpTexture = new ImageSharpTexture(image, true);
 
