@@ -308,6 +308,7 @@ namespace Alis.Core
                 {
                     span[i] = component;
                     span[i].IsActive = true;
+                    span[i].AttachTo(this);
                     Logger.Log(string.Format(AddComponent, typeof(T).FullName, this.name));
                     return;
                 }

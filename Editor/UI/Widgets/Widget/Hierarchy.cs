@@ -46,7 +46,7 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.BeginChild("GameObject-Child", new Vector2(ImGui.GetContentRegionAvail().X, 80.0f), true);
 
-                    Scene scene = Project.VideoGame.SceneManager.Scenes.ToList().Find(i => i.Name.Equals(Project.VideoGame.SceneManager.CurrentScene.Name));
+                    Scene scene = Project.VideoGame.SceneManager.Scenes[0];
 
                     string content = scene.Name;
 

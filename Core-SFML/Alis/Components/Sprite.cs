@@ -6,6 +6,7 @@ namespace Alis.Core.SFML
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
     using Alis.Tools;
     using Newtonsoft.Json;
    
@@ -17,7 +18,7 @@ namespace Alis.Core.SFML
         private string image;
 
         /// <summary>The path image</summary>
-        [NotNull]
+        [AllowNull]
         private string pathImage;
 
         /// <summary>The depth</summary>
@@ -25,21 +26,22 @@ namespace Alis.Core.SFML
         private int depth;
 
         /// <summary>The sprite</summary>
-        [NotNull]
+        [AllowNull]
         [JsonIgnore]
         private global::SFML.Graphics.Sprite sprite;
 
+        /// <summary>The transform</summary>
+        [JsonIgnore]
+        [AllowNull]
+        private Transform transform;
+
+        /// <summary>Initializes a new instance of the <see cref="Sprite" /> class.</summary>
         public Sprite()
         {
             this.image = string.Empty;
             depth = 0;
 
-            if (!image.Equals(string.Empty))
-            {
-                pathImage = Asset.Load(image);
-                sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
-                Logger.Log("Loaded the sprite(" + image + ") '");
-            }
+            Check();
 
             OnDraw += Sprite_OnDraw;
         }
@@ -51,12 +53,7 @@ namespace Alis.Core.SFML
             this.image = image;
             depth = 0;
 
-            if (!image.Equals(string.Empty))
-            {
-                pathImage = Asset.Load(image);
-                sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
-                Logger.Log("Loaded the sprite(" + image + ") '");
-            }
+            Check();
 
             OnDraw += Sprite_OnDraw;
         }
@@ -70,12 +67,8 @@ namespace Alis.Core.SFML
             this.image = image;
             this.depth = depth;
 
-            if (!image.Equals(string.Empty))
-            {
-                pathImage = Asset.Load(image);
-                sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
-            }
 
+            Check();
             OnDraw += Sprite_OnDraw;
         }
 
@@ -96,29 +89,7 @@ namespace Alis.Core.SFML
             {
                 Logger.Warning("change value to: " + value);
                 image = value;
-
                 Check();
-            }
-        }
-
-        private void Check() 
-        {
-            if (Asset.Load(image) != null)
-            {
-                pathImage = Asset.Load(image);
-
-                Logger.Warning("PATH: " + pathImage);
-
-                sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
-
-                if (!Render.Current.GetDraws<Sprite>().Contains(this))
-                {
-                    Render.Current.AddDraw(this);
-                }
-                else
-                {
-                    Render.Current.GetDraws<Sprite>().Find(i => i.Equals(this)).sprite = sprite;
-                }
             }
         }
 
@@ -131,38 +102,45 @@ namespace Alis.Core.SFML
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            if (sprite != null)
+            if (GameObject != null && transform == null)
             {
-                var pos = GameObject.Transform.Position;
-                sprite.Position = new global::SFML.System.Vector2f(pos.X, pos.Y);
+                transform = GameObject.Transform;
+            }
 
-                var rot = GameObject.Transform.Rotation;
-                sprite.Rotation = rot.Y;
+            if (GameObject != null && sprite != null)
+            {
+                sprite.Position = new global::SFML.System.Vector2f(transform.Position.X, transform.Position.Y);
+                sprite.Rotation = transform.Rotation.Y;
+                sprite.Scale = new global::SFML.System.Vector2f(transform.Size.X, transform.Size.Y);
 
-                var size = GameObject.Transform.Size;
-                sprite.Scale = new global::SFML.System.Vector2f(size.X, size.Y);
-
-                Render.Current.AddDraw(this);
+                if (!RenderSFML.CurrentRenderSFML.GetDraws<Sprite>().Contains(this))
+                {
+                    Logger.Log("Add: " + Path.GetFileName(pathImage));
+                    Render.Current.AddDraw(this);
+                }
             }
         }
 
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (sprite != null)
+            if (GameObject != null && transform == null) 
             {
-                var pos = GameObject.Transform.Position;
-                sprite.Position = new global::SFML.System.Vector2f(pos.X, pos.Y);
+                transform = GameObject.Transform;
+            }
 
-                var rot = GameObject.Transform.Rotation;
-                sprite.Rotation = rot.Y;
-
-                var size = GameObject.Transform.Size;
-                sprite.Scale = new global::SFML.System.Vector2f(size.X, size.Y);
+            if (GameObject != null && sprite != null)
+            {
+                sprite.Position = new global::SFML.System.Vector2f(transform.Position.X, transform.Position.Y);
+                sprite.Rotation = transform.Rotation.Y;
+                sprite.Scale = new global::SFML.System.Vector2f(transform.Size.X, transform.Size.Y);
             }
             else 
             {
-                Check();
+                if (sprite == null) 
+                {
+                    Check();
+                }
             }
         }
 
@@ -173,6 +151,31 @@ namespace Alis.Core.SFML
         {
             OnDraw.Invoke(this, true);
             return sprite;
+        }
+
+        /// <summary>Checks this instance.</summary>
+        private void Check()
+        {
+            pathImage = Asset.Load(image) ?? string.Empty;
+            if (!pathImage.Equals(string.Empty))
+            {
+                Logger.Log("PATH: " + pathImage);
+
+                if (Render.Current != null)
+                {
+                    sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
+
+                    if (!Render.Current.GetDraws<Sprite>().Contains(this))
+                    {
+                        Logger.Log("Add: " + Path.GetFileName(pathImage));
+                        Render.Current?.AddDraw(this);
+                    }
+                }
+
+                return;
+            }
+
+            sprite = null;
         }
 
         #region DefineEvents

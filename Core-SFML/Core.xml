@@ -253,6 +253,12 @@
         <member name="F:Alis.Core.SFML.Sprite.sprite">
             <summary>The sprite</summary>
         </member>
+        <member name="F:Alis.Core.SFML.Sprite.transform">
+            <summary>The transform</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Sprite" /> class.</summary>
+        </member>
         <member name="M:Alis.Core.SFML.Sprite.#ctor(System.String)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Sprite" /> class.</summary>
             <param name="image">The image.</param>
@@ -282,6 +288,9 @@
         <member name="M:Alis.Core.SFML.Sprite.GetDraw">
             <summary>Gets the draw.</summary>
             <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.Check">
+            <summary>Checks this instance.</summary>
         </member>
         <member name="M:Alis.Core.SFML.Sprite.Sprite_OnDraw(System.Object,System.Boolean)">
             <summary>Sprites the on draw.</summary>
