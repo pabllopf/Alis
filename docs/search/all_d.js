@@ -78,7 +78,7 @@ var searchData=
   ['forward_522',['FORWARD',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#acc3d533aa89021e88846badc1845a2e3',1,'Alis::Editor::Utils::Icon']]],
   ['foursquare_523',['FOURSQUARE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9d727c3c4e86b5b49377dad38858ceb4',1,'Alis::Editor::Utils::Icon']]],
   ['framebytes_524',['FrameBytes',['../class_alis_1_1_core_1_1_render.html#a0deaf8f65602191c054be26f746e0648',1,'Alis::Core::Render']]],
-  ['framerate_525',['FrameRate',['../class_alis_1_1_core_1_1_time.html#a24dbac8611e39c996aac300258d0bffc',1,'Alis.Core.Time.FrameRate()'],['../class_alis_1_1_core_1_1_time_1_1_time_builder.html#af2c979eb29d6884c4846d030d07f4ffc',1,'Alis.Core.Time.TimeBuilder.FrameRate()'],['../class_alis_1_1_core_1_1_time.html#afe9f90e8db62f8c36e8bd1c3cd4dc4c2',1,'Alis.Core.Time.frameRate()']]],
+  ['framerate_525',['frameRate',['../class_alis_1_1_core_1_1_time.html#afe9f90e8db62f8c36e8bd1c3cd4dc4c2',1,'Alis.Core.Time.frameRate()'],['../class_alis_1_1_core_1_1_time.html#a24dbac8611e39c996aac300258d0bffc',1,'Alis.Core.Time.FrameRate()'],['../class_alis_1_1_core_1_1_time_1_1_time_builder.html#af2c979eb29d6884c4846d030d07f4ffc',1,'Alis.Core.Time.TimeBuilder.FrameRate()']]],
   ['freecodecamp_526',['FREECODECAMP',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a7ec94753977d003d4e407ff572df8db3',1,'Alis::Editor::Utils::Icon']]],
   ['french_527',['French',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4aad225f707802ba118c22987186dd38e8',1,'Alis::Tools']]],
   ['frowno_528',['FROWNO',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ac85d83face1e4f74635eae1759055efe',1,'Alis::Editor::Utils::Icon']]],
