@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['language_1348',['Language',['../class_alis_1_1_tools_1_1_language.html',1,'Alis::Tools']]],
-  ['localdata_1349',['LocalData',['../class_alis_1_1_tools_1_1_local_data.html',1,'Alis::Tools']]],
-  ['logger_1350',['Logger',['../class_alis_1_1_tools_1_1_logger.html',1,'Alis::Tools']]]
+  ['mainwindow_1357',['MainWindow',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html',1,'Alis::Editor::UI']]],
+  ['maker_1358',['Maker',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html',1,'Alis::Editor::UI::Widgets']]],
+  ['memoryeditor_1359',['MemoryEditor',['../class_im_gui_n_e_t_1_1_memory_editor.html',1,'ImGuiNET']]]
 ];

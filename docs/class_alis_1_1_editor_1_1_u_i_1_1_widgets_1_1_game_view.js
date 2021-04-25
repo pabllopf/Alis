@@ -1,6 +1,6 @@
 var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view =
 [
-    [ "GameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a88d4ad9b7f70ff116c936cecef21cbae", null ],
+    [ "GameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a668c21ec0d36855d8898f1cf1ffbe2ac", null ],
     [ "Project_OnChangeProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ad8ee5e9a51a5e69e2601d12b7494aef8", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a40e9de4ad0976cdcb7397b1322a4814d", null ],
     [ "RenderGame", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a4f817e82a6d09ef25e22d09e5885b8dc", null ],
@@ -15,6 +15,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view =
     [ "imageSharpTexture", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a8c439ec933a865649a09014b66f4d947", null ],
     [ "texture", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a38b6eae4dad6e1f45f3d5d8bdb84b3d7", null ],
     [ "focus", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ad1a45f8855de0efc9ddf02537d989a3d", null ],
+    [ "data", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#abe6cf7c2969ed8fd81c3f06bdbc20f99", null ],
     [ "resolution", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a9db03c44b27186f39b42e98f92f18f27", null ],
     [ "currentResolution", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a5fee38c07ff4926af2b4579af6a82f95", null ],
     [ "selected", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ab82abd8fd830e3f680b1c040b3d585d9", null ],
@@ -22,7 +23,9 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view =
     [ "fullscreen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a4c493dca848bc1c2e97c69f3b1d395b7", null ],
     [ "defaulSize", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a13aa2df5fa9422e8239ec2dc7010ec9d", null ],
     [ "defaultPos", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ac3ec2edb460b2a79814981b941ec1bf5", null ],
-    [ "Current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a0588f4f0ab93e42f7ce93cd746732fcb", null ],
+    [ "buttonPressed", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#aa394c80dac5b73dbafe912da96e3a078", null ],
+    [ "buttonDefault", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#a40080ce592a724983164a8a6412a5b69", null ],
+    [ "isStarted", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#ac8068c15e947734a0556c2a35af9d319", null ],
     [ "IsGaming", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#adb321a845a90cb3d3f298326d202c1b3", null ],
     [ "Focus", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html#abac607cf3741e9f01ccef6a166142e9f", null ]
 ];
