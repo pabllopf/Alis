@@ -135,6 +135,9 @@ namespace Alis.Core.SFML
         [NotNull]
         [JsonProperty]
         public bool Loop { get => loop; set => loop = value; }
+        
+        [JsonIgnore]
+        public Music Audio { get => audio; set => audio = value; }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()

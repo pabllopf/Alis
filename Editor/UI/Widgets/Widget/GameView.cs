@@ -97,13 +97,7 @@ namespace Alis.Editor.UI.Widgets
         {
             current = this;
             this.imGuiController = imGuiController;
-
-            defaulSize = ImGui.GetWindowSize();
-            defaultPos = ImGui.GetWindowPos();
-
-            currentResolution = resolution[2];
-
-            IsGaming = false;
+            isGaming = false;
 
             data = null;
             image = null;
@@ -117,10 +111,7 @@ namespace Alis.Editor.UI.Widgets
             image = null;
         }
 
-        /// <summary>Opens this instance.</summary>
 
-        private Vector2 defaulSize;
-        private Vector2 defaultPos;
 
         private Vector4 buttonPressed = new Vector4(0.078f, 0.095f, 0.108f, 1.000f);
         private Vector4 buttonDefault = ImGui.GetStyle().Colors[(int)ImGuiCol.Button];

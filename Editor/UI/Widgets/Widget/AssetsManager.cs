@@ -337,6 +337,11 @@ namespace Alis.Editor.UI.Widgets
                         {
                             OpenVisualStudio();
                         }
+
+                        if (Path.GetExtension(file).Contains(".wav"))
+                        {
+                            PlaySound(file);
+                        }
                     }
                     ImGui.PopStyleVar();
                 }
@@ -346,6 +351,14 @@ namespace Alis.Editor.UI.Widgets
                
 
                 ImGui.EndGroup();
+            }
+        }
+
+        private void PlaySound(string file)
+        {
+            if (AudioPlayer.Get() != null) 
+            {
+                AudioPlayer.Get().Play(file);
             }
         }
 

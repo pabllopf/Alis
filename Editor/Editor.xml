@@ -657,9 +657,6 @@
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.GameView" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>
-        <member name="F:Alis.Editor.UI.Widgets.GameView.defaulSize">
-            <summary>Opens this instance.</summary>
-        </member>
         <member name="M:Alis.Editor.UI.Widgets.GameView.Draw">
             <summary>Draw this instance.</summary>
         </member>
