@@ -160,14 +160,14 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.SameLine();
 
-                    if (ImGui.Button(Icon.PLUSSQUARE))
+                    if (ImGui.Button(Icon.PLUSSQUARE + "###" + component.GetType().FullName))
                     {
-                        ImGui.OpenPopup("ElementList" + "###" + component.GetType().Name);
+                        ImGui.OpenPopup("ElementList" + "###" + component.GetType().FullName);
                     }
 
-                    if (ImGui.BeginPopup("ElementList" + "###" + component.GetType().Name))
+                    if (ImGui.BeginPopup("ElementList" + "###" + component.GetType().FullName))
                     {
-                        if (ImGui.MenuItem("Delete" + "###" + component.GetType().Name))
+                        if (ImGui.MenuItem("Delete" + "###" + component.GetType().FullName))
                         {
                             gameObject.Delete(component);
                         }

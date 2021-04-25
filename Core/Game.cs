@@ -135,16 +135,6 @@ namespace Alis.Core
         [JsonIgnore]
         public bool IsNewFrame { get => config.Time.IsNewFrame(); }
        
-        /// <summary>Loads the of file.</summary>
-        /// <param name="file">The file.</param>
-        /// <returns>Return game.</returns>
-        [return: NotNull]
-        public static Game LoadOfFile(string file) => LocalData.Load<Game>(file);
-
-        /// <summary>Runs the of file.</summary>
-        [return: NotNull]
-        public static void RunOfFile() => LocalData.Load<Game>("Data", Environment.CurrentDirectory + "/Data").Run();
-
         /// <summary>Previews the render.</summary>
         /// <returns>Preview render</returns>
         public virtual byte[] PreviewRender()

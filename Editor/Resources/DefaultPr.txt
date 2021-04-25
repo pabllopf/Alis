@@ -26,9 +26,29 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Optimize>true</Optimize>
   </PropertyGroup>
-  <ItemGroup>
-   <PackageReference Include="Alis.Core-SFML" Version="1.2.9" />
+  
+    <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="SFML.Audio" Version="2.5.0" />
+    <PackageReference Include="SFML.Graphics" Version="2.5.0" />
+    <PackageReference Include="SFML.Net" Version="2.5.0" />
+    <PackageReference Include="SFML.System" Version="2.5.0" />
+    <PackageReference Include="SFML.Window" Version="2.5.0" />
   </ItemGroup>
+  
+  
+  <ItemGroup>
+    <Reference Include="Core">
+      <HintPath>Lib\Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Core-SFML">
+      <HintPath>Lib\Core-SFML.dll</HintPath>
+    </Reference>
+    <Reference Include="Tools">
+      <HintPath>Lib\Tools.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 
   <ItemGroup>
     <None Update="Runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />

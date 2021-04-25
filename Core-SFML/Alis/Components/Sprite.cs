@@ -41,8 +41,6 @@ namespace Alis.Core.SFML
             this.image = string.Empty;
             depth = 0;
 
-            Check();
-
             OnDraw += Sprite_OnDraw;
         }
 
@@ -52,8 +50,6 @@ namespace Alis.Core.SFML
         {
             this.image = image;
             depth = 0;
-
-            Check();
 
             OnDraw += Sprite_OnDraw;
         }
@@ -67,8 +63,6 @@ namespace Alis.Core.SFML
             this.image = image;
             this.depth = depth;
 
-
-            Check();
             OnDraw += Sprite_OnDraw;
         }
 

@@ -90,7 +90,7 @@ namespace Alis.Editor.UI.Widgets
 
                     
 
-                    foreach (GameObject obj in Project.VideoGame.SceneManager.CurrentScene.GameObjects)
+                    foreach (GameObject obj in Project.VideoGame.SceneManager.Scenes[0].GameObjects)
                     {
                         if (obj is not null) 
                         {
@@ -185,12 +185,12 @@ namespace Alis.Editor.UI.Widgets
             {
                 GameObject obj = new GameObject("GameObject", new Transform(new Vector3(0f), new Vector3(0f), new Vector3(1f)));
                 int index = 0;
-                while (Project.VideoGame.SceneManager.CurrentScene.Contains(obj)) 
+                while (Project.VideoGame.SceneManager.Scenes[0].Contains(obj)) 
                 {
                     obj.Name = "GameObject" + "_" + index;
                     index++;
                 }
-                Project.VideoGame.SceneManager.CurrentScene.Add(obj);
+                Project.VideoGame.SceneManager.Scenes[0].Add(obj);
                 LocalData.Save<VideoGame>("Data", Project.Get().DataPath1, Project.VideoGame);
             }
         }
@@ -199,7 +199,7 @@ namespace Alis.Editor.UI.Widgets
         {
             if (Project.VideoGame is not null)
             {
-                Project.VideoGame.SceneManager.CurrentScene.Remove(obj);
+                Project.VideoGame.SceneManager.Scenes[0].Remove(obj);
                 LocalData.Save<VideoGame>("Data", Project.Get().DataPath1, Project.VideoGame);
             }
         }

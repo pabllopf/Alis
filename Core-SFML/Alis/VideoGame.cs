@@ -1,6 +1,8 @@
 ﻿namespace Alis.Core.SFML
 {
+    using Alis.Tools;
     using Newtonsoft.Json;
+    using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
@@ -33,6 +35,16 @@
             base.PreviewRender();
             return RenderSFML.CurrentRenderSFML.FrameBytes();
         }
+
+        /// <summary>Loads the of file.</summary>
+        /// <param name="file">The file.</param>
+        /// <returns>Return game.</returns>
+        [return: NotNull]
+        public static VideoGame LoadOfFile(string file) => LocalData.Load<VideoGame>(file);
+
+        /// <summary>Runs the of file.</summary>
+        [return: NotNull]
+        public static void RunOfFile() => LocalData.Load<VideoGame>("Data", Environment.CurrentDirectory + "/Data").Run();
 
         /// <summary>The builder</summary>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();

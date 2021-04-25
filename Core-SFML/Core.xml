@@ -436,6 +436,14 @@
             <param name="config">The configuration.</param>
             <param name="scenes">The scene.</param>
         </member>
+        <member name="M:Alis.Core.SFML.VideoGame.LoadOfFile(System.String)">
+            <summary>Loads the of file.</summary>
+            <param name="file">The file.</param>
+            <returns>Return game.</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.RunOfFile">
+            <summary>Runs the of file.</summary>
+        </member>
         <member name="M:Alis.Core.SFML.VideoGame.Builder">
             <summary>The builder</summary>
         </member>

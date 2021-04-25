@@ -111,7 +111,7 @@
 
             if (sprites.Count > 0)
             {
-                foreach (Sprite sprite in sprites)
+                foreach (Sprite sprite in sprites.ToList())
                 {
                     renderWindow.Draw(sprite.GetDraw());
                 }
@@ -127,7 +127,7 @@
         {
             if (collisions.Count > 0)
             {
-                foreach (RectangleShape collision in collisions)
+                foreach (RectangleShape collision in collisions.ToList())
                 {
                     renderWindow.Draw(collision);
                 }

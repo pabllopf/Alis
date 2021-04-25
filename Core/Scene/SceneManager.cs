@@ -89,7 +89,7 @@ namespace Alis.Core
                 }
             }
 
-            this.currentScene = currentScene ?? (this.scenes.Span.Length > 0 ? this.scenes.Span[0] : new Scene("Default"));
+            this.currentScene = this.scenes.Span[0];
 
             current = this;
 
