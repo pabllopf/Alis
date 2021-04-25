@@ -197,7 +197,7 @@
         {
             if (sprites != null)
             {
-                sprites.Remove(sprites.Find(i => i.GetType().Equals(draw)));
+                sprites.Remove((Sprite)draw);
                 sprites = sprites.OrderBy(o => o.Depth).ToList();
             }
         }

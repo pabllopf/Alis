@@ -137,10 +137,7 @@ namespace Alis.Core.SFML
             }
             else 
             {
-                if (sprite == null) 
-                {
-                    Check();
-                }
+                Check();
             }
         }
 
@@ -161,21 +158,30 @@ namespace Alis.Core.SFML
             {
                 Logger.Log("PATH: " + pathImage);
 
-                if (Render.Current != null)
+                if (RenderSFML.CurrentRenderSFML != null)
                 {
                     sprite = new global::SFML.Graphics.Sprite(new global::SFML.Graphics.Texture(pathImage));
 
-                    if (!Render.Current.GetDraws<Sprite>().Contains(this))
+                    if (!RenderSFML.CurrentRenderSFML.GetDraws<Sprite>().Contains(this))
                     {
                         Logger.Log("Add: " + Path.GetFileName(pathImage));
-                        Render.Current?.AddDraw(this);
+                        RenderSFML.CurrentRenderSFML.AddDraw(this);
+                    }
+                }
+            }
+            else 
+            {
+                if (RenderSFML.CurrentRenderSFML != null)
+                {
+                    if (RenderSFML.CurrentRenderSFML.GetDraws<Sprite>().Contains(this))
+                    {
+                        Logger.Log("DELETE SPRITE");
+                        RenderSFML.CurrentRenderSFML.Remove(this);
                     }
                 }
 
-                return;
+                sprite = null;
             }
-
-            sprite = null;
         }
 
         #region DefineEvents

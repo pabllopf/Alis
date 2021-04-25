@@ -12,7 +12,13 @@ namespace Alis.Tools
     /// <summary>Find any asset of the videogame.</summary>
     public static class Asset
     {
+        /// <summary>The work path</summary>
+        [AllowNull]
         private static string workPath = Environment.CurrentDirectory;
+
+        /// <summary>Gets or sets the work path.</summary>
+        /// <value>The work path.</value>
+        public static string WorkPath { get => workPath; set => workPath = value; }
 
         /// <summary>Loads the specified name.</summary>
         /// <param name="file">The name.</param>
