@@ -653,7 +653,7 @@
         <member name="F:Alis.Editor.UI.Widgets.GameView.configPopup">
             <summary>The configuration popup</summary>
         </member>
-        <member name="M:Alis.Editor.UI.Widgets.GameView.#ctor">
+        <member name="M:Alis.Editor.UI.Widgets.GameView.#ctor(ImGuiNET.ImGuiController)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.GameView" /> class.</summary>
             <param name="eventHandler">The event handler.</param>
         </member>

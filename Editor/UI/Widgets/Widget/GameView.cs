@@ -46,6 +46,8 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>The focus</summary>
         private bool focus = false;
 
+        private byte[] data;
+
         /// <summary>The modes</summary>
         private string[] resolution = new string[] { "1:1", "4:3", "16:9"};
 
@@ -61,34 +63,33 @@ namespace Alis.Editor.UI.Widgets
 
         private bool fullscreen = false;
 
-        public static GameView Current { get => current; set => current = value; }
-        public bool IsGaming { get => isGaming; set => isGaming = value; }
-        public bool Focus { get => focus; set => focus = value; }
+        public static bool IsGaming { get => current.isGaming; set => current.isGaming = value; }
+        
+        public static bool Focus { get => current.focus; set => current.focus = value; }
 
         /// <summary>Initializes a new instance of the <see cref="GameView" /> class.</summary>
         /// <param name="eventHandler">The event handler.</param>
-        public GameView()
+        public GameView(ImGuiController imGuiController)
         {
+            current = this;
+            this.imGuiController = imGuiController;
+
             defaulSize = ImGui.GetWindowSize();
             defaultPos = ImGui.GetWindowPos();
 
             currentResolution = resolution[2];
 
-            //Project.OnChange += Project_OnChangeProject;
+            IsGaming = false;
+
+            
+
+            Project.OnChange += Project_OnChangeProject;
         }
 
         private void Project_OnChangeProject(object sender, bool e)
         {
-            /*if (MainWindow.imGuiController != null) 
-            {
-                imGuiController = MainWindow.imGuiController;
-
-                image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
-                imageSharpTexture = new ImageSharpTexture(image, true);
-                texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
-
-                intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
-            }*/
+            data = null;
+            image = null;
         }
 
         /// <summary>Opens this instance.</summary>
@@ -96,37 +97,29 @@ namespace Alis.Editor.UI.Widgets
         private Vector2 defaulSize;
         private Vector2 defaultPos;
 
+        private Vector4 buttonPressed = new Vector4(0.078f, 0.095f, 0.108f, 1.000f);
+        private Vector4 buttonDefault = ImGui.GetStyle().Colors[(int)ImGuiCol.Button];
+
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-            var buttonDefault = ImGui.GetStyle().Colors[(int)ImGuiCol.Button];
-            var buttonPressed = new System.Numerics.Vector4(0.078f, 0.095f, 0.108f, 1.000f);
+            if (Project.VideoGame is not null && data is null && image is null)
+            {
+                Console.Warning("Create image of" + Project.Get().Name);
+                data = Project.VideoGame.PreviewRender();
+                image = Image.LoadPixelData<Rgba32>(data, 512, 512);
+                imageSharpTexture = new ImageSharpTexture(image, true);
+                texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
+                intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+            }
 
-            if (focus) 
+            if (focus)
             {
                 focus = false;
                 ImGui.SetNextWindowFocus();
             }
 
-            if (fullscreen && isGaming) 
-            {
-                ImGui.OpenPopup("Game");
-               
-                ImGui.SetNextWindowSize(ImGui.GetMainViewport().Size);
-                if (ImGui.BeginPopupModal("Game", ref isOpen, configPopup))
-                {
-                    RenderGame();
 
-                    if (ImGui.IsKeyPressed(3) && ImGui.IsKeyDown(106) && isGaming)
-                    {
-                        isGaming = false;
-                    }
-                }
-
-                return;
-            }
-
-          
             if (ImGui.Begin(Name, ref isOpen))
             {
                 ImGui.PushStyleColor(ImGuiCol.Button, (fullscreen) ? buttonPressed : buttonDefault);
@@ -160,14 +153,21 @@ namespace Alis.Editor.UI.Widgets
                 }
                 ImGui.PopItemWidth();
 
+                if (Project.VideoGame is not null && isGaming) 
+                {
+                    Render(new Vector2(512, 512));
+                }
+
+               
 
                 ImGui.Separator();
-
-                RenderGame();
             }
 
             ImGui.End();
+
         }
+
+
 
         private void RenderGame() 
         {
@@ -175,66 +175,64 @@ namespace Alis.Editor.UI.Widgets
             {
                 if (currentResolution.Equals("1:1"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
-                    float size = (ImGui.GetContentRegionAvail().X <= ImGui.GetContentRegionAvail().Y) ? ImGui.GetContentRegionAvail().X : ImGui.GetContentRegionAvail().Y;
-                    Render(new Vector2(size));
+                   
                 }
 
                 if (currentResolution.Equals("4:3"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 384);
-                    float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
-                    Render(new Vector2(size / 0.75f, size));
+                    //image = Image.LoadPixelData<Rgba32>(data, );
+                    //float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
+
+                    Render(new Vector2(512, 384));
                 }
 
                 if (currentResolution.Equals("16:9"))
                 {
-                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 288);
-                    float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
-
-                    Render(new Vector2(size / 0.5625f, size));
+                    //image = Image.LoadPixelData<Rgba32>(data, 512, 288);
+                    //float size = ImGui.GetContentRegionAvail().X >= ImGui.GetContentRegionAvail().Y ? ImGui.GetContentRegionAvail().Y : ImGui.GetContentRegionAvail().X;
+                    Render(new Vector2(512, 288));
                 }
-            }
-            else
-            {
-                ImGui.Image((IntPtr)0, ImGui.GetContentRegionAvail(), new Vector2(1, 0), new Vector2(0, 1), new Vector4(0f), new Vector4(1f));
             }
         }
 
         private void Render(Vector2 vector2) 
         {
-            image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
-            imageSharpTexture = new ImageSharpTexture(image, true);
-
-            unsafe
+            if (Project.Get() != null && Project.VideoGame != null)
             {
-                for (int level = 0; level < imageSharpTexture.MipLevels; level++)
+                data = Project.VideoGame.PreviewRender();
+                image = Image.LoadPixelData<Rgba32>(data, (int)vector2.X, (int)vector2.Y);
+                imageSharpTexture = new ImageSharpTexture(image, true);
+
+                unsafe
                 {
-                    Image<Rgba32> image = imageSharpTexture.Images[level];
-                    if (!image.TryGetSinglePixelSpan(out Span<Rgba32> pixelSpan))
+                    for (int level = 0; level < imageSharpTexture.MipLevels; level++)
                     {
-                        throw new VeldridException("Unable to get image pixelspan.");
-                    }
-                    fixed (void* pin = &MemoryMarshal.GetReference(pixelSpan))
-                    {
-                        imGuiController.graphicsDevice.UpdateTexture(
-                            texture,
-                            (IntPtr)pin,
-                            (uint)(imageSharpTexture.PixelSizeInBytes * image.Width * image.Height),
-                            0,
-                            0,
-                            0,
-                            (uint)image.Width,
-                            (uint)image.Height,
-                            1,
-                            (uint)level,
-                            0);
+                        Image<Rgba32> image = imageSharpTexture.Images[level];
+                        if (!image.TryGetSinglePixelSpan(out Span<Rgba32> pixelSpan))
+                        {
+                            throw new VeldridException("Unable to get image pixelspan.");
+                        }
+                        fixed (void* pin = &MemoryMarshal.GetReference(pixelSpan))
+                        {
+                            imGuiController.graphicsDevice.UpdateTexture(
+                                texture,
+                                (IntPtr)pin,
+                                (uint)(imageSharpTexture.PixelSizeInBytes * image.Width * image.Height),
+                                0,
+                                0,
+                                0,
+                                (uint)image.Width,
+                                (uint)image.Height,
+                                1,
+                                (uint)level,
+                                0);
+                        }
                     }
                 }
-            }
 
-            intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
-            ImGui.Image(intPtr, vector2);
+                intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+                ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
+            }
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Alis.Editor.UI.Widgets
     public class DockSpace : Widget
     {
         /// <summary>The button</summary>
-        private int[] button = { 1, 0, 0, 0, 0, 0, 0 };
+        private int[] button = { 0, 0, 0, 0, 0, 0, 0 };
 
         /// <summary>The flags</summary>
         private ImGuiDockNodeFlags dockspaceFlags;
@@ -85,7 +85,7 @@ namespace Alis.Editor.UI.Widgets
             ImGui.DockSpace(dockspaceid, new Vector2(0.0f, 0.0f), dockspaceFlags);
 
             var buttonDefault = ImGui.GetStyle().Colors[(int)ImGuiCol.Button];
-            buttonPressed = new Vector4(0.078f, 0.095f, 0.108f, 1.000f);
+            buttonPressed = new Vector4(0.654f, 0.070f, 0.070f, 1.000f);
 
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 0));
             ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 0.0f);
@@ -95,7 +95,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleColor(ImGuiCol.Button, (button[0] == 1) ? buttonPressed : buttonDefault);
                 if (ImGui.Button(Icon.MOUSEPOINTER, new System.Numerics.Vector2(30, 0)))
                 {
-                    ClickButton(0);
+                    //ClickButton(0);
                 }
 
                 ImGui.PopStyleColor();
@@ -103,7 +103,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleColor(ImGuiCol.Button, (button[1] == 1) ? buttonPressed : buttonDefault);
                 if (ImGui.Button(Icon.HANDPAPERO, new System.Numerics.Vector2(30, 0)))
                 {
-                    ClickButton(1);
+                    //ClickButton(1);
                 }
 
                 ImGui.PopStyleColor();
@@ -111,7 +111,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleColor(ImGuiCol.Button, (button[2] == 1) ? buttonPressed : buttonDefault);
                 if (ImGui.Button(Icon.ARROWS, new System.Numerics.Vector2(30, 0)))
                 {
-                    ClickButton(2);
+                    //ClickButton(2);
                 }
 
                 ImGui.PopStyleColor();
@@ -119,7 +119,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleColor(ImGuiCol.Button, (button[3] == 1) ? buttonPressed : buttonDefault);
                 if (ImGui.Button(Icon.RETWEET, new System.Numerics.Vector2(30, 0)))
                 {
-                    ClickButton(3);
+                    //ClickButton(3);
                 }
 
                 ImGui.PopStyleColor();
@@ -127,7 +127,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleColor(ImGuiCol.Button, (button[4] == 1) ? buttonPressed : buttonDefault);
                 if (ImGui.Button(Icon.EXPAND, new System.Numerics.Vector2(30, 0)))
                 {
-                    ClickButton(4);
+                    //ClickButton(4);
                 }
 
                 ImGui.PopStyleColor();
@@ -135,7 +135,7 @@ namespace Alis.Editor.UI.Widgets
                 ImGui.PushStyleColor(ImGuiCol.Button, (button[5] == 1) ? buttonPressed : buttonDefault);
                 if (ImGui.Button(Icon.ARROWSALT, new System.Numerics.Vector2(30, 0)))
                 {
-                    ClickButton(5);
+                    //ClickButton(5);
                 }
 
                 ImGui.PopStyleColor();
@@ -173,6 +173,22 @@ namespace Alis.Editor.UI.Widgets
             if (index == 6)
             {
                 Logger.Log("Play game scene view");
+
+                if (!GameView.IsGaming)
+                {
+                    GameView.IsGaming = true;
+                    GameView.Focus = true;
+                    BottomMenu.Loading(true, "Gaming");
+                    return;
+                }
+
+
+                if (GameView.IsGaming)
+                {
+                    GameView.IsGaming = false;
+                    BottomMenu.Loading(false, "");
+                    return;
+                }
             }
         }
     }

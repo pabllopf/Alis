@@ -113,7 +113,10 @@
             {
                 foreach (Sprite sprite in sprites.ToList())
                 {
-                    renderWindow.Draw(sprite.GetDraw());
+                    if (sprite != null)
+                    {
+                        renderWindow.Draw(sprite.GetDraw());
+                    }
                 }
             }
 
@@ -129,7 +132,10 @@
             {
                 foreach (RectangleShape collision in collisions.ToList())
                 {
-                    renderWindow.Draw(collision);
+                    if (collision != null) 
+                    {
+                        renderWindow.Draw(collision);
+                    }
                 }
             }
         }
@@ -173,6 +179,17 @@
                     if (sprite != null)
                     {
                         renderTexture.Draw(sprite.GetDraw());
+                    }
+                }
+            }
+
+            if (collisions.Count > 0)
+            {
+                foreach (RectangleShape collision in collisions.ToList())
+                {
+                    if (collision != null)
+                    {
+                        renderTexture.Draw(collision);
                     }
                 }
             }

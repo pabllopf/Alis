@@ -41,7 +41,7 @@ namespace Alis.Editor.UI.Widgets
                 new Hierarchy(),
                 new Console(),
                 new SceneView(imGuiController),
-                new GameView()
+                new GameView(imGuiController)
             };
 
             current ??= this;

@@ -103,44 +103,6 @@ namespace Alis.Editor.UI.Widgets
                     intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
                     ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
                 }
-
-                /*if (Project.VideoGame != null && Project.Current != null) 
-                {
-                    image = Image.LoadPixelData<Rgba32>(Project.VideoGame.PreviewRender(), 512, 512);
-                    imageSharpTexture = new ImageSharpTexture(image, true);
-
-                    unsafe
-                    {
-                        for (int level = 0; level < imageSharpTexture.MipLevels; level++)
-                        {
-                            Image<Rgba32> image = imageSharpTexture.Images[level];
-                            if (!image.TryGetSinglePixelSpan(out Span<Rgba32> pixelSpan))
-                            {
-                                throw new VeldridException("Unable to get image pixelspan.");
-                            }
-                            fixed (void* pin = &MemoryMarshal.GetReference(pixelSpan))
-                            {
-                                imGuiController.graphicsDevice.UpdateTexture(
-                                    texture,
-                                    (IntPtr)pin,
-                                    (uint)(imageSharpTexture.PixelSizeInBytes * image.Width * image.Height),
-                                    0,
-                                    0,
-                                    0,
-                                    (uint)image.Width,
-                                    (uint)image.Height,
-                                    1,
-                                    (uint)level,
-                                    0);
-                            }
-                        }
-                    }
-
-                    intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
-                    ImGui.Image(intPtr, ImGui.GetContentRegionAvail());
-                }
-            }
-                */
             }
             ImGui.End();
         }
