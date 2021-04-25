@@ -1,9 +1,15 @@
 var searchData=
 [
-  ['videogame_5fonawake_1612',['VideoGame_OnAwake',['../class_alis_1_1_core_1_1_game.html#a9c2f589655a9fcafee91af6a1fae109e',1,'Alis::Core::Game']]],
-  ['videogame_5fonexit_1613',['VideoGame_OnExit',['../class_alis_1_1_core_1_1_game.html#aca58a3111819d2f90fb5b7b914c31a30',1,'Alis::Core::Game']]],
-  ['videogame_5fonfixedupdate_1614',['VideoGame_OnFixedUpdate',['../class_alis_1_1_core_1_1_game.html#a94b33537cff61a1f8f744e9d59ce6f71',1,'Alis::Core::Game']]],
-  ['videogame_5fonstart_1615',['VideoGame_OnStart',['../class_alis_1_1_core_1_1_game.html#ad8c6d8fdf0c14869f52eda2a551859bd',1,'Alis::Core::Game']]],
-  ['videogame_5fonstop_1616',['VideoGame_OnStop',['../class_alis_1_1_core_1_1_game.html#a0abaf4fce272b0a5027a739b404243c8',1,'Alis::Core::Game']]],
-  ['videogame_5fonupdate_1617',['VideoGame_OnUpdate',['../class_alis_1_1_core_1_1_game.html#a005fb828e7446079eeb214c342695b84',1,'Alis::Core::Game']]]
+  ['warning_1629',['Warning',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ade8967687acfcffe74fff46403e50e21',1,'Alis.Editor.UI.Widgets.Console.Warning()'],['../class_alis_1_1_tools_1_1_logger.html#a63d087775d79b158326173fc361d43b7',1,'Alis.Tools.Logger.Warning()']]],
+  ['wideview_1630',['WideView',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a1ebd95278cb6a51a356530280fff17bf',1,'Alis::Editor::UI::Widgets::TopMenu']]],
+  ['widgetmanager_1631',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#a148f6634f047cd5ba08a2d8104858848',1,'Alis::Editor::UI::Widgets::WidgetManager']]],
+  ['window_1632',['Window',['../class_alis_1_1_core_1_1_config_1_1_config_builder.html#af7dc3b5be8940c1ecaeec5551374723e',1,'Alis::Core::Config::ConfigBuilder']]],
+  ['window_5fclosed_1633',['Window_Closed',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a7db139bec0841f028ca2a2488eeb668e',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fclosing_1634',['Window_Closing',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a09ba700e6cf0125116b832220eaa673c',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fmoved_1635',['Window_Moved',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad57b10d88f3d99a35b081d55e58234bf',1,'Alis::Editor::UI::MainWindow']]],
+  ['window_5fresized_1636',['Window_Resized',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a24e29ff5d83bcacb90d18536fdc5d6ce',1,'Alis::Editor::UI::MainWindow']]],
+  ['windowmanager_1637',['WindowManager',['../class_alis_1_1_core_1_1_window_manager.html#a1e9488430d0864ecf470754c6b23d49c',1,'Alis.Core.WindowManager.WindowManager()'],['../class_alis_1_1_core_1_1_window_manager.html#a5146ecdc1b89bd68345b99da36c493a9',1,'Alis.Core.WindowManager.WindowManager(WindowState windowState, Vector2 resolution)']]],
+  ['windowmanagerbuilder_1638',['WindowManagerBuilder',['../class_alis_1_1_core_1_1_window_manager_1_1_window_manager_builder.html#a237cd794b387c331d7be1650a4dbc1d6',1,'Alis::Core::WindowManager::WindowManagerBuilder']]],
+  ['windowresized_1639',['WindowResized',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a22e8772d281981a0b595df87f9143fb3',1,'ImGuiNET::ImGuiController']]],
+  ['windowstate_1640',['WindowState',['../class_alis_1_1_core_1_1_window_manager_1_1_window_manager_builder.html#ac9109e42df140ada68d4d447082deb2e',1,'Alis::Core::WindowManager::WindowManagerBuilder']]]
 ];

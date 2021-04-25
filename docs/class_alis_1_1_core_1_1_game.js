@@ -2,8 +2,6 @@ var class_alis_1_1_core_1_1_game =
 [
     [ "Game", "class_alis_1_1_core_1_1_game.html#a07d93f7db11f9650f82bd3f476984aca", null ],
     [ "Game", "class_alis_1_1_core_1_1_game.html#abc09c07c6f86fa2506a8dec945f73c4d", null ],
-    [ "LoadOfFile", "class_alis_1_1_core_1_1_game.html#a4efaa34090186c3eee4e9953e0c6d375", null ],
-    [ "RunOfFile", "class_alis_1_1_core_1_1_game.html#a6a95388724c1c4736127868016785a66", null ],
     [ "PreviewRender", "class_alis_1_1_core_1_1_game.html#ac2b6e3d6fb6311ae7f28f32d762d2ec5", null ],
     [ "Run", "class_alis_1_1_core_1_1_game.html#a31ec23cabb4d9639d6797176ca2ed95c", null ],
     [ "Awake", "class_alis_1_1_core_1_1_game.html#a5095c618bd2e6c4300f9cdfd85536527", null ],

@@ -1,7 +1,10 @@
 var searchData=
 [
-  ['main_1510',['Main',['../class_alis_1_1_editor_1_1_program.html#a9fb796180095303519fc9195869be1bf',1,'Alis::Editor::Program']]],
-  ['mainwindow_1511',['MainWindow',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a34cf3c5728e743f8bd294ee5ac5f865d',1,'Alis::Editor::UI::MainWindow']]],
-  ['memoryeditor_1512',['MemoryEditor',['../class_im_gui_n_e_t_1_1_memory_editor.html#a77fcc43e7a2e091e5cee04e20899e1b0',1,'ImGuiNET::MemoryEditor']]],
-  ['movetodir_1513',['MoveToDir',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a96905d8029281b270abf12b08c70c5de',1,'Alis.Editor.UI.Widgets.AssetsManager.MoveToDir()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#ab6be6cebdad358d4cb1729a401d53875',1,'Alis.Editor.UI.Widgets.FileDialog.MoveToDir()']]]
+  ['name_1521',['Name',['../class_alis_1_1_core_1_1_config_1_1_config_builder.html#a3c5060fdd41953d5fec899e5d3afb7a0',1,'Alis.Core.Config.ConfigBuilder.Name()'],['../class_alis_1_1_core_1_1_game_object_1_1_game_object_builder.html#a4419153f8be265a4212cddef30fceba5',1,'Alis.Core.GameObject.GameObjectBuilder.Name()'],['../class_alis_1_1_core_1_1_scene_1_1_scene_builder.html#a911a9244ad904a9b1b6812c2c13f610d',1,'Alis.Core.Scene.SceneBuilder.Name()']]],
+  ['newanimator_1522',['NewAnimator',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb',1,'Alis::Editor::UI::Widgets::Inspector']]],
+  ['newaudiosource_1523',['NewAudiosource',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf',1,'Alis::Editor::UI::Widgets::Inspector']]],
+  ['newcamera_1524',['NewCamera',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9',1,'Alis::Editor::UI::Widgets::Inspector']]],
+  ['newcollision_1525',['NewCollision',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a52bfa2de84a00bc70f56c34dc1b2b410',1,'Alis::Editor::UI::Widgets::Inspector']]],
+  ['newproject_1526',['NewProject',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ac7b67e9eb7b1331f4f2641d558a7dfd7',1,'Alis::Editor::UI::Widgets::TopMenu']]],
+  ['newsprite_1527',['NewSprite',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829',1,'Alis::Editor::UI::Widgets::Inspector']]]
 ];

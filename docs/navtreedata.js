@@ -115,11 +115,11 @@ var NAVTREEINDEX =
 [
 "annotated.html",
 "class_alis_1_1_core_1_1_scene_manager_1_1_scene_manager_builder.html#ac854d8639ad666a51f39295cd6dc80dc",
-"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a0745e0cea75a5e613abddcd66ef6a159",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a08f9cb9bb9e886b5c55857da8cf70760",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6cedebf4ea403d01706bdd9081b35452",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#acda90ac46b1a3385d1b1877abfb6a3ab",
-"class_im_gui_n_e_t_1_1_im_gui_controller.html#afbaf015a67bdbc0b725c28ec823b1cb9"
+"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#af4d397792aa86b71b8c670c1f4534ce7",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a02b203bf7f2844b6f4355bfcf2776bef",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a688a8296e6eeb49efc94fc1d85ee19b4",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#ac83212aa2b56e1a7fe346a9ee24d677e",
+"class_im_gui_n_e_t_1_1_im_gui_controller.html#aa4107f86e6666d803a68f0d2c1c64786"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
