@@ -6,6 +6,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager =
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a152318986df146db4a46d3db007007a9", null ],
     [ "ShowFile", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#abba07054aacedcf2391313d663acf97b", null ],
     [ "ShowFiles", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a02b3191ebfd6caaae98cf2ab3a9ff2c3", null ],
+    [ "PlaySound", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ac2f7540ddc5934fa883578698e5fb1d0", null ],
     [ "OpenVisualStudio", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a5bee3245b745c51552a9eceaa4a3e092", null ],
     [ "MoveToDir", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#a96905d8029281b270abf12b08c70c5de", null ],
     [ "GetNameDir", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html#ac436fd3c26f3b99fb34df658c92d5983", null ],

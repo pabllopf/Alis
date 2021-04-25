@@ -7,6 +7,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker =
     [ "DeleteGameObjectOfScene", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#af779510e60aa7b01992148b43c70a5b0", null ],
     [ "SelectGameObject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#a1df3b4b448d7741ff9588c907c03cc42", null ],
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#ac2b381d4da962ecf1bb381e624cca7a3", null ],
+    [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#a93d72fc90e0f974f9bc4d44e2322e651", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#a3eb084e90b7abeb77cd2f4176d3d08a3", null ],
     [ "childBackground", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#ae96883b4c42eaadedbaffef4360ff707", null ],
     [ "Current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#a434a08058e791551817ce9e37950a7a0", null ]
