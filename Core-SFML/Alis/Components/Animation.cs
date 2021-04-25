@@ -35,13 +35,13 @@ namespace Alis.Core.SFML
 
         /// <summary>The speed</summary>
         [NotNull]
-        private float speed;
+        private float speed = 0.1f;
 
         public Animation() 
         {
             this.name = "";
             this.state = 0;
-            this.speed = 1;
+            this.speed = 0.1f;
             this.images = new List<string>();            
             this.textures = new List<Texture>();
         }
@@ -108,26 +108,28 @@ namespace Alis.Core.SFML
         [NotNull]
         public float Speed { get => speed; set => speed = value; }
 
-        /// <summary>Gets the texture.</summary>
-        /// <value>The texture.</value>
-        [JsonIgnore]
-        [NotNull]
-        public Texture Texture
-        {
-            get
-            {
-                index++;
-                if (index >= textures.Count)
-                {
-                    index = 0;
-                }
-                return textures[index];
-            }
-        }
-
         public List<string> Images { get => images; set => images = value; }
         
         [JsonIgnore]
-        public List<Texture> Textures { get => textures; set => textures = value; }
+        public List<Texture> Textures
+        {
+            get
+            {
+                foreach (string image in images)
+                {
+                    if (Asset.Load(image) != null)
+                    {
+                        textures.Add(new Texture(Asset.Load(image)));
+                    }
+                }
+
+                return textures;
+            }
+
+            set
+            {
+                textures = value;
+            }
+        }
     }
 }

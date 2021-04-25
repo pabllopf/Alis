@@ -33,7 +33,7 @@ namespace Alis.Editor.UI.Widgets
         {
             current = this;
             file = string.Empty;
-
+            watch = new Stopwatch();
         }
 
         public static AudioPlayer Get() 
@@ -59,14 +59,26 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin("Audio Player", ref isOpen))
             {
-                counter = (int)watch.Elapsed.TotalSeconds;
-                progress = (counter / limittime);
+                if (audio != null) 
+                {
+                    counter = (int)watch.Elapsed.TotalSeconds;
+                    progress = (counter / limittime);
+                }
 
                 if (ImGui.BeginChild("child", new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 100.0f), true)) 
                 {
-                    ImGui.Text("File: " + (file.Equals(string.Empty) ? "Please Select File" : Path.GetFileName(file)));
-                    ImGui.Text("Status: " + ((audio != null) ? audio.Audio.Status : "None"));
-                    ImGui.Text("Duration: " + ((int)limittime) + "s");
+                    if (audio != null)
+                    {
+                        ImGui.Text("File: " + (file.Equals(string.Empty) ? "Please Select File" : Path.GetFileName(file)));
+                        ImGui.Text("Status: " + ((audio != null) ? audio.Audio.Status : "None"));
+                        ImGui.Text("Duration: " + ((int)limittime) + "s");
+                    }
+                    else 
+                    {
+                        ImGui.Text("File: " +  "Please Select File");
+                        ImGui.Text("Status: " + "None");
+                        ImGui.Text("Duration: " + 0 + "s");
+                    }
                 }
 
                 ImGui.EndChild();
@@ -102,16 +114,19 @@ namespace Alis.Editor.UI.Widgets
                     }
                 }
 
-                if (limittime == counter) 
+               
+
+                if (audio != null)
                 {
-                    watch.Stop();
-                    audio.Stop();
-                    progress = 1;
+                    if (limittime == counter)
+                    {
+                        watch.Stop();
+                        audio.Stop();
+                        progress = 1;
+                    }
+
+                    ImGui.ProgressBar(progress, new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 30.0f));
                 }
-
-                ImGui.ProgressBar(progress, new System.Numerics.Vector2(ImGui.GetContentRegionAvail().X, 30.0f));
-
-                
                 
             }
 

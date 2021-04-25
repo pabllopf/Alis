@@ -120,7 +120,9 @@
                 }
             }
 
+#if DEBUG
             RenderRectangle();
+#endif
 
             renderWindow.Display();
         }

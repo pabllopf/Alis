@@ -98,20 +98,24 @@ namespace Alis.Core.SFML
                 {
                     if (animations.Count > 0)
                     {
-                        if (clock.ElapsedTime.AsSeconds() >= animations[state].Speed)
+                        if (animations[state] != null) 
                         {
-                            if (index >= animations[state].Images.Count) 
+                            if (clock.ElapsedTime.AsSeconds() >= animations[state].Speed)
                             {
-                                index = 0;
+                                if (index < animations[state].Textures.Count)
+                                {
+                                    index++;
+                                }
+                                else 
+                                {
+                                    index = 0;
+                                }
+
+                                sprite.GetDraw().Texture = animations[state].Textures[index];
+                                clock.Restart();
                             }
-
-                            sprite.GetDraw().Texture = animations[state].Textures[index];
-                            clock.Restart();
-
-
-                            index++;
                         }
-                    }
+                    }               
                 }
             }
         }

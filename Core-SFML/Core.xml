@@ -44,10 +44,6 @@
             <summary>Gets or sets the speed.</summary>
             <value>The speed.</value>
         </member>
-        <member name="P:Alis.Core.SFML.Animation.Texture">
-            <summary>Gets the texture.</summary>
-            <value>The texture.</value>
-        </member>
         <member name="T:Alis.Core.SFML.Animator">
             <summary>Define a component</summary>
         </member>

@@ -25,7 +25,6 @@
     <DocumentationFile>Editor.xml</DocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <Optimize>true</Optimize>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
   
   

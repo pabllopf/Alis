@@ -160,11 +160,18 @@ namespace Alis.Editor.UI.Widgets
 
                         Console.Log("Data file on " + project.DataPath1 + "/Data.json");
 
+                      
+
+                        LoadAsembly();
+
                         Project.VideoGame = LocalData.Load<VideoGame>("Data", project.DataPath1);
 
                         Console.Warning("Loaded project: " + project.Name);
                         Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
-                       
+
+                        Asset.WorkPath = Project.Get().AssetPath;
+                        Console.Warning("Asset path is " + Asset.WorkPath);
+
                         Close();
                     }
                 }
@@ -454,6 +461,8 @@ namespace Alis.Editor.UI.Widgets
                     LocalData.Save(nameFileToSave, projects);
                     return;
                 }
+
+                
 
                 Project.Set(project);
 
