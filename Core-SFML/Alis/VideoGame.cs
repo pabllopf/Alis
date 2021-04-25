@@ -4,6 +4,7 @@
     using Newtonsoft.Json;
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>Video game</summary>
@@ -44,18 +45,24 @@
         }
 
 
+        private Scene scenecopy;
+
         public  byte[] PreviewRenderGame(bool start) 
         {
             if (start)
             {
-                SceneManager.Scenes[0]?.Start();
+                scenecopy = SceneManager.Scenes.ToList()[0];
+
+                scenecopy?.Start();
                 Logger.Log("Start scene preview");
-                SceneManager.Scenes[0]?.Update();
+
+                Input.Update().Wait();
+                scenecopy?.Update();
             }
             else 
             {
-
-                SceneManager.Scenes[0]?.Update();
+                Input.Update().Wait();
+                scenecopy?.Update();
             }
 
             return RenderSFML.CurrentRenderSFML.FrameBytes();
@@ -63,7 +70,7 @@
 
         public void StopPreviewRenderGame() 
         {
-            SceneManager.Scenes[0].Exit();
+            scenecopy.Exit();
         }
 
 

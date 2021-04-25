@@ -294,7 +294,7 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.ARCHIVE + " Package Manager"))
+                    if (ImGui.MenuItem(Icon.ARCHIVE + " Package Manager -SOON-", false))
                     {
                     }
 
@@ -302,16 +302,19 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.BeginMenu(Icon.COGS + " General"))
                     {
-                        if (ImGui.MenuItem("Hierarchy"))
+                        if (ImGui.MenuItem("Objects"))
                         {
+                            OpenObjectsView();
                         }
 
-                        if (ImGui.MenuItem("Scene"))
+                        if (ImGui.MenuItem("Assets"))
                         {
+                            OpenAssetsView();
                         }
 
                         if (ImGui.MenuItem("Console"))
                         {
+                            OpenConsoleView();
                         }
 
                         ImGui.EndMenu();
@@ -319,10 +322,20 @@ namespace Alis.Editor.UI.Widgets
 
                     if (ImGui.BeginMenu(Icon.VIDEOCAMERA + " Rendering"))
                     {
+                        if (ImGui.MenuItem("Scene View"))
+                        {
+                            OpenSceneView();
+                        }
+
+                        if (ImGui.MenuItem("Game View"))
+                        {
+                            OpenGameView();
+                        }
+
                         ImGui.EndMenu();
                     }
 
-                    if (ImGui.BeginMenu(Icon.FILM + " Animation"))
+                    if (ImGui.BeginMenu(Icon.FILM + " Animation -SOON-", false))
                     {
                         ImGui.EndMenu();
                     }
@@ -332,7 +345,7 @@ namespace Alis.Editor.UI.Widgets
                         ImGui.EndMenu();
                     }
 
-                    if (ImGui.BeginMenu(Icon.BARCHART + " Analysis"))
+                    if (ImGui.BeginMenu(Icon.BARCHART + " Analysis -SOON-", false))
                     {
                         ImGui.EndMenu();
                     }
@@ -372,6 +385,31 @@ namespace Alis.Editor.UI.Widgets
             }
 
             ImGui.EndMainMenuBar();
+        }
+
+        private void OpenAssetsView()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OpenObjectsView()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OpenConsoleView()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OpenSceneView()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void OpenGameView()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

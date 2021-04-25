@@ -12,6 +12,8 @@ namespace Alis.Core.SFML
     /// <summary>Define a component</summary>
     public class Camera : Component
     {
+        private string icon = "\uf03d";
+
         /// <summary>The transform</summary>
         private Core.Transform transform;
 
@@ -32,6 +34,7 @@ namespace Alis.Core.SFML
 
             transform = new Core.Transform();
         }
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Camera"/> class.
@@ -66,10 +69,16 @@ namespace Alis.Core.SFML
         public Vector2 Center { get => center; set => center = value; }
 
 
+
         /// <summary>Start this instance.</summary>
         public override void Start()
         {
             transform = GameObject.Transform;
+        }
+
+        public override string GetIcon()
+        {
+            return icon;
         }
 
         /// <summary>Update this instance.</summary>

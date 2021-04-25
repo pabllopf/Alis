@@ -241,6 +241,9 @@
         <member name="T:Alis.Core.SFML.Sprite">
             <summary>Define a component</summary>
         </member>
+        <member name="F:Alis.Core.SFML.Sprite.icon">
+            <summary>The icon</summary>
+        </member>
         <member name="F:Alis.Core.SFML.Sprite.image">
             <summary>The image</summary>
         </member>

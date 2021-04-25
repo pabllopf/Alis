@@ -10,6 +10,9 @@ namespace Alis.Core
     /// <summary>Define a component</summary>
     public abstract class Component 
     {
+        /// <summary>The default icon</summary>
+        private string defaultIcon = "\uf1c9";
+
         /// <summary>The game object</summary>
         [AllowNull]
         [JsonIgnore]
@@ -53,6 +56,11 @@ namespace Alis.Core
         /// <value>The game object.</value>
         [JsonIgnore]
         public GameObject GameObject { get => gameObject; }
+        
+        public virtual string GetIcon() 
+        {
+            return defaultIcon;
+        }
 
         /// <summary>Enable this instance.</summary>
         public virtual void Enable() 

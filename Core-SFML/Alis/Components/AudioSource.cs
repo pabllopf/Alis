@@ -13,6 +13,8 @@ namespace Alis.Core.SFML
     /// <summary>Define a component</summary>
     public class AudioSource : Component
     {
+        private string icon = "\uf001";
+
         /// <summary>The file</summary>
         [NotNull]
         private string audioFile;
@@ -68,6 +70,11 @@ namespace Alis.Core.SFML
             OnStop += AudioSource_OnStop;
             OnPause += AudioSource_OnPause;
             OnRestart += AudioSource_OnRestart;
+        }
+
+        public override string GetIcon()
+        {
+            return icon;
         }
 
         /// <summary>Initializes a new instance of the <see cref="AudioSource" /> class.</summary>

@@ -72,6 +72,8 @@ namespace Alis.Editor.UI.Widgets
 
                 if (current.isGaming == false) 
                 {
+                    SceneView.Focus();
+
                     current.isStarted = false;
 
                     if (Project.VideoGame != null) 

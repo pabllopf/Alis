@@ -38,7 +38,7 @@ namespace Alis.Editor.UI.Widgets
                 new BottomMenu(),
                 new Inspector(),
                 new AssetsManager(info),
-                new Hierarchy(),
+                new Maker(),
                 new Console(),
                 new SceneView(imGuiController),
                 new GameView(imGuiController)

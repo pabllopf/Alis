@@ -14,6 +14,9 @@ namespace Alis.Core
     [JsonObject(MemberSerialization.OptIn)]
     public class Transform
     {
+        /// <summary>The icon</summary>
+        private string icon = "\uf0b2";
+
         /// <summary>The position</summary>
         [NotNull]
         private Vector3 position;
@@ -272,6 +275,7 @@ namespace Alis.Core
         /// <value>
         /// <c>true</c> if this instance can go out; otherwise, <c>false</c>.</value>
         public bool CanGoOut { get => canGoOut; set => canGoOut = value; }
+        public string Icon { get => icon; set => icon = value; }
 
         #region DefineEvents
 

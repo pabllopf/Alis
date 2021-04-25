@@ -126,5 +126,8 @@ namespace Alis.Core.SFML
         }
 
         public List<string> Images { get => images; set => images = value; }
+        
+        [JsonIgnore]
+        public List<Texture> Textures { get => textures; set => textures = value; }
     }
 }

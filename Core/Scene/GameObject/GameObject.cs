@@ -396,6 +396,7 @@ namespace Alis.Core
         public void Set(Component component, int pos)
         {
             components.Span[pos] = component;
+            components.Span[pos].AttachTo(this);
         }
 
 

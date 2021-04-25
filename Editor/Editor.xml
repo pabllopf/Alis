@@ -663,18 +663,6 @@
         <member name="M:Alis.Editor.UI.Widgets.GameView.Draw">
             <summary>Draw this instance.</summary>
         </member>
-        <member name="T:Alis.Editor.UI.Widgets.Hierarchy">
-            <summary>Manage components of scene.</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.Hierarchy.Name">
-            <summary>The name</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Hierarchy.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Inspector" /> class.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.Hierarchy.Draw">
-            <summary>Draws this instance.</summary>
-        </member>
         <member name="T:Alis.Editor.UI.Widgets.Inspector">
             <summary>Manage components of scene.</summary>
         </member>
@@ -685,6 +673,18 @@
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Inspector" /> class.</summary>
         </member>
         <member name="M:Alis.Editor.UI.Widgets.Inspector.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.Maker">
+            <summary>Manage components of scene.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Maker.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Maker.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Inspector" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Maker.Draw">
             <summary>Draws this instance.</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.ProjectManager">

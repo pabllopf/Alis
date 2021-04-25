@@ -21,6 +21,8 @@ namespace Alis.Editor.UI.Widgets
     /// <summary>Render the core scene.</summary>
     public class SceneView : Widget
     {
+        private static SceneView current;
+
         /// <summary>The name</summary>
         private const string Name = "Scene";
 
@@ -36,10 +38,13 @@ namespace Alis.Editor.UI.Widgets
 
         private System.IntPtr intPtr;
 
+        private bool focus = false;
+
         public SceneView(ImGuiController imGuiController) 
         {
             this.imGuiController = imGuiController;
 
+            current = this;
 
             Project.OnChange += Project_OnChangeProject;
         }
@@ -65,6 +70,13 @@ namespace Alis.Editor.UI.Widgets
                 texture = imageSharpTexture.CreateDeviceTexture(imGuiController.graphicsDevice, imGuiController.graphicsDevice.ResourceFactory);
                 intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
             }
+
+            if (focus)
+            {
+                focus = false;
+                ImGui.SetNextWindowFocus();
+            }
+
 
             if (ImGui.Begin(Name))
             {
@@ -105,6 +117,15 @@ namespace Alis.Editor.UI.Widgets
                 }
             }
             ImGui.End();
+        }
+
+        internal static void Focus()
+        {
+            if (current != null) 
+            {
+                current.focus = true;
+            }
+           
         }
     }
 }

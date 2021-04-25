@@ -13,8 +13,10 @@ namespace Alis.Core.SFML
     /// <summary>Define a component</summary>
     public class Animator : Component
     {
+        private string icon = "\uf01d";
+
         /// <summary>The sprite</summary>
-        [NotNull]
+        [AllowNull]
         [JsonIgnore]
         private Sprite sprite;
 
@@ -70,24 +72,57 @@ namespace Alis.Core.SFML
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            sprite = this.GameObject.Get<Sprite>() ?? throw new System.Exception("GameObject " + this.GameObject.Name + "dont content a Sprite");
+            if (GameObject != null) 
+            {
+                if (GameObject.Get<Sprite>() != null)
+                {
+                    sprite = GameObject.Get<Sprite>();
+                    this.state = 0;
+                }
+            }
         }
+
+        public override string GetIcon()
+        {
+            return icon;
+        }
+
+        private int index = 0;
 
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (sprite != null && sprite.Image != string.Empty)
+            if (sprite != null) 
             {
-                if (state < animations.Count)
+                if (!sprite.Image.Equals(string.Empty)) 
                 {
-                    if (animations.Count > 0) 
+                    if (animations.Count > 0)
                     {
                         if (clock.ElapsedTime.AsSeconds() >= animations[state].Speed)
                         {
-                            sprite.GetDraw().Texture = animations[state].Texture;
+                            if (index >= animations[state].Images.Count) 
+                            {
+                                index = 0;
+                            }
+
+                            sprite.GetDraw().Texture = animations[state].Textures[index];
                             clock.Restart();
+
+
+                            index++;
                         }
                     }
+                }
+            }
+        }
+
+        public override void Exit()
+        {
+            if (GameObject != null)
+            {
+                if (GameObject.Get<Sprite>() != null)
+                {
+                    sprite = null;
                 }
             }
         }

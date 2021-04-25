@@ -14,7 +14,6 @@ namespace Alis.Editor.UI.Widgets
     using System.Linq;
     using SFML.System;
     using Alis.Core.SFML;
-    using System.IO;
 
     /// <summary>Manage components of scene.</summary>
     public class Inspector : Widget
@@ -96,7 +95,7 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.PushItemWidth(ImGui.GetContentRegionAvail().X - 25.0f);
 
-            if (ImGui.InputText(Icon.CUBE + " ##" + gameObject.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
+            if (ImGui.InputText(Icon.OBJECTGROUP + " ##" + gameObject.Name, ref content, 512, ImGuiInputTextFlags.EnterReturnsTrue))
             {
                 gameObject.Name = content;
             }
@@ -140,16 +139,20 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.BeginGroup();
                     ImGui.AlignTextToFramePadding();
-                    if (ImGui.TreeNodeEx(Icon.CUBE + " " + component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
+                    if (ImGui.TreeNodeEx(component.GetIcon() + " " + component.GetType().Name, ImGuiTreeNodeFlags.AllowItemOverlap))
                     {
                         foreach (PropertyInfo property in component.GetType().GetProperties())
                         {
                             foreach (KeyValuePair<Type, Action<Component, PropertyInfo>> field in fields)
                             {
-                                if (field.Key.Equals(property.PropertyType) && property.CanWrite)
+                                if (!property.Name.Equals("IsActive")) 
                                 {
-                                    field.Value.Invoke(component, property);
+                                    if (field.Key.Equals(property.PropertyType) && property.CanWrite)
+                                    {
+                                        field.Value.Invoke(component, property);
+                                    }
                                 }
+                                
                             }
                         }
 
@@ -158,7 +161,10 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.EndGroup();
 
-                    ImGui.SameLine();
+                    ImGui.SameLine(ImGui.GetContentRegionAvail().X - 15.0f);
+
+                    ImGui.BeginGroup();
+                    ImGui.AlignTextToFramePadding();
 
                     if (ImGui.Button(Icon.PLUSSQUARE + "###" + component.GetType().FullName))
                     {
@@ -177,8 +183,8 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.PopStyleVar();
                     ImGui.PopStyleColor();
+                    ImGui.EndGroup();
 
-                  
                 }
             }
 

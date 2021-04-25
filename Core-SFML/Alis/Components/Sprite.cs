@@ -13,6 +13,9 @@ namespace Alis.Core.SFML
     /// <summary>Define a component</summary>
     public class Sprite : Component
     {
+        /// <summary>The icon</summary>
+        private string icon = "\uf03e";
+
         /// <summary>The image</summary>
         [NotNull]
         private string image;
@@ -54,6 +57,11 @@ namespace Alis.Core.SFML
             OnDraw += Sprite_OnDraw;
         }
 
+        public override string GetIcon()
+        {
+            return icon;
+        }
+
         /// <summary>Initializes a new instance of the <see cref="Sprite" /> class.</summary>
         /// <param name="image">The image.</param>
         /// <param name="depth">The depth.</param>
@@ -92,6 +100,7 @@ namespace Alis.Core.SFML
         [NotNull]
         [JsonProperty]
         public int Depth { get => depth; set => depth = value; }
+
 
         /// <summary>Starts this instance.</summary>
         public override void Start()

@@ -161,7 +161,7 @@ namespace Alis.Core
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        internal Task Update() => Task.Run(() => currentScene?.Update());
+        public Task Update() => Task.Run(() => currentScene?.Update());
 
         /// <summary>Fix the update.</summary>
         /// <returns>Return none</returns>
