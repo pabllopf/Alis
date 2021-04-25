@@ -5,6 +5,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view =
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a9e10013f45eab6069c66f3e5011b2173", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a50840cb64957000858364133a4617b11", null ],
     [ "image", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#abbc5206a183eda61c84a034939d672b2", null ],
+    [ "data", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#ac1a57f68278e0855d7050d5371eaa744", null ],
     [ "imageSharpTexture", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a502716a503a5922c3a791d5eff66d1ba", null ],
     [ "texture", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a0a6c516330e39e942299a4e7f4348775", null ],
     [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a04ed2fe07f78376830d354777525fd21", null ],
