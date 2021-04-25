@@ -244,6 +244,14 @@ namespace Alis.Core
                 if (span[i] != null && span[i].Name.Equals(gameObject.Name) && span[i].IsActive)
                 {
                     Logger.Log(string.Format(DeleteGameObject, span[i].Name, this.name));
+                    foreach (Component component in span[i].Components) 
+                    {
+                        if (component != null) 
+                        {
+                            component.Exit();
+                        }
+                    }
+
                     span[i] = null;
                     break;
                 }

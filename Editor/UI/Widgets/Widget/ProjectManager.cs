@@ -374,6 +374,8 @@ namespace Alis.Editor.UI.Widgets
                 GenerateFiles(project);
 
                 LoadAsembly();
+
+
                 Console.Log("Created project '" + project.Name + "'on: " + project.Directory);
             }
             else 
@@ -424,6 +426,9 @@ namespace Alis.Editor.UI.Widgets
             Project.Set(project);
             Project.VideoGame = game;
 
+            Asset.WorkPath = Project.Get().AssetPath;
+            Console.Warning("Asset path is " + Asset.WorkPath);
+
             Close();
         }
 
@@ -459,7 +464,8 @@ namespace Alis.Editor.UI.Widgets
                 Console.Warning("Loaded project: " + project.Name);
                 Console.Warning("Loaded VIDEOGAME: " + Project.VideoGame.Config.Name);
 
-
+                Asset.WorkPath = Project.Get().AssetPath;
+                Console.Warning("Asset path is " + Asset.WorkPath);
 
                 Close();
             }

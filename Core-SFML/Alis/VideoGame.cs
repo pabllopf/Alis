@@ -32,7 +32,14 @@
 
         public override byte[] PreviewRender()
         {
-            base.PreviewRender();
+            foreach (Scene scene in SceneManager.Scenes) 
+            {
+                if (scene != null)
+                {
+                    scene.Update();
+                }
+            }
+
             return RenderSFML.CurrentRenderSFML.FrameBytes();
         }
 

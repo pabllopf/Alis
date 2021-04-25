@@ -168,9 +168,12 @@
 
             if (sprites.Count > 0)
             {
-                foreach (Sprite sprite in sprites)
+                foreach (Sprite sprite in sprites.ToList())
                 {
-                    renderTexture.Draw(sprite.GetDraw());
+                    if (sprite != null)
+                    {
+                        renderTexture.Draw(sprite.GetDraw());
+                    }
                 }
             }
 

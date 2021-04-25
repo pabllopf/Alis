@@ -178,6 +178,20 @@ namespace Alis.Core.SFML
             }
         }
 
+        public override void Exit()
+        {
+            if (RenderSFML.CurrentRenderSFML != null)
+            {
+                if (RenderSFML.CurrentRenderSFML.GetDraws<Sprite>().Contains(this))
+                {
+                    Logger.Log("DELETE SPRITE");
+                    RenderSFML.CurrentRenderSFML.Remove(this);
+                }
+            }
+
+            sprite = null;
+        }
+
         #region DefineEvents
 
         /// <summary>Sprites the on draw.</summary>
