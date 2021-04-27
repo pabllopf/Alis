@@ -146,10 +146,10 @@ $(document).ready(function(){initNavTree('_asset_8cs_source.html',''); initResiz
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    {</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                        <span class="keywordflow">if</span> (!<a class="code" href="class_alis_1_1_tools_1_1_asset.html#a9200916092ae4506c3e978d85fa668c4">files</a>.ContainsKey(file)) </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                        {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                            <a class="code" href="class_alis_1_1_tools_1_1_asset.html#a9200916092ae4506c3e978d85fa668c4">files</a>.Add(file, path);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                            <a class="code" href="class_alis_1_1_tools_1_1_asset.html#a9200916092ae4506c3e978d85fa668c4">files</a>.Add(file, path.Replace(<span class="stringliteral">&quot;\\&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>));</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                        }</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        <span class="keywordflow">return</span> path;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                        <span class="keywordflow">return</span> path.Replace(<span class="stringliteral">&quot;\\&quot;</span>, <span class="stringliteral">&quot;/&quot;</span>);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            }</div>
@@ -172,7 +172,7 @@ $(document).ready(function(){initNavTree('_asset_8cs_source.html',''); initResiz
   <ul>
     <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><b>Asset.cs</b></li>
     <li class="footer">
-      <a>Generated on | Mon Apr 26 2021 |</a>
+      <a>Generated on | Tue Apr 27 2021 |</a>
     </li>
   </ul>
 </div>
