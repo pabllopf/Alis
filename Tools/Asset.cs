@@ -53,10 +53,10 @@ namespace Alis.Tools
                     {
                         if (!files.ContainsKey(file)) 
                         {
-                            files.Add(file, path);
+                            files.Add(file, path.Replace("\\", "/"));
                         }
 
-                        return path;
+                        return path.Replace("\\", "/");
                     }
                 }
             }

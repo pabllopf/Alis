@@ -50,7 +50,7 @@ namespace Tools
                     Directory.CreateDirectory(path);
                 }
 
-                string file = Environment.CurrentDirectory + "/Zip/" + "Test.json";
+                string file = Environment.CurrentDirectory + "/Zip/" + "Test2.json";
                 if (!File.Exists(file)) 
                 {
                     File.Create(file);
@@ -70,19 +70,19 @@ namespace Tools
         {
             Assert.Multiple((TestDelegate)(() =>
             {
-                if (File.Exists(Environment.CurrentDirectory + "/Zip.zip"))
+                if (File.Exists(Environment.CurrentDirectory + "/uZip.zip"))
                 {
-                    File.Delete(Environment.CurrentDirectory + "/Zip.zip");
+                    File.Delete(Environment.CurrentDirectory + "/uZip.zip");
                 }
 
-                string path = Environment.CurrentDirectory + "/Zip/";
+                string path = Environment.CurrentDirectory + "/uZip/";
 
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
 
-                string file = Environment.CurrentDirectory + "/Zip/" + "Test.json";
+                string file = Environment.CurrentDirectory + "/uZip/" + "Test3.json";
                 if (!File.Exists(file))
                 {
                     File.Create(file);
@@ -104,9 +104,9 @@ namespace Tools
                     Directory.CreateDirectory(path2);
                 }
 
-                Alis.Tools.Zipper.UnZip((string)(Environment.CurrentDirectory + "/Zip.zip"), (string)path2);
+                Alis.Tools.Zipper.UnZip(Environment.CurrentDirectory + "/uZip.zip", path2);
 
-                Assert.IsTrue(File.Exists(Environment.CurrentDirectory + "/Zip/Test.json"));
+                Assert.IsTrue(File.Exists(Environment.CurrentDirectory + "/uZip/Test3.json"));
             }));
         }
 

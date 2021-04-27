@@ -50,7 +50,7 @@ namespace Tools
         {
             Assert.Multiple(() =>
             {
-                string path = Environment.CurrentDirectory + "/Assets/";
+                string path = (Environment.CurrentDirectory + "/Assets/").Replace("\\", "/");
 
                 if (!Directory.Exists(path)) 
                 {
