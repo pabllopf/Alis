@@ -36,78 +36,82 @@ namespace Tools
         [Test]
         public void Zip_Simple_File()
         {
-            Assert.Multiple(() =>
+            if (File.Exists(Environment.CurrentDirectory + "/Zip.zip"))
             {
-                if (File.Exists(Environment.CurrentDirectory + "/Zip.zip")) 
-                {
-                    File.Delete(Environment.CurrentDirectory + "/Zip.zip");
-                }
+                File.Delete(Environment.CurrentDirectory + "/Zip.zip");
+            }
 
-                string path = Environment.CurrentDirectory + "/Zip/";
+            string path = Environment.CurrentDirectory + "/Zip/";
 
-                if (!Directory.Exists(path)) 
-                {
-                    Directory.CreateDirectory(path);
-                }
+            Thread.Sleep(100);
 
-                string file = Environment.CurrentDirectory + "/Zip/" + "Test2.json";
-                if (!File.Exists(file)) 
-                {
-                    File.Create(file);
-                }
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
 
-                Thread.Sleep(10);
+            string file = Environment.CurrentDirectory + "/Zip/" + "Test2.json";
+            if (!File.Exists(file))
+            {
+                File.Create(file);
+            }
 
-                Alis.Tools.Zipper.Zip(path);
+            Thread.Sleep(10);
 
-                Assert.IsTrue(File.Exists(Environment.CurrentDirectory + "/Zip.zip"));
-            });
+            Thread.Sleep(100);
+
+            Alis.Tools.Zipper.Zip(path);
+
+            Thread.Sleep(100);
+
+            Assert.IsTrue(File.Exists(Environment.CurrentDirectory + "/Zip.zip"));
         }
 
         /// <summary>Uns the zip simple file.</summary>
         [Test]
         public void UnZip_Simple_File()
         {
-            Assert.Multiple((TestDelegate)(() =>
+            if (File.Exists(Environment.CurrentDirectory + "/uZip.zip"))
             {
-                if (File.Exists(Environment.CurrentDirectory + "/uZip.zip"))
-                {
-                    File.Delete(Environment.CurrentDirectory + "/uZip.zip");
-                }
+                File.Delete(Environment.CurrentDirectory + "/uZip.zip");
+            }
 
-                string path = Environment.CurrentDirectory + "/uZip/";
+            string path = Environment.CurrentDirectory + "/uZip/";
 
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
 
-                string file = Environment.CurrentDirectory + "/uZip/" + "Test3.json";
-                if (!File.Exists(file))
-                {
-                    File.Create(file);
-                }
+            string file = Environment.CurrentDirectory + "/uZip/" + "Test3.json";
+            if (!File.Exists(file))
+            {
+                File.Create(file);
+            }
 
-                Thread.Sleep(10);
+            Thread.Sleep(100);
 
-                Alis.Tools.Zipper.Zip(path);
+            Alis.Tools.Zipper.Zip(path);
 
-                string path2 = Environment.CurrentDirectory + "/UnZip/";
+            Thread.Sleep(100);
 
-                if (Directory.Exists(path2)) 
-                {
-                    Directory.Delete(path2, true);
-                }
+            string path2 = Environment.CurrentDirectory + "/UnZip/";
 
-                if (!Directory.Exists(path2))
-                {
-                    Directory.CreateDirectory(path2);
-                }
+            if (Directory.Exists(path2))
+            {
+                Directory.Delete(path2, true);
+            }
 
-                Alis.Tools.Zipper.UnZip(Environment.CurrentDirectory + "/uZip.zip", path2);
+            if (!Directory.Exists(path2))
+            {
+                Directory.CreateDirectory(path2);
+            }
 
-                Assert.IsTrue(File.Exists(Environment.CurrentDirectory + "/uZip/Test3.json"));
-            }));
+            Alis.Tools.Zipper.UnZip(Environment.CurrentDirectory + "/uZip.zip", path2);
+
+            Thread.Sleep(100);
+
+            Assert.IsTrue(File.Exists(Environment.CurrentDirectory + "/uZip/Test3.json"));
         }
 
         #endregion
