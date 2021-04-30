@@ -1,5 +1,8 @@
 var NAVTREEINDEX6 =
 {
+"class_alis_1_1_tools_1_1_language.html#adc80736b611e81b1855a05ca7bdb01bb":[8,0,0,2,3,2],
+"class_alis_1_1_tools_1_1_language.html#af749e8729371a2b653dcbcdc057a0af1":[8,0,0,2,3,6],
+"class_alis_1_1_tools_1_1_local_data.html":[8,0,0,2,4],
 "class_alis_1_1_tools_1_1_local_data.html#a2822b7f78777e41d93b4868431ad8443":[8,0,0,2,4,0],
 "class_alis_1_1_tools_1_1_local_data.html#a32c1f76c4399ba47ddcd4875871be2cd":[8,0,0,2,4,4],
 "class_alis_1_1_tools_1_1_local_data.html#a4e264b50dd35f4e3a8a6707eb8b37cc1":[8,0,0,2,4,3],
@@ -151,8 +154,8 @@ var NAVTREEINDEX6 =
 "functions_t.html":[8,3,0,20],
 "functions_u.html":[8,3,0,21],
 "functions_v.html":[8,3,0,22],
-"functions_vars.html":[8,3,2,0],
 "functions_vars.html":[8,3,2],
+"functions_vars.html":[8,3,2,0],
 "functions_vars_a.html":[8,3,2,1],
 "functions_vars_b.html":[8,3,2,2],
 "functions_vars_c.html":[8,3,2,3],
@@ -238,16 +241,13 @@ var NAVTREEINDEX6 =
 "md__api_doc__pages_7_8_contributing.html#autotoc_md49":[6,1,0],
 "md__api_doc__pages_7_8_contributing.html#autotoc_md50":[6,1,1],
 "md__api_doc__pages_7_8_contributing.html#autotoc_md51":[6,1,2],
-"namespace_alis.html":[8,0,0],
 "namespace_alis.html":[7,0,0],
-"namespace_alis_1_1_core.html":[8,0,0,0],
+"namespace_alis.html":[8,0,0],
 "namespace_alis_1_1_core.html":[7,0,0,0],
-"namespace_alis_1_1_editor.html":[7,0,0,1],
+"namespace_alis_1_1_core.html":[8,0,0,0],
 "namespace_alis_1_1_editor.html":[8,0,0,1],
+"namespace_alis_1_1_editor.html":[7,0,0,1],
 "namespace_alis_1_1_editor_1_1_u_i.html":[7,0,0,1,0],
 "namespace_alis_1_1_editor_1_1_u_i.html":[8,0,0,1,0],
-"namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html":[8,0,0,1,0,0],
-"namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html":[7,0,0,1,0,0],
-"namespace_alis_1_1_editor_1_1_utils.html":[7,0,0,1,1],
-"namespace_alis_1_1_editor_1_1_utils.html":[8,0,0,1,1]
+"namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html":[7,0,0,1,0,0]
 };

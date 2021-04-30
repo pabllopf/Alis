@@ -7,6 +7,8 @@ var class_alis_1_1_core_1_1_scene =
     [ "Contains", "class_alis_1_1_core_1_1_scene.html#a749c88b5194d9272a3e9028a4aa3d859", null ],
     [ "Add", "class_alis_1_1_core_1_1_scene.html#a5648c1c1897055279f394b838038edcc", null ],
     [ "Remove", "class_alis_1_1_core_1_1_scene.html#ace33895be3c39763f5a9e0831592c9b6", null ],
+    [ "Duplicate", "class_alis_1_1_core_1_1_scene.html#a69b138d3048928cd1b0d42325f6f5126", null ],
+    [ "ShallowCopy", "class_alis_1_1_core_1_1_scene.html#a94fa03484beb7bac362f454fe7f6c248", null ],
     [ "Find", "class_alis_1_1_core_1_1_scene.html#a87a7fbd372233a97a94c628b23d4a11d", null ],
     [ "Awake", "class_alis_1_1_core_1_1_scene.html#ada491d60c13a133dc6fe003ef4402fdc", null ],
     [ "Start", "class_alis_1_1_core_1_1_scene.html#af7ef00a5745acf6c9d904f93fecaa0de", null ],

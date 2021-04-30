@@ -32,7 +32,7 @@ var searchData=
   ['diamond_352',['DIAMOND',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#af034855c26462004e3529f15618ac3a5',1,'Alis::Editor::Utils::Icon']]],
   ['digg_353',['DIGG',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae66a031f8a4a4bdfdc53a96d96ddcb22',1,'Alis::Editor::Utils::Icon']]],
   ['directacces_354',['directAcces',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a76ca8f4aa3b0534149b9f809d3ffb052',1,'Alis::Editor::UI::Widgets::FileDialog']]],
-  ['directory_355',['Directory',['../class_alis_1_1_editor_1_1_project.html#a23f2ab62d43d74f822ae072eec82f516',1,'Alis.Editor.Project.Directory()'],['../class_alis_1_1_editor_1_1_project.html#a734745aa87f6fb632fe545c8b94c9834',1,'Alis.Editor.Project.directory()'],['../class_alis_1_1_editor_1_1_u_i_1_1_text_manager.html#ae14edf3ebb5f8791096f9e1a35948d53',1,'Alis.Editor.UI.TextManager.directory()'],['../class_alis_1_1_tools_1_1_language.html#af749e8729371a2b653dcbcdc057a0af1',1,'Alis.Tools.Language.directory()']]],
+  ['directory_355',['directory',['../class_alis_1_1_editor_1_1_project.html#a734745aa87f6fb632fe545c8b94c9834',1,'Alis.Editor.Project.directory()'],['../class_alis_1_1_editor_1_1_u_i_1_1_text_manager.html#ae14edf3ebb5f8791096f9e1a35948d53',1,'Alis.Editor.UI.TextManager.directory()'],['../class_alis_1_1_tools_1_1_language.html#af749e8729371a2b653dcbcdc057a0af1',1,'Alis.Tools.Language.directory()'],['../class_alis_1_1_editor_1_1_project.html#a23f2ab62d43d74f822ae072eec82f516',1,'Alis.Editor.Project.Directory()']]],
   ['directorycopy_356',['DirectoryCopy',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a97198bf2fa62b1a209d0dab23fa69cf3',1,'Alis::Editor::UI::Widgets::TopMenu']]],
   ['directorydialog_357',['directoryDialog',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#aabc943bfe8548c34a32194cc775eca22',1,'Alis::Editor::UI::Widgets::ProjectManager']]],
   ['directoryfield_358',['directoryField',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#aeaf68d2c09a5a6c07713c74e2f708db7',1,'Alis::Editor::UI::Widgets::ProjectManager']]],
@@ -76,5 +76,7 @@ var searchData=
   ['dribbble_396',['DRIBBBLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a2935839074752e91c992beb16307a4f5',1,'Alis::Editor::Utils::Icon']]],
   ['dropbox_397',['DROPBOX',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#abd3fcdf621d8c191773ff58da638ea1b',1,'Alis::Editor::Utils::Icon']]],
   ['drupal_398',['DRUPAL',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a00cea875e898dc6434d956f3aea70073',1,'Alis::Editor::Utils::Icon']]],
-  ['dutch_399',['Dutch',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a68bf367e228f45ba83cb8831a5ee6447',1,'Alis::Tools']]]
+  ['duplicate_399',['Duplicate',['../class_alis_1_1_core_1_1_scene.html#a69b138d3048928cd1b0d42325f6f5126',1,'Alis::Core::Scene']]],
+  ['duplicategameobjectofscene_400',['DuplicateGameObjectOfScene',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#a6aaecd60acb49551f5612394947d369a',1,'Alis::Editor::UI::Widgets::Maker']]],
+  ['dutch_401',['Dutch',['../namespace_alis_1_1_tools.html#ac74e34824dabe4f18444891476c985d4a68bf367e228f45ba83cb8831a5ee6447',1,'Alis::Tools']]]
 ];

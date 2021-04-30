@@ -114,13 +114,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_alis_1_1_core_1_1_scene_manager_1_1_scene_manager_builder.html#ac854d8639ad666a51f39295cd6dc80dc",
-"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html",
-"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a78d6bf94a16872e015b9529a062a557e",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5279b6675216fc254e395cc8d75e77b8",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#aaeba0a4e882333c65ccc94936ab3ba07",
-"class_alis_1_1_tools_1_1_local_data.html#a2822b7f78777e41d93b4868431ad8443",
-"namespace_alis_1_1_tools.html"
+"class_alis_1_1_core_1_1_scene_manager_1_1_scene_manager_builder.html#a7c19f4e2678716d2257a8396910c7c34",
+"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afaeda174177dc3cce05af3b0d4f3ba18",
+"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a70455f4bf5eda87d7653ff975570b5c9",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a512009bd14b1cbd9b125dd800616a608",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#aabe8fd0887209dd4a70d326ef37e2d53",
+"class_alis_1_1_tools_1_1_language.html#adc80736b611e81b1855a05ca7bdb01bb",
+"namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -4,6 +4,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker =
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#ae01341369e55e0ea4d4bd50d5ba016d5", null ],
     [ "UpdateGameObject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#a8648df2fa34c67dcb52bfac3e3071848", null ],
     [ "AddNewGameObjectToScene", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#ac62b475891325111ef5c1bb1c8bd4861", null ],
+    [ "DuplicateGameObjectOfScene", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#a6aaecd60acb49551f5612394947d369a", null ],
     [ "DeleteGameObjectOfScene", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#af779510e60aa7b01992148b43c70a5b0", null ],
     [ "SelectGameObject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#a1df3b4b448d7741ff9588c907c03cc42", null ],
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html#ac2b381d4da962ecf1bb381e624cca7a3", null ],
