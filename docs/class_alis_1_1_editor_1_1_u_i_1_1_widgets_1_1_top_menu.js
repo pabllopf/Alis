@@ -10,6 +10,8 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "OpenConsoleView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a22d60895a56e2f25a75c769fa1edd151", null ],
     [ "OpenSceneView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a62826c28bed11420769b11f97785fe9e", null ],
     [ "OpenGameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#af17844da38655682bf6b1c7ce6d387e9", null ],
+    [ "OpenPreferences", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a466e74cb795f9857344fecaec9bd5772", null ],
+    [ "OpenProjectsSettings", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a5bb56730665f79e33b8f275956774b4d", null ],
     [ "LoadTexts", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ad85615420411a815a0d2f32bcaee3bac", null ],
     [ "NewProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ac7b67e9eb7b1331f4f2641d558a7dfd7", null ],
     [ "OpenProject", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a2e3c9065899c54db924068d1a53ec14e", null ],

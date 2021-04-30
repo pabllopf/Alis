@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['joomla_2138',['JOOMLA',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6cedebf4ea403d01706bdd9081b35452',1,'Alis::Editor::Utils::Icon']]],
-  ['jpy_2139',['JPY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a61f219d4a369c6bfd6e4fa0e1a283159',1,'Alis::Editor::Utils::Icon']]],
-  ['jsfiddle_2140',['JSFIDDLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aabe8fd0887209dd4a70d326ef37e2d53',1,'Alis::Editor::Utils::Icon']]]
+  ['joomla_2156',['JOOMLA',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6cedebf4ea403d01706bdd9081b35452',1,'Alis::Editor::Utils::Icon']]],
+  ['jpy_2157',['JPY',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a61f219d4a369c6bfd6e4fa0e1a283159',1,'Alis::Editor::Utils::Icon']]],
+  ['jsfiddle_2158',['JSFIDDLE',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aabe8fd0887209dd4a70d326ef37e2d53',1,'Alis::Editor::Utils::Icon']]]
 ];

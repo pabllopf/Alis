@@ -54,7 +54,9 @@ var hierarchy =
       [ "Alis.Editor.UI.Widgets.GameView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_game_view.html", null ],
       [ "Alis.Editor.UI.Widgets.Inspector", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html", null ],
       [ "Alis.Editor.UI.Widgets.Maker", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_maker.html", null ],
+      [ "Alis.Editor.UI.Widgets.Preferences", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_preferences.html", null ],
       [ "Alis.Editor.UI.Widgets.ProjectManager", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html", null ],
+      [ "Alis.Editor.UI.Widgets.ProjectSettings", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_settings.html", null ],
       [ "Alis.Editor.UI.Widgets.SceneView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html", null ],
       [ "Alis.Editor.UI.Widgets.TopMenu", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html", null ]
     ] ],
