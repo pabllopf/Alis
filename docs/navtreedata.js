@@ -116,10 +116,11 @@ var NAVTREEINDEX =
 "annotated.html",
 "class_alis_1_1_core_1_1_scene_manager_1_1_scene_manager_builder.html#ac854d8639ad666a51f39295cd6dc80dc",
 "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html",
-"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#afc8b3cc816b7057e986a73891af19a11",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a64b251b2cfcbb3680d0bb12ca90a893b",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#abf72e2132257c0bde24340916a28e9f9",
-"class_im_gui_n_e_t_1_1_im_gui_controller.html#a75baa3c8a6ed2dde14c5075f7a8997d1"
+"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a78d6bf94a16872e015b9529a062a557e",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a5279b6675216fc254e395cc8d75e77b8",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#aaeba0a4e882333c65ccc94936ab3ba07",
+"class_alis_1_1_tools_1_1_local_data.html#a2822b7f78777e41d93b4868431ad8443",
+"namespace_alis_1_1_tools.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
