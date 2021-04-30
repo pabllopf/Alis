@@ -183,6 +183,7 @@ namespace Alis.Editor.UI.Widgets
                     {
                         if (ImGui.MenuItem("Delete" + "###" + component.GetType().FullName))
                         {
+                            component.Exit();
                             gameObject.Delete(component);
                         }
 
