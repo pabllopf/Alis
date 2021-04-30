@@ -61,6 +61,12 @@ namespace Alis.Editor.UI.Widgets
                 filter = new ImGuiTextFilterPtr(filterPtr);
             }
 
+            if (Project.Get() is not null)
+            {
+                assetPath = Project.Get().AssetPath;
+                currentDirRight = assetPath;
+            }
+
             Project.OnChange += Project_OnChange;
         }
 
