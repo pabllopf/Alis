@@ -8,6 +8,7 @@ namespace Alis.Core
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
+    using System.Reflection;
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
@@ -258,6 +259,29 @@ namespace Alis.Core
             }
 
             Logger.Warning(string.Format(DontDeleteGameObject, gameObject.Name, this.name));
+        }
+
+        public void Duplicate(GameObject obj) 
+        {
+            int i = 0;
+            while (Find(obj.Name + "_" + i) != null)
+            {
+                i++;
+            }
+
+            LocalData.Save<GameObject>("Temp", obj);
+
+            GameObject temp = LocalData.Load<GameObject>("Temp");
+            if (temp != null) 
+            {
+                temp.Name = obj.Name + "_" + i;
+                Add(temp);
+            }
+        }
+
+        private GameObject ShallowCopy(GameObject o)
+        {
+            return (GameObject?)(o?.GetType().GetMethod("MemberwiseClone", BindingFlags.Instance | BindingFlags.NonPublic)?.Invoke(o, null));
         }
 
         /// <summary>Finds the specified name.</summary>

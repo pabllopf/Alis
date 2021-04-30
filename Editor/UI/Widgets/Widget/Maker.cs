@@ -127,6 +127,13 @@ namespace Alis.Editor.UI.Widgets
                                     DeleteGameObjectOfScene(obj);
                                 }
 
+                                ImGui.Separator();
+
+                                if (ImGui.MenuItem("Duplicate" + "###" + obj.Name))
+                                {
+                                    DuplicateGameObjectOfScene(obj);
+                                }
+
                                 ImGui.EndPopup();
                             }
 
@@ -138,6 +145,8 @@ namespace Alis.Editor.UI.Widgets
 
             ImGui.End();
         }
+
+  
 
         private void UpdateGameObject(GameObject obj)
         {
@@ -200,6 +209,14 @@ namespace Alis.Editor.UI.Widgets
                 }
                 Project.VideoGame.SceneManager.Scenes[0].Add(obj);
                 LocalData.Save<VideoGame>("Data", Project.Get().DataPath1, Project.VideoGame);
+            }
+        }
+
+        private void DuplicateGameObjectOfScene(GameObject obj)
+        {
+            if (Project.VideoGame is not null)
+            {
+                Project.VideoGame.SceneManager.Scenes[0].Duplicate(obj);
             }
         }
 
