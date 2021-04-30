@@ -187,7 +187,7 @@ namespace Alis.Editor.UI
                 imGuiController.Update(deltaSeconds, snapshot);
 
 #if DEBUG
-                /// ImGui.ShowDemoWindow();
+                ImGui.ShowDemoWindow();
 #endif
                 widgetManager.Update();
 

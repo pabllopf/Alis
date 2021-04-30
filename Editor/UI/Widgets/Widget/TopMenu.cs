@@ -225,26 +225,28 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.SCISSORS + " Cut -SOON-", false))
+                    if (ImGui.MenuItem(Icon.SCISSORS + " Cut", "Ctrl+X"))
                     {
                     }
 
-                    if (ImGui.MenuItem(Icon.FILESO + " Copy -SOON-", false))
+                    if (ImGui.MenuItem(Icon.FILESO + " Copy", "Ctrl+C"))
                     {
                     }
 
-                    if (ImGui.MenuItem(Icon.CLIPBOARD + " Paste -SOON-", false))
+                    if (ImGui.MenuItem(Icon.CLIPBOARD + " Paste", "Ctrl+V"))
                     {
                     }
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.WRENCH + " Projects Settings -SOON- ", false))
+                    if (ImGui.MenuItem(Icon.WRENCH + " Projects Settings", "Ctrl+P"))
                     {
+                        OpenProjectsSettings();
                     }
 
-                    if (ImGui.MenuItem(Icon.COG + " Preferences -SOON-", false))
+                    if (ImGui.MenuItem(Icon.COG + " Preferences", "Ctrl+Alt+P"))
                     {
+                        OpenPreferences();
                     }
 
                     ImGui.EndMenu();
@@ -433,6 +435,16 @@ namespace Alis.Editor.UI.Widgets
         private void OpenGameView()
         {
             WidgetManager.Add(new GameView(imGuiController));
+        }
+
+        private void OpenPreferences() 
+        {
+            WidgetManager.Add(new Preferences());
+        }
+
+        private void OpenProjectsSettings() 
+        {
+            WidgetManager.Add(new ProjectSettings());
         }
 
         #endregion
