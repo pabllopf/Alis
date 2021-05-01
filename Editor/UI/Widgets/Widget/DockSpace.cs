@@ -176,6 +176,8 @@ namespace Alis.Editor.UI.Widgets
 
                 if (!GameView.IsGaming)
                 {
+                    SceneView.Disable = true;
+
                     GameView.IsGaming = true;
                     GameView.Focus = true;
                     BottomMenu.Loading(true, "Gaming");
@@ -186,7 +188,10 @@ namespace Alis.Editor.UI.Widgets
                 if (GameView.IsGaming)
                 {
                     GameView.IsGaming = false;
+                    
                     BottomMenu.Loading(false, "");
+
+                    SceneView.Disable = false;
                     return;
                 }
             }

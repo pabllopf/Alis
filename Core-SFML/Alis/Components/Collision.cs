@@ -112,7 +112,17 @@ namespace Alis.Core.SFML
             }
         }
 
-
+        public override void Exit()
+        {
+            if (RenderSFML.CurrentRenderSFML != null)
+            {
+                if (RenderSFML.CurrentRenderSFML.Collisions.Contains(this.rectangle))
+                {
+                    Logger.Log("DELETE collision");
+                    RenderSFML.CurrentRenderSFML.Collisions.Remove(rectangle);
+                }
+            }
+        }
 
         /// <summary>Start this instance.</summary>
         public override void Start()

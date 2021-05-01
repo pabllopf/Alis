@@ -15,6 +15,8 @@ namespace Alis.Editor.UI.Widgets
     using Veldrid;
     using System.Runtime.InteropServices;
     using Alis.Tools;
+    using Alis.Core.SFML;
+    using System.Threading;
 
     /// <summary>Show the game running</summary>
     public class GameView : Widget
@@ -72,6 +74,12 @@ namespace Alis.Editor.UI.Widgets
                 {
                     current.isGaming = value;
 
+                    if (current.isGaming) 
+                    {
+                        LocalData.Save<SceneManager>("tempgame", Project.VideoGame.SceneManager);
+                        Thread.Sleep(100);
+                    }
+
                     if (current.isGaming == false)
                     {
                         SceneView.Focus();
@@ -81,8 +89,8 @@ namespace Alis.Editor.UI.Widgets
                         if (Project.VideoGame != null)
                         {
                             Project.VideoGame.StopPreviewRenderGame();
+                            //Project.VideoGame = current.last;
                         }
-
                     }
                 }
                
@@ -101,6 +109,8 @@ namespace Alis.Editor.UI.Widgets
 
             data = null;
             image = null;
+
+            isStarted = false;
 
             Project.OnChange += Project_OnChangeProject;
         }
@@ -144,16 +154,16 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin("Game View", ref isOpen))
             {
-                if (Project.VideoGame is not null && isGaming) 
+                if (isGaming) 
                 {
-                    Render(new Vector2(512, 512));
-                }
-                else
-                {
-                    ImGui.Image((IntPtr)0, ImGui.GetContentRegionAvail(), new Vector2(1, 0), new Vector2(0, 1), new Vector4(0f), new Vector4(1f));
-                }
+                    if (Project.VideoGame is not null)
+                    {
+                        Render(new Vector2(512, 512));
+                    }
 
-                ImGui.Separator();
+                    ImGui.Separator();
+                }
+                
             }
 
             ImGui.End();
@@ -198,12 +208,14 @@ namespace Alis.Editor.UI.Widgets
                 {
                     isStarted = true;
                     data = Project.VideoGame.PreviewRenderGame(true);
+
+                    Thread.Sleep(100);
                 }
 
                 data = Project.VideoGame.PreviewRenderGame(false);
 
                 image = Image.LoadPixelData<Rgba32>(data, (int)vector2.X, (int)vector2.Y);
-                imageSharpTexture = new ImageSharpTexture(image, true);
+                imageSharpTexture.Images[0] = image;
 
                 unsafe
                 {
@@ -232,7 +244,7 @@ namespace Alis.Editor.UI.Widgets
                     }
                 }
 
-                intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
+                //intPtr = imGuiController.GetOrCreateImGuiBinding(imGuiController.graphicsDevice.ResourceFactory, texture);
 
                 ImGui.PushStyleColor(ImGuiCol.Border, new Vector4(0.654f, 0.070f, 0.070f, 1.000f));
                 ImGui.BeginChild("GameObject-Child", new Vector2(ImGui.GetContentRegionAvail().X,ImGui.GetContentRegionAvail().Y), true);
