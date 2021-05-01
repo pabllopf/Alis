@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['widget_1394',['Widget',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html',1,'Alis::Editor::UI::Widgets']]],
-  ['widgetmanager_1395',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html',1,'Alis::Editor::UI::Widgets']]],
-  ['windowmanager_1396',['WindowManager',['../class_alis_1_1_core_1_1_window_manager.html',1,'Alis::Core']]],
-  ['windowmanagerbuilder_1397',['WindowManagerBuilder',['../class_alis_1_1_core_1_1_window_manager_1_1_window_manager_builder.html',1,'Alis::Core::WindowManager']]]
+  ['widget_1397',['Widget',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html',1,'Alis::Editor::UI::Widgets']]],
+  ['widgetmanager_1398',['WidgetManager',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html',1,'Alis::Editor::UI::Widgets']]],
+  ['windowmanager_1399',['WindowManager',['../class_alis_1_1_core_1_1_window_manager.html',1,'Alis::Core']]],
+  ['windowmanagerbuilder_1400',['WindowManagerBuilder',['../class_alis_1_1_core_1_1_window_manager_1_1_window_manager_builder.html',1,'Alis::Core::WindowManager']]]
 ];

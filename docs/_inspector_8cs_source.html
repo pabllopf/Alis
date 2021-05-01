@@ -280,428 +280,429 @@ $(document).ready(function(){initNavTree('_inspector_8cs_source.html',''); initR
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    {</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                        <span class="keywordflow">if</span> (ImGui.MenuItem(<span class="stringliteral">&quot;Delete&quot;</span> + <span class="stringliteral">&quot;###&quot;</span> + component.GetType().FullName))</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                        {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a0cc12694e85dd3925e2322d58a0d5ec1">Delete</a>(component);</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                        }</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                        ImGui.EndPopup();</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    }</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    ImGui.PopStyleVar();</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    ImGui.PopStyleColor();</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    ImGui.EndGroup();</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            }</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">            #endregion</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">            #region add component </span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;Add Component&quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X, 30f)))</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            {</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                ImGui.OpenPopup(<span class="stringliteral">&quot;ElementList&quot;</span>);</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            }</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordflow">if</span> (ImGui.BeginPopup(<span class="stringliteral">&quot;ElementList&quot;</span>))</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            {</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                Type type = typeof(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a>);</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                IEnumerable&lt;Type&gt; types = AppDomain.CurrentDomain.GetAssemblies()</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                    .Where(i =&gt; i.GetName().Name.Equals(<span class="stringliteral">&quot;Core-SFML&quot;</span>) || i.GetName().Name.Equals(<span class="stringliteral">&quot;Core&quot;</span>))</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    .SelectMany(s =&gt; s.GetTypes())</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    .Where(p =&gt; type.IsAssignableFrom(p));</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                <span class="keywordflow">foreach</span> (Type component <span class="keywordflow">in</span> types)</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                    <span class="keywordflow">if</span> (!component.Name.Equals(<span class="stringliteral">&quot;Component&quot;</span>) &amp;&amp; !component.Name.Equals(<span class="stringliteral">&quot;Transform&quot;</span>))</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                    {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                        <span class="keywordflow">if</span> (ImGui.MenuItem(component.Name))</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                        {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">AddComponent</a>(component, <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                        }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                    }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_editor_1_1_project.html">Project</a>.<a class="code" href="class_alis_1_1_editor_1_1_project.html#a4f7df95c0af697adca26a35c8f19ddf4">Get</a>().<a class="code" href="class_alis_1_1_editor_1_1_project.html#aa3319d688d8a971d15b21c6d0f40b4a6">DLL1</a> != <span class="keyword">null</span>) </div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                {</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                    type = typeof(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a>);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                    types = <a class="code" href="class_alis_1_1_editor_1_1_project.html">Project</a>.<a class="code" href="class_alis_1_1_editor_1_1_project.html#a4f7df95c0af697adca26a35c8f19ddf4">Get</a>().<a class="code" href="class_alis_1_1_editor_1_1_project.html#aa3319d688d8a971d15b21c6d0f40b4a6">DLL1</a>.GetTypes()</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    .Where(p =&gt; type.IsAssignableFrom(p));</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    <span class="keywordflow">foreach</span> (Type component <span class="keywordflow">in</span> types)</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                        <span class="keywordflow">if</span> (!component.Name.Equals(<span class="stringliteral">&quot;Component&quot;</span>) &amp;&amp; !component.Name.Equals(<span class="stringliteral">&quot;Transform&quot;</span>))</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        {</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                            <span class="keywordflow">if</span> (ImGui.MenuItem(component.Name))</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">AddComponent</a>(component, <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                            }</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        }</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            }</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">            #endregion</span></div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        }</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
-<div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a828b7b7a58acd57f3d84c797bbc9c01e">  250</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a828b7b7a58acd57f3d84c797bbc9c01e">ShowComponent</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property) </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        {</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">  255</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">AddComponent</a>(Type component, <a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>) </div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            <a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> temp = (<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a>)Activator.CreateInstance(component);</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.<a class="code" href="class_alis_1_1_core_1_1_game_object.html#aca5a1259790efb4387aed3cb67d31f1f">Contains</a>(temp)) </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            {</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(temp);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afe319bfff454dd21f7334248c4dd6b25">Log</a>(<span class="stringliteral">&quot;Add &quot;</span> + component.FullName + <span class="stringliteral">&quot; on &quot;</span> + <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038">Name</a>);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            }</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="keywordflow">else</span> </div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            {</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ade8967687acfcffe74fff46403e50e21">Warning</a>(<span class="stringliteral">&quot;Alredy exits Add &quot;</span> + component.FullName + <span class="stringliteral">&quot; on &quot;</span> + <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038">Name</a>);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        }</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="preprocessor">        #region ELEMENTS DRAW</span></div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
-<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6496fd05228073c8cf7fcb4c9f9a3429">  273</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6496fd05228073c8cf7fcb4c9f9a3429">DrawStringField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        {</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordtype">string</span> content = (string)property.GetValue(component) ?? <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputText(property.Name, ref content, 512))</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        }</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
-<div class="line"><a name="l00283"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a76471a55bc8f99b5c5b3a09d3b26d5da">  283</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a76471a55bc8f99b5c5b3a09d3b26d5da">DrawBoolField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        {</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <span class="keywordtype">bool</span> content = (bool)property.GetValue(component);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">if</span> (ImGui.Checkbox(property.Name, ref content))</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            }</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        }</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
-<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a5f69b9b97e50b90eb88a1da49ec739f7">  292</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a5f69b9b97e50b90eb88a1da49ec739f7">DrawFloatField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        {</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordtype">float</span> content = (float)property.GetValue(component);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(property.Name, ref content, 0.1f))</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            }</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
-<div class="line"><a name="l00301"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af6c6ff538e1740775542bb1f0aeeb7ec">  301</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af6c6ff538e1740775542bb1f0aeeb7ec">DrawIntField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keywordtype">int</span> content = (int)property.GetValue(component);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputInt(property.Name, ref content, 1))</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            {</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        }</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
-<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae7b37d46a7a2fa8a3f184dbf23d6f40b">  310</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae7b37d46a7a2fa8a3f184dbf23d6f40b">DrawByteField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        {</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;            <span class="keywordtype">int</span> content = (int)property.GetValue(component);</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputInt(property.Name, ref content, 1))</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            }</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        }</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ace6bff6afd7e64db5c7df87c5e34ad">  319</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ace6bff6afd7e64db5c7df87c5e34ad">DrawLongField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        {</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;            <span class="keywordtype">int</span> content = (int)property.GetValue(component);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputInt(property.Name, ref content, 1))</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            {</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            }</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        }</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
-<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af243907597703436a07722f8866b1dba">  328</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af243907597703436a07722f8866b1dba">DrawDoubleField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        {</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordtype">double</span> content = (double)property.GetValue(component);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputDouble(property.Name, ref content, 1))</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            }</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        }</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ad83e9d7344cba6e5ecf041b25f792e10">  337</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ad83e9d7344cba6e5ecf041b25f792e10">DrawVector2Field</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        {</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            ImGui.Text(property.Name);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            ImGui.Columns(2, property.Name, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            Vector2 content = (Vector2)property.GetValue(component);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordtype">float</span> x = content.X;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;X&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref x))</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            {</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                content.X = x;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            }</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            ImGui.NextColumn();</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            <span class="keywordtype">float</span> y = content.Y;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Y&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref y))</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            {</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                content.Y = y;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            }</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; </div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            ImGui.Columns(1);</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        }</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
-<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6cf8b24285f75b01b853e684a050ac25">  362</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6cf8b24285f75b01b853e684a050ac25">DrawVector2fField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        {</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            ImGui.Text(property.Name);</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            ImGui.Columns(2, property.Name, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            Vector2f content = (Vector2f)property.GetValue(component);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordtype">float</span> x = content.X;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;X&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref x))</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            {</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                content.X = x;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            }</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            ImGui.NextColumn();</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordtype">float</span> y = content.Y;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Y&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref y))</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;                content.Y = y;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            }</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            ImGui.Columns(1);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        }</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
-<div class="line"><a name="l00387"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a976422c40cab7ada660336aa5490ef1e">  387</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a976422c40cab7ada660336aa5490ef1e">DrawVector3Field</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        {</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            ImGui.Text(property.Name);</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            ImGui.Columns(3, property.Name, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            Vector3 content = (Vector3)property.GetValue(component);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            <span class="keywordtype">float</span> x = content.X;</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;X&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref x))</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            {</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                content.X = x;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            ImGui.NextColumn();</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <span class="keywordtype">float</span> y = content.Y;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Y&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref y))</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            {</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                content.Y = y;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            }</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;            ImGui.NextColumn();</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <span class="keywordtype">float</span> z = content.Z;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Z&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref z))</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            {</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                content.Z = z;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            }</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            ImGui.Columns(1);</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        }</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
-<div class="line"><a name="l00421"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a130da1fc7cf922c067e46d402a4c9d05">  421</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a130da1fc7cf922c067e46d402a4c9d05">DrawVector3</a>(<a class="code" href="class_alis_1_1_core_1_1_transform.html">Transform</a> transform, PropertyInfo property)</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        {</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            ImGui.Text(property.Name);</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            ImGui.Columns(3, property.Name, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            Vector3 content = (Vector3)property.GetValue(transform);</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            <span class="keywordtype">float</span> x = content.X;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;X&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref x))</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            {</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                content.X = x;</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                <span class="keyword">property</span>.SetValue(transform, content);</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;            }</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;            ImGui.NextColumn();</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;            <span class="keywordtype">float</span> y = content.Y;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Y&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref y))</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            {</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                content.Y = y;</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                <span class="keyword">property</span>.SetValue(transform, content);</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            }</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            ImGui.NextColumn();</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160; </div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            <span class="keywordtype">float</span> z = content.Z;</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Z&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref z))</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            {</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;                content.Z = z;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                <span class="keyword">property</span>.SetValue(transform, content);</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            }</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; </div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            ImGui.Columns(1);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        }</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="preprocessor">        #endregion</span></div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
-<div class="line"><a name="l00457"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ee3478d5fbd16f3c616125ea547637d">  457</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ee3478d5fbd16f3c616125ea547637d">DrawListField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo prop)</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        {</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            <span class="comment">//List&lt;Animation&gt; list = (List&lt;Animation&gt;)prop.GetValue(component);</span></div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160; </div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            List&lt;Animation&gt; list = (List&lt;Animation&gt;)prop.GetValue(component);</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;+&quot;</span>, <span class="keyword">new</span> Vector2(30, 30)))</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            {</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afe319bfff454dd21f7334248c4dd6b25">Log</a>(<span class="stringliteral">&quot;Add new element&quot;</span>);</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                list.Add(<span class="keyword">new</span> Animation());</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                prop.SetValue(component, list);</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160; </div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afe319bfff454dd21f7334248c4dd6b25">Log</a>(<span class="stringliteral">&quot;&quot;</span> + list.Count);</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;            }</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            ImGui.SameLine();</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">new</span> Vector2(30, 30)))</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            {</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                <span class="keywordflow">if</span> (list.Count &gt; 0) </div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                {</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                    list.RemoveAt(list.Count - 1);</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                }</div>
-<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                </div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                prop.SetValue(component, list);</div>
-<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160; </div>
-<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afe319bfff454dd21f7334248c4dd6b25">Log</a>(<span class="stringliteral">&quot;&quot;</span> + list.Count);</div>
-<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;            }</div>
-<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
-<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;            ImGui.SameLine();</div>
-<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
-<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            ImGui.Text(<span class="stringliteral">&quot;Animation&quot;</span>);</div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            ImGui.Text(<span class="stringliteral">&quot;Tree Animations: &quot;</span>);</div>
-<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            <span class="keywordflow">foreach</span> (Animation animation <span class="keywordflow">in</span> list)</div>
-<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            {</div>
-<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                ImGui.Separator();</div>
-<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160; </div>
-<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;                ImGui.Text(<span class="stringliteral">&quot;Animation &quot;</span> + list.IndexOf(animation));</div>
-<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
-<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;                <span class="keywordtype">string</span> content = (string)animation.Name ?? <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;                if (ImGui.InputText(<span class="stringliteral">&quot;Name &quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), ref content, 512))</div>
-<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                {</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                    animation.Name = content;</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                }</div>
-<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160; </div>
-<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                <span class="keywordtype">float</span> content2 = (float)animation.Speed;</div>
-<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;                if (ImGui.InputFloat(<span class="stringliteral">&quot;Speed &quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), ref content2))</div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                {</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                    animation.Speed = content2;</div>
-<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                }</div>
-<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160; </div>
-<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                <span class="keywordtype">int</span> content3 = (int)animation.State;</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                if (ImGui.InputInt(<span class="stringliteral">&quot;State &quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), ref content3))</div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                {</div>
-<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                    animation.State = content3;</div>
-<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                }</div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
-<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;                List&lt;string&gt; images = animation.Images;</div>
-<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
-<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;                <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;+&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), <span class="keyword">new</span> Vector2(30, 30)))</div>
-<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                {</div>
-<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                    images.Add(<span class="stringliteral">&quot;Default.png&quot;</span>);</div>
-<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                    animation.Images = images;</div>
-<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                    prop.SetValue(component, list);</div>
-<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                }</div>
-<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160; </div>
-<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                ImGui.SameLine();</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;                <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;-&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), <span class="keyword">new</span> Vector2(30, 30)))</div>
-<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                {</div>
-<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                    <span class="keywordflow">if</span> (images.Count &gt; 0)</div>
-<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                    {</div>
-<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                        images.RemoveAt(list.Count - 1);</div>
-<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160; </div>
-<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;                        animation.Images = images;</div>
-<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                        prop.SetValue(component, list);</div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                    }</div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                }</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                ImGui.SameLine();</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160; </div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;                ImGui.Text(<span class="stringliteral">&quot;Images&quot;</span>);</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160; </div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; images.Count; i++) </div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                {</div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                    <span class="keywordtype">string</span> cont = (string)images[i] ?? <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160; </div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                    <span class="keywordflow">if</span> (ImGui.InputText(<span class="stringliteral">&quot;Name &quot;</span> + <span class="stringliteral">&quot;##&quot;</span> + list.IndexOf(animation) + i, ref cont, 512))</div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                    {</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                        <span class="keywordtype">string</span> change = cont;</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                        images[i] = change;</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160; </div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                        animation.Images = images;</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                        prop.SetValue(component, list);</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                    }</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                }</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                            component.<a class="code" href="class_alis_1_1_core_1_1_component.html#a5ab2efdcfb6ff25760d7bd2b73cfdf83">Exit</a>();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a0cc12694e85dd3925e2322d58a0d5ec1">Delete</a>(component);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                        }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                        ImGui.EndPopup();</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    ImGui.PopStyleVar();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    ImGui.PopStyleColor();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    ImGui.EndGroup();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="preprocessor">            #endregion</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">            #region add component </span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;Add Component&quot;</span>, <span class="keyword">new</span> Vector2(ImGui.GetContentRegionAvail().X, 30f)))</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                ImGui.OpenPopup(<span class="stringliteral">&quot;ElementList&quot;</span>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="keywordflow">if</span> (ImGui.BeginPopup(<span class="stringliteral">&quot;ElementList&quot;</span>))</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                Type type = typeof(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a>);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                IEnumerable&lt;Type&gt; types = AppDomain.CurrentDomain.GetAssemblies()</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    .Where(i =&gt; i.GetName().Name.Equals(<span class="stringliteral">&quot;Core-SFML&quot;</span>) || i.GetName().Name.Equals(<span class="stringliteral">&quot;Core&quot;</span>))</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    .SelectMany(s =&gt; s.GetTypes())</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                    .Where(p =&gt; type.IsAssignableFrom(p));</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                <span class="keywordflow">foreach</span> (Type component <span class="keywordflow">in</span> types)</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                    <span class="keywordflow">if</span> (!component.Name.Equals(<span class="stringliteral">&quot;Component&quot;</span>) &amp;&amp; !component.Name.Equals(<span class="stringliteral">&quot;Transform&quot;</span>))</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                    {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                        <span class="keywordflow">if</span> (ImGui.MenuItem(component.Name))</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                        {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">AddComponent</a>(component, <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                    }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_editor_1_1_project.html">Project</a>.<a class="code" href="class_alis_1_1_editor_1_1_project.html#a4f7df95c0af697adca26a35c8f19ddf4">Get</a>().<a class="code" href="class_alis_1_1_editor_1_1_project.html#aa3319d688d8a971d15b21c6d0f40b4a6">DLL1</a> != <span class="keyword">null</span>) </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                    type = typeof(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a>);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    types = <a class="code" href="class_alis_1_1_editor_1_1_project.html">Project</a>.<a class="code" href="class_alis_1_1_editor_1_1_project.html#a4f7df95c0af697adca26a35c8f19ddf4">Get</a>().<a class="code" href="class_alis_1_1_editor_1_1_project.html#aa3319d688d8a971d15b21c6d0f40b4a6">DLL1</a>.GetTypes()</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    .Where(p =&gt; type.IsAssignableFrom(p));</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    <span class="keywordflow">foreach</span> (Type component <span class="keywordflow">in</span> types)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        <span class="keywordflow">if</span> (!component.Name.Equals(<span class="stringliteral">&quot;Component&quot;</span>) &amp;&amp; !component.Name.Equals(<span class="stringliteral">&quot;Transform&quot;</span>))</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            <span class="keywordflow">if</span> (ImGui.MenuItem(component.Name))</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                            {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">AddComponent</a>(component, <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                            }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">            #endregion</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a828b7b7a58acd57f3d84c797bbc9c01e">  251</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a828b7b7a58acd57f3d84c797bbc9c01e">ShowComponent</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property) </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">  256</a></span>&#160;        <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">AddComponent</a>(Type component, <a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>) </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;            <a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> temp = (<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a>)Activator.CreateInstance(component);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.<a class="code" href="class_alis_1_1_core_1_1_game_object.html#aca5a1259790efb4387aed3cb67d31f1f">Contains</a>(temp)) </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(temp);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afe319bfff454dd21f7334248c4dd6b25">Log</a>(<span class="stringliteral">&quot;Add &quot;</span> + component.FullName + <span class="stringliteral">&quot; on &quot;</span> + <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038">Name</a>);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ade8967687acfcffe74fff46403e50e21">Warning</a>(<span class="stringliteral">&quot;Alredy exits Add &quot;</span> + component.FullName + <span class="stringliteral">&quot; on &quot;</span> + <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.<a class="code" href="class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038">Name</a>);</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            }</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">        #region ELEMENTS DRAW</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6496fd05228073c8cf7fcb4c9f9a3429">  274</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6496fd05228073c8cf7fcb4c9f9a3429">DrawStringField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordtype">string</span> content = (string)property.GetValue(component) ?? <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputText(property.Name, ref content, 512))</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a76471a55bc8f99b5c5b3a09d3b26d5da">  284</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a76471a55bc8f99b5c5b3a09d3b26d5da">DrawBoolField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        {</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordtype">bool</span> content = (bool)property.GetValue(component);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            <span class="keywordflow">if</span> (ImGui.Checkbox(property.Name, ref content))</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a5f69b9b97e50b90eb88a1da49ec739f7">  293</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a5f69b9b97e50b90eb88a1da49ec739f7">DrawFloatField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;        {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordtype">float</span> content = (float)property.GetValue(component);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(property.Name, ref content, 0.1f))</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        }</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af6c6ff538e1740775542bb1f0aeeb7ec">  302</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af6c6ff538e1740775542bb1f0aeeb7ec">DrawIntField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordtype">int</span> content = (int)property.GetValue(component);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputInt(property.Name, ref content, 1))</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        }</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae7b37d46a7a2fa8a3f184dbf23d6f40b">  311</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae7b37d46a7a2fa8a3f184dbf23d6f40b">DrawByteField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordtype">int</span> content = (int)property.GetValue(component);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputInt(property.Name, ref content, 1))</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ace6bff6afd7e64db5c7df87c5e34ad">  320</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ace6bff6afd7e64db5c7df87c5e34ad">DrawLongField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;            <span class="keywordtype">int</span> content = (int)property.GetValue(component);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputInt(property.Name, ref content, 1))</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        }</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af243907597703436a07722f8866b1dba">  329</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af243907597703436a07722f8866b1dba">DrawDoubleField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <span class="keywordtype">double</span> content = (double)property.GetValue(component);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputDouble(property.Name, ref content, 1))</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            }</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ad83e9d7344cba6e5ecf041b25f792e10">  338</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ad83e9d7344cba6e5ecf041b25f792e10">DrawVector2Field</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;            ImGui.Text(property.Name);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            ImGui.Columns(2, property.Name, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            Vector2 content = (Vector2)property.GetValue(component);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            <span class="keywordtype">float</span> x = content.X;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;X&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref x))</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            {</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                content.X = x;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            }</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            ImGui.NextColumn();</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <span class="keywordtype">float</span> y = content.Y;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Y&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref y))</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                content.Y = y;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            ImGui.Columns(1);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        }</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00363"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6cf8b24285f75b01b853e684a050ac25">  363</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6cf8b24285f75b01b853e684a050ac25">DrawVector2fField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        {</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;            ImGui.Text(property.Name);</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            ImGui.Columns(2, property.Name, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            Vector2f content = (Vector2f)property.GetValue(component);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="keywordtype">float</span> x = content.X;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;X&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref x))</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            {</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                content.X = x;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            }</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            ImGui.NextColumn();</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <span class="keywordtype">float</span> y = content.Y;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Y&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref y))</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                content.Y = y;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            ImGui.Columns(1);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00388"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a976422c40cab7ada660336aa5490ef1e">  388</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a976422c40cab7ada660336aa5490ef1e">DrawVector3Field</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo property)</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        {</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            ImGui.Text(property.Name);</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            ImGui.Columns(3, property.Name, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            Vector3 content = (Vector3)property.GetValue(component);</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            <span class="keywordtype">float</span> x = content.X;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;X&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref x))</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                content.X = x;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            }</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            ImGui.NextColumn();</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="keywordtype">float</span> y = content.Y;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Y&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref y))</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            {</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                content.Y = y;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            ImGui.NextColumn();</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            <span class="keywordtype">float</span> z = content.Z;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Z&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref z))</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                content.Z = z;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                <span class="keyword">property</span>.SetValue(component, content);</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;            }</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;            ImGui.Columns(1);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        }</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a130da1fc7cf922c067e46d402a4c9d05">  422</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a130da1fc7cf922c067e46d402a4c9d05">DrawVector3</a>(<a class="code" href="class_alis_1_1_core_1_1_transform.html">Transform</a> transform, PropertyInfo property)</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        {</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            ImGui.Text(property.Name);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            ImGui.Columns(3, property.Name, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;            Vector3 content = (Vector3)property.GetValue(transform);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;            <span class="keywordtype">float</span> x = content.X;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;X&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref x))</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;            {</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                content.X = x;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                <span class="keyword">property</span>.SetValue(transform, content);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;            }</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;            ImGui.NextColumn();</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;            <span class="keywordtype">float</span> y = content.Y;</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Y&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref y))</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            {</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;                content.Y = y;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;                <span class="keyword">property</span>.SetValue(transform, content);</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;            }</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            ImGui.NextColumn();</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            <span class="keywordtype">float</span> z = content.Z;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            <span class="keywordflow">if</span> (ImGui.InputFloat(<span class="stringliteral">&quot;Z&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + property.Name, ref z))</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            {</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;                content.Z = z;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;                <span class="keyword">property</span>.SetValue(transform, content);</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            }</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            ImGui.Columns(1);</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="preprocessor">        #endregion</span></div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ee3478d5fbd16f3c616125ea547637d">  458</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ee3478d5fbd16f3c616125ea547637d">DrawListField</a>(<a class="code" href="class_alis_1_1_core_1_1_component.html">Component</a> component, PropertyInfo prop)</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;        {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            <span class="comment">//List&lt;Animation&gt; list = (List&lt;Animation&gt;)prop.GetValue(component);</span></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            List&lt;Animation&gt; list = (List&lt;Animation&gt;)prop.GetValue(component);</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;+&quot;</span>, <span class="keyword">new</span> Vector2(30, 30)))</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            {</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afe319bfff454dd21f7334248c4dd6b25">Log</a>(<span class="stringliteral">&quot;Add new element&quot;</span>);</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;                list.Add(<span class="keyword">new</span> Animation());</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                prop.SetValue(component, list);</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afe319bfff454dd21f7334248c4dd6b25">Log</a>(<span class="stringliteral">&quot;&quot;</span> + list.Count);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            }</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            ImGui.SameLine();</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;            <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;-&quot;</span>, <span class="keyword">new</span> Vector2(30, 30)))</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            {</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                <span class="keywordflow">if</span> (list.Count &gt; 0) </div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                {</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                    list.RemoveAt(list.Count - 1);</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                }</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                </div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                prop.SetValue(component, list);</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160; </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Console</a>.<a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#afe319bfff454dd21f7334248c4dd6b25">Log</a>(<span class="stringliteral">&quot;&quot;</span> + list.Count);</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            }</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160; </div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;            ImGui.SameLine();</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160; </div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            ImGui.Text(<span class="stringliteral">&quot;Animation&quot;</span>);</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160; </div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            ImGui.Text(<span class="stringliteral">&quot;Tree Animations: &quot;</span>);</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;            <span class="keywordflow">foreach</span> (Animation animation <span class="keywordflow">in</span> list)</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;                ImGui.Separator();</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                ImGui.Text(<span class="stringliteral">&quot;Animation &quot;</span> + list.IndexOf(animation));</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160; </div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;                <span class="keywordtype">string</span> content = (string)animation.Name ?? <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                if (ImGui.InputText(<span class="stringliteral">&quot;Name &quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), ref content, 512))</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                {</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                    animation.Name = content;</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                }</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;                <span class="keywordtype">float</span> content2 = (float)animation.Speed;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;                if (ImGui.InputFloat(<span class="stringliteral">&quot;Speed &quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), ref content2))</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;                {</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                    animation.Speed = content2;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                }</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;                <span class="keywordtype">int</span> content3 = (int)animation.State;</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;                if (ImGui.InputInt(<span class="stringliteral">&quot;State &quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), ref content3))</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;                {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;                    animation.State = content3;</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;                }</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;                List&lt;string&gt; images = animation.Images;</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;                <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;+&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), <span class="keyword">new</span> Vector2(30, 30)))</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;                {</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                    images.Add(<span class="stringliteral">&quot;Default.png&quot;</span>);</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                    animation.Images = images;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;                    prop.SetValue(component, list);</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;                }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;                ImGui.SameLine();</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160; </div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;                <span class="keywordflow">if</span> (ImGui.Button(<span class="stringliteral">&quot;-&quot;</span> + <span class="stringliteral">&quot;## &quot;</span> + list.IndexOf(animation), <span class="keyword">new</span> Vector2(30, 30)))</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;                {</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;                    <span class="keywordflow">if</span> (images.Count &gt; 0)</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;                    {</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;                        images.RemoveAt(list.Count - 1);</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160; </div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;                        animation.Images = images;</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;                        prop.SetValue(component, list);</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;                    }</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;                }</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                ImGui.SameLine();</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160; </div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                ImGui.Text(<span class="stringliteral">&quot;Images&quot;</span>);</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160; </div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; images.Count; i++) </div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                {</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                    <span class="keywordtype">string</span> cont = (string)images[i] ?? <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160; </div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                    <span class="keywordflow">if</span> (ImGui.InputText(<span class="stringliteral">&quot;Name &quot;</span> + <span class="stringliteral">&quot;##&quot;</span> + list.IndexOf(animation) + i, ref cont, 512))</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;                    {</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                        <span class="keywordtype">string</span> change = cont;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                        images[i] = change;</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160; </div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                        animation.Images = images;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                        prop.SetValue(component, list);</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;                    }</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                }</div>
 <div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;                ImGui.Separator();</div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160; </div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;                </div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160; </div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            }</div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160; </div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            </div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160; </div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;                ImGui.Separator();</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160; </div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                </div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            }</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160; </div>
 <div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            </div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            </div>
 <div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160; </div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            <span class="comment">/*foreach (Animation animation in list)</span></div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;<span class="comment">            {</span></div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;<span class="comment">                foreach (PropertyInfo property in animation.GetType().GetProperties())</span></div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;<span class="comment">                {</span></div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;<span class="comment">                    foreach (KeyValuePair&lt;Type, Action&lt;Component, PropertyInfo&gt;&gt; field in fields)</span></div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;<span class="comment">                    {</span></div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;<span class="comment">                        if (field.Key.Equals(property.PropertyType) &amp;&amp; property.CanWrite)</span></div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;<span class="comment">                        {</span></div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;<span class="comment">                            field.Value.Invoke(component, property);</span></div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;<span class="comment">                        }</span></div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;<span class="comment">                    }</span></div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;<span class="comment">                }</span></div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;<span class="comment">            }*/</span></div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        }</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160; </div>
-<div class="line"><a name="l00582"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a52bfa2de84a00bc70f56c34dc1b2b410">  582</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a52bfa2de84a00bc70f56c34dc1b2b410">NewCollision</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> obj)</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        {</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            obj.Add(<span class="keyword">new</span> Collision(<span class="keyword">new</span> Vector2(10, 10), <span class="keyword">false</span>));</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        }</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160; </div>
-<div class="line"><a name="l00587"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf">  587</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf">NewAudiosource</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>)</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        {</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(<span class="keyword">new</span> AudioSource());</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        }</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160; </div>
-<div class="line"><a name="l00592"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb">  592</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb">NewAnimator</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>)</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        {</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(<span class="keyword">new</span> Animator());</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        }</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160; </div>
-<div class="line"><a name="l00597"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829">  597</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829">NewSprite</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>)</div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        {</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(<span class="keyword">new</span> Sprite(<span class="stringliteral">&quot;&quot;</span>));</div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        }</div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160; </div>
-<div class="line"><a name="l00602"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9">  602</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9">NewCamera</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>)</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        {</div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(<span class="keyword">new</span> Camera(<span class="keyword">new</span> Vector2(0f, 0f), <span class="keyword">new</span> Vector2(640f, 380f)));</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        }</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    }</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;}</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160; </div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            <span class="comment">/*foreach (Animation animation in list)</span></div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;<span class="comment">                foreach (PropertyInfo property in animation.GetType().GetProperties())</span></div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;<span class="comment">                {</span></div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;<span class="comment">                    foreach (KeyValuePair&lt;Type, Action&lt;Component, PropertyInfo&gt;&gt; field in fields)</span></div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;<span class="comment">                    {</span></div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;<span class="comment">                        if (field.Key.Equals(property.PropertyType) &amp;&amp; property.CanWrite)</span></div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;<span class="comment">                        {</span></div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;<span class="comment">                            field.Value.Invoke(component, property);</span></div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;<span class="comment">                        }</span></div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;<span class="comment">                    }</span></div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;<span class="comment">                }</span></div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;<span class="comment">            }*/</span></div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        }</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
+<div class="line"><a name="l00583"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a52bfa2de84a00bc70f56c34dc1b2b410">  583</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a52bfa2de84a00bc70f56c34dc1b2b410">NewCollision</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> obj)</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        {</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            obj.Add(<span class="keyword">new</span> Collision(<span class="keyword">new</span> Vector2(10, 10), <span class="keyword">false</span>));</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        }</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160; </div>
+<div class="line"><a name="l00588"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf">  588</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf">NewAudiosource</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>)</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        {</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(<span class="keyword">new</span> AudioSource());</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        }</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160; </div>
+<div class="line"><a name="l00593"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb">  593</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb">NewAnimator</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>)</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        {</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(<span class="keyword">new</span> Animator());</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        }</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160; </div>
+<div class="line"><a name="l00598"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829">  598</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829">NewSprite</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>)</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        {</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(<span class="keyword">new</span> Sprite(<span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        }</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160; </div>
+<div class="line"><a name="l00603"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9">  603</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9">NewCamera</a>(<a class="code" href="class_alis_1_1_core_1_1_game_object.html">GameObject</a> <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>)</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        {</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;            <a class="code" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">gameObject</a>.Add(<span class="keyword">new</span> Camera(<span class="keyword">new</span> Vector2(0f, 0f), <span class="keyword">new</span> Vector2(640f, 380f)));</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        }</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    }</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a02182bcab9deea1299014c40f932ae36"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a02182bcab9deea1299014c40f932ae36">Alis.Editor.UI.Widgets.Inspector.Focus</a></div><div class="ttdeci">bool Focus</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00051">Inspector.cs:51</a></div></div>
@@ -711,34 +712,34 @@ $(document).ready(function(){initNavTree('_inspector_8cs_source.html',''); initR
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html">Alis.Editor.Project</a></div><div class="ttdoc">Project define.</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00016">Project.cs:17</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager_html_afc8b3cc816b7057e986a73891af19a11"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html#afc8b3cc816b7057e986a73891af19a11">Alis.Editor.UI.Widgets.WidgetManager.Delete</a></div><div class="ttdeci">static void Delete(Widget widget)</div><div class="ttdef"><b>Definition:</b> <a href="_widget_manager_8cs_source.html#l00091">WidgetManager.cs:91</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_aa3319d688d8a971d15b21c6d0f40b4a6"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#aa3319d688d8a971d15b21c6d0f40b4a6">Alis.Editor.Project.DLL1</a></div><div class="ttdeci">Assembly DLL1</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00136">Project.cs:136</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a193e47b02bf84093a7b8116481c85829"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829">Alis.Editor.UI.Widgets.Inspector.NewSprite</a></div><div class="ttdeci">static void NewSprite(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00597">Inspector.cs:597</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a193e47b02bf84093a7b8116481c85829"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a193e47b02bf84093a7b8116481c85829">Alis.Editor.UI.Widgets.Inspector.NewSprite</a></div><div class="ttdeci">static void NewSprite(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00598">Inspector.cs:598</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_html"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html">Alis.Editor.UI.Widgets.Widget</a></div><div class="ttdoc">Widget define</div><div class="ttdef"><b>Definition:</b> <a href="_widget_8cs_source.html#l00008">Widget.cs:9</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a2c8114201c29b2e04bf4a0c3274b0e45"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a2c8114201c29b2e04bf4a0c3274b0e45">Alis.Editor.UI.Widgets.Inspector.fields</a></div><div class="ttdeci">static Dictionary&lt; Type, Action&lt; Component, PropertyInfo &gt; &gt; fields</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00021">Inspector.cs:21</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a14f29ef921e463b35189f3f69f48beaf"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf">Alis.Editor.UI.Widgets.Inspector.NewAudiosource</a></div><div class="ttdeci">static void NewAudiosource(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00587">Inspector.cs:587</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_af243907597703436a07722f8866b1dba"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af243907597703436a07722f8866b1dba">Alis.Editor.UI.Widgets.Inspector.DrawDoubleField</a></div><div class="ttdeci">static void DrawDoubleField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00328">Inspector.cs:328</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a14f29ef921e463b35189f3f69f48beaf"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a14f29ef921e463b35189f3f69f48beaf">Alis.Editor.UI.Widgets.Inspector.NewAudiosource</a></div><div class="ttdeci">static void NewAudiosource(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00588">Inspector.cs:588</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_af243907597703436a07722f8866b1dba"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af243907597703436a07722f8866b1dba">Alis.Editor.UI.Widgets.Inspector.DrawDoubleField</a></div><div class="ttdeci">static void DrawDoubleField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00329">Inspector.cs:329</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a323532b4833123011200007df85c5a31"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a323532b4833123011200007df85c5a31">Alis.Editor.UI.Widgets.Inspector.childBackground</a></div><div class="ttdeci">Vector4 childBackground</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00036">Inspector.cs:36</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_af6c6ff538e1740775542bb1f0aeeb7ec"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af6c6ff538e1740775542bb1f0aeeb7ec">Alis.Editor.UI.Widgets.Inspector.DrawIntField</a></div><div class="ttdeci">static void DrawIntField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00301">Inspector.cs:301</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_af6c6ff538e1740775542bb1f0aeeb7ec"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af6c6ff538e1740775542bb1f0aeeb7ec">Alis.Editor.UI.Widgets.Inspector.DrawIntField</a></div><div class="ttdeci">static void DrawIntField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00302">Inspector.cs:302</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a1d26afc83fe90211fedfdfc3857779f5"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a1d26afc83fe90211fedfdfc3857779f5">Alis.Editor.UI.Widgets.Inspector.gameObject</a></div><div class="ttdeci">GameObject gameObject</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00043">Inspector.cs:43</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_icon_html"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_icon.html">Alis.Editor.Utils.Icon</a></div><div class="ttdoc">The icons of app.</div><div class="ttdef"><b>Definition:</b> <a href="_icon_8cs_source.html#l00008">Icon.cs:9</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_editor_1_1_utils_html"><div class="ttname"><a href="namespace_alis_1_1_editor_1_1_utils.html">Alis.Editor.Utils</a></div><div class="ttdef"><b>Definition:</b> <a href="_icon_8cs_source.html#l00005">Icon.cs:6</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a5f69b9b97e50b90eb88a1da49ec739f7"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a5f69b9b97e50b90eb88a1da49ec739f7">Alis.Editor.UI.Widgets.Inspector.DrawFloatField</a></div><div class="ttdeci">static void DrawFloatField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00292">Inspector.cs:292</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a5f69b9b97e50b90eb88a1da49ec739f7"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a5f69b9b97e50b90eb88a1da49ec739f7">Alis.Editor.UI.Widgets.Inspector.DrawFloatField</a></div><div class="ttdeci">static void DrawFloatField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00293">Inspector.cs:293</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_icon_html_ae7d7d5850ee37e42050e67df7c771e3c"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_icon.html#ae7d7d5850ee37e42050e67df7c771e3c">Alis.Editor.Utils.Icon.OBJECTGROUP</a></div><div class="ttdeci">const string OBJECTGROUP</div><div class="ttdoc">The font icon file name</div><div class="ttdef"><b>Definition:</b> <a href="_icon_8cs_source.html#l01613">Icon.cs:1613</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a8257c30378bf66e98be8e5481358c038"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a8257c30378bf66e98be8e5481358c038">Alis.Core.GameObject.Name</a></div><div class="ttdeci">string Name</div><div class="ttdoc">Gets or sets the name.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00215">GameObject.cs:215</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a755faebf2288ba972b6d24ef320b2350"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a755faebf2288ba972b6d24ef320b2350">Alis.Editor.UI.Widgets.Inspector.current</a></div><div class="ttdeci">static Inspector current</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00038">Inspector.cs:38</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_a0cc12694e85dd3925e2322d58a0d5ec1"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#a0cc12694e85dd3925e2322d58a0d5ec1">Alis.Core.GameObject.Delete</a></div><div class="ttdeci">void Delete(Component component)</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00338">GameObject.cs:338</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_html"><div class="ttname"><a href="namespace_alis_1_1_core.html">Alis.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="_config_8cs_source.html#l00005">Config.cs:6</a></div></div>
 <div class="ttc" id="anamespace_alis_html"><div class="ttname"><a href="namespace_alis.html">Alis</a></div><div class="ttdef"><b>Definition:</b> <a href="_config_8cs_source.html#l00005">Config.cs:6</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_af520a6bb21c14714bdc269d67619c2eb"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb">Alis.Editor.UI.Widgets.Inspector.NewAnimator</a></div><div class="ttdeci">static void NewAnimator(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00592">Inspector.cs:592</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a8ace6bff6afd7e64db5c7df87c5e34ad"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ace6bff6afd7e64db5c7df87c5e34ad">Alis.Editor.UI.Widgets.Inspector.DrawLongField</a></div><div class="ttdeci">static void DrawLongField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00319">Inspector.cs:319</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_af520a6bb21c14714bdc269d67619c2eb"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#af520a6bb21c14714bdc269d67619c2eb">Alis.Editor.UI.Widgets.Inspector.NewAnimator</a></div><div class="ttdeci">static void NewAnimator(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00593">Inspector.cs:593</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a8ace6bff6afd7e64db5c7df87c5e34ad"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ace6bff6afd7e64db5c7df87c5e34ad">Alis.Editor.UI.Widgets.Inspector.DrawLongField</a></div><div class="ttdeci">static void DrawLongField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00320">Inspector.cs:320</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager_html"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget_manager.html">Alis.Editor.UI.Widgets.WidgetManager</a></div><div class="ttdoc">Widget Manager</div><div class="ttdef"><b>Definition:</b> <a href="_widget_manager_8cs_source.html#l00016">WidgetManager.cs:17</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a52bfa2de84a00bc70f56c34dc1b2b410"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a52bfa2de84a00bc70f56c34dc1b2b410">Alis.Editor.UI.Widgets.Inspector.NewCollision</a></div><div class="ttdeci">static void NewCollision(GameObject obj)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00582">Inspector.cs:582</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a130da1fc7cf922c067e46d402a4c9d05"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a130da1fc7cf922c067e46d402a4c9d05">Alis.Editor.UI.Widgets.Inspector.DrawVector3</a></div><div class="ttdeci">static void DrawVector3(Transform transform, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00421">Inspector.cs:421</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a52bfa2de84a00bc70f56c34dc1b2b410"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a52bfa2de84a00bc70f56c34dc1b2b410">Alis.Editor.UI.Widgets.Inspector.NewCollision</a></div><div class="ttdeci">static void NewCollision(GameObject obj)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00583">Inspector.cs:583</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a130da1fc7cf922c067e46d402a4c9d05"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a130da1fc7cf922c067e46d402a4c9d05">Alis.Editor.UI.Widgets.Inspector.DrawVector3</a></div><div class="ttdeci">static void DrawVector3(Transform transform, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00422">Inspector.cs:422</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a28b1bf5d1eefab12f30688e1bc7942d3"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a28b1bf5d1eefab12f30688e1bc7942d3">Alis.Editor.UI.Widgets.Inspector.Draw</a></div><div class="ttdeci">override void Draw()</div><div class="ttdoc">Draws this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00066">Inspector.cs:66</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a015189167e8b3608892593cdf57e351e"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a015189167e8b3608892593cdf57e351e">Alis.Editor.UI.Widgets.Inspector.focus</a></div><div class="ttdeci">bool focus</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00047">Inspector.cs:47</a></div></div>
 <div class="ttc" id="anamespace_im_gui_n_e_t_html"><div class="ttname"><a href="namespace_im_gui_n_e_t.html">ImGuiNET</a></div><div class="ttdef"><b>Definition:</b> <a href="_im_gui_controller_8cs_source.html#l00011">ImGuiController.cs:12</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_ae4f7a5a5f356fa79239ee9fb5839427e"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae4f7a5a5f356fa79239ee9fb5839427e">Alis.Editor.UI.Widgets.Inspector.ShowGameObject</a></div><div class="ttdeci">static void ShowGameObject(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00059">Inspector.cs:59</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_ae59d71b0d03e9bccf18f52f7be23a6a5"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae59d71b0d03e9bccf18f52f7be23a6a5">Alis.Editor.UI.Widgets.Inspector.Current</a></div><div class="ttdeci">static Inspector Current</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00049">Inspector.cs:49</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a8ab51909012926c356f97331088c0299"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">Alis.Editor.UI.Widgets.Inspector.AddComponent</a></div><div class="ttdeci">void AddComponent(Type component, GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00255">Inspector.cs:255</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a8ab51909012926c356f97331088c0299"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ab51909012926c356f97331088c0299">Alis.Editor.UI.Widgets.Inspector.AddComponent</a></div><div class="ttdeci">void AddComponent(Type component, GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00256">Inspector.cs:256</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html_aca5a1259790efb4387aed3cb67d31f1f"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html#aca5a1259790efb4387aed3cb67d31f1f">Alis.Core.GameObject.Contains</a></div><div class="ttdeci">bool Contains(Component component)</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00278">GameObject.cs:278</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_ab108200698f324be0f0fa28a02a47e64"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ab108200698f324be0f0fa28a02a47e64">Alis.Editor.UI.Widgets.Inspector.Name</a></div><div class="ttdeci">const string Name</div><div class="ttdoc">The name</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00041">Inspector.cs:41</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_editor_1_1_u_i_1_1_widgets_html"><div class="ttname"><a href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html">Alis.Editor.UI.Widgets</a></div><div class="ttdef"><b>Definition:</b> <a href="_about_8cs_source.html#l00005">About.cs:6</a></div></div>
@@ -748,24 +749,25 @@ $(document).ready(function(){initNavTree('_inspector_8cs_source.html',''); initR
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_aa6daac505fce5bba2d1f315a1606f9bb"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aa6daac505fce5bba2d1f315a1606f9bb">Alis.Editor.UI.Widgets.Inspector.SeeObjComponents</a></div><div class="ttdeci">void SeeObjComponents(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00094">Inspector.cs:94</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console_html"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html">Alis.Editor.UI.Widgets.Console</a></div><div class="ttdoc">Console widget</div><div class="ttdef"><b>Definition:</b> <a href="_console_8cs_source.html#l00014">Console.cs:15</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_component_html"><div class="ttname"><a href="class_alis_1_1_core_1_1_component.html">Alis.Core.Component</a></div><div class="ttdoc">Define a component</div><div class="ttdef"><b>Definition:</b> <a href="_component_8cs_source.html#l00011">Component.cs:12</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a8ee3478d5fbd16f3c616125ea547637d"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ee3478d5fbd16f3c616125ea547637d">Alis.Editor.UI.Widgets.Inspector.DrawListField</a></div><div class="ttdeci">static void DrawListField(Component component, PropertyInfo prop)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00457">Inspector.cs:457</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a8ee3478d5fbd16f3c616125ea547637d"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a8ee3478d5fbd16f3c616125ea547637d">Alis.Editor.UI.Widgets.Inspector.DrawListField</a></div><div class="ttdeci">static void DrawListField(Component component, PropertyInfo prop)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00458">Inspector.cs:458</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console_html_ade8967687acfcffe74fff46403e50e21"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#ade8967687acfcffe74fff46403e50e21">Alis.Editor.UI.Widgets.Console.Warning</a></div><div class="ttdeci">static void Warning(string message)</div><div class="ttdoc">Warnings the specified message.</div><div class="ttdef"><b>Definition:</b> <a href="_console_8cs_source.html#l00096">Console.cs:96</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_component_html_aaf0068ed36053c20a83b5d196748941c"><div class="ttname"><a href="class_alis_1_1_core_1_1_component.html#aaf0068ed36053c20a83b5d196748941c">Alis.Core.Component.GetIcon</a></div><div class="ttdeci">virtual string GetIcon()</div><div class="ttdef"><b>Definition:</b> <a href="_component_8cs_source.html#l00060">Component.cs:60</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a76471a55bc8f99b5c5b3a09d3b26d5da"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a76471a55bc8f99b5c5b3a09d3b26d5da">Alis.Editor.UI.Widgets.Inspector.DrawBoolField</a></div><div class="ttdeci">static void DrawBoolField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00283">Inspector.cs:283</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_component_html_a5ab2efdcfb6ff25760d7bd2b73cfdf83"><div class="ttname"><a href="class_alis_1_1_core_1_1_component.html#a5ab2efdcfb6ff25760d7bd2b73cfdf83">Alis.Core.Component.Exit</a></div><div class="ttdeci">virtual void Exit()</div><div class="ttdoc">Exits this instance.</div><div class="ttdef"><b>Definition:</b> <a href="_component_8cs_source.html#l00115">Component.cs:115</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a76471a55bc8f99b5c5b3a09d3b26d5da"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a76471a55bc8f99b5c5b3a09d3b26d5da">Alis.Editor.UI.Widgets.Inspector.DrawBoolField</a></div><div class="ttdeci">static void DrawBoolField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00284">Inspector.cs:284</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_a4f7df95c0af697adca26a35c8f19ddf4"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#a4f7df95c0af697adca26a35c8f19ddf4">Alis.Editor.Project.Get</a></div><div class="ttdeci">static Project Get()</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00101">Project.cs:101</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a828b7b7a58acd57f3d84c797bbc9c01e"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a828b7b7a58acd57f3d84c797bbc9c01e">Alis.Editor.UI.Widgets.Inspector.ShowComponent</a></div><div class="ttdeci">void ShowComponent(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00250">Inspector.cs:250</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a828b7b7a58acd57f3d84c797bbc9c01e"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a828b7b7a58acd57f3d84c797bbc9c01e">Alis.Editor.UI.Widgets.Inspector.ShowComponent</a></div><div class="ttdeci">void ShowComponent(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00251">Inspector.cs:251</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_core_1_1_game_object_html"><div class="ttname"><a href="class_alis_1_1_core_1_1_game_object.html">Alis.Core.GameObject</a></div><div class="ttdoc">Define a game object.</div><div class="ttdef"><b>Definition:</b> <a href="_game_object_8cs_source.html#l00014">GameObject.cs:15</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_icon_html_a0388e69adeb0e5b8ae11f9d4819729b7"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_icon.html#a0388e69adeb0e5b8ae11f9d4819729b7">Alis.Editor.Utils.Icon.ARROWSALT</a></div><div class="ttdeci">const string ARROWSALT</div><div class="ttdoc">The font icon file name</div><div class="ttdef"><b>Definition:</b> <a href="_icon_8cs_source.html#l00521">Icon.cs:521</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_ae7b37d46a7a2fa8a3f184dbf23d6f40b"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae7b37d46a7a2fa8a3f184dbf23d6f40b">Alis.Editor.UI.Widgets.Inspector.DrawByteField</a></div><div class="ttdeci">static void DrawByteField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00310">Inspector.cs:310</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_ae7b37d46a7a2fa8a3f184dbf23d6f40b"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ae7b37d46a7a2fa8a3f184dbf23d6f40b">Alis.Editor.UI.Widgets.Inspector.DrawByteField</a></div><div class="ttdeci">static void DrawByteField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00311">Inspector.cs:311</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_a761a009001269a66e24158c719818e5a"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#a761a009001269a66e24158c719818e5a">Alis.Editor.Project.VideoGame</a></div><div class="ttdeci">static VideoGame VideoGame</div><div class="ttdoc">Gets or sets the video game.</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00121">Project.cs:121</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a6cf8b24285f75b01b853e684a050ac25"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6cf8b24285f75b01b853e684a050ac25">Alis.Editor.UI.Widgets.Inspector.DrawVector2fField</a></div><div class="ttdeci">static void DrawVector2fField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00362">Inspector.cs:362</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a6cf8b24285f75b01b853e684a050ac25"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6cf8b24285f75b01b853e684a050ac25">Alis.Editor.UI.Widgets.Inspector.DrawVector2fField</a></div><div class="ttdeci">static void DrawVector2fField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00363">Inspector.cs:363</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_aff5a5891ae05f7179fc64b2aae47ac11"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aff5a5891ae05f7179fc64b2aae47ac11">Alis.Editor.UI.Widgets.Inspector.Inspector</a></div><div class="ttdeci">Inspector()</div><div class="ttdoc">Initializes a new instance of the Inspector class.</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00054">Inspector.cs:54</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html">Alis.Editor.UI.Widgets.Inspector</a></div><div class="ttdoc">Manage components of scene.</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00019">Inspector.cs:20</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a6496fd05228073c8cf7fcb4c9f9a3429"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6496fd05228073c8cf7fcb4c9f9a3429">Alis.Editor.UI.Widgets.Inspector.DrawStringField</a></div><div class="ttdeci">static void DrawStringField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00273">Inspector.cs:273</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_aea330b3c9542f03a002b0afcd10d0da9"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9">Alis.Editor.UI.Widgets.Inspector.NewCamera</a></div><div class="ttdeci">static void NewCamera(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00602">Inspector.cs:602</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a6496fd05228073c8cf7fcb4c9f9a3429"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a6496fd05228073c8cf7fcb4c9f9a3429">Alis.Editor.UI.Widgets.Inspector.DrawStringField</a></div><div class="ttdeci">static void DrawStringField(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00274">Inspector.cs:274</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_aea330b3c9542f03a002b0afcd10d0da9"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#aea330b3c9542f03a002b0afcd10d0da9">Alis.Editor.UI.Widgets.Inspector.NewCamera</a></div><div class="ttdeci">static void NewCamera(GameObject gameObject)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00603">Inspector.cs:603</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_utils_1_1_icon_html_a6dd13f14133e825d295a4e9da653e2a7"><div class="ttname"><a href="class_alis_1_1_editor_1_1_utils_1_1_icon.html#a6dd13f14133e825d295a4e9da653e2a7">Alis.Editor.Utils.Icon.PLUSSQUARE</a></div><div class="ttdeci">const string PLUSSQUARE</div><div class="ttdoc">The font icon file name</div><div class="ttdef"><b>Definition:</b> <a href="_icon_8cs_source.html#l00701">Icon.cs:701</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a976422c40cab7ada660336aa5490ef1e"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a976422c40cab7ada660336aa5490ef1e">Alis.Editor.UI.Widgets.Inspector.DrawVector3Field</a></div><div class="ttdeci">static void DrawVector3Field(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00387">Inspector.cs:387</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_ad83e9d7344cba6e5ecf041b25f792e10"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ad83e9d7344cba6e5ecf041b25f792e10">Alis.Editor.UI.Widgets.Inspector.DrawVector2Field</a></div><div class="ttdeci">static void DrawVector2Field(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00337">Inspector.cs:337</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_a976422c40cab7ada660336aa5490ef1e"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#a976422c40cab7ada660336aa5490ef1e">Alis.Editor.UI.Widgets.Inspector.DrawVector3Field</a></div><div class="ttdeci">static void DrawVector3Field(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00388">Inspector.cs:388</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector_html_ad83e9d7344cba6e5ecf041b25f792e10"><div class="ttname"><a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_inspector.html#ad83e9d7344cba6e5ecf041b25f792e10">Alis.Editor.UI.Widgets.Inspector.DrawVector2Field</a></div><div class="ttdeci">static void DrawVector2Field(Component component, PropertyInfo property)</div><div class="ttdef"><b>Definition:</b> <a href="_inspector_8cs_source.html#l00338">Inspector.cs:338</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
