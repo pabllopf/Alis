@@ -39,7 +39,7 @@ var searchData=
   ['directoryfield_362',['directoryField',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#aeaf68d2c09a5a6c07713c74e2f708db7',1,'Alis::Editor::UI::Widgets::ProjectManager']]],
   ['directoryselector_363',['DirectorySelector',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#ae095341302c0419ce26e1d6b11d60add',1,'Alis::Editor::UI::Widgets::ProjectManager']]],
   ['directx11_364',['Directx11',['../namespace_alis_1_1_editor.html#a2ea4ab07fbbf567a72496b2b382faf54ad84640fdd46053818b39dc159e53f8fc',1,'Alis::Editor']]],
-  ['disable_365',['Disable',['../class_alis_1_1_core_1_1_component.html#a52d417443cef654d6e45b21523c1e683',1,'Alis::Core::Component']]],
+  ['disable_365',['Disable',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#aa2a0ef003808e1ceb80692901ef7eda0',1,'Alis.Editor.UI.Widgets.SceneView.Disable()'],['../class_alis_1_1_core_1_1_component.html#a52d417443cef654d6e45b21523c1e683',1,'Alis.Core.Component.Disable()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a9ff88c594f96bd686e75012db8c09378',1,'Alis.Editor.UI.Widgets.SceneView.disable()']]],
   ['displayend_366',['DisplayEnd',['../class_im_gui_n_e_t_1_1_im_gui_list_clipper2.html#a8331ddd15735957009c1868de4d1f0ad',1,'ImGuiNET::ImGuiListClipper2']]],
   ['displaystart_367',['DisplayStart',['../class_im_gui_n_e_t_1_1_im_gui_list_clipper2.html#a9296fd4c9ddefa6142497c5f641e7cff',1,'ImGuiNET::ImGuiListClipper2']]],
   ['dispose_368',['Dispose',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a604e78b1a580d541d1fbafdfce8f1154',1,'ImGuiNET::ImGuiController']]],

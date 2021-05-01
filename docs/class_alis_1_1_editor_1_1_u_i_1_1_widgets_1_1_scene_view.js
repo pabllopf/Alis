@@ -6,6 +6,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view =
     [ "Focus", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#ac9daea0c89fb7f195e8f9e30981b25b5", null ],
     [ "current", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#ab97e7f9f3f6b4e2f989d9697cc1271e7", null ],
     [ "Name", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a50840cb64957000858364133a4617b11", null ],
+    [ "disable", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a9ff88c594f96bd686e75012db8c09378", null ],
     [ "image", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#abbc5206a183eda61c84a034939d672b2", null ],
     [ "data", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#ac1a57f68278e0855d7050d5371eaa744", null ],
     [ "imageSharpTexture", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a502716a503a5922c3a791d5eff66d1ba", null ],
@@ -13,5 +14,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view =
     [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a04ed2fe07f78376830d354777525fd21", null ],
     [ "intPtr", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a692ea010a688b021162670d976ffd692", null ],
     [ "isOpen", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#a5077d73396d3bf3258d2bb7a0537c07d", null ],
-    [ "focus", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#adb62957ef6e842b206d2634c76c83219", null ]
+    [ "focus", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#adb62957ef6e842b206d2634c76c83219", null ],
+    [ "Disable", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#aa2a0ef003808e1ceb80692901ef7eda0", null ]
 ];
