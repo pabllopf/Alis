@@ -7,12 +7,17 @@ var class_alis_1_1_editor_1_1_u_i_1_1_main_window =
     [ "Window_Closed", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a7db139bec0841f028ca2a2488eeb668e", null ],
     [ "Window_Closing", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a09ba700e6cf0125116b832220eaa673c", null ],
     [ "Window_Moved", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad57b10d88f3d99a35b081d55e58234bf", null ],
-    [ "LoadStyle", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6574c11a843b1ff8547677b785c233ec", null ],
+    [ "LoadDarkStyle", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#adbc8637c8b5ce179256a5803dc9cdf95", null ],
+    [ "LoadClasicStyle", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afbc284753b6974ce4513715ad2dbf979", null ],
+    [ "LoadLightStyle", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ac499962dadff7228b515e412ff384f29", null ],
     [ "window", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#aef3852a2c040d8f72cf0759c673e1fec", null ],
     [ "graphicsDevice", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ac8b67979ab6787bbb3b025725e529354", null ],
     [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#ad2f84c1f1f012137a37a3bbcfaf8c35d", null ],
     [ "commandList", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#adb03dbeb1e602d7dcb664601278cec54", null ],
     [ "info", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#aae5aaa9fe906ae8baecc21386939f76d", null ],
     [ "deltaSeconds", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6123a6c059f0285be9e8af2ebf832af8", null ],
-    [ "snapshot", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afb16f9312d8f8563cf1bed3cf1170722", null ]
+    [ "snapshot", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afb16f9312d8f8563cf1bed3cf1170722", null ],
+    [ "dark", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a82f5d3af9aed9ef789ea66e2c27398fe", null ],
+    [ "clasic", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8ce979b965d97a40a3e8b82a12499dc0", null ],
+    [ "light", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a1ff5834fbceb093de8f9798164e2448f", null ]
 ];
