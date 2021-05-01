@@ -154,6 +154,7 @@ namespace Alis.Editor.UI.Widgets
         {
             CheckShortCuts();
             CheckIsExit();
+            CheckOpenVisualStudio();
             CheckIsAbout();
             CheckAutoSaveMode();
 
@@ -216,7 +217,6 @@ namespace Alis.Editor.UI.Widgets
                 {
                     if (ImGui.MenuItem(Icon.UNDO + " Undo -SOON-", false))
                     {
-                        Cut();
                     }
 
                     if (ImGui.MenuItem(Icon.REPEAT + " Redo -SOON-", false))
@@ -996,31 +996,64 @@ namespace Alis.Editor.UI.Widgets
 
         #region OPEN VISUAL STUDIO
 
+        private void CheckOpenVisualStudio()
+        {
+            if (openVisual)
+            {
+                ImGui.OpenPopup("OpenVisual");
+            }
+
+            if (ImGui.BeginPopupModal("OpenVisual", ref openVisual, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            {
+                ImGui.Text("Do you want open Visual Studio?");
+                if (ImGui.Button(yes, new Vector2((ImGui.GetContentRegionAvail().X / 2) - 5.0f, 35.0f)))
+                {
+                    openVisual = false;
+
+                    Console.Warning("Open VISUAL STUDIO");
+
+                    Task.Run(() =>
+                    {
+                        string fileName = "cmd.exe";
+                        string RUN = Project.Get().Name + ".sln";
+
+                        if (info.Platform.Equals(Platform.Linux))
+                        {
+                            fileName = "/bin/bash";
+                            RUN = Project.Get().Name + ".sln";
+                        }
+
+                        if (info.Platform.Equals(Platform.MacOS))
+                        {
+                            fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                            RUN = Project.Get().Name + ".sln";
+                        }
+
+                        RunCommand("Building", fileName, RUN, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
+                    });
+
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.SameLine();
+
+                if (ImGui.Button(no, new Vector2(ImGui.GetContentRegionAvail().X, 35.0f)))
+                {
+                    openVisual = false;
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.EndPopup();
+            }
+        }
+
+        private bool openVisual = false;
+
         private void OpenVisualStudio()
         {
-            Console.Warning("Open VISUAL STUDIO");
-
-            Task.Run(() =>
-            {
-                string fileName = "cmd.exe";
-                string RUN = Project.Get().Name + ".sln";
-
-                if (info.Platform.Equals(Platform.Linux))
-                {
-                    fileName = "/bin/bash";
-                    RUN = Project.Get().Name + ".sln";
-                }
-
-                if (info.Platform.Equals(Platform.MacOS))
-                {
-                    fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
-                    RUN = Project.Get().Name + ".sln";
-                }
-
-                RunCommand("Building", fileName, RUN, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
-            });
-
+            openVisual = !openVisual;
         }
+
 
         #endregion
 
