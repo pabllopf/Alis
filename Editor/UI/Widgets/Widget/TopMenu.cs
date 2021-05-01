@@ -9,6 +9,7 @@ namespace Alis.Editor.UI.Widgets
     using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
+    using System.Net;
     using System.Numerics;
     using System.Reflection;
     using System.Runtime.Loader;
@@ -157,6 +158,7 @@ namespace Alis.Editor.UI.Widgets
             CheckOpenVisualStudio();
             CheckIsAbout();
             CheckAutoSaveMode();
+            ShowVersion();
 
             if (ImGui.BeginMainMenuBar())
             {
@@ -381,8 +383,9 @@ namespace Alis.Editor.UI.Widgets
 
                     ImGui.Separator();
 
-                    if (ImGui.MenuItem(Icon.SUPERPOWERS + " Check for Updates -SOON- ", false))
+                    if (ImGui.MenuItem(Icon.SUPERPOWERS + " Check for Updates"))
                     {
+                        CheckUpdate();
                     }
 
                     ImGui.Separator();
@@ -400,6 +403,77 @@ namespace Alis.Editor.UI.Widgets
             }
 
             ImGui.EndMainMenuBar();
+        }
+
+        private bool checkUpdate = false;
+
+        private void CheckUpdate()
+        {
+            checkUpdate = !checkUpdate;
+        }
+
+        private void ShowVersion() 
+        {
+
+            if (checkUpdate)
+            {
+                ImGui.OpenPopup("Check Update");
+            }
+
+            if (ImGui.BeginPopupModal("Check Update", ref checkUpdate, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoSavedSettings))
+            {
+                if (IsTheLastVersion())
+                {
+                    ImGui.Text("You are in the last version!!. Version: " + Assembly.GetEntryAssembly().GetName().Version.ToString());
+                }
+                else 
+                {
+                    ImGui.Text("Download the last version!.   VERSION " + Assembly.GetEntryAssembly().GetName().Version.ToString() + " --> " + RELEASE);
+
+                    if (ImGui.Button(" Download ", new Vector2((ImGui.GetContentRegionAvail().X / 2) - 5.0f, 35.0f)))
+                    {
+                        checkUpdate = false;
+
+                        Task.Run(() => Process.Start("explorer", "https://github.com/pabllopf/alis/releases/latest"));
+
+                        ImGui.CloseCurrentPopup();
+                    }
+
+                    ImGui.SameLine();
+                }
+                
+
+
+                if (ImGui.Button(" Accept ", new Vector2((ImGui.GetContentRegionAvail().X / 2), 35.0f)))
+                {
+                    checkUpdate = false;
+                    ImGui.CloseCurrentPopup();
+                }
+
+                ImGui.EndPopup();
+            }
+        }
+
+        private string RELEASE = "";
+
+        private bool IsTheLastVersion() 
+        {
+            string url = "https://github.com/pabllopf/alis/releases/latest";
+            int releaseversion = 0;
+            int currentVersion = 0;
+
+            using (WebClient client = new WebClient())
+            {
+                string s = client.DownloadString(url);
+
+                string release = s.Split("\n").ToList().Find(i => i.Contains("Release"));
+
+                RELEASE = release.Split(" ").ToList().Find(i => i.Contains("v"));
+                releaseversion = int.Parse(release.Split(" ").ToList().Find(i => i.Contains("v")).Replace("v", "").Replace(".", "")) * 10;
+                currentVersion = int.Parse(Assembly.GetEntryAssembly().GetName().Version.ToString().Replace(".", ""));
+            }
+
+            return releaseversion <= currentVersion;
         }
 
         private void OpenAudioPlayer()

@@ -6,7 +6,11 @@ namespace Example
 {
     using Alis.Core;
     using Alis.Core.SFML;
+    using System;
+    using System.Linq;
+    using System.Net;
     using System.Numerics;
+    using System.Reflection;
 
 
     /// <summary>Example of videogame.</summary>
@@ -14,8 +18,13 @@ namespace Example
     {
         /// <summary>Defines the entry point of the application.</summary>
         /// <param name="args">The arguments.</param>
-        public static void Main(string[] args)
+        public static async System.Threading.Tasks.Task Main(string[] args)
         {
+            
+
+        
+
+            /*
             VideoGame.Builder()
                 .Config(Config.Builder()
                             .Name("Alis Game")
@@ -61,7 +70,7 @@ namespace Example
 
                                 .Scene(Scene.Builder().Name("SecondScene").Build())
                   .Build())
-            .Run();
+            .Run();*/
         }
     }
 }
