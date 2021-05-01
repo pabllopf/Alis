@@ -221,6 +221,8 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a7123365be30f61a4a54aeddaf1f3bfac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7123365be30f61a4a54aeddaf1f3bfac">RunCommand</a> (string message, string fileName, string commandBuild, string WorkingDirectory, bool messages)</td></tr>
 <tr class="memdesc:a7123365be30f61a4a54aeddaf1f3bfac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the command.  <a href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7123365be30f61a4a54aeddaf1f3bfac">More...</a><br /></td></tr>
 <tr class="separator:a7123365be30f61a4a54aeddaf1f3bfac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f3e574efd25f9f587e1733db53e597f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a6f3e574efd25f9f587e1733db53e597f">CheckOpenVisualStudio</a> ()</td></tr>
+<tr class="separator:a6f3e574efd25f9f587e1733db53e597f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8e8f78c7cd22e340f53e602f0e18134"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ae8e8f78c7cd22e340f53e602f0e18134">OpenVisualStudio</a> ()</td></tr>
 <tr class="separator:ae8e8f78c7cd22e340f53e602f0e18134"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88ec52c8bf62641ca76d8d38b23b9f6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a88ec52c8bf62641ca76d8d38b23b9f6c">TextManager_OnChangeIdiom</a> ([NotNull] object sender, [NotNull] bool e)</td></tr>
@@ -261,6 +263,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a8fd2e66652ab98a57ed00f244dc6945a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ac194f4ab596abe9ba1573dd59740e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_im_gui_n_e_t_1_1_im_gui_controller.html">ImGuiController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8ac194f4ab596abe9ba1573dd59740e7">imGuiController</a></td></tr>
 <tr class="separator:a8ac194f4ab596abe9ba1573dd59740e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a525ce2b69abce46b40dffbd826c8b230"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a525ce2b69abce46b40dffbd826c8b230">openVisual</a> = false</td></tr>
+<tr class="separator:a525ce2b69abce46b40dffbd826c8b230"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
 Static Private Attributes</h2></td></tr>
@@ -1404,6 +1408,33 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a6f3e574efd25f9f587e1733db53e597f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f3e574efd25f9f587e1733db53e597f">&#9670;&nbsp;</a></span>CheckOpenVisualStudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Editor.UI.Widgets.TopMenu.CheckOpenVisualStudio </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_top_menu_8cs_source.html#l00999">999</a> of file <a class="el" href="_top_menu_8cs_source.html">TopMenu.cs</a>.</p>
+
+</div>
+</div>
 <a id="ae8e8f78c7cd22e340f53e602f0e18134"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8e8f78c7cd22e340f53e602f0e18134">&#9670;&nbsp;</a></span>OpenVisualStudio()</h2>
 
@@ -1427,7 +1458,7 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_top_menu_8cs_source.html#l00999">999</a> of file <a class="el" href="_top_menu_8cs_source.html">TopMenu.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_top_menu_8cs_source.html#l01052">1052</a> of file <a class="el" href="_top_menu_8cs_source.html">TopMenu.cs</a>.</p>
 
 </div>
 </div>
@@ -1488,7 +1519,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_top_menu_8cs_source.html#l01038">1038</a> of file <a class="el" href="_top_menu_8cs_source.html">TopMenu.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_top_menu_8cs_source.html#l01071">1071</a> of file <a class="el" href="_top_menu_8cs_source.html">TopMenu.cs</a>.</p>
 
 </div>
 </div>
@@ -2057,6 +2088,30 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a525ce2b69abce46b40dffbd826c8b230"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a525ce2b69abce46b40dffbd826c8b230">&#9670;&nbsp;</a></span>openVisual</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Alis.Editor.UI.Widgets.TopMenu.openVisual = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_top_menu_8cs_source.html#l01050">1050</a> of file <a class="el" href="_top_menu_8cs_source.html">TopMenu.cs</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 
@@ -2064,7 +2119,7 @@ Static Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor.html">Editor</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor_1_1_u_i.html">UI</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html">Widgets</a></li><li class="navelem"><a class="el" href="class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html">TopMenu</a></li>
     <li class="footer">
-      <a>Generated on | Fri Apr 30 2021 |</a>
+      <a>Generated on | Sat May 1 2021 |</a>
     </li>
   </ul>
 </div>

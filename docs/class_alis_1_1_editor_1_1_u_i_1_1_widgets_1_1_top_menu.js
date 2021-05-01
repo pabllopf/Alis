@@ -37,6 +37,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "ShortBuildAndRun", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ae1b16c18da775c02bdc2b65c6e03c841", null ],
     [ "ShortAutosave", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a4d5c545ef93215ab448a132116960c9b", null ],
     [ "RunCommand", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7123365be30f61a4a54aeddaf1f3bfac", null ],
+    [ "CheckOpenVisualStudio", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a6f3e574efd25f9f587e1733db53e597f", null ],
     [ "OpenVisualStudio", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ae8e8f78c7cd22e340f53e602f0e18134", null ],
     [ "DirectoryCopy", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a97198bf2fa62b1a209d0dab23fa69cf3", null ],
     [ "TextManager_OnChangeIdiom", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a88ec52c8bf62641ca76d8d38b23b9f6c", null ],
@@ -59,5 +60,6 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "autosaveMode", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a040392be9c9c936e978d53bc40a33c2d", null ],
     [ "timerAutoSave", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a70455f4bf5eda87d7653ff975570b5c9", null ],
     [ "aboutState", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8fd2e66652ab98a57ed00f244dc6945a", null ],
-    [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8ac194f4ab596abe9ba1573dd59740e7", null ]
+    [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8ac194f4ab596abe9ba1573dd59740e7", null ],
+    [ "openVisual", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a525ce2b69abce46b40dffbd826c8b230", null ]
 ];
