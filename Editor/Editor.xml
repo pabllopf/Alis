@@ -304,7 +304,7 @@
             <summary>Windows the moved.</summary>
             <param name="obj">The object.</param>
         </member>
-        <member name="M:Alis.Editor.UI.MainWindow.LoadStyle">
+        <member name="M:Alis.Editor.UI.MainWindow.LoadDarkStyle">
             <summary>Loads the style.</summary>
         </member>
         <member name="T:Alis.Editor.UI.Widgets.Widget">

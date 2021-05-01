@@ -40,7 +40,7 @@ namespace Alis.Editor.UI.Widgets
 
             if (ImGui.Begin("Preferences", ref isOpen))
             {
-
+                ImGui.ShowStyleEditor();
             }
 
             ImGui.End();
