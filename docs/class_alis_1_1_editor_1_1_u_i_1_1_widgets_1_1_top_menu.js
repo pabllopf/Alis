@@ -3,6 +3,9 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "SimpleUnloadableAssemblyLoadContext", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context.html", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context" ],
     [ "TopMenu", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a4dd606b04642fbd575ffbf5ff2b00d0f", null ],
     [ "Draw", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a7a7a59124aa85ecba691e5229928cc05", null ],
+    [ "CheckUpdate", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aab54fbc00b08a1351d5192bec8046a97", null ],
+    [ "ShowVersion", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a65478233278c4ec516136698c15d1914", null ],
+    [ "IsTheLastVersion", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aae7e498e3878d53baa14d34b25d9355d", null ],
     [ "OpenAudioPlayer", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a251be10fc95292455c3820fab0e79c6e", null ],
     [ "OpenMakerView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a3574ba20d5248e816440302f80b935d0", null ],
     [ "OpenAssetsView", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ad846ea2f5bd292308414338a7c18f79d", null ],
@@ -61,5 +64,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu =
     [ "timerAutoSave", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a70455f4bf5eda87d7653ff975570b5c9", null ],
     [ "aboutState", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8fd2e66652ab98a57ed00f244dc6945a", null ],
     [ "imGuiController", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a8ac194f4ab596abe9ba1573dd59740e7", null ],
+    [ "checkUpdate", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a287806280d15b2792405d6dc7cb5abaf", null ],
+    [ "RELEASE", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a0a92a47cdad46fc02e5c26184044cf53", null ],
     [ "openVisual", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a525ce2b69abce46b40dffbd826c8b230", null ]
 ];
