@@ -115,6 +115,7 @@ namespace Alis.Core.SFML
             }
         }
 
+        [JsonIgnore]
         public global::SFML.Graphics.RectangleShape Rectangle { get => rectangle; set => rectangle = value; }
 
         public override void Exit()

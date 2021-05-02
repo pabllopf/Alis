@@ -160,7 +160,6 @@ namespace Alis.Core
 
             if (!scene.Equals(current.currentScene))
             {
-               
                 Logger.Warning("Start scene: " + current.currentScene.Name);
                 current.currentScene.IsActive = false;
                 current.Exit().Wait();
@@ -173,11 +172,12 @@ namespace Alis.Core
 
                 scene = LocalData.Load<Scene>("scene");
 
-                scene.IsActive = true;
+                
                 scene.Awake();
                 scene.Start();
 
 
+                scene.IsActive = true;
                 current.currentScene = scene;
                 Logger.Warning("Current scene: " + current.currentScene.Name);
             }
