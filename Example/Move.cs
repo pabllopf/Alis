@@ -80,19 +80,28 @@ namespace Example
 
         public override void OnCollionEnter(Component collision)
         {
+            if (collision != null && collision.GameObject != null) 
+            {
+                Logger.Warning("OnCollionEnter: " + collision.GameObject.Name);
+            }
 
-            Logger.Warning("COLLSION: " + collision.GameObject.Name);
+            
         }
 
         public override void OnCollionExit(Component collision)
         {
-
-            Logger.Warning("COLLSION: " + collision.GameObject.Name);
+            if (collision != null && collision.GameObject != null)
+            {
+                Logger.Warning("OnCollionExit: " + collision.GameObject.Name);
+            }
         }
 
         public override void OnCollionStay(Component collision)
         {
-            Logger.Warning("COLLSION: " + collision.GameObject.Name);
+            if (collision != null && collision.GameObject != null)
+            {
+                Logger.Warning("OnCollionStay: " + collision.GameObject.Name);
+            }
         }
 
         /// <summary>Update this instance. This will execute every frame.</summary>

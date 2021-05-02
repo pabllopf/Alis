@@ -67,6 +67,10 @@ namespace Alis.Core
             this.rotation = rotation;
             this.scale = scale;
 
+            xPos = this.position.X;
+            yPos = this.position.Y;
+            zPos = this.position.Z;
+
             OnCreate += Transform_OnCreate;
             OnPositionChange += Transform_OnPositionChange;
             OnRotationChange += Transform_OnRotationChange;
@@ -82,6 +86,10 @@ namespace Alis.Core
             position = new Vector3(0f);
             rotation = new Vector3(0f);
             scale = new Vector3(1f);
+
+            xPos = this.position.X;
+            yPos = this.position.Y;
+            zPos = this.position.Z;
 
             OnCreate += Transform_OnCreate;
             OnPositionChange += Transform_OnPositionChange;
@@ -99,6 +107,10 @@ namespace Alis.Core
             this.position = position;
             rotation = new Vector3(0f);
             scale = new Vector3(1f);
+
+            xPos = this.position.X;
+            yPos = this.position.Y;
+            zPos = this.position.Z;
 
             OnCreate += Transform_OnCreate;
             OnPositionChange += Transform_OnPositionChange;

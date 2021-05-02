@@ -46,9 +46,9 @@ namespace Example
                                             .Name("MainScene")
                                             .GameObject(GameObject.Builder()
                                                             .Name("player")
-                                                            .Transform(new Transform(new Vector3(-5.0f), new Vector3(0.0f), new Vector3(2.0f)))
+                                                            .Transform(new Transform(new Vector3(-100.0f), new Vector3(0.0f), new Vector3(2.0f)))
                                                             .Component(new Sprite("tile000.png"))
-                                                            .Component(new AudioSource("menu.wav"))
+                                                            //.Component(new AudioSource("menu.wav"))
                                                             .Component(new Collision(new Vector2(30, 55), false))
                                                             .Component(new Animator(0,
                                                                         new Animation("MoveDown", 0, 0.1f, "tile000.png", "tile001.png", "tile002.png", "tile003.png"),
