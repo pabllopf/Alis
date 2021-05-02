@@ -27,7 +27,7 @@ namespace Alis.Core
 
         /// <summary>The size</summary>
         [NotNull]
-        private Vector3 size;
+        private Vector3 scale;
 
         /// <summary>The x position</summary>
         private float xPos;
@@ -59,13 +59,13 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The rotation.</param>
-        /// <param name="size">The size.</param>
+        /// <param name="scale">The size.</param>
         [JsonConstructor]
-        public Transform([NotNull] Vector3 position, [NotNull] Vector3 rotation, [NotNull] Vector3 size)
+        public Transform([NotNull] Vector3 position, [NotNull] Vector3 rotation, [NotNull] Vector3 scale)
         {
             this.position = position;
             this.rotation = rotation;
-            this.size = size;
+            this.scale = scale;
 
             OnCreate += Transform_OnCreate;
             OnPositionChange += Transform_OnPositionChange;
@@ -81,7 +81,7 @@ namespace Alis.Core
         {
             position = new Vector3(0f);
             rotation = new Vector3(0f);
-            size = new Vector3(1f);
+            scale = new Vector3(1f);
 
             OnCreate += Transform_OnCreate;
             OnPositionChange += Transform_OnPositionChange;
@@ -98,7 +98,7 @@ namespace Alis.Core
         {
             this.position = position;
             rotation = new Vector3(0f);
-            size = new Vector3(1f);
+            scale = new Vector3(1f);
 
             OnCreate += Transform_OnCreate;
             OnPositionChange += Transform_OnPositionChange;
@@ -159,12 +159,12 @@ namespace Alis.Core
         /// <value>The size.</value>
         [NotNull]
         [JsonProperty]
-        public Vector3 Size
+        public Vector3 Scale
         {
-            get => size; 
+            get => scale; 
             set
             {
-                size = value;
+                scale = value;
                 OnSizeChange.Invoke(this, true);
             }
         }

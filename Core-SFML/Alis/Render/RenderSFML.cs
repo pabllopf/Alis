@@ -41,13 +41,12 @@
 
         /// <summary>The collisions</summary>
         [NotNull]
-        private List<RectangleShape> collisions = new List<RectangleShape>();
+        private List<Collision> collisions = new List<Collision>();
 
         /// <summary>Gets or sets the collisions.</summary>
         /// <value>The collisions.</value>
-        [JsonIgnore]
-        public List<RectangleShape> Collisions { get => collisions; set => collisions = value; }
-
+       
+       
         /// <summary>Gets the render window.</summary>
         /// <value>The render window.</value>
         [JsonIgnore]
@@ -63,6 +62,9 @@
         [JsonIgnore]
         public static RenderSFML CurrentRenderSFML { get => renderSFML; set => renderSFML = value; }
 
+        [JsonIgnore]
+        public List<Collision> Collisions { get => collisions; set => collisions = value; }
+
         /// <summary>Initializes a new instance of the <see cref="RenderSFML" /> class.</summary>
         /// <param name="config">The configuration.</param>
         public RenderSFML([NotNull] Config config) : base(config)
@@ -71,7 +73,7 @@
 
             videoMode = new VideoMode(512, 320);
             sprites = new List<Sprite>();
-            collisions = new List<RectangleShape>();
+            collisions = new List<Collision>();
 
             Current = this;
             renderSFML = this;
@@ -132,11 +134,11 @@
         {
             if (collisions.Count > 0)
             {
-                foreach (RectangleShape collision in collisions.ToList())
+                foreach (Collision collision in collisions.ToList())
                 {
                     if (collision != null) 
                     {
-                        renderWindow.Draw(collision);
+                        renderWindow.Draw(collision.Rectangle);
                     }
                 }
             }
@@ -187,11 +189,11 @@
 
             if (collisions.Count > 0)
             {
-                foreach (RectangleShape collision in collisions.ToList())
+                foreach (Collision collision in collisions.ToList())
                 {
                     if (collision != null)
                     {
-                        renderTexture.Draw(collision);
+                        renderTexture.Draw(collision.Rectangle);
                     }
                 }
             }
@@ -236,6 +238,19 @@
         {
             Exit();
             Environment.Exit(0);
+        }
+
+        public override void Clear()
+        {
+            if (sprites.Count > 0)
+            {
+                sprites.Clear();
+            }
+
+            if (collisions.Count > 0)
+            {
+                collisions.Clear();
+            }
         }
     }
 }

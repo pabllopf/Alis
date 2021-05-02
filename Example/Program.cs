@@ -22,9 +22,10 @@ namespace Example
         {
             
 
+
         
 
-            /*
+            
             VideoGame.Builder()
                 .Config(Config.Builder()
                             .Name("Alis Game")
@@ -68,9 +69,17 @@ namespace Example
                                                             .Build())
                                             .Build())
 
-                                .Scene(Scene.Builder().Name("SecondScene").Build())
+                                .Scene(Scene.Builder().Name("SecondScene")
+                                    .GameObject(GameObject.Builder()
+                                                            .Name("enemy4")
+                                                            .Transform(new Transform(new Vector3(45.0f), new Vector3(0.0f), new Vector3(2.0f)))
+                                                            .Component(new Sprite("tile001.png"))
+                                                            .Component(new Collision(new Vector2(30, 55), false))
+                                                            .Build())
+
+                                .Build())
                   .Build())
-            .Run();*/
+            .Run();
         }
     }
 }

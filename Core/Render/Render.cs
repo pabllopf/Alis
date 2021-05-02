@@ -68,5 +68,8 @@ namespace Alis.Core
         /// <summary>Removes the specified draw.</summary>
         /// <param name="draw">The draw.</param>
         public virtual void Remove([NotNull] Component draw) => throw Logger.Error("Remove");
+
+        /// <summary>Clears this instance.</summary>
+        public virtual void Clear() => throw Logger.Error("Clear");
     }
 }

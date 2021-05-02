@@ -25,6 +25,8 @@ namespace Example
         /// <summary>Start this instance. Init all that you need.</summary>
         public override void Start()
         {
+
+           
             // Define a event control to check input and move player.
             Input.OnPressKey += Input_OnPressKey;
 
@@ -74,6 +76,23 @@ namespace Example
                 animator.State = 3;
                 transform.XPos -= 1 * speed;
             }
+        }
+
+        public override void OnCollionEnter(Component collision)
+        {
+
+            Logger.Warning("COLLSION: " + collision.GameObject.Name);
+        }
+
+        public override void OnCollionExit(Component collision)
+        {
+
+            Logger.Warning("COLLSION: " + collision.GameObject.Name);
+        }
+
+        public override void OnCollionStay(Component collision)
+        {
+            Logger.Warning("COLLSION: " + collision.GameObject.Name);
         }
 
         /// <summary>Update this instance. This will execute every frame.</summary>

@@ -7,6 +7,7 @@ namespace Alis.Core
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.Threading;
     using System.Threading.Tasks;
     using Alis.Tools;
     using Newtonsoft.Json;
@@ -36,7 +37,7 @@ namespace Alis.Core
 
         /// <summary>The scenes</summary>
         [NotNull]
-        private Memory<Scene> scenes;
+        private List<Scene> scenes;
 
         /// <summary>The current scene</summary>
         [NotNull]
@@ -52,24 +53,13 @@ namespace Alis.Core
         /// <param name="scenes">The scenes.</param>
         public SceneManager([NotNull] params Scene[] scenes)
         {
-            this.scenes = new Memory<Scene>(new Scene[MaxNumScene]);
-            Span<Scene> span = this.scenes.Span;
+            this.scenes = new List<Scene>(scenes);
+            this.scenes.ForEach(i => i.IsActive = false);
 
-            if (scenes != null) 
-            {
-                for (int i = 0; i < scenes.Length; i++)
-                {
-                    if (span[i] == null)
-                    {
-                        span[i] = scenes[i];
-                    }
-                }
-            }
+            currentScene = this.scenes[0];
+            currentScene.IsActive = true;
 
-            currentScene = this.scenes.Span.Length > 0 ? this.scenes.Span[0] : new Scene("Default");
-
-            current = this;
-            
+            current ??= this;
             Logger.Info();
         }
 
@@ -79,21 +69,21 @@ namespace Alis.Core
         [JsonConstructor]
         internal SceneManager([NotNull] Scene[] scenes, [NotNull] Scene currentScene)
         {
-            this.scenes = new Memory<Scene>(new Scene[MaxNumScene]);
-            Span<Scene> span = this.scenes.Span;
+            this.scenes = new List<Scene>(MaxNumScene);
             for (int i = 0; i < scenes.Length; i++)
             {
-                if (span[i] == null)
+                if (scenes[i] != null)
                 {
-                    span[i] = scenes[i];
+                    this.scenes[i] = scenes[i];
+                    this.scenes[i].IsActive = false;
                 }
             }
 
-            this.currentScene = this.scenes.Span[0];
+            this.currentScene = currentScene;
+            this.currentScene.IsActive = true;
 
-            current = this;
-
-            Logger.Warning("Build the scene manager from json.");
+            current ??= this;
+            Logger.Info();
         }
 
         /// <summary>Occurs when [on change scene].</summary>
@@ -103,7 +93,7 @@ namespace Alis.Core
         /// <value>The scenes.</value>
         [NotNull]
         [JsonProperty("_Scenes")]
-        public Scene[] Scenes { get => scenes.ToArray(); set => scenes = new Memory<Scene>(value); }
+        public Scene[] Scenes { get => scenes.ToArray(); set => scenes = new List<Scene>(value); }
 
         /// <summary>Gets or sets the current scene.</summary>
         /// <value>The current scene.</value>
@@ -111,72 +101,127 @@ namespace Alis.Core
         [JsonProperty("_CurrentScene")]
         public Scene CurrentScene { get => currentScene; set => currentScene = value; }
 
+        /// <summary>Gets or sets the current.</summary>
+        /// <value>The current.</value>
+        public static SceneManager Current { get => current; set => current = value; }
+
         /// <summary>Loads the specified name.</summary>
         /// <param name="name">The name.</param>
+        public static void Load(int index)
+        {
+            if (current.currentScene != current.scenes[index])
+            {
+                Logger.Warning("Start scene: " + current.currentScene.Name);
+                current.currentScene.IsActive = false;
+                current.Exit().Wait();
+
+                Render.Current.Clear();
+
+                current.currentScene = current.scenes[index];
+                current.currentScene.IsActive = true;
+
+                current.Awake().Wait();
+                current.Start().Wait();
+
+                Logger.Warning("Current scene: " + current.currentScene.Name);
+            }
+        }
+
         public static void Load(string name)
         {
-            Span<Scene> span = current.scenes.Span;
-            for (int i = 0; i < span.Length; i++)
+            Scene scene = current.scenes.Find(i => i.Name.Equals(name));
+            if (scene != current.currentScene)
             {
-                if (span[i] != null && span[i].Name.Equals(name))
+                if (scene != null)
                 {
-                    Logger.Log(string.Format(ChangeScene, name, current.currentScene.Name));
+                    Logger.Warning("Start scene: " + current.currentScene.Name);
                     current.currentScene.IsActive = false;
-                    current.currentScene = span[i];
-                    current.currentScene.IsActive = true;
+                    current.Exit().Wait();
 
-                    OnChangeScene?.Invoke(current.currentScene, true);
+                    Render.Current.Clear();
+
+                    current.currentScene = scene;
+                    current.currentScene.IsActive = true;
 
                     current.Awake().Wait();
                     current.Start().Wait();
-                    return;
+
+                    Logger.Warning("Current scene: " + current.currentScene.Name);
                 }
             }
-
-            Logger.Warning(string.Format(DontChangeScene, name, current.currentScene.Name));
         }
 
         public void AddScene(Scene scene) 
         {
-            Span<Scene> span = this.scenes.Span;
-            for (int i = 0; i < scenes.Length; i++)
-            {
-                if (span[i] == null)
-                {
-                    span[i] = scene;
-                    return;
-                }
-            }
+            scenes.Add(scene);
         }
 
         /// <summary>Awakes this instance.</summary>
         /// <returns>Awake scene.</returns>
-        internal Task Awake() => Task.Run(() => currentScene?.Awake());
+        internal Task Awake()
+        {
+            return Task.Run(() => currentScene?.Awake());
+        }
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        internal Task Start() => Task.Run(() => currentScene?.Start());
+        internal Task Start()
+        {
+            return Task.Run(() => currentScene?.Start());
+        }
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        public Task Update() => Task.Run(() => currentScene?.Update());
+        public Task Update()
+        {
+            if (currentScene.IsActive)
+            {
+                return Task.Run(() => currentScene?.Update());
+            }
+
+            return Task.Run(() => Task.Delay(1));
+        }
 
         /// <summary>Fix the update.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        internal Task FixedUpdate() => Task.Run(() => currentScene?.FixedUpdate());
+        internal Task FixedUpdate()
+        {
+            if (currentScene.IsActive)
+            {
+                return Task.Run(() => currentScene?.FixedUpdate());
+            }
+
+            return Task.Run(() => Task.Delay(1));
+        }
 
         /// <summary>Exits this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        internal Task Exit() => Task.Run(() => currentScene?.Exit());
+        internal Task Exit()
+        {
+            if (!currentScene.IsActive)
+            {
+                return Task.Run(() => currentScene?.Exit());
+            }
+
+            return Task.Run(() => Task.Delay(1));
+        }
 
         /// <summary>Stops this instance.</summary>
         /// <returns>Return none</returns>
         [return: NotNull]
-        internal Task Stop() => Task.Run(() => currentScene?.Stop());
+        internal Task Stop()
+        {
+            if (currentScene.IsActive)
+            {
+                return Task.Run(() => currentScene?.Stop());
+            }
+
+            return Task.Run(() => Task.Delay(1));
+        }
 
         #region Events
 
@@ -209,7 +254,11 @@ namespace Alis.Core
             public SceneManagerBuilder Scene(Scene scene) 
             {
                 current.scenes ??= new List<Scene>();
-                current.scenes.Add(scene);
+                if (!current.scenes.Contains(scene)) 
+                {
+                    current.scenes.Add(scene);
+                }
+
                 return current;
             }
 
@@ -217,6 +266,8 @@ namespace Alis.Core
             /// <returns>Build the scene manager</returns>
             public SceneManager Build()
             {
+                current.scenes.ForEach(i => Logger.Warning("Build scene " + i.Name));
+
                 current.scenes ??= new List<Scene>();
                 return new SceneManager(current.scenes.ToArray());
             }

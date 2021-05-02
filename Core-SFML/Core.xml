@@ -357,11 +357,9 @@
         <member name="F:Alis.Core.SFML.RenderSFML.collisions">
             <summary>The collisions</summary>
         </member>
-        <member name="P:Alis.Core.SFML.RenderSFML.Collisions">
+        <member name="P:Alis.Core.SFML.RenderSFML.RenderWindow">
             <summary>Gets or sets the collisions.</summary>
             <value>The collisions.</value>
-        </member>
-        <member name="P:Alis.Core.SFML.RenderSFML.RenderWindow">
             <summary>Gets the render window.</summary>
             <value>The render window.</value>
         </member>

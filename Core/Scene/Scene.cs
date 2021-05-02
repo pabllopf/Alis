@@ -565,7 +565,7 @@ namespace Alis.Core
         {
             /// <summary>The current</summary>
             [AllowNull]
-            private static SceneBuilder current;
+            private SceneBuilder current;
 
             [AllowNull]
             private string name;
@@ -601,6 +601,10 @@ namespace Alis.Core
             {
                 current.name ??= "Default";
                 current.gameObjects ??= new List<GameObject>();
+
+                current.gameObjects.ForEach(i => Logger.Warning("Build gameobject " + i.Name));
+                Console.WriteLine("\n");
+
 
                 return new Scene(current.name, current.gameObjects.ToArray());
             }

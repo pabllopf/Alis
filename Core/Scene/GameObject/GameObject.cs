@@ -220,6 +220,40 @@ namespace Alis.Core
         [JsonProperty("_Transform")]
         public Transform Transform { get => transform; }
 
+        public void OnCollionEnter(Component collision)
+        {
+            Span<Component> span = this.components.Span;
+            for (int i = 0; i < components.Length; i++)
+            {
+                if (span[i] != null)
+                {
+                    span[i].OnCollionEnter(collision);
+                }
+            }
+        }
+        public void OnCollionExit(Component collision)
+        {
+            Span<Component> span = this.components.Span;
+            for (int i = 0; i < components.Length; i++)
+            {
+                if (span[i] != null)
+                {
+                    span[i].OnCollionExit(collision);
+                }
+            }
+        }
+        public void OnCollionStay(Component collision)
+        {
+            Span<Component> span = this.components.Span;
+            for (int i = 0; i < span.Length; i++)
+            {
+                if (span[i] != null)
+                {
+                    span[i].OnCollionStay(collision);
+                }
+            }
+        }
+
         /// <summary>Gets or sets a value indicating whether this <see cref="GameObject" /> is active.</summary>
         /// <value>
         /// <c>true</c> if active; otherwise, <c>false</c>.</value>
@@ -275,6 +309,8 @@ namespace Alis.Core
             return false;
         }
 
+        
+
         public bool Contains(Component component) 
         {
             Span<Component> span = components.Span;
@@ -290,6 +326,8 @@ namespace Alis.Core
             Logger.Log(string.Format(DontContainsComponent, component.GetType().FullName, this.name));
             return false;
         }
+
+      
 
         /// <summary>Adds the specified component.</summary>
         /// <typeparam name="T">Type component</typeparam>

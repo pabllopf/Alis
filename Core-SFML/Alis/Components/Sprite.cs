@@ -114,7 +114,7 @@ namespace Alis.Core.SFML
             {
                 sprite.Position = new global::SFML.System.Vector2f(transform.Position.X, transform.Position.Y);
                 sprite.Rotation = transform.Rotation.Y;
-                sprite.Scale = new global::SFML.System.Vector2f(transform.Size.X, transform.Size.Y);
+                sprite.Scale = new global::SFML.System.Vector2f(transform.Scale.X, transform.Scale.Y);
 
                 if (!RenderSFML.CurrentRenderSFML.GetDraws<Sprite>().Contains(this))
                 {
@@ -136,7 +136,7 @@ namespace Alis.Core.SFML
             {
                 sprite.Position = new global::SFML.System.Vector2f(transform.Position.X, transform.Position.Y);
                 sprite.Rotation = transform.Rotation.Y;
-                sprite.Scale = new global::SFML.System.Vector2f(transform.Size.X, transform.Size.Y);
+                sprite.Scale = new global::SFML.System.Vector2f(transform.Scale.X, transform.Scale.Y);
             }
             else 
             {
