@@ -11,6 +11,7 @@ var class_alis_1_1_core_1_1_render =
     [ "GetDraws< T >", "class_alis_1_1_core_1_1_render.html#aaf77e98b853a9e7f91ced6d166baa23a", null ],
     [ "AddDraw", "class_alis_1_1_core_1_1_render.html#aeddb0a492bbda30c354ebe371e023d1e", null ],
     [ "Remove", "class_alis_1_1_core_1_1_render.html#a0e51787ffc68989ada81ee149df5ab4d", null ],
+    [ "Clear", "class_alis_1_1_core_1_1_render.html#acc1d3471490da69f9e7bde1e08339161", null ],
     [ "current", "class_alis_1_1_core_1_1_render.html#a7d12ddea95837d49fe6f3bfaadf7e4ab", null ],
     [ "config", "class_alis_1_1_core_1_1_render.html#a4b8b7c98839470f2cfb55720668e070c", null ],
     [ "Config", "class_alis_1_1_core_1_1_render.html#a2e3a8dab6b9f1c2f87e25e4995ccaa02", null ],

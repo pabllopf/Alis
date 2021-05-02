@@ -4,6 +4,7 @@ var class_alis_1_1_core_1_1_scene_manager =
     [ "SceneManager", "class_alis_1_1_core_1_1_scene_manager.html#a52dd174aa5c2003379e6c71f75fc8f46", null ],
     [ "SceneManager", "class_alis_1_1_core_1_1_scene_manager.html#a3ec87afc559728abe36848dd523c3684", null ],
     [ "SceneManager", "class_alis_1_1_core_1_1_scene_manager.html#a814a7ac327cd64dfa6f5c639e8749bcf", null ],
+    [ "Load", "class_alis_1_1_core_1_1_scene_manager.html#aee8ed4d47051339867faf91c588dca14", null ],
     [ "Load", "class_alis_1_1_core_1_1_scene_manager.html#afacd71a3c9f45ab2ccb843b51c3d6dcb", null ],
     [ "AddScene", "class_alis_1_1_core_1_1_scene_manager.html#a2a7479ae2afd7a7d86c55cae56180ac6", null ],
     [ "Awake", "class_alis_1_1_core_1_1_scene_manager.html#a39f850dd5be7091df04945a9f6ef6a7a", null ],
@@ -18,9 +19,10 @@ var class_alis_1_1_core_1_1_scene_manager =
     [ "DontChangeScene", "class_alis_1_1_core_1_1_scene_manager.html#a12dd0a0071a7733b1669fef80bf82a45", null ],
     [ "MaxNumScene", "class_alis_1_1_core_1_1_scene_manager.html#a2c7c393bc18a67e9e4f3e92895dd4718", null ],
     [ "current", "class_alis_1_1_core_1_1_scene_manager.html#ac093d8791f7926be07b2264ab7ac4619", null ],
-    [ "scenes", "class_alis_1_1_core_1_1_scene_manager.html#a261773488331b3892dbaf38a0a98edb7", null ],
+    [ "scenes", "class_alis_1_1_core_1_1_scene_manager.html#a2192ab6c1f22d1a8982f0d32744dc71a", null ],
     [ "currentScene", "class_alis_1_1_core_1_1_scene_manager.html#a7397a72dc91af7357037662782842800", null ],
     [ "Scenes", "class_alis_1_1_core_1_1_scene_manager.html#a322d2b3e3781154c43a2880bb27d3509", null ],
     [ "CurrentScene", "class_alis_1_1_core_1_1_scene_manager.html#a5a981dc8e3ef3d92026180baf5c7e621", null ],
+    [ "Current", "class_alis_1_1_core_1_1_scene_manager.html#ac9165fad73dfa26d5df26984ac2cf184", null ],
     [ "OnChangeScene", "class_alis_1_1_core_1_1_scene_manager.html#a91e4432c218332779ae06a87db077763", null ]
 ];
