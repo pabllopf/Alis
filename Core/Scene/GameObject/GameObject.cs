@@ -227,7 +227,10 @@ namespace Alis.Core
             {
                 if (span[i] != null)
                 {
-                    span[i].OnCollionEnter(collision);
+                    if (collision != null && collision.GameObject != null)
+                    {
+                        span[i].OnCollionEnter(collision);
+                    }
                 }
             }
         }
@@ -238,7 +241,10 @@ namespace Alis.Core
             {
                 if (span[i] != null)
                 {
-                    span[i].OnCollionExit(collision);
+                    if (collision != null && collision.GameObject != null)
+                    {
+                        span[i].OnCollionExit(collision);
+                    }
                 }
             }
         }
@@ -249,7 +255,10 @@ namespace Alis.Core
             {
                 if (span[i] != null)
                 {
-                    span[i].OnCollionStay(collision);
+                    if (collision != null && collision.GameObject != null)
+                    {
+                        span[i].OnCollionStay(collision);
+                    }
                 }
             }
         }

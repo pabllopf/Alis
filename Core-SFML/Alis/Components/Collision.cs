@@ -159,7 +159,7 @@ namespace Alis.Core.SFML
 
             if (!isTrigger)
             {
-                for (int i = 0; i < collisions.Count; i++)
+                for (int i = 0; i < collisions.ToList().Count; i++)
                 {
                     if (!rectangle.Equals(collisions[i]))
                     {
@@ -252,7 +252,7 @@ namespace Alis.Core.SFML
             else
             {
 
-                for (int i = 0; i < collisions.Count; i++)
+                for (int i = 0; i < collisions.ToList().Count; i++)
                 {
                     if (!rectangle.Equals(collisions[i]))
                     {

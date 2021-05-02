@@ -54,7 +54,7 @@
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 	    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-	    <DefineConstants>Windows</DefineConstants>
+	    <DefineConstants>TRACE;DEBUG;Windows</DefineConstants>
     </PropertyGroup>
 
 
