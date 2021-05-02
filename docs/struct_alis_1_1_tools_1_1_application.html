@@ -96,8 +96,7 @@ $(document).ready(function(){initNavTree('struct_alis_1_1_tools_1_1_application.
 
 <div class="header">
   <div class="summary">
-<a href="#properties">Properties</a> &#124;
-<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="struct_alis_1_1_tools_1_1_application-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Tools.Application Struct Reference</div>  </div>
@@ -107,95 +106,32 @@ $(document).ready(function(){initNavTree('struct_alis_1_1_tools_1_1_application.
 <p>Manage application data.  
  <a href="struct_alis_1_1_tools_1_1_application.html#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
-Properties</h2></td></tr>
-<tr class="memitem:a6a79b0c23f11421eb73059c605e6e6ca"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#a6a79b0c23f11421eb73059c605e6e6ca">Name</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a6a79b0c23f11421eb73059c605e6e6ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the name.  <a href="struct_alis_1_1_tools_1_1_application.html#a6a79b0c23f11421eb73059c605e6e6ca">More...</a><br /></td></tr>
-<tr class="separator:a6a79b0c23f11421eb73059c605e6e6ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a26b2418e4074e34ea5685679f146e067"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#a26b2418e4074e34ea5685679f146e067">DesktopFolder</a><code> [get]</code></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a26b2418e4074e34ea5685679f146e067"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#a26b2418e4074e34ea5685679f146e067">DesktopFolder</a> =&gt; (Environment.GetFolderPath(Environment.SpecialFolder.Desktop)).Replace(&quot;\\&quot;, &quot;/&quot;)</td></tr>
 <tr class="memdesc:a26b2418e4074e34ea5685679f146e067"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the desktop path.  <a href="struct_alis_1_1_tools_1_1_application.html#a26b2418e4074e34ea5685679f146e067">More...</a><br /></td></tr>
 <tr class="separator:a26b2418e4074e34ea5685679f146e067"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25669a52fc0dc3cdad0b1c9d17f5ec85"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#a25669a52fc0dc3cdad0b1c9d17f5ec85">DocumentsFolder</a><code> [get]</code></td></tr>
+<tr class="memitem:a25669a52fc0dc3cdad0b1c9d17f5ec85"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#a25669a52fc0dc3cdad0b1c9d17f5ec85">DocumentsFolder</a> =&gt; (Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)).Replace(&quot;\\&quot;, &quot;/&quot;)</td></tr>
 <tr class="memdesc:a25669a52fc0dc3cdad0b1c9d17f5ec85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the documents path.  <a href="struct_alis_1_1_tools_1_1_application.html#a25669a52fc0dc3cdad0b1c9d17f5ec85">More...</a><br /></td></tr>
 <tr class="separator:a25669a52fc0dc3cdad0b1c9d17f5ec85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abad714ed9c3c8ea87bfb83dd17603b2f"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#abad714ed9c3c8ea87bfb83dd17603b2f">AssetsFolder</a><code> [get]</code></td></tr>
+<tr class="memitem:abad714ed9c3c8ea87bfb83dd17603b2f"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#abad714ed9c3c8ea87bfb83dd17603b2f">AssetsFolder</a> =&gt; (Environment.CurrentDirectory + &quot;/Assets&quot;).Replace(&quot;\\&quot;, &quot;/&quot;)</td></tr>
 <tr class="memdesc:abad714ed9c3c8ea87bfb83dd17603b2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the assets path.  <a href="struct_alis_1_1_tools_1_1_application.html#abad714ed9c3c8ea87bfb83dd17603b2f">More...</a><br /></td></tr>
 <tr class="separator:abad714ed9c3c8ea87bfb83dd17603b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0bfd32cc35564c78d23037a1d6ae58cb"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#a0bfd32cc35564c78d23037a1d6ae58cb">ProjectFolder</a><code> [get]</code></td></tr>
+<tr class="memitem:a0bfd32cc35564c78d23037a1d6ae58cb"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#a0bfd32cc35564c78d23037a1d6ae58cb">ProjectFolder</a> =&gt; (Environment.CurrentDirectory).Replace(&quot;\\&quot;, &quot;/&quot;)</td></tr>
 <tr class="memdesc:a0bfd32cc35564c78d23037a1d6ae58cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the project path.  <a href="struct_alis_1_1_tools_1_1_application.html#a0bfd32cc35564c78d23037a1d6ae58cb">More...</a><br /></td></tr>
 <tr class="separator:a0bfd32cc35564c78d23037a1d6ae58cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2663370ce48e942f3401a8623df76de"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#ae2663370ce48e942f3401a8623df76de">PersistenceDataFolder</a><code> [get]</code></td></tr>
+<tr class="memitem:ae2663370ce48e942f3401a8623df76de"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#ae2663370ce48e942f3401a8623df76de">PersistenceDataFolder</a> =&gt; (Environment.SystemDirectory + &quot;/Data&quot;).Replace(&quot;\\&quot;, &quot;/&quot;)</td></tr>
 <tr class="memdesc:ae2663370ce48e942f3401a8623df76de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the data path.  <a href="struct_alis_1_1_tools_1_1_application.html#ae2663370ce48e942f3401a8623df76de">More...</a><br /></td></tr>
 <tr class="separator:ae2663370ce48e942f3401a8623df76de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1c4b20e8f58d91414b4049baf6a8592"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#ae1c4b20e8f58d91414b4049baf6a8592">TempDataFolder</a><code> [get]</code></td></tr>
+<tr class="memitem:ae1c4b20e8f58d91414b4049baf6a8592"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#ae1c4b20e8f58d91414b4049baf6a8592">TempDataFolder</a> =&gt; Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Replace(&quot;\\&quot;, &quot;/&quot;)</td></tr>
 <tr class="memdesc:ae1c4b20e8f58d91414b4049baf6a8592"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the temporary data folder.  <a href="struct_alis_1_1_tools_1_1_application.html#ae1c4b20e8f58d91414b4049baf6a8592">More...</a><br /></td></tr>
 <tr class="separator:ae1c4b20e8f58d91414b4049baf6a8592"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
-Static Private Attributes</h2></td></tr>
-<tr class="memitem:a7cdb4f4e94d2b04981a285b2e131f023"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_alis_1_1_tools_1_1_application.html#a7cdb4f4e94d2b04981a285b2e131f023">name</a> = &quot;Alis&quot;</td></tr>
-<tr class="memdesc:a7cdb4f4e94d2b04981a285b2e131f023"><td class="mdescLeft">&#160;</td><td class="mdescRight">The name  <a href="struct_alis_1_1_tools_1_1_application.html#a7cdb4f4e94d2b04981a285b2e131f023">More...</a><br /></td></tr>
-<tr class="separator:a7cdb4f4e94d2b04981a285b2e131f023"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Manage application data. </p>
 
 <p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00010">10</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="a7cdb4f4e94d2b04981a285b2e131f023"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7cdb4f4e94d2b04981a285b2e131f023">&#9670;&nbsp;</a></span>name</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Alis.Tools.Application.name = &quot;Alis&quot;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The name </p>
-
-<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00013">13</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="a6a79b0c23f11421eb73059c605e6e6ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a79b0c23f11421eb73059c605e6e6ca">&#9670;&nbsp;</a></span>Name</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Alis.Tools.Application.Name</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Gets or sets the name. </p>
-<p>The name.</p>
-
-<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00017">17</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
-
-</div>
-</div>
 <a id="a26b2418e4074e34ea5685679f146e067"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a26b2418e4074e34ea5685679f146e067">&#9670;&nbsp;</a></span>DesktopFolder</h2>
 
@@ -206,12 +142,12 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Tools.Application.DesktopFolder</td>
+          <td class="memname">string Alis.Tools.Application.DesktopFolder =&gt; (Environment.GetFolderPath(Environment.SpecialFolder.Desktop)).Replace(&quot;\\&quot;, &quot;/&quot;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -219,7 +155,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets the desktop path. </p>
 <p>The desktop path.</p>
 
-<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00025">25</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00014">14</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
 
 </div>
 </div>
@@ -233,12 +169,12 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Tools.Application.DocumentsFolder</td>
+          <td class="memname">string Alis.Tools.Application.DocumentsFolder =&gt; (Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)).Replace(&quot;\\&quot;, &quot;/&quot;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -246,7 +182,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets the documents path. </p>
 <p>The documents path.</p>
 
-<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00032">32</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00018">18</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
 
 </div>
 </div>
@@ -260,12 +196,12 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Tools.Application.AssetsFolder</td>
+          <td class="memname">string Alis.Tools.Application.AssetsFolder =&gt; (Environment.CurrentDirectory + &quot;/Assets&quot;).Replace(&quot;\\&quot;, &quot;/&quot;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -273,7 +209,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets the assets path. </p>
 <p>The assets path.</p>
 
-<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00039">39</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00022">22</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
 
 </div>
 </div>
@@ -287,12 +223,12 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Tools.Application.ProjectFolder</td>
+          <td class="memname">string Alis.Tools.Application.ProjectFolder =&gt; (Environment.CurrentDirectory).Replace(&quot;\\&quot;, &quot;/&quot;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -300,7 +236,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets the project path. </p>
 <p>The project path.</p>
 
-<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00046">46</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00026">26</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
 
 </div>
 </div>
@@ -314,12 +250,12 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Tools.Application.PersistenceDataFolder</td>
+          <td class="memname">string Alis.Tools.Application.PersistenceDataFolder =&gt; (Environment.SystemDirectory + &quot;/Data&quot;).Replace(&quot;\\&quot;, &quot;/&quot;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -327,7 +263,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets the data path. </p>
 <p>The data path.</p>
 
-<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00053">53</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00030">30</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
 
 </div>
 </div>
@@ -341,12 +277,12 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">string Alis.Tools.Application.TempDataFolder</td>
+          <td class="memname">string Alis.Tools.Application.TempDataFolder =&gt; Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Replace(&quot;\\&quot;, &quot;/&quot;)</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -354,7 +290,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets the temporary data folder. </p>
 <p>The temporary data folder.</p>
 
-<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00060">60</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_application_8cs_source.html#l00034">34</a> of file <a class="el" href="_application_8cs_source.html">Application.cs</a>.</p>
 
 </div>
 </div>
@@ -365,7 +301,7 @@ Static Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="namespace_alis_1_1_tools.html">Tools</a></li><li class="navelem"><a class="el" href="struct_alis_1_1_tools_1_1_application.html">Application</a></li>
     <li class="footer">
-      <a>Generated on | Sat May 1 2021 |</a>
+      <a>Generated on | Sun May 2 2021 |</a>
     </li>
   </ul>
 </div>
