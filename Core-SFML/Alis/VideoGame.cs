@@ -18,7 +18,11 @@
         {
             this.Config = config;
             this.SceneManager = sceneManager;
-            Input = new InputSFML(config);
+            InputSFML temp = new InputSFML(config);
+
+            Input = temp;
+            Input.Current = temp;
+
             Render = new RenderSFML(config);
         }
 
@@ -27,7 +31,12 @@
         /// <param name="scenes">The scene.</param>
         public VideoGame(Config config, params Scene[] scenes) : base(config, scenes)
         {
-            Input = new InputSFML(Config);
+            InputSFML temp = new InputSFML(config);
+
+            Input = temp;
+            Input.Current = temp;
+
+
             Render = new RenderSFML(Config);
         }
 

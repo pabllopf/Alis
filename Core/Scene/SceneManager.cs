@@ -7,6 +7,7 @@ namespace Alis.Core
     using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
     using Alis.Tools;
@@ -38,6 +39,8 @@ namespace Alis.Core
         /// <summary>The scenes</summary>
         [NotNull]
         private List<Scene> scenes;
+
+        private List<Scene> temp;
 
         /// <summary>The current scene</summary>
         [NotNull]
@@ -153,27 +156,30 @@ namespace Alis.Core
 
         public static void Reset(string name)
         {
-            List<Scene> temp = LocalData.Load<List<Scene>>("scenesTemp", current.scenes);
-            Scene scene = temp.Find(i => i.Name.Equals(name));
+            Scene scene = current.temp.Find(i => i.Name.Equals(name));
 
-            if (scene != current.currentScene)
+            if (!scene.Equals(current.currentScene))
             {
-                if (scene != null)
-                {
-                    Logger.Warning("Start scene: " + current.currentScene.Name);
-                    current.currentScene.IsActive = false;
-                    current.Exit().Wait();
+               
+                Logger.Warning("Start scene: " + current.currentScene.Name);
+                current.currentScene.IsActive = false;
+                current.Exit().Wait();
 
-                    Render.Current.Clear();
+                Render.Current.Clear();
+                Input.Current.Clear();
 
-                    current.currentScene = scene;
-                    current.currentScene.IsActive = true;
 
-                    current.Awake().Wait();
-                    current.Start().Wait();
+                LocalData.Save("scene", scene);
 
-                    Logger.Warning("Current scene: " + current.currentScene.Name);
-                }
+                scene = LocalData.Load<Scene>("scene");
+
+                scene.IsActive = true;
+                scene.Awake();
+                scene.Start();
+
+
+                current.currentScene = scene;
+                Logger.Warning("Current scene: " + current.currentScene.Name);
             }
         }
 
@@ -294,10 +300,21 @@ namespace Alis.Core
             {
                 current.scenes.ForEach(i => Logger.Warning("Build scene " + i.Name));
 
-                LocalData.Save("scenesTemp", scenes);
+               
 
                 current.scenes ??= new List<Scene>();
-                return new SceneManager(current.scenes.ToArray());
+
+                if (File.Exists(Environment.CurrentDirectory + "/Data/scenesTemp.json")) 
+                {
+                    File.Delete(Environment.CurrentDirectory + "/Data/scenesTemp.json");
+                }
+
+                LocalData.Save("scenesTemp", scenes);
+
+
+                SceneManager sceneManager = new SceneManager(current.scenes.ToArray()); ;
+                sceneManager.temp = LocalData.Load<List<Scene>>("scenesTemp");
+                return sceneManager;
             }
         }
     }

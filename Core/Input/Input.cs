@@ -22,6 +22,12 @@ namespace Alis.Core
 
         #endregion
 
+        private static Input current;
+
+        [JsonIgnore]
+
+        public static Input Current { get => current; set => current = value; }
+
         /// <summary>The keys</summary>
         [AllowNull]
         private static List<Keyboard> keys;
@@ -33,9 +39,9 @@ namespace Alis.Core
         /// <summary> Initializes static members of the <see cref="Input"/> class. </summary>
         static Input() 
         {
-            Keys = new List<Keyboard>();
-            OnPressKey += Input_OnPressKey;
-            OnPressKeyOnce += Input_OnPressKeyOnce;
+            Keys ??= new List<Keyboard>();
+
+            delegates ??= new List<EventHandler<Keyboard>>();
 
             Logger.Info();
         }
@@ -47,16 +53,63 @@ namespace Alis.Core
             this.config = config;
             Logger.Log("Print time: " + config.Time.TimeStep);
             Logger.Info();
+
+            current = this;
         }
 
+        public static List<EventHandler<Keyboard>> delegates;
+
+        private static event EventHandler<Keyboard> onPressKey;
+
         /// <summary>Occurs when [on press key].</summary>
-        public static event EventHandler<Keyboard> OnPressKey;
+        public static event EventHandler<Keyboard> OnPressKey
+        {
+            add
+            {
+                onPressKey += value;
+                delegates.Add(value);
+            }
+            remove 
+            {
+                onPressKey -= value;
+                delegates.Remove(value);
+            }
+        }
+
+        private static event EventHandler<Keyboard> onPressKeyOnce;
+
 
         /// <summary>Occurs when [on press once].</summary>
-        public static event EventHandler<Keyboard> OnPressKeyOnce;
+        public static event EventHandler<Keyboard> OnPressKeyOnce
+        {
+            add
+            {
+                onPressKeyOnce += value;
+                delegates.Add(value);
+            }
+            remove 
+            {
+                onPressKeyOnce -= value;
+                delegates.Remove(value);
+            }
+        }
+
+        private static event EventHandler<Keyboard> onReleaseOnce;
 
         /// <summary>Occurs when [on release once].</summary>
-        public static event EventHandler<Keyboard> OnReleaseOnce;
+        public static event EventHandler<Keyboard> OnReleaseOnce
+        {
+            add
+            {
+                onReleaseOnce += value;
+                delegates.Add(value);
+            }
+            remove
+            {
+                onReleaseOnce -= value;
+                delegates.Remove(value);
+            }
+        }
 
         /// <summary>Gets or sets the keys.</summary>
         /// <value>The keys.</value>
@@ -104,15 +157,15 @@ namespace Alis.Core
 
         /// <summary>Presses the key.</summary>
         /// <param name="key">The key.</param>
-        public void PressKey(Keyboard key) => OnPressKey?.Invoke(this, key);
+        public void PressKey(Keyboard key) => onPressKey?.Invoke(this, key);
 
         /// <summary>Presses the key once.</summary>
         /// <param name="key">The key.</param>
-        public void PressKeyOnce(Keyboard key) => OnPressKeyOnce?.Invoke(this, key);
+        public void PressKeyOnce(Keyboard key) => onPressKeyOnce?.Invoke(this, key);
 
         /// <summary>Releases the key.</summary>
         /// <param name="key">The key.</param>
-        public void ReleaseKey(Keyboard key) => OnReleaseOnce?.Invoke(this, key);
+        public void ReleaseKey(Keyboard key) => onReleaseOnce?.Invoke(this, key);
 
         #region Define Events
 
@@ -125,6 +178,11 @@ namespace Alis.Core
         /// <param name="sender">The sender.</param>
         /// <param name="keyboard">The keyboard.</param>
         private static void Input_OnPressKeyOnce([NotNull] object sender, [NotNull] Keyboard keyboard) => Logger.Info();
+
+        internal void Clear()
+        {
+            delegates.Clear();
+        }
 
         #endregion
     }

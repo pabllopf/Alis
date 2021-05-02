@@ -1,12 +1,14 @@
 ﻿namespace Alis.Core.SFML
 {
     using global::SFML.Window;
+    using Newtonsoft.Json;
     using System;
     using System.Threading.Tasks;
 
     /// <summary>Define the input</summary>
     public class InputSFML : Input
     {
+
         /// <summary>Initializes a new instance of the <see cref="InputSFML" /> class.</summary>
         /// <param name="config">The configuration.</param>
         public InputSFML(Config config) : base(config)
@@ -72,7 +74,7 @@
         {
             return Task.Run(()=> 
             {
-            
+                
             });
         }
 
@@ -85,12 +87,12 @@
                 if (Keyboard.IsKeyPressed(test))
                 {
                     Keys.Add(key);
-                    PressKeyOnce(key);
+                    Current.PressKeyOnce(key);
                 }
 
                 if (Keyboard.IsKeyPressed(test))
                 {
-                    PressKey(key);
+                    Current.PressKey(key);
                 }
 
                 if (!Keyboard.IsKeyPressed(test) && Keys.Contains(key))
@@ -100,7 +102,7 @@
                         Keys.Remove(key);
                     }
 
-                    ReleaseKey(key);
+                    Current.ReleaseKey(key);
                 }
             }
         }

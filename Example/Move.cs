@@ -55,26 +55,25 @@ namespace Example
         {
             if (key.Equals(Keyboard.S))
             {
-                animator.State = 0;
+                //animator.State = 0;
                 transform.YPos += 1 * speed;
             }
 
             if (key.Equals(Keyboard.D))
             {
-                animator.State = 1;
+                //animator.State = 1;
                 transform.XPos += 1 * speed;
             }
 
             if (key.Equals(Keyboard.W))
             {
-                animator.State = 2;
+                //animator.State = 2;
                 transform.YPos -= 1 * speed;
             }
 
             if (key.Equals(Keyboard.A))
             {
-                animator.State = 3;
-                transform.XPos -= 1 * speed;
+                SceneManager.Reset("MainScene");
             }
         }
 
