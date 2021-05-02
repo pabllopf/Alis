@@ -21,6 +21,9 @@ namespace Alis.Core
         [NotNull]
         private string author;
 
+        [NotNull]
+        private bool debug;
+
         /// <summary>The time manager</summary>
         [NotNull]
         private Time time;
@@ -68,12 +71,13 @@ namespace Alis.Core
         /// <param name="name">The name.</param>
         /// <param name="timeManager">The time manager.</param>
         [JsonConstructor]
-        public Config([NotNull] string name, [NotNull] string author, [NotNull] Time time, [NotNull] WindowManager window)
+        public Config([NotNull] string name, [NotNull] string author, [NotNull] Time time, [NotNull] WindowManager window, bool debug)
         {
             this.author = author;
             this.name = name;
             this.time = time;
             this.window = window;
+            this.debug = debug;
             Logger.Info();
         }
 
@@ -101,6 +105,10 @@ namespace Alis.Core
         [JsonProperty("_Window")]
         public WindowManager Window { get => window; set => window = value; }
 
+        [NotNull]
+        [JsonProperty("_Debug")]
+        public bool Debug { get => debug; set => debug = value; }
+
         /// <summary>The builder</summary>
         public static ConfigBuilder Builder() => new ConfigBuilder();
 
@@ -118,6 +126,9 @@ namespace Alis.Core
             /// <summary>The name</summary>
             [AllowNull]
             private string name;
+
+            [AllowNull]
+            private bool debug = false;
 
             /// <summary>The time</summary>
             [AllowNull]
@@ -148,6 +159,15 @@ namespace Alis.Core
                 return current;
             }
 
+            /// <summary>Debugs the specified debug.</summary>
+            /// <param name="debug">if set to <c>true</c> [debug].</param>
+            /// <returns>Return the builder</returns>
+            public ConfigBuilder Debug(bool debug)
+            {
+                current.debug = debug;
+                return current;
+            }
+
             /// <summary>Times the specified time.</summary>
             /// <param name="time">The time.</param>
             /// <returns>Return the builder</returns>
@@ -175,7 +195,7 @@ namespace Alis.Core
                 current.name ??= "Default";
                 current.window ??= new WindowManager(WindowState.Normal, new Vector2(1024, 640));
 
-                return new Config(current.name, current.author, current.time, current.window);
+                return new Config(current.name, current.author, current.time, current.window, current.debug);
             }
         }
     }

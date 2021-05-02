@@ -153,15 +153,14 @@ namespace Alis.Core.SFML
                 RenderSFML.CurrentRenderSFML.Collisions.Add(this);
             }
 
-
-            
             rectangle.Position = new global::SFML.System.Vector2f(transform.Position.X, transform.Position.Y);
+            rectangle.Rotation = GameObject.Transform.Rotation.Y;
 
             if (!isTrigger)
             {
                 for (int i = 0; i < collisions.ToList().Count; i++)
                 {
-                    if (!rectangle.Equals(collisions[i]))
+                    if (!rectangle.Equals(collisions[i].rectangle))
                     {
                         if (collisions[i].isTrigger)
                         {
@@ -232,7 +231,7 @@ namespace Alis.Core.SFML
                             }
                         }
 
-                        if ((!GameObject.Transform.CanGoRight || !GameObject.Transform.CanGoLeft || !GameObject.Transform.CanGoDown || !GameObject.Transform.CanGoUp) && !onCollionEnter) 
+                        if ((!GameObject.Transform.CanGoRight || !GameObject.Transform.CanGoLeft || !GameObject.Transform.CanGoDown || !GameObject.Transform.CanGoUp) && !onCollionEnter)
                         {
                             onCollionEnter = true;
                             GameObject.OnCollionEnter(collisions[i]);
@@ -245,7 +244,6 @@ namespace Alis.Core.SFML
                             GameObject.OnCollionExit(collisions[i]);
                             return;
                         }
-
                     }
                 }
             }
@@ -258,7 +256,7 @@ namespace Alis.Core.SFML
                     {
                         if (collisions.Find(i => (i.rectangle != rectangle) && i.rectangle.GetGlobalBounds().Intersects(rectangle.GetGlobalBounds())) != null)
                         {
-                            GameObject.OnCollionStay(collisions[i]);
+                            GameObject.OnCollionStay(this);
                         }
                     }
                 }

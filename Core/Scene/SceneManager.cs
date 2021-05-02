@@ -151,7 +151,33 @@ namespace Alis.Core
             }
         }
 
-        public void AddScene(Scene scene) 
+        public static void Reset(string name)
+        {
+            List<Scene> temp = LocalData.Load<List<Scene>>("scenesTemp", current.scenes);
+            Scene scene = temp.Find(i => i.Name.Equals(name));
+
+            if (scene != current.currentScene)
+            {
+                if (scene != null)
+                {
+                    Logger.Warning("Start scene: " + current.currentScene.Name);
+                    current.currentScene.IsActive = false;
+                    current.Exit().Wait();
+
+                    Render.Current.Clear();
+
+                    current.currentScene = scene;
+                    current.currentScene.IsActive = true;
+
+                    current.Awake().Wait();
+                    current.Start().Wait();
+
+                    Logger.Warning("Current scene: " + current.currentScene.Name);
+                }
+            }
+        }
+
+        public void AddScene(Scene scene)
         {
             scenes.Add(scene);
         }
@@ -267,6 +293,8 @@ namespace Alis.Core
             public SceneManager Build()
             {
                 current.scenes.ForEach(i => Logger.Warning("Build scene " + i.Name));
+
+                LocalData.Save("scenesTemp", scenes);
 
                 current.scenes ??= new List<Scene>();
                 return new SceneManager(current.scenes.ToArray());

@@ -30,6 +30,7 @@ namespace Example
                 .Config(Config.Builder()
                             .Name("Alis Game")
                             .Author("Pablo Perdomo Falcón")
+                            .Debug(false)
                             .Time(Time.Builder()
                                 .TimeStep(0.01f)
                                 .TimeScale(1.0f)

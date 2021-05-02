@@ -122,23 +122,28 @@
                 }
             }
 
-#if DEBUG
             RenderRectangle();
+
+#if DEBUG
+
 #endif
 
             renderWindow.Display();
         }
 
-        [Conditional("DEBUG")]
+        
         private void RenderRectangle() 
         {
-            if (collisions.Count > 0)
+            if (config.Debug) 
             {
-                foreach (Collision collision in collisions.ToList())
+                if (collisions.Count > 0)
                 {
-                    if (collision != null) 
+                    foreach (Collision collision in collisions.ToList())
                     {
-                        renderWindow.Draw(collision.Rectangle);
+                        if (collision != null)
+                        {
+                            renderWindow.Draw(collision.Rectangle);
+                        }
                     }
                 }
             }
