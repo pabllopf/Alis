@@ -1,6 +1,6 @@
 var class_alis_1_1_core_1_1_transform =
 [
-    [ "Transform", "class_alis_1_1_core_1_1_transform.html#af377a422656d7756aa6f5cc8c5cb7bd3", null ],
+    [ "Transform", "class_alis_1_1_core_1_1_transform.html#a3fe29f84550a1cd58f001792a34c8f2a", null ],
     [ "Transform", "class_alis_1_1_core_1_1_transform.html#ab7da06fdfac50687e38f396a6478a4ea", null ],
     [ "Transform", "class_alis_1_1_core_1_1_transform.html#ac657faf402a4547c33b03d62f9a92bce", null ],
     [ "~Transform", "class_alis_1_1_core_1_1_transform.html#adb5fe29ae17ef4338419c62fce0fdf49", null ],
@@ -12,7 +12,7 @@ var class_alis_1_1_core_1_1_transform =
     [ "icon", "class_alis_1_1_core_1_1_transform.html#a3c6b87bcf85ba707f4b5e9ed55e61aa4", null ],
     [ "position", "class_alis_1_1_core_1_1_transform.html#a0732d12373ed3775dde6ae388340e7f6", null ],
     [ "rotation", "class_alis_1_1_core_1_1_transform.html#a5a87f72d042f42eab42358e77a783480", null ],
-    [ "size", "class_alis_1_1_core_1_1_transform.html#ac2faa57f5e3a6272bae96f8ed57916cd", null ],
+    [ "scale", "class_alis_1_1_core_1_1_transform.html#abdccee9407d5b8faaf5f4c0502121045", null ],
     [ "xPos", "class_alis_1_1_core_1_1_transform.html#a99b8f81656115e34d9d061edf6fe8eec", null ],
     [ "yPos", "class_alis_1_1_core_1_1_transform.html#ad448bf105657d01bf8d23e94427ab020", null ],
     [ "zPos", "class_alis_1_1_core_1_1_transform.html#abf325dcc85f9d7fe5a36ef03aaf48270", null ],
@@ -24,7 +24,7 @@ var class_alis_1_1_core_1_1_transform =
     [ "canGoOut", "class_alis_1_1_core_1_1_transform.html#a9a9d3f90a98fbba18a943c609af9b39c", null ],
     [ "Position", "class_alis_1_1_core_1_1_transform.html#a9efdc08196ef26d99193bd606dc537e2", null ],
     [ "Rotation", "class_alis_1_1_core_1_1_transform.html#a1f61421fbb671293585f333fb2b5ab00", null ],
-    [ "Size", "class_alis_1_1_core_1_1_transform.html#a825e28e4aad7b8d41fa3628eb3ee5979", null ],
+    [ "Scale", "class_alis_1_1_core_1_1_transform.html#a0bad7be4297e39c94e7080cafb209232", null ],
     [ "XPos", "class_alis_1_1_core_1_1_transform.html#a938af2a679e18b097bd2864723a8f4e5", null ],
     [ "YPos", "class_alis_1_1_core_1_1_transform.html#a52489cb384701bf6e4eb3e723dd42187", null ],
     [ "ZPos", "class_alis_1_1_core_1_1_transform.html#a1e07f185f012a7ba1dd3d529ce7e907e", null ],

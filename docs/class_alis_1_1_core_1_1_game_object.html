@@ -136,6 +136,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac7796cb0528c121e1ed2269c22a39c09"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_game_object.html#ac7796cb0528c121e1ed2269c22a39c09">GameObject</a> ([NotNull] string <a class="el" href="class_alis_1_1_core_1_1_game_object.html#a2e3f57fcb6b0325da516d5558815c75c">name</a>, [NotNull] <a class="el" href="class_alis_1_1_core_1_1_transform.html">Transform</a> <a class="el" href="class_alis_1_1_core_1_1_game_object.html#a3520564e92a749313dc6d2e8e938e304">transform</a>, [NotNull] params <a class="el" href="class_alis_1_1_core_1_1_component.html">Component</a>[] <a class="el" href="class_alis_1_1_core_1_1_game_object.html#a61c47feb5b75948a1dae655c32dbfff8">components</a>)</td></tr>
 <tr class="memdesc:ac7796cb0528c121e1ed2269c22a39c09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_alis_1_1_core_1_1_game_object.html" title="Define a game object.">GameObject</a> class.  <a href="class_alis_1_1_core_1_1_game_object.html#ac7796cb0528c121e1ed2269c22a39c09">More...</a><br /></td></tr>
 <tr class="separator:ac7796cb0528c121e1ed2269c22a39c09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2561318215f46f651fdd23a3f56a526"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_game_object.html#ae2561318215f46f651fdd23a3f56a526">OnCollionEnter</a> (<a class="el" href="class_alis_1_1_core_1_1_component.html">Component</a> collision)</td></tr>
+<tr class="separator:ae2561318215f46f651fdd23a3f56a526"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4015e6820b8f32ad112d7324765258f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_game_object.html#a4015e6820b8f32ad112d7324765258f0">OnCollionExit</a> (<a class="el" href="class_alis_1_1_core_1_1_component.html">Component</a> collision)</td></tr>
+<tr class="separator:a4015e6820b8f32ad112d7324765258f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf48318b33213dc2bb23d143a5694df3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_game_object.html#aaf48318b33213dc2bb23d143a5694df3">OnCollionStay</a> (<a class="el" href="class_alis_1_1_core_1_1_component.html">Component</a> collision)</td></tr>
+<tr class="separator:aaf48318b33213dc2bb23d143a5694df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaf8925565a56d881b2ce9f61c13bcf53"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_core_1_1_game_object.html#aaf8925565a56d881b2ce9f61c13bcf53">Contains&lt; T &gt;</a> ()</td></tr>
 <tr class="memdesc:aaf8925565a56d881b2ce9f61c13bcf53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether this instance contains the object.  <a href="class_alis_1_1_core_1_1_game_object.html#aaf8925565a56d881b2ce9f61c13bcf53">More...</a><br /></td></tr>
 <tr class="separator:aaf8925565a56d881b2ce9f61c13bcf53"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -483,6 +489,66 @@ Static Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ae2561318215f46f651fdd23a3f56a526"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2561318215f46f651fdd23a3f56a526">&#9670;&nbsp;</a></span>OnCollionEnter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.GameObject.OnCollionEnter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_alis_1_1_core_1_1_component.html">Component</a>&#160;</td>
+          <td class="paramname"><em>collision</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00223">223</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+
+</div>
+</div>
+<a id="a4015e6820b8f32ad112d7324765258f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4015e6820b8f32ad112d7324765258f0">&#9670;&nbsp;</a></span>OnCollionExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.GameObject.OnCollionExit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_alis_1_1_core_1_1_component.html">Component</a>&#160;</td>
+          <td class="paramname"><em>collision</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00234">234</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+
+</div>
+</div>
+<a id="aaf48318b33213dc2bb23d143a5694df3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf48318b33213dc2bb23d143a5694df3">&#9670;&nbsp;</a></span>OnCollionStay()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.GameObject.OnCollionStay </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_alis_1_1_core_1_1_component.html">Component</a>&#160;</td>
+          <td class="paramname"><em>collision</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00245">245</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+
+</div>
+</div>
 <a id="aaf8925565a56d881b2ce9f61c13bcf53"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaf8925565a56d881b2ce9f61c13bcf53">&#9670;&nbsp;</a></span>Contains&lt; T &gt;()</h2>
 
@@ -515,7 +581,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00262">262</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00296">296</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -535,7 +601,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00278">278</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00314">314</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -577,7 +643,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00297">297</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00335">335</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -612,7 +678,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00322">322</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00360">360</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -632,7 +698,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00338">338</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00376">376</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -668,7 +734,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 </div>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00359">359</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00397">397</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -697,7 +763,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Return the component</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00379">379</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00417">417</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -727,7 +793,7 @@ Static Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00396">396</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00434">434</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -748,7 +814,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Awake this instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00404">404</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00442">442</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -769,7 +835,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Starts this instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00417">417</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00455">455</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -790,7 +856,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Updates this instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00430">430</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00468">468</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -811,7 +877,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Fixed Update this instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00443">443</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00481">481</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -840,7 +906,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Stops this instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00456">456</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00494">494</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -869,7 +935,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>Exits this instance. </p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00466">466</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00504">504</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -1457,7 +1523,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets or sets a value indicating whether this <a class="el" href="class_alis_1_1_core_1_1_game_object.html" title="Define a game object.">GameObject</a> is active. </p>
 <p><code>true</code> if active; otherwise, <code>false</code>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00228">228</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00262">262</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -1484,7 +1550,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets or sets a value indicating whether this instance is static. </p>
 <p><code>true</code> if this instance is static; otherwise, <code>false</code>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00250">250</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00284">284</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>
@@ -1511,7 +1577,7 @@ Static Private Attributes</h2></td></tr>
 <p>Gets the components. </p>
 <p>The components.</p>
 
-<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00256">256</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_game_object_8cs_source.html#l00290">290</a> of file <a class="el" href="_game_object_8cs_source.html">GameObject.cs</a>.</p>
 
 </div>
 </div>

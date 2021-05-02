@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['oncollionenter_1574',['OnCollionEnter',['../class_alis_1_1_core_1_1_component.html#a383b0cdac0e6aaf755887be0d98004c3',1,'Alis::Core::Component']]],
-  ['oncollionexit_1575',['OnCollionExit',['../class_alis_1_1_core_1_1_component.html#a2d17d0e2de60d78b59ebc3586b7f64fd',1,'Alis::Core::Component']]],
-  ['oncollionstay_1576',['OnCollionStay',['../class_alis_1_1_core_1_1_component.html#ae2d387f17174506845e73293dbfecc3a',1,'Alis::Core::Component']]],
+  ['oncollionenter_1574',['OnCollionEnter',['../class_alis_1_1_core_1_1_component.html#a383b0cdac0e6aaf755887be0d98004c3',1,'Alis.Core.Component.OnCollionEnter()'],['../class_alis_1_1_core_1_1_game_object.html#ae2561318215f46f651fdd23a3f56a526',1,'Alis.Core.GameObject.OnCollionEnter()']]],
+  ['oncollionexit_1575',['OnCollionExit',['../class_alis_1_1_core_1_1_component.html#a2d17d0e2de60d78b59ebc3586b7f64fd',1,'Alis.Core.Component.OnCollionExit()'],['../class_alis_1_1_core_1_1_game_object.html#a4015e6820b8f32ad112d7324765258f0',1,'Alis.Core.GameObject.OnCollionExit()']]],
+  ['oncollionstay_1576',['OnCollionStay',['../class_alis_1_1_core_1_1_component.html#ae2d387f17174506845e73293dbfecc3a',1,'Alis.Core.Component.OnCollionStay()'],['../class_alis_1_1_core_1_1_game_object.html#aaf48318b33213dc2bb23d143a5694df3',1,'Alis.Core.GameObject.OnCollionStay()']]],
   ['openassetsview_1577',['OpenAssetsView',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#ad846ea2f5bd292308414338a7c18f79d',1,'Alis::Editor::UI::Widgets::TopMenu']]],
   ['openaudioplayer_1578',['OpenAudioPlayer',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a251be10fc95292455c3820fab0e79c6e',1,'Alis::Editor::UI::Widgets::TopMenu']]],
   ['openconsoleview_1579',['OpenConsoleView',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a22d60895a56e2f25a75c769fa1edd151',1,'Alis::Editor::UI::Widgets::TopMenu']]],

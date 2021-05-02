@@ -11,7 +11,7 @@ var searchData=
   ['checkopenvisualstudio_1461',['CheckOpenVisualStudio',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#a6f3e574efd25f9f587e1733db53e597f',1,'Alis::Editor::UI::Widgets::TopMenu']]],
   ['checkshortcuts_1462',['CheckShortCuts',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#abcd68d08b02664b3f1a136b184981c32',1,'Alis::Editor::UI::Widgets::TopMenu']]],
   ['checkupdate_1463',['CheckUpdate',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu.html#aab54fbc00b08a1351d5192bec8046a97',1,'Alis::Editor::UI::Widgets::TopMenu']]],
-  ['clear_1464',['Clear',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a276b21eaf1752a69c4911e75145610f4',1,'Alis::Editor::UI::Widgets::Console']]],
+  ['clear_1464',['Clear',['../class_alis_1_1_core_1_1_render.html#acc1d3471490da69f9e7bde1e08339161',1,'Alis.Core.Render.Clear()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a276b21eaf1752a69c4911e75145610f4',1,'Alis.Editor.UI.Widgets.Console.Clear()']]],
   ['clearcachedimageresources_1465',['ClearCachedImageResources',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a8f77518c871b2d5fc913f6f2475c7342',1,'ImGuiNET::ImGuiController']]],
   ['clickbutton_1466',['ClickButton',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#abf00b4a7814c5716bf874b2d725a9ef8',1,'Alis::Editor::UI::Widgets::DockSpace']]],
   ['close_1467',['Close',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_file_dialog.html#a70d614d5340e4dfcf96d180ad75d1cc3',1,'Alis.Editor.UI.Widgets.FileDialog.Close()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_project_manager.html#a2f1b7ed2efc9dce3e7d7df562cac4970',1,'Alis.Editor.UI.Widgets.ProjectManager.Close()']]],
