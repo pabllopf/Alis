@@ -278,8 +278,17 @@
         <member name="F:Alis.Tools.Logger.listener">
             <summary>The listener</summary>
         </member>
+        <member name="F:Alis.Tools.Logger.myFile">
+            <summary>My file</summary>
+        </member>
+        <member name="F:Alis.Tools.Logger.writer">
+            <summary>The writer</summary>
+        </member>
         <member name="F:Alis.Tools.Logger.level">
             <summary>The level</summary>
+        </member>
+        <member name="M:Alis.Tools.Logger.#cctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Tools.Logger" /> class.</summary>
         </member>
         <member name="M:Alis.Tools.Logger.Info">
             <summary>Informations this instance.</summary>

@@ -6,15 +6,50 @@ namespace Alis.Tools
 {
     using System;
     using System.Diagnostics;
+    using System.IO;
 
     /// <summary>Debug messages.</summary>
     public static class Logger
     {
         /// <summary>The listener</summary>
-        private static readonly TextWriterTraceListener listener = new(Console.Out);
+        private static readonly TextWriterTraceListener listener;
+
+        /// <summary>My file</summary>
+        private static readonly Stream myFile;
+
+        /// <summary>The writer</summary>
+        private static readonly TextWriterTraceListener writer;
 
         /// <summary>The level</summary>
-        private static readonly Level level = Level.Normal;
+        private static Level level;
+
+        /// <summary>Initializes a new instance of the <see cref="Logger" /> class.</summary>
+        static Logger() 
+        {
+            if (listener == null && writer == null) 
+            {
+                level = (Level)Enum.Parse(level.GetType(), LocalData.Load("Config_Log", Level.Normal.ToString()));
+
+                listener = new(Console.Out);
+
+                string path = Environment.CurrentDirectory + "/logs";
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                myFile = File.Create(path + "/" + DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + ".log");
+
+                writer = new(myFile);
+
+                if (!Trace.Listeners.Contains(listener))
+                {
+                    Trace.Listeners.Add(listener);
+                    Trace.Listeners.Add(writer);
+                    Trace.AutoFlush = true;
+                }
+            }
+        }
 
         /// <summary>Informations this instance.</summary>
         [Conditional("DEBUG")]
@@ -22,49 +57,8 @@ namespace Alis.Tools
         {
             if (level == Level.Verbose || level == Level.Info)
             {
-                Console.WriteLine("[" + DateTime.Now.ToString() + "]" + " INFO " + new StackTrace(true).GetFrame(1).GetMethod().ReflectedType.FullName + "." + new StackTrace(true).GetFrame(1).ToString());
+                Trace.WriteLine("[" + DateTime.Now.ToString() + "]" + " INFO        " + Environment.StackTrace.Split("at")[3]);
             }
-
-
-            /*if (level == Level.Verbose || level == Level.Info)
-            {
-                if (!Trace.Listeners.Contains(listener))
-                {
-                    Trace.Listeners.Add(listener);
-                    Trace.AutoFlush = true;
-                }
-
-                StackTrace stack = new StackTrace(true);
-
-                string date = "[" + DateTime.Now.ToString() + "]";
-                string type = "";
-                string fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + "." + stack.GetFrame(1).GetMethod().Name;
-                string fileName = Path.GetFileName(stack.GetFrame(1).GetFileName());
-                string line = stack.GetFrame(1).GetFileLineNumber().ToString();
-
-                string param = "";
-                ParameterInfo[] parameters = stack.GetFrame(1).GetMethod().GetParameters();
-                for (int i = 0; i < parameters.Length; i++)
-                {
-                    param += parameters[i].ParameterType + " " + parameters[i].Name + ((i < parameters.Length - 1) ? ", " : "");
-                }
-
-                type = stack.GetFrame(1).GetMethod().IsConstructor ? "CONSTRUCTOR" :
-                       stack.GetFrame(1).GetMethod().Name.Contains("On") ? "EVENT      " : "METHOD     ";
-
-
-                if (level == Level.Verbose)
-                {
-                    fullName = fullName.Replace(".ctor", "Contructor");
-                    Trace.WriteLine(date + " " + type + " " + fullName + "(" + param + ")" + " File:" + fileName + " Line:" + line);
-                }
-
-                if (level == Level.Info)
-                {
-                    fullName = fullName.Replace(".ctor", "Contructor");
-                    Trace.WriteLine(date + " " + type + " " + fullName + "(" + param + ")");
-                }
-            }*/
         }
 
         /// <summary>Logs the specified message.</summary>
@@ -74,21 +68,9 @@ namespace Alis.Tools
         {
             if (level == Level.Verbose || level == Level.Info || level == Level.Normal)
             {
-                if (!Trace.Listeners.Contains(listener))
-                {
-                    Trace.Listeners.Add(listener);
-                    Trace.AutoFlush = true;
-                }
-
                 StackTrace stack = new(true);
-
-                string date = "[" + DateTime.Now.ToString() + "]";
-                string type = "LOG        ";
                 string fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + "." + stack.GetFrame(1).GetMethod().Name;
-
-                fullName = fullName.Replace(".ctor", "Contructor");
-
-                Trace.WriteLine(date + " " + type + " " + fullName + "()" + " | " + message);
+                Trace.WriteLine("[" + DateTime.Now.ToString() + "]" + " " + "LOG        " + " " + fullName + "()" + " | " + message);
             }
         }
 
@@ -99,22 +81,11 @@ namespace Alis.Tools
         {
             if (level == Level.Verbose || level == Level.Info || level == Level.Normal)
             {
-                if (!Trace.Listeners.Contains(listener))
-                {
-                    Trace.Listeners.Add(listener);
-                    Trace.AutoFlush = true;
-                }
-
                 StackTrace stack = new(true);
-
-                string date = "[" + DateTime.Now.ToString() + "]";
-                string type = "WARNING    ";
                 string fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + "." + stack.GetFrame(1).GetMethod().Name;
 
-                fullName = fullName.Replace(".ctor", "Contructor");
-
                 Console.BackgroundColor = ConsoleColor.DarkYellow;
-                Trace.WriteLine(date + " " + type + " " + fullName + "()" + " | " + message);
+                Trace.WriteLine("[" + DateTime.Now.ToString() + "]" + " " + "WARNING      " + " " + fullName + "()" + " | " + message);
                 Console.ResetColor();
             }
         }
@@ -123,22 +94,12 @@ namespace Alis.Tools
         /// <param name="message">The message.</param>
         public static Exception Error(string message)
         {
-            if (!Trace.Listeners.Contains(listener))
-            {
-                Trace.Listeners.Add(listener);
-                Trace.AutoFlush = true;
-            }
-
             StackTrace stack = new(true);
-
-            string date = "[" + DateTime.Now.ToString() + "]";
-            string type = "ERROR      ";
             string fullName = stack.GetFrame(1).GetMethod().ReflectedType.FullName + "." + stack.GetFrame(1).GetMethod().Name;
 
-            fullName = fullName.Replace(".ctor", "Contructor");
-
             Console.BackgroundColor = ConsoleColor.DarkRed;
-            string result = date + " " + type + " " + fullName + " | " + message + "\nERROR " + Environment.StackTrace.Trim();
+
+            string result = "[" + DateTime.Now.ToString() + "]" + " " + "ERROR        " + " " + fullName + "()" + " | " + message + "\nERROR " + Environment.StackTrace.Trim();
             Trace.WriteLine(result);
             Console.ResetColor();
 

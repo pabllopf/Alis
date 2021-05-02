@@ -304,6 +304,15 @@
             <summary>Windows the moved.</summary>
             <param name="obj">The object.</param>
         </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_FocusLost">
+            <summary>Windows the focus lost.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_FocusGained">
+            <summary>Windows the focus gained.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Hidden">
+            <summary>Windows the hidden.</summary>
+        </member>
         <member name="M:Alis.Editor.UI.MainWindow.LoadDarkStyle">
             <summary>Loads the style.</summary>
         </member>

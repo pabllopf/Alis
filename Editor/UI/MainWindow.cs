@@ -75,16 +75,18 @@ namespace Alis.Editor.UI
             GraphicsDeviceOptions graphicsDeviceOptions;
             try
             {
-#if DEBUG
                 graphicsDeviceOptions = new GraphicsDeviceOptions(debug: true, swapchainDepthFormat: null, syncToVerticalBlank: true);
+#if DEBUG
+                //graphicsDeviceOptions = new GraphicsDeviceOptions(debug: true, swapchainDepthFormat: null, syncToVerticalBlank: true);
 #else
-                graphicsDeviceOptions = new GraphicsDeviceOptions(debug: false, swapchainDepthFormat: null, syncToVerticalBlank: true);
+                //graphicsDeviceOptions = new GraphicsDeviceOptions(debug: false, swapchainDepthFormat: null, syncToVerticalBlank: true);
 #endif
             }
             catch (Exception e)
             {
                 throw Logger.Error("Faied to create Graphics Device Options of Main Window. " + e.Message);
             }
+
 
             Logger.Log("Created " + graphicsDeviceOptions.ToString());
 
@@ -118,6 +120,8 @@ namespace Alis.Editor.UI
             {
                 throw Logger.Error("Faied to create ImGuiController of Main Window. " + e.Message);
             }
+
+           
 
             Logger.Log("Created ImGuiController.");
 
@@ -159,6 +163,12 @@ namespace Alis.Editor.UI
 
             window.Moved += Window_Moved;
             Logger.Log("Created Event window.Moved");
+
+            window.Hidden += Window_Hidden;
+
+            window.FocusGained += Window_FocusGained;
+
+            window.FocusLost += Window_FocusLost;
 
             deltaSeconds = 1.0f / 60.0f;
             Logger.Log("Delta Seconds: " + deltaSeconds);
@@ -244,6 +254,15 @@ namespace Alis.Editor.UI
         /// <summary>Windows the moved.</summary>
         /// <param name="obj">The object.</param>
         private void Window_Moved(Point obj) => Logger.Info();
+
+        /// <summary>Windows the focus lost.</summary>
+        private void Window_FocusLost() => Logger.Info();
+
+        /// <summary>Windows the focus gained.</summary>
+        private void Window_FocusGained() => Logger.Info();
+
+        /// <summary>Windows the hidden.</summary>
+        private void Window_Hidden() => Logger.Info();
 
         /// <summary>Loads the style.</summary>
         private ImGuiStylePtr LoadDarkStyle()

@@ -64,6 +64,7 @@ namespace ImGuiNET
             _windowHeight = height;
 
             IntPtr context = ImGui.CreateContext();
+            
             ImGui.SetCurrentContext(context);
             var fonts = ImGui.GetIO().Fonts;
 
@@ -90,7 +91,7 @@ namespace ImGuiNET
             }
 
 
-            ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable | ImGuiConfigFlags.NavEnableKeyboard;
+            ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable | ImGuiConfigFlags.NavEnableKeyboard ;
 
             /////////////
 
