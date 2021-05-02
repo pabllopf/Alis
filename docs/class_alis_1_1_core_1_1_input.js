@@ -14,12 +14,19 @@ var class_alis_1_1_core_1_1_input =
     [ "ReleaseKey", "class_alis_1_1_core_1_1_input.html#aeaea7b07e10f869bb0f5742c33ca84a0", null ],
     [ "Input_OnPressKey", "class_alis_1_1_core_1_1_input.html#aa83bf732f3d07928d405cf99bbafbe67", null ],
     [ "Input_OnPressKeyOnce", "class_alis_1_1_core_1_1_input.html#a63676693d7dc30446662d557c646f989", null ],
+    [ "Clear", "class_alis_1_1_core_1_1_input.html#af52774112ce4d3c0048c30f71fe51e10", null ],
     [ "ErrorMessage", "class_alis_1_1_core_1_1_input.html#a75865bad8c0b7a4b2ace822592028d47", null ],
+    [ "current", "class_alis_1_1_core_1_1_input.html#a96088d881a0f50bdd131733290a315b8", null ],
     [ "keys", "class_alis_1_1_core_1_1_input.html#a2ef1b75d83bb65c4d05ace1d0a24bc38", null ],
     [ "config", "class_alis_1_1_core_1_1_input.html#ad786ea939df86c19362fc87890a07910", null ],
+    [ "delegates", "class_alis_1_1_core_1_1_input.html#a194b4041a5b0e83ae0c9869c4fc95abc", null ],
     [ "Config", "class_alis_1_1_core_1_1_input.html#ae3a0a969e9a35e028b5b3619a5c9ace3", null ],
-    [ "Keys", "class_alis_1_1_core_1_1_input.html#a59f66fb3f2436c0218ffec2e537a800f", null ],
+    [ "Current", "class_alis_1_1_core_1_1_input.html#a77eeae7445ea26c60a9eb229508bd56f", null ],
     [ "OnPressKey", "class_alis_1_1_core_1_1_input.html#a93e0be103fba618ab47c5b51db992636", null ],
     [ "OnPressKeyOnce", "class_alis_1_1_core_1_1_input.html#a16d56472c213f7a38600be4e59c41067", null ],
-    [ "OnReleaseOnce", "class_alis_1_1_core_1_1_input.html#a6290051e5aa3380fcb0c65f9d1e08194", null ]
+    [ "OnReleaseOnce", "class_alis_1_1_core_1_1_input.html#a6290051e5aa3380fcb0c65f9d1e08194", null ],
+    [ "Keys", "class_alis_1_1_core_1_1_input.html#a59f66fb3f2436c0218ffec2e537a800f", null ],
+    [ "onPressKey", "class_alis_1_1_core_1_1_input.html#a4631f6d59db9c99e41b4619bca76750a", null ],
+    [ "onPressKeyOnce", "class_alis_1_1_core_1_1_input.html#a235b213d55aaa3f5fd4111e6c7be0b4f", null ],
+    [ "onReleaseOnce", "class_alis_1_1_core_1_1_input.html#a9aeed04c8db54c0b357c0c930f8b12e5", null ]
 ];
