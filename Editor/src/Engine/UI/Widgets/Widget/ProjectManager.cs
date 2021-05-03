@@ -408,6 +408,19 @@ namespace Alis.Editor.UI.Widgets
             File.WriteAllText(dir + "/" + project.Name + ".sln", solutionFile);
             Logger.Log("Created .sln");
 
+            if (!Directory.Exists(dir + "/Tests")) 
+            {
+                Directory.CreateDirectory(dir + "/Tests");
+            }
+
+            string testFile = File.ReadAllText((Environment.CurrentDirectory + "/resources/testcs.txt").Replace("Resources", "resources")).Replace("EXAMPLE__", "../" + project.Name + ".csproj");
+            File.WriteAllText(dir + "/Tests/" + "Tests.csproj", testFile);
+            Logger.Log("Created .test");
+
+            string unitFile = File.ReadAllText((Environment.CurrentDirectory + "/resources/UnitTest1.txt").Replace("Resources", "resources"));
+            File.WriteAllText(dir + "/Tests/" + "UnitTest.cs", unitFile);
+            Logger.Log("Created unittest.cs");
+
             string program = File.ReadAllText((Environment.CurrentDirectory + "/resources/Program.txt").Replace("Resources", "resources"));
             File.WriteAllText(dir + "/" + "Program" + ".cs", program);
             Logger.Log("Created Program.cs");

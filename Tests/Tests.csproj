@@ -35,8 +35,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Editor\Editor.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\Core-SFML\" />
-  </ItemGroup>
 
 </Project>

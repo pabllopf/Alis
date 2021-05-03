@@ -1131,7 +1131,6 @@ namespace Alis.Editor.UI.Widgets
 
         #endregion
 
-
         #region Directory Copy 
 
         /// <summary>
