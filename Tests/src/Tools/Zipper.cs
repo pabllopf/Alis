@@ -57,9 +57,9 @@ namespace Tools
                 Thread.Sleep(1000);
 
                 string fileToWork = Environment.CurrentDirectory + "/temp1/" + "/Zip/" + "Test3.json";
-                if (!File.Exists(fileToWork))
+                using (var stream = File.Create(fileToWork))
                 {
-                    File.Create(fileToWork);
+                    // Use stream
                 }
 
                 Thread.Sleep(1000);
@@ -97,13 +97,61 @@ namespace Tools
 
                 Thread.Sleep(1500);
 
-                string fileToWork = Environment.CurrentDirectory + "/uZip/" + "Test.json";
-                if (!File.Exists(fileToWork))
+                string fileToWork = Environment.CurrentDirectory  + "/uZip/" + "Test11.json";
+                using (var stream = File.Create(fileToWork))
                 {
-                    File.Create(fileToWork);
+                    // Use stream
                 }
 
+                Thread.Sleep(500);
+
                 Thread.Sleep(1500);
+
+                Alis.Tools.Zipper.Zip(pathWork);
+
+                Assert.IsTrue(File.Exists(fileZip));
+            });
+        }
+
+
+        [Test]
+        public void UnZip_Multiple_Files()
+        {
+            Assert.Multiple(() =>
+            {
+                string zipName = "/uZip.zip";
+                string fileZip = Environment.CurrentDirectory + "/temp3/" + zipName;
+                string pathWork = Environment.CurrentDirectory + "/temp3/" + "/uZip";
+
+                if (!Directory.Exists(pathWork))
+                {
+                    Directory.CreateDirectory(pathWork);
+                }
+
+                Thread.Sleep(500);
+
+                if (File.Exists(fileZip))
+                {
+                    File.Delete(fileZip);
+                }
+
+                Thread.Sleep(500);
+
+                string fileToWork = Environment.CurrentDirectory + "/temp3/" + "/uZip/" + "Test11.json";
+                using (var stream = File.Create(fileToWork))
+                {
+                    // Use stream
+                }
+
+                Thread.Sleep(500);
+
+                string fileToWork2 = Environment.CurrentDirectory + "/temp3/" + "/uZip/" + "Test22.json";
+                using (var stream = File.Create(fileToWork2))
+                {
+                    // Use stream
+                }
+
+                Thread.Sleep(500);
 
                 Alis.Tools.Zipper.Zip(pathWork);
 
