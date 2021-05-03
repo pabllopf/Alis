@@ -1,6 +1,6 @@
 var namespace_alis_1_1_tools =
 [
-    [ "Application", "struct_alis_1_1_tools_1_1_application.html", "struct_alis_1_1_tools_1_1_application" ],
+    [ "Application", "class_alis_1_1_tools_1_1_application.html", "class_alis_1_1_tools_1_1_application" ],
     [ "Asset", "class_alis_1_1_tools_1_1_asset.html", "class_alis_1_1_tools_1_1_asset" ],
     [ "Crypted", "class_alis_1_1_tools_1_1_crypted.html", "class_alis_1_1_tools_1_1_crypted" ],
     [ "Language", "class_alis_1_1_tools_1_1_language.html", "class_alis_1_1_tools_1_1_language" ],

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['2_2e_20editor_2896',['2. Editor',['../md__api_doc__pages_2_8_editor.html',1,'']]]
+  ['2_2e_20editor_2879',['2. Editor',['../md__api_doc__pages_2_8_editor.html',1,'']]]
 ];

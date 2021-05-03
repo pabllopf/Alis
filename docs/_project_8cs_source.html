@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Alis Framework: Editor/Config/Project.cs Source File</title>
+<title>Alis Framework: Editor/src/Engine/Config/Project.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -212,12 +212,14 @@ $(document).ready(function(){initNavTree('_project_8cs_source.html',''); initRes
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        </div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        [JsonIgnore]</div>
 <div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_project.html#aa3319d688d8a971d15b21c6d0f40b4a6">  136</a></span>&#160;        <span class="keyword">public</span> Assembly <a class="code" href="class_alis_1_1_editor_1_1_project.html#aa3319d688d8a971d15b21c6d0f40b4a6">DLL1</a> { <span class="keyword">get</span> =&gt; <a class="code" href="class_alis_1_1_editor_1_1_project.html#aae135300ddaec5043e4b8bc606f5d7c5">DLL</a>; <span class="keyword">set</span> =&gt; <a class="code" href="class_alis_1_1_editor_1_1_project.html#aae135300ddaec5043e4b8bc606f5d7c5">DLL</a> = value; }</div>
-<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_project.html#a52e7569e65c4317e880aa781c4f5b2b3">  137</a></span>&#160;        <span class="keyword">public</span> AssemblyLoadContext <a class="code" href="class_alis_1_1_editor_1_1_project.html#a52e7569e65c4317e880aa781c4f5b2b3">Context</a> { <span class="keyword">get</span> =&gt; <a class="code" href="class_alis_1_1_editor_1_1_project.html#a81eb6c4111bbb9c7eecaa1fc79444e59">context</a>; <span class="keyword">set</span> =&gt; <a class="code" href="class_alis_1_1_editor_1_1_project.html#a81eb6c4111bbb9c7eecaa1fc79444e59">context</a> = value; }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_project.html#a3999f9dea224bc8dba33c57cb8883834">  142</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_project.html#a3999f9dea224bc8dba33c57cb8883834">Project_OnChange</a>(<span class="keywordtype">object</span> sender, <span class="keywordtype">bool</span> e) =&gt; <a class="code" href="class_alis_1_1_tools_1_1_logger.html">Logger</a>.<a class="code" href="class_alis_1_1_tools_1_1_logger.html#a1a0588f68577005db5d2ed86ec21635c">Info</a>();</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        [JsonIgnore]</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_project.html#a52e7569e65c4317e880aa781c4f5b2b3">  139</a></span>&#160;        <span class="keyword">public</span> AssemblyLoadContext <a class="code" href="class_alis_1_1_editor_1_1_project.html#a52e7569e65c4317e880aa781c4f5b2b3">Context</a> { <span class="keyword">get</span> =&gt; <a class="code" href="class_alis_1_1_editor_1_1_project.html#a81eb6c4111bbb9c7eecaa1fc79444e59">context</a>; <span class="keyword">set</span> =&gt; <a class="code" href="class_alis_1_1_editor_1_1_project.html#a81eb6c4111bbb9c7eecaa1fc79444e59">context</a> = value; }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="class_alis_1_1_editor_1_1_project.html#a3999f9dea224bc8dba33c57cb8883834">  144</a></span>&#160;        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_alis_1_1_editor_1_1_project.html#a3999f9dea224bc8dba33c57cb8883834">Project_OnChange</a>(<span class="keywordtype">object</span> sender, <span class="keywordtype">bool</span> e) =&gt; <a class="code" href="class_alis_1_1_tools_1_1_logger.html">Logger</a>.<a class="code" href="class_alis_1_1_tools_1_1_logger.html#a1a0588f68577005db5d2ed86ec21635c">Info</a>();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="anamespace_alis_1_1_editor_html"><div class="ttname"><a href="namespace_alis_1_1_editor.html">Alis.Editor</a></div><div class="ttdef"><b>Definition:</b> <a href="_architecture_8cs_source.html#l00005">Architecture.cs:6</a></div></div>
@@ -247,7 +249,7 @@ $(document).ready(function(){initNavTree('_project_8cs_source.html',''); initRes
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_adeb9e6cb2f8b2a40f98e020865e5d434"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#adeb9e6cb2f8b2a40f98e020865e5d434">Alis.Editor.Project.libPath</a></div><div class="ttdeci">string libPath</div><div class="ttdoc">The library path</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00046">Project.cs:46</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html">Alis.Tools.Logger</a></div><div class="ttdoc">Debug messages.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00012">Logger.cs:13</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_a3e9d2ec161f8fc638e6eb9c76d1c4974"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#a3e9d2ec161f8fc638e6eb9c76d1c4974">Alis.Editor.Project.name</a></div><div class="ttdeci">string name</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00026">Project.cs:26</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_a52e7569e65c4317e880aa781c4f5b2b3"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#a52e7569e65c4317e880aa781c4f5b2b3">Alis.Editor.Project.Context</a></div><div class="ttdeci">AssemblyLoadContext Context</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00137">Project.cs:137</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_a52e7569e65c4317e880aa781c4f5b2b3"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#a52e7569e65c4317e880aa781c4f5b2b3">Alis.Editor.Project.Context</a></div><div class="ttdeci">AssemblyLoadContext Context</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00139">Project.cs:139</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_a84d5646c3fce9b3b33b064f2dc548b61"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#a84d5646c3fce9b3b33b064f2dc548b61">Alis.Editor.Project.AssetPath</a></div><div class="ttdeci">string AssetPath</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00124">Project.cs:124</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_a4f7df95c0af697adca26a35c8f19ddf4"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#a4f7df95c0af697adca26a35c8f19ddf4">Alis.Editor.Project.Get</a></div><div class="ttdeci">static Project Get()</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00101">Project.cs:101</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_editor_1_1_project_html_a761a009001269a66e24158c719818e5a"><div class="ttname"><a href="class_alis_1_1_editor_1_1_project.html#a761a009001269a66e24158c719818e5a">Alis.Editor.Project.VideoGame</a></div><div class="ttdeci">static VideoGame VideoGame</div><div class="ttdoc">Gets or sets the video game.</div><div class="ttdef"><b>Definition:</b> <a href="_project_8cs_source.html#l00121">Project.cs:121</a></div></div>
@@ -257,9 +259,9 @@ $(document).ready(function(){initNavTree('_project_8cs_source.html',''); initRes
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_14eca4e58e6d71e3a9859288c1bd2735.html">Editor</a></li><li class="navelem"><a class="el" href="dir_e58729a554bc576053725053afc60dcf.html">Config</a></li><li class="navelem"><b>Project.cs</b></li>
+    <li class="navelem"><a class="el" href="dir_14eca4e58e6d71e3a9859288c1bd2735.html">Editor</a></li><li class="navelem"><a class="el" href="dir_cb9d7bc1d4236d5a4f40f54389a1869a.html">src</a></li><li class="navelem"><a class="el" href="dir_90c614fc3649c2d4a6e27796a017b052.html">Engine</a></li><li class="navelem"><a class="el" href="dir_64df8b14a8264b9a934e9f3d610b78ee.html">Config</a></li><li class="navelem"><b>Project.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun May 2 2021 |</a>
+      <a>Generated on | Mon May 3 2021 |</a>
     </li>
   </ul>
 </div>
