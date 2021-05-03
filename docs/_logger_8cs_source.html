@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Alis Framework: Tools/Logger/Logger.cs Source File</title>
+<title>Alis Framework: Tools/src/Logger/Logger.cs Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -150,7 +150,7 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="class_alis_1_1_tools_1_1_logger.html#a926bf88d5c60d22bd6e14fdf6ef3d1ef">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Verbose || <a class="code" href="class_alis_1_1_tools_1_1_logger.html#a926bf88d5c60d22bd6e14fdf6ef3d1ef">level</a> == <a class="code" href="namespace_alis_1_1_tools.html#a97fc70faa936b2e7b751b4d67cd2e75a">Level</a>.Info)</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                Trace.WriteLine(<span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span> + <span class="stringliteral">&quot; INFO        &quot;</span> + Environment.StackTrace.Split(<span class="stringliteral">&quot;at&quot;</span>)[3]);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                Trace.WriteLine(<span class="stringliteral">&quot;[&quot;</span> + DateTime.Now.ToString() + <span class="stringliteral">&quot;]&quot;</span> + <span class="stringliteral">&quot; INFO        &quot;</span> + Environment.StackTrace.Split(<span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;t&#39;</span>)[3]);</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            }</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
@@ -206,14 +206,14 @@ $(document).ready(function(){initNavTree('_logger_8cs_source.html',''); initResi
 <div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html">Alis.Tools.Logger</a></div><div class="ttdoc">Debug messages.</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00012">Logger.cs:13</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html_ac7eeda4477fe23ed9c6f14ec1b3c1d35"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html#ac7eeda4477fe23ed9c6f14ec1b3c1d35">Alis.Tools.Logger.listener</a></div><div class="ttdeci">static readonly TextWriterTraceListener listener</div><div class="ttdoc">The listener</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00015">Logger.cs:15</a></div></div>
 <div class="ttc" id="aclass_alis_1_1_tools_1_1_logger_html_a915f443e2cee774b61cfd15a141c39dc"><div class="ttname"><a href="class_alis_1_1_tools_1_1_logger.html#a915f443e2cee774b61cfd15a141c39dc">Alis.Tools.Logger.myFile</a></div><div class="ttdeci">static readonly Stream myFile</div><div class="ttdoc">My file</div><div class="ttdef"><b>Definition:</b> <a href="_logger_8cs_source.html#l00018">Logger.cs:18</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_tools_1_1_local_data_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_local_data.html">Alis.Tools.LocalData</a></div><div class="ttdoc">Manage the local data game.</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8cs_source.html#l00014">LocalData.cs:15</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_tools_1_1_local_data_html"><div class="ttname"><a href="class_alis_1_1_tools_1_1_local_data.html">Alis.Tools.LocalData</a></div><div class="ttdoc">Manage the local data game.</div><div class="ttdef"><b>Definition:</b> <a href="_local_data_8cs_source.html#l00013">LocalData.cs:14</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_tools_html"><div class="ttname"><a href="namespace_alis_1_1_tools.html">Alis.Tools</a></div><div class="ttdef"><b>Definition:</b> <a href="_application_8cs_source.html#l00005">Application.cs:6</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><a class="el" href="dir_99b6019fcaf33f6b3499ff3e6f62917c.html">Logger</a></li><li class="navelem"><b>Logger.cs</b></li>
+    <li class="navelem"><a class="el" href="dir_7e461070e7b716e896e0d97cd6a82321.html">Tools</a></li><li class="navelem"><a class="el" href="dir_a929b3d45fb103ee2796d79ba35bd107.html">src</a></li><li class="navelem"><a class="el" href="dir_5bde547760570c729576cb33b86e456e.html">Logger</a></li><li class="navelem"><b>Logger.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun May 2 2021 |</a>
+      <a>Generated on | Mon May 3 2021 |</a>
     </li>
   </ul>
 </div>
