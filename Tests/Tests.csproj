@@ -33,9 +33,10 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
     <ProjectReference Include="..\Editor\Editor.csproj" />
-    <ProjectReference Include="..\Tools\Tools.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\Core-SFML\" />
   </ItemGroup>
 
 </Project>

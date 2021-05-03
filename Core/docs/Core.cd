@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Alis.Core.Game">
+    <Position X="6.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQHAAAYQiAAAADAEAAAAAAAEAAQABBAIHIBBAEQAEY=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Config" />
+      <Property Name="Render" />
+      <Property Name="Input" />
+      <Property Name="SceneManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Alis.Core.Time">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACCAAAAgAAABAAAAAYAAAAIABAACAAEAAAABA=</HashCode>
+      <FileName>Config\Time.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Scene">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Core.Scene.SceneBuilder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scene\Scene.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>ARbAAAAEAiACBAAAUAAAJBwiAAAMAAgQIAAAAAAUIEA=</HashCode>
+      <FileName>Scene\Scene.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="GameObjects" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Alis.Core.SceneManager">
+    <Position X="10.5" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Core.SceneManager.SceneManagerBuilder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scene\SceneManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAQAgAAIAiAAAkgAgAAIAIgAgAAQAAAAIEAAAAAAAkA=</HashCode>
+      <FileName>Scene\SceneManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component">
+    <Position X="20" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACQAAAAAAiAAAAAAEAABCAQAAAAAAAAAIgAgIAIABEA=</HashCode>
+      <FileName>Scene\GameObject\Component\Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.GameObject">
+    <Position X="17.5" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Core.GameObject.GameObjectBuilder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Scene\GameObject\GameObject.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAYBAAgAAjAIAIBgEACAABxIEBEGCAAIJAAAAAAQKEg=</HashCode>
+      <FileName>Scene\GameObject\GameObject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Transform" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Components" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Alis.Core.Transform">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEBCQQAAAEAkKAwAIGgIAABgDCEAIABAAAGBRAAAgw=</HashCode>
+      <FileName>Scene\GameObject\Transform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Render">
+    <Position X="8.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAQiAAAAAAAACABAAAgAAABABAIAAAAAAAAEA=</HashCode>
+      <FileName>Render\Render.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Input">
+    <Position X="1.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQCAAAYAiAYAAAACAQAAAAAAAAAAAAgIBAAAAACAEA=</HashCode>
+      <FileName>Input\Input.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Config">
+    <Position X="3.75" Y="2.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Core.Config.ConfigBuilder" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Config\Config.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAwAAAAEAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Config\Config.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -69,6 +69,8 @@ namespace Example
             {
                 //animator.State = 2;
                 transform.YPos -= 1 * speed;
+
+                SceneManager.Load(1);
             }
 
             if (key.Equals(Keyboard.A))

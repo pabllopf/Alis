@@ -16,6 +16,69 @@
         <member name="F:Alis.Editor.Architecture.X86">
             <summary>The 32 architecture</summary>
         </member>
+        <member name="T:Alis.Editor.Graphics">
+            <summary>Define the compatible graphics</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.OpenGL">
+            <summary>The graphics 1</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Directx11">
+            <summary>The graphics 2</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Metal">
+            <summary>The graphics 3</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Vulkan">
+            <summary>The graphics 4</summary>
+        </member>
+        <member name="T:Alis.Editor.Info">
+            <summary>Info context </summary>
+        </member>
+        <member name="F:Alis.Editor.Info.platform">
+            <summary>The platform</summary>
+        </member>
+        <member name="F:Alis.Editor.Info.architecture">
+            <summary>The architecture</summary>
+        </member>
+        <member name="F:Alis.Editor.Info.graphics">
+            <summary>The graphics</summary>
+        </member>
+        <member name="M:Alis.Editor.Info.#ctor(Alis.Editor.Platform,Alis.Editor.Architecture,Alis.Editor.Graphics)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Info" /> class.</summary>
+            <param name="platform">The platform.</param>
+            <param name="architecture">The architecture.</param>
+            <param name="graphics">The graphics.</param>
+        </member>
+        <member name="M:Alis.Editor.Info.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Info" /> class.</summary>
+        </member>
+        <member name="P:Alis.Editor.Info.Platform">
+            <summary>Gets or sets the platform.</summary>
+            <value>The platform.</value>
+        </member>
+        <member name="P:Alis.Editor.Info.Architecture">
+            <summary>Gets or sets the architecture.</summary>
+            <value>The architecture.</value>
+        </member>
+        <member name="P:Alis.Editor.Info.Graphics">
+            <summary>Gets or sets the graphics.</summary>
+            <value>The graphics.</value>
+        </member>
+        <member name="T:Alis.Editor.Platform">
+            <summary>Platform enabled to use the engine.</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Unsupported">
+            <summary>The unsupported</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Windows">
+            <summary>The windows</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.MacOS">
+            <summary>The mac</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Linux">
+            <summary>The linux</summary>
+        </member>
         <member name="T:Alis.Editor.Project">
             <summary>Project define.</summary>
         </member>
@@ -106,77 +169,6 @@
         <member name="M:Alis.Editor.Engine.Start">
             <summary>Starts this instance.</summary>
             <returns>Return false or true to indicate the exit value</returns>
-        </member>
-        <member name="T:Alis.Editor.Graphics">
-            <summary>Define the compatible graphics</summary>
-        </member>
-        <member name="F:Alis.Editor.Graphics.OpenGL">
-            <summary>The graphics 1</summary>
-        </member>
-        <member name="F:Alis.Editor.Graphics.Directx11">
-            <summary>The graphics 2</summary>
-        </member>
-        <member name="F:Alis.Editor.Graphics.Metal">
-            <summary>The graphics 3</summary>
-        </member>
-        <member name="F:Alis.Editor.Graphics.Vulkan">
-            <summary>The graphics 4</summary>
-        </member>
-        <member name="T:Alis.Editor.Info">
-            <summary>Info context </summary>
-        </member>
-        <member name="F:Alis.Editor.Info.platform">
-            <summary>The platform</summary>
-        </member>
-        <member name="F:Alis.Editor.Info.architecture">
-            <summary>The architecture</summary>
-        </member>
-        <member name="F:Alis.Editor.Info.graphics">
-            <summary>The graphics</summary>
-        </member>
-        <member name="M:Alis.Editor.Info.#ctor(Alis.Editor.Platform,Alis.Editor.Architecture,Alis.Editor.Graphics)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Info" /> class.</summary>
-            <param name="platform">The platform.</param>
-            <param name="architecture">The architecture.</param>
-            <param name="graphics">The graphics.</param>
-        </member>
-        <member name="M:Alis.Editor.Info.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Info" /> class.</summary>
-        </member>
-        <member name="P:Alis.Editor.Info.Platform">
-            <summary>Gets or sets the platform.</summary>
-            <value>The platform.</value>
-        </member>
-        <member name="P:Alis.Editor.Info.Architecture">
-            <summary>Gets or sets the architecture.</summary>
-            <value>The architecture.</value>
-        </member>
-        <member name="P:Alis.Editor.Info.Graphics">
-            <summary>Gets or sets the graphics.</summary>
-            <value>The graphics.</value>
-        </member>
-        <member name="T:Alis.Editor.Platform">
-            <summary>Platform enabled to use the engine.</summary>
-        </member>
-        <member name="F:Alis.Editor.Platform.Unsupported">
-            <summary>The unsupported</summary>
-        </member>
-        <member name="F:Alis.Editor.Platform.Windows">
-            <summary>The windows</summary>
-        </member>
-        <member name="F:Alis.Editor.Platform.MacOS">
-            <summary>The mac</summary>
-        </member>
-        <member name="F:Alis.Editor.Platform.Linux">
-            <summary>The linux</summary>
-        </member>
-        <member name="T:Alis.Editor.Program">
-            <summary>Run the engine</summary>
-        </member>
-        <member name="M:Alis.Editor.Program.Main(System.String[])">
-            <summary>Mains the specified arguments.</summary>
-            <param name="args">The arguments.</param>
-            <returns>Return -1 or 0</returns>
         </member>
         <member name="T:Alis.Editor.UI.Idiom">
             <summary>Idioms of editor.</summary>
@@ -3110,6 +3102,14 @@
         </member>
         <member name="F:Alis.Editor.Utils.Icon.MEETUP">
             <summary>The font icon file name </summary>
+        </member>
+        <member name="T:Alis.Editor.Program">
+            <summary>Run the engine</summary>
+        </member>
+        <member name="M:Alis.Editor.Program.Main(System.String[])">
+            <summary>Mains the specified arguments.</summary>
+            <param name="args">The arguments.</param>
+            <returns>Return -1 or 0</returns>
         </member>
         <member name="T:ImGuiNET.ImGuiController">
             <summary>
