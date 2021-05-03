@@ -668,20 +668,20 @@ namespace Alis.Editor.UI.Widgets
                 {
                     string fileName = "cmd.exe";
                     string cleanCommand = "dotnet restore";
-                    string buildCommand = "dotnet build --configuration Windows";
+                    string buildCommand = "dotnet build -c Windows";
 
                     if (info.Platform.Equals(Platform.Linux))
                     {
                         fileName = "/bin/bash";
                         cleanCommand = "dotnet restore";
-                        buildCommand = "dotnet build --configuration Linux";
+                        buildCommand = "dotnet build -c Linux";
                     }
 
                     if (info.Platform.Equals(Platform.MacOS))
                     {
                         fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
                         cleanCommand = "dotnet restore";
-                        buildCommand = "dotnet build --configuration MacOS";
+                        buildCommand = "dotnet build -c MacOS";
                     }
 
                     RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
@@ -710,18 +710,18 @@ namespace Alis.Editor.UI.Widgets
                 {
                     string fileName = "cmd.exe";
                     string cleanCommand = "dotnet restore";
-                    string buildCommand = "dotnet build --configuration Windows";
+                    string buildCommand = "dotnet publish -c Windows -f net5.0";
 
-                    string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0";
+                    string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/publish";
                     string runCommand = Project.Get().Name + ".exe";
 
                     if (info.Platform.Equals(Platform.Linux))
                     {
                         fileName = "/bin/bash";
                         cleanCommand = "dotnet restore";
-                        buildCommand = "dotnet build --configuration Linux";
+                        buildCommand = "dotnet publish  -c Linux -r debian-x64 -f net5.0";
 
-                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0";
+                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/publish";
                         runCommand = "./" + Project.Get().Name;
                     }
 
@@ -731,7 +731,7 @@ namespace Alis.Editor.UI.Widgets
                         cleanCommand = "dotnet restore";
                         buildCommand = "dotnet build --configuration MacOS";
 
-                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0";
+                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/publish";
                         runCommand = "./" + Project.Get().Name;
                     }
 
