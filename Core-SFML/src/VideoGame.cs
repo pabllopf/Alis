@@ -4,6 +4,7 @@
     using Newtonsoft.Json;
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
     using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
@@ -11,6 +12,54 @@
     /// <summary>Video game</summary>
     public class VideoGame : Game
     {
+        static VideoGame() 
+        {
+            Logger.Warning("Define events");
+
+            /*string window = "/runtimes/win/native/csfml-Window";
+            string system = "/runtimes/win/native/csfml-System";
+            string graphics = "/runtimes/win/native/csfml-Graphics";
+            string audio = "/runtimes/win/native/csfml-Audio";
+
+
+            Assembly.LoadFrom(Environment.CurrentDirectory + window);
+            Assembly.LoadFrom(Environment.CurrentDirectory + system);
+            Assembly.LoadFrom(Environment.CurrentDirectory + graphics);
+            Assembly.LoadFrom(Environment.CurrentDirectory + audio);
+            */
+
+            //AppDomain.CurrentDomain.UnhandledException += AppDomain_OnUnhandledException;
+            //AppDomain.CurrentDomain.AssemblyResolve += AppDomain_OnAssemblyResolve;
+
+            Logger.Warning("Builded events");
+        }
+
+        private static void AppDomain_OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (e.IsTerminating)
+                throw Logger.Error(e.ExceptionObject.ToString());
+            else
+                throw Logger.Error(e.ExceptionObject.ToString());
+        }
+
+        private static Assembly AppDomain_OnAssemblyResolve(object sender, ResolveEventArgs e)
+        {
+            var asmName = Path.Combine(Environment.Is64BitProcess ? "x64" : "x32", new AssemblyName(e.Name).Name + ".dll");
+
+            Logger.Warning("Loading {0}..." + asmName);
+
+            var folder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var asmPath = Path.Combine(folder, asmName);
+
+            if (!File.Exists(asmPath))
+            {
+                return null;
+            }
+
+            return Assembly.LoadFrom(asmPath);
+        }
+
+
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
         /// <param name="config">The configuration.</param>
         /// <param name="sceneManager">The scene manager.</param>
