@@ -5,6 +5,7 @@
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using System.Reflection;
     using System.Threading.Tasks;
 
     /// <summary>Video game</summary>
@@ -16,6 +17,8 @@
         [JsonConstructor]
         public VideoGame(Config config, SceneManager sceneManager) : base(config, sceneManager)
         {
+            
+
             this.Config = config;
             this.SceneManager = sceneManager;
             InputSFML temp = new InputSFML(config);
@@ -31,6 +34,7 @@
         /// <param name="scenes">The scene.</param>
         public VideoGame(Config config, params Scene[] scenes) : base(config, scenes)
         {
+
             InputSFML temp = new InputSFML(config);
 
             Input = temp;
@@ -87,7 +91,10 @@
         /// <param name="file">The file.</param>
         /// <returns>Return game.</returns>
         [return: NotNull]
-        public static VideoGame LoadOfFile(string file) => LocalData.Load<VideoGame>(file);
+        public static VideoGame LoadOfFile(string file)
+        {
+            return LocalData.Load<VideoGame>(file);
+        }
 
         /// <summary>Runs the of file.</summary>
         [return: NotNull]

@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  
   <!-- _________________________ GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -30,6 +31,8 @@
     <FileVersion>1.3.4.0</FileVersion>
     <Version>1.3.4</Version>
     <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
+
+    <IncludeSymbols>true</IncludeSymbols>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -47,7 +50,7 @@
     <DefineConstants>Windows</DefineConstants>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>Core.xml</DocumentationFile>
-    <DefineConstants>TRACE;DEBUG;Windows</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;Windows; </DefineConstants>
     <Optimize>true</Optimize>
   </PropertyGroup>
 
@@ -71,15 +74,14 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DebugType />
     <Optimize>true</Optimize>
-    <DefineConstants>Linux</DefineConstants>
-    <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Core-SFML\Core-SFML.xml</DocumentationFile>
+    <DefineConstants>Linux;</DefineConstants>
   </PropertyGroup>
-
-  
 
 
   
   <ItemGroup>
+    <None Update="runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
+
     <None Include="..\docs\resources\logo\logo.png" Link="docs\logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
@@ -93,7 +95,12 @@
 
   
   <ItemGroup>
-     <PackageReference Include="SFML.Net" Version="2.5.0" />
+    <PackageReference Include="SFML.Net" Version="2.5.0" />
+  </ItemGroup>
+
+
+  
+  <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
     
