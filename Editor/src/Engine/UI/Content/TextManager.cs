@@ -32,7 +32,7 @@ namespace Alis.Editor.UI
         /// <summary>Initializes the <see cref="TextManager" /> class.</summary>
         static TextManager() 
         {
-            directory ??= Environment.CurrentDirectory + "/Resources/";
+            directory ??= Environment.CurrentDirectory + "/resources/";
             file ??= directory + "Editor.csv";
            
             keys ??= new Dictionary<int, string>();

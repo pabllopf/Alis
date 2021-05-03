@@ -400,16 +400,16 @@ namespace Alis.Editor.UI.Widgets
             Directory.CreateDirectory(project.DataPath1);
             Directory.CreateDirectory(project.LibPath);
 
-            string projectFile = File.ReadAllText(Application.ProjectFolder + "/resources/DefaultPr.txt", Encoding.UTF8);
-            File.WriteAllText(dir + "/" + project.Name + ".csproj", projectFile, Encoding.UTF8);
+            string projectFile = File.ReadAllText((Environment.CurrentDirectory + "/resources/DefaultPr.txt").Replace("Resources", "resources"));
+            File.WriteAllText(dir + "/" + project.Name + ".csproj", projectFile);
             Logger.Log("Created .csproj");
 
-            string solutionFile = File.ReadAllText(Application.ProjectFolder + "/resources/DefaultSl.txt", Encoding.UTF8).Replace("Example", project.Name);
-            File.WriteAllText(dir + "/" + project.Name + ".sln", solutionFile, Encoding.UTF8);
+            string solutionFile = File.ReadAllText((Environment.CurrentDirectory + "/resources/DefaultSl.txt").Replace("Resources", "resources")).Replace("Example", project.Name);
+            File.WriteAllText(dir + "/" + project.Name + ".sln", solutionFile);
             Logger.Log("Created .sln");
 
-            string program = File.ReadAllText(Application.ProjectFolder + "/resources/Program.txt", Encoding.UTF8);
-            File.WriteAllText(dir + "/" + "Program" + ".cs", program, Encoding.UTF8);
+            string program = File.ReadAllText((Environment.CurrentDirectory + "/resources/Program.txt").Replace("Resources", "resources"));
+            File.WriteAllText(dir + "/" + "Program" + ".cs", program);
             Logger.Log("Created Program.cs");
 
             File.Copy(Environment.CurrentDirectory + "/Core-SFML.dll", project.LibPath + "/" + "Core-SFML" + ".dll");
