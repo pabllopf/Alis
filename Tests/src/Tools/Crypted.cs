@@ -52,5 +52,29 @@ namespace Tools
                 Assert.AreEqual("hola", passwd.Get());
             });
         }
+
+        /// <summary>Decrypts the complex variable.</summary>
+        [Test]
+        public void Decrypt_Complex_Var()
+        {
+            Assert.Multiple(() =>
+            {
+                Alis.Tools.Crypted<string> passwd = new Alis.Tools.Crypted<string>(Alis.Tools.Application.AssetsFolder);
+                passwd.Set(Alis.Tools.Application.DesktopFolder);
+                Assert.AreEqual(Alis.Tools.Application.DesktopFolder, passwd.Get());
+            });
+        }
+
+
+        /// <summary>Decrypts the complex variable.</summary>
+        [Test]
+        public void Encrypt_Complex_Var()
+        {
+            Assert.Multiple(() =>
+            {
+                Alis.Tools.Crypted<string> passwd = new Alis.Tools.Crypted<string>(Alis.Tools.Application.AssetsFolder);
+                Assert.AreEqual(Alis.Tools.Application.AssetsFolder, passwd.Get());
+            });
+        }
     }
 }
