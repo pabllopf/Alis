@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sentence_2628',['Sentence',['../namespace_alis_1_1_editor_1_1_u_i.html#ad39d1bacb8fd07bb4f435c66be1c798a',1,'Alis::Editor::UI']]]
+  ['platform_2656',['Platform',['../namespace_alis_1_1_editor.html#a1b4a4903235d70e84b2e2eb5833ec084',1,'Alis::Editor']]]
 ];

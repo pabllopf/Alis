@@ -5,10 +5,11 @@ var hierarchy =
       [ "Alis.Editor.UI.Widgets.TopMenu.SimpleUnloadableAssemblyLoadContext", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_top_menu_1_1_simple_unloadable_assembly_load_context.html", null ]
     ] ],
     [ "Alis.Tools.Asset", "class_alis_1_1_tools_1_1_asset.html", null ],
-    [ "Tools.Data.CloudData", "class_tools_1_1_data_1_1_cloud_data.html", null ],
+    [ "Alis.Tools.CloudData", "class_alis_1_1_tools_1_1_cloud_data.html", null ],
     [ "Alis.Core.Component", "class_alis_1_1_core_1_1_component.html", null ],
     [ "Alis.Core.Config", "class_alis_1_1_core_1_1_config.html", null ],
     [ "Alis.Core.Config.ConfigBuilder", "class_alis_1_1_core_1_1_config_1_1_config_builder.html", null ],
+    [ "Alis.Tools.Encryptor", "class_alis_1_1_tools_1_1_encryptor.html", null ],
     [ "Alis.Editor.Engine", "class_alis_1_1_editor_1_1_engine.html", null ],
     [ "Alis.Core.Game", "class_alis_1_1_core_1_1_game.html", null ],
     [ "Alis.Core.GameObject", "class_alis_1_1_core_1_1_game_object.html", null ],
@@ -42,6 +43,7 @@ var hierarchy =
     [ "Alis.Core.Time.TimeBuilder", "class_alis_1_1_core_1_1_time_1_1_time_builder.html", null ],
     [ "Alis.Core.Transform", "class_alis_1_1_core_1_1_transform.html", null ],
     [ "Tools.Updater", "class_tools_1_1_updater.html", null ],
+    [ "Alis.Tools.User", "class_alis_1_1_tools_1_1_user.html", null ],
     [ "Alis.Editor.UI.Widgets.Widget", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_widget.html", [
       [ "Alis.Editor.UI.Widgets.About", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_about.html", null ],
       [ "Alis.Editor.UI.Widgets.AssetsManager", "class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_assets_manager.html", null ],
