@@ -72,7 +72,7 @@ var searchData=
   ['circleonotch_248',['CIRCLEONOTCH',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#aa83fd5de3de2602fa124ad7bec102b74',1,'Alis::Editor::Utils::Icon']]],
   ['circlethin_249',['CIRCLETHIN',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#afbf2b508bd8397a41a65519af12f6c4d',1,'Alis::Editor::Utils::Icon']]],
   ['clasic_250',['clasic',['../class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8ce979b965d97a40a3e8b82a12499dc0',1,'Alis::Editor::UI::MainWindow']]],
-  ['clear_251',['Clear',['../class_alis_1_1_core_1_1_input.html#af52774112ce4d3c0048c30f71fe51e10',1,'Alis.Core.Input.Clear()'],['../class_alis_1_1_core_1_1_render.html#acc1d3471490da69f9e7bde1e08339161',1,'Alis.Core.Render.Clear()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a276b21eaf1752a69c4911e75145610f4',1,'Alis.Editor.UI.Widgets.Console.Clear()']]],
+  ['clear_251',['Clear',['../class_alis_1_1_core_1_1_input.html#a1422b7fb7649164d9a5619c42cfe5637',1,'Alis.Core.Input.Clear()'],['../class_alis_1_1_core_1_1_render.html#acc1d3471490da69f9e7bde1e08339161',1,'Alis.Core.Render.Clear()'],['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_console.html#a276b21eaf1752a69c4911e75145610f4',1,'Alis.Editor.UI.Widgets.Console.Clear()']]],
   ['clearcachedimageresources_252',['ClearCachedImageResources',['../class_im_gui_n_e_t_1_1_im_gui_controller.html#a8f77518c871b2d5fc913f6f2475c7342',1,'ImGuiNET::ImGuiController']]],
   ['clickbutton_253',['ClickButton',['../class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_dock_space.html#abf00b4a7814c5716bf874b2d725a9ef8',1,'Alis::Editor::UI::Widgets::DockSpace']]],
   ['clipboard_254',['CLIPBOARD',['../class_alis_1_1_editor_1_1_utils_1_1_icon.html#a81e41e95a5b1d2b552d99525f9261cdc',1,'Alis::Editor::Utils::Icon']]],

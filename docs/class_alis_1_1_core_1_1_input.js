@@ -14,7 +14,7 @@ var class_alis_1_1_core_1_1_input =
     [ "ReleaseKey", "class_alis_1_1_core_1_1_input.html#aeaea7b07e10f869bb0f5742c33ca84a0", null ],
     [ "Input_OnPressKey", "class_alis_1_1_core_1_1_input.html#aa83bf732f3d07928d405cf99bbafbe67", null ],
     [ "Input_OnPressKeyOnce", "class_alis_1_1_core_1_1_input.html#a63676693d7dc30446662d557c646f989", null ],
-    [ "Clear", "class_alis_1_1_core_1_1_input.html#af52774112ce4d3c0048c30f71fe51e10", null ],
+    [ "Clear", "class_alis_1_1_core_1_1_input.html#a1422b7fb7649164d9a5619c42cfe5637", null ],
     [ "ErrorMessage", "class_alis_1_1_core_1_1_input.html#a75865bad8c0b7a4b2ace822592028d47", null ],
     [ "current", "class_alis_1_1_core_1_1_input.html#a96088d881a0f50bdd131733290a315b8", null ],
     [ "keys", "class_alis_1_1_core_1_1_input.html#a2ef1b75d83bb65c4d05ace1d0a24bc38", null ],

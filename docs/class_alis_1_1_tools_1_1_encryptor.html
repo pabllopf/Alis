@@ -114,12 +114,12 @@ Static Public Member Functions</h2></td></tr>
 <tr class="separator:a30667339191fa6a27d0fffe9b0c2d083"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f37038061926c3fb6503839d74d7c42"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_encryptor.html#a1f37038061926c3fb6503839d74d7c42">Decrypt</a> (string cipherText)</td></tr>
 <tr class="separator:a1f37038061926c3fb6503839d74d7c42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a211de7f858bf7fc91ba586e66aaf7e79"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_encryptor.html#a211de7f858bf7fc91ba586e66aaf7e79">Decrypt&lt; T &gt;</a> (byte[] key, byte[] vector, byte[] data)</td></tr>
-<tr class="memdesc:a211de7f858bf7fc91ba586e66aaf7e79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypts this instance.  <a href="class_alis_1_1_tools_1_1_encryptor.html#a211de7f858bf7fc91ba586e66aaf7e79">More...</a><br /></td></tr>
-<tr class="separator:a211de7f858bf7fc91ba586e66aaf7e79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7c1b861bd625cad6d9d3836dc401ca8"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_encryptor.html#af7c1b861bd625cad6d9d3836dc401ca8">Encrypt&lt; T &gt;</a> (T data, byte[] key, byte[] vector)</td></tr>
-<tr class="memdesc:af7c1b861bd625cad6d9d3836dc401ca8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypts the specified data.  <a href="class_alis_1_1_tools_1_1_encryptor.html#af7c1b861bd625cad6d9d3836dc401ca8">More...</a><br /></td></tr>
-<tr class="separator:af7c1b861bd625cad6d9d3836dc401ca8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a452407b2848bd1dad7c1669c21b911d4"><td class="memItemLeft" align="right" valign="top">static T&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_encryptor.html#a452407b2848bd1dad7c1669c21b911d4">Decrypt&lt; T &gt;</a> (ref byte[] key, ref byte[] vector, byte[] data)</td></tr>
+<tr class="memdesc:a452407b2848bd1dad7c1669c21b911d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrypts this instance.  <a href="class_alis_1_1_tools_1_1_encryptor.html#a452407b2848bd1dad7c1669c21b911d4">More...</a><br /></td></tr>
+<tr class="separator:a452407b2848bd1dad7c1669c21b911d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cfffb880311afc468dd2000ab865dde"><td class="memItemLeft" align="right" valign="top">static byte[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_alis_1_1_tools_1_1_encryptor.html#a0cfffb880311afc468dd2000ab865dde">Encrypt&lt; T &gt;</a> (T data, ref byte[] key, ref byte[] vector)</td></tr>
+<tr class="memdesc:a0cfffb880311afc468dd2000ab865dde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Encrypts the specified data.  <a href="class_alis_1_1_tools_1_1_encryptor.html#a0cfffb880311afc468dd2000ab865dde">More...</a><br /></td></tr>
+<tr class="separator:a0cfffb880311afc468dd2000ab865dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -197,8 +197,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a211de7f858bf7fc91ba586e66aaf7e79"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a211de7f858bf7fc91ba586e66aaf7e79">&#9670;&nbsp;</a></span>Decrypt&lt; T &gt;()</h2>
+<a id="a452407b2848bd1dad7c1669c21b911d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a452407b2848bd1dad7c1669c21b911d4">&#9670;&nbsp;</a></span>Decrypt&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -209,13 +209,13 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">static T <a class="el" href="class_alis_1_1_tools_1_1_encryptor.html#a1f37038061926c3fb6503839d74d7c42">Alis.Tools.Encryptor.Decrypt</a>&lt; T &gt; </td>
           <td>(</td>
-          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramtype">ref byte[]&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramtype">ref byte[]&#160;</td>
           <td class="paramname"><em>vector</em>, </td>
         </tr>
         <tr>
@@ -244,8 +244,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af7c1b861bd625cad6d9d3836dc401ca8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7c1b861bd625cad6d9d3836dc401ca8">&#9670;&nbsp;</a></span>Encrypt&lt; T &gt;()</h2>
+<a id="a0cfffb880311afc468dd2000ab865dde"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cfffb880311afc468dd2000ab865dde">&#9670;&nbsp;</a></span>Encrypt&lt; T &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -262,13 +262,13 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramtype">ref byte[]&#160;</td>
           <td class="paramname"><em>key</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramtype">ref byte[]&#160;</td>
           <td class="paramname"><em>vector</em>&#160;</td>
         </tr>
         <tr>

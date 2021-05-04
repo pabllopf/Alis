@@ -114,13 +114,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"class_alis_1_1_core_1_1_scene_manager.html#a444adefa3a4acbc4f46bf2ed857e8f70",
-"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#ac3fc5feae1173cf701cc402f8e05903f",
-"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#abbc5206a183eda61c84a034939d672b2",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4314a42b67d8648f3273951000779057",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9e46dcea3c115836e177795579e96e39",
-"class_alis_1_1_editor_1_1_utils_1_1_icon.html#afbb0da7df839ba69c91fa3735d1b9725",
-"md__api_doc__pages_1_8_home.html#autotoc_md1"
+"class_alis_1_1_core_1_1_scene_manager.html#a52dd174aa5c2003379e6c71f75fc8f46",
+"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_bottom_menu.html#ad180b9040fbe6457e0ee471993501b04",
+"class_alis_1_1_editor_1_1_u_i_1_1_widgets_1_1_scene_view.html#ac1a57f68278e0855d7050d5371eaa744",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a4323216e6b8bb152208c989b0e586ff7",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#a9e8660ed5333fd140edf92054d138405",
+"class_alis_1_1_editor_1_1_utils_1_1_icon.html#afbf2b508bd8397a41a65519af12f6c4d",
+"md__api_doc__pages_1_8_home.html#autotoc_md2"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
