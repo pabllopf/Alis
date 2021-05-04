@@ -96,7 +96,6 @@ namespace Alis.Tools
         /// <param name="name">The name.</param>
         /// <returns>Return the value data.</returns>
         /// <exception cref="NullReferenceException">When try to load null data</exception>
-        
         public static T Load<T>( string name)
         {
             string nameFile = name + ".json";
@@ -219,7 +218,13 @@ namespace Alis.Tools
             }
         }
 
-        
+        /// <summary>Loads the specified name.</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">The name.</param>
+        /// <param name="directory">The directory.</param>
+        /// <param name="defaultdata">The defaultdata.</param>
+        /// <returns>return data</returns>
+        /// <exception cref="NullReferenceException"></exception>
         public static T Load<T>( string name,  string directory, T defaultdata)
         {
             string nameFile = name + ".json";
@@ -255,5 +260,7 @@ namespace Alis.Tools
         /// <c>true</c> if the specified type is primitive; otherwise, <c>false</c>.</returns>
         
         private static bool IsPrimitive(Type type) => type.IsPrimitive || type == typeof(string);
+
+
     }
 }

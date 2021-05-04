@@ -70,6 +70,7 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetZip" Version="1.15.0" />
+    <PackageReference Include="Dropbox.Api" Version="6.4.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   
