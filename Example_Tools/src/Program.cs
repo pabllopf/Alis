@@ -15,7 +15,8 @@ namespace Example_Tools
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
-            Example_CloudData.Run();
+            Example_LocalData.Run();
+            //Example_CloudData.Run();
         }
     }
 }

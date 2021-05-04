@@ -53,6 +53,64 @@ namespace Alis.Tools
         }
 
         /// <summary>Saves the specified name.</summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="name">The name.</param>
+        /// <param name="data">The data.</param>
+        /// <param name="encrypt">if set to <c>true</c> [encrypt].</param>
+        /// <exception cref="System.ArgumentNullException"></exception>
+        public static void Save<T>(string name, T data, bool encrypt)
+        {
+            if (data == null)
+            {
+                throw new ArgumentNullException(typeof(T).GetType().FullName);
+            }
+
+            string nameFile = name + ".json";
+            string directory = Environment.CurrentDirectory + "/Data/";
+            string file = directory + nameFile;
+
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            if (IsPrimitive(typeof(T)))
+            {
+                if (encrypt)
+                {
+                    string seria = Encryptor.Encrypt(data.ToString());
+                    File.WriteAllText(file, seria, Encoding.UTF8);
+                }
+                else
+                {
+                    File.WriteAllText(file, data.ToString(), Encoding.UTF8);
+                }
+            }
+            else
+            {
+                var indented = Formatting.Indented;
+
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                    TypeNameHandling = TypeNameHandling.All
+                };
+
+                string serialized = JsonConvert.SerializeObject(data, indented, settings);
+
+                if (encrypt)
+                {
+                    string seria = Encryptor.Encrypt(serialized);
+                    File.WriteAllText(file, seria, Encoding.UTF8);
+                }
+                else 
+                {
+                    File.WriteAllText(file, serialized, Encoding.UTF8);
+                }
+            }
+        }
+
+        /// <summary>Saves the specified name.</summary>
         /// <typeparam name="T">Type data</typeparam>
         /// <param name="name">The name.</param>
         /// <param name="directory">directory to load file</param>
@@ -115,17 +173,68 @@ namespace Alis.Tools
 
             if (IsPrimitive(typeof(T)))
             {
-                Logger.Log("Load: " + file);
                 return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("Reading a empty file (primitive var)" + typeof(T).GetType().FullName);
             }
             else
             {
                 if (File.Exists(file))
                 {
-                    Logger.Log("Load: " + file);
                     return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
                 }
                 else 
+                {
+                    Logger.Warning("File dont exits. " + file);
+                    return default;
+                }
+            }
+        }
+
+        public static T Load<T>(string name, bool encrypt)
+        {
+            string nameFile = name + ".json";
+            string directory = Environment.CurrentDirectory + "/Data/";
+            string file = directory + nameFile;
+
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameAssemblyFormatHandling = TypeNameAssemblyFormatHandling.Simple,
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            if (IsPrimitive(typeof(T)))
+            {
+                if (encrypt)
+                {
+                    Logger.Log("Load: " + file);
+                    return (T)Convert.ChangeType(Encryptor.Decrypt(File.ReadAllText(file, Encoding.UTF8)), typeof(T)) ?? throw new NullReferenceException("Reading a empty file (primitive var)" + typeof(T).GetType().FullName);
+                }
+                else 
+                {
+                    Logger.Log("Load: " + file);
+                    return (T)Convert.ChangeType(File.ReadAllText(file, Encoding.UTF8), typeof(T)) ?? throw new NullReferenceException("Reading a empty file (primitive var)" + typeof(T).GetType().FullName);
+                }
+            }
+            else
+            {
+                if (File.Exists(file))
+                {
+                    if (encrypt)
+                    {
+                        Logger.Log("Load: " + file);
+                        return JsonConvert.DeserializeObject<T>(Encryptor.Decrypt(File.ReadAllText(file)), settings);
+                    }
+                    else 
+                    {
+                        Logger.Log("Load: " + file);
+                        return JsonConvert.DeserializeObject<T>(File.ReadAllText(file), settings);
+                    }
+                }
+                else
                 {
                     Logger.Warning("File dont exits. " + file);
                     return default;

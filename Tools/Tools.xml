@@ -74,14 +74,27 @@
             <summary>Gets this instance.</summary>
             <returns>Return value</returns>
         </member>
-        <member name="M:Alis.Tools.Crypted`1.Encrypt(`0)">
+        <member name="T:Alis.Tools.Encryptor">
+            <summary>Util to encrypt data</summary>
+        </member>
+        <member name="F:Alis.Tools.Encryptor.Keysize">
+            <summary>The keysize</summary>
+        </member>
+        <member name="F:Alis.Tools.Encryptor.DerivationIterations">
+            <summary>The derivation iterations</summary>
+        </member>
+        <member name="M:Alis.Tools.Encryptor.Decrypt``1(System.Byte[],System.Byte[],System.Byte[])">
+            <summary>Decrypts this instance.</summary>
+            <returns>Return the value</returns>
+        </member>
+        <member name="M:Alis.Tools.Encryptor.Encrypt``1(``0,System.Byte[],System.Byte[])">
             <summary>Encrypts the specified data.</summary>
             <param name="data">The data.</param>
             <returns>Return value.</returns>
         </member>
-        <member name="M:Alis.Tools.Crypted`1.Decrypt">
-            <summary>Decrypts this instance.</summary>
-            <returns>Return the value</returns>
+        <member name="M:Alis.Tools.Encryptor.Generate256BitsOfRandomEntropy">
+            <summary>Generate256s the bits of random entropy.</summary>
+            <returns>return bytes</returns>
         </member>
         <member name="T:Alis.Tools.CloudData">
             <summary>Manage the cloud data.</summary>
@@ -190,6 +203,14 @@
             <typeparam name="T">Type data</typeparam>
             <param name="name">The name.</param>
             <param name="data">The data.</param>
+        </member>
+        <member name="M:Alis.Tools.LocalData.Save``1(System.String,``0,System.Boolean)">
+            <summary>Saves the specified name.</summary>
+            <typeparam name="T"></typeparam>
+            <param name="name">The name.</param>
+            <param name="data">The data.</param>
+            <param name="encrypt">if set to <c>true</c> [encrypt].</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="M:Alis.Tools.LocalData.Save``1(System.String,System.String,``0)">
             <summary>Saves the specified name.</summary>
