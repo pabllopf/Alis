@@ -537,11 +537,11 @@ namespace Alis.Editor.UI.Widgets
 
         private void LoadAsembly()
         {
-            string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/" + Project.Get().Name + ".dll";
+            string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/win-x64/publish/" + Project.Get().Name + ".dll";
 
             if (info.Platform.Equals(Platform.Linux))
             {
-                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/" + Project.Get().Name + ".dll";
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/debian-x64/publish/" + Project.Get().Name + ".dll";
             }
 
             if (info.Platform.Equals(Platform.MacOS))
@@ -549,7 +549,7 @@ namespace Alis.Editor.UI.Widgets
                 workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll";
             }
 
-            if (File.Exists(workDirRun)) 
+            if (File.Exists(workDirRun))
             {
                 Project.Get().DLL1 = Assembly.Load(File.ReadAllBytes(workDirRun));
             }

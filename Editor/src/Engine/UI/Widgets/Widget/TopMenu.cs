@@ -599,11 +599,11 @@ namespace Alis.Editor.UI.Widgets
 
         private void LoadAsembly()
         {
-            string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/" + Project.Get().Name + ".dll";
+            string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/win-x64/publish/" + Project.Get().Name + ".dll";
 
             if (info.Platform.Equals(Platform.Linux))
             {
-                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/" + Project.Get().Name + ".dll";
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/debian-x64/publish/" + Project.Get().Name + ".dll";
             }
 
             if (info.Platform.Equals(Platform.MacOS))
@@ -668,7 +668,7 @@ namespace Alis.Editor.UI.Widgets
                 {
                     string fileName = "cmd.exe";
                     string cleanCommand = "dotnet restore";
-                    string buildCommand = "dotnet publish -c Windows";
+                    string buildCommand = "dotnet publish -c Windows -r win-x64";
 
                     if (info.Platform.Equals(Platform.Linux))
                     {
@@ -710,9 +710,9 @@ namespace Alis.Editor.UI.Widgets
                 {
                     string fileName = "cmd.exe";
                     string cleanCommand = "dotnet restore";
-                    string buildCommand = "dotnet publish -c Windows";
+                    string buildCommand = "dotnet publish -c Windows -r win-x64";
 
-                    string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/publish";
+                    string workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Windows/net5.0/win-x64/publish";
                     string runCommand = Project.Get().Name + ".exe";
 
                     if (info.Platform.Equals(Platform.Linux))
@@ -723,6 +723,8 @@ namespace Alis.Editor.UI.Widgets
 
                         workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/Linux/net5.0/debian-x64/publish";
                         runCommand = "./" + Project.Get().Name;
+
+                        Logger.Warning("COMMAND: " + buildCommand + " WORKPATH: " + workDirRun);
                     }
 
                     if (info.Platform.Equals(Platform.MacOS))
