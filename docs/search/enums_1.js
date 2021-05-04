@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['eventtype_2622',['EventType',['../namespace_alis_1_1_editor_1_1_u_i_1_1_widgets.html#a353b0dd609521e7b19a46199a5bea45c',1,'Alis::Editor::UI::Widgets']]]
+  ['cloudservice_2650',['CloudService',['../namespace_alis_1_1_tools.html#a97e076a7c0582d91260b4f50c23b3adc',1,'Alis::Tools']]]
 ];
