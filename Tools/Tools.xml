@@ -83,11 +83,11 @@
         <member name="F:Alis.Tools.Encryptor.DerivationIterations">
             <summary>The derivation iterations</summary>
         </member>
-        <member name="M:Alis.Tools.Encryptor.Decrypt``1(System.Byte[],System.Byte[],System.Byte[])">
+        <member name="M:Alis.Tools.Encryptor.Decrypt``1(System.Byte[]@,System.Byte[]@,System.Byte[])">
             <summary>Decrypts this instance.</summary>
             <returns>Return the value</returns>
         </member>
-        <member name="M:Alis.Tools.Encryptor.Encrypt``1(``0,System.Byte[],System.Byte[])">
+        <member name="M:Alis.Tools.Encryptor.Encrypt``1(``0,System.Byte[]@,System.Byte[]@)">
             <summary>Encrypts the specified data.</summary>
             <param name="data">The data.</param>
             <returns>Return value.</returns>

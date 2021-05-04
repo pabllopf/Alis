@@ -65,7 +65,7 @@ namespace Alis.Tools
 
         /// <summary>Decrypts this instance.</summary>
         /// <returns>Return the value</returns>
-        public static T Decrypt<T>(byte[] key, byte[] vector, byte[] data)
+        public static T Decrypt<T>(ref byte[] key, ref byte[] vector, byte[] data)
         {
             Aes algorithm = Aes.Create();
 
@@ -88,7 +88,7 @@ namespace Alis.Tools
         /// <summary>Encrypts the specified data.</summary>
         /// <param name="data">The data.</param>
         /// <returns>Return value.</returns>
-        public static byte[] Encrypt<T>(T data, byte[] key, byte[] vector)
+        public static byte[] Encrypt<T>(T data, ref byte[] key, ref byte[] vector)
         {
             Aes algorithm = Aes.Create();
 

@@ -54,7 +54,7 @@ namespace Alis.Core
             Logger.Log("Print time: " + config.Time.TimeStep);
             Logger.Info();
 
-            current = this;
+            current ??= this;
         }
 
         public static List<EventHandler<Keyboard>> delegates;
@@ -66,8 +66,11 @@ namespace Alis.Core
         {
             add
             {
-                onPressKey += value;
-                delegates.Add(value);
+                if (!delegates.Contains(value)) 
+                {
+                    onPressKey += value;
+                    delegates.Add(value);
+                }
             }
             remove 
             {
@@ -84,8 +87,11 @@ namespace Alis.Core
         {
             add
             {
-                onPressKeyOnce += value;
-                delegates.Add(value);
+                if (!delegates.Contains(value))
+                {
+                    onPressKeyOnce += value;
+                    delegates.Add(value);
+                }
             }
             remove 
             {
@@ -101,8 +107,11 @@ namespace Alis.Core
         {
             add
             {
-                onReleaseOnce += value;
-                delegates.Add(value);
+                if (!delegates.Contains(value))
+                {
+                    onReleaseOnce += value;
+                    delegates.Add(value);
+                }
             }
             remove
             {
@@ -179,8 +188,9 @@ namespace Alis.Core
         /// <param name="keyboard">The keyboard.</param>
         private static void Input_OnPressKeyOnce([NotNull] object sender, [NotNull] Keyboard keyboard) => Logger.Info();
 
-        internal void Clear()
+        public static void Clear()
         {
+            Logger.Warning("Clean delegates");
             delegates.Clear();
         }
 

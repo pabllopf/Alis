@@ -5,7 +5,6 @@
 namespace Example_Tools
 {
     using System;
-    using System.Collections.Generic;
     using System.IO;
     using Alis.Tools;
 

@@ -77,7 +77,7 @@ namespace Alis.Core
 
             this.temp = new List<Scene>();
 
-            current ??= this;
+            current = this;
             Logger.Info();
         }
 
@@ -88,11 +88,12 @@ namespace Alis.Core
         internal SceneManager([NotNull] List<Scene> scenes, [NotNull] Scene currentScene)
         {
             this.scenes = scenes;
-            this.currentScene = currentScene;
+            this.currentScene = this.scenes[0];
             this.currentScene.IsActive = true;
             temp = new List<Scene>();
 
-            current ??= this;
+            current = this;
+
             Logger.Info();
         }
 
@@ -120,19 +121,22 @@ namespace Alis.Core
         /// <param name="name">The name.</param>
         public static void Load(int index)
         {
-            if (current.currentScene != current.scenes[index])
+            if (current != null)
             {
                 Logger.Warning("Start scene: " + current.currentScene.Name);
                 current.currentScene.IsActive = false;
                 current.Exit().Wait();
 
                 Render.Current.Clear();
+                Input.Clear();
 
-                current.currentScene = current.scenes[index];
+                LocalData.Save<Scene>("ee", current.temp[index]);
+
+                current.currentScene = LocalData.Load<Scene>("ee");
+                current.currentScene.Awake();
+                current.currentScene.Start();
+
                 current.currentScene.IsActive = true;
-
-                current.Awake().Wait();
-                current.Start().Wait();
 
                 Logger.Warning("Current scene: " + current.currentScene.Name);
             }
@@ -140,54 +144,31 @@ namespace Alis.Core
 
         public static void Load(string name)
         {
-            Scene scene = current.scenes.Find(i => i.Name.Equals(name));
-            if (scene != current.currentScene)
+            if (current != null)
             {
-                if (scene != null)
+                Scene scene = current.scenes.Find(i => i.Name.Equals(name));
+                if (scene != current.currentScene)
                 {
-                    Logger.Warning("Start scene: " + current.currentScene.Name);
-                    current.currentScene.IsActive = false;
-                    current.Exit().Wait();
+                    if (scene != null)
+                    {
+                        Logger.Warning("Start scene: " + current.currentScene.Name);
+                        current.currentScene.IsActive = false;
+                        current.Exit().Wait();
 
-                    Render.Current.Clear();
+                        Render.Current.Clear();
+                        Input.Clear();
 
-                    current.currentScene = scene;
-                    current.currentScene.IsActive = true;
+                        LocalData.Save<Scene>("ee", current.temp.Find(i => i.Name.Equals(name)));
 
-                    current.Awake().Wait();
-                    current.Start().Wait();
+                        current.currentScene = LocalData.Load<Scene>("ee");
+                        current.currentScene.Awake();
+                        current.currentScene.Start();
 
-                    Logger.Warning("Current scene: " + current.currentScene.Name);
+                        current.currentScene.IsActive = true;
+
+                        Logger.Warning("Current scene: " + current.currentScene.Name);
+                    }
                 }
-            }
-        }
-
-        public static void Reset(string name)
-        {
-            Scene scene = current.temp.Find(i => i.Name.Equals(name));
-
-            if (!scene.Name.Equals(current.currentScene.Name))
-            {
-                Logger.Warning("Start scene: " + current.currentScene.Name);
-                current.currentScene.IsActive = false;
-                current.Exit().Wait();
-
-                Render.Current.Clear();
-                Input.Current.Clear();
-
-
-                LocalData.Save("scene", scene);
-
-                scene = LocalData.Load<Scene>("scene");
-
-                
-                scene.Awake();
-                scene.Start();
-
-
-                scene.IsActive = true;
-                current.currentScene = scene;
-                Logger.Warning("Current scene: " + current.currentScene.Name);
             }
         }
 
