@@ -1,51 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Alis.Editor.Program">
-    <Position X="0.5" Y="1.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAA=</HashCode>
-      <FileName>Program.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="engine" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="Alis.Editor.Info">
-    <Position X="8" Y="3.5" Width="1.5" />
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <AssociationLine Name="architecture" Type="Alis.Editor.Architecture" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.75" Y="2.698" />
+        <Point X="5.125" Y="2.698" />
+        <Point X="5.125" Y="6.188" />
+        <Point X="4.75" Y="6.188" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAIAAAAAAAAAAAAACAAAAAgACAAAAAgAAAA=</HashCode>
-      <FileName>Info.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Editor.Engine">
-    <Position X="3.25" Y="0.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ACBAAgAAACAAAAAAQAAAAAAABAAAAAgAQAAAAAgAAAA=</HashCode>
-      <FileName>Engine.cs</FileName>
+      <FileName>src\Engine\Config\Info.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="architecture" />
-      <Field Name="graphics" />
       <Field Name="platform" />
-      <Field Name="mainWindow" />
+      <Field Name="graphics" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Alis.Editor.Engine">
+    <Position X="1" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACRAAAAAACAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\Engine\Engine.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
       <Field Name="info" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Editor.UI.MainWindow">
     <Position X="10" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAiAEQCAMAEEAABCIAAACiAAECISIAAAIABIACAg=</HashCode>
-      <FileName>UI\MainWindow.cs</FileName>
+      <HashCode>AAQAAGAEACAAgAAAABAgAAAAAAIACASIQCAAQBJAAQo=</HashCode>
+      <FileName>src\Engine\UI\MainWindow.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="widgetManager" />
+      <Field Name="info" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.WidgetManager">
     <Position X="12.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAWEgAIAAAAABAAAACAgAAIAAAAAAAAAAAAAAAAIBAA=</HashCode>
-      <FileName>UI\Widgets\WidgetManager.cs</FileName>
+      <HashCode>AAYAAAAIAAAAAAAAACAAAAAAgAEAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\WidgetManager.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Field Name="widgets" />
@@ -54,113 +53,106 @@
   <Class Name="Alis.Editor.UI.Widgets.About">
     <Position X="4.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAIgAAAAAAAAQAAAAAAAAAAAAAACCAAAA=</HashCode>
-      <FileName>UI\Widgets\About.cs</FileName>
+      <HashCode>AAAAAAAAAIAAAgAAAAAAAAQAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\About.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.Widget">
     <Position X="15" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIgAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
-      <FileName>UI\Widgets\Widget.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.AssetsManager">
     <Position X="2.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAACAAAAANhAIAAAIFAQkCAAwABAIAAADACCAAAA=</HashCode>
-      <FileName>UI\Widgets\AssetsManager.cs</FileName>
+      <HashCode>AEAAAACAAABAFhAIAAAAFA4kCAAwABAIQCADACAAAAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\AssetsManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.BottomMenu">
     <Position X="6.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgACAACAIAAIgCABACAAIQAgAAAAAEggAAAAACAAAA=</HashCode>
-      <FileName>UI\Widgets\BottomMenu.cs</FileName>
+      <HashCode>AAgACAACAAAAAgCABACAAIQAgAAAAAEggAAAAAAAAAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\BottomMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.Console">
     <Position X="8.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>IAAAAAAAQIAAIwgAAACAGBQAAAhABAAACAAAACDcQAA=</HashCode>
-      <FileName>UI\Widgets\Console.cs</FileName>
+      <HashCode>ICAAAAAAQIAAAwgAAACAGBAAgAhABAAACAAAACB8QAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\Console.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.DockSpace">
     <Position X="10.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIAAABAAIAAIgAACAAAQAQAABAAAgQgAAEAAACAAAA=</HashCode>
-      <FileName>UI\Widgets\DockSpace.cs</FileName>
+      <HashCode>AAIAAABAAAAAAgABCAAAQAAAABAAAgQkAAEAAAAAQAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\DockSpace.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.GameView">
     <Position X="12.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ASACAAAAAIAAIgAAAACIACQAkgBAAgIAABACIiKgAEA=</HashCode>
-      <FileName>UI\Widgets\GameView.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Editor.UI.Widgets.Hierarchy">
-    <Position X="14" Y="8.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIgAAgACAAAQAgAAAAAAAEACAAACAAAA=</HashCode>
-      <FileName>UI\Widgets\Hierarchy.cs</FileName>
+      <HashCode>ACACAAAAAAAAAggAAAAIAGQAkgBAAgIAABASIiIgQAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\GameView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.Inspector">
     <Position X="16" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>QCWAABAAIAQAIgACAACAiQQAgACDECAAIgIEBAKgEAA=</HashCode>
-      <FileName>UI\Widgets\Inspector.cs</FileName>
+      <HashCode>ACWAIBAAAAQIAgACgACAiQQAgACDECBAIgIEBCIgEAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\Inspector.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.ProjectManager">
     <Position X="18" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIACAQCAAIAAIgAAgJAIAgSAQgAEACIAAAABAiCSCEA=</HashCode>
-      <FileName>UI\Widgets\ProjectManager.cs</FileName>
+      <HashCode>AAAHAQSEAAAAAgACgpAAAgCAUoAEACIAQAABAiCSCUA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\ProjectManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.SceneView">
     <Position X="19.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIgAAAAAIAAQAkABAAgAAAAAAAAKAAAA=</HashCode>
-      <FileName>UI\Widgets\SceneView.cs</FileName>
+      <HashCode>ACAAAAAAAAAAAgAAAAAIAAQAkABAAgAAAAAwACIgIAA=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\SceneView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Editor.UI.Widgets.TopMenu">
     <Position X="21.5" Y="8.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Editor.UI.Widgets.TopMenu.SimpleUnloadableAssemblyLoadContext" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>src\Engine\UI\Widgets\Widget\TopMenu.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
     <TypeIdentifier>
-      <HashCode>gAAABAAAAIAAMgAQAAECAJYoCAAAAgAAQCgAAACCAIQ=</HashCode>
-      <FileName>UI\Widgets\TopMenu.cs</FileName>
+      <HashCode>kIQGFDErKB3JggAQEgACIsIGSgAA4AAAYOkAgCKjBBQ=</HashCode>
+      <FileName>src\Engine\UI\Widgets\Widget\TopMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Editor.UI.Widgets.Updater">
-    <Position X="23.25" Y="8.75" Width="1.5" />
+  <Enum Name="Alis.Editor.Architecture">
+    <Position X="3.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAIgAAAAAAAAQAAAAAAAAAAAAAACCAAAA=</HashCode>
-      <FileName>UI\Widgets\Updater.cs</FileName>
+      <HashCode>AAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>src\Engine\Config\Architecture.cs</FileName>
     </TypeIdentifier>
-  </Class>
+  </Enum>
   <Enum Name="Alis.Editor.Platform">
-    <Position X="3" Y="5.75" Width="1.5" />
+    <Position X="5.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAAAAAAABAAAAAAAABAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
-      <FileName>Platform.cs</FileName>
+      <FileName>src\Engine\Config\Platform.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Alis.Editor.Graphics">
-    <Position X="5.5" Y="4.5" Width="1.5" />
+    <Position X="2.25" Y="7" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAAAAAAAAAAAAAAABAAAAAAgAAAAAAAAAAABAAEA=</HashCode>
-      <FileName>Graphics.cs</FileName>
-    </TypeIdentifier>
-  </Enum>
-  <Enum Name="Alis.Editor.Architecture">
-    <Position X="6.5" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAEAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
-      <FileName>Architecture.cs</FileName>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAABAAEA=</HashCode>
+      <FileName>src\Engine\Config\Graphics.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />
