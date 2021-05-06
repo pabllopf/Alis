@@ -115,6 +115,8 @@ namespace Alis.Editor.UI.Widgets
             fileDialog = new FileDialog(Environment.CurrentDirectory, true, ".json", new string[] { "*", ".json" });
             directoryDialog = new FileDialog(Environment.CurrentDirectory, false, "*", new string[] { "*"});
 
+
+
             Logger.Info();
         }
 
@@ -125,7 +127,7 @@ namespace Alis.Editor.UI.Widgets
         /// <summary>Draw this instance.</summary>
         public override void Draw()
         {
-            if (fileDialog.ConfirmedElement)
+            if (fileDialog.ConfirmedElement && !fileDialog.ElementTaked.ToString().Equals(string.Empty))
             {
                 Console.Log(Path.GetFileNameWithoutExtension(fileDialog.ElementTaked));
                 Console.Log(Path.GetDirectoryName(fileDialog.ElementTaked));
@@ -177,7 +179,7 @@ namespace Alis.Editor.UI.Widgets
                 }
             }
 
-            if (directoryDialog.ConfirmedElement) 
+            if (directoryDialog.ConfirmedElement && !directoryDialog.ElementTaked.ToString().Equals(string.Empty)) 
             {
                 directoryField = directoryDialog.ElementTaked;
                 Console.Warning("Select the direcotry " + directoryDialog.ElementTaked);

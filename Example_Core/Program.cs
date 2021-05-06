@@ -4,9 +4,13 @@
 //----------------------------------------------------------------------------------------------------
 namespace Example_Core
 {
+    using System.IO;
     using System.Numerics;
+    using System.Reflection;
+    using System.Threading;
     using Alis.Core;
     using Alis.Core.SFML;
+    using Alis.Tools;
 
     /// <summary>Example of videogame.</summary>
     public class Program
@@ -15,8 +19,6 @@ namespace Example_Core
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
-            //VideoGame.TestSFML();
-
             VideoGame.Builder()
                 .Config(Config.Builder()
                     .Name("Ping Pong")
@@ -30,7 +32,7 @@ namespace Example_Core
                     .Build())
                     .Window(WindowManager.Builder()
                             .Resolution(1920, 1080)
-                            .WindowState(WindowState.Normal)
+                            .WindowState(WindowState.FullScreen)
                             .Build())
                     .Build())
 
