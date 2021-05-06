@@ -13,8 +13,8 @@ namespace Example_Tools
         internal static void Run()
         {
             // EXAMPLES TO LOAD / SAVE JSON AND CONVERT OF LOCAL
-            Example_Load_Json_of_LocalData();
             Example_Save_Json_On_LocalData();
+            Example_Load_Json_of_LocalData();
         }
 
         private static void Example_Save_Json_On_LocalData()

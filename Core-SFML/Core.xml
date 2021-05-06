@@ -327,9 +327,6 @@
             <summary>Exits this instance.</summary>
             <returns>Return none</returns>
         </member>
-        <member name="M:Alis.Core.SFML.InputSFML.PollEvents">
-            <summary>Polls the events.</summary>
-        </member>
         <member name="T:Alis.Core.SFML.RenderSFML">
             <summary>Implement the render. </summary>
         </member>

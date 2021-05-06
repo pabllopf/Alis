@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['render_2873',['Render',['../class_alis_1_1_core_1_1_game.html#ac0fe35a9ccbd3722b29d0b3322d91257',1,'Alis::Core::Game']]],
-  ['resolution_2874',['Resolution',['../class_alis_1_1_core_1_1_window_manager.html#aa6a50ca00f0240c788ee2d6471da34d4',1,'Alis::Core::WindowManager']]],
-  ['rotation_2875',['Rotation',['../class_alis_1_1_core_1_1_transform.html#a1f61421fbb671293585f333fb2b5ab00',1,'Alis::Core::Transform']]]
+  ['scale_2758',['Scale',['../class_alis_1_1_core_1_1_transform.html#a0bad7be4297e39c94e7080cafb209232',1,'Alis::Core::Transform']]],
+  ['scenemanager_2759',['SceneManager',['../class_alis_1_1_core_1_1_game.html#acd59a2e7c4431c6c29152454aef8f6db',1,'Alis::Core::Game']]],
+  ['scenes_2760',['Scenes',['../class_alis_1_1_core_1_1_scene_manager.html#a9b726fdb4bb301a51e19dd0c4686040f',1,'Alis::Core::SceneManager']]]
 ];

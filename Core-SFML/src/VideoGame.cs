@@ -1,6 +1,9 @@
 ﻿namespace Alis.Core.SFML
 {
     using Alis.Tools;
+    using global::SFML.Graphics;
+    using global::SFML.System;
+    using global::SFML.Window;
     using Newtonsoft.Json;
     using System;
     using System.Diagnostics.CodeAnalysis;
@@ -20,12 +23,14 @@
         {
             this.Config = config;
             this.SceneManager = sceneManager;
-            InputSFML temp = new InputSFML(config);
 
-            Input = temp;
-            Input.Current = temp;
 
-            Render = new RenderSFML(config);
+           
+            Render = new RenderSFML(Config);
+
+            Input = new InputSFML(config);
+
+            Logger.Info();
         }
 
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
@@ -33,14 +38,16 @@
         /// <param name="scenes">The scene.</param>
         public VideoGame(Config config, params Scene[] scenes) : base(config, scenes)
         {
-
-            InputSFML temp = new InputSFML(config);
-
-            Input = temp;
-            Input.Current = temp;
+            this.Config = config;
+            this.SceneManager = new SceneManager(scenes);
 
 
+            
             Render = new RenderSFML(Config);
+
+            Input = new InputSFML(config);
+
+            Logger.Info();
         }
 
         public override byte[] PreviewRender()
@@ -66,14 +73,12 @@
                 scenecopy = SceneManager.Scenes.ToList()[0];
 
                 scenecopy?.Start();
-                Logger.Log("Start scene preview");
-
-                Input.Update().Wait();
+                Input.Update();
                 scenecopy?.Update();
             }
             else 
             {
-                Input.Update().Wait();
+                Input.Update();
                 scenecopy?.Update();
             }
 
@@ -95,6 +100,26 @@
             return LocalData.Load<VideoGame>(file);
         }
 
+        public static void TestSFML()
+        {
+            var shape = new RectangleShape(new Vector2f(100, 100))
+            {
+                FillColor = Color.Black
+            };
+
+            var window = new RenderWindow(new VideoMode(800, 600), "SFML running in .NET Core");
+            window.Closed += (_, __) => window.Close();
+
+            while (window.IsOpen)
+            {
+                window.DispatchEvents();
+                window.Clear(Color.White);
+                window.Draw(shape);
+                window.Display();
+            }
+        }
+
+
         /// <summary>Runs the of file.</summary>
         [return: NotNull]
         public static void RunOfFile() => LocalData.Load<VideoGame>("Data", Environment.CurrentDirectory + "/Data").Run();
@@ -107,7 +132,7 @@
         {
             /// <summary>The current</summary>
             [AllowNull]
-            private static VideoGameBuilder current;
+            private VideoGameBuilder current;
 
             /// <summary>The configuration</summary>
             [AllowNull]
@@ -143,7 +168,7 @@
             public VideoGame Build()
             {
                 current.config ??= new Config("Default");
-                current.sceneManager ??= new SceneManager();
+                current.sceneManager ??= new SceneManager(new Scene("Default"));
 
                 return new VideoGame(current.config, current.sceneManager);
             }
@@ -154,7 +179,7 @@
             public VideoGame Build(out VideoGame game)
             {
                 current.config ??= new Config("Default");
-                current.sceneManager ??= new SceneManager();
+                current.sceneManager ??= new SceneManager(new Scene("Default"));
 
                 game = new VideoGame(current.config, current.sceneManager);
 
@@ -165,7 +190,7 @@
             public void Run()
             {
                 current.config ??= new Config("Default");
-                current.sceneManager ??= new SceneManager();
+                current.sceneManager ??= new SceneManager(new Scene("Default"));
 
                 new VideoGame(current.config, current.sceneManager).Run();
             }

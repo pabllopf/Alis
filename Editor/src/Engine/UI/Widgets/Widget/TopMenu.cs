@@ -378,7 +378,20 @@ namespace Alis.Editor.UI.Widgets
                 {
                     if (ImGui.MenuItem(Icon.QUESTIONCIRCLE + " Manual"))
                     {
-                        Task.Run(() => Process.Start("explorer", "https://pabllopf.github.io/Alis/"));
+                        if (info.Platform.Equals(Platform.Windows))
+                        {
+                            Task.Run(() => Process.Start("explorer", "https://pabllopf.github.io/Alis/"));
+                        }
+
+                        if (info.Platform.Equals(Platform.Linux))
+                        {
+                            Task.Run(() => Process.Start("explorer", "https://pabllopf.github.io/Alis/"));
+                        }
+
+                        if (info.Platform.Equals(Platform.MacOS))
+                        {
+                            Task.Run(() => Process.Start("open", "https://pabllopf.github.io/Alis/"));
+                        }
                     }
 
                     ImGui.Separator();
@@ -608,7 +621,7 @@ namespace Alis.Editor.UI.Widgets
 
             if (info.Platform.Equals(Platform.MacOS))
             {
-                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/" + Project.Get().Name + ".dll";
+                workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/osx-x64/publish/" + Project.Get().Name + ".dll";
             }
 
             if (File.Exists(workDirRun))
@@ -679,9 +692,9 @@ namespace Alis.Editor.UI.Widgets
 
                     if (info.Platform.Equals(Platform.MacOS))
                     {
-                        fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                        fileName = "/bin/bash";
                         cleanCommand = "dotnet restore";
-                        buildCommand = "dotnet publish -c MacOS";
+                        buildCommand = "dotnet publish -c MacOS -r osx-x64";
                     }
 
                     RunCommand("Building", fileName, buildCommand, Project.Get().Directory + "/" + Project.Get().Name + "/", true);
@@ -729,11 +742,11 @@ namespace Alis.Editor.UI.Widgets
 
                     if (info.Platform.Equals(Platform.MacOS))
                     {
-                        fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                        fileName = "/bin/bash";
                         cleanCommand = "dotnet restore";
-                        buildCommand = "dotnet publish --c MacOS";
+                        buildCommand = "dotnet publish -c MacOS -r osx-x64";
 
-                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/publish";
+                        workDirRun = Project.Get().Directory + "/" + Project.Get().Name + "/bin/MacOS/net5.0/osx-x64/publish";
                         runCommand = "./" + Project.Get().Name;
                     }
 
@@ -1101,7 +1114,7 @@ namespace Alis.Editor.UI.Widgets
 
                         if (info.Platform.Equals(Platform.MacOS))
                         {
-                            fileName = @"/System/Applications/Utilities/Terminal.app/Contents/MacOS/Terminal";
+                            fileName = "/bin/bash";
                             RUN = Project.Get().Name + ".sln";
                         }
 

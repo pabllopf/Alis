@@ -103,9 +103,11 @@ namespace Alis.Editor.UI.Widgets
         {
             this.takeFile = takeFile;
             isOpen = true;
-            currentDirRight = defaultDir;
+            currentDirRight = defaultDir.Replace("\\", "/");
             this.formats = formats;
             this.currentFormat = defaultFormat;
+
+            confirmedElement = false;
 
             unsafe
             {
@@ -143,7 +145,8 @@ namespace Alis.Editor.UI.Widgets
         {
             if (!takeFile) 
             {
-                elementTaked = currentDirRight.Replace("\\", "/"); ;
+                elementTaked = currentDirRight.Replace("\\", "/");
+                return;
             }
 
             ImGui.InputText(takeFile ? "File" : "Directory",ref elementTaked, 128);
@@ -207,9 +210,11 @@ namespace Alis.Editor.UI.Widgets
             }
             else 
             {
-                elementTaked = currentDirRight.Replace("\\", "/");
-                confirmedElement = true;
-                Close();
+                if (!elementTaked.Equals(string.Empty))
+                {
+                    confirmedElement = true;
+                    Close();
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['scale_2876',['Scale',['../class_alis_1_1_core_1_1_transform.html#a0bad7be4297e39c94e7080cafb209232',1,'Alis::Core::Transform']]],
-  ['scenemanager_2877',['SceneManager',['../class_alis_1_1_core_1_1_game.html#acd59a2e7c4431c6c29152454aef8f6db',1,'Alis::Core::Game']]],
-  ['scenes_2878',['Scenes',['../class_alis_1_1_core_1_1_scene_manager.html#a9b726fdb4bb301a51e19dd0c4686040f',1,'Alis::Core::SceneManager']]]
+  ['time_2761',['Time',['../class_alis_1_1_core_1_1_config.html#ace842af3f764708a9ea3aa47d7b7789c',1,'Alis::Core::Config']]],
+  ['timescale_2762',['TimeScale',['../class_alis_1_1_core_1_1_time.html#a80786edabf9e76f7380a4b245bccba3a',1,'Alis::Core::Time']]],
+  ['timestep_2763',['TimeStep',['../class_alis_1_1_core_1_1_time.html#a1c28c5a4fc3a16040e716846fcffc34b',1,'Alis::Core::Time']]],
+  ['transform_2764',['Transform',['../class_alis_1_1_core_1_1_game_object.html#ae887b58a6ce772d8fe233d882a1a61e9',1,'Alis::Core::GameObject']]]
 ];
