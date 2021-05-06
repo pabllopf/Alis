@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['password_2868',['Password',['../class_alis_1_1_tools_1_1_user.html#a78b7db3cec428b8159c53357a4c673d5',1,'Alis::Tools::User']]],
-  ['platform_2869',['Platform',['../class_alis_1_1_editor_1_1_info.html#aa076a1cff03f4f456c8c8141b92d1eb9',1,'Alis::Editor::Info']]],
-  ['position_2870',['Position',['../class_alis_1_1_core_1_1_transform.html#a9efdc08196ef26d99193bd606dc537e2',1,'Alis::Core::Transform']]]
+  ['render_2755',['Render',['../class_alis_1_1_core_1_1_game.html#ac0fe35a9ccbd3722b29d0b3322d91257',1,'Alis::Core::Game']]],
+  ['resolution_2756',['Resolution',['../class_alis_1_1_core_1_1_window_manager.html#aa6a50ca00f0240c788ee2d6471da34d4',1,'Alis::Core::WindowManager']]],
+  ['rotation_2757',['Rotation',['../class_alis_1_1_core_1_1_transform.html#a1f61421fbb671293585f333fb2b5ab00',1,'Alis::Core::Transform']]]
 ];
