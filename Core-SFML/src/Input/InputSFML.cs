@@ -1,110 +1,81 @@
 ﻿namespace Alis.Core.SFML
 {
-    using global::SFML.Window;
-    using Newtonsoft.Json;
     using System;
-    using System.Threading.Tasks;
+    using Alis.Tools;
 
     /// <summary>Define the input</summary>
     public class InputSFML : Input
     {
-
         /// <summary>Initializes a new instance of the <see cref="InputSFML" /> class.</summary>
         /// <param name="config">The configuration.</param>
         public InputSFML(Config config) : base(config)
         {
-            Console.WriteLine("Define the input sfml");
         }
 
         /// <summary>Awakes this instance.</summary>
         /// <returns>Return none</returns>
-        public override Task Awake()
+        public override void Awake()
         {
-            return Task.Run(() =>
-            {
-
-            });
         }
-
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
-        public override Task Start()
+        public override void Start()
         {
-            return Task.Run(() =>
-            {
-
-            });
         }
 
+        
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
-        public override Task Update()
+        public override void Update()
         {
-            return Task.Run(() =>
+            if (RenderSFML.CurrentRenderSFML.RenderWindow != null)
             {
-                PollEvents();
-            });
+                foreach (Keyboard keylog in Enum.GetValues(typeof(Keyboard)))
+                {
+                    global::SFML.Window.Keyboard.Key TEST = (global::SFML.Window.Keyboard.Key)Enum.Parse(typeof(global::SFML.Window.Keyboard.Key), keylog.ToString());
+
+                    if (TEST != null)
+                    {
+                        if (global::SFML.Window.Keyboard.IsKeyPressed(TEST))
+                        {
+                            if (!Keys.Contains(keylog))
+                            {
+                                Keys.Add(keylog);
+                            }
+
+                            PressKey(keylog);
+                        }
+
+                        if (!global::SFML.Window.Keyboard.IsKeyPressed(TEST) && Keys.Contains(keylog))
+                        {
+                            Keys.Remove(keylog);
+                            ReleaseKey(keylog);
+                        }
+                    }
+                }
+            }
+
         }
 
+        
         /// <summary>Fixed the update.</summary>
         /// <returns>Return none</returns>
-        public override Task FixedUpdate()
+        public override void FixedUpdate()
         {
-            return Task.Run(() =>
-            {
-
-            });
         }
 
         /// <summary>Stops this instance.</summary>
         /// <returns>Return none</returns>
-        public override Task Stop()
+        public override void Stop()
         {
-            return Task.Run(() =>
-            {
-
-            });
         }
 
         /// <summary>Exits this instance.</summary>
         /// <returns>Return none</returns>
-        public override Task Exit()
+        public override void Exit()
         {
-            return Task.Run(()=> 
-            {
-                
-            });
-        }
-
-        /// <summary>Polls the events.</summary>
-        public override void PollEvents()
-        {
-            foreach (Core.Keyboard key in Enum.GetValues(typeof(Core.Keyboard)))
-            {
-                var test = (Keyboard.Key)Enum.Parse(typeof(Keyboard.Key), key.ToString());
-                if (Keyboard.IsKeyPressed(test))
-                {
-                    Keys.Add(key);
-                    Current.PressKeyOnce(key);
-                }
-
-                if (Keyboard.IsKeyPressed(test))
-                {
-                    Current.PressKey(key);
-                }
-
-                if (!Keyboard.IsKeyPressed(test) && Keys.Contains(key))
-                {
-                    while (Keys.Contains(key)) 
-                    {
-                        Keys.Remove(key);
-                    }
-
-                    Current.ReleaseKey(key);
-                }
-            }
         }
     }
 }

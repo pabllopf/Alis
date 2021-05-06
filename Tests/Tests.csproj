@@ -2,7 +2,7 @@
   <!-- ________________________GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <Configurations>Windows;MacOS;Linux;Release;Debug</Configurations>
+    <Configurations>Windows;Debug;Release;MacOS;Linux</Configurations>
     <AssemblyName>Tests</AssemblyName>
     <RootNamespace></RootNamespace>
   </PropertyGroup>

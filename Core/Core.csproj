@@ -2,7 +2,7 @@
   <!-- _________________________ GENERAL CONFIG ___________________________________-->
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Configurations>Windows;MacOS;Linux;Release;Debug</Configurations>
+    <Configurations>Windows;Debug;Release;MacOS;Linux</Configurations>
 	  <LangVersion>9.0</LangVersion>
 	  <Nullable>enable</Nullable>
 	  <AssemblyName>Core</AssemblyName>

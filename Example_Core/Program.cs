@@ -4,9 +4,9 @@
 //----------------------------------------------------------------------------------------------------
 namespace Example_Core
 {
+    using System.Numerics;
     using Alis.Core;
     using Alis.Core.SFML;
-    using System.Numerics;
 
     /// <summary>Example of videogame.</summary>
     public class Program
@@ -15,21 +15,26 @@ namespace Example_Core
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
+            //VideoGame.TestSFML();
+
             VideoGame.Builder()
                 .Config(Config.Builder()
                     .Name("Ping Pong")
                     .Author("Pablo Perdomo Falcón")
                     .Debug(true)
                     .Time(Time.Builder()
-                        .LimitFrameRate(true)
+                        .LimitFrameRate(false)
                         .TimeStep(0.01f)
+                        .FrameRate(120)
+                        .LimitFrameRate(true)
                     .Build())
                     .Window(WindowManager.Builder()
                             .Resolution(1920, 1080)
                             .WindowState(WindowState.Normal)
                             .Build())
                     .Build())
-                .SceneManager(SceneManager.Builder()
+
+                 .SceneManager(SceneManager.Builder()
                     .Scene(Scene.Builder()
                         .Name("Menu")
                         .GameObject(GameObject.Builder()
@@ -46,7 +51,7 @@ namespace Example_Core
                             .Name("startButton")
                             .Transform(new Transform(new Vector3(760.0f, 300.0f, 0), new Vector3(0.0f), new Vector3(7.0f)))
                             .Component(new Sprite("start_button.png"))
-                            
+
                             .Build())
                         .GameObject(GameObject.Builder()
                             .Name("exitButton")
@@ -100,7 +105,7 @@ namespace Example_Core
                             .Build())
                         .GameObject(GameObject.Builder()
                             .Name("racket1")
-                            .Transform(new Transform(new Vector3(51,487,0), new Vector3(0,90,0), new Vector3(1)))
+                            .Transform(new Transform(new Vector3(51, 487, 0), new Vector3(0, 90, 0), new Vector3(1)))
                             .Component(new PointController())
                             .Component(new Move(Keyboard.W, Keyboard.S))
                             .Component(new Sprite("Button13.png"))
@@ -108,7 +113,7 @@ namespace Example_Core
                             .Build())
                         .GameObject(GameObject.Builder()
                             .Name("racket2")
-                            .Transform(new Transform(new Vector3(1890,487,0), new Vector3(0,90,0), new Vector3(1)))
+                            .Transform(new Transform(new Vector3(1890, 487, 0), new Vector3(0, 90, 0), new Vector3(1)))
                             .Component(new PointController())
                             .Component(new Move(Keyboard.Up, Keyboard.Down))
                             .Component(new Sprite("Button14.png"))

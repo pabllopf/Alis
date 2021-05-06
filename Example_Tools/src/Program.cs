@@ -4,10 +4,6 @@
 //-------------------------------------------------------------------------------------------------
 namespace Example_Tools
 {
-    using System;
-    using System.Collections.Generic;
-    using Alis.Tools;
-   
     /// <summary>Define main class</summary>
     public class Program
     {
@@ -16,7 +12,7 @@ namespace Example_Tools
         public static void Main(string[] args)
         {
             Example_LocalData.Run();
-            //Example_CloudData.Run();
+            Example_CloudData.Run();
         }
     }
 }

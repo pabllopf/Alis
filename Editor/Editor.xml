@@ -314,24 +314,6 @@
         <member name="M:Alis.Editor.UI.Widgets.Widget.Draw">
             <summary>Draw this instance.</summary>
         </member>
-        <member name="T:Alis.Editor.UI.Widgets.WidgetManager">
-            <summary>Widget Manager</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.current">
-            <summary>The current</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.widgets">
-            <summary>The widgets</summary>
-        </member>
-        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.info">
-            <summary>The information</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.#ctor(Alis.Editor.Info,ImGuiNET.ImGuiController)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.WidgetManager" /> class.</summary>
-        </member>
-        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.Update">
-            <summary>Draws this instance.</summary>
-        </member>
         <member name="T:Alis.Editor.UI.Widgets.About">
             <summary>Show the game running</summary>
         </member>
@@ -1065,6 +1047,24 @@
             <param name="sender">The sender.</param>
             <param name="e">if set to <c>true</c> [e].</param>
             <returns>Run the event</returns>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.WidgetManager">
+            <summary>Widget Manager</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.current">
+            <summary>The current</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.widgets">
+            <summary>The widgets</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.info">
+            <summary>The information</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.#ctor(Alis.Editor.Info,ImGuiNET.ImGuiController)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.WidgetManager" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.Update">
+            <summary>Draws this instance.</summary>
         </member>
         <member name="T:Alis.Editor.Utils.Icon">
             <summary>The icons of app.</summary>

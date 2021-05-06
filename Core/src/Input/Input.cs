@@ -36,14 +36,10 @@ namespace Alis.Core
         [NotNull]
         private readonly Config config;
 
-        /// <summary> Initializes static members of the <see cref="Input"/> class. </summary>
-        static Input() 
+        static Input()
         {
-            Keys ??= new List<Keyboard>();
-
-            delegates ??= new List<EventHandler<Keyboard>>();
-
-            Logger.Info();
+            OnPressKey += Input_OnPressKey;
+            OnReleaseOnce += Input_OnReleaseOnce;
         }
 
         /// <summary>Initializes a new instance of the <see cref="Input" /> class.</summary>
@@ -51,74 +47,17 @@ namespace Alis.Core
         public Input(Config config)
         {
             this.config = config;
-            Logger.Log("Print time: " + config.Time.TimeStep);
+            current ??= this;
             Logger.Info();
 
-            current ??= this;
+            keys ??= new List<Keyboard>();
         }
-
-        public static List<EventHandler<Keyboard>> delegates;
-
-        private static event EventHandler<Keyboard> onPressKey;
 
         /// <summary>Occurs when [on press key].</summary>
-        public static event EventHandler<Keyboard> OnPressKey
-        {
-            add
-            {
-                if (!delegates.Contains(value)) 
-                {
-                    onPressKey += value;
-                    delegates.Add(value);
-                }
-            }
-            remove 
-            {
-                onPressKey -= value;
-                delegates.Remove(value);
-            }
-        }
-
-        private static event EventHandler<Keyboard> onPressKeyOnce;
-
-
-        /// <summary>Occurs when [on press once].</summary>
-        public static event EventHandler<Keyboard> OnPressKeyOnce
-        {
-            add
-            {
-                if (!delegates.Contains(value))
-                {
-                    onPressKeyOnce += value;
-                    delegates.Add(value);
-                }
-            }
-            remove 
-            {
-                onPressKeyOnce -= value;
-                delegates.Remove(value);
-            }
-        }
-
-        private static event EventHandler<Keyboard> onReleaseOnce;
+        public static event EventHandler<Keyboard> OnPressKey;
 
         /// <summary>Occurs when [on release once].</summary>
-        public static event EventHandler<Keyboard> OnReleaseOnce
-        {
-            add
-            {
-                if (!delegates.Contains(value))
-                {
-                    onReleaseOnce += value;
-                    delegates.Add(value);
-                }
-            }
-            remove
-            {
-                onReleaseOnce -= value;
-                delegates.Remove(value);
-            }
-        }
+        public static event EventHandler<Keyboard> OnReleaseOnce;
 
         /// <summary>Gets or sets the keys.</summary>
         /// <value>The keys.</value>
@@ -133,32 +72,32 @@ namespace Alis.Core
         /// <summary>Awakes this instance.</summary>
         /// <returns>Return none</returns>
         /// <exception cref="Logger.Error">Not Implemented</exception>
-        public virtual Task Awake() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
+        public virtual void Awake() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Starts this instance.</summary>
         /// <returns>Return none</returns>
         /// <exception cref="Logger.Error">Not Implemented</exception>
-        public virtual Task Start() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
+        public virtual void Start() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Updates this instance.</summary>
         /// <returns>Return none</returns>
         /// <exception cref="Logger.Error">Not Implemented</exception>
-        public virtual Task Update() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
+        public virtual void Update() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Fixed the update.</summary>
         /// <returns>Return none</returns>
         /// <exception cref="Logger.Error">Not Implemented</exception>
-        public virtual Task FixedUpdate() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
+        public virtual void FixedUpdate() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Stops this instance.</summary>
         /// <returns>Return none</returns>
         /// <exception cref="Logger.Error">Not Implemented</exception>
-        public virtual Task Stop() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
+        public virtual void Stop() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Exits this instance.</summary>
         /// <returns>Return none</returns>
         /// <exception cref="Logger.Error">Not Implemented</exception>
-        public virtual Task Exit() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
+        public virtual void Exit() => throw Logger.Error(string.Format(ErrorMessage, GetType().FullName));
 
         /// <summary>Polls the events.</summary>
         /// <exception cref="Logger.Error">Not Implemented</exception>
@@ -166,15 +105,11 @@ namespace Alis.Core
 
         /// <summary>Presses the key.</summary>
         /// <param name="key">The key.</param>
-        public void PressKey(Keyboard key) => onPressKey?.Invoke(this, key);
-
-        /// <summary>Presses the key once.</summary>
-        /// <param name="key">The key.</param>
-        public void PressKeyOnce(Keyboard key) => onPressKeyOnce?.Invoke(this, key);
+        public void PressKey(Keyboard key) => OnPressKey?.Invoke(this, key);
 
         /// <summary>Releases the key.</summary>
         /// <param name="key">The key.</param>
-        public void ReleaseKey(Keyboard key) => onReleaseOnce?.Invoke(this, key);
+        public void ReleaseKey(Keyboard key) => OnReleaseOnce?.Invoke(this, key);
 
         #region Define Events
 
@@ -188,10 +123,13 @@ namespace Alis.Core
         /// <param name="keyboard">The keyboard.</param>
         private static void Input_OnPressKeyOnce([NotNull] object sender, [NotNull] Keyboard keyboard) => Logger.Info();
 
+
+        private static void Input_OnReleaseOnce(object sender, Keyboard e) => Logger.Info();
+
+
         public static void Clear()
         {
-            Logger.Warning("Clean delegates");
-            delegates.Clear();
+            Logger.Warning("Clean inputs");
         }
 
         #endregion

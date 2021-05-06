@@ -82,8 +82,6 @@ namespace Alis.Core
             OnFixedUpdate += VideoGame_OnFixedUpdate;
             OnStop += VideoGame_OnStop;
             OnExit += VideoGame_OnExit;
-
-            Logger.Warning("Build the videogame of json");
         }
 
         /// <summary>Occurs when [on awake].</summary>
@@ -139,8 +137,8 @@ namespace Alis.Core
         /// <returns>Preview render</returns>
         public virtual byte[] PreviewRender()
         {
-            Task.WaitAll(input.Update(), sceneManager.Update());
-
+            input.Update();
+            sceneManager.Update().Wait();
             return render.FrameBytes();
         }
 
@@ -172,8 +170,11 @@ namespace Alis.Core
         /// <summary>Awakes this instance.</summary>
         private void Awake()
         {
-            Task.WaitAll(input.Awake(), sceneManager.Awake());
+            
+            sceneManager.Awake().Wait();
             render.Awake();
+
+            input.Awake();
 
             OnAwake?.Invoke(this, true);
         }
@@ -181,7 +182,8 @@ namespace Alis.Core
         /// <summary>Starts this instance.</summary>
         private void Start()
         {
-            Task.WaitAll(input.Start(), sceneManager.Start());
+            
+            sceneManager.Start().Wait();
             render.Start();
 
             OnStart?.Invoke(this, true);
@@ -190,24 +192,26 @@ namespace Alis.Core
         /// <summary>Update every frame the videogame.</summary>
         public void Update()
         {
-            Task.WaitAll(input.Update(), sceneManager.Update());
             render.Update();
-
+            input.Update();
+            sceneManager.Update().Wait();
+            
             OnUpdate?.Invoke(this, true);
         }
 
         /// <summary>Update every time the videogame.</summary>
         private void FixedUpdate() 
         {
-            Task.WaitAll(input.FixedUpdate(), sceneManager.FixedUpdate());
-
+            sceneManager.FixedUpdate().Wait();
+            render.FixedUpdate();
             OnFixedUpdate?.Invoke(this, true);
         }
 
         /// <summary>Stops this instance.</summary>
         private void Stop()
         {
-            Task.WaitAll(input.Stop(), sceneManager.Stop());
+            input.Stop();
+            sceneManager.Stop().Wait();
             render.Stop();
             OnStop?.Invoke(this, true);
         }
@@ -215,7 +219,8 @@ namespace Alis.Core
         /// <summary>Exit the videogame.</summary>
         private void Exit() 
         {
-            Task.WaitAll(input.Exit(), sceneManager.Exit());
+            input.Exit();
+            sceneManager.Exit().Wait();
             render.Exit();
 
             OnExit?.Invoke(this, true);

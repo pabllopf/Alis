@@ -4,28 +4,20 @@
 //----------------------------------------------------------------------------------------------------
 namespace Example_Core
 {
-
     using Alis.Core;
     using System;
 
     internal class Select : Component
     {
-
-
         public override void Start()
         {
-            Input.OnPressKey += Input_OnPressKey;
+            Input.OnPressKey += Input_OnPressKeyOnce;
         }
 
-        public override void Update()
-        {
-        }
-
-        private void Input_OnPressKey(object sender, Keyboard key)
+        private void Input_OnPressKeyOnce(object sender, Keyboard key)
         {
             if (key.Equals(Keyboard.Num1))
             {
-                //SceneManager.Reset("Game");
                 SceneManager.Load("Game");
                 return;
             }
@@ -35,6 +27,10 @@ namespace Example_Core
                 Environment.Exit(0);
                 return;
             }
+        }
+
+        public override void Update()
+        {
         }
     }
 }
