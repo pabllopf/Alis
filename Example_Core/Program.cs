@@ -27,7 +27,7 @@ namespace Example_Core
                     .Time(Time.Builder()
                         .LimitFrameRate(false)
                         .TimeStep(0.01f)
-                        .FrameRate(120)
+                        .FrameRate(80)
                         .LimitFrameRate(true)
                     .Build())
                     .Window(WindowManager.Builder()
