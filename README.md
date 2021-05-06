@@ -35,8 +35,8 @@
 | Linux Debian x86 | ![](https://img.shields.io/badge/-Available-green) |  |  |  |
 
 ## Graphics(Core)
-The core give to you the last updates of SFML to render and create simples 2D videogames.
-"In the future the core give more render functions"
+The core provides the last updates of SFML to render and create simples 2D videogames.
+"In the future the core will be updated with more render functions"
 
 ## Dependencies
 ### Editor
