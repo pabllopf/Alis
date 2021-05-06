@@ -57,6 +57,33 @@
                 }
             }
 
+            if (RenderSFML.CurrentRenderSFML.RenderTexture != null)
+            {
+                foreach (Keyboard keylog in Enum.GetValues(typeof(Keyboard)))
+                {
+                    global::SFML.Window.Keyboard.Key TEST = (global::SFML.Window.Keyboard.Key)Enum.Parse(typeof(global::SFML.Window.Keyboard.Key), keylog.ToString());
+
+                    if (TEST != null)
+                    {
+                        if (global::SFML.Window.Keyboard.IsKeyPressed(TEST))
+                        {
+                            if (!Keys.Contains(keylog))
+                            {
+                                Keys.Add(keylog);
+                            }
+
+                            PressKey(keylog);
+                        }
+
+                        if (!global::SFML.Window.Keyboard.IsKeyPressed(TEST) && Keys.Contains(keylog))
+                        {
+                            Keys.Remove(keylog);
+                            ReleaseKey(keylog);
+                        }
+                    }
+                }
+            }
+
         }
 
         

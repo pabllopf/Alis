@@ -50,14 +50,8 @@
     <DebugType />
     <Optimize>true</Optimize>
   </PropertyGroup>
-
-
-
-
-
-
   <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
+    <PackageReference Include="Alis.Core-SFML" Version="1.3.5" />
   </ItemGroup>
 
   <ItemGroup>
