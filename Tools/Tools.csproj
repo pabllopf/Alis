@@ -28,6 +28,8 @@
     <Version>1.3.6</Version>
 	  <AssemblyName>Tools</AssemblyName>
 	  <RootNamespace>Tools</RootNamespace>
+    <RepositoryUrl>https://github.com/pabllopf/Alis</RepositoryUrl>
+    <RepositoryType>public</RepositoryType>
   </PropertyGroup>
 
   
