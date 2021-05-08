@@ -63,7 +63,7 @@ SFML provides a simple interface to the various components of your PC, to ease t
 ### Tools
 
 ### Documentation with Doxygen
-Generate documentation from source code
+Generate documentation from source code.
 Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL and to some extent D.
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://www.doxygen.nl/index.html)
