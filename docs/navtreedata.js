@@ -51,95 +51,89 @@ var NAVTREE =
         [ "TopMenu", "md__api_doc__pages_3_8_editor.html#autotoc_md21", null ],
         [ "BottomMenu", "md__api_doc__pages_3_8_editor.html#autotoc_md22", null ]
       ] ],
-      [ "Gestor de ventanas dinámico", "md__api_doc__pages_3_8_editor.html#autotoc_md23", null ],
-      [ "Tools", "md__api_doc__pages_3_8_editor.html#autotoc_md24", [
-        [ "Persistencia de datos", "md__api_doc__pages_3_8_editor.html#autotoc_md25", [
-          [ "LocalData", "md__api_doc__pages_3_8_editor.html#autotoc_md26", null ],
-          [ "CloudData", "md__api_doc__pages_3_8_editor.html#autotoc_md27", null ]
-        ] ],
-        [ "Soporte multilenguaje", "md__api_doc__pages_3_8_editor.html#autotoc_md28", [
-          [ "Language", "md__api_doc__pages_3_8_editor.html#autotoc_md29", null ]
-        ] ],
-        [ "Seguridad", "md__api_doc__pages_3_8_editor.html#autotoc_md30", [
-          [ "Encriptor", "md__api_doc__pages_3_8_editor.html#autotoc_md31", null ],
-          [ "Crypted", "md__api_doc__pages_3_8_editor.html#autotoc_md32", null ]
-        ] ],
-        [ "Gestión de recursos", "md__api_doc__pages_3_8_editor.html#autotoc_md33", [
-          [ "Asset", "md__api_doc__pages_3_8_editor.html#autotoc_md34", null ],
-          [ "Application", "md__api_doc__pages_3_8_editor.html#autotoc_md35", null ]
-        ] ],
-        [ "Gestor de archivos", "md__api_doc__pages_3_8_editor.html#autotoc_md36", [
-          [ "Zipper", "md__api_doc__pages_3_8_editor.html#autotoc_md37", null ]
-        ] ],
-        [ "Depuración", "md__api_doc__pages_3_8_editor.html#autotoc_md38", [
-          [ "Logger", "md__api_doc__pages_3_8_editor.html#autotoc_md39", null ]
-        ] ]
-      ] ]
+      [ "Gestor de ventanas dinámico", "md__api_doc__pages_3_8_editor.html#autotoc_md23", null ]
     ] ],
     [ "4. Core", "md__api_doc__pages_4_8_core.html", [
-      [ "Crea tu primer proyecto", "md__api_doc__pages_4_8_core.html#autotoc_md41", [
-        [ "Proyecto de ejemplo", "md__api_doc__pages_4_8_core.html#autotoc_md42", null ]
+      [ "Crea tu primer proyecto", "md__api_doc__pages_4_8_core.html#autotoc_md25", [
+        [ "Proyecto de ejemplo", "md__api_doc__pages_4_8_core.html#autotoc_md26", null ]
       ] ]
     ] ],
     [ "5. Tools", "md__api_doc__pages_5_8_tools.html", [
-      [ "4.1 Quick Start", "md__api_doc__pages_5_8_tools.html#autotoc_md44", null ],
-      [ "4.2 Crypted", "md__api_doc__pages_5_8_tools.html#autotoc_md45", null ],
-      [ "4.3 Language", "md__api_doc__pages_5_8_tools.html#autotoc_md46", null ],
-      [ "4.6 Updater", "md__api_doc__pages_5_8_tools.html#autotoc_md47", null ]
+      [ "Persistencia de datos", "md__api_doc__pages_5_8_tools.html#autotoc_md28", [
+        [ "LocalData", "md__api_doc__pages_5_8_tools.html#autotoc_md29", null ],
+        [ "CloudData", "md__api_doc__pages_5_8_tools.html#autotoc_md30", null ]
+      ] ],
+      [ "Soporte multilenguaje", "md__api_doc__pages_5_8_tools.html#autotoc_md31", [
+        [ "Language", "md__api_doc__pages_5_8_tools.html#autotoc_md32", null ]
+      ] ],
+      [ "Seguridad", "md__api_doc__pages_5_8_tools.html#autotoc_md33", [
+        [ "Encriptor", "md__api_doc__pages_5_8_tools.html#autotoc_md34", null ],
+        [ "Crypted", "md__api_doc__pages_5_8_tools.html#autotoc_md35", null ]
+      ] ],
+      [ "GestiÃ³n de recursos", "md__api_doc__pages_5_8_tools.html#autotoc_md36", [
+        [ "Asset", "md__api_doc__pages_5_8_tools.html#autotoc_md37", null ],
+        [ "Application", "md__api_doc__pages_5_8_tools.html#autotoc_md38", null ]
+      ] ],
+      [ "Gestor de archivos", "md__api_doc__pages_5_8_tools.html#autotoc_md39", [
+        [ "Zipper", "md__api_doc__pages_5_8_tools.html#autotoc_md40", null ]
+      ] ],
+      [ "DepuraciÃ³n", "md__api_doc__pages_5_8_tools.html#autotoc_md41", [
+        [ "Logger", "md__api_doc__pages_5_8_tools.html#autotoc_md42", null ]
+      ] ]
     ] ],
     [ "6. Informacion de interes", "md__api_doc__pages_6_8_information_of_interest.html", [
-      [ "Preguntas frecuentes", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md49", [
-        [ "¿Es compatible con visual studio 2017?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md50", null ],
-        [ "¿Puedo migrar mi proyecto a una nueva versión de Alis?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md51", null ],
-        [ "¿Estoy intentando cargar un proyecto de ejemplo con el Editor y no me deja?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md52", null ],
-        [ "¿Puedo integrar las tools en un proyecto ya existente?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md53", null ],
-        [ "¿Es necesario saber de programación para usar Alis?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md54", null ]
+      [ "Preguntas frecuentes", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md44", [
+        [ "¿Es compatible con visual studio 2017?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md45", null ],
+        [ "¿Puedo migrar mi proyecto a una nueva versión de Alis?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md46", null ],
+        [ "¿Estoy intentando cargar un proyecto de ejemplo con el Editor y no me deja?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md47", null ],
+        [ "¿Puedo integrar las tools en un proyecto ya existente?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md48", null ],
+        [ "¿Es necesario saber de programación para usar Alis?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md49", null ]
       ] ],
-      [ "Contacta con nosotros", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md55", null ],
-      [ "Foro de la comunidad", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md56", [
-        [ "¿Cómo puedo participar en el foro?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md57", null ]
+      [ "Contacta con nosotros", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md50", null ],
+      [ "Foro de la comunidad", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md51", [
+        [ "¿Cómo puedo participar en el foro?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md52", null ]
       ] ],
-      [ "Panel de incidencias", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md58", [
-        [ "¿Cómo puedo reportar una incidencia?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md59", null ]
+      [ "Panel de incidencias", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md53", [
+        [ "¿Cómo puedo reportar una incidencia?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md54", null ]
       ] ]
     ] ],
     [ "7. Code of Conduct", "md__api_doc__pages_7_8_code_of_conduct.html", [
-      [ "5.1 Our Pledge", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md61", null ],
-      [ "5.2 Our Standards", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md62", null ],
-      [ "5.3 Our Responsibilities", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md63", null ],
-      [ "5.4 Scope", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md64", null ],
-      [ "5.5 Enforcement", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md65", null ],
-      [ "5.6 Attribution", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md66", null ]
+      [ "5.1 Our Pledge", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md56", null ],
+      [ "5.2 Our Standards", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md57", null ],
+      [ "5.3 Our Responsibilities", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md58", null ],
+      [ "5.4 Scope", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md59", null ],
+      [ "5.5 Enforcement", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md60", null ],
+      [ "5.6 Attribution", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md61", null ]
     ] ],
     [ "8. Contributing", "md__api_doc__pages_8_8_contributing.html", [
-      [ "7.1 Author", "md__api_doc__pages_8_8_contributing.html#autotoc_md68", null ],
-      [ "7.2 Contributors", "md__api_doc__pages_8_8_contributing.html#autotoc_md69", [
-        [ "7.1.2 Testers", "md__api_doc__pages_8_8_contributing.html#autotoc_md70", null ]
+      [ "7.1 Author", "md__api_doc__pages_8_8_contributing.html#autotoc_md63", null ],
+      [ "7.2 Contributors", "md__api_doc__pages_8_8_contributing.html#autotoc_md64", [
+        [ "7.1.2 Testers", "md__api_doc__pages_8_8_contributing.html#autotoc_md65", null ]
       ] ]
     ] ],
     [ "9. GNU General Public License v3.0", "md__api_doc__pages_9_8_license.html", [
-      [ "6.1 Preamble", "md__api_doc__pages_9_8_license.html#autotoc_md72", null ],
-      [ "6.2 Terms and conditions", "md__api_doc__pages_9_8_license.html#autotoc_md73", [
-        [ "6.2.1 Source Code.", "md__api_doc__pages_9_8_license.html#autotoc_md74", null ],
-        [ "6.2.2 Basic Permissions.", "md__api_doc__pages_9_8_license.html#autotoc_md75", null ],
-        [ "6.2.3 Protecting Users' Legal Rights From Anti-Circumvention Law.", "md__api_doc__pages_9_8_license.html#autotoc_md76", null ],
-        [ "6.2.4 Conveying Verbatim Copies.", "md__api_doc__pages_9_8_license.html#autotoc_md77", null ],
-        [ "6.2.5 Conveying Modified Source Versions.", "md__api_doc__pages_9_8_license.html#autotoc_md78", null ],
-        [ "6.2.6 Conveying Non-Source Forms.", "md__api_doc__pages_9_8_license.html#autotoc_md79", null ],
-        [ "6.2.7 Additional Terms.", "md__api_doc__pages_9_8_license.html#autotoc_md80", null ],
-        [ "6.2.8 Termination.", "md__api_doc__pages_9_8_license.html#autotoc_md81", null ],
-        [ "6.2.9 Acceptance Not Required for Having Copies.", "md__api_doc__pages_9_8_license.html#autotoc_md82", null ],
-        [ "6.2.10 Automatic Licensing of Downstream Recipients.", "md__api_doc__pages_9_8_license.html#autotoc_md83", null ],
-        [ "6.2.11 Patents.", "md__api_doc__pages_9_8_license.html#autotoc_md84", null ],
-        [ "6.2.12 No Surrender of Others' Freedom.", "md__api_doc__pages_9_8_license.html#autotoc_md85", null ],
-        [ "6.2.13 Use with the GNU Affero General Public License.", "md__api_doc__pages_9_8_license.html#autotoc_md86", null ],
-        [ "6.2.14 Revised Versions of this License.", "md__api_doc__pages_9_8_license.html#autotoc_md87", null ],
-        [ "6.2.15 Disclaimer of Warranty.", "md__api_doc__pages_9_8_license.html#autotoc_md88", null ],
-        [ "6.2.16 Limitation of Liability.", "md__api_doc__pages_9_8_license.html#autotoc_md89", null ],
-        [ "6.2.17 Interpretation of Sections 15 and 16.", "md__api_doc__pages_9_8_license.html#autotoc_md90", null ]
+      [ "6.1 Preamble", "md__api_doc__pages_9_8_license.html#autotoc_md67", null ],
+      [ "6.2 Terms and conditions", "md__api_doc__pages_9_8_license.html#autotoc_md68", [
+        [ "6.2.1 Source Code.", "md__api_doc__pages_9_8_license.html#autotoc_md69", null ],
+        [ "6.2.2 Basic Permissions.", "md__api_doc__pages_9_8_license.html#autotoc_md70", null ],
+        [ "6.2.3 Protecting Users' Legal Rights From Anti-Circumvention Law.", "md__api_doc__pages_9_8_license.html#autotoc_md71", null ],
+        [ "6.2.4 Conveying Verbatim Copies.", "md__api_doc__pages_9_8_license.html#autotoc_md72", null ],
+        [ "6.2.5 Conveying Modified Source Versions.", "md__api_doc__pages_9_8_license.html#autotoc_md73", null ],
+        [ "6.2.6 Conveying Non-Source Forms.", "md__api_doc__pages_9_8_license.html#autotoc_md74", null ],
+        [ "6.2.7 Additional Terms.", "md__api_doc__pages_9_8_license.html#autotoc_md75", null ],
+        [ "6.2.8 Termination.", "md__api_doc__pages_9_8_license.html#autotoc_md76", null ],
+        [ "6.2.9 Acceptance Not Required for Having Copies.", "md__api_doc__pages_9_8_license.html#autotoc_md77", null ],
+        [ "6.2.10 Automatic Licensing of Downstream Recipients.", "md__api_doc__pages_9_8_license.html#autotoc_md78", null ],
+        [ "6.2.11 Patents.", "md__api_doc__pages_9_8_license.html#autotoc_md79", null ],
+        [ "6.2.12 No Surrender of Others' Freedom.", "md__api_doc__pages_9_8_license.html#autotoc_md80", null ],
+        [ "6.2.13 Use with the GNU Affero General Public License.", "md__api_doc__pages_9_8_license.html#autotoc_md81", null ],
+        [ "6.2.14 Revised Versions of this License.", "md__api_doc__pages_9_8_license.html#autotoc_md82", null ],
+        [ "6.2.15 Disclaimer of Warranty.", "md__api_doc__pages_9_8_license.html#autotoc_md83", null ],
+        [ "6.2.16 Limitation of Liability.", "md__api_doc__pages_9_8_license.html#autotoc_md84", null ],
+        [ "6.2.17 Interpretation of Sections 15 and 16.", "md__api_doc__pages_9_8_license.html#autotoc_md85", null ]
       ] ],
-      [ "6.3 End of terms and conditions", "md__api_doc__pages_9_8_license.html#autotoc_md91", [
-        [ "6.3.1 How to Apply These Terms to Your New Programs", "md__api_doc__pages_9_8_license.html#autotoc_md92", null ]
+      [ "6.3 End of terms and conditions", "md__api_doc__pages_9_8_license.html#autotoc_md86", [
+        [ "6.3.1 How to Apply These Terms to Your New Programs", "md__api_doc__pages_9_8_license.html#autotoc_md87", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [

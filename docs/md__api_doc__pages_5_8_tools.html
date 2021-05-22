@@ -102,51 +102,52 @@ $(document).ready(function(){initNavTree('md__api_doc__pages_5_8_tools.html','')
 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md44"></a>
-4.1 Quick Start</h1>
-<blockquote class="doxtable">
-<p>Import on your project with .NUGET: </p>
-</blockquote>
-<div class="fragment"><div class="line">dotnet add package Alis.Tools</div>
-</div><!-- fragment --><blockquote class="doxtable">
-<p>Download the last release on: </p>
-</blockquote>
-<p><a href="https://github.com/pabllopf/Alis/">https://github.com/pabllopf/Alis/</a></p>
-<h1><a class="anchor" id="autotoc_md45"></a>
-4.2 Crypted</h1>
-<blockquote class="doxtable">
-<p>Tool that allows you to encrypt and decrypt variables in RAM memory. </p>
-</blockquote>
-<div class="fragment"><div class="line">// Define any type of variable to encrypt:</div>
-<div class="line">Crypted&lt;string&gt; passwd = new Crypted&lt;string&gt;(&quot;12345&quot;);</div>
-<div class="line"> </div>
-<div class="line">// Get &amp; Set the values of variable:</div>
-<div class="line">string decrypt = passwd.Get();</div>
-<div class="line">passwd.Set(&quot;other passwd&quot;);</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md46"></a>
-4.3 Language</h1>
-<blockquote class="doxtable">
-<p>Tool that allows you to traduce any project in multiple languages. Manage all the resources to be translated centrally from a single text file. Easy incorporation into any project thanks to event management. </p>
-</blockquote>
-<div class="fragment"><div class="line">// Example</div>
-<div class="line">````</div>
-<div class="line"> </div>
-<div class="line"> </div>
-<div class="line">## 4.4 Application</div>
-<div class="line"> </div>
-<div class="line">&gt; Tool that allows you to control all general configuration of your project.</div>
-</div><!-- fragment --><p>// Example </p><div class="fragment"><div class="line">## 4.5 Zipper</div>
-<div class="line">&gt; Tool that allows you to manage all types of compressed files </div>
-<div class="line">&gt; without having to worry about the platform or the project configuration.</div>
-<div class="line"> </div>
-<div class="line">```</div>
-<div class="line">// Example</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md47"></a>
-4.6 Updater</h1>
-<blockquote class="doxtable">
-<p>Manage and update all the resources of your project thanks to this new system of updates from the cloud that will allow you to be completely unconcerned. Just select the folder to be synced and publish when a new version of your resources is needed! </p>
-</blockquote>
-<p>``` // Example ```` </p>
+<div class="textblock"><p>Las herramientas que ofrece Alis, son un conjunto de diversas funcionalidades que de una forma u otra aumentarán la productividad, reduciendo tiempo en el desarrollo. Es por ello por lo que se ha optado por desacoplarlas completamente del framework y de ser necesario se pueden incorporar en cualquier otro proyecto sin necesidad de cargar el framework completo.</p>
+<h1><a class="anchor" id="autotoc_md28"></a>
+Persistencia de datos</h1>
+<p>La persistencia de datos es un elemento importantísimo en nuestros videojuegos, siempre será necesario guardar determinados datos y esto puede suponer en ocasiones un verdadero reto. Alis propone dos herramientas que te permitirán gestionar tus datos tanto en local como en la nube.</p>
+<h2><a class="anchor" id="autotoc_md29"></a>
+LocalData</h2>
+<p>Con esta herramienta puedes guardar y acceder a cualquier tipo de información en local, ya sea un objeto primitivo o compuesto, puedes encriptar la información y todo ello en tiempo de ejecución sin afectar al rendimiento del videojuego.</p>
+<h2><a class="anchor" id="autotoc_md30"></a>
+CloudData</h2>
+<p>Esta herramienta es muy parecida a 'LocalData', con la diferencia que gestiona datos en la nube. Por ahora es solo compatible con Dropbox, y tiene de especial que permite la subida y descarga de archivos de amanera asíncrona con lo cual no debería de afectar al rendimiento del videojuego.</p>
+<h1><a class="anchor" id="autotoc_md31"></a>
+Soporte multilenguaje</h1>
+<p>En la actualidad, son cada vez más los videojuegos que podemos encontrarnos traducidos a distintos idiomas. Durante el desarrollo de estos proyectos es complicado introducir varios idiomas si no se tuvo en cuenta desde un inicio. Por este motivo se propone la siguiente herramienta:</p>
+<h2><a class="anchor" id="autotoc_md32"></a>
+Language</h2>
+<p>Con esta herramienta podrás tener un sistema centralizado de gestión de los idiomas de tu videojuego. Y gracias a su incorporación de eventos en tiempo de ejecución podrás cambiar de idioma de manera casi inmediata.</p>
+<h1><a class="anchor" id="autotoc_md33"></a>
+Seguridad</h1>
+<p>La seguridad en tus videojuegos es algo a tener en cuenta, ya que siempre existirá personas que intenten vulnerar la seguridad de tu proyecto con el objetivo de hacer las denominadas "trampas o hacks". Por eso se ofrece las siguientes herramientas:</p>
+<h2><a class="anchor" id="autotoc_md34"></a>
+Encriptor</h2>
+<p>Herramienta que te ofrece varios sistemas de encriptado para usarlos cuando los necesites sin tener que invertir tiempo en investigar y desarrollarlos tu mismo.</p>
+<h2><a class="anchor" id="autotoc_md35"></a>
+Crypted</h2>
+<p>Es una herramienta ideal para evitar que puedan acceder a datos en memoria RAM, ya que te permite guardar datos encriptados en memoria RAM y acceder a ellos cuando se necesite.</p>
+<h1><a class="anchor" id="autotoc_md36"></a>
+Gestión de recursos</h1>
+<p>Gestionar los recursos de tu videojuego puede ser un verdadero problema, sobre todo cuando se trata de juegos multiplataforma que se comunicarán de diferentes maneras con sus respectivos sistemas operativos. Por este motivo se ha creado la siguiente herramienta.</p>
+<h2><a class="anchor" id="autotoc_md37"></a>
+Asset</h2>
+<p>Con esta herramienta puedes localizar cualquier recurso de tu videojuego, que se encuentre en la carpeta 'assets', pasandole el nombre del recurso.</p>
+<h2><a class="anchor" id="autotoc_md38"></a>
+Application</h2>
+<p>Con esta herramienta accederemos a todos los directorios de interés del sistema de ejecución, permitiendo en tan solo una línea obtener lo que necesitamos.</p>
+<h1><a class="anchor" id="autotoc_md39"></a>
+Gestor de archivos</h1>
+<p>En ocasiones debemos de empaquetar archivos o recursos de nuestros videojuegos. Un caso habitual es generar un archivo comprimido de la partida guardada para luego usarla o incluso subirla a un servidor. Estas tareas de gestión de archivos se pueden convertir en un problema cuando hablamos de proyectos multiplataforma. Alis ofrece la siguiente herramienta:</p>
+<h2><a class="anchor" id="autotoc_md40"></a>
+Zipper</h2>
+<p>Herramienta preparada para comprimir o descomprimir archivos en formato '.zip' de manera síncrona o asíncrona.</p>
+<h1><a class="anchor" id="autotoc_md41"></a>
+Depuración</h1>
+<p>Saber que ocurre en cada momento durante el desarrollo de un videojuego, es algo tedioso y a veces puede suponer un esfuerzo innecesario, si se hubiera planteado desde el principio. Por este motivo Alis facilita la siguiente herramienta:</p>
+<h2><a class="anchor" id="autotoc_md42"></a>
+Logger</h2>
+<p>Esta herramienta te permite controlar las trazas del proyecto. Con 'Logger' podrás realizar mensajes multinivel (log, warning, info o critical), guardar toda las salidas en un fichero y configurar varios niveles dependiendo de lo que se necesite. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
