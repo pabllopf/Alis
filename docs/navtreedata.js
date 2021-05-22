@@ -29,9 +29,9 @@ var NAVTREE =
       [ "Editor", "md__api_doc__pages_1_8_quick__start.html#autotoc_md1", [
         [ "Windows 10", "md__api_doc__pages_1_8_quick__start.html#autotoc_md2", null ],
         [ "MacOS 11.4+", "md__api_doc__pages_1_8_quick__start.html#autotoc_md3", null ],
-        [ "Linux (Debian recomendado)", "md__api_doc__pages_1_8_quick__start.html#autotoc_md4", null ]
+        [ "Linux (Debian recommended)", "md__api_doc__pages_1_8_quick__start.html#autotoc_md4", null ]
       ] ],
-      [ "Core y/o Tools", "md__api_doc__pages_1_8_quick__start.html#autotoc_md5", null ]
+      [ "Core and/or Tools", "md__api_doc__pages_1_8_quick__start.html#autotoc_md5", null ]
     ] ],
     [ "2. Basic Concepts", "md__api_doc__pages_2_8_basic__concepts.html", null ],
     [ "3. Editor", "md__api_doc__pages_3_8_editor.html", [

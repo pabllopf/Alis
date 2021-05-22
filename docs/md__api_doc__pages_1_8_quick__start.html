@@ -102,120 +102,118 @@ $(document).ready(function(){initNavTree('md__api_doc__pages_1_8_quick__start.ht
 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Antes de empezar con la instalación Alis, se debe de confirmar que tiene instalado en su ordenador una versión igual o superior a .NET CORE 5.0.</p>
+<div class="textblock"><p>Before starting with the installation, .NET CORE 5.0 or superior is required in your system.</p>
 <ol type="1">
-<li>Para saber la última versión que se encuentra instalada en su ordenador, tendrá que abrir una consola de comandos.<ul>
-<li>Windows: buscar 'cmd', y abrir el programa 'símbolo del sistema'.</li>
-<li>MacOS: ir a utilidades del sistema, y seleccionar 'abrir terminal'.</li>
-<li>Linux: abrir una terminal nueva.</li>
+<li>To know if you have .NET CORE installed and the version, open a command prompt.<ul>
+<li>Windows: search 'cmd' and open 'command prompt'.</li>
+<li>MacOS: go to 'utilities' and select 'terminal'.</li>
+<li>Linux: right click on your desktop and click 'terminal'.</li>
 </ul>
 </li>
-<li><p class="startli">Una vez abierta la terminal o consola de comandos, se deberá introducir el siguiente comando:</p>
-<p class="startli">``` {.java language="Java" frame="trBL" caption="Comando dotnet para visualizar los sdks instalados."} dotnet &ndash;list-sdks ```</p>
-</li>
-<li><p class="startli">En caso de que tengas .NET Core instalado, debería de aparecer esto:</p>
+<li>In the command prompt, enter the following command: ``` {.java language="Java" frame="trBL" caption="Comando dotnet para visualizar los sdks instalados."} dotnet &ndash;list-sdks ```</li>
+<li><p class="startli">If you have .NET CORE installed, you should see the following lines:</p>
 <p class="startli"><img src="Fotos_Manual/consola_dolnet_sdks.png" alt="Resultado de lanzar el comando 'dotnet
     --list-sdks'" class="inline"/>{fig:logos width="50%"}</p>
 </li>
 </ol>
-<p>En caso de tener una versión inferior de .NET CORE 5.0, de aparecer un mensaje de error indicando que "no se reconoce el comando" o aparecer otro tipo de error, se deberá de instalar la versión más reciente posible.</p>
+<p>In case of having a previous version, getting "'dotnet' is not recognized as an internal or external command" or another kind of error, you must install the latest version.</p>
 <ul>
-<li><p class="startli">Para facilitar el proceso de instalación se ha preparado la siguiente tabla. Donde se incluye un botón de descarga directa del instalador necesario para continuar el proceso.</p>
-<p class="startli">::: {.center} ::: {.tabular} | c | c | |c| Descarga la última versión de .NET CORE 5 \</p>
-<p class="startli">Versión 5.0.2 &amp; Descargar\</p>
+<li><p class="startli">To ease the installation process we have prepared the following table, with a direct download button for each version.</p>
+<p class="startli">::: {.center} ::: {.tabular} | c | c | |c| Descarga la Ãºltima versiÃ³n de .NET CORE 5 \</p>
+<p class="startli">VersiÃ³n 5.0.2 &amp; Descargar\</p>
 <p class="startli">Windows &amp;</p>
 <p class="startli">\ MacOS &amp;</p>
 <p class="startli">\ Linux(Debian) &amp;</p>
 <p class="startli">\ ::: :::</p>
 </li>
-<li>En caso de que algún enlace deje de funcionar, puede encontrar la última versión de .Net Core aquí:</li>
-<li>Una vez finalice el proceso de descarga, deberían de tener su correspondiente instalador y solo deberían de instalarlo con normalidad.</li>
+<li>In case of broken link, you will also find .NET CORE's latest version here:</li>
+<li>Once the download is finished, you should have a wizard. Use it to install .NET CORE normally.</li>
 </ul>
-<p>Llegados a este punto, ya tendríamos instalado y configurado .Net Core 5.</p>
+<p>At this point you should have .NET CORE 5 installed and configured.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Editor</h1>
-<p>Para la correcta instalación del Editor es indispensable tener instalado y configurado .Net Core 5. Además, el proceso de instalación del Editor puede variar dependiendo del sistema operativo donde nos encontremos (Windows, MacOS, Linux).</p>
+<p>For the proper instalation of the editor it is necessary to have .NET CORE 5 installed and configured. Also, the installation process may vary depending on the OS you are using (Windows, MacOS, Linux)</p>
 <h2><a class="anchor" id="autotoc_md2"></a>
 Windows 10</h2>
-<p>Si desea trabajar con el sistema operativo Windows, se recomiendo utilizar la versión de Windows 10 en adelante. Además, es necesario tener actualizado el equipo, y disponer de las últimas versiones de los drivers de su tarjeta gráfica instalados.</p>
+<p>If you wish to use Windows, it is recommended to use Windows 10 and on. Also, it is required to have the latest updates of your OS and the latest versions of your GPU drivers.</p>
 <ol type="1">
-<li>El primer paso será confirmar que estemos utilizando una versión de DirectX 11 o superior. Para ellos deberemos de abrir una consola de comandos (buscar 'cmd', y abrir el programa 'símbolo del sistema').</li>
-<li><p class="startli">Una vez abierta la consola deberemos de lanzar el siguiente comando:</p>
-<p class="startli">``` {.java language="Java" frame="trBL" caption="Comando para abrir la herramienta de diagnóstico de DirectX"} dxdiag ```</p>
+<li>Firstly, you need to confirm that you have DirectX 11 or greater. Open a command prompt (search 'cmd' and open 'command prompt').</li>
+<li><p class="startli">Once open, enter the following command:</p>
+<p class="startli">``` {.java language="Java" frame="trBL" caption="Comando para abrir la herramienta de diagnÃ³stico de DirectX"} dxdiag ```</p>
 </li>
-<li><p class="startli">Si todo marcha correctamente deberá de salir una ventana indicando la versión DirectX que tenemos actualmente instalada.</p>
+<li><p class="startli">If everything is fine, you should see a window indicating your DirectX version.</p>
 <p class="startli"><img src="Fotos_Manual/directX_12.png" alt="Resultado de lanzar el comando 'dxdiags' (zona en amarillo indica
-    versión de DirectX)" class="inline"/>{width="70%"}</p>
+    versiÃ³n de DirectX)" class="inline"/>{width="70%"}</p>
 </li>
-<li><p class="startli">El siguiente paso en la instalación del Editor, será descargar la última versión disponible. Se ha preparado el siguiente botón para facilitar la descarga:</p>
-<p class="startli">(*) Existe la posibilidad que su navegador, active un bloqueo durante la descarga. Esto es algo normal, solo debe de hacer click en 'continuar' y el proceso continuará con normalidad.</p>
+<li><p class="startli">Next is downloading the latest version of the editor. You will find a direct link here:</p>
+<p class="startli">(*) It is possible that your browser blocks the download. This is normal, just click on 'continue'.</p>
 </li>
-<li>Una vez finalice el proceso de descarga, debe de existir un archivo comprimido '.zip' llamado 'Alis Editor Windows.zip'. Para descomprimir este archivo, se debe pulsar el botón derecho del ratón sobre este, buscar la opción 'descomprimir' y pulsar en la opción 'descomprimir aquí'.</li>
-<li><p class="startli">Llegado a este punto, debe existir una carpeta llamada 'Alis Editor Windows'. Una vez dentro, de dicha carpeta, debe de aparecer un archivo llamado 'Alis.exe'. Al hacer doble click sobre dicho archivo se debería de abrir el Editor de Alis mostrando lo siguiente:</p>
+<li>Once the download is finished, unzip the file 'Alis Editor Windows.zip' by right-clicking it and clicking 'unzip' and 'unzip here'.</li>
+<li><p class="startli">Open the unzipped file named 'Alis Editor Windows'. You should see a file named 'Alis.exe' inside. Double clicking it should open Alis Editor showing the following:</p>
 <p class="startli"><img src="Fotos_Manual/imagen_editor_instalado.PNG" alt="Resultado de ejecutar Alis Editor en
     Windows" class="inline"/>{width="90%"}</p>
 </li>
 </ol>
 <h2><a class="anchor" id="autotoc_md3"></a>
 MacOS 11.4+</h2>
-<p>En caso de utilizar un equipo con MacOS, se recomienda tener las últimas actualizaciones del sistema instaladas, tener instalado XCODE y activar la opción 'confiar en desarrolladores o aplicaciones de terceros' en su panel de 'seguridad y privacidad'.</p>
+<p>In case of using MacOS, you should have the latest system updates and XCODE installed, and you should allow third party applications in the 'Security and Privacy' panel.</p>
 <ol type="1">
-<li><p class="startli">Por otra parte, para facilitar la instalación del entorno de trabajo se utilizará un gestor de paquetes denominado 'brew'. Para instalar este gestor de paquetes se debe lanzar el siguiente comando en una terminal:</p>
+<li><p class="startli">To ease the installation a package manager named 'brew' will be used. To install it you have to enter the following command in a terminal:</p>
 <p class="startli">``&lsquo; {frame="trBL" caption="Comando para instalar 'brew&amp;rsquo;"} /bin/bash -c '$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)' ```</p>
 </li>
-<li><p class="startli">Cuando finalice el proceso de instalación se podría probar que se ha instalado correctamente ejecutando:</p>
-<p class="startli">``&lsquo; {.java language="Java" frame="trBL" caption="Comando para verificar la correcta instalación de 'brew&amp;rsquo;"} brew doctor ```</p>
+<li><p class="startli">To check if it is installed correctly, enter the following command:</p>
+<p class="startli">``&lsquo; {.java language="Java" frame="trBL" caption="Comando para verificar la correcta instalaciÃ³n de 'brew&amp;rsquo;"} brew doctor ```</p>
 </li>
-<li><p class="startli">Si todo se ha configurado correctamente, se deberá de instalar los siguientes paquetes:</p>
+<li><p class="startli">If everything is configured correctly, continue by installing the following packages:</p>
 <p class="startli">``` {.java language="Java" frame="trBL" caption="Comando para instalar SFML Y CSFML"} brew csfml brew sfml ```</p>
 </li>
-<li>Llegado a este punto, solo queda descargar la última versión de Alis Editor para MacOS. Para ello se ha facilitado el siguiente botón de descarga directa:</li>
-<li><p class="startli">Una vez finalice el proceso de descarga, debería de aparecer una carpeta que dice 'Alis Editor Mac'. Se recomienda moverla al escritorio, pulsar el botón derecho del ratón, seleccionar la opción 'abrir terminal en carpeta' y ejecutar el siguiente comando:</p>
+<li>At this point, you only have to download the latest version of Alis Editor. Direct download:</li>
+<li><p class="startli">Once the download is finished, it should appear a folder named 'Alis Editor Mac'. It is recommended to move it to your desktop, right-clicking, selecting 'open terminal' and executing the foollowing command:</p>
 <p class="startli">``` {.java language="Java" frame="trBL" caption="Comando para ejecutar Alis Editor en MacOS"} ./Alis ```</p>
 <p class="startli"><img src="Fotos_Manual/editor_macos.png" alt="Resultado de ejecutar Alis Editor en
     MacOS" class="inline"/>{width="90%"}</p>
 </li>
 </ol>
 <h2><a class="anchor" id="autotoc_md4"></a>
-Linux (Debian recomendado)</h2>
-<p>En caso de querer trabajar en una plataforma Linux, se recomienda trabajar con una distribución basada en Debian. Además se puede dar el caso de que la instalación se convierta en un verdadero desafío, es por ello por lo que se recomienda descargar la siguiente script de instalación.</p>
+Linux (Debian recommended)</h2>
+<p>In case of having Linux, a Debian based distribution is recommended. The installation may become challenging, so it is recommended to download the following installation script.</p>
 <ol type="1">
-<li><p class="startli">Para ejecutar el instalador y empezar el proceso de configuración, se debe de abrir una terminal y lanzar los siguientes comandos:</p>
+<li><p class="startli">To start the process of installation and configuration, open a terminal and execute the following:</p>
 <p class="startli">``` {.java language="Java" frame="trBL" caption="Comandos para ejecutar instalador de Alis Editor en Debian"} sudo chmod 777 ./Debian_Install_Environment.sh sudo ./Debian_Install_Environment.sh ```</p>
 </li>
-<li><p class="startli">Una vez finalice el proceso de instalación, se recomienda hacer la siguiente validación, lanzando en una terminal este comando:</p>
-<p class="startli">``&lsquo; {frame="trBL" caption="Comando para saber la versión de OpenGL instalada en su sistema"} glxinfo | grep 'OpenGL version&rsquo; ```</p>
+<li><p class="startli">Once the process finishes, validate by entering the following command:</p>
+<p class="startli">``&lsquo; {frame="trBL" caption="Comando para saber la versiÃ³n de OpenGL instalada en su sistema"} glxinfo | grep 'OpenGL version&rsquo; ```</p>
 </li>
-<li><p class="startli">Si OpenGL está correctamente instalado, debería de mostrar en la consola una versión igual o superior a OpenGL 3.0+:</p>
-<p class="startli"><img src="Fotos_Manual/confirmar_version_openfgl.png" alt="Resultado al validar versión de OpenGL
+<li><p class="startli">If OpenGL is installed correctly, the console should show a version equal or higher than 3.0.</p>
+<p class="startli"><img src="Fotos_Manual/confirmar_version_openfgl.png" alt="Resultado al validar versiÃ³n de OpenGL
     " class="inline"/>{width="90%"}</p>
 </li>
-<li>Llegado a este punto, y habiendo validado que está instalado .NET Core 5.0+ y OpenGL 3.0+, solo faltaría descargar la última versión de Alis Editor para Linux. Se ha preparado el siguiente enlace para facilitar el proceso:</li>
-<li>Una vez finalice el proceso de descarga, debería de aparecer un archivo comprimido '.zip' llamado 'Alis Editor Linux.zip'. Para descomprimir este archivo, se debe pulsar el botón derecho del ratón sobre este, buscar la opción 'descomprimir' y pulsar en la opción 'descomprimir aquí'.</li>
+<li>Having installed .NET CORE 5.0 (or higher) and OpenGL 3.0 (or higher) you only have to download the latest version of Alis Editor for Linux. Direct link:</li>
+<li>Once the download finishes, a '.zip' named 'Alis Editor Linux.zip' should appear. To unzip righ click and click on 'unzip' and then 'unzip here'.</li>
 <li><p class="startli">Para finalizar, se debe de abrir una terminal en la carpeta recientemente descomprimida, y lanzar el siguiente comando:</p>
 <p class="startli">``` {.java language="Java" frame="trBL" caption="Comando para ejecutar Alis Editor en Linux"} ./Alis ```</p>
 </li>
 </ol>
-<p>Si todo se ha configurado e instalado correctamente se verá lo siguiente:</p>
+<p>If everything is correctly installed and configured you should see:</p>
 <p><img src="Fotos_Manual/Editor_city.png" alt="Alis Editor en Linux" class="inline"/>{width="90%"}</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
-Core y/o Tools</h1>
-<p>En caso de querer trabajar con Alis sin tener que utilizar el Editor, existe la posibilidad de añadir el core y/o tools a tu proyecto de visual studio.</p>
-<p>Ejecutando el siguiente comando en una terminal dentro del directorio de trabajo. Se configuraría todo tu proyecto para poder acceder a la funcionalidad del núcleo.</p>
+Core and/or Tools</h1>
+<p>If you want to work with Alis without the Editor, you are able to add its core and/or tools to your visual studio project.</p>
+<p>Executing the following command inside your working directory will configure your entire project to access the core functionality.</p>
 <div class="fragment"><div class="line">dotnet add package Alis.Core-SFML --version 1.3.6</div>
-</div><!-- fragment --><p>Por otra parte, si solo deseas utilizar las herramientas que ofrece alis, tendrías que lanzar el siguiente comando:</p>
+</div><!-- fragment --><p>In the other hand, if you only want to use Alis tools you should use the following command:</p>
 <div class="fragment"><div class="line">dotnet add package Alis.Tools --version 1.3.6</div>
-</div><!-- fragment --><p>También puedes descargar directamente el paquete aquí:</p>
-<p>::: {.center} ::: {.tabular} | c | c | |c| Descarga los paquetes de Alis \</p>
-<p>Paquete Nuget &amp; Descargar\</p>
+</div><!-- fragment --><p>You can also donwload the package from here:</p>
+<p>::: {.center} ::: {.tabular} | c | c | |c| Downlaod Alis packages \</p>
+<p>Nuget package &amp; Download\</p>
 <p>Core &amp;</p>
 <p>\ Tools &amp;</p>
 <p>\ ::: :::</p>
-<p>Si quieres confirmar que todo se ha instalado correctamente puedes lanzar los siguientes comandos en el directorio donde se encuentra tu proyecto:</p>
+<p>If you want to confirm that everything is installed correctly you just have to execute these command in your projects directory:</p>
 <div class="fragment"><div class="line">dotnet restore</div>
 <div class="line">        dotnet list package</div>
-</div><!-- fragment --><p>En caso de estar todo correctamente instalado y configurado debería de aparecer esto:</p>
-<p><img src="Fotos_Manual/paquete_instalados.PNG" alt="Verificación de instalación correcta de paquetes de
+</div><!-- fragment --><p>If everything is fine you should see the following result:</p>
+<p><img src="Fotos_Manual/paquete_instalados.PNG" alt="VerificaciÃ³n de instalaciÃ³n correcta de paquetes de
 Alis." class="inline"/>{width="90%"} </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
