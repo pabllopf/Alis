@@ -210,7 +210,6 @@
         </member>
         <member name="M:Alis.Core.SFML.Camera.Update">
             <summary>Update this instance.</summary>
-            TODO Correct the camera to fix the movement of sprites. (probaly is the transform).
         </member>
         <member name="T:Alis.Core.SFML.Collision">
             <summary>Define a component</summary>

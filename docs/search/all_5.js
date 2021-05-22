@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['6_2e_20gnu_20general_20public_20license_20v3_2e0_5',['6. GNU General Public License v3.0',['../md__api_doc__pages_6_8_license.html',1,'']]]
+  ['6_2e_20informacion_20de_20interes_5',['6. Informacion de interes',['../md__api_doc__pages_6_8_information_of_interest.html',1,'']]]
 ];

@@ -149,6 +149,9 @@
         <member name="F:Alis.Editor.Engine.args">
             <summary>The arguments</summary>
         </member>
+        <member name="F:Alis.Editor.Engine.mainWindow">
+            <summary>The main window</summary>
+        </member>
         <member name="M:Alis.Editor.Engine.#ctor(System.String[])">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Engine" /> class.</summary>
             <param name="args">The arguments.</param>
@@ -271,6 +274,9 @@
         </member>
         <member name="F:Alis.Editor.UI.MainWindow.snapshot">
             <summary>The snapshot</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.widgetManager">
+            <summary>The widget manager</summary>
         </member>
         <member name="M:Alis.Editor.UI.MainWindow.#ctor(Alis.Editor.Info)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.MainWindow" /> class.</summary>
@@ -3105,6 +3111,9 @@
         </member>
         <member name="T:Alis.Editor.Program">
             <summary>Run the engine</summary>
+        </member>
+        <member name="F:Alis.Editor.Program.engine">
+            <summary>The engine</summary>
         </member>
         <member name="M:Alis.Editor.Program.Main(System.String[])">
             <summary>Mains the specified arguments.</summary>

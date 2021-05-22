@@ -21,7 +21,11 @@ namespace Alis.Editor
 
         /// <summary>The arguments</summary>
         [NotNull]
-        private string[] args; 
+        private string[] args;
+
+        /// <summary>The main window</summary>
+        [NotNull]
+        private MainWindow mainWindow;
 
         /// <summary>Initializes a new instance of the <see cref="Engine" /> class.</summary>
         /// <param name="args">The arguments.</param>
@@ -125,7 +129,9 @@ namespace Alis.Editor
 
             Logger.Log("API Graphics = OpenGL");
 
-            return new MainWindow(new Info(platform, architecture, graphics)).Start();
+            mainWindow = new MainWindow(new Info(platform, architecture, graphics));
+
+            return mainWindow.Start();
         }
     }
 }

@@ -44,6 +44,10 @@ namespace Alis.Editor.UI
         [NotNull]
         private InputSnapshot snapshot;
 
+        /// <summary>The widget manager</summary>
+        [NotNull]
+        private WidgetManager widgetManager;
+
         /// <summary>Initializes a new instance of the <see cref="MainWindow" /> class.</summary>
         public MainWindow([NotNull] Info info)
         {
@@ -194,7 +198,7 @@ namespace Alis.Editor.UI
             RgbaFloat clearColor = new RgbaFloat(1.0f, 1.0f, 1.0f, 1.0f);
             Logger.Log("Define the background color. " + clearColor.ToString() + ".");
 
-            WidgetManager widgetManager = new WidgetManager(info, imGuiController);
+            widgetManager = new WidgetManager(info, imGuiController);
             Logger.Log("Create widget manager");
 
             while (window.Exists)

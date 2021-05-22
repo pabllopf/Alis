@@ -20,6 +20,7 @@ var class_alis_1_1_editor_1_1_u_i_1_1_main_window =
     [ "info", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#aae5aaa9fe906ae8baecc21386939f76d", null ],
     [ "deltaSeconds", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a6123a6c059f0285be9e8af2ebf832af8", null ],
     [ "snapshot", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#afb16f9312d8f8563cf1bed3cf1170722", null ],
+    [ "widgetManager", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#af96d9b68cd7f4e15d96b67e6aa53a01a", null ],
     [ "dark", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a82f5d3af9aed9ef789ea66e2c27398fe", null ],
     [ "clasic", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a8ce979b965d97a40a3e8b82a12499dc0", null ],
     [ "light", "class_alis_1_1_editor_1_1_u_i_1_1_main_window.html#a1ff5834fbceb093de8f9798164e2448f", null ]

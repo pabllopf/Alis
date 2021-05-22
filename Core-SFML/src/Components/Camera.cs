@@ -82,7 +82,6 @@ namespace Alis.Core.SFML
         }
 
         /// <summary>Update this instance.</summary>
-        /// TODO Correct the camera to fix the movement of sprites. (probaly is the transform).
         public override void Update()
         {
             if (RenderSFML.CurrentRenderSFML != null)

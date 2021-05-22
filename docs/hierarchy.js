@@ -29,7 +29,6 @@ var hierarchy =
     [ "object", null, [
       [ "Alis.Tools.Crypted< T >", "class_alis_1_1_tools_1_1_crypted.html", null ]
     ] ],
-    [ "Alis.Core.Physical", "class_alis_1_1_core_1_1_physical.html", null ],
     [ "Alis.Editor.Program", "class_alis_1_1_editor_1_1_program.html", null ],
     [ "Alis.Editor.Project", "class_alis_1_1_editor_1_1_project.html", null ],
     [ "Alis.Core.Render", "class_alis_1_1_core_1_1_render.html", null ],

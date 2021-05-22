@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Alis.Core.Game">
-    <Position X="6.75" Y="1.75" Width="1.5" />
+    <Position X="7" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQHAAAYQiAAAADAEAAAAAAAEAAQABBAIFIBBAEQAEY=</HashCode>
       <FileName>src\Game.cs</FileName>
@@ -14,7 +14,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Time">
-    <Position X="0.5" Y="2.25" Width="1.5" />
+    <Position X="1.25" Y="4.5" Width="1.5" />
     <NestedTypes>
       <Class Name="Alis.Core.Time.TimeBuilder" Collapsed="true">
         <TypeIdentifier>
@@ -28,7 +28,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Scene">
-    <Position X="15" Y="2.5" Width="1.5" />
+    <Position X="14" Y="4.5" Width="1.5" />
     <NestedTypes>
       <Class Name="Alis.Core.Scene.SceneBuilder" Collapsed="true">
         <TypeIdentifier>
@@ -45,7 +45,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.SceneManager">
-    <Position X="10.5" Y="2.25" Width="1.5" />
+    <Position X="10.75" Y="4.5" Width="1.5" />
     <NestedTypes>
       <Class Name="Alis.Core.SceneManager.SceneManagerBuilder" Collapsed="true">
         <TypeIdentifier>
@@ -57,16 +57,19 @@
       <HashCode>AAQAgAAIAiAAAkgAgACIAIgAgAAQAACAIEAAAAAAAkA=</HashCode>
       <FileName>src\Scene\SceneManager.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Scenes" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.Component">
-    <Position X="20" Y="10.25" Width="1.5" />
+    <Position X="16.75" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ADQAAAAAAiAAAAAAEAgBCAQAAAAAAAAAIgAgIAIABEA=</HashCode>
       <FileName>src\Scene\GameObject\Component\Component.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.GameObject">
-    <Position X="17.5" Y="1.75" Width="1.5" />
+    <Position X="16.75" Y="4.5" Width="1.5" />
     <NestedTypes>
       <Class Name="Alis.Core.GameObject.GameObjectBuilder" Collapsed="true">
         <TypeIdentifier>
@@ -86,28 +89,31 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.Transform">
-    <Position X="21.5" Y="0.5" Width="1.5" />
+    <Position X="20" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAEBCQQAAAEAEKAwAAOgIAADgDCEAIABAQAGBREAAgw=</HashCode>
       <FileName>src\Scene\GameObject\Transform.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Render">
-    <Position X="8.25" Y="11" Width="1.5" />
+    <Position X="8.5" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQCAAAAQiAAAAAAAACABAAAgAAABABAIAAAAABAAEA=</HashCode>
       <FileName>src\Render\Render.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Input">
-    <Position X="1.75" Y="9.75" Width="1.5" />
+    <Position X="4.75" Y="13" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQQCAAAYAiAYCAAAGASAAAEAgAQAAAAgIBAAAABCAEQ=</HashCode>
+      <HashCode>AQQCAAAYAiAIAAAACASAAAEAgAQAAAAAIBAAAABCAEE=</HashCode>
       <FileName>src\Input\Input.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Keys" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.Config">
-    <Position X="3.75" Y="2.25" Width="1.5" />
+    <Position X="4.25" Y="4.25" Width="1.5" />
     <NestedTypes>
       <Class Name="Alis.Core.Config.ConfigBuilder" Collapsed="true">
         <TypeIdentifier>
@@ -125,7 +131,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.WindowManager">
-    <Position X="4.25" Y="7" Width="1.5" />
+    <Position X="4" Y="9.25" Width="1.5" />
     <NestedTypes>
       <Class Name="Alis.Core.WindowManager.WindowManagerBuilder" Collapsed="true">
         <TypeIdentifier>
@@ -137,6 +143,23 @@
       <HashCode>AAAAAAAAAAACAAAAAAAAACgAgAAgCAAAAAgAAAgAAAA=</HashCode>
       <FileName>src\Config\WindowManager.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="WindowState" />
+    </ShowAsAssociation>
   </Class>
+  <Enum Name="Alis.Core.WindowState">
+    <Position X="1.75" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\Config\WindowState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Alis.Core.Keyboard" Collapsed="true">
+    <Position X="2" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACIAAIAgAAAAAAD+YQAAAAAEAAAACACAvv//YQM=</HashCode>
+      <FileName>src\Input\Keyboard.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

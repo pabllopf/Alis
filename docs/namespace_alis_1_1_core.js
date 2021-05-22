@@ -5,7 +5,6 @@ var namespace_alis_1_1_core =
     [ "Game", "class_alis_1_1_core_1_1_game.html", "class_alis_1_1_core_1_1_game" ],
     [ "GameObject", "class_alis_1_1_core_1_1_game_object.html", "class_alis_1_1_core_1_1_game_object" ],
     [ "Input", "class_alis_1_1_core_1_1_input.html", "class_alis_1_1_core_1_1_input" ],
-    [ "Physical", "class_alis_1_1_core_1_1_physical.html", null ],
     [ "Render", "class_alis_1_1_core_1_1_render.html", "class_alis_1_1_core_1_1_render" ],
     [ "Scene", "class_alis_1_1_core_1_1_scene.html", "class_alis_1_1_core_1_1_scene" ],
     [ "SceneManager", "class_alis_1_1_core_1_1_scene_manager.html", "class_alis_1_1_core_1_1_scene_manager" ],
