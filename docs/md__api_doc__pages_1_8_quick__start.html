@@ -148,7 +148,7 @@ Windows 10</h2>
 <ol type="1">
 <li>Firstly, you need to confirm that you have DirectX 11 or greater. Open a command prompt (search 'cmd' and open 'command prompt').</li>
 <li><p class="startli">Once open, enter the following command:</p>
-<p class="startli">``` dxdiag ```</p>
+<p class="startli">~~~~~~~~~~~~~~~{.c} dxdiag ~~~~~~~~~~~~~~~</p>
 </li>
 <li><p class="startli">If everything is fine, you should see a window indicating your DirectX version.</p>
 <p class="startli"><img src="Fotos_Manual/directX_12.png" alt="'dxdiags'" class="inline"/></p>
@@ -167,19 +167,21 @@ MacOS 11.4+</h2>
 <p>In case of using MacOS, you should have the latest system updates and XCODE installed, and you should allow third party applications in the 'Security and Privacy' panel.</p>
 <ol type="1">
 <li><p class="startli">To ease the installation a package manager named 'brew' will be used. To install it you have to enter the following command in a terminal:</p>
-<p class="startli">``&lsquo; /bin/bash -c &rsquo;$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)' ```</p>
+<p class="startli">~~~~~~~~~~~~~~~{.c} /bin/bash -c '$(curl -fsSL <a href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh">https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh</a>)' ~~~~~~~~~~~~~~~</p>
 </li>
 <li><p class="startli">To check if it is installed correctly, enter the following command:</p>
-<p class="startli">``` brew doctor ```</p>
+<p class="startli">~~~~~~~~~~~~~~~{.c} brew doctor ~~~~~~~~~~~~~~~</p>
 </li>
 <li><p class="startli">If everything is configured correctly, continue by installing the following packages:</p>
-<p class="startli">``` brew csfml brew sfml ```</p>
+<p class="startli">~~~~~~~~~~~~~~~{.c} <br  />
+ brew csfml brew sfml ~~~~~~~~~~~~~~~</p>
 </li>
 <li><p class="startli">At this point, you only have to download the latest version of Alis Editor. Direct download:</p>
 <p class="startli"><a href="https://github.com/pabllopf/Alis/releases/latest/download/Alis_Editor_Mac.zip"><img src="https://img.shields.io/badge/-Download%20Alis%20on%20MacOS-green" alt="Editor" class="inline"/></a></p>
 </li>
 <li><p class="startli">Once the download is finished, it should appear a folder named 'Alis Editor Mac'. It is recommended to move it to your desktop, right-clicking, selecting 'open terminal' and executing the foollowing command:</p>
-<p class="startli">``` ./Alis ```</p>
+<p class="startli">~~~~~~~~~~~~~~~{.c} <br  />
+ ./Alis ~~~~~~~~~~~~~~~</p>
 <p class="startli"><img src="Fotos_Manual/editor_macos.png" alt="Resultado  MacOS" class="inline"/></p>
 </li>
 </ol>
@@ -188,10 +190,12 @@ Linux (Debian recommended)</h2>
 <p>In case of having Linux, a Debian based distribution is recommended. The installation may become challenging, so it is recommended to download the following installation script.</p>
 <ol type="1">
 <li><p class="startli">To start the process of installation and configuration, open a terminal and execute the following:</p>
-<p class="startli">``` sudo chmod 777 ./Debian_Install_Environment.sh sudo ./Debian_Install_Environment.sh ```</p>
+<p class="startli">~~~~~~~~~~~~~~~{.c} <br  />
+ sudo chmod 777 ./Debian_Install_Environment.sh sudo ./Debian_Install_Environment.sh ~~~~~~~~~~~~~~~</p>
 </li>
 <li><p class="startli">Once the process finishes, validate by entering the following command:</p>
-<p class="startli">``&lsquo; glxinfo | grep 'OpenGL version&rsquo; ```</p>
+<p class="startli">~~~~~~~~~~~~~~~{.c} <br  />
+ glxinfo | grep 'OpenGL version' ~~~~~~~~~~~~~~~</p>
 </li>
 <li><p class="startli">If OpenGL is installed correctly, the console should show a version equal or higher than 3.0.</p>
 <p class="startli"><img src="Fotos_Manual/confirmar_version_openfgl.png" alt="Resultado al validar versión de OpenGL" class="inline"/></p>
@@ -201,7 +205,8 @@ Linux (Debian recommended)</h2>
 </li>
 <li>Once the download finishes, a '.zip' named 'Alis Editor Linux.zip' should appear. To unzip righ click and click on 'unzip' and then 'unzip here'.</li>
 <li><p class="startli">Para finalizar, se debe de abrir una terminal en la carpeta recientemente descomprimida, y lanzar el siguiente comando:</p>
-<p class="startli">``` ./Alis ```</p>
+<p class="startli">~~~~~~~~~~~~~~~{.c} <br  />
+ ./Alis ~~~~~~~~~~~~~~~</p>
 </li>
 </ol>
 <p>If everything is correctly installed and configured you should see:</p>
@@ -210,9 +215,9 @@ Linux (Debian recommended)</h2>
 Core and/or Tools</h1>
 <p>If you want to work with Alis without the Editor, you are able to add its core and/or tools to your visual studio project.</p>
 <p>Executing the following command inside your working directory will configure your entire project to access the core functionality.</p>
-<div class="fragment"><div class="line">dotnet add package Alis.Core-SFML --version 1.3.6</div>
+<div class="fragment"><div class="line">dotnet add <span class="keyword">package </span>Alis.Core-SFML --version 1.3.6</div>
 </div><!-- fragment --><p>In the other hand, if you only want to use Alis tools you should use the following command:</p>
-<div class="fragment"><div class="line">dotnet add package Alis.Tools --version 1.3.6</div>
+<div class="fragment"><div class="line">dotnet add <span class="keyword">package </span>Alis.Tools --version 1.3.6</div>
 </div><!-- fragment --><p>You can also donwload the package from here:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
