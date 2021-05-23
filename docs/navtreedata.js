@@ -82,18 +82,18 @@ var NAVTREE =
       ] ]
     ] ],
     [ "6. Informacion de interes", "md__api_doc__pages_6_8_information_of_interest.html", [
-      [ "Preguntas frecuentes", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md44", [
-        [ "¿Es compatible con visual studio 2017?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md45", null ],
-        [ "¿Puedo migrar mi proyecto a una nueva versión de Alis?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md46", null ],
-        [ "¿Estoy intentando cargar un proyecto de ejemplo con el Editor y no me deja?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md47", null ],
-        [ "¿Puedo integrar las tools en un proyecto ya existente?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md48", null ],
-        [ "¿Es necesario saber de programación para usar Alis?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md49", null ]
+      [ "6.1 Preguntas frecuentes", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md44", [
+        [ "6.1.1 ¿Es compatible con visual studio 2017?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md45", null ],
+        [ "6.1.2 ¿Puedo migrar mi proyecto a una nueva versión de Alis?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md46", null ],
+        [ "6.1.3 ¿Estoy intentando cargar un proyecto de ejemplo con el Editor y no me deja?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md47", null ],
+        [ "6.1.4 ¿Puedo integrar las tools en un proyecto ya existente?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md48", null ],
+        [ "6.1.5 ¿Es necesario saber de programación para usar Alis?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md49", null ]
       ] ],
-      [ "Foro de la comunidad", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md50", [
-        [ "¿Cómo puedo participar en el foro?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md51", null ]
+      [ "6.2 Foro de la comunidad", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md50", [
+        [ "6.2.1 ¿Cómo puedo participar en el foro?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md51", null ]
       ] ],
-      [ "Panel de incidencias", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md52", [
-        [ "¿Cómo puedo reportar una incidencia?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md53", null ]
+      [ "6.3 Panel de incidencias", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md52", [
+        [ "6.3.1 ¿Cómo puedo reportar una incidencia?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md53", null ]
       ] ]
     ] ],
     [ "7. Code of Conduct", "md__api_doc__pages_7_8_code_of_conduct.html", [
