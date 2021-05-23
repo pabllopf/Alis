@@ -59,7 +59,7 @@ var NAVTREEINDEX7 =
 "md__api_doc__pages_8_8_contributing.html":[7],
 "md__api_doc__pages_8_8_contributing.html#autotoc_md62":[7,0],
 "md__api_doc__pages_8_8_contributing.html#autotoc_md63":[7,1],
-"md__api_doc__pages_8_8_contributing.html#autotoc_md64":[7,1,0],
+"md__api_doc__pages_8_8_contributing.html#autotoc_md64":[7,2],
 "md__api_doc__pages_9_8_license.html":[8],
 "md__api_doc__pages_9_8_license.html#autotoc_md66":[8,0],
 "md__api_doc__pages_9_8_license.html#autotoc_md67":[8,1],

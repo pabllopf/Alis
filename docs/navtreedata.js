@@ -26,12 +26,12 @@ var NAVTREE =
 [
   [ "Alis Framework", "index.html", [
     [ "1. Quick Start", "md__api_doc__pages_1_8_quick__start.html", [
-      [ "Editor", "md__api_doc__pages_1_8_quick__start.html#autotoc_md1", [
-        [ "Windows 10", "md__api_doc__pages_1_8_quick__start.html#autotoc_md2", null ],
-        [ "MacOS 11.4+", "md__api_doc__pages_1_8_quick__start.html#autotoc_md3", null ],
-        [ "Linux (Debian recommended)", "md__api_doc__pages_1_8_quick__start.html#autotoc_md4", null ]
+      [ "1.1 Editor", "md__api_doc__pages_1_8_quick__start.html#autotoc_md1", [
+        [ "1.1.1 Windows 10", "md__api_doc__pages_1_8_quick__start.html#autotoc_md2", null ],
+        [ "1.1.2 MacOS 11.4+", "md__api_doc__pages_1_8_quick__start.html#autotoc_md3", null ],
+        [ "1.1.3 Linux (Debian recommended)", "md__api_doc__pages_1_8_quick__start.html#autotoc_md4", null ]
       ] ],
-      [ "Core and/or Tools", "md__api_doc__pages_1_8_quick__start.html#autotoc_md5", null ]
+      [ "1.2 Core and/or Tools", "md__api_doc__pages_1_8_quick__start.html#autotoc_md5", null ]
     ] ],
     [ "2. Basic Concepts", "md__api_doc__pages_2_8_basic__concepts.html", null ],
     [ "3. Editor", "md__api_doc__pages_3_8_editor.html", [
@@ -97,42 +97,41 @@ var NAVTREE =
       ] ]
     ] ],
     [ "7. Code of Conduct", "md__api_doc__pages_7_8_code_of_conduct.html", [
-      [ "5.1 Our Pledge", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md55", null ],
-      [ "5.2 Our Standards", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md56", null ],
-      [ "5.3 Our Responsibilities", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md57", null ],
-      [ "5.4 Scope", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md58", null ],
-      [ "5.5 Enforcement", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md59", null ],
-      [ "5.6 Attribution", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md60", null ]
+      [ "7.1 Our Pledge", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md55", null ],
+      [ "7.2 Our Standards", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md56", null ],
+      [ "7.3 Our Responsibilities", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md57", null ],
+      [ "7.4 Scope", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md58", null ],
+      [ "7.5 Enforcement", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md59", null ],
+      [ "7.6 Attribution", "md__api_doc__pages_7_8_code_of_conduct.html#autotoc_md60", null ]
     ] ],
     [ "8. Contributing", "md__api_doc__pages_8_8_contributing.html", [
-      [ "7.1 Author", "md__api_doc__pages_8_8_contributing.html#autotoc_md62", null ],
-      [ "7.2 Contributors", "md__api_doc__pages_8_8_contributing.html#autotoc_md63", [
-        [ "7.1.2 Testers", "md__api_doc__pages_8_8_contributing.html#autotoc_md64", null ]
-      ] ]
+      [ "8.1 Author", "md__api_doc__pages_8_8_contributing.html#autotoc_md62", null ],
+      [ "8.2 Contributors", "md__api_doc__pages_8_8_contributing.html#autotoc_md63", null ],
+      [ "8.3 Testers", "md__api_doc__pages_8_8_contributing.html#autotoc_md64", null ]
     ] ],
     [ "9. GNU General Public License v3.0", "md__api_doc__pages_9_8_license.html", [
-      [ "6.1 Preamble", "md__api_doc__pages_9_8_license.html#autotoc_md66", null ],
-      [ "6.2 Terms and conditions", "md__api_doc__pages_9_8_license.html#autotoc_md67", [
-        [ "6.2.1 Source Code.", "md__api_doc__pages_9_8_license.html#autotoc_md68", null ],
-        [ "6.2.2 Basic Permissions.", "md__api_doc__pages_9_8_license.html#autotoc_md69", null ],
-        [ "6.2.3 Protecting Users' Legal Rights From Anti-Circumvention Law.", "md__api_doc__pages_9_8_license.html#autotoc_md70", null ],
-        [ "6.2.4 Conveying Verbatim Copies.", "md__api_doc__pages_9_8_license.html#autotoc_md71", null ],
-        [ "6.2.5 Conveying Modified Source Versions.", "md__api_doc__pages_9_8_license.html#autotoc_md72", null ],
-        [ "6.2.6 Conveying Non-Source Forms.", "md__api_doc__pages_9_8_license.html#autotoc_md73", null ],
-        [ "6.2.7 Additional Terms.", "md__api_doc__pages_9_8_license.html#autotoc_md74", null ],
-        [ "6.2.8 Termination.", "md__api_doc__pages_9_8_license.html#autotoc_md75", null ],
-        [ "6.2.9 Acceptance Not Required for Having Copies.", "md__api_doc__pages_9_8_license.html#autotoc_md76", null ],
-        [ "6.2.10 Automatic Licensing of Downstream Recipients.", "md__api_doc__pages_9_8_license.html#autotoc_md77", null ],
-        [ "6.2.11 Patents.", "md__api_doc__pages_9_8_license.html#autotoc_md78", null ],
-        [ "6.2.12 No Surrender of Others' Freedom.", "md__api_doc__pages_9_8_license.html#autotoc_md79", null ],
-        [ "6.2.13 Use with the GNU Affero General Public License.", "md__api_doc__pages_9_8_license.html#autotoc_md80", null ],
-        [ "6.2.14 Revised Versions of this License.", "md__api_doc__pages_9_8_license.html#autotoc_md81", null ],
-        [ "6.2.15 Disclaimer of Warranty.", "md__api_doc__pages_9_8_license.html#autotoc_md82", null ],
-        [ "6.2.16 Limitation of Liability.", "md__api_doc__pages_9_8_license.html#autotoc_md83", null ],
-        [ "6.2.17 Interpretation of Sections 15 and 16.", "md__api_doc__pages_9_8_license.html#autotoc_md84", null ]
+      [ "9.1 Preamble", "md__api_doc__pages_9_8_license.html#autotoc_md66", null ],
+      [ "9.2 Terms and conditions", "md__api_doc__pages_9_8_license.html#autotoc_md67", [
+        [ "9.2.1 Source Code.", "md__api_doc__pages_9_8_license.html#autotoc_md68", null ],
+        [ "9.2.2 Basic Permissions.", "md__api_doc__pages_9_8_license.html#autotoc_md69", null ],
+        [ "9.2.3 Protecting Users' Legal Rights From Anti-Circumvention Law.", "md__api_doc__pages_9_8_license.html#autotoc_md70", null ],
+        [ "9.2.4 Conveying Verbatim Copies.", "md__api_doc__pages_9_8_license.html#autotoc_md71", null ],
+        [ "9.2.5 Conveying Modified Source Versions.", "md__api_doc__pages_9_8_license.html#autotoc_md72", null ],
+        [ "9.2.6 Conveying Non-Source Forms.", "md__api_doc__pages_9_8_license.html#autotoc_md73", null ],
+        [ "9.2.7 Additional Terms.", "md__api_doc__pages_9_8_license.html#autotoc_md74", null ],
+        [ "9.2.8 Termination.", "md__api_doc__pages_9_8_license.html#autotoc_md75", null ],
+        [ "9.2.9 Acceptance Not Required for Having Copies.", "md__api_doc__pages_9_8_license.html#autotoc_md76", null ],
+        [ "9.2.10 Automatic Licensing of Downstream Recipients.", "md__api_doc__pages_9_8_license.html#autotoc_md77", null ],
+        [ "9.2.11 Patents.", "md__api_doc__pages_9_8_license.html#autotoc_md78", null ],
+        [ "9.2.12 No Surrender of Others' Freedom.", "md__api_doc__pages_9_8_license.html#autotoc_md79", null ],
+        [ "9.2.13 Use with the GNU Affero General Public License.", "md__api_doc__pages_9_8_license.html#autotoc_md80", null ],
+        [ "9.2.14 Revised Versions of this License.", "md__api_doc__pages_9_8_license.html#autotoc_md81", null ],
+        [ "9.2.15 Disclaimer of Warranty.", "md__api_doc__pages_9_8_license.html#autotoc_md82", null ],
+        [ "9.2.16 Limitation of Liability.", "md__api_doc__pages_9_8_license.html#autotoc_md83", null ],
+        [ "9.2.17 Interpretation of Sections 15 and 16.", "md__api_doc__pages_9_8_license.html#autotoc_md84", null ]
       ] ],
-      [ "6.3 End of terms and conditions", "md__api_doc__pages_9_8_license.html#autotoc_md85", [
-        [ "6.3.1 How to Apply These Terms to Your New Programs", "md__api_doc__pages_9_8_license.html#autotoc_md86", null ]
+      [ "9.3 End of terms and conditions", "md__api_doc__pages_9_8_license.html#autotoc_md85", [
+        [ "9.3.1 How to Apply These Terms to Your New Programs", "md__api_doc__pages_9_8_license.html#autotoc_md86", null ]
       ] ]
     ] ],
     [ "Namespaces", "namespaces.html", [
