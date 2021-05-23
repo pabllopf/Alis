@@ -102,87 +102,87 @@ $(document).ready(function(){initNavTree('md__api_doc__pages_3_8_editor.html',''
 </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>El editor de Alis ofrece un entorno de trabajo multiplataforma (Windows MacOS y Debian), facilitando en gran medida la conexiÛn de los elementos que forman un videojuego.</p>
+<div class="textblock"><p>The Alis editor offers a cross-platform working environment (Windows, MacOS and Debian), making it much easier to connect the elements that make up a video game.</p>
 <h1><a class="anchor" id="autotoc_md12"></a>
-Primeros pasos</h1>
-<p>Lo primero que veremos al iniciar el editor es una ventana que nos indica lo siguiente:</p>
+First steps:</h1>
+<p>The first thing we will see when starting the editor is a window that indicates the following lines:</p>
 <ol type="1">
-<li>Crear un proyecto nuevo: si desea crear un proyecto nuevo se debe elegir el nombre del proyecto, el directorio donde quiere guardarlo, y el tipo de soluciÛn o plantilla que quiere usar (juegos en dos dimensiones utilizando el CORE-SFML es la ˙nica opciÛn por ahora).</li>
-<li>Cargar un proyecto reciente: cuando ya se ha trabajado con el Editor, aparece una secciÛn denominada 'proyectos recientes', que te permite cargar r·pidamente un proyecto con el que ya hayas estado trabajando. Adem·s si cambias de lugar el proyecto, el Editor lo detectar· y lo eliminar· de la lista al momento de intentar cargarlo.</li>
+<li>Create a new project: if you want to create a new project, you must choose the name of the project, the directory where you want to save it, and the type of solution or template you want to use (video games in two dimensions using CORE-SFML is the only option for now).</li>
+<li>Load a recent project: when you have already worked with the Editor, a section called 'Recent projects' appears, lets you quickly load a project you've already been with working. Also if you move the project from the place that was saved for the last time, the Editor won't detect it and will remove it from the list when trying load the project.</li>
 <li>Abrir un proyecto existente: si desea cargar un proyecto, puede hacerlo sin problemas, seleccionando el archivo 'Project.json' que se encuentra en su interior. Se recomienda revisar el contenido del archivo 'Project.json' y verificar que los directorios que aparecen en este, son exactamente los mismo a donde se encuentra el proyecto.</li>
 </ol>
 <p><img src="Fotos_Manual/selecciona_proyecto.PNG" alt="Gestor de proyectos del Editor de
 Alis" class="inline"/>{width="60%"}</p>
 <h1><a class="anchor" id="autotoc_md13"></a>
 Widgets</h1>
-<p>El editor incluye diversos 'widgets' separados en distintas ventanas, donde cada uno tiene una funciÛn especifica que se explicar· a continuaciÛn:</p>
+<p>El editor incluye diversos 'widgets' separados en distintas ventanas, donde cada uno tiene una funci√≥n especifica que se explicar√° a continuaci√≥n:</p>
 <h2><a class="anchor" id="autotoc_md14"></a>
 Maker</h2>
-<p>Con 'Maker' se puede ver el contenido del escenario que est·s construyendo.</p>
+<p>Con 'Maker' se puede ver el contenido del escenario que est√°s construyendo.</p>
 <h2><a class="anchor" id="autotoc_md15"></a>
 Inspector</h2>
-<p>Con 'Inspector' podr·s ver y editar los componentes que forman un 'GameObject'. Incluso te permite aÒadir tus propios componentes personalizados.</p>
+<p>Con 'Inspector' podr√°s ver y editar los componentes que forman un 'GameObject'. Incluso te permite a√±adir tus propios componentes personalizados.</p>
 <h2><a class="anchor" id="autotoc_md16"></a>
 Assets</h2>
-<p>'Assets' es uno de los widgets con m·s relevancia de la aplicaciÛn, porque ser· el encargado de gestionar los recursos del juego.</p>
+<p>'Assets' es uno de los widgets con m√°s relevancia de la aplicaci√≥n, porque ser√° el encargado de gestionar los recursos del juego.</p>
 <h2><a class="anchor" id="autotoc_md17"></a>
 Scene</h2>
-<p>El 'Scene' o escenario te permite previsualizar el contenido de la escena que estÈs editando.</p>
+<p>El 'Scene' o escenario te permite previsualizar el contenido de la escena que est√©s editando.</p>
 <h2><a class="anchor" id="autotoc_md18"></a>
 Game View</h2>
-<p>Con 'Game view' se puede probar el juego durante su construcciÛn, sin tener que exportar el juego cada vez que se necesite probar.</p>
+<p>Con 'Game view' se puede probar el juego durante su construcci√≥n, sin tener que exportar el juego cada vez que se necesite probar.</p>
 <h2><a class="anchor" id="autotoc_md19"></a>
 Console</h2>
-<p>El 'console' o consola, se encarga de mostrar los mensajes que devuelve el Editor mientras se est· trabajando.</p>
+<p>El 'console' o consola, se encarga de mostrar los mensajes que devuelve el Editor mientras se est√° trabajando.</p>
 <h2><a class="anchor" id="autotoc_md20"></a>
 AudioPlayer</h2>
 <p>Reproductor de audio integrado en el Editor que te permite escuchar cualquier sonido que se encuentre dentro de la carpeta 'Assets'.</p>
 <h2><a class="anchor" id="autotoc_md21"></a>
 TopMenu</h2>
-<p>En el men˙ superior del Editor encontraremos funcionalidades que ser·n de interÈs durante el desarrollo del proyecto.</p>
+<p>En el men√∫ superior del Editor encontraremos funcionalidades que ser√°n de inter√©s durante el desarrollo del proyecto.</p>
 <ol type="1">
-<li>'File': En este men˙ podremos gestionar los distintos aspectos relacionados con el proyecto actual.<ol type="a">
+<li>'File': En este men√∫ podremos gestionar los distintos aspectos relacionados con el proyecto actual.<ol type="a">
 <li>'New Project': te permite abrir el gestor de proyectos para crear un proyecto nuevo.</li>
 <li>'Open Project': te permite cargar un proyecto ya existente (usar el archivo 'Project.json')</li>
 <li>'Save': te permite guardar el estado actual del proyecto.</li>
 <li>'Autosave': te permite activar o desactivar un contador de forma que cada minuto guarda el estado actual del proyecto.</li>
 <li>'Build': te permite compilar tu videojuego. Ideal cuando se quiere actualizar un componente personalizado.</li>
-<li>'Build and Run': te permite exportar tu videojuego y a continuaciÛn se lanzar· autom·ticamente.</li>
+<li>'Build and Run': te permite exportar tu videojuego y a continuaci√≥n se lanzar√° autom√°ticamente.</li>
 <li>'Exit': te permite salir del proyecto.</li>
 </ol>
 </li>
-<li>'Edit': en este men˙ podr·s utilizar funciones tÌpicas de cualquier programa de ediciÛn.<ol type="a">
+<li>'Edit': en este men√∫ podr√°s utilizar funciones t√≠picas de cualquier programa de edici√≥n.<ol type="a">
 <li>'Cut': te permite 'cortar' elementos en el editor.</li>
 <li>'Copy': te permite copiar elementos del editor</li>
 <li>'Paste': te permite pegar elementos del editor.</li>
 <li>'Preferences': te permite cambiar todas las preferencias de estilo del editor, incluso puede cambiarse entre varios estilos predefinidos:<ol type="i">
 <li>Modo "Dark": modo oscuro</li>
 <li>Modo "Light": modo claro</li>
-<li>Modo "Clasic": modo cl·sico de la primera versiÛn de Alis.</li>
+<li>Modo "Clasic": modo cl√°sico de la primera versi√≥n de Alis.</li>
 </ol>
 </li>
-<li>'Project settings': configura los par·metros principales del juego.</li>
+<li>'Project settings': configura los par√°metros principales del juego.</li>
 </ol>
 </li>
-<li>'Tools': men˙ que muestra las herramientas auxiliares del editor.<ol type="a">
+<li>'Tools': men√∫ que muestra las herramientas auxiliares del editor.<ol type="a">
 <li>'Terminal': permite abrir una terminal o consola de comandos.</li>
-<li>'Visual Studio': de tener instalado visual studio 2019, podr·s trabajar con este editor al mismo tiempo que usas Alis.</li>
+<li>'Visual Studio': de tener instalado visual studio 2019, podr√°s trabajar con este editor al mismo tiempo que usas Alis.</li>
 </ol>
 </li>
-<li>'Windows': men˙ que permite controlar las ventanas del Editor.</li>
-<li>'Help': men˙ que permite acceder a informaciÛn de interÈs del programa.<ol type="a">
+<li>'Windows': men√∫ que permite controlar las ventanas del Editor.</li>
+<li>'Help': men√∫ que permite acceder a informaci√≥n de inter√©s del programa.<ol type="a">
 <li>Manual</li>
-<li>'Check updates': comprueba que estÈs utilizando la ˙ltima versiÛn de Alis. De no ser asÌ te debe de aparecer una opciÛn para descargar la nueva versiÛn.</li>
+<li>'Check updates': comprueba que est√©s utilizando la √∫ltima versi√≥n de Alis. De no ser as√≠ te debe de aparecer una opci√≥n para descargar la nueva versi√≥n.</li>
 <li>'About': muestra la licencia y autor del programa.</li>
 </ol>
 </li>
 </ol>
 <h2><a class="anchor" id="autotoc_md22"></a>
 BottomMenu</h2>
-<p>El men˙ inferior, es un men˙ auxiliar que muestra informaciÛn de interÈs. Puede mostrar un mensaje cuando se est· exportando el juego, cuando se ha guardado el proyecto, cuando se produce un error, etc.</p>
+<p>El men√∫ inferior, es un men√∫ auxiliar que muestra informaci√≥n de inter√©s. Puede mostrar un mensaje cuando se est√° exportando el juego, cuando se ha guardado el proyecto, cuando se produce un error, etc.</p>
 <h1><a class="anchor" id="autotoc_md23"></a>
-Gestor de ventanas din·mico</h1>
-<p>El editor incluye un sistema de gestiÛn de ventanas o 'widgets manager', que permite personalizar al m·ximo nuestro entorno de trabajo. Se ofrece la posibilidad de configurar el tamaÒo, forma y posiciÛn de las ventanas. Para ello bastarÌa con seleccionar una ventana y arr·strala de lugar, donde aparecer·n unas sombras (en este caso azules claros), indicando posibles lugares donde posicionar la ventana.</p>
+Gestor de ventanas din√°mico</h1>
+<p>El editor incluye un sistema de gesti√≥n de ventanas o 'widgets manager', que permite personalizar al m√°ximo nuestro entorno de trabajo. Se ofrece la posibilidad de configurar el tama√±o, forma y posici√≥n de las ventanas. Para ello bastar√≠a con seleccionar una ventana y arr√°strala de lugar, donde aparecer√°n unas sombras (en este caso azules claros), indicando posibles lugares donde posicionar la ventana.</p>
 <p><img src="Fotos_Manual/ventana_dinamico.png" alt="Gestor de ventanas del Editor de
 Alis" class="inline"/>{width="90%"} </p>
 </div></div><!-- contents -->

@@ -35,7 +35,7 @@ var NAVTREE =
     ] ],
     [ "2. Basic Concepts", "md__api_doc__pages_2_8_basic__concepts.html", null ],
     [ "3. Editor", "md__api_doc__pages_3_8_editor.html", [
-      [ "Primeros pasos", "md__api_doc__pages_3_8_editor.html#autotoc_md12", null ],
+      [ "First steps:", "md__api_doc__pages_3_8_editor.html#autotoc_md12", null ],
       [ "Widgets", "md__api_doc__pages_3_8_editor.html#autotoc_md13", [
         [ "Scene", "md__api_doc__pages_2_8_basic__concepts.html#autotoc_md7", null ],
         [ "GameObject", "md__api_doc__pages_2_8_basic__concepts.html#autotoc_md8", null ],
@@ -51,7 +51,7 @@ var NAVTREE =
         [ "TopMenu", "md__api_doc__pages_3_8_editor.html#autotoc_md21", null ],
         [ "BottomMenu", "md__api_doc__pages_3_8_editor.html#autotoc_md22", null ]
       ] ],
-      [ "Gestor de ventanas din·mico", "md__api_doc__pages_3_8_editor.html#autotoc_md23", null ]
+      [ "Gestor de ventanas din√°mico", "md__api_doc__pages_3_8_editor.html#autotoc_md23", null ]
     ] ],
     [ "4. Core", "md__api_doc__pages_4_8_core.html", [
       [ "Crea tu primer proyecto", "md__api_doc__pages_4_8_core.html#autotoc_md25", [
