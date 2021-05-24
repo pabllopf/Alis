@@ -51,7 +51,7 @@ var NAVTREE =
         [ "TopMenu", "md__api_doc__pages_3_8_editor.html#autotoc_md21", null ],
         [ "BottomMenu", "md__api_doc__pages_3_8_editor.html#autotoc_md22", null ]
       ] ],
-      [ "Gestor de ventanas dinámico", "md__api_doc__pages_3_8_editor.html#autotoc_md23", null ]
+      [ "Dynamic window manager", "md__api_doc__pages_3_8_editor.html#autotoc_md23", null ]
     ] ],
     [ "4. Core", "md__api_doc__pages_4_8_core.html", [
       [ "Crea tu primer proyecto", "md__api_doc__pages_4_8_core.html#autotoc_md25", [
