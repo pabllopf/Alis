@@ -59,7 +59,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "5. Tools", "md__api_doc__pages_5_8_tools.html", [
-      [ "Persistencia de datos", "md__api_doc__pages_5_8_tools.html#autotoc_md28", [
+      [ "Data persistence", "md__api_doc__pages_5_8_tools.html#autotoc_md28", [
         [ "LocalData", "md__api_doc__pages_5_8_tools.html#autotoc_md29", null ],
         [ "CloudData", "md__api_doc__pages_5_8_tools.html#autotoc_md30", null ]
       ] ],
