@@ -74,10 +74,10 @@ var NAVTREE =
         [ "Asset", "md__api_doc__pages_5_8_tools.html#autotoc_md37", null ],
         [ "Application", "md__api_doc__pages_5_8_tools.html#autotoc_md38", null ]
       ] ],
-      [ "Gestor de archivos", "md__api_doc__pages_5_8_tools.html#autotoc_md39", [
+      [ "Files management", "md__api_doc__pages_5_8_tools.html#autotoc_md39", [
         [ "Zipper", "md__api_doc__pages_5_8_tools.html#autotoc_md40", null ]
       ] ],
-      [ "Purification", "md__api_doc__pages_5_8_tools.html#autotoc_md41", [
+      [ "Debug", "md__api_doc__pages_5_8_tools.html#autotoc_md41", [
         [ "Logger", "md__api_doc__pages_5_8_tools.html#autotoc_md42", null ]
       ] ]
     ] ],
