@@ -54,8 +54,8 @@ var NAVTREE =
       [ "Dynamic window manager", "md__api_doc__pages_3_8_editor.html#autotoc_md23", null ]
     ] ],
     [ "4. Core", "md__api_doc__pages_4_8_core.html", [
-      [ "Crea tu primer proyecto", "md__api_doc__pages_4_8_core.html#autotoc_md25", [
-        [ "Proyecto de ejemplo", "md__api_doc__pages_4_8_core.html#autotoc_md26", null ]
+      [ "Create your first video game", "md__api_doc__pages_4_8_core.html#autotoc_md25", [
+        [ "Sample project", "md__api_doc__pages_4_8_core.html#autotoc_md26", null ]
       ] ]
     ] ],
     [ "5. Tools", "md__api_doc__pages_5_8_tools.html", [
