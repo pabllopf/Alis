@@ -63,21 +63,21 @@ var NAVTREE =
         [ "LocalData", "md__api_doc__pages_5_8_tools.html#autotoc_md29", null ],
         [ "CloudData", "md__api_doc__pages_5_8_tools.html#autotoc_md30", null ]
       ] ],
-      [ "Soporte multilenguaje", "md__api_doc__pages_5_8_tools.html#autotoc_md31", [
+      [ "Multilanguage support", "md__api_doc__pages_5_8_tools.html#autotoc_md31", [
         [ "Language", "md__api_doc__pages_5_8_tools.html#autotoc_md32", null ]
       ] ],
-      [ "Seguridad", "md__api_doc__pages_5_8_tools.html#autotoc_md33", [
+      [ "Security", "md__api_doc__pages_5_8_tools.html#autotoc_md33", [
         [ "Encriptor", "md__api_doc__pages_5_8_tools.html#autotoc_md34", null ],
         [ "Crypted", "md__api_doc__pages_5_8_tools.html#autotoc_md35", null ]
       ] ],
-      [ "Gestión de recursos", "md__api_doc__pages_5_8_tools.html#autotoc_md36", [
+      [ "Resource management", "md__api_doc__pages_5_8_tools.html#autotoc_md36", [
         [ "Asset", "md__api_doc__pages_5_8_tools.html#autotoc_md37", null ],
         [ "Application", "md__api_doc__pages_5_8_tools.html#autotoc_md38", null ]
       ] ],
       [ "Gestor de archivos", "md__api_doc__pages_5_8_tools.html#autotoc_md39", [
         [ "Zipper", "md__api_doc__pages_5_8_tools.html#autotoc_md40", null ]
       ] ],
-      [ "Depuración", "md__api_doc__pages_5_8_tools.html#autotoc_md41", [
+      [ "Purification", "md__api_doc__pages_5_8_tools.html#autotoc_md41", [
         [ "Logger", "md__api_doc__pages_5_8_tools.html#autotoc_md42", null ]
       ] ]
     ] ],
