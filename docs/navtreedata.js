@@ -92,8 +92,8 @@ var NAVTREE =
       [ "6.2 Community forum", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md50", [
         [ "6.2.1 How can I participate in the forum?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md51", null ]
       ] ],
-      [ "6.3 Panel de incidencias", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md52", [
-        [ "6.3.1 ¿Cómo puedo reportar una incidencia?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md53", null ]
+      [ "6.3 Incidents panel", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md52", [
+        [ "6.3.1 How can I report an incident?", "md__api_doc__pages_6_8_information_of_interest.html#autotoc_md53", null ]
       ] ]
     ] ],
     [ "7. Code of Conduct", "md__api_doc__pages_7_8_code_of_conduct.html", [
