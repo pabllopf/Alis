@@ -51,7 +51,7 @@
     <Optimize>true</Optimize>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
+    <ProjectReference Include="..\Core-SFML\Alis.Core.SFML.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,8 +18,4 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.12.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Core-SFML.csproj" />
-  </ItemGroup>
-
 </Project>

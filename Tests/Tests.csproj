@@ -33,7 +33,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Editor\Editor.csproj" />
+    <ProjectReference Include="..\Editor\Alis.Editor.csproj" />
   </ItemGroup>
 
 </Project>
