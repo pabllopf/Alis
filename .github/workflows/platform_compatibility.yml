@@ -1,0 +1,93 @@
+# Test Platform Compatibility with diferents platforms.
+name: "Platform_Compatibility"
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+    
+jobs:
+  job1: 
+    name: Ubuntu_18.04
+    runs-on: ubuntu-18.04
+    strategy:
+      fail-fast: true
+      matrix:
+        language: [ 'csharp' ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+      - name: Cache_Ubuntu
+        id: cache-ubuntu
+        uses: actions/cache@v2
+        with:
+          path: temp-ubuntu
+          key: ${{ runner.os }}-ubuntu
+
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build ./Editor/Editor.csproj --configuration Linux  
+              
+  job2: 
+    name: Windows_2019
+    runs-on: windows-2019
+    strategy:
+      fail-fast: true
+      matrix:
+        language: [ 'csharp' ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+      - name: Cache_Windows
+        id: cache-windows
+        uses: actions/cache@v2
+        with:
+          path: temp-windows
+          key: ${{ runner.os }}-windows   
+
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build ./Editor/Editor.csproj --configuration Windows 
+        
+      - name: Publish
+        run: dotnet publish ./Editor/Editor.csproj -r win-x64 -c Windows  
+        
+  job3: 
+    name: MacOS_10.15
+    runs-on: macos-10.15
+    strategy:
+      fail-fast: true
+      matrix:
+        language: [ 'csharp' ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2  
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0.x'
+      - name: Cache_MacOs
+        id: cache-macos
+        uses: actions/cache@v2
+        with:
+          path: temp-macos
+          key: ${{ runner.os }}-macos   
+
+      - name: Restore dependencies
+        run: dotnet restore
+        
+      - name: Build
+        run: dotnet build ./Editor/Editor.csproj --configuration MacOS   
