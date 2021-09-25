@@ -1,0 +1,3181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Editor.Architecture">
+            <summary>Define the compatible architectures </summary>
+        </member>
+        <member name="F:Alis.Editor.Architecture.Unsupported">
+            <summary>The unsupported</summary>
+        </member>
+        <member name="F:Alis.Editor.Architecture.X64">
+            <summary>The 64 architecture</summary>
+        </member>
+        <member name="F:Alis.Editor.Architecture.X86">
+            <summary>The 32 architecture</summary>
+        </member>
+        <member name="T:Alis.Editor.Graphics">
+            <summary>Define the compatible graphics</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.OpenGL">
+            <summary>The graphics 1</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Directx11">
+            <summary>The graphics 2</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Metal">
+            <summary>The graphics 3</summary>
+        </member>
+        <member name="F:Alis.Editor.Graphics.Vulkan">
+            <summary>The graphics 4</summary>
+        </member>
+        <member name="T:Alis.Editor.Info">
+            <summary>Info context </summary>
+        </member>
+        <member name="F:Alis.Editor.Info.platform">
+            <summary>The platform</summary>
+        </member>
+        <member name="F:Alis.Editor.Info.architecture">
+            <summary>The architecture</summary>
+        </member>
+        <member name="F:Alis.Editor.Info.graphics">
+            <summary>The graphics</summary>
+        </member>
+        <member name="M:Alis.Editor.Info.#ctor(Alis.Editor.Platform,Alis.Editor.Architecture,Alis.Editor.Graphics)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Info" /> class.</summary>
+            <param name="platform">The platform.</param>
+            <param name="architecture">The architecture.</param>
+            <param name="graphics">The graphics.</param>
+        </member>
+        <member name="M:Alis.Editor.Info.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Info" /> class.</summary>
+        </member>
+        <member name="P:Alis.Editor.Info.Platform">
+            <summary>Gets or sets the platform.</summary>
+            <value>The platform.</value>
+        </member>
+        <member name="P:Alis.Editor.Info.Architecture">
+            <summary>Gets or sets the architecture.</summary>
+            <value>The architecture.</value>
+        </member>
+        <member name="P:Alis.Editor.Info.Graphics">
+            <summary>Gets or sets the graphics.</summary>
+            <value>The graphics.</value>
+        </member>
+        <member name="T:Alis.Editor.Platform">
+            <summary>Platform enabled to use the engine.</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Unsupported">
+            <summary>The unsupported</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Windows">
+            <summary>The windows</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.MacOS">
+            <summary>The mac</summary>
+        </member>
+        <member name="F:Alis.Editor.Platform.Linux">
+            <summary>The linux</summary>
+        </member>
+        <member name="T:Alis.Editor.Project">
+            <summary>Project define.</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.current">
+            <summary>The current</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.directory">
+            <summary>The directory</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.assetPath">
+            <summary>The assets path</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.configPath">
+            <summary>The configuration path</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.dataPath">
+            <summary>The data path</summary>
+        </member>
+        <member name="F:Alis.Editor.Project.libPath">
+            <summary>The library path</summary>
+        </member>
+        <member name="M:Alis.Editor.Project.#ctor(System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Project" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="directory">The directory.</param>
+        </member>
+        <member name="M:Alis.Editor.Project.#ctor(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Project" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="directory">The directory.</param>
+            <param name="assetPath">The asset path.</param>
+            <param name="configPath">The configuration path.</param>
+            <param name="dataPath">The data path.</param>
+            <param name="libPath">The library path.</param>
+        </member>
+        <member name="P:Alis.Editor.Project.Name">
+            <summary>Gets or sets the name.</summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.Directory">
+            <summary>Gets or sets the directory.</summary>
+            <value>The directory.</value>
+        </member>
+        <member name="P:Alis.Editor.Project.VideoGame">
+            <summary>Gets or sets the video game.</summary>
+            <value>The video game.</value>
+        </member>
+        <member name="M:Alis.Editor.Project.Project_OnChange(System.Object,System.Boolean)">
+            <summary>Projects the on change.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="T:Alis.Editor.TypeProject">
+            <summary>Type Project</summary>
+        </member>
+        <member name="F:Alis.Editor.TypeProject.TwoDimensional">
+            <summary>The two dimensional</summary>
+        </member>
+        <member name="F:Alis.Editor.TypeProject.ThreeDimensional">
+            <summary>The three dimensional</summary>
+        </member>
+        <member name="T:Alis.Editor.Engine">
+            <summary>Manage the engine</summary>
+        </member>
+        <member name="F:Alis.Editor.Engine.info">
+            <summary>The information</summary>
+        </member>
+        <member name="F:Alis.Editor.Engine.args">
+            <summary>The arguments</summary>
+        </member>
+        <member name="F:Alis.Editor.Engine.mainWindow">
+            <summary>The main window</summary>
+        </member>
+        <member name="M:Alis.Editor.Engine.#ctor(System.String[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.Engine" /> class.</summary>
+            <param name="args">The arguments.</param>
+        </member>
+        <member name="P:Alis.Editor.Engine.FirstInstance">
+            <summary>Gets a value indicating whether [first instance].</summary>
+            <value>
+            <c>true</c> if [first instance]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Alis.Editor.Engine.DetectPlatform">
+            <summary>Gets the detect platform.</summary>
+            <value>The detect platform.</value>
+        </member>
+        <member name="P:Alis.Editor.Engine.DetectArchitecture">
+            <summary>Gets the detect architecture.</summary>
+            <value>The detect architecture.</value>
+        </member>
+        <member name="M:Alis.Editor.Engine.Start">
+            <summary>Starts this instance.</summary>
+            <returns>Return false or true to indicate the exit value</returns>
+        </member>
+        <member name="T:Alis.Editor.UI.Idiom">
+            <summary>Idioms of editor.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Idiom.English">
+            <summary>The english</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Idiom.Spanish">
+            <summary>The spanish</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Sentence">
+            <summary>Define reference text key. </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.NewProject">
+            <summary>Creates new project.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.OpenProject">
+            <summary>The open project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.SaveProject">
+            <summary>The save project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.AutoSave">
+            <summary>The automatic save</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.Build">
+            <summary>The build settings</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.BuildAndRun">
+            <summary>The build and run</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.Exit">
+            <summary>The exit</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.MessageSaveGame">
+            <summary>The message save game</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.MessageExit">
+            <summary>The message exit</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.Yes">
+            <summary>The yes</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Sentence.No">
+            <summary>The no</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.TextManager">
+            <summary>Control the texts of the editor.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.TextManager.directory">
+            <summary>The directory</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.TextManager.file">
+            <summary>The file</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.TextManager.keys">
+            <summary>The keys</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.TextManager.languages">
+            <summary>The languages</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.TextManager.idiom">
+            <summary>The idiom</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.TextManager.#cctor">
+            <summary>Initializes the <see cref="T:Alis.Editor.UI.TextManager" /> class.</summary>
+        </member>
+        <member name="E:Alis.Editor.UI.TextManager.OnChangeIdiom">
+            <summary>Occurs when [on change idiom].</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.TextManager.ChangeIdiom(Alis.Editor.UI.Idiom)">
+            <summary>Changes the idiom.</summary>
+            <param name="idiomToChange">The idiom to change.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.TextManager.Get(Alis.Editor.UI.Sentence)">
+            <summary>Gets the specified setence.</summary>
+            <param name="setence">The setence.</param>
+            <returns>return text.</returns>
+        </member>
+        <member name="T:Alis.Editor.UI.MainWindow">
+            <summary>Manage the main window.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.window">
+            <summary>The window</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.graphicsDevice">
+            <summary>The graphics device</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.imGuiController">
+            <summary>The controller</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.commandList">
+            <summary>The command list</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.info">
+            <summary>The information</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.deltaSeconds">
+            <summary>The delta seconds</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.snapshot">
+            <summary>The snapshot</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.MainWindow.widgetManager">
+            <summary>The widget manager</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.#ctor(Alis.Editor.Info)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.MainWindow" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Start">
+            <summary>Starts this instance.</summary>
+            <returns>Start the main window</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Update">
+            <summary>Updates this instance.</summary>
+            <returns>Update the main window</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Resized">
+            <summary>Windows the resized.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Closed">
+            <summary>Windows the closed.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Closing">
+            <summary>Windows the closing.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Moved(Veldrid.Point)">
+            <summary>Windows the moved.</summary>
+            <param name="obj">The object.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_FocusLost">
+            <summary>Windows the focus lost.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_FocusGained">
+            <summary>Windows the focus gained.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.Window_Hidden">
+            <summary>Windows the hidden.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.MainWindow.LoadDarkStyle">
+            <summary>Loads the style.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.Widget">
+            <summary>Widget define</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Widget.Draw">
+            <summary>Draw this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.WidgetManager">
+            <summary>Widget Manager</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.current">
+            <summary>The current</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.widgets">
+            <summary>The widgets</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.WidgetManager.info">
+            <summary>The information</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.#ctor(Alis.Editor.Info,ImGuiNET.ImGuiController)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.WidgetManager" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.WidgetManager.Update">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.About">
+            <summary>Show the game running</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.About.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.About.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.About.eventHandler">
+            <summary>The event handler</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.About.#ctor(System.EventHandler{Alis.Editor.UI.Widgets.EventType})">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.About" /> class.</summary>
+            <param name="eventHandler">The event handler.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.About.Draw">
+            <summary>Draw this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.AssetsManager">
+            <summary>Manage files of project.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.filter">
+            <summary>The filter</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.assetPath">
+            <summary>The path example</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.currentDirRight">
+            <summary>The current dir</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.AssetsManager.pathFolders">
+            <summary>The path folders</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.#ctor(Alis.Editor.Info)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.AssetsManager" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.Draw">
+            <summary>Draw this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.GetPathList(System.String)">
+            <summary>Gets the path list.</summary>
+            <param name="path">The path.</param>
+            <returns>Return list</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.AssetsManager.RunCommand(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Runs the command.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="fileName">Name of the file.</param>
+            <param name="commandBuild">The command build.</param>
+            <param name="WorkingDirectory">The working directory.</param>
+            <returns>Return none</returns>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.BottomMenu">
+            <summary>Define the menu.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.BottomMenu.current">
+            <summary>The current</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.BottomMenu.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.BottomMenu.viewport">
+            <summary>The viewport</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.BottomMenu.windowFlags">
+            <summary>The window flags</summary>
+        </member>
+        <member name="P:Alis.Editor.UI.Widgets.BottomMenu.Current">
+            <summary>Gets or sets the current.</summary>
+            <value>The current.</value>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.BottomMenu.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.BottomMenu" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.BottomMenu.Draw">
+            <summary>Draw this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.BottomMenu.StartStylePopPup">
+            <summary>Starts the style pop pup.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.BottomMenu.EndStylePopPup">
+            <summary>Ends the style pop pup.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.Console">
+            <summary>Console widget </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.current">
+            <summary>The current</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.filter">
+            <summary>The filter PTR</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.log">
+            <summary>The log</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.eventHandler">
+            <summary>The event handler</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.itemSpace">
+            <summary>The item space</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.filterLogs">
+            <summary>The filter messages</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.filterErrors">
+            <summary>The filter errors</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.filterWarnings">
+            <summary>The filter warnings</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.defaultColor">
+            <summary>The default color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.buttonDefault">
+            <summary>The button default</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.buttonPressed">
+            <summary>The button pressed</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.redColor">
+            <summary>The red color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Console.yellowColor">
+            <summary>The yellow color</summary>
+        </member>
+        <member name="P:Alis.Editor.UI.Widgets.Console.Current">
+            <summary>Gets or sets the current.</summary>
+            <value>The current.</value>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Console" /> class.</summary>
+            <param name="eventHandler">The event handler.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Clear">
+            <summary>Clears this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Warning(System.String)">
+            <summary>Warnings the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Error(System.String)">
+            <summary>Errors the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Log(System.String)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Log(System.String,System.Boolean)">
+            <summary>Logs the specified message.</summary>
+            <param name="message">The message.</param>
+            <param name="date">if set to <c>true</c> [date].</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Focus">
+            <summary>Focuses this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Print(System.String)">
+            <summary>Prints this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Console.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.DockSpace">
+            <summary>Manage the windows. </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.button">
+            <summary>The button</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.dockspaceFlags">
+            <summary>The flags</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.windowFlags">
+            <summary>The window flags</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.viewportPtr">
+            <summary>The viewport pointer</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.windowPos">
+            <summary>The window position</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.extraWindowPos">
+            <summary>The extra window position</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.windowSize">
+            <summary>The window size</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.extraWindowSize">
+            <summary>The extra window size</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.isPlaying">
+            <summary>The is playing</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.DockSpace.buttonPressed">
+            <summary>The button pressed</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.DockSpace.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.DockSpace" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.DockSpace.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.DockSpace.PlayGame">
+            <summary>Plays the game.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.DockSpace.ClickButton(System.Int32)">
+            <summary>Clicks the button.</summary>
+            <param name="v">The v.</param>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.EventType">
+            <summary>Event Type</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.OpenConsole">
+            <summary>Open Console</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.CloseConsole">
+            <summary>Close Console</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.ExitEditor">
+            <summary>The exit editor</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.OpenCreateProject">
+            <summary>The open creator project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.CloseCreateProject">
+            <summary>The close creator project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.OpenProject">
+            <summary>The open project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.EventType.CloseProject">
+            <summary>The close project</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.FileDialog">
+            <summary>File Dialog</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.currentDirRight">
+            <summary>The current dir</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.filter">
+            <summary>The filter</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.sizeWidget">
+            <summary>The size widget</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.sizeChild">
+            <summary>The size child </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.configPopup">
+            <summary>The configuration popup</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.itemSpacing">
+            <summary>The item spacing</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.childBorderSize">
+            <summary>The child border size</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.redColor">
+            <summary>The red color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.whiteColor">
+            <summary>The white color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.FileDialog.childBackground">
+            <summary>The child background</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.FileDialog.PopStyle">
+            <summary>Pops the style.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.GameView">
+            <summary>Show the game running</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.current">
+            <summary>The current</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.imGuiController">
+            <summary>The im GUI controller</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.isGaming">
+            <summary>The is gaming</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.intPtr">
+            <summary>The int PTR</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.focus">
+            <summary>The focus</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.resolution">
+            <summary>The modes</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.currentResolution">
+            <summary>The current mode</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.selected">
+            <summary>The selected</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.GameView.configPopup">
+            <summary>The configuration popup</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.GameView.#ctor(ImGuiNET.ImGuiController)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.GameView" /> class.</summary>
+            <param name="eventHandler">The event handler.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.GameView.Draw">
+            <summary>Draw this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.Inspector">
+            <summary>Manage components of scene.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Inspector.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Inspector.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Inspector" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Inspector.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.Maker">
+            <summary>Manage components of scene.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Maker.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Maker.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Inspector" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Maker.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.Preferences">
+            <summary>Set preferences of alis editor. </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Preferences.focus">
+            <summary>The focus</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.Preferences.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Preferences.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.Preferences" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Preferences.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Preferences.Focus">
+            <summary>Focuses this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.Preferences.SetStyle">
+            <summary>Sets the style.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.ProjectManager">
+            <summary>Create new project. </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.showRecentProjects">
+            <summary>The show recent projects</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.projects">
+            <summary>The projects</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.sizeWidget">
+            <summary>The size widget</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.sizeChild">
+            <summary>The size child </summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.configPopup">
+            <summary>The configuration popup</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.itemSpacing">
+            <summary>The item spacing</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.childBorderSize">
+            <summary>The child border size</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.nameField">
+            <summary>The name field</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.directoryField">
+            <summary>The directory field</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.modes">
+            <summary>The modes</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.currentMode">
+            <summary>The current mode</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.selected">
+            <summary>The selected</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.redColor">
+            <summary>The red color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.whiteColor">
+            <summary>The white color</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectManager.childBackground">
+            <summary>The child background</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.#ctor(System.Boolean,Alis.Editor.Info)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.ProjectManager" /> class.</summary>
+            <param name="showRecentProjects">show this</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Draw">
+            <summary>Draw this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.Close">
+            <summary>Closes this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.PushStyle">
+            <summary>Pushes the style.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectManager.PopStyle">
+            <summary>Pops the style.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.ProjectSettings">
+            <summary>Project Settings</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectSettings.focus">
+            <summary>The focus</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectSettings.fields">
+            <summary>The fields</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectSettings.fields2">
+            <summary>The fields</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectSettings.fields3">
+            <summary>The fields</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectSettings.isOpen">
+            <summary>The is open</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.ProjectSettings.childBackground">
+            <summary>The child background</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectSettings.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.ProjectSettings" /> class.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectSettings.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectSettings.ShowConfig(Alis.Core.Config)">
+            <summary>
+            Shows the configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.ProjectSettings.Focus">
+            <summary>Focuses this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.SceneView">
+            <summary>Render the core scene.</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.SceneView.Name">
+            <summary>The name</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.SceneView.Project_OnChangeProject(System.Object,System.Boolean)">
+            <summary>Projects the on change project.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.SceneView.Draw">
+            <summary>Draws this instance.</summary>
+        </member>
+        <member name="T:Alis.Editor.UI.Widgets.TopMenu">
+            <summary>
+            Menu of editor
+            </summary>
+            <seealso cref="T:Alis.Editor.UI.Widgets.Widget" />
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.newProject">
+            <summary>The new project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.openProject">
+            <summary>The open project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.saveProject">
+            <summary>The save project</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.autoSave">
+            <summary>The automatic save</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.build">
+            <summary>The build settings</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.buildAndRun">
+            <summary>The build and run</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.exit">
+            <summary>The exit</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.messageSaveGame">
+            <summary>The exit</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.messageExit">
+            <summary>The exit</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.yes">
+            <summary>The yes</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.no">
+            <summary>The no</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.process">
+            <summary>The process</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.startInfo">
+            <summary>The start information</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.info">
+            <summary>The information</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.watch">
+            <summary>The time span</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.exitState">
+            <summary>The exit state</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.autosaveMode">
+            <summary>The is autosave active</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.timerAutoSave">
+            <summary>The timer automatic save</summary>
+        </member>
+        <member name="F:Alis.Editor.UI.Widgets.TopMenu.aboutState">
+            <summary>The is saved pressed</summary>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.#ctor(Alis.Editor.Info,ImGuiNET.ImGuiController)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Editor.UI.Widgets.TopMenu"/> class.
+            </summary>
+            <param name="info">The information.</param>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.Draw">
+            <summary>
+            Draws this instance.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.LoadTexts">
+            <summary>
+            Loads the texts.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.NewProject">
+            <summary>
+            Creates new project.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.OpenProject">
+            <summary>
+            Opens the project.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.SaveProject(System.Boolean)">
+            <summary>
+            Saves the project.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.AutoSaveProject">
+            <summary>
+            Automatics the save project.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.CheckAutoSaveMode">
+            <summary>
+            Checks the automatic save mode.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.Build">
+            <summary>
+            Builds the settings.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.BuildAndRun">
+            <summary>
+            Builds the and run.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.Exit">
+            <summary>
+            Exits this instance.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.CheckIsExit">
+            <summary>
+            Checks the is exit.
+            </summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.Cut">
+            <summary>
+            Cuts this instance.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.OpenTerminal">
+            <summary>
+            Opens the terminal.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.DefaultView">
+            <summary>
+            Defaults the view.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.WideView">
+            <summary>
+            Wides the view.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.TallView">
+            <summary>
+            Talls the view.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.CheckIsAbout">
+            <summary>
+            Checks the is about.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.CheckShortCuts">
+            <summary>
+            Checks the short cuts.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortNewProject">
+            <summary>
+            Shorts the new project.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortSaveGame">
+            <summary>
+            Shorts the save game.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortOpenProject">
+            <summary>
+            Shorts the open project.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortBuild">
+            <summary>
+            Shorts the build.
+            </summary>
+            <returns>Return game</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortBuildAndRun">
+            <summary>
+            Shorts the automatic save.
+            </summary>
+            <returns>return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.ShortAutosave">
+            <summary>
+            Shorts the autosave.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.RunCommand(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Runs the command.
+            </summary>
+            <param name="message">The message.</param>
+            <param name="fileName">Name of the file.</param>
+            <param name="commandBuild">The command build.</param>
+            <param name="WorkingDirectory">The working directory.</param>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.DirectoryCopy(System.String,System.String,System.Boolean)">
+            <summary>
+            Directories the copy.
+            </summary>
+            <param name="sourceDirName">Name of the source dir.</param>
+            <param name="destDirName">Name of the dest dir.</param>
+            <param name="copySubDirs">if set to <c>true</c> [copy sub dirs].</param>
+            <returns></returns>
+            <exception cref="T:System.IO.DirectoryInfo">sourceDirName</exception>
+        </member>
+        <member name="M:Alis.Editor.UI.Widgets.TopMenu.TextManager_OnChangeIdiom(System.Object,System.Boolean)">
+            <summary>Texts the manager on change idiom.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+            <returns>Run the event</returns>
+        </member>
+        <member name="T:Alis.Editor.Utils.Icon">
+            <summary>The icons of app.</summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FONTICONFILENAMEFA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ICONMINFA">
+            <summary>The font icon file name </summary>    
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ICONMAXFA">
+            <summary>The icon maximum </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GLASS">
+            <summary>The font icon file name </summary>  
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MUSIC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SEARCH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ENVELOPEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HEART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STAR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STARO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILM">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THLARGE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THLIST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHECK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TIMES">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SEARCHPLUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SEARCHMINUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.POWEROFF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SIGNAL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRASHO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HOME">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CLOCKO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ROAD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DOWNLOAD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWCIRCLEODOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWCIRCLEOUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.INBOX">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLAYCIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REPEAT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REFRESH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LISTALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LOCK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FLAG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HEADPHONES">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VOLUMEOFF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VOLUMEDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VOLUMEUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.QRCODE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BARCODE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TAG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TAGS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BOOK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BOOKMARK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PRINT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CAMERA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FONT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BOLD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ITALIC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TEXTHEIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TEXTWIDTH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ALIGNLEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ALIGNCENTER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ALIGNRIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ALIGNJUSTIFY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LIST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.OUTDENT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.INDENT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VIDEOCAMERA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PICTUREO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PENCIL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MAPMARKER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ADJUST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TINT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PENCILSQUAREO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHARESQUAREO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHECKSQUAREO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STEPBACKWARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FASTBACKWARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BACKWARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLAY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAUSE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STOP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FORWARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FASTFORWARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STEPFORWARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EJECT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHEVRONLEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHEVRONRIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLUSCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MINUSCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TIMESCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHECKCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.QUESTIONCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.INFOCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CROSSHAIRS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TIMESCIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHECKCIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BAN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWLEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWRIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EXPAND">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COMPRESS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MINUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ASTERISK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EXCLAMATIONCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GIFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LEAF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FIRE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EYE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EYESLASH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EXCLAMATIONTRIANGLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLANE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CALENDAR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.RANDOM">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COMMENT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MAGNET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHEVRONUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHEVRONDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.RETWEET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHOPPINGCART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FOLDER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FOLDEROPEN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWSV">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWSH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BARCHART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TWITTERSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FACEBOOKSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CAMERARETRO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.KEY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COGS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COMMENTS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THUMBSOUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THUMBSODOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STARHALF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HEARTO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SIGNOUT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LINKEDINSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THUMBTACK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EXTERNALLINK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SIGNIN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TROPHY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GITHUBSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.UPLOAD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LEMONO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PHONE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SQUAREO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BOOKMARKO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PHONESQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TWITTER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FACEBOOK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GITHUB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.UNLOCK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CREDITCARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.RSS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HDDO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BULLHORN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BELL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CERTIFICATE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDORIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDOLEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDOUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDODOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWCIRCLELEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWCIRCLERIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWCIRCLEUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWCIRCLEDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GLOBE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WRENCH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TASKS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILTER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BRIEFCASE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWSALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USERS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LINK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CLOUD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FLASK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SCISSORS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILESO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAPERCLIP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FLOPPYO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BARS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LISTUL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LISTOL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STRIKETHROUGH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.UNDERLINE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TABLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MAGIC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRUCK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PINTEREST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PINTERESTSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GOOGLEPLUSSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GOOGLEPLUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MONEY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARETDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARETUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARETLEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARETRIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COLUMNS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORTDESC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORTASC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ENVELOPE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LINKEDIN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.UNDO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GAVEL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TACHOMETER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COMMENTO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COMMENTSO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BOLT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SITEMAP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.UMBRELLA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CLIPBOARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LIGHTBULBO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EXCHANGE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CLOUDDOWNLOAD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CLOUDUPLOAD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USERMD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STETHOSCOPE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SUITCASE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BELLO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COFFEE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CUTLERY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILETEXTO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BUILDINGO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HOSPITALO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.AMBULANCE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MEDKIT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FIGHTERJET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BEER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLUSSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGLEDOUBLELEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGLEDOUBLERIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGLEDOUBLEUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGLEDOUBLEDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGLELEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGLERIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGLEUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGLEDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DESKTOP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LAPTOP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TABLET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MOBILE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.QUOTELEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.QUOTERIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SPINNER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REPLY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GITHUBALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FOLDERO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FOLDEROPENO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SMILEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FROWNO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MEHO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GAMEPAD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.KEYBOARDO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FLAGO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FLAGCHECKERED">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TERMINAL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CODE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REPLYALL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STARHALFO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LOCATIONARROW">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CROP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CODEFORK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHAINBROKEN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.QUESTION">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.INFO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EXCLAMATION">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SUPERSCRIPT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SUBSCRIPT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ERASER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PUZZLEPIECE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MICROPHONE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MICROPHONESLASH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHIELD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CALENDARO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FIREEXTINGUISHER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ROCKET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MAXCDN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHEVRONCIRCLELEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHEVRONCIRCLERIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHEVRONCIRCLEUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHEVRONCIRCLEDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HTML5">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CSS3">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANCHOR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.UNLOCKALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BULLSEYE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ELLIPSISH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ELLIPSISV">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.RSSSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLAYCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TICKET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MINUSSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MINUSSQUAREO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LEVELUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LEVELDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHECKSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PENCILSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EXTERNALLINKSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHARESQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COMPASS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARETSQUAREODOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARETSQUAREOUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARETSQUAREORIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EUR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GBP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.INR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.JPY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.RUB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.KRW">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BTC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILETEXT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORTALPHAASC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORTALPHADESC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORTAMOUNTASC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORTAMOUNTDESC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORTNUMERICASC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SORTNUMERICDESC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THUMBSUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THUMBSDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.YOUTUBESQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.YOUTUBE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.XING">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.XINGSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.YOUTUBEPLAY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DROPBOX">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STACKOVERFLOW">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.INSTAGRAM">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FLICKR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ADN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BITBUCKET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BITBUCKETSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TUMBLR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TUMBLRSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LONGARROWDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LONGARROWUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LONGARROWLEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LONGARROWRIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.APPLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WINDOWS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANDROID">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LINUX">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DRIBBBLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SKYPE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FOURSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRELLO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FEMALE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MALE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GRATIPAY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SUNO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MOONO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARCHIVE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BUG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WEIBO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.RENREN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAGELINES">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STACKEXCHANGE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWCIRCLEORIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ARROWCIRCLEOLEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARETSQUAREOLEFT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DOTCIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WHEELCHAIR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VIMEOSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLUSSQUAREO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SPACESHUTTLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SLACK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ENVELOPESQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WORDPRESS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.OPENID">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.UNIVERSITY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GRADUATIONCAP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.YAHOO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GOOGLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REDDIT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REDDITSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STUMBLEUPONCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STUMBLEUPON">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DELICIOUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DIGG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PIEDPIPERPP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PIEDPIPERALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DRUPAL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.JOOMLA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LANGUAGE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FAX">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BUILDING">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHILD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAW">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SPOON">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CUBE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CUBES">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BEHANCE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BEHANCESQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STEAM">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STEAMSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.RECYCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CAR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TAXI">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TREE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SPOTIFY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DEVIANTART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SOUNDCLOUD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DATABASE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEPDFO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEWORDO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEEXCELO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEPOWERPOINTO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEIMAGEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEARCHIVEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEAUDIOO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILEVIDEOO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FILECODEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VINE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CODEPEN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.JSFIDDLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LIFERING">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CIRCLEONOTCH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REBEL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EMPIRE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GITSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GIT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HACKERNEWS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TENCENTWEIBO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.QQ">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WEIXIN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAPERPLANE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAPERPLANEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HISTORY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CIRCLETHIN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HEADER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PARAGRAPH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SLIDERS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHAREALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHAREALTSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BOMB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FUTBOLO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TTY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BINOCULARS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PLUG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SLIDESHARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TWITCH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.YELP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.NEWSPAPERO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WIFI">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CALCULATOR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAYPAL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GOOGLEWALLET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CCVISA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CCMASTERCARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CCDISCOVER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CCAMEX">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CCPAYPAL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CCSTRIPE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BELLSLASH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BELLSLASHO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRASH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COPYRIGHT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.AT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EYEDROPPER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAINTBRUSH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BIRTHDAYCAKE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.AREACHART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PIECHART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LINECHART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LASTFM">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LASTFMSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TOGGLEOFF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TOGGLEON">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BICYCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.IOXHOST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ANGELLIST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CC">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ILS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MEANPATH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BUYSELLADS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CONNECTDEVELOP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DASHCUBE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FORUMBEE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LEANPUB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SELLSY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHIRTSINBULK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SIMPLYBUILT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SKYATLAS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARTPLUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CARTARROWDOWN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DIAMOND">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHIP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USERSECRET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MOTORCYCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STREETVIEW">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HEARTBEAT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VENUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MARS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MERCURY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRANSGENDER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRANSGENDERALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VENUSDOUBLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MARSDOUBLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VENUSMARS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MARSSTROKE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MARSSTROKEV">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MARSSTROKEH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.NEUTER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GENDERLESS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FACEBOOKOFFICIAL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PINTERESTP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WHATSAPP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SERVER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USERPLUS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USERTIMES">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BED">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VIACOIN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRAIN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SUBWAY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MEDIUM">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.YCOMBINATOR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.OPTINMONSTER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.OPENCART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EXPEDITEDSSL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BATTERYFULL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BATTERYTHREEQUARTERS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BATTERYHALF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BATTERYQUARTER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BATTERYEMPTY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MOUSEPOINTER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ICURSOR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.OBJECTGROUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.OBJECTUNGROUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STICKYNOTE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STICKYNOTEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CCJCB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CCDINERSCLUB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CLONE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BALANCESCALE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HOURGLASSO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HOURGLASSSTART">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HOURGLASSHALF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HOURGLASSEND">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HOURGLASS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDROCKO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDPAPERO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDSCISSORSO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDLIZARDO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDSPOCKO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDPOINTERO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDPEACEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRADEMARK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REGISTERED">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CREATIVECOMMONS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GGCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TRIPADVISOR">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ODNOKLASSNIKI">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ODNOKLASSNIKISQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GETPOCKET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WIKIPEDIAW">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SAFARI">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CHROME">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FIREFOX">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.OPERA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.INTERNETEXPLORER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TELEVISION">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CONTAO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PX">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.AMAZON">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CALENDARPLUSO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CALENDARMINUSO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CALENDARTIMESO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CALENDARCHECKO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.INDUSTRY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MAPPIN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MAPSIGNS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MAPO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MAP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COMMENTING">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.COMMENTINGO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HOUZZ">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VIMEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BLACKTIE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FONTICONS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.REDDITALIEN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EDGE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CREDITCARDALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.CODIEPIE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MODX">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FORTAWESOME">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PRODUCTHUNT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MIXCLOUD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SCRIBD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAUSECIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PAUSECIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STOPCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.STOPCIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHOPPINGBAG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHOPPINGBASKET">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HASHTAG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BLUETOOTH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BLUETOOTHB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PERCENT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GITLAB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WPBEGINNER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WPFORMS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ENVIRA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.UNIVERSALACCESS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WHEELCHAIRALT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.QUESTIONCIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BLIND">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.AUDIODESCRIPTION">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VOLUMECONTROLPHONE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BRAILLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ASSISTIVELISTENINGSYSTEMS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.AMERICANSIGNLANGUAGEINTERPRETING">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.DEAF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GLIDE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GLIDEG">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SIGNLANGUAGE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LOWVISION">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VIADEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.VIADEOSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SNAPCHAT">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SNAPCHATGHOST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SNAPCHATSQUARE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PIEDPIPER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FIRSTORDER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.YOAST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THEMEISLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GOOGLEPLUSOFFICIAL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FONTAWESOME">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.HANDSHAKEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ENVELOPEOPEN">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ENVELOPEOPENO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.LINODE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ADDRESSBOOK">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ADDRESSBOOKO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ADDRESSCARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ADDRESSCARDO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USERCIRCLE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USERCIRCLEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.USERO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.IDBADGE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.IDCARD">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.IDCARDO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.QUORA">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.FREECODECAMP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.TELEGRAM">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THERMOMETERFULL">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THERMOMETERTHREEQUARTERS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THERMOMETERHALF">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THERMOMETERQUARTER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.THERMOMETEREMPTY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SHOWER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BATH">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.PODCAST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WINDOWMAXIMIZE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WINDOWMINIMIZE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WINDOWRESTORE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WINDOWCLOSE">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WINDOWCLOSEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.BANDCAMP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.GRAV">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.ETSY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.IMDB">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.RAVELRY">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.EERCAST">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MICROCHIP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SNOWFLAKEO">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.SUPERPOWERS">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.WPEXPLORER">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="F:Alis.Editor.Utils.Icon.MEETUP">
+            <summary>The font icon file name </summary>
+        </member>
+        <member name="T:Alis.Editor.Program">
+            <summary>Run the engine</summary>
+        </member>
+        <member name="F:Alis.Editor.Program.engine">
+            <summary>The engine</summary>
+        </member>
+        <member name="M:Alis.Editor.Program.Main(System.String[])">
+            <summary>Mains the specified arguments.</summary>
+            <param name="args">The arguments.</param>
+            <returns>Return -1 or 0</returns>
+        </member>
+        <member name="T:ImGuiNET.ImGuiController">
+            <summary>
+            A modified version of Veldrid.ImGui's ImGuiRenderer.
+            Manages input for ImGui and handles rendering ImGui's DrawLists with Veldrid.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.#ctor(Veldrid.GraphicsDevice,Veldrid.OutputDescription,System.Int32,System.Int32)">
+            <summary>
+            Constructs a new ImGuiController.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.TextureView)">
+            <summary>
+            Gets or creates a handle for a texture to be drawn with ImGui.
+            Pass the returned handle to Image() or ImageButton().
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.GetOrCreateImGuiBinding(Veldrid.ResourceFactory,Veldrid.Texture)">
+            <summary>
+            Gets or creates a handle for a texture to be drawn with ImGui.
+            Pass the returned handle to Image() or ImageButton().
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.GetImageResourceSet(System.IntPtr)">
+            <summary>
+            Retrieves the shader texture binding for the given helper handle.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.RecreateFontDeviceTexture(Veldrid.GraphicsDevice)">
+            <summary>
+            Recreates the device texture used to render text.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.Render(Veldrid.GraphicsDevice,Veldrid.CommandList)">
+            <summary>
+            Renders the ImGui draw list data.
+            This method requires a <see cref="T:Veldrid.GraphicsDevice"/> because it may create new DeviceBuffers if the size of vertex
+            or index data has increased beyond the capacity of the existing buffers.
+            A <see cref="T:Veldrid.CommandList"/> is needed to submit drawing and resource update commands.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.Update(System.Single,Veldrid.InputSnapshot)">
+            <summary>
+            Updates ImGui input and IO configuration state.
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.SetPerFrameImGuiData(System.Single)">
+            <summary>
+            Sets per-frame data based on the associated window.
+            This is called by Update(float).
+            </summary>
+        </member>
+        <member name="M:ImGuiNET.ImGuiController.Dispose">
+            <summary>
+            Frees all graphics resources used by the renderer.
+            </summary>
+        </member>
+    </members>
+</doc>

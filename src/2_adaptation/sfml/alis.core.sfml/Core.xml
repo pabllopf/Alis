@@ -1,0 +1,481 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Core-SFML</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.SFML.Animation">
+            <summary>Define animation of sprite.</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animation.name">
+            <summary>The name</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animation.state">
+            <summary>The state</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animation.images">
+            <summary>The images</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animation.textures">
+            <summary>The textures</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animation.index">
+            <summary>The index</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animation.speed">
+            <summary>The speed</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Animation.#ctor(System.String,System.Int32,System.Single,System.String[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Animation" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="state">The state.</param>
+            <param name="speed">The speed.</param>
+            <param name="images">The images.</param>
+        </member>
+        <member name="P:Alis.Core.SFML.Animation.Name">
+            <summary>Gets or sets the name.</summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.Animation.State">
+            <summary>Gets or sets the state.</summary>
+            <value>The state.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.Animation.Speed">
+            <summary>Gets or sets the speed.</summary>
+            <value>The speed.</value>
+        </member>
+        <member name="T:Alis.Core.SFML.Animator">
+            <summary>Define a component</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animator.sprite">
+            <summary>The sprite</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animator.state">
+            <summary>The state</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animator.clock">
+            <summary>The clock</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Animator.animations">
+            <summary>The animations</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Animator.#ctor(System.Int32,Alis.Core.SFML.Animation[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Animator" /> class.</summary>
+            <param name="name">The name.</param>
+            <param name="state">The state.</param>
+            <param name="animations">The animations.</param>
+        </member>
+        <member name="P:Alis.Core.SFML.Animator.State">
+            <summary>Gets or sets the state.</summary>
+            <value>The state.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.Animator.Animations">
+            <summary>Gets or sets the animations.</summary>
+            <value>The animations.</value>
+        </member>
+        <member name="M:Alis.Core.SFML.Animator.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Animator.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="T:Alis.Core.SFML.AudioSource">
+            <summary>Define a component</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.AudioSource.audioFile">
+            <summary>The file</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.AudioSource.pathFile">
+            <summary>The path file</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.AudioSource.playOnAwake">
+            <summary>The play on awake</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.AudioSource.loop">
+            <summary>The loop</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.AudioSource.volume">
+            <summary>The volume</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.AudioSource.audio">
+            <summary>The audio</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.AudioSource" /> class.</summary>
+            <param name="audioFile">The audio file.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.#ctor(System.String,System.Boolean,System.Single,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.AudioSource" /> class.</summary>
+            <param name="audioFile">The audio file.</param>
+            <param name="playOnAwake">if set to <c>true</c> [play on awake].</param>
+            <param name="volume">The volume.</param>
+            <param name="loop">define is loop</param>
+        </member>
+        <member name="E:Alis.Core.SFML.AudioSource.OnPlay">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.SFML.AudioSource.OnStop">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.SFML.AudioSource.OnPause">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="E:Alis.Core.SFML.AudioSource.OnRestart">
+            <summary>Occurs when [change].</summary>
+        </member>
+        <member name="P:Alis.Core.SFML.AudioSource.AudioFile">
+            <summary>Gets or sets the audio file.</summary>
+            <value>The audio file.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.AudioSource.PlayOnAwake">
+            <summary>Gets or sets a value indicating whether [play on awake].</summary>
+            <value>
+            <c>true</c> if [play on awake]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.AudioSource.Volume">
+            <summary>Gets or sets the volume.</summary>
+            <value>The volume.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.AudioSource.Loop">
+            <summary>Gets or sets a value indicating whether this <see cref="T:Alis.Core.SFML.AudioSource" /> is loop.</summary>
+            <value>
+            <c>true</c> if loop; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.Play">
+            <summary>Plays this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.Stop">
+            <summary>Stops this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.Pause">
+            <summary>Pauses this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.Restart">
+            <summary>Restarts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.AudioSource_OnRestart(System.Object,System.Boolean)">
+            <summary>Audio the source on restart.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.AudioSource_OnPause(System.Object,System.Boolean)">
+            <summary>Audio the source on pause.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.AudioSource_OnStop(System.Object,System.Boolean)">
+            <summary>Audio the source on stop.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="M:Alis.Core.SFML.AudioSource.AudioSource_OnPlay(System.Object,System.Boolean)">
+            <summary>Audio the source on play.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="T:Alis.Core.SFML.Camera">
+            <summary>Define a component</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Camera.transform">
+            <summary>The transform</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Camera.view">
+            <summary>The view</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Camera.center">
+            <summary>The center</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Camera.size">
+            <summary>The size</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Camera.#ctor(System.Numerics.Vector2,System.Numerics.Vector2)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.SFML.Camera"/> class.
+            </summary>
+            <param name="center">The center.</param>
+            <param name="size">The size.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.Camera.#ctor(System.Numerics.Vector2)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Camera" /> class.</summary>
+            <param name="size">resolution of camera.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.Camera.Start">
+            <summary>Start this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Camera.Update">
+            <summary>Update this instance.</summary>
+        </member>
+        <member name="T:Alis.Core.SFML.Collision">
+            <summary>Define a component</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Collision.isTrigger">
+            <summary>The is trigger</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Collision.#ctor(System.Numerics.Vector2,System.Boolean)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Collision" /> class.</summary>
+            <param name="border">The border.</param>
+            <param name="isTrigger">if set to <c>true</c> [is trigger].</param>
+        </member>
+        <member name="P:Alis.Core.SFML.Collision.IsTrigger">
+            <summary>Gets or sets a value indicating whether this instance is trigger.</summary>
+            <value>
+            <c>true</c> if this instance is trigger; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:Alis.Core.SFML.Collision.Start">
+            <summary>Start this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Collision.Update">
+            <summary>Update this instance.</summary>
+        </member>
+        <member name="T:Alis.Core.SFML.Sprite">
+            <summary>Define a component</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Sprite.icon">
+            <summary>The icon</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Sprite.image">
+            <summary>The image</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Sprite.pathImage">
+            <summary>The path image</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Sprite.depth">
+            <summary>The depth</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Sprite.sprite">
+            <summary>The sprite</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.Sprite.transform">
+            <summary>The transform</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Sprite" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.#ctor(System.String)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Sprite" /> class.</summary>
+            <param name="image">The image.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.#ctor(System.String,System.Int32)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.Sprite" /> class.</summary>
+            <param name="image">The image.</param>
+            <param name="depth">The depth.</param>
+        </member>
+        <member name="E:Alis.Core.SFML.Sprite.OnDraw">
+            <summary>Occurs when [on draw].</summary>
+        </member>
+        <member name="P:Alis.Core.SFML.Sprite.Image">
+            <summary>Gets or sets the image.</summary>
+            <value>The image.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.Sprite.Depth">
+            <summary>Gets or sets the depth.</summary>
+            <value>The depth.</value>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.GetDraw">
+            <summary>Gets the draw.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.Check">
+            <summary>Checks this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.Sprite.Sprite_OnDraw(System.Object,System.Boolean)">
+            <summary>Sprites the on draw.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">if set to <c>true</c> [e].</param>
+        </member>
+        <member name="T:Alis.Core.SFML.InputSFML">
+            <summary>Define the input</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.InputSFML.#ctor(Alis.Core.Config)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.InputSFML" /> class.</summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.InputSFML.Awake">
+            <summary>Awakes this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.InputSFML.Start">
+            <summary>Starts this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.InputSFML.Update">
+            <summary>Updates this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.InputSFML.FixedUpdate">
+            <summary>Fixed the update.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.InputSFML.Stop">
+            <summary>Stops this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.InputSFML.Exit">
+            <summary>Exits this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="T:Alis.Core.SFML.RenderSFML">
+            <summary>Implement the render. </summary>
+        </member>
+        <member name="F:Alis.Core.SFML.RenderSFML.renderSFML">
+            <summary>The render SFML</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.RenderSFML.config">
+            <summary>The configuration</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.RenderSFML.renderWindow">
+            <summary>The render window</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.RenderSFML.renderTexture">
+            <summary>The render texture</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.RenderSFML.frame">
+            <summary>The frame</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.RenderSFML.videoMode">
+            <summary>The video mode</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.RenderSFML.sprites">
+            <summary>The sprites</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.RenderSFML.collisions">
+            <summary>The collisions</summary>
+        </member>
+        <member name="P:Alis.Core.SFML.RenderSFML.RenderWindow">
+            <summary>Gets or sets the collisions.</summary>
+            <value>The collisions.</value>
+            <summary>Gets the render window.</summary>
+            <value>The render window.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.RenderSFML.RenderTexture">
+            <summary>Gets the render texture.</summary>
+            <value>The render texture.</value>
+        </member>
+        <member name="P:Alis.Core.SFML.RenderSFML.CurrentRenderSFML">
+            <summary>Gets or sets the render SFML.</summary>
+            <value>The render SFML.</value>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.#ctor(Alis.Core.Config)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.RenderSFML" /> class.</summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.Awake">
+            <summary>Awakes this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.Start">
+            <summary>Starts this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.FixedUpdate">
+            <summary>Fixed the update.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.Update">
+            <summary>Updates this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.Stop">
+            <summary>Stops this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.Exit">
+            <summary>Exits this instance.</summary>
+            <returns>Return none</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.FrameBytes">
+            <summary>Frames the bytes.</summary>
+            <returns>Return the frame in bytes.</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.AddDraw(Alis.Core.Component)">
+            <summary>Adds the draw.</summary>
+            <param name="draw">The draw.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.Remove(Alis.Core.Component)">
+            <summary>Removes the specified draw.</summary>
+            <param name="draw">The draw.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.GetDraws``1">
+            <summary>Gets the draws.</summary>
+            <typeparam name="T"></typeparam>
+            <returns>Return a list</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.RenderSFML.RenderWindow_Closed(System.Object,System.EventArgs)">
+            <summary>Handles the Closed event of the RenderWindow control.</summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="T:Alis.Core.SFML.VideoGame">
+            <summary>Video game</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.#ctor(Alis.Core.Config,Alis.Core.SceneManager)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+            <param name="sceneManager">The scene manager.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.#ctor(Alis.Core.Config,Alis.Core.Scene[])">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.VideoGame" /> class.</summary>
+            <param name="config">The configuration.</param>
+            <param name="scenes">The scene.</param>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.LoadOfFile(System.String)">
+            <summary>Loads the of file.</summary>
+            <param name="file">The file.</param>
+            <returns>Return game.</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.RunOfFile">
+            <summary>Runs the of file.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.Builder">
+            <summary>The builder</summary>
+        </member>
+        <member name="T:Alis.Core.SFML.VideoGame.VideoGameBuilder">
+            <summary>Video Game Builder</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.VideoGame.VideoGameBuilder.current">
+            <summary>The current</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.VideoGame.VideoGameBuilder.config">
+            <summary>The configuration</summary>
+        </member>
+        <member name="F:Alis.Core.SFML.VideoGame.VideoGameBuilder.sceneManager">
+            <summary>The scene manager</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.SFML.VideoGame.VideoGameBuilder" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.Config(Alis.Core.Config)">
+            <summary>Configurations the specified configuration.</summary>
+            <param name="config">The configuration.</param>
+            <returns>Return the video game builder</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.SceneManager(Alis.Core.SceneManager)">
+            <summary>Scenes the manager.</summary>
+            <param name="sceneManager">The scene manager.</param>
+            <returns>Return the scene manager. </returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.Build">
+            <summary>Builds this instance.</summary>
+            <returns>Return the build.</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.Build(Alis.Core.SFML.VideoGame@)">
+            <summary>Builds the specified game.</summary>
+            <param name="game">The game.</param>
+            <returns>Return the build.</returns>
+        </member>
+        <member name="M:Alis.Core.SFML.VideoGame.VideoGameBuilder.Run">
+            <summary>Runs this instance.</summary>
+        </member>
+    </members>
+</doc>

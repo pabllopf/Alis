@@ -1,0 +1,12 @@
+﻿using System;
+
+namespace Alis.Core.SFML.Example
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
