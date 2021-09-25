@@ -18,8 +18,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Tools\Alis.Tools.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -119,6 +119,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Tools\Alis.Tools.csproj" />
+    <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />
   </ItemGroup>
 </Project>

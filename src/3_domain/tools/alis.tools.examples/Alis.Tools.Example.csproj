@@ -6,8 +6,4 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Tools\Alis.Tools.csproj" />
-  </ItemGroup>
-
 </Project>

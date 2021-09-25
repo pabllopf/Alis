@@ -15,8 +15,4 @@
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Alis.Core.SFML.csproj" />
-  </ItemGroup>
-
 </Project>

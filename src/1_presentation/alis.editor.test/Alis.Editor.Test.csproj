@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Editor\Alis.Editor.csproj" />
+    <ProjectReference Include="..\alis.editor\Alis.Editor.csproj" />
   </ItemGroup>
 
 </Project>

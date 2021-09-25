@@ -121,7 +121,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Alis.Core.SFML.csproj" />
+    <ProjectReference Include="..\..\2_adaptation\sfml\alis.core.sfml\Alis.Core.SFML.csproj" />
   </ItemGroup>
 
 

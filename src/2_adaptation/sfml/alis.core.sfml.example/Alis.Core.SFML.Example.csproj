@@ -6,8 +6,4 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Core-SFML\Alis.Core.SFML.csproj" />
-  </ItemGroup>
-
 </Project>

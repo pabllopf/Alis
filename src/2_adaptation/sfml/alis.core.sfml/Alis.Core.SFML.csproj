@@ -129,7 +129,6 @@
 
   
   <ItemGroup>
-    <PackageReference Include="CSFML" Version="2.5.1" />
     <PackageReference Include="SFML.Audio" Version="2.5.0" />
     <PackageReference Include="SFML.Graphics" Version="2.5.0" />
     <PackageReference Include="SFML.Net" Version="2.5.0" />
@@ -140,7 +139,7 @@
 
   
   <ItemGroup>
-    <ProjectReference Include="..\Core\Alis.Core.csproj" />
+    <ProjectReference Include="..\..\..\3_domain\core\alis.core\Alis.Core.csproj" />
   </ItemGroup>
     
      
