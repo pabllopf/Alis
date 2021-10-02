@@ -1,12 +1,17 @@
-﻿using System;
-
-namespace Alis.Core.Example
+﻿namespace Alis.Core.Example
 {
-    class Program
+    using System;
+
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Game game = new Game();
+
+            game.Run();
+
+            Console.WriteLine("process end");
+            Console.ReadKey();
         }
     }
 }

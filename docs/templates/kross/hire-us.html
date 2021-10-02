@@ -1,0 +1,1 @@
+<script>window.location.replace("https://download.themefisher.com/tf-hire.html");</script>

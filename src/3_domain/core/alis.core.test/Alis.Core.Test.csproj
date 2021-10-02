@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Alis.Core.csproj" />
+    <ProjectReference Include="..\alis.core\Alis.Core.csproj" />
   </ItemGroup>
 
 </Project>

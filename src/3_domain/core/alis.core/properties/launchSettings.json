@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Alis.Core": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
