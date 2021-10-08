@@ -8,75 +8,32 @@
 
     public class Game
     {
-        [NotNull]
-        private bool isRunning;
+        public Configuration configuration;
 
-        [NotNull]
-        private bool isStopped;
+        public SceneManager sceneManager;
 
-        public Game() 
+        public RenderManager renderManager;
+
+        public PhysicsManager physicsManager;
+
+        public ParticlesManager particlesManager;
+
+        public InputManager inputManager;
+
+        public OutputManager outputManager;
+
+        /// <summary>
+        /// Constructor of game
+        /// </summary>
+        /// <param name="configuration">Include the configuration of the game.</param>
+        public Game(Configuration configuration)
         {
-        
+            throw new System.NotImplementedException();
         }
 
-        public void Run() 
+        ~Game()
         {
-            Awake();
-            Start();
-
-            while (isRunning) 
-            {
-                BeforeUpdate();
-                Update();
-                AfterUpdate();
-            }
-
-            Exit();
-        }
-
-        private void Awake() 
-        {
-        
-        }
-
-        private void Start() 
-        {
-        
-        }
-
-        private void Stop() => isStopped = !isStopped;
-
-        private void Reset() 
-        {
-            isRunning = false;
-            Exit();
-
-            Run();
-        }
-
-        private void BeforeUpdate() 
-        {
-        
-        }
-
-        private void Update() 
-        {
-        
-        }
-
-        private void AfterUpdate() 
-        {
-        
-        }
-
-        private void FixedUpdate() 
-        {
-        
-        }
-           
-        private void Exit() 
-        {
-        
+            throw new System.NotImplementedException();
         }
     }
 }

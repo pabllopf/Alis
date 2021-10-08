@@ -12,7 +12,7 @@ namespace Alis.Editor
     {
         /// <summary>The engine</summary>
         [NotNull]
-        private static  Engine engine;
+        private static Engine engine;
 
         /// <summary>Mains the specified arguments.</summary>
         /// <param name="args">The arguments.</param>
