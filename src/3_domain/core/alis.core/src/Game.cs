@@ -21,6 +21,7 @@
         public InputManager inputManager;
 
         public OutputManager outputManager;
+        private int isRunning;
 
         /// <summary>
         /// Constructor of game

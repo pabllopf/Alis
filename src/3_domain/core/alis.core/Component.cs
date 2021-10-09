@@ -6,5 +6,8 @@ namespace Alis.Core
 {
     public abstract class Component
     {
+        protected Component()
+        {
+        }
     }
 }

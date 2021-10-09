@@ -6,9 +6,17 @@
     {
         static void Main(string[] args)
         {
-            Game game = new Game();
 
-            game.Run();
+            GameObject gameObject = new GameObject("Player");
+            gameObject.Add(new Sprite());
+            gameObject.Add(new Particle());
+
+            Console.WriteLine($"Gameobject {gameObject.Name} has {gameObject.NumOfComponents} component");
+
+            gameObject.Remove<Sprite>();
+            gameObject.Remove<Sprite>();
+
+            Console.WriteLine($"Gameobject {gameObject.Name} has {gameObject.NumOfComponents} component");
 
             Console.WriteLine("process end");
             Console.ReadKey();

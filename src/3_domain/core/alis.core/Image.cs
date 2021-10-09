@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public class Sprite : Component
+    public class Image
     {
-        public Image image;
     }
 }
