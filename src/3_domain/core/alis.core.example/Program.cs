@@ -11,12 +11,12 @@
             gameObject.Add(new Sprite());
             gameObject.Add(new Particle());
 
-            Console.WriteLine($"Gameobject {gameObject.Name} has {gameObject.NumOfComponents} component");
+            Console.WriteLine($"Gameobject {gameObject.Name} has {gameObject.Components.Length} component");
 
             gameObject.Remove<Sprite>();
             gameObject.Remove<Sprite>();
 
-            Console.WriteLine($"Gameobject {gameObject.Name} has {gameObject.NumOfComponents} component");
+            Console.WriteLine($"Gameobject {gameObject.Name} has {gameObject.Components.Length} component");
 
             Console.WriteLine("process end");
             Console.ReadKey();

@@ -10,17 +10,18 @@
     {
         public Configuration configuration;
 
-        public SceneManager sceneManager;
+        public SceneSystem sceneSystem;
 
-        public RenderManager renderManager;
+        public RenderSystem renderSystem;
 
-        public PhysicsManager physicsManager;
+        public ParticlesSystem particlesSystem;
 
-        public ParticlesManager particlesManager;
+        public InputSystem inputSystem;
 
-        public InputManager inputManager;
+        public OutputSystem outputSystem;
 
-        public OutputManager outputManager;
+        public PhysicsSystem physicsSystem;
+
         private int isRunning;
 
         /// <summary>

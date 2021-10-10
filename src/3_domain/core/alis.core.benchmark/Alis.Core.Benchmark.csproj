@@ -6,6 +6,12 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+
+
+  <ItemGroup>
+    <Compile Remove="Game.cs" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
   </ItemGroup>

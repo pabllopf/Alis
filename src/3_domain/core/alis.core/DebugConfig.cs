@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public class Windows
+    public class DebugConfig
     {
     }
 }

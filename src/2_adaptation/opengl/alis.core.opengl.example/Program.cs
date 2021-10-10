@@ -1,4 +1,6 @@
 ﻿using System;
+using Alis.Core.OpenGL;
+using OpenTK.Windowing.Desktop;
 
 namespace Alis.Core.OpenGL.Example
 {
@@ -6,7 +8,15 @@ namespace Alis.Core.OpenGL.Example
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            using (VideoGame game = new VideoGame(new GameWindowSettings(), new NativeWindowSettings()))
+            {
+                //Run takes a double, which is how many frames per second it should strive to reach.
+                //You can leave that out and it'll just update as fast as the hardware will allow it.
+                game.Run();
+            }
+
+            Console.WriteLine("Press any key to close the windows.");
+            Console.ReadKey();
         }
     }
 }

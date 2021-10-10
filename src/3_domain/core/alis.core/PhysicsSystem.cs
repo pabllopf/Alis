@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public class Physics
+    public class PhysicsSystem
     {
+        public PhysicsManager physicsManager;
     }
 }

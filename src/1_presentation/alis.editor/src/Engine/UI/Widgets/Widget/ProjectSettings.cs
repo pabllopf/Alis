@@ -35,7 +35,7 @@ namespace Alis.Editor.UI.Widgets
         };
 
         /// <summary>The fields</summary>
-        private static Dictionary<Type, Action<Core.Time, PropertyInfo>> fields2 = new Dictionary<Type, Action<Core.Time, PropertyInfo>>()
+        private static Dictionary<Type, Action<Core.TimeConfig, PropertyInfo>> fields2 = new Dictionary<Type, Action<Core.TimeConfig, PropertyInfo>>()
         {
             { typeof(bool), DrawBoolField },
             { typeof(string), DrawStringField },
@@ -138,7 +138,7 @@ namespace Alis.Editor.UI.Widgets
                     ImGui.PushStyleVar(ImGuiStyleVar.FrameBorderSize, 0f);
                     ImGui.PushStyleColor(ImGuiCol.Button, childBackground);
 
-                    foreach (KeyValuePair<Type, Action<Core.Time, PropertyInfo>> field in fields2)
+                    foreach (KeyValuePair<Type, Action<Core.TimeConfig, PropertyInfo>> field in fields2)
                     {
                         if (field.Key.Equals(property.PropertyType) && property.CanWrite)
                         {
@@ -333,7 +333,7 @@ namespace Alis.Editor.UI.Widgets
 
         #region DRAW TIME
 
-        private static void DrawStringField(Core.Time component, PropertyInfo property)
+        private static void DrawStringField(Core.TimeConfig component, PropertyInfo property)
         {
             string content = (string)property.GetValue(component) ?? "";
 
@@ -343,7 +343,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawBoolField(Core.Time component, PropertyInfo property)
+        private static void DrawBoolField(Core.TimeConfig component, PropertyInfo property)
         {
             bool content = (bool)property.GetValue(component);
             if (ImGui.Checkbox(property.Name, ref content))
@@ -352,7 +352,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawFloatField(Core.Time component, PropertyInfo property)
+        private static void DrawFloatField(Core.TimeConfig component, PropertyInfo property)
         {
             float content = (float)property.GetValue(component);
             if (ImGui.InputFloat(property.Name, ref content, 0.1f))
@@ -361,7 +361,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawIntField(Core.Time component, PropertyInfo property)
+        private static void DrawIntField(Core.TimeConfig component, PropertyInfo property)
         {
             int content = (int)property.GetValue(component);
             if (ImGui.InputInt(property.Name, ref content, 1))
@@ -370,7 +370,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawByteField(Core.Time component, PropertyInfo property)
+        private static void DrawByteField(Core.TimeConfig component, PropertyInfo property)
         {
             int content = (int)property.GetValue(component);
             if (ImGui.InputInt(property.Name, ref content, 1))
@@ -379,7 +379,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawLongField(Core.Time component, PropertyInfo property)
+        private static void DrawLongField(Core.TimeConfig component, PropertyInfo property)
         {
             int content = (int)property.GetValue(component);
             if (ImGui.InputInt(property.Name, ref content, 1))
@@ -388,7 +388,7 @@ namespace Alis.Editor.UI.Widgets
             }
         }
 
-        private static void DrawDoubleField(Core.Time component, PropertyInfo property)
+        private static void DrawDoubleField(Core.TimeConfig component, PropertyInfo property)
         {
             double content = (double)property.GetValue(component);
             if (ImGui.InputDouble(property.Name, ref content, 1))

@@ -15,4 +15,8 @@
     <PackageReference Include="coverlet.collector" Version="3.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\alis.core.opengl\Alis.Core.OpenGL.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,10 +6,23 @@ namespace Alis.Core
 {
     public class Configuration
     {
-        public Time time;
+        public TimeConfig time;
 
-        public Windows windows;
+        public RenderConfig render;
 
-        public Physics physics;
+        public PhysicsConfig physics;
+
+        public SceneConfig scene;
+
+        public GameObjectConfig gameObject;
+
+        public ComponentConfig component;
+
+        public ParticleConfig particle;
+
+        public DebugConfig debugConfig;
+
+        public InputConfig inputConfig;
+
     }
 }
