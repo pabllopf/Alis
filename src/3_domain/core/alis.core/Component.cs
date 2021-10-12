@@ -15,6 +15,14 @@
         [MaybeNull]
         private GameObject gameObject;
 
+        /// <summary>The game object</summary>
+        [MaybeNull]
+        private Tag tag;
+
+        /// <summary>The game object</summary>
+        [MaybeNull]
+        private Transform transform;
+
         /// <summary>Initializes a new instance of the <see cref="Component" /> class.</summary>
         protected Component()
         {
@@ -67,6 +75,18 @@
         [JsonIgnore]
         [MaybeNull]
         public GameObject GameObject { get => gameObject;  }
+
+        /// <summary>Gets the tag.</summary>
+        /// <value>The tag.</value>
+        [JsonIgnore]
+        [MaybeNull]
+        public Tag Tag { get => tag; }
+
+        /// <summary>Gets the transform.</summary>
+        /// <value>The transform.</value>
+        [JsonIgnore]
+        [MaybeNull]
+        public Transform Transform { get => transform; }
 
         /// <summary>Enables this instance.</summary>
         public virtual void Enable() 
@@ -132,6 +152,9 @@
                 this.gameObject.Remove(this);
                 this.gameObject = gameObject;
                 this.gameObject.Add(this);
+
+                transform = this.gameObject.Transform;
+                tag = this.gameObject.Tag;
             }
         }
 

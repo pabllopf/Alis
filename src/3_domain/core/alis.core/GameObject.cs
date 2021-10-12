@@ -10,7 +10,11 @@
     {
         /// <summary>The name</summary>
         [NotNull]
-        private string name;
+        private Name name;
+
+        /// <summary>The tag</summary>
+        [NotNull]
+        private Tag tag;
 
         /// <summary>The is active</summary>
         [NotNull]
@@ -33,7 +37,8 @@
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         public GameObject()
         {
-            name = "Default";
+            name = new Name("Default");
+            tag = new Tag("Default");
             isActive = true;
             isStatic = false;
             transform = new Transform();
@@ -49,7 +54,8 @@
         {
             name ??= "Default";
 
-            this.name = name;
+            this.name = new Name(name);
+            tag = new Tag("Default");
             isActive = true;
             isStatic = false;
             transform = new Transform();
@@ -67,7 +73,8 @@
             name ??= "Default";
             transform ??= new Transform();
 
-            this.name = name;
+            this.name = new Name(name);
+            tag = new Tag("Default");
             isActive = true;
             isStatic = false;
             this.transform = transform;
@@ -87,7 +94,8 @@
             transform ??= new Transform();
             components ??= new Component[0];
 
-            this.name = name;
+            this.name = new Name(name);
+            tag = new Tag("Default");
             isActive = true;
             isStatic = false;
             this.transform = transform;
@@ -104,13 +112,15 @@
         /// <param name="transform">The transform.</param>
         /// <param name="components">The components.</param>
         [JsonConstructor]
-        public GameObject([NotNull] string name, [NotNull] bool isActive, [NotNull] bool isStatic, [NotNull] Transform transform, [NotNull] params Component[] components)
+        public GameObject([NotNull] string name, [NotNull] Tag tag, [NotNull] bool isActive, [NotNull] bool isStatic, [NotNull] Transform transform, [NotNull] params Component[] components)
         {
             name ??= "Default";
+            tag ??= new Tag("Default");
             transform ??= new Transform();
             components ??= new Component[0];
 
-            this.name = name;
+            this.name = new Name(name);
+            this.tag = tag;
             this.isActive = isActive;
             this.isStatic = isStatic;
             this.transform = transform;
@@ -134,7 +144,13 @@
         /// <value>The name.</value>
         [NotNull]
         [JsonProperty("_Name")]
-        public string Name { get => name; set => name = value; }
+        public Name Name { get => name; set => name = value; }
+
+        /// <summary>Gets or sets the tag.</summary>
+        /// <value>The tag.</value>
+        [NotNull]
+        [JsonProperty("_Tag")]
+        public Tag Tag { get => tag; set => tag = value; }
 
         /// <summary>Gets or sets a value indicating whether this instance is active.</summary>
         /// <value>
@@ -176,7 +192,7 @@
         [NotNull]
         [JsonProperty("_Components")]
         public Component[] Components { get => components.ToArray(); }
-
+       
         /// <summary>Adds the specified component.</summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="component">The component.</param>
@@ -519,6 +535,13 @@
 
         #endregion
 
+        /// <summary>Builders this instance.</summary>
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public static GameObjectBuilder Builder => new();
+
+       
         #region Destructor
 
         /// <summary>Finalizes an instance of the <see cref="GameObject" /> class.</summary>
