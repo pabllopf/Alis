@@ -6,9 +6,14 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public class Name
+    public class Name : IIs<Name, string>
     {
         private string value;
+
+        public Name() 
+        {
+            value = "";
+        }
 
         [JsonConstructor]
         public Name(string value)
@@ -18,6 +23,8 @@ namespace Alis.Core
 
         [JsonProperty("_Name")]
         [NotNull]
-        public string Value { get => value; set => this.value = value; }
+        public string Value { get => value; }
+
+        public static Name Is(string value) => new Name(value);
     }
 }

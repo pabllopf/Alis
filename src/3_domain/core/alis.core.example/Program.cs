@@ -26,22 +26,26 @@
             Console.WriteLine(vector2 - vector1);
 
 
-            GameObject gameObject1 = GameObject.Builder
-                .Set(new Name("Name Default"))
-                .Set(new Tag("Players"))
-                .Add(new Sprite())
-                .Add(new BoxCollider3D())
-                .Add(new BoxCollider2D())
-                .Build();
+            GameObject gameObject1 =
+                GameObject.Create()
+                    .Where(Name.Is("Alfredo"))
+                    .Where(Tag.Is("Player"))
+                    .With(Transform.Default)
+                    .Set(IsActive.True)
+                    .Set(IsStatic.False)
+                    .Add(Sprite.Default)
+                 .End();
+
+            GameObject gameObject2 =
+                GameObject.Create()
+                    .Where(Name.Is("Enemy"))
+                    .Where(Tag.Default)
+                    .With(Transform.Default)
+                    .Set(IsActive.True)
+                .End();
 
 
-            GameObject gameObject2 = GameObject.Builder
-                .Set(new Name("Enemy 1"))
-                .Set(new Tag("Enemys"))
-                .Add(new BoxCollider2D())
-                .Build();
-
-            Console.WriteLine($"Player 1={gameObject1.Name} tag={gameObject1.Tag.Value} Length={gameObject1.Components.Length} | Player 2 = {gameObject2.Name} tag={gameObject2.Tag.Value} Length={gameObject2.Components.Length}");
+            Console.WriteLine($"Player 1={gameObject1.Name.Value} tag={gameObject1.Tag.Value} Length={gameObject1.Components.Length} | Player 2 = {gameObject2.Name.Value} tag={gameObject2.Tag.Value} Length={gameObject2.Components.Length}");
 
 
             Console.WriteLine("process end");

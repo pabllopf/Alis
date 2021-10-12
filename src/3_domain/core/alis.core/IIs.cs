@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public interface IWith<Builder, Argument>
+    public interface IIs<L, T>
     {
-        public Builder With(Argument value);
+        static L? Is(T value) => default;
     }
 }

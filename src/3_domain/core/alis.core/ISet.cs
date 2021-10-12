@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public interface ISet<L, T>
+    public interface ISet<Builder, Argument>
     {
-        public L Set(T value);
+        public Builder Set(Argument value);
     }
 }

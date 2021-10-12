@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public interface IWith<Builder, Argument>
+    public interface IHas<L, T>
     {
-        public Builder With(Argument value);
+        public L Has(T obj);
     }
 }

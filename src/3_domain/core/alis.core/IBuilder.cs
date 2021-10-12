@@ -1,7 +1,7 @@
 ﻿namespace Alis.Core
 {
-    public interface IBuilder<T>
+    public interface IBuilder<Origin>
     {
-        public T Build();
+        public Origin End();
     }
 }

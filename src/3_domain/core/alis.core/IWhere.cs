@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public interface IWith<Builder, Argument>
+    public interface IWhere<Builder, Argument>
     {
-        public Builder With(Argument value);
+        public Builder Where(Argument value);
     }
 }

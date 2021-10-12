@@ -18,11 +18,11 @@
 
         /// <summary>The is active</summary>
         [NotNull]
-        private bool isActive;
+        private IsActive isActive;
 
         /// <summary>The is static</summary>
         [NotNull]
-        private bool isStatic;
+        private IsStatic isStatic;
 
         /// <summary>The transform</summary>
         [NotNull]
@@ -39,8 +39,8 @@
         {
             name = new Name("Default");
             tag = new Tag("Default");
-            isActive = true;
-            isStatic = false;
+            isActive = new IsActive(true);
+            isStatic = new IsStatic(false);
             transform = new Transform();
             components = new List<Component>();
 
@@ -56,8 +56,8 @@
 
             this.name = new Name(name);
             tag = new Tag("Default");
-            isActive = true;
-            isStatic = false;
+            isActive = new IsActive(true);
+            isStatic = new IsStatic(false);
             transform = new Transform();
             components = new List<Component>();
 
@@ -75,8 +75,8 @@
 
             this.name = new Name(name);
             tag = new Tag("Default");
-            isActive = true;
-            isStatic = false;
+            isActive = new IsActive(true);
+            isStatic = new IsStatic(false);
             this.transform = transform;
             components = new List<Component>();
 
@@ -96,8 +96,8 @@
 
             this.name = new Name(name);
             tag = new Tag("Default");
-            isActive = true;
-            isStatic = false;
+            isActive = new IsActive(true);
+            isStatic = new IsStatic(false);
             this.transform = transform;
             this.components = new List<Component>(components);
 
@@ -112,14 +112,17 @@
         /// <param name="transform">The transform.</param>
         /// <param name="components">The components.</param>
         [JsonConstructor]
-        public GameObject([NotNull] string name, [NotNull] Tag tag, [NotNull] bool isActive, [NotNull] bool isStatic, [NotNull] Transform transform, [NotNull] params Component[] components)
+        public GameObject([NotNull] Name name, [NotNull] Tag tag, [NotNull] IsActive isActive, [NotNull] IsStatic isStatic, [NotNull] Transform transform, [NotNull] params Component[] components)
         {
-            name ??= "Default";
+            name ??= new Name("Default");
             tag ??= new Tag("Default");
             transform ??= new Transform();
             components ??= new Component[0];
 
-            this.name = new Name(name);
+            isActive ??= new IsActive(true);
+            isStatic ??= new IsStatic(true);
+
+            this.name = name;
             this.tag = tag;
             this.isActive = isActive;
             this.isStatic = isStatic;
@@ -157,13 +160,13 @@
         /// <c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
         [NotNull]
         [JsonProperty("_IsActive")]
-        public bool IsActive
+        public IsActive IsActive
         {
             get => isActive; 
             set
             {
                 isActive = value;
-                if (isActive)
+                if (isActive.Value)
                 {
                     OnEnable.Invoke(this, true);
                 }
@@ -179,7 +182,7 @@
         /// <c>true</c> if this instance is static; otherwise, <c>false</c>.</value>
         [NotNull]
         [JsonProperty("_IsStatic")]
-        public bool IsStatic { get => isStatic; set => isStatic = value; }
+        public IsStatic IsStatic { get => isStatic; set => isStatic = value; }
 
         /// <summary>Gets or sets the transform.</summary>
         /// <value>The transform.</value>
@@ -374,7 +377,7 @@
         /// <summary>Awakes this instance.</summary>
         public void Awake()
         {
-            if (isActive) 
+            if (isActive.Value) 
             {
                 components.ForEach(component =>
                 {
@@ -389,7 +392,7 @@
         /// <summary>Starts this instance.</summary>
         public void Start()
         {
-            if (isActive)
+            if (isActive.Value)
             {
                 components.ForEach(component =>
                 {
@@ -404,7 +407,7 @@
         /// <summary>Befores the update.</summary>
         public void BeforeUpdate()
         {
-            if (isActive && !isStatic)
+            if (isActive.Value && !isStatic.Value)
             {
                 components.ForEach(component =>
                 {
@@ -419,7 +422,7 @@
         /// <summary>Updates this instance.</summary>
         public void Update()
         {
-            if (isActive && !isStatic)
+            if (isActive.Value && !isStatic.Value)
             {
                 components.ForEach(component =>
                 {
@@ -434,7 +437,7 @@
         /// <summary>Afters the update.</summary>
         public void AfterUpdate()
         {
-            if (isActive && !isStatic)
+            if (isActive.Value && !isStatic.Value)
             {
                 components.ForEach(component =>
                 {
@@ -449,7 +452,7 @@
         /// <summary>Afters the update.</summary>
         public void FixedUpdate()
         {
-            if (isActive && !isStatic)
+            if (isActive.Value && !isStatic.Value)
             {
                 components.ForEach(component =>
                 {
@@ -464,7 +467,7 @@
         /// <summary>Stops this instance.</summary>
         public void Stop()
         {
-            if (isActive && !isStatic) 
+            if (isActive.Value && !isStatic.Value) 
             {
                 components.ForEach(component =>
                 {
@@ -479,7 +482,7 @@
         /// <summary>Resets this instance.</summary>
         public void Reset()
         {
-            if (isActive) 
+            if (isActive.Value) 
             {
                 components.ForEach(component =>
                 {
@@ -539,9 +542,11 @@
         /// <returns>
         ///   <br />
         /// </returns>
-        public static GameObjectBuilder Builder => new();
+        public static GameObjectBuilder Create() => new GameObjectBuilder();
 
-       
+        public static GameObject Create(string name) => new GameObject(name);
+
+
         #region Destructor
 
         /// <summary>Finalizes an instance of the <see cref="GameObject" /> class.</summary>

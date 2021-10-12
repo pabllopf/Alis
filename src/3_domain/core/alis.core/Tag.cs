@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public class Tag
+    public class Tag : IIs<Tag, string>
     {
         private string value;
 
@@ -19,5 +19,9 @@ namespace Alis.Core
         [JsonProperty("_Tag")]
         [NotNull]
         public string Value { get => value; set => this.value = value; }
+
+        public static Tag Is(string value) => new Tag(value);
+
+        public static Tag Default => new Tag("Default");
     }
 }

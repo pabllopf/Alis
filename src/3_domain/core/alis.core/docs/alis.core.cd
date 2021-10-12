@@ -45,13 +45,14 @@
   <Class Name="Alis.Core.GameObject">
     <Position X="32.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYgACgAQiAgBIBEkACADBwIAAAGCIAIIAAgAAAQCEA=</HashCode>
+      <HashCode>AAYgACgAQiAgBIBEkACADBQIAAAGCMAIIAAgAAAQCEA=</HashCode>
       <FileName>GameObject.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="transform" />
       <Field Name="name" />
       <Field Name="tag" />
+      <Field Name="transform" />
+      <Field Name="isStatic" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Field Name="components" />
@@ -153,7 +154,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAEAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Sprite.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -415,38 +416,61 @@
       <FileName>AudioClip.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.GameObjectBuilder">
-    <Position X="34.5" Y="3.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAIAAAAAAAAABAAAAAAAAAAAAAAAgAAAAgAAAAAAAAA=</HashCode>
-      <FileName>GameObjectBuilder.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
   <Class Name="Alis.Core.Name" Collapsed="true">
     <Position X="29.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAACAAAAAgAAAAAAA=</HashCode>
       <FileName>Name.cs</FileName>
       <NewMemberFileName>Tag.cs</NewMemberFileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.Tag" Collapsed="true">
-    <Position X="29.75" Y="7.25" Width="1.5" />
+    <Position X="29.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAABAACAAAAAgAAAAAAA=</HashCode>
       <FileName>Tag.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="Alis.Core.IBuilder&lt;T&gt;" Collapsed="true">
+  <Class Name="Alis.Core.State" Collapsed="true">
+    <Position X="26" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>State.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.IsStatic" Collapsed="true">
+    <Position X="27" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAA=</HashCode>
+      <FileName>IsStatic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.IsActive" Collapsed="true">
+    <Position X="25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAA=</HashCode>
+      <FileName>IsActive.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.GameObjectBuilder">
+    <Position X="34.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAABAAAAAAAAAAAAAEAAAAAAgBAAAAAAAA=</HashCode>
+      <FileName>GameObjectBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Alis.Core.IBuilder&lt;Origin&gt;" Collapsed="true">
     <Position X="30.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Alis.Core.IAdd&lt;L, T&gt;" Collapsed="true">
-    <Position X="30.5" Y="2.25" Width="1.5" />
+    <Position X="29.5" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IAdd.cs</FileName>
@@ -467,15 +491,15 @@
       <FileName>ICreate.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Alis.Core.ISet&lt;L, T&gt;" Collapsed="true">
-    <Position X="32.25" Y="2.25" Width="1.5" />
+  <Interface Name="Alis.Core.ISet&lt;Builder, Argument&gt;" Collapsed="true">
+    <Position X="33" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISet.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Alis.Core.IWith&lt;L, T&gt;" Collapsed="true">
-    <Position X="28.5" Y="2.25" Width="1.5" />
+  <Interface Name="Alis.Core.IWith&lt;Builder, Argument&gt;" Collapsed="true">
+    <Position X="27.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>IWith.cs</FileName>
@@ -493,6 +517,27 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IRead.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alis.Core.IHas&lt;L, T&gt;" Collapsed="true">
+    <Position X="31.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IHas.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alis.Core.IWhere&lt;Builder, Argument&gt;" Collapsed="true">
+    <Position X="34" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IWhere.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Alis.Core.IIs&lt;L, T&gt;" Collapsed="true">
+    <Position X="32.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IIs.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="Alis.Core.Keyboard" Collapsed="true">

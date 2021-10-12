@@ -65,5 +65,9 @@
         [JsonProperty("_Rotation")]
         [NotNull]
         public Vector3 Rotation { get => rotation; set => rotation = value; }
+
+     
+
+        public static Transform Default => new Transform();
     }
 }
