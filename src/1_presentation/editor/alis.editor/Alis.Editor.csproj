@@ -91,6 +91,11 @@
     <Optimize>true</Optimize>
     <DocumentationFile>C:\Users\wwwam\Documents\Repositorios\Alis\Editor\Editor.xml</DocumentationFile>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="src\Engine\**" />
+    <EmbeddedResource Remove="src\Engine\**" />
+    <None Remove="src\Engine\**" />
+  </ItemGroup>
 
 
   <!-- _____________________________ IMPORTS ____________________________________ -->
@@ -128,6 +133,11 @@
 
   <ItemGroup>
     <None Update="resources/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="src\" />
   </ItemGroup>
 
 

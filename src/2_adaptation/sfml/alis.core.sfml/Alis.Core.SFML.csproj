@@ -15,7 +15,7 @@
 	<Description>The "Alis.Core-SFML" include the implementation of library "SFML.NET 2.5" with fully configured to import and use in your project. And remember ... it's multiplatform and free!!
 </Description>
 	<Copyright>GNU General Public License v3.0</Copyright>
-	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<PackageLicenseFile>licence</PackageLicenseFile>
 
 	<PackageProjectUrl>https://pabllopf.github.io/Alis/</PackageProjectUrl>
 	<PackageIcon>logo.png</PackageIcon>
@@ -30,11 +30,13 @@
     <AssemblyVersion>1.3.6.0</AssemblyVersion>
     <FileVersion>1.3.6.0</FileVersion>
     <Version>1.3.6</Version>
-    <ApplicationIcon>Alis_Icon.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
     <RepositoryUrl>https://github.com/pabllopf/Alis</RepositoryUrl>
     <RepositoryType>public</RepositoryType>
     <IncludeSymbols>true</IncludeSymbols>
     <Platforms>AnyCPU;x64</Platforms>
+    <PackageIconUrl />
+    <AppDesignerFolder>properties</AppDesignerFolder>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -110,20 +112,33 @@
     <Optimize>true</Optimize>
     <DefineConstants>Linux;</DefineConstants>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="src\Components\**" />
+    <Compile Remove="src\Input\**" />
+    <Compile Remove="src\Render\**" />
+    <EmbeddedResource Remove="src\Components\**" />
+    <EmbeddedResource Remove="src\Input\**" />
+    <EmbeddedResource Remove="src\Render\**" />
+    <None Remove="src\Components\**" />
+    <None Remove="src\Input\**" />
+    <None Remove="src\Render\**" />
+    <None Include="docs\licence">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="docs\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="src\VideoGame.cs" />
+  </ItemGroup>
 
 
   
   <ItemGroup>
     <None Update="runtimes/**" CopyToOutputDirectory="Always" CopyToPublishDirectory="Always" />
-
-    <None Include="..\docs\resources\logo\logo.png" Link="docs\logo.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\LICENSE" Link="docs\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 
@@ -140,6 +155,31 @@
   
   <ItemGroup>
     <ProjectReference Include="..\..\..\3_domain\core\alis.core\Alis.Core.csproj" />
+  </ItemGroup>
+
+
+  
+  <ItemGroup>
+    <Folder Include="src\" />
+  </ItemGroup>
+
+
+  
+  <ItemGroup>
+    <Compile Update="properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+
+  
+  <ItemGroup>
+    <EmbeddedResource Update="properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
     
      

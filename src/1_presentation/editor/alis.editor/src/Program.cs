@@ -10,18 +10,14 @@ namespace Alis.Editor
     /// <summary>Run the engine</summary>
     public class Program
     {
-        /// <summary>The engine</summary>
-        [NotNull]
-        private static Engine engine;
-
         /// <summary>Mains the specified arguments.</summary>
         /// <param name="args">The arguments.</param>
         /// <returns>Return -1 or 0</returns>
         [STAThread]
         public static int Main(string[] args)
         {
-            engine = new Engine(args);
-            return engine.Start();
+            Console.WriteLine("Hello world");
+            return 0;
         }
     }
 }
