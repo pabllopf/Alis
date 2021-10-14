@@ -6,6 +6,21 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Config\**" />
+    <Compile Remove="Input\**" />
+    <Compile Remove="Render\**" />
+    <Compile Remove="Scene\**" />
+    <EmbeddedResource Remove="Config\**" />
+    <EmbeddedResource Remove="Input\**" />
+    <EmbeddedResource Remove="Render\**" />
+    <EmbeddedResource Remove="Scene\**" />
+    <None Remove="Config\**" />
+    <None Remove="Input\**" />
+    <None Remove="Render\**" />
+    <None Remove="Scene\**" />
+  </ItemGroup>
+
 
 
   <ItemGroup>

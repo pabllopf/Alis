@@ -6,7 +6,6 @@ namespace Alis.Core
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Numerics;
-    using Alis.Tools;
     using Newtonsoft.Json;
     
     /// <summary>Define the config of videogame</summary>

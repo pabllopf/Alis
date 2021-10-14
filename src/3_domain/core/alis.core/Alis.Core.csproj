@@ -124,6 +124,7 @@
   
   
   <ItemGroup>
+    <ProjectReference Include="..\..\fluent\alis.fluent\Alis.Fluent.csproj" />
     <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />
   </ItemGroup>
   

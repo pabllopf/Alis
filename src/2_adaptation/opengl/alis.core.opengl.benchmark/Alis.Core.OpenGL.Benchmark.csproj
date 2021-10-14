@@ -14,4 +14,8 @@
     <ProjectReference Include="..\alis.core.opengl\Alis.Core.OpenGL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="docs\" />
+  </ItemGroup>
+
 </Project>
