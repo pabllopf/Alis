@@ -7,5 +7,10 @@ namespace Alis.Core
     public class SceneManager
     {
         public List<Scene> scenes;
+
+        public SceneManager(List<Scene> scenes)
+        {
+            this.scenes = scenes;
+        }
     }
 }

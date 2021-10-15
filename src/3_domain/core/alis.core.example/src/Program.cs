@@ -1,13 +1,18 @@
-﻿namespace Alis.Core.Example
-{
-    using System;
-    using System.Numerics;
+﻿using System;
+using System.Numerics;
 
+namespace Alis.Core.Example
+{
     public class Program
     {
+        /// <summary>
+        /// Mains the specified arguments.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
+        /// <returns></returns>
         static void Main(string[] args)
         {
-
+            /*
             GameObject gameObject = new GameObject("Player");
             gameObject.Add(new Sprite());
             gameObject.Add(new Particle());
@@ -37,9 +42,68 @@
 
 
             Console.WriteLine($"Player 1={gameObject1.Name.Value} tag={gameObject1.Tag.Value} Length={gameObject1.Components.Length} | Player 2 = {gameObject2.Name.Value} tag={gameObject2.Tag.Value} Length={gameObject2.Components.Length}");
+            */
+            /*
+            Game game =
+                Game.Create()
+                    .Configuration()
+                
+                    .SceneManager()
+                        .WithScene("MainScene")
+                            .WithGameObject("Player")
+                                .WithComponent<Sprite>()
+                                .WithComponent<AudioSource>()
+
+                .Build();
+
+            Game game2 =
+                Game.Create()
+                    .Configuration()
+
+                    .SceneManager()
+                        .WithScene("MainScene")
+                            .WithGameObject("Player")
+                                .WithComponent<Sprite>()
+                                .WithComponent<AudioSource>()
+                             
+                    
+                .Build();
+            */
+
+            ////////////////////////////////////////
+            // Game Example: Alis Game             
+            ////////////////////////////////////////
+            Game game =
+                Game.Builder()
+                    .Configuration(config => config
+                        .With<Name>(name => "Alis Game Example")
+                        .With<Author>(author => "Pablo Perdomo Falcón")
+                        .Build())
+                    .Manager<Scene>(sceneManager => sceneManager
+                        .Add(new Scene())
+                        .Build())
+                    .Build();
 
 
-            Console.WriteLine("process end");
+            Configuration config = 
+                Configuration.Builder()
+                    .With<Name>(name => "Alis Game Example")
+                    .With<Author>(author => "Pablo Perdomo Falcón")
+                    .Build();
+
+            GameObject obj =
+                   GameObject.Create()
+                   .With<Name>(name => "Player")
+                   .Build();
+
+
+
+            Console.WriteLine($"Name = {game.Configuration.Name}");
+            Console.WriteLine($"Author = {game.Configuration.Author}");
+
+            game.Run();
+
+            Console.WriteLine("Please press any key to close the windows.");
             Console.ReadKey();
         }
     }

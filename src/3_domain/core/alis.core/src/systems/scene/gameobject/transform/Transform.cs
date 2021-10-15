@@ -1,9 +1,9 @@
-﻿namespace Alis.Core
-{
-    using System.Diagnostics.CodeAnalysis;
-    using System.Numerics;
-    using Newtonsoft.Json;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
+using Newtonsoft.Json;
 
+namespace Alis.Core
+{
     /// <summary>Control the object space in the game.</summary>
     public class Transform
     {

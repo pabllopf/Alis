@@ -7,18 +7,20 @@ namespace Alis.Core
 {
     public class GameObjectBuilder : 
         IBuilder<GameObject>, 
-        IWithName<GameObjectBuilder, string>
+        IWith<GameObjectBuilder, Name , Func<Name, string>>
     {
         private GameObject gameObject;
 
         internal GameObjectBuilder() => gameObject = new GameObject();
 
-        public GameObjectBuilder WithName(string value)
+        public GameObjectBuilder With<T>(Func<Name, string> value) where T : Name
         {
-            gameObject.Name = new Name(value);
+            gameObject.Name = new Name(value.Invoke(new Name()));
             return this;
         }
 
-        public GameObject Build() => gameObject;        
+        public GameObject Build() => gameObject;
+
+       
     }
 }

@@ -7,11 +7,10 @@
 //     se vuelve a generar el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
 
 namespace Alis.Core.properties {
-    using System;
-    
-    
+
     /// <summary>
     ///   Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
     /// </summary>

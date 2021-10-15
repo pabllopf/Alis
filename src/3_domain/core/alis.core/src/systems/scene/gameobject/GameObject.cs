@@ -1,10 +1,10 @@
-﻿namespace Alis.Core
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json;
 
+namespace Alis.Core
+{
     /// <summary>Represent a object of the videogame.</summary>
     public class GameObject : IDisposable
     {

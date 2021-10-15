@@ -1,41 +1,99 @@
-﻿namespace Alis.Core
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Alis.Core
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Text;
-    using Newtonsoft;
-
-    public class Game
+    public class Game : IDisposable
     {
-        public Configuration configuration;
+        private Configuration configuration;
 
-        public SceneSystem sceneSystem;
+        private Dictionary<string, System> systems;
 
-        public RenderSystem renderSystem;
+        public Configuration Configuration { get => configuration; set => configuration = value; }
+        internal Dictionary<string, System> Systems { get => systems; set => systems = value; }
 
-        public ParticlesSystem particlesSystem;
 
-        public InputSystem inputSystem;
+        #region Constructor
 
-        public OutputSystem outputSystem;
+        /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
+        internal Game() 
+        {
+            configuration = new Configuration();
 
-        public PhysicsSystem physicsSystem;
-
-        private int isRunning;
+            systems = new Dictionary<string, System>()
+            {
+                { "SceneSystem",     new SceneSystem() },
+                { "InputSystem",     new InputSystem() },
+                { "OutputSystem",    new OutputSystem() },
+                { "ParticlesSystem", new ParticlesSystem() },
+                { "PhysicsSystem",   new PhysicsSystem() },
+                { "RenderSystem",    new RenderSystem() }
+            };
+        }
 
         /// <summary>
         /// Constructor of game
         /// </summary>
         /// <param name="configuration">Include the configuration of the game.</param>
-        public Game(Configuration configuration)
+        internal Game(Configuration configuration)
         {
-            throw new System.NotImplementedException();
+            this.configuration = configuration;
         }
 
-        ~Game()
+        #endregion
+
+        public void Run() 
         {
-            throw new System.NotImplementedException();
+        
         }
+
+        /// <summary>Awakes this instance.</summary>
+        private void Awake() => systems.Values.ToList().ForEach(system => system.Awake());
+
+        /// <summary>Starts this instance.</summary>
+        private void Start() => systems.Values.ToList().ForEach(system => system.Start());
+
+        /// <summary>Befores the update.</summary>
+        private void BeforeUpdate() => systems.Values.ToList().ForEach(system => system.BeforeUpdate());
+
+        /// <summary>Updates this instance.</summary>
+        private void Update() => systems.Values.ToList().ForEach(system => system.Update());
+
+        /// <summary>Afters the update.</summary>
+        private void AfterUpdate() => systems.Values.ToList().ForEach(system => system.AfterUpdate());
+
+        /// <summary>Fixeds the update.</summary>
+        private void FixedUpdate() => systems.Values.ToList().ForEach(system => system.FixedUpdate());
+
+        /// <summary>Stops this instance.</summary>
+        private void Stop() => systems.Values.ToList().ForEach(system => system.Stop());
+
+        /// <summary>Resets this instance.</summary>
+        private void Reset() => systems.Values.ToList().ForEach(system => system.Reset());
+
+        /// <summary>Exits this instance.</summary>
+        private void Exit() => systems.Values.ToList().ForEach(system => system.Exit());
+
+
+        #region Create
+
+        public static GameBuilder Builder() => new GameBuilder();
+
+        #endregion
+
+        #region Dispose 
+
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public void Dispose() => Console.WriteLine("Dispose class.");
+
+        #endregion
+
+        #region Destroyer
+
+        /// <summary>Finalizes an instance of the <see cref="Game" /> class.</summary>
+        ~Game() => Console.WriteLine("Destroy game.");
+        
+        #endregion
     }
 }
