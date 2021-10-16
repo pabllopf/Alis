@@ -1,7 +1,7 @@
 ﻿namespace Alis.Core
 {
-    public interface ISet<Builder, Argument>
+    public interface ISet<Builder, Type, Argument>
     {
-        public Builder Set(Argument value);
+        public Builder Set<T>(Argument value) where T : Type;
     }
 }

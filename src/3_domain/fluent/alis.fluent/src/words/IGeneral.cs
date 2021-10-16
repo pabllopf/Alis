@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Alis.Fluent
+﻿namespace Alis.Fluent
 {
     public interface IGeneral<Builder, Argument>
     {

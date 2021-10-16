@@ -81,6 +81,10 @@ namespace Alis.Core.Example
                             .With<Name>(name => "Alis Game Example")
                             .With<Author>(author => "Pablo Perdomo Falcón")
                             .Build())
+                        .Time(i => i
+                            .SetMax<TimeStep>(timeStep => 1.0f)
+                            .SetMax<FramesPerSecond>(fps => 1.0)
+                            .Build())
                         .Build())
                     .Build();
 

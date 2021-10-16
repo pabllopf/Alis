@@ -9,7 +9,7 @@ namespace Alis.Core
     {
         private GeneralConfig generalConfig;
 
-        public TimeConfig time;
+        private TimeConfig time;
 
         public RenderConfig render;
 
@@ -28,12 +28,11 @@ namespace Alis.Core
         public InputConfig inputConfig;
 
         public GeneralConfig General { get => generalConfig; set => generalConfig = value; }
+        public TimeConfig Time { get => time; set => time = value; }
 
         public Configuration()
         {
             generalConfig = new GeneralConfig();
         }
-
-       
     }
 }

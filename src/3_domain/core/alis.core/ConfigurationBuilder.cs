@@ -7,7 +7,8 @@ namespace Alis.Core
 {
     public class ConfigurationBuilder :
         IBuild<Configuration>,
-        IGeneral<ConfigurationBuilder, Func<GeneralConfigBuilder, GeneralConfig>>
+        IGeneral<ConfigurationBuilder, Func<GeneralConfigBuilder, GeneralConfig>>,
+        ITime<ConfigurationBuilder, Func<TimeConfigBuilder, TimeConfig>>
     {
         private Configuration configuration;
 
@@ -16,6 +17,12 @@ namespace Alis.Core
         public ConfigurationBuilder General(Func<GeneralConfigBuilder, GeneralConfig> value)
         {
             configuration.General = value.Invoke(new GeneralConfigBuilder());
+            return this;
+        }
+
+        public ConfigurationBuilder Time(Func<TimeConfigBuilder, TimeConfig> value)
+        {
+            configuration.Time = value.Invoke(new TimeConfigBuilder());
             return this;
         }
 

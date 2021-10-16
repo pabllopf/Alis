@@ -18,47 +18,11 @@ namespace Alis.Core
 
         private bool isRunning;
 
-
-        private Stopwatch timer = new Stopwatch();
-
-
-        // Tiempo total desde que comenzó el juego
-        private double fixedTime = 0.0f;
-
-        // Tiempo total desde que se cargo el nivel/scene actual 
-        private double timeSinceLevelLoad = 0.0f;
-
-        // Multiplicador de tiempo que muestra la velocidad del mundo
-        // timeScale = 1.0f velocidad normal
-        // timeScale = 0.5f a mitad de velocidad 
-        private double timeScale = 1.0f;
-
-        // Numero de frames desde que comenzó el juego:
-        private double frameCount = 0;
-        
-        // Frame actual del juego.
-        private double currentFrame = 0;
-
-        // Intervalo en segundos en el que se relaiza fixedupdate
-        private double fixedDeltaTime = 0.0f;
-
-        // Numero de fps maximo que se lanza el juego.
-        private double maximumFramesPerSecond = 60;
-
-        // intervalo de simulación de cada paso por cada frame
-        private double timeStep = 0.0f;
-
-        // Numero de pasos por cada frame (tiempo simulado)
-        private double maximunAllowedTimeStep = 30.0f;
-
-        
-
         #region Constructor
 
         /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
         internal Game() 
         {
-            isRunning = false;
             configuration = new Configuration();
 
             systems = new Dictionary<string, System>()
@@ -70,6 +34,8 @@ namespace Alis.Core
                 //{ "PhysicsSystem",   new PhysicsSystem() },
                 //{ "RenderSystem",    new RenderSystem() }
             };
+
+            isRunning = true;
         }
 
         /// <summary>
@@ -79,48 +45,49 @@ namespace Alis.Core
         internal Game(Configuration configuration)
         {
             this.configuration = configuration;
-            isRunning = false;
+            isRunning = true;
         }
 
         #endregion
 
         public void Run() 
         {
-            Init();
             Awake();
             Start();
             while (isRunning) 
             {
-                fixedDeltaTime = 1_000.0f / maximumFramesPerSecond;
+                configuration.Time.UpdateFixedDeltaTime();
 
-                if ((fixedTime * timeScale / frameCount) > fixedDeltaTime)
+                if (configuration.Time.IsNewFrame())
                 {
-                    timeStep = 1 / maximunAllowedTimeStep;
+                    configuration.Time.UpdateTimeStep();
 
-                    for (int i = 0; i < maximunAllowedTimeStep; i++)
+                    for (int i = 0; i < configuration.Time.MaximunAllowedTimeStep; i++)
                     {
                         BeforeUpdate();
                         Update();
                         AfterUpdate();
                     }
 
+                    Console.WriteLine($"FPS={configuration.Time.CurrentFrame} |" +
+                                      $"Count FPS = {configuration.Time.FrameCount} | " +
+                                      $"TimeFixed={configuration.Time.FixedTime} | " +
+                                      $"TimeScale={configuration.Time.TimeScale} |" +
+                                      $"TimeStep={configuration.Time.TimeStep} | " +
+                                      $"FixedDeltaTime={configuration.Time.FixedDeltaTime} |" +
+                                      $"maxfps={configuration.Time.MaximumFramesPerSecond} | " +
+                                      $"maxTimeStep={configuration.Time.MaximunAllowedTimeStep}"
+                                      );
+
                     FixedUpdate();
-                    currentFrame = (frameCount < maximumFramesPerSecond ? frameCount : (frameCount % maximumFramesPerSecond)) + 1;
-                    frameCount += 1.0f;
+                    configuration.Time.CounterFrames();
                 }
 
-                fixedTime = timer.Elapsed.TotalMilliseconds;
-
+                configuration.Time.UpdateFixedTime();
                 DebugInput();
             }
 
             Exit();
-        }
-
-        private void Init() 
-        {
-            timer.Start();
-            isRunning = true;
         }
 
         private void DebugInput() 
@@ -133,6 +100,26 @@ namespace Alis.Core
                 if (key == ConsoleKey.Escape)
                 {
                     isRunning = false;
+                }
+
+                if (key == ConsoleKey.LeftArrow)
+                {
+                    configuration.Time.MaximumFramesPerSecond -= 1.0f;
+                }
+
+                if (key == ConsoleKey.RightArrow)
+                {
+                    configuration.Time.MaximumFramesPerSecond += 1.0f;
+                }
+
+                if (key == ConsoleKey.UpArrow)
+                {
+                    configuration.Time.TimeScale += 1.0f;
+                }
+
+                if (key == ConsoleKey.DownArrow)
+                {
+                    configuration.Time.TimeScale -= 1.0f;
                 }
             }
         }

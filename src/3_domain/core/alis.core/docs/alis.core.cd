@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Alis.Core.Game">
-    <Position X="17.75" Y="0.75" Width="1.5" />
+    <Position X="17.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYgAAAAQiAABABAAAAAAAAAABCAAAAAoFAAAABAAEI=</HashCode>
+      <HashCode>AAQiAAIAxiAABABAAQEAAAAQAACAAQAAoEECEABAAEI=</HashCode>
       <FileName>src\Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -15,7 +15,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.InputManager">
-    <Position X="16.25" Y="12" Width="1.5" />
+    <Position X="16.5" Y="15.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\input\InputManager.cs</FileName>
@@ -26,14 +26,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.RenderManager">
-    <Position X="21.5" Y="11.75" Width="1.5" />
+    <Position X="21.75" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\render\RenderManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.PhysicsManager">
-    <Position X="18.5" Y="12" Width="1.5" />
+    <Position X="18.75" Y="15.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\physics\PhysicsManager.cs</FileName>
@@ -54,7 +54,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.SceneManager">
-    <Position X="24.5" Y="11.75" Width="1.5" />
+    <Position X="24.75" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\scene\SceneManager.cs</FileName>
@@ -74,7 +74,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.ParticlesManager">
-    <Position X="11.5" Y="12" Width="1.5" />
+    <Position X="11.75" Y="15.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\particles\ParticlesManager.cs</FileName>
@@ -99,9 +99,9 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.TimeConfig" Collapsed="true">
-    <Position X="0.5" Y="4.25" Width="1.5" />
+    <Position X="8.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AASGAAAAhAAAAAAAABEAAAARAAAAAQAAAAEAEAAAAhA=</HashCode>
       <FileName>src\config\TimeConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -188,7 +188,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.OutputManager">
-    <Position X="13.75" Y="12" Width="1.5" />
+    <Position X="14" Y="15.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\output\OutputManager.cs</FileName>
@@ -363,7 +363,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.SceneSystem">
-    <Position X="24.5" Y="8" Width="1.5" />
+    <Position X="24.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAABAAAAEA=</HashCode>
       <FileName>src\systems\scene\SceneSystem.cs</FileName>
@@ -373,14 +373,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.System" Collapsed="true">
-    <Position X="17.75" Y="6.75" Width="1.5" />
+    <Position X="17.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\System.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.RenderSystem">
-    <Position X="21.5" Y="8" Width="1.5" />
+    <Position X="21.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAMAAAAAAAAEA=</HashCode>
       <FileName>src\systems\render\RenderSystem.cs</FileName>
@@ -390,7 +390,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.PhysicsSystem">
-    <Position X="18.5" Y="8" Width="1.5" />
+    <Position X="18.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAQAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\physics\PhysicsSystem.cs</FileName>
@@ -400,7 +400,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.OutputSystem">
-    <Position X="13.75" Y="8" Width="1.5" />
+    <Position X="14" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\output\OutputSystem.cs</FileName>
@@ -410,7 +410,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.InputSystem">
-    <Position X="16.25" Y="8" Width="1.5" />
+    <Position X="16.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAgIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\input\InputSystem.cs</FileName>
@@ -420,7 +420,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.ParticlesSystem">
-    <Position X="11.5" Y="8" Width="1.5" />
+    <Position X="11.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAIAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\particles\ParticlesSystem.cs</FileName>
@@ -482,14 +482,14 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Enum Name="Alis.Core.Keyboard" Collapsed="true">
-    <Position X="17" Y="14.5" Width="1.5" />
+    <Position X="17.25" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAA=</HashCode>
       <FileName>src\systems\input\controllers\Keyboard.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Alis.Core.Mouse" Collapsed="true">
-    <Position X="17" Y="13.75" Width="1.5" />
+    <Position X="17.25" Y="17.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAIAAA=</HashCode>
       <FileName>src\systems\input\controllers\Mouse.cs</FileName>
