@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Alis.Core
 {
     public class GameBuilder : 
-        IBuilder<Game>,
+        IBuild<Game>,
         IConfiguration<GameBuilder, Func<ConfigurationBuilder, Configuration>>,
         IManager<GameBuilder, Scene, Func<SceneBuilder, SceneManager>>
     {

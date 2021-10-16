@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alis.Fluent;
+using System;
 using System.Numerics;
 
 namespace Alis.Core.Example
@@ -104,8 +105,10 @@ namespace Alis.Core.Example
                 .Build();
 
             GameObject obj =
-                   GameObject.Create()
+                   GameObject.Builder()
                    .With<Name>(name => "Player")
+                   .Is<Static>(state => false)
+                   .Is<Active>(state => true)
                    .Build();
 
 

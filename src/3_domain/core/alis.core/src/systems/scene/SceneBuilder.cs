@@ -4,7 +4,7 @@ using System;
 namespace Alis.Core
 {
     public class SceneBuilder : 
-        IBuilder<Scene>,
+        IBuild<Scene>,
         IWith<SceneBuilder, Name, Func<Name, string>>
     {
         private Scene scene;

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Alis.Fluent;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Alis.Core
 {
-    public class GeneralConfig
+    public class GeneralConfig : HasBuilder<GeneralConfigBuilder>
     {
         private string name;
 
@@ -40,7 +41,5 @@ namespace Alis.Core
         {
             return base.ToString();
         }
-
-        public static GeneralConfigBuilder Builder() => new GeneralConfigBuilder();
     }
 }

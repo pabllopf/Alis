@@ -1,7 +1,7 @@
 ﻿namespace Alis.Fluent
 {
-    public interface IIs<Builder, Argument>
+    public interface IIs<Builder, Type, Argument>
     {
-        public Builder Is(Argument value);
+        public Builder Is<T>(Argument value) where T : Type;
     }
 }

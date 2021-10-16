@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Alis.Fluent;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Alis.Core
 {
-    public class Game : IDisposable
+    public class Game : HasBuilder<GameBuilder>, IDisposable
     {
         private Configuration configuration;
 
@@ -74,13 +75,6 @@ namespace Alis.Core
 
         /// <summary>Exits this instance.</summary>
         private void Exit() => systems.Values.ToList().ForEach(system => system.Exit());
-
-
-        #region Create
-
-        public static GameBuilder Builder() => new GameBuilder();
-
-        #endregion
 
         #region Dispose 
 

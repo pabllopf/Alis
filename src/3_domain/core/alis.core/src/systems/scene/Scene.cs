@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Alis.Fluent;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Alis.Core
 {
-    public class Scene
+    public class Scene : HasBuilder<SceneBuilder>
     {
         private Name name;
 
@@ -19,7 +20,5 @@ namespace Alis.Core
         public List<GameObject> GameObjects { get => gameObjects; set => gameObjects = value; }
         
         public string Name { get => name.Value; set => name = new Name(value); }
-
-        public static SceneBuilder Builder() => new SceneBuilder();
     }
 }

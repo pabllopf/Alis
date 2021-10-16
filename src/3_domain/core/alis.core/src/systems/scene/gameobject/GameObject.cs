@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Alis.Fluent;
 using Newtonsoft.Json;
 
 namespace Alis.Core
 {
     /// <summary>Represent a object of the videogame.</summary>
-    public class GameObject : IDisposable
+    public class GameObject : HasBuilder<GameObjectBuilder>, IDisposable
     {
         /// <summary>The name</summary>
         [NotNull]
@@ -18,11 +19,11 @@ namespace Alis.Core
 
         /// <summary>The is active</summary>
         [NotNull]
-        private IsActive isActive;
+        private Active isActive;
 
         /// <summary>The is static</summary>
         [NotNull]
-        private IsStatic isStatic;
+        private Static isStatic;
 
         /// <summary>The transform</summary>
         [NotNull]
@@ -39,8 +40,8 @@ namespace Alis.Core
         {
             name = new Name("Default");
             tag = new Tag("Default");
-            isActive = new IsActive(true);
-            isStatic = new IsStatic(false);
+            isActive = new Active(true);
+            isStatic = new Static(false);
             transform = new Transform();
             components = new List<Component>();
 
@@ -56,8 +57,8 @@ namespace Alis.Core
 
             this.name = new Name(name);
             tag = new Tag("Default");
-            isActive = new IsActive(true);
-            isStatic = new IsStatic(false);
+            isActive = new Active(true);
+            isStatic = new Static(false);
             transform = new Transform();
             components = new List<Component>();
 
@@ -75,8 +76,8 @@ namespace Alis.Core
 
             this.name = new Name(name);
             tag = new Tag("Default");
-            isActive = new IsActive(true);
-            isStatic = new IsStatic(false);
+            isActive = new Active(true);
+            isStatic = new Static(false);
             this.transform = transform;
             components = new List<Component>();
 
@@ -96,8 +97,8 @@ namespace Alis.Core
 
             this.name = new Name(name);
             tag = new Tag("Default");
-            isActive = new IsActive(true);
-            isStatic = new IsStatic(false);
+            isActive = new Active(true);
+            isStatic = new Static(false);
             this.transform = transform;
             this.components = new List<Component>(components);
 
@@ -112,15 +113,15 @@ namespace Alis.Core
         /// <param name="transform">The transform.</param>
         /// <param name="components">The components.</param>
         [JsonConstructor]
-        public GameObject([NotNull] Name name, [NotNull] Tag tag, [NotNull] IsActive isActive, [NotNull] IsStatic isStatic, [NotNull] Transform transform, [NotNull] params Component[] components)
+        public GameObject([NotNull] Name name, [NotNull] Tag tag, [NotNull] Active isActive, [NotNull] Static isStatic, [NotNull] Transform transform, [NotNull] params Component[] components)
         {
             name ??= new Name("Default");
             tag ??= new Tag("Default");
             transform ??= new Transform();
             components ??= new Component[0];
 
-            isActive ??= new IsActive(true);
-            isStatic ??= new IsStatic(true);
+            isActive ??= new Active(true);
+            isStatic ??= new Static(true);
 
             this.name = name;
             this.tag = tag;
@@ -160,7 +161,7 @@ namespace Alis.Core
         /// <c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
         [NotNull]
         [JsonProperty("_IsActive")]
-        public IsActive IsActive
+        public Active IsActive
         {
             get => isActive; 
             set
@@ -182,7 +183,7 @@ namespace Alis.Core
         /// <c>true</c> if this instance is static; otherwise, <c>false</c>.</value>
         [NotNull]
         [JsonProperty("_IsStatic")]
-        public IsStatic IsStatic { get => isStatic; set => isStatic = value; }
+        public Static IsStatic { get => isStatic; set => isStatic = value; }
 
         /// <summary>Gets or sets the transform.</summary>
         /// <value>The transform.</value>
@@ -537,15 +538,6 @@ namespace Alis.Core
         public void Dispose() => Exit();
 
         #endregion
-
-        /// <summary>Builders this instance.</summary>
-        /// <returns>
-        ///   <br />
-        /// </returns>
-        public static GameObjectBuilder Create() => new GameObjectBuilder();
-
-        public static GameObject Create(string name) => new GameObject(name);
-
 
         #region Destructor
 

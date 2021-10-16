@@ -6,8 +6,10 @@ using System.Text;
 namespace Alis.Core
 {
     public class GameObjectBuilder : 
-        IBuilder<GameObject>, 
-        IWith<GameObjectBuilder, Name , Func<Name, string>>
+        IBuild<GameObject>, 
+        IWith<GameObjectBuilder, Name , Func<Name, string>>,
+        IIs<GameObjectBuilder, Active, Func<Active, bool>>,
+        IIs<GameObjectBuilder, Static, Func<Static, bool>>
     {
         private GameObject gameObject;
 
@@ -19,8 +21,18 @@ namespace Alis.Core
             return this;
         }
 
-        public GameObject Build() => gameObject;
+        public GameObjectBuilder Is<T>(Func<Active, bool> value) where T : Active
+        {
+            gameObject.IsActive.Value = value.Invoke(new Active());
+            return this;
+        }
 
-       
+        public GameObjectBuilder Is<T>(Func<Static, bool> value) where T : Static
+        {
+            gameObject.IsStatic.Value = value.Invoke(new Static());
+            return this;
+        }
+
+        public GameObject Build() => gameObject;
     }
 }

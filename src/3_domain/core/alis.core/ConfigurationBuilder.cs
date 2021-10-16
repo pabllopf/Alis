@@ -6,7 +6,7 @@ using System.Text;
 namespace Alis.Core
 {
     public class ConfigurationBuilder :
-        IBuilder<Configuration>,
+        IBuild<Configuration>,
         IGeneral<ConfigurationBuilder, Func<GeneralConfigBuilder, GeneralConfig>>
     {
         private Configuration configuration;

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Alis.Fluent;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Alis.Core
 {
-    public class Configuration
+    public class Configuration : HasBuilder<ConfigurationBuilder>
     {
         private GeneralConfig generalConfig;
 
@@ -32,8 +33,6 @@ namespace Alis.Core
         {
             generalConfig = new GeneralConfig();
         }
-
-        public static ConfigurationBuilder Builder() => new ConfigurationBuilder();
 
        
     }

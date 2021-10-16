@@ -1,6 +1,6 @@
 ﻿namespace Alis.Fluent
 {
-    public interface IBuilder<Origin>
+    public interface IBuild<Origin>
     {
         public Origin Build();
     }

@@ -42,13 +42,10 @@
   <Class Name="Alis.Core.GameObject">
     <Position X="40.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYgACgAQiAgBIBEkACADBQIAAAGCMAIIAAgAAAQCEA=</HashCode>
+      <HashCode>AAYgACgAQiAgBIBEkACADBQIAAAGCIAIIAAgAAAQCEA=</HashCode>
       <FileName>src\systems\scene\gameobject\GameObject.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="name" />
-      <Field Name="tag" />
-      <Field Name="isStatic" />
       <Field Name="transform" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
@@ -90,6 +87,7 @@
       <FileName>src\config\Configuration.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
+      <Field Name="generalConfig" />
       <Field Name="time" />
       <Field Name="physics" />
       <Field Name="scene" />
@@ -98,7 +96,6 @@
       <Field Name="particle" />
       <Field Name="debugConfig" />
       <Field Name="inputConfig" />
-      <Field Name="generalConfig" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.TimeConfig" Collapsed="true">
@@ -289,7 +286,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Image">
-    <Position X="39.25" Y="20.25" Width="1.5" />
+    <Position X="38" Y="22" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\scene\gameobject\component\sprite\Image.cs</FileName>
@@ -348,46 +345,16 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.AudioClip">
-    <Position X="34.75" Y="20" Width="1.5" />
+    <Position X="34.5" Y="20.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\scene\gameobject\component\audiosource\AudioClip.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Name" Collapsed="true">
-    <Position X="37.75" Y="8.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\propertie\Name.cs</FileName>
-      <NewMemberFileName>Tag.cs</NewMemberFileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Tag" Collapsed="true">
-    <Position X="37.75" Y="9.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAABAACAAAAAgAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\propertie\Tag.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Alis.Core.IsStatic" Collapsed="true">
-    <Position X="35" Y="10" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAACAAAAggAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\propertie\IsStatic.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.IsActive" Collapsed="true">
-    <Position X="35" Y="11" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAACAAAAggAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\propertie\IsActive.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Alis.Core.GameObjectBuilder" Collapsed="true">
     <Position X="40.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAgBAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAgAAAAgBAAAAAAAA=</HashCode>
       <FileName>src\systems\scene\gameobject\GameObjectBuilder.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
