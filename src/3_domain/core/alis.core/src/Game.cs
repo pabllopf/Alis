@@ -1,7 +1,9 @@
 ﻿using Alis.Fluent;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Timers;
 
 namespace Alis.Core
 {
@@ -14,22 +16,56 @@ namespace Alis.Core
         public Configuration Configuration { get => configuration; set => configuration = value; }
         internal Dictionary<string, System> Systems { get => systems; set => systems = value; }
 
+        private bool isRunning;
+
+
+        private Stopwatch timer = new Stopwatch();
+
+
+        // Tiempo total desde que comenzó el juego
+        private double fixedTime = 0.0f;
+
+        // Multiplicador de tiempo que muestra la velocidad del mundo
+        // timeScale = 1.0f velocidad normal
+        // timeScale = 0.5f a mitad de velocidad 
+        private double timeScale = 1.0f;
+
+        // Numero de frames desde que comenzó el juego:
+        private double frameCount = 0;
+        
+        // Frame actual del juego.
+        private double currentFrame = 0;
+
+        // Intervalo en segundos en el que se relaiza fixedupdate
+        private double fixedDeltaTime = 0.0f;
+
+        // Numero de fps maximo que se lanza el juego.
+        private double maximumFramesPerSecond = 60.0f;
+
+        // intervalo de simulación de cada paso por cada frame
+        private double timeStep = 0.0f;
+
+        // Numero de pasos por cada frame (tiempo simulado)
+        private double maximunAllowedTimeStep = 30.0f;
+
+        private double timeSinceLevelLoad = 0.0f;
 
         #region Constructor
 
         /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
         internal Game() 
         {
+            isRunning = false;
             configuration = new Configuration();
 
             systems = new Dictionary<string, System>()
             {
                 { "SceneSystem",     new SceneSystem() },
-                { "InputSystem",     new InputSystem() },
-                { "OutputSystem",    new OutputSystem() },
-                { "ParticlesSystem", new ParticlesSystem() },
-                { "PhysicsSystem",   new PhysicsSystem() },
-                { "RenderSystem",    new RenderSystem() }
+                //{ "InputSystem",     new InputSystem() },
+                //{ "OutputSystem",    new OutputSystem() },
+                //{ "ParticlesSystem", new ParticlesSystem() },
+                //{ "PhysicsSystem",   new PhysicsSystem() },
+                //{ "RenderSystem",    new RenderSystem() }
             };
         }
 
@@ -40,13 +76,81 @@ namespace Alis.Core
         internal Game(Configuration configuration)
         {
             this.configuration = configuration;
+            isRunning = false;
         }
 
         #endregion
 
         public void Run() 
         {
-        
+            Init();
+            Awake();
+            Start();
+            while (isRunning) 
+            {
+                fixedDeltaTime = 1_000.0f / maximumFramesPerSecond;
+
+                if ((fixedTime * timeScale / frameCount) > fixedDeltaTime)
+                {
+                    timeStep = 1 / maximunAllowedTimeStep;
+
+                    for (int i = 0; i < maximunAllowedTimeStep; i++)
+                    {
+                        BeforeUpdate();
+                        Update();
+                        AfterUpdate();
+                    }
+
+                    FixedUpdate();
+                    currentFrame = (frameCount < maximumFramesPerSecond ? frameCount : (frameCount % maximumFramesPerSecond)) + 1;
+                    frameCount += 1.0f;
+                    Console.WriteLine($"fixedDeltaTime={fixedDeltaTime} | timeStep={timeStep} | Current_frame ={currentFrame} | frameCount={frameCount} | totaltime={fixedTime}");
+                }
+
+                fixedTime = timer.Elapsed.TotalMilliseconds;
+            }
+
+            Exit();
+        }
+
+        private void Init() 
+        {
+            timer.Start();
+            isRunning = true;
+        }
+
+        private void DebugInput() 
+        {
+            /*if (Console.KeyAvailable)
+            {
+                ConsoleKey key = Console.ReadKey().Key;
+                Console.WriteLine($"Read key: {key}");
+
+                if (key == ConsoleKey.Escape)
+                {
+                    isRunning = false;
+                }
+
+                if (key == ConsoleKey.LeftArrow)
+                {
+                    maximumFramesPerSecond -= 1.0;
+                }
+
+                if (key == ConsoleKey.RightArrow)
+                {
+                    maximumFramesPerSecond += 1.0;
+                }
+
+                if (key == ConsoleKey.DownArrow)
+                {
+                    fixedFramesPerSecond -= 1.0;
+                }
+
+                if (key == ConsoleKey.UpArrow)
+                {
+                    fixedFramesPerSecond += 1.0;
+                }
+            }*/
         }
 
         /// <summary>Awakes this instance.</summary>

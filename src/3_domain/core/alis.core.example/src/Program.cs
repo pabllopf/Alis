@@ -114,9 +114,6 @@ namespace Alis.Core.Example
 
             Console.WriteLine($"Name Game = {game.Configuration.General.Name}");
             Console.WriteLine($"Author Game = {game.Configuration.General.Author}");
-
-            Console.WriteLine($"Name Scene = {scene.Name}");
-
             game.Run();
 
             Console.WriteLine("Please press any key to close the windows.");
