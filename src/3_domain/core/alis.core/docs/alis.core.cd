@@ -86,7 +86,7 @@
   <Class Name="Alis.Core.Configuration">
     <Position X="3.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAQAAAAAAAgAAAAgAAIgAAAAAAAgAAggAAAAYQAA=</HashCode>
+      <HashCode>AAABAQAAAAAAAgAAAAgAAKgAAAAAAAgAAgAAAAAYQAA=</HashCode>
       <FileName>src\config\Configuration.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -98,6 +98,7 @@
       <Field Name="particle" />
       <Field Name="debugConfig" />
       <Field Name="inputConfig" />
+      <Field Name="generalConfig" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.TimeConfig" Collapsed="true">
@@ -486,7 +487,7 @@
   <Class Name="Alis.Core.GeneralConfig" Collapsed="true">
     <Position X="0.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEgAAAAIQAAAAEAIAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAIwAAAAEAIAAAAAAAAAAAAA=</HashCode>
       <FileName>GeneralConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
