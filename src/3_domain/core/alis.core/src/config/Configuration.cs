@@ -6,9 +6,7 @@ namespace Alis.Core
 {
     public class Configuration
     {
-        private string name;
-
-        private string author;
+        private GeneralConfig generalConfig;
 
         public TimeConfig time;
 
@@ -28,19 +26,15 @@ namespace Alis.Core
 
         public InputConfig inputConfig;
 
+        public GeneralConfig General { get => generalConfig; set => generalConfig = value; }
+
         public Configuration()
         {
-            this.name = "Alis Game";
-        }
-
-        public Configuration(string name)
-        {
-            this.name = name;
+            generalConfig = new GeneralConfig();
         }
 
         public static ConfigurationBuilder Builder() => new ConfigurationBuilder();
 
-        public string Name { get => name; set => name = value; }
-        public string Author { get => author; set => author = value; }
+       
     }
 }

@@ -7,26 +7,18 @@ namespace Alis.Core
 {
     public class ConfigurationBuilder :
         IBuilder<Configuration>,
-        IWith<ConfigurationBuilder, Name, Func<Name, string>>,
-        IWith<ConfigurationBuilder, Author,Func<Author, string>>
+        IGeneral<ConfigurationBuilder, Func<GeneralConfigBuilder, GeneralConfig>>
     {
         private Configuration configuration;
 
         public ConfigurationBuilder() => configuration = new Configuration();
 
-        public ConfigurationBuilder With<T>(Func<Name, string> func) where T : Name
+        public ConfigurationBuilder General(Func<GeneralConfigBuilder, GeneralConfig> value)
         {
-            configuration.Name = func.Invoke(new Name());
-            return this;
-        }
-
-        public ConfigurationBuilder With<T>(Func<Author, string> func) where T : Author
-        {
-            configuration.Author = func.Invoke(new Author());
+            configuration.General = value.Invoke(new GeneralConfigBuilder());
             return this;
         }
 
         public Configuration Build() => configuration;
-
     }
 }

@@ -76,20 +76,32 @@ namespace Alis.Core.Example
             Game game =
                 Game.Builder()
                     .Configuration(config => config
-                        .With<Name>(name => "Alis Game Example")
-                        .With<Author>(author => "Pablo Perdomo Falcón")
-                        .Build())
-                    .Manager<Scene>(sceneManager => sceneManager
-                        .Add(new Scene())
+                        .General(i => i
+                            .With<Name>(name => "Alis Game Example")
+                            .With<Author>(author => "Pablo Perdomo Falcón")
+                            .Build())
                         .Build())
                     .Build();
 
 
             Configuration config = 
                 Configuration.Builder()
+                    .General(i => i
+                        .With<Name>(name => "Alis Game Example")
+                        .With<Author>(author => "Pablo Perdomo Falcón")
+                        .Build())
+                    .Build();
+
+            GeneralConfig general =
+                GeneralConfig.Builder()
                     .With<Name>(name => "Alis Game Example")
                     .With<Author>(author => "Pablo Perdomo Falcón")
                     .Build();
+
+            Scene scene =
+                Scene.Builder()
+                .With<Name>(name => "Main Scene")
+                .Build();
 
             GameObject obj =
                    GameObject.Create()
@@ -97,9 +109,10 @@ namespace Alis.Core.Example
                    .Build();
 
 
+            Console.WriteLine($"Name Game = {game.Configuration.General.Name}");
+            Console.WriteLine($"Author Game = {game.Configuration.General.Author}");
 
-            Console.WriteLine($"Name = {game.Configuration.Name}");
-            Console.WriteLine($"Author = {game.Configuration.Author}");
+            Console.WriteLine($"Name Scene = {scene.Name}");
 
             game.Run();
 

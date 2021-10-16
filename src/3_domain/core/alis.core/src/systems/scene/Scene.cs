@@ -6,6 +6,20 @@ namespace Alis.Core
 {
     public class Scene
     {
-        public List<GameObject> gameObjects;
+        private Name name;
+
+        private List<GameObject> gameObjects;
+
+        public Scene()
+        {
+            name = new Name("Default Scene");
+            gameObjects = new List<GameObject>();
+        }
+
+        public List<GameObject> GameObjects { get => gameObjects; set => gameObjects = value; }
+        
+        public string Name { get => name.Value; set => name = new Name(value); }
+
+        public static SceneBuilder Builder() => new SceneBuilder();
     }
 }

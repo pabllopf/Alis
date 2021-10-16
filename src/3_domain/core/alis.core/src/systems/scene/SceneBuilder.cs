@@ -1,28 +1,22 @@
 ﻿using Alis.Fluent;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Alis.Core
 {
     public class SceneBuilder : 
-        IBuilder<SceneManager>,
-        IAdd<SceneBuilder, Scene>
+        IBuilder<Scene>,
+        IWith<SceneBuilder, Name, Func<Name, string>>
     {
-        private SceneManager sceneManager;
         private Scene scene;
 
-        public SceneBuilder()
-        {
-            sceneManager = new SceneManager(new List<Scene>());
-        }
+        public SceneBuilder() => scene = new Scene();
 
-        public SceneBuilder Add(Scene obj)
+        public SceneBuilder With<T>(Func<Name, string> value) where T : Name
         {
-            sceneManager.scenes.Add(obj);
+            scene.Name = value.Invoke(new Name());
             return this;
         }
 
-        public SceneManager Build() => sceneManager;
+        public Scene Build() => scene;
     }
 }

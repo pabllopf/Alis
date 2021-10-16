@@ -9,6 +9,9 @@
     <ShowAsAssociation>
       <Field Name="configuration" />
     </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="systems" />
+    </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.InputManager">
@@ -66,7 +69,7 @@
   <Class Name="Alis.Core.Scene" Collapsed="true">
     <Position X="31.25" Y="13.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAEAAAABAAAAAAAAAwAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\systems\scene\Scene.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -83,7 +86,7 @@
   <Class Name="Alis.Core.Configuration">
     <Position X="3.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAQAAAAAAAgAAAAgAAIwAAAAEAAgAAgAAAAAQQAA=</HashCode>
+      <HashCode>AAABAQAAAAAAAgAAAAgAAIgAAAAAAAgAAggAAAAYQAA=</HashCode>
       <FileName>src\config\Configuration.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -128,15 +131,15 @@
   <Class Name="Alis.Core.Particle" Collapsed="true">
     <Position X="37" Y="18.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\particle\Particle.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\particle\Particle.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Component">
     <Position X="43.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgACAAQiAgBIAEkAAACBQCAAAEAIAIIgAgAAIACEA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\Component.cs</FileName>
+      <FileName>src\systems\scene\gameobject\component\Component.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -148,8 +151,8 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAEAAAAEAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\sprite\Sprite.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAIAAAEAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\sprite\Sprite.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="image" />
@@ -158,22 +161,22 @@
   <Class Name="Alis.Core.PhysicalBody" Collapsed="true">
     <Position X="41.25" Y="18.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\physics\PhysicalBody.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\physics\PhysicalBody.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Camera" Collapsed="true">
     <Position X="43.25" Y="18.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\camera\Camera.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\camera\Camera.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Animator" Collapsed="true">
     <Position X="46" Y="18.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\animator\Animator.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\animator\Animator.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Field Name="animations" />
@@ -183,7 +186,7 @@
     <Position X="46" Y="20" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\animator\Animation.cs</FileName>
+      <FileName>src\systems\scene\gameobject\component\animator\Animation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.OutputManager">
@@ -197,98 +200,98 @@
     <Position X="50" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\mesh\Mesh.cs</FileName>
+      <FileName>src\systems\scene\gameobject\component\mesh\Mesh.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Light" Collapsed="true">
     <Position X="43" Y="21.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\light\Light.cs</FileName>
+      <FileName>src\systems\scene\gameobject\component\light\Light.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.SpotLight">
     <Position X="42.25" Y="22.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\light\SpotLight.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\light\SpotLight.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.PointLight">
     <Position X="44" Y="22.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\light\PointLight.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\light\PointLight.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.DirectionalLight">
     <Position X="40.5" Y="22.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\light\DirectionalLight.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\light\DirectionalLight.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.AreaLight">
     <Position X="45.75" Y="22.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\light\AreaLight.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\light\AreaLight.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.CubeMesh">
     <Position X="49" Y="19.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\mesh\CubeMesh.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\mesh\CubeMesh.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.SphereMesh">
     <Position X="51" Y="19.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\mesh\SphereMesh.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\mesh\SphereMesh.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Collider">
     <Position X="54" Y="18" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\collider\Collider.cs</FileName>
+      <FileName>src\systems\scene\gameobject\component\collider\Collider.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.BoxCollider2D" Collapsed="true">
     <Position X="54" Y="19.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\collider\BoxCollider2D.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\collider\BoxCollider2D.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.BoxCollider3D" Collapsed="true">
     <Position X="55.75" Y="19.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\collider\BoxCollider3D.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\collider\BoxCollider3D.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.SphereCollider" Collapsed="true">
     <Position X="57.5" Y="19.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\collider\SphereCollider.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\collider\SphereCollider.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.CircleCollider" Collapsed="true">
     <Position X="59.25" Y="19.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\collider\CircleCollider.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\collider\CircleCollider.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Image">
     <Position X="39.25" Y="20.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\sprite\Image.cs</FileName>
+      <FileName>src\systems\scene\gameobject\component\sprite\Image.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.SceneConfig" Collapsed="true">
@@ -336,8 +339,8 @@
   <Class Name="Alis.Core.AudioSource">
     <Position X="34.75" Y="18.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\audiosource\AudioSource.cs</FileName>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\component\audiosource\AudioSource.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="audioClip" />
@@ -347,23 +350,22 @@
     <Position X="34.75" Y="20" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\components\audiosource\AudioClip.cs</FileName>
+      <FileName>src\systems\scene\gameobject\component\audiosource\AudioClip.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Name" Collapsed="true">
     <Position X="37.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAACAAAAAgAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\properties\Name.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\gameobject\propertie\Name.cs</FileName>
       <NewMemberFileName>Tag.cs</NewMemberFileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.Tag" Collapsed="true">
     <Position X="37.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAABAACAAAAAgAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\properties\Tag.cs</FileName>
+      <FileName>src\systems\scene\gameobject\propertie\Tag.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -371,23 +373,26 @@
     <Position X="35" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAACAAAAggAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\properties\IsStatic.cs</FileName>
+      <FileName>src\systems\scene\gameobject\propertie\IsStatic.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.IsActive" Collapsed="true">
     <Position X="35" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAACAAAAggAAAAAAA=</HashCode>
-      <FileName>src\systems\scene\gameobject\properties\IsActive.cs</FileName>
+      <FileName>src\systems\scene\gameobject\propertie\IsActive.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.GameObjectBuilder">
-    <Position X="42.25" Y="6" Width="1.5" />
+  <Class Name="Alis.Core.GameObjectBuilder" Collapsed="true">
+    <Position X="40.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAgAAAAgAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAgBAAAAAAAA=</HashCode>
       <FileName>src\systems\scene\gameobject\GameObjectBuilder.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <ShowAsAssociation>
+      <Field Name="gameObject" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.SceneSystem">
     <Position X="24.5" Y="8" Width="1.5" />
@@ -400,7 +405,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.System" Collapsed="true">
-    <Position X="17.75" Y="4.75" Width="1.5" />
+    <Position X="17.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\System.cs</FileName>
@@ -457,27 +462,56 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.SceneBuilder" Collapsed="true">
-    <Position X="31.25" Y="12.75" Width="1.5" />
+    <Position X="31.25" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
-      <FileName>SceneBuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAAAABAAAAAAAA=</HashCode>
+      <FileName>src\systems\scene\SceneBuilder.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="scene" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.GameBuilder" Collapsed="true">
-    <Position X="20" Y="1.75" Width="1.5" />
+    <Position X="20.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>GameBuilder.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAhAAIgAAAAAAAAAI=</HashCode>
+      <FileName>src\GameBuilder.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="game" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Alis.Core.GeneralConfig" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAIQAAAAEAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneralConfig.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.ConfigurationBuilder">
-    <Position X="4.5" Y="1.5" Width="1.5" />
+  <Class Name="Alis.Core.ConfigurationBuilder" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAgAAAAABAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAACAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>ConfigurationBuilder.cs</FileName>
+      <NewMemberFileName>GeneralConfigBuilder.cs</NewMemberFileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <ShowAsAssociation>
+      <Field Name="configuration" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Alis.Core.GeneralConfigBuilder" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAABAAAAIAAA=</HashCode>
+      <FileName>GeneralConfigBuilder.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="generalConfig" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Enum Name="Alis.Core.Keyboard" Collapsed="true">
     <Position X="17" Y="14.5" Width="1.5" />
