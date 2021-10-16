@@ -25,6 +25,9 @@ namespace Alis.Core
         // Tiempo total desde que comenzó el juego
         private double fixedTime = 0.0f;
 
+        // Tiempo total desde que se cargo el nivel/scene actual 
+        private double timeSinceLevelLoad = 0.0f;
+
         // Multiplicador de tiempo que muestra la velocidad del mundo
         // timeScale = 1.0f velocidad normal
         // timeScale = 0.5f a mitad de velocidad 
@@ -40,7 +43,7 @@ namespace Alis.Core
         private double fixedDeltaTime = 0.0f;
 
         // Numero de fps maximo que se lanza el juego.
-        private double maximumFramesPerSecond = 60.0f;
+        private double maximumFramesPerSecond = 60;
 
         // intervalo de simulación de cada paso por cada frame
         private double timeStep = 0.0f;
@@ -48,7 +51,7 @@ namespace Alis.Core
         // Numero de pasos por cada frame (tiempo simulado)
         private double maximunAllowedTimeStep = 30.0f;
 
-        private double timeSinceLevelLoad = 0.0f;
+        
 
         #region Constructor
 
@@ -104,10 +107,11 @@ namespace Alis.Core
                     FixedUpdate();
                     currentFrame = (frameCount < maximumFramesPerSecond ? frameCount : (frameCount % maximumFramesPerSecond)) + 1;
                     frameCount += 1.0f;
-                    Console.WriteLine($"fixedDeltaTime={fixedDeltaTime} | timeStep={timeStep} | Current_frame ={currentFrame} | frameCount={frameCount} | totaltime={fixedTime}");
                 }
 
                 fixedTime = timer.Elapsed.TotalMilliseconds;
+
+                DebugInput();
             }
 
             Exit();
@@ -121,36 +125,16 @@ namespace Alis.Core
 
         private void DebugInput() 
         {
-            /*if (Console.KeyAvailable)
+            if (Console.KeyAvailable)
             {
                 ConsoleKey key = Console.ReadKey().Key;
-                Console.WriteLine($"Read key: {key}");
+                Console.WriteLine($" key: {key}");
 
                 if (key == ConsoleKey.Escape)
                 {
                     isRunning = false;
                 }
-
-                if (key == ConsoleKey.LeftArrow)
-                {
-                    maximumFramesPerSecond -= 1.0;
-                }
-
-                if (key == ConsoleKey.RightArrow)
-                {
-                    maximumFramesPerSecond += 1.0;
-                }
-
-                if (key == ConsoleKey.DownArrow)
-                {
-                    fixedFramesPerSecond -= 1.0;
-                }
-
-                if (key == ConsoleKey.UpArrow)
-                {
-                    fixedFramesPerSecond += 1.0;
-                }
-            }*/
+            }
         }
 
         /// <summary>Awakes this instance.</summary>
