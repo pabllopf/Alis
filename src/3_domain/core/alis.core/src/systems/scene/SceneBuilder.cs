@@ -5,7 +5,8 @@ namespace Alis.Core
 {
     public class SceneBuilder : 
         IBuild<Scene>,
-        IWith<SceneBuilder, Name, Func<Name, string>>
+        IWith<SceneBuilder, Name, Func<Name, string>>,
+        IWith<SceneBuilder, GameObject, Func<GameObjectBuilder, GameObject>>
     {
         private Scene scene;
 
@@ -17,6 +18,14 @@ namespace Alis.Core
             return this;
         }
 
+        public SceneBuilder With<T>(Func<GameObjectBuilder, GameObject> value) where T : GameObject
+        {
+            scene.GameObjects.Add(value.Invoke(new GameObjectBuilder()));
+            return this;
+        }
+
         public Scene Build() => scene;
+
+       
     }
 }

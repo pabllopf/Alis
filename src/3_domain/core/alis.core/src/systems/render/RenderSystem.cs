@@ -4,53 +4,16 @@ using System.Text;
 
 namespace Alis.Core
 {
-    internal class RenderSystem : System
+    public class RenderSystem : System
     {
-        public RenderManager renderManager;
+        private Configuration configuration;
 
-        public override void AfterUpdate()
+        public RenderSystem(Configuration configuration)
         {
-            throw new NotImplementedException();
+            this.configuration = configuration;
+            Console.WriteLine("Init.RenderSystem()");
         }
 
-        public override void Awake()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void BeforeUpdate()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Exit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void FixedUpdate()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Reset()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Stop()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
+        public Configuration Configuration { get => configuration; set => configuration = value; }
     }
 }

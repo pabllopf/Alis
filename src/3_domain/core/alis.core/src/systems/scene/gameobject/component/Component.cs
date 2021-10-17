@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace Alis.Core
 {
     /// <summary>Define a general component.</summary>
-    public abstract class Component : IDisposable
+    public abstract class Component 
     {
         /// <summary>The is active</summary>
         [NotNull]
@@ -153,11 +153,6 @@ namespace Alis.Core
                 transform = this.gameObject.Transform;
                 tag = this.gameObject.Tag;
             }
-        }
-
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-        public virtual void Dispose()
-        {
         }
 
         #region Events

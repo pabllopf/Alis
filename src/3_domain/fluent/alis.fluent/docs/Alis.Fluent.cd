@@ -14,5 +14,12 @@
       <FileName>ISetMax.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Alis.Fluent.IManagerOf">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IManagerOf.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

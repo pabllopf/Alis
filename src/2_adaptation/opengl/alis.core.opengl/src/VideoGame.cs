@@ -1,40 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenTK;
-using OpenTK.Graphics;
-using OpenTK.Windowing.Desktop;
-
-namespace Alis.Core.OpenGL
+﻿namespace Alis.Core.OpenGL
 {
-    public class VideoGame : GameWindow
+    /// <summary>Video game</summary>
+    public class VideoGame : Game
     {
-        private GameWindowSettings gameWindowSettings;
-
-        private NativeWindowSettings nativeWindowSettings;
-
-        public VideoGame(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
+        public VideoGame(Configuration configuration) : base(configuration)
         {
-            this.gameWindowSettings = gameWindowSettings;
-            this.nativeWindowSettings = nativeWindowSettings;
-
-
-            gameWindowSettings.UpdateFrequency = 60;
-            gameWindowSettings.RenderFrequency = 60;
         }
 
-
-        public override void Run()
+        public static void TestOpenGL()
         {
-            base.Run();
+            
         }
-
-        public override void ProcessEvents()
-        {
-            base.ProcessEvents();
-        }
-
     }
 }
+

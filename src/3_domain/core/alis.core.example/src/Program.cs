@@ -74,20 +74,31 @@ namespace Alis.Core.Example
             ////////////////////////////////////////
             // Game Example: Alis Game             
             ////////////////////////////////////////
-            Game game =
-                Game.Builder()
-                    .Configuration(config => config
-                        .General(i => i
-                            .With<Name>(name => "Alis Game Example")
-                            .With<Author>(author => "Pablo Perdomo Falcón")
-                            .Build())
-                        .Time(i => i
-                            .SetMax<TimeStep>(timeStep => 1.0f)
-                            .SetMax<FramesPerSecond>(fps => 1.0)
-                            .Build())
+            Game.Builder()
+                .Configuration(config => config
+                    .General(i => i
+                        .With<Name>(name => "Alis Game Example")
+                        .With<Author>(author => "Pablo Perdomo Falcón")
                         .Build())
-                    .Build();
+                    .Time(i => i
+                        .SetMax<TimeStep>(timeStep => 30.0f)
+                        .SetMax<FramesPerSecond>(fps => 60.0f)
+                        .Build())
+                    .Build())
+                
+                .ManagerOf<Scene>(manager => manager
+                    .Add<Scene>(scene => scene
+                    .With<Name>(name => "Main Scene")
+                        .With<GameObject>(obj => obj
+                            .With<Name>(name => "Player")
+                            .Is<Static>(state => false)
+                            .Is<Active>(state => true)
+                        .Build())
+                    .Build())
+                .Build())
+             .Run();
 
+            /*
 
             Configuration config = 
                 Configuration.Builder()
@@ -125,7 +136,7 @@ namespace Alis.Core.Example
             Console.WriteLine($"Name Game = {game.Configuration.General.Name}");
             Console.WriteLine($"Author Game = {game.Configuration.General.Author}");
             game.Run();
-
+            */
             Console.WriteLine("Please press any key to close the windows.");
             Console.ReadKey();
         }

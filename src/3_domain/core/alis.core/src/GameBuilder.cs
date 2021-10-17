@@ -6,31 +6,30 @@ namespace Alis.Core
 {
     public class GameBuilder : 
         IBuild<Game>,
+        IRun<Game>,
         IConfiguration<GameBuilder, Func<ConfigurationBuilder, Configuration>>,
-        IManager<GameBuilder, Scene, Func<SceneBuilder, SceneManager>>
+        IManagerOf<GameBuilder, Scene, Func<SceneManagerBuilder, SceneManager>>
     {
         private Game game;
 
-        public GameBuilder() => game = new Game();
+        public GameBuilder() => game = new Game(new Core.Configuration());
 
-        public GameBuilder Configuration(Func<ConfigurationBuilder, Configuration> func) 
+        public GameBuilder Configuration(Func<ConfigurationBuilder, Configuration> value) 
         {
-            game.Configuration = func.Invoke(new ConfigurationBuilder());
+            game.Configuration = value.Invoke(new ConfigurationBuilder());
             return this;
         }
 
-        public GameBuilder Manager<T>(Func<SceneBuilder, SceneManager> value) where T : Scene
+        public GameBuilder ManagerOf<T>(Func<SceneManagerBuilder, SceneManager> value) where T : Scene
         {
-            SceneSystem sceneSystem = new SceneSystem();
-            sceneSystem.sceneManager = value.Invoke(new SceneBuilder());
-            game.Systems["SceneSystem"] = sceneSystem;
+            SceneSystem sceneSystem = new SceneSystem(game.Configuration);
+            sceneSystem.sceneManager = value.Invoke(new SceneManagerBuilder());
+            game.SceneSystem = sceneSystem;
             return this;
         }
 
         public Game Build() => game;
 
         public void Run() => game.Run();
-
-       
     }
 }

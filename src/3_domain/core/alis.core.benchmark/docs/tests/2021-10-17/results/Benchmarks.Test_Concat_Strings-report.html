@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Benchmarks.Test_Concat_Strings-20211017-153742</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1288 (21H1/May2021Update)
+Intel Core i5-7200U CPU 2.50GHz (Kaby Lake), 1 CPU, 4 logical and 2 physical cores
+.NET SDK=5.0.401
+  [Host]     : .NET 5.0.10 (5.0.1021.41214), X64 RyuJIT  [AttachedDebugger]
+  Job-OPIKZU : .NET 5.0.10 (5.0.1021.41214), X64 RyuJIT
+</code></pre>
+<pre><code>Platform=AnyCpu  IterationCount=3  LaunchCount=1  
+WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th>                        Method</th><th>numOfStrings</th><th>     Mean</th><th>     Error</th><th> StdDev</th><th>      Min</th><th>      Max</th><th>Gen 0</th><th>Gen 1</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Test_String_Concat_2_Elements</td><td>1000</td><td>18.30 ns</td><td>4.983 ns</td><td>0.273 ns</td><td>18.07 ns</td><td>18.60 ns</td><td>0.0408</td><td>-</td><td>64 B</td>
+</tr><tr><td>Test_String_Concat_Ref_2_Elements</td><td>1000</td><td>20.95 ns</td><td>10.766 ns</td><td>0.590 ns</td><td>20.37 ns</td><td>21.55 ns</td><td>0.0408</td><td>-</td><td>64 B</td>
+</tr><tr><td>Test_String_Format_2_Elements</td><td>1000</td><td>88.90 ns</td><td>26.631 ns</td><td>1.460 ns</td><td>87.52 ns</td><td>90.43 ns</td><td>0.0408</td><td>-</td><td>64 B</td>
+</tr><tr><td>Test_String_Add_2_Elements</td><td>1000</td><td>17.92 ns</td><td>7.995 ns</td><td>0.438 ns</td><td>17.41 ns</td><td>18.18 ns</td><td>0.0408</td><td>-</td><td>64 B</td>
+</tr><tr><td>Test_StringBuilder_2_Elements</td><td>1000</td><td>82.34 ns</td><td>1.739 ns</td><td>0.095 ns</td><td>82.25 ns</td><td>82.44 ns</td><td>0.1733</td><td>-</td><td>272 B</td>
+</tr><tr><td>Test_String_Concat_1000_Elements</td><td>1000</td><td>40.15 ns</td><td>12.043 ns</td><td>0.660 ns</td><td>39.42 ns</td><td>40.70 ns</td><td>0.0561</td><td>0.0002</td><td>88 B</td>
+</tr><tr><td>Test_String_Concat_REF_1000_Elements</td><td>1000</td><td>40.02 ns</td><td>8.194 ns</td><td>0.449 ns</td><td>39.64 ns</td><td>40.51 ns</td><td>0.0561</td><td>0.0002</td><td>88 B</td>
+</tr><tr><td>Test_String_Format_1000_Elements</td><td>1000</td><td>126.65 ns</td><td>19.866 ns</td><td>1.089 ns</td><td>125.78 ns</td><td>127.87 ns</td><td>0.0560</td><td>-</td><td>88 B</td>
+</tr><tr><td>Test_String_Add_1000_Elements</td><td>1000</td><td>4,043,732.29 ns</td><td>1,065,111.161 ns</td><td>58,382.337 ns</td><td>3,992,926.56 ns</td><td>4,107,509.38 ns</td><td>27398.4375</td><td>-</td><td>43,432,120 B</td>
+</tr><tr><td>Test_StringBuilder_1000_Elements</td><td>1000</td><td>105.67 ns</td><td>18.208 ns</td><td>0.998 ns</td><td>104.58 ns</td><td>106.54 ns</td><td>0.1887</td><td>-</td><td>296 B</td>
+</tr></tbody></table>
+</body>
+</html>

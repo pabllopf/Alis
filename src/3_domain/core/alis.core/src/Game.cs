@@ -1,56 +1,90 @@
 ﻿using Alis.Fluent;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Timers;
 
 namespace Alis.Core
 {
-    public class Game : HasBuilder<GameBuilder>, IDisposable
+    public class Game : HasBuilder<GameBuilder>
     {
+        private bool isRunning;
+
         private Configuration configuration;
 
-        private Dictionary<string, System> systems;
+        private System[] systems;
 
-        public Configuration Configuration { get => configuration; set => configuration = value; }
-        internal Dictionary<string, System> Systems { get => systems; set => systems = value; }
+        private RenderSystem renderSystem;
 
-        private bool isRunning;
+        private SceneSystem sceneSystem;
 
         #region Constructor
 
-        /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
-        internal Game() 
+        public Game() 
         {
-            configuration = new Configuration();
-
-            systems = new Dictionary<string, System>()
-            {
-                { "SceneSystem",     new SceneSystem() },
-                //{ "InputSystem",     new InputSystem() },
-                //{ "OutputSystem",    new OutputSystem() },
-                //{ "ParticlesSystem", new ParticlesSystem() },
-                //{ "PhysicsSystem",   new PhysicsSystem() },
-                //{ "RenderSystem",    new RenderSystem() }
-            };
-
+            this.configuration = new Configuration();
             isRunning = true;
+
+            renderSystem = new RenderSystem(configuration);
+            sceneSystem = new SceneSystem(configuration);
+
+            systems = new System[2]
+            {
+                sceneSystem,
+                renderSystem
+            };
         }
 
         /// <summary>
         /// Constructor of game
         /// </summary>
         /// <param name="configuration">Include the configuration of the game.</param>
-        internal Game(Configuration configuration)
+        public Game(Configuration configuration)
         {
             this.configuration = configuration;
+
             isRunning = true;
+
+            renderSystem = new RenderSystem(configuration);
+            sceneSystem = new SceneSystem(configuration);
+
+            systems = new System[2] 
+            {
+                sceneSystem,
+                renderSystem
+            };
         }
 
         #endregion
 
-        public void Run() 
+        public Configuration Configuration
+        {
+            get => configuration; set
+            {
+                configuration = value;
+            }
+        }
+
+        public SceneSystem SceneSystem
+        {
+            get => sceneSystem;
+            set
+            {
+                sceneSystem = value;
+                systems[0] = sceneSystem;
+            }
+        }
+
+        public RenderSystem Render
+        {
+            get => renderSystem; 
+            set
+            {
+                renderSystem = value;
+                systems[1] = renderSystem;
+            }
+        }
+
+        public virtual void Run() 
         {
             Awake();
             Start();
@@ -71,10 +105,11 @@ namespace Alis.Core
 
                     FixedUpdate();
                     configuration.Time.CounterFrames();
+                    //Console.WriteLine($"{configuration.Time.CurrentFrame}");
                 }
 
                 configuration.Time.UpdateFixedTime();
-                DebugInput();
+                //DebugInput();
             }
 
             Exit();
@@ -115,44 +150,91 @@ namespace Alis.Core
         }
 
         /// <summary>Awakes this instance.</summary>
-        private void Awake() => systems.Values.ToList().ForEach(system => system.Awake());
+        private void Awake()
+        {
+            for (int i = 0; i < systems.Length; i++)
+            {
+                systems[i].Awake();
+            }
+        }
 
         /// <summary>Starts this instance.</summary>
-        private void Start() => systems.Values.ToList().ForEach(system => system.Start());
+        private void Start()
+        {
+            for (int i = 0; i < systems.Length; i++)
+            {
+                systems[i].Start();
+            }
+        }
 
         /// <summary>Befores the update.</summary>
-        private void BeforeUpdate() => systems.Values.ToList().ForEach(system => system.BeforeUpdate());
+        private void BeforeUpdate()
+        {
+            for (int i = 0; i < systems.Length; i++)
+            {
+                systems[i].BeforeUpdate();
+            }
+        }
 
         /// <summary>Updates this instance.</summary>
-        private void Update() => systems.Values.ToList().ForEach(system => system.Update());
+        private void Update()
+        {
+            for (int i = 0; i < systems.Length; i++) 
+            {
+                systems[i].Update();
+            }
+        }
 
         /// <summary>Afters the update.</summary>
-        private void AfterUpdate() => systems.Values.ToList().ForEach(system => system.AfterUpdate());
+        private void AfterUpdate()
+        {
+            for (int i = 0; i < systems.Length; i++)
+            {
+                systems[i].AfterUpdate();
+            }
+        }
 
         /// <summary>Fixeds the update.</summary>
-        private void FixedUpdate() => systems.Values.ToList().ForEach(system => system.FixedUpdate());
+        private void FixedUpdate()
+        {
+            for (int i = 0; i < systems.Length; i++)
+            {
+                systems[i].FixedUpdate();
+            }
+        }
 
         /// <summary>Stops this instance.</summary>
-        private void Stop() => systems.Values.ToList().ForEach(system => system.Stop());
+        private void Stop()
+        {
+            for (int i = 0; i < systems.Length; i++)
+            {
+                systems[i].Stop();
+            }
+        }
 
         /// <summary>Resets this instance.</summary>
-        private void Reset() => systems.Values.ToList().ForEach(system => system.Reset());
+        private void Reset()
+        {
+            for (int i = 0; i < systems.Length; i++)
+            {
+                systems[i].Reset();
+            }
+        }
 
         /// <summary>Exits this instance.</summary>
-        private void Exit() => systems.Values.ToList().ForEach(system => system.Exit());
-
-        #region Dispose 
-
-        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-        public void Dispose() => Console.WriteLine("Dispose class.");
-
-        #endregion
+        private void Exit()
+        {
+            for (int i = 0; i < systems.Length; i++)
+            {
+                systems[i].Exit();
+            }
+        }
 
         #region Destroyer
 
         /// <summary>Finalizes an instance of the <see cref="Game" /> class.</summary>
         ~Game() => Console.WriteLine("Destroy game.");
-        
+
         #endregion
     }
 }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -6,8 +6,14 @@
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
+
   <ItemGroup>
     <Folder Include="docs\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\alis.core.sfml\Alis.Core.SFML.csproj" />
   </ItemGroup>
 
 </Project>

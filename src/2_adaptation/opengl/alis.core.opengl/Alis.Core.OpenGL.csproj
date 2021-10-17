@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -11,6 +11,10 @@
 
   <ItemGroup>
     <Folder Include="docs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\3_domain\core\alis.core\Alis.Core.csproj" />
   </ItemGroup>
 
 </Project>

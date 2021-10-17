@@ -33,6 +33,7 @@ namespace Alis.Core
         public Configuration()
         {
             generalConfig = new GeneralConfig();
+            time = new TimeConfig();
         }
     }
 }

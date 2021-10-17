@@ -1,17 +1,13 @@
 ﻿using BenchmarkDotNet.Attributes;
-using BenchmarkDotNet.Jobs;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Alis.Core.Benchmark
 {
     public class For_vs_Foreach_vs_ForEach
     {
-        //[Params(10, 1_000, 100_000)]
-        [Params(1)]
+        [Params(10, 1_000, 100_000)]
         public int size_of_list;
 
         private List<GameObject> gameObjects_1;
@@ -34,7 +30,7 @@ namespace Alis.Core.Benchmark
                 }
             }
         }
-        /*
+        
         [Benchmark]
         public void Test_With_Foreach()
         {
@@ -67,6 +63,6 @@ namespace Alis.Core.Benchmark
                 {
                 }
             });
-        }*/
+        }
     }
 }

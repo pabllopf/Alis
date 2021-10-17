@@ -1,10 +1,14 @@
 ﻿namespace Alis.Core
 {
-    internal class SceneSystem : System
+    public class SceneSystem : System
     {
         public SceneManager sceneManager;
 
         public SceneSystem()
+        {
+        }
+
+        public SceneSystem(Configuration configuration)
         {
         }
 

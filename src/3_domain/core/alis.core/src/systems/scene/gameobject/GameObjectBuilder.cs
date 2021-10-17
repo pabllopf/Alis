@@ -33,6 +33,12 @@ namespace Alis.Core
             return this;
         }
 
+        public GameObjectBuilder Add<T>(T value) where T : Component
+        {
+            gameObject.Add(value);
+            return this;
+        }
+
         public GameObject Build() => gameObject;
     }
 }

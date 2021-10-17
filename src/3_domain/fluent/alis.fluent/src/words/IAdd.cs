@@ -1,7 +1,7 @@
 ﻿namespace Alis.Fluent
 {
-    public interface IAdd<L, T>
+    public interface IAdd<Builder, Type, Argument>
     {
-        public L Add(T obj);
+        public Builder Add<T>(Argument value) where T : Type;
     }
 }
