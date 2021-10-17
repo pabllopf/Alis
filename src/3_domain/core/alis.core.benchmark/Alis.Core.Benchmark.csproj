@@ -31,4 +31,13 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="docs\" />
+    <Folder Include="docs\tests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\alis.core\Alis.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8' />
+<title>Alis.Core.Benchmark.For_vs_Foreach_vs_ForEach-20211017-135417</title>
+
+<style type="text/css">
+	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
+	td, th { padding: 6px 13px; border: 1px solid #ddd; text-align: right; }
+	tr { background-color: #fff; border-top: 1px solid #ccc; }
+	tr:nth-child(even) { background: #f8f8f8; }
+</style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1288 (21H1/May2021Update)
+Intel Core i5-7200U CPU 2.50GHz (Kaby Lake), 1 CPU, 4 logical and 2 physical cores
+.NET SDK=5.0.401
+  [Host]     : .NET 5.0.10 (5.0.1021.41214), X64 RyuJIT  [AttachedDebugger]
+  Job-OCOBYH : .NET 5.0.10 (5.0.1021.41214), X64 RyuJIT
+</code></pre>
+<pre><code>Platform=AnyCpu  IterationCount=3  LaunchCount=1  
+WarmupCount=3  
+</code></pre>
+
+<table>
+<thead><tr><th> Method</th><th>size_of_list</th><th>Mean</th><th>Error</th><th>StdDev</th><th>Min</th><th>Max</th><th>Allocated</th>
+</tr>
+</thead><tbody><tr><td>Test_With_For</td><td>1</td><td>0.7712 ns</td><td>1.2773 ns</td><td>0.0700 ns</td><td>0.6991 ns</td><td>0.8390 ns</td><td>-</td>
+</tr></tbody></table>
+</body>
+</html>

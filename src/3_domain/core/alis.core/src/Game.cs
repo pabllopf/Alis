@@ -69,16 +69,6 @@ namespace Alis.Core
                         AfterUpdate();
                     }
 
-                    Console.WriteLine($"FPS={configuration.Time.CurrentFrame} |" +
-                                      $"Count FPS = {configuration.Time.FrameCount} | " +
-                                      $"TimeFixed={configuration.Time.FixedTime} | " +
-                                      $"TimeScale={configuration.Time.TimeScale} |" +
-                                      $"TimeStep={configuration.Time.TimeStep} | " +
-                                      $"FixedDeltaTime={configuration.Time.FixedDeltaTime} |" +
-                                      $"maxfps={configuration.Time.MaximumFramesPerSecond} | " +
-                                      $"maxTimeStep={configuration.Time.MaximunAllowedTimeStep}"
-                                      );
-
                     FixedUpdate();
                     configuration.Time.CounterFrames();
                 }

@@ -103,6 +103,12 @@ namespace Alis.Core.Example
                     .With<Author>(author => "Pablo Perdomo Falcón")
                     .Build();
 
+            TimeConfig time =
+                TimeConfig.Builder()
+                .SetMax<TimeStep>(timeStep => 1.0f)
+                .SetMax<FramesPerSecond>(fps => 1.0)
+                .Build();
+
             Scene scene =
                 Scene.Builder()
                 .With<Name>(name => "Main Scene")
