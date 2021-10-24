@@ -1,35 +1,19 @@
-﻿namespace Alis.Core.SFML
+﻿namespace Alis.Core.Sfml
 {
-    /// <summary>Video game</summary>
+    /// <summary>Implement a video game with SFML library. </summary>
     public class VideoGame : Game
     {
-        private Configuration configuration;
-
-        public VideoGame() : base()
-        {
-            configuration = Configuration;
-            Render = new RenderManager(Configuration);
-        }
-
+        /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
+        /// <param name="configuration">The configuration of the game.</param>
         public VideoGame(Configuration configuration) : base(configuration)
         {
-            this.configuration = Configuration;
-            Render = new RenderManager(Configuration);
+            RenderSystem = new RenderManager(Config);
+            SceneSystem = new SceneManager(Config);
         }
 
-        public new Configuration Configuration
-        {
-            get => configuration; 
-            set
-            {
-                configuration = value;
-                Render.Configuration = value;
-            }
-        }
-
-
-
-        public new static VideoGameBuilder Builder() => new();
+        /// <summary>Builders this instance.</summary>
+        /// <returns> Return a builder of api fluent. </returns>
+        public static VideoGameBuilder Builder() => new VideoGameBuilder(new Configuration()); 
     }
 }
 

@@ -1,54 +1,59 @@
 ﻿namespace Alis.Core
 {
-    public class PhysicsSystem : System
+    public class PhysicsSystem : ISystem
     {
         public PhysicsSystem()
         {
         }
 
-        public override void AfterUpdate()
+        public void AfterUpdate()
         {
-            
+            throw new System.NotImplementedException();
         }
 
-        public override void Awake()
+        public void Awake()
         {
-            
+            throw new System.NotImplementedException();
         }
 
-        public override void BeforeUpdate()
+        public void BeforeUpdate()
         {
-            
+            throw new System.NotImplementedException();
         }
 
-        public override void Exit()
+        public void DispatchEvents()
         {
-            
+            throw new System.NotImplementedException();
         }
 
-        public override void FixedUpdate()
+        public void Exit()
         {
-            
+            throw new System.NotImplementedException();
         }
 
-        public override void Reset()
+        public void FixedUpdate()
         {
-            
+            throw new System.NotImplementedException();
         }
 
-        public override void Start()
+        public void Reset()
         {
-            
+            throw new System.NotImplementedException();
         }
 
-        public override void Stop()
+        public void Start()
         {
-            
+            throw new System.NotImplementedException();
         }
 
-        public override void Update()
+        public void Stop()
         {
-            
+            throw new System.NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

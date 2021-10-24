@@ -1,51 +1,61 @@
 ﻿namespace Alis.Core
 {
-    public class SceneSystem : System
+    public class SceneSystem : ISystem
     {
-        public SceneManager sceneManager;
+        [System.Text.Json.Serialization.JsonConstructor()]
+        public SceneSystem(Configuration configuration) => Configuration = configuration;
 
-        public SceneSystem()
+        [System.Text.Json.Serialization.JsonIgnore]
+        public Configuration Configuration { get; set; }
+
+        public virtual void AfterUpdate()
         {
+            
         }
 
-        public SceneSystem(Configuration configuration)
+        public virtual void Awake()
         {
+            
         }
 
-        public override void AfterUpdate()
+        public virtual void BeforeUpdate()
         {
+            
         }
 
-        public override void Awake()
+        public virtual void DispatchEvents()
         {
+            
         }
 
-        public override void BeforeUpdate()
+        public virtual void Exit()
         {
+            
         }
 
-        public override void Exit()
+        public virtual void FixedUpdate()
         {
+            
         }
 
-        public override void FixedUpdate()
+        public virtual void Reset()
         {
+            
         }
 
-        public override void Reset()
+        public virtual void Start()
         {
+            
         }
 
-        public override void Start()
+        public virtual void Stop()
         {
+            
         }
 
-        public override void Stop()
+        public virtual void Update()
         {
-        }
-
-        public override void Update()
-        {
+            
         }
     }
 }

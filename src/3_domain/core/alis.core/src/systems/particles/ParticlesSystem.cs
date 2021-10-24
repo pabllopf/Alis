@@ -4,55 +4,60 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public class ParticlesSystem : System
+    public class ParticlesSystem : ISystem
     {
         public ParticlesSystem()
         {
         }
 
-        public override void AfterUpdate()
+        public void AfterUpdate()
         {
-           
+            throw new NotImplementedException();
         }
 
-        public override void Awake()
+        public void Awake()
         {
-           
+            throw new NotImplementedException();
         }
 
-        public override void BeforeUpdate()
+        public void BeforeUpdate()
         {
-           
+            throw new NotImplementedException();
         }
 
-        public override void Exit()
+        public void DispatchEvents()
         {
-           
+            throw new NotImplementedException();
         }
 
-        public override void FixedUpdate()
+        public void Exit()
         {
-           
+            throw new NotImplementedException();
         }
 
-        public override void Reset()
+        public void FixedUpdate()
         {
-           
+            throw new NotImplementedException();
         }
 
-        public override void Start()
+        public void Reset()
         {
-           
+            throw new NotImplementedException();
         }
 
-        public override void Stop()
+        public void Start()
         {
-           
+            throw new NotImplementedException();
         }
 
-        public override void Update()
+        public void Stop()
         {
-           
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }

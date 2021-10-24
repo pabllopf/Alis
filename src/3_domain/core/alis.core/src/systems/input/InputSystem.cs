@@ -2,53 +2,58 @@
 
 namespace Alis.Core
 {
-    public class InputSystem :  Alis.Core.System
+    public class InputSystem : ISystem
     {
         public InputSystem()
         {
         }
 
-        public override void AfterUpdate()
+        public void AfterUpdate()
         {
             
         }
 
-        public override void Awake()
+        public  void Awake()
         {
             
         }
 
-        public override void BeforeUpdate()
+        public  void BeforeUpdate()
         {
             
         }
 
-        public override void Exit()
+        public void DispatchEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        public  void Exit()
         {
             
         }
 
-        public override void FixedUpdate()
+        public  void FixedUpdate()
         {
             
         }
 
-        public override void Reset()
+        public  void Reset()
         {
             
         }
 
-        public override void Start()
+        public  void Start()
         {
             
         }
 
-        public override void Stop()
+        public  void Stop()
         {
             
         }
 
-        public override void Update()
+        public  void Update()
         {
             
         }

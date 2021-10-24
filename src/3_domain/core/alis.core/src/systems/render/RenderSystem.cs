@@ -1,19 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Alis.Core
+﻿namespace Alis.Core
 {
-    public class RenderSystem : System
+    public class RenderSystem : ISystem
     {
-        private Configuration configuration;
+        public RenderSystem(Configuration configuration) => Configuration = configuration;
 
-        public RenderSystem(Configuration configuration)
+        public Configuration Configuration { get; set; }
+
+        public virtual void AfterUpdate()
         {
-            this.configuration = configuration;
-            Console.WriteLine("Init.RenderSystem()");
+            
         }
 
-        public Configuration Configuration { get => configuration; set => configuration = value; }
+        public virtual void Awake()
+        {
+            
+        }
+
+        public virtual void BeforeUpdate()
+        {
+            
+        }
+
+        public virtual void DispatchEvents()
+        {
+            
+        }
+
+        public virtual void Exit()
+        {
+            
+        }
+
+        public virtual void FixedUpdate()
+        {
+            
+        }
+
+        public virtual void Reset()
+        {
+            
+        }
+
+        public virtual void Start()
+        {
+            
+        }
+
+        public virtual void Stop()
+        {
+            
+        }
+
+        public virtual void Update()
+        {
+            
+        }
     }
 }

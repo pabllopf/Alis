@@ -9,7 +9,7 @@ namespace Alis.Core
     {
         /// <summary>The size</summary>
         [NotNull]
-        private Vector3 size;
+        private Vector3 scale;
 
         /// <summary>The position</summary>
         [NotNull]
@@ -22,7 +22,7 @@ namespace Alis.Core
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
         public Transform()
         {
-            size =      new Vector3(x: 1.0f, y: 1.0f, z: 1.0f);
+            scale =     new Vector3(x: 1.0f, y: 1.0f, z: 1.0f);
             position =  new Vector3(x: 0.0f, y: 0.0f, z: 0.0f);
             rotation =  new Vector3(x: 0.0f, y: 0.0f, z: 0.0f);
         }
@@ -31,7 +31,7 @@ namespace Alis.Core
         /// <param name="size">The size.</param>
         public Transform([NotNull] Vector3 size)
         {
-            this.size = size;
+            this.scale = size;
             position =  new Vector3(x: 0.0f, y: 0.0f, z: 0.0f);
             rotation =  new Vector3(x: 0.0f, y: 0.0f, z: 0.0f);
         }
@@ -43,7 +43,7 @@ namespace Alis.Core
         [JsonConstructor]
         public Transform([NotNull] Vector3 size, [NotNull] Vector3 position, [NotNull] Vector3 rotation)
         {
-            this.size = size;
+            this.scale = size;
             this.position = position;
             this.rotation = rotation;
         }
@@ -52,7 +52,7 @@ namespace Alis.Core
         /// <value>The size.</value>
         [JsonProperty("_Size")]
         [NotNull]
-        public Vector3 Size { get => size; set => size = value; }
+        public Vector3 Scale { get => scale; set => scale = value; }
 
         /// <summary>Gets or sets the position.</summary>
         /// <value>The position.</value>

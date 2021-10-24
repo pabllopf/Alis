@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public class TimeConfig : HasBuilder<TimeConfigBuilder>
+    public class TimeConfig : IBuilder<TimeConfigBuilder>
     {
         private Stopwatch timer;
 

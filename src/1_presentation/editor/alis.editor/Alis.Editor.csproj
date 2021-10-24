@@ -127,7 +127,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\2_adaptation\opengl\alis.core.opengl\Alis.Core.OpenGL.csproj" />
-    <ProjectReference Include="..\..\..\2_adaptation\sfml\alis.core.sfml\Alis.Core.SFML.csproj" />
+    <ProjectReference Include="..\..\..\2_adaptation\sfml\alis.core.sfml\Alis.Core.Sfml.csproj" />
   </ItemGroup>
 
 

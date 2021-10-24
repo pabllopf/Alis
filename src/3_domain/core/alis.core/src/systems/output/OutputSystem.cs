@@ -1,58 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Alis.Core
+﻿namespace Alis.Core
 {
-    public class OutputSystem : System
+    public class OutputSystem : ISystem
     {
         public OutputSystem()
         {
         }
 
-        public override void AfterUpdate()
+        public void AfterUpdate()
         {
             
         }
 
-        public override void Awake()
+        public void Awake()
         {
             
         }
 
-        public override void BeforeUpdate()
+        public void BeforeUpdate()
         {
             
         }
 
-        public override void Exit()
+        public void DispatchEvents()
         {
             
         }
 
-        public override void FixedUpdate()
+        public void Exit()
         {
             
         }
 
-        public override void Reset()
+        public void FixedUpdate()
         {
             
         }
 
-        public override void Start()
+        public void Reset()
         {
             
         }
 
-        public override void Stop()
+        public void Start()
         {
             
         }
 
-        public override void Update()
+        public void Stop()
         {
             
         }
+
+        public void Update()
+        {
+            
+        }
+
     }
 }

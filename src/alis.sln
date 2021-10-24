@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Example", "3_doma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Test", "3_domain\core\alis.core.test\Alis.Core.Test.csproj", "{E0B800CA-3DBD-478E-B22E-94B6D9B79A1C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.SFML", "2_adaptation\sfml\alis.core.sfml\Alis.Core.SFML.csproj", "{59079E6A-A56D-4B37-AF46-FC2896CB56AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Sfml", "2_adaptation\sfml\alis.core.sfml\Alis.Core.Sfml.csproj", "{59079E6A-A56D-4B37-AF46-FC2896CB56AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.SFML.Benchmark", "2_adaptation\sfml\alis.core.sfml.benchmark\Alis.Core.SFML.Benchmark.csproj", "{0837F534-9872-4324-80A3-335CC672E95E}"
 EndProject

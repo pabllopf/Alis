@@ -1,25 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Alis.Core
+namespace Alis.Core.Sfml
 {
     public class Sprite : Component
     {
-        public Image image;
+        private string texturePath;
 
-        public static Sprite Create() => new Sprite();
+        private SFML.Graphics.Sprite sprite;
+
+        private int depth = 0;
+
+        public Sprite(string texturePath) 
+        {
+            this.texturePath = texturePath;
+
+            sprite = new SFML.Graphics.Sprite(new SFML.Graphics.Texture(texturePath));
+            System.Console.WriteLine($"Print component {texturePath}");
+            RenderManager.Attach(this);
+        }
 
         public override void Start()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("name object=" + this.GameObject.Name.Value);
         }
 
         public override void Update()
         {
-            throw new NotImplementedException();
+            sprite.Position = new SFML.System.Vector2f(Transform.Position.X, Transform.Position.Y);
+            sprite.Rotation = Transform.Rotation.Y;
+            sprite.Scale = new SFML.System.Vector2f(Transform.Scale.X, Transform.Scale.Y);
         }
 
-        public static Sprite Default => new Sprite();
+        public SFML.Graphics.Drawable Drawable => sprite;
+
+        public int Depth { get => depth; set => depth = value; }
     }
 }

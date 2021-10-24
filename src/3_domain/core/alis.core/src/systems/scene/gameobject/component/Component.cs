@@ -73,20 +73,14 @@ namespace Alis.Core
 
         /// <summary>Gets or sets the game object.</summary>
         /// <value>The game object.</value>
-        [JsonIgnore]
-        [MaybeNull]
         public GameObject GameObject { get => gameObject;  }
 
         /// <summary>Gets the tag.</summary>
         /// <value>The tag.</value>
-        [JsonIgnore]
-        [MaybeNull]
         public Tag Tag { get => tag; }
 
         /// <summary>Gets the transform.</summary>
         /// <value>The transform.</value>
-        [JsonIgnore]
-        [MaybeNull]
         public Transform Transform { get => transform; }
 
         /// <summary>Enables this instance.</summary>
@@ -144,15 +138,9 @@ namespace Alis.Core
         /// <param name="gameObject">The game object.</param>
         internal void AttachTo([NotNull] GameObject gameObject)
         {
-            if (this.gameObject is not null) 
-            {
-                this.gameObject.Remove(this);
-                this.gameObject = gameObject;
-                this.gameObject.Add(this);
-
-                transform = this.gameObject.Transform;
-                tag = this.gameObject.Tag;
-            }
+            this.gameObject = gameObject;
+            this.transform = this.gameObject.Transform;
+            this.tag = this.gameObject.Tag;
         }
 
         #region Events

@@ -16,7 +16,7 @@ namespace Alis.Core.Test
             GameObject gameObject = new GameObject();
             Assert.AreEqual(gameObject.Name, "Default");
             Assert.AreEqual(gameObject.Components.Length, 0);
-            Assert.AreEqual(gameObject.Transform.Size, new Vector3(1, 1, 1));
+            Assert.AreEqual(gameObject.Transform.Scale, new Vector3(1, 1, 1));
             Assert.AreEqual(gameObject.Transform.Position, new Vector3(0, 0, 0));
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }
@@ -27,7 +27,7 @@ namespace Alis.Core.Test
             GameObject gameObject = new GameObject("test_default");
             Assert.AreEqual(gameObject.Name, "test_default");
             Assert.AreEqual(gameObject.Components.Length, 0);
-            Assert.AreEqual(gameObject.Transform.Size, new Vector3(1, 1, 1));
+            Assert.AreEqual(gameObject.Transform.Scale, new Vector3(1, 1, 1));
             Assert.AreEqual(gameObject.Transform.Position, new Vector3(0, 0, 0));
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }
@@ -38,7 +38,7 @@ namespace Alis.Core.Test
             GameObject gameObject = new GameObject(null);
             Assert.AreEqual(gameObject.Name, "Default");
             Assert.AreEqual(gameObject.Components.Length, 0);
-            Assert.AreEqual(gameObject.Transform.Size, new Vector3(1, 1, 1));
+            Assert.AreEqual(gameObject.Transform.Scale, new Vector3(1, 1, 1));
             Assert.AreEqual(gameObject.Transform.Position, new Vector3(0, 0, 0));
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }
@@ -49,7 +49,7 @@ namespace Alis.Core.Test
             GameObject gameObject = new GameObject("test_name", new Transform(new Vector3(2,2,2)));
             Assert.AreEqual(gameObject.Name, "test_name");
             Assert.AreEqual(gameObject.Components.Length, 0);
-            Assert.AreEqual(gameObject.Transform.Size, new Vector3(2, 2, 2));
+            Assert.AreEqual(gameObject.Transform.Scale, new Vector3(2, 2, 2));
             Assert.AreEqual(gameObject.Transform.Position, new Vector3(0, 0, 0));
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }
@@ -60,7 +60,7 @@ namespace Alis.Core.Test
             GameObject gameObject = new GameObject("test_name", null);
             Assert.AreEqual(gameObject.Name, "test_name");
             Assert.AreEqual(gameObject.Components.Length, 0);
-            Assert.AreEqual(gameObject.Transform.Size, new Vector3(1, 1, 1));
+            Assert.AreEqual(gameObject.Transform.Scale, new Vector3(1, 1, 1));
             Assert.AreEqual(gameObject.Transform.Position, new Vector3(0, 0, 0));
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }

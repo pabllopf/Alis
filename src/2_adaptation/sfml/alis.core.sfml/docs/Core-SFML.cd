@@ -1,92 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Alis.Core.SFML.VideoGame">
-    <Position X="3.5" Y="2.75" Width="1.5" />
-    <NestedTypes>
-      <Class Name="Alis.Core.SFML.VideoGame.VideoGameBuilder" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>src\VideoGame.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
+  <Class Name="Alis.Core.Sfml.VideoGame">
+    <Position X="3.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAAAAAAAEAIAAAgAAAAIAEAAACABAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>src\VideoGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Game" Collapsed="true">
-    <Position X="3.5" Y="1.5" Width="1.5" />
+    <Position X="3.5" Y="1.75" Width="1.5" />
     <TypeIdentifier />
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Alis.Core.SFML.RenderSFML">
-    <Position X="5.75" Y="2.75" Width="1.5" />
+  <Class Name="Alis.Core.Sfml.VideoGameBuilder">
+    <Position X="6" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACQCIAAAQiAAABAIEIAQBAKAAAACJABAIAAAAQDAAEA=</HashCode>
-      <FileName>src\Render\RenderSFML.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAggAAgAAAAAAAAAI=</HashCode>
+      <FileName>src\VideoGameBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Alis.Core.Sfml.InputManager">
+    <Position X="1.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\managers\InputManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Render" Collapsed="true">
-    <Position X="5.75" Y="1.5" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="Alis.Core.SFML.InputSFML">
-    <Position X="8" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAAiAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
-      <FileName>src\Input\InputSFML.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Input" Collapsed="true">
-    <Position X="8" Y="1.5" Width="1.5" />
-    <TypeIdentifier />
-  </Class>
-  <Class Name="Alis.Core.SFML.Animation">
-    <Position X="10" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAABAAAAAAAQBEAAEARAEAAAABAABAAA=</HashCode>
-      <FileName>src\Components\Animation.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.SFML.Animator">
-    <Position X="10" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABQAAAAAACAAAAAAAAAAAAAQABAAEAAEIQACBAABAAA=</HashCode>
-      <FileName>src\Components\Animator.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="Animations" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Alis.Core.SFML.AudioSource">
-    <Position X="11.75" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>EBQgQAAIUCAACAAAAAEEAAkBAAAIAAAAoUJAABECAAA=</HashCode>
-      <FileName>src\Components\AudioSource.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.SFML.Camera">
-    <Position X="13.5" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABwAAAAAACAAgAAAAIAAAAAAAAAEAAAAAQAAAAAIAAA=</HashCode>
-      <FileName>src\Components\Camera.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.SFML.Collision">
-    <Position X="15.25" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>IBUBAAAAAKEAABAAAEAAACBAAAAkAAKAIREAACAAACA=</HashCode>
-      <FileName>src\Components\Collision.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.SFML.Sprite">
-    <Position X="17" Y="2.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABQAAAgAACAAAAAAAgBEAAAIEBAEABAgIQAAIAAAAAA=</HashCode>
-      <FileName>src\Components\Sprite.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Component" Collapsed="true">
-    <Position X="15.25" Y="1.5" Width="1.5" />
+  <Class Name="Alis.Core.InputSystem" Collapsed="true">
+    <Position X="1.5" Y="6.75" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Font Name="Segoe UI" Size="9" />

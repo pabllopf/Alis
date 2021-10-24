@@ -1,102 +1,64 @@
-﻿using Alis.Fluent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Alis.Core
+﻿namespace Alis.Core
 {
-    public class Game : HasBuilder<GameBuilder>
+    /// <summary>Define the main logic of game made with ALIS.</summary>
+    public class Game 
     {
-        private bool isRunning;
-
-        private Configuration configuration;
-
-        private System[] systems;
-
-        private RenderSystem renderSystem;
-
-        private SceneSystem sceneSystem;
-
         #region Constructor
 
-        public Game() 
-        {
-            this.configuration = new Configuration();
-            isRunning = true;
-
-            renderSystem = new RenderSystem(configuration);
-            sceneSystem = new SceneSystem(configuration);
-
-            systems = new System[2]
-            {
-                sceneSystem,
-                renderSystem
-            };
-        }
-
-        /// <summary>
-        /// Constructor of game
-        /// </summary>
-        /// <param name="configuration">Include the configuration of the game.</param>
+        /// <summary>Initializes a new instance of the <see cref="Game" /> class.</summary>
+        /// <param name="configuration">The configuration of the game.</param>
+        [System.Text.Json.Serialization.JsonConstructor]
         public Game(Configuration configuration)
         {
-            this.configuration = configuration;
-
-            isRunning = true;
-
-            renderSystem = new RenderSystem(configuration);
-            sceneSystem = new SceneSystem(configuration);
-
-            systems = new System[2] 
-            {
-                sceneSystem,
-                renderSystem
-            };
+            IsRunning = true;
+            Config = configuration;
+            RenderSystem = new RenderSystem(configuration);
+            SceneSystem = new SceneSystem(configuration);
         }
 
         #endregion
 
-        public Configuration Configuration
-        {
-            get => configuration; set
-            {
-                configuration = value;
-            }
-        }
+        #region Properties 
 
-        public SceneSystem SceneSystem
-        {
-            get => sceneSystem;
-            set
-            {
-                sceneSystem = value;
-                systems[0] = sceneSystem;
-            }
-        }
+        /// <summary>Gets a value indicating whether this instance is running.</summary>
+        /// <value>
+        /// <c>true</c> if this instance is running; otherwise, <c>false</c>.</value>
+        [System.Text.Json.Serialization.JsonPropertyName("_IsRunning")]
+        public bool IsRunning { get; private set; }
 
-        public RenderSystem Render
-        {
-            get => renderSystem; 
-            set
-            {
-                renderSystem = value;
-                systems[1] = renderSystem;
-            }
-        }
+        /// <summary>Gets or sets the configuration.</summary>
+        /// <value>The configuration.</value>
+        [System.Text.Json.Serialization.JsonPropertyName("_Configuration")]
+        public Configuration Config { get; protected set ; }
 
-        public virtual void Run() 
+        /// <summary>Gets or sets the render system.</summary>
+        /// <value>The render system.</value>
+        [System.Text.Json.Serialization.JsonIgnore]
+        public RenderSystem RenderSystem { get; protected set; }
+
+        /// <summary>Gets or sets the scene system.</summary>
+        /// <value>The scene system.</value>
+        [System.Text.Json.Serialization.JsonIgnore]
+        public SceneSystem SceneSystem { get; protected set; }
+
+        #endregion
+
+        #region Run
+
+        /// <summary>Runs this instance.</summary>
+        public void Run() 
         {
             Awake();
             Start();
-            while (isRunning) 
+            while (IsRunning) 
             {
-                configuration.Time.UpdateFixedDeltaTime();
+                Config.Time.UpdateFixedDeltaTime();
 
-                if (configuration.Time.IsNewFrame())
+                if (Config.Time.IsNewFrame())
                 {
-                    configuration.Time.UpdateTimeStep();
+                    Config.Time.UpdateTimeStep();
 
-                    for (int i = 0; i < configuration.Time.MaximunAllowedTimeStep; i++)
+                    for (int i = 0; i < Config.Time.MaximunAllowedTimeStep; i++)
                     {
                         BeforeUpdate();
                         Update();
@@ -104,136 +66,101 @@ namespace Alis.Core
                     }
 
                     FixedUpdate();
-                    configuration.Time.CounterFrames();
-                    //Console.WriteLine($"{configuration.Time.CurrentFrame}");
+                    DispatchEvents();
+                    SyncStates();
+                    Config.Time.CounterFrames();
                 }
 
-                configuration.Time.UpdateFixedTime();
-                //DebugInput();
+                Config.Time.UpdateFixedTime();
             }
 
             Exit();
         }
 
-        private void DebugInput() 
-        {
-            if (Console.KeyAvailable)
-            {
-                ConsoleKey key = Console.ReadKey().Key;
-                Console.WriteLine($" key: {key}");
-
-                if (key == ConsoleKey.Escape)
-                {
-                    isRunning = false;
-                }
-
-                if (key == ConsoleKey.LeftArrow)
-                {
-                    configuration.Time.MaximumFramesPerSecond -= 1.0f;
-                }
-
-                if (key == ConsoleKey.RightArrow)
-                {
-                    configuration.Time.MaximumFramesPerSecond += 1.0f;
-                }
-
-                if (key == ConsoleKey.UpArrow)
-                {
-                    configuration.Time.TimeScale += 1.0f;
-                }
-
-                if (key == ConsoleKey.DownArrow)
-                {
-                    configuration.Time.TimeScale -= 1.0f;
-                }
-            }
-        }
+        #endregion
 
         /// <summary>Awakes this instance.</summary>
         private void Awake()
         {
-            for (int i = 0; i < systems.Length; i++)
-            {
-                systems[i].Awake();
-            }
+            RenderSystem.Awake();
+            SceneSystem.Awake();
         }
 
         /// <summary>Starts this instance.</summary>
         private void Start()
         {
-            for (int i = 0; i < systems.Length; i++)
-            {
-                systems[i].Start();
-            }
+            RenderSystem.Start();
+            SceneSystem.Start();
         }
 
         /// <summary>Befores the update.</summary>
         private void BeforeUpdate()
         {
-            for (int i = 0; i < systems.Length; i++)
-            {
-                systems[i].BeforeUpdate();
-            }
+            RenderSystem.BeforeUpdate();
+            SceneSystem.BeforeUpdate();
         }
 
         /// <summary>Updates this instance.</summary>
         private void Update()
         {
-            for (int i = 0; i < systems.Length; i++) 
-            {
-                systems[i].Update();
-            }
+            RenderSystem.Update();
+            SceneSystem.Update();
         }
 
         /// <summary>Afters the update.</summary>
         private void AfterUpdate()
         {
-            for (int i = 0; i < systems.Length; i++)
-            {
-                systems[i].AfterUpdate();
-            }
+            RenderSystem.AfterUpdate();
+            SceneSystem.AfterUpdate();
         }
 
         /// <summary>Fixeds the update.</summary>
         private void FixedUpdate()
         {
-            for (int i = 0; i < systems.Length; i++)
-            {
-                systems[i].FixedUpdate();
-            }
+            RenderSystem.FixedUpdate();
+            SceneSystem.FixedUpdate();
+        }
+
+        private void SyncStates() 
+        {
+            RenderSystem.Configuration = Config;
+            SceneSystem.Configuration = Config;
+        }
+
+        private void DispatchEvents() 
+        {
+            RenderSystem.DispatchEvents();
+            SceneSystem.DispatchEvents();
         }
 
         /// <summary>Stops this instance.</summary>
         private void Stop()
         {
-            for (int i = 0; i < systems.Length; i++)
-            {
-                systems[i].Stop();
-            }
+            RenderSystem.Stop();
+            SceneSystem.Stop();
         }
 
         /// <summary>Resets this instance.</summary>
         private void Reset()
         {
-            for (int i = 0; i < systems.Length; i++)
-            {
-                systems[i].Reset();
-            }
+            RenderSystem.Reset();
+            SceneSystem.Reset();
         }
 
         /// <summary>Exits this instance.</summary>
         private void Exit()
         {
-            for (int i = 0; i < systems.Length; i++)
-            {
-                systems[i].Exit();
-            }
+            RenderSystem.Exit();
+            SceneSystem.Exit();
         }
 
         #region Destroyer
 
         /// <summary>Finalizes an instance of the <see cref="Game" /> class.</summary>
-        ~Game() => Console.WriteLine("Destroy game.");
+        ~Game() 
+        {
+        
+        }
 
         #endregion
     }

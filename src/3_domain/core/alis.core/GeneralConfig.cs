@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Alis.Core
 {
-    public class GeneralConfig : HasBuilder<GeneralConfigBuilder>
+    public class GeneralConfig : IBuilder<GeneralConfigBuilder>
     {
         private string name;
 

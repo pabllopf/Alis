@@ -1,34 +1,25 @@
-﻿using Alis.Fluent;
-using System;
-
-namespace Alis.Core.SFML
+﻿namespace Alis.Core.Sfml
 {
-    public class VideoGameBuilder : GameBuilder, 
-        IBuild<VideoGame>,
-        IRun<VideoGame>,
-        IConfiguration<VideoGameBuilder, Func<ConfigurationBuilder, Configuration>>,
-        IManagerOf<VideoGameBuilder, Scene, Func<SceneManagerBuilder, SceneManager>>
+    public class VideoGameBuilder : VideoGame,
+        Fluent.IBuild<VideoGame>,
+        Fluent.IRun<VideoGame>,
+        Fluent.IConfiguration<VideoGameBuilder, System.Func<ConfigurationBuilder, Configuration>>,
+        Fluent.IManagerOf<VideoGameBuilder, Scene, System.Func<SceneManagerBuilder, SceneManager>>
     {
-        private VideoGame game;
+        public VideoGameBuilder(Configuration configuration) : base(configuration) => Config = configuration;
 
-        public VideoGameBuilder() => game = new VideoGame();
-
-        public new VideoGameBuilder Configuration(Func<ConfigurationBuilder, Configuration> value)
+        public VideoGameBuilder Configuration(System.Func<ConfigurationBuilder, Configuration> value)
         {
-            game.Configuration = value.Invoke(new ConfigurationBuilder());
+            Config = value.Invoke(new ConfigurationBuilder());
             return this;
         }
 
-        public new VideoGameBuilder ManagerOf<T>(Func<SceneManagerBuilder, SceneManager> value) where T : Scene
+        public VideoGameBuilder ManagerOf<T>(System.Func<SceneManagerBuilder, SceneManager> value) where T : Scene
         {
-            SceneSystem sceneSystem = new SceneSystem();
-            sceneSystem.sceneManager = value.Invoke(new SceneManagerBuilder());
-            game.SceneSystem = sceneSystem;
+            SceneSystem = value.Invoke(new SceneManagerBuilder(new Core.Configuration()));
             return this;
         }
 
-        public new VideoGame Build() => game;
-
-        public new void Run() => game.Run();
+        public VideoGame Build() => this;
     }
 }

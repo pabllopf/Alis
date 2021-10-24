@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Alis.Core
+namespace Alis.Core.Sfml
 {
     public class SphereMesh : Mesh
     {

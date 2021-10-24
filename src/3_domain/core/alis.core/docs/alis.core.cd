@@ -1,17 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Alis.Core.Game">
-    <Position X="17.75" Y="0.5" Width="1.5" />
+    <Position X="17.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQiAAIAxiAABABAAQEAAAAQAACAAQAAoEECEABAAEI=</HashCode>
+      <HashCode>AAQgAAAAQiAABABAAIAAAAAAAACACAAAoAACAAAAAEI=</HashCode>
       <FileName>src\Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="configuration" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Field Name="systems" />
-    </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.InputManager">
@@ -62,6 +59,7 @@
     <ShowAsCollectionAssociation>
       <Field Name="scenes" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.Scene" Collapsed="true">
     <Position X="31.25" Y="13.75" Width="1.5" />
@@ -72,6 +70,7 @@
     <ShowAsCollectionAssociation>
       <Field Name="gameObjects" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.ParticlesManager">
     <Position X="11.75" Y="15.5" Width="1.5" />
@@ -83,27 +82,21 @@
   <Class Name="Alis.Core.Configuration">
     <Position X="3.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAQAAAAAAAgAAAAgAAKAAAAAAAAgAAgAAAAAYQAA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>src\config\Configuration.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="generalConfig" />
       <Field Name="time" />
-      <Field Name="physics" />
-      <Field Name="scene" />
-      <Field Name="gameObject" />
-      <Field Name="component" />
-      <Field Name="particle" />
-      <Field Name="debugConfig" />
-      <Field Name="inputConfig" />
     </ShowAsAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.TimeConfig" Collapsed="true">
     <Position X="8.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AASGAAAAhAAAAAAAABEAAAARAAAAAQAAAAEAEAAAAhA=</HashCode>
+      <HashCode>AASGABAAhAAAAAAAABEAAAARAAAAAQFAAQECEAAAAhA=</HashCode>
       <FileName>src\config\TimeConfig.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.Transform">
     <Position X="46" Y="7.5" Width="1.5" />
@@ -139,7 +132,6 @@
       <HashCode>AAQgACAAQiAgBIAEkAAACBQCAAAEAIAIIgAgAAIACEA=</HashCode>
       <FileName>src\systems\scene\gameobject\component\Component.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.Sprite">
     <Position X="39.25" Y="18.5" Width="1.5" />
@@ -354,7 +346,7 @@
   <Class Name="Alis.Core.GameObjectBuilder" Collapsed="true">
     <Position X="40.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAgAAAAgBAAAAAAAA=</HashCode>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAABAgAAAAgBAAAAAAAA=</HashCode>
       <FileName>src\systems\scene\gameobject\GameObjectBuilder.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -375,59 +367,44 @@
   <Class Name="Alis.Core.System" Collapsed="true">
     <Position X="17.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
+      <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\System.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.RenderSystem">
     <Position X="21.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAMAAAAAAAAEA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>src\systems\render\RenderSystem.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="renderManager" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.PhysicsSystem">
     <Position X="18.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgAAAAQiAABAAAAQAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
+      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\physics\PhysicsSystem.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="physicsManager" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.OutputSystem">
     <Position X="14" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
+      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\output\OutputSystem.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="outputManager" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.InputSystem">
     <Position X="16.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAgIAAAAAAAAEA=</HashCode>
+      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\input\InputSystem.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="inputManager" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.ParticlesSystem">
     <Position X="11.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAIAAAAAIAAAAAAAAEA=</HashCode>
+      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>src\systems\particles\ParticlesSystem.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="particlesManager" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.SceneBuilder" Collapsed="true">
     <Position X="31.25" Y="12.25" Width="1.5" />
@@ -441,14 +418,11 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.GameBuilder" Collapsed="true">
-    <Position X="20.75" Y="0.75" Width="1.5" />
+    <Position X="20.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAhAAIgAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAggAAgAAAAAAAAAI=</HashCode>
       <FileName>src\GameBuilder.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="game" />
-    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.GeneralConfig" Collapsed="true">
@@ -457,11 +431,12 @@
       <HashCode>AAAAAAAAAAAAAAAEgAAAAIQAAAAEAIAAAAAAAAAAAAA=</HashCode>
       <FileName>GeneralConfig.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.ConfigurationBuilder" Collapsed="true">
     <Position X="3.25" Y="2" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAACAgAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAAAACAgAAAAAAAAAAAAQA=</HashCode>
       <FileName>ConfigurationBuilder.cs</FileName>
       <NewMemberFileName>GeneralConfigBuilder.cs</NewMemberFileName>
     </TypeIdentifier>
@@ -474,7 +449,7 @@
     <Position X="0.5" Y="2" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAABAAAAIAAA=</HashCode>
-      <FileName>GeneralConfigBuilder.cs</FileName>
+      <FileName>src\config\GeneralConfigBuilder.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="generalConfig" />

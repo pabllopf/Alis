@@ -1,93 +1,64 @@
-﻿using SFML.Graphics;
-using SFML.System;
-using SFML.Window;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
-namespace Alis.Core.SFML
+namespace Alis.Core.Sfml
 {
+    /// <summary>Implement the render system of SFML library.</summary>
     public class RenderManager : RenderSystem
     {
-        private Configuration configuration;
+        private static List<Sprite> sprites;
 
-        private RenderWindow renderWindow;
+        /// <summary>The render window</summary>
+        private SFML.Graphics.RenderWindow? renderWindow;
 
-        private VideoMode videoMode;
+        static RenderManager() => sprites = new List<Sprite>();
 
-        private List<Sprite> sprites;
-
-        private CircleShape circleShape;
-
-        private Text text;
-
+        /// <summary>Initializes a new instance of the <see cref="RenderManager" /> class.</summary>
+        /// <param name="configuration">The configuration.</param>
         public RenderManager(Configuration configuration) : base(configuration)
         {
-            this.configuration = configuration;
-            videoMode = new VideoMode(512, 320);
-            renderWindow = new RenderWindow(videoMode, $"{configuration.General.Name} | {configuration.General.Author}", Styles.Default);
+            renderWindow = new SFML.Graphics.RenderWindow(
+                new SFML.Window.VideoMode(512, 512),
+                $"{Configuration.General.Name} | {Configuration.General.Author}",
+                SFML.Window.Styles.Default);
+
             renderWindow.Closed += RenderWindow_Closed;
-
-            sprites = new List<Sprite>();
-            circleShape = new CircleShape(70);
-            circleShape.FillColor = Color.Cyan;
-
-            text = new Text("Default", new Font(@"C:\Users\wwwam\Documents\Repos\Alis\src\1_presentation\editor\alis.editor\resources\Hack-Italic.ttf"));
-            text.FillColor = Color.White;
-            text.Position = new Vector2f(40, 0);
-            text.CharacterSize = 100;
-
-            Console.WriteLine("Init.RenderManager()");
-
-            sprites.Add(new Sprite());
         }
 
+        /// <summary>Awakes this instance.</summary>
         public override void Awake()
         {
         }
 
-        public override void Start() 
-        {
-        
-        }
+        /// <summary>Befores the update.</summary>
+        public override void BeforeUpdate() => renderWindow?.Clear();
 
+        /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (renderWindow is not null)
+            for (int index = 0; index < sprites.Count; index++)
             {
-                renderWindow.Clear();
-
-                if (sprites is not null)
-                {
-                    if (sprites.Count > 0)
-                    {
-                        for (int i = 0; i < sprites.Count; i++)
-                        {
-                            renderWindow.Draw(circleShape);
-                            renderWindow.Draw(text);
-                        }
-                    }
-                }
-
-                renderWindow.Display();
+                renderWindow?.Draw(sprites[index].Drawable);
             }
         }
 
-        public override void FixedUpdate()
-        {
-            if (renderWindow is not null)
-            {
-                renderWindow.DispatchEvents();
-                Console.WriteLine($"{configuration.Time.CurrentFrame}");
-                //text.DisplayedString =;
-            }
-        }
+        /// <summary>Afters the update.</summary>
+        public override void AfterUpdate() => renderWindow?.Display();
 
-        private void RenderWindow_Closed(object? sender, EventArgs e)
+        /// <summary>Dispatches the events.</summary>
+        public override void DispatchEvents() => renderWindow?.DispatchEvents();
+
+        /// <summary>Renders the window closed.</summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.EventArgs" /> instance containing the event data.</param>
+        private void RenderWindow_Closed(object? sender, System.EventArgs e) => renderWindow?.Close();
+
+        /// <summary>Attaches the specified sprite.</summary>
+        /// <param name="sprite">The sprite.</param>
+        public static void Attach(Sprite sprite)
         {
-            if (renderWindow is not null)
-            {
-                renderWindow.Close();
-            }
+            sprites.Add(sprite);
+            sprites.OrderBy(o => o.Depth);
         }
     }
 }

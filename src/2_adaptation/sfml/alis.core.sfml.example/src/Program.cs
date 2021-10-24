@@ -1,14 +1,13 @@
-﻿
-using Alis.Fluent;
+﻿using Alis.Fluent;
 using System;
 
-namespace Alis.Core.SFML.Example
+namespace Alis.Core.Sfml.Example
 {
     class Program
     {
         public static void Main(string[] args)
         {
-            VideoGame game = VideoGame.Builder()
+            VideoGame.Builder()
                 .Configuration(config => config
                     .General(i => i
                         .With<Name>(name => "Alis Game Example")
@@ -27,16 +26,17 @@ namespace Alis.Core.SFML.Example
                             .With<Name>(name => "Player")
                             .Is<Static>(state => false)
                             .Is<Active>(state => true)
-                            .Add(new Sprite())
+                            .With<Sprite>(new Sprite(@"C:\\Users\\wwwam\\Documents\\Repos\\Alis\\src\\2_adaptation\\sfml\\alis.core.sfml.example\\assets\\start_button.png"))
+                        .Build())
+                        .With<GameObject>(obj => obj
+                            .With<Name>(name => "Enemy")
+                            .Is<Static>(state => false)
+                            .Is<Active>(state => true)
+                            .With<Sprite>(new Sprite(@"C:\\Users\\wwwam\\Documents\\Repos\\Alis\\src\\2_adaptation\\sfml\\alis.core.sfml.example\\assets\\start_button.png"))
                         .Build())
                     .Build())
                 .Build())
-            .Build();
-
-            Console.WriteLine($"author={game.Configuration.General.Author}");
-            Console.WriteLine($"numofobjs=");
-
-            game.Run();
+            .Run();
 
             Console.WriteLine("Please press any key to close console.");
             Console.ReadKey();

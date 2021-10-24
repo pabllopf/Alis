@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.SFML
+﻿namespace Alis.Core.Sfml
 {
     public class PhysicsManager : PhysicsSystem
     {

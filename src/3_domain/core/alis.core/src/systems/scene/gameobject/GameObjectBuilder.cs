@@ -1,44 +1,48 @@
 ﻿using Alis.Fluent;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Alis.Core
 {
-    public class GameObjectBuilder : 
+    public class GameObjectBuilder : GameObject,
         IBuild<GameObject>, 
         IWith<GameObjectBuilder, Name , Func<Name, string>>,
         IIs<GameObjectBuilder, Active, Func<Active, bool>>,
         IIs<GameObjectBuilder, Static, Func<Static, bool>>
     {
-        private GameObject gameObject;
-
-        internal GameObjectBuilder() => gameObject = new GameObject();
+        public GameObjectBuilder(string name) : base(name) 
+        {
+            Name = new Fluent.Name(name);
+            Tag = new Fluent.Tag("Default");
+            IsActive = new Fluent.Active(true);
+            IsStatic = new Fluent.Static(false);
+            Transform = new Transform();
+            Components = new Component[100];
+        }
 
         public GameObjectBuilder With<T>(Func<Name, string> value) where T : Name
         {
-            gameObject.Name = new Name(value.Invoke(new Name()));
+            Name = new Name(value.Invoke(new Name()));
             return this;
         }
 
         public GameObjectBuilder Is<T>(Func<Active, bool> value) where T : Active
         {
-            gameObject.IsActive.Value = value.Invoke(new Active());
+            IsActive.Value = value.Invoke(new Active());
             return this;
         }
 
         public GameObjectBuilder Is<T>(Func<Static, bool> value) where T : Static
         {
-            gameObject.IsStatic.Value = value.Invoke(new Static());
+            IsStatic.Value = value.Invoke(new Static());
             return this;
         }
 
-        public GameObjectBuilder Add<T>(T value) where T : Component
+        public GameObjectBuilder With<T>(T value) where T : Component
         {
-            gameObject.Add(value);
+            Add(value);
             return this;
         }
 
-        public GameObject Build() => gameObject;
+        public GameObject Build() => (GameObject)this;
     }
 }
