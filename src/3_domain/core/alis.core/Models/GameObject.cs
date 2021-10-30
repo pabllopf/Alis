@@ -396,6 +396,27 @@
 
         #endregion
 
+        #region Destroy()
+
+        /// <summary>
+        /// Destroys this instance.
+        /// </summary>
+        /// <returns></returns>
+        public void Destroy()
+        {
+            IsActive.Value = false;
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                if (temp[index] is not null)
+                {
+                    temp[index].Destroy();
+                }
+            }
+        }
+
+        #endregion
+
         #region Reset()
 
         /// <summary>Resets this instance.</summary>
