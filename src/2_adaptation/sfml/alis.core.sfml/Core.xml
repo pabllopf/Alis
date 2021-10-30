@@ -1,24 +1,72 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Core-SFML</name>
+        <name>Alis.Core.Sfml</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.SFML.properties.Resources">
+        <member name="T:Alis.Core.Sfml.RenderManager">
+            <summary>Implement the render system of SFML library.</summary>
+        </member>
+        <member name="F:Alis.Core.Sfml.RenderManager.sprites">
+            <summary>The sprites</summary>
+        </member>
+        <member name="F:Alis.Core.Sfml.RenderManager.renderWindow">
+            <summary>The render window</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.RenderManager.#cctor">
+            <summary>Initializes the <see cref="T:Alis.Core.Sfml.RenderManager" /> class.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.RenderManager.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sfml.RenderManager" /> class.</summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="M:Alis.Core.Sfml.RenderManager.BeforeUpdate">
+            <summary>Befores the update.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.RenderManager.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.RenderManager.AfterUpdate">
+            <summary>Afters the update.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.RenderManager.DispatchEvents">
+            <summary>Dispatches the events.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.RenderManager.RenderWindow_Closed(System.Object,System.EventArgs)">
+            <summary>Renders the window closed.</summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:Alis.Core.Sfml.RenderManager.Attach(Alis.Core.Sfml.Sprite)">
+            <summary>Attaches the specified sprite.</summary>
+            <param name="sprite">The sprite.</param>
+        </member>
+        <member name="T:Alis.Core.Sfml.Properties.Resources">
             <summary>
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
             </summary>
         </member>
-        <member name="P:Alis.Core.SFML.properties.Resources.ResourceManager">
+        <member name="P:Alis.Core.Sfml.Properties.Resources.ResourceManager">
             <summary>
               Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
             </summary>
         </member>
-        <member name="P:Alis.Core.SFML.properties.Resources.Culture">
+        <member name="P:Alis.Core.Sfml.Properties.Resources.Culture">
             <summary>
               Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
               búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
             </summary>
+        </member>
+        <member name="T:Alis.Core.Sfml.VideoGame">
+            <summary>Implement a video game with SFML library. </summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.VideoGame.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sfml.VideoGame" /> class.</summary>
+            <param name="configuration">The configuration of the game.</param>
+        </member>
+        <member name="M:Alis.Core.Sfml.VideoGame.Builder">
+            <summary>Builders this instance.</summary>
+            <returns> Return a builder of api fluent. </returns>
         </member>
     </members>
 </doc>

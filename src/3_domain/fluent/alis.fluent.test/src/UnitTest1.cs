@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Alis.Fluent.Test
+namespace Alis.FluentApi.Test
 {
     public class Tests
     {

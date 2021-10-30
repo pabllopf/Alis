@@ -51,7 +51,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.OpenGL.Test", "2_
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fluent", "Fluent", "{51D459E9-071A-4A39-90EE-3BD024F890A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Fluent", "3_domain\fluent\alis.fluent\Alis.Fluent.csproj", "{9E6B229E-94AF-4FA0-B680-FBF5473AECDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.FluentApi", "3_domain\fluent\alis.fluent\Alis.FluentApi.csproj", "{9E6B229E-94AF-4FA0-B680-FBF5473AECDC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Fluent.Example", "3_domain\fluent\Alis.Fluent.Example\Alis.Fluent.Example.csproj", "{C724E46E-08E3-453F-BDD4-9F2D7E56BA68}"
 EndProject

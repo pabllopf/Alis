@@ -7,10 +7,11 @@
 //     se vuelve a generar el código.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using System;
 
-namespace Alis.Core.properties {
-
+namespace Alis.Core.Properties {
+    using global::System;
+    
+    
     /// <summary>
     ///   Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
     /// </summary>
@@ -38,7 +39,7 @@ namespace Alis.Core.properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.properties.resources", typeof(resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Alis.Core.Properties.resources", typeof(resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

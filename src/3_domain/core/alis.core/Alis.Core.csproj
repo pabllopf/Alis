@@ -7,7 +7,7 @@
 	  <Nullable>enable</Nullable>
 	  <AssemblyName>Core</AssemblyName>
 	  
-    <ApplicationIcon>docs/logo.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
 	  
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  
@@ -36,7 +36,7 @@
     <EnableNETAnalyzers>false</EnableNETAnalyzers>
     <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
     <AnalysisLevel>5.0</AnalysisLevel>
-    <AppDesignerFolder>properties</AppDesignerFolder>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -110,12 +110,16 @@
   </Target>
   <ItemGroup>
     <None Remove="StyleCop.Cache" />
+    <None Include="..\..\..\2_adaptation\sfml\alis.core.sfml\Docs\licence">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
   
   
   
   <ItemGroup>
-    <Compile Update="properties\Resources.Designer.cs">
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>resources.resx</DependentUpon>
@@ -124,13 +128,13 @@
   
   
   <ItemGroup>
-    <ProjectReference Include="..\..\fluent\alis.fluent\Alis.Fluent.csproj" />
+    <ProjectReference Include="..\..\fluent\alis.fluent\Alis.FluentApi.csproj" />
     <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />
   </ItemGroup>
   
   
   <ItemGroup>
-    <EmbeddedResource Update="properties\resources.resx">
+    <EmbeddedResource Update="Properties\resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -138,9 +142,12 @@
   
   
   <ItemGroup>
-    <None Include="docs\licence">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+    <Folder Include="Validations\" />
   </ItemGroup>
+  
+
+  
+  
+
+
 </Project>

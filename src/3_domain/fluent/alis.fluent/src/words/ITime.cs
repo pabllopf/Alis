@@ -1,4 +1,4 @@
-﻿namespace Alis.Fluent
+﻿namespace Alis.FluentApi
 {
     public interface ITime<Builder, Argument>
     {

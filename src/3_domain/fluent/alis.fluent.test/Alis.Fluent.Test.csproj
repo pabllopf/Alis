@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\alis.fluent\Alis.Fluent.csproj" />
+    <ProjectReference Include="..\alis.fluent\Alis.FluentApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

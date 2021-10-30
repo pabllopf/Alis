@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Alis.Fluent.Example
+namespace Alis.FluentApi.Example
 {
     class Program
     {

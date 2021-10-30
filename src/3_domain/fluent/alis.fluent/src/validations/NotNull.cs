@@ -1,4 +1,4 @@
-﻿namespace Alis.Fluent 
+﻿namespace Alis.FluentApi 
 { 
     public class NotNull<T>
     {

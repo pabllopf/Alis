@@ -1,5 +1,7 @@
-﻿using Alis.Fluent;
+﻿using Alis.FluentApi;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Alis.Core.Sfml.Example
 {
@@ -7,6 +9,7 @@ namespace Alis.Core.Sfml.Example
     {
         public static void Main(string[] args)
         {
+            /*
             VideoGame.Builder()
                 .Configuration(config => config
                     .General(i => i
@@ -36,7 +39,29 @@ namespace Alis.Core.Sfml.Example
                         .Build())
                     .Build())
                 .Build())
-            .Run();
+            .Run();*/
+
+            Game.Setting.GameObject.MaxComponents = 128;
+            Game.Setting.GameObject.HasDuplicateComponents = true;
+            Game.Setting.GameObject.Reset();
+
+            GameObject gameObject = new GameObject("Player");
+            var i = new BoxCollider2D();
+            gameObject.Add(new BoxCollider2D());
+            //gameObject.Add(i);
+            //gameObject.Remove<BoxCollider2D>();
+            //gameObject.Remove<BoxCollider2D>();
+
+            Console.WriteLine($"Name={gameObject.Name.Value}");
+            Console.WriteLine($"Tag={gameObject.Tag.Value}");
+            Console.WriteLine($"IsActive={gameObject.IsActive.Value}");
+            Console.WriteLine($"IsStatic={gameObject.IsStatic.Value}");
+            Console.WriteLine($"Size={gameObject.Size}");
+            Console.WriteLine($"Count={gameObject.Count}");
+
+            Console.WriteLine($"Has Sprite={gameObject.Contains<Sprite>()}");
+            Console.WriteLine($"Has BoxCollider2D={gameObject.Contains<BoxCollider2D>()}");
+
 
             Console.WriteLine("Please press any key to close console.");
             Console.ReadKey();

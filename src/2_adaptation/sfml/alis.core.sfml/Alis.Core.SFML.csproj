@@ -30,13 +30,13 @@
     <AssemblyVersion>1.3.6.0</AssemblyVersion>
     <FileVersion>1.3.6.0</FileVersion>
     <Version>1.3.6</Version>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>Docs\logo.ico</ApplicationIcon>
     <RepositoryUrl>https://github.com/pabllopf/Alis</RepositoryUrl>
     <RepositoryType>public</RepositoryType>
     <IncludeSymbols>true</IncludeSymbols>
     <Platforms>AnyCPU;x64</Platforms>
     <PackageIconUrl />
-    <AppDesignerFolder>properties</AppDesignerFolder>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
   </PropertyGroup>
 
   <!-- _____________________________ WINDOWS_____________________________________ -->
@@ -113,17 +113,12 @@
     <DefineConstants>Linux;</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Remove="src\Input\**" />
-    <Compile Remove="src\Render\**" />
-    <EmbeddedResource Remove="src\Input\**" />
-    <EmbeddedResource Remove="src\Render\**" />
-    <None Remove="src\Input\**" />
-    <None Remove="src\Render\**" />
-    <None Include="docs\licence">
+    <None Remove="StyleCop.Cache" />
+    <None Include="Docs\licence">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include="docs\logo.png">
+    <None Include="Docs\logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
@@ -154,7 +149,7 @@
 
   
   <ItemGroup>
-    <Compile Update="properties\Resources.Designer.cs">
+    <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -164,7 +159,7 @@
 
   
   <ItemGroup>
-    <EmbeddedResource Update="properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
