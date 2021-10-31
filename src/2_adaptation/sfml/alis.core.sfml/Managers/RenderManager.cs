@@ -21,11 +21,8 @@
             ScreenMode = Game.Setting.Window.ScreenMode == Models.ScreenMode.Default ? Styles.Default :
                          Game.Setting.Window.ScreenMode == Models.ScreenMode.Resize ? Styles.Resize : Styles.Fullscreen;
 
-            RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
-
-            Sprites = new Components.Sprite[Game.Setting.Graphic.MaxElementsRender];
-
-            RenderWindow.Closed += RenderWindow_Closed;
+            Game.Setting.General.OnChangeName += General_OnChangeName;
+            Game.Setting.General.OnChangeAuthor += General_OnChangeAuthor; 
         }
 
         #endregion
@@ -34,7 +31,7 @@
 
         /// <summary>Gets or sets the render window.</summary>
         /// <value>The render window.</value>
-        private RenderWindow RenderWindow { get; set; }
+        private RenderWindow? RenderWindow { get; set; }
 
         /// <summary>Gets or sets the video mode.</summary>
         /// <value>The video mode.</value>
@@ -50,28 +47,40 @@
 
         /// <summary>Gets or sets the sprites.</summary>
         /// <value>The sprites.</value>
-        private static Components.Sprite[] Sprites { get; set; }
+        private static Components.Sprite[] Sprites { get; set; } = new Components.Sprite[Game.Setting.Graphic.MaxElementsRender];
 
         #endregion
 
         #region Awake()
 
         /// <summary>Awakes this instance.</summary>
-        public override void Awake() { }
+        public override void Awake()  => RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
 
         #endregion
 
         #region Start()
 
         /// <summary>Starts this instance.</summary>
-        public override void Start() { }
+        public override void Start() 
+        {
+            if (RenderWindow is not null) 
+            {
+                RenderWindow.Closed += RenderWindow_Closed;
+            }
+        }
 
         #endregion
 
         #region BeforeUpdate()
 
         /// <summary>Befores the update.</summary>
-        public override void BeforeUpdate() => RenderWindow.Clear();
+        public override void BeforeUpdate()
+        {
+            if (RenderWindow is not null)
+            {
+                RenderWindow.Clear();
+            }
+        }
 
         #endregion
 
@@ -80,12 +89,15 @@
         /// <summary>Updates this instance.</summary>
         public override void Update() 
         {
-            Span<Components.Sprite> temp = Sprites.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
+            if (RenderWindow is not null)
             {
-                if (temp[i] is not null && temp[i].IsActive.Value == true)
+                Span<Components.Sprite> temp = Sprites.AsSpan();
+                for (int i = 0; i < temp.Length; i++)
                 {
-                    RenderWindow.Draw(temp[i].Drawable);
+                    if (temp[i] is not null && temp[i].IsActive.Value == true)
+                    {
+                        RenderWindow.Draw(temp[i].Drawable);
+                    }
                 }
             }
         }
@@ -95,7 +107,13 @@
         #region AfterUpdate()
 
         /// <summary>Afters the update.</summary>
-        public override void AfterUpdate() => RenderWindow.Display();
+        public override void AfterUpdate()
+        {
+            if (RenderWindow is not null)
+            {
+                RenderWindow.Display();
+            }
+        }
 
         #endregion
 
@@ -109,7 +127,13 @@
         #region DispatchEvents()
 
         /// <summary>Dispatches the events.</summary>
-        public override void DispatchEvents() => RenderWindow.DispatchEvents();
+        public override void DispatchEvents()
+        {
+            if (RenderWindow is not null)
+            {
+                RenderWindow.DispatchEvents();
+            }
+        }
 
         #endregion
 
@@ -172,12 +196,30 @@
 
         #endregion
 
-        #region EventClose()
+        #region OnChangeName()
+
+        private void General_OnChangeName(object? sender, string name) => TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
+
+        #endregion
+
+        #region OnChangeAuthor()
+
+        private void General_OnChangeAuthor(object? sender, string author) => TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
+
+        #endregion
+
+        #region OnCloseWindow()
 
         /// <summary>Renders the window closed.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void RenderWindow_Closed(object? sender, EventArgs e) => RenderWindow.Close();
+        private void RenderWindow_Closed(object? sender, EventArgs e)
+        {
+            if (RenderWindow is not null)
+            {
+                RenderWindow.Close();
+            }
+        }
 
         #endregion
 

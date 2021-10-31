@@ -9,8 +9,10 @@ namespace Alis.Core.Sfml.Example
     {
         public static void Main(string[] args)
         {
-            Game.Setting.Window.Resolution = new System.Numerics.Vector2(640,640);
-            VideoGame.Builder().Run();
+            VideoGame
+                .Builder()
+                .Configuration("Paco")
+                .Run();
 
             /*
             VideoGame.Builder()
@@ -44,9 +46,9 @@ namespace Alis.Core.Sfml.Example
                 .Build())
             .Run();*/
 
-            Game.Setting.GameObject.MaxComponents = 128;
-            Game.Setting.GameObject.HasDuplicateComponents = true;
-            Game.Setting.GameObject.Reset();
+            Core.Game.Setting.GameObject.MaxComponents = 128;
+            Core.Game.Setting.GameObject.HasDuplicateComponents = true;
+            Core.Game.Setting.GameObject.Reset();
 
             GameObject gameObject = new GameObject("Player");
             var i = new BoxCollider2D();

@@ -38,9 +38,10 @@
   <Class Name="Alis.Core.GameObject">
     <Position X="40.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAYgAAAAQiAgBIBAEAAABAQIAAAAAAAAIAAAAAAQAEA=</HashCode>
+      <HashCode>AAYgAAAAQiAghIBAEIAEBAQIAABAAAAAIAAAAAAQAEA=</HashCode>
       <FileName>Models\GameObject.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.SceneManager">
     <Position X="24.75" Y="15.25" Width="1.5" />
@@ -88,7 +89,7 @@
   <Class Name="Alis.Core.Component">
     <Position X="43.25" Y="10" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgACAAQiAgBIQEkAAACBQCAAAEAIAIIgAgAAIACEA=</HashCode>
+      <HashCode>AAQhAAAAQiAABAAAEIAACAQAAABAAAAAIAAgAAIAAMA=</HashCode>
       <FileName>Models\Component.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -283,28 +284,28 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Alis.Core.PhysicsSystem">
+  <Class Name="Alis.Core.Systems.PhysicsSystem">
     <Position X="18.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>Systems\PhysicsSystem.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.OutputSystem">
+  <Class Name="Alis.Core.Systems.OutputSystem">
     <Position X="14" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>Systems\OutputSystem.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.InputSystem">
+  <Class Name="Alis.Core.Systems.InputSystem">
     <Position X="16.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQgAAAAQiAABAAAAAAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
+      <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>Systems\InputSystem.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.ParticlesSystem">
+  <Class Name="Alis.Core.Systems.ParticlesSystem">
     <Position X="11.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
@@ -321,7 +322,7 @@
   <Class Name="Alis.Core.Settings.Setting" Collapsed="true">
     <Position X="5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAACIBAAAIAACAAEAAAAAAAAAAACAIAAQA=</HashCode>
+      <HashCode>AAAQAAAAAAAACIBAgAIAACAAEAAAAAAAAAAACAIAAQA=</HashCode>
       <FileName>Settings\Setting.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -343,17 +344,17 @@
       <FileName>Settings\Configurations\Debug.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Settings.Configurations.General" Collapsed="true">
+  <Class Name="Alis.Core.Settings.Configurations.General">
     <Position X="2.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAEAAAAAAAAA=</HashCode>
       <FileName>Settings\Configurations\General.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Settings.Configurations.Graphic" Collapsed="true">
     <Position X="2.5" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Settings\Configurations\Graphic.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -388,14 +389,14 @@
   <Class Name="Alis.Core.Settings.Configurations.Time" Collapsed="true">
     <Position X="7" Y="9" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACEAAAAAAAAAAAAABAAAAABAEAAAQAAAAEAAAAAAhA=</HashCode>
+      <HashCode>AACEABAAAAAAAAAAABAAAAABAEAAAQBAAQECAAAEAhA=</HashCode>
       <FileName>Settings\Configurations\Time.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Settings.Configurations.Window" Collapsed="true">
     <Position X="2.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAgAIAAAAAAAAAAAAA=</HashCode>
       <FileName>Settings\Configurations\Windows.cs</FileName>
     </TypeIdentifier>
   </Class>

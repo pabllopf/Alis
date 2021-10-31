@@ -4,6 +4,25 @@
         <name>Alis.Core.Sfml</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Sfml.VideoGameBuilder">
+            <summary>Game builder.</summary>
+        </member>
+        <member name="P:Alis.Core.Sfml.VideoGameBuilder.VideoGame">
+            <summary>Gets or sets the video game.</summary>
+            <value>The video game.</value>
+        </member>
+        <member name="M:Alis.Core.Sfml.VideoGameBuilder.Configuration(System.String)">
+            <summary>Configurations the specified value.</summary>
+            <param name="value">The value.</param>
+            <returns> </returns>
+        </member>
+        <member name="M:Alis.Core.Sfml.VideoGameBuilder.Build">
+            <summary>Builds this instance.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Sfml.VideoGameBuilder.Run">
+            <summary>Runs this instance.</summary>
+        </member>
         <member name="T:Alis.Core.Sfml.Managers.RenderManager">
             <summary>Implement the render system of SFML library.</summary>
         </member>
