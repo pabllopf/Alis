@@ -1,6 +1,7 @@
 ﻿namespace Alis.Core.Sfml
 {
     using Managers;
+    using Builders;
 
     /// <summary>Implement a video game with SFML library. </summary>
     public class VideoGame : Game
@@ -14,7 +15,7 @@
 
         /// <summary>Builders this instance.</summary>
         /// <returns> Return a builder of api fluent. </returns>
-        public static VideoGameBuilder Builder() => new(); 
+        public static VideoGameBuilder Create() => new(); 
     }
 }
 

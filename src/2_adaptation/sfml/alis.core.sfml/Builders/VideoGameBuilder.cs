@@ -1,12 +1,13 @@
-﻿namespace Alis.Core.Sfml
+﻿namespace Alis.Core.Sfml.Builders
 {
     using FluentApi;
     using Settings;
+    using System;
 
     /// <summary>Game builder.</summary>
     public class VideoGameBuilder : 
         IBuild<VideoGame>,
-        IConfiguration<VideoGameBuilder, string>
+        ISettings<VideoGameBuilder, Func<SettingBuilder, Setting>>
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
@@ -14,10 +15,12 @@
 
         /// <summary>Configurations the specified value.</summary>
         /// <param name="value">The value.</param>
-        /// <returns> </returns>
-        public VideoGameBuilder Configuration(string value)
+        /// <returns>
+        ///   <br />
+        /// </returns>
+        public VideoGameBuilder Settings(Func<SettingBuilder, Setting> value)
         {
-            Game.Setting.General.Author = value;
+            Game.Setting = value.Invoke(new SettingBuilder());
             return this;
         }
 

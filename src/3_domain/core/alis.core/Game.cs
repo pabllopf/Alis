@@ -48,9 +48,11 @@
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
         [JsonPropertyName("_Setting")]
-        public static Setting Setting { get; protected set; } = new Setting();
+        public static Setting Setting { get; set; } = new Setting();
 
         #endregion
+
+        #region Run()
 
         /// <summary>Runs this instance.</summary>
         public void Run() 
@@ -113,6 +115,10 @@
             #endregion
         }
 
+        #endregion
+
+        #region Reset()
+
         /// <summary>Resets the game.</summary>
         public void Reset() 
         {
@@ -120,12 +126,18 @@
             RenderSystem.Reset();
         }
 
+        #endregion
+
+        #region Stop()
+
         /// <summary>Stops this game.</summary>
         public void Stop() 
         {
             SceneSystem.Stop();
             RenderSystem.Stop();
         }
+
+        #endregion
 
         #region Destructor
 

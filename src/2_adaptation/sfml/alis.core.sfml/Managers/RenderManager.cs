@@ -22,7 +22,10 @@
                          Game.Setting.Window.ScreenMode == Models.ScreenMode.Resize ? Styles.Resize : Styles.Fullscreen;
 
             Game.Setting.General.OnChangeName += General_OnChangeName;
-            Game.Setting.General.OnChangeAuthor += General_OnChangeAuthor; 
+            Game.Setting.General.OnChangeAuthor += General_OnChangeAuthor;
+
+            Game.Setting.Window.OnChangeResolution += Window_OnChangeResolution;
+            Game.Setting.Window.OnChangeScreenMode += Window_OnChangeScreenMode;
         }
 
         #endregion
@@ -222,6 +225,17 @@
         }
 
         #endregion
+
+        private void Window_OnChangeScreenMode(object? sender, Models.ScreenMode screenMode)
+        {
+            ScreenMode = Game.Setting.Window.ScreenMode == Models.ScreenMode.Default ? Styles.Default :
+                         Game.Setting.Window.ScreenMode == Models.ScreenMode.Resize ? Styles.Resize : Styles.Fullscreen;
+        }
+
+        private void Window_OnChangeResolution(object? sender, global::System.Numerics.Vector2 resolution)
+        {
+            VideoMode = new VideoMode((uint)resolution.X, (uint)resolution.Y);
+        }
 
         #region Destructor()
 

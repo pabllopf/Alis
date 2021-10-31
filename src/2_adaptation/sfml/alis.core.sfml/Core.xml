@@ -4,23 +4,65 @@
         <name>Alis.Core.Sfml</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Sfml.VideoGameBuilder">
-            <summary>Game builder.</summary>
+        <member name="T:Alis.Core.Sfml.Builders.GeneralBuilder">
+            <summary>Define a builder.</summary>
         </member>
-        <member name="P:Alis.Core.Sfml.VideoGameBuilder.VideoGame">
-            <summary>Gets or sets the video game.</summary>
-            <value>The video game.</value>
-        </member>
-        <member name="M:Alis.Core.Sfml.VideoGameBuilder.Configuration(System.String)">
-            <summary>Configurations the specified value.</summary>
+        <member name="M:Alis.Core.Sfml.Builders.GeneralBuilder.Name(System.String)">
+            <summary>Sets the name.</summary>
             <param name="value">The value.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Alis.Core.Sfml.Builders.GeneralBuilder.Author(System.String)">
+            <summary>Sets the author.</summary>
+            <param name="value">The value.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Alis.Core.Sfml.Builders.GeneralBuilder.Build">
+            <summary>Builds this instance.</summary>
             <returns> </returns>
         </member>
-        <member name="M:Alis.Core.Sfml.VideoGameBuilder.Build">
+        <member name="T:Alis.Core.Sfml.Builders.SettingBuilder">
+            <summary>Define a builder. </summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.Builders.SettingBuilder.General(System.Func{Alis.Core.Sfml.Builders.GeneralBuilder,Alis.Core.Settings.Configurations.General})">
+            <summary>Generals the specified value.</summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Sfml.Builders.SettingBuilder.Window(System.Func{Alis.Core.Sfml.Builders.WindowBuilder,Alis.Core.Settings.Configurations.Window})">
+            <summary>Windows the specified value.</summary>
+            <param name="value">The value.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Alis.Core.Sfml.Builders.SettingBuilder.Build">
             <summary>Builds this instance.</summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Sfml.VideoGameBuilder.Run">
+        <member name="T:Alis.Core.Sfml.Builders.VideoGameBuilder">
+            <summary>Game builder.</summary>
+        </member>
+        <member name="P:Alis.Core.Sfml.Builders.VideoGameBuilder.VideoGame">
+            <summary>Gets or sets the video game.</summary>
+            <value>The video game.</value>
+        </member>
+        <member name="M:Alis.Core.Sfml.Builders.VideoGameBuilder.Settings(System.Func{Alis.Core.Sfml.Builders.SettingBuilder,Alis.Core.Settings.Setting})">
+            <summary>Configurations the specified value.</summary>
+            <param name="value">The value.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Alis.Core.Sfml.Builders.VideoGameBuilder.Build">
+            <summary>Builds this instance.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Sfml.Builders.VideoGameBuilder.Run">
             <summary>Runs this instance.</summary>
         </member>
         <member name="T:Alis.Core.Sfml.Managers.RenderManager">
@@ -127,7 +169,7 @@
         <member name="M:Alis.Core.Sfml.VideoGame.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sfml.VideoGame" /> class.</summary>
         </member>
-        <member name="M:Alis.Core.Sfml.VideoGame.Builder">
+        <member name="M:Alis.Core.Sfml.VideoGame.Create">
             <summary>Builders this instance.</summary>
             <returns> Return a builder of api fluent. </returns>
         </member>

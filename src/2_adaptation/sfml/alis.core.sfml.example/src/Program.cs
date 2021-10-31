@@ -10,9 +10,19 @@ namespace Alis.Core.Sfml.Example
         public static void Main(string[] args)
         {
             VideoGame
-                .Builder()
-                .Configuration("Paco")
+                .Create()
+                    .Settings(setting => setting
+                        .General(config => config
+                            .Name("The Best Game")
+                            .Author("Paco Jimenez")
+                        .Build()) 
+                        
+                        .Window(config => config
+                            .Resolution(512, 512)
+                        .Build())
+                    .Build())
                 .Run();
+
 
             /*
             VideoGame.Builder()
@@ -46,7 +56,7 @@ namespace Alis.Core.Sfml.Example
                 .Build())
             .Run();*/
 
-            Core.Game.Setting.GameObject.MaxComponents = 128;
+            /*.Game.Setting.GameObject.MaxComponents = 128;
             Core.Game.Setting.GameObject.HasDuplicateComponents = true;
             Core.Game.Setting.GameObject.Reset();
 
@@ -67,7 +77,7 @@ namespace Alis.Core.Sfml.Example
             //Console.WriteLine($"Has Sprite={gameObject.Contains<Sprite>()}");
             Console.WriteLine($"Has BoxCollider2D={gameObject.Contains<BoxCollider2D>()}");
 
-
+                */
             Console.WriteLine("Please press any key to close console.");
             Console.ReadKey();
         }
