@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace Alis.Core.Sfml
+﻿namespace Alis.Core.Sfml
 {
+    using Managers;
+
     /// <summary>Implement a video game with SFML library. </summary>
     public class VideoGame : Game
     {
         /// <summary>Initializes a new instance of the <see cref="VideoGame" /> class.</summary>
-        /// <param name="configuration">The configuration of the game.</param>
         public VideoGame() 
         {
             RenderSystem = new RenderManager();
@@ -15,7 +14,7 @@ namespace Alis.Core.Sfml
 
         /// <summary>Builders this instance.</summary>
         /// <returns> Return a builder of api fluent. </returns>
-        public static VideoGameBuilder Builder() => new VideoGameBuilder(); 
+        public static VideoGameBuilder Builder() => new(); 
     }
 }
 

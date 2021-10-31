@@ -1,55 +1,86 @@
 ﻿namespace Alis.Core.Systems
 {
-    public class RenderSystem : Systems.System
+    using global::System.Text.Json.Serialization;
+    using Systems;
+
+    public class RenderSystem : System
     {
-        public override void AfterUpdate()
+        #region Constructor()
+
+        [JsonConstructor]
+        public RenderSystem()
         {
-            throw new global::System.NotImplementedException();
         }
 
-        public override void Awake()
+        #endregion
+
+        #region Awake()
+
+        public override void Awake() { }
+
+        #endregion
+
+        #region Start()
+
+        public override void Start() { }
+
+        #endregion
+
+        #region BeforeUpdate()
+
+        public override void BeforeUpdate() { }
+
+        #endregion
+
+        #region Update()
+
+        public override void Update() { }
+
+        #endregion
+
+        #region AfterUpdate()
+
+        public override void AfterUpdate() { }
+
+        #endregion
+
+        #region FixedUpdate()
+
+        public override void FixedUpdate() { }
+
+        #endregion
+
+        #region DispatchEvents()
+
+        public override void DispatchEvents() { }
+
+        #endregion
+
+        #region Reset()
+
+        public override void Reset() { }
+
+        #endregion
+
+        #region Stop()
+
+        public override void Stop() { }
+
+        #endregion
+
+        #region Exit()
+
+        public override void Exit() { }
+
+        #endregion
+
+        #region Destructor()
+
+        ~RenderSystem()
         {
-            throw new global::System.NotImplementedException();
+
         }
 
-        public override void BeforeUpdate()
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public override void DispatchEvents()
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public override void Exit()
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public override void FixedUpdate()
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public override void Reset()
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public override void Start()
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public override void Stop()
-        {
-            throw new global::System.NotImplementedException();
-        }
-
-        public override void Update()
-        {
-            throw new global::System.NotImplementedException();
-        }
+        #endregion
     }
 }

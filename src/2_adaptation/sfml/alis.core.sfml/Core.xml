@@ -4,42 +4,87 @@
         <name>Alis.Core.Sfml</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Sfml.RenderManager">
+        <member name="T:Alis.Core.Sfml.Managers.RenderManager">
             <summary>Implement the render system of SFML library.</summary>
         </member>
-        <member name="F:Alis.Core.Sfml.RenderManager.sprites">
-            <summary>The sprites</summary>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sfml.Managers.RenderManager" /> class.</summary>
         </member>
-        <member name="F:Alis.Core.Sfml.RenderManager.renderWindow">
-            <summary>The render window</summary>
+        <member name="P:Alis.Core.Sfml.Managers.RenderManager.RenderWindow">
+            <summary>Gets or sets the render window.</summary>
+            <value>The render window.</value>
         </member>
-        <member name="M:Alis.Core.Sfml.RenderManager.#cctor">
-            <summary>Initializes the <see cref="T:Alis.Core.Sfml.RenderManager" /> class.</summary>
+        <member name="P:Alis.Core.Sfml.Managers.RenderManager.VideoMode">
+            <summary>Gets or sets the video mode.</summary>
+            <value>The video mode.</value>
         </member>
-        <member name="M:Alis.Core.Sfml.RenderManager.#ctor">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sfml.RenderManager" /> class.</summary>
-            <param name="configuration">The configuration.</param>
+        <member name="P:Alis.Core.Sfml.Managers.RenderManager.TitleWindow">
+            <summary>Gets or sets the title window.</summary>
+            <value>The title window.</value>
         </member>
-        <member name="M:Alis.Core.Sfml.RenderManager.BeforeUpdate">
+        <member name="P:Alis.Core.Sfml.Managers.RenderManager.ScreenMode">
+            <summary>Gets or sets the screen mode.</summary>
+            <value>The screen mode.</value>
+        </member>
+        <member name="P:Alis.Core.Sfml.Managers.RenderManager.Sprites">
+            <summary>Gets or sets the sprites.</summary>
+            <value>The sprites.</value>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.Awake">
+            <summary>Awakes this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.BeforeUpdate">
             <summary>Befores the update.</summary>
         </member>
-        <member name="M:Alis.Core.Sfml.RenderManager.Update">
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Sfml.RenderManager.AfterUpdate">
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.AfterUpdate">
             <summary>Afters the update.</summary>
         </member>
-        <member name="M:Alis.Core.Sfml.RenderManager.DispatchEvents">
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.FixedUpdate">
+            <summary>Fixeds the update.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.DispatchEvents">
             <summary>Dispatches the events.</summary>
         </member>
-        <member name="M:Alis.Core.Sfml.RenderManager.RenderWindow_Closed(System.Object,System.EventArgs)">
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.Reset">
+            <summary>Resets this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.Stop">
+            <summary>Stops this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.Exit">
+            <summary>Exits this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.Attach(Alis.FluentApi.NotNull{Alis.Core.Sfml.Components.Sprite})">
+            <summary>Attaches the specified sprite.</summary>
+            <param name="sprite">The sprite.</param>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.UnAttach(Alis.FluentApi.NotNull{Alis.Core.Sfml.Components.Sprite})">
+            <summary>Uns the attach.</summary>
+            <param name="sprite">The sprite.</param>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.RenderWindow_Closed(System.Object,System.EventArgs)">
             <summary>Renders the window closed.</summary>
             <param name="sender">The sender.</param>
             <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
         </member>
-        <member name="M:Alis.Core.Sfml.RenderManager.Attach(Alis.Core.Sfml.Sprite)">
-            <summary>Attaches the specified sprite.</summary>
-            <param name="sprite">The sprite.</param>
+        <member name="M:Alis.Core.Sfml.Managers.RenderManager.Finalize">
+            <summary>Finalizes an instance of the <see cref="T:Alis.Core.Sfml.Managers.RenderManager" /> class.</summary>
+        </member>
+        <member name="T:Alis.Core.Sfml.Managers.SceneManager">
+            <summary>
+              <br />
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Sfml.Managers.SceneManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Sfml.Managers.SceneManager" /> class.
+            </summary>
         </member>
         <member name="T:Alis.Core.Sfml.Properties.Resources">
             <summary>
@@ -62,7 +107,6 @@
         </member>
         <member name="M:Alis.Core.Sfml.VideoGame.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Sfml.VideoGame" /> class.</summary>
-            <param name="configuration">The configuration of the game.</param>
         </member>
         <member name="M:Alis.Core.Sfml.VideoGame.Builder">
             <summary>Builders this instance.</summary>

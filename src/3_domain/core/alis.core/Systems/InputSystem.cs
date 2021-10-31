@@ -1,55 +1,85 @@
-﻿namespace Alis.Core
+﻿namespace Alis.Core.Systems
 {
-    public class InputSystem 
+    using global::System.Text.Json.Serialization;
+
+    public class InputSystem : System 
     {
+        #region Constructor()
+
+        [JsonConstructor]
         public InputSystem()
         {
         }
 
-        public void AfterUpdate()
+        #endregion
+
+        #region Awake()
+
+        public override void Awake() { }
+
+        #endregion
+
+        #region Start()
+
+        public override void Start() { }
+
+        #endregion
+
+        #region BeforeUpdate()
+
+        public override void BeforeUpdate() { }
+
+        #endregion
+
+        #region Update()
+
+        public override void Update() { }
+
+        #endregion
+
+        #region AfterUpdate()
+
+        public override void AfterUpdate() { }
+
+        #endregion
+
+        #region FixedUpdate()
+
+        public override void FixedUpdate() { }
+
+        #endregion
+
+        #region DispatchEvents()
+
+        public override void DispatchEvents() { }
+
+        #endregion
+
+        #region Reset()
+
+        public override void Reset() { }
+
+        #endregion
+
+        #region Stop()
+
+        public override void Stop() { }
+
+        #endregion
+
+        #region Exit()
+
+        public override void Exit() { }
+
+        #endregion
+
+        #region Destructor()
+
+        ~InputSystem()
         {
-            
+
         }
 
-        public  void Awake()
-        {
-            
-        }
-
-        public  void BeforeUpdate()
-        {
-            
-        }
-
-
-        public  void Exit()
-        {
-            
-        }
-
-        public  void FixedUpdate()
-        {
-            
-        }
-
-        public  void Reset()
-        {
-            
-        }
-
-        public  void Start()
-        {
-            
-        }
-
-        public  void Stop()
-        {
-            
-        }
-
-        public  void Update()
-        {
-            
-        }
+        #endregion
     }
 }

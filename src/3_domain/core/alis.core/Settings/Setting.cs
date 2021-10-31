@@ -21,5 +21,7 @@
         public  Configurations.Window     Window { get; set; } = new();
 
         public Configurations.GameObject  GameObject { get; set; } = new();
+
+        public Configurations.Scene       Scene{ get; set; } = new();
     }
 }

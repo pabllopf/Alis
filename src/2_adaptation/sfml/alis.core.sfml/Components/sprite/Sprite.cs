@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Alis.Core.Sfml
+﻿namespace Alis.Core.Sfml.Components
 {
+    using Managers;
     public class Sprite : Component
     {
         private string texturePath;
@@ -10,16 +9,21 @@ namespace Alis.Core.Sfml
 
         private int depth = 0;
 
+        private Transform Transform;
+
         public Sprite(string texturePath) 
         {
             this.texturePath = texturePath;
 
             sprite = new SFML.Graphics.Sprite(new SFML.Graphics.Texture(texturePath));
             RenderManager.Attach(this);
+
+            
         }
 
         public override void Start()
         {
+            Transform = GameObject.Transform;
         }
 
         public override void Update()

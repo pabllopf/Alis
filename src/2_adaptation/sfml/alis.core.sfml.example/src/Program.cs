@@ -9,6 +9,9 @@ namespace Alis.Core.Sfml.Example
     {
         public static void Main(string[] args)
         {
+            Game.Setting.Window.Resolution = new System.Numerics.Vector2(640,640);
+            VideoGame.Builder().Run();
+
             /*
             VideoGame.Builder()
                 .Configuration(config => config
@@ -59,7 +62,7 @@ namespace Alis.Core.Sfml.Example
             Console.WriteLine($"Size={gameObject.Size}");
             Console.WriteLine($"Count={gameObject.Count}");
 
-            Console.WriteLine($"Has Sprite={gameObject.Contains<Sprite>()}");
+            //Console.WriteLine($"Has Sprite={gameObject.Contains<Sprite>()}");
             Console.WriteLine($"Has BoxCollider2D={gameObject.Contains<BoxCollider2D>()}");
 
 

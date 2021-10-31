@@ -1,59 +1,86 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Alis.Core
+﻿namespace Alis.Core.Systems
 {
-    public class ParticlesSystem : Systems.System
+    using global::System.Text.Json.Serialization;
+    using Systems;
+
+    public class ParticlesSystem : System
     {
-        public override void AfterUpdate()
+        #region Constructor()
+
+        [JsonConstructor]
+        public ParticlesSystem()
         {
-            throw new NotImplementedException();
         }
 
-        public override void Awake()
+        #endregion
+
+        #region Awake()
+
+        public override void Awake() { }
+
+        #endregion
+
+        #region Start()
+
+        public override void Start() { }
+
+        #endregion
+
+        #region BeforeUpdate()
+
+        public override void BeforeUpdate() { }
+
+        #endregion
+
+        #region Update()
+
+        public override void Update() { }
+
+        #endregion
+
+        #region AfterUpdate()
+
+        public override void AfterUpdate() { }
+
+        #endregion
+
+        #region FixedUpdate()
+
+        public override void FixedUpdate() { }
+
+        #endregion
+
+        #region DispatchEvents()
+
+        public override void DispatchEvents() { }
+
+        #endregion
+
+        #region Reset()
+
+        public override void Reset() { }
+
+        #endregion
+
+        #region Stop()
+
+        public override void Stop() { }
+
+        #endregion
+
+        #region Exit()
+
+        public override void Exit() { }
+
+        #endregion
+
+        #region Destructor()
+
+        ~ParticlesSystem()
         {
-            throw new NotImplementedException();
+
         }
 
-        public override void BeforeUpdate()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void DispatchEvents()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Exit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void FixedUpdate()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Reset()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Stop()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
     }
 }

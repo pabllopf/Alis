@@ -127,7 +127,7 @@
             Span<Component> temp = Components.AsSpan();
             for (int i = 0; i < temp.Length; i++)
             {
-                if (temp[i] is null || (temp[i] is not null && temp[i].Destroyable))
+                if (temp[i] is null || (temp[i] is not null && temp[i].Destroyed))
                 {
                     component.Value.AttachTo(this);
                     temp[i] = component.Value;
@@ -154,9 +154,9 @@
             Span<Component> temp = Components.AsSpan();
             for (int i = 0; i < temp.Length; i++)
             {
-                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyable)
+                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyed)
                 {
-                    temp[i].Destroy();
+                    temp[i].OnDestroy();
                     Count--;
                     return;
                 }
@@ -176,9 +176,9 @@
             Span<Component> temp = Components.AsSpan();
             for (int i = 0; i < temp.Length; i++)
             {
-                if (temp[i] is not null && temp[i].Equals(component) && !temp[i].Destroyable)
+                if (temp[i] is not null && temp[i].Equals(component) && !temp[i].Destroyed)
                 {
-                    temp[i].Destroy();
+                    temp[i].OnDestroy();
                     Count--;
                     return;
                 }
@@ -202,7 +202,7 @@
             Span<Component> temp = Components.AsSpan();
             for (int i = 0; i < temp.Length; i++)
             {
-                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyable)
+                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyed)
                 {
                     return temp[i];
                 }
@@ -227,7 +227,7 @@
             Span<Component> temp = Components.AsSpan();
             for (int i = 0; i < temp.Length; i++)
             {
-                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyable)
+                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyed)
                 {
                     return true;
                 }
@@ -248,7 +248,7 @@
             Span<Component> temp = Components.AsSpan();
             for (int i = 0; i < temp.Length; i++)
             {
-                if (temp[i] is not null && temp[i].Equals(component) && !temp[i].Destroyable)
+                if (temp[i] is not null && temp[i].Equals(component) && !temp[i].Destroyed)
                 {
                     return true;
                 }
@@ -262,7 +262,7 @@
             Span<Component> temp = Components.AsSpan();
             for (int i = 0; i < temp.Length; i++)
             {
-                if (temp[i] is not null && temp[i].GetType().Equals(type) && !temp[i].Destroyable)
+                if (temp[i] is not null && temp[i].GetType().Equals(type) && !temp[i].Destroyed)
                 {
                     return true;
                 }
@@ -373,6 +373,26 @@
                 if (temp[index] is not null)
                 {
                     temp[index].FixedUpdate();
+                }
+            }
+        }
+
+        #endregion
+
+        #region DispatchEvents()
+
+        /// <summary>
+        /// Dispatches the events.
+        /// </summary>
+        /// <returns></returns>
+        public void DispatchEvents()
+        {
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                if (temp[index] is not null)
+                {
+                    temp[index].DispatchEvents();
                 }
             }
         }
