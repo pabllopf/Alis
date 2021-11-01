@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'/>
+    <title>Alis.Core.SFML.Benchmark.src.Test_Update-20211025-134227</title>
+
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            display: block;
+            width: 100%;
+            overflow: auto;
+        }
+
+        td, th {
+            padding: 6px 13px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        tr {
+            background-color: #fff;
+            border-top: 1px solid #ccc;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+    </style>
+</head>
+<body>
+<pre><code>
+BenchmarkDotNet=v0.13.1, OS=Windows 10.0.19043.1288 (21H1/May2021Update)
+Intel Core i5-7200U CPU 2.50GHz (Kaby Lake), 1 CPU, 4 logical and 2 physical cores
+.NET SDK=5.0.402
+  [Host]     : .NET 5.0.11 (5.0.1121.47308), X64 RyuJIT  [AttachedDebugger]
+  Job-PTTRIO : .NET 5.0.11 (5.0.1121.47308), X64 RyuJIT
+</code></pre>
+<pre><code>Platform=AnyCpu  IterationCount=3  LaunchCount=1  
+WarmupCount=3  
+</code></pre>
+
+<table>
+    <thead>
+    <tr>
+        <th> Method</th>
+        <th>numOfElements</th>
+        <th> Mean</th>
+        <th> Error</th>
+        <th> StdDev</th>
+        <th>Gen 0</th>
+        <th>Allocated</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>NormalUpdateList</td>
+        <td>128</td>
+        <td>158.39 ns</td>
+        <td>43.00 ns</td>
+        <td>2.357 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>NormalUpdateArray</td>
+        <td>128</td>
+        <td>100.21 ns</td>
+        <td>33.80 ns</td>
+        <td>1.853 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>MemmoryUpdate</td>
+        <td>128</td>
+        <td>77.52 ns</td>
+        <td>25.91 ns</td>
+        <td>1.420 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Array_span</td>
+        <td>128</td>
+        <td>77.67 ns</td>
+        <td>36.65 ns</td>
+        <td>2.009 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Array_span_base_4</td>
+        <td>128</td>
+        <td>186.97 ns</td>
+        <td>50.71 ns</td>
+        <td>2.780 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array</td>
+        <td>128</td>
+        <td>76.84 ns</td>
+        <td>14.73 ns</td>
+        <td>0.808 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize</td>
+        <td>128</td>
+        <td>95.46 ns</td>
+        <td>20.99 ns</td>
+        <td>1.150 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize_Base_4</td>
+        <td>128</td>
+        <td>75.49 ns</td>
+        <td>35.23 ns</td>
+        <td>1.931 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize_Asysnc</td>
+        <td>128</td>
+        <td>2,148.35 ns</td>
+        <td>139.09 ns</td>
+        <td>7.624 ns</td>
+        <td>0.5760</td>
+        <td>909 B</td>
+    </tr>
+    <tr>
+        <td>NormalUpdateList</td>
+        <td>1024</td>
+        <td>1,688.17 ns</td>
+        <td>1,919.01 ns</td>
+        <td>105.187 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>NormalUpdateArray</td>
+        <td>1024</td>
+        <td>1,272.41 ns</td>
+        <td>379.25 ns</td>
+        <td>20.788 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>MemmoryUpdate</td>
+        <td>1024</td>
+        <td>999.06 ns</td>
+        <td>332.53 ns</td>
+        <td>18.227 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Array_span</td>
+        <td>1024</td>
+        <td>972.22 ns</td>
+        <td>83.94 ns</td>
+        <td>4.601 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Array_span_base_4</td>
+        <td>1024</td>
+        <td>1,409.96 ns</td>
+        <td>420.26 ns</td>
+        <td>23.036 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array</td>
+        <td>1024</td>
+        <td>997.24 ns</td>
+        <td>278.18 ns</td>
+        <td>15.248 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize</td>
+        <td>1024</td>
+        <td>983.15 ns</td>
+        <td>389.84 ns</td>
+        <td>21.369 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize_Base_4</td>
+        <td>1024</td>
+        <td>984.76 ns</td>
+        <td>262.85 ns</td>
+        <td>14.408 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize_Asysnc</td>
+        <td>1024</td>
+        <td>2,935.17 ns</td>
+        <td>446.79 ns</td>
+        <td>24.490 ns</td>
+        <td>0.5798</td>
+        <td>912 B</td>
+    </tr>
+    <tr>
+        <td>NormalUpdateList</td>
+        <td>102400</td>
+        <td>969,364.81 ns</td>
+        <td>470,096.79 ns</td>
+        <td>25,767.591 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>NormalUpdateArray</td>
+        <td>102400</td>
+        <td>939,980.89 ns</td>
+        <td>87,388.27 ns</td>
+        <td>4,790.046 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>MemmoryUpdate</td>
+        <td>102400</td>
+        <td>1,043,876.46 ns</td>
+        <td>421,391.75 ns</td>
+        <td>23,097.904 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Array_span</td>
+        <td>102400</td>
+        <td>1,026,390.36 ns</td>
+        <td>580,546.06 ns</td>
+        <td>31,821.689 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Array_span_base_4</td>
+        <td>102400</td>
+        <td>139,078.17 ns</td>
+        <td>55,971.36 ns</td>
+        <td>3,067.979 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array</td>
+        <td>102400</td>
+        <td>1,035,902.83 ns</td>
+        <td>581,750.63 ns</td>
+        <td>31,887.715 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize</td>
+        <td>102400</td>
+        <td>1,037,615.69 ns</td>
+        <td>544,730.82 ns</td>
+        <td>29,858.534 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize_Base_4</td>
+        <td>102400</td>
+        <td>1,019,425.13 ns</td>
+        <td>294,448.81 ns</td>
+        <td>16,139.733 ns</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td>Fast_Array_Optimize_Asysnc</td>
+        <td>102400</td>
+        <td>69,431.47 ns</td>
+        <td>30,537.02 ns</td>
+        <td>1,673.837 ns</td>
+        <td>0.4883</td>
+        <td>912 B</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

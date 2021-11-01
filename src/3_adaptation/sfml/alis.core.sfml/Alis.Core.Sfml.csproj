@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <!-- _________________________ GENERAL CONFIG ___________________________________-->
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Configurations>Debug;Release;</Configurations>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <Platforms>AnyCPU;x64:x32</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="SFML.Audio" Version="2.5.0" />
+        <PackageReference Include="SFML.Graphics" Version="2.5.0" />
+        <PackageReference Include="SFML.Net" Version="2.5.0" />
+        <PackageReference Include="SFML.System" Version="2.5.0" />
+        <PackageReference Include="SFML.Window" Version="2.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\4_domain\core\alis.core\Alis.Core.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <Platforms>AnyCPU;x64</Platforms>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="OpenTK" Version="4.6.7" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="docs\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\4_domain\core\alis.core\Alis.Core.csproj" />
+    </ItemGroup>
+
+</Project>

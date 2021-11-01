@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <PackageVersion>1.3.7</PackageVersion>
+        <Title>Alis Framework</Title>
+        <Authors>Pablo Perdomo Falcón</Authors>
+        <Company>Pablo Perdomo Falcón</Company>
+        <AssemblyVersion>1.3.7</AssemblyVersion>
+        <FileVersion>1.3.7</FileVersion>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\3_adaptation\opengl\alis.core.opengl\Alis.Core.OpenGL.csproj" />
+      <ProjectReference Include="..\..\3_adaptation\sfml\alis.core.sfml\Alis.Core.Sfml.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <!-- ________________________GENERAL CONFIG ___________________________________-->
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <Configurations>Debug;Release;</Configurations>
+        <Platforms>AnyCPU;x64;x32</Platforms>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="Alis_Icon.ico" />
+        <None Remove="StyleCop.Cache" />
+        <None Remove="Tools.xml" />
+    </ItemGroup>
+</Project>

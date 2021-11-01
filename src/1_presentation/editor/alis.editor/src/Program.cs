@@ -2,11 +2,11 @@
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Program.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //----------------------------------------------------------------------------------------------------
+
+using System;
+
 namespace Alis.Editor
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-
     /// <summary>Run the engine</summary>
     public class Program
     {
