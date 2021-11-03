@@ -29,6 +29,7 @@
 
 #region
 
+using System;
 using System.Text.Json.Serialization;
 
 #endregion
@@ -167,6 +168,7 @@ namespace Alis.Core.Systems
 
         ~OutputSystem()
         {
+            Console.WriteLine(@"Destroy");
         }
 
         #endregion

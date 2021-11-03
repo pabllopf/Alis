@@ -81,7 +81,10 @@ namespace Alis.Core.Sfml.Managers
         /// <summary>Starts this instance.</summary>
         public override void Start()
         {
-            if (RenderWindow is not null) RenderWindow.Closed += RenderWindow_Closed;
+            if (RenderWindow is not null)
+            {
+                RenderWindow.Closed += RenderWindow_Closed;
+            }
         }
 
         #endregion
@@ -101,11 +104,19 @@ namespace Alis.Core.Sfml.Managers
         /// <summary>Updates this instance.</summary>
         public override void Update()
         {
-            if (RenderWindow is null) return;
-            var temp = Sprites.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null && temp[i].IsActive)
+            if (RenderWindow is null)
+            {
+                return;
+            }
+
+            Span<Sprite> temp = Sprites.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i].IsActive)
+                {
                     RenderWindow.Draw(temp[i].Drawable);
+                }
+            }
         }
 
         #endregion
@@ -172,13 +183,6 @@ namespace Alis.Core.Sfml.Managers
         /// <param name="sprite">The sprite.</param>
         public static void Attach(Sprite sprite)
         {
-            var temp = Sprites.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is null)
-                {
-                    temp[i] = sprite;
-                    return;
-                }
         }
 
         #endregion
@@ -189,13 +193,15 @@ namespace Alis.Core.Sfml.Managers
         /// <param name="sprite">The sprite.</param>
         public static void UnAttach(NotNull<Sprite> sprite)
         {
-            var temp = Sprites.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null && temp[i].Equals(sprite.Value))
+            Span<Sprite> temp = Sprites.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i].Equals(sprite.Value))
                 {
                     temp[i].IsActive = false;
                     return;
                 }
+            }
         }
 
         #endregion
@@ -274,6 +280,7 @@ namespace Alis.Core.Sfml.Managers
         /// <summary>Finalizes an instance of the <see cref="RenderManager" /> class.</summary>
         ~RenderManager()
         {
+            Console.WriteLine(@"destroy");
         }
 
         #endregion

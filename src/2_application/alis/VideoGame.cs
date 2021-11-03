@@ -52,6 +52,6 @@ namespace Alis
         ///     Creates
         /// </summary>
         /// <returns>The video game builder</returns>
-        public static VideoGameBuilder Create() => new();
+        public static VideoGameBuilder Create() => new VideoGameBuilder();
     }
 }

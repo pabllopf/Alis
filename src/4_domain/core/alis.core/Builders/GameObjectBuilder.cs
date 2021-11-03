@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core
+namespace Alis.Core.Builders
 {
     /// <summary>
     ///     The game object builder class

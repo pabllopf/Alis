@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="docs\"/>
+        <Folder Include="Docs\"/>
     </ItemGroup>
 
 </Project>

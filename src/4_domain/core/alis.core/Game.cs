@@ -29,6 +29,7 @@
 
 #region
 
+using System;
 using System.Text.Json.Serialization;
 using Alis.Core.Settings;
 using Alis.Core.Systems;
@@ -68,7 +69,7 @@ namespace Alis.Core
                 {
                     Setting.Time.UpdateTimeStep();
 
-                    for (var i = 0; i < Setting.Time.MaximunAllowedTimeStep; i++)
+                    for (int i = 0; i < Setting.Time.MaximunAllowedTimeStep; i++)
                     {
                         #region BeforeUpdate()
 
@@ -148,6 +149,7 @@ namespace Alis.Core
 
         ~Game()
         {
+            Console.WriteLine(@"destroy");
         }
 
         #endregion
@@ -192,17 +194,17 @@ namespace Alis.Core
         /// <summary>Gets or sets the render system.</summary>
         /// <value>The render system.</value>
         [JsonIgnore]
-        public RenderSystem RenderSystem { get; protected set; } = new();
+        public RenderSystem RenderSystem { get; protected set; } = new RenderSystem();
 
         /// <summary>Gets or sets the scene system.</summary>
         /// <value>The scene system.</value>
         [JsonIgnore]
-        public SceneSystem SceneSystem { get; protected set; } = new();
+        public SceneSystem SceneSystem { get; protected set; } = new SceneSystem();
 
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
         [JsonPropertyName("_Setting")]
-        public static Setting Setting { get; set; } = new();
+        public static Setting Setting { get; set; } = new Setting();
 
         #endregion
     }

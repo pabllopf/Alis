@@ -44,19 +44,14 @@ namespace Alis.FluentApi.Validations
         ///     the value
         /// </summary>
         /// <param name="value">the value</param>
-        public NotNull(T value)
-        {
-            Value = value;
-        }
+        public NotNull(T value) => Value = value;
 
         /// <summary>
         ///     Gets or sets the value of the value
         /// </summary>
         public T Value { get; set; }
 
-        public static implicit operator NotNull<T>(T value)
-        {
-            return new NotNull<T>(value ?? throw new ArgumentNullException(typeof(T).FullName));
-        }
+        public static implicit operator NotNull<T>(T value) =>
+            new NotNull<T>(value ?? throw new ArgumentNullException(typeof(T).FullName));
     }
 }

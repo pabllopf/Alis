@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Setting.cs
+//  File:   Sprite.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -29,70 +29,79 @@
 
 #region
 
-using Alis.Core.Settings.Configurations;
+using System;
+using Alis.Core.Entities;
+using Alis.Core.Sfml.Managers;
+using SFML.Graphics;
+using SFML.System;
+using Transform = Alis.Core.Entities.Transform;
 
 #endregion
 
-namespace Alis.Core.Settings
+namespace Alis.Core.Sfml.Components
 {
     /// <summary>
-    ///     The setting class
+    ///     The sprite class
     /// </summary>
-    public class Setting
+    /// <seealso cref="Component" />
+    public class Sprite : Component
     {
         /// <summary>
-        ///     Gets or sets the value of the debug
+        ///     The sprite
         /// </summary>
-        public Debug Debug { get; set; } = new Debug();
+        private readonly SFML.Graphics.Sprite sprite;
 
         /// <summary>
-        ///     Gets or sets the value of the general
+        ///     The texture path
         /// </summary>
-        public General General { get; set; } = new General();
+        private readonly string texturePath;
 
         /// <summary>
-        ///     Gets or sets the value of the graphic
+        ///     The transform
         /// </summary>
-        public Graphic Graphic { get; set; } = new Graphic();
+        private Transform transform;
 
         /// <summary>
-        ///     Gets or sets the value of the input
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
-        public Input Input { get; set; } = new Input();
+        /// <param name="texturePath">The texture path</param>
+        public Sprite(string texturePath)
+        {
+            this.texturePath = texturePath;
+
+            transform = new Transform();
+
+            sprite = new SFML.Graphics.Sprite(new Texture(texturePath));
+            RenderManager.Attach(this);
+        }
 
         /// <summary>
-        ///     Gets or sets the value of the particle
+        ///     Gets the value of the drawable
         /// </summary>
-        public Particle Particle { get; set; } = new Particle();
+        public Drawable Drawable => sprite;
 
         /// <summary>
-        ///     Gets or sets the value of the physics
+        ///     Gets or sets the value of the depth
         /// </summary>
-        public Physics Physics { get; set; } = new Physics();
+        public int Depth { get; set; } = 0;
 
         /// <summary>
-        ///     Gets or sets the value of the quality
+        ///     Starts this instance
         /// </summary>
-        public Quality Quality { get; set; } = new Quality();
+        public override void Start()
+        {
+            transform = GameObject.Transform;
+            Console.WriteLine(texturePath);
+        }
 
         /// <summary>
-        ///     Gets or sets the value of the time
+        ///     Updates this instance
         /// </summary>
-        public Time Time { get; set; } = new Time();
-
-        /// <summary>
-        ///     Gets or sets the value of the window
-        /// </summary>
-        public Window Window { get; set; } = new Window();
-
-        /// <summary>
-        ///     Gets or sets the value of the game object
-        /// </summary>
-        public GameObject GameObject { get; set; } = new GameObject();
-
-        /// <summary>
-        ///     Gets or sets the value of the scene
-        /// </summary>
-        public Scene Scene { get; set; } = new Scene();
+        public override void Update()
+        {
+            sprite.Position = new Vector2f(transform.Position.X, transform.Position.Y);
+            sprite.Rotation = transform.Rotation.Y;
+            sprite.Scale = new Vector2f(transform.Scale.X, transform.Scale.Y);
+        }
     }
 }

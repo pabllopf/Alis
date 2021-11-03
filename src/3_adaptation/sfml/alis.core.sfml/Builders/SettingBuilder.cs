@@ -47,10 +47,7 @@ namespace Alis.Core.Sfml.Builders
     {
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public Setting Build()
-        {
-            return Game.Setting;
-        }
+        public Setting Build() => Game.Setting;
 
         /// <summary>Generals the specified value.</summary>
         /// <param name="value">The value.</param>

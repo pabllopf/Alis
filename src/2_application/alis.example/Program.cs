@@ -42,7 +42,7 @@ namespace Alis.Example
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(@"Hello World!");
         }
     }
 }

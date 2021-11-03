@@ -54,9 +54,12 @@ namespace Alis.Core.Systems
         /// <exception cref="IndexOutOfBounds"></exception>
         public void ChangeScene(NotNull<int> index)
         {
-            if (index.Value > Game.Setting.Scene.MaxScenesOfGame || index.Value < 0) throw new IndexOutOfBounds();
+            if (index.Value > Game.Setting.Scene.MaxScenesOfGame || index.Value < 0)
+            {
+                throw new IndexOutOfBounds();
+            }
 
-            if (Scenes[index.Value] is not null) ActiveScene = Scenes[index.Value];
+            ActiveScene = Scenes[index.Value];
         }
 
         #endregion
@@ -69,13 +72,6 @@ namespace Alis.Core.Systems
         /// <param name="scene">The scene</param>
         public void Add(Scene scene)
         {
-            var temp = Scenes.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is null)
-                {
-                    temp[i] = scene;
-                    return;
-                }
         }
 
         #endregion
@@ -227,10 +223,16 @@ namespace Alis.Core.Systems
         /// <exception cref="MaxSceneGame"></exception>
         public SceneSystem(NotNull<Scene[]> scenes)
         {
-            if (scenes.Value.Length > Game.Setting.Scene.MaxScenesOfGame) throw new MaxSceneGame();
+            if (scenes.Value.Length > Game.Setting.Scene.MaxScenesOfGame)
+            {
+                throw new MaxSceneGame();
+            }
 
             Scenes = new Scene[Game.Setting.Scene.MaxScenesOfGame];
-            for (var i = 0; i < scenes.Value.Length; i++) Scenes[i] = scenes.Value[i];
+            for (int i = 0; i < scenes.Value.Length; i++)
+            {
+                Scenes[i] = scenes.Value[i];
+            }
 
             ActiveScene = Scenes[0];
         }
@@ -245,10 +247,16 @@ namespace Alis.Core.Systems
         public SceneSystem(NotNull<Scene> activeScene, NotNull<Scene[]> scenes)
         {
             ActiveScene = activeScene.Value;
-            if (scenes.Value.Length > Game.Setting.Scene.MaxScenesOfGame) throw new MaxSceneGame();
+            if (scenes.Value.Length > Game.Setting.Scene.MaxScenesOfGame)
+            {
+                throw new MaxSceneGame();
+            }
 
             Scenes = new Scene[Game.Setting.Scene.MaxScenesOfGame];
-            for (var i = 0; i < scenes.Value.Length; i++) Scenes[i] = scenes.Value[i];
+            for (int i = 0; i < scenes.Value.Length; i++)
+            {
+                Scenes[i] = scenes.Value[i];
+            }
         }
 
         #endregion
@@ -265,7 +273,7 @@ namespace Alis.Core.Systems
         ///     Gets or sets the value of the active scene
         /// </summary>
         [JsonPropertyName("_ActiveScene")]
-        public Scene ActiveScene { get; set; } = new();
+        public Scene ActiveScene { get; set; } = new Scene();
 
         #endregion
     }

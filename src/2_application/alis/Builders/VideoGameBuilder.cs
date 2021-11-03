@@ -45,14 +45,11 @@ namespace Alis.Builders
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        private VideoGame VideoGame { get; } = new();
+        private VideoGame VideoGame { get; } = new VideoGame();
 
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public VideoGame Build()
-        {
-            return VideoGame;
-        }
+        public VideoGame Build() => VideoGame;
 
         /// <summary>Configurations the specified value.</summary>
         /// <param name="value">The value.</param>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   GeneralBuilder.cs
+//  File:   SphereMesh.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -29,44 +29,34 @@
 
 #region
 
-using Alis.Core.Settings.Configurations;
-using Alis.FluentApi;
-using Alis.FluentApi.Words;
+using System;
 
 #endregion
 
-namespace Alis.Core.Sfml.Builders
+namespace Alis.Core.Sfml.Components
 {
-    /// <summary>Define a builder.</summary>
-    public class GeneralBuilder :
-        IBuild<General>,
-        IName<GeneralBuilder, string>,
-        IAuthor<GeneralBuilder, string>
+    /// <summary>
+    ///     The sphere mesh class
+    /// </summary>
+    /// <seealso cref="Mesh" />
+    public class SphereMesh : Mesh
     {
-        /// <summary>Sets the author.</summary>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        ///     <br />
-        /// </returns>
-        public GeneralBuilder Author(string value)
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
         {
-            Game.Setting.General.Author = value;
-            return this;
+            throw new NotImplementedException();
         }
 
-        /// <summary>Builds this instance.</summary>
-        /// <returns> </returns>
-        public General Build() => Game.Setting.General;
-
-        /// <summary>Sets the name.</summary>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        ///     <br />
-        /// </returns>
-        public GeneralBuilder Name(string value)
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
         {
-            Game.Setting.General.Name = value;
-            return this;
+            throw new NotImplementedException();
         }
     }
 }

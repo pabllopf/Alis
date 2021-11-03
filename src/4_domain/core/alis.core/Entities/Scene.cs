@@ -27,14 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 using System.Text.Json.Serialization;
 using Alis.Core.Exceptions;
 using Alis.FluentApi.Validations;
-
-#endregion
 
 namespace Alis.Core.Entities
 {
@@ -50,10 +46,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void Awake()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].Awake();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].Awake();
+            }
         }
 
         #endregion
@@ -65,10 +62,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void Start()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].Start();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].Start();
+            }
         }
 
         #endregion
@@ -80,10 +78,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void BeforeUpdate()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].BeforeUpdate();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].BeforeUpdate();
+            }
         }
 
         #endregion
@@ -95,10 +94,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void Update()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].Update();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].Update();
+            }
         }
 
         #endregion
@@ -110,10 +110,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void AfterUpdate()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].AfterUpdate();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].AfterUpdate();
+            }
         }
 
         #endregion
@@ -125,10 +126,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void FixedUpdate()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].FixedUpdate();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].FixedUpdate();
+            }
         }
 
         #endregion
@@ -140,10 +142,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void DispatchEvents()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].DispatchEvents();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].DispatchEvents();
+            }
         }
 
         #endregion
@@ -155,10 +158,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void Reset()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].Reset();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].Reset();
+            }
         }
 
         #endregion
@@ -170,10 +174,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void Stop()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].Stop();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].Stop();
+            }
         }
 
         #endregion
@@ -185,10 +190,11 @@ namespace Alis.Core.Entities
         /// </summary>
         public void Exit()
         {
-            var temp = GameObjects.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null)
-                    temp[i].Exit();
+            Span<GameObject> temp = GameObjects.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                temp[i].Exit();
+            }
         }
 
         #endregion
@@ -197,6 +203,7 @@ namespace Alis.Core.Entities
 
         ~Scene()
         {
+            Console.WriteLine(@"destroy");
         }
 
         #endregion
@@ -223,9 +230,15 @@ namespace Alis.Core.Entities
         {
             Name = name.Value;
             GameObjects = new GameObject[Game.Setting.Scene.MaxGameObjectByScene];
-            if (gameobjects.Value.Length > Game.Setting.Scene.MaxGameObjectByScene) throw new IndexOutOfBounds();
+            if (gameobjects.Value.Length > Game.Setting.Scene.MaxGameObjectByScene)
+            {
+                throw new IndexOutOfBounds();
+            }
 
-            for (var i = 0; i < gameobjects.Value.Length; i++) GameObjects[i] = gameobjects.Value[i];
+            for (int i = 0; i < gameobjects.Value.Length; i++)
+            {
+                GameObjects[i] = gameobjects.Value[i];
+            }
         }
 
         #endregion
@@ -236,13 +249,13 @@ namespace Alis.Core.Entities
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name")]
-        public string Name { get; set; } = "Default";
+        public string Name { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the game objects
         /// </summary>
         [JsonPropertyName("_GameObjects")]
-        public GameObject[] GameObjects { get; set; } = new GameObject[Game.Setting.Scene.MaxGameObjectByScene];
+        public GameObject[] GameObjects { get; set; } 
 
         #endregion
     }

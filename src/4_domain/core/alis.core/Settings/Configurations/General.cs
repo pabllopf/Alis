@@ -114,7 +114,7 @@ namespace Alis.Core.Settings.Configurations
             set
             {
                 name = value;
-                OnChangeName?.Invoke(this, name);
+                OnChangeName.Invoke(this, name);
             }
         }
 
@@ -127,7 +127,7 @@ namespace Alis.Core.Settings.Configurations
             set
             {
                 author = value;
-                OnChangeAuthor?.Invoke(this, author);
+                OnChangeAuthor.Invoke(this, author);
             }
         }
 
@@ -139,9 +139,10 @@ namespace Alis.Core.Settings.Configurations
         ///     Generals the on change name using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
-        /// <param name="name">The name</param>
-        private void General_OnChangeName(object? sender, string name)
+        /// <param name="e">The </param>
+        private void General_OnChangeName(object? sender, string e)
         {
+            Console.WriteLine(e);
         }
 
         /// <summary>

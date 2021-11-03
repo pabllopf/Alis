@@ -48,7 +48,7 @@ namespace Alis.Core.Test
         [Test]
         public void Constructor_Default()
         {
-            var gameObject = new GameObject();
+            GameObject gameObject = new GameObject();
             Assert.AreEqual(gameObject.Name, "Default");
             Assert.AreEqual(gameObject.Components.Length, 0);
             Assert.AreEqual(gameObject.Transform.Scale, new Vector3(1, 1, 1));
@@ -62,7 +62,7 @@ namespace Alis.Core.Test
         [Test]
         public void Constructor_With_Name()
         {
-            var gameObject = new GameObject("test_default");
+            GameObject gameObject = new GameObject("test_default");
             Assert.AreEqual(gameObject.Name, "test_default");
             Assert.AreEqual(gameObject.Components.Length, 0);
             Assert.AreEqual(gameObject.Transform.Scale, new Vector3(1, 1, 1));
@@ -76,7 +76,7 @@ namespace Alis.Core.Test
         [Test]
         public void Constructor_With_Null_Name()
         {
-            var gameObject = new GameObject();
+            GameObject gameObject = new GameObject();
             Assert.AreEqual(gameObject.Name, "Default");
             Assert.AreEqual(gameObject.Components.Length, 0);
             Assert.AreEqual(gameObject.Transform.Scale, new Vector3(1, 1, 1));
@@ -90,7 +90,7 @@ namespace Alis.Core.Test
         [Test]
         public void Constructor_With_Custom_Transform()
         {
-            var gameObject = new GameObject();
+            GameObject gameObject = new GameObject();
             Assert.AreEqual(gameObject.Name, "test_name");
             Assert.AreEqual(gameObject.Components.Length, 0);
             Assert.AreEqual(gameObject.Transform.Scale, new Vector3(2, 2, 2));
@@ -104,7 +104,7 @@ namespace Alis.Core.Test
         [Test]
         public void Constructor_With_Null_Transform()
         {
-            var gameObject = new GameObject();
+            GameObject gameObject = new GameObject();
             Assert.AreEqual(gameObject.Name, "test_name");
             Assert.AreEqual(gameObject.Components.Length, 0);
             Assert.AreEqual(gameObject.Transform.Scale, new Vector3(1, 1, 1));

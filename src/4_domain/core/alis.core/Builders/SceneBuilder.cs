@@ -45,16 +45,13 @@ namespace Alis.Core.Builders
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>
-        public Scene Scene { get; set; } = new();
+        public Scene Scene { get; set; } = new Scene();
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The scene</returns>
-        public Scene Build()
-        {
-            return Scene;
-        }
+        public Scene Build() => Scene;
 
         /// <summary>
         ///     Names the value

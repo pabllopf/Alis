@@ -52,10 +52,7 @@ namespace Alis.Core.Sfml.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The window</returns>
-        public Window Build()
-        {
-            return Game.Setting.Window;
-        }
+        public Window Build() => Game.Setting.Window;
 
         /// <summary>
         ///     Resolutions the x

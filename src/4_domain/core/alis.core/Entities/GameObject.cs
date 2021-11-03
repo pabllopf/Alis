@@ -27,15 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 using System.Text.Json.Serialization;
+using Alis.Core.Builders;
 using Alis.Core.Exceptions;
 using Alis.FluentApi;
 using Alis.FluentApi.Validations;
-
-#endregion
 
 namespace Alis.Core.Entities
 {
@@ -44,25 +41,38 @@ namespace Alis.Core.Entities
     {
         #region Add<Component>()
 
-        /// <summary>Adds the specified component.</summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="component">The component.</param>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="component"></param>
+        /// <exception cref="ComponentTypeAlredyExist"></exception>
+        /// <exception cref="ComponentInstancieIsTheSame"></exception>
+        /// <exception cref="GameObjectIsFull"></exception>
         public void Add(NotNull<Component> component)
         {
             if (!Game.Setting.GameObject.HasDuplicateComponents && Contains(component.Value.GetType()))
+            {
                 throw new ComponentTypeAlredyExist();
+            }
 
-            if (Contains(component.Value)) throw new ComponentInstancieIsTheSame();
+            if (Contains(component.Value))
+            {
+                throw new ComponentInstancieIsTheSame();
+            }
 
-            var temp = Components.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is null || temp[i] is not null && temp[i].Destroyed)
+            Span<Component> temp = Components.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (!temp[i].Destroyed)
                 {
-                    component.Value.AttachTo(this);
-                    temp[i] = component.Value;
-                    Count++;
-                    return;
+                    continue;
                 }
+
+                component.Value.AttachTo(this);
+                temp[i] = component.Value;
+                Count++;
+                return;
+            }
 
             throw new GameObjectIsFull();
         }
@@ -79,10 +89,14 @@ namespace Alis.Core.Entities
         /// <exception cref="ComponentDontExits"></exception>
         public Component Get<T>() where T : Component
         {
-            var temp = Components.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyed)
+            Span<Component> temp = Components.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i].GetType() == typeof(T) && !temp[i].Destroyed)
+                {
                     return temp[i];
+                }
+            }
 
             throw new ComponentDontExits();
         }
@@ -95,10 +109,7 @@ namespace Alis.Core.Entities
         ///     Describes whether this instance has space
         /// </summary>
         /// <returns>The bool</returns>
-        public bool HasSpace()
-        {
-            return Count >= Size;
-        }
+        public bool HasSpace() => Count >= Size;
 
         #endregion
 
@@ -107,10 +118,11 @@ namespace Alis.Core.Entities
         /// <summary>Awakes this instance.</summary>
         public void Awake()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].Awake();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].Awake();
+            }
         }
 
         #endregion
@@ -120,10 +132,11 @@ namespace Alis.Core.Entities
         /// <summary>Starts this instance.</summary>
         public void Start()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].Start();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].Start();
+            }
         }
 
         #endregion
@@ -133,10 +146,11 @@ namespace Alis.Core.Entities
         /// <summary>Befores the update.</summary>
         public void BeforeUpdate()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].BeforeUpdate();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].BeforeUpdate();
+            }
         }
 
         #endregion
@@ -146,10 +160,11 @@ namespace Alis.Core.Entities
         /// <summary>Updates this instance.</summary>
         public void Update()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].Update();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].Update();
+            }
         }
 
         #endregion
@@ -159,10 +174,11 @@ namespace Alis.Core.Entities
         /// <summary>Afters the update.</summary>
         public void AfterUpdate()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].AfterUpdate();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].AfterUpdate();
+            }
         }
 
         #endregion
@@ -172,10 +188,11 @@ namespace Alis.Core.Entities
         /// <summary>Afters the update.</summary>
         public void FixedUpdate()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].FixedUpdate();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].FixedUpdate();
+            }
         }
 
         #endregion
@@ -188,10 +205,11 @@ namespace Alis.Core.Entities
         /// <returns></returns>
         public void DispatchEvents()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].DispatchEvents();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].DispatchEvents();
+            }
         }
 
         #endregion
@@ -201,10 +219,11 @@ namespace Alis.Core.Entities
         /// <summary>Stops this instance.</summary>
         public void Stop()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].Stop();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].Stop();
+            }
         }
 
         #endregion
@@ -218,10 +237,11 @@ namespace Alis.Core.Entities
         public void Destroy()
         {
             IsActive = false;
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].Destroy();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].Destroy();
+            }
         }
 
         #endregion
@@ -231,10 +251,11 @@ namespace Alis.Core.Entities
         /// <summary>Resets this instance.</summary>
         public void Reset()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].Reset();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].Reset();
+            }
         }
 
         #endregion
@@ -244,10 +265,11 @@ namespace Alis.Core.Entities
         /// <summary>Exits this instance.</summary>
         public void Exit()
         {
-            var temp = Components.AsSpan();
-            for (var index = 0; index < temp.Length; index++)
-                if (temp[index] is not null)
-                    temp[index].Exit();
+            Span<Component> temp = Components.AsSpan();
+            for (int index = 0; index < temp.Length; index++)
+            {
+                temp[index].Exit();
+            }
         }
 
         #endregion
@@ -261,10 +283,7 @@ namespace Alis.Core.Entities
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
-        public GameObject(NotNull<string> name)
-        {
-            Name = name.Value;
-        }
+        public GameObject(NotNull<string> name) => Name = name.Value;
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
@@ -284,9 +303,12 @@ namespace Alis.Core.Entities
             Transform = transform.Value;
             Components = new Component[Game.Setting.GameObject.MaxComponents];
 
-            if (components.Value.Length > Game.Setting.GameObject.MaxComponents) throw new LimitOfComponents();
+            if (components.Value.Length > Game.Setting.GameObject.MaxComponents)
+            {
+                throw new LimitOfComponents();
+            }
 
-            for (var i = 0; i < components.Value.Length; i++)
+            for (int i = 0; i < components.Value.Length; i++)
             {
                 Add(components.Value[i]);
                 Count++;
@@ -324,7 +346,7 @@ namespace Alis.Core.Entities
         /// <summary>Gets or sets the transform.</summary>
         /// <value>The transform.</value>
         [JsonPropertyName("_Transform")]
-        public Transform Transform { get; set; } = new();
+        public Transform Transform { get; set; } = new Transform();
 
         /// <summary>Gets the components.</summary>
         /// <value>The components.</value>
@@ -361,14 +383,16 @@ namespace Alis.Core.Entities
         /// <exception cref="ComponentDontExits"></exception>
         public void Remove<T>() where T : Component
         {
-            var temp = Components.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyed)
+            Span<Component> temp = Components.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i].GetType() == typeof(T) && !temp[i].Destroyed)
                 {
                     temp[i].OnDestroy();
                     Count--;
                     return;
                 }
+            }
 
             throw new ComponentDontExits();
         }
@@ -381,14 +405,16 @@ namespace Alis.Core.Entities
         /// <exception cref="ComponentDontExits"></exception>
         public void Remove(Component component)
         {
-            var temp = Components.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null && temp[i].Equals(component) && !temp[i].Destroyed)
+            Span<Component> temp = Components.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i].Equals(component) && !temp[i].Destroyed)
                 {
                     temp[i].OnDestroy();
                     Count--;
                     return;
                 }
+            }
 
             throw new ComponentDontExits();
         }
@@ -406,10 +432,14 @@ namespace Alis.Core.Entities
         /// </returns>
         public bool Contains<T>() where T : Component
         {
-            var temp = Components.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null && temp[i].GetType().Equals(typeof(T)) && !temp[i].Destroyed)
+            Span<Component> temp = Components.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i].GetType() == typeof(T) && !temp[i].Destroyed)
+                {
                     return true;
+                }
+            }
 
             return false;
         }
@@ -423,10 +453,14 @@ namespace Alis.Core.Entities
         /// </returns>
         public bool Contains(Component component)
         {
-            var temp = Components.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null && temp[i].Equals(component) && !temp[i].Destroyed)
+            Span<Component> temp = Components.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i].Equals(component) && !temp[i].Destroyed)
+                {
                     return true;
+                }
+            }
 
             return false;
         }
@@ -438,10 +472,14 @@ namespace Alis.Core.Entities
         /// <returns>The bool</returns>
         public bool Contains(Type type)
         {
-            var temp = Components.AsSpan();
-            for (var i = 0; i < temp.Length; i++)
-                if (temp[i] is not null && temp[i].GetType().Equals(type) && !temp[i].Destroyed)
+            Span<Component> temp = Components.AsSpan();
+            for (int i = 0; i < temp.Length; i++)
+            {
+                if (temp[i].GetType() == type && !temp[i].Destroyed)
+                {
                     return true;
+                }
+            }
 
             return false;
         }

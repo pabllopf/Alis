@@ -52,7 +52,7 @@ namespace Alis.Core.Settings.Configurations
         /// <summary>
         ///     Gets the value of the timer
         /// </summary>
-        private Stopwatch Timer { get; } = new();
+        private Stopwatch Timer { get; } = new Stopwatch();
 
         /// <summary>
         ///     Gets or sets the value of the fixed time
@@ -106,10 +106,7 @@ namespace Alis.Core.Settings.Configurations
         ///     Describes whether this instance is new frame
         /// </summary>
         /// <returns>The bool</returns>
-        internal bool IsNewFrame()
-        {
-            return FixedTime * TimeScale / FrameCount > FixedDeltaTime;
-        }
+        internal bool IsNewFrame() => FixedTime * TimeScale / FrameCount > FixedDeltaTime;
 
         /// <summary>
         ///     Updates the time step

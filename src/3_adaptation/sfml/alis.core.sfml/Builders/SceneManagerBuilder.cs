@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core
+namespace Alis.Core.Sfml.Builders
 {
     /// <summary>
     ///     The scene manager builder class

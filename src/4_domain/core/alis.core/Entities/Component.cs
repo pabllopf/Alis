@@ -45,7 +45,7 @@ namespace Alis.Core.Entities
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
-        public GameObject GameObject { get; internal set; } = new();
+        public GameObject GameObject { get; internal set; } = new GameObject();
 
         /// <summary>
         ///     Attaches the to using the specified game object

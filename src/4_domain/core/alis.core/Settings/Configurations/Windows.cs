@@ -61,7 +61,7 @@ namespace Alis.Core.Settings.Configurations
         /// <summary>
         ///     The resolution
         /// </summary>
-        private Vector2 resolution = new(1024, 768);
+        private Vector2 resolution = new Vector2(1024, 768);
 
         /// <summary>
         ///     The default
@@ -117,7 +117,7 @@ namespace Alis.Core.Settings.Configurations
             set
             {
                 resolution = value;
-                OnChangeResolution?.Invoke(this, resolution);
+                OnChangeResolution.Invoke(this, resolution);
             }
         }
 
@@ -131,7 +131,7 @@ namespace Alis.Core.Settings.Configurations
             set
             {
                 screenMode = value;
-                OnChangeScreenMode?.Invoke(this, screenMode);
+                OnChangeScreenMode.Invoke(this, screenMode);
             }
         }
 

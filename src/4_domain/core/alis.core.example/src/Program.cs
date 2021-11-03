@@ -47,6 +47,7 @@ namespace Alis.Core.Example
         /// <returns></returns>
         private static void Main(string[] args)
         {
+            Console.WriteLine(args.Length);
             /*
             GameObject gameObject = new GameObject("Player");
             gameObject.Add(new Sprite());
@@ -149,7 +150,7 @@ namespace Alis.Core.Example
             Console.WriteLine($"Author Game = {game.Configuration.General.Author}");
             game.Run();
             */
-            Console.WriteLine("Please press any key to close the windows.");
+            Console.WriteLine(@"Please press any key to close the windows.");
             Console.ReadKey();
         }
     }
