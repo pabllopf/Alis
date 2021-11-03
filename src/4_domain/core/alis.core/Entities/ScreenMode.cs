@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Entities
+namespace Alis.Core.Entities
 {
     /// <summary>Screen mode.</summary>
     public enum ScreenMode

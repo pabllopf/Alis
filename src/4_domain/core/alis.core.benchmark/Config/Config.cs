@@ -1,4 +1,4 @@
-﻿//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Config.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
@@ -20,6 +20,9 @@ namespace Alis.Core
         [NotNull]
         private string author;
 
+        /// <summary>
+        /// The debug
+        /// </summary>
         [NotNull]
         private bool debug;
 
@@ -104,6 +107,9 @@ namespace Alis.Core
         [JsonProperty("_Window")]
         public WindowManager Window { get => window; set => window = value; }
 
+        /// <summary>
+        /// Gets or sets the value of the debug
+        /// </summary>
         [NotNull]
         [JsonProperty("_Debug")]
         public bool Debug { get => debug; set => debug = value; }
@@ -126,6 +132,9 @@ namespace Alis.Core
             [AllowNull]
             private string name;
 
+            /// <summary>
+            /// The debug
+            /// </summary>
             [AllowNull]
             private bool debug = false;
 

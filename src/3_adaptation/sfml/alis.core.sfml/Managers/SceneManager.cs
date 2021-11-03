@@ -1,4 +1,4 @@
-﻿using Alis.Core.Systems;
+using Alis.Core.Systems;
 
 namespace Alis.Core.Sfml.Managers
 {

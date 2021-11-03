@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
@@ -9,8 +9,15 @@ using BenchmarkDotNet.Running;
 
 namespace Alis.Tools.Benchmark
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly)

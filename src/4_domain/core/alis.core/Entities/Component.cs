@@ -1,19 +1,35 @@
-﻿namespace Alis.Core.Entities
+namespace Alis.Core.Entities
 {
     /// <summary>Define a general component.</summary>
     public abstract class Component
     {
+        /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
         public bool IsActive { get; set; } = true;
 
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
         internal bool Destroyed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the game object
+        /// </summary>
         public GameObject GameObject { get; internal set; } = new();
 
+        /// <summary>
+        /// Attaches the to using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
         public void AttachTo(GameObject gameObject)
         {
             GameObject = gameObject;
         }
 
+        /// <summary>
+        /// Ons the destroy
+        /// </summary>
         internal void OnDestroy()
         {
             Destroyed = true;
@@ -56,6 +72,9 @@
         {
         }
 
+        /// <summary>
+        /// Dispatches the events
+        /// </summary>
         public virtual void DispatchEvents()
         {
         }
@@ -70,6 +89,9 @@
         {
         }
 
+        /// <summary>
+        /// Destroys this instance
+        /// </summary>
         public virtual void Destroy()
         {
         }

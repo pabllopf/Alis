@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Alis.Core.Settings;
 using Alis.Core.Settings.Configurations;
 using Alis.FluentApi;

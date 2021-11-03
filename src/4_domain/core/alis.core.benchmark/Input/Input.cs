@@ -1,4 +1,4 @@
-﻿//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Input.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
@@ -22,8 +22,14 @@ namespace Alis.Core
 
         #endregion
 
+        /// <summary>
+        /// The current
+        /// </summary>
         private static Input current;
 
+        /// <summary>
+        /// Gets or sets the value of the current
+        /// </summary>
         [JsonIgnore]
 
         public static Input Current { get => current; set => current = value; }
@@ -36,6 +42,9 @@ namespace Alis.Core
         [NotNull]
         private readonly Config config;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Input"/> class
+        /// </summary>
         static Input()
         {
             OnPressKey += Input_OnPressKey;
@@ -124,9 +133,17 @@ namespace Alis.Core
         private static void Input_OnPressKeyOnce([NotNull] object sender, [NotNull] Keyboard keyboard) => Logger.Info();
 
 
+        /// <summary>
+        /// Inputs the on release once using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private static void Input_OnReleaseOnce(object sender, Keyboard e) => Logger.Info();
 
 
+        /// <summary>
+        /// Clears
+        /// </summary>
         public static void Clear()
         {
             Logger.Warning("Clean inputs");

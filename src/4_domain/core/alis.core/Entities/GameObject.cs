@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.Json.Serialization;
 using Alis.Core.Exceptions;
 using Alis.FluentApi;
@@ -58,6 +58,10 @@ namespace Alis.Core.Entities
 
         #region HasSpace()
 
+        /// <summary>
+        /// Describes whether this instance has space
+        /// </summary>
+        /// <returns>The bool</returns>
         public bool HasSpace()
         {
             return Count >= Size;
@@ -394,6 +398,11 @@ namespace Alis.Core.Entities
             return false;
         }
 
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <returns>The bool</returns>
         public bool Contains(Type type)
         {
             var temp = Components.AsSpan();

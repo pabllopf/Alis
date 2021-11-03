@@ -1,4 +1,4 @@
-﻿using Alis.Core.Settings.Configurations;
+using Alis.Core.Settings.Configurations;
 using Alis.FluentApi;
 
 namespace Alis.Core.Sfml.Builders

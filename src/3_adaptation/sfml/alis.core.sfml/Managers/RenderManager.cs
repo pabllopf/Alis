@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Entities;
@@ -157,12 +157,22 @@ namespace Alis.Core.Sfml.Managers
 
         #region OnChangeName()
 
+        /// <summary>
+        /// Generals the on change name using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="name">The name</param>
         private void General_OnChangeName(object? sender, string name) => TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
 
         #endregion
 
         #region OnChangeAuthor()
 
+        /// <summary>
+        /// Generals the on change author using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="author">The author</param>
         private void General_OnChangeAuthor(object? sender, string author) => TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
 
         #endregion
@@ -178,6 +188,11 @@ namespace Alis.Core.Sfml.Managers
 
         #region OnChangeScreenMode()
 
+        /// <summary>
+        /// Windows the on change screen mode using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="screenMode">The screen mode</param>
         private void Window_OnChangeScreenMode(object? sender, ScreenMode screenMode)
         {
             //ScreenMode = Game.Setting.Window.ScreenMode == ScreenMode.Default ? Styles.Default :
@@ -188,6 +203,11 @@ namespace Alis.Core.Sfml.Managers
 
         #region OnChangeResolution
 
+        /// <summary>
+        /// Windows the on change resolution using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="resolution">The resolution</param>
         private void Window_OnChangeResolution(object? sender, Vector2 resolution)
         {
             VideoMode = new VideoMode((uint) resolution.X, (uint) resolution.Y);

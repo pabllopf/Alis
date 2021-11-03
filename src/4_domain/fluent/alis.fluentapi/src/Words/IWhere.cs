@@ -1,5 +1,8 @@
-﻿namespace Alis.FluentApi
+namespace Alis.FluentApi
 {
+    /// <summary>
+    /// The where interface
+    /// </summary>
     public interface IWhere<Builder, Argument>
     {
         /// <summary>Wheres the specified value.</summary>

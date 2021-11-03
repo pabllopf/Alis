@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 using Alis.Core.Settings;
 using Alis.Core.Systems;
 using Alis.FluentApi.Validations;
@@ -121,6 +121,9 @@ namespace Alis.Core
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class
+        /// </summary>
         public Game()
         {
             IsRunning = true;
@@ -128,6 +131,12 @@ namespace Alis.Core
             SceneSystem = new SceneSystem();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Game"/> class
+        /// </summary>
+        /// <param name="isRunning">The is running</param>
+        /// <param name="renderSystem">The render system</param>
+        /// <param name="sceneSystem">The scene system</param>
         [JsonConstructor]
         public Game(NotNull<bool> isRunning, NotNull<RenderSystem> renderSystem, NotNull<SceneSystem> sceneSystem)
         {

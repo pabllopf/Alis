@@ -1,5 +1,8 @@
-﻿namespace Alis.FluentApi
+namespace Alis.FluentApi
 {
+    /// <summary>
+    /// The manager interface
+    /// </summary>
     public interface IManager<Builder, Type, Argument>
     {
         /// <summary>Withes the specified value.</summary>

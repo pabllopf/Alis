@@ -1,11 +1,17 @@
-﻿using System.Numerics;
+using System.Numerics;
 using Alis.Core.Entities;
 using NUnit.Framework;
 
 namespace Alis.Core.Test
 {
+    /// <summary>
+    /// The game object tests class
+    /// </summary>
     internal class GameObjectTests
     {
+        /// <summary>
+        /// Tests that constructor default
+        /// </summary>
         [Test]
         public void Constructor_Default()
         {
@@ -17,6 +23,9 @@ namespace Alis.Core.Test
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }
 
+        /// <summary>
+        /// Tests that constructor with name
+        /// </summary>
         [Test]
         public void Constructor_With_Name()
         {
@@ -28,6 +37,9 @@ namespace Alis.Core.Test
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }
 
+        /// <summary>
+        /// Tests that constructor with null name
+        /// </summary>
         [Test]
         public void Constructor_With_Null_Name()
         {
@@ -39,6 +51,9 @@ namespace Alis.Core.Test
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }
 
+        /// <summary>
+        /// Tests that constructor with custom transform
+        /// </summary>
         [Test]
         public void Constructor_With_Custom_Transform()
         {
@@ -50,6 +65,9 @@ namespace Alis.Core.Test
             Assert.AreEqual(gameObject.Transform.Rotation, new Vector3(0, 0, 0));
         }
 
+        /// <summary>
+        /// Tests that constructor with null transform
+        /// </summary>
         [Test]
         public void Constructor_With_Null_Transform()
         {

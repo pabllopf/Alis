@@ -2,10 +2,10 @@
     <!-- _________________________ GENERAL CONFIG ___________________________________-->
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-        <Configurations>Debug;Release;</Configurations>
+        <Configurations>Debug;Release</Configurations>
         <LangVersion>9</LangVersion>
         <Nullable>enable</Nullable>
-        <Platforms>AnyCPU;x64:x32</Platforms>
+        <Platforms>x64;x86;ARM64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

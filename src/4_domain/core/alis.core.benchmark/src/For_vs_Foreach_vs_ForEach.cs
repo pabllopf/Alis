@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Alis.Core.Entities;
@@ -6,12 +6,24 @@ using BenchmarkDotNet.Attributes;
 
 namespace Alis.Core.Benchmark
 {
+    /// <summary>
+    /// The for vs foreach vs foreach class
+    /// </summary>
     public class For_vs_Foreach_vs_ForEach
     {
+        /// <summary>
+        /// The gameobjects
+        /// </summary>
         private List<GameObject> gameObjects_1;
 
+        /// <summary>
+        /// The size of list
+        /// </summary>
         [Params(10, 1_000, 100_000)] public int size_of_list;
 
+        /// <summary>
+        /// Setup this instance
+        /// </summary>
         [GlobalSetup]
         public void Setup()
         {
@@ -19,6 +31,9 @@ namespace Alis.Core.Benchmark
             gameObjects_1.ForEach(i => i = new GameObject($"Obj {Array.IndexOf(gameObjects_1.ToArray(), i)}"));
         }
 
+        /// <summary>
+        /// Tests the with for
+        /// </summary>
         [Benchmark]
         public void Test_With_For()
         {
@@ -28,6 +43,9 @@ namespace Alis.Core.Benchmark
                 }
         }
 
+        /// <summary>
+        /// Tests the with foreach
+        /// </summary>
         [Benchmark]
         public void Test_With_Foreach()
         {
@@ -37,6 +55,9 @@ namespace Alis.Core.Benchmark
                 }
         }
 
+        /// <summary>
+        /// Tests the with for each
+        /// </summary>
         [Benchmark]
         public void Test_With_ForEach()
         {
@@ -48,6 +69,9 @@ namespace Alis.Core.Benchmark
             });
         }
 
+        /// <summary>
+        /// Tests the with parallel
+        /// </summary>
         [Benchmark]
         public void Test_With_Parallel()
         {

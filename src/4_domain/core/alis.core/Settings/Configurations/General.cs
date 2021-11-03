@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.Json.Serialization;
 
 namespace Alis.Core.Settings.Configurations
@@ -8,6 +8,9 @@ namespace Alis.Core.Settings.Configurations
     {
         #region Reset()
 
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
         public void Reset()
         {
             Name = "Alis Game";
@@ -28,6 +31,9 @@ namespace Alis.Core.Settings.Configurations
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="General"/> class
+        /// </summary>
         public General()
         {
             OnChangeName += General_OnChangeName;
@@ -37,6 +43,11 @@ namespace Alis.Core.Settings.Configurations
             Author = author;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="General"/> class
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="author">The author</param>
         [JsonConstructor]
         public General(string name, string author)
         {
@@ -91,10 +102,20 @@ namespace Alis.Core.Settings.Configurations
 
         #region DefaultEvents
 
+        /// <summary>
+        /// Generals the on change name using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="name">The name</param>
         private void General_OnChangeName(object? sender, string name)
         {
         }
 
+        /// <summary>
+        /// Generals the on change author using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void General_OnChangeAuthor(object? sender, string e)
         {
         }

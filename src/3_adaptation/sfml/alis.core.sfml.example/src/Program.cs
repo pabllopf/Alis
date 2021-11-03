@@ -1,9 +1,16 @@
-﻿using System;
+using System;
 
 namespace Example
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
             /*

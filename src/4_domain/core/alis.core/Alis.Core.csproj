@@ -5,7 +5,7 @@
         <Configurations>Debug;Release</Configurations>
         <LangVersion>9</LangVersion>
         <Nullable>enable</Nullable>
-        <Platforms>AnyCPU;x64;x32</Platforms>
+        <Platforms>AnyCPU;x64;x32;x86;ARM64</Platforms>
     </PropertyGroup>
 
 

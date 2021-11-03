@@ -1,11 +1,18 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Alis.Core.Systems
 {
+    /// <summary>
+    /// The render system class
+    /// </summary>
+    /// <seealso cref="System"/>
     public class RenderSystem : System
     {
         #region Constructor()
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RenderSystem"/> class
+        /// </summary>
         [JsonConstructor]
         public RenderSystem()
         {
@@ -15,6 +22,9 @@ namespace Alis.Core.Systems
 
         #region Awake()
 
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
         public override void Awake()
         {
         }
@@ -23,6 +33,9 @@ namespace Alis.Core.Systems
 
         #region Start()
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
@@ -31,6 +44,9 @@ namespace Alis.Core.Systems
 
         #region BeforeUpdate()
 
+        /// <summary>
+        /// Befores the update
+        /// </summary>
         public override void BeforeUpdate()
         {
         }
@@ -39,6 +55,9 @@ namespace Alis.Core.Systems
 
         #region Update()
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }
@@ -47,6 +66,9 @@ namespace Alis.Core.Systems
 
         #region AfterUpdate()
 
+        /// <summary>
+        /// Afters the update
+        /// </summary>
         public override void AfterUpdate()
         {
         }
@@ -55,6 +77,9 @@ namespace Alis.Core.Systems
 
         #region FixedUpdate()
 
+        /// <summary>
+        /// Fixeds the update
+        /// </summary>
         public override void FixedUpdate()
         {
         }
@@ -63,6 +88,9 @@ namespace Alis.Core.Systems
 
         #region DispatchEvents()
 
+        /// <summary>
+        /// Dispatches the events
+        /// </summary>
         public override void DispatchEvents()
         {
         }
@@ -71,6 +99,9 @@ namespace Alis.Core.Systems
 
         #region Reset()
 
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
         public override void Reset()
         {
         }
@@ -79,6 +110,9 @@ namespace Alis.Core.Systems
 
         #region Stop()
 
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
         public override void Stop()
         {
         }
@@ -87,6 +121,9 @@ namespace Alis.Core.Systems
 
         #region Exit()
 
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
         public override void Exit()
         {
         }

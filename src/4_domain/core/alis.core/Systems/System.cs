@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Systems
+namespace Alis.Core.Systems
 {
     /// <summary>Define a system.</summary>
     public abstract class System

@@ -1,4 +1,4 @@
-﻿//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Transform.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
@@ -287,6 +287,9 @@ namespace Alis.Core
         /// <value>
         /// <c>true</c> if this instance can go out; otherwise, <c>false</c>.</value>
         public bool CanGoOut { get => canGoOut; set => canGoOut = value; }
+        /// <summary>
+        /// Gets or sets the value of the icon
+        /// </summary>
         public string Icon { get => icon; set => icon = value; }
 
         #region DefineEvents

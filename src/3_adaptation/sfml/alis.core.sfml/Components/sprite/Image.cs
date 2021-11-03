@@ -1,5 +1,8 @@
-﻿namespace Alis.Core.Sfml
+namespace Alis.Core.Sfml
 {
+    /// <summary>
+    /// The image class
+    /// </summary>
     public class Image
     {
     }

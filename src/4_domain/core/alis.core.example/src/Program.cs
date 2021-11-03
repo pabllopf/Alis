@@ -1,7 +1,10 @@
-﻿using System;
+using System;
 
 namespace Alis.Core.Example
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public class Program
     {
         /// <summary>

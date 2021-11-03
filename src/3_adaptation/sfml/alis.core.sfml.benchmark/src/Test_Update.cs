@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -7,41 +7,85 @@ using BenchmarkDotNet.Attributes;
 
 namespace Alis.Core.SFML.Benchmark.src
 {
+    /// <summary>
+    /// The fast array class
+    /// </summary>
     public class FastArray<T>
     {
+        /// <summary>
+        /// The memory
+        /// </summary>
         private readonly Memory<T> memory;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FastArray"/> class
+        /// </summary>
+        /// <param name="size">The size</param>
         public FastArray(int size)
         {
             memory = new Memory<T>(new T[size]);
             Length = memory.Span.Length;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FastArray"/> class
+        /// </summary>
+        /// <param name="value">The value</param>
         public FastArray(T[] value)
         {
             memory = new Memory<T>(value);
             Length = memory.Span.Length;
         }
 
+        /// <summary>
+        /// Gets the value of the length
+        /// </summary>
         public int Length { get; }
 
+        /// <summary>
+        /// Gets the value of the span
+        /// </summary>
         public Span<T> Span => memory.Span;
     }
 
+    /// <summary>
+    /// The test update class
+    /// </summary>
     public class Test_Update
     {
+        /// <summary>
+        /// The fast array
+        /// </summary>
         private FastArray<Sprite> fastArray;
 
+        /// <summary>
+        /// The num of elements
+        /// </summary>
         [Params(128, 1_024, 102_400)] public int numOfElements;
 
+        /// <summary>
+        /// The sprites
+        /// </summary>
         private Sprite[] sprites;
 
+        /// <summary>
+        /// The sprites list
+        /// </summary>
         private List<Sprite> spritesList;
 
+        /// <summary>
+        /// The sprites memory
+        /// </summary>
         private Memory<Sprite> spritesMemory;
 
+        /// <summary>
+        /// Gets the value of the buffer
+        /// </summary>
         private Span<Sprite> buffer => sprites.AsSpan();
 
+        /// <summary>
+        /// Sets the up
+        /// </summary>
         [GlobalSetup]
         public void SetUp()
         {
@@ -56,6 +100,9 @@ namespace Alis.Core.SFML.Benchmark.src
             fastArray = new FastArray<Sprite>(temp);
         }
 
+        /// <summary>
+        /// Normals the update list
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void NormalUpdateList()
@@ -65,6 +112,9 @@ namespace Alis.Core.SFML.Benchmark.src
                     _ = spritesList[i].Drawable;
         }
 
+        /// <summary>
+        /// Normals the update array
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void NormalUpdateArray()
@@ -74,6 +124,9 @@ namespace Alis.Core.SFML.Benchmark.src
                     _ = sprites[i].Drawable;
         }
 
+        /// <summary>
+        /// Memmories the update
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void MemmoryUpdate()
@@ -84,6 +137,9 @@ namespace Alis.Core.SFML.Benchmark.src
                     _ = temp[i].Drawable;
         }
 
+        /// <summary>
+        /// Arrays the span
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void Array_span()
@@ -94,6 +150,9 @@ namespace Alis.Core.SFML.Benchmark.src
                     _ = buffer[i].Drawable;
         }
 
+        /// <summary>
+        /// Arrays the span base 4
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void Array_span_base_4()
@@ -107,6 +166,9 @@ namespace Alis.Core.SFML.Benchmark.src
             }
         }
 
+        /// <summary>
+        /// Fasts the array
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void Fast_Array()
@@ -117,6 +179,9 @@ namespace Alis.Core.SFML.Benchmark.src
                     _ = temp[i].Drawable;
         }
 
+        /// <summary>
+        /// Fasts the array optimize
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void Fast_Array_Optimize()
@@ -127,6 +192,9 @@ namespace Alis.Core.SFML.Benchmark.src
                     _ = temp[i].Drawable;
         }
 
+        /// <summary>
+        /// Fasts the array optimize base 4
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void Fast_Array_Optimize_Base_4()
@@ -141,6 +209,9 @@ namespace Alis.Core.SFML.Benchmark.src
             }
         }
 
+        /// <summary>
+        /// Fasts the array optimize asysnc
+        /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
         public void Fast_Array_Optimize_Asysnc()
@@ -154,6 +225,11 @@ namespace Alis.Core.SFML.Benchmark.src
             Task.WaitAll(tasks.ToArray());
         }
 
+        /// <summary>
+        /// Updates the draw using the specified init
+        /// </summary>
+        /// <param name="init">The init</param>
+        /// <param name="end">The end</param>
         public Task UpdateDrawAsync(int init, int end)
         {
             return Task.Run(() =>

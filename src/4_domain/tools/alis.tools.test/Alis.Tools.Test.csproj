@@ -5,11 +5,13 @@
 
         <IsPackable>false</IsPackable>
 
-        <Platforms>AnyCPU;x64</Platforms>
+        <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
 
         <LangVersion>9</LangVersion>
 
         <Nullable>enable</Nullable>
+
+        <Configurations>Debug;Release</Configurations>
     </PropertyGroup>
 
     <ItemGroup>

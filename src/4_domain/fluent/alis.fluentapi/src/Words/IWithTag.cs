@@ -1,4 +1,4 @@
-﻿namespace Alis.FluentApi
+namespace Alis.FluentApi
 {
     /// <summary>
     ///     Define the word "Tag"

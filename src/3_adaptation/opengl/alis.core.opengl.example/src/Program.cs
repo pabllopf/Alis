@@ -1,9 +1,16 @@
-﻿using System;
+using System;
 
 namespace Alis.Core.OpenGL.Example
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
             /*using (VideoGame_ game = new VideoGame_(new GameWindowSettings(), new NativeWindowSettings()))

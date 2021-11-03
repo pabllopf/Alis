@@ -1,4 +1,4 @@
-﻿//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="SceneManager.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
@@ -142,6 +142,10 @@ namespace Alis.Core
             }
         }
 
+        /// <summary>
+        /// Loads the name
+        /// </summary>
+        /// <param name="name">The name</param>
         public static void Load(string name)
         {
             if (current != null)
@@ -172,6 +176,10 @@ namespace Alis.Core
             }
         }
 
+        /// <summary>
+        /// Adds the scene using the specified scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
         public void AddScene(Scene scene)
         {
             scenes.Add(scene);
@@ -263,6 +271,9 @@ namespace Alis.Core
             [AllowNull]
             private SceneManagerBuilder current;
 
+            /// <summary>
+            /// The scenes
+            /// </summary>
             [AllowNull]
             private List<Scene> scenes;
 

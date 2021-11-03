@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Alis.Core.Builders;
 using Alis.Core.Entities;
 using Alis.Core.Settings;
@@ -33,6 +33,12 @@ namespace Alis.Core.Sfml.Builders
             return this;
         }
 
+        /// <summary>
+        /// Managers the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The video game builder</returns>
         public VideoGameBuilder Manager<T>(Func<SceneBuilder, Scene> value) where T : Scene
         {
             VideoGame.SceneSystem.Add(value.Invoke(new SceneBuilder()));

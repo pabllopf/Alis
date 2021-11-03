@@ -1,4 +1,4 @@
-﻿//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="GameObject.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
@@ -220,6 +220,10 @@ namespace Alis.Core
         [JsonProperty("_Transform")]
         public Transform Transform { get => transform; }
 
+        /// <summary>
+        /// Ons the collion enter using the specified collision
+        /// </summary>
+        /// <param name="collision">The collision</param>
         public void OnCollionEnter(Component collision)
         {
             Span<Component> span = this.components.Span;
@@ -234,6 +238,10 @@ namespace Alis.Core
                 }
             }
         }
+        /// <summary>
+        /// Ons the collion exit using the specified collision
+        /// </summary>
+        /// <param name="collision">The collision</param>
         public void OnCollionExit(Component collision)
         {
             Span<Component> span = this.components.Span;
@@ -248,6 +256,10 @@ namespace Alis.Core
                 }
             }
         }
+        /// <summary>
+        /// Ons the collion stay using the specified collision
+        /// </summary>
+        /// <param name="collision">The collision</param>
         public void OnCollionStay(Component collision)
         {
             Span<Component> span = this.components.Span;
@@ -320,6 +332,11 @@ namespace Alis.Core
 
         
 
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="component">The component</param>
+        /// <returns>The bool</returns>
         public bool Contains(Component component) 
         {
             Span<Component> span = components.Span;
@@ -382,6 +399,10 @@ namespace Alis.Core
             Logger.Warning(string.Format(DontDeleteComponent, typeof(T).FullName, this.name));
         }
 
+        /// <summary>
+        /// Deletes the component
+        /// </summary>
+        /// <param name="component">The component</param>
         public void Delete(Component component) 
         {
             Span<Component> span = components.Span;
@@ -439,6 +460,11 @@ namespace Alis.Core
             return null;
         }
 
+        /// <summary>
+        /// Sets the component
+        /// </summary>
+        /// <param name="component">The component</param>
+        /// <param name="pos">The pos</param>
         [return: MaybeNull]
         public void Set(Component component, int pos)
         {
@@ -534,8 +560,15 @@ namespace Alis.Core
         #endregion
 
 
+        /// <summary>
+        /// Builders
+        /// </summary>
+        /// <returns>The game object builder</returns>
         public static GameObjectBuilder Builder() => new GameObjectBuilder();
 
+        /// <summary>
+        /// The game object builder class
+        /// </summary>
         public class GameObjectBuilder
         {
             /// <summary>The current</summary>

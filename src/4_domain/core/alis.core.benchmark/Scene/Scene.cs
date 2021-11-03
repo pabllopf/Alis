@@ -1,4 +1,4 @@
-﻿//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Scene.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
@@ -261,6 +261,10 @@ namespace Alis.Core
             Logger.Warning(string.Format(DontDeleteGameObject, gameObject.Name, this.name));
         }
 
+        /// <summary>
+        /// Duplicates the obj
+        /// </summary>
+        /// <param name="obj">The obj</param>
         public void Duplicate(GameObject obj) 
         {
             int i = 0;
@@ -279,6 +283,11 @@ namespace Alis.Core
             }
         }
 
+        /// <summary>
+        /// Shallows the copy using the specified o
+        /// </summary>
+        /// <param name="o">The </param>
+        /// <returns>The game object</returns>
         private GameObject ShallowCopy(GameObject o)
         {
             return (GameObject?)(o?.GetType().GetMethod("MemberwiseClone", BindingFlags.Instance | BindingFlags.NonPublic)?.Invoke(o, null));
@@ -559,17 +568,30 @@ namespace Alis.Core
 
         #endregion
 
+        /// <summary>
+        /// Builders
+        /// </summary>
+        /// <returns>The scene builder</returns>
         public static SceneBuilder Builder() => new SceneBuilder();
 
+        /// <summary>
+        /// The scene builder class
+        /// </summary>
         public class SceneBuilder
         {
             /// <summary>The current</summary>
             [AllowNull]
             private SceneBuilder current;
 
+            /// <summary>
+            /// The name
+            /// </summary>
             [AllowNull]
             private string name;
 
+            /// <summary>
+            /// The game objects
+            /// </summary>
             [AllowNull]
             private List<GameObject> gameObjects;
 

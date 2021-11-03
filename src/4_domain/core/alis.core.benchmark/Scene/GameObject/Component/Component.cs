@@ -1,4 +1,4 @@
-﻿//-------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 // <author>Pablo Perdomo Falcón</author>
 // <copyright file="Component.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
 //-------------------------------------------------------------------------------------------------
@@ -57,6 +57,10 @@ namespace Alis.Core
         [JsonIgnore]
         public GameObject GameObject { get => gameObject; }
         
+        /// <summary>
+        /// Gets the icon
+        /// </summary>
+        /// <returns>The default icon</returns>
         public virtual string GetIcon() 
         {
             return defaultIcon;
