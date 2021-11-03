@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="src\Attributes\" />
+        <Folder Include="Attributes"/>
     </ItemGroup>
 
 

@@ -1,17 +1,51 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   TimeSystem.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+#region
+
+using System;
 using System.Text.Json.Serialization;
+
+#endregion
 
 namespace Alis.Core.Systems
 {
     /// <summary>
-    /// The time system class
+    ///     The time system class
     /// </summary>
-    /// <seealso cref="System"/>
+    /// <seealso cref="System" />
     public class TimeSystem : System
     {
         #region Constructor()
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TimeSystem"/> class
+        ///     Initializes a new instance of the <see cref="TimeSystem" /> class
         /// </summary>
         [JsonConstructor]
         public TimeSystem()
@@ -23,7 +57,7 @@ namespace Alis.Core.Systems
         #region Awake()
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
@@ -34,7 +68,7 @@ namespace Alis.Core.Systems
         #region Start()
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -45,7 +79,7 @@ namespace Alis.Core.Systems
         #region BeforeUpdate()
 
         /// <summary>
-        /// Befores the update
+        ///     Befores the update
         /// </summary>
         public override void BeforeUpdate()
         {
@@ -56,7 +90,7 @@ namespace Alis.Core.Systems
         #region Update()
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
@@ -67,7 +101,7 @@ namespace Alis.Core.Systems
         #region AfterUpdate()
 
         /// <summary>
-        /// Afters the update
+        ///     Afters the update
         /// </summary>
         public override void AfterUpdate()
         {
@@ -78,7 +112,7 @@ namespace Alis.Core.Systems
         #region FixedUpdate()
 
         /// <summary>
-        /// Fixeds the update
+        ///     Fixeds the update
         /// </summary>
         public override void FixedUpdate()
         {
@@ -89,7 +123,7 @@ namespace Alis.Core.Systems
         #region DispatchEvents()
 
         /// <summary>
-        /// Dispatches the events
+        ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
@@ -100,7 +134,7 @@ namespace Alis.Core.Systems
         #region Reset()
 
         /// <summary>
-        /// Resets this instance
+        ///     Resets this instance
         /// </summary>
         public override void Reset()
         {
@@ -111,7 +145,7 @@ namespace Alis.Core.Systems
         #region Stop()
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public override void Stop()
         {
@@ -122,7 +156,7 @@ namespace Alis.Core.Systems
         #region Exit()
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public override void Exit()
         {
@@ -134,6 +168,7 @@ namespace Alis.Core.Systems
 
         ~TimeSystem()
         {
+            Console.WriteLine(@"Destroy");
         }
 
         #endregion

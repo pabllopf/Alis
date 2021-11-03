@@ -1,19 +1,52 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   Scene.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+#region
+
 using System;
 using System.Text.Json.Serialization;
 using Alis.Core.Exceptions;
 using Alis.FluentApi.Validations;
 
+#endregion
+
 namespace Alis.Core.Entities
 {
     /// <summary>
-    /// The scene class
+    ///     The scene class
     /// </summary>
     public class Scene
     {
         #region Awake()
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public void Awake()
         {
@@ -28,7 +61,7 @@ namespace Alis.Core.Entities
         #region Start()
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public void Start()
         {
@@ -43,7 +76,7 @@ namespace Alis.Core.Entities
         #region BeforeUpdate()
 
         /// <summary>
-        /// Befores the update
+        ///     Befores the update
         /// </summary>
         public void BeforeUpdate()
         {
@@ -58,7 +91,7 @@ namespace Alis.Core.Entities
         #region Update()
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public void Update()
         {
@@ -73,7 +106,7 @@ namespace Alis.Core.Entities
         #region AfterUpdate()
 
         /// <summary>
-        /// Afters the update
+        ///     Afters the update
         /// </summary>
         public void AfterUpdate()
         {
@@ -88,7 +121,7 @@ namespace Alis.Core.Entities
         #region FixedUpdate()
 
         /// <summary>
-        /// Fixeds the update
+        ///     Fixeds the update
         /// </summary>
         public void FixedUpdate()
         {
@@ -103,7 +136,7 @@ namespace Alis.Core.Entities
         #region DispatchEvents()
 
         /// <summary>
-        /// Dispatches the events
+        ///     Dispatches the events
         /// </summary>
         public void DispatchEvents()
         {
@@ -118,7 +151,7 @@ namespace Alis.Core.Entities
         #region Reset()
 
         /// <summary>
-        /// Resets this instance
+        ///     Resets this instance
         /// </summary>
         public void Reset()
         {
@@ -133,7 +166,7 @@ namespace Alis.Core.Entities
         #region Stop()
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public void Stop()
         {
@@ -148,7 +181,7 @@ namespace Alis.Core.Entities
         #region Exit()
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public void Exit()
         {
@@ -171,7 +204,7 @@ namespace Alis.Core.Entities
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Scene"/> class
+        ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
         public Scene()
         {
@@ -180,7 +213,7 @@ namespace Alis.Core.Entities
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Scene"/> class
+        ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="gameobjects">The gameobjects</param>
@@ -200,12 +233,13 @@ namespace Alis.Core.Entities
         #region Properties
 
         /// <summary>
-        /// Gets or sets the value of the name
+        ///     Gets or sets the value of the name
         /// </summary>
-        [JsonPropertyName("_Name")] public string Name { get; set; } = "Default";
+        [JsonPropertyName("_Name")]
+        public string Name { get; set; } = "Default";
 
         /// <summary>
-        /// Gets or sets the value of the game objects
+        ///     Gets or sets the value of the game objects
         /// </summary>
         [JsonPropertyName("_GameObjects")]
         public GameObject[] GameObjects { get; set; } = new GameObject[Game.Setting.Scene.MaxGameObjectByScene];

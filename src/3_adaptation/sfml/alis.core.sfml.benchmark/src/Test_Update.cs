@@ -1,3 +1,34 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   Test_Update.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+#region
+
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -5,20 +36,22 @@ using System.Threading.Tasks;
 using Alis.Core.Sfml.Components;
 using BenchmarkDotNet.Attributes;
 
+#endregion
+
 namespace Alis.Core.SFML.Benchmark.src
 {
     /// <summary>
-    /// The fast array class
+    ///     The fast array class
     /// </summary>
     public class FastArray<T>
     {
         /// <summary>
-        /// The memory
+        ///     The memory
         /// </summary>
         private readonly Memory<T> memory;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastArray"/> class
+        ///     Initializes a new instance of the <see cref="FastArray" /> class
         /// </summary>
         /// <param name="size">The size</param>
         public FastArray(int size)
@@ -28,7 +61,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastArray"/> class
+        ///     Initializes a new instance of the <see cref="FastArray" /> class
         /// </summary>
         /// <param name="value">The value</param>
         public FastArray(T[] value)
@@ -38,53 +71,53 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Gets the value of the length
+        ///     Gets the value of the length
         /// </summary>
         public int Length { get; }
 
         /// <summary>
-        /// Gets the value of the span
+        ///     Gets the value of the span
         /// </summary>
         public Span<T> Span => memory.Span;
     }
 
     /// <summary>
-    /// The test update class
+    ///     The test update class
     /// </summary>
     public class Test_Update
     {
         /// <summary>
-        /// The fast array
+        ///     The fast array
         /// </summary>
         private FastArray<Sprite> fastArray;
 
         /// <summary>
-        /// The num of elements
+        ///     The num of elements
         /// </summary>
         [Params(128, 1_024, 102_400)] public int numOfElements;
 
         /// <summary>
-        /// The sprites
+        ///     The sprites
         /// </summary>
         private Sprite[] sprites;
 
         /// <summary>
-        /// The sprites list
+        ///     The sprites list
         /// </summary>
         private List<Sprite> spritesList;
 
         /// <summary>
-        /// The sprites memory
+        ///     The sprites memory
         /// </summary>
         private Memory<Sprite> spritesMemory;
 
         /// <summary>
-        /// Gets the value of the buffer
+        ///     Gets the value of the buffer
         /// </summary>
         private Span<Sprite> buffer => sprites.AsSpan();
 
         /// <summary>
-        /// Sets the up
+        ///     Sets the up
         /// </summary>
         [GlobalSetup]
         public void SetUp()
@@ -101,7 +134,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Normals the update list
+        ///     Normals the update list
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -113,7 +146,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Normals the update array
+        ///     Normals the update array
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -125,7 +158,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Memmories the update
+        ///     Memmories the update
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -138,7 +171,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Arrays the span
+        ///     Arrays the span
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -151,7 +184,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Arrays the span base 4
+        ///     Arrays the span base 4
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -167,7 +200,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Fasts the array
+        ///     Fasts the array
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -180,7 +213,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Fasts the array optimize
+        ///     Fasts the array optimize
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -193,7 +226,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Fasts the array optimize base 4
+        ///     Fasts the array optimize base 4
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -210,7 +243,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Fasts the array optimize asysnc
+        ///     Fasts the array optimize asysnc
         /// </summary>
         [Benchmark]
         [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
@@ -226,7 +259,7 @@ namespace Alis.Core.SFML.Benchmark.src
         }
 
         /// <summary>
-        /// Updates the draw using the specified init
+        ///     Updates the draw using the specified init
         /// </summary>
         /// <param name="init">The init</param>
         /// <param name="end">The end</param>

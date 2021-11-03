@@ -10,11 +10,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="docs\" />
+        <Folder Include="Docs\"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.fluentapi\Alis.FluentApi.csproj" />
+        <ProjectReference Include="..\alis.fluentapi\Alis.FluentApi.csproj"/>
     </ItemGroup>
 
 </Project>

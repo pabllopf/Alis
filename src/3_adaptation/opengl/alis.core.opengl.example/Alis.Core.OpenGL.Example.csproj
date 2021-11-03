@@ -10,11 +10,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core.opengl\Alis.Core.OpenGL.csproj" />
+        <ProjectReference Include="..\alis.core.opengl\Alis.Core.OpenGL.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="docs\" />
+        <Folder Include="docs\"/>
     </ItemGroup>
 
 </Project>

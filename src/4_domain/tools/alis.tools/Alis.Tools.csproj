@@ -10,8 +10,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="Alis_Icon.ico" />
-        <None Remove="StyleCop.Cache" />
-        <None Remove="Tools.xml" />
+        <None Remove="Alis_Icon.ico"/>
+        <None Remove="StyleCop.Cache"/>
+        <None Remove="Tools.xml"/>
     </ItemGroup>
 </Project>

@@ -9,15 +9,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="OpenTK" Version="4.6.7" />
+        <PackageReference Include="OpenTK" Version="4.6.7"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="docs\" />
+        <Folder Include="Docs\"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\4_domain\core\alis.core\Alis.Core.csproj" />
+        <ProjectReference Include="..\..\..\4_domain\core\alis.core\Alis.Core.csproj"/>
     </ItemGroup>
 
 </Project>

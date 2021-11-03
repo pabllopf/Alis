@@ -1,3 +1,34 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   RenderManager.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+#region
+
 using System;
 using System.Numerics;
 using System.Text.Json.Serialization;
@@ -7,6 +38,8 @@ using Alis.FluentApi.Validations;
 using SFML.Graphics;
 using SFML.Window;
 using Sprite = Alis.Core.Sfml.Components.Sprite;
+
+#endregion
 
 namespace Alis.Core.Sfml.Managers
 {
@@ -36,7 +69,10 @@ namespace Alis.Core.Sfml.Managers
         #region Awake()
 
         /// <summary>Awakes this instance.</summary>
-        public override void Awake() => RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
+        public override void Awake()
+        {
+            RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
+        }
 
         #endregion
 
@@ -53,7 +89,10 @@ namespace Alis.Core.Sfml.Managers
         #region BeforeUpdate()
 
         /// <summary>Befores the update.</summary>
-        public override void BeforeUpdate() => RenderWindow?.Clear();
+        public override void BeforeUpdate()
+        {
+            RenderWindow?.Clear();
+        }
 
         #endregion
 
@@ -74,7 +113,10 @@ namespace Alis.Core.Sfml.Managers
         #region AfterUpdate()
 
         /// <summary>Afters the update.</summary>
-        public override void AfterUpdate() => RenderWindow?.Display();
+        public override void AfterUpdate()
+        {
+            RenderWindow?.Display();
+        }
 
         #endregion
 
@@ -90,7 +132,10 @@ namespace Alis.Core.Sfml.Managers
         #region DispatchEvents()
 
         /// <summary>Dispatches the events.</summary>
-        public override void DispatchEvents() => RenderWindow?.DispatchEvents();
+        public override void DispatchEvents()
+        {
+            RenderWindow?.DispatchEvents();
+        }
 
         #endregion
 
@@ -158,22 +203,28 @@ namespace Alis.Core.Sfml.Managers
         #region OnChangeName()
 
         /// <summary>
-        /// Generals the on change name using the specified sender
+        ///     Generals the on change name using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="name">The name</param>
-        private void General_OnChangeName(object? sender, string name) => TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
+        private void General_OnChangeName(object? sender, string name)
+        {
+            TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
+        }
 
         #endregion
 
         #region OnChangeAuthor()
 
         /// <summary>
-        /// Generals the on change author using the specified sender
+        ///     Generals the on change author using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="author">The author</param>
-        private void General_OnChangeAuthor(object? sender, string author) => TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
+        private void General_OnChangeAuthor(object? sender, string author)
+        {
+            TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
+        }
 
         #endregion
 
@@ -182,14 +233,17 @@ namespace Alis.Core.Sfml.Managers
         /// <summary>Renders the window closed.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void RenderWindow_Closed(object? sender, EventArgs e) => RenderWindow?.Close();
+        private void RenderWindow_Closed(object? sender, EventArgs e)
+        {
+            RenderWindow?.Close();
+        }
 
         #endregion
 
         #region OnChangeScreenMode()
 
         /// <summary>
-        /// Windows the on change screen mode using the specified sender
+        ///     Windows the on change screen mode using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="screenMode">The screen mode</param>
@@ -204,7 +258,7 @@ namespace Alis.Core.Sfml.Managers
         #region OnChangeResolution
 
         /// <summary>
-        /// Windows the on change resolution using the specified sender
+        ///     Windows the on change resolution using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="resolution">The resolution</param>

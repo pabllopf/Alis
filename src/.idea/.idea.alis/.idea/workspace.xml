@@ -13,6 +13,7 @@
     <projectFile>3_adaptation/opengl/alis.core.opengl.example/Alis.Core.OpenGL.Example.csproj</projectFile>
     <projectFile>3_adaptation/sfml/alis.core.sfml.benchmark/Alis.Core.SFML.Benchmark.csproj</projectFile>
     <projectFile>3_adaptation/sfml/alis.core.sfml.example/Alis.Core.SFML.Example.csproj</projectFile>
+    <projectFile>2_application/alis/Alis.Example/Alis.Example.csproj</projectFile>
     <projectFile profileName="Alis.Core">4_domain/core/alis.core/Alis.Core.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
@@ -20,18 +21,106 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Alis.Example.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis.test/Alis.Test.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis.test/UnitTest1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.example/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.example/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.example/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.example/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.example/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.example/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/IBuild.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/IBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Validations/NotNull.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IAdd.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IAuthor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/ICreate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IDelete.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IGeneral.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IHas.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IIs.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IManagerOf.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IName.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IResolution.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IRun.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IScreenMode.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/ISet.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/ISetMax.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/ISettings.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/ITime.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IUpdate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IWhere.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IWindow.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IWith.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IWithName.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IWithTag.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/Alis.Editor.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/Alis.Editor.Benchmark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/src/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/src/Program.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/Alis.Editor.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/Alis.Editor.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/src/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/src/Program.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/Alis.Editor.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/Alis.Editor.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/src/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/src/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/src/UnitTest1.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Alis.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Alis.Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/resources/Tall.ini" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/resources/Tall.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/resources/Wide.ini" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/resources/Wide.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/resources/default.ini" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/resources/default.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/src/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2_application/alis/Alis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/Alis.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2_application/alis/VideoGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/VideoGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis/VideoGameBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/VideoGameBuilder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_application/alis/VideoGameBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/Alis.Core.OpenGL.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/Alis.Core.OpenGL.Benchmark.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/src/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.example/Alis.Core.OpenGL.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.example/Alis.Core.OpenGL.Example.csproj" afterDir="false" />
@@ -39,7 +128,7 @@
       <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/Alis.Core.OpenGL.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/Alis.Core.OpenGL.Test.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/src/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/src/UnitTest1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/Alis.Core.OpenGL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/Alis.Core.OpenGL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/src/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/src/Class1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/src/Class1.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/Alis.Core.SFML.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/Alis.Core.SFML.Benchmark.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/src/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/src/Test_StaticArray_vs_for_span.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/src/Test_StaticArray_vs_for_span.cs" afterDir="false" />
@@ -75,22 +164,9 @@
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/sprite/Sprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/sprite/Sprite.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/SceneManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Properties/Resources.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Properties/Resources.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Properties/Resources.resx" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Properties/Resources.resx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Alis.Core.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Alis.Core.Benchmark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Config/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Config/Config.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Config/Time.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Config/Time.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Config/WindowManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Config/WindowManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Config/WindowState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Config/WindowState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Input/Input.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Input/Input.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Input/Keyboard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Input/Keyboard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Render/Render.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Render/Render.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/GameObject/Component/Component.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/GameObject/Component/Component.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/GameObject/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/GameObject/GameObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/GameObject/Transform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/GameObject/Transform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/Scene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/Scene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/SceneManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Scene/SceneManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/src/For_vs_Foreach_vs_ForEach.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/src/For_vs_Foreach_vs_ForEach.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/src/Test_Change_Value_Byte_vs_Bool_vs_Int.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/src/Test_Change_Value_Byte_vs_Bool_vs_Int.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/src/Test_Concat_Strings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/src/Test_Concat_Strings.cs" afterDir="false" />
@@ -115,7 +191,7 @@
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Exceptions/MaxSceneGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Exceptions/MaxSceneGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Exceptions/NullArgumentException.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Exceptions/NullArgumentException.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Properties/Resources.Designer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Properties/Resources.Designer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Properties/resources.resx" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Properties/resources.resx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/Configuration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/Configuration.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/Debug.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/Debug.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/GameObject.cs" afterDir="false" />
@@ -138,43 +214,44 @@
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/System.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/System.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/TimeSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/TimeSystem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/Alis.FluentApi.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/Alis.FluentApi.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/src/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/src/Program.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/Alis.FluentApi.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/Alis.FluentApi.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/src/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/src/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/src/UnitTest1.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Alis.FluentApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Alis.FluentApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/IBuild.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/IBuild.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/IBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/IBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Validations/NotNull.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Validations/NotNull.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IAdd.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IAdd.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IAuthor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IAuthor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IConfiguration.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ICreate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ICreate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IDelete.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IDelete.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IGeneral.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IGeneral.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IHas.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IHas.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IIs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IIs.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IManagerOf.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IManagerOf.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IResolution.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IResolution.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IRun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IRun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IScreenMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IScreenMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISetMax.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISetMax.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISettings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISettings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ITime.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ITime.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IUpdate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWhere.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWhere.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWith.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWith.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWithName.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWithName.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWithTag.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWithTag.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/docs/Alis.Fluent.cd" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Docs/Alis.Fluent.cd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/IBuild.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/IBuilder.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Validations/NotNull.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IAdd.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IAuthor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IConfiguration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ICreate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IDelete.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IGeneral.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IHas.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IIs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IManagerOf.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IName.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IResolution.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IRun.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IScreenMode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISetMax.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ISettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/ITime.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IUpdate.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWhere.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWith.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWithName.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/src/Words/IWithTag.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/Alis.Tools.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/Alis.Tools.Benchmark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/src/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/src/Program.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/Alis.Tools.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/Alis.Tools.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/src/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/src/Program.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/Alis.Tools.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/Alis.Tools.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/src/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/src/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/src/UnitTest1.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools/Alis.Tools.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools/Alis.Tools.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools/Logger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools/Logger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/alis.sln" beforeDir="false" afterPath="$PROJECT_DIR$/alis.sln" afterDir="false" />
@@ -196,10 +273,13 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/2_application/alis/VideoGameBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/2_application/alis.example/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20JwovORUIeVYO0BBJ2LrkdXGzZ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="flattenPackages" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -217,7 +297,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="RiderNuGetOptionsPageId" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalTools" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.Alis.Core.SFML.Example">
@@ -383,6 +463,24 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Alis.Example" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/2_application/alis/Alis.Example/Alis.Example.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Alis.FluentApi.Example" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -466,6 +564,7 @@
       <item itemvalue=".NET Project.Alis.FluentApi.Example" />
       <item itemvalue=".NET Project.Alis.Tools.Benchmark" />
       <item itemvalue=".NET Project.Alis.Tools.Example" />
+      <item itemvalue=".NET Project.Alis.Example" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -480,7 +579,7 @@
       <workItem from="1635776560467" duration="2222000" />
       <workItem from="1635791223854" duration="52000" />
       <workItem from="1635791516226" duration="5557000" />
-      <workItem from="1635931016310" duration="252000" />
+      <workItem from="1635931016310" duration="7653000" />
     </task>
     <servers />
   </component>
@@ -492,5 +591,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

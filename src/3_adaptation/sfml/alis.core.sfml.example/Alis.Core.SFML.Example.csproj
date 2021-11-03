@@ -11,13 +11,13 @@
 
 
     <ItemGroup>
-        <Folder Include="docs\" />
-        <Folder Include="assets\" />
+        <Folder Include="docs\"/>
+        <Folder Include="assets\"/>
     </ItemGroup>
 
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core.sfml\Alis.Core.Sfml.csproj" />
+        <ProjectReference Include="..\alis.core.sfml\Alis.Core.Sfml.csproj"/>
     </ItemGroup>
 
 </Project>

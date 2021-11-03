@@ -10,11 +10,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core\Alis.Core.csproj" />
+        <ProjectReference Include="..\alis.core\Alis.Core.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="docs\" />
+        <Folder Include="docs\"/>
     </ItemGroup>
 
 </Project>

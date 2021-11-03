@@ -10,15 +10,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core.opengl\Alis.Core.OpenGL.csproj" />
+        <ProjectReference Include="..\alis.core.opengl\Alis.Core.OpenGL.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="docs\" />
+        <Folder Include="docs\"/>
     </ItemGroup>
 
 </Project>

@@ -1,21 +1,54 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   SceneSystem.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+#region
+
 using System;
 using System.Text.Json.Serialization;
 using Alis.Core.Entities;
 using Alis.Core.Exceptions;
 using Alis.FluentApi.Validations;
 
+#endregion
+
 namespace Alis.Core.Systems
 {
     /// <summary>
-    /// The scene system class
+    ///     The scene system class
     /// </summary>
-    /// <seealso cref="System"/>
+    /// <seealso cref="System" />
     public class SceneSystem : System
     {
         #region ChangeScene()
 
         /// <summary>
-        /// Changes the scene using the specified index
+        ///     Changes the scene using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <exception cref="IndexOutOfBounds"></exception>
@@ -31,7 +64,7 @@ namespace Alis.Core.Systems
         #region AddScene()
 
         /// <summary>
-        /// Adds the scene
+        ///     Adds the scene
         /// </summary>
         /// <param name="scene">The scene</param>
         public void Add(Scene scene)
@@ -50,7 +83,7 @@ namespace Alis.Core.Systems
         #region Awake()
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
@@ -62,7 +95,7 @@ namespace Alis.Core.Systems
         #region Start()
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -74,7 +107,7 @@ namespace Alis.Core.Systems
         #region BeforeUpdate()
 
         /// <summary>
-        /// Befores the update
+        ///     Befores the update
         /// </summary>
         public override void BeforeUpdate()
         {
@@ -86,7 +119,7 @@ namespace Alis.Core.Systems
         #region Update()
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
@@ -98,7 +131,7 @@ namespace Alis.Core.Systems
         #region AfterUpdate()
 
         /// <summary>
-        /// Afters the update
+        ///     Afters the update
         /// </summary>
         public override void AfterUpdate()
         {
@@ -110,7 +143,7 @@ namespace Alis.Core.Systems
         #region FixedUpdate()
 
         /// <summary>
-        /// Fixeds the update
+        ///     Fixeds the update
         /// </summary>
         public override void FixedUpdate()
         {
@@ -122,7 +155,7 @@ namespace Alis.Core.Systems
         #region DispatchEvents()
 
         /// <summary>
-        /// Dispatches the events
+        ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
@@ -134,7 +167,7 @@ namespace Alis.Core.Systems
         #region Reset()
 
         /// <summary>
-        /// Resets this instance
+        ///     Resets this instance
         /// </summary>
         public override void Reset()
         {
@@ -146,7 +179,7 @@ namespace Alis.Core.Systems
         #region Stop()
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public override void Stop()
         {
@@ -158,7 +191,7 @@ namespace Alis.Core.Systems
         #region Exit()
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public override void Exit()
         {
@@ -171,6 +204,7 @@ namespace Alis.Core.Systems
 
         ~SceneSystem()
         {
+            Console.WriteLine(@"Destroy");
         }
 
         #endregion
@@ -178,7 +212,7 @@ namespace Alis.Core.Systems
         #region Constructor()
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SceneSystem"/> class
+        ///     Initializes a new instance of the <see cref="SceneSystem" /> class
         /// </summary>
         public SceneSystem()
         {
@@ -187,7 +221,7 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SceneSystem"/> class
+        ///     Initializes a new instance of the <see cref="SceneSystem" /> class
         /// </summary>
         /// <param name="scenes">The scenes</param>
         /// <exception cref="MaxSceneGame"></exception>
@@ -198,11 +232,11 @@ namespace Alis.Core.Systems
             Scenes = new Scene[Game.Setting.Scene.MaxScenesOfGame];
             for (var i = 0; i < scenes.Value.Length; i++) Scenes[i] = scenes.Value[i];
 
-            ActiveScene = Scenes[0] ?? new Scene();
+            ActiveScene = Scenes[0];
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SceneSystem"/> class
+        ///     Initializes a new instance of the <see cref="SceneSystem" /> class
         /// </summary>
         /// <param name="activeScene">The active scene</param>
         /// <param name="scenes">The scenes</param>
@@ -222,15 +256,16 @@ namespace Alis.Core.Systems
         #region Properties
 
         /// <summary>
-        /// Gets or sets the value of the scenes
+        ///     Gets or sets the value of the scenes
         /// </summary>
         [JsonPropertyName("_Scenes")]
-        public Scene[] Scenes { get; set; } = new Scene[Game.Setting.Scene.MaxScenesOfGame];
+        public Scene[] Scenes { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the active scene
+        ///     Gets or sets the value of the active scene
         /// </summary>
-        [JsonPropertyName("_ActiveScene")] public Scene ActiveScene { get; set; } = new();
+        [JsonPropertyName("_ActiveScene")]
+        public Scene ActiveScene { get; set; } = new();
 
         #endregion
     }

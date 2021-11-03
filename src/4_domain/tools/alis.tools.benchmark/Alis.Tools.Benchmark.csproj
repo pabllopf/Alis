@@ -10,15 +10,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="docs\" />
+        <Folder Include="Docs\"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.tools\Alis.Tools.csproj" />
+        <ProjectReference Include="..\alis.tools\Alis.Tools.csproj"/>
     </ItemGroup>
 
 </Project>

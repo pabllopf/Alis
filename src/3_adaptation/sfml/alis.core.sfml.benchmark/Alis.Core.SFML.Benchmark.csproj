@@ -10,15 +10,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="docs\" />
+        <Folder Include="docs\"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core.sfml\Alis.Core.Sfml.csproj" />
+        <ProjectReference Include="..\alis.core.sfml\Alis.Core.Sfml.csproj"/>
     </ItemGroup>
 
 </Project>
