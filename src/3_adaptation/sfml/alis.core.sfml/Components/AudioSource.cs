@@ -49,6 +49,7 @@ namespace Alis.Core.Sfml.Components
         /// </summary>
         public AudioSource()
         {
+            PathFile = "";
         }
 
         /// <summary>

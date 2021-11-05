@@ -21,44 +21,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/menu.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/start_button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile000.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile001.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile017.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile018.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile019.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile020.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile034.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile035.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile036.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile037.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile051.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile052.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile053.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis.example/Assets/tile054.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Alis.sln.DotSettings" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Alis.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Alis.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis.example/Alis.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis.example/Alis.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis.example/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis.example/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Builders/SceneManagerBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Builders/SceneManagerBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Builders/WindowBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Builders/WindowBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/AudioSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/AudioSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Sprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Sprite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Builders/GameObjectBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Builders/GameObjectBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Builders/SceneBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Builders/SceneBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/GameObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/Scene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/Scene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/ScreenMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/ScreenMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/RenderSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/RenderSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/SceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/SceneSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -424,7 +388,7 @@
       <workItem from="1635943507508" duration="416000" />
       <workItem from="1635944081971" duration="223000" />
       <workItem from="1635946428545" duration="470000" />
-      <workItem from="1636039763752" duration="13204000" />
+      <workItem from="1636039763752" duration="13429000" />
     </task>
     <servers />
   </component>
