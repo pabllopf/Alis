@@ -27,12 +27,52 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Entities;
+using Alis.FluentApi;
+using Alis.FluentApi.Words;
+
 namespace Alis.Core.Builders
 {
     /// <summary>
     ///     The game object builder class
     /// </summary>
-    public class GameObjectBuilder
+    public class GameObjectBuilder :
+        IBuild<GameObject>,
+        IName<GameObjectBuilder, string>,
+        IAdd<GameObjectBuilder, Component, Component>
     {
+        /// <summary>
+        ///     Gets or sets the value of the game object
+        /// </summary>
+        private GameObject GameObject { get; } = new GameObject();
+
+        /// <summary>
+        ///     Adds the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Add<T>(Component value) where T : Component
+        {
+            GameObject.Add(value);
+            return this;
+        }
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The game object</returns>
+        public GameObject Build() => GameObject;
+
+        /// <summary>
+        ///     Names the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Name(string value)
+        {
+            GameObject.Name = value;
+            return this;
+        }
     }
 }

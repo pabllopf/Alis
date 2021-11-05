@@ -29,10 +29,9 @@
 
 using System;
 using Alis.Core;
-using Alis.Core.Builders;
-using Alis.Core.Entities;
 using Alis.Core.Settings;
 using Alis.Core.Sfml.Builders;
+using Alis.Core.Sfml.Managers;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 
@@ -67,16 +66,13 @@ namespace Alis.Builders
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The video game builder</returns>
-        public VideoGameBuilder Manager(Func<SceneBuilder, Scene> value)
+        public VideoGameBuilder Manager(Func<SceneManagerBuilder, SceneManager> value)
         {
-            VideoGame.SceneSystem.Add(value.Invoke(new SceneBuilder()));
+            VideoGame.SceneSystem = value.Invoke(new SceneManagerBuilder());
             return this;
         }
 
         /// <summary>Runs this instance.</summary>
-        public void Run()
-        {
-            VideoGame.Run();
-        }
+        public void Run() => VideoGame.Run();
     }
 }

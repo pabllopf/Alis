@@ -27,12 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Builders;
+using Alis.Core.Entities;
+using Alis.Core.Sfml.Managers;
+using Alis.FluentApi;
+using Alis.FluentApi.Words;
+
 namespace Alis.Core.Sfml.Builders
 {
     /// <summary>
     ///     The scene manager builder class
     /// </summary>
-    public class SceneManagerBuilder
+    public class SceneManagerBuilder : IBuild<SceneManager>,
+        IAdd<SceneManagerBuilder, Scene, Func<SceneBuilder, Scene>>
     {
+        /// <summary>
+        ///     Gets or sets the value of the scene manager
+        /// </summary>
+        private SceneManager SceneManager { get; } = new SceneManager();
+
+        /// <summary>
+        ///     Adds the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The scene manager builder</returns>
+        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value) where T : Scene
+        {
+            SceneManager.Add(value.Invoke(new SceneBuilder()));
+            return this;
+        }
+
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The scene manager</returns>
+        public SceneManager Build() => SceneManager;
     }
 }

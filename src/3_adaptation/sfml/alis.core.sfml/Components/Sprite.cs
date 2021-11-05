@@ -27,16 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 using Alis.Core.Entities;
 using Alis.Core.Sfml.Managers;
 using SFML.Graphics;
 using SFML.System;
 using Transform = Alis.Core.Entities.Transform;
-
-#endregion
 
 namespace Alis.Core.Sfml.Components
 {

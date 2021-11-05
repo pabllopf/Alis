@@ -42,7 +42,51 @@ namespace Alis.Core
     /// <summary>Define the main logic of game made with ALIS.</summary>
     public class Game
     {
-        #region Run()
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Game" /> class
+        /// </summary>
+        public Game()
+        {
+            IsRunning = true;
+            RenderSystem = new RenderSystem();
+            SceneSystem = new SceneSystem();
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Game" /> class
+        /// </summary>
+        /// <param name="isRunning">The is running</param>
+        /// <param name="renderSystem">The render system</param>
+        /// <param name="sceneSystem">The scene system</param>
+        [JsonConstructor]
+        public Game(NotNull<bool> isRunning, NotNull<RenderSystem> renderSystem, NotNull<SceneSystem> sceneSystem)
+        {
+            IsRunning = isRunning.Value;
+            RenderSystem = renderSystem.Value;
+            SceneSystem = sceneSystem.Value;
+        }
+
+        /// <summary>Gets a value indicating whether this instance is running.</summary>
+        /// <value>
+        ///     <c>true</c> if this instance is running; otherwise, <c>false</c>.
+        /// </value>
+        [JsonPropertyName("_IsRunning")]
+        private static bool IsRunning { get; set; } = true;
+
+        /// <summary>Gets or sets the render system.</summary>
+        /// <value>The render system.</value>
+        [JsonIgnore]
+        public RenderSystem RenderSystem { get; protected set; }
+
+        /// <summary>Gets or sets the scene system.</summary>
+        /// <value>The scene system.</value>
+        [JsonIgnore]
+        public SceneSystem SceneSystem { get; set; }
+
+        /// <summary>Gets or sets the configuration.</summary>
+        /// <value>The configuration.</value>
+        [JsonPropertyName("_Setting")]
+        public static Setting Setting { get; set; } = new Setting();
 
         /// <summary>Runs this instance.</summary>
         public void Run()
@@ -121,9 +165,6 @@ namespace Alis.Core
             #endregion
         }
 
-        #endregion
-
-        #region Reset()
 
         /// <summary>Resets the game.</summary>
         public void Reset()
@@ -132,9 +173,6 @@ namespace Alis.Core
             RenderSystem.Reset();
         }
 
-        #endregion
-
-        #region Stop()
 
         /// <summary>Stops this game.</summary>
         public void Stop()
@@ -143,69 +181,14 @@ namespace Alis.Core
             RenderSystem.Stop();
         }
 
-        #endregion
-
-        #region Destructor
+        /// <summary>
+        ///     Exits
+        /// </summary>
+        public static void Exit() => IsRunning = false;
 
         ~Game()
         {
             Console.WriteLine(@"destroy");
         }
-
-        #endregion
-
-        #region Constructor
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Game" /> class
-        /// </summary>
-        public Game()
-        {
-            IsRunning = true;
-            RenderSystem = new RenderSystem();
-            SceneSystem = new SceneSystem();
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Game" /> class
-        /// </summary>
-        /// <param name="isRunning">The is running</param>
-        /// <param name="renderSystem">The render system</param>
-        /// <param name="sceneSystem">The scene system</param>
-        [JsonConstructor]
-        public Game(NotNull<bool> isRunning, NotNull<RenderSystem> renderSystem, NotNull<SceneSystem> sceneSystem)
-        {
-            IsRunning = isRunning.Value;
-            RenderSystem = renderSystem.Value;
-            SceneSystem = sceneSystem.Value;
-        }
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>Gets a value indicating whether this instance is running.</summary>
-        /// <value>
-        ///     <c>true</c> if this instance is running; otherwise, <c>false</c>.
-        /// </value>
-        [JsonPropertyName("_IsRunning")]
-        private bool IsRunning { get; } = true;
-
-        /// <summary>Gets or sets the render system.</summary>
-        /// <value>The render system.</value>
-        [JsonIgnore]
-        public RenderSystem RenderSystem { get; protected set; } = new RenderSystem();
-
-        /// <summary>Gets or sets the scene system.</summary>
-        /// <value>The scene system.</value>
-        [JsonIgnore]
-        public SceneSystem SceneSystem { get; protected set; } = new SceneSystem();
-
-        /// <summary>Gets or sets the configuration.</summary>
-        /// <value>The configuration.</value>
-        [JsonPropertyName("_Setting")]
-        public static Setting Setting { get; set; } = new Setting();
-
-        #endregion
     }
 }

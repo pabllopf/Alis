@@ -57,12 +57,12 @@ namespace Alis.Core.Sfml.Builders
         /// <summary>
         ///     Resolutions the x
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="width">The </param>
+        /// <param name="height">The </param>
         /// <returns>The window builder</returns>
-        public WindowBuilder Resolution(int x, int y)
+        public WindowBuilder Resolution(int width, int height)
         {
-            Game.Setting.Window.Resolution = new Vector2(x, y);
+            Game.Setting.Window.Resolution = new Vector2(width, height);
             return this;
         }
 

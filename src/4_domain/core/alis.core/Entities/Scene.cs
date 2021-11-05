@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Alis.Core.Exceptions;
-using Alis.FluentApi.Validations;
 
 namespace Alis.Core.Entities
 {
@@ -39,184 +39,13 @@ namespace Alis.Core.Entities
     /// </summary>
     public class Scene
     {
-        #region Awake()
-
-        /// <summary>
-        ///     Awakes this instance
-        /// </summary>
-        public void Awake()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].Awake();
-            }
-        }
-
-        #endregion
-
-        #region Start()
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public void Start()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].Start();
-            }
-        }
-
-        #endregion
-
-        #region BeforeUpdate()
-
-        /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public void BeforeUpdate()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].BeforeUpdate();
-            }
-        }
-
-        #endregion
-
-        #region Update()
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public void Update()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].Update();
-            }
-        }
-
-        #endregion
-
-        #region AfterUpdate()
-
-        /// <summary>
-        ///     Afters the update
-        /// </summary>
-        public void AfterUpdate()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].AfterUpdate();
-            }
-        }
-
-        #endregion
-
-        #region FixedUpdate()
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public void FixedUpdate()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].FixedUpdate();
-            }
-        }
-
-        #endregion
-
-        #region DispatchEvents()
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public void DispatchEvents()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].DispatchEvents();
-            }
-        }
-
-        #endregion
-
-        #region Reset()
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public void Reset()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].Reset();
-            }
-        }
-
-        #endregion
-
-        #region Stop()
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public void Stop()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].Stop();
-            }
-        }
-
-        #endregion
-
-        #region Exit()
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public void Exit()
-        {
-            Span<GameObject> temp = GameObjects.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                temp[i].Exit();
-            }
-        }
-
-        #endregion
-
-        #region Destructor
-
-        ~Scene()
-        {
-            Console.WriteLine(@"destroy");
-        }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
         public Scene()
         {
             Name = "Default";
-            GameObjects = new GameObject[Game.Setting.Scene.MaxGameObjectByScene];
+            GameObjects = new List<GameObject>();
         }
 
         /// <summary>
@@ -226,24 +55,15 @@ namespace Alis.Core.Entities
         /// <param name="gameobjects">The gameobjects</param>
         /// <exception cref="IndexOutOfBounds"></exception>
         [JsonConstructor]
-        public Scene(NotNull<string> name, NotNull<GameObject[]> gameobjects)
+        public Scene(string name, List<GameObject> gameobjects)
         {
-            Name = name.Value;
-            GameObjects = new GameObject[Game.Setting.Scene.MaxGameObjectByScene];
-            if (gameobjects.Value.Length > Game.Setting.Scene.MaxGameObjectByScene)
+            Name = name;
+            GameObjects = gameobjects;
+            if (gameobjects.Count > Game.Setting.Scene.MaxGameObjectByScene)
             {
                 throw new IndexOutOfBounds();
             }
-
-            for (int i = 0; i < gameobjects.Value.Length; i++)
-            {
-                GameObjects[i] = gameobjects.Value[i];
-            }
         }
-
-        #endregion
-
-        #region Properties
 
         /// <summary>
         ///     Gets or sets the value of the name
@@ -255,8 +75,67 @@ namespace Alis.Core.Entities
         ///     Gets or sets the value of the game objects
         /// </summary>
         [JsonPropertyName("_GameObjects")]
-        public GameObject[] GameObjects { get; set; } 
+        public List<GameObject> GameObjects { get; set; }
 
-        #endregion
+        /// <summary>
+        ///     Adds the game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public void Add(GameObject gameObject) => GameObjects.Add(gameObject);
+
+        /// <summary>
+        ///     Awakes this instance
+        /// </summary>
+        public void Awake() => GameObjects.ForEach(gameObject => gameObject.Awake());
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public void Start() => GameObjects.ForEach(gameObject => gameObject.Start());
+
+        /// <summary>
+        ///     Before run the update
+        /// </summary>
+        public void BeforeUpdate() => GameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public void Update() => GameObjects.ForEach(gameObject => gameObject.Update());
+
+        /// <summary>
+        ///     Afters the update
+        /// </summary>
+        public void AfterUpdate() => GameObjects.ForEach(gameObject => gameObject.AfterUpdate());
+
+        /// <summary>
+        ///     Update every frame.
+        /// </summary>
+        public void FixedUpdate() => GameObjects.ForEach(gameObject => gameObject.FixedUpdate());
+
+        /// <summary>
+        ///     Dispatches the events
+        /// </summary>
+        public void DispatchEvents() => GameObjects.ForEach(gameObject => gameObject.DispatchEvents());
+
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public void Reset() => GameObjects.ForEach(gameObject => gameObject.Reset());
+
+        /// <summary>
+        ///     Stops this instance
+        /// </summary>
+        public void Stop() => GameObjects.ForEach(gameObject => gameObject.Stop());
+
+        /// <summary>
+        ///     Exits this instance
+        /// </summary>
+        public void Exit() => GameObjects.ForEach(gameObject => gameObject.Exit());
+
+        /// <summary>
+        ///     Define the destructor.
+        /// </summary>
+        ~Scene() => Console.WriteLine(@"destroy");
     }
 }

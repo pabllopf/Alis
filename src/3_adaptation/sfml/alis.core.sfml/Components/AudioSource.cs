@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Entities;
+using SFML.Audio;
 
 namespace Alis.Core.Sfml.Components
 {
@@ -39,12 +40,49 @@ namespace Alis.Core.Sfml.Components
     public class AudioSource : Component
     {
         /// <summary>
+        ///     The sound
+        /// </summary>
+        private Music? sound;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AudioSource" /> class
+        /// </summary>
+        public AudioSource()
+        {
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AudioSource" /> class
+        /// </summary>
+        /// <param name="pathFile">The path file</param>
+        public AudioSource(string pathFile)
+        {
+            PathFile = pathFile;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the path file
+        /// </summary>
+        public string PathFile { get; set; }
+
+        /// <summary>
+        ///     Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            if (!string.IsNullOrEmpty(PathFile))
+            {
+                sound = new Music(PathFile);
+                sound.Loop = true;
+                sound.Volume = 100;
+            }
+        }
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-        }
+        public override void Start() => sound?.Play();
 
         /// <summary>
         ///     Updates this instance
@@ -53,5 +91,15 @@ namespace Alis.Core.Sfml.Components
         public override void Update()
         {
         }
+
+        /// <summary>
+        ///     Stops this instance
+        /// </summary>
+        public override void Stop() => sound?.Pause();
+
+        /// <summary>
+        ///     Exits this instance
+        /// </summary>
+        public override void Exit() => sound?.Stop();
     }
 }

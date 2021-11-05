@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Entities;
+using Alis.Core.Sfml.Components;
 
 namespace Alis.Example
 {
@@ -42,7 +43,30 @@ namespace Alis.Example
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine(@"Hello World!");
+            VideoGame.Create()
+                .Settings(setting => setting
+                    .General(general => general
+                        .Author("Pedro Diaz")
+                        .Name("The best game")
+                        .Build())
+                    .Window(window => window
+                        .Resolution(640, 480)
+                        .ScreenMode(ScreenMode.Default)
+                        .Build())
+                    .Build())
+                .Manager(sceneManager => sceneManager
+                    .Add<Scene>(scene => scene
+                        .Name("The main menu.")
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Player")
+                            .Add<Sprite>(new Sprite(
+                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
+                            .Add<AudioSource>(new AudioSource(
+                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\menu.wav"))
+                            .Build())
+                        .Build())
+                    .Build())
+                .Run();
         }
     }
 }

@@ -28,262 +28,39 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Alis.Core.Builders;
 using Alis.Core.Exceptions;
 using Alis.FluentApi;
-using Alis.FluentApi.Validations;
 
 namespace Alis.Core.Entities
 {
-    /// <summary>Represent a object of the videogame.</summary>
+    /// <summary>Represent a object of the game.</summary>
     public class GameObject : IBuilder<GameObjectBuilder>
     {
-        #region Add<Component>()
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="component"></param>
-        /// <exception cref="ComponentTypeAlredyExist"></exception>
-        /// <exception cref="ComponentInstancieIsTheSame"></exception>
-        /// <exception cref="GameObjectIsFull"></exception>
-        public void Add(NotNull<Component> component)
-        {
-            if (!Game.Setting.GameObject.HasDuplicateComponents && Contains(component.Value.GetType()))
-            {
-                throw new ComponentTypeAlredyExist();
-            }
-
-            if (Contains(component.Value))
-            {
-                throw new ComponentInstancieIsTheSame();
-            }
-
-            Span<Component> temp = Components.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (!temp[i].Destroyed)
-                {
-                    continue;
-                }
-
-                component.Value.AttachTo(this);
-                temp[i] = component.Value;
-                Count++;
-                return;
-            }
-
-            throw new GameObjectIsFull();
-        }
-
-        #endregion
-
-        #region Get<Component>()
-
-        /// <summary>
-        ///     Gets this instance.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        /// <exception cref="ComponentDontExits"></exception>
-        public Component Get<T>() where T : Component
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (temp[i].GetType() == typeof(T) && !temp[i].Destroyed)
-                {
-                    return temp[i];
-                }
-            }
-
-            throw new ComponentDontExits();
-        }
-
-        #endregion
-
-        #region HasSpace()
-
-        /// <summary>
-        ///     Describes whether this instance has space
-        /// </summary>
-        /// <returns>The bool</returns>
-        public bool HasSpace() => Count >= Size;
-
-        #endregion
-
-        #region Awake()
-
-        /// <summary>Awakes this instance.</summary>
-        public void Awake()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].Awake();
-            }
-        }
-
-        #endregion
-
-        #region Start()
-
-        /// <summary>Starts this instance.</summary>
-        public void Start()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].Start();
-            }
-        }
-
-        #endregion
-
-        #region BeforeUpdate()
-
-        /// <summary>Befores the update.</summary>
-        public void BeforeUpdate()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].BeforeUpdate();
-            }
-        }
-
-        #endregion
-
-        #region Update()
-
-        /// <summary>Updates this instance.</summary>
-        public void Update()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].Update();
-            }
-        }
-
-        #endregion
-
-        #region AfterUpdate()
-
-        /// <summary>Afters the update.</summary>
-        public void AfterUpdate()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].AfterUpdate();
-            }
-        }
-
-        #endregion
-
-        #region FixedUpdate()
-
-        /// <summary>Afters the update.</summary>
-        public void FixedUpdate()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].FixedUpdate();
-            }
-        }
-
-        #endregion
-
-        #region DispatchEvents()
-
-        /// <summary>
-        ///     Dispatches the events.
-        /// </summary>
-        /// <returns></returns>
-        public void DispatchEvents()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].DispatchEvents();
-            }
-        }
-
-        #endregion
-
-        #region Stop()
-
-        /// <summary>Stops this instance.</summary>
-        public void Stop()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].Stop();
-            }
-        }
-
-        #endregion
-
-        #region Destroy()
-
-        /// <summary>
-        ///     Destroys this instance.
-        /// </summary>
-        /// <returns></returns>
-        public void Destroy()
-        {
-            IsActive = false;
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].Destroy();
-            }
-        }
-
-        #endregion
-
-        #region Reset()
-
-        /// <summary>Resets this instance.</summary>
-        public void Reset()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].Reset();
-            }
-        }
-
-        #endregion
-
-        #region Exit()
-
-        /// <summary>Exits this instance.</summary>
-        public void Exit()
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int index = 0; index < temp.Length; index++)
-            {
-                temp[index].Exit();
-            }
-        }
-
-        #endregion
-
-        #region Constructor
-
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         public GameObject()
         {
+            Name = "Default";
+            Tag = "Default";
+            IsActive = true;
+            IsStatic = false;
+            Transform = new Transform();
+            Components = new List<Component>(Game.Setting.GameObject.MaxComponents);
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
-        public GameObject(NotNull<string> name) => Name = name.Value;
+        public GameObject(string name)
+        {
+            Name = name;
+            Tag = "Default";
+            IsActive = true;
+            IsStatic = false;
+            Transform = new Transform();
+            Components = new List<Component>(Game.Setting.GameObject.MaxComponents);
+        }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         /// <param name="name">The name.</param>
@@ -293,109 +70,106 @@ namespace Alis.Core.Entities
         /// <param name="transform">The transform.</param>
         /// <param name="components">The components.</param>
         [JsonConstructor]
-        public GameObject(NotNull<string> name, NotNull<string> tag, NotNull<bool> isActive, NotNull<bool> isStatic,
-            NotNull<Transform> transform, NotNull<Component[]> components)
+        public GameObject(string name, string tag, bool isActive, bool isStatic, Transform transform,
+            List<Component> components)
         {
-            Name = name.Value;
-            Tag = tag.Value;
-            IsActive = isActive.Value;
-            IsStatic = isStatic.Value;
-            Transform = transform.Value;
-            Components = new Component[Game.Setting.GameObject.MaxComponents];
-
-            if (components.Value.Length > Game.Setting.GameObject.MaxComponents)
-            {
-                throw new LimitOfComponents();
-            }
-
-            for (int i = 0; i < components.Value.Length; i++)
-            {
-                Add(components.Value[i]);
-                Count++;
-            }
+            Name = name;
+            Tag = tag;
+            IsActive = isActive;
+            IsStatic = isStatic;
+            Transform = transform;
+            Components = new List<Component>(components);
         }
-
-        #endregion
-
-        #region Properties
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
         [JsonPropertyName("_Name")]
-        public string Name { get; set; } = "Default";
+        public string Name { get; set; }
 
         /// <summary>Gets or sets the tag.</summary>
         /// <value>The tag.</value>
         [JsonPropertyName("_Tag")]
-        public string Tag { get; set; } = "Default";
+        public string Tag { get; set; }
 
         /// <summary>Gets or sets a value indicating whether this instance is active.</summary>
         /// <value>
         ///     <c>true</c> if this instance is active; otherwise, <c>false</c>.
         /// </value>
         [JsonPropertyName("_IsActive")]
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; }
 
         /// <summary>Gets or sets a value indicating whether this instance is static.</summary>
         /// <value>
         ///     <c>true</c> if this instance is static; otherwise, <c>false</c>.
         /// </value>
         [JsonPropertyName("_IsStatic")]
-        public bool IsStatic { get; set; } = true;
+        public bool IsStatic { get; set; }
 
         /// <summary>Gets or sets the transform.</summary>
         /// <value>The transform.</value>
         [JsonPropertyName("_Transform")]
-        public Transform Transform { get; set; } = new Transform();
+        public Transform Transform { get; set; }
 
         /// <summary>Gets the components.</summary>
         /// <value>The components.</value>
         [JsonPropertyName("_Components")]
-        public Component[] Components { get; internal set; } = new Component[Game.Setting.GameObject.MaxComponents];
+        public List<Component> Components { get; internal set; }
 
         /// <summary>
-        ///     Gets the count.
         /// </summary>
-        /// <value>
-        ///     The count.
-        /// </value>
-        [JsonPropertyName("_Count")]
-        public int Count { get; private set; }
+        /// <param name="component"></param>
+        /// <exception cref="ComponentTypeAlredyExist"></exception>
+        /// <exception cref="ComponentInstancieIsTheSame"></exception>
+        /// <exception cref="GameObjectIsFull"></exception>
+        public void Add(Component component) => Components.Add(component);
 
         /// <summary>
-        ///     Gets the size.
-        /// </summary>
-        /// <value>
-        ///     The size.
-        /// </value>
-        [JsonPropertyName("_Size")]
-        public int Size { get; } = Game.Setting.GameObject.MaxComponents;
-
-        #endregion
-
-        #region Remove<Component>()
-
-        /// <summary>
-        ///     Removes this instance.
+        ///     Gets this instance.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="ComponentDontExits"></exception>
-        public void Remove<T>() where T : Component
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (temp[i].GetType() == typeof(T) && !temp[i].Destroyed)
-                {
-                    temp[i].OnDestroy();
-                    Count--;
-                    return;
-                }
-            }
+        public Component Get<T>() where T : Component =>
+            Components.Find(component => component.GetType() == typeof(T)) ?? throw new InvalidOperationException();
 
-            throw new ComponentDontExits();
-        }
+        /// <summary>Awakes this instance.</summary>
+        public void Awake() => Components.ForEach(component => component.Awake());
+
+        /// <summary>Starts this instance.</summary>
+        public void Start() => Components.ForEach(component => component.Start());
+
+        /// <summary>Befores the update.</summary>
+        public void BeforeUpdate() => Components.ForEach(component => component.BeforeUpdate());
+
+        /// <summary>Updates this instance.</summary>
+        public void Update() => Components.ForEach(component => component.Update());
+
+        /// <summary>Afters the update.</summary>
+        public void AfterUpdate() => Components.ForEach(component => component.AfterUpdate());
+
+        /// <summary>Afters the update.</summary>
+        public void FixedUpdate() => Components.ForEach(component => component.FixedUpdate());
+
+        /// <summary>
+        ///     Dispatches the events.
+        /// </summary>
+        /// <returns></returns>
+        public void DispatchEvents() => Components.ForEach(component => component.DispatchEvents());
+
+        /// <summary>Stops this instance.</summary>
+        public void Stop() => Components.ForEach(component => component.Stop());
+
+        /// <summary>
+        ///     Destroys this instance.
+        /// </summary>
+        /// <returns></returns>
+        public void Destroy() => Components.ForEach(component => component.Destroy());
+
+        /// <summary>Resets this instance.</summary>
+        public void Reset() => Components.ForEach(component => component.Reset());
+
+        /// <summary>Exits this instance.</summary>
+        public void Exit() => Components.ForEach(component => component.Exit());
 
         /// <summary>
         ///     Removes the specified component.
@@ -403,25 +177,7 @@ namespace Alis.Core.Entities
         /// <param name="component">The component.</param>
         /// <returns></returns>
         /// <exception cref="ComponentDontExits"></exception>
-        public void Remove(Component component)
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (temp[i].Equals(component) && !temp[i].Destroyed)
-                {
-                    temp[i].OnDestroy();
-                    Count--;
-                    return;
-                }
-            }
-
-            throw new ComponentDontExits();
-        }
-
-        #endregion
-
-        #region Contains<Component>()
+        public void Remove(Component component) => Components.Remove(component);
 
         /// <summary>
         ///     Determines whether this instance contains the object.
@@ -430,19 +186,8 @@ namespace Alis.Core.Entities
         /// <returns>
         ///     <c>true</c> if [contains]; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains<T>() where T : Component
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (temp[i].GetType() == typeof(T) && !temp[i].Destroyed)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
+        public bool Contains<T>() where T : Component =>
+            Components.Find(component => component.GetType() == typeof(T)) is not null;
 
         /// <summary>
         ///     Determines whether this instance contains the object.
@@ -451,39 +196,13 @@ namespace Alis.Core.Entities
         /// <returns>
         ///     <c>true</c> if [contains] [the specified component]; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains(Component component)
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (temp[i].Equals(component) && !temp[i].Destroyed)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
+        public bool Contains(Component component) => Components.Contains(component);
 
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The bool</returns>
-        public bool Contains(Type type)
-        {
-            Span<Component> temp = Components.AsSpan();
-            for (int i = 0; i < temp.Length; i++)
-            {
-                if (temp[i].GetType() == type && !temp[i].Destroyed)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        #endregion
+        public bool Contains(Type type) => Components.Find(component => component.GetType() == type) is not null;
     }
 }

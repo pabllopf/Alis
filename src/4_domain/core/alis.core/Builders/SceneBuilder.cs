@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Entities;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
@@ -40,12 +41,25 @@ namespace Alis.Core.Builders
     /// <seealso cref="IName{Builder,Argument}" />
     public class SceneBuilder :
         IBuild<Scene>,
-        IName<SceneBuilder, string>
+        IName<SceneBuilder, string>,
+        IAdd<SceneBuilder, GameObject, Func<GameObjectBuilder, GameObject>>
     {
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>
         public Scene Scene { get; set; } = new Scene();
+
+        /// <summary>
+        ///     Adds the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value) where T : GameObject
+        {
+            Scene.Add(value.Invoke(new GameObjectBuilder()));
+            return this;
+        }
 
         /// <summary>
         ///     Builds this instance

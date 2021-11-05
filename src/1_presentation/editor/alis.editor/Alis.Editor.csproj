@@ -53,4 +53,9 @@
     </ItemGroup>
 
 
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\2_application\alis\Alis.csproj"/>
+    </ItemGroup>
+
+
 </Project>

@@ -38,6 +38,6 @@ namespace Alis.Editor
         /// <param name="args">The arguments.</param>
         /// <returns>Return -1 or 0</returns>
         [STAThread]
-        public static void Main(string[] args) => Console.WriteLine("Hello world");
+        public static void Main(string[] args) => Console.WriteLine(@"Hello world");
     }
 }

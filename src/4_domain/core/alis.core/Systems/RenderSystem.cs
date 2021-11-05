@@ -27,12 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 using System.Text.Json.Serialization;
-
-#endregion
 
 namespace Alis.Core.Systems
 {
@@ -42,8 +38,6 @@ namespace Alis.Core.Systems
     /// <seealso cref="System" />
     public class RenderSystem : System
     {
-        #region Constructor()
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="RenderSystem" /> class
         /// </summary>
@@ -52,9 +46,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region Awake()
 
         /// <summary>
         ///     Awakes this instance
@@ -63,9 +54,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region Start()
 
         /// <summary>
         ///     Starts this instance
@@ -74,9 +62,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region BeforeUpdate()
 
         /// <summary>
         ///     Befores the update
@@ -85,9 +70,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region Update()
 
         /// <summary>
         ///     Updates this instance
@@ -96,9 +78,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region AfterUpdate()
 
         /// <summary>
         ///     Afters the update
@@ -107,9 +86,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region FixedUpdate()
 
         /// <summary>
         ///     Fixeds the update
@@ -118,9 +94,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region DispatchEvents()
 
         /// <summary>
         ///     Dispatches the events
@@ -129,9 +102,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region Reset()
 
         /// <summary>
         ///     Resets this instance
@@ -140,9 +110,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region Stop()
 
         /// <summary>
         ///     Stops this instance
@@ -151,9 +118,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region Exit()
 
         /// <summary>
         ///     Exits this instance
@@ -162,15 +126,10 @@ namespace Alis.Core.Systems
         {
         }
 
-        #endregion
-
-        #region Destructor()
 
         ~RenderSystem()
         {
             Console.WriteLine(@"Destroy");
         }
-
-        #endregion
     }
 }

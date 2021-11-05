@@ -38,7 +38,7 @@ namespace Alis.Core.Entities
         /// <summary>The resize</summary>
         Resize = 1,
 
-        /// <summary>The full screem</summary>
-        FullScreem = 2
+        /// <summary>The full screen</summary>
+        FullScreen = 2
     }
 }
