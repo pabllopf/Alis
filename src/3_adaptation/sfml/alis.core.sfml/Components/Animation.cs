@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using SFML.Graphics;
+
 namespace Alis.Core.Sfml.Components
 {
     /// <summary>
@@ -34,5 +38,70 @@ namespace Alis.Core.Sfml.Components
     /// </summary>
     public class Animation
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Animation"/> class
+        /// </summary>
+        public Animation()
+        {
+            Textures = new List<Texture>();
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Animation"/> class
+        /// </summary>
+        /// <param name="textures">The textures</param>
+        public Animation(List<Texture> textures)
+        {
+            Textures = textures;
+        }
+        
+        /// <summary>
+        /// Gets or sets the value of the index
+        /// </summary>
+        private int Index { get; set; } = 0;
+
+        /// <summary>
+        /// Gets or sets the value of the speed
+        /// </summary>
+        public double Speed { get; set; } = 1.0f;
+
+        /// <summary>
+        /// Gets or sets the value of the textures
+        /// </summary>
+        private List<Texture> Textures { get; set; }
+
+        /// <summary>
+        /// Describes whether this instance has next
+        /// </summary>
+        /// <returns>The bool</returns>
+        public bool HasNext() => Textures.Count > 0;
+
+        /// <summary>
+        /// Nexts the texture
+        /// </summary>
+        /// <exception cref="InvalidCastException"></exception>
+        /// <returns>The texture</returns>
+        public Texture NextTexture()
+        {
+            Texture result = Textures[Index];
+
+            if (Index < (Textures.Count - 1))
+            {
+                Index += 1;
+            }
+
+            if (Index == (Textures.Count - 1))
+            {
+                Index = 0;
+            }
+            
+            return result;
+        }
+
+        /// <summary>
+        /// Textures this instance
+        /// </summary>
+        /// <returns>The texture</returns>
+        public Texture Texture() => Textures[Index];
     }
 }

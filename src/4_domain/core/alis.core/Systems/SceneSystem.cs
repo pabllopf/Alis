@@ -44,10 +44,7 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSystem" /> class
         /// </summary>
-        public SceneSystem()
-        {
-            Scenes = new List<Scene>(Game.Setting.Scene.MaxScenesOfGame);
-        }
+        public SceneSystem() => Scenes = new List<Scene>(Game.Setting.Scene.MaxScenesOfGame);
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSystem" /> class
@@ -72,7 +69,7 @@ namespace Alis.Core.Systems
             ActiveScene = activeScene;
             Scenes = scenes;
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the scenes
         /// </summary>
@@ -86,11 +83,11 @@ namespace Alis.Core.Systems
         private Scene? ActiveScene { get; set; }
 
         /// <summary>
-        /// Changes the scene using the specified index
+        ///     Changes the scene using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         public void ChangeScene(int index) => ActiveScene = Scenes[index];
-        
+
         /// <summary>
         ///     Adds the scene
         /// </summary>
@@ -105,17 +102,17 @@ namespace Alis.Core.Systems
         ///     Awakes this instance
         /// </summary>
         public override void Awake() => ActiveScene?.Awake();
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start() => ActiveScene?.Start();
-        
+
         /// <summary>
-        /// Before the update
+        ///     Before the update
         /// </summary>
         public override void BeforeUpdate() => ActiveScene?.BeforeUpdate();
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -125,17 +122,17 @@ namespace Alis.Core.Systems
         ///     Afters the update
         /// </summary>
         public override void AfterUpdate() => ActiveScene?.AfterUpdate();
-        
+
         /// <summary>
-        ///  Fixed the update
+        ///     Fixed the update
         /// </summary>
         public override void FixedUpdate() => ActiveScene?.FixedUpdate();
-        
+
         /// <summary>
         ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents() => ActiveScene?.DispatchEvents();
-        
+
         /// <summary>
         ///     Resets this instance
         /// </summary>
@@ -152,7 +149,7 @@ namespace Alis.Core.Systems
         public override void Exit() => ActiveScene?.Exit();
 
         /// <summary>
-        /// Simple destructor
+        ///     Simple destructor
         /// </summary>
         ~SceneSystem() => Console.WriteLine(@"Destroy");
     }

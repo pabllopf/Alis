@@ -50,12 +50,23 @@ namespace Alis.Core.Sfml.Components
         /// <summary>
         ///     The texture path
         /// </summary>
-        private readonly string texturePath;
+        public string texturePath;
 
         /// <summary>
         ///     The transform
         /// </summary>
         private Transform transform;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        public Sprite()
+        {
+            this.texturePath = "";
+            transform = new Transform();
+            sprite = new SFML.Graphics.Sprite();
+            RenderManager.Attach(this);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
@@ -75,6 +86,15 @@ namespace Alis.Core.Sfml.Components
         ///     Gets the value of the drawable
         /// </summary>
         public Drawable Drawable => sprite;
+
+        /// <summary>
+        /// Gets or sets the value of the texture
+        /// </summary>
+        public Texture Texture
+        {
+            get => sprite.Texture;
+            set => sprite.Texture = value;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the depth

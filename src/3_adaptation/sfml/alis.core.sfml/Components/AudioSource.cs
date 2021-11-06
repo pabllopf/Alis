@@ -47,19 +47,13 @@ namespace Alis.Core.Sfml.Components
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
-        public AudioSource()
-        {
-            PathFile = "";
-        }
+        public AudioSource() => PathFile = "";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
         /// <param name="pathFile">The path file</param>
-        public AudioSource(string pathFile)
-        {
-            PathFile = pathFile;
-        }
+        public AudioSource(string pathFile) => PathFile = pathFile;
 
         /// <summary>
         ///     Gets or sets the value of the path file

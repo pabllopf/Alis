@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
-using System;
+using System.Numerics;
 using Alis.Core.Entities;
-
-#endregion
+using Alis.Core.Sfml.Managers;
+using SFML.Graphics;
+using SFML.System;
 
 namespace Alis.Core.Sfml.Components
 {
@@ -43,21 +42,50 @@ namespace Alis.Core.Sfml.Components
     public class Camera : Component
     {
         /// <summary>
+        ///     Initializes a new instance of the <see cref="Camera" /> class
+        /// </summary>
+        private Camera()
+        {
+            PointOfView = new Vector2(0.0f, 0.0f);
+            Resolution = new Vector2(640, 480);
+            View = new View(new Vector2f(PointOfView.X, PointOfView.Y), new Vector2f(Resolution.X, Resolution.Y));
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the point of view
+        /// </summary>
+        private Vector2 PointOfView { get; }
+
+        /// <summary>
+        ///     Gets or sets the value of the resolution
+        /// </summary>
+        public Vector2 Resolution { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the view
+        /// </summary>
+        private View View { get; }
+
+        /// <summary>
+        ///     Gets the value of the instance
+        /// </summary>
+        public static Camera Instance { get; } = new Camera();
+
+        /// <summary>
+        ///     Creates the instance
+        /// </summary>
+        /// <returns>The camera</returns>
+        public static Camera CreateInstance() => Instance;
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
+        public override void Start() => RenderManager.SetView(View);
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
+        public override void Update() =>
+            View.Center = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
     }
 }

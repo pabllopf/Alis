@@ -65,7 +65,7 @@ namespace Alis.Core.Sfml.Managers
 
         /// <summary>Gets or sets the render window.</summary>
         /// <value>The render window.</value>
-        private RenderWindow? RenderWindow { get; set; }
+        private static RenderWindow? RenderWindow { get; set; }
 
         /// <summary>Gets or sets the video mode.</summary>
         /// <value>The video mode.</value>
@@ -193,5 +193,11 @@ namespace Alis.Core.Sfml.Managers
 
         /// <summary>Finalizes an instance of the <see cref="RenderManager" /> class.</summary>
         ~RenderManager() => Console.WriteLine(@"destroy");
+
+        /// <summary>
+        ///     Sets the view using the specified view
+        /// </summary>
+        /// <param name="view">The view</param>
+        public static void SetView(View view) => RenderWindow?.SetView(view);
     }
 }

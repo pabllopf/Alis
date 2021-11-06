@@ -121,7 +121,11 @@ namespace Alis.Core.Entities
         /// <exception cref="ComponentTypeAlredyExist"></exception>
         /// <exception cref="ComponentInstancieIsTheSame"></exception>
         /// <exception cref="GameObjectIsFull"></exception>
-        public void Add(Component component) => Components.Add(component);
+        public void Add(Component component)
+        {
+            component.AttachTo(this);
+            Components.Add(component);
+        }
 
         /// <summary>
         ///     Gets this instance.
@@ -130,7 +134,7 @@ namespace Alis.Core.Entities
         /// <returns></returns>
         /// <exception cref="ComponentDontExits"></exception>
         public Component Get<T>() where T : Component =>
-            Components.Find(component => component.GetType() == typeof(T)) ?? throw new InvalidOperationException();
+            Components.Find(component => component.GetType() == typeof(T)) ?? throw  new NullReferenceException();
 
         /// <summary>Awakes this instance.</summary>
         public void Awake() => Components.ForEach(component => component.Awake());
@@ -177,7 +181,10 @@ namespace Alis.Core.Entities
         /// <param name="component">The component.</param>
         /// <returns></returns>
         /// <exception cref="ComponentDontExits"></exception>
-        public void Remove(Component component) => Components.Remove(component);
+        public void Remove(Component component)
+        {
+            Components.Remove(component);
+        }
 
         /// <summary>
         ///     Determines whether this instance contains the object.

@@ -27,12 +27,127 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Alis.Core.Entities;
+
 namespace Alis.Core.Sfml.Components
 {
     /// <summary>
     ///     The animator class
     /// </summary>
-    public class Animator
+    public class Animator : Component
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Animator"/> class
+        /// </summary>
+        public Animator()
+        {
+            Animations = new List<Animation>();
+            State = 0;
+            Timer = new Stopwatch();
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Animator"/> class
+        /// </summary>
+        /// <param name="animations">The animations</param>
+        public Animator(List<Animation> animations)
+        {
+            Animations = animations;
+            State = 0;
+            Timer = new Stopwatch();
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the timer
+        /// </summary>
+        private Stopwatch Timer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the sprite
+        /// </summary>
+        private Sprite? Sprite { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the animations
+        /// </summary>
+        public List<Animation> Animations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the state
+        /// </summary>
+        public int State { get; set; }
+
+        /// <summary>
+        /// Gets the value of the instance
+        /// </summary>
+        public static Animator Instance { get; } = new Animator();
+
+        /// <summary>
+        /// Creates the instance
+        /// </summary>
+        /// <returns>The animator</returns>
+        public static Animator CreateInstance() => Instance;
+
+        /// <summary>
+        /// Adds the animation
+        /// </summary>
+        /// <param name="animation">The animation</param>
+        public void Add(Animation animation) => Animations.Add(animation);
+
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            Timer.Start();
+        }
+
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public override void Start()
+        {
+            if (GameObject.Contains<Sprite>())
+            {
+                Sprite = (Sprite)GameObject.Get<Sprite>();
+            }
+            else
+            {
+                Sprite = new Sprite();
+                GameObject.Add(Sprite);
+            }
+        }
+
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public override void Update()
+        {
+            if (Sprite is not null)
+            {
+                if (Animations.Count > 0)
+                {
+                    if (Timer.ElapsedMilliseconds >= (Animations[State].Speed * 1000))
+                    {
+                        if (Animations[State].HasNext())
+                        {
+                            Sprite.Texture = Animations[State].NextTexture();
+                        }
+                        
+                        Timer.Restart();
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public override void Exit()
+        {
+        }
     }
 }
