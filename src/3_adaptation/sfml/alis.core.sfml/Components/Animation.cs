@@ -39,45 +39,39 @@ namespace Alis.Core.Sfml.Components
     public class Animation
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animation"/> class
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
-        public Animation()
-        {
-            Textures = new List<Texture>();
-        }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Animation"/> class
-        /// </summary>
-        /// <param name="textures">The textures</param>
-        public Animation(List<Texture> textures)
-        {
-            Textures = textures;
-        }
-        
-        /// <summary>
-        /// Gets or sets the value of the index
-        /// </summary>
-        private int Index { get; set; } = 0;
+        public Animation() => Textures = new List<Texture>();
 
         /// <summary>
-        /// Gets or sets the value of the speed
+        ///     Initializes a new instance of the <see cref="Animation" /> class
+        /// </summary>
+        /// <param name="textures">The textures</param>
+        public Animation(List<Texture> textures) => Textures = textures;
+
+        /// <summary>
+        ///     Gets or sets the value of the index
+        /// </summary>
+        private int Index { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the speed
         /// </summary>
         public double Speed { get; set; } = 1.0f;
 
         /// <summary>
-        /// Gets or sets the value of the textures
+        ///     Gets or sets the value of the textures
         /// </summary>
-        private List<Texture> Textures { get; set; }
+        private List<Texture> Textures { get; }
 
         /// <summary>
-        /// Describes whether this instance has next
+        ///     Describes whether this instance has next
         /// </summary>
         /// <returns>The bool</returns>
         public bool HasNext() => Textures.Count > 0;
 
         /// <summary>
-        /// Nexts the texture
+        ///     Nexts the texture
         /// </summary>
         /// <exception cref="InvalidCastException"></exception>
         /// <returns>The texture</returns>
@@ -85,21 +79,21 @@ namespace Alis.Core.Sfml.Components
         {
             Texture result = Textures[Index];
 
-            if (Index < (Textures.Count - 1))
+            if (Index < Textures.Count - 1)
             {
                 Index += 1;
             }
 
-            if (Index == (Textures.Count - 1))
+            if (Index == Textures.Count - 1)
             {
                 Index = 0;
             }
-            
+
             return result;
         }
 
         /// <summary>
-        /// Textures this instance
+        ///     Textures this instance
         /// </summary>
         /// <returns>The texture</returns>
         public Texture Texture() => Textures[Index];

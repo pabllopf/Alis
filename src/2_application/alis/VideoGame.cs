@@ -44,8 +44,9 @@ namespace Alis
         /// </summary>
         public VideoGame()
         {
-            RenderSystem = new RenderManager();
+            InputSystem = new InputManager();
             SceneSystem = new SceneManager();
+            RenderSystem = new RenderManager();
         }
 
         /// <summary>

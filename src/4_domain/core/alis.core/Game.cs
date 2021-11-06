@@ -83,6 +83,12 @@ namespace Alis.Core
         [JsonIgnore]
         public SceneSystem SceneSystem { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the value of the input system
+        /// </summary>
+        [JsonIgnore]
+        public InputSystem InputSystem { get; protected set; }
+
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
         [JsonPropertyName("_Setting")]
@@ -93,6 +99,7 @@ namespace Alis.Core
         {
             #region Awake()
 
+            InputSystem.Awake();
             SceneSystem.Awake();
             RenderSystem.Awake();
 
@@ -100,6 +107,7 @@ namespace Alis.Core
 
             #region Start()
 
+            InputSystem.Start();
             SceneSystem.Start();
             RenderSystem.Start();
 
@@ -117,6 +125,7 @@ namespace Alis.Core
                     {
                         #region BeforeUpdate()
 
+                        InputSystem.BeforeUpdate();
                         SceneSystem.BeforeUpdate();
                         RenderSystem.BeforeUpdate();
 
@@ -124,6 +133,7 @@ namespace Alis.Core
 
                         #region Update()
 
+                        InputSystem.Update();
                         SceneSystem.Update();
                         RenderSystem.Update();
 
@@ -131,6 +141,7 @@ namespace Alis.Core
 
                         #region AfterUpdate()
 
+                        InputSystem.AfterUpdate();
                         SceneSystem.AfterUpdate();
                         RenderSystem.AfterUpdate();
 
@@ -139,6 +150,7 @@ namespace Alis.Core
 
                     #region FixedUpdate()
 
+                    InputSystem.FixedUpdate();
                     SceneSystem.FixedUpdate();
                     RenderSystem.FixedUpdate();
 
@@ -146,6 +158,7 @@ namespace Alis.Core
 
                     #region DispatchEvents()
 
+                    InputSystem.DispatchEvents();
                     SceneSystem.DispatchEvents();
                     RenderSystem.DispatchEvents();
 
@@ -159,6 +172,7 @@ namespace Alis.Core
 
             #region Exit()
 
+            InputSystem.Exit();
             SceneSystem.Exit();
             RenderSystem.Exit();
 
@@ -169,6 +183,7 @@ namespace Alis.Core
         /// <summary>Resets the game.</summary>
         public void Reset()
         {
+            InputSystem.Reset();
             SceneSystem.Reset();
             RenderSystem.Reset();
         }
@@ -177,6 +192,7 @@ namespace Alis.Core
         /// <summary>Stops this game.</summary>
         public void Stop()
         {
+            InputSystem.Stop();
             SceneSystem.Stop();
             RenderSystem.Stop();
         }
@@ -186,9 +202,6 @@ namespace Alis.Core
         /// </summary>
         public static void Exit() => IsRunning = false;
 
-        ~Game()
-        {
-            Console.WriteLine(@"destroy");
-        }
+        ~Game() => Console.WriteLine(@$"Destroy Game {GetHashCode().ToString()}");
     }
 }

@@ -21,18 +21,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/InputManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/Keyboard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2_application/alis.example/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis.example/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_application/alis/VideoGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/VideoGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/AudioSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/AudioSource.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/BoxCollider2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/BoxCollider2D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Camera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Collider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Collider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Sprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Sprite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.test/Alis.Core.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/Alis.Core.Test.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/GameObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/SceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/SceneSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/InputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/InputSystem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +62,9 @@
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis.example/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Keyboard.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/InputSFML.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/Camera.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/Animator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -401,7 +405,7 @@
       <workItem from="1635944081971" duration="223000" />
       <workItem from="1635946428545" duration="470000" />
       <workItem from="1636039763752" duration="13429000" />
-      <workItem from="1636189446554" duration="8610000" />
+      <workItem from="1636189446554" duration="18601000" />
     </task>
     <servers />
   </component>

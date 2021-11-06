@@ -27,9 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Entities;
 using Alis.Core.Sfml.Components;
+using Alis.Core.Sfml.Managers;
 using SFML.Graphics;
 using Sprite = Alis.Core.Sfml.Components.Sprite;
 
@@ -67,15 +69,19 @@ namespace Alis.Example
                             .Add<AudioSource>(new AudioSource(
                                 @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\menu.wav"))
                             .Add<Camera>(Camera.CreateInstance())
-                            .Add<BoxCollider2D>(new BoxCollider2D())
-                            .Add<Animator>(new Animator(new List<Animation>()
+                            .Add<BoxCollider2D>(BoxCollider2D.CreateInstance())
+                            .Add<Animator>(new Animator(new List<Animation>
                             {
-                                new Animation(new List<Texture>()
+                                new Animation(new List<Texture>
                                 {
-                                    new Texture(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"),
-                                    new Texture(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile001.png"),
-                                    new Texture(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile002.png"),
-                                    new Texture(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile003.png")
+                                    new Texture(
+                                        @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"),
+                                    new Texture(
+                                        @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile001.png"),
+                                    new Texture(
+                                        @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile002.png"),
+                                    new Texture(
+                                        @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile003.png")
                                 }),
                                 new Animation()
                             }))

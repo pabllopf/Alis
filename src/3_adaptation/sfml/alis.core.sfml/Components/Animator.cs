@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Entities;
@@ -40,7 +39,7 @@ namespace Alis.Core.Sfml.Components
     public class Animator : Component
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animator"/> class
+        ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
         public Animator()
         {
@@ -48,9 +47,9 @@ namespace Alis.Core.Sfml.Components
             State = 0;
             Timer = new Stopwatch();
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animator"/> class
+        ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
         /// <param name="animations">The animations</param>
         public Animator(List<Animation> animations)
@@ -61,44 +60,44 @@ namespace Alis.Core.Sfml.Components
         }
 
         /// <summary>
-        /// Gets or sets the value of the timer
+        ///     Gets or sets the value of the timer
         /// </summary>
-        private Stopwatch Timer { get; set; }
+        private Stopwatch Timer { get; }
 
         /// <summary>
-        /// Gets or sets the value of the sprite
+        ///     Gets or sets the value of the sprite
         /// </summary>
         private Sprite? Sprite { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the animations
+        ///     Gets or sets the value of the animations
         /// </summary>
         public List<Animation> Animations { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the state
+        ///     Gets or sets the value of the state
         /// </summary>
         public int State { get; set; }
 
         /// <summary>
-        /// Gets the value of the instance
+        ///     Gets the value of the instance
         /// </summary>
         public static Animator Instance { get; } = new Animator();
 
         /// <summary>
-        /// Creates the instance
+        ///     Creates the instance
         /// </summary>
         /// <returns>The animator</returns>
         public static Animator CreateInstance() => Instance;
 
         /// <summary>
-        /// Adds the animation
+        ///     Adds the animation
         /// </summary>
         /// <param name="animation">The animation</param>
         public void Add(Animation animation) => Animations.Add(animation);
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
@@ -106,13 +105,13 @@ namespace Alis.Core.Sfml.Components
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
             if (GameObject.Contains<Sprite>())
             {
-                Sprite = (Sprite)GameObject.Get<Sprite>();
+                Sprite = (Sprite) GameObject.Get<Sprite>();
             }
             else
             {
@@ -122,7 +121,7 @@ namespace Alis.Core.Sfml.Components
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
@@ -130,13 +129,13 @@ namespace Alis.Core.Sfml.Components
             {
                 if (Animations.Count > 0)
                 {
-                    if (Timer.ElapsedMilliseconds >= (Animations[State].Speed * 1000))
+                    if (Timer.ElapsedMilliseconds >= Animations[State].Speed * 1000)
                     {
                         if (Animations[State].HasNext())
                         {
                             Sprite.Texture = Animations[State].NextTexture();
                         }
-                        
+
                         Timer.Restart();
                     }
                 }
@@ -144,7 +143,7 @@ namespace Alis.Core.Sfml.Components
         }
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public override void Exit()
         {

@@ -134,7 +134,7 @@ namespace Alis.Core.Entities
         /// <returns></returns>
         /// <exception cref="ComponentDontExits"></exception>
         public Component Get<T>() where T : Component =>
-            Components.Find(component => component.GetType() == typeof(T)) ?? throw  new NullReferenceException();
+            Components.Find(component => component.GetType() == typeof(T)) ?? throw new NullReferenceException();
 
         /// <summary>Awakes this instance.</summary>
         public void Awake() => Components.ForEach(component => component.Awake());

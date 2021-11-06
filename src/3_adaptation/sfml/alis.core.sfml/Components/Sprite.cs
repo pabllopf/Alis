@@ -58,11 +58,11 @@ namespace Alis.Core.Sfml.Components
         private Transform transform;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         public Sprite()
         {
-            this.texturePath = "";
+            texturePath = "";
             transform = new Transform();
             sprite = new SFML.Graphics.Sprite();
             RenderManager.Attach(this);
@@ -88,7 +88,7 @@ namespace Alis.Core.Sfml.Components
         public Drawable Drawable => sprite;
 
         /// <summary>
-        /// Gets or sets the value of the texture
+        ///     Gets or sets the value of the texture
         /// </summary>
         public Texture Texture
         {

@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
+using System.Text.Json.Serialization;
+
 namespace Alis.Core.Sfml.Components
 {
     /// <summary>
@@ -35,6 +38,44 @@ namespace Alis.Core.Sfml.Components
     /// <seealso cref="Collider" />
     public class BoxCollider2D : Collider
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BoxCollider2D" /> class
+        /// </summary>
+        private BoxCollider2D()
+        {
+            Size = new Vector2(1.0f, 1.0f);
+            RelativePosition = new Vector2(0.0f, 0.0f);
+        }
+
+        /// <summary>
+        ///     Gets the value of the instance
+        /// </summary>
+        public static BoxCollider2D Instance { get; } = new BoxCollider2D();
+
+        /// <summary>
+        ///     Gets or sets the value of the auto tiling
+        /// </summary>
+        [JsonPropertyName("_AutoTiling")]
+        public bool AutoTiling { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the relative position
+        /// </summary>
+        [JsonPropertyName("_RelativePosition")]
+        public Vector2 RelativePosition { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the size
+        /// </summary>
+        [JsonPropertyName("_Size")]
+        public Vector2 Size { get; set; }
+
+        /// <summary>
+        ///     Creates the instance
+        /// </summary>
+        /// <returns>The box collider</returns>
+        public static BoxCollider2D CreateInstance() => Instance;
+
         /// <summary>
         ///     Starts this instance
         /// </summary>

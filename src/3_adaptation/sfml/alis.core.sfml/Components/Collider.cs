@@ -27,11 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
+using System.Text.Json.Serialization;
 using Alis.Core.Entities;
-
-#endregion
 
 namespace Alis.Core.Sfml.Components
 {
@@ -41,5 +38,10 @@ namespace Alis.Core.Sfml.Components
     /// <seealso cref="Component" />
     public abstract class Collider : Component
     {
+        /// <summary>
+        ///     Gets or sets the value of the is trigger
+        /// </summary>
+        [JsonPropertyName("_IsTrigger")]
+        public bool IsTrigger { get; set; }
     }
 }
