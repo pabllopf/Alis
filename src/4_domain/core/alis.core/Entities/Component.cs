@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
+
 namespace Alis.Core.Entities
 {
     /// <summary>Define a general component.</summary>

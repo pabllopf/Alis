@@ -125,9 +125,6 @@ namespace Alis.Core.Systems
         {
         }
 
-        ~InputSystem()
-        {
-            Console.WriteLine(@"Destroy");
-        }
+        ~InputSystem() => Console.WriteLine(@$"Destroy InputSystem {GetHashCode().ToString()}");
     }
 }

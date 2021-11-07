@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Numerics;
 using Alis.Core.Entities;
 using Alis.Core.Sfml.Managers;
 using SFML.Graphics;
@@ -79,6 +80,8 @@ namespace Alis.Core.Sfml.Components
             transform = new Transform();
 
             sprite = new SFML.Graphics.Sprite(new Texture(texturePath));
+            Size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
+            Console.WriteLine(@$"witdh ={Size.X} | height={Size.Y}");
             RenderManager.Attach(this);
         }
 
@@ -86,6 +89,12 @@ namespace Alis.Core.Sfml.Components
         ///     Gets the value of the drawable
         /// </summary>
         public Drawable Drawable => sprite;
+        
+        
+        /// <summary>
+        /// Gets or sets the value of the size
+        /// </summary>
+        public Vector2 Size { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the texture

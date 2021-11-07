@@ -58,6 +58,10 @@ namespace Alis.Example
                         .Resolution(640, 480)
                         .ScreenMode(ScreenMode.Default)
                         .Build())
+                    .Debug(debug => debug
+                        .LogLevel(LogLevel.Info)
+                        .ShowPhysicBorders(true)
+                        .Build())
                     .Build())
                 .Manager(sceneManager => sceneManager
                     .Add<Scene>(scene => scene
@@ -69,7 +73,10 @@ namespace Alis.Example
                             .Add<AudioSource>(new AudioSource(
                                 @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\menu.wav"))
                             .Add<Camera>(Camera.CreateInstance())
-                            .Add<BoxCollider2D>(BoxCollider2D.CreateInstance())
+                            .Add<BoxCollider2D>(new BoxCollider2D()
+                            {
+                                AutoTiling = true
+                            })
                             .Add<Animator>(new Animator(new List<Animation>
                             {
                                 new Animation(new List<Texture>

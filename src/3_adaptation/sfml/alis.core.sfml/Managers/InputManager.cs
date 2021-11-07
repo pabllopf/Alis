@@ -36,11 +36,13 @@ using Alis.Core.Systems;
 namespace Alis.Core.Sfml.Managers
 {
     /// <summary>
-    ///     The input manager class
+    /// 
     /// </summary>
-    /// <seealso cref="InputSystem" />
     public class InputManager : InputSystem
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InputManager"/> class
+        /// </summary>
         static InputManager()
         {
             OnPressKey += InputManager_OnPressKey;

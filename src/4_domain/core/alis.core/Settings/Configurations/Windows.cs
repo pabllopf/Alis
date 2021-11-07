@@ -27,14 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Entities;
-
-#endregion
 
 namespace Alis.Core.Settings.Configurations
 {
@@ -43,7 +39,6 @@ namespace Alis.Core.Settings.Configurations
     /// </summary>
     public class Window
     {
-        #region Reset()
 
         /// <summary>
         ///     Resets this instance
@@ -54,9 +49,7 @@ namespace Alis.Core.Settings.Configurations
             ScreenMode = ScreenMode.Default;
         }
 
-        #endregion
 
-        #region Fields
 
         /// <summary>
         ///     The resolution
@@ -95,17 +88,13 @@ namespace Alis.Core.Settings.Configurations
             ScreenMode = screenMode;
         }
 
-        #endregion
 
-        #region Events
 
         public event EventHandler<Vector2> OnChangeResolution;
 
         public event EventHandler<ScreenMode> OnChangeScreenMode;
 
-        #endregion
 
-        #region Properties
 
         /// <summary>
         ///     Gets or sets the value of the resolution
@@ -135,10 +124,6 @@ namespace Alis.Core.Settings.Configurations
             }
         }
 
-        #endregion
-
-        #region DefaultEvents
-
         /// <summary>
         ///     Windows the on change resolution using the specified sender
         /// </summary>
@@ -156,7 +141,5 @@ namespace Alis.Core.Settings.Configurations
         private void Window_OnChangeScreenMode(object? sender, ScreenMode e)
         {
         }
-
-        #endregion
     }
 }

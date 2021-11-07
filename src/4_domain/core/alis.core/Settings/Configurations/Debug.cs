@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Text.Json.Serialization;
+using Alis.Core.Entities;
+
 namespace Alis.Core.Settings.Configurations
 {
     /// <summary>
@@ -34,5 +37,46 @@ namespace Alis.Core.Settings.Configurations
     /// </summary>
     public class Debug
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Debug"/> class
+        /// </summary>
+        public Debug()
+        {
+            ShowPhysicBorders = false;
+            LogLevel = LogLevel.Critical;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Debug"/> class
+        /// </summary>
+        /// <param name="showPhysicBorders">The show physic borders</param>
+        /// <param name="logLevel">The log level</param>
+        [JsonConstructor]
+        public Debug(bool showPhysicBorders, LogLevel logLevel)
+        {
+            ShowPhysicBorders = showPhysicBorders;
+            LogLevel = logLevel;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the show physic borders
+        /// </summary>
+        [JsonPropertyName("_ShowPhysicBorders")]
+        public bool ShowPhysicBorders { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the log level
+        /// </summary>
+        [JsonPropertyName("_LogLevel")]
+        public LogLevel LogLevel { get; set; }
+
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
+        public void Reset()
+        {
+            ShowPhysicBorders = false;
+            LogLevel = LogLevel.Critical;
+        }
     }
 }

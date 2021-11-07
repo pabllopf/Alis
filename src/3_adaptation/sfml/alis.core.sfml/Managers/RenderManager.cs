@@ -192,12 +192,18 @@ namespace Alis.Core.Sfml.Managers
             VideoMode = new VideoMode((uint) resolution.X, (uint) resolution.Y);
 
         /// <summary>Finalizes an instance of the <see cref="RenderManager" /> class.</summary>
-        ~RenderManager() => Console.WriteLine(@"destroy");
+        ~RenderManager() => Console.WriteLine(@$"Destroy RenderManager {GetHashCode().ToString()}");
 
         /// <summary>
         ///     Sets the view using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         public static void SetView(View view) => RenderWindow?.SetView(view);
+
+        /// <summary>
+        /// Gets the windows
+        /// </summary>
+        /// <returns>The render window</returns>
+        public static RenderWindow GetWindows() => RenderWindow;
     }
 }

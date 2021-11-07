@@ -10,8 +10,8 @@
 
 
     <ItemGroup>
-        <ProjectReference Include="..\..\fluent\alis.fluentapi\Alis.FluentApi.csproj"/>
-        <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj"/>
+        <ProjectReference Include="..\..\fluent\alis.fluentapi\Alis.FluentApi.csproj" />
+        <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />
     </ItemGroup>
 
 

@@ -30,6 +30,7 @@
 #region
 
 using System;
+using Alis.Core.Builders;
 using Alis.Core.Settings;
 using Alis.Core.Settings.Configurations;
 using Alis.FluentApi;
@@ -43,7 +44,8 @@ namespace Alis.Core.Sfml.Builders
     public class SettingBuilder :
         IBuild<Setting>,
         IGeneral<SettingBuilder, Func<GeneralBuilder, General>>,
-        IWindow<SettingBuilder, Func<WindowBuilder, Window>>
+        IWindow<SettingBuilder, Func<WindowBuilder, Window>>,
+        IDebug<SettingBuilder, Func<DebugBuilder, Debug>>
     {
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
@@ -66,6 +68,17 @@ namespace Alis.Core.Sfml.Builders
         public SettingBuilder Window(Func<WindowBuilder, Window> value)
         {
             Game.Setting.Window = value.Invoke(new WindowBuilder());
+            return this;
+        }
+
+        /// <summary>
+        /// Debugs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The setting builder</returns>
+        public SettingBuilder Debug(Func<DebugBuilder, Debug> value)
+        {
+            Game.Setting.Debug = value.Invoke(new DebugBuilder());
             return this;
         }
     }

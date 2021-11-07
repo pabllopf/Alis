@@ -27,8 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Numerics;
 using System.Text.Json.Serialization;
+using Alis.Core.Sfml.Managers;
+using SFML.Graphics;
+using SFML.System;
 
 namespace Alis.Core.Sfml.Components
 {
@@ -41,11 +45,33 @@ namespace Alis.Core.Sfml.Components
         /// <summary>
         ///     Initializes a new instance of the <see cref="BoxCollider2D" /> class
         /// </summary>
-        private BoxCollider2D()
+        public BoxCollider2D()
         {
             Size = new Vector2(1.0f, 1.0f);
             RelativePosition = new Vector2(0.0f, 0.0f);
+            
+            RectangleShape = new RectangleShape(new Vector2f(Size.X, Size.Y));
+            RectangleShape.FillColor = Color.Transparent;
+            RectangleShape.OutlineColor = Color.Green;
+            RectangleShape.OutlineThickness = 1f;
         }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxCollider2D"/> class
+        /// </summary>
+        /// <param name="size">The size</param>
+        /// <param name="relativePosition">The relative position</param>
+        [JsonConstructor]
+        public BoxCollider2D(Vector2 size, Vector2 relativePosition)
+        {
+            Size = size;
+            RelativePosition = relativePosition;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the rectangle shape
+        /// </summary>
+        private RectangleShape? RectangleShape { get; set; }
 
         /// <summary>
         ///     Gets the value of the instance
@@ -77,10 +103,29 @@ namespace Alis.Core.Sfml.Components
         public static BoxCollider2D CreateInstance() => Instance;
 
         /// <summary>
+        /// Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            if (AutoTiling)
+            {
+                if (GameObject.Contains<Sprite>())
+                {
+                    Size = ((Sprite)GameObject.Get<Sprite>()).Size;
+                }
+            }
+        }
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
+            RectangleShape = new RectangleShape(new Vector2f(Size.X, Size.Y));
+            RectangleShape.FillColor = Color.Transparent;
+            RectangleShape.OutlineColor = Color.Green;
+            RectangleShape.OutlineThickness = 1f;
+            PhysicsManager.Attach(this);
         }
 
         /// <summary>
@@ -88,6 +133,16 @@ namespace Alis.Core.Sfml.Components
         /// </summary>
         public override void Update()
         {
+            if (RectangleShape is not null)
+            {
+                RectangleShape.Position = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+            }
         }
+
+        /// <summary>
+        /// Gets the drawable
+        /// </summary>
+        /// <returns>The drawable</returns>
+        public override Drawable GetDrawable() => RectangleShape ?? throw new NullReferenceException();
     }
 }

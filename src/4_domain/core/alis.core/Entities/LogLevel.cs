@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Collider.cs
+//  File:   LogLevel.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,29 +27,40 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
-using Alis.Core.Entities;
-using SFML.Graphics;
-
-namespace Alis.Core.Sfml.Components
+namespace Alis.Core.Entities
 {
     /// <summary>
-    ///     The collider class
+    /// The log level enum
     /// </summary>
-    /// <seealso cref="Component" />
-    public abstract class Collider : Component
+    public enum LogLevel
     {
         /// <summary>
-        ///     Gets or sets the value of the is trigger
+        /// The info log level
         /// </summary>
-        [JsonPropertyName("_IsTrigger")]
-        public bool IsTrigger { get; set; }
-
+        Info = 0,
         /// <summary>
-        /// Gets the drawable
+        /// The log log level
         /// </summary>
-        /// <returns>The drawable</returns>
-        public virtual Drawable GetDrawable() => throw  new NotImplementedException();
+        Log = 1,
+        /// <summary>
+        /// The debug log level
+        /// </summary>
+        Debug = 2,
+        /// <summary>
+        /// The normal log level
+        /// </summary>
+        Normal = 3,
+        /// <summary>
+        /// The error log level
+        /// </summary>
+        Error = 4,
+        /// <summary>
+        /// The critical log level
+        /// </summary>
+        Critical = 5,
+        /// <summary>
+        /// The production log level
+        /// </summary>
+        Production = 6,
     }
 }

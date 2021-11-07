@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Collider.cs
+//  File:   DebugBuilder.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,29 +27,45 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
 using Alis.Core.Entities;
-using SFML.Graphics;
+using Alis.Core.Settings.Configurations;
+using Alis.FluentApi;
 
-namespace Alis.Core.Sfml.Components
+namespace Alis.Core.Builders
 {
     /// <summary>
-    ///     The collider class
+    /// The debug builder class
     /// </summary>
-    /// <seealso cref="Component" />
-    public abstract class Collider : Component
+    /// <seealso cref="IBuild{Debug}"/>
+    public class DebugBuilder:
+    IBuild<Debug>
     {
         /// <summary>
-        ///     Gets or sets the value of the is trigger
+        /// Logs the level using the specified log level
         /// </summary>
-        [JsonPropertyName("_IsTrigger")]
-        public bool IsTrigger { get; set; }
-
+        /// <param name="logLevel">The log level</param>
+        /// <returns>The debug builder</returns>
+        public DebugBuilder LogLevel(LogLevel logLevel)
+        {
+            Game.Setting.Debug.LogLevel = logLevel;
+            return this;
+        }
+        
         /// <summary>
-        /// Gets the drawable
+        /// Shows the physic borders using the specified value
         /// </summary>
-        /// <returns>The drawable</returns>
-        public virtual Drawable GetDrawable() => throw  new NotImplementedException();
+        /// <param name="value">The value</param>
+        /// <returns>The debug builder</returns>
+        public DebugBuilder ShowPhysicBorders(bool value)
+        {
+            Game.Setting.Debug.ShowPhysicBorders = value;
+            return this;
+        }
+        
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The debug</returns>
+        public Debug Build() => Game.Setting.Debug;
     }
 }

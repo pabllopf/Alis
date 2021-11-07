@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   RenderSystem.cs
+//  File:   PhysicsSystem.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -28,32 +28,31 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Alis.Core.Sfml.Components;
+using Alis.Core.Systems;
 
-namespace Alis.Core.Systems
+namespace Alis.Core.Sfml.Managers
 {
     /// <summary>
-    ///     The render system class
+    /// The physics manager class
     /// </summary>
-    /// <seealso cref="System" />
-    public class RenderSystem : System
+    /// <seealso cref="PhysicsSystem"/>
+    public class PhysicsManager : PhysicsSystem
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RenderSystem" /> class
+        ///     Initializes a new instance of the <see cref="PhysicsSystem" /> class
         /// </summary>
         [JsonConstructor]
-        public RenderSystem()
+        public PhysicsManager()
         {
         }
-
 
         /// <summary>
-        ///     Awakes this instance
+        /// Gets or sets the value of the colliders
         /// </summary>
-        public override void Awake()
-        {
-        }
-
+        private static List<Collider> Colliders { get; set; } = new List<Collider>();
 
         /// <summary>
         ///     Starts this instance
@@ -61,74 +60,40 @@ namespace Alis.Core.Systems
         public override void Start()
         {
         }
-
-
-        /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void Update()
         {
+            if (Game.Setting.Debug.ShowPhysicBorders) 
+            {
+                if (Colliders.Count > 0)
+                {
+                    for (int i = 0; i < Colliders.Count; i++)
+                    {
+                        RenderManager.GetWindows().Draw(Colliders[i].GetDrawable());
+                    }
+                }
+            }
         }
+        
+        /// <summary>
+        /// Attaches the collider
+        /// </summary>
+        /// <param name="collider">The collider</param>
+        public static void Attach(Collider collider) => Colliders.Add(collider);
 
 
         /// <summary>
-        ///     Afters the update
+        /// Uns the attach using the specified collider
         /// </summary>
-        public override void AfterUpdate()
-        {
-        }
-
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-        }
-
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-        }
-
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-        }
-
+        /// <param name="collider">The collider</param>
+        public static void UnAttach(Collider collider) => Colliders.Remove(collider);
+        
         /// <summary>
         /// Destroy object.
         /// </summary>
-        ~RenderSystem() => Console.WriteLine(@$"Destroy RenderSystem {GetHashCode().ToString()}");
+        ~PhysicsManager() => Console.WriteLine(@$"Destroy PhysicsManager {GetHashCode().ToString()}");
     }
 }

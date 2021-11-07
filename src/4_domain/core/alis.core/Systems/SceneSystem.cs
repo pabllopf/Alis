@@ -151,6 +151,6 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Simple destructor
         /// </summary>
-        ~SceneSystem() => Console.WriteLine(@"Destroy");
+        ~SceneSystem() => Console.WriteLine(@$"Destroy SceneSystem {GetHashCode().ToString()}");
     }
 }

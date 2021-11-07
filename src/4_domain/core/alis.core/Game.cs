@@ -27,15 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 using System.Text.Json.Serialization;
 using Alis.Core.Settings;
 using Alis.Core.Systems;
 using Alis.FluentApi.Validations;
-
-#endregion
 
 namespace Alis.Core
 {
@@ -48,8 +44,10 @@ namespace Alis.Core
         public Game()
         {
             IsRunning = true;
-            RenderSystem = new RenderSystem();
+            InputSystem = new InputSystem();
             SceneSystem = new SceneSystem();
+            PhysicsSystem = new PhysicsSystem();
+            RenderSystem = new RenderSystem();
         }
 
         /// <summary>
@@ -59,11 +57,13 @@ namespace Alis.Core
         /// <param name="renderSystem">The render system</param>
         /// <param name="sceneSystem">The scene system</param>
         [JsonConstructor]
-        public Game(NotNull<bool> isRunning, NotNull<RenderSystem> renderSystem, NotNull<SceneSystem> sceneSystem)
+        public Game(bool isRunning, InputSystem inputSystem, RenderSystem renderSystem, SceneSystem sceneSystem, PhysicsSystem physicsSystem)
         {
-            IsRunning = isRunning.Value;
-            RenderSystem = renderSystem.Value;
-            SceneSystem = sceneSystem.Value;
+            IsRunning = isRunning;
+            InputSystem = inputSystem;
+            SceneSystem = sceneSystem;
+            PhysicsSystem = physicsSystem;
+            RenderSystem = renderSystem;
         }
 
         /// <summary>Gets a value indicating whether this instance is running.</summary>
@@ -87,7 +87,13 @@ namespace Alis.Core
         ///     Gets or sets the value of the input system
         /// </summary>
         [JsonIgnore]
-        public InputSystem InputSystem { get; protected set; }
+        public InputSystem InputSystem { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the physics system
+        /// </summary>
+        [JsonIgnore]
+        public PhysicsSystem PhysicsSystem { get; set; }
 
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
@@ -101,6 +107,7 @@ namespace Alis.Core
 
             InputSystem.Awake();
             SceneSystem.Awake();
+            PhysicsSystem.Awake();
             RenderSystem.Awake();
 
             #endregion
@@ -109,6 +116,7 @@ namespace Alis.Core
 
             InputSystem.Start();
             SceneSystem.Start();
+            PhysicsSystem.Start();
             RenderSystem.Start();
 
             #endregion
@@ -127,6 +135,7 @@ namespace Alis.Core
 
                         InputSystem.BeforeUpdate();
                         SceneSystem.BeforeUpdate();
+                        PhysicsSystem.BeforeUpdate();
                         RenderSystem.BeforeUpdate();
 
                         #endregion
@@ -135,6 +144,7 @@ namespace Alis.Core
 
                         InputSystem.Update();
                         SceneSystem.Update();
+                        PhysicsSystem.Update();
                         RenderSystem.Update();
 
                         #endregion
@@ -143,6 +153,7 @@ namespace Alis.Core
 
                         InputSystem.AfterUpdate();
                         SceneSystem.AfterUpdate();
+                        PhysicsSystem.AfterUpdate();
                         RenderSystem.AfterUpdate();
 
                         #endregion
@@ -152,6 +163,7 @@ namespace Alis.Core
 
                     InputSystem.FixedUpdate();
                     SceneSystem.FixedUpdate();
+                    PhysicsSystem.FixedUpdate();
                     RenderSystem.FixedUpdate();
 
                     #endregion
@@ -160,6 +172,7 @@ namespace Alis.Core
 
                     InputSystem.DispatchEvents();
                     SceneSystem.DispatchEvents();
+                    PhysicsSystem.DispatchEvents();
                     RenderSystem.DispatchEvents();
 
                     #endregion
@@ -174,6 +187,7 @@ namespace Alis.Core
 
             InputSystem.Exit();
             SceneSystem.Exit();
+            PhysicsSystem.Exit();
             RenderSystem.Exit();
 
             #endregion
@@ -185,6 +199,7 @@ namespace Alis.Core
         {
             InputSystem.Reset();
             SceneSystem.Reset();
+            PhysicsSystem.Reset();
             RenderSystem.Reset();
         }
 
@@ -194,6 +209,7 @@ namespace Alis.Core
         {
             InputSystem.Stop();
             SceneSystem.Stop();
+            PhysicsSystem.Stop();
             RenderSystem.Stop();
         }
 

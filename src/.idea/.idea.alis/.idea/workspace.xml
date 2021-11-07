@@ -21,19 +21,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/InputManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/Keyboard.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/PhysicsManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Builders/DebugBuilder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/LogLevel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Words/IDebug.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2_application/alis.example/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis.example/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_application/alis/Alis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/Alis.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2_application/alis/VideoGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/VideoGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Alis.Core.Sfml.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Alis.Core.Sfml.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Builders/SettingBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Builders/SettingBuilder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/BoxCollider2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/BoxCollider2D.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Collider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Collider.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Sprite.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Sprite.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/GameObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/Component.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/Component.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/Debug.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/Debug.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/Windows.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Settings/Configurations/Windows.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/InputSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/InputSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/PhysicsSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/PhysicsSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/RenderSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/RenderSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/SceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/SceneSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Alis.FluentApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Alis.FluentApi.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,13 +72,15 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Nueva carpeta/src/2_adaptation/sfml/alis.core.sfml/src/Render/RenderSFML.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis.example/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Input.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Keyboard.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Input.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Keyboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/InputSFML.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/Camera.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/Animator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Nueva carpeta/src/2_adaptation/sfml/alis.core.sfml/src/Components/Collision.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="20JwovORUIeVYO0BBJ2LrkdXGzZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -80,7 +94,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.3500761" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34934497" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -92,7 +106,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.2_Application\Alis\Alis.Example">
@@ -376,10 +390,10 @@
       <item itemvalue=".NET Project.Alis.Editor" />
       <item itemvalue=".NET Project.Alis.Editor.Benchmark" />
       <item itemvalue=".NET Project.Alis.Editor.Example" />
+      <item itemvalue=".NET Project.Alis.Example" />
       <item itemvalue=".NET Project.Alis.FluentApi.Example" />
       <item itemvalue=".NET Project.Alis.Tools.Benchmark" />
       <item itemvalue=".NET Project.Alis.Tools.Example" />
-      <item itemvalue=".NET Project.Alis.Example" />
       <item itemvalue=".NET Project.2_Application\Alis\Alis.Example" />
     </list>
     <recent_temporary>
@@ -405,7 +419,9 @@
       <workItem from="1635944081971" duration="223000" />
       <workItem from="1635946428545" duration="470000" />
       <workItem from="1636039763752" duration="13429000" />
-      <workItem from="1636189446554" duration="18601000" />
+      <workItem from="1636189446554" duration="21159000" />
+      <workItem from="1636218702068" duration="693000" />
+      <workItem from="1636280369166" duration="3310000" />
     </task>
     <servers />
   </component>

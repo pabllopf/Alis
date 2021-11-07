@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Collider.cs
+//  File:   IDebug.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,29 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
-using Alis.Core.Entities;
-using SFML.Graphics;
-
-namespace Alis.Core.Sfml.Components
+namespace Alis.FluentApi.Words
 {
     /// <summary>
-    ///     The collider class
+    /// The debug interface
     /// </summary>
-    /// <seealso cref="Component" />
-    public abstract class Collider : Component
+    public interface IDebug<Builder, Argument>
     {
         /// <summary>
-        ///     Gets or sets the value of the is trigger
+        /// Debugs the value
         /// </summary>
-        [JsonPropertyName("_IsTrigger")]
-        public bool IsTrigger { get; set; }
-
-        /// <summary>
-        /// Gets the drawable
-        /// </summary>
-        /// <returns>The drawable</returns>
-        public virtual Drawable GetDrawable() => throw  new NotImplementedException();
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        public Builder Debug(Argument value);
     }
 }
