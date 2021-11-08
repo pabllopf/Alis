@@ -47,12 +47,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         private readonly JointType _jointType;
 
         /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
-        protected Body _bodyA;
+        private Body _bodyA;
 
         /// <summary>
         ///     The body
         /// </summary>
-        protected Body _bodyB;
+        private Body _bodyB;
 
         /// <summary>
         ///     The breakpoint
@@ -67,22 +67,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The joint edge
         /// </summary>
-        internal JointEdge _edgeA = new JointEdge();
+        internal JointEdge EdgeA { get; } = new JointEdge();
 
         /// <summary>
         ///     The joint edge
         /// </summary>
-        internal JointEdge _edgeB = new JointEdge();
+        internal JointEdge EdgeB { get; } = new JointEdge();
 
         /// <summary>
         ///     The enabled
         /// </summary>
-        internal bool _enabled;
+        private bool _enabled;
 
         /// <summary>
         ///     The island flag
         /// </summary>
-        internal bool _islandFlag;
+        internal bool IslandFlag { get; set; }
 
         /// <summary>
         ///     The user data
@@ -100,7 +100,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             //Connected bodies should not collide by default
             _collideConnected = false;
-            _enabled = true;
+            Enabled = true;
         }
 
         /// <summary>
@@ -114,12 +114,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             //Can't connect a joint to the same body twice.
             Debug.Assert(bodyA != bodyB);
 
-            _bodyA = bodyA;
-            _bodyB = bodyB;
+            BodyA = bodyA;
+            BodyB = bodyB;
         }
 
         /// <summary>Constructor for fixed joint</summary>
-        protected Joint(Body body, JointType jointType) : this(jointType) => _bodyA = body;
+        protected Joint(Body body, JointType jointType) : this(jointType) => BodyA = body;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class
@@ -130,10 +130,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             Debug.Assert(def.BodyA != def.BodyB);
 
             _jointType = def.Type;
-            _bodyA = def.BodyA;
-            _bodyB = def.BodyB;
+            BodyA = def.BodyA;
+            BodyB = def.BodyB;
             _collideConnected = def.CollideConnected;
-            _islandFlag = false;
+            IslandFlag = false;
             _userData = def.UserData;
         }
 
@@ -151,10 +151,18 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>Get the first body attached to this joint.</summary>
-        public Body BodyA => _bodyA;
+        public Body BodyA
+        {
+            get => _bodyA;
+            set { _bodyA = value; }
+        }
 
         /// <summary>Get the second body attached to this joint.</summary>
-        public Body BodyB => _bodyB;
+        public Body BodyB
+        {
+            get => _bodyB;
+            set { _bodyB = value; }
+        }
 
         /// <summary>
         ///     Get the anchor point on bodyA in world coordinates. On some joints, this value indicate the anchor point
@@ -249,7 +257,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="invDt">The inv dt</param>
         internal void Validate(float invDt)
         {
-            if (!_enabled)
+            if (!Enabled)
             {
                 return;
             }
@@ -261,7 +269,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 return;
             }
 
-            _enabled = false;
+            Enabled = false;
 
             Broke?.Invoke(this, (float) Math.Sqrt(jointErrorSquared));
         }

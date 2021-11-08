@@ -210,7 +210,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => _bodyA.Position;
+            get => BodyA.Position;
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
@@ -219,7 +219,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => _bodyB.Position;
+            get => BodyB.Position;
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 

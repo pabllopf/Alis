@@ -90,7 +90,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => _bodyA.Position;
+            get => BodyA.Position;
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
@@ -99,7 +99,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => _bodyB.Position;
+            get => BodyB.Position;
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
@@ -158,15 +158,15 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            int indexA = _bodyA.IslandIndex;
-            int indexB = _bodyB.IslandIndex;
+            int indexA = BodyA.IslandIndex;
+            int indexB = BodyB.IslandIndex;
 
             float aW = data.Positions[indexA].A;
             float bW = data.Positions[indexB].A;
 
             _jointError = bW - aW - _targetAngle;
             _bias = -_biasFactor * data.Step.InvertedDeltaTime * _jointError;
-            _massFactor = (1 - _softness) / (_bodyA._invI + _bodyB._invI);
+            _massFactor = (1 - _softness) / (BodyA._invI + BodyB._invI);
         }
 
         /// <summary>
@@ -175,15 +175,15 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            int indexA = _bodyA.IslandIndex;
-            int indexB = _bodyB.IslandIndex;
+            int indexA = BodyA.IslandIndex;
+            int indexB = BodyB.IslandIndex;
 
             float p = (_bias - data.Velocities[indexB].W + data.Velocities[indexA].W) * _massFactor;
 
             data.Velocities[indexA].W -=
-                _bodyA._invI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
+                BodyA._invI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
             data.Velocities[indexB].W +=
-                _bodyB._invI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
+                BodyB._invI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
         }
 
         /// <summary>

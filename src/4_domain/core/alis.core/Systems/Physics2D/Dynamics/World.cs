@@ -961,7 +961,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             foreach (Joint j in _jointList)
             {
-                j._islandFlag = false;
+                j.IslandFlag = false;
             }
 
             // Build and simulate all awake islands.
@@ -1059,7 +1059,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     // Search all joints connect to this body.
                     for (JointEdge je = b._jointList; je != null; je = je.Next)
                     {
-                        if (je.Joint._islandFlag)
+                        if (je.Joint.IslandFlag)
                         {
                             continue;
                         }
@@ -1077,7 +1077,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             _island.Add(je.Joint);
-                            je.Joint._islandFlag = true;
+                            je.Joint.IslandFlag = true;
 
                             if (other.IsIsland)
                             {
@@ -1092,7 +1092,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         else
                         {
                             _island.Add(je.Joint);
-                            je.Joint._islandFlag = true;
+                            je.Joint.IslandFlag = true;
                         }
                     }
                 }
@@ -1510,32 +1510,32 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _jointList.Add(joint);
 
             // Connect to the bodies' doubly linked lists.
-            joint._edgeA.Joint = joint;
-            joint._edgeA.Other = joint.BodyB;
-            joint._edgeA.Prev = null;
-            joint._edgeA.Next = joint.BodyA._jointList;
+            joint.EdgeA.Joint = joint;
+            joint.EdgeA.Other = joint.BodyB;
+            joint.EdgeA.Prev = null;
+            joint.EdgeA.Next = joint.BodyA._jointList;
 
             if (joint.BodyA._jointList != null)
             {
-                joint.BodyA._jointList.Prev = joint._edgeA;
+                joint.BodyA._jointList.Prev = joint.EdgeA;
             }
 
-            joint.BodyA._jointList = joint._edgeA;
+            joint.BodyA._jointList = joint.EdgeA;
 
             // WIP David
             if (!joint.IsFixedType())
             {
-                joint._edgeB.Joint = joint;
-                joint._edgeB.Other = joint.BodyA;
-                joint._edgeB.Prev = null;
-                joint._edgeB.Next = joint.BodyB._jointList;
+                joint.EdgeB.Joint = joint;
+                joint.EdgeB.Other = joint.BodyA;
+                joint.EdgeB.Prev = null;
+                joint.EdgeB.Next = joint.BodyB._jointList;
 
                 if (joint.BodyB._jointList != null)
                 {
-                    joint.BodyB._jointList.Prev = joint._edgeB;
+                    joint.BodyB._jointList.Prev = joint.EdgeB;
                 }
 
-                joint.BodyB._jointList = joint._edgeB;
+                joint.BodyB._jointList = joint.EdgeB;
 
                 Body bodyA = joint.BodyA;
                 Body bodyB = joint.BodyB;
@@ -1588,45 +1588,45 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             // Remove from body 1.
-            if (joint._edgeA.Prev != null)
+            if (joint.EdgeA.Prev != null)
             {
-                joint._edgeA.Prev.Next = joint._edgeA.Next;
+                joint.EdgeA.Prev.Next = joint.EdgeA.Next;
             }
 
-            if (joint._edgeA.Next != null)
+            if (joint.EdgeA.Next != null)
             {
-                joint._edgeA.Next.Prev = joint._edgeA.Prev;
+                joint.EdgeA.Next.Prev = joint.EdgeA.Prev;
             }
 
-            if (joint._edgeA == bodyA._jointList)
+            if (joint.EdgeA == bodyA._jointList)
             {
-                bodyA._jointList = joint._edgeA.Next;
+                bodyA._jointList = joint.EdgeA.Next;
             }
 
-            joint._edgeA.Prev = null;
-            joint._edgeA.Next = null;
+            joint.EdgeA.Prev = null;
+            joint.EdgeA.Next = null;
 
             // WIP David
             if (!joint.IsFixedType())
             {
                 // Remove from body 2
-                if (joint._edgeB.Prev != null)
+                if (joint.EdgeB.Prev != null)
                 {
-                    joint._edgeB.Prev.Next = joint._edgeB.Next;
+                    joint.EdgeB.Prev.Next = joint.EdgeB.Next;
                 }
 
-                if (joint._edgeB.Next != null)
+                if (joint.EdgeB.Next != null)
                 {
-                    joint._edgeB.Next.Prev = joint._edgeB.Prev;
+                    joint.EdgeB.Next.Prev = joint.EdgeB.Prev;
                 }
 
-                if (joint._edgeB == bodyB._jointList)
+                if (joint.EdgeB == bodyB._jointList)
                 {
-                    bodyB._jointList = joint._edgeB.Next;
+                    bodyB._jointList = joint.EdgeB.Next;
                 }
 
-                joint._edgeB.Prev = null;
-                joint._edgeB.Next = null;
+                joint.EdgeB.Prev = null;
+                joint.EdgeB.Next = null;
 
                 // If the joint prevents collisions, then flag any contacts for filtering.
                 if (!collideConnected)

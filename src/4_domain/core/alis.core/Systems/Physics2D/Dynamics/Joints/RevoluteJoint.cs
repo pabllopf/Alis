@@ -264,8 +264,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => _bodyA.GetWorldPoint(LocalAnchorA);
-            set => LocalAnchorA = _bodyA.GetLocalPoint(value);
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         /// <summary>
@@ -273,8 +273,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => _bodyB.GetWorldPoint(LocalAnchorB);
-            set => LocalAnchorB = _bodyB.GetLocalPoint(value);
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>The referance angle computed as BodyB angle minus BodyA angle.</summary>
@@ -285,10 +285,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>Get the current joint angle in radians.</summary>
-        public float JointAngle => _bodyB._sweep.A - _bodyA._sweep.A - ReferenceAngle;
+        public float JointAngle => BodyB._sweep.A - BodyA._sweep.A - ReferenceAngle;
 
         /// <summary>Get the current joint angle speed in radians per second.</summary>
-        public float JointSpeed => _bodyB._angularVelocity - _bodyA._angularVelocity;
+        public float JointSpeed => BodyB._angularVelocity - BodyA._angularVelocity;
 
         /// <summary>Is the joint limit enabled?</summary>
         /// <value><c>true</c> if [limit enabled]; otherwise, <c>false</c>.</value>
@@ -423,14 +423,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = _bodyA.IslandIndex;
-            _indexB = _bodyB.IslandIndex;
-            _localCenterA = _bodyA._sweep.LocalCenter;
-            _localCenterB = _bodyB._sweep.LocalCenter;
-            _invMassA = _bodyA._invMass;
-            _invMassB = _bodyB._invMass;
-            _invIA = _bodyA._invI;
-            _invIB = _bodyB._invI;
+            _indexA = BodyA.IslandIndex;
+            _indexB = BodyB.IslandIndex;
+            _localCenterA = BodyA._sweep.LocalCenter;
+            _localCenterB = BodyB._sweep.LocalCenter;
+            _invMassA = BodyA._invMass;
+            _invMassB = BodyB._invMass;
+            _invIA = BodyA._invI;
+            _invIB = BodyB._invI;
 
             float aA = data.Positions[_indexA].A;
             Vector2 vA = data.Velocities[_indexA].V;

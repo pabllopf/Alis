@@ -286,7 +286,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             get
             {
-                Vector2 p = _bodyA.GetWorldPoint(_localAnchorA);
+                Vector2 p = BodyA.GetWorldPoint(_localAnchorA);
                 Vector2 s = _worldAnchorA;
                 Vector2 d = p - s;
                 return d.Length();
@@ -298,7 +298,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             get
             {
-                Vector2 p = _bodyB.GetWorldPoint(_localAnchorB);
+                Vector2 p = BodyB.GetWorldPoint(_localAnchorB);
                 Vector2 s = _worldAnchorB;
                 Vector2 d = p - s;
                 return d.Length();

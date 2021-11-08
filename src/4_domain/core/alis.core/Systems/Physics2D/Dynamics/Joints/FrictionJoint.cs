@@ -199,8 +199,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => _bodyA.GetWorldPoint(_localAnchorA);
-            set => _localAnchorA = _bodyA.GetLocalPoint(value);
+            get => BodyA.GetWorldPoint(_localAnchorA);
+            set => _localAnchorA = BodyA.GetLocalPoint(value);
         }
 
         /// <summary>
@@ -208,8 +208,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => _bodyB.GetWorldPoint(_localAnchorB);
-            set => _localAnchorB = _bodyB.GetLocalPoint(value);
+            get => BodyB.GetWorldPoint(_localAnchorB);
+            set => _localAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>The maximum friction force in N.</summary>
@@ -246,14 +246,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = _bodyA.IslandIndex;
-            _indexB = _bodyB.IslandIndex;
-            _localCenterA = _bodyA._sweep.LocalCenter;
-            _localCenterB = _bodyB._sweep.LocalCenter;
-            _invMassA = _bodyA._invMass;
-            _invMassB = _bodyB._invMass;
-            _invIA = _bodyA._invI;
-            _invIB = _bodyB._invI;
+            _indexA = BodyA.IslandIndex;
+            _indexB = BodyB.IslandIndex;
+            _localCenterA = BodyA._sweep.LocalCenter;
+            _localCenterB = BodyB._sweep.LocalCenter;
+            _invMassA = BodyA._invMass;
+            _invMassB = BodyB._invMass;
+            _invIA = BodyA._invI;
+            _invIB = BodyB._invI;
 
             float aA = data.Positions[_indexA].A;
             Vector2 vA = data.Velocities[_indexA].V;

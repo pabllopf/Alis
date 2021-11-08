@@ -210,14 +210,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             // TODO_ERIN there might be some problem with the joint edges in b2Joint.
 
             _bodyC = _jointA.BodyA;
-            _bodyA = _jointA.BodyB;
+            BodyA = _jointA.BodyB;
 
             // Body B on joint1 must be dynamic
-            Debug.Assert(_bodyA._type == BodyType.Dynamic);
+            Debug.Assert(BodyA._type == BodyType.Dynamic);
 
             // Get geometry of joint1
-            Transform xfA = _bodyA._xf;
-            float aA = _bodyA._sweep.A;
+            Transform xfA = BodyA._xf;
+            float aA = BodyA._sweep.A;
             Transform xfC = _bodyC._xf;
             float aC = _bodyC._sweep.A;
 
@@ -245,14 +245,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             }
 
             _bodyD = _jointB.BodyA;
-            _bodyB = _jointB.BodyB;
+            BodyB = _jointB.BodyB;
 
             // Body B on joint2 must be dynamic
-            Debug.Assert(_bodyB._type == BodyType.Dynamic);
+            Debug.Assert(BodyB._type == BodyType.Dynamic);
 
             // Get geometry of joint2
-            Transform xfB = _bodyB._xf;
-            float aB = _bodyB._sweep.A;
+            Transform xfB = BodyB._xf;
+            float aB = BodyB._sweep.A;
             Transform xfD = _bodyD._xf;
             float aD = _bodyD._sweep.A;
 
@@ -314,14 +314,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             // TODO_ERIN there might be some problem with the joint edges in b2Joint.
 
             _bodyC = JointA.BodyA;
-            _bodyA = JointA.BodyB;
+            BodyA = JointA.BodyB;
 
             // Body B on joint1 must be dynamic
-            Debug.Assert(_bodyA._type == BodyType.Dynamic);
+            Debug.Assert(BodyA._type == BodyType.Dynamic);
 
             // Get geometry of joint1
-            Transform xfA = _bodyA._xf;
-            float aA = _bodyA._sweep.A;
+            Transform xfA = BodyA._xf;
+            float aA = BodyA._sweep.A;
             Transform xfC = _bodyC._xf;
             float aC = _bodyC._sweep.A;
 
@@ -349,14 +349,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             }
 
             _bodyD = JointB.BodyA;
-            _bodyB = JointB.BodyB;
+            BodyB = JointB.BodyB;
 
             // Body B on joint2 must be dynamic
-            Debug.Assert(_bodyB._type == BodyType.Dynamic);
+            Debug.Assert(BodyB._type == BodyType.Dynamic);
 
             // Get geometry of joint2
-            Transform xfB = _bodyB._xf;
-            float aB = _bodyB._sweep.A;
+            Transform xfB = BodyB._xf;
+            float aB = BodyB._sweep.A;
             Transform xfD = _bodyD._xf;
             float aD = _bodyD._sweep.A;
 
@@ -393,7 +393,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => _bodyA.GetWorldPoint(_localAnchorA);
+            get => BodyA.GetWorldPoint(_localAnchorA);
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
@@ -402,7 +402,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => _bodyB.GetWorldPoint(_localAnchorB);
+            get => BodyB.GetWorldPoint(_localAnchorB);
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
@@ -447,20 +447,20 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = _bodyA.IslandIndex;
-            _indexB = _bodyB.IslandIndex;
+            _indexA = BodyA.IslandIndex;
+            _indexB = BodyB.IslandIndex;
             _indexC = _bodyC.IslandIndex;
             _indexD = _bodyD.IslandIndex;
-            _lcA = _bodyA._sweep.LocalCenter;
-            _lcB = _bodyB._sweep.LocalCenter;
+            _lcA = BodyA._sweep.LocalCenter;
+            _lcB = BodyB._sweep.LocalCenter;
             _lcC = _bodyC._sweep.LocalCenter;
             _lcD = _bodyD._sweep.LocalCenter;
-            _mA = _bodyA._invMass;
-            _mB = _bodyB._invMass;
+            _mA = BodyA._invMass;
+            _mB = BodyB._invMass;
             _mC = _bodyC._invMass;
             _mD = _bodyD._invMass;
-            _iA = _bodyA._invI;
-            _iB = _bodyB._invI;
+            _iA = BodyA._invI;
+            _iB = BodyB._invI;
             _iC = _bodyC._invI;
             _iD = _bodyD._invI;
 

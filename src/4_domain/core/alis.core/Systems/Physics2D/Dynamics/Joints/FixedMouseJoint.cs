@@ -137,7 +137,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         public FixedMouseJoint(FixedMouseJointDef def) : base(def)
         {
             _targetB = def.Target;
-            _localAnchorA = MathUtils.MulT(_bodyB._xf, _targetB);
+            _localAnchorA = MathUtils.MulT(BodyB._xf, _targetB);
             _maxForce = def.MaxForce;
             _stiffness = def.Stiffness;
             _damping = def.Damping;
@@ -150,7 +150,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             : base(body, JointType.FixedMouse)
         {
             _targetB = target;
-            _localAnchorA = MathUtils.MulT(_bodyA._xf, _targetB);
+            _localAnchorA = MathUtils.MulT(BodyA._xf, _targetB);
         }
 
         /// <summary>The local anchor point on BodyB</summary>
@@ -163,8 +163,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>Use this to update the target point.</summary>
         public override Vector2 WorldAnchorA
         {
-            get => _bodyA.GetWorldPoint(_localAnchorA);
-            set => _localAnchorA = _bodyA.GetLocalPoint(value);
+            get => BodyA.GetWorldPoint(_localAnchorA);
+            set => _localAnchorA = BodyA.GetLocalPoint(value);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             {
                 if (_targetB != value)
                 {
-                    _bodyA.Awake = true;
+                    BodyA.Awake = true;
                     _targetB = value;
                 }
             }
@@ -236,10 +236,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = _bodyA.IslandIndex;
-            _localCenterA = _bodyA._sweep.LocalCenter;
-            _invMassA = _bodyA._invMass;
-            _invIA = _bodyA._invI;
+            _indexA = BodyA.IslandIndex;
+            _localCenterA = BodyA._sweep.LocalCenter;
+            _invMassA = BodyA._invMass;
+            _invIA = BodyA._invI;
 
             Vector2 cA = data.Positions[_indexA].C;
             float aA = data.Positions[_indexA].A;

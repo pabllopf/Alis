@@ -317,8 +317,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => _bodyA.GetWorldPoint(_localAnchorA);
-            set => _localAnchorA = _bodyA.GetLocalPoint(value);
+            get => BodyA.GetWorldPoint(_localAnchorA);
+            set => _localAnchorA = BodyA.GetLocalPoint(value);
         }
 
         /// <summary>
@@ -326,8 +326,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => _bodyB.GetWorldPoint(_localAnchorB);
-            set => _localAnchorB = _bodyB.GetLocalPoint(value);
+            get => BodyB.GetWorldPoint(_localAnchorB);
+            set => _localAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>Get the current joint translation, usually in meters.</summary>
@@ -335,10 +335,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             get
             {
-                Vector2 pA = _bodyA.GetWorldPoint(_localAnchorA);
-                Vector2 pB = _bodyB.GetWorldPoint(_localAnchorB);
+                Vector2 pA = BodyA.GetWorldPoint(_localAnchorA);
+                Vector2 pB = BodyB.GetWorldPoint(_localAnchorB);
                 Vector2 d = pB - pA;
-                Vector2 axis = _bodyA.GetWorldVector(_localXAxisA);
+                Vector2 axis = BodyA.GetWorldVector(_localXAxisA);
 
                 float translation = MathUtils.Dot(d, axis);
                 return translation;
@@ -350,8 +350,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             get
             {
-                Body bA = _bodyA;
-                Body bB = _bodyB;
+                Body bA = BodyA;
+                Body bB = BodyB;
 
                 Vector2 rA = MathUtils.Mul(bA._xf.q, _localAnchorA - bA._sweep.LocalCenter);
                 Vector2 rB = MathUtils.Mul(bB._xf.q, _localAnchorB - bB._sweep.LocalCenter);
@@ -513,14 +513,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(ref SolverData data)
         {
-            _indexA = _bodyA.IslandIndex;
-            _indexB = _bodyB.IslandIndex;
-            _localCenterA = _bodyA._sweep.LocalCenter;
-            _localCenterB = _bodyB._sweep.LocalCenter;
-            _invMassA = _bodyA._invMass;
-            _invMassB = _bodyB._invMass;
-            _invIA = _bodyA._invI;
-            _invIB = _bodyB._invI;
+            _indexA = BodyA.IslandIndex;
+            _indexB = BodyB.IslandIndex;
+            _localCenterA = BodyA._sweep.LocalCenter;
+            _localCenterB = BodyB._sweep.LocalCenter;
+            _invMassA = BodyA._invMass;
+            _invMassB = BodyB._invMass;
+            _invIA = BodyA._invI;
+            _invIB = BodyB._invI;
 
             Vector2 cA = data.Positions[_indexA].C;
             float aA = data.Positions[_indexA].A;
@@ -875,7 +875,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             {
                 _localAnchorA = BodyA.GetLocalPoint(localAnchorA);
                 _localAnchorB = BodyB.GetLocalPoint(localAnchorB);
-                _localXAxisA = _bodyA.GetLocalVector(axis);
+                _localXAxisA = BodyA.GetLocalVector(axis);
             }
             else
             {
@@ -884,7 +884,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 _localXAxisA = axis;
             }
 
-            _referenceAngle = _bodyB.Rotation - _bodyA.Rotation;
+            _referenceAngle = BodyB.Rotation - BodyA.Rotation;
             _localXAxisA = Vector2.Normalize(_localXAxisA);
             _localYAxisA = MathUtils.Cross(1.0f, _localXAxisA);
         }

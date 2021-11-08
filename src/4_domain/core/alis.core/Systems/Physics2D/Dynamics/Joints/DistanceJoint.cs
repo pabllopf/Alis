@@ -257,14 +257,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>The anchor on <see cref="Joint.BodyA" /> in world coordinates</summary>
         public sealed override Vector2 WorldAnchorA
         {
-            get => _bodyA.GetWorldPoint(_localAnchorA);
+            get => BodyA.GetWorldPoint(_localAnchorA);
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
         /// <summary>The anchor on <see cref="Joint.BodyB" /> in world coordinates</summary>
         public sealed override Vector2 WorldAnchorB
         {
-            get => _bodyB.GetWorldPoint(_localAnchorB);
+            get => BodyB.GetWorldPoint(_localAnchorB);
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
         }
 
@@ -273,8 +273,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             get
             {
-                Vector2 pA = _bodyA.GetWorldPoint(_localAnchorA);
-                Vector2 pB = _bodyB.GetWorldPoint(_localAnchorB);
+                Vector2 pA = BodyA.GetWorldPoint(_localAnchorA);
+                Vector2 pB = BodyB.GetWorldPoint(_localAnchorB);
                 Vector2 d = pB - pA;
                 float length = d.Length();
                 return length;
