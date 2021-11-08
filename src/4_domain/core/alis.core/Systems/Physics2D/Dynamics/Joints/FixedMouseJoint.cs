@@ -269,13 +269,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
             //        [    0     1/m1+1/m2]           [-r1.x*r1.y r1.x*r1.x]           [-r1.x*r1.y r1.x*r1.x]
-            Mat22 K = new Mat22();
-            K.ex.X = _invMassA + _invIA * _rA.Y * _rA.Y + _gamma;
-            K.ex.Y = -_invIA * _rA.X * _rA.Y;
-            K.ey.X = K.ex.Y;
-            K.ey.Y = _invMassA + _invIA * _rA.X * _rA.X + _gamma;
+            Mat22 Kk = new Mat22();
+            Kk.ex.X = _invMassA + _invIA * _rA.Y * _rA.Y + _gamma;
+            Kk.ex.Y = -_invIA * _rA.X * _rA.Y;
+            Kk.ey.X = Kk.ex.Y;
+            Kk.ey.Y = _invMassA + _invIA * _rA.X * _rA.X + _gamma;
 
-            _mass = K.Inverse;
+            _mass = Kk.Inverse;
 
             _C = cA + _rA - _targetB;
             _C *= _beta;
