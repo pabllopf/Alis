@@ -166,7 +166,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             _jointError = bW - aW - _targetAngle;
             _bias = -_biasFactor * data.Step.InvertedDeltaTime * _jointError;
-            _massFactor = (1 - _softness) / (BodyA._invI + BodyB._invI);
+            _massFactor = (1 - _softness) / (BodyA.InvI + BodyB.InvI);
         }
 
         /// <summary>
@@ -181,9 +181,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             float p = (_bias - data.Velocities[indexB].W + data.Velocities[indexA].W) * _massFactor;
 
             data.Velocities[indexA].W -=
-                BodyA._invI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
+                BodyA.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
             data.Velocities[indexB].W +=
-                BodyB._invI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
+                BodyB.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
         }
 
         /// <summary>

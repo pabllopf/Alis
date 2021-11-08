@@ -302,7 +302,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 Vector2 c = b._sweep.C;
                 float a = b._sweep.A;
                 Vector2 v = b._linearVelocity;
-                float w = b._angularVelocity;
+                float w = b.AngularVelocity;
 
                 // Store positions for continuous collision.
                 b._sweep.C0 = b._sweep.C;
@@ -311,8 +311,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 if (b.BodyType == BodyType.Dynamic)
                 {
                     // Integrate velocities.
-                    v += h * b._invMass * (b.GravityScale * b.Mass * gravity + b._force);
-                    w += h * b._invI * b._torque;
+                    v += h * b.InvMass * (b.GravityScale * b.Mass * gravity + b._force);
+                    w += h * b.InvI * b._torque;
 
                     // Apply damping.
                     // ODE: dv/dt + c * v = 0
@@ -452,7 +452,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 body._sweep.C = _positions[i].C;
                 body._sweep.A = _positions[i].A;
                 body._linearVelocity = _velocities[i].V;
-                body._angularVelocity = _velocities[i].W;
+                body.AngularVelocity = _velocities[i].W;
                 body.SynchronizeTransform();
             }
 
@@ -473,7 +473,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                         continue;
                     }
 
-                    if (!b.SleepingAllowed || b._angularVelocity * b._angularVelocity > _angTolSqr ||
+                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > _angTolSqr ||
                         Vector2.Dot(b._linearVelocity, b._linearVelocity) > _linTolSqr)
                     {
                         b.SleepTime = 0.0f;
@@ -515,7 +515,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 _positions[i].C = b._sweep.C;
                 _positions[i].A = b._sweep.A;
                 _velocities[i].V = b._linearVelocity;
-                _velocities[i].W = b._angularVelocity;
+                _velocities[i].W = b.AngularVelocity;
             }
 
             //Velcro: We reset the contact solver instead of craeting a new one to reduce garbage
@@ -589,7 +589,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 body._sweep.C = c;
                 body._sweep.A = a;
                 body._linearVelocity = v;
-                body._angularVelocity = w;
+                body.AngularVelocity = w;
                 body.SynchronizeTransform();
             }
 

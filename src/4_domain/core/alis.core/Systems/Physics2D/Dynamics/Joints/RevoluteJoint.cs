@@ -288,7 +288,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         public float JointAngle => BodyB._sweep.A - BodyA._sweep.A - ReferenceAngle;
 
         /// <summary>Get the current joint angle speed in radians per second.</summary>
-        public float JointSpeed => BodyB._angularVelocity - BodyA._angularVelocity;
+        public float JointSpeed => BodyB.AngularVelocity - BodyA.AngularVelocity;
 
         /// <summary>Is the joint limit enabled?</summary>
         /// <value><c>true</c> if [limit enabled]; otherwise, <c>false</c>.</value>
@@ -427,10 +427,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             _indexB = BodyB.IslandIndex;
             _localCenterA = BodyA._sweep.LocalCenter;
             _localCenterB = BodyB._sweep.LocalCenter;
-            _invMassA = BodyA._invMass;
-            _invMassB = BodyB._invMass;
-            _invIA = BodyA._invI;
-            _invIB = BodyB._invI;
+            _invMassA = BodyA.InvMass;
+            _invMassB = BodyB.InvMass;
+            _invIA = BodyA.InvI;
+            _invIB = BodyB.InvI;
 
             float aA = data.Positions[_indexA].A;
             Vector2 vA = data.Velocities[_indexA].V;

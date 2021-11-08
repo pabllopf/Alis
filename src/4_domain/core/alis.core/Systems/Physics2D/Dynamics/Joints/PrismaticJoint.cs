@@ -362,8 +362,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
                 Vector2 vA = bA._linearVelocity;
                 Vector2 vB = bB._linearVelocity;
-                float wA = bA._angularVelocity;
-                float wB = bB._angularVelocity;
+                float wA = bA.AngularVelocity;
+                float wB = bB.AngularVelocity;
 
                 float speed = MathUtils.Dot(d, MathUtils.Cross(wA, axis)) +
                               MathUtils.Dot(axis, vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA));
@@ -525,10 +525,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             _indexB = BodyB.IslandIndex;
             _localCenterA = BodyA._sweep.LocalCenter;
             _localCenterB = BodyB._sweep.LocalCenter;
-            _invMassA = BodyA._invMass;
-            _invMassB = BodyB._invMass;
-            _invIA = BodyA._invI;
-            _invIB = BodyB._invI;
+            _invMassA = BodyA.InvMass;
+            _invMassB = BodyB.InvMass;
+            _invIA = BodyA.InvI;
+            _invIB = BodyB.InvI;
 
             Vector2 cA = data.Positions[_indexA].C;
             float aA = data.Positions[_indexA].A;

@@ -329,7 +329,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         private void Refilter()
         {
             // Flag associated contacts for filtering.
-            ContactEdge edge = _body._contactList;
+            ContactEdge edge = _body.ContactList;
             while (edge != null)
             {
                 Contact contact = edge.Contact;

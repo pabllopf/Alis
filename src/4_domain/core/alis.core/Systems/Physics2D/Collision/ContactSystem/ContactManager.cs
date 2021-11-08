@@ -114,7 +114,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             // TODO_ERIN use a hash table to remove a potential bottleneck when both
             // bodies have a lot of contacts.
             // Does a contact already exist?
-            ContactEdge edge = bodyB._contactList;
+            ContactEdge edge = bodyB.ContactList;
             while (edge != null)
             {
                 if (edge.Other == bodyA)
@@ -201,26 +201,26 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             c.NodeA.Other = bodyB;
 
             c.NodeA.Prev = null;
-            c.NodeA.Next = bodyA._contactList;
-            if (bodyA._contactList != null)
+            c.NodeA.Next = bodyA.ContactList;
+            if (bodyA.ContactList != null)
             {
-                bodyA._contactList.Prev = c.NodeA;
+                bodyA.ContactList.Prev = c.NodeA;
             }
 
-            bodyA._contactList = c.NodeA;
+            bodyA.ContactList = c.NodeA;
 
             // Connect to body B
             c.NodeB.Contact = c;
             c.NodeB.Other = bodyA;
 
             c.NodeB.Prev = null;
-            c.NodeB.Next = bodyB._contactList;
-            if (bodyB._contactList != null)
+            c.NodeB.Next = bodyB.ContactList;
+            if (bodyB.ContactList != null)
             {
-                bodyB._contactList.Prev = c.NodeB;
+                bodyB.ContactList.Prev = c.NodeB;
             }
 
-            bodyB._contactList = c.NodeB;
+            bodyB.ContactList = c.NodeB;
             ++_contactCount;
         }
 
@@ -289,9 +289,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 c.NodeA.Next.Prev = c.NodeA.Prev;
             }
 
-            if (c.NodeA == bodyA._contactList)
+            if (c.NodeA == bodyA.ContactList)
             {
-                bodyA._contactList = c.NodeA.Next;
+                bodyA.ContactList = c.NodeA.Next;
             }
 
             // Remove from body 2
@@ -305,9 +305,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 c.NodeB.Next.Prev = c.NodeB.Prev;
             }
 
-            if (c.NodeB == bodyB._contactList)
+            if (c.NodeB == bodyB.ContactList)
             {
-                bodyB._contactList = c.NodeB.Next;
+                bodyB.ContactList = c.NodeB.Next;
             }
 
             // Call the factory.

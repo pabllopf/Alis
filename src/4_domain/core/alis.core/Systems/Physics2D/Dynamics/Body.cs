@@ -58,12 +58,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The angular velocity
         /// </summary>
-        internal float _angularVelocity;
+        private float _angularVelocity;
 
         /// <summary>
         ///     The contact list
         /// </summary>
-        internal ContactEdge _contactList;
+        private ContactEdge _contactList;
 
         /// <summary>
         ///     The controller filter
@@ -73,12 +73,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The fixture list
         /// </summary>
-        internal List<Fixture> _fixtureList;
+        private List<Fixture> _fixtureList;
 
         /// <summary>
         ///     The flags
         /// </summary>
-        internal BodyFlags _flags;
+        internal BodyFlags Flags { get; set; }
 
         /// <summary>
         ///     The force
@@ -98,22 +98,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The inv
         /// </summary>
-        internal float _invI;
+        internal float InvI { get; set; }
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        internal float _invMass;
+        internal float InvMass { get; set; }
 
         /// <summary>
         ///     The island index
         /// </summary>
-        internal int _islandIndex;
+        private int _islandIndex;
 
         /// <summary>
         ///     The joint list
         /// </summary>
-        internal JointEdge _jointList;
+        private JointEdge _jointList;
 
         /// <summary>
         ///     The linear damping
@@ -190,31 +190,31 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="def">The def</param>
         internal Body(BodyDef def)
         {
-            _fixtureList = new List<Fixture>(1);
+            FixtureList = new List<Fixture>(1);
 
             if (def.IsBullet)
             {
-                _flags |= BodyFlags.BulletFlag;
+                Flags |= BodyFlags.BulletFlag;
             }
 
             if (def.FixedRotation)
             {
-                _flags |= BodyFlags.FixedRotationFlag;
+                Flags |= BodyFlags.FixedRotationFlag;
             }
 
             if (def.AllowSleep)
             {
-                _flags |= BodyFlags.AutoSleepFlag;
+                Flags |= BodyFlags.AutoSleepFlag;
             }
 
             if (def.Awake)
             {
-                _flags |= BodyFlags.AwakeFlag;
+                Flags |= BodyFlags.AwakeFlag;
             }
 
             if (def.Enabled)
             {
-                _flags |= BodyFlags.Enabled;
+                Flags |= BodyFlags.Enabled;
             }
 
             _xf.p = def.Position;
@@ -226,7 +226,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _sweep.A = def.Angle;
 
             _linearVelocity = def.LinearVelocity;
-            _angularVelocity = def.AngularVelocity;
+            AngularVelocity = def.AngularVelocity;
 
             _linearDamping = def.LinearDamping;
             _angularDamping = def.AngularDamping;
@@ -235,7 +235,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _type = def.Type;
 
             _mass = 0.0f;
-            _invMass = 0.0f;
+            InvMass = 0.0f;
 
             _userData = def.UserData;
         }
@@ -323,10 +323,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 if (_type == BodyType.Static)
                 {
                     _linearVelocity = Vector2.Zero;
-                    _angularVelocity = 0.0f;
+                    AngularVelocity = 0.0f;
                     _sweep.A0 = _sweep.A;
                     _sweep.C0 = _sweep.C;
-                    _flags &= ~BodyFlags.AwakeFlag;
+                    Flags &= ~BodyFlags.AwakeFlag;
                     SynchronizeFixtures();
                 }
 
@@ -336,7 +336,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 _torque = 0.0f;
 
                 // Delete the attached contacts.
-                ContactEdge ce = _contactList;
+                ContactEdge ce = ContactList;
                 while (ce != null)
                 {
                     ContactEdge ce0 = ce;
@@ -344,11 +344,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     _world.ContactManager.Remove(ce0.Contact);
                 }
 
-                _contactList = null;
+                ContactList = null;
 
                 // Touch the proxies so that new contacts will be created (when appropriate)
                 IBroadPhase broadPhase = _world.ContactManager.BroadPhase;
-                foreach (Fixture fixture in _fixtureList)
+                foreach (Fixture fixture in FixtureList)
                 {
                     int proxyCount = fixture.ProxyCount;
                     for (int j = 0; j < proxyCount; j++)
@@ -425,16 +425,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value><c>true</c> if this instance is included in CCD; otherwise, <c>false</c>.</value>
         public bool IsBullet
         {
-            get => (_flags & BodyFlags.BulletFlag) == BodyFlags.BulletFlag;
+            get => (Flags & BodyFlags.BulletFlag) == BodyFlags.BulletFlag;
             set
             {
                 if (value)
                 {
-                    _flags |= BodyFlags.BulletFlag;
+                    Flags |= BodyFlags.BulletFlag;
                 }
                 else
                 {
-                    _flags &= ~BodyFlags.BulletFlag;
+                    Flags &= ~BodyFlags.BulletFlag;
                 }
             }
         }
@@ -443,16 +443,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value><c>true</c> if sleeping is allowed; otherwise, <c>false</c>.</value>
         public bool SleepingAllowed
         {
-            get => (_flags & BodyFlags.AutoSleepFlag) == BodyFlags.AutoSleepFlag;
+            get => (Flags & BodyFlags.AutoSleepFlag) == BodyFlags.AutoSleepFlag;
             set
             {
                 if (value)
                 {
-                    _flags |= BodyFlags.AutoSleepFlag;
+                    Flags |= BodyFlags.AutoSleepFlag;
                 }
                 else
                 {
-                    _flags &= ~BodyFlags.AutoSleepFlag;
+                    Flags &= ~BodyFlags.AutoSleepFlag;
                     Awake = true;
                 }
             }
@@ -462,7 +462,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value><c>true</c> if awake; otherwise, <c>false</c>.</value>
         public bool Awake
         {
-            get => (_flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag;
+            get => (Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag;
             set
             {
                 if (_type == BodyType.Static)
@@ -472,12 +472,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 if (value)
                 {
-                    _flags |= BodyFlags.AwakeFlag;
+                    Flags |= BodyFlags.AwakeFlag;
                     _sleepTime = 0.0f;
                 }
                 else
                 {
-                    _flags &= ~BodyFlags.AwakeFlag;
+                    Flags &= ~BodyFlags.AwakeFlag;
                     ResetDynamics();
                     _sleepTime = 0.0f;
                 }
@@ -498,7 +498,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value><c>true</c> if active; otherwise, <c>false</c>.</value>
         public bool Enabled
         {
-            get => (_flags & BodyFlags.Enabled) == BodyFlags.Enabled;
+            get => (Flags & BodyFlags.Enabled) == BodyFlags.Enabled;
 
             set
             {
@@ -511,13 +511,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 if (value)
                 {
-                    _flags |= BodyFlags.Enabled;
+                    Flags |= BodyFlags.Enabled;
 
                     // Create all proxies.
                     IBroadPhase broadPhase = _world.ContactManager.BroadPhase;
-                    for (int i = 0; i < _fixtureList.Count; i++)
+                    for (int i = 0; i < FixtureList.Count; i++)
                     {
-                        _fixtureList[i].CreateProxies(broadPhase, ref _xf);
+                        FixtureList[i].CreateProxies(broadPhase, ref _xf);
                     }
 
                     // Contacts are created the next time step.
@@ -525,18 +525,18 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 }
                 else
                 {
-                    _flags &= ~BodyFlags.Enabled;
+                    Flags &= ~BodyFlags.Enabled;
 
                     // Destroy all proxies.
                     IBroadPhase broadPhase = _world.ContactManager.BroadPhase;
 
-                    for (int i = 0; i < _fixtureList.Count; i++)
+                    for (int i = 0; i < FixtureList.Count; i++)
                     {
-                        _fixtureList[i].DestroyProxies(broadPhase);
+                        FixtureList[i].DestroyProxies(broadPhase);
                     }
 
                     // Destroy the attached contacts.
-                    ContactEdge ce = _contactList;
+                    ContactEdge ce = ContactList;
                     while (ce != null)
                     {
                         ContactEdge ce0 = ce;
@@ -544,7 +544,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         _world.ContactManager.Remove(ce0.Contact);
                     }
 
-                    _contactList = null;
+                    ContactList = null;
                 }
             }
         }
@@ -553,7 +553,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value><c>true</c> if it has fixed rotation; otherwise, <c>false</c>.</value>
         public bool FixedRotation
         {
-            get => (_flags & BodyFlags.FixedRotationFlag) == BodyFlags.FixedRotationFlag;
+            get => (Flags & BodyFlags.FixedRotationFlag) == BodyFlags.FixedRotationFlag;
             set
             {
                 if (value == FixedRotation)
@@ -563,32 +563,44 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 if (value)
                 {
-                    _flags |= BodyFlags.FixedRotationFlag;
+                    Flags |= BodyFlags.FixedRotationFlag;
                 }
                 else
                 {
-                    _flags &= ~BodyFlags.FixedRotationFlag;
+                    Flags &= ~BodyFlags.FixedRotationFlag;
                 }
 
-                _angularVelocity = 0f;
+                AngularVelocity = 0f;
                 ResetMassData();
             }
         }
 
         /// <summary>Gets all the fixtures attached to this body.</summary>
         /// <value>The fixture list.</value>
-        public List<Fixture> FixtureList => _fixtureList;
+        public List<Fixture> FixtureList
+        {
+            get => _fixtureList;
+            set { _fixtureList = value; }
+        }
 
         /// <summary>Get the list of all joints attached to this body.</summary>
         /// <value>The joint list.</value>
-        public JointEdge JointList => _jointList;
+        public JointEdge JointList
+        {
+            get => _jointList;
+            set { _jointList = value; }
+        }
 
         /// <summary>
         ///     Get the list of all contacts attached to this body. Warning: this list changes during the time step and you
         ///     may miss some collisions if you don't use ContactListener.
         /// </summary>
         /// <value>The contact list.</value>
-        public ContactEdge ContactList => _contactList;
+        public ContactEdge ContactList
+        {
+            get => _contactList;
+            set { _contactList = value; }
+        }
 
         /// <summary>Get the world body origin position.</summary>
         /// <returns>Return the world position of the body's origin.</returns>
@@ -620,7 +632,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     Gets the value of the is island
         /// </summary>
-        internal bool IsIsland => (_flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag;
+        internal bool IsIsland => (Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag;
 
         /// <summary>
         ///     Gets the value of the is static
@@ -662,7 +674,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 // Update center of mass velocity.
                 Vector2 a = _sweep.C - oldCenter;
-                _linearVelocity += new Vector2(-_angularVelocity * a.Y, _angularVelocity * a.X);
+                _linearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
         }
 
@@ -688,7 +700,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     _mass = 1.0f;
                 }
 
-                _invMass = 1.0f / _mass;
+                InvMass = 1.0f / _mass;
             }
         }
 
@@ -711,7 +723,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 {
                     _inertia = value - _mass * Vector2.Dot(_sweep.LocalCenter, _sweep.LocalCenter);
                     Debug.Assert(_inertia > 0.0f);
-                    _invI = 1.0f / _inertia;
+                    InvI = 1.0f / _inertia;
                 }
             }
         }
@@ -723,9 +735,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             set
             {
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].Restitution = value;
+                    FixtureList[i].Restitution = value;
                 }
             }
         }
@@ -737,9 +749,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             set
             {
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].Friction = value;
+                    FixtureList[i].Friction = value;
                 }
             }
         }
@@ -751,9 +763,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             set
             {
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].CollisionCategories = value;
+                    FixtureList[i].CollisionCategories = value;
                 }
             }
         }
@@ -765,9 +777,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             set
             {
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].CollidesWith = value;
+                    FixtureList[i].CollidesWith = value;
                 }
             }
         }
@@ -782,9 +794,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             set
             {
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].IgnoreCcdWith = value;
+                    FixtureList[i].IgnoreCcdWith = value;
                 }
             }
         }
@@ -796,9 +808,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             set
             {
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].CollisionGroup = value;
+                    FixtureList[i].CollisionGroup = value;
                 }
             }
         }
@@ -810,9 +822,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             set
             {
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].IsSensor = value;
+                    FixtureList[i].IsSensor = value;
                 }
             }
         }
@@ -822,16 +834,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public bool IgnoreCCD
         {
-            get => (_flags & BodyFlags.IgnoreCCD) == BodyFlags.IgnoreCCD;
+            get => (Flags & BodyFlags.IgnoreCCD) == BodyFlags.IgnoreCCD;
             set
             {
                 if (value)
                 {
-                    _flags |= BodyFlags.IgnoreCCD;
+                    Flags |= BodyFlags.IgnoreCCD;
                 }
                 else
                 {
-                    _flags &= ~BodyFlags.IgnoreCCD;
+                    Flags &= ~BodyFlags.IgnoreCCD;
                 }
             }
         }
@@ -852,7 +864,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         public void ResetDynamics()
         {
             _torque = 0;
-            _angularVelocity = 0;
+            AngularVelocity = 0;
             _force = Vector2.Zero;
             _linearVelocity = Vector2.Zero;
         }
@@ -872,13 +884,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             Fixture fixture = new Fixture(def);
 
-            if ((_flags & BodyFlags.Enabled) == BodyFlags.Enabled)
+            if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
                 IBroadPhase broadPhase = _world._contactManager.BroadPhase;
                 fixture.CreateProxies(broadPhase, ref _xf);
             }
 
-            _fixtureList.Add(fixture);
+            FixtureList.Add(fixture);
 
             fixture._body = this;
 
@@ -940,13 +952,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             Debug.Assert(fixture.Body == this);
 
             // Remove the fixture from this body's singly linked list.
-            Debug.Assert(_fixtureList.Count > 0);
+            Debug.Assert(FixtureList.Count > 0);
 
             // You tried to remove a fixture that not present in the fixturelist.
-            Debug.Assert(_fixtureList.Contains(fixture));
+            Debug.Assert(FixtureList.Contains(fixture));
 
             // Destroy any contacts associated with the fixture.
-            ContactEdge edge = _contactList;
+            ContactEdge edge = ContactList;
             while (edge != null)
             {
                 Contact c = edge.Contact;
@@ -963,13 +975,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 }
             }
 
-            if ((_flags & BodyFlags.Enabled) == BodyFlags.Enabled)
+            if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
                 IBroadPhase broadPhase = _world.ContactManager.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
 
-            _fixtureList.Remove(fixture);
+            FixtureList.Remove(fixture);
             fixture.Destroy();
             fixture._body = null;
 
@@ -1011,9 +1023,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _sweep.A0 = rotation;
 
             IBroadPhase broadPhase = _world.ContactManager.BroadPhase;
-            for (int i = 0; i < _fixtureList.Count; i++)
+            for (int i = 0; i < FixtureList.Count; i++)
             {
-                _fixtureList[i].Synchronize(broadPhase, ref _xf, ref _xf);
+                FixtureList[i].Synchronize(broadPhase, ref _xf, ref _xf);
             }
 
             // Check for new contacts the next step
@@ -1133,7 +1145,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _linearVelocity += _invMass * impulse;
+            _linearVelocity += InvMass * impulse;
         }
 
         /// <summary>
@@ -1155,8 +1167,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _linearVelocity += _invMass * impulse;
-            _angularVelocity += _invI * MathUtils.Cross(point - _sweep.C, impulse);
+            _linearVelocity += InvMass * impulse;
+            AngularVelocity += InvI * MathUtils.Cross(point - _sweep.C, impulse);
         }
 
         /// <summary>Apply an angular impulse.</summary>
@@ -1174,7 +1186,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _angularVelocity += _invI * impulse;
+            AngularVelocity += InvI * impulse;
         }
 
         /// <summary>
@@ -1185,9 +1197,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             // Compute mass data from shapes. Each shape has its own density.
             _mass = 0.0f;
-            _invMass = 0.0f;
+            InvMass = 0.0f;
             _inertia = 0.0f;
-            _invI = 0.0f;
+            InvI = 0.0f;
             _sweep.LocalCenter = Vector2.Zero;
 
             //Velcro: We have mass on static bodies to support attaching joints to them
@@ -1204,7 +1216,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             // Accumulate mass over all fixtures.
             Vector2 localCenter = Vector2.Zero;
-            foreach (Fixture f in _fixtureList)
+            foreach (Fixture f in FixtureList)
             {
                 if (f.Shape._density == 0.0f)
                 {
@@ -1227,22 +1239,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             // Compute center of mass.
             if (_mass > 0.0f)
             {
-                _invMass = 1.0f / _mass;
-                localCenter *= _invMass;
+                InvMass = 1.0f / _mass;
+                localCenter *= InvMass;
             }
 
-            if (_inertia > 0.0f && (_flags & BodyFlags.FixedRotationFlag) == 0)
+            if (_inertia > 0.0f && (Flags & BodyFlags.FixedRotationFlag) == 0)
             {
                 // Center the inertia about the center of mass.
                 _inertia -= _mass * Vector2.Dot(localCenter, localCenter);
 
                 Debug.Assert(_inertia > 0.0f);
-                _invI = 1.0f / _inertia;
+                InvI = 1.0f / _inertia;
             }
             else
             {
                 _inertia = 0.0f;
-                _invI = 0.0f;
+                InvI = 0.0f;
             }
 
             // Move center of mass.
@@ -1252,7 +1264,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             // Update center of mass velocity.
             Vector2 a = _sweep.C - oldCenter;
-            _linearVelocity += new Vector2(-_angularVelocity * a.Y, _angularVelocity * a.X);
+            _linearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
 
         /// <summary>Get the world coordinates of a point given the local coordinates.</summary>
@@ -1317,7 +1329,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) =>
-            _linearVelocity + MathUtils.Cross(_angularVelocity, worldPoint - _sweep.C);
+            _linearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - _sweep.C);
 
         /// <summary>Get the world velocity of a local point.</summary>
         /// <param name="localPoint">A point in local coordinates.</param>
@@ -1344,22 +1356,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             IBroadPhase broadPhase = _world.ContactManager.BroadPhase;
 
-            if ((_flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag)
+            if ((Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag)
             {
                 Transform xf1 = new Transform();
                 xf1.q.Set(_sweep.A0);
                 xf1.p = _sweep.C0 - MathUtils.Mul(xf1.q, _sweep.LocalCenter);
 
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].Synchronize(broadPhase, ref xf1, ref _xf);
+                    FixtureList[i].Synchronize(broadPhase, ref xf1, ref _xf);
                 }
             }
             else
             {
-                for (int i = 0; i < _fixtureList.Count; i++)
+                for (int i = 0; i < FixtureList.Count; i++)
                 {
-                    _fixtureList[i].Synchronize(broadPhase, ref _xf, ref _xf);
+                    FixtureList[i].Synchronize(broadPhase, ref _xf, ref _xf);
                 }
             }
         }
@@ -1384,7 +1396,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             // Does a joint prevent collision?
-            for (JointEdge jn = _jointList; jn != null; jn = jn.Next)
+            for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
                 if (jn.Other == other)
                 {

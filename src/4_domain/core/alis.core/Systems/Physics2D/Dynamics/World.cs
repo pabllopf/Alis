@@ -951,7 +951,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             // Clear all the island flags.
             foreach (Body b in _bodyList)
             {
-                b._flags &= ~BodyFlags.IslandFlag;
+                b.Flags &= ~BodyFlags.IslandFlag;
             }
 
             for (Contact c = _contactManager._contactList; c != null; c = c.Next)
@@ -974,7 +974,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             for (int index = _bodyList.Count - 1; index >= 0; index--)
             {
                 Body seed = _bodyList[index];
-                if ((seed._flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag)
+                if ((seed.Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag)
                 {
                     continue;
                 }
@@ -995,7 +995,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 int stackCount = 0;
                 _stack[stackCount++] = seed;
 
-                seed._flags |= BodyFlags.IslandFlag;
+                seed.Flags |= BodyFlags.IslandFlag;
 
                 // Perform a depth first search (DFS) on the constraint graph.
                 while (stackCount > 0)
@@ -1013,10 +1013,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     }
 
                     // Make sure the body is awake (without resetting sleep timer).
-                    b._flags |= BodyFlags.AwakeFlag;
+                    b.Flags |= BodyFlags.AwakeFlag;
 
                     // Search all contacts connected to this body.
-                    for (ContactEdge ce = b._contactList; ce != null; ce = ce.Next)
+                    for (ContactEdge ce = b.ContactList; ce != null; ce = ce.Next)
                     {
                         Contact contact = ce.Contact;
 
@@ -1053,11 +1053,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                         Debug.Assert(stackCount < stackSize);
                         _stack[stackCount++] = other;
-                        other._flags |= BodyFlags.IslandFlag;
+                        other.Flags |= BodyFlags.IslandFlag;
                     }
 
                     // Search all joints connect to this body.
-                    for (JointEdge je = b._jointList; je != null; je = je.Next)
+                    for (JointEdge je = b.JointList; je != null; je = je.Next)
                     {
                         if (je.Joint.IslandFlag)
                         {
@@ -1087,7 +1087,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             Debug.Assert(stackCount < stackSize);
                             _stack[stackCount++] = other;
 
-                            other._flags |= BodyFlags.IslandFlag;
+                            other.Flags |= BodyFlags.IslandFlag;
                         }
                         else
                         {
@@ -1110,7 +1110,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     Body b = _island._bodies[i];
                     if (b.BodyType == BodyType.Static)
                     {
-                        b._flags &= ~BodyFlags.IslandFlag;
+                        b.Flags &= ~BodyFlags.IslandFlag;
                     }
                 }
             }
@@ -1122,7 +1122,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 foreach (Body b in _bodyList)
                 {
                     // If a body was not in an island then it did not move.
-                    if ((b._flags & BodyFlags.IslandFlag) == 0)
+                    if ((b.Flags & BodyFlags.IslandFlag) == 0)
                     {
                         continue;
                     }
@@ -1155,7 +1155,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             {
                 for (int i = 0; i < _bodyList.Count; i++)
                 {
-                    _bodyList[i]._flags &= ~BodyFlags.IslandFlag;
+                    _bodyList[i].Flags &= ~BodyFlags.IslandFlag;
                     _bodyList[i]._sweep.Alpha0 = 0.0f;
                 }
 
@@ -1328,8 +1328,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 _island.Add(bB0);
                 _island.Add(minContact);
 
-                bA0._flags |= BodyFlags.IslandFlag;
-                bB0._flags |= BodyFlags.IslandFlag;
+                bA0.Flags |= BodyFlags.IslandFlag;
+                bB0.Flags |= BodyFlags.IslandFlag;
                 minContact.Flags &= ~ContactFlags.IslandFlag;
 
                 // Get contacts on bodyA and bodyB.
@@ -1339,7 +1339,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     Body body = bodies[i];
                     if (body.BodyType == BodyType.Dynamic)
                     {
-                        for (ContactEdge ce = body._contactList; ce != null; ce = ce.Next)
+                        for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                         {
                             Contact contact = ce.Contact;
 
@@ -1412,7 +1412,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             // Add the other body to the island.
-                            other._flags |= BodyFlags.IslandFlag;
+                            other.Flags |= BodyFlags.IslandFlag;
 
                             if (other.BodyType != BodyType.Static)
                             {
@@ -1437,7 +1437,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 for (int i = 0; i < _island._bodyCount; ++i)
                 {
                     Body body = _island._bodies[i];
-                    body._flags &= ~BodyFlags.IslandFlag;
+                    body.Flags &= ~BodyFlags.IslandFlag;
 
                     if (body.BodyType != BodyType.Dynamic)
                     {
@@ -1447,7 +1447,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     body.SynchronizeFixtures();
 
                     // Invalidate all contact TOIs on this displaced body.
-                    for (ContactEdge ce = body._contactList; ce != null; ce = ce.Next)
+                    for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                     {
                         ce.Contact.Flags &= ~(ContactFlags.TOIFlag | ContactFlags.IslandFlag);
                     }
@@ -1513,14 +1513,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             joint.EdgeA.Joint = joint;
             joint.EdgeA.Other = joint.BodyB;
             joint.EdgeA.Prev = null;
-            joint.EdgeA.Next = joint.BodyA._jointList;
+            joint.EdgeA.Next = joint.BodyA.JointList;
 
-            if (joint.BodyA._jointList != null)
+            if (joint.BodyA.JointList != null)
             {
-                joint.BodyA._jointList.Prev = joint.EdgeA;
+                joint.BodyA.JointList.Prev = joint.EdgeA;
             }
 
-            joint.BodyA._jointList = joint.EdgeA;
+            joint.BodyA.JointList = joint.EdgeA;
 
             // WIP David
             if (!joint.IsFixedType())
@@ -1528,14 +1528,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 joint.EdgeB.Joint = joint;
                 joint.EdgeB.Other = joint.BodyA;
                 joint.EdgeB.Prev = null;
-                joint.EdgeB.Next = joint.BodyB._jointList;
+                joint.EdgeB.Next = joint.BodyB.JointList;
 
-                if (joint.BodyB._jointList != null)
+                if (joint.BodyB.JointList != null)
                 {
-                    joint.BodyB._jointList.Prev = joint.EdgeB;
+                    joint.BodyB.JointList.Prev = joint.EdgeB;
                 }
 
-                joint.BodyB._jointList = joint.EdgeB;
+                joint.BodyB.JointList = joint.EdgeB;
 
                 Body bodyA = joint.BodyA;
                 Body bodyB = joint.BodyB;
@@ -1543,7 +1543,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 // If the joint prevents collisions, then flag any contacts for filtering.
                 if (!joint.CollideConnected)
                 {
-                    ContactEdge edge = bodyB._contactList;
+                    ContactEdge edge = bodyB.ContactList;
                     while (edge != null)
                     {
                         if (edge.Other == bodyA)
@@ -1598,9 +1598,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 joint.EdgeA.Next.Prev = joint.EdgeA.Prev;
             }
 
-            if (joint.EdgeA == bodyA._jointList)
+            if (joint.EdgeA == bodyA.JointList)
             {
-                bodyA._jointList = joint.EdgeA.Next;
+                bodyA.JointList = joint.EdgeA.Next;
             }
 
             joint.EdgeA.Prev = null;
@@ -1620,9 +1620,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     joint.EdgeB.Next.Prev = joint.EdgeB.Prev;
                 }
 
-                if (joint.EdgeB == bodyB._jointList)
+                if (joint.EdgeB == bodyB.JointList)
                 {
-                    bodyB._jointList = joint.EdgeB.Next;
+                    bodyB.JointList = joint.EdgeB.Next;
                 }
 
                 joint.EdgeB.Prev = null;
@@ -1631,7 +1631,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 // If the joint prevents collisions, then flag any contacts for filtering.
                 if (!collideConnected)
                 {
-                    ContactEdge edge = bodyB._contactList;
+                    ContactEdge edge = bodyB.ContactList;
                     while (edge != null)
                     {
                         if (edge.Other == bodyA)
@@ -1666,9 +1666,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             //Velcro: We have events to notify fixtures was added
             if (FixtureAdded != null)
             {
-                for (int i = 0; i < body._fixtureList.Count; i++)
+                for (int i = 0; i < body.FixtureList.Count; i++)
                 {
-                    FixtureAdded(body._fixtureList[i]);
+                    FixtureAdded(body.FixtureList[i]);
                 }
             }
         }
@@ -1685,7 +1685,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             Debug.Assert(_bodyList.Contains(body));
 
             // Delete the attached joints.
-            JointEdge je = body._jointList;
+            JointEdge je = body.JointList;
             while (je != null)
             {
                 JointEdge je0 = je;
@@ -1694,10 +1694,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 RemoveJointInternal(je0.Joint);
             }
 
-            body._jointList = null;
+            body.JointList = null;
 
             // Delete the attached contacts.
-            ContactEdge ce = body._contactList;
+            ContactEdge ce = body.ContactList;
             while (ce != null)
             {
                 ContactEdge ce0 = ce;
@@ -1705,12 +1705,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 _contactManager.Remove(ce0.Contact);
             }
 
-            body._contactList = null;
+            body.ContactList = null;
 
             // Delete the attached fixtures. This destroys broad-phase proxies.
-            for (int i = 0; i < body._fixtureList.Count; i++)
+            for (int i = 0; i < body.FixtureList.Count; i++)
             {
-                Fixture fixture = body._fixtureList[i];
+                Fixture fixture = body.FixtureList[i];
 
                 //Velcro: Added event
                 FixtureRemoved?.Invoke(fixture);
@@ -1719,7 +1719,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 fixture.Destroy();
             }
 
-            body._fixtureList = null;
+            body.FixtureList = null;
 
             //Velcro: We make sure to cleanup the references and delegates
             body._world = null;

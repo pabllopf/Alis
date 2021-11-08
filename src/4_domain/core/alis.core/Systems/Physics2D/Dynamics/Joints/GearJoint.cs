@@ -455,14 +455,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             _lcB = BodyB._sweep.LocalCenter;
             _lcC = _bodyC._sweep.LocalCenter;
             _lcD = _bodyD._sweep.LocalCenter;
-            _mA = BodyA._invMass;
-            _mB = BodyB._invMass;
-            _mC = _bodyC._invMass;
-            _mD = _bodyD._invMass;
-            _iA = BodyA._invI;
-            _iB = BodyB._invI;
-            _iC = _bodyC._invI;
-            _iD = _bodyD._invI;
+            _mA = BodyA.InvMass;
+            _mB = BodyB.InvMass;
+            _mC = _bodyC.InvMass;
+            _mD = _bodyD.InvMass;
+            _iA = BodyA.InvI;
+            _iB = BodyB.InvI;
+            _iC = _bodyC.InvI;
+            _iD = _bodyD.InvI;
 
             float aA = data.Positions[_indexA].A;
             Vector2 vA = data.Velocities[_indexA].V;

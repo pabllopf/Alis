@@ -238,8 +238,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             _indexA = BodyA.IslandIndex;
             _localCenterA = BodyA._sweep.LocalCenter;
-            _invMassA = BodyA._invMass;
-            _invIA = BodyA._invI;
+            _invMassA = BodyA.InvMass;
+            _invIA = BodyA.InvI;
 
             Vector2 cA = data.Positions[_indexA].C;
             float aA = data.Positions[_indexA].A;
