@@ -224,9 +224,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             if (_typeA == JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) def.JointA;
-                _localAnchorC = revolute._localAnchorA;
-                _localAnchorA = revolute._localAnchorB;
-                _referenceAngleA = revolute._referenceAngle;
+                _localAnchorC = revolute.LocalAnchorA;
+                _localAnchorA = revolute.LocalAnchorB;
+                _referenceAngleA = revolute.ReferenceAngle;
                 _localAxisC = Vector2.Zero;
 
                 coordinateA = aA - aC - _referenceAngleA;
@@ -259,9 +259,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             if (_typeB == JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) def.JointB;
-                _localAnchorD = revolute._localAnchorA;
-                _localAnchorB = revolute._localAnchorB;
-                _referenceAngleB = revolute._referenceAngle;
+                _localAnchorD = revolute.LocalAnchorA;
+                _localAnchorB = revolute.LocalAnchorB;
+                _referenceAngleB = revolute.ReferenceAngle;
                 _localAxisD = Vector2.Zero;
 
                 coordinateB = aB - aD - _referenceAngleB;
@@ -328,9 +328,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             if (_typeA == JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) jointA;
-                _localAnchorC = revolute._localAnchorA;
-                _localAnchorA = revolute._localAnchorB;
-                _referenceAngleA = revolute._referenceAngle;
+                _localAnchorC = revolute.LocalAnchorA;
+                _localAnchorA = revolute.LocalAnchorB;
+                _referenceAngleA = revolute.ReferenceAngle;
                 _localAxisC = Vector2.Zero;
 
                 coordinateA = aA - aC - _referenceAngleA;
@@ -363,9 +363,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             if (_typeB == JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) jointB;
-                _localAnchorD = revolute._localAnchorA;
-                _localAnchorB = revolute._localAnchorB;
-                _referenceAngleB = revolute._referenceAngle;
+                _localAnchorD = revolute.LocalAnchorA;
+                _localAnchorB = revolute.LocalAnchorB;
+                _referenceAngleB = revolute.ReferenceAngle;
                 _localAxisD = Vector2.Zero;
 
                 coordinateB = aB - aD - _referenceAngleB;

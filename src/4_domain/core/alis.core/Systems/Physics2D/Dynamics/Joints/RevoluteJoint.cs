@@ -124,12 +124,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The local anchor
         /// </summary>
-        internal Vector2 _localAnchorA;
+        private Vector2 _localAnchorA;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        internal Vector2 _localAnchorB;
+        private Vector2 _localAnchorB;
 
         /// <summary>
         ///     The local center
@@ -179,7 +179,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The reference angle
         /// </summary>
-        internal float _referenceAngle;
+        private float _referenceAngle;
 
         /// <summary>
         ///     The upper angle
@@ -198,9 +198,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         public RevoluteJoint(RevoluteJointDef def)
             : base(def)
         {
-            _localAnchorA = def.LocalAnchorA;
-            _localAnchorB = def.LocalAnchorB;
-            _referenceAngle = def.ReferenceAngle;
+            LocalAnchorA = def.LocalAnchorA;
+            LocalAnchorB = def.LocalAnchorB;
+            ReferenceAngle = def.ReferenceAngle;
 
             _lowerAngle = def.LowerAngle;
             _upperAngle = def.UpperAngle;
@@ -223,16 +223,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             if (useWorldCoordinates)
             {
-                _localAnchorA = bodyA.GetLocalPoint(anchorA);
-                _localAnchorB = bodyB.GetLocalPoint(anchorB);
+                LocalAnchorA = bodyA.GetLocalPoint(anchorA);
+                LocalAnchorB = bodyB.GetLocalPoint(anchorB);
             }
             else
             {
-                _localAnchorA = anchorA;
-                _localAnchorB = anchorB;
+                LocalAnchorA = anchorA;
+                LocalAnchorB = anchorB;
             }
 
-            _referenceAngle = bodyB._sweep.A - bodyA._sweep.A;
+            ReferenceAngle = bodyB._sweep.A - bodyA._sweep.A;
         }
 
         /// <summary>Constructor of RevoluteJoint.</summary>
@@ -264,8 +264,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => _bodyA.GetWorldPoint(_localAnchorA);
-            set => _localAnchorA = _bodyA.GetLocalPoint(value);
+            get => _bodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = _bodyA.GetLocalPoint(value);
         }
 
         /// <summary>
@@ -273,8 +273,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => _bodyB.GetWorldPoint(_localAnchorB);
-            set => _localAnchorB = _bodyB.GetLocalPoint(value);
+            get => _bodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = _bodyB.GetLocalPoint(value);
         }
 
         /// <summary>The referance angle computed as BodyB angle minus BodyA angle.</summary>
@@ -285,7 +285,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>Get the current joint angle in radians.</summary>
-        public float JointAngle => _bodyB._sweep.A - _bodyA._sweep.A - _referenceAngle;
+        public float JointAngle => _bodyB._sweep.A - _bodyA._sweep.A - ReferenceAngle;
 
         /// <summary>Get the current joint angle speed in radians per second.</summary>
         public float JointSpeed => _bodyB._angularVelocity - _bodyA._angularVelocity;
@@ -442,8 +442,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             Rot qA = new Rot(aA), qB = new Rot(aB);
 
-            _rA = MathUtils.Mul(qA, _localAnchorA - _localCenterA);
-            _rB = MathUtils.Mul(qB, _localAnchorB - _localCenterB);
+            _rA = MathUtils.Mul(qA, LocalAnchorA - _localCenterA);
+            _rB = MathUtils.Mul(qB, LocalAnchorB - _localCenterB);
 
             // J = [-I -r1_skew I r2_skew]
             // r_skew = [-ry; rx]
@@ -472,7 +472,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 fixedRotation = true;
             }
 
-            _angle = aB - aA - _referenceAngle;
+            _angle = aB - aA - ReferenceAngle;
             if (_enableLimit == false || fixedRotation)
             {
                 _lowerImpulse = 0.0f;
@@ -619,7 +619,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             // Solve angular limit constraint
             if (_enableLimit && fixedRotation == false)
             {
-                float angle = aB - aA - _referenceAngle;
+                float angle = aB - aA - ReferenceAngle;
                 float C = 0.0f;
 
                 if (MathUtils.Abs(_upperAngle - _lowerAngle) < 2.0f * Settings.AngularSlop)
@@ -651,8 +651,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             {
                 qA.Set(aA);
                 qB.Set(aB);
-                Vector2 rA = MathUtils.Mul(qA, _localAnchorA - _localCenterA);
-                Vector2 rB = MathUtils.Mul(qB, _localAnchorB - _localCenterB);
+                Vector2 rA = MathUtils.Mul(qA, LocalAnchorA - _localCenterA);
+                Vector2 rB = MathUtils.Mul(qB, LocalAnchorB - _localCenterB);
 
                 Vector2 C = cB + rB - cA - rA;
                 positionError = C.Length();
