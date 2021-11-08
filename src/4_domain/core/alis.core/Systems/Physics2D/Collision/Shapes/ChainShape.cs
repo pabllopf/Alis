@@ -47,12 +47,17 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>
         ///     The next vertex
         /// </summary>
-        internal Vector2 _prevVertex, _nextVertex;
+        private Vector2 _prevVertex;
+
+        /// <summary>
+        /// The next vertex
+        /// </summary>
+        private Vector2 _nextVertex;
 
         /// <summary>
         ///     The vertices
         /// </summary>
-        internal Vertices _vertices;
+        private Vertices _vertices;
 
         /// <summary>Create a new ChainShape from the vertices.</summary>
         /// <param name="vertices">The vertices to use. Must contain 2 or more vertices.</param>
@@ -77,14 +82,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
                              Settings.LinearSlop * Settings.LinearSlop);
             }
 
-            _vertices = new Vertices(vertices);
+            Vertices = new Vertices(vertices);
 
             //Velcro: Merged CreateLoop() and CreateChain() to this
             if (createLoop)
             {
-                _vertices.Add(vertices[0]);
-                _prevVertex = _vertices[_vertices.Count - 2];
-                _nextVertex = _vertices[1];
+                Vertices.Add(vertices[0]);
+                PrevVertex = Vertices[Vertices.Count - 2];
+                NextVertex = Vertices[1];
             }
 
             ComputeProperties();
@@ -98,10 +103,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         }
 
         /// <summary>The vertices. These are not owned/freed by the chain Shape.</summary>
-        public Vertices Vertices => _vertices;
+        public Vertices Vertices
+        {
+            get => _vertices;
+            set { _vertices = value; }
+        }
 
         /// <summary>Edge count = vertex count - 1</summary>
-        public override int ChildCount => _vertices.Count - 1;
+        public override int ChildCount => Vertices.Count - 1;
 
         /// <summary>Establish connectivity to a vertex that precedes the first vertex. Don't call this for loops.</summary>
         public Vector2 PrevVertex
@@ -125,33 +134,33 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="index">The index</param>
         internal void GetChildEdge(EdgeShape edge, int index)
         {
-            Debug.Assert(0 <= index && index < _vertices.Count - 1);
+            Debug.Assert(0 <= index && index < Vertices.Count - 1);
             Debug.Assert(edge != null);
 
             //Velcro: It is already an edge shape
             //edge._shapeType = ShapeType.Edge;
             edge._radius = _radius;
 
-            edge._vertex1 = _vertices[index + 0];
-            edge._vertex2 = _vertices[index + 1];
+            edge._vertex1 = Vertices[index + 0];
+            edge._vertex2 = Vertices[index + 1];
             edge._oneSided = true;
 
             if (index > 0)
             {
-                edge._vertex0 = _vertices[index - 1];
+                edge._vertex0 = Vertices[index - 1];
             }
             else
             {
-                edge._vertex0 = _prevVertex;
+                edge._vertex0 = PrevVertex;
             }
 
-            if (index < _vertices.Count - 2)
+            if (index < Vertices.Count - 2)
             {
-                edge._vertex3 = _vertices[index + 2];
+                edge._vertex3 = Vertices[index + 2];
             }
             else
             {
-                edge._vertex3 = _nextVertex;
+                edge._vertex3 = NextVertex;
             }
         }
 
@@ -186,18 +195,18 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
             out RayCastOutput output)
         {
-            Debug.Assert(childIndex < _vertices.Count);
+            Debug.Assert(childIndex < Vertices.Count);
 
             int i1 = childIndex;
             int i2 = childIndex + 1;
 
-            if (i2 == _vertices.Count)
+            if (i2 == Vertices.Count)
             {
                 i2 = 0;
             }
 
-            Vector2 v1 = _vertices[i1];
-            Vector2 v2 = _vertices[i2];
+            Vector2 v1 = Vertices[i1];
+            Vector2 v2 = Vertices[i2];
 
             return RayCastHelper.RayCastEdge(ref v1, ref v2, false, ref input, ref transform, out output);
         }
@@ -210,18 +219,18 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         public override void ComputeAABB(ref Transform transform, int childIndex, out AABB aabb)
         {
-            Debug.Assert(childIndex < _vertices.Count);
+            Debug.Assert(childIndex < Vertices.Count);
 
             int i1 = childIndex;
             int i2 = childIndex + 1;
 
-            if (i2 == _vertices.Count)
+            if (i2 == Vertices.Count)
             {
                 i2 = 0;
             }
 
-            Vector2 v1 = _vertices[i1];
-            Vector2 v2 = _vertices[i2];
+            Vector2 v1 = Vertices[i1];
+            Vector2 v2 = Vertices[i2];
 
             AABBHelper.ComputeEdgeAABB(ref v1, ref v2, ref transform, out aabb);
         }
@@ -244,9 +253,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             clone._shapeType = _shapeType;
             clone._density = _density;
             clone._radius = _radius;
-            clone._prevVertex = _prevVertex;
-            clone._nextVertex = _nextVertex;
-            clone._vertices = new Vertices(_vertices);
+            clone.PrevVertex = PrevVertex;
+            clone.NextVertex = NextVertex;
+            clone.Vertices = new Vertices(Vertices);
             return clone;
         }
     }

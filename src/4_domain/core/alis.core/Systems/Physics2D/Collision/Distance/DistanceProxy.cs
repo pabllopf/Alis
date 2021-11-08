@@ -83,11 +83,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                 case ShapeType.Chain:
                 {
                     ChainShape chain = (ChainShape) shape;
-                    Debug.Assert(0 <= index && index < chain._vertices.Count);
+                    Debug.Assert(0 <= index && index < chain.Vertices.Count);
 
                     _vertices = new Vector2[2];
-                    _vertices[0] = chain._vertices[index];
-                    _vertices[1] = index + 1 < chain._vertices.Count ? chain._vertices[index + 1] : chain._vertices[0];
+                    _vertices[0] = chain.Vertices[index];
+                    _vertices[1] = index + 1 < chain.Vertices.Count ? chain.Vertices[index + 1] : chain.Vertices[0];
 
                     _radius = chain._radius;
                 }
