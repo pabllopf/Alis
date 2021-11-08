@@ -313,20 +313,20 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             float mA = _invMassA, mB = _invMassB;
             float iA = _invIA, iB = _invIB;
 
-            Mat33 K;
-            K.ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
-            K.ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
-            K.ez.X = -_rA.Y * iA - _rB.Y * iB;
-            K.ex.Y = K.ey.X;
-            K.ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
-            K.ez.Y = _rA.X * iA + _rB.X * iB;
-            K.ex.Z = K.ez.X;
-            K.ey.Z = K.ez.Y;
-            K.ez.Z = iA + iB;
+            Mat33 KK;
+            KK.ex.X = mA + mB + _rA.Y * _rA.Y * iA + _rB.Y * _rB.Y * iB;
+            KK.ey.X = -_rA.Y * _rA.X * iA - _rB.Y * _rB.X * iB;
+            KK.ez.X = -_rA.Y * iA - _rB.Y * iB;
+            KK.ex.Y = KK.ey.X;
+            KK.ey.Y = mA + mB + _rA.X * _rA.X * iA + _rB.X * _rB.X * iB;
+            KK.ez.Y = _rA.X * iA + _rB.X * iB;
+            KK.ex.Z = KK.ez.X;
+            KK.ey.Z = KK.ez.Y;
+            KK.ez.Z = iA + iB;
 
             if (_stiffness > 0.0f)
             {
-                K.GetInverse22(ref _mass);
+                KK.GetInverse22(ref _mass);
 
                 float invM = iA + iB;
 
@@ -347,15 +347,15 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 invM += _gamma;
                 _mass.ez.Z = invM != 0.0f ? 1.0f / invM : 0.0f;
             }
-            else if (K.ez.Z == 0.0f)
+            else if (KK.ez.Z == 0.0f)
             {
-                K.GetInverse22(ref _mass);
+                KK.GetInverse22(ref _mass);
                 _gamma = 0.0f;
                 _bias = 0.0f;
             }
             else
             {
-                K.GetSymInverse33(ref _mass);
+                KK.GetSymInverse33(ref _mass);
                 _gamma = 0.0f;
                 _bias = 0.0f;
             }

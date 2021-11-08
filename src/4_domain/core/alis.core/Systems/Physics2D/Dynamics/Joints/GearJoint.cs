@@ -234,10 +234,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             else
             {
                 PrismaticJoint prismatic = (PrismaticJoint) def.JointA;
-                _localAnchorC = prismatic._localAnchorA;
-                _localAnchorA = prismatic._localAnchorB;
-                _referenceAngleA = prismatic._referenceAngle;
-                _localAxisC = prismatic._localXAxisA;
+                _localAnchorC = prismatic.LocalAnchorA;
+                _localAnchorA = prismatic.LocalAnchorB;
+                _referenceAngleA = prismatic.ReferenceAngle;
+                _localAxisC = prismatic.LocalXAxisA;
 
                 Vector2 pC = _localAnchorC;
                 Vector2 pA = MathUtils.MulT(xfC.q, MathUtils.Mul(xfA.q, _localAnchorA) + (xfA.p - xfC.p));
@@ -269,10 +269,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             else
             {
                 PrismaticJoint prismatic = (PrismaticJoint) def.JointB;
-                _localAnchorD = prismatic._localAnchorA;
-                _localAnchorB = prismatic._localAnchorB;
-                _referenceAngleB = prismatic._referenceAngle;
-                _localAxisD = prismatic._localXAxisA;
+                _localAnchorD = prismatic.LocalAnchorA;
+                _localAnchorB = prismatic.LocalAnchorB;
+                _referenceAngleB = prismatic.ReferenceAngle;
+                _localAxisD = prismatic.LocalXAxisA;
 
                 Vector2 pD = _localAnchorD;
                 Vector2 pB = MathUtils.MulT(xfD.q, MathUtils.Mul(xfB.q, _localAnchorB) + (xfB.p - xfD.p));
@@ -338,10 +338,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             else
             {
                 PrismaticJoint prismatic = (PrismaticJoint) jointA;
-                _localAnchorC = prismatic._localAnchorA;
-                _localAnchorA = prismatic._localAnchorB;
-                _referenceAngleA = prismatic._referenceAngle;
-                _localAxisC = prismatic._localXAxisA;
+                _localAnchorC = prismatic.LocalAnchorA;
+                _localAnchorA = prismatic.LocalAnchorB;
+                _referenceAngleA = prismatic.ReferenceAngle;
+                _localAxisC = prismatic.LocalXAxisA;
 
                 Vector2 pC = _localAnchorC;
                 Vector2 pA = MathUtils.MulT(xfC.q, MathUtils.Mul(xfA.q, _localAnchorA) + (xfA.p - xfC.p));
@@ -373,10 +373,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             else
             {
                 PrismaticJoint prismatic = (PrismaticJoint) jointB;
-                _localAnchorD = prismatic._localAnchorA;
-                _localAnchorB = prismatic._localAnchorB;
-                _referenceAngleB = prismatic._referenceAngle;
-                _localAxisD = prismatic._localXAxisA;
+                _localAnchorD = prismatic.LocalAnchorA;
+                _localAnchorB = prismatic.LocalAnchorB;
+                _referenceAngleB = prismatic.ReferenceAngle;
+                _localAxisD = prismatic.LocalXAxisA;
 
                 Vector2 pD = _localAnchorD;
                 Vector2 pB = MathUtils.MulT(xfD.q, MathUtils.Mul(xfB.q, _localAnchorB) + (xfB.p - xfD.p));

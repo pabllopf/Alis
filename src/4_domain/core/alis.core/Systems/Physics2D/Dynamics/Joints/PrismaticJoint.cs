@@ -159,12 +159,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The local anchor
         /// </summary>
-        internal Vector2 _localAnchorA;
+        private Vector2 _localAnchorA;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        internal Vector2 _localAnchorB;
+        private Vector2 _localAnchorB;
 
         /// <summary>
         ///     The local center
@@ -179,7 +179,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The local axis
         /// </summary>
-        internal Vector2 _localXAxisA;
+        private Vector2 _localXAxisA;
 
         /// <summary>
         ///     The local axis
@@ -214,7 +214,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The reference angle
         /// </summary>
-        internal float _referenceAngle;
+        private float _referenceAngle;
 
         /// <summary>
         ///     The
@@ -278,13 +278,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         public PrismaticJoint(PrismaticJointDef def)
             : base(def)
         {
-            _localAnchorA = def.LocalAnchorA;
-            _localAnchorB = def.LocalAnchorB;
-            _localXAxisA = def.LocalAxisA;
+            LocalAnchorA = def.LocalAnchorA;
+            LocalAnchorB = def.LocalAnchorB;
+            LocalXAxisA = def.LocalAxisA;
 
-            _localXAxisA = Vector2.Normalize(_localXAxisA);
-            _localYAxisA = MathUtils.Cross(1.0f, _localXAxisA);
-            _referenceAngle = def.ReferenceAngle;
+            LocalXAxisA = Vector2.Normalize(LocalXAxisA);
+            _localYAxisA = MathUtils.Cross(1.0f, LocalXAxisA);
+            ReferenceAngle = def.ReferenceAngle;
 
 
             _lowerTranslation = def.LowerTranslation;
@@ -317,8 +317,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorA
         {
-            get => BodyA.GetWorldPoint(_localAnchorA);
-            set => _localAnchorA = BodyA.GetLocalPoint(value);
+            get => BodyA.GetWorldPoint(LocalAnchorA);
+            set => LocalAnchorA = BodyA.GetLocalPoint(value);
         }
 
         /// <summary>
@@ -326,8 +326,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public override Vector2 WorldAnchorB
         {
-            get => BodyB.GetWorldPoint(_localAnchorB);
-            set => _localAnchorB = BodyB.GetLocalPoint(value);
+            get => BodyB.GetWorldPoint(LocalAnchorB);
+            set => LocalAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>Get the current joint translation, usually in meters.</summary>
@@ -335,10 +335,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             get
             {
-                Vector2 pA = BodyA.GetWorldPoint(_localAnchorA);
-                Vector2 pB = BodyB.GetWorldPoint(_localAnchorB);
+                Vector2 pA = BodyA.GetWorldPoint(LocalAnchorA);
+                Vector2 pB = BodyB.GetWorldPoint(LocalAnchorB);
                 Vector2 d = pB - pA;
-                Vector2 axis = BodyA.GetWorldVector(_localXAxisA);
+                Vector2 axis = BodyA.GetWorldVector(LocalXAxisA);
 
                 float translation = MathUtils.Dot(d, axis);
                 return translation;
@@ -353,12 +353,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 Body bA = BodyA;
                 Body bB = BodyB;
 
-                Vector2 rA = MathUtils.Mul(bA._xf.q, _localAnchorA - bA._sweep.LocalCenter);
-                Vector2 rB = MathUtils.Mul(bB._xf.q, _localAnchorB - bB._sweep.LocalCenter);
+                Vector2 rA = MathUtils.Mul(bA._xf.q, LocalAnchorA - bA._sweep.LocalCenter);
+                Vector2 rB = MathUtils.Mul(bB._xf.q, LocalAnchorB - bB._sweep.LocalCenter);
                 Vector2 p1 = bA._sweep.C + rA;
                 Vector2 p2 = bB._sweep.C + rB;
                 Vector2 d = p2 - p1;
-                Vector2 axis = MathUtils.Mul(bA._xf.q, _localXAxisA);
+                Vector2 axis = MathUtils.Mul(bA._xf.q, LocalXAxisA);
 
                 Vector2 vA = bA._linearVelocity;
                 Vector2 vB = bB._linearVelocity;
@@ -464,7 +464,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>The local joint axis relative to bodyA.</summary>
-        public Vector2 LocalXAxisA => _localXAxisA;
+        public Vector2 LocalXAxisA
+        {
+            get => _localXAxisA;
+            set { _localXAxisA = value; }
+        }
 
         /// <summary>
         ///     Gets the value of the local y axis a
@@ -472,7 +476,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         public Vector2 LocalYAxisA => _localYAxisA;
 
         /// <summary>Get the reference angle.</summary>
-        public float ReferenceAngle => _referenceAngle;
+        public float ReferenceAngle
+        {
+            get => _referenceAngle;
+            set { _referenceAngle = value; }
+        }
 
         /// <summary>Get the current motor force given the inverse time step, usually in N.</summary>
         public float GetMotorForce(float invDt) => invDt * _motorImpulse;
@@ -535,8 +543,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             Rot qA = new Rot(aA), qB = new Rot(aB);
 
             // Compute the effective masses.
-            Vector2 rA = MathUtils.Mul(qA, _localAnchorA - _localCenterA);
-            Vector2 rB = MathUtils.Mul(qB, _localAnchorB - _localCenterB);
+            Vector2 rA = MathUtils.Mul(qA, LocalAnchorA - _localCenterA);
+            Vector2 rB = MathUtils.Mul(qB, LocalAnchorB - _localCenterB);
             Vector2 d = cB - cA + rB - rA;
 
             float mA = _invMassA, mB = _invMassB;
@@ -544,7 +552,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             // Compute motor Jacobian and effective mass.
             {
-                _axis = MathUtils.Mul(qA, _localXAxisA);
+                _axis = MathUtils.Mul(qA, LocalXAxisA);
                 _a1 = MathUtils.Cross(d + rA, _axis);
                 _a2 = MathUtils.Cross(rB, _axis);
 
@@ -751,11 +759,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             float iA = _invIA, iB = _invIB;
 
             // Compute fresh Jacobians
-            Vector2 rA = MathUtils.Mul(qA, _localAnchorA - _localCenterA);
-            Vector2 rB = MathUtils.Mul(qB, _localAnchorB - _localCenterB);
+            Vector2 rA = MathUtils.Mul(qA, LocalAnchorA - _localCenterA);
+            Vector2 rB = MathUtils.Mul(qB, LocalAnchorB - _localCenterB);
             Vector2 d = cB + rB - cA - rA;
 
-            Vector2 axis = MathUtils.Mul(qA, _localXAxisA);
+            Vector2 axis = MathUtils.Mul(qA, LocalXAxisA);
             float a1 = MathUtils.Cross(d + rA, axis);
             float a2 = MathUtils.Cross(rB, axis);
             Vector2 perp = MathUtils.Mul(qA, _localYAxisA);
@@ -766,7 +774,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             Vector3 impulse;
             Vector2 C1;
             C1.X = Vector2.Dot(perp, d);
-            C1.Y = aB - aA - _referenceAngle;
+            C1.Y = aB - aA - ReferenceAngle;
 
             float linearError = MathUtils.Abs(C1.X);
             float angularError = MathUtils.Abs(C1.Y);
@@ -873,20 +881,20 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             //Velcro: We support setting anchors in world coordinates
             if (useWorldCoordinates)
             {
-                _localAnchorA = BodyA.GetLocalPoint(localAnchorA);
-                _localAnchorB = BodyB.GetLocalPoint(localAnchorB);
-                _localXAxisA = BodyA.GetLocalVector(axis);
+                LocalAnchorA = BodyA.GetLocalPoint(localAnchorA);
+                LocalAnchorB = BodyB.GetLocalPoint(localAnchorB);
+                LocalXAxisA = BodyA.GetLocalVector(axis);
             }
             else
             {
-                _localAnchorA = localAnchorA;
-                _localAnchorB = localAnchorB;
-                _localXAxisA = axis;
+                LocalAnchorA = localAnchorA;
+                LocalAnchorB = localAnchorB;
+                LocalXAxisA = axis;
             }
 
-            _referenceAngle = BodyB.Rotation - BodyA.Rotation;
-            _localXAxisA = Vector2.Normalize(_localXAxisA);
-            _localYAxisA = MathUtils.Cross(1.0f, _localXAxisA);
+            ReferenceAngle = BodyB.Rotation - BodyA.Rotation;
+            LocalXAxisA = Vector2.Normalize(LocalXAxisA);
+            _localYAxisA = MathUtils.Cross(1.0f, LocalXAxisA);
         }
     }
 }
