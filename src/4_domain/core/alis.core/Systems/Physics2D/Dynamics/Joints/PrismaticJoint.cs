@@ -360,8 +360,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 Vector2 d = p2 - p1;
                 Vector2 axis = MathUtils.Mul(bA._xf.q, LocalXAxisA);
 
-                Vector2 vA = bA._linearVelocity;
-                Vector2 vB = bB._linearVelocity;
+                Vector2 vA = bA._linearVelc;
+                Vector2 vB = bB._linearVelc;
                 float wA = bA.AngularVelocity;
                 float wB = bB.AngularVelocity;
 

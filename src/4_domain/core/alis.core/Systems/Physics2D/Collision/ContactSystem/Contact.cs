@@ -593,7 +593,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             Debug.Assert(ShapeType.Unknown < type2 && type2 < ShapeType.TypeCount);
 
             Contact c;
-            Queue<Contact> pool = fixtureA.Body._world._contactPool;
+            Queue<Contact> pool = fixtureA.Body._world.ContactPool;
             if (pool.Count > 0)
             {
                 c = pool.Dequeue();
@@ -648,7 +648,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             //Debug.Assert(0 <= typeA && typeA < b2Shape::e_typeCount);
             //Debug.Assert(0 <= typeB && typeB < b2Shape::e_typeCount);
 
-            FixtureA._body._world._contactPool.Enqueue(this);
+            FixtureA._body._world.ContactPool.Enqueue(this);
 
             Reset(null, 0, null, 0);
         }

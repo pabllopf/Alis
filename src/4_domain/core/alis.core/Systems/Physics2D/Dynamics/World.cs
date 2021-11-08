@@ -108,12 +108,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The contact manager
         /// </summary>
-        internal ContactManager _contactManager;
+        private ContactManager _contactManager;
 
         /// <summary>
         ///     The contact
         /// </summary>
-        internal Queue<Contact> _contactPool = new Queue<Contact>(256);
+        internal Queue<Contact> ContactPool { get; } = new Queue<Contact>(256);
 
         /// <summary>
         ///     The continuous physics enabled
@@ -143,12 +143,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The island
         /// </summary>
-        internal Island _island;
+        internal Island Island1 { get; }
 
         /// <summary>
         ///     The is locked
         /// </summary>
-        internal bool _isLocked;
+        private bool _isLocked;
 
         /// <summary>
         ///     The my fixture
@@ -158,7 +158,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The new contacts
         /// </summary>
-        internal bool _newContacts;
+        internal bool NewContacts { get; set; }
 
         /// <summary>
         ///     The point
@@ -219,7 +219,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _warmStartingEnabled = true;
             _continuousPhysicsEnabled = true;
 
-            _island = new Island();
+            Island1 = new Island();
             _controllerList = new List<Controller>();
             _breakableBodyList = new List<BreakableBody>();
             _bodyList = new List<Body>(32);
@@ -228,7 +228,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _queryAABBCallbackWrapper = QueryAABBCallbackWrapper;
             _rayCastCallbackWrapper = RayCastCallbackWrapper;
 
-            _contactManager = new ContactManager(new DynamicTreeBroadPhase());
+            ContactManager = new ContactManager(new DynamicTreeBroadPhase());
         }
 
         /// <summary>
@@ -296,7 +296,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
         /// <summary>Get the contact manager for testing.</summary>
         /// <value>The contact manager.</value>
-        public ContactManager ContactManager => _contactManager;
+        public ContactManager ContactManager
+        {
+            get => _contactManager;
+            set { _contactManager = value; }
+        }
 
         /// <summary>Get the world body list.</summary>
         /// <value>The head of the world body list.</value>
@@ -362,9 +366,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
             else
             {
-                Debug.Assert(!_isLocked);
+                Debug.Assert(!IsLocked);
 
-                if (_isLocked)
+                if (IsLocked)
                 {
                     return;
                 }
@@ -390,9 +394,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
             else
             {
-                Debug.Assert(!_isLocked);
+                Debug.Assert(!IsLocked);
 
-                if (_isLocked)
+                if (IsLocked)
                 {
                     return;
                 }
@@ -417,9 +421,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
             else
             {
-                Debug.Assert(!_isLocked);
+                Debug.Assert(!IsLocked);
 
-                if (_isLocked)
+                if (IsLocked)
                 {
                     return;
                 }
@@ -445,9 +449,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
             else
             {
-                Debug.Assert(!_isLocked);
+                Debug.Assert(!IsLocked);
 
-                if (_isLocked)
+                if (IsLocked)
                 {
                     return;
                 }
@@ -538,17 +542,17 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             // If new fixtures were added, we need to find the new contacts.
-            if (_newContacts)
+            if (NewContacts)
             {
                 //Velcro: We measure how much time is spent on finding new contacts
                 Stopwatch timer = _timerPool.GetFromPool(true);
-                _contactManager.FindNewContacts();
-                _newContacts = false;
+                ContactManager.FindNewContacts();
+                NewContacts = false;
                 _profile.NewContactsTime = timer.ElapsedTicks;
                 _timerPool.ReturnToPool(timer);
             }
 
-            _isLocked = true;
+            IsLocked = true;
 
             TimeStep step;
             step.DeltaTime = dt;
@@ -581,7 +585,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             // Update contacts. This is where some contacts are destroyed.
             {
                 Stopwatch timer = _timerPool.GetFromPool(true);
-                _contactManager.Collide();
+                ContactManager.Collide();
                 _profile.Collide = timer.ElapsedTicks;
                 _timerPool.ReturnToPool(timer);
             }
@@ -627,7 +631,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 _timerPool.ReturnToPool(timer);
             }
 
-            _isLocked = false;
+            IsLocked = false;
 
             _profile.Step = stepTimer.ElapsedTicks;
             _timerPool.ReturnToPool(stepTimer);
@@ -645,7 +649,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             {
                 Body body = _bodyList[i];
                 body._force = Vector2.Zero;
-                body._torque = 0.0f;
+                body.Torque = 0.0f;
             }
         }
 
@@ -658,7 +662,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         public void QueryAABB(Func<Fixture, bool> callback, ref AABB aabb)
         {
             _queryAABBCallback = callback;
-            _contactManager.BroadPhase.Query(_queryAABBCallbackWrapper, ref aabb);
+            ContactManager.BroadPhase.Query(_queryAABBCallbackWrapper, ref aabb);
             _queryAABBCallback = null;
         }
 
@@ -699,7 +703,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             input.Point2 = point2;
 
             _rayCastCallback = callback;
-            _contactManager.BroadPhase.RayCast(_rayCastCallbackWrapper, ref input);
+            ContactManager.BroadPhase.RayCast(_rayCastCallbackWrapper, ref input);
             _rayCastCallback = null;
         }
 
@@ -770,8 +774,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public void ShiftOrigin(Vector2 newOrigin)
         {
-            Debug.Assert(!_isLocked);
-            if (_isLocked)
+            Debug.Assert(!IsLocked);
+            if (IsLocked)
             {
                 return;
             }
@@ -788,7 +792,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 joint.ShiftOrigin(ref newOrigin);
             }
 
-            _contactManager.BroadPhase.ShiftOrigin(ref newOrigin);
+            ContactManager.BroadPhase.ShiftOrigin(ref newOrigin);
         }
 
         /// <summary>
@@ -905,7 +909,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <returns>The bool</returns>
         private bool QueryAABBCallbackWrapper(int proxyId)
         {
-            FixtureProxy proxy = _contactManager.BroadPhase.GetProxy(proxyId);
+            FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
             return _queryAABBCallback(proxy.Fixture);
         }
 
@@ -917,7 +921,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <returns>The float</returns>
         private float RayCastCallbackWrapper(RayCastInput rayCastInput, int proxyId)
         {
-            FixtureProxy proxy = _contactManager.BroadPhase.GetProxy(proxyId);
+            FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
             Fixture fixture = proxy.Fixture;
             int index = proxy.ChildIndex;
             bool hit = fixture.RayCast(out RayCastOutput output, ref rayCastInput, index);
@@ -943,10 +947,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _profile.SolvePosition = 0;
 
             // Size the island for the worst case.
-            _island.Reset(_bodyList.Count,
-                _contactManager._contactCount,
+            Island1.Reset(_bodyList.Count,
+                ContactManager._contactCount,
                 _jointList.Count,
-                _contactManager);
+                ContactManager);
 
             // Clear all the island flags.
             foreach (Body b in _bodyList)
@@ -954,7 +958,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 b.Flags &= ~BodyFlags.IslandFlag;
             }
 
-            for (Contact c = _contactManager._contactList; c != null; c = c.Next)
+            for (Contact c = ContactManager._contactList; c != null; c = c.Next)
             {
                 c.Flags &= ~ContactFlags.IslandFlag;
             }
@@ -991,7 +995,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 }
 
                 // Reset island and stack.
-                _island.Clear();
+                Island1.Clear();
                 int stackCount = 0;
                 _stack[stackCount++] = seed;
 
@@ -1003,7 +1007,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     // Grab the next body off the stack and add it to the island.
                     Body b = _stack[--stackCount];
                     Debug.Assert(b.Enabled);
-                    _island.Add(b);
+                    Island1.Add(b);
 
                     // To keep islands as small as possible, we don't
                     // propagate islands across static bodies.
@@ -1040,7 +1044,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             continue;
                         }
 
-                        _island.Add(contact);
+                        Island1.Add(contact);
                         contact.Flags |= ContactFlags.IslandFlag;
 
                         Body other = ce.Other;
@@ -1076,7 +1080,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                                 continue;
                             }
 
-                            _island.Add(je.Joint);
+                            Island1.Add(je.Joint);
                             je.Joint.IslandFlag = true;
 
                             if (other.IsIsland)
@@ -1091,23 +1095,23 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         }
                         else
                         {
-                            _island.Add(je.Joint);
+                            Island1.Add(je.Joint);
                             je.Joint.IslandFlag = true;
                         }
                     }
                 }
 
                 Profile profile = new Profile();
-                _island.Solve(ref profile, ref step, ref _gravity, _sleepingAllowed);
+                Island1.Solve(ref profile, ref step, ref _gravity, _sleepingAllowed);
                 _profile.SolveInit += profile.SolveInit;
                 _profile.SolveVelocity += profile.SolveVelocity;
                 _profile.SolvePosition += profile.SolvePosition;
 
                 // Post solve cleanup.
-                for (int i = 0; i < _island._bodyCount; ++i)
+                for (int i = 0; i < Island1._bodyCount; ++i)
                 {
                     // Allow static bodies to participate in other islands.
-                    Body b = _island._bodies[i];
+                    Body b = Island1._bodies[i];
                     if (b.BodyType == BodyType.Static)
                     {
                         b.Flags &= ~BodyFlags.IslandFlag;
@@ -1137,7 +1141,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 }
 
                 // Look for new contacts.
-                _contactManager.FindNewContacts();
+                ContactManager.FindNewContacts();
                 _profile.Broadphase = timer.ElapsedTicks;
                 _timerPool.ReturnToPool(timer);
             }
@@ -1149,7 +1153,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="step">The step</param>
         private void SolveTOI(ref TimeStep step)
         {
-            _island.Reset(2 * Settings.MaxToiContacts, Settings.MaxToiContacts, 0, _contactManager);
+            Island1.Reset(2 * Settings.MaxToiContacts, Settings.MaxToiContacts, 0, ContactManager);
 
             if (_stepComplete)
             {
@@ -1159,7 +1163,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     _bodyList[i]._sweep.Alpha0 = 0.0f;
                 }
 
-                for (Contact c = _contactManager._contactList; c != null; c = c.Next)
+                for (Contact c = ContactManager._contactList; c != null; c = c.Next)
                 {
                     // Invalidate TOI
                     c.Flags &= ~(ContactFlags.TOIFlag | ContactFlags.IslandFlag);
@@ -1175,7 +1179,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Contact minContact = null;
                 float minAlpha = 1.0f;
 
-                for (Contact c = _contactManager._contactList; c != null; c = c.Next)
+                for (Contact c = ContactManager._contactList; c != null; c = c.Next)
                 {
                     // Is this contact disabled?
                     if (!c.Enabled)
@@ -1303,7 +1307,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 bB0.Advance(minAlpha);
 
                 // The TOI contact likely has some new contact points.
-                minContact.Update(_contactManager);
+                minContact.Update(ContactManager);
                 minContact.Flags &= ~ContactFlags.TOIFlag;
                 ++minContact.ToiCount;
 
@@ -1323,10 +1327,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 bB0.Awake = true;
 
                 // Build the island
-                _island.Clear();
-                _island.Add(bA0);
-                _island.Add(bB0);
-                _island.Add(minContact);
+                Island1.Clear();
+                Island1.Add(bA0);
+                Island1.Add(bB0);
+                Island1.Add(minContact);
 
                 bA0.Flags |= BodyFlags.IslandFlag;
                 bB0.Flags |= BodyFlags.IslandFlag;
@@ -1343,12 +1347,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         {
                             Contact contact = ce.Contact;
 
-                            if (_island._bodyCount == _island._bodyCapacity)
+                            if (Island1._bodyCount == Island1._bodyCapacity)
                             {
                                 break;
                             }
 
-                            if (_island._contactCount == _island._contactCapacity)
+                            if (Island1._contactCount == Island1._contactCapacity)
                             {
                                 break;
                             }
@@ -1383,7 +1387,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             // Update the contact points
-                            contact.Update(_contactManager);
+                            contact.Update(ContactManager);
 
                             // Was the contact disabled by the user?
                             if (!contact.Enabled)
@@ -1403,7 +1407,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                             // Add the contact to the island
                             minContact.Flags |= ContactFlags.IslandFlag;
-                            _island.Add(contact);
+                            Island1.Add(contact);
 
                             // Has the other body already been added to the island?
                             if (other.IsIsland)
@@ -1419,7 +1423,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                                 other.Awake = true;
                             }
 
-                            _island.Add(other);
+                            Island1.Add(other);
                         }
                     }
                 }
@@ -1431,12 +1435,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 subStep.PositionIterations = 20;
                 subStep.VelocityIterations = step.VelocityIterations;
                 subStep.WarmStarting = false;
-                _island.SolveTOI(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
+                Island1.SolveTOI(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
 
                 // Reset island flags and synchronize broad-phase proxies.
-                for (int i = 0; i < _island._bodyCount; ++i)
+                for (int i = 0; i < Island1._bodyCount; ++i)
                 {
-                    Body body = _island._bodies[i];
+                    Body body = Island1._bodies[i];
                     body.Flags &= ~BodyFlags.IslandFlag;
 
                     if (body.BodyType != BodyType.Dynamic)
@@ -1455,7 +1459,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 // Commit fixture proxy movements to the broad-phase so that new contacts are created.
                 // Also, some contacts can be destroyed.
-                _contactManager.FindNewContacts();
+                ContactManager.FindNewContacts();
 
                 if (Settings.EnableSubStepping)
                 {
@@ -1702,7 +1706,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             {
                 ContactEdge ce0 = ce;
                 ce = ce.Next;
-                _contactManager.Remove(ce0.Contact);
+                ContactManager.Remove(ce0.Contact);
             }
 
             body.ContactList = null;
@@ -1715,7 +1719,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 //Velcro: Added event
                 FixtureRemoved?.Invoke(fixture);
 
-                fixture.DestroyProxies(_contactManager.BroadPhase);
+                fixture.DestroyProxies(ContactManager.BroadPhase);
                 fixture.Destroy();
             }
 

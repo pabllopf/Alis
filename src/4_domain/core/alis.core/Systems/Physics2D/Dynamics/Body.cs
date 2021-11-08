@@ -118,12 +118,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The linear damping
         /// </summary>
-        private float _linearDamping;
+        private float _linearDamp;
 
         /// <summary>
         ///     The linear velocity
         /// </summary>
-        internal Vector2 _linearVelocity;
+        internal Vector2 _linearVelc;
 
         /// <summary>
         ///     The mass
@@ -148,7 +148,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The torque
         /// </summary>
-        internal float _torque;
+        internal float Torque { get; set; }
 
         /// <summary>
         ///     The type
@@ -225,10 +225,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _sweep.A0 = def.Angle;
             _sweep.A = def.Angle;
 
-            _linearVelocity = def.LinearVelocity;
+            _linearVelc = def.LinearVelocity;
             AngularVelocity = def.AngularVelocity;
 
-            _linearDamping = def.LinearDamping;
+            _linearDamp = def.LinearDamping;
             _angularDamping = def.AngularDamping;
             _gravityScale = def.GravityScale;
 
@@ -305,8 +305,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             get => _type;
             set
             {
-                Debug.Assert(!_world._isLocked);
-                if (_world._isLocked)
+                Debug.Assert(!_world.IsLocked);
+                if (_world.IsLocked)
                 {
                     return;
                 }
@@ -322,7 +322,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 if (_type == BodyType.Static)
                 {
-                    _linearVelocity = Vector2.Zero;
+                    _linearVelc = Vector2.Zero;
                     AngularVelocity = 0.0f;
                     _sweep.A0 = _sweep.A;
                     _sweep.C0 = _sweep.C;
@@ -333,7 +333,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
 
                 _force = Vector2.Zero;
-                _torque = 0.0f;
+                Torque = 0.0f;
 
                 // Delete the attached contacts.
                 ContactEdge ce = ContactList;
@@ -363,7 +363,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value>The linear velocity.</value>
         public Vector2 LinearVelocity
         {
-            get => _linearVelocity;
+            get => _linearVelc;
             set
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
@@ -378,7 +378,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     Awake = true;
                 }
 
-                _linearVelocity = value;
+                _linearVelc = value;
             }
         }
 
@@ -409,8 +409,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value>The linear damping.</value>
         public float LinearDamping
         {
-            get => _linearDamping;
-            set => _linearDamping = value;
+            get => _linearDamp;
+            set => _linearDamp = value;
         }
 
         /// <summary>Gets or sets the angular damping.</summary>
@@ -502,7 +502,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             set
             {
-                Debug.Assert(!_world._isLocked);
+                Debug.Assert(!_world.IsLocked);
 
                 if (value == Enabled)
                 {
@@ -521,7 +521,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     }
 
                     // Contacts are created the next time step.
-                    _world._newContacts = true;
+                    _world.NewContacts = true;
                 }
                 else
                 {
@@ -674,7 +674,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 // Update center of mass velocity.
                 Vector2 a = _sweep.C - oldCenter;
-                _linearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
+                _linearVelc += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
         }
 
@@ -863,10 +863,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>Resets the dynamics of this body. Sets torque, force and linear/angular velocity to 0</summary>
         public void ResetDynamics()
         {
-            _torque = 0;
+            Torque = 0;
             AngularVelocity = 0;
             _force = Vector2.Zero;
-            _linearVelocity = Vector2.Zero;
+            _linearVelc = Vector2.Zero;
         }
 
         /// <summary>
@@ -876,8 +876,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public Fixture AddFixture(FixtureDef def)
         {
-            Debug.Assert(!_world._isLocked);
-            if (_world._isLocked)
+            Debug.Assert(!_world.IsLocked);
+            if (_world.IsLocked)
             {
                 return null;
             }
@@ -886,7 +886,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
-                IBroadPhase broadPhase = _world._contactManager.BroadPhase;
+                IBroadPhase broadPhase = _world.ContactManager.BroadPhase;
                 fixture.CreateProxies(broadPhase, ref _xf);
             }
 
@@ -900,7 +900,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 ResetMassData();
             }
 
-            _world._newContacts = true;
+            _world.NewContacts = true;
 
             //Velcro: Added this code to raise the FixtureAdded event
             _world.RaiseNewFixtureEvent(fixture);
@@ -915,8 +915,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public Fixture AddFixture(Shape shape)
         {
-            Debug.Assert(!_world._isLocked);
-            if (_world._isLocked)
+            Debug.Assert(!_world.IsLocked);
+            if (_world.IsLocked)
             {
                 return null;
             }
@@ -938,8 +938,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="fixture">The fixture to be removed.</param>
         public void RemoveFixture(Fixture fixture)
         {
-            Debug.Assert(!_world._isLocked);
-            if (_world._isLocked)
+            Debug.Assert(!_world.IsLocked);
+            if (_world.IsLocked)
             {
                 return;
             }
@@ -1007,8 +1007,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="rotation">The world rotation in radians.</param>
         public void SetTransform(ref Vector2 position, float rotation)
         {
-            Debug.Assert(!_world._isLocked);
-            if (_world._isLocked)
+            Debug.Assert(!_world.IsLocked);
+            if (_world.IsLocked)
             {
                 return;
             }
@@ -1029,7 +1029,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             // Check for new contacts the next step
-            _world._newContacts = true;
+            _world.NewContacts = true;
         }
 
         /// <summary>Get the body transform for the body's origin.</summary>
@@ -1089,7 +1089,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             _force += force;
-            _torque += MathUtils.Cross(point - _sweep.C, force);
+            Torque += MathUtils.Cross(point - _sweep.C, force);
         }
 
         /// <summary>Apply a torque. This affects the angular velocity without affecting the linear velocity of the center of mass.</summary>
@@ -1109,7 +1109,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _torque += torque;
+            Torque += torque;
         }
 
         /// <summary>Apply an impulse at a point. This immediately modifies the velocity. This wakes up the body.</summary>
@@ -1145,7 +1145,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _linearVelocity += InvMass * impulse;
+            _linearVelc += InvMass * impulse;
         }
 
         /// <summary>
@@ -1167,7 +1167,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _linearVelocity += InvMass * impulse;
+            _linearVelc += InvMass * impulse;
             AngularVelocity += InvI * MathUtils.Cross(point - _sweep.C, impulse);
         }
 
@@ -1264,7 +1264,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             // Update center of mass velocity.
             Vector2 a = _sweep.C - oldCenter;
-            _linearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
+            _linearVelc += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
 
         /// <summary>Get the world coordinates of a point given the local coordinates.</summary>
@@ -1329,7 +1329,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) =>
-            _linearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - _sweep.C);
+            _linearVelc + MathUtils.Cross(AngularVelocity, worldPoint - _sweep.C);
 
         /// <summary>Get the world velocity of a local point.</summary>
         /// <param name="localPoint">A point in local coordinates.</param>

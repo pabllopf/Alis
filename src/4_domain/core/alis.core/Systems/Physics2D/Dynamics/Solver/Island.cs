@@ -301,7 +301,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
 
                 Vector2 c = b._sweep.C;
                 float a = b._sweep.A;
-                Vector2 v = b._linearVelocity;
+                Vector2 v = b._linearVelc;
                 float w = b.AngularVelocity;
 
                 // Store positions for continuous collision.
@@ -312,7 +312,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 {
                     // Integrate velocities.
                     v += h * b.InvMass * (b.GravityScale * b.Mass * gravity + b._force);
-                    w += h * b.InvI * b._torque;
+                    w += h * b.InvI * b.Torque;
 
                     // Apply damping.
                     // ODE: dv/dt + c * v = 0
@@ -451,7 +451,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 Body body = _bodies[i];
                 body._sweep.C = _positions[i].C;
                 body._sweep.A = _positions[i].A;
-                body._linearVelocity = _velocities[i].V;
+                body._linearVelc = _velocities[i].V;
                 body.AngularVelocity = _velocities[i].W;
                 body.SynchronizeTransform();
             }
@@ -474,7 +474,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     }
 
                     if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > _angTolSqr ||
-                        Vector2.Dot(b._linearVelocity, b._linearVelocity) > _linTolSqr)
+                        Vector2.Dot(b._linearVelc, b._linearVelc) > _linTolSqr)
                     {
                         b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
@@ -514,7 +514,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 Body b = _bodies[i];
                 _positions[i].C = b._sweep.C;
                 _positions[i].A = b._sweep.A;
-                _velocities[i].V = b._linearVelocity;
+                _velocities[i].V = b._linearVelc;
                 _velocities[i].W = b.AngularVelocity;
             }
 
@@ -588,7 +588,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 Body body = _bodies[i];
                 body._sweep.C = c;
                 body._sweep.A = a;
-                body._linearVelocity = v;
+                body._linearVelc = v;
                 body.AngularVelocity = w;
                 body.SynchronizeTransform();
             }

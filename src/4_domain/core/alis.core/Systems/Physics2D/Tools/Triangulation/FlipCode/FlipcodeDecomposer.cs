@@ -171,9 +171,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.FlipCode
         /// <param name="v">The index of the second point</param>
         /// <param name="w">The index of the third point</param>
         /// <param name="n">The number of elements in the array.</param>
-        /// <param name="V">The array to populate with indicies of triangles.</param>
+        /// <param name="VV">The array to populate with indicies of triangles.</param>
         /// <returns>True if a triangle was found</returns>
-        private static bool Snip(Vertices contour, int u, int v, int w, int n, int[] V)
+        private static bool Snip(Vertices contour, int u, int v, int w, int n, int[] VV)
         {
             if (MathConstants.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
             {
@@ -187,7 +187,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.FlipCode
                     continue;
                 }
 
-                Vector2 point = contour[V[p]];
+                Vector2 point = contour[VV[p]];
 
                 if (InsideTriangle(ref _tmpA, ref _tmpB, ref _tmpC, ref point))
                 {
