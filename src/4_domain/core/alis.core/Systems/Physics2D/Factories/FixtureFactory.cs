@@ -122,7 +122,7 @@ namespace Alis.Core.Systems.Physics2D.Factories
         {
             if (radius <= 0)
             {
-                throw new ArgumentOutOfRangeException(nameof(radius), "Radius must be more than 0 meters");
+                throw new ArgumentOutOfRangeException(nameof(radius), @"Radius must be more than 0 meters");
             }
 
             CircleShape circleShape = new CircleShape(radius, density);
