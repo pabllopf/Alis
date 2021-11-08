@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Sfml.Example
+namespace Alis.Core.SFML.Example
 {
     /// <summary>
     ///     The program class

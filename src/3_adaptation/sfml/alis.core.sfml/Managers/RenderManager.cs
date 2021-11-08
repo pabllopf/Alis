@@ -201,7 +201,7 @@ namespace Alis.Core.Sfml.Managers
         public static void SetView(View view) => RenderWindow?.SetView(view);
 
         /// <summary>
-        /// Gets the windows
+        ///     Gets the windows
         /// </summary>
         /// <returns>The render window</returns>
         public static RenderWindow GetWindows() => RenderWindow;

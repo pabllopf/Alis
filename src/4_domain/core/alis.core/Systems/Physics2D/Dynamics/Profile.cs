@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PhysicsSystem.cs
+//  File:   Profile.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,112 +27,71 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
-
-namespace Alis.Core.Systems
+namespace Alis.Core.Systems.Physics2D.Dynamics
 {
     /// <summary>
-    /// The physics system class
+    ///     The profile
     /// </summary>
-    /// <seealso cref="System"/>
-    public class PhysicsSystem : System
+    public struct Profile
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PhysicsSystem" /> class
+        ///     The time it takes to complete the full World.Step()
         /// </summary>
-        [JsonConstructor]
-        public PhysicsSystem()
-        {
-        }
-
-        
-        /// <summary>
-        ///     Awakes this instance
-        /// </summary>
-        public override void Awake()
-        {
-        }
-
-        
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-        }
-
-
+        public long Step;
 
         /// <summary>
-        ///     Befores the update
+        ///     The time it takes to find collisions in the CollisionManager
         /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
+        public long Collide;
 
         /// <summary>
-        ///     Updates this instance
+        ///     The time it takes to solve integration of velocities, constraints and integrate positions
         /// </summary>
-        public override void Update()
-        {
-        }
-
+        public long Solve;
 
         /// <summary>
-        ///     Afters the update
+        ///     Timings from the island solver. The time it takes to initialize velocity constraints.
         /// </summary>
-        public override void AfterUpdate()
-        {
-        }
-
-
+        public long SolveInit;
 
         /// <summary>
-        ///     Fixeds the update
+        ///     Timings from the island solver. It includes the time it takes to solve joint velocity constraints.
         /// </summary>
-        public override void FixedUpdate()
-        {
-        }
-
+        public long SolveVelocity;
 
         /// <summary>
-        ///     Dispatches the events
+        ///     Timings from the island solver. In includes the time it takes to solve join positions.
         /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-
+        public long SolvePosition;
 
         /// <summary>
-        ///     Resets this instance
+        ///     The time it takes for the broad-phase to update
         /// </summary>
-        public override void Reset()
-        {
-        }
-
+        public long Broadphase;
 
         /// <summary>
-        ///     Stops this instance
+        ///     The time it takes for the time-of-impact solver
         /// </summary>
-        public override void Stop()
-        {
-        }
-
-
+        public long SolveTOI;
 
         /// <summary>
-        ///     Exits this instance
+        ///     Time it takes to process newly added and removed bodies/joints/controllers from the world
         /// </summary>
-        public override void Exit()
-        {
-        }
-        
+        public long AddRemoveTime;
+
         /// <summary>
-        /// Destroy object.
+        ///     The time it takes for the contact manager to find new contacts in the world
         /// </summary>
-        ~PhysicsSystem() => Console.WriteLine(@$"Destroy PhysicsSystem {GetHashCode().ToString()}");
+        public long NewContactsTime;
+
+        /// <summary>
+        ///     The time it takes to update controller logic
+        /// </summary>
+        public long ControllersUpdateTime;
+
+        /// <summary>
+        ///     The time it takes to update breakable bodies
+        /// </summary>
+        public long BreakableBodies;
     }
 }

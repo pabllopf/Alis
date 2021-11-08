@@ -51,6 +51,17 @@ namespace Alis.Core.Sfml.Builders
         /// <returns></returns>
         public Setting Build() => Game.Setting;
 
+        /// <summary>
+        ///     Debugs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The setting builder</returns>
+        public SettingBuilder Debug(Func<DebugBuilder, Debug> value)
+        {
+            Game.Setting.Debug = value.Invoke(new DebugBuilder());
+            return this;
+        }
+
         /// <summary>Generals the specified value.</summary>
         /// <param name="value">The value.</param>
         /// <returns></returns>
@@ -68,17 +79,6 @@ namespace Alis.Core.Sfml.Builders
         public SettingBuilder Window(Func<WindowBuilder, Window> value)
         {
             Game.Setting.Window = value.Invoke(new WindowBuilder());
-            return this;
-        }
-
-        /// <summary>
-        /// Debugs the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The setting builder</returns>
-        public SettingBuilder Debug(Func<DebugBuilder, Debug> value)
-        {
-            Game.Setting.Debug = value.Invoke(new DebugBuilder());
             return this;
         }
     }

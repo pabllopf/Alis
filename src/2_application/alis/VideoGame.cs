@@ -31,7 +31,6 @@ using System;
 using Alis.Builders;
 using Alis.Core;
 using Alis.Core.Sfml.Managers;
-using Alis.Core.Systems;
 
 namespace Alis
 {
@@ -57,9 +56,9 @@ namespace Alis
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Create() => new VideoGameBuilder();
-        
+
         /// <summary>
-        /// Destroy object.
+        ///     Destroy object.
         /// </summary>
         ~VideoGame() => Console.WriteLine(@$"Destroy VideoGame {GetHashCode().ToString()}");
     }

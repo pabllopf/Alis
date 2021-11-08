@@ -30,37 +30,43 @@
 namespace Alis.Core.Entities
 {
     /// <summary>
-    /// The log level enum
+    ///     The log level enum
     /// </summary>
     public enum LogLevel
     {
         /// <summary>
-        /// The info log level
+        ///     The info log level
         /// </summary>
         Info = 0,
+
         /// <summary>
-        /// The log log level
+        ///     The log log level
         /// </summary>
         Log = 1,
+
         /// <summary>
-        /// The debug log level
+        ///     The debug log level
         /// </summary>
         Debug = 2,
+
         /// <summary>
-        /// The normal log level
+        ///     The normal log level
         /// </summary>
         Normal = 3,
+
         /// <summary>
-        /// The error log level
+        ///     The error log level
         /// </summary>
         Error = 4,
+
         /// <summary>
-        /// The critical log level
+        ///     The critical log level
         /// </summary>
         Critical = 5,
+
         /// <summary>
-        /// The production log level
+        ///     The production log level
         /// </summary>
-        Production = 6,
+        Production = 6
     }
 }

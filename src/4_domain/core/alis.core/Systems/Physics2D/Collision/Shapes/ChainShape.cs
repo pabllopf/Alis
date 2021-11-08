@@ -1,0 +1,253 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   ChainShape.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System.Diagnostics;
+using System.Numerics;
+using Alis.Core.Systems.Physics2D.Collision.RayCast;
+using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Systems.Physics2D.Utilities;
+
+namespace Alis.Core.Systems.Physics2D.Collision.Shapes
+{
+    /// <summary>
+    ///     A chain shape is a free form sequence of line segments. The chain has one-sided collision, with the surface
+    ///     normal pointing to the right of the edge. This provides a counter-clockwise winding like the polygon shape.
+    ///     Connectivity information is used to create smooth collisions. Warning: the chain will not collide properly if there
+    ///     are
+    ///     self-intersections.
+    /// </summary>
+    public class ChainShape : Shape
+    {
+        /// <summary>
+        ///     The next vertex
+        /// </summary>
+        internal Vector2 _prevVertex, _nextVertex;
+
+        /// <summary>
+        ///     The vertices
+        /// </summary>
+        internal Vertices _vertices;
+
+        /// <summary>Create a new ChainShape from the vertices.</summary>
+        /// <param name="vertices">The vertices to use. Must contain 2 or more vertices.</param>
+        /// <param name="createLoop">
+        ///     Set to true to create a closed loop. It connects the first vertex to the last, and
+        ///     automatically adjusts connectivity to create smooth collisions along the chain.
+        /// </param>
+        public ChainShape(Vertices vertices, bool createLoop = false) : base(ShapeType.Chain, Settings.PolygonRadius)
+        {
+            Debug.Assert(vertices != null && vertices.Count >= 3);
+            Debug.Assert(vertices[0] !=
+                         vertices[
+                             vertices.Count -
+                             1]); //Velcro. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
+
+            for (int i = 1; i < vertices.Count; ++i)
+            {
+                // If the code crashes here, it means your vertices are too close together.
+                Vector2 current = vertices[i];
+                Vector2 prev = vertices[i - 1];
+                Debug.Assert(MathUtils.DistanceSquared(ref prev, ref current) >
+                             Settings.LinearSlop * Settings.LinearSlop);
+            }
+
+            _vertices = new Vertices(vertices);
+
+            //Velcro: Merged CreateLoop() and CreateChain() to this
+            if (createLoop)
+            {
+                _vertices.Add(vertices[0]);
+                _prevVertex = _vertices[_vertices.Count - 2];
+                _nextVertex = _vertices[1];
+            }
+
+            ComputeProperties();
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ChainShape" /> class
+        /// </summary>
+        private ChainShape() : base(ShapeType.Chain, Settings.PolygonRadius)
+        {
+        }
+
+        /// <summary>The vertices. These are not owned/freed by the chain Shape.</summary>
+        public Vertices Vertices => _vertices;
+
+        /// <summary>Edge count = vertex count - 1</summary>
+        public override int ChildCount => _vertices.Count - 1;
+
+        /// <summary>Establish connectivity to a vertex that precedes the first vertex. Don't call this for loops.</summary>
+        public Vector2 PrevVertex
+        {
+            get => _prevVertex;
+            set => _prevVertex = value;
+        }
+
+        /// <summary>Establish connectivity to a vertex that follows the last vertex. Don't call this for loops.</summary>
+        public Vector2 NextVertex
+        {
+            get => _nextVertex;
+            set => _nextVertex = value;
+        }
+
+        //Velcro: The original code returned an EdgeShape for each call. To reduce garbage we merge the properties onto an existing EdgeShape
+        /// <summary>
+        ///     Gets the child edge using the specified edge
+        /// </summary>
+        /// <param name="edge">The edge</param>
+        /// <param name="index">The index</param>
+        internal void GetChildEdge(EdgeShape edge, int index)
+        {
+            Debug.Assert(0 <= index && index < _vertices.Count - 1);
+            Debug.Assert(edge != null);
+
+            //Velcro: It is already an edge shape
+            //edge._shapeType = ShapeType.Edge;
+            edge._radius = _radius;
+
+            edge._vertex1 = _vertices[index + 0];
+            edge._vertex2 = _vertices[index + 1];
+            edge._oneSided = true;
+
+            if (index > 0)
+            {
+                edge._vertex0 = _vertices[index - 1];
+            }
+            else
+            {
+                edge._vertex0 = _prevVertex;
+            }
+
+            if (index < _vertices.Count - 2)
+            {
+                edge._vertex3 = _vertices[index + 2];
+            }
+            else
+            {
+                edge._vertex3 = _nextVertex;
+            }
+        }
+
+        /// <summary>
+        ///     Gets the child edge using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The edge shape</returns>
+        public EdgeShape GetChildEdge(int index)
+        {
+            EdgeShape edgeShape = new EdgeShape();
+            GetChildEdge(edgeShape, index);
+            return edgeShape;
+        }
+
+        /// <summary>
+        ///     Describes whether this instance test point
+        /// </summary>
+        /// <param name="transform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
+
+        /// <summary>
+        ///     Describes whether this instance ray cast
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <param name="output">The output</param>
+        /// <returns>The bool</returns>
+        public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
+            out RayCastOutput output)
+        {
+            Debug.Assert(childIndex < _vertices.Count);
+
+            int i1 = childIndex;
+            int i2 = childIndex + 1;
+
+            if (i2 == _vertices.Count)
+            {
+                i2 = 0;
+            }
+
+            Vector2 v1 = _vertices[i1];
+            Vector2 v2 = _vertices[i2];
+
+            return RayCastHelper.RayCastEdge(ref v1, ref v2, false, ref input, ref transform, out output);
+        }
+
+        /// <summary>
+        ///     Computes the aabb using the specified transform
+        /// </summary>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <param name="aabb">The aabb</param>
+        public override void ComputeAABB(ref Transform transform, int childIndex, out AABB aabb)
+        {
+            Debug.Assert(childIndex < _vertices.Count);
+
+            int i1 = childIndex;
+            int i2 = childIndex + 1;
+
+            if (i2 == _vertices.Count)
+            {
+                i2 = 0;
+            }
+
+            Vector2 v1 = _vertices[i1];
+            Vector2 v2 = _vertices[i2];
+
+            AABBHelper.ComputeEdgeAABB(ref v1, ref v2, ref transform, out aabb);
+        }
+
+        /// <summary>
+        ///     Computes the properties
+        /// </summary>
+        protected sealed override void ComputeProperties()
+        {
+            //Does nothing. Chain shapes don't have properties.
+        }
+
+        /// <summary>
+        ///     Clones this instance
+        /// </summary>
+        /// <returns>The clone</returns>
+        public override Shape Clone()
+        {
+            ChainShape clone = new ChainShape();
+            clone._shapeType = _shapeType;
+            clone._density = _density;
+            clone._radius = _radius;
+            clone._prevVertex = _prevVertex;
+            clone._nextVertex = _nextVertex;
+            clone._vertices = new Vertices(_vertices);
+            return clone;
+        }
+    }
+}

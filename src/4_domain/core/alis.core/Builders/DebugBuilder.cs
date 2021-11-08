@@ -34,14 +34,20 @@ using Alis.FluentApi;
 namespace Alis.Core.Builders
 {
     /// <summary>
-    /// The debug builder class
+    ///     The debug builder class
     /// </summary>
-    /// <seealso cref="IBuild{Debug}"/>
-    public class DebugBuilder:
-    IBuild<Debug>
+    /// <seealso cref="IBuild{Origin}" />
+    public class DebugBuilder :
+        IBuild<Debug>
     {
         /// <summary>
-        /// Logs the level using the specified log level
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The debug</returns>
+        public Debug Build() => Game.Setting.Debug;
+
+        /// <summary>
+        ///     Logs the level using the specified log level
         /// </summary>
         /// <param name="logLevel">The log level</param>
         /// <returns>The debug builder</returns>
@@ -50,9 +56,9 @@ namespace Alis.Core.Builders
             Game.Setting.Debug.LogLevel = logLevel;
             return this;
         }
-        
+
         /// <summary>
-        /// Shows the physic borders using the specified value
+        ///     Shows the physic borders using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The debug builder</returns>
@@ -61,11 +67,5 @@ namespace Alis.Core.Builders
             Game.Setting.Debug.ShowPhysicBorders = value;
             return this;
         }
-        
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The debug</returns>
-        public Debug Build() => Game.Setting.Debug;
     }
 }

@@ -47,9 +47,9 @@ namespace Alis.Core.Sfml.Components
         public bool IsTrigger { get; set; }
 
         /// <summary>
-        /// Gets the drawable
+        ///     Gets the drawable
         /// </summary>
         /// <returns>The drawable</returns>
-        public virtual Drawable GetDrawable() => throw  new NotImplementedException();
+        public virtual Drawable GetDrawable() => throw new NotImplementedException();
     }
 }

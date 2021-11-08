@@ -38,7 +38,7 @@ namespace Alis.Core.Settings.Configurations
     public class Debug
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Debug"/> class
+        ///     Initializes a new instance of the <see cref="Debug" /> class
         /// </summary>
         public Debug()
         {
@@ -47,7 +47,7 @@ namespace Alis.Core.Settings.Configurations
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Debug"/> class
+        ///     Initializes a new instance of the <see cref="Debug" /> class
         /// </summary>
         /// <param name="showPhysicBorders">The show physic borders</param>
         /// <param name="logLevel">The log level</param>
@@ -59,19 +59,19 @@ namespace Alis.Core.Settings.Configurations
         }
 
         /// <summary>
-        /// Gets or sets the value of the show physic borders
+        ///     Gets or sets the value of the show physic borders
         /// </summary>
         [JsonPropertyName("_ShowPhysicBorders")]
         public bool ShowPhysicBorders { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the log level
+        ///     Gets or sets the value of the log level
         /// </summary>
         [JsonPropertyName("_LogLevel")]
         public LogLevel LogLevel { get; set; }
 
         /// <summary>
-        /// Resets this instance
+        ///     Resets this instance
         /// </summary>
         public void Reset()
         {

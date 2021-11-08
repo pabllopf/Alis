@@ -27,13 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Alis.Core.Entities;
 using Alis.Core.Sfml.Components;
 using Alis.Core.Sfml.Managers;
+using Alis.Core.Systems.Physics2D.Dynamics;
 using SFML.Graphics;
 using Sprite = Alis.Core.Sfml.Components.Sprite;
+using Transform = Alis.Core.Entities.Transform;
 
 namespace Alis.Example
 {
@@ -67,14 +69,49 @@ namespace Alis.Example
                     .Add<Scene>(scene => scene
                         .Name("The main menu.")
                         .Add<GameObject>(gameObject => gameObject
+                            .Name("Other Example")
+                            .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(100, 100, 0), new Vector3(0)))
+                            .Add<Sprite>(new Sprite(
+                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
+                            .Add<BoxCollider2D>(new BoxCollider2D
+                            {
+                                BodyType = BodyType.Static,
+                                AutoTiling = true
+                            })
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Other Example 2")
+                            .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, -100, 0), new Vector3(0)))
+                            .Add<Sprite>(new Sprite(
+                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
+                            .Add<BoxCollider2D>(new BoxCollider2D
+                            {
+                                BodyType = BodyType.Static,
+                                AutoTiling = true
+                            })
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Other Example 3")
+                            .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, 100, 0), new Vector3(0)))
+                            .Add<Sprite>(new Sprite(
+                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
+                            .Add<BoxCollider2D>(new BoxCollider2D
+                            {
+                                BodyType = BodyType.Static,
+                                AutoTiling = true
+                            })
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Player")
+                            .Add<SimpleMove>(new SimpleMove())
                             .Add<Sprite>(new Sprite(
                                 @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
                             .Add<AudioSource>(new AudioSource(
                                 @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\menu.wav"))
                             .Add<Camera>(Camera.CreateInstance())
-                            .Add<BoxCollider2D>(new BoxCollider2D()
+                            .Add<BoxCollider2D>(new BoxCollider2D
                             {
+                                BodyType = BodyType.Dynamic,
                                 AutoTiling = true
                             })
                             .Add<Animator>(new Animator(new List<Animation>
@@ -96,6 +133,117 @@ namespace Alis.Example
                         .Build())
                     .Build())
                 .Run();
+        }
+    }
+
+    /// <summary>
+    ///     The simple move class
+    /// </summary>
+    /// <seealso cref="Component" />
+    public class SimpleMove : Component
+    {
+        /// <summary>
+        ///     The box collider
+        /// </summary>
+        private BoxCollider2D boxCollider2D;
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public override void Start()
+        {
+            boxCollider2D = (BoxCollider2D) GameObject.Get<BoxCollider2D>();
+
+
+            InputManager.OnPressKey += InputManagerOnOnPressKey;
+            InputManager.OnPressDownKey += InputManagerOnOnPressDownKey;
+            InputManager.OnReleaseKey += InputManagerOnOnReleaseKey;
+        }
+
+        /// <summary>
+        ///     Inputs the manager on on release key using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="key">The key</param>
+        private void InputManagerOnOnReleaseKey(object? sender, Keyboard key)
+        {
+            Vector2 velocity = boxCollider2D.Body.LinearVelocity;
+
+            if (key == Keyboard.D)
+            {
+                velocity.X = 0;
+                boxCollider2D.Body.LinearVelocity = velocity;
+            }
+
+            if (key == Keyboard.A)
+            {
+                velocity.X = 0;
+                boxCollider2D.Body.LinearVelocity = velocity;
+            }
+
+            if (key == Keyboard.W)
+            {
+                velocity.Y = 0;
+                boxCollider2D.Body.LinearVelocity = velocity;
+            }
+
+            if (key == Keyboard.S)
+            {
+                velocity.Y = 0;
+                boxCollider2D.Body.LinearVelocity = velocity;
+            }
+        }
+
+        /// <summary>
+        ///     Inputs the manager on on press down key using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
+        private void InputManagerOnOnPressDownKey(object? sender, Keyboard e)
+        {
+        }
+
+        /// <summary>
+        ///     Inputs the manager on on press key using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="key">The key</param>
+        private void InputManagerOnOnPressKey(object? sender, Keyboard key)
+        {
+            Vector2 velocity = boxCollider2D.Body.LinearVelocity;
+            if (key == Keyboard.D)
+            {
+                velocity.X = 5;
+                boxCollider2D.Body.LinearVelocity = velocity;
+                return;
+            }
+
+            if (key == Keyboard.A)
+            {
+                velocity.X = -5;
+                boxCollider2D.Body.LinearVelocity = velocity;
+                return;
+            }
+
+            if (key == Keyboard.W)
+            {
+                velocity.Y = -5;
+                boxCollider2D.Body.LinearVelocity = velocity;
+                return;
+            }
+
+            if (key == Keyboard.S)
+            {
+                velocity.Y = 5;
+                boxCollider2D.Body.LinearVelocity = velocity;
+            }
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public override void Update()
+        {
         }
     }
 }

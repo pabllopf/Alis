@@ -31,7 +31,7 @@ using System;
 using System.Text.Json.Serialization;
 using Alis.Core.Settings;
 using Alis.Core.Systems;
-using Alis.FluentApi.Validations;
+using Alis.Core.Systems.Physics2D;
 
 namespace Alis.Core
 {
@@ -57,7 +57,8 @@ namespace Alis.Core
         /// <param name="renderSystem">The render system</param>
         /// <param name="sceneSystem">The scene system</param>
         [JsonConstructor]
-        public Game(bool isRunning, InputSystem inputSystem, RenderSystem renderSystem, SceneSystem sceneSystem, PhysicsSystem physicsSystem)
+        public Game(bool isRunning, InputSystem inputSystem, RenderSystem renderSystem, SceneSystem sceneSystem,
+            PhysicsSystem physicsSystem)
         {
             IsRunning = isRunning;
             InputSystem = inputSystem;
@@ -90,7 +91,7 @@ namespace Alis.Core
         public InputSystem InputSystem { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the physics system
+        ///     Gets or sets the value of the physics system
         /// </summary>
         [JsonIgnore]
         public PhysicsSystem PhysicsSystem { get; set; }

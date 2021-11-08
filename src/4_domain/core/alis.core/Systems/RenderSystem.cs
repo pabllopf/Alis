@@ -127,7 +127,7 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Destroy object.
+        ///     Destroy object.
         /// </summary>
         ~RenderSystem() => Console.WriteLine(@$"Destroy RenderSystem {GetHashCode().ToString()}");
     }

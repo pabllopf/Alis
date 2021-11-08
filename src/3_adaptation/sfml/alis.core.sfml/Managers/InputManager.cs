@@ -36,12 +36,11 @@ using Alis.Core.Systems;
 namespace Alis.Core.Sfml.Managers
 {
     /// <summary>
-    /// 
     /// </summary>
     public class InputManager : InputSystem
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InputManager"/> class
+        ///     Initializes a new instance of the <see cref="InputManager" /> class
         /// </summary>
         static InputManager()
         {

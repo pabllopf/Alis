@@ -39,18 +39,6 @@ namespace Alis.Core.Settings.Configurations
     /// </summary>
     public class Window
     {
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public void Reset()
-        {
-            Resolution = new Vector2(1024, 768);
-            ScreenMode = ScreenMode.Default;
-        }
-
-
-
         /// <summary>
         ///     The resolution
         /// </summary>
@@ -89,13 +77,6 @@ namespace Alis.Core.Settings.Configurations
         }
 
 
-
-        public event EventHandler<Vector2> OnChangeResolution;
-
-        public event EventHandler<ScreenMode> OnChangeScreenMode;
-
-
-
         /// <summary>
         ///     Gets or sets the value of the resolution
         /// </summary>
@@ -123,6 +104,20 @@ namespace Alis.Core.Settings.Configurations
                 OnChangeScreenMode.Invoke(this, screenMode);
             }
         }
+
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public void Reset()
+        {
+            Resolution = new Vector2(1024, 768);
+            ScreenMode = ScreenMode.Default;
+        }
+
+
+        public event EventHandler<Vector2> OnChangeResolution;
+
+        public event EventHandler<ScreenMode> OnChangeScreenMode;
 
         /// <summary>
         ///     Windows the on change resolution using the specified sender

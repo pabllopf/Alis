@@ -31,6 +31,8 @@ using System;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Sfml.Managers;
+using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Systems.Physics2D.Factories;
 using SFML.Graphics;
 using SFML.System;
 
@@ -47,29 +49,37 @@ namespace Alis.Core.Sfml.Components
         /// </summary>
         public BoxCollider2D()
         {
+            AutoTiling = true;
             Size = new Vector2(1.0f, 1.0f);
             RelativePosition = new Vector2(0.0f, 0.0f);
-            
-            RectangleShape = new RectangleShape(new Vector2f(Size.X, Size.Y));
-            RectangleShape.FillColor = Color.Transparent;
-            RectangleShape.OutlineColor = Color.Green;
-            RectangleShape.OutlineThickness = 1f;
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoxCollider2D"/> class
+        ///     Initializes a new instance of the <see cref="BoxCollider2D" /> class
         /// </summary>
+        /// <param name="autoTiling">The auto tiling</param>
         /// <param name="size">The size</param>
         /// <param name="relativePosition">The relative position</param>
         [JsonConstructor]
-        public BoxCollider2D(Vector2 size, Vector2 relativePosition)
+        public BoxCollider2D(bool autoTiling, Vector2 size, Vector2 relativePosition)
         {
+            AutoTiling = autoTiling;
             Size = size;
             RelativePosition = relativePosition;
         }
 
         /// <summary>
-        /// Gets or sets the value of the rectangle shape
+        ///     Gets or sets the value of the rectangle
+        /// </summary>
+        public Body Body { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the body type
+        /// </summary>
+        public BodyType BodyType { get; set; } = BodyType.Static;
+
+        /// <summary>
+        ///     Gets or sets the value of the rectangle shape
         /// </summary>
         private RectangleShape? RectangleShape { get; set; }
 
@@ -103,7 +113,7 @@ namespace Alis.Core.Sfml.Components
         public static BoxCollider2D CreateInstance() => Instance;
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
@@ -111,7 +121,7 @@ namespace Alis.Core.Sfml.Components
             {
                 if (GameObject.Contains<Sprite>())
                 {
-                    Size = ((Sprite)GameObject.Get<Sprite>()).Size;
+                    Size = ((Sprite) GameObject.Get<Sprite>()).Size;
                 }
             }
         }
@@ -126,6 +136,13 @@ namespace Alis.Core.Sfml.Components
             RectangleShape.OutlineColor = Color.Green;
             RectangleShape.OutlineThickness = 1f;
             PhysicsManager.Attach(this);
+
+            Body = BodyFactory.CreateRectangle(PhysicsManager.World, Size.X, Size.Y, 1f,
+                new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y));
+            Body.BodyType = BodyType;
+            Body.FixedRotation = true;
+            Body.Friction = 0;
+            Body.Inertia = 0;
         }
 
         /// <summary>
@@ -135,12 +152,17 @@ namespace Alis.Core.Sfml.Components
         {
             if (RectangleShape is not null)
             {
-                RectangleShape.Position = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+                RectangleShape.Rotation = Body.Rotation;
+                RectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
+                RectangleShape.Size = new Vector2f(Size.X, Size.Y);
             }
+
+            GameObject.Transform.Position = new Vector3(Body.Position.X, Body.Position.Y, 0);
         }
 
+
         /// <summary>
-        /// Gets the drawable
+        ///     Gets the drawable
         /// </summary>
         /// <returns>The drawable</returns>
         public override Drawable GetDrawable() => RectangleShape ?? throw new NullReferenceException();

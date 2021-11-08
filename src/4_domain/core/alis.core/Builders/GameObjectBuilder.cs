@@ -74,5 +74,16 @@ namespace Alis.Core.Builders
             GameObject.Name = value;
             return this;
         }
+
+        /// <summary>
+        ///     Transforms the transform
+        /// </summary>
+        /// <param name="transform">The transform</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Transform(Transform transform)
+        {
+            GameObject.Transform = transform;
+            return this;
+        }
     }
 }

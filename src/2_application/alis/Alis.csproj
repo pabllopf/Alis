@@ -16,12 +16,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\3_adaptation\opengl\alis.core.opengl\Alis.Core.OpenGL.csproj" />
-        <ProjectReference Include="..\..\3_adaptation\sfml\alis.core.sfml\Alis.Core.Sfml.csproj" />
+        <ProjectReference Include="..\..\3_adaptation\opengl\alis.core.opengl\Alis.Core.OpenGL.csproj"/>
+        <ProjectReference Include="..\..\3_adaptation\sfml\alis.core.sfml\Alis.Core.Sfml.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Docs" />
+        <Folder Include="Docs"/>
     </ItemGroup>
 
 </Project>

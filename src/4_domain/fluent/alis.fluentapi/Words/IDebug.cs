@@ -30,12 +30,12 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The debug interface
+    ///     The debug interface
     /// </summary>
     public interface IDebug<Builder, Argument>
     {
         /// <summary>
-        /// Debugs the value
+        ///     Debugs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

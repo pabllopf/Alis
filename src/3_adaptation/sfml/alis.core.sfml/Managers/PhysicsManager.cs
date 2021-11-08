@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PhysicsSystem.cs
+//  File:   PhysicsManager.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -29,16 +29,18 @@
 
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Sfml.Components;
-using Alis.Core.Systems;
+using Alis.Core.Systems.Physics2D;
+using Alis.Core.Systems.Physics2D.Dynamics;
 
 namespace Alis.Core.Sfml.Managers
 {
     /// <summary>
-    /// The physics manager class
+    ///     The physics manager class
     /// </summary>
-    /// <seealso cref="PhysicsSystem"/>
+    /// <seealso cref="PhysicsSystem" />
     public class PhysicsManager : PhysicsSystem
     {
         /// <summary>
@@ -50,9 +52,14 @@ namespace Alis.Core.Sfml.Managers
         }
 
         /// <summary>
-        /// Gets or sets the value of the colliders
+        ///     The world
         /// </summary>
-        private static List<Collider> Colliders { get; set; } = new List<Collider>();
+        public static World World { get; set; } = new World(new Vector2(0));
+
+        /// <summary>
+        ///     Gets or sets the value of the colliders
+        /// </summary>
+        private static List<Collider> Colliders { get; } = new List<Collider>();
 
         /// <summary>
         ///     Starts this instance
@@ -60,13 +67,13 @@ namespace Alis.Core.Sfml.Managers
         public override void Start()
         {
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void Update()
         {
-            if (Game.Setting.Debug.ShowPhysicBorders) 
+            if (Game.Setting.Debug.ShowPhysicBorders)
             {
                 if (Colliders.Count > 0)
                 {
@@ -76,23 +83,32 @@ namespace Alis.Core.Sfml.Managers
                     }
                 }
             }
+
+            World.Step((float) Game.Setting.Time.TimeStep);
         }
-        
+
         /// <summary>
-        /// Attaches the collider
+        ///     Fixeds the update
+        /// </summary>
+        public override void FixedUpdate()
+        {
+        }
+
+        /// <summary>
+        ///     Attaches the collider
         /// </summary>
         /// <param name="collider">The collider</param>
         public static void Attach(Collider collider) => Colliders.Add(collider);
 
 
         /// <summary>
-        /// Uns the attach using the specified collider
+        ///     Uns the attach using the specified collider
         /// </summary>
         /// <param name="collider">The collider</param>
         public static void UnAttach(Collider collider) => Colliders.Remove(collider);
-        
+
         /// <summary>
-        /// Destroy object.
+        ///     Destroy object.
         /// </summary>
         ~PhysicsManager() => Console.WriteLine(@$"Destroy PhysicsManager {GetHashCode().ToString()}");
     }

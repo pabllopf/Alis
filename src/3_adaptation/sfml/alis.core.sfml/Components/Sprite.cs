@@ -89,10 +89,10 @@ namespace Alis.Core.Sfml.Components
         ///     Gets the value of the drawable
         /// </summary>
         public Drawable Drawable => sprite;
-        
-        
+
+
         /// <summary>
-        /// Gets or sets the value of the size
+        ///     Gets or sets the value of the size
         /// </summary>
         public Vector2 Size { get; set; }
 
