@@ -333,11 +333,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             while (edge != null)
             {
                 Contact contact = edge.Contact;
-                Fixture fixtureA = contact._fixtureA;
-                Fixture fixtureB = contact._fixtureB;
+                Fixture fixtureA = contact.FixtureA;
+                Fixture fixtureB = contact.FixtureB;
                 if (fixtureA == this || fixtureB == this)
                 {
-                    contact._flags |= ContactFlags.FilterFlag;
+                    contact.Flags |= ContactFlags.FilterFlag;
                 }
 
                 edge = edge.Next;

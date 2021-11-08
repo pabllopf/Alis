@@ -643,8 +643,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 Contact c = _contacts[i];
 
                 //Velcro feature: added after collision
-                c._fixtureA.AfterCollision?.Invoke(c._fixtureA, c._fixtureB, c, constraints[i]);
-                c._fixtureB.AfterCollision?.Invoke(c._fixtureB, c._fixtureA, c, constraints[i]);
+                c.FixtureA.AfterCollision?.Invoke(c.FixtureA, c.FixtureB, c, constraints[i]);
+                c.FixtureB.AfterCollision?.Invoke(c.FixtureB, c.FixtureA, c, constraints[i]);
 
                 //Velcro optimization: We don't store the impulses and send it to the delegate. We just send the whole contact.
                 _contactManager.PostSolve?.Invoke(c, constraints[i]);

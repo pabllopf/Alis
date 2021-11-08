@@ -954,9 +954,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 b._flags &= ~BodyFlags.IslandFlag;
             }
 
-            for (Contact c = _contactManager._contactList; c != null; c = c._next)
+            for (Contact c = _contactManager._contactList; c != null; c = c.Next)
             {
-                c._flags &= ~ContactFlags.IslandFlag;
+                c.Flags &= ~ContactFlags.IslandFlag;
             }
 
             foreach (Joint j in _jointList)
@@ -1033,15 +1033,15 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         }
 
                         // Skip sensors.
-                        bool sensorA = contact._fixtureA.IsSensor;
-                        bool sensorB = contact._fixtureB.IsSensor;
+                        bool sensorA = contact.FixtureA.IsSensor;
+                        bool sensorB = contact.FixtureB.IsSensor;
                         if (sensorA || sensorB)
                         {
                             continue;
                         }
 
                         _island.Add(contact);
-                        contact._flags |= ContactFlags.IslandFlag;
+                        contact.Flags |= ContactFlags.IslandFlag;
 
                         Body other = ce.Other;
 
@@ -1159,12 +1159,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     _bodyList[i]._sweep.Alpha0 = 0.0f;
                 }
 
-                for (Contact c = _contactManager._contactList; c != null; c = c._next)
+                for (Contact c = _contactManager._contactList; c != null; c = c.Next)
                 {
                     // Invalidate TOI
-                    c._flags &= ~(ContactFlags.TOIFlag | ContactFlags.IslandFlag);
-                    c._toiCount = 0;
-                    c._toi = 1.0f;
+                    c.Flags &= ~(ContactFlags.TOIFlag | ContactFlags.IslandFlag);
+                    c.ToiCount = 0;
+                    c.Toi = 1.0f;
                 }
             }
 
@@ -1175,7 +1175,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Contact minContact = null;
                 float minAlpha = 1.0f;
 
-                for (Contact c = _contactManager._contactList; c != null; c = c._next)
+                for (Contact c = _contactManager._contactList; c != null; c = c.Next)
                 {
                     // Is this contact disabled?
                     if (!c.Enabled)
@@ -1184,7 +1184,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     }
 
                     // Prevent excessive sub-stepping.
-                    if (c._toiCount > Settings.MaxSubSteps)
+                    if (c.ToiCount > Settings.MaxSubSteps)
                     {
                         continue;
                     }
@@ -1193,12 +1193,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     if (c.TOIFlag)
                     {
                         // This contact has a valid cached TOI.
-                        alpha = c._toi;
+                        alpha = c.Toi;
                     }
                     else
                     {
-                        Fixture fA = c._fixtureA;
-                        Fixture fB = c._fixtureB;
+                        Fixture fA = c.FixtureA;
+                        Fixture fB = c.FixtureB;
 
                         // Is there a sensor?
                         if (fA._isSensor || fB._isSensor)
@@ -1271,8 +1271,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             alpha = 1.0f;
                         }
 
-                        c._toi = alpha;
-                        c._flags &= ~ContactFlags.TOIFlag;
+                        c.Toi = alpha;
+                        c.Flags &= ~ContactFlags.TOIFlag;
                     }
 
                     if (alpha < minAlpha)
@@ -1291,8 +1291,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 }
 
                 // Advance the bodies to the TOI.
-                Fixture fA1 = minContact._fixtureA;
-                Fixture fB1 = minContact._fixtureB;
+                Fixture fA1 = minContact.FixtureA;
+                Fixture fB1 = minContact.FixtureB;
                 Body bA0 = fA1.Body;
                 Body bB0 = fB1.Body;
 
@@ -1304,14 +1304,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 // The TOI contact likely has some new contact points.
                 minContact.Update(_contactManager);
-                minContact._flags &= ~ContactFlags.TOIFlag;
-                ++minContact._toiCount;
+                minContact.Flags &= ~ContactFlags.TOIFlag;
+                ++minContact.ToiCount;
 
                 // Is the contact solid?
                 if (!minContact.Enabled || !minContact.IsTouching)
                 {
                     // Restore the sweeps.
-                    minContact._flags &= ~ContactFlags.EnabledFlag;
+                    minContact.Flags &= ~ContactFlags.EnabledFlag;
                     bA0._sweep = backup1;
                     bB0._sweep = backup2;
                     bA0.SynchronizeTransform();
@@ -1330,7 +1330,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 bA0._flags |= BodyFlags.IslandFlag;
                 bB0._flags |= BodyFlags.IslandFlag;
-                minContact._flags &= ~ContactFlags.IslandFlag;
+                minContact.Flags &= ~ContactFlags.IslandFlag;
 
                 // Get contacts on bodyA and bodyB.
                 Body[] bodies = {bA0, bB0};
@@ -1368,8 +1368,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             // Skip sensors.
-                            bool sensorA = contact._fixtureA._isSensor;
-                            bool sensorB = contact._fixtureB._isSensor;
+                            bool sensorA = contact.FixtureA._isSensor;
+                            bool sensorB = contact.FixtureB._isSensor;
                             if (sensorA || sensorB)
                             {
                                 continue;
@@ -1402,7 +1402,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             // Add the contact to the island
-                            minContact._flags |= ContactFlags.IslandFlag;
+                            minContact.Flags |= ContactFlags.IslandFlag;
                             _island.Add(contact);
 
                             // Has the other body already been added to the island?
@@ -1449,7 +1449,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     // Invalidate all contact TOIs on this displaced body.
                     for (ContactEdge ce = body._contactList; ce != null; ce = ce.Next)
                     {
-                        ce.Contact._flags &= ~(ContactFlags.TOIFlag | ContactFlags.IslandFlag);
+                        ce.Contact.Flags &= ~(ContactFlags.TOIFlag | ContactFlags.IslandFlag);
                     }
                 }
 
@@ -1550,7 +1550,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         {
                             // Flag the contact for filtering at the next time step (where either
                             // body is awake).
-                            edge.Contact._flags |= ContactFlags.FilterFlag;
+                            edge.Contact.Flags |= ContactFlags.FilterFlag;
                         }
 
                         edge = edge.Next;
@@ -1638,7 +1638,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         {
                             // Flag the contact for filtering at the next time step (where either
                             // body is awake).
-                            edge.Contact._flags |= ContactFlags.FilterFlag;
+                            edge.Contact.Flags |= ContactFlags.FilterFlag;
                         }
 
                         edge = edge.Next;

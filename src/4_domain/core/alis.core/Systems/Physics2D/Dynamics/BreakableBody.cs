@@ -135,7 +135,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             if (!Broken)
             {
-                if (Parts.Contains(contact._fixtureA) || Parts.Contains(contact._fixtureB))
+                if (Parts.Contains(contact.FixtureA) || Parts.Contains(contact.FixtureB))
                 {
                     float maxImpulse = 0.0f;
                     int count = contact.Manifold.PointCount;

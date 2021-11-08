@@ -140,8 +140,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             {
                 Contact contact = contacts[i];
 
-                Fixture fixtureA = contact._fixtureA;
-                Fixture fixtureB = contact._fixtureB;
+                Fixture fixtureA = contact.FixtureA;
+                Fixture fixtureB = contact.FixtureB;
                 Shape shapeA = fixtureA.Shape;
                 Shape shapeB = fixtureB.Shape;
                 float radiusA = shapeA._radius;
@@ -154,10 +154,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 Debug.Assert(pointCount > 0);
 
                 ContactVelocityConstraint vc = VelocityConstraints[i];
-                vc.Friction = contact._friction;
-                vc.Restitution = contact._restitution;
-                vc.Threshold = contact._restitutionThreshold;
-                vc.TangentSpeed = contact._tangentSpeed;
+                vc.Friction = contact.Friction;
+                vc.Restitution = contact.Restitution;
+                vc.Threshold = contact.RestitutionThreshold;
+                vc.TangentSpeed = contact.TangentSpeed;
                 vc.IndexA = bodyA._islandIndex;
                 vc.IndexB = bodyB._islandIndex;
                 vc.InvMassA = bodyA._invMass;
@@ -697,7 +697,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     manifold.Points[j] = point;
                 }
 
-                _contacts[vc.ContactIndex]._manifold = manifold;
+                _contacts[vc.ContactIndex].Manifold = manifold;
             }
         }
 

@@ -119,8 +119,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             {
                 if (edge.Other == bodyA)
                 {
-                    Fixture fA = edge.Contact._fixtureA;
-                    Fixture fB = edge.Contact._fixtureB;
+                    Fixture fA = edge.Contact.FixtureA;
+                    Fixture fB = edge.Contact.FixtureB;
                     int iA = edge.Contact.ChildIndexA;
                     int iB = edge.Contact.ChildIndexB;
 
@@ -177,19 +177,19 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             }
 
             // Contact creation may swap fixtures.
-            fixtureA = c._fixtureA;
-            fixtureB = c._fixtureB;
+            fixtureA = c.FixtureA;
+            fixtureB = c.FixtureB;
             indexA = c.ChildIndexA;
             indexB = c.ChildIndexB;
             bodyA = fixtureA.Body;
             bodyB = fixtureB.Body;
 
             // Insert into the world.
-            c._prev = null;
-            c._next = _contactList;
+            c.Previous = null;
+            c.Next = _contactList;
             if (_contactList != null)
             {
-                _contactList._prev = c;
+                _contactList.Previous = c;
             }
 
             _contactList = c;
@@ -197,30 +197,30 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             // Connect to island graph.
 
             // Connect to body A
-            c._nodeA.Contact = c;
-            c._nodeA.Other = bodyB;
+            c.NodeA.Contact = c;
+            c.NodeA.Other = bodyB;
 
-            c._nodeA.Prev = null;
-            c._nodeA.Next = bodyA._contactList;
+            c.NodeA.Prev = null;
+            c.NodeA.Next = bodyA._contactList;
             if (bodyA._contactList != null)
             {
-                bodyA._contactList.Prev = c._nodeA;
+                bodyA._contactList.Prev = c.NodeA;
             }
 
-            bodyA._contactList = c._nodeA;
+            bodyA._contactList = c.NodeA;
 
             // Connect to body B
-            c._nodeB.Contact = c;
-            c._nodeB.Other = bodyA;
+            c.NodeB.Contact = c;
+            c.NodeB.Other = bodyA;
 
-            c._nodeB.Prev = null;
-            c._nodeB.Next = bodyB._contactList;
+            c.NodeB.Prev = null;
+            c.NodeB.Next = bodyB._contactList;
             if (bodyB._contactList != null)
             {
-                bodyB._contactList.Prev = c._nodeB;
+                bodyB._contactList.Prev = c.NodeB;
             }
 
-            bodyB._contactList = c._nodeB;
+            bodyB._contactList = c.NodeB;
             ++_contactCount;
         }
 
@@ -238,13 +238,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <param name="c">The </param>
         internal void Remove(Contact c)
         {
-            if (c._fixtureA == null || c._fixtureB == null)
+            if (c.FixtureA == null || c.FixtureB == null)
             {
                 return;
             }
 
-            Fixture fixtureA = c._fixtureA;
-            Fixture fixtureB = c._fixtureB;
+            Fixture fixtureA = c.FixtureA;
+            Fixture fixtureB = c.FixtureB;
 
             //Velcro: When contacts are removed, we invoke OnSeparation
             if (c.IsTouching)
@@ -263,51 +263,51 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             Body bodyB = fixtureB._body;
 
             // Remove from the world.
-            if (c._prev != null)
+            if (c.Previous != null)
             {
-                c._prev._next = c._next;
+                c.Previous.Next = c.Next;
             }
 
-            if (c._next != null)
+            if (c.Next != null)
             {
-                c._next._prev = c._prev;
+                c.Next.Previous = c.Previous;
             }
 
             if (c == _contactList)
             {
-                _contactList = c._next;
+                _contactList = c.Next;
             }
 
             // Remove from body 1
-            if (c._nodeA.Prev != null)
+            if (c.NodeA.Prev != null)
             {
-                c._nodeA.Prev.Next = c._nodeA.Next;
+                c.NodeA.Prev.Next = c.NodeA.Next;
             }
 
-            if (c._nodeA.Next != null)
+            if (c.NodeA.Next != null)
             {
-                c._nodeA.Next.Prev = c._nodeA.Prev;
+                c.NodeA.Next.Prev = c.NodeA.Prev;
             }
 
-            if (c._nodeA == bodyA._contactList)
+            if (c.NodeA == bodyA._contactList)
             {
-                bodyA._contactList = c._nodeA.Next;
+                bodyA._contactList = c.NodeA.Next;
             }
 
             // Remove from body 2
-            if (c._nodeB.Prev != null)
+            if (c.NodeB.Prev != null)
             {
-                c._nodeB.Prev.Next = c._nodeB.Next;
+                c.NodeB.Prev.Next = c.NodeB.Next;
             }
 
-            if (c._nodeB.Next != null)
+            if (c.NodeB.Next != null)
             {
-                c._nodeB.Next.Prev = c._nodeB.Prev;
+                c.NodeB.Next.Prev = c.NodeB.Prev;
             }
 
-            if (c._nodeB == bodyB._contactList)
+            if (c.NodeB == bodyB._contactList)
             {
-                bodyB._contactList = c._nodeB.Next;
+                bodyB._contactList = c.NodeB.Next;
             }
 
             // Call the factory.
@@ -327,8 +327,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
 
             while (c != null)
             {
-                Fixture fixtureA = c._fixtureA;
-                Fixture fixtureB = c._fixtureB;
+                Fixture fixtureA = c.FixtureA;
+                Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
                 int indexB = c.ChildIndexB;
                 Body bodyA = fixtureA._body;
@@ -337,7 +337,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 //Velcro: Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)
                 {
-                    c = c._next;
+                    c = c.Next;
                     continue;
                 }
 
@@ -348,7 +348,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                     if (!bodyB.ShouldCollide(bodyA))
                     {
                         Contact cNuke = c;
-                        c = cNuke._next;
+                        c = cNuke.Next;
                         Remove(cNuke);
                         continue;
                     }
@@ -357,7 +357,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                     if (!ShouldCollide(fixtureA, fixtureB))
                     {
                         Contact cNuke = c;
-                        c = cNuke._next;
+                        c = cNuke.Next;
                         Remove(cNuke);
                         continue;
                     }
@@ -366,13 +366,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                     if (ContactFilter != null && !ContactFilter(fixtureA, fixtureB))
                     {
                         Contact cNuke = c;
-                        c = cNuke._next;
+                        c = cNuke.Next;
                         Remove(cNuke);
                         continue;
                     }
 
                     // Clear the filtering flag.
-                    c._flags &= ~ContactFlags.FilterFlag;
+                    c.Flags &= ~ContactFlags.FilterFlag;
                 }
 
                 bool activeA = bodyA.Awake && bodyA.BodyType != BodyType.Static;
@@ -381,7 +381,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if (!activeA && !activeB)
                 {
-                    c = c._next;
+                    c = c.Next;
                     continue;
                 }
 
@@ -393,14 +393,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 if (!overlap)
                 {
                     Contact cNuke = c;
-                    c = cNuke._next;
+                    c = cNuke.Next;
                     Remove(cNuke);
                     continue;
                 }
 
                 // The contact persists.
                 c.Update(this);
-                c = c._next;
+                c = c.Next;
             }
         }
 
