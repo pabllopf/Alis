@@ -61,7 +61,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                 {
                     CircleShape circle = (CircleShape) shape;
                     _vertices = new Vector2[1];
-                    _vertices[0] = circle._position;
+                    _vertices[0] = circle._positionprivate;
                     _radius = circle._radius;
                 }
                     break;

@@ -20,15 +20,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/Contact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/Contact.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/ContactManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/ContactManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Body.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Body.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Fixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Fixture.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/World.cs" afterDir="false" />
-    </list>
+    <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -425,7 +417,7 @@
       <workItem from="1636449668273" duration="4578000" />
       <workItem from="1636455911935" duration="286000" />
       <workItem from="1636456430450" duration="80000" />
-      <workItem from="1636456738689" duration="1258000" />
+      <workItem from="1636456738689" duration="1693000" />
     </task>
     <servers />
   </component>
