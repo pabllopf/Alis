@@ -299,14 +299,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             {
                 Body b = _bodies[i];
 
-                Vector2 c = b._sweep.C;
-                float a = b._sweep.A;
+                Vector2 c = b.Sweep.C;
+                float a = b.Sweep.A;
                 Vector2 v = b.LinearVelocity;
                 float w = b.AngularVelocity;
 
                 // Store positions for continuous collision.
-                b._sweep.C0 = b._sweep.C;
-                b._sweep.A0 = b._sweep.A;
+                b.Sweep.C0 = b.Sweep.C;
+                b.Sweep.A0 = b.Sweep.A;
 
                 if (b.BodyType == BodyType.Dynamic)
                 {
@@ -449,8 +449,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             for (int i = 0; i < _bodyCount; ++i)
             {
                 Body body = _bodies[i];
-                body._sweep.C = _positions[i].C;
-                body._sweep.A = _positions[i].A;
+                body.Sweep.C = _positions[i].C;
+                body.Sweep.A = _positions[i].A;
                 body.LinearVelocity = _velocities[i].V;
                 body.AngularVelocity = _velocities[i].W;
                 body.SynchronizeTransform();
@@ -512,8 +512,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             for (int i = 0; i < _bodyCount; ++i)
             {
                 Body b = _bodies[i];
-                _positions[i].C = b._sweep.C;
-                _positions[i].A = b._sweep.A;
+                _positions[i].C = b.Sweep.C;
+                _positions[i].A = b.Sweep.A;
                 _velocities[i].V = b.LinearVelocity;
                 _velocities[i].W = b.AngularVelocity;
             }
@@ -532,10 +532,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             }
 
             // Leap of faith to new safe state.
-            _bodies[toiIndexA]._sweep.C0 = _positions[toiIndexA].C;
-            _bodies[toiIndexA]._sweep.A0 = _positions[toiIndexA].A;
-            _bodies[toiIndexB]._sweep.C0 = _positions[toiIndexB].C;
-            _bodies[toiIndexB]._sweep.A0 = _positions[toiIndexB].A;
+            _bodies[toiIndexA].Sweep.C0 = _positions[toiIndexA].C;
+            _bodies[toiIndexA].Sweep.A0 = _positions[toiIndexA].A;
+            _bodies[toiIndexB].Sweep.C0 = _positions[toiIndexB].C;
+            _bodies[toiIndexB].Sweep.A0 = _positions[toiIndexB].A;
 
             // No warm starting is needed for TOI events because warm
             // starting impulses were applied in the discrete solver.
@@ -586,8 +586,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
 
                 // Sync bodies
                 Body body = _bodies[i];
-                body._sweep.C = c;
-                body._sweep.A = a;
+                body.Sweep.C = c;
+                body.Sweep.A = a;
                 body.LinearVelocity = v;
                 body.AngularVelocity = w;
                 body.SynchronizeTransform();

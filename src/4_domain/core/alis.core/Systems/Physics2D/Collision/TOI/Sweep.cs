@@ -41,7 +41,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
     ///     of
     ///     mass position.
     /// </summary>
-    public struct Sweep
+    public class Sweep
     {
         /// <summary>World angles</summary>
         public float A;

@@ -237,7 +237,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         internal override void InitVelocityConstraints(ref SolverData data)
         {
             _indexA = BodyA.IslandIndex;
-            _localCenterA = BodyA._sweep.LocalCenter;
+            _localCenterA = BodyA.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invIA = BodyA.InvI;
 

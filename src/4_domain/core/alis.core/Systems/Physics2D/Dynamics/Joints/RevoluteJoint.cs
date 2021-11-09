@@ -232,7 +232,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 LocalAnchorB = anchorB;
             }
 
-            ReferenceAngle = bodyB._sweep.A - bodyA._sweep.A;
+            ReferenceAngle = bodyB.Sweep.A - bodyA.Sweep.A;
         }
 
         /// <summary>Constructor of RevoluteJoint.</summary>
@@ -285,7 +285,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>Get the current joint angle in radians.</summary>
-        public float JointAngle => BodyB._sweep.A - BodyA._sweep.A - ReferenceAngle;
+        public float JointAngle => BodyB.Sweep.A - BodyA.Sweep.A - ReferenceAngle;
 
         /// <summary>Get the current joint angle speed in radians per second.</summary>
         public float JointSpeed => BodyB.AngularVelocity - BodyA.AngularVelocity;
@@ -425,8 +425,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             _indexA = BodyA.IslandIndex;
             _indexB = BodyB.IslandIndex;
-            _localCenterA = BodyA._sweep.LocalCenter;
-            _localCenterB = BodyB._sweep.LocalCenter;
+            _localCenterA = BodyA.Sweep.LocalCenter;
+            _localCenterB = BodyB.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
             _invIA = BodyA.InvI;

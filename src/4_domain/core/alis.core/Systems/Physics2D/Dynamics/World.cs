@@ -783,8 +783,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             foreach (Body b in _bodyList)
             {
                 b._xf.p -= newOrigin;
-                b._sweep.C0 -= newOrigin;
-                b._sweep.C -= newOrigin;
+                b.Sweep.C0 -= newOrigin;
+                b.Sweep.C -= newOrigin;
             }
 
             foreach (Joint joint in _jointList)
@@ -1160,7 +1160,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 for (int i = 0; i < _bodyList.Count; i++)
                 {
                     _bodyList[i].Flags &= ~BodyFlags.IslandFlag;
-                    _bodyList[i]._sweep.Alpha0 = 0.0f;
+                    _bodyList[i].Sweep.Alpha0 = 0.0f;
                 }
 
                 for (Contact c = ContactManager._contactList; c != null; c = c.Next)
@@ -1239,17 +1239,17 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                         // Compute the TOI for this contact.
                         // Put the sweeps onto the same time interval.
-                        float alpha0 = bA._sweep.Alpha0;
+                        float alpha0 = bA.Sweep.Alpha0;
 
-                        if (bA._sweep.Alpha0 < bB._sweep.Alpha0)
+                        if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
                         {
-                            alpha0 = bB._sweep.Alpha0;
-                            bA._sweep.Advance(alpha0);
+                            alpha0 = bB.Sweep.Alpha0;
+                            bA.Sweep.Advance(alpha0);
                         }
-                        else if (bB._sweep.Alpha0 < bA._sweep.Alpha0)
+                        else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
                         {
-                            alpha0 = bA._sweep.Alpha0;
-                            bB._sweep.Advance(alpha0);
+                            alpha0 = bA.Sweep.Alpha0;
+                            bB.Sweep.Advance(alpha0);
                         }
 
                         Debug.Assert(alpha0 < 1.0f);
@@ -1258,8 +1258,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         TOIInput input = new TOIInput();
                         input.ProxyA = new DistanceProxy(fA.Shape, c.ChildIndexA);
                         input.ProxyB = new DistanceProxy(fB.Shape, c.ChildIndexB);
-                        input.SweepA = bA._sweep;
-                        input.SweepB = bB._sweep;
+                        input.SweepA = bA.Sweep;
+                        input.SweepB = bB.Sweep;
                         input.TMax = 1.0f;
 
                         TimeOfImpact.CalculateTimeOfImpact(ref input, out TOIOutput output);
@@ -1300,8 +1300,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Body bA0 = fA1.Body;
                 Body bB0 = fB1.Body;
 
-                Sweep backup1 = bA0._sweep;
-                Sweep backup2 = bB0._sweep;
+                Sweep backup1 = bA0.Sweep;
+                Sweep backup2 = bB0.Sweep;
 
                 bA0.Advance(minAlpha);
                 bB0.Advance(minAlpha);
@@ -1316,8 +1316,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 {
                     // Restore the sweeps.
                     minContact.Flags &= ~ContactFlags.EnabledFlag;
-                    bA0._sweep = backup1;
-                    bB0._sweep = backup2;
+                    bA0.Sweep = backup1;
+                    bB0.Sweep = backup2;
                     bA0.SynchronizeTransform();
                     bB0.SynchronizeTransform();
                     continue;
@@ -1380,7 +1380,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             // Tentatively advance the body to the TOI.
-                            Sweep backup = other._sweep;
+                            Sweep backup = other.Sweep;
                             if (!other.IsIsland)
                             {
                                 other.Advance(minAlpha);
@@ -1392,7 +1392,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             // Was the contact disabled by the user?
                             if (!contact.Enabled)
                             {
-                                other._sweep = backup;
+                                other.Sweep = backup;
                                 other.SynchronizeTransform();
                                 continue;
                             }
@@ -1400,7 +1400,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             // Are there contact points?
                             if (!contact.IsTouching)
                             {
-                                other._sweep = backup;
+                                other.Sweep = backup;
                                 other.SynchronizeTransform();
                                 continue;
                             }

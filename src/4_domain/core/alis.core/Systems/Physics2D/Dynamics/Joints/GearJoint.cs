@@ -217,9 +217,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             // Get geometry of joint1
             Transform xfA = BodyA._xf;
-            float aA = BodyA._sweep.A;
+            float aA = BodyA.Sweep.A;
             Transform xfC = _bodyC._xf;
-            float aC = _bodyC._sweep.A;
+            float aC = _bodyC.Sweep.A;
 
             if (_typeA == JointType.Revolute)
             {
@@ -252,9 +252,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             // Get geometry of joint2
             Transform xfB = BodyB._xf;
-            float aB = BodyB._sweep.A;
+            float aB = BodyB.Sweep.A;
             Transform xfD = _bodyD._xf;
-            float aD = _bodyD._sweep.A;
+            float aD = _bodyD.Sweep.A;
 
             if (_typeB == JointType.Revolute)
             {
@@ -321,9 +321,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             // Get geometry of joint1
             Transform xfA = BodyA._xf;
-            float aA = BodyA._sweep.A;
+            float aA = BodyA.Sweep.A;
             Transform xfC = _bodyC._xf;
-            float aC = _bodyC._sweep.A;
+            float aC = _bodyC.Sweep.A;
 
             if (_typeA == JointType.Revolute)
             {
@@ -356,9 +356,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             // Get geometry of joint2
             Transform xfB = BodyB._xf;
-            float aB = BodyB._sweep.A;
+            float aB = BodyB.Sweep.A;
             Transform xfD = _bodyD._xf;
-            float aD = _bodyD._sweep.A;
+            float aD = _bodyD.Sweep.A;
 
             if (_typeB == JointType.Revolute)
             {
@@ -451,10 +451,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             _indexB = BodyB.IslandIndex;
             _indexC = _bodyC.IslandIndex;
             _indexD = _bodyD.IslandIndex;
-            _lcA = BodyA._sweep.LocalCenter;
-            _lcB = BodyB._sweep.LocalCenter;
-            _lcC = _bodyC._sweep.LocalCenter;
-            _lcD = _bodyD._sweep.LocalCenter;
+            _lcA = BodyA.Sweep.LocalCenter;
+            _lcB = BodyB.Sweep.LocalCenter;
+            _lcC = _bodyC.Sweep.LocalCenter;
+            _lcD = _bodyD.Sweep.LocalCenter;
             _mA = BodyA.InvMass;
             _mB = BodyB.InvMass;
             _mC = _bodyC.InvMass;

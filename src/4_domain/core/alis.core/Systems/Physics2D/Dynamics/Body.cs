@@ -143,7 +143,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The sweep
         /// </summary>
-        internal Sweep _sweep; // the swept motion for CCD
+        internal Sweep Sweep { get; set; } = new Sweep();
 
         /// <summary>
         ///     The torque
@@ -220,10 +220,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _xf.p = def.Position;
             _xf.q.Set(def.Angle);
 
-            _sweep.C0 = _xf.p;
-            _sweep.C = _xf.p;
-            _sweep.A0 = def.Angle;
-            _sweep.A = def.Angle;
+            Sweep.C0 = _xf.p;
+            Sweep.C = _xf.p;
+            Sweep.A0 = def.Angle;
+            Sweep.A = def.Angle;
 
             LinearVelocity = def.LinearVelocity;
             AngularVelocity = def.AngularVelocity;
@@ -324,8 +324,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 {
                     LinearVelocity = Vector2.Zero;
                     AngularVelocity = 0.0f;
-                    _sweep.A0 = _sweep.A;
-                    _sweep.C0 = _sweep.C;
+                    Sweep.A0 = Sweep.A;
+                    Sweep.C0 = Sweep.C;
                     Flags &= ~BodyFlags.AwakeFlag;
                     SynchronizeFixtures();
                 }
@@ -611,7 +611,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
 
-                SetTransform(ref value, _sweep.A);
+                SetTransform(ref value, Sweep.A);
             }
         }
 
@@ -619,7 +619,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <returns>Return the current world rotation angle in radians.</returns>
         public float Rotation
         {
-            get => _sweep.A;
+            get => Sweep.A;
             set
             {
                 Debug.Assert(!float.IsNaN(value));
@@ -651,13 +651,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
         /// <summary>Get the world position of the center of mass.</summary>
         /// <value>The world position.</value>
-        public Vector2 WorldCenter => _sweep.C;
+        public Vector2 WorldCenter => Sweep.C;
 
         /// <summary>Get the local position of the center of mass.</summary>
         /// <value>The local position.</value>
         public Vector2 LocalCenter
         {
-            get => _sweep.LocalCenter;
+            get => Sweep.LocalCenter;
             set
             {
                 if (_type != BodyType.Dynamic)
@@ -668,12 +668,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 //Velcro: We support setting the mass independently
 
                 // Move center of mass.
-                Vector2 oldCenter = _sweep.C;
-                _sweep.LocalCenter = value;
-                _sweep.C0 = _sweep.C = MathUtils.Mul(ref _xf, ref _sweep.LocalCenter);
+                Vector2 oldCenter = Sweep.C;
+                Sweep.LocalCenter = value;
+                Sweep.C0 = Sweep.C = MathUtils.Mul(ref _xf, ref Sweep.LocalCenter);
 
                 // Update center of mass velocity.
-                Vector2 a = _sweep.C - oldCenter;
+                Vector2 a = Sweep.C - oldCenter;
                 LinearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
         }
@@ -708,7 +708,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value>The inertia.</value>
         public float Inertia
         {
-            get => _inertia + _mass * Vector2.Dot(_sweep.LocalCenter, _sweep.LocalCenter);
+            get => _inertia + _mass * Vector2.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
             set
             {
                 Debug.Assert(!float.IsNaN(value));
@@ -721,7 +721,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 //Velcro: We support setting the inertia independently
                 if (value > 0.0f && !FixedRotation)
                 {
-                    _inertia = value - _mass * Vector2.Dot(_sweep.LocalCenter, _sweep.LocalCenter);
+                    _inertia = value - _mass * Vector2.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
                     Debug.Assert(_inertia > 0.0f);
                     InvI = 1.0f / _inertia;
                 }
@@ -856,8 +856,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             data = new MassData();
             data.Mass = _mass;
-            data.Inertia = _inertia + _mass * MathUtils.Dot(ref _sweep.LocalCenter, ref _sweep.LocalCenter);
-            data.Centroid = _sweep.LocalCenter;
+            data.Inertia = _inertia + _mass * MathUtils.Dot(ref Sweep.LocalCenter, ref Sweep.LocalCenter);
+            data.Centroid = Sweep.LocalCenter;
         }
 
         /// <summary>Resets the dynamics of this body. Sets torque, force and linear/angular velocity to 0</summary>
@@ -1016,11 +1016,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _xf.q.Set(rotation);
             _xf.p = position;
 
-            _sweep.C = MathUtils.Mul(ref _xf, _sweep.LocalCenter);
-            _sweep.A = rotation;
+            Sweep.C = MathUtils.Mul(ref _xf, Sweep.LocalCenter);
+            Sweep.A = rotation;
 
-            _sweep.C0 = _sweep.C;
-            _sweep.A0 = rotation;
+            Sweep.C0 = Sweep.C;
+            Sweep.A0 = rotation;
 
             IBroadPhase broadPhase = _world.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.Count; i++)
@@ -1089,7 +1089,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             Force += force;
-            Torque += MathUtils.Cross(point - _sweep.C, force);
+            Torque += MathUtils.Cross(point - Sweep.C, force);
         }
 
         /// <summary>Apply a torque. This affects the angular velocity without affecting the linear velocity of the center of mass.</summary>
@@ -1168,7 +1168,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             LinearVelocity += InvMass * impulse;
-            AngularVelocity += InvI * MathUtils.Cross(point - _sweep.C, impulse);
+            AngularVelocity += InvI * MathUtils.Cross(point - Sweep.C, impulse);
         }
 
         /// <summary>Apply an angular impulse.</summary>
@@ -1200,15 +1200,15 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             InvMass = 0.0f;
             _inertia = 0.0f;
             InvI = 0.0f;
-            _sweep.LocalCenter = Vector2.Zero;
+            Sweep.LocalCenter = Vector2.Zero;
 
             //Velcro: We have mass on static bodies to support attaching joints to them
             // Kinematic bodies have zero mass.
             if (_type == BodyType.Kinematic)
             {
-                _sweep.C0 = _xf.p;
-                _sweep.C = _xf.p;
-                _sweep.A0 = _sweep.A;
+                Sweep.C0 = _xf.p;
+                Sweep.C = _xf.p;
+                Sweep.A0 = Sweep.A;
                 return;
             }
 
@@ -1232,7 +1232,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             //Velcro: Static bodies only have mass, they don't have other properties. A little hacky tho...
             if (_type == BodyType.Static)
             {
-                _sweep.C0 = _sweep.C = _xf.p;
+                Sweep.C0 = Sweep.C = _xf.p;
                 return;
             }
 
@@ -1258,12 +1258,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             // Move center of mass.
-            Vector2 oldCenter = _sweep.C;
-            _sweep.LocalCenter = localCenter;
-            _sweep.C0 = _sweep.C = MathUtils.Mul(ref _xf, ref _sweep.LocalCenter);
+            Vector2 oldCenter = Sweep.C;
+            Sweep.LocalCenter = localCenter;
+            Sweep.C0 = Sweep.C = MathUtils.Mul(ref _xf, ref Sweep.LocalCenter);
 
             // Update center of mass velocity.
-            Vector2 a = _sweep.C - oldCenter;
+            Vector2 a = Sweep.C - oldCenter;
             LinearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
 
@@ -1329,7 +1329,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) =>
-            LinearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - _sweep.C);
+            LinearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - Sweep.C);
 
         /// <summary>Get the world velocity of a local point.</summary>
         /// <param name="localPoint">A point in local coordinates.</param>
@@ -1359,8 +1359,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             if ((Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag)
             {
                 Transform xf1 = new Transform();
-                xf1.q.Set(_sweep.A0);
-                xf1.p = _sweep.C0 - MathUtils.Mul(xf1.q, _sweep.LocalCenter);
+                xf1.q.Set(Sweep.A0);
+                xf1.p = Sweep.C0 - MathUtils.Mul(xf1.q, Sweep.LocalCenter);
 
                 for (int i = 0; i < FixtureList.Count; i++)
                 {
@@ -1381,8 +1381,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         internal void SynchronizeTransform()
         {
-            _xf.q.Set(_sweep.A);
-            _xf.p = _sweep.C - MathUtils.Mul(_xf.q, _sweep.LocalCenter);
+            _xf.q.Set(Sweep.A);
+            _xf.p = Sweep.C - MathUtils.Mul(_xf.q, Sweep.LocalCenter);
         }
 
         /// <summary>This is used to prevent connected bodies from colliding. It may lie, depending on the collideConnected flag.</summary>
@@ -1417,11 +1417,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         internal void Advance(float alpha)
         {
             // Advance to the new safe time. This doesn't sync the broad-phase.
-            _sweep.Advance(alpha);
-            _sweep.C = _sweep.C0;
-            _sweep.A = _sweep.A0;
-            _xf.q.Set(_sweep.A);
-            _xf.p = _sweep.C - MathUtils.Mul(_xf.q, _sweep.LocalCenter);
+            Sweep.Advance(alpha);
+            Sweep.C = Sweep.C0;
+            Sweep.A = Sweep.A0;
+            _xf.q.Set(Sweep.A);
+            _xf.p = Sweep.C - MathUtils.Mul(_xf.q, Sweep.LocalCenter);
         }
     }
 }

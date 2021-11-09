@@ -353,10 +353,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 Body bA = BodyA;
                 Body bB = BodyB;
 
-                Vector2 rA = MathUtils.Mul(bA._xf.q, LocalAnchorA - bA._sweep.LocalCenter);
-                Vector2 rB = MathUtils.Mul(bB._xf.q, LocalAnchorB - bB._sweep.LocalCenter);
-                Vector2 p1 = bA._sweep.C + rA;
-                Vector2 p2 = bB._sweep.C + rB;
+                Vector2 rA = MathUtils.Mul(bA._xf.q, LocalAnchorA - bA.Sweep.LocalCenter);
+                Vector2 rB = MathUtils.Mul(bB._xf.q, LocalAnchorB - bB.Sweep.LocalCenter);
+                Vector2 p1 = bA.Sweep.C + rA;
+                Vector2 p2 = bB.Sweep.C + rB;
                 Vector2 d = p2 - p1;
                 Vector2 axis = MathUtils.Mul(bA._xf.q, LocalXAxisA);
 
@@ -523,8 +523,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             _indexA = BodyA.IslandIndex;
             _indexB = BodyB.IslandIndex;
-            _localCenterA = BodyA._sweep.LocalCenter;
-            _localCenterB = BodyB._sweep.LocalCenter;
+            _localCenterA = BodyA.Sweep.LocalCenter;
+            _localCenterB = BodyB.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
             _invIA = BodyA.InvI;

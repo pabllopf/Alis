@@ -174,8 +174,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 pc.IndexB = bodyB.IslandIndex;
                 pc.InvMassA = bodyA.InvMass;
                 pc.InvMassB = bodyB.InvMass;
-                pc.LocalCenterA = bodyA._sweep.LocalCenter;
-                pc.LocalCenterB = bodyB._sweep.LocalCenter;
+                pc.LocalCenterA = bodyA.Sweep.LocalCenter;
+                pc.LocalCenterB = bodyB.Sweep.LocalCenter;
                 pc.InvIA = bodyA.InvI;
                 pc.InvIB = bodyB.InvI;
                 pc.LocalNormal = manifold.LocalNormal;

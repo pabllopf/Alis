@@ -340,8 +340,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             _indexA = BodyA.IslandIndex;
             _indexB = BodyB.IslandIndex;
-            _localCenterA = BodyA._sweep.LocalCenter;
-            _localCenterB = BodyB._sweep.LocalCenter;
+            _localCenterA = BodyA.Sweep.LocalCenter;
+            _localCenterB = BodyB.Sweep.LocalCenter;
             _invMassA = BodyA.InvMass;
             _invMassB = BodyB.InvMass;
             _invIA = BodyA.InvI;
