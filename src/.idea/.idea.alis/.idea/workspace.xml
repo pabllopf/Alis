@@ -21,15 +21,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/Contact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/Contact.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/ContactManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/ContactManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Body.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Body.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Fixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Fixture.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/World.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/ConvexHull/ChainHull/ChainHull.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/ConvexHull/ChainHull/ChainHull.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/TextureTools/MarchingSquares.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/TextureTools/MarchingSquares.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Delaunay/Delaunay/Sweep/DTSweep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Delaunay/Delaunay/Sweep/DTSweep.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Delaunay/Polygon/PolygonPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Delaunay/Polygon/PolygonPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Delaunay/Polygon/PolygonSet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Delaunay/Polygon/PolygonSet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/FlipCode/FlipcodeDecomposer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/FlipCode/FlipcodeDecomposer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,19 +53,30 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/Camera.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Nueva carpeta/src/2_adaptation/sfml/alis.core.sfml/src/Components/Collision.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/3C0/DebugProvider.Windows.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Extensions/Controllers/Velocity/VelocityLimitController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/ConvexHull/ChainHull/ChainHull.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Nueva carpeta/src/2_adaptation/sfml/alis.core.sfml/src/Render/RenderSFML.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis.example/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Input.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/413/HashSet.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Seidel/Edge.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/Contact.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Seidel/Point.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/FD/Matrix4x4.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/PhysicsSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/TOI/Sweep.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Body.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/Camera.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/Animator.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Components/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Input.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/Keyboard.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Input/InputSFML.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/FD/Matrix4x4.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Delaunay/Polygon/Polygon.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Triangulation/Delaunay/Polygon/PolygonSet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/TextureTools/MarchingSquares.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/879e64150fe442079fadd555ede677aa8f5788/5b/63cc4a41/IEquatable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/41A/List.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -95,7 +104,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.2_Application\Alis\Alis.Example">
@@ -413,7 +422,10 @@
       <workItem from="1636280369166" duration="9636000" />
       <workItem from="1636295023210" duration="15036000" />
       <workItem from="1636361784256" duration="27604000" />
-      <workItem from="1636449668273" duration="3536000" />
+      <workItem from="1636449668273" duration="4578000" />
+      <workItem from="1636455911935" duration="286000" />
+      <workItem from="1636456430450" duration="80000" />
+      <workItem from="1636456738689" duration="1258000" />
     </task>
     <servers />
   </component>

@@ -201,8 +201,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
 
             Vector2 centroidB = MathUtils.Mul(ref xf, polygonB._massData.Centroid);
 
-            Vector2 v1 = edgeA._vertex1;
-            Vector2 v2 = edgeA._vertex2;
+            Vector2 v1 = edgeA.Vertex1;
+            Vector2 v2 = edgeA.Vertex2;
 
             Vector2 edge1 = v2 - v1;
             edge1 = Vector2.Normalize(edge1);
@@ -211,7 +211,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             Vector2 normal1 = new Vector2(edge1.Y, -edge1.X);
             float offset1 = MathUtils.Dot(normal1, centroidB - v1);
 
-            bool oneSided = edgeA._oneSided;
+            bool oneSided = edgeA.OneSided;
             if (oneSided && offset1 < 0.0f)
             {
                 return;
@@ -258,12 +258,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
                 // Smooth collision
                 // See https://box2d.org/posts/2020/06/ghost-collisions/
 
-                Vector2 edge0 = v1 - edgeA._vertex0;
+                Vector2 edge0 = v1 - edgeA.Vertex0;
                 edge0 = Vector2.Normalize(edge0);
                 Vector2 normal0 = new Vector2(edge0.Y, -edge0.X);
                 bool convex1 = MathUtils.Cross(edge0, edge1) >= 0.0f;
 
-                Vector2 edge2 = edgeA._vertex3 - v2;
+                Vector2 edge2 = edgeA.Vertex3 - v2;
                 edge2 = Vector2.Normalize(edge2);
                 Vector2 normal2 = new Vector2(edge2.Y, -edge2.X);
                 bool convex2 = MathUtils.Cross(edge1, edge2) >= 0.0f;

@@ -1205,7 +1205,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         Fixture fB = c.FixtureB;
 
                         // Is there a sensor?
-                        if (fA._isSensor || fB._isSensor)
+                        if (fA._isSensorPrivate || fB._isSensorPrivate)
                         {
                             continue;
                         }
@@ -1372,8 +1372,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             // Skip sensors.
-                            bool sensorA = contact.FixtureA._isSensor;
-                            bool sensorB = contact.FixtureB._isSensor;
+                            bool sensorA = contact.FixtureA._isSensorPrivate;
+                            bool sensorB = contact.FixtureB._isSensorPrivate;
                             if (sensorA || sensorB)
                             {
                                 continue;

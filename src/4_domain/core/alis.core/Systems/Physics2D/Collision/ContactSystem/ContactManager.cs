@@ -259,8 +259,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 EndContact?.Invoke(c);
             }
 
-            Body bodyA = fixtureA._body;
-            Body bodyB = fixtureB._body;
+            Body bodyA = fixtureA._bodyprivate;
+            Body bodyB = fixtureB._bodyprivate;
 
             // Remove from the world.
             if (c.Previous != null)
@@ -331,8 +331,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
                 int indexB = c.ChildIndexB;
-                Body bodyA = fixtureA._body;
-                Body bodyB = fixtureB._body;
+                Body bodyA = fixtureA._bodyprivate;
+                Body bodyB = fixtureB._bodyprivate;
 
                 //Velcro: Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)

@@ -141,26 +141,26 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             //edge._shapeType = ShapeType.Edge;
             edge._radius = _radius;
 
-            edge._vertex1 = Vertices[index + 0];
-            edge._vertex2 = Vertices[index + 1];
-            edge._oneSided = true;
+            edge.Vertex1 = Vertices[index + 0];
+            edge.Vertex2 = Vertices[index + 1];
+            edge.OneSided = true;
 
             if (index > 0)
             {
-                edge._vertex0 = Vertices[index - 1];
+                edge.Vertex0 = Vertices[index - 1];
             }
             else
             {
-                edge._vertex0 = PrevVertex;
+                edge.Vertex0 = PrevVertex;
             }
 
             if (index < Vertices.Count - 2)
             {
-                edge._vertex3 = Vertices[index + 2];
+                edge.Vertex3 = Vertices[index + 2];
             }
             else
             {
-                edge._vertex3 = NextVertex;
+                edge.Vertex3 = NextVertex;
             }
         }
 

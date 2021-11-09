@@ -42,27 +42,27 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>
         ///     The one sided
         /// </summary>
-        internal bool _oneSided;
+        private bool _oneSided;
 
         /// <summary>
         ///     The vertex
         /// </summary>
-        internal Vector2 _vertex0;
+        private Vector2 _vertex0;
 
         /// <summary>
         ///     The vertex
         /// </summary>
-        internal Vector2 _vertex1;
+        private Vector2 _vertex1;
 
         /// <summary>
         ///     The vertex
         /// </summary>
-        internal Vector2 _vertex2;
+        private Vector2 _vertex2;
 
         /// <summary>
         ///     The vertex
         /// </summary>
-        internal Vector2 _vertex3;
+        private Vector2 _vertex3;
 
         /// <summary>Create a new EdgeShape with the specified start and end. This edge supports two-sided collision.</summary>
         /// <param name="start">The start of the edge.</param>
@@ -91,7 +91,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         public override int ChildCount => 1;
 
         /// <summary>Is true if the edge is connected to an adjacent vertex before vertex 1.</summary>
-        public bool OneSided => _oneSided;
+        public bool OneSided
+        {
+            get => _oneSided;
+            set { _oneSided = value; }
+        }
 
         /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
         public Vector2 Vertex0
@@ -138,11 +142,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="v3">The </param>
         public void SetOneSided(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3)
         {
-            _vertex0 = v0;
-            _vertex1 = v1;
-            _vertex2 = v2;
-            _vertex3 = v3;
-            _oneSided = true;
+            Vertex0 = v0;
+            Vertex1 = v1;
+            Vertex2 = v2;
+            Vertex3 = v3;
+            OneSided = true;
 
             ComputeProperties();
         }
@@ -154,9 +158,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="end">The end</param>
         public void SetTwoSided(Vector2 start, Vector2 end)
         {
-            _vertex1 = start;
-            _vertex2 = end;
-            _oneSided = false;
+            Vertex1 = start;
+            Vertex2 = end;
+            OneSided = false;
 
             ComputeProperties();
         }
@@ -178,7 +182,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
-            out RayCastOutput output) => RayCastHelper.RayCastEdge(ref _vertex1, ref _vertex2, _oneSided, ref input,
+            out RayCastOutput output) => RayCastHelper.RayCastEdge(ref _vertex1, ref _vertex2, OneSided, ref input,
             ref transform, out output);
 
         /// <summary>
@@ -197,7 +201,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// </summary>
         protected sealed override void ComputeProperties()
         {
-            _massData.Centroid = 0.5f * (_vertex1 + _vertex2);
+            _massData.Centroid = 0.5f * (Vertex1 + Vertex2);
         }
 
         /// <summary>
@@ -210,11 +214,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             clone._shapeType = _shapeType;
             clone._radius = _radius;
             clone._density = _density;
-            clone._oneSided = _oneSided;
-            clone._vertex0 = _vertex0;
-            clone._vertex1 = _vertex1;
-            clone._vertex2 = _vertex2;
-            clone._vertex3 = _vertex3;
+            clone.OneSided = OneSided;
+            clone.Vertex0 = Vertex0;
+            clone.Vertex1 = Vertex1;
+            clone.Vertex2 = Vertex2;
+            clone.Vertex3 = Vertex3;
             clone._massData = _massData;
             return clone;
         }

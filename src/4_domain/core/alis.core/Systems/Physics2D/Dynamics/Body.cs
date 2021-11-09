@@ -892,10 +892,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             FixtureList.Add(fixture);
 
-            fixture._body = this;
+            fixture._bodyprivate = this;
 
             // Adjust mass properties if needed.
-            if (fixture._shape._density > 0.0f)
+            if (fixture._shapePrivate._density > 0.0f)
             {
                 ResetMassData();
             }
@@ -983,7 +983,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             FixtureList.Remove(fixture);
             fixture.Destroy();
-            fixture._body = null;
+            fixture._bodyprivate = null;
 
             ResetMassData();
         }

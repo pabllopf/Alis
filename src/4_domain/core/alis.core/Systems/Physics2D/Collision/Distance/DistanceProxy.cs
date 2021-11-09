@@ -97,8 +97,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                 {
                     EdgeShape edge = (EdgeShape) shape;
                     _vertices = new Vector2[2];
-                    _vertices[0] = edge._vertex1;
-                    _vertices[1] = edge._vertex2;
+                    _vertices[0] = edge.Vertex1;
+                    _vertices[1] = edge.Vertex2;
                     _radius = edge._radius;
                 }
                     break;
