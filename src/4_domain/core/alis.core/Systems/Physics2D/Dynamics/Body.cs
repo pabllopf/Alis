@@ -123,7 +123,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The linear velocity
         /// </summary>
-        internal Vector2 _linearVelc;
+        private Vector2 _linearVelc;
 
         /// <summary>
         ///     The mass
@@ -225,7 +225,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             _sweep.A0 = def.Angle;
             _sweep.A = def.Angle;
 
-            _linearVelc = def.LinearVelocity;
+            LinearVelocity = def.LinearVelocity;
             AngularVelocity = def.AngularVelocity;
 
             _linearDamp = def.LinearDamping;
@@ -322,7 +322,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 if (_type == BodyType.Static)
                 {
-                    _linearVelc = Vector2.Zero;
+                    LinearVelocity = Vector2.Zero;
                     AngularVelocity = 0.0f;
                     _sweep.A0 = _sweep.A;
                     _sweep.C0 = _sweep.C;
@@ -674,7 +674,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 // Update center of mass velocity.
                 Vector2 a = _sweep.C - oldCenter;
-                _linearVelc += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
+                LinearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
             }
         }
 
@@ -866,7 +866,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             Torque = 0;
             AngularVelocity = 0;
             Force = Vector2.Zero;
-            _linearVelc = Vector2.Zero;
+            LinearVelocity = Vector2.Zero;
         }
 
         /// <summary>
@@ -1145,7 +1145,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _linearVelc += InvMass * impulse;
+            LinearVelocity += InvMass * impulse;
         }
 
         /// <summary>
@@ -1167,7 +1167,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _linearVelc += InvMass * impulse;
+            LinearVelocity += InvMass * impulse;
             AngularVelocity += InvI * MathUtils.Cross(point - _sweep.C, impulse);
         }
 
@@ -1264,7 +1264,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             // Update center of mass velocity.
             Vector2 a = _sweep.C - oldCenter;
-            _linearVelc += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
+            LinearVelocity += new Vector2(-AngularVelocity * a.Y, AngularVelocity * a.X);
         }
 
         /// <summary>Get the world coordinates of a point given the local coordinates.</summary>
@@ -1329,7 +1329,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
         public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) =>
-            _linearVelc + MathUtils.Cross(AngularVelocity, worldPoint - _sweep.C);
+            LinearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - _sweep.C);
 
         /// <summary>Get the world velocity of a local point.</summary>
         /// <param name="localPoint">A point in local coordinates.</param>

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
 
@@ -150,8 +151,8 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
                 {
                     //Translation
                     // Check for large velocities.
-                    float translationX = dt * body._linearVelc.X;
-                    float translationY = dt * body._linearVelc.Y;
+                    float translationX = dt * body.LinearVelocity.X;
+                    float translationY = dt * body.LinearVelocity.Y;
                     float result = translationX * translationX + translationY * translationY;
 
                     if (result > dt * _maxLinearSqared)
@@ -159,8 +160,11 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
                         float sq = (float) Math.Sqrt(result);
 
                         float ratio = _maxLinearVelocity / sq;
-                        body._linearVelc.X *= ratio;
-                        body._linearVelc.Y *= ratio;
+
+                        Vector2 temp = body.LinearVelocity;
+                        temp.X *= ratio;
+                        temp.Y *= ratio;
+                        body.LinearVelocity = temp;
                     }
                 }
 
