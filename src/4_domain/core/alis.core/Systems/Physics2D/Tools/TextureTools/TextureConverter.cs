@@ -46,67 +46,67 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <summary>
         ///     The alpha tolerance
         /// </summary>
-        private uint _alphaTolerance;
+        private uint alphaTolerance;
 
         /// <summary>
         ///     The data
         /// </summary>
-        private uint[] _data;
+        private uint[] data;
 
         /// <summary>
         ///     The data length
         /// </summary>
-        private int _dataLength;
+        private int dataLength;
 
         /// <summary>
         ///     The height
         /// </summary>
-        private int _height;
+        private int height;
 
         /// <summary>
         ///     The hole detection
         /// </summary>
-        private bool _holeDetection;
+        private bool holeDetection;
 
         /// <summary>
         ///     The hull tolerance
         /// </summary>
-        private float _hullTolerance;
+        private float hullTolerance;
 
         /// <summary>
         ///     The multipart detection
         /// </summary>
-        private bool _multipartDetection;
+        private bool multipartDetection;
 
         /// <summary>
         ///     The pixel offset optimization
         /// </summary>
-        private bool _pixelOffsetOptimization;
+        private bool pixelOffsetOptimization;
 
         /// <summary>
         ///     The polygon detection type
         /// </summary>
-        private VerticesDetectionType _polygonDetectionType;
+        private VerticesDetectionType polygonDetectionType;
 
         /// <summary>
         ///     The temp is solid
         /// </summary>
-        private int _tempIsSolidX;
+        private int tempIsSolidX;
 
         /// <summary>
         ///     The temp is solid
         /// </summary>
-        private int _tempIsSolidY;
+        private int tempIsSolidY;
 
         /// <summary>
         ///     The identity
         /// </summary>
-        private Matrix4x4 _transform = Matrix4x4.Identity;
+        private Matrix4x4 transform = Matrix4x4.Identity;
 
         /// <summary>
         ///     The width
         /// </summary>
-        private int _width;
+        private int width;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="TextureConverter" /> class
@@ -164,22 +164,22 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <summary>Get or set the polygon detection type.</summary>
         public VerticesDetectionType PolygonDetectionType
         {
-            get => _polygonDetectionType;
-            set => _polygonDetectionType = value;
+            get => polygonDetectionType;
+            set => polygonDetectionType = value;
         }
 
         /// <summary>Will detect texture 'holes' if set to true. Slows down the detection. Default is false.</summary>
         public bool HoleDetection
         {
-            get => _holeDetection;
-            set => _holeDetection = value;
+            get => holeDetection;
+            set => holeDetection = value;
         }
 
         /// <summary>Will detect texture multiple 'solid' isles if set to true. Slows down the detection. Default is false.</summary>
         public bool MultipartDetection
         {
-            get => _multipartDetection;
-            set => _multipartDetection = value;
+            get => multipartDetection;
+            set => multipartDetection = value;
         }
 
         /// <summary>
@@ -188,15 +188,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// </summary>
         public bool PixelOffsetOptimization
         {
-            get => _pixelOffsetOptimization;
-            set => _pixelOffsetOptimization = value;
+            get => pixelOffsetOptimization;
+            set => pixelOffsetOptimization = value;
         }
 
         /// <summary>Can be used for scaling.</summary>
         public Matrix4x4 Transform
         {
-            get => _transform;
-            set => _transform = value;
+            get => transform;
+            set => transform = value;
         }
 
         /// <summary>
@@ -205,27 +205,27 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// </summary>
         public byte AlphaTolerance
         {
-            get => (byte) (_alphaTolerance >> 24);
-            set => _alphaTolerance = (uint) value << 24;
+            get => (byte) (alphaTolerance >> 24);
+            set => alphaTolerance = (uint) value << 24;
         }
 
         /// <summary>Default is 1.5f.</summary>
         public float HullTolerance
         {
-            get => _hullTolerance;
+            get => hullTolerance;
             set
             {
                 if (value > 4f)
                 {
-                    _hullTolerance = 4f;
+                    hullTolerance = 4f;
                 }
                 else if (value < 0.9f)
                 {
-                    _hullTolerance = 0.9f;
+                    hullTolerance = 0.9f;
                 }
                 else
                 {
-                    _hullTolerance = value;
+                    hullTolerance = value;
                 }
             }
         }
@@ -236,7 +236,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         private const int ClosepixelsLength = 8;
 
         /// <summary>This array is meant to be read-only. It's not because it is accessed very frequently.</summary>
-        private static readonly int[,] _closePixels =
+        private static readonly int[,] ClosePixels =
             {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
 
         /// <summary>
@@ -364,10 +364,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 throw new ArgumentException("'width' has an invalid value.");
             }
 
-            _data = data;
-            _dataLength = _data.Length;
-            _width = width;
-            _height = _dataLength / width;
+            this.data = data;
+            dataLength = this.data.Length;
+            this.width = width;
+            height = dataLength / width;
         }
 
         /// <summary>Detects the vertices of the supplied texture data. (PolygonDetectionType.Integrated)</summary>
@@ -448,27 +448,27 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <returns>The detected polygons</returns>
         public List<Vertices> DetectVertices()
         {
-            if (_data == null)
+            if (data == null)
             {
                 throw new Exception(
                     "'_data' can't be null. You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
 
-            if (_data.Length < 4)
+            if (data.Length < 4)
             {
                 throw new Exception(
                     "'_data' length can't be less then 4. Your texture must be at least 2 x 2 pixels in size. " +
                     "You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
 
-            if (_width < 2)
+            if (width < 2)
             {
                 throw new Exception(
                     "'_width' can't be less then 2. Your texture must be at least 2 x 2 pixels in size. " +
                     "You have to use SetTextureData(uint[] data, int width) before calling this method.");
             }
 
-            if (_data.Length % _width != 0)
+            if (data.Length % width != 0)
             {
                 throw new Exception(
                     "'_width' has an invalid value. You have to use SetTextureData(uint[] data, int width) before calling this method.");
@@ -510,7 +510,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
 
                 if (polygon.Count > 2)
                 {
-                    if (_holeDetection)
+                    if (holeDetection)
                     {
                         do
                         {
@@ -526,7 +526,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
 
                                     if (holePolygon != null && holePolygon.Count > 2)
                                     {
-                                        switch (_polygonDetectionType)
+                                        switch (polygonDetectionType)
                                         {
                                             case VerticesDetectionType.Integrated:
 
@@ -567,7 +567,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                     detectedPolygons.Add(polygon);
                 }
 
-                if (_multipartDetection || polygon.Count <= 2)
+                if (multipartDetection || polygon.Count <= 2)
                 {
                     if (SearchNextHullEntrance(detectedPolygons, polygonEntrance.Value, out polygonEntrance))
                     {
@@ -588,7 +588,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 ApplyTriangulationCompatibleWinding(ref detectedPolygons);
             }
 
-            if (_transform != Matrix4x4.Identity)
+            if (transform != Matrix4x4.Identity)
             {
                 ApplyTransform(ref detectedPolygons);
             }
@@ -624,7 +624,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         {
             for (int i = 0; i < detectedPolygons.Count; i++)
             {
-                detectedPolygons[i].Transform(ref _transform);
+                detectedPolygons[i].Transform(ref transform);
             }
         }
 
@@ -671,7 +671,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             // Set the end y coordinate.
             int endY = (int) GetBottomMostCoord(polygon);
 
-            if (startY > 0 && startY < _height && endY > 0 && endY < _height)
+            if (startY > 0 && startY < height && endY > 0 && endY < height)
             {
                 // go from top to bottom of the polygon
                 for (int y = startY; y <= endY; y++)
@@ -827,7 +827,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                     edgeVertex1 = polygon[i];
 
                     if (LineUtils.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
-                        _hullTolerance || Vector2.Distance(point, edgeVertex1) <= _hullTolerance)
+                        hullTolerance || Vector2.Distance(point, edgeVertex1) <= hullTolerance)
                     {
                         return false;
                     }
@@ -843,7 +843,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 edgeVertex1 = polygon[i];
 
                 if (LineUtils.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
-                    _hullTolerance)
+                    hullTolerance)
                 {
                     return false;
                 }
@@ -1283,8 +1283,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         {
             for (int i = 0; i < ClosepixelsLength; i++)
             {
-                int x = (int) current.X + _closePixels[i, 0];
-                int y = (int) current.Y + _closePixels[i, 1];
+                int x = (int) current.X + ClosePixels[i, 0];
+                int y = (int) current.Y + ClosePixels[i, 1];
 
                 if (!searchingForSolidPixel ^ IsSolid(ref x, ref y))
                 {
@@ -1308,10 +1308,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         {
             for (int i = 0; i < ClosepixelsLength; i++)
             {
-                int x = (int) current.X + _closePixels[i, 0];
-                int y = (int) current.Y + _closePixels[i, 1];
+                int x = (int) current.X + ClosePixels[i, 0];
+                int y = (int) current.Y + ClosePixels[i, 1];
 
-                if (x >= 0 && x <= _width && y >= 0 && y <= _height)
+                if (x >= 0 && x <= width && y >= 0 && y <= height)
                 {
                     if (x == (int) near.X && y == (int) near.Y)
                     {
@@ -1331,9 +1331,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         private bool SearchHullEntrance(out Vector2 entrance)
         {
             // Search for first solid pixel.
-            for (int y = 0; y <= _height; y++)
+            for (int y = 0; y <= height; y++)
             {
-                for (int x = 0; x <= _width; x++)
+                for (int x = 0; x <= width; x++)
                 {
                     if (IsSolid(ref x, ref y))
                     {
@@ -1360,14 +1360,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             bool foundTransparent = false;
             bool inPolygon = false;
 
-            for (int i = (int) start.X + (int) start.Y * _width; i <= _dataLength; i++)
+            for (int i = (int) start.X + (int) start.Y * width; i <= dataLength; i++)
             {
                 if (IsSolid(ref i))
                 {
                     if (foundTransparent)
                     {
-                        x = i % _width;
-                        entrance = new Vector2(x, (i - x) / (float) _width);
+                        x = i % width;
+                        entrance = new Vector2(x, (i - x) / (float) width);
 
                         inPolygon = false;
                         for (int polygonIdx = 0; polygonIdx < detectedPolygons.Count; polygonIdx++)
@@ -1418,10 +1418,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             {
                 indexOfPixelToCheck = (indexOfFirstPixelToCheck + i) % ClosepixelsLength;
 
-                x = (int) current.X + _closePixels[indexOfPixelToCheck, 0];
-                y = (int) current.Y + _closePixels[indexOfPixelToCheck, 1];
+                x = (int) current.X + ClosePixels[indexOfPixelToCheck, 0];
+                y = (int) current.Y + ClosePixels[indexOfPixelToCheck, 1];
 
-                if (x >= 0 && x < _width && y >= 0 && y <= _height)
+                if (x >= 0 && x < width && y >= 0 && y <= height)
                 {
                     if (IsSolid(ref x, ref y))
                     {
@@ -1461,7 +1461,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
 
                     // Check if the distance is over the one that's tolerable.
                     if (LineUtils.DistanceBetweenPointAndLineSegment(ref tempVector1, ref tempVector2,
-                        ref tempVector3) >= _hullTolerance)
+                        ref tempVector3) >= hullTolerance)
                     {
                         outstandingResult = hullArea[i];
                         found = true;
@@ -1547,12 +1547,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <returns>The bool</returns>
         public bool IsSolid(ref Vector2 v)
         {
-            _tempIsSolidX = (int) v.X;
-            _tempIsSolidY = (int) v.Y;
+            tempIsSolidX = (int) v.X;
+            tempIsSolidY = (int) v.Y;
 
-            if (_tempIsSolidX >= 0 && _tempIsSolidX < _width && _tempIsSolidY >= 0 && _tempIsSolidY < _height)
+            if (tempIsSolidX >= 0 && tempIsSolidX < width && tempIsSolidY >= 0 && tempIsSolidY < height)
             {
-                return _data[_tempIsSolidX + _tempIsSolidY * _width] >= _alphaTolerance;
+                return data[tempIsSolidX + tempIsSolidY * width] >= alphaTolerance;
             }
 
             //return ((_data[_tempIsSolidX + _tempIsSolidY * _width] & 0xFF000000) >= _alphaTolerance);
@@ -1568,9 +1568,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <returns>The bool</returns>
         public bool IsSolid(ref int x, ref int y)
         {
-            if (x >= 0 && x < _width && y >= 0 && y < _height)
+            if (x >= 0 && x < width && y >= 0 && y < height)
             {
-                return _data[x + y * _width] >= _alphaTolerance;
+                return data[x + y * width] >= alphaTolerance;
             }
 
             //return ((_data[x + y * _width] & 0xFF000000) >= _alphaTolerance);
@@ -1585,9 +1585,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <returns>The bool</returns>
         public bool IsSolid(ref int index)
         {
-            if (index >= 0 && index < _dataLength)
+            if (index >= 0 && index < dataLength)
             {
-                return _data[index] >= _alphaTolerance;
+                return data[index] >= alphaTolerance;
             }
 
             //return ((_data[index] & 0xFF000000) >= _alphaTolerance);
@@ -1601,6 +1601,6 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <param name="coord">The coord</param>
         /// <returns>The bool</returns>
         public bool InBounds(ref Vector2 coord) =>
-            coord.X >= 0f && coord.X < _width && coord.Y >= 0f && coord.Y < _height;
+            coord.X >= 0f && coord.X < width && coord.Y >= 0f && coord.Y < height;
     }
 }

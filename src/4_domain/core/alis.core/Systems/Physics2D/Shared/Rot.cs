@@ -36,16 +36,16 @@ namespace Alis.Core.Systems.Physics2D.Shared
     public struct Rot
     {
         /// Sine and cosine
-        public float s,
-            c;
+        public float S,
+            C;
 
         /// <summary>Initialize from an angle in radians</summary>
         /// <param name="angle">Angle in radians</param>
         public Rot(float angle)
         {
             // TODO_ERIN optimize
-            s = (float) Math.Sin(angle);
-            c = (float) Math.Cos(angle);
+            S = (float) Math.Sin(angle);
+            C = (float) Math.Cos(angle);
         }
 
         /// <summary>Set using an angle in radians.</summary>
@@ -55,31 +55,31 @@ namespace Alis.Core.Systems.Physics2D.Shared
             //Velcro: Optimization
             if (angle == 0)
             {
-                s = 0;
-                c = 1;
+                S = 0;
+                C = 1;
             }
             else
             {
                 // TODO_ERIN optimize
-                s = (float) Math.Sin(angle);
-                c = (float) Math.Cos(angle);
+                S = (float) Math.Sin(angle);
+                C = (float) Math.Cos(angle);
             }
         }
 
         /// <summary>Set to the identity rotation</summary>
         public void SetIdentity()
         {
-            s = 0.0f;
-            c = 1.0f;
+            S = 0.0f;
+            C = 1.0f;
         }
 
         /// <summary>Get the angle in radians</summary>
-        public float GetAngle() => (float) Math.Atan2(s, c);
+        public float GetAngle() => (float) Math.Atan2(S, C);
 
         /// <summary>Get the x-axis</summary>
-        public Vector2 GetXAxis() => new Vector2(c, s);
+        public Vector2 GetXAxis() => new Vector2(C, S);
 
         /// <summary>Get the y-axis</summary>
-        public Vector2 GetYAxis() => new Vector2(-s, c);
+        public Vector2 GetYAxis() => new Vector2(-S, C);
     }
 }

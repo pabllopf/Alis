@@ -37,12 +37,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
         /// <summary>
         ///     The
         /// </summary>
-        public int i1, i2;
+        public int I1, I2;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 v1, v2;
+        public Vector2 V1, V2;
 
         /// <summary>
         ///     The normal

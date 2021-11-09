@@ -70,32 +70,32 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <summary>
         ///     The contacts
         /// </summary>
-        private Contact[] _contacts;
+        private Contact[] contacts;
 
         /// <summary>
         ///     The count
         /// </summary>
-        private int _count;
+        private int count;
 
         /// <summary>
         ///     The position constraints
         /// </summary>
-        private ContactPositionConstraint[] _positionConstraints;
+        private ContactPositionConstraint[] positionConstraints;
 
         /// <summary>
         ///     The positions
         /// </summary>
-        private Position[] _positions;
+        private Position[] positions;
 
         /// <summary>
         ///     The step
         /// </summary>
-        private TimeStep _step;
+        private TimeStep step;
 
         /// <summary>
         ///     The velocities
         /// </summary>
-        private Velocity[] _velocities;
+        private Velocity[] velocities;
 
         /// <summary>
         ///     The velocity constraints
@@ -112,31 +112,31 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <param name="velocities">The velocities</param>
         public void Reset(TimeStep step, int count, Contact[] contacts, Position[] positions, Velocity[] velocities)
         {
-            _step = step;
-            _count = count;
-            _positions = positions;
-            _velocities = velocities;
-            _contacts = contacts;
+            this.step = step;
+            this.count = count;
+            this.positions = positions;
+            this.velocities = velocities;
+            this.contacts = contacts;
 
             // grow the array
             if (VelocityConstraints == null || VelocityConstraints.Length < count)
             {
                 VelocityConstraints = new ContactVelocityConstraint[count * 2];
-                _positionConstraints = new ContactPositionConstraint[count * 2];
+                positionConstraints = new ContactPositionConstraint[count * 2];
 
                 for (int i = 0; i < VelocityConstraints.Length; i++)
                 {
                     VelocityConstraints[i] = new ContactVelocityConstraint();
                 }
 
-                for (int i = 0; i < _positionConstraints.Length; i++)
+                for (int i = 0; i < positionConstraints.Length; i++)
                 {
-                    _positionConstraints[i] = new ContactPositionConstraint();
+                    positionConstraints[i] = new ContactPositionConstraint();
                 }
             }
 
             // Initialize position independent portions of the constraints.
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0; i < this.count; ++i)
             {
                 Contact contact = contacts[i];
 
@@ -144,8 +144,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 Fixture fixtureB = contact.FixtureB;
                 Shape shapeA = fixtureA.Shape;
                 Shape shapeB = fixtureB.Shape;
-                float radiusA = shapeA._radiusPrivate;
-                float radiusB = shapeB._radiusPrivate;
+                float radiusA = shapeA.RadiusPrivate;
+                float radiusB = shapeB.RadiusPrivate;
                 Body bodyA = fixtureA.Body;
                 Body bodyB = fixtureB.Body;
                 Manifold manifold = contact.Manifold;
@@ -162,22 +162,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 vc.IndexB = bodyB.IslandIndex;
                 vc.InvMassA = bodyA.InvMass;
                 vc.InvMassB = bodyB.InvMass;
-                vc.InvIA = bodyA.InvI;
-                vc.InvIB = bodyB.InvI;
+                vc.InvIa = bodyA.InvI;
+                vc.InvIb = bodyB.InvI;
                 vc.ContactIndex = i;
                 vc.PointCount = pointCount;
                 vc.K.SetZero();
                 vc.NormalMass.SetZero();
 
-                ContactPositionConstraint pc = _positionConstraints[i];
+                ContactPositionConstraint pc = positionConstraints[i];
                 pc.IndexA = bodyA.IslandIndex;
                 pc.IndexB = bodyB.IslandIndex;
                 pc.InvMassA = bodyA.InvMass;
                 pc.InvMassB = bodyB.InvMass;
                 pc.LocalCenterA = bodyA.Sweep.LocalCenter;
                 pc.LocalCenterB = bodyB.Sweep.LocalCenter;
-                pc.InvIA = bodyA.InvI;
-                pc.InvIB = bodyB.InvI;
+                pc.InvIa = bodyA.InvI;
+                pc.InvIb = bodyB.InvI;
                 pc.LocalNormal = manifold.LocalNormal;
                 pc.LocalPoint = manifold.LocalPoint;
                 pc.PointCount = pointCount;
@@ -192,8 +192,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
 
                     if (step.WarmStarting)
                     {
-                        vcp.NormalImpulse = _step.DeltaTimeRatio * cp.NormalImpulse;
-                        vcp.TangentImpulse = _step.DeltaTimeRatio * cp.TangentImpulse;
+                        vcp.NormalImpulse = this.step.DeltaTimeRatio * cp.NormalImpulse;
+                        vcp.TangentImpulse = this.step.DeltaTimeRatio * cp.TangentImpulse;
                     }
                     else
                     {
@@ -201,8 +201,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                         vcp.TangentImpulse = 0.0f;
                     }
 
-                    vcp.rA = Vector2.Zero;
-                    vcp.rB = Vector2.Zero;
+                    vcp.RA = Vector2.Zero;
+                    vcp.RB = Vector2.Zero;
                     vcp.NormalMass = 0.0f;
                     vcp.TangentMass = 0.0f;
                     vcp.VelocityBias = 0.0f;
@@ -215,43 +215,43 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <summary>Initialize position dependent portions of the velocity constraints.</summary>
         public void InitializeVelocityConstraints()
         {
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0; i < count; ++i)
             {
                 ContactVelocityConstraint vc = VelocityConstraints[i];
-                ContactPositionConstraint pc = _positionConstraints[i];
+                ContactPositionConstraint pc = positionConstraints[i];
 
                 float radiusA = pc.RadiusA;
                 float radiusB = pc.RadiusB;
-                Manifold manifold = _contacts[vc.ContactIndex].Manifold;
+                Manifold manifold = contacts[vc.ContactIndex].Manifold;
 
                 int indexA = vc.IndexA;
                 int indexB = vc.IndexB;
 
                 float mA = vc.InvMassA;
                 float mB = vc.InvMassB;
-                float iA = vc.InvIA;
-                float iB = vc.InvIB;
+                float iA = vc.InvIa;
+                float iB = vc.InvIb;
                 Vector2 localCenterA = pc.LocalCenterA;
                 Vector2 localCenterB = pc.LocalCenterB;
 
-                Vector2 cA = _positions[indexA].C;
-                float aA = _positions[indexA].A;
-                Vector2 vA = _velocities[indexA].V;
-                float wA = _velocities[indexA].W;
+                Vector2 cA = positions[indexA].C;
+                float aA = positions[indexA].A;
+                Vector2 vA = velocities[indexA].V;
+                float wA = velocities[indexA].W;
 
-                Vector2 cB = _positions[indexB].C;
-                float aB = _positions[indexB].A;
-                Vector2 vB = _velocities[indexB].V;
-                float wB = _velocities[indexB].W;
+                Vector2 cB = positions[indexB].C;
+                float aB = positions[indexB].A;
+                Vector2 vB = velocities[indexB].V;
+                float wB = velocities[indexB].W;
 
                 Debug.Assert(manifold.PointCount > 0);
 
                 Transform xfA = new Transform();
                 Transform xfB = new Transform();
-                xfA.q.Set(aA);
-                xfB.q.Set(aB);
-                xfA.p = cA - MathUtils.Mul(xfA.q, localCenterA);
-                xfB.p = cB - MathUtils.Mul(xfB.q, localCenterB);
+                xfA.Q.Set(aA);
+                xfB.Q.Set(aB);
+                xfA.P = cA - MathUtils.Mul(xfA.Q, localCenterA);
+                xfB.P = cB - MathUtils.Mul(xfB.Q, localCenterB);
 
                 WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2 normal,
                     out FixedArray2<Vector2> points, out _);
@@ -263,11 +263,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 {
                     VelocityConstraintPoint vcp = vc.Points[j];
 
-                    vcp.rA = points[j] - cA;
-                    vcp.rB = points[j] - cB;
+                    vcp.RA = points[j] - cA;
+                    vcp.RB = points[j] - cB;
 
-                    float rnA = MathUtils.Cross(vcp.rA, vc.Normal);
-                    float rnB = MathUtils.Cross(vcp.rB, vc.Normal);
+                    float rnA = MathUtils.Cross(vcp.RA, vc.Normal);
+                    float rnB = MathUtils.Cross(vcp.RB, vc.Normal);
 
                     float kNormal = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
@@ -275,8 +275,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
 
                     Vector2 tangent = MathUtils.Cross(vc.Normal, 1.0f);
 
-                    float rtA = MathUtils.Cross(vcp.rA, tangent);
-                    float rtB = MathUtils.Cross(vcp.rB, tangent);
+                    float rtA = MathUtils.Cross(vcp.RA, tangent);
+                    float rtB = MathUtils.Cross(vcp.RB, tangent);
 
                     float kTangent = mA + mB + iA * rtA * rtA + iB * rtB * rtB;
 
@@ -285,7 +285,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     // Setup a velocity bias for restitution.
                     vcp.VelocityBias = 0.0f;
                     float vRel = MathUtils.Dot(vc.Normal,
-                        vB + MathUtils.Cross(wB, vcp.rB) - vA - MathUtils.Cross(wA, vcp.rA));
+                        vB + MathUtils.Cross(wB, vcp.RB) - vA - MathUtils.Cross(wA, vcp.RA));
                     if (vRel < -vc.Threshold)
                     {
                         vcp.VelocityBias = -vc.Restitution * vRel;
@@ -298,22 +298,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     VelocityConstraintPoint vcp1 = vc.Points[0];
                     VelocityConstraintPoint vcp2 = vc.Points[1];
 
-                    float rn1A = MathUtils.Cross(vcp1.rA, vc.Normal);
-                    float rn1B = MathUtils.Cross(vcp1.rB, vc.Normal);
-                    float rn2A = MathUtils.Cross(vcp2.rA, vc.Normal);
-                    float rn2B = MathUtils.Cross(vcp2.rB, vc.Normal);
+                    float rn1A = MathUtils.Cross(vcp1.RA, vc.Normal);
+                    float rn1B = MathUtils.Cross(vcp1.RB, vc.Normal);
+                    float rn2A = MathUtils.Cross(vcp2.RA, vc.Normal);
+                    float rn2B = MathUtils.Cross(vcp2.RB, vc.Normal);
 
                     float k11 = mA + mB + iA * rn1A * rn1A + iB * rn1B * rn1B;
                     float k22 = mA + mB + iA * rn2A * rn2A + iB * rn2B * rn2B;
                     float k12 = mA + mB + iA * rn1A * rn2A + iB * rn1B * rn2B;
 
                     // Ensure a reasonable condition number.
-                    const float k_maxConditionNumber = 1000.0f;
-                    if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12))
+                    const float kMaxConditionNumber = 1000.0f;
+                    if (k11 * k11 < kMaxConditionNumber * (k11 * k22 - k12 * k12))
                     {
                         // K is safe to invert.
-                        vc.K.ex = new Vector2(k11, k12);
-                        vc.K.ey = new Vector2(k12, k22);
+                        vc.K.Ex = new Vector2(k11, k12);
+                        vc.K.Ey = new Vector2(k12, k22);
                         vc.NormalMass = vc.K.Inverse;
                     }
                     else
@@ -332,22 +332,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         public void WarmStart()
         {
             // Warm start.
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0; i < count; ++i)
             {
                 ContactVelocityConstraint vc = VelocityConstraints[i];
 
                 int indexA = vc.IndexA;
                 int indexB = vc.IndexB;
                 float mA = vc.InvMassA;
-                float iA = vc.InvIA;
+                float iA = vc.InvIa;
                 float mB = vc.InvMassB;
-                float iB = vc.InvIB;
+                float iB = vc.InvIb;
                 int pointCount = vc.PointCount;
 
-                Vector2 vA = _velocities[indexA].V;
-                float wA = _velocities[indexA].W;
-                Vector2 vB = _velocities[indexB].V;
-                float wB = _velocities[indexB].W;
+                Vector2 vA = velocities[indexA].V;
+                float wA = velocities[indexA].W;
+                Vector2 vB = velocities[indexB].V;
+                float wB = velocities[indexB].W;
 
                 Vector2 normal = vc.Normal;
                 Vector2 tangent = MathUtils.Cross(normal, 1.0f);
@@ -355,17 +355,17 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 for (int j = 0; j < pointCount; ++j)
                 {
                     VelocityConstraintPoint vcp = vc.Points[j];
-                    Vector2 P = vcp.NormalImpulse * normal + vcp.TangentImpulse * tangent;
-                    wA -= iA * MathUtils.Cross(vcp.rA, P);
-                    vA -= mA * P;
-                    wB += iB * MathUtils.Cross(vcp.rB, P);
-                    vB += mB * P;
+                    Vector2 p = vcp.NormalImpulse * normal + vcp.TangentImpulse * tangent;
+                    wA -= iA * MathUtils.Cross(vcp.RA, p);
+                    vA -= mA * p;
+                    wB += iB * MathUtils.Cross(vcp.RB, p);
+                    vB += mB * p;
                 }
 
-                _velocities[indexA].V = vA;
-                _velocities[indexA].W = wA;
-                _velocities[indexB].V = vB;
-                _velocities[indexB].W = wB;
+                velocities[indexA].V = vA;
+                velocities[indexA].W = wA;
+                velocities[indexB].V = vB;
+                velocities[indexB].W = wB;
             }
         }
 
@@ -374,22 +374,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// </summary>
         public void SolveVelocityConstraints()
         {
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0; i < count; ++i)
             {
                 ContactVelocityConstraint vc = VelocityConstraints[i];
 
                 int indexA = vc.IndexA;
                 int indexB = vc.IndexB;
                 float mA = vc.InvMassA;
-                float iA = vc.InvIA;
+                float iA = vc.InvIa;
                 float mB = vc.InvMassB;
-                float iB = vc.InvIB;
+                float iB = vc.InvIb;
                 int pointCount = vc.PointCount;
 
-                Vector2 vA = _velocities[indexA].V;
-                float wA = _velocities[indexA].W;
-                Vector2 vB = _velocities[indexB].V;
-                float wB = _velocities[indexB].W;
+                Vector2 vA = velocities[indexA].V;
+                float wA = velocities[indexA].W;
+                Vector2 vB = velocities[indexB].V;
+                float wB = velocities[indexB].W;
 
                 Vector2 normal = vc.Normal;
                 Vector2 tangent = MathUtils.Cross(normal, 1.0f);
@@ -404,7 +404,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     VelocityConstraintPoint vcp = vc.Points[j];
 
                     // Relative velocity at contact
-                    Vector2 dv = vB + MathUtils.Cross(wB, vcp.rB) - vA - MathUtils.Cross(wA, vcp.rA);
+                    Vector2 dv = vB + MathUtils.Cross(wB, vcp.RB) - vA - MathUtils.Cross(wA, vcp.RA);
 
                     // Compute tangent force
                     float vt = Vector2.Dot(dv, tangent) - vc.TangentSpeed;
@@ -417,13 +417,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     vcp.TangentImpulse = newImpulse;
 
                     // Apply contact impulse
-                    Vector2 P = lambda * tangent;
+                    Vector2 p = lambda * tangent;
 
-                    vA -= mA * P;
-                    wA -= iA * MathUtils.Cross(vcp.rA, P);
+                    vA -= mA * p;
+                    wA -= iA * MathUtils.Cross(vcp.RA, p);
 
-                    vB += mB * P;
-                    wB += iB * MathUtils.Cross(vcp.rB, P);
+                    vB += mB * p;
+                    wB += iB * MathUtils.Cross(vcp.RB, p);
                 }
 
                 // Solve normal constraints
@@ -434,7 +434,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                         VelocityConstraintPoint vcp = vc.Points[j];
 
                         // Relative velocity at contact
-                        Vector2 dv = vB + MathUtils.Cross(wB, vcp.rB) - vA - MathUtils.Cross(wA, vcp.rA);
+                        Vector2 dv = vB + MathUtils.Cross(wB, vcp.RB) - vA - MathUtils.Cross(wA, vcp.RA);
 
                         // Compute normal impulse
                         float vn = Vector2.Dot(dv, normal);
@@ -446,12 +446,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                         vcp.NormalImpulse = newImpulse;
 
                         // Apply contact impulse
-                        Vector2 P = lambda * normal;
-                        vA -= mA * P;
-                        wA -= iA * MathUtils.Cross(vcp.rA, P);
+                        Vector2 p = lambda * normal;
+                        vA -= mA * p;
+                        wA -= iA * MathUtils.Cross(vcp.RA, p);
 
-                        vB += mB * P;
-                        wB += iB * MathUtils.Cross(vcp.rB, P);
+                        vB += mB * p;
+                        wB += iB * MathUtils.Cross(vcp.RB, p);
                     }
                 }
                 else
@@ -496,8 +496,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     Debug.Assert(a.X >= 0.0f && a.Y >= 0.0f);
 
                     // Relative velocity at contact
-                    Vector2 dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
-                    Vector2 dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);
+                    Vector2 dv1 = vB + MathUtils.Cross(wB, cp1.RB) - vA - MathUtils.Cross(wA, cp1.RA);
+                    Vector2 dv2 = vB + MathUtils.Cross(wB, cp2.RB) - vA - MathUtils.Cross(wA, cp2.RA);
 
                     // Compute normal velocity
                     float vn1 = Vector2.Dot(dv1, normal);
@@ -529,13 +529,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                             Vector2 d = x - a;
 
                             // Apply incremental impulse
-                            Vector2 P1 = d.X * normal;
-                            Vector2 P2 = d.Y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (MathUtils.Cross(cp1.rA, P1) + MathUtils.Cross(cp2.rA, P2));
+                            Vector2 p1 = d.X * normal;
+                            Vector2 p2 = d.Y * normal;
+                            vA -= mA * (p1 + p2);
+                            wA -= iA * (MathUtils.Cross(cp1.RA, p1) + MathUtils.Cross(cp2.RA, p2));
 
-                            vB += mB * (P1 + P2);
-                            wB += iB * (MathUtils.Cross(cp1.rB, P1) + MathUtils.Cross(cp2.rB, P2));
+                            vB += mB * (p1 + p2);
+                            wB += iB * (MathUtils.Cross(cp1.RB, p1) + MathUtils.Cross(cp2.RB, p2));
 
                             // Accumulate
                             cp1.NormalImpulse = x.X;
@@ -565,7 +565,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                         x.X = -cp1.NormalMass * b.X;
                         x.Y = 0.0f;
                         vn1 = 0.0f;
-                        vn2 = vc.K.ex.Y * x.X + b.Y;
+                        vn2 = vc.K.Ex.Y * x.X + b.Y;
 
                         if (x.X >= 0.0f && vn2 >= 0.0f)
                         {
@@ -573,13 +573,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                             Vector2 d = x - a;
 
                             // Apply incremental impulse
-                            Vector2 P1 = d.X * normal;
-                            Vector2 P2 = d.Y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (MathUtils.Cross(cp1.rA, P1) + MathUtils.Cross(cp2.rA, P2));
+                            Vector2 p1 = d.X * normal;
+                            Vector2 p2 = d.Y * normal;
+                            vA -= mA * (p1 + p2);
+                            wA -= iA * (MathUtils.Cross(cp1.RA, p1) + MathUtils.Cross(cp2.RA, p2));
 
-                            vB += mB * (P1 + P2);
-                            wB += iB * (MathUtils.Cross(cp1.rB, P1) + MathUtils.Cross(cp2.rB, P2));
+                            vB += mB * (p1 + p2);
+                            wB += iB * (MathUtils.Cross(cp1.RB, p1) + MathUtils.Cross(cp2.RB, p2));
 
                             // Accumulate
                             cp1.NormalImpulse = x.X;
@@ -605,7 +605,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                         //
                         x.X = 0.0f;
                         x.Y = -cp2.NormalMass * b.Y;
-                        vn1 = vc.K.ey.X * x.Y + b.X;
+                        vn1 = vc.K.Ey.X * x.Y + b.X;
                         vn2 = 0.0f;
 
                         if (x.Y >= 0.0f && vn1 >= 0.0f)
@@ -614,13 +614,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                             Vector2 d = x - a;
 
                             // Apply incremental impulse
-                            Vector2 P1 = d.X * normal;
-                            Vector2 P2 = d.Y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (MathUtils.Cross(cp1.rA, P1) + MathUtils.Cross(cp2.rA, P2));
+                            Vector2 p1 = d.X * normal;
+                            Vector2 p2 = d.Y * normal;
+                            vA -= mA * (p1 + p2);
+                            wA -= iA * (MathUtils.Cross(cp1.RA, p1) + MathUtils.Cross(cp2.RA, p2));
 
-                            vB += mB * (P1 + P2);
-                            wB += iB * (MathUtils.Cross(cp1.rB, P1) + MathUtils.Cross(cp2.rB, P2));
+                            vB += mB * (p1 + p2);
+                            wB += iB * (MathUtils.Cross(cp1.RB, p1) + MathUtils.Cross(cp2.RB, p2));
 
                             // Accumulate
                             cp1.NormalImpulse = x.X;
@@ -654,13 +654,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                             Vector2 d = x - a;
 
                             // Apply incremental impulse
-                            Vector2 P1 = d.X * normal;
-                            Vector2 P2 = d.Y * normal;
-                            vA -= mA * (P1 + P2);
-                            wA -= iA * (MathUtils.Cross(cp1.rA, P1) + MathUtils.Cross(cp2.rA, P2));
+                            Vector2 p1 = d.X * normal;
+                            Vector2 p2 = d.Y * normal;
+                            vA -= mA * (p1 + p2);
+                            wA -= iA * (MathUtils.Cross(cp1.RA, p1) + MathUtils.Cross(cp2.RA, p2));
 
-                            vB += mB * (P1 + P2);
-                            wB += iB * (MathUtils.Cross(cp1.rB, P1) + MathUtils.Cross(cp2.rB, P2));
+                            vB += mB * (p1 + p2);
+                            wB += iB * (MathUtils.Cross(cp1.RB, p1) + MathUtils.Cross(cp2.RB, p2));
 
                             // Accumulate
                             cp1.NormalImpulse = x.X;
@@ -672,10 +672,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     }
                 }
 
-                _velocities[indexA].V = vA;
-                _velocities[indexA].W = wA;
-                _velocities[indexB].V = vB;
-                _velocities[indexB].W = wB;
+                velocities[indexA].V = vA;
+                velocities[indexA].W = wA;
+                velocities[indexB].V = vB;
+                velocities[indexB].W = wB;
             }
         }
 
@@ -684,10 +684,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// </summary>
         public void StoreImpulses()
         {
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0; i < count; ++i)
             {
                 ContactVelocityConstraint vc = VelocityConstraints[i];
-                Manifold manifold = _contacts[vc.ContactIndex].Manifold;
+                Manifold manifold = contacts[vc.ContactIndex].Manifold;
 
                 for (int j = 0; j < vc.PointCount; ++j)
                 {
@@ -697,7 +697,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     manifold.Points[j] = point;
                 }
 
-                _contacts[vc.ContactIndex].Manifold = manifold;
+                contacts[vc.ContactIndex].Manifold = manifold;
             }
         }
 
@@ -709,35 +709,35 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         {
             float minSeparation = 0.0f;
 
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0; i < count; ++i)
             {
-                ContactPositionConstraint pc = _positionConstraints[i];
+                ContactPositionConstraint pc = positionConstraints[i];
 
                 int indexA = pc.IndexA;
                 int indexB = pc.IndexB;
                 Vector2 localCenterA = pc.LocalCenterA;
                 float mA = pc.InvMassA;
-                float iA = pc.InvIA;
+                float iA = pc.InvIa;
                 Vector2 localCenterB = pc.LocalCenterB;
                 float mB = pc.InvMassB;
-                float iB = pc.InvIB;
+                float iB = pc.InvIb;
                 int pointCount = pc.PointCount;
 
-                Vector2 cA = _positions[indexA].C;
-                float aA = _positions[indexA].A;
+                Vector2 cA = positions[indexA].C;
+                float aA = positions[indexA].A;
 
-                Vector2 cB = _positions[indexB].C;
-                float aB = _positions[indexB].A;
+                Vector2 cB = positions[indexB].C;
+                float aB = positions[indexB].A;
 
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
                     Transform xfA = new Transform();
                     Transform xfB = new Transform();
-                    xfA.q.Set(aA);
-                    xfB.q.Set(aB);
-                    xfA.p = cA - MathUtils.Mul(xfA.q, localCenterA);
-                    xfB.p = cB - MathUtils.Mul(xfB.q, localCenterB);
+                    xfA.Q.Set(aA);
+                    xfB.Q.Set(aB);
+                    xfA.P = cA - MathUtils.Mul(xfA.Q, localCenterA);
+                    xfB.P = cB - MathUtils.Mul(xfB.Q, localCenterB);
 
                     PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2 normal, out Vector2 point,
                         out float separation);
@@ -749,31 +749,31 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = MathUtils.Clamp(Settings.Baumgarte * (separation + Settings.LinearSlop),
+                    float c = MathUtils.Clamp(Settings.Baumgarte * (separation + Settings.LinearSlop),
                         -Settings.MaxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
                     float rnA = MathUtils.Cross(rA, normal);
                     float rnB = MathUtils.Cross(rB, normal);
-                    float K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+                    float k = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
                     // Compute normal impulse
-                    float impulse = K > 0.0f ? -C / K : 0.0f;
+                    float impulse = k > 0.0f ? -c / k : 0.0f;
 
-                    Vector2 P = impulse * normal;
+                    Vector2 p = impulse * normal;
 
-                    cA -= mA * P;
-                    aA -= iA * MathUtils.Cross(rA, P);
+                    cA -= mA * p;
+                    aA -= iA * MathUtils.Cross(rA, p);
 
-                    cB += mB * P;
-                    aB += iB * MathUtils.Cross(rB, P);
+                    cB += mB * p;
+                    aB += iB * MathUtils.Cross(rB, p);
                 }
 
-                _positions[indexA].C = cA;
-                _positions[indexA].A = aA;
+                positions[indexA].C = cA;
+                positions[indexA].A = aA;
 
-                _positions[indexB].C = cB;
-                _positions[indexB].A = aB;
+                positions[indexB].C = cB;
+                positions[indexB].A = aB;
             }
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't
@@ -788,13 +788,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
         /// <returns>The bool</returns>
-        public bool SolveTOIPositionConstraints(int toiIndexA, int toiIndexB)
+        public bool SolveToiPositionConstraints(int toiIndexA, int toiIndexB)
         {
             float minSeparation = 0.0f;
 
-            for (int i = 0; i < _count; ++i)
+            for (int i = 0; i < count; ++i)
             {
-                ContactPositionConstraint pc = _positionConstraints[i];
+                ContactPositionConstraint pc = positionConstraints[i];
 
                 int indexA = pc.IndexA;
                 int indexB = pc.IndexB;
@@ -807,7 +807,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 if (indexA == toiIndexA || indexA == toiIndexB)
                 {
                     mA = pc.InvMassA;
-                    iA = pc.InvIA;
+                    iA = pc.InvIa;
                 }
 
                 float mB = 0.0f;
@@ -815,24 +815,24 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 if (indexB == toiIndexA || indexB == toiIndexB)
                 {
                     mB = pc.InvMassB;
-                    iB = pc.InvIB;
+                    iB = pc.InvIb;
                 }
 
-                Vector2 cA = _positions[indexA].C;
-                float aA = _positions[indexA].A;
+                Vector2 cA = positions[indexA].C;
+                float aA = positions[indexA].A;
 
-                Vector2 cB = _positions[indexB].C;
-                float aB = _positions[indexB].A;
+                Vector2 cB = positions[indexB].C;
+                float aB = positions[indexB].A;
 
                 // Solve normal constraints
                 for (int j = 0; j < pointCount; ++j)
                 {
                     Transform xfA = new Transform();
                     Transform xfB = new Transform();
-                    xfA.q.Set(aA);
-                    xfB.q.Set(aB);
-                    xfA.p = cA - MathUtils.Mul(xfA.q, localCenterA);
-                    xfB.p = cB - MathUtils.Mul(xfB.q, localCenterB);
+                    xfA.Q.Set(aA);
+                    xfB.Q.Set(aB);
+                    xfA.P = cA - MathUtils.Mul(xfA.Q, localCenterA);
+                    xfB.P = cB - MathUtils.Mul(xfB.Q, localCenterB);
 
                     PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2 normal, out Vector2 point,
                         out float separation);
@@ -844,31 +844,31 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = MathUtils.Clamp(Settings.ToiBaumgarte * (separation + Settings.LinearSlop),
+                    float c = MathUtils.Clamp(Settings.ToiBaumgarte * (separation + Settings.LinearSlop),
                         -Settings.MaxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
                     float rnA = MathUtils.Cross(rA, normal);
                     float rnB = MathUtils.Cross(rB, normal);
-                    float K = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
+                    float k = mA + mB + iA * rnA * rnA + iB * rnB * rnB;
 
                     // Compute normal impulse
-                    float impulse = K > 0.0f ? -C / K : 0.0f;
+                    float impulse = k > 0.0f ? -c / k : 0.0f;
 
-                    Vector2 P = impulse * normal;
+                    Vector2 p = impulse * normal;
 
-                    cA -= mA * P;
-                    aA -= iA * MathUtils.Cross(rA, P);
+                    cA -= mA * p;
+                    aA -= iA * MathUtils.Cross(rA, p);
 
-                    cB += mB * P;
-                    aB += iB * MathUtils.Cross(rB, P);
+                    cB += mB * p;
+                    aB += iB * MathUtils.Cross(rB, p);
                 }
 
-                _positions[indexA].C = cA;
-                _positions[indexA].A = aA;
+                positions[indexA].C = cA;
+                positions[indexA].A = aA;
 
-                _positions[indexB].C = cB;
-                _positions[indexB].A = aB;
+                positions[indexB].C = cB;
+                positions[indexB].A = aB;
             }
 
             // We can't expect minSpeparation >= -b2_linearSlop because we don't

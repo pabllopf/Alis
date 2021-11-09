@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The general interface
     /// </summary>
-    public interface IGeneral<Builder, Argument>
+    public interface IGeneral<TBuilder, TArgument>
     {
         /// <summary>
         ///     Generals the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public Builder General(Argument value);
+        public TBuilder General(TArgument value);
     }
 }

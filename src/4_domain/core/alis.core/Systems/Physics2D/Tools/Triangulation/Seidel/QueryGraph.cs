@@ -41,20 +41,20 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <summary>
         ///     The head
         /// </summary>
-        private Node _head;
+        private Node head;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="QueryGraph" /> class
         /// </summary>
         /// <param name="head">The head</param>
-        public QueryGraph(Node head) => _head = head;
+        public QueryGraph(Node head) => this.head = head;
 
         /// <summary>
         ///     Locates the edge
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <returns>The trapezoid</returns>
-        private Trapezoid Locate(Edge edge) => _head.Locate(edge).Trapezoid;
+        private Trapezoid Locate(Edge edge) => head.Locate(edge).Trapezoid;
 
         /// <summary>
         ///     Follows the edge using the specified edge
@@ -93,7 +93,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         {
             if (sink.ParentList.Count == 0)
             {
-                _head = node;
+                head = node;
             }
             else
             {

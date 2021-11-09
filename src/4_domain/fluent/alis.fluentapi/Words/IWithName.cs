@@ -30,13 +30,13 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>Define the word "Name" </summary>
-    /// <typeparam name="Builder">The type of the uilder.</typeparam>
-    /// <typeparam name="Argument">The type of the rgument.</typeparam>
-    public interface IWithName<Builder, Argument>
+    /// <typeparam name="TBuilder">The type of the uilder.</typeparam>
+    /// <typeparam name="TArgument">The type of the rgument.</typeparam>
+    public interface IWithName<TBuilder, TArgument>
     {
         /// <summary>Withes the name.</summary>
         /// <param name="value">The value.</param>
         /// <returns>Return the value that you want.</returns>
-        public Builder WithName(Argument value);
+        public TBuilder WithName(TArgument value);
     }
 }

@@ -49,9 +49,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
         public Vector2 W;
 
         /// <summary>Support point in proxyA</summary>
-        public Vector2 WA;
+        public Vector2 Wa;
 
         /// <summary>Support point in proxyB</summary>
-        public Vector2 WB;
+        public Vector2 Wb;
     }
 }

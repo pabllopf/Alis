@@ -65,8 +65,8 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             Vertices vertices = CreateRectangle(hx, hy);
 
             Transform xf = new Transform();
-            xf.p = center;
-            xf.q.Set(angle);
+            xf.P = center;
+            xf.Q.Set(angle);
 
             // Transform vertices
             for (int i = 0; i < 4; ++i)

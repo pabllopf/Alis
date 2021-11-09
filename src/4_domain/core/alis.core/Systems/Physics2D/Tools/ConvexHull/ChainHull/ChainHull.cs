@@ -45,7 +45,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull.ChainHull
         /// <summary>
         ///     The point comparer
         /// </summary>
-        private static readonly PointComparer _pointComparerPrivate = new PointComparer();
+        private static readonly PointComparer PointComparerPrivate = new PointComparer();
 
         /// <summary>Returns the convex hull from the given vertices..</summary>
         public static Vertices GetConvexHull(Vertices vertices)
@@ -58,7 +58,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull.ChainHull
             Vertices pointSet = new Vertices(vertices);
 
             //Sort by X-axis
-            pointSet.Sort(_pointComparerPrivate);
+            pointSet.Sort(PointComparerPrivate);
 
             Vector2[] h = new Vector2[pointSet.Count];
             Vertices res;

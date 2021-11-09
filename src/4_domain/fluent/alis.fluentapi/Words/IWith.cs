@@ -32,14 +32,14 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     Simple comment
     /// </summary>
-    /// <typeparam name="Builder">the builder</typeparam>
-    /// <typeparam name="Type">the type</typeparam>
-    /// <typeparam name="Argument">the argument</typeparam>
-    public interface IWith<Builder, Type, Argument>
+    /// <typeparam name="TBuilder">the builder</typeparam>
+    /// <typeparam name="TYpe">the type</typeparam>
+    /// <typeparam name="TArgument">the argument</typeparam>
+    public interface IWith<TBuilder, TYpe, TArgument>
     {
         /// <summary>Withes the specified value.</summary>
         /// <param name="value">The value.</param>
         /// <returns>Return that you want.</returns>
-        public Builder With<T>(Argument value) where T : Type;
+        public TBuilder With<T>(TArgument value) where T : TYpe;
     }
 }

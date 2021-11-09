@@ -60,7 +60,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
         /// <summary>
         ///     Gets or sets the value of the triangulatable
         /// </summary>
-        public Triangulatable Triangulatable { get; private set; }
+        public ITriangulatable Triangulatable { get; private set; }
 
         /// <summary>
         ///     Gets or sets the value of the terminated
@@ -89,7 +89,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
         ///     Prepares the triangulation using the specified t
         /// </summary>
         /// <param name="t">The </param>
-        public virtual void PrepareTriangulation(Triangulatable t)
+        public virtual void PrepareTriangulation(ITriangulatable t)
         {
             Triangulatable = t;
             TriangulationMode = t.TriangulationMode;

@@ -41,34 +41,34 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <summary>
         ///     The convex points
         /// </summary>
-        private readonly HashSet<Point> _convexPoints;
+        private readonly HashSet<Point> convexPoints;
 
         // Monotone mountain points
         /// <summary>
         ///     The mono poly
         /// </summary>
-        private readonly List<Point> _monoPoly;
+        private readonly List<Point> monoPoly;
 
         /// <summary>
         ///     The head
         /// </summary>
-        private Point _head;
+        private Point head;
 
         // Used to track which side of the line we are on
         /// <summary>
         ///     The positive
         /// </summary>
-        private bool _positive;
+        private bool positive;
 
         /// <summary>
         ///     The size
         /// </summary>
-        private int _size;
+        private int size;
 
         /// <summary>
         ///     The tail
         /// </summary>
-        private Point _tail;
+        private Point tail;
 
         // Triangles that constitute the mountain
         /// <summary>
@@ -81,12 +81,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         public MonotoneMountain()
         {
-            _size = 0;
-            _tail = null;
-            _head = null;
-            _positive = false;
-            _convexPoints = new HashSet<Point>();
-            _monoPoly = new List<Point>();
+            size = 0;
+            tail = null;
+            head = null;
+            positive = false;
+            convexPoints = new HashSet<Point>();
+            monoPoly = new List<Point>();
             Triangles = new List<List<Point>>();
         }
 
@@ -103,26 +103,26 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <param name="point">The point</param>
         public void Add(Point point)
         {
-            if (_size == 0)
+            if (size == 0)
             {
-                _head = point;
-                _size = 1;
+                head = point;
+                size = 1;
             }
-            else if (_size == 1)
+            else if (size == 1)
             {
                 // Keep repeat points out of the list
-                _tail = point;
-                _tail.Prev = _head;
-                _head.Next = _tail;
-                _size = 2;
+                tail = point;
+                tail.Prev = head;
+                head.Next = tail;
+                size = 2;
             }
             else
             {
                 // Keep repeat points out of the list
-                _tail.Next = point;
-                point.Prev = _tail;
-                _tail = point;
-                _size += 1;
+                tail.Next = point;
+                point.Prev = tail;
+                tail = point;
+                size += 1;
             }
         }
 
@@ -137,7 +137,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
             Point prev = point.Prev;
             point.Prev.Next = next;
             point.Next.Prev = prev;
-            _size -= 1;
+            size -= 1;
         }
 
         // Partition a x-monotone mountain into triangles O(n)
@@ -148,15 +148,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         public void Process()
         {
             // Establish the proper sign
-            _positive = AngleSign();
+            positive = AngleSign();
 
             // create monotone polygon - for dubug purposes
             GenMonoPoly();
 
             // Initialize internal angles at each nonbase vertex
             // Link strictly convex vertices into a list, ignore reflex vertices
-            Point p = _head.Next;
-            while (p.Neq(_tail))
+            Point p = head.Next;
+            while (p.Neq(tail))
             {
                 float a = Angle(p);
 
@@ -167,7 +167,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
                 }
                 else if (IsConvex(p))
                 {
-                    _convexPoints.Add(p);
+                    convexPoints.Add(p);
                 }
 
                 p = p.Next;
@@ -181,14 +181,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         private void Triangulate()
         {
-            while (_convexPoints.Count != 0)
+            while (convexPoints.Count != 0)
             {
-                using (IEnumerator<Point> e = _convexPoints.GetEnumerator())
+                using (IEnumerator<Point> e = convexPoints.GetEnumerator())
                 {
                     e.MoveNext();
                     Point ear = e.Current;
 
-                    _convexPoints.Remove(ear);
+                    convexPoints.Remove(ear);
                     Point a = ear.Prev;
                     Point b = ear;
                     Point c = ear.Next;
@@ -203,17 +203,17 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
                     Remove(ear);
                     if (Valid(a))
                     {
-                        _convexPoints.Add(a);
+                        convexPoints.Add(a);
                     }
 
                     if (Valid(c))
                     {
-                        _convexPoints.Add(c);
+                        convexPoints.Add(c);
                     }
                 }
             }
 
-            Debug.Assert(_size <= 3, "Triangulation bug, please report");
+            Debug.Assert(size <= 3, "Triangulation bug, please report");
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        private bool Valid(Point p) => p.Neq(_head) && p.Neq(_tail) && IsConvex(p);
+        private bool Valid(Point p) => p.Neq(head) && p.Neq(tail) && IsConvex(p);
 
         // Create the monotone polygon
         /// <summary>
@@ -229,10 +229,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         private void GenMonoPoly()
         {
-            Point p = _head;
+            Point p = head;
             while (p != null)
             {
-                _monoPoly.Add(p);
+                monoPoly.Add(p);
                 p = p.Next;
             }
         }
@@ -255,8 +255,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <returns>The bool</returns>
         private bool AngleSign()
         {
-            Point a = _head.Next - _head;
-            Point b = _tail - _head;
+            Point a = head.Next - head;
+            Point b = tail - head;
             return Math.Atan2(a.Cross(b), a.Dot(b)) >= 0;
         }
 
@@ -268,7 +268,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <returns>The bool</returns>
         private bool IsConvex(Point p)
         {
-            if (_positive != Angle(p) >= 0)
+            if (positive != Angle(p) >= 0)
             {
                 return false;
             }

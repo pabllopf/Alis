@@ -38,7 +38,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <summary>
         ///     The edge
         /// </summary>
-        private readonly Edge _edge;
+        private readonly Edge edge;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="YNode" /> class
@@ -48,7 +48,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <param name="rChild">The child</param>
         public YNode(Edge edge, Node lChild, Node rChild)
             : base(lChild, rChild) =>
-            _edge = edge;
+            this.edge = edge;
 
         /// <summary>
         ///     Locates the edge
@@ -57,18 +57,18 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <returns>The sink</returns>
         public override Sink Locate(Edge edge)
         {
-            if (_edge.IsAbove(edge.P))
+            if (this.edge.IsAbove(edge.P))
             {
                 return RightChild.Locate(edge); // Move down the graph
             }
 
-            if (_edge.IsBelow(edge.P))
+            if (this.edge.IsBelow(edge.P))
             {
                 return LeftChild.Locate(edge); // Move up the graph
             }
 
             // s and segment share the same endpoint, p
-            if (edge.Slope < _edge.Slope)
+            if (edge.Slope < this.edge.Slope)
             {
                 return RightChild.Locate(edge); // Move down the graph
             }

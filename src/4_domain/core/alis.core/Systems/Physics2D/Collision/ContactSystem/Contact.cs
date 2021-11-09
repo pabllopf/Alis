@@ -48,12 +48,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     The fixture
         /// </summary>
-        private Fixture _fixtureA;
+        private Fixture fixtureA;
 
         /// <summary>
         ///     The fixture
         /// </summary>
-        private Fixture _fixtureB;
+        private Fixture fixtureB;
 
         //private bool _initialized;
 
@@ -65,27 +65,27 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     The friction
         /// </summary>
-        private float _friction;
+        private float friction;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexA;
+        private int indexA;
 
         /// <summary>
         ///     The index
         /// </summary>
-        private int _indexB;
+        private int indexB;
 
         /// <summary>
         ///     The manifold
         /// </summary>
-        private Manifold _manifold;
+        private Manifold manifold;
 
         /// <summary>
         ///     The next
         /// </summary>
-        private Contact _next;
+        private Contact next;
 
         // Nodes for connecting bodies.
 
@@ -103,22 +103,22 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     The prev
         /// </summary>
-        private Contact _prev;
+        private Contact prev;
 
         /// <summary>
         ///     The restitution
         /// </summary>
-        private float _restitution;
+        private float restitution;
 
         /// <summary>
         ///     The restitution threshold
         /// </summary>
-        private float _restitutionThreshold;
+        private float restitutionThreshold;
 
         /// <summary>
         ///     The tangent speed
         /// </summary>
-        private float _tangentSpeed;
+        private float tangentSpeed;
 
         /// <summary>
         ///     The toi
@@ -133,7 +133,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     The type
         /// </summary>
-        private ContactType _type;
+        private ContactType type;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Contact" /> class
@@ -150,8 +150,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>Get the contact manifold. Do not modify the manifold unless you understand the internals of Box2D.</summary>
         public Manifold Manifold
         {
-            get => _manifold;
-            set { _manifold = value; }
+            get => manifold;
+            set { manifold = value; }
         }
 
         /// <summary>
@@ -159,8 +159,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// </summary>
         public float Friction
         {
-            get => _friction;
-            set => _friction = value;
+            get => friction;
+            set => friction = value;
         }
 
         /// <summary>
@@ -168,8 +168,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// </summary>
         public float Restitution
         {
-            get => _restitution;
-            set => _restitution = value;
+            get => restitution;
+            set => restitution = value;
         }
 
         /// <summary>
@@ -177,15 +177,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// </summary>
         public float RestitutionThreshold
         {
-            get => _restitutionThreshold;
-            set => _restitutionThreshold = value;
+            get => restitutionThreshold;
+            set => restitutionThreshold = value;
         }
 
         /// <summary>Get or set the desired tangent speed for a conveyor belt behavior. In meters per second.</summary>
         public float TangentSpeed
         {
-            get => _tangentSpeed;
-            set => _tangentSpeed = value;
+            get => tangentSpeed;
+            set => tangentSpeed = value;
         }
 
         /// <summary>
@@ -193,8 +193,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// </summary>
         public Fixture FixtureA
         {
-            get => _fixtureA;
-            set { _fixtureA = value; }
+            get => fixtureA;
+            set { fixtureA = value; }
         }
 
         /// <summary>
@@ -202,24 +202,24 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// </summary>
         public Fixture FixtureB
         {
-            get => _fixtureB;
-            set { _fixtureB = value; }
+            get => fixtureB;
+            set { fixtureB = value; }
         }
 
         /// <summary>Get the child primitive index for fixture A.</summary>
         /// <value>The child index A.</value>
         public int ChildIndexA
         {
-            get => _indexA;
-            set { _indexA = value; }
+            get => indexA;
+            set { indexA = value; }
         }
 
         /// <summary>Get the child primitive index for fixture B.</summary>
         /// <value>The child index B.</value>
         public int ChildIndexB
         {
-            get => _indexB;
-            set { _indexB = value; }
+            get => indexB;
+            set { indexB = value; }
         }
 
         /// <summary>
@@ -247,8 +247,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// </summary>
         public Contact Next
         {
-            get => _next;
-            set { _next = value; }
+            get => next;
+            set { next = value; }
         }
 
         /// <summary>
@@ -256,8 +256,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// </summary>
         public Contact Previous
         {
-            get => _prev;
-            set { _prev = value; }
+            get => prev;
+            set { prev = value; }
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the toi flag
         /// </summary>
-        internal bool TOIFlag => (Flags & ContactFlags.TOIFlag) == ContactFlags.TOIFlag;
+        internal bool ToiFlag => (Flags & ContactFlags.ToiFlag) == ContactFlags.ToiFlag;
 
         /// <summary>
         ///     Gets the value of the filter flag
@@ -283,12 +283,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     The edge shape
         /// </summary>
-        private static readonly EdgeShape _edge = new EdgeShape();
+        private static readonly EdgeShape Edge = new EdgeShape();
 
         /// <summary>
         ///     The not supported
         /// </summary>
-        private static readonly ContactType[,] _registers =
+        private static readonly ContactType[,] Registers =
         {
             {
                 ContactType.Circle,
@@ -356,7 +356,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             Shape shapeA = FixtureA.Shape;
             Shape shapeB = FixtureB.Shape;
 
-            WorldManifold.Initialize(ref _manifold, ref bodyA._xf, shapeA._radiusPrivate, ref bodyB._xf, shapeB._radiusPrivate,
+            WorldManifold.Initialize(ref manifold, ref bodyA.Xf, shapeA.RadiusPrivate, ref bodyB.Xf, shapeB.RadiusPrivate,
                 out normal, out points, out _);
         }
 
@@ -377,7 +377,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             ChildIndexA = indexA;
             ChildIndexB = indexB;
 
-            _manifold.PointCount = 0;
+            manifold.PointCount = 0;
 
             Previous = null;
             Next = null;
@@ -397,10 +397,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             //Velcro: We only set the friction and restitution if we are not resetting the contact
             if (FixtureA != null && FixtureB != null)
             {
-                Friction = Settings.MixFriction(FixtureA._frictionprivate, FixtureB._frictionprivate);
-                Restitution = Settings.MixRestitution(FixtureA._restitutionprivate, FixtureB._restitutionprivate);
+                Friction = Settings.MixFriction(FixtureA.Frictionprivate, FixtureB.Frictionprivate);
+                Restitution = Settings.MixRestitution(FixtureA.Restitutionprivate, FixtureB.Restitutionprivate);
                 RestitutionThreshold =
-                    Settings.MixRestitutionThreshold(FixtureA._restitutionThresholdPrivate, FixtureB._restitutionThresholdPrivate);
+                    Settings.MixRestitutionThreshold(FixtureA.RestitutionThresholdPrivate, FixtureB.RestitutionThresholdPrivate);
             }
 
             TangentSpeed = 0;
@@ -432,8 +432,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;
 
-            Transform xfA = bodyA._xf;
-            Transform xfB = bodyB._xf;
+            Transform xfA = bodyA.Xf;
+            Transform xfB = bodyB.Xf;
 
             // Is this contact a sensor?
             if (sensor)
@@ -443,11 +443,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 touching = Narrowphase.Collision.TestOverlap(shapeA, ChildIndexA, shapeB, ChildIndexB, ref xfA, ref xfB);
 
                 // Sensors don't generate manifolds.
-                _manifold.PointCount = 0;
+                manifold.PointCount = 0;
             }
             else
             {
-                Evaluate(ref _manifold, ref xfA, ref xfB);
+                Evaluate(ref manifold, ref xfA, ref xfB);
                 touching = Manifold.PointCount > 0;
 
                 // Match old contact ids to new contact ids and copy the
@@ -471,7 +471,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                         }
                     }
 
-                    _manifold.Points[i] = mp2;
+                    manifold.Points[i] = mp2;
                 }
 
                 if (touching != wasTouching)
@@ -537,7 +537,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <param name="transformB">The second transform.</param>
         private void Evaluate(ref Manifold manifold, ref Transform transformA, ref Transform transformB)
         {
-            switch (_type)
+            switch (type)
             {
                 case ContactType.Polygon:
                     CollidePolygon.CollidePolygons(ref manifold, (PolygonShape) FixtureA.Shape, ref transformA,
@@ -557,14 +557,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                     break;
                 case ContactType.ChainAndCircle:
                     ChainShape chain = (ChainShape) FixtureA.Shape;
-                    chain.GetChildEdge(_edge, ChildIndexA);
-                    CollideEdge.CollideEdgeAndCircle(ref manifold, _edge, ref transformA, (CircleShape) FixtureB.Shape,
+                    chain.GetChildEdge(Edge, ChildIndexA);
+                    CollideEdge.CollideEdgeAndCircle(ref manifold, Edge, ref transformA, (CircleShape) FixtureB.Shape,
                         ref transformB);
                     break;
                 case ContactType.ChainAndPolygon:
                     ChainShape loop2 = (ChainShape) FixtureA.Shape;
-                    loop2.GetChildEdge(_edge, ChildIndexA);
-                    CollideEdge.CollideEdgeAndPolygon(ref manifold, _edge, ref transformA,
+                    loop2.GetChildEdge(Edge, ChildIndexA);
+                    CollideEdge.CollideEdgeAndPolygon(ref manifold, Edge, ref transformA,
                         (PolygonShape) FixtureB.Shape, ref transformB);
                     break;
                 case ContactType.Circle:
@@ -593,7 +593,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             Debug.Assert(ShapeType.Unknown < type2 && type2 < ShapeType.TypeCount);
 
             Contact c;
-            Queue<Contact> pool = fixtureA.Body._world.ContactPool;
+            Queue<Contact> pool = fixtureA.Body.World.ContactPool;
             if (pool.Count > 0)
             {
                 c = pool.Dequeue();
@@ -621,7 +621,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 }
             }
 
-            c._type = _registers[(int) type1, (int) type2];
+            c.type = Registers[(int) type1, (int) type2];
 
             return c;
         }
@@ -648,7 +648,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             //Debug.Assert(0 <= typeA && typeA < b2Shape::e_typeCount);
             //Debug.Assert(0 <= typeB && typeB < b2Shape::e_typeCount);
 
-            FixtureA._bodyprivate._world.ContactPool.Enqueue(this);
+            FixtureA.Bodyprivate.World.ContactPool.Enqueue(this);
 
             Reset(null, 0, null, 0);
         }

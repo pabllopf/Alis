@@ -160,82 +160,82 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <summary>
         ///     The angular sleep tolerance
         /// </summary>
-        private readonly float _angTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
+        private readonly float angTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
 
         /// <summary>
         ///     The contact solver
         /// </summary>
-        private readonly ContactSolver _contactSolver = new ContactSolver();
+        private readonly ContactSolver contactSolver = new ContactSolver();
 
         /// <summary>
         ///     The linear sleep tolerance
         /// </summary>
-        private readonly float _linTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
+        private readonly float linTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
 
         /// <summary>
         ///     The stopwatch
         /// </summary>
-        private readonly Stopwatch _timer = new Stopwatch();
+        private readonly Stopwatch timer = new Stopwatch();
 
         /// <summary>
         ///     The bodies
         /// </summary>
-        internal Body[] _bodies;
+        internal Body[] Bodies;
 
         /// <summary>
         ///     The body capacity
         /// </summary>
-        internal int _bodyCapacity;
+        internal int BodyCapacity;
 
         /// <summary>
         ///     The body count
         /// </summary>
-        internal int _bodyCount;
+        internal int BodyCount;
 
         /// <summary>
         ///     The contact capacity
         /// </summary>
-        internal int _contactCapacity;
+        internal int ContactCapacity;
 
         /// <summary>
         ///     The contact count
         /// </summary>
-        internal int _contactCount;
+        internal int ContactCount;
 
         /// <summary>
         ///     The contact manager
         /// </summary>
-        private ContactManager _contactManager;
+        private ContactManager contactManager;
 
         /// <summary>
         ///     The contacts
         /// </summary>
-        private Contact[] _contacts;
+        private Contact[] contacts;
 
         /// <summary>
         ///     The joint capacity
         /// </summary>
-        private int _jointCapacity;
+        private int jointCapacity;
 
         /// <summary>
         ///     The joint count
         /// </summary>
-        private int _jointCount;
+        private int jointCount;
 
         /// <summary>
         ///     The joints
         /// </summary>
-        private Joint[] _joints;
+        private Joint[] joints;
 
         /// <summary>
         ///     The positions
         /// </summary>
-        private Position[] _positions;
+        private Position[] positions;
 
         /// <summary>
         ///     The velocities
         /// </summary>
-        private Velocity[] _velocities;
+        private Velocity[] velocities;
 
         /// <summary>
         ///     Resets the body capacity
@@ -246,30 +246,30 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <param name="contactManager">The contact manager</param>
         public void Reset(int bodyCapacity, int contactCapacity, int jointCapacity, ContactManager contactManager)
         {
-            _bodyCapacity = bodyCapacity;
-            _contactCapacity = contactCapacity;
-            _jointCapacity = jointCapacity;
-            _bodyCount = 0;
-            _contactCount = 0;
-            _jointCount = 0;
+            BodyCapacity = bodyCapacity;
+            ContactCapacity = contactCapacity;
+            this.jointCapacity = jointCapacity;
+            BodyCount = 0;
+            ContactCount = 0;
+            jointCount = 0;
 
-            _contactManager = contactManager;
+            this.contactManager = contactManager;
 
-            if (_bodies == null || _bodies.Length < bodyCapacity)
+            if (Bodies == null || Bodies.Length < bodyCapacity)
             {
-                _bodies = new Body[bodyCapacity];
-                _velocities = new Velocity[bodyCapacity];
-                _positions = new Position[bodyCapacity];
+                Bodies = new Body[bodyCapacity];
+                velocities = new Velocity[bodyCapacity];
+                positions = new Position[bodyCapacity];
             }
 
-            if (_contacts == null || _contacts.Length < contactCapacity)
+            if (contacts == null || contacts.Length < contactCapacity)
             {
-                _contacts = new Contact[contactCapacity * 2];
+                contacts = new Contact[contactCapacity * 2];
             }
 
-            if (_joints == null || _joints.Length < jointCapacity)
+            if (joints == null || joints.Length < jointCapacity)
             {
-                _joints = new Joint[jointCapacity * 2];
+                joints = new Joint[jointCapacity * 2];
             }
         }
 
@@ -278,9 +278,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// </summary>
         public void Clear()
         {
-            _bodyCount = 0;
-            _contactCount = 0;
-            _jointCount = 0;
+            BodyCount = 0;
+            ContactCount = 0;
+            jointCount = 0;
         }
 
         /// <summary>
@@ -295,9 +295,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             float h = step.DeltaTime;
 
             // Integrate velocities and apply damping. Initialize the body state.
-            for (int i = 0; i < _bodyCount; ++i)
+            for (int i = 0; i < BodyCount; ++i)
             {
-                Body b = _bodies[i];
+                Body b = Bodies[i];
 
                 Vector2 c = b.Sweep.C;
                 float a = b.Sweep.A;
@@ -325,46 +325,46 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     w *= MathUtils.Clamp(1.0f - h * b.AngularDamping, 0.0f, 1.0f);
                 }
 
-                _positions[i].C = c;
-                _positions[i].A = a;
-                _velocities[i].V = v;
-                _velocities[i].W = w;
+                positions[i].C = c;
+                positions[i].A = a;
+                velocities[i].V = v;
+                velocities[i].W = w;
             }
 
-            _timer.Restart();
+            timer.Restart();
 
             // Solver data
             SolverData solverData = new SolverData();
             solverData.Step = step;
-            solverData.Positions = _positions;
-            solverData.Velocities = _velocities;
+            solverData.Positions = positions;
+            solverData.Velocities = velocities;
 
             //Velcro: We reduce the amount of garbage by reusing the contactsolver and only resetting the state
-            _contactSolver.Reset(step, _contactCount, _contacts, _positions, _velocities);
-            _contactSolver.InitializeVelocityConstraints();
+            contactSolver.Reset(step, ContactCount, contacts, positions, velocities);
+            contactSolver.InitializeVelocityConstraints();
 
             if (step.WarmStarting)
             {
-                _contactSolver.WarmStart();
+                contactSolver.WarmStart();
             }
 
-            for (int i = 0; i < _jointCount; ++i)
+            for (int i = 0; i < jointCount; ++i)
             {
-                if (_joints[i].Enabled)
+                if (joints[i].Enabled)
                 {
-                    _joints[i].InitVelocityConstraints(ref solverData);
+                    joints[i].InitVelocityConstraints(ref solverData);
                 }
             }
 
-            profile.SolveInit = _timer.ElapsedTicks;
+            profile.SolveInit = timer.ElapsedTicks;
 
             // Solve velocity constraints.
-            _timer.Restart();
+            timer.Restart();
             for (int i = 0; i < step.VelocityIterations; ++i)
             {
-                for (int j = 0; j < _jointCount; ++j)
+                for (int j = 0; j < jointCount; ++j)
                 {
-                    Joint joint = _joints[j];
+                    Joint joint = joints[j];
 
                     if (!joint.Enabled)
                     {
@@ -375,20 +375,20 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                     joint.Validate(step.InvertedDeltaTime);
                 }
 
-                _contactSolver.SolveVelocityConstraints();
+                contactSolver.SolveVelocityConstraints();
             }
 
             // Store impulses for warm starting.
-            _contactSolver.StoreImpulses();
-            profile.SolveVelocity = _timer.ElapsedTicks;
+            contactSolver.StoreImpulses();
+            profile.SolveVelocity = timer.ElapsedTicks;
 
             // Integrate positions
-            for (int i = 0; i < _bodyCount; ++i)
+            for (int i = 0; i < BodyCount; ++i)
             {
-                Vector2 c = _positions[i].C;
-                float a = _positions[i].A;
-                Vector2 v = _velocities[i].V;
-                float w = _velocities[i].W;
+                Vector2 c = positions[i].C;
+                float a = positions[i].A;
+                Vector2 v = velocities[i].V;
+                float w = velocities[i].W;
 
                 // Check for large velocities
                 Vector2 translation = h * v;
@@ -409,23 +409,23 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 c += h * v;
                 a += h * w;
 
-                _positions[i].C = c;
-                _positions[i].A = a;
-                _velocities[i].V = v;
-                _velocities[i].W = w;
+                positions[i].C = c;
+                positions[i].A = a;
+                velocities[i].V = v;
+                velocities[i].W = w;
             }
 
             // Solve position constraints
-            _timer.Restart();
+            timer.Restart();
             bool positionSolved = false;
             for (int i = 0; i < step.PositionIterations; ++i)
             {
-                bool contactsOkay = _contactSolver.SolvePositionConstraints();
+                bool contactsOkay = contactSolver.SolvePositionConstraints();
 
                 bool jointsOkay = true;
-                for (int j = 0; j < _jointCount; ++j)
+                for (int j = 0; j < jointCount; ++j)
                 {
-                    Joint joint = _joints[j];
+                    Joint joint = joints[j];
 
                     //Velcro: We support disabling joints
                     if (!joint.Enabled)
@@ -446,35 +446,35 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             }
 
             // Copy state buffers back to the bodies
-            for (int i = 0; i < _bodyCount; ++i)
+            for (int i = 0; i < BodyCount; ++i)
             {
-                Body body = _bodies[i];
-                body.Sweep.C = _positions[i].C;
-                body.Sweep.A = _positions[i].A;
-                body.LinearVelocity = _velocities[i].V;
-                body.AngularVelocity = _velocities[i].W;
+                Body body = Bodies[i];
+                body.Sweep.C = positions[i].C;
+                body.Sweep.A = positions[i].A;
+                body.LinearVelocity = velocities[i].V;
+                body.AngularVelocity = velocities[i].W;
                 body.SynchronizeTransform();
             }
 
-            profile.SolvePosition = _timer.ElapsedTicks;
+            profile.SolvePosition = timer.ElapsedTicks;
 
-            Report(_contactSolver.VelocityConstraints);
+            Report(contactSolver.VelocityConstraints);
 
             if (allowSleep)
             {
                 float minSleepTime = MathConstants.MaxFloat;
 
-                for (int i = 0; i < _bodyCount; ++i)
+                for (int i = 0; i < BodyCount; ++i)
                 {
-                    Body b = _bodies[i];
+                    Body b = Bodies[i];
 
                     if (b.BodyType == BodyType.Static)
                     {
                         continue;
                     }
 
-                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > _angTolSqr ||
-                        Vector2.Dot(b.LinearVelocity, b.LinearVelocity) > _linTolSqr)
+                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > angTolSqr ||
+                        Vector2.Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
                     {
                         b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
@@ -488,9 +488,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
 
                 if (minSleepTime >= Settings.TimeToSleep && positionSolved)
                 {
-                    for (int i = 0; i < _bodyCount; ++i)
+                    for (int i = 0; i < BodyCount; ++i)
                     {
-                        Body b = _bodies[i];
+                        Body b = Bodies[i];
                         b.Awake = false;
                     }
                 }
@@ -503,28 +503,28 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <param name="subStep">The sub step</param>
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
-        internal void SolveTOI(ref TimeStep subStep, int toiIndexA, int toiIndexB)
+        internal void SolveToi(ref TimeStep subStep, int toiIndexA, int toiIndexB)
         {
-            Debug.Assert(toiIndexA < _bodyCount);
-            Debug.Assert(toiIndexB < _bodyCount);
+            Debug.Assert(toiIndexA < BodyCount);
+            Debug.Assert(toiIndexB < BodyCount);
 
             // Initialize the body state.
-            for (int i = 0; i < _bodyCount; ++i)
+            for (int i = 0; i < BodyCount; ++i)
             {
-                Body b = _bodies[i];
-                _positions[i].C = b.Sweep.C;
-                _positions[i].A = b.Sweep.A;
-                _velocities[i].V = b.LinearVelocity;
-                _velocities[i].W = b.AngularVelocity;
+                Body b = Bodies[i];
+                positions[i].C = b.Sweep.C;
+                positions[i].A = b.Sweep.A;
+                velocities[i].V = b.LinearVelocity;
+                velocities[i].W = b.AngularVelocity;
             }
 
             //Velcro: We reset the contact solver instead of craeting a new one to reduce garbage
-            _contactSolver.Reset(subStep, _contactCount, _contacts, _positions, _velocities);
+            contactSolver.Reset(subStep, ContactCount, contacts, positions, velocities);
 
             // Solve position constraints.
             for (int i = 0; i < subStep.PositionIterations; ++i)
             {
-                bool contactsOkay = _contactSolver.SolveTOIPositionConstraints(toiIndexA, toiIndexB);
+                bool contactsOkay = contactSolver.SolveToiPositionConstraints(toiIndexA, toiIndexB);
                 if (contactsOkay)
                 {
                     break;
@@ -532,19 +532,19 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             }
 
             // Leap of faith to new safe state.
-            _bodies[toiIndexA].Sweep.C0 = _positions[toiIndexA].C;
-            _bodies[toiIndexA].Sweep.A0 = _positions[toiIndexA].A;
-            _bodies[toiIndexB].Sweep.C0 = _positions[toiIndexB].C;
-            _bodies[toiIndexB].Sweep.A0 = _positions[toiIndexB].A;
+            Bodies[toiIndexA].Sweep.C0 = positions[toiIndexA].C;
+            Bodies[toiIndexA].Sweep.A0 = positions[toiIndexA].A;
+            Bodies[toiIndexB].Sweep.C0 = positions[toiIndexB].C;
+            Bodies[toiIndexB].Sweep.A0 = positions[toiIndexB].A;
 
             // No warm starting is needed for TOI events because warm
             // starting impulses were applied in the discrete solver.
-            _contactSolver.InitializeVelocityConstraints();
+            contactSolver.InitializeVelocityConstraints();
 
             // Solve velocity constraints.
             for (int i = 0; i < subStep.VelocityIterations; ++i)
             {
-                _contactSolver.SolveVelocityConstraints();
+                contactSolver.SolveVelocityConstraints();
             }
 
             // Don't store the TOI contact forces for warm starting
@@ -553,12 +553,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             float h = subStep.DeltaTime;
 
             // Integrate positions.
-            for (int i = 0; i < _bodyCount; ++i)
+            for (int i = 0; i < BodyCount; ++i)
             {
-                Vector2 c = _positions[i].C;
-                float a = _positions[i].A;
-                Vector2 v = _velocities[i].V;
-                float w = _velocities[i].W;
+                Vector2 c = positions[i].C;
+                float a = positions[i].A;
+                Vector2 v = velocities[i].V;
+                float w = velocities[i].W;
 
                 // Check for large velocities
                 Vector2 translation = h * v;
@@ -579,13 +579,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 c += h * v;
                 a += h * w;
 
-                _positions[i].C = c;
-                _positions[i].A = a;
-                _velocities[i].V = v;
-                _velocities[i].W = w;
+                positions[i].C = c;
+                positions[i].A = a;
+                velocities[i].V = v;
+                velocities[i].W = w;
 
                 // Sync bodies
-                Body body = _bodies[i];
+                Body body = Bodies[i];
                 body.Sweep.C = c;
                 body.Sweep.A = a;
                 body.LinearVelocity = v;
@@ -593,7 +593,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 body.SynchronizeTransform();
             }
 
-            Report(_contactSolver.VelocityConstraints);
+            Report(contactSolver.VelocityConstraints);
         }
 
         /// <summary>
@@ -602,9 +602,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <param name="body">The body</param>
         public void Add(Body body)
         {
-            Debug.Assert(_bodyCount < _bodyCapacity);
-            body.IslandIndex = _bodyCount;
-            _bodies[_bodyCount++] = body;
+            Debug.Assert(BodyCount < BodyCapacity);
+            body.IslandIndex = BodyCount;
+            Bodies[BodyCount++] = body;
         }
 
         /// <summary>
@@ -613,8 +613,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <param name="contact">The contact</param>
         public void Add(Contact contact)
         {
-            Debug.Assert(_contactCount < _contactCapacity);
-            _contacts[_contactCount++] = contact;
+            Debug.Assert(ContactCount < ContactCapacity);
+            contacts[ContactCount++] = contact;
         }
 
         /// <summary>
@@ -623,8 +623,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <param name="joint">The joint</param>
         public void Add(Joint joint)
         {
-            Debug.Assert(_jointCount < _jointCapacity);
-            _joints[_jointCount++] = joint;
+            Debug.Assert(jointCount < jointCapacity);
+            joints[jointCount++] = joint;
         }
 
         /// <summary>
@@ -633,21 +633,21 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <param name="constraints">The constraints</param>
         private void Report(ContactVelocityConstraint[] constraints)
         {
-            if (_contactManager == null)
+            if (contactManager == null)
             {
                 return;
             }
 
-            for (int i = 0; i < _contactCount; ++i)
+            for (int i = 0; i < ContactCount; ++i)
             {
-                Contact c = _contacts[i];
+                Contact c = contacts[i];
 
                 //Velcro feature: added after collision
                 c.FixtureA.AfterCollision?.Invoke(c.FixtureA, c.FixtureB, c, constraints[i]);
                 c.FixtureB.AfterCollision?.Invoke(c.FixtureB, c.FixtureA, c, constraints[i]);
 
                 //Velcro optimization: We don't store the impulses and send it to the delegate. We just send the whole contact.
-                _contactManager.PostSolve?.Invoke(c, constraints[i]);
+                contactManager.PostSolve?.Invoke(c, constraints[i]);
             }
         }
     }

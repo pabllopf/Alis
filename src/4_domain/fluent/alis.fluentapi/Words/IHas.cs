@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The has interface
     /// </summary>
-    public interface IHas<L, T>
+    public interface IHas<TL, T>
     {
         /// <summary>
         ///     Hases the obj
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The</returns>
-        public L Has(T obj);
+        public TL Has(T obj);
     }
 }

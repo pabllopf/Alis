@@ -40,7 +40,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Util
         /// <summary>
         ///     The random
         /// </summary>
-        private static readonly Random RNG = new Random();
+        private static readonly Random Rng = new Random();
 
         /// <summary>
         ///     Uniforms the distribution using the specified n
@@ -53,7 +53,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Util
             List<TriangulationPoint> points = new List<TriangulationPoint>();
             for (int i = 0; i < n; i++)
             {
-                points.Add(new TriangulationPoint(scale * (0.5 - RNG.NextDouble()), scale * (0.5 - RNG.NextDouble())));
+                points.Add(new TriangulationPoint(scale * (0.5 - Rng.NextDouble()), scale * (0.5 - Rng.NextDouble())));
             }
 
             return points;

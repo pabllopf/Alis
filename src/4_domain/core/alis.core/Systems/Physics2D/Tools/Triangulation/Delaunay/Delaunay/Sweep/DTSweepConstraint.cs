@@ -33,10 +33,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
     ///     The dt sweep constraint class
     /// </summary>
     /// <seealso cref="TriangulationConstraint" />
-    internal class DTSweepConstraint : TriangulationConstraint
+    internal class DtSweepConstraint : TriangulationConstraint
     {
         /// <summary>Give two points in any order. Will always be ordered so that q.y > p.y and q.x > p.x if same y value</summary>
-        public DTSweepConstraint(TriangulationPoint p1, TriangulationPoint p2)
+        public DtSweepConstraint(TriangulationPoint p1, TriangulationPoint p2)
         {
             P = p1;
             Q = p2;

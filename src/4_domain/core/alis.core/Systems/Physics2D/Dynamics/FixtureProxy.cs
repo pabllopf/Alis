@@ -37,7 +37,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The aabb
         /// </summary>
-        public AABB AABB;
+        public Aabb Aabb;
 
         /// <summary>
         ///     The child index

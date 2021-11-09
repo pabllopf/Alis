@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The window interface
     /// </summary>
-    public interface IWindow<Builder, Argument>
+    public interface IWindow<TBuilder, TArgument>
     {
         /// <summary>
         ///     Windows the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public Builder Window(Argument value);
+        public TBuilder Window(TArgument value);
     }
 }

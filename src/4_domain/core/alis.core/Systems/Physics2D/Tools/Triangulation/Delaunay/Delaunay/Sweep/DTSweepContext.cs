@@ -32,32 +32,32 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
     /**
      * @author Thomas Åhlén, thahlen@gmail.com
      */
-    internal class DTSweepContext : TriangulationContext
+    internal class DtSweepContext : TriangulationContext
     {
         /// <summary>
         ///     The dt sweep point comparator
         /// </summary>
-        private readonly DTSweepPointComparator _comparator = new DTSweepPointComparator();
+        private readonly DtSweepPointComparator comparator = new DtSweepPointComparator();
 
         /// <summary>
         ///     The front
         /// </summary>
-        public AdvancingFront aFront;
+        public AdvancingFront AFront;
 
         /// <summary>
         ///     The dt sweep basin
         /// </summary>
-        public DTSweepBasin Basin = new DTSweepBasin();
+        public DtSweepBasin Basin = new DtSweepBasin();
 
         /// <summary>
         ///     The dt sweep edge event
         /// </summary>
-        public DTSweepEdgeEvent EdgeEvent = new DTSweepEdgeEvent();
+        public DtSweepEdgeEvent EdgeEvent = new DtSweepEdgeEvent();
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="DTSweepContext" /> class
+        ///     Initializes a new instance of the <see cref="DtSweepContext" /> class
         /// </summary>
-        public DTSweepContext()
+        public DtSweepContext()
         {
             Clear();
         }
@@ -77,7 +77,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         /// <summary>
         ///     The alpha
         /// </summary>
-        private const float ALPHA = 0.3f;
+        private const float Alpha = 0.3f;
 
         /// <summary>
         ///     Removes the from list using the specified triangle
@@ -144,7 +144,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         {
             //        Console.WriteLine( "add:" + node.key + ":" + System.identityHashCode(node.key));
             //        m_nodeTree.put( node.getKey(), node );
-            aFront.AddNode(node);
+            AFront.AddNode(node);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         {
             //        Console.WriteLine( "remove:" + node.key + ":" + System.identityHashCode(node.key));
             //        m_nodeTree.delete( node.getKey() );
-            aFront.RemoveNode(node);
+            AFront.RemoveNode(node);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The advancing front node</returns>
-        public AdvancingFrontNode LocateNode(TriangulationPoint point) => aFront.LocateNode(point);
+        public AdvancingFrontNode LocateNode(TriangulationPoint point) => AFront.LocateNode(point);
 
         /// <summary>
         ///     Creates the advancing front
@@ -182,15 +182,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
 
             AdvancingFrontNode tail = new AdvancingFrontNode(iTriangle.Points[2]);
 
-            aFront = new AdvancingFront(head, tail);
-            aFront.AddNode(middle);
+            AFront = new AdvancingFront(head, tail);
+            AFront.AddNode(middle);
 
             // TODO: I think it would be more intuitive if head is middles next and not previous
             //       so swap head and tail
-            aFront.Head.Next = middle;
-            middle.Next = aFront.Tail;
-            middle.Prev = aFront.Head;
-            aFront.Tail.Prev = middle;
+            AFront.Head.Next = middle;
+            middle.Next = AFront.Tail;
+            middle.Prev = AFront.Head;
+            AFront.Tail.Prev = middle;
         }
 
         /// <summary>Try to map a node to all sides of this triangle that don't have a neighbor.</summary>
@@ -201,7 +201,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
             {
                 if (t.Neighbors[i] == null)
                 {
-                    n = aFront.LocatePoint(t.PointCW(t.Points[i]));
+                    n = AFront.LocatePoint(t.PointCw(t.Points[i]));
                     if (n != null)
                     {
                         n.Triangle = t;
@@ -214,7 +214,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         ///     Prepares the triangulation using the specified t
         /// </summary>
         /// <param name="t">The </param>
-        public override void PrepareTriangulation(Triangulatable t)
+        public override void PrepareTriangulation(ITriangulatable t)
         {
             base.PrepareTriangulation(t);
 
@@ -248,8 +248,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
                 }
             }
 
-            double deltaX = ALPHA * (xmax - xmin);
-            double deltaY = ALPHA * (ymax - ymin);
+            double deltaX = Alpha * (xmax - xmin);
+            double deltaY = Alpha * (ymax - ymin);
             TriangulationPoint p1 = new TriangulationPoint(xmax + deltaX, ymin - deltaY);
             TriangulationPoint p2 = new TriangulationPoint(xmin - deltaX, ymin - deltaY);
 
@@ -258,7 +258,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
 
             //        long time = System.nanoTime();
             // Sort the points along y-axis
-            Points.Sort(_comparator);
+            Points.Sort(comparator);
 
             //        logger.info( "Triangulation setup [{}ms]", ( System.nanoTime() - time ) / 1e6 );
         }
@@ -279,48 +279,48 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         /// <param name="b">The </param>
         /// <returns>The triangulation constraint</returns>
         public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b) =>
-            new DTSweepConstraint(a, b);
+            new DtSweepConstraint(a, b);
 
         /// <summary>
         ///     The dt sweep basin class
         /// </summary>
-        public class DTSweepBasin
+        public class DtSweepBasin
         {
             /// <summary>
             ///     The bottom node
             /// </summary>
-            public AdvancingFrontNode bottomNode;
+            public AdvancingFrontNode BottomNode;
 
             /// <summary>
             ///     The left highest
             /// </summary>
-            public bool leftHighest;
+            public bool LeftHighest;
 
             /// <summary>
             ///     The left node
             /// </summary>
-            public AdvancingFrontNode leftNode;
+            public AdvancingFrontNode LeftNode;
 
             /// <summary>
             ///     The right node
             /// </summary>
-            public AdvancingFrontNode rightNode;
+            public AdvancingFrontNode RightNode;
 
             /// <summary>
             ///     The width
             /// </summary>
-            public double width;
+            public double Width;
         }
 
         /// <summary>
         ///     The dt sweep edge event class
         /// </summary>
-        public class DTSweepEdgeEvent
+        public class DtSweepEdgeEvent
         {
             /// <summary>
             ///     The constrained edge
             /// </summary>
-            public DTSweepConstraint ConstrainedEdge;
+            public DtSweepConstraint ConstrainedEdge;
 
             /// <summary>
             ///     The right

@@ -32,12 +32,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
     /// <summary>
     ///     The toi output
     /// </summary>
-    public struct TOIOutput
+    public struct ToiOutput
     {
         /// <summary>
         ///     The state
         /// </summary>
-        public TOIOutputState State;
+        public ToiOutputState State;
 
         /// <summary>
         ///     The

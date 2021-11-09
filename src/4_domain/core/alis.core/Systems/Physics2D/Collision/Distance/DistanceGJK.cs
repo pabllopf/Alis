@@ -41,25 +41,25 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
     ///     The Gilbert–Johnson–Keerthi distance algorithm that provides the distance between shapes. Using Voronoi
     ///     regions (Christer Ericson) and Barycentric coordinates.
     /// </summary>
-    public static class DistanceGJK
+    public static class DistanceGjk
     {
         /// <summary>
         ///     The number of calls made to the ComputeDistance() function. Note: This is only activated when
         ///     Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GJKCalls;
+        [ThreadStatic] public static int GjkCalls;
 
         /// <summary>
         ///     The number of iterations that was made on the last call to ComputeDistance(). Note: This is only activated
         ///     when Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GJKIters;
+        [ThreadStatic] public static int GjkIters;
 
         /// <summary>
         ///     The maximum number of iterations calls to the CompteDistance() function. Note: This is only activated when
         ///     Settings.EnableDiagnostics = true
         /// </summary>
-        [ThreadStatic] public static int GJKMaxIters;
+        [ThreadStatic] public static int GjkMaxIters;
 
         /// <summary>
         ///     Computes the distance using the specified input
@@ -71,7 +71,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
         {
             cache = new SimplexCache();
 
-            ++GJKCalls;
+            ++GjkCalls;
 
             // Initialize the simplex.
             Simplex simplex = new Simplex();
@@ -135,18 +135,18 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
 
                 // Compute a tentative new simplex vertex using support points.
                 SimplexVertex vertex = simplex.V[simplex.Count];
-                vertex.IndexA = input.ProxyA.GetSupport(MathUtils.MulT(input.TransformA.q, -d));
-                vertex.WA = MathUtils.Mul(ref input.TransformA, input.ProxyA._vertices[vertex.IndexA]);
+                vertex.IndexA = input.ProxyA.GetSupport(MathUtils.MulT(input.TransformA.Q, -d));
+                vertex.Wa = MathUtils.Mul(ref input.TransformA, input.ProxyA.Vertices[vertex.IndexA]);
 
-                vertex.IndexB = input.ProxyB.GetSupport(MathUtils.MulT(input.TransformB.q, d));
-                vertex.WB = MathUtils.Mul(ref input.TransformB, input.ProxyB._vertices[vertex.IndexB]);
-                vertex.W = vertex.WB - vertex.WA;
+                vertex.IndexB = input.ProxyB.GetSupport(MathUtils.MulT(input.TransformB.Q, d));
+                vertex.Wb = MathUtils.Mul(ref input.TransformB, input.ProxyB.Vertices[vertex.IndexB]);
+                vertex.W = vertex.Wb - vertex.Wa;
                 simplex.V[simplex.Count] = vertex;
 
                 // Iteration count is equated to the number of support point calls.
                 ++iter;
 
-                ++GJKIters;
+                ++GjkIters;
 
                 // Check for duplicate support points. This is the main termination criteria.
                 bool duplicate = false;
@@ -169,7 +169,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                 ++simplex.Count;
             }
 
-            GJKMaxIters = Math.Max(GJKMaxIters, iter);
+            GjkMaxIters = Math.Max(GjkMaxIters, iter);
 
             // Prepare output.
             simplex.GetWitnessPoints(out output.PointA, out output.PointB);
@@ -182,8 +182,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
             // Apply radii if requested.
             if (input.UseRadii)
             {
-                float rA = input.ProxyA._radius;
-                float rB = input.ProxyB._radius;
+                float rA = input.ProxyA.Radius;
+                float rB = input.ProxyB.Radius;
 
                 if (output.Distance > rA + rB && output.Distance > MathConstants.Epsilon)
                 {
@@ -227,8 +227,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
             DistanceProxy proxyA = input.ProxyA;
             DistanceProxy proxyB = input.ProxyB;
 
-            float radiusA = MathUtils.Max(proxyA._radius, Settings.PolygonRadius);
-            float radiusB = MathUtils.Max(proxyB._radius, Settings.PolygonRadius);
+            float radiusA = MathUtils.Max(proxyA.Radius, Settings.PolygonRadius);
+            float radiusB = MathUtils.Max(proxyB.Radius, Settings.PolygonRadius);
             float radius = radiusA + radiusB;
 
             Transform xfA = input.TransformA;
@@ -246,9 +246,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
             //SimplexVertex vertices = simplex.V.Value0; //Velcro: we don't need this as we have an indexer instead
 
             // Get support point in -r direction
-            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.q, -r));
+            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Q, -r));
             Vector2 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
-            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.q, r));
+            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Q, r));
             Vector2 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
             Vector2 v = wA - wB;
 
@@ -267,9 +267,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                 output.Iterations += 1;
 
                 // Support in direction -v (A - B)
-                indexA = proxyA.GetSupport(MathUtils.MulT(xfA.q, -v));
+                indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Q, -v));
                 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
-                indexB = proxyB.GetSupport(MathUtils.MulT(xfB.q, v));
+                indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Q, v));
                 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
                 Vector2 p = wA - wB;
 
@@ -302,10 +302,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                 // to be formed in unshifted space.
                 SimplexVertex vertex = simplex.V[simplex.Count];
                 vertex.IndexA = indexB;
-                vertex.WA = wB + lambda * r;
+                vertex.Wa = wB + lambda * r;
                 vertex.IndexB = indexA;
-                vertex.WB = wA;
-                vertex.W = vertex.WB - vertex.WA;
+                vertex.Wb = wA;
+                vertex.W = vertex.Wb - vertex.Wa;
                 vertex.A = 1.0f;
                 simplex.V[simplex.Count] = vertex; //Velcro: we have to copy the value back
                 simplex.Count += 1;

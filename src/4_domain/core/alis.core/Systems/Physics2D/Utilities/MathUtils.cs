@@ -83,7 +83,7 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
         public static Vector2 Mul(ref Mat22 a, ref Vector2 v) =>
-            new Vector2(a.ex.X * v.X + a.ey.X * v.Y, a.ex.Y * v.X + a.ey.Y * v.Y);
+            new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
 
         /// <summary>
         ///     Muls the t
@@ -101,8 +101,8 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <returns>The vector</returns>
         public static Vector2 Mul(ref Transform T, ref Vector2 v)
         {
-            float x = T.q.c * v.X - T.q.s * v.Y + T.p.X;
-            float y = T.q.s * v.X + T.q.c * v.Y + T.p.Y;
+            float x = T.Q.C * v.X - T.Q.S * v.Y + T.P.X;
+            float y = T.Q.S * v.X + T.Q.C * v.Y + T.P.Y;
 
             return new Vector2(x, y);
         }
@@ -122,7 +122,7 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
         public static Vector2 MulT(ref Mat22 a, ref Vector2 v) =>
-            new Vector2(v.X * a.ex.X + v.Y * a.ex.Y, v.X * a.ey.X + v.Y * a.ey.Y);
+            new Vector2(v.X * a.Ex.X + v.Y * a.Ex.Y, v.X * a.Ey.X + v.Y * a.Ey.Y);
 
         /// <summary>
         ///     Muls the t using the specified t
@@ -140,10 +140,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <returns>The vector</returns>
         public static Vector2 MulT(ref Transform T, ref Vector2 v)
         {
-            float px = v.X - T.p.X;
-            float py = v.Y - T.p.Y;
-            float x = T.q.c * px + T.q.s * py;
-            float y = -T.q.s * px + T.q.c * py;
+            float px = v.X - T.P.X;
+            float py = v.Y - T.P.Y;
+            float x = T.Q.C * px + T.Q.S * py;
+            float y = -T.Q.S * px + T.Q.C * py;
 
             return new Vector2(x, y);
         }
@@ -158,14 +158,14 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         public static void MulT(ref Mat22 a, ref Mat22 b, out Mat22 c)
         {
             c = new Mat22();
-            c.ex.X = a.ex.X * b.ex.X + a.ex.Y * b.ex.Y;
-            c.ex.Y = a.ey.X * b.ex.X + a.ey.Y * b.ex.Y;
-            c.ey.X = a.ex.X * b.ey.X + a.ex.Y * b.ey.Y;
-            c.ey.Y = a.ey.X * b.ey.X + a.ey.Y * b.ey.Y;
+            c.Ex.X = a.Ex.X * b.Ex.X + a.Ex.Y * b.Ex.Y;
+            c.Ex.Y = a.Ey.X * b.Ex.X + a.Ey.Y * b.Ex.Y;
+            c.Ey.X = a.Ex.X * b.Ey.X + a.Ex.Y * b.Ey.Y;
+            c.Ey.Y = a.Ey.X * b.Ey.X + a.Ey.Y * b.Ey.Y;
         }
 
         /// <summary>Multiply a matrix times a vector.</summary>
-        public static Vector3 Mul(Mat33 a, Vector3 v) => v.X * a.ex + v.Y * a.ey + v.Z * a.ez;
+        public static Vector3 Mul(Mat33 a, Vector3 v) => v.X * a.Ex + v.Y * a.Ey + v.Z * a.Ez;
 
         /// <summary>
         ///     Muls the a
@@ -179,8 +179,8 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             //    = (A.q * B.q).Rot(v1) + A.q.Rot(B.p) + A.p
 
             Transform c = new Transform();
-            c.q = Mul(a.q, b.q);
-            c.p = Mul(a.q, b.p) + a.p;
+            c.Q = Mul(a.Q, b.Q);
+            c.P = Mul(a.Q, b.P) + a.P;
             return c;
         }
 
@@ -196,8 +196,8 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             //    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
 
             c = new Transform();
-            c.q = MulT(a.q, b.q);
-            c.p = MulT(a.q, b.p - a.p);
+            c.Q = MulT(a.Q, b.Q);
+            c.P = MulT(a.Q, b.P - a.P);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Systems.Physics2D.Utilities
 
         /// <summary>Multiply a matrix times a vector.</summary>
         public static Vector2 Mul22(Mat33 a, Vector2 v) =>
-            new Vector2(a.ex.X * v.X + a.ey.X * v.Y, a.ex.Y * v.X + a.ey.Y * v.Y);
+            new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
 
         /// <summary>Multiply two rotations: q * r</summary>
         public static Rot Mul(Rot q, Rot r)
@@ -225,8 +225,8 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             // s = qs * rc + qc * rs
             // c = qc * rc - qs * rs
             Rot qr;
-            qr.s = q.s * r.c + q.c * r.s;
-            qr.c = q.c * r.c - q.s * r.s;
+            qr.S = q.S * r.C + q.C * r.S;
+            qr.C = q.C * r.C - q.S * r.S;
             return qr;
         }
 
@@ -238,10 +238,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <returns>The vector</returns>
         public static Vector2 MulT(Transform T, Vector2 v)
         {
-            float px = v.X - T.p.X;
-            float py = v.Y - T.p.Y;
-            float x = T.q.c * px + T.q.s * py;
-            float y = -T.q.s * px + T.q.c * py;
+            float px = v.X - T.P.X;
+            float py = v.Y - T.P.Y;
+            float x = T.Q.C * px + T.Q.S * py;
+            float y = -T.Q.S * px + T.Q.C * py;
 
             return new Vector2(x, y);
         }
@@ -254,8 +254,8 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             // s = qc * rs - qs * rc
             // c = qc * rc + qs * rs
             Rot qr;
-            qr.s = q.c * r.s - q.s * r.c;
-            qr.c = q.c * r.c + q.s * r.s;
+            qr.S = q.C * r.S - q.S * r.C;
+            qr.C = q.C * r.C + q.S * r.S;
             return qr;
         }
 
@@ -271,20 +271,20 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             //    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
 
             Transform c = new Transform();
-            c.q = MulT(a.q, b.q);
-            c.p = MulT(a.q, b.p - a.p);
+            c.Q = MulT(a.Q, b.Q);
+            c.P = MulT(a.Q, b.P - a.P);
             return c;
         }
 
         /// <summary>Rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>
         /// <param name="v">The value</param>
-        public static Vector2 Mul(Rot q, Vector2 v) => new Vector2(q.c * v.X - q.s * v.Y, q.s * v.X + q.c * v.Y);
+        public static Vector2 Mul(Rot q, Vector2 v) => new Vector2(q.C * v.X - q.S * v.Y, q.S * v.X + q.C * v.Y);
 
         /// <summary>Inverse rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>
         /// <param name="v">The value</param>
-        public static Vector2 MulT(Rot q, Vector2 v) => new Vector2(q.c * v.X + q.s * v.Y, -q.s * v.X + q.c * v.Y);
+        public static Vector2 MulT(Rot q, Vector2 v) => new Vector2(q.C * v.X + q.S * v.Y, -q.S * v.X + q.C * v.Y);
 
         /// <summary>Get the skew vector such that dot(skew_vec, other) == cross(vec, other)</summary>
         public static Vector2 Skew(Vector2 input) => new Vector2(-input.Y, input.X);

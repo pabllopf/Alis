@@ -49,59 +49,59 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <summary>
         ///     The stack
         /// </summary>
-        private readonly Stack<int> _queryStack = new Stack<int>(256);
+        private readonly Stack<int> queryStack = new Stack<int>(256);
 
         /// <summary>
         ///     The stack
         /// </summary>
-        private readonly Stack<int> _raycastStack = new Stack<int>(256);
+        private readonly Stack<int> raycastStack = new Stack<int>(256);
 
         /// <summary>
         ///     The free list
         /// </summary>
-        private int _freeList;
+        private int freeList;
 
         /// <summary>
         ///     The node capacity
         /// </summary>
-        private int _nodeCapacity;
+        private int nodeCapacity;
 
         /// <summary>
         ///     The node count
         /// </summary>
-        private int _nodeCount;
+        private int nodeCount;
 
         /// <summary>
         ///     The nodes
         /// </summary>
-        private TreeNode<T>[] _nodes;
+        private TreeNode<T>[] nodes;
 
         /// <summary>
         ///     The root
         /// </summary>
-        private int _root;
+        private int root;
 
         /// <summary>Constructing the tree initializes the node pool.</summary>
         public DynamicTree()
         {
-            _root = NullNode;
+            root = NullNode;
 
-            _nodeCapacity = 16;
-            _nodeCount = 0;
-            _nodes = new TreeNode<T>[_nodeCapacity];
+            nodeCapacity = 16;
+            nodeCount = 0;
+            nodes = new TreeNode<T>[nodeCapacity];
 
             // Build a linked list for the free list.
-            for (int i = 0; i < _nodeCapacity - 1; ++i)
+            for (int i = 0; i < nodeCapacity - 1; ++i)
             {
-                _nodes[i] = new TreeNode<T>();
-                _nodes[i].ParentOrNext = i + 1;
-                _nodes[i].Height = 1;
+                nodes[i] = new TreeNode<T>();
+                nodes[i].ParentOrNext = i + 1;
+                nodes[i].Height = 1;
             }
 
-            _nodes[_nodeCapacity - 1] = new TreeNode<T>();
-            _nodes[_nodeCapacity - 1].ParentOrNext = NullNode;
-            _nodes[_nodeCapacity - 1].Height = 1;
-            _freeList = 0;
+            nodes[nodeCapacity - 1] = new TreeNode<T>();
+            nodes[nodeCapacity - 1].ParentOrNext = NullNode;
+            nodes[nodeCapacity - 1].Height = 1;
+            freeList = 0;
         }
 
         /// <summary>Compute the height of the binary tree in O(N) time. Should not be called often.</summary>
@@ -109,12 +109,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         {
             get
             {
-                if (_root == NullNode)
+                if (root == NullNode)
                 {
                     return 0;
                 }
 
-                return _nodes[_root].Height;
+                return nodes[root].Height;
             }
         }
 
@@ -123,25 +123,25 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         {
             get
             {
-                if (_root == NullNode)
+                if (this.root == NullNode)
                 {
                     return 0.0f;
                 }
 
-                TreeNode<T> root = _nodes[_root];
-                float rootArea = root.AABB.Perimeter;
+                TreeNode<T> root = nodes[this.root];
+                float rootArea = root.Aabb.Perimeter;
 
                 float totalArea = 0.0f;
-                for (int i = 0; i < _nodeCapacity; ++i)
+                for (int i = 0; i < nodeCapacity; ++i)
                 {
-                    TreeNode<T> node = _nodes[i];
+                    TreeNode<T> node = nodes[i];
                     if (node.Height < 0)
                     {
                         // Free node in pool
                         continue;
                     }
 
-                    totalArea += node.AABB.Perimeter;
+                    totalArea += node.Aabb.Perimeter;
                 }
 
                 return totalArea / rootArea;
@@ -157,9 +157,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
             get
             {
                 int maxBalance = 0;
-                for (int i = 0; i < _nodeCapacity; ++i)
+                for (int i = 0; i < nodeCapacity; ++i)
                 {
-                    TreeNode<T> node = _nodes[i];
+                    TreeNode<T> node = nodes[i];
                     if (node.Height <= 1)
                     {
                         continue;
@@ -169,7 +169,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
 
                     int child1 = node.Child1;
                     int child2 = node.Child2;
-                    int balance = Math.Abs(_nodes[child2].Height - _nodes[child1].Height);
+                    int balance = Math.Abs(nodes[child2].Height - nodes[child1].Height);
                     maxBalance = Math.Max(maxBalance, balance);
                 }
 
@@ -189,17 +189,17 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="aabb">The AABB.</param>
         /// <param name="userData">The user data.</param>
         /// <returns>Index of the created proxy</returns>
-        public int CreateProxy(ref AABB aabb, T userData)
+        public int CreateProxy(ref Aabb aabb, T userData)
         {
             int proxyId = AllocateNode();
 
             // Fatten the AABB.
             Vector2 r = new Vector2(Settings.AabbExtension, Settings.AabbExtension);
-            _nodes[proxyId].AABB.LowerBound = aabb.LowerBound - r;
-            _nodes[proxyId].AABB.UpperBound = aabb.UpperBound + r;
-            _nodes[proxyId].UserData = userData;
-            _nodes[proxyId].Height = 0;
-            _nodes[proxyId].Moved = true;
+            nodes[proxyId].Aabb.LowerBound = aabb.LowerBound - r;
+            nodes[proxyId].Aabb.UpperBound = aabb.UpperBound + r;
+            nodes[proxyId].UserData = userData;
+            nodes[proxyId].Height = 0;
+            nodes[proxyId].Moved = true;
 
             InsertLeaf(proxyId);
 
@@ -210,8 +210,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="proxyId">The proxy id.</param>
         public void DestroyProxy(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
-            Debug.Assert(_nodes[proxyId].IsLeaf());
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
+            Debug.Assert(nodes[proxyId].IsLeaf());
 
             RemoveLeaf(proxyId);
             FreeNode(proxyId);
@@ -225,50 +225,50 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="aabb">The AABB.</param>
         /// <param name="displacement">The displacement.</param>
         /// <returns>true if the proxy was re-inserted.</returns>
-        public bool MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement)
+        public bool MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
 
-            Debug.Assert(_nodes[proxyId].IsLeaf());
+            Debug.Assert(nodes[proxyId].IsLeaf());
 
             // Extend AABB
-            AABB fatAABB = new AABB();
+            Aabb fatAabb = new Aabb();
             Vector2 r = new Vector2(Settings.AabbExtension, Settings.AabbExtension);
-            fatAABB.LowerBound = aabb.LowerBound - r;
-            fatAABB.UpperBound = aabb.UpperBound + r;
+            fatAabb.LowerBound = aabb.LowerBound - r;
+            fatAabb.UpperBound = aabb.UpperBound + r;
 
             // Predict AABB movement
             Vector2 d = Settings.AabbMultiplier * displacement;
 
             if (d.X < 0.0f)
             {
-                fatAABB.LowerBound.X += d.X;
+                fatAabb.LowerBound.X += d.X;
             }
             else
             {
-                fatAABB.UpperBound.X += d.X;
+                fatAabb.UpperBound.X += d.X;
             }
 
             if (d.Y < 0.0f)
             {
-                fatAABB.LowerBound.Y += d.Y;
+                fatAabb.LowerBound.Y += d.Y;
             }
             else
             {
-                fatAABB.UpperBound.Y += d.Y;
+                fatAabb.UpperBound.Y += d.Y;
             }
 
-            AABB treeAABB = _nodes[proxyId].AABB;
-            if (treeAABB.Contains(ref aabb))
+            Aabb treeAabb = nodes[proxyId].Aabb;
+            if (treeAabb.Contains(ref aabb))
             {
                 // The tree AABB still contains the object, but it might be too large.
                 // Perhaps the object was moving fast but has since gone to sleep.
                 // The huge AABB is larger than the new fat AABB.
-                AABB hugeAABB = new AABB();
-                hugeAABB.LowerBound = fatAABB.LowerBound - 4.0f * r;
-                hugeAABB.UpperBound = fatAABB.UpperBound + 4.0f * r;
+                Aabb hugeAabb = new Aabb();
+                hugeAabb.LowerBound = fatAabb.LowerBound - 4.0f * r;
+                hugeAabb.UpperBound = fatAabb.UpperBound + 4.0f * r;
 
-                if (hugeAABB.Contains(ref treeAABB))
+                if (hugeAabb.Contains(ref treeAabb))
                 {
                     // The tree AABB contains the object AABB and the tree AABB is
                     // not too large. No tree update needed.
@@ -280,11 +280,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
 
             RemoveLeaf(proxyId);
 
-            _nodes[proxyId].AABB = fatAABB;
+            nodes[proxyId].Aabb = fatAabb;
 
             InsertLeaf(proxyId);
 
-            _nodes[proxyId].Moved = true;
+            nodes[proxyId].Moved = true;
 
             return true;
         }
@@ -296,8 +296,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <returns>The bool</returns>
         public bool WasMoved(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
-            return _nodes[proxyId].Moved;
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
+            return nodes[proxyId].Moved;
         }
 
         /// <summary>
@@ -306,8 +306,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="proxyId">The proxy id</param>
         public void ClearMoved(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
-            _nodes[proxyId].Moved = false;
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
+            nodes[proxyId].Moved = false;
         }
 
         /// <summary>Get proxy user data.</summary>
@@ -316,17 +316,17 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <returns>the proxy user data or 0 if the id is invalid.</returns>
         public T GetUserData(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
-            return _nodes[proxyId].UserData;
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
+            return nodes[proxyId].UserData;
         }
 
         /// <summary>Get the fat AABB for a proxy.</summary>
         /// <param name="proxyId">The proxy id.</param>
-        /// <param name="fatAABB">The fat AABB.</param>
-        public void GetFatAABB(int proxyId, out AABB fatAABB)
+        /// <param name="fatAabb">The fat AABB.</param>
+        public void GetFatAabb(int proxyId, out Aabb fatAabb)
         {
-            Debug.Assert(0 <= proxyId && proxyId < _nodeCapacity);
-            fatAABB = _nodes[proxyId].AABB;
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
+            fatAabb = nodes[proxyId].Aabb;
         }
 
         /// <summary>
@@ -335,22 +335,22 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// </summary>
         /// <param name="callback">The callback.</param>
         /// <param name="aabb">The AABB.</param>
-        public void Query(Func<int, bool> callback, ref AABB aabb)
+        public void Query(Func<int, bool> callback, ref Aabb aabb)
         {
-            _queryStack.Clear();
-            _queryStack.Push(_root);
+            queryStack.Clear();
+            queryStack.Push(root);
 
-            while (_queryStack.Count > 0)
+            while (queryStack.Count > 0)
             {
-                int nodeId = _queryStack.Pop();
+                int nodeId = queryStack.Pop();
                 if (nodeId == NullNode)
                 {
                     continue;
                 }
 
-                TreeNode<T> node = _nodes[nodeId];
+                TreeNode<T> node = nodes[nodeId];
 
-                if (AABB.TestOverlap(ref node.AABB, ref aabb))
+                if (Aabb.TestOverlap(ref node.Aabb, ref aabb))
                 {
                     if (node.IsLeaf())
                     {
@@ -362,8 +362,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                     }
                     else
                     {
-                        _queryStack.Push(node.Child1);
-                        _queryStack.Push(node.Child2);
+                        queryStack.Push(node.Child1);
+                        queryStack.Push(node.Child2);
                     }
                 }
             }
@@ -394,35 +394,35 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
             float maxFraction = input.MaxFraction;
 
             // Build a bounding box for the segment.
-            AABB segmentAABB = new AABB();
+            Aabb segmentAabb = new Aabb();
             {
                 Vector2 t = p1 + maxFraction * (p2 - p1);
-                segmentAABB.LowerBound = Vector2.Min(p1, t);
-                segmentAABB.UpperBound = Vector2.Max(p1, t);
+                segmentAabb.LowerBound = Vector2.Min(p1, t);
+                segmentAabb.UpperBound = Vector2.Max(p1, t);
             }
 
-            _raycastStack.Clear();
-            _raycastStack.Push(_root);
+            raycastStack.Clear();
+            raycastStack.Push(root);
 
-            while (_raycastStack.Count > 0)
+            while (raycastStack.Count > 0)
             {
-                int nodeId = _raycastStack.Pop();
+                int nodeId = raycastStack.Pop();
                 if (nodeId == NullNode)
                 {
                     continue;
                 }
 
-                TreeNode<T> node = _nodes[nodeId];
+                TreeNode<T> node = nodes[nodeId];
 
-                if (!AABB.TestOverlap(ref node.AABB, ref segmentAABB))
+                if (!Aabb.TestOverlap(ref node.Aabb, ref segmentAabb))
                 {
                     continue;
                 }
 
                 // Separating axis for segment (Gino, p80).
                 // |dot(v, p1 - c)| > dot(|v|, h)
-                Vector2 c = node.AABB.Center;
-                Vector2 h = node.AABB.Extents;
+                Vector2 c = node.Aabb.Center;
+                Vector2 h = node.Aabb.Extents;
                 float separation = Math.Abs(Vector2.Dot(new Vector2(-r.Y, r.X), p1 - c)) - Vector2.Dot(absV, h);
                 if (separation > 0.0f)
                 {
@@ -449,14 +449,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                         // Update segment bounding box.
                         maxFraction = value;
                         Vector2 t = p1 + maxFraction * (p2 - p1);
-                        segmentAABB.LowerBound = Vector2.Min(p1, t);
-                        segmentAABB.UpperBound = Vector2.Max(p1, t);
+                        segmentAabb.LowerBound = Vector2.Min(p1, t);
+                        segmentAabb.UpperBound = Vector2.Max(p1, t);
                     }
                 }
                 else
                 {
-                    _raycastStack.Push(node.Child1);
-                    _raycastStack.Push(node.Child2);
+                    raycastStack.Push(node.Child1);
+                    raycastStack.Push(node.Child2);
                 }
             }
         }
@@ -468,41 +468,41 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         private int AllocateNode()
         {
             // Expand the node pool as needed.
-            if (_freeList == NullNode)
+            if (freeList == NullNode)
             {
-                Debug.Assert(_nodeCount == _nodeCapacity);
+                Debug.Assert(nodeCount == nodeCapacity);
 
                 // The free list is empty. Rebuild a bigger pool.
-                TreeNode<T>[] oldNodes = _nodes;
-                _nodeCapacity *= 2;
-                _nodes = new TreeNode<T>[_nodeCapacity];
-                Array.Copy(oldNodes, _nodes, _nodeCount);
+                TreeNode<T>[] oldNodes = nodes;
+                nodeCapacity *= 2;
+                nodes = new TreeNode<T>[nodeCapacity];
+                Array.Copy(oldNodes, nodes, nodeCount);
 
                 // Build a linked list for the free list. The parent
                 // pointer becomes the "next" pointer.
-                for (int i = _nodeCount; i < _nodeCapacity - 1; ++i)
+                for (int i = nodeCount; i < nodeCapacity - 1; ++i)
                 {
-                    _nodes[i] = new TreeNode<T>();
-                    _nodes[i].ParentOrNext = i + 1;
-                    _nodes[i].Height = -1;
+                    nodes[i] = new TreeNode<T>();
+                    nodes[i].ParentOrNext = i + 1;
+                    nodes[i].Height = -1;
                 }
 
-                _nodes[_nodeCapacity - 1] = new TreeNode<T>();
-                _nodes[_nodeCapacity - 1].ParentOrNext = NullNode;
-                _nodes[_nodeCapacity - 1].Height = -1;
-                _freeList = _nodeCount;
+                nodes[nodeCapacity - 1] = new TreeNode<T>();
+                nodes[nodeCapacity - 1].ParentOrNext = NullNode;
+                nodes[nodeCapacity - 1].Height = -1;
+                freeList = nodeCount;
             }
 
             // Peel a node off the free list.
-            int nodeId = _freeList;
-            _freeList = _nodes[nodeId].ParentOrNext;
-            _nodes[nodeId].ParentOrNext = NullNode;
-            _nodes[nodeId].Child1 = NullNode;
-            _nodes[nodeId].Child2 = NullNode;
-            _nodes[nodeId].Height = 0;
-            _nodes[nodeId].UserData = default(T?);
-            _nodes[nodeId].Moved = false;
-            ++_nodeCount;
+            int nodeId = freeList;
+            freeList = nodes[nodeId].ParentOrNext;
+            nodes[nodeId].ParentOrNext = NullNode;
+            nodes[nodeId].Child1 = NullNode;
+            nodes[nodeId].Child2 = NullNode;
+            nodes[nodeId].Height = 0;
+            nodes[nodeId].UserData = default(T?);
+            nodes[nodeId].Moved = false;
+            ++nodeCount;
             return nodeId;
         }
 
@@ -512,12 +512,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="nodeId">The node id</param>
         private void FreeNode(int nodeId)
         {
-            Debug.Assert(0 <= nodeId && nodeId < _nodeCapacity);
-            Debug.Assert(0 < _nodeCount);
-            _nodes[nodeId].ParentOrNext = _freeList;
-            _nodes[nodeId].Height = -1;
-            _freeList = nodeId;
-            --_nodeCount;
+            Debug.Assert(0 <= nodeId && nodeId < nodeCapacity);
+            Debug.Assert(0 < nodeCount);
+            nodes[nodeId].ParentOrNext = freeList;
+            nodes[nodeId].Height = -1;
+            freeList = nodeId;
+            --nodeCount;
         }
 
         /// <summary>
@@ -526,26 +526,26 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="leaf">The leaf</param>
         private void InsertLeaf(int leaf)
         {
-            if (_root == NullNode)
+            if (root == NullNode)
             {
-                _root = leaf;
-                _nodes[_root].ParentOrNext = NullNode;
+                root = leaf;
+                nodes[root].ParentOrNext = NullNode;
                 return;
             }
 
             // Find the best sibling for this node
-            AABB leafAABB = _nodes[leaf].AABB;
-            int index = _root;
-            while (!_nodes[index].IsLeaf())
+            Aabb leafAabb = nodes[leaf].Aabb;
+            int index = root;
+            while (!nodes[index].IsLeaf())
             {
-                int child1 = _nodes[index].Child1;
-                int child2 = _nodes[index].Child2;
+                int child1 = nodes[index].Child1;
+                int child2 = nodes[index].Child2;
 
-                float area = _nodes[index].AABB.Perimeter;
+                float area = nodes[index].Aabb.Perimeter;
 
-                AABB combinedAABB = new AABB();
-                combinedAABB.Combine(ref _nodes[index].AABB, ref leafAABB);
-                float combinedArea = combinedAABB.Perimeter;
+                Aabb combinedAabb = new Aabb();
+                combinedAabb.Combine(ref nodes[index].Aabb, ref leafAabb);
+                float combinedArea = combinedAabb.Perimeter;
 
                 // Cost of creating a new parent for this node and the new leaf
                 float cost = 2.0f * combinedArea;
@@ -555,34 +555,34 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
 
                 // Cost of descending into child1
                 float cost1;
-                if (_nodes[child1].IsLeaf())
+                if (nodes[child1].IsLeaf())
                 {
-                    AABB aabb = new AABB();
-                    aabb.Combine(ref leafAABB, ref _nodes[child1].AABB);
+                    Aabb aabb = new Aabb();
+                    aabb.Combine(ref leafAabb, ref nodes[child1].Aabb);
                     cost1 = aabb.Perimeter + inheritanceCost;
                 }
                 else
                 {
-                    AABB aabb = new AABB();
-                    aabb.Combine(ref leafAABB, ref _nodes[child1].AABB);
-                    float oldArea = _nodes[child1].AABB.Perimeter;
+                    Aabb aabb = new Aabb();
+                    aabb.Combine(ref leafAabb, ref nodes[child1].Aabb);
+                    float oldArea = nodes[child1].Aabb.Perimeter;
                     float newArea = aabb.Perimeter;
                     cost1 = newArea - oldArea + inheritanceCost;
                 }
 
                 // Cost of descending into child2
                 float cost2;
-                if (_nodes[child2].IsLeaf())
+                if (nodes[child2].IsLeaf())
                 {
-                    AABB aabb = new AABB();
-                    aabb.Combine(ref leafAABB, ref _nodes[child2].AABB);
+                    Aabb aabb = new Aabb();
+                    aabb.Combine(ref leafAabb, ref nodes[child2].Aabb);
                     cost2 = aabb.Perimeter + inheritanceCost;
                 }
                 else
                 {
-                    AABB aabb = new AABB();
-                    aabb.Combine(ref leafAABB, ref _nodes[child2].AABB);
-                    float oldArea = _nodes[child2].AABB.Perimeter;
+                    Aabb aabb = new Aabb();
+                    aabb.Combine(ref leafAabb, ref nodes[child2].Aabb);
+                    float oldArea = nodes[child2].Aabb.Perimeter;
                     float newArea = aabb.Perimeter;
                     cost2 = newArea - oldArea + inheritanceCost;
                 }
@@ -607,56 +607,56 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
             int sibling = index;
 
             // Create a new parent.
-            int oldParent = _nodes[sibling].ParentOrNext;
+            int oldParent = nodes[sibling].ParentOrNext;
             int newParent = AllocateNode();
-            _nodes[newParent].ParentOrNext = oldParent;
-            _nodes[newParent].UserData = default(T?);
-            _nodes[newParent].AABB.Combine(ref leafAABB, ref _nodes[sibling].AABB);
-            _nodes[newParent].Height = _nodes[sibling].Height + 1;
+            nodes[newParent].ParentOrNext = oldParent;
+            nodes[newParent].UserData = default(T?);
+            nodes[newParent].Aabb.Combine(ref leafAabb, ref nodes[sibling].Aabb);
+            nodes[newParent].Height = nodes[sibling].Height + 1;
 
             if (oldParent != NullNode)
             {
                 // The sibling was not the root.
-                if (_nodes[oldParent].Child1 == sibling)
+                if (nodes[oldParent].Child1 == sibling)
                 {
-                    _nodes[oldParent].Child1 = newParent;
+                    nodes[oldParent].Child1 = newParent;
                 }
                 else
                 {
-                    _nodes[oldParent].Child2 = newParent;
+                    nodes[oldParent].Child2 = newParent;
                 }
 
-                _nodes[newParent].Child1 = sibling;
-                _nodes[newParent].Child2 = leaf;
-                _nodes[sibling].ParentOrNext = newParent;
-                _nodes[leaf].ParentOrNext = newParent;
+                nodes[newParent].Child1 = sibling;
+                nodes[newParent].Child2 = leaf;
+                nodes[sibling].ParentOrNext = newParent;
+                nodes[leaf].ParentOrNext = newParent;
             }
             else
             {
                 // The sibling was the root.
-                _nodes[newParent].Child1 = sibling;
-                _nodes[newParent].Child2 = leaf;
-                _nodes[sibling].ParentOrNext = newParent;
-                _nodes[leaf].ParentOrNext = newParent;
-                _root = newParent;
+                nodes[newParent].Child1 = sibling;
+                nodes[newParent].Child2 = leaf;
+                nodes[sibling].ParentOrNext = newParent;
+                nodes[leaf].ParentOrNext = newParent;
+                root = newParent;
             }
 
             // Walk back up the tree fixing heights and AABBs
-            index = _nodes[leaf].ParentOrNext;
+            index = nodes[leaf].ParentOrNext;
             while (index != NullNode)
             {
                 index = Balance(index);
 
-                int child1 = _nodes[index].Child1;
-                int child2 = _nodes[index].Child2;
+                int child1 = nodes[index].Child1;
+                int child2 = nodes[index].Child2;
 
                 Debug.Assert(child1 != NullNode);
                 Debug.Assert(child2 != NullNode);
 
-                _nodes[index].Height = 1 + Math.Max(_nodes[child1].Height, _nodes[child2].Height);
-                _nodes[index].AABB.Combine(ref _nodes[child1].AABB, ref _nodes[child2].AABB);
+                nodes[index].Height = 1 + Math.Max(nodes[child1].Height, nodes[child2].Height);
+                nodes[index].Aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
 
-                index = _nodes[index].ParentOrNext;
+                index = nodes[index].ParentOrNext;
             }
 
             //Validate();
@@ -668,37 +668,37 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="leaf">The leaf</param>
         private void RemoveLeaf(int leaf)
         {
-            if (leaf == _root)
+            if (leaf == root)
             {
-                _root = NullNode;
+                root = NullNode;
                 return;
             }
 
-            int parent = _nodes[leaf].ParentOrNext;
-            int grandParent = _nodes[parent].ParentOrNext;
+            int parent = nodes[leaf].ParentOrNext;
+            int grandParent = nodes[parent].ParentOrNext;
             int sibling;
-            if (_nodes[parent].Child1 == leaf)
+            if (nodes[parent].Child1 == leaf)
             {
-                sibling = _nodes[parent].Child2;
+                sibling = nodes[parent].Child2;
             }
             else
             {
-                sibling = _nodes[parent].Child1;
+                sibling = nodes[parent].Child1;
             }
 
             if (grandParent != NullNode)
             {
                 // Destroy parent and connect sibling to grandParent.
-                if (_nodes[grandParent].Child1 == parent)
+                if (nodes[grandParent].Child1 == parent)
                 {
-                    _nodes[grandParent].Child1 = sibling;
+                    nodes[grandParent].Child1 = sibling;
                 }
                 else
                 {
-                    _nodes[grandParent].Child2 = sibling;
+                    nodes[grandParent].Child2 = sibling;
                 }
 
-                _nodes[sibling].ParentOrNext = grandParent;
+                nodes[sibling].ParentOrNext = grandParent;
                 FreeNode(parent);
 
                 // Adjust ancestor bounds.
@@ -707,19 +707,19 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 {
                     index = Balance(index);
 
-                    int child1 = _nodes[index].Child1;
-                    int child2 = _nodes[index].Child2;
+                    int child1 = nodes[index].Child1;
+                    int child2 = nodes[index].Child2;
 
-                    _nodes[index].AABB.Combine(ref _nodes[child1].AABB, ref _nodes[child2].AABB);
-                    _nodes[index].Height = 1 + Math.Max(_nodes[child1].Height, _nodes[child2].Height);
+                    nodes[index].Aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
+                    nodes[index].Height = 1 + Math.Max(nodes[child1].Height, nodes[child2].Height);
 
-                    index = _nodes[index].ParentOrNext;
+                    index = nodes[index].ParentOrNext;
                 }
             }
             else
             {
-                _root = sibling;
-                _nodes[sibling].ParentOrNext = NullNode;
+                root = sibling;
+                nodes[sibling].ParentOrNext = NullNode;
                 FreeNode(parent);
             }
 
@@ -733,77 +733,77 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         {
             Debug.Assert(iA != NullNode);
 
-            TreeNode<T> A = _nodes[iA];
-            if (A.IsLeaf() || A.Height < 2)
+            TreeNode<T> a = nodes[iA];
+            if (a.IsLeaf() || a.Height < 2)
             {
                 return iA;
             }
 
-            int iB = A.Child1;
-            int iC = A.Child2;
-            Debug.Assert(0 <= iB && iB < _nodeCapacity);
-            Debug.Assert(0 <= iC && iC < _nodeCapacity);
+            int iB = a.Child1;
+            int iC = a.Child2;
+            Debug.Assert(0 <= iB && iB < nodeCapacity);
+            Debug.Assert(0 <= iC && iC < nodeCapacity);
 
-            TreeNode<T> B = _nodes[iB];
-            TreeNode<T> C = _nodes[iC];
+            TreeNode<T> b = nodes[iB];
+            TreeNode<T> c = nodes[iC];
 
-            int balance = C.Height - B.Height;
+            int balance = c.Height - b.Height;
 
             // Rotate C up
             if (balance > 1)
             {
-                int iF = C.Child1;
-                int iG = C.Child2;
-                TreeNode<T> F = _nodes[iF];
-                TreeNode<T> G = _nodes[iG];
-                Debug.Assert(0 <= iF && iF < _nodeCapacity);
-                Debug.Assert(0 <= iG && iG < _nodeCapacity);
+                int iF = c.Child1;
+                int iG = c.Child2;
+                TreeNode<T> f = nodes[iF];
+                TreeNode<T> g = nodes[iG];
+                Debug.Assert(0 <= iF && iF < nodeCapacity);
+                Debug.Assert(0 <= iG && iG < nodeCapacity);
 
                 // Swap A and C
-                C.Child1 = iA;
-                C.ParentOrNext = A.ParentOrNext;
-                A.ParentOrNext = iC;
+                c.Child1 = iA;
+                c.ParentOrNext = a.ParentOrNext;
+                a.ParentOrNext = iC;
 
                 // A's old parent should point to C
-                if (C.ParentOrNext != NullNode)
+                if (c.ParentOrNext != NullNode)
                 {
-                    if (_nodes[C.ParentOrNext].Child1 == iA)
+                    if (nodes[c.ParentOrNext].Child1 == iA)
                     {
-                        _nodes[C.ParentOrNext].Child1 = iC;
+                        nodes[c.ParentOrNext].Child1 = iC;
                     }
                     else
                     {
-                        Debug.Assert(_nodes[C.ParentOrNext].Child2 == iA);
-                        _nodes[C.ParentOrNext].Child2 = iC;
+                        Debug.Assert(nodes[c.ParentOrNext].Child2 == iA);
+                        nodes[c.ParentOrNext].Child2 = iC;
                     }
                 }
                 else
                 {
-                    _root = iC;
+                    root = iC;
                 }
 
                 // Rotate
-                if (F.Height > G.Height)
+                if (f.Height > g.Height)
                 {
-                    C.Child2 = iF;
-                    A.Child2 = iG;
-                    G.ParentOrNext = iA;
-                    A.AABB.Combine(ref B.AABB, ref G.AABB);
-                    C.AABB.Combine(ref A.AABB, ref F.AABB);
+                    c.Child2 = iF;
+                    a.Child2 = iG;
+                    g.ParentOrNext = iA;
+                    a.Aabb.Combine(ref b.Aabb, ref g.Aabb);
+                    c.Aabb.Combine(ref a.Aabb, ref f.Aabb);
 
-                    A.Height = 1 + Math.Max(B.Height, G.Height);
-                    C.Height = 1 + Math.Max(A.Height, F.Height);
+                    a.Height = 1 + Math.Max(b.Height, g.Height);
+                    c.Height = 1 + Math.Max(a.Height, f.Height);
                 }
                 else
                 {
-                    C.Child2 = iG;
-                    A.Child2 = iF;
-                    F.ParentOrNext = iA;
-                    A.AABB.Combine(ref B.AABB, ref F.AABB);
-                    C.AABB.Combine(ref A.AABB, ref G.AABB);
+                    c.Child2 = iG;
+                    a.Child2 = iF;
+                    f.ParentOrNext = iA;
+                    a.Aabb.Combine(ref b.Aabb, ref f.Aabb);
+                    c.Aabb.Combine(ref a.Aabb, ref g.Aabb);
 
-                    A.Height = 1 + Math.Max(B.Height, F.Height);
-                    C.Height = 1 + Math.Max(A.Height, G.Height);
+                    a.Height = 1 + Math.Max(b.Height, f.Height);
+                    c.Height = 1 + Math.Max(a.Height, g.Height);
                 }
 
                 return iC;
@@ -812,58 +812,58 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
             // Rotate B up
             if (balance < -1)
             {
-                int iD = B.Child1;
-                int iE = B.Child2;
-                TreeNode<T> D = _nodes[iD];
-                TreeNode<T> E = _nodes[iE];
-                Debug.Assert(0 <= iD && iD < _nodeCapacity);
-                Debug.Assert(0 <= iE && iE < _nodeCapacity);
+                int iD = b.Child1;
+                int iE = b.Child2;
+                TreeNode<T> d = nodes[iD];
+                TreeNode<T> e = nodes[iE];
+                Debug.Assert(0 <= iD && iD < nodeCapacity);
+                Debug.Assert(0 <= iE && iE < nodeCapacity);
 
                 // Swap A and B
-                B.Child1 = iA;
-                B.ParentOrNext = A.ParentOrNext;
-                A.ParentOrNext = iB;
+                b.Child1 = iA;
+                b.ParentOrNext = a.ParentOrNext;
+                a.ParentOrNext = iB;
 
                 // A's old parent should point to B
-                if (B.ParentOrNext != NullNode)
+                if (b.ParentOrNext != NullNode)
                 {
-                    if (_nodes[B.ParentOrNext].Child1 == iA)
+                    if (nodes[b.ParentOrNext].Child1 == iA)
                     {
-                        _nodes[B.ParentOrNext].Child1 = iB;
+                        nodes[b.ParentOrNext].Child1 = iB;
                     }
                     else
                     {
-                        Debug.Assert(_nodes[B.ParentOrNext].Child2 == iA);
-                        _nodes[B.ParentOrNext].Child2 = iB;
+                        Debug.Assert(nodes[b.ParentOrNext].Child2 == iA);
+                        nodes[b.ParentOrNext].Child2 = iB;
                     }
                 }
                 else
                 {
-                    _root = iB;
+                    root = iB;
                 }
 
                 // Rotate
-                if (D.Height > E.Height)
+                if (d.Height > e.Height)
                 {
-                    B.Child2 = iD;
-                    A.Child1 = iE;
-                    E.ParentOrNext = iA;
-                    A.AABB.Combine(ref C.AABB, ref E.AABB);
-                    B.AABB.Combine(ref A.AABB, ref D.AABB);
+                    b.Child2 = iD;
+                    a.Child1 = iE;
+                    e.ParentOrNext = iA;
+                    a.Aabb.Combine(ref c.Aabb, ref e.Aabb);
+                    b.Aabb.Combine(ref a.Aabb, ref d.Aabb);
 
-                    A.Height = 1 + Math.Max(C.Height, E.Height);
-                    B.Height = 1 + Math.Max(A.Height, D.Height);
+                    a.Height = 1 + Math.Max(c.Height, e.Height);
+                    b.Height = 1 + Math.Max(a.Height, d.Height);
                 }
                 else
                 {
-                    B.Child2 = iE;
-                    A.Child1 = iD;
-                    D.ParentOrNext = iA;
-                    A.AABB.Combine(ref C.AABB, ref D.AABB);
-                    B.AABB.Combine(ref A.AABB, ref E.AABB);
+                    b.Child2 = iE;
+                    a.Child1 = iD;
+                    d.ParentOrNext = iA;
+                    a.Aabb.Combine(ref c.Aabb, ref d.Aabb);
+                    b.Aabb.Combine(ref a.Aabb, ref e.Aabb);
 
-                    A.Height = 1 + Math.Max(C.Height, D.Height);
-                    B.Height = 1 + Math.Max(A.Height, E.Height);
+                    a.Height = 1 + Math.Max(c.Height, d.Height);
+                    b.Height = 1 + Math.Max(a.Height, e.Height);
                 }
 
                 return iB;
@@ -877,8 +877,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight(int nodeId)
         {
-            Debug.Assert(0 <= nodeId && nodeId < _nodeCapacity);
-            TreeNode<T> node = _nodes[nodeId];
+            Debug.Assert(0 <= nodeId && nodeId < nodeCapacity);
+            TreeNode<T> node = nodes[nodeId];
 
             if (node.IsLeaf())
             {
@@ -894,7 +894,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight()
         {
-            int height = ComputeHeight(_root);
+            int height = ComputeHeight(root);
             return height;
         }
 
@@ -909,12 +909,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 return;
             }
 
-            if (index == _root)
+            if (index == root)
             {
-                Debug.Assert(_nodes[index].ParentOrNext == NullNode);
+                Debug.Assert(nodes[index].ParentOrNext == NullNode);
             }
 
-            TreeNode<T> node = _nodes[index];
+            TreeNode<T> node = nodes[index];
 
             int child1 = node.Child1;
             int child2 = node.Child2;
@@ -927,11 +927,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 return;
             }
 
-            Debug.Assert(0 <= child1 && child1 < _nodeCapacity);
-            Debug.Assert(0 <= child2 && child2 < _nodeCapacity);
+            Debug.Assert(0 <= child1 && child1 < nodeCapacity);
+            Debug.Assert(0 <= child2 && child2 < nodeCapacity);
 
-            Debug.Assert(_nodes[child1].ParentOrNext == index);
-            Debug.Assert(_nodes[child2].ParentOrNext == index);
+            Debug.Assert(nodes[child1].ParentOrNext == index);
+            Debug.Assert(nodes[child2].ParentOrNext == index);
 
             ValidateStructure(child1);
             ValidateStructure(child2);
@@ -948,7 +948,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 return;
             }
 
-            TreeNode<T> node = _nodes[index];
+            TreeNode<T> node = nodes[index];
 
             int child1 = node.Child1;
             int child2 = node.Child2;
@@ -961,19 +961,19 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 return;
             }
 
-            Debug.Assert(0 <= child1 && child1 < _nodeCapacity);
-            Debug.Assert(0 <= child2 && child2 < _nodeCapacity);
+            Debug.Assert(0 <= child1 && child1 < nodeCapacity);
+            Debug.Assert(0 <= child2 && child2 < nodeCapacity);
 
-            int height1 = _nodes[child1].Height;
-            int height2 = _nodes[child2].Height;
+            int height1 = nodes[child1].Height;
+            int height2 = nodes[child2].Height;
             int height = 1 + Math.Max(height1, height2);
             Debug.Assert(node.Height == height);
 
-            AABB AABB = new AABB();
-            AABB.Combine(ref _nodes[child1].AABB, ref _nodes[child2].AABB);
+            Aabb aabb = new Aabb();
+            aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
 
-            Debug.Assert(AABB.LowerBound == node.AABB.LowerBound);
-            Debug.Assert(AABB.UpperBound == node.AABB.UpperBound);
+            Debug.Assert(aabb.LowerBound == node.Aabb.LowerBound);
+            Debug.Assert(aabb.UpperBound == node.Aabb.UpperBound);
 
             ValidateMetrics(child1);
             ValidateMetrics(child2);
@@ -982,41 +982,41 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <summary>Validate this tree. For testing.</summary>
         public void Validate()
         {
-            ValidateStructure(_root);
-            ValidateMetrics(_root);
+            ValidateStructure(root);
+            ValidateMetrics(root);
 
             int freeCount = 0;
-            int freeIndex = _freeList;
+            int freeIndex = freeList;
             while (freeIndex != NullNode)
             {
-                Debug.Assert(0 <= freeIndex && freeIndex < _nodeCapacity);
-                freeIndex = _nodes[freeIndex].ParentOrNext;
+                Debug.Assert(0 <= freeIndex && freeIndex < nodeCapacity);
+                freeIndex = nodes[freeIndex].ParentOrNext;
                 ++freeCount;
             }
 
             Debug.Assert(Height == ComputeHeight());
 
-            Debug.Assert(_nodeCount + freeCount == _nodeCapacity);
+            Debug.Assert(nodeCount + freeCount == nodeCapacity);
         }
 
         /// <summary>Build an optimal tree. Very expensive. For testing.</summary>
         public void RebuildBottomUp()
         {
-            int[] nodes = new int[_nodeCount];
+            int[] nodes = new int[nodeCount];
             int count = 0;
 
             // Build array of leaves. Free the rest.
-            for (int i = 0; i < _nodeCapacity; ++i)
+            for (int i = 0; i < nodeCapacity; ++i)
             {
-                if (_nodes[i].Height < 0)
+                if (this.nodes[i].Height < 0)
                 {
                     // free node in pool
                     continue;
                 }
 
-                if (_nodes[i].IsLeaf())
+                if (this.nodes[i].IsLeaf())
                 {
-                    _nodes[i].ParentOrNext = NullNode;
+                    this.nodes[i].ParentOrNext = NullNode;
                     nodes[count] = i;
                     ++count;
                 }
@@ -1032,13 +1032,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 int iMin = -1, jMin = -1;
                 for (int i = 0; i < count; ++i)
                 {
-                    AABB AABBi = _nodes[nodes[i]].AABB;
+                    Aabb aabBi = this.nodes[nodes[i]].Aabb;
 
                     for (int j = i + 1; j < count; ++j)
                     {
-                        AABB AABBj = _nodes[nodes[j]].AABB;
-                        AABB b = new AABB();
-                        b.Combine(ref AABBi, ref AABBj);
+                        Aabb aabBj = this.nodes[nodes[j]].Aabb;
+                        Aabb b = new Aabb();
+                        b.Combine(ref aabBi, ref aabBj);
                         float cost = b.Perimeter;
                         if (cost < minCost)
                         {
@@ -1051,15 +1051,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
 
                 int index1 = nodes[iMin];
                 int index2 = nodes[jMin];
-                TreeNode<T> child1 = _nodes[index1];
-                TreeNode<T> child2 = _nodes[index2];
+                TreeNode<T> child1 = this.nodes[index1];
+                TreeNode<T> child2 = this.nodes[index2];
 
                 int parentIndex = AllocateNode();
-                TreeNode<T> parent = _nodes[parentIndex];
+                TreeNode<T> parent = this.nodes[parentIndex];
                 parent.Child1 = index1;
                 parent.Child2 = index2;
                 parent.Height = 1 + Math.Max(child1.Height, child2.Height);
-                parent.AABB.Combine(ref child1.AABB, ref child2.AABB);
+                parent.Aabb.Combine(ref child1.Aabb, ref child2.Aabb);
                 parent.ParentOrNext = NullNode;
 
                 child1.ParentOrNext = parentIndex;
@@ -1070,7 +1070,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 --count;
             }
 
-            _root = nodes[0];
+            root = nodes[0];
 
             Validate();
         }
@@ -1080,10 +1080,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         public void ShiftOrigin(ref Vector2 newOrigin)
         {
             // Build array of leaves. Free the rest.
-            for (int i = 0; i < _nodeCapacity; ++i)
+            for (int i = 0; i < nodeCapacity; ++i)
             {
-                _nodes[i].AABB.LowerBound -= newOrigin;
-                _nodes[i].AABB.UpperBound -= newOrigin;
+                nodes[i].Aabb.LowerBound -= newOrigin;
+                nodes[i].Aabb.UpperBound -= newOrigin;
             }
         }
     }

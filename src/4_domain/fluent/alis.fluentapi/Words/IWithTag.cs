@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     Define the word "Tag"
     /// </summary>
-    /// <typeparam name="Builder">The type of the uilder.</typeparam>
-    /// <typeparam name="Argument">The type of the rgument.</typeparam>
-    public interface IWithTag<Builder, Argument>
+    /// <typeparam name="TBuilder">The type of the uilder.</typeparam>
+    /// <typeparam name="TArgument">The type of the rgument.</typeparam>
+    public interface IWithTag<TBuilder, TArgument>
     {
         /// <summary>Withes the tag.</summary>
         /// <param name="value">The value.</param>
         /// <returns>return the object that you want.</returns>
-        public Builder WithTag(Argument value);
+        public TBuilder WithTag(TArgument value);
     }
 }

@@ -32,7 +32,7 @@ using System.Numerics;
 namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
 {
     /// <summary>This structure is used to keep track of the best separating axis.</summary>
-    public struct EPAxis
+    public struct EpAxis
     {
         /// <summary>
         ///     The normal
@@ -52,6 +52,6 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
         /// <summary>
         ///     The type
         /// </summary>
-        public EPAxisType Type;
+        public EpAxisType Type;
     }
 }

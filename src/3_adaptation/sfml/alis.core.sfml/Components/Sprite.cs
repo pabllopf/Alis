@@ -51,7 +51,7 @@ namespace Alis.Core.Sfml.Components
         /// <summary>
         ///     The texture path
         /// </summary>
-        public string texturePath;
+        public string TexturePath;
 
         /// <summary>
         ///     The transform
@@ -63,7 +63,7 @@ namespace Alis.Core.Sfml.Components
         /// </summary>
         public Sprite()
         {
-            texturePath = "";
+            TexturePath = "";
             transform = new Transform();
             sprite = new SFML.Graphics.Sprite();
             RenderManager.Attach(this);
@@ -75,7 +75,7 @@ namespace Alis.Core.Sfml.Components
         /// <param name="texturePath">The texture path</param>
         public Sprite(string texturePath)
         {
-            this.texturePath = texturePath;
+            this.TexturePath = texturePath;
 
             transform = new Transform();
 
@@ -116,7 +116,7 @@ namespace Alis.Core.Sfml.Components
         public override void Start()
         {
             transform = GameObject.Transform;
-            Console.WriteLine(texturePath);
+            Console.WriteLine(TexturePath);
         }
 
         /// <summary>

@@ -40,7 +40,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
         /// <summary>
         ///     The type
         /// </summary>
-        private readonly PhysicsLogicType _type;
+        private readonly PhysicsLogicType type;
 
         /// <summary>
         ///     The world
@@ -54,7 +54,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
         /// <param name="type">The type</param>
         protected PhysicsLogic(World world, PhysicsLogicType type)
         {
-            _type = type;
+            this.type = type;
             World = world;
         }
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
         /// <returns>The bool</returns>
         public override bool IsActiveOn(Body body)
         {
-            if (body.PhysicsLogicFilter.IsPhysicsLogicIgnored(_type))
+            if (body.PhysicsLogicFilter.IsPhysicsLogicIgnored(type))
             {
                 return false;
             }

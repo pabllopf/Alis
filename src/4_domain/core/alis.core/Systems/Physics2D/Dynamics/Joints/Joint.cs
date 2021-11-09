@@ -44,25 +44,25 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The joint type
         /// </summary>
-        private readonly JointType _jointType;
+        private readonly JointType jointType;
 
         /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
-        private Body _bodyA;
+        private Body bodyA;
 
         /// <summary>
         ///     The body
         /// </summary>
-        private Body _bodyB;
+        private Body bodyB;
 
         /// <summary>
         ///     The breakpoint
         /// </summary>
-        private float _breakpoint;
+        private float breakpoint;
 
         /// <summary>
         ///     The collide connected
         /// </summary>
-        private bool _collideConnected;
+        private bool collideConnected;
 
         /// <summary>
         ///     The joint edge
@@ -77,7 +77,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The enabled
         /// </summary>
-        private bool _enabled;
+        private bool enabled;
 
         /// <summary>
         ///     The island flag
@@ -87,7 +87,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The user data
         /// </summary>
-        private object _userData;
+        private object userData;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class
@@ -95,11 +95,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="jointType">The joint type</param>
         protected Joint(JointType jointType)
         {
-            _jointType = jointType;
-            _breakpoint = float.MaxValue;
+            this.jointType = jointType;
+            breakpoint = float.MaxValue;
 
             //Connected bodies should not collide by default
-            _collideConnected = false;
+            collideConnected = false;
             Enabled = true;
         }
 
@@ -129,39 +129,39 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         {
             Debug.Assert(def.BodyA != def.BodyB);
 
-            _jointType = def.Type;
+            jointType = def.Type;
             BodyA = def.BodyA;
             BodyB = def.BodyB;
-            _collideConnected = def.CollideConnected;
+            collideConnected = def.CollideConnected;
             IslandFlag = false;
-            _userData = def.UserData;
+            userData = def.UserData;
         }
 
         /// <summary>Gets or sets the type of the joint.</summary>
         /// <value>The type of the joint.</value>
-        public JointType JointType => _jointType;
+        public JointType JointType => jointType;
 
         /// <summary>
         ///     Gets or sets the value of the enabled
         /// </summary>
         public bool Enabled
         {
-            get => _enabled;
-            set => _enabled = value;
+            get => enabled;
+            set => enabled = value;
         }
 
         /// <summary>Get the first body attached to this joint.</summary>
         public Body BodyA
         {
-            get => _bodyA;
-            set { _bodyA = value; }
+            get => bodyA;
+            set { bodyA = value; }
         }
 
         /// <summary>Get the second body attached to this joint.</summary>
         public Body BodyB
         {
-            get => _bodyB;
-            set { _bodyB = value; }
+            get => bodyB;
+            set { bodyB = value; }
         }
 
         /// <summary>
@@ -180,15 +180,15 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <value>The data.</value>
         public object UserData
         {
-            get => _userData;
-            set => _userData = value;
+            get => userData;
+            set => userData = value;
         }
 
         /// <summary>Set this flag to true if the attached bodies should collide.</summary>
         public bool CollideConnected
         {
-            get => _collideConnected;
-            set => _collideConnected = value;
+            get => collideConnected;
+            set => collideConnected = value;
         }
 
         /// <summary>
@@ -197,8 +197,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         public float Breakpoint
         {
-            get => _breakpoint;
-            set => _breakpoint = value;
+            get => breakpoint;
+            set => breakpoint = value;
         }
 
         /// <summary>Fires when the joint is broken.</summary>
@@ -264,7 +264,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             float jointErrorSquared = GetReactionForce(invDt).LengthSquared();
 
-            if (Math.Abs(jointErrorSquared) <= _breakpoint * _breakpoint)
+            if (Math.Abs(jointErrorSquared) <= breakpoint * breakpoint)
             {
                 return;
             }

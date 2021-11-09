@@ -35,7 +35,7 @@ using Alis.Core.Systems.Physics2D.Utilities;
 namespace Alis.Core.Systems.Physics2D.Shared
 {
     /// <summary>An axis aligned bounding box.</summary>
-    public struct AABB
+    public struct Aabb
     {
         /// <summary>The lower vertex</summary>
         public Vector2 LowerBound;
@@ -44,32 +44,32 @@ namespace Alis.Core.Systems.Physics2D.Shared
         public Vector2 UpperBound;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AABB" /> class
+        ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
-        public AABB(Vector2 min, Vector2 max)
+        public Aabb(Vector2 min, Vector2 max)
             : this(ref min, ref max)
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AABB" /> class
+        ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
         /// <param name="center">The center</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
-        public AABB(Vector2 center, float width, float height)
+        public Aabb(Vector2 center, float width, float height)
             : this(center - new Vector2(width / 2, height / 2), center + new Vector2(width / 2, height / 2))
         {
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AABB" /> class
+        ///     Initializes a new instance of the <see cref="Aabb" /> class
         /// </summary>
         /// <param name="min">The min</param>
         /// <param name="max">The max</param>
-        public AABB(ref Vector2 min, ref Vector2 max)
+        public Aabb(ref Vector2 min, ref Vector2 max)
         {
             LowerBound = new Vector2(Math.Min(min.X, max.X), Math.Min(min.Y, max.Y));
             UpperBound = new Vector2(Math.Max(min.X, max.X), Math.Max(min.Y, max.Y));
@@ -118,16 +118,16 @@ namespace Alis.Core.Systems.Physics2D.Shared
         }
 
         /// <summary>First quadrant</summary>
-        public AABB Q1 => new AABB(Center, UpperBound);
+        public Aabb Q1 => new Aabb(Center, UpperBound);
 
         /// <summary>Second quadrant</summary>
-        public AABB Q2 => new AABB(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y));
+        public Aabb Q2 => new Aabb(new Vector2(LowerBound.X, Center.Y), new Vector2(Center.X, UpperBound.Y));
 
         /// <summary>Third quadrant</summary>
-        public AABB Q3 => new AABB(LowerBound, Center);
+        public Aabb Q3 => new Aabb(LowerBound, Center);
 
         /// <summary>Forth quadrant</summary>
-        public AABB Q4 => new AABB(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y));
+        public Aabb Q4 => new Aabb(new Vector2(Center.X, LowerBound.Y), new Vector2(UpperBound.X, Center.Y));
 
         /// <summary>Verify that the bounds are sorted. And the bounds are valid numbers (not NaN).</summary>
         /// <returns><c>true</c> if this instance is valid; otherwise, <c>false</c>.</returns>
@@ -140,7 +140,7 @@ namespace Alis.Core.Systems.Physics2D.Shared
 
         /// <summary>Combine an AABB into this one.</summary>
         /// <param name="aabb">The AABB.</param>
-        public void Combine(ref AABB aabb)
+        public void Combine(ref Aabb aabb)
         {
             LowerBound = Vector2.Min(LowerBound, aabb.LowerBound);
             UpperBound = Vector2.Max(UpperBound, aabb.UpperBound);
@@ -149,7 +149,7 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <summary>Combine two AABBs into this one.</summary>
         /// <param name="aabb1">The aabb1.</param>
         /// <param name="aabb2">The aabb2.</param>
-        public void Combine(ref AABB aabb1, ref AABB aabb2)
+        public void Combine(ref Aabb aabb1, ref Aabb aabb2)
         {
             LowerBound = Vector2.Min(aabb1.LowerBound, aabb2.LowerBound);
             UpperBound = Vector2.Max(aabb1.UpperBound, aabb2.UpperBound);
@@ -158,7 +158,7 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <summary>Does this AABB contain the provided AABB.</summary>
         /// <param name="aabb">The AABB.</param>
         /// <returns><c>true</c> if it contains the specified AABB; otherwise, <c>false</c>.</returns>
-        public bool Contains(ref AABB aabb)
+        public bool Contains(ref Aabb aabb)
         {
             bool result = LowerBound.X <= aabb.LowerBound.X;
             result = result && LowerBound.Y <= aabb.LowerBound.Y;
@@ -179,7 +179,7 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <param name="a">The first AABB.</param>
         /// <param name="b">The second AABB.</param>
         /// <returns>True if they are overlapping.</returns>
-        public static bool TestOverlap(ref AABB a, ref AABB b)
+        public static bool TestOverlap(ref Aabb a, ref Aabb b)
         {
             Vector2 d1 = b.LowerBound - a.UpperBound;
             Vector2 d2 = a.LowerBound - b.UpperBound;
@@ -209,26 +209,26 @@ namespace Alis.Core.Systems.Physics2D.Shared
 
             for (int i = 0; i < 2; ++i)
             {
-                float absD_i = i == 0 ? absD.X : absD.Y;
-                float lowerBound_i = i == 0 ? LowerBound.X : LowerBound.Y;
-                float upperBound_i = i == 0 ? UpperBound.X : UpperBound.Y;
-                float p_i = i == 0 ? p.X : p.Y;
+                float absDI = i == 0 ? absD.X : absD.Y;
+                float lowerBoundI = i == 0 ? LowerBound.X : LowerBound.Y;
+                float upperBoundI = i == 0 ? UpperBound.X : UpperBound.Y;
+                float pI = i == 0 ? p.X : p.Y;
 
-                if (absD_i < MathConstants.Epsilon)
+                if (absDI < MathConstants.Epsilon)
                 {
                     // Parallel.
-                    if (p_i < lowerBound_i || upperBound_i < p_i)
+                    if (pI < lowerBoundI || upperBoundI < pI)
                     {
                         return false;
                     }
                 }
                 else
                 {
-                    float d_i = i == 0 ? d.X : d.Y;
+                    float dI = i == 0 ? d.X : d.Y;
 
-                    float inv_d = 1.0f / d_i;
-                    float t1 = (lowerBound_i - p_i) * inv_d;
-                    float t2 = (upperBound_i - p_i) * inv_d;
+                    float invD = 1.0f / dI;
+                    float t1 = (lowerBoundI - pI) * invD;
+                    float t2 = (upperBoundI - pI) * invD;
 
                     // Sign of the normal vector.
                     float s = -1.0f;

@@ -60,7 +60,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <summary>
         ///     The inv ib
         /// </summary>
-        public float InvIA, InvIB;
+        public float InvIa, InvIb;
 
         /// <summary>
         ///     The inv mass

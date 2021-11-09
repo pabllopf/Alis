@@ -51,67 +51,67 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The body
         /// </summary>
-        internal Body _bodyprivate;
+        internal Body Bodyprivate;
 
         /// <summary>
         ///     The collides with
         /// </summary>
-        internal Category _collidesWithprivate;
+        internal Category CollidesWithprivate;
 
         /// <summary>
         ///     The collision categories
         /// </summary>
-        internal Category _collisionCategoriesprivate;
+        internal Category CollisionCategoriesprivate;
 
         /// <summary>
         ///     The collision group
         /// </summary>
-        internal short _collisionGroupPrivate;
+        internal short CollisionGroupPrivate;
 
         /// <summary>
         ///     The friction
         /// </summary>
-        internal float _frictionprivate;
+        internal float Frictionprivate;
 
         /// <summary>
         ///     The ignore ccd with
         /// </summary>
-        private Category _ignoreCcdWith;
+        private Category ignoreCcdWith;
 
         /// <summary>
         ///     The is sensor
         /// </summary>
-        internal bool _isSensorPrivate;
+        internal bool IsSensorPrivate;
 
         /// <summary>
         ///     The proxies
         /// </summary>
-        private FixtureProxy[] _proxies;
+        private FixtureProxy[] proxies;
 
         /// <summary>
         ///     The proxy count
         /// </summary>
-        private int _proxyCount;
+        private int proxyCount;
 
         /// <summary>
         ///     The restitution
         /// </summary>
-        internal float _restitutionprivate;
+        internal float Restitutionprivate;
 
         /// <summary>
         ///     The restitution threshold
         /// </summary>
-        internal float _restitutionThresholdPrivate;
+        internal float RestitutionThresholdPrivate;
 
         /// <summary>
         ///     The shape
         /// </summary>
-        internal Shape _shapePrivate;
+        internal Shape ShapePrivate;
 
         /// <summary>
         ///     The user data
         /// </summary>
-        private object _userData;
+        private object userData;
 
         /// <summary>Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.</summary>
         public AfterCollisionHandler AfterCollision;
@@ -143,31 +143,31 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="def">The def</param>
         internal Fixture(FixtureDef def)
         {
-            _userData = def.UserData;
-            _frictionprivate = def.Friction;
-            _restitutionprivate = def.Restitution;
-            _restitutionThresholdPrivate = def.RestitutionThreshold;
+            userData = def.UserData;
+            Frictionprivate = def.Friction;
+            Restitutionprivate = def.Restitution;
+            RestitutionThresholdPrivate = def.RestitutionThreshold;
 
-            _collisionGroupPrivate = def.Filter.Group;
-            _collisionCategoriesprivate = def.Filter.Category;
-            _collidesWithprivate = def.Filter.CategoryMask;
+            CollisionGroupPrivate = def.Filter.Group;
+            CollisionCategoriesprivate = def.Filter.Category;
+            CollidesWithprivate = def.Filter.CategoryMask;
 
             //Velcro: we have support for ignoring CCD with certain groups
-            _ignoreCcdWith = Settings.DefaultFixtureIgnoreCcdWith;
+            ignoreCcdWith = Settings.DefaultFixtureIgnoreCcdWith;
 
-            _isSensorPrivate = def.IsSensor;
-            _shapePrivate = def.Shape.Clone();
+            IsSensorPrivate = def.IsSensor;
+            ShapePrivate = def.Shape.Clone();
 
             // Reserve proxy space
             int childCount = Shape.ChildCount;
-            _proxies = new FixtureProxy[childCount];
+            proxies = new FixtureProxy[childCount];
             for (int i = 0; i < childCount; ++i)
             {
-                _proxies[i].Fixture = null;
-                _proxies[i].ProxyId = DynamicTreeBroadPhase.NullProxy;
+                proxies[i].Fixture = null;
+                proxies[i].ProxyId = DynamicTreeBroadPhase.NullProxy;
             }
 
-            _proxyCount = 0;
+            proxyCount = 0;
 
             //TODO:
             //m_density = def->density;
@@ -178,25 +178,25 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public Category IgnoreCcdWith
         {
-            get => _ignoreCcdWith;
-            set => _ignoreCcdWith = value;
+            get => ignoreCcdWith;
+            set => ignoreCcdWith = value;
         }
 
         /// <summary>
         ///     Gets the value of the proxies
         /// </summary>
-        public FixtureProxy[] Proxies => _proxies;
+        public FixtureProxy[] Proxies => proxies;
 
         /// <summary>
         ///     Gets the value of the proxy count
         /// </summary>
-        public int ProxyCount => _proxyCount;
+        public int ProxyCount => proxyCount;
 
         /// <summary>Get or set the restitution threshold. This will _not_ change the restitution threshold of existing contacts.</summary>
         public float RestitutionThreshold
         {
-            get => _restitutionThresholdPrivate;
-            set => _restitutionThresholdPrivate = value;
+            get => RestitutionThresholdPrivate;
+            set => RestitutionThresholdPrivate = value;
         }
 
         /// <summary>
@@ -210,15 +210,15 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             set
             {
-                if (_collisionGroupPrivate == value)
+                if (CollisionGroupPrivate == value)
                 {
                     return;
                 }
 
-                _collisionGroupPrivate = value;
+                CollisionGroupPrivate = value;
                 Refilter();
             }
-            get => _collisionGroupPrivate;
+            get => CollisionGroupPrivate;
         }
 
         /// <summary>
@@ -227,16 +227,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public Category CollidesWith
         {
-            get => _collidesWithprivate;
+            get => CollidesWithprivate;
 
             set
             {
-                if (_collidesWithprivate == value)
+                if (CollidesWithprivate == value)
                 {
                     return;
                 }
 
-                _collidesWithprivate = value;
+                CollidesWithprivate = value;
                 Refilter();
             }
         }
@@ -247,16 +247,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public Category CollisionCategories
         {
-            get => _collisionCategoriesprivate;
+            get => CollisionCategoriesprivate;
 
             set
             {
-                if (_collisionCategoriesprivate == value)
+                if (CollisionCategoriesprivate == value)
                 {
                     return;
                 }
 
-                _collisionCategoriesprivate = value;
+                CollisionCategoriesprivate = value;
                 Refilter();
             }
         }
@@ -266,46 +266,46 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     because this will crash some collision caching mechanisms.
         /// </summary>
         /// <value>The shape.</value>
-        public Shape Shape => _shapePrivate;
+        public Shape Shape => ShapePrivate;
 
         /// <summary>Gets or sets a value indicating whether this fixture is a sensor.</summary>
         /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
         public bool IsSensor
         {
-            get => _isSensorPrivate;
+            get => IsSensorPrivate;
             set
             {
-                if (_bodyprivate != null)
+                if (Bodyprivate != null)
                 {
-                    _bodyprivate.Awake = true;
+                    Bodyprivate.Awake = true;
                 }
 
-                _isSensorPrivate = value;
+                IsSensorPrivate = value;
             }
         }
 
         /// <summary>Get the parent body of this fixture. This is null if the fixture is not attached.</summary>
         /// <value>The body.</value>
-        public Body Body => _bodyprivate;
+        public Body Body => Bodyprivate;
 
         /// <summary>Set the user data. Use this to store your application specific data.</summary>
         /// <value>The user data.</value>
         public object UserData
         {
-            get => _userData;
-            set => _userData = value;
+            get => userData;
+            set => userData = value;
         }
 
         /// <summary>Set the coefficient of friction. This will _not_ change the friction of existing contacts.</summary>
         /// <value>The friction.</value>
         public float Friction
         {
-            get => _frictionprivate;
+            get => Frictionprivate;
             set
             {
                 Debug.Assert(!float.IsNaN(value));
 
-                _frictionprivate = value;
+                Frictionprivate = value;
             }
         }
 
@@ -313,12 +313,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value>The restitution.</value>
         public float Restitution
         {
-            get => _restitutionprivate;
+            get => Restitutionprivate;
             set
             {
                 Debug.Assert(!float.IsNaN(value));
 
-                _restitutionprivate = value;
+                Restitutionprivate = value;
             }
         }
 
@@ -329,7 +329,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         private void Refilter()
         {
             // Flag associated contacts for filtering.
-            ContactEdge edge = _bodyprivate.ContactList;
+            ContactEdge edge = Bodyprivate.ContactList;
             while (edge != null)
             {
                 Contact contact = edge.Contact;
@@ -343,7 +343,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 edge = edge.Next;
             }
 
-            World world = _bodyprivate._world;
+            World world = Bodyprivate.World;
 
             if (world == null)
             {
@@ -352,22 +352,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             // Touch each proxy so that new pairs may be created
             IBroadPhase broadPhase = world.ContactManager.BroadPhase;
-            for (int i = 0; i < _proxyCount; ++i)
+            for (int i = 0; i < proxyCount; ++i)
             {
-                broadPhase.TouchProxy(_proxies[i].ProxyId);
+                broadPhase.TouchProxy(proxies[i].ProxyId);
             }
         }
 
         /// <summary>Test a point for containment in this fixture.</summary>
         /// <param name="point">A point in world coordinates.</param>
-        public bool TestPoint(ref Vector2 point) => Shape.TestPoint(ref _bodyprivate._xf, ref point);
+        public bool TestPoint(ref Vector2 point) => Shape.TestPoint(ref Bodyprivate.Xf, ref point);
 
         /// <summary>Cast a ray against this Shape.</summary>
         /// <param name="output">The ray-cast results.</param>
         /// <param name="input">The ray-cast input parameters.</param>
         /// <param name="childIndex">Index of the child.</param>
         public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex) =>
-            Shape.RayCast(ref input, ref _bodyprivate._xf, childIndex, out output);
+            Shape.RayCast(ref input, ref Bodyprivate.Xf, childIndex, out output);
 
         /// <summary>
         ///     Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it
@@ -375,10 +375,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="aabb">The AABB.</param>
         /// <param name="childIndex">Index of the child.</param>
-        public void GetAABB(out AABB aabb, int childIndex)
+        public void GetAabb(out Aabb aabb, int childIndex)
         {
-            Debug.Assert(0 <= childIndex && childIndex < _proxyCount);
-            aabb = _proxies[childIndex].AABB;
+            Debug.Assert(0 <= childIndex && childIndex < proxyCount);
+            aabb = proxies[childIndex].Aabb;
         }
 
         /// <summary>
@@ -387,14 +387,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         internal void Destroy()
         {
             // The proxies must be destroyed before calling this.
-            Debug.Assert(_proxyCount == 0);
+            Debug.Assert(proxyCount == 0);
 
             // Free the proxy array.
-            _proxies = null;
-            _shapePrivate = null;
+            proxies = null;
+            ShapePrivate = null;
 
             //Velcro: We set the userdata to null here to help prevent bugs related to stale references in GC
-            _userData = null;
+            userData = null;
 
             BeforeCollision = null;
             OnCollision = null;
@@ -410,22 +410,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="xf">The xf</param>
         internal void CreateProxies(IBroadPhase broadPhase, ref Transform xf)
         {
-            Debug.Assert(_proxyCount == 0);
+            Debug.Assert(proxyCount == 0);
 
             // Create proxies in the broad-phase.
-            _proxyCount = _shapePrivate.ChildCount;
+            proxyCount = ShapePrivate.ChildCount;
 
-            for (int i = 0; i < _proxyCount; ++i)
+            for (int i = 0; i < proxyCount; ++i)
             {
                 FixtureProxy proxy = new FixtureProxy();
-                _shapePrivate.ComputeAABB(ref xf, i, out proxy.AABB);
+                ShapePrivate.ComputeAabb(ref xf, i, out proxy.Aabb);
                 proxy.Fixture = this;
                 proxy.ChildIndex = i;
 
                 //Velcro note: This line needs to be after the previous two because FixtureProxy is a struct
                 proxy.ProxyId = broadPhase.AddProxy(ref proxy);
 
-                _proxies[i] = proxy;
+                proxies[i] = proxy;
             }
         }
 
@@ -436,14 +436,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         internal void DestroyProxies(IBroadPhase broadPhase)
         {
             // Destroy proxies in the broad-phase.
-            for (int i = 0; i < _proxyCount; ++i)
+            for (int i = 0; i < proxyCount; ++i)
             {
-                FixtureProxy proxy = _proxies[i];
+                FixtureProxy proxy = proxies[i];
                 broadPhase.RemoveProxy(proxy.ProxyId);
                 proxy.ProxyId = DynamicTreeBroadPhase.NullProxy;
             }
 
-            _proxyCount = 0;
+            proxyCount = 0;
         }
 
         /// <summary>
@@ -454,24 +454,24 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="transform2">The transform</param>
         internal void Synchronize(IBroadPhase broadPhase, ref Transform transform1, ref Transform transform2)
         {
-            if (_proxyCount == 0)
+            if (proxyCount == 0)
             {
                 return;
             }
 
-            for (int i = 0; i < _proxyCount; ++i)
+            for (int i = 0; i < proxyCount; ++i)
             {
-                FixtureProxy proxy = _proxies[i];
+                FixtureProxy proxy = proxies[i];
 
                 // Compute an AABB that covers the swept Shape (may miss some rotation effect).
-                Shape.ComputeAABB(ref transform1, proxy.ChildIndex, out AABB aabb1);
-                Shape.ComputeAABB(ref transform2, proxy.ChildIndex, out AABB aabb2);
+                Shape.ComputeAabb(ref transform1, proxy.ChildIndex, out Aabb aabb1);
+                Shape.ComputeAabb(ref transform2, proxy.ChildIndex, out Aabb aabb2);
 
-                proxy.AABB.Combine(ref aabb1, ref aabb2);
+                proxy.Aabb.Combine(ref aabb1, ref aabb2);
 
                 Vector2 displacement = aabb2.Center - aabb1.Center;
 
-                broadPhase.MoveProxy(proxy.ProxyId, ref proxy.AABB, displacement);
+                broadPhase.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
             }
         }
     }

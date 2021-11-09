@@ -35,7 +35,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
     ///     The dt sweep point comparator class
     /// </summary>
     /// <seealso cref="IComparer{T}" />
-    internal class DTSweepPointComparator : IComparer<TriangulationPoint>
+    internal class DtSweepPointComparator : IComparer<TriangulationPoint>
     {
         /// <summary>
         ///     Compares the p 1

@@ -41,7 +41,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Util
         /// <summary>
         ///     The random
         /// </summary>
-        private static readonly Random _rng = new Random();
+        private static readonly Random Rng = new Random();
 
         /// <summary>
         ///     Randoms the circle sweep using the specified scale
@@ -60,15 +60,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Util
                 {
                     if (i % 250 == 0)
                     {
-                        radius += scale / 2 * (0.5 - _rng.NextDouble());
+                        radius += scale / 2 * (0.5 - Rng.NextDouble());
                     }
                     else if (i % 50 == 0)
                     {
-                        radius += scale / 5 * (0.5 - _rng.NextDouble());
+                        radius += scale / 5 * (0.5 - Rng.NextDouble());
                     }
                     else
                     {
-                        radius += 25 * scale / vertexCount * (0.5 - _rng.NextDouble());
+                        radius += 25 * scale / vertexCount * (0.5 - Rng.NextDouble());
                     }
 
                     radius = radius > scale / 2 ? scale / 2 : radius;
@@ -97,7 +97,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Util
             {
                 do
                 {
-                    radius += scale / 5 * (0.5 - _rng.NextDouble());
+                    radius += scale / 5 * (0.5 - Rng.NextDouble());
                     radius = radius > scale / 2 ? scale / 2 : radius;
                     radius = radius < scale / 10 ? scale / 10 : radius;
                 } while (radius < scale / 10 || radius > scale / 2);

@@ -41,32 +41,32 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <summary>
         ///     The bounding box
         /// </summary>
-        private readonly Trapezoid _boundingBox;
+        private readonly Trapezoid boundingBox;
 
         /// <summary>
         ///     The edge list
         /// </summary>
-        private readonly List<Edge> _edgeList;
+        private readonly List<Edge> edgeList;
 
         /// <summary>
         ///     The query graph
         /// </summary>
-        private readonly QueryGraph _queryGraph;
+        private readonly QueryGraph queryGraph;
 
         /// <summary>
         ///     The sheer
         /// </summary>
-        private readonly float _sheer = 0.001f;
+        private readonly float sheer = 0.001f;
 
         /// <summary>
         ///     The trapezoidal map
         /// </summary>
-        private readonly TrapezoidalMap _trapezoidalMap;
+        private readonly TrapezoidalMap trapezoidalMap;
 
         /// <summary>
         ///     The mono poly
         /// </summary>
-        private readonly List<MonotoneMountain> _xMonoPoly;
+        private readonly List<MonotoneMountain> xMonoPoly;
 
         // Trapezoid decomposition list
         /// <summary>
@@ -86,14 +86,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <param name="sheer">The sheer</param>
         public Triangulator(List<Point> polyLine, float sheer)
         {
-            _sheer = sheer;
+            this.sheer = sheer;
             Triangles = new List<List<Point>>();
             Trapezoids = new List<Trapezoid>();
-            _xMonoPoly = new List<MonotoneMountain>();
-            _edgeList = InitEdges(polyLine);
-            _trapezoidalMap = new TrapezoidalMap();
-            _boundingBox = _trapezoidalMap.BoundingBox(_edgeList);
-            _queryGraph = new QueryGraph(Sink.Isink(_boundingBox));
+            xMonoPoly = new List<MonotoneMountain>();
+            edgeList = InitEdges(polyLine);
+            trapezoidalMap = new TrapezoidalMap();
+            boundingBox = trapezoidalMap.BoundingBox(edgeList);
+            queryGraph = new QueryGraph(Sink.Isink(boundingBox));
 
             Process();
         }
@@ -104,14 +104,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         private void Process()
         {
-            foreach (Edge edge in _edgeList)
+            foreach (Edge edge in edgeList)
             {
-                List<Trapezoid> traps = _queryGraph.FollowEdge(edge);
+                List<Trapezoid> traps = queryGraph.FollowEdge(edge);
 
                 // Remove trapezoids from trapezoidal Map
                 foreach (Trapezoid t in traps)
                 {
-                    _trapezoidalMap.Map.Remove(t);
+                    trapezoidalMap.Map.Remove(t);
 
                     bool cp = t.Contains(edge.P);
                     bool cq = t.Contains(edge.Q);
@@ -119,43 +119,43 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
 
                     if (cp && cq)
                     {
-                        tList = _trapezoidalMap.Case1(t, edge);
-                        _queryGraph.Case1(t.Sink, edge, tList);
+                        tList = trapezoidalMap.Case1(t, edge);
+                        queryGraph.Case1(t.Sink, edge, tList);
                     }
                     else if (cp && !cq)
                     {
-                        tList = _trapezoidalMap.Case2(t, edge);
-                        _queryGraph.Case2(t.Sink, edge, tList);
+                        tList = trapezoidalMap.Case2(t, edge);
+                        queryGraph.Case2(t.Sink, edge, tList);
                     }
                     else if (!cp && !cq)
                     {
-                        tList = _trapezoidalMap.Case3(t, edge);
-                        _queryGraph.Case3(t.Sink, edge, tList);
+                        tList = trapezoidalMap.Case3(t, edge);
+                        queryGraph.Case3(t.Sink, edge, tList);
                     }
                     else
                     {
-                        tList = _trapezoidalMap.Case4(t, edge);
-                        _queryGraph.Case4(t.Sink, edge, tList);
+                        tList = trapezoidalMap.Case4(t, edge);
+                        queryGraph.Case4(t.Sink, edge, tList);
                     }
 
                     // Add new trapezoids to map
                     foreach (Trapezoid y in tList)
                     {
-                        _trapezoidalMap.Map.Add(y);
+                        trapezoidalMap.Map.Add(y);
                     }
                 }
 
-                _trapezoidalMap.Clear();
+                trapezoidalMap.Clear();
             }
 
             // Mark outside trapezoids
-            foreach (Trapezoid t in _trapezoidalMap.Map)
+            foreach (Trapezoid t in trapezoidalMap.Map)
             {
                 MarkOutside(t);
             }
 
             // Collect interior trapezoids
-            foreach (Trapezoid t in _trapezoidalMap.Map)
+            foreach (Trapezoid t in trapezoidalMap.Map)
             {
                 if (t.Inside)
                 {
@@ -174,7 +174,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         private void CreateMountains()
         {
-            foreach (Edge edge in _edgeList)
+            foreach (Edge edge in edgeList)
             {
                 if (edge.MPoints.Count > 2)
                 {
@@ -204,7 +204,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
                         Triangles.Add(t);
                     }
 
-                    _xMonoPoly.Add(mountain);
+                    xMonoPoly.Add(mountain);
                 }
             }
         }
@@ -216,7 +216,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <param name="t">The </param>
         private void MarkOutside(Trapezoid t)
         {
-            if (t.Top == _boundingBox.Top || t.Bottom == _boundingBox.Bottom)
+            if (t.Top == boundingBox.Top || t.Bottom == boundingBox.Bottom)
             {
                 t.TrimNeighbors();
             }
@@ -299,6 +299,6 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The point</returns>
-        private Point ShearTransform(Point point) => new Point(point.X + _sheer * point.Y, point.Y);
+        private Point ShearTransform(Point point) => new Point(point.X + sheer * point.Y, point.Y);
     }
 }

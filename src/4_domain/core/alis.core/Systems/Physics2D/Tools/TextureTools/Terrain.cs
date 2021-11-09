@@ -41,40 +41,40 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
     public class Terrain
     {
         /// <summary>Generated bodies.</summary>
-        private List<Body>[,] _bodyMap;
+        private List<Body>[,] bodyMap;
 
         /// <summary>
         ///     The dirty area
         /// </summary>
-        private AABB _dirtyArea;
+        private Aabb dirtyArea;
 
         /// <summary>
         ///     The local height
         /// </summary>
-        private float _localHeight;
+        private float localHeight;
 
         /// <summary>
         ///     The local width
         /// </summary>
-        private float _localWidth;
+        private float localWidth;
 
         /// <summary>Point cloud defining the terrain.</summary>
-        private sbyte[,] _terrainMap;
+        private sbyte[,] terrainMap;
 
         /// <summary>
         ///     The top left
         /// </summary>
-        private Vector2 _topLeft;
+        private Vector2 topLeft;
 
         /// <summary>
         ///     The xnum
         /// </summary>
-        private int _xnum;
+        private int xnum;
 
         /// <summary>
         ///     The ynum
         /// </summary>
-        private int _ynum;
+        private int ynum;
 
         /// <summary>Points per cell.</summary>
         public int CellSize;
@@ -112,7 +112,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <summary>Creates a new terrain.</summary>
         /// <param name="world">The World</param>
         /// <param name="area">The area of the terrain.</param>
-        public Terrain(World world, AABB area)
+        public Terrain(World world, Aabb area)
         {
             World = world;
             Width = area.Width;
@@ -137,28 +137,28 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         public void Initialize()
         {
             // find top left of terrain in world space
-            _topLeft = new Vector2(Center.X - Width * 0.5f, Center.Y - -Height * 0.5f);
+            topLeft = new Vector2(Center.X - Width * 0.5f, Center.Y - -Height * 0.5f);
 
             // convert the terrains size to a point cloud size
-            _localWidth = Width * PointsPerUnit;
-            _localHeight = Height * PointsPerUnit;
+            localWidth = Width * PointsPerUnit;
+            localHeight = Height * PointsPerUnit;
 
-            _terrainMap = new sbyte[(int) _localWidth + 1, (int) _localHeight + 1];
+            terrainMap = new sbyte[(int) localWidth + 1, (int) localHeight + 1];
 
-            for (int x = 0; x < _localWidth; x++)
+            for (int x = 0; x < localWidth; x++)
             {
-                for (int y = 0; y < _localHeight; y++)
+                for (int y = 0; y < localHeight; y++)
                 {
-                    _terrainMap[x, y] = 1;
+                    terrainMap[x, y] = 1;
                 }
             }
 
-            _xnum = (int) (_localWidth / CellSize);
-            _ynum = (int) (_localHeight / CellSize);
-            _bodyMap = new List<Body>[_xnum, _ynum];
+            xnum = (int) (localWidth / CellSize);
+            ynum = (int) (localHeight / CellSize);
+            bodyMap = new List<Body>[xnum, ynum];
 
             // make sure to mark the dirty area to an infinitely small box
-            _dirtyArea = new AABB(new Vector2(float.MaxValue, float.MaxValue),
+            dirtyArea = new Aabb(new Vector2(float.MaxValue, float.MaxValue),
                 new Vector2(float.MinValue, float.MinValue));
         }
 
@@ -171,15 +171,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             {
                 for (int y = 0; y < data.GetUpperBound(1); y++)
                 {
-                    if (x + offset.X >= 0 && x + offset.X < _localWidth && y + offset.Y >= 0 &&
-                        y + offset.Y < _localHeight)
+                    if (x + offset.X >= 0 && x + offset.X < localWidth && y + offset.Y >= 0 &&
+                        y + offset.Y < localHeight)
                     {
-                        _terrainMap[(int) (x + offset.X), (int) (y + offset.Y)] = data[x, y];
+                        terrainMap[(int) (x + offset.X), (int) (y + offset.Y)] = data[x, y];
                     }
                 }
             }
 
-            RemoveOldData(0, _xnum, 0, _ynum);
+            RemoveOldData(0, xnum, 0, ynum);
         }
 
         /// <summary>Modify a single point in the terrain.</summary>
@@ -189,37 +189,37 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         {
             // find local position
             // make position local to map space
-            Vector2 p = location - _topLeft;
+            Vector2 p = location - topLeft;
 
             // find map position for each axis
-            p.X = p.X * _localWidth / Width;
-            p.Y = p.Y * -_localHeight / Height;
+            p.X = p.X * localWidth / Width;
+            p.Y = p.Y * -localHeight / Height;
 
-            if (p.X >= 0 && p.X < _localWidth && p.Y >= 0 && p.Y < _localHeight)
+            if (p.X >= 0 && p.X < localWidth && p.Y >= 0 && p.Y < localHeight)
             {
-                _terrainMap[(int) p.X, (int) p.Y] = value;
+                terrainMap[(int) p.X, (int) p.Y] = value;
 
                 unchecked
                 {
                     // expand dirty area
-                    if (p.X < (int) _dirtyArea.LowerBound.X)
+                    if (p.X < (int) dirtyArea.LowerBound.X)
                     {
-                        _dirtyArea.LowerBound.X = p.X;
+                        dirtyArea.LowerBound.X = p.X;
                     }
 
-                    if (p.X > (int) _dirtyArea.UpperBound.X)
+                    if (p.X > (int) dirtyArea.UpperBound.X)
                     {
-                        _dirtyArea.UpperBound.X = p.X;
+                        dirtyArea.UpperBound.X = p.X;
                     }
 
-                    if (p.Y < (int) _dirtyArea.LowerBound.Y)
+                    if (p.Y < (int) dirtyArea.LowerBound.Y)
                     {
-                        _dirtyArea.LowerBound.Y = p.Y;
+                        dirtyArea.LowerBound.Y = p.Y;
                     }
 
-                    if (p.Y > (int) _dirtyArea.UpperBound.Y)
+                    if (p.Y > (int) dirtyArea.UpperBound.Y)
                     {
-                        _dirtyArea.UpperBound.Y = p.Y;
+                        dirtyArea.UpperBound.Y = p.Y;
                     }
                 }
             }
@@ -231,33 +231,33 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             unchecked
             {
                 //iterate effected cells
-                int xStart = (int) (_dirtyArea.LowerBound.X / CellSize);
+                int xStart = (int) (dirtyArea.LowerBound.X / CellSize);
                 if (xStart < 0)
                 {
                     xStart = 0;
                 }
 
-                int xEnd = (int) (_dirtyArea.UpperBound.X / CellSize) + 1;
-                if (xEnd > _xnum)
+                int xEnd = (int) (dirtyArea.UpperBound.X / CellSize) + 1;
+                if (xEnd > xnum)
                 {
-                    xEnd = _xnum;
+                    xEnd = xnum;
                 }
 
-                int yStart = (int) (_dirtyArea.LowerBound.Y / CellSize);
+                int yStart = (int) (dirtyArea.LowerBound.Y / CellSize);
                 if (yStart < 0)
                 {
                     yStart = 0;
                 }
 
-                int yEnd = (int) (_dirtyArea.UpperBound.Y / CellSize) + 1;
-                if (yEnd > _ynum)
+                int yEnd = (int) (dirtyArea.UpperBound.Y / CellSize) + 1;
+                if (yEnd > ynum)
                 {
-                    yEnd = _ynum;
+                    yEnd = ynum;
                 }
 
                 RemoveOldData(xStart, xEnd, yStart, yEnd);
 
-                _dirtyArea = new AABB(new Vector2(float.MaxValue, float.MaxValue),
+                dirtyArea = new Aabb(new Vector2(float.MaxValue, float.MaxValue),
                     new Vector2(float.MinValue, float.MinValue));
             }
         }
@@ -276,15 +276,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 for (int y = yStart; y < yEnd; y++)
                 {
                     //remove old terrain object at grid cell
-                    if (_bodyMap[x, y] != null)
+                    if (bodyMap[x, y] != null)
                     {
-                        for (int i = 0; i < _bodyMap[x, y].Count; i++)
+                        for (int i = 0; i < bodyMap[x, y].Count; i++)
                         {
-                            World.RemoveBody(_bodyMap[x, y][i]);
+                            World.RemoveBody(bodyMap[x, y][i]);
                         }
                     }
 
-                    _bodyMap[x, y] = null;
+                    bodyMap[x, y] = null;
 
                     //generate new one
                     GenerateTerrain(x, y);
@@ -303,14 +303,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             float ay = gy * CellSize;
 
             List<Vertices> polys = MarchingSquares.DetectSquares(
-                new AABB(new Vector2(ax, ay), new Vector2(ax + CellSize, ay + CellSize)), SubCellSize, SubCellSize,
-                _terrainMap, Iterations, true);
+                new Aabb(new Vector2(ax, ay), new Vector2(ax + CellSize, ay + CellSize)), SubCellSize, SubCellSize,
+                terrainMap, Iterations, true);
             if (polys.Count == 0)
             {
                 return;
             }
 
-            _bodyMap[gx, gy] = new List<Body>();
+            bodyMap[gx, gy] = new List<Body>();
 
             // create the scale vector
             Vector2 scale = new Vector2(1f / PointsPerUnit, 1f / -PointsPerUnit);
@@ -320,7 +320,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             {
                 // does this need to be negative?
                 item.Scale(ref scale);
-                item.Translate(ref _topLeft);
+                item.Translate(ref topLeft);
                 Vertices simplified = SimplifyTools.CollinearSimplify(item);
 
                 List<Vertices> decompPolys = Triangulate.ConvexPartition(simplified, Decomposer);
@@ -329,7 +329,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 {
                     if (poly.Count > 2)
                     {
-                        _bodyMap[gx, gy].Add(BodyFactory.CreatePolygon(World, poly, 1));
+                        bodyMap[gx, gy].Add(BodyFactory.CreatePolygon(World, poly, 1));
                     }
                 }
             }

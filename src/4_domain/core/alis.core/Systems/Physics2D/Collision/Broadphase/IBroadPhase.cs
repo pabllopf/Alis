@@ -79,7 +79,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
         /// <param name="displacement">The displacement</param>
-        void MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement);
+        void MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement);
 
         /// <summary>
         ///     Gets the proxy using the specified proxy id
@@ -99,14 +99,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
-        void GetFatAABB(int proxyId, out AABB aabb);
+        void GetFatAabb(int proxyId, out Aabb aabb);
 
         /// <summary>
         ///     Queries the callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="aabb">The aabb</param>
-        void Query(Func<int, bool> callback, ref AABB aabb);
+        void Query(Func<int, bool> callback, ref Aabb aabb);
 
         /// <summary>
         ///     Rays the cast using the specified callback

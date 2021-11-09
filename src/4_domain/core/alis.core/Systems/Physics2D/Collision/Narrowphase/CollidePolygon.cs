@@ -53,7 +53,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             // Clip
 
             manifold.PointCount = 0;
-            float totalRadius = polyA._radiusPrivate + polyB._radiusPrivate;
+            float totalRadius = polyA.RadiusPrivate + polyB.RadiusPrivate;
 
             float separationA = FindMaxSeparation(out int edgeA, polyA, ref xfA, polyB, ref xfB);
             if (separationA > totalRadius)
@@ -72,9 +72,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             Transform xf1, xf2;
             int edge1; // reference edge
             bool flip;
-            float k_tol = 0.1f * Settings.LinearSlop;
+            float kTol = 0.1f * Settings.LinearSlop;
 
-            if (separationB > separationA + k_tol)
+            if (separationB > separationA + kTol)
             {
                 poly1 = polyB;
                 poly2 = polyA;
@@ -97,8 +97,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
 
             FindIncidentEdge(out FixedArray2<ClipVertex> incidentEdge, poly1, ref xf1, edge1, poly2, ref xf2);
 
-            int count1 = poly1._verticesPrivate.Count;
-            Vertices vertices1 = poly1._verticesPrivate;
+            int count1 = poly1.VerticesPrivate.Count;
+            Vertices vertices1 = poly1.VerticesPrivate;
 
             int iv1 = edge1;
             int iv2 = edge1 + 1 < count1 ? edge1 + 1 : 0;
@@ -112,7 +112,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             Vector2 localNormal = MathUtils.Cross(localTangent, 1.0f);
             Vector2 planePoint = 0.5f * (v11 + v12);
 
-            Vector2 tangent = MathUtils.Mul(ref xf1.q, localTangent);
+            Vector2 tangent = MathUtils.Mul(ref xf1.Q, localTangent);
             Vector2 normal = MathUtils.Cross(tangent, 1.0f);
 
             v11 = MathUtils.Mul(ref xf1, v11);
@@ -183,11 +183,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
         private static float FindMaxSeparation(out int edgeIndex, PolygonShape poly1, ref Transform xf1,
             PolygonShape poly2, ref Transform xf2)
         {
-            int count1 = poly1._verticesPrivate.Count;
-            int count2 = poly2._verticesPrivate.Count;
-            Vertices n1s = poly1._normalsPrivate;
-            Vertices v1s = poly1._verticesPrivate;
-            Vertices v2s = poly2._verticesPrivate;
+            int count1 = poly1.VerticesPrivate.Count;
+            int count2 = poly2.VerticesPrivate.Count;
+            Vertices n1S = poly1.NormalsPrivate;
+            Vertices v1S = poly1.VerticesPrivate;
+            Vertices v2S = poly2.VerticesPrivate;
             Transform xf = MathUtils.MulT(xf2, xf1);
 
             int bestIndex = 0;
@@ -195,14 +195,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             for (int i = 0; i < count1; ++i)
             {
                 // Get poly1 normal in frame2.
-                Vector2 n = MathUtils.Mul(ref xf.q, n1s[i]);
-                Vector2 v1 = MathUtils.Mul(ref xf, v1s[i]);
+                Vector2 n = MathUtils.Mul(ref xf.Q, n1S[i]);
+                Vector2 v1 = MathUtils.Mul(ref xf, v1S[i]);
 
                 // Find deepest point for normal i.
                 float si = MathConstants.MaxFloat;
                 for (int j = 0; j < count2; ++j)
                 {
-                    float sij = Vector2.Dot(n, v2s[j] - v1);
+                    float sij = Vector2.Dot(n, v2S[j] - v1);
                     if (sij < si)
                     {
                         si = sij;
@@ -232,16 +232,16 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
         private static void FindIncidentEdge(out FixedArray2<ClipVertex> c, PolygonShape poly1, ref Transform xf1,
             int edge1, PolygonShape poly2, ref Transform xf2)
         {
-            Vertices normals1 = poly1._normalsPrivate;
+            Vertices normals1 = poly1.NormalsPrivate;
 
-            int count2 = poly2._verticesPrivate.Count;
-            Vertices vertices2 = poly2._verticesPrivate;
-            Vertices normals2 = poly2._normalsPrivate;
+            int count2 = poly2.VerticesPrivate.Count;
+            Vertices vertices2 = poly2.VerticesPrivate;
+            Vertices normals2 = poly2.NormalsPrivate;
 
-            Debug.Assert(0 <= edge1 && edge1 < poly1._verticesPrivate.Count);
+            Debug.Assert(0 <= edge1 && edge1 < poly1.VerticesPrivate.Count);
 
             // Get the normal of the reference edge in poly2's frame.
-            Vector2 normal1 = MathUtils.MulT(ref xf2.q, MathUtils.Mul(ref xf1.q, normals1[edge1]));
+            Vector2 normal1 = MathUtils.MulT(ref xf2.Q, MathUtils.Mul(ref xf1.Q, normals1[edge1]));
 
             // Find the incident edge on poly2.
             int index = 0;

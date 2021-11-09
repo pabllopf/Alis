@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The update interface
     /// </summary>
-    public interface IUpdate<L, T>
+    public interface IUpdate<TL, T>
     {
         /// <summary>
         ///     Updates the obj
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The</returns>
-        public L Update(T obj);
+        public TL Update(T obj);
     }
 }

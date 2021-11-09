@@ -44,27 +44,27 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly List<Body> _bodies = new List<Body>();
+        private readonly List<Body> bodies = new List<Body>();
 
         /// <summary>
         ///     The max angular sqared
         /// </summary>
-        private float _maxAngularSqared;
+        private float maxAngularSqared;
 
         /// <summary>
         ///     The max angular velocity
         /// </summary>
-        private float _maxAngularVelocity;
+        private float maxAngularVelocity;
 
         /// <summary>
         ///     The max linear sqared
         /// </summary>
-        private float _maxLinearSqared;
+        private float maxLinearSqared;
 
         /// <summary>
         ///     The max linear velocity
         /// </summary>
-        private float _maxLinearVelocity;
+        private float maxLinearVelocity;
 
         /// <summary>
         ///     The limit angular velocity
@@ -114,11 +114,11 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
         /// <value>The max angular velocity.</value>
         public float MaxAngularVelocity
         {
-            get => _maxAngularVelocity;
+            get => maxAngularVelocity;
             set
             {
-                _maxAngularVelocity = value;
-                _maxAngularSqared = _maxAngularVelocity * _maxAngularVelocity;
+                maxAngularVelocity = value;
+                maxAngularSqared = maxAngularVelocity * maxAngularVelocity;
             }
         }
 
@@ -126,11 +126,11 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
         /// <value>The max linear velocity.</value>
         public float MaxLinearVelocity
         {
-            get => _maxLinearVelocity;
+            get => maxLinearVelocity;
             set
             {
-                _maxLinearVelocity = value;
-                _maxLinearSqared = _maxLinearVelocity * _maxLinearVelocity;
+                maxLinearVelocity = value;
+                maxLinearSqared = maxLinearVelocity * maxLinearVelocity;
             }
         }
 
@@ -140,7 +140,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
         /// <param name="dt">The dt</param>
         public override void Update(float dt)
         {
-            foreach (Body body in _bodies)
+            foreach (Body body in bodies)
             {
                 if (!IsActiveOn(body))
                 {
@@ -155,11 +155,11 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
                     float translationY = dt * body.LinearVelocity.Y;
                     float result = translationX * translationX + translationY * translationY;
 
-                    if (result > dt * _maxLinearSqared)
+                    if (result > dt * maxLinearSqared)
                     {
                         float sq = (float) Math.Sqrt(result);
 
-                        float ratio = _maxLinearVelocity / sq;
+                        float ratio = maxLinearVelocity / sq;
 
                         Vector2 temp = body.LinearVelocity;
                         temp.X *= ratio;
@@ -172,9 +172,9 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
                 {
                     //Rotation
                     float rotation = dt * body.AngularVelocity;
-                    if (rotation * rotation > _maxAngularSqared)
+                    if (rotation * rotation > maxAngularSqared)
                     {
-                        float ratio = _maxAngularVelocity / Math.Abs(rotation);
+                        float ratio = maxAngularVelocity / Math.Abs(rotation);
                         body.AngularVelocity *= ratio;
                     }
                 }
@@ -187,7 +187,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
         /// <param name="body">The body</param>
         public void AddBody(Body body)
         {
-            _bodies.Add(body);
+            bodies.Add(body);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
         /// <param name="body">The body</param>
         public void RemoveBody(Body body)
         {
-            _bodies.Remove(body);
+            bodies.Remove(body);
         }
     }
 }

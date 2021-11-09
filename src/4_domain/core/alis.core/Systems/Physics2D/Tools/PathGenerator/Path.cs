@@ -47,7 +47,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
         /// <summary>
         ///     The delta
         /// </summary>
-        private float _deltaT;
+        private float deltaT;
 
         /// <summary>All the points that makes up the curve</summary>
         public List<Vector2> ControlPoints;
@@ -195,9 +195,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
             {
                 Add(ControlPoints[0]);
 
-                _deltaT = 1f / (ControlPoints.Count - 1);
+                deltaT = 1f / (ControlPoints.Count - 1);
 
-                int p = (int) (time / _deltaT);
+                int p = (int) (time / deltaT);
 
                 // use a circular indexing system
                 int p0 = p - 1;
@@ -241,7 +241,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
                 }
 
                 // relative time
-                float lt = (time - _deltaT * p) / _deltaT;
+                float lt = (time - deltaT * p) / deltaT;
 
                 temp = CatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3],
                     lt);
@@ -250,7 +250,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
             }
             else
             {
-                int p = (int) (time / _deltaT);
+                int p = (int) (time / deltaT);
 
                 // 
                 int p0 = p - 1;
@@ -294,7 +294,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
                 }
 
                 // relative time
-                float lt = (time - _deltaT * p) / _deltaT;
+                float lt = (time - deltaT * p) / deltaT;
 
                 temp = CatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3],
                     lt);
@@ -347,7 +347,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
         public void Add(Vector2 point)
         {
             ControlPoints.Add(point);
-            _deltaT = 1f / (ControlPoints.Count - 1);
+            deltaT = 1f / (ControlPoints.Count - 1);
         }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
         public void Remove(Vector2 point)
         {
             ControlPoints.Remove(point);
-            _deltaT = 1f / (ControlPoints.Count - 1);
+            deltaT = 1f / (ControlPoints.Count - 1);
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
         public void RemoveAt(int index)
         {
             ControlPoints.RemoveAt(index);
-            _deltaT = 1f / (ControlPoints.Count - 1);
+            deltaT = 1f / (ControlPoints.Count - 1);
         }
 
         /// <summary>

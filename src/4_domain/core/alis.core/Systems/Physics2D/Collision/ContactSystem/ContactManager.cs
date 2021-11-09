@@ -43,12 +43,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     The contact count
         /// </summary>
-        internal int _contactCounter;
+        internal int ContactCounter;
 
         /// <summary>
         ///     The contact list
         /// </summary>
-        internal Contact _contactList;
+        internal Contact ContactList;
 
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact;
@@ -86,7 +86,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the contact count
         /// </summary>
-        public int ContactCount => _contactCounter;
+        public int ContactCount => ContactCounter;
 
         // Broad-phase callback.
         /// <summary>
@@ -186,13 +186,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
 
             // Insert into the world.
             c.Previous = null;
-            c.Next = _contactList;
-            if (_contactList != null)
+            c.Next = ContactList;
+            if (ContactList != null)
             {
-                _contactList.Previous = c;
+                ContactList.Previous = c;
             }
 
-            _contactList = c;
+            ContactList = c;
 
             // Connect to island graph.
 
@@ -221,7 +221,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             }
 
             bodyB.ContactList = c.NodeB;
-            ++_contactCounter;
+            ++ContactCounter;
         }
 
         /// <summary>
@@ -259,8 +259,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 EndContact?.Invoke(c);
             }
 
-            Body bodyA = fixtureA._bodyprivate;
-            Body bodyB = fixtureB._bodyprivate;
+            Body bodyA = fixtureA.Bodyprivate;
+            Body bodyB = fixtureB.Bodyprivate;
 
             // Remove from the world.
             if (c.Previous != null)
@@ -273,9 +273,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 c.Next.Previous = c.Previous;
             }
 
-            if (c == _contactList)
+            if (c == ContactList)
             {
-                _contactList = c.Next;
+                ContactList = c.Next;
             }
 
             // Remove from body 1
@@ -312,7 +312,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
 
             // Call the factory.
             c.Destroy();
-            --_contactCounter;
+            --ContactCounter;
         }
 
         /// <summary>
@@ -323,7 +323,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         {
             // Update awake contacts.
 
-            Contact c = _contactList;
+            Contact c = ContactList;
 
             while (c != null)
             {
@@ -331,8 +331,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
                 int indexB = c.ChildIndexB;
-                Body bodyA = fixtureA._bodyprivate;
-                Body bodyB = fixtureB._bodyprivate;
+                Body bodyA = fixtureA.Bodyprivate;
+                Body bodyB = fixtureB.Bodyprivate;
 
                 //Velcro: Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)

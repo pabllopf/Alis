@@ -108,8 +108,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting
 
             // Translate polygons into upper right quadrant
             // as the algorithm depends on it
-            Vector2 lbSubject = subject.GetAABB().LowerBound;
-            Vector2 lbClip = clip.GetAABB().LowerBound;
+            Vector2 lbSubject = subject.GetAabb().LowerBound;
+            Vector2 lbClip = clip.GetAabb().LowerBound;
             Vector2 translate = Vector2.Min(lbSubject, lbClip);
             translate = Vector2.One - translate;
             if (translate != Vector2.Zero)

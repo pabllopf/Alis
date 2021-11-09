@@ -40,19 +40,19 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <summary>
         ///     The margin
         /// </summary>
-        private readonly float _margin;
+        private readonly float margin;
 
         // Bottom segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
         /// </summary>
-        private Edge _bCross;
+        private Edge bCross;
 
         // Top segment that spans multiple trapezoids
         /// <summary>
         ///     The cross
         /// </summary>
-        private Edge _cross;
+        private Edge cross;
 
         // Trapezoid container
         /// <summary>
@@ -66,9 +66,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         public TrapezoidalMap()
         {
             Map = new HashSet<Trapezoid>();
-            _margin = 50.0f;
-            _bCross = null;
-            _cross = null;
+            margin = 50.0f;
+            bCross = null;
+            cross = null;
         }
 
         /// <summary>
@@ -76,8 +76,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         public void Clear()
         {
-            _bCross = null;
-            _cross = null;
+            bCross = null;
+            cross = null;
         }
 
         // Case 1: segment completely enclosed by trapezoid
@@ -133,8 +133,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
             trapezoids[1].UpdateLeftRight(trapezoids[0], null, t.UpperRight, null);
             trapezoids[2].UpdateLeftRight(null, trapezoids[0], null, t.LowerRight);
 
-            _bCross = t.Bottom;
-            _cross = t.Top;
+            bCross = t.Bottom;
+            cross = t.Top;
 
             e.Above = trapezoids[1];
             e.Below = trapezoids[2];
@@ -173,7 +173,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
 
             Trapezoid[] trapezoids = new Trapezoid[2];
 
-            if (_cross == t.Top)
+            if (cross == t.Top)
             {
                 trapezoids[0] = t.UpperLeft;
                 trapezoids[0].UpdateRight(t.UpperRight, null);
@@ -185,7 +185,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
                 trapezoids[0].UpdateLeftRight(t.UpperLeft, e.Above, t.UpperRight, null);
             }
 
-            if (_bCross == t.Bottom)
+            if (bCross == t.Bottom)
             {
                 trapezoids[1] = t.LowerLeft;
                 trapezoids[1].UpdateRight(null, t.LowerRight);
@@ -197,8 +197,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
                 trapezoids[1].UpdateLeftRight(e.Below, t.LowerLeft, null, t.LowerRight);
             }
 
-            _bCross = t.Bottom;
-            _cross = t.Top;
+            bCross = t.Bottom;
+            cross = t.Top;
 
             e.Above = trapezoids[0];
             e.Below = trapezoids[1];
@@ -228,7 +228,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
 
             Trapezoid[] trapezoids = new Trapezoid[3];
 
-            if (_cross == t.Top)
+            if (cross == t.Top)
             {
                 trapezoids[0] = t.UpperLeft;
                 trapezoids[0].RightPoint = e.Q;
@@ -239,7 +239,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
                 trapezoids[0].UpdateLeft(t.UpperLeft, e.Above);
             }
 
-            if (_bCross == t.Bottom)
+            if (bCross == t.Bottom)
             {
                 trapezoids[1] = t.LowerLeft;
                 trapezoids[1].RightPoint = e.Q;
@@ -264,49 +264,49 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <returns>The trapezoid</returns>
         public Trapezoid BoundingBox(List<Edge> edges)
         {
-            Point max = edges[0].P + _margin;
-            Point min = edges[0].Q - _margin;
+            Point max = edges[0].P + margin;
+            Point min = edges[0].Q - margin;
 
             foreach (Edge e in edges)
             {
                 if (e.P.X > max.X)
                 {
-                    max = new Point(e.P.X + _margin, max.Y);
+                    max = new Point(e.P.X + margin, max.Y);
                 }
 
                 if (e.P.Y > max.Y)
                 {
-                    max = new Point(max.X, e.P.Y + _margin);
+                    max = new Point(max.X, e.P.Y + margin);
                 }
 
                 if (e.Q.X > max.X)
                 {
-                    max = new Point(e.Q.X + _margin, max.Y);
+                    max = new Point(e.Q.X + margin, max.Y);
                 }
 
                 if (e.Q.Y > max.Y)
                 {
-                    max = new Point(max.X, e.Q.Y + _margin);
+                    max = new Point(max.X, e.Q.Y + margin);
                 }
 
                 if (e.P.X < min.X)
                 {
-                    min = new Point(e.P.X - _margin, min.Y);
+                    min = new Point(e.P.X - margin, min.Y);
                 }
 
                 if (e.P.Y < min.Y)
                 {
-                    min = new Point(min.X, e.P.Y - _margin);
+                    min = new Point(min.X, e.P.Y - margin);
                 }
 
                 if (e.Q.X < min.X)
                 {
-                    min = new Point(e.Q.X - _margin, min.Y);
+                    min = new Point(e.Q.X - margin, min.Y);
                 }
 
                 if (e.Q.Y < min.Y)
                 {
-                    min = new Point(min.X, e.Q.Y - _margin);
+                    min = new Point(min.X, e.Q.Y - margin);
                 }
             }
 

@@ -58,6 +58,6 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         BulletHitFlag = 16,
 
         /// <summary>This contact has a valid TOI in m_toi</summary>
-        TOIFlag = 32
+        ToiFlag = 32
     }
 }

@@ -41,37 +41,37 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>
         ///     The bias
         /// </summary>
-        private float _bias;
+        private float bias;
 
         /// <summary>
         ///     The bias factor
         /// </summary>
-        private float _biasFactor;
+        private float biasFactor;
 
         /// <summary>
         ///     The joint error
         /// </summary>
-        private float _jointError;
+        private float jointError;
 
         /// <summary>
         ///     The mass factor
         /// </summary>
-        private float _massFactor;
+        private float massFactor;
 
         /// <summary>
         ///     The max impulse
         /// </summary>
-        private float _maxImpulse;
+        private float maxImpulse;
 
         /// <summary>
         ///     The softness
         /// </summary>
-        private float _softness;
+        private float softness;
 
         /// <summary>
         ///     The target angle
         /// </summary>
-        private float _targetAngle;
+        private float targetAngle;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AngleJoint" /> class
@@ -81,8 +81,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         public AngleJoint(Body bodyA, Body bodyB)
             : base(bodyA, bodyB, JointType.Angle)
         {
-            _biasFactor = .2f;
-            _maxImpulse = float.MaxValue;
+            biasFactor = .2f;
+            maxImpulse = float.MaxValue;
         }
 
         /// <summary>
@@ -106,12 +106,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>The desired angle between BodyA and BodyB</summary>
         public float TargetAngle
         {
-            get => _targetAngle;
+            get => targetAngle;
             set
             {
-                if (_targetAngle != value)
+                if (targetAngle != value)
                 {
-                    _targetAngle = value;
+                    targetAngle = value;
                     WakeBodies();
                 }
             }
@@ -120,22 +120,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <summary>Gets or sets the bias factor. Defaults to 0.2</summary>
         public float BiasFactor
         {
-            get => _biasFactor;
-            set => _biasFactor = value;
+            get => biasFactor;
+            set => biasFactor = value;
         }
 
         /// <summary>Gets or sets the maximum impulse. Defaults to float.MaxValue</summary>
         public float MaxImpulse
         {
-            get => _maxImpulse;
-            set => _maxImpulse = value;
+            get => maxImpulse;
+            set => maxImpulse = value;
         }
 
         /// <summary>Gets or sets the softness of the joint. Defaults to 0</summary>
         public float Softness
         {
-            get => _softness;
-            set => _softness = value;
+            get => softness;
+            set => softness = value;
         }
 
         /// <summary>
@@ -164,9 +164,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             float aW = data.Positions[indexA].A;
             float bW = data.Positions[indexB].A;
 
-            _jointError = bW - aW - _targetAngle;
-            _bias = -_biasFactor * data.Step.InvertedDeltaTime * _jointError;
-            _massFactor = (1 - _softness) / (BodyA.InvI + BodyB.InvI);
+            jointError = bW - aW - targetAngle;
+            bias = -biasFactor * data.Step.InvertedDeltaTime * jointError;
+            massFactor = (1 - softness) / (BodyA.InvI + BodyB.InvI);
         }
 
         /// <summary>
@@ -178,12 +178,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             int indexA = BodyA.IslandIndex;
             int indexB = BodyB.IslandIndex;
 
-            float p = (_bias - data.Velocities[indexB].W + data.Velocities[indexA].W) * _massFactor;
+            float p = (bias - data.Velocities[indexB].W + data.Velocities[indexA].W) * massFactor;
 
             data.Velocities[indexA].W -=
-                BodyA.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
+                BodyA.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), maxImpulse);
             data.Velocities[indexB].W +=
-                BodyB.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), _maxImpulse);
+                BodyB.InvI * MathUtils.Sign(p) * MathUtils.Min(MathUtils.Abs(p), maxImpulse);
         }
 
         /// <summary>

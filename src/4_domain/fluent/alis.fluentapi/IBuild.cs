@@ -32,12 +32,12 @@ namespace Alis.FluentApi
     /// <summary>
     ///     The build interface
     /// </summary>
-    public interface IBuild<Origin>
+    public interface IBuild<TOrigin>
     {
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The origin</returns>
-        public Origin Build();
+        public TOrigin Build();
     }
 }

@@ -164,9 +164,9 @@ namespace Alis.Core.Systems.Physics2D.Shared
         }
 
         /// <summary>Returns an AABB that fully contains this polygon.</summary>
-        public AABB GetAABB()
+        public Aabb GetAabb()
         {
-            AABB aabb;
+            Aabb aabb;
             Vector2 lowerBound = new Vector2(float.MaxValue, float.MaxValue);
             Vector2 upperBound = new Vector2(float.MinValue, float.MinValue);
 

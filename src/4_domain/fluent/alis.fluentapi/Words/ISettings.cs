@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The settings interface
     /// </summary>
-    public interface ISettings<Builder, Argument>
+    public interface ISettings<TBuilder, TArgument>
     {
         /// <summary>
         ///     Settingses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public Builder Settings(Argument value);
+        public TBuilder Settings(TArgument value);
     }
 }

@@ -39,12 +39,12 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <summary>
         ///     The comparer
         /// </summary>
-        private readonly EqualityComparer<T> _comparer;
+        private readonly EqualityComparer<T> comparer;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Graph" /> class
         /// </summary>
-        public Graph() => _comparer = EqualityComparer<T>.Default;
+        public Graph() => comparer = EqualityComparer<T>.Default;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Graph" /> class
@@ -54,7 +54,7 @@ namespace Alis.Core.Systems.Physics2D.Shared
         {
             Contract.Requires(comparer != null, "You supplied a null comparer");
 
-            _comparer = comparer;
+            this.comparer = comparer;
         }
 
         /// <summary>The number of items in the graph</summary>
@@ -139,7 +139,7 @@ namespace Alis.Core.Systems.Physics2D.Shared
             {
                 do
                 {
-                    if (_comparer.Equals(node.Item, value))
+                    if (comparer.Equals(node.Item, value))
                     {
                         return node;
                     }

@@ -71,13 +71,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
         public void GetTransform(out Transform xfb, float beta)
         {
             xfb = new Transform();
-            xfb.p.X = (1.0f - beta) * C0.X + beta * C.X;
-            xfb.p.Y = (1.0f - beta) * C0.Y + beta * C.Y;
+            xfb.P.X = (1.0f - beta) * C0.X + beta * C.X;
+            xfb.P.Y = (1.0f - beta) * C0.Y + beta * C.Y;
             float angle = (1.0f - beta) * A0 + beta * A;
-            xfb.q.Set(angle);
+            xfb.Q.Set(angle);
 
             // Shift to origin
-            xfb.p -= MathUtils.Mul(xfb.q, LocalCenter);
+            xfb.P -= MathUtils.Mul(xfb.Q, LocalCenter);
         }
 
         /// <summary>Advance the sweep forward, yielding a new initial state.</summary>

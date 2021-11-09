@@ -32,7 +32,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
     /// <summary>
     ///     The toi output state enum
     /// </summary>
-    public enum TOIOutputState
+    public enum ToiOutputState
     {
         /// <summary>
         ///     The unknown toi output state

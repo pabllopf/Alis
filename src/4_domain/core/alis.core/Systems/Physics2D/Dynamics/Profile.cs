@@ -72,7 +72,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The time it takes for the time-of-impact solver
         /// </summary>
-        public long SolveTOI;
+        public long SolveToi;
 
         /// <summary>
         ///     Time it takes to process newly added and removed bodies/joints/controllers from the world

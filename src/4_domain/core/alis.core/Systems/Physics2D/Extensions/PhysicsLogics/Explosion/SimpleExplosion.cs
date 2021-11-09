@@ -65,12 +65,12 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
         {
             HashSet<Body> affectedBodies = new HashSet<Body>();
 
-            AABB aabb;
+            Aabb aabb;
             aabb.LowerBound = pos - new Vector2(radius);
             aabb.UpperBound = pos + new Vector2(radius);
 
             // Query the world for bodies within the radius.
-            World.QueryAABB(fixture =>
+            World.QueryAabb(fixture =>
             {
                 if (Vector2.Distance(fixture.Body.Position, pos) <= radius)
                 {

@@ -47,7 +47,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
     ///     - Does not care about winding order.
     ///     Source: http://code.google.com/p/poly2tri/
     /// </summary>
-    internal static class CDTDecomposer
+    internal static class CdtDecomposer
     {
         /// <summary>Decompose the polygon into several smaller non-concave polygon.</summary>
         public static List<Vertices> ConvexPartition(Vertices vertices)
@@ -76,9 +76,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
                 }
             }
 
-            DTSweepContext tcx = new DTSweepContext();
+            DtSweepContext tcx = new DtSweepContext();
             tcx.PrepareTriangulation(poly);
-            DTSweep.Triangulate(tcx);
+            DtSweep.Triangulate(tcx);
 
             List<Vertices> results = new List<Vertices>();
 

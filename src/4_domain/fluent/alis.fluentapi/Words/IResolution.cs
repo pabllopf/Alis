@@ -32,7 +32,7 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The resolution interface
     /// </summary>
-    public interface IResolution<Builder, Argument1, Argument2>
+    public interface IResolution<TBuilder, TArgument1, TArgument2>
     {
         /// <summary>
         ///     Resolutions the x
@@ -40,6 +40,6 @@ namespace Alis.FluentApi.Words
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The builder</returns>
-        public Builder Resolution(Argument1 x, Argument2 y);
+        public TBuilder Resolution(TArgument1 x, TArgument2 y);
     }
 }

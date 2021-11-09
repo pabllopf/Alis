@@ -32,7 +32,7 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The add interface
     /// </summary>
-    public interface IAdd<Builder, Type, Argument>
+    public interface IAdd<TBuilder, TYpe, TArgument>
     {
         /// <summary>
         ///     Adds the value
@@ -40,6 +40,6 @@ namespace Alis.FluentApi.Words
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public Builder Add<T>(Argument value) where T : Type;
+        public TBuilder Add<T>(TArgument value) where T : TYpe;
     }
 }

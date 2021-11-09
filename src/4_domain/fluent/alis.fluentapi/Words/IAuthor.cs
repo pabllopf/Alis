@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The author interface
     /// </summary>
-    public interface IAuthor<Builder, Argument>
+    public interface IAuthor<TBuilder, TArgument>
     {
         /// <summary>
         ///     Authors the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public Builder Author(Argument value);
+        public TBuilder Author(TArgument value);
     }
 }

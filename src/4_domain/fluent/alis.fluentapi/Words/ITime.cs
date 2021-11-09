@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The time interface
     /// </summary>
-    public interface ITime<Builder, Argument>
+    public interface ITime<TBuilder, TArgument>
     {
         /// <summary>
         ///     Times the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public Builder Time(Argument value);
+        public TBuilder Time(TArgument value);
     }
 }

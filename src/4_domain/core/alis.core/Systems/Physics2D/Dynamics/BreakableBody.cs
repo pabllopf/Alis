@@ -44,22 +44,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The world
         /// </summary>
-        private readonly World _world;
+        private readonly World world;
 
         /// <summary>
         ///     The angular velocities cache
         /// </summary>
-        private float[] _angularVelocitiesCache = new float[8];
+        private float[] angularVelocitiesCache = new float[8];
 
         /// <summary>
         ///     The break
         /// </summary>
-        private bool _break;
+        private bool @break;
 
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector2[] _velocitiesCache = new Vector2[8];
+        private Vector2[] velocitiesCache = new Vector2[8];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
@@ -72,10 +72,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         public BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position = new Vector2(),
             float rotation = 0)
         {
-            _world = world;
-            _world.ContactManager.PostSolve += PostSolve;
+            this.world = world;
+            this.world.ContactManager.PostSolve += PostSolve;
             Parts = new List<Fixture>(parts.Count);
-            MainBody = BodyFactory.CreateBody(_world, position, rotation, BodyType.Dynamic);
+            MainBody = BodyFactory.CreateBody(this.world, position, rotation, BodyType.Dynamic);
             Strength = 500.0f;
 
             foreach (Vertices part in parts)
@@ -96,9 +96,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(),
             float rotation = 0)
         {
-            _world = world;
-            _world.ContactManager.PostSolve += PostSolve;
-            MainBody = BodyFactory.CreateBody(_world, position, rotation, BodyType.Dynamic);
+            this.world = world;
+            this.world.ContactManager.PostSolve += PostSolve;
+            MainBody = BodyFactory.CreateBody(this.world, position, rotation, BodyType.Dynamic);
             Parts = new List<Fixture>(8);
 
             foreach (Shape part in shapes)
@@ -148,7 +148,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     if (maxImpulse > Strength)
                     {
                         // Flag the body for breaking.
-                        _break = true;
+                        @break = true;
                     }
                 }
             }
@@ -159,28 +159,28 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public void Update()
         {
-            if (_break)
+            if (@break)
             {
                 Decompose();
                 Broken = true;
-                _break = false;
+                @break = false;
             }
 
             // Cache velocities to improve movement on breakage.
             if (!Broken)
             {
                 //Enlarge the cache if needed
-                if (Parts.Count > _angularVelocitiesCache.Length)
+                if (Parts.Count > angularVelocitiesCache.Length)
                 {
-                    _velocitiesCache = new Vector2[Parts.Count];
-                    _angularVelocitiesCache = new float[Parts.Count];
+                    velocitiesCache = new Vector2[Parts.Count];
+                    angularVelocitiesCache = new float[Parts.Count];
                 }
 
                 //Cache the linear and angular velocities.
                 for (int i = 0; i < Parts.Count; i++)
                 {
-                    _velocitiesCache[i] = Parts[i].Body.LinearVelocity;
-                    _angularVelocitiesCache[i] = Parts[i].Body.AngularVelocity;
+                    velocitiesCache[i] = Parts[i].Body.LinearVelocity;
+                    angularVelocitiesCache[i] = Parts[i].Body.AngularVelocity;
                 }
             }
         }
@@ -191,7 +191,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         private void Decompose()
         {
             //Unsubsribe from the PostSolve delegate
-            _world.ContactManager.PostSolve -= PostSolve;
+            world.ContactManager.PostSolve -= PostSolve;
 
             for (int i = 0; i < Parts.Count; i++)
             {
@@ -202,19 +202,19 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 MainBody.RemoveFixture(oldFixture);
 
-                Body body = BodyFactory.CreateBody(_world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic,
+                Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic,
                     MainBody.UserData);
 
                 Fixture newFixture = body.AddFixture(shape);
                 newFixture.UserData = userData;
                 Parts[i] = newFixture;
 
-                body.AngularVelocity = _angularVelocitiesCache[i];
-                body.LinearVelocity = _velocitiesCache[i];
+                body.AngularVelocity = angularVelocitiesCache[i];
+                body.LinearVelocity = velocitiesCache[i];
             }
 
-            _world.RemoveBody(MainBody);
-            _world.RemoveBreakableBody(this);
+            world.RemoveBody(MainBody);
+            world.RemoveBreakableBody(this);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public void Break()
         {
-            _break = true;
+            @break = true;
         }
     }
 }

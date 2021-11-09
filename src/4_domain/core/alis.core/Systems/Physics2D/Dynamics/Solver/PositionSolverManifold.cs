@@ -76,7 +76,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
 
                 case ManifoldType.FaceA:
                 {
-                    normal = MathUtils.Mul(xfA.q, pc.LocalNormal);
+                    normal = MathUtils.Mul(xfA.Q, pc.LocalNormal);
                     Vector2 planePoint = MathUtils.Mul(ref xfA, pc.LocalPoint);
 
                     Vector2 clipPoint = MathUtils.Mul(ref xfB, pc.LocalPoints[index]);
@@ -87,7 +87,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
 
                 case ManifoldType.FaceB:
                 {
-                    normal = MathUtils.Mul(xfB.q, pc.LocalNormal);
+                    normal = MathUtils.Mul(xfB.Q, pc.LocalNormal);
                     Vector2 planePoint = MathUtils.Mul(ref xfB, pc.LocalPoint);
 
                     Vector2 clipPoint = MathUtils.Mul(ref xfA, pc.LocalPoints[index]);

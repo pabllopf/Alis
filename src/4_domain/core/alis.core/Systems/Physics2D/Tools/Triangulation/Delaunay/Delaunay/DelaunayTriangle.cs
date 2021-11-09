@@ -95,7 +95,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The int</returns>
-        public int IndexCW(TriangulationPoint p)
+        public int IndexCw(TriangulationPoint p)
         {
             int index = IndexOf(p);
             switch (index)
@@ -115,7 +115,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The int</returns>
-        public int IndexCCW(TriangulationPoint p)
+        public int IndexCcw(TriangulationPoint p)
         {
             int index = IndexOf(p);
             switch (index)
@@ -141,7 +141,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="e">The </param>
         /// <returns>The bool</returns>
-        public bool Contains(DTSweepConstraint e) => Contains(e.P) && Contains(e.Q);
+        public bool Contains(DtSweepConstraint e) => Contains(e.P) && Contains(e.Q);
 
         /// <summary>
         ///     Describes whether this instance contains
@@ -251,7 +251,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         public TriangulationPoint OppositePoint(DelaunayTriangle t, TriangulationPoint p)
         {
             Debug.Assert(t != this, "self-pointer error");
-            return PointCW(t.PointCW(p));
+            return PointCw(t.PointCw(p));
         }
 
         /// <summary>
@@ -259,14 +259,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
-        public DelaunayTriangle NeighborCW(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 1) % 3];
+        public DelaunayTriangle NeighborCw(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 1) % 3];
 
         /// <summary>
         ///     Neighbors the ccw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The delaunay triangle</returns>
-        public DelaunayTriangle NeighborCCW(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 2) % 3];
+        public DelaunayTriangle NeighborCcw(TriangulationPoint point) => Neighbors[(Points.IndexOf(point) + 2) % 3];
 
         /// <summary>
         ///     Neighbors the across using the specified point
@@ -280,19 +280,19 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The triangulation point</returns>
-        public TriangulationPoint PointCCW(TriangulationPoint point) => Points[(IndexOf(point) + 1) % 3];
+        public TriangulationPoint PointCcw(TriangulationPoint point) => Points[(IndexOf(point) + 1) % 3];
 
         /// <summary>
         ///     Points the cw using the specified point
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The triangulation point</returns>
-        public TriangulationPoint PointCW(TriangulationPoint point) => Points[(IndexOf(point) + 2) % 3];
+        public TriangulationPoint PointCw(TriangulationPoint point) => Points[(IndexOf(point) + 2) % 3];
 
         /// <summary>
         ///     Rotates the cw
         /// </summary>
-        private void RotateCW()
+        private void RotateCw()
         {
             TriangulationPoint t = Points[2];
             Points[2] = Points[1];
@@ -305,8 +305,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// <param name="nPoint">???</param>
         public void Legalize(TriangulationPoint oPoint, TriangulationPoint nPoint)
         {
-            RotateCW();
-            Points[IndexCCW(oPoint)] = nPoint;
+            RotateCw();
+            Points[IndexCcw(oPoint)] = nPoint;
         }
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         ///     Marks the constrained edge using the specified edge
         /// </summary>
         /// <param name="edge">The edge</param>
-        public void MarkConstrainedEdge(DTSweepConstraint edge)
+        public void MarkConstrainedEdge(DtSweepConstraint edge)
         {
             MarkConstrainedEdge(edge.P, edge.Q);
         }
@@ -446,14 +446,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public bool GetConstrainedEdgeCCW(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 2) % 3];
+        public bool GetConstrainedEdgeCcw(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 2) % 3];
 
         /// <summary>
         ///     Describes whether this instance get constrained edge cw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public bool GetConstrainedEdgeCW(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 1) % 3];
+        public bool GetConstrainedEdgeCw(TriangulationPoint p) => EdgeIsConstrained[(IndexOf(p) + 1) % 3];
 
         /// <summary>
         ///     Describes whether this instance get constrained edge across
@@ -467,7 +467,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <param name="ce">The ce</param>
-        public void SetConstrainedEdgeCCW(TriangulationPoint p, bool ce)
+        public void SetConstrainedEdgeCcw(TriangulationPoint p, bool ce)
         {
             EdgeIsConstrained[(IndexOf(p) + 2) % 3] = ce;
         }
@@ -477,7 +477,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <param name="ce">The ce</param>
-        public void SetConstrainedEdgeCW(TriangulationPoint p, bool ce)
+        public void SetConstrainedEdgeCw(TriangulationPoint p, bool ce)
         {
             EdgeIsConstrained[(IndexOf(p) + 1) % 3] = ce;
         }
@@ -497,14 +497,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public bool GetDelaunayEdgeCCW(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 2) % 3];
+        public bool GetDelaunayEdgeCcw(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 2) % 3];
 
         /// <summary>
         ///     Describes whether this instance get delaunay edge cw
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public bool GetDelaunayEdgeCW(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 1) % 3];
+        public bool GetDelaunayEdgeCw(TriangulationPoint p) => EdgeIsDelaunay[(IndexOf(p) + 1) % 3];
 
         /// <summary>
         ///     Describes whether this instance get delaunay edge across
@@ -518,7 +518,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <param name="ce">The ce</param>
-        public void SetDelaunayEdgeCCW(TriangulationPoint p, bool ce)
+        public void SetDelaunayEdgeCcw(TriangulationPoint p, bool ce)
         {
             EdgeIsDelaunay[(IndexOf(p) + 2) % 3] = ce;
         }
@@ -528,7 +528,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
         /// </summary>
         /// <param name="p">The </param>
         /// <param name="ce">The ce</param>
-        public void SetDelaunayEdgeCW(TriangulationPoint p, bool ce)
+        public void SetDelaunayEdgeCw(TriangulationPoint p, bool ce)
         {
             EdgeIsDelaunay[(IndexOf(p) + 1) % 3] = ce;
         }

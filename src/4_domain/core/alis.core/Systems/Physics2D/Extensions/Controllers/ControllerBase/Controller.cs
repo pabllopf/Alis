@@ -41,7 +41,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase
         /// <summary>
         ///     The type
         /// </summary>
-        private readonly ControllerType _type;
+        private readonly ControllerType type;
 
         /// <summary>
         ///     The enabled
@@ -57,7 +57,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase
         ///     Initializes a new instance of the <see cref="Controller" /> class
         /// </summary>
         /// <param name="controllerType">The controller type</param>
-        protected Controller(ControllerType controllerType) => _type = controllerType;
+        protected Controller(ControllerType controllerType) => type = controllerType;
 
         /// <summary>
         ///     Describes whether this instance is active on
@@ -66,7 +66,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase
         /// <returns>The bool</returns>
         public override bool IsActiveOn(Body body)
         {
-            if (body.ControllerFilter.IsControllerIgnored(_type))
+            if (body.ControllerFilter.IsControllerIgnored(type))
             {
                 return false;
             }

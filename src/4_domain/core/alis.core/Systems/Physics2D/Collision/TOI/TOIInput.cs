@@ -32,7 +32,7 @@ using Alis.Core.Systems.Physics2D.Collision.Distance;
 namespace Alis.Core.Systems.Physics2D.Collision.TOI
 {
     /// <summary>Input parameters for CalculateTimeOfImpact</summary>
-    public struct TOIInput
+    public struct ToiInput
     {
         /// <summary>
         ///     The proxy
@@ -57,6 +57,6 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
         /// <summary>
         ///     The max
         /// </summary>
-        public float TMax; // defines sweep interval [0, tMax]
+        public float Max; // defines sweep interval [0, tMax]
     }
 }

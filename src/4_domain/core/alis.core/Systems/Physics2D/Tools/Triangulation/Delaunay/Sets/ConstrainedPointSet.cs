@@ -50,7 +50,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Sets
         /// <summary>
         ///     The constrained point list
         /// </summary>
-        private readonly List<TriangulationPoint> _constrainedPointList;
+        private readonly List<TriangulationPoint> constrainedPointList;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConstrainedPointSet" /> class
@@ -70,8 +70,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Sets
         public ConstrainedPointSet(List<TriangulationPoint> points, IEnumerable<TriangulationPoint> constraints)
             : base(points)
         {
-            _constrainedPointList = new List<TriangulationPoint>();
-            _constrainedPointList.AddRange(constraints);
+            constrainedPointList = new List<TriangulationPoint>();
+            constrainedPointList.AddRange(constraints);
         }
 
         /// <summary>
@@ -91,10 +91,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Sets
         public override void PrepareTriangulation(TriangulationContext tcx)
         {
             base.PrepareTriangulation(tcx);
-            if (_constrainedPointList != null)
+            if (constrainedPointList != null)
             {
                 TriangulationPoint p1, p2;
-                using (List<TriangulationPoint>.Enumerator iterator = _constrainedPointList.GetEnumerator())
+                using (List<TriangulationPoint>.Enumerator iterator = constrainedPointList.GetEnumerator())
                 {
                     while (iterator.MoveNext())
                     {

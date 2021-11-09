@@ -44,10 +44,10 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
         /// <summary>
         ///     The keys
         /// </summary>
-        private readonly List<CurveKey> _keys;
+        private readonly List<CurveKey> keys;
 
         /// <summary>Creates a new instance of <see cref="CurveKeyCollection" /> class.</summary>
-        public CurveKeyCollection() => _keys = new List<CurveKey>();
+        public CurveKeyCollection() => keys = new List<CurveKey>();
 
         /// <summary>Indexer.</summary>
         /// <param name="index">The index of key in this collection.</param>
@@ -55,7 +55,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
         [DataMember(Name = "Items")]
         public CurveKey this[int index]
         {
-            get => _keys[index];
+            get => keys[index];
             set
             {
                 if (value == null)
@@ -63,19 +63,19 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
                     throw new ArgumentNullException();
                 }
 
-                if (index >= _keys.Count)
+                if (index >= keys.Count)
                 {
                     throw new IndexOutOfRangeException();
                 }
 
-                if (_keys[index].Position == value.Position)
+                if (keys[index].Position == value.Position)
                 {
-                    _keys[index] = value;
+                    keys[index] = value;
                 }
                 else
                 {
-                    _keys.RemoveAt(index);
-                    _keys.Add(value);
+                    keys.RemoveAt(index);
+                    keys.Add(value);
                 }
             }
         }
@@ -84,7 +84,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => _keys.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator() => keys.GetEnumerator();
 
         /// <summary>Adds a key to this collection.</summary>
         /// <param name="item">New key for the collection.</param>
@@ -97,46 +97,46 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
                 throw new ArgumentNullException(nameof(item));
             }
 
-            if (_keys.Count == 0)
+            if (keys.Count == 0)
             {
-                _keys.Add(item);
+                keys.Add(item);
                 return;
             }
 
-            for (int i = 0; i < _keys.Count; i++)
+            for (int i = 0; i < keys.Count; i++)
             {
-                if (item.Position < _keys[i].Position)
+                if (item.Position < keys[i].Position)
                 {
-                    _keys.Insert(i, item);
+                    keys.Insert(i, item);
                     return;
                 }
             }
 
-            _keys.Add(item);
+            keys.Add(item);
         }
 
         /// <summary>Removes all keys from this collection.</summary>
         public void Clear()
         {
-            _keys.Clear();
+            keys.Clear();
         }
 
         /// <summary>Determines whether this collection contains a specific key.</summary>
         /// <param name="item">The key to locate in this collection.</param>
         /// <returns><c>true</c> if the key is found; <c>false</c> otherwise.</returns>
-        public bool Contains(CurveKey item) => _keys.Contains(item);
+        public bool Contains(CurveKey item) => keys.Contains(item);
 
         /// <summary>Copies the keys of this collection to an array, starting at the array index provided.</summary>
         /// <param name="array">Destination array where elements will be copied.</param>
         /// <param name="arrayIndex">The zero-based index in the array to start copying from.</param>
         public void CopyTo(CurveKey[] array, int arrayIndex)
         {
-            _keys.CopyTo(array, arrayIndex);
+            keys.CopyTo(array, arrayIndex);
         }
 
         /// <summary>Returns an enumerator that iterates through the collection.</summary>
         /// <returns>An enumerator for the <see cref="CurveKeyCollection" />.</returns>
-        public IEnumerator<CurveKey> GetEnumerator() => _keys.GetEnumerator();
+        public IEnumerator<CurveKey> GetEnumerator() => keys.GetEnumerator();
 
         /// <summary>Removes specific element.</summary>
         /// <param name="item">The element</param>
@@ -144,11 +144,11 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
         ///     <c>true</c> if item is successfully removed; <c>false</c> otherwise. This method also returns <c>false</c> if
         ///     item was not found.
         /// </returns>
-        public bool Remove(CurveKey item) => _keys.Remove(item);
+        public bool Remove(CurveKey item) => keys.Remove(item);
 
         /// <summary>Returns the count of keys in this collection.</summary>
         [DataMember]
-        public int Count => _keys.Count;
+        public int Count => keys.Count;
 
         /// <summary>Returns false because it is not a read-only collection.</summary>
         [DataMember]
@@ -159,7 +159,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
         public CurveKeyCollection Clone()
         {
             CurveKeyCollection ckc = new CurveKeyCollection();
-            foreach (CurveKey key in _keys)
+            foreach (CurveKey key in keys)
             {
                 ckc.Add(key);
             }
@@ -170,13 +170,13 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
         /// <summary>Finds element in the collection and returns its index.</summary>
         /// <param name="item">Element for the search.</param>
         /// <returns>Index of the element; or -1 if item is not found.</returns>
-        public int IndexOf(CurveKey item) => _keys.IndexOf(item);
+        public int IndexOf(CurveKey item) => keys.IndexOf(item);
 
         /// <summary>Removes element at the specified index.</summary>
         /// <param name="index">The index which element will be removed.</param>
         public void RemoveAt(int index)
         {
-            _keys.RemoveAt(index);
+            keys.RemoveAt(index);
         }
     }
 }

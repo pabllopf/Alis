@@ -41,17 +41,17 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <summary>
         ///     The object creator
         /// </summary>
-        private readonly Func<T> _objectCreator;
+        private readonly Func<T> objectCreator;
 
         /// <summary>
         ///     The object reset
         /// </summary>
-        private readonly Action<T> _objectReset;
+        private readonly Action<T> objectReset;
 
         /// <summary>
         ///     The queue
         /// </summary>
-        private readonly Queue<T> _queue;
+        private readonly Queue<T> queue;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Pool" /> class
@@ -63,9 +63,9 @@ namespace Alis.Core.Systems.Physics2D.Shared
         public Pool(Func<T> objectCreator, Action<T> objectReset = null, int capacity = 16,
             bool preCreateInstances = true)
         {
-            _objectCreator = objectCreator;
-            _objectReset = objectReset;
-            _queue = new Queue<T>(capacity);
+            this.objectCreator = objectCreator;
+            this.objectReset = objectReset;
+            queue = new Queue<T>(capacity);
 
             if (!preCreateInstances)
             {
@@ -75,14 +75,14 @@ namespace Alis.Core.Systems.Physics2D.Shared
             for (int i = 0; i < capacity; i++)
             {
                 T obj = objectCreator();
-                _queue.Enqueue(obj);
+                queue.Enqueue(obj);
             }
         }
 
         /// <summary>
         ///     Gets the value of the left in pool
         /// </summary>
-        public int LeftInPool => _queue.Count;
+        public int LeftInPool => queue.Count;
 
         /// <summary>
         ///     Gets the from pool using the specified reset
@@ -91,16 +91,16 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <returns>The obj</returns>
         public T GetFromPool(bool reset = false)
         {
-            if (_queue.Count == 0)
+            if (queue.Count == 0)
             {
-                return _objectCreator();
+                return objectCreator();
             }
 
-            T obj = _queue.Dequeue();
+            T obj = queue.Dequeue();
 
             if (reset)
             {
-                _objectReset?.Invoke(obj);
+                objectReset?.Invoke(obj);
             }
 
             return obj;
@@ -130,10 +130,10 @@ namespace Alis.Core.Systems.Physics2D.Shared
         {
             if (reset)
             {
-                _objectReset?.Invoke(obj);
+                objectReset?.Invoke(obj);
             }
 
-            _queue.Enqueue(obj);
+            queue.Enqueue(obj);
         }
 
         /// <summary>

@@ -38,7 +38,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <summary>
         ///     The point
         /// </summary>
-        private readonly Point _point;
+        private readonly Point point;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="XNode" /> class
@@ -48,7 +48,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <param name="rChild">The child</param>
         public XNode(Point point, Node lChild, Node rChild)
             : base(lChild, rChild) =>
-            _point = point;
+            this.point = point;
 
         /// <summary>
         ///     Locates the edge
@@ -57,7 +57,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <returns>The sink</returns>
         public override Sink Locate(Edge edge)
         {
-            if (edge.P.X >= _point.X)
+            if (edge.P.X >= point.X)
             {
                 return RightChild.Locate(edge); // Move to the right in the graph
             }

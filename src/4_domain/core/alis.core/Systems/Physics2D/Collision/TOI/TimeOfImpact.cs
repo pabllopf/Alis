@@ -47,15 +47,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
         /// <summary>
         ///     The toi max iters
         /// </summary>
-        [ThreadStatic] public static int TOICalls,
-            TOIIters,
-            TOIMaxIters;
+        [ThreadStatic] public static int ToiCalls,
+            ToiIters,
+            ToiMaxIters;
 
         /// <summary>
         ///     The toi max root iters
         /// </summary>
-        [ThreadStatic] public static int TOIRootIters,
-            TOIMaxRootIters;
+        [ThreadStatic] public static int ToiRootIters,
+            ToiMaxRootIters;
 
         /// <summary>
         ///     Compute the upper bound on time before two shapes penetrate. Time is represented as a fraction between
@@ -67,13 +67,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
         /// </summary>
         /// <param name="input">The input.</param>
         /// <param name="output">The output.</param>
-        public static void CalculateTimeOfImpact(ref TOIInput input, out TOIOutput output)
+        public static void CalculateTimeOfImpact(ref ToiInput input, out ToiOutput output)
         {
-            ++TOICalls;
+            ++ToiCalls;
 
-            output = new TOIOutput();
-            output.State = TOIOutputState.Unknown;
-            output.T = input.TMax;
+            output = new ToiOutput();
+            output.State = ToiOutputState.Unknown;
+            output.T = input.Max;
 
             Sweep sweepA = input.SweepA;
             Sweep sweepB = input.SweepB;
@@ -83,15 +83,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
             sweepA.Normalize();
             sweepB.Normalize();
 
-            float tMax = input.TMax;
+            float tMax = input.Max;
 
-            float totalRadius = input.ProxyA._radius + input.ProxyB._radius;
+            float totalRadius = input.ProxyA.Radius + input.ProxyB.Radius;
             float target = Math.Max(Settings.LinearSlop, totalRadius - 3.0f * Settings.LinearSlop);
             float tolerance = 0.25f * Settings.LinearSlop;
             Debug.Assert(target > tolerance);
 
             float t1 = 0.0f;
-            const int k_maxIterations = 20;
+            const int kMaxIterations = 20;
             int iter = 0;
 
             // Prepare input for distance query.
@@ -111,14 +111,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
                 // to get a separating axis.
                 distanceInput.TransformA = xfA;
                 distanceInput.TransformB = xfB;
-                DistanceGJK.ComputeDistance(ref distanceInput, out DistanceOutput distanceOutput,
+                DistanceGjk.ComputeDistance(ref distanceInput, out DistanceOutput distanceOutput,
                     out SimplexCache cache);
 
                 // If the shapes are overlapped, we give up on continuous collision.
                 if (distanceOutput.Distance <= 0.0f)
                 {
                     // Failure!
-                    output.State = TOIOutputState.Overlapped;
+                    output.State = ToiOutputState.Overlapped;
                     output.T = 0.0f;
                     break;
                 }
@@ -126,7 +126,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
                 if (distanceOutput.Distance < target + tolerance)
                 {
                     // Victory!
-                    output.State = TOIOutputState.Touching;
+                    output.State = ToiOutputState.Touching;
                     output.T = t1;
                     break;
                 }
@@ -149,7 +149,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
                     if (s2 > target + tolerance)
                     {
                         // Victory!
-                        output.State = TOIOutputState.Seperated;
+                        output.State = ToiOutputState.Seperated;
                         output.T = tMax;
                         done = true;
                         break;
@@ -171,7 +171,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
                     // runs out of iterations.
                     if (s1 < target - tolerance)
                     {
-                        output.State = TOIOutputState.Failed;
+                        output.State = ToiOutputState.Failed;
                         output.T = t1;
                         done = true;
                         break;
@@ -181,7 +181,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
                     if (s1 <= target + tolerance)
                     {
                         // Victory! t1 should hold the TOI (could be 0.0).
-                        output.State = TOIOutputState.Touching;
+                        output.State = ToiOutputState.Touching;
                         output.T = t1;
                         done = true;
                         break;
@@ -206,7 +206,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
                         }
 
                         ++rootIterCount;
-                        ++TOIRootIters;
+                        ++ToiRootIters;
 
                         float s = SeparationFunction.Evaluate(indexA, indexB, t, input.ProxyA, ref sweepA, input.ProxyB,
                             ref sweepB, ref axis, ref localPoint, type);
@@ -236,7 +236,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
                         }
                     }
 
-                    TOIMaxRootIters = Math.Max(TOIMaxRootIters, rootIterCount);
+                    ToiMaxRootIters = Math.Max(ToiMaxRootIters, rootIterCount);
 
                     ++pushBackIter;
 
@@ -247,23 +247,23 @@ namespace Alis.Core.Systems.Physics2D.Collision.TOI
                 }
 
                 ++iter;
-                ++TOIIters;
+                ++ToiIters;
 
                 if (done)
                 {
                     break;
                 }
 
-                if (iter == k_maxIterations)
+                if (iter == kMaxIterations)
                 {
                     // Root finder got stuck. Semi-victory.
-                    output.State = TOIOutputState.Failed;
+                    output.State = ToiOutputState.Failed;
                     output.T = t1;
                     break;
                 }
             }
 
-            TOIMaxIters = Math.Max(TOIMaxIters, iter);
+            ToiMaxIters = Math.Max(ToiMaxIters, iter);
         }
     }
 }

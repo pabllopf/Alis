@@ -66,7 +66,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting.Simple
             }
 
             //Offset the entry and exit points if they are too close to the vertices
-            foreach (Vector2 vertex in shape._verticesPrivate)
+            foreach (Vector2 vertex in shape.VerticesPrivate)
             {
                 if (vertex.Equals(localEntryPoint))
                 {
@@ -79,7 +79,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting.Simple
                 }
             }
 
-            Vertices vertices = new Vertices(shape._verticesPrivate);
+            Vertices vertices = new Vertices(shape.VerticesPrivate);
             Vertices[] newPolygon = new Vertices[2];
 
             for (int i = 0; i < newPolygon.Length; i++)
@@ -244,7 +244,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting.Simple
                     //Delete the original shape and create two new. Retain the properties of the body.
                     if (first.CheckPolygon() == PolygonError.NoError)
                     {
-                        Body firstFixture = BodyFactory.CreatePolygon(world, first, fixtures[i].Shape._densityPrivate,
+                        Body firstFixture = BodyFactory.CreatePolygon(world, first, fixtures[i].Shape.DensityPrivate,
                             fixtures[i].Body.Position);
                         firstFixture.Rotation = fixtures[i].Body.Rotation;
                         firstFixture.LinearVelocity = fixtures[i].Body.LinearVelocity;
@@ -254,7 +254,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting.Simple
 
                     if (second.CheckPolygon() == PolygonError.NoError)
                     {
-                        Body secondFixture = BodyFactory.CreatePolygon(world, second, fixtures[i].Shape._densityPrivate,
+                        Body secondFixture = BodyFactory.CreatePolygon(world, second, fixtures[i].Shape.DensityPrivate,
                             fixtures[i].Body.Position);
                         secondFixture.Rotation = fixtures[i].Body.Rotation;
                         secondFixture.LinearVelocity = fixtures[i].Body.LinearVelocity;

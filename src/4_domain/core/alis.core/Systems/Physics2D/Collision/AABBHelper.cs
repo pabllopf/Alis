@@ -36,7 +36,7 @@ namespace Alis.Core.Systems.Physics2D.Collision
     /// <summary>
     ///     The aabb helper class
     /// </summary>
-    public static class AABBHelper
+    public static class AabbHelper
     {
         /// <summary>
         ///     Computes the edge aabb using the specified start
@@ -45,7 +45,7 @@ namespace Alis.Core.Systems.Physics2D.Collision
         /// <param name="end">The end</param>
         /// <param name="transform">The transform</param>
         /// <param name="aabb">The aabb</param>
-        public static void ComputeEdgeAABB(ref Vector2 start, ref Vector2 end, ref Transform transform, out AABB aabb)
+        public static void ComputeEdgeAabb(ref Vector2 start, ref Vector2 end, ref Transform transform, out Aabb aabb)
         {
             Vector2 v1 = MathUtils.Mul(ref transform, ref start);
             Vector2 v2 = MathUtils.Mul(ref transform, ref end);
@@ -65,9 +65,9 @@ namespace Alis.Core.Systems.Physics2D.Collision
         /// <param name="radius">The radius</param>
         /// <param name="transform">The transform</param>
         /// <param name="aabb">The aabb</param>
-        public static void ComputeCircleAABB(ref Vector2 pos, float radius, ref Transform transform, out AABB aabb)
+        public static void ComputeCircleAabb(ref Vector2 pos, float radius, ref Transform transform, out Aabb aabb)
         {
-            Vector2 p = transform.p + MathUtils.Mul(transform.q, pos);
+            Vector2 p = transform.P + MathUtils.Mul(transform.Q, pos);
             aabb.LowerBound = new Vector2(p.X - radius, p.Y - radius);
             aabb.UpperBound = new Vector2(p.X + radius, p.Y + radius);
         }
@@ -78,7 +78,7 @@ namespace Alis.Core.Systems.Physics2D.Collision
         /// <param name="vertices">The vertices</param>
         /// <param name="transform">The transform</param>
         /// <param name="aabb">The aabb</param>
-        public static void ComputePolygonAABB(Vertices vertices, ref Transform transform, out AABB aabb)
+        public static void ComputePolygonAabb(Vertices vertices, ref Transform transform, out Aabb aabb)
         {
             Vector2 lower = MathUtils.Mul(ref transform, vertices[0]);
             Vector2 upper = lower;

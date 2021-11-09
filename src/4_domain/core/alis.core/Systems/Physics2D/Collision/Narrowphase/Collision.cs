@@ -57,7 +57,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             input.TransformB = xfB;
             input.UseRadii = true;
 
-            DistanceGJK.ComputeDistance(ref input, out DistanceOutput output, out _);
+            DistanceGjk.ComputeDistance(ref input, out DistanceOutput output, out _);
 
             return output.Distance < 10.0f * MathConstants.Epsilon;
         }

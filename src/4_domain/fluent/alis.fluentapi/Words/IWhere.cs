@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The where interface
     /// </summary>
-    public interface IWhere<Builder, Argument>
+    public interface IWhere<TBuilder, TArgument>
     {
         /// <summary>Wheres the specified value.</summary>
         /// <param name="value">The value.</param>
         /// <returns>
         ///     <br />
         /// </returns>
-        public Builder Where(Argument value);
+        public TBuilder Where(TArgument value);
     }
 }

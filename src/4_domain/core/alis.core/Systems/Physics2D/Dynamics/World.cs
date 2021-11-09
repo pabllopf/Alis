@@ -52,63 +52,63 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly HashSet<Body> _bodyAddList = new HashSet<Body>();
+        private readonly HashSet<Body> bodyAddList = new HashSet<Body>();
 
         /// <summary>
         ///     The body list
         /// </summary>
-        private readonly List<Body> _bodyList;
+        private readonly List<Body> bodyList;
 
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly HashSet<Body> _bodyRemoveList = new HashSet<Body>();
+        private readonly HashSet<Body> bodyRemoveList = new HashSet<Body>();
 
         /// <summary>
         ///     The breakable body list
         /// </summary>
-        private readonly List<BreakableBody> _breakableBodyList;
+        private readonly List<BreakableBody> breakableBodyList;
 
         /// <summary>
         ///     The controller list
         /// </summary>
-        private readonly List<Controller> _controllerList;
+        private readonly List<Controller> controllerList;
 
         /// <summary>
         ///     The joint
         /// </summary>
-        private readonly HashSet<Joint> _jointAddList = new HashSet<Joint>();
+        private readonly HashSet<Joint> jointAddList = new HashSet<Joint>();
 
         /// <summary>
         ///     The joint list
         /// </summary>
-        private readonly List<Joint> _jointList;
+        private readonly List<Joint> jointList;
 
         /// <summary>
         ///     The joint
         /// </summary>
-        private readonly HashSet<Joint> _jointRemoveList = new HashSet<Joint>();
+        private readonly HashSet<Joint> jointRemoveList = new HashSet<Joint>();
 
         /// <summary>
         ///     The query aabb callback wrapper
         /// </summary>
-        private readonly Func<int, bool> _queryAABBCallbackWrapper;
+        private readonly Func<int, bool> queryAabbCallbackWrapper;
 
         /// <summary>
         ///     The ray cast callback wrapper
         /// </summary>
-        private readonly Func<RayCastInput, int, float> _rayCastCallbackWrapper;
+        private readonly Func<RayCastInput, int, float> rayCastCallbackWrapper;
 
         /// <summary>
         ///     The restart
         /// </summary>
-        private readonly Pool<Stopwatch> _timerPool =
+        private readonly Pool<Stopwatch> timerPool =
             new Pool<Stopwatch>(Stopwatch.StartNew, sw => sw.Restart(), 5, false);
 
         /// <summary>
         ///     The contact manager
         /// </summary>
-        private ContactManager _contactManager;
+        private ContactManager contactManager;
 
         /// <summary>
         ///     The contact
@@ -118,27 +118,27 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The continuous physics enabled
         /// </summary>
-        private bool _continuousPhysicsEnabled;
+        private bool continuousPhysicsEnabled;
 
         /// <summary>
         ///     The enabled
         /// </summary>
-        private bool _enabled;
+        private bool enabled;
 
         /// <summary>
         ///     The enable diagnostics
         /// </summary>
-        private bool _enableDiagnostics;
+        private bool enableDiagnostics;
 
         /// <summary>
         ///     The gravity
         /// </summary>
-        private Vector2 _gravity;
+        private Vector2 gravity;
 
         /// <summary>
         ///     The inv dt
         /// </summary>
-        private float _invDt0;
+        private float invDt0;
 
         /// <summary>
         ///     The island
@@ -148,12 +148,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The is locked
         /// </summary>
-        private bool _isLocked;
+        private bool isLocked;
 
         /// <summary>
         ///     The my fixture
         /// </summary>
-        private Fixture _myFixture;
+        private Fixture myFixture;
 
         /// <summary>
         ///     The new contacts
@@ -163,70 +163,70 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The point
         /// </summary>
-        private Vector2 _point1;
+        private Vector2 point1;
 
         /// <summary>
         ///     The point
         /// </summary>
-        private Vector2 _point2;
+        private Vector2 point2;
 
         /// <summary>
         ///     The profile
         /// </summary>
-        private Profile _profile;
+        private Profile profile;
 
         /// <summary>
         ///     The query aabb callback
         /// </summary>
-        private Func<Fixture, bool> _queryAABBCallback;
+        private Func<Fixture, bool> queryAabbCallback;
 
         /// <summary>
         ///     The ray cast callback
         /// </summary>
-        private Func<Fixture, Vector2, Vector2, float, float> _rayCastCallback;
+        private Func<Fixture, Vector2, Vector2, float, float> rayCastCallback;
 
         /// <summary>
         ///     The sleeping allowed
         /// </summary>
-        private bool _sleepingAllowed;
+        private bool sleepingAllowed;
 
         /// <summary>
         ///     The body
         /// </summary>
-        private Body[] _stack = new Body[64];
+        private Body[] stack = new Body[64];
 
         /// <summary>
         ///     The step complete
         /// </summary>
-        private bool _stepComplete = true;
+        private bool stepComplete = true;
 
         /// <summary>
         ///     The test point all fixtures
         /// </summary>
-        private List<Fixture> _testPointAllFixtures;
+        private List<Fixture> testPointAllFixtures;
 
         /// <summary>
         ///     The warm starting enabled
         /// </summary>
-        private bool _warmStartingEnabled;
+        private bool warmStartingEnabled;
 
         /// <summary>Initializes a new instance of the <see cref="World" /> class.</summary>
         public World(Vector2 gravity)
         {
-            _gravity = gravity;
-            _enabled = true;
-            _sleepingAllowed = true;
-            _warmStartingEnabled = true;
-            _continuousPhysicsEnabled = true;
+            this.gravity = gravity;
+            enabled = true;
+            sleepingAllowed = true;
+            warmStartingEnabled = true;
+            continuousPhysicsEnabled = true;
 
             Island1 = new Island();
-            _controllerList = new List<Controller>();
-            _breakableBodyList = new List<BreakableBody>();
-            _bodyList = new List<Body>(32);
-            _jointList = new List<Joint>(32);
+            controllerList = new List<Controller>();
+            breakableBodyList = new List<BreakableBody>();
+            bodyList = new List<Body>(32);
+            jointList = new List<Joint>(32);
 
-            _queryAABBCallbackWrapper = QueryAABBCallbackWrapper;
-            _rayCastCallbackWrapper = RayCastCallbackWrapper;
+            queryAabbCallbackWrapper = QueryAabbCallbackWrapper;
+            rayCastCallbackWrapper = RayCastCallbackWrapper;
 
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
         }
@@ -236,8 +236,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public bool ContinuousPhysicsEnabled
         {
-            get => _continuousPhysicsEnabled;
-            set => _continuousPhysicsEnabled = value;
+            get => continuousPhysicsEnabled;
+            set => continuousPhysicsEnabled = value;
         }
 
         /// <summary>
@@ -245,8 +245,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public bool SleepingAllowed
         {
-            get => _sleepingAllowed;
-            set => _sleepingAllowed = value;
+            get => sleepingAllowed;
+            set => sleepingAllowed = value;
         }
 
         /// <summary>
@@ -254,8 +254,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public bool WarmStartingEnabled
         {
-            get => _warmStartingEnabled;
-            set => _warmStartingEnabled = value;
+            get => warmStartingEnabled;
+            set => warmStartingEnabled = value;
         }
 
         /// <summary>
@@ -264,31 +264,31 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public bool EnableDiagnostics
         {
-            get => _enableDiagnostics;
-            set => _enableDiagnostics = value;
+            get => enableDiagnostics;
+            set => enableDiagnostics = value;
         }
 
         /// <summary>Change the global gravity vector.</summary>
         public Vector2 Gravity
         {
-            get => _gravity;
-            set => _gravity = value;
+            get => gravity;
+            set => gravity = value;
         }
 
         /// <summary>
         ///     Gets the value of the profile
         /// </summary>
-        public ref Profile Profile => ref _profile;
+        public ref Profile Profile => ref profile;
 
         /// <summary>
         ///     Gets the value of the controller list
         /// </summary>
-        public List<Controller> ControllerList => _controllerList;
+        public List<Controller> ControllerList => controllerList;
 
         /// <summary>
         ///     Gets the value of the breakable body list
         /// </summary>
-        public List<BreakableBody> BreakableBodyList => _breakableBodyList;
+        public List<BreakableBody> BreakableBodyList => breakableBodyList;
 
         /// <summary>Get the number of broad-phase proxies.</summary>
         /// <value>The proxy count.</value>
@@ -298,23 +298,23 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value>The contact manager.</value>
         public ContactManager ContactManager
         {
-            get => _contactManager;
-            set { _contactManager = value; }
+            get => contactManager;
+            set { contactManager = value; }
         }
 
         /// <summary>Get the world body list.</summary>
         /// <value>The head of the world body list.</value>
-        public List<Body> BodyList => _bodyList;
+        public List<Body> BodyList => bodyList;
 
         /// <summary>Get the world joint list.</summary>
         /// <value>The joint list.</value>
-        public List<Joint> JointList => _jointList;
+        public List<Joint> JointList => jointList;
 
         /// <summary>If false, the whole simulation stops. It still processes added and removed geometries.</summary>
         public bool Enabled
         {
-            get => _enabled;
-            set => _enabled = value;
+            get => enabled;
+            set => enabled = value;
         }
 
         /// <summary>
@@ -322,8 +322,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public bool IsLocked
         {
-            get => _isLocked;
-            set => _isLocked = value;
+            get => isLocked;
+            set => isLocked = value;
         }
 
         /// <summary>Fires whenever a body has been added</summary>
@@ -357,11 +357,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             if (delayUntilNextStep)
             {
-                Debug.Assert(!_bodyAddList.Contains(body), "You are adding the same body more than once.");
+                Debug.Assert(!bodyAddList.Contains(body), "You are adding the same body more than once.");
 
-                if (!_bodyAddList.Contains(body))
+                if (!bodyAddList.Contains(body))
                 {
-                    _bodyAddList.Add(body);
+                    bodyAddList.Add(body);
                 }
             }
             else
@@ -384,12 +384,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             if (delayUntilNextStep)
             {
-                Debug.Assert(!_bodyRemoveList.Contains(body),
+                Debug.Assert(!bodyRemoveList.Contains(body),
                     "The body is already marked for removal. You are removing the body more than once.");
 
-                if (!_bodyRemoveList.Contains(body))
+                if (!bodyRemoveList.Contains(body))
                 {
-                    _bodyRemoveList.Add(body);
+                    bodyRemoveList.Add(body);
                 }
             }
             else
@@ -412,11 +412,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             if (delayUntilNextStep)
             {
-                Debug.Assert(!_jointAddList.Contains(joint), "You are adding the same joint more than once.");
+                Debug.Assert(!jointAddList.Contains(joint), "You are adding the same joint more than once.");
 
-                if (!_jointAddList.Contains(joint))
+                if (!jointAddList.Contains(joint))
                 {
-                    _jointAddList.Add(joint);
+                    jointAddList.Add(joint);
                 }
             }
             else
@@ -439,12 +439,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             if (delayUntilNextStep)
             {
-                Debug.Assert(!_jointRemoveList.Contains(joint),
+                Debug.Assert(!jointRemoveList.Contains(joint),
                     "The joint is already marked for removal. You are removing the joint more than once.");
 
-                if (!_jointRemoveList.Contains(joint))
+                if (!jointRemoveList.Contains(joint))
                 {
-                    _jointRemoveList.Add(joint);
+                    jointRemoveList.Add(joint);
                 }
             }
             else
@@ -466,10 +466,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="controller">The controller</param>
         public void AddController(Controller controller)
         {
-            Debug.Assert(!_controllerList.Contains(controller), "You are adding the same controller more than once.");
+            Debug.Assert(!controllerList.Contains(controller), "You are adding the same controller more than once.");
 
             controller.World = this;
-            _controllerList.Add(controller);
+            controllerList.Add(controller);
 
             ControllerAdded?.Invoke(controller);
         }
@@ -480,12 +480,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="controller">The controller</param>
         public void RemoveController(Controller controller)
         {
-            Debug.Assert(_controllerList.Contains(controller),
+            Debug.Assert(controllerList.Contains(controller),
                 "You are removing a controller that is not in the simulation.");
 
-            if (_controllerList.Contains(controller))
+            if (controllerList.Contains(controller))
             {
-                _controllerList.Remove(controller);
+                controllerList.Remove(controller);
 
                 ControllerRemoved?.Invoke(controller);
             }
@@ -497,7 +497,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="breakableBody">The breakable body</param>
         public void AddBreakableBody(BreakableBody breakableBody)
         {
-            _breakableBodyList.Add(breakableBody);
+            breakableBodyList.Add(breakableBody);
         }
 
         /// <summary>
@@ -507,9 +507,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         public void RemoveBreakableBody(BreakableBody breakableBody)
         {
             //The breakable body list does not contain the body you tried to remove.
-            Debug.Assert(_breakableBodyList.Contains(breakableBody));
+            Debug.Assert(breakableBodyList.Contains(breakableBody));
 
-            _breakableBodyList.Remove(breakableBody);
+            breakableBodyList.Remove(breakableBody);
         }
 
         /// <summary>Take a time step. This performs collision detection, integration, and constraint solution.</summary>
@@ -525,31 +525,31 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         public void Step(float dt, int velocityIterations = 8, int positionIterations = 3)
         {
             //Velcro: We support disabling the world
-            if (!_enabled)
+            if (!enabled)
             {
                 return;
             }
 
             //Velcro: We reuse the timers to avoid generating garbage
-            Stopwatch stepTimer = _timerPool.GetFromPool(true);
+            Stopwatch stepTimer = timerPool.GetFromPool(true);
 
             {
                 //Velcro: We support add/removal of objects live in the engine.
-                Stopwatch timer = _timerPool.GetFromPool(true);
+                Stopwatch timer = timerPool.GetFromPool(true);
                 ProcessChanges();
-                _profile.AddRemoveTime = timer.ElapsedTicks;
-                _timerPool.ReturnToPool(timer);
+                profile.AddRemoveTime = timer.ElapsedTicks;
+                timerPool.ReturnToPool(timer);
             }
 
             // If new fixtures were added, we need to find the new contacts.
             if (NewContacts)
             {
                 //Velcro: We measure how much time is spent on finding new contacts
-                Stopwatch timer = _timerPool.GetFromPool(true);
+                Stopwatch timer = timerPool.GetFromPool(true);
                 ContactManager.FindNewContacts();
                 NewContacts = false;
-                _profile.NewContactsTime = timer.ElapsedTicks;
-                _timerPool.ReturnToPool(timer);
+                profile.NewContactsTime = timer.ElapsedTicks;
+                timerPool.ReturnToPool(timer);
             }
 
             IsLocked = true;
@@ -568,49 +568,49 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 step.InvertedDeltaTime = 0.0f;
             }
 
-            step.DeltaTimeRatio = _invDt0 * dt;
+            step.DeltaTimeRatio = invDt0 * dt;
 
             {
                 //Velcro: We have the concept of controllers. We update them here
-                Stopwatch timer = _timerPool.GetFromPool(true);
-                for (int i = 0; i < _controllerList.Count; i++)
+                Stopwatch timer = timerPool.GetFromPool(true);
+                for (int i = 0; i < controllerList.Count; i++)
                 {
-                    _controllerList[i].Update(dt);
+                    controllerList[i].Update(dt);
                 }
 
-                _profile.ControllersUpdateTime = timer.ElapsedTicks;
-                _timerPool.ReturnToPool(timer);
+                profile.ControllersUpdateTime = timer.ElapsedTicks;
+                timerPool.ReturnToPool(timer);
             }
 
             // Update contacts. This is where some contacts are destroyed.
             {
-                Stopwatch timer = _timerPool.GetFromPool(true);
+                Stopwatch timer = timerPool.GetFromPool(true);
                 ContactManager.Collide();
-                _profile.Collide = timer.ElapsedTicks;
-                _timerPool.ReturnToPool(timer);
+                profile.Collide = timer.ElapsedTicks;
+                timerPool.ReturnToPool(timer);
             }
 
             // Integrate velocities, solve velocity constraints, and integrate positions.
-            if (_stepComplete && step.DeltaTime > 0.0f)
+            if (stepComplete && step.DeltaTime > 0.0f)
             {
-                Stopwatch timer = _timerPool.GetFromPool(true);
+                Stopwatch timer = timerPool.GetFromPool(true);
                 Solve(ref step);
-                _profile.Solve = timer.ElapsedTicks;
-                _timerPool.ReturnToPool(timer);
+                profile.Solve = timer.ElapsedTicks;
+                timerPool.ReturnToPool(timer);
             }
 
             // Handle TOI events.
-            if (_continuousPhysicsEnabled && step.DeltaTime > 0.0f)
+            if (continuousPhysicsEnabled && step.DeltaTime > 0.0f)
             {
-                Stopwatch timer = _timerPool.GetFromPool(true);
-                SolveTOI(ref step);
-                _profile.SolveTOI = timer.ElapsedTicks;
-                _timerPool.ReturnToPool(timer);
+                Stopwatch timer = timerPool.GetFromPool(true);
+                SolveToi(ref step);
+                profile.SolveToi = timer.ElapsedTicks;
+                timerPool.ReturnToPool(timer);
             }
 
             if (step.DeltaTime > 0.0f)
             {
-                _invDt0 = step.InvertedDeltaTime;
+                invDt0 = step.InvertedDeltaTime;
             }
 
             if (Settings.AutoClearForces)
@@ -620,21 +620,21 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             {
                 //Velcro: We support breakable bodies. We update them here.
-                Stopwatch timer = _timerPool.GetFromPool(true);
+                Stopwatch timer = timerPool.GetFromPool(true);
 
-                for (int i = 0; i < _breakableBodyList.Count; i++)
+                for (int i = 0; i < breakableBodyList.Count; i++)
                 {
-                    _breakableBodyList[i].Update();
+                    breakableBodyList[i].Update();
                 }
 
-                _profile.BreakableBodies = timer.ElapsedTicks;
-                _timerPool.ReturnToPool(timer);
+                profile.BreakableBodies = timer.ElapsedTicks;
+                timerPool.ReturnToPool(timer);
             }
 
             IsLocked = false;
 
-            _profile.Step = stepTimer.ElapsedTicks;
-            _timerPool.ReturnToPool(stepTimer);
+            profile.Step = stepTimer.ElapsedTicks;
+            timerPool.ReturnToPool(stepTimer);
         }
 
         /// <summary>
@@ -645,9 +645,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         public void ClearForces()
         {
-            for (int i = 0; i < _bodyList.Count; i++)
+            for (int i = 0; i < bodyList.Count; i++)
             {
-                Body body = _bodyList[i];
+                Body body = bodyList[i];
                 body.Force = Vector2.Zero;
                 body.Torque = 0.0f;
             }
@@ -659,11 +659,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="aabb">The AABB query box.</param>
-        public void QueryAABB(Func<Fixture, bool> callback, ref AABB aabb)
+        public void QueryAabb(Func<Fixture, bool> callback, ref Aabb aabb)
         {
-            _queryAABBCallback = callback;
-            ContactManager.BroadPhase.Query(_queryAABBCallbackWrapper, ref aabb);
-            _queryAABBCallback = null;
+            queryAabbCallback = callback;
+            ContactManager.BroadPhase.Query(queryAabbCallbackWrapper, ref aabb);
+            queryAabbCallback = null;
         }
 
         /// <summary>
@@ -672,11 +672,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="aabb">The AABB query box.</param>
         /// <returns>A list of fixtures that were in the affected area.</returns>
-        public List<Fixture> QueryAABB(ref AABB aabb)
+        public List<Fixture> QueryAabb(ref Aabb aabb)
         {
             List<Fixture> affected = new List<Fixture>();
 
-            QueryAABB(fixture =>
+            QueryAabb(fixture =>
             {
                 affected.Add(fixture);
                 return true;
@@ -702,9 +702,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             input.Point1 = point1;
             input.Point2 = point2;
 
-            _rayCastCallback = callback;
-            ContactManager.BroadPhase.RayCast(_rayCastCallbackWrapper, ref input);
-            _rayCastCallback = null;
+            rayCastCallback = callback;
+            ContactManager.BroadPhase.RayCast(rayCastCallbackWrapper, ref input);
+            rayCastCallback = null;
         }
 
         /// <summary>
@@ -735,36 +735,36 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <returns>The my fixture</returns>
         public Fixture TestPoint(Vector2 point)
         {
-            AABB aabb;
+            Aabb aabb;
             Vector2 d = new Vector2(MathConstants.Epsilon, MathConstants.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
 
-            _myFixture = null;
-            _point1 = point;
+            myFixture = null;
+            point1 = point;
 
             // Query the world for overlapping shapes.
-            QueryAABB(TestPointCallback, ref aabb);
+            QueryAabb(TestPointCallback, ref aabb);
 
-            return _myFixture;
+            return myFixture;
         }
 
         /// <summary>Returns a list of fixtures that are at the specified point.</summary>
         /// <param name="point">The point.</param>
         public List<Fixture> TestPointAll(Vector2 point)
         {
-            AABB aabb;
+            Aabb aabb;
             Vector2 d = new Vector2(MathConstants.Epsilon, MathConstants.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
 
-            _point2 = point;
-            _testPointAllFixtures = new List<Fixture>();
+            point2 = point;
+            testPointAllFixtures = new List<Fixture>();
 
             // Query the world for overlapping shapes.
-            QueryAABB(TestPointAllCallback, ref aabb);
+            QueryAabb(TestPointAllCallback, ref aabb);
 
-            return _testPointAllFixtures;
+            return testPointAllFixtures;
         }
 
         /// <summary>
@@ -780,14 +780,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 return;
             }
 
-            foreach (Body b in _bodyList)
+            foreach (Body b in bodyList)
             {
-                b._xf.p -= newOrigin;
+                b.Xf.P -= newOrigin;
                 b.Sweep.C0 -= newOrigin;
                 b.Sweep.C -= newOrigin;
             }
 
-            foreach (Joint joint in _jointList)
+            foreach (Joint joint in jointList)
             {
                 joint.ShiftOrigin(ref newOrigin);
             }
@@ -802,19 +802,19 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             ProcessChanges();
 
-            for (int i = _bodyList.Count - 1; i >= 0; i--)
+            for (int i = bodyList.Count - 1; i >= 0; i--)
             {
-                RemoveBody(_bodyList[i]);
+                RemoveBody(bodyList[i]);
             }
 
-            for (int i = _controllerList.Count - 1; i >= 0; i--)
+            for (int i = controllerList.Count - 1; i >= 0; i--)
             {
-                RemoveController(_controllerList[i]);
+                RemoveController(controllerList[i]);
             }
 
-            for (int i = _breakableBodyList.Count - 1; i >= 0; i--)
+            for (int i = breakableBodyList.Count - 1; i >= 0; i--)
             {
-                RemoveBreakableBody(_breakableBodyList[i]);
+                RemoveBreakableBody(breakableBodyList[i]);
             }
 
             //We call ProcessChanges again since the user could have added items to the body/joint queues in the Removed/Added events
@@ -835,17 +835,17 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         private void ProcessRemovedJoints()
         {
-            if (_jointRemoveList.Count == 0)
+            if (jointRemoveList.Count == 0)
             {
                 return;
             }
 
-            foreach (Joint joint in _jointRemoveList)
+            foreach (Joint joint in jointRemoveList)
             {
                 RemoveJointInternal(joint);
             }
 
-            _jointRemoveList.Clear();
+            jointRemoveList.Clear();
         }
 
         /// <summary>
@@ -853,17 +853,17 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         private void ProcessAddedJoints()
         {
-            if (_jointAddList.Count == 0)
+            if (jointAddList.Count == 0)
             {
                 return;
             }
 
-            foreach (Joint joint in _jointAddList)
+            foreach (Joint joint in jointAddList)
             {
                 AddJointInternal(joint);
             }
 
-            _jointAddList.Clear();
+            jointAddList.Clear();
         }
 
         /// <summary>
@@ -871,17 +871,17 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         private void ProcessAddedBodies()
         {
-            if (_bodyAddList.Count == 0)
+            if (bodyAddList.Count == 0)
             {
                 return;
             }
 
-            foreach (Body body in _bodyAddList)
+            foreach (Body body in bodyAddList)
             {
                 AddBodyInternal(body);
             }
 
-            _bodyAddList.Clear();
+            bodyAddList.Clear();
         }
 
         /// <summary>
@@ -889,17 +889,17 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         private void ProcessRemovedBodies()
         {
-            if (_bodyRemoveList.Count == 0)
+            if (bodyRemoveList.Count == 0)
             {
                 return;
             }
 
-            foreach (Body body in _bodyRemoveList)
+            foreach (Body body in bodyRemoveList)
             {
                 RemoveBodyInternal(body);
             }
 
-            _bodyRemoveList.Clear();
+            bodyRemoveList.Clear();
         }
 
         /// <summary>
@@ -907,10 +907,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The bool</returns>
-        private bool QueryAABBCallbackWrapper(int proxyId)
+        private bool QueryAabbCallbackWrapper(int proxyId)
         {
             FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
-            return _queryAABBCallback(proxy.Fixture);
+            return queryAabbCallback(proxy.Fixture);
         }
 
         /// <summary>
@@ -930,7 +930,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             {
                 float fraction = output.Fraction;
                 Vector2 point = (1.0f - fraction) * rayCastInput.Point1 + fraction * rayCastInput.Point2;
-                return _rayCastCallback(fixture, point, output.Normal, fraction);
+                return rayCastCallback(fixture, point, output.Normal, fraction);
             }
 
             return rayCastInput.MaxFraction;
@@ -942,42 +942,42 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="step">The step</param>
         private void Solve(ref TimeStep step)
         {
-            _profile.SolveInit = 0;
-            _profile.SolveVelocity = 0;
-            _profile.SolvePosition = 0;
+            profile.SolveInit = 0;
+            profile.SolveVelocity = 0;
+            profile.SolvePosition = 0;
 
             // Size the island for the worst case.
-            Island1.Reset(_bodyList.Count,
-                ContactManager._contactCounter,
-                _jointList.Count,
+            Island1.Reset(bodyList.Count,
+                ContactManager.ContactCounter,
+                jointList.Count,
                 ContactManager);
 
             // Clear all the island flags.
-            foreach (Body b in _bodyList)
+            foreach (Body b in bodyList)
             {
                 b.Flags &= ~BodyFlags.IslandFlag;
             }
 
-            for (Contact c = ContactManager._contactList; c != null; c = c.Next)
+            for (Contact c = ContactManager.ContactList; c != null; c = c.Next)
             {
                 c.Flags &= ~ContactFlags.IslandFlag;
             }
 
-            foreach (Joint j in _jointList)
+            foreach (Joint j in jointList)
             {
                 j.IslandFlag = false;
             }
 
             // Build and simulate all awake islands.
-            int stackSize = _bodyList.Count;
-            if (stackSize > _stack.Length)
+            int stackSize = bodyList.Count;
+            if (stackSize > stack.Length)
             {
-                _stack = new Body[Math.Max(_stack.Length * 2, stackSize)];
+                stack = new Body[Math.Max(stack.Length * 2, stackSize)];
             }
 
-            for (int index = _bodyList.Count - 1; index >= 0; index--)
+            for (int index = bodyList.Count - 1; index >= 0; index--)
             {
-                Body seed = _bodyList[index];
+                Body seed = bodyList[index];
                 if ((seed.Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag)
                 {
                     continue;
@@ -997,7 +997,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 // Reset island and stack.
                 Island1.Clear();
                 int stackCount = 0;
-                _stack[stackCount++] = seed;
+                stack[stackCount++] = seed;
 
                 seed.Flags |= BodyFlags.IslandFlag;
 
@@ -1005,7 +1005,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 while (stackCount > 0)
                 {
                     // Grab the next body off the stack and add it to the island.
-                    Body b = _stack[--stackCount];
+                    Body b = stack[--stackCount];
                     Debug.Assert(b.Enabled);
                     Island1.Add(b);
 
@@ -1056,7 +1056,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         }
 
                         Debug.Assert(stackCount < stackSize);
-                        _stack[stackCount++] = other;
+                        stack[stackCount++] = other;
                         other.Flags |= BodyFlags.IslandFlag;
                     }
 
@@ -1089,7 +1089,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             Debug.Assert(stackCount < stackSize);
-                            _stack[stackCount++] = other;
+                            stack[stackCount++] = other;
 
                             other.Flags |= BodyFlags.IslandFlag;
                         }
@@ -1102,16 +1102,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 }
 
                 Profile profile = new Profile();
-                Island1.Solve(ref profile, ref step, ref _gravity, _sleepingAllowed);
-                _profile.SolveInit += profile.SolveInit;
-                _profile.SolveVelocity += profile.SolveVelocity;
-                _profile.SolvePosition += profile.SolvePosition;
+                Island1.Solve(ref profile, ref step, ref gravity, sleepingAllowed);
+                this.profile.SolveInit += profile.SolveInit;
+                this.profile.SolveVelocity += profile.SolveVelocity;
+                this.profile.SolvePosition += profile.SolvePosition;
 
                 // Post solve cleanup.
-                for (int i = 0; i < Island1._bodyCount; ++i)
+                for (int i = 0; i < Island1.BodyCount; ++i)
                 {
                     // Allow static bodies to participate in other islands.
-                    Body b = Island1._bodies[i];
+                    Body b = Island1.Bodies[i];
                     if (b.BodyType == BodyType.Static)
                     {
                         b.Flags &= ~BodyFlags.IslandFlag;
@@ -1120,10 +1120,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
 
             {
-                Stopwatch timer = _timerPool.GetFromPool(true);
+                Stopwatch timer = timerPool.GetFromPool(true);
 
                 // Synchronize fixtures, check for out of range bodies.
-                foreach (Body b in _bodyList)
+                foreach (Body b in bodyList)
                 {
                     // If a body was not in an island then it did not move.
                     if ((b.Flags & BodyFlags.IslandFlag) == 0)
@@ -1142,8 +1142,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 // Look for new contacts.
                 ContactManager.FindNewContacts();
-                _profile.Broadphase = timer.ElapsedTicks;
-                _timerPool.ReturnToPool(timer);
+                profile.Broadphase = timer.ElapsedTicks;
+                timerPool.ReturnToPool(timer);
             }
         }
 
@@ -1151,22 +1151,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     Solves the toi using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        private void SolveTOI(ref TimeStep step)
+        private void SolveToi(ref TimeStep step)
         {
             Island1.Reset(2 * Settings.MaxToiContacts, Settings.MaxToiContacts, 0, ContactManager);
 
-            if (_stepComplete)
+            if (stepComplete)
             {
-                for (int i = 0; i < _bodyList.Count; i++)
+                for (int i = 0; i < bodyList.Count; i++)
                 {
-                    _bodyList[i].Flags &= ~BodyFlags.IslandFlag;
-                    _bodyList[i].Sweep.Alpha0 = 0.0f;
+                    bodyList[i].Flags &= ~BodyFlags.IslandFlag;
+                    bodyList[i].Sweep.Alpha0 = 0.0f;
                 }
 
-                for (Contact c = ContactManager._contactList; c != null; c = c.Next)
+                for (Contact c = ContactManager.ContactList; c != null; c = c.Next)
                 {
                     // Invalidate TOI
-                    c.Flags &= ~(ContactFlags.TOIFlag | ContactFlags.IslandFlag);
+                    c.Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
                     c.ToiCount = 0;
                     c.Toi = 1.0f;
                 }
@@ -1179,7 +1179,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Contact minContact = null;
                 float minAlpha = 1.0f;
 
-                for (Contact c = ContactManager._contactList; c != null; c = c.Next)
+                for (Contact c = ContactManager.ContactList; c != null; c = c.Next)
                 {
                     // Is this contact disabled?
                     if (!c.Enabled)
@@ -1194,7 +1194,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     }
 
                     float alpha;
-                    if (c.TOIFlag)
+                    if (c.ToiFlag)
                     {
                         // This contact has a valid cached TOI.
                         alpha = c.Toi;
@@ -1205,7 +1205,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         Fixture fB = c.FixtureB;
 
                         // Is there a sensor?
-                        if (fA._isSensorPrivate || fB._isSensorPrivate)
+                        if (fA.IsSensorPrivate || fB.IsSensorPrivate)
                         {
                             continue;
                         }
@@ -1227,9 +1227,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         }
 
                         bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) &&
-                                        (fA.IgnoreCcdWith & fB.CollisionCategories) == 0 && !bA.IgnoreCCD;
+                                        (fA.IgnoreCcdWith & fB.CollisionCategories) == 0 && !bA.IgnoreCcd;
                         bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) &&
-                                        (fB.IgnoreCcdWith & fA.CollisionCategories) == 0 && !bB.IgnoreCCD;
+                                        (fB.IgnoreCcdWith & fA.CollisionCategories) == 0 && !bB.IgnoreCcd;
 
                         // Are these two non-bullet dynamic bodies?
                         if (!collideA && !collideB)
@@ -1255,18 +1255,18 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         Debug.Assert(alpha0 < 1.0f);
 
                         // Compute the time of impact in interval [0, minTOI]
-                        TOIInput input = new TOIInput();
+                        ToiInput input = new ToiInput();
                         input.ProxyA = new DistanceProxy(fA.Shape, c.ChildIndexA);
                         input.ProxyB = new DistanceProxy(fB.Shape, c.ChildIndexB);
                         input.SweepA = bA.Sweep;
                         input.SweepB = bB.Sweep;
-                        input.TMax = 1.0f;
+                        input.Max = 1.0f;
 
-                        TimeOfImpact.CalculateTimeOfImpact(ref input, out TOIOutput output);
+                        TimeOfImpact.CalculateTimeOfImpact(ref input, out ToiOutput output);
 
                         // Beta is the fraction of the remaining portion of the .
                         float beta = output.T;
-                        if (output.State == TOIOutputState.Touching)
+                        if (output.State == ToiOutputState.Touching)
                         {
                             alpha = Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f);
                         }
@@ -1276,7 +1276,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         }
 
                         c.Toi = alpha;
-                        c.Flags &= ~ContactFlags.TOIFlag;
+                        c.Flags &= ~ContactFlags.ToiFlag;
                     }
 
                     if (alpha < minAlpha)
@@ -1290,7 +1290,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 if (minContact == null || 1.0f - 10.0f * MathConstants.Epsilon < minAlpha)
                 {
                     // No more TOI events. Done!
-                    _stepComplete = true;
+                    stepComplete = true;
                     break;
                 }
 
@@ -1308,7 +1308,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 // The TOI contact likely has some new contact points.
                 minContact.Update(ContactManager);
-                minContact.Flags &= ~ContactFlags.TOIFlag;
+                minContact.Flags &= ~ContactFlags.ToiFlag;
                 ++minContact.ToiCount;
 
                 // Is the contact solid?
@@ -1347,12 +1347,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         {
                             Contact contact = ce.Contact;
 
-                            if (Island1._bodyCount == Island1._bodyCapacity)
+                            if (Island1.BodyCount == Island1.BodyCapacity)
                             {
                                 break;
                             }
 
-                            if (Island1._contactCount == Island1._contactCapacity)
+                            if (Island1.ContactCount == Island1.ContactCapacity)
                             {
                                 break;
                             }
@@ -1372,8 +1372,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                             }
 
                             // Skip sensors.
-                            bool sensorA = contact.FixtureA._isSensorPrivate;
-                            bool sensorB = contact.FixtureB._isSensorPrivate;
+                            bool sensorA = contact.FixtureA.IsSensorPrivate;
+                            bool sensorB = contact.FixtureB.IsSensorPrivate;
                             if (sensorA || sensorB)
                             {
                                 continue;
@@ -1435,12 +1435,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 subStep.PositionIterations = 20;
                 subStep.VelocityIterations = step.VelocityIterations;
                 subStep.WarmStarting = false;
-                Island1.SolveTOI(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
+                Island1.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
 
                 // Reset island flags and synchronize broad-phase proxies.
-                for (int i = 0; i < Island1._bodyCount; ++i)
+                for (int i = 0; i < Island1.BodyCount; ++i)
                 {
-                    Body body = Island1._bodies[i];
+                    Body body = Island1.Bodies[i];
                     body.Flags &= ~BodyFlags.IslandFlag;
 
                     if (body.BodyType != BodyType.Dynamic)
@@ -1453,7 +1453,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     // Invalidate all contact TOIs on this displaced body.
                     for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                     {
-                        ce.Contact.Flags &= ~(ContactFlags.TOIFlag | ContactFlags.IslandFlag);
+                        ce.Contact.Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
                     }
                 }
 
@@ -1463,7 +1463,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 if (Settings.EnableSubStepping)
                 {
-                    _stepComplete = false;
+                    stepComplete = false;
                     break;
                 }
             }
@@ -1476,10 +1476,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <returns>The bool</returns>
         private bool TestPointCallback(Fixture fixture)
         {
-            bool inside = fixture.TestPoint(ref _point1);
+            bool inside = fixture.TestPoint(ref point1);
             if (inside)
             {
-                _myFixture = fixture;
+                myFixture = fixture;
                 return false;
             }
 
@@ -1494,10 +1494,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <returns>The bool</returns>
         private bool TestPointAllCallback(Fixture fixture)
         {
-            bool inside = fixture.TestPoint(ref _point2);
+            bool inside = fixture.TestPoint(ref point2);
             if (inside)
             {
-                _testPointAllFixtures.Add(fixture);
+                testPointAllFixtures.Add(fixture);
             }
 
             // Continue the query.
@@ -1511,7 +1511,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         private void AddJointInternal(Joint joint)
         {
             // Connect to the world list.
-            _jointList.Add(joint);
+            jointList.Add(joint);
 
             // Connect to the bodies' doubly linked lists.
             joint.EdgeA.Joint = joint;
@@ -1576,7 +1576,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             bool collideConnected = joint.CollideConnected;
 
             // Remove from the world list.
-            _jointList.Remove(joint);
+            jointList.Remove(joint);
 
             // Disconnect from island graph.
             Body bodyA = joint.BodyA;
@@ -1659,10 +1659,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="body">The body</param>
         private void AddBodyInternal(Body body)
         {
-            body._world = this;
+            body.World = this;
 
             // Add to world list.
-            _bodyList.Add(body);
+            bodyList.Add(body);
 
             //Velcro: We have events to notify the user that a body was added
             BodyAdded?.Invoke(body);
@@ -1683,10 +1683,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="body">The body</param>
         private void RemoveBodyInternal(Body body)
         {
-            Debug.Assert(_bodyList.Count > 0);
+            Debug.Assert(bodyList.Count > 0);
 
             //Velcro: We check if the user is trying to remove a body more than one (to check for bugs)
-            Debug.Assert(_bodyList.Contains(body));
+            Debug.Assert(bodyList.Contains(body));
 
             // Delete the attached joints.
             JointEdge je = body.JointList;
@@ -1726,12 +1726,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             body.FixtureList = null;
 
             //Velcro: We make sure to cleanup the references and delegates
-            body._world = null;
+            body.World = null;
             body.OnCollision = null;
             body.OnSeparation = null;
 
             // Remove world body list.
-            _bodyList.Remove(body);
+            bodyList.Remove(body);
 
             BodyRemoved?.Invoke(body);
         }

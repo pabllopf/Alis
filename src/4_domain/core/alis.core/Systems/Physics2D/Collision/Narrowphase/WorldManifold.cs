@@ -77,7 +77,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
 
                 case ManifoldType.FaceA:
                 {
-                    normal = MathUtils.Mul(xfA.q, manifold.LocalNormal);
+                    normal = MathUtils.Mul(xfA.Q, manifold.LocalNormal);
                     Vector2 planePoint = MathUtils.Mul(ref xfA, manifold.LocalPoint);
 
                     for (int i = 0; i < manifold.PointCount; ++i)
@@ -93,7 +93,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
 
                 case ManifoldType.FaceB:
                 {
-                    normal = MathUtils.Mul(xfB.q, manifold.LocalNormal);
+                    normal = MathUtils.Mul(xfB.Q, manifold.LocalNormal);
                     Vector2 planePoint = MathUtils.Mul(ref xfB, manifold.LocalPoint);
 
                     for (int i = 0; i < manifold.PointCount; ++i)

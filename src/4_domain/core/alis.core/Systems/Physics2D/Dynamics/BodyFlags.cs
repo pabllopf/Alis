@@ -75,6 +75,6 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The ignore ccd body flags
         /// </summary>
-        IgnoreCCD = 64
+        IgnoreCcd = 64
     }
 }

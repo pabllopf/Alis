@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The debug interface
     /// </summary>
-    public interface IDebug<Builder, Argument>
+    public interface IDebug<TBuilder, TArgument>
     {
         /// <summary>
         ///     Debugs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public Builder Debug(Argument value);
+        public TBuilder Debug(TArgument value);
     }
 }

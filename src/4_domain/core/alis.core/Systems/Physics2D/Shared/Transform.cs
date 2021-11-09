@@ -40,27 +40,27 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 p;
+        public Vector2 P;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Rot q;
+        public Rot Q;
 
         /// <summary>Initialize using a position vector and a rotation matrix.</summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The r.</param>
         public Transform(ref Vector2 position, ref Rot rotation)
         {
-            p = position;
-            q = rotation;
+            P = position;
+            Q = rotation;
         }
 
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {
-            p = Vector2.Zero;
-            q.SetIdentity();
+            P = Vector2.Zero;
+            Q.SetIdentity();
         }
 
         /// <summary>Set this based on the position and angle.</summary>
@@ -68,8 +68,8 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <param name="angle">The angle.</param>
         public void Set(Vector2 position, float angle)
         {
-            p = position;
-            q.Set(angle);
+            P = position;
+            Q.Set(angle);
         }
     }
 }

@@ -47,73 +47,73 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <summary>
         ///     The query callback
         /// </summary>
-        private readonly Func<int, bool> _queryCallback;
+        private readonly Func<int, bool> queryCallback;
 
         /// <summary>
         ///     The fixture proxy
         /// </summary>
-        private readonly DynamicTree<FixtureProxy> _tree = new DynamicTree<FixtureProxy>();
+        private readonly DynamicTree<FixtureProxy> tree = new DynamicTree<FixtureProxy>();
 
         /// <summary>
         ///     The move buffer
         /// </summary>
-        private int[] _moveBuffer;
+        private int[] moveBuffer;
 
         /// <summary>
         ///     The move capacity
         /// </summary>
-        private int _moveCapacity;
+        private int moveCapacity;
 
         /// <summary>
         ///     The move count
         /// </summary>
-        private int _moveCount;
+        private int moveCount;
 
         /// <summary>
         ///     The pair buffer
         /// </summary>
-        private Pair[] _pairBuffer;
+        private Pair[] pairBuffer;
 
         /// <summary>
         ///     The pair capacity
         /// </summary>
-        private int _pairCapacity;
+        private int pairCapacity;
 
         /// <summary>
         ///     The pair count
         /// </summary>
-        private int _pairCount;
+        private int pairCount;
 
         /// <summary>
         ///     The proxy count
         /// </summary>
-        private int _proxyCount;
+        private int proxyCount;
 
         /// <summary>
         ///     The query proxy id
         /// </summary>
-        private int _queryProxyId;
+        private int queryProxyId;
 
         /// <summary>Constructs a new broad phase based on the dynamic tree implementation</summary>
         public DynamicTreeBroadPhase()
         {
-            _queryCallback = QueryCallback;
-            _proxyCount = 0;
+            queryCallback = QueryCallback;
+            proxyCount = 0;
 
-            _pairCapacity = 16;
-            _pairCount = 0;
-            _pairBuffer = new Pair[_pairCapacity];
+            pairCapacity = 16;
+            pairCount = 0;
+            pairBuffer = new Pair[pairCapacity];
 
-            _moveCapacity = 16;
-            _moveCount = 0;
-            _moveBuffer = new int[_moveCapacity];
+            moveCapacity = 16;
+            moveCount = 0;
+            moveBuffer = new int[moveCapacity];
         }
 
         /// <summary>Get the tree quality based on the area of the tree.</summary>
-        public float TreeQuality => _tree.AreaRatio;
+        public float TreeQuality => tree.AreaRatio;
 
         /// <summary>Gets the height of the tree.</summary>
-        public int TreeHeight => _tree.Height;
+        public int TreeHeight => tree.Height;
 
         /// <summary>
         ///     The null proxy
@@ -122,15 +122,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
 
         /// <summary>Get the number of proxies.</summary>
         /// <value>The proxy count.</value>
-        public int ProxyCount => _proxyCount;
+        public int ProxyCount => proxyCount;
 
         /// <summary>Create a proxy with an initial AABB. Pairs are not reported until UpdatePairs is called.</summary>
         /// <param name="proxy">The user data.</param>
         /// <returns></returns>
         public int AddProxy(ref FixtureProxy proxy)
         {
-            int proxyId = _tree.CreateProxy(ref proxy.AABB, proxy);
-            ++_proxyCount;
+            int proxyId = tree.CreateProxy(ref proxy.Aabb, proxy);
+            ++proxyCount;
             BufferMove(proxyId);
             return proxyId;
         }
@@ -140,17 +140,17 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         public void RemoveProxy(int proxyId)
         {
             UnBufferMove(proxyId);
-            --_proxyCount;
-            _tree.DestroyProxy(proxyId);
+            --proxyCount;
+            tree.DestroyProxy(proxyId);
         }
 
         /// <summary>
         ///     Call MoveProxy as many times as you like, then when you are done call UpdatePairs to finalized the proxy pairs
         ///     (for your time step).
         /// </summary>
-        public void MoveProxy(int proxyId, ref AABB aabb, Vector2 displacement)
+        public void MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
         {
-            bool buffer = _tree.MoveProxy(proxyId, ref aabb, displacement);
+            bool buffer = tree.MoveProxy(proxyId, ref aabb, displacement);
             if (buffer)
             {
                 BufferMove(proxyId);
@@ -166,15 +166,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <summary>Get the AABB for a proxy.</summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <param name="aabb">The AABB.</param>
-        public void GetFatAABB(int proxyId, out AABB aabb)
+        public void GetFatAabb(int proxyId, out Aabb aabb)
         {
-            _tree.GetFatAABB(proxyId, out aabb);
+            tree.GetFatAabb(proxyId, out aabb);
         }
 
         /// <summary>Get user data from a proxy. Returns null if the id is invalid.</summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <returns></returns>
-        public FixtureProxy GetProxy(int proxyId) => _tree.GetUserData(proxyId);
+        public FixtureProxy GetProxy(int proxyId) => tree.GetUserData(proxyId);
 
         /// <summary>Test overlap of fat AABBs.</summary>
         /// <param name="proxyIdA">The proxy id A.</param>
@@ -182,9 +182,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <returns></returns>
         public bool TestOverlap(int proxyIdA, int proxyIdB)
         {
-            _tree.GetFatAABB(proxyIdA, out AABB aabbA);
-            _tree.GetFatAABB(proxyIdB, out AABB aabbB);
-            return AABB.TestOverlap(ref aabbA, ref aabbB);
+            tree.GetFatAabb(proxyIdA, out Aabb aabbA);
+            tree.GetFatAabb(proxyIdB, out Aabb aabbB);
+            return Aabb.TestOverlap(ref aabbA, ref aabbB);
         }
 
         /// <summary>Update the pairs. This results in pair callbacks. This can only add pairs.</summary>
@@ -192,48 +192,48 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         public void UpdatePairs(BroadphaseHandler callback)
         {
             // Reset pair buffer
-            _pairCount = 0;
+            pairCount = 0;
 
             // Perform tree queries for all moving proxies.
-            for (int i = 0; i < _moveCount; ++i)
+            for (int i = 0; i < moveCount; ++i)
             {
-                _queryProxyId = _moveBuffer[i];
-                if (_queryProxyId == NullProxy)
+                queryProxyId = moveBuffer[i];
+                if (queryProxyId == NullProxy)
                 {
                     continue;
                 }
 
                 // We have to query the tree with the fat AABB so that
                 // we don't fail to create a pair that may touch later.
-                _tree.GetFatAABB(_queryProxyId, out AABB fatAABB);
+                tree.GetFatAabb(queryProxyId, out Aabb fatAabb);
 
                 // Query tree, create pairs and add them pair buffer.
-                _tree.Query(_queryCallback, ref fatAABB);
+                tree.Query(queryCallback, ref fatAabb);
             }
 
-            for (int i = 0; i < _pairCount; ++i)
+            for (int i = 0; i < pairCount; ++i)
             {
-                Pair primaryPair = _pairBuffer[i];
-                FixtureProxy userDataA = _tree.GetUserData(primaryPair.ProxyIdA);
-                FixtureProxy userDataB = _tree.GetUserData(primaryPair.ProxyIdB);
+                Pair primaryPair = pairBuffer[i];
+                FixtureProxy userDataA = tree.GetUserData(primaryPair.ProxyIdA);
+                FixtureProxy userDataB = tree.GetUserData(primaryPair.ProxyIdB);
 
                 callback(ref userDataA, ref userDataB);
             }
 
             // Clear move flags
-            for (int i = 0; i < _moveCount; ++i)
+            for (int i = 0; i < moveCount; ++i)
             {
-                int proxyId = _moveBuffer[i];
+                int proxyId = moveBuffer[i];
                 if (proxyId == NullProxy)
                 {
                     continue;
                 }
 
-                _tree.ClearMoved(proxyId);
+                tree.ClearMoved(proxyId);
             }
 
             // Reset move buffer
-            _moveCount = 0;
+            moveCount = 0;
         }
 
         /// <summary>
@@ -242,9 +242,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// </summary>
         /// <param name="callback">The callback.</param>
         /// <param name="aabb">The AABB.</param>
-        public void Query(Func<int, bool> callback, ref AABB aabb)
+        public void Query(Func<int, bool> callback, ref Aabb aabb)
         {
-            _tree.Query(callback, ref aabb);
+            tree.Query(callback, ref aabb);
         }
 
         /// <summary>
@@ -257,13 +257,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
         public void RayCast(Func<RayCastInput, int, float> callback, ref RayCastInput input)
         {
-            _tree.RayCast(callback, ref input);
+            tree.RayCast(callback, ref input);
         }
 
         /// <summary>Shift the world origin. Useful for large worlds.</summary>
         public void ShiftOrigin(ref Vector2 newOrigin)
         {
-            _tree.ShiftOrigin(ref newOrigin);
+            tree.ShiftOrigin(ref newOrigin);
         }
 
         /// <summary>
@@ -272,16 +272,16 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="proxyId">The proxy id</param>
         private void BufferMove(int proxyId)
         {
-            if (_moveCount == _moveCapacity)
+            if (moveCount == moveCapacity)
             {
-                int[] oldBuffer = _moveBuffer;
-                _moveCapacity *= 2;
-                _moveBuffer = new int[_moveCapacity];
-                Array.Copy(oldBuffer, _moveBuffer, _moveCount);
+                int[] oldBuffer = moveBuffer;
+                moveCapacity *= 2;
+                moveBuffer = new int[moveCapacity];
+                Array.Copy(oldBuffer, moveBuffer, moveCount);
             }
 
-            _moveBuffer[_moveCount] = proxyId;
-            ++_moveCount;
+            moveBuffer[moveCount] = proxyId;
+            ++moveCount;
         }
 
         /// <summary>
@@ -290,11 +290,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <param name="proxyId">The proxy id</param>
         private void UnBufferMove(int proxyId)
         {
-            for (int i = 0; i < _moveCount; ++i)
+            for (int i = 0; i < moveCount; ++i)
             {
-                if (_moveBuffer[i] == proxyId)
+                if (moveBuffer[i] == proxyId)
                 {
-                    _moveBuffer[i] = NullProxy;
+                    moveBuffer[i] = NullProxy;
                 }
             }
         }
@@ -303,30 +303,30 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         private bool QueryCallback(int proxyId)
         {
             // A proxy cannot form a pair with itself.
-            if (proxyId == _queryProxyId)
+            if (proxyId == queryProxyId)
             {
                 return true;
             }
 
-            bool moved = _tree.WasMoved(proxyId);
-            if (moved && proxyId > _queryProxyId)
+            bool moved = tree.WasMoved(proxyId);
+            if (moved && proxyId > queryProxyId)
             {
                 // Both proxies are moving. Avoid duplicate pairs.
                 return true;
             }
 
             // Grow the pair buffer as needed.
-            if (_pairCount == _pairCapacity)
+            if (pairCount == pairCapacity)
             {
-                Pair[] oldBuffer = _pairBuffer;
-                _pairCapacity += _pairCapacity >> 1;
-                _pairBuffer = new Pair[_pairCapacity];
-                Array.Copy(oldBuffer, _pairBuffer, _pairCount);
+                Pair[] oldBuffer = pairBuffer;
+                pairCapacity += pairCapacity >> 1;
+                pairBuffer = new Pair[pairCapacity];
+                Array.Copy(oldBuffer, pairBuffer, pairCount);
             }
 
-            _pairBuffer[_pairCount].ProxyIdA = Math.Min(proxyId, _queryProxyId);
-            _pairBuffer[_pairCount].ProxyIdB = Math.Max(proxyId, _queryProxyId);
-            ++_pairCount;
+            pairBuffer[pairCount].ProxyIdA = Math.Min(proxyId, queryProxyId);
+            pairBuffer[pairCount].ProxyIdB = Math.Max(proxyId, queryProxyId);
+            ++pairCount;
 
             return true;
         }

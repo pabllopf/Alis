@@ -35,7 +35,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
     internal class TreeNode<T>
     {
         /// <summary>Enlarged AABB</summary>
-        internal AABB AABB;
+        internal Aabb Aabb;
 
         /// <summary>
         ///     The child

@@ -47,7 +47,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.DebugView
         Joint = 1 << 1,
 
         /// <summary>Draw axis aligned bounding boxes.</summary>
-        AABB = 1 << 2,
+        Aabb = 1 << 2,
 
         /// <summary>Draw broad-phase pairs.</summary>
         Pair = 1 << 3,

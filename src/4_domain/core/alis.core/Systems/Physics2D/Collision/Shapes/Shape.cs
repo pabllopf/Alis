@@ -43,22 +43,22 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>
         ///     The density
         /// </summary>
-        internal float _densityPrivate;
+        internal float DensityPrivate;
 
         /// <summary>
         ///     The mass data
         /// </summary>
-        internal MassData _massDataPrivate;
+        internal MassData MassDataPrivate;
 
         /// <summary>
         ///     The radius
         /// </summary>
-        internal float _radiusPrivate;
+        internal float RadiusPrivate;
 
         /// <summary>
         ///     The shape type
         /// </summary>
-        internal ShapeType _shapeTypePrivate;
+        internal ShapeType ShapeTypePrivate;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Shape" /> class
@@ -71,15 +71,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             Debug.Assert(radius >= 0);
             Debug.Assert(density >= 0);
 
-            _shapeTypePrivate = type;
-            _radiusPrivate = radius;
-            _densityPrivate = density;
-            _massDataPrivate = new MassData();
+            ShapeTypePrivate = type;
+            RadiusPrivate = radius;
+            DensityPrivate = density;
+            MassDataPrivate = new MassData();
         }
 
         /// <summary>Get the type of this shape.</summary>
         /// <value>The type of the shape.</value>
-        public ShapeType ShapeType => _shapeTypePrivate;
+        public ShapeType ShapeType => ShapeTypePrivate;
 
         /// <summary>Get the number of child primitives.</summary>
         public abstract int ChildCount { get; }
@@ -87,14 +87,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>Radius of the Shape Changing the radius causes a recalculation of shape properties.</summary>
         public float Radius
         {
-            get => _radiusPrivate;
+            get => RadiusPrivate;
             set
             {
                 Debug.Assert(value >= 0);
 
-                if (_radiusPrivate != value)
+                if (RadiusPrivate != value)
                 {
-                    _radiusPrivate = value;
+                    RadiusPrivate = value;
                     ComputeProperties();
                 }
             }
@@ -105,14 +105,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <value>The density.</value>
         public float Density
         {
-            get => _densityPrivate;
+            get => DensityPrivate;
             set
             {
                 Debug.Assert(value >= 0);
 
-                if (_densityPrivate != value)
+                if (DensityPrivate != value)
                 {
-                    _densityPrivate = value;
+                    DensityPrivate = value;
                     ComputeProperties();
                 }
             }
@@ -127,7 +127,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// </summary>
         public void GetMassData(out MassData massData)
         {
-            massData = _massDataPrivate;
+            massData = MassDataPrivate;
         }
 
         /// <summary>Clone the concrete shape</summary>
@@ -153,7 +153,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="transform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
         /// <param name="aabb">The AABB results.</param>
-        public abstract void ComputeAABB(ref Transform transform, int childIndex, out AABB aabb);
+        public abstract void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb);
 
         /// <summary>
         ///     Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed

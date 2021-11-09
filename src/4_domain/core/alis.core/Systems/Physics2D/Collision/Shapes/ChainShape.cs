@@ -47,17 +47,17 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>
         ///     The next vertex
         /// </summary>
-        private Vector2 _prevVertex;
+        private Vector2 prevVertex;
 
         /// <summary>
         /// The next vertex
         /// </summary>
-        private Vector2 _nextVertex;
+        private Vector2 nextVertex;
 
         /// <summary>
         ///     The vertices
         /// </summary>
-        private Vertices _vertices;
+        private Vertices vertices;
 
         /// <summary>Create a new ChainShape from the vertices.</summary>
         /// <param name="vertices">The vertices to use. Must contain 2 or more vertices.</param>
@@ -105,8 +105,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>The vertices. These are not owned/freed by the chain Shape.</summary>
         public Vertices Vertices
         {
-            get => _vertices;
-            set { _vertices = value; }
+            get => vertices;
+            set { vertices = value; }
         }
 
         /// <summary>Edge count = vertex count - 1</summary>
@@ -115,15 +115,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>Establish connectivity to a vertex that precedes the first vertex. Don't call this for loops.</summary>
         public Vector2 PrevVertex
         {
-            get => _prevVertex;
-            set => _prevVertex = value;
+            get => prevVertex;
+            set => prevVertex = value;
         }
 
         /// <summary>Establish connectivity to a vertex that follows the last vertex. Don't call this for loops.</summary>
         public Vector2 NextVertex
         {
-            get => _nextVertex;
-            set => _nextVertex = value;
+            get => nextVertex;
+            set => nextVertex = value;
         }
 
         //Velcro: The original code returned an EdgeShape for each call. To reduce garbage we merge the properties onto an existing EdgeShape
@@ -139,7 +139,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
 
             //Velcro: It is already an edge shape
             //edge._shapeTypePrivate = ShapeType.Edge;
-            edge._radiusPrivate = _radiusPrivate;
+            edge.RadiusPrivate = RadiusPrivate;
 
             edge.Vertex1 = Vertices[index + 0];
             edge.Vertex2 = Vertices[index + 1];
@@ -217,7 +217,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
         /// <param name="aabb">The aabb</param>
-        public override void ComputeAABB(ref Transform transform, int childIndex, out AABB aabb)
+        public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
         {
             Debug.Assert(childIndex < Vertices.Count);
 
@@ -232,7 +232,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             Vector2 v1 = Vertices[i1];
             Vector2 v2 = Vertices[i2];
 
-            AABBHelper.ComputeEdgeAABB(ref v1, ref v2, ref transform, out aabb);
+            AabbHelper.ComputeEdgeAabb(ref v1, ref v2, ref transform, out aabb);
         }
 
         /// <summary>
@@ -250,9 +250,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         public override Shape Clone()
         {
             ChainShape clone = new ChainShape();
-            clone._shapeTypePrivate = _shapeTypePrivate;
-            clone._densityPrivate = _densityPrivate;
-            clone._radiusPrivate = _radiusPrivate;
+            clone.ShapeTypePrivate = ShapeTypePrivate;
+            clone.DensityPrivate = DensityPrivate;
+            clone.RadiusPrivate = RadiusPrivate;
             clone.PrevVertex = PrevVertex;
             clone.NextVertex = NextVertex;
             clone.Vertices = new Vertices(Vertices);

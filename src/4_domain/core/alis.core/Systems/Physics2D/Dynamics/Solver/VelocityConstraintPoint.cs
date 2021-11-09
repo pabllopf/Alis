@@ -49,12 +49,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 rA;
+        public Vector2 RA;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 rB;
+        public Vector2 RB;
 
         /// <summary>
         ///     The tangent impulse

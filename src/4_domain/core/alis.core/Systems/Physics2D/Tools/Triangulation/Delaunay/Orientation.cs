@@ -37,12 +37,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
         /// <summary>
         ///     The cw orientation
         /// </summary>
-        CW,
+        Cw,
 
         /// <summary>
         ///     The ccw orientation
         /// </summary>
-        CCW,
+        Ccw,
 
         /// <summary>
         ///     The collinear orientation

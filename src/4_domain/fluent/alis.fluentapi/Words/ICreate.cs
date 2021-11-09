@@ -32,13 +32,13 @@ namespace Alis.FluentApi.Words
     /// <summary>
     ///     The create interface
     /// </summary>
-    public interface ICreate<L, T>
+    public interface ICreate<TL, T>
     {
         /// <summary>
         ///     Creates the obj
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The</returns>
-        public L Create(T obj);
+        public TL Create(T obj);
     }
 }
