@@ -63,7 +63,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The contact list
         /// </summary>
-        private ContactEdge _contactList;
+        private ContactEdge _contactEdgeList;
 
         /// <summary>
         ///     The controller filter
@@ -83,7 +83,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The force
         /// </summary>
-        internal Vector2 _force;
+        internal Vector2 Force { get; set; }
 
         /// <summary>
         ///     The gravity scale
@@ -332,7 +332,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
                 Awake = true;
 
-                _force = Vector2.Zero;
+                Force = Vector2.Zero;
                 Torque = 0.0f;
 
                 // Delete the attached contacts.
@@ -598,8 +598,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <value>The contact list.</value>
         public ContactEdge ContactList
         {
-            get => _contactList;
-            set { _contactList = value; }
+            get => _contactEdgeList;
+            set => _contactEdgeList = value;
         }
 
         /// <summary>Get the world body origin position.</summary>
@@ -865,7 +865,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         {
             Torque = 0;
             AngularVelocity = 0;
-            _force = Vector2.Zero;
+            Force = Vector2.Zero;
             _linearVelc = Vector2.Zero;
         }
 
@@ -1088,7 +1088,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Awake = true;
             }
 
-            _force += force;
+            Force += force;
             Torque += MathUtils.Cross(point - _sweep.C, force);
         }
 

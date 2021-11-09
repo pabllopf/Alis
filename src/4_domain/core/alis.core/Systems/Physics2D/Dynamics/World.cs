@@ -648,7 +648,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             for (int i = 0; i < _bodyList.Count; i++)
             {
                 Body body = _bodyList[i];
-                body._force = Vector2.Zero;
+                body.Force = Vector2.Zero;
                 body.Torque = 0.0f;
             }
         }

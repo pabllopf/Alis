@@ -311,7 +311,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 if (b.BodyType == BodyType.Dynamic)
                 {
                     // Integrate velocities.
-                    v += h * b.InvMass * (b.GravityScale * b.Mass * gravity + b._force);
+                    v += h * b.InvMass * (b.GravityScale * b.Mass * gravity + b.Force);
                     w += h * b.InvI * b.Torque;
 
                     // Apply damping.
