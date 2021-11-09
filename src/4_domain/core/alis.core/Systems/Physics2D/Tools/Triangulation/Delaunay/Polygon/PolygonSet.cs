@@ -45,7 +45,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <summary>
         ///     The polygon
         /// </summary>
-        protected List<Polygon> _polygons = new List<Polygon>();
+        protected List<Polygon> PolygonsList { get; set; } = new List<Polygon>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonSet" /> class
@@ -60,13 +60,17 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <param name="poly">The poly</param>
         public PolygonSet(Polygon poly)
         {
-            _polygons.Add(poly);
+            PolygonsList.Add(poly);
         }
 
         /// <summary>
         ///     Gets the value of the polygons
         /// </summary>
-        public IEnumerable<Polygon> Polygons => _polygons;
+        public IEnumerable<Polygon> Polygons
+        {
+            get => PolygonsList;
+            set => PolygonsList = (List<Polygon>)value;
+        }
 
         /// <summary>
         ///     Adds the p
@@ -74,7 +78,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <param name="p">The </param>
         public void Add(Polygon p)
         {
-            _polygons.Add(p);
+            PolygonsList.Add(p);
         }
     }
 }

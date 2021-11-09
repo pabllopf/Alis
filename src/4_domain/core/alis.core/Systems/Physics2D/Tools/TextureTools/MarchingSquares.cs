@@ -263,14 +263,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
 
                     //combine above (but disallow the hole thingies
                     CxFastListNode<Vector2> bi = bp.Begin();
-                    while (Square(bi.Elem().Y - ay) > MathConstants.Epsilon || bi.Elem().X < ax)
+                    while (Square(bi.GetElem().Y - ay) > MathConstants.Epsilon || bi.GetElem().X < ax)
                     {
-                        bi = bi.Next();
+                        bi = bi.GetNext();
                     }
 
                     //NOTE: Unused
                     //Vector2 b0 = bi.elem();
-                    Vector2 b1 = bi.Next().Elem();
+                    Vector2 b1 = bi.GetNext().GetElem();
                     if (Square(b1.Y - ay) > MathConstants.Epsilon)
                     {
                         x++;
@@ -281,13 +281,13 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                     CxFastListNode<Vector2> ai = ap.Begin();
                     while (ai != ap.End())
                     {
-                        if (VecDsq(ai.Elem(), b1) < MathConstants.Epsilon)
+                        if (VecDsq(ai.GetElem(), b1) < MathConstants.Epsilon)
                         {
                             brk = false;
                             break;
                         }
 
-                        ai = ai.Next();
+                        ai = ai.GetNext();
                     }
 
                     if (brk)
@@ -296,7 +296,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                         continue;
                     }
 
-                    CxFastListNode<Vector2> bj = bi.Next().Next();
+                    CxFastListNode<Vector2> bj = bi.GetNext().GetNext();
                     if (bj == bp.End())
                     {
                         bj = bp.Begin();
@@ -304,8 +304,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
 
                     while (bj != bi)
                     {
-                        ai = ap.Insert(ai, bj.Elem()); // .clone()
-                        bj = bj.Next();
+                        ai = ap.Insert(ai, bj.GetElem()); // .clone()
+                        bj = bj.GetNext();
                         if (bj == bp.End())
                         {
                             bj = bp.Begin();
@@ -347,7 +347,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                     ret.Remove(p.GeomP);
                     p.GeomP = u.GeomP;
 
-                    x = (int) ((bi.Next().Elem().X - domain.LowerBound.X) / cellWidth) + 1;
+                    x = (int) ((bi.GetNext().GetElem().X - domain.LowerBound.X) / cellWidth) + 1;
 
                     //x++; this was already commented out!
                 }
@@ -559,18 +559,18 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             CxFastListNode<Vector2> ai = ap.Begin();
             CxFastListNode<Vector2> bi = bp.Begin();
 
-            Vector2 b = bi.Elem();
+            Vector2 b = bi.GetElem();
             CxFastListNode<Vector2> prea = null;
             while (ai != ap.End())
             {
-                Vector2 a = ai.Elem();
+                Vector2 a = ai.GetElem();
                 if (VecDsq(a, b) < MathConstants.Epsilon)
                 {
                     //ignore shared vertex if parallel
                     if (prea != null)
                     {
-                        Vector2 a0 = prea.Elem();
-                        b = bi.Next().Elem();
+                        Vector2 a0 = prea.GetElem();
+                        b = bi.GetNext().GetElem();
 
                         Vector2 u = a - a0;
 
@@ -605,16 +605,16 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                     }
 
                     //ignore shared vertex if parallel
-                    ai = ai.Next();
-                    Vector2 a1 = ai.Elem();
-                    ai = ai.Next();
+                    ai = ai.GetNext();
+                    Vector2 a1 = ai.GetElem();
+                    ai = ai.GetNext();
                     if (ai == ap.End())
                     {
                         ai = ap.Begin();
                     }
 
-                    Vector2 a2 = ai.Elem();
-                    Vector2 a00 = preb.Elem();
+                    Vector2 a2 = ai.GetElem();
+                    Vector2 a00 = preb.GetElem();
                     Vector2 uu = a1 - a00;
 
                     //vec_new(u); vec_sub(a1.p, a0.p, u);
@@ -624,7 +624,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                     float dot1 = VecCross(uu, vv);
                     if (dot1 * dot1 < MathConstants.Epsilon)
                     {
-                        ap.Erase(preb, preb.Next());
+                        ap.Erase(preb, preb.GetNext());
                         polya.Length--;
                     }
 
@@ -632,7 +632,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 }
 
                 prea = ai;
-                ai = ai.Next();
+                ai = ai.GetNext();
             }
         }
 
@@ -652,7 +652,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             public CxFastListNode<T> End() => null;
 
             /// <summary>Returns first element of list (O(1))</summary>
-            public T Front() => _head.Elem();
+            public T Front() => _head.GetElem();
 
             /// <summary>add object to list (O(1))</summary>
             public CxFastListNode<T> Add(T value)
@@ -660,12 +660,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 CxFastListNode<T> newNode = new CxFastListNode<T>(value);
                 if (_head == null)
                 {
-                    newNode._next = null;
+                    newNode.Next = null;
                     _head = newNode;
                     return newNode;
                 }
 
-                newNode._next = _head;
+                newNode.Next = _head;
                 _head = newNode;
 
                 return newNode;
@@ -686,24 +686,24 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                         do
                         {
                             // if we are on the value to be removed
-                            if (comparer.Equals(head._elt, value))
+                            if (comparer.Equals(head.Elt, value))
                             {
                                 // then we need to patch the list
                                 // check to see if we are removing the _head
                                 if (head == _head)
                                 {
-                                    _head = head._next;
+                                    _head = head.Next;
                                     return true;
                                 }
 
                                 // were not at the head
-                                prev._next = head._next;
+                                prev.Next = head.Next;
                                 return true;
                             }
 
                             // cache the current as the previous for the next go around
                             prev = head;
-                            head = head._next;
+                            head = head.Next;
                         } while (head != null);
                     }
                 }
@@ -730,9 +730,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 }
 
                 CxFastListNode<T> newNode = new CxFastListNode<T>(value);
-                CxFastListNode<T> nextNode = node._next;
-                newNode._next = nextNode;
-                node._next = newNode;
+                CxFastListNode<T> nextNode = node.Next;
+                newNode.Next = nextNode;
+                node.Next = newNode;
 
                 return newNode;
             }
@@ -744,14 +744,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             public CxFastListNode<T> Erase(CxFastListNode<T> prev, CxFastListNode<T> node)
             {
                 // cache the node after the node to be removed
-                CxFastListNode<T> nextNode = node._next;
+                CxFastListNode<T> nextNode = node.Next;
                 if (prev != null)
                 {
-                    prev._next = nextNode;
+                    prev.Next = nextNode;
                 }
                 else if (_head != null)
                 {
-                    _head = _head._next;
+                    _head = _head.Next;
                 }
                 else
                 {
@@ -781,7 +781,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 do
                 {
                     count++;
-                } while (i.Next() != null);
+                } while (i.GetNext() != null);
 
                 return count;
             }
@@ -793,8 +793,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 while (head != null)
                 {
                     CxFastListNode<T> node2 = head;
-                    head = head._next;
-                    node2._next = null;
+                    head = head.Next;
+                    node2.Next = null;
                 }
 
                 _head = null;
@@ -820,24 +820,24 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                     {
                         do
                         {
-                            if (comparer.Equals(head._elt, value))
+                            if (comparer.Equals(head.Elt, value))
                             {
                                 return head;
                             }
 
-                            head = head._next;
+                            head = head.Next;
                         } while (head != _head);
                     }
                     else
                     {
                         do
                         {
-                            if (head._elt == null)
+                            if (head.Elt == null)
                             {
                                 return head;
                             }
 
-                            head = head._next;
+                            head = head.Next;
                         } while (head != _head);
                     }
                 }
@@ -859,8 +859,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 {
                     do
                     {
-                        list.Add(iter._elt);
-                        iter = iter._next;
+                        list.Add(iter.Elt);
+                        iter = iter.Next;
                     } while (iter != null);
                 }
 
@@ -876,30 +876,30 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             /// <summary>
             ///     The elt
             /// </summary>
-            internal T _elt;
+            internal T Elt { get; set; }
 
             /// <summary>
             ///     The next
             /// </summary>
-            internal CxFastListNode<T> _next;
+            internal CxFastListNode<T> Next { get; set; }
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="CxFastListNode" /> class
             /// </summary>
             /// <param name="obj">The obj</param>
-            public CxFastListNode(T obj) => _elt = obj;
+            public CxFastListNode(T obj) => Elt = obj;
 
             /// <summary>
             ///     Elems this instance
             /// </summary>
             /// <returns>The elt</returns>
-            public T Elem() => _elt;
+            public T GetElem() => Elt;
 
             /// <summary>
             ///     Nexts this instance
             /// </summary>
             /// <returns>The next</returns>
-            public CxFastListNode<T> Next() => _next;
+            public CxFastListNode<T> GetNext() => Next;
         }
 
         /// <summary>

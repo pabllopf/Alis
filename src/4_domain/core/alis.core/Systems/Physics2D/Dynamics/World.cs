@@ -948,7 +948,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             // Size the island for the worst case.
             Island1.Reset(_bodyList.Count,
-                ContactManager._contactCount,
+                ContactManager._contactCounter,
                 _jointList.Count,
                 ContactManager);
 

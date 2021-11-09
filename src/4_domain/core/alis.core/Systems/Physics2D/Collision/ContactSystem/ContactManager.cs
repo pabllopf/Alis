@@ -43,7 +43,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     The contact count
         /// </summary>
-        internal int _contactCount;
+        internal int _contactCounter;
 
         /// <summary>
         ///     The contact list
@@ -86,7 +86,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         /// <summary>
         ///     Gets the value of the contact count
         /// </summary>
-        public int ContactCount => _contactCount;
+        public int ContactCount => _contactCounter;
 
         // Broad-phase callback.
         /// <summary>
@@ -221,7 +221,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             }
 
             bodyB.ContactList = c.NodeB;
-            ++_contactCount;
+            ++_contactCounter;
         }
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
 
             // Call the factory.
             c.Destroy();
-            --_contactCount;
+            --_contactCounter;
         }
 
         /// <summary>

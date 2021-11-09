@@ -345,14 +345,14 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
             Fill(tcx, node.Next);
             if (node.Next.Point != edge.P)
             {
-                // Next above or below edge?
+                // GetNext above or below edge?
                 if (TriangulationUtil.Orient2d(edge.Q, node.Next.Point, edge.P) == Orientation.CCW)
                 {
                     // Below
                     if (TriangulationUtil.Orient2d(node.Point, node.Next.Point, node.Next.Next.Point) ==
                         Orientation.CCW)
                     {
-                        // Next is concave
+                        // GetNext is concave
                         FillRightConcaveEdgeEvent(tcx, edge, node);
                     }
                 }
@@ -368,7 +368,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         private static void FillRightConvexEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge,
             AdvancingFrontNode node)
         {
-            // Next concave or convex?
+            // GetNext concave or convex?
             if (TriangulationUtil.Orient2d(node.Next.Point, node.Next.Next.Point, node.Next.Next.Next.Point) ==
                 Orientation.CCW)
             {
@@ -378,7 +378,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
             else
             {
                 // Convex
-                // Next above or below edge?
+                // GetNext above or below edge?
                 if (TriangulationUtil.Orient2d(edge.Q, node.Next.Next.Point, edge.P) == Orientation.CCW)
                 {
                     // Below
@@ -444,7 +444,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         /// <param name="node">The node</param>
         private static void FillLeftConvexEdgeEvent(DTSweepContext tcx, DTSweepConstraint edge, AdvancingFrontNode node)
         {
-            // Next concave or convex?
+            // GetNext concave or convex?
             if (TriangulationUtil.Orient2d(node.Prev.Point, node.Prev.Prev.Point, node.Prev.Prev.Prev.Point) ==
                 Orientation.CW)
             {
@@ -454,7 +454,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
             else
             {
                 // Convex
-                // Next above or below edge?
+                // GetNext above or below edge?
                 if (TriangulationUtil.Orient2d(edge.Q, node.Prev.Prev.Point, edge.P) == Orientation.CW)
                 {
                     // Below
@@ -475,13 +475,13 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
             Fill(tcx, node.Prev);
             if (node.Prev.Point != edge.P)
             {
-                // Next above or below edge?
+                // GetNext above or below edge?
                 if (TriangulationUtil.Orient2d(edge.Q, node.Prev.Point, edge.P) == Orientation.CW)
                 {
                     // Below
                     if (TriangulationUtil.Orient2d(node.Point, node.Prev.Point, node.Prev.Prev.Point) == Orientation.CW)
                     {
-                        // Next is concave
+                        // GetNext is concave
                         FillLeftConcaveEdgeEvent(tcx, edge, node);
                     }
                 }

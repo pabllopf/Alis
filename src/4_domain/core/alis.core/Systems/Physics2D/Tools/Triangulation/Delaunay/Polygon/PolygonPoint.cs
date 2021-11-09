@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 // Changes from the Java version
-//   Replaced get/set Next/Previous with attributes
+//   Replaced get/set GetNext/Previous with attributes
 // Future possibilities
 //   Documentation!
 

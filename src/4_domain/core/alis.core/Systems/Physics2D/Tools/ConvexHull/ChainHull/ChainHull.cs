@@ -139,7 +139,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull.ChainHull
                 h[++top] = pointSet[i]; // push P[i] onto stack
             }
 
-            // Next, compute the upper hull on the stack H above the bottom hull
+            // GetNext, compute the upper hull on the stack H above the bottom hull
             if (maxmax != maxmin) // if distinct xmax points
             {
                 h[++top] = pointSet[maxmax]; // push maxmax point onto stack

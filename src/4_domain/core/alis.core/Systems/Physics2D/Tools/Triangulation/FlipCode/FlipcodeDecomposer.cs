@@ -111,7 +111,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.FlipCode
                 int w = v + 1;
                 if (nv <= w)
                 {
-                    w = 0; // Next 
+                    w = 0; // GetNext 
                 }
 
                 _tmpA = vertices[polygon[u]];
