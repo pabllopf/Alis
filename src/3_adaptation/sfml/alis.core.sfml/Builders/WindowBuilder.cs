@@ -42,8 +42,8 @@ namespace Alis.Core.Sfml.Builders
     /// <summary>
     ///     The window builder class
     /// </summary>
-    /// <seealso cref="IBuild{Origin}" />
-    /// <seealso cref="IResolution{Builder,Argument1,Argument2}" />
+    /// <seealso cref="IBuild{TOrigin}" />
+    /// <seealso cref="IResolution{TBuilder,TArgument1,TArgument2}" />
     public class WindowBuilder :
         IBuild<Window>,
         IResolution<WindowBuilder, int, int>

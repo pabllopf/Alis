@@ -37,8 +37,8 @@ namespace Alis.Core.Builders
     /// <summary>
     ///     The scene builder class
     /// </summary>
-    /// <seealso cref="IBuild{Origin}" />
-    /// <seealso cref="IName{Builder,Argument}" />
+    /// <seealso cref="IBuild{TOrigin}" />
+    /// <seealso cref="IName{TBuilder,TArgument}" />
     public class SceneBuilder :
         IBuild<Scene>,
         IName<SceneBuilder, string>,

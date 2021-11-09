@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   DebugBuilder.cs
+//  File:   Example.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,45 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entities;
-using Alis.Core.Settings.Configurations;
-using Alis.FluentApi;
-
-namespace Alis.Core.Builders
+namespace Alis.Core.Systems.Physics3D
 {
     /// <summary>
-    ///     The debug builder class
+    ///     The example class
     /// </summary>
-    /// <seealso cref="IBuild{TOrigin}" />
-    public class DebugBuilder :
-        IBuild<Debug>
+    public class Example
     {
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The debug</returns>
-        public Debug Build() => Game.Setting.Debug;
-
-        /// <summary>
-        ///     Logs the level using the specified log level
-        /// </summary>
-        /// <param name="logLevel">The log level</param>
-        /// <returns>The debug builder</returns>
-        public DebugBuilder LogLevel(LogLevel logLevel)
-        {
-            Game.Setting.Debug.LogLevel = logLevel;
-            return this;
-        }
-
-        /// <summary>
-        ///     Shows the physic borders using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The debug builder</returns>
-        public DebugBuilder ShowPhysicBorders(bool value)
-        {
-            Game.Setting.Debug.ShowPhysicBorders = value;
-            return this;
-        }
     }
 }

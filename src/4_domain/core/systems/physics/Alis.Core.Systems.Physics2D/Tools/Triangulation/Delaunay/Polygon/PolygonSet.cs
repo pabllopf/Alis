@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   DebugBuilder.cs
+//  File:   PolygonSet.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,45 +27,58 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entities;
-using Alis.Core.Settings.Configurations;
-using Alis.FluentApi;
+// Changes from the Java version
+//   Replaced getPolygons with attribute
+// Future possibilities
+//   Replace Add(Polygon) with exposed container?
+//   Replace entire class with HashSet<Polygon> ?
 
-namespace Alis.Core.Builders
+using System.Collections.Generic;
+
+namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
 {
     /// <summary>
-    ///     The debug builder class
+    ///     The polygon set class
     /// </summary>
-    /// <seealso cref="IBuild{TOrigin}" />
-    public class DebugBuilder :
-        IBuild<Debug>
+    internal class PolygonSet
     {
         /// <summary>
-        ///     Builds this instance
+        ///     Initializes a new instance of the <see cref="PolygonSet" /> class
         /// </summary>
-        /// <returns>The debug</returns>
-        public Debug Build() => Game.Setting.Debug;
-
-        /// <summary>
-        ///     Logs the level using the specified log level
-        /// </summary>
-        /// <param name="logLevel">The log level</param>
-        /// <returns>The debug builder</returns>
-        public DebugBuilder LogLevel(LogLevel logLevel)
+        public PolygonSet()
         {
-            Game.Setting.Debug.LogLevel = logLevel;
-            return this;
         }
 
         /// <summary>
-        ///     Shows the physic borders using the specified value
+        ///     Initializes a new instance of the <see cref="PolygonSet" /> class
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The debug builder</returns>
-        public DebugBuilder ShowPhysicBorders(bool value)
+        /// <param name="poly">The poly</param>
+        public PolygonSet(Polygon poly)
         {
-            Game.Setting.Debug.ShowPhysicBorders = value;
-            return this;
+            PolygonsList.Add(poly);
+        }
+
+        /// <summary>
+        ///     The polygon
+        /// </summary>
+        protected List<Polygon> PolygonsList { get; set; } = new List<Polygon>();
+
+        /// <summary>
+        ///     Gets the value of the polygons
+        /// </summary>
+        public IEnumerable<Polygon> Polygons
+        {
+            get => PolygonsList;
+            set => PolygonsList = (List<Polygon>) value;
+        }
+
+        /// <summary>
+        ///     Adds the p
+        /// </summary>
+        /// <param name="p">The </param>
+        public void Add(Polygon p)
+        {
+            PolygonsList.Add(p);
         }
     }
 }

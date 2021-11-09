@@ -75,7 +75,7 @@ namespace Alis.Core.Sfml.Components
         /// <param name="texturePath">The texture path</param>
         public Sprite(string texturePath)
         {
-            this.TexturePath = texturePath;
+            TexturePath = texturePath;
 
             transform = new Transform();
 
