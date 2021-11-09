@@ -356,7 +356,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             Shape shapeA = FixtureA.Shape;
             Shape shapeB = FixtureB.Shape;
 
-            WorldManifold.Initialize(ref _manifold, ref bodyA._xf, shapeA._radius, ref bodyB._xf, shapeB._radius,
+            WorldManifold.Initialize(ref _manifold, ref bodyA._xf, shapeA._radiusPrivate, ref bodyB._xf, shapeB._radiusPrivate,
                 out normal, out points, out _);
         }
 

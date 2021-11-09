@@ -42,12 +42,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>
         ///     The normals
         /// </summary>
-        internal Vertices _normals;
+        internal Vertices _normalsPrivate;
 
         /// <summary>
         ///     The vertices
         /// </summary>
-        internal Vertices _vertices;
+        internal Vertices _verticesPrivate;
 
         /// <summary>Initializes a new instance of the <see cref="PolygonShape" /> class.</summary>
         /// <param name="vertices">The vertices.</param>
@@ -77,14 +77,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// </summary>
         public Vertices Vertices
         {
-            get => _vertices;
+            get => _verticesPrivate;
             set => SetVertices(value);
         }
 
         /// <summary>
         ///     Gets the value of the normals
         /// </summary>
-        public Vertices Normals => _normals;
+        public Vertices Normals => _normalsPrivate;
 
         /// <summary>
         ///     Gets the value of the child count
@@ -210,26 +210,26 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
                         "Polygon is degenerate"); //Velcro: We throw exception here because we had invalid input
             }
 
-            _vertices = new Vertices(m);
+            _verticesPrivate = new Vertices(m);
 
             // Copy vertices.
             for (int i = 0; i < m; ++i)
             {
-                _vertices.Add(ps[hull[i]]);
+                _verticesPrivate.Add(ps[hull[i]]);
             }
 
-            _normals = new Vertices(m);
+            _normalsPrivate = new Vertices(m);
 
             // Compute normals. Ensure the edges have non-zero length.
             for (int i = 0; i < m; ++i)
             {
                 int i1 = i;
-                int i2 = i + 1 < _vertices.Count ? i + 1 : 0;
-                Vector2 edge = _vertices[i2] - _vertices[i1];
+                int i2 = i + 1 < _verticesPrivate.Count ? i + 1 : 0;
+                Vector2 edge = _verticesPrivate[i2] - _verticesPrivate[i1];
                 Debug.Assert(edge.LengthSquared() > MathConstants.Epsilon * MathConstants.Epsilon);
                 Vector2 temp = MathUtils.Cross(edge, 1.0f);
                 temp = Vector2.Normalize(temp);
-                _normals.Add(temp);
+                _normalsPrivate.Add(temp);
             }
 
             //Velcro: We compute all the mass data properties up front
@@ -243,13 +243,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="hy">The hy</param>
         public void SetAsBox(float hx, float hy)
         {
-            _vertices = PolygonUtils.CreateRectangle(hx, hy);
+            _verticesPrivate = PolygonUtils.CreateRectangle(hx, hy);
 
-            _normals = new Vertices(4);
-            _normals.Add(new Vector2(0.0f, -1.0f));
-            _normals.Add(new Vector2(1.0f, 0.0f));
-            _normals.Add(new Vector2(0.0f, 1.0f));
-            _normals.Add(new Vector2(-1.0f, 0.0f));
+            _normalsPrivate = new Vertices(4);
+            _normalsPrivate.Add(new Vector2(0.0f, -1.0f));
+            _normalsPrivate.Add(new Vector2(1.0f, 0.0f));
+            _normalsPrivate.Add(new Vector2(0.0f, 1.0f));
+            _normalsPrivate.Add(new Vector2(-1.0f, 0.0f));
 
             ComputeProperties();
         }
@@ -263,15 +263,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="angle">The angle</param>
         public void SetAsBox(float hx, float hy, Vector2 center, float angle)
         {
-            _vertices = PolygonUtils.CreateRectangle(hx, hy);
+            _verticesPrivate = PolygonUtils.CreateRectangle(hx, hy);
 
-            _normals = new Vertices(4);
-            _normals.Add(new Vector2(0.0f, -1.0f));
-            _normals.Add(new Vector2(1.0f, 0.0f));
-            _normals.Add(new Vector2(0.0f, 1.0f));
-            _normals.Add(new Vector2(-1.0f, 0.0f));
+            _normalsPrivate = new Vertices(4);
+            _normalsPrivate.Add(new Vector2(0.0f, -1.0f));
+            _normalsPrivate.Add(new Vector2(1.0f, 0.0f));
+            _normalsPrivate.Add(new Vector2(0.0f, 1.0f));
+            _normalsPrivate.Add(new Vector2(-1.0f, 0.0f));
 
-            _massData.Centroid = center;
+            _massDataPrivate.Centroid = center;
 
             Transform xf = new Transform();
             xf.p = center;
@@ -280,8 +280,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             // Transform vertices and normals.
             for (int i = 0; i < 4; ++i)
             {
-                _vertices[i] = MathUtils.Mul(ref xf, _vertices[i]);
-                _normals[i] = MathUtils.Mul(ref xf.q, _normals[i]);
+                _verticesPrivate[i] = MathUtils.Mul(ref xf, _verticesPrivate[i]);
+                _normalsPrivate[i] = MathUtils.Mul(ref xf.q, _normalsPrivate[i]);
             }
 
             ComputeProperties();
@@ -316,10 +316,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             //
             // The rest of the derivation is handled by computer algebra.
 
-            Debug.Assert(_vertices.Count >= 3);
+            Debug.Assert(_verticesPrivate.Count >= 3);
 
             //Velcro: Early exit as polygons with 0 density does not have any properties.
-            if (_density <= 0)
+            if (_densityPrivate <= 0)
             {
                 return;
             }
@@ -331,17 +331,17 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
 
             // Get a reference point for forming triangles.
             // Use the first vertex to reduce round-off errors.
-            Vector2 s = _vertices[0];
+            Vector2 s = _verticesPrivate[0];
 
             const float inv3 = 1.0f / 3.0f;
 
-            int count = _vertices.Count;
+            int count = _verticesPrivate.Count;
 
             for (int i = 0; i < count; ++i)
             {
                 // Triangle vertices.
-                Vector2 e1 = _vertices[i] - s;
-                Vector2 e2 = i + 1 < count ? _vertices[i + 1] - s : _vertices[0] - s;
+                Vector2 e1 = _verticesPrivate[i] - s;
+                Vector2 e2 = i + 1 < count ? _verticesPrivate[i + 1] - s : _verticesPrivate[0] - s;
 
                 float D = MathUtils.Cross(e1, e2);
 
@@ -364,21 +364,21 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             Debug.Assert(area > MathConstants.Epsilon);
 
             // We save the area
-            _massData.Area = area;
+            _massDataPrivate.Area = area;
 
             // Total mass
-            _massData.Mass = _density * area;
+            _massDataPrivate.Mass = _densityPrivate * area;
 
             // Center of mass
             center *= 1.0f / area;
-            _massData.Centroid = center + s;
+            _massDataPrivate.Centroid = center + s;
 
             // Inertia tensor relative to the local origin (point s).
-            _massData.Inertia = _density * I;
+            _massDataPrivate.Inertia = _densityPrivate * I;
 
             // Shift to center of mass then to original body origin.
-            _massData.Inertia += _massData.Mass *
-                                  (MathUtils.Dot(_massData.Centroid, _massData.Centroid) -
+            _massDataPrivate.Inertia += _massDataPrivate.Mass *
+                                  (MathUtils.Dot(_massDataPrivate.Centroid, _massDataPrivate.Centroid) -
                                    MathUtils.Dot(center, center));
         }
 
@@ -389,7 +389,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
-            TestPointHelper.TestPointPolygon(_vertices, _normals, ref point, ref transform);
+            TestPointHelper.TestPointPolygon(_verticesPrivate, _normalsPrivate, ref point, ref transform);
 
         /// <summary>
         ///     Describes whether this instance ray cast
@@ -401,7 +401,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <returns>The bool</returns>
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
             out RayCastOutput output) =>
-            RayCastHelper.RayCastPolygon(_vertices, _normals, ref input, ref transform, out output);
+            RayCastHelper.RayCastPolygon(_verticesPrivate, _normalsPrivate, ref input, ref transform, out output);
 
         /// <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
         /// <param name="transform">The world transform of the shape.</param>
@@ -409,7 +409,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="aabb">The AABB results.</param>
         public override void ComputeAABB(ref Transform transform, int childIndex, out AABB aabb)
         {
-            AABBHelper.ComputePolygonAABB(_vertices, ref transform, out aabb);
+            AABBHelper.ComputePolygonAABB(_verticesPrivate, ref transform, out aabb);
         }
 
         /// <summary>
@@ -419,12 +419,12 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         public override Shape Clone()
         {
             PolygonShape clone = new PolygonShape();
-            clone._shapeType = _shapeType;
-            clone._radius = _radius;
-            clone._density = _density;
-            clone._vertices = new Vertices(_vertices);
-            clone._normals = new Vertices(_normals);
-            clone._massData = _massData;
+            clone._shapeTypePrivate = _shapeTypePrivate;
+            clone._radiusPrivate = _radiusPrivate;
+            clone._densityPrivate = _densityPrivate;
+            clone._verticesPrivate = new Vertices(_verticesPrivate);
+            clone._normalsPrivate = new Vertices(_normalsPrivate);
+            clone._massDataPrivate = _massDataPrivate;
             return clone;
         }
     }

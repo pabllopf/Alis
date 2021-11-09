@@ -895,7 +895,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             fixture._bodyprivate = this;
 
             // Adjust mass properties if needed.
-            if (fixture._shapePrivate._density > 0.0f)
+            if (fixture._shapePrivate._densityPrivate > 0.0f)
             {
                 ResetMassData();
             }
@@ -1218,12 +1218,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             Vector2 localCenter = Vector2.Zero;
             foreach (Fixture f in FixtureList)
             {
-                if (f.Shape._density == 0.0f)
+                if (f.Shape._densityPrivate == 0.0f)
                 {
                     continue;
                 }
 
-                MassData massData = f.Shape._massData;
+                MassData massData = f.Shape._massDataPrivate;
                 _mass += massData.Mass;
                 localCenter += massData.Mass * massData.Centroid;
                 _inertia += massData.Inertia;

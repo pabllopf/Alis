@@ -73,7 +73,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             float u = Vector2.Dot(e, B - Q);
             float v = Vector2.Dot(e, Q - A);
 
-            float radius = edgeA._radius + circleB._radius;
+            float radius = edgeA._radiusPrivate + circleB._radiusPrivate;
 
             ContactFeature cf;
             cf.IndexB = 0;
@@ -199,7 +199,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
 
             Transform xf = MathUtils.MulT(xfA, xfB);
 
-            Vector2 centroidB = MathUtils.Mul(ref xf, polygonB._massData.Centroid);
+            Vector2 centroidB = MathUtils.Mul(ref xf, polygonB._massDataPrivate.Centroid);
 
             Vector2 v1 = edgeA.Vertex1;
             Vector2 v2 = edgeA.Vertex2;
@@ -218,14 +218,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             }
 
             // Get polygonB in frameA
-            TempPolygon tempPolygonB = new TempPolygon(polygonB._vertices.Count);
-            for (int i = 0; i < polygonB._vertices.Count; ++i)
+            TempPolygon tempPolygonB = new TempPolygon(polygonB._verticesPrivate.Count);
+            for (int i = 0; i < polygonB._verticesPrivate.Count; ++i)
             {
-                tempPolygonB.Vertices[i] = MathUtils.Mul(ref xf, polygonB._vertices[i]);
-                tempPolygonB.Normals[i] = MathUtils.Mul(xf.q, polygonB._normals[i]);
+                tempPolygonB.Vertices[i] = MathUtils.Mul(ref xf, polygonB._verticesPrivate[i]);
+                tempPolygonB.Normals[i] = MathUtils.Mul(xf.q, polygonB._normalsPrivate[i]);
             }
 
-            float radius = polygonB._radius + edgeA._radius;
+            float radius = polygonB._radiusPrivate + edgeA._radiusPrivate;
 
             EPAxis edgeAxis = ComputeEdgeSeparation(ref tempPolygonB, v1, normal1);
             if (edgeAxis.Separation > radius)
@@ -413,8 +413,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             }
             else
             {
-                manifold.LocalNormal = polygonB._normals[ref1.i1];
-                manifold.LocalPoint = polygonB._vertices[ref1.i1];
+                manifold.LocalNormal = polygonB._normalsPrivate[ref1.i1];
+                manifold.LocalPoint = polygonB._verticesPrivate[ref1.i1];
             }
 
             int pointCount = 0;

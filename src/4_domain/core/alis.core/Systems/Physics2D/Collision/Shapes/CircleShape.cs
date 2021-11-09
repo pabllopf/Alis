@@ -95,7 +95,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
-            TestPointHelper.TestPointCircle(ref _positionprivate, _radius, ref point, ref transform);
+            TestPointHelper.TestPointCircle(ref _positionprivate, _radiusPrivate, ref point, ref transform);
 
         /// <summary>
         ///     Describes whether this instance ray cast
@@ -107,7 +107,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <returns>The bool</returns>
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
             out RayCastOutput output) =>
-            RayCastHelper.RayCastCircle(ref _positionprivate, _radius, ref input, ref transform, out output);
+            RayCastHelper.RayCastCircle(ref _positionprivate, _radiusPrivate, ref input, ref transform, out output);
 
         /// <summary>
         ///     Computes the aabb using the specified transform
@@ -117,7 +117,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="aabb">The aabb</param>
         public override void ComputeAABB(ref Transform transform, int childIndex, out AABB aabb)
         {
-            AABBHelper.ComputeCircleAABB(ref _positionprivate, _radius, ref transform, out aabb);
+            AABBHelper.ComputeCircleAABB(ref _positionprivate, _radiusPrivate, ref transform, out aabb);
         }
 
         /// <summary>
@@ -135,9 +135,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         private void ComputeMass()
         {
             //Velcro: We calculate area for later consumption
-            float area = MathConstants.Pi * _radius * _radius;
-            _massData.Area = area;
-            _massData.Mass = _density * area;
+            float area = MathConstants.Pi * _radiusPrivate * _radiusPrivate;
+            _massDataPrivate.Area = area;
+            _massDataPrivate.Mass = _densityPrivate * area;
         }
 
         /// <summary>
@@ -145,10 +145,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// </summary>
         private void ComputeInertia()
         {
-            _massData.Centroid = _positionprivate;
+            _massDataPrivate.Centroid = _positionprivate;
 
             // inertia about the local origin
-            _massData.Inertia = _massData.Mass * (0.5f * _radius * _radius + Vector2.Dot(_positionprivate, _positionprivate));
+            _massDataPrivate.Inertia = _massDataPrivate.Mass * (0.5f * _radiusPrivate * _radiusPrivate + Vector2.Dot(_positionprivate, _positionprivate));
         }
 
         /// <summary>
@@ -158,11 +158,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         public override Shape Clone()
         {
             CircleShape clone = new CircleShape();
-            clone._shapeType = _shapeType;
-            clone._radius = _radius;
-            clone._density = _density;
+            clone._shapeTypePrivate = _shapeTypePrivate;
+            clone._radiusPrivate = _radiusPrivate;
+            clone._densityPrivate = _densityPrivate;
             clone._positionprivate = _positionprivate;
-            clone._massData = _massData;
+            clone._massDataPrivate = _massDataPrivate;
             return clone;
         }
     }

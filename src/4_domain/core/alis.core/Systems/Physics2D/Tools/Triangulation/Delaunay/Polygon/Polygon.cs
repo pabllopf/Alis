@@ -52,27 +52,27 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <summary>
         ///     The holes
         /// </summary>
-        protected List<Polygon> _holes;
+        protected List<Polygon> _holesPrivate;
 
         /// <summary>
         ///     The last
         /// </summary>
-        protected PolygonPoint _last;
+        protected PolygonPoint _lastPrivate;
 
         /// <summary>
         ///     The triangulation point
         /// </summary>
-        protected List<TriangulationPoint> _points = new List<TriangulationPoint>();
+        protected List<TriangulationPoint> _pointsPrivate = new List<TriangulationPoint>();
 
         /// <summary>
         ///     The steiner points
         /// </summary>
-        protected List<TriangulationPoint> _steinerPoints;
+        protected List<TriangulationPoint> _steinerPointsPrivate;
 
         /// <summary>
         ///     The triangles
         /// </summary>
-        protected List<DelaunayTriangle> _triangles;
+        protected List<DelaunayTriangle> _trianglesPrivate;
 
         /// <summary>Create a polygon from a list of at least 3 points with no duplicates.</summary>
         /// <param name="points">A list of unique points</param>
@@ -90,7 +90,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
                 points.RemoveAt(points.Count - 1);
             }
 
-            _points.AddRange(points);
+            _pointsPrivate.AddRange(points);
         }
 
         /// <summary>Create a polygon from a list of at least 3 points with no duplicates.</summary>
@@ -109,7 +109,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <summary>
         ///     Gets the value of the holes
         /// </summary>
-        public IList<Polygon> Holes => _holes;
+        public IList<Polygon> Holes => _holesPrivate;
 
         /// <summary>
         ///     Gets the value of the triangulation mode
@@ -119,12 +119,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <summary>
         ///     Gets the value of the points
         /// </summary>
-        public IList<TriangulationPoint> Points => _points;
+        public IList<TriangulationPoint> Points => _pointsPrivate;
 
         /// <summary>
         ///     Gets the value of the triangles
         /// </summary>
-        public IList<DelaunayTriangle> Triangles => _triangles;
+        public IList<DelaunayTriangle> Triangles => _trianglesPrivate;
 
         /// <summary>
         ///     Adds the triangle using the specified t
@@ -132,7 +132,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <param name="t">The </param>
         public void AddTriangle(DelaunayTriangle t)
         {
-            _triangles.Add(t);
+            _trianglesPrivate.Add(t);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <param name="list">The list</param>
         public void AddTriangles(IEnumerable<DelaunayTriangle> list)
         {
-            _triangles.AddRange(list);
+            _trianglesPrivate.AddRange(list);
         }
 
         /// <summary>
@@ -149,9 +149,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// </summary>
         public void ClearTriangles()
         {
-            if (_triangles != null)
+            if (_trianglesPrivate != null)
             {
-                _triangles.Clear();
+                _trianglesPrivate.Clear();
             }
         }
 
@@ -159,42 +159,42 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <param name="tcx">The context</param>
         public void PrepareTriangulation(TriangulationContext tcx)
         {
-            if (_triangles == null)
+            if (_trianglesPrivate == null)
             {
-                _triangles = new List<DelaunayTriangle>(_points.Count);
+                _trianglesPrivate = new List<DelaunayTriangle>(_pointsPrivate.Count);
             }
             else
             {
-                _triangles.Clear();
+                _trianglesPrivate.Clear();
             }
 
             // Outer constraints
-            for (int i = 0; i < _points.Count - 1; i++)
+            for (int i = 0; i < _pointsPrivate.Count - 1; i++)
             {
-                tcx.NewConstraint(_points[i], _points[i + 1]);
+                tcx.NewConstraint(_pointsPrivate[i], _pointsPrivate[i + 1]);
             }
 
-            tcx.NewConstraint(_points[0], _points[_points.Count - 1]);
-            tcx.Points.AddRange(_points);
+            tcx.NewConstraint(_pointsPrivate[0], _pointsPrivate[_pointsPrivate.Count - 1]);
+            tcx.Points.AddRange(_pointsPrivate);
 
             // Hole constraints
-            if (_holes != null)
+            if (_holesPrivate != null)
             {
-                foreach (Polygon p in _holes)
+                foreach (Polygon p in _holesPrivate)
                 {
-                    for (int i = 0; i < p._points.Count - 1; i++)
+                    for (int i = 0; i < p._pointsPrivate.Count - 1; i++)
                     {
-                        tcx.NewConstraint(p._points[i], p._points[i + 1]);
+                        tcx.NewConstraint(p._pointsPrivate[i], p._pointsPrivate[i + 1]);
                     }
 
-                    tcx.NewConstraint(p._points[0], p._points[p._points.Count - 1]);
-                    tcx.Points.AddRange(p._points);
+                    tcx.NewConstraint(p._pointsPrivate[0], p._pointsPrivate[p._pointsPrivate.Count - 1]);
+                    tcx.Points.AddRange(p._pointsPrivate);
                 }
             }
 
-            if (_steinerPoints != null)
+            if (_steinerPointsPrivate != null)
             {
-                tcx.Points.AddRange(_steinerPoints);
+                tcx.Points.AddRange(_steinerPointsPrivate);
             }
         }
 
@@ -204,12 +204,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <param name="point">The point</param>
         public void AddSteinerPoint(TriangulationPoint point)
         {
-            if (_steinerPoints == null)
+            if (_steinerPointsPrivate == null)
             {
-                _steinerPoints = new List<TriangulationPoint>();
+                _steinerPointsPrivate = new List<TriangulationPoint>();
             }
 
-            _steinerPoints.Add(point);
+            _steinerPointsPrivate.Add(point);
         }
 
         /// <summary>
@@ -218,12 +218,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <param name="points">The points</param>
         public void AddSteinerPoints(List<TriangulationPoint> points)
         {
-            if (_steinerPoints == null)
+            if (_steinerPointsPrivate == null)
             {
-                _steinerPoints = new List<TriangulationPoint>();
+                _steinerPointsPrivate = new List<TriangulationPoint>();
             }
 
-            _steinerPoints.AddRange(points);
+            _steinerPointsPrivate.AddRange(points);
         }
 
         /// <summary>
@@ -231,9 +231,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// </summary>
         public void ClearSteinerPoints()
         {
-            if (_steinerPoints != null)
+            if (_steinerPointsPrivate != null)
             {
-                _steinerPoints.Clear();
+                _steinerPointsPrivate.Clear();
             }
         }
 
@@ -241,12 +241,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         /// <param name="poly">A subtraction polygon fully contained inside this polygon.</param>
         public void AddHole(Polygon poly)
         {
-            if (_holes == null)
+            if (_holesPrivate == null)
             {
-                _holes = new List<Polygon>();
+                _holesPrivate = new List<Polygon>();
             }
 
-            _holes.Add(poly);
+            _holesPrivate.Add(poly);
 
             // XXX: tests could be made here to be sure it is fully inside
             //        addSubtraction( poly.getPoints() );
@@ -258,7 +258,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         public void InsertPointAfter(PolygonPoint point, PolygonPoint newPoint)
         {
             // Validate that 
-            int index = _points.IndexOf(point);
+            int index = _pointsPrivate.IndexOf(point);
             if (index == -1)
             {
                 throw new ArgumentException(
@@ -269,7 +269,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
             newPoint.Previous = point;
             point.Next.Previous = newPoint;
             point.Next = newPoint;
-            _points.Insert(index + 1, newPoint);
+            _pointsPrivate.Insert(index + 1, newPoint);
         }
 
         /// <summary>Inserts list (after last point in polygon?)</summary>
@@ -278,30 +278,30 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
         {
             foreach (PolygonPoint p in list)
             {
-                p.Previous = _last;
-                if (_last != null)
+                p.Previous = _lastPrivate;
+                if (_lastPrivate != null)
                 {
-                    p.Next = _last.Next;
-                    _last.Next = p;
+                    p.Next = _lastPrivate.Next;
+                    _lastPrivate.Next = p;
                 }
 
-                _last = p;
-                _points.Add(p);
+                _lastPrivate = p;
+                _pointsPrivate.Add(p);
             }
 
-            PolygonPoint first = (PolygonPoint) _points[0];
-            _last.Next = first;
-            first.Previous = _last;
+            PolygonPoint first = (PolygonPoint) _pointsPrivate[0];
+            _lastPrivate.Next = first;
+            first.Previous = _lastPrivate;
         }
 
         /// <summary>Adds a point after the last in the polygon.</summary>
         /// <param name="p">The point to add</param>
         public void AddPoint(PolygonPoint p)
         {
-            p.Previous = _last;
-            p.Next = _last.Next;
-            _last.Next = p;
-            _points.Add(p);
+            p.Previous = _lastPrivate;
+            p.Next = _lastPrivate.Next;
+            _lastPrivate.Next = p;
+            _pointsPrivate.Add(p);
         }
 
         /// <summary>Removes a point from the polygon.</summary>
@@ -312,7 +312,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
             PolygonPoint prev = p.Previous;
             prev.Next = next;
             next.Previous = prev;
-            _points.Remove(p);
+            _pointsPrivate.Remove(p);
         }
     }
 }

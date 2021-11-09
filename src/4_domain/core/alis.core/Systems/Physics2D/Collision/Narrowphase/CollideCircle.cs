@@ -50,7 +50,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
 
             Vector2 d = pB - pA;
             float distSqr = Vector2.Dot(d, d);
-            float rA = circleA._radius, rB = circleB._radius;
+            float rA = circleA._radiusPrivate, rB = circleB._radiusPrivate;
             float radius = rA + rB;
             if (distSqr > radius * radius)
             {
@@ -86,10 +86,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
             // Find the min separating edge.
             int normalIndex = 0;
             float separation = -MathConstants.MaxFloat;
-            float radius = polygonA._radius + circleB._radius;
-            int vertexCount = polygonA._vertices.Count;
-            Vertices vertices = polygonA._vertices;
-            Vertices normals = polygonA._normals;
+            float radius = polygonA._radiusPrivate + circleB._radiusPrivate;
+            int vertexCount = polygonA._verticesPrivate.Count;
+            Vertices vertices = polygonA._verticesPrivate;
+            Vertices normals = polygonA._normalsPrivate;
 
             for (int i = 0; i < vertexCount; ++i)
             {

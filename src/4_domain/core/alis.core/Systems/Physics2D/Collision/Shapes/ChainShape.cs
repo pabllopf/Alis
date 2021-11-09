@@ -138,8 +138,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             Debug.Assert(edge != null);
 
             //Velcro: It is already an edge shape
-            //edge._shapeType = ShapeType.Edge;
-            edge._radius = _radius;
+            //edge._shapeTypePrivate = ShapeType.Edge;
+            edge._radiusPrivate = _radiusPrivate;
 
             edge.Vertex1 = Vertices[index + 0];
             edge.Vertex2 = Vertices[index + 1];
@@ -250,9 +250,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         public override Shape Clone()
         {
             ChainShape clone = new ChainShape();
-            clone._shapeType = _shapeType;
-            clone._density = _density;
-            clone._radius = _radius;
+            clone._shapeTypePrivate = _shapeTypePrivate;
+            clone._densityPrivate = _densityPrivate;
+            clone._radiusPrivate = _radiusPrivate;
             clone.PrevVertex = PrevVertex;
             clone.NextVertex = NextVertex;
             clone.Vertices = new Vertices(Vertices);

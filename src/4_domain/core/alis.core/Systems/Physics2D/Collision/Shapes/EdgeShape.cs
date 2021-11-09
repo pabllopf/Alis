@@ -201,7 +201,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// </summary>
         protected sealed override void ComputeProperties()
         {
-            _massData.Centroid = 0.5f * (Vertex1 + Vertex2);
+            _massDataPrivate.Centroid = 0.5f * (Vertex1 + Vertex2);
         }
 
         /// <summary>
@@ -211,15 +211,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         public override Shape Clone()
         {
             EdgeShape clone = new EdgeShape();
-            clone._shapeType = _shapeType;
-            clone._radius = _radius;
-            clone._density = _density;
+            clone._shapeTypePrivate = _shapeTypePrivate;
+            clone._radiusPrivate = _radiusPrivate;
+            clone._densityPrivate = _densityPrivate;
             clone.OneSided = OneSided;
             clone.Vertex0 = Vertex0;
             clone.Vertex1 = Vertex1;
             clone.Vertex2 = Vertex2;
             clone.Vertex3 = Vertex3;
-            clone._massData = _massData;
+            clone._massDataPrivate = _massDataPrivate;
             return clone;
         }
     }

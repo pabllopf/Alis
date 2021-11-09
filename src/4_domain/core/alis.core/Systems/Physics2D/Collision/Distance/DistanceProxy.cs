@@ -62,21 +62,21 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                     CircleShape circle = (CircleShape) shape;
                     _vertices = new Vector2[1];
                     _vertices[0] = circle._positionprivate;
-                    _radius = circle._radius;
+                    _radius = circle._radiusPrivate;
                 }
                     break;
 
                 case ShapeType.Polygon:
                 {
                     PolygonShape polygon = (PolygonShape) shape;
-                    _vertices = new Vector2[polygon._vertices.Count];
+                    _vertices = new Vector2[polygon._verticesPrivate.Count];
 
-                    for (int i = 0; i < polygon._vertices.Count; i++)
+                    for (int i = 0; i < polygon._verticesPrivate.Count; i++)
                     {
-                        _vertices[i] = polygon._vertices[i];
+                        _vertices[i] = polygon._verticesPrivate[i];
                     }
 
-                    _radius = polygon._radius;
+                    _radius = polygon._radiusPrivate;
                 }
                     break;
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                     _vertices[0] = chain.Vertices[index];
                     _vertices[1] = index + 1 < chain.Vertices.Count ? chain.Vertices[index + 1] : chain.Vertices[0];
 
-                    _radius = chain._radius;
+                    _radius = chain._radiusPrivate;
                 }
                     break;
 
@@ -99,7 +99,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
                     _vertices = new Vector2[2];
                     _vertices[0] = edge.Vertex1;
                     _vertices[1] = edge.Vertex2;
-                    _radius = edge._radius;
+                    _radius = edge._radiusPrivate;
                 }
                     break;
 

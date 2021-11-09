@@ -144,8 +144,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
                 Fixture fixtureB = contact.FixtureB;
                 Shape shapeA = fixtureA.Shape;
                 Shape shapeB = fixtureB.Shape;
-                float radiusA = shapeA._radius;
-                float radiusB = shapeB._radius;
+                float radiusA = shapeA._radiusPrivate;
+                float radiusB = shapeB._radiusPrivate;
                 Body bodyA = fixtureA.Body;
                 Body bodyB = fixtureB.Body;
                 Manifold manifold = contact.Manifold;

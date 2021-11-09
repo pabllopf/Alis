@@ -166,13 +166,13 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
                 {
                     // We create a "diamond" approximation of the circle
                     Vertices v = new Vertices();
-                    Vector2 vec = Vector2.Zero + new Vector2(cs._radius, 0);
+                    Vector2 vec = Vector2.Zero + new Vector2(cs._radiusPrivate, 0);
                     v.Add(vec);
-                    vec = Vector2.Zero + new Vector2(0, cs._radius);
+                    vec = Vector2.Zero + new Vector2(0, cs._radiusPrivate);
                     v.Add(vec);
-                    vec = Vector2.Zero + new Vector2(-cs._radius, cs._radius);
+                    vec = Vector2.Zero + new Vector2(-cs._radiusPrivate, cs._radiusPrivate);
                     v.Add(vec);
-                    vec = Vector2.Zero + new Vector2(0, -cs._radius);
+                    vec = Vector2.Zero + new Vector2(0, -cs._radiusPrivate);
                     v.Add(vec);
                     ps = new PolygonShape(v, 0);
                 }
@@ -183,16 +183,16 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
 
                 if (shapes[i].Body.BodyType == BodyType.Dynamic && ps != null)
                 {
-                    Vector2 toCentroid = shapes[i].Body.GetWorldPoint(ps._massData.Centroid) - pos;
+                    Vector2 toCentroid = shapes[i].Body.GetWorldPoint(ps._massDataPrivate.Centroid) - pos;
                     float angleToCentroid = (float) Math.Atan2(toCentroid.Y, toCentroid.X);
                     float min = float.MaxValue;
                     float max = float.MinValue;
                     float minAbsolute = 0.0f;
                     float maxAbsolute = 0.0f;
 
-                    for (int j = 0; j < ps._vertices.Count; ++j)
+                    for (int j = 0; j < ps._verticesPrivate.Count; ++j)
                     {
-                        Vector2 toVertex = shapes[i].Body.GetWorldPoint(ps._vertices[j]) - pos;
+                        Vector2 toVertex = shapes[i].Body.GetWorldPoint(ps._verticesPrivate[j]) - pos;
                         float newAngle = (float) Math.Atan2(toVertex.Y, toVertex.X);
                         float diff = newAngle - angleToCentroid;
 
@@ -428,7 +428,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
                 else
                 {
                     PolygonShape shape = fix.Shape as PolygonShape;
-                    hitPoint = fix.Body.GetWorldPoint(shape._massData.Centroid);
+                    hitPoint = fix.Body.GetWorldPoint(shape._massDataPrivate.Centroid);
                 }
 
                 Vector2 vectImp = impulse * (hitPoint - pos);

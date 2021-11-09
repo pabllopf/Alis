@@ -163,9 +163,9 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
                     areac.X += sarea * sc.X;
                     areac.Y += sarea * sc.Y;
 
-                    mass += sarea * shape._density;
-                    massc.X += sarea * sc.X * shape._density;
-                    massc.Y += sarea * sc.Y * shape._density;
+                    mass += sarea * shape._densityPrivate;
+                    massc.X += sarea * sc.X * shape._densityPrivate;
+                    massc.Y += sarea * sc.Y * shape._densityPrivate;
                 }
 
                 areac.X /= area;
@@ -214,18 +214,18 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
 
                     sc = Vector2.Zero;
 
-                    float radius2 = circleShape._radius * circleShape._radius;
+                    float radius2 = circleShape._radiusPrivate * circleShape._radiusPrivate;
 
                     Vector2 p = MathUtils.Mul(ref xf, circleShape.Position);
                     float l = -(Vector2.Dot(normal, p) - offset);
-                    if (l < -circleShape._radius + MathConstants.Epsilon)
+                    if (l < -circleShape._radiusPrivate + MathConstants.Epsilon)
 
                         //Completely dry
                     {
                         return 0;
                     }
 
-                    if (l > circleShape._radius)
+                    if (l > circleShape._radiusPrivate)
                     {
                         //Completely wet
                         sc = p;
@@ -234,7 +234,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
 
                     //Magic
                     float l2 = l * l;
-                    float area = radius2 * (float) (Math.Asin(l / circleShape._radius) + MathConstants.Pi / 2 +
+                    float area = radius2 * (float) (Math.Asin(l / circleShape._radiusPrivate) + MathConstants.Pi / 2 +
                                                     l * Math.Sqrt(radius2 - l2));
                     float com = -2.0f / 3.0f * (float) Math.Pow(radius2 - l2, 1.5f) / area;
 
@@ -263,9 +263,9 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
 
                     bool lastSubmerged = false;
                     int i;
-                    for (i = 0; i < polygonShape._vertices.Count; i++)
+                    for (i = 0; i < polygonShape._verticesPrivate.Count; i++)
                     {
-                        depths[i] = Vector2.Dot(normalL, polygonShape._vertices[i]) - offsetL;
+                        depths[i] = Vector2.Dot(normalL, polygonShape._verticesPrivate[i]) - offsetL;
                         bool isSubmerged = depths[i] < -MathConstants.Epsilon;
                         if (i > 0)
                         {
@@ -296,8 +296,8 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
                             if (lastSubmerged)
                             {
                                 //Completely submerged
-                                sc = MathUtils.Mul(ref xf, polygonShape._massData.Centroid);
-                                return polygonShape._massData.Mass / Density;
+                                sc = MathUtils.Mul(ref xf, polygonShape._massDataPrivate.Centroid);
+                                return polygonShape._massDataPrivate.Mass / Density;
                             }
 
                             //Completely dry
@@ -305,37 +305,37 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
                         case 1:
                             if (intoIndex == -1)
                             {
-                                intoIndex = polygonShape._vertices.Count - 1;
+                                intoIndex = polygonShape._verticesPrivate.Count - 1;
                             }
                             else
                             {
-                                outoIndex = polygonShape._vertices.Count - 1;
+                                outoIndex = polygonShape._verticesPrivate.Count - 1;
                             }
 
                             break;
                     }
 
-                    int intoIndex2 = (intoIndex + 1) % polygonShape._vertices.Count;
-                    int outoIndex2 = (outoIndex + 1) % polygonShape._vertices.Count;
+                    int intoIndex2 = (intoIndex + 1) % polygonShape._verticesPrivate.Count;
+                    int outoIndex2 = (outoIndex + 1) % polygonShape._verticesPrivate.Count;
 
                     float intoLambda = (0 - depths[intoIndex]) / (depths[intoIndex2] - depths[intoIndex]);
                     float outoLambda = (0 - depths[outoIndex]) / (depths[outoIndex2] - depths[outoIndex]);
 
                     Vector2 intoVec = new Vector2(
-                        polygonShape._vertices[intoIndex].X * (1 - intoLambda) +
-                        polygonShape._vertices[intoIndex2].X * intoLambda,
-                        polygonShape._vertices[intoIndex].Y * (1 - intoLambda) +
-                        polygonShape._vertices[intoIndex2].Y * intoLambda);
+                        polygonShape._verticesPrivate[intoIndex].X * (1 - intoLambda) +
+                        polygonShape._verticesPrivate[intoIndex2].X * intoLambda,
+                        polygonShape._verticesPrivate[intoIndex].Y * (1 - intoLambda) +
+                        polygonShape._verticesPrivate[intoIndex2].Y * intoLambda);
                     Vector2 outoVec = new Vector2(
-                        polygonShape._vertices[outoIndex].X * (1 - outoLambda) +
-                        polygonShape._vertices[outoIndex2].X * outoLambda,
-                        polygonShape._vertices[outoIndex].Y * (1 - outoLambda) +
-                        polygonShape._vertices[outoIndex2].Y * outoLambda);
+                        polygonShape._verticesPrivate[outoIndex].X * (1 - outoLambda) +
+                        polygonShape._verticesPrivate[outoIndex2].X * outoLambda,
+                        polygonShape._verticesPrivate[outoIndex].Y * (1 - outoLambda) +
+                        polygonShape._verticesPrivate[outoIndex2].Y * outoLambda);
 
                     //Initialize accumulator
                     float area = 0;
                     Vector2 center = new Vector2(0, 0);
-                    Vector2 p2 = polygonShape._vertices[intoIndex2];
+                    Vector2 p2 = polygonShape._verticesPrivate[intoIndex2];
 
                     const float k_inv3 = 1.0f / 3.0f;
 
@@ -343,7 +343,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
                     i = intoIndex2;
                     while (i != outoIndex2)
                     {
-                        i = (i + 1) % polygonShape._vertices.Count;
+                        i = (i + 1) % polygonShape._verticesPrivate.Count;
                         Vector2 p3;
                         if (i == outoIndex2)
                         {
@@ -351,7 +351,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
                         }
                         else
                         {
-                            p3 = polygonShape._vertices[i];
+                            p3 = polygonShape._verticesPrivate[i];
                         }
 
                         //Add the triangle formed by intoVec,p2,p3

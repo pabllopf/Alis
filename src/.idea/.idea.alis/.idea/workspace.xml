@@ -20,7 +20,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="" />
+    <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/Contact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/ContactSystem/Contact.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Distance/DistanceProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Distance/DistanceProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Narrowphase/CollideCircle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Narrowphase/CollideCircle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Narrowphase/CollideEdge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Narrowphase/CollideEdge.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Narrowphase/CollidePolygon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Narrowphase/CollidePolygon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/ChainShape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/ChainShape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/CircleShape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/CircleShape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/EdgeShape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/EdgeShape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/PolygonShape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/PolygonShape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/Shape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Collision/Shapes/Shape.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Body.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Body.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Solver/ContactSolver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Dynamics/Solver/ContactSolver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Extensions/Controllers/Buoyancy/BuoyancyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Extensions/Controllers/Buoyancy/BuoyancyController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Extensions/PhysicsLogics/Explosion/RealExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Extensions/PhysicsLogics/Explosion/RealExplosion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Cutting/Simple/CuttingTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Tools/Cutting/Simple/CuttingTools.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,6 +62,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28be434f13d647688f5ff1b9d2bc98278f5778/eb/55f9b89b/DebugProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/Escritorio/Nueva carpeta/src/2_adaptation/sfml/alis.core.sfml/src/Components/Collision.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/3C0/DebugProvider.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/Physics2D/Extensions/Controllers/Velocity/VelocityLimitController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -417,7 +435,7 @@
       <workItem from="1636449668273" duration="4578000" />
       <workItem from="1636455911935" duration="286000" />
       <workItem from="1636456430450" duration="80000" />
-      <workItem from="1636456738689" duration="1693000" />
+      <workItem from="1636456738689" duration="3407000" />
     </task>
     <servers />
   </component>
