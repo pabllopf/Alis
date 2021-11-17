@@ -21,70 +21,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/UnitTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2_application/alis/Docs/Alis.cd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/src/UnitTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/Example.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/Alis.Core.Systems.Graphics2D/Alis.Core.Systems.Graphics2D.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D.Test/Alis.Core.Systems.Physics2D.Test.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D.Test/UnitTest1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Docs/Alis.Core.Systems.Physics2D.cd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/UnitTest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/UnitTets.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis/Alis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/Alis.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis/VideoGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/VideoGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/src/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/src/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Animator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/AudioSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/AudioSource.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/BoxCollider2D.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/BoxCollider2D.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Camera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Components/Camera.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/PhysicsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/PhysicsManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Managers/RenderManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.example/src/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.example/src/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.test/Alis.Core.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/Alis.Core.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/GameObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/GameObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/Scene.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Entities/Scene.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/PhysicsSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/PhysicsSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/SceneSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Systems/SceneSystem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Broadphase/DynamicTree.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Broadphase/DynamicTree.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Distance/DistanceGJK.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Distance/DistanceGJK.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Narrowphase/Collision.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Narrowphase/Collision.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/ChainShape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/ChainShape.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/CircleShape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/CircleShape.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/EdgeShape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/EdgeShape.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/MassData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/MassData.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/PolygonShape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/Shapes/PolygonShape.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/TOI/TimeOfImpact.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Collision/TOI/TimeOfImpact.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Dynamics/Body.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Dynamics/Body.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Dynamics/Solver/Island.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Dynamics/Solver/Island.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/UnitTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/UnitTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.test/src/UnitTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/src/UnitTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/Example.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/Example.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D.Test/UnitTest1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Dynamics/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Dynamics/World.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Extensions/Controllers/Wind/Curve/Curve.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Extensions/Controllers/Wind/Curve/Curve.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Factories/BodyFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Factories/BodyFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Factories/FixtureFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Factories/FixtureFactory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Shared/AABB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Shared/AABB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Cutting/YuPengClipper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Cutting/YuPengClipper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/PathGenerator/Path.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/PathGenerator/Path.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/PathGenerator/PathManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/PathGenerator/PathManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Delaunay/Delaunay/Sweep/DTSweep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Delaunay/Delaunay/Sweep/DTSweep.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Delaunay/Delaunay/Sweep/DTSweepContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Delaunay/Delaunay/Sweep/DTSweepContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/FlipCode/FlipcodeDecomposer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/FlipCode/FlipcodeDecomposer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Seidel/Edge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Seidel/Edge.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Seidel/MonotoneMountain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Seidel/MonotoneMountain.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Seidel/QueryGraph.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Seidel/QueryGraph.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Seidel/Trapezoid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Tools/Triangulation/Seidel/Trapezoid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Utilities/LineUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Utilities/LineUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Utilities/MathUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Utilities/MathUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Utilities/PolygonUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Utilities/PolygonUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alis.sln" beforeDir="false" afterPath="$PROJECT_DIR$/alis.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/UnitTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/UnitTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/UnitTets.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/UnitTets.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -481,7 +425,7 @@
       <workItem from="1636706619015" duration="1027000" />
       <workItem from="1636882492187" duration="2865000" />
       <workItem from="1636917372774" duration="138000" />
-      <workItem from="1637142119716" duration="3021000" />
+      <workItem from="1637142119716" duration="5960000" />
     </task>
     <servers />
   </component>

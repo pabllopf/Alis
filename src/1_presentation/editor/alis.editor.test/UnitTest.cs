@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,13 +31,22 @@ using NUnit.Framework;
 
 namespace Alis.Editor.Test
 {
+    /// <summary>
+    /// The tests class
+    /// </summary>
     public class Tests
     {
+        /// <summary>
+        /// Setup this instance
+        /// </summary>
         [SetUp]
         public void Setup()
         {
         }
 
+        /// <summary>
+        /// Tests that test 1
+        /// </summary>
         [Test]
         public void Test1()
         {

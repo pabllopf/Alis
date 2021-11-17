@@ -52,7 +52,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly HashSet<Body> bodyAddList = new HashSet<Body>();
+        private readonly HashSet<Body> bodyAddList;
 
         /// <summary>
         ///     The body list
@@ -62,7 +62,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The body
         /// </summary>
-        private readonly HashSet<Body> bodyRemoveList = new HashSet<Body>();
+        private readonly HashSet<Body> bodyRemoveList;
 
         /// <summary>
         ///     The breakable body list
@@ -77,7 +77,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The joint
         /// </summary>
-        private readonly HashSet<Joint> jointAddList = new HashSet<Joint>();
+        private readonly HashSet<Joint> jointAddList;
 
         /// <summary>
         ///     The joint list
@@ -87,7 +87,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The joint
         /// </summary>
-        private readonly HashSet<Joint> jointRemoveList = new HashSet<Joint>();
+        private readonly HashSet<Joint> jointRemoveList;
 
         /// <summary>
         ///     The query aabb callback wrapper
@@ -102,8 +102,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The restart
         /// </summary>
-        private readonly Pool<Stopwatch> timerPool =
-            new Pool<Stopwatch>(Stopwatch.StartNew, sw => sw.Restart(), 5, false);
+        private readonly Pool<Stopwatch> timerPool;
 
         /// <summary>
         ///     The contact manager
@@ -178,7 +177,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The body
         /// </summary>
-        private Body[] stack = new Body[64];
+        private Body[] stack;
 
         /// <summary>
         ///     The step complete
@@ -194,10 +193,31 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     The warm starting enabled
         /// </summary>
         private bool warmStartingEnabled;
+        
+        /// <summary>
+        /// Ons the body added using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        private static  void OnBodyAdded(Body body) => Console.WriteLine("World.OnBodyAdded()");
+
+        /// <summary>
+        /// Ons the body removed using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        private static void OnBodyRemoved(Body body) => Console.WriteLine("World.OnBodyRemoved()");
 
         /// <summary>Initializes a new instance of the <see cref="World" /> class.</summary>
         public World(Vector2 gravity)
         {
+            bodyAddList = new HashSet<Body>();
+            bodyRemoveList = new HashSet<Body>();
+            jointAddList = new HashSet<Joint>();
+            jointRemoveList = new HashSet<Joint>();
+            
+            stack = new Body[64];
+            
+            timerPool = new Pool<Stopwatch>(Stopwatch.StartNew, sw => sw.Restart(), 5, false);
+            
             this.gravity = gravity;
             enabled = true;
             sleepingAllowed = true;
@@ -214,7 +234,55 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             rayCastCallbackWrapper = RayCastCallbackWrapper;
 
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
+            
+            BodyAdded += OnBodyAdded;
+            BodyRemoved += OnBodyRemoved;
+            
+            ControllerAdded += OnControllerAdded;
+            ControllerRemoved += OnControllerRemoved;
+            
+            FixtureAdded += OnFixtureAdded;
+            FixtureRemoved += OnFixtureRemoved;
+            
+            JointAdded += OnJointAdded;
+            JointRemoved += OnJointRemoved;
         }
+
+        /// <summary>
+        /// Ons the joint removed using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
+        private static void OnJointRemoved(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+
+        /// <summary>
+        /// Ons the joint added using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
+        private static void OnJointAdded(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+
+        /// <summary>
+        /// Ons the fixture removed using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        private static void OnFixtureRemoved(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+
+        /// <summary>
+        /// Ons the fixture added using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        private static void OnFixtureAdded(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureAdded()");
+
+        /// <summary>
+        /// Ons the controller removed using the specified controller
+        /// </summary>
+        /// <param name="controller">The controller</param>
+        private static void OnControllerRemoved(Controller controller) => Console.WriteLine("Wolds.OnControllerRemoved()");
+
+        /// <summary>
+        /// Ons the controller added using the specified controller
+        /// </summary>
+        /// <param name="controller">The controller</param>
+        private static void OnControllerAdded(Controller controller) => Console.WriteLine("Wolds.OnControllerAdded()");
 
         /// <summary>
         ///     The contact
@@ -471,7 +539,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             controller.World = this;
             controllerList.Add(controller);
 
-            ControllerAdded?.Invoke(controller);
+            ControllerAdded(controller);
         }
 
         /// <summary>
@@ -827,10 +895,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     Raises the new fixture event using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        internal void RaiseNewFixtureEvent(Fixture fixture)
-        {
-            FixtureAdded?.Invoke(fixture);
-        }
+        internal void RaiseNewFixtureEvent(Fixture fixture) => FixtureAdded(fixture);
 
         /// <summary>
         ///     Processes the removed joints
@@ -1464,12 +1529,6 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 // Commit fixture proxy movements to the broad-phase so that new contacts are created.
                 // Also, some contacts can be destroyed.
                 ContactManager.FindNewContacts();
-
-                if (Settings.EnableSubStepping)
-                {
-                    stepComplete = false;
-                    break;
-                }
             }
         }
 
@@ -1566,7 +1625,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 }
             }
 
-            JointAdded?.Invoke(joint);
+            JointAdded(joint);
 
             // Note: creating a joint doesn't wake the bodies.
         }
@@ -1654,7 +1713,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 }
             }
 
-            JointRemoved?.Invoke(joint);
+            JointRemoved(joint);
         }
 
         /// <summary>
@@ -1669,7 +1728,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             bodyList.Add(body);
 
             //Velcro: We have events to notify the user that a body was added
-            BodyAdded?.Invoke(body);
+            BodyAdded(body);
 
             //Velcro: We have events to notify fixtures was added
             if (FixtureAdded != null)
@@ -1737,7 +1796,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             // Remove world body list.
             bodyList.Remove(body);
 
-            BodyRemoved?.Invoke(body);
+            BodyRemoved(body);
         }
 
         /// <summary>
