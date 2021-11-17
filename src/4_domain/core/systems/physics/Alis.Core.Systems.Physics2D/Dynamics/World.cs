@@ -233,7 +233,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             queryAabbCallbackWrapper = QueryAabbCallbackWrapper;
             rayCastCallbackWrapper = RayCastCallbackWrapper;
 
-            ContactManager = new ContactManager(new DynamicTreeBroadPhase());
+            contactManager = new ContactManager(new DynamicTreeBroadPhase());
             
             BodyAdded += OnBodyAdded;
             BodyRemoved += OnBodyRemoved;
@@ -555,7 +555,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             {
                 controllerList.Remove(controller);
 
-                ControllerRemoved?.Invoke(controller);
+                ControllerRemoved(controller);
             }
         }
 
