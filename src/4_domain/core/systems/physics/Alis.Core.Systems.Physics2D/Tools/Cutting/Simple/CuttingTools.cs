@@ -202,7 +202,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting.Simple
             List<Vector2> exitPoints = new List<Vector2>();
 
             //We don't support cutting when the start or end is inside a shape.
-            if (world.TestPoint(start) != null || world.TestPoint(end) != null)
+            if (world.TestPointAll(start) != null || world.TestPointAll(end) != null)
             {
                 return false;
             }

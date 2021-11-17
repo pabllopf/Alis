@@ -140,16 +140,6 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         private bool isLocked;
 
         /// <summary>
-        ///     The my fixture
-        /// </summary>
-        private Fixture myFixture;
-
-        /// <summary>
-        ///     The point
-        /// </summary>
-        private Vector2 point1;
-
-        /// <summary>
         ///     The point
         /// </summary>
         private Vector2 point2;
@@ -797,28 +787,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             return affected;
         }
-
-        /// <summary>
-        ///     Tests the point using the specified point
-        /// </summary>
-        /// <param name="point">The point</param>
-        /// <returns>The my fixture</returns>
-        public Fixture TestPoint(Vector2 point)
-        {
-            Aabb aabb;
-            Vector2 d = new Vector2(MathConstants.Epsilon, MathConstants.Epsilon);
-            aabb.LowerBound = point - d;
-            aabb.UpperBound = point + d;
-
-            myFixture = null;
-            point1 = point;
-
-            // Query the world for overlapping shapes.
-            QueryAabb(TestPointCallback, ref aabb);
-
-            return myFixture;
-        }
-
+        
         /// <summary>Returns a list of fixtures that are at the specified point.</summary>
         /// <param name="point">The point.</param>
         public List<Fixture> TestPointAll(Vector2 point)
@@ -1532,23 +1501,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
         }
 
+
         /// <summary>
-        ///     Describes whether this instance test point callback
+        /// Describes whether this instance test point callback
         /// </summary>
         /// <param name="fixture">The fixture</param>
+        /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        private bool TestPointCallback(Fixture fixture)
-        {
-            bool inside = fixture.TestPoint(ref point1);
-            if (inside)
-            {
-                myFixture = fixture;
-                return false;
-            }
-
-            // Continue the query.
-            return true;
-        }
+        private bool TestPointCallback(Fixture fixture, ref Vector2 point) => !fixture.TestPoint(ref point);
 
         /// <summary>
         ///     Describes whether this instance test point all callback
@@ -1731,12 +1691,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             BodyAdded(body);
 
             //Velcro: We have events to notify fixtures was added
-            if (FixtureAdded != null)
+            for (int i = 0; i < body.FixtureList.Count; i++)
             {
-                for (int i = 0; i < body.FixtureList.Count; i++)
-                {
-                    FixtureAdded(body.FixtureList[i]);
-                }
+                FixtureAdded(body.FixtureList[i]);
             }
         }
 
