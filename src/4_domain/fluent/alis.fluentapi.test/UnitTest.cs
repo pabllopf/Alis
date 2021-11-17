@@ -32,17 +32,17 @@ using NUnit.Framework;
 namespace Alis.FluentApi.Test
 {
     /// <summary>
-    /// The unit test class
+    ///     The unit test class
     /// </summary>
     public class UnitTest
     {
         /// <summary>
-        /// The tests class
+        ///     The tests class
         /// </summary>
         public class Tests
         {
             /// <summary>
-            /// Setup this instance
+            ///     Setup this instance
             /// </summary>
             [SetUp]
             public void Setup()
@@ -50,7 +50,7 @@ namespace Alis.FluentApi.Test
             }
 
             /// <summary>
-            /// Tests that test 1
+            ///     Tests that test 1
             /// </summary>
             [Test]
             public void Test1()

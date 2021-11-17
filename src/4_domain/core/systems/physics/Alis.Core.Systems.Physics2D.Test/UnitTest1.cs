@@ -5,12 +5,12 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test
 {
     /// <summary>
-    /// The tests class
+    ///     The tests class
     /// </summary>
     public class Tests
     {
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [SetUp]
         public void Setup()
@@ -18,7 +18,7 @@ namespace Alis.Core.Systems.Physics2D.Test
         }
 
         /// <summary>
-        /// Tests that test 1
+        ///     Tests that test 1
         /// </summary>
         [Test]
         public void Test1()

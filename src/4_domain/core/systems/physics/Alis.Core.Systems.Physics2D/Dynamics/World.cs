@@ -183,18 +183,6 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     The warm starting enabled
         /// </summary>
         private bool warmStartingEnabled;
-        
-        /// <summary>
-        /// Ons the body added using the specified body
-        /// </summary>
-        /// <param name="body">The body</param>
-        private static  void OnBodyAdded(Body body) => Console.WriteLine("World.OnBodyAdded()");
-
-        /// <summary>
-        /// Ons the body removed using the specified body
-        /// </summary>
-        /// <param name="body">The body</param>
-        private static void OnBodyRemoved(Body body) => Console.WriteLine("World.OnBodyRemoved()");
 
         /// <summary>Initializes a new instance of the <see cref="World" /> class.</summary>
         public World(Vector2 gravity)
@@ -203,11 +191,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             bodyRemoveList = new HashSet<Body>();
             jointAddList = new HashSet<Joint>();
             jointRemoveList = new HashSet<Joint>();
-            
+
             stack = new Body[64];
-            
+
             timerPool = new Pool<Stopwatch>(Stopwatch.StartNew, sw => sw.Restart(), 5, false);
-            
+
             this.gravity = gravity;
             enabled = true;
             sleepingAllowed = true;
@@ -224,55 +212,19 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             rayCastCallbackWrapper = RayCastCallbackWrapper;
 
             contactManager = new ContactManager(new DynamicTreeBroadPhase());
-            
+
             BodyAdded += OnBodyAdded;
             BodyRemoved += OnBodyRemoved;
-            
+
             ControllerAdded += OnControllerAdded;
             ControllerRemoved += OnControllerRemoved;
-            
+
             FixtureAdded += OnFixtureAdded;
             FixtureRemoved += OnFixtureRemoved;
-            
+
             JointAdded += OnJointAdded;
             JointRemoved += OnJointRemoved;
         }
-
-        /// <summary>
-        /// Ons the joint removed using the specified joint
-        /// </summary>
-        /// <param name="joint">The joint</param>
-        private static void OnJointRemoved(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
-
-        /// <summary>
-        /// Ons the joint added using the specified joint
-        /// </summary>
-        /// <param name="joint">The joint</param>
-        private static void OnJointAdded(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
-
-        /// <summary>
-        /// Ons the fixture removed using the specified fixture
-        /// </summary>
-        /// <param name="fixture">The fixture</param>
-        private static void OnFixtureRemoved(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureRemoved()");
-
-        /// <summary>
-        /// Ons the fixture added using the specified fixture
-        /// </summary>
-        /// <param name="fixture">The fixture</param>
-        private static void OnFixtureAdded(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureAdded()");
-
-        /// <summary>
-        /// Ons the controller removed using the specified controller
-        /// </summary>
-        /// <param name="controller">The controller</param>
-        private static void OnControllerRemoved(Controller controller) => Console.WriteLine("Wolds.OnControllerRemoved()");
-
-        /// <summary>
-        /// Ons the controller added using the specified controller
-        /// </summary>
-        /// <param name="controller">The controller</param>
-        private static void OnControllerAdded(Controller controller) => Console.WriteLine("Wolds.OnControllerAdded()");
 
         /// <summary>
         ///     The contact
@@ -383,6 +335,55 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             get => isLocked;
             set => isLocked = value;
         }
+
+        /// <summary>
+        ///     Ons the body added using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        private static void OnBodyAdded(Body body) => Console.WriteLine("World.OnBodyAdded()");
+
+        /// <summary>
+        ///     Ons the body removed using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        private static void OnBodyRemoved(Body body) => Console.WriteLine("World.OnBodyRemoved()");
+
+        /// <summary>
+        ///     Ons the joint removed using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
+        private static void OnJointRemoved(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+
+        /// <summary>
+        ///     Ons the joint added using the specified joint
+        /// </summary>
+        /// <param name="joint">The joint</param>
+        private static void OnJointAdded(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+
+        /// <summary>
+        ///     Ons the fixture removed using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        private static void OnFixtureRemoved(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+
+        /// <summary>
+        ///     Ons the fixture added using the specified fixture
+        /// </summary>
+        /// <param name="fixture">The fixture</param>
+        private static void OnFixtureAdded(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureAdded()");
+
+        /// <summary>
+        ///     Ons the controller removed using the specified controller
+        /// </summary>
+        /// <param name="controller">The controller</param>
+        private static void OnControllerRemoved(Controller controller) =>
+            Console.WriteLine("Wolds.OnControllerRemoved()");
+
+        /// <summary>
+        ///     Ons the controller added using the specified controller
+        /// </summary>
+        /// <param name="controller">The controller</param>
+        private static void OnControllerAdded(Controller controller) => Console.WriteLine("Wolds.OnControllerAdded()");
 
         /// <summary>Fires whenever a body has been added</summary>
         public event BodyHandler BodyAdded;
@@ -787,7 +788,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             return affected;
         }
-        
+
         /// <summary>Returns a list of fixtures that are at the specified point.</summary>
         /// <param name="point">The point.</param>
         public List<Fixture> TestPointAll(Vector2 point)
@@ -1503,7 +1504,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
 
         /// <summary>
-        /// Describes whether this instance test point callback
+        ///     Describes whether this instance test point callback
         /// </summary>
         /// <param name="fixture">The fixture</param>
         /// <param name="point">The point</param>
