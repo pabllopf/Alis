@@ -253,8 +253,9 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="secondIsSegment">Set this to true to require that the intersection point be on the second line segment.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
         public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
-            bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint) => LineIntersect(ref point1,
-            ref point2, ref point3, ref point4, firstIsSegment, secondIsSegment, out intersectionPoint);
+            bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint) =>
+            LineIntersect(ref point1,
+                ref point2, ref point3, ref point4, firstIsSegment, secondIsSegment, out intersectionPoint);
 
         /// <summary>
         ///     This method detects if two line segments intersect, and, if so, the point of intersection. Note: If two line
@@ -267,8 +268,9 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
         public static bool LineIntersect(ref Vector2 point1, ref Vector2 point2, ref Vector2 point3, ref Vector2 point4,
-            out Vector2 intersectionPoint) => LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
-            out intersectionPoint);
+            out Vector2 intersectionPoint) =>
+            LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
+                out intersectionPoint);
 
         /// <summary>
         ///     This method detects if two line segments intersect, and, if so, the point of intersection. Note: If two line
@@ -281,8 +283,9 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
         public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
-            out Vector2 intersectionPoint) => LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
-            out intersectionPoint);
+            out Vector2 intersectionPoint) =>
+            LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
+                out intersectionPoint);
 
         /// <summary>
         ///     Get all intersections between a line segment and a list of vertices representing a polygon. The vertices reuse

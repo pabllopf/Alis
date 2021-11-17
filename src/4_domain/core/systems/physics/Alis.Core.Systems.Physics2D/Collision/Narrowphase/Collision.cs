@@ -50,12 +50,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
         public static bool TestOverlap(Shape shapeA, int indexA, Shape shapeB, int indexB, ref Transform xfA,
             ref Transform xfB)
         {
-            DistanceInput input = new DistanceInput();
-            input.ProxyA = new DistanceProxy(shapeA, indexA);
-            input.ProxyB = new DistanceProxy(shapeB, indexB);
-            input.TransformA = xfA;
-            input.TransformB = xfB;
-            input.UseRadii = true;
+            DistanceInput input = new DistanceInput
+            {
+                ProxyA = new DistanceProxy(shapeA, indexA),
+                ProxyB = new DistanceProxy(shapeB, indexB),
+                TransformA = xfA,
+                TransformB = xfB,
+                UseRadii = true
+            };
 
             DistanceGjk.ComputeDistance(ref input, out DistanceOutput output, out _);
 

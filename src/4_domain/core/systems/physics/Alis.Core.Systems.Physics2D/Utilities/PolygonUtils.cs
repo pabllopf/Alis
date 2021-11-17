@@ -46,11 +46,13 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="hy">the half-height.</param>
         public static Vertices CreateRectangle(float hx, float hy)
         {
-            Vertices vertices = new Vertices(4);
-            vertices.Add(new Vector2(-hx, -hy));
-            vertices.Add(new Vector2(hx, -hy));
-            vertices.Add(new Vector2(hx, hy));
-            vertices.Add(new Vector2(-hx, hy));
+            Vertices vertices = new Vertices(4)
+            {
+                new Vector2(-hx, -hy),
+                new Vector2(hx, -hy),
+                new Vector2(hx, hy),
+                new Vector2(-hx, hy)
+            };
 
             return vertices;
         }
@@ -64,8 +66,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         {
             Vertices vertices = CreateRectangle(hx, hy);
 
-            Transform xf = new Transform();
-            xf.P = center;
+            Transform xf = new Transform
+            {
+                P = center
+            };
             xf.Q.Set(angle);
 
             // Transform vertices
@@ -154,9 +158,11 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="end">The second point.</param>
         public static Vertices CreateLine(Vector2 start, Vector2 end)
         {
-            Vertices vertices = new Vertices(2);
-            vertices.Add(start);
-            vertices.Add(end);
+            Vertices vertices = new Vertices(2)
+            {
+                start,
+                end
+            };
 
             return vertices;
         }
@@ -387,7 +393,8 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="holeDetection">if set to <c>true</c> it will perform hole detection.</param>
         /// <returns></returns>
         public static List<Vertices> CreatePolygon(uint[] data, int width, float hullTolerance, byte alphaTolerance,
-            bool multiPartDetection, bool holeDetection) => TextureConverter.DetectVertices(data, width, hullTolerance,
-            alphaTolerance, multiPartDetection, holeDetection);
+            bool multiPartDetection, bool holeDetection) =>
+            TextureConverter.DetectVertices(data, width, hullTolerance,
+                alphaTolerance, multiPartDetection, holeDetection);
     }
 }

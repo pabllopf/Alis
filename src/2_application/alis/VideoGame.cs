@@ -60,6 +60,6 @@ namespace Alis
         /// <summary>
         ///     Destroy object.
         /// </summary>
-        ~VideoGame() => Console.WriteLine(@$"Destroy VideoGame {GetHashCode().ToString()}");
+        ~VideoGame() => Console.WriteLine(@$"Destroy VideoGame {GetHashCode()}");
     }
 }

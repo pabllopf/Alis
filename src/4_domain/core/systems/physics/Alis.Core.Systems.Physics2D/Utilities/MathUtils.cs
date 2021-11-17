@@ -178,9 +178,11 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             // v2 = A.q.Rot(B.q.Rot(v1) + B.p) + A.p
             //    = (A.q * B.q).Rot(v1) + A.q.Rot(B.p) + A.p
 
-            Transform c = new Transform();
-            c.Q = Mul(a.Q, b.Q);
-            c.P = Mul(a.Q, b.P) + a.P;
+            Transform c = new Transform
+            {
+                Q = Mul(a.Q, b.Q),
+                P = Mul(a.Q, b.P) + a.P
+            };
             return c;
         }
 
@@ -195,9 +197,11 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             // v2 = A.q' * (B.q * v1 + B.p - A.p)
             //    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
 
-            c = new Transform();
-            c.Q = MulT(a.Q, b.Q);
-            c.P = MulT(a.Q, b.P - a.P);
+            c = new Transform
+            {
+                Q = MulT(a.Q, b.Q),
+                P = MulT(a.Q, b.P - a.P)
+            };
         }
 
         /// <summary>
@@ -270,9 +274,11 @@ namespace Alis.Core.Systems.Physics2D.Utilities
             // v2 = A.q' * (B.q * v1 + B.p - A.p)
             //    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
 
-            Transform c = new Transform();
-            c.Q = MulT(a.Q, b.Q);
-            c.P = MulT(a.Q, b.P - a.P);
+            Transform c = new Transform
+            {
+                Q = MulT(a.Q, b.Q),
+                P = MulT(a.Q, b.P - a.P)
+            };
             return c;
         }
 

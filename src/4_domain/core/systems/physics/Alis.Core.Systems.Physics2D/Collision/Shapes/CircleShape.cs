@@ -159,12 +159,14 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <returns>The clone</returns>
         public override Shape Clone()
         {
-            CircleShape clone = new CircleShape();
-            clone.ShapeTypePrivate = ShapeTypePrivate;
-            clone.RadiusPrivate = RadiusPrivate;
-            clone.DensityPrivate = DensityPrivate;
-            clone.Positionprivate = Positionprivate;
-            clone.MassDataPrivate = MassDataPrivate;
+            CircleShape clone = new CircleShape
+            {
+                ShapeTypePrivate = ShapeTypePrivate,
+                RadiusPrivate = RadiusPrivate,
+                DensityPrivate = DensityPrivate,
+                Positionprivate = Positionprivate,
+                MassDataPrivate = MassDataPrivate
+            };
             return clone;
         }
     }

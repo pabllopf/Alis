@@ -96,9 +96,11 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
             B = p.Y - p.X * Slope;
             Above = null;
             Below = null;
-            MPoints = new HashSet<Point>();
-            MPoints.Add(p);
-            MPoints.Add(q);
+            MPoints = new HashSet<Point>
+            {
+                p,
+                q
+            };
         }
 
         /// <summary>

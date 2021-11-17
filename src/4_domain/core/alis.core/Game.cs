@@ -31,7 +31,6 @@ using System;
 using System.Text.Json.Serialization;
 using Alis.Core.Settings;
 using Alis.Core.Systems;
-using Alis.Core.Systems.Physics2D;
 
 namespace Alis.Core
 {
@@ -217,7 +216,10 @@ namespace Alis.Core
         /// <summary>
         ///     Exits
         /// </summary>
-        public static void Exit() => IsRunning = false;
+        public static void Exit()
+        {
+            IsRunning = false;
+        }
 
         ~Game() => Console.WriteLine(@$"Destroy Game {GetHashCode().ToString()}");
     }

@@ -245,11 +245,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         {
             VerticesPrivate = PolygonUtils.CreateRectangle(hx, hy);
 
-            NormalsPrivate = new Vertices(4);
-            NormalsPrivate.Add(new Vector2(0.0f, -1.0f));
-            NormalsPrivate.Add(new Vector2(1.0f, 0.0f));
-            NormalsPrivate.Add(new Vector2(0.0f, 1.0f));
-            NormalsPrivate.Add(new Vector2(-1.0f, 0.0f));
+            NormalsPrivate = new Vertices(4)
+            {
+                new Vector2(0.0f, -1.0f),
+                new Vector2(1.0f, 0.0f),
+                new Vector2(0.0f, 1.0f),
+                new Vector2(-1.0f, 0.0f)
+            };
 
             ComputeProperties();
         }
@@ -265,16 +267,20 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         {
             VerticesPrivate = PolygonUtils.CreateRectangle(hx, hy);
 
-            NormalsPrivate = new Vertices(4);
-            NormalsPrivate.Add(new Vector2(0.0f, -1.0f));
-            NormalsPrivate.Add(new Vector2(1.0f, 0.0f));
-            NormalsPrivate.Add(new Vector2(0.0f, 1.0f));
-            NormalsPrivate.Add(new Vector2(-1.0f, 0.0f));
+            NormalsPrivate = new Vertices(4)
+            {
+                new Vector2(0.0f, -1.0f),
+                new Vector2(1.0f, 0.0f),
+                new Vector2(0.0f, 1.0f),
+                new Vector2(-1.0f, 0.0f)
+            };
 
             MassDataPrivate.Centroid = center;
 
-            Transform xf = new Transform();
-            xf.P = center;
+            Transform xf = new Transform
+            {
+                P = center
+            };
             xf.Q.Set(angle);
 
             // Transform vertices and normals.
@@ -418,13 +424,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <returns>The clone</returns>
         public override Shape Clone()
         {
-            PolygonShape clone = new PolygonShape();
-            clone.ShapeTypePrivate = ShapeTypePrivate;
-            clone.RadiusPrivate = RadiusPrivate;
-            clone.DensityPrivate = DensityPrivate;
-            clone.VerticesPrivate = new Vertices(VerticesPrivate);
-            clone.NormalsPrivate = new Vertices(NormalsPrivate);
-            clone.MassDataPrivate = MassDataPrivate;
+            PolygonShape clone = new PolygonShape
+            {
+                ShapeTypePrivate = ShapeTypePrivate,
+                RadiusPrivate = RadiusPrivate,
+                DensityPrivate = DensityPrivate,
+                VerticesPrivate = new Vertices(VerticesPrivate),
+                NormalsPrivate = new Vertices(NormalsPrivate),
+                MassDataPrivate = MassDataPrivate
+            };
             return clone;
         }
     }

@@ -80,12 +80,17 @@ namespace Alis.Core.Sfml.Components
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => RenderManager.SetView(View);
+        public override void Start()
+        {
+            RenderManager.SetView(View);
+        }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() =>
+        public override void Update()
+        {
             View.Center = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+        }
     }
 }

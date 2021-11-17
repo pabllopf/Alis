@@ -192,10 +192,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
                     Point a = ear.Prev;
                     Point b = ear;
                     Point c = ear.Next;
-                    List<Point> triangle = new List<Point>(3);
-                    triangle.Add(a);
-                    triangle.Add(b);
-                    triangle.Add(c);
+                    List<Point> triangle = new List<Point>(3)
+                    {
+                        a,
+                        b,
+                        c
+                    };
 
                     Triangles.Add(triangle);
 

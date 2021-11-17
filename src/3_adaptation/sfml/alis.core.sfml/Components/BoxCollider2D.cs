@@ -131,10 +131,12 @@ namespace Alis.Core.Sfml.Components
         /// </summary>
         public override void Start()
         {
-            RectangleShape = new RectangleShape(new Vector2f(Size.X, Size.Y));
-            RectangleShape.FillColor = Color.Transparent;
-            RectangleShape.OutlineColor = Color.Green;
-            RectangleShape.OutlineThickness = 1f;
+            RectangleShape = new RectangleShape(new Vector2f(Size.X, Size.Y))
+            {
+                FillColor = Color.Transparent,
+                OutlineColor = Color.Green,
+                OutlineThickness = 1f
+            };
             PhysicsManager.Attach(this);
 
             Body = BodyFactory.CreateRectangle(PhysicsManager.World, Size.X, Size.Y, 1f,

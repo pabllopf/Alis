@@ -268,9 +268,11 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
             triangle.MarkNeighbor(node.Triangle);
             tcx.Triangles.Add(triangle);
 
-            AdvancingFrontNode newNode = new AdvancingFrontNode(point);
-            newNode.Next = node.Next;
-            newNode.Prev = node;
+            AdvancingFrontNode newNode = new AdvancingFrontNode(point)
+            {
+                Next = node.Next,
+                Prev = node
+            };
             node.Next.Prev = newNode;
             node.Next = newNode;
 

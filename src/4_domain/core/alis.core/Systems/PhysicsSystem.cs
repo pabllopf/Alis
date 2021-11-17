@@ -32,7 +32,7 @@ using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Systems.Physics2D.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D
+namespace Alis.Core.Systems
 {
     /// <summary>
     ///     The physics system class

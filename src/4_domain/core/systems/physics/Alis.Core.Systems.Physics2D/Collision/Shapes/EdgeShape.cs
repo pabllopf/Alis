@@ -182,8 +182,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
-            out RayCastOutput output) => RayCastHelper.RayCastEdge(ref vertex1, ref vertex2, OneSided, ref input,
-            ref transform, out output);
+            out RayCastOutput output) =>
+            RayCastHelper.RayCastEdge(ref vertex1, ref vertex2, OneSided, ref input,
+                ref transform, out output);
 
         /// <summary>
         ///     Computes the aabb using the specified transform
@@ -210,16 +211,18 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <returns>The clone</returns>
         public override Shape Clone()
         {
-            EdgeShape clone = new EdgeShape();
-            clone.ShapeTypePrivate = ShapeTypePrivate;
-            clone.RadiusPrivate = RadiusPrivate;
-            clone.DensityPrivate = DensityPrivate;
-            clone.OneSided = OneSided;
-            clone.Vertex0 = Vertex0;
-            clone.Vertex1 = Vertex1;
-            clone.Vertex2 = Vertex2;
-            clone.Vertex3 = Vertex3;
-            clone.MassDataPrivate = MassDataPrivate;
+            EdgeShape clone = new EdgeShape
+            {
+                ShapeTypePrivate = ShapeTypePrivate,
+                RadiusPrivate = RadiusPrivate,
+                DensityPrivate = DensityPrivate,
+                OneSided = OneSided,
+                Vertex0 = Vertex0,
+                Vertex1 = Vertex1,
+                Vertex2 = Vertex2,
+                Vertex3 = Vertex3,
+                MassDataPrivate = MassDataPrivate
+            };
             return clone;
         }
     }

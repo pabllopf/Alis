@@ -249,13 +249,15 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <returns>The clone</returns>
         public override Shape Clone()
         {
-            ChainShape clone = new ChainShape();
-            clone.ShapeTypePrivate = ShapeTypePrivate;
-            clone.DensityPrivate = DensityPrivate;
-            clone.RadiusPrivate = RadiusPrivate;
-            clone.PrevVertex = PrevVertex;
-            clone.NextVertex = NextVertex;
-            clone.Vertices = new Vertices(Vertices);
+            ChainShape clone = new ChainShape
+            {
+                ShapeTypePrivate = ShapeTypePrivate,
+                DensityPrivate = DensityPrivate,
+                RadiusPrivate = RadiusPrivate,
+                PrevVertex = PrevVertex,
+                NextVertex = NextVertex,
+                Vertices = new Vertices(Vertices)
+            };
             return clone;
         }
     }

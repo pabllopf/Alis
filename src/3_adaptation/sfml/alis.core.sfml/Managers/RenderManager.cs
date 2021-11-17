@@ -84,7 +84,10 @@ namespace Alis.Core.Sfml.Managers
         private static List<Sprite> Sprites { get; } = new List<Sprite>(Game.Setting.Graphic.MaxElementsRender);
 
         /// <summary>Awakes this instance.</summary>
-        public override void Awake() => RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
+        public override void Awake()
+        {
+            RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
+        }
 
         /// <summary>Starts this instance.</summary>
         public override void Start()
@@ -96,7 +99,10 @@ namespace Alis.Core.Sfml.Managers
         }
 
         /// <summary>Before the update.</summary>
-        public override void BeforeUpdate() => RenderWindow?.Clear();
+        public override void BeforeUpdate()
+        {
+            RenderWindow?.Clear();
+        }
 
         /// <summary>Updates this instance.</summary>
         public override void Update()
@@ -114,7 +120,10 @@ namespace Alis.Core.Sfml.Managers
         }
 
         /// <summary>Afters the update.</summary>
-        public override void AfterUpdate() => RenderWindow?.Display();
+        public override void AfterUpdate()
+        {
+            RenderWindow?.Display();
+        }
 
         /// <summary>Fixed the update.</summary>
         public override void FixedUpdate()
@@ -122,7 +131,10 @@ namespace Alis.Core.Sfml.Managers
         }
 
         /// <summary>Dispatches the events.</summary>
-        public override void DispatchEvents() => RenderWindow?.DispatchEvents();
+        public override void DispatchEvents()
+        {
+            RenderWindow?.DispatchEvents();
+        }
 
 
         /// <summary>Resets this instance.</summary>
@@ -138,58 +150,78 @@ namespace Alis.Core.Sfml.Managers
 
 
         /// <summary>Exits this instance.</summary>
-        public override void Exit() => RenderWindow?.Close();
+        public override void Exit()
+        {
+            RenderWindow?.Close();
+        }
 
         /// <summary>Attaches the specified sprite.</summary>
         /// <param name="sprite">The sprite.</param>
-        public static void Attach(Sprite sprite) => Sprites.Add(sprite);
+        public static void Attach(Sprite sprite)
+        {
+            Sprites.Add(sprite);
+        }
 
         /// <summary>Uns the attach.</summary>
         /// <param name="sprite">The sprite.</param>
-        public static void UnAttach(Sprite sprite) => Sprites.Remove(sprite);
+        public static void UnAttach(Sprite sprite)
+        {
+            Sprites.Remove(sprite);
+        }
 
         /// <summary>
         ///     Generals the on change name using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="name">The name</param>
-        private void General_OnChangeName(object? sender, string name) =>
+        private void General_OnChangeName(object? sender, string name)
+        {
             TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
+        }
 
         /// <summary>
         ///     Generals the on change author using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="author">The author</param>
-        private void General_OnChangeAuthor(object? sender, string author) =>
+        private void General_OnChangeAuthor(object? sender, string author)
+        {
             TitleWindow = $"{Game.Setting.General.Name} | {Game.Setting.General.Author}";
+        }
 
 
         /// <summary>Renders the window closed.</summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-        private void RenderWindow_Closed(object? sender, EventArgs e) => Game.Exit();
+        private void RenderWindow_Closed(object? sender, EventArgs e)
+        {
+            Game.Exit();
+        }
 
         /// <summary>
         ///     Windows the on change screen mode using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="screenMode">The screen mode</param>
-        private void Window_OnChangeScreenMode(object? sender, ScreenMode screenMode) =>
+        private void Window_OnChangeScreenMode(object? sender, ScreenMode screenMode)
+        {
             ScreenMode = Game.Setting.Window.ScreenMode switch
             {
                 Entities.ScreenMode.Default => Styles.Default,
                 Entities.ScreenMode.Resize => Styles.Resize,
                 _ => Styles.Fullscreen
             };
+        }
 
         /// <summary>
         ///     Windows the on change resolution using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="resolution">The resolution</param>
-        private void Window_OnChangeResolution(object? sender, Vector2 resolution) =>
+        private void Window_OnChangeResolution(object? sender, Vector2 resolution)
+        {
             VideoMode = new VideoMode((uint) resolution.X, (uint) resolution.Y);
+        }
 
         /// <summary>Finalizes an instance of the <see cref="RenderManager" /> class.</summary>
         ~RenderManager() => Console.WriteLine(@$"Destroy RenderManager {GetHashCode().ToString()}");
@@ -198,7 +230,10 @@ namespace Alis.Core.Sfml.Managers
         ///     Sets the view using the specified view
         /// </summary>
         /// <param name="view">The view</param>
-        public static void SetView(View view) => RenderWindow?.SetView(view);
+        public static void SetView(View view)
+        {
+            RenderWindow?.SetView(view);
+        }
 
         /// <summary>
         ///     Gets the windows

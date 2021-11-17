@@ -66,11 +66,12 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
         /// <returns>A copy of this curve.</returns>
         public Curve Clone()
         {
-            Curve curve = new Curve();
-
-            curve.Keys = Keys.Clone();
-            curve.PreLoop = PreLoop;
-            curve.PostLoop = PostLoop;
+            Curve curve = new Curve
+            {
+                Keys = Keys.Clone(),
+                PreLoop = PreLoop,
+                PostLoop = PostLoop
+            };
 
             return curve;
         }

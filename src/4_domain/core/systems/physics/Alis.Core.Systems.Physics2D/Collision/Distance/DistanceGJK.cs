@@ -218,11 +218,13 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
         /// <returns>true if hit, false if there is no hit or an initial overlap</returns>
         public static bool ShapeCast(ref ShapeCastInput input, out ShapeCastOutput output)
         {
-            output = new ShapeCastOutput();
-            output.Iterations = 0;
-            output.Lambda = 1.0f;
-            output.Normal = Vector2.Zero;
-            output.Point = Vector2.Zero;
+            output = new ShapeCastOutput
+            {
+                Iterations = 0,
+                Lambda = 1.0f,
+                Normal = Vector2.Zero,
+                Point = Vector2.Zero
+            };
 
             DistanceProxy proxyA = input.ProxyA;
             DistanceProxy proxyB = input.ProxyB;
@@ -239,8 +241,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Distance
             float lambda = 0.0f;
 
             // Initial simplex
-            Simplex simplex = new Simplex();
-            simplex.Count = 0;
+            Simplex simplex = new Simplex
+            {
+                Count = 0
+            };
 
             // Get simplex vertices as an array.
             //SimplexVertex vertices = simplex.V.Value0; //Velcro: we don't need this as we have an indexer instead

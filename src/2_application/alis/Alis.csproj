@@ -20,8 +20,4 @@
         <ProjectReference Include="..\..\3_adaptation\sfml\alis.core.sfml\Alis.Core.Sfml.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Docs"/>
-    </ItemGroup>
-
 </Project>

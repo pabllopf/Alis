@@ -73,6 +73,9 @@ namespace Alis.Builders
         }
 
         /// <summary>Runs this instance.</summary>
-        public void Run() => VideoGame.Run();
+        public void Run()
+        {
+            VideoGame.Run();
+        }
     }
 }

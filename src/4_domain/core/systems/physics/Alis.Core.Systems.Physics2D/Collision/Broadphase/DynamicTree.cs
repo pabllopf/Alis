@@ -93,14 +93,18 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
             // Build a linked list for the free list.
             for (int i = 0; i < nodeCapacity - 1; ++i)
             {
-                nodes[i] = new TreeNode<T>();
-                nodes[i].ParentOrNext = i + 1;
-                nodes[i].Height = 1;
+                nodes[i] = new TreeNode<T>
+                {
+                    ParentOrNext = i + 1,
+                    Height = 1
+                };
             }
 
-            nodes[nodeCapacity - 1] = new TreeNode<T>();
-            nodes[nodeCapacity - 1].ParentOrNext = NullNode;
-            nodes[nodeCapacity - 1].Height = 1;
+            nodes[nodeCapacity - 1] = new TreeNode<T>
+            {
+                ParentOrNext = NullNode,
+                Height = 1
+            };
             freeList = 0;
         }
 
@@ -264,9 +268,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 // The tree AABB still contains the object, but it might be too large.
                 // Perhaps the object was moving fast but has since gone to sleep.
                 // The huge AABB is larger than the new fat AABB.
-                Aabb hugeAabb = new Aabb();
-                hugeAabb.LowerBound = fatAabb.LowerBound - 4.0f * r;
-                hugeAabb.UpperBound = fatAabb.UpperBound + 4.0f * r;
+                Aabb hugeAabb = new Aabb
+                {
+                    LowerBound = fatAabb.LowerBound - 4.0f * r,
+                    UpperBound = fatAabb.UpperBound + 4.0f * r
+                };
 
                 if (hugeAabb.Contains(ref treeAabb))
                 {
@@ -482,14 +488,18 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 // pointer becomes the "next" pointer.
                 for (int i = nodeCount; i < nodeCapacity - 1; ++i)
                 {
-                    nodes[i] = new TreeNode<T>();
-                    nodes[i].ParentOrNext = i + 1;
-                    nodes[i].Height = -1;
+                    nodes[i] = new TreeNode<T>
+                    {
+                        ParentOrNext = i + 1,
+                        Height = -1
+                    };
                 }
 
-                nodes[nodeCapacity - 1] = new TreeNode<T>();
-                nodes[nodeCapacity - 1].ParentOrNext = NullNode;
-                nodes[nodeCapacity - 1].Height = -1;
+                nodes[nodeCapacity - 1] = new TreeNode<T>
+                {
+                    ParentOrNext = NullNode,
+                    Height = -1
+                };
                 freeList = nodeCount;
             }
 

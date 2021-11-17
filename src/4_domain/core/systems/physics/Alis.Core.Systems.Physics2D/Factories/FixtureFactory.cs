@@ -149,8 +149,10 @@ namespace Alis.Core.Systems.Physics2D.Factories
                 throw new ArgumentOutOfRangeException(nameof(radius), "Radius must be more than 0 meters");
             }
 
-            CircleShape circleShape = new CircleShape(radius, density);
-            circleShape.Position = offset;
+            CircleShape circleShape = new CircleShape(radius, density)
+            {
+                Position = offset
+            };
             Fixture f = body.AddFixture(circleShape);
             f.UserData = userData;
             return f;

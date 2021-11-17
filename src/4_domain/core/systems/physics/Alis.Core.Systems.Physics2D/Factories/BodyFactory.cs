@@ -56,11 +56,13 @@ namespace Alis.Core.Systems.Physics2D.Factories
         public static Body CreateBody(World world, Vector2 position = new Vector2(), float rotation = 0,
             BodyType bodyType = BodyType.Static, object? userData = null)
         {
-            BodyDef def = new BodyDef();
-            def.Position = position;
-            def.Angle = rotation;
-            def.Type = bodyType;
-            def.UserData = userData;
+            BodyDef def = new BodyDef
+            {
+                Position = position,
+                Angle = rotation,
+                Type = bodyType,
+                UserData = userData
+            };
 
             return CreateFromDef(world, def);
         }
@@ -317,8 +319,10 @@ namespace Alis.Core.Systems.Physics2D.Factories
             //Create the middle rectangle
             Vertices rectangle = PolygonUtils.CreateRectangle(endRadius, height / 2);
 
-            List<Vertices> list = new List<Vertices>();
-            list.Add(rectangle);
+            List<Vertices> list = new List<Vertices>
+            {
+                rectangle
+            };
 
             Body body = CreateCompoundPolygon(world, list, density, position, rotation, bodyType, userData);
             FixtureFactory.AttachCircle(endRadius, density, body, new Vector2(0, height / 2));

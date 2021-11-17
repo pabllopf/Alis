@@ -58,7 +58,7 @@ namespace Alis.Core.OpenGL.Benchmark
                         .WithPlatform(Platform.AnyCpu)
                         .AsDefault())
                     .WithOptions(ConfigOptions.DisableLogFile)
-                    .WithArtifactsPath($"..\\..\\..\\docs\\tests\\{DateTime.Now.ToString("yyyy-MM-dd")}")
+                    .WithArtifactsPath($"..\\..\\..\\docs\\tests\\{DateTime.Now:yyyy-MM-dd}")
                     .AddDiagnoser(MemoryDiagnoser.Default)
                     .AddColumn(StatisticColumn.Mean)
                     .AddColumn(StatisticColumn.Min)

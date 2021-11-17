@@ -854,10 +854,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="data">The data</param>
         public void GetMassData(out MassData data)
         {
-            data = new MassData();
-            data.Mass = mass;
-            data.Inertia = inertia + mass * MathUtils.Dot(ref Sweep.LocalCenter, ref Sweep.LocalCenter);
-            data.Centroid = Sweep.LocalCenter;
+            data = new MassData
+            {
+                Mass = mass,
+                Inertia = inertia + mass * MathUtils.Dot(ref Sweep.LocalCenter, ref Sweep.LocalCenter),
+                Centroid = Sweep.LocalCenter
+            };
         }
 
         /// <summary>Resets the dynamics of this body. Sets torque, force and linear/angular velocity to 0</summary>
@@ -921,8 +923,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 return null;
             }
 
-            FixtureDef template = new FixtureDef();
-            template.Shape = shape;
+            FixtureDef template = new FixtureDef
+            {
+                Shape = shape
+            };
 
             return AddFixture(template);
         }

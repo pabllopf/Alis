@@ -697,10 +697,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="point2">The ray ending point.</param>
         public void RayCast(Func<Fixture, Vector2, Vector2, float, float> callback, Vector2 point1, Vector2 point2)
         {
-            RayCastInput input = new RayCastInput();
-            input.MaxFraction = 1.0f;
-            input.Point1 = point1;
-            input.Point2 = point2;
+            RayCastInput input = new RayCastInput
+            {
+                MaxFraction = 1.0f,
+                Point1 = point1,
+                Point2 = point2
+            };
 
             rayCastCallback = callback;
             ContactManager.BroadPhase.RayCast(rayCastCallbackWrapper, ref input);
@@ -1255,12 +1257,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                         Debug.Assert(alpha0 < 1.0f);
 
                         // Compute the time of impact in interval [0, minTOI]
-                        ToiInput input = new ToiInput();
-                        input.ProxyA = new DistanceProxy(fA.Shape, c.ChildIndexA);
-                        input.ProxyB = new DistanceProxy(fB.Shape, c.ChildIndexB);
-                        input.SweepA = bA.Sweep;
-                        input.SweepB = bB.Sweep;
-                        input.Max = 1.0f;
+                        ToiInput input = new ToiInput
+                        {
+                            ProxyA = new DistanceProxy(fA.Shape, c.ChildIndexA),
+                            ProxyB = new DistanceProxy(fB.Shape, c.ChildIndexB),
+                            SweepA = bA.Sweep,
+                            SweepB = bB.Sweep,
+                            Max = 1.0f
+                        };
 
                         TimeOfImpact.CalculateTimeOfImpact(ref input, out ToiOutput output);
 

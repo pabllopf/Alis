@@ -331,9 +331,11 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
 
             Vector2 temp = Vector2.Subtract(a, b);
 
-            Vector2 output = new Vector2();
-            output.X = -temp.Y;
-            output.Y = temp.X;
+            Vector2 output = new Vector2
+            {
+                X = -temp.Y,
+                Y = temp.X
+            };
 
             output = Vector2.Normalize(output);
 

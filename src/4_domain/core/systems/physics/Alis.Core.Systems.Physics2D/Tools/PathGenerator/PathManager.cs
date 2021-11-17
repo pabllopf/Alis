@@ -130,8 +130,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
         public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, Shape shape, BodyType type,
             int copies, object? userData = null)
         {
-            List<Shape> shapes = new List<Shape>(1);
-            shapes.Add(shape);
+            List<Shape> shapes = new List<Shape>(1)
+            {
+                shape
+            };
 
             return EvenlyDistributeShapesAlongPath(world, path, shapes, type, copies, userData);
         }
@@ -165,8 +167,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
 
             for (int i = 1; i < bodies.Count; i++)
             {
-                RevoluteJoint joint = new RevoluteJoint(bodies[i], bodies[i - 1], localAnchorA, localAnchorB);
-                joint.CollideConnected = collideConnected;
+                RevoluteJoint joint = new RevoluteJoint(bodies[i], bodies[i - 1], localAnchorA, localAnchorB)
+                {
+                    CollideConnected = collideConnected
+                };
                 world.AddJoint(joint);
                 joints.Add(joint);
             }
@@ -174,8 +178,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
             if (connectFirstAndLast)
             {
                 RevoluteJoint lastjoint =
-                    new RevoluteJoint(bodies[0], bodies[bodies.Count - 1], localAnchorA, localAnchorB);
-                lastjoint.CollideConnected = collideConnected;
+                    new RevoluteJoint(bodies[0], bodies[bodies.Count - 1], localAnchorA, localAnchorB)
+                    {
+                        CollideConnected = collideConnected
+                    };
                 world.AddJoint(lastjoint);
                 joints.Add(lastjoint);
             }

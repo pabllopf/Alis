@@ -222,8 +222,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public bool Contains(Point point) => point.X > LeftPoint.X && point.X < RightPoint.X && Top.IsAbove(point) &&
-                                             Bottom.IsBelow(point);
+        public bool Contains(Point point) =>
+            point.X > LeftPoint.X && point.X < RightPoint.X && Top.IsAbove(point) &&
+            Bottom.IsBelow(point);
 
         /// <summary>
         ///     Gets the vertices
@@ -231,11 +232,13 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <returns>The verts</returns>
         public List<Point> GetVertices()
         {
-            List<Point> verts = new List<Point>(4);
-            verts.Add(LineIntersect(Top, LeftPoint.X));
-            verts.Add(LineIntersect(Bottom, LeftPoint.X));
-            verts.Add(LineIntersect(Bottom, RightPoint.X));
-            verts.Add(LineIntersect(Top, RightPoint.X));
+            List<Point> verts = new List<Point>(4)
+            {
+                LineIntersect(Top, LeftPoint.X),
+                LineIntersect(Bottom, LeftPoint.X),
+                LineIntersect(Bottom, RightPoint.X),
+                LineIntersect(Top, RightPoint.X)
+            };
             return verts;
         }
 

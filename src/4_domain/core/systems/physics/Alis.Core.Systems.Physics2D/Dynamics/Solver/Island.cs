@@ -334,10 +334,12 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
             timer.Restart();
 
             // Solver data
-            SolverData solverData = new SolverData();
-            solverData.Step = step;
-            solverData.Positions = positions;
-            solverData.Velocities = velocities;
+            SolverData solverData = new SolverData
+            {
+                Step = step,
+                Positions = positions,
+                Velocities = velocities
+            };
 
             //Velcro: We reduce the amount of garbage by reusing the contactsolver and only resetting the state
             contactSolver.Reset(step, ContactCount, contacts, positions, velocities);

@@ -33,7 +33,7 @@ using System;
 
 #endregion
 
-namespace Alis.Core.Example
+namespace Alis.Core.Example.src
 {
     /// <summary>
     ///     The program class

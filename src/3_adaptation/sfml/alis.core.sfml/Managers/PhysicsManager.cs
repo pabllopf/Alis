@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Sfml.Components;
-using Alis.Core.Systems.Physics2D;
+using Alis.Core.Systems;
 using Alis.Core.Systems.Physics2D.Dynamics;
 
 namespace Alis.Core.Sfml.Managers
@@ -98,14 +98,20 @@ namespace Alis.Core.Sfml.Managers
         ///     Attaches the collider
         /// </summary>
         /// <param name="collider">The collider</param>
-        public static void Attach(Collider collider) => Colliders.Add(collider);
+        public static void Attach(Collider collider)
+        {
+            Colliders.Add(collider);
+        }
 
 
         /// <summary>
         ///     Uns the attach using the specified collider
         /// </summary>
         /// <param name="collider">The collider</param>
-        public static void UnAttach(Collider collider) => Colliders.Remove(collider);
+        public static void UnAttach(Collider collider)
+        {
+            Colliders.Remove(collider);
+        }
 
         /// <summary>
         ///     Destroy object.

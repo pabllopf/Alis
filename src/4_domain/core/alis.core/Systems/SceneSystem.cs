@@ -86,7 +86,10 @@ namespace Alis.Core.Systems
         ///     Changes the scene using the specified index
         /// </summary>
         /// <param name="index">The index</param>
-        public void ChangeScene(int index) => ActiveScene = Scenes[index];
+        public void ChangeScene(int index)
+        {
+            ActiveScene = Scenes[index];
+        }
 
         /// <summary>
         ///     Adds the scene
@@ -101,52 +104,82 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public override void Awake() => ActiveScene?.Awake();
+        public override void Awake()
+        {
+            ActiveScene?.Awake();
+        }
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => ActiveScene?.Start();
+        public override void Start()
+        {
+            ActiveScene?.Start();
+        }
 
         /// <summary>
         ///     Before the update
         /// </summary>
-        public override void BeforeUpdate() => ActiveScene?.BeforeUpdate();
+        public override void BeforeUpdate()
+        {
+            ActiveScene?.BeforeUpdate();
+        }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => ActiveScene?.Update();
+        public override void Update()
+        {
+            ActiveScene?.Update();
+        }
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => ActiveScene?.AfterUpdate();
+        public override void AfterUpdate()
+        {
+            ActiveScene?.AfterUpdate();
+        }
 
         /// <summary>
         ///     Fixed the update
         /// </summary>
-        public override void FixedUpdate() => ActiveScene?.FixedUpdate();
+        public override void FixedUpdate()
+        {
+            ActiveScene?.FixedUpdate();
+        }
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents() => ActiveScene?.DispatchEvents();
+        public override void DispatchEvents()
+        {
+            ActiveScene?.DispatchEvents();
+        }
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public override void Reset() => ActiveScene?.Reset();
+        public override void Reset()
+        {
+            ActiveScene?.Reset();
+        }
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop() => ActiveScene?.Stop();
+        public override void Stop()
+        {
+            ActiveScene?.Stop();
+        }
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => ActiveScene?.Exit();
+        public override void Exit()
+        {
+            ActiveScene?.Exit();
+        }
 
         /// <summary>
         ///     Simple destructor

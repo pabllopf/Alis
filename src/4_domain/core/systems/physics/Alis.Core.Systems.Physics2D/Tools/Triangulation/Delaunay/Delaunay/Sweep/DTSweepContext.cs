@@ -174,11 +174,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
             DelaunayTriangle iTriangle = new DelaunayTriangle(Points[0], Tail, Head);
             Triangles.Add(iTriangle);
 
-            AdvancingFrontNode head = new AdvancingFrontNode(iTriangle.Points[1]);
-            head.Triangle = iTriangle;
+            AdvancingFrontNode head = new AdvancingFrontNode(iTriangle.Points[1])
+            {
+                Triangle = iTriangle
+            };
 
-            AdvancingFrontNode middle = new AdvancingFrontNode(iTriangle.Points[0]);
-            middle.Triangle = iTriangle;
+            AdvancingFrontNode middle = new AdvancingFrontNode(iTriangle.Points[0])
+            {
+                Triangle = iTriangle
+            };
 
             AdvancingFrontNode tail = new AdvancingFrontNode(iTriangle.Points[2]);
 

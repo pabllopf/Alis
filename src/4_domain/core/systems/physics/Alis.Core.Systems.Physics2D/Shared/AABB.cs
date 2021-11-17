@@ -108,11 +108,13 @@ namespace Alis.Core.Systems.Physics2D.Shared
         {
             get
             {
-                Vertices vertices = new Vertices(4);
-                vertices.Add(UpperBound);
-                vertices.Add(new Vector2(UpperBound.X, LowerBound.Y));
-                vertices.Add(LowerBound);
-                vertices.Add(new Vector2(LowerBound.X, UpperBound.Y));
+                Vertices vertices = new Vertices(4)
+                {
+                    UpperBound,
+                    new Vector2(UpperBound.X, LowerBound.Y),
+                    LowerBound,
+                    new Vector2(LowerBound.X, UpperBound.Y)
+                };
                 return vertices;
             }
         }

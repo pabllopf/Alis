@@ -70,10 +70,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>The equal operator</summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
-        public static bool operator ==(MassData left, MassData right) => Math.Abs(left.Area - right.Area) < 0.1f &&
-                                                                         Math.Abs(left.Mass - right.Mass) < 0.1f &&
-                                                                         left.Centroid == right.Centroid &&
-                                                                         Math.Abs(left.Inertia - right.Inertia) < 0.1f;
+        public static bool operator ==(MassData left, MassData right) =>
+            Math.Abs(left.Area - right.Area) < 0.1f &&
+            Math.Abs(left.Mass - right.Mass) < 0.1f &&
+            left.Centroid == right.Centroid &&
+            Math.Abs(left.Inertia - right.Inertia) < 0.1f;
 
         /// <summary>The not equal operator</summary>
         /// <param name="left"></param>
