@@ -88,12 +88,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     The joint
         /// </summary>
         private readonly HashSet<Joint> jointRemoveList;
-
-        /// <summary>
-        ///     The query aabb callback wrapper
-        /// </summary>
-        private readonly Func<int, bool> queryAabbCallbackWrapper;
-
+        
         /// <summary>
         ///     The ray cast callback wrapper
         /// </summary>
@@ -138,21 +133,11 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     The is locked
         /// </summary>
         private bool isLocked;
-
-        /// <summary>
-        ///     The point
-        /// </summary>
-        private Vector2 point2;
-
+        
         /// <summary>
         ///     The profile
         /// </summary>
         private Profile profile;
-
-        /// <summary>
-        ///     The query aabb callback
-        /// </summary>
-        private Func<Fixture, bool> queryAabbCallback;
 
         /// <summary>
         ///     The ray cast callback
@@ -177,7 +162,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The test point all fixtures
         /// </summary>
-        private List<Fixture> testPointAllFixtures;
+        public List<Fixture> TestPointAllFixtures { get; private set; }
 
         /// <summary>
         ///     The warm starting enabled
@@ -191,6 +176,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             bodyRemoveList = new HashSet<Body>();
             jointAddList = new HashSet<Joint>();
             jointRemoveList = new HashSet<Joint>();
+
+            TestPointAllFixtures = new List<Fixture>();
 
             stack = new Body[64];
 
@@ -207,8 +194,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             breakableBodyList = new List<BreakableBody>();
             bodyList = new List<Body>(32);
             jointList = new List<Joint>(32);
+            
 
-            queryAabbCallbackWrapper = QueryAabbCallbackWrapper;
+            rayCastCallback = RayCastCallback;
             rayCastCallbackWrapper = RayCastCallbackWrapper;
 
             contactManager = new ContactManager(new DynamicTreeBroadPhase());
@@ -225,6 +213,25 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             JointAdded += OnJointAdded;
             JointRemoved += OnJointRemoved;
         }
+
+        /// <summary>
+        /// Rays the cast callback using the specified arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <returns>The float</returns>
+        private static float RayCastCallback(Fixture arg1, Vector2 arg2, Vector2 arg3, float arg4) => 0.0f;
+
+
+        /// <summary>
+        /// Describes whether query aabb callback
+        /// </summary>
+        /// <param name="arg">The arg</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
+        private static bool QueryAabbCallback(Fixture arg, Vector2 point) => false;
 
         /// <summary>
         ///     The contact
@@ -712,18 +719,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             }
         }
 
-        /// <summary>
-        ///     Query the world for all fixtures that potentially overlap the provided AABB. Inside the callback: Return true:
-        ///     Continues the query Return false: Terminate the query
-        /// </summary>
-        /// <param name="callback">A user implemented callback class.</param>
-        /// <param name="aabb">The AABB query box.</param>
-        public void QueryAabb(Func<Fixture, bool> callback, ref Aabb aabb)
-        {
-            queryAabbCallback = callback;
-            ContactManager.BroadPhase.Query(queryAabbCallbackWrapper, ref aabb);
-            queryAabbCallback = null;
-        }
+
 
         /// <summary>
         ///     Query the world for all fixtures that potentially overlap the provided AABB. Use the overload with a callback
@@ -731,18 +727,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="aabb">The AABB query box.</param>
         /// <returns>A list of fixtures that were in the affected area.</returns>
-        public List<Fixture> QueryAabb(ref Aabb aabb)
-        {
-            List<Fixture> affected = new List<Fixture>();
-
-            QueryAabb(fixture =>
-            {
-                affected.Add(fixture);
-                return true;
-            }, ref aabb);
-
-            return affected;
-        }
+        public List<Fixture> QueryAabb(ref Aabb aabb) => TestPointAllFixtures;
 
         /// <summary>
         ///     Ray-cast the world for all fixtures in the path of the ray. Your callback controls whether you get the closest
@@ -788,7 +773,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             return affected;
         }
-
+        
         /// <summary>Returns a list of fixtures that are at the specified point.</summary>
         /// <param name="point">The point.</param>
         public List<Fixture> TestPointAll(Vector2 point)
@@ -797,14 +782,22 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             Vector2 d = new Vector2(MathConstants.Epsilon, MathConstants.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
+            
+            TestPointAllFixtures = new List<Fixture>();
 
-            point2 = point;
-            testPointAllFixtures = new List<Fixture>();
-
-            // Query the world for overlapping shapes.
-            QueryAabb(TestPointAllCallback, ref aabb);
-
-            return testPointAllFixtures;
+            ContactManager.BroadPhase.Query(proxyId =>
+            {
+                Fixture fixture =  ContactManager.BroadPhase.GetProxy(proxyId).Fixture;
+            
+                if (fixture.TestPoint(ref point))
+                {
+                    TestPointAllFixtures.Add(fixture);
+                }
+                
+                return true;
+            }, ref aabb);
+            
+            return TestPointAllFixtures;
         }
 
         /// <summary>
@@ -939,16 +932,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             bodyRemoveList.Clear();
         }
 
-        /// <summary>
-        ///     Describes whether this instance query aabb callback wrapper
-        /// </summary>
-        /// <param name="proxyId">The proxy id</param>
-        /// <returns>The bool</returns>
-        private bool QueryAabbCallbackWrapper(int proxyId)
-        {
-            FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
-            return queryAabbCallback(proxy.Fixture);
-        }
+
 
         /// <summary>
         ///     Rays the cast callback wrapper using the specified ray cast input
@@ -1510,24 +1494,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         private bool TestPointCallback(Fixture fixture, ref Vector2 point) => !fixture.TestPoint(ref point);
-
-        /// <summary>
-        ///     Describes whether this instance test point all callback
-        /// </summary>
-        /// <param name="fixture">The fixture</param>
-        /// <returns>The bool</returns>
-        private bool TestPointAllCallback(Fixture fixture)
-        {
-            bool inside = fixture.TestPoint(ref point2);
-            if (inside)
-            {
-                testPointAllFixtures.Add(fixture);
-            }
-
-            // Continue the query.
-            return true;
-        }
-
+        
         /// <summary>
         ///     Adds the joint internal using the specified joint
         /// </summary>

@@ -86,7 +86,7 @@ namespace Alis.Example
                                 @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
                             .Add<BoxCollider2D>(new BoxCollider2D
                             {
-                                BodyType = BodyType.Static,
+                                BodyType = BodyType.Dynamic,
                                 AutoTiling = true
                             })
                             .Build())
@@ -97,7 +97,7 @@ namespace Alis.Example
                                 @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
                             .Add<BoxCollider2D>(new BoxCollider2D
                             {
-                                BodyType = BodyType.Static,
+                                BodyType = BodyType.Kinematic,
                                 AutoTiling = true
                             })
                             .Build())

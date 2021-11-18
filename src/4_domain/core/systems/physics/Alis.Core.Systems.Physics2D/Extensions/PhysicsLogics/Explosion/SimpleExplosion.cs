@@ -69,8 +69,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
             aabb.LowerBound = pos - new Vector2(radius);
             aabb.UpperBound = pos + new Vector2(radius);
 
-            // Query the world for bodies within the radius.
-            World.QueryAabb(fixture =>
+            World.TestPointAllFixtures.ForEach(fixture =>
             {
                 if (Vector2.Distance(fixture.Body.Position, pos) <= radius)
                 {
@@ -79,10 +78,8 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
                         affectedBodies.Add(fixture.Body);
                     }
                 }
-
-                return true;
-            }, ref aabb);
-
+            });
+            
             return ApplyImpulse(pos, radius, force, maxForce, affectedBodies);
         }
 

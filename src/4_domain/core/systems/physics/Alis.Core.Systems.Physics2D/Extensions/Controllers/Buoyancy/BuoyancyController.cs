@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Collision.Shapes;
 using Alis.Core.Systems.Physics2D.Dynamics;
@@ -125,21 +126,18 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
         public override void Update(float dt)
         {
             uniqueBodies.Clear();
-            World.QueryAabb(fixture =>
+            
+            World.TestPointAllFixtures.ForEach(fixture =>
             {
-                if (fixture.Body.IsStatic || !fixture.Body.Awake)
+                if (!fixture.Body.IsStatic && fixture.Body.Awake)
                 {
-                    return true;
+                    if (!uniqueBodies.Contains(fixture.Body))
+                    {
+                        uniqueBodies.Add(fixture.Body);
+                    }
                 }
-
-                if (!uniqueBodies.Contains(fixture.Body))
-                {
-                    uniqueBodies.Add(fixture.Body);
-                }
-
-                return true;
-            }, ref container);
-
+            });
+            
             foreach (Body body in uniqueBodies)
             {
                 Vector2 areac = Vector2.Zero;

@@ -127,28 +127,25 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
             int containedShapeCount = 0;
 
             // Query the world for overlapping shapes.
-            World.QueryAabb(
-                fixture =>
+            World.TestPointAllFixtures.ForEach(fixture =>
+            {
+                if (fixture.TestPoint(ref pos))
                 {
-                    if (fixture.TestPoint(ref pos))
+                    if (IgnoreWhenInsideShape)
                     {
-                        if (IgnoreWhenInsideShape)
-                        {
-                            exit = true;
-                            return false;
-                        }
-
-                        containedShapes[containedShapeCount++] = fixture;
+                        exit = true;
                     }
                     else
                     {
-                        shapes[shapeCount++] = fixture;
+                        containedShapes[containedShapeCount++] = fixture;
                     }
-
-                    // Continue the query.
-                    return true;
-                }, ref aabb);
-
+                }
+                else
+                {
+                    shapes[shapeCount++] = fixture;
+                }
+            });
+            
             if (exit)
             {
                 return new Dictionary<Fixture, Vector2>();
