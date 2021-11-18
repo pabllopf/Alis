@@ -22,11 +22,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D.Test/Alis.Core.Systems.Physics2D.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D.Test/Alis.Core.Systems.Physics2D.Test.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Dynamics/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Dynamics/World.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Extensions/Controllers/Buoyancy/BuoyancyController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Extensions/Controllers/Buoyancy/BuoyancyController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Extensions/PhysicsLogics/Explosion/RealExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Extensions/PhysicsLogics/Explosion/RealExplosion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Extensions/PhysicsLogics/Explosion/SimpleExplosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics2D/Extensions/PhysicsLogics/Explosion/SimpleExplosion.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -424,7 +420,7 @@
       <workItem from="1636882492187" duration="2865000" />
       <workItem from="1636917372774" duration="138000" />
       <workItem from="1637142119716" duration="8168000" />
-      <workItem from="1637227509338" duration="4714000" />
+      <workItem from="1637227509338" duration="5762000" />
     </task>
     <servers />
   </component>

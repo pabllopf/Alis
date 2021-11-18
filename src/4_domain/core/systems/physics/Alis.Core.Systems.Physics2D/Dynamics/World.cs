@@ -223,16 +223,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="arg4">The arg</param>
         /// <returns>The float</returns>
         private static float RayCastCallback(Fixture arg1, Vector2 arg2, Vector2 arg3, float arg4) => 0.0f;
-
-
-        /// <summary>
-        /// Describes whether query aabb callback
-        /// </summary>
-        /// <param name="arg">The arg</param>
-        /// <param name="point">The point</param>
-        /// <returns>The bool</returns>
-        private static bool QueryAabbCallback(Fixture arg, Vector2 point) => false;
-
+        
         /// <summary>
         ///     The contact
         /// </summary>
@@ -1705,7 +1696,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 Fixture fixture = body.FixtureList[i];
 
                 //Velcro: Added event
-                FixtureRemoved?.Invoke(fixture);
+                FixtureRemoved(fixture);
 
                 fixture.DestroyProxies(ContactManager.BroadPhase);
                 fixture.Destroy();
