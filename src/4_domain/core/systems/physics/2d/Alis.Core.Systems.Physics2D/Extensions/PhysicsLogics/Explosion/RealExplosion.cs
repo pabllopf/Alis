@@ -145,7 +145,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
                     shapes[shapeCount++] = fixture;
                 }
             });
-            
+
             if (exit)
             {
                 return new Dictionary<Fixture, Vector2>();

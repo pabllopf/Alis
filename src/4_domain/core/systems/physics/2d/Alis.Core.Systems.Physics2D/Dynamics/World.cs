@@ -88,7 +88,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     The joint
         /// </summary>
         private readonly HashSet<Joint> jointRemoveList;
-        
+
         /// <summary>
         ///     The ray cast callback wrapper
         /// </summary>
@@ -133,7 +133,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     The is locked
         /// </summary>
         private bool isLocked;
-        
+
         /// <summary>
         ///     The profile
         /// </summary>
@@ -158,11 +158,6 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     The step complete
         /// </summary>
         private bool stepComplete = true;
-
-        /// <summary>
-        ///     The test point all fixtures
-        /// </summary>
-        public List<Fixture> TestPointAllFixtures { get; private set; }
 
         /// <summary>
         ///     The warm starting enabled
@@ -194,7 +189,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             breakableBodyList = new List<BreakableBody>();
             bodyList = new List<Body>(32);
             jointList = new List<Joint>(32);
-            
+
 
             rayCastCallback = RayCastCallback;
             rayCastCallbackWrapper = RayCastCallbackWrapper;
@@ -215,15 +210,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         }
 
         /// <summary>
-        /// Rays the cast callback using the specified arg 1
+        ///     The test point all fixtures
         /// </summary>
-        /// <param name="arg1">The arg</param>
-        /// <param name="arg2">The arg</param>
-        /// <param name="arg3">The arg</param>
-        /// <param name="arg4">The arg</param>
-        /// <returns>The float</returns>
-        private static float RayCastCallback(Fixture arg1, Vector2 arg2, Vector2 arg3, float arg4) => 0.0f;
-        
+        public List<Fixture> TestPointAllFixtures { get; private set; }
+
         /// <summary>
         ///     The contact
         /// </summary>
@@ -333,6 +323,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             get => isLocked;
             set => isLocked = value;
         }
+
+        /// <summary>
+        ///     Rays the cast callback using the specified arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="arg3">The arg</param>
+        /// <param name="arg4">The arg</param>
+        /// <returns>The float</returns>
+        private static float RayCastCallback(Fixture arg1, Vector2 arg2, Vector2 arg3, float arg4) => 0.0f;
 
         /// <summary>
         ///     Ons the body added using the specified body
@@ -711,7 +711,6 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         }
 
 
-
         /// <summary>
         ///     Query the world for all fixtures that potentially overlap the provided AABB. Use the overload with a callback
         ///     for filtering and better performance.
@@ -764,7 +763,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             return affected;
         }
-        
+
         /// <summary>Returns a list of fixtures that are at the specified point.</summary>
         /// <param name="point">The point.</param>
         public List<Fixture> TestPointAll(Vector2 point)
@@ -773,21 +772,21 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             Vector2 d = new Vector2(MathConstants.Epsilon, MathConstants.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
-            
+
             TestPointAllFixtures = new List<Fixture>();
 
             ContactManager.BroadPhase.Query(proxyId =>
             {
-                Fixture fixture =  ContactManager.BroadPhase.GetProxy(proxyId).Fixture;
-            
+                Fixture fixture = ContactManager.BroadPhase.GetProxy(proxyId).Fixture;
+
                 if (fixture.TestPoint(ref point))
                 {
                     TestPointAllFixtures.Add(fixture);
                 }
-                
+
                 return true;
             }, ref aabb);
-            
+
             return TestPointAllFixtures;
         }
 
@@ -922,7 +921,6 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             bodyRemoveList.Clear();
         }
-
 
 
         /// <summary>
@@ -1485,7 +1483,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
         private bool TestPointCallback(Fixture fixture, ref Vector2 point) => !fixture.TestPoint(ref point);
-        
+
         /// <summary>
         ///     Adds the joint internal using the specified joint
         /// </summary>

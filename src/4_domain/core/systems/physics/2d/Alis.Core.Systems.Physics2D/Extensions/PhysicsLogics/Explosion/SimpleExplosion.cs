@@ -79,7 +79,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
                     }
                 }
             });
-            
+
             return ApplyImpulse(pos, radius, force, maxForce, affectedBodies);
         }
 
