@@ -611,7 +611,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             IsLocked = true;
 
-            TimeStep step;
+            TimeStep step = new TimeStep();
             step.DeltaTime = dt;
             step.VelocityIterations = velocityIterations;
             step.PositionIterations = positionIterations;
@@ -1440,7 +1440,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                     }
                 }
 
-                TimeStep subStep;
+                TimeStep subStep = new TimeStep();
                 subStep.DeltaTime = (1.0f - minAlpha) * step.DeltaTime;
                 subStep.InvertedDeltaTime = 1.0f / subStep.DeltaTime;
                 subStep.DeltaTimeRatio = 1.0f;

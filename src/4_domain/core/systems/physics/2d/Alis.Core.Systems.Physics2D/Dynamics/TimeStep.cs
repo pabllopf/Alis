@@ -30,7 +30,7 @@
 namespace Alis.Core.Systems.Physics2D.Dynamics
 {
     /// <summary>This is an internal structure.</summary>
-    internal struct TimeStep
+    internal class TimeStep
     {
         /// <summary>Time step (Delta time)</summary>
         public float DeltaTime;
