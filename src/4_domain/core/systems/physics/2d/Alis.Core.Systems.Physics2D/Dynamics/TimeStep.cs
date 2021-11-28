@@ -32,6 +32,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
     /// <summary>This is an internal class.</summary>
     public class TimeStep
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TimeStep"/> class
+        /// </summary>
         public TimeStep()
         {
             DeltaTime = 0.0f;
@@ -42,6 +45,15 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             WarmStarting = false;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TimeStep"/> class
+        /// </summary>
+        /// <param name="deltaTime">The delta time</param>
+        /// <param name="deltaTimeRatio">The delta time ratio</param>
+        /// <param name="invertedDeltaTime">The inverted delta time</param>
+        /// <param name="velocityIterations">The velocity iterations</param>
+        /// <param name="positionIterations">The position iterations</param>
+        /// <param name="warmStarting">The warm starting</param>
         public TimeStep(float deltaTime, float deltaTimeRatio, float invertedDeltaTime, int velocityIterations,
             int positionIterations, bool warmStarting)
         {
