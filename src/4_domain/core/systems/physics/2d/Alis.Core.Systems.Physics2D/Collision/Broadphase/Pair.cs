@@ -32,7 +32,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
     /// <summary>
     ///     The pair
     /// </summary>
-    internal struct Pair
+    internal class Pair
     {
         /// <summary>
         ///     The proxy id

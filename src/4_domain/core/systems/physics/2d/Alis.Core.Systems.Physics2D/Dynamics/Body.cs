@@ -158,7 +158,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
         /// <param name="def">The def</param>
-        internal Body(BodyDef def)
+        public Body(BodyDef def)
         {
             FixtureList = new List<Fixture>(1);
 
