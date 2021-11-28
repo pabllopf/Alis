@@ -29,9 +29,30 @@
 
 namespace Alis.Core.Systems.Physics2D.Dynamics
 {
-    /// <summary>This is an internal structure.</summary>
-    internal class TimeStep
+    /// <summary>This is an internal class.</summary>
+    public class TimeStep
     {
+        public TimeStep()
+        {
+            DeltaTime = 0.0f;
+            DeltaTimeRatio = 0.0f;
+            InvertedDeltaTime = 0.0f;
+            VelocityIterations = 0;
+            PositionIterations = 0;
+            WarmStarting = false;
+        }
+
+        public TimeStep(float deltaTime, float deltaTimeRatio, float invertedDeltaTime, int velocityIterations,
+            int positionIterations, bool warmStarting)
+        {
+            DeltaTime = deltaTime;
+            DeltaTimeRatio = deltaTimeRatio;
+            InvertedDeltaTime = invertedDeltaTime;
+            VelocityIterations = velocityIterations;
+            PositionIterations = positionIterations;
+            WarmStarting = warmStarting;
+        }
+
         /// <summary>Time step (Delta time)</summary>
         public float DeltaTime;
 
