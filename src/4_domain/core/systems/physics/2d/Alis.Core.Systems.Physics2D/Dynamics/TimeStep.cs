@@ -55,25 +55,5 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     The warm starting
         /// </summary>
         public bool WarmStarting;
-        
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="TimeStep" /> class
-        /// </summary>
-        /// <param name="deltaTime">The delta time</param>
-        /// <param name="deltaTimeRatio">The delta time ratio</param>
-        /// <param name="invertedDeltaTime">The inverted delta time</param>
-        /// <param name="velocityIterations">The velocity iterations</param>
-        /// <param name="positionIterations">The position iterations</param>
-        /// <param name="warmStarting">The warm starting</param>
-        public TimeStep(float deltaTime, float deltaTimeRatio, float invertedDeltaTime, int velocityIterations,
-            int positionIterations, bool warmStarting)
-        {
-            DeltaTime = deltaTime;
-            DeltaTimeRatio = deltaTimeRatio;
-            InvertedDeltaTime = invertedDeltaTime;
-            VelocityIterations = velocityIterations;
-            PositionIterations = positionIterations;
-            WarmStarting = warmStarting;
-        }
     }
 }
