@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Factories
 {
+    /// <summary>
+    /// The test fixture factory class
+    /// </summary>
     public class TestFixtureFactory
     {
         /// <summary>

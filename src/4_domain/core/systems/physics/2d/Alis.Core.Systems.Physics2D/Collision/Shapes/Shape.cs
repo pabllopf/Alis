@@ -37,6 +37,8 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
     /// <summary>
     ///     A shape is used for collision detection. You can create a shape however you like. Shapes used for simulation
     ///     in World are created automatically when a Fixture is created. Shapes may encapsulate a one or more child shapes.
+    ///
+    ///     A shape is 2D geometrical object, such as a circle or polygon.
     /// </summary>
     public abstract class Shape
     {

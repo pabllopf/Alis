@@ -1,27 +1,20 @@
 // 
 
-using Alis.Core.Systems.Physics2D.Dynamics;
 using NUnit.Framework;
 
-namespace Alis.Core.Systems.Physics2D.Test.Dynamics
+namespace Alis.Core.Systems.Physics2D.Test.Dynamics.Solver
 {
     /// <summary>
-    /// The test body flags class
+    /// The test velocity class
     /// </summary>
-    public class TestBodyFlags
+    public class TestVelocity
     {
-        /// <summary>
-        /// The body flags
-        /// </summary>
-        private BodyFlags bodyFlags;
-
         /// <summary>
         ///     Setup this instance
         /// </summary>
         [SetUp]
         public void Setup()
         {
-            bodyFlags = BodyFlags.Enabled;
         }
 
         /// <summary>

@@ -32,16 +32,13 @@ using System.Numerics;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull.ChainHull
+namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull
 {
     /// <summary>
-    ///     Andrew's Monotone Chain Convex Hull algorithm. Used to get the convex hull of a point cloud. Source:
-    ///     http://www.softsurfer.com/Archive/algorithm_0109/algorithm_0109.htm
+    ///     Andrew's Monotone Chain Convex Hull algorithm. Used to get the convex hull of a point cloud.
     /// </summary>
     public static class ChainHull
     {
-        //Copyright 2001, softSurfer (www.softsurfer.com)
-
         /// <summary>
         ///     The point comparer
         /// </summary>

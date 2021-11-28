@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Factories
 {
+    /// <summary>
+    /// The test joint factory class
+    /// </summary>
     public class TestJointFactory
     {
         /// <summary>

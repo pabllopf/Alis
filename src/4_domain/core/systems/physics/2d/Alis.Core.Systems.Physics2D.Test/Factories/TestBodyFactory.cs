@@ -3,29 +3,28 @@
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Factories;
-using Alis.Core.Systems.Physics2D.Shared;
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Factories
 {
     /// <summary>
-    /// The test body factory class
+    ///     The test body factory class
     /// </summary>
     public class TestBodyFactory
     {
         /// <summary>
-        /// The world
+        ///     The world
         /// </summary>
         public World world;
-        
+
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [SetUp]
         public void Setup() => world = new World(Vector2.Zero);
-        
+
         /// <summary>
-        /// Tests that test create body
+        ///     Tests that test create body
         /// </summary>
         [Test]
         public void TestCreateBody()
@@ -35,7 +34,7 @@ namespace Alis.Core.Systems.Physics2D.Test.Factories
         }
 
         /// <summary>
-        /// Tests that test create circle
+        ///     Tests that test create circle
         /// </summary>
         [Test]
         public void TestCreateCircle()
@@ -44,9 +43,9 @@ namespace Alis.Core.Systems.Physics2D.Test.Factories
 
             Assert.IsNotNull(body);
         }
-        
+
         /// <summary>
-        /// Tests that test create edge
+        ///     Tests that test create edge
         /// </summary>
         [Test]
         public void TestCreateEdge()
@@ -56,12 +55,12 @@ namespace Alis.Core.Systems.Physics2D.Test.Factories
         }
 
         /// <summary>
-        /// Tests that create body
+        ///     Tests that create body
         /// </summary>
         [Test]
         public void CreateBody()
         {
-            Body body = BodyFactory.CreateBody(world, new Vector2(0,0),0f , BodyType.Dynamic);
+            Body body = BodyFactory.CreateBody(world, new Vector2(0, 0), 0f, BodyType.Dynamic);
 
             Assert.AreEqual(BodyType.Dynamic, body.BodyType);
             Assert.AreEqual(0.0f, body.Position.X);

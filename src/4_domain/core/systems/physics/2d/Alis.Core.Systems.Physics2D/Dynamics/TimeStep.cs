@@ -30,23 +30,34 @@
 namespace Alis.Core.Systems.Physics2D.Dynamics
 {
     /// <summary>This is an internal class.</summary>
-    public class TimeStep
+    public struct TimeStep
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TimeStep"/> class
-        /// </summary>
-        public TimeStep()
-        {
-            DeltaTime = 0.0f;
-            DeltaTimeRatio = 0.0f;
-            InvertedDeltaTime = 0.0f;
-            VelocityIterations = 0;
-            PositionIterations = 0;
-            WarmStarting = false;
-        }
+        /// <summary>Time step (Delta time)</summary>
+        public float DeltaTime;
+
+        /// <summary>dt * inv_dt0</summary>
+        public float DeltaTimeRatio;
+
+        /// <summary>Inverse time step (0 if dt == 0).</summary>
+        public float InvertedDeltaTime;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TimeStep"/> class
+        ///     The position iterations
+        /// </summary>
+        public int PositionIterations;
+
+        /// <summary>
+        ///     The velocity iterations
+        /// </summary>
+        public int VelocityIterations;
+
+        /// <summary>
+        ///     The warm starting
+        /// </summary>
+        public bool WarmStarting;
+        
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TimeStep" /> class
         /// </summary>
         /// <param name="deltaTime">The delta time</param>
         /// <param name="deltaTimeRatio">The delta time ratio</param>
@@ -64,29 +75,5 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
             PositionIterations = positionIterations;
             WarmStarting = warmStarting;
         }
-
-        /// <summary>Time step (Delta time)</summary>
-        public float DeltaTime;
-
-        /// <summary>dt * inv_dt0</summary>
-        public float DeltaTimeRatio;
-
-        /// <summary>Inverse time step (0 if dt == 0).</summary>
-        public float InvertedDeltaTime;
-
-        /// <summary>
-        ///     The velocity iterations
-        /// </summary>
-        public int VelocityIterations;
-
-        /// <summary>
-        ///     The position iterations
-        /// </summary>
-        public int PositionIterations;
-
-        /// <summary>
-        ///     The warm starting
-        /// </summary>
-        public bool WarmStarting;
     }
 }

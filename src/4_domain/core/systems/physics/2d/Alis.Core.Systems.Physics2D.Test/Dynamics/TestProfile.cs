@@ -1,14 +1,20 @@
-﻿// 
+// 
 
 using Alis.Core.Systems.Physics2D.Dynamics;
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Dynamics
 {
+    /// <summary>
+    /// The test profile class
+    /// </summary>
     public class TestProfile
     {
+        /// <summary>
+        /// The profile
+        /// </summary>
         private Profile profile;
-        
+
         /// <summary>
         ///     Setup this instance
         /// </summary>
@@ -17,7 +23,7 @@ namespace Alis.Core.Systems.Physics2D.Test.Dynamics
         {
             profile = new Profile();
         }
-        
+
         /// <summary>
         ///     Tests that test 1
         /// </summary>

@@ -1,14 +1,20 @@
-﻿// 
+// 
 
 using Alis.Core.Systems.Physics2D.Dynamics;
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Dynamics
 {
+    /// <summary>
+    /// The test fixture class
+    /// </summary>
     public class TestFixture
     {
+        /// <summary>
+        /// The fixture
+        /// </summary>
         private Fixture fixture;
-        
+
         /// <summary>
         ///     Setup this instance
         /// </summary>

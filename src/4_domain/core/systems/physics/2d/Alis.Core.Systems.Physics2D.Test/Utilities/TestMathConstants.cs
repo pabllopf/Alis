@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Utilities
 {
+    /// <summary>
+    /// The test math constants class
+    /// </summary>
     public class TestMathConstants
     {
         /// <summary>

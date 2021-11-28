@@ -21,25 +21,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBody.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBodyFlags.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBodyType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBreakableBody.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestFixture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestFixtureProxy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestProfile.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Factories/TestFixtureFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Factories/TestJointFactory.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestLineUtils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathConstants.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathHelper.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathUtils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestPolygonUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestContactPositionConstraint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestContactSolver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestContactVelocityConstraint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestIsland.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestPosition.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestPositionSolverManifold.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestSolverData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestVelocity.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/Solver/TestVelocityConstraintPoint.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Tools/ConvexHull/TestChainHull.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Tools/ConvexHull/TestGiftWrap.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Tools/ConvexHull/TestMelkman.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBody.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBodyFlags.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBodyFlags.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBodyType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBodyType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBreakableBody.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestBreakableBody.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestFixture.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestFixture.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestFixtureProxy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestFixtureProxy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestProfile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestTimeStep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestTimeStep.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Dynamics/TestWorld.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Factories/TestBodyFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Factories/TestBodyFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Factories/TestFixtureFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Factories/TestFixtureFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Factories/TestJointFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Factories/TestJointFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestLineUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestLineUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathConstants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathConstants.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestMathUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestPolygonUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Utilities/TestPolygonUtils.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Collision/Shapes/Shape.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Collision/Shapes/Shape.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Dynamics/TimeStep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Dynamics/TimeStep.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Extensions/DebugView/DebugViewBase.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Extensions/DebugView/DebugViewFlags.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Tools/ConvexHull/ChainHull/ChainHull.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Tools/ConvexHull/ChainHull.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Tools/ConvexHull/GiftWrap/GiftWrap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Tools/ConvexHull/GiftWrap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Tools/ConvexHull/Melkman/Melkman.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Tools/ConvexHull/Melkman.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Tools/Triangulation/TriangulationBase/Triangulate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Tools/Triangulation/TriangulationBase/Triangulate.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +107,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.22348484" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.22307692" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -432,7 +452,7 @@
       <workItem from="1638014294165" duration="658000" />
       <workItem from="1638015245070" duration="6747000" />
       <workItem from="1638092626595" duration="263000" />
-      <workItem from="1638092985416" duration="4197000" />
+      <workItem from="1638092985416" duration="6210000" />
     </task>
     <servers />
   </component>

@@ -31,7 +31,7 @@ using System.Numerics;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull.Melkman
+namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull
 {
     /// <summary>
     ///     Creates a convex hull.
