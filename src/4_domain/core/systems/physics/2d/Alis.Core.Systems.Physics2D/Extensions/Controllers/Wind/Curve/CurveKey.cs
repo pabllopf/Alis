@@ -31,7 +31,7 @@ using System;
 using System.Runtime.Serialization;
 
 // ReSharper disable once CheckNamespace
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
 {
     /// <summary>Key point on the <see cref="Curve" />.</summary>
     [DataContract]

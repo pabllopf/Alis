@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using SFML.Graphics;
 using System;
 using System.Collections.Generic;
-using SFML.Graphics;
 
 namespace Alis.Core.Sfml.Components
 {

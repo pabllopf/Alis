@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Shared;
 
 namespace Alis.Core.Systems.Physics2D.Tools.PolygonManipulation

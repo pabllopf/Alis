@@ -46,15 +46,13 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="hy">the half-height.</param>
         public static Vertices CreateRectangle(float hx, float hy)
         {
-            Vertices vertices = new Vertices(4)
+            return new Vertices(4)
             {
                 new Vector2(-hx, -hy),
                 new Vector2(hx, -hy),
                 new Vector2(hx, hy),
                 new Vector2(-hx, hy)
             };
-
-            return vertices;
         }
 
         /// <summary>Build vertices to represent an oriented box.</summary>

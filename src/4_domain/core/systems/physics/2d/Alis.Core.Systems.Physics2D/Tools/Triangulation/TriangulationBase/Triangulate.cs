@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Tools.ConvexHull;
 using Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit;

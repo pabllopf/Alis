@@ -33,7 +33,7 @@ using NUnit.Framework;
 
 #endregion
 
-namespace Alis.Core.SFML.Test.src
+namespace Alis.Core.SFML.Test
 {
     /// <summary>
     ///     The tests class

@@ -27,13 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Sfml.Components;
+using Alis.Core.Systems;
+using Alis.Core.Systems.Physics2D.Config;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text.Json.Serialization;
-using Alis.Core.Sfml.Components;
-using Alis.Core.Systems;
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Systems.Physics2D;
 
 namespace Alis.Core.Sfml.Managers
 {

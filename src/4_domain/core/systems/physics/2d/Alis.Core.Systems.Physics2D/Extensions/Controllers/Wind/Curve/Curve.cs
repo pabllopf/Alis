@@ -29,10 +29,11 @@
 
 using System;
 using System.Runtime.Serialization;
+using Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve;
 
 
 // ReSharper disable once CheckNamespace
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
 {
     /// <summary>
     ///     Contains a collection of <see cref="CurveKey" /> points in 2D space and provides methods for evaluating

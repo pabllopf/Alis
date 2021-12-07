@@ -29,6 +29,7 @@
 
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
+using Alis.Core.Systems.Physics2D.Config;
 
 namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
 {

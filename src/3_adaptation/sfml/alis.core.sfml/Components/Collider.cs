@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
 using Alis.Core.Entities;
 using SFML.Graphics;
+using System;
+using System.Text.Json.Serialization;
 
 namespace Alis.Core.Sfml.Components
 {

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
 using Alis.Core.Systems.Physics2D.Shared;
 
 namespace Alis.Core.Systems.Physics2D.Definitions.Shapes
@@ -41,7 +40,7 @@ namespace Alis.Core.Systems.Physics2D.Definitions.Shapes
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonShapeDef" /> class
         /// </summary>
-        public PolygonShapeDef() : base(ShapeType.Polygon)
+        public PolygonShapeDef() : base(Collision.Shapes.ShapeType.Polygon)
         {
             SetDefaults();
         }

@@ -581,20 +581,20 @@
       <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>RACSvgyASBSIAMsMAQCiCggYcEgcEIGAoVABEgXBsKs=</HashCode>
+      <HashCode>BAiSvggASBSJAMsMAQCiDgg6QEgYFIGAoVABEgXDoKs=</HashCode>
       <FileName>Dynamics\World.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
+      <Property Name="Island1" />
       <Property Name="Profile" />
       <Property Name="ContactManager" />
-      <Property Name="Island1" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="JointList" />
-      <Property Name="BodyList" />
-      <Property Name="ControllerList" />
       <Property Name="ContactPool" />
+      <Property Name="ControllerList" />
       <Property Name="BreakableBodyList" />
+      <Property Name="BodyList" />
+      <Property Name="JointList" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy.BuoyancyController" Collapsed="true">

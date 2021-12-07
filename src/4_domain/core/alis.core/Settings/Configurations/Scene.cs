@@ -29,8 +29,8 @@
 
 #region
 
-using System.Text.Json.Serialization;
 using Alis.FluentApi.Validations;
+using System.Text.Json.Serialization;
 
 #endregion
 

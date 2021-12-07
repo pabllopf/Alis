@@ -5,7 +5,7 @@ using Alis.Core.Systems.Physics2D.Definitions;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using NUnit.Framework;
 
-namespace Alis.Core.Systems.Physics2D.Test.Dynamics
+namespace Alis.Core.Systems.Physics2D.Test
 {
     /// <summary>
     ///     The test world class

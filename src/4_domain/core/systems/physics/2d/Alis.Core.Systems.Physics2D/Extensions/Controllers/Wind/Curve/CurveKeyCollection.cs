@@ -33,7 +33,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 // ReSharper disable once CheckNamespace
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
 {
     /// <summary>The collection of the <see cref="CurveKey" /> elements and a part of the <see cref="Curve" /> class.</summary>
 

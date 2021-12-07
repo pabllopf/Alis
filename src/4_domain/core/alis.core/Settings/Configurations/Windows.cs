@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Entities;
 using System;
 using System.Numerics;
 using System.Text.Json.Serialization;
-using Alis.Core.Entities;
 
 namespace Alis.Core.Settings.Configurations
 {

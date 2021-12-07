@@ -29,9 +29,9 @@
 
 using System;
 using System.Numerics;
+using Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
-using Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve;
 
 namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
 {
@@ -42,7 +42,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
     public abstract class AbstractForceController : Controller
     {
         /// <summary>Curve to be used for Decay in Curve mode</summary>
-        public Curve.Curve DecayCurve;
+        public Config.Extensions.Controllers.Wind.Curve.Curve DecayCurve;
 
         /// <summary>The Forcetype of the instance</summary>
         public ForceTypes ForceType;
@@ -54,7 +54,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
         ///     Curve used by Curve Mode as an animated multiplier for the force strength. Only positions between 0 and 1 are
         ///     considered as that range is stretched to have ImpulseLength.
         /// </summary>
-        public Curve.Curve StrengthCurve;
+        public Config.Extensions.Controllers.Wind.Curve.Curve StrengthCurve;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AbstractForceController" /> class
@@ -70,11 +70,11 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
             ImpulseTime = 0.0f;
             ImpulseLength = 1.0f;
             Triggered = false;
-            StrengthCurve = new Curve.Curve();
+            StrengthCurve = new Config.Extensions.Controllers.Wind.Curve.Curve();
             Variation = 0.0f;
             Randomize = new Random(1234);
             DecayMode = DecayModes.None;
-            DecayCurve = new Curve.Curve();
+            DecayCurve = new Config.Extensions.Controllers.Wind.Curve.Curve();
             DecayStart = 0.0f;
             DecayEnd = 0.0f;
 

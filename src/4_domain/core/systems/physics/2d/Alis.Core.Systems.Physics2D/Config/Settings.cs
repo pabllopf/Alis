@@ -31,7 +31,7 @@ using System;
 using Alis.Core.Systems.Physics2D.Collision.Filtering;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D
+namespace Alis.Core.Systems.Physics2D.Config
 {
     /// <summary>
     ///     The settings class

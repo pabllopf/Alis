@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Core.Entities;
 using Alis.Core.Sfml.Managers;
 using SFML.Graphics;
 using SFML.System;
+using System.Numerics;
 
 namespace Alis.Core.Sfml.Components
 {

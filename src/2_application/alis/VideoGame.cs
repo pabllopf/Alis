@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Builders;
 using Alis.Core;
 using Alis.Core.Sfml.Managers;
+using System;
 
 namespace Alis
 {

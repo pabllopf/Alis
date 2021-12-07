@@ -149,6 +149,7 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Dynamics.Joints;
 using Alis.Core.Systems.Physics2D.Utilities;
 

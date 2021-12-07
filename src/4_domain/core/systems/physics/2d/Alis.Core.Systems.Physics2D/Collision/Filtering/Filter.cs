@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Systems.Physics2D.Config;
+
 namespace Alis.Core.Systems.Physics2D.Collision.Filtering
 {
     /// <summary>

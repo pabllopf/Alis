@@ -27,13 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core;
 using Alis.Core.Settings;
 using Alis.Core.Sfml.Builders;
 using Alis.Core.Sfml.Managers;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
+using System;
 
 namespace Alis.Builders
 {

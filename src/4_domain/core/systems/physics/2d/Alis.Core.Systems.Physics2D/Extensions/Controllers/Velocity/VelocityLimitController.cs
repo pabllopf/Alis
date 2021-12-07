@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
 

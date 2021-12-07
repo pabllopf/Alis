@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
 using Alis.Core.Settings;
 using Alis.Core.Systems;
+using System;
+using System.Text.Json.Serialization;
 
 namespace Alis.Core
 {

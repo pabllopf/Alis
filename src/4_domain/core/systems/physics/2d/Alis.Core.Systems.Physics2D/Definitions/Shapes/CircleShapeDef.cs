@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
 
 namespace Alis.Core.Systems.Physics2D.Definitions.Shapes
 {
@@ -41,7 +40,7 @@ namespace Alis.Core.Systems.Physics2D.Definitions.Shapes
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleShapeDef" /> class
         /// </summary>
-        public CircleShapeDef() : base(ShapeType.Circle)
+        public CircleShapeDef() : base(Collision.Shapes.ShapeType.Circle)
         {
             SetDefaults();
         }

@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve;
+
 namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
 {
     /// <summary>

@@ -42,12 +42,12 @@ namespace Alis.Core.Systems.Physics2D.Shared
         private readonly EqualityComparer<T> comparer;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Graph" /> class
+        ///     Initializes a new instance of the <see cref="Graph{T}" /> class
         /// </summary>
         public Graph() => comparer = EqualityComparer<T>.Default;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Graph" /> class
+        ///     Initializes a new instance of the <see cref="Graph{T}" /> class
         /// </summary>
         /// <param name="comparer">The comparer</param>
         public Graph(EqualityComparer<T> comparer)

@@ -29,6 +29,7 @@
 
 using System.Diagnostics;
 using System.Numerics;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Definitions.Joints;
 using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
 using Alis.Core.Systems.Physics2D.Dynamics.Solver;
@@ -202,8 +203,8 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             typeA = jointA.JointType;
             typeB = jointB.JointType;
 
-            Debug.Assert(typeA == JointType.Revolute || typeA == JointType.Prismatic);
-            Debug.Assert(typeB == JointType.Revolute || typeB == JointType.Prismatic);
+            Debug.Assert(typeA == Misc.JointType.Revolute || typeA == Misc.JointType.Prismatic);
+            Debug.Assert(typeB == Misc.JointType.Revolute || typeB == Misc.JointType.Prismatic);
 
             float coordinateA, coordinateB;
 
@@ -221,7 +222,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             Transform xfC = bodyC.Xf;
             float aC = bodyC.Sweep.A;
 
-            if (typeA == JointType.Revolute)
+            if (typeA == Misc.JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) def.JointA;
                 localAnchorC = revolute.LocalAnchorA;
@@ -256,7 +257,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             Transform xfD = bodyD.Xf;
             float aD = bodyD.Sweep.A;
 
-            if (typeB == JointType.Revolute)
+            if (typeB == Misc.JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) def.JointB;
                 localAnchorD = revolute.LocalAnchorA;
@@ -296,7 +297,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="bodyA">The first body</param>
         /// <param name="bodyB">The second body</param>
         public GearJoint(Body bodyA, Body bodyB, Joint jointA, Joint jointB, float ratio = 1f) : base(bodyA, bodyB,
-            JointType.Gear)
+            Misc.JointType.Gear)
         {
             this.jointA = jointA;
             this.jointB = jointB;
@@ -304,10 +305,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             typeA = jointA.JointType;
             typeB = jointB.JointType;
 
-            Debug.Assert(typeA == JointType.Revolute || typeA == JointType.Prismatic ||
-                         typeA == JointType.FixedRevolute || typeA == JointType.FixedPrismatic);
-            Debug.Assert(typeB == JointType.Revolute || typeB == JointType.Prismatic ||
-                         typeB == JointType.FixedRevolute || typeB == JointType.FixedPrismatic);
+            Debug.Assert(typeA == Misc.JointType.Revolute || typeA == Misc.JointType.Prismatic ||
+                         typeA == Misc.JointType.FixedRevolute || typeA == Misc.JointType.FixedPrismatic);
+            Debug.Assert(typeB == Misc.JointType.Revolute || typeB == Misc.JointType.Prismatic ||
+                         typeB == Misc.JointType.FixedRevolute || typeB == Misc.JointType.FixedPrismatic);
 
             float coordinateA, coordinateB;
 
@@ -325,7 +326,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             Transform xfC = bodyC.Xf;
             float aC = bodyC.Sweep.A;
 
-            if (typeA == JointType.Revolute)
+            if (typeA == Misc.JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) jointA;
                 localAnchorC = revolute.LocalAnchorA;
@@ -360,7 +361,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             Transform xfD = bodyD.Xf;
             float aD = bodyD.Sweep.A;
 
-            if (typeB == JointType.Revolute)
+            if (typeB == Misc.JointType.Revolute)
             {
                 RevoluteJoint revolute = (RevoluteJoint) jointB;
                 localAnchorD = revolute.LocalAnchorA;
@@ -484,7 +485,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
             mass = 0.0f;
 
-            if (typeA == JointType.Revolute)
+            if (typeA == Misc.JointType.Revolute)
             {
                 jvAc = Vector2.Zero;
                 jwA = 1.0f;
@@ -502,7 +503,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 mass += mC + mA + iC * jwC * jwC + iA * jwA * jwA;
             }
 
-            if (typeB == JointType.Revolute)
+            if (typeB == Misc.JointType.Revolute)
             {
                 jvBd = Vector2.Zero;
                 jwB = ratio;
@@ -615,7 +616,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
             float jwA, jwB, jwC, jwD;
             float mass = 0.0f;
 
-            if (typeA == JointType.Revolute)
+            if (typeA == Misc.JointType.Revolute)
             {
                 jvAc = Vector2.Zero;
                 jwA = 1.0f;
@@ -639,7 +640,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
                 coordinateA = Vector2.Dot(pA - pC, localAxisC);
             }
 
-            if (typeB == JointType.Revolute)
+            if (typeB == Misc.JointType.Revolute)
             {
                 jvBd = Vector2.Zero;
                 jwB = ratio;

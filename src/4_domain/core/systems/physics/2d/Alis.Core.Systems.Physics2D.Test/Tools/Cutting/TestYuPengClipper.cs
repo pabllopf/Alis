@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.Cutting
 {
+    /// <summary>
+    /// The test yu peng clipper class
+    /// </summary>
     public class TestYuPengClipper
     {
         /// <summary>

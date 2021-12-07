@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Entities;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Entities;
 
 namespace Alis.Core.Sfml.Components
 {

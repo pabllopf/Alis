@@ -29,12 +29,12 @@
 
 #region
 
-using System;
 using Alis.Core.Builders;
 using Alis.Core.Settings;
 using Alis.Core.Settings.Configurations;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
+using System;
 
 #endregion
 

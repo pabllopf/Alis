@@ -33,6 +33,7 @@ using System.Diagnostics;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
 using Alis.Core.Systems.Physics2D.Collision.Shapes;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Shared.Optimization;

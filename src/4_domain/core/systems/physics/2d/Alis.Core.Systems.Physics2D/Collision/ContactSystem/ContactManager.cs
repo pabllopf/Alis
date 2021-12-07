@@ -30,6 +30,7 @@
 using Alis.Core.Systems.Physics2D.Collision.Broadphase;
 using Alis.Core.Systems.Physics2D.Collision.Filtering;
 using Alis.Core.Systems.Physics2D.Collision.Handlers;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Dynamics.Handlers;
 

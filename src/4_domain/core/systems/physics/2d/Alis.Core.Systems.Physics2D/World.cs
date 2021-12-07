@@ -36,6 +36,8 @@ using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
 using Alis.Core.Systems.Physics2D.Collision.Distance;
 using Alis.Core.Systems.Physics2D.Collision.RayCast;
 using Alis.Core.Systems.Physics2D.Collision.TOI;
+using Alis.Core.Systems.Physics2D.Config;
+using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Dynamics.Handlers;
 using Alis.Core.Systems.Physics2D.Dynamics.Joints;
 using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
@@ -44,7 +46,7 @@ using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics
+namespace Alis.Core.Systems.Physics2D
 {
     /// <summary>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</summary>
     public class World

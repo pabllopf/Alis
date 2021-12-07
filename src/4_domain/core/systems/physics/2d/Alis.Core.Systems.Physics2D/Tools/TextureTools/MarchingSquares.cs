@@ -874,7 +874,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         internal class CxFastListNode<T>
         {
             /// <summary>
-            ///     Initializes a new instance of the <see cref="CxFastListNode" /> class
+            ///     Initializes a new instance of the <see cref="CxFastListNode{T}" /> class
             /// </summary>
             /// <param name="obj">The obj</param>
             public CxFastListNode(T obj) => Elt = obj;

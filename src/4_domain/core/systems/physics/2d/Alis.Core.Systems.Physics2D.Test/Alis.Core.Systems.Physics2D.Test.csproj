@@ -18,4 +18,12 @@
         <ProjectReference Include="..\Alis.Core.Systems.Physics2D\Alis.Core.Systems.Physics2D.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Collision" />
+      <Folder Include="Definitions" />
+      <Folder Include="Docs" />
+      <Folder Include="Extensions" />
+      <Folder Include="Shared" />
+    </ItemGroup>
+
 </Project>

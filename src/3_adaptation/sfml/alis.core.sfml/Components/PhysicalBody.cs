@@ -29,8 +29,8 @@
 
 #region
 
-using System;
 using Alis.Core.Entities;
+using System;
 
 #endregion
 

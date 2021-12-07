@@ -31,6 +31,7 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Collision.RayCast;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 

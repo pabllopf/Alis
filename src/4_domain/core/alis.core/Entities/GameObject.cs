@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
 using Alis.Core.Builders;
 using Alis.Core.Exceptions;
 using Alis.FluentApi;
+using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Alis.Core.Entities
 {

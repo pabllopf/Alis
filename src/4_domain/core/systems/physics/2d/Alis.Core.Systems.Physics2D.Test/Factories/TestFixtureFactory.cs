@@ -4,8 +4,8 @@ using System.Numerics;
 using Alis.Core.Systems.Physics2D.Collision.Shapes;
 using Alis.Core.Systems.Physics2D.Definitions;
 using Alis.Core.Systems.Physics2D.Dynamics;
-using NUnit.Framework;
 using Alis.Core.Systems.Physics2D.Factories;
+using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Factories
 {
@@ -14,6 +14,9 @@ namespace Alis.Core.Systems.Physics2D.Test.Factories
     /// </summary>
     public class TestFixtureFactory
     {
+        /// <summary>
+        /// The fixture
+        /// </summary>
         private Fixture fixture;
         
         /// <summary>
@@ -33,6 +36,9 @@ namespace Alis.Core.Systems.Physics2D.Test.Factories
             Assert.Pass();
         }
 
+        /// <summary>
+        /// Tests that test create from def
+        /// </summary>
         [Test]
         public void TestCreateFromDef()
         {

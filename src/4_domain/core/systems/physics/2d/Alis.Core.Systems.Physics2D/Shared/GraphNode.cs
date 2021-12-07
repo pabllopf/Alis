@@ -35,7 +35,7 @@ namespace Alis.Core.Systems.Physics2D.Shared
     public class GraphNode<T>
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="GraphNode" /> class
+        ///     Initializes a new instance of the <see cref="GraphNode{T}" /> class
         /// </summary>
         /// <param name="item">The item</param>
         public GraphNode(T item = default(T)) => Item = item;

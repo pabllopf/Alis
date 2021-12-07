@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
@@ -179,25 +178,6 @@ namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull
             }
 
             return res;
-        }
-
-        /// <summary>
-        ///     The point comparer class
-        /// </summary>
-        /// <seealso cref="Comparer{T}" />
-        private class PointComparer : Comparer<Vector2>
-        {
-            /// <summary>
-            ///     Compares the a
-            /// </summary>
-            /// <param name="a">The </param>
-            /// <param name="b">The </param>
-            /// <returns>The int</returns>
-            public override int Compare(Vector2 a, Vector2 b)
-            {
-                int f = a.X.CompareTo(b.X);
-                return f != 0 ? f : a.Y.CompareTo(b.Y);
-            }
         }
     }
 }

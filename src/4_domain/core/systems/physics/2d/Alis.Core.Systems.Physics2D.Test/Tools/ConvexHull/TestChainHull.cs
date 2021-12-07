@@ -1,6 +1,5 @@
 // 
 
-using System;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Tools.ConvexHull;
@@ -21,6 +20,9 @@ namespace Alis.Core.Systems.Physics2D.Test.Tools.ConvexHull
         {
         }
         
+        /// <summary>
+        /// Tests that test get convex hull
+        /// </summary>
         [Test]
         public void TestGetConvexHull()
         {

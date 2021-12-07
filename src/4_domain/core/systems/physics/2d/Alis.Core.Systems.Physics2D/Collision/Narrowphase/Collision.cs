@@ -31,6 +31,7 @@ using System.Numerics;
 using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
 using Alis.Core.Systems.Physics2D.Collision.Distance;
 using Alis.Core.Systems.Physics2D.Collision.Shapes;
+using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Shared.Optimization;
 using Alis.Core.Systems.Physics2D.Utilities;

@@ -29,7 +29,7 @@
 
 // ReSharper disable once CheckNamespace
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
 {
     /// <summary>Defines the continuity of keys on a <see cref="Curve" />.</summary>
     public enum CurveContinuity

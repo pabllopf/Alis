@@ -29,7 +29,6 @@
 
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
 using Alis.Core.Systems.Physics2D.Dynamics.Solver;
 using Alis.Core.Systems.Physics2D.Utilities;
 
@@ -79,7 +78,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
         public AngleJoint(Body bodyA, Body bodyB)
-            : base(bodyA, bodyB, JointType.Angle)
+            : base(bodyA, bodyB, Misc.JointType.Angle)
         {
             biasFactor = .2f;
             maxImpulse = float.MaxValue;

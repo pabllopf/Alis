@@ -54,7 +54,7 @@ namespace Alis.Core.Systems.Physics2D.Shared
         private readonly Queue<T> queue;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Pool" /> class
+        ///     Initializes a new instance of the <see cref="Pool{T}" /> class
         /// </summary>
         /// <param name="objectCreator">The object creator</param>
         /// <param name="objectReset">The object reset</param>

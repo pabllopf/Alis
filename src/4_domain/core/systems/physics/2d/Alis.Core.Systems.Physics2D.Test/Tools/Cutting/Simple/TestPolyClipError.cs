@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.Cutting.Simple
 {
+    /// <summary>
+    /// The test poly clip error class
+    /// </summary>
     public class TestPolyClipError
     {
         /// <summary>
