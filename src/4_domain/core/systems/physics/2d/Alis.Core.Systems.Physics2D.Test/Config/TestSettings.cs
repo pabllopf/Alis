@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Config
 {
+    /// <summary>
+    /// The test settings class
+    /// </summary>
     public class TestSettings
     {
         /// <summary>

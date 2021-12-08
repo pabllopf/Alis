@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.PolygonManipulation
 {
+    /// <summary>
+    /// The test simplify tools class
+    /// </summary>
     public class TestSimplifyTools
     {
         /// <summary>

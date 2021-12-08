@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.PathGenerator
 {
+    /// <summary>
+    /// The test path manager class
+    /// </summary>
     public class TestPathManager
     {
         /// <summary>

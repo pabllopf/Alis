@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.Triangulation.Delaunay
 {
+    /// <summary>
+    /// The test orientation class
+    /// </summary>
     public class TestOrientation
     {
         /// <summary>

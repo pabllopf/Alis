@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.PolygonManipulation
 {
+    /// <summary>
+    /// The test simple combiner class
+    /// </summary>
     public class TestSimpleCombiner
     {
         /// <summary>

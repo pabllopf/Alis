@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.ConvexHull
 {
+    /// <summary>
+    /// The test point comparer class
+    /// </summary>
     public class TestPointComparer
     {
         /// <summary>

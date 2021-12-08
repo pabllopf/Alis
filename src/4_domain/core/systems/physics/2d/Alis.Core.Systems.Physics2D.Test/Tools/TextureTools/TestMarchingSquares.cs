@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.TextureTools
 {
+    /// <summary>
+    /// The test marching squares class
+    /// </summary>
     public class TestMarchingSquares
     {
         /// <summary>

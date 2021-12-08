@@ -57,34 +57,14 @@ namespace Alis.Core.Systems.Physics2D
         private readonly HashSet<Body> bodyAddList;
 
         /// <summary>
-        ///     The body list
-        /// </summary>
-        private readonly List<Body> bodyList;
-
-        /// <summary>
         ///     The body
         /// </summary>
         private readonly HashSet<Body> bodyRemoveList;
 
         /// <summary>
-        ///     The breakable body list
-        /// </summary>
-        private readonly List<BreakableBody> breakableBodyList;
-
-        /// <summary>
-        ///     The controller list
-        /// </summary>
-        private readonly List<Controller> controllerList;
-
-        /// <summary>
         ///     The joint
         /// </summary>
         private readonly HashSet<Joint> jointAddList;
-
-        /// <summary>
-        ///     The joint list
-        /// </summary>
-        private readonly List<Joint> jointList;
 
         /// <summary>
         ///     The joint
@@ -102,26 +82,6 @@ namespace Alis.Core.Systems.Physics2D
         private readonly Pool<Stopwatch> timerPool;
 
         /// <summary>
-        ///     The contact manager
-        /// </summary>
-        private ContactManager contactManager;
-
-        /// <summary>
-        ///     The continuous physics enabled
-        /// </summary>
-        private bool continuousPhysicsEnabled;
-
-        /// <summary>
-        ///     The enabled
-        /// </summary>
-        private bool enabled;
-
-        /// <summary>
-        ///     The enable diagnostics
-        /// </summary>
-        private bool enableDiagnostics;
-
-        /// <summary>
         ///     The gravity
         /// </summary>
         private Vector2 gravity;
@@ -130,11 +90,6 @@ namespace Alis.Core.Systems.Physics2D
         ///     The inv dt
         /// </summary>
         private float invDt0;
-
-        /// <summary>
-        ///     The is locked
-        /// </summary>
-        private bool isLocked;
 
         /// <summary>
         ///     The profile
@@ -147,11 +102,6 @@ namespace Alis.Core.Systems.Physics2D
         private Func<Fixture, Vector2, Vector2, float, float> rayCastCallback;
 
         /// <summary>
-        ///     The sleeping allowed
-        /// </summary>
-        private bool sleepingAllowed;
-
-        /// <summary>
         ///     The body
         /// </summary>
         private Body[] stack;
@@ -161,11 +111,6 @@ namespace Alis.Core.Systems.Physics2D
         /// </summary>
         private bool stepComplete = true;
 
-        /// <summary>
-        ///     The warm starting enabled
-        /// </summary>
-        private bool warmStartingEnabled;
-
         /// <summary>Initializes a new instance of the <see cref="World" /> class.</summary>
         public World(Vector2 gravity)
         {
@@ -173,6 +118,8 @@ namespace Alis.Core.Systems.Physics2D
             bodyRemoveList = new HashSet<Body>();
             jointAddList = new HashSet<Joint>();
             jointRemoveList = new HashSet<Joint>();
+            
+            ContactPool = new Queue<Contact>(256);
 
             TestPointAllFixtures = new List<Fixture>();
 
@@ -181,22 +128,22 @@ namespace Alis.Core.Systems.Physics2D
             timerPool = new Pool<Stopwatch>(Stopwatch.StartNew, sw => sw.Restart(), 5, false);
 
             this.gravity = gravity;
-            enabled = true;
-            sleepingAllowed = true;
-            warmStartingEnabled = true;
-            continuousPhysicsEnabled = true;
+            Enabled = true;
+            SleepingAllowed = true;
+            WarmStartingEnabled = true;
+            ContinuousPhysicsEnabled = true;
 
             Island1 = new Island();
-            controllerList = new List<Controller>();
-            breakableBodyList = new List<BreakableBody>();
-            bodyList = new List<Body>(32);
-            jointList = new List<Joint>(32);
+            ControllerList = new List<Controller>();
+            BreakableBodyList = new List<BreakableBody>();
+            BodyList = new List<Body>(32);
+            JointList = new List<Joint>(32);
 
 
             rayCastCallback = RayCastCallback;
             rayCastCallbackWrapper = RayCastCallbackWrapper;
 
-            contactManager = new ContactManager(new DynamicTreeBroadPhase());
+            ContactManager = new ContactManager(new DynamicTreeBroadPhase());
 
             BodyAdded += OnBodyAdded;
             BodyRemoved += OnBodyRemoved;
@@ -219,12 +166,12 @@ namespace Alis.Core.Systems.Physics2D
         /// <summary>
         ///     The contact
         /// </summary>
-        internal Queue<Contact> ContactPool { get; } = new Queue<Contact>(256);
+        internal Queue<Contact> ContactPool { get; }
 
         /// <summary>
         ///     The island
         /// </summary>
-        internal Island Island1 { get; }
+        private Island Island1 { get; }
 
         /// <summary>
         ///     The new contacts
@@ -234,47 +181,24 @@ namespace Alis.Core.Systems.Physics2D
         /// <summary>
         ///     Gets or sets the value of the continuous physics enabled
         /// </summary>
-        public bool ContinuousPhysicsEnabled
-        {
-            get => continuousPhysicsEnabled;
-            set => continuousPhysicsEnabled = value;
-        }
+        public bool ContinuousPhysicsEnabled { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the sleeping allowed
         /// </summary>
-        public bool SleepingAllowed
-        {
-            get => sleepingAllowed;
-            set => sleepingAllowed = value;
-        }
+        public bool SleepingAllowed { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the warm starting enabled
         /// </summary>
-        public bool WarmStartingEnabled
-        {
-            get => warmStartingEnabled;
-            set => warmStartingEnabled = value;
-        }
+        public bool WarmStartingEnabled { get; set; }
 
         /// <summary>
         ///     Enabling diagnostics causes the engine to gather timing information. You can see how much time it took to
         ///     solve the contacts, solve CCD and update the controllers.
         /// </summary>
-        public bool EnableDiagnostics
-        {
-            get => enableDiagnostics;
-            set => enableDiagnostics = value;
-        }
-
-        /// <summary>Change the global gravity vector.</summary>
-        public Vector2 Gravity
-        {
-            get => gravity;
-            set => gravity = value;
-        }
-
+        public bool EnableDiagnostics { get; set; }
+        
         /// <summary>
         ///     Gets the value of the profile
         /// </summary>
@@ -283,12 +207,12 @@ namespace Alis.Core.Systems.Physics2D
         /// <summary>
         ///     Gets the value of the controller list
         /// </summary>
-        public List<Controller> ControllerList => controllerList;
+        public List<Controller> ControllerList { get; }
 
         /// <summary>
         ///     Gets the value of the breakable body list
         /// </summary>
-        public List<BreakableBody> BreakableBodyList => breakableBodyList;
+        public List<BreakableBody> BreakableBodyList { get; }
 
         /// <summary>Get the number of broad-phase proxies.</summary>
         /// <value>The proxy count.</value>
@@ -296,35 +220,23 @@ namespace Alis.Core.Systems.Physics2D
 
         /// <summary>Get the contact manager for testing.</summary>
         /// <value>The contact manager.</value>
-        public ContactManager ContactManager
-        {
-            get => contactManager;
-            set => contactManager = value;
-        }
+        public ContactManager ContactManager { get; set; }
 
         /// <summary>Get the world body list.</summary>
         /// <value>The head of the world body list.</value>
-        public List<Body> BodyList => bodyList;
+        public List<Body> BodyList { get; }
 
         /// <summary>Get the world joint list.</summary>
         /// <value>The joint list.</value>
-        public List<Joint> JointList => jointList;
+        private List<Joint> JointList { get; }
 
         /// <summary>If false, the whole simulation stops. It still processes added and removed geometries.</summary>
-        public bool Enabled
-        {
-            get => enabled;
-            set => enabled = value;
-        }
+        private bool Enabled { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the is locked
         /// </summary>
-        public bool IsLocked
-        {
-            get => isLocked;
-            set => isLocked = value;
-        }
+        public bool IsLocked { get; set; }
 
         /// <summary>
         ///     Rays the cast callback using the specified arg 1
@@ -525,10 +437,10 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="controller">The controller</param>
         public void AddController(Controller controller)
         {
-            Debug.Assert(!controllerList.Contains(controller), "You are adding the same controller more than once.");
+            Debug.Assert(!ControllerList.Contains(controller), "You are adding the same controller more than once.");
 
             controller.World = this;
-            controllerList.Add(controller);
+            ControllerList.Add(controller);
 
             ControllerAdded(controller);
         }
@@ -539,12 +451,12 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="controller">The controller</param>
         public void RemoveController(Controller controller)
         {
-            Debug.Assert(controllerList.Contains(controller),
+            Debug.Assert(ControllerList.Contains(controller),
                 "You are removing a controller that is not in the simulation.");
 
-            if (controllerList.Contains(controller))
+            if (ControllerList.Contains(controller))
             {
-                controllerList.Remove(controller);
+                ControllerList.Remove(controller);
 
                 ControllerRemoved(controller);
             }
@@ -556,7 +468,7 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="breakableBody">The breakable body</param>
         public void AddBreakableBody(BreakableBody breakableBody)
         {
-            breakableBodyList.Add(breakableBody);
+            BreakableBodyList.Add(breakableBody);
         }
 
         /// <summary>
@@ -566,9 +478,9 @@ namespace Alis.Core.Systems.Physics2D
         public void RemoveBreakableBody(BreakableBody breakableBody)
         {
             //The breakable body list does not contain the body you tried to remove.
-            Debug.Assert(breakableBodyList.Contains(breakableBody));
+            Debug.Assert(BreakableBodyList.Contains(breakableBody));
 
-            breakableBodyList.Remove(breakableBody);
+            BreakableBodyList.Remove(breakableBody);
         }
 
         /// <summary>Take a time step. This performs collision detection, integration, and constraint solution.</summary>
@@ -584,7 +496,7 @@ namespace Alis.Core.Systems.Physics2D
         public void Step(float dt, int velocityIterations = 8, int positionIterations = 3)
         {
             //Velcro: We support disabling the world
-            if (!enabled)
+            if (!Enabled)
             {
                 return;
             }
@@ -632,9 +544,9 @@ namespace Alis.Core.Systems.Physics2D
             {
                 //Velcro: We have the concept of controllers. We update them here
                 Stopwatch timer = timerPool.GetFromPool(true);
-                for (int i = 0; i < controllerList.Count; i++)
+                for (int i = 0; i < ControllerList.Count; i++)
                 {
-                    controllerList[i].Update(dt);
+                    ControllerList[i].Update(dt);
                 }
 
                 profile.ControllersUpdateTime = timer.ElapsedTicks;
@@ -659,7 +571,7 @@ namespace Alis.Core.Systems.Physics2D
             }
 
             // Handle TOI events.
-            if (continuousPhysicsEnabled && step.DeltaTime > 0.0f)
+            if (ContinuousPhysicsEnabled && step.DeltaTime > 0.0f)
             {
                 Stopwatch timer = timerPool.GetFromPool(true);
                 SolveToi(ref step);
@@ -681,9 +593,9 @@ namespace Alis.Core.Systems.Physics2D
                 //Velcro: We support breakable bodies. We update them here.
                 Stopwatch timer = timerPool.GetFromPool(true);
 
-                for (int i = 0; i < breakableBodyList.Count; i++)
+                for (int i = 0; i < BreakableBodyList.Count; i++)
                 {
-                    breakableBodyList[i].Update();
+                    BreakableBodyList[i].Update();
                 }
 
                 profile.BreakableBodies = timer.ElapsedTicks;
@@ -704,9 +616,9 @@ namespace Alis.Core.Systems.Physics2D
         /// </summary>
         public void ClearForces()
         {
-            for (int i = 0; i < bodyList.Count; i++)
+            for (int i = 0; i < BodyList.Count; i++)
             {
-                Body body = bodyList[i];
+                Body body = BodyList[i];
                 body.Force = Vector2.Zero;
                 body.Torque = 0.0f;
             }
@@ -805,14 +717,14 @@ namespace Alis.Core.Systems.Physics2D
                 return;
             }
 
-            foreach (Body b in bodyList)
+            foreach (Body b in BodyList)
             {
                 b.Xf.P -= newOrigin;
                 b.Sweep.C0 -= newOrigin;
                 b.Sweep.C -= newOrigin;
             }
 
-            foreach (Joint joint in jointList)
+            foreach (Joint joint in JointList)
             {
                 joint.ShiftOrigin(ref newOrigin);
             }
@@ -827,19 +739,19 @@ namespace Alis.Core.Systems.Physics2D
         {
             ProcessChanges();
 
-            for (int i = bodyList.Count - 1; i >= 0; i--)
+            for (int i = BodyList.Count - 1; i >= 0; i--)
             {
-                RemoveBody(bodyList[i]);
+                RemoveBody(BodyList[i]);
             }
 
-            for (int i = controllerList.Count - 1; i >= 0; i--)
+            for (int i = ControllerList.Count - 1; i >= 0; i--)
             {
-                RemoveController(controllerList[i]);
+                RemoveController(ControllerList[i]);
             }
 
-            for (int i = breakableBodyList.Count - 1; i >= 0; i--)
+            for (int i = BreakableBodyList.Count - 1; i >= 0; i--)
             {
-                RemoveBreakableBody(breakableBodyList[i]);
+                RemoveBreakableBody(BreakableBodyList[i]);
             }
 
             //We call ProcessChanges again since the user could have added items to the body/joint queues in the Removed/Added events
@@ -959,13 +871,13 @@ namespace Alis.Core.Systems.Physics2D
             profile.SolvePosition = 0;
 
             // Size the island for the worst case.
-            Island1.Reset(bodyList.Count,
+            Island1.Reset(BodyList.Count,
                 ContactManager.ContactCounter,
-                jointList.Count,
+                JointList.Count,
                 ContactManager);
 
             // Clear all the island flags.
-            foreach (Body b in bodyList)
+            foreach (Body b in BodyList)
             {
                 b.Flags &= ~BodyFlags.IslandFlag;
             }
@@ -975,21 +887,21 @@ namespace Alis.Core.Systems.Physics2D
                 c.Flags &= ~ContactFlags.IslandFlag;
             }
 
-            foreach (Joint j in jointList)
+            foreach (Joint j in JointList)
             {
                 j.IslandFlag = false;
             }
 
             // Build and simulate all awake islands.
-            int stackSize = bodyList.Count;
+            int stackSize = BodyList.Count;
             if (stackSize > stack.Length)
             {
                 stack = new Body[Math.Max(stack.Length * 2, stackSize)];
             }
 
-            for (int index = bodyList.Count - 1; index >= 0; index--)
+            for (int index = BodyList.Count - 1; index >= 0; index--)
             {
-                Body seed = bodyList[index];
+                Body seed = BodyList[index];
                 if ((seed.Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag)
                 {
                     continue;
@@ -1114,7 +1026,7 @@ namespace Alis.Core.Systems.Physics2D
                 }
 
                 Profile profile = new Profile();
-                Island1.Solve(ref profile, ref step, ref gravity, sleepingAllowed);
+                Island1.Solve(ref profile, ref step, ref gravity, SleepingAllowed);
                 this.profile.SolveInit += profile.SolveInit;
                 this.profile.SolveVelocity += profile.SolveVelocity;
                 this.profile.SolvePosition += profile.SolvePosition;
@@ -1135,7 +1047,7 @@ namespace Alis.Core.Systems.Physics2D
                 Stopwatch timer = timerPool.GetFromPool(true);
 
                 // Synchronize fixtures, check for out of range bodies.
-                foreach (Body b in bodyList)
+                foreach (Body b in BodyList)
                 {
                     // If a body was not in an island then it did not move.
                     if ((b.Flags & BodyFlags.IslandFlag) == 0)
@@ -1169,10 +1081,10 @@ namespace Alis.Core.Systems.Physics2D
 
             if (stepComplete)
             {
-                for (int i = 0; i < bodyList.Count; i++)
+                for (int i = 0; i < BodyList.Count; i++)
                 {
-                    bodyList[i].Flags &= ~BodyFlags.IslandFlag;
-                    bodyList[i].Sweep.Alpha0 = 0.0f;
+                    BodyList[i].Flags &= ~BodyFlags.IslandFlag;
+                    BodyList[i].Sweep.Alpha0 = 0.0f;
                 }
 
                 for (Contact c = ContactManager.ContactList; c != null; c = c.Next)
@@ -1493,7 +1405,7 @@ namespace Alis.Core.Systems.Physics2D
         private void AddJointInternal(Joint joint)
         {
             // Connect to the world list.
-            jointList.Add(joint);
+            JointList.Add(joint);
 
             // Connect to the bodies' doubly linked lists.
             joint.EdgeA.Joint = joint;
@@ -1558,7 +1470,7 @@ namespace Alis.Core.Systems.Physics2D
             bool collideConnected = joint.CollideConnected;
 
             // Remove from the world list.
-            jointList.Remove(joint);
+            JointList.Remove(joint);
 
             // Disconnect from island graph.
             Body bodyA = joint.BodyA;
@@ -1644,7 +1556,7 @@ namespace Alis.Core.Systems.Physics2D
             body.World = this;
 
             // Add to world list.
-            bodyList.Add(body);
+            BodyList.Add(body);
 
             //Velcro: We have events to notify the user that a body was added
             BodyAdded(body);
@@ -1662,10 +1574,10 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="body">The body</param>
         private void RemoveBodyInternal(Body body)
         {
-            Debug.Assert(bodyList.Count > 0);
+            Debug.Assert(BodyList.Count > 0);
 
             //Velcro: We check if the user is trying to remove a body more than one (to check for bugs)
-            Debug.Assert(bodyList.Contains(body));
+            Debug.Assert(BodyList.Contains(body));
 
             // Delete the attached joints.
             JointEdge je = body.JointList;
@@ -1710,7 +1622,7 @@ namespace Alis.Core.Systems.Physics2D
             body.OnSeparation = null;
 
             // Remove world body list.
-            bodyList.Remove(body);
+            BodyList.Remove(body);
 
             BodyRemoved(body);
         }

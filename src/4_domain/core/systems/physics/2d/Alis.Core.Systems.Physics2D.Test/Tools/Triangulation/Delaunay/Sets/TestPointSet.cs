@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.Triangulation.Delaunay.Sets
 {
+    /// <summary>
+    /// The test point set class
+    /// </summary>
     public class TestPointSet
     {
         /// <summary>

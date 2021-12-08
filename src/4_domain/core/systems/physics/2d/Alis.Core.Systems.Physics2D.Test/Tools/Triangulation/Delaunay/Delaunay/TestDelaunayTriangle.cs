@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.Triangulation.Delaunay.Delaunay
 {
+    /// <summary>
+    /// The test delaunay triangle class
+    /// </summary>
     public class TestDelaunayTriangle
     {
         /// <summary>

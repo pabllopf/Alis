@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.PathGenerator
 {
+    /// <summary>
+    /// The test link factory class
+    /// </summary>
     public class TestLinkFactory
     {
         /// <summary>

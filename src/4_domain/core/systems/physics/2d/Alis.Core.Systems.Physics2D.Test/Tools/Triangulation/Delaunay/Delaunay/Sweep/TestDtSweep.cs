@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
+    /// <summary>
+    /// The test dt sweep class
+    /// </summary>
     public class TestDtSweep
     {
         /// <summary>

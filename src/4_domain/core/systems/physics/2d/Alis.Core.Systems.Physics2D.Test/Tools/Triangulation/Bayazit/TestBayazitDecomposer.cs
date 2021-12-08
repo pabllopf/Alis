@@ -1,9 +1,12 @@
-﻿// 
+// 
 
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Tools.Triangulation.Bayazit
 {
+    /// <summary>
+    /// The test bayazit decomposer class
+    /// </summary>
     public class TestBayazitDecomposer
     {
         /// <summary>
