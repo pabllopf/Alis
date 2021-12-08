@@ -133,7 +133,7 @@ namespace Alis.Core.Systems.Physics2D
             WarmStartingEnabled = true;
             ContinuousPhysicsEnabled = true;
 
-            Island1 = new Island();
+            Island = new Island();
             ControllerList = new List<Controller>();
             BreakableBodyList = new List<BreakableBody>();
             BodyList = new List<Body>(32);
@@ -171,7 +171,7 @@ namespace Alis.Core.Systems.Physics2D
         /// <summary>
         ///     The island
         /// </summary>
-        private Island Island1 { get; }
+        private Island Island { get; }
 
         /// <summary>
         ///     The new contacts
@@ -339,9 +339,9 @@ namespace Alis.Core.Systems.Physics2D
             {
                 if (IsLocked)
                 {
-                    throw  new InvalidOperationException("The World is locked.");
+                    throw new InvalidOperationException("The World is locked.");
                 }
-                
+
                 AddBodyInternal(body);
             }
         }
@@ -357,16 +357,16 @@ namespace Alis.Core.Systems.Physics2D
                 {
                     throw new ArgumentException("The body is already removed from the world.");
                 }
-                
+
                 bodyRemoveList.Add(body);
             }
             else
             {
                 if (IsLocked)
                 {
-                    throw  new InvalidOperationException("The World is locked.");
+                    throw new InvalidOperationException("The World is locked.");
                 }
-                
+
                 RemoveBodyInternal(body);
             }
         }
@@ -378,20 +378,20 @@ namespace Alis.Core.Systems.Physics2D
         {
             if (delayUntilNextStep)
             {
-                if(jointAddList.Contains(joint))
+                if (jointAddList.Contains(joint))
                 {
                     throw new ArgumentException("The joint is already added to the world.");
                 }
-                
+
                 jointAddList.Add(joint);
             }
             else
             {
-                if(IsLocked)
+                if (IsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
                 }
-                
+
                 AddJointInternal(joint);
             }
         }
@@ -408,16 +408,16 @@ namespace Alis.Core.Systems.Physics2D
                     throw new InvalidOperationException(
                         "The joint is already marked for removal. You are removing the joint more than once.");
                 }
-                
+
                 jointRemoveList.Add(joint);
             }
             else
             {
-                if(IsLocked)
+                if (IsLocked)
                 {
                     throw new InvalidOperationException("The World is locked.");
-                }    
-                
+                }
+
                 RemoveJointInternal(joint);
             }
         }
@@ -430,7 +430,7 @@ namespace Alis.Core.Systems.Physics2D
         {
             if (ControllerList.Contains(controller))
             {
-                throw  new InvalidOperationException("Controller already exist in the world");
+                throw new InvalidOperationException("Controller already exist in the world");
             }
 
             controller.World = this;
@@ -446,7 +446,7 @@ namespace Alis.Core.Systems.Physics2D
         {
             if (!ControllerList.Contains(controller))
             {
-                throw  new InvalidOperationException("You can`t remove a controller that is not in the world");
+                throw new InvalidOperationException("You can`t remove a controller that is not in the world");
             }
 
             ControllerList.Remove(controller);
@@ -470,7 +470,7 @@ namespace Alis.Core.Systems.Physics2D
                 throw new InvalidOperationException(
                     "The breakable body list does not contain the body you tried to remove.");
             }
-            
+
             BreakableBodyList.Remove(breakableBody);
         }
 
@@ -693,7 +693,7 @@ namespace Alis.Core.Systems.Physics2D
 
             return TestPointAllFixtures;
         }
-        
+
         /// <summary>
         ///     Shift the world origin.
         ///     Useful for large worlds.
@@ -805,7 +805,7 @@ namespace Alis.Core.Systems.Physics2D
                 {
                     AddBodyInternal(body);
                 }
-                
+
                 bodyAddList.Clear();
             }
         }
@@ -861,7 +861,7 @@ namespace Alis.Core.Systems.Physics2D
             profile.SolvePosition = 0;
 
             // Size the island for the worst case.
-            Island1.Reset(BodyList.Count,
+            Island.Reset(BodyList.Count,
                 ContactManager.ContactCounter,
                 JointList.Count,
                 ContactManager);
@@ -909,7 +909,7 @@ namespace Alis.Core.Systems.Physics2D
                 }
 
                 // Reset island and stack.
-                Island1.Clear();
+                Island.Clear();
                 int stackCount = 0;
                 stack[stackCount++] = seed;
 
@@ -921,7 +921,7 @@ namespace Alis.Core.Systems.Physics2D
                     // Grab the next body off the stack and add it to the island.
                     Body b = stack[--stackCount];
                     Debug.Assert(b.Enabled);
-                    Island1.Add(b);
+                    Island.Add(b);
 
                     // To keep islands as small as possible, we don't
                     // propagate islands across static bodies.
@@ -958,7 +958,7 @@ namespace Alis.Core.Systems.Physics2D
                             continue;
                         }
 
-                        Island1.Add(contact);
+                        Island.Add(contact);
                         contact.Flags |= ContactFlags.IslandFlag;
 
                         Body other = ce.Other;
@@ -994,7 +994,7 @@ namespace Alis.Core.Systems.Physics2D
                                 continue;
                             }
 
-                            Island1.Add(je.Joint);
+                            Island.Add(je.Joint);
                             je.Joint.IslandFlag = true;
 
                             if (other.IsIsland)
@@ -1009,23 +1009,23 @@ namespace Alis.Core.Systems.Physics2D
                         }
                         else
                         {
-                            Island1.Add(je.Joint);
+                            Island.Add(je.Joint);
                             je.Joint.IslandFlag = true;
                         }
                     }
                 }
 
                 Profile profile = new Profile();
-                Island1.Solve(ref profile, ref step, ref gravity, SleepingAllowed);
+                Island.Solve(ref profile, ref step, ref gravity, SleepingAllowed);
                 this.profile.SolveInit += profile.SolveInit;
                 this.profile.SolveVelocity += profile.SolveVelocity;
                 this.profile.SolvePosition += profile.SolvePosition;
 
                 // Post solve cleanup.
-                for (int i = 0; i < Island1.BodyCount; ++i)
+                for (int i = 0; i < Island.BodyCount; ++i)
                 {
                     // Allow static bodies to participate in other islands.
-                    Body b = Island1.Bodies[i];
+                    Body b = Island.Bodies[i];
                     if (b.BodyType == BodyType.Static)
                     {
                         b.Flags &= ~BodyFlags.IslandFlag;
@@ -1067,7 +1067,7 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="step">The step</param>
         private void SolveToi(ref TimeStep step)
         {
-            Island1.Reset(2 * Settings.MaxToiContacts, Settings.MaxToiContacts, 0, ContactManager);
+            Island.Reset(2 * Settings.MaxToiContacts, Settings.MaxToiContacts, 0, ContactManager);
 
             if (stepComplete)
             {
@@ -1243,10 +1243,10 @@ namespace Alis.Core.Systems.Physics2D
                 bB0.Awake = true;
 
                 // Build the island
-                Island1.Clear();
-                Island1.Add(bA0);
-                Island1.Add(bB0);
-                Island1.Add(minContact);
+                Island.Clear();
+                Island.Add(bA0);
+                Island.Add(bB0);
+                Island.Add(minContact);
 
                 bA0.Flags |= BodyFlags.IslandFlag;
                 bB0.Flags |= BodyFlags.IslandFlag;
@@ -1263,12 +1263,12 @@ namespace Alis.Core.Systems.Physics2D
                         {
                             Contact contact = ce.Contact;
 
-                            if (Island1.BodyCount == Island1.BodyCapacity)
+                            if (Island.BodyCount == Island.BodyCapacity)
                             {
                                 break;
                             }
 
-                            if (Island1.ContactCount == Island1.ContactCapacity)
+                            if (Island.ContactCount == Island.ContactCapacity)
                             {
                                 break;
                             }
@@ -1323,7 +1323,7 @@ namespace Alis.Core.Systems.Physics2D
 
                             // Add the contact to the island
                             minContact.Flags |= ContactFlags.IslandFlag;
-                            Island1.Add(contact);
+                            Island.Add(contact);
 
                             // Has the other body already been added to the island?
                             if (other.IsIsland)
@@ -1339,7 +1339,7 @@ namespace Alis.Core.Systems.Physics2D
                                 other.Awake = true;
                             }
 
-                            Island1.Add(other);
+                            Island.Add(other);
                         }
                     }
                 }
@@ -1351,12 +1351,12 @@ namespace Alis.Core.Systems.Physics2D
                 subStep.PositionIterations = 20;
                 subStep.VelocityIterations = step.VelocityIterations;
                 subStep.WarmStarting = false;
-                Island1.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
+                Island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
 
                 // Reset island flags and synchronize broad-phase proxies.
-                for (int i = 0; i < Island1.BodyCount; ++i)
+                for (int i = 0; i < Island.BodyCount; ++i)
                 {
-                    Body body = Island1.Bodies[i];
+                    Body body = Island.Bodies[i];
                     body.Flags &= ~BodyFlags.IslandFlag;
 
                     if (body.BodyType != BodyType.Dynamic)
@@ -1569,13 +1569,13 @@ namespace Alis.Core.Systems.Physics2D
             {
                 throw new InvalidOperationException("The World is empty and you can´t remove a body.");
             }
-            
+
             // You tried to remove a body that is not contained in the World.
             if (!BodyList.Contains(body))
             {
                 throw new InvalidOperationException("The World don´t contains the body you are trying to remove.");
             }
-            
+
             // Delete the attached joints.
             if (body.JointList != null)
             {
@@ -1584,17 +1584,17 @@ namespace Alis.Core.Systems.Physics2D
                 {
                     JointEdge nextJointEdge = jointEdge;
                     jointEdge = jointEdge.Next;
-                    
+
                     if (nextJointEdge.Joint != null)
                     {
                         RemoveJoint(nextJointEdge.Joint);
                     }
                 }
             }
-            
+
             // Set joint list to null.
             body.JointList = null;
-            
+
             // Delete the attached contacts.
             if (body.ContactList != null)
             {
@@ -1610,10 +1610,10 @@ namespace Alis.Core.Systems.Physics2D
                     }
                 }
             }
-            
+
             // Set contact list to null.
             body.ContactList = null;
-            
+
             // Delete the attached fixtures. This destroys broad-phase proxies.
             if (body.FixtureList != null)
             {
@@ -1621,16 +1621,16 @@ namespace Alis.Core.Systems.Physics2D
                 {
                     // Add event to notify fixture was removed
                     FixtureRemoved(body.FixtureList[i]);
-                    
+
                     // Remove fixture. This destroys proxy.
                     body.FixtureList[i].DestroyProxies(ContactManager.BroadPhase);
                     body.FixtureList[i].Destroy();
                 }
             }
-            
+
             // Set fixture list to null.
             body.FixtureList = null;
-            
+
             // Make sure to cleanup the references and delegates
             body.World = null;
             body.OnCollision = null;

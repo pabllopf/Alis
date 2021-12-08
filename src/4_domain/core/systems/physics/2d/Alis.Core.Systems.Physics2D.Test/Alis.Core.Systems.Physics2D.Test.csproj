@@ -22,8 +22,6 @@
         <Folder Include="Collision"/>
         <Folder Include="Definitions"/>
         <Folder Include="Docs"/>
-        <Folder Include="Extensions"/>
-        <Folder Include="Shared"/>
     </ItemGroup>
 
 </Project>
