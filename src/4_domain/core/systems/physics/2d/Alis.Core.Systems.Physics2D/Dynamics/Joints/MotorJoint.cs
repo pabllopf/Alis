@@ -30,6 +30,7 @@
 using System.Diagnostics;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Definitions.Joints;
+using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
 using Alis.Core.Systems.Physics2D.Dynamics.Solver;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
@@ -184,7 +185,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="bodyB">The second body</param>
         /// <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         public MotorJoint(Body bodyA, Body bodyB, bool useWorldCoordinates = false)
-            : base(bodyA, bodyB, Misc.JointType.Motor)
+            : base(bodyA, bodyB, JointType.Motor)
         {
             Vector2 xB = bodyB.Position;
 

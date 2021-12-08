@@ -29,6 +29,7 @@
 
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Definitions.Joints;
+using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
 using Alis.Core.Systems.Physics2D.Dynamics.Solver;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
@@ -165,7 +166,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="anchor"></param>
         /// <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         public FrictionJoint(Body bodyA, Body bodyB, Vector2 anchor, bool useWorldCoordinates = false)
-            : base(bodyA, bodyB, Misc.JointType.Friction)
+            : base(bodyA, bodyB, JointType.Friction)
         {
             if (useWorldCoordinates)
             {

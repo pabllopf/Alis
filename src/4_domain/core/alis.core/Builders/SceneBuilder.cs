@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Entities;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
-using System;
 
 namespace Alis.Core.Builders
 {

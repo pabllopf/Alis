@@ -44,16 +44,14 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <summary>Build vertices to represent an axis-aligned box.</summary>
         /// <param name="hx">the half-width.</param>
         /// <param name="hy">the half-height.</param>
-        public static Vertices CreateRectangle(float hx, float hy)
-        {
-            return new Vertices(4)
+        public static Vertices CreateRectangle(float hx, float hy) =>
+            new Vertices(4)
             {
                 new Vector2(-hx, -hy),
                 new Vector2(hx, -hy),
                 new Vector2(hx, hy),
                 new Vector2(-hx, hy)
             };
-        }
 
         /// <summary>Build vertices to represent an oriented box.</summary>
         /// <param name="hx">the half-width.</param>

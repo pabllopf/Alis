@@ -66,29 +66,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         private ContactEdge contactEdgeList;
 
         /// <summary>
-        ///     The controller filter
-        /// </summary>
-        private ControllerFilter controllerFilter;
-
-        /// <summary>
         ///     The fixture list
         /// </summary>
         private List<Fixture> fixtureList;
 
         /// <summary>
-        ///     The gravity scale
-        /// </summary>
-        private float gravityScale;
-
-        /// <summary>
         ///     The inertia
         /// </summary>
         private float inertia;
-
-        /// <summary>
-        ///     The island index
-        /// </summary>
-        private int islandIndex;
 
         /// <summary>
         ///     The joint list
@@ -125,24 +110,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         public OnSeparationHandler OnSeparation;
 
         /// <summary>
-        ///     The physics logic filter
-        /// </summary>
-        private PhysicsLogicFilter physicsLogicFilter;
-
-        /// <summary>
-        ///     The sleep time
-        /// </summary>
-        private float sleepTime;
-
-        /// <summary>
         ///     The type
         /// </summary>
         internal BodyType Type;
-
-        /// <summary>
-        ///     The user data
-        /// </summary>
-        private object? userData;
 
         /// <summary>
         ///     The world
@@ -200,14 +170,14 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
             linearDamp = def.LinearDamping;
             angularDamping = def.AngularDamping;
-            gravityScale = def.GravityScale;
+            GravityScale = def.GravityScale;
 
             Type = def.Type;
 
             mass = 0.0f;
             InvMass = 0.0f;
 
-            userData = def.UserData;
+            UserData = def.UserData;
         }
 
         /// <summary>
@@ -243,56 +213,32 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     Gets or sets the value of the controller filter
         /// </summary>
-        public ControllerFilter ControllerFilter
-        {
-            get => controllerFilter;
-            set => controllerFilter = value;
-        }
+        public ControllerFilter ControllerFilter { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the physics logic filter
         /// </summary>
-        public PhysicsLogicFilter PhysicsLogicFilter
-        {
-            get => physicsLogicFilter;
-            set => physicsLogicFilter = value;
-        }
+        public PhysicsLogicFilter PhysicsLogicFilter { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the sleep time
         /// </summary>
-        public float SleepTime
-        {
-            get => sleepTime;
-            set => sleepTime = value;
-        }
+        public float SleepTime { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the island index
         /// </summary>
-        public int IslandIndex
-        {
-            get => islandIndex;
-            set => islandIndex = value;
-        }
+        public int IslandIndex { get; set; }
 
         /// <summary>
         ///     Scale the gravity applied to this body. Defaults to 1. A value of 2 means double the gravity is applied to
         ///     this body.
         /// </summary>
-        public float GravityScale
-        {
-            get => gravityScale;
-            set => gravityScale = value;
-        }
+        public float GravityScale { get; set; }
 
         /// <summary>Set the user data. Use this to store your application specific data.</summary>
         /// <value>The user data.</value>
-        public object? UserData
-        {
-            get => userData;
-            set => userData = value;
-        }
+        public object? UserData { get; set; }
 
         /// <summary>Gets the total number revolutions the body has made.</summary>
         /// <value>The revolutions.</value>
@@ -473,13 +419,13 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
                 if (value)
                 {
                     Flags |= BodyFlags.AwakeFlag;
-                    sleepTime = 0.0f;
+                    SleepTime = 0.0f;
                 }
                 else
                 {
                     Flags &= ~BodyFlags.AwakeFlag;
                     ResetDynamics();
-                    sleepTime = 0.0f;
+                    SleepTime = 0.0f;
                 }
             }
         }

@@ -31,6 +31,7 @@ using System;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Definitions.Joints;
+using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
 using Alis.Core.Systems.Physics2D.Dynamics.Solver;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
@@ -184,7 +185,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="anchorB">The second body anchor.</param>
         /// <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         public WeldJoint(Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, bool useWorldCoordinates = false)
-            : base(bodyA, bodyB, Misc.JointType.Weld)
+            : base(bodyA, bodyB, JointType.Weld)
         {
             if (useWorldCoordinates)
             {

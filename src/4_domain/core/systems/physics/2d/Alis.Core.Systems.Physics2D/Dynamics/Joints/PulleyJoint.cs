@@ -32,6 +32,7 @@ using System.Diagnostics;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Config;
 using Alis.Core.Systems.Physics2D.Definitions.Joints;
+using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
 using Alis.Core.Systems.Physics2D.Dynamics.Solver;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
@@ -205,7 +206,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         public PulleyJoint(Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, Vector2 worldAnchorA,
             Vector2 worldAnchorB, float ratio, bool useWorldCoordinates = false)
-            : base(bodyA, bodyB, Misc.JointType.Pulley)
+            : base(bodyA, bodyB, JointType.Pulley)
         {
             this.worldAnchorA = worldAnchorA;
             this.worldAnchorB = worldAnchorB;

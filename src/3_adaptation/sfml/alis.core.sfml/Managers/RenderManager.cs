@@ -27,14 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entities;
-using Alis.Core.Systems;
-using SFML.Graphics;
-using SFML.Window;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text.Json.Serialization;
+using Alis.Core.Entities;
+using Alis.Core.Systems;
+using SFML.Graphics;
+using SFML.Window;
 using Sprite = Alis.Core.Sfml.Components.Sprite;
 
 namespace Alis.Core.Sfml.Managers

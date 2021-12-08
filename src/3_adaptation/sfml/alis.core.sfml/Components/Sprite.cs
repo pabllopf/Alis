@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Numerics;
 using Alis.Core.Entities;
 using Alis.Core.Sfml.Managers;
 using SFML.Graphics;
 using SFML.System;
-using System;
-using System.Numerics;
 using Transform = Alis.Core.Entities.Transform;
 
 namespace Alis.Core.Sfml.Components

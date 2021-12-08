@@ -118,7 +118,7 @@ namespace Alis.Core.Systems.Physics2D
             bodyRemoveList = new HashSet<Body>();
             jointAddList = new HashSet<Joint>();
             jointRemoveList = new HashSet<Joint>();
-            
+
             ContactPool = new Queue<Contact>(256);
 
             TestPointAllFixtures = new List<Fixture>();
@@ -181,24 +181,24 @@ namespace Alis.Core.Systems.Physics2D
         /// <summary>
         ///     Gets or sets the value of the continuous physics enabled
         /// </summary>
-        public bool ContinuousPhysicsEnabled { get; set; }
+        private bool ContinuousPhysicsEnabled { get; }
 
         /// <summary>
         ///     Gets or sets the value of the sleeping allowed
         /// </summary>
-        public bool SleepingAllowed { get; set; }
+        private bool SleepingAllowed { get; }
 
         /// <summary>
         ///     Gets or sets the value of the warm starting enabled
         /// </summary>
-        public bool WarmStartingEnabled { get; set; }
+        private bool WarmStartingEnabled { get; }
 
         /// <summary>
         ///     Enabling diagnostics causes the engine to gather timing information. You can see how much time it took to
         ///     solve the contacts, solve CCD and update the controllers.
         /// </summary>
         public bool EnableDiagnostics { get; set; }
-        
+
         /// <summary>
         ///     Gets the value of the profile
         /// </summary>
@@ -207,12 +207,12 @@ namespace Alis.Core.Systems.Physics2D
         /// <summary>
         ///     Gets the value of the controller list
         /// </summary>
-        public List<Controller> ControllerList { get; }
+        private List<Controller> ControllerList { get; }
 
         /// <summary>
         ///     Gets the value of the breakable body list
         /// </summary>
-        public List<BreakableBody> BreakableBodyList { get; }
+        private List<BreakableBody> BreakableBodyList { get; }
 
         /// <summary>Get the number of broad-phase proxies.</summary>
         /// <value>The proxy count.</value>
@@ -231,7 +231,7 @@ namespace Alis.Core.Systems.Physics2D
         private List<Joint> JointList { get; }
 
         /// <summary>If false, the whole simulation stops. It still processes added and removed geometries.</summary>
-        private bool Enabled { get; set; }
+        private bool Enabled { get; }
 
         /// <summary>
         ///     Gets or sets the value of the is locked

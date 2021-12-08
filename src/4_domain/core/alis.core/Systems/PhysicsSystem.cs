@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Config;
 using System;
 using System.Numerics;
 using System.Text.Json.Serialization;

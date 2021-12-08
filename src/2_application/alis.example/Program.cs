@@ -27,14 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Numerics;
 using Alis.Core.Entities;
 using Alis.Core.Sfml.Components;
 using Alis.Core.Sfml.Managers;
-using Alis.Core.Systems.Physics2D.Config;
-using SFML.Graphics;
-using System.Collections.Generic;
-using System.Numerics;
 using Alis.Core.Systems.Physics2D.Dynamics;
+using SFML.Graphics;
 using Sprite = Alis.Core.Sfml.Components.Sprite;
 using Transform = Alis.Core.Entities.Transform;
 

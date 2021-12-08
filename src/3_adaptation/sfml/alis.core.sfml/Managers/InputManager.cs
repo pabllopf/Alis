@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entities;
-using Alis.Core.Systems;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Alis.Core.Entities;
+using Alis.Core.Systems;
 
 namespace Alis.Core.Sfml.Managers
 {

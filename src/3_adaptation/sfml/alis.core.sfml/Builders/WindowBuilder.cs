@@ -29,11 +29,11 @@
 
 #region
 
+using System.Numerics;
 using Alis.Core.Entities;
 using Alis.Core.Settings.Configurations;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
-using System.Numerics;
 
 #endregion
 

@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entities;
 using System.Text.Json.Serialization;
+using Alis.Core.Entities;
 
 namespace Alis.Core.Settings.Configurations
 {

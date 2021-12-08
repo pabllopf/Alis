@@ -29,6 +29,7 @@
 
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Definitions.Joints;
+using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
 using Alis.Core.Systems.Physics2D.Dynamics.Solver;
 using Alis.Core.Systems.Physics2D.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
@@ -146,7 +147,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// <param name="body">The body.</param>
         /// <param name="target">The target.</param>
         public FixedMouseJoint(Body body, Vector2 target)
-            : base(body, Misc.JointType.FixedMouse)
+            : base(body, JointType.FixedMouse)
         {
             targetB = target;
             localAnchorA = MathUtils.MulT(BodyA.Xf, targetB);
