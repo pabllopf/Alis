@@ -30,6 +30,7 @@
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Definitions;
 using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Systems.Physics2D.Factories;
 using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test
@@ -49,21 +50,55 @@ namespace Alis.Core.Systems.Physics2D.Test
         /// </summary>
         [SetUp]
         public void Setup() => world = new World(Vector2.Zero);
-
-        /// <summary>
-        ///     Tests that test add body
-        /// </summary>
-        /// <param name="expected">The expected</param>
-        /// <param name="count">The count</param>
-        [Test, TestCase(0, 0), TestCase(1, 1), TestCase(2, 2)]
-        public void Test_AddBody(int expected, int count)
+        
+        [Test]
+        public void TestWorldCreation()
         {
-            for (int i = 0; i < count; i++)
-            {
-                world.AddBody(new Body(new BodyDef()));
-            }
-
-            Assert.AreEqual(expected, world.BodyList.Count);
+            Assert.IsNotNull(world);
         }
+        
+        [Test]
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(100)]
+        public void TestWorldAddBody(int numBodies)
+        {
+            for (int i = 0; i < numBodies; i++)
+            {
+                world.AddBody(new Body(new BodyDef()
+                {
+                    Position = new Vector2((1*i)+1, (1*i)+1),
+                    Type = BodyType.Dynamic
+                }));
+            }
+            
+            Assert.AreEqual(numBodies, world.BodyList.Count);
+        }
+
+
+        [Test]
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(100)]
+        public void TestClearForces(int numBodies)
+        {
+            for (int i = 0; i < numBodies; i++)
+            {
+                world.AddBody(new Body(new BodyDef()
+                {
+                    Position = new Vector2((1*i)+1, (1*i)+1),
+                    Type = BodyType.Dynamic
+                }));
+            }
+            
+            world.ClearForces();
+            Assert.AreEqual(numBodies, world.BodyList.Count);
+            for (int i = 0; i < world.BodyList.Count; i++)
+            {
+                Assert.AreEqual(new Vector2(0.0f,0.0f), world.BodyList[i].Force);
+                Assert.AreEqual(0.0f, world.BodyList[i].Torque);
+            }
+        }
+        
     }
 }

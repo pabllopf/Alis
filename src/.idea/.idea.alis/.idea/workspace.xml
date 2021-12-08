@@ -22,6 +22,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/TestWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/TestWorld.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Dynamics/Body.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Dynamics/Body.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/World.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +57,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28be434f13d647688f5ff1b9d2bc98278f5778/eb/55f9b89b/DebugProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/FD/Matrix4x4.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28be434f13d647688f5ff1b9d2bc98278f5778/3B5/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/25288f22b7c548d8adf4cb3c0171568e75600/A/Assert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/879e64150fe442079fadd555ede677aa8f5788/5b/63cc4a41/IEquatable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/3C0/DebugProvider.Windows.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/41A/List.cs" root0="SKIP_HIGHLIGHTING" />
@@ -420,7 +423,7 @@
       <workItem from="1638782546883" duration="2507000" />
       <workItem from="1638887303307" duration="234000" />
       <workItem from="1638887644199" duration="3143000" />
-      <workItem from="1638954988862" duration="8532000" />
+      <workItem from="1638954988862" duration="10168000" />
     </task>
     <servers />
   </component>

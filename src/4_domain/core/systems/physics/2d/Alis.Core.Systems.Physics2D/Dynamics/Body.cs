@@ -173,7 +173,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The force
         /// </summary>
-        internal Vector2 Force { get; set; }
+        public Vector2 Force { get; set; }
 
         /// <summary>
         ///     The inv
@@ -193,7 +193,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The torque
         /// </summary>
-        internal float Torque { get; set; }
+        public float Torque { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the controller filter
