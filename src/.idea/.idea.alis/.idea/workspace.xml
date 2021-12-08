@@ -22,8 +22,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Dynamics/Body.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Dynamics/Body.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Dynamics/Joints/Misc/JointEdge.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Dynamics/Joints/Misc/JointEdge.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/World.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -422,7 +420,7 @@
       <workItem from="1638782546883" duration="2507000" />
       <workItem from="1638887303307" duration="234000" />
       <workItem from="1638887644199" duration="3143000" />
-      <workItem from="1638954988862" duration="5157000" />
+      <workItem from="1638954988862" duration="8532000" />
     </task>
     <servers />
   </component>

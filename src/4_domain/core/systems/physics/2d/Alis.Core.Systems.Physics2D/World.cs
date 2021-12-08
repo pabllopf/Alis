@@ -236,7 +236,7 @@ namespace Alis.Core.Systems.Physics2D
         /// <summary>
         ///     Gets or sets the value of the is locked
         /// </summary>
-        public bool IsLocked { get; set; }
+        public bool IsLocked { get; private set; }
 
         /// <summary>
         ///     Rays the cast callback using the specified arg 1
@@ -406,13 +406,16 @@ namespace Alis.Core.Systems.Physics2D
         /// <summary>Destroy a joint. This may cause the connected bodies to begin colliding.</summary>
         /// <param name="joint">The joint.</param>
         /// <param name="delayUntilNextStep">If true, the joint is removed at next time step</param>
-        public void RemoveJoint(Joint joint, bool delayUntilNextStep = false)
+        private void RemoveJoint(Joint joint, bool delayUntilNextStep = false)
         {
             if (delayUntilNextStep)
             {
-                Debug.Assert(!jointRemoveList.Contains(joint),
-                    "The joint is already marked for removal. You are removing the joint more than once.");
-
+                if (jointRemoveList.Contains(joint))
+                {
+                    throw new InvalidOperationException(
+                        "The joint is already marked for removal. You are removing the joint more than once.");
+                }
+                
                 if (!jointRemoveList.Contains(joint))
                 {
                     jointRemoveList.Add(joint);
@@ -420,13 +423,11 @@ namespace Alis.Core.Systems.Physics2D
             }
             else
             {
-                Debug.Assert(!IsLocked);
-
                 if (IsLocked)
                 {
                     return;
                 }
-
+                
                 RemoveJointInternal(joint);
             }
         }
@@ -437,27 +438,31 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="controller">The controller</param>
         public void AddController(Controller controller)
         {
-            Debug.Assert(!ControllerList.Contains(controller), "You are adding the same controller more than once.");
-
-            controller.World = this;
-            ControllerList.Add(controller);
-
-            ControllerAdded(controller);
+            if (ControllerList.Contains(controller))
+            {
+                throw  new InvalidOperationException("Controller already exist in the world");
+            }
+            else
+            {
+                controller.World = this;
+                ControllerList.Add(controller);
+                ControllerAdded(controller);
+            }
         }
 
         /// <summary>
         ///     Removes the controller using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
-        public void RemoveController(Controller controller)
+        private void RemoveController(Controller controller)
         {
-            Debug.Assert(ControllerList.Contains(controller),
-                "You are removing a controller that is not in the simulation.");
-
-            if (ControllerList.Contains(controller))
+            if (!ControllerList.Contains(controller))
+            {
+                throw  new InvalidOperationException("You can`t remove a controller that is not in the world");
+            }
+            else
             {
                 ControllerList.Remove(controller);
-
                 ControllerRemoved(controller);
             }
         }
@@ -466,10 +471,7 @@ namespace Alis.Core.Systems.Physics2D
         ///     Adds the breakable body using the specified breakable body
         /// </summary>
         /// <param name="breakableBody">The breakable body</param>
-        public void AddBreakableBody(BreakableBody breakableBody)
-        {
-            BreakableBodyList.Add(breakableBody);
-        }
+        public void AddBreakableBody(BreakableBody breakableBody) => BreakableBodyList.Add(breakableBody);
 
         /// <summary>
         ///     Removes the breakable body using the specified breakable body
@@ -477,10 +479,15 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="breakableBody">The breakable body</param>
         public void RemoveBreakableBody(BreakableBody breakableBody)
         {
-            //The breakable body list does not contain the body you tried to remove.
-            Debug.Assert(BreakableBodyList.Contains(breakableBody));
-
-            BreakableBodyList.Remove(breakableBody);
+            if (BreakableBodyList.Contains(breakableBody))
+            {
+                BreakableBodyList.Remove(breakableBody);
+            }
+            else
+            {
+                throw new InvalidOperationException(
+                    "The breakable body list does not contain the body you tried to remove.");
+            }
         }
 
         /// <summary>Take a time step. This performs collision detection, integration, and constraint solution.</summary>
@@ -703,12 +710,16 @@ namespace Alis.Core.Systems.Physics2D
 
             return TestPointAllFixtures;
         }
-
+        
         /// <summary>
-        ///     Shift the world origin. Useful for large worlds. The body shift formula is: position -= newOrigin @param
-        ///     newOrigin the new origin with respect to the old origin Warning: Calling this method mid-update might cause a
-        ///     crash.
+        ///     Shift the world origin.
+        ///     Useful for large worlds.
+        ///     The body shift formula is: position -= newOrigin
         /// </summary>
+        /// <param name="newOrigin">
+        ///     the newOrigin the new origin with respect to the old origin
+        ///     Warning: Calling this method mid-update might cause a crash.
+        /// </param>
         public void ShiftOrigin(Vector2 newOrigin)
         {
             Debug.Assert(!IsLocked);
