@@ -61,24 +61,9 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         private float angularVelocity;
 
         /// <summary>
-        ///     The contact list
-        /// </summary>
-        private ContactEdge contactEdgeList;
-
-        /// <summary>
-        ///     The fixture list
-        /// </summary>
-        private List<Fixture> fixtureList;
-
-        /// <summary>
         ///     The inertia
         /// </summary>
         private float inertia;
-
-        /// <summary>
-        ///     The joint list
-        /// </summary>
-        private JointEdge jointList;
 
         /// <summary>
         ///     The linear damping
@@ -99,7 +84,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
         ///     always the fixture that the delegate is subscribed to.
         /// </summary>
-        public OnCollisionHandler OnCollision;
+        public OnCollisionHandler? OnCollision;
 
         /// <summary>
         ///     Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
@@ -107,7 +92,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         ///     the
         ///     delegate is subscribed to.
         /// </summary>
-        public OnSeparationHandler OnSeparation;
+        public OnSeparationHandler? OnSeparation;
 
         /// <summary>
         ///     The type
@@ -117,7 +102,7 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>
         ///     The world
         /// </summary>
-        internal World World;
+        internal World? World;
 
         /// <summary>
         ///     The xf
@@ -523,30 +508,18 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
         /// <summary>Gets all the fixtures attached to this body.</summary>
         /// <value>The fixture list.</value>
-        public List<Fixture> FixtureList
-        {
-            get => fixtureList;
-            set => fixtureList = value;
-        }
+        public List<Fixture>? FixtureList { get; set; }
 
         /// <summary>Get the list of all joints attached to this body.</summary>
         /// <value>The joint list.</value>
-        public JointEdge JointList
-        {
-            get => jointList;
-            set => jointList = value;
-        }
+        public JointEdge? JointList { get; set; }
 
         /// <summary>
         ///     Get the list of all contacts attached to this body. Warning: this list changes during the time step and you
         ///     may miss some collisions if you don't use ContactListener.
         /// </summary>
         /// <value>The contact list.</value>
-        public ContactEdge ContactList
-        {
-            get => contactEdgeList;
-            set => contactEdgeList = value;
-        }
+        public ContactEdge? ContactList { get; set; }
 
         /// <summary>Get the world body origin position.</summary>
         /// <returns>Return the world position of the body's origin.</returns>

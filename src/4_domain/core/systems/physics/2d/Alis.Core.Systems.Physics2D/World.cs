@@ -1574,56 +1574,82 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="body">The body</param>
         private void RemoveBodyInternal(Body body)
         {
-            Debug.Assert(BodyList.Count > 0);
-
-            //Velcro: We check if the user is trying to remove a body more than one (to check for bugs)
-            Debug.Assert(BodyList.Contains(body));
-
+            // You tried to remove a body when the world is empty.
+            if (BodyList.Count == 0)
+            {
+                throw new InvalidOperationException("The World is empty and you can´t remove a body.");
+            }
+            
+            // You tried to remove a body that is not contained in the World.
+            if (!BodyList.Contains(body))
+            {
+                throw new InvalidOperationException("The World don´t contains the body you are trying to remove.");
+            }
+            
             // Delete the attached joints.
-            JointEdge je = body.JointList;
-            while (je != null)
+            if (body.JointList != null)
             {
-                JointEdge je0 = je;
-                je = je.Next;
-
-                RemoveJointInternal(je0.Joint);
+                JointEdge? jointEdge = body.JointList;
+                while (jointEdge != null)
+                {
+                    JointEdge nextJointEdge = jointEdge;
+                    jointEdge = jointEdge.Next;
+                    
+                    if (nextJointEdge.Joint != null)
+                    {
+                        RemoveJoint(nextJointEdge.Joint);
+                    }
+                }
             }
-
+            
+            // Set joint list to null.
             body.JointList = null;
-
+            
             // Delete the attached contacts.
-            ContactEdge ce = body.ContactList;
-            while (ce != null)
+            if (body.ContactList != null)
             {
-                ContactEdge ce0 = ce;
-                ce = ce.Next;
-                ContactManager.Remove(ce0.Contact);
-            }
+                ContactEdge? contactEdge = body.ContactList;
+                while (contactEdge != null)
+                {
+                    ContactEdge nextContactEdge = contactEdge;
+                    contactEdge = contactEdge.Next;
 
+                    if (nextContactEdge.Contact != null)
+                    {
+                        ContactManager.Remove(nextContactEdge.Contact);
+                    }
+                }
+            }
+            
+            // Set contact list to null.
             body.ContactList = null;
-
+            
             // Delete the attached fixtures. This destroys broad-phase proxies.
-            for (int i = 0; i < body.FixtureList.Count; i++)
+            if (body.FixtureList != null)
             {
-                Fixture fixture = body.FixtureList[i];
-
-                //Velcro: Added event
-                FixtureRemoved(fixture);
-
-                fixture.DestroyProxies(ContactManager.BroadPhase);
-                fixture.Destroy();
+                for (int i = 0; i < body.FixtureList.Count; i++)
+                {
+                    // Add event to notify fixture was removed
+                    FixtureRemoved(body.FixtureList[i]);
+                    
+                    // Remove fixture. This destroys proxy.
+                    body.FixtureList[i].DestroyProxies(ContactManager.BroadPhase);
+                    body.FixtureList[i].Destroy();
+                }
             }
-
+            
+            // Set fixture list to null.
             body.FixtureList = null;
-
-            //Velcro: We make sure to cleanup the references and delegates
+            
+            // Make sure to cleanup the references and delegates
             body.World = null;
             body.OnCollision = null;
             body.OnSeparation = null;
 
-            // Remove world body list.
+            // Remove the body of the list.
             BodyList.Remove(body);
 
+            // Call the world body removed event.
             BodyRemoved(body);
         }
 
