@@ -22,7 +22,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/TestWorld.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/TestWorld.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/World.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -422,7 +421,7 @@
       <workItem from="1638782546883" duration="2507000" />
       <workItem from="1638887303307" duration="234000" />
       <workItem from="1638887644199" duration="3143000" />
-      <workItem from="1638954988862" duration="10797000" />
+      <workItem from="1638954988862" duration="11158000" />
     </task>
     <servers />
   </component>

@@ -378,22 +378,20 @@ namespace Alis.Core.Systems.Physics2D
         {
             if (delayUntilNextStep)
             {
-                Debug.Assert(!jointAddList.Contains(joint), "You are adding the same joint more than once.");
-
-                if (!jointAddList.Contains(joint))
+                if(jointAddList.Contains(joint))
                 {
-                    jointAddList.Add(joint);
+                    throw new ArgumentException("The joint is already added to the world.");
                 }
+                
+                jointAddList.Add(joint);
             }
             else
             {
-                Debug.Assert(!IsLocked);
-
-                if (IsLocked)
+                if(IsLocked)
                 {
-                    return;
+                    throw new InvalidOperationException("The World is locked.");
                 }
-
+                
                 AddJointInternal(joint);
             }
         }
@@ -411,17 +409,14 @@ namespace Alis.Core.Systems.Physics2D
                         "The joint is already marked for removal. You are removing the joint more than once.");
                 }
                 
-                if (!jointRemoveList.Contains(joint))
-                {
-                    jointRemoveList.Add(joint);
-                }
+                jointRemoveList.Add(joint);
             }
             else
             {
-                if (IsLocked)
+                if(IsLocked)
                 {
-                    return;
-                }
+                    throw new InvalidOperationException("The World is locked.");
+                }    
                 
                 RemoveJointInternal(joint);
             }
@@ -437,12 +432,10 @@ namespace Alis.Core.Systems.Physics2D
             {
                 throw  new InvalidOperationException("Controller already exist in the world");
             }
-            else
-            {
-                controller.World = this;
-                ControllerList.Add(controller);
-                ControllerAdded(controller);
-            }
+
+            controller.World = this;
+            ControllerList.Add(controller);
+            ControllerAdded(controller);
         }
 
         /// <summary>
@@ -455,11 +448,9 @@ namespace Alis.Core.Systems.Physics2D
             {
                 throw  new InvalidOperationException("You can`t remove a controller that is not in the world");
             }
-            else
-            {
-                ControllerList.Remove(controller);
-                ControllerRemoved(controller);
-            }
+
+            ControllerList.Remove(controller);
+            ControllerRemoved(controller);
         }
 
         /// <summary>
@@ -474,15 +465,13 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="breakableBody">The breakable body</param>
         public void RemoveBreakableBody(BreakableBody breakableBody)
         {
-            if (BreakableBodyList.Contains(breakableBody))
-            {
-                BreakableBodyList.Remove(breakableBody);
-            }
-            else
+            if (!BreakableBodyList.Contains(breakableBody))
             {
                 throw new InvalidOperationException(
                     "The breakable body list does not contain the body you tried to remove.");
             }
+            
+            BreakableBodyList.Remove(breakableBody);
         }
 
         /// <summary>Take a time step. This performs collision detection, integration, and constraint solution.</summary>
@@ -810,17 +799,15 @@ namespace Alis.Core.Systems.Physics2D
         /// </summary>
         private void ProcessAddedBodies()
         {
-            if (bodyAddList.Count == 0)
+            if (bodyAddList.Count > 0)
             {
-                return;
+                foreach (Body body in bodyAddList)
+                {
+                    AddBodyInternal(body);
+                }
+                
+                bodyAddList.Clear();
             }
-
-            foreach (Body body in bodyAddList)
-            {
-                AddBodyInternal(body);
-            }
-
-            bodyAddList.Clear();
         }
 
         /// <summary>
@@ -828,17 +815,15 @@ namespace Alis.Core.Systems.Physics2D
         /// </summary>
         private void ProcessRemovedBodies()
         {
-            if (bodyRemoveList.Count == 0)
+            if (bodyRemoveList.Count > 0)
             {
-                return;
-            }
+                foreach (Body body in bodyRemoveList)
+                {
+                    RemoveBodyInternal(body);
+                }
 
-            foreach (Body body in bodyRemoveList)
-            {
-                RemoveBodyInternal(body);
+                bodyRemoveList.Clear();
             }
-
-            bodyRemoveList.Clear();
         }
 
 
