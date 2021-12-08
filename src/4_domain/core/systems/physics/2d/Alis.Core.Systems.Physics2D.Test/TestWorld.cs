@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Numerics;
 using Alis.Core.Systems.Physics2D.Definitions;
 using Alis.Core.Systems.Physics2D.Dynamics;
@@ -73,6 +74,34 @@ namespace Alis.Core.Systems.Physics2D.Test
             }
             
             Assert.AreEqual(numBodies, world.BodyList.Count);
+        }
+
+        [Test]
+        [TestCase(0)]
+        [TestCase(1)]
+        [TestCase(100)]
+        public void TestRemoveBody(int numBodies)
+        {
+            List<Body> bodies = new List<Body>();
+            
+            for (int i = 0; i < numBodies; i++)
+            {
+                Body body = new Body(new BodyDef()
+                {
+                    Position = new Vector2((1 * i) + 1, (1 * i) + 1),
+                    Type = BodyType.Dynamic
+                });
+                
+                bodies.Add(body);
+                world.AddBody(body);
+            }
+            
+            for (int i = 0; i < numBodies; i++)
+            {
+                world.RemoveBody(bodies[i]);
+            }
+            
+            Assert.AreEqual(0, world.BodyList.Count);
         }
 
 

@@ -328,22 +328,20 @@ namespace Alis.Core.Systems.Physics2D
         {
             if (delayUntilNextStep)
             {
-                Debug.Assert(!bodyAddList.Contains(body), "You are adding the same body more than once.");
-
-                if (!bodyAddList.Contains(body))
+                if (bodyAddList.Contains(body))
                 {
-                    bodyAddList.Add(body);
+                    throw new ArgumentException("The body is already added to the world.");
                 }
+
+                bodyAddList.Add(body);
             }
             else
             {
-                Debug.Assert(!IsLocked);
-
                 if (IsLocked)
                 {
-                    return;
+                    throw  new InvalidOperationException("The World is locked.");
                 }
-
+                
                 AddBodyInternal(body);
             }
         }
@@ -355,23 +353,20 @@ namespace Alis.Core.Systems.Physics2D
         {
             if (delayUntilNextStep)
             {
-                Debug.Assert(!bodyRemoveList.Contains(body),
-                    "The body is already marked for removal. You are removing the body more than once.");
-
-                if (!bodyRemoveList.Contains(body))
+                if (bodyRemoveList.Contains(body))
                 {
-                    bodyRemoveList.Add(body);
+                    throw new ArgumentException("The body is already removed from the world.");
                 }
+                
+                bodyRemoveList.Add(body);
             }
             else
             {
-                Debug.Assert(!IsLocked);
-
                 if (IsLocked)
                 {
-                    return;
+                    throw  new InvalidOperationException("The World is locked.");
                 }
-
+                
                 RemoveBodyInternal(body);
             }
         }
