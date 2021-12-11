@@ -22,6 +22,8 @@
     <projectFile>1_presentation/editor/alis.editor.test/Alis.Editor.Test.csproj</projectFile>
     <projectFile>2_application/alis.test/Alis.Test.csproj</projectFile>
     <projectFile>4_domain/tools/alis.tools.test/Alis.Tools.Test.csproj</projectFile>
+    <projectFile>1_presentation/Installer/Installer.csproj</projectFile>
+    <projectFile>1_presentation/Alis.Installer/Alis.Installer.csproj</projectFile>
     <projectFile profileName="Alis.Core">4_domain/core/alis.core/Alis.Core.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
@@ -29,39 +31,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer.Test/Alis.Installer.Test.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer.Test/UnitTest1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer/Alis.Installer.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/Alis.Editor.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/Alis.Editor.Benchmark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/Alis.Editor.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/Alis.Editor.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/Alis.Editor.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/Alis.Editor.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Alis.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Alis.Editor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis.example/Alis.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis.example/Alis.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis.test/Alis.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis.test/Alis.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2_application/alis/Alis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/Alis.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/Alis.Core.OpenGL.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/Alis.Core.OpenGL.Benchmark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.example/Alis.Core.OpenGL.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.example/Alis.Core.OpenGL.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/Alis.Core.OpenGL.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/Alis.Core.OpenGL.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/Alis.Core.OpenGL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/Alis.Core.OpenGL.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/Alis.Core.SFML.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/Alis.Core.SFML.Benchmark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.example/Alis.Core.SFML.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.example/Alis.Core.SFML.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/Alis.Core.SFML.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/Alis.Core.SFML.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Alis.Core.Sfml.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Alis.Core.Sfml.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Alis.Core.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/Alis.Core.Benchmark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.example/Alis.Core.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.example/Alis.Core.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core.test/Alis.Core.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/Alis.Core.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/Alis.Core.Systems.Graphics2D/Alis.Core.Systems.Graphics2D.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/Alis.Core.Systems.Graphics2D/Alis.Core.Systems.Graphics2D.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Alis.Core.Systems.Physics2D.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/Alis.Core.Systems.Physics2D.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Alis.Core.Systems.Physics2D.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Alis.Core.Systems.Physics2D.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics3D/Alis.Core.Systems.Physics3D.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/Alis.Core.Systems.Physics3D/Alis.Core.Systems.Physics3D.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/Alis.FluentApi.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/Alis.FluentApi.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/Alis.FluentApi.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/Alis.FluentApi.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Alis.FluentApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Alis.FluentApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/Alis.Tools.Benchmark.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/Alis.Tools.Benchmark.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/Alis.Tools.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/Alis.Tools.Example.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/Alis.Tools.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/Alis.Tools.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools/Alis.Tools.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools/Alis.Tools.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alis.sln" beforeDir="false" afterPath="$PROJECT_DIR$/alis.sln" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,19 +63,22 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/3C0/DebugProvider.Windows.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/FD/Matrix4x4.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28be434f13d647688f5ff1b9d2bc98278f5778/3B5/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/25288f22b7c548d8adf4cb3c0171568e75600/A/Assert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/PhysicsSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis.example/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/FD/Matrix4x4.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/41A/List.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28be434f13d647688f5ff1b9d2bc98278f5778/3B5/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28be434f13d647688f5ff1b9d2bc98278f5778/eb/55f9b89b/DebugProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/25288f22b7c548d8adf4cb3c0171568e75600/A/Assert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/879e64150fe442079fadd555ede677aa8f5788/5b/63cc4a41/IEquatable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/413/HashSet.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectId" id="20JwovORUIeVYO0BBJ2LrkdXGzZ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -455,6 +433,24 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Alis.Installer" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/1_presentation/Alis.Installer/Alis.Installer.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Alis.Test" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -527,6 +523,24 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Installer" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/1_presentation/Installer/Installer.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Alis.Core" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net5.0" />
@@ -557,7 +571,6 @@
       <item itemvalue=".NET Project.Alis.FluentApi.Example" />
       <item itemvalue=".NET Project.Alis.Tools.Benchmark" />
       <item itemvalue=".NET Project.Alis.Tools.Example" />
-      <item itemvalue=".NET Project.2_Application\Alis\Alis.Example" />
       <item itemvalue=".NET Project.Alis.Core.Systems.Physics2D.Test" />
       <item itemvalue=".NET Project.Alis.Core.Test" />
       <item itemvalue=".NET Project.Alis.FluentApi.Test" />
@@ -566,6 +579,9 @@
       <item itemvalue=".NET Project.Alis.Editor.Test" />
       <item itemvalue=".NET Project.Alis.Test" />
       <item itemvalue=".NET Project.Alis.Tools.Test" />
+      <item itemvalue=".NET Project.2_Application\Alis\Alis.Example" />
+      <item itemvalue=".NET Project.Installer" />
+      <item itemvalue=".NET Project.Alis.Installer" />
     </list>
     <recent_temporary>
       <list>
@@ -618,6 +634,7 @@
       <workItem from="1638954988862" duration="13043000" />
       <workItem from="1639212692808" duration="602000" />
       <workItem from="1639214320463" duration="2085000" />
+      <workItem from="1639224965390" duration="1383000" />
     </task>
     <servers />
   </component>
