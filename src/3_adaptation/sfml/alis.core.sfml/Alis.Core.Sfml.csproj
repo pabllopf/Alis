@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <!-- _________________________ GENERAL CONFIG ___________________________________-->
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <Configurations>Debug;Release</Configurations>
         <LangVersion>9</LangVersion>
         <Nullable>enable</Nullable>

@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
         <LangVersion>9</LangVersion>
         <Nullable>enable</Nullable>
@@ -10,11 +10,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core\Alis.Core.csproj"/>
+        <ProjectReference Include="..\alis.core\Alis.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="docs\"/>
+        <Folder Include="docs\" />
     </ItemGroup>
 
 </Project>

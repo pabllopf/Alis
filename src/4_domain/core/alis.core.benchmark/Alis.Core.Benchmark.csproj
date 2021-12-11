@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
         <LangVersion>9</LangVersion>
         <Nullable>enable</Nullable>
@@ -10,36 +10,36 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="Config\**"/>
-        <Compile Remove="Input\**"/>
-        <Compile Remove="Render\**"/>
-        <Compile Remove="Scene\**"/>
-        <EmbeddedResource Remove="Config\**"/>
-        <EmbeddedResource Remove="Input\**"/>
-        <EmbeddedResource Remove="Render\**"/>
-        <EmbeddedResource Remove="Scene\**"/>
-        <None Remove="Config\**"/>
-        <None Remove="Input\**"/>
-        <None Remove="Render\**"/>
-        <None Remove="Scene\**"/>
+        <Compile Remove="Config\**" />
+        <Compile Remove="Input\**" />
+        <Compile Remove="Render\**" />
+        <Compile Remove="Scene\**" />
+        <EmbeddedResource Remove="Config\**" />
+        <EmbeddedResource Remove="Input\**" />
+        <EmbeddedResource Remove="Render\**" />
+        <EmbeddedResource Remove="Scene\**" />
+        <None Remove="Config\**" />
+        <None Remove="Input\**" />
+        <None Remove="Render\**" />
+        <None Remove="Scene\**" />
     </ItemGroup>
 
 
     <ItemGroup>
-        <Compile Remove="Game.cs"/>
+        <Compile Remove="Game.cs" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Docs\"/>
-        <Folder Include="Docs\tests\"/>
+        <Folder Include="Docs\" />
+        <Folder Include="Docs\tests\" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core\Alis.Core.csproj"/>
+        <ProjectReference Include="..\alis.core\Alis.Core.csproj" />
     </ItemGroup>
 
 </Project>
