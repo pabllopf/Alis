@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,9 @@ using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Shared.Contracts
 {
+    /// <summary>
+    /// The test contract class
+    /// </summary>
     public class TestContract
     {
         /// <summary>

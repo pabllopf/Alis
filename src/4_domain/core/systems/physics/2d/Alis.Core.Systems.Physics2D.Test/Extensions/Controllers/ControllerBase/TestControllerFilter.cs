@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,9 @@ using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.ControllerBase
 {
+    /// <summary>
+    /// The test controller filter class
+    /// </summary>
     public class TestControllerFilter
     {
         /// <summary>

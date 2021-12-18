@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,9 @@ using NUnit.Framework;
 
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.Wind.Curve
 {
+    /// <summary>
+    /// The test curve continuity class
+    /// </summary>
     public class TestCurveContinuity
     {
         /// <summary>
