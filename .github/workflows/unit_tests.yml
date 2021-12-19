@@ -32,6 +32,8 @@ jobs:
           path: temp-test
           key: ${{ runner.os }}-test
       
+      - name: Go SRC
+        run: cd src 
       - name: Restore dependencies
         run: dotnet restore 
       - name: Build
