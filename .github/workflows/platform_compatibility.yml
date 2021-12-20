@@ -30,7 +30,7 @@ jobs:
           key: ${{ runner.os }}-ubuntu
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./src/Alis.sln 
         
       - name: Build
         run: dotnet build ./src/Alis.sln  
@@ -57,7 +57,7 @@ jobs:
           key: ${{ runner.os }}-windows   
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./src/Alis.sln 
         
       - name: Build
         run: dotnet build ./src/Alis.sln  
@@ -84,7 +84,7 @@ jobs:
           key: ${{ runner.os }}-macos   
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore ./src/Alis.sln 
         
       - name: Build
         run: dotnet build ./src/Alis.sln   
