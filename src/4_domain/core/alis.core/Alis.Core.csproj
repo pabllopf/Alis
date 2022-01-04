@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <!-- _________________________ GENERAL CONFIG ___________________________________-->
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Configurations>Debug;Release</Configurations>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <Platforms>AnyCPU;x64;x32;x86;ARM64</Platforms>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\fluent\alis.fluentapi\Alis.FluentApi.csproj" />
+        <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />
+        <ProjectReference Include="..\systems\Alis.Core.Systems.Audio\Alis.Core.Systems.Audio.csproj" />
+        <ProjectReference Include="..\systems\physics\2d\Alis.Core.Systems.Physics2D\Alis.Core.Systems.Physics2D.csproj" />
+        <ProjectReference Include="..\systems\physics\Alis.Core.Systems.Physics3D\Alis.Core.Systems.Physics3D.csproj" />
+    </ItemGroup>
+
+
+</Project>

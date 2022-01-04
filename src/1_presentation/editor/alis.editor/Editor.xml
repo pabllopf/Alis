@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Editor.Program">
+            <summary>Run the engine</summary>
+        </member>
+        <member name="M:Alis.Editor.Program.Main(System.String[])">
+            <summary>Mains the specified arguments.</summary>
+            <param name="args">The arguments.</param>
+            <returns>Return -1 or 0</returns>
+        </member>
+    </members>
+</doc>
