@@ -38,6 +38,9 @@ namespace Alis.Installer
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args) => Console.WriteLine("Hello World!");
+        public static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
     }
 }

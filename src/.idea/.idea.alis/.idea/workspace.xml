@@ -32,34 +32,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Alis.Core.Systems.Audio.Test.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/UnitTest1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Example.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/Alis.Core.Systems.Graphics2D.Test.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/UnitTest1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D/Alis.Core.Systems.Graphics2D.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/Alis.Core.Systems.Graphics3D.Test.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/UnitTest1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/Alis.Core.Systems.Graphics3D.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/Class1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/Alis.Core.Systems.Input.Test.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/UnitTest1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/Alis.Core.Systems.Input.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/Class1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/Alis.Core.Systems.Output.Test.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/UnitTest1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/Alis.Core.Systems.Output.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/Class1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/.editorconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/Example.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/Alis.Core.Systems.Audio/appsettings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/Alis.Core.Systems.Graphics2D/Alis.Core.Systems.Graphics2D.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/alis.sln" beforeDir="false" afterPath="$PROJECT_DIR$/alis.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/Class1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/Class1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/Class1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D.Test/UnitTest1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -682,6 +666,9 @@
       <workItem from="1639826536446" duration="106000" />
       <workItem from="1639826988401" duration="4903000" />
       <workItem from="1639914170880" duration="5665000" />
+      <workItem from="1641323188494" duration="7000" />
+      <workItem from="1641492423427" duration="2017000" />
+      <workItem from="1641566349177" duration="2816000" />
     </task>
     <servers />
   </component>
