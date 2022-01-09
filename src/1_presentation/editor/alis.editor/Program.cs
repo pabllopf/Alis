@@ -32,7 +32,7 @@ using System;
 namespace Alis.Editor
 {
     /// <summary>Run the engine</summary>
-    public class Program
+    public static class Program
     {
         /// <summary>Mains the specified arguments.</summary>
         /// <param name="args">The arguments.</param>
