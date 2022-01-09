@@ -25,6 +25,13 @@
     <projectFile>1_presentation/Installer/Installer.csproj</projectFile>
     <projectFile>1_presentation/Alis.Installer/Alis.Installer.csproj</projectFile>
     <projectFile>4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D.Test/Alis.Core.Systems.Physics3D.Test.csproj</projectFile>
+    <projectFile>1_presentation/installer/Alis.Installer.Test/Alis.Installer.Test.csproj</projectFile>
+    <projectFile>4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/Alis.Core.Systems.Graphics2D.Test.csproj</projectFile>
+    <projectFile>4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/Alis.Core.Systems.Graphics3D.Test.csproj</projectFile>
+    <projectFile>4_domain/core/systems/input/Alis.Core.Systems.Input.Test/Alis.Core.Systems.Input.Test.csproj</projectFile>
+    <projectFile>4_domain/core/systems/output/Alis.Core.Systems.Output.Test/Alis.Core.Systems.Output.Test.csproj</projectFile>
+    <projectFile>4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Alis.Core.Systems.Audio.Test.csproj</projectFile>
+    <projectFile>4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Alis.Core.Systems.Audio.Example.csproj</projectFile>
     <projectFile profileName="Alis.Core">4_domain/core/alis.core/Alis.Core.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
@@ -32,18 +39,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Alis.Core.Systems.Audio.Example.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Assets/test.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Audio3DEngine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/AudioBackend.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/AudioBuffer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/AudioCapture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/AudioCaptureOptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/AudioEngine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/AudioEngineOptions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/AudioFormat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/AudioSource.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/BufferChain.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/CircularBuffer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/BinaryReaderExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/Decoder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/FFmpeg/FFmpegDecoder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/FFmpeg/FFmpegPointers.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/ISoundSinkReceiver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/Mp3/Mp3Decoder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/SoundSink.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/SoundStream.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/SoundStreamState.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/Vorbis/VorbisDecoder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/Wave/DviApcmParser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/Wave/PcmParser.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/Wave/WaveDecoder.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Codec/Wave/WaveFormat.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Lib/OpenAL/Win32/OpenAL32.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Lib/OpenAL/Win64/OpenAL32.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/AL3DEngine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/ALBuffer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/ALCapture.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/ALEngine.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/ALSource.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/ALSubMixer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/Al.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/AlExt.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/AlNative.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/Alc.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/SharpAudioException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/SuxMixer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Alis.Core.Systems.Audio.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Alis.Core.Systems.Audio.Test.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/Class1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/Class1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/UnitTest1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/Class1.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D.Test/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D.Test/UnitTest1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Example.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alis.sln" beforeDir="false" afterPath="$PROJECT_DIR$/alis.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +160,7 @@
     <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.2_Application\Alis\Alis.Example">
+  <component name="RunManager" selected=".NET Project.Alis.Core.Systems.Audio.Example">
     <configuration name="2_Application\Alis\Alis.Example" type="DotNetProject" factoryName=".NET Project" temporary="true">
       <option name="EXE_PATH" value="$PROJECT_DIR$/2_application/alis.example/bin/x64/Debug/net5.0/Alis.Example.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -269,6 +315,114 @@
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/Alis.Core.SFML.Test.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Alis.Core.Systems.Audio.Example" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Alis.Core.Systems.Audio.Example.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Alis.Core.Systems.Audio.Test" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Alis.Core.Systems.Audio.Test.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Alis.Core.Systems.Graphics2D.Test" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/Alis.Core.Systems.Graphics2D.Test.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Alis.Core.Systems.Graphics3D.Test" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/Alis.Core.Systems.Graphics3D.Test.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Alis.Core.Systems.Input.Test" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/Alis.Core.Systems.Input.Test.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="Alis.Core.Systems.Output.Test" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/Alis.Core.Systems.Output.Test.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
@@ -476,6 +630,24 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Alis.Installer.Test" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/1_presentation/installer/Alis.Installer.Test/Alis.Installer.Test.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="DotNetCore" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
     <configuration name="Alis.Test" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -608,6 +780,13 @@
       <item itemvalue=".NET Project.Alis.Installer" />
       <item itemvalue=".NET Project.Alis.Core.Systems.Physics3D.Test" />
       <item itemvalue=".NET Project.2_Application\Alis\Alis.Example" />
+      <item itemvalue=".NET Project.Alis.Installer.Test" />
+      <item itemvalue=".NET Project.Alis.Core.Systems.Graphics2D.Test" />
+      <item itemvalue=".NET Project.Alis.Core.Systems.Graphics3D.Test" />
+      <item itemvalue=".NET Project.Alis.Core.Systems.Input.Test" />
+      <item itemvalue=".NET Project.Alis.Core.Systems.Output.Test" />
+      <item itemvalue=".NET Project.Alis.Core.Systems.Audio.Test" />
+      <item itemvalue=".NET Project.Alis.Core.Systems.Audio.Example" />
     </list>
     <recent_temporary>
       <list>
@@ -669,6 +848,7 @@
       <workItem from="1641323188494" duration="7000" />
       <workItem from="1641492423427" duration="2017000" />
       <workItem from="1641566349177" duration="2816000" />
+      <workItem from="1641734557153" duration="892000" />
     </task>
     <servers />
   </component>

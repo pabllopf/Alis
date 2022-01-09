@@ -2,7 +2,33 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <Configurations>Debug;Release</Configurations>
+        <LangVersion>9</LangVersion>
         <Nullable>enable</Nullable>
+        <Platforms>AnyCPU;x64;x32;x86;ARM64</Platforms>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CommandLineParser" Version="2.8.0" />
+        <PackageReference Include="Vortice.MediaFoundation" Version="2.1.0" />
+        <PackageReference Include="Vortice.XAudio2" Version="2.1.0" />
+        <PackageReference Include="NLayer.Core" Version="1.15.0" />
+        <PackageReference Include="NVorbis" Version="0.10.4" />
+        <PackageReference Include="System.Memory" Version="4.5.4" />
+        <PackageReference Include="FFmpeg.AutoGen" Version="4.4.1" />
+        <PackageReference Include="NativeLibraryLoader" Version="1.0.12" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="Lib/OpenAL/Win64/OpenAL32.dll">
+            <Link>Lib/OpenAL/Win64/%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Include="Lib/OpenAL/Win32/OpenAL32.dll">
+            <Link>Lib/OpenAL/Win32/%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>

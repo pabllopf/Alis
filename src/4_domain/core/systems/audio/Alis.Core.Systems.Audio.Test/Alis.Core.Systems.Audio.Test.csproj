@@ -1,9 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+    
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+        <Configurations>Debug;Release</Configurations>
+        <LangVersion>9</LangVersion>
         <Nullable>enable</Nullable>
-
+        <Platforms>AnyCPU;x64;x32;x86;ARM64</Platforms>
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
