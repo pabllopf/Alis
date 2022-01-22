@@ -39,22 +39,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Assets/Example.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Assets/bach.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Assets/sample.flac" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Assets/test.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Audio3D.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/BackendDiscoverer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/BackendFactAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Capture.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Engines.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/FileFormats.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/SoundStreams.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/SubMixing.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/TestUtil.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/riderPublish.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/runtimes/linux-x64/native/libopenal.so" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/runtimes/osx-x64/native/libopenal.dylib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/runtimes/win-x64/native/libopenal.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/runtimes/win-x86/native/libopenal.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Alis.Core.Systems.Audio.Test.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/Alis.Core.Systems.Audio.Test.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/UnitTest1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Alis.Core.Systems.Audio.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Alis.Core.Systems.Audio.Example.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Lib/OpenAL/Win32/OpenAL32.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Lib/OpenAL/Win64/OpenAL32.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/AlNative.cs" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/AlNative.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/appsettings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.json" beforeDir="false" afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,13 +79,17 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/3C0/DebugProvider.Windows.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/PhysicsSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/FD/Matrix4x4.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28be434f13d647688f5ff1b9d2bc98278f5778/3B5/Debug.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/25288f22b7c548d8adf4cb3c0171568e75600/A/Assert.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/AlNative.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/Al.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/OpenAl/Binding/Alc.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/4_domain/core/alis.core/Systems/PhysicsSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f752884286b6339cb3e8ade38c5b9c5f79f4ad173bae090944b89357bb36a/TimeSpan.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis.example/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/41A/List.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/28be434f13d647688f5ff1b9d2bc98278f5778/3B5/Debug.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/2_application/alis/Builders/VideoGameBuilder.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/25288f22b7c548d8adf4cb3c0171568e75600/A/Assert.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/28be434f13d647688f5ff1b9d2bc98278f5778/eb/55f9b89b/DebugProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/879e64150fe442079fadd555ede677aa8f5788/5b/63cc4a41/IEquatable`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/879e64150fe442079fadd555ede677aa8f5788/413/HashSet.cs" root0="SKIP_HIGHLIGHTING" />
@@ -125,7 +127,23 @@
     <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected=".NET Project.Alis.Core.Systems.Audio.Example">
+  <component name="RunManager" selected="Publish to folder.Alis.Core.Systems.Audio.Example(win-x64)">
+    <configuration name="Alis.Core.Systems.Audio.Example(linux-x64)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Release" delete_existing_files="true" platform="ARM64" ready_to_run="true" runtime="linux-x64" self_contained="true" target_folder="./bin/publish/linux-x64" target_framework="net6.0" uuid_high="-7778036509354997559" uuid_low="-8965477741905570613" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Alis.Core.Systems.Audio.Example(osx-x64)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Release" delete_existing_files="true" platform="x64" ready_to_run="true" runtime="osx-x64" self_contained="true" target_folder="./bin/publish/osx-x64" target_framework="net6.0" uuid_high="-7778036509354997559" uuid_low="-8965477741905570613" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Alis.Core.Systems.Audio.Example(win-x64)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Debug" delete_existing_files="true" platform="x64" ready_to_run="true" runtime="win-x64" self_contained="true" target_folder="./bin/publish/win-x64" target_framework="net6.0" uuid_high="-7778036509354997559" uuid_low="-8965477741905570613" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Alis.Core.Systems.Audio(win-x64)" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Debug" platform="x64" ready_to_run="true" runtime="win-x64" self_contained="true" target_folder="./bin/publish/win-x64" target_framework="net6.0" uuid_high="-5892258432994947117" uuid_low="-6369481012926244370" />
+      <method v="2" />
+    </configuration>
     <configuration name="2_Application\Alis\Alis.Example" type="DotNetProject" factoryName=".NET Project" temporary="true">
       <option name="EXE_PATH" value="$PROJECT_DIR$/2_application/alis.example/bin/x64/Debug/net5.0/Alis.Example.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -290,9 +308,9 @@
       </method>
     </configuration>
     <configuration name="Alis.Core.Systems.Audio.Example" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/bin/Debug/net6.0/win-x64/Alis.Core.Systems.Audio.Example.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/bin/Debug/net6.0/win-x64" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
@@ -302,7 +320,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net6.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -744,7 +762,6 @@
       <item itemvalue=".NET Project.Installer" />
       <item itemvalue=".NET Project.Alis.Installer" />
       <item itemvalue=".NET Project.Alis.Core.Systems.Physics3D.Test" />
-      <item itemvalue=".NET Project.2_Application\Alis\Alis.Example" />
       <item itemvalue=".NET Project.Alis.Installer.Test" />
       <item itemvalue=".NET Project.Alis.Core.Systems.Graphics2D.Test" />
       <item itemvalue=".NET Project.Alis.Core.Systems.Graphics3D.Test" />
@@ -752,6 +769,11 @@
       <item itemvalue=".NET Project.Alis.Core.Systems.Output.Test" />
       <item itemvalue=".NET Project.Alis.Core.Systems.Audio.Test" />
       <item itemvalue=".NET Project.Alis.Core.Systems.Audio.Example" />
+      <item itemvalue=".NET Project.2_Application\Alis\Alis.Example" />
+      <item itemvalue="Publish to folder.Alis.Core.Systems.Audio(win-x64)" />
+      <item itemvalue="Publish to folder.Alis.Core.Systems.Audio.Example(win-x64)" />
+      <item itemvalue="Publish to folder.Alis.Core.Systems.Audio.Example(osx-x64)" />
+      <item itemvalue="Publish to folder.Alis.Core.Systems.Audio.Example(linux-x64)" />
     </list>
     <recent_temporary>
       <list>

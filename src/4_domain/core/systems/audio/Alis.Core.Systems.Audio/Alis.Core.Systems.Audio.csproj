@@ -3,6 +3,8 @@
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <Configurations>Debug;Release</Configurations>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <RuntimeIdentifiers>win10-x64;win10-x86;linux-x64;osx-x64</RuntimeIdentifiers>
         <LangVersion>9</LangVersion>
         <Nullable>enable</Nullable>
         <Platforms>AnyCPU;x64;x32;x86;ARM64</Platforms>
@@ -21,14 +23,30 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="Lib/OpenAL/Win64/OpenAL32.dll">
-            <Link>Lib/OpenAL/Win64/%(Filename)%(Extension)</Link>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
-        <None Include="Lib/OpenAL/Win32/OpenAL32.dll">
-            <Link>Lib/OpenAL/Win32/%(Filename)%(Extension)</Link>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </None>
+        <Content Condition="'$(RuntimeIdentifier)' == 'linux-x64'" Include="runtimes/linux-x64/native/libopenal.so">
+            <Link>%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+
+        <Content Condition="'$(RuntimeIdentifier)' == 'win-x64'" Include="runtimes/win-x64/native/libopenal.dll">
+            <Link>%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+
+        <Content Condition="'$(RuntimeIdentifier)' == 'win-x32'" Include="runtimes/win-x32/native/libopenal.dll">
+            <Link>%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+
+        <Content Condition="'$(RuntimeIdentifier)' == 'osx-x64'" Include="runtimes/osx-x64/native/libopenal.dylib">
+            <Link>%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+        
     </ItemGroup>
 
 </Project>

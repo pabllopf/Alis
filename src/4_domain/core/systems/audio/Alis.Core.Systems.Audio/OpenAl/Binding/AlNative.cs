@@ -1,5 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
+using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.Loader;
 using NativeLibrary = NativeLibraryLoader.NativeLibrary;
 
 namespace Alis.Core.Systems.Audio.OpenAl.Binding
@@ -11,12 +14,12 @@ namespace Alis.Core.Systems.Audio.OpenAl.Binding
         private static NativeLibrary LoadOpenAL()
         {
             string[] names;
-
+            
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 names = new[]
                 {
-                    "Lib/OpenAL/Win64/OpenAL32.dll"
+                    "libopenal.dll"
                 };
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
@@ -32,9 +35,7 @@ namespace Alis.Core.Systems.Audio.OpenAl.Binding
                 names = new[]
                 {
                     "libopenal.dylib",
-                    "liblibopenal.dylib",
-                    "soft_oal.so",
-                    "/opt/homebrew/Cellar/openal-soft/1.21.1/lib/libopenal.1.dylib"
+                    "liblibopenal.dylib"
                 };
             }
             else
