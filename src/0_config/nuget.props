@@ -13,4 +13,13 @@
         <PackageTags>Engine Framework ios android mac linux windows cross-platform</PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
+
+    <!-- BUILD CONFIG -->
+    <ItemGroup>
+        <PackageReference Include="Costura.Fody" Version="5.7.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>Runtimes</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
 </Project>

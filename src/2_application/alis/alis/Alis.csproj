@@ -4,6 +4,7 @@
     <Import Project="$(SolutionDir)/0_config/runtimes.props" />
     <Import Project="$(SolutionDir)/0_config/licence.props" />
     <Import Project="$(SolutionDir)/0_config/nuget.props" />
+    
     <ItemGroup>
       <ProjectReference Include="..\..\..\3_adaptation\audio\alis.core.audio\Alis.Core.Audio.csproj" />
       <ProjectReference Include="..\..\..\3_adaptation\graphics\2D\sfml\alis.core.graphics.sfml\Alis.Core.Graphics.Sfml.csproj" />
