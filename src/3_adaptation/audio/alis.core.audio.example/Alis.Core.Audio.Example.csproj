@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="Assets/test.wav">
+            <Link>Assets/%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="Assets/test_1.mp3">
+            <Link>Assets/%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\alis.core.audio\Alis.Core.Audio.csproj" />
+    </ItemGroup>
+
+
+
+
+</Project>
