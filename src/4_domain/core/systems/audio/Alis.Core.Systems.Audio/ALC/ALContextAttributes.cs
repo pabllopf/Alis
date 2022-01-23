@@ -9,9 +9,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace OpenTK.Audio.OpenAL
+namespace Alis.Core.Systems.Audio.ALC
 {
     /// <summary>
     /// Convenience class for handling ALContext attributes.

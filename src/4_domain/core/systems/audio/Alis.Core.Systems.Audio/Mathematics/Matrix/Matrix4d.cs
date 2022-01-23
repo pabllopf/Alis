@@ -24,8 +24,10 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
+using Alis.Core.Systems.Audio.Mathematics.Data;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Matrix
 {
     /// <summary>
     /// Represents a 4x4 matrix containing 3D rotation, scale, transform, and projection with double-precision components.

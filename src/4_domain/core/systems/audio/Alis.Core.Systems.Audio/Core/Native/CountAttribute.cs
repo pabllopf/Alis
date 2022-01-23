@@ -1,6 +1,6 @@
 using System;
 
-namespace OpenTK.Core.Native
+namespace Alis.Core.Systems.Audio.Core.Native
 {
     /// <summary>
     /// Represents the count of a parameter.

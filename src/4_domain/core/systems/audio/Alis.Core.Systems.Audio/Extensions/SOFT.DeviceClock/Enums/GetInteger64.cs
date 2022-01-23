@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OpenTK.Audio.OpenAL.Extensions.SOFT.DeviceClock
+﻿namespace Alis.Core.Systems.Audio.Extensions.SOFT.DeviceClock.Enums
 {
     public enum GetInteger64
     {

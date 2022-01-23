@@ -7,7 +7,7 @@
 // of the MIT license. See the LICENSE file for details.
 //
 
-namespace OpenTK.OpenAL
+namespace Alis.Core.Systems.Audio
 {
     /// <summary>
     /// Defines the known OpenAL versions.

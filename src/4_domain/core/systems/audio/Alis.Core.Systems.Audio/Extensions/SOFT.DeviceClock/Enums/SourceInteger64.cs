@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Alis.Core.Systems.Audio.AL;
 
-namespace OpenTK.Audio.OpenAL.Extensions.SOFT.DeviceClock
+namespace Alis.Core.Systems.Audio.Extensions.SOFT.DeviceClock.Enums
 {
     public enum SourceInteger64
     {

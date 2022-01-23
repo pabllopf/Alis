@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace OpenTK.Core
+namespace Alis.Core.Systems.Audio.Core.Utility
 {
     internal static class MarshalUtility
     {

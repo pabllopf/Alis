@@ -24,8 +24,10 @@ using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
+using Alis.Core.Systems.Audio.Mathematics.Matrix;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Data
 {
     /// <summary>
     /// Represents a double-precision Quaternion.

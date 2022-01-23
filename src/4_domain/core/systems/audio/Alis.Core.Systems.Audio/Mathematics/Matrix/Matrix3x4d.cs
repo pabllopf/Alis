@@ -24,8 +24,10 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
+using Alis.Core.Systems.Audio.Mathematics.Data;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Matrix
 {
     /// <summary>
     /// Represents a 3x4 Matrix.

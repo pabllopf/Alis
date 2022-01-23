@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace OpenTK.Core.Native
+namespace Alis.Core.Systems.Audio.Core.Native
 {
     /// <summary>
     /// Contains extra marshalling utilities that aren't available in the normal Marshal class.

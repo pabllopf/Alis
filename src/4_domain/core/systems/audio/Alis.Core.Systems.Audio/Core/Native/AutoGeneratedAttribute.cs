@@ -25,7 +25,7 @@
 
 using System;
 
-namespace OpenTK.Core.Native
+namespace Alis.Core.Systems.Audio.Core.Native
 {
     /// <summary>
     /// Indicates that this function is generated automatically by a tool.

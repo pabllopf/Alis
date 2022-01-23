@@ -7,9 +7,9 @@
 // of the MIT license. See the LICENSE file for details.
 //
 
-using OpenTK.Mathematics;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
 
-namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
+namespace Alis.Core.Systems.Audio.Extensions.Creative.EFX.Presets
 {
     /// <summary>
     /// A set of reverb presets that can be used with the extension.

@@ -26,7 +26,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace OpenTK.Core.Native
+namespace Alis.Core.Systems.Audio.Core.Native
 {
     /// <summary>
     /// Defines the slot index for a wrapper function.

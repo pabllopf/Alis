@@ -10,7 +10,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace OpenTK.Audio.OpenAL.Native
+namespace Alis.Core.Systems.Audio.Native
 {
     internal class ConstCharPtrMarshaler : ICustomMarshaler
     {

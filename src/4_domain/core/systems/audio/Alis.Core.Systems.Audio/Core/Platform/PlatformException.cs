@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OpenTK.Core.Platform
+namespace Alis.Core.Systems.Audio.Core.Platform
 {
     /// <summary>
     /// Defines a platform-specific exception.

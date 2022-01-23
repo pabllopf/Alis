@@ -10,7 +10,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace OpenTK.Audio.OpenAL
+namespace Alis.Core.Systems.Audio
 {
     /// <summary>
     /// Contains the library name of OpenAL.

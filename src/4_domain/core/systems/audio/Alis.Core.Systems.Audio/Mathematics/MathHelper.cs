@@ -11,7 +11,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics
 {
     /// <summary>
     /// Contains common mathematical functions and constants.

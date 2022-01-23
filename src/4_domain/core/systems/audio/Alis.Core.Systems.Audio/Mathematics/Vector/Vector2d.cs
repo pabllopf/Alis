@@ -22,12 +22,14 @@ SOFTWARE.
 
 using System;
 using System.Diagnostics.Contracts;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
+using Alis.Core.Systems.Audio.Mathematics.Data;
+using Alis.Core.Systems.Audio.Mathematics.Matrix;
+using Half = Alis.Core.Systems.Audio.Mathematics.Data.Half;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Vector
 {
     /// <summary>
     /// Represents a 2D vector using two double-precision floating-point numbers.

@@ -8,11 +8,10 @@
 //
 
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace OpenTK.Audio.OpenAL
+namespace Alis.Core.Systems.Audio.Native
 {
     /// <summary>
     /// Provides a base for ApiContext so that it can register dll intercepts.
@@ -39,7 +38,7 @@ namespace OpenTK.Audio.OpenAL
 
         private static IntPtr ImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {
-            if (libraryName == AL.Lib || libraryName == ALC.Lib)
+            if (libraryName == AL.AL.Lib || libraryName == ALC.ALC.Lib)
             {
                 string libName = ALLibraryNameContainer.GetLibraryName();
 

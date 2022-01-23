@@ -9,12 +9,11 @@
 
 using System;
 using System.Diagnostics.Contracts;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Vector
 {
     /// <summary>
     /// Represents a 3D vector using three 32-bit integer numbers.

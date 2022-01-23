@@ -9,21 +9,16 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Security;
-using OpenTK.Audio.OpenAL.Native;
-using OpenTK.Core;
-using OpenTK.Core.Native;
-using OpenTK.OpenAL;
+using Alis.Core.Systems.Audio.AL;
+using Alis.Core.Systems.Audio.Native;
 
-namespace OpenTK.Audio.OpenAL
+namespace Alis.Core.Systems.Audio.ALC
 {
     /// <summary>Alc = Audio Library Context.</summary>
     public class ALC : ALBase
     {
-        internal const string Lib = AL.Lib;
+        internal const string Lib = AL.AL.Lib;
         internal const CallingConvention AlcCallingConv = CallingConvention.Cdecl;
 
         static ALC()

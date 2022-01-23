@@ -9,14 +9,10 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Security;
-using OpenTK.Audio.OpenAL;
-using OpenTK.Audio.OpenAL.Native;
-using OpenTK.Core.Native;
-using OpenTK.Mathematics;
-using OpenTK.OpenAL;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
+using Alis.Core.Systems.Audio.Native;
 
-namespace OpenTK.Audio.OpenAL
+namespace Alis.Core.Systems.Audio.AL
 {
     /// <summary>
     /// Provides access to the OpenAL 1.1 flat API.

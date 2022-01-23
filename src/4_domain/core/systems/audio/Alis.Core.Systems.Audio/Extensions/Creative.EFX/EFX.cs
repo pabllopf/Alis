@@ -9,9 +9,11 @@
 
 using System;
 using System.Runtime.InteropServices;
-using OpenTK.Mathematics;
+using Alis.Core.Systems.Audio.Extensions.Creative.EFX.Enums;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
+using Alis.Core.Systems.Audio.Native;
 
-namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
+namespace Alis.Core.Systems.Audio.Extensions.Creative.EFX
 {
     /// <summary>
     /// Exposes the functions of the Effects Extension.
@@ -40,7 +42,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <returns>Whether the extension was present or not.</returns>
         public static bool IsExtensionPresent(ALDevice device)
         {
-            return ALC.IsExtensionPresent(device, ExtensionName);
+            return ALC.ALC.IsExtensionPresent(device, ExtensionName);
         }
 
         /// <summary>
@@ -50,7 +52,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="size">The size of the provided buffer.</param>
         /// <param name="data">A pointer to the first element of a provided data buffer.</param>
-        [DllImport(ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true, CallingConvention = ALC.AlcCallingConv)]
+        [DllImport(ALC.ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true, CallingConvention = ALC.ALC.AlcCallingConv)]
         public static extern unsafe void GetInteger(ALDevice device, EFXContextInteger param, int size, int* data);
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="size">The size of the provided buffer.</param>
         /// <param name="data">A pointer to the first element of a provided data buffer.</param>
-        [DllImport(ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true, CallingConvention = ALC.AlcCallingConv)]
+        [DllImport(ALC.ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true, CallingConvention = ALC.ALC.AlcCallingConv)]
         public static extern void GetInteger(ALDevice device, EFXContextInteger param, int size, ref int data);
 
         /// <summary>
@@ -70,7 +72,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="size">The size of the provided buffer.</param>
         /// <param name="data">A pointer to the first element of a provided data buffer.</param>
-        [DllImport(ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true, CallingConvention = ALC.AlcCallingConv)]
+        [DllImport(ALC.ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true, CallingConvention = ALC.ALC.AlcCallingConv)]
         public static extern void GetInteger(ALDevice device, EFXContextInteger param, int size, int[] data);
 
         /// <summary>
@@ -132,7 +134,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="IsAuxiliaryEffectSlot"/>
         public static unsafe void GenAuxiliaryEffectSlots(int count, int* slots) => _GenAuxiliaryEffectSlotsPtr(count, slots);
 
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GenAuxiliaryEffectSlotsPtrDelegate(int count, int* slots);
         private static readonly GenAuxiliaryEffectSlotsPtrDelegate _GenAuxiliaryEffectSlotsPtr = LoadDelegate<GenAuxiliaryEffectSlotsPtrDelegate>("alGenAuxiliaryEffectSlots");
 
@@ -144,7 +146,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="DeleteAuxiliaryEffectSlots(int, ref int)"/>
         /// <seealso cref="IsAuxiliaryEffectSlot"/>
         public static void GenAuxiliaryEffectSlots(int count, ref int slots) => _GenAuxiliaryEffectSlotsRef(count, ref slots);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenAuxiliaryEffectSlotsRefDelegate(int count, ref int slots);
         private static readonly GenAuxiliaryEffectSlotsRefDelegate _GenAuxiliaryEffectSlotsRef = LoadDelegate<GenAuxiliaryEffectSlotsRefDelegate>("alGenAuxiliaryEffectSlots");
 
@@ -156,7 +158,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="DeleteAuxiliaryEffectSlots(int, int[])"/>
         /// <seealso cref="IsAuxiliaryEffectSlot"/>
         public static void GenAuxiliaryEffectSlots(int count, int[] slots) => _GenAuxiliaryEffectSlotsArray(count, slots);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenAuxiliaryEffectSlotsArrayDelegate(int count, int[] slots);
         private static readonly GenAuxiliaryEffectSlotsArrayDelegate _GenAuxiliaryEffectSlotsArray = LoadDelegate<GenAuxiliaryEffectSlotsArrayDelegate>("alGenAuxiliaryEffectSlots");
 
@@ -168,7 +170,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenAuxiliaryEffectSlots(int, int*)"/>
         /// <seealso cref="IsAuxiliaryEffectSlot"/>
         public static unsafe void DeleteAuxiliaryEffectSlots(int count, int* slots) => _DeleteAuxiliaryEffectSlotsPtr(count, slots);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void DeleteAuxiliaryEffectSlotsPtrDelegate(int count, int* slots);
         private static readonly DeleteAuxiliaryEffectSlotsPtrDelegate _DeleteAuxiliaryEffectSlotsPtr = LoadDelegate<DeleteAuxiliaryEffectSlotsPtrDelegate>("alDeleteAuxiliaryEffectSlots");
 
@@ -180,7 +182,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenAuxiliaryEffectSlots(int, ref int)"/>
         /// <seealso cref="IsAuxiliaryEffectSlot"/>
         public static void DeleteAuxiliaryEffectSlots(int count, ref int slots) => _DeleteAuxiliaryEffectSlotsRef(count, ref slots);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteAuxiliaryEffectSlotsRefDelegate(int count, ref int slots);
         private static readonly DeleteAuxiliaryEffectSlotsRefDelegate _DeleteAuxiliaryEffectSlotsRef = LoadDelegate<DeleteAuxiliaryEffectSlotsRefDelegate>("alDeleteAuxiliaryEffectSlots");
 
@@ -192,7 +194,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenAuxiliaryEffectSlots(int, int[])"/>
         /// <seealso cref="IsAuxiliaryEffectSlot"/>
         public static void DeleteAuxiliaryEffectSlots(int count, int[] slots) => _DeleteAuxiliaryEffectSlotsArray(count, slots);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteAuxiliaryEffectSlotsArrayDelegate(int count, int[] slots);
         private static readonly DeleteAuxiliaryEffectSlotsArrayDelegate _DeleteAuxiliaryEffectSlotsArray = LoadDelegate<DeleteAuxiliaryEffectSlotsArrayDelegate>("alDeleteAuxiliaryEffectSlots");
 
@@ -202,7 +204,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="slot">The handle.</param>
         /// <returns>true if the handle is a slot handle; otherwise, false.</returns>
         public static bool IsAuxiliaryEffectSlot(int slot) => _IsAuxiliaryEffectSlot(slot);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate bool IsAuxiliaryEffectSlotDelegate(int slot);
         private static readonly IsAuxiliaryEffectSlotDelegate _IsAuxiliaryEffectSlot = LoadDelegate<IsAuxiliaryEffectSlotDelegate>("alIsAuxiliaryEffectSlot");
 
@@ -213,7 +215,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void AuxiliaryEffectSlot(int slot, EffectSlotInteger param, int value) => _AuxiliaryEffectSloti(slot, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void AuxiliaryEffectSlotiDelegate(int slot, EffectSlotInteger param, int value);
         private static readonly AuxiliaryEffectSlotiDelegate _AuxiliaryEffectSloti = LoadDelegate<AuxiliaryEffectSlotiDelegate>("alAuxiliaryEffectSloti");
 
@@ -224,7 +226,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void AuxiliaryEffectSlot(int slot, EffectSlotFloat param, float value) => _AuxiliaryEffectSlotf(slot, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void AuxiliaryEffectSlotfDelegate(int slot, EffectSlotFloat param, float value);
         private static readonly AuxiliaryEffectSlotfDelegate _AuxiliaryEffectSlotf = LoadDelegate<AuxiliaryEffectSlotfDelegate>("alAuxiliaryEffectSlotf");
 
@@ -235,7 +237,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value.</param>
         public static unsafe void GetAuxiliaryEffectSlot(int slot, EffectSlotInteger param, int* value) => _GetAuxiliaryEffectSlotiPtr(slot, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetAuxiliaryEffectSlotiPtrDelegate(int slot, EffectSlotInteger param, int* value);
         private static readonly GetAuxiliaryEffectSlotiPtrDelegate _GetAuxiliaryEffectSlotiPtr = LoadDelegate<GetAuxiliaryEffectSlotiPtrDelegate>("alGetAuxiliaryEffectSloti");
 
@@ -246,7 +248,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value.</param>
         public static void GetAuxiliaryEffectSlot(int slot, EffectSlotInteger param, out int value) => _GetAuxiliaryEffectSlotiRef(slot, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetAuxiliaryEffectSlotiRefDelegate(int slot, EffectSlotInteger param, out int value);
         private static readonly GetAuxiliaryEffectSlotiRefDelegate _GetAuxiliaryEffectSlotiRef = LoadDelegate<GetAuxiliaryEffectSlotiRefDelegate>("alGetAuxiliaryEffectSloti");
 
@@ -257,7 +259,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value.</param>
         public static unsafe void GetAuxiliaryEffectSlot(int slot, EffectSlotFloat param, float* value) => _GetAuxiliaryEffectSlotfPtr(slot, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetAuxiliaryEffectSlotfPtrDelegate(int slot, EffectSlotFloat param, float* value);
         private static readonly GetAuxiliaryEffectSlotfPtrDelegate _GetAuxiliaryEffectSlotfPtr = LoadDelegate<GetAuxiliaryEffectSlotfPtrDelegate>("alGetAuxiliaryEffectSlotf");
 
@@ -268,7 +270,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value.</param>
         public static void GetAuxiliaryEffectSlot(int slot, EffectSlotFloat param, out float value) => _GetAuxiliaryEffectSlotfRef(slot, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetAuxiliaryEffectSlotfRefDelegate(int slot, EffectSlotFloat param, out float value);
         private static readonly GetAuxiliaryEffectSlotfRefDelegate _GetAuxiliaryEffectSlotfRef = LoadDelegate<GetAuxiliaryEffectSlotfRefDelegate>("alGetAuxiliaryEffectSlotf");
 
@@ -280,7 +282,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="DeleteEffects(int, int*)"/>
         /// <seealso cref="IsEffect(int)"/>
         public static unsafe void GenEffects(int count, int* effects) => _GenEffectsPtr(count, effects);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GenEffectsPtrDelegate(int count, int* effects);
         private static readonly GenEffectsPtrDelegate _GenEffectsPtr = LoadDelegate<GenEffectsPtrDelegate>("alGenEffects");
 
@@ -292,7 +294,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="DeleteEffects(int, ref int)"/>
         /// <seealso cref="IsEffect(int)"/>
         public static void GenEffects(int count, ref int effects) => _GenEffectsRef(count, ref effects);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenEffectsRefDelegate(int count, ref int effects);
         private static readonly GenEffectsRefDelegate _GenEffectsRef = LoadDelegate<GenEffectsRefDelegate>("alGenEffects");
 
@@ -304,7 +306,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="DeleteEffects(int, int[])"/>
         /// <seealso cref="IsEffect(int)"/>
         public static void GenEffects(int count, int[] effects) => _GenEffectsArray(count, effects);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenEffectsArrayDelegate(int count, int[] effects);
         private static readonly GenEffectsArrayDelegate _GenEffectsArray = LoadDelegate<GenEffectsArrayDelegate>("alGenEffects");
 
@@ -316,7 +318,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenEffects(int, int*)"/>
         /// <seealso cref="IsEffect(int)"/>
         public static unsafe void DeleteEffects(int count, int* effects) => _DeleteEffectsPtr(count, effects);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void DeleteEffectsPtrDelegate(int count, int* effects);
         private static readonly DeleteEffectsPtrDelegate _DeleteEffectsPtr = LoadDelegate<DeleteEffectsPtrDelegate>("alDeleteEffects");
 
@@ -328,7 +330,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenEffects(int, ref int)"/>
         /// <seealso cref="IsEffect(int)"/>
         public static void DeleteEffects(int count, ref int effects) => _DeleteEffectsRef(count, ref effects);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteEffectsRefDelegate(int count, ref int effects);
         private static readonly DeleteEffectsRefDelegate _DeleteEffectsRef = LoadDelegate<DeleteEffectsRefDelegate>("alDeleteEffects");
 
@@ -340,7 +342,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenEffects(int, int[])"/>
         /// <seealso cref="IsEffect(int)"/>
         public static void DeleteEffects(int count, int[] effects) => _DeleteEffectsArray(count, effects);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteEffectsArrayDelegate(int count, int[] effects);
         private static readonly DeleteEffectsArrayDelegate _DeleteEffectsArray = LoadDelegate<DeleteEffectsArrayDelegate>("alDeleteEffects");
 
@@ -352,7 +354,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenEffects(int[])"/>
         /// <seealso cref="DeleteEffects(int[])"/>
         public static bool IsEffect(int effect) => _IsEffect(effect);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate bool IsEffectDelegate(int effect);
         private static readonly IsEffectDelegate _IsEffect = LoadDelegate<IsEffectDelegate>("alIsEffect");
 
@@ -363,7 +365,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Effect(int effect, EffectInteger param, int value) => _Effecti(effect, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void EffectiDelegate(int effect, EffectInteger param, int value);
         private static readonly EffectiDelegate _Effecti = LoadDelegate<EffectiDelegate>("alEffecti");
 
@@ -374,7 +376,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Effect(int effect, EffectFloat param, float value) => _Effectf(effect, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void EffectfDelegate(int effect, EffectFloat param, float value);
         private static readonly EffectfDelegate _Effectf = LoadDelegate<EffectfDelegate>("alEffectf");
 
@@ -385,7 +387,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void Effect(int effect, EffectVector3 param, float* value) => _EffectfvPtr(effect, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void EffectfvPtrDelegate(int effect, EffectVector3 param, float* value);
         private static readonly EffectfvPtrDelegate _EffectfvPtr = LoadDelegate<EffectfvPtrDelegate>("alEffectfv");
 
@@ -396,7 +398,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Effect(int effect, EffectVector3 param, ref float value) => _EffectfvRef(effect, param, ref value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void EffectfvRefDelegate(int effect, EffectVector3 param, ref float value);
         private static readonly EffectfvRefDelegate _EffectfvRef = LoadDelegate<EffectfvRefDelegate>("alEffectfv");
 
@@ -407,7 +409,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Effect(int effect, EffectVector3 param, float[] value) => _EffectfvArray(effect, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void EffectfvArrayDelegate(int effect, EffectVector3 param, float[] value);
         private static readonly EffectfvArrayDelegate _EffectfvArray = LoadDelegate<EffectfvArrayDelegate>("alEffectfv");
 
@@ -418,7 +420,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetEffect(int effect, EffectInteger param, int* value) => _GetEffectiPtr(effect, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetEffectiPtrDelegate(int effect, EffectInteger param, int* value);
         private static readonly GetEffectiPtrDelegate _GetEffectiPtr = LoadDelegate<GetEffectiPtrDelegate>("alGetEffecti");
 
@@ -429,7 +431,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetEffect(int effect, EffectInteger param, out int value) => _GetEffectiRef(effect, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetEffectiRefDelegate(int effect, EffectInteger param, out int value);
         private static readonly GetEffectiRefDelegate _GetEffectiRef = LoadDelegate<GetEffectiRefDelegate>("alGetEffecti");
 
@@ -440,7 +442,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetEffect(int effect, EffectFloat param, float* value) => _GetEffectfPtr(effect, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetEffectfPtrDelegate(int effect, EffectFloat param, float* value);
         private static readonly GetEffectfPtrDelegate _GetEffectfPtr = LoadDelegate<GetEffectfPtrDelegate>("alGetEffectf");
 
@@ -451,7 +453,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetEffect(int effect, EffectFloat param, out float value) => _GetEffectfRef(effect, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetEffectfRefDelegate(int effect, EffectFloat param, out float value);
         private static readonly GetEffectfRefDelegate _GetEffectfRef = LoadDelegate<GetEffectfRefDelegate>("alGetEffectf");
 
@@ -462,7 +464,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetEffect(int effect, EffectVector3 param, float* value) => _GetEffectfvPtr(effect, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetEffectfvPtrDelegate(int effect, EffectVector3 param, float* value);
         private static readonly GetEffectfvPtrDelegate _GetEffectfvPtr = LoadDelegate<GetEffectfvPtrDelegate>("alGetEffectfv");
 
@@ -473,7 +475,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetEffect(int effect, EffectVector3 param, out float value) => _GetEffectfvRef(effect, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetEffectfvRefDelegate(int effect, EffectVector3 param, out float value);
         private static readonly GetEffectfvRefDelegate _GetEffectfvRef = LoadDelegate<GetEffectfvRefDelegate>("alGetEffectfv");
 
@@ -485,7 +487,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="DeleteFilters(int, int*)"/>
         /// <seealso cref="IsFilter(int)"/>
         public static unsafe void GenFilters(int count, int* filters) => _GenFiltersPtr(count, filters);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GenFiltersPtrDelegate(int count, int* filters);
         private static readonly GenFiltersPtrDelegate _GenFiltersPtr = LoadDelegate<GenFiltersPtrDelegate>("alGenFilters");
 
@@ -497,7 +499,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="DeleteFilters(int, ref int)"/>
         /// <seealso cref="IsFilter(int)"/>
         public static void GenFilters(int count, ref int filters) => _GenFiltersRef(count, ref filters);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenFiltersRefDelegate(int count, ref int filters);
         private static readonly GenFiltersRefDelegate _GenFiltersRef = LoadDelegate<GenFiltersRefDelegate>("alGenFilters");
 
@@ -509,7 +511,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="DeleteFilters(int, int[])"/>
         /// <seealso cref="IsFilter(int)"/>
         public static void GenFilters(int count, int[] filters) => _GenFiltersArray(count, filters);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenFiltersArrayDelegate(int count, int[] filters);
         private static readonly GenFiltersArrayDelegate _GenFiltersArray = LoadDelegate<GenFiltersArrayDelegate>("alGenFilters");
 
@@ -521,7 +523,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenFilters(int, int*)"/>
         /// <seealso cref="IsFilter(int)"/>
         public static unsafe void DeleteFilters(int count, int* filters) => _DeleteFiltersPtr(count, filters);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void DeleteFiltersPtrDelegate(int count, int* filters);
         private static readonly DeleteFiltersPtrDelegate _DeleteFiltersPtr = LoadDelegate<DeleteFiltersPtrDelegate>("alDeleteFilters");
 
@@ -533,7 +535,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenFilters(int, ref int)"/>
         /// <seealso cref="IsFilter(int)"/>
         public static void DeleteFilters(int count, ref int filters) => _DeleteFiltersRef(count, ref filters);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteFiltersRefDelegate(int count, ref int filters);
         private static readonly DeleteFiltersRefDelegate _DeleteFiltersRef = LoadDelegate<DeleteFiltersRefDelegate>("alDeleteFilters");
 
@@ -545,7 +547,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenFilters(int, int[])"/>
         /// <seealso cref="IsFilter(int)"/>
         public static void DeleteFilters(int count, int[] filters) => _DeleteFiltersArray(count, filters);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteFiltersArrayDelegate(int count, int[] filters);
         private static readonly DeleteFiltersArrayDelegate _DeleteFiltersArray = LoadDelegate<DeleteFiltersArrayDelegate>("alDeleteFilters");
 
@@ -557,7 +559,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <seealso cref="GenFilters(int)"/>
         /// <seealso cref="DeleteFilters(int[])"/>
         public static bool IsFilter(int filter) => _IsFilter(filter);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate bool IsFilterDelegate(int filter);
         private static readonly IsFilterDelegate _IsFilter = LoadDelegate<IsFilterDelegate>("alIsFilter");
 
@@ -568,7 +570,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Filter(int filter, FilterInteger param, int value) => _Filteri(filter, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void FilteriDelegate(int filter, FilterInteger param, int value);
         private static readonly FilteriDelegate _Filteri = LoadDelegate<FilteriDelegate>("alFilteri");
 
@@ -579,7 +581,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Filter(int filter, FilterFloat param, float value) => _Filterf(filter, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void FilterfDelegate(int filter, FilterFloat param, float value);
         private static readonly FilterfDelegate _Filterf = LoadDelegate<FilterfDelegate>("alFilterf");
 
@@ -590,7 +592,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetFilter(int filter, FilterInteger param, int* value) => _GetFilteriPtr(filter, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetFilteriPtrDelegate(int filter, FilterInteger param, int* value);
         private static readonly GetFilteriPtrDelegate _GetFilteriPtr = LoadDelegate<GetFilteriPtrDelegate>("alGetFilteri");
 
@@ -601,7 +603,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetFilter(int filter, FilterInteger param, out int value) => _GetFilteriRef(filter, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetFilteriRefDelegate(int filter, FilterInteger param, out int value);
         private static readonly GetFilteriRefDelegate _GetFilteriRef = LoadDelegate<GetFilteriRefDelegate>("alGetFilteri");
 
@@ -612,7 +614,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetFilter(int filter, FilterFloat param, float* value) => _GetFilterfPtr(filter, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetFilterfPtrDelegate(int filter, FilterFloat param, float* value);
         private static readonly GetFilterfPtrDelegate _GetFilterfPtr = LoadDelegate<GetFilterfPtrDelegate>("alGetFilterf");
 
@@ -623,7 +625,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetFilter(int filter, FilterFloat param, out float value) => _GetFilterfRef(filter, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetFilterfRefDelegate(int filter, FilterFloat param, out float value);
         private static readonly GetFilterfRefDelegate _GetFilterfRef = LoadDelegate<GetFilterfRefDelegate>("alGetFilterf");
 
@@ -634,7 +636,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Source(int source, EFXSourceInteger param, int value) => _Sourcei(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourceiDelegate(int source, EFXSourceInteger param, int value);
         private static readonly SourceiDelegate _Sourcei = LoadDelegate<SourceiDelegate>("alSourcei");
 
@@ -645,7 +647,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Source(int source, EFXSourceFloat param, float value) => _Source(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourceDelegate(int source, EFXSourceFloat param, float value);
         private static readonly SourceDelegate _Source = LoadDelegate<SourceDelegate>("alSourcei");
 
@@ -656,7 +658,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Source(int source, EFXSourceBoolean param, bool value) => _Sourceb(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourcebDelegate(int source, EFXSourceBoolean param, bool value);
         private static readonly SourcebDelegate _Sourceb = LoadDelegate<SourcebDelegate>("alSourcei");
 
@@ -667,7 +669,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void Source(int source, EFXSourceInteger3 param, int* value) => _SourceivPtr(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void SourceivPtrDelegate(int source, EFXSourceInteger3 param, int* value);
         private static readonly SourceivPtrDelegate _SourceivPtr = LoadDelegate<SourceivPtrDelegate>("alSourceiv");
 
@@ -678,7 +680,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Source(int source, EFXSourceInteger3 param, ref int value) => _SourceivRef(source, param, ref value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourceivRefDelegate(int source, EFXSourceInteger3 param, ref int value);
         private static readonly SourceivRefDelegate _SourceivRef = LoadDelegate<SourceivRefDelegate>("alSourceiv");
 
@@ -689,7 +691,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Source(int source, EFXSourceInteger3 param, int[] value) => _SourceivArray(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourceivArrayDelegate(int source, EFXSourceInteger3 param, int[] value);
         private static readonly SourceivArrayDelegate _SourceivArray = LoadDelegate<SourceivArrayDelegate>("alSourceiv");
 
@@ -702,7 +704,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="value2">The second value to set the property to.</param>
         /// <param name="value3">The third value to set the property to.</param>
         public static void Source(int source, EFXSourceInteger3 param, int value1, int value2, int value3) => _Source3i(source, param, value1, value2, value3);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void Source3iDelegate(int source, EFXSourceInteger3 param, int value1, int value2, int value3);
         private static readonly Source3iDelegate _Source3i = LoadDelegate<Source3iDelegate>("alSource3i");
 
@@ -713,7 +715,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetSource(int source, EFXSourceInteger param, int* value) => _GetSourceiPtr(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourceiPtrDelegate(int source, EFXSourceInteger param, int* value);
         private static readonly GetSourceiPtrDelegate _GetSourceiPtr = LoadDelegate<GetSourceiPtrDelegate>("alGetSourcei");
 
@@ -724,7 +726,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetSource(int source, EFXSourceInteger param, out int value) => _GetSourceiRef(source, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourceiRefDelegate(int source, EFXSourceInteger param, out int value);
         private static readonly GetSourceiRefDelegate _GetSourceiRef = LoadDelegate<GetSourceiRefDelegate>("alGetSourcei");
 
@@ -735,7 +737,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetSource(int source, EFXSourceFloat param, float* value) => _GetSourcefPtr(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourcefPtrDelegate(int source, EFXSourceFloat param, float* value);
         private static readonly GetSourcefPtrDelegate _GetSourcefPtr = LoadDelegate<GetSourcefPtrDelegate>("alGetSourcef");
 
@@ -746,7 +748,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetSource(int source, EFXSourceFloat param, out float value) => _GetSourcefRef(source, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourcefRefDelegate(int source, EFXSourceFloat param, out float value);
         private static readonly GetSourcefRefDelegate _GetSourcefRef = LoadDelegate<GetSourcefRefDelegate>("alGetSourcef");
 
@@ -757,7 +759,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetSource(int source, EFXSourceBoolean param, bool* value) => _GetSourcebPtr(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourcebPtrDelegate(int source, EFXSourceBoolean param, bool* value);
         private static readonly GetSourcebPtrDelegate _GetSourcebPtr = LoadDelegate<GetSourcebPtrDelegate>("alGetSourcei");
 
@@ -768,7 +770,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetSource(int source, EFXSourceBoolean param, out bool value) => _GetSourcebRef(source, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourcebRefDelegate(int source, EFXSourceBoolean param, out bool value);
         private static readonly GetSourcebRefDelegate _GetSourcebRef = LoadDelegate<GetSourcebRefDelegate>("alGetSourcei");
 
@@ -779,7 +781,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetSource(int source, EFXSourceInteger3 param, int* value) => _GetSourceivPtr(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourceivPtrDelegate(int source, EFXSourceInteger3 param, int* value);
         private static readonly GetSourceivPtrDelegate _GetSourceivPtr = LoadDelegate<GetSourceivPtrDelegate>("alGetSourceiv");
 
@@ -790,7 +792,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetSource(int source, EFXSourceInteger3 param, ref int value) => _GetSourceivRef(source, param, ref value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourceivRefDelegate(int source, EFXSourceInteger3 param, ref int value);
         private static readonly GetSourceivRefDelegate _GetSourceivRef = LoadDelegate<GetSourceivRefDelegate>("alGetSourceiv");
 
@@ -801,7 +803,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetSource(int source, EFXSourceInteger3 param, int[] value) => _GetSourceivArray(source, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourceivArrayDelegate(int source, EFXSourceInteger3 param, int[] value);
         private static readonly GetSourceivArrayDelegate _GetSourceivArray = LoadDelegate<GetSourceivArrayDelegate>("alGetSourceiv");
 
@@ -814,7 +816,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="value2">The second value to set the property to.</param>
         /// <param name="value3">The third value to set the property to.</param>
         public static unsafe void GetSource(int source, EFXSourceInteger3 param, int* value1, int* value2, int* value3) => _GetSource3iPtr(source, param, value1, value2, value3);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSource3iPtrDelegate(int source, EFXSourceInteger3 param, int* value1, int* value2, int* value3);
         private static readonly GetSource3iPtrDelegate _GetSource3iPtr = LoadDelegate<GetSource3iPtrDelegate>("alGetSource3i");
 
@@ -827,7 +829,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="value2">The second value to set the property to.</param>
         /// <param name="value3">The third value to set the property to.</param>
         public static void GetSource(int source, EFXSourceInteger3 param, out int value1, out int value2, out int value3) => _GetSource3iRef(source, param, out value1, out value2, out value3);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSource3iRefDelegate(int source, EFXSourceInteger3 param, out int value1, out int value2, out int value3);
         private static readonly GetSource3iRefDelegate _GetSource3iRef = LoadDelegate<GetSource3iRefDelegate>("alGetSource3i");
 
@@ -838,7 +840,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void Listener(int listener, EFXListenerFloat param, float value) => _Listenerf(listener, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void ListenerfDelegate(int listener, EFXListenerFloat param, float value);
         private static readonly ListenerfDelegate _Listenerf = LoadDelegate<ListenerfDelegate>("alListenerf");
 
@@ -849,7 +851,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static unsafe void GetListener(int listener, EFXListenerFloat param, float* value) => _GetListenerfPtr(listener, param, value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetListenerfPtrDelegate(int listener, EFXListenerFloat param, float* value);
         private static readonly GetListenerfPtrDelegate _GetListenerfPtr = LoadDelegate<GetListenerfPtrDelegate>("alGetListenerf");
 
@@ -860,7 +862,7 @@ namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
         public static void GetListener(int listener, EFXListenerFloat param, out float value) => _GetListenerfRef(listener, param, out value);
-        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetListenerfRefDelegate(int listener, EFXListenerFloat param, out float value);
         private static readonly GetListenerfRefDelegate _GetListenerfRef = LoadDelegate<GetListenerfRefDelegate>("alGetListenerf");
 

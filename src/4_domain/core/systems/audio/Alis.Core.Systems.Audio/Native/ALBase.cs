@@ -14,7 +14,7 @@ using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace OpenTK.Audio.OpenAL
+namespace Alis.Core.Systems.Audio.Native
 {
     /// <summary>
     /// This is a base class for OpenAL APIs that are using DllImport and want to resolve different dll names on different platforms.
@@ -39,7 +39,7 @@ namespace OpenTK.Audio.OpenAL
         /// <returns>The created delegate.</returns>
         protected internal static TDelegate LoadDelegate<TDelegate>(string name) where TDelegate : Delegate
         {
-            IntPtr ptr = AL.GetProcAddress(name);
+            IntPtr ptr = AL.AL.GetProcAddress(name);
             if (ptr == IntPtr.Zero)
             {
                 // If we can't load the function for whatever reason we dynamically generate a delegate to

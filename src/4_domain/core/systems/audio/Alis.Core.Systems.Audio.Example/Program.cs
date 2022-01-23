@@ -1,25 +1,29 @@
-﻿
-using System;
-using System.Buffers.Binary;
-using System.IO;
+﻿using System;
 using System.Threading;
-using OpenTK.Audio.OpenAL.Extensions.Creative.EFX;
-using OpenTK.Audio.OpenAL.Extensions.EXT.Double;
-using OpenTK.Audio.OpenAL.Extensions.EXT.Float32;
-using OpenTK.Audio.OpenAL.Extensions.EXT.FloatFormat;
+using Alis.Core.Systems.Audio.AL;
+using Alis.Core.Systems.Audio.ALC;
+using Alis.Core.Systems.Audio.Extensions.Creative.EFX;
+using Alis.Core.Systems.Audio.Extensions.Creative.EFX.Enums;
+using Alis.Core.Systems.Audio.Extensions.Creative.EnumerateAll.Enums;
+using Alis.Core.Systems.Audio.Extensions.EXT.Double;
+using Alis.Core.Systems.Audio.Extensions.EXT.Double.Enums;
+using Alis.Core.Systems.Audio.Extensions.EXT.Float32;
+using Alis.Core.Systems.Audio.Extensions.EXT.Float32.Enums;
+using Alis.Core.Systems.Audio.Extensions.SOFT.DeviceClock.Enums;
+using Alis.Core.Systems.Audio.Extensions.SOFT.SourceLatency.Enums;
 
-namespace OpenTK.Audio.OpenAL
+namespace Alis.Core.Systems.Audio.Example
 {
     internal class ALTest
     {
         public static void Main(string[] args)
         {
            Console.WriteLine("Hello!");
-            var devices = ALC.GetStringList(GetEnumerationStringList.DeviceSpecifier);
+            var devices = ALC.ALC.GetStringList(GetEnumerationStringList.DeviceSpecifier);
             Console.WriteLine($"Devices: {string.Join(", ", devices)}");
 
             // Get the default device, then go though all devices and select the AL soft device if it exists.
-            string deviceName = ALC.GetString(ALDevice.Null, AlcGetString.DefaultDeviceSpecifier);
+            string deviceName = ALC.ALC.GetString(ALDevice.Null, AlcGetString.DefaultDeviceSpecifier);
             foreach (var d in devices)
             {
                 if (d.Contains("OpenAL Soft"))
@@ -28,38 +32,38 @@ namespace OpenTK.Audio.OpenAL
                 }
             }
 
-            var allDevices = Extensions.Creative.EnumerateAll.EnumerateAll.GetStringList(Extensions.Creative.EnumerateAll.GetEnumerateAllContextStringList.AllDevicesSpecifier);
+            var allDevices = Extensions.Creative.EnumerateAll.EnumerateAll.GetStringList(GetEnumerateAllContextStringList.AllDevicesSpecifier);
             Console.WriteLine($"All Devices: {string.Join(", ", allDevices)}");
 
-            var device = ALC.OpenDevice(deviceName);
-            ALContext context = ALC.CreateContext(device, (int[])null);
-            ALC.MakeContextCurrent(context);
+            var device = ALC.ALC.OpenDevice(deviceName);
+            ALContext context = ALC.ALC.CreateContext(device, (int[])null);
+            ALC.ALC.MakeContextCurrent(context);
 
             CheckALError("Start");
 
-            ALC.GetInteger(device, AlcGetInteger.MajorVersion, 1, out int alcMajorVersion);
-            ALC.GetInteger(device, AlcGetInteger.MinorVersion, 1, out int alcMinorVersion);
-            string alcExts = ALC.GetString(device, AlcGetString.Extensions);
+            ALC.ALC.GetInteger(device, AlcGetInteger.MajorVersion, 1, out int alcMajorVersion);
+            ALC.ALC.GetInteger(device, AlcGetInteger.MinorVersion, 1, out int alcMinorVersion);
+            string alcExts = ALC.ALC.GetString(device, AlcGetString.Extensions);
 
-            var attrs = ALC.GetContextAttributes(device);
+            var attrs = ALC.ALC.GetContextAttributes(device);
             Console.WriteLine($"Attributes: {attrs}");
 
-            string exts = AL.Get(ALGetString.Extensions);
-            string rend = AL.Get(ALGetString.Renderer);
-            string vend = AL.Get(ALGetString.Vendor);
-            string vers = AL.Get(ALGetString.Version);
+            string exts = AL.AL.Get(ALGetString.Extensions);
+            string rend = AL.AL.Get(ALGetString.Renderer);
+            string vend = AL.AL.Get(ALGetString.Vendor);
+            string vers = AL.AL.Get(ALGetString.Version);
 
             Console.WriteLine($"Vendor: {vend}, \nVersion: {vers}, \nRenderer: {rend}, \nExtensions: {exts}, \nALC Version: {alcMajorVersion}.{alcMinorVersion}, \nALC Extensions: {alcExts}");
 
             Console.WriteLine("Available devices: ");
-            var list = Extensions.Creative.EnumerateAll.EnumerateAll.GetStringList(Extensions.Creative.EnumerateAll.GetEnumerateAllContextStringList.AllDevicesSpecifier);
+            var list = Extensions.Creative.EnumerateAll.EnumerateAll.GetStringList(GetEnumerateAllContextStringList.AllDevicesSpecifier);
             foreach (var item in list)
             {
                 Console.WriteLine("  " + item);
             }
 
             Console.WriteLine("Available capture devices: ");
-            list = ALC.GetStringList(GetEnumerationStringList.CaptureDeviceSpecifier);
+            list = ALC.ALC.GetStringList(GetEnumerationStringList.CaptureDeviceSpecifier);
             foreach (var item in list)
             {
                 Console.WriteLine("  " + item);
@@ -77,72 +81,72 @@ namespace OpenTK.Audio.OpenAL
             // Record a second of data
             CheckALError("Before record");
             short[] recording = new short[44100 * 4];
-            ALCaptureDevice captureDevice = ALC.CaptureOpenDevice(null, 44100, ALFormat.Mono16, 1024);
+            ALCaptureDevice captureDevice = ALC.ALC.CaptureOpenDevice(null, 44100, ALFormat.Mono16, 1024);
             {
-                ALC.CaptureStart(captureDevice);
+                ALC.ALC.CaptureStart(captureDevice);
 
                 int current = 0;
                 while (current < recording.Length)
                 {
-                    int samplesAvailable = ALC.GetAvailableSamples(captureDevice);
+                    int samplesAvailable = ALC.ALC.GetAvailableSamples(captureDevice);
                     if (samplesAvailable > 512)
                     {
                         int samplesToRead = Math.Min(samplesAvailable, recording.Length - current);
-                        ALC.CaptureSamples(captureDevice, ref recording[current], samplesToRead);
+                        ALC.ALC.CaptureSamples(captureDevice, ref recording[current], samplesToRead);
                         current += samplesToRead;
                     }
                     Thread.Yield();
                 }
 
-                ALC.CaptureStop(captureDevice);
+                ALC.ALC.CaptureStop(captureDevice);
             }
             CheckALError("After record");
 
             // Playback the recorded data
             CheckALError("Before data");
-            AL.GenBuffer(out int alBuffer);
+            AL.AL.GenBuffer(out int alBuffer);
             // short[] sine = new short[44100 * 1];
             // FillSine(sine, 4400, 44100);
             // FillSine(recording, 440, 44100);
-            AL.BufferData(alBuffer, ALFormat.Mono16, ref recording[0], recording.Length * 2, 44100);
+            AL.AL.BufferData(alBuffer, ALFormat.Mono16, ref recording[0], recording.Length * 2, 44100);
             CheckALError("After data");
 
-            AL.Listener(ALListenerf.Gain, 0.1f);
+            AL.AL.Listener(ALListenerf.Gain, 0.1f);
 
-            AL.GenSource(out int alSource);
-            AL.Source(alSource, ALSourcef.Gain, 1f);
-            AL.Source(alSource, ALSourcei.Buffer, alBuffer);
+            AL.AL.GenSource(out int alSource);
+            AL.AL.Source(alSource, ALSourcef.Gain, 1f);
+            AL.AL.Source(alSource, ALSourcei.Buffer, alBuffer);
             if (EFX.IsExtensionPresent(device))
             {
                 EFX.Source(alSource, EFXSourceInteger3.AuxiliarySendFilter, auxSlot, 0, 0);
             }
-            AL.SourcePlay(alSource);
+            AL.AL.SourcePlay(alSource);
 
-            Console.WriteLine("Before Playing: " + AL.GetErrorString(AL.GetError()));
+            Console.WriteLine("Before Playing: " + AL.AL.GetErrorString(AL.AL.GetError()));
 
             if (Extensions.SOFT.DeviceClock.DeviceClock.IsExtensionPresent(device))
             {
                 long[] clockLatency = new long[2];
-                Extensions.SOFT.DeviceClock.DeviceClock.GetInteger(device, Extensions.SOFT.DeviceClock.GetInteger64.DeviceClock, clockLatency);
+                Extensions.SOFT.DeviceClock.DeviceClock.GetInteger(device, GetInteger64.DeviceClock, clockLatency);
                 Console.WriteLine("Clock: " + clockLatency[0] + ", Latency: " + clockLatency[1]);
                 CheckALError(" ");
             }
 
             if (Extensions.SOFT.SourceLatency.SourceLatency.IsExtensionPresent())
             {
-                Extensions.SOFT.SourceLatency.SourceLatency.GetSource(alSource, Extensions.SOFT.SourceLatency.SourceLatencyVector2d.SecOffsetLatency, out var values);
-                Extensions.SOFT.SourceLatency.SourceLatency.GetSource(alSource, Extensions.SOFT.SourceLatency.SourceLatencyVector2i.SampleOffsetLatency, out var values1, out var values2, out var values3);
+                Extensions.SOFT.SourceLatency.SourceLatency.GetSource(alSource, SourceLatencyVector2d.SecOffsetLatency, out var values);
+                Extensions.SOFT.SourceLatency.SourceLatency.GetSource(alSource, SourceLatencyVector2i.SampleOffsetLatency, out var values1, out var values2, out var values3);
                 Console.WriteLine("Source latency: " + values);
                 Console.WriteLine($"Source latency 2: {Convert.ToString(values1, 2)}, {values2}; {values3}");
                 CheckALError(" ");
             }
 
-            while (AL.GetSourceState(alSource) == ALSourceState.Playing)
+            while (AL.AL.GetSourceState(alSource) == ALSourceState.Playing)
             {
                 if (Extensions.SOFT.SourceLatency.SourceLatency.IsExtensionPresent())
                 {
-                    Extensions.SOFT.SourceLatency.SourceLatency.GetSource(alSource, Extensions.SOFT.SourceLatency.SourceLatencyVector2d.SecOffsetLatency, out var values);
-                    Extensions.SOFT.SourceLatency.SourceLatency.GetSource(alSource, Extensions.SOFT.SourceLatency.SourceLatencyVector2i.SampleOffsetLatency, out var values1, out var values2, out var values3);
+                    Extensions.SOFT.SourceLatency.SourceLatency.GetSource(alSource, SourceLatencyVector2d.SecOffsetLatency, out var values);
+                    Extensions.SOFT.SourceLatency.SourceLatency.GetSource(alSource, SourceLatencyVector2i.SampleOffsetLatency, out var values1, out var values2, out var values3);
                     Console.WriteLine("Source latency: " + values);
                     Console.WriteLine($"Source latency 2: {Convert.ToString(values1, 2)}, {values2}; {values3}");
                     CheckALError(" ");
@@ -150,7 +154,7 @@ namespace OpenTK.Audio.OpenAL
                 if (Extensions.SOFT.DeviceClock.DeviceClock.IsExtensionPresent(device))
                 {
                     long[] clockLatency = new long[2];
-                    Extensions.SOFT.DeviceClock.DeviceClock.GetInteger(device, Extensions.SOFT.DeviceClock.GetInteger64.DeviceClock, 1, clockLatency);
+                    Extensions.SOFT.DeviceClock.DeviceClock.GetInteger(device, GetInteger64.DeviceClock, 1, clockLatency);
                     Console.WriteLine("Clock: " + clockLatency[0] + ", Latency: " + clockLatency[1]);
                     CheckALError(" ");
                 }
@@ -158,7 +162,7 @@ namespace OpenTK.Audio.OpenAL
                 Thread.Sleep(10);
             }
 
-            AL.SourceStop(alSource);
+            AL.AL.SourceStop(alSource);
 
             // Test float32 format extension
             if (EXTFloat32.IsExtensionPresent()) {
@@ -170,22 +174,22 @@ namespace OpenTK.Audio.OpenAL
                     sine[i] = MathF.Sin(440 * MathF.PI * 2 * (i / (float)sine.Length));
                 }
 
-                var buffer = AL.GenBuffer();
+                var buffer = AL.AL.GenBuffer();
                 EXTFloat32.BufferData(buffer, FloatBufferFormat.Mono, sine, 44100);
 
-                AL.Listener(ALListenerf.Gain, 0.1f);
+                AL.AL.Listener(ALListenerf.Gain, 0.1f);
 
-                AL.Source(alSource, ALSourcef.Gain, 1f);
-                AL.Source(alSource, ALSourcei.Buffer, buffer);
+                AL.AL.Source(alSource, ALSourcef.Gain, 1f);
+                AL.AL.Source(alSource, ALSourcei.Buffer, buffer);
 
-                AL.SourcePlay(alSource);
+                AL.AL.SourcePlay(alSource);
 
-                while (AL.GetSourceState(alSource) == ALSourceState.Playing)
+                while (AL.AL.GetSourceState(alSource) == ALSourceState.Playing)
                 {
                     Thread.Sleep(10);
                 }
 
-                AL.SourceStop(alSource);
+                AL.AL.SourceStop(alSource);
             }
 
             // Test double format extension
@@ -200,22 +204,22 @@ namespace OpenTK.Audio.OpenAL
                     saw[i] = t - Math.Floor(t);
                 }
 
-                var buffer = AL.GenBuffer();
+                var buffer = AL.AL.GenBuffer();
                 EXTDouble.BufferData(buffer, DoubleBufferFormat.Mono, saw, 44100);
 
-                AL.Listener(ALListenerf.Gain, 0.1f);
+                AL.AL.Listener(ALListenerf.Gain, 0.1f);
 
-                AL.Source(alSource, ALSourcef.Gain, 1f);
-                AL.Source(alSource, ALSourcei.Buffer, buffer);
+                AL.AL.Source(alSource, ALSourcef.Gain, 1f);
+                AL.AL.Source(alSource, ALSourcei.Buffer, buffer);
 
-                AL.SourcePlay(alSource);
+                AL.AL.SourcePlay(alSource);
 
-                while (AL.GetSourceState(alSource) == ALSourceState.Playing)
+                while (AL.AL.GetSourceState(alSource) == ALSourceState.Playing)
                 {
                     Thread.Sleep(10);
                 }
 
-                AL.SourceStop(alSource);
+                AL.AL.SourceStop(alSource);
             }
 
             
@@ -223,9 +227,9 @@ namespace OpenTK.Audio.OpenAL
             
             
 
-            ALC.MakeContextCurrent(ALContext.Null);
-            ALC.DestroyContext(context);
-            ALC.CloseDevice(device);
+            ALC.ALC.MakeContextCurrent(ALContext.Null);
+            ALC.ALC.DestroyContext(context);
+            ALC.ALC.CloseDevice(device);
             
             Console.WriteLine("Goodbye!");
             
@@ -236,10 +240,10 @@ namespace OpenTK.Audio.OpenAL
 
         public static void CheckALError(string str)
         {
-            ALError error = AL.GetError();
+            ALError error = AL.AL.GetError();
             if (error != ALError.NoError)
             {
-                Console.WriteLine($"ALError at '{str}': {AL.GetErrorString(error)}");
+                Console.WriteLine($"ALError at '{str}': {AL.AL.GetErrorString(error)}");
             }
         }
 
@@ -256,14 +260,14 @@ namespace OpenTK.Audio.OpenAL
             unsafe
             {
                 //Initialize
-                var device = ALC.OpenDevice(null);
-                var context = ALC.CreateContext(device, (int*)null);
+                var device = ALC.ALC.OpenDevice(null);
+                var context = ALC.ALC.CreateContext(device, (int*)null);
 
-                ALC.MakeContextCurrent(context);
+                ALC.ALC.MakeContextCurrent(context);
 
-                var version = AL.Get(ALGetString.Version);
-                var vendor = AL.Get(ALGetString.Vendor);
-                var renderer = AL.Get(ALGetString.Renderer);
+                var version = AL.AL.Get(ALGetString.Version);
+                var vendor = AL.AL.Get(ALGetString.Vendor);
+                var renderer = AL.AL.Get(ALGetString.Renderer);
                 Console.WriteLine(version);
                 Console.WriteLine(vendor);
                 Console.WriteLine(renderer);
@@ -271,8 +275,8 @@ namespace OpenTK.Audio.OpenAL
 
                 //Process
                 int buffers, source;
-                AL.GenBuffer(out buffers);
-                AL.GenSource(out source);
+                AL.AL.GenBuffer(out buffers);
+                AL.AL.GenSource(out source);
 
                 int sampleFreq = 44100;
                 double dt = 2 * Math.PI / sampleFreq;
@@ -286,15 +290,15 @@ namespace OpenTK.Audio.OpenAL
                     sinData[i] = (short)(amp * short.MaxValue * Math.Sin(i * dt * freq));
                 }
                 
-                AL.BufferData(buffers, ALFormat.Mono16, sinData, sinData.Length * sizeof(short), sampleFreq);
-                AL.Source(source, ALSourcei.Buffer, buffers);
-                AL.Source(source, ALSourceb.Looping, true);
+                AL.AL.BufferData(buffers, ALFormat.Mono16, sinData, sinData.Length * sizeof(short), sampleFreq);
+                AL.AL.Source(source, ALSourcei.Buffer, buffers);
+                AL.AL.Source(source, ALSourceb.Looping, true);
 
-                AL.SourcePlay(source);
+                AL.AL.SourcePlay(source);
                 Console.ReadKey();
 
                 ///Dispose
-                ALC.CloseDevice(device);
+                ALC.ALC.CloseDevice(device);
             }
         }
         

@@ -25,7 +25,7 @@
 
 using System;
 
-namespace OpenTK.Core.Exceptions
+namespace Alis.Core.Systems.Audio.Core.Exceptions
 {
     /// <summary>
     /// Represents exceptions thrown when a binding method is called and the bindings have not been rewritten by Rewrite.exe.

@@ -28,8 +28,9 @@ using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Data
 {
     /// <summary>
     /// Represents a color with 4 floating-point components (R, G, B, A).

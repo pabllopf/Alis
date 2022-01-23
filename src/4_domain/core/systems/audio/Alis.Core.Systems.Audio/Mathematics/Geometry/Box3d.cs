@@ -9,10 +9,10 @@
 
 using System;
 using System.Diagnostics.Contracts;
-using System.Globalization;
 using System.Runtime.InteropServices;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Geometry
 {
     /// <summary>
     /// Defines an axis-aligned 2d box (rectangle).

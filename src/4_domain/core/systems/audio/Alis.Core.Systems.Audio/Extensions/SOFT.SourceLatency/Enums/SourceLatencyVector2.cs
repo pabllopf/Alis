@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OpenTK.Audio.OpenAL.Extensions.SOFT.SourceLatency
+﻿namespace Alis.Core.Systems.Audio.Extensions.SOFT.SourceLatency.Enums
 {
     public enum SourceLatencyVector2i
     {

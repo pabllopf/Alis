@@ -22,14 +22,14 @@ SOFTWARE.
 
 using System;
 using System.Diagnostics.Contracts;
-using System.Globalization;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
+using Half = Alis.Core.Systems.Audio.Mathematics.Data.Half;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Vector
 {
     /// <summary>
     /// 4-component Vector of the Half type. Occupies 8 Byte total.

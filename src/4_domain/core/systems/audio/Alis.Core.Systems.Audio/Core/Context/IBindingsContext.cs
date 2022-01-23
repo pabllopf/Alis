@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OpenTK
+namespace Alis.Core.Systems.Audio.Core.Context
 {
     /// <summary>
     /// Provides methods for querying available functions in a bindings context.

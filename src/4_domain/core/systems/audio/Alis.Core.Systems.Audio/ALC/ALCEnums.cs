@@ -7,9 +7,7 @@
 // of the MIT license. See the LICENSE file for details.
 //
 
-using System;
-
-namespace OpenTK.Audio.OpenAL
+namespace Alis.Core.Systems.Audio.ALC
 {
 #pragma warning disable SA1402 // File may only contain a single type
     /// <summary>

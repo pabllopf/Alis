@@ -8,8 +8,9 @@
 
 using System;
 using System.Diagnostics.Contracts;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Geometry
 {
     /// <summary>
     /// Represents a cubic bezier curve with two anchor and two control points.

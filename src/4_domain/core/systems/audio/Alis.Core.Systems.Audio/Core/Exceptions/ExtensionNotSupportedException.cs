@@ -25,7 +25,7 @@
 
 using System;
 
-namespace OpenTK.Core.Exceptions
+namespace Alis.Core.Systems.Audio.Core.Exceptions
 {
     /// <summary>
     /// Represents exceptions related to API extensions.

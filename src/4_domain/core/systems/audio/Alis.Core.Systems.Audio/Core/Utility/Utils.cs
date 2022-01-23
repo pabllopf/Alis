@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace OpenTK.Core
+namespace Alis.Core.Systems.Audio.Core.Utility
 {
     public static class Utils
     {

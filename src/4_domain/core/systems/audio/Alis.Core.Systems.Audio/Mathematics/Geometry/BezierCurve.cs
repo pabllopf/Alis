@@ -9,8 +9,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using Alis.Core.Systems.Audio.Mathematics.Vector;
 
-namespace OpenTK.Mathematics
+namespace Alis.Core.Systems.Audio.Mathematics.Geometry
 {
     /// <summary>
     /// Represents a bezier curve with as many points as you want.

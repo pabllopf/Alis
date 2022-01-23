@@ -7,7 +7,7 @@
 // of the MIT license. See the LICENSE file for details.
 //
 
-namespace OpenTK.Audio.OpenAL.Extensions.Creative.EFX
+namespace Alis.Core.Systems.Audio.Extensions.Creative.EFX.Enums
 {
     /// <summary>
     /// A list of valid 32-bit Float Effect/GetEffect parameters.
