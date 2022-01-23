@@ -1,9 +1,0 @@
-<Project>
-    <PropertyGroup>
-        <Company>Pablo Perdomo Falcón</Company>
-        <Product>ALIS</Product>
-        <AssemblyVersion>1.3.7</AssemblyVersion>
-        <FileVersion>1.3.7</FileVersion>
-    </PropertyGroup>
-
-</Project>
