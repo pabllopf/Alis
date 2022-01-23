@@ -6,19 +6,18 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-
     </PropertyGroup>
 
     <ItemGroup>
         <None Include="Assets/test.wav">
-            <Link>%(Filename)%(Extension)</Link>
+            <Link>Assets/%(Filename)%(Extension)</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
 
     <ItemGroup>
         <None Include="Assets/test_1.mp3">
-            <Link>%(Filename)%(Extension)</Link>
+            <Link>Assets/%(Filename)%(Extension)</Link>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>

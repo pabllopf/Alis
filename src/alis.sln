@@ -139,6 +139,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0_Config", "0_Config", "{C1
 		0_config\licence.props = 0_config\licence.props
 		0_config\runtimes.props = 0_config\runtimes.props
 		0_config\test.props = 0_config\test.props
+		0_config\nuget.props = 0_config\nuget.props
 	EndProjectSection
 EndProject
 Global

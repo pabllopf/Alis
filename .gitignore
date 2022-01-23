@@ -17,6 +17,9 @@
 /**/**/_/**
 
 **/.DS_Store
+**/**/**/**/.xml
+**/**/**/**/.xsd
+
 *DS_Store
 *.DS_Store
 *.suo
@@ -38,3 +41,5 @@
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*FodyWeavers.xml
+*FodyWeavers.xsd

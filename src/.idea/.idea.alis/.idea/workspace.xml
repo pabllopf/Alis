@@ -38,7 +38,116 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="" />
+    <list default="true" id="5df36f7f-5220-476a-ac28-cea5d212cbb5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/0_config/nuget.props" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer.Test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer.Test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/Installer/Alis.Installer/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.benchmark/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.example/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor.test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis.example/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis.example/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis.test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis.test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2_application/alis/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.benchmark/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.example/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.example/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl.test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.benchmark/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.example/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.example/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml.test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.benchmark/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.example/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.example/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core.test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/alis.core/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D.Test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D.Test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input.Test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output.Test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D.Test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D.Test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D.Test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.example/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi.test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.benchmark/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.examples/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools.test/FodyWeavers.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools/FodyWeavers.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools/FodyWeavers.xsd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.alis/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0_config/general.props" beforeDir="false" afterPath="$PROJECT_DIR$/0_config/general.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0_config/licence.props" beforeDir="false" afterPath="$PROJECT_DIR$/0_config/licence.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Alis.Editor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Alis.Editor.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1_presentation/editor/alis.editor/Docs/Directory.Build.props" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2_application/alis/Alis.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/2_application/alis/Alis.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/Alis.Core.OpenGL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/opengl/alis.core.opengl/Alis.Core.OpenGL.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Alis.Core.Sfml.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/3_adaptation/sfml/alis.core.sfml/Alis.Core.Sfml.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/alis.core/Alis.Core.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Alis.Core.Systems.Audio.Example.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/Alis.Core.Systems.Audio.Example.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio/Alis.Core.Systems.Audio.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D/Alis.Core.Systems.Graphics2D.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/2D/Alis.Core.Systems.Graphics2D/Alis.Core.Systems.Graphics2D.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/Alis.Core.Systems.Graphics3D.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/graphics/3D/Alis.Core.Systems.Graphics3D/Alis.Core.Systems.Graphics3D.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/Alis.Core.Systems.Input.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/input/Alis.Core.Systems.Input/Alis.Core.Systems.Input.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/Alis.Core.Systems.Output.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/output/Alis.Core.Systems.Output/Alis.Core.Systems.Output.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Alis.Core.Systems.Physics2D.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/2d/Alis.Core.Systems.Physics2D/Alis.Core.Systems.Physics2D.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D/Alis.Core.Systems.Physics3D.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/core/systems/physics/3d/Alis.Core.Systems.Physics3D/Alis.Core.Systems.Physics3D.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Alis.FluentApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/fluent/alis.fluentapi/Alis.FluentApi.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/4_domain/tools/alis.tools/Alis.Tools.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/4_domain/tools/alis.tools/Alis.Tools.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alis.sln" beforeDir="false" afterPath="$PROJECT_DIR$/alis.sln" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -829,7 +938,8 @@
       <workItem from="1642857868994" duration="5555000" />
       <workItem from="1642866073710" duration="2180000" />
       <workItem from="1642874410978" duration="1067000" />
-      <workItem from="1642929424880" duration="12384000" />
+      <workItem from="1642929424880" duration="14322000" />
+      <workItem from="1642944760827" duration="34000" />
     </task>
     <servers />
   </component>
