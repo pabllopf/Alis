@@ -1,22 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-    </PropertyGroup>
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Configurations>Debug;Release</Configurations>
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-        <RuntimeIdentifiers>win10-x64;win10-x86</RuntimeIdentifiers>
-        <LangVersion>9</LangVersion>
-        <Nullable>enable</Nullable>
-        <Platforms>AnyCPU;x64;x32;x86;ARM64</Platforms>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Alis.Core.Systems.Audio\Alis.Core.Systems.Audio.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
         <None Include="Assets/test.wav">
@@ -24,5 +15,18 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>
+
+    <ItemGroup>
+        <None Include="Assets/test_1.mp3">
+            <Link>%(Filename)%(Extension)</Link>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Alis.Core.Systems.Audio\Alis.Core.Systems.Audio.csproj" />
+    </ItemGroup>
+    
+
 
 </Project>

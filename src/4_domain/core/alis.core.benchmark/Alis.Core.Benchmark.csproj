@@ -1,12 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
-        <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
-        <LangVersion>9</LangVersion>
-        <Nullable>enable</Nullable>
-        <Configurations>Debug;Release</Configurations>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,10 +32,7 @@
         <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="Docs\" />
-        <Folder Include="Docs\tests\" />
-    </ItemGroup>
+
 
     <ItemGroup>
         <ProjectReference Include="..\alis.core\Alis.Core.csproj" />

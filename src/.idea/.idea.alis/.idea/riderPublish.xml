@@ -4,6 +4,7 @@
     <option name="locations">
       <list>
         <option value="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/./publish/win-x64" />
+        <option value="$PROJECT_DIR$/4_domain/core/systems/audio/Alis.Core.Systems.Audio.Example/./bin/publish/linux-x64" />
       </list>
     </option>
   </component>

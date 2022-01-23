@@ -1,16 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Configurations>Debug;Release</Configurations>
-        <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
-        <LangVersion>9</LangVersion>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
 
-    <ItemGroup>
-        <Folder Include="Attributes"/>
-    </ItemGroup>
+
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+    
+
+
 
 
 </Project>

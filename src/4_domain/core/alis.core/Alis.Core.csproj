@@ -1,14 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <!-- _________________________ GENERAL CONFIG ___________________________________-->
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Configurations>Debug;Release</Configurations>
-        <LangVersion>9</LangVersion>
-        <Nullable>enable</Nullable>
-        <Platforms>AnyCPU;x64;x32;x86;ARM64</Platforms>
-    </PropertyGroup>
 
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
 
+  
     <ItemGroup>
         <ProjectReference Include="..\..\fluent\alis.fluentapi\Alis.FluentApi.csproj" />
         <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />

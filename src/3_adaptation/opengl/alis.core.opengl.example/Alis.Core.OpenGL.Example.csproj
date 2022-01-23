@@ -1,20 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
-        <Platforms>AnyCPU;x64;x86;ARM64</Platforms>
-        <LangVersion>9</LangVersion>
-        <Nullable>enable</Nullable>
-        <Configurations>Debug;Release</Configurations>
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core.opengl\Alis.Core.OpenGL.csproj"/>
+        <ProjectReference Include="..\alis.core.opengl\Alis.Core.OpenGL.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Docs\"/>
+        <Folder Include="Docs\" />
     </ItemGroup>
 
 </Project>

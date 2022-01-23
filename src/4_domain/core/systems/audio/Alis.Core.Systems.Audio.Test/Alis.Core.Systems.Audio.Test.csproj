@@ -1,27 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <Configurations>Debug;Release</Configurations>
-        <LangVersion>9</LangVersion>
-        <Nullable>enable</Nullable>
-        <Platforms>AnyCPU;x64;x32;x86;ARM64</Platforms>
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
 
-    <ItemGroup>
-        <EmbeddedResource Include="Assets\*" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-        <PackageReference Include="NUnit" Version="3.13.2" />
-        <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
-        <PackageReference Include="coverlet.collector" Version="3.1.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Alis.Core.Systems.Audio\Alis.Core.Systems.Audio.csproj" />
-    </ItemGroup>
-
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+    <Import Project="$(SolutionDir)/0_config/test.props" />
 </Project>
