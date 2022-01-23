@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
+    <Import Project="$(SolutionDir)/0_config/nuget.props"/>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\3_adaptation\opengl\alis.core.opengl\Alis.Core.OpenGL.csproj" />
-        <ProjectReference Include="..\..\3_adaptation\sfml\alis.core.sfml\Alis.Core.Sfml.csproj" />
+        <ProjectReference Include="..\..\3_adaptation\opengl\alis.core.opengl\Alis.Core.OpenGL.csproj"/>
+        <ProjectReference Include="..\..\3_adaptation\sfml\alis.core.sfml\Alis.Core.Sfml.csproj"/>
     </ItemGroup>
 
 </Project>

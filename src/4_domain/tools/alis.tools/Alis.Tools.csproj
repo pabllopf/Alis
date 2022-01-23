@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
+    <Import Project="$(SolutionDir)/0_config/nuget.props"/>
 
 
     <ItemGroup>
-        <None Remove="Alis_Icon.ico" />
-        <None Remove="StyleCop.Cache" />
-        <None Remove="Tools.xml" />
+        <None Remove="Alis_Icon.ico"/>
+        <None Remove="StyleCop.Cache"/>
+        <None Remove="Tools.xml"/>
     </ItemGroup>
 </Project>

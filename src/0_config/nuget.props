@@ -10,7 +10,7 @@
         <PackageIconUrl>https://github.com/pabllopf/Alis/blob/main/licence</PackageIconUrl>
         <RepositoryUrl>https://github.com/pabllopf/Alis</RepositoryUrl>
         <RepositoryType>public</RepositoryType>
-        <PackageTags>Engine Framework ios android mac linux windows cross-platform </PackageTags>
+        <PackageTags>Engine Framework ios android mac linux windows cross-platform</PackageTags>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 </Project>

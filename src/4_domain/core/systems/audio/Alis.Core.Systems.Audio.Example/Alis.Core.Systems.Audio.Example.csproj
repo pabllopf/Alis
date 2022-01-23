@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -23,9 +23,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Alis.Core.Systems.Audio\Alis.Core.Systems.Audio.csproj" />
+        <ProjectReference Include="..\Alis.Core.Systems.Audio\Alis.Core.Systems.Audio.csproj"/>
     </ItemGroup>
-    
 
 
 </Project>

@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/test.props" />
-    
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
+    <Import Project="$(SolutionDir)/0_config/test.props"/>
+
     <ItemGroup>
-      <ProjectReference Include="..\Alis.Core.Systems.Physics2D\Alis.Core.Systems.Physics2D.csproj" />
+        <ProjectReference Include="..\Alis.Core.Systems.Physics2D\Alis.Core.Systems.Physics2D.csproj"/>
     </ItemGroup>
 </Project>

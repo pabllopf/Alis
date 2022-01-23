@@ -1,41 +1,40 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Remove="Config\**" />
-        <Compile Remove="Input\**" />
-        <Compile Remove="Render\**" />
-        <Compile Remove="Scene\**" />
-        <EmbeddedResource Remove="Config\**" />
-        <EmbeddedResource Remove="Input\**" />
-        <EmbeddedResource Remove="Render\**" />
-        <EmbeddedResource Remove="Scene\**" />
-        <None Remove="Config\**" />
-        <None Remove="Input\**" />
-        <None Remove="Render\**" />
-        <None Remove="Scene\**" />
+        <Compile Remove="Config\**"/>
+        <Compile Remove="Input\**"/>
+        <Compile Remove="Render\**"/>
+        <Compile Remove="Scene\**"/>
+        <EmbeddedResource Remove="Config\**"/>
+        <EmbeddedResource Remove="Input\**"/>
+        <EmbeddedResource Remove="Render\**"/>
+        <EmbeddedResource Remove="Scene\**"/>
+        <None Remove="Config\**"/>
+        <None Remove="Input\**"/>
+        <None Remove="Render\**"/>
+        <None Remove="Scene\**"/>
     </ItemGroup>
 
 
     <ItemGroup>
-        <Compile Remove="Game.cs" />
+        <Compile Remove="Game.cs"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
     </ItemGroup>
 
 
-
     <ItemGroup>
-        <ProjectReference Include="..\alis.core\Alis.Core.csproj" />
+        <ProjectReference Include="..\alis.core\Alis.Core.csproj"/>
     </ItemGroup>
 
 </Project>

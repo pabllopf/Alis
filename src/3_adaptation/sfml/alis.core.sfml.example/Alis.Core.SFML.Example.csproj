@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -11,13 +11,13 @@
 
 
     <ItemGroup>
-        <Folder Include="Docs\" />
-        <Folder Include="Assets\" />
+        <Folder Include="Docs\"/>
+        <Folder Include="Assets\"/>
     </ItemGroup>
 
 
     <ItemGroup>
-        <ProjectReference Include="..\alis.core.sfml\Alis.Core.Sfml.csproj" />
+        <ProjectReference Include="..\alis.core.sfml\Alis.Core.Sfml.csproj"/>
     </ItemGroup>
 
 </Project>
