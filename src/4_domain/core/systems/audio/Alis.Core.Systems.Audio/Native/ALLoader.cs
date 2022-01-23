@@ -1,11 +1,4 @@
-﻿//
-// ApiBase.cs
-//
-// Copyright (C) 2020 OpenTK
-//
-// This software may be modified and distributed under the terms
-// of the MIT license. See the LICENSE file for details.
-//
+﻿// 
 
 using System;
 using System.Reflection;
@@ -14,18 +7,18 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Systems.Audio.Native
 {
     /// <summary>
-    /// Provides a base for ApiContext so that it can register dll intercepts.
+    ///     Provides a base for ApiContext so that it can register dll intercepts.
     /// </summary>
     internal static class ALLoader
     {
-        private static readonly OpenALLibraryNameContainer ALLibraryNameContainer = new OpenALLibraryNameContainer();
-
-        private static bool RegisteredResolver = false;
-
         static ALLoader()
         {
             RegisterDllResolver();
         }
+
+        private static readonly OpenALLibraryNameContainer ALLibraryNameContainer = new OpenALLibraryNameContainer();
+
+        private static bool RegisteredResolver;
 
         internal static void RegisterDllResolver()
         {
@@ -44,15 +37,14 @@ namespace Alis.Core.Systems.Audio.Native
 
                 if (NativeLibrary.TryLoad(libName, assembly, searchPath, out IntPtr libHandle) == false)
                 {
-                    throw new DllNotFoundException($"Could not load the dll '{libName}' (this load is intercepted, specified in DllImport as '{libraryName}').");
+                    throw new DllNotFoundException(
+                        $"Could not load the dll '{libName}' (this load is intercepted, specified in DllImport as '{libraryName}').");
                 }
 
                 return libHandle;
             }
-            else
-            {
-                return NativeLibrary.Load(libraryName, assembly, searchPath);
-            }
+
+            return NativeLibrary.Load(libraryName, assembly, searchPath);
         }
     }
 }

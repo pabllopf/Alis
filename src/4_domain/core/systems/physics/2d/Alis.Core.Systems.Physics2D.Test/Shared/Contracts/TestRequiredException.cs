@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared.Contracts
 {
     /// <summary>
-    /// The test required exception class
+    ///     The test required exception class
     /// </summary>
     public class TestRequiredException
     {

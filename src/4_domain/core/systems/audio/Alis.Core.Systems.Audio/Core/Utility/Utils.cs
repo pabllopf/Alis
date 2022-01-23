@@ -1,3 +1,5 @@
+// 
+
 using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Systems.Audio.Core.Utility

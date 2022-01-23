@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared
 {
     /// <summary>
-    /// The test transform class
+    ///     The test transform class
     /// </summary>
     public class TestTransform
     {

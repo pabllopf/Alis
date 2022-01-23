@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.Velocity
 {
     /// <summary>
-    /// The test velocity limit controller class
+    ///     The test velocity limit controller class
     /// </summary>
     public class TestVelocityLimitController
     {

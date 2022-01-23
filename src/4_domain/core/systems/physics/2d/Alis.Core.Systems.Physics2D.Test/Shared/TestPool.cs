@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared
 {
     /// <summary>
-    /// The test pool class
+    ///     The test pool class
     /// </summary>
     public class TestPool
     {

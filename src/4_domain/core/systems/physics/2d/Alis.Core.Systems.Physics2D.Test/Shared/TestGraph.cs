@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared
 {
     /// <summary>
-    /// The test graph class
+    ///     The test graph class
     /// </summary>
     public class TestGraph
     {

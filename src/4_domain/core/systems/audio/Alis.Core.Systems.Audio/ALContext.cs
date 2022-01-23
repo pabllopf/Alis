@@ -1,11 +1,4 @@
-﻿//
-// ALContext.cs
-//
-// Copyright (C) 2020 OpenTK
-//
-// This software may be modified and distributed under the terms
-// of the MIT license. See the LICENSE file for details.
-//
+﻿// 
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -18,35 +11,17 @@ namespace Alis.Core.Systems.Audio
 
         public IntPtr Handle;
 
-        public ALContext(IntPtr handle)
-        {
-            Handle = handle;
-        }
+        public ALContext(IntPtr handle) => Handle = handle;
 
-        public override bool Equals(object obj)
-        {
-            return obj is ALContext handle && Equals(handle);
-        }
+        public override bool Equals(object obj) => obj is ALContext handle && Equals(handle);
 
-        public bool Equals([AllowNull] ALContext other)
-        {
-            return Handle.Equals(other.Handle);
-        }
+        public bool Equals([AllowNull] ALContext other) => Handle.Equals(other.Handle);
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Handle);
-        }
+        public override int GetHashCode() => HashCode.Combine(Handle);
 
-        public static bool operator ==(ALContext left, ALContext right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(ALContext left, ALContext right) => left.Equals(right);
 
-        public static bool operator !=(ALContext left, ALContext right)
-        {
-            return !(left == right);
-        }
+        public static bool operator !=(ALContext left, ALContext right) => !(left == right);
 
         public static implicit operator IntPtr(ALContext context) => context.Handle;
     }

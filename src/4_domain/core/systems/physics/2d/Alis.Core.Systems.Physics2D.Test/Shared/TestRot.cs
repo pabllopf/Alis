@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared
 {
     /// <summary>
-    /// The test rot class
+    ///     The test rot class
     /// </summary>
     public class TestRot
     {

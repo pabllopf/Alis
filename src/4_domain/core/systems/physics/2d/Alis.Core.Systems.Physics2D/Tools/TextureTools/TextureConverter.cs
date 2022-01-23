@@ -534,7 +534,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                                                 holePolygon.Add(holePolygon[0]);
 
                                                 if (SplitPolygonEdge(polygon, holeEntrance.Value, out _,
-                                                    out int vertex2Index))
+                                                        out int vertex2Index))
                                                 {
                                                     polygon.InsertRange(vertex2Index, holePolygon);
                                                 }
@@ -1461,7 +1461,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
 
                     // Check if the distance is over the one that's tolerable.
                     if (LineUtils.DistanceBetweenPointAndLineSegment(ref tempVector1, ref tempVector2,
-                        ref tempVector3) >= hullTolerance)
+                            ref tempVector3) >= hullTolerance)
                     {
                         outstandingResult = hullArea[i];
                         found = true;

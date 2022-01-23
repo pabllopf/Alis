@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared
 {
     /// <summary>
-    /// The test polygon error class
+    ///     The test polygon error class
     /// </summary>
     public class TestPolygonError
     {

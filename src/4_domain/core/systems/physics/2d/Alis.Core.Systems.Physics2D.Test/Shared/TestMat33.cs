@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared
 {
     /// <summary>
-    /// The test mat 33 class
+    ///     The test mat 33 class
     /// </summary>
     public class TestMat33
     {

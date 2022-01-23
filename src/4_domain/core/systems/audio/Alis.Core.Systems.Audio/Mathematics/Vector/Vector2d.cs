@@ -1,24 +1,4 @@
-/*
-Copyright (c) 2006 - 2008 The Open Toolkit library.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+// 
 
 using System;
 using System.Diagnostics.Contracts;
@@ -32,59 +12,60 @@ using Half = Alis.Core.Systems.Audio.Mathematics.Data.Half;
 namespace Alis.Core.Systems.Audio.Mathematics.Vector
 {
     /// <summary>
-    /// Represents a 2D vector using two double-precision floating-point numbers.
+    ///     Represents a 2D vector using two double-precision floating-point numbers.
     /// </summary>
-    [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct Vector2d : IEquatable<Vector2d>
     {
         /// <summary>
-        /// The X coordinate of this instance.
+        ///     The X coordinate of this instance.
         /// </summary>
         public double X;
 
         /// <summary>
-        /// The Y coordinate of this instance.
+        ///     The Y coordinate of this instance.
         /// </summary>
         public double Y;
 
         /// <summary>
-        /// Defines a unit-length Vector2d that points towards the X-axis.
+        ///     Defines a unit-length Vector2d that points towards the X-axis.
         /// </summary>
         public static readonly Vector2d UnitX = new Vector2d(1, 0);
 
         /// <summary>
-        /// Defines a unit-length Vector2d that points towards the Y-axis.
+        ///     Defines a unit-length Vector2d that points towards the Y-axis.
         /// </summary>
         public static readonly Vector2d UnitY = new Vector2d(0, 1);
 
         /// <summary>
-        /// Defines a zero-length Vector2d.
+        ///     Defines a zero-length Vector2d.
         /// </summary>
         public static readonly Vector2d Zero = new Vector2d(0, 0);
 
         /// <summary>
-        /// Defines an instance with all components set to 1.
+        ///     Defines an instance with all components set to 1.
         /// </summary>
         public static readonly Vector2d One = new Vector2d(1, 1);
 
         /// <summary>
-        /// Defines an instance with all components set to positive infinity.
+        ///     Defines an instance with all components set to positive infinity.
         /// </summary>
-        public static readonly Vector2d PositiveInfinity = new Vector2d(double.PositiveInfinity, double.PositiveInfinity);
+        public static readonly Vector2d PositiveInfinity =
+            new Vector2d(double.PositiveInfinity, double.PositiveInfinity);
 
         /// <summary>
-        /// Defines an instance with all components set to negative infinity.
+        ///     Defines an instance with all components set to negative infinity.
         /// </summary>
-        public static readonly Vector2d NegativeInfinity = new Vector2d(double.NegativeInfinity, double.NegativeInfinity);
+        public static readonly Vector2d NegativeInfinity =
+            new Vector2d(double.NegativeInfinity, double.NegativeInfinity);
 
         /// <summary>
-        /// Defines the size of the Vector2d struct in bytes.
+        ///     Defines the size of the Vector2d struct in bytes.
         /// </summary>
         public static readonly int SizeInBytes = Unsafe.SizeOf<Vector2>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector2d"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector2d" /> struct.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
         public Vector2d(double value)
@@ -94,7 +75,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector2d"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector2d" /> struct.
         /// </summary>
         /// <param name="x">The X coordinate.</param>
         /// <param name="y">The Y coordinate.</param>
@@ -105,7 +86,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets the value at the index of the Vector.
+        ///     Gets or sets the value at the index of the Vector.
         /// </summary>
         /// <param name="index">The index of the component from the Vector.</param>
         /// <exception cref="IndexOutOfRangeException">Thrown if the index is less than 0 or greater than 1.</exception>
@@ -144,54 +125,54 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets the length (magnitude) of the vector.
+        ///     Gets the length (magnitude) of the vector.
         /// </summary>
-        /// <seealso cref="LengthSquared"/>
-        public double Length => Math.Sqrt((X * X) + (Y * Y));
+        /// <seealso cref="LengthSquared" />
+        public double Length => Math.Sqrt(X * X + Y * Y);
 
         /// <summary>
-        /// Gets the square of the vector length (magnitude).
+        ///     Gets the square of the vector length (magnitude).
         /// </summary>
         /// <remarks>
-        /// This property avoids the costly square root operation required by the Length property. This makes it more suitable
-        /// for comparisons.
+        ///     This property avoids the costly square root operation required by the Length property. This makes it more suitable
+        ///     for comparisons.
         /// </remarks>
-        /// <see cref="Length"/>
-        public double LengthSquared => (X * X) + (Y * Y);
+        /// <see cref="Length" />
+        public double LengthSquared => X * X + Y * Y;
 
         /// <summary>
-        /// Gets the perpendicular vector on the right side of this vector.
+        ///     Gets the perpendicular vector on the right side of this vector.
         /// </summary>
         public Vector2d PerpendicularRight => new Vector2d(Y, -X);
 
         /// <summary>
-        /// Gets the perpendicular vector on the left side of this vector.
+        ///     Gets the perpendicular vector on the left side of this vector.
         /// </summary>
         public Vector2d PerpendicularLeft => new Vector2d(-Y, X);
 
         /// <summary>
-        /// Returns a copy of the Vector2d scaled to unit length.
+        ///     Returns a copy of the Vector2d scaled to unit length.
         /// </summary>
         /// <returns>The normalized copy.</returns>
         public Vector2d Normalized()
         {
-            var v = this;
+            Vector2d v = this;
             v.Normalize();
             return v;
         }
 
         /// <summary>
-        /// Scales the Vector2 to unit length.
+        ///     Scales the Vector2 to unit length.
         /// </summary>
         public void Normalize()
         {
-            var scale = 1.0 / Length;
+            double scale = 1.0 / Length;
             X *= scale;
             Y *= scale;
         }
 
         /// <summary>
-        /// Adds two vectors.
+        ///     Adds two vectors.
         /// </summary>
         /// <param name="a">Left operand.</param>
         /// <param name="b">Right operand.</param>
@@ -204,7 +185,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Adds two vectors.
+        ///     Adds two vectors.
         /// </summary>
         /// <param name="a">Left operand.</param>
         /// <param name="b">Right operand.</param>
@@ -216,7 +197,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtract one Vector from another.
+        ///     Subtract one Vector from another.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -229,7 +210,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtract one Vector from another.
+        ///     Subtract one Vector from another.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -241,7 +222,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by a scalar.
+        ///     Multiplies a vector by a scalar.
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -254,7 +235,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by a scalar.
+        ///     Multiplies a vector by a scalar.
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -266,7 +247,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by the components a vector (scale).
+        ///     Multiplies a vector by the components a vector (scale).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -279,7 +260,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by the components of a vector (scale).
+        ///     Multiplies a vector by the components of a vector (scale).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -291,7 +272,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by a scalar.
+        ///     Divides a vector by a scalar.
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -304,7 +285,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by a scalar.
+        ///     Divides a vector by a scalar.
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -316,7 +297,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by the components of a vector (scale).
+        ///     Divides a vector by the components of a vector (scale).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -329,7 +310,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divide a vector by the components of a vector (scale).
+        ///     Divide a vector by the components of a vector (scale).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -341,7 +322,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the smallest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the smallest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -355,7 +336,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the smallest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the smallest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -367,7 +348,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the largest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the largest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -381,7 +362,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the largest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the largest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -393,21 +374,19 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns the Vector2d with the minimum magnitude. If the magnitudes are equal, the second vector
-        /// is selected.
+        ///     Returns the Vector2d with the minimum magnitude. If the magnitudes are equal, the second vector
+        ///     is selected.
         /// </summary>
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns>The minimum Vector2d.</returns>
         [Pure]
-        public static Vector2d MagnitudeMin(Vector2d left, Vector2d right)
-        {
-            return left.LengthSquared < right.LengthSquared ? left : right;
-        }
+        public static Vector2d MagnitudeMin(Vector2d left, Vector2d right) =>
+            left.LengthSquared < right.LengthSquared ? left : right;
 
         /// <summary>
-        /// Returns the Vector2d with the minimum magnitude. If the magnitudes are equal, the second vector
-        /// is selected.
+        ///     Returns the Vector2d with the minimum magnitude. If the magnitudes are equal, the second vector
+        ///     is selected.
         /// </summary>
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
@@ -418,21 +397,19 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns the Vector2d with the minimum magnitude. If the magnitudes are equal, the first vector
-        /// is selected.
+        ///     Returns the Vector2d with the minimum magnitude. If the magnitudes are equal, the first vector
+        ///     is selected.
         /// </summary>
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns>The minimum Vector2d.</returns>
         [Pure]
-        public static Vector2d MagnitudeMax(Vector2d left, Vector2d right)
-        {
-            return left.LengthSquared >= right.LengthSquared ? left : right;
-        }
+        public static Vector2d MagnitudeMax(Vector2d left, Vector2d right) =>
+            left.LengthSquared >= right.LengthSquared ? left : right;
 
         /// <summary>
-        /// Returns the Vector2d with the maximum magnitude. If the magnitudes are equal, the first vector
-        /// is selected.
+        ///     Returns the Vector2d with the maximum magnitude. If the magnitudes are equal, the first vector
+        ///     is selected.
         /// </summary>
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
@@ -443,7 +420,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Clamp a vector to the given minimum and maximum vectors.
+        ///     Clamp a vector to the given minimum and maximum vectors.
         /// </summary>
         /// <param name="vec">Input vector.</param>
         /// <param name="min">Minimum vector.</param>
@@ -458,7 +435,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Clamp a vector to the given minimum and maximum vectors.
+        ///     Clamp a vector to the given minimum and maximum vectors.
         /// </summary>
         /// <param name="vec">Input vector.</param>
         /// <param name="min">Minimum vector.</param>
@@ -471,7 +448,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Compute the euclidean distance between two vectors.
+        ///     Compute the euclidean distance between two vectors.
         /// </summary>
         /// <param name="vec1">The first vector.</param>
         /// <param name="vec2">The second vector.</param>
@@ -484,18 +461,18 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Compute the euclidean distance between two vectors.
+        ///     Compute the euclidean distance between two vectors.
         /// </summary>
         /// <param name="vec1">The first vector.</param>
         /// <param name="vec2">The second vector.</param>
         /// <param name="result">The distance.</param>
         public static void Distance(in Vector2d vec1, in Vector2d vec2, out double result)
         {
-            result = Math.Sqrt(((vec2.X - vec1.X) * (vec2.X - vec1.X)) + ((vec2.Y - vec1.Y) * (vec2.Y - vec1.Y)));
+            result = Math.Sqrt((vec2.X - vec1.X) * (vec2.X - vec1.X) + (vec2.Y - vec1.Y) * (vec2.Y - vec1.Y));
         }
 
         /// <summary>
-        /// Compute the squared euclidean distance between two vectors.
+        ///     Compute the squared euclidean distance between two vectors.
         /// </summary>
         /// <param name="vec1">The first vector.</param>
         /// <param name="vec2">The second vector.</param>
@@ -508,93 +485,90 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Compute the squared euclidean distance between two vectors.
+        ///     Compute the squared euclidean distance between two vectors.
         /// </summary>
         /// <param name="vec1">The first vector.</param>
         /// <param name="vec2">The second vector.</param>
         /// <param name="result">The squared distance.</param>
         public static void DistanceSquared(in Vector2d vec1, in Vector2d vec2, out double result)
         {
-            result = ((vec2.X - vec1.X) * (vec2.X - vec1.X)) + ((vec2.Y - vec1.Y) * (vec2.Y - vec1.Y));
+            result = (vec2.X - vec1.X) * (vec2.X - vec1.X) + (vec2.Y - vec1.Y) * (vec2.Y - vec1.Y);
         }
 
         /// <summary>
-        /// Scale a vector to unit length.
+        ///     Scale a vector to unit length.
         /// </summary>
         /// <param name="vec">The input vector.</param>
         /// <returns>The normalized copy.</returns>
         [Pure]
         public static Vector2d Normalize(Vector2d vec)
         {
-            var scale = 1.0 / vec.Length;
+            double scale = 1.0 / vec.Length;
             vec.X *= scale;
             vec.Y *= scale;
             return vec;
         }
 
         /// <summary>
-        /// Scale a vector to unit length.
+        ///     Scale a vector to unit length.
         /// </summary>
         /// <param name="vec">The input vector.</param>
         /// <param name="result">The normalized vector.</param>
         public static void Normalize(in Vector2d vec, out Vector2d result)
         {
-            var scale = 1.0 / vec.Length;
+            double scale = 1.0 / vec.Length;
             result.X = vec.X * scale;
             result.Y = vec.Y * scale;
         }
 
         /// <summary>
-        /// Scale a vector to approximately unit length.
+        ///     Scale a vector to approximately unit length.
         /// </summary>
         /// <param name="vec">The input vector.</param>
         /// <returns>The normalized copy.</returns>
         [Pure]
         public static Vector2d NormalizeFast(Vector2d vec)
         {
-            var scale = MathHelper.InverseSqrtFast((vec.X * vec.X) + (vec.Y * vec.Y));
+            double scale = MathHelper.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y);
             vec.X *= scale;
             vec.Y *= scale;
             return vec;
         }
 
         /// <summary>
-        /// Scale a vector to approximately unit length.
+        ///     Scale a vector to approximately unit length.
         /// </summary>
         /// <param name="vec">The input vector.</param>
         /// <param name="result">The normalized vector.</param>
         public static void NormalizeFast(in Vector2d vec, out Vector2d result)
         {
-            var scale = MathHelper.InverseSqrtFast((vec.X * vec.X) + (vec.Y * vec.Y));
+            double scale = MathHelper.InverseSqrtFast(vec.X * vec.X + vec.Y * vec.Y);
             result.X = vec.X * scale;
             result.Y = vec.Y * scale;
         }
 
         /// <summary>
-        /// Calculate the dot (scalar) product of two vectors.
+        ///     Calculate the dot (scalar) product of two vectors.
         /// </summary>
         /// <param name="left">First operand.</param>
         /// <param name="right">Second operand.</param>
         /// <returns>The dot product of the two inputs.</returns>
         [Pure]
-        public static double Dot(Vector2d left, Vector2d right)
-        {
-            return (left.X * right.X) + (left.Y * right.Y);
-        }
+        public static double Dot(Vector2d left, Vector2d right) => left.X * right.X + left.Y * right.Y;
 
         /// <summary>
-        /// Calculate the dot (scalar) product of two vectors.
+        ///     Calculate the dot (scalar) product of two vectors.
         /// </summary>
         /// <param name="left">First operand.</param>
         /// <param name="right">Second operand.</param>
         /// <param name="result">The dot product of the two inputs.</param>
         public static void Dot(in Vector2d left, in Vector2d right, out double result)
         {
-            result = (left.X * right.X) + (left.Y * right.Y);
+            result = left.X * right.X + left.Y * right.Y;
         }
 
         /// <summary>
-        /// Returns a new Vector that is the linear blend of the 2 given Vectors.
+        ///     Returns a new Vector that is the linear blend of the 2 given Vectors.
         /// </summary>
         /// <param name="a">First input vector.</param>
         /// <param name="b">Second input vector.</param>
@@ -603,13 +577,13 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         [Pure]
         public static Vector2d Lerp(Vector2d a, Vector2d b, double blend)
         {
-            a.X = (blend * (b.X - a.X)) + a.X;
-            a.Y = (blend * (b.Y - a.Y)) + a.Y;
+            a.X = blend * (b.X - a.X) + a.X;
+            a.Y = blend * (b.Y - a.Y) + a.Y;
             return a;
         }
 
         /// <summary>
-        /// Returns a new Vector that is the linear blend of the 2 given Vectors.
+        ///     Returns a new Vector that is the linear blend of the 2 given Vectors.
         /// </summary>
         /// <param name="a">First input vector.</param>
         /// <param name="b">Second input vector.</param>
@@ -617,12 +591,12 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         /// <param name="result">a when blend=0, b when blend=1, and a linear combination otherwise.</param>
         public static void Lerp(in Vector2d a, in Vector2d b, double blend, out Vector2d result)
         {
-            result.X = (blend * (b.X - a.X)) + a.X;
-            result.Y = (blend * (b.Y - a.Y)) + a.Y;
+            result.X = blend * (b.X - a.X) + a.X;
+            result.Y = blend * (b.Y - a.Y) + a.Y;
         }
 
         /// <summary>
-        /// Interpolate 3 Vectors using Barycentric coordinates.
+        ///     Interpolate 3 Vectors using Barycentric coordinates.
         /// </summary>
         /// <param name="a">First input Vector.</param>
         /// <param name="b">Second input Vector.</param>
@@ -633,12 +607,12 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         [Pure]
         public static Vector2d BaryCentric(Vector2d a, Vector2d b, Vector2d c, double u, double v)
         {
-            BaryCentric(in a, in b, in c, u, v, out var result);
+            BaryCentric(in a, in b, in c, u, v, out Vector2d result);
             return result;
         }
 
         /// <summary>
-        /// Interpolate 3 Vectors using Barycentric coordinates.
+        ///     Interpolate 3 Vectors using Barycentric coordinates.
         /// </summary>
         /// <param name="a">First input Vector.</param>
         /// <param name="b">Second input Vector.</param>
@@ -646,8 +620,8 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         /// <param name="u">First Barycentric Coordinate.</param>
         /// <param name="v">Second Barycentric Coordinate.</param>
         /// <param name="result">
-        /// Output Vector. a when u=v=0, b when u=1,v=0, c when u=0,v=1, and a linear combination of a,b,c
-        /// otherwise.
+        ///     Output Vector. a when u=v=0, b when u=1,v=0, c when u=0,v=1, and a linear combination of a,b,c
+        ///     otherwise.
         /// </param>
         public static void BaryCentric
         (
@@ -659,17 +633,17 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
             out Vector2d result
         )
         {
-            Subtract(in b, in a, out var ab);
-            Multiply(in ab, u, out var abU);
-            Add(in a, in abU, out var uPos);
+            Subtract(in b, in a, out Vector2d ab);
+            Multiply(in ab, u, out Vector2d abU);
+            Add(in a, in abU, out Vector2d uPos);
 
-            Subtract(in c, in a, out var ac);
-            Multiply(in ac, v, out var acV);
+            Subtract(in c, in a, out Vector2d ac);
+            Multiply(in ac, v, out Vector2d acV);
             Add(in uPos, in acV, out result);
         }
 
         /// <summary>
-        /// Transform a Vector by the given Matrix.
+        ///     Transform a Vector by the given Matrix.
         /// </summary>
         /// <param name="vec">The vector to transform.</param>
         /// <param name="mat">The desired transformation.</param>
@@ -682,7 +656,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Transform a Vector by the given Matrix.
+        ///     Transform a Vector by the given Matrix.
         /// </summary>
         /// <param name="vec">The vector to transform.</param>
         /// <param name="mat">The desired transformation.</param>
@@ -690,12 +664,12 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         public static void TransformRow(in Vector2d vec, in Matrix2d mat, out Vector2d result)
         {
             result = new Vector2d(
-                (vec.X * mat.Row0.X) + (vec.Y * mat.Row1.X),
-                (vec.X * mat.Row0.Y) + (vec.Y * mat.Row1.Y));
+                vec.X * mat.Row0.X + vec.Y * mat.Row1.X,
+                vec.X * mat.Row0.Y + vec.Y * mat.Row1.Y);
         }
 
         /// <summary>
-        /// Transforms a vector by a quaternion rotation.
+        ///     Transforms a vector by a quaternion rotation.
         /// </summary>
         /// <param name="vec">The vector to transform.</param>
         /// <param name="quat">The quaternion to rotate the vector by.</param>
@@ -708,7 +682,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Transforms a vector by a quaternion rotation.
+        ///     Transforms a vector by a quaternion rotation.
         /// </summary>
         /// <param name="vec">The vector to transform.</param>
         /// <param name="quat">The quaternion to rotate the vector by.</param>
@@ -725,7 +699,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Transform a Vector by the given Matrix using right-handed notation.
+        ///     Transform a Vector by the given Matrix using right-handed notation.
         /// </summary>
         /// <param name="mat">The desired transformation.</param>
         /// <param name="vec">The vector to transform.</param>
@@ -738,19 +712,19 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Transform a Vector by the given Matrix using right-handed notation.
+        ///     Transform a Vector by the given Matrix using right-handed notation.
         /// </summary>
         /// <param name="mat">The desired transformation.</param>
         /// <param name="vec">The vector to transform.</param>
         /// <param name="result">The transformed vector.</param>
         public static void TransformColumn(in Matrix2d mat, in Vector2d vec, out Vector2d result)
         {
-            result.X = (mat.Row0.X * vec.X) + (mat.Row0.Y * vec.Y);
-            result.Y = (mat.Row1.X * vec.X) + (mat.Row1.Y * vec.Y);
+            result.X = mat.Row0.X * vec.X + mat.Row0.Y * vec.Y;
+            result.Y = mat.Row1.X * vec.X + mat.Row1.Y * vec.Y;
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2d with the Y and X components of this instance.
+        ///     Gets or sets an OpenTK.Vector2d with the Y and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2d Yx
@@ -764,7 +738,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Adds two instances.
+        ///     Adds two instances.
         /// </summary>
         /// <param name="left">The left instance.</param>
         /// <param name="right">The right instance.</param>
@@ -778,7 +752,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtracts two instances.
+        ///     Subtracts two instances.
         /// </summary>
         /// <param name="left">The left instance.</param>
         /// <param name="right">The right instance.</param>
@@ -792,7 +766,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Negates an instance.
+        ///     Negates an instance.
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <returns>The result of the operation.</returns>
@@ -805,7 +779,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies an instance by a scalar.
+        ///     Multiplies an instance by a scalar.
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <param name="f">The scalar.</param>
@@ -819,7 +793,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiply an instance by a scalar.
+        ///     Multiply an instance by a scalar.
         /// </summary>
         /// <param name="f">The scalar.</param>
         /// <param name="vec">The instance.</param>
@@ -833,7 +807,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Component-wise multiplication between the specified instance by a scale vector.
+        ///     Component-wise multiplication between the specified instance by a scale vector.
         /// </summary>
         /// <param name="scale">Left operand.</param>
         /// <param name="vec">Right operand.</param>
@@ -847,7 +821,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Transform a Vector by the given Matrix.
+        ///     Transform a Vector by the given Matrix.
         /// </summary>
         /// <param name="vec">The vector to transform.</param>
         /// <param name="mat">The desired transformation.</param>
@@ -860,7 +834,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Transform a Vector by the given Matrix using right-handed notation.
+        ///     Transform a Vector by the given Matrix using right-handed notation.
         /// </summary>
         /// <param name="mat">The desired transformation.</param>
         /// <param name="vec">The vector to transform.</param>
@@ -873,7 +847,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Transforms a vector by a quaternion rotation.
+        ///     Transforms a vector by a quaternion rotation.
         /// </summary>
         /// <param name="quat">The quaternion to rotate the vector by.</param>
         /// <param name="vec">The vector to transform.</param>
@@ -886,7 +860,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides an instance by a scalar.
+        ///     Divides an instance by a scalar.
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <param name="f">The scalar.</param>
@@ -900,99 +874,70 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Compares two instances for equality.
+        ///     Compares two instances for equality.
         /// </summary>
         /// <param name="left">The left instance.</param>
         /// <param name="right">The right instance.</param>
         /// <returns>True, if both instances are equal; false otherwise.</returns>
-        public static bool operator ==(Vector2d left, Vector2d right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Vector2d left, Vector2d right) => left.Equals(right);
 
         /// <summary>
-        /// Compares two instances for ienquality.
+        ///     Compares two instances for ienquality.
         /// </summary>
         /// <param name="left">The left instance.</param>
         /// <param name="right">The right instance.</param>
         /// <returns>True, if the instances are not equal; false otherwise.</returns>
-        public static bool operator !=(Vector2d left, Vector2d right)
-        {
-            return !(left == right);
-        }
+        public static bool operator !=(Vector2d left, Vector2d right) => !(left == right);
 
         /// <summary>
-        /// Converts OpenTK.Vector2d to OpenTK.Vector2.
+        ///     Converts OpenTK.Vector2d to OpenTK.Vector2.
         /// </summary>
         /// <param name="vec">The Vector2d to convert.</param>
         /// <returns>The resulting Vector2.</returns>
         [Pure]
-        public static explicit operator Vector2(Vector2d vec)
-        {
-            return new Vector2((float)vec.X, (float)vec.Y);
-        }
+        public static explicit operator Vector2(Vector2d vec) => new Vector2((float) vec.X, (float) vec.Y);
 
         /// <summary>
-        /// Converts OpenTK.Vector2d to OpenTK.Vector2h.
+        ///     Converts OpenTK.Vector2d to OpenTK.Vector2h.
         /// </summary>
         /// <param name="vec">The Vector2d to convert.</param>
         /// <returns>The resulting Vector2h.</returns>
         [Pure]
-        public static explicit operator Vector2h(Vector2d vec)
-        {
-            return new Vector2h(new Half(vec.X), new Half(vec.Y));
-        }
+        public static explicit operator Vector2h(Vector2d vec) => new Vector2h(new Half(vec.X), new Half(vec.Y));
 
         /// <summary>
-        /// Converts OpenTK.Vector2d to OpenTK.Vector2i.
+        ///     Converts OpenTK.Vector2d to OpenTK.Vector2i.
         /// </summary>
         /// <param name="vec">The Vector2d to convert.</param>
         /// <returns>The resulting Vector2i.</returns>
         [Pure]
-        public static explicit operator Vector2i(Vector2d vec)
-        {
-            return new Vector2i((int)vec.X, (int)vec.Y);
-        }
+        public static explicit operator Vector2i(Vector2d vec) => new Vector2i((int) vec.X, (int) vec.Y);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector2d"/> struct using a tuple containing the component
-        /// values.
+        ///     Initializes a new instance of the <see cref="Vector2d" /> struct using a tuple containing the component
+        ///     values.
         /// </summary>
         /// <param name="values">A tuple containing the component values.</param>
-        /// <returns>A new instance of the <see cref="Vector2d"/> struct with the given component values.</returns>
+        /// <returns>A new instance of the <see cref="Vector2d" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector2d((double X, double Y) values)
-        {
-            return new Vector2d(values.X, values.Y);
-        }
+        public static implicit operator Vector2d((double X, double Y) values) => new Vector2d(values.X, values.Y);
 
-        /// <inheritdoc/>
-        public override string ToString()
-        {
-            return string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
-        }
+        /// <inheritdoc />
+        public override string ToString() => string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
 
-        /// <inheritdoc/>
-        public override bool Equals(object obj)
-        {
-            return obj is Vector2d && Equals((Vector2d)obj);
-        }
+        /// <inheritdoc />
+        public override bool Equals(object obj) => obj is Vector2d && Equals((Vector2d) obj);
 
-        /// <inheritdoc/>
-        public bool Equals(Vector2d other)
-        {
-            return X == other.X &&
-                   Y == other.Y;
-        }
+        /// <inheritdoc />
+        public bool Equals(Vector2d other) =>
+            X == other.X &&
+            Y == other.Y;
 
-        /// <inheritdoc/>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y);
-        }
+        /// <inheritdoc />
+        public override int GetHashCode() => HashCode.Combine(X, Y);
 
         /// <summary>
-        /// Deconstructs the vector into it's individual components.
+        ///     Deconstructs the vector into it's individual components.
         /// </summary>
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>

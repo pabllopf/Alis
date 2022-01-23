@@ -1,11 +1,4 @@
-﻿//
-// ConstCharPtrMarshaler.cs
-//
-// Copyright (C) 2020 OpenTK
-//
-// This software may be modified and distributed under the terms
-// of the MIT license. See the LICENSE file for details.
-//
+﻿// 
 
 using System;
 using System.Runtime.InteropServices;
@@ -24,10 +17,7 @@ namespace Alis.Core.Systems.Audio.Native
         {
         }
 
-        public int GetNativeDataSize()
-        {
-            return IntPtr.Size;
-        }
+        public int GetNativeDataSize() => IntPtr.Size;
 
         public IntPtr MarshalManagedToNative(object ManagedObj)
         {
@@ -36,14 +26,12 @@ namespace Alis.Core.Systems.Audio.Native
                 case string str:
                     return Marshal.StringToHGlobalAnsi(str);
                 default:
-                    throw new ArgumentException($"{nameof(ConstCharPtrMarshaler)} only supports marshaling of strings. Got '{ManagedObj.GetType()}'");
+                    throw new ArgumentException(
+                        $"{nameof(ConstCharPtrMarshaler)} only supports marshaling of strings. Got '{ManagedObj.GetType()}'");
             }
         }
 
-        public object MarshalNativeToManaged(IntPtr pNativeData)
-        {
-            return Marshal.PtrToStringAnsi(pNativeData);
-        }
+        public object MarshalNativeToManaged(IntPtr pNativeData) => Marshal.PtrToStringAnsi(pNativeData);
 
         // See https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.custommarshalers.typetotypeinfomarshaler.getinstance
 #pragma warning disable IDE0060 // Remove unused parameter

@@ -1,11 +1,4 @@
-//
-//  Vector3i.cs
-//
-//  Copyright (C) OpenTK
-//
-//  This software may be modified and distributed under the terms
-//  of the MIT license. See the LICENSE file for details.
-//
+// 
 
 using System;
 using System.Diagnostics.Contracts;
@@ -16,37 +9,36 @@ using System.Xml.Serialization;
 namespace Alis.Core.Systems.Audio.Mathematics.Vector
 {
     /// <summary>
-    /// Represents a 4D vector using four 32-bit integer numbers.
+    ///     Represents a 4D vector using four 32-bit integer numbers.
     /// </summary>
     /// <remarks>
-    /// The Vector4i structure is suitable for interoperation with unmanaged code requiring four consecutive integers.
+    ///     The Vector4i structure is suitable for interoperation with unmanaged code requiring four consecutive integers.
     /// </remarks>
-    [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct Vector4i : IEquatable<Vector4i>
     {
         /// <summary>
-        /// The X component of the Vector4i.
+        ///     The X component of the Vector4i.
         /// </summary>
         public int X;
 
         /// <summary>
-        /// The Y component of the Vector4i.
+        ///     The Y component of the Vector4i.
         /// </summary>
         public int Y;
 
         /// <summary>
-        /// The Z component of the Vector4i.
+        ///     The Z component of the Vector4i.
         /// </summary>
         public int Z;
 
         /// <summary>
-        /// The W component of the Vector4i.
+        ///     The W component of the Vector4i.
         /// </summary>
         public int W;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector4i" /> struct.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
         public Vector4i(int value)
@@ -58,7 +50,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector4i" /> struct.
         /// </summary>
         /// <param name="x">The X component of the Vector4i.</param>
         /// <param name="y">The Y component of the Vector4i.</param>
@@ -73,9 +65,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector4i" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector2i"/> to copy components from.</param>
+        /// <param name="v">The <see cref="Vector2i" /> to copy components from.</param>
         public Vector4i(Vector2i v)
         {
             X = v.X;
@@ -85,10 +77,10 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector4i" /> struct.
         /// </summary>
-        /// <param name="v1">The <see cref="Vector2i"/> to get the X and Y components for the Vector4.</param>
-        /// <param name="v2">The <see cref="Vector2i"/> to get the Z and W components for the Vector4.</param>
+        /// <param name="v1">The <see cref="Vector2i" /> to get the X and Y components for the Vector4.</param>
+        /// <param name="v2">The <see cref="Vector2i" /> to get the Z and W components for the Vector4.</param>
         public Vector4i(Vector2i v1, Vector2i v2)
         {
             X = v1.X;
@@ -98,9 +90,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector4i" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3i"/> to copy components from.</param>
+        /// <param name="v">The <see cref="Vector3i" /> to copy components from.</param>
         public Vector4i(Vector3i v)
         {
             X = v.X;
@@ -110,9 +102,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector4i" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3i"/> to copy components from.</param>
+        /// <param name="v">The <see cref="Vector3i" /> to copy components from.</param>
         /// <param name="w">The w component of the new Vector4.</param>
         public Vector4i(Vector3i v, int w)
         {
@@ -123,7 +115,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets the value at the index of the vector.
+        ///     Gets or sets the value at the index of the vector.
         /// </summary>
         /// <param name="index">The index of the component from the vector.</param>
         /// <exception cref="IndexOutOfRangeException">Thrown if the index is less than 0 or greater than 3.</exception>
@@ -180,52 +172,52 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets the manhattan length of the vector.
+        ///     Gets the manhattan length of the vector.
         /// </summary>
         public int ManhattanLength => Math.Abs(X) + Math.Abs(Y) + Math.Abs(Z) + Math.Abs(W);
 
         /// <summary>
-        /// Gets the euclidian length of the vector.
+        ///     Gets the euclidian length of the vector.
         /// </summary>
-        public float EuclideanLength => MathF.Sqrt((X * X) + (Y * Y) + (Z * Z) + (W * W));
+        public float EuclideanLength => MathF.Sqrt(X * X + Y * Y + Z * Z + W * W);
 
         /// <summary>
-        /// Defines a unit-length <see cref="Vector4i"/> that points towards the X-axis.
+        ///     Defines a unit-length <see cref="Vector4i" /> that points towards the X-axis.
         /// </summary>
         public static readonly Vector4i UnitX = new Vector4i(1, 0, 0, 0);
 
         /// <summary>
-        /// Defines a unit-length <see cref="Vector4i"/> that points towards the Y-axis.
+        ///     Defines a unit-length <see cref="Vector4i" /> that points towards the Y-axis.
         /// </summary>
         public static readonly Vector4i UnitY = new Vector4i(0, 1, 0, 0);
 
         /// <summary>
-        /// Defines a unit-length <see cref="Vector4i"/> that points towards the Z-axis.
+        ///     Defines a unit-length <see cref="Vector4i" /> that points towards the Z-axis.
         /// </summary>
         public static readonly Vector4i UnitZ = new Vector4i(0, 0, 1, 0);
 
         /// <summary>
-        /// Defines a unit-length <see cref="Vector4i"/> that points towards the W-axis.
+        ///     Defines a unit-length <see cref="Vector4i" /> that points towards the W-axis.
         /// </summary>
         public static readonly Vector4i UnitW = new Vector4i(0, 0, 0, 1);
 
         /// <summary>
-        /// Defines a zero-length <see cref="Vector4i"/>.
+        ///     Defines a zero-length <see cref="Vector4i" />.
         /// </summary>
         public static readonly Vector4i Zero = new Vector4i(0, 0, 0, 0);
 
         /// <summary>
-        /// Defines an instance with all components set to 1.
+        ///     Defines an instance with all components set to 1.
         /// </summary>
         public static readonly Vector4i One = new Vector4i(1, 1, 1, 1);
 
         /// <summary>
-        /// Defines the size of the <see cref="Vector4i"/> struct in bytes.
+        ///     Defines the size of the <see cref="Vector4i" /> struct in bytes.
         /// </summary>
         public static readonly int SizeInBytes = Unsafe.SizeOf<Vector4i>();
 
         /// <summary>
-        /// Adds two vectors.
+        ///     Adds two vectors.
         /// </summary>
         /// <param name="a">Left operand.</param>
         /// <param name="b">Right operand.</param>
@@ -238,7 +230,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Adds two vectors.
+        ///     Adds two vectors.
         /// </summary>
         /// <param name="a">Left operand.</param>
         /// <param name="b">Right operand.</param>
@@ -252,7 +244,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtract one Vector from another.
+        ///     Subtract one Vector from another.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -265,7 +257,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtract one Vector from another.
+        ///     Subtract one Vector from another.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -279,7 +271,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by an integer scalar.
+        ///     Multiplies a vector by an integer scalar.
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -292,7 +284,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by an integer scalar.
+        ///     Multiplies a vector by an integer scalar.
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -306,7 +298,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by the components a vector (scale).
+        ///     Multiplies a vector by the components a vector (scale).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -319,7 +311,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by the components of a vector (scale).
+        ///     Multiplies a vector by the components of a vector (scale).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -333,7 +325,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by a scalar using integer division, floor(a/b).
+        ///     Divides a vector by a scalar using integer division, floor(a/b).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -346,7 +338,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by a scalar using integer division, floor(a/b).
+        ///     Divides a vector by a scalar using integer division, floor(a/b).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -360,7 +352,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by the components of a vector using integer division, floor(a/b).
+        ///     Divides a vector by the components of a vector using integer division, floor(a/b).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -373,7 +365,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by the components of a vector using integer division, floor(a/b).
+        ///     Divides a vector by the components of a vector using integer division, floor(a/b).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -387,7 +379,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the smallest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the smallest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -404,7 +396,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the smallest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the smallest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -418,7 +410,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the largest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the largest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -435,7 +427,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the largest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the largest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -449,7 +441,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Clamp a vector to the given minimum and maximum vectors.
+        ///     Clamp a vector to the given minimum and maximum vectors.
         /// </summary>
         /// <param name="vec">Input vector.</param>
         /// <param name="min">Minimum vector.</param>
@@ -467,7 +459,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Clamp a vector to the given minimum and maximum vectors.
+        ///     Clamp a vector to the given minimum and maximum vectors.
         /// </summary>
         /// <param name="vec">Input vector.</param>
         /// <param name="min">Minimum vector.</param>
@@ -482,7 +474,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the X and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the X and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Xy
@@ -496,7 +488,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the X and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the X and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Xz
@@ -510,7 +502,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the X and W components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the X and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Xw
@@ -524,7 +516,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Y and X components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Y and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Yx
@@ -538,7 +530,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Y and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Y and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Yz
@@ -552,7 +544,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Y and W components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Y and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Yw
@@ -566,7 +558,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Z and X components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Z and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Zx
@@ -580,7 +572,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Z and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Z and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Zy
@@ -594,7 +586,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Z and W components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Z and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Zw
@@ -608,7 +600,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the W and X components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the W and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Wx
@@ -622,7 +614,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the W and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the W and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Wy
@@ -636,7 +628,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the W and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the W and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Wz
@@ -650,7 +642,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the X, Y, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the X, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Xyz
@@ -665,7 +657,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the X, Y, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the X, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Xyw
@@ -680,7 +672,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the X, Z, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the X, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Xzy
@@ -695,7 +687,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the X, Z, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the X, Z, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Xzw
@@ -710,7 +702,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the X, W, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the X, W, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Xwy
@@ -725,7 +717,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the X, W, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the X, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Xwz
@@ -740,7 +732,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Y, X, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Y, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Yxz
@@ -755,7 +747,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Y, X, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Y, X, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Yxw
@@ -770,7 +762,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Y, Z, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Y, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Yzx
@@ -785,7 +777,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Y, Z, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Y, Z, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Yzw
@@ -800,7 +792,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Y, W, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Y, W, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Ywx
@@ -815,7 +807,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Y, W, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Y, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Ywz
@@ -830,7 +822,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Z, X, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Z, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Zxy
@@ -845,7 +837,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Z, X, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Z, X, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Zxw
@@ -860,7 +852,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Z, Y, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Z, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Zyx
@@ -875,7 +867,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Z, Y, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Z, Y, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Zyw
@@ -890,7 +882,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Z, W, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Z, W, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Zwx
@@ -905,7 +897,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Z, W, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Z, W, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Zwy
@@ -920,7 +912,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the W, X, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the W, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Wxy
@@ -935,7 +927,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the W, X, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the W, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Wxz
@@ -950,7 +942,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the W, Y, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the W, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Wyx
@@ -965,7 +957,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the W, Y, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the W, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Wyz
@@ -980,7 +972,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the W, Z, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the W, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Wzx
@@ -995,7 +987,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the W, Z, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the W, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Wzy
@@ -1010,7 +1002,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the X, Y, W, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the X, Y, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Xywz
@@ -1026,7 +1018,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the X, Z, Y, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the X, Z, Y, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Xzyw
@@ -1042,7 +1034,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the X, Z, W, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the X, Z, W, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Xzwy
@@ -1058,7 +1050,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the X, W, Y, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the X, W, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Xwyz
@@ -1074,7 +1066,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the X, W, Z, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the X, W, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Xwzy
@@ -1090,7 +1082,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Y, X, Z, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Y, X, Z, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Yxzw
@@ -1106,7 +1098,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Y, X, W, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Y, X, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Yxwz
@@ -1122,7 +1114,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Y, Y, Z, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Y, Y, Z, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Yyzw
@@ -1138,7 +1130,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Y, Y, W, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Y, Y, W, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Yywz
@@ -1154,7 +1146,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Y, Z, X, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Y, Z, X, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Yzxw
@@ -1170,7 +1162,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Y, Z, W, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Y, Z, W, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Yzwx
@@ -1186,7 +1178,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Y, W, X, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Y, W, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Ywxz
@@ -1202,7 +1194,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Y, W, Z, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Y, W, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Ywzx
@@ -1218,7 +1210,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Z, X, Y, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Z, X, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Zxyw
@@ -1234,7 +1226,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Z, X, W, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Z, X, W, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Zxwy
@@ -1250,7 +1242,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Z, Y, X, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Z, Y, X, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Zyxw
@@ -1266,7 +1258,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Z, Y, W, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Z, Y, W, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Zywx
@@ -1282,7 +1274,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Z, W, X, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Z, W, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Zwxy
@@ -1298,7 +1290,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Z, W, Y, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Z, W, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Zwyx
@@ -1314,7 +1306,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the Z, W, Z, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the Z, W, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Zwzy
@@ -1330,7 +1322,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the W, X, Y, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the W, X, Y, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Wxyz
@@ -1346,7 +1338,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the W, X, Z, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the W, X, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Wxzy
@@ -1362,7 +1354,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the W, Y, X, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the W, Y, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Wyxz
@@ -1378,7 +1370,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the W, Y, Z, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the W, Y, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Wyzx
@@ -1394,7 +1386,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the W, Z, X, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the W, Z, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Wzxy
@@ -1410,7 +1402,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the W, Z, Y, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the W, Z, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Wzyx
@@ -1426,7 +1418,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector4i"/> with the W, Z, Y, and W components of this instance.
+        ///     Gets or sets a <see cref="Vector4i" /> with the W, Z, Y, and W components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector4i Wzyw
@@ -1442,19 +1434,16 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets a <see cref="Vector4"/> object with the same component values as the <see cref="Vector4i"/> instance.
+        ///     Gets a <see cref="Vector4" /> object with the same component values as the <see cref="Vector4i" /> instance.
         /// </summary>
-        /// <returns>The resulting <see cref="Vector4"/> instance.</returns>
-        public Vector4 ToVector4()
-        {
-            return new Vector4(X, Y, Z, W);
-        }
+        /// <returns>The resulting <see cref="Vector4" /> instance.</returns>
+        public Vector4 ToVector4() => new Vector4(X, Y, Z, W);
 
         /// <summary>
-        /// Gets a <see cref="Vector4"/> object with the same component values as the <see cref="Vector4i"/> instance.
+        ///     Gets a <see cref="Vector4" /> object with the same component values as the <see cref="Vector4i" /> instance.
         /// </summary>
-        /// <param name="input">The given <see cref="Vector4i"/> to convert.</param>
-        /// <param name="result">The resulting <see cref="Vector4"/>.</param>
+        /// <param name="input">The given <see cref="Vector4i" /> to convert.</param>
+        /// <param name="result">The resulting <see cref="Vector4" />.</param>
         public static void ToVector4(in Vector4i input, out Vector4 result)
         {
             result.X = input.X;
@@ -1464,7 +1453,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Adds two instances.
+        ///     Adds two instances.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
@@ -1480,7 +1469,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtracts two instances.
+        ///     Subtracts two instances.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
@@ -1496,7 +1485,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Negates an instance.
+        ///     Negates an instance.
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <returns>The result of the calculation.</returns>
@@ -1511,7 +1500,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies an instance by an integer scalar.
+        ///     Multiplies an instance by an integer scalar.
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <param name="scale">The scalar.</param>
@@ -1527,7 +1516,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies an instance by an integer scalar.
+        ///     Multiplies an instance by an integer scalar.
         /// </summary>
         /// <param name="scale">The scalar.</param>
         /// <param name="vec">The instance.</param>
@@ -1543,7 +1532,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Component-wise multiplication between the specified instance by a scale vector.
+        ///     Component-wise multiplication between the specified instance by a scale vector.
         /// </summary>
         /// <param name="scale">Left operand.</param>
         /// <param name="vec">Right operand.</param>
@@ -1559,7 +1548,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides the instance by a scalar using integer division, floor(a/b).
+        ///     Divides the instance by a scalar using integer division, floor(a/b).
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <param name="scale">The scalar.</param>
@@ -1575,40 +1564,31 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Compares two instances for equality.
+        ///     Compares two instances for equality.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Vector4i left, Vector4i right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Vector4i left, Vector4i right) => left.Equals(right);
 
         /// <summary>
-        /// Compares two instances for inequality.
+        ///     Compares two instances for inequality.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equa lright; false otherwise.</returns>
-        public static bool operator !=(Vector4i left, Vector4i right)
-        {
-            return !(left == right);
-        }
+        public static bool operator !=(Vector4i left, Vector4i right) => !(left == right);
 
         /// <summary>
-        /// Returns a pointer to the first element of the specified instance.
+        ///     Returns a pointer to the first element of the specified instance.
         /// </summary>
         /// <param name="v">The instance.</param>
         /// <returns>A pointer to the first element of v.</returns>
         [Pure]
-        public static unsafe explicit operator int*(Vector4i v)
-        {
-            return &v.X;
-        }
+        public static unsafe explicit operator int*(Vector4i v) => &v.X;
 
         /// <summary>
-        /// Returns a pointer to the first element of the specified instance.
+        ///     Returns a pointer to the first element of the specified instance.
         /// </summary>
         /// <param name="v">The instance.</param>
         /// <returns>A pointer to the first element of v.</returns>
@@ -1617,84 +1597,63 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         {
             unsafe
             {
-                return (IntPtr)(&v.X);
+                return (IntPtr) (&v.X);
             }
         }
 
         /// <summary>
-        /// Converts OpenTK.Vector4i to OpenTK.Vector4.
+        ///     Converts OpenTK.Vector4i to OpenTK.Vector4.
         /// </summary>
         /// <param name="vec">The Vector4i to convert.</param>
         /// <returns>The resulting Vector4.</returns>
         [Pure]
-        public static implicit operator Vector4(Vector4i vec)
-        {
-            return new Vector4(vec.X, vec.Y, vec.Z, vec.W);
-        }
+        public static implicit operator Vector4(Vector4i vec) => new Vector4(vec.X, vec.Y, vec.Z, vec.W);
 
         /// <summary>
-        /// Converts OpenTK.Vector4i to OpenTK.Vector4d.
+        ///     Converts OpenTK.Vector4i to OpenTK.Vector4d.
         /// </summary>
         /// <param name="vec">The Vector4i to convert.</param>
         /// <returns>The resulting Vector4d.</returns>
         [Pure]
-        public static implicit operator Vector4d(Vector4i vec)
-        {
-            return new Vector4d(vec.X, vec.Y, vec.Z, vec.W);
-        }
+        public static implicit operator Vector4d(Vector4i vec) => new Vector4d(vec.X, vec.Y, vec.Z, vec.W);
 
         /// <summary>
-        /// Converts OpenTK.Vector4i to OpenTK.Vector4h.
+        ///     Converts OpenTK.Vector4i to OpenTK.Vector4h.
         /// </summary>
         /// <param name="vec">The Vector4i to convert.</param>
         /// <returns>The resulting Vector4h.</returns>
         [Pure]
-        public static explicit operator Vector4h(Vector4i vec)
-        {
-            return new Vector4h(vec.X, vec.Y, vec.Z, vec.W);
-        }
+        public static explicit operator Vector4h(Vector4i vec) => new Vector4h(vec.X, vec.Y, vec.Z, vec.W);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector4i"/> struct using a tuple containing the component
-        /// values.
+        ///     Initializes a new instance of the <see cref="Vector4i" /> struct using a tuple containing the component
+        ///     values.
         /// </summary>
         /// <param name="values">A tuple containing the component values.</param>
-        /// <returns>A new instance of the <see cref="Vector4i"/> struct with the given component values.</returns>
+        /// <returns>A new instance of the <see cref="Vector4i" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector4i((int X, int Y, int Z, int W) values)
-        {
-            return new Vector4i(values.X, values.Y, values.Z, values.W);
-        }
+        public static implicit operator Vector4i((int X, int Y, int Z, int W) values) =>
+            new Vector4i(values.X, values.Y, values.Z, values.W);
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return string.Format("({0}{4} {1}{4} {2}{4} {3})", X, Y, Z, W, MathHelper.ListSeparator);
-        }
+        public override string ToString() =>
+            string.Format("({0}{4} {1}{4} {2}{4} {3})", X, Y, Z, W, MathHelper.ListSeparator);
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
-        {
-            return obj is Vector4i && Equals((Vector4i)obj);
-        }
+        public override bool Equals(object obj) => obj is Vector4i && Equals((Vector4i) obj);
 
         /// <inheritdoc />
-        public bool Equals(Vector4i other)
-        {
-            return X == other.X &&
-                   Y == other.Y &&
-                   Z == other.Z &&
-                   W == other.W;
-        }
+        public bool Equals(Vector4i other) =>
+            X == other.X &&
+            Y == other.Y &&
+            Z == other.Z &&
+            W == other.W;
 
         /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y, Z, W);
-        }
+        public override int GetHashCode() => HashCode.Combine(X, Y, Z, W);
 
         /// <summary>
-        /// Deconstructs the vector into it's individual components.
+        ///     Deconstructs the vector into it's individual components.
         /// </summary>
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>

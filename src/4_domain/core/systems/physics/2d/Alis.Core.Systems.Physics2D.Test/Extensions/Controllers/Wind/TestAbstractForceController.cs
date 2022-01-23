@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.Wind
 {
     /// <summary>
-    /// The test abstract force controller class
+    ///     The test abstract force controller class
     /// </summary>
     public class TestAbstractForceController
     {

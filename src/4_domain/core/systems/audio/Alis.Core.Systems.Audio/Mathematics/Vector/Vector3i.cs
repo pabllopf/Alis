@@ -1,11 +1,4 @@
-//
-//  Vector3i.cs
-//
-//  Copyright (C) OpenTK
-//
-//  This software may be modified and distributed under the terms
-//  of the MIT license. See the LICENSE file for details.
-//
+// 
 
 using System;
 using System.Diagnostics.Contracts;
@@ -16,32 +9,31 @@ using System.Xml.Serialization;
 namespace Alis.Core.Systems.Audio.Mathematics.Vector
 {
     /// <summary>
-    /// Represents a 3D vector using three 32-bit integer numbers.
+    ///     Represents a 3D vector using three 32-bit integer numbers.
     /// </summary>
     /// <remarks>
-    /// The Vector3i structure is suitable for interoperation with unmanaged code requiring three consecutive integers.
+    ///     The Vector3i structure is suitable for interoperation with unmanaged code requiring three consecutive integers.
     /// </remarks>
-    [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct Vector3i : IEquatable<Vector3i>
     {
         /// <summary>
-        /// The X component of the Vector3i.
+        ///     The X component of the Vector3i.
         /// </summary>
         public int X;
 
         /// <summary>
-        /// The Y component of the Vector3i.
+        ///     The Y component of the Vector3i.
         /// </summary>
         public int Y;
 
         /// <summary>
-        /// The Z component of the Vector3i.
+        ///     The Z component of the Vector3i.
         /// </summary>
         public int Z;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3i" /> struct.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
         public Vector3i(int value)
@@ -52,7 +44,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3i" /> struct.
         /// </summary>
         /// <param name="x">The x component of the Vector3.</param>
         /// <param name="y">The y component of the Vector3.</param>
@@ -65,9 +57,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3i" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector2i"/> to copy components from.</param>
+        /// <param name="v">The <see cref="Vector2i" /> to copy components from.</param>
         public Vector3i(Vector2i v)
         {
             X = v.X;
@@ -76,9 +68,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3i"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3i" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector2i"/> to copy components from.</param>
+        /// <param name="v">The <see cref="Vector2i" /> to copy components from.</param>
         /// <param name="z">The z component of the new Vector3.</param>
         public Vector3i(Vector2i v, int z)
         {
@@ -88,7 +80,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets the value at the index of the vector.
+        ///     Gets or sets the value at the index of the vector.
         /// </summary>
         /// <param name="index">The index of the component from the vector.</param>
         /// <exception cref="IndexOutOfRangeException">Thrown if the index is less than 0 or greater than 2.</exception>
@@ -136,37 +128,37 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets the manhattan length of the vector.
+        ///     Gets the manhattan length of the vector.
         /// </summary>
         public int ManhattanLength => Math.Abs(X) + Math.Abs(Y) + Math.Abs(Z);
 
         /// <summary>
-        /// Gets the euclidian length of the vector.
+        ///     Gets the euclidian length of the vector.
         /// </summary>
-        public float EuclideanLength => MathF.Sqrt((X * X) + (Y * Y) + (Z * Z));
+        public float EuclideanLength => MathF.Sqrt(X * X + Y * Y + Z * Z);
 
         /// <summary>
-        /// Defines a unit-length Vector3i that points towards the X-axis.
+        ///     Defines a unit-length Vector3i that points towards the X-axis.
         /// </summary>
         public static readonly Vector3i UnitX = new Vector3i(1, 0, 0);
 
         /// <summary>
-        /// Defines a unit-length Vector3i that points towards the Y-axis.
+        ///     Defines a unit-length Vector3i that points towards the Y-axis.
         /// </summary>
         public static readonly Vector3i UnitY = new Vector3i(0, 1, 0);
 
         /// <summary>
-        /// Defines a unit-length Vector3i that points towards the Z-axis.
+        ///     Defines a unit-length Vector3i that points towards the Z-axis.
         /// </summary>
         public static readonly Vector3i UnitZ = new Vector3i(0, 0, 1);
 
         /// <summary>
-        /// Defines the size of the Vector3i struct in bytes.
+        ///     Defines the size of the Vector3i struct in bytes.
         /// </summary>
         public static readonly int SizeInBytes = Unsafe.SizeOf<Vector3i>();
 
         /// <summary>
-        /// Adds two vectors.
+        ///     Adds two vectors.
         /// </summary>
         /// <param name="a">Left operand.</param>
         /// <param name="b">Right operand.</param>
@@ -179,7 +171,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Adds two vectors.
+        ///     Adds two vectors.
         /// </summary>
         /// <param name="a">Left operand.</param>
         /// <param name="b">Right operand.</param>
@@ -192,7 +184,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtract one vector from another.
+        ///     Subtract one vector from another.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -205,7 +197,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtract one vector from another.
+        ///     Subtract one vector from another.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -218,7 +210,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by a scalar.
+        ///     Multiplies a vector by a scalar.
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -231,7 +223,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by a scalar.
+        ///     Multiplies a vector by a scalar.
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -244,7 +236,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by the components a vector (scale).
+        ///     Multiplies a vector by the components a vector (scale).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -257,7 +249,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies a vector by the components of a vector (scale).
+        ///     Multiplies a vector by the components of a vector (scale).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -270,7 +262,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by a scalar using integer division, floor(a/b).
+        ///     Divides a vector by a scalar using integer division, floor(a/b).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -283,7 +275,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by a scalar using integer division, floor(a/b).
+        ///     Divides a vector by a scalar using integer division, floor(a/b).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -296,7 +288,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by the components of a vector using integer division, floor(a/b).
+        ///     Divides a vector by the components of a vector using integer division, floor(a/b).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -309,7 +301,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides a vector by the components of a vector using integer division, floor(a/b).
+        ///     Divides a vector by the components of a vector using integer division, floor(a/b).
         /// </summary>
         /// <param name="vector">Left operand.</param>
         /// <param name="scale">Right operand.</param>
@@ -322,7 +314,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the smallest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the smallest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -338,7 +330,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the smallest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the smallest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -351,7 +343,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the largest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the largest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -367,7 +359,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns a vector created from the largest of the corresponding components of the given vectors.
+        ///     Returns a vector created from the largest of the corresponding components of the given vectors.
         /// </summary>
         /// <param name="a">First operand.</param>
         /// <param name="b">Second operand.</param>
@@ -380,7 +372,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Clamp a vector to the given minimum and maximum vectors.
+        ///     Clamp a vector to the given minimum and maximum vectors.
         /// </summary>
         /// <param name="vec">Input vector.</param>
         /// <param name="min">Minimum vector.</param>
@@ -397,7 +389,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Clamp a vector to the given minimum and maximum vectors.
+        ///     Clamp a vector to the given minimum and maximum vectors.
         /// </summary>
         /// <param name="vec">Input vector.</param>
         /// <param name="min">Minimum vector.</param>
@@ -411,7 +403,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the X and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the X and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Xy
@@ -425,7 +417,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the X and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the X and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Xz
@@ -439,7 +431,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Y and X components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Y and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Yx
@@ -453,7 +445,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Y and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Y and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Yz
@@ -467,7 +459,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Z and X components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Z and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Zx
@@ -481,7 +473,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector2i"/> with the Z and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector2i" /> with the Z and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2i Zy
@@ -495,7 +487,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the X, Z, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the X, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Xzy
@@ -510,7 +502,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Y, X, and Z components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Y, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Yxz
@@ -525,7 +517,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Y, Z, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Y, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Yzx
@@ -540,7 +532,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Z, X, and Y components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Z, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Zxy
@@ -555,7 +547,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets a <see cref="Vector3i"/> with the Z, Y, and X components of this instance.
+        ///     Gets or sets a <see cref="Vector3i" /> with the Z, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3i Zyx
@@ -570,19 +562,16 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets a <see cref="Vector3"/> object with the same component values as the <see cref="Vector3i"/> instance.
+        ///     Gets a <see cref="Vector3" /> object with the same component values as the <see cref="Vector3i" /> instance.
         /// </summary>
-        /// <returns>The resulting <see cref="Vector3"/> instance.</returns>
-        public Vector3 ToVector3()
-        {
-            return new Vector3(X, Y, Z);
-        }
+        /// <returns>The resulting <see cref="Vector3" /> instance.</returns>
+        public Vector3 ToVector3() => new Vector3(X, Y, Z);
 
         /// <summary>
-        /// Gets a <see cref="Vector3"/> object with the same component values as the <see cref="Vector3i"/> instance.
+        ///     Gets a <see cref="Vector3" /> object with the same component values as the <see cref="Vector3i" /> instance.
         /// </summary>
-        /// <param name="input">The given <see cref="Vector3i"/> to convert.</param>
-        /// <param name="result">The resulting <see cref="Vector3"/>.</param>
+        /// <param name="input">The given <see cref="Vector3i" /> to convert.</param>
+        /// <param name="result">The resulting <see cref="Vector3" />.</param>
         public static void ToVector3(in Vector3i input, out Vector3 result)
         {
             result.X = input.X;
@@ -591,7 +580,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Adds two instances.
+        ///     Adds two instances.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
@@ -606,7 +595,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Subtracts two instances.
+        ///     Subtracts two instances.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
@@ -621,7 +610,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Negates an instance.
+        ///     Negates an instance.
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <returns>The result of the calculation.</returns>
@@ -635,7 +624,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies an instance by an integer scalar.
+        ///     Multiplies an instance by an integer scalar.
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <param name="scale">The scalar.</param>
@@ -650,7 +639,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Multiplies an instance by an integer scalar.
+        ///     Multiplies an instance by an integer scalar.
         /// </summary>
         /// <param name="scale">The scalar.</param>
         /// <param name="vec">The instance.</param>
@@ -665,7 +654,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Component-wise multiplication between the specified instance by a scale vector.
+        ///     Component-wise multiplication between the specified instance by a scale vector.
         /// </summary>
         /// <param name="scale">Left operand.</param>
         /// <param name="vec">Right operand.</param>
@@ -680,7 +669,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Divides the instance by a scalar using integer division, floor(a/b).
+        ///     Divides the instance by a scalar using integer division, floor(a/b).
         /// </summary>
         /// <param name="vec">The instance.</param>
         /// <param name="scale">The scalar.</param>
@@ -695,100 +684,72 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Compares two instances for equality.
+        ///     Compares two instances for equality.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Vector3i left, Vector3i right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Vector3i left, Vector3i right) => left.Equals(right);
 
         /// <summary>
-        /// Compares two instances for inequality.
+        ///     Compares two instances for inequality.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
-        public static bool operator !=(Vector3i left, Vector3i right)
-        {
-            return !(left == right);
-        }
+        public static bool operator !=(Vector3i left, Vector3i right) => !(left == right);
 
         /// <summary>
-        /// Converts OpenTK.Vector3i to OpenTK.Vector3.
+        ///     Converts OpenTK.Vector3i to OpenTK.Vector3.
         /// </summary>
         /// <param name="vec">The Vector3i to convert.</param>
         /// <returns>The resulting Vector3.</returns>
         [Pure]
-        public static implicit operator Vector3(Vector3i vec)
-        {
-            return new Vector3(vec.X, vec.Y, vec.Z);
-        }
+        public static implicit operator Vector3(Vector3i vec) => new Vector3(vec.X, vec.Y, vec.Z);
 
         /// <summary>
-        /// Converts OpenTK.Vector3i to OpenTK.Vector3d.
+        ///     Converts OpenTK.Vector3i to OpenTK.Vector3d.
         /// </summary>
         /// <param name="vec">The Vector3i to convert.</param>
         /// <returns>The resulting Vector3d.</returns>
         [Pure]
-        public static implicit operator Vector3d(Vector3i vec)
-        {
-            return new Vector3d(vec.X, vec.Y, vec.Z);
-        }
+        public static implicit operator Vector3d(Vector3i vec) => new Vector3d(vec.X, vec.Y, vec.Z);
 
         /// <summary>
-        /// Converts OpenTK.Vector3i to OpenTK.Vector3h.
+        ///     Converts OpenTK.Vector3i to OpenTK.Vector3h.
         /// </summary>
         /// <param name="vec">The Vector3i to convert.</param>
         /// <returns>The resulting Vector3h.</returns>
         [Pure]
-        public static explicit operator Vector3h(Vector3i vec)
-        {
-            return new Vector3h(vec.X, vec.Y, vec.Z);
-        }
+        public static explicit operator Vector3h(Vector3i vec) => new Vector3h(vec.X, vec.Y, vec.Z);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3i"/> struct using a tuple containing the component
-        /// values.
+        ///     Initializes a new instance of the <see cref="Vector3i" /> struct using a tuple containing the component
+        ///     values.
         /// </summary>
         /// <param name="values">A tuple containing the component values.</param>
-        /// <returns>A new instance of the <see cref="Vector3i"/> struct with the given component values.</returns>
+        /// <returns>A new instance of the <see cref="Vector3i" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector3i((int X, int Y, int Z) values)
-        {
-            return new Vector3i(values.X, values.Y, values.Z);
-        }
+        public static implicit operator Vector3i((int X, int Y, int Z) values) =>
+            new Vector3i(values.X, values.Y, values.Z);
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return string.Format("({0}{3} {1}{3} {2})", X, Y, Z, MathHelper.ListSeparator);
-        }
+        public override string ToString() => string.Format("({0}{3} {1}{3} {2})", X, Y, Z, MathHelper.ListSeparator);
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
-        {
-            return obj is Vector3i && Equals((Vector3i)obj);
-        }
+        public override bool Equals(object obj) => obj is Vector3i && Equals((Vector3i) obj);
 
         /// <inheritdoc />
-        public bool Equals(Vector3i other)
-        {
-            return X == other.X &&
-                   Y == other.Y &&
-                   Z == other.Z;
-        }
+        public bool Equals(Vector3i other) =>
+            X == other.X &&
+            Y == other.Y &&
+            Z == other.Z;
 
         /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y, Z);
-        }
+        public override int GetHashCode() => HashCode.Combine(X, Y, Z);
 
         /// <summary>
-        /// Deconstructs the vector into it's individual components.
+        ///     Deconstructs the vector into it's individual components.
         /// </summary>
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>

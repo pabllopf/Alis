@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared.Optimization
 {
     /// <summary>
-    /// The test fixed array class
+    ///     The test fixed array class
     /// </summary>
     public class TestFixedArray2
     {

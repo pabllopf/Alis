@@ -350,8 +350,8 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
                 //Note: This loop can go into infinite as it operates on floats.
                 //Added FloatEquals with a large epsilon.
                 for (float j = data[i].Min + first;
-                    j < data[i].Max || MathUtils.FloatEquals(j, data[i].Max, 0.0001f);
-                    j += offset)
+                     j < data[i].Max || MathUtils.FloatEquals(j, data[i].Max, 0.0001f);
+                     j += offset)
                 {
                     Vector2 p1 = pos;
                     Vector2 p2 = pos + radius * new Vector2((float) Math.Cos(j), (float) Math.Sin(j));

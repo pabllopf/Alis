@@ -286,7 +286,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit
                 }
 
                 if (LineUtils.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices),
-                    out _))
+                        out _))
                 {
                     return false;
                 }

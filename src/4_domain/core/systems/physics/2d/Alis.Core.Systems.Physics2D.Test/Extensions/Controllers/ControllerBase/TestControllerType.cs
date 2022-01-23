@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.ControllerBase
 {
     /// <summary>
-    /// The test controller type class
+    ///     The test controller type class
     /// </summary>
     public class TestControllerType
     {

@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.PhysicsLogics.PhysicsLogicBase
 {
     /// <summary>
-    /// The test shape data class
+    ///     The test shape data class
     /// </summary>
     public class TestShapeData
     {

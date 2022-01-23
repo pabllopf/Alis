@@ -1,11 +1,4 @@
-﻿//
-// ApiContainer.cs
-//
-// Copyright (C) 2020 OpenTK
-//
-// This software may be modified and distributed under the terms
-// of the MIT license. See the LICENSE file for details.
-//
+﻿// 
 
 using System;
 using System.Linq;
@@ -17,13 +10,14 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Systems.Audio.Native
 {
     /// <summary>
-    /// This is a base class for OpenAL APIs that are using DllImport and want to resolve different dll names on different platforms.
+    ///     This is a base class for OpenAL APIs that are using DllImport and want to resolve different dll names on different
+    ///     platforms.
     /// </summary>
     public abstract class ALBase
     {
         /// <summary>
-        /// This needs to be called before trying to use any OpenAL functions.
-        /// This should be done in the static constructor of any class that DllImports OpenAL functions.
+        ///     This needs to be called before trying to use any OpenAL functions.
+        ///     This should be done in the static constructor of any class that DllImports OpenAL functions.
         /// </summary>
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void RegisterOpenALResolver()
@@ -32,7 +26,7 @@ namespace Alis.Core.Systems.Audio.Native
         }
 
         /// <summary>
-        /// Calls alGetProcAddress and converts the resulting pointer into a delegate.
+        ///     Calls alGetProcAddress and converts the resulting pointer into a delegate.
         /// </summary>
         /// <typeparam name="TDelegate">The delegate type to create.</typeparam>
         /// <param name="name">The name of the AL proc.</param>
@@ -56,16 +50,15 @@ namespace Alis.Core.Systems.Audio.Native
                 // Here we are generating a delegate that looks like this:
                 // ((<the arguments that the delegate type takes>) =>
                 // throw new Exception(<error string>);
-                generator.Emit(OpCodes.Ldstr, $"This OpenAL function could not be loaded. This likely means that this extension isn't present in the current context.");
-                generator.Emit(OpCodes.Newobj, typeof(Exception).GetConstructor(new[] { typeof(string) }));
+                generator.Emit(OpCodes.Ldstr,
+                    "This OpenAL function could not be loaded. This likely means that this extension isn't present in the current context.");
+                generator.Emit(OpCodes.Newobj, typeof(Exception).GetConstructor(new[] {typeof(string)}));
                 generator.Emit(OpCodes.Throw);
 
-                return (TDelegate)method.CreateDelegate(typeof(TDelegate));
+                return (TDelegate) method.CreateDelegate(typeof(TDelegate));
             }
-            else
-            {
-                return Marshal.GetDelegateForFunctionPointer<TDelegate>(ptr);
-            }
+
+            return Marshal.GetDelegateForFunctionPointer<TDelegate>(ptr);
         }
     }
 }

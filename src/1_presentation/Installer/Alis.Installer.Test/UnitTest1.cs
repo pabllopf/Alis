@@ -1,17 +1,16 @@
+// 
+
 using NUnit.Framework;
 
 namespace Alis.Installer.Test;
 
 /// <summary>
-
-/// The tests class
-
+///     The tests class
 /// </summary>
-
 public class Tests
 {
     /// <summary>
-    /// Setup this instance
+    ///     Setup this instance
     /// </summary>
     [SetUp]
     public void Setup()
@@ -19,7 +18,7 @@ public class Tests
     }
 
     /// <summary>
-    /// Tests that test 1
+    ///     Tests that test 1
     /// </summary>
     [Test]
     public void Test1()

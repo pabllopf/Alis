@@ -1,65 +1,85 @@
-﻿//
-// ALEnums.cs
-//
-// Copyright (C) 2020 OpenTK
-//
-// This software may be modified and distributed under the terms
-// of the MIT license. See the LICENSE file for details.
-//
+﻿// 
 
 namespace Alis.Core.Systems.Audio.AL
 {
 #pragma warning disable SA1402 // File may only contain a single type
     /// <summary>A list of valid Enable/Disable/IsEnabled parameters.</summary>
-    public enum ALCapability : int
+    public enum ALCapability
     {
         /// <summary>Currently no state toggles exist for vanilla OpenAL and no Extension uses it.</summary>
-        Invalid = -1,
+        Invalid = -1
     }
 
     /// <summary>A list of valid 32-bit Float Listener/GetListener parameters.</summary>
-    public enum ALListenerf : int
+    public enum ALListenerf
     {
-        /// <summary>Indicate the gain (Volume amplification) applied. Type: float Range: [0.0f - ? ] A value of 1.0 means un-attenuated/unchanged. Each division by 2 equals an attenuation of -6dB. Each multiplicaton with 2 equals an amplification of +6dB. A value of 0.0f is interpreted as zero volume and the channel is effectively disabled.</summary>
+        /// <summary>
+        ///     Indicate the gain (Volume amplification) applied. Type: float Range: [0.0f - ? ] A value of 1.0 means
+        ///     un-attenuated/unchanged. Each division by 2 equals an attenuation of -6dB. Each multiplicaton with 2 equals an
+        ///     amplification of +6dB. A value of 0.0f is interpreted as zero volume and the channel is effectively disabled.
+        /// </summary>
         Gain = 0x100A,
 
-        /// <summary>(EFX Extension) This setting is critical if Air Absorption effects are enabled because the amount of Air Absorption applied is directly related to the real-world distance between the Source and the Listener. centimeters 0.01f meters 1.0f kilometers 1000.0f Range [float.MinValue .. float.MaxValue] Default: 1.0f</summary>
-        EfxMetersPerUnit = 0x20004,
+        /// <summary>
+        ///     (EFX Extension) This setting is critical if Air Absorption effects are enabled because the amount of Air
+        ///     Absorption applied is directly related to the real-world distance between the Source and the Listener. centimeters
+        ///     0.01f meters 1.0f kilometers 1000.0f Range [float.MinValue .. float.MaxValue] Default: 1.0f
+        /// </summary>
+        EfxMetersPerUnit = 0x20004
     }
 
     /// <summary>A list of valid Math.Vector3 Listener/GetListener parameters.</summary>
-    public enum ALListener3f : int
+    public enum ALListener3f
     {
-        /// <summary>Specify the current location in three dimensional space. OpenAL, like OpenGL, uses a right handed coordinate system, where in a frontal default view X (thumb) points right, Y points up (index finger), and Z points towards the viewer/camera (middle finger). To switch from a left handed coordinate system, flip the sign on the Z coordinate. Listener position is always in the world coordinate system.</summary>
+        /// <summary>
+        ///     Specify the current location in three dimensional space. OpenAL, like OpenGL, uses a right handed coordinate
+        ///     system, where in a frontal default view X (thumb) points right, Y points up (index finger), and Z points towards
+        ///     the viewer/camera (middle finger). To switch from a left handed coordinate system, flip the sign on the Z
+        ///     coordinate. Listener position is always in the world coordinate system.
+        /// </summary>
         Position = 0x1004,
 
         /// <summary>Specify the current velocity in three dimensional space.</summary>
-        Velocity = 0x1006,
+        Velocity = 0x1006
     }
 
     /// <summary>A list of valid float[] Listener/GetListener parameters.</summary>
-    public enum ALListenerfv : int
+    public enum ALListenerfv
     {
         /// <summary>Indicate Listener orientation. Expects two Vector3, At followed by Up.</summary>
-        Orientation = 0x100F,
+        Orientation = 0x100F
     }
 
     /// <summary>A list of valid 32-bit Float Source/GetSource parameters.</summary>
-    public enum ALSourcef : int
+    public enum ALSourcef
     {
-        /// <summary>Source specific reference distance. Type: float Range: [0.0f - float.PositiveInfinity] At 0.0f, no distance attenuation occurs. Type: float Default: 1.0f.</summary>
+        /// <summary>
+        ///     Source specific reference distance. Type: float Range: [0.0f - float.PositiveInfinity] At 0.0f, no distance
+        ///     attenuation occurs. Type: float Default: 1.0f.
+        /// </summary>
         ReferenceDistance = 0x1020,
 
-        /// <summary>Indicate distance above which Sources are not attenuated using the inverse clamped distance model. Default: float.PositiveInfinity Type: float Range: [0.0f - float.PositiveInfinity]</summary>
+        /// <summary>
+        ///     Indicate distance above which Sources are not attenuated using the inverse clamped distance model. Default:
+        ///     float.PositiveInfinity Type: float Range: [0.0f - float.PositiveInfinity]
+        /// </summary>
         MaxDistance = 0x1023,
 
         /// <summary>Source specific rolloff factor. Type: float Range: [0.0f - float.PositiveInfinity]</summary>
         RolloffFactor = 0x1021,
 
-        /// <summary>Specify the pitch to be applied, either at Source, or on mixer results, at Listener. Range: [0.5f - 2.0f] Default: 1.0f</summary>
+        /// <summary>
+        ///     Specify the pitch to be applied, either at Source, or on mixer results, at Listener. Range: [0.5f - 2.0f]
+        ///     Default: 1.0f
+        /// </summary>
         Pitch = 0x1003,
 
-        /// <summary>Indicate the gain (volume amplification) applied. Type: float. Range: [0.0f - ? ] A value of 1.0 means un-attenuated/unchanged. Each division by 2 equals an attenuation of -6dB. Each multiplicaton with 2 equals an amplification of +6dB. A value of 0.0f is meaningless with respect to a logarithmic scale; it is interpreted as zero volume - the channel is effectively disabled.</summary>
+        /// <summary>
+        ///     Indicate the gain (volume amplification) applied. Type: float. Range: [0.0f - ? ] A value of 1.0 means
+        ///     un-attenuated/unchanged. Each division by 2 equals an attenuation of -6dB. Each multiplicaton with 2 equals an
+        ///     amplification of +6dB. A value of 0.0f is meaningless with respect to a logarithmic scale; it is interpreted as
+        ///     zero volume - the channel is effectively disabled.
+        /// </summary>
         Gain = 0x100A,
 
         /// <summary>Indicate minimum Source attenuation. Type: float Range: [0.0f - 1.0f] (Logarthmic)</summary>
@@ -80,31 +100,48 @@ namespace Alis.Core.Systems.Audio.AL
         /// <summary>The playback position, expressed in seconds.</summary>
         SecOffset = 0x1024, // AL_EXT_OFFSET extension.
 
-        /// <summary>(EFX Extension) This property is a multiplier on the amount of Air Absorption applied to the Source. The AL_AIR_ABSORPTION_FACTOR is multiplied by an internal Air Absorption Gain HF value of 0.994 (-0.05dB) per meter which represents normal atmospheric humidity and temperature. Range [0.0f .. 10.0f] Default: 0.0f</summary>
+        /// <summary>
+        ///     (EFX Extension) This property is a multiplier on the amount of Air Absorption applied to the Source. The
+        ///     AL_AIR_ABSORPTION_FACTOR is multiplied by an internal Air Absorption Gain HF value of 0.994 (-0.05dB) per meter
+        ///     which represents normal atmospheric humidity and temperature. Range [0.0f .. 10.0f] Default: 0.0f
+        /// </summary>
         EfxAirAbsorptionFactor = 0x20007,
 
-        /// <summary>(EFX Extension) This property is defined the same way as the Reverb Room Rolloff property: it is one of two methods available in the Effect Extension to attenuate the reflected sound (early reflections and reverberation) according to source-listener distance. Range [0.0f .. 10.0f] Default: 0.0f</summary>
+        /// <summary>
+        ///     (EFX Extension) This property is defined the same way as the Reverb Room Rolloff property: it is one of two
+        ///     methods available in the Effect Extension to attenuate the reflected sound (early reflections and reverberation)
+        ///     according to source-listener distance. Range [0.0f .. 10.0f] Default: 0.0f
+        /// </summary>
         EfxRoomRolloffFactor = 0x20008,
 
-        /// <summary>(EFX Extension) A directed Source points in a specified direction. The Source sounds at full volume when the listener is directly in front of the source; it is attenuated as the listener circles the Source away from the front. Range [0.0f .. 1.0f] Default: 1.0f</summary>
-        EfxConeOuterGainHighFrequency = 0x20009,
+        /// <summary>
+        ///     (EFX Extension) A directed Source points in a specified direction. The Source sounds at full volume when the
+        ///     listener is directly in front of the source; it is attenuated as the listener circles the Source away from the
+        ///     front. Range [0.0f .. 1.0f] Default: 1.0f
+        /// </summary>
+        EfxConeOuterGainHighFrequency = 0x20009
     }
 
     /// <summary>A list of valid Math.Vector3 Source/GetSource parameters.</summary>
-    public enum ALSource3f : int
+    public enum ALSource3f
     {
-        /// <summary>Specify the current location in three dimensional space. OpenAL, like OpenGL, uses a right handed coordinate system, where in a frontal default view X (thumb) points right, Y points up (index finger), and Z points towards the viewer/camera (middle finger). To switch from a left handed coordinate system, flip the sign on the Z coordinate. Listener position is always in the world coordinate system.</summary>
+        /// <summary>
+        ///     Specify the current location in three dimensional space. OpenAL, like OpenGL, uses a right handed coordinate
+        ///     system, where in a frontal default view X (thumb) points right, Y points up (index finger), and Z points towards
+        ///     the viewer/camera (middle finger). To switch from a left handed coordinate system, flip the sign on the Z
+        ///     coordinate. Listener position is always in the world coordinate system.
+        /// </summary>
         Position = 0x1004,
 
         /// <summary>Specify the current velocity in three dimensional space.</summary>
         Velocity = 0x1006,
 
         /// <summary>Specify the current direction vector.</summary>
-        Direction = 0x1005,
+        Direction = 0x1005
     }
 
     /// <summary>A list of valid 8-bit boolean Source/GetSource parameters.</summary>
-    public enum ALSourceb : int
+    public enum ALSourceb
     {
         /// <summary>Indicate that the Source has relative coordinates. Type: bool Range: [True, False]</summary>
         SourceRelative = 0x202,
@@ -112,21 +149,35 @@ namespace Alis.Core.Systems.Audio.AL
         /// <summary>Indicate whether the Source is looping. Type: bool Range: [True, False] Default: False.</summary>
         Looping = 0x1007,
 
-        /// <summary>(EFX Extension) If this Source property is set to True, this Source’s direct-path is automatically filtered according to the orientation of the source relative to the listener and the setting of the Source property Sourcef.ConeOuterGainHF. Type: bool Range [False, True] Default: True</summary>
+        /// <summary>
+        ///     (EFX Extension) If this Source property is set to True, this Source’s direct-path is automatically filtered
+        ///     according to the orientation of the source relative to the listener and the setting of the Source property
+        ///     Sourcef.ConeOuterGainHF. Type: bool Range [False, True] Default: True
+        /// </summary>
         EfxDirectFilterGainHighFrequencyAuto = 0x2000A,
 
-        /// <summary>(EFX Extension) If this Source property is set to True, the intensity of this Source’s reflected sound is automatically attenuated according to source-listener distance and source directivity (as determined by the cone parameters). If it is False, the reflected sound is not attenuated according to distance and directivity. Type: bool Range [False, True] Default: True</summary>
+        /// <summary>
+        ///     (EFX Extension) If this Source property is set to True, the intensity of this Source’s reflected sound is
+        ///     automatically attenuated according to source-listener distance and source directivity (as determined by the cone
+        ///     parameters). If it is False, the reflected sound is not attenuated according to distance and directivity. Type:
+        ///     bool Range [False, True] Default: True
+        /// </summary>
         EfxAuxiliarySendFilterGainAuto = 0x2000B,
 
-        /// <summary>(EFX Extension) If this Source property is AL_TRUE (its default value), the intensity of this Source’s reflected sound at high frequencies will be automatically attenuated according to the high-frequency source directivity as set by the Sourcef.ConeOuterGainHF property. If this property is AL_FALSE, the Source’s reflected sound is not filtered at all according to the Source’s directivity. Type: bool Range [False, True] Default: True</summary>
-        EfxAuxiliarySendFilterGainHighFrequencyAuto = 0x2000C,
+        /// <summary>
+        ///     (EFX Extension) If this Source property is AL_TRUE (its default value), the intensity of this Source’s
+        ///     reflected sound at high frequencies will be automatically attenuated according to the high-frequency source
+        ///     directivity as set by the Sourcef.ConeOuterGainHF property. If this property is AL_FALSE, the Source’s reflected
+        ///     sound is not filtered at all according to the Source’s directivity. Type: bool Range [False, True] Default: True
+        /// </summary>
+        EfxAuxiliarySendFilterGainHighFrequencyAuto = 0x2000C
     }
 
     /// <summary>A list of valid Int32 Source parameters.</summary>
-    public enum ALSourcei : int
+    public enum ALSourcei
     {
         /// <summary>The playback position, expressed in bytes.</summary>
-        ByteOffset = 0x1026,  // AL_EXT_OFFSET extension.
+        ByteOffset = 0x1026, // AL_EXT_OFFSET extension.
 
         /// <summary>The playback position, expressed in samples.</summary>
         SampleOffset = 0x1025, // AL_EXT_OFFSET extension.
@@ -138,24 +189,29 @@ namespace Alis.Core.Systems.Audio.AL
         SourceType = 0x1027,
 
         /// <summary>(EFX Extension) This Source property is used to apply filtering on the direct-path (dry signal) of a Source.</summary>
-        EfxDirectFilter = 0x20005,
+        EfxDirectFilter = 0x20005
     }
 
     /// <summary>A list of valid 3x Int32 Source/GetSource parameters.</summary>
-    public enum ALSource3i : int
+    public enum ALSource3i
     {
-        /// <summary>Specify the current location in three dimensional space. OpenAL, like OpenGL, uses a right handed coordinate system, where in a frontal default view X (thumb) points right, Y points up (index finger), and Z points towards the viewer/camera (middle finger). To switch from a left handed coordinate system, flip the sign on the Z coordinate. Listener position is always in the world coordinate system.</summary>
+        /// <summary>
+        ///     Specify the current location in three dimensional space. OpenAL, like OpenGL, uses a right handed coordinate
+        ///     system, where in a frontal default view X (thumb) points right, Y points up (index finger), and Z points towards
+        ///     the viewer/camera (middle finger). To switch from a left handed coordinate system, flip the sign on the Z
+        ///     coordinate. Listener position is always in the world coordinate system.
+        /// </summary>
         Position = 0x1004,
 
         /// <summary>Specify the current velocity in three dimensional space.</summary>
         Velocity = 0x1006,
 
         /// <summary>Specify the current direction vector.</summary>
-        Direction = 0x1005,
+        Direction = 0x1005
     }
 
     /// <summary>A list of valid Int32 GetSource parameters.</summary>
-    public enum ALGetSourcei : int
+    public enum ALGetSourcei
     {
         /// <summary>The playback position, expressed in bytes. AL_EXT_OFFSET Extension.</summary>
         ByteOffset = 0x1026,
@@ -176,7 +232,7 @@ namespace Alis.Core.Systems.Audio.AL
         BuffersProcessed = 0x1016,
 
         /// <summary>Source type (Static, Streaming or undetermined). Use enum AlSourceType for comparison.</summary>
-        SourceType = 0x1027,
+        SourceType = 0x1027
     }
 
     /*
@@ -188,7 +244,7 @@ namespace Alis.Core.Systems.Audio.AL
     */
 
     /// <summary>Source state information, can be retrieved by AL.Source() with ALSourcei.SourceState.</summary>
-    public enum ALSourceState : int
+    public enum ALSourceState
     {
         /// <summary>Default State when loaded, can be manually set with AL.SourceRewind().</summary>
         Initial = 0x1011,
@@ -200,11 +256,11 @@ namespace Alis.Core.Systems.Audio.AL
         Paused = 0x1013,
 
         /// <summary>The source is not playing.</summary>
-        Stopped = 0x1014,
+        Stopped = 0x1014
     }
 
     /// <summary>Source type information,  can be retrieved by AL.Source() with ALSourcei.SourceType.</summary>
-    public enum ALSourceType : int
+    public enum ALSourceType
     {
         /// <summary>Source is Static if a Buffer has been attached using AL.Source with the parameter Sourcei.Buffer.</summary>
         Static = 0x1028,
@@ -213,11 +269,11 @@ namespace Alis.Core.Systems.Audio.AL
         Streaming = 0x1029,
 
         /// <summary>Source is undetermined when it has a null Buffer attached</summary>
-        Undetermined = 0x1030,
+        Undetermined = 0x1030
     }
 
     /// <summary>Sound samples: Format specifier.</summary>
-    public enum ALFormat : int
+    public enum ALFormat
     {
         /// <summary>1 Channel, 8 bits per sample.</summary>
         Mono8 = 0x1100,
@@ -310,29 +366,35 @@ namespace Alis.Core.Systems.Audio.AL
         MultiRear32Ext = 0x1209,
 
         /// <summary>1 Channel rear speaker, 8-bit data. See Quadrophonic setups. Requires Extension: AL_EXT_MCFORMATS</summary>
-        MultiRear8Ext = 0x1207,
+        MultiRear8Ext = 0x1207
     }
 
     /// <summary>A list of valid Int32 GetBuffer parameters.</summary>
-    public enum ALGetBufferi : int
+    public enum ALGetBufferi
     {
-        /// <summary>Sound sample's frequency, in units of hertz [Hz]. This is the number of samples per second. Half of the sample frequency marks the maximum significant frequency component.</summary>
+        /// <summary>
+        ///     Sound sample's frequency, in units of hertz [Hz]. This is the number of samples per second. Half of the sample
+        ///     frequency marks the maximum significant frequency component.
+        /// </summary>
         Frequency = 0x2001,
 
         /// <summary>Bit depth of the buffer. Should be 8 or 16.</summary>
         Bits = 0x2002,
 
-        /// <summary>Number of channels in buffer. > 1 is valid, but buffer won’t be positioned when played. 1 for Mono, 2 for Stereo.</summary>
+        /// <summary>
+        ///     Number of channels in buffer. > 1 is valid, but buffer won’t be positioned when played. 1 for Mono, 2 for
+        ///     Stereo.
+        /// </summary>
         Channels = 0x2003,
 
         /// <summary>size of the Buffer in bytes.</summary>
-        Size = 0x2004,
+        Size = 0x2004
 
         // Deprecated: From Manual, not in header: AL_DATA ( i, iv ) original location where buffer was copied from generally useless, as was probably freed after buffer creation
     }
 
     /// <summary>Buffer state. Not supported for public use (yet).</summary>
-    public enum ALBufferState : int
+    public enum ALBufferState
     {
         /// <summary>Buffer state. Not supported for public use (yet).</summary>
         Unused = 0x2010,
@@ -341,11 +403,11 @@ namespace Alis.Core.Systems.Audio.AL
         Pending = 0x2011,
 
         /// <summary>Buffer state. Not supported for public use (yet).</summary>
-        Processed = 0x2012,
+        Processed = 0x2012
     }
 
     /// <summary>Returned by AL.GetError.</summary>
-    public enum ALError : int
+    public enum ALError
     {
         /// <summary>No OpenAL Error.</summary>
         NoError = 0,
@@ -369,11 +431,11 @@ namespace Alis.Core.Systems.Audio.AL
         InvalidOperation = 0xA004,
 
         /// <summary>No OpenAL memory left.</summary>
-        OutOfMemory = 0xA005,
+        OutOfMemory = 0xA005
     }
 
     /// <summary>A list of valid string AL.Get() parameters.</summary>
-    public enum ALGetString : int
+    public enum ALGetString
     {
         /// <summary>Gets the Vendor name.</summary>
         Vendor = 0xB001,
@@ -385,11 +447,11 @@ namespace Alis.Core.Systems.Audio.AL
         Renderer = 0xB003,
 
         /// <summary>Gets a list of all available Extensions, separated with spaces.</summary>
-        Extensions = 0xB004,
+        Extensions = 0xB004
     }
 
     /// <summary>A list of valid 32-bit Float AL.Get() parameters.</summary>
-    public enum ALGetFloat : int
+    public enum ALGetFloat
     {
         /// <summary>Doppler scale. Default 1.0f</summary>
         DopplerFactor = 0xC000,
@@ -398,26 +460,33 @@ namespace Alis.Core.Systems.Audio.AL
         DopplerVelocity = 0xC001,
 
         /// <summary>Speed of Sound in units per second. Default: 343.3f</summary>
-        SpeedOfSound = 0xC003,
+        SpeedOfSound = 0xC003
     }
 
     /// <summary>A list of valid Int32 AL.Get() parameters.</summary>
-    public enum ALGetInteger : int
+    public enum ALGetInteger
     {
-        /// <summary>See enum ALDistanceModel.</summary><see cref="ALDistanceModel"/>
-        DistanceModel = 0xD000,
+        /// <summary>See enum ALDistanceModel.</summary>
+        /// <see cref="ALDistanceModel" />
+        DistanceModel = 0xD000
     }
 
     /// <summary>Used by AL.DistanceModel(), the distance model can be retrieved by AL.Get() with ALGetInteger.DistanceModel.</summary>
-    public enum ALDistanceModel : int
+    public enum ALDistanceModel
     {
         /// <summary>Bypasses all distance attenuation calculation for all Sources.</summary>
         None = 0,
 
-        /// <summary>InverseDistance is equivalent to the IASIG I3DL2 model with the exception that ALSourcef.ReferenceDistance does not imply any clamping.</summary>
+        /// <summary>
+        ///     InverseDistance is equivalent to the IASIG I3DL2 model with the exception that ALSourcef.ReferenceDistance
+        ///     does not imply any clamping.
+        /// </summary>
         InverseDistance = 0xD001,
 
-        /// <summary>InverseDistanceClamped is the IASIG I3DL2 model, with ALSourcef.ReferenceDistance indicating both the reference distance and the distance below which gain will be clamped.</summary>
+        /// <summary>
+        ///     InverseDistanceClamped is the IASIG I3DL2 model, with ALSourcef.ReferenceDistance indicating both the
+        ///     reference distance and the distance below which gain will be clamped.
+        /// </summary>
         InverseDistanceClamped = 0xD002,
 
         /// <summary>AL_EXT_LINEAR_DISTANCE extension.</summary>
@@ -430,7 +499,7 @@ namespace Alis.Core.Systems.Audio.AL
         ExponentDistance = 0xD005,
 
         /// <summary>AL_EXT_EXPONENT_DISTANCE extension.</summary>
-        ExponentDistanceClamped = 0xD006,
+        ExponentDistanceClamped = 0xD006
     }
 #pragma warning restore SA1402 // File may only contain a single type
 }

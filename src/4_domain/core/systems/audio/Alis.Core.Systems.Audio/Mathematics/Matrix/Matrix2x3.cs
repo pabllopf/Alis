@@ -1,24 +1,4 @@
-﻿/*
-Copyright (c) 2006 - 2008 The Open Toolkit library.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
- */
+﻿// 
 
 using System;
 using System.Diagnostics.CodeAnalysis;
@@ -29,29 +9,28 @@ using Alis.Core.Systems.Audio.Mathematics.Vector;
 namespace Alis.Core.Systems.Audio.Mathematics.Matrix
 {
     /// <summary>
-    /// Represents a 2x3 matrix.
+    ///     Represents a 2x3 matrix.
     /// </summary>
-    [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct Matrix2x3 : IEquatable<Matrix2x3>
     {
         /// <summary>
-        /// Top row of the matrix.
+        ///     Top row of the matrix.
         /// </summary>
         public Vector3 Row0;
 
         /// <summary>
-        /// Bottom row of the matrix.
+        ///     Bottom row of the matrix.
         /// </summary>
         public Vector3 Row1;
 
         /// <summary>
-        /// The zero matrix.
+        ///     The zero matrix.
         /// </summary>
         public static readonly Matrix2x3 Zero = new Matrix2x3(Vector3.Zero, Vector3.Zero);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Matrix2x3"/> struct.
+        ///     Initializes a new instance of the <see cref="Matrix2x3" /> struct.
         /// </summary>
         /// <param name="row0">Top row of the matrix.</param>
         /// <param name="row1">Bottom row of the matrix.</param>
@@ -62,7 +41,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Matrix2x3"/> struct.
+        ///     Initializes a new instance of the <see cref="Matrix2x3" /> struct.
         /// </summary>
         /// <param name="m00">First item of the first row of the matrix.</param>
         /// <param name="m01">Second item of the first row of the matrix.</param>
@@ -82,7 +61,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the first column of this matrix.
+        ///     Gets or sets the first column of this matrix.
         /// </summary>
         public Vector2 Column0
         {
@@ -95,7 +74,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the second column of this matrix.
+        ///     Gets or sets the second column of this matrix.
         /// </summary>
         public Vector2 Column1
         {
@@ -108,7 +87,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the third column of this matrix.
+        ///     Gets or sets the third column of this matrix.
         /// </summary>
         public Vector2 Column2
         {
@@ -121,7 +100,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the value at row 1, column 1 of this instance.
+        ///     Gets or sets the value at row 1, column 1 of this instance.
         /// </summary>
         public float M11
         {
@@ -130,7 +109,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the value at row 1, column 2 of this instance.
+        ///     Gets or sets the value at row 1, column 2 of this instance.
         /// </summary>
         public float M12
         {
@@ -139,7 +118,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the value at row 1, column 3 of this instance.
+        ///     Gets or sets the value at row 1, column 3 of this instance.
         /// </summary>
         public float M13
         {
@@ -148,7 +127,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the value at row 2, column 1 of this instance.
+        ///     Gets or sets the value at row 2, column 1 of this instance.
         /// </summary>
         public float M21
         {
@@ -157,7 +136,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the value at row 2, column 2 of this instance.
+        ///     Gets or sets the value at row 2, column 2 of this instance.
         /// </summary>
         public float M22
         {
@@ -166,7 +145,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the value at row 2, column 3 of this instance.
+        ///     Gets or sets the value at row 2, column 3 of this instance.
         /// </summary>
         public float M23
         {
@@ -175,7 +154,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets or sets the values along the main diagonal of the matrix.
+        ///     Gets or sets the values along the main diagonal of the matrix.
         /// </summary>
         public Vector2 Diagonal
         {
@@ -188,12 +167,12 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Gets the trace of the matrix, the sum of the values along the diagonal.
+        ///     Gets the trace of the matrix, the sum of the values along the diagonal.
         /// </summary>
         public float Trace => Row0.X + Row1.Y;
 
         /// <summary>
-        /// Gets or sets the value at a specified row and column.
+        ///     Gets or sets the value at a specified row and column.
         /// </summary>
         /// <param name="rowIndex">The index of the row.</param>
         /// <param name="columnIndex">The index of the column.</param>
@@ -235,14 +214,14 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Builds a rotation matrix.
+        ///     Builds a rotation matrix.
         /// </summary>
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <param name="result">The resulting Matrix2x3 instance.</param>
         public static void CreateRotation(float angle, out Matrix2x3 result)
         {
-            var cos = MathF.Cos(angle);
-            var sin = MathF.Sin(angle);
+            float cos = MathF.Cos(angle);
+            float sin = MathF.Sin(angle);
 
             result.Row0.X = cos;
             result.Row0.Y = sin;
@@ -253,7 +232,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Builds a rotation matrix.
+        ///     Builds a rotation matrix.
         /// </summary>
         /// <param name="angle">The counter-clockwise angle in radians.</param>
         /// <returns>The resulting Matrix2x3 instance.</returns>
@@ -265,7 +244,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Creates a scale matrix.
+        ///     Creates a scale matrix.
         /// </summary>
         /// <param name="scale">Single scale factor for the x, y, and z axes.</param>
         /// <param name="result">A scale matrix.</param>
@@ -280,7 +259,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Creates a scale matrix.
+        ///     Creates a scale matrix.
         /// </summary>
         /// <param name="scale">Single scale factor for the x and y axes.</param>
         /// <returns>A scale matrix.</returns>
@@ -292,7 +271,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Creates a scale matrix.
+        ///     Creates a scale matrix.
         /// </summary>
         /// <param name="scale">Scale factors for the x and y axes.</param>
         /// <param name="result">A scale matrix.</param>
@@ -307,7 +286,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Creates a scale matrix.
+        ///     Creates a scale matrix.
         /// </summary>
         /// <param name="scale">Scale factors for the x and y axes.</param>
         /// <returns>A scale matrix.</returns>
@@ -319,7 +298,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Creates a scale matrix.
+        ///     Creates a scale matrix.
         /// </summary>
         /// <param name="x">Scale factor for the x axis.</param>
         /// <param name="y">Scale factor for the y axis.</param>
@@ -335,7 +314,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Creates a scale matrix.
+        ///     Creates a scale matrix.
         /// </summary>
         /// <param name="x">Scale factor for the x axis.</param>
         /// <param name="y">Scale factor for the y axis.</param>
@@ -348,7 +327,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Multiplies and instance by a scalar.
+        ///     Multiplies and instance by a scalar.
         /// </summary>
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
@@ -364,7 +343,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Multiplies and instance by a scalar.
+        ///     Multiplies and instance by a scalar.
         /// </summary>
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
@@ -377,7 +356,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Multiplies two instances.
+        ///     Multiplies two instances.
         /// </summary>
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
@@ -397,14 +376,14 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
             float rightM31 = right.Row2.X;
             float rightM32 = right.Row2.Y;
 
-            result.Row0.X = (leftM11 * rightM11) + (leftM12 * rightM21) + (leftM13 * rightM31);
-            result.Row0.Y = (leftM11 * rightM12) + (leftM12 * rightM22) + (leftM13 * rightM32);
-            result.Row1.X = (leftM21 * rightM11) + (leftM22 * rightM21) + (leftM23 * rightM31);
-            result.Row1.Y = (leftM21 * rightM12) + (leftM22 * rightM22) + (leftM23 * rightM32);
+            result.Row0.X = leftM11 * rightM11 + leftM12 * rightM21 + leftM13 * rightM31;
+            result.Row0.Y = leftM11 * rightM12 + leftM12 * rightM22 + leftM13 * rightM32;
+            result.Row1.X = leftM21 * rightM11 + leftM22 * rightM21 + leftM23 * rightM31;
+            result.Row1.Y = leftM21 * rightM12 + leftM22 * rightM22 + leftM23 * rightM32;
         }
 
         /// <summary>
-        /// Multiplies two instances.
+        ///     Multiplies two instances.
         /// </summary>
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
@@ -417,7 +396,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Multiplies two instances.
+        ///     Multiplies two instances.
         /// </summary>
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
@@ -440,16 +419,16 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
             float rightM32 = right.Row2.Y;
             float rightM33 = right.Row2.Z;
 
-            result.Row0.X = (leftM11 * rightM11) + (leftM12 * rightM21) + (leftM13 * rightM31);
-            result.Row0.Y = (leftM11 * rightM12) + (leftM12 * rightM22) + (leftM13 * rightM32);
-            result.Row0.Z = (leftM11 * rightM13) + (leftM12 * rightM23) + (leftM13 * rightM33);
-            result.Row1.X = (leftM21 * rightM11) + (leftM22 * rightM21) + (leftM23 * rightM31);
-            result.Row1.Y = (leftM21 * rightM12) + (leftM22 * rightM22) + (leftM23 * rightM32);
-            result.Row1.Z = (leftM21 * rightM13) + (leftM22 * rightM23) + (leftM23 * rightM33);
+            result.Row0.X = leftM11 * rightM11 + leftM12 * rightM21 + leftM13 * rightM31;
+            result.Row0.Y = leftM11 * rightM12 + leftM12 * rightM22 + leftM13 * rightM32;
+            result.Row0.Z = leftM11 * rightM13 + leftM12 * rightM23 + leftM13 * rightM33;
+            result.Row1.X = leftM21 * rightM11 + leftM22 * rightM21 + leftM23 * rightM31;
+            result.Row1.Y = leftM21 * rightM12 + leftM22 * rightM22 + leftM23 * rightM32;
+            result.Row1.Z = leftM21 * rightM13 + leftM22 * rightM23 + leftM23 * rightM33;
         }
 
         /// <summary>
-        /// Multiplies two instances.
+        ///     Multiplies two instances.
         /// </summary>
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
@@ -462,7 +441,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Multiplies two instances.
+        ///     Multiplies two instances.
         /// </summary>
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
@@ -488,18 +467,18 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
             float rightM33 = right.Row2.Z;
             float rightM34 = right.Row2.W;
 
-            result.Row0.X = (leftM11 * rightM11) + (leftM12 * rightM21) + (leftM13 * rightM31);
-            result.Row0.Y = (leftM11 * rightM12) + (leftM12 * rightM22) + (leftM13 * rightm32);
-            result.Row0.Z = (leftM11 * rightM13) + (leftM12 * rightM23) + (leftM13 * rightM33);
-            result.Row0.W = (leftM11 * rightM14) + (leftM12 * rightM24) + (leftM13 * rightM34);
-            result.Row1.X = (leftM21 * rightM11) + (leftM22 * rightM21) + (leftM23 * rightM31);
-            result.Row1.Y = (leftM21 * rightM12) + (leftM22 * rightM22) + (leftM23 * rightm32);
-            result.Row1.Z = (leftM21 * rightM13) + (leftM22 * rightM23) + (leftM23 * rightM33);
-            result.Row1.W = (leftM21 * rightM14) + (leftM22 * rightM24) + (leftM23 * rightM34);
+            result.Row0.X = leftM11 * rightM11 + leftM12 * rightM21 + leftM13 * rightM31;
+            result.Row0.Y = leftM11 * rightM12 + leftM12 * rightM22 + leftM13 * rightm32;
+            result.Row0.Z = leftM11 * rightM13 + leftM12 * rightM23 + leftM13 * rightM33;
+            result.Row0.W = leftM11 * rightM14 + leftM12 * rightM24 + leftM13 * rightM34;
+            result.Row1.X = leftM21 * rightM11 + leftM22 * rightM21 + leftM23 * rightM31;
+            result.Row1.Y = leftM21 * rightM12 + leftM22 * rightM22 + leftM23 * rightm32;
+            result.Row1.Z = leftM21 * rightM13 + leftM22 * rightM23 + leftM23 * rightM33;
+            result.Row1.W = leftM21 * rightM14 + leftM22 * rightM24 + leftM23 * rightM34;
         }
 
         /// <summary>
-        /// Multiplies two instances.
+        ///     Multiplies two instances.
         /// </summary>
         /// <param name="left">The left operand of the multiplication.</param>
         /// <param name="right">The right operand of the multiplication.</param>
@@ -511,7 +490,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Adds two instances.
+        ///     Adds two instances.
         /// </summary>
         /// <param name="left">The left operand of the addition.</param>
         /// <param name="right">The right operand of the addition.</param>
@@ -527,7 +506,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Adds two instances.
+        ///     Adds two instances.
         /// </summary>
         /// <param name="left">The left operand of the addition.</param>
         /// <param name="right">The right operand of the addition.</param>
@@ -540,7 +519,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Subtracts two instances.
+        ///     Subtracts two instances.
         /// </summary>
         /// <param name="left">The left operand of the subtraction.</param>
         /// <param name="right">The right operand of the subtraction.</param>
@@ -556,7 +535,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Subtracts two instances.
+        ///     Subtracts two instances.
         /// </summary>
         /// <param name="left">The left operand of the subtraction.</param>
         /// <param name="right">The right operand of the subtraction.</param>
@@ -569,7 +548,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Calculate the transpose of the given matrix.
+        ///     Calculate the transpose of the given matrix.
         /// </summary>
         /// <param name="mat">The matrix to transpose.</param>
         /// <param name="result">The transpose of the given matrix.</param>
@@ -584,7 +563,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Calculate the transpose of the given matrix.
+        ///     Calculate the transpose of the given matrix.
         /// </summary>
         /// <param name="mat">The matrix to transpose.</param>
         /// <returns>The transpose of the given matrix.</returns>
@@ -596,153 +575,114 @@ namespace Alis.Core.Systems.Audio.Mathematics.Matrix
         }
 
         /// <summary>
-        /// Scalar multiplication.
+        ///     Scalar multiplication.
         /// </summary>
         /// <param name="left">left-hand operand.</param>
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix2x3 which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix2x3 operator *(float left, Matrix2x3 right)
-        {
-            return Mult(right, left);
-        }
+        public static Matrix2x3 operator *(float left, Matrix2x3 right) => Mult(right, left);
 
         /// <summary>
-        /// Scalar multiplication.
+        ///     Scalar multiplication.
         /// </summary>
         /// <param name="left">left-hand operand.</param>
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix2x3 which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix2x3 operator *(Matrix2x3 left, float right)
-        {
-            return Mult(left, right);
-        }
+        public static Matrix2x3 operator *(Matrix2x3 left, float right) => Mult(left, right);
 
         /// <summary>
-        /// Matrix multiplication.
+        ///     Matrix multiplication.
         /// </summary>
         /// <param name="left">left-hand operand.</param>
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix2 which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix2 operator *(Matrix2x3 left, Matrix3x2 right)
-        {
-            return Mult(left, right);
-        }
+        public static Matrix2 operator *(Matrix2x3 left, Matrix3x2 right) => Mult(left, right);
 
         /// <summary>
-        /// Matrix multiplication.
+        ///     Matrix multiplication.
         /// </summary>
         /// <param name="left">left-hand operand.</param>
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix2x3 which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix2x3 operator *(Matrix2x3 left, Matrix3 right)
-        {
-            return Mult(left, right);
-        }
+        public static Matrix2x3 operator *(Matrix2x3 left, Matrix3 right) => Mult(left, right);
 
         /// <summary>
-        /// Matrix multiplication.
+        ///     Matrix multiplication.
         /// </summary>
         /// <param name="left">left-hand operand.</param>
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix2x4 which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix2x4 operator *(Matrix2x3 left, Matrix3x4 right)
-        {
-            return Mult(left, right);
-        }
+        public static Matrix2x4 operator *(Matrix2x3 left, Matrix3x4 right) => Mult(left, right);
 
         /// <summary>
-        /// Matrix addition.
+        ///     Matrix addition.
         /// </summary>
         /// <param name="left">left-hand operand.</param>
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix2x3 which holds the result of the addition.</returns>
         [Pure]
-        public static Matrix2x3 operator +(Matrix2x3 left, Matrix2x3 right)
-        {
-            return Add(left, right);
-        }
+        public static Matrix2x3 operator +(Matrix2x3 left, Matrix2x3 right) => Add(left, right);
 
         /// <summary>
-        /// Matrix subtraction.
+        ///     Matrix subtraction.
         /// </summary>
         /// <param name="left">left-hand operand.</param>
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix2x3 which holds the result of the subtraction.</returns>
         [Pure]
-        public static Matrix2x3 operator -(Matrix2x3 left, Matrix2x3 right)
-        {
-            return Subtract(left, right);
-        }
+        public static Matrix2x3 operator -(Matrix2x3 left, Matrix2x3 right) => Subtract(left, right);
 
         /// <summary>
-        /// Compares two instances for equality.
+        ///     Compares two instances for equality.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
         [Pure]
-        public static bool operator ==(Matrix2x3 left, Matrix2x3 right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Matrix2x3 left, Matrix2x3 right) => left.Equals(right);
 
         /// <summary>
-        /// Compares two instances for inequality.
+        ///     Compares two instances for inequality.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
         [Pure]
-        public static bool operator !=(Matrix2x3 left, Matrix2x3 right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(Matrix2x3 left, Matrix2x3 right) => !left.Equals(right);
 
         /// <summary>
-        /// Returns a System.String that represents the current Matrix2x3.
+        ///     Returns a System.String that represents the current Matrix2x3.
         /// </summary>
         /// <returns>The string representation of the matrix.</returns>
-        public override string ToString()
-        {
-            return $"{Row0}\n{Row1}";
-        }
+        public override string ToString() => $"{Row0}\n{Row1}";
 
         /// <summary>
-        /// Returns the hashcode for this instance.
+        ///     Returns the hashcode for this instance.
         /// </summary>
         /// <returns>A System.Int32 containing the unique hashcode for this instance.</returns>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Row0, Row1);
-        }
+        public override int GetHashCode() => HashCode.Combine(Row0, Row1);
 
         /// <summary>
-        /// Indicates whether this instance and a specified object are equal.
+        ///     Indicates whether this instance and a specified object are equal.
         /// </summary>
         /// <param name="obj">The object to compare tresult.</param>
         /// <returns>True if the instances are equal; false otherwise.</returns>
         [Pure]
-        public override bool Equals(object obj)
-        {
-            return obj is Matrix2x3 && Equals((Matrix2x3)obj);
-        }
+        public override bool Equals(object obj) => obj is Matrix2x3 && Equals((Matrix2x3) obj);
 
         /// <summary>
-        /// Indicates whether the current matrix is equal to another matrix.
+        ///     Indicates whether the current matrix is equal to another matrix.
         /// </summary>
         /// <param name="other">An matrix to compare with this matrix.</param>
         /// <returns>true if the current matrix is equal to the matrix parameter; otherwise, false.</returns>
         [Pure]
-        public bool Equals(Matrix2x3 other)
-        {
-            return
-                Row0 == other.Row0 &&
-                Row1 == other.Row1;
-        }
+        public bool Equals(Matrix2x3 other) =>
+            Row0 == other.Row0 &&
+            Row1 == other.Row1;
     }
 }

@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Shared.Optimization
 {
     /// <summary>
-    /// The test poolable class
+    ///     The test poolable class
     /// </summary>
     public class TestIPoolable
     {

@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.Wind.Curve
 {
     /// <summary>
-    /// The test curve key collection class
+    ///     The test curve key collection class
     /// </summary>
     public class TestCurveKeyCollection
     {

@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.PhysicsLogics.Explosion
 {
     /// <summary>
-    /// The test real explosion class
+    ///     The test real explosion class
     /// </summary>
     public class TestRealExplosion
     {

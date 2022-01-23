@@ -1,24 +1,4 @@
-/*
-Copyright (c) 2006 - 2008 The Open Toolkit library.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
- */
+// 
 
 using System;
 using System.Diagnostics.Contracts;
@@ -32,29 +12,28 @@ using Half = Alis.Core.Systems.Audio.Mathematics.Data.Half;
 namespace Alis.Core.Systems.Audio.Mathematics.Vector
 {
     /// <summary>
-    /// 3-component Vector of the Half type. Occupies 6 Byte total.
+    ///     3-component Vector of the Half type. Occupies 6 Byte total.
     /// </summary>
-    [Serializable]
-    [StructLayout(LayoutKind.Sequential)]
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct Vector3h : ISerializable, IEquatable<Vector3h>
     {
         /// <summary>
-        /// The X component of the Half3.
+        ///     The X component of the Half3.
         /// </summary>
         public Half X;
 
         /// <summary>
-        /// The Y component of the Half3.
+        ///     The Y component of the Half3.
         /// </summary>
         public Half Y;
 
         /// <summary>
-        /// The Z component of the Half3.
+        ///     The Z component of the Half3.
         /// </summary>
         public Half Z;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
         public Vector3h(Half value)
@@ -65,7 +44,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
         /// <param name="value">The value that will initialize this instance.</param>
         public Vector3h(float value)
@@ -76,7 +55,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>
@@ -89,8 +68,8 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
-        /// The new Half3 instance will convert the 3 parameters into 16-bit half-precision floating-point.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
+        ///     The new Half3 instance will convert the 3 parameters into 16-bit half-precision floating-point.
         /// </summary>
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>
@@ -103,8 +82,8 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
-        /// The new Half3 instance will convert the 3 parameters into 16-bit half-precision floating-point.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
+        ///     The new Half3 instance will convert the 3 parameters into 16-bit half-precision floating-point.
         /// </summary>
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>
@@ -118,9 +97,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3"/> to convert.</param>
+        /// <param name="v">The <see cref="Vector3" /> to convert.</param>
         public Vector3h(Vector3 v)
         {
             X = new Half(v.X);
@@ -129,9 +108,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3"/> to convert.</param>
+        /// <param name="v">The <see cref="Vector3" /> to convert.</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(Vector3 v, bool throwOnError)
         {
@@ -141,9 +120,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3"/> to convert.</param>
+        /// <param name="v">The <see cref="Vector3" /> to convert.</param>
         public Vector3h(in Vector3 v)
         {
             X = new Half(v.X);
@@ -152,9 +131,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3"/> to convert.</param>
+        /// <param name="v">The <see cref="Vector3" /> to convert.</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(in Vector3 v, bool throwOnError)
         {
@@ -164,9 +143,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3d"/> to convert.</param>
+        /// <param name="v">The <see cref="Vector3d" /> to convert.</param>
         public Vector3h(Vector3d v)
         {
             X = new Half(v.X);
@@ -175,9 +154,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3d"/> to convert.</param>
+        /// <param name="v">The <see cref="Vector3d" /> to convert.</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(Vector3d v, bool throwOnError)
         {
@@ -187,9 +166,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3d"/> to convert.</param>
+        /// <param name="v">The <see cref="Vector3d" /> to convert.</param>
         public Vector3h(in Vector3d v)
         {
             X = new Half(v.X);
@@ -198,9 +177,9 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
-        /// <param name="v">The <see cref="Vector3d"/> to convert.</param>
+        /// <param name="v">The <see cref="Vector3d" /> to convert.</param>
         /// <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
         public Vector3h(in Vector3d v, bool throwOnError)
         {
@@ -210,7 +189,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2h with the X and Y components of this instance.
+        ///     Gets or sets an OpenTK.Vector2h with the X and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2h Xy
@@ -224,7 +203,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2h with the X and Z components of this instance.
+        ///     Gets or sets an OpenTK.Vector2h with the X and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2h Xz
@@ -238,7 +217,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2h with the Y and X components of this instance.
+        ///     Gets or sets an OpenTK.Vector2h with the Y and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2h Yx
@@ -252,7 +231,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2h with the Y and Z components of this instance.
+        ///     Gets or sets an OpenTK.Vector2h with the Y and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2h Yz
@@ -266,7 +245,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2h with the Z and X components of this instance.
+        ///     Gets or sets an OpenTK.Vector2h with the Z and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2h Zx
@@ -280,7 +259,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector2h with the Z and Y components of this instance.
+        ///     Gets or sets an OpenTK.Vector2h with the Z and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector2h Zy
@@ -294,7 +273,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3h with the X, Z, and Y components of this instance.
+        ///     Gets or sets an OpenTK.Vector3h with the X, Z, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3h Xzy
@@ -309,7 +288,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3h with the Y, X, and Z components of this instance.
+        ///     Gets or sets an OpenTK.Vector3h with the Y, X, and Z components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3h Yxz
@@ -324,7 +303,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3h with the Y, Z, and X components of this instance.
+        ///     Gets or sets an OpenTK.Vector3h with the Y, Z, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3h Yzx
@@ -339,7 +318,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3h with the Z, X, and Y components of this instance.
+        ///     Gets or sets an OpenTK.Vector3h with the Z, X, and Y components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3h Zxy
@@ -354,7 +333,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Gets or sets an OpenTK.Vector3h with the Z, Y, and X components of this instance.
+        ///     Gets or sets an OpenTK.Vector3h with the Z, Y, and X components of this instance.
         /// </summary>
         [XmlIgnore]
         public Vector3h Zyx
@@ -369,109 +348,86 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Returns this Half3 instance's contents as Vector3.
+        ///     Returns this Half3 instance's contents as Vector3.
         /// </summary>
         /// <returns>The vector.</returns>
-        public Vector3 ToVector3()
-        {
-            return new Vector3(X, Y, Z);
-        }
+        public Vector3 ToVector3() => new Vector3(X, Y, Z);
 
         /// <summary>
-        /// Returns this Half3 instance's contents as Vector3d.
+        ///     Returns this Half3 instance's contents as Vector3d.
         /// </summary>
         /// <returns>The vector.</returns>
-        public Vector3d ToVector3d()
-        {
-            return new Vector3d(X, Y, Z);
-        }
+        public Vector3d ToVector3d() => new Vector3d(X, Y, Z);
 
         /// <summary>
-        /// Converts OpenTK.Vector3h to OpenTK.Vector3.
+        ///     Converts OpenTK.Vector3h to OpenTK.Vector3.
         /// </summary>
         /// <param name="vec">The Vector3h to convert.</param>
         /// <returns>The resulting Vector3.</returns>
         [Pure]
-        public static implicit operator Vector3(Vector3h vec)
-        {
-            return new Vector3(vec.X, vec.Y, vec.Z);
-        }
+        public static implicit operator Vector3(Vector3h vec) => new Vector3(vec.X, vec.Y, vec.Z);
 
         /// <summary>
-        /// Converts OpenTK.Vector3h to OpenTK.Vector3d.
+        ///     Converts OpenTK.Vector3h to OpenTK.Vector3d.
         /// </summary>
         /// <param name="vec">The Vector3h to convert.</param>
         /// <returns>The resulting Vector3d.</returns>
         [Pure]
-        public static implicit operator Vector3d(Vector3h vec)
-        {
-            return new Vector3d(vec.X, vec.Y, vec.Z);
-        }
+        public static implicit operator Vector3d(Vector3h vec) => new Vector3d(vec.X, vec.Y, vec.Z);
 
         /// <summary>
-        /// Converts OpenTK.Vector3h to OpenTK.Vector3i.
+        ///     Converts OpenTK.Vector3h to OpenTK.Vector3i.
         /// </summary>
         /// <param name="vec">The Vector3h to convert.</param>
         /// <returns>The resulting Vector3i.</returns>
         [Pure]
-        public static explicit operator Vector3i(Vector3h vec)
-        {
-            return new Vector3i((int)vec.X, (int)vec.Y, (int)vec.Z);
-        }
+        public static explicit operator Vector3i(Vector3h vec) => new Vector3i((int) vec.X, (int) vec.Y, (int) vec.Z);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct using a tuple containing the component
-        /// values.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct using a tuple containing the component
+        ///     values.
         /// </summary>
         /// <param name="values">A tuple containing the component values.</param>
-        /// <returns>A new instance of the <see cref="Vector3h"/> struct with the given component values.</returns>
+        /// <returns>A new instance of the <see cref="Vector3h" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector3h((Half X, Half Y, Half Z) values)
-        {
-            return new Vector3h(values.X, values.Y, values.Z);
-        }
+        public static implicit operator Vector3h((Half X, Half Y, Half Z) values) =>
+            new Vector3h(values.X, values.Y, values.Z);
 
         /// <summary>
-        /// Compares two instances for equality.
+        ///     Compares two instances for equality.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Vector3h left, Vector3h right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Vector3h left, Vector3h right) => left.Equals(right);
 
         /// <summary>
-        /// Compares two instances for inequality.
+        ///     Compares two instances for inequality.
         /// </summary>
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
-        public static bool operator !=(Vector3h left, Vector3h right)
-        {
-            return !(left == right);
-        }
+        public static bool operator !=(Vector3h left, Vector3h right) => !(left == right);
 
         /// <summary>
-        /// The size in bytes for an instance of the Half3 struct is 6.
+        ///     The size in bytes for an instance of the Half3 struct is 6.
         /// </summary>
         public static readonly int SizeInBytes = Unsafe.SizeOf<Vector3h>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3h"/> struct.
+        ///     Initializes a new instance of the <see cref="Vector3h" /> struct.
         /// </summary>
         /// <param name="info">The serialization info.</param>
         /// <param name="context">The streaming context.</param>
         [Pure]
         public Vector3h(SerializationInfo info, StreamingContext context)
         {
-            X = (Half)info.GetValue("X", typeof(Half));
-            Y = (Half)info.GetValue("Y", typeof(Half));
-            Z = (Half)info.GetValue("Z", typeof(Half));
+            X = (Half) info.GetValue("X", typeof(Half));
+            Y = (Half) info.GetValue("Y", typeof(Half));
+            Z = (Half) info.GetValue("Z", typeof(Half));
         }
 
-        /// <inheritdoc/>
+        /// <inheritdoc />
         public void GetObjectData(SerializationInfo info, StreamingContext context)
         {
             info.AddValue("X", X);
@@ -480,7 +436,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Updates the X,Y and Z components of this instance by reading from a Stream.
+        ///     Updates the X,Y and Z components of this instance by reading from a Stream.
         /// </summary>
         /// <param name="bin">A BinaryReader instance associated with an open Stream.</param>
         public void FromBinaryStream(BinaryReader bin)
@@ -491,7 +447,7 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Writes the X,Y and Z components of this instance into a Stream.
+        ///     Writes the X,Y and Z components of this instance into a Stream.
         /// </summary>
         /// <param name="bin">A BinaryWriter instance associated with an open Stream.</param>
         public void ToBinaryStream(BinaryWriter bin)
@@ -501,43 +457,33 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
             Z.ToBinaryStream(bin);
         }
 
-        /// <inheritdoc/>
-        public override string ToString()
-        {
-            return string.Format("({0}{3} {1}{3} {2})", X.ToString(), Y.ToString(), Z.ToString(), MathHelper.ListSeparator);
-        }
+        /// <inheritdoc />
+        public override string ToString() => string.Format("({0}{3} {1}{3} {2})", X.ToString(), Y.ToString(),
+            Z.ToString(), MathHelper.ListSeparator);
 
-        /// <inheritdoc/>
-        public override bool Equals(object obj)
-        {
-            return obj is Vector3h && Equals((Vector3h)obj);
-        }
+        /// <inheritdoc />
+        public override bool Equals(object obj) => obj is Vector3h && Equals((Vector3h) obj);
 
-        /// <inheritdoc/>
-        public bool Equals(Vector3h other)
-        {
-            return X.Equals(other.X) &&
-                   Y.Equals(other.Y) &&
-                   Z.Equals(other.Z);
-        }
+        /// <inheritdoc />
+        public bool Equals(Vector3h other) =>
+            X.Equals(other.X) &&
+            Y.Equals(other.Y) &&
+            Z.Equals(other.Z);
 
-        /// <inheritdoc/>
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(X, Y, Z);
-        }
+        /// <inheritdoc />
+        public override int GetHashCode() => HashCode.Combine(X, Y, Z);
 
         /// <summary>
-        /// Returns the Half3 as an array of bytes.
+        ///     Returns the Half3 as an array of bytes.
         /// </summary>
         /// <param name="h">The Half3 to convert.</param>
         /// <returns>The input as byte array.</returns>
         [Pure]
         public static byte[] GetBytes(Vector3h h)
         {
-            var result = new byte[SizeInBytes];
+            byte[] result = new byte[SizeInBytes];
 
-            var temp = Half.GetBytes(h.X);
+            byte[] temp = Half.GetBytes(h.X);
             result[0] = temp[0];
             result[1] = temp[1];
             temp = Half.GetBytes(h.Y);
@@ -551,22 +497,20 @@ namespace Alis.Core.Systems.Audio.Mathematics.Vector
         }
 
         /// <summary>
-        /// Converts an array of bytes into Half3.
+        ///     Converts an array of bytes into Half3.
         /// </summary>
         /// <param name="value">A Half3 in it's byte[] representation.</param>
         /// <param name="startIndex">The starting position within value.</param>
         /// <returns>A new Half3 instance.</returns>
         [Pure]
-        public static Vector3h FromBytes(byte[] value, int startIndex)
-        {
-            return new Vector3h(
+        public static Vector3h FromBytes(byte[] value, int startIndex) =>
+            new Vector3h(
                 Half.FromBytes(value, startIndex),
                 Half.FromBytes(value, startIndex + 2),
                 Half.FromBytes(value, startIndex + 4));
-        }
 
         /// <summary>
-        /// Deconstructs the vector into it's individual components.
+        ///     Deconstructs the vector into it's individual components.
         /// </summary>
         /// <param name="x">The X component of the vector.</param>
         /// <param name="y">The Y component of the vector.</param>

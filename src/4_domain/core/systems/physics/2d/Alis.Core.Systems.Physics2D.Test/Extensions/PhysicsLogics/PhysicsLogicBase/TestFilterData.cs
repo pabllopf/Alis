@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.PhysicsLogics.PhysicsLogicBase
 {
     /// <summary>
-    /// The test filter data class
+    ///     The test filter data class
     /// </summary>
     public class TestFilterData
     {

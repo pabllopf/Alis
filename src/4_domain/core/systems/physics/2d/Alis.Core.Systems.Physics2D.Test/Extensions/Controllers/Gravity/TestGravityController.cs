@@ -32,7 +32,7 @@ using NUnit.Framework;
 namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.Gravity
 {
     /// <summary>
-    /// The test gravity controller class
+    ///     The test gravity controller class
     /// </summary>
     public class TestGravityController
     {

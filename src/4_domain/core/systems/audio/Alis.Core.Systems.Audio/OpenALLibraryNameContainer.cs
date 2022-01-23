@@ -1,11 +1,4 @@
-//
-// OpenALLibrarynameContainer.cs
-//
-// Copyright (C) 2020 OpenTK
-//
-// This software may be modified and distributed under the terms
-// of the MIT license. See the LICENSE file for details.
-//
+// 
 
 using System;
 using System.Runtime.InteropServices;
@@ -13,32 +6,32 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Systems.Audio
 {
     /// <summary>
-    /// Contains the library name of OpenAL.
+    ///     Contains the library name of OpenAL.
     /// </summary>
     public class OpenALLibraryNameContainer
     {
         /// <summary>
-        /// Gets the library name to use on Windows.
+        ///     Gets the library name to use on Windows.
         /// </summary>
         public string Windows => "openal32.dll";
 
         /// <summary>
-        /// Gets the library name to use on Linux.
+        ///     Gets the library name to use on Linux.
         /// </summary>
         public string Linux => "libopenal.so.1";
 
         /// <summary>
-        /// Gets the library name to use on MacOS.
+        ///     Gets the library name to use on MacOS.
         /// </summary>
         public string MacOS => "/System/Library/Frameworks/OpenAL.framework/OpenAL";
 
         /// <summary>
-        /// Gets the library name to use on Android.
+        ///     Gets the library name to use on Android.
         /// </summary>
         public string Android => Linux;
 
         /// <summary>
-        /// Gets the library name to use on iOS.
+        ///     Gets the library name to use on iOS.
         /// </summary>
         public string IOS => MacOS;
 
@@ -50,30 +43,27 @@ namespace Alis.Core.Systems.Audio
                 {
                     return Android;
                 }
-                else
-                {
-                    return Linux;
-                }
+
+                return Linux;
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 return Windows;
             }
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 if (RuntimeInformation.IsOSPlatform(OSPlatform.Create("IOS")))
                 {
                     return IOS;
                 }
-                else
-                {
-                    return MacOS;
-                }
+
+                return MacOS;
             }
-            else
-            {
-                throw new NotSupportedException($"The library name couldn't be resolved for the given platform ('{RuntimeInformation.OSDescription}').");
-            }
+
+            throw new NotSupportedException(
+                $"The library name couldn't be resolved for the given platform ('{RuntimeInformation.OSDescription}').");
         }
     }
 }
