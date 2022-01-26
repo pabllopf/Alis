@@ -1,20 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
-    
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\3_adaptation\audio\alis.core.audio\Alis.Core.Audio.csproj" />
-      <ProjectReference Include="..\..\..\3_adaptation\graphics\2D\sfml\alis.core.graphics.sfml\Alis.Core.Graphics.Sfml.csproj" />
-      <ProjectReference Include="..\..\..\3_adaptation\graphics\3D\opengl\alis.core.graphics.opengl\Alis.Core.Graphics.Opengl.csproj" />
-      <ProjectReference Include="..\..\..\3_adaptation\input\alis.core.input\Alis.Core.Input.csproj" />
-      <ProjectReference Include="..\..\..\3_adaptation\output\alis.core.output\Alis.Core.Output.csproj" />
-      <ProjectReference Include="..\..\..\3_adaptation\physics\2d\alis.core.physics.2d\Alis.Core.Physics.2D.csproj" />
-      <ProjectReference Include="..\..\..\3_adaptation\physics\3d\alis.core.physics.3d\Alis.Core.Physics.3D.csproj" />
-    </ItemGroup>
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
+    <Import Project="$(SolutionDir)/0_config/nuget.props"/>
 
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\3_adaptation\audio\alis.core.audio\Alis.Core.Audio.csproj"/>
+        <ProjectReference Include="..\..\..\3_adaptation\graphics\2D\sfml\alis.core.graphics.sfml\Alis.Core.Graphics.Sfml.csproj"/>
+        <ProjectReference Include="..\..\..\3_adaptation\graphics\3D\opengl\alis.core.graphics.opengl\Alis.Core.Graphics.Opengl.csproj"/>
+        <ProjectReference Include="..\..\..\3_adaptation\input\alis.core.input\Alis.Core.Input.csproj"/>
+        <ProjectReference Include="..\..\..\3_adaptation\output\alis.core.output\Alis.Core.Output.csproj"/>
+        <ProjectReference Include="..\..\..\3_adaptation\physics\2d\alis.core.physics.2d\Alis.Core.Physics.2D.csproj"/>
+        <ProjectReference Include="..\..\..\3_adaptation\physics\3d\alis.core.physics.3d\Alis.Core.Physics.3D.csproj"/>
+    </ItemGroup>
 
 
 </Project>

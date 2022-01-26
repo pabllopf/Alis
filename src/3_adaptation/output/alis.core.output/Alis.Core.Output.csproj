@@ -5,5 +5,5 @@
     <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
     <Import Project="$(SolutionDir)/0_config/licence.props"/>
     <Import Project="$(SolutionDir)/0_config/nuget.props"/>
-    
+
 </Project>
