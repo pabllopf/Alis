@@ -1,15 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
+    <Import Project="$(SolutionDir)/0_config/nuget.props"/>
 
 
     <ItemGroup>
-        <ProjectReference Include="..\..\fluent\alis.fluentapi\Alis.FluentApi.csproj" />
-        <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />
-        <ProjectReference Include="..\systems\physics\2d\Alis.Core.Systems.Physics2D\Alis.Core.Systems.Physics2D.csproj" />
+        <ProjectReference Include="..\..\fluent\alis.fluentapi\Alis.FluentApi.csproj"/>
+        <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj"/>
     </ItemGroup>
 
 

@@ -31,5 +31,4 @@ namespace Alis.Core.Graphics.Opengl;
 
 public class example
 {
-    
 }

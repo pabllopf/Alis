@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 using System.Text.Json.Serialization;
+
 //using Alis.Core.Systems.Physics2D;
 
 namespace Alis.Core.Systems

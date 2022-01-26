@@ -31,10 +31,10 @@ using System;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Sfml.Managers;
-//using Alis.Core.Systems.Physics2D.Dynamics;
-//using Alis.Core.Systems.Physics2D.Factories;
 using SFML.Graphics;
 using SFML.System;
+//using Alis.Core.Systems.Physics2D.Dynamics;
+//using Alis.Core.Systems.Physics2D.Factories;
 
 namespace Alis.Core.Sfml.Components
 {
@@ -154,7 +154,7 @@ namespace Alis.Core.Sfml.Components
         {
             if (RectangleShape is not null)
             {
-               // RectangleShape.Rotation = Body.Rotation;
+                // RectangleShape.Rotation = Body.Rotation;
                 //RectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
                 //RectangleShape.Size = new Vector2f(Size.X, Size.Y);
             }
