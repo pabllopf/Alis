@@ -32,10 +32,6 @@
         </Content>
 
     </ItemGroup>
-
-
-    <ItemGroup>
-        <EditorConfigFiles Include=".editorconfig"/>
-    </ItemGroup>
+    
 
 </Project>
