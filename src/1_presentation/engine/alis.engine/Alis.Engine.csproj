@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+
+
+    <!-- _____________________________ IMPORTS ____________________________________ -->
+
+    <ItemGroup>
+        <PackageReference Include="ImGui.NET" Version="1.78.0" />
+        <PackageReference Include="Packaging.Targets" Version="0.1.189" />
+        <PackageReference Include="Veldrid" Version="4.8.0" />
+        <PackageReference Include="Veldrid.ImageSharp" Version="4.8.0" />
+        <PackageReference Include="Veldrid.StartupUtilities" Version="4.8.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="$(ProjectDir)/lib/cimgui/win-x64/cimgui.dll" CopyToOutputDirectory="PreserveNewest" />
+        <Content Include="$(ProjectDir)/lib/cimgui/osx-x64/cimgui.dylib" CopyToOutputDirectory="PreserveNewest" />
+        <Content Include="$(ProjectDir)/lib/cimgui/linux-x64/cimgui.so" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="$(ProjectDir)/shaders/GLSL/imgui-vertex.glsl" LogicalName="imgui-vertex.glsl" />
+        <EmbeddedResource Include="$(ProjectDir)/shaders/GLSL/imgui-frag.glsl" LogicalName="imgui-frag.glsl" />
+        <EmbeddedResource Include="$(ProjectDir)/shaders/HLSL/imgui-vertex.hlsl.bytes" LogicalName="imgui-vertex.hlsl.bytes" />
+        <EmbeddedResource Include="$(ProjectDir)/shaders/HLSL/imgui-frag.hlsl.bytes" LogicalName="imgui-frag.hlsl.bytes" />
+        <EmbeddedResource Include="$(ProjectDir)/shaders/SPIR-V/imgui-vertex.spv" LogicalName="imgui-vertex.spv" />
+        <EmbeddedResource Include="$(ProjectDir)/shaders/SPIR-V/imgui-frag.spv" LogicalName="imgui-frag.spv" />
+        <EmbeddedResource Include="$(ProjectDir)/shaders/Metal/imgui-vertex.metallib" LogicalName="imgui-vertex.metallib" />
+        <EmbeddedResource Include="$(ProjectDir)/shaders/Metal/imgui-frag.metallib" LogicalName="imgui-frag.metallib" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <None Update="resources/**" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\2_application\alis\alis\Alis.csproj" />
+    </ItemGroup>
+
+
+</Project>

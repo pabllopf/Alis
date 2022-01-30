@@ -1,0 +1,11 @@
+<Project>
+    <!-- GENERAL CONFIG -->
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <LangVersion>10</LangVersion>
+        <Configurations>win;osx;linux;ios;android;</Configurations>
+        <Platforms>x64;x86;ARM64;ARM</Platforms>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+</Project>
