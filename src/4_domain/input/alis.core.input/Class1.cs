@@ -1,10 +1,11 @@
 // 
 
-namespace Alis.Core.Systems.Input;
-
-/// <summary>
-///     The class class
-/// </summary>
-public class Class1
+namespace Alis.Core.Input
 {
+    /// <summary>
+    ///     The class class
+    /// </summary>
+    public class Class1
+    {
+    }
 }

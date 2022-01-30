@@ -40,17 +40,6 @@ namespace Alis
     public class VideoGame : Game
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="VideoGame" /> class
-        /// </summary>
-        public VideoGame()
-        {
-            //InputSystem = new InputManager();
-            //SceneSystem = new SceneManager();
-            //PhysicsSystem = new PhysicsManager();
-            //RenderSystem = new RenderManager();
-        }
-
-        /// <summary>
         ///     Creates
         /// </summary>
         /// <returns>The video game builder</returns>

@@ -27,8 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphics.Opengl;
-
-public class example
+namespace Alis.Core.Graphics.Opengl
 {
+    public class example
+    {
+    }
 }

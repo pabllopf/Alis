@@ -30,9 +30,10 @@
 #region
 
 using System;
+
 #endregion
 
-namespace Alis.Editor.Benchmark
+namespace Alis.Engine.Benchmark
 {
     /// <summary>
     ///     The program class

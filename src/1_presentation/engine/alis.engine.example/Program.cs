@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Editor.Example
+namespace Alis.Engine.Example
 {
     /// <summary>
     ///     The program class

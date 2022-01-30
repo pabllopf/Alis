@@ -58,7 +58,7 @@ namespace Alis.Core.Settings
         /// <summary>
         ///     Gets or sets the value of the input
         /// </summary>
-        public Input Input { get; set; } = new Input();
+        //public Input Input { get; set; } = new Input();
 
         /// <summary>
         ///     Gets or sets the value of the particle
@@ -78,7 +78,7 @@ namespace Alis.Core.Settings
         /// <summary>
         ///     Gets or sets the value of the time
         /// </summary>
-        public Time Time { get; set; } = new Time();
+        //public Time Time { get; set; } = new Time();
 
         /// <summary>
         ///     Gets or sets the value of the window

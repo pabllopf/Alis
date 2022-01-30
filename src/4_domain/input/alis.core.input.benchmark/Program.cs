@@ -40,7 +40,7 @@ using BenchmarkDotNet.Running;
 
 #endregion
 
-namespace Alis.Editor.Benchmark
+namespace Alis.Core.Input.Benchmark
 {
     /// <summary>
     ///     The program class

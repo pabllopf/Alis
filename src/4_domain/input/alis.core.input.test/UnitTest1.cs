@@ -2,27 +2,28 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Systems.Input.Test;
-
-/// <summary>
-///     The tests class
-/// </summary>
-public class Tests
+namespace Alis.Core.Input.Test
 {
     /// <summary>
-    ///     Setup this instance
+    ///     The tests class
     /// </summary>
-    [SetUp]
-    public void Setup()
+    public class Tests
     {
-    }
+        /// <summary>
+        ///     Setup this instance
+        /// </summary>
+        [SetUp]
+        public void Setup()
+        {
+        }
 
-    /// <summary>
-    ///     Tests that test 1
-    /// </summary>
-    [Test]
-    public void Test1()
-    {
-        Assert.Pass();
+        /// <summary>
+        ///     Tests that test 1
+        /// </summary>
+        [Test]
+        public void Test1()
+        {
+            Assert.Pass();
+        }
     }
 }

@@ -123,6 +123,7 @@ namespace Alis.Core
 
             while (IsRunning)
             {
+                /*
                 Setting.Time.SyncFixedDeltaTime();
 
                 if (Setting.Time.IsNewFrame())
@@ -190,7 +191,8 @@ namespace Alis.Core
             PhysicsSystem.Exit();
             RenderSystem.Exit();
 
-            #endregion
+            #endregion*/
+            }
         }
 
 

@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Editor
+namespace Alis.Engine
 {
     /// <summary>Run the engine</summary>
     public static class Program

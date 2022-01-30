@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Editor.Test
+namespace Alis.Engine.Test
 {
     /// <summary>
     ///     The tests class

@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core;
-using Alis.Core.Settings;
 using Alis.FluentApi;
-using Alis.FluentApi.Words;
 
 namespace Alis.Builders
 {
@@ -47,7 +43,7 @@ namespace Alis.Builders
         /// <returns></returns>
         public VideoGame Build() => VideoGame;
 
-       
+
         /// <summary>Runs this instance.</summary>
         public void Run()
         {
