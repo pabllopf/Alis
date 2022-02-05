@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   PongEventArgs.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
+using System;
 
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer
 {
     /// <summary>
-    ///     The tests class
+    ///     Pong EventArgs
     /// </summary>
-    public class Tests
+    public class PongEventArgs : EventArgs
     {
         /// <summary>
-        ///     Setup this instance
+        ///     Initialises a new instance of the PongEventArgs class
         /// </summary>
-        [SetUp]
-        public void Setup()
-        {
-        }
+        /// <param name="payload">The pong payload must be 125 bytes or less (can be zero bytes)</param>
+        public PongEventArgs(ArraySegment<byte> payload) => Payload = payload;
 
         /// <summary>
-        ///     Tests that test 1
+        ///     The data extracted from a Pong WebSocket frame
         /// </summary>
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+        public ArraySegment<byte> Payload { get; }
     }
 }

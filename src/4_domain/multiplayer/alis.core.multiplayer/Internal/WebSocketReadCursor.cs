@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   WebSocketReadCursor.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
-
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer.Internal
 {
-    /// <summary>
-    ///     The tests class
-    /// </summary>
-    public class Tests
+    internal class WebSocketReadCursor
     {
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [SetUp]
-        public void Setup()
+        public WebSocketReadCursor(WebSocketFrame frame, int numBytesRead, int numBytesLeftToRead)
         {
+            WebSocketFrame = frame;
+            NumBytesRead = numBytesRead;
+            NumBytesLeftToRead = numBytesLeftToRead;
         }
 
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+        public WebSocketFrame WebSocketFrame { get; }
+
+        // Number of bytes read in the last read operation
+        public int NumBytesRead { get; }
+
+        // Number of bytes remaining to read before we are done reading the entire frame
+        public int NumBytesLeftToRead { get; }
     }
 }

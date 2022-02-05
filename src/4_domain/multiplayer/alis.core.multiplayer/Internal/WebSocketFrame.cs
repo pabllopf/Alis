@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   WebSocketFrame.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
+using System;
+using System.Net.WebSockets;
 
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer.Internal
 {
-    /// <summary>
-    ///     The tests class
-    /// </summary>
-    public class Tests
+    internal class WebSocketFrame
     {
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [SetUp]
-        public void Setup()
+        public WebSocketFrame(bool isFinBitSet, WebSocketOpCode webSocketOpCode, int count, ArraySegment<byte> maskKey)
         {
+            IsFinBitSet = isFinBitSet;
+            OpCode = webSocketOpCode;
+            Count = count;
+            MaskKey = maskKey;
         }
 
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
+        public WebSocketFrame(bool isFinBitSet, WebSocketOpCode webSocketOpCode, int count,
+            WebSocketCloseStatus closeStatus, string closeStatusDescription, ArraySegment<byte> maskKey) : this(
+            isFinBitSet, webSocketOpCode, count, maskKey)
         {
-            Assert.Pass();
+            CloseStatus = closeStatus;
+            CloseStatusDescription = closeStatusDescription;
         }
+
+        public bool IsFinBitSet { get; }
+
+        public WebSocketOpCode OpCode { get; }
+
+        public int Count { get; }
+
+        public WebSocketCloseStatus? CloseStatus { get; }
+
+        public string CloseStatusDescription { get; }
+
+        public ArraySegment<byte> MaskKey { get; }
     }
 }

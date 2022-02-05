@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   WebSocketVersionNotSupportedException.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
+using System;
 
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer.Exceptions
 {
-    /// <summary>
-    ///     The tests class
-    /// </summary>
-    public class Tests
+    [Serializable]
+    public class WebSocketVersionNotSupportedException : Exception
     {
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [SetUp]
-        public void Setup()
+        public WebSocketVersionNotSupportedException()
         {
         }
 
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
+        public WebSocketVersionNotSupportedException(string message) : base(message)
         {
-            Assert.Pass();
+        }
+
+        public WebSocketVersionNotSupportedException(string message, Exception inner) : base(message, inner)
+        {
         }
     }
 }

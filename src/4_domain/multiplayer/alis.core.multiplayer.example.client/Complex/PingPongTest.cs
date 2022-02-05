@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   PingPongTest.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
-
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer.Example.Client.Complex
 {
-    /// <summary>
-    ///     The tests class
-    /// </summary>
-    public class Tests
+    internal class PingPongTest
     {
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [SetUp]
-        public void Setup()
-        {
-        }
-
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
     }
 }

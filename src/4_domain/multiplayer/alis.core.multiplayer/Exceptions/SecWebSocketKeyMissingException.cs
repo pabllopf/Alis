@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   SecWebSocketKeyMissingException.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
+using System;
 
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer.Exceptions
 {
-    /// <summary>
-    ///     The tests class
-    /// </summary>
-    public class Tests
+    [Serializable]
+    public class SecWebSocketKeyMissingException : Exception
     {
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [SetUp]
-        public void Setup()
+        public SecWebSocketKeyMissingException()
         {
         }
 
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
+        public SecWebSocketKeyMissingException(string message) : base(message)
         {
-            Assert.Pass();
+        }
+
+        public SecWebSocketKeyMissingException(string message, Exception inner) : base(message, inner)
+        {
         }
     }
 }

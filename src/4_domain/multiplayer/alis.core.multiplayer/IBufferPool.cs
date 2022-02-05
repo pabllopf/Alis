@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   IBufferPool.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
+using System.IO;
 
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer
 {
-    /// <summary>
-    ///     The tests class
-    /// </summary>
-    public class Tests
+    public interface IBufferPool
     {
         /// <summary>
-        ///     Setup this instance
+        ///     Gets a MemoryStream built from a buffer plucked from a thread safe pool
+        ///     The pool grows automatically.
+        ///     Closing the memory stream clears the buffer and returns it to the pool
         /// </summary>
-        [SetUp]
-        public void Setup()
-        {
-        }
-
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+        MemoryStream GetBuffer();
     }
 }

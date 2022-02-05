@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   IPingPongManager.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer
 {
     /// <summary>
-    ///     The tests class
+    ///     Ping Pong Manager used to facilitate ping pong WebSocket messages
     /// </summary>
-    public class Tests
+    internal interface IPingPongManager
     {
         /// <summary>
-        ///     Setup this instance
+        ///     Raised when a Pong frame is received
         /// </summary>
-        [SetUp]
-        public void Setup()
-        {
-        }
+        event EventHandler<PongEventArgs> Pong;
 
         /// <summary>
-        ///     Tests that test 1
+        ///     Sends a ping frame
         /// </summary>
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+        /// <param name="payload">The payload (must be 125 bytes of less)</param>
+        /// <param name="cancellation">The cancellation token</param>
+        Task SendPing(ArraySegment<byte> payload, CancellationToken cancellation);
     }
 }

@@ -6,5 +6,12 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
+
     </PropertyGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="..\alis.core.multiplayer\Alis.Core.Multiplayer.csproj"/>
+    </ItemGroup>
+
 </Project>

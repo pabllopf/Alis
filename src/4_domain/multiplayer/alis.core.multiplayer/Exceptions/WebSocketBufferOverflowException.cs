@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   WebSocketBufferOverflowException.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
+using System;
 
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer.Exceptions
 {
-    /// <summary>
-    ///     The tests class
-    /// </summary>
-    public class Tests
+    [Serializable]
+    public class WebSocketBufferOverflowException : Exception
     {
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [SetUp]
-        public void Setup()
+        public WebSocketBufferOverflowException()
         {
         }
 
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
+        public WebSocketBufferOverflowException(string message) : base(message)
         {
-            Assert.Pass();
+        }
+
+        public WebSocketBufferOverflowException(string message, Exception inner) : base(message, inner)
+        {
         }
     }
 }

@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   WebSocketOpCode.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
-
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer.Internal
 {
-    /// <summary>
-    ///     The tests class
-    /// </summary>
-    public class Tests
+    internal enum WebSocketOpCode
     {
-        /// <summary>
-        ///     Setup this instance
-        /// </summary>
-        [SetUp]
-        public void Setup()
-        {
-        }
-
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+        ContinuationFrame = 0,
+        TextFrame = 1,
+        BinaryFrame = 2,
+        ConnectionClose = 8,
+        Ping = 9,
+        Pong = 10
     }
 }

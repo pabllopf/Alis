@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   Program.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,30 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using NUnit.Framework;
-
-namespace Alis.Core.Multiplayer.Test
+namespace Alis.Core.Multiplayer.Example.All.In.One
 {
     /// <summary>
-    ///     The tests class
+    ///     The program class
     /// </summary>
-    public class Tests
+    public class Program
     {
         /// <summary>
-        ///     Setup this instance
+        ///     Main the args
         /// </summary>
-        [SetUp]
-        public void Setup()
+        /// <param name="args">The args</param>
+        public static void Main(string[] args)
         {
-        }
-
-        /// <summary>
-        ///     Tests that test 1
-        /// </summary>
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
         }
     }
 }
