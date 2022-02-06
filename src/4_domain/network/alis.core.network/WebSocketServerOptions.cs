@@ -43,7 +43,21 @@ namespace Alis.Core.Network
         {
             KeepAliveInterval = TimeSpan.FromSeconds(60);
             IncludeExceptionInCloseResponse = false;
-            SubProtocol = null;
+            SubProtocol = "";
+        }
+
+        public WebSocketServerOptions(double keepAliveInterval, bool includeExceptionInCloseResponse, string subProtocol) 
+        {
+            KeepAliveInterval = TimeSpan.FromSeconds(keepAliveInterval);
+            IncludeExceptionInCloseResponse = includeExceptionInCloseResponse;
+            SubProtocol = subProtocol;
+        }
+
+        public WebSocketServerOptions(TimeSpan keepAliveInterval, string subProtocol)
+        {
+            KeepAliveInterval = keepAliveInterval;
+            IncludeExceptionInCloseResponse = false;
+            SubProtocol = subProtocol;
         }
 
         /// <summary>
@@ -52,7 +66,7 @@ namespace Alis.Core.Network
         ///     This is done to prevent proxy servers from closing your connection
         ///     A timespan of zero will disable the automatic ping pong mechanism
         ///     You can manually control ping pong messages using the PingPongManager class.
-        ///     If you do that it is advisible to set this KeepAliveInterval to zero in the WebSocketServerFactory
+        ///     If you do that it is advisable to set this KeepAliveInterval to zero in the WebSocketServerFactory
         /// </summary>
         public TimeSpan KeepAliveInterval { get; set; }
 

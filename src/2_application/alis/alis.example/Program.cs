@@ -27,6 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Numerics;
+using Alis.Core.Entities;
+using Alis.Core.Systems.Physics2D.Dynamics;
+using Transform = Alis.Core.Entities.Transform;
+
 namespace Alis.Example
 {
     /// <summary>
@@ -40,8 +46,9 @@ namespace Alis.Example
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            /*VideoGame.Create()
-                .Settings(setting => setting
+            
+            VideoGame.Create()
+                /*.Settings(setting => setting
                     .General(general => general
                         .Author("Pedro Diaz")
                         .Name("The best game")
@@ -54,16 +61,15 @@ namespace Alis.Example
                         .LogLevel(LogLevel.Info)
                         .ShowPhysicBorders(true)
                         .Build())
-                    .Build())
-                .Manager(sceneManager => sceneManager
+                    .Build())*/
+                /*.Manager(sceneManager => sceneManager
                     .Add<Scene>(scene => scene
                         .Name("The main menu.")
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Other Example")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(100, 100, 0), new Vector3(0)))
-                            .Add<Sprite>(new Sprite(
-                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
-                            .Add<BoxCollider2D>(new BoxCollider2D
+                            //.Add<Sprite>(new Sprite(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
+                            /*.Add<BoxCollider2D>(new BoxCollider2D
                             {
                                 BodyType = BodyType.Static,
                                 AutoTiling = true
@@ -72,9 +78,8 @@ namespace Alis.Example
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Other Example 2")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, -100, 0), new Vector3(0)))
-                            .Add<Sprite>(new Sprite(
-                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
-                            .Add<BoxCollider2D>(new BoxCollider2D
+                            //.Add<Sprite>(new Sprite(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
+                            /*.Add<BoxCollider2D>(new BoxCollider2D
                             {
                                 BodyType = BodyType.Dynamic,
                                 AutoTiling = true
@@ -83,9 +88,8 @@ namespace Alis.Example
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Other Example 3")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, 100, 0), new Vector3(0)))
-                            .Add<Sprite>(new Sprite(
-                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
-                            .Add<BoxCollider2D>(new BoxCollider2D
+                            //.Add<Sprite>(new Sprite(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
+                            /*.Add<BoxCollider2D>(new BoxCollider2D
                             {
                                 BodyType = BodyType.Kinematic,
                                 AutoTiling = true
@@ -94,17 +98,15 @@ namespace Alis.Example
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Player")
                             .Add<SimpleMove>(new SimpleMove())
-                            .Add<Sprite>(new Sprite(
-                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
-                            .Add<AudioSource>(new AudioSource(
-                                @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\menu.wav"))
-                            .Add<Camera>(Camera.CreateInstance())
-                            .Add<BoxCollider2D>(new BoxCollider2D
+                            //.Add<Sprite>(new Sprite(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"))
+                            //.Add<AudioSource>(new AudioSource(@"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\menu.wav"))
+                            //.Add<Camera>(Camera.CreateInstance())
+                            /*.Add<BoxCollider2D>(new BoxCollider2D
                             {
                                 BodyType = BodyType.Dynamic,
                                 AutoTiling = true
-                            })
-                            .Add<Animator>(new Animator(new List<Animation>
+                            })*/
+                            /*.Add<Animator>(new Animator(new List<Animation>
                             {
                                 new Animation(new List<Texture>
                                 {
@@ -117,16 +119,16 @@ namespace Alis.Example
                                     new Texture(
                                         @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile003.png")
                                 }),
-                                new Animation()
+                                //new Animation()
                             }))
                             .Build())
                         .Build())
-                    .Build())
-                .Run();*/
+                    .Build())*/
+                .Run();
         }
     }
 
-    /*
+    
     /// <summary>
     ///     The simple move class
     /// </summary>
@@ -136,19 +138,19 @@ namespace Alis.Example
         /// <summary>
         ///     The box collider
         /// </summary>
-        private BoxCollider2D boxCollider2D;
+        //private BoxCollider2D boxCollider2D;
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
-            boxCollider2D = (BoxCollider2D) GameObject.Get<BoxCollider2D>();
+            //boxCollider2D = (BoxCollider2D) GameObject.Get<BoxCollider2D>();
 
 
-            InputManager.OnPressKey += InputManagerOnOnPressKey;
-            InputManager.OnPressDownKey += InputManagerOnOnPressDownKey;
-            InputManager.OnReleaseKey += InputManagerOnOnReleaseKey;
+            //InputManager.OnPressKey += InputManagerOnOnPressKey;
+            //InputManager.OnPressDownKey += InputManagerOnOnPressDownKey;
+            //InputManager.OnReleaseKey += InputManagerOnOnReleaseKey;
         }
 
         /// <summary>
@@ -158,30 +160,30 @@ namespace Alis.Example
         /// <param name="key">The key</param>
         private void InputManagerOnOnReleaseKey(object? sender, Keyboard key)
         {
-            Vector2 velocity = boxCollider2D.Body.LinearVelocity;
+            //Vector2 velocity = boxCollider2D.Body.LinearVelocity;
 
             if (key == Keyboard.D)
             {
-                velocity.X = 0;
-                boxCollider2D.Body.LinearVelocity = velocity;
+            //    velocity.X = 0;
+            //    boxCollider2D.Body.LinearVelocity = velocity;
             }
 
             if (key == Keyboard.A)
             {
-                velocity.X = 0;
-                boxCollider2D.Body.LinearVelocity = velocity;
+               // velocity.X = 0;
+               // boxCollider2D.Body.LinearVelocity = velocity;
             }
 
             if (key == Keyboard.W)
             {
-                velocity.Y = 0;
-                boxCollider2D.Body.LinearVelocity = velocity;
+                //velocity.Y = 0;
+                //boxCollider2D.Body.LinearVelocity = velocity;
             }
 
             if (key == Keyboard.S)
             {
-                velocity.Y = 0;
-                boxCollider2D.Body.LinearVelocity = velocity;
+                //velocity.Y = 0;
+                //boxCollider2D.Body.LinearVelocity = velocity;
             }
         }
 
@@ -201,6 +203,7 @@ namespace Alis.Example
         /// <param name="key">The key</param>
         private void InputManagerOnOnPressKey(object? sender, Keyboard key)
         {
+            /*
             Vector2 velocity = boxCollider2D.Body.LinearVelocity;
             if (key == Keyboard.D)
             {
@@ -227,7 +230,7 @@ namespace Alis.Example
             {
                 velocity.Y = 5;
                 boxCollider2D.Body.LinearVelocity = velocity;
-            }
+            }*/
         }
 
         /// <summary>
@@ -236,5 +239,5 @@ namespace Alis.Example
         public override void Update()
         {
         }
-    }*/
+    }
 }
