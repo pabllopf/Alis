@@ -38,6 +38,8 @@ namespace Alis.Core.Multiplayer.Example.Client
     {
         private static void Main(string[] args)
         {
+            RunComplexTest(args);
+            /*
             if (args.Length == 0)
             {
                 RunSimpleTest().Wait();
@@ -46,7 +48,7 @@ namespace Alis.Core.Multiplayer.Example.Client
             {
                 // TODO: allow buffer pool to grow its buffers
                 // ws://localhost:27416/echo 5 1000 5000 40000
-                RunComplexTest(args);
+                
             }
             else
             {
@@ -55,7 +57,7 @@ namespace Alis.Core.Multiplayer.Example.Client
                     "Complex Test: uri numThreads numItemsPerThread minNumBytesPerMessage maxNumBytesPerMessage");
                 Console.WriteLine("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
             }
-
+*/
             Console.WriteLine("Press any key to quit");
             Console.ReadKey();
         }
@@ -68,11 +70,11 @@ namespace Alis.Core.Multiplayer.Example.Client
 
         private static void RunComplexTest(string[] args)
         {
-            Uri uri = new Uri(args[0]);
-            int.TryParse(args[1], out int numThreads);
-            int.TryParse(args[2], out int numItemsPerThread);
-            int.TryParse(args[3], out int minNumBytesPerMessage);
-            int.TryParse(args[4], out int maxNumBytesPerMessage);
+            Uri uri = new Uri("ws://localhost:27416/chat");
+            int.TryParse("3", out int numThreads);
+            int.TryParse("4", out int numItemsPerThread);
+            int.TryParse("256", out int minNumBytesPerMessage);
+            int.TryParse("1024", out int maxNumBytesPerMessage);
 
             Console.WriteLine(
                 $"Started DemoClient with Uri '{uri}' numThreads '{numThreads}' numItemsPerThread '{numItemsPerThread}' minNumBytesPerMessage '{minNumBytesPerMessage}' maxNumBytesPerMessage '{maxNumBytesPerMessage}'");
