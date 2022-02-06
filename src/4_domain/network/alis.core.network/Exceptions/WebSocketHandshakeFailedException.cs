@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   WebSocketHandshakeFailedException.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using System;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Exceptions
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    [Serializable]
+    public class WebSocketHandshakeFailedException : Exception
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public WebSocketHandshakeFailedException()
+        {
+        }
+
+        public WebSocketHandshakeFailedException(string message) : base(message)
+        {
+        }
+
+        public WebSocketHandshakeFailedException(string message, Exception inner) : base(message, inner)
         {
         }
     }

@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   SecWebSocketKeyMissingException.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using System;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Exceptions
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    [Serializable]
+    public class SecWebSocketKeyMissingException : Exception
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public SecWebSocketKeyMissingException()
+        {
+        }
+
+        public SecWebSocketKeyMissingException(string message) : base(message)
+        {
+        }
+
+        public SecWebSocketKeyMissingException(string message, Exception inner) : base(message, inner)
         {
         }
     }

@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   WebSocketOpCode.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Internal
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    internal enum WebSocketOpCode
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-        }
+        ContinuationFrame = 0,
+        TextFrame = 1,
+        BinaryFrame = 2,
+        ConnectionClose = 8,
+        Ping = 9,
+        Pong = 10
     }
 }

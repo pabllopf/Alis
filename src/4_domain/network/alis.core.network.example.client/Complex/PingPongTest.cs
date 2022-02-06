@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   PingPongTest.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Example.Client.Complex
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    internal class PingPongTest
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-        }
     }
 }

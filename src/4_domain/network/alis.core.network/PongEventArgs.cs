@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   PongEventArgs.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using System;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network
 {
     /// <summary>
-    ///     The program class
+    ///     Pong EventArgs
     /// </summary>
-    public class Program
+    public class PongEventArgs : EventArgs
     {
         /// <summary>
-        ///     Main the args
+        ///     Initialises a new instance of the PongEventArgs class
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-        }
+        /// <param name="payload">The pong payload must be 125 bytes or less (can be zero bytes)</param>
+        public PongEventArgs(ArraySegment<byte> payload) => Payload = payload;
+
+        /// <summary>
+        ///     The data extracted from a Pong WebSocket frame
+        /// </summary>
+        public ArraySegment<byte> Payload { get; }
     }
 }

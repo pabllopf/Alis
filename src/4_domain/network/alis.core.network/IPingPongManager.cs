@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IPingPongManager.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network
 {
     /// <summary>
-    ///     The program class
+    ///     Ping Pong Manager used to facilitate ping pong WebSocket messages
     /// </summary>
-    public class Program
+    internal interface IPingPongManager
     {
         /// <summary>
-        ///     Main the args
+        ///     Raised when a Pong frame is received
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-        }
+        event EventHandler<PongEventArgs> Pong;
+
+        /// <summary>
+        ///     Sends a ping frame
+        /// </summary>
+        /// <param name="payload">The payload (must be 125 bytes of less)</param>
+        /// <param name="cancellation">The cancellation token</param>
+        Task SendPing(ArraySegment<byte> payload, CancellationToken cancellation);
     }
 }

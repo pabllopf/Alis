@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   EntityTooLargeException.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using System;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Exceptions
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    [Serializable]
+    public class EntityTooLargeException : Exception
     {
+        public EntityTooLargeException()
+        {
+        }
+
         /// <summary>
-        ///     Main the args
+        ///     Http header too large to fit in buffer
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public EntityTooLargeException(string message) : base(message)
+        {
+        }
+
+        public EntityTooLargeException(string message, Exception inner) : base(message, inner)
         {
         }
     }

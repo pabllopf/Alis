@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   InvalidHttpResponseCodeException.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using System;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Exceptions
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    [Serializable]
+    public class InvalidHttpResponseCodeException : Exception
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public InvalidHttpResponseCodeException()
         {
         }
+
+        public InvalidHttpResponseCodeException(string message) : base(message)
+        {
+        }
+
+        public InvalidHttpResponseCodeException(string responseCode, string responseDetails, string responseHeader) :
+            base(responseCode)
+        {
+            ResponseCode = responseCode;
+            ResponseDetails = responseDetails;
+            ResponseHeader = responseHeader;
+        }
+
+        public InvalidHttpResponseCodeException(string message, Exception inner) : base(message, inner)
+        {
+        }
+
+        public string ResponseCode { get; private set; }
+
+        public string ResponseHeader { get; private set; }
+
+        public string ResponseDetails { get; private set; }
     }
 }

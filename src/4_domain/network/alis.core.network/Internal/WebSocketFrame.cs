@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   WebSocketFrame.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using System;
+using System.Net.WebSockets;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Internal
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    internal class WebSocketFrame
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public WebSocketFrame(bool isFinBitSet, WebSocketOpCode webSocketOpCode, int count, ArraySegment<byte> maskKey)
         {
+            IsFinBitSet = isFinBitSet;
+            OpCode = webSocketOpCode;
+            Count = count;
+            MaskKey = maskKey;
         }
+
+        public WebSocketFrame(bool isFinBitSet, WebSocketOpCode webSocketOpCode, int count,
+            WebSocketCloseStatus closeStatus, string closeStatusDescription, ArraySegment<byte> maskKey) : this(
+            isFinBitSet, webSocketOpCode, count, maskKey)
+        {
+            CloseStatus = closeStatus;
+            CloseStatusDescription = closeStatusDescription;
+        }
+
+        public bool IsFinBitSet { get; }
+
+        public WebSocketOpCode OpCode { get; }
+
+        public int Count { get; }
+
+        public WebSocketCloseStatus? CloseStatus { get; }
+
+        public string CloseStatusDescription { get; }
+
+        public ArraySegment<byte> MaskKey { get; }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   UnitTest1.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using NUnit.Framework;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Test
 {
     /// <summary>
-    ///     The program class
+    ///     The tests class
     /// </summary>
-    public class Program
+    public class Tests
     {
         /// <summary>
-        ///     Main the args
+        ///     Setup this instance
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        [SetUp]
+        public void Setup()
         {
+        }
+
+        /// <summary>
+        ///     Tests that test 1
+        /// </summary>
+        [Test]
+        public void Test1()
+        {
+            Assert.Pass();
         }
     }
 }

@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IBufferPool.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
+using System.IO;
 
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    public interface IBufferPool
     {
         /// <summary>
-        ///     Main the args
+        ///     Gets a MemoryStream built from a buffer plucked from a thread safe pool
+        ///     The pool grows automatically.
+        ///     Closing the memory stream clears the buffer and returns it to the pool
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-        }
+        MemoryStream GetBuffer();
     }
 }

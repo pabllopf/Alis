@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Example.All.In.One
 {
     /// <summary>
     ///     The program class

@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   WebSocketReadCursor.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,23 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
-#endregion
-
-namespace Alis.Core.Output.Example
+namespace Alis.Core.Network.Internal
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    internal class WebSocketReadCursor
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public WebSocketReadCursor(WebSocketFrame frame, int numBytesRead, int numBytesLeftToRead)
         {
+            WebSocketFrame = frame;
+            NumBytesRead = numBytesRead;
+            NumBytesLeftToRead = numBytesLeftToRead;
         }
+
+        public WebSocketFrame WebSocketFrame { get; }
+
+        // Number of bytes read in the last read operation
+        public int NumBytesRead { get; }
+
+        // Number of bytes remaining to read before we are done reading the entire frame
+        public int NumBytesLeftToRead { get; }
     }
 }
