@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using System.Numerics;
 using Alis.Core.Entities;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Transform = Alis.Core.Entities.Transform;
 
 namespace Alis.Example
 {
@@ -46,7 +42,6 @@ namespace Alis.Example
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
             VideoGame.Create()
                 /*.Settings(setting => setting
                     .General(general => general
@@ -106,29 +101,29 @@ namespace Alis.Example
                                 BodyType = BodyType.Dynamic,
                                 AutoTiling = true
                             })*/
-                            /*.Add<Animator>(new Animator(new List<Animation>
-                            {
-                                new Animation(new List<Texture>
-                                {
-                                    new Texture(
-                                        @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"),
-                                    new Texture(
-                                        @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile001.png"),
-                                    new Texture(
-                                        @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile002.png"),
-                                    new Texture(
-                                        @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile003.png")
-                                }),
-                                //new Animation()
-                            }))
-                            .Build())
-                        .Build())
-                    .Build())*/
+                /*.Add<Animator>(new Animator(new List<Animation>
+                {
+                    new Animation(new List<Texture>
+                    {
+                        new Texture(
+                            @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile000.png"),
+                        new Texture(
+                            @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile001.png"),
+                        new Texture(
+                            @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile002.png"),
+                        new Texture(
+                            @"C:\Users\wwwam\Documents\Repos\Alis\src\2_application\alis.example\Assets\tile003.png")
+                    }),
+                    //new Animation()
+                }))
+                .Build())
+            .Build())
+        .Build())*/
                 .Run();
         }
     }
 
-    
+
     /// <summary>
     ///     The simple move class
     /// </summary>
@@ -164,14 +159,14 @@ namespace Alis.Example
 
             if (key == Keyboard.D)
             {
-            //    velocity.X = 0;
-            //    boxCollider2D.Body.LinearVelocity = velocity;
+                //    velocity.X = 0;
+                //    boxCollider2D.Body.LinearVelocity = velocity;
             }
 
             if (key == Keyboard.A)
             {
-               // velocity.X = 0;
-               // boxCollider2D.Body.LinearVelocity = velocity;
+                // velocity.X = 0;
+                // boxCollider2D.Body.LinearVelocity = velocity;
             }
 
             if (key == Keyboard.W)
