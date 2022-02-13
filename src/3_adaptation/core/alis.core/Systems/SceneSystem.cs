@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Alis.Core.Entities;
@@ -184,6 +183,8 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Simple destructor
         /// </summary>
-        ~SceneSystem() => Console.WriteLine(@$"Destroy SceneSystem {GetHashCode().ToString()}");
+        ~SceneSystem()
+        {
+        }
     }
 }

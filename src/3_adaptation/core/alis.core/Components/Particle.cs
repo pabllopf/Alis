@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   Particle.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+#region
+
+using Alis.Core.Entities;
+
+#endregion
+
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The particle class
     /// </summary>
-    public class Class1
+    /// <seealso cref="Component" />
+    public class Particle : Component
     {
+        public override void Start()
+        {
+        }
+
+        public override void Update()
+        {
+        }
     }
 }

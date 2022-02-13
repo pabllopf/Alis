@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Text.Json.Serialization;
 
 namespace Alis.Core.Systems
@@ -125,6 +124,8 @@ namespace Alis.Core.Systems
         {
         }
 
-        ~InputSystem() => Console.WriteLine(@$"Destroy InputSystem {GetHashCode().ToString()}");
+        ~InputSystem()
+        {
+        }
     }
 }

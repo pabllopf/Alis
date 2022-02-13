@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   CircleCollider.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The circle collider class
     /// </summary>
-    public class Class1
+    /// <seealso cref="Collider" />
+    public class CircleCollider : Collider
     {
+        public override void Start()
+        {
+        }
+
+        public override void Update()
+        {
+        }
     }
 }

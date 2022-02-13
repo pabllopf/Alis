@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   Light.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+#region
+
+#endregion
+
+using Alis.Core.Entities;
+
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The light class
     /// </summary>
-    public class Class1
+    /// <seealso cref="Component" />
+    public abstract class Light : Component
     {
     }
 }

@@ -46,7 +46,8 @@ namespace Alis.Core.Network
             SubProtocol = "";
         }
 
-        public WebSocketServerOptions(double keepAliveInterval, bool includeExceptionInCloseResponse, string subProtocol) 
+        public WebSocketServerOptions(double keepAliveInterval, bool includeExceptionInCloseResponse,
+            string subProtocol)
         {
             KeepAliveInterval = TimeSpan.FromSeconds(keepAliveInterval);
             IncludeExceptionInCloseResponse = includeExceptionInCloseResponse;

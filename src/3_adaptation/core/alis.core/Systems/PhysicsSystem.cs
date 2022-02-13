@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Text.Json.Serialization;
 
 //using Alis.Core.Systems.Physics2D;
@@ -136,6 +135,8 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Destroy object.
         /// </summary>
-        ~PhysicsSystem() => Console.WriteLine(@$"Destroy PhysicsSystem {GetHashCode().ToString()}");
+        ~PhysicsSystem()
+        {
+        }
     }
 }

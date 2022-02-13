@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Text.Json.Serialization;
 
 namespace Alis.Core.Systems
@@ -129,6 +128,8 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Destroy object.
         /// </summary>
-        ~RenderSystem() => Console.WriteLine(@$"Destroy RenderSystem {GetHashCode().ToString()}");
+        ~RenderSystem()
+        {
+        }
     }
 }

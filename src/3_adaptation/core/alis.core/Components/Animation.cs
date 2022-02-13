@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ParticlesSystem.cs
+//  File:   Animation.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,108 +27,72 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
-
-namespace Alis.Core.Systems
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The particles system class
+    ///     The animation class
     /// </summary>
-    /// <seealso cref="System" />
-    public class ParticlesSystem : System
+    public class Animation
     {
+        /*
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ParticlesSystem" /> class
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
-        [JsonConstructor]
-        public ParticlesSystem()
-        {
-        }
-
+        public Animation() => Textures = new List<Texture>();
 
         /// <summary>
-        ///     Awakes this instance
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
-        public override void Awake()
-        {
-        }
-
+        /// <param name="textures">The textures</param>
+        public Animation(List<Texture> textures) => Textures = textures;
 
         /// <summary>
-        ///     Starts this instance
+        ///     Gets or sets the value of the index
         /// </summary>
-        public override void Start()
-        {
-        }
-
+        private int Index { get; set; }
 
         /// <summary>
-        ///     Befores the update
+        ///     Gets or sets the value of the speed
         /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
+        public double Speed { get; set; } = 1.0f;
 
         /// <summary>
-        ///     Updates this instance
+        ///     Gets or sets the value of the textures
         /// </summary>
-        public override void Update()
-        {
-        }
-
+        private List<Texture> Textures { get; }
 
         /// <summary>
-        ///     Afters the update
+        ///     Describes whether this instance has next
         /// </summary>
-        public override void AfterUpdate()
-        {
-        }
-
+        /// <returns>The bool</returns>
+        public bool HasNext() => Textures.Count > 0;
 
         /// <summary>
-        ///     Fixeds the update
+        ///     Nexts the texture
         /// </summary>
-        public override void FixedUpdate()
+        /// <exception cref="InvalidCastException"></exception>
+        /// <returns>The texture</returns>
+        public Texture NextTexture()
         {
+            Texture result = Textures[Index];
+
+            if (Index < Textures.Count - 1)
+            {
+                Index += 1;
+            }
+
+            if (Index == Textures.Count - 1)
+            {
+                Index = 0;
+            }
+
+            return result;
         }
 
         /// <summary>
-        ///     Dispatches the events
+        ///     Textures this instance
         /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-        }
-
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-        }
-
-
-        ~ParticlesSystem()
-        {
-            Console.WriteLine(@"Destroy");
-        }
+        /// <returns>The texture</returns>
+        public Texture Texture() => Textures[Index];*/
     }
 }

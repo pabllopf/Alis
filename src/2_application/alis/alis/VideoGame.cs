@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Builders;
 using Alis.Core;
 
@@ -48,6 +47,8 @@ namespace Alis
         /// <summary>
         ///     Destroy object.
         /// </summary>
-        ~VideoGame() => Console.WriteLine(@$"Destroy VideoGame {GetHashCode()}");
+        ~VideoGame()
+        {
+        }
     }
 }

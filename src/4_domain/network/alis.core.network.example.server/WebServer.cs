@@ -139,8 +139,8 @@ namespace Alis.Core.Network.Example.Server
                 {
                     string subProtocol = GetSubProtocol(context.WebSocketRequestedProtocols);
                     WebSocketServerOptions options =
-                        new WebSocketServerOptions(keepAliveInterval: TimeSpan.FromSeconds(30),
-                            subProtocol: subProtocol);
+                        new WebSocketServerOptions(TimeSpan.FromSeconds(30),
+                            subProtocol);
                     _logger.LogInformation(
                         "Http header has requested an upgrade to Web Socket protocol. Negotiating Web Socket handshake");
 

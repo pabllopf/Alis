@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   DirectionalLight.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+#region
+
+#endregion
+
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The directional light class
     /// </summary>
-    public class Class1
+    /// <seealso cref="Light" />
+    public class DirectionalLight : Light
     {
+        /*
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }*/
+        public override void Start()
+        {
+        }
+
+        public override void Update()
+        {
+        }
     }
 }

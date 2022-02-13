@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ParticlesSystem.cs
+//  File:   Camera.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,108 +27,74 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
+using Alis.Core.Entities;
 
-namespace Alis.Core.Systems
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The particles system class
+    ///     The camera class
     /// </summary>
-    /// <seealso cref="System" />
-    public class ParticlesSystem : System
+    /// <seealso cref="Component" />
+    public class Camera : Component
     {
+        /*
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ParticlesSystem" /> class
+        ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
-        [JsonConstructor]
-        public ParticlesSystem()
+        private Camera()
         {
+            PointOfView = new Vector2(0.0f, 0.0f);
+            Resolution = new Vector2(640, 480);
+            View = new View(new Vector2f(PointOfView.X, PointOfView.Y), new Vector2f(Resolution.X, Resolution.Y));
         }
 
+        /// <summary>
+        ///     Gets or sets the value of the point of view
+        /// </summary>
+        private Vector2 PointOfView { get; }
 
         /// <summary>
-        ///     Awakes this instance
+        ///     Gets or sets the value of the resolution
         /// </summary>
-        public override void Awake()
-        {
-        }
+        public Vector2 Resolution { get; set; }
 
+        /// <summary>
+        ///     Gets or sets the value of the view
+        /// </summary>
+        private View View { get; }
+
+        /// <summary>
+        ///     Gets the value of the instance
+        /// </summary>
+        public static Camera Instance { get; } = new Camera();
+
+        /// <summary>
+        ///     Creates the instance
+        /// </summary>
+        /// <returns>The camera</returns>
+        public static Camera CreateInstance() => Instance;
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
+            RenderManager.SetView(View);
         }
-
-
-        /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void Update()
         {
-        }
-
-
-        /// <summary>
-        ///     Afters the update
-        /// </summary>
-        public override void AfterUpdate()
+            View.Center = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+        }*/
+        public override void Start()
         {
         }
 
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
+        public override void Update()
         {
-        }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-        }
-
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-        }
-
-
-        ~ParticlesSystem()
-        {
-            Console.WriteLine(@"Destroy");
         }
     }
 }

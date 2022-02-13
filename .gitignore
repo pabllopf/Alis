@@ -2,6 +2,14 @@
 .vscode/
 .idea/
 
+/**/.vs/
+/**/.vscode/
+/**/.idea/
+
+/**/.vs/**
+/**/.vscode/**
+/**/.idea/**
+
 /**/**/[Bb]in/**
 /**/**/[Oo]bj/**
 /**/vs/**

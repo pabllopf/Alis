@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   PointLight.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+#region
+
+using System;
+
+#endregion
+
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The point light class
     /// </summary>
-    public class Class1
+    /// <seealso cref="Light" />
+    public class PointLight : Light
     {
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
+        {
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
+        {
+        }
     }
 }

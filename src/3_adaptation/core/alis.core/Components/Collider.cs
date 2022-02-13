@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   Collider.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+using Alis.Core.Entities;
+
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The collider class
     /// </summary>
-    public class Class1
+    /// <seealso cref="Component" />
+    public abstract class Collider : Component
     {
+        /*
+        /// <summary>
+        ///     Gets or sets the value of the is trigger
+        /// </summary>
+        [JsonPropertyName("_IsTrigger")]
+        public bool IsTrigger { get; set; }
+
+        /// <summary>
+        ///     Gets the drawable
+        /// </summary>
+        /// <returns>The drawable</returns>
+        public virtual Drawable GetDrawable() => throw new NotImplementedException();*/
     }
 }

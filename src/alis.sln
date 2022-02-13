@@ -29,6 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0_Config", "0_Config", "{C1
 		0_config\runtimes.props = 0_config\runtimes.props
 		0_config\test.props = 0_config\test.props
 		0_config\general.props = 0_config\general.props
+		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F580FFE4-D631-4BBA-A1E8-2518278A69D9}"

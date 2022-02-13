@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   AreaLight.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+using System;
+
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The area light class
     /// </summary>
-    public class Class1
+    /// <seealso cref="Light" />
+    public class AreaLight : Light
     {
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
+        {
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
+        {
+        }
     }
 }

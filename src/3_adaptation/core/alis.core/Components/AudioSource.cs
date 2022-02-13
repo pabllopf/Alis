@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ParticlesSystem.cs
+//  File:   AudioSource.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,108 +27,92 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
+using Alis.Core.Entities;
 
-namespace Alis.Core.Systems
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The particles system class
+    ///     The audio source class
     /// </summary>
-    /// <seealso cref="System" />
-    public class ParticlesSystem : System
+    /// <seealso cref="Component" />
+    public class AudioSource : Component
     {
+        /*
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ParticlesSystem" /> class
+        ///     The sound
         /// </summary>
-        [JsonConstructor]
-        public ParticlesSystem()
-        {
-        }
+        private Music? sound;
 
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AudioSource" /> class
+        /// </summary>
+        public AudioSource() => PathFile = "";
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AudioSource" /> class
+        /// </summary>
+        /// <param name="pathFile">The path file</param>
+        public AudioSource(string pathFile) => PathFile = pathFile;
+
+        /// <summary>
+        ///     Gets or sets the value of the path file
+        /// </summary>
+        public string PathFile { get; set; }
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
+            if (!string.IsNullOrEmpty(PathFile))
+            {
+                sound = new Music(PathFile)
+                {
+                    Loop = true,
+                    Volume = 100
+                };
+            }
         }
-
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
+            sound?.Play();
         }
-
-
-        /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
         }
-
-
-        /// <summary>
-        ///     Afters the update
-        /// </summary>
-        public override void AfterUpdate()
-        {
-        }
-
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-        }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
         public override void Stop()
         {
+            sound?.Pause();
         }
-
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
         public override void Exit()
         {
+            sound?.Stop();
+        }
+        */
+        public override void Start()
+        {
         }
 
-
-        ~ParticlesSystem()
+        public override void Update()
         {
-            Console.WriteLine(@"Destroy");
         }
     }
 }

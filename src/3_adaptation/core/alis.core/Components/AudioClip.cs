@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   AudioClip.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The audio clip class
     /// </summary>
-    public class Class1
+    public class AudioClip
     {
     }
 }

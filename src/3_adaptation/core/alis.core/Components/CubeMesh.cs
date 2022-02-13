@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Class1.cs
+//  File:   CubeMesh.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Input
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The class class
+    ///     The cube mesh class
     /// </summary>
-    public class Class1
+    public class CubeMesh
     {
     }
 }
