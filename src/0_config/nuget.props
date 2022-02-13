@@ -7,5 +7,6 @@
         <Copyright>GNU General Public License v3.0</Copyright>
         <PackageProjectUrl>www.alisengine.com/</PackageProjectUrl>
         <RepositoryType>public</RepositoryType>
+        <DocumentationFile>$(SolutionDir)/publish/$(AssemblyName).xml</DocumentationFile>
     </PropertyGroup>
 </Project>
