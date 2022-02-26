@@ -28,7 +28,7 @@ jobs:
       run: dir
       
     - name: Build Doc
-      run: .\\Document_Web.bat
+      run: .\\scripts\\Document_Web.bat
     
     - name: Update web
       run: |
