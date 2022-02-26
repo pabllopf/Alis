@@ -45,82 +45,16 @@ namespace Alis.Tools
         static Logger()
         {
             Level = LogLevel.Info;
-        }
-        
-        /// <summary>
-        /// Logs the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        public static void Log(string message)
-        {
-            System.Console.WriteLine(message);
-        }
-        
-        /// <summary>
-        /// Logs the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <param name="args">The args</param>
-        public static void Log(string message, params object[] args)
-        {
-            System.Console.WriteLine(message, args);
-        }
-        
-        /// <summary>
-        /// Errors the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        public static void Error(string message)
-        {
             
-        }
-        
-        /// <summary>
-        /// Errors the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <param name="args">The args</param>
-        public static void Error(string message, params object[] args)
-        {
-            System.Console.Error.WriteLine(message, args);
-        }
-        
-        /// <summary>
-        /// Warnings the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        public static void Warning(string message)
-        {
-            System.Console.Error.WriteLine(message);
-        }
-        
-        /// <summary>
-        /// Warnings the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <param name="args">The args</param>
-        public static void Warning(string message, params object[] args)
-        {
-            System.Console.Error.WriteLine(message, args);
-        }
-        
-        /// <summary>
-        /// Successes the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        public static void Success(string message)
-        {
-            System.Console.WriteLine(message);
-        }
-        
-        /// <summary>
-        /// Successes the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <param name="args">The args</param>
-        public static void Success(string message, params object[] args)
-        {
-            System.Console.WriteLine(message, args);
+            System.Console.WriteLine("SYSTEM STATS \n" +
+                                     $"- MachineName:    {System.Environment.MachineName} \n" +
+                                     $"- UserName:       {System.Environment.UserName} \n" +
+                                     $"- ProcessId:      {System.Environment.ProcessId} \n" +
+                                     $"- OSVersion:      {System.Environment.OSVersion} \n" +
+                                     $"- 64OS:           {System.Environment.Is64BitOperatingSystem} \n" +
+                                     $"- .NET CLR:       {System.Environment.Version} \n" +
+                                     $"- ProcessorCount: {System.Environment.ProcessorCount} \n" +
+                                     $"- WorkDirectory:  {System.Environment.CurrentDirectory} \n");
         }
         
         /// <summary>
@@ -129,9 +63,14 @@ namespace Alis.Tools
         /// <param name="message">The message</param>
         public static void Info(string message)
         {
-            if (Level is LogLevel.Info or LogLevel.Debug)
+            if (Level is LogLevel.Info)
             {
-                System.Console.WriteLine(message);
+                System.Console.BackgroundColor = System.ConsoleColor.Gray;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] INFO '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                System.Console.ResetColor();
             }
         }
         
@@ -142,26 +81,30 @@ namespace Alis.Tools
         /// <param name="args">The args</param>
         public static void Info(string message, params object[] args)
         {
-            System.Console.WriteLine(message, args);
+            if (Level is LogLevel.Info)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.Gray;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] INFO '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                System.Console.ResetColor();
+            }
         }
-        
         /// <summary>
-        /// Debugs the message
+        /// Infoes
         /// </summary>
-        /// <param name="message">The message</param>
-        public static void Debug(string message)
+        public static void Trace()
         {
-            System.Console.WriteLine(message);
-        }
-        
-        /// <summary>
-        /// Debugs the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <param name="args">The args</param>
-        public static void Debug(string message, params object[] args)
-        {
-            System.Console.WriteLine(message, args);
+            if (Level is LogLevel.Info)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] TRACE \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                System.Console.ResetColor();
+            }
         }
         
         /// <summary>
@@ -170,7 +113,15 @@ namespace Alis.Tools
         /// <param name="message">The message</param>
         public static void Trace(string message)
         {
-            System.Console.WriteLine(message);
+            if (Level is LogLevel.Info)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] TRACE '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                System.Console.ResetColor();
+            }
         }
         
         /// <summary>
@@ -180,7 +131,138 @@ namespace Alis.Tools
         /// <param name="args">The args</param>
         public static void Trace(string message, params object[] args)
         {
-            System.Console.WriteLine(message, args);
+            if (Level is LogLevel.Info)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] TRACE '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                System.Console.ResetColor();
+            }
+        }
+        
+        /// <summary>
+        /// Logs the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Log(string message)
+        {
+            if (Level is LogLevel.Info or LogLevel.Log)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkCyan;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] LOG '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                System.Console.ResetColor();
+            }
+        }
+        
+        /// <summary>
+        /// Logs the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="args">The args</param>
+        public static void Log(string message, params object[] args)
+        {
+            if (Level is LogLevel.Info or LogLevel.Log)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkCyan;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] LOG '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                System.Console.ResetColor();
+            }
+        }
+        
+        /// <summary>
+        /// Warnings the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Warning(string message)
+        {
+            if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkYellow;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] WARNING '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                System.Console.ResetColor();
+            }
+        }
+        
+        /// <summary>
+        /// Warnings the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="args">The args</param>
+        public static void Warning(string message, params object[] args)
+        {
+            if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkYellow;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] WARNING '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                System.Console.ResetColor();
+            }
+        }
+        
+        /// <summary>
+        /// Successes the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Success(string message)
+        {
+            if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkGreen;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] SUCCESS '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                System.Console.ResetColor();
+            }
+        }
+        
+        /// <summary>
+        /// Successes the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="args">The args</param>
+        public static void Success(string message, params object[] args)
+        {
+            if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkGreen;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.WriteLine($"[{System.DateTime.Now}] SUCCESS '{message}' \n" +
+                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                System.Console.ResetColor();
+            }
+        }
+        
+        
+        /// <summary>
+        /// Exceptions the exception
+        /// </summary>
+        /// <param name="exception">The exception</param>
+        public static void Exception(System.Exception exception)
+        {
+            if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal or LogLevel.Critical)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkRed;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.Error.WriteLine($"[{System.DateTime.Now}] EXCEPTION '{exception.Message}' \n" +
+                                               $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                               $"StackTrace:\n{System.Environment.StackTrace}"); 
+                System.Console.ResetColor();
+            }
         }
         
         /// <summary>
@@ -189,37 +271,15 @@ namespace Alis.Tools
         /// <param name="message">The message</param>
         public static void Exception(string message)
         {
-            System.Console.Error.WriteLine(message);
+            if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal or LogLevel.Critical)
+            {
+                System.Console.BackgroundColor = System.ConsoleColor.DarkRed;
+                System.Console.ForegroundColor = System.ConsoleColor.White;
+                System.Console.Error.WriteLine($"[{System.DateTime.Now}] EXCEPTION '{message}' \n" +
+                                               $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                                               $"StackTrace:\n{System.Environment.StackTrace}"); 
+                System.Console.ResetColor();
+            }
         }
-        
-        /// <summary>
-        /// Exceptions the message
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <param name="args">The args</param>
-        public static void Exception(string message, params object[] args)
-        {
-            System.Console.Error.WriteLine(message, args);
-        }
-        
-        /// <summary>
-        /// Exceptions the exception
-        /// </summary>
-        /// <param name="exception">The exception</param>
-        public static void Exception(System.Exception exception)
-        {
-            System.Console.Error.WriteLine(exception.Message);
-        }
-        
-        /// <summary>
-        /// Exceptions the exception
-        /// </summary>
-        /// <param name="exception">The exception</param>
-        /// <param name="args">The args</param>
-        public static void Exception(System.Exception exception, params object[] args)
-        {
-            System.Console.Error.WriteLine(exception.Message, args);
-        }
-        
     }
 }

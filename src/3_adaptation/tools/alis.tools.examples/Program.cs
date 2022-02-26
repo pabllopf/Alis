@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Tools.Example
 {
     /// <summary>
@@ -42,15 +40,11 @@ namespace Alis.Tools.Example
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine($"Args={args.Length.ToString()}");
-            
-            Logger.Log("Hello World!");
-            Logger.Error("error");
-            Logger.Warning("warning");
-            Logger.Info("info");
-            Logger.Debug("debug");
-            Logger.Exception(new AggregateException(), "exmale");
-            
+            Logger.Trace();
+            Logger.Info("Example info");
+            Logger.Log("example log");
+            Logger.Warning("example warning");
+            Logger.Exception("example exception");
         }
     }
 }
