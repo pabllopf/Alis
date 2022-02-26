@@ -35,10 +35,16 @@ namespace Alis.Core.Components
     /// <seealso cref="Collider" />
     public class BoxCollider2D : Collider
     {
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }

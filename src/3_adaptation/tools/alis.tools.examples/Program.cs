@@ -43,6 +43,14 @@ namespace Alis.Tools.Example
         public static void Main(string[] args)
         {
             Console.WriteLine($"Args={args.Length.ToString()}");
+            
+            Logger.Log("Hello World!");
+            Logger.Error("error");
+            Logger.Warning("warning");
+            Logger.Info("info");
+            Logger.Debug("debug");
+            Logger.Exception(new AggregateException(), "exmale");
+            
         }
     }
 }

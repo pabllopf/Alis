@@ -107,10 +107,16 @@ namespace Alis.Core.Components
             sound?.Stop();
         }
         */
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }

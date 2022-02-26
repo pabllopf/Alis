@@ -41,10 +41,16 @@ namespace Alis.Core.Components
     /// <seealso cref="Component" />
     public class Particle : Component
     {
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }

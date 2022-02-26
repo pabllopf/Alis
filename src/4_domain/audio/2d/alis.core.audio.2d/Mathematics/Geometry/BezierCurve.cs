@@ -40,6 +40,9 @@ namespace Alis.Core.Audio.Mathematics.Geometry
     [Serializable]
     public struct BezierCurve
     {
+        /// <summary>
+        /// The points
+        /// </summary>
         private readonly List<Vector2> _points;
 
         /// <summary>

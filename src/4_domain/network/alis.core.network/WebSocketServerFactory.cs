@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -44,7 +44,13 @@ namespace Alis.Core.Network
     /// </summary>
     public class WebSocketServerFactory : IWebSocketServerFactory
     {
+        /// <summary>
+        /// The buffer factory
+        /// </summary>
         private readonly Func<MemoryStream> _bufferFactory;
+        /// <summary>
+        /// The buffer pool
+        /// </summary>
         private readonly IBufferPool _bufferPool;
 
         /// <summary>
@@ -113,6 +119,12 @@ namespace Alis.Core.Network
                 secWebSocketExtensions, options.IncludeExceptionInCloseResponse, false, options.SubProtocol);
         }
 
+        /// <summary>
+        /// Checks the web socket version using the specified http header
+        /// </summary>
+        /// <param name="httpHeader">The http header</param>
+        /// <exception cref="WebSocketVersionNotSupportedException"></exception>
+        /// <exception cref="WebSocketVersionNotSupportedException">Cannot find "Sec-WebSocket-Version" in http header</exception>
         private static void CheckWebSocketVersion(string httpHeader)
         {
             Regex webSocketVersionRegex = new Regex("Sec-WebSocket-Version: (.*)", RegexOptions.IgnoreCase);
@@ -136,6 +148,15 @@ namespace Alis.Core.Network
             }
         }
 
+        /// <summary>
+        /// Performs the handshake using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="httpHeader">The http header</param>
+        /// <param name="subProtocol">The sub protocol</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="token">The token</param>
+        /// <exception cref="SecWebSocketKeyMissingException">Unable to read "Sec-WebSocket-Key" from http header</exception>
         private static async Task PerformHandshakeAsync(Guid guid, string httpHeader, string subProtocol, Stream stream,
             CancellationToken token)
         {

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   RenderSystem.cs
+//  File:   PhysicsManager.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,109 +27,45 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Numerics;
 using System.Text.Json.Serialization;
+using Alis.Core.Components;
+using Alis.Core.Systems.Physics2D;
 
-namespace Alis.Core.Systems
+namespace Alis.Core.Managers
 {
     /// <summary>
-    ///     The render system class
+    ///     The physics manager class
     /// </summary>
-    /// <seealso cref="System" />
-    public class RenderSystem : System
+    /// <seealso cref="PhysicsSystem" />
+    public class PhysicsManager 
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RenderSystem" /> class
+        ///     Initializes a new instance of the <see cref="PhysicsSystem" /> class
         /// </summary>
         [JsonConstructor]
-        public RenderSystem()
+        public PhysicsManager()
         {
         }
-
 
         /// <summary>
-        ///     Awakes this instance
+        ///     The world
         /// </summary>
-        public override void Awake()
-        {
-        }
-
+        public static World World { get; set; } = new World(new Vector2(0));
 
         /// <summary>
-        ///     Starts this instance
+        ///     Gets or sets the value of the colliders
         /// </summary>
-        public override void Start()
-        {
-        }
+        private static List<Collider> Colliders { get; } = new List<Collider>();
 
-
-        /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public override void Update()
-        {
-        }
-
-
-        /// <summary>
-        ///     Afters the update
-        /// </summary>
-        public override void AfterUpdate()
-        {
-        }
-
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-        }
-
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-        }
-
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-        }
-
+        
         /// <summary>
         ///     Destroy object.
         /// </summary>
-        ~RenderSystem()
+        ~PhysicsManager()
         {
+            
         }
     }
 }

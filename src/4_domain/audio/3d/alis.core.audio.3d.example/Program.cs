@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,8 +31,14 @@ using System;
 
 namespace Examples
 {
+    /// <summary>
+    /// The example class
+    /// </summary>
     public static class example
     {
+        /// <summary>
+        /// Main
+        /// </summary>
         public static void Main()
         {
             Console.WriteLine("Hello!");

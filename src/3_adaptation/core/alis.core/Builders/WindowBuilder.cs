@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   LogLevel.cs
+//  File:   WindowBuilder.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,46 +27,54 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Entities
+#region
+
+using System.Numerics;
+using Alis.Core.Entities;
+using Alis.Core.Settings.Configurations;
+using Alis.FluentApi;
+using Alis.FluentApi.Words;
+
+#endregion
+
+namespace Alis.Core.Builders
 {
     /// <summary>
-    ///     The log level enum
+    ///     The window builder class
     /// </summary>
-    public enum LogLevel
+    /// <seealso cref="IBuild{TOrigin}" />
+    /// <seealso cref="IResolution{TBuilder,TArgument1,TArgument2}" />
+    public class WindowBuilder :
+        IBuild<Window>,
+        IResolution<WindowBuilder, int, int>
     {
         /// <summary>
-        ///     The info log level
+        ///     Builds this instance
         /// </summary>
-        Info = 0,
+        /// <returns>The window</returns>
+        public Window Build() => Game.Setting.Window;
 
         /// <summary>
-        ///     The log log level
+        ///     Resolutions the x
         /// </summary>
-        Log = 1,
+        /// <param name="width">The </param>
+        /// <param name="height">The </param>
+        /// <returns>The window builder</returns>
+        public WindowBuilder Resolution(int width, int height)
+        {
+            Game.Setting.Window.Resolution = new Vector2(width, height);
+            return this;
+        }
 
         /// <summary>
-        ///     The debug log level
+        ///     Screens the mode using the specified screen mode
         /// </summary>
-        Debug = 2,
-
-        /// <summary>
-        ///     The normal log level
-        /// </summary>
-        Normal = 3,
-
-        /// <summary>
-        ///     The error log level
-        /// </summary>
-        Error = 4,
-
-        /// <summary>
-        ///     The critical log level
-        /// </summary>
-        Critical = 5,
-
-        /// <summary>
-        ///     The production log level
-        /// </summary>
-        Production = 6
+        /// <param name="screenMode">The screen mode</param>
+        /// <returns>The window builder</returns>
+        public WindowBuilder ScreenMode(ScreenMode screenMode)
+        {
+            Game.Setting.Window.ScreenMode = screenMode;
+            return this;
+        }
     }
 }

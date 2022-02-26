@@ -27,12 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System.Numerics;
 using System.Text.Json.Serialization;
-
-#endregion
 
 namespace Alis.Core.Entities
 {

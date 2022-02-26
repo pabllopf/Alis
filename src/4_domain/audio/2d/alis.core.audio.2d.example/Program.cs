@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -40,11 +40,29 @@ using Alis.Core.Audio.Extensions.Creative.EnumerateAll.Enums;
 
 namespace Examples
 {
+    /// <summary>
+    /// The playback class
+    /// </summary>
     public class Playback
     {
+        /// <summary>
+        /// The combine
+        /// </summary>
         private static readonly string filename = Path.Combine(Path.Combine("Assets"), "menu.wav");
 
         // Loads a wave/riff audio file.
+        /// <summary>
+        /// Loads the wave using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="channels">The channels</param>
+        /// <param name="bits">The bits</param>
+        /// <param name="rate">The rate</param>
+        /// <exception cref="NotSupportedException">Specified stream is not a wave file.</exception>
+        /// <exception cref="NotSupportedException">Specified stream is not a wave file.</exception>
+        /// <exception cref="NotSupportedException">Specified wave file is not supported. fmt header not found.</exception>
+        /// <exception cref="ArgumentNullException">stream</exception>
+        /// <returns>The byte array</returns>
         public static byte[] LoadWave(Stream stream, out int channels, out int bits, out int rate)
         {
             if (stream == null)
@@ -98,6 +116,13 @@ namespace Examples
             }
         }
 
+        /// <summary>
+        /// Gets the sound format using the specified channels
+        /// </summary>
+        /// <param name="channels">The channels</param>
+        /// <param name="bits">The bits</param>
+        /// <exception cref="NotSupportedException">The specified sound format is not supported.</exception>
+        /// <returns>The al format</returns>
         public static ALFormat GetSoundFormat(int channels, int bits)
         {
             switch (channels)
@@ -108,6 +133,9 @@ namespace Examples
             }
         }
 
+        /// <summary>
+        /// Main
+        /// </summary>
         public static void Main()
         {
             Console.WriteLine("Hello!");

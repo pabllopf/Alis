@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -50,7 +50,13 @@ namespace Alis.Core.Network
     /// </summary>
     public class WebSocketClientFactory : IWebSocketClientFactory
     {
+        /// <summary>
+        /// The buffer factory
+        /// </summary>
         private readonly Func<MemoryStream> _bufferFactory;
+        /// <summary>
+        /// The buffer pool
+        /// </summary>
         private readonly IBufferPool _bufferPool;
 
         /// <summary>
@@ -120,6 +126,18 @@ namespace Alis.Core.Network
                 options.SecWebSocketExtensions, options.IncludeExceptionInCloseResponse, token);
         }
 
+        /// <summary>
+        /// Connects the guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="responseStream">The response stream</param>
+        /// <param name="secWebSocketKey">The sec web socket key</param>
+        /// <param name="keepAliveInterval">The keep alive interval</param>
+        /// <param name="secWebSocketExtensions">The sec web socket extensions</param>
+        /// <param name="includeExceptionInCloseResponse">The include exception in close response</param>
+        /// <param name="token">The token</param>
+        /// <exception cref="WebSocketHandshakeFailedException">Handshake unexpected failure </exception>
+        /// <returns>A task containing the web socket</returns>
         private async Task<WebSocket> ConnectAsync(Guid guid, Stream responseStream, string secWebSocketKey,
             TimeSpan keepAliveInterval, string secWebSocketExtensions, bool includeExceptionInCloseResponse,
             CancellationToken token)
@@ -144,6 +162,11 @@ namespace Alis.Core.Network
                 secWebSocketExtensions, includeExceptionInCloseResponse, true, subProtocol);
         }
 
+        /// <summary>
+        /// Gets the sub protocol from header using the specified response
+        /// </summary>
+        /// <param name="response">The response</param>
+        /// <returns>The string</returns>
         private string GetSubProtocolFromHeader(string response)
         {
             // make sure we escape the accept string which could contain special regex characters
@@ -158,6 +181,13 @@ namespace Alis.Core.Network
             return null;
         }
 
+        /// <summary>
+        /// Throws the if invalid accept string using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="response">The response</param>
+        /// <param name="secWebSocketKey">The sec web socket key</param>
+        /// <exception cref="WebSocketHandshakeFailedException"></exception>
         private void ThrowIfInvalidAcceptString(Guid guid, string response, string secWebSocketKey)
         {
             // make sure we escape the accept string which could contain special regex characters
@@ -179,6 +209,12 @@ namespace Alis.Core.Network
             Events.Log.ClientHandshakeSuccess(guid);
         }
 
+        /// <summary>
+        /// Throws the if invalid response code using the specified response header
+        /// </summary>
+        /// <param name="responseHeader">The response header</param>
+        /// <exception cref="InvalidHttpResponseCodeException"></exception>
+        /// <exception cref="InvalidHttpResponseCodeException">null null </exception>
         private void ThrowIfInvalidResponseCode(string responseHeader)
         {
             string responseCode = HttpHelper.ReadHttpResponseCode(responseHeader);
@@ -285,6 +321,11 @@ namespace Alis.Core.Network
             return false;
         }
 
+        /// <summary>
+        /// Gets the additional headers using the specified additional headers
+        /// </summary>
+        /// <param name="additionalHeaders">The additional headers</param>
+        /// <returns>The string</returns>
         private static string GetAdditionalHeaders(Dictionary<string, string> additionalHeaders)
         {
             if (additionalHeaders == null || additionalHeaders.Count == 0)
@@ -301,6 +342,15 @@ namespace Alis.Core.Network
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Performs the handshake using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="uri">The uri</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="options">The options</param>
+        /// <param name="token">The token</param>
+        /// <returns>A task containing the web socket</returns>
         private async Task<WebSocket> PerformHandshake(Guid guid, Uri uri, Stream stream,
             WebSocketClientOptions options, CancellationToken token)
         {

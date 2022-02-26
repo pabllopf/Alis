@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -38,8 +38,14 @@ namespace Alis.Core.Network.Internal
     //   the first fragment would have an opcode of TextFrame and isLastFrame false,
     //   the second fragment would have an opcode of ContinuationFrame and isLastFrame false,
     //   the third fragment would have an opcode of ContinuationFrame and isLastFrame true.
+    /// <summary>
+    /// The web socket frame writer class
+    /// </summary>
     internal static class WebSocketFrameWriter
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebSocketFrameWriter"/> class
+        /// </summary>
         static WebSocketFrameWriter() => _random = new Random((int) DateTime.Now.Ticks);
 
         /// <summary>

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -38,17 +38,29 @@ namespace Alis.Core.Audio.ALC
     /// <summary>Alc = Audio Library Context.</summary>
     public class ALC : ALBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ALC"/> class
+        /// </summary>
         static ALC()
         {
             // We need to register the resolver for OpenAL before we can DllImport functions.
             RegisterOpenALResolver();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ALC"/> class
+        /// </summary>
         private ALC()
         {
         }
 
+        /// <summary>
+        /// The lib
+        /// </summary>
         internal const string Lib = AL.AL.Lib;
+        /// <summary>
+        /// The cdecl
+        /// </summary>
         internal const CallingConvention AlcCallingConv = CallingConvention.Cdecl;
 
         /// <summary>This function creates a context using a specified device.</summary>

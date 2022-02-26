@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -33,14 +33,40 @@ using System.Threading.Tasks;
 
 namespace Alis.Core.Network.Example.Client.Complex
 {
+    /// <summary>
+    /// The test runner class
+    /// </summary>
     internal class TestRunner
     {
+        /// <summary>
+        /// The max num bytes per message
+        /// </summary>
         private readonly int _maxNumBytesPerMessage;
+        /// <summary>
+        /// The min num bytes per message
+        /// </summary>
         private readonly int _minNumBytesPerMessage;
+        /// <summary>
+        /// The num items per thread
+        /// </summary>
         private readonly int _numItemsPerThread;
+        /// <summary>
+        /// The num threads
+        /// </summary>
         private readonly int _numThreads;
+        /// <summary>
+        /// The uri
+        /// </summary>
         private readonly Uri _uri;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestRunner"/> class
+        /// </summary>
+        /// <param name="uri">The uri</param>
+        /// <param name="numThreads">The num threads</param>
+        /// <param name="numItemsPerThread">The num items per thread</param>
+        /// <param name="minNumBytesPerMessage">The min num bytes per message</param>
+        /// <param name="maxNumBytesPerMessage">The max num bytes per message</param>
         public TestRunner(Uri uri, int numThreads, int numItemsPerThread, int minNumBytesPerMessage,
             int maxNumBytesPerMessage)
         {
@@ -51,6 +77,9 @@ namespace Alis.Core.Network.Example.Client.Complex
             _maxNumBytesPerMessage = maxNumBytesPerMessage;
         }
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public void Run()
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -58,6 +87,11 @@ namespace Alis.Core.Network.Example.Client.Complex
             Console.WriteLine($"Completed in {stopwatch.Elapsed.TotalMilliseconds:#,##0.00} ms");
         }
 
+        /// <summary>
+        /// Runs the index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <param name="state">The state</param>
         public void Run(int index, ParallelLoopState state)
         {
             StressTest test = new StressTest(index, _uri, _numItemsPerThread, _minNumBytesPerMessage,

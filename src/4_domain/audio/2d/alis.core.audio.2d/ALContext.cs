@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -32,18 +32,45 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Alis.Core.Audio
 {
+    /// <summary>
+    /// The al context
+    /// </summary>
     public struct ALContext : IEquatable<ALContext>
     {
+        /// <summary>
+        /// The zero
+        /// </summary>
         public static readonly ALContext Null = new ALContext(IntPtr.Zero);
 
+        /// <summary>
+        /// The handle
+        /// </summary>
         public IntPtr Handle;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ALContext"/> class
+        /// </summary>
+        /// <param name="handle">The handle</param>
         public ALContext(IntPtr handle) => Handle = handle;
 
+        /// <summary>
+        /// Describes whether this instance equals
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
         public override bool Equals(object obj) => obj is ALContext handle && Equals(handle);
 
+        /// <summary>
+        /// Describes whether this instance equals
+        /// </summary>
+        /// <param name="other">The other</param>
+        /// <returns>The bool</returns>
         public bool Equals([AllowNull] ALContext other) => Handle.Equals(other.Handle);
 
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>The int</returns>
         public override int GetHashCode() => HashCode.Combine(Handle);
 
         public static bool operator ==(ALContext left, ALContext right) => left.Equals(right);

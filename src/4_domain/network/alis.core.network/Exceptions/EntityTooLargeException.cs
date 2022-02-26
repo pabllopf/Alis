@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,9 +31,16 @@ using System;
 
 namespace Alis.Core.Network.Exceptions
 {
+    /// <summary>
+    /// The entity too large exception class
+    /// </summary>
+    /// <seealso cref="Exception"/>
     [Serializable]
     public class EntityTooLargeException : Exception
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityTooLargeException"/> class
+        /// </summary>
         public EntityTooLargeException()
         {
         }
@@ -45,6 +52,11 @@ namespace Alis.Core.Network.Exceptions
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityTooLargeException"/> class
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <param name="inner">The inner</param>
         public EntityTooLargeException(string message, Exception inner) : base(message, inner)
         {
         }

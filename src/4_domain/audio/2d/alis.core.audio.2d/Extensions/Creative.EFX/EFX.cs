@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -40,12 +40,18 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
     /// </summary>
     public class EFX : ALBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EFX"/> class
+        /// </summary>
         static EFX()
         {
             // We need to register the resolver for OpenAL before we can DllImport functions.
             RegisterOpenALResolver();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EFX"/> class
+        /// </summary>
         private EFX()
         {
         }
@@ -521,9 +527,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GenAuxiliaryEffectSlots(int count, int* slots) =>
             _GenAuxiliaryEffectSlotsPtr(count, slots);
 
+        /// <summary>
+        /// The gen auxiliary effect slots ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GenAuxiliaryEffectSlotsPtrDelegate(int count, int* slots);
 
+        /// <summary>
+        /// The gen auxiliary effect slots ptr delegate
+        /// </summary>
         private static readonly GenAuxiliaryEffectSlotsPtrDelegate _GenAuxiliaryEffectSlotsPtr =
             LoadDelegate<GenAuxiliaryEffectSlotsPtrDelegate>("alGenAuxiliaryEffectSlots");
 
@@ -537,9 +549,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GenAuxiliaryEffectSlots(int count, ref int slots) =>
             _GenAuxiliaryEffectSlotsRef(count, ref slots);
 
+        /// <summary>
+        /// The gen auxiliary effect slots ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenAuxiliaryEffectSlotsRefDelegate(int count, ref int slots);
 
+        /// <summary>
+        /// The gen auxiliary effect slots ref delegate
+        /// </summary>
         private static readonly GenAuxiliaryEffectSlotsRefDelegate _GenAuxiliaryEffectSlotsRef =
             LoadDelegate<GenAuxiliaryEffectSlotsRefDelegate>("alGenAuxiliaryEffectSlots");
 
@@ -553,9 +571,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GenAuxiliaryEffectSlots(int count, int[] slots) =>
             _GenAuxiliaryEffectSlotsArray(count, slots);
 
+        /// <summary>
+        /// The gen auxiliary effect slots array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenAuxiliaryEffectSlotsArrayDelegate(int count, int[] slots);
 
+        /// <summary>
+        /// The gen auxiliary effect slots array delegate
+        /// </summary>
         private static readonly GenAuxiliaryEffectSlotsArrayDelegate _GenAuxiliaryEffectSlotsArray =
             LoadDelegate<GenAuxiliaryEffectSlotsArrayDelegate>("alGenAuxiliaryEffectSlots");
 
@@ -569,9 +593,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void DeleteAuxiliaryEffectSlots(int count, int* slots) =>
             _DeleteAuxiliaryEffectSlotsPtr(count, slots);
 
+        /// <summary>
+        /// The delete auxiliary effect slots ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void DeleteAuxiliaryEffectSlotsPtrDelegate(int count, int* slots);
 
+        /// <summary>
+        /// The delete auxiliary effect slots ptr delegate
+        /// </summary>
         private static readonly DeleteAuxiliaryEffectSlotsPtrDelegate _DeleteAuxiliaryEffectSlotsPtr =
             LoadDelegate<DeleteAuxiliaryEffectSlotsPtrDelegate>("alDeleteAuxiliaryEffectSlots");
 
@@ -585,9 +615,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void DeleteAuxiliaryEffectSlots(int count, ref int slots) =>
             _DeleteAuxiliaryEffectSlotsRef(count, ref slots);
 
+        /// <summary>
+        /// The delete auxiliary effect slots ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteAuxiliaryEffectSlotsRefDelegate(int count, ref int slots);
 
+        /// <summary>
+        /// The delete auxiliary effect slots ref delegate
+        /// </summary>
         private static readonly DeleteAuxiliaryEffectSlotsRefDelegate _DeleteAuxiliaryEffectSlotsRef =
             LoadDelegate<DeleteAuxiliaryEffectSlotsRefDelegate>("alDeleteAuxiliaryEffectSlots");
 
@@ -601,9 +637,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void DeleteAuxiliaryEffectSlots(int count, int[] slots) =>
             _DeleteAuxiliaryEffectSlotsArray(count, slots);
 
+        /// <summary>
+        /// The delete auxiliary effect slots array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteAuxiliaryEffectSlotsArrayDelegate(int count, int[] slots);
 
+        /// <summary>
+        /// The delete auxiliary effect slots array delegate
+        /// </summary>
         private static readonly DeleteAuxiliaryEffectSlotsArrayDelegate _DeleteAuxiliaryEffectSlotsArray =
             LoadDelegate<DeleteAuxiliaryEffectSlotsArrayDelegate>("alDeleteAuxiliaryEffectSlots");
 
@@ -614,9 +656,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <returns>true if the handle is a slot handle; otherwise, false.</returns>
         public static bool IsAuxiliaryEffectSlot(int slot) => _IsAuxiliaryEffectSlot(slot);
 
+        /// <summary>
+        /// The is auxiliary effect slot delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate bool IsAuxiliaryEffectSlotDelegate(int slot);
 
+        /// <summary>
+        /// The is auxiliary effect slot delegate
+        /// </summary>
         private static readonly IsAuxiliaryEffectSlotDelegate _IsAuxiliaryEffectSlot =
             LoadDelegate<IsAuxiliaryEffectSlotDelegate>("alIsAuxiliaryEffectSlot");
 
@@ -629,9 +677,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void AuxiliaryEffectSlot(int slot, EffectSlotInteger param, int value) =>
             _AuxiliaryEffectSloti(slot, param, value);
 
+        /// <summary>
+        /// The auxiliary effect sloti delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void AuxiliaryEffectSlotiDelegate(int slot, EffectSlotInteger param, int value);
 
+        /// <summary>
+        /// The auxiliary effect sloti delegate
+        /// </summary>
         private static readonly AuxiliaryEffectSlotiDelegate _AuxiliaryEffectSloti =
             LoadDelegate<AuxiliaryEffectSlotiDelegate>("alAuxiliaryEffectSloti");
 
@@ -644,9 +698,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void AuxiliaryEffectSlot(int slot, EffectSlotFloat param, float value) =>
             _AuxiliaryEffectSlotf(slot, param, value);
 
+        /// <summary>
+        /// The auxiliary effect slotf delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void AuxiliaryEffectSlotfDelegate(int slot, EffectSlotFloat param, float value);
 
+        /// <summary>
+        /// The auxiliary effect slotf delegate
+        /// </summary>
         private static readonly AuxiliaryEffectSlotfDelegate _AuxiliaryEffectSlotf =
             LoadDelegate<AuxiliaryEffectSlotfDelegate>("alAuxiliaryEffectSlotf");
 
@@ -659,9 +719,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetAuxiliaryEffectSlot(int slot, EffectSlotInteger param, int* value) =>
             _GetAuxiliaryEffectSlotiPtr(slot, param, value);
 
+        /// <summary>
+        /// The get auxiliary effect sloti ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetAuxiliaryEffectSlotiPtrDelegate(int slot, EffectSlotInteger param, int* value);
 
+        /// <summary>
+        /// The get auxiliary effect sloti ptr delegate
+        /// </summary>
         private static readonly GetAuxiliaryEffectSlotiPtrDelegate _GetAuxiliaryEffectSlotiPtr =
             LoadDelegate<GetAuxiliaryEffectSlotiPtrDelegate>("alGetAuxiliaryEffectSloti");
 
@@ -674,9 +740,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetAuxiliaryEffectSlot(int slot, EffectSlotInteger param, out int value) =>
             _GetAuxiliaryEffectSlotiRef(slot, param, out value);
 
+        /// <summary>
+        /// The get auxiliary effect sloti ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetAuxiliaryEffectSlotiRefDelegate(int slot, EffectSlotInteger param, out int value);
 
+        /// <summary>
+        /// The get auxiliary effect sloti ref delegate
+        /// </summary>
         private static readonly GetAuxiliaryEffectSlotiRefDelegate _GetAuxiliaryEffectSlotiRef =
             LoadDelegate<GetAuxiliaryEffectSlotiRefDelegate>("alGetAuxiliaryEffectSloti");
 
@@ -689,9 +761,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetAuxiliaryEffectSlot(int slot, EffectSlotFloat param, float* value) =>
             _GetAuxiliaryEffectSlotfPtr(slot, param, value);
 
+        /// <summary>
+        /// The get auxiliary effect slotf ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetAuxiliaryEffectSlotfPtrDelegate(int slot, EffectSlotFloat param, float* value);
 
+        /// <summary>
+        /// The get auxiliary effect slotf ptr delegate
+        /// </summary>
         private static readonly GetAuxiliaryEffectSlotfPtrDelegate _GetAuxiliaryEffectSlotfPtr =
             LoadDelegate<GetAuxiliaryEffectSlotfPtrDelegate>("alGetAuxiliaryEffectSlotf");
 
@@ -704,9 +782,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetAuxiliaryEffectSlot(int slot, EffectSlotFloat param, out float value) =>
             _GetAuxiliaryEffectSlotfRef(slot, param, out value);
 
+        /// <summary>
+        /// The get auxiliary effect slotf ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetAuxiliaryEffectSlotfRefDelegate(int slot, EffectSlotFloat param, out float value);
 
+        /// <summary>
+        /// The get auxiliary effect slotf ref delegate
+        /// </summary>
         private static readonly GetAuxiliaryEffectSlotfRefDelegate _GetAuxiliaryEffectSlotfRef =
             LoadDelegate<GetAuxiliaryEffectSlotfRefDelegate>("alGetAuxiliaryEffectSlotf");
 
@@ -719,9 +803,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsEffect(int)" />
         public static unsafe void GenEffects(int count, int* effects) => _GenEffectsPtr(count, effects);
 
+        /// <summary>
+        /// The gen effects ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GenEffectsPtrDelegate(int count, int* effects);
 
+        /// <summary>
+        /// The gen effects ptr delegate
+        /// </summary>
         private static readonly GenEffectsPtrDelegate _GenEffectsPtr =
             LoadDelegate<GenEffectsPtrDelegate>("alGenEffects");
 
@@ -734,9 +824,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsEffect(int)" />
         public static void GenEffects(int count, ref int effects) => _GenEffectsRef(count, ref effects);
 
+        /// <summary>
+        /// The gen effects ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenEffectsRefDelegate(int count, ref int effects);
 
+        /// <summary>
+        /// The gen effects ref delegate
+        /// </summary>
         private static readonly GenEffectsRefDelegate _GenEffectsRef =
             LoadDelegate<GenEffectsRefDelegate>("alGenEffects");
 
@@ -749,9 +845,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsEffect(int)" />
         public static void GenEffects(int count, int[] effects) => _GenEffectsArray(count, effects);
 
+        /// <summary>
+        /// The gen effects array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenEffectsArrayDelegate(int count, int[] effects);
 
+        /// <summary>
+        /// The gen effects array delegate
+        /// </summary>
         private static readonly GenEffectsArrayDelegate _GenEffectsArray =
             LoadDelegate<GenEffectsArrayDelegate>("alGenEffects");
 
@@ -764,9 +866,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsEffect(int)" />
         public static unsafe void DeleteEffects(int count, int* effects) => _DeleteEffectsPtr(count, effects);
 
+        /// <summary>
+        /// The delete effects ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void DeleteEffectsPtrDelegate(int count, int* effects);
 
+        /// <summary>
+        /// The delete effects ptr delegate
+        /// </summary>
         private static readonly DeleteEffectsPtrDelegate _DeleteEffectsPtr =
             LoadDelegate<DeleteEffectsPtrDelegate>("alDeleteEffects");
 
@@ -779,9 +887,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsEffect(int)" />
         public static void DeleteEffects(int count, ref int effects) => _DeleteEffectsRef(count, ref effects);
 
+        /// <summary>
+        /// The delete effects ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteEffectsRefDelegate(int count, ref int effects);
 
+        /// <summary>
+        /// The delete effects ref delegate
+        /// </summary>
         private static readonly DeleteEffectsRefDelegate _DeleteEffectsRef =
             LoadDelegate<DeleteEffectsRefDelegate>("alDeleteEffects");
 
@@ -794,9 +908,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsEffect(int)" />
         public static void DeleteEffects(int count, int[] effects) => _DeleteEffectsArray(count, effects);
 
+        /// <summary>
+        /// The delete effects array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteEffectsArrayDelegate(int count, int[] effects);
 
+        /// <summary>
+        /// The delete effects array delegate
+        /// </summary>
         private static readonly DeleteEffectsArrayDelegate _DeleteEffectsArray =
             LoadDelegate<DeleteEffectsArrayDelegate>("alDeleteEffects");
 
@@ -809,9 +929,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="DeleteEffects(int[])" />
         public static bool IsEffect(int effect) => _IsEffect(effect);
 
+        /// <summary>
+        /// The is effect delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate bool IsEffectDelegate(int effect);
 
+        /// <summary>
+        /// The is effect delegate
+        /// </summary>
         private static readonly IsEffectDelegate _IsEffect = LoadDelegate<IsEffectDelegate>("alIsEffect");
 
         /// <summary>
@@ -822,9 +948,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <param name="value">The value to set the property to.</param>
         public static void Effect(int effect, EffectInteger param, int value) => _Effecti(effect, param, value);
 
+        /// <summary>
+        /// The effecti delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void EffectiDelegate(int effect, EffectInteger param, int value);
 
+        /// <summary>
+        /// The effecti delegate
+        /// </summary>
         private static readonly EffectiDelegate _Effecti = LoadDelegate<EffectiDelegate>("alEffecti");
 
         /// <summary>
@@ -835,9 +967,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <param name="value">The value to set the property to.</param>
         public static void Effect(int effect, EffectFloat param, float value) => _Effectf(effect, param, value);
 
+        /// <summary>
+        /// The effectf delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void EffectfDelegate(int effect, EffectFloat param, float value);
 
+        /// <summary>
+        /// The effectf delegate
+        /// </summary>
         private static readonly EffectfDelegate _Effectf = LoadDelegate<EffectfDelegate>("alEffectf");
 
         /// <summary>
@@ -849,9 +987,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void Effect(int effect, EffectVector3 param, float* value) =>
             _EffectfvPtr(effect, param, value);
 
+        /// <summary>
+        /// The effectfv ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void EffectfvPtrDelegate(int effect, EffectVector3 param, float* value);
 
+        /// <summary>
+        /// The effectfv ptr delegate
+        /// </summary>
         private static readonly EffectfvPtrDelegate _EffectfvPtr = LoadDelegate<EffectfvPtrDelegate>("alEffectfv");
 
         /// <summary>
@@ -863,9 +1007,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void Effect(int effect, EffectVector3 param, ref float value) =>
             _EffectfvRef(effect, param, ref value);
 
+        /// <summary>
+        /// The effectfv ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void EffectfvRefDelegate(int effect, EffectVector3 param, ref float value);
 
+        /// <summary>
+        /// The effectfv ref delegate
+        /// </summary>
         private static readonly EffectfvRefDelegate _EffectfvRef = LoadDelegate<EffectfvRefDelegate>("alEffectfv");
 
         /// <summary>
@@ -877,9 +1027,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void Effect(int effect, EffectVector3 param, float[] value) =>
             _EffectfvArray(effect, param, value);
 
+        /// <summary>
+        /// The effectfv array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void EffectfvArrayDelegate(int effect, EffectVector3 param, float[] value);
 
+        /// <summary>
+        /// The effectfv array delegate
+        /// </summary>
         private static readonly EffectfvArrayDelegate
             _EffectfvArray = LoadDelegate<EffectfvArrayDelegate>("alEffectfv");
 
@@ -892,9 +1048,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetEffect(int effect, EffectInteger param, int* value) =>
             _GetEffectiPtr(effect, param, value);
 
+        /// <summary>
+        /// The get effecti ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetEffectiPtrDelegate(int effect, EffectInteger param, int* value);
 
+        /// <summary>
+        /// The get effecti ptr delegate
+        /// </summary>
         private static readonly GetEffectiPtrDelegate _GetEffectiPtr =
             LoadDelegate<GetEffectiPtrDelegate>("alGetEffecti");
 
@@ -907,9 +1069,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetEffect(int effect, EffectInteger param, out int value) =>
             _GetEffectiRef(effect, param, out value);
 
+        /// <summary>
+        /// The get effecti ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetEffectiRefDelegate(int effect, EffectInteger param, out int value);
 
+        /// <summary>
+        /// The get effecti ref delegate
+        /// </summary>
         private static readonly GetEffectiRefDelegate _GetEffectiRef =
             LoadDelegate<GetEffectiRefDelegate>("alGetEffecti");
 
@@ -922,9 +1090,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetEffect(int effect, EffectFloat param, float* value) =>
             _GetEffectfPtr(effect, param, value);
 
+        /// <summary>
+        /// The get effectf ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetEffectfPtrDelegate(int effect, EffectFloat param, float* value);
 
+        /// <summary>
+        /// The get effectf ptr delegate
+        /// </summary>
         private static readonly GetEffectfPtrDelegate _GetEffectfPtr =
             LoadDelegate<GetEffectfPtrDelegate>("alGetEffectf");
 
@@ -937,9 +1111,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetEffect(int effect, EffectFloat param, out float value) =>
             _GetEffectfRef(effect, param, out value);
 
+        /// <summary>
+        /// The get effectf ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetEffectfRefDelegate(int effect, EffectFloat param, out float value);
 
+        /// <summary>
+        /// The get effectf ref delegate
+        /// </summary>
         private static readonly GetEffectfRefDelegate _GetEffectfRef =
             LoadDelegate<GetEffectfRefDelegate>("alGetEffectf");
 
@@ -952,9 +1132,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetEffect(int effect, EffectVector3 param, float* value) =>
             _GetEffectfvPtr(effect, param, value);
 
+        /// <summary>
+        /// The get effectfv ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetEffectfvPtrDelegate(int effect, EffectVector3 param, float* value);
 
+        /// <summary>
+        /// The get effectfv ptr delegate
+        /// </summary>
         private static readonly GetEffectfvPtrDelegate _GetEffectfvPtr =
             LoadDelegate<GetEffectfvPtrDelegate>("alGetEffectfv");
 
@@ -967,9 +1153,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetEffect(int effect, EffectVector3 param, out float value) =>
             _GetEffectfvRef(effect, param, out value);
 
+        /// <summary>
+        /// The get effectfv ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetEffectfvRefDelegate(int effect, EffectVector3 param, out float value);
 
+        /// <summary>
+        /// The get effectfv ref delegate
+        /// </summary>
         private static readonly GetEffectfvRefDelegate _GetEffectfvRef =
             LoadDelegate<GetEffectfvRefDelegate>("alGetEffectfv");
 
@@ -982,9 +1174,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsFilter(int)" />
         public static unsafe void GenFilters(int count, int* filters) => _GenFiltersPtr(count, filters);
 
+        /// <summary>
+        /// The gen filters ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GenFiltersPtrDelegate(int count, int* filters);
 
+        /// <summary>
+        /// The gen filters ptr delegate
+        /// </summary>
         private static readonly GenFiltersPtrDelegate _GenFiltersPtr =
             LoadDelegate<GenFiltersPtrDelegate>("alGenFilters");
 
@@ -997,9 +1195,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsFilter(int)" />
         public static void GenFilters(int count, ref int filters) => _GenFiltersRef(count, ref filters);
 
+        /// <summary>
+        /// The gen filters ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenFiltersRefDelegate(int count, ref int filters);
 
+        /// <summary>
+        /// The gen filters ref delegate
+        /// </summary>
         private static readonly GenFiltersRefDelegate _GenFiltersRef =
             LoadDelegate<GenFiltersRefDelegate>("alGenFilters");
 
@@ -1012,9 +1216,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsFilter(int)" />
         public static void GenFilters(int count, int[] filters) => _GenFiltersArray(count, filters);
 
+        /// <summary>
+        /// The gen filters array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GenFiltersArrayDelegate(int count, int[] filters);
 
+        /// <summary>
+        /// The gen filters array delegate
+        /// </summary>
         private static readonly GenFiltersArrayDelegate _GenFiltersArray =
             LoadDelegate<GenFiltersArrayDelegate>("alGenFilters");
 
@@ -1027,9 +1237,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsFilter(int)" />
         public static unsafe void DeleteFilters(int count, int* filters) => _DeleteFiltersPtr(count, filters);
 
+        /// <summary>
+        /// The delete filters ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void DeleteFiltersPtrDelegate(int count, int* filters);
 
+        /// <summary>
+        /// The delete filters ptr delegate
+        /// </summary>
         private static readonly DeleteFiltersPtrDelegate _DeleteFiltersPtr =
             LoadDelegate<DeleteFiltersPtrDelegate>("alDeleteFilters");
 
@@ -1042,9 +1258,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsFilter(int)" />
         public static void DeleteFilters(int count, ref int filters) => _DeleteFiltersRef(count, ref filters);
 
+        /// <summary>
+        /// The delete filters ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteFiltersRefDelegate(int count, ref int filters);
 
+        /// <summary>
+        /// The delete filters ref delegate
+        /// </summary>
         private static readonly DeleteFiltersRefDelegate _DeleteFiltersRef =
             LoadDelegate<DeleteFiltersRefDelegate>("alDeleteFilters");
 
@@ -1057,9 +1279,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="IsFilter(int)" />
         public static void DeleteFilters(int count, int[] filters) => _DeleteFiltersArray(count, filters);
 
+        /// <summary>
+        /// The delete filters array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void DeleteFiltersArrayDelegate(int count, int[] filters);
 
+        /// <summary>
+        /// The delete filters array delegate
+        /// </summary>
         private static readonly DeleteFiltersArrayDelegate _DeleteFiltersArray =
             LoadDelegate<DeleteFiltersArrayDelegate>("alDeleteFilters");
 
@@ -1072,9 +1300,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <seealso cref="DeleteFilters(int[])" />
         public static bool IsFilter(int filter) => _IsFilter(filter);
 
+        /// <summary>
+        /// The is filter delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate bool IsFilterDelegate(int filter);
 
+        /// <summary>
+        /// The is filter delegate
+        /// </summary>
         private static readonly IsFilterDelegate _IsFilter = LoadDelegate<IsFilterDelegate>("alIsFilter");
 
         /// <summary>
@@ -1085,9 +1319,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <param name="value">The value to set the property to.</param>
         public static void Filter(int filter, FilterInteger param, int value) => _Filteri(filter, param, value);
 
+        /// <summary>
+        /// The filteri delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void FilteriDelegate(int filter, FilterInteger param, int value);
 
+        /// <summary>
+        /// The filteri delegate
+        /// </summary>
         private static readonly FilteriDelegate _Filteri = LoadDelegate<FilteriDelegate>("alFilteri");
 
         /// <summary>
@@ -1098,9 +1338,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <param name="value">The value to set the property to.</param>
         public static void Filter(int filter, FilterFloat param, float value) => _Filterf(filter, param, value);
 
+        /// <summary>
+        /// The filterf delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void FilterfDelegate(int filter, FilterFloat param, float value);
 
+        /// <summary>
+        /// The filterf delegate
+        /// </summary>
         private static readonly FilterfDelegate _Filterf = LoadDelegate<FilterfDelegate>("alFilterf");
 
         /// <summary>
@@ -1112,9 +1358,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetFilter(int filter, FilterInteger param, int* value) =>
             _GetFilteriPtr(filter, param, value);
 
+        /// <summary>
+        /// The get filteri ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetFilteriPtrDelegate(int filter, FilterInteger param, int* value);
 
+        /// <summary>
+        /// The get filteri ptr delegate
+        /// </summary>
         private static readonly GetFilteriPtrDelegate _GetFilteriPtr =
             LoadDelegate<GetFilteriPtrDelegate>("alGetFilteri");
 
@@ -1127,9 +1379,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetFilter(int filter, FilterInteger param, out int value) =>
             _GetFilteriRef(filter, param, out value);
 
+        /// <summary>
+        /// The get filteri ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetFilteriRefDelegate(int filter, FilterInteger param, out int value);
 
+        /// <summary>
+        /// The get filteri ref delegate
+        /// </summary>
         private static readonly GetFilteriRefDelegate _GetFilteriRef =
             LoadDelegate<GetFilteriRefDelegate>("alGetFilteri");
 
@@ -1142,9 +1400,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetFilter(int filter, FilterFloat param, float* value) =>
             _GetFilterfPtr(filter, param, value);
 
+        /// <summary>
+        /// The get filterf ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetFilterfPtrDelegate(int filter, FilterFloat param, float* value);
 
+        /// <summary>
+        /// The get filterf ptr delegate
+        /// </summary>
         private static readonly GetFilterfPtrDelegate _GetFilterfPtr =
             LoadDelegate<GetFilterfPtrDelegate>("alGetFilterf");
 
@@ -1157,9 +1421,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetFilter(int filter, FilterFloat param, out float value) =>
             _GetFilterfRef(filter, param, out value);
 
+        /// <summary>
+        /// The get filterf ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetFilterfRefDelegate(int filter, FilterFloat param, out float value);
 
+        /// <summary>
+        /// The get filterf ref delegate
+        /// </summary>
         private static readonly GetFilterfRefDelegate _GetFilterfRef =
             LoadDelegate<GetFilterfRefDelegate>("alGetFilterf");
 
@@ -1171,9 +1441,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <param name="value">The value to set the property to.</param>
         public static void Source(int source, EFXSourceInteger param, int value) => _Sourcei(source, param, value);
 
+        /// <summary>
+        /// The sourcei delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourceiDelegate(int source, EFXSourceInteger param, int value);
 
+        /// <summary>
+        /// The sourcei delegate
+        /// </summary>
         private static readonly SourceiDelegate _Sourcei = LoadDelegate<SourceiDelegate>("alSourcei");
 
         /// <summary>
@@ -1184,9 +1460,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <param name="value">The value to set the property to.</param>
         public static void Source(int source, EFXSourceFloat param, float value) => _Source(source, param, value);
 
+        /// <summary>
+        /// The source delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourceDelegate(int source, EFXSourceFloat param, float value);
 
+        /// <summary>
+        /// The source delegate
+        /// </summary>
         private static readonly SourceDelegate _Source = LoadDelegate<SourceDelegate>("alSourcei");
 
         /// <summary>
@@ -1197,9 +1479,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         /// <param name="value">The value to set the property to.</param>
         public static void Source(int source, EFXSourceBoolean param, bool value) => _Sourceb(source, param, value);
 
+        /// <summary>
+        /// The sourceb delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourcebDelegate(int source, EFXSourceBoolean param, bool value);
 
+        /// <summary>
+        /// The sourceb delegate
+        /// </summary>
         private static readonly SourcebDelegate _Sourceb = LoadDelegate<SourcebDelegate>("alSourcei");
 
         /// <summary>
@@ -1211,9 +1499,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void Source(int source, EFXSourceInteger3 param, int* value) =>
             _SourceivPtr(source, param, value);
 
+        /// <summary>
+        /// The sourceiv ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void SourceivPtrDelegate(int source, EFXSourceInteger3 param, int* value);
 
+        /// <summary>
+        /// The sourceiv ptr delegate
+        /// </summary>
         private static readonly SourceivPtrDelegate _SourceivPtr = LoadDelegate<SourceivPtrDelegate>("alSourceiv");
 
         /// <summary>
@@ -1225,9 +1519,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void Source(int source, EFXSourceInteger3 param, ref int value) =>
             _SourceivRef(source, param, ref value);
 
+        /// <summary>
+        /// The sourceiv ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourceivRefDelegate(int source, EFXSourceInteger3 param, ref int value);
 
+        /// <summary>
+        /// The sourceiv ref delegate
+        /// </summary>
         private static readonly SourceivRefDelegate _SourceivRef = LoadDelegate<SourceivRefDelegate>("alSourceiv");
 
         /// <summary>
@@ -1239,9 +1539,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void Source(int source, EFXSourceInteger3 param, int[] value) =>
             _SourceivArray(source, param, value);
 
+        /// <summary>
+        /// The sourceiv array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void SourceivArrayDelegate(int source, EFXSourceInteger3 param, int[] value);
 
+        /// <summary>
+        /// The sourceiv array delegate
+        /// </summary>
         private static readonly SourceivArrayDelegate
             _SourceivArray = LoadDelegate<SourceivArrayDelegate>("alSourceiv");
 
@@ -1256,9 +1562,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void Source(int source, EFXSourceInteger3 param, int value1, int value2, int value3) =>
             _Source3i(source, param, value1, value2, value3);
 
+        /// <summary>
+        /// The source 3i delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void Source3iDelegate(int source, EFXSourceInteger3 param, int value1, int value2, int value3);
 
+        /// <summary>
+        /// The source 3i delegate
+        /// </summary>
         private static readonly Source3iDelegate _Source3i = LoadDelegate<Source3iDelegate>("alSource3i");
 
         /// <summary>
@@ -1270,9 +1582,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetSource(int source, EFXSourceInteger param, int* value) =>
             _GetSourceiPtr(source, param, value);
 
+        /// <summary>
+        /// The get sourcei ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourceiPtrDelegate(int source, EFXSourceInteger param, int* value);
 
+        /// <summary>
+        /// The get sourcei ptr delegate
+        /// </summary>
         private static readonly GetSourceiPtrDelegate _GetSourceiPtr =
             LoadDelegate<GetSourceiPtrDelegate>("alGetSourcei");
 
@@ -1285,9 +1603,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetSource(int source, EFXSourceInteger param, out int value) =>
             _GetSourceiRef(source, param, out value);
 
+        /// <summary>
+        /// The get sourcei ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourceiRefDelegate(int source, EFXSourceInteger param, out int value);
 
+        /// <summary>
+        /// The get sourcei ref delegate
+        /// </summary>
         private static readonly GetSourceiRefDelegate _GetSourceiRef =
             LoadDelegate<GetSourceiRefDelegate>("alGetSourcei");
 
@@ -1300,9 +1624,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetSource(int source, EFXSourceFloat param, float* value) =>
             _GetSourcefPtr(source, param, value);
 
+        /// <summary>
+        /// The get sourcef ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourcefPtrDelegate(int source, EFXSourceFloat param, float* value);
 
+        /// <summary>
+        /// The get sourcef ptr delegate
+        /// </summary>
         private static readonly GetSourcefPtrDelegate _GetSourcefPtr =
             LoadDelegate<GetSourcefPtrDelegate>("alGetSourcef");
 
@@ -1315,9 +1645,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetSource(int source, EFXSourceFloat param, out float value) =>
             _GetSourcefRef(source, param, out value);
 
+        /// <summary>
+        /// The get sourcef ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourcefRefDelegate(int source, EFXSourceFloat param, out float value);
 
+        /// <summary>
+        /// The get sourcef ref delegate
+        /// </summary>
         private static readonly GetSourcefRefDelegate _GetSourcefRef =
             LoadDelegate<GetSourcefRefDelegate>("alGetSourcef");
 
@@ -1330,9 +1666,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetSource(int source, EFXSourceBoolean param, bool* value) =>
             _GetSourcebPtr(source, param, value);
 
+        /// <summary>
+        /// The get sourceb ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourcebPtrDelegate(int source, EFXSourceBoolean param, bool* value);
 
+        /// <summary>
+        /// The get sourceb ptr delegate
+        /// </summary>
         private static readonly GetSourcebPtrDelegate _GetSourcebPtr =
             LoadDelegate<GetSourcebPtrDelegate>("alGetSourcei");
 
@@ -1345,9 +1687,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetSource(int source, EFXSourceBoolean param, out bool value) =>
             _GetSourcebRef(source, param, out value);
 
+        /// <summary>
+        /// The get sourceb ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourcebRefDelegate(int source, EFXSourceBoolean param, out bool value);
 
+        /// <summary>
+        /// The get sourceb ref delegate
+        /// </summary>
         private static readonly GetSourcebRefDelegate _GetSourcebRef =
             LoadDelegate<GetSourcebRefDelegate>("alGetSourcei");
 
@@ -1360,9 +1708,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetSource(int source, EFXSourceInteger3 param, int* value) =>
             _GetSourceivPtr(source, param, value);
 
+        /// <summary>
+        /// The get sourceiv ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourceivPtrDelegate(int source, EFXSourceInteger3 param, int* value);
 
+        /// <summary>
+        /// The get sourceiv ptr delegate
+        /// </summary>
         private static readonly GetSourceivPtrDelegate _GetSourceivPtr =
             LoadDelegate<GetSourceivPtrDelegate>("alGetSourceiv");
 
@@ -1375,9 +1729,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetSource(int source, EFXSourceInteger3 param, ref int value) =>
             _GetSourceivRef(source, param, ref value);
 
+        /// <summary>
+        /// The get sourceiv ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourceivRefDelegate(int source, EFXSourceInteger3 param, ref int value);
 
+        /// <summary>
+        /// The get sourceiv ref delegate
+        /// </summary>
         private static readonly GetSourceivRefDelegate _GetSourceivRef =
             LoadDelegate<GetSourceivRefDelegate>("alGetSourceiv");
 
@@ -1390,9 +1750,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetSource(int source, EFXSourceInteger3 param, int[] value) =>
             _GetSourceivArray(source, param, value);
 
+        /// <summary>
+        /// The get sourceiv array delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourceivArrayDelegate(int source, EFXSourceInteger3 param, int[] value);
 
+        /// <summary>
+        /// The get sourceiv array delegate
+        /// </summary>
         private static readonly GetSourceivArrayDelegate _GetSourceivArray =
             LoadDelegate<GetSourceivArrayDelegate>("alGetSourceiv");
 
@@ -1408,10 +1774,16 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
             GetSource(int source, EFXSourceInteger3 param, int* value1, int* value2, int* value3) =>
             _GetSource3iPtr(source, param, value1, value2, value3);
 
+        /// <summary>
+        /// The get source 3i ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSource3iPtrDelegate(int source, EFXSourceInteger3 param, int* value1,
             int* value2, int* value3);
 
+        /// <summary>
+        /// The get source 3i ptr delegate
+        /// </summary>
         private static readonly GetSource3iPtrDelegate _GetSource3iPtr =
             LoadDelegate<GetSource3iPtrDelegate>("alGetSource3i");
 
@@ -1426,10 +1798,16 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetSource(int source, EFXSourceInteger3 param, out int value1, out int value2,
             out int value3) => _GetSource3iRef(source, param, out value1, out value2, out value3);
 
+        /// <summary>
+        /// The get source 3i ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSource3iRefDelegate(int source, EFXSourceInteger3 param, out int value1,
             out int value2, out int value3);
 
+        /// <summary>
+        /// The get source 3i ref delegate
+        /// </summary>
         private static readonly GetSource3iRefDelegate _GetSource3iRef =
             LoadDelegate<GetSource3iRefDelegate>("alGetSource3i");
 
@@ -1442,9 +1820,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void Listener(int listener, EFXListenerFloat param, float value) =>
             _Listenerf(listener, param, value);
 
+        /// <summary>
+        /// The listenerf delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void ListenerfDelegate(int listener, EFXListenerFloat param, float value);
 
+        /// <summary>
+        /// The listenerf delegate
+        /// </summary>
         private static readonly ListenerfDelegate _Listenerf = LoadDelegate<ListenerfDelegate>("alListenerf");
 
         /// <summary>
@@ -1456,9 +1840,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static unsafe void GetListener(int listener, EFXListenerFloat param, float* value) =>
             _GetListenerfPtr(listener, param, value);
 
+        /// <summary>
+        /// The get listenerf ptr delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetListenerfPtrDelegate(int listener, EFXListenerFloat param, float* value);
 
+        /// <summary>
+        /// The get listenerf ptr delegate
+        /// </summary>
         private static readonly GetListenerfPtrDelegate _GetListenerfPtr =
             LoadDelegate<GetListenerfPtrDelegate>("alGetListenerf");
 
@@ -1471,9 +1861,15 @@ namespace Alis.Core.Audio.Extensions.Creative.EFX
         public static void GetListener(int listener, EFXListenerFloat param, out float value) =>
             _GetListenerfRef(listener, param, out value);
 
+        /// <summary>
+        /// The get listenerf ref delegate
+        /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetListenerfRefDelegate(int listener, EFXListenerFloat param, out float value);
 
+        /// <summary>
+        /// The get listenerf ref delegate
+        /// </summary>
         private static readonly GetListenerfRefDelegate _GetListenerfRef =
             LoadDelegate<GetListenerfRefDelegate>("alGetListenerf");
 

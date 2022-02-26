@@ -993,6 +993,9 @@ namespace Alis.Core.Audio.Mathematics.Vector
         [Pure]
         public static explicit operator Vector2i(Vector2 vec) => new Vector2i((int) vec.X, (int) vec.Y);
 
+        /// <summary>
+        /// The list separator
+        /// </summary>
         private static readonly string ListSeparator = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
 
         /// <inheritdoc />

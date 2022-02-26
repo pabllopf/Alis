@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -44,8 +44,14 @@ using Alis.Core.Audio.Mathematics.Vector;
 
 namespace Alis.Core.Audio
 {
+    /// <summary>
+    /// The al test class
+    /// </summary>
     internal class ALTest
     {
+        /// <summary>
+        /// Main
+        /// </summary>
         public static void Main()
         {
             Console.WriteLine("Hello!");
@@ -209,6 +215,10 @@ namespace Alis.Core.Audio
             ALC.ALC.CloseDevice(device);
         }
 
+        /// <summary>
+        /// Checks the al error using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
         public static void CheckALError(string str)
         {
             ALError error = AL.AL.GetError();
@@ -218,6 +228,12 @@ namespace Alis.Core.Audio
             }
         }
 
+        /// <summary>
+        /// Fills the sine using the specified buffer
+        /// </summary>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="frequency">The frequency</param>
+        /// <param name="sampleRate">The sample rate</param>
         public static void FillSine(short[] buffer, float frequency, float sampleRate)
         {
             for (int i = 0; i < buffer.Length; i++)

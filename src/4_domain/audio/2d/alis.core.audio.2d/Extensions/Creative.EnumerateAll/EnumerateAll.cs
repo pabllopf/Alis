@@ -39,12 +39,18 @@ namespace Alis.Core.Audio.Extensions.Creative.EnumerateAll
     /// </summary>
     public class EnumerateAll : ALBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EnumerateAll"/> class
+        /// </summary>
         static EnumerateAll()
         {
             // We need to register the resolver for OpenAL before we can DllImport functions.
             RegisterOpenALResolver();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EnumerateAll"/> class
+        /// </summary>
         private EnumerateAll()
         {
         }

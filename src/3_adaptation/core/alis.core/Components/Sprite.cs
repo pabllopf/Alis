@@ -123,10 +123,16 @@ namespace Alis.Core.Components
             sprite.Rotation = transform.Rotation.Y;
             sprite.Scale = new Vector2f(transform.Scale.X, transform.Scale.Y);
         }*/
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }

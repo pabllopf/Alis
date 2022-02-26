@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -38,10 +38,19 @@ namespace Alis.Core.Network.Example.Client.Complex
     // This test sends a large buffer
     // NOTE: you would never normally do this. In order to send a large amount of data use a small buffer and make multiple calls
     // to SendAsync with endOfMessage false and the last SendAsync function call with endOfMessage set to true.
+    /// <summary>
+    /// The load test class
+    /// </summary>
     internal class LoadTest
     {
+        /// <summary>
+        /// The buffer size
+        /// </summary>
         private const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public async Task Run()
         {
             WebSocketClientFactory factory = new WebSocketClientFactory();
@@ -64,6 +73,10 @@ namespace Alis.Core.Network.Example.Client.Complex
             }
         }
 
+        /// <summary>
+        /// Sends the web socket
+        /// </summary>
+        /// <param name="webSocket">The web socket</param>
         private async Task Send(WebSocket webSocket)
         {
             byte[] array = new byte[BUFFER_SIZE];
@@ -71,6 +84,11 @@ namespace Alis.Core.Network.Example.Client.Complex
             await webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
         }
 
+        /// <summary>
+        /// Reads the all using the specified web socket
+        /// </summary>
+        /// <param name="webSocket">The web socket</param>
+        /// <returns>A task containing the long</returns>
         private async Task<long> ReadAll(WebSocket webSocket)
         {
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[BUFFER_SIZE]);
@@ -91,6 +109,10 @@ namespace Alis.Core.Network.Example.Client.Complex
             }
         }
 
+        /// <summary>
+        /// Receives the web socket
+        /// </summary>
+        /// <param name="webSocket">The web socket</param>
         private async Task Receive(WebSocket webSocket)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();

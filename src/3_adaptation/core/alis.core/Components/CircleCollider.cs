@@ -35,10 +35,16 @@ namespace Alis.Core.Components
     /// <seealso cref="Collider" />
     public class CircleCollider : Collider
     {
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }

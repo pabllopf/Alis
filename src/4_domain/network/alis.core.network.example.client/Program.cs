@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -34,8 +34,15 @@ using Alis.Core.Network.Example.Client.Simple;
 
 namespace Alis.Core.Network.Example.Client
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
             RunComplexTest(args);
@@ -62,12 +69,19 @@ namespace Alis.Core.Network.Example.Client
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Runs the load test
+        /// </summary>
         private static async Task RunLoadTest()
         {
             LoadTest client = new LoadTest();
             await client.Run();
         }
 
+        /// <summary>
+        /// Runs the complex test using the specified args
+        /// </summary>
+        /// <param name="args">The args</param>
         private static void RunComplexTest(string[] args)
         {
             Uri uri = new Uri("ws://localhost:27416/chat");
@@ -84,6 +98,9 @@ namespace Alis.Core.Network.Example.Client
             runner.Run();
         }
 
+        /// <summary>
+        /// Runs the simple test
+        /// </summary>
         private static async Task RunSimpleTest()
         {
             SimpleClient client = new SimpleClient();

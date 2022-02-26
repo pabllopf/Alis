@@ -30,14 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Alis.Core.Builders;
-using Alis.Core.Exceptions;
-using Alis.FluentApi;
 
 namespace Alis.Core.Entities
 {
     /// <summary>Represent a object of the game.</summary>
-    public class GameObject : IBuilder<GameObjectBuilder>
+    public class GameObject 
     {
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         public GameObject()
@@ -47,7 +44,6 @@ namespace Alis.Core.Entities
             IsActive = true;
             IsStatic = false;
             Transform = new Transform();
-            Components = new List<Component>(Game.Setting.GameObject.MaxComponents);
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -59,7 +55,6 @@ namespace Alis.Core.Entities
             IsActive = true;
             IsStatic = false;
             Transform = new Transform();
-            Components = new List<Component>(Game.Setting.GameObject.MaxComponents);
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>

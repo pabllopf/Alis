@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -40,8 +40,14 @@ using Alis.Core.Network.Exceptions;
 
 namespace Alis.Core.Network
 {
+    /// <summary>
+    /// The http helper class
+    /// </summary>
     public class HttpHelper
     {
+        /// <summary>
+        /// The http get header regex
+        /// </summary>
         private const string HTTP_GET_HEADER_REGEX = @"^GET(.*)HTTP\/1\.1";
 
         /// <summary>
@@ -149,6 +155,12 @@ namespace Alis.Core.Network
             return null;
         }
 
+        /// <summary>
+        /// Gets the sub protocols using the specified http header
+        /// </summary>
+        /// <param name="httpHeader">The http header</param>
+        /// <exception cref="EntityTooLargeException">Sec-WebSocket-Protocol exceeded the maximum of length of {MAX_LEN}</exception>
+        /// <returns>A list of string</returns>
         public static IList<string> GetSubProtocols(string httpHeader)
         {
             Regex regex = new Regex(@"Sec-WebSocket-Protocol:(?<protocols>.+)", RegexOptions.IgnoreCase);

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -46,6 +46,12 @@ namespace Alis.Core.Network
             SubProtocol = "";
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebSocketServerOptions"/> class
+        /// </summary>
+        /// <param name="keepAliveInterval">The keep alive interval</param>
+        /// <param name="includeExceptionInCloseResponse">The include exception in close response</param>
+        /// <param name="subProtocol">The sub protocol</param>
         public WebSocketServerOptions(double keepAliveInterval, bool includeExceptionInCloseResponse,
             string subProtocol)
         {
@@ -54,6 +60,11 @@ namespace Alis.Core.Network
             SubProtocol = subProtocol;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebSocketServerOptions"/> class
+        /// </summary>
+        /// <param name="keepAliveInterval">The keep alive interval</param>
+        /// <param name="subProtocol">The sub protocol</param>
         public WebSocketServerOptions(TimeSpan keepAliveInterval, string subProtocol)
         {
             KeepAliveInterval = keepAliveInterval;

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -34,12 +34,28 @@ using Microsoft.Extensions.Logging;
 
 namespace Alis.Core.Network.Example.Server
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
         private static ILogger _logger;
+        /// <summary>
+        /// The logger factory
+        /// </summary>
         private static ILoggerFactory _loggerFactory;
+        /// <summary>
+        /// The web socket server factory
+        /// </summary>
         private static IWebSocketServerFactory _webSocketServerFactory;
 
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
             _loggerFactory = new LoggerFactory();
@@ -50,6 +66,9 @@ namespace Alis.Core.Network.Example.Server
             task.Wait();
         }
 
+        /// <summary>
+        /// Starts the web server
+        /// </summary>
         private static async Task StartWebServer()
         {
             try

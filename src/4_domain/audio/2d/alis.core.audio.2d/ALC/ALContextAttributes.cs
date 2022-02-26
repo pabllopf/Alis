@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -195,6 +195,13 @@ namespace Alis.Core.Audio.ALC
         }
 
         // Used for ToString.
+        /// <summary>
+        /// Gets the optional string using the specified title
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="title">The title</param>
+        /// <param name="value">The value</param>
+        /// <returns>The string</returns>
         private string GetOptionalString<T>(string title, T? value)
             where T : unmanaged
         {

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,8 +31,14 @@ using System;
 
 namespace Alis.Core.Network.Internal
 {
+    /// <summary>
+    /// The web socket frame common class
+    /// </summary>
     internal static class WebSocketFrameCommon
     {
+        /// <summary>
+        /// The mask key length
+        /// </summary>
         public const int MaskKeyLength = 4;
 
         /// <summary>

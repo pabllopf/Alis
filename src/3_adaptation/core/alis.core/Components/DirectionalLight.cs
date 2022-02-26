@@ -57,10 +57,16 @@ namespace Alis.Core.Components
         {
             throw new NotImplementedException();
         }*/
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -49,23 +49,83 @@ namespace Alis.Core.Network.Internal
     /// </summary>
     internal class WebSocketImplementation : WebSocket
     {
+        /// <summary>
+        /// The guid
+        /// </summary>
         private readonly Guid _guid;
+        /// <summary>
+        /// The include exception in close response
+        /// </summary>
         private readonly bool _includeExceptionInCloseResponse;
+        /// <summary>
+        /// The internal read cts
+        /// </summary>
         private readonly CancellationTokenSource _internalReadCts;
+        /// <summary>
+        /// The is client
+        /// </summary>
         private readonly bool _isClient;
+        /// <summary>
+        /// The ping pong manager
+        /// </summary>
         private readonly IPingPongManager _pingPongManager;
+        /// <summary>
+        /// The recycled stream factory
+        /// </summary>
         private readonly Func<MemoryStream> _recycledStreamFactory;
+        /// <summary>
+        /// The semaphore slim
+        /// </summary>
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1);
+        /// <summary>
+        /// The stream
+        /// </summary>
         private readonly Stream _stream;
+        /// <summary>
+        /// The use per message deflate
+        /// </summary>
         private readonly bool _usePerMessageDeflate;
+        /// <summary>
+        /// The close status
+        /// </summary>
         private WebSocketCloseStatus? _closeStatus;
+        /// <summary>
+        /// The close status description
+        /// </summary>
         private string _closeStatusDescription;
+        /// <summary>
+        /// The binary
+        /// </summary>
         private WebSocketMessageType _continuationFrameMessageType = WebSocketMessageType.Binary;
+        /// <summary>
+        /// The is continuation frame
+        /// </summary>
         private bool _isContinuationFrame;
+        /// <summary>
+        /// The read cursor
+        /// </summary>
         private WebSocketReadCursor _readCursor;
+        /// <summary>
+        /// The state
+        /// </summary>
         private WebSocketState _state;
+        /// <summary>
+        /// The try get buffer failure logged
+        /// </summary>
         private bool _tryGetBufferFailureLogged;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebSocketImplementation"/> class
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="recycledStreamFactory">The recycled stream factory</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="keepAliveInterval">The keep alive interval</param>
+        /// <param name="secWebSocketExtensions">The sec web socket extensions</param>
+        /// <param name="includeExceptionInCloseResponse">The include exception in close response</param>
+        /// <param name="isClient">The is client</param>
+        /// <param name="subProtocol">The sub protocol</param>
+        /// <exception cref="InvalidOperationException">KeepAliveInterval must be Zero or positive</exception>
         internal WebSocketImplementation(Guid guid, Func<MemoryStream> recycledStreamFactory, Stream stream,
             TimeSpan keepAliveInterval, string secWebSocketExtensions, bool includeExceptionInCloseResponse,
             bool isClient, string subProtocol)
@@ -106,15 +166,33 @@ namespace Alis.Core.Network.Internal
             }
         }
 
+        /// <summary>
+        /// Gets the value of the close status
+        /// </summary>
         public override WebSocketCloseStatus? CloseStatus => _closeStatus;
 
+        /// <summary>
+        /// Gets the value of the close status description
+        /// </summary>
         public override string CloseStatusDescription => _closeStatusDescription;
 
+        /// <summary>
+        /// Gets the value of the state
+        /// </summary>
         public override WebSocketState State => _state;
 
+        /// <summary>
+        /// Gets the value of the sub protocol
+        /// </summary>
         public override string SubProtocol { get; }
 
+        /// <summary>
+        /// Gets the value of the keep alive interval
+        /// </summary>
         public TimeSpan KeepAliveInterval { get; }
+        /// <summary>
+        /// The max ping pong payload len
+        /// </summary>
         private const int MAX_PING_PONG_PAYLOAD_LEN = 125;
 
         public event EventHandler<PongEventArgs> Pong;

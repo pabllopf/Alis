@@ -31,8 +31,17 @@ using System.Runtime.CompilerServices;
 
 namespace Alis.Core.Audio.Core.Utility
 {
+    /// <summary>
+    /// The utils class
+    /// </summary>
     public static class Utils
     {
+        /// <summary>
+        /// Swaps the a
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="a">The </param>
+        /// <param name="b">The </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Swap<T>(ref T a, ref T b)
         {

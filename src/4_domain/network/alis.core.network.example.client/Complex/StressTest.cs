@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -34,18 +34,56 @@ using System.Threading.Tasks;
 
 namespace Alis.Core.Network.Example.Client.Complex
 {
+    /// <summary>
+    /// The stress test class
+    /// </summary>
     internal class StressTest
     {
+        /// <summary>
+        /// The client factory
+        /// </summary>
         private readonly IWebSocketClientFactory _clientFactory;
+        /// <summary>
+        /// The max num bytes per message
+        /// </summary>
         private readonly int _maxNumBytesPerMessage;
+        /// <summary>
+        /// The min num bytes per message
+        /// </summary>
         private readonly int _minNumBytesPerMessage;
+        /// <summary>
+        /// The num items
+        /// </summary>
         private readonly int _numItems;
+        /// <summary>
+        /// The seed
+        /// </summary>
         private readonly int _seed;
+        /// <summary>
+        /// The uri
+        /// </summary>
         private readonly Uri _uri;
+        /// <summary>
+        /// The expected values
+        /// </summary>
         private byte[][] _expectedValues;
+        /// <summary>
+        /// The token
+        /// </summary>
         private CancellationToken _token;
+        /// <summary>
+        /// The web socket
+        /// </summary>
         private WebSocket _webSocket;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StressTest"/> class
+        /// </summary>
+        /// <param name="seed">The seed</param>
+        /// <param name="uri">The uri</param>
+        /// <param name="numItems">The num items</param>
+        /// <param name="minNumBytesPerMessage">The min num bytes per message</param>
+        /// <param name="maxNumBytesPerMessage">The max num bytes per message</param>
         public StressTest(int seed, Uri uri, int numItems, int minNumBytesPerMessage, int maxNumBytesPerMessage)
         {
             _seed = seed;
@@ -56,6 +94,9 @@ namespace Alis.Core.Network.Example.Client.Complex
             _clientFactory = new WebSocketClientFactory();
         }
 
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public async Task Run()
         {
             // NOTE: if the service is so busy that it cannot respond to a PING within the KeepAliveInterval interval the websocket connection will be closed
@@ -93,6 +134,13 @@ namespace Alis.Core.Network.Example.Client.Complex
             }
         }
 
+        /// <summary>
+        /// Describes whether are equal
+        /// </summary>
+        /// <param name="actual">The actual</param>
+        /// <param name="expected">The expected</param>
+        /// <param name="countActual">The count actual</param>
+        /// <returns>The bool</returns>
         private static bool AreEqual(byte[] actual, byte[] expected, int countActual)
         {
             if (countActual != expected.Length)
@@ -111,6 +159,11 @@ namespace Alis.Core.Network.Example.Client.Complex
             return true;
         }
 
+        /// <summary>
+        /// Receives the loop
+        /// </summary>
+        /// <exception cref="Exception">Expected: {valueExpected.Length} bytes Actual: {result.Count} bytes. Contents different.</exception>
+        /// <exception cref="Exception">Multi frame messages not supported</exception>
         private async Task ReceiveLoop()
         {
             // the recArray should be large enough to at least receive control frames like Ping and Close frames (with payload)

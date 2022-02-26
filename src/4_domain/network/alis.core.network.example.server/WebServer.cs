@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -39,15 +39,43 @@ using Microsoft.Extensions.Logging;
 
 namespace Alis.Core.Network.Example.Server
 {
+    /// <summary>
+    /// The web server class
+    /// </summary>
+    /// <seealso cref="IDisposable"/>
     public class WebServer : IDisposable
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
         private readonly ILogger _logger;
+        /// <summary>
+        /// The logger factory
+        /// </summary>
         private readonly ILoggerFactory _loggerFactory;
+        /// <summary>
+        /// The supported sub protocols
+        /// </summary>
         private readonly HashSet<string> _supportedSubProtocols;
+        /// <summary>
+        /// The web socket server factory
+        /// </summary>
         private readonly IWebSocketServerFactory _webSocketServerFactory;
+        /// <summary>
+        /// The is disposed
+        /// </summary>
         private bool _isDisposed;
+        /// <summary>
+        /// The listener
+        /// </summary>
         private TcpListener _listener;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebServer"/> class
+        /// </summary>
+        /// <param name="webSocketServerFactory">The web socket server factory</param>
+        /// <param name="loggerFactory">The logger factory</param>
+        /// <param name="supportedSubProtocols">The supported sub protocols</param>
         public WebServer(IWebSocketServerFactory webSocketServerFactory, ILoggerFactory loggerFactory,
             IList<string> supportedSubProtocols = null)
         {
@@ -58,8 +86,14 @@ namespace Alis.Core.Network.Example.Server
         }
 
         // const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB
+        /// <summary>
+        /// The buffer size
+        /// </summary>
         private const int BUFFER_SIZE = 4 * 1024 * 1024; // 4MB
 
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
         public void Dispose()
         {
             if (!_isDisposed)
@@ -88,11 +122,20 @@ namespace Alis.Core.Network.Example.Server
             }
         }
 
+        /// <summary>
+        /// Processes the tcp client using the specified tcp client
+        /// </summary>
+        /// <param name="tcpClient">The tcp client</param>
         private void ProcessTcpClient(TcpClient tcpClient)
         {
             Task.Run(() => ProcessTcpClientAsync(tcpClient));
         }
 
+        /// <summary>
+        /// Gets the sub protocol using the specified requested sub protocols
+        /// </summary>
+        /// <param name="requestedSubProtocols">The requested sub protocols</param>
+        /// <returns>The string</returns>
         private string GetSubProtocol(IList<string> requestedSubProtocols)
         {
             foreach (string subProtocol in requestedSubProtocols)
@@ -115,6 +158,10 @@ namespace Alis.Core.Network.Example.Server
             return null;
         }
 
+        /// <summary>
+        /// Processes the tcp client using the specified tcp client
+        /// </summary>
+        /// <param name="tcpClient">The tcp client</param>
         private async Task ProcessTcpClientAsync(TcpClient tcpClient)
         {
             CancellationTokenSource source = new CancellationTokenSource();
@@ -179,6 +226,11 @@ namespace Alis.Core.Network.Example.Server
             }
         }
 
+        /// <summary>
+        /// Responds the to web socket request using the specified web socket
+        /// </summary>
+        /// <param name="webSocket">The web socket</param>
+        /// <param name="token">The token</param>
         public async Task RespondToWebSocketRequestAsync(WebSocket webSocket, CancellationToken token)
         {
             ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[BUFFER_SIZE]);
@@ -207,6 +259,11 @@ namespace Alis.Core.Network.Example.Server
             }
         }
 
+        /// <summary>
+        /// Listens the port
+        /// </summary>
+        /// <param name="port">The port</param>
+        /// <exception cref="Exception"></exception>
         public async Task Listen(int port)
         {
             try

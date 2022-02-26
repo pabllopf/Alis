@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -89,6 +89,9 @@ namespace Alis.Core.Audio.Mathematics
         /// </summary>
         public const float Log2E = 1.442695f;
 
+        /// <summary>
+        /// The list separator
+        /// </summary>
         internal static readonly string ListSeparator = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
 
         /// <summary>

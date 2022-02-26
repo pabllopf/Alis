@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -40,6 +40,9 @@ namespace Alis.Core.Audio.Mathematics.Geometry
     [StructLayout(LayoutKind.Sequential)]
     public struct Box2d : IEquatable<Box2d>
     {
+        /// <summary>
+        /// The min
+        /// </summary>
         private Vector2d _min;
 
         /// <summary>
@@ -64,6 +67,9 @@ namespace Alis.Core.Audio.Mathematics.Geometry
             }
         }
 
+        /// <summary>
+        /// The max
+        /// </summary>
         private Vector2d _max;
 
         /// <summary>

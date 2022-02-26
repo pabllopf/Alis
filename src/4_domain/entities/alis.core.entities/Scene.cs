@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   SceneSystem.cs
+//  File:   Scene.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -29,161 +29,141 @@
 
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Alis.Core.Entities;
-using Alis.Core.Exceptions;
 
-namespace Alis.Core.Systems
+namespace Alis.Core.Entities
 {
     /// <summary>
-    ///     The scene system class
+    ///     The scene class
     /// </summary>
-    /// <seealso cref="System" />
-    public class SceneSystem : System
+    public class Scene
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneSystem" /> class
+        ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
-        public SceneSystem() => Scenes = new List<Scene>(Game.Setting.Scene.MaxScenesOfGame);
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneSystem" /> class
-        /// </summary>
-        /// <param name="scenes">The scenes</param>
-        /// <exception cref="MaxSceneGame"></exception>
-        public SceneSystem(List<Scene> scenes)
+        public Scene()
         {
-            Scenes = scenes;
-            ActiveScene = scenes[0];
+            Name = "Default";
+            GameObjects = new List<GameObject>();
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneSystem" /> class
+        ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
-        /// <param name="activeScene">The active scene</param>
-        /// <param name="scenes">The scenes</param>
-        /// <exception cref="MaxSceneGame"></exception>
+        /// <param name="name">The name</param>
+        /// <param name="gameobjects">The gameobjects</param>
+        /// <exception cref="IndexOutOfBounds"></exception>
         [JsonConstructor]
-        public SceneSystem(Scene activeScene, List<Scene> scenes)
+        public Scene(string name, List<GameObject> gameobjects)
         {
-            ActiveScene = activeScene;
-            Scenes = scenes;
+            Name = name;
+            GameObjects = gameobjects;
         }
 
         /// <summary>
-        ///     Gets or sets the value of the scenes
+        ///     Gets or sets the value of the name
         /// </summary>
-        [JsonPropertyName("_Scenes")]
-        public List<Scene> Scenes { get; set; }
+        [JsonPropertyName("_Name")]
+        public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the active scene
+        ///     Gets or sets the value of the game objects
         /// </summary>
-        [JsonPropertyName("_ActiveScene")]
-        private Scene? ActiveScene { get; set; }
+        [JsonPropertyName("_GameObjects")]
+        public List<GameObject> GameObjects { get; set; }
 
         /// <summary>
-        ///     Changes the scene using the specified index
+        ///     Adds the game object
         /// </summary>
-        /// <param name="index">The index</param>
-        public void ChangeScene(int index)
+        /// <param name="gameObject">The game object</param>
+        public void Add(GameObject gameObject)
         {
-            ActiveScene = Scenes[index];
-        }
-
-        /// <summary>
-        ///     Adds the scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        public void Add(Scene scene)
-        {
-            Scenes.Add(scene);
-            ActiveScene ??= scene;
+            GameObjects.Add(gameObject);
         }
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public override void Awake()
+        public void Awake()
         {
-            ActiveScene?.Awake();
+            GameObjects.ForEach(gameObject => gameObject.Awake());
         }
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start()
+        public void Start()
         {
-            ActiveScene?.Start();
+            GameObjects.ForEach(gameObject => gameObject.Start());
         }
 
         /// <summary>
-        ///     Before the update
+        ///     Before run the update
         /// </summary>
-        public override void BeforeUpdate()
+        public void BeforeUpdate()
         {
-            ActiveScene?.BeforeUpdate();
+            GameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update()
+        public void Update()
         {
-            ActiveScene?.Update();
+            GameObjects.ForEach(gameObject => gameObject.Update());
         }
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate()
+        public void AfterUpdate()
         {
-            ActiveScene?.AfterUpdate();
+            GameObjects.ForEach(gameObject => gameObject.AfterUpdate());
         }
 
         /// <summary>
-        ///     Fixed the update
+        ///     Update every frame.
         /// </summary>
-        public override void FixedUpdate()
+        public void FixedUpdate()
         {
-            ActiveScene?.FixedUpdate();
+            GameObjects.ForEach(gameObject => gameObject.FixedUpdate());
         }
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents()
+        public void DispatchEvents()
         {
-            ActiveScene?.DispatchEvents();
+            GameObjects.ForEach(gameObject => gameObject.DispatchEvents());
         }
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public override void Reset()
+        public void Reset()
         {
-            ActiveScene?.Reset();
+            GameObjects.ForEach(gameObject => gameObject.Reset());
         }
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop()
+        public void Stop()
         {
-            ActiveScene?.Stop();
+            GameObjects.ForEach(gameObject => gameObject.Stop());
         }
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit()
+        public void Exit()
         {
-            ActiveScene?.Exit();
+            GameObjects.ForEach(gameObject => gameObject.Exit());
         }
 
         /// <summary>
-        ///     Simple destructor
+        ///     Define the destructor.
         /// </summary>
-        ~SceneSystem()
+        ~Scene()
         {
         }
     }

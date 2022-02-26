@@ -29,13 +29,13 @@
 
 using System.Text.Json.Serialization;
 
-namespace Alis.Core.Systems
+namespace Alis.Core.Time
 {
     /// <summary>
     ///     The time system class
     /// </summary>
     /// <seealso cref="System" />
-    public class TimeSystem : System
+    public class TimeSystem 
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TimeSystem" /> class
@@ -45,84 +45,7 @@ namespace Alis.Core.Systems
         {
         }
 
-        /// <summary>
-        ///     Awakes this instance
-        /// </summary>
-        public override void Awake()
-        {
-        }
-
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-        }
-
-
-        /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public override void Update()
-        {
-        }
-
-
-        /// <summary>
-        ///     Afters the update
-        /// </summary>
-        public override void AfterUpdate()
-        {
-        }
-
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-        }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-        }
-
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-        }
-
+        
         ~TimeSystem()
         {
         }

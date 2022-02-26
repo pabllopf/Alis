@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -34,8 +34,20 @@ using System.Threading.Tasks;
 
 namespace Alis.Core.Network.Internal
 {
+    /// <summary>
+    /// The binary reader writer class
+    /// </summary>
     internal class BinaryReaderWriter
     {
+        /// <summary>
+        /// Reads the exactly using the specified length
+        /// </summary>
+        /// <param name="length">The length</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <exception cref="EndOfStreamException"></exception>
+        /// <exception cref="InternalBufferOverflowException">Unable to read {length} bytes into buffer (offset: {buffer.Offset} size: {buffer.Count}). Use a larger read buffer</exception>
         public static async Task ReadExactly(int length, Stream stream, ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
@@ -67,6 +79,14 @@ namespace Alis.Core.Network.Internal
             } while (offset < length);
         }
 
+        /// <summary>
+        /// Reads the u short exactly using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="isLittleEndian">The is little endian</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>A task containing the ushort</returns>
         public static async Task<ushort> ReadUShortExactly(Stream stream, bool isLittleEndian,
             ArraySegment<byte> buffer, CancellationToken cancellationToken)
         {
@@ -80,6 +100,14 @@ namespace Alis.Core.Network.Internal
             return BitConverter.ToUInt16(buffer.Array, buffer.Offset);
         }
 
+        /// <summary>
+        /// Reads the u long exactly using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="isLittleEndian">The is little endian</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>A task containing the ulong</returns>
         public static async Task<ulong> ReadULongExactly(Stream stream, bool isLittleEndian, ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
@@ -93,6 +121,14 @@ namespace Alis.Core.Network.Internal
             return BitConverter.ToUInt64(buffer.Array, buffer.Offset);
         }
 
+        /// <summary>
+        /// Reads the long exactly using the specified stream
+        /// </summary>
+        /// <param name="stream">The stream</param>
+        /// <param name="isLittleEndian">The is little endian</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="cancellationToken">The cancellation token</param>
+        /// <returns>A task containing the long</returns>
         public static async Task<long> ReadLongExactly(Stream stream, bool isLittleEndian, ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
@@ -106,6 +142,12 @@ namespace Alis.Core.Network.Internal
             return BitConverter.ToInt64(buffer.Array, buffer.Offset);
         }
 
+        /// <summary>
+        /// Writes the int using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="isLittleEndian">The is little endian</param>
         public static void WriteInt(int value, Stream stream, bool isLittleEndian)
         {
             byte[] buffer = BitConverter.GetBytes(value);
@@ -117,6 +159,12 @@ namespace Alis.Core.Network.Internal
             stream.Write(buffer, 0, buffer.Length);
         }
 
+        /// <summary>
+        /// Writes the u long using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="isLittleEndian">The is little endian</param>
         public static void WriteULong(ulong value, Stream stream, bool isLittleEndian)
         {
             byte[] buffer = BitConverter.GetBytes(value);
@@ -128,6 +176,12 @@ namespace Alis.Core.Network.Internal
             stream.Write(buffer, 0, buffer.Length);
         }
 
+        /// <summary>
+        /// Writes the long using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="isLittleEndian">The is little endian</param>
         public static void WriteLong(long value, Stream stream, bool isLittleEndian)
         {
             byte[] buffer = BitConverter.GetBytes(value);
@@ -139,6 +193,12 @@ namespace Alis.Core.Network.Internal
             stream.Write(buffer, 0, buffer.Length);
         }
 
+        /// <summary>
+        /// Writes the u short using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="isLittleEndian">The is little endian</param>
         public static void WriteUShort(ushort value, Stream stream, bool isLittleEndian)
         {
             byte[] buffer = BitConverter.GetBytes(value);

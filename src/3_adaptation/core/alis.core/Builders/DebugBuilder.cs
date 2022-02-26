@@ -30,6 +30,7 @@
 using Alis.Core.Entities;
 using Alis.Core.Settings.Configurations;
 using Alis.FluentApi;
+using Alis.Tools;
 
 namespace Alis.Core.Builders
 {

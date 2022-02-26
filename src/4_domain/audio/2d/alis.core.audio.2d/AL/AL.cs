@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -39,17 +39,29 @@ namespace Alis.Core.Audio.AL
     /// </summary>
     public class AL : ALBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AL"/> class
+        /// </summary>
         static AL()
         {
             // We need to register the resolver for OpenAL before we can DllImport functions.
             RegisterOpenALResolver();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AL"/> class
+        /// </summary>
         private AL()
         {
         }
 
+        /// <summary>
+        /// The al
+        /// </summary>
         internal const string Lib = nameof(AL);
+        /// <summary>
+        /// The cdecl
+        /// </summary>
         internal const CallingConvention ALCallingConvention = CallingConvention.Cdecl;
 
         /// <summary>

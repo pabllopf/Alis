@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -34,14 +34,24 @@ using Alis.Core.Audio.Native;
 
 namespace Alis.Core.Audio.Extensions.EXT.Double
 {
+    /// <summary>
+    /// The ext double class
+    /// </summary>
+    /// <seealso cref="ALBase"/>
     public class EXTDouble : ALBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EXTDouble"/> class
+        /// </summary>
         static EXTDouble()
         {
             // We need to register the resolver for OpenAL before we can DllImport functions.
             RegisterOpenALResolver();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EXTDouble"/> class
+        /// </summary>
         private EXTDouble()
         {
         }

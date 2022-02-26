@@ -1,0 +1,72 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   GeneralBuilder.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+#region
+
+using Alis.Core.Settings.Configurations;
+using Alis.FluentApi;
+using Alis.FluentApi.Words;
+
+#endregion
+
+namespace Alis.Core.Builders
+{
+    /// <summary>Define a builder.</summary>
+    public class GeneralBuilder :
+        IBuild<General>,
+        IName<GeneralBuilder, string>,
+        IAuthor<GeneralBuilder, string>
+    {
+        /// <summary>Sets the author.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        ///     <br />
+        /// </returns>
+        public GeneralBuilder Author(string value)
+        {
+            Game.Setting.General.Author = value;
+            return this;
+        }
+
+        /// <summary>Builds this instance.</summary>
+        /// <returns> </returns>
+        public General Build() => Game.Setting.General;
+
+        /// <summary>Sets the name.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        ///     <br />
+        /// </returns>
+        public GeneralBuilder Name(string value)
+        {
+            Game.Setting.General.Name = value;
+            return this;
+        }
+    }
+}

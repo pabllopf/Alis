@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -42,6 +42,12 @@ namespace Alis.Core.Network.Internal
     /// </summary>
     internal static class WebSocketFrameReader
     {
+        /// <summary>
+        /// Calculates the num bytes to read using the specified num bytes letf to read
+        /// </summary>
+        /// <param name="numBytesLetfToRead">The num bytes letf to read</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <returns>The num bytes letf to read</returns>
         private static int CalculateNumBytesToRead(int numBytesLetfToRead, int bufferSize)
         {
             if (bufferSize < numBytesLetfToRead)

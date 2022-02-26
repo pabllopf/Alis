@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   System.cs
+//  File:   SceneManagerBuilder.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,39 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems
+using System;
+using Alis.Core.Entities;
+using Alis.Core.Managers;
+using Alis.FluentApi;
+using Alis.FluentApi.Words;
+
+namespace Alis.Core.Builders
 {
-    /// <summary>Define a system.</summary>
-    public abstract class System
+    /// <summary>
+    ///     The scene manager builder class
+    /// </summary>
+    public class SceneManagerBuilder : IBuild<SceneManager>,
+        IAdd<SceneManagerBuilder, Scene, Func<SceneBuilder, Scene>>
     {
-        /// <summary>Awakes this instance.</summary>
-        public abstract void Awake();
+        /// <summary>
+        ///     Gets or sets the value of the scene manager
+        /// </summary>
+        private SceneManager SceneManager { get; } = new SceneManager();
 
-        /// <summary>Starts this instance.</summary>
-        public abstract void Start();
+        /// <summary>
+        ///     Adds the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The scene manager builder</returns>
+        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value) where T : Scene
+        {
+            SceneManager.Add(value.Invoke(new SceneBuilder()));
+            return this;
+        }
 
-        /// <summary>Befores the update.</summary>
-        public abstract void BeforeUpdate();
 
-        /// <summary>Updates this instance.</summary>
-        public abstract void Update();
-
-        /// <summary>Afters the update.</summary>
-        public abstract void AfterUpdate();
-
-        /// <summary>Fixeds the update.</summary>
-        public abstract void FixedUpdate();
-
-        /// <summary>Dispatches the events.</summary>
-        public abstract void DispatchEvents();
-
-        /// <summary>Resets this instance.</summary>
-        public abstract void Reset();
-
-        /// <summary>Stops this instance.</summary>
-        public abstract void Stop();
-
-        /// <summary>Exits this instance.</summary>
-        public abstract void Exit();
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The scene manager</returns>
+        public SceneManager Build() => SceneManager;
     }
 }

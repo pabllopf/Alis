@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ParticlesSystem.cs
+//  File:   LogLevel.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,108 +27,46 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Text.Json.Serialization;
-
-namespace Alis.Core.Systems
+namespace Alis.Tools
 {
     /// <summary>
-    ///     The particles system class
+    ///     The log level enum
     /// </summary>
-    /// <seealso cref="System" />
-    public class ParticlesSystem : System
+    public enum LogLevel
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ParticlesSystem" /> class
+        ///     The info log level
         /// </summary>
-        [JsonConstructor]
-        public ParticlesSystem()
-        {
-        }
-
+        Info = 0,
 
         /// <summary>
-        ///     Awakes this instance
+        ///     The log log level
         /// </summary>
-        public override void Awake()
-        {
-        }
-
+        Log = 1,
 
         /// <summary>
-        ///     Starts this instance
+        ///     The debug log level
         /// </summary>
-        public override void Start()
-        {
-        }
-
+        Debug = 2,
 
         /// <summary>
-        ///     Befores the update
+        ///     The normal log level
         /// </summary>
-        public override void BeforeUpdate()
-        {
-        }
-
+        Normal = 3,
 
         /// <summary>
-        ///     Updates this instance
+        ///     The error log level
         /// </summary>
-        public override void Update()
-        {
-        }
-
+        Error = 4,
 
         /// <summary>
-        ///     Afters the update
+        ///     The critical log level
         /// </summary>
-        public override void AfterUpdate()
-        {
-        }
-
+        Critical = 5,
 
         /// <summary>
-        ///     Fixeds the update
+        ///     The production log level
         /// </summary>
-        public override void FixedUpdate()
-        {
-        }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-        }
-
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-        }
-
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-        }
-
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-        }
-
-
-        ~ParticlesSystem()
-        {
-            Console.WriteLine(@"Destroy");
-        }
+        Production = 6
     }
 }

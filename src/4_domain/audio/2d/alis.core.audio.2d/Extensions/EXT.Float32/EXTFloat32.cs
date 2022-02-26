@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -34,14 +34,24 @@ using Alis.Core.Audio.Native;
 
 namespace Alis.Core.Audio.Extensions.EXT.Float32
 {
+    /// <summary>
+    /// The ext float 32 class
+    /// </summary>
+    /// <seealso cref="ALBase"/>
     public class EXTFloat32 : ALBase
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EXTFloat32"/> class
+        /// </summary>
         static EXTFloat32()
         {
             // We need to register the resolver for OpenAL before we can DllImport functions.
             RegisterOpenALResolver();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EXTFloat32"/> class
+        /// </summary>
         private EXTFloat32()
         {
         }

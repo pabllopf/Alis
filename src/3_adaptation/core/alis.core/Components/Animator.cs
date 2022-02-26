@@ -150,10 +150,16 @@ namespace Alis.Core.Components
         public override void Exit()
         {
         }*/
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }

@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -41,12 +41,33 @@ namespace Alis.Core.Network
     /// </summary>
     public class PingPongManager : IPingPongManager
     {
+        /// <summary>
+        /// The cancellation token
+        /// </summary>
         private readonly CancellationToken _cancellationToken;
+        /// <summary>
+        /// The guid
+        /// </summary>
         private readonly Guid _guid;
+        /// <summary>
+        /// The keep alive interval
+        /// </summary>
         private readonly TimeSpan _keepAliveInterval;
+        /// <summary>
+        /// The ping task
+        /// </summary>
         private readonly Task _pingTask;
+        /// <summary>
+        /// The stopwatch
+        /// </summary>
         private readonly Stopwatch _stopwatch;
+        /// <summary>
+        /// The web socket
+        /// </summary>
         private readonly WebSocketImplementation _webSocket;
+        /// <summary>
+        /// The ping sent ticks
+        /// </summary>
         private long _pingSentTicks;
 
         /// <summary>
@@ -101,11 +122,18 @@ namespace Alis.Core.Network
             await _webSocket.SendPingAsync(payload, cancellation);
         }
 
+        /// <summary>
+        /// Ons the pong using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
         protected virtual void OnPong(PongEventArgs e)
         {
             Pong?.Invoke(this, e);
         }
 
+        /// <summary>
+        /// Pings the forever
+        /// </summary>
         private async Task PingForever()
         {
             Events.Log.PingPongManagerStarted(_guid, (int) _keepAliveInterval.TotalSeconds);
@@ -146,6 +174,11 @@ namespace Alis.Core.Network
             Events.Log.PingPongManagerEnded(_guid);
         }
 
+        /// <summary>
+        /// Webs the socket impl pong using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void WebSocketImpl_Pong(object sender, PongEventArgs e)
         {
             _pingSentTicks = 0;

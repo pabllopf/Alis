@@ -1739,6 +1739,12 @@ namespace Alis.Core.Audio.Mathematics.Matrix
         }
 #endif
 
+        /// <summary>
+        /// Inverts the fallback using the specified mat
+        /// </summary>
+        /// <param name="mat">The mat</param>
+        /// <param name="result">The result</param>
+        /// <exception cref="InvalidOperationException">Matrix is singular and cannot be inverted.</exception>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void InvertFallback(in Matrix4 mat, out Matrix4 result)
         {
