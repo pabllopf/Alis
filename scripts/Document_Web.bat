@@ -1,17 +1,9 @@
-SET PATH=%PATH%;%CD%\\graphviz\\bin
+SET PATH=%PATH%;%CD%\\scripts\\graphviz\\bin
 
 dot -V
 
-@RD /S /Q "..\\docs\\docs"
+@RD /S /Q ".\\docs\\docs"
 
-cd .\\apidoc
+.\\scripts\\apidoc\\Doxygen\\doxygen.exe config
 
-.\\Doxygen\\doxygen.exe .\\config
-
-cd ..
-
-cd ..
-
-cd docs
-
-xcopy /E /Y /I .\\images .\\docs\\images
+xcopy /E /Y /I .\\docs\\images .\\docs\\docs\\images
