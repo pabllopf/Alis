@@ -79,7 +79,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.Gray;
+                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
                 string text = $"[{System.DateTime.Now}] INFO '{message}' \n" +
                        $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
@@ -99,7 +99,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.Gray;
+                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
                 string text = $"[{System.DateTime.Now}] INFO '{message}' \n" +
                               $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
@@ -116,14 +116,11 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
                 string text = $"[{System.DateTime.Now}] TRACE \n" +
                               $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
                               $"StackTrace:\n {System.Environment.StackTrace} \n";
                 System.Console.WriteLine(text);
                 System.IO.File.AppendAllText(myFile.Name, text);
-                System.Console.ResetColor();
             }
         }
         
@@ -135,14 +132,11 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
                 string text = $"[{System.DateTime.Now}] TRACE '{message}' \n" +
                               $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
                               $"StackTrace:\n{System.Environment.StackTrace} \n";
                 System.Console.WriteLine(text);
                 System.IO.File.AppendAllText(myFile.Name, text);
-                System.Console.ResetColor();
             }
         }
         

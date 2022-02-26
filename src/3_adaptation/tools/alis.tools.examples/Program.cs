@@ -41,7 +41,8 @@ namespace Alis.Tools.Example
         public static void Main(string[] args)
         {
             Logger.Trace();
-            Logger.Info("Example info");
+            Logger.Trace("Example Trace");
+            Logger.Info("Example Info");
             Logger.Log("example log");
             Logger.Success("example Success");
             Logger.Warning("example warning");
