@@ -43,6 +43,7 @@ namespace Alis.Tools.Example
             Logger.Trace();
             Logger.Info("Example info");
             Logger.Log("example log");
+            Logger.Success("example Success");
             Logger.Warning("example warning");
             Logger.Exception("example exception");
         }

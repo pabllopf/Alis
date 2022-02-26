@@ -26,7 +26,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
 namespace Alis.Tools
 {
     /// <summary>
@@ -38,6 +37,11 @@ namespace Alis.Tools
         /// The level
         /// </summary>
         private static readonly LogLevel Level;
+
+        /// <summary>
+        /// The my file
+        /// </summary>
+        private static readonly System.IO.FileStream myFile;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Logger"/> class
@@ -55,8 +59,18 @@ namespace Alis.Tools
                                      $"- .NET CLR:       {System.Environment.Version} \n" +
                                      $"- ProcessorCount: {System.Environment.ProcessorCount} \n" +
                                      $"- WorkDirectory:  {System.Environment.CurrentDirectory} \n");
+            
+            string path = System.Environment.CurrentDirectory + "/logs";
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
+
+            myFile = System.IO.File.Create(path + "/" + System.DateTime.Now.ToString("yyyy_M_dd-HH_mm_ss") + ".log");
+            myFile.Close();
         }
         
+
         /// <summary>
         /// Infoes the message
         /// </summary>
@@ -67,9 +81,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.Gray;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] INFO '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                string text = $"[{System.DateTime.Now}] INFO '{message}' \n" +
+                       $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                       $"StackTrace:\n {System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -85,9 +101,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.Gray;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] INFO '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                string text = $"[{System.DateTime.Now}] INFO '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n {System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text, args);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -100,9 +118,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] TRACE \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                string text = $"[{System.DateTime.Now}] TRACE \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n {System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -117,9 +137,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] TRACE '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                string text = $"[{System.DateTime.Now}] TRACE '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -135,9 +157,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] TRACE '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                string text = $"[{System.DateTime.Now}] TRACE '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -152,9 +176,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkCyan;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] LOG '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                string text = $"[{System.DateTime.Now}] LOG '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -170,9 +196,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkCyan;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] LOG '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                string text = $"[{System.DateTime.Now}] LOG '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -187,9 +215,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkYellow;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] WARNING '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                string text = $"[{System.DateTime.Now}] WARNING '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -205,9 +235,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkYellow;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] WARNING '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                string text = $"[{System.DateTime.Now}] WARNING '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -222,9 +254,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkGreen;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] SUCCESS '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}");
+                string text = $"[{System.DateTime.Now}] SUCCESS '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -240,9 +274,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkGreen;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.WriteLine($"[{System.DateTime.Now}] SUCCESS '{message}' \n" +
-                                         $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                         $"StackTrace:\n{System.Environment.StackTrace}", args);
+                string text = $"[{System.DateTime.Now}] SUCCESS '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(myFile.Name, text);
                 System.Console.ResetColor();
             }
         }
@@ -258,9 +294,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkRed;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.Error.WriteLine($"[{System.DateTime.Now}] EXCEPTION '{exception.Message}' \n" +
-                                               $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                               $"StackTrace:\n{System.Environment.StackTrace}"); 
+                string text = $"[{System.DateTime.Now}] EXCEPTION '{exception.Message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.IO.File.AppendAllText(myFile.Name, text);
+                System.Console.Error.WriteLine(text);
                 System.Console.ResetColor();
             }
         }
@@ -275,9 +313,11 @@ namespace Alis.Tools
             {
                 System.Console.BackgroundColor = System.ConsoleColor.DarkRed;
                 System.Console.ForegroundColor = System.ConsoleColor.White;
-                System.Console.Error.WriteLine($"[{System.DateTime.Now}] EXCEPTION '{message}' \n" +
-                                               $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                                               $"StackTrace:\n{System.Environment.StackTrace}"); 
+                string text = $"[{System.DateTime.Now}] EXCEPTION '{message}' \n" +
+                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                System.IO.File.AppendAllText(myFile.Name, text);
+                System.Console.Error.WriteLine(text);
                 System.Console.ResetColor();
             }
         }
