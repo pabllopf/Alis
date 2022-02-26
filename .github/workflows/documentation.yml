@@ -22,13 +22,13 @@ jobs:
         key: ${{ runner.os }}-doc
       
     - name: Change Directory 
-      run: cd D:/a/Alis/Alis/ApiDoc
+      run: cd scripts
       
     - name: Show Directory 
       run: dir
       
     - name: Build Doc
-      run: D:/a/Alis/Alis/ApiDoc/Doxygen/doxygen D:/a/Alis/Alis/ApiDocConfig
+      run: .\\Document_Web.bat
     
     - name: Update web
       run: |
