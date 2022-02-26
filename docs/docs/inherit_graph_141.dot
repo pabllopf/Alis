@@ -1,0 +1,44 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="Alis.Core.Systems.Physics2\lD.Definitions.IDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_i_def.html",tooltip="The def interface"];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="Alis.Core.Systems.Physics2\lD.Definitions.BodyDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_body_def.html",tooltip="The body def class"];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Alis.Core.Systems.Physics2\lD.Definitions.FixtureDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_fixture_def.html",tooltip="The fixture def class"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.JointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_joint_def.html",tooltip="The joint def class"];
+  Node3 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.DistanceJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_distance_joint_def.html",tooltip="Distance joint definition. This requires defining an anchor point on both bodies and the non-zero len..."];
+  Node3 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.FixedMouse\lJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_fixed_mouse_joint_def.html",tooltip="Mouse joint definition. This requires a world target point, tuning parameters, and the time step."];
+  Node3 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.FrictionJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_friction_joint_def.html",tooltip="The friction joint def class"];
+  Node3 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.GearJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_gear_joint_def.html",tooltip="The gear joint def class"];
+  Node3 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.MotorJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_motor_joint_def.html",tooltip="The motor joint def class"];
+  Node3 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.Prismatic\lJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_prismatic_joint_def.html",tooltip="Prismatic joint definition. This requires defining a line of motion using an axis and an anchor point..."];
+  Node3 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.PulleyJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_pulley_joint_def.html",tooltip="Pulley joint definition. This requires two ground anchors, two dynamic body anchor points,..."];
+  Node3 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.RevoluteJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_revolute_joint_def.html",tooltip="Revolute joint definition. This requires defining an anchor point where the bodies are joined...."];
+  Node3 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.WeldJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_weld_joint_def.html",tooltip="Weld joint definition. You need to specify local anchor points where they are attached and the relati..."];
+  Node3 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="Alis.Core.Systems.Physics2\lD.Definitions.Joints.WheelJointDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_joints_1_1_wheel_joint_def.html",tooltip="Wheel joint definition. This requires defining a line of motion using an axis and an anchor point...."];
+  Node0 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="Alis.Core.Systems.Physics2\lD.Definitions.Shapes.ShapeDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_shapes_1_1_shape_def.html",tooltip="The shape def class"];
+  Node14 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="Alis.Core.Systems.Physics2\lD.Definitions.Shapes.ChainShapeDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_shapes_1_1_chain_shape_def.html",tooltip="A chain shape is a free form sequence of line segments. The chain has two-sided collision,..."];
+  Node14 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="Alis.Core.Systems.Physics2\lD.Definitions.Shapes.CircleShapeDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_shapes_1_1_circle_shape_def.html",tooltip="The circle shape def class"];
+  Node14 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="Alis.Core.Systems.Physics2\lD.Definitions.Shapes.EdgeShapeDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_shapes_1_1_edge_shape_def.html",tooltip="A line segment (edge) shape. These can be connected in chains or loops to other edge shapes...."];
+  Node14 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="Alis.Core.Systems.Physics2\lD.Definitions.Shapes.PolygonShapeDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_shapes_1_1_polygon_shape_def.html",tooltip="The polygon shape def class"];
+}

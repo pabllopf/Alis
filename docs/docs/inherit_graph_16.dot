@@ -1,0 +1,24 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="Alis.Core.Audio.Native.ALBase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_native_1_1_a_l_base.html",tooltip="This is a base class for OpenAL APIs that are using DllImport and want to resolve different dll names..."];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="Alis.Core.Audio.AL.AL",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_a_l_1_1_a_l.html",tooltip="Provides access to the OpenAL 1.1 flat API."];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Alis.Core.Audio.ALC.ALC",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_a_l_c_1_1_a_l_c.html",tooltip="Alc = Audio Library Context."];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Alis.Core.Audio.Extensions.\lCreative.EFX.EFX",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_e_f_x.html",tooltip="Exposes the functions of the Effects Extension."];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Alis.Core.Audio.Extensions.\lCreative.EnumerateAll.EnumerateAll",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_enumerate_all_1_1_enumerate_all.html",tooltip="Exposes the API in the EnumerateAll extension."];
+  Node0 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Alis.Core.Audio.Extensions.\lEXT.Double.EXTDouble",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_e_x_t_1_1_double_1_1_e_x_t_double.html",tooltip="The ext double class"];
+  Node0 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Alis.Core.Audio.Extensions.\lEXT.Float32.EXTFloat32",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_e_x_t_1_1_float32_1_1_e_x_t_float32.html",tooltip="The ext float 32 class"];
+  Node0 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Alis.Core.Audio.Extensions.\lSOFT.DeviceClock.DeviceClock",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_s_o_f_t_1_1_device_clock_1_1_device_clock.html",tooltip="The device clock class"];
+  Node0 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Alis.Core.Audio.Extensions.\lSOFT.SourceLatency.SourceLatency",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_s_o_f_t_1_1_source_latency_1_1_source_latency.html",tooltip="The source latency class"];
+}

@@ -1,0 +1,42 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="Alis.Core.Entities.Component",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_entities_1_1_component.html",tooltip="Define a general component."];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="Alis.Core.Components.Animator",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_animator.html",tooltip="The animator class"];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Alis.Core.Components.Audio\lSource",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_audio_source.html",tooltip="The audio source class"];
+  Node0 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Alis.Core.Components.Camera",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_camera.html",tooltip="The camera class"];
+  Node0 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Alis.Core.Components.Collider",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_collider.html",tooltip="The collider class"];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Alis.Core.Components.Box\lCollider2D",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_box_collider2_d.html",tooltip="The box collider class"];
+  Node4 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Alis.Core.Components.Circle\lCollider",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_circle_collider.html",tooltip="The circle collider class"];
+  Node0 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Alis.Core.Components.Light",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_light.html",tooltip="The light class"];
+  Node7 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Alis.Core.Components.Area\lLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_area_light.html",tooltip="The area light class"];
+  Node7 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Alis.Core.Components.Directional\lLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_directional_light.html",tooltip="The directional light class"];
+  Node7 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Alis.Core.Components.Point\lLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_point_light.html",tooltip="The point light class"];
+  Node7 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Alis.Core.Components.Spot\lLight",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_spot_light.html",tooltip="The spot light class"];
+  Node0 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="Alis.Core.Components.Mesh",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_mesh.html",tooltip="The mesh class"];
+  Node12 -> Node13 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node13 [label="Alis.Core.Components.SphereMesh",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_sphere_mesh.html",tooltip="The sphere mesh class"];
+  Node0 -> Node14 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node14 [label="Alis.Core.Components.Particle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_particle.html",tooltip="The particle class"];
+  Node0 -> Node15 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node15 [label="Alis.Core.Components.PhysicalBody",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_physical_body.html",tooltip="The physical body class"];
+  Node0 -> Node16 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node16 [label="Alis.Core.Components.Sprite",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_components_1_1_sprite.html",tooltip="The sprite class"];
+  Node0 -> Node17 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node17 [label="Alis.Example.SimpleMove",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_example_1_1_simple_move.html",tooltip="The simple move class"];
+}

@@ -1,0 +1,5 @@
+var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_seidel_1_1_seidel_decomposer =
+[
+    [ "ConvexPartition", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_seidel_1_1_seidel_decomposer.html#a73ab8c570593a219bdcc4a38ed73eae2", null ],
+    [ "ConvexPartitionTrapezoid", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_seidel_1_1_seidel_decomposer.html#a04b1841cc8766ac56a528e2e15400d8d", null ]
+];

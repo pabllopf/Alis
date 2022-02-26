@@ -1,0 +1,7 @@
+var struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_lo43b3a2c0927b5595ca6fdafe29d511bc =
+[
+    [ "IgnorePhysicsLogic", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_lo43b3a2c0927b5595ca6fdafe29d511bc.html#a1aea0ef9b1ea8b022989083864d7a2f8", null ],
+    [ "RestorePhysicsLogic", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_lo43b3a2c0927b5595ca6fdafe29d511bc.html#a74fedca4db35022e7e7ffbfd859406af", null ],
+    [ "IsPhysicsLogicIgnored", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_lo43b3a2c0927b5595ca6fdafe29d511bc.html#a4df50c0e5689a41b512d37bf9ed3f6dd", null ],
+    [ "ControllerIgnores", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_lo43b3a2c0927b5595ca6fdafe29d511bc.html#af4b74b1c6bea5f2d763d7153ba260cd1", null ]
+];

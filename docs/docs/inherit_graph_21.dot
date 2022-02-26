@@ -1,0 +1,16 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node431 [label="Alis.FluentApi.IBuild\l\< Setting \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_alis_1_1_fluent_api_1_1_i_build.html",tooltip=" "];
+  Node431 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="Alis.Core.Builders.Setting\lBuilder",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_builders_1_1_setting_builder.html",tooltip="Define a builder."];
+  Node415 [label="IDebug\< SettingBuilder,\l Func\< DebugBuilder, Debug \>\>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node415 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node343 [label="IGeneral\< SettingBuilder,\l Func\< GeneralBuilder,\l General \>\>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node343 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node298 [label="IWindow\< SettingBuilder,\l Func\< WindowBuilder,\l Window \>\>",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node298 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

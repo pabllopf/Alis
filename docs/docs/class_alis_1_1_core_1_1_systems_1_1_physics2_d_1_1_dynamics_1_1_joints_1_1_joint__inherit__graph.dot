@@ -1,0 +1,30 @@
+digraph "Alis.Core.Systems.Physics2D.Dynamics.Joints.Joint"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.Joint",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="The joint class"];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.AngleJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_angle_joint.html",tooltip="Maintains a fixed angle between two bodies"];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.DistanceJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_distance_joint.html",tooltip="A distance joint constrains two points on two bodies to remain at a fixed distance from each other...."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.FixedMouseJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_fixed_mouse_joint.html",tooltip="A mouse joint is used to make a point on a body track a specified world point. This a soft constraint..."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.FrictionJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_friction_joint.html",tooltip="Friction joint. This is used for top-down friction. It provides 2D translational friction and angular..."];
+  Node1 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.GearJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_gear_joint.html",tooltip="A gear joint is used to connect two joints together. Either joint can be a revolute or prismatic join..."];
+  Node1 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.MotorJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_motor_joint.html",tooltip="A motor joint is used to control the relative motion between two bodies. A typical usage is to contro..."];
+  Node1 -> Node8 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.PrismaticJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_prismatic_joint.html",tooltip="A prismatic joint. This joint provides one degree of freedom: translation along an axis fixed in body..."];
+  Node1 -> Node9 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node9 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.PulleyJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_pulley_joint.html",tooltip="The pulley joint is connected to two bodies and two fixed world points. The pulley supports a ratio s..."];
+  Node1 -> Node10 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node10 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.RevoluteJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_revolute_joint.html",tooltip="A revolute joint constrains to bodies to share a common point while they are free to rotate about the..."];
+  Node1 -> Node11 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node11 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.WeldJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_weld_joint.html",tooltip="A weld joint essentially glues two bodies together. A weld joint may distort somewhat because the isl..."];
+  Node1 -> Node12 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node12 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.WheelJoint",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_wheel_joint.html",tooltip="A wheel joint. This joint provides two degrees of freedom: translation along an axis fixed in bodyA a..."];
+}

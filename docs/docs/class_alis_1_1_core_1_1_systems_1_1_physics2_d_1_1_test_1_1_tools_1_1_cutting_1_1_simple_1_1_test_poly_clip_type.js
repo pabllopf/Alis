@@ -1,0 +1,5 @@
+var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_poly_clip_type =
+[
+    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_poly_clip_type.html#ab74d92cd9e8f66ea003fafd2ac7f6356", null ],
+    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_poly_clip_type.html#a14fce61f5ef7ed2901b4f35495753206", null ]
+];

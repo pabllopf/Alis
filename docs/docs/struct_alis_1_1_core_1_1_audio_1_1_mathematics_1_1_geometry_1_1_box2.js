@@ -1,0 +1,28 @@
+var struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2 =
+[
+    [ "Box2", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#ab0ff532f558b24aa08d9fe57be3e5053", null ],
+    [ "Box2", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a9a8c7eac778057df9f0b2a667d5a81cf", null ],
+    [ "Contains", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#aa0bff4894f00506e037f7a618de23112", null ],
+    [ "Contains", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a8cbeb1af13fdebad6ced47d9e45bd2a9", null ],
+    [ "Contains", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a26e38fdd23281b65e4c86dce0ae40116", null ],
+    [ "DistanceToNearestEdge", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a4f9a3c8732abe65e01119b7fa38e543d", null ],
+    [ "Translate", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a3f17f2fe3acc75c23172c7c3aade22c9", null ],
+    [ "Translated", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a3c1894eafcd1f39c014951020c7b757f", null ],
+    [ "Scale", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#af92d4988a0e876c2212780be15d37fe2", null ],
+    [ "Scaled", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#aa726344fbed058a8bed557fc15352aa8", null ],
+    [ "Inflate", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a73b0fbb2db8120dbfa97ff088061c71f", null ],
+    [ "Inflated", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#acc8f55aeebc14a8d1435dbdc793596e1", null ],
+    [ "operator==", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a784d624f17472ffe062758b0253e6923", null ],
+    [ "operator!=", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#af0e1cbf96d3f053a54bfdb38e123c5b5", null ],
+    [ "Equals", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a47637b8dd3dd600fd6aeeb728a81b985", null ],
+    [ "Equals", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a0d329abff6ad3fa013a64b56b34bc261", null ],
+    [ "GetHashCode", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#ae4f415160ec855031d7b88468428fd27", null ],
+    [ "ToString", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#ac6e4e37bbf6724b206470aa82b1f873b", null ],
+    [ "_min", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a03e8e73b21edb5825f279728e7511e0a", null ],
+    [ "_max", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#ac3c9201e742e7f10efc7f09142723925", null ],
+    [ "Min", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a468744b13d7a6ce8abb79391c25e1c02", null ],
+    [ "Max", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a9d152d81f495aa87610e672efdf1ae02", null ],
+    [ "Size", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a50cd850d3faff4459cc7828ccd87f154", null ],
+    [ "HalfSize", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a5b446edbceda294925aefc37e7e0b948", null ],
+    [ "Center", "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box2.html#a176f711f35493245168554201b2be0c6", null ]
+];
