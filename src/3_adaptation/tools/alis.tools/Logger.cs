@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace Alis.Tools
@@ -119,9 +123,59 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                string text = $"[{System.DateTime.Now}] TRACE \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n {System.Environment.StackTrace} \n";
+                StackTrace stack = new StackTrace();
+                string? assemblyQualifiedName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
+                string fullName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.FullName + "." + stack.GetFrame(1)?.GetMethod()?.Name;
+                ParameterInfo[]? parameters = stack.GetFrame(1)?.GetMethod()?.GetParameters();
+                string parametersText = "";
+                for (int index = 0; index < parameters.Length; index++)
+                {
+                    if (index != parameters.Length - 1)
+                    {
+                        parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}, ";
+                    }
+                    else
+                    {
+                        parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}";
+                    }
+                }
+                
+                string text = $"[{System.DateTime.Now}] TRACE '{fullName}({parametersText}) \n" +
+                              $"Assembly:    {assemblyQualifiedName} \n" +
+                              $"ThreadId:    {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                
+                System.Console.WriteLine(text);
+                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
+            }
+        }
+        
+        public static void Trace(params object[] args)
+        {
+            if (Level is LogLevel.Info)
+            {
+                StackTrace stack = new StackTrace();
+                string? assemblyQualifiedName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
+                string fullName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.FullName + "." + stack.GetFrame(1)?.GetMethod()?.Name;
+                ParameterInfo[]? parameters = stack.GetFrame(1)?.GetMethod()?.GetParameters();
+                string parametersText = "";
+                for (int index = 0; index < parameters.Length; index++)
+                {
+                    if (index != parameters.Length - 1)
+                    {
+                        parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}={args[index]}, ";
+                    }
+                    else
+                    {
+                        parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}={args[index]}";
+                    }
+                }
+                
+                string text = $"[{System.DateTime.Now}] TRACE '{fullName}({parametersText}) \n" +
+                              $"Assembly:    {assemblyQualifiedName} \n" +
+                              $"ThreadId:    {System.Environment.CurrentManagedThreadId} \n" +
+                              $"StackTrace:\n{System.Environment.StackTrace} \n";
+                
                 System.Console.WriteLine(text);
                 System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
             }
@@ -152,8 +206,15 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
+                StackTrace stack = new StackTrace();
+                int? id = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.GetHashCode();
+                string? assemblyQualifiedName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
+                string fullName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.FullName + "." + stack.GetFrame(1)?.GetMethod()?.Name;
+                    
                 string text = $"[{System.DateTime.Now}] TRACE '{message}' '{string.Join(" ", args)}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
+                              $"Assembly:    {assemblyQualifiedName} \n" +
+                              $"HashCode:    {id} \n" +
+                              $"ThreadId:    {System.Environment.CurrentManagedThreadId} \n" +
                               $"StackTrace:\n{System.Environment.StackTrace} \n";
                 System.Console.WriteLine(text);
                 System.IO.File.AppendAllText(LogFile.Name, contents: text, Encoding.UTF8);

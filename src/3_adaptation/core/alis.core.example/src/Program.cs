@@ -52,9 +52,10 @@ namespace Alis.Core.Example
             Console.WriteLine(args.Length);
             
             Transform t = new Transform();
+            //Console.WriteLine(t.GetHashCode());
             Transform t2 = new Transform(scale: new Vector3(1,2,3));
             Transform t3 = new Transform(scale: new Vector3(3,3,3), position: new Vector3(1,2,3), Vector3.One);
-            
+            /*
             Console.WriteLine(t.Rotation);
             t.Rotation = new Vector3(3,4,3);
             Console.WriteLine(t.Rotation);
@@ -66,7 +67,7 @@ namespace Alis.Core.Example
             Console.WriteLine(t.Scale);
             t.Scale = new Vector3(3,4,7);
             Console.WriteLine(t.Scale);
-            
+            */
             /*
             GameObject gameObject = new GameObject("Player");
             gameObject.Add(new Sprite());

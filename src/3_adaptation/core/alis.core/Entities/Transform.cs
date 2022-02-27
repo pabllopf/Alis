@@ -49,7 +49,7 @@ namespace Alis.Core.Entities
             scale = new Vector3(1.0f, 1.0f, 1.0f);
             position = new Vector3(0.0f, 0.0f, 0.0f);
             rotation = new Vector3(0.0f, 0.0f, 0.0f);
-            Tools.Logger.Trace("Transform()", "scale:", scale, "position:", position, "rotation:", rotation);
+            Tools.Logger.Trace();
         }
 
 
@@ -62,7 +62,7 @@ namespace Alis.Core.Entities
             this.scale = scale;
             position = new Vector3(0.0f, 0.0f, 0.0f);
             rotation = new Vector3(0.0f, 0.0f, 0.0f);
-            Tools.Logger.Trace("Transform(Vector3 scale)", "scale:", scale, "position:", position, "rotation:", rotation);
+            Tools.Logger.Trace(scale);
         }
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
@@ -75,7 +75,7 @@ namespace Alis.Core.Entities
             this.scale = scale;
             this.position = position;
             this.rotation = rotation;
-            Tools.Logger.Trace("Transform(Vector3 scale, Vector3 position, Vector3 rotation)", "scale:", scale, "position:", position, "rotation:", rotation);
+            Tools.Logger.Trace(scale, position, rotation);
         }
         
         /// <summary>
@@ -130,6 +130,11 @@ namespace Alis.Core.Entities
                 Tools.Logger.Trace("Rotation.Set(Vector3 rotation)", "rotation from:", rotation, "rotation to:", value);
                 rotation = value;
             }
+        }
+        
+        ~Transform()
+        {
+            Tools.Logger.Trace("~Transform()");
         }
     }
 }
