@@ -1,8 +1,5 @@
 var NAVTREEINDEX20 =
 {
-"struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a74817cd3c0e5b775dd37f5fc78fd0445":[16,0,0,2,0,3,0,0,0,1,5],
-"struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a7f0eb4931cf484ce437eaf5598da32cf":[16,0,0,2,0,3,0,0,0,1,6],
-"struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a8073c435a610da69998f5547cd6262ba":[16,0,0,2,0,3,0,0,0,1,19],
 "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a82028f81c9d3a12f5f991d2525ceebc1":[16,0,0,2,0,3,0,0,0,1,15],
 "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a9391faacc448ef416277e4960ed1f901":[16,0,0,2,0,3,0,0,0,1,20],
 "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a9409af41b6757a6abdc74faeb4613563":[16,0,0,2,0,3,0,0,0,1,11],
@@ -249,5 +246,8 @@ var NAVTREEINDEX20 =
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a7498a26b8e5404b89930d4dbbcc15e89":[16,0,0,2,0,4,0,2,17],
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a7b9d6da31e90f8cc668476a8aa0e6b00":[16,0,0,2,0,4,0,2,51],
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a7e5ec599fb8918a0c9031d998d306ee1":[16,0,0,2,0,4,0,2,49],
-"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a806297e4eb35a1c23f2f2dcad70076f6":[16,0,0,2,0,4,0,2,22]
+"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a806297e4eb35a1c23f2f2dcad70076f6":[16,0,0,2,0,4,0,2,22],
+"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a8120e22dd221efc98afc14d78822ae75":[16,0,0,2,0,4,0,2,3],
+"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a81abb0c4ae05b7ba7fb32d3de9b87259":[16,0,0,2,0,4,0,2,5],
+"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a832b7f8634bfcfdc8c131f8829832314":[16,0,0,2,0,4,0,2,9]
 };

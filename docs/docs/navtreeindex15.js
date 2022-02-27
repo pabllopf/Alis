@@ -1,9 +1,5 @@
 var NAVTREEINDEX15 =
 {
-"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_set.html#a00dd6481a4899f2c379da8679a35500d":[16,0,0,2,17,0,8,5,1,1,2,1],
-"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_set.html#a200320201b926836d5c2790d21e41168":[16,0,0,2,17,0,8,5,1,1,2,2],
-"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_set.html#a293ffda3ef064681fe085da0f356d3fc":[16,0,0,2,17,0,8,5,1,1,2,0],
-"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_set.html#a45e4f347cebb4cc3d25ccdafefdda9a3":[16,0,0,2,17,0,8,5,1,1,2,4],
 "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_set.html#af0fac3ebf302ffdbf398cef9e55947d1":[16,0,0,2,17,0,8,5,1,1,2,3],
 "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets_1_1_constrained_point_set.html":[16,0,0,2,17,0,8,5,1,2,0],
 "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets_1_1_constrained_point_set.html#a01cb2adb1e208fbefa39f56dc92291bf":[16,0,0,2,17,0,8,5,1,2,0,2],
@@ -249,5 +245,9 @@ var NAVTREEINDEX15 =
 "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html":[16,0,0,2,17,0,9,3],
 "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html#a01e656ad5e4b9efd0bc2a0b8056f1be3":[16,0,0,2,17,0,9,3,49],
 "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html#a02eb8f2705157e7550ab2255be877f46":[16,0,0,2,17,0,9,3,17],
-"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html#a0e020c3dfeb21d908fa118e6732174ab":[16,0,0,2,17,0,9,3,8]
+"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html#a0e020c3dfeb21d908fa118e6732174ab":[16,0,0,2,17,0,9,3,8],
+"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html#a1226f4049e9d1517aaf40d8f14baf024":[16,0,0,2,17,0,9,3,32],
+"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html#a1454d179e13f0bca66e8353a281d99cf":[16,0,0,2,17,0,9,3,11],
+"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html#a148556aeff34b2b82ea3c50592f0bef2":[16,0,0,2,17,0,9,3,30],
+"class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html#a14a4ffe3595d11f28f99f19a9206c6bc":[16,0,0,2,17,0,9,3,39]
 };

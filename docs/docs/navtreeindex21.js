@@ -1,8 +1,5 @@
 var NAVTREEINDEX21 =
 {
-"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a8120e22dd221efc98afc14d78822ae75":[16,0,0,2,0,4,0,2,3],
-"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a81abb0c4ae05b7ba7fb32d3de9b87259":[16,0,0,2,0,4,0,2,5],
-"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a832b7f8634bfcfdc8c131f8829832314":[16,0,0,2,0,4,0,2,9],
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a904d62a3df143adb1ab9851a80cc4374":[16,0,0,2,0,4,0,2,7],
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a970e757cb57d13422972c48bb79e9c33":[16,0,0,2,0,4,0,2,47],
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_data_1_1_quaternion.html#a99023bddb6d12a9f4187315c040beab4":[16,0,0,2,0,4,0,2,33],
@@ -249,5 +246,8 @@ var NAVTREEINDEX21 =
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box3d.html#ac68d6d44043b615e236df3b337e74df8":[16,0,0,2,0,4,1,7,1],
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box3d.html#ae52d764b8d0763e868779b91744bdf9c":[16,0,0,2,0,4,1,7,0],
 "struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box3d.html#aeeb22e0f9fd26fdd8772a76eb8e20c3a":[16,0,0,2,0,4,1,7,20],
-"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box3d.html#aefbb89a1b23d170b5d69042fd16f3a51":[16,0,0,2,0,4,1,7,14]
+"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box3d.html#aefbb89a1b23d170b5d69042fd16f3a51":[16,0,0,2,0,4,1,7,14],
+"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box3d.html#afe6fcfba867d757ea906e2f7e8552f47":[16,0,0,2,0,4,1,7,17],
+"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box3i.html":[16,0,0,2,0,4,1,8],
+"struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_geometry_1_1_box3i.html#a034879cf9fe6f62fafaa4c71812f95fe":[16,0,0,2,0,4,1,8,13]
 };

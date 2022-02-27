@@ -9,7 +9,7 @@ var searchData=
   ['mat22_3752',['Mat22',['../struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_mat22.html',1,'Alis::Core::Systems::Physics2D::Shared']]],
   ['mat33_3753',['Mat33',['../struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_mat33.html',1,'Alis::Core::Systems::Physics2D::Shared']]],
   ['mathconstants_3754',['MathConstants',['../class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_constants.html',1,'Alis::Core::Systems::Physics2D::Utilities']]],
-  ['mathhelper_3755',['MathHelper',['../class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_helper.html',1,'Alis.Core.Systems.Physics2D.Utilities.MathHelper'],['../class_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_math_helper.html',1,'Alis.Core.Audio.Mathematics.MathHelper']]],
+  ['mathhelper_3755',['MathHelper',['../class_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_math_helper.html',1,'Alis.Core.Audio.Mathematics.MathHelper'],['../class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_helper.html',1,'Alis.Core.Systems.Physics2D.Utilities.MathHelper']]],
   ['mathutils_3756',['MathUtils',['../class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_utilities_1_1_math_utils.html',1,'Alis::Core::Systems::Physics2D::Utilities']]],
   ['matrix2_3757',['Matrix2',['../struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_matrix_1_1_matrix2.html',1,'Alis::Core::Audio::Mathematics::Matrix']]],
   ['matrix2d_3758',['Matrix2d',['../struct_alis_1_1_core_1_1_audio_1_1_mathematics_1_1_matrix_1_1_matrix2d.html',1,'Alis::Core::Audio::Mathematics::Matrix']]],

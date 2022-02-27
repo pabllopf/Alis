@@ -14,6 +14,7 @@ var class_alis_1_1_tools_1_1_logger =
     [ "Success", "class_alis_1_1_tools_1_1_logger.html#aabb4512563f5b19e4bf289b436a08cec", null ],
     [ "Exception", "class_alis_1_1_tools_1_1_logger.html#aca69200159abcf60d15fa9e6f9c0bdf7", null ],
     [ "Exception", "class_alis_1_1_tools_1_1_logger.html#a8353fdc5cfcf15de7d031ab71d99aede", null ],
+    [ "Exception", "class_alis_1_1_tools_1_1_logger.html#a2197041dedd128b6e69a29581dd8632b", null ],
     [ "Level", "class_alis_1_1_tools_1_1_logger.html#af0d25ad6a4911d269c01547b98fa6b31", null ],
     [ "LogFile", "class_alis_1_1_tools_1_1_logger.html#ac7425c5fc4fb65646fa6d2068f38ef6d", null ]
 ];
