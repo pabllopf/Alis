@@ -30,6 +30,8 @@
 #region
 
 using System;
+using System.Numerics;
+using Alis.Core.Entities;
 
 #endregion
 
@@ -48,6 +50,23 @@ namespace Alis.Core.Example
         private static void Main(string[] args)
         {
             Console.WriteLine(args.Length);
+            
+            Transform t = new Transform();
+            Transform t2 = new Transform(scale: new Vector3(1,2,3));
+            Transform t3 = new Transform(scale: new Vector3(3,3,3), position: new Vector3(1,2,3), Vector3.One);
+            
+            Console.WriteLine(t.Rotation);
+            t.Rotation = new Vector3(3,4,3);
+            Console.WriteLine(t.Rotation);
+            
+            Console.WriteLine(t.Position);
+            t.Position = new Vector3(3,4,4);
+            Console.WriteLine(t.Position);
+            
+            Console.WriteLine(t.Scale);
+            t.Scale = new Vector3(3,4,7);
+            Console.WriteLine(t.Scale);
+            
             /*
             GameObject gameObject = new GameObject("Player");
             gameObject.Add(new Sprite());
