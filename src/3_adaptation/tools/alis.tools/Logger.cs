@@ -307,8 +307,12 @@ namespace Alis.Tools
                 Environment.StackTrace);
             
             Logs.Add(log);
+            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions {
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            };
             
-            return JsonSerializer.Serialize(log, new JsonSerializerOptions() { WriteIndented = true, Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)});
+            return JsonSerializer.Serialize(log, jsonSerializerSettings);
         }
 
         /// <summary>
@@ -321,7 +325,11 @@ namespace Alis.Tools
             System.Console.BackgroundColor = color;
             System.Console.ForegroundColor = ConsoleColor.White;
             System.Console.Out.WriteLine(text);
-            System.IO.File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, new JsonSerializerOptions() { WriteIndented = true }), Encoding.UTF8);
+            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions {
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            };
+            System.IO.File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, jsonSerializerSettings));
             System.Console.ResetColor();
         }
         
@@ -335,7 +343,11 @@ namespace Alis.Tools
             System.Console.BackgroundColor = color;
             System.Console.ForegroundColor = ConsoleColor.White;
             System.Console.Error.WriteLine(text);
-            System.IO.File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, new JsonSerializerOptions() { WriteIndented = true }), Encoding.UTF8);
+            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions {
+                WriteIndented = true,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
+            };
+            System.IO.File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, jsonSerializerSettings));
             System.Console.ResetColor();
         }
     }
