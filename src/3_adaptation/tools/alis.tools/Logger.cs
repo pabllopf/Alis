@@ -28,10 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Unicode;
 
 namespace Alis.Tools
 {
@@ -49,6 +52,11 @@ namespace Alis.Tools
         /// The my file
         /// </summary>
         private static readonly System.IO.FileStream LogFile;
+        
+        /// <summary>
+        /// The log
+        /// </summary>
+        private static List<Log> Logs = new List<Log>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Logger"/> class
@@ -73,7 +81,7 @@ namespace Alis.Tools
                 System.IO.Directory.CreateDirectory(path);
             }
 
-            LogFile = System.IO.File.Create(path + "/" + System.DateTime.Now.ToString("yyyy_M_dd-HH_mm_ss") + ".log");
+            LogFile = System.IO.File.Create(path + "/" + System.DateTime.Now.ToString("yyyy_M_dd-HH_mm_ss") + ".json");
             LogFile.Close();
         }
         
@@ -86,14 +94,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] INFO '{message}' \n" +
-                       $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                       $"StackTrace:\n {System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.ResetColor();
+                Write(CreateText(LogType.Info, message), ConsoleColor.DarkGray);
             }
         }
         
@@ -106,14 +107,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkGray;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] INFO '{message}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n {System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text, args);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.ResetColor();
+                Write(CreateText(LogType.Info, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkGray);
             }
         }
         /// <summary>
@@ -122,62 +116,20 @@ namespace Alis.Tools
         public static void Trace()
         {
             if (Level is LogLevel.Info)
-            {
-                StackTrace stack = new StackTrace();
-                string? assemblyQualifiedName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
-                string fullName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.FullName + "." + stack.GetFrame(1)?.GetMethod()?.Name;
-                ParameterInfo[]? parameters = stack.GetFrame(1)?.GetMethod()?.GetParameters();
-                string parametersText = "";
-                for (int index = 0; index < parameters.Length; index++)
-                {
-                    if (index != parameters.Length - 1)
-                    {
-                        parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}, ";
-                    }
-                    else
-                    {
-                        parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}";
-                    }
-                }
-                
-                string text = $"[{System.DateTime.Now}] TRACE '{fullName}({parametersText}) \n" +
-                              $"Assembly:    {assemblyQualifiedName} \n" +
-                              $"ThreadId:    {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
+            {   
+                Write(CreateText(LogType.Trace, ""), ConsoleColor.DarkGray);
             }
         }
         
+        /// <summary>
+        /// Traces the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Trace(params object[] args)
         {
             if (Level is LogLevel.Info)
             {
-                StackTrace stack = new StackTrace();
-                string? assemblyQualifiedName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
-                string fullName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.FullName + "." + stack.GetFrame(1)?.GetMethod()?.Name;
-                ParameterInfo[]? parameters = stack.GetFrame(1)?.GetMethod()?.GetParameters();
-                string parametersText = "";
-                for (int index = 0; index < parameters.Length; index++)
-                {
-                    if (index != parameters.Length - 1)
-                    {
-                        parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}={args[index]}, ";
-                    }
-                    else
-                    {
-                        parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}={args[index]}";
-                    }
-                }
-                
-                string text = $"[{System.DateTime.Now}] TRACE '{fullName}({parametersText}) \n" +
-                              $"Assembly:    {assemblyQualifiedName} \n" +
-                              $"ThreadId:    {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
+                Write(CreateText(LogType.Trace, $"{string.Join(",", args)}"), ConsoleColor.DarkGray);
             }
         }
         
@@ -189,11 +141,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                string text = $"[{System.DateTime.Now}] TRACE '{message}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
+                Write(CreateText(LogType.Trace, message), ConsoleColor.DarkGray);
             }
         }
         
@@ -206,18 +154,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info)
             {
-                StackTrace stack = new StackTrace();
-                int? id = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.GetHashCode();
-                string? assemblyQualifiedName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
-                string fullName = stack.GetFrame(1)?.GetMethod()?.ReflectedType?.FullName + "." + stack.GetFrame(1)?.GetMethod()?.Name;
-                    
-                string text = $"[{System.DateTime.Now}] TRACE '{message}' '{string.Join(" ", args)}' \n" +
-                              $"Assembly:    {assemblyQualifiedName} \n" +
-                              $"HashCode:    {id} \n" +
-                              $"ThreadId:    {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, contents: text, Encoding.UTF8);
+                Write(CreateText(LogType.Trace, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkGray);
             }
         }
         
@@ -229,14 +166,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkCyan;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] LOG '{message}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.ResetColor();
+                Write(CreateText(LogType.Log, $"{message}"), ConsoleColor.DarkCyan);
             }
         }
         
@@ -249,14 +179,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkCyan;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] LOG '{message}' '{string.Join(" ", args)}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.ResetColor();
+                Write(CreateText(LogType.Log, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkCyan);
             }
         }
         
@@ -268,14 +191,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkYellow;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] WARNING '{message}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.ResetColor();
+                Write(CreateText(LogType.Warning, $"{message}"), ConsoleColor.DarkYellow);
             }
         }
         
@@ -288,14 +204,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkYellow;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] WARNING '{message}' '{string.Join(" ", args)}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.ResetColor();
+                Write(CreateText(LogType.Warning, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkYellow);
             }
         }
         
@@ -307,14 +216,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkGreen;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] SUCCESS '{message}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.ResetColor();
+                Write(CreateText(LogType.Success , $"{message}"), ConsoleColor.DarkGreen);
             }
         }
         
@@ -327,14 +229,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkGreen;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] SUCCESS '{message}' '{string.Join(" ", args)}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.Console.WriteLine(text);
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.ResetColor();
+                Write(CreateText(LogType.Success, $"{message} {string.Join(",", args)}"),ConsoleColor.DarkGreen);
             }
         }
         
@@ -347,14 +242,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal or LogLevel.Critical)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkRed;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] EXCEPTION '{exception.Message}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.Error.WriteLine(text);
-                System.Console.ResetColor();
+                WriteError(CreateText(LogType.Exception, $"{exception.Message}"), ConsoleColor.DarkRed);
             }
         }
         
@@ -367,14 +255,7 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal or LogLevel.Critical)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkRed;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] EXCEPTION '{message}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.Error.WriteLine(text);
-                System.Console.ResetColor();
+                WriteError(CreateText(LogType.Exception, $"{message}"), ConsoleColor.DarkRed);
             }
         }
         
@@ -387,15 +268,75 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal or LogLevel.Critical)
             {
-                System.Console.BackgroundColor = System.ConsoleColor.DarkRed;
-                System.Console.ForegroundColor = System.ConsoleColor.White;
-                string text = $"[{System.DateTime.Now}] EXCEPTION '{message}' '{string.Join(" ", args)}' \n" +
-                              $"ThreadId:  {System.Environment.CurrentManagedThreadId} \n" +
-                              $"StackTrace:\n{System.Environment.StackTrace} \n";
-                System.IO.File.AppendAllText(LogFile.Name, text, Encoding.UTF8);
-                System.Console.Error.WriteLine(text);
-                System.Console.ResetColor();
+                WriteError(CreateText(LogType.Exception, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkRed);
             }
+        }
+
+        /// <summary>
+        /// Creates the text using the specified level
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="message">The message</param>
+        /// <returns>The string</returns>
+        private static string CreateText(LogType level, string message)
+        {
+            StackTrace stack = new StackTrace();
+            string? assemblyQualifiedName = stack.GetFrame(2)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
+            string fullName = stack.GetFrame(2)?.GetMethod()?.ReflectedType?.FullName + "." + stack.GetFrame(2)?.GetMethod()?.Name;
+            ParameterInfo[]? parameters = stack.GetFrame(2)?.GetMethod()?.GetParameters();
+            string parametersText = "";
+            for (int index = 0; index < parameters.Length; index++)
+            {
+                if (index != parameters.Length - 1)
+                {
+                    parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}, ";
+                }
+                else
+                {
+                    parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}";
+                }
+            }
+            
+            Log log = new Log(
+                $"{level}", 
+                DateTime.Now,
+                message, 
+                $"{fullName}({parametersText})", 
+                assemblyQualifiedName ?? "Default", 
+                System.Environment.CurrentManagedThreadId, 
+                Environment.StackTrace);
+            
+            Logs.Add(log);
+            
+            return JsonSerializer.Serialize(log, new JsonSerializerOptions() { WriteIndented = true, Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)});
+        }
+
+        /// <summary>
+        /// Writes the text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="color">The color</param>
+        private static void Write(string text, ConsoleColor color)
+        {
+            System.Console.BackgroundColor = color;
+            System.Console.ForegroundColor = ConsoleColor.White;
+            System.Console.Out.WriteLine(text);
+            System.IO.File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, new JsonSerializerOptions() { WriteIndented = true }), Encoding.UTF8);
+            System.Console.ResetColor();
+        }
+        
+        /// <summary>
+        /// Writes the error using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="color">The color</param>
+        private static void WriteError(string text, ConsoleColor color)
+        {
+            System.Console.BackgroundColor = color;
+            System.Console.ForegroundColor = ConsoleColor.White;
+            System.Console.Error.WriteLine(text);
+            System.IO.File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, new JsonSerializerOptions() { WriteIndented = true }), Encoding.UTF8);
+            System.Console.ResetColor();
         }
     }
 }

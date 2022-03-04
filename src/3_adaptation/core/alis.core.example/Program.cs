@@ -27,13 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 using System.Numerics;
 using Alis.Core.Entities;
-
-#endregion
+using Alis.Tools;
 
 namespace Alis.Core.Example
 {
@@ -55,6 +52,18 @@ namespace Alis.Core.Example
             //Console.WriteLine(t.GetHashCode());
             Transform t2 = new Transform(scale: new Vector3(1,2,3));
             Transform t3 = new Transform(scale: new Vector3(3,3,3), position: new Vector3(1,2,3), Vector3.One);
+            
+            
+            Logger.Exception(new Exception());
+            
+            Logger.Info("info message");
+            
+            Logger.Log("log message");
+            
+            Logger.Warning("warning message");
+            
+            Logger.Success("success message");
+            
             /*
             Console.WriteLine(t.Rotation);
             t.Rotation = new Vector3(3,4,3);
