@@ -36,12 +36,12 @@ using System.Threading.Tasks;
 namespace Alis.Core.Network.Example.Client.Simple
 {
     /// <summary>
-    /// The simple client class
+    ///     The simple client class
     /// </summary>
     internal class SimpleClient
     {
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public async Task Run()
         {
@@ -64,7 +64,7 @@ namespace Alis.Core.Network.Example.Client.Simple
         }
 
         /// <summary>
-        /// Sends the web socket
+        ///     Sends the web socket
         /// </summary>
         /// <param name="webSocket">The web socket</param>
         private async Task Send(WebSocket webSocket)
@@ -75,7 +75,7 @@ namespace Alis.Core.Network.Example.Client.Simple
         }
 
         /// <summary>
-        /// Receives the web socket
+        ///     Receives the web socket
         /// </summary>
         /// <param name="webSocket">The web socket</param>
         private async Task Receive(WebSocket webSocket)

@@ -35,19 +35,22 @@ using System.Threading.Tasks;
 namespace Alis.Core.Network.Internal
 {
     /// <summary>
-    /// The binary reader writer class
+    ///     The binary reader writer class
     /// </summary>
     internal class BinaryReaderWriter
     {
         /// <summary>
-        /// Reads the exactly using the specified length
+        ///     Reads the exactly using the specified length
         /// </summary>
         /// <param name="length">The length</param>
         /// <param name="stream">The stream</param>
         /// <param name="buffer">The buffer</param>
         /// <param name="cancellationToken">The cancellation token</param>
         /// <exception cref="EndOfStreamException"></exception>
-        /// <exception cref="InternalBufferOverflowException">Unable to read {length} bytes into buffer (offset: {buffer.Offset} size: {buffer.Count}). Use a larger read buffer</exception>
+        /// <exception cref="InternalBufferOverflowException">
+        ///     Unable to read {length} bytes into buffer (offset: {buffer.Offset}
+        ///     size: {buffer.Count}). Use a larger read buffer
+        /// </exception>
         public static async Task ReadExactly(int length, Stream stream, ArraySegment<byte> buffer,
             CancellationToken cancellationToken)
         {
@@ -80,7 +83,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Reads the u short exactly using the specified stream
+        ///     Reads the u short exactly using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <param name="isLittleEndian">The is little endian</param>
@@ -101,7 +104,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Reads the u long exactly using the specified stream
+        ///     Reads the u long exactly using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <param name="isLittleEndian">The is little endian</param>
@@ -122,7 +125,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Reads the long exactly using the specified stream
+        ///     Reads the long exactly using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <param name="isLittleEndian">The is little endian</param>
@@ -143,7 +146,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Writes the int using the specified value
+        ///     Writes the int using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="stream">The stream</param>
@@ -160,7 +163,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Writes the u long using the specified value
+        ///     Writes the u long using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="stream">The stream</param>
@@ -177,7 +180,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Writes the long using the specified value
+        ///     Writes the long using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="stream">The stream</param>
@@ -194,7 +197,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Writes the u short using the specified value
+        ///     Writes the u short using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <param name="stream">The stream</param>

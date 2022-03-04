@@ -32,12 +32,12 @@ using System.Runtime.CompilerServices;
 namespace Alis.Core.Audio.Core.Utility
 {
     /// <summary>
-    /// The utils class
+    ///     The utils class
     /// </summary>
     public static class Utils
     {
         /// <summary>
-        /// Swaps the a
+        ///     Swaps the a
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="a">The </param>

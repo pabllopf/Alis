@@ -40,38 +40,43 @@ using Microsoft.Extensions.Logging;
 namespace Alis.Core.Network.Example.Server
 {
     /// <summary>
-    /// The web server class
+    ///     The web server class
     /// </summary>
-    /// <seealso cref="IDisposable"/>
+    /// <seealso cref="IDisposable" />
     public class WebServer : IDisposable
     {
         /// <summary>
-        /// The logger
+        ///     The logger
         /// </summary>
         private readonly ILogger _logger;
+
         /// <summary>
-        /// The logger factory
+        ///     The logger factory
         /// </summary>
         private readonly ILoggerFactory _loggerFactory;
+
         /// <summary>
-        /// The supported sub protocols
+        ///     The supported sub protocols
         /// </summary>
         private readonly HashSet<string> _supportedSubProtocols;
+
         /// <summary>
-        /// The web socket server factory
+        ///     The web socket server factory
         /// </summary>
         private readonly IWebSocketServerFactory _webSocketServerFactory;
+
         /// <summary>
-        /// The is disposed
+        ///     The is disposed
         /// </summary>
         private bool _isDisposed;
+
         /// <summary>
-        /// The listener
+        ///     The listener
         /// </summary>
         private TcpListener _listener;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebServer"/> class
+        ///     Initializes a new instance of the <see cref="WebServer" /> class
         /// </summary>
         /// <param name="webSocketServerFactory">The web socket server factory</param>
         /// <param name="loggerFactory">The logger factory</param>
@@ -87,12 +92,12 @@ namespace Alis.Core.Network.Example.Server
 
         // const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB
         /// <summary>
-        /// The buffer size
+        ///     The buffer size
         /// </summary>
         private const int BUFFER_SIZE = 4 * 1024 * 1024; // 4MB
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -123,7 +128,7 @@ namespace Alis.Core.Network.Example.Server
         }
 
         /// <summary>
-        /// Processes the tcp client using the specified tcp client
+        ///     Processes the tcp client using the specified tcp client
         /// </summary>
         /// <param name="tcpClient">The tcp client</param>
         private void ProcessTcpClient(TcpClient tcpClient)
@@ -132,7 +137,7 @@ namespace Alis.Core.Network.Example.Server
         }
 
         /// <summary>
-        /// Gets the sub protocol using the specified requested sub protocols
+        ///     Gets the sub protocol using the specified requested sub protocols
         /// </summary>
         /// <param name="requestedSubProtocols">The requested sub protocols</param>
         /// <returns>The string</returns>
@@ -159,7 +164,7 @@ namespace Alis.Core.Network.Example.Server
         }
 
         /// <summary>
-        /// Processes the tcp client using the specified tcp client
+        ///     Processes the tcp client using the specified tcp client
         /// </summary>
         /// <param name="tcpClient">The tcp client</param>
         private async Task ProcessTcpClientAsync(TcpClient tcpClient)
@@ -227,7 +232,7 @@ namespace Alis.Core.Network.Example.Server
         }
 
         /// <summary>
-        /// Responds the to web socket request using the specified web socket
+        ///     Responds the to web socket request using the specified web socket
         /// </summary>
         /// <param name="webSocket">The web socket</param>
         /// <param name="token">The token</param>
@@ -260,7 +265,7 @@ namespace Alis.Core.Network.Example.Server
         }
 
         /// <summary>
-        /// Listens the port
+        ///     Listens the port
         /// </summary>
         /// <param name="port">The port</param>
         /// <exception cref="Exception"></exception>

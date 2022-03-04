@@ -35,49 +35,57 @@ using System.Threading.Tasks;
 namespace Alis.Core.Network.Example.Client.Complex
 {
     /// <summary>
-    /// The stress test class
+    ///     The stress test class
     /// </summary>
     internal class StressTest
     {
         /// <summary>
-        /// The client factory
+        ///     The client factory
         /// </summary>
         private readonly IWebSocketClientFactory _clientFactory;
+
         /// <summary>
-        /// The max num bytes per message
+        ///     The max num bytes per message
         /// </summary>
         private readonly int _maxNumBytesPerMessage;
+
         /// <summary>
-        /// The min num bytes per message
+        ///     The min num bytes per message
         /// </summary>
         private readonly int _minNumBytesPerMessage;
+
         /// <summary>
-        /// The num items
+        ///     The num items
         /// </summary>
         private readonly int _numItems;
+
         /// <summary>
-        /// The seed
+        ///     The seed
         /// </summary>
         private readonly int _seed;
+
         /// <summary>
-        /// The uri
+        ///     The uri
         /// </summary>
         private readonly Uri _uri;
+
         /// <summary>
-        /// The expected values
+        ///     The expected values
         /// </summary>
         private byte[][] _expectedValues;
+
         /// <summary>
-        /// The token
+        ///     The token
         /// </summary>
         private CancellationToken _token;
+
         /// <summary>
-        /// The web socket
+        ///     The web socket
         /// </summary>
         private WebSocket _webSocket;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StressTest"/> class
+        ///     Initializes a new instance of the <see cref="StressTest" /> class
         /// </summary>
         /// <param name="seed">The seed</param>
         /// <param name="uri">The uri</param>
@@ -95,7 +103,7 @@ namespace Alis.Core.Network.Example.Client.Complex
         }
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public async Task Run()
         {
@@ -135,7 +143,7 @@ namespace Alis.Core.Network.Example.Client.Complex
         }
 
         /// <summary>
-        /// Describes whether are equal
+        ///     Describes whether are equal
         /// </summary>
         /// <param name="actual">The actual</param>
         /// <param name="expected">The expected</param>
@@ -160,7 +168,7 @@ namespace Alis.Core.Network.Example.Client.Complex
         }
 
         /// <summary>
-        /// Receives the loop
+        ///     Receives the loop
         /// </summary>
         /// <exception cref="Exception">Expected: {valueExpected.Length} bytes Actual: {result.Count} bytes. Contents different.</exception>
         /// <exception cref="Exception">Multi frame messages not supported</exception>

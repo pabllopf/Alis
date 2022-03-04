@@ -34,10 +34,10 @@ namespace Alis.Core.Managers
     /// <summary>
     ///     <br />
     /// </summary>
-    public class SceneManager 
+    public class SceneManager
     {
         /// <summary>
-        /// Adds the scene
+        ///     Adds the scene
         /// </summary>
         /// <param name="scene">The scene</param>
         public void Add(Scene scene)

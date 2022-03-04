@@ -40,7 +40,7 @@ namespace Alis.Core.Audio.Extensions.Creative.EnumerateAll
     public class EnumerateAll : ALBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnumerateAll"/> class
+        ///     Initializes a new instance of the <see cref="EnumerateAll" /> class
         /// </summary>
         static EnumerateAll()
         {
@@ -49,7 +49,7 @@ namespace Alis.Core.Audio.Extensions.Creative.EnumerateAll
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnumerateAll"/> class
+        ///     Initializes a new instance of the <see cref="EnumerateAll" /> class
         /// </summary>
         private EnumerateAll()
         {

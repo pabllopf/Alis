@@ -63,9 +63,12 @@ namespace Alis.Core.Audio
         public string IOS => MacOS;
 
         /// <summary>
-        /// Gets the library name
+        ///     Gets the library name
         /// </summary>
-        /// <exception cref="NotSupportedException">The library name couldn't be resolved for the given platform ('{RuntimeInformation.OSDescription}').</exception>
+        /// <exception cref="NotSupportedException">
+        ///     The library name couldn't be resolved for the given platform
+        ///     ('{RuntimeInformation.OSDescription}').
+        /// </exception>
         /// <returns>The string</returns>
         public string GetLibraryName()
         {

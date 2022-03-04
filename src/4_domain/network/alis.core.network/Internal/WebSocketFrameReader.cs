@@ -43,7 +43,7 @@ namespace Alis.Core.Network.Internal
     internal static class WebSocketFrameReader
     {
         /// <summary>
-        /// Calculates the num bytes to read using the specified num bytes letf to read
+        ///     Calculates the num bytes to read using the specified num bytes letf to read
         /// </summary>
         /// <param name="numBytesLetfToRead">The num bytes letf to read</param>
         /// <param name="bufferSize">The buffer size</param>

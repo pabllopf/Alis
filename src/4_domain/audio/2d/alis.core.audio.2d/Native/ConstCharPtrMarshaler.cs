@@ -33,18 +33,18 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Audio.Native
 {
     /// <summary>
-    /// The const char ptr marshaler class
+    ///     The const char ptr marshaler class
     /// </summary>
-    /// <seealso cref="ICustomMarshaler"/>
+    /// <seealso cref="ICustomMarshaler" />
     internal class ConstCharPtrMarshaler : ICustomMarshaler
     {
         /// <summary>
-        /// The const char ptr marshaler
+        ///     The const char ptr marshaler
         /// </summary>
         private static readonly ConstCharPtrMarshaler Instance = new ConstCharPtrMarshaler();
 
         /// <summary>
-        /// Cleans the up managed data using the specified managed obj
+        ///     Cleans the up managed data using the specified managed obj
         /// </summary>
         /// <param name="ManagedObj">The managed obj</param>
         public void CleanUpManagedData(object ManagedObj)
@@ -52,7 +52,7 @@ namespace Alis.Core.Audio.Native
         }
 
         /// <summary>
-        /// Cleans the up native data using the specified p native data
+        ///     Cleans the up native data using the specified p native data
         /// </summary>
         /// <param name="pNativeData">The native data</param>
         public void CleanUpNativeData(IntPtr pNativeData)
@@ -60,16 +60,19 @@ namespace Alis.Core.Audio.Native
         }
 
         /// <summary>
-        /// Gets the native data size
+        ///     Gets the native data size
         /// </summary>
         /// <returns>The int</returns>
         public int GetNativeDataSize() => IntPtr.Size;
 
         /// <summary>
-        /// Marshals the managed to native using the specified managed obj
+        ///     Marshals the managed to native using the specified managed obj
         /// </summary>
         /// <param name="ManagedObj">The managed obj</param>
-        /// <exception cref="ArgumentException">{nameof(ConstCharPtrMarshaler)} only supports marshaling of strings. Got '{ManagedObj.GetType()}'</exception>
+        /// <exception cref="ArgumentException">
+        ///     {nameof(ConstCharPtrMarshaler)} only supports marshaling of strings. Got
+        ///     '{ManagedObj.GetType()}'
+        /// </exception>
         /// <returns>The int ptr</returns>
         public IntPtr MarshalManagedToNative(object ManagedObj)
         {
@@ -84,7 +87,7 @@ namespace Alis.Core.Audio.Native
         }
 
         /// <summary>
-        /// Marshals the native to managed using the specified p native data
+        ///     Marshals the native to managed using the specified p native data
         /// </summary>
         /// <param name="pNativeData">The native data</param>
         /// <returns>The object</returns>
@@ -93,7 +96,7 @@ namespace Alis.Core.Audio.Native
         // See https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.custommarshalers.typetotypeinfomarshaler.getinstance
 #pragma warning disable IDE0060 // Remove unused parameter
         /// <summary>
-        /// Gets the instance using the specified cookie
+        ///     Gets the instance using the specified cookie
         /// </summary>
         /// <param name="cookie">The cookie</param>
         /// <returns>The custom marshaler</returns>

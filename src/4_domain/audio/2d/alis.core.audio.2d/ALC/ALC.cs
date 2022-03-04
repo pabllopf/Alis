@@ -39,7 +39,7 @@ namespace Alis.Core.Audio.ALC
     public class ALC : ALBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ALC"/> class
+        ///     Initializes a new instance of the <see cref="ALC" /> class
         /// </summary>
         static ALC()
         {
@@ -48,18 +48,19 @@ namespace Alis.Core.Audio.ALC
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ALC"/> class
+        ///     Initializes a new instance of the <see cref="ALC" /> class
         /// </summary>
         private ALC()
         {
         }
 
         /// <summary>
-        /// The lib
+        ///     The lib
         /// </summary>
         internal const string Lib = AL.AL.Lib;
+
         /// <summary>
-        /// The cdecl
+        ///     The cdecl
         /// </summary>
         internal const CallingConvention AlcCallingConv = CallingConvention.Cdecl;
 

@@ -36,13 +36,13 @@ using Alis.Core.Audio.Native;
 namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
 {
     /// <summary>
-    /// The source latency class
+    ///     The source latency class
     /// </summary>
-    /// <seealso cref="ALBase"/>
+    /// <seealso cref="ALBase" />
     public class SourceLatency : ALBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SourceLatency"/> class
+        ///     Initializes a new instance of the <see cref="SourceLatency" /> class
         /// </summary>
         static SourceLatency()
         {
@@ -51,7 +51,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SourceLatency"/> class
+        ///     Initializes a new instance of the <see cref="SourceLatency" /> class
         /// </summary>
         private SourceLatency()
         {
@@ -69,7 +69,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
         public static bool IsExtensionPresent() => AL.AL.IsExtensionPresent(ExtensionName);
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -84,7 +84,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
         }
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -95,7 +95,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
         }
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -114,7 +114,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
         }
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -130,7 +130,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
         }
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -141,7 +141,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
         }
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -154,7 +154,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
 
 #pragma warning disable SA1516 // Elements should be separated by blank line
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -163,19 +163,19 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
             _GetSourcei64vPtr(source, param, values);
 
         /// <summary>
-        /// The get sourcei 64v ptr delegate
+        ///     The get sourcei 64v ptr delegate
         /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourcei64vPtrDelegate(int source, SourceLatencyVector2i param, long* values);
 
         /// <summary>
-        /// The get sourcei 64v ptr delegate
+        ///     The get sourcei 64v ptr delegate
         /// </summary>
         private static readonly GetSourcei64vPtrDelegate _GetSourcei64vPtr =
             LoadDelegate<GetSourcei64vPtrDelegate>("alGetSourcei64vSOFT");
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -184,19 +184,19 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
             _GetSourcei64vRef(source, param, out values);
 
         /// <summary>
-        /// The get sourcei 64v ref delegate
+        ///     The get sourcei 64v ref delegate
         /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourcei64vRefDelegate(int source, SourceLatencyVector2i param, out long values);
 
         /// <summary>
-        /// The get sourcei 64v ref delegate
+        ///     The get sourcei 64v ref delegate
         /// </summary>
         private static readonly GetSourcei64vRefDelegate _GetSourcei64vRef =
             LoadDelegate<GetSourcei64vRefDelegate>("alGetSourcei64vSOFT");
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -205,19 +205,19 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
             _GetSourcei64vArray(source, param, values);
 
         /// <summary>
-        /// The get sourcei 64v array delegate
+        ///     The get sourcei 64v array delegate
         /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourcei64vArrayDelegate(int source, SourceLatencyVector2i param, long[] values);
 
         /// <summary>
-        /// The get sourcei 64v array delegate
+        ///     The get sourcei 64v array delegate
         /// </summary>
         private static readonly GetSourcei64vArrayDelegate _GetSourcei64vArray =
             LoadDelegate<GetSourcei64vArrayDelegate>("alGetSourcei64vSOFT");
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -226,19 +226,19 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
             _GetSourcedvPtr(source, param, values);
 
         /// <summary>
-        /// The get sourcedv ptr delegate
+        ///     The get sourcedv ptr delegate
         /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private unsafe delegate void GetSourcedvPtrDelegate(int source, SourceLatencyVector2d param, double* values);
 
         /// <summary>
-        /// The get sourcedv ptr delegate
+        ///     The get sourcedv ptr delegate
         /// </summary>
         private static readonly GetSourcedvPtrDelegate _GetSourcedvPtr =
             LoadDelegate<GetSourcedvPtrDelegate>("alGetSourcedvSOFT");
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -247,19 +247,19 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
             _GetSourcedvRef(source, param, out values);
 
         /// <summary>
-        /// The get sourcedv ref delegate
+        ///     The get sourcedv ref delegate
         /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourcedvRefDelegate(int source, SourceLatencyVector2d param, out double values);
 
         /// <summary>
-        /// The get sourcedv ref delegate
+        ///     The get sourcedv ref delegate
         /// </summary>
         private static readonly GetSourcedvRefDelegate _GetSourcedvRef =
             LoadDelegate<GetSourcedvRefDelegate>("alGetSourcedvSOFT");
 
         /// <summary>
-        /// Gets the source using the specified source
+        ///     Gets the source using the specified source
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
@@ -268,13 +268,13 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency
             _GetSourcedvArray(source, param, values);
 
         /// <summary>
-        /// The get sourcedv array delegate
+        ///     The get sourcedv array delegate
         /// </summary>
         [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
         private delegate void GetSourcedvArrayDelegate(int source, SourceLatencyVector2d param, double[] values);
 
         /// <summary>
-        /// The get sourcedv array delegate
+        ///     The get sourcedv array delegate
         /// </summary>
         private static readonly GetSourcedvArrayDelegate _GetSourcedvArray =
             LoadDelegate<GetSourcedvArrayDelegate>("alGetSourcedvSOFT");

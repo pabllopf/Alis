@@ -35,25 +35,27 @@ using Microsoft.Extensions.Logging;
 namespace Alis.Core.Network.Example.Server
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     internal class Program
     {
         /// <summary>
-        /// The logger
+        ///     The logger
         /// </summary>
         private static ILogger _logger;
+
         /// <summary>
-        /// The logger factory
+        ///     The logger factory
         /// </summary>
         private static ILoggerFactory _loggerFactory;
+
         /// <summary>
-        /// The web socket server factory
+        ///     The web socket server factory
         /// </summary>
         private static IWebSocketServerFactory _webSocketServerFactory;
 
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         private static void Main(string[] args)
@@ -67,7 +69,7 @@ namespace Alis.Core.Network.Example.Server
         }
 
         /// <summary>
-        /// Starts the web server
+        ///     Starts the web server
         /// </summary>
         private static async Task StartWebServer()
         {

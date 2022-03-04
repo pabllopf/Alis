@@ -41,15 +41,14 @@ namespace Alis.Core
         public Game()
         {
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Game"/> class
+        ///     Initializes a new instance of the <see cref="Game" /> class
         /// </summary>
         /// <param name="isRunning">The is running</param>
         [JsonConstructor]
         public Game(bool isRunning)
         {
-
         }
 
         /// <summary>Gets a value indicating whether this instance is running.</summary>
@@ -58,7 +57,7 @@ namespace Alis.Core
         /// </value>
         [JsonPropertyName("_IsRunning")]
         private static bool IsRunning { get; set; } = true;
-        
+
         /// <summary>Gets or sets the configuration.</summary>
         /// <value>The configuration.</value>
         [JsonPropertyName("_Setting")]
@@ -90,7 +89,6 @@ namespace Alis.Core
 
         ~Game()
         {
-            
         }
     }
 }

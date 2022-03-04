@@ -32,7 +32,7 @@ using System.IO;
 namespace Alis.Core.Network
 {
     /// <summary>
-    /// The buffer pool interface
+    ///     The buffer pool interface
     /// </summary>
     public interface IBufferPool
     {

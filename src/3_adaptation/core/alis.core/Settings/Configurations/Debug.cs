@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Text.Json.Serialization;
-using Alis.Core.Entities;
 using Alis.Tools;
 
 namespace Alis.Core.Settings.Configurations

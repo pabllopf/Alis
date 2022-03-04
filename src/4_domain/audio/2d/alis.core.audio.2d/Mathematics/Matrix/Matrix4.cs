@@ -1740,7 +1740,7 @@ namespace Alis.Core.Audio.Mathematics.Matrix
 #endif
 
         /// <summary>
-        /// Inverts the fallback using the specified mat
+        ///     Inverts the fallback using the specified mat
         /// </summary>
         /// <param name="mat">The mat</param>
         /// <param name="result">The result</param>

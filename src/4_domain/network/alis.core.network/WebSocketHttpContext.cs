@@ -60,7 +60,7 @@ namespace Alis.Core.Network
         public bool IsWebSocketRequest { get; }
 
         /// <summary>
-        /// Gets the value of the web socket requested protocols
+        ///     Gets the value of the web socket requested protocols
         /// </summary>
         public IList<string> WebSocketRequestedProtocols { get; }
 

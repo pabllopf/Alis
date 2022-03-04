@@ -90,7 +90,7 @@ namespace Alis.Core.Audio.Mathematics
         public const float Log2E = 1.442695f;
 
         /// <summary>
-        /// The list separator
+        ///     The list separator
         /// </summary>
         internal static readonly string ListSeparator = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
 

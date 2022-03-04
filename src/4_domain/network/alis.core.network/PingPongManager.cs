@@ -42,31 +42,37 @@ namespace Alis.Core.Network
     public class PingPongManager : IPingPongManager
     {
         /// <summary>
-        /// The cancellation token
+        ///     The cancellation token
         /// </summary>
         private readonly CancellationToken _cancellationToken;
+
         /// <summary>
-        /// The guid
+        ///     The guid
         /// </summary>
         private readonly Guid _guid;
+
         /// <summary>
-        /// The keep alive interval
+        ///     The keep alive interval
         /// </summary>
         private readonly TimeSpan _keepAliveInterval;
+
         /// <summary>
-        /// The ping task
+        ///     The ping task
         /// </summary>
         private readonly Task _pingTask;
+
         /// <summary>
-        /// The stopwatch
+        ///     The stopwatch
         /// </summary>
         private readonly Stopwatch _stopwatch;
+
         /// <summary>
-        /// The web socket
+        ///     The web socket
         /// </summary>
         private readonly WebSocketImplementation _webSocket;
+
         /// <summary>
-        /// The ping sent ticks
+        ///     The ping sent ticks
         /// </summary>
         private long _pingSentTicks;
 
@@ -123,7 +129,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Ons the pong using the specified e
+        ///     Ons the pong using the specified e
         /// </summary>
         /// <param name="e">The </param>
         protected virtual void OnPong(PongEventArgs e)
@@ -132,7 +138,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Pings the forever
+        ///     Pings the forever
         /// </summary>
         private async Task PingForever()
         {
@@ -175,7 +181,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Webs the socket impl pong using the specified sender
+        ///     Webs the socket impl pong using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>

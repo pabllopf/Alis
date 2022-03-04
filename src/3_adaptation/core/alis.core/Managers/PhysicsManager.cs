@@ -39,7 +39,7 @@ namespace Alis.Core.Managers
     ///     The physics manager class
     /// </summary>
     /// <seealso cref="PhysicsSystem" />
-    public class PhysicsManager 
+    public class PhysicsManager
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="PhysicsSystem" /> class
@@ -59,13 +59,12 @@ namespace Alis.Core.Managers
         /// </summary>
         private static List<Collider> Colliders { get; } = new List<Collider>();
 
-        
+
         /// <summary>
         ///     Destroy object.
         /// </summary>
         ~PhysicsManager()
         {
-            
         }
     }
 }

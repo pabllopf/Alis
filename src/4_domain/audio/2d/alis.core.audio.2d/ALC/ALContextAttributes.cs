@@ -196,7 +196,7 @@ namespace Alis.Core.Audio.ALC
 
         // Used for ToString.
         /// <summary>
-        /// Gets the optional string using the specified title
+        ///     Gets the optional string using the specified title
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="title">The title</param>

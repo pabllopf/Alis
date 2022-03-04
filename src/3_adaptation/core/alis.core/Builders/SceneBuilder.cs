@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Entities;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
@@ -47,7 +48,7 @@ namespace Alis.Core.Builders
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>
-        public Scene Scene { get; set; } = new Scene();
+        public Scene Scene { get; set; } = new Scene("", new List<GameObject>());
 
         /// <summary>
         ///     Adds the value

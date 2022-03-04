@@ -39,7 +39,7 @@ namespace Alis.Core.Audio.Native
     internal static class ALLoader
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ALLoader"/> class
+        ///     Initializes a new instance of the <see cref="ALLoader" /> class
         /// </summary>
         static ALLoader()
         {
@@ -47,17 +47,17 @@ namespace Alis.Core.Audio.Native
         }
 
         /// <summary>
-        /// The open al library name container
+        ///     The open al library name container
         /// </summary>
         private static readonly OpenALLibraryNameContainer ALLibraryNameContainer = new OpenALLibraryNameContainer();
 
         /// <summary>
-        /// The registered resolver
+        ///     The registered resolver
         /// </summary>
         private static bool RegisteredResolver;
 
         /// <summary>
-        /// Registers the dll resolver
+        ///     Registers the dll resolver
         /// </summary>
         internal static void RegisterDllResolver()
         {
@@ -69,12 +69,15 @@ namespace Alis.Core.Audio.Native
         }
 
         /// <summary>
-        /// Imports the resolver using the specified library name
+        ///     Imports the resolver using the specified library name
         /// </summary>
         /// <param name="libraryName">The library name</param>
         /// <param name="assembly">The assembly</param>
         /// <param name="searchPath">The search path</param>
-        /// <exception cref="DllNotFoundException">Could not load the dll '{libName}' (this load is intercepted, specified in DllImport as '{libraryName}').</exception>
+        /// <exception cref="DllNotFoundException">
+        ///     Could not load the dll '{libName}' (this load is intercepted, specified in
+        ///     DllImport as '{libraryName}').
+        /// </exception>
         /// <returns>The int ptr</returns>
         private static IntPtr ImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {

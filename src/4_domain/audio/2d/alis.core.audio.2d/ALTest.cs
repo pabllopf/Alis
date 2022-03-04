@@ -45,12 +45,12 @@ using Alis.Core.Audio.Mathematics.Vector;
 namespace Alis.Core.Audio
 {
     /// <summary>
-    /// The al test class
+    ///     The al test class
     /// </summary>
     internal class ALTest
     {
         /// <summary>
-        /// Main
+        ///     Main
         /// </summary>
         public static void Main()
         {
@@ -216,7 +216,7 @@ namespace Alis.Core.Audio
         }
 
         /// <summary>
-        /// Checks the al error using the specified str
+        ///     Checks the al error using the specified str
         /// </summary>
         /// <param name="str">The str</param>
         public static void CheckALError(string str)
@@ -229,7 +229,7 @@ namespace Alis.Core.Audio
         }
 
         /// <summary>
-        /// Fills the sine using the specified buffer
+        ///     Fills the sine using the specified buffer
         /// </summary>
         /// <param name="buffer">The buffer</param>
         /// <param name="frequency">The frequency</param>

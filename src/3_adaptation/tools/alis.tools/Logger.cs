@@ -30,11 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Reflection;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Unicode;
 
 namespace Alis.Tools
 {
@@ -44,50 +43,50 @@ namespace Alis.Tools
     public static class Logger
     {
         /// <summary>
-        /// The level
-        /// </summary>
-        private static readonly LogLevel Level;
-
-        /// <summary>
-        /// The my file
-        /// </summary>
-        private static readonly System.IO.FileStream LogFile;
-        
-        /// <summary>
-        /// The log
-        /// </summary>
-        private static List<Log> Logs = new List<Log>();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Logger"/> class
+        ///     Initializes a new instance of the <see cref="Logger" /> class
         /// </summary>
         static Logger()
         {
             Level = LogLevel.Info;
-            
-            System.Console.WriteLine("SYSTEM STATS \n" +
-                                     $"- MachineName:    {System.Environment.MachineName} \n" +
-                                     $"- UserName:       {System.Environment.UserName} \n" +
-                                     $"- ProcessId:      {System.Environment.ProcessId} \n" +
-                                     $"- OSVersion:      {System.Environment.OSVersion} \n" +
-                                     $"- 64OS:           {System.Environment.Is64BitOperatingSystem} \n" +
-                                     $"- .NET CLR:       {System.Environment.Version} \n" +
-                                     $"- ProcessorCount: {System.Environment.ProcessorCount} \n" +
-                                     $"- WorkDirectory:  {System.Environment.CurrentDirectory} \n");
-            
-            string path = System.Environment.CurrentDirectory + "/logs";
-            if (!System.IO.Directory.Exists(path))
+
+            Console.WriteLine("SYSTEM STATS \n" +
+                              $"- MachineName:    {Environment.MachineName} \n" +
+                              $"- UserName:       {Environment.UserName} \n" +
+                              $"- ProcessId:      {Environment.ProcessId} \n" +
+                              $"- OSVersion:      {Environment.OSVersion} \n" +
+                              $"- 64OS:           {Environment.Is64BitOperatingSystem} \n" +
+                              $"- .NET CLR:       {Environment.Version} \n" +
+                              $"- ProcessorCount: {Environment.ProcessorCount} \n" +
+                              $"- WorkDirectory:  {Environment.CurrentDirectory} \n");
+
+            string path = Environment.CurrentDirectory + "/logs";
+            if (!Directory.Exists(path))
             {
-                System.IO.Directory.CreateDirectory(path);
+                Directory.CreateDirectory(path);
             }
 
-            LogFile = System.IO.File.Create(path + "/" + System.DateTime.Now.ToString("yyyy_M_dd-HH_mm_ss") + ".json");
+            LogFile = File.Create(path + "/" + DateTime.Now.ToString("yyyy_M_dd-HH_mm_ss") + ".json");
             LogFile.Close();
         }
-        
 
         /// <summary>
-        /// Infoes the message
+        ///     The level
+        /// </summary>
+        private static readonly LogLevel Level;
+
+        /// <summary>
+        ///     The my file
+        /// </summary>
+        private static readonly FileStream LogFile;
+
+        /// <summary>
+        ///     The log
+        /// </summary>
+        private static readonly List<Log> Logs = new List<Log>();
+
+
+        /// <summary>
+        ///     Infoes the message
         /// </summary>
         /// <param name="message">The message</param>
         public static void Info(string message)
@@ -97,9 +96,9 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Info, message), ConsoleColor.DarkGray);
             }
         }
-        
+
         /// <summary>
-        /// Infoes the message
+        ///     Infoes the message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="args">The args</param>
@@ -110,19 +109,20 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Info, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkGray);
             }
         }
+
         /// <summary>
-        /// Infoes
+        ///     Infoes
         /// </summary>
         public static void Trace()
         {
             if (Level is LogLevel.Info)
-            {   
+            {
                 Write(CreateText(LogType.Trace, ""), ConsoleColor.DarkGray);
             }
         }
-        
+
         /// <summary>
-        /// Traces the args
+        ///     Traces the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Trace(params object[] args)
@@ -132,9 +132,9 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Trace, $"{string.Join(",", args)}"), ConsoleColor.DarkGray);
             }
         }
-        
+
         /// <summary>
-        /// Traces the message
+        ///     Traces the message
         /// </summary>
         /// <param name="message">The message</param>
         public static void Trace(string message)
@@ -144,9 +144,9 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Trace, message), ConsoleColor.DarkGray);
             }
         }
-        
+
         /// <summary>
-        /// Traces the message
+        ///     Traces the message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="args">The args</param>
@@ -157,9 +157,9 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Trace, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkGray);
             }
         }
-        
+
         /// <summary>
-        /// Logs the message
+        ///     Logs the message
         /// </summary>
         /// <param name="message">The message</param>
         public static void Log(string message)
@@ -169,9 +169,9 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Log, $"{message}"), ConsoleColor.DarkCyan);
             }
         }
-        
+
         /// <summary>
-        /// Logs the message
+        ///     Logs the message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="args">The args</param>
@@ -182,9 +182,9 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Log, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkCyan);
             }
         }
-        
+
         /// <summary>
-        /// Warnings the message
+        ///     Warnings the message
         /// </summary>
         /// <param name="message">The message</param>
         public static void Warning(string message)
@@ -194,9 +194,9 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Warning, $"{message}"), ConsoleColor.DarkYellow);
             }
         }
-        
+
         /// <summary>
-        /// Warnings the message
+        ///     Warnings the message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="args">The args</param>
@@ -207,21 +207,21 @@ namespace Alis.Tools
                 Write(CreateText(LogType.Warning, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkYellow);
             }
         }
-        
+
         /// <summary>
-        /// Successes the message
+        ///     Successes the message
         /// </summary>
         /// <param name="message">The message</param>
         public static void Success(string message)
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
             {
-                Write(CreateText(LogType.Success , $"{message}"), ConsoleColor.DarkGreen);
+                Write(CreateText(LogType.Success, $"{message}"), ConsoleColor.DarkGreen);
             }
         }
-        
+
         /// <summary>
-        /// Successes the message
+        ///     Successes the message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="args">The args</param>
@@ -229,26 +229,26 @@ namespace Alis.Tools
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal)
             {
-                Write(CreateText(LogType.Success, $"{message} {string.Join(",", args)}"),ConsoleColor.DarkGreen);
+                Write(CreateText(LogType.Success, $"{message} {string.Join(",", args)}"), ConsoleColor.DarkGreen);
             }
         }
-        
-        
+
+
         /// <summary>
-        /// Exceptions the exception
+        ///     Exceptions the exception
         /// </summary>
         /// <param name="exception">The exception</param>
-        public static void Exception(System.Exception exception)
+        public static void Exception(Exception exception)
         {
             if (Level is LogLevel.Info or LogLevel.Log or LogLevel.Normal or LogLevel.Critical)
             {
                 WriteError(CreateText(LogType.Exception, $"{exception.Message}"), ConsoleColor.DarkRed);
             }
         }
-        
-        
+
+
         /// <summary>
-        /// Exceptions the message
+        ///     Exceptions the message
         /// </summary>
         /// <param name="message">The message</param>
         public static void Exception(string message)
@@ -258,9 +258,9 @@ namespace Alis.Tools
                 WriteError(CreateText(LogType.Exception, $"{message}"), ConsoleColor.DarkRed);
             }
         }
-        
+
         /// <summary>
-        /// Exceptions the message
+        ///     Exceptions the message
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="args">The args</param>
@@ -273,7 +273,7 @@ namespace Alis.Tools
         }
 
         /// <summary>
-        /// Creates the text using the specified level
+        ///     Creates the text using the specified level
         /// </summary>
         /// <param name="level">The level</param>
         /// <param name="message">The message</param>
@@ -282,7 +282,8 @@ namespace Alis.Tools
         {
             StackTrace stack = new StackTrace();
             string? assemblyQualifiedName = stack.GetFrame(2)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
-            string fullName = stack.GetFrame(2)?.GetMethod()?.ReflectedType?.FullName + "." + stack.GetFrame(2)?.GetMethod()?.Name;
+            string fullName = stack.GetFrame(2)?.GetMethod()?.ReflectedType?.FullName + "." +
+                              stack.GetFrame(2)?.GetMethod()?.Name;
             ParameterInfo[]? parameters = stack.GetFrame(2)?.GetMethod()?.GetParameters();
             string parametersText = "";
             for (int index = 0; index < parameters.Length; index++)
@@ -296,59 +297,62 @@ namespace Alis.Tools
                     parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}";
                 }
             }
-            
+
             Log log = new Log(
-                $"{level}", 
+                $"{level}",
                 DateTime.Now,
-                message, 
-                $"{fullName}({parametersText})", 
-                assemblyQualifiedName ?? "Default", 
-                System.Environment.CurrentManagedThreadId, 
+                message,
+                $"{fullName}({parametersText})",
+                assemblyQualifiedName ?? "Default",
+                Environment.CurrentManagedThreadId,
                 Environment.StackTrace);
-            
+
             Logs.Add(log);
-            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions {
+            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions
+            {
                 WriteIndented = true,
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             };
-            
+
             return JsonSerializer.Serialize(log, jsonSerializerSettings);
         }
 
         /// <summary>
-        /// Writes the text
+        ///     Writes the text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="color">The color</param>
         private static void Write(string text, ConsoleColor color)
         {
-            System.Console.BackgroundColor = color;
-            System.Console.ForegroundColor = ConsoleColor.White;
-            System.Console.Out.WriteLine(text);
-            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions {
+            Console.BackgroundColor = color;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Out.WriteLine(text);
+            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions
+            {
                 WriteIndented = true,
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             };
-            System.IO.File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, jsonSerializerSettings));
-            System.Console.ResetColor();
+            File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, jsonSerializerSettings));
+            Console.ResetColor();
         }
-        
+
         /// <summary>
-        /// Writes the error using the specified text
+        ///     Writes the error using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="color">The color</param>
         private static void WriteError(string text, ConsoleColor color)
         {
-            System.Console.BackgroundColor = color;
-            System.Console.ForegroundColor = ConsoleColor.White;
-            System.Console.Error.WriteLine(text);
-            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions {
+            Console.BackgroundColor = color;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Error.WriteLine(text);
+            JsonSerializerOptions jsonSerializerSettings = new JsonSerializerOptions
+            {
                 WriteIndented = true,
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             };
-            System.IO.File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, jsonSerializerSettings));
-            System.Console.ResetColor();
+            File.WriteAllText(LogFile.Name, JsonSerializer.Serialize(Logs, jsonSerializerSettings));
+            Console.ResetColor();
         }
     }
 }

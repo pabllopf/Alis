@@ -30,7 +30,7 @@
 namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency.Enums
 {
     /// <summary>
-    /// The source latency vector 2i enum
+    ///     The source latency vector 2i enum
     /// </summary>
     public enum SourceLatencyVector2i
     {
@@ -45,7 +45,7 @@ namespace Alis.Core.Audio.Extensions.SOFT.SourceLatency.Enums
 
 #pragma warning disable SA1402 // File may only contain a single type
     /// <summary>
-    /// The source latency vector 2d enum
+    ///     The source latency vector 2d enum
     /// </summary>
     public enum SourceLatencyVector2d
 #pragma warning restore SA1402 // File may only contain a single type

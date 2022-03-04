@@ -38,37 +38,37 @@ namespace Alis.Core.Audio
     public struct ALCaptureDevice : IEquatable<ALCaptureDevice>
     {
         /// <summary>
-        /// The zero
+        ///     The zero
         /// </summary>
         public static readonly ALCaptureDevice Null = new ALCaptureDevice(IntPtr.Zero);
 
         /// <summary>
-        /// The handle
+        ///     The handle
         /// </summary>
         public IntPtr Handle;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ALCaptureDevice"/> class
+        ///     Initializes a new instance of the <see cref="ALCaptureDevice" /> class
         /// </summary>
         /// <param name="handle">The handle</param>
         public ALCaptureDevice(IntPtr handle) => Handle = handle;
 
         /// <summary>
-        /// Describes whether this instance equals
+        ///     Describes whether this instance equals
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
         public override bool Equals(object obj) => obj is ALCaptureDevice device && Equals(device);
 
         /// <summary>
-        /// Describes whether this instance equals
+        ///     Describes whether this instance equals
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
         public bool Equals([AllowNull] ALCaptureDevice other) => Handle.Equals(other.Handle);
 
         /// <summary>
-        /// Gets the hash code
+        ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
         public override int GetHashCode() => HashCode.Combine(Handle);

@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Alis.Tools;
 
 namespace Alis.Core.Entities
 {
@@ -38,133 +39,123 @@ namespace Alis.Core.Entities
     public class Scene
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Scene" /> class
+        ///     The game objects
         /// </summary>
-        public Scene()
-        {
-            Name = "Default";
-            GameObjects = new List<GameObject>();
-        }
+        private List<GameObject> gameObjects;
+
+        /// <summary>
+        ///     The name
+        /// </summary>
+        private string name;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="gameobjects">The gameobjects</param>
-        /// <exception cref="IndexOutOfBounds"></exception>
+        /// <param name="gameObjects">The game objects</param>
         [JsonConstructor]
-        public Scene(string name, List<GameObject> gameobjects)
+        public Scene(string name, List<GameObject> gameObjects)
         {
-            Name = name;
-            GameObjects = gameobjects;
+            this.name = name;
+            this.gameObjects = gameObjects;
+            Logger.Trace();
         }
 
         /// <summary>
         ///     Gets or sets the value of the name
         /// </summary>
         [JsonPropertyName("_Name")]
-        public string Name { get; set; }
+        public string Name
+        {
+            get
+            {
+                Logger.Trace($"name: {name}");
+                return name;
+            }
+            set
+            {
+                Logger.Trace($"Scene.Name from '{name}' to '{value}'");
+                name = value;
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the value of the game objects
         /// </summary>
         [JsonPropertyName("_GameObjects")]
-        public List<GameObject> GameObjects { get; set; }
+        public List<GameObject> GameObjects
+        {
+            get
+            {
+                Logger.Trace($"Scene.GameObjects '{gameObjects}'");
+                return gameObjects;
+            }
+            set
+            {
+                Logger.Trace($"Scene.GameObjects from '{gameObjects}' to '{value}'");
+                gameObjects = value;
+            }
+        }
 
         /// <summary>
         ///     Adds the game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public void Add(GameObject gameObject)
-        {
-            GameObjects.Add(gameObject);
-        }
+        public void Add(GameObject gameObject) => GameObjects.Add(gameObject);
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public void Awake()
-        {
-            GameObjects.ForEach(gameObject => gameObject.Awake());
-        }
+        public void Awake() => GameObjects.ForEach(gameObject => gameObject.Awake());
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public void Start()
-        {
-            GameObjects.ForEach(gameObject => gameObject.Start());
-        }
+        public void Start() => GameObjects.ForEach(gameObject => gameObject.Start());
 
         /// <summary>
         ///     Before run the update
         /// </summary>
-        public void BeforeUpdate()
-        {
-            GameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
-        }
+        public void BeforeUpdate() => GameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public void Update()
-        {
-            GameObjects.ForEach(gameObject => gameObject.Update());
-        }
+        public void Update() => GameObjects.ForEach(gameObject => gameObject.Update());
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public void AfterUpdate()
-        {
-            GameObjects.ForEach(gameObject => gameObject.AfterUpdate());
-        }
+        public void AfterUpdate() => GameObjects.ForEach(gameObject => gameObject.AfterUpdate());
 
         /// <summary>
         ///     Update every frame.
         /// </summary>
-        public void FixedUpdate()
-        {
-            GameObjects.ForEach(gameObject => gameObject.FixedUpdate());
-        }
+        public void FixedUpdate() => GameObjects.ForEach(gameObject => gameObject.FixedUpdate());
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public void DispatchEvents()
-        {
-            GameObjects.ForEach(gameObject => gameObject.DispatchEvents());
-        }
+        public void DispatchEvents() => GameObjects.ForEach(gameObject => gameObject.DispatchEvents());
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public void Reset()
-        {
-            GameObjects.ForEach(gameObject => gameObject.Reset());
-        }
+        public void Reset() => GameObjects.ForEach(gameObject => gameObject.Reset());
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public void Stop()
-        {
-            GameObjects.ForEach(gameObject => gameObject.Stop());
-        }
+        public void Stop() => GameObjects.ForEach(gameObject => gameObject.Stop());
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public void Exit()
-        {
-            GameObjects.ForEach(gameObject => gameObject.Exit());
-        }
+        public void Exit() => GameObjects.ForEach(gameObject => gameObject.Exit());
 
         /// <summary>
         ///     Define the destructor.
         /// </summary>
-        ~Scene()
-        {
-        }
+        ~Scene() => Logger.Trace();
     }
 }

@@ -41,7 +41,7 @@ namespace Alis.Core.Audio.Mathematics.Geometry
     public struct Box2d : IEquatable<Box2d>
     {
         /// <summary>
-        /// The min
+        ///     The min
         /// </summary>
         private Vector2d _min;
 
@@ -68,7 +68,7 @@ namespace Alis.Core.Audio.Mathematics.Geometry
         }
 
         /// <summary>
-        /// The max
+        ///     The max
         /// </summary>
         private Vector2d _max;
 

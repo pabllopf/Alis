@@ -35,7 +35,7 @@ namespace Alis.Core.Time
     ///     The time system class
     /// </summary>
     /// <seealso cref="System" />
-    public class TimeSystem 
+    public class TimeSystem
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="TimeSystem" /> class
@@ -45,7 +45,7 @@ namespace Alis.Core.Time
         {
         }
 
-        
+
         ~TimeSystem()
         {
         }

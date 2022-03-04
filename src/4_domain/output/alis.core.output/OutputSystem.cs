@@ -35,7 +35,7 @@ namespace Alis.Core.Output
     ///     The output system class
     /// </summary>
     /// <seealso cref="System" />
-    public class OutputSystem 
+    public class OutputSystem
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="OutputSystem" /> class
@@ -44,7 +44,7 @@ namespace Alis.Core.Output
         public OutputSystem()
         {
         }
-        
+
         ~OutputSystem()
         {
         }

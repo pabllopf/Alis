@@ -35,13 +35,13 @@ using Alis.Core.Audio.Native;
 namespace Alis.Core.Audio.Extensions.EXT.Double
 {
     /// <summary>
-    /// The ext double class
+    ///     The ext double class
     /// </summary>
-    /// <seealso cref="ALBase"/>
+    /// <seealso cref="ALBase" />
     public class EXTDouble : ALBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EXTDouble"/> class
+        ///     Initializes a new instance of the <see cref="EXTDouble" /> class
         /// </summary>
         static EXTDouble()
         {
@@ -50,7 +50,7 @@ namespace Alis.Core.Audio.Extensions.EXT.Double
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EXTDouble"/> class
+        ///     Initializes a new instance of the <see cref="EXTDouble" /> class
         /// </summary>
         private EXTDouble()
         {

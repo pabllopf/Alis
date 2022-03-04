@@ -46,7 +46,7 @@ namespace Alis.Core.Audio.Mathematics.Geometry
         public static readonly Box3i Empty = new Box3i(0, 0, 0, 0, 0, 0);
 
         /// <summary>
-        /// The min
+        ///     The min
         /// </summary>
         private Vector3i _min;
 
@@ -64,7 +64,7 @@ namespace Alis.Core.Audio.Mathematics.Geometry
         }
 
         /// <summary>
-        /// The max
+        ///     The max
         /// </summary>
         private Vector3i _max;
 

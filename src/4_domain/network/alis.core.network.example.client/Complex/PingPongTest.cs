@@ -30,7 +30,7 @@
 namespace Alis.Core.Network.Example.Client.Complex
 {
     /// <summary>
-    /// The ping pong test class
+    ///     The ping pong test class
     /// </summary>
     internal class PingPongTest
     {

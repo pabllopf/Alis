@@ -30,7 +30,7 @@
 namespace Alis.Core.Audio.Extensions.SOFT.DeviceClock.Enums
 {
     /// <summary>
-    /// The get integer 64 enum
+    ///     The get integer 64 enum
     /// </summary>
     public enum GetInteger64
     {

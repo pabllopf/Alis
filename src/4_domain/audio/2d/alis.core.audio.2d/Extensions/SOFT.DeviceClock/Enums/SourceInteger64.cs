@@ -32,7 +32,7 @@ using Alis.Core.Audio.AL;
 namespace Alis.Core.Audio.Extensions.SOFT.DeviceClock.Enums
 {
     /// <summary>
-    /// The source integer 64 enum
+    ///     The source integer 64 enum
     /// </summary>
     public enum SourceInteger64
     {

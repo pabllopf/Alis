@@ -46,23 +46,24 @@ namespace Alis.Core.Network
     public class BufferPool : IBufferPool
     {
         /// <summary>
-        /// The buffer pool stack
+        ///     The buffer pool stack
         /// </summary>
         private readonly ConcurrentStack<byte[]> _bufferPoolStack;
+
         /// <summary>
-        /// The buffer size
+        ///     The buffer size
         /// </summary>
         private readonly int _bufferSize;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BufferPool"/> class
+        ///     Initializes a new instance of the <see cref="BufferPool" /> class
         /// </summary>
         public BufferPool() : this(DEFAULT_BUFFER_SIZE)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BufferPool"/> class
+        ///     Initializes a new instance of the <see cref="BufferPool" /> class
         /// </summary>
         /// <param name="bufferSize">The buffer size</param>
         public BufferPool(int bufferSize)
@@ -72,7 +73,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// The default buffer size
+        ///     The default buffer size
         /// </summary>
         private const int DEFAULT_BUFFER_SIZE = 16384;
 
@@ -92,7 +93,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Returns the buffer using the specified buffer
+        ///     Returns the buffer using the specified buffer
         /// </summary>
         /// <param name="buffer">The buffer</param>
         protected void ReturnBuffer(byte[] buffer)
@@ -107,20 +108,22 @@ namespace Alis.Core.Network
         protected class PublicBufferMemoryStream : MemoryStream
         {
             /// <summary>
-            /// The buffer pool internal
+            ///     The buffer pool internal
             /// </summary>
             private readonly BufferPool _bufferPoolInternal;
+
             /// <summary>
-            /// The buffer
+            ///     The buffer
             /// </summary>
             private byte[] _buffer;
+
             /// <summary>
-            /// The ms
+            ///     The ms
             /// </summary>
             private MemoryStream _ms;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="PublicBufferMemoryStream"/> class
+            ///     Initializes a new instance of the <see cref="PublicBufferMemoryStream" /> class
             /// </summary>
             /// <param name="buffer">The buffer</param>
             /// <param name="bufferPool">The buffer pool</param>
@@ -132,29 +135,32 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Gets the value of the length
+            ///     Gets the value of the length
             /// </summary>
             public override long Length => base.Length;
 
             /// <summary>
-            /// Gets the value of the can read
+            ///     Gets the value of the can read
             /// </summary>
             public override bool CanRead => _ms.CanRead;
+
             /// <summary>
-            /// Gets the value of the can seek
+            ///     Gets the value of the can seek
             /// </summary>
             public override bool CanSeek => _ms.CanSeek;
+
             /// <summary>
-            /// Gets the value of the can timeout
+            ///     Gets the value of the can timeout
             /// </summary>
             public override bool CanTimeout => _ms.CanTimeout;
+
             /// <summary>
-            /// Gets the value of the can write
+            ///     Gets the value of the can write
             /// </summary>
             public override bool CanWrite => _ms.CanWrite;
 
             /// <summary>
-            /// Gets or sets the value of the capacity
+            ///     Gets or sets the value of the capacity
             /// </summary>
             public override int Capacity
             {
@@ -163,7 +169,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Gets or sets the value of the position
+            ///     Gets or sets the value of the position
             /// </summary>
             public override long Position
             {
@@ -172,7 +178,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Gets or sets the value of the read timeout
+            ///     Gets or sets the value of the read timeout
             /// </summary>
             public override int ReadTimeout
             {
@@ -181,7 +187,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Gets or sets the value of the write timeout
+            ///     Gets or sets the value of the write timeout
             /// </summary>
             public override int WriteTimeout
             {
@@ -190,7 +196,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Begins the read using the specified buffer
+            ///     Begins the read using the specified buffer
             /// </summary>
             /// <param name="buffer">The buffer</param>
             /// <param name="offset">The offset</param>
@@ -202,7 +208,7 @@ namespace Alis.Core.Network
                 object state) => _ms.BeginRead(buffer, offset, count, callback, state);
 
             /// <summary>
-            /// Begins the write using the specified buffer
+            ///     Begins the write using the specified buffer
             /// </summary>
             /// <param name="buffer">The buffer</param>
             /// <param name="offset">The offset</param>
@@ -214,7 +220,7 @@ namespace Alis.Core.Network
                 object state) => _ms.BeginWrite(buffer, offset, count, callback, state);
 
             /// <summary>
-            /// Closes this instance
+            ///     Closes this instance
             /// </summary>
             public override void Close()
             {
@@ -228,7 +234,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Copies the to using the specified destination
+            ///     Copies the to using the specified destination
             /// </summary>
             /// <param name="destination">The destination</param>
             /// <param name="bufferSize">The buffer size</param>
@@ -237,14 +243,14 @@ namespace Alis.Core.Network
                 _ms.CopyToAsync(destination, bufferSize, cancellationToken);
 
             /// <summary>
-            /// Ends the read using the specified async result
+            ///     Ends the read using the specified async result
             /// </summary>
             /// <param name="asyncResult">The async result</param>
             /// <returns>The int</returns>
             public override int EndRead(IAsyncResult asyncResult) => _ms.EndRead(asyncResult);
 
             /// <summary>
-            /// Ends the write using the specified async result
+            ///     Ends the write using the specified async result
             /// </summary>
             /// <param name="asyncResult">The async result</param>
             public override void EndWrite(IAsyncResult asyncResult)
@@ -253,7 +259,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Flushes this instance
+            ///     Flushes this instance
             /// </summary>
             public override void Flush()
             {
@@ -261,19 +267,19 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Flushes the cancellation token
+            ///     Flushes the cancellation token
             /// </summary>
             /// <param name="cancellationToken">The cancellation token</param>
             public override Task FlushAsync(CancellationToken cancellationToken) => _ms.FlushAsync(cancellationToken);
 
             /// <summary>
-            /// Gets the buffer
+            ///     Gets the buffer
             /// </summary>
             /// <returns>The byte array</returns>
             public override byte[] GetBuffer() => _buffer;
 
             /// <summary>
-            /// Reads the buffer
+            ///     Reads the buffer
             /// </summary>
             /// <param name="buffer">The buffer</param>
             /// <param name="offset">The offset</param>
@@ -282,10 +288,13 @@ namespace Alis.Core.Network
             public override int Read(byte[] buffer, int offset, int count) => _ms.Read(buffer, offset, count);
 
             /// <summary>
-            /// Enlarges the buffer if required using the specified count
+            ///     Enlarges the buffer if required using the specified count
             /// </summary>
             /// <param name="count">The count</param>
-            /// <exception cref="WebSocketBufferOverflowException">Tried to create a buffer ({requiredSize:#,##0} bytes) that was larger than the max allowed size ({int.MaxValue:#,##0})</exception>
+            /// <exception cref="WebSocketBufferOverflowException">
+            ///     Tried to create a buffer ({requiredSize:#,##0} bytes) that was
+            ///     larger than the max allowed size ({int.MaxValue:#,##0})
+            /// </exception>
             private void EnlargeBufferIfRequired(int count)
             {
                 // we cannot fit the data into the existing buffer, time for a new buffer
@@ -331,7 +340,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Writes the byte using the specified value
+            ///     Writes the byte using the specified value
             /// </summary>
             /// <param name="value">The value</param>
             public override void WriteByte(byte value)
@@ -341,7 +350,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Writes the buffer
+            ///     Writes the buffer
             /// </summary>
             /// <param name="buffer">The buffer</param>
             /// <param name="offset">The offset</param>
@@ -353,7 +362,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Writes the buffer
+            ///     Writes the buffer
             /// </summary>
             /// <param name="buffer">The buffer</param>
             /// <param name="offset">The offset</param>
@@ -366,13 +375,13 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Initializes the lifetime service
+            ///     Initializes the lifetime service
             /// </summary>
             /// <returns>The object</returns>
             public override object InitializeLifetimeService() => _ms.InitializeLifetimeService();
 
             /// <summary>
-            /// Reads the buffer
+            ///     Reads the buffer
             /// </summary>
             /// <param name="buffer">The buffer</param>
             /// <param name="offset">The offset</param>
@@ -383,13 +392,13 @@ namespace Alis.Core.Network
                 CancellationToken cancellationToken) => _ms.ReadAsync(buffer, offset, count, cancellationToken);
 
             /// <summary>
-            /// Reads the byte
+            ///     Reads the byte
             /// </summary>
             /// <returns>The int</returns>
             public override int ReadByte() => _ms.ReadByte();
 
             /// <summary>
-            /// Seeks the offset
+            ///     Seeks the offset
             /// </summary>
             /// <param name="offset">The offset</param>
             /// <param name="loc">The loc</param>
@@ -405,7 +414,7 @@ namespace Alis.Core.Network
             }
 
             /// <summary>
-            /// Returns the array
+            ///     Returns the array
             /// </summary>
             /// <returns>The byte array</returns>
             public override byte[] ToArray() =>
@@ -414,7 +423,7 @@ namespace Alis.Core.Network
 
 #if !NET45
             /// <summary>
-            /// Describes whether this instance try get buffer
+            ///     Describes whether this instance try get buffer
             /// </summary>
             /// <param name="buffer">The buffer</param>
             /// <returns>The bool</returns>
@@ -426,7 +435,7 @@ namespace Alis.Core.Network
 #endif
 
             /// <summary>
-            /// Writes the to using the specified stream
+            ///     Writes the to using the specified stream
             /// </summary>
             /// <param name="stream">The stream</param>
             public override void WriteTo(Stream stream)

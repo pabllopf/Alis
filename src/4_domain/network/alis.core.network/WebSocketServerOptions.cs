@@ -47,7 +47,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebSocketServerOptions"/> class
+        ///     Initializes a new instance of the <see cref="WebSocketServerOptions" /> class
         /// </summary>
         /// <param name="keepAliveInterval">The keep alive interval</param>
         /// <param name="includeExceptionInCloseResponse">The include exception in close response</param>
@@ -61,7 +61,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebSocketServerOptions"/> class
+        ///     Initializes a new instance of the <see cref="WebSocketServerOptions" /> class
         /// </summary>
         /// <param name="keepAliveInterval">The keep alive interval</param>
         /// <param name="subProtocol">The sub protocol</param>

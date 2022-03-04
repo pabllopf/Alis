@@ -32,12 +32,12 @@ using System;
 namespace Examples
 {
     /// <summary>
-    /// The example class
+    ///     The example class
     /// </summary>
     public static class example
     {
         /// <summary>
-        /// Main
+        ///     Main
         /// </summary>
         public static void Main()
         {

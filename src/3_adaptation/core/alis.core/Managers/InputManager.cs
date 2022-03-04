@@ -85,7 +85,7 @@ namespace Alis.Core.Managers
         public static event EventHandler<Keyboard> OnPressDownKey;
 
         public static event EventHandler<Keyboard> OnReleaseKey;
-        
+
         /// <summary>
         ///     Ons the press up using the specified keyboards value
         /// </summary>
@@ -110,7 +110,7 @@ namespace Alis.Core.Managers
         {
         }
 
-        
+
         /// <summary>
         ///     Inputs the manager on release key using the specified sender
         /// </summary>
@@ -137,10 +137,9 @@ namespace Alis.Core.Managers
         private static void InputManager_OnPressDownKey(object? sender, Keyboard e)
         {
         }
-        
+
         ~InputManager()
         {
-            
         }
     }
 }

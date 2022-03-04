@@ -39,17 +39,17 @@ namespace Alis.Core.Network.Example.Client.Complex
     // NOTE: you would never normally do this. In order to send a large amount of data use a small buffer and make multiple calls
     // to SendAsync with endOfMessage false and the last SendAsync function call with endOfMessage set to true.
     /// <summary>
-    /// The load test class
+    ///     The load test class
     /// </summary>
     internal class LoadTest
     {
         /// <summary>
-        /// The buffer size
+        ///     The buffer size
         /// </summary>
         private const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public async Task Run()
         {
@@ -74,7 +74,7 @@ namespace Alis.Core.Network.Example.Client.Complex
         }
 
         /// <summary>
-        /// Sends the web socket
+        ///     Sends the web socket
         /// </summary>
         /// <param name="webSocket">The web socket</param>
         private async Task Send(WebSocket webSocket)
@@ -85,7 +85,7 @@ namespace Alis.Core.Network.Example.Client.Complex
         }
 
         /// <summary>
-        /// Reads the all using the specified web socket
+        ///     Reads the all using the specified web socket
         /// </summary>
         /// <param name="webSocket">The web socket</param>
         /// <returns>A task containing the long</returns>
@@ -110,7 +110,7 @@ namespace Alis.Core.Network.Example.Client.Complex
         }
 
         /// <summary>
-        /// Receives the web socket
+        ///     Receives the web socket
         /// </summary>
         /// <param name="webSocket">The web socket</param>
         private async Task Receive(WebSocket webSocket)

@@ -90,14 +90,14 @@ namespace Alis.Core.Components
             View.Center = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
         }*/
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

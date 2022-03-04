@@ -35,12 +35,12 @@ using Alis.Core.Network.Example.Client.Simple;
 namespace Alis.Core.Network.Example.Client
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     internal class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         private static void Main(string[] args)
@@ -70,7 +70,7 @@ namespace Alis.Core.Network.Example.Client
         }
 
         /// <summary>
-        /// Runs the load test
+        ///     Runs the load test
         /// </summary>
         private static async Task RunLoadTest()
         {
@@ -79,7 +79,7 @@ namespace Alis.Core.Network.Example.Client
         }
 
         /// <summary>
-        /// Runs the complex test using the specified args
+        ///     Runs the complex test using the specified args
         /// </summary>
         /// <param name="args">The args</param>
         private static void RunComplexTest(string[] args)
@@ -99,7 +99,7 @@ namespace Alis.Core.Network.Example.Client
         }
 
         /// <summary>
-        /// Runs the simple test
+        ///     Runs the simple test
         /// </summary>
         private static async Task RunSimpleTest()
         {

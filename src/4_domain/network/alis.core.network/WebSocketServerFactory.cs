@@ -45,11 +45,12 @@ namespace Alis.Core.Network
     public class WebSocketServerFactory : IWebSocketServerFactory
     {
         /// <summary>
-        /// The buffer factory
+        ///     The buffer factory
         /// </summary>
         private readonly Func<MemoryStream> _bufferFactory;
+
         /// <summary>
-        /// The buffer pool
+        ///     The buffer pool
         /// </summary>
         private readonly IBufferPool _bufferPool;
 
@@ -120,7 +121,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Checks the web socket version using the specified http header
+        ///     Checks the web socket version using the specified http header
         /// </summary>
         /// <param name="httpHeader">The http header</param>
         /// <exception cref="WebSocketVersionNotSupportedException"></exception>
@@ -149,7 +150,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Performs the handshake using the specified guid
+        ///     Performs the handshake using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="httpHeader">The http header</param>

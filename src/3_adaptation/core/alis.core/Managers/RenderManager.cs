@@ -35,14 +35,14 @@ using Alis.Core.Entities;
 namespace Alis.Core.Managers
 {
     /// <summary>Implement the render system of SFML library.</summary>
-    public class RenderManager 
+    public class RenderManager
     {
         /// <summary>Initializes a new instance of the <see cref="RenderManager" /> class.</summary>
         [JsonConstructor]
         public RenderManager()
         {
         }
-        
+
         /// <summary>
         ///     Generals the on change name using the specified sender
         /// </summary>
@@ -59,7 +59,6 @@ namespace Alis.Core.Managers
         /// <param name="author">The author</param>
         private void General_OnChangeAuthor(object? sender, string author)
         {
-            
         }
 
 
@@ -68,7 +67,6 @@ namespace Alis.Core.Managers
         /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
         private void RenderWindow_Closed(object? sender, EventArgs e)
         {
-            
         }
 
         /// <summary>
@@ -78,7 +76,6 @@ namespace Alis.Core.Managers
         /// <param name="screenMode">The screen mode</param>
         private void Window_OnChangeScreenMode(object? sender, ScreenMode screenMode)
         {
-            
         }
 
         /// <summary>
@@ -88,13 +85,11 @@ namespace Alis.Core.Managers
         /// <param name="resolution">The resolution</param>
         private void Window_OnChangeResolution(object? sender, Vector2 resolution)
         {
-            
         }
 
         /// <summary>Finalizes an instance of the <see cref="RenderManager" /> class.</summary>
         ~RenderManager()
         {
-            
         }
     }
 }

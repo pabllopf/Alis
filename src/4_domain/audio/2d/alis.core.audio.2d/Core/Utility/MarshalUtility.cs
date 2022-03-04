@@ -33,12 +33,12 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Audio.Core.Utility
 {
     /// <summary>
-    /// The marshal utility class
+    ///     The marshal utility class
     /// </summary>
     internal static class MarshalUtility
     {
         /// <summary>
-        /// Strings the to co task mem utf 8 using the specified str
+        ///     Strings the to co task mem utf 8 using the specified str
         /// </summary>
         /// <param name="str">The str</param>
         /// <returns>The int ptr</returns>

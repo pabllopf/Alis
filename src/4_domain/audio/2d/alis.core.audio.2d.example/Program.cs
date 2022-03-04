@@ -41,18 +41,18 @@ using Alis.Core.Audio.Extensions.Creative.EnumerateAll.Enums;
 namespace Examples
 {
     /// <summary>
-    /// The playback class
+    ///     The playback class
     /// </summary>
     public class Playback
     {
         /// <summary>
-        /// The combine
+        ///     The combine
         /// </summary>
         private static readonly string filename = Path.Combine(Path.Combine("Assets"), "menu.wav");
 
         // Loads a wave/riff audio file.
         /// <summary>
-        /// Loads the wave using the specified stream
+        ///     Loads the wave using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <param name="channels">The channels</param>
@@ -117,7 +117,7 @@ namespace Examples
         }
 
         /// <summary>
-        /// Gets the sound format using the specified channels
+        ///     Gets the sound format using the specified channels
         /// </summary>
         /// <param name="channels">The channels</param>
         /// <param name="bits">The bits</param>
@@ -134,7 +134,7 @@ namespace Examples
         }
 
         /// <summary>
-        /// Main
+        ///     Main
         /// </summary>
         public static void Main()
         {

@@ -33,52 +33,48 @@ using System.Text.Json.Serialization;
 namespace Alis.Tools;
 
 /// <summary>
-
-/// The log class
-
+///     The log class
 /// </summary>
-
 public class Log
 {
-    
-    
     /// <summary>
-    /// The level
-    /// </summary>
-    private string level;
-    
-    /// <summary>
-    /// The date time
-    /// </summary>
-    private DateTime dateTime;
-    
-    /// <summary>
-    /// The message
-    /// </summary>
-    private string message;
-
-    /// <summary>
-    /// The method
-    /// </summary>
-    private string method;
-
-    /// <summary>
-    /// The assembly
+    ///     The assembly
     /// </summary>
     private string assembly;
 
     /// <summary>
-    /// The thread
+    ///     The date time
     /// </summary>
-    private int thread;
-    
+    private DateTime dateTime;
+
+
     /// <summary>
-    /// The stack trace
+    ///     The level
+    /// </summary>
+    private string level;
+
+    /// <summary>
+    ///     The message
+    /// </summary>
+    private string message;
+
+    /// <summary>
+    ///     The method
+    /// </summary>
+    private string method;
+
+    /// <summary>
+    ///     The stack trace
     /// </summary>
     private string stackTrace;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Log"/> class
+    ///     The thread
+    /// </summary>
+    private int thread;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="Log" /> class
     /// </summary>
     /// <param name="level">The level</param>
     /// <param name="dateTime">The date time</param>
@@ -88,7 +84,8 @@ public class Log
     /// <param name="thread">The thread</param>
     /// <param name="stackTrace">The stack trace</param>
     [JsonConstructor]
-    public Log( string level, DateTime dateTime, string message, string method, string assembly, int thread, string stackTrace)
+    public Log(string level, DateTime dateTime, string message, string method, string assembly, int thread,
+        string stackTrace)
     {
         this.level = level;
         this.dateTime = dateTime;
@@ -98,9 +95,9 @@ public class Log
         this.thread = thread;
         this.stackTrace = stackTrace;
     }
-    
+
     /// <summary>
-    /// Gets or sets the value of the level
+    ///     Gets or sets the value of the level
     /// </summary>
     [JsonPropertyName("level")]
     public string Level
@@ -111,7 +108,7 @@ public class Log
 
 
     /// <summary>
-    /// Gets or sets the value of the date time
+    ///     Gets or sets the value of the date time
     /// </summary>
     [JsonPropertyName("dateTime")]
     public DateTime DateTime
@@ -119,9 +116,9 @@ public class Log
         get => dateTime;
         set => dateTime = value;
     }
-    
+
     /// <summary>
-    /// Gets or sets the value of the message
+    ///     Gets or sets the value of the message
     /// </summary>
     [JsonPropertyName("message")]
     public string Message
@@ -129,9 +126,9 @@ public class Log
         get => message;
         set => message = value;
     }
-    
+
     /// <summary>
-    /// Gets or sets the value of the method
+    ///     Gets or sets the value of the method
     /// </summary>
     [JsonPropertyName("method")]
     public string Method
@@ -139,9 +136,9 @@ public class Log
         get => method;
         set => method = value;
     }
-    
+
     /// <summary>
-    /// Gets or sets the value of the assembly
+    ///     Gets or sets the value of the assembly
     /// </summary>
     [JsonPropertyName("assembly")]
     public string Assembly
@@ -149,9 +146,9 @@ public class Log
         get => assembly;
         set => assembly = value;
     }
-    
+
     /// <summary>
-    /// Gets or sets the value of the thread
+    ///     Gets or sets the value of the thread
     /// </summary>
     [JsonPropertyName("thread")]
     public int Thread
@@ -159,9 +156,9 @@ public class Log
         get => thread;
         set => thread = value;
     }
-    
+
     /// <summary>
-    /// Gets or sets the value of the stack trace
+    ///     Gets or sets the value of the stack trace
     /// </summary>
     [JsonPropertyName("stacktrace")]
     public string StackTrace
@@ -169,5 +166,4 @@ public class Log
         get => stackTrace;
         set => stackTrace = value;
     }
-    
 }

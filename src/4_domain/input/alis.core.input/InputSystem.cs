@@ -35,7 +35,7 @@ namespace Alis.Core.Input
     ///     The input system class
     /// </summary>
     /// <seealso cref="System" />
-    public class InputSystem 
+    public class InputSystem
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="InputSystem" /> class
@@ -45,8 +45,6 @@ namespace Alis.Core.Input
         {
         }
 
-
-        
 
         ~InputSystem()
         {

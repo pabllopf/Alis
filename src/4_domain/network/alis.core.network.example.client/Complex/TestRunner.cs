@@ -34,33 +34,37 @@ using System.Threading.Tasks;
 namespace Alis.Core.Network.Example.Client.Complex
 {
     /// <summary>
-    /// The test runner class
+    ///     The test runner class
     /// </summary>
     internal class TestRunner
     {
         /// <summary>
-        /// The max num bytes per message
+        ///     The max num bytes per message
         /// </summary>
         private readonly int _maxNumBytesPerMessage;
+
         /// <summary>
-        /// The min num bytes per message
+        ///     The min num bytes per message
         /// </summary>
         private readonly int _minNumBytesPerMessage;
+
         /// <summary>
-        /// The num items per thread
+        ///     The num items per thread
         /// </summary>
         private readonly int _numItemsPerThread;
+
         /// <summary>
-        /// The num threads
+        ///     The num threads
         /// </summary>
         private readonly int _numThreads;
+
         /// <summary>
-        /// The uri
+        ///     The uri
         /// </summary>
         private readonly Uri _uri;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TestRunner"/> class
+        ///     Initializes a new instance of the <see cref="TestRunner" /> class
         /// </summary>
         /// <param name="uri">The uri</param>
         /// <param name="numThreads">The num threads</param>
@@ -78,7 +82,7 @@ namespace Alis.Core.Network.Example.Client.Complex
         }
 
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run()
         {
@@ -88,7 +92,7 @@ namespace Alis.Core.Network.Example.Client.Complex
         }
 
         /// <summary>
-        /// Runs the index
+        ///     Runs the index
         /// </summary>
         /// <param name="index">The index</param>
         /// <param name="state">The state</param>

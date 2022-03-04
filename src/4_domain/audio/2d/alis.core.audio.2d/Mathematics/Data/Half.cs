@@ -54,7 +54,7 @@ namespace Alis.Core.Audio.Mathematics.Data
     public struct Half : ISerializable, IComparable<Half>, IFormattable, IEquatable<Half>
     {
         /// <summary>
-        /// The bits
+        ///     The bits
         /// </summary>
         private ushort _bits;
 

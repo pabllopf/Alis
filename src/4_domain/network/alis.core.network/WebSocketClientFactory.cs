@@ -51,11 +51,12 @@ namespace Alis.Core.Network
     public class WebSocketClientFactory : IWebSocketClientFactory
     {
         /// <summary>
-        /// The buffer factory
+        ///     The buffer factory
         /// </summary>
         private readonly Func<MemoryStream> _bufferFactory;
+
         /// <summary>
-        /// The buffer pool
+        ///     The buffer pool
         /// </summary>
         private readonly IBufferPool _bufferPool;
 
@@ -127,7 +128,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Connects the guid
+        ///     Connects the guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="responseStream">The response stream</param>
@@ -163,7 +164,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Gets the sub protocol from header using the specified response
+        ///     Gets the sub protocol from header using the specified response
         /// </summary>
         /// <param name="response">The response</param>
         /// <returns>The string</returns>
@@ -182,7 +183,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Throws the if invalid accept string using the specified guid
+        ///     Throws the if invalid accept string using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="response">The response</param>
@@ -210,7 +211,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Throws the if invalid response code using the specified response header
+        ///     Throws the if invalid response code using the specified response header
         /// </summary>
         /// <param name="responseHeader">The response header</param>
         /// <exception cref="InvalidHttpResponseCodeException"></exception>
@@ -322,7 +323,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Gets the additional headers using the specified additional headers
+        ///     Gets the additional headers using the specified additional headers
         /// </summary>
         /// <param name="additionalHeaders">The additional headers</param>
         /// <returns>The string</returns>
@@ -343,7 +344,7 @@ namespace Alis.Core.Network
         }
 
         /// <summary>
-        /// Performs the handshake using the specified guid
+        ///     Performs the handshake using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="uri">The uri</param>

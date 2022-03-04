@@ -42,12 +42,12 @@ namespace Alis.Core.Network.Internal
     internal sealed class Events : EventSource
     {
         /// <summary>
-        /// The events
+        ///     The events
         /// </summary>
         public static Events Log = new Events();
 
         /// <summary>
-        /// Clients the connecting to ip address using the specified guid
+        ///     Clients the connecting to ip address using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="ipAddress">The ip address</param>
@@ -62,7 +62,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Clients the connecting to host using the specified guid
+        ///     Clients the connecting to host using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="host">The host</param>
@@ -77,7 +77,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Attemtings the to secure ssl connection using the specified guid
+        ///     Attemtings the to secure ssl connection using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(3, Level = EventLevel.Informational)]
@@ -90,7 +90,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Connections the secured using the specified guid
+        ///     Connections the secured using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(4, Level = EventLevel.Informational)]
@@ -103,7 +103,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Connections the not secure using the specified guid
+        ///     Connections the not secure using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(5, Level = EventLevel.Informational)]
@@ -116,7 +116,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Ssls the certificate error using the specified ssl policy errors
+        ///     Ssls the certificate error using the specified ssl policy errors
         /// </summary>
         /// <param name="sslPolicyErrors">The ssl policy errors</param>
         [Event(6, Level = EventLevel.Error)]
@@ -129,7 +129,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Handshakes the sent using the specified guid
+        ///     Handshakes the sent using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="httpHeader">The http header</param>
@@ -143,7 +143,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Readings the http response using the specified guid
+        ///     Readings the http response using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(8, Level = EventLevel.Informational)]
@@ -156,7 +156,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Reads the http response error using the specified guid
+        ///     Reads the http response error using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="exception">The exception</param>
@@ -170,7 +170,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Invalids the http response code using the specified guid
+        ///     Invalids the http response code using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="response">The response</param>
@@ -184,7 +184,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Handshakes the failure using the specified guid
+        ///     Handshakes the failure using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="message">The message</param>
@@ -198,7 +198,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Clients the handshake success using the specified guid
+        ///     Clients the handshake success using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(12, Level = EventLevel.Informational)]
@@ -211,7 +211,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Servers the handshake success using the specified guid
+        ///     Servers the handshake success using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(13, Level = EventLevel.Informational)]
@@ -224,7 +224,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Accepts the web socket started using the specified guid
+        ///     Accepts the web socket started using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(14, Level = EventLevel.Informational)]
@@ -237,7 +237,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Sendings the handshake response using the specified guid
+        ///     Sendings the handshake response using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="response">The response</param>
@@ -251,7 +251,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Webs the socket version not supported using the specified guid
+        ///     Webs the socket version not supported using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="exception">The exception</param>
@@ -265,7 +265,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Bads the request using the specified guid
+        ///     Bads the request using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="exception">The exception</param>
@@ -279,7 +279,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Uses the per message deflate using the specified guid
+        ///     Uses the per message deflate using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(18, Level = EventLevel.Informational)]
@@ -292,7 +292,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Noes the message compression using the specified guid
+        ///     Noes the message compression using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(19, Level = EventLevel.Informational)]
@@ -305,7 +305,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Keeps the alive interval zero using the specified guid
+        ///     Keeps the alive interval zero using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(20, Level = EventLevel.Informational)]
@@ -318,7 +318,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Pings the pong manager started using the specified guid
+        ///     Pings the pong manager started using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="keepAliveIntervalSeconds">The keep alive interval seconds</param>
@@ -332,7 +332,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Pings the pong manager ended using the specified guid
+        ///     Pings the pong manager ended using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(22, Level = EventLevel.Informational)]
@@ -345,7 +345,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Keeps the alive interval expired using the specified guid
+        ///     Keeps the alive interval expired using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="keepAliveIntervalSeconds">The keep alive interval seconds</param>
@@ -359,7 +359,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Closes the output auto timeout using the specified guid
+        ///     Closes the output auto timeout using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="closeStatus">The close status</param>
@@ -376,7 +376,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Closes the output auto timeout cancelled using the specified guid
+        ///     Closes the output auto timeout cancelled using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="timeoutSeconds">The timeout seconds</param>
@@ -395,7 +395,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Closes the output auto timeout error using the specified guid
+        ///     Closes the output auto timeout error using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="closeException">The close exception</param>
@@ -414,7 +414,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Tries the get buffer not supported using the specified guid
+        ///     Tries the get buffer not supported using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="streamType">The stream type</param>
@@ -428,7 +428,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Sendings the frame using the specified guid
+        ///     Sendings the frame using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="webSocketOpCode">The web socket op code</param>
@@ -446,7 +446,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Receiveds the frame using the specified guid
+        ///     Receiveds the frame using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="webSocketOpCode">The web socket op code</param>
@@ -462,7 +462,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Closes the output no handshake using the specified guid
+        ///     Closes the output no handshake using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="closeStatus">The close status</param>
@@ -478,7 +478,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Closes the handshake started using the specified guid
+        ///     Closes the handshake started using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="closeStatus">The close status</param>
@@ -494,7 +494,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Closes the handshake respond using the specified guid
+        ///     Closes the handshake respond using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="closeStatus">The close status</param>
@@ -510,7 +510,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Closes the handshake complete using the specified guid
+        ///     Closes the handshake complete using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         [Event(33, Level = EventLevel.Informational)]
@@ -523,7 +523,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Closes the frame received in unexpected state using the specified guid
+        ///     Closes the frame received in unexpected state using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="webSocketState">The web socket state</param>
@@ -541,7 +541,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Webs the socket dispose using the specified guid
+        ///     Webs the socket dispose using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="webSocketState">The web socket state</param>
@@ -555,7 +555,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Webs the socket dispose close timeout using the specified guid
+        ///     Webs the socket dispose close timeout using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="webSocketState">The web socket state</param>
@@ -569,7 +569,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Webs the socket dispose error using the specified guid
+        ///     Webs the socket dispose error using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="webSocketState">The web socket state</param>
@@ -584,7 +584,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Invalids the state before close using the specified guid
+        ///     Invalids the state before close using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="webSocketState">The web socket state</param>
@@ -598,7 +598,7 @@ namespace Alis.Core.Network.Internal
         }
 
         /// <summary>
-        /// Invalids the state before close output using the specified guid
+        ///     Invalids the state before close output using the specified guid
         /// </summary>
         /// <param name="guid">The guid</param>
         /// <param name="webSocketState">The web socket state</param>

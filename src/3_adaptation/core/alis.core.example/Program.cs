@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
+using System.Collections.Generic;
 using Alis.Core.Entities;
-using Alis.Tools;
 
 namespace Alis.Core.Example
 {
@@ -47,14 +46,10 @@ namespace Alis.Core.Example
         private static void Main(string[] args)
         {
             Console.WriteLine(args.Length);
-            
-            Transform t = new Transform();
-            //Console.WriteLine(t.GetHashCode());
-            Transform t2 = new Transform(scale: new Vector3(1,2,3));
-            Transform t3 = new Transform(scale: new Vector3(3,3,3), position: new Vector3(1,2,3), Vector3.One);
-            
-            
-            
+
+            Scene scene = new Scene("Test", new List<GameObject>());
+
+
             /*
             Console.WriteLine(t.Rotation);
             t.Rotation = new Vector3(3,4,3);

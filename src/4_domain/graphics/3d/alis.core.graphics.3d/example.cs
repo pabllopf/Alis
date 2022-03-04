@@ -30,7 +30,7 @@
 namespace Alis.Core.Graphics.Opengl
 {
     /// <summary>
-    /// The example class
+    ///     The example class
     /// </summary>
     public class example
     {

@@ -34,7 +34,7 @@ using System.Text.Json.Serialization;
 namespace Alis.Core.Entities
 {
     /// <summary>Represent a object of the game.</summary>
-    public class GameObject 
+    public class GameObject
     {
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
         public GameObject()

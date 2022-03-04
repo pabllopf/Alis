@@ -30,40 +30,37 @@
 namespace Alis.Tools;
 
 /// <summary>
-
-/// The log type enum
-
+///     The log type enum
 /// </summary>
-
 public enum LogType
 {
     /// <summary>
-    /// The info log type
+    ///     The info log type
     /// </summary>
     Info,
-    
+
     /// <summary>
-    /// The trace log type
+    ///     The trace log type
     /// </summary>
     Trace,
-    
+
     /// <summary>
-    /// The log log type
+    ///     The log log type
     /// </summary>
     Log,
-    
+
     /// <summary>
-    /// The success log type
+    ///     The success log type
     /// </summary>
     Success,
-    
+
     /// <summary>
-    /// The warning log type
+    ///     The warning log type
     /// </summary>
     Warning,
-    
+
     /// <summary>
-    /// The exception log type
+    ///     The exception log type
     /// </summary>
-    Exception,
+    Exception
 }

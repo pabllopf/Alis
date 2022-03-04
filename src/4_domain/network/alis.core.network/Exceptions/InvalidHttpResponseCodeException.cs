@@ -32,21 +32,21 @@ using System;
 namespace Alis.Core.Network.Exceptions
 {
     /// <summary>
-    /// The invalid http response code exception class
+    ///     The invalid http response code exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     [Serializable]
     public class InvalidHttpResponseCodeException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidHttpResponseCodeException"/> class
+        ///     Initializes a new instance of the <see cref="InvalidHttpResponseCodeException" /> class
         /// </summary>
         public InvalidHttpResponseCodeException()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidHttpResponseCodeException"/> class
+        ///     Initializes a new instance of the <see cref="InvalidHttpResponseCodeException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         public InvalidHttpResponseCodeException(string message) : base(message)
@@ -54,7 +54,7 @@ namespace Alis.Core.Network.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidHttpResponseCodeException"/> class
+        ///     Initializes a new instance of the <see cref="InvalidHttpResponseCodeException" /> class
         /// </summary>
         /// <param name="responseCode">The response code</param>
         /// <param name="responseDetails">The response details</param>
@@ -68,7 +68,7 @@ namespace Alis.Core.Network.Exceptions
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidHttpResponseCodeException"/> class
+        ///     Initializes a new instance of the <see cref="InvalidHttpResponseCodeException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         /// <param name="inner">The inner</param>
@@ -77,17 +77,17 @@ namespace Alis.Core.Network.Exceptions
         }
 
         /// <summary>
-        /// Gets or sets the value of the response code
+        ///     Gets or sets the value of the response code
         /// </summary>
         public string ResponseCode { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the response header
+        ///     Gets or sets the value of the response header
         /// </summary>
         public string ResponseHeader { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the response details
+        ///     Gets or sets the value of the response details
         /// </summary>
         public string ResponseDetails { get; private set; }
     }

@@ -26,8 +26,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
 using System.Numerics;
 using System.Text.Json.Serialization;
+using Alis.Tools;
 
 namespace Alis.Core.Entities
 {
@@ -49,12 +51,12 @@ namespace Alis.Core.Entities
             scale = new Vector3(1.0f, 1.0f, 1.0f);
             position = new Vector3(0.0f, 0.0f, 0.0f);
             rotation = new Vector3(0.0f, 0.0f, 0.0f);
-            Tools.Logger.Trace();
+            Logger.Trace();
         }
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
+        ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
         /// <param name="scale">The scale</param>
         public Transform(Vector3 scale)
@@ -62,7 +64,7 @@ namespace Alis.Core.Entities
             this.scale = scale;
             position = new Vector3(0.0f, 0.0f, 0.0f);
             rotation = new Vector3(0.0f, 0.0f, 0.0f);
-            Tools.Logger.Trace(scale);
+            Logger.Trace(scale);
         }
 
         /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
@@ -75,66 +77,66 @@ namespace Alis.Core.Entities
             this.scale = scale;
             this.position = position;
             this.rotation = rotation;
-            Tools.Logger.Trace(scale, position, rotation);
+            Logger.Trace(scale, position, rotation);
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the scale
+        ///     Gets or sets the value of the scale
         /// </summary>
         [JsonPropertyName("_Scale")]
         public Vector3 Scale
         {
             get
             {
-                Tools.Logger.Trace("Scale.Get()", "return scale:", scale);
+                Logger.Trace("Scale.Get()", "return scale:", scale);
                 return scale;
             }
             set
             {
-                Tools.Logger.Trace("Scale.Set(Vector3 scale)", "scale from:", scale, "scale to:", value);
+                Logger.Trace("Scale.Set(Vector3 scale)", "scale from:", scale, "scale to:", value);
                 scale = value;
             }
         }
 
         /// <summary>
-        /// Gets or sets the value of the position
+        ///     Gets or sets the value of the position
         /// </summary>
         [JsonPropertyName("_Position")]
         public Vector3 Position
         {
             get
             {
-                Tools.Logger.Trace("Position.Get()", "return position:", position);
+                Logger.Trace("Position.Get()", "return position:", position);
                 return position;
             }
             set
             {
-                Tools.Logger.Trace("Position.Set(Vector3 position)", "position from:", position, "position to:", value);
+                Logger.Trace("Position.Set(Vector3 position)", "position from:", position, "position to:", value);
                 position = value;
             }
         }
 
         /// <summary>
-        /// Gets or sets the value of the rotation
+        ///     Gets or sets the value of the rotation
         /// </summary>
         [JsonPropertyName("_Rotation")]
         public Vector3 Rotation
         {
             get
             {
-                Tools.Logger.Trace("Rotation.Get()", "return rotation:", rotation);
+                Logger.Trace("Rotation.Get()", "return rotation:", rotation);
                 return rotation;
             }
             set
             {
-                Tools.Logger.Trace("Rotation.Set(Vector3 rotation)", "rotation from:", rotation, "rotation to:", value);
+                Logger.Trace("Rotation.Set(Vector3 rotation)", "rotation from:", rotation, "rotation to:", value);
                 rotation = value;
             }
         }
-        
+
         ~Transform()
         {
-            Tools.Logger.Trace("~Transform()");
+            Logger.Trace("~Transform()");
         }
     }
 }

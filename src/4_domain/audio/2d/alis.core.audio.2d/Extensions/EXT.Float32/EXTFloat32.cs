@@ -35,13 +35,13 @@ using Alis.Core.Audio.Native;
 namespace Alis.Core.Audio.Extensions.EXT.Float32
 {
     /// <summary>
-    /// The ext float 32 class
+    ///     The ext float 32 class
     /// </summary>
-    /// <seealso cref="ALBase"/>
+    /// <seealso cref="ALBase" />
     public class EXTFloat32 : ALBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EXTFloat32"/> class
+        ///     Initializes a new instance of the <see cref="EXTFloat32" /> class
         /// </summary>
         static EXTFloat32()
         {
@@ -50,7 +50,7 @@ namespace Alis.Core.Audio.Extensions.EXT.Float32
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EXTFloat32"/> class
+        ///     Initializes a new instance of the <see cref="EXTFloat32" /> class
         /// </summary>
         private EXTFloat32()
         {

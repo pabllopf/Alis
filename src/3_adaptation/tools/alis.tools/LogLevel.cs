@@ -43,15 +43,15 @@ namespace Alis.Tools
         ///     The log log level
         /// </summary>
         Log = 1,
-        
+
         /// <summary>
         ///     The normal log level
         /// </summary>
         Normal = 3,
-        
+
         /// <summary>
         ///     The critical log level
         /// </summary>
-        Critical = 4,
+        Critical = 4
     }
 }
