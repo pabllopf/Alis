@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
-        <Deterministic>true</Deterministic>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
-
-
+    
     <Import Project="$(SolutionDir)/0_config/general.props"/>
     <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
     <Import Project="$(SolutionDir)/0_config/licence.props"/>

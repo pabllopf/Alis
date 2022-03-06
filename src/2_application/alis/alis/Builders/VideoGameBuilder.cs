@@ -27,13 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core;
+using Alis.Core.Managers;
+using Alis.Core.Settings;
 using Alis.FluentApi;
+using Alis.FluentApi.Words;
 
 namespace Alis.Builders
 {
     /// <summary>Game builder.</summary>
     public class VideoGameBuilder :
-        IBuild<VideoGame>
+        IBuild<VideoGame>,
+        ISettings<VideoGameBuilder, Func<SettingBuilder, Setting>>
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
@@ -43,11 +49,29 @@ namespace Alis.Builders
         /// <returns></returns>
         public VideoGame Build() => VideoGame;
 
-
-        /// <summary>Runs this instance.</summary>
-        public void Run()
+        /// <summary>Configurations the specified value.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        ///     <br />
+        /// </returns>
+        public VideoGameBuilder Settings(Func<SettingBuilder, Setting> value)
         {
-            VideoGame.Run();
+            Game.Setting = value.Invoke(new SettingBuilder());
+            return this;
         }
+
+        /// <summary>
+        ///     Managers the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The video game builder</returns>
+        public VideoGameBuilder Manager(Func<SceneManagerBuilder, SceneManager> value)
+        {
+            VideoGame.SceneSystem = value.Invoke(new SceneManagerBuilder());
+            return this;
+        }
+
+        /// <summary>Run the game immediately</summary>
+        public void Run() => VideoGame.Run();
     }
 }

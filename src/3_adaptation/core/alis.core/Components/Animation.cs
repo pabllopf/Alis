@@ -27,6 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using SFML.Graphics;
+
 namespace Alis.Core.Components
 {
     /// <summary>
@@ -34,7 +38,6 @@ namespace Alis.Core.Components
     /// </summary>
     public class Animation
     {
-        /*
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
@@ -93,6 +96,6 @@ namespace Alis.Core.Components
         ///     Textures this instance
         /// </summary>
         /// <returns>The texture</returns>
-        public Texture Texture() => Textures[Index];*/
+        public Texture Texture() => Textures[Index];
     }
 }

@@ -27,8 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.Builders;
 using Alis.Core;
+using Alis.Core.Input;
+using Alis.Core.Managers;
+using Alis.Tools;
 
 namespace Alis
 {
@@ -39,16 +43,25 @@ namespace Alis
     public class VideoGame : Game
     {
         /// <summary>
+        ///     Initializes a new instance of the <see cref="VideoGame" /> class
+        /// </summary>
+        public VideoGame()
+        {
+            InputSystem = new InputManager();
+            SceneSystem = new SceneManager();
+            PhysicsSystem = new PhysicsManager();
+            RenderSystem = new RenderManager();
+        }
+
+        /// <summary>
         ///     Creates
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Create() => new VideoGameBuilder();
-
+        
         /// <summary>
         ///     Destroy object.
         /// </summary>
-        ~VideoGame()
-        {
-        }
+        ~VideoGame() => Logger.Trace($"{nameof(VideoGame)} destroyed with hashcode {GetHashCode()}");
     }
 }

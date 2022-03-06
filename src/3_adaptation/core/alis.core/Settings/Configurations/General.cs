@@ -27,42 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 using System.Text.Json.Serialization;
-
-#endregion
+using Alis.Tools;
 
 namespace Alis.Core.Settings.Configurations
 {
     /// <summary>Define a </summary>
     public class General
     {
-        #region Reset()
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public void Reset()
-        {
-            Name = "Alis Game";
-            Author = "Pablo Perdomo Falcón";
-        }
-
-        #endregion
-
-        #region Fields
+        /// <summary>The author</summary>
+        private string author = "Pablo Perdomo Falcón";
 
         /// <summary>The name</summary>
         private string name = "Alis Game";
 
-        /// <summary>The author</summary>
-        private string author = "Pablo Perdomo Falcón";
-
-        #endregion
-
-        #region Constructor
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="General" /> class
@@ -74,6 +53,8 @@ namespace Alis.Core.Settings.Configurations
 
             Name = name;
             Author = author;
+
+            Logger.Trace();
         }
 
         /// <summary>
@@ -89,30 +70,23 @@ namespace Alis.Core.Settings.Configurations
 
             Name = name;
             Author = author;
+
+            Logger.Trace(name, author);
         }
-
-        #endregion
-
-        #region Events
-
-        /// <summary>Occurs when [on change name].</summary>
-        public event EventHandler<string> OnChangeName;
-
-        /// <summary>Occurs when [on change author].</summary>
-        public event EventHandler<string> OnChangeAuthor;
-
-        #endregion
-
-        #region Properties
 
         /// <summary>Gets or sets the name.</summary>
         /// <value>The name.</value>
         [JsonPropertyName("_Name")]
         public string Name
         {
-            get => name;
+            get
+            {
+                Logger.Trace($"General.Name '{name}'");
+                return name;
+            }
             set
             {
+                Logger.Trace($"General.Name from '{name}' to '{value}'");
                 name = value;
                 OnChangeName.Invoke(this, name);
             }
@@ -123,17 +97,36 @@ namespace Alis.Core.Settings.Configurations
         [JsonPropertyName("_Author")]
         public string Author
         {
-            get => author;
+            get
+            {
+                Logger.Trace($"General.Author '{author}'");
+                return author;
+            }
             set
             {
+                Logger.Trace($"General.Author from '{author}' to '{value}'");
                 author = value;
                 OnChangeAuthor.Invoke(this, author);
             }
         }
 
-        #endregion
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public void Reset()
+        {
+            Name = "Alis Game";
+            Author = "Pablo Perdomo Falcón";
+            Logger.Trace();
+        }
 
-        #region DefaultEvents
+
+        /// <summary>Occurs when [on change name].</summary>
+        public event EventHandler<string> OnChangeName;
+
+        /// <summary>Occurs when [on change author].</summary>
+        public event EventHandler<string> OnChangeAuthor;
+
 
         /// <summary>
         ///     Generals the on change name using the specified sender
@@ -142,7 +135,7 @@ namespace Alis.Core.Settings.Configurations
         /// <param name="e">The </param>
         private void General_OnChangeName(object? sender, string e)
         {
-            Console.WriteLine(e);
+            Logger.Trace(e);
         }
 
         /// <summary>
@@ -152,8 +145,7 @@ namespace Alis.Core.Settings.Configurations
         /// <param name="e">The </param>
         private void General_OnChangeAuthor(object? sender, string e)
         {
+            Logger.Trace(e);
         }
-
-        #endregion
     }
 }

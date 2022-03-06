@@ -27,6 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+#region
+
+using System;
+
+#endregion
+
 namespace Alis.Core.Components
 {
     /// <summary>
@@ -38,15 +44,19 @@ namespace Alis.Core.Components
         /// <summary>
         ///     Starts this instance
         /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
+            throw new NotImplementedException();
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
+            throw new NotImplementedException();
         }
     }
 }

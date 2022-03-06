@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
+using System.Diagnostics;
 using Alis.Core.Entities;
 
 namespace Alis.Core.Components
@@ -36,7 +38,6 @@ namespace Alis.Core.Components
     /// </summary>
     public class Animator : Component
     {
-        /*
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animator" /> class
         /// </summary>
@@ -93,10 +94,7 @@ namespace Alis.Core.Components
         ///     Adds the animation
         /// </summary>
         /// <param name="animation">The animation</param>
-        public void Add(Animation animation)
-        {
-            Animations.Add(animation);
-        }
+        public void Add(Animation animation) => Animations.Add(animation);
 
         /// <summary>
         ///     Awakes this instance
@@ -148,19 +146,6 @@ namespace Alis.Core.Components
         ///     Exits this instance
         /// </summary>
         public override void Exit()
-        {
-        }*/
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public override void Update()
         {
         }
     }

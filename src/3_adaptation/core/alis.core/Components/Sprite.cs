@@ -27,7 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Numerics;
 using Alis.Core.Entities;
+using Alis.Core.Managers;
+using SFML.Graphics;
+using SFML.System;
+using Transform = Alis.Core.Entities.Transform;
 
 namespace Alis.Core.Components
 {
@@ -37,7 +43,6 @@ namespace Alis.Core.Components
     /// <seealso cref="Component" />
     public class Sprite : Component
     {
-        /*
         /// <summary>
         ///     The sprite
         /// </summary>
@@ -46,7 +51,7 @@ namespace Alis.Core.Components
         /// <summary>
         ///     The texture path
         /// </summary>
-        public string TexturePath;
+        public string texturePath;
 
         /// <summary>
         ///     The transform
@@ -58,7 +63,7 @@ namespace Alis.Core.Components
         /// </summary>
         public Sprite()
         {
-            TexturePath = "";
+            texturePath = "";
             transform = new Transform();
             sprite = new SFML.Graphics.Sprite();
             RenderManager.Attach(this);
@@ -70,7 +75,7 @@ namespace Alis.Core.Components
         /// <param name="texturePath">The texture path</param>
         public Sprite(string texturePath)
         {
-            TexturePath = texturePath;
+            this.texturePath = texturePath;
 
             transform = new Transform();
 
@@ -111,7 +116,7 @@ namespace Alis.Core.Components
         public override void Start()
         {
             transform = GameObject.Transform;
-            Console.WriteLine(TexturePath);
+            Console.WriteLine(texturePath);
         }
 
         /// <summary>
@@ -122,19 +127,6 @@ namespace Alis.Core.Components
             sprite.Position = new Vector2f(transform.Position.X, transform.Position.Y);
             sprite.Rotation = transform.Rotation.Y;
             sprite.Scale = new Vector2f(transform.Scale.X, transform.Scale.Y);
-        }*/
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public override void Update()
-        {
         }
     }
 }

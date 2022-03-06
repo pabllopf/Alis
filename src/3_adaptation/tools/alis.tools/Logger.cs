@@ -47,7 +47,7 @@ namespace Alis.Tools
         /// </summary>
         static Logger()
         {
-            Level = LogLevel.Info;
+            Level = LogLevel.Log;
 
             Console.WriteLine("SYSTEM STATS \n" +
                               $"- MachineName:    {Environment.MachineName} \n" +
@@ -72,7 +72,7 @@ namespace Alis.Tools
         /// <summary>
         ///     The level
         /// </summary>
-        private static readonly LogLevel Level;
+        public static LogLevel Level;
 
         /// <summary>
         ///     The my file

@@ -29,9 +29,9 @@
 
 #region
 
-#endregion
-
 using Alis.Core.Entities;
+
+#endregion
 
 namespace Alis.Core.Components
 {

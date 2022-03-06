@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Entities;
+using SFML.Audio;
 
 namespace Alis.Core.Components
 {
@@ -37,7 +39,6 @@ namespace Alis.Core.Components
     /// <seealso cref="Component" />
     public class AudioSource : Component
     {
-        /*
         /// <summary>
         ///     The sound
         /// </summary>
@@ -66,11 +67,9 @@ namespace Alis.Core.Components
         {
             if (!string.IsNullOrEmpty(PathFile))
             {
-                sound = new Music(PathFile)
-                {
-                    Loop = true,
-                    Volume = 100
-                };
+                sound = new Music(PathFile);
+                sound.Loop = true;
+                sound.Volume = 100;
             }
         }
 
@@ -78,10 +77,7 @@ namespace Alis.Core.Components
         ///     Starts this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-            sound?.Play();
-        }
+        public override void Start() => sound?.Play();
 
         /// <summary>
         ///     Updates this instance
@@ -94,31 +90,11 @@ namespace Alis.Core.Components
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop()
-        {
-            sound?.Pause();
-        }
+        public override void Stop() => sound?.Pause();
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit()
-        {
-            sound?.Stop();
-        }
-        */
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public override void Update()
-        {
-        }
+        public override void Exit() => sound?.Stop();
     }
 }

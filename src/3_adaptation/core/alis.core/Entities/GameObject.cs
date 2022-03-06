@@ -30,6 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Alis.Core.Components;
+using Alis.Core.Exceptions;
+using Alis.Core.Input;
 
 namespace Alis.Core.Entities
 {
@@ -44,6 +47,11 @@ namespace Alis.Core.Entities
             IsActive = true;
             IsStatic = false;
             Transform = new Transform();
+            Components = new List<Component>();
+            
+            InputManager.OnPressKey += OnPressKey;
+            InputManager.OnReleaseKey += OnReleaseKey;
+            InputManager.OnPressDownKey += OnPressDownKey;
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -55,6 +63,11 @@ namespace Alis.Core.Entities
             IsActive = true;
             IsStatic = false;
             Transform = new Transform();
+            Components = new List<Component>();
+            
+            InputManager.OnPressKey += OnPressKey;
+            InputManager.OnReleaseKey += OnReleaseKey;
+            InputManager.OnPressDownKey += OnPressDownKey;
         }
 
         /// <summary>Initializes a new instance of the <see cref="GameObject" /> class.</summary>
@@ -74,6 +87,10 @@ namespace Alis.Core.Entities
             IsStatic = isStatic;
             Transform = transform;
             Components = new List<Component>(components);
+            
+            InputManager.OnPressKey += OnPressKey;
+            InputManager.OnReleaseKey += OnReleaseKey;
+            InputManager.OnPressDownKey += OnPressDownKey;
         }
 
         /// <summary>Gets or sets the name.</summary>
@@ -128,82 +145,50 @@ namespace Alis.Core.Entities
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         /// <exception cref="ComponentDontExits"></exception>
-        public Component Get<T>() where T : Component
+        public T Get<T>() where T : Component
         {
-            return Components.Find(component => component.GetType() == typeof(T)) ?? throw new NullReferenceException();
+            Component? component = Components.Find(component => component.GetType() == typeof(T));
+            return (T) (component ?? throw new NullReferenceException());
         }
 
         /// <summary>Awakes this instance.</summary>
-        public void Awake()
-        {
-            Components.ForEach(component => component.Awake());
-        }
+        public void Awake() => Components.ForEach(component => component.Awake());
 
         /// <summary>Starts this instance.</summary>
-        public void Start()
-        {
-            Components.ForEach(component => component.Start());
-        }
+        public void Start() => Components.ForEach(component => component.Start());
 
         /// <summary>Befores the update.</summary>
-        public void BeforeUpdate()
-        {
-            Components.ForEach(component => component.BeforeUpdate());
-        }
+        public void BeforeUpdate() => Components.ForEach(component => component.BeforeUpdate());
 
         /// <summary>Updates this instance.</summary>
-        public void Update()
-        {
-            Components.ForEach(component => component.Update());
-        }
+        public void Update() => Components.ForEach(component => component.Update());
 
         /// <summary>Afters the update.</summary>
-        public void AfterUpdate()
-        {
-            Components.ForEach(component => component.AfterUpdate());
-        }
+        public void AfterUpdate() => Components.ForEach(component => component.AfterUpdate());
 
         /// <summary>Afters the update.</summary>
-        public void FixedUpdate()
-        {
-            Components.ForEach(component => component.FixedUpdate());
-        }
+        public void FixedUpdate() => Components.ForEach(component => component.FixedUpdate());
 
         /// <summary>
         ///     Dispatches the events.
         /// </summary>
         /// <returns></returns>
-        public void DispatchEvents()
-        {
-            Components.ForEach(component => component.DispatchEvents());
-        }
+        public void DispatchEvents() => Components.ForEach(component => component.DispatchEvents());
 
         /// <summary>Stops this instance.</summary>
-        public void Stop()
-        {
-            Components.ForEach(component => component.Stop());
-        }
+        public void Stop() => Components.ForEach(component => component.Stop());
 
         /// <summary>
         ///     Destroys this instance.
         /// </summary>
         /// <returns></returns>
-        public void Destroy()
-        {
-            Components.ForEach(component => component.Destroy());
-        }
+        public void Destroy() => Components.ForEach(component => component.Destroy());
 
         /// <summary>Resets this instance.</summary>
-        public void Reset()
-        {
-            Components.ForEach(component => component.Reset());
-        }
+        public void Reset() => Components.ForEach(component => component.Reset());
 
         /// <summary>Exits this instance.</summary>
-        public void Exit()
-        {
-            Components.ForEach(component => component.Exit());
-        }
+        public void Exit() => Components.ForEach(component => component.Exit());
 
         /// <summary>
         ///     Removes the specified component.
@@ -211,10 +196,7 @@ namespace Alis.Core.Entities
         /// <param name="component">The component.</param>
         /// <returns></returns>
         /// <exception cref="ComponentDontExits"></exception>
-        public void Remove(Component component)
-        {
-            Components.Remove(component);
-        }
+        public void Remove(Component component) => Components.Remove(component);
 
         /// <summary>
         ///     Determines whether this instance contains the object.
@@ -223,10 +205,7 @@ namespace Alis.Core.Entities
         /// <returns>
         ///     <c>true</c> if [contains]; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains<T>() where T : Component
-        {
-            return Components.Find(component => component.GetType() == typeof(T)) is not null;
-        }
+        public bool Contains<T>() where T : Component => Components.Find(component => component.GetType() == typeof(T)) is not null;
 
         /// <summary>
         ///     Determines whether this instance contains the object.
@@ -236,15 +215,62 @@ namespace Alis.Core.Entities
         ///     <c>true</c> if [contains] [the specified component]; otherwise, <c>false</c>.
         /// </returns>
         public bool Contains(Component component) => Components.Contains(component);
+        
+        /// <summary>
+        /// Ons the press key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private  void OnPressKey(string key)
+        {
+            for (int i = 0; i < Components.Count; i++)
+            {
+                Components[i].OnPressKey(key);
+            }
+        }
+        
+        /// <summary>
+        /// Ons the press down key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private  void OnPressDownKey(string key)
+        {
+            for (int i = 0; i < Components.Count; i++)
+            {
+                Components[i].OnPressDownKey(key);
+            }
+        }
+        
+        /// <summary>
+        /// Ons the release key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
+        private  void OnReleaseKey(string key)
+        {
+            for (int i = 0; i < Components.Count; i++)
+            {
+                Components[i].OnReleaseKey(key);
+            }
+        }
+        
+        /// <summary>
+        /// Ons the press down key using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
+        private void OnPressDownKey(object? sender, string e) => OnPressDownKey(e);
 
         /// <summary>
-        ///     Describes whether this instance contains
+        /// Ons the release key using the specified sender
         /// </summary>
-        /// <param name="type">The type</param>
-        /// <returns>The bool</returns>
-        public bool Contains(Type type)
-        {
-            return Components.Find(component => component.GetType() == type) is not null;
-        }
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
+        private void OnReleaseKey(object? sender, string e) => OnReleaseKey(e);
+
+        /// <summary>
+        /// Ons the press key using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
+        private void OnPressKey(object? sender, string e) => OnPressKey(e);
     }
 }

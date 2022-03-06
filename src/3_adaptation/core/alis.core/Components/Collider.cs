@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Text.Json.Serialization;
 using Alis.Core.Entities;
+using SFML.Graphics;
 
 namespace Alis.Core.Components
 {
@@ -37,7 +40,6 @@ namespace Alis.Core.Components
     /// <seealso cref="Component" />
     public abstract class Collider : Component
     {
-        /*
         /// <summary>
         ///     Gets or sets the value of the is trigger
         /// </summary>
@@ -48,6 +50,6 @@ namespace Alis.Core.Components
         ///     Gets the drawable
         /// </summary>
         /// <returns>The drawable</returns>
-        public virtual Drawable GetDrawable() => throw new NotImplementedException();*/
+        public virtual Drawable GetDrawable() => throw new NotImplementedException();
     }
 }

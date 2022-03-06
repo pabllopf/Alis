@@ -27,12 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System.Text.Json.Serialization;
 using Alis.FluentApi.Validations;
-
-#endregion
+using Alis.Tools;
 
 namespace Alis.Core.Settings.Configurations
 {
@@ -41,20 +38,15 @@ namespace Alis.Core.Settings.Configurations
     /// </summary>
     public class Scene
     {
-        #region Reset()
+        /// <summary>
+        ///     The max game object by scene
+        /// </summary>
+        private int maxGameObjectByScene = 1024;
 
         /// <summary>
-        ///     Resets this instance
+        ///     The max scenes of game
         /// </summary>
-        public void Reset()
-        {
-            MaxScenesOfGame = 16;
-            MaxGameObjectByScene = 1024;
-        }
-
-        #endregion
-
-        #region Constructor
+        private int maxScenesOfGame = 16;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
@@ -63,6 +55,7 @@ namespace Alis.Core.Settings.Configurations
         {
             MaxScenesOfGame = 16;
             MaxGameObjectByScene = 1024;
+            Logger.Trace();
         }
 
         /// <summary>
@@ -75,24 +68,54 @@ namespace Alis.Core.Settings.Configurations
         {
             MaxScenesOfGame = maxScenesOfGame.Value;
             MaxGameObjectByScene = maxGameObjectByScene.Value;
+            Logger.Trace(maxScenesOfGame, maxGameObjectByScene);
         }
 
-        #endregion
-
-        #region Properties
 
         /// <summary>
         ///     Gets or sets the value of the max scenes of game
         /// </summary>
         [JsonPropertyName("_MaxScenesOfGame")]
-        public int MaxScenesOfGame { get; set; } = 16;
+        public int MaxScenesOfGame
+        {
+            get
+            {
+                Logger.Trace($"Scene.MaxScenesOfGame '{maxScenesOfGame}'");
+                return maxScenesOfGame;
+            }
+            set
+            {
+                Logger.Trace($"Scene.MaxScenesOfGame from '{maxScenesOfGame}' to '{value}'");
+                maxScenesOfGame = value;
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the value of the max game object by scene
         /// </summary>
         [JsonPropertyName("_MaxGameObjectByScene")]
-        public int MaxGameObjectByScene { get; set; } = 1024;
+        public int MaxGameObjectByScene
+        {
+            get
+            {
+                Logger.Trace($"Scene.MaxGameObjectByScene '{maxGameObjectByScene}'");
+                return maxGameObjectByScene;
+            }
+            set
+            {
+                Logger.Trace($"Scene.MaxGameObjectByScene from '{maxGameObjectByScene}' to '{value}'");
+                maxGameObjectByScene = value;
+            }
+        }
 
-        #endregion
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public void Reset()
+        {
+            MaxScenesOfGame = 16;
+            MaxGameObjectByScene = 1024;
+            Logger.Trace();
+        }
     }
 }

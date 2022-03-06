@@ -38,12 +38,23 @@ namespace Alis.Core.Settings.Configurations
     public class Debug
     {
         /// <summary>
+        ///     The log level
+        /// </summary>
+        private LogLevel logLevel;
+
+        /// <summary>
+        ///     The show physic borders
+        /// </summary>
+        private bool showPhysicBorders;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="Debug" /> class
         /// </summary>
         public Debug()
         {
             ShowPhysicBorders = false;
             LogLevel = LogLevel.Critical;
+            Logger.Trace();
         }
 
         /// <summary>
@@ -56,19 +67,44 @@ namespace Alis.Core.Settings.Configurations
         {
             ShowPhysicBorders = showPhysicBorders;
             LogLevel = logLevel;
+            Logger.Trace(showPhysicBorders, logLevel);
         }
 
         /// <summary>
         ///     Gets or sets the value of the show physic borders
         /// </summary>
         [JsonPropertyName("_ShowPhysicBorders")]
-        public bool ShowPhysicBorders { get; set; }
+        public bool ShowPhysicBorders
+        {
+            get
+            {
+                Logger.Trace($"Debug.ShowPhysicBorders '{showPhysicBorders}'");
+                return showPhysicBorders;
+            }
+            set
+            {
+                Logger.Trace($"Debug.ShowPhysicBorders from '{showPhysicBorders}' to '{value}'");
+                showPhysicBorders = value;
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the value of the log level
         /// </summary>
         [JsonPropertyName("_LogLevel")]
-        public LogLevel LogLevel { get; set; }
+        public LogLevel LogLevel
+        {
+            get
+            {
+                Logger.Trace($"Debug.LogLevel '{logLevel}'");
+                return logLevel;
+            }
+            set
+            {
+                Logger.Trace($"Debug.LogLevel from '{logLevel}' to '{value}'");
+                logLevel = value;
+            }
+        }
 
         /// <summary>
         ///     Resets this instance
@@ -77,6 +113,7 @@ namespace Alis.Core.Settings.Configurations
         {
             ShowPhysicBorders = false;
             LogLevel = LogLevel.Critical;
+            Logger.Trace();
         }
     }
 }

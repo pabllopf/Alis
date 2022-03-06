@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Text.Json.Serialization;
+using Alis.Tools;
+
 namespace Alis.Core.Settings.Configurations
 {
     /// <summary>
@@ -35,14 +38,73 @@ namespace Alis.Core.Settings.Configurations
     public class GameObject
     {
         /// <summary>
+        ///     The has duplicate components
+        /// </summary>
+        private bool hasDuplicateComponents;
+
+        /// <summary>
+        ///     The max components
+        /// </summary>
+        private int maxComponents;
+
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GameObject" /> class
+        /// </summary>
+        public GameObject()
+        {
+            maxComponents = 64;
+            hasDuplicateComponents = false;
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GameObject" /> class
+        /// </summary>
+        /// <param name="maxComponents">The max components</param>
+        /// <param name="hasDuplicateComponents">The has duplicate components</param>
+        [JsonConstructor]
+        public GameObject(int maxComponents, bool hasDuplicateComponents)
+        {
+            this.maxComponents = maxComponents;
+            this.hasDuplicateComponents = hasDuplicateComponents;
+        }
+
+        /// <summary>
         ///     Gets or sets the value of the max components
         /// </summary>
-        public int MaxComponents { get; set; } = 64;
+        [JsonPropertyName("_MaxComponents")]
+        public int MaxComponents
+        {
+            get
+            {
+                Logger.Trace($"{nameof(GameObject)}.{nameof(MaxComponents)} '{maxComponents}'");
+                return maxComponents;
+            }
+            set
+            {
+                Logger.Trace($"{nameof(GameObject)}.{nameof(MaxComponents)} from '{maxComponents}' to '{value}'");
+                maxComponents = value;
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the value of the has duplicate components
         /// </summary>
-        public bool HasDuplicateComponents { get; set; }
+        [JsonPropertyName("_HasDuplicateComponents")]
+        public bool HasDuplicateComponents
+        {
+            get
+            {
+                Logger.Trace($"{nameof(GameObject)}.{nameof(HasDuplicateComponents)} '{hasDuplicateComponents}'");
+                return hasDuplicateComponents;
+            }
+            set
+            {
+                Logger.Trace(
+                    $"{nameof(GameObject)}.{nameof(HasDuplicateComponents)} from '{hasDuplicateComponents}' to '{value}'");
+                hasDuplicateComponents = value;
+            }
+        }
 
         /// <summary>
         ///     Resets this instance
@@ -51,6 +113,7 @@ namespace Alis.Core.Settings.Configurations
         {
             MaxComponents = 64;
             HasDuplicateComponents = false;
+            Logger.Trace();
         }
     }
 }

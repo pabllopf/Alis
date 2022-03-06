@@ -27,6 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Numerics;
+using System.Text.Json.Serialization;
+using Alis.Core.Managers;
+using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Systems.Physics2D.Factories;
+using Alis.Tools;
+using SFML.Graphics;
+using SFML.System;
+
 namespace Alis.Core.Components
 {
     /// <summary>
@@ -36,10 +46,113 @@ namespace Alis.Core.Components
     public class BoxCollider2D : Collider
     {
         /// <summary>
+        ///     Initializes a new instance of the <see cref="BoxCollider2D" /> class
+        /// </summary>
+        public BoxCollider2D()
+        {
+            AutoTiling = true;
+            Size = new Vector2(1.0f, 1.0f);
+            RelativePosition = new Vector2(0.0f, 0.0f);
+        }
+        
+        public BoxCollider2D(bool autoTiling)
+        {
+            AutoTiling = true;
+            Size = new Vector2(1.0f, 1.0f);
+            RelativePosition = new Vector2(0.0f, 0.0f);
+        }
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BoxCollider2D" /> class
+        /// </summary>
+        /// <param name="autoTiling">The auto tiling</param>
+        /// <param name="size">The size</param>
+        /// <param name="relativePosition">The relative position</param>
+        [JsonConstructor]
+        public BoxCollider2D(bool autoTiling, Vector2 size, Vector2 relativePosition)
+        {
+            AutoTiling = autoTiling;
+            Size = size;
+            RelativePosition = relativePosition;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the rectangle
+        /// </summary>
+        public Body Body { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the body type
+        /// </summary>
+        public BodyType BodyType { get; set; } = BodyType.Static;
+
+        /// <summary>
+        ///     Gets or sets the value of the rectangle shape
+        /// </summary>
+        private RectangleShape? RectangleShape { get; set; }
+
+        /// <summary>
+        ///     Gets the value of the instance
+        /// </summary>
+        public static BoxCollider2D Instance { get; } = new BoxCollider2D();
+
+        /// <summary>
+        ///     Gets or sets the value of the auto tiling
+        /// </summary>
+        [JsonPropertyName("_AutoTiling")]
+        public bool AutoTiling { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the relative position
+        /// </summary>
+        [JsonPropertyName("_RelativePosition")]
+        public Vector2 RelativePosition { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the size
+        /// </summary>
+        [JsonPropertyName("_Size")]
+        public Vector2 Size { get; set; }
+
+        /// <summary>
+        ///     Creates the instance
+        /// </summary>
+        /// <returns>The box collider</returns>
+        public static BoxCollider2D CreateInstance() => Instance;
+
+        /// <summary>
+        ///     Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            if (AutoTiling)
+            {
+                Logger.Log($"{nameof(BoxCollider2D)}: Auto tiling enabled");
+                //if (GameObject.Contains<Sprite>())
+                //{
+                //    Size = GameObject.Get<Sprite>().Size;
+                  //  Logger.Log($"{GameObject.Name}'s size is set to {Size}");
+                //}
+            }
+        }
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
+            RectangleShape = new RectangleShape(new Vector2f(Size.X, Size.Y));
+            RectangleShape.FillColor = Color.Transparent;
+            RectangleShape.OutlineColor = Color.Green;
+            RectangleShape.OutlineThickness = 1f;
+            PhysicsManager.Attach(this);
+
+            Body = BodyFactory.CreateRectangle(PhysicsManager.World, Size.X, Size.Y, 1f,
+                new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y));
+            Body.BodyType = BodyType;
+            Body.FixedRotation = true;
+            Body.Friction = 0;
+            Body.Inertia = 0;
         }
 
         /// <summary>
@@ -47,133 +160,21 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Update()
         {
-        }
-    }
-
-    /*
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="BoxCollider2D" /> class
-    /// </summary>
-    public BoxCollider2D()
-    {
-        AutoTiling = true;
-        Size = new Vector2(1.0f, 1.0f);
-        RelativePosition = new Vector2(0.0f, 0.0f);
-    }
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="BoxCollider2D" /> class
-    /// </summary>
-    /// <param name="autoTiling">The auto tiling</param>
-    /// <param name="size">The size</param>
-    /// <param name="relativePosition">The relative position</param>
-    [JsonConstructor]
-    public BoxCollider2D(bool autoTiling, Vector2 size, Vector2 relativePosition)
-    {
-        AutoTiling = autoTiling;
-        Size = size;
-        RelativePosition = relativePosition;
-    }
-
-    /// <summary>
-    ///     Gets or sets the value of the rectangle
-    /// </summary>
-    public Body Body { get; set; }
-
-    /// <summary>
-    ///     Gets or sets the value of the body type
-    /// </summary>
-    public BodyType BodyType { get; set; } = BodyType.Static;
-
-    /// <summary>
-    ///     Gets or sets the value of the rectangle shape
-    /// </summary>
-    private RectangleShape? RectangleShape { get; set; }
-
-    /// <summary>
-    ///     Gets the value of the instance
-    /// </summary>
-    public static BoxCollider2D Instance { get; } = new BoxCollider2D();
-
-    /// <summary>
-    ///     Gets or sets the value of the auto tiling
-    /// </summary>
-    [JsonPropertyName("_AutoTiling")]
-    public bool AutoTiling { get; set; }
-
-    /// <summary>
-    ///     Gets or sets the value of the relative position
-    /// </summary>
-    [JsonPropertyName("_RelativePosition")]
-    public Vector2 RelativePosition { get; set; }
-
-    /// <summary>
-    ///     Gets or sets the value of the size
-    /// </summary>
-    [JsonPropertyName("_Size")]
-    public Vector2 Size { get; set; }
-
-    /// <summary>
-    ///     Creates the instance
-    /// </summary>
-    /// <returns>The box collider</returns>
-    public static BoxCollider2D CreateInstance() => Instance;
-
-    /// <summary>
-    ///     Awakes this instance
-    /// </summary>
-    public override void Awake()
-    {
-        if (AutoTiling)
-        {
-            if (GameObject.Contains<Sprite>())
+            if (RectangleShape is not null)
             {
-                Size = ((Sprite) GameObject.Get<Sprite>()).Size;
+                RectangleShape.Rotation = Body.Rotation;
+                RectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
+                RectangleShape.Size = new Vector2f(Size.X, Size.Y);
             }
-        }
-    }
 
-    /// <summary>
-    ///     Starts this instance
-    /// </summary>
-    public override void Start()
-    {
-        RectangleShape = new RectangleShape(new Vector2f(Size.X, Size.Y))
-        {
-            FillColor = Color.Transparent,
-            OutlineColor = Color.Green,
-            OutlineThickness = 1f
-        };
-        PhysicsManager.Attach(this);
-
-        Body = BodyFactory.CreateRectangle(PhysicsManager.World, Size.X, Size.Y, 1f,
-            new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y));
-        Body.BodyType = BodyType;
-        Body.FixedRotation = true;
-        Body.Friction = 0;
-        Body.Inertia = 0;
-    }
-
-    /// <summary>
-    ///     Updates this instance
-    /// </summary>
-    public override void Update()
-    {
-        if (RectangleShape is not null)
-        {
-            RectangleShape.Rotation = Body.Rotation;
-            RectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
-            RectangleShape.Size = new Vector2f(Size.X, Size.Y);
+            GameObject.Transform.Position = new Vector3(Body.Position.X, Body.Position.Y, 0);
         }
 
-        GameObject.Transform.Position = new Vector3(Body.Position.X, Body.Position.Y, 0);
+
+        /// <summary>
+        ///     Gets the drawable
+        /// </summary>
+        /// <returns>The drawable</returns>
+        public override Drawable GetDrawable() => RectangleShape ?? throw new NullReferenceException();
     }
-
-
-    /// <summary>
-    ///     Gets the drawable
-    /// </summary>
-    /// <returns>The drawable</returns>
-    public override Drawable GetDrawable() => RectangleShape ?? throw new NullReferenceException();
-}*/
 }

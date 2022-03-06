@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
 using Alis.Core.Entities;
+using Alis.Core.Managers;
+using SFML.Graphics;
+using SFML.System;
 
 namespace Alis.Core.Components
 {
@@ -37,11 +41,10 @@ namespace Alis.Core.Components
     /// <seealso cref="Component" />
     public class Camera : Component
     {
-        /*
         /// <summary>
         ///     Initializes a new instance of the <see cref="Camera" /> class
         /// </summary>
-        private Camera()
+        public Camera()
         {
             PointOfView = new Vector2(0.0f, 0.0f);
             Resolution = new Vector2(640, 480);
@@ -77,30 +80,12 @@ namespace Alis.Core.Components
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start()
-        {
-            RenderManager.SetView(View);
-        }
+        public override void Start() => RenderManager.SetView(View);
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update()
-        {
+        public override void Update() =>
             View.Center = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
-        }*/
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public override void Update()
-        {
-        }
     }
 }

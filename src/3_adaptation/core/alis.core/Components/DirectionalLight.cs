@@ -29,6 +29,8 @@
 
 #region
 
+using System;
+
 #endregion
 
 namespace Alis.Core.Components
@@ -39,7 +41,6 @@ namespace Alis.Core.Components
     /// <seealso cref="Light" />
     public class DirectionalLight : Light
     {
-        /*
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -56,19 +57,6 @@ namespace Alis.Core.Components
         public override void Update()
         {
             throw new NotImplementedException();
-        }*/
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        public override void Update()
-        {
         }
     }
 }

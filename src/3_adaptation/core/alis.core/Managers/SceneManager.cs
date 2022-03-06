@@ -27,21 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entities;
+using Alis.Core.Systems;
 
 namespace Alis.Core.Managers
 {
     /// <summary>
     ///     <br />
     /// </summary>
-    public class SceneManager
+    public class SceneManager : SceneSystem
     {
-        /// <summary>
-        ///     Adds the scene
-        /// </summary>
-        /// <param name="scene">The scene</param>
-        public void Add(Scene scene)
-        {
-        }
     }
 }

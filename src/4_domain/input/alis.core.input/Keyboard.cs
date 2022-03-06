@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Entities
+namespace Alis.Core.Input
 {
     /// <summary>Define the keyboard</summary>
     public enum Keyboard
