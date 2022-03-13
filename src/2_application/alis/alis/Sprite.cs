@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,8 +29,15 @@
 
 namespace Alis
 {
+    /// <summary>
+    /// The sprite class
+    /// </summary>
+    /// <seealso cref="Alis.Core.Components.Sprite"/>
     public class Sprite : Alis.Core.Components.Sprite 
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
         public Sprite() : base()
         {
         }
@@ -40,6 +47,15 @@ namespace Alis
         /// </summary>
         /// <param name="texturePath">The texture path</param>
         public Sprite(string texturePath) : base(texturePath)
+        {
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="texturePath">The texture path</param>
+        /// <param name="level">The level</param>
+        public Sprite(string texturePath, int level) : base(texturePath, level)
         {
         }
     }

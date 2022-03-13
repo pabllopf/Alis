@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.ComponentModel.Design.Serialization;
 using System.Numerics;
+using Alis.Builders;
 
 namespace Alis
 {
@@ -37,10 +39,17 @@ namespace Alis
     /// <seealso cref="Alis.Core.Components.BoxCollider2D"/>
     public class BoxCollider2D : Alis.Core.Components.BoxCollider2D
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxCollider2D"/> class
+        /// </summary>
         public BoxCollider2D() : base()
         {
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxCollider2D"/> class
+        /// </summary>
+        /// <param name="autoTiling">The auto tiling</param>
         public BoxCollider2D(bool autoTiling) : base(autoTiling)
         {
         }
@@ -53,6 +62,16 @@ namespace Alis
         /// <param name="relativePosition">The relative position</param>
         public BoxCollider2D(bool autoTiling, Vector2 size, Vector2 relativePosition): base(autoTiling, size, relativePosition)
         {
+        }
+        
+        
+        /// <summary>
+        /// Builders
+        /// </summary>
+        /// <returns>The box collider builder</returns>
+        public static BoxCollider2DBuilder Builder()
+        {
+            return new BoxCollider2DBuilder();
         }
     }
 }

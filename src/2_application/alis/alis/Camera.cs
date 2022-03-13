@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,11 +29,24 @@
 
 namespace Alis
 {
+    /// <summary>
+    /// The camera class
+    /// </summary>
+    /// <seealso cref="Alis.Core.Components.Camera"/>
     public class Camera : Alis.Core.Components.Camera
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Camera"/> class
+        /// </summary>
         public Camera() : base()
         {
             
         }
+
+        /// <summary>
+        /// Creates
+        /// </summary>
+        /// <returns>The camera</returns>
+        public static Camera Create() => new Camera();
     }
 }

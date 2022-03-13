@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IResolution.cs
+//  File:   IScale.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -29,19 +29,18 @@
 
 namespace Alis.FluentApi.Words
 {
-
     /// <summary>
-    /// The resolution interface
+    /// The scale interface
     /// </summary>
-    public interface IResolution<TBuilder, TArgument1, TArgument2>
+    public interface IScale<TBuilder, TArgument1, TArgument2, TArgument3>
     {
-        
         /// <summary>
-        /// Resolutions the x
+        /// Scales the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
+        /// <param name="z">The </param>
         /// <returns>The builder</returns>
-        public TBuilder Resolution(TArgument1 x, TArgument2 y);
+        public TBuilder Scale(TArgument1 x, TArgument2 y, TArgument3 z);
     }
 }

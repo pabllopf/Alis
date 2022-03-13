@@ -133,6 +133,15 @@ namespace Alis.Core.Entities
                 rotation = value;
             }
         }
+        
+        /// <summary>
+        /// Sets the rotation using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        public void SetRotation(float value)
+        {
+            this.rotation.X = value;
+        }
 
         ~Transform()
         {

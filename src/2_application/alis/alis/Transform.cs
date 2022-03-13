@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,8 +31,15 @@ using System.Numerics;
 
 namespace Alis
 {
+    /// <summary>
+    /// The transform class
+    /// </summary>
+    /// <seealso cref="Alis.Core.Entities.Transform"/>
     public class Transform : Alis.Core.Entities.Transform
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transform"/> class
+        /// </summary>
         public Transform(): base()
         {
         }
@@ -52,5 +59,7 @@ namespace Alis
         public Transform(Vector3 scale, Vector3 position, Vector3 rotation)  : base(scale, position, rotation)
         {
         }
+
+        
     }
 }

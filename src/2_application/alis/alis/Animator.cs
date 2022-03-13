@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IResolution.cs
+//  File:   Animator.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,21 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
-{
+using System.Collections.Generic;
+using Alis.Core.Components;
 
-    /// <summary>
-    /// The resolution interface
-    /// </summary>
-    public interface IResolution<TBuilder, TArgument1, TArgument2>
+namespace Alis;
+
+public class Animator :  Alis.Core.Components.Animator
+{
+    public Animator(List<Animation> animations) : base(animations)
     {
-        
-        /// <summary>
-        /// Resolutions the x
-        /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
-        /// <returns>The builder</returns>
-        public TBuilder Resolution(TArgument1 x, TArgument2 y);
+    }
+    
+    public Animator() : base()
+    {
     }
 }

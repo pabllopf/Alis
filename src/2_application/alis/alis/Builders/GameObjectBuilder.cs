@@ -38,7 +38,9 @@ namespace Alis.Builders
     /// </summary>
     public class GameObjectBuilder :
         IBuild<GameObject>,
-        IName<GameObjectBuilder, string>
+        IName<GameObjectBuilder, string>,
+        ITransform<GameObjectBuilder, Func<TransformBuilder, Transform>>,
+        ITransform<GameObjectBuilder, Transform>
     {
         /// <summary>
         ///     Gets or sets the value of the game object
@@ -74,14 +76,26 @@ namespace Alis.Builders
             return this;
         }
 
+
         /// <summary>
-        ///     Transforms the transform
+        /// Transforms the value
         /// </summary>
-        /// <param name="transform">The transform</param>
+        /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Transform(Core.Entities.Transform transform)
+        public GameObjectBuilder Transform(Func<TransformBuilder, Transform> value)
         {
-            GameObject.Transform = transform;
+            GameObject.Transform = value(new TransformBuilder());
+            return this;
+        }
+
+        /// <summary>
+        /// Transforms the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Transform(Transform value)
+        {
+            GameObject.Transform = value;
             return this;
         }
     }

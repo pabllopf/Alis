@@ -32,7 +32,7 @@ using System.Numerics;
 using Alis;
 using Alis.Core.Systems.Physics2D.Dynamics;
 
-namespace PingPong2D
+namespace SimpleGame
 {
     /// <summary>
     ///     The program class

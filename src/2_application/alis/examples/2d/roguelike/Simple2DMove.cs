@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis;
 using System.Numerics;
+using Alis;
 
-namespace SimpleRoguelike2D
+namespace Roguelike
 {
     /// <summary>
     ///     The simple move class

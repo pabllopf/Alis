@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Settings;
@@ -82,7 +83,7 @@ namespace Alis.Core.Managers
 
         /// <summary>Gets or sets the sprites.</summary>
         /// <value>The sprites.</value>
-        private static List<Sprite> Sprites { get; } = new List<Sprite>(Game.Setting.Graphic.MaxElementsRender);
+        private static List<Sprite> Sprites { get; set; } = new List<Sprite>(Game.Setting.Graphic.MaxElementsRender);
 
         /// <summary>Awakes this instance.</summary>
         public override void Awake() => RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
@@ -94,6 +95,8 @@ namespace Alis.Core.Managers
             {
                 RenderWindow.Closed += RenderWindow_Closed;
             }
+            
+            Sprites = Sprites.OrderBy(o => o.Level).ToList();
         }
 
         /// <summary>Before the update.</summary>

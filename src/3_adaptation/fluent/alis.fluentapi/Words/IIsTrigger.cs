@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IResolution.cs
+//  File:   IIsTrigger.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -29,19 +29,22 @@
 
 namespace Alis.FluentApi.Words
 {
-
     /// <summary>
-    /// The resolution interface
+    /// The is trigger interface
     /// </summary>
-    public interface IResolution<TBuilder, TArgument1, TArgument2>
+    public interface IIsTrigger<TBuilder, TArgument>
     {
+        /// <summary>
+        /// Ises the trigger
+        /// </summary>
+        /// <returns>The builder</returns>
+        public TBuilder IsTrigger();
         
         /// <summary>
-        /// Resolutions the x
+        /// Ises the trigger using the specified value
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public TBuilder Resolution(TArgument1 x, TArgument2 y);
+        public TBuilder IsTrigger(TArgument value);
     }
 }

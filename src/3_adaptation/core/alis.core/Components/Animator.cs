@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Entities;
+using Alis.Tools;
 
 namespace Alis.Core.Components
 {
@@ -109,9 +110,10 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Start()
         {
-            if (GameObject.Contains<Sprite>())
+            if (GameObject.Contains(nameof(Sprite)))
             {
-                Sprite = (Sprite) GameObject.Get<Sprite>();
+                Sprite = GameObject.Get<Sprite>(nameof(Sprite));
+                Logger.Warning($"The sprite is already set {Sprite.texturePath}");
             }
             else
             {

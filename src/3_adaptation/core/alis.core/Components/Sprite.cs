@@ -54,9 +54,19 @@ namespace Alis.Core.Components
         public string texturePath;
 
         /// <summary>
+        /// Gets the value of the level
+        /// </summary>
+        public int Level => level;
+
+        /// <summary>
         ///     The transform
         /// </summary>
         private Transform transform;
+
+        /// <summary>
+        /// The level
+        /// </summary>
+        private readonly int level;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
@@ -76,6 +86,24 @@ namespace Alis.Core.Components
         public Sprite(string texturePath)
         {
             this.texturePath = texturePath;
+
+            transform = new Transform();
+
+            sprite = new SFML.Graphics.Sprite(new Texture(texturePath));
+            Size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
+            Console.WriteLine(@$"witdh ={Size.X} | height={Size.Y}");
+            RenderManager.Attach(this);
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Sprite"/> class
+        /// </summary>
+        /// <param name="texturePath">The texture path</param>
+        /// <param name="level">The level</param>
+        public Sprite(string texturePath, int level)
+        {
+            this.texturePath = texturePath;
+            this.level = level;
 
             transform = new Transform();
 
@@ -116,7 +144,6 @@ namespace Alis.Core.Components
         public override void Start()
         {
             transform = GameObject.Transform;
-            Console.WriteLine(texturePath);
         }
 
         /// <summary>

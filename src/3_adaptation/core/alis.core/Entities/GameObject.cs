@@ -127,12 +127,11 @@ namespace Alis.Core.Entities
         [JsonPropertyName("_Components")]
         public List<Component> Components { get; internal set; }
 
+        
         /// <summary>
+        /// Adds the component
         /// </summary>
-        /// <param name="component"></param>
-        /// <exception cref="ComponentTypeAlredyExist"></exception>
-        /// <exception cref="ComponentInstancieIsTheSame"></exception>
-        /// <exception cref="GameObjectIsFull"></exception>
+        /// <param name="component">The component</param>
         public void Add(Component component)
         {
             component.AttachTo(this);
@@ -150,6 +149,18 @@ namespace Alis.Core.Entities
             Component? component = Components.Find(component => component.GetType() == typeof(T));
             return (T) (component ?? throw new NullReferenceException());
         }
+        
+        /// <summary>
+        /// Gets the name
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="name">The name</param>
+        /// <exception cref="NullReferenceException"></exception>
+        /// <returns>The</returns>
+        public T Get<T>(string name) where T : Component
+        {
+            return (T) (Components.Find(component => component.GetType().Name == name) ?? throw new NullReferenceException());
+        }
 
         /// <summary>Awakes this instance.</summary>
         public void Awake() => Components.ForEach(component => component.Awake());
@@ -158,31 +169,73 @@ namespace Alis.Core.Entities
         public void Start() => Components.ForEach(component => component.Start());
 
         /// <summary>Befores the update.</summary>
-        public void BeforeUpdate() => Components.ForEach(component => component.BeforeUpdate());
+        public void BeforeUpdate() => Components.ForEach(component =>
+        {
+            if (component.IsActive)
+            {
+                component.BeforeUpdate();
+            }
+        });
 
         /// <summary>Updates this instance.</summary>
-        public void Update() => Components.ForEach(component => component.Update());
+        public void Update() => Components.ForEach(component =>
+        {
+            if (component.IsActive)
+            {
+                component.Update();
+            }
+        });
 
         /// <summary>Afters the update.</summary>
-        public void AfterUpdate() => Components.ForEach(component => component.AfterUpdate());
+        public void AfterUpdate() => Components.ForEach(component =>
+        {
+            if (component.IsActive)
+            {
+                component.AfterUpdate();
+            }
+        });
 
         /// <summary>Afters the update.</summary>
-        public void FixedUpdate() => Components.ForEach(component => component.FixedUpdate());
+        public void FixedUpdate() => Components.ForEach(component =>
+        {
+            if (component.IsActive)
+            {
+                component.FixedUpdate();
+            }
+        });
 
         /// <summary>
         ///     Dispatches the events.
         /// </summary>
         /// <returns></returns>
-        public void DispatchEvents() => Components.ForEach(component => component.DispatchEvents());
+        public void DispatchEvents() => Components.ForEach(component =>
+        {
+            if (component.IsActive)
+            {
+                component.DispatchEvents();
+            }
+        });
 
         /// <summary>Stops this instance.</summary>
-        public void Stop() => Components.ForEach(component => component.Stop());
+        public void Stop() => Components.ForEach(component =>
+        {
+            if (component.IsActive)
+            {
+                component.Stop();
+            }
+        });
 
         /// <summary>
         ///     Destroys this instance.
         /// </summary>
         /// <returns></returns>
-        public void Destroy() => Components.ForEach(component => component.Destroy());
+        public void Destroy() => Components.ForEach(component =>
+        {
+            if (component.IsActive)
+            {
+                component.Destroy();
+            }
+        });
 
         /// <summary>Resets this instance.</summary>
         public void Reset() => Components.ForEach(component => component.Reset());
@@ -207,6 +260,13 @@ namespace Alis.Core.Entities
         /// </returns>
         public bool Contains<T>() where T : Component => Components.Find(component => component.GetType() == typeof(T)) is not null;
 
+        /// <summary>
+        /// Describes whether this instance contains
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The bool</returns>
+        public bool Contains(string name) => Components.Find(component => component.GetType().Name == name) is not null;
+        
         /// <summary>
         ///     Determines whether this instance contains the object.
         /// </summary>

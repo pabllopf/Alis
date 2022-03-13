@@ -28,11 +28,19 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using Alis;
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Components;
+using SFML.Graphics;
+using Animator = Alis.Animator;
+using AudioSource = Alis.AudioSource;
+using BoxCollider2D = Alis.BoxCollider2D;
+using Camera = Alis.Camera;
+using Sprite = Alis.Sprite;
+using Transform = Alis.Transform;
 
-namespace SimpleRoguelike2D
+namespace Roguelike
 {
     /// <summary>
     ///     The program class
@@ -62,53 +70,46 @@ namespace SimpleRoguelike2D
                     .Add<Scene>(scene => scene
                         .Name("The main menu.")
                         .Add<GameObject>(gameObject => gameObject
-                            .Name("Other Example")
-                            .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(100, 100, 0), new Vector3(0)))
+                            .Name("Other Example").Transform((Transform) new Transform(new Vector3(1, 1, 0), new Vector3(100, 100, 0), new Vector3(0)))
                             .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new BoxCollider2D
-                            {
-                                Size = new Vector2(22, 22),
-                                BodyType = BodyType.Kinematic,
-                                AutoTiling = true,
-                            })
+                            .Add(BoxCollider2D.Builder()
+                                .Size(100, 100)
+                                .IsStatic(true)
+                                .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Other Example 2")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, -100, 0), new Vector3(0)))
                             .Add(new Sprite(
                                 @$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new BoxCollider2D()
-                            {
-                                Size = new Vector2(20, 30),
-                                BodyType = BodyType.Static,
-                                AutoTiling = true,
-                            })
+                            .Add(BoxCollider2D.Builder()
+                                .Size(100, 100)
+                                .IsStatic(true)
+                                .Build())
                             .Build())
                             .Add<GameObject>(gameObject => gameObject
                             .Name("Other Example 3")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, 100, 0), new Vector3(0)))
                             .Add(new Sprite(
                                 @$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new BoxCollider2D()
-                            {
-                                Size = new Vector2(20, 30),
-                                BodyType = BodyType.Static,
-                                AutoTiling = true,
-                            })
+                            .Add(BoxCollider2D.Builder()
+                                .Size(100, 100)
+                                .IsDynamic(true)
+                                .Build())
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Player")
                             .Add(new Simple2DMove())
                             .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
                             .Add(new AudioSource(@$"{Environment.CurrentDirectory}\Assets\menu.wav"))
-                            .Add(new Camera())
-                            .Add(new BoxCollider2D()
-                            {
-                                Size = new Vector2(20, 30),
-                                BodyType = BodyType.Dynamic,
-                                AutoTiling = true,
-                            })
-                            /*.Add<Animator>(new Animator(new List<Animation>
+                            .Add(Camera.Create())
+                            .Add(BoxCollider2D
+                                .Builder()
+                                    .IsActive(true)
+                                    .Size(100, 100)
+                                    .IsDynamic(true)
+                                .Build())
+                            .Add<Animator>(new Animator(new List<Animation>
                             {
                                 new Animation(new List<Texture>
                                 {
@@ -120,9 +121,12 @@ namespace SimpleRoguelike2D
                                         @$"{Environment.CurrentDirectory}\Assets\tile002.png"),
                                     new Texture(
                                         @$"{Environment.CurrentDirectory}\Assets\tile003.png")
-                                }),
+                                })
+                                {
+                                    Speed = 0.5f,
+                                },
                                 new Animation()
-                            }))*/
+                            }))
                             .Build())
                         .Build())
                     .Build())

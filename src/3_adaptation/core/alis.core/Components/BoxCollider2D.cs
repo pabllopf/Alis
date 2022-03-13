@@ -46,6 +46,11 @@ namespace Alis.Core.Components
     public class BoxCollider2D : Collider
     {
         /// <summary>
+        /// The size
+        /// </summary>
+        private Vector2 size;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="BoxCollider2D" /> class
         /// </summary>
         public BoxCollider2D()
@@ -55,6 +60,10 @@ namespace Alis.Core.Components
             RelativePosition = new Vector2(0.0f, 0.0f);
         }
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BoxCollider2D"/> class
+        /// </summary>
+        /// <param name="autoTiling">The auto tiling</param>
         public BoxCollider2D(bool autoTiling)
         {
             AutoTiling = true;
@@ -90,12 +99,7 @@ namespace Alis.Core.Components
         ///     Gets or sets the value of the rectangle shape
         /// </summary>
         private RectangleShape? RectangleShape { get; set; }
-
-        /// <summary>
-        ///     Gets the value of the instance
-        /// </summary>
-        public static BoxCollider2D Instance { get; } = new BoxCollider2D();
-
+        
         /// <summary>
         ///     Gets or sets the value of the auto tiling
         /// </summary>
@@ -112,13 +116,17 @@ namespace Alis.Core.Components
         ///     Gets or sets the value of the size
         /// </summary>
         [JsonPropertyName("_Size")]
-        public Vector2 Size { get; set; }
+        public Vector2 Size
+        {
+            get => size;
+            set => size = value;
+        }
 
         /// <summary>
         ///     Creates the instance
         /// </summary>
         /// <returns>The box collider</returns>
-        public static BoxCollider2D CreateInstance() => Instance;
+        public static BoxCollider2D CreateInstance() => new BoxCollider2D();
 
         /// <summary>
         ///     Awakes this instance
@@ -128,12 +136,14 @@ namespace Alis.Core.Components
             if (AutoTiling)
             {
                 Logger.Log($"{nameof(BoxCollider2D)}: Auto tiling enabled");
-                //if (GameObject.Contains<Sprite>())
-                //{
-                //    Size = GameObject.Get<Sprite>().Size;
-                  //  Logger.Log($"{GameObject.Name}'s size is set to {Size}");
-                //}
+                if (GameObject.Contains(nameof(Sprite)))
+                {
+                    Size = GameObject.Get<Sprite>(nameof(Sprite)).Size;
+                    Logger.Log($"{nameof(Entities.GameObject)}='{GameObject.Name}' size is set to {Size}");
+                }
             }
+
+           
         }
 
         /// <summary>
@@ -153,6 +163,12 @@ namespace Alis.Core.Components
             Body.FixedRotation = true;
             Body.Friction = 0;
             Body.Inertia = 0;
+            
+            if (IsTrigger)
+            {
+                
+                Body.IsSensor = !IsTrigger;
+            }
         }
 
         /// <summary>

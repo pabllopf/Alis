@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IResolution.cs
+//  File:   IsDynamic.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -29,19 +29,22 @@
 
 namespace Alis.FluentApi.Words
 {
-
     /// <summary>
-    /// The resolution interface
+    /// The is dynamic interface
     /// </summary>
-    public interface IResolution<TBuilder, TArgument1, TArgument2>
+    public interface IIsDynamic<TBuilder, TArgument>
     {
+        /// <summary>
+        /// Ises the dynamic
+        /// </summary>
+        /// <returns>The builder</returns>
+        public TBuilder IsDynamic();
         
         /// <summary>
-        /// Resolutions the x
+        /// Ises the dynamic using the specified value
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public TBuilder Resolution(TArgument1 x, TArgument2 y);
+        public TBuilder IsDynamic(TArgument value);
     }
 }

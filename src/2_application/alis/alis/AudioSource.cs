@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,12 +29,23 @@
 
 namespace Alis
 {
+    /// <summary>
+    /// The audio source class
+    /// </summary>
+    /// <seealso cref="Alis.Core.Components.AudioSource"/>
     public class AudioSource : Alis.Core.Components.AudioSource
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioSource"/> class
+        /// </summary>
         public AudioSource() : base()
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioSource"/> class
+        /// </summary>
+        /// <param name="pathFile">The path file</param>
         public AudioSource(string pathFile) : base(pathFile)
         {
         }

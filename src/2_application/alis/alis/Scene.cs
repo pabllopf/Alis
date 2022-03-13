@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -28,8 +28,17 @@
 //  --------------------------------------------------------------------------
 namespace Alis
 {
+    /// <summary>
+    /// The scene class
+    /// </summary>
+    /// <seealso cref="Alis.Core.Entities.Scene"/>
     public class Scene : Alis.Core.Entities.Scene
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scene"/> class
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="gameObjects">The game objects</param>
         public Scene(string name, System.Collections.Generic.List<Core.Entities.GameObject> gameObjects) : base(name, gameObjects)
         {
         }

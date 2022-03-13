@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -29,6 +29,10 @@
 
 namespace Alis
 {
+    /// <summary>
+    /// The game object class
+    /// </summary>
+    /// <seealso cref="Alis.Core.Entities.GameObject"/>
     public class GameObject : Alis.Core.Entities.GameObject
     {
     

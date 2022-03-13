@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IResolution.cs
+//  File:   ITransform.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -29,19 +29,16 @@
 
 namespace Alis.FluentApi.Words
 {
-
     /// <summary>
-    /// The resolution interface
+    /// The transform interface
     /// </summary>
-    public interface IResolution<TBuilder, TArgument1, TArgument2>
+    public interface ITransform<TBuilder, TArgument>
     {
-        
         /// <summary>
-        /// Resolutions the x
+        /// Transforms the value
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
+        /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public TBuilder Resolution(TArgument1 x, TArgument2 y);
+        public TBuilder Transform(TArgument value);
     }
 }

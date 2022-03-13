@@ -29,7 +29,6 @@
 
 using System;
 using System.Text.Json.Serialization;
-using Alis.Core.Entities;
 using SFML.Graphics;
 
 namespace Alis.Core.Components
@@ -41,13 +40,19 @@ namespace Alis.Core.Components
     public abstract class Collider : Component
     {
         /// <summary>
-        ///     Gets or sets the value of the is trigger
+        /// Gets or sets the value of the is static
+        /// </summary>
+        [JsonPropertyName("_IsStatic")]
+        public bool IsStatic{ get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is trigger
         /// </summary>
         [JsonPropertyName("_IsTrigger")]
         public bool IsTrigger { get; set; }
-
+        
         /// <summary>
-        ///     Gets the drawable
+        /// Gets the drawable
         /// </summary>
         /// <returns>The drawable</returns>
         public virtual Drawable GetDrawable() => throw new NotImplementedException();
