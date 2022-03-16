@@ -155,5 +155,15 @@ namespace Alis.Core.Components
             sprite.Rotation = transform.Rotation.Y;
             sprite.Scale = new Vector2f(transform.Scale.X, transform.Scale.Y);
         }
+
+        public override void Stop()
+        {
+            
+        }
+
+        public override void Exit()
+        {
+            RenderManager.UnAttach(this);
+        }
     }
 }

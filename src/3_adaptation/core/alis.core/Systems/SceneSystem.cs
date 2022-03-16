@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Alis.Core.Entities;
 using Alis.Core.Exceptions;
+using Alis.Tools;
 
 namespace Alis.Core.Systems
 {
@@ -41,10 +42,16 @@ namespace Alis.Core.Systems
     /// <seealso cref="System" />
     public class SceneSystem : System
     {
+        private static SceneSystem current;
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSystem" /> class
         /// </summary>
-        public SceneSystem() => Scenes = new List<Scene>(Game.Setting.Scene.MaxScenesOfGame);
+        public SceneSystem()
+        {
+            Scenes = new List<Scene>(Game.Setting.Scene.MaxScenesOfGame);
+            current = this;
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSystem" /> class
@@ -55,6 +62,7 @@ namespace Alis.Core.Systems
         {
             Scenes = scenes;
             ActiveScene = scenes[0];
+            current = this;
         }
 
         /// <summary>
@@ -80,13 +88,21 @@ namespace Alis.Core.Systems
         ///     Gets or sets the value of the active scene
         /// </summary>
         [JsonPropertyName("_ActiveScene")]
-        private Scene? ActiveScene { get; set; }
+        private Scene ActiveScene { get; set; }
 
         /// <summary>
         ///     Changes the scene using the specified index
         /// </summary>
         /// <param name="index">The index</param>
-        public void ChangeScene(int index) => ActiveScene = Scenes[index];
+        public static void LoadScene(int index)
+        {
+            current.ActiveScene.Stop();
+            current.ActiveScene.Exit();
+            current.ActiveScene = current.Scenes[index];
+            current.ActiveScene.Awake();
+            current.ActiveScene.Start();
+            Logger.Info($"Scene changed to { current.ActiveScene.Name}");
+        }
 
         /// <summary>
         ///     Adds the scene

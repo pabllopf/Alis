@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Animator.cs
+//  File:   IDescription.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,33 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Core.Components;
-
-namespace Alis;
-
-/// <summary>
-
-/// The animator class
-
-/// </summary>
-
-/// <seealso cref="Alis.Core.Components.Animator"/>
-
-public class Animator :  Alis.Core.Components.Animator
+namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="Animator"/> class
+    /// The description interface
     /// </summary>
-    /// <param name="animations">The animations</param>
-    public Animator(List<Animation> animations) : base(animations)
+    public interface IDescription<TBuilder, TArgument>
     {
-    }
-    
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Animator"/> class
-    /// </summary>
-    public Animator() : base()
-    {
+        /// <summary>
+        /// Descriptions the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        public TBuilder Description(TArgument value);
     }
 }

@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Animator.cs
+//  File:   MainMenuController.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,33 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Core.Components;
+using System;
+using Alis;
+using Alis.Core;
+using Alis.Core.Managers;
+using Alis.Tools;
 
-namespace Alis;
-
-/// <summary>
-
-/// The animator class
-
-/// </summary>
-
-/// <seealso cref="Alis.Core.Components.Animator"/>
-
-public class Animator :  Alis.Core.Components.Animator
+namespace PingPong
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Animator"/> class
-    /// </summary>
-    /// <param name="animations">The animations</param>
-    public Animator(List<Animation> animations) : base(animations)
+    public class MainMenuController : Component
     {
-    }
-    
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Animator"/> class
-    /// </summary>
-    public Animator() : base()
-    {
+        public override void Start()
+        {
+        }
+
+        public override void Update()
+        {
+        }
+
+        public override void OnReleaseKey(string key)
+        {
+            switch (key)
+            {
+                case "Num1":
+                    Logger.Log("Starting game");
+                    SceneManager.LoadScene(1);
+                    break;
+                case "Num2":
+                    Logger.Log("Exit game");
+                    Environment.Exit(0);
+                    break;
+            }
+        }
+
+        public override void OnPressKey(string key)
+        {
+            
+        }
     }
 }

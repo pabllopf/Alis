@@ -42,6 +42,12 @@ namespace Alis.Core.Settings.Configurations
         /// <summary>The name</summary>
         private string name = "Alis Game";
 
+        /// <summary>
+        /// The description
+        /// </summary>
+        private string description = "Develop the video games with Alis";
+
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="General" /> class
@@ -89,6 +95,24 @@ namespace Alis.Core.Settings.Configurations
                 Logger.Trace($"General.Name from '{name}' to '{value}'");
                 name = value;
                 OnChangeName.Invoke(this, name);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the description
+        /// </summary>
+        [JsonPropertyName("_Description")]
+        public string Description
+        {
+            get
+            {
+                Logger.Trace($"General.Description '{description}'");
+                return description;
+            }
+            set
+            {
+                Logger.Trace($"General.Description from '{description}' to '{value}'");
+                description = value;
             }
         }
 

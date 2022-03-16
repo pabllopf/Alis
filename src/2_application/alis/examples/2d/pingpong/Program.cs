@@ -55,6 +55,7 @@ namespace PingPong
                     .General(general => general
                         .Author("Pablo Perdomo Falcón")
                         .Name("Ping Pong")
+                        .Description("Classic game made in Alis")
                         .Build())
                     .Window(window => window
                         .Resolution(720, 480)
@@ -72,6 +73,10 @@ namespace PingPong
                         .Add<GameObject>(camera => camera
                             .Name("Camera")
                             //.Add(Camera.Create())
+                            .Build())
+                        .Add<GameObject>(controller => controller
+                            .Name("Main Controller")
+                            .Add(new MainMenuController())
                             .Build())
                         .Add<GameObject>(background => background
                             .Name("Background")
@@ -157,7 +162,14 @@ namespace PingPong
                     //////////////
                     .Add<Scene>(gameScene => gameScene
                         .Name("Game Scene")
-                        
+                        // SOUNDTRACK:
+                        .Add<GameObject>(soundTrack => soundTrack
+                            .Add(new AudioSource($"{Environment.CurrentDirectory}/Assets/ping.wav"))
+                            .Build())
+                        // CAMERA:
+                        .Add<GameObject>(camera => camera
+                            .Add(new Camera())
+                            .Build())
                         .Build())
                     
                     .Build())
