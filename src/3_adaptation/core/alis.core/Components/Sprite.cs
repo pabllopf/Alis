@@ -76,7 +76,6 @@ namespace Alis.Core.Components
             texturePath = "";
             transform = new Transform();
             sprite = new SFML.Graphics.Sprite();
-            RenderManager.Attach(this);
         }
 
         /// <summary>
@@ -92,7 +91,6 @@ namespace Alis.Core.Components
             sprite = new SFML.Graphics.Sprite(new Texture(texturePath));
             Size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
             Console.WriteLine(@$"witdh ={Size.X} | height={Size.Y}");
-            RenderManager.Attach(this);
         }
         
         /// <summary>
@@ -110,7 +108,6 @@ namespace Alis.Core.Components
             sprite = new SFML.Graphics.Sprite(new Texture(texturePath));
             Size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
             Console.WriteLine(@$"witdh ={Size.X} | height={Size.Y}");
-            RenderManager.Attach(this);
         }
 
         /// <summary>
@@ -138,12 +135,19 @@ namespace Alis.Core.Components
         /// </summary>
         public int Depth { get; set; } = 0;
 
+        public override void Awake()
+        {
+            RenderManager.Attach(this);
+        }
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
             transform = GameObject.Transform;
+            sprite.Position = new Vector2f(transform.Position.X, transform.Position.Y);
+            sprite.Rotation = transform.Rotation.Y;
         }
 
         /// <summary>

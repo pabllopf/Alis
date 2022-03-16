@@ -58,6 +58,7 @@ namespace Alis.Core.Components
             AutoTiling = true;
             Size = new Vector2(1.0f, 1.0f);
             RelativePosition = new Vector2(0.0f, 0.0f);
+            Level = 100;
         }
         
         /// <summary>
@@ -69,6 +70,7 @@ namespace Alis.Core.Components
             AutoTiling = true;
             Size = new Vector2(1.0f, 1.0f);
             RelativePosition = new Vector2(0.0f, 0.0f);
+            Level = 100;
         }
 
         /// <summary>
@@ -83,6 +85,7 @@ namespace Alis.Core.Components
             AutoTiling = autoTiling;
             Size = size;
             RelativePosition = relativePosition;
+            Level = 100;
         }
 
         /// <summary>
@@ -157,8 +160,12 @@ namespace Alis.Core.Components
             RectangleShape.OutlineThickness = 1f;
             PhysicsManager.Attach(this);
 
-            Body = BodyFactory.CreateRectangle(PhysicsManager.World, Size.X, Size.Y, 1f,
-                new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y));
+            Body = BodyFactory.CreateRectangle(world: PhysicsManager.World, 
+                width: Size.X, 
+                height: Size.Y, 
+                density: 1f,
+                position: new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y), 
+                rotation: GameObject.Transform.Rotation.Y);
             Body.BodyType = BodyType;
             Body.FixedRotation = true;
             Body.Friction = 0;
@@ -176,14 +183,25 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Update()
         {
+            GameObject.Transform.Position = new Vector3(Body.Position.X, Body.Position.Y, 0);
+            Body.Rotation = GameObject.Transform.Rotation.Y;
+            
             if (RectangleShape is not null)
             {
                 RectangleShape.Rotation = Body.Rotation;
                 RectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
                 RectangleShape.Size = new Vector2f(Size.X, Size.Y);
             }
+        }
 
-            GameObject.Transform.Position = new Vector3(Body.Position.X, Body.Position.Y, 0);
+        public override void Stop()
+        {
+            
+        }
+
+        public override void Exit()
+        {
+            
         }
 
 

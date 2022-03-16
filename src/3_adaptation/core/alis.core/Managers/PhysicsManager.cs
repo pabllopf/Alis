@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Components;
@@ -59,13 +60,14 @@ namespace Alis.Core.Managers
         /// <summary>
         ///     Gets or sets the value of the colliders
         /// </summary>
-        private static List<Collider> Colliders { get; } = new List<Collider>();
+        private static List<Collider> Colliders { get; set; } = new List<Collider>();
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
+           
         }
 
         /// <summary>
@@ -77,6 +79,7 @@ namespace Alis.Core.Managers
             {
                 if (Colliders.Count > 0)
                 {
+                    Colliders = Colliders.OrderBy(o => o.Level).ToList();
                     for (int i = 0; i < Colliders.Count; i++)
                     {
                         RenderManager.GetWindows().Draw(Colliders[i].GetDrawable());

@@ -29,11 +29,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 using Alis;
 using Alis.Core.Components;
 using SFML.Graphics;
 using Animator = Alis.Animator;
 using AudioSource = Alis.AudioSource;
+using BoxCollider2D = Alis.BoxCollider2D;
 using Camera = Alis.Camera;
 using Sprite = Alis.Sprite;
 
@@ -164,14 +166,117 @@ namespace PingPong
                         .Name("Game Scene")
                         // SOUNDTRACK:
                         .Add<GameObject>(soundTrack => soundTrack
+                            .Name("Sountrack")
                             .Add(new AudioSource($"{Environment.CurrentDirectory}/Assets/ping.wav"))
                             .Build())
                         // CAMERA:
                         .Add<GameObject>(camera => camera
+                            .Name("Camera")
                             .Add(new Camera())
                             .Build())
+                        
+                        // BACKGROUND:
+                        .Add<GameObject>(background => background
+                            .Name("Background")
+                            .Transform(transform => transform
+                                .Position(-500, -500, 0)
+                                .Scale(55, 55, 1)
+                                .Rotation(0)
+                                .Build())
+                            //.Add(new Sprite($"{Environment.CurrentDirectory}/Assets/background.png", -1))
+                            .Build())
+                        
+                        // TopWall:
+                        .Add<GameObject>(topWall => topWall
+                            .Name("TopWall")
+                            .Transform(transform => transform
+                                .Position(-360, -240, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .Add(new BoxCollider2D(false, 
+                                new Vector2(720, 1), 
+                                new Vector2(0, 0)))
+                            .Build())
+                        
+                        // DownWall:
+                        .Add<GameObject>(downWall => downWall
+                            .Name("DownWall")
+                            .Transform(transform => transform
+                                .Position(-360, 240, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .Add(new BoxCollider2D(false, 
+                                new Vector2(720, 1), 
+                                new Vector2(0, 0)))
+                            .Build())
+                        
+                        // LeftWall:
+                        .Add<GameObject>(leftWall => leftWall
+                            .Name("LeftWall")
+                            .Transform(transform => transform
+                                .Position(-320, -240, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .Add(new BoxCollider2D(false, 
+                                new Vector2(1, 480), 
+                                new Vector2(0, 0)))
+                            .Build())
+                        
+                        // rightWall:
+                        .Add<GameObject>(rightWall => rightWall
+                            .Name("RightWall")
+                            .Transform(transform => transform
+                                .Position(320, -240, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .Add(new BoxCollider2D(false, 
+                                new Vector2(1, 480), 
+                                new Vector2(0, 0)))
+                            .Build())
+                        
+                        // PLAYER 1:
+                        .Add<GameObject>(player1 => player1
+                            .Name("Player_1")
+                            .Transform(transform => transform
+                                .Position(-290, 0, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(90)
+                                .Build())
+                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_1.png", 2))
+                            .Add(new BoxCollider2D(true))
+                            .Build())
+                        
+                        // PLAYER 2:
+                        .Add<GameObject>(player2 => player2
+                            .Name("Player_2")
+                            .Transform(transform => transform
+                                .Position(310, 0, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(90)
+                                .Build())
+                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_2.png", 2))
+                            .Add(new BoxCollider2D(true))
+                            
+                            .Build())
+                        
+                        // BALL:
+                        .Add<GameObject>(ball => ball
+                            .Name("Ball")
+                            .Transform(transform => transform
+                                .Position(0, 0, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(90)
+                                .Build())
+                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/ball.png", 2))
+                            .Add(new BoxCollider2D(true))
+                            .Build())
+                        
+                        
                         .Build())
-                    
                     .Build())
                 .Run();
         }

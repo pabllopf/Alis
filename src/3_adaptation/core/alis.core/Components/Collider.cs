@@ -51,6 +51,9 @@ namespace Alis.Core.Components
         [JsonPropertyName("_IsTrigger")]
         public bool IsTrigger { get; set; }
         
+        [JsonPropertyName("_Level")]
+        public int Level { get; set; }
+        
         /// <summary>
         /// Gets the drawable
         /// </summary>

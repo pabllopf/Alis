@@ -29,6 +29,7 @@
 
 using System.Numerics;
 using System.Text.Json.Serialization;
+using Alis.Core.Components;
 using Alis.Tools;
 
 namespace Alis.Core.Entities
@@ -140,7 +141,7 @@ namespace Alis.Core.Entities
         /// <param name="value">The value</param>
         public void SetRotation(float value)
         {
-            this.rotation.X = value;
+            rotation = new Vector3(rotation.X, value, rotation.Z);
         }
 
         ~Transform()
