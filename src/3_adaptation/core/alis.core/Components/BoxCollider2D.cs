@@ -30,6 +30,7 @@
 using System;
 using System.Numerics;
 using System.Text.Json.Serialization;
+using Alis.Core.Builders;
 using Alis.Core.Managers;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Factories;
@@ -87,6 +88,8 @@ namespace Alis.Core.Components
             RelativePosition = relativePosition;
             Level = 100;
         }
+        
+        public static BoxCollider2DBuilder Builder() => new BoxCollider2DBuilder();
 
         /// <summary>
         ///     Gets or sets the value of the rectangle

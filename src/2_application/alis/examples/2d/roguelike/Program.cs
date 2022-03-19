@@ -32,13 +32,10 @@ using System.Collections.Generic;
 using System.Numerics;
 using Alis;
 using Alis.Core.Components;
+using Alis.Core.Entities;
 using SFML.Graphics;
-using Animator = Alis.Animator;
-using AudioSource = Alis.AudioSource;
-using BoxCollider2D = Alis.BoxCollider2D;
-using Camera = Alis.Camera;
-using Sprite = Alis.Sprite;
-using Transform = Alis.Transform;
+using Sprite = Alis.Core.Components.Sprite;
+using Transform = Alis.Core.Entities.Transform;
 
 namespace Roguelike
 {
@@ -70,7 +67,7 @@ namespace Roguelike
                     .Add<Scene>(scene => scene
                         .Name("The main menu.")
                         .Add<GameObject>(gameObject => gameObject
-                            .Name("Other Example").Transform((Transform) new Transform(new Vector3(1, 1, 0), new Vector3(100, 100, 0), new Vector3(0)))
+                            .Name("Other Example").Transform((Transform) (Transform) new Transform(new Vector3(1, 1, 0), new Vector3(100, 100, 0), new Vector3(0)))
                             .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
                             .Add(BoxCollider2D.Builder()
                                 .Size(100, 100)
@@ -102,7 +99,7 @@ namespace Roguelike
                             .Add(new Simple2DMove())
                             .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
                             .Add(new AudioSource(@$"{Environment.CurrentDirectory}\Assets\menu.wav"))
-                            .Add(Camera.Create())
+                            .Add(new Camera())
                             .Add(BoxCollider2D
                                 .Builder()
                                     .IsActive(true)

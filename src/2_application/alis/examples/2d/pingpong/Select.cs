@@ -4,6 +4,7 @@
 //----------------------------------------------------------------------------------------------------
 
 using Alis;
+using Alis.Core.Components;
 using Alis.Core.Input;
 
 namespace PingPong

@@ -29,13 +29,15 @@
 
 using System.Numerics;
 using Alis;
+using Alis.Core.Components;
+using Alis.Core.Entities;
 
 namespace Roguelike
 {
     /// <summary>
     ///     The simple move class
     /// </summary>
-    /// <seealso cref="Alis.Component" />
+    /// <seealso cref="Component" />
     public class Simple2DMove : Component
     {
         /// <summary>

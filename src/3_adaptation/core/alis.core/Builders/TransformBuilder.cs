@@ -28,10 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
+using Alis.Core.Entities;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 
-namespace Alis.Builders
+namespace Alis.Core.Builders
 {
     /// <summary>
     /// The transform builder class

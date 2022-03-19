@@ -30,6 +30,7 @@
 using System;
 using Alis;
 using Alis.Core;
+using Alis.Core.Components;
 using Alis.Core.Managers;
 using Alis.Tools;
 

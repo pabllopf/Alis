@@ -32,12 +32,10 @@ using System.Collections.Generic;
 using System.Numerics;
 using Alis;
 using Alis.Core.Components;
+using Alis.Core.Entities;
 using SFML.Graphics;
-using Animator = Alis.Animator;
-using AudioSource = Alis.AudioSource;
-using BoxCollider2D = Alis.BoxCollider2D;
-using Camera = Alis.Camera;
-using Sprite = Alis.Sprite;
+using Sprite = Alis.Core.Components.Sprite;
+
 
 namespace PingPong
 {
@@ -109,7 +107,7 @@ namespace PingPong
                                 .Scale(2, 2, 2)
                                 .Rotation(0)
                                 .Build())
-                            .Add<Sprite>(new Sprite($"{Environment.CurrentDirectory}/Assets/exit_button.png", 1))
+                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/exit_button.png", 1))
                             .Build())
                         .Add<GameObject>(oneButton => oneButton
                             .Name("1_Button")

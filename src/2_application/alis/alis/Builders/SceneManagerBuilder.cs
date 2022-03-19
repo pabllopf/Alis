@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Builders;
 using Alis.Core.Entities;
 using Alis.Core.Managers;
 using Alis.FluentApi;

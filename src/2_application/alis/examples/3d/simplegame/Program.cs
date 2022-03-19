@@ -30,6 +30,8 @@
 using System;
 using System.Numerics;
 using Alis;
+using Alis.Core.Components;
+using Alis.Core.Entities;
 using Alis.Core.Systems.Physics2D.Dynamics;
 
 namespace SimpleGame

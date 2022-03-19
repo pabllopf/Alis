@@ -4,6 +4,8 @@
 //----------------------------------------------------------------------------------------------------
 
 using Alis;
+using Alis.Core.Components;
+using Alis.Core.Entities;
 using Alis.Core.Input;
 using Alis.Tools;
 
@@ -61,7 +63,7 @@ namespace PingPong
         /// </summary>
         public override void Start()
         {
-            Logger.Warning("START     __" + this.GameObject.Name);
+            Logger.Warning("START     __" + GameObject.Name);
             /*transform = GameObject.Transform;
             y0 = transform.Position.Y;
             Input.OnPressKey += Input_OnPressKey;*/

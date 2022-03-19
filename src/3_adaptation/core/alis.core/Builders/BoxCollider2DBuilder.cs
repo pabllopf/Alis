@@ -28,11 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
+using Alis.Core.Components;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 
-namespace Alis.Builders
+namespace Alis.Core.Builders
 {
     /// <summary>
     /// The box collider builder class

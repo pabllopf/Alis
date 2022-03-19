@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Transform.cs
+//  File:   SceneBuilder.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,39 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using System;
+using System.Collections.Generic;
+using Alis.Core.Entities;
+using Alis.FluentApi;
+using Alis.FluentApi.Words;
 
-namespace Alis
+namespace Alis.Core.Builders
 {
     /// <summary>
-    /// The transform class
+    ///     The scene builder class
     /// </summary>
-    /// <seealso cref="Alis.Core.Entities.Transform"/>
-    public class Transform : Alis.Core.Entities.Transform
+    /// <seealso cref="IBuild{TOrigin}" />
+    /// <seealso cref="IName{TBuilder,TArgument}" />
+    public class SceneBuilder :
+        IBuild<Scene>,
+        IName<SceneBuilder, string>,
+        IAdd<SceneBuilder, GameObject, Func<GameObjectBuilder, GameObject>>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
+        ///     Gets or sets the value of the scene
         /// </summary>
-        public Transform(): base()
-        {
-        }
-        
+        public Scene Scene { get; set; } = new Scene("Default", new List<Core.Entities.GameObject>());
+
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Transform" /> class
+        ///     Adds the value
         /// </summary>
-        /// <param name="scale">The scale</param>
-        public Transform(Vector3 scale) : base(scale)
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value) where T : GameObject
         {
+            Scene.Add(value.Invoke(new GameObjectBuilder()));
+            return this;
         }
 
-        /// <summary>Initializes a new instance of the <see cref="Transform" /> class.</summary>
-        /// <param name="scale">The size.</param>
-        /// <param name="position">The position.</param>
-        /// <param name="rotation">The rotation.</param>
-        public Transform(Vector3 scale, Vector3 position, Vector3 rotation)  : base(scale, position, rotation)
-        {
-        }
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The scene</returns>
+        public Scene Build() => Scene;
 
-        
+        /// <summary>
+        ///     Names the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Name(string value)
+        {
+            Scene.Name = value;
+            return this;
+        }
     }
 }
