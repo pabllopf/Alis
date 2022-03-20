@@ -204,7 +204,8 @@ namespace Alis.Core.Components
                     groupIndex = 0
                 },
                 userData = GameObject,
-                shape = new PolygonShape(Width / 2, Height / 2)
+                //shape = new PolygonShape(Width / 2, Height / 2)
+                shape = new PolygonShape(Width, Height)
             };
 
             Body body = PhysicsSystem.World.CreateBody(bodyDef);

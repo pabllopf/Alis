@@ -27,15 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.Numerics;
 using Alis;
 using Alis.Core.Components;
 using Alis.Core.Entities;
 using Alis.Core.Physics2D.Dynamics.Bodies;
-using SFML.Graphics;
-using Sprite = Alis.Core.Components.Sprite;
 
 namespace PingPong
 {
@@ -65,11 +61,61 @@ namespace PingPong
                         .Build())
                     .Build())
                 .Manager(sceneManager => sceneManager
-                        
+                    .Add<Scene>(mainScene => mainScene
+                        .Name("Game")
+                        .Add<GameObject>(ball => ball
+                            .Name("Ball")
+                            .Transform(transform => transform
+                                .Position(360, 220, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .Add(new BoxCollider2D
+                            {
+                                Width = 20.0f,
+                                Height = 20.0f,
+                                BodyType = BodyType.Dynamic,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 1.0f,
+                                FixedRotation = true,
+                                GravityScale = 1.0f,
+                                IsTrigger = false
+                            })
+                            .Add(new BallController())
+                            .Build())
+                        .Add<GameObject>(bottomWall => bottomWall
+                            .Name("BottomWall")
+                            .Transform(transform => transform
+                                .Position(0, 460, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .Add(new BoxCollider2D
+                            {
+                                Width = 720.0f,
+                                Height = 20.0f,
+                                BodyType = BodyType.Kinematic,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 0.2f,
+                                FixedRotation = true,
+                                GravityScale = 0.0f,
+                                IsTrigger = false
+                            })
+                            .Build())
+                        .Build())
+
                     //////////////
                     //  MAIN SCENE
                     //////////////
-                    .Add<Scene>(mainScene => mainScene
+                    /* .Add<Scene>(mainScene => mainScene
                          .Name("Menu Scene")
                          .Add<GameObject>(camera => camera
                              .Name("Camera")
@@ -193,21 +239,9 @@ namespace PingPong
                                  .Scale(1, 1, 1)
                                  .Rotation(0)
                                  .Build())
-                             .Add(new BoxCollider2D
-                             {
-                                 Width = 720.0f,
-                                 Height = 20.0f,
-                                 BodyType = BodyType.Static,
-                                 Density = 0.5f,
-                                 Rotation = 0.0f,
-                                 Mass = 10.0f,
-                                 RelativePosition = Vector2.Zero,
-                                 Friction = 0.1f,
-                                 Restitution = 0.2f,
-                                 FixedRotation = true,
-                                 GravityScale = 0.0f,
-                                 IsTrigger = false
-                             })
+                             .Add(new BoxCollider2D(false, 
+                                 new Vector2(720, 1), 
+                                 new Vector2(0, 0)))
                              .Build())
                          
                          // DownWall:
@@ -218,21 +252,9 @@ namespace PingPong
                                  .Scale(1, 1, 1)
                                  .Rotation(0)
                                  .Build())
-                             .Add(new BoxCollider2D
-                             {
-                                 Width = 720.0f,
-                                 Height = 20.0f,
-                                 BodyType = BodyType.Static,
-                                 Density = 0.5f,
-                                 Rotation = 0.0f,
-                                 Mass = 10.0f,
-                                 RelativePosition = Vector2.Zero,
-                                 Friction = 0.1f,
-                                 Restitution = 0.2f,
-                                 FixedRotation = true,
-                                 GravityScale = 0.0f,
-                                 IsTrigger = false
-                             })
+                             .Add(new BoxCollider2D(false, 
+                                 new Vector2(720, 1), 
+                                 new Vector2(0, 0)))
                              .Build())
                          
                          // LeftWall:
@@ -243,21 +265,9 @@ namespace PingPong
                                  .Scale(1, 1, 1)
                                  .Rotation(0)
                                  .Build())
-                             .Add(new BoxCollider2D
-                             {
-                                 Width = 20.0f,
-                                 Height = 480.0f,
-                                 BodyType = BodyType.Static,
-                                 Density = 0.5f,
-                                 Rotation = 0.0f,
-                                 Mass = 10.0f,
-                                 RelativePosition = Vector2.Zero,
-                                 Friction = 0.1f,
-                                 Restitution = 0.2f,
-                                 FixedRotation = true,
-                                 GravityScale = 0.0f,
-                                 IsTrigger = false
-                             })
+                             .Add(new BoxCollider2D(false, 
+                                 new Vector2(1, 480), 
+                                 new Vector2(0, 0)))
                              .Build())
                          
                          // rightWall:
@@ -268,21 +278,9 @@ namespace PingPong
                                  .Scale(1, 1, 1)
                                  .Rotation(0)
                                  .Build())
-                             .Add(new BoxCollider2D
-                             {
-                                 Width = 20.0f,
-                                 Height = 480.0f,
-                                 BodyType = BodyType.Static,
-                                 Density = 0.5f,
-                                 Rotation = 0.0f,
-                                 Mass = 10.0f,
-                                 RelativePosition = Vector2.Zero,
-                                 Friction = 0.1f,
-                                 Restitution = 0.2f,
-                                 FixedRotation = true,
-                                 GravityScale = 0.0f,
-                                 IsTrigger = false
-                             })
+                             .Add(new BoxCollider2D(false, 
+                                 new Vector2(1, 480), 
+                                 new Vector2(0, 0)))
                              .Build())
                          
                          // PLAYER 1:
@@ -293,22 +291,8 @@ namespace PingPong
                                  .Scale(1, 1, 1)
                                  .Rotation(90)
                                  .Build())
-                             /*.Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_1.png", 2))
-                             .Add(new BoxCollider2D
-                             {
-                                 Width = 720.0f,
-                                 Height = 20.0f,
-                                 BodyType = BodyType.Static,
-                                 Density = 0.5f,
-                                 Rotation = 0.0f,
-                                 Mass = 10.0f,
-                                 RelativePosition = Vector2.Zero,
-                                 Friction = 0.1f,
-                                 Restitution = 0.2f,
-                                 FixedRotation = true,
-                                 GravityScale = 0.0f,
-                                 IsTrigger = false
-                             })*/
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_1.png", 2))
+                             .Add(new BoxCollider2D(true))
                              .Build())
                          
                          // PLAYER 2:
@@ -319,22 +303,8 @@ namespace PingPong
                                  .Scale(1, 1, 1)
                                  .Rotation(90)
                                  .Build())
-                             /*.Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_2.png", 2))
-                              .Add(new BoxCollider2D
-                              {
-                                  Width = 720.0f,
-                                  Height = 20.0f,
-                                  BodyType = BodyType.Static,
-                                  Density = 0.5f,
-                                  Rotation = 0.0f,
-                                  Mass = 10.0f,
-                                  RelativePosition = Vector2.Zero,
-                                  Friction = 0.1f,
-                                  Restitution = 0.2f,
-                                  FixedRotation = true,
-                                  GravityScale = 0.0f,
-                                  IsTrigger = false
-                              })*/
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_2.png", 2))
+                             .Add(new BoxCollider2D(true))
                              
                              .Build())
                          
@@ -347,23 +317,11 @@ namespace PingPong
                                  .Rotation(90)
                                  .Build())
                              .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/ball.png", 2))
-                             .Add(new BoxCollider2D
-                             {
-                                 AutoTilling = true,
-                                 BodyType = BodyType.Dynamic,
-                                 Density = 0.5f,
-                                 Rotation = 0.0f,
-                                 Mass = 10.0f,
-                                 RelativePosition = Vector2.Zero,
-                                 LinearVelocity = new Vector2(-10, 3),
-                                 Friction = 0.0f,
-                                 Restitution = 1.0f,
-                                 FixedRotation = true,
-                                 GravityScale = 0.0f,
-                                 IsTrigger = false
-                             })
+                             .Add(new BoxCollider2D(true))
                              .Build())
-                         .Build())
+                         
+                         
+                         .Build())*/
                     .Build())
                 .Run();
         }
