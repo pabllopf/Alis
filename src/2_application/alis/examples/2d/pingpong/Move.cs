@@ -1,9 +1,32 @@
-//----------------------------------------------------------------------------------------------------
-// <author>Pablo Perdomo Falcón </author>
-// <copyright file="Main.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
-//----------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   Move.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
-using Alis;
 using Alis.Core.Components;
 using Alis.Core.Entities;
 using Alis.Core.Input;
@@ -12,54 +35,67 @@ using Alis.Tools;
 namespace PingPong
 {
     /// <summary>
-    /// The move class
+    ///     The move class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class Move : Component
     {
         /// <summary>
-        /// The up key
-        /// </summary>
-        private Keyboard upKey;
-        /// <summary>
-        /// The down key
+        ///     The down key
         /// </summary>
         private Keyboard downKey;
+
         /// <summary>
-        /// The transform
+        ///     The transform
         /// </summary>
         private Transform transform;
+
         /// <summary>
-        /// The 
+        ///     The up key
+        /// </summary>
+        private Keyboard upKey;
+
+        /// <summary>
+        ///     The
         /// </summary>
         private float y0;
-        /// <summary>
-        /// The speed
-        /// </summary>
-        private const float speed = 9.5f;
 
         /// <summary>
-        /// Gets or sets the value of the up key
-        /// </summary>
-        public Keyboard UpKey { get => upKey; set => upKey = value; }
-        /// <summary>
-        /// Gets or sets the value of the down key
-        /// </summary>
-        public Keyboard DownKey { get => downKey; set => downKey = value; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Move"/> class
+        ///     Initializes a new instance of the <see cref="Move" /> class
         /// </summary>
         /// <param name="upKey">The up key</param>
         /// <param name="downKey">The down key</param>
-        public Move(Keyboard upKey, Keyboard downKey) 
+        public Move(Keyboard upKey, Keyboard downKey)
         {
             this.upKey = upKey;
             this.downKey = downKey;
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Gets or sets the value of the up key
+        /// </summary>
+        public Keyboard UpKey
+        {
+            get => upKey;
+            set => upKey = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the down key
+        /// </summary>
+        public Keyboard DownKey
+        {
+            get => downKey;
+            set => downKey = value;
+        }
+
+        /// <summary>
+        ///     The speed
+        /// </summary>
+        private const float speed = 9.5f;
+
+        /// <summary>
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -70,7 +106,7 @@ namespace PingPong
         }
 
         /// <summary>
-        /// Inputs the on press key using the specified sender
+        ///     Inputs the on press key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="key">The key</param>
@@ -89,14 +125,14 @@ namespace PingPong
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
         }
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public override void Exit()
         {

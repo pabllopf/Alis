@@ -32,7 +32,6 @@ using System.Numerics;
 using Alis;
 using Alis.Core.Components;
 using Alis.Core.Entities;
-using Alis.Core.Systems.Physics2D.Dynamics;
 
 namespace SimpleGame
 {
@@ -67,19 +66,16 @@ namespace SimpleGame
                             .Name("Other Example")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(100, 100, 0), new Vector3(0)))
                             .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new BoxCollider2D
+                            /*.Add(new BoxCollider2D
                             {
                                 Size = new Vector2(22, 22),
                                 BodyType = BodyType.Kinematic,
                                 AutoTiling = true,
-                            })
+                            })*/
                             .Build())
                         .Build())
                     .Build())
                 .Run();
         }
     }
-
-
-    
 }

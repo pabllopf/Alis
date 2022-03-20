@@ -40,22 +40,24 @@ namespace Alis.Core.Components
     public abstract class Collider : Component
     {
         /// <summary>
-        /// Gets or sets the value of the is static
+        ///     Gets or sets the value of the is static
         /// </summary>
         [JsonPropertyName("_IsStatic")]
-        public bool IsStatic{ get; set; }
-        
+        public bool IsStatic { get; set; }
+
         /// <summary>
-        /// Gets or sets the value of the is trigger
+        ///     Gets or sets the value of the is trigger
         /// </summary>
         [JsonPropertyName("_IsTrigger")]
         public bool IsTrigger { get; set; }
-        
-        [JsonPropertyName("_Level")]
-        public int Level { get; set; }
-        
+
         /// <summary>
-        /// Gets the drawable
+        /// Gets or sets the value of the level
+        /// </summary>
+        [JsonPropertyName("_Level")] public int Level { get; set; }
+
+        /// <summary>
+        ///     Gets the drawable
         /// </summary>
         /// <returns>The drawable</returns>
         public virtual Drawable GetDrawable() => throw new NotImplementedException();

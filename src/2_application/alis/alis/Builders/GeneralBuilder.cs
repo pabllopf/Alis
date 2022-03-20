@@ -41,21 +41,6 @@ namespace Alis.Builders
         IAuthor<GeneralBuilder, string>,
         IDescription<GeneralBuilder, string>
     {
-        /// <summary>Builds this instance.</summary>
-        /// <returns> </returns>
-        public General Build() => Game.Setting.General;
-
-        /// <summary>Sets the name.</summary>
-        /// <param name="value">The value.</param>
-        /// <returns>
-        ///     <br />
-        /// </returns>
-        public GeneralBuilder Name(string value)
-        {
-            Game.Setting.General.Name = value;
-            return this;
-        }
-        
         /// <summary>Sets the author.</summary>
         /// <param name="value">The value.</param>
         /// <returns>
@@ -67,14 +52,29 @@ namespace Alis.Builders
             return this;
         }
 
+        /// <summary>Builds this instance.</summary>
+        /// <returns> </returns>
+        public General Build() => Game.Setting.General;
+
         /// <summary>
-        /// Descriptions the value
+        ///     Descriptions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general builder</returns>
         public GeneralBuilder Description(string value)
         {
             Game.Setting.General.Description = value;
+            return this;
+        }
+
+        /// <summary>Sets the name.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>
+        ///     <br />
+        /// </returns>
+        public GeneralBuilder Name(string value)
+        {
+            Game.Setting.General.Name = value;
             return this;
         }
     }

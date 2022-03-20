@@ -42,8 +42,6 @@ namespace Alis.Core.Systems
     /// <seealso cref="System" />
     public class SceneSystem : System
     {
-        private static SceneSystem current;
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSystem" /> class
         /// </summary>
@@ -91,6 +89,11 @@ namespace Alis.Core.Systems
         private Scene ActiveScene { get; set; }
 
         /// <summary>
+        /// The current
+        /// </summary>
+        private static SceneSystem current;
+
+        /// <summary>
         ///     Changes the scene using the specified index
         /// </summary>
         /// <param name="index">The index</param>
@@ -101,7 +104,7 @@ namespace Alis.Core.Systems
             current.ActiveScene = current.Scenes[index];
             current.ActiveScene.Awake();
             current.ActiveScene.Start();
-            Logger.Info($"Scene changed to { current.ActiveScene.Name}");
+            Logger.Info($"Scene changed to {current.ActiveScene.Name}");
         }
 
         /// <summary>

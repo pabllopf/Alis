@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Entities;
 using Alis.Core.Managers;
 using SFML.Graphics;
 using SFML.System;

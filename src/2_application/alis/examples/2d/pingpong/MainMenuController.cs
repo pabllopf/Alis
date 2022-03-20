@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -28,31 +28,43 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis;
-using Alis.Core;
 using Alis.Core.Components;
-using Alis.Core.Managers;
+using Alis.Core.Systems;
 using Alis.Tools;
 
 namespace PingPong
 {
+    /// <summary>
+    /// The main menu controller class
+    /// </summary>
+    /// <seealso cref="Component"/>
     public class MainMenuController : Component
     {
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }
 
+        /// <summary>
+        /// Ons the release key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public override void OnReleaseKey(string key)
         {
             switch (key)
             {
                 case "Num1":
                     Logger.Log("Starting game");
-                    SceneManager.LoadScene(1);
+                    SceneSystem.LoadScene(1);
                     break;
                 case "Num2":
                     Logger.Log("Exit game");
@@ -61,9 +73,12 @@ namespace PingPong
             }
         }
 
+        /// <summary>
+        /// Ons the press key using the specified key
+        /// </summary>
+        /// <param name="key">The key</param>
         public override void OnPressKey(string key)
         {
-            
         }
     }
 }

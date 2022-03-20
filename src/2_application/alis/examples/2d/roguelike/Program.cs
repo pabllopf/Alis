@@ -33,6 +33,7 @@ using System.Numerics;
 using Alis;
 using Alis.Core.Components;
 using Alis.Core.Entities;
+using Alis.Core.Physics2D.Dynamics.Bodies;
 using SFML.Graphics;
 using Sprite = Alis.Core.Components.Sprite;
 using Transform = Alis.Core.Entities.Transform;
@@ -67,32 +68,63 @@ namespace Roguelike
                     .Add<Scene>(scene => scene
                         .Name("The main menu.")
                         .Add<GameObject>(gameObject => gameObject
-                            .Name("Other Example").Transform((Transform) (Transform) new Transform(new Vector3(1, 1, 0), new Vector3(100, 100, 0), new Vector3(0)))
+                            .Name("Other Example").Transform((Transform) new Transform(new Vector3(1, 1, 0),
+                                new Vector3(100, 100, 0), new Vector3(0)))
                             .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(BoxCollider2D.Builder()
-                                .Size(100, 100)
-                                .IsStatic(true)
-                                .Build())
+                            .Add(new BoxCollider2D
+                            {
+                                AutoTilling = true,
+                                BodyType = BodyType.Dynamic,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 0.0f,
+                                FixedRotation = true,
+                                GravityScale = 0.0f,
+                                IsTrigger = false
+                            })
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Other Example 2")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, -100, 0), new Vector3(0)))
                             .Add(new Sprite(
                                 @$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(BoxCollider2D.Builder()
-                                .Size(100, 100)
-                                .IsStatic(true)
-                                .Build())
+                            .Add(new BoxCollider2D
+                            {
+                                AutoTilling = true,
+                                BodyType = BodyType.Kinematic,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 0.0f,
+                                FixedRotation = true,
+                                GravityScale = 1.0f,
+                                IsTrigger = false
+                            })
                             .Build())
-                            .Add<GameObject>(gameObject => gameObject
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Other Example 3")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, 100, 0), new Vector3(0)))
                             .Add(new Sprite(
                                 @$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(BoxCollider2D.Builder()
-                                .Size(100, 100)
-                                .IsDynamic(true)
-                                .Build())
+                            .Add(new BoxCollider2D
+                            {
+                                AutoTilling = true,
+                                BodyType = BodyType.Static,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 0.0f,
+                                FixedRotation = true,
+                                GravityScale = 0.0f,
+                                IsTrigger = false
+                            })
                             .Build())
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Player")
@@ -100,13 +132,21 @@ namespace Roguelike
                             .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
                             .Add(new AudioSource(@$"{Environment.CurrentDirectory}\Assets\menu.wav"))
                             .Add(new Camera())
-                            .Add(BoxCollider2D
-                                .Builder()
-                                    .IsActive(true)
-                                    .Size(100, 100)
-                                    .IsDynamic(true)
-                                .Build())
-                            .Add<Animator>(new Animator(new List<Animation>
+                            .Add(new BoxCollider2D
+                            {
+                                AutoTilling = true,
+                                BodyType = BodyType.Dynamic,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 0.0f,
+                                FixedRotation = true,
+                                GravityScale = 0.0f,
+                                IsTrigger = false
+                            })
+                            .Add(new Animator(new List<Animation>
                             {
                                 new Animation(new List<Texture>
                                 {
@@ -120,7 +160,7 @@ namespace Roguelike
                                         @$"{Environment.CurrentDirectory}\Assets\tile003.png")
                                 })
                                 {
-                                    Speed = 0.5f,
+                                    Speed = 0.5f
                                 },
                                 new Animation()
                             }))
@@ -130,7 +170,4 @@ namespace Roguelike
                 .Run();
         }
     }
-
-
-    
 }

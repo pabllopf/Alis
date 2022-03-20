@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text.Json.Serialization;
-using Alis.Core.Settings;
 using Alis.Core.Settings.Configurations;
 using Alis.Core.Systems;
 using SFML.Graphics;
@@ -95,7 +94,7 @@ namespace Alis.Core.Managers
             {
                 RenderWindow.Closed += RenderWindow_Closed;
             }
-            
+
             Sprites = Sprites.OrderBy(o => o.Level).ToList();
         }
 

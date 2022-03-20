@@ -30,18 +30,18 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The is trigger interface
+    ///     The is trigger interface
     /// </summary>
     public interface IIsTrigger<TBuilder, TArgument>
     {
         /// <summary>
-        /// Ises the trigger
+        ///     Ises the trigger
         /// </summary>
         /// <returns>The builder</returns>
         public TBuilder IsTrigger();
-        
+
         /// <summary>
-        /// Ises the trigger using the specified value
+        ///     Ises the trigger using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

@@ -29,7 +29,6 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Entities;
 using Alis.Core.Managers;
 using SFML.Graphics;
 using SFML.System;
@@ -44,6 +43,11 @@ namespace Alis.Core.Components
     public class Sprite : Component
     {
         /// <summary>
+        ///     The level
+        /// </summary>
+        private readonly int level;
+
+        /// <summary>
         ///     The sprite
         /// </summary>
         private readonly SFML.Graphics.Sprite sprite;
@@ -54,19 +58,9 @@ namespace Alis.Core.Components
         public string texturePath;
 
         /// <summary>
-        /// Gets the value of the level
-        /// </summary>
-        public int Level => level;
-
-        /// <summary>
         ///     The transform
         /// </summary>
         private Transform transform;
-
-        /// <summary>
-        /// The level
-        /// </summary>
-        private readonly int level;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sprite" /> class
@@ -92,9 +86,9 @@ namespace Alis.Core.Components
             Size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
             Console.WriteLine(@$"witdh ={Size.X} | height={Size.Y}");
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sprite"/> class
+        ///     Initializes a new instance of the <see cref="Sprite" /> class
         /// </summary>
         /// <param name="texturePath">The texture path</param>
         /// <param name="level">The level</param>
@@ -109,6 +103,11 @@ namespace Alis.Core.Components
             Size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
             Console.WriteLine(@$"witdh ={Size.X} | height={Size.Y}");
         }
+
+        /// <summary>
+        ///     Gets the value of the level
+        /// </summary>
+        public int Level => level;
 
         /// <summary>
         ///     Gets the value of the drawable
@@ -135,6 +134,9 @@ namespace Alis.Core.Components
         /// </summary>
         public int Depth { get; set; } = 0;
 
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
         public override void Awake()
         {
             RenderManager.Attach(this);
@@ -160,11 +162,16 @@ namespace Alis.Core.Components
             sprite.Scale = new Vector2f(transform.Scale.X, transform.Scale.Y);
         }
 
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
         public override void Stop()
         {
-            
         }
 
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
         public override void Exit()
         {
             RenderManager.UnAttach(this);

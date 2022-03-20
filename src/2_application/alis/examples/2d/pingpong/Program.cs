@@ -27,15 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
 using System.Numerics;
 using Alis;
 using Alis.Core.Components;
 using Alis.Core.Entities;
-using SFML.Graphics;
-using Sprite = Alis.Core.Components.Sprite;
-
+using Alis.Core.Physics2D.Dynamics.Bodies;
 
 namespace PingPong
 {
@@ -50,7 +46,7 @@ namespace PingPong
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-             VideoGame.Create()
+            VideoGame.Create()
                 .Settings(setting => setting
                     .General(general => general
                         .Author("Pablo Perdomo Falcón")
@@ -65,216 +61,267 @@ namespace PingPong
                         .Build())
                     .Build())
                 .Manager(sceneManager => sceneManager
-                    //////////////
-                    //  MAIN SCENE
-                    //////////////
                     .Add<Scene>(mainScene => mainScene
-                        .Name("Menu Scene")
-                        .Add<GameObject>(camera => camera
-                            .Name("Camera")
-                            //.Add(Camera.Create())
-                            .Build())
-                        .Add<GameObject>(controller => controller
-                            .Name("Main Controller")
-                            .Add(new MainMenuController())
-                            .Build())
-                        .Add<GameObject>(background => background
-                            .Name("Background")
-                            .Transform(transform => transform
-                                .Position(-444, -444, 1)
-                                .Scale(55, 55, 55)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/background.png", 0))
-                            .Build())
-                        .Add<GameObject>(soundtrack => soundtrack
-                            .Name("Soundtrack")
-                            .Add(new AudioSource($"{Environment.CurrentDirectory}/Assets/menu.wav"))
-                            .Build())
-                        .Add<GameObject>(startButton => startButton
-                            .Name("StartButton")
-                            .Transform(transform => transform
-                                .Position(300, 200, 1)
-                                .Scale(2, 2, 2)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/start_button.png", 1))
-                            .Build())
-                        .Add<GameObject>(exitButton => exitButton
-                            .Name("ExitButton")
-                            .Transform(transform => transform
-                                .Position(300, 250, 1)
-                                .Scale(2, 2, 2)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/exit_button.png", 1))
-                            .Build())
-                        .Add<GameObject>(oneButton => oneButton
-                            .Name("1_Button")
-                            .Transform(transform => transform
-                                .Position(298, 195, 1)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/1.png", 2))
-                            .Add(new Animator(new List<Animation>()
-                            {
-                                new Animation(new List<Texture>()
-                                {
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/1.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/1.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/11.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/11.png")
-                                })
-                                {
-                                    Speed = 0.5f,
-                                },
-                                new Animation()
-                            }))
-                            .Build())
-                        .Add<GameObject>(twoButton => twoButton
-                            .Name("2_Button")
-                            .Transform(transform => transform
-                                .Position(298, 245, 1)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/2.png", 2))
-                            .Add(new Animator(new List<Animation>()
-                            {
-                                new Animation(new List<Texture>()
-                                {
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/2.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/2.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/22.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/22.png")
-                                })
-                                {
-                                    Speed = 0.5f,
-                                },
-                                new Animation()
-                            }))
-                            .Build())
-                        .Build()) 
-                    
-                    //////////////
-                    //  GAME SCENE
-                    //////////////
-                    .Add<Scene>(gameScene => gameScene
-                        .Name("Game Scene")
-                        // SOUNDTRACK:
-                        .Add<GameObject>(soundTrack => soundTrack
-                            .Name("Sountrack")
-                            .Add(new AudioSource($"{Environment.CurrentDirectory}/Assets/ping.wav"))
-                            .Build())
-                        // CAMERA:
-                        .Add<GameObject>(camera => camera
-                            .Name("Camera")
-                            .Add(new Camera())
-                            .Build())
-                        
-                        // BACKGROUND:
-                        .Add<GameObject>(background => background
-                            .Name("Background")
-                            .Transform(transform => transform
-                                .Position(-500, -500, 0)
-                                .Scale(55, 55, 1)
-                                .Rotation(0)
-                                .Build())
-                            //.Add(new Sprite($"{Environment.CurrentDirectory}/Assets/background.png", -1))
-                            .Build())
-                        
-                        // TopWall:
-                        .Add<GameObject>(topWall => topWall
-                            .Name("TopWall")
-                            .Transform(transform => transform
-                                .Position(-360, -240, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new BoxCollider2D(false, 
-                                new Vector2(720, 1), 
-                                new Vector2(0, 0)))
-                            .Build())
-                        
-                        // DownWall:
-                        .Add<GameObject>(downWall => downWall
-                            .Name("DownWall")
-                            .Transform(transform => transform
-                                .Position(-360, 240, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new BoxCollider2D(false, 
-                                new Vector2(720, 1), 
-                                new Vector2(0, 0)))
-                            .Build())
-                        
-                        // LeftWall:
-                        .Add<GameObject>(leftWall => leftWall
-                            .Name("LeftWall")
-                            .Transform(transform => transform
-                                .Position(-320, -240, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new BoxCollider2D(false, 
-                                new Vector2(1, 480), 
-                                new Vector2(0, 0)))
-                            .Build())
-                        
-                        // rightWall:
-                        .Add<GameObject>(rightWall => rightWall
-                            .Name("RightWall")
-                            .Transform(transform => transform
-                                .Position(320, -240, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new BoxCollider2D(false, 
-                                new Vector2(1, 480), 
-                                new Vector2(0, 0)))
-                            .Build())
-                        
-                        // PLAYER 1:
-                        .Add<GameObject>(player1 => player1
-                            .Name("Player_1")
-                            .Transform(transform => transform
-                                .Position(-290, 0, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(90)
-                                .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_1.png", 2))
-                            .Add(new BoxCollider2D(true))
-                            .Build())
-                        
-                        // PLAYER 2:
-                        .Add<GameObject>(player2 => player2
-                            .Name("Player_2")
-                            .Transform(transform => transform
-                                .Position(310, 0, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(90)
-                                .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_2.png", 2))
-                            .Add(new BoxCollider2D(true))
-                            
-                            .Build())
-                        
-                        // BALL:
+                        .Name("Game")
                         .Add<GameObject>(ball => ball
                             .Name("Ball")
                             .Transform(transform => transform
-                                .Position(0, 0, 0)
+                                .Position(360, 220, 0)
                                 .Scale(1, 1, 1)
-                                .Rotation(90)
+                                .Rotation(0)
                                 .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/ball.png", 2))
-                            .Add(new BoxCollider2D(true))
+                            .Add(new BoxCollider2D
+                            {
+                                Width = 20.0f,
+                                Height = 20.0f,
+                                BodyType = BodyType.Dynamic,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 1.0f,
+                                FixedRotation = true,
+                                GravityScale = 1.0f,
+                                IsTrigger = false
+                            })
+                            .Add(new BallController())
                             .Build())
-                        
-                        
+                        .Add<GameObject>(bottomWall => bottomWall
+                            .Name("BottomWall")
+                            .Transform(transform => transform
+                                .Position(0, 460, 0)
+                                .Scale(1, 1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .Add(new BoxCollider2D
+                            {
+                                Width = 720.0f,
+                                Height = 20.0f,
+                                BodyType = BodyType.Kinematic,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 0.2f,
+                                FixedRotation = true,
+                                GravityScale = 0.0f,
+                                IsTrigger = false
+                            })
+                            .Build())
                         .Build())
+
+                    //////////////
+                    //  MAIN SCENE
+                    //////////////
+                    /* .Add<Scene>(mainScene => mainScene
+                         .Name("Menu Scene")
+                         .Add<GameObject>(camera => camera
+                             .Name("Camera")
+                             //.Add(Camera.Create())
+                             .Build())
+                         .Add<GameObject>(controller => controller
+                             .Name("Main Controller")
+                             .Add(new MainMenuController())
+                             .Build())
+                         .Add<GameObject>(background => background
+                             .Name("Background")
+                             .Transform(transform => transform
+                                 .Position(-444, -444, 1)
+                                 .Scale(55, 55, 55)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/background.png", 0))
+                             .Build())
+                         .Add<GameObject>(soundtrack => soundtrack
+                             .Name("Soundtrack")
+                             .Add(new AudioSource($"{Environment.CurrentDirectory}/Assets/menu.wav"))
+                             .Build())
+                         .Add<GameObject>(startButton => startButton
+                             .Name("StartButton")
+                             .Transform(transform => transform
+                                 .Position(300, 200, 1)
+                                 .Scale(2, 2, 2)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/start_button.png", 1))
+                             .Build())
+                         .Add<GameObject>(exitButton => exitButton
+                             .Name("ExitButton")
+                             .Transform(transform => transform
+                                 .Position(300, 250, 1)
+                                 .Scale(2, 2, 2)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/exit_button.png", 1))
+                             .Build())
+                         .Add<GameObject>(oneButton => oneButton
+                             .Name("1_Button")
+                             .Transform(transform => transform
+                                 .Position(298, 195, 1)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/1.png", 2))
+                             .Add(new Animator(new List<Animation>()
+                             {
+                                 new Animation(new List<Texture>()
+                                 {
+                                     new Texture(@$"{Environment.CurrentDirectory}/Assets/1.png"),
+                                     new Texture(@$"{Environment.CurrentDirectory}/Assets/1.png"),
+                                     new Texture(@$"{Environment.CurrentDirectory}/Assets/11.png"),
+                                     new Texture(@$"{Environment.CurrentDirectory}/Assets/11.png")
+                                 })
+                                 {
+                                     Speed = 0.5f,
+                                 },
+                                 new Animation()
+                             }))
+                             .Build())
+                         .Add<GameObject>(twoButton => twoButton
+                             .Name("2_Button")
+                             .Transform(transform => transform
+                                 .Position(298, 245, 1)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/2.png", 2))
+                             .Add(new Animator(new List<Animation>()
+                             {
+                                 new Animation(new List<Texture>()
+                                 {
+                                     new Texture(@$"{Environment.CurrentDirectory}/Assets/2.png"),
+                                     new Texture(@$"{Environment.CurrentDirectory}/Assets/2.png"),
+                                     new Texture(@$"{Environment.CurrentDirectory}/Assets/22.png"),
+                                     new Texture(@$"{Environment.CurrentDirectory}/Assets/22.png")
+                                 })
+                                 {
+                                     Speed = 0.5f,
+                                 },
+                                 new Animation()
+                             }))
+                             .Build())
+                         .Build()) 
+                     
+                     //////////////
+                     //  GAME SCENE
+                     //////////////
+                     .Add<Scene>(gameScene => gameScene
+                         .Name("Game Scene")
+                         // SOUNDTRACK:
+                         .Add<GameObject>(soundTrack => soundTrack
+                             .Name("Sountrack")
+                             .Add(new AudioSource($"{Environment.CurrentDirectory}/Assets/ping.wav"))
+                             .Build())
+                         // CAMERA:
+                         .Add<GameObject>(camera => camera
+                             .Name("Camera")
+                             .Add(new Camera())
+                             .Build())
+                         
+                         // BACKGROUND:
+                         .Add<GameObject>(background => background
+                             .Name("Background")
+                             .Transform(transform => transform
+                                 .Position(-500, -500, 0)
+                                 .Scale(55, 55, 1)
+                                 .Rotation(0)
+                                 .Build())
+                             //.Add(new Sprite($"{Environment.CurrentDirectory}/Assets/background.png", -1))
+                             .Build())
+                         
+                         // TopWall:
+                         .Add<GameObject>(topWall => topWall
+                             .Name("TopWall")
+                             .Transform(transform => transform
+                                 .Position(-360, -240, 0)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new BoxCollider2D(false, 
+                                 new Vector2(720, 1), 
+                                 new Vector2(0, 0)))
+                             .Build())
+                         
+                         // DownWall:
+                         .Add<GameObject>(downWall => downWall
+                             .Name("DownWall")
+                             .Transform(transform => transform
+                                 .Position(-360, 240, 0)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new BoxCollider2D(false, 
+                                 new Vector2(720, 1), 
+                                 new Vector2(0, 0)))
+                             .Build())
+                         
+                         // LeftWall:
+                         .Add<GameObject>(leftWall => leftWall
+                             .Name("LeftWall")
+                             .Transform(transform => transform
+                                 .Position(-320, -240, 0)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new BoxCollider2D(false, 
+                                 new Vector2(1, 480), 
+                                 new Vector2(0, 0)))
+                             .Build())
+                         
+                         // rightWall:
+                         .Add<GameObject>(rightWall => rightWall
+                             .Name("RightWall")
+                             .Transform(transform => transform
+                                 .Position(320, -240, 0)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(0)
+                                 .Build())
+                             .Add(new BoxCollider2D(false, 
+                                 new Vector2(1, 480), 
+                                 new Vector2(0, 0)))
+                             .Build())
+                         
+                         // PLAYER 1:
+                         .Add<GameObject>(player1 => player1
+                             .Name("Player_1")
+                             .Transform(transform => transform
+                                 .Position(-290, 0, 0)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(90)
+                                 .Build())
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_1.png", 2))
+                             .Add(new BoxCollider2D(true))
+                             .Build())
+                         
+                         // PLAYER 2:
+                         .Add<GameObject>(player2 => player2
+                             .Name("Player_2")
+                             .Transform(transform => transform
+                                 .Position(310, 0, 0)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(90)
+                                 .Build())
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_2.png", 2))
+                             .Add(new BoxCollider2D(true))
+                             
+                             .Build())
+                         
+                         // BALL:
+                         .Add<GameObject>(ball => ball
+                             .Name("Ball")
+                             .Transform(transform => transform
+                                 .Position(0, 0, 0)
+                                 .Scale(1, 1, 1)
+                                 .Rotation(90)
+                                 .Build())
+                             .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/ball.png", 2))
+                             .Add(new BoxCollider2D(true))
+                             .Build())
+                         
+                         
+                         .Build())*/
                     .Build())
                 .Run();
         }

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Components;
 using Alis.Core.Entities;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
@@ -49,18 +50,6 @@ namespace Alis.Core.Builders
         private GameObject GameObject { get; } = new GameObject();
 
         /// <summary>
-        ///     Adds the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Add<T>(T value) where T : Core.Components.Component
-        {
-            GameObject.Add(value);
-            return this;
-        }
-
-        /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The game object</returns>
@@ -79,7 +68,7 @@ namespace Alis.Core.Builders
 
 
         /// <summary>
-        /// Transforms the value
+        ///     Transforms the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
@@ -90,13 +79,25 @@ namespace Alis.Core.Builders
         }
 
         /// <summary>
-        /// Transforms the value
+        ///     Transforms the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Transform(Transform value)
         {
             GameObject.Transform = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Adds the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Add<T>(T value) where T : Component
+        {
+            GameObject.Add(value);
             return this;
         }
     }

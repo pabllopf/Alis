@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Builders;
 using Alis.Core;
 using Alis.Core.Input;
@@ -48,8 +47,6 @@ namespace Alis
         public VideoGame()
         {
             InputSystem = new InputManager();
-            SceneSystem = new SceneManager();
-            PhysicsSystem = new PhysicsManager();
             RenderSystem = new RenderManager();
         }
 
@@ -58,7 +55,7 @@ namespace Alis
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Create() => new VideoGameBuilder();
-        
+
         /// <summary>
         ///     Destroy object.
         /// </summary>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IsStatic.cs
+//  File:   IIsStatic.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -30,18 +30,18 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The is static interface
+    ///     The is static interface
     /// </summary>
     public interface IIsStatic<TBuilder, TArgument>
     {
         /// <summary>
-        /// Ises the static
+        ///     Ises the static
         /// </summary>
         /// <returns>The builder</returns>
         public TBuilder IsStatic();
-        
+
         /// <summary>
-        /// Ises the static using the specified value
+        ///     Ises the static using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

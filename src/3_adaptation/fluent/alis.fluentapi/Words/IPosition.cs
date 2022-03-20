@@ -30,12 +30,12 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The position interface
+    ///     The position interface
     /// </summary>
     public interface IPosition<TBuilder, TArgument1, TArgument2, TArgument3>
     {
         /// <summary>
-        /// Positions the x
+        ///     Positions the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

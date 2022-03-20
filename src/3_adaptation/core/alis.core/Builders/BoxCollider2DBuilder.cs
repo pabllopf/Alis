@@ -27,24 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Core.Components;
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physics2D.Dynamics.Bodies;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 
 namespace Alis.Core.Builders
 {
     /// <summary>
-    /// The box collider builder class
+    ///     The box collider builder class
     /// </summary>
-    /// <seealso cref="IBuild{BoxCollider2D}"/>
-    /// <seealso cref="ISize{BoxCollider2DBuilder, int, int}"/>
-    /// <seealso cref="IIsTrigger{BoxCollider2DBuilder, bool}"/>
-    /// <seealso cref="IIsStatic{BoxCollider2DBuilder, bool}"/>
-    /// <seealso cref="IIsDynamic{BoxCollider2DBuilder, bool}"/>
-    /// <seealso cref="IIsActive{BoxCollider2DBuilder, bool}"/>
-    public class BoxCollider2DBuilder : 
+    /// <seealso cref="IBuild{TOrigin}" />
+    /// <seealso cref="ISize{BoxCollider2DBuilder, int, int}" />
+    /// <seealso cref="IIsTrigger{TBuilder,TArgument}" />
+    /// <seealso cref="IIsStatic{BoxCollider2DBuilder, bool}" />
+    /// <seealso cref="IIsDynamic{BoxCollider2DBuilder, bool}" />
+    /// <seealso cref="IIsActive{BoxCollider2DBuilder, bool}" />
+    public class BoxCollider2DBuilder :
         IBuild<BoxCollider2D>,
         ISize<BoxCollider2DBuilder, int, int>,
         IIsTrigger<BoxCollider2DBuilder, bool>,
@@ -53,52 +52,64 @@ namespace Alis.Core.Builders
         IIsActive<BoxCollider2DBuilder, bool>
     {
         /// <summary>
-        /// Gets the value of the box collider 2 d
+        ///     Gets the value of the box collider 2 d
         /// </summary>
         private BoxCollider2D BoxCollider2D { get; } = new BoxCollider2D();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The box collider</returns>
         public BoxCollider2D Build() => BoxCollider2D;
-        
-        
+
         /// <summary>
-        /// Sizes the x
+        ///     Ises the active
         /// </summary>
-        /// <param name="x">The </param>
-        /// <param name="y">The </param>
         /// <returns>The box collider builder</returns>
-        public BoxCollider2DBuilder Size(int x, int y)
+        public BoxCollider2DBuilder IsActive()
         {
-            BoxCollider2D.Size = new Vector2(x, y);
+            BoxCollider2D.IsActive = true;
             return this;
         }
 
         /// <summary>
-        /// Ises the trigger
-        /// </summary>
-        /// <returns>The box collider builder</returns>
-        public BoxCollider2DBuilder IsTrigger()
-        {
-            BoxCollider2D.IsTrigger = true;
-            return this;
-        }
-
-        /// <summary>
-        /// Ises the trigger using the specified value
+        ///     Ises the active using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxCollider2DBuilder IsTrigger(bool value)
+        public BoxCollider2DBuilder IsActive(bool value)
         {
-            BoxCollider2D.IsTrigger = value;
+            BoxCollider2D.IsActive = value;
             return this;
         }
 
         /// <summary>
-        /// Ises the static
+        ///     Ises the dynamic
+        /// </summary>
+        /// <returns>The box collider builder</returns>
+        public BoxCollider2DBuilder IsDynamic()
+        {
+            BoxCollider2D.BodyType = BodyType.Dynamic;
+            return this;
+        }
+
+        /// <summary>
+        ///     Ises the dynamic using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The box collider builder</returns>
+        public BoxCollider2DBuilder IsDynamic(bool value)
+        {
+            if (value)
+            {
+                BoxCollider2D.BodyType = BodyType.Dynamic;
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        ///     Ises the static
         /// </summary>
         /// <returns>The box collider builder</returns>
         public BoxCollider2DBuilder IsStatic()
@@ -109,7 +120,7 @@ namespace Alis.Core.Builders
         }
 
         /// <summary>
-        /// Ises the static using the specified value
+        ///     Ises the static using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
@@ -120,55 +131,40 @@ namespace Alis.Core.Builders
             {
                 BoxCollider2D.BodyType = BodyType.Static;
             }
-            
+
             return this;
         }
 
         /// <summary>
-        /// Ises the dynamic
+        ///     Ises the trigger
         /// </summary>
         /// <returns>The box collider builder</returns>
-        public BoxCollider2DBuilder IsDynamic()
+        public BoxCollider2DBuilder IsTrigger()
         {
-            BoxCollider2D.BodyType = BodyType.Dynamic;
+            BoxCollider2D.IsTrigger = true;
             return this;
         }
 
         /// <summary>
-        /// Ises the dynamic using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The box collider builder</returns>
-        public BoxCollider2DBuilder IsDynamic(bool value)
-        {
-            if (value)
-            {
-                BoxCollider2D.BodyType = BodyType.Dynamic;
-            }
-            return this;
-        }
-
-        /// <summary>
-        /// Ises the active
-        /// </summary>
-        /// <returns>The box collider builder</returns>
-        public BoxCollider2DBuilder IsActive()
-        {
-            BoxCollider2D.IsActive = true;
-            return this;
-        }
-        
-        /// <summary>
-        /// Ises the active using the specified value
+        ///     Ises the trigger using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The box collider builder</returns>
-        public BoxCollider2DBuilder IsActive(bool value)
+        public BoxCollider2DBuilder IsTrigger(bool value)
         {
-            BoxCollider2D.IsActive = value;
+            BoxCollider2D.IsTrigger = value;
             return this;
         }
 
-       
+
+        /// <summary>
+        ///     Sizes the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The box collider builder</returns>
+        public BoxCollider2DBuilder Size(int x, int y) =>
+            //BoxCollider2D.Size = new Vector2(x, y);
+            this;
     }
 }

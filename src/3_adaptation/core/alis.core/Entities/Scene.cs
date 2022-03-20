@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Alis.Core.Components;
 using Alis.Tools;
 
 namespace Alis.Core.Entities

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IsDynamic.cs
+//  File:   IIsDynamic.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -30,18 +30,18 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The is dynamic interface
+    ///     The is dynamic interface
     /// </summary>
     public interface IIsDynamic<TBuilder, TArgument>
     {
         /// <summary>
-        /// Ises the dynamic
+        ///     Ises the dynamic
         /// </summary>
         /// <returns>The builder</returns>
         public TBuilder IsDynamic();
-        
+
         /// <summary>
-        /// Ises the dynamic using the specified value
+        ///     Ises the dynamic using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

@@ -48,7 +48,7 @@ namespace Alis.Core.Components
         /// </summary>
         /// <param name="textures">The textures</param>
         public Animation(List<Texture> textures) => Textures = textures;
-        
+
         /// <summary>
         ///     Gets or sets the value of the index
         /// </summary>

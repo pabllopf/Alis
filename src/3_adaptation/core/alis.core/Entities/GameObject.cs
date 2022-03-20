@@ -48,7 +48,7 @@ namespace Alis.Core.Entities
             IsStatic = false;
             Transform = new Transform();
             Components = new List<Component>();
-            
+
             InputManager.OnPressKey += OnPressKey;
             InputManager.OnReleaseKey += OnReleaseKey;
             InputManager.OnPressDownKey += OnPressDownKey;
@@ -64,7 +64,7 @@ namespace Alis.Core.Entities
             IsStatic = false;
             Transform = new Transform();
             Components = new List<Component>();
-            
+
             InputManager.OnPressKey += OnPressKey;
             InputManager.OnReleaseKey += OnReleaseKey;
             InputManager.OnPressDownKey += OnPressDownKey;
@@ -87,7 +87,7 @@ namespace Alis.Core.Entities
             IsStatic = isStatic;
             Transform = transform;
             Components = new List<Component>(components);
-            
+
             InputManager.OnPressKey += OnPressKey;
             InputManager.OnReleaseKey += OnReleaseKey;
             InputManager.OnPressDownKey += OnPressDownKey;
@@ -127,9 +127,9 @@ namespace Alis.Core.Entities
         [JsonPropertyName("_Components")]
         public List<Component> Components { get; internal set; }
 
-        
+
         /// <summary>
-        /// Adds the component
+        ///     Adds the component
         /// </summary>
         /// <param name="component">The component</param>
         public void Add(Component component)
@@ -149,9 +149,9 @@ namespace Alis.Core.Entities
             Component? component = Components.Find(component => component.GetType() == typeof(T));
             return (T) (component ?? throw new NullReferenceException());
         }
-        
+
         /// <summary>
-        /// Gets the name
+        ///     Gets the name
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="name">The name</param>
@@ -159,7 +159,8 @@ namespace Alis.Core.Entities
         /// <returns>The</returns>
         public T Get<T>(string name) where T : Component
         {
-            return (T) (Components.Find(component => component.GetType().Name == name) ?? throw new NullReferenceException());
+            return (T) (Components.Find(component => component.GetType().Name == name) ??
+                        throw new NullReferenceException());
         }
 
         /// <summary>Awakes this instance.</summary>
@@ -258,15 +259,16 @@ namespace Alis.Core.Entities
         /// <returns>
         ///     <c>true</c> if [contains]; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains<T>() where T : Component => Components.Find(component => component.GetType() == typeof(T)) is not null;
+        public bool Contains<T>() where T : Component =>
+            Components.Find(component => component.GetType() == typeof(T)) is not null;
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The bool</returns>
         public bool Contains(string name) => Components.Find(component => component.GetType().Name == name) is not null;
-        
+
         /// <summary>
         ///     Determines whether this instance contains the object.
         /// </summary>
@@ -275,59 +277,59 @@ namespace Alis.Core.Entities
         ///     <c>true</c> if [contains] [the specified component]; otherwise, <c>false</c>.
         /// </returns>
         public bool Contains(Component component) => Components.Contains(component);
-        
+
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private  void OnPressKey(string key)
+        private void OnPressKey(string key)
         {
             for (int i = 0; i < Components.Count; i++)
             {
                 Components[i].OnPressKey(key);
             }
         }
-        
+
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private  void OnPressDownKey(string key)
+        private void OnPressDownKey(string key)
         {
             for (int i = 0; i < Components.Count; i++)
             {
                 Components[i].OnPressDownKey(key);
             }
         }
-        
+
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        private  void OnReleaseKey(string key)
+        private void OnReleaseKey(string key)
         {
             for (int i = 0; i < Components.Count; i++)
             {
                 Components[i].OnReleaseKey(key);
             }
         }
-        
+
         /// <summary>
-        /// Ons the press down key using the specified sender
+        ///     Ons the press down key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
         private void OnPressDownKey(object? sender, string e) => OnPressDownKey(e);
 
         /// <summary>
-        /// Ons the release key using the specified sender
+        ///     Ons the release key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
         private void OnReleaseKey(object? sender, string e) => OnReleaseKey(e);
 
         /// <summary>
-        /// Ons the press key using the specified sender
+        ///     Ons the press key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>

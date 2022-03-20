@@ -30,12 +30,12 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The transform interface
+    ///     The transform interface
     /// </summary>
     public interface ITransform<TBuilder, TArgument>
     {
         /// <summary>
-        /// Transforms the value
+        ///     Transforms the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

@@ -39,15 +39,14 @@ namespace Alis.Core.Settings.Configurations
         /// <summary>The author</summary>
         private string author = "Pablo Perdomo Falcón";
 
-        /// <summary>The name</summary>
-        private string name = "Alis Game";
-
         /// <summary>
-        /// The description
+        ///     The description
         /// </summary>
         private string description = "Develop the video games with Alis";
 
-        
+        /// <summary>The name</summary>
+        private string name = "Alis Game";
+
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="General" /> class
@@ -99,7 +98,7 @@ namespace Alis.Core.Settings.Configurations
         }
 
         /// <summary>
-        /// Gets or sets the value of the description
+        ///     Gets or sets the value of the description
         /// </summary>
         [JsonPropertyName("_Description")]
         public string Description

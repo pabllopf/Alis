@@ -29,15 +29,13 @@
 
 namespace Alis.FluentApi.Words
 {
-
     /// <summary>
-    /// The resolution interface
+    ///     The resolution interface
     /// </summary>
     public interface IResolution<TBuilder, TArgument1, TArgument2>
     {
-        
         /// <summary>
-        /// Resolutions the x
+        ///     Resolutions the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

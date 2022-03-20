@@ -8,14 +8,14 @@
 
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\4_domain\audio\2d\alis.core.audio.2d\Alis.Core.Audio.2D.csproj" />
-        <ProjectReference Include="..\..\..\4_domain\audio\3d\alis.core.audio.3d\Alis.Core.Audio.3D.csproj" />
-        <ProjectReference Include="..\..\..\4_domain\graphics\2d\alis.core.graphics.2d\Alis.Core.Graphics.2D.csproj" />
-        <ProjectReference Include="..\..\..\4_domain\graphics\3d\alis.core.graphics.3d\Alis.Core.Graphics.3D.csproj" />
+        <ProjectReference Include="..\..\..\4_domain\audio\2d\alis.core.audio2d\Alis.Core.Audio2D.csproj" />
+        <ProjectReference Include="..\..\..\4_domain\audio\3d\alis.core.audio3d\Alis.Core.Audio3D.csproj" />
+        <ProjectReference Include="..\..\..\4_domain\graphics\2d\alis.core.graphics2d\Alis.Core.Graphics2D.csproj" />
         <ProjectReference Include="..\..\..\4_domain\input\alis.core.input\Alis.Core.Input.csproj" />
+        <ProjectReference Include="..\..\..\4_domain\network\alis.core.network\Alis.Core.Network.csproj" />
         <ProjectReference Include="..\..\..\4_domain\output\alis.core.output\Alis.Core.Output.csproj" />
-        <ProjectReference Include="..\..\..\4_domain\physics\2d\alis.core.physics.2d\Alis.Core.Physics.2D.csproj" />
-        <ProjectReference Include="..\..\..\4_domain\physics\3d\alis.core.physics.3d\Alis.Core.Physics.3D.csproj" />
+        <ProjectReference Include="..\..\..\4_domain\physics\2d\alis.core.physics2d\Alis.Core.Physics2D.csproj" />
+        <ProjectReference Include="..\..\..\4_domain\physics\3d\alis.core.physics3d\Alis.Core.Physics3D.csproj" />
         <ProjectReference Include="..\..\..\4_domain\time\alis.core.time\Alis.Core.Time.csproj" />
         <ProjectReference Include="..\..\fluent\alis.fluentapi\Alis.FluentApi.csproj" />
         <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />
@@ -24,7 +24,6 @@
 
     <ItemGroup>
         <Folder Include="Systems" />
-        <Folder Include="Time" />
     </ItemGroup>
 
 

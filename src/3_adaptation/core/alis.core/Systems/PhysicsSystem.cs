@@ -28,9 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Numerics;
 using System.Text.Json.Serialization;
-using Alis.Core.Systems.Physics2D;
+using Alis.Core.Components;
+using Alis.Core.Managers;
+using Alis.Core.Physics2D.Dynamics.World;
 
 namespace Alis.Core.Systems
 {
@@ -46,13 +49,19 @@ namespace Alis.Core.Systems
         [JsonConstructor]
         public PhysicsSystem()
         {
+            Vector2 gravity = new Vector2(0.000000000000000e+00f, 1.000000000000000e+01f);
+            World = new World(gravity);
         }
 
         /// <summary>
-        ///     Gets or sets the value of the world
+        ///     Gets or sets the value of the colliders
         /// </summary>
-        public static World World { get; set; } = new World(new Vector2(0.0f, 0.0f));
+        private static List<Collider> Colliders { get; } = new List<Collider>();
 
+        /// <summary>
+        ///     The world
+        /// </summary>
+        public static World World { get; private set; }
 
         /// <summary>
         ///     Awakes this instance
@@ -79,11 +88,36 @@ namespace Alis.Core.Systems
 
 
         /// <summary>
+        ///     Attaches the collider
+        /// </summary>
+        /// <param name="collider">The collider</param>
+        public static void Attach(Collider collider) => Colliders.Add(collider);
+
+
+        /// <summary>
+        ///     Uns the attach using the specified collider
+        /// </summary>
+        /// <param name="collider">The collider</param>
+        public static void UnAttach(Collider collider) => Colliders.Remove(collider);
+
+        /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void Update()
         {
-            World.Step((float) Math.Min(Game.Setting.Time.FixedTime / 1000.0f, 1f / 30f));
+            if (Game.Setting.Debug.ShowPhysicBorders)
+            {
+                if (Colliders.Count > 0)
+                {
+                    //Colliders = Colliders.OrderBy(o => o.Level).ToList();
+                    for (int i = 0; i < Colliders.Count; i++)
+                    {
+                        RenderManager.GetWindows().Draw(Colliders[i].GetDrawable());
+                    }
+                }
+            }
+
+            World.Step((float) Game.Setting.Time.TimeStep, 8, 8);
         }
 
         /// <summary>

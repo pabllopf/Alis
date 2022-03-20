@@ -65,7 +65,7 @@ namespace Alis.Core.Settings
         /// <summary>
         ///     The physics
         /// </summary>
-        private Physics physics = new Physics();
+        private Configurations.Physics physics = new Configurations.Physics();
 
         /// <summary>
         ///     The quality
@@ -134,7 +134,7 @@ namespace Alis.Core.Settings
         /// <summary>
         ///     Gets or sets the value of the physics
         /// </summary>
-        public Physics Physics
+        public Configurations.Physics Physics
         {
             get
             {

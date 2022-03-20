@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis;
 using Alis.Core.Components;
-using Alis.Core.Entities;
 
 namespace Roguelike
 {
@@ -54,71 +52,71 @@ namespace Roguelike
         }
 
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressKey(string key)
         {
-            Vector2 velocity = boxCollider2D.Body.LinearVelocity;
-            
+            Vector2 velocity = boxCollider2D.Body.GetLinearVelocity();
+
             switch (key)
             {
                 case "D":
                     velocity.X = 5;
-                    boxCollider2D.Body.LinearVelocity = velocity;
+                    boxCollider2D.Body.SetLinearVelocity(velocity);
                     return;
                 case "A":
                     velocity.X = -5;
-                    boxCollider2D.Body.LinearVelocity = velocity;
+                    boxCollider2D.Body.SetLinearVelocity(velocity);
                     return;
                 case "W":
                     velocity.Y = -5;
-                    boxCollider2D.Body.LinearVelocity = velocity;
+                    boxCollider2D.Body.SetLinearVelocity(velocity);
                     return;
                 case "S":
                     velocity.Y = 5;
-                    boxCollider2D.Body.LinearVelocity = velocity;
+                    boxCollider2D.Body.SetLinearVelocity(velocity);
                     break;
             }
         }
-        
+
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressDownKey(string key)
         {
         }
-        
+
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(string key)
         {
-            Vector2 velocity = boxCollider2D.Body.LinearVelocity;
+            Vector2 velocity = boxCollider2D.Body.GetLinearVelocity();
 
             switch (key)
             {
                 case "D":
                     velocity.X = 0;
-                    boxCollider2D.Body.LinearVelocity = velocity;
-                    break;
+                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    return;
                 case "A":
                     velocity.X = 0;
-                    boxCollider2D.Body.LinearVelocity = velocity;
-                    break;
+                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    return;
                 case "W":
                     velocity.Y = 0;
-                    boxCollider2D.Body.LinearVelocity = velocity;
-                    break;
+                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    return;
                 case "S":
                     velocity.Y = 0;
-                    boxCollider2D.Body.LinearVelocity = velocity;
+                    boxCollider2D.Body.SetLinearVelocity(velocity);
                     break;
             }
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>

@@ -125,30 +125,27 @@ namespace Alis.Core.Components
         }
 
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public virtual void OnPressKey(string key)
         {
-            
         }
-        
+
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public virtual void OnPressDownKey(string key)
         {
-            
         }
-        
+
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public virtual void OnReleaseKey(string key)
         {
-            
         }
 
         /// <summary>Exits this instance.</summary>

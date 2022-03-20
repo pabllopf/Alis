@@ -30,12 +30,12 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The size interface
+    ///     The size interface
     /// </summary>
     public interface ISize<TBuilder, TArgument1, TArgument2>
     {
         /// <summary>
-        /// Sizes the x
+        ///     Sizes the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

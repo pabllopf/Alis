@@ -30,23 +30,21 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The is active interface
+    ///     The is active interface
     /// </summary>
     public interface IIsActive<TBuilder, TArgument>
     {
         /// <summary>
-        /// Ises the active
+        ///     Ises the active
         /// </summary>
         /// <returns>The builder</returns>
         public TBuilder IsActive();
-    
+
         /// <summary>
-        /// Ises the active using the specified value
+        ///     Ises the active using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
         public TBuilder IsActive(TArgument value);
-    
-    
     }
 }

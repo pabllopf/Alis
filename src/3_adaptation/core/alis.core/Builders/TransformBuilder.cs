@@ -35,13 +35,13 @@ using Alis.FluentApi.Words;
 namespace Alis.Core.Builders
 {
     /// <summary>
-    /// The transform builder class
+    ///     The transform builder class
     /// </summary>
-    /// <seealso cref="IBuild{Transform}"/>
-    /// <seealso cref="IPosition{TransformBuilder, float, float, float}"/>
-    /// <seealso cref="IScale{TransformBuilder, float, float, float}"/>
-    /// <seealso cref="IRotation{TransformBuilder, float}"/>
-    /// <seealso cref="IRotation{TransformBuilder, Vector3}"/>
+    /// <seealso cref="IBuild{TOrigin}" />
+    /// <seealso cref="IPosition{TransformBuilder, float, float, float}" />
+    /// <seealso cref="IScale{TransformBuilder, float, float, float}" />
+    /// <seealso cref="IRotation{TBuilder,TArgument}" />
+    /// <seealso cref="IRotation{TransformBuilder, Vector3}" />
     public class TransformBuilder :
         IBuild<Transform>,
         IPosition<TransformBuilder, float, float, float>,
@@ -50,45 +50,23 @@ namespace Alis.Core.Builders
         IRotation<TransformBuilder, Vector3>
     {
         /// <summary>
-        /// The transform
+        ///     The transform
         /// </summary>
-        private Transform transform;
-        
+        private readonly Transform transform;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransformBuilder"/> class
+        ///     Initializes a new instance of the <see cref="TransformBuilder" /> class
         /// </summary>
         public TransformBuilder() => transform = new Transform();
 
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
         public Transform Build() => transform;
-        
-        /// <summary>
-        /// Rotations the angle
-        /// </summary>
-        /// <param name="angle">The angle</param>
-        /// <returns>The transform builder</returns>
-        public TransformBuilder Rotation(Vector3 angle)
-        {
-            transform.Rotation = angle;
-            return this;
-        }
 
         /// <summary>
-        /// Rotations the angle
-        /// </summary>
-        /// <param name="angle">The angle</param>
-        /// <returns>The transform builder</returns>
-        public TransformBuilder Rotation(float angle)
-        {
-            transform.SetRotation(angle);
-            return this;
-        }
-
-        /// <summary>
-        /// Positions the x
+        ///     Positions the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -101,7 +79,29 @@ namespace Alis.Core.Builders
         }
 
         /// <summary>
-        /// Scales the x
+        ///     Rotations the angle
+        /// </summary>
+        /// <param name="angle">The angle</param>
+        /// <returns>The transform builder</returns>
+        public TransformBuilder Rotation(float angle)
+        {
+            transform.SetRotation(angle);
+            return this;
+        }
+
+        /// <summary>
+        ///     Rotations the angle
+        /// </summary>
+        /// <param name="angle">The angle</param>
+        /// <returns>The transform builder</returns>
+        public TransformBuilder Rotation(Vector3 angle)
+        {
+            transform.Rotation = angle;
+            return this;
+        }
+
+        /// <summary>
+        ///     Scales the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

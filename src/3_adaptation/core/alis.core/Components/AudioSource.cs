@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Entities;
 using SFML.Audio;
 
 namespace Alis.Core.Components

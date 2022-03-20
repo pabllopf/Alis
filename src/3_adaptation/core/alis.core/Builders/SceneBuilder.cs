@@ -48,7 +48,7 @@ namespace Alis.Core.Builders
         /// <summary>
         ///     Gets or sets the value of the scene
         /// </summary>
-        public Scene Scene { get; set; } = new Scene("Default", new List<Core.Entities.GameObject>());
+        public Scene Scene { get; set; } = new Scene("Default", new List<GameObject>());
 
         /// <summary>
         ///     Adds the value

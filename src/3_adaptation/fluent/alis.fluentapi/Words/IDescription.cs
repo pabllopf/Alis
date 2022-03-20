@@ -30,12 +30,12 @@
 namespace Alis.FluentApi.Words
 {
     /// <summary>
-    /// The description interface
+    ///     The description interface
     /// </summary>
     public interface IDescription<TBuilder, TArgument>
     {
         /// <summary>
-        /// Descriptions the value
+        ///     Descriptions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

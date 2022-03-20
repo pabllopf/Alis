@@ -30,7 +30,6 @@
 #region
 
 using System;
-using Alis.Core.Entities;
 
 #endregion
 
