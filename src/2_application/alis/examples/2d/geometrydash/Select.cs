@@ -30,7 +30,7 @@
 using Alis.Core.Components;
 using Alis.Core.Input;
 
-namespace PingPong
+namespace GeometryDash
 {
     /// <summary>
     ///     The select class

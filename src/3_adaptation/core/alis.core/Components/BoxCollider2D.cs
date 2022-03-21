@@ -125,8 +125,8 @@ namespace Alis.Core.Components
             {
                 if (GameObject.Contains<Sprite>())
                 {
-                    Width = GameObject.Get<Sprite>().Size.X;
-                    Height = GameObject.Get<Sprite>().Size.Y;
+                    Width = GameObject.Get<Sprite>().Size.X * GameObject.Transform.Scale.X;
+                    Height = GameObject.Get<Sprite>().Size.Y * GameObject.Transform.Scale.Y;
                     Console.WriteLine($" {Width} {Height}");
                 }
             }

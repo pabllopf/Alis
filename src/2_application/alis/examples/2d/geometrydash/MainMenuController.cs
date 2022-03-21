@@ -32,7 +32,7 @@ using Alis.Core.Components;
 using Alis.Core.Systems;
 using Alis.Tools;
 
-namespace PingPong
+namespace GeometryDash
 {
     /// <summary>
     /// The main menu controller class
@@ -62,11 +62,11 @@ namespace PingPong
         {
             switch (key)
             {
-                case "Num1":
+                case "Enter":
                     Logger.Log("Starting game");
                     SceneSystem.LoadScene(1);
                     break;
-                case "Num2":
+                case "Escape":
                     Logger.Log("Exit game");
                     Environment.Exit(0);
                     break;

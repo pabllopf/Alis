@@ -29,7 +29,7 @@
 
 using Alis.Core.Components;
 
-namespace PingPong
+namespace GeometryDash
 {
     /// <summary>
     ///     The point controller class

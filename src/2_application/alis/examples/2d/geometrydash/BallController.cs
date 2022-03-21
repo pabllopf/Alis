@@ -27,11 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Numerics;
 using Alis.Core.Components;
 using Alis.Core.Input;
+using SFML.System;
 
-namespace PingPong
+namespace GeometryDash
 {
     /// <summary>Ball Controller</summary>
     internal class BallController : Component
@@ -40,6 +42,10 @@ namespace PingPong
         /// The box collider
         /// </summary>
         private BoxCollider2D boxCollider2D;
+
+        private float timeStop;
+
+        private bool jumping = false;
 
         /// <summary>
         /// Starts this instance
@@ -62,25 +68,12 @@ namespace PingPong
         private void OnPressKey(object? sender, string key)
         {
             //Console.WriteLine(key);
-            if (key.Equals("W"))
+            if (key.Equals("Space") && jumping == false)
             {
                 boxCollider2D.Body.SetLinearVelocity(new Vector2(
-                    boxCollider2D.Body.GetLinearVelocity().X,
-                    boxCollider2D.Body.GetLinearVelocity().Y - 10.0F));
-            }
-
-            if (key.Equals("D"))
-            {
-                boxCollider2D.Body.SetLinearVelocity(new Vector2(
-                    boxCollider2D.Body.GetLinearVelocity().X + 1.0f,
-                    boxCollider2D.Body.GetLinearVelocity().Y));
-            }
-
-            if (key.Equals("A"))
-            {
-                boxCollider2D.Body.SetLinearVelocity(new Vector2(
-                    boxCollider2D.Body.GetLinearVelocity().X - 1.0f,
-                    boxCollider2D.Body.GetLinearVelocity().Y));
+                    0, 
+                    -1000.0F));
+                jumping = true;
             }
         }
 
@@ -91,6 +84,7 @@ namespace PingPong
         /// <param name="key">The key</param>
         private void OnReleaseKey(object? sender, string key)
         {
+            
         }
 
         /// <summary>
@@ -98,6 +92,12 @@ namespace PingPong
         /// </summary>
         public override void Update()
         {
+            timeStop -= 0.1f;
+            if (timeStop <= 0)
+            {
+                timeStop = 25f;
+                jumping = false;
+            }
         }
     }
 }

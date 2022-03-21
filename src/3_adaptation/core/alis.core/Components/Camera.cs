@@ -46,7 +46,7 @@ namespace Alis.Core.Components
         public Camera()
         {
             PointOfView = new Vector2(0.0f, 0.0f);
-            Resolution = new Vector2(640, 480);
+            Resolution = new Vector2(Game.Setting.Window.Resolution.X, Game.Setting.Window.Resolution.Y);
             View = new View(new Vector2f(PointOfView.X, PointOfView.Y), new Vector2f(Resolution.X, Resolution.Y));
         }
 

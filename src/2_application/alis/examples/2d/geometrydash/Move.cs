@@ -32,7 +32,7 @@ using Alis.Core.Entities;
 using Alis.Core.Input;
 using Alis.Tools;
 
-namespace PingPong
+namespace GeometryDash
 {
     /// <summary>
     ///     The move class
