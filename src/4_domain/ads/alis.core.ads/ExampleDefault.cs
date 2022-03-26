@@ -27,9 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ads;
-
-public class ExampleDefault
+namespace Alis.Core.Ads
 {
+    public class ExampleDefault
+    {
     
+    }
 }
