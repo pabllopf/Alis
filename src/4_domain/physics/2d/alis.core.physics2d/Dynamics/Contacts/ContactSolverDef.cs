@@ -27,33 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Dynamics.World;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The contact solver def
+    ///     The contact solver def
     /// </summary>
     internal struct ContactSolverDef
     {
         /// <summary>
-        /// The step
+        ///     The step
         /// </summary>
         internal TimeStep step;
+
         /// <summary>
-        /// The contacts
+        ///     The contacts
         /// </summary>
         internal Contact[] contacts;
+
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal int count;
+
         /// <summary>
-        /// The positions
+        ///     The positions
         /// </summary>
         internal Position[] positions;
+
         /// <summary>
-        /// The velocities
+        ///     The velocities
         /// </summary>
         internal Velocity[] velocities;
     }

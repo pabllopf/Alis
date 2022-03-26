@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Output parameters for b2TimeOfImpact.
@@ -35,11 +35,12 @@ namespace Alis.Core.Physics2D.Collision
     internal struct TOIOutput
     {
         /// <summary>
-        /// The state
+        ///     The state
         /// </summary>
         internal TOIOutputState state;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal float t;
     }

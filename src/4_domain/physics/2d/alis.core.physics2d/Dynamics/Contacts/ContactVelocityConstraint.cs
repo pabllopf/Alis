@@ -28,73 +28,86 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The contact velocity constraint class
+    ///     The contact velocity constraint class
     /// </summary>
     public class ContactVelocityConstraint
     {
         /// <summary>
-        /// The contact index
+        ///     The contact index
         /// </summary>
         internal int contactIndex;
+
         /// <summary>
-        /// The friction
+        ///     The friction
         /// </summary>
         internal float friction;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         internal int indexA;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         internal int indexB;
+
         /// <summary>
-        /// The inv ia
+        ///     The inv ia
         /// </summary>
         internal float invIA;
+
         /// <summary>
-        /// The inv ib
+        ///     The inv ib
         /// </summary>
         internal float invIB;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         internal float invMassA;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         internal float invMassB;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal Matrix3x2 K;
+
         /// <summary>
-        /// The normal
+        ///     The normal
         /// </summary>
         internal Vector2 normal;
+
         /// <summary>
-        /// The normal mass
+        ///     The normal mass
         /// </summary>
         internal Matrix3x2 normalMass;
+
         /// <summary>
-        /// The point count
+        ///     The point count
         /// </summary>
         internal int pointCount;
+
         /// <summary>
-        /// The max manifold points
+        ///     The max manifold points
         /// </summary>
         internal VelocityConstraintPoint[] points = new VelocityConstraintPoint[Settings.MaxManifoldPoints];
+
         /// <summary>
-        /// The restitution
+        ///     The restitution
         /// </summary>
         internal float restitution;
+
         /// <summary>
-        /// The tangent speed
+        ///     The tangent speed
         /// </summary>
         internal float tangentSpeed;
     }

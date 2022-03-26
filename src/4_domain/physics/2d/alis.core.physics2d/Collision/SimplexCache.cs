@@ -29,7 +29,7 @@
 
 //#define DEBUG
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Used to warm start Distance.
@@ -41,7 +41,7 @@ namespace Alis.Core.Physics2D.Collision
         internal ushort count;
 
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         internal byte[] indexA = new byte[3];
 

@@ -29,16 +29,16 @@
 
 using System;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The box exception class
+    ///     The box exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class Box2DException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Box2DException"/> class
+        ///     Initializes a new instance of the <see cref="Box2DException" /> class
         /// </summary>
         /// <param name="message">The message</param>
         public Box2DException(string message) : base(message)

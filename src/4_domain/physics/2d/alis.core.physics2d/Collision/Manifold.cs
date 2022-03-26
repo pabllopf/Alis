@@ -29,9 +29,8 @@
 
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     A manifold for two touching convex shapes.
@@ -40,7 +39,7 @@ namespace Alis.Core.Physics2D.Collision
     public class Manifold
     {
         /// <summary>
-        /// The local normal
+        ///     The local normal
         /// </summary>
         internal Vector2 localNormal;
 
@@ -60,12 +59,12 @@ namespace Alis.Core.Physics2D.Collision
         internal ManifoldPoint[ /*Settings.MaxManifoldPoints*/] points = new ManifoldPoint[Settings.MaxManifoldPoints];
 
         /// <summary>
-        /// The type
+        ///     The type
         /// </summary>
         internal ManifoldType type;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Manifold"/> class
+        ///     Initializes a new instance of the <see cref="Manifold" /> class
         /// </summary>
         internal Manifold()
         {

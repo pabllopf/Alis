@@ -27,19 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Collision.Colliders
+namespace Alis.Core.Physics2D.Colliders
 {
     /// <summary>
-    /// The collider class
+    ///     The collider class
     /// </summary>
     internal abstract class Collider<TShapeA, TShapeB>
         where TShapeA : Shape where TShapeB : Shape
     {
         /// <summary>
-        /// Collides the manifold
+        ///     Collides the manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="shapeA">The shape</param>

@@ -30,9 +30,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision.Shapes
+namespace Alis.Core.Physics2D.Shapes
 {
     /// <summary>
     ///     A circle shape.
@@ -40,12 +39,12 @@ namespace Alis.Core.Physics2D.Collision.Shapes
     public class CircleShape : Shape
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal Vector2 m_p;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CircleShape"/> class
+        ///     Initializes a new instance of the <see cref="CircleShape" /> class
         /// </summary>
         public CircleShape()
         {
@@ -54,7 +53,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets or sets the value of the center
+        ///     Gets or sets the value of the center
         /// </summary>
         public Vector2 Center
         {
@@ -64,7 +63,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets or sets the value of the radius
+        ///     Gets or sets the value of the radius
         /// </summary>
         public float Radius
         {
@@ -74,28 +73,29 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the value of the contact match
+        ///     Gets the value of the contact match
         /// </summary>
         internal override byte ContactMatch => contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         internal const byte contactMatch = 0;
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The shape</returns>
         public override Shape Clone() => (CircleShape) MemberwiseClone();
 
         /// <summary>
-        /// Gets the child count
+        ///     Gets the child count
         /// </summary>
         /// <returns>The int</returns>
         public override int GetChildCount() => 1;
 
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="transform">The transform</param>
         /// <param name="p">The </param>
@@ -108,7 +108,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -155,7 +155,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the aabb using the specified aabb
+        ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
@@ -168,7 +168,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the mass using the specified mass data
+        ///     Computes the mass using the specified mass data
         /// </summary>
         /// <param name="massData">The mass data</param>
         /// <param name="density">The density</param>
@@ -182,7 +182,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Sets the center
+        ///     Sets the center
         /// </summary>
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>

@@ -27,17 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision;
-
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The global class
+    ///     The global class
     /// </summary>
     public class Global
     {
         /// <summary>
-        /// Swaps the a
+        ///     Swaps the a
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="a">The </param>
@@ -50,7 +48,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Gets the point states using the specified state 1
+        ///     Gets the point states using the specified state 1
         /// </summary>
         /// <param name="state1">The state</param>
         /// <param name="state2">The state</param>

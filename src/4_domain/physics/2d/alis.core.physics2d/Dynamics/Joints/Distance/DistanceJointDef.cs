@@ -29,9 +29,9 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
+namespace Alis.Core.Physics2D.Joints.Distance
 {
     /// <summary>
     ///     Distance joint definition. This requires defining an
@@ -49,13 +49,13 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
         public float damping;
 
         /// <summary>
-        /// The damping ratio
+        ///     The damping ratio
         /// </summary>
         [Obsolete("Use stiffness and damping instead of frequencyHz and dampingRatio")]
         public float? dampingRatio;
 
         /// <summary>
-        /// The frequency hz
+        ///     The frequency hz
         /// </summary>
         [Obsolete("Use stiffness and damping instead of frequencyHz and dampingRatio")]
         public float? frequencyHz;
@@ -81,7 +81,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
         public float stiffness;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DistanceJointDef"/> class
+        ///     Initializes a new instance of the <see cref="DistanceJointDef" /> class
         /// </summary>
         public DistanceJointDef() => length = 1.0f;
 

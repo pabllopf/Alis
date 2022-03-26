@@ -89,7 +89,7 @@ namespace Alis.Core.Systems
         private Scene ActiveScene { get; set; }
 
         /// <summary>
-        /// The current
+        ///     The current
         /// </summary>
         private static SceneSystem current;
 

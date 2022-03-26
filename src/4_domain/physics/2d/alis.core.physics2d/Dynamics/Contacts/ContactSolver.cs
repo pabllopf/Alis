@@ -31,54 +31,55 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
-using Alis.Core.Physics2D.Dynamics.World;
-using Math = System.Math;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Shapes;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The contact solver class
+    ///     The contact solver class
     /// </summary>
     internal class ContactSolver
     {
         /// <summary>
-        /// The contacts
+        ///     The contacts
         /// </summary>
         private readonly Contact[] _contacts;
 
         /// <summary>
-        /// The position constraints
+        ///     The position constraints
         /// </summary>
         private readonly ContactPositionConstraint[] _positionConstraints;
+
         /// <summary>
-        /// The positions
+        ///     The positions
         /// </summary>
         private readonly Position[] _positions;
+
         /// <summary>
-        /// The velocities
+        ///     The velocities
         /// </summary>
         private readonly Velocity[] _velocities;
+
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         public int _count;
+
         /// <summary>
-        /// The step
+        ///     The step
         /// </summary>
         public TimeStep _step;
 
         /// <summary>
-        /// The velocity constraints
+        ///     The velocity constraints
         /// </summary>
         internal ContactVelocityConstraint[] _velocityConstraints;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContactSolver"/> class
+        ///     Initializes a new instance of the <see cref="ContactSolver" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public ContactSolver(ContactSolverDef def)
@@ -170,7 +171,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Initializes the velocity constraints
+        ///     Initializes the velocity constraints
         /// </summary>
         public void InitializeVelocityConstraints()
         {
@@ -289,7 +290,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Warms the start
+        ///     Warms the start
         /// </summary>
         public void WarmStart()
         {
@@ -333,7 +334,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
 
 
         /// <summary>
-        /// Solves the velocity constraints
+        ///     Solves the velocity constraints
         /// </summary>
         public void SolveVelocityConstraints()
         {
@@ -375,7 +376,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
 
                     // b2Clamp the accumulated force
                     float maxFriction = friction * vcp.normalImpulse;
-                    float newImpulse = Math.Clamp(vcp.tangentImpulse + lambda, -maxFriction, maxFriction);
+                    float newImpulse = System.Math.Clamp(vcp.tangentImpulse + lambda, -maxFriction, maxFriction);
                     lambda = newImpulse - vcp.tangentImpulse;
                     vcp.tangentImpulse = newImpulse;
 
@@ -615,7 +616,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Stores the impulses
+        ///     Stores the impulses
         /// </summary>
         public void StoreImpulses()
         {
@@ -634,7 +635,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
 
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <returns>The bool</returns>
         public bool SolvePositionConstraints()
@@ -685,7 +686,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
                     minSeparation = MathF.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = Math.Clamp(Settings.Baumgarte * (separation + Settings.LinearSlop),
+                    float C = System.Math.Clamp(Settings.Baumgarte * (separation + Settings.LinearSlop),
                         -Settings.MaxLinearCorrection,
                         0.0f);
 
@@ -720,7 +721,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
 
 
         /// <summary>
-        /// Describes whether this instance solve toi position constraints
+        ///     Describes whether this instance solve toi position constraints
         /// </summary>
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
@@ -785,7 +786,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
                     minSeparation = MathF.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float C = Math.Clamp(Settings.TOIBaumgarte * (separation + Settings.LinearSlop),
+                    float C = System.Math.Clamp(Settings.TOIBaumgarte * (separation + Settings.LinearSlop),
                         -Settings.MaxLinearCorrection, 0.0f);
 
                     // Compute the effective mass.
@@ -818,25 +819,27 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// The position solver manifold class
+        ///     The position solver manifold class
         /// </summary>
         internal class PositionSolverManifold
         {
             /// <summary>
-            /// The normal
+            ///     The normal
             /// </summary>
             internal Vector2 normal;
+
             /// <summary>
-            /// The point
+            ///     The point
             /// </summary>
             internal Vector2 point;
+
             /// <summary>
-            /// The separation
+            ///     The separation
             /// </summary>
             internal float separation;
 
             /// <summary>
-            /// Initializes the pc
+            ///     Initializes the pc
             /// </summary>
             /// <param name="pc">The pc</param>
             /// <param name="xfA">The xf</param>
@@ -850,8 +853,8 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
                 {
                     case ManifoldType.Circles:
                     {
-                        Vector2 pointA = Common.Math.Mul(xfA, pc.localPoint);
-                        Vector2 pointB = Common.Math.Mul(xfB, pc.localPoints[0]);
+                        Vector2 pointA = Math.Mul(xfA, pc.localPoint);
+                        Vector2 pointB = Math.Mul(xfB, pc.localPoints[0]);
                         normal = Vector2.Normalize(pointB - pointA);
                         point = 0.5f * (pointA + pointB);
                         separation = Vector2.Dot(pointB - pointA, normal) - pc.radiusA - pc.radiusB;
@@ -860,9 +863,9 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
                     case ManifoldType.FaceA:
                     {
                         normal = Vector2.Transform(pc.localNormal, xfA.q); // Common.Math.Mul(xfA.q, pc.localNormal);
-                        Vector2 planePoint = Common.Math.Mul(xfA, pc.localPoint);
+                        Vector2 planePoint = Math.Mul(xfA, pc.localPoint);
 
-                        Vector2 clipPoint = Common.Math.Mul(xfB, pc.localPoints[index]);
+                        Vector2 clipPoint = Math.Mul(xfB, pc.localPoints[index]);
                         separation = Vector2.Dot(clipPoint - planePoint, normal) - pc.radiusA - pc.radiusB;
                         point = clipPoint;
 
@@ -872,9 +875,9 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
                     case ManifoldType.FaceB:
                     {
                         normal = Vector2.Transform(pc.localNormal, xfB.q); // Common.Math.Mul(xfB.q, pc.localNormal);
-                        Vector2 planePoint = Common.Math.Mul(xfB, pc.localPoint);
+                        Vector2 planePoint = Math.Mul(xfB, pc.localPoint);
 
-                        Vector2 clipPoint = Common.Math.Mul(xfA, pc.localPoints[index]);
+                        Vector2 clipPoint = Math.Mul(xfA, pc.localPoints[index]);
                         separation = Vector2.Dot(clipPoint - planePoint, normal) - pc.radiusA - pc.radiusB;
                         point = clipPoint;
 

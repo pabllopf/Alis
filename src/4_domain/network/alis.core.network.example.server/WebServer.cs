@@ -35,9 +35,9 @@ using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
-namespace Alis.Core.Network.Example.Server
+
+namespace Alis.Core.Network.Exceptions.Example.Server
 {
     /// <summary>
     ///     The web server class
@@ -45,7 +45,7 @@ namespace Alis.Core.Network.Example.Server
     /// <seealso cref="IDisposable" />
     public class WebServer : IDisposable
     {
-        /// <summary>
+      /*  /// <summary>
         ///     The logger
         /// </summary>
         private readonly ILogger _logger;
@@ -291,6 +291,10 @@ namespace Alis.Core.Network.Example.Server
                         port);
                 throw new Exception(message, ex);
             }
-        }
+        }*/
+      public void Dispose()
+      {
+
+      }
     }
 }

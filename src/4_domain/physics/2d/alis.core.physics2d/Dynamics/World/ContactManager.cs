@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Contacts;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
-using Alis.Core.Physics2D.Dynamics.World.Callbacks;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Contacts;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.World.Callbacks;
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
     ///     Delegate of World.
@@ -41,28 +40,32 @@ namespace Alis.Core.Physics2D.Dynamics.World
     internal class ContactManager
     {
         /// <summary>
-        /// The broadphase
+        ///     The broadphase
         /// </summary>
         internal BroadPhase m_broadPhase;
+
         /// <summary>
-        /// The contactcount
+        ///     The contactcount
         /// </summary>
         internal int m_contactCount;
+
         /// <summary>
-        /// The contactfilter
+        ///     The contactfilter
         /// </summary>
         internal ContactFilter m_contactFilter;
+
         /// <summary>
-        /// The contactlist
+        ///     The contactlist
         /// </summary>
         internal Contact m_contactList;
+
         /// <summary>
-        /// The contactlistener
+        ///     The contactlistener
         /// </summary>
         internal ContactListener m_contactListener;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContactManager"/> class
+        ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
         internal ContactManager()
         {
@@ -74,7 +77,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Destroys the c
+        ///     Destroys the c
         /// </summary>
         /// <param name="c">The </param>
         internal void Destroy(Contact c)
@@ -143,7 +146,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Collides this instance
+        ///     Collides this instance
         /// </summary>
         internal void Collide()
         {
@@ -213,7 +216,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Finds the new contacts
+        ///     Finds the new contacts
         /// </summary>
         internal void FindNewContacts()
         {
@@ -221,7 +224,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Adds the pair using the specified proxy user data a
+        ///     Adds the pair using the specified proxy user data a
         /// </summary>
         /// <param name="proxyUserDataA">The proxy user data</param>
         /// <param name="proxyUserDataB">The proxy user data</param>

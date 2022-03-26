@@ -27,11 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Numerics;
 using Alis.Core.Components;
 using Alis.Core.Input;
-using SFML.System;
 
 namespace GeometryDash
 {
@@ -39,16 +37,22 @@ namespace GeometryDash
     internal class BallController : Component
     {
         /// <summary>
-        /// The box collider
+        ///     The box collider
         /// </summary>
         private BoxCollider2D boxCollider2D;
 
-        private float timeStop;
-
-        private bool jumping = false;
+        /// <summary>
+        ///     The jumping
+        /// </summary>
+        private bool jumping;
 
         /// <summary>
-        /// Starts this instance
+        ///     The time stop
+        /// </summary>
+        private float timeStop;
+
+        /// <summary>
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -61,7 +65,7 @@ namespace GeometryDash
         }
 
         /// <summary>
-        /// Ons the press key using the specified sender
+        ///     Ons the press key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="key">The key</param>
@@ -71,24 +75,23 @@ namespace GeometryDash
             if (key.Equals("Space") && jumping == false)
             {
                 boxCollider2D.Body.SetLinearVelocity(new Vector2(
-                    0, 
+                    0,
                     -1000.0F));
                 jumping = true;
             }
         }
 
         /// <summary>
-        /// Ons the release key using the specified sender
+        ///     Ons the release key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="key">The key</param>
         private void OnReleaseKey(object? sender, string key)
         {
-            
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

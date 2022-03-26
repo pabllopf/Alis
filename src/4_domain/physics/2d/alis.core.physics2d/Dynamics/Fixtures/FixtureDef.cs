@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision.Shapes;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Dynamics.Fixtures
+namespace Alis.Core.Physics2D.Fixtures
 {
     /// <summary>
     ///     A fixture definition is used to create a fixture. This class defines an
@@ -63,7 +63,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         public float restitution;
 
         /// <summary>
-        /// The shape
+        ///     The shape
         /// </summary>
         public Shape shape;
 

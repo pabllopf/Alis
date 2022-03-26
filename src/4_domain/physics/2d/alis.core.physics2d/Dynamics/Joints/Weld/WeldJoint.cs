@@ -29,94 +29,106 @@
 
 using System;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.World;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.World;
 using b2Vec2 = System.Numerics.Vector2;
 using b2Vec3 = System.Numerics.Vector3;
-using Math = Alis.Core.Physics2D.Common.Math;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
+namespace Alis.Core.Physics2D.Joints.Weld
 {
     /// <summary>
-    /// The weld joint class
+    ///     The weld joint class
     /// </summary>
-    /// <seealso cref="Joint"/>
+    /// <seealso cref="Joint" />
     public class WeldJoint : Joint
     {
         /// <summary>
-        /// The bias
+        ///     The bias
         /// </summary>
         private float m_bias;
+
         /// <summary>
-        /// The gamma
+        ///     The gamma
         /// </summary>
         private float m_gamma;
+
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private b2Vec3 m_impulse;
 
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private int m_indexB;
+
         /// <summary>
-        /// The invia
+        ///     The invia
         /// </summary>
         private float m_invIA;
+
         /// <summary>
-        /// The invib
+        ///     The invib
         /// </summary>
         private float m_invIB;
+
         /// <summary>
-        /// The invmassa
+        ///     The invmassa
         /// </summary>
         private float m_invMassA;
+
         /// <summary>
-        /// The invmassb
+        ///     The invmassb
         /// </summary>
         private float m_invMassB;
 
         /// <summary>
-        /// The localanchora
+        ///     The localanchora
         /// </summary>
         private b2Vec2 m_localAnchorA;
+
         /// <summary>
-        /// The localanchorb
+        ///     The localanchorb
         /// </summary>
         private b2Vec2 m_localAnchorB;
+
         /// <summary>
-        /// The localcentera
+        ///     The localcentera
         /// </summary>
         private b2Vec2 m_localCenterA;
+
         /// <summary>
-        /// The localcenterb
+        ///     The localcenterb
         /// </summary>
         private b2Vec2 m_localCenterB;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private Mat33 m_mass;
+
         /// <summary>
-        /// The ra
+        ///     The ra
         /// </summary>
         private b2Vec2 m_rA;
+
         /// <summary>
-        /// The rb
+        ///     The rb
         /// </summary>
         private b2Vec2 m_rB;
+
         /// <summary>
-        /// The referenceangle
+        ///     The referenceangle
         /// </summary>
         private float m_referenceAngle;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WeldJoint"/> class
+        ///     Initializes a new instance of the <see cref="WeldJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public WeldJoint(WeldJointDef def) : base(def)
@@ -129,16 +141,17 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
         }
 
         /// <summary>
-        /// Gets the value of the get anchor a
+        ///     Gets the value of the get anchor a
         /// </summary>
         public override b2Vec2 GetAnchorA => m_bodyA.GetWorldPoint(m_localAnchorA);
+
         /// <summary>
-        /// Gets the value of the get anchor b
+        ///     Gets the value of the get anchor b
         /// </summary>
         public override b2Vec2 GetAnchorB => m_bodyB.GetWorldPoint(m_localAnchorB);
 
         /// <summary>
-        /// Gets or sets the value of the stiffness
+        ///     Gets or sets the value of the stiffness
         /// </summary>
         public float Stiffness
         {
@@ -149,7 +162,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
         }
 
         /// <summary>
-        /// Gets or sets the value of the damping
+        ///     Gets or sets the value of the damping
         /// </summary>
         public float Damping
         {
@@ -160,14 +173,14 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
         }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The vec</returns>
         public override b2Vec2 GetReactionForce(float inv_dt) => inv_dt * new b2Vec2(m_impulse.X, m_impulse.Y);
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The float</returns>
@@ -175,7 +188,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
 
 
         /// <summary>
-        /// Initializes the b a
+        ///     Initializes the b a
         /// </summary>
         /// <param name="bA">The </param>
         /// <param name="bB">The </param>
@@ -190,7 +203,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
         }
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(in SolverData data)
@@ -299,7 +312,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(in SolverData data)
@@ -360,7 +373,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

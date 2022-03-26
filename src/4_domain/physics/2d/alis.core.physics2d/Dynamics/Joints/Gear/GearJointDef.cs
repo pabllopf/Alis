@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
+namespace Alis.Core.Physics2D.Joints.Gear
 {
     /// <summary>
     ///     Gear joint definition. This definition requires two existing
@@ -53,7 +53,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
         public float Ratio;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GearJointDef"/> class
+        ///     Initializes a new instance of the <see cref="GearJointDef" /> class
         /// </summary>
         public GearJointDef() => Ratio = 1.0f;
     }

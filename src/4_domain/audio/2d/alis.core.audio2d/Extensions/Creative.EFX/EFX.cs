@@ -66,7 +66,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// </summary>
         /// <param name="device">The device to query.</param>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent(ALDevice device) => ALC.ALC.IsExtensionPresent(device, ExtensionName);
+        public static bool IsExtensionPresent(ALDevice device) => ALC.IsExtensionPresent(device, ExtensionName);
 
         /// <summary>
         ///     Gets a vector of integer properties from the context.
@@ -75,8 +75,8 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="size">The size of the provided buffer.</param>
         /// <param name="data">A pointer to the first element of a provided data buffer.</param>
-        [DllImport(ALC.ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true,
-            CallingConvention = ALC.ALC.AlcCallingConv)]
+        [DllImport(ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true,
+            CallingConvention = ALC.AlcCallingConv)]
         public static extern unsafe void GetInteger(ALDevice device, EFXContextInteger param, int size, int* data);
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="size">The size of the provided buffer.</param>
         /// <param name="data">A pointer to the first element of a provided data buffer.</param>
-        [DllImport(ALC.ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true,
-            CallingConvention = ALC.ALC.AlcCallingConv)]
+        [DllImport(ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true,
+            CallingConvention = ALC.AlcCallingConv)]
         public static extern void GetInteger(ALDevice device, EFXContextInteger param, int size, ref int data);
 
         /// <summary>
@@ -97,8 +97,8 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="param">The named property.</param>
         /// <param name="size">The size of the provided buffer.</param>
         /// <param name="data">A pointer to the first element of a provided data buffer.</param>
-        [DllImport(ALC.ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true,
-            CallingConvention = ALC.ALC.AlcCallingConv)]
+        [DllImport(ALC.Lib, EntryPoint = "alcGetIntegerv", ExactSpelling = true,
+            CallingConvention = ALC.AlcCallingConv)]
         public static extern void GetInteger(ALDevice device, EFXContextInteger param, int size, int[] data);
 
         /// <summary>
@@ -530,7 +530,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen auxiliary effect slots ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GenAuxiliaryEffectSlotsPtrDelegate(int count, int* slots);
 
         /// <summary>
@@ -552,7 +552,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen auxiliary effect slots ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GenAuxiliaryEffectSlotsRefDelegate(int count, ref int slots);
 
         /// <summary>
@@ -574,7 +574,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen auxiliary effect slots array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GenAuxiliaryEffectSlotsArrayDelegate(int count, int[] slots);
 
         /// <summary>
@@ -596,7 +596,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete auxiliary effect slots ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void DeleteAuxiliaryEffectSlotsPtrDelegate(int count, int* slots);
 
         /// <summary>
@@ -618,7 +618,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete auxiliary effect slots ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void DeleteAuxiliaryEffectSlotsRefDelegate(int count, ref int slots);
 
         /// <summary>
@@ -640,7 +640,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete auxiliary effect slots array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void DeleteAuxiliaryEffectSlotsArrayDelegate(int count, int[] slots);
 
         /// <summary>
@@ -659,7 +659,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The is auxiliary effect slot delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate bool IsAuxiliaryEffectSlotDelegate(int slot);
 
         /// <summary>
@@ -680,7 +680,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The auxiliary effect sloti delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void AuxiliaryEffectSlotiDelegate(int slot, EffectSlotInteger param, int value);
 
         /// <summary>
@@ -701,7 +701,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The auxiliary effect slotf delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void AuxiliaryEffectSlotfDelegate(int slot, EffectSlotFloat param, float value);
 
         /// <summary>
@@ -722,7 +722,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get auxiliary effect sloti ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetAuxiliaryEffectSlotiPtrDelegate(int slot, EffectSlotInteger param, int* value);
 
         /// <summary>
@@ -743,7 +743,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get auxiliary effect sloti ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetAuxiliaryEffectSlotiRefDelegate(int slot, EffectSlotInteger param, out int value);
 
         /// <summary>
@@ -764,7 +764,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get auxiliary effect slotf ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetAuxiliaryEffectSlotfPtrDelegate(int slot, EffectSlotFloat param, float* value);
 
         /// <summary>
@@ -785,7 +785,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get auxiliary effect slotf ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetAuxiliaryEffectSlotfRefDelegate(int slot, EffectSlotFloat param, out float value);
 
         /// <summary>
@@ -806,7 +806,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen effects ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GenEffectsPtrDelegate(int count, int* effects);
 
         /// <summary>
@@ -827,7 +827,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen effects ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GenEffectsRefDelegate(int count, ref int effects);
 
         /// <summary>
@@ -848,7 +848,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen effects array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GenEffectsArrayDelegate(int count, int[] effects);
 
         /// <summary>
@@ -869,7 +869,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete effects ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void DeleteEffectsPtrDelegate(int count, int* effects);
 
         /// <summary>
@@ -890,7 +890,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete effects ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void DeleteEffectsRefDelegate(int count, ref int effects);
 
         /// <summary>
@@ -911,7 +911,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete effects array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void DeleteEffectsArrayDelegate(int count, int[] effects);
 
         /// <summary>
@@ -932,7 +932,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The is effect delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate bool IsEffectDelegate(int effect);
 
         /// <summary>
@@ -951,7 +951,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The effecti delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void EffectiDelegate(int effect, EffectInteger param, int value);
 
         /// <summary>
@@ -970,7 +970,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The effectf delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void EffectfDelegate(int effect, EffectFloat param, float value);
 
         /// <summary>
@@ -990,7 +990,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The effectfv ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void EffectfvPtrDelegate(int effect, EffectVector3 param, float* value);
 
         /// <summary>
@@ -1010,7 +1010,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The effectfv ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void EffectfvRefDelegate(int effect, EffectVector3 param, ref float value);
 
         /// <summary>
@@ -1030,7 +1030,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The effectfv array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void EffectfvArrayDelegate(int effect, EffectVector3 param, float[] value);
 
         /// <summary>
@@ -1051,7 +1051,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get effecti ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetEffectiPtrDelegate(int effect, EffectInteger param, int* value);
 
         /// <summary>
@@ -1072,7 +1072,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get effecti ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetEffectiRefDelegate(int effect, EffectInteger param, out int value);
 
         /// <summary>
@@ -1093,7 +1093,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get effectf ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetEffectfPtrDelegate(int effect, EffectFloat param, float* value);
 
         /// <summary>
@@ -1114,7 +1114,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get effectf ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetEffectfRefDelegate(int effect, EffectFloat param, out float value);
 
         /// <summary>
@@ -1135,7 +1135,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get effectfv ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetEffectfvPtrDelegate(int effect, EffectVector3 param, float* value);
 
         /// <summary>
@@ -1156,7 +1156,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get effectfv ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetEffectfvRefDelegate(int effect, EffectVector3 param, out float value);
 
         /// <summary>
@@ -1177,7 +1177,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen filters ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GenFiltersPtrDelegate(int count, int* filters);
 
         /// <summary>
@@ -1198,7 +1198,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen filters ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GenFiltersRefDelegate(int count, ref int filters);
 
         /// <summary>
@@ -1219,7 +1219,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The gen filters array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GenFiltersArrayDelegate(int count, int[] filters);
 
         /// <summary>
@@ -1240,7 +1240,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete filters ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void DeleteFiltersPtrDelegate(int count, int* filters);
 
         /// <summary>
@@ -1261,7 +1261,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete filters ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void DeleteFiltersRefDelegate(int count, ref int filters);
 
         /// <summary>
@@ -1282,7 +1282,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The delete filters array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void DeleteFiltersArrayDelegate(int count, int[] filters);
 
         /// <summary>
@@ -1303,7 +1303,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The is filter delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate bool IsFilterDelegate(int filter);
 
         /// <summary>
@@ -1322,7 +1322,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The filteri delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void FilteriDelegate(int filter, FilterInteger param, int value);
 
         /// <summary>
@@ -1341,7 +1341,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The filterf delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void FilterfDelegate(int filter, FilterFloat param, float value);
 
         /// <summary>
@@ -1361,7 +1361,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get filteri ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetFilteriPtrDelegate(int filter, FilterInteger param, int* value);
 
         /// <summary>
@@ -1382,7 +1382,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get filteri ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetFilteriRefDelegate(int filter, FilterInteger param, out int value);
 
         /// <summary>
@@ -1403,7 +1403,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get filterf ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetFilterfPtrDelegate(int filter, FilterFloat param, float* value);
 
         /// <summary>
@@ -1424,7 +1424,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get filterf ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetFilterfRefDelegate(int filter, FilterFloat param, out float value);
 
         /// <summary>
@@ -1444,7 +1444,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The sourcei delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void SourceiDelegate(int source, EFXSourceInteger param, int value);
 
         /// <summary>
@@ -1463,7 +1463,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The source delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void SourceDelegate(int source, EFXSourceFloat param, float value);
 
         /// <summary>
@@ -1482,7 +1482,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The sourceb delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void SourcebDelegate(int source, EFXSourceBoolean param, bool value);
 
         /// <summary>
@@ -1502,7 +1502,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The sourceiv ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void SourceivPtrDelegate(int source, EFXSourceInteger3 param, int* value);
 
         /// <summary>
@@ -1522,7 +1522,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The sourceiv ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void SourceivRefDelegate(int source, EFXSourceInteger3 param, ref int value);
 
         /// <summary>
@@ -1542,7 +1542,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The sourceiv array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void SourceivArrayDelegate(int source, EFXSourceInteger3 param, int[] value);
 
         /// <summary>
@@ -1565,7 +1565,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The source 3i delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void Source3iDelegate(int source, EFXSourceInteger3 param, int value1, int value2, int value3);
 
         /// <summary>
@@ -1585,7 +1585,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourcei ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSourceiPtrDelegate(int source, EFXSourceInteger param, int* value);
 
         /// <summary>
@@ -1606,7 +1606,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourcei ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourceiRefDelegate(int source, EFXSourceInteger param, out int value);
 
         /// <summary>
@@ -1627,7 +1627,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourcef ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSourcefPtrDelegate(int source, EFXSourceFloat param, float* value);
 
         /// <summary>
@@ -1648,7 +1648,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourcef ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcefRefDelegate(int source, EFXSourceFloat param, out float value);
 
         /// <summary>
@@ -1669,7 +1669,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourceb ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSourcebPtrDelegate(int source, EFXSourceBoolean param, bool* value);
 
         /// <summary>
@@ -1690,7 +1690,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourceb ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcebRefDelegate(int source, EFXSourceBoolean param, out bool value);
 
         /// <summary>
@@ -1711,7 +1711,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourceiv ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSourceivPtrDelegate(int source, EFXSourceInteger3 param, int* value);
 
         /// <summary>
@@ -1732,7 +1732,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourceiv ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourceivRefDelegate(int source, EFXSourceInteger3 param, ref int value);
 
         /// <summary>
@@ -1753,7 +1753,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get sourceiv array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourceivArrayDelegate(int source, EFXSourceInteger3 param, int[] value);
 
         /// <summary>
@@ -1777,7 +1777,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get source 3i ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSource3iPtrDelegate(int source, EFXSourceInteger3 param, int* value1,
             int* value2, int* value3);
 
@@ -1801,7 +1801,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get source 3i ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSource3iRefDelegate(int source, EFXSourceInteger3 param, out int value1,
             out int value2, out int value3);
 
@@ -1823,7 +1823,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The listenerf delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void ListenerfDelegate(int listener, EFXListenerFloat param, float value);
 
         /// <summary>
@@ -1843,7 +1843,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get listenerf ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetListenerfPtrDelegate(int listener, EFXListenerFloat param, float* value);
 
         /// <summary>
@@ -1864,7 +1864,7 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <summary>
         ///     The get listenerf ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetListenerfRefDelegate(int listener, EFXListenerFloat param, out float value);
 
         /// <summary>

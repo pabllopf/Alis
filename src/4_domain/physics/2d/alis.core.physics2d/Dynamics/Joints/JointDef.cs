@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints
+namespace Alis.Core.Physics2D.Joints
 {
     /// <summary>
     ///     Joint definitions are used to construct joints.
@@ -57,7 +57,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints
         public object UserData;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JointDef"/> class
+        ///     Initializes a new instance of the <see cref="JointDef" /> class
         /// </summary>
         public JointDef()
         {

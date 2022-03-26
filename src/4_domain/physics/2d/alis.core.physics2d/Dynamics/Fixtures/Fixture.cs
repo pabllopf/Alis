@@ -31,13 +31,11 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Contacts;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Contacts;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Dynamics.Fixtures
+namespace Alis.Core.Physics2D.Fixtures
 {
     /// <summary>
     ///     A fixture is used to attach a shape to a body for collision detection. A fixture
@@ -50,43 +48,48 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
     public class Fixture
     {
         /// <summary>
-        /// The body
+        ///     The body
         /// </summary>
         internal Body m_body;
 
         /// <summary>
-        /// The density
+        ///     The density
         /// </summary>
         internal float m_density;
+
         /// <summary>
-        /// The filter
+        ///     The filter
         /// </summary>
         internal Filter m_filter;
+
         /// <summary>
-        /// The friction
+        ///     The friction
         /// </summary>
         public float m_friction;
 
         /// <summary>
-        /// The next
+        ///     The next
         /// </summary>
         internal Fixture m_next;
+
         /// <summary>
-        /// The proxies
+        ///     The proxies
         /// </summary>
         internal FixtureProxy[] m_proxies;
+
         /// <summary>
-        /// The proxycount
+        ///     The proxycount
         /// </summary>
         internal int m_proxyCount;
+
         /// <summary>
-        /// The restitution
+        ///     The restitution
         /// </summary>
         internal float m_restitution;
 
         // non-public default constructor
         /// <summary>
-        /// Initializes a new instance of the <see cref="Fixture"/> class
+        ///     Initializes a new instance of the <see cref="Fixture" /> class
         /// </summary>
         internal Fixture()
         {
@@ -96,7 +99,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets or sets the value of the shape
+        ///     Gets or sets the value of the shape
         /// </summary>
         public Shape Shape
         {
@@ -106,7 +109,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets or sets the value of the sensor
+        ///     Gets or sets the value of the sensor
         /// </summary>
         private bool Sensor
         {
@@ -116,7 +119,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets or sets the value of the filter data
+        ///     Gets or sets the value of the filter data
         /// </summary>
         public Filter FilterData
         {
@@ -131,7 +134,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets the value of the body
+        ///     Gets the value of the body
         /// </summary>
         public Body Body
         {
@@ -140,7 +143,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets the value of the next
+        ///     Gets the value of the next
         /// </summary>
         public Fixture Next
         {
@@ -149,7 +152,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets or sets the value of the density
+        ///     Gets or sets the value of the density
         /// </summary>
         public float Density
         {
@@ -160,7 +163,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets or sets the value of the restitution
+        ///     Gets or sets the value of the restitution
         /// </summary>
         public float Restitution
         {
@@ -171,7 +174,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets or sets the value of the user data
+        ///     Gets or sets the value of the user data
         /// </summary>
         public object UserData
         {
@@ -181,7 +184,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Creates the body
+        ///     Creates the body
         /// </summary>
         /// <param name="body">The body</param>
         /// <param name="def">The def</param>
@@ -220,7 +223,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Creates the proxies using the specified broad phase
+        ///     Creates the proxies using the specified broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         /// <param name="xf">The xf</param>
@@ -242,7 +245,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Destroys the proxies using the specified broad phase
+        ///     Destroys the proxies using the specified broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         internal void DestroyProxies(BroadPhase broadPhase)
@@ -259,7 +262,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Synchronizes the broad phase
+        ///     Synchronizes the broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
         /// <param name="transform1">The transform</param>
@@ -288,7 +291,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Sets the filter data using the specified filter
+        ///     Sets the filter data using the specified filter
         /// </summary>
         /// <param name="filter">The filter</param>
         private void SetFilterData(in Filter filter)
@@ -299,7 +302,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Refilters this instance
+        ///     Refilters this instance
         /// </summary>
         public void Refilter()
         {
@@ -339,34 +342,34 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Describes whether this instance is sensor
+        ///     Describes whether this instance is sensor
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsSensor() => Sensor;
 
         /// <summary>
-        /// Gets the filter data
+        ///     Gets the filter data
         /// </summary>
         /// <returns>The filter</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private Filter GetFilterData() => m_filter;
 
         /// <summary>
-        /// Gets the body
+        ///     Gets the body
         /// </summary>
         /// <returns>The body</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Body GetBody() => Body;
 
         /// <summary>
-        /// Gets the next
+        ///     Gets the next
         /// </summary>
         /// <returns>The fixture</returns>
         public Fixture GetNext() => m_next;
 
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
@@ -374,7 +377,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         public bool TestPoint(in Vector2 p) => Shape.TestPoint(m_body.GetTransform(), p);
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -385,7 +388,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
             Shape.RayCast(out output, in input, m_body.GetTransform(), childIndex);
 
         /// <summary>
-        /// Gets the mass data using the specified mass data
+        ///     Gets the mass data using the specified mass data
         /// </summary>
         /// <param name="massData">The mass data</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -395,7 +398,7 @@ namespace Alis.Core.Physics2D.Dynamics.Fixtures
         }
 
         /// <summary>
-        /// Gets the aabb using the specified child index
+        ///     Gets the aabb using the specified child index
         /// </summary>
         /// <param name="childIndex">The child index</param>
         /// <returns>The aabb</returns>

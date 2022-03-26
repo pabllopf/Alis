@@ -27,31 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Colliders;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
+using Alis.Core.Physics2D.Colliders;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The edge and polygon contact class
+    ///     The edge and polygon contact class
     /// </summary>
-    /// <seealso cref="Contact"/>
+    /// <seealso cref="Contact" />
     internal class EdgeAndPolygonContact : Contact
     {
         /// <summary>
-        /// The edge
+        ///     The edge
         /// </summary>
         private readonly EdgeShape edgeA;
+
         /// <summary>
-        /// The polygon
+        ///     The polygon
         /// </summary>
         private readonly PolygonShape polygonB;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdgeAndPolygonContact"/> class
+        ///     Initializes a new instance of the <see cref="EdgeAndPolygonContact" /> class
         /// </summary>
         /// <param name="fA">The </param>
         /// <param name="indexA">The index</param>
@@ -64,12 +63,12 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// The edge and polygon collider
+        ///     The edge and polygon collider
         /// </summary>
         private static readonly Collider<EdgeShape, PolygonShape> collider = new EdgeAndPolygonCollider();
 
         /// <summary>
-        /// Evaluates the manifold
+        ///     Evaluates the manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="xfA">The xf</param>

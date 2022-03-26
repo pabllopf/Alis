@@ -27,27 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Dynamics.Bodies
+namespace Alis.Core.Physics2D.Bodies
 {
     /// <summary>
-    /// The body type enum
+    ///     The body type enum
     /// </summary>
     public enum BodyType
     {
         /// <summary>
-        /// The static body type
+        ///     The static body type
         /// </summary>
         Static,
+
         /// <summary>
-        /// The kinematic body type
+        ///     The kinematic body type
         /// </summary>
         Kinematic,
+
         /// <summary>
-        /// The dynamic body type
+        ///     The dynamic body type
         /// </summary>
         Dynamic,
+
         /// <summary>
-        /// The max types body type
+        ///     The max types body type
         /// </summary>
         MaxTypes
     }

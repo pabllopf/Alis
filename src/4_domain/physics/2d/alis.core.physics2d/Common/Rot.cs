@@ -31,10 +31,10 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The rot
+    ///     The rot
     /// </summary>
     public struct Rot
     {

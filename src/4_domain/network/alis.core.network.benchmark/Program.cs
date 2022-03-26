@@ -40,7 +40,7 @@ using BenchmarkDotNet.Running;
 
 #endregion
 
-namespace Alis.Core.Network.Benchmark
+namespace Alis.Core.Network.Exceptions.Benchmark
 {
     /// <summary>
     ///     The program class

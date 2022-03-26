@@ -27,23 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Dynamics.Fixtures
+namespace Alis.Core.Physics2D.Fixtures
 {
     /// <summary>
-    /// The filter class
+    ///     The filter class
     /// </summary>
     public class Filter
     {
         /// <summary>
-        /// The category bits
+        ///     The category bits
         /// </summary>
         public ushort categoryBits = 0x0001;
+
         /// <summary>
-        /// The group index
+        ///     The group index
         /// </summary>
         public short groupIndex = 0;
+
         /// <summary>
-        /// The mask bits
+        ///     The mask bits
         /// </summary>
         public ushort maskBits = 0xFFFF;
     }

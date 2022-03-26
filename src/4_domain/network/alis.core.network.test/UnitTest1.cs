@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Network.Test
+namespace Alis.Core.Network.Exceptions.Test
 {
     /// <summary>
     ///     The tests class

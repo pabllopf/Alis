@@ -1,0 +1,9 @@
+<Project>
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/physics/3d/alis.core.physics3d/**/*.cs" LinkBase="Physics3D"/>
+        <Content Include="$(SolutionDir)/4_domain/physics/3d/alis.core.physics3d/Runtimes/**" LinkBase="Physics3D/Runtimes"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/3d/alis.core.physics3d/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/3d/alis.core.physics3d/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/3d/alis.core.physics3d/bin/**"/>
+    </ItemGroup>
+</Project>

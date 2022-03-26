@@ -5,5 +5,7 @@
     <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
     <Import Project="$(SolutionDir)/0_config/licence.props"/>
     <Import Project="$(SolutionDir)/0_config/benchmark.props"/>
-
+    <Import Project="$(SolutionDir)/0_config/executable.props"/>
+    <Import Project="$(SolutionDir)/0_config/graphics2d.props"/>
+    
 </Project>

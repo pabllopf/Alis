@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Mouse
+namespace Alis.Core.Physics2D.Joints.Mouse
 {
     /// <summary>
     ///     Mouse joint definition. This requires a world target point,
@@ -61,7 +61,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Mouse
         public Vector2 Target;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MouseJointDef"/> class
+        ///     Initializes a new instance of the <see cref="MouseJointDef" /> class
         /// </summary>
         public MouseJointDef()
         {

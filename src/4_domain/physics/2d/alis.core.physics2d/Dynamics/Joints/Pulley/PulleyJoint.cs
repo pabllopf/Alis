@@ -49,11 +49,9 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.World;
-using Math = Alis.Core.Physics2D.Common.Math;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Pulley
+namespace Alis.Core.Physics2D.Joints.Pulley
 {
     /// <summary>
     ///     The pulley joint is connected to two bodies and two fixed ground points.
@@ -66,78 +64,92 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Pulley
     public class PulleyJoint : Joint
     {
         /// <summary>
-        /// The constant
+        ///     The constant
         /// </summary>
         private readonly float m_constant;
 
         /// <summary>
-        /// The localanchora
+        ///     The localanchora
         /// </summary>
         private readonly Vector2 m_localAnchorA;
+
         /// <summary>
-        /// The localanchorb
+        ///     The localanchorb
         /// </summary>
         private readonly Vector2 m_localAnchorB;
+
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float m_impulse;
 
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private int m_indexB;
+
         /// <summary>
-        /// The invia
+        ///     The invia
         /// </summary>
         private float m_invIA;
+
         /// <summary>
-        /// The invib
+        ///     The invib
         /// </summary>
         private float m_invIB;
+
         /// <summary>
-        /// The invmassa
+        ///     The invmassa
         /// </summary>
         private float m_invMassA;
+
         /// <summary>
-        /// The invmassb
+        ///     The invmassb
         /// </summary>
         private float m_invMassB;
+
         /// <summary>
-        /// The localcentera
+        ///     The localcentera
         /// </summary>
         private Vector2 m_localCenterA;
+
         /// <summary>
-        /// The localcenterb
+        ///     The localcenterb
         /// </summary>
         private Vector2 m_localCenterB;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float m_mass;
+
         /// <summary>
-        /// The ra
+        ///     The ra
         /// </summary>
         private Vector2 m_rA;
+
         /// <summary>
-        /// The rb
+        ///     The rb
         /// </summary>
         private Vector2 m_rB;
+
         /// <summary>
-        /// The ua
+        ///     The ua
         /// </summary>
         private Vector2 m_uA;
+
         /// <summary>
-        /// The ub
+        ///     The ub
         /// </summary>
         private Vector2 m_uB;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PulleyJoint"/> class
+        ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public PulleyJoint(PulleyJointDef def)
@@ -160,12 +172,12 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Pulley
         }
 
         /// <summary>
-        /// Gets the value of the get anchor a
+        ///     Gets the value of the get anchor a
         /// </summary>
         public override Vector2 GetAnchorA => m_bodyA.GetWorldPoint(m_localAnchorA);
 
         /// <summary>
-        /// Gets the value of the get anchor b
+        ///     Gets the value of the get anchor b
         /// </summary>
         public override Vector2 GetAnchorB => m_bodyB.GetWorldPoint(m_localAnchorB);
 
@@ -215,26 +227,26 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Pulley
         }
 
         /// <summary>
-        /// The min pulley length
+        ///     The min pulley length
         /// </summary>
         public static readonly float MinPulleyLength = 2.0f;
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * m_impulse * m_uB;
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The float</returns>
         public override float GetReactionTorque(float inv_dt) => 0.0f;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(in SolverData data)
@@ -328,7 +340,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Pulley
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(in SolverData data)
@@ -359,7 +371,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Pulley
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

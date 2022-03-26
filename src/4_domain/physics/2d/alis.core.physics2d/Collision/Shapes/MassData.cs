@@ -29,23 +29,25 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Collision.Shapes
+namespace Alis.Core.Physics2D.Shapes
 {
     /// <summary>
-    /// The mass data
+    ///     The mass data
     /// </summary>
     public struct MassData
     {
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         public float mass;
+
         /// <summary>
-        /// The center
+        ///     The center
         /// </summary>
         public Vector2 center;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float I;
     }

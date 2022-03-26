@@ -31,15 +31,12 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Contacts;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
-using Alis.Core.Physics2D.Dynamics.Joints;
-using Math = Alis.Core.Physics2D.Common.Math;
+using Alis.Core.Physics2D.Contacts;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Joints;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Dynamics.Bodies
+namespace Alis.Core.Physics2D.Bodies
 {
     /// <summary>
     ///     A rigid body. These are created via World.CreateBody.
@@ -48,116 +45,128 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
     public class Body
     {
         /// <summary>
-        /// The world
+        ///     The world
         /// </summary>
         private readonly World.World m_world;
+
         /// <summary>
-        /// The angulardamping
+        ///     The angulardamping
         /// </summary>
         internal float m_angularDamping;
+
         /// <summary>
-        /// The angularvelocity
+        ///     The angularvelocity
         /// </summary>
         internal float m_angularVelocity;
+
         /// <summary>
-        /// The contactlist
+        ///     The contactlist
         /// </summary>
         internal ContactEdge m_contactList;
+
         /// <summary>
-        /// The fixturecount
+        ///     The fixturecount
         /// </summary>
         internal int m_fixtureCount;
 
         /// <summary>
-        /// The fixturelist
+        ///     The fixturelist
         /// </summary>
         internal Fixture m_fixtureList;
+
         /// <summary>
-        /// The flags
+        ///     The flags
         /// </summary>
         private BodyFlags m_flags;
 
         /// <summary>
-        /// The force
+        ///     The force
         /// </summary>
         internal Vector2 m_force;
+
         /// <summary>
-        /// The gravityscale
+        ///     The gravityscale
         /// </summary>
         internal float m_gravityScale;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private float m_I;
+
         /// <summary>
-        /// The invi
+        ///     The invi
         /// </summary>
         internal float m_invI;
+
         /// <summary>
-        /// The invmass
+        ///     The invmass
         /// </summary>
         internal float m_invMass;
 
         /// <summary>
-        /// The islandindex
+        ///     The islandindex
         /// </summary>
         internal int m_islandIndex;
 
         /// <summary>
-        /// The jointlist
+        ///     The jointlist
         /// </summary>
         internal JointEdge m_jointList;
 
         /// <summary>
-        /// The lineardamping
+        ///     The lineardamping
         /// </summary>
         internal float m_linearDamping;
 
         /// <summary>
-        /// The linearvelocity
+        ///     The linearvelocity
         /// </summary>
         internal Vector2 m_linearVelocity;
 
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         internal float m_mass;
+
         /// <summary>
-        /// The next
+        ///     The next
         /// </summary>
         internal Body m_next;
+
         /// <summary>
-        /// The prev
+        ///     The prev
         /// </summary>
         internal Body m_prev;
 
         /// <summary>
-        /// The sleeptime
+        ///     The sleeptime
         /// </summary>
         internal float m_sleepTime;
 
         /// <summary>
-        /// The sweep
+        ///     The sweep
         /// </summary>
         internal Sweep m_sweep; // the swept motion for CCD
+
         /// <summary>
-        /// The torque
+        ///     The torque
         /// </summary>
         internal float m_torque;
 
         /// <summary>
-        /// The type
+        ///     The type
         /// </summary>
         internal BodyType m_type;
 
         /// <summary>
-        /// The xf
+        ///     The xf
         /// </summary>
         internal Transform m_xf; // the body origin transform
 
         // No public default constructor
         /// <summary>
-        /// Initializes a new instance of the <see cref="Body"/> class
+        ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
         private Body()
         {
@@ -166,7 +175,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         // private
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Body"/> class
+        ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
         /// <param name="bd">The bd</param>
         /// <param name="world">The world</param>
@@ -176,7 +185,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Body"/> class
+        ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
         /// <param name="bd">The bd</param>
         /// <param name="world">The world</param>
@@ -257,7 +266,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
 
 
         /// <summary>
-        /// Gets the value of the transform
+        ///     Gets the value of the transform
         /// </summary>
         public Transform Transform
         {
@@ -266,7 +275,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the value of the position
+        ///     Gets the value of the position
         /// </summary>
         public Vector2 Position
         {
@@ -275,7 +284,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets or sets the value of the user data
+        ///     Gets or sets the value of the user data
         /// </summary>
         public object UserData
         {
@@ -351,10 +360,13 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Destroys the fixture using the specified fixture
+        ///     Destroys the fixture using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        /// <exception cref="                    Box2DException">Cannot destroy fixtures in the middle of Step. Has this been spawned from an event such as a ContactListener callback?</exception>
+        /// <exception cref="                    Box2DException">
+        ///     Cannot destroy fixtures in the middle of Step. Has this been
+        ///     spawned from an event such as a ContactListener callback?
+        /// </exception>
         /// <exception cref="ArgumentException">Fixture does not belong to this Body. </exception>
         public void DestroyFixture(Fixture fixture)
         {
@@ -444,7 +456,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Sets the transform using the specified position
+        ///     Sets the transform using the specified position
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="angle">The angle</param>
@@ -475,42 +487,42 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the transform
+        ///     Gets the transform
         /// </summary>
         /// <returns>The transform</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Transform GetTransform() => m_xf;
 
         /// <summary>
-        /// Gets the position
+        ///     Gets the position
         /// </summary>
         /// <returns>The vector</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Vector2 GetPosition() => m_xf.p;
 
         /// <summary>
-        /// Gets the angle
+        ///     Gets the angle
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetAngle() => m_sweep.a;
 
         /// <summary>
-        /// Gets the world center
+        ///     Gets the world center
         /// </summary>
         /// <returns>The vector</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Vector2 GetWorldCenter() => m_sweep.c;
 
         /// <summary>
-        /// Gets the local center
+        ///     Gets the local center
         /// </summary>
         /// <returns>The vector</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Vector2 GetLocalCenter() => m_sweep.localCenter;
 
         /// <summary>
-        /// Sets the linear velocity using the specified v
+        ///     Sets the linear velocity using the specified v
         /// </summary>
         /// <param name="v">The </param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -530,14 +542,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the linear velocity
+        ///     Gets the linear velocity
         /// </summary>
         /// <returns>The vector</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Vector2 GetLinearVelocity() => m_linearVelocity;
 
         /// <summary>
-        /// Sets the angular velocity using the specified omega
+        ///     Sets the angular velocity using the specified omega
         /// </summary>
         /// <param name="omega">The omega</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -557,14 +569,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the angular velocity
+        ///     Gets the angular velocity
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetAngularVelocity() => m_angularVelocity;
 
         /// <summary>
-        /// Applies the force using the specified force
+        ///     Applies the force using the specified force
         /// </summary>
         /// <param name="force">The force</param>
         /// <param name="point">The point</param>
@@ -590,7 +602,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Applies the force to center using the specified force
+        ///     Applies the force to center using the specified force
         /// </summary>
         /// <param name="force">The force</param>
         /// <param name="wake">The wake</param>
@@ -614,7 +626,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Applies the torque using the specified torque
+        ///     Applies the torque using the specified torque
         /// </summary>
         /// <param name="torque">The torque</param>
         /// <param name="wake">The wake</param>
@@ -638,7 +650,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Applies the linear impulse using the specified impulse
+        ///     Applies the linear impulse using the specified impulse
         /// </summary>
         /// <param name="impulse">The impulse</param>
         /// <param name="point">The point</param>
@@ -664,7 +676,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Applies the linear impulse to center using the specified impulse
+        ///     Applies the linear impulse to center using the specified impulse
         /// </summary>
         /// <param name="impulse">The impulse</param>
         /// <param name="wake">The wake</param>
@@ -688,7 +700,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Applies the angular impulse using the specified impulse
+        ///     Applies the angular impulse using the specified impulse
         /// </summary>
         /// <param name="impulse">The impulse</param>
         /// <param name="wake">The wake</param>
@@ -712,21 +724,21 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the mass
+        ///     Gets the mass
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetMass() => m_mass;
 
         /// <summary>
-        /// Gets the inertia
+        ///     Gets the inertia
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetInertia() => m_I + m_mass * Vector2.Dot(m_sweep.localCenter, m_sweep.localCenter);
 
         /// <summary>
-        /// Gets the mass data using the specified data
+        ///     Gets the mass data using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         public void GetMassData(out MassData data)
@@ -737,7 +749,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Sets the mass data using the specified mass data
+        ///     Sets the mass data using the specified mass data
         /// </summary>
         /// <param name="massData">The mass data</param>
         public void SetMassData(in MassData massData)
@@ -782,7 +794,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Resets the mass data
+        ///     Resets the mass data
         /// </summary>
         public void ResetMassData()
         {
@@ -849,7 +861,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the world point using the specified local point
+        ///     Gets the world point using the specified local point
         /// </summary>
         /// <param name="localPoint">The local point</param>
         /// <returns>The vector</returns>
@@ -857,7 +869,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         public Vector2 GetWorldPoint(in Vector2 localPoint) => Math.Mul(m_xf, localPoint);
 
         /// <summary>
-        /// Gets the world vector using the specified local vector
+        ///     Gets the world vector using the specified local vector
         /// </summary>
         /// <param name="localVector">The local vector</param>
         /// <returns>The vector</returns>
@@ -866,7 +878,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
             Vector2.Transform(localVector, m_xf.q); //  Math.Mul(_xf.q, localVector);
 
         /// <summary>
-        /// Gets the local point using the specified world point
+        ///     Gets the local point using the specified world point
         /// </summary>
         /// <param name="worldPoint">The world point</param>
         /// <returns>The vector</returns>
@@ -874,7 +886,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         public Vector2 GetLocalPoint(in Vector2 worldPoint) => Math.MulT(m_xf, worldPoint);
 
         /// <summary>
-        /// Gets the local vector using the specified world vector
+        ///     Gets the local vector using the specified world vector
         /// </summary>
         /// <param name="worldVector">The world vector</param>
         /// <returns>The vector</returns>
@@ -882,7 +894,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         public Vector2 GetLocalVector(in Vector2 worldVector) => Math.MulT(m_xf.q, worldVector);
 
         /// <summary>
-        /// Gets the linear velocity from world point using the specified world point
+        ///     Gets the linear velocity from world point using the specified world point
         /// </summary>
         /// <param name="worldPoint">The world point</param>
         /// <returns>The vector</returns>
@@ -891,7 +903,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
             m_linearVelocity + Vectex.Cross(m_angularVelocity, worldPoint - m_sweep.c);
 
         /// <summary>
-        /// Gets the linear velocity from local point using the specified local point
+        ///     Gets the linear velocity from local point using the specified local point
         /// </summary>
         /// <param name="localPoint">The local point</param>
         /// <returns>The vector</returns>
@@ -900,14 +912,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
             GetLinearVelocityFromWorldPoint(GetWorldPoint(localPoint));
 
         /// <summary>
-        /// Gets the linear damping
+        ///     Gets the linear damping
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetLinearDamping() => m_linearDamping;
 
         /// <summary>
-        /// Sets the linear dampling using the specified linear damping
+        ///     Sets the linear dampling using the specified linear damping
         /// </summary>
         /// <param name="linearDamping">The linear damping</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -917,14 +929,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the angular damping
+        ///     Gets the angular damping
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetAngularDamping() => m_angularDamping;
 
         /// <summary>
-        /// Sets the angular damping using the specified angular damping
+        ///     Sets the angular damping using the specified angular damping
         /// </summary>
         /// <param name="angularDamping">The angular damping</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -934,14 +946,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the gravity scale
+        ///     Gets the gravity scale
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetGravityScale() => m_gravityScale;
 
         /// <summary>
-        /// Sets the gravity scale using the specified scale
+        ///     Sets the gravity scale using the specified scale
         /// </summary>
         /// <param name="scale">The scale</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -951,7 +963,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Sets the type using the specified type
+        ///     Sets the type using the specified type
         /// </summary>
         /// <param name="type">The type</param>
         public void SetType(BodyType type)
@@ -1010,14 +1022,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Types this instance
+        ///     Types this instance
         /// </summary>
         /// <returns>The body type</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public BodyType Type() => m_type;
 
         /// <summary>
-        /// Sets the flag using the specified flag
+        ///     Sets the flag using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1027,7 +1039,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Unsets the flag using the specified flag
+        ///     Unsets the flag using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1037,7 +1049,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Sets the bullet using the specified flag
+        ///     Sets the bullet using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1054,14 +1066,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Describes whether this instance is bullet
+        ///     Describes whether this instance is bullet
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsBullet() => HasFlag(BodyFlags.Bullet);
 
         /// <summary>
-        /// Sets the sleeping allowed using the specified flag
+        ///     Sets the sleeping allowed using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1079,14 +1091,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Describes whether this instance is sleeping allowed
+        ///     Describes whether this instance is sleeping allowed
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsSleepingAllowed() => HasFlag(BodyFlags.AutoSleep);
 
         /// <summary>
-        /// Sets the awake using the specified flag
+        ///     Sets the awake using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1114,14 +1126,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Describes whether this instance is awake
+        ///     Describes whether this instance is awake
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsAwake() => HasFlag(BodyFlags.Awake);
 
         /// <summary>
-        /// Sets the enabled using the specified flag
+        ///     Sets the enabled using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         public void SetEnabled(bool flag)
@@ -1172,14 +1184,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Describes whether this instance is enabled
+        ///     Describes whether this instance is enabled
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsEnabled() => HasFlag(BodyFlags.Enabled);
 
         /// <summary>
-        /// Sets the fixed rotation using the specified flag
+        ///     Sets the fixed rotation using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         public void SetFixedRotation(bool flag)
@@ -1204,42 +1216,42 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Describes whether this instance is fixed rotation
+        ///     Describes whether this instance is fixed rotation
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsFixedRotation() => HasFlag(BodyFlags.FixedRotation);
 
         /// <summary>
-        /// Gets the fixture list
+        ///     Gets the fixture list
         /// </summary>
         /// <returns>The fixture</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Fixture GetFixtureList() => m_fixtureList;
 
         /// <summary>
-        /// Gets the joint list
+        ///     Gets the joint list
         /// </summary>
         /// <returns>The joint edge</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public JointEdge GetJointList() => m_jointList;
 
         /// <summary>
-        /// Gets the contact list
+        ///     Gets the contact list
         /// </summary>
         /// <returns>The contact edge</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ContactEdge GetContactList() => m_contactList;
 
         /// <summary>
-        /// Gets the next
+        ///     Gets the next
         /// </summary>
         /// <returns>The body</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Body GetNext() => m_next;
 
         /// <summary>
-        /// Gets the user data
+        ///     Gets the user data
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
@@ -1247,7 +1259,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         public T GetUserData<T>() => (T) UserData;
 
         /// <summary>
-        /// Sets the user data using the specified data
+        ///     Sets the user data using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1257,14 +1269,14 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Gets the world
+        ///     Gets the world
         /// </summary>
         /// <returns>The world world</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public World.World GetWorld() => m_world;
 
         /// <summary>
-        /// Dumps this instance
+        ///     Dumps this instance
         /// </summary>
         public void Dump()
         {
@@ -1273,7 +1285,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
 
 
         /// <summary>
-        /// Synchronizes the fixtures
+        ///     Synchronizes the fixtures
         /// </summary>
         internal void SynchronizeFixtures()
         {
@@ -1301,7 +1313,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Synchronizes the transform
+        ///     Synchronizes the transform
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void SynchronizeTransform()
@@ -1311,7 +1323,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Describes whether this instance should collide
+        ///     Describes whether this instance should collide
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
@@ -1336,7 +1348,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Advances the alpha
+        ///     Advances the alpha
         /// </summary>
         /// <param name="alpha">The alpha</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1351,7 +1363,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         }
 
         /// <summary>
-        /// Describes whether this instance has flag
+        ///     Describes whether this instance has flag
         /// </summary>
         /// <param name="flag">The flag</param>
         /// <returns>The bool</returns>
@@ -1362,7 +1374,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         // This is used to prevent connected bodies from colliding.
         // It may lie, depending on the collideConnected flag.
         /// <summary>
-        /// Describes whether this instance is connected
+        ///     Describes whether this instance is connected
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>

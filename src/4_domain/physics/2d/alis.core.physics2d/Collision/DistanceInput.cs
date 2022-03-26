@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Common;
-
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Input for Distance.
@@ -39,23 +37,27 @@ namespace Alis.Core.Physics2D.Collision
     internal struct DistanceInput
     {
         /// <summary>
-        /// The transform
+        ///     The transform
         /// </summary>
         internal Transform transformA;
+
         /// <summary>
-        /// The transform
+        ///     The transform
         /// </summary>
         internal Transform transformB;
+
         /// <summary>
-        /// The use radii
+        ///     The use radii
         /// </summary>
         internal bool useRadii;
+
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         internal DistanceProxy proxyA;
+
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         internal DistanceProxy proxyB;
     }

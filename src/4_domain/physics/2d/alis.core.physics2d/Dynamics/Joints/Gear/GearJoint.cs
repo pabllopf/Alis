@@ -49,13 +49,12 @@
 
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Joints.Prismatic;
-using Alis.Core.Physics2D.Dynamics.Joints.Revolute;
-using Alis.Core.Physics2D.Dynamics.World;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Joints.Prismatic;
+using Alis.Core.Physics2D.Joints.Revolute;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
+namespace Alis.Core.Physics2D.Joints.Gear
 {
     /// <summary>
     ///     A gear joint is used to connect two joints together. Either joint
@@ -71,156 +70,192 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
     public class GearJoint : Joint
     {
         /// <summary>
-        /// The bodyc
+        ///     The bodyc
         /// </summary>
         private readonly Body m_bodyC;
+
         /// <summary>
-        /// The bodyd
+        ///     The bodyd
         /// </summary>
         private readonly Body m_bodyD;
+
         /// <summary>
-        /// The constant
+        ///     The constant
         /// </summary>
         private readonly float m_constant;
+
         /// <summary>
-        /// The joint1
+        ///     The joint1
         /// </summary>
         private readonly Joint m_joint1;
+
         /// <summary>
-        /// The joint2
+        ///     The joint2
         /// </summary>
         private readonly Joint m_joint2;
+
         /// <summary>
-        /// The localanchora
+        ///     The localanchora
         /// </summary>
         private readonly Vector2 m_localAnchorA;
+
         /// <summary>
-        /// The localanchorb
+        ///     The localanchorb
         /// </summary>
         private readonly Vector2 m_localAnchorB;
+
         /// <summary>
-        /// The localanchorc
+        ///     The localanchorc
         /// </summary>
         private readonly Vector2 m_localAnchorC;
+
         /// <summary>
-        /// The localanchord
+        ///     The localanchord
         /// </summary>
         private readonly Vector2 m_localAnchorD;
+
         /// <summary>
-        /// The localaxisc
+        ///     The localaxisc
         /// </summary>
         private readonly Vector2 m_localAxisC;
+
         /// <summary>
-        /// The localaxisd
+        ///     The localaxisd
         /// </summary>
         private readonly Vector2 m_localAxisD;
+
         /// <summary>
-        /// The referenceanglea
+        ///     The referenceanglea
         /// </summary>
         private readonly float m_referenceAngleA;
+
         /// <summary>
-        /// The referenceangleb
+        ///     The referenceangleb
         /// </summary>
         private readonly float m_referenceAngleB;
+
         /// <summary>
-        /// The ia
+        ///     The ia
         /// </summary>
         private float m_iA;
+
         /// <summary>
-        /// The ib
+        ///     The ib
         /// </summary>
         private float m_iB;
+
         /// <summary>
-        /// The ic
+        ///     The ic
         /// </summary>
         private float m_iC;
+
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         private float m_iD;
+
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float m_impulse;
+
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private int m_indexB;
+
         /// <summary>
-        /// The indexc
+        ///     The indexc
         /// </summary>
         private int m_indexC;
+
         /// <summary>
-        /// The indexd
+        ///     The indexd
         /// </summary>
         private int m_indexD;
+
         /// <summary>
-        /// The jvac
+        ///     The jvac
         /// </summary>
         private Vector2 m_jvAc;
+
         /// <summary>
-        /// The jvbd
+        ///     The jvbd
         /// </summary>
         private Vector2 m_jvBd;
+
         /// <summary>
-        /// The jwa
+        ///     The jwa
         /// </summary>
         private float m_jwA;
+
         /// <summary>
-        /// The jwb
+        ///     The jwb
         /// </summary>
         private float m_jwB;
+
         /// <summary>
-        /// The jwc
+        ///     The jwc
         /// </summary>
         private float m_jwC;
+
         /// <summary>
-        /// The jwd
+        ///     The jwd
         /// </summary>
         private float m_jwD;
+
         /// <summary>
-        /// The lca
+        ///     The lca
         /// </summary>
         private Vector2 m_lcA;
+
         /// <summary>
-        /// The lcb
+        ///     The lcb
         /// </summary>
         private Vector2 m_lcB;
+
         /// <summary>
-        /// The lcc
+        ///     The lcc
         /// </summary>
         private Vector2 m_lcC;
+
         /// <summary>
-        /// The lcd
+        ///     The lcd
         /// </summary>
         private Vector2 m_lcD;
+
         /// <summary>
-        /// The ma
+        ///     The ma
         /// </summary>
         private float m_mA;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float m_mass;
+
         /// <summary>
-        /// The mb
+        ///     The mb
         /// </summary>
         private float m_mB;
+
         /// <summary>
-        /// The mc
+        ///     The mc
         /// </summary>
         private float m_mC;
+
         /// <summary>
-        /// The md
+        ///     The md
         /// </summary>
         private float m_mD;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GearJoint"/> class
+        ///     Initializes a new instance of the <see cref="GearJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public GearJoint(GearJointDef def)
@@ -306,11 +341,12 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
         }
 
         /// <summary>
-        /// Gets the value of the get anchor a
+        ///     Gets the value of the get anchor a
         /// </summary>
         public override Vector2 GetAnchorA => m_bodyA.GetWorldPoint(m_localAnchorA);
+
         /// <summary>
-        /// Gets the value of the get anchor b
+        ///     Gets the value of the get anchor b
         /// </summary>
         public override Vector2 GetAnchorB => m_bodyB.GetWorldPoint(m_localAnchorB);
 
@@ -324,7 +360,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
         }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
@@ -332,7 +368,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
         public override Vector2 GetReactionForce(float invDt) => m_impulse * m_jvAc;
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
@@ -340,7 +376,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
         public override float GetReactionTorque(float invDt) => invDt * m_impulse * m_jwA;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(in SolverData data)
@@ -448,7 +484,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(in SolverData data)
@@ -488,7 +524,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Gear
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

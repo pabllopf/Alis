@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using SFML.Graphics;
+using Alis.Core.Graphics2D.Graphics;
 
 namespace Alis.Core.Components
 {

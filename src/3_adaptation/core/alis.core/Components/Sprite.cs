@@ -29,9 +29,9 @@
 
 using System;
 using System.Numerics;
+using Alis.Core.Graphics2D.Graphics;
+using Alis.Core.Graphics2D.Systems;
 using Alis.Core.Managers;
-using SFML.Graphics;
-using SFML.System;
 using Transform = Alis.Core.Entities.Transform;
 
 namespace Alis.Core.Components
@@ -50,7 +50,7 @@ namespace Alis.Core.Components
         /// <summary>
         ///     The sprite
         /// </summary>
-        private readonly SFML.Graphics.Sprite sprite;
+        private readonly Graphics2D.Graphics.Sprite sprite;
 
         /// <summary>
         ///     The texture path
@@ -69,7 +69,7 @@ namespace Alis.Core.Components
         {
             texturePath = "";
             transform = new Transform();
-            sprite = new SFML.Graphics.Sprite();
+            sprite = new Graphics2D.Graphics.Sprite();
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Alis.Core.Components
 
             transform = new Transform();
 
-            sprite = new SFML.Graphics.Sprite(new Texture(texturePath));
+            sprite = new Graphics2D.Graphics.Sprite(new Texture(texturePath));
             Size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
             Console.WriteLine(@$"witdh ={Size.X} | height={Size.Y}");
         }
@@ -99,7 +99,7 @@ namespace Alis.Core.Components
 
             transform = new Transform();
 
-            sprite = new SFML.Graphics.Sprite(new Texture(texturePath));
+            sprite = new Graphics2D.Graphics.Sprite(new Texture(texturePath));
             Size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
             Console.WriteLine(@$"witdh ={Size.X} | height={Size.Y}");
         }
@@ -135,7 +135,7 @@ namespace Alis.Core.Components
         public int Depth { get; set; } = 0;
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
@@ -163,14 +163,14 @@ namespace Alis.Core.Components
         }
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public override void Stop()
         {
         }
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public override void Exit()
         {

@@ -29,40 +29,46 @@
 
 using System;
 
-namespace Alis.Core.Physics2D.Dynamics.Bodies
+namespace Alis.Core.Physics2D.Bodies
 {
     /// <summary>
-    /// The body flags enum
+    ///     The body flags enum
     /// </summary>
     [Flags]
     public enum BodyFlags
     {
         /// <summary>
-        /// The island body flags
+        ///     The island body flags
         /// </summary>
         Island = 0x01,
+
         /// <summary>
-        /// The awake body flags
+        ///     The awake body flags
         /// </summary>
         Awake = 0x02,
+
         /// <summary>
-        /// The auto sleep body flags
+        ///     The auto sleep body flags
         /// </summary>
         AutoSleep = 0x04,
+
         /// <summary>
-        /// The bullet body flags
+        ///     The bullet body flags
         /// </summary>
         Bullet = 0x08,
+
         /// <summary>
-        /// The fixed rotation body flags
+        ///     The fixed rotation body flags
         /// </summary>
         FixedRotation = 0x10,
+
         /// <summary>
-        /// The enabled body flags
+        ///     The enabled body flags
         /// </summary>
         Enabled = 0x20,
+
         /// <summary>
-        /// The toi body flags
+        ///     The toi body flags
         /// </summary>
         TOI = 0x40
     }

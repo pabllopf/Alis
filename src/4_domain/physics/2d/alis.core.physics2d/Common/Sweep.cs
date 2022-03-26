@@ -31,27 +31,30 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The sweep
+    ///     The sweep
     /// </summary>
     public struct Sweep
     {
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         public Vector2 localCenter; //local center of mass position
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Vector2 c0, c; //local center of mass position
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float a0, a; //world angles
+
         /// <summary>
-        /// The alpha
+        ///     The alpha
         /// </summary>
         public float alpha0;
 
@@ -82,7 +85,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Normalizes this instance
+        ///     Normalizes this instance
         /// </summary>
         public void Normalize()
         {

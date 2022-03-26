@@ -27,23 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The manifold type enum
+    ///     The manifold type enum
     /// </summary>
     public enum ManifoldType
     {
         /// <summary>
-        /// The circles manifold type
+        ///     The circles manifold type
         /// </summary>
         Circles,
+
         /// <summary>
-        /// The face manifold type
+        ///     The face manifold type
         /// </summary>
         FaceA,
+
         /// <summary>
-        /// The face manifold type
+        ///     The face manifold type
         /// </summary>
         FaceB
     }

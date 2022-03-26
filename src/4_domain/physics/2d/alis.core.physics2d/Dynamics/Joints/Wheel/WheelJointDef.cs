@@ -29,78 +29,85 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
+namespace Alis.Core.Physics2D.Joints.Wheel
 {
     /// <summary>
-    /// The wheel joint def class
+    ///     The wheel joint def class
     /// </summary>
-    /// <seealso cref="JointDef"/>
+    /// <seealso cref="JointDef" />
     public class WheelJointDef : JointDef
     {
         /// <summary>
-        /// The damping
+        ///     The damping
         /// </summary>
         public float damping;
 
         /// <summary>
-        /// The damping ratio
+        ///     The damping ratio
         /// </summary>
         [Obsolete("Use stiffness and damping instead of frequencyHz and dampingRatio")]
         public float? dampingRatio;
 
         /// <summary>
-        /// The enable limit
+        ///     The enable limit
         /// </summary>
         public bool enableLimit;
+
         /// <summary>
-        /// The enable motor
+        ///     The enable motor
         /// </summary>
         public bool enableMotor;
 
         /// <summary>
-        /// The frequency hz
+        ///     The frequency hz
         /// </summary>
         [Obsolete("Use stiffness and damping instead of frequencyHz and dampingRatio")]
         public float? frequencyHz;
 
         /// <summary>
-        /// The local anchor
+        ///     The local anchor
         /// </summary>
         public Vector2 localAnchorA;
+
         /// <summary>
-        /// The local anchor
+        ///     The local anchor
         /// </summary>
         public Vector2 localAnchorB;
+
         /// <summary>
-        /// The local axis
+        ///     The local axis
         /// </summary>
         public Vector2 localAxisA;
+
         /// <summary>
-        /// The lower translation
+        ///     The lower translation
         /// </summary>
         public float lowerTranslation;
+
         /// <summary>
-        /// The max motor torque
+        ///     The max motor torque
         /// </summary>
         public float maxMotorTorque;
+
         /// <summary>
-        /// The motor speed
+        ///     The motor speed
         /// </summary>
         public float motorSpeed;
 
         /// <summary>
-        /// The stiffness
+        ///     The stiffness
         /// </summary>
         public float stiffness;
+
         /// <summary>
-        /// The upper translation
+        ///     The upper translation
         /// </summary>
         public float upperTranslation;
 
         /// <summary>
-        /// Initializes the b a
+        ///     Initializes the b a
         /// </summary>
         /// <param name="bA">The </param>
         /// <param name="bB">The </param>

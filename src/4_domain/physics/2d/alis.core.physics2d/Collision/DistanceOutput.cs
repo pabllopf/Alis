@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Output for Distance.
@@ -47,7 +47,7 @@ namespace Alis.Core.Physics2D.Collision
         public Vector2 pointB;
 
         /// <summary>
-        /// The distance
+        ///     The distance
         /// </summary>
         public float distance;
 

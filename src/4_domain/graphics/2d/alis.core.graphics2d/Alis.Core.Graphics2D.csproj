@@ -6,14 +6,14 @@
     <Import Project="$(SolutionDir)/0_config/licence.props"/>
     <Import Project="$(SolutionDir)/0_config/nuget.props"/>
 
-
     <ItemGroup>
-        <PackageReference Include="SFML.Audio" Version="2.5.0"/>
-        <PackageReference Include="SFML.Graphics" Version="2.5.0"/>
-        <PackageReference Include="SFML.Net" Version="2.5.0"/>
-        <PackageReference Include="SFML.System" Version="2.5.0"/>
-        <PackageReference Include="SFML.Window" Version="2.5.0"/>
+        <PackageReference Include="CSFML"/>
     </ItemGroup>
 
+    <PropertyGroup>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <IncludeSymbols>true</IncludeSymbols>
+    </PropertyGroup>
 
 </Project>

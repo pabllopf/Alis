@@ -28,74 +28,86 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The contact position constraint class
+    ///     The contact position constraint class
     /// </summary>
     internal class ContactPositionConstraint
     {
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         internal int indexA;
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         internal int indexB;
+
         /// <summary>
-        /// The inv ia
+        ///     The inv ia
         /// </summary>
         internal float invIA;
+
         /// <summary>
-        /// The inv ib
+        ///     The inv ib
         /// </summary>
         internal float invIB;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         internal float invMassA;
+
         /// <summary>
-        /// The inv mass
+        ///     The inv mass
         /// </summary>
         internal float invMassB;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         internal Vector2 localCenterA;
+
         /// <summary>
-        /// The local center
+        ///     The local center
         /// </summary>
         internal Vector2 localCenterB;
+
         /// <summary>
-        /// The local normal
+        ///     The local normal
         /// </summary>
         internal Vector2 localNormal;
+
         /// <summary>
-        /// The local point
+        ///     The local point
         /// </summary>
         internal Vector2 localPoint;
+
         /// <summary>
-        /// The max manifold points
+        ///     The max manifold points
         /// </summary>
         internal Vector2[] localPoints = new Vector2[Settings.MaxManifoldPoints];
+
         /// <summary>
-        /// The point count
+        ///     The point count
         /// </summary>
         internal int pointCount;
+
         /// <summary>
-        /// The radius
+        ///     The radius
         /// </summary>
         internal float radiusA;
+
         /// <summary>
-        /// The radius
+        ///     The radius
         /// </summary>
         internal float radiusB;
+
         /// <summary>
-        /// The type
+        ///     The type
         /// </summary>
         internal ManifoldType type;
     }

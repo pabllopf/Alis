@@ -33,7 +33,7 @@ using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Components;
 using Alis.Core.Managers;
-using Alis.Core.Physics2D.Dynamics.World;
+using Alis.Core.Physics2D.World;
 
 namespace Alis.Core.Systems
 {

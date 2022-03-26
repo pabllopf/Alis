@@ -31,7 +31,7 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     A transform contains translation and rotation.
@@ -96,7 +96,7 @@ namespace Alis.Core.Physics2D.Common
             MathF.Atan2(q.M21, q.M11);
 
         /// <summary>
-        /// Gets the value of the identity
+        ///     Gets the value of the identity
         /// </summary>
         public static Transform Identity
         {

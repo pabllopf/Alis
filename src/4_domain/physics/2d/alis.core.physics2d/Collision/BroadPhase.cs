@@ -53,53 +53,60 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The broad phase class
+    ///     The broad phase class
     /// </summary>
     internal class BroadPhase
     {
         /// <summary>
-        /// The tree
+        ///     The tree
         /// </summary>
         private readonly DynamicTree m_tree;
+
         /// <summary>
-        /// The movebuffer
+        ///     The movebuffer
         /// </summary>
         private int[] m_moveBuffer;
+
         /// <summary>
-        /// The movecapacity
+        ///     The movecapacity
         /// </summary>
         private int m_moveCapacity;
+
         /// <summary>
-        /// The movecount
+        ///     The movecount
         /// </summary>
         private int m_moveCount;
+
         /// <summary>
-        /// The pairbuffer
+        ///     The pairbuffer
         /// </summary>
         private Pair[] m_pairBuffer;
+
         /// <summary>
-        /// The paircapacity
+        ///     The paircapacity
         /// </summary>
         private int m_pairCapacity;
+
         /// <summary>
-        /// The paircount
+        ///     The paircount
         /// </summary>
         private int m_pairCount;
 
         /// <summary>
-        /// The proxycount
+        ///     The proxycount
         /// </summary>
         private int m_proxyCount;
+
         /// <summary>
-        /// The queryproxyid
+        ///     The queryproxyid
         /// </summary>
         private int m_queryProxyId;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BroadPhase"/> class
+        ///     Initializes a new instance of the <see cref="BroadPhase" /> class
         /// </summary>
         public BroadPhase()
         {
@@ -117,7 +124,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the user data using the specified proxy id
+        ///     Gets the user data using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The object</returns>
@@ -125,7 +132,7 @@ namespace Alis.Core.Physics2D.Collision
         internal object GetUserData(int proxyId) => m_tree.GetUserData(proxyId);
 
         /// <summary>
-        /// Describes whether this instance test overlap
+        ///     Describes whether this instance test overlap
         /// </summary>
         /// <param name="proxyIdA">The proxy id</param>
         /// <param name="proxyIdB">The proxy id</param>
@@ -139,7 +146,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the fat aabb using the specified proxy id
+        ///     Gets the fat aabb using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The aabb</returns>
@@ -147,21 +154,21 @@ namespace Alis.Core.Physics2D.Collision
         public AABB GetFatAABB(int proxyId) => m_tree.GetFatAABB(proxyId);
 
         /// <summary>
-        /// Gets the proxy count
+        ///     Gets the proxy count
         /// </summary>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetProxyCount() => m_proxyCount;
 
         /// <summary>
-        /// Gets the tree height
+        ///     Gets the tree height
         /// </summary>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetTreeHeight() => m_tree.Height;
 
         /// <summary>
-        /// Updates the pairs using the specified add pair
+        ///     Updates the pairs using the specified add pair
         /// </summary>
         /// <param name="AddPair">The add pair</param>
         public void UpdatePairs(Action<object, object> AddPair)
@@ -204,7 +211,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Queries the query callback
+        ///     Queries the query callback
         /// </summary>
         /// <param name="queryCallback">The query callback</param>
         /// <param name="aabb">The aabb</param>
@@ -215,7 +222,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Rays the cast using the specified ray cast callback
+        ///     Rays the cast using the specified ray cast callback
         /// </summary>
         /// <param name="RayCastCallback">The ray cast callback</param>
         /// <param name="input">The input</param>
@@ -226,7 +233,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Shifts the origin using the specified new origin
+        ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -236,7 +243,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Creates the proxy using the specified aabb
+        ///     Creates the proxy using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="userData">The user data</param>
@@ -250,7 +257,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Destroys the proxy using the specified proxy id
+        ///     Destroys the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         public void DestroyProxy(int proxyId)
@@ -263,7 +270,7 @@ namespace Alis.Core.Physics2D.Collision
         // Call MoveProxy as many times as you like, then when you are done
         // call Commit to finalize the proxy pairs (for your time step).
         /// <summary>
-        /// Moves the proxy using the specified proxy id
+        ///     Moves the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
@@ -278,7 +285,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Touches the proxy using the specified proxy id
+        ///     Touches the proxy using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         internal void TouchProxy(int proxyId)
@@ -288,7 +295,7 @@ namespace Alis.Core.Physics2D.Collision
 
 
         /// <summary>
-        /// Buffers the move using the specified proxy id
+        ///     Buffers the move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         private void BufferMove(int proxyId)
@@ -306,7 +313,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Uns the buffer move using the specified proxy id
+        ///     Uns the buffer move using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         private void UnBufferMove(int proxyId)
@@ -321,7 +328,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Describes whether this instance query callback
+        ///     Describes whether this instance query callback
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The bool</returns>
@@ -349,8 +356,8 @@ namespace Alis.Core.Physics2D.Collision
                 Array.Copy(oldBuffer, m_pairBuffer, m_pairCount);
             }
 
-            m_pairBuffer[m_pairCount].proxyIdA = Math.Min(proxyId, m_queryProxyId);
-            m_pairBuffer[m_pairCount].proxyIdB = Math.Max(proxyId, m_queryProxyId);
+            m_pairBuffer[m_pairCount].proxyIdA = System.Math.Min(proxyId, m_queryProxyId);
+            m_pairBuffer[m_pairCount].proxyIdB = System.Math.Max(proxyId, m_queryProxyId);
             ++m_pairCount;
 
             return true;

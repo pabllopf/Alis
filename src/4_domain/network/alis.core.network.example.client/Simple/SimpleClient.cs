@@ -33,7 +33,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Alis.Core.Network.Example.Client.Simple
+namespace Alis.Core.Network.Exceptions.Example.Client.Simple
 {
     /// <summary>
     ///     The simple client class

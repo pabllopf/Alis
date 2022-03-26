@@ -3,13 +3,8 @@
     <Import Project="$(SolutionDir)/0_config/general.props"/>
     <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
     <Import Project="$(SolutionDir)/0_config/licence.props"/>
+    <Import Project="$(SolutionDir)/0_config/benchmark.props"/>
+    <Import Project="$(SolutionDir)/0_config/input.props"/>
 
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
-    </ItemGroup>
 
 </Project>

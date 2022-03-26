@@ -81,7 +81,7 @@ namespace Alis.Core.Audio2D.Native
         /// <returns>The int ptr</returns>
         private static IntPtr ImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {
-            if (libraryName == AL.AL.Lib || libraryName == ALC.ALC.Lib)
+            if (libraryName == AL.Lib || libraryName == ALC.Lib)
             {
                 string libName = ALLibraryNameContainer.GetLibraryName();
 

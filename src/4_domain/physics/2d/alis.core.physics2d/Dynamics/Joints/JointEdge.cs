@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints
+namespace Alis.Core.Physics2D.Joints
 {
     /// <summary>
     ///     A joint edge is used to connect bodies and joints together

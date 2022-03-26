@@ -28,35 +28,38 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Friction
+namespace Alis.Core.Physics2D.Joints.Friction
 {
     /// <summary>
-    /// The friction joint def class
+    ///     The friction joint def class
     /// </summary>
-    /// <seealso cref="JointDef"/>
+    /// <seealso cref="JointDef" />
     public class FrictionJointDef : JointDef
     {
         /// <summary>
-        /// The local anchor
+        ///     The local anchor
         /// </summary>
         public Vector2 localAnchorA;
+
         /// <summary>
-        /// The local anchor
+        ///     The local anchor
         /// </summary>
         public Vector2 localAnchorB;
+
         /// <summary>
-        /// The max force
+        ///     The max force
         /// </summary>
         public float maxForce;
+
         /// <summary>
-        /// The max torque
+        ///     The max torque
         /// </summary>
         public float maxTorque;
 
         /// <summary>
-        /// Initializes the b a
+        ///     Initializes the b a
         /// </summary>
         /// <param name="bA">The </param>
         /// <param name="bB">The </param>

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
     ///     Color for debug drawing. Each value has the range [0,1].
@@ -35,12 +35,12 @@ namespace Alis.Core.Physics2D.Dynamics.World
     public struct Color
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float R, G, B, A;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Color"/> class
+        ///     Initializes a new instance of the <see cref="Color" /> class
         /// </summary>
         /// <param name="r">The </param>
         /// <param name="g">The </param>
@@ -55,7 +55,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Sets the r
+        ///     Sets the r
         /// </summary>
         /// <param name="r">The </param>
         /// <param name="g">The </param>

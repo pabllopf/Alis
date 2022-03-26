@@ -37,12 +37,12 @@ namespace PingPong
     internal class BallController : Component
     {
         /// <summary>
-        /// The box collider
+        ///     The box collider
         /// </summary>
         private BoxCollider2D boxCollider2D;
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -55,7 +55,7 @@ namespace PingPong
         }
 
         /// <summary>
-        /// Ons the press key using the specified sender
+        ///     Ons the press key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="key">The key</param>
@@ -85,7 +85,7 @@ namespace PingPong
         }
 
         /// <summary>
-        /// Ons the release key using the specified sender
+        ///     Ons the release key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="key">The key</param>
@@ -94,7 +94,7 @@ namespace PingPong
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

@@ -31,7 +31,7 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Matrix extension methods
@@ -52,7 +52,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Creates the rotation using the specified angle
+        ///     Creates the rotation using the specified angle
         /// </summary>
         /// <param name="angle">The angle</param>
         /// <returns>The result</returns>
@@ -71,7 +71,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Inverts the matrix
+        ///     Inverts the matrix
         /// </summary>
         /// <param name="matrix">The matrix</param>
         /// <param name="result">The result</param>

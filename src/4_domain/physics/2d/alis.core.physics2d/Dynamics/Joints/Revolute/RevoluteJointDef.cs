@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
+namespace Alis.Core.Physics2D.Joints.Revolute
 {
     /// <summary>
     ///     Revolute joint definition. This requires defining an

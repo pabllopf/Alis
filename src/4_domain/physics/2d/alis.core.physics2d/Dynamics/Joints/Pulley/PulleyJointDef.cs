@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Pulley
+namespace Alis.Core.Physics2D.Joints.Pulley
 {
     /// <summary>
     ///     Pulley joint definition. This requires two ground anchors,
@@ -85,7 +85,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Pulley
         public float Ratio;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PulleyJointDef"/> class
+        ///     Initializes a new instance of the <see cref="PulleyJointDef" /> class
         /// </summary>
         public PulleyJointDef()
         {

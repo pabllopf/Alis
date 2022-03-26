@@ -29,7 +29,7 @@
 
 using System.Numerics;
 using Alis.Core;
-using Alis.Core.Settings.Configurations;
+using Alis.Core.Configurations;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 

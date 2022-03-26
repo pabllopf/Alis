@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
+using Alis.Core.Graphics2D.Graphics;
+using Alis.Core.Graphics2D.Systems;
 using Alis.Core.Managers;
-using SFML.Graphics;
-using SFML.System;
 
 namespace Alis.Core.Components
 {

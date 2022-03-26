@@ -27,21 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The chain and circle contact class
+    ///     The chain and circle contact class
     /// </summary>
-    /// <seealso cref="EdgeAndCircleContact"/>
+    /// <seealso cref="EdgeAndCircleContact" />
     internal class ChainAndCircleContact : EdgeAndCircleContact
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainAndCircleContact"/> class
+        ///     Initializes a new instance of the <see cref="ChainAndCircleContact" /> class
         /// </summary>
         /// <param name="fA">The </param>
         /// <param name="indexA">The index</param>
@@ -53,7 +51,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Evaluates the manifold
+        ///     Evaluates the manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="xfA">The xf</param>

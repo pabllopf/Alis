@@ -60,7 +60,7 @@ namespace Alis.Core.Audio2D.Native
         /// <returns>The created delegate.</returns>
         protected internal static TDelegate LoadDelegate<TDelegate>(string name) where TDelegate : Delegate
         {
-            IntPtr ptr = AL.AL.GetProcAddress(name);
+            IntPtr ptr = AL.GetProcAddress(name);
             if (ptr == IntPtr.Zero)
             {
                 // If we can't load the function for whatever reason we dynamically generate a delegate to

@@ -66,7 +66,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// </summary>
         /// <param name="device">The device to query.</param>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent(ALDevice device) => ALC.ALC.IsExtensionPresent(device, ExtensionName);
+        public static bool IsExtensionPresent(ALDevice device) => ALC.IsExtensionPresent(device, ExtensionName);
 
         /// <summary>
         ///     Gets the integer using the specified device
@@ -159,7 +159,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get integer ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetIntegerPtrDelegate(ALDevice device, GetInteger64 param, int size, long* values);
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get integer ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetIntegerRefDelegate(ALDevice device, GetInteger64 param, int size, ref long values);
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get integer array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetIntegerArrayDelegate(ALDevice device, GetInteger64 param, int size, long[] values);
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get sourcei 64v ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSourcei64vPtrDelegate(int source, SourceInteger64 param, long* values);
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get sourcei 64v ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcei64vRefDelegate(int source, SourceInteger64 param, ref long values);
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get sourcei 64v array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcei64vArrayDelegate(int source, SourceInteger64 param, long[] values);
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get sourcedv ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSourcedvPtrDelegate(int source, SourceDouble param, double* values);
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get sourcedv ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcedvRefDelegate(int source, SourceDouble param, ref double values);
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <summary>
         ///     The get sourcedv array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcedvArrayDelegate(int source, SourceDouble param, double[] values);
 
         /// <summary>

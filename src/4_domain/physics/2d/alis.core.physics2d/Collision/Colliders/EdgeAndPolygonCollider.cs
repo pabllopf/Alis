@@ -30,20 +30,18 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Math = Alis.Core.Physics2D.Common.Math;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Collision.Colliders
+namespace Alis.Core.Physics2D.Colliders
 {
     /// <summary>
-    /// The edge and polygon collider class
+    ///     The edge and polygon collider class
     /// </summary>
-    /// <seealso cref="Collider{EdgeShape, PolygonShape}"/>
+    /// <seealso cref="Collider{EdgeShape, PolygonShape}" />
     internal class EdgeAndPolygonCollider : Collider<EdgeShape, PolygonShape>
     {
         /// <summary>
-        /// Collides the manifold
+        ///     Collides the manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="edgeA">The edge</param>
@@ -439,7 +437,7 @@ namespace Alis.Core.Physics2D.Collision.Colliders
         }
 
         /// <summary>
-        /// Computes the edge separation using the specified front
+        ///     Computes the edge separation using the specified front
         /// </summary>
         /// <param name="front">The front</param>
         /// <param name="polygonB">The polygon</param>
@@ -467,7 +465,7 @@ namespace Alis.Core.Physics2D.Collision.Colliders
         }
 
         /// <summary>
-        /// Computes the polygon separation using the specified normal
+        ///     Computes the polygon separation using the specified normal
         /// </summary>
         /// <param name="normal">The normal</param>
         /// <param name="polygonB">The polygon</param>
@@ -531,106 +529,116 @@ namespace Alis.Core.Physics2D.Collision.Colliders
         }
 
         /// <summary>
-        /// The temp polygon class
+        ///     The temp polygon class
         /// </summary>
         private class TempPolygon
         {
             /// <summary>
-            /// The max polygon vertices
+            ///     The max polygon vertices
             /// </summary>
             internal readonly Vector2[] normals = new Vector2[Settings.MaxPolygonVertices];
+
             /// <summary>
-            /// The max polygon vertices
+            ///     The max polygon vertices
             /// </summary>
             internal readonly Vector2[] vertices = new Vector2[Settings.MaxPolygonVertices];
+
             /// <summary>
-            /// The count
+            ///     The count
             /// </summary>
             internal int count;
         }
 
         // This structure is used to keep track of the best separating axis.
         /// <summary>
-        /// The ep axis
+        ///     The ep axis
         /// </summary>
         private struct EPAxis
         {
             /// <summary>
-            /// The axis type enum
+            ///     The axis type enum
             /// </summary>
             internal enum AxisType
             {
                 /// <summary>
-                /// The unknown axis type
+                ///     The unknown axis type
                 /// </summary>
                 Unknown,
+
                 /// <summary>
-                /// The edge axis type
+                ///     The edge axis type
                 /// </summary>
                 EdgeA,
+
                 /// <summary>
-                /// The edge axis type
+                ///     The edge axis type
                 /// </summary>
                 EdgeB
             }
 
             /// <summary>
-            /// The type
+            ///     The type
             /// </summary>
             internal AxisType type;
+
             /// <summary>
-            /// The index
+            ///     The index
             /// </summary>
             internal int index;
+
             /// <summary>
-            /// The separation
+            ///     The separation
             /// </summary>
             internal float separation;
         }
 
         /// <summary>
-        /// The reference face
+        ///     The reference face
         /// </summary>
         private struct ReferenceFace
         {
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             internal int i1;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             internal int i2;
 
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             internal Vector2 v1;
+
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             internal Vector2 v2;
 
             /// <summary>
-            /// The normal
+            ///     The normal
             /// </summary>
             internal Vector2 normal;
 
             /// <summary>
-            /// The side normal
+            ///     The side normal
             /// </summary>
             internal Vector2 sideNormal1;
+
             /// <summary>
-            /// The side offset
+            ///     The side offset
             /// </summary>
             internal float sideOffset1;
 
             /// <summary>
-            /// The side normal
+            ///     The side normal
             /// </summary>
             internal Vector2 sideNormal2;
+
             /// <summary>
-            /// The side offset
+            ///     The side offset
             /// </summary>
             internal float sideOffset2;
         }

@@ -29,9 +29,8 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Dynamics.World.Callbacks
+namespace Alis.Core.Physics2D.World.Callbacks
 {
     /// <summary>
     ///     Implement and register this class with a b2World to provide debug drawing of physics
@@ -40,17 +39,17 @@ namespace Alis.Core.Physics2D.Dynamics.World.Callbacks
     public abstract class DebugDraw
     {
         /// <summary>
-        /// The draw flags
+        ///     The draw flags
         /// </summary>
         protected DrawFlags _drawFlags;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DebugDraw"/> class
+        ///     Initializes a new instance of the <see cref="DebugDraw" /> class
         /// </summary>
         public DebugDraw() => _drawFlags = 0;
 
         /// <summary>
-        /// Gets or sets the value of the flags
+        ///     Gets or sets the value of the flags
         /// </summary>
         public DrawFlags Flags
         {
@@ -81,7 +80,7 @@ namespace Alis.Core.Physics2D.Dynamics.World.Callbacks
         public abstract void DrawTransform(in Transform xf);
 
         /// <summary>
-        /// Draws the point using the specified position
+        ///     Draws the point using the specified position
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="size">The size</param>

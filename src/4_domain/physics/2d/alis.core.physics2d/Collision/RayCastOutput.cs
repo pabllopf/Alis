@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Ray-cast output data.
@@ -37,11 +37,12 @@ namespace Alis.Core.Physics2D.Collision
     public struct RayCastOutput
     {
         /// <summary>
-        /// The normal
+        ///     The normal
         /// </summary>
         public Vector2 normal;
+
         /// <summary>
-        /// The fraction
+        ///     The fraction
         /// </summary>
         public float fraction;
     }

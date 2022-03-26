@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Dynamics.Fixtures;
+using Alis.Core.Physics2D.Fixtures;
 
-namespace Alis.Core.Physics2D.Dynamics.World.Callbacks
+namespace Alis.Core.Physics2D.World.Callbacks
 {
     /// <summary>
     ///     Implement this class to provide collision filtering. In other words, you can implement

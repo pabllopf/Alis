@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Collision.Shapes
+namespace Alis.Core.Physics2D.Shapes
 {
     /// <summary>
     ///     Returns code from TestSegment
@@ -35,15 +35,17 @@ namespace Alis.Core.Physics2D.Collision.Shapes
     public enum SegmentCollide
     {
         /// <summary>
-        /// The start inside collide segment collide
+        ///     The start inside collide segment collide
         /// </summary>
         StartInsideCollide = -1,
+
         /// <summary>
-        /// The miss collide segment collide
+        ///     The miss collide segment collide
         /// </summary>
         MissCollide = 0,
+
         /// <summary>
-        /// The hit collide segment collide
+        ///     The hit collide segment collide
         /// </summary>
         HitCollide = 1
     }

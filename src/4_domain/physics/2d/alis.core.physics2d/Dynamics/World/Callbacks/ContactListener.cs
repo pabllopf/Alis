@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Dynamics.Contacts;
+using Alis.Core.Physics2D.Contacts;
 
-namespace Alis.Core.Physics2D.Dynamics.World.Callbacks
+namespace Alis.Core.Physics2D.World.Callbacks
 {
     /// <summary>
     ///     Implement this class to get contact information. You can use these results for

@@ -32,8 +32,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
-using Alis.Core.Audio2D.AL;
-using Alis.Core.Audio2D.ALC;
 using Alis.Core.Audio2D.Extensions.Creative.EnumerateAll;
 using Alis.Core.Audio2D.Extensions.Creative.EnumerateAll.Enums;
 
@@ -138,11 +136,11 @@ namespace Alis.Core.Audio2D.Example
         public static void Main()
         {
             Console.WriteLine("Hello!");
-            IEnumerable<string> devices = ALC.ALC.GetStringList(GetEnumerationStringList.DeviceSpecifier);
+            IEnumerable<string> devices = ALC.GetStringList(GetEnumerationStringList.DeviceSpecifier);
             Console.WriteLine($"Devices: {string.Join(", ", devices)}");
 
             // Get the default device, then go though all devices and select the AL soft device if it exists.
-            string deviceName = ALC.ALC.GetString(ALDevice.Null, AlcGetString.DefaultDeviceSpecifier);
+            string deviceName = ALC.GetString(ALDevice.Null, AlcGetString.DefaultDeviceSpecifier);
             foreach (string d in devices)
             {
                 if (d.Contains("OpenAL Soft"))
@@ -155,21 +153,21 @@ namespace Alis.Core.Audio2D.Example
                 EnumerateAll.GetStringList(GetEnumerateAllContextStringList.AllDevicesSpecifier);
             Console.WriteLine($"All Devices: {string.Join(", ", allDevices)}");
 
-            ALDevice device = ALC.ALC.OpenDevice(deviceName);
-            ALContext context = ALC.ALC.CreateContext(device, (int[]) null);
-            ALC.ALC.MakeContextCurrent(context);
+            ALDevice device = ALC.OpenDevice(deviceName);
+            ALContext context = ALC.CreateContext(device, (int[]) null);
+            ALC.MakeContextCurrent(context);
 
-            ALC.ALC.GetInteger(device, AlcGetInteger.MajorVersion, 1, out int alcMajorVersion);
-            ALC.ALC.GetInteger(device, AlcGetInteger.MinorVersion, 1, out int alcMinorVersion);
-            string alcExts = ALC.ALC.GetString(device, AlcGetString.Extensions);
+            ALC.GetInteger(device, AlcGetInteger.MajorVersion, 1, out int alcMajorVersion);
+            ALC.GetInteger(device, AlcGetInteger.MinorVersion, 1, out int alcMinorVersion);
+            string alcExts = ALC.GetString(device, AlcGetString.Extensions);
 
-            ALContextAttributes attrs = ALC.ALC.GetContextAttributes(device);
+            ALContextAttributes attrs = ALC.GetContextAttributes(device);
             Console.WriteLine($"Attributes: {attrs}");
 
-            string exts = AL.AL.Get(ALGetString.Extensions);
-            string rend = AL.AL.Get(ALGetString.Renderer);
-            string vend = AL.AL.Get(ALGetString.Vendor);
-            string vers = AL.AL.Get(ALGetString.Version);
+            string exts = AL.Get(ALGetString.Extensions);
+            string rend = AL.Get(ALGetString.Renderer);
+            string vend = AL.Get(ALGetString.Vendor);
+            string vers = AL.Get(ALGetString.Version);
 
             Console.WriteLine(
                 $"Vendor: {vend}, \nVersion: {vers}, \nRenderer: {rend}, \nExtensions: {exts}, \nALC Version: {alcMajorVersion}.{alcMinorVersion}, \nALC Extensions: {alcExts}");
@@ -183,7 +181,7 @@ namespace Alis.Core.Audio2D.Example
             }
 
             Console.WriteLine("Available capture devices: ");
-            list = ALC.ALC.GetStringList(GetEnumerationStringList.CaptureDeviceSpecifier);
+            list = ALC.GetStringList(GetEnumerationStringList.CaptureDeviceSpecifier);
             foreach (string item in list)
             {
                 Console.WriteLine("  " + item);
@@ -191,18 +189,18 @@ namespace Alis.Core.Audio2D.Example
 
             Console.WriteLine("LOAD FILE:" + filename);
 
-            int buffer = AL.AL.GenBuffer();
-            int source = AL.AL.GenSource();
+            int buffer = AL.GenBuffer();
+            int source = AL.GenSource();
             int state;
 
             int channels, bits_per_sample, sample_rate;
             byte[] sound_data = LoadWave(File.Open(filename, FileMode.Open), out channels, out bits_per_sample,
                 out sample_rate);
-            AL.AL.BufferData(buffer, GetSoundFormat(channels, bits_per_sample), sound_data, sound_data.Length,
+            AL.BufferData(buffer, GetSoundFormat(channels, bits_per_sample), sound_data, sound_data.Length,
                 sample_rate);
 
-            AL.AL.Source(source, ALSourcei.Buffer, buffer);
-            AL.AL.SourcePlay(source);
+            AL.Source(source, ALSourcei.Buffer, buffer);
+            AL.SourcePlay(source);
 
             Trace.Write("Playing");
 
@@ -211,19 +209,19 @@ namespace Alis.Core.Audio2D.Example
             {
                 Thread.Sleep(250);
                 Trace.Write(".");
-                AL.AL.GetSource(source, ALGetSourcei.SourceState, out state);
+                AL.GetSource(source, ALGetSourcei.SourceState, out state);
             } while ((ALSourceState) state == ALSourceState.Playing);
 
             Trace.WriteLine("");
 
-            AL.AL.SourceStop(source);
-            AL.AL.DeleteSource(source);
-            AL.AL.DeleteBuffer(buffer);
+            AL.SourceStop(source);
+            AL.DeleteSource(source);
+            AL.DeleteBuffer(buffer);
 
 
-            ALC.ALC.MakeContextCurrent(ALContext.Null);
-            ALC.ALC.DestroyContext(context);
-            ALC.ALC.CloseDevice(device);
+            ALC.MakeContextCurrent(ALContext.Null);
+            ALC.DestroyContext(context);
+            ALC.CloseDevice(device);
 
             Console.WriteLine("Goodbye!");
         }

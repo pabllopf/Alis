@@ -27,43 +27,50 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
-    /// The profile
+    ///     The profile
     /// </summary>
     internal struct Profile
     {
         /// <summary>
-        /// The step
+        ///     The step
         /// </summary>
         internal float step;
+
         /// <summary>
-        /// The collide
+        ///     The collide
         /// </summary>
         internal float collide;
+
         /// <summary>
-        /// The solve
+        ///     The solve
         /// </summary>
         internal float solve;
+
         /// <summary>
-        /// The solve init
+        ///     The solve init
         /// </summary>
         internal float solveInit;
+
         /// <summary>
-        /// The solve velocity
+        ///     The solve velocity
         /// </summary>
         internal float solveVelocity;
+
         /// <summary>
-        /// The solve position
+        ///     The solve position
         /// </summary>
         internal float solvePosition;
+
         /// <summary>
-        /// The broadphase
+        ///     The broadphase
         /// </summary>
         internal float broadphase;
+
         /// <summary>
-        /// The solve toi
+        ///     The solve toi
         /// </summary>
         internal float solveTOI;
     }

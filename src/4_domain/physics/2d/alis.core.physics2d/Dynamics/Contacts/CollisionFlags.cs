@@ -29,36 +29,41 @@
 
 using System;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The collision flags enum
+    ///     The collision flags enum
     /// </summary>
     [Flags]
     public enum CollisionFlags
     {
         /// <summary>
-        /// The island collision flags
+        ///     The island collision flags
         /// </summary>
         Island = 0x01,
+
         /// <summary>
-        /// The touching collision flags
+        ///     The touching collision flags
         /// </summary>
         Touching = 0x02,
+
         /// <summary>
-        /// The enabled collision flags
+        ///     The enabled collision flags
         /// </summary>
         Enabled = 0x04,
+
         /// <summary>
-        /// The filter collision flags
+        ///     The filter collision flags
         /// </summary>
         Filter = 0x08,
+
         /// <summary>
-        /// The bullet hit collision flags
+        ///     The bullet hit collision flags
         /// </summary>
         BulletHit = 0x10,
+
         /// <summary>
-        /// The toi collision flags
+        ///     The toi collision flags
         /// </summary>
         Toi = 0x20
     }

@@ -27,22 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Colliders;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
+using Alis.Core.Physics2D.Colliders;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The polygon contact class
+    ///     The polygon contact class
     /// </summary>
-    /// <seealso cref="Contact"/>
+    /// <seealso cref="Contact" />
     public class PolygonContact : Contact
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PolygonContact"/> class
+        ///     Initializes a new instance of the <see cref="PolygonContact" /> class
         /// </summary>
         /// <param name="fA">The </param>
         /// <param name="indexA">The index</param>
@@ -53,12 +51,12 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// The polygon and polygon collider
+        ///     The polygon and polygon collider
         /// </summary>
         private static readonly Collider<PolygonShape, PolygonShape> collider = new PolygonAndPolygonCollider();
 
         /// <summary>
-        /// Evaluates the manifold
+        ///     Evaluates the manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="xfA">The xf</param>

@@ -32,7 +32,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Alis.Core.Network.Example.Client.Complex
+namespace Alis.Core.Network.Exceptions.Example.Client.Complex
 {
     /// <summary>
     ///     The stress test class

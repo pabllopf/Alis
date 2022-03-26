@@ -29,32 +29,36 @@
 
 using System;
 
-namespace Alis.Core.Physics2D.Dynamics.World.Callbacks
+namespace Alis.Core.Physics2D.World.Callbacks
 {
     /// <summary>
-    /// The draw flags enum
+    ///     The draw flags enum
     /// </summary>
     [Flags]
     public enum DrawFlags
     {
         /// <summary>
-        /// The shape draw flags
+        ///     The shape draw flags
         /// </summary>
         Shape = 0x0001, // draw shapes
+
         /// <summary>
-        /// The joint draw flags
+        ///     The joint draw flags
         /// </summary>
         Joint = 0x0002, // draw joint connections
+
         /// <summary>
-        /// The aabb draw flags
+        ///     The aabb draw flags
         /// </summary>
         Aabb = 0x0008, // draw axis aligned bounding boxes
+
         /// <summary>
-        /// The pair draw flags
+        ///     The pair draw flags
         /// </summary>
         Pair = 0x0020, // draw broad-phase pairs
+
         /// <summary>
-        /// The center of mass draw flags
+        ///     The center of mass draw flags
         /// </summary>
         CenterOfMass = 0x0040 // draw center of mass frame
     }

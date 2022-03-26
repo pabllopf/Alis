@@ -31,7 +31,7 @@ using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace Alis.Core.Network.Example.Client.Complex
+namespace Alis.Core.Network.Exceptions.Example.Client.Complex
 {
     /// <summary>
     ///     The test runner class

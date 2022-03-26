@@ -27,29 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Collision;
-
-namespace Alis.Core.Physics2D.Dynamics.Fixtures
+namespace Alis.Core.Physics2D.Fixtures
 {
     /// <summary>
-    /// The fixture proxy class
+    ///     The fixture proxy class
     /// </summary>
     internal class FixtureProxy
     {
         /// <summary>
-        /// The aabb
+        ///     The aabb
         /// </summary>
         internal AABB aabb;
+
         /// <summary>
-        /// The child index
+        ///     The child index
         /// </summary>
         internal int childIndex;
+
         /// <summary>
-        /// The fixture
+        ///     The fixture
         /// </summary>
         internal Fixture fixture;
+
         /// <summary>
-        /// The proxy id
+        ///     The proxy id
         /// </summary>
         internal int proxyId = -1;
     }

@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Contact ids to facilitate warm starting.
@@ -38,7 +38,7 @@ namespace Alis.Core.Physics2D.Collision
     internal struct ContactID
     {
         /// <summary>
-        /// The cf
+        ///     The cf
         /// </summary>
         [FieldOffset(0)] internal ContactFeature cf;
 

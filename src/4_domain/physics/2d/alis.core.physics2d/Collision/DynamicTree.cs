@@ -32,10 +32,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Math = System.Math;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     /// </summary>
@@ -43,20 +41,22 @@ namespace Alis.Core.Physics2D.Collision
     internal sealed class DynamicTree
     {
         /// <summary>
-        /// The free nodes
+        ///     The free nodes
         /// </summary>
         private Proxy _freeNodes;
+
         /// <summary>
-        /// The nodes
+        ///     The nodes
         /// </summary>
         private Node[] _nodes;
+
         /// <summary>
-        /// The root
+        ///     The root
         /// </summary>
         private Proxy _root;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DynamicTree"/> class
+        ///     Initializes a new instance of the <see cref="DynamicTree" /> class
         /// </summary>
         public DynamicTree()
         {
@@ -80,12 +80,12 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the value of the capacity
+        ///     Gets the value of the capacity
         /// </summary>
         public int Capacity => _nodes.Length;
 
         /// <summary>
-        /// Gets the value of the height
+        ///     Gets the value of the height
         /// </summary>
         public int Height
         {
@@ -94,12 +94,12 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets or sets the value of the node count
+        ///     Gets or sets the value of the node count
         /// </summary>
         public int NodeCount { get; private set; }
 
         /// <summary>
-        /// Gets the value of the max balance
+        ///     Gets the value of the max balance
         /// </summary>
         public int MaxBalance
         {
@@ -119,8 +119,8 @@ namespace Alis.Core.Physics2D.Collision
                     ref Node child1Node = ref _nodes[node.Child1];
                     ref Node child2Node = ref _nodes[node.Child2];
 
-                    int bal = Math.Abs(child2Node.Height - child1Node.Height);
-                    maxBal = Math.Max(maxBal, bal);
+                    int bal = System.Math.Abs(child2Node.Height - child1Node.Height);
+                    maxBal = System.Math.Max(maxBal, bal);
                 }
 
                 return maxBal;
@@ -128,7 +128,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the value of the area ratio
+        ///     Gets the value of the area ratio
         /// </summary>
         public float AreaRatio
         {
@@ -162,7 +162,7 @@ namespace Alis.Core.Physics2D.Collision
 
 
         /// <summary>
-        /// Gets the value of the debug allocated nodes enumerable
+        ///     Gets the value of the debug allocated nodes enumerable
         /// </summary>
         private IEnumerable<(Proxy, Node)> DebugAllocatedNodesEnumerable
         {
@@ -180,7 +180,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the value of the debug allocated nodes
+        ///     Gets the value of the debug allocated nodes
         /// </summary>
         [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
         private (Proxy, Node)[] DebugAllocatedNodes
@@ -199,17 +199,17 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// The aabb extend size
+        ///     The aabb extend size
         /// </summary>
         private const float AABBExtendSize = 1f / 32;
 
         /// <summary>
-        /// The aabb multiplier
+        ///     The aabb multiplier
         /// </summary>
         private const float AABBMultiplier = 2f;
 
         /// <summary>
-        /// Growths the func using the specified x
+        ///     Growths the func using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The int</returns>
@@ -315,7 +315,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Destroys the proxy using the specified proxy
+        ///     Destroys the proxy using the specified proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -329,7 +329,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Describes whether this instance move proxy
+        ///     Describes whether this instance move proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         /// <param name="aabb">The aabb</param>
@@ -410,7 +410,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the user data using the specified proxy
+        ///     Gets the user data using the specified proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         /// <returns>The object</returns>
@@ -418,7 +418,7 @@ namespace Alis.Core.Physics2D.Collision
         public object GetUserData(Proxy proxy) => _nodes[proxy].UserData;
 
         /// <summary>
-        /// Describes whether this instance was moved
+        ///     Describes whether this instance was moved
         /// </summary>
         /// <param name="proxy">The proxy</param>
         /// <returns>The bool</returns>
@@ -426,7 +426,7 @@ namespace Alis.Core.Physics2D.Collision
         public bool WasMoved(Proxy proxy) => _nodes[proxy].Moved;
 
         /// <summary>
-        /// Clears the moved using the specified proxy
+        ///     Clears the moved using the specified proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -436,7 +436,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the fat aabb using the specified proxy
+        ///     Gets the fat aabb using the specified proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         /// <returns>The aabb</returns>
@@ -444,7 +444,7 @@ namespace Alis.Core.Physics2D.Collision
         public AABB GetFatAABB(Proxy proxy) => _nodes[proxy].Aabb;
 
         /// <summary>
-        /// Removes the leaf using the specified leaf
+        ///     Removes the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -497,7 +497,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Inserts the leaf using the specified leaf
+        ///     Inserts the leaf using the specified leaf
         /// </summary>
         /// <param name="leaf">The leaf</param>
         private void InsertLeaf(Proxy leaf)
@@ -517,12 +517,12 @@ namespace Alis.Core.Physics2D.Collision
 
             Proxy index = _root;
 #if DEBUG
-			var loopCount = 0;
+            int loopCount = 0;
 #endif
             for (;;)
             {
 #if DEBUG
-				Assert(loopCount++ < Capacity * 2);
+                Assert(loopCount++ < Capacity * 2);
 #endif
 
                 ref Node indexNode = ref _nodes[index];
@@ -616,7 +616,7 @@ namespace Alis.Core.Physics2D.Collision
 
 
         /// <summary>
-        /// Estimates the cost using the specified base aabb
+        ///     Estimates the cost using the specified base aabb
         /// </summary>
         /// <param name="baseAabb">The base aabb</param>
         /// <param name="node">The node</param>
@@ -635,7 +635,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Balances the index
+        ///     Balances the index
         /// </summary>
         /// <param name="index">The index</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -656,7 +656,7 @@ namespace Alis.Core.Physics2D.Collision
                 ref Node child1Node = ref _nodes[child1];
                 ref Node child2Node = ref _nodes[child2];
 
-                indexNode.Height = Math.Max(child1Node.Height, child2Node.Height) + 1;
+                indexNode.Height = System.Math.Max(child1Node.Height, child2Node.Height) + 1;
                 indexNode.Aabb = AABB.Combine(child1Node.Aabb, child2Node.Aabb);
 
                 index = indexNode.Parent;
@@ -736,8 +736,8 @@ namespace Alis.Core.Physics2D.Collision
                     a.Aabb = AABB.Combine(b.Aabb, g.Aabb);
                     c.Aabb = AABB.Combine(a.Aabb, f.Aabb);
 
-                    a.Height = Math.Max(b.Height, g.Height) + 1;
-                    c.Height = Math.Max(a.Height, f.Height) + 1;
+                    a.Height = System.Math.Max(b.Height, g.Height) + 1;
+                    c.Height = System.Math.Max(a.Height, f.Height) + 1;
                 }
                 else
                 {
@@ -747,8 +747,8 @@ namespace Alis.Core.Physics2D.Collision
                     a.Aabb = AABB.Combine(b.Aabb, f.Aabb);
                     c.Aabb = AABB.Combine(a.Aabb, g.Aabb);
 
-                    a.Height = Math.Max(b.Height, f.Height) + 1;
-                    c.Height = Math.Max(a.Height, g.Height) + 1;
+                    a.Height = System.Math.Max(b.Height, f.Height) + 1;
+                    c.Height = System.Math.Max(a.Height, g.Height) + 1;
                 }
 
                 return iC;
@@ -800,8 +800,8 @@ namespace Alis.Core.Physics2D.Collision
                     a.Aabb = AABB.Combine(c.Aabb, e.Aabb);
                     b.Aabb = AABB.Combine(a.Aabb, d.Aabb);
 
-                    a.Height = Math.Max(c.Height, e.Height) + 1;
-                    b.Height = Math.Max(a.Height, d.Height) + 1;
+                    a.Height = System.Math.Max(c.Height, e.Height) + 1;
+                    b.Height = System.Math.Max(a.Height, d.Height) + 1;
                 }
                 else
                 {
@@ -811,8 +811,8 @@ namespace Alis.Core.Physics2D.Collision
                     a.Aabb = AABB.Combine(c.Aabb, d.Aabb);
                     b.Aabb = AABB.Combine(a.Aabb, e.Aabb);
 
-                    a.Height = Math.Max(c.Height, d.Height) + 1;
-                    b.Height = Math.Max(a.Height, e.Height) + 1;
+                    a.Height = System.Math.Max(c.Height, d.Height) + 1;
+                    b.Height = System.Math.Max(a.Height, e.Height) + 1;
                 }
 
                 return iB;
@@ -822,7 +822,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Computes the height
+        ///     Computes the height
         /// </summary>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -841,14 +841,14 @@ namespace Alis.Core.Physics2D.Collision
                 return 0;
             }
 
-            return Math.Max(
+            return System.Math.Max(
                 ComputeHeight(node.Child1),
                 ComputeHeight(node.Child2)
             ) + 1;
         }
 
         /// <summary>
-        /// Rebuilds the bottom up using the specified free
+        ///     Rebuilds the bottom up using the specified free
         /// </summary>
         /// <param name="free">The free</param>
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -916,7 +916,7 @@ namespace Alis.Core.Physics2D.Collision
 
                 parentNode.Child1 = child1;
                 parentNode.Child2 = child2;
-                parentNode.Height = Math.Max(child1Node.Height, child2Node.Height) + 1;
+                parentNode.Height = System.Math.Max(child1Node.Height, child2Node.Height) + 1;
                 parentNode.Aabb = AABB.Combine(child1Node.Aabb, child2Node.Aabb);
                 parentNode.Parent = Proxy.Free;
 
@@ -934,7 +934,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Shifts the origin using the specified new origin
+        ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
         public void ShiftOrigin(in Vector2 newOrigin)
@@ -950,7 +950,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Queries the query callback
+        ///     Queries the query callback
         /// </summary>
         /// <param name="queryCallback">The query callback</param>
         /// <param name="aabb">The aabb</param>
@@ -989,7 +989,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Rays the cast using the specified ray cast callback
+        ///     Rays the cast using the specified ray cast callback
         /// </summary>
         /// <param name="RayCastCallback">The ray cast callback</param>
         /// <param name="input">The input</param>
@@ -1040,7 +1040,7 @@ namespace Alis.Core.Physics2D.Collision
                 // |dot(v, p1 - c)| > dot(|v|, h)
                 Vector2 c = node.Aabb.GetCenter();
                 Vector2 h = node.Aabb.GetExtents();
-                float separation = Math.Abs(Vector2.Dot(v, p1 - c)) - Vector2.Dot(absV, h);
+                float separation = System.Math.Abs(Vector2.Dot(v, p1 - c)) - Vector2.Dot(absV, h);
 
                 if (separation > 0)
                 {
@@ -1078,7 +1078,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Validates this instance
+        ///     Validates this instance
         /// </summary>
         [Conditional("DEBUG")]
         private void Validate()
@@ -1101,7 +1101,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Validates the proxy
+        ///     Validates the proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         [Conditional("DEBUG")]
@@ -1144,7 +1144,7 @@ namespace Alis.Core.Physics2D.Collision
             int height1 = child1Node.Height;
             int height2 = child2Node.Height;
 
-            int height = 1 + Math.Max(height1, height2);
+            int height = 1 + System.Math.Max(height1, height2);
 
             Assert(node.Height == height);
 
@@ -1157,7 +1157,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Validates the height using the specified proxy
+        ///     Validates the height using the specified proxy
         /// </summary>
         /// <param name="proxy">The proxy</param>
         [Conditional("DEBUG_DYNAMIC_TREE")]
@@ -1184,13 +1184,13 @@ namespace Alis.Core.Physics2D.Collision
             int height1 = child1Node.Height;
             int height2 = child2Node.Height;
 
-            int height = 1 + Math.Max(height1, height2);
+            int height = 1 + System.Math.Max(height1, height2);
 
             Assert(node.Height == height);
         }
 
         /// <summary>
-        /// Asserts the assertion
+        ///     Asserts the assertion
         /// </summary>
         /// <param name="assertion">The assertion</param>
         /// <param name="member">The member</param>
@@ -1214,29 +1214,29 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         internal readonly struct Proxy : IEquatable<Proxy>, IComparable<Proxy>
         {
             /// <summary>
-            /// The value
+            ///     The value
             /// </summary>
             private readonly int _value;
 
             /// <summary>
-            /// The free
+            ///     The free
             /// </summary>
             public static readonly Proxy Free = -1;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="Proxy"/> class
+            ///     Initializes a new instance of the <see cref="Proxy" /> class
             /// </summary>
             /// <param name="v">The </param>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public Proxy(int v) => _value = v;
 
             /// <summary>
-            /// Describes whether this instance equals
+            ///     Describes whether this instance equals
             /// </summary>
             /// <param name="other">The other</param>
             /// <returns>The bool</returns>
@@ -1245,7 +1245,7 @@ namespace Alis.Core.Physics2D.Collision
                 => _value == other._value;
 
             /// <summary>
-            /// Compares the to using the specified other
+            ///     Compares the to using the specified other
             /// </summary>
             /// <param name="other">The other</param>
             /// <returns>The int</returns>
@@ -1254,7 +1254,7 @@ namespace Alis.Core.Physics2D.Collision
                 => _value.CompareTo(other._value);
 
             /// <summary>
-            /// Describes whether this instance equals
+            ///     Describes whether this instance equals
             /// </summary>
             /// <param name="obj">The obj</param>
             /// <returns>The bool</returns>
@@ -1263,7 +1263,7 @@ namespace Alis.Core.Physics2D.Collision
                 => obj is Proxy other && Equals(other);
 
             /// <summary>
-            /// Gets the hash code
+            ///     Gets the hash code
             /// </summary>
             /// <returns>The int</returns>
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -1294,7 +1294,7 @@ namespace Alis.Core.Physics2D.Collision
             public static bool operator <=(Proxy a, Proxy b) => a._value <= b._value;
 
             /// <summary>
-            /// Returns the string
+            ///     Returns the string
             /// </summary>
             /// <returns>The string</returns>
             public override string ToString()
@@ -1302,43 +1302,47 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// The node
+        ///     The node
         /// </summary>
         private struct Node
         {
             /// <summary>
-            /// The aabb
+            ///     The aabb
             /// </summary>
             public AABB Aabb;
+
             /// <summary>
-            /// The parent
+            ///     The parent
             /// </summary>
             public Proxy Parent;
+
             /// <summary>
-            /// The child
+            ///     The child
             /// </summary>
             public Proxy Child1;
+
             /// <summary>
-            /// The child
+            ///     The child
             /// </summary>
             public Proxy Child2;
 
             /// <summary>
-            /// The user data
+            ///     The user data
             /// </summary>
             public object UserData;
 
             /// <summary>
-            /// The height
+            ///     The height
             /// </summary>
             public int Height;
+
             /// <summary>
-            /// The moved
+            ///     The moved
             /// </summary>
             public bool Moved;
 
             /// <summary>
-            /// Gets the value of the is leaf
+            ///     Gets the value of the is leaf
             /// </summary>
             public bool IsLeaf
             {
@@ -1347,7 +1351,7 @@ namespace Alis.Core.Physics2D.Collision
             }
 
             /// <summary>
-            /// Gets the value of the is free
+            ///     Gets the value of the is free
             /// </summary>
             public bool IsFree
             {
@@ -1356,7 +1360,7 @@ namespace Alis.Core.Physics2D.Collision
             }
 
             /// <summary>
-            /// Returns the string
+            ///     Returns the string
             /// </summary>
             /// <returns>The string</returns>
             public override string ToString()

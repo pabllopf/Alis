@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Common;
-
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// Contact impulses for reporting. Impulses are used instead of forces because
     /// sub-step forces may approach infinity for rigid body collisions. These
@@ -37,11 +35,12 @@ namespace Alis.Core.Physics2D.Dynamics.World
     public class ContactImpulse
     {
         /// <summary>
-        /// The max manifold points
+        ///     The max manifold points
         /// </summary>
         public float[] normalImpulses = new float[Settings.MaxManifoldPoints];
+
         /// <summary>
-        /// The max manifold points
+        ///     The max manifold points
         /// </summary>
         public float[] tangentImpulses = new float[Settings.MaxManifoldPoints];
     }

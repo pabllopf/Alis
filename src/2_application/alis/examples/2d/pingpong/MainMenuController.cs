@@ -35,27 +35,27 @@ using Alis.Tools;
 namespace PingPong
 {
     /// <summary>
-    /// The main menu controller class
+    ///     The main menu controller class
     /// </summary>
-    /// <seealso cref="Component"/>
+    /// <seealso cref="Component" />
     public class MainMenuController : Component
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
         }
 
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(string key)
@@ -74,7 +74,7 @@ namespace PingPong
         }
 
         /// <summary>
-        /// Ons the press key using the specified key
+        ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressKey(string key)

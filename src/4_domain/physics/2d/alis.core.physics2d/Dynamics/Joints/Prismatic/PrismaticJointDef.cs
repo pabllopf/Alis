@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
+namespace Alis.Core.Physics2D.Joints.Prismatic
 {
     /// <summary>
     ///     Prismatic joint definition. This requires defining a line of
@@ -93,7 +93,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
         public float upperTranslation;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PrismaticJointDef"/> class
+        ///     Initializes a new instance of the <see cref="PrismaticJointDef" /> class
         /// </summary>
         public PrismaticJointDef() => localAxisA = new Vector2(1.0f, 0.0f);
 

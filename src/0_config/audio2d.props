@@ -1,0 +1,9 @@
+<Project>
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/audio/2d/alis.core.audio2d/**/*.cs" LinkBase="Audio2D"/>
+        <Content Include="$(SolutionDir)/4_domain/audio/2d/alis.core.audio2d/Runtimes/**" LinkBase="Audio2D/Runtimes"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/2d/alis.core.audio2d/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/2d/alis.core.audio2d/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/2d/alis.core.audio2d/bin/**"/>
+    </ItemGroup>
+</Project>

@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Ray-cast input data.
@@ -37,11 +37,12 @@ namespace Alis.Core.Physics2D.Collision
     public struct RayCastInput
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Vector2 p1, p2;
+
         /// <summary>
-        /// The max fraction
+        ///     The max fraction
         /// </summary>
         public float maxFraction;
     }

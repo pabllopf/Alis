@@ -97,12 +97,10 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.World;
-using Math = Alis.Core.Physics2D.Common.Math;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
+namespace Alis.Core.Physics2D.Joints.Prismatic
 {
     /// <summary>
     ///     A prismatic joint. This joint provides one degree of freedom: translation
@@ -113,112 +111,137 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
     public class PrismaticJoint : Joint, IMotorisedJoint
     {
         /// <summary>
-        /// The localyaxisa
+        ///     The localyaxisa
         /// </summary>
         private readonly Vector2 m_localYAxisA;
+
         /// <summary>
-        /// The referenceangle
+        ///     The referenceangle
         /// </summary>
         internal readonly float m_referenceAngle;
+
         /// <summary>
-        /// The a1
+        ///     The a1
         /// </summary>
         private float m_a1;
+
         /// <summary>
-        /// The a2
+        ///     The a2
         /// </summary>
         private float m_a2;
+
         /// <summary>
-        /// The axialmass
+        ///     The axialmass
         /// </summary>
         private float m_axialMass;
+
         /// <summary>
-        /// The perp
+        ///     The perp
         /// </summary>
         private Vector2 m_axis, m_perp;
+
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private Vector2 m_impulse;
+
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private int m_indexB;
+
         /// <summary>
-        /// The invia
+        ///     The invia
         /// </summary>
         private float m_invIA;
+
         /// <summary>
-        /// The invib
+        ///     The invib
         /// </summary>
         private float m_invIB;
+
         /// <summary>
-        /// The invmassa
+        ///     The invmassa
         /// </summary>
         private float m_invMassA;
+
         /// <summary>
-        /// The invmassb
+        ///     The invmassb
         /// </summary>
         private float m_invMassB;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Matrix3x2 m_k;
+
         /// <summary>
-        /// The localanchora
+        ///     The localanchora
         /// </summary>
         internal Vector2 m_localAnchorA;
+
         /// <summary>
-        /// The localanchorb
+        ///     The localanchorb
         /// </summary>
         internal Vector2 m_localAnchorB;
+
         /// <summary>
-        /// The localcentera
+        ///     The localcentera
         /// </summary>
         private Vector2 m_localCenterA;
+
         /// <summary>
-        /// The localcenterb
+        ///     The localcenterb
         /// </summary>
         private Vector2 m_localCenterB;
+
         /// <summary>
-        /// The localxaxisa
+        ///     The localxaxisa
         /// </summary>
         internal Vector2 m_localXAxisA;
+
         /// <summary>
-        /// The lowerimpulse
+        ///     The lowerimpulse
         /// </summary>
         private float m_lowerImpulse;
+
         /// <summary>
-        /// The maxmotorforce
+        ///     The maxmotorforce
         /// </summary>
         private float m_maxMotorForce;
+
         /// <summary>
-        /// The motorspeed
+        ///     The motorspeed
         /// </summary>
         private float m_motorSpeed;
+
         /// <summary>
-        /// The s1
+        ///     The s1
         /// </summary>
         private float m_s1;
+
         /// <summary>
-        /// The s2
+        ///     The s2
         /// </summary>
         private float m_s2;
+
         /// <summary>
-        /// The translation
+        ///     The translation
         /// </summary>
         private float m_translation;
+
         /// <summary>
-        /// The upperimpulse
+        ///     The upperimpulse
         /// </summary>
         private float m_upperImpulse;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PrismaticJoint"/> class
+        ///     Initializes a new instance of the <see cref="PrismaticJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public PrismaticJoint(PrismaticJointDef def)
@@ -250,12 +273,12 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
         }
 
         /// <summary>
-        /// Gets the value of the get anchor a
+        ///     Gets the value of the get anchor a
         /// </summary>
         public override Vector2 GetAnchorA => m_bodyA.GetWorldPoint(m_localAnchorA);
 
         /// <summary>
-        /// Gets the value of the get anchor b
+        ///     Gets the value of the get anchor b
         /// </summary>
         public override Vector2 GetAnchorB => m_bodyB.GetWorldPoint(m_localAnchorB);
 
@@ -310,7 +333,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
         }
 
         /// <summary>
-        /// Sets the motor speed using the specified speed
+        ///     Sets the motor speed using the specified speed
         /// </summary>
         /// <param name="speed">The speed</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -322,7 +345,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
         }
 
         /// <summary>
-        /// Gets the motor speed
+        ///     Gets the motor speed
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -340,7 +363,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
         }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The vector</returns>
@@ -348,7 +371,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
             inv_dt * (m_impulse.X * m_perp + (MotorForce + m_lowerImpulse + m_upperImpulse) * m_axis);
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
@@ -442,7 +465,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
         }
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(in SolverData data)
@@ -557,7 +580,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(in SolverData data)
@@ -660,7 +683,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Prismatic
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

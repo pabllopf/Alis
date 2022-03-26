@@ -29,15 +29,15 @@
 
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints
+namespace Alis.Core.Physics2D.Joints
 {
     /// <summary>
-    /// The motorised joint interface
+    ///     The motorised joint interface
     /// </summary>
     public interface IMotorisedJoint
     {
         /// <summary>
-        /// Gets or sets the value of the motor speed
+        ///     Gets or sets the value of the motor speed
         /// </summary>
         public float MotorSpeed
         {
@@ -48,14 +48,14 @@ namespace Alis.Core.Physics2D.Dynamics.Joints
         }
 
         /// <summary>
-        /// Sets the motor speed using the specified speed
+        ///     Sets the motor speed using the specified speed
         /// </summary>
         /// <param name="speed">The speed</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void SetMotorSpeed(float speed);
 
         /// <summary>
-        /// Gets the motor speed
+        ///     Gets the motor speed
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

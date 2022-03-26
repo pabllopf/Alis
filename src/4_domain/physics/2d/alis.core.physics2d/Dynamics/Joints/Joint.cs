@@ -30,21 +30,20 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Joints.Distance;
-using Alis.Core.Physics2D.Dynamics.Joints.Friction;
-using Alis.Core.Physics2D.Dynamics.Joints.Gear;
-using Alis.Core.Physics2D.Dynamics.Joints.Mouse;
-using Alis.Core.Physics2D.Dynamics.Joints.Prismatic;
-using Alis.Core.Physics2D.Dynamics.Joints.Pulley;
-using Alis.Core.Physics2D.Dynamics.Joints.Revolute;
-using Alis.Core.Physics2D.Dynamics.Joints.Weld;
-using Alis.Core.Physics2D.Dynamics.Joints.Wheel;
-using Alis.Core.Physics2D.Dynamics.World;
-using Alis.Core.Physics2D.Dynamics.World.Callbacks;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Joints.Distance;
+using Alis.Core.Physics2D.Joints.Friction;
+using Alis.Core.Physics2D.Joints.Gear;
+using Alis.Core.Physics2D.Joints.Mouse;
+using Alis.Core.Physics2D.Joints.Prismatic;
+using Alis.Core.Physics2D.Joints.Pulley;
+using Alis.Core.Physics2D.Joints.Revolute;
+using Alis.Core.Physics2D.Joints.Weld;
+using Alis.Core.Physics2D.Joints.Wheel;
+using Alis.Core.Physics2D.World;
+using Alis.Core.Physics2D.World.Callbacks;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints
+namespace Alis.Core.Physics2D.Joints
 {
     /// <summary>
     ///     The base joint class. Joints are used to constraint two bodies together in
@@ -53,55 +52,63 @@ namespace Alis.Core.Physics2D.Dynamics.Joints
     public abstract class Joint
     {
         /// <summary>
-        /// The collideconnected
+        ///     The collideconnected
         /// </summary>
         internal readonly bool m_collideConnected;
+
         /// <summary>
-        /// The joint edge
+        ///     The joint edge
         /// </summary>
         internal readonly JointEdge m_edgeA = new JointEdge();
+
         /// <summary>
-        /// The joint edge
+        ///     The joint edge
         /// </summary>
         internal readonly JointEdge m_edgeB = new JointEdge();
+
         /// <summary>
-        /// The bodya
+        ///     The bodya
         /// </summary>
         internal Body m_bodyA;
+
         /// <summary>
-        /// The bodyb
+        ///     The bodyb
         /// </summary>
         internal Body m_bodyB;
+
         /// <summary>
-        /// The invi1
+        ///     The invi1
         /// </summary>
         protected float m_invMass1, m_invI1;
+
         /// <summary>
-        /// The invi2
+        ///     The invi2
         /// </summary>
         protected float m_invMass2, m_invI2;
 
         /// <summary>
-        /// The islandflag
+        ///     The islandflag
         /// </summary>
         internal bool m_islandFlag;
 
         // Cache here per time step to reduce cache misses.
         /// <summary>
-        /// The localcenter2
+        ///     The localcenter2
         /// </summary>
         protected Vector2 m_localCenter1, m_localCenter2;
+
         /// <summary>
-        /// The next
+        ///     The next
         /// </summary>
         internal Joint m_next;
+
         /// <summary>
-        /// The prev
+        ///     The prev
         /// </summary>
         internal Joint m_prev;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Joint"/> class
+        ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         protected Joint(JointDef def)
@@ -140,7 +147,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints
         }
 
         /// <summary>
-        /// Linears the stiffness using the specified stiffness
+        ///     Linears the stiffness using the specified stiffness
         /// </summary>
         /// <param name="stiffness">The stiffness</param>
         /// <param name="damping">The damping</param>
@@ -179,7 +186,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints
         }
 
         /// <summary>
-        /// Angulars the stiffness using the specified stiffness
+        ///     Angulars the stiffness using the specified stiffness
         /// </summary>
         /// <param name="stiffness">The stiffness</param>
         /// <param name="damping">The damping</param>
@@ -249,7 +256,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints
         public Joint GetNext() => m_next;
 
         /// <summary>
-        /// Creates the def
+        ///     Creates the def
         /// </summary>
         /// <param name="def">The def</param>
         /// <exception cref="NotImplementedException">JointDef '{def.GetType().Name}' is not implemented.</exception>
@@ -272,26 +279,27 @@ namespace Alis.Core.Physics2D.Dynamics.Joints
         }
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal abstract void InitVelocityConstraints(in SolverData data);
+
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal abstract void SolveVelocityConstraints(in SolverData data);
 
         // This returns true if the position errors are within tolerance.
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>
         internal abstract bool SolvePositionConstraints(in SolverData data);
 
         /// <summary>
-        /// Computes the x form using the specified xf
+        ///     Computes the x form using the specified xf
         /// </summary>
         /// <param name="xf">The xf</param>
         /// <param name="center">The center</param>
@@ -305,7 +313,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints
         }
 
         /// <summary>
-        /// Draws the draw
+        ///     Draws the draw
         /// </summary>
         /// <param name="draw">The draw</param>
         public void Draw(DebugDraw draw)

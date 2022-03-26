@@ -29,32 +29,31 @@
 
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The simplex class
+    ///     The simplex class
     /// </summary>
     internal class Simplex
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal readonly SimplexVertex[] m_v;
 
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal int m_count;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Simplex"/> class
+        ///     Initializes a new instance of the <see cref="Simplex" /> class
         /// </summary>
         public Simplex() => m_v = new SimplexVertex[3];
 
         /// <summary>
-        /// Gets the value of the m v1
+        ///     Gets the value of the m v1
         /// </summary>
         private SimplexVertex m_v1
         {
@@ -63,7 +62,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the value of the m v2
+        ///     Gets the value of the m v2
         /// </summary>
         private SimplexVertex m_v2
         {
@@ -72,7 +71,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the value of the m v3
+        ///     Gets the value of the m v3
         /// </summary>
         private SimplexVertex m_v3
         {
@@ -81,7 +80,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Reads the cache using the specified cache
+        ///     Reads the cache using the specified cache
         /// </summary>
         /// <param name="cache">The cache</param>
         /// <param name="proxyA">The proxy</param>
@@ -143,7 +142,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Writes the cache using the specified cache
+        ///     Writes the cache using the specified cache
         /// </summary>
         /// <param name="cache">The cache</param>
         internal void WriteCache(SimplexCache cache)
@@ -159,7 +158,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the search direction
+        ///     Gets the search direction
         /// </summary>
         /// <returns>The vector</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -185,7 +184,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the closest point
+        ///     Gets the closest point
         /// </summary>
         /// <returns>The vector</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -209,7 +208,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the witness points using the specified p a
+        ///     Gets the witness points using the specified p a
         /// </summary>
         /// <param name="pA">The </param>
         /// <param name="pB">The </param>
@@ -242,7 +241,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the metric
+        ///     Gets the metric
         /// </summary>
         /// <returns>The float</returns>
         private float GetMetric()
@@ -288,7 +287,7 @@ namespace Alis.Core.Physics2D.Collision
         // a1 = d12_1 / d12
         // a2 = d12_2 / d12
         /// <summary>
-        /// Solves the 2
+        ///     Solves the 2
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void Solve2()
@@ -331,7 +330,7 @@ namespace Alis.Core.Physics2D.Collision
         // - edge points[1]-points[2]
         // - inside the triangle
         /// <summary>
-        /// Solves the 3
+        ///     Solves the 3
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal void Solve3()

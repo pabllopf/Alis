@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Components;
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 

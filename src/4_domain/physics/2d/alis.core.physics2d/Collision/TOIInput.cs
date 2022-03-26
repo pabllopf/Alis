@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Common;
-
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Inpute parameters for TimeOfImpact
@@ -37,12 +35,12 @@ namespace Alis.Core.Physics2D.Collision
     internal struct TOIInput
     {
         /// <summary>
-        /// The sweep
+        ///     The sweep
         /// </summary>
         internal Sweep sweepA;
 
         /// <summary>
-        /// The sweep
+        ///     The sweep
         /// </summary>
         internal Sweep sweepB;
 
@@ -50,15 +48,17 @@ namespace Alis.Core.Physics2D.Collision
         // internal float         sweepRadiusB;
         // internal float         tolerance;
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         internal DistanceProxy proxyA;
+
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         internal DistanceProxy proxyB;
+
         /// <summary>
-        /// The max
+        ///     The max
         /// </summary>
         internal float tMax;
     }

@@ -1,0 +1,9 @@
+<Project>
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/input/alis.core.input/**/*.cs" LinkBase="Input"/>
+        <Content Include="$(SolutionDir)/4_domain/input/alis.core.input/Runtimes/**" LinkBase="Input/Runtimes"/>
+        <Compile Remove="$(SolutionDir)/4_domain/input/alis.core.input/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/input/alis.core.input/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/input/alis.core.input/bin/**"/>
+    </ItemGroup>
+</Project>

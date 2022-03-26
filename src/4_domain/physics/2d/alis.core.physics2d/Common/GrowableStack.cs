@@ -31,7 +31,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     This is a growable LIFO stack with an initial capacity of N.
@@ -47,19 +47,22 @@ namespace Alis.Core.Physics2D.Common
         // TODO: Switch to managed arrays for the on-heap alloc when we have .NET 5.
         // Because with .NET 5 we can use the Pinned Object Heap.
         /// <summary>
-        /// The stack
+        ///     The stack
         /// </summary>
         private T* _stack;
+
         /// <summary>
-        /// The was reallocated
+        ///     The was reallocated
         /// </summary>
         private bool _wasReallocated;
+
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal int _count;
+
         /// <summary>
-        /// The capacity
+        ///     The capacity
         /// </summary>
         private int _capacity;
 
@@ -83,7 +86,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         internal void Dispose()
         {
@@ -95,7 +98,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Pushes the element
+        ///     Pushes the element
         /// </summary>
         /// <param name="element">The element</param>
         internal void Push(in T element)
@@ -120,7 +123,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Pops this instance
+        ///     Pops this instance
         /// </summary>
         /// <returns>The</returns>
         internal T Pop()

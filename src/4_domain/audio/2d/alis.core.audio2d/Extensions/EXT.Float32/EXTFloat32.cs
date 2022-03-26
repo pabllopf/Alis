@@ -65,7 +65,7 @@ namespace Alis.Core.Audio2D.Extensions.EXT.Float32
         ///     Checks if this extension is present.
         /// </summary>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent() => AL.AL.IsExtensionPresent(ExtensionName);
+        public static bool IsExtensionPresent() => AL.IsExtensionPresent(ExtensionName);
 
         /// <summary>
         ///     This function fills a buffer with audio buffer. All the pre-defined formats are PCM buffer, but this function
@@ -76,8 +76,8 @@ namespace Alis.Core.Audio2D.Extensions.EXT.Float32
         /// <param name="buffer">Pointer to a pinned audio buffer.</param>
         /// <param name="bytes">The size of the audio buffer in bytes.</param>
         /// <param name="freq">The frequency of the audio buffer.</param>
-        [DllImport(AL.AL.Lib, EntryPoint = "alBufferData", ExactSpelling = true,
-            CallingConvention = AL.AL.ALCallingConvention)]
+        [DllImport(AL.Lib, EntryPoint = "alBufferData", ExactSpelling = true,
+            CallingConvention = AL.ALCallingConvention)]
         public static extern unsafe void BufferData(int bid, FloatBufferFormat format, float* buffer, int bytes,
             int freq);
         // AL_API void AL_APIENTRY alBufferData( ALuint bid, ALenum format, const ALvoid* buffer, ALsizei size, ALsizei freq );
@@ -91,8 +91,8 @@ namespace Alis.Core.Audio2D.Extensions.EXT.Float32
         /// <param name="buffer">Pointer to a pinned audio buffer.</param>
         /// <param name="bytes">The size of the audio buffer in bytes.</param>
         /// <param name="freq">The frequency of the audio buffer.</param>
-        [DllImport(AL.AL.Lib, EntryPoint = "alBufferData", ExactSpelling = true,
-            CallingConvention = AL.AL.ALCallingConvention)]
+        [DllImport(AL.Lib, EntryPoint = "alBufferData", ExactSpelling = true,
+            CallingConvention = AL.ALCallingConvention)]
         public static extern void BufferData(int bid, FloatBufferFormat format, ref float buffer, int bytes, int freq);
         // AL_API void AL_APIENTRY alBufferData( ALuint bid, ALenum format, const ALvoid* buffer, ALsizei size, ALsizei freq );
 

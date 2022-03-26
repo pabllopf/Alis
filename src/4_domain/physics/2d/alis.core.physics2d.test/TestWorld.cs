@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Dynamics.World;
 using NUnit.Framework;
 
 namespace Alis.Core.Physics2D.Test
@@ -41,13 +40,13 @@ namespace Alis.Core.Physics2D.Test
         /// <summary>
         ///     The world
         /// </summary>
-        public World world;
+        public World.World world;
 
         /// <summary>
         ///     Setup this instance
         /// </summary>
         [SetUp]
-        public void Setup() => world = new World(Vector2.Zero);
+        public void Setup() => world = new World.World(Vector2.Zero);
 
         /// <summary>
         ///     Tests that test world creation

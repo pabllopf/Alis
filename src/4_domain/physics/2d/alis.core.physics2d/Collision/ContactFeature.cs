@@ -27,14 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// The features that intersect to form the contact point
     /// This must be 4 bytes or less.
     internal struct ContactFeature
     {
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         internal byte indexA;
 

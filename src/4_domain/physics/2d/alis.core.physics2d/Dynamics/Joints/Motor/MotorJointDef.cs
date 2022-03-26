@@ -28,14 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
+namespace Alis.Core.Physics2D.Joints.Motor
 {
     /// <summary>
-    /// The motor joint def class
+    ///     The motor joint def class
     /// </summary>
-    /// <seealso cref="JointDef"/>
+    /// <seealso cref="JointDef" />
     public class MotorJointDef : JointDef
     {
         /// The bodyB angle minus bodyA angle in radians.
@@ -54,7 +54,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
         public float maxTorque;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MotorJointDef"/> class
+        ///     Initializes a new instance of the <see cref="MotorJointDef" /> class
         /// </summary>
         private MotorJointDef()
         {

@@ -30,7 +30,6 @@
 using System;
 using Alis.Core;
 using Alis.Core.Managers;
-using Alis.Core.Settings;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 

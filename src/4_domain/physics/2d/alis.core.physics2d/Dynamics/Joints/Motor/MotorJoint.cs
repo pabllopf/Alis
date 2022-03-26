@@ -29,108 +29,125 @@
 
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.World;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
+namespace Alis.Core.Physics2D.Joints.Motor
 {
     /// <summary>
-    /// The motor joint class
+    ///     The motor joint class
     /// </summary>
-    /// <seealso cref="Joint"/>
+    /// <seealso cref="Joint" />
     internal class MotorJoint : Joint
     {
         /// <summary>
-        /// The angularerror
+        ///     The angularerror
         /// </summary>
         private float m_angularError;
+
         /// <summary>
-        /// The angularimpulse
+        ///     The angularimpulse
         /// </summary>
         private float m_angularImpulse;
+
         /// <summary>
-        /// The angularmass
+        ///     The angularmass
         /// </summary>
         private float m_angularMass;
+
         /// <summary>
-        /// The angularoffset
+        ///     The angularoffset
         /// </summary>
         private float m_angularOffset;
+
         /// <summary>
-        /// The correctionfactor
+        ///     The correctionfactor
         /// </summary>
         private float m_correctionFactor;
 
         // Solver temp
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private int m_indexB;
+
         /// <summary>
-        /// The invia
+        ///     The invia
         /// </summary>
         private float m_invIA;
+
         /// <summary>
-        /// The invib
+        ///     The invib
         /// </summary>
         private float m_invIB;
+
         /// <summary>
-        /// The invmassa
+        ///     The invmassa
         /// </summary>
         private float m_invMassA;
+
         /// <summary>
-        /// The invmassb
+        ///     The invmassb
         /// </summary>
         private float m_invMassB;
+
         /// <summary>
-        /// The linearerror
+        ///     The linearerror
         /// </summary>
         private Vector2 m_linearError;
+
         /// <summary>
-        /// The linearimpulse
+        ///     The linearimpulse
         /// </summary>
         private Vector2 m_linearImpulse;
+
         /// <summary>
-        /// The linearmass
+        ///     The linearmass
         /// </summary>
         private Matrix3x2 m_linearMass;
 
         // Solver shared
         /// <summary>
-        /// The linearoffset
+        ///     The linearoffset
         /// </summary>
         private Vector2 m_linearOffset;
+
         /// <summary>
-        /// The localcentera
+        ///     The localcentera
         /// </summary>
         private Vector2 m_localCenterA;
+
         /// <summary>
-        /// The localcenterb
+        ///     The localcenterb
         /// </summary>
         private Vector2 m_localCenterB;
+
         /// <summary>
-        /// The maxforce
+        ///     The maxforce
         /// </summary>
         private float m_maxForce;
+
         /// <summary>
-        /// The maxtorque
+        ///     The maxtorque
         /// </summary>
         private float m_maxTorque;
+
         /// <summary>
-        /// The ra
+        ///     The ra
         /// </summary>
         private Vector2 m_rA;
+
         /// <summary>
-        /// The rb
+        ///     The rb
         /// </summary>
         private Vector2 m_rB;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MotorJoint"/> class
+        ///     Initializes a new instance of the <see cref="MotorJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         internal MotorJoint(in MotorJointDef def) : base(def)
@@ -144,23 +161,24 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
         }
 
         /// <summary>
-        /// Gets the value of the get anchor a
+        ///     Gets the value of the get anchor a
         /// </summary>
         public override Vector2 GetAnchorA => m_bodyA.GetPosition();
+
         /// <summary>
-        /// Gets the value of the get anchor b
+        ///     Gets the value of the get anchor b
         /// </summary>
         public override Vector2 GetAnchorB => m_bodyB.GetPosition();
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float inv_dt) => inv_dt * m_linearImpulse;
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The float</returns>
@@ -179,7 +197,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
         }
 
         /// <summary>
-        /// Gets the linear offset
+        ///     Gets the linear offset
         /// </summary>
         /// <returns>The vector</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -198,7 +216,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
         }
 
         /// <summary>
-        /// Gets the angular offset
+        ///     Gets the angular offset
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -238,7 +256,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
         public float GetCorrectionFactor() => m_correctionFactor;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(in SolverData data)
@@ -323,7 +341,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(in SolverData data)
@@ -387,7 +405,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Motor
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

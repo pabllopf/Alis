@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Dynamics.Bodies;
+using Alis.Core.Physics2D.Bodies;
 using NUnit.Framework;
 
 namespace Alis.Core.Physics2D.Test.Dynamics

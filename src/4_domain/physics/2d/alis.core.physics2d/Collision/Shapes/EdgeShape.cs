@@ -30,10 +30,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Math = Alis.Core.Physics2D.Common.Math;
 
-namespace Alis.Core.Physics2D.Collision.Shapes
+namespace Alis.Core.Physics2D.Shapes
 {
     /// <summary>
     ///     A line segment (edge) shape. These can be connected in chains or loops
@@ -43,33 +41,37 @@ namespace Alis.Core.Physics2D.Collision.Shapes
     public class EdgeShape : Shape
     {
         /// <summary>
-        /// The onesided
+        ///     The onesided
         /// </summary>
         internal bool m_oneSided;
+
         /// <summary>
-        /// The vertex0
+        ///     The vertex0
         /// </summary>
         internal Vector2? m_vertex0;
+
         /// <summary>
-        /// The vertex1
+        ///     The vertex1
         /// </summary>
         internal Vector2 m_vertex1;
+
         /// <summary>
-        /// The vertex2
+        ///     The vertex2
         /// </summary>
         internal Vector2 m_vertex2;
+
         /// <summary>
-        /// The vertex3
+        ///     The vertex3
         /// </summary>
         internal Vector2? m_vertex3;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdgeShape"/> class
+        ///     Initializes a new instance of the <see cref="EdgeShape" /> class
         /// </summary>
         public EdgeShape() => m_radius = Settings.PolygonRadius;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdgeShape"/> class
+        ///     Initializes a new instance of the <see cref="EdgeShape" /> class
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -79,7 +81,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the value of the vertex 1
+        ///     Gets the value of the vertex 1
         /// </summary>
         public Vector2 Vertex1
         {
@@ -88,7 +90,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the value of the vertex 2
+        ///     Gets the value of the vertex 2
         /// </summary>
         public Vector2 Vertex2
         {
@@ -97,11 +99,12 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the value of the contact match
+        ///     Gets the value of the contact match
         /// </summary>
         internal override byte ContactMatch => contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         internal const byte contactMatch = 1;
 
@@ -121,7 +124,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Sets the two sided using the specified v 1
+        ///     Sets the two sided using the specified v 1
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -133,7 +136,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Sets the v 1
+        ///     Sets the v 1
         /// </summary>
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
@@ -145,19 +148,19 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The shape</returns>
         public override Shape Clone() => (EdgeShape) MemberwiseClone();
 
         /// <summary>
-        /// Gets the child count
+        ///     Gets the child count
         /// </summary>
         /// <returns>The int</returns>
         public override int GetChildCount() => 1;
 
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="xf">The xf</param>
         /// <param name="p">The </param>
@@ -165,7 +168,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         public override bool TestPoint(in Transform xf, in Vector2 p) => false;
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -244,7 +247,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the aabb using the specified aabb
+        ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="xf">The xf</param>
@@ -263,7 +266,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the mass using the specified mass data
+        ///     Computes the mass using the specified mass data
         /// </summary>
         /// <param name="massData">The mass data</param>
         /// <param name="density">The density</param>
@@ -275,7 +278,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Sets the v 0
+        ///     Sets the v 0
         /// </summary>
         /// <param name="v0">The </param>
         /// <param name="v1">The </param>

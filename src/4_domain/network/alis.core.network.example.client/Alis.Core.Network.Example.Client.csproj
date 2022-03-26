@@ -3,16 +3,7 @@
     <Import Project="$(SolutionDir)/0_config/general.props"/>
     <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
     <Import Project="$(SolutionDir)/0_config/licence.props"/>
-
-    <PropertyGroup>
-        <OutputType>Exe</OutputType>
-
-
-    </PropertyGroup>
-
-
-    <ItemGroup>
-        <ProjectReference Include="..\alis.core.network\Alis.Core.Network.csproj"/>
-    </ItemGroup>
+    <Import Project="$(SolutionDir)/0_config/executable.props"/>
+    <Import Project="$(SolutionDir)/0_config/network.props"/>
 
 </Project>

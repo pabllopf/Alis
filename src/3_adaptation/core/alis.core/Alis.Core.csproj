@@ -1,30 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
+    <Import Project="$(SolutionDir)/0_config/nuget.props"/>
 
+    <Import Project="$(SolutionDir)/0_config/audio2d.props"/>
+    <Import Project="$(SolutionDir)/0_config/audio3d.props"/>
+    <Import Project="$(SolutionDir)/0_config/graphics2D.props"/>
+    <Import Project="$(SolutionDir)/0_config/graphics3D.props"/>
+    <Import Project="$(SolutionDir)/0_config/cloud.props"/>
+    <Import Project="$(SolutionDir)/0_config/input.props"/>
+    <Import Project="$(SolutionDir)/0_config/output.props"/>
+    <Import Project="$(SolutionDir)/0_config/network.props"/>
+    <Import Project="$(SolutionDir)/0_config/time.props"/>
+    <Import Project="$(SolutionDir)/0_config/physics2d.props"/>
+    <Import Project="$(SolutionDir)/0_config/physics3d.props"/>
 
     <ItemGroup>
-        <Folder Include="Systems" />
+        <ProjectReference Include="..\..\..\5_skeleton\fluent\alis.fluentapi\Alis.FluentApi.csproj"/>
+        <ProjectReference Include="..\..\..\5_skeleton\tools\alis.tools\Alis.Tools.csproj"/>
     </ItemGroup>
 
-
     <ItemGroup>
-      <ProjectReference Include="..\..\..\4_domain\audio\2d\alis.core.audio2d\Alis.Core.Audio2D.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\audio\3d\alis.core.audio3d\Alis.Core.Audio3D.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\graphics\2d\alis.core.graphics2d\Alis.Core.Graphics2D.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\graphics\3d\alis.core.graphics3d\Alis.Core.Graphics3D.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\input\alis.core.input\Alis.Core.Input.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\network\alis.core.network\Alis.Core.Network.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\output\alis.core.output\Alis.Core.Output.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\physics\2d\alis.core.physics2d\Alis.Core.Physics2D.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\physics\3d\alis.core.physics3d\Alis.Core.Physics3D.csproj" />
-      <ProjectReference Include="..\..\..\4_domain\time\alis.core.time\Alis.Core.Time.csproj" />
-      <ProjectReference Include="..\..\fluent\alis.fluentapi\Alis.FluentApi.csproj" />
-      <ProjectReference Include="..\..\tools\alis.tools\Alis.Tools.csproj" />
+        <PackageReference Include="CSFML"/>
     </ItemGroup>
 
 

@@ -29,19 +29,20 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
-    /// The position
+    ///     The position
     /// </summary>
     public struct Position
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Vector2 c;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float a;
     }

@@ -29,12 +29,12 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
+using Alis.Core.Graphics2D.Graphics;
+using Alis.Core.Graphics2D.Systems;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Shapes;
 using Alis.Core.Systems;
-using SFML.Graphics;
-using SFML.System;
 
 namespace Alis.Core.Components
 {
@@ -45,79 +45,83 @@ namespace Alis.Core.Components
     public class BoxCollider2D : Collider
     {
         /// <summary>
-        /// The rectangle shape
+        ///     The rectangle shape
         /// </summary>
         private RectangleShape rectangleShape;
+
         /// <summary>
-        /// Gets or sets the value of the width
+        ///     Gets or sets the value of the width
         /// </summary>
         public float Width { get; set; } = 10.0f;
 
         /// <summary>
-        /// Gets or sets the value of the height
+        ///     Gets or sets the value of the height
         /// </summary>
         public float Height { get; set; } = 10.0f;
 
         /// <summary>
-        /// Gets or sets the value of the density
+        ///     Gets or sets the value of the density
         /// </summary>
         public float Density { get; set; } = 1.0f;
 
         /// <summary>
-        /// Gets or sets the value of the rotation
+        ///     Gets or sets the value of the rotation
         /// </summary>
         public float Rotation { get; set; } = 1.0f;
 
         /// <summary>
-        /// Gets or sets the value of the relative position
+        ///     Gets or sets the value of the relative position
         /// </summary>
         public Vector2 RelativePosition { get; set; } = new Vector2(0, 0);
 
         /// <summary>
-        /// Gets or sets the value of the body
+        ///     Gets or sets the value of the body
         /// </summary>
         public Body Body { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the auto tilling
+        ///     Gets or sets the value of the auto tilling
         /// </summary>
         public bool AutoTilling { get; set; } = false;
 
         /// <summary>
-        /// Gets or sets the value of the body type
+        ///     Gets or sets the value of the body type
         /// </summary>
         public BodyType BodyType { get; set; } = BodyType.Static;
 
 
         /// <summary>
-        /// Gets or sets the value of the restitution
+        ///     Gets or sets the value of the restitution
         /// </summary>
         public float Restitution { get; set; } = 0.0f;
+
         /// <summary>
-        /// Gets or sets the value of the friction
+        ///     Gets or sets the value of the friction
         /// </summary>
         public float Friction { get; set; } = 0.0f;
+
         /// <summary>
-        /// Gets or sets the value of the fixed rotation
+        ///     Gets or sets the value of the fixed rotation
         /// </summary>
         public bool FixedRotation { get; set; } = false;
+
         /// <summary>
-        /// Gets or sets the value of the mass
+        ///     Gets or sets the value of the mass
         /// </summary>
         public float Mass { get; set; } = 10.0f;
 
         /// <summary>
-        /// Gets or sets the value of the gravity scale
+        ///     Gets or sets the value of the gravity scale
         /// </summary>
         public float GravityScale { get; set; } = 1.0f;
 
         /// <summary>
-        /// Gets or sets the value of the linear velocity
+        ///     Gets or sets the value of the linear velocity
         /// </summary>
         public Vector2 LinearVelocity { get; set; } = Vector2.Zero;
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
@@ -166,7 +170,7 @@ namespace Alis.Core.Components
         }
 
         /// <summary>
-        /// Creates the body
+        ///     Creates the body
         /// </summary>
         /// <returns>The body</returns>
         private Body CreateBody()
@@ -214,14 +218,14 @@ namespace Alis.Core.Components
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
         }
 
         /// <summary>
-        /// Befores the update
+        ///     Befores the update
         /// </summary>
         public override void BeforeUpdate()
         {
@@ -232,21 +236,21 @@ namespace Alis.Core.Components
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
         }
 
         /// <summary>
-        /// Afters the update
+        ///     Afters the update
         /// </summary>
         public override void AfterUpdate()
         {
         }
 
         /// <summary>
-        /// Gets the drawable
+        ///     Gets the drawable
         /// </summary>
         /// <returns>The drawable</returns>
         public override Drawable GetDrawable() => rectangleShape;

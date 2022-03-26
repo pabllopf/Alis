@@ -27,23 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
-    /// The solver data class
+    ///     The solver data class
     /// </summary>
     public class SolverData
     {
         /// <summary>
-        /// The positions
+        ///     The positions
         /// </summary>
         internal Position[] positions;
+
         /// <summary>
-        /// The step
+        ///     The step
         /// </summary>
         internal TimeStep step;
+
         /// <summary>
-        /// The velocities
+        ///     The velocities
         /// </summary>
         internal Velocity[] velocities;
     }

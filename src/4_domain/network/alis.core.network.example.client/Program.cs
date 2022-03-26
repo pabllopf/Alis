@@ -29,10 +29,10 @@
 
 using System;
 using System.Threading.Tasks;
-using Alis.Core.Network.Example.Client.Complex;
-using Alis.Core.Network.Example.Client.Simple;
+using Alis.Core.Network.Exceptions.Example.Client.Complex;
+using Alis.Core.Network.Exceptions.Example.Client.Simple;
 
-namespace Alis.Core.Network.Example.Client
+namespace Alis.Core.Network.Exceptions.Example.Client
 {
     /// <summary>
     ///     The program class

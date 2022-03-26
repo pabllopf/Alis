@@ -30,34 +30,37 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Collision.Shapes;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The distance proxy
+    ///     The distance proxy
     /// </summary>
     public struct DistanceProxy
     {
         /// <summary>
-        /// The buffer
+        ///     The buffer
         /// </summary>
         internal Vector2[] _buffer; // = new Vector2[2];
+
         /// <summary>
-        /// The vertices
+        ///     The vertices
         /// </summary>
         internal Vector2[] _vertices;
+
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal int _count;
+
         /// <summary>
-        /// The radius
+        ///     The radius
         /// </summary>
         internal float _radius;
 
         /// <summary>
-        /// Sets the vertices
+        ///     Sets the vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <param name="count">The count</param>
@@ -70,7 +73,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Sets the shape
+        ///     Sets the shape
         /// </summary>
         /// <param name="shape">The shape</param>
         /// <param name="index">The index</param>
@@ -118,7 +121,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the support using the specified d
+        ///     Gets the support using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The best index</returns>
@@ -141,14 +144,14 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the vertex count
+        ///     Gets the vertex count
         /// </summary>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetVertexCount() => _count;
 
         /// <summary>
-        /// Gets the value of the vertex count
+        ///     Gets the value of the vertex count
         /// </summary>
         public int VertexCount
         {
@@ -157,7 +160,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the vertex using the specified index
+        ///     Gets the vertex using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The vector</returns>
@@ -165,7 +168,7 @@ namespace Alis.Core.Physics2D.Collision
         public Vector2 GetVertex(int index) => _vertices[index];
 
         /// <summary>
-        /// Gets the support using the specified d
+        ///     Gets the support using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The best index</returns>
@@ -189,7 +192,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the support vertex using the specified d
+        ///     Gets the support vertex using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The vector</returns>

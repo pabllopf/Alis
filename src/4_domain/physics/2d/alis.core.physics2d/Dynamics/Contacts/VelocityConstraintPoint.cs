@@ -29,39 +29,45 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The velocity constraint point class
+    ///     The velocity constraint point class
     /// </summary>
     internal class VelocityConstraintPoint
     {
         /// <summary>
-        /// The normal impulse
+        ///     The normal impulse
         /// </summary>
         internal float normalImpulse;
+
         /// <summary>
-        /// The normal mass
+        ///     The normal mass
         /// </summary>
         internal float normalMass;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal Vector2 rA;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal Vector2 rB;
+
         /// <summary>
-        /// The tangent impulse
+        ///     The tangent impulse
         /// </summary>
         internal float tangentImpulse;
+
         /// <summary>
-        /// The tangent mass
+        ///     The tangent mass
         /// </summary>
         internal float tangentMass;
+
         /// <summary>
-        /// The velocity bias
+        ///     The velocity bias
         /// </summary>
         internal float velocityBias;
     }

@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     Used for computing contact manifolds.
@@ -37,11 +37,12 @@ namespace Alis.Core.Physics2D.Collision
     internal struct ClipVertex
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal Vector2 v;
+
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         internal ContactID id;
     }

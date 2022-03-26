@@ -29,60 +29,66 @@
 
 using System;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The settings class
+    ///     The settings class
     /// </summary>
     public class Settings
     {
         /// <summary>
-        /// The max toi iterations
+        ///     The max toi iterations
         /// </summary>
         public const int MaxTOIIterations = 20;
 
         /// <summary>
-        /// The aabb multiplier
+        ///     The aabb multiplier
         /// </summary>
         public const float AABBMultiplier = 4.0f;
+
         /// <summary>
-        /// The aabb extension
+        ///     The aabb extension
         /// </summary>
         public const float AABBExtension = 0.1f;
+
         /// <summary>
-        /// The max toi contacts
+        ///     The max toi contacts
         /// </summary>
         public const int MaxTOIContacts = 32;
+
         /// <summary>
-        /// The max sub steps
+        ///     The max sub steps
         /// </summary>
         public const int MaxSubSteps = 8;
 
         /// <summary>
-        /// The epsilon
+        ///     The epsilon
         /// </summary>
         public const float FLT_EPSILON = float.Epsilon; //1.192092896e-07F;//smallest such that 1.0f+FLT_EPSILON != 1.0f
 
         /// <summary>
-        /// The flt epsilon
+        ///     The flt epsilon
         /// </summary>
         public const float
             FLT_EPSILON_SQUARED = FLT_EPSILON * FLT_EPSILON; //smallest such that 1.0f+FLT_EPSILON != 1.0f
 
         /// <summary>
-        /// The pib
+        ///     The pib
         /// </summary>
         public const float Pib2 = 3.14159265359f; // Original code. Comes out at 3.1415927f
+
         /// <summary>
-        /// The pi
+        ///     The pi
         /// </summary>
         public const float Pi = MathF.PI; // Also 3.1415927f
+
         /// <summary>
-        /// The pi
+        ///     The pi
         /// </summary>
         public const float Pi2 = (float) System.Math.PI; // Also displayed as "3.1415927f"
+
         /// <summary>
-        /// The pi
+        ///     The pi
         /// </summary>
         public const float Tau = 2f * Pi;
 
@@ -90,19 +96,22 @@ namespace Alis.Core.Physics2D.Common
 
         // Collision
         /// <summary>
-        /// The max manifold points
+        ///     The max manifold points
         /// </summary>
         public const int MaxManifoldPoints = 2;
+
         /// <summary>
-        /// The max polygon vertices
+        ///     The max polygon vertices
         /// </summary>
         public const int MaxPolygonVertices = 8;
+
         /// <summary>
-        /// The max proxies
+        ///     The max proxies
         /// </summary>
         public const int MaxProxies = 512; // this must be a power of two
+
         /// <summary>
-        /// The max proxies
+        ///     The max proxies
         /// </summary>
         public const int MaxPairs = 8 * MaxProxies; // this must be a power of two
 
@@ -169,7 +178,7 @@ namespace Alis.Core.Physics2D.Common
         public const float MaxLinearVelocity = 200.0f;
 
         /// <summary>
-        /// The max linear velocity
+        ///     The max linear velocity
         /// </summary>
         public const float MaxLinearVelocitySquared = MaxLinearVelocity * MaxLinearVelocity;
 
@@ -186,7 +195,7 @@ namespace Alis.Core.Physics2D.Common
         public const float MaxTranslation = 2.0f;
 
         /// <summary>
-        /// The max translation
+        ///     The max translation
         /// </summary>
         public const float MaxTranslationSquared = MaxTranslation * MaxTranslation;
 
@@ -197,7 +206,7 @@ namespace Alis.Core.Physics2D.Common
         public const float MaxRotation = 0.5f * Pi;
 
         /// <summary>
-        /// The max rotation
+        ///     The max rotation
         /// </summary>
         public const float MaxRotationSquared = MaxRotation * MaxRotation;
 
@@ -225,27 +234,29 @@ namespace Alis.Core.Physics2D.Common
         public const float AngularSleepTolerance = 2.0f / 180.0f; // 2 degrees/s
 
         /// <summary>
-        /// The block solve
+        ///     The block solve
         /// </summary>
         public const bool BlockSolve = true;
+
         /// <summary>
-        /// The baumgarte
+        ///     The baumgarte
         /// </summary>
         public const float Baumgarte = 0.2f;
+
         /// <summary>
-        /// The toi baumgarte
+        ///     The toi baumgarte
         /// </summary>
         public const float TOIBaumgarte = 0.75f;
 
         /// <summary>
-        /// Forces the scale using the specified x
+        ///     Forces the scale using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The float</returns>
         public static float FORCE_SCALE(float x) => x;
 
         /// <summary>
-        /// Forces the inv scale using the specified x
+        ///     Forces the inv scale using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The float</returns>

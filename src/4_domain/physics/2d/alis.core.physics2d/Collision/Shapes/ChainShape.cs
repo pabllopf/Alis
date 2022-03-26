@@ -30,10 +30,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Math = Alis.Core.Physics2D.Common.Math;
 
-namespace Alis.Core.Physics2D.Collision.Shapes
+namespace Alis.Core.Physics2D.Shapes
 {
     /// <summary>
     ///     /// The chain has one-sided collision, with the surface normal pointing to the right of the edge.
@@ -44,26 +42,28 @@ namespace Alis.Core.Physics2D.Collision.Shapes
     public class ChainShape : Shape
     {
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal int m_count;
+
         /// <summary>
-        /// The nextvertex
+        ///     The nextvertex
         /// </summary>
         internal Vector2 m_prevVertex, m_nextVertex;
+
         /// <summary>
-        /// The vertices
+        ///     The vertices
         /// </summary>
         internal Vector2[] m_vertices;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChainShape"/> class
+        ///     Initializes a new instance of the <see cref="ChainShape" /> class
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public ChainShape() => m_radius = Settings.PolygonRadius;
 
         /// <summary>
-        /// Gets the value of the vertices
+        ///     Gets the value of the vertices
         /// </summary>
         public Vector2[] Vertices
         {
@@ -72,11 +72,12 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the value of the contact match
+        ///     Gets the value of the contact match
         /// </summary>
         internal override byte ContactMatch => contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         internal const byte contactMatch = 3;
 
@@ -117,19 +118,19 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The shape</returns>
         public override Shape Clone() => (ChainShape) MemberwiseClone();
 
         /// <summary>
-        /// Gets the child count
+        ///     Gets the child count
         /// </summary>
         /// <returns>The int</returns>
         public override int GetChildCount() => m_count - 1;
 
         /// <summary>
-        /// Gets the child edge using the specified edge
+        ///     Gets the child edge using the specified edge
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <param name="index">The index</param>
@@ -147,7 +148,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="xf">The xf</param>
         /// <param name="p">The </param>
@@ -155,7 +156,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         public override bool TestPoint(in Transform xf, in Vector2 p) => false;
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -184,7 +185,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the aabb using the specified aabb
+        ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="xf">The xf</param>
@@ -206,7 +207,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the mass using the specified mass data
+        ///     Computes the mass using the specified mass data
         /// </summary>
         /// <param name="massData">The mass data</param>
         /// <param name="density">The density</param>

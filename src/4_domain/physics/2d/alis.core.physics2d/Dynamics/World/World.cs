@@ -30,20 +30,17 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Contacts;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
-using Alis.Core.Physics2D.Dynamics.Joints;
-using Alis.Core.Physics2D.Dynamics.Joints.Distance;
-using Alis.Core.Physics2D.Dynamics.Joints.Mouse;
-using Alis.Core.Physics2D.Dynamics.Joints.Pulley;
-using Alis.Core.Physics2D.Dynamics.World.Callbacks;
-using Math = Alis.Core.Physics2D.Common.Math;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Contacts;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Joints;
+using Alis.Core.Physics2D.Joints.Distance;
+using Alis.Core.Physics2D.Joints.Mouse;
+using Alis.Core.Physics2D.Joints.Pulley;
+using Alis.Core.Physics2D.Shapes;
+using Alis.Core.Physics2D.World.Callbacks;
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
     ///     The world class manages all physics entities, dynamic simulation,
@@ -52,92 +49,99 @@ namespace Alis.Core.Physics2D.Dynamics.World
     public class World
     {
         /// <summary>
-        /// The clearforces
+        ///     The clearforces
         /// </summary>
         private readonly bool m_clearForces;
 
         //internal BroadPhase     _broadPhase;
         /// <summary>
-        /// The contactmanager
+        ///     The contactmanager
         /// </summary>
         internal readonly ContactManager m_contactManager;
+
         /// <summary>
-        /// The continuousphysics
+        ///     The continuousphysics
         /// </summary>
         private readonly bool m_continuousPhysics;
+
         /// <summary>
-        /// The substepping
+        ///     The substepping
         /// </summary>
         private readonly bool m_subStepping;
 
         // These are for debugging the solver
         /// <summary>
-        /// The warmstarting
+        ///     The warmstarting
         /// </summary>
         private readonly bool m_warmStarting;
 
         /// <summary>
-        /// The draw debug data stub
+        ///     The draw debug data stub
         /// </summary>
         private Action DrawDebugDataStub = () => { };
+
         /// <summary>
-        /// The allowsleep
+        ///     The allowsleep
         /// </summary>
         private bool m_allowSleep;
 
         /// <summary>
-        /// The bodycount
+        ///     The bodycount
         /// </summary>
         private int m_bodyCount;
 
         /// <summary>
-        /// The bodylist
+        ///     The bodylist
         /// </summary>
         private Body m_bodyList;
+
         /// <summary>
-        /// The debugdraw
+        ///     The debugdraw
         /// </summary>
         private DebugDraw m_debugDraw;
 
         /// <summary>
-        /// The destructionlistener
+        ///     The destructionlistener
         /// </summary>
         private DestructionListener m_destructionListener;
 
         /// <summary>
-        /// The gravity
+        ///     The gravity
         /// </summary>
         private Vector2 m_gravity;
 
         /// <summary>
-        /// The inv dt0
+        ///     The inv dt0
         /// </summary>
         private float m_inv_dt0;
+
         /// <summary>
-        /// The jointcount
+        ///     The jointcount
         /// </summary>
         private int m_jointCount;
+
         /// <summary>
-        /// The jointlist
+        ///     The jointlist
         /// </summary>
         private Joint m_jointList;
+
         /// <summary>
-        /// The locked
+        ///     The locked
         /// </summary>
         private bool m_locked;
 
         /// <summary>
-        /// The newcontacts
+        ///     The newcontacts
         /// </summary>
         internal bool m_newContacts;
 
         /// <summary>
-        /// The stepcomplete
+        ///     The stepcomplete
         /// </summary>
         private bool m_stepComplete;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="World"/> class
+        ///     Initializes a new instance of the <see cref="World" /> class
         /// </summary>
         public World() : this(new Vector2(0, -10))
         {
@@ -189,12 +193,12 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// The query callback
+        ///     The query callback
         /// </summary>
         public delegate bool QueryCallback(Fixture fixture);
 
         /// <summary>
-        /// The ray cast callback
+        ///     The ray cast callback
         /// </summary>
         public delegate void RayCastCallback(Fixture fixture, Vector2 point, Vector2 normal, float fraction);
 
@@ -215,7 +219,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         public Joint GetJointList() => m_jointList;
 
         /// <summary>
-        /// Gets the contact list
+        ///     Gets the contact list
         /// </summary>
         /// <returns>The contact</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -243,7 +247,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         public int GetContactCount() => m_contactManager.m_contactCount;
 
         /// <summary>
-        /// Sets the gravity using the specified gravity
+        ///     Sets the gravity using the specified gravity
         /// </summary>
         /// <param name="gravity">The gravity</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -253,28 +257,28 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Gets the gravity
+        ///     Gets the gravity
         /// </summary>
         /// <returns>The vector</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Vector2 GetGravity() => m_gravity;
 
         /// <summary>
-        /// Describes whether this instance is locked
+        ///     Describes whether this instance is locked
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsLocked() => m_locked;
 
         /// <summary>
-        /// Describes whether this instance get auto clear gorces
+        ///     Describes whether this instance get auto clear gorces
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool GetAutoClearGorces() => m_clearForces;
 
         /// <summary>
-        /// Gets the contact manager
+        ///     Gets the contact manager
         /// </summary>
         /// <returns>The contact manager</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -618,7 +622,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Sets the allow sleeping using the specified flag
+        ///     Sets the allow sleeping using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         public void SetAllowSleeping(bool flag)
@@ -640,7 +644,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
 
         // Find islands, integrate and solve constraints, solve position constraints
         /// <summary>
-        /// Solves the step
+        ///     Solves the step
         /// </summary>
         /// <param name="step">The step</param>
         private void Solve(TimeStep step)
@@ -828,7 +832,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
 
         // Find TOI contacts and solve them.
         /// <summary>
-        /// Solves the toi using the specified step
+        ///     Solves the toi using the specified step
         /// </summary>
         /// <param name="step">The step</param>
         private void SolveTOI(in TimeStep step)
@@ -1211,7 +1215,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Clears the forces
+        ///     Clears the forces
         /// </summary>
         public void ClearForces()
         {
@@ -1223,7 +1227,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Queries the aabb using the specified callback
+        ///     Queries the aabb using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="aabb">The aabb</param>
@@ -1239,7 +1243,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Queries the aabb using the specified fixtures
+        ///     Queries the aabb using the specified fixtures
         /// </summary>
         /// <param name="fixtures">The fixtures</param>
         /// <param name="aabb">The aabb</param>
@@ -1265,7 +1269,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Rays the cast using the specified callback
+        ///     Rays the cast using the specified callback
         /// </summary>
         /// <param name="callback">The callback</param>
         /// <param name="point1">The point</param>
@@ -1298,7 +1302,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Draws the joint using the specified joint
+        ///     Draws the joint using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
         private void DrawJoint(Joint joint)
@@ -1343,7 +1347,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Draws the fixture using the specified fixture
+        ///     Draws the fixture using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
         /// <param name="xf">The xf</param>
@@ -1388,7 +1392,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Draws the debug data
+        ///     Draws the debug data
         /// </summary>
         public void DrawDebugData()
         {
@@ -1493,7 +1497,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Draws the shape using the specified fixture
+        ///     Draws the shape using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
         /// <param name="xf">The xf</param>

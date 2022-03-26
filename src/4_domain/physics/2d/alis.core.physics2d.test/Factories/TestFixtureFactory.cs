@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Dynamics.Fixtures;
+using Alis.Core.Physics2D.Fixtures;
 using NUnit.Framework;
 
 namespace Alis.Core.Physics2D.Test.Factories

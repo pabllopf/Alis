@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Dynamics.Fixtures;
-using Alis.Core.Physics2D.Dynamics.Joints;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Joints;
 
 #pragma warning disable 618
 
-namespace Alis.Core.Physics2D.Dynamics.World.Callbacks
+namespace Alis.Core.Physics2D.World.Callbacks
 {
     /// <summary>
     ///     Joints and shapes are destroyed when their associated

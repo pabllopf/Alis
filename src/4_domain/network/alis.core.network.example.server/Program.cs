@@ -30,15 +30,19 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 
-namespace Alis.Core.Network.Example.Server
+namespace Alis.Core.Network.Exceptions.Example.Server
 {
     /// <summary>
     ///     The program class
     /// </summary>
     internal class Program
     {
+        private static void Main(string[] args)
+        {
+        }
+        
+        /*
         /// <summary>
         ///     The logger
         /// </summary>
@@ -90,6 +94,6 @@ namespace Alis.Core.Network.Example.Server
                 _logger.LogError(ex.ToString());
                 Console.ReadKey();
             }
-        }
+        }*/
     }
 }

@@ -29,19 +29,20 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
-    /// The velocity
+    ///     The velocity
     /// </summary>
     public struct Velocity
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Vector2 v;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float w;
     }

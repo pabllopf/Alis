@@ -27,27 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The point state enum
+    ///     The point state enum
     /// </summary>
     public enum PointState
     {
         /// <summary>
-        /// The null point state
+        ///     The null point state
         /// </summary>
         Null,
+
         /// <summary>
-        /// The add point state
+        ///     The add point state
         /// </summary>
         Add,
+
         /// <summary>
-        /// The persist point state
+        ///     The persist point state
         /// </summary>
         Persist,
+
         /// <summary>
-        /// The remove point state
+        ///     The remove point state
         /// </summary>
         Remove
     }

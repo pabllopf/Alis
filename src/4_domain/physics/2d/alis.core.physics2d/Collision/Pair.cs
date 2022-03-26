@@ -27,15 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The pair
+    ///     The pair
     /// </summary>
     internal struct Pair
     {
         /// <summary>
-        /// The proxy id
+        ///     The proxy id
         /// </summary>
         internal int proxyIdA, proxyIdB;
     }

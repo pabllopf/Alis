@@ -33,7 +33,7 @@ using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Alis.Core.Network.Example.Client.Complex
+namespace Alis.Core.Network.Exceptions.Example.Client.Complex
 {
     // This test sends a large buffer
     // NOTE: you would never normally do this. In order to send a large amount of data use a small buffer and make multiple calls

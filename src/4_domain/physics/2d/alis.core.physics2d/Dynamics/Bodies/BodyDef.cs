@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Dynamics.Bodies
+namespace Alis.Core.Physics2D.Bodies
 {
     /// <summary>
     ///     A body definition holds all the data needed to construct a rigid body.
@@ -57,12 +57,12 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
 
         // The angular velocity of the body.
         /// <summary>
-        /// The angular velocity
+        ///     The angular velocity
         /// </summary>
         public float angularVelocity;
 
         /// <summary>
-        /// The awake
+        ///     The awake
         /// </summary>
         public bool awake;
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         public bool bullet;
 
         /// <summary>
-        /// The enabled
+        ///     The enabled
         /// </summary>
         public bool enabled;
 
@@ -85,7 +85,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         public bool fixedRotation;
 
         /// <summary>
-        /// The gravity scale
+        ///     The gravity scale
         /// </summary>
         public float gravityScale;
 
@@ -106,7 +106,7 @@ namespace Alis.Core.Physics2D.Dynamics.Bodies
         public Vector2 position;
 
         /// <summary>
-        /// The type
+        ///     The type
         /// </summary>
         public BodyType type;
 

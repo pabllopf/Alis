@@ -29,35 +29,40 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The simplex vertex
+    ///     The simplex vertex
     /// </summary>
     internal struct SimplexVertex
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal Vector2 wA; // support point in shapeA
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal Vector2 wB; // support point in shapeB
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal Vector2 w; // wB - wA
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal float a; // barycentric coordinate for closest point
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         internal int indexA; // wA index
+
         /// <summary>
-        /// The index
+        ///     The index
         /// </summary>
         internal int indexB; // wB index
     }

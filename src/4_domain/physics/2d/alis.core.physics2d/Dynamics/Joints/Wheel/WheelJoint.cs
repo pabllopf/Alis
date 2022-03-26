@@ -46,172 +46,195 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.World;
-using Math = Alis.Core.Physics2D.Common.Math;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
+namespace Alis.Core.Physics2D.Joints.Wheel
 {
     /// <summary>
-    /// The wheel joint class
+    ///     The wheel joint class
     /// </summary>
-    /// <seealso cref="Joint"/>
-    /// <seealso cref="IMotorisedJoint"/>
+    /// <seealso cref="Joint" />
+    /// <seealso cref="IMotorisedJoint" />
     public class WheelJoint : Joint, IMotorisedJoint
     {
         /// <summary>
-        /// The localanchora
+        ///     The localanchora
         /// </summary>
         private readonly Vector2 m_localAnchorA;
+
         /// <summary>
-        /// The localanchorb
+        ///     The localanchorb
         /// </summary>
         private readonly Vector2 m_localAnchorB;
+
         /// <summary>
-        /// The localxaxisa
+        ///     The localxaxisa
         /// </summary>
         private readonly Vector2 m_localXAxisA;
+
         /// <summary>
-        /// The localyaxisa
+        ///     The localyaxisa
         /// </summary>
         private readonly Vector2 m_localYAxisA;
 
         /// <summary>
-        /// The ay
+        ///     The ay
         /// </summary>
         private Vector2 m_ax, m_ay;
+
         /// <summary>
-        /// The axialmass
+        ///     The axialmass
         /// </summary>
         private float m_axialMass;
 
         /// <summary>
-        /// The bias
+        ///     The bias
         /// </summary>
         private float m_bias;
+
         /// <summary>
-        /// The damping
+        ///     The damping
         /// </summary>
         private float m_damping;
 
         /// <summary>
-        /// The enablelimit
+        ///     The enablelimit
         /// </summary>
         private bool m_enableLimit;
+
         /// <summary>
-        /// The enablemotor
+        ///     The enablemotor
         /// </summary>
         private bool m_enableMotor;
+
         /// <summary>
-        /// The gamma
+        ///     The gamma
         /// </summary>
         private float m_gamma;
+
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float m_impulse;
 
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private int m_indexB;
+
         /// <summary>
-        /// The invia
+        ///     The invia
         /// </summary>
         private float m_invIA;
+
         /// <summary>
-        /// The invib
+        ///     The invib
         /// </summary>
         private float m_invIB;
+
         /// <summary>
-        /// The invmassa
+        ///     The invmassa
         /// </summary>
         private float m_invMassA;
+
         /// <summary>
-        /// The invmassb
+        ///     The invmassb
         /// </summary>
         private float m_invMassB;
+
         /// <summary>
-        /// The localcentera
+        ///     The localcentera
         /// </summary>
         private Vector2 m_localCenterA;
+
         /// <summary>
-        /// The localcenterb
+        ///     The localcenterb
         /// </summary>
         private Vector2 m_localCenterB;
 
         /// <summary>
-        /// The lowerimpulse
+        ///     The lowerimpulse
         /// </summary>
         private float m_lowerImpulse;
+
         /// <summary>
-        /// The lowertranslation
+        ///     The lowertranslation
         /// </summary>
         private float m_lowerTranslation;
 
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float m_mass;
 
         /// <summary>
-        /// The maxmotortorque
+        ///     The maxmotortorque
         /// </summary>
         private float m_maxMotorTorque;
 
         /// <summary>
-        /// The motorimpulse
+        ///     The motorimpulse
         /// </summary>
         private float m_motorImpulse;
+
         /// <summary>
-        /// The motormass
+        ///     The motormass
         /// </summary>
         private float m_motorMass;
+
         /// <summary>
-        /// The motorspeed
+        ///     The motorspeed
         /// </summary>
         private float m_motorSpeed;
+
         /// <summary>
-        /// The sbx
+        ///     The sbx
         /// </summary>
         private float m_sAx, m_sBx;
+
         /// <summary>
-        /// The sby
+        ///     The sby
         /// </summary>
         private float m_sAy, m_sBy;
+
         /// <summary>
-        /// The springimpulse
+        ///     The springimpulse
         /// </summary>
         private float m_springImpulse;
+
         /// <summary>
-        /// The springmass
+        ///     The springmass
         /// </summary>
         private float m_springMass;
 
         /// <summary>
-        /// The stiffness
+        ///     The stiffness
         /// </summary>
         private float m_stiffness;
+
         /// <summary>
-        /// The translation
+        ///     The translation
         /// </summary>
         private float m_translation;
+
         /// <summary>
-        /// The upperimpulse
+        ///     The upperimpulse
         /// </summary>
         private float m_upperImpulse;
+
         /// <summary>
-        /// The uppertranslation
+        ///     The uppertranslation
         /// </summary>
         private float m_upperTranslation;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WheelJoint"/> class
+        ///     Initializes a new instance of the <see cref="WheelJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public WheelJoint(WheelJointDef def) : base(def)
@@ -257,17 +280,17 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the value of the get anchor a
+        ///     Gets the value of the get anchor a
         /// </summary>
         public override Vector2 GetAnchorA => m_bodyA.GetWorldPoint(m_localAnchorA);
 
         /// <summary>
-        /// Gets the value of the get anchor b
+        ///     Gets the value of the get anchor b
         /// </summary>
         public override Vector2 GetAnchorB => m_bodyB.GetWorldPoint(m_localAnchorB);
 
         /// <summary>
-        /// Sets the motor speed using the specified speed
+        ///     Sets the motor speed using the specified speed
         /// </summary>
         /// <param name="speed">The speed</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -282,14 +305,14 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the motor speed
+        ///     Gets the motor speed
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetMotorSpeed() => m_motorSpeed;
 
         /// <summary>
-        /// Gets or sets the value of the motor speed
+        ///     Gets or sets the value of the motor speed
         /// </summary>
         public float MotorSpeed
         {
@@ -300,7 +323,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The vector</returns>
@@ -308,7 +331,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         public override Vector2 GetReactionForce(float inv_dt) => inv_dt * (m_impulse * m_ay + m_springImpulse * m_ax);
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The float</returns>
@@ -316,7 +339,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         public override float GetReactionTorque(float inv_dt) => inv_dt * m_motorImpulse;
 
         /// <summary>
-        /// Gets the joint translation
+        ///     Gets the joint translation
         /// </summary>
         /// <returns>The float</returns>
         public float GetJointTranslation()
@@ -333,7 +356,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the joint linear speed
+        ///     Gets the joint linear speed
         /// </summary>
         /// <returns>The float</returns>
         public float GetJointLinearSpeed()
@@ -362,28 +385,28 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the joint angle
+        ///     Gets the joint angle
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetJointAngle() => m_bodyB.m_sweep.a - m_bodyA.m_sweep.a;
 
         /// <summary>
-        /// Gets the joint angular speed
+        ///     Gets the joint angular speed
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetJointAngularSpeed() => m_bodyB.m_angularVelocity - m_bodyA.m_angularVelocity;
 
         /// <summary>
-        /// Describes whether this instance is limit enabled
+        ///     Describes whether this instance is limit enabled
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsLimitEnabled() => m_enableLimit;
 
         /// <summary>
-        /// Enables the limit using the specified flag
+        ///     Enables the limit using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -400,21 +423,21 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the lower limit
+        ///     Gets the lower limit
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private float GetLowerLimit() => m_lowerTranslation;
 
         /// <summary>
-        /// Gets the upper limit
+        ///     Gets the upper limit
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private float GetUpperLimit() => m_upperTranslation;
 
         /// <summary>
-        /// Sets the limits using the specified lower
+        ///     Sets the limits using the specified lower
         /// </summary>
         /// <param name="lower">The lower</param>
         /// <param name="upper">The upper</param>
@@ -434,14 +457,14 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Describes whether this instance is motor enabled
+        ///     Describes whether this instance is motor enabled
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool IsMotorEnabled() => m_enableMotor;
 
         /// <summary>
-        /// Enables the motor using the specified flag
+        ///     Enables the motor using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -456,7 +479,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Sets the max motor torque using the specified torque
+        ///     Sets the max motor torque using the specified torque
         /// </summary>
         /// <param name="torque">The torque</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -471,7 +494,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the motor torque using the specified inv dt
+        ///     Gets the motor torque using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The float</returns>
@@ -479,7 +502,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         private float GetMotorTorque(float inv_dt) => inv_dt * m_motorImpulse;
 
         /// <summary>
-        /// Sets the stiffness using the specified stiffness
+        ///     Sets the stiffness using the specified stiffness
         /// </summary>
         /// <param name="stiffness">The stiffness</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -489,14 +512,14 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the stiffness
+        ///     Gets the stiffness
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private float GetStiffness() => m_stiffness;
 
         /// <summary>
-        /// Sets the damping using the specified damping
+        ///     Sets the damping using the specified damping
         /// </summary>
         /// <param name="damping">The damping</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -506,14 +529,14 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Gets the damping
+        ///     Gets the damping
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private float GetDamping() => m_damping;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(in SolverData data)
@@ -665,7 +688,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(in SolverData data)
@@ -776,7 +799,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Wheel
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

@@ -28,33 +28,36 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The shape cast input
+    ///     The shape cast input
     /// </summary>
     public struct ShapeCastInput
     {
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         public DistanceProxy proxyA;
+
         /// <summary>
-        /// The proxy
+        ///     The proxy
         /// </summary>
         public DistanceProxy proxyB;
+
         /// <summary>
-        /// The transform
+        ///     The transform
         /// </summary>
         public Transform transformA;
+
         /// <summary>
-        /// The transform
+        ///     The transform
         /// </summary>
         public Transform transformB;
+
         /// <summary>
-        /// The translation
+        ///     The translation
         /// </summary>
         public Vector2 translationB;
     }

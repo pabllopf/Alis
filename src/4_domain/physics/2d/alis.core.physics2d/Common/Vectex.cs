@@ -31,15 +31,15 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The vectex class
+    ///     The vectex class
     /// </summary>
     public static class Vectex // vector extensions
     {
         /// <summary>
-        /// Gets the idx using the specified candidate
+        ///     Gets the idx using the specified candidate
         /// </summary>
         /// <param name="candidate">The candidate</param>
         /// <param name="n">The </param>
@@ -48,7 +48,7 @@ namespace Alis.Core.Physics2D.Common
         public static float GetIdx(in this Vector2 candidate, in int n) => n == 0 ? candidate.X : candidate.Y;
 
         /// <summary>
-        /// Crosses the s
+        ///     Crosses the s
         /// </summary>
         /// <param name="s">The </param>
         /// <param name="a">The </param>
@@ -57,7 +57,7 @@ namespace Alis.Core.Physics2D.Common
         public static Vector2 Cross(float s, Vector2 a) => new Vector2(-s * a.Y, s * a.X);
 
         /// <summary>
-        /// Crosses the a
+        ///     Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="s">The </param>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physics2D.Common
         public static Vector2 Cross(Vector2 a, float s) => new Vector2(s * a.Y, -s * a.X);
 
         /// <summary>
-        /// Crosses the a
+        ///     Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -75,7 +75,7 @@ namespace Alis.Core.Physics2D.Common
         public static float Cross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
 
         /// <summary>
-        /// Describes whether is valid
+        ///     Describes whether is valid
         /// </summary>
         /// <param name="candidate">The candidate</param>
         /// <returns>The bool</returns>
@@ -83,7 +83,7 @@ namespace Alis.Core.Physics2D.Common
         public static bool IsValid(this Vector2 candidate) => Math.IsValid(candidate.X) && Math.IsValid(candidate.Y);
 
         /// <summary>
-        /// Sets the v
+        ///     Sets the v
         /// </summary>
         /// <param name="v">The </param>
         /// <param name="x">The </param>
@@ -96,7 +96,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Sets the v
+        ///     Sets the v
         /// </summary>
         /// <param name="v">The </param>
         /// <param name="x">The </param>
@@ -108,7 +108,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Sets the zero using the specified v
+        ///     Sets the zero using the specified v
         /// </summary>
         /// <param name="v">The </param>
         [Obsolete(

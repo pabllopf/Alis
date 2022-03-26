@@ -66,7 +66,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         ///     Checks if this extension is present.
         /// </summary>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent() => AL.AL.IsExtensionPresent(ExtensionName);
+        public static bool IsExtensionPresent() => AL.IsExtensionPresent(ExtensionName);
 
         /// <summary>
         ///     Gets the source using the specified source
@@ -165,7 +165,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <summary>
         ///     The get sourcei 64v ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSourcei64vPtrDelegate(int source, SourceLatencyVector2i param, long* values);
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <summary>
         ///     The get sourcei 64v ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcei64vRefDelegate(int source, SourceLatencyVector2i param, out long values);
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <summary>
         ///     The get sourcei 64v array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcei64vArrayDelegate(int source, SourceLatencyVector2i param, long[] values);
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <summary>
         ///     The get sourcedv ptr delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private unsafe delegate void GetSourcedvPtrDelegate(int source, SourceLatencyVector2d param, double* values);
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <summary>
         ///     The get sourcedv ref delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcedvRefDelegate(int source, SourceLatencyVector2d param, out double values);
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <summary>
         ///     The get sourcedv array delegate
         /// </summary>
-        [UnmanagedFunctionPointer(AL.AL.ALCallingConvention)]
+        [UnmanagedFunctionPointer(AL.ALCallingConvention)]
         private delegate void GetSourcedvArrayDelegate(int source, SourceLatencyVector2d param, double[] values);
 
         /// <summary>

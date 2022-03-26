@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision.Shapes
+namespace Alis.Core.Physics2D.Shapes
 {
     /// <summary>
     ///     A shape is used for collision detection. You can create a shape however you like.
@@ -39,26 +38,29 @@ namespace Alis.Core.Physics2D.Collision.Shapes
     public abstract class Shape
     {
         /// <summary>
-        /// The radius
+        ///     The radius
         /// </summary>
         internal float m_radius;
+
         /// <summary>
-        /// Gets the value of the contact match
+        ///     Gets the value of the contact match
         /// </summary>
         internal abstract byte ContactMatch { get; }
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The shape</returns>
         public abstract Shape Clone();
+
         /// <summary>
-        /// Gets the child count
+        ///     Gets the child count
         /// </summary>
         /// <returns>The int</returns>
         public abstract int GetChildCount();
+
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="xf">The xf</param>
         /// <param name="p">The </param>
@@ -66,7 +68,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         public abstract bool TestPoint(in Transform xf, in Vector2 p);
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -80,7 +82,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
             int childIndex);
 
         /// <summary>
-        /// Computes the aabb using the specified aabb
+        ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="xf">The xf</param>
@@ -88,7 +90,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         public abstract void ComputeAABB(out AABB aabb, in Transform xf, int childIndex);
 
         /// <summary>
-        /// Computes the mass using the specified mass data
+        ///     Computes the mass using the specified mass data
         /// </summary>
         /// <param name="massData">The mass data</param>
         /// <param name="density">The density</param>

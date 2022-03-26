@@ -28,31 +28,29 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
-    /// The edge and circle contact class
+    ///     The edge and circle contact class
     /// </summary>
-    /// <seealso cref="Contact"/>
+    /// <seealso cref="Contact" />
     internal class EdgeAndCircleContact : Contact
     {
         /// <summary>
-        /// The circle
+        ///     The circle
         /// </summary>
         private readonly CircleShape circleB;
 
         /// <summary>
-        /// The edge
+        ///     The edge
         /// </summary>
         protected EdgeShape edgeA;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdgeAndCircleContact"/> class
+        ///     Initializes a new instance of the <see cref="EdgeAndCircleContact" /> class
         /// </summary>
         /// <param name="fixtureA">The fixture</param>
         /// <param name="indexA">The index</param>
@@ -73,7 +71,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Evaluates the manifold
+        ///     Evaluates the manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="xfA">The xf</param>

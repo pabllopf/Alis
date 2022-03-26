@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     This is used to compute the current state of a contact manifold.
@@ -38,7 +37,7 @@ namespace Alis.Core.Physics2D.Collision
     internal class WorldManifold
     {
         /// <summary>
-        /// The max manifold points
+        ///     The max manifold points
         /// </summary>
         private readonly float[] separations = new float[Settings.MaxManifoldPoints];
 

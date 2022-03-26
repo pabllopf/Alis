@@ -29,7 +29,7 @@
 
 using System;
 using System.Text.Json.Serialization;
-using SFML.Graphics;
+using Alis.Core.Graphics2D.Graphics;
 
 namespace Alis.Core.Components
 {
@@ -52,9 +52,10 @@ namespace Alis.Core.Components
         public bool IsTrigger { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the level
+        ///     Gets or sets the value of the level
         /// </summary>
-        [JsonPropertyName("_Level")] public int Level { get; set; }
+        [JsonPropertyName("_Level")]
+        public int Level { get; set; }
 
         /// <summary>
         ///     Gets the drawable

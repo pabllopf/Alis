@@ -30,9 +30,8 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     An axis aligned bounding box.
@@ -50,7 +49,7 @@ namespace Alis.Core.Physics2D.Collision
         internal Vector2 upperBound;
 
         /// <summary>
-        /// Gets the value of the lower bound
+        ///     Gets the value of the lower bound
         /// </summary>
         public Vector2 LowerBound
         {
@@ -59,7 +58,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the value of the upper bound
+        ///     Gets the value of the upper bound
         /// </summary>
         public Vector2 UpperBound
         {
@@ -68,7 +67,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Gets the value of the size
+        ///     Gets the value of the size
         /// </summary>
         public Vector2 Size
         {
@@ -112,7 +111,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Enlargeds the amount
+        ///     Enlargeds the amount
         /// </summary>
         /// <param name="amount">The amount</param>
         /// <returns>The aabb</returns>
@@ -123,7 +122,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Describes whether this instance intersects
+        ///     Describes whether this instance intersects
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
@@ -146,7 +145,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -221,7 +220,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Describes whether this instance is valid
+        ///     Describes whether this instance is valid
         /// </summary>
         /// <returns>The valid</returns>
         private bool IsValid()
@@ -233,7 +232,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AABB"/> class
+        ///     Initializes a new instance of the <see cref="AABB" /> class
         /// </summary>
         /// <param name="lowerBound">The lower bound</param>
         /// <param name="upperBound">The upper bound</param>

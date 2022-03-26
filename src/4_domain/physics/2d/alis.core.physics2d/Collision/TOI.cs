@@ -28,18 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Contacts;
+using Alis.Core.Physics2D.Contacts;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The toi class
+    ///     The toi class
     /// </summary>
     public static class TOI
     {
         /// <summary>
-        /// Times the of impact using the specified output
+        ///     Times the of impact using the specified output
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>

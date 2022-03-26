@@ -29,21 +29,21 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The pn union
+    ///     The pn union
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
     internal struct pnUnion
     {
         /// <summary>
-        /// The parent
+        ///     The parent
         /// </summary>
         [FieldOffset(0)] internal int parent;
 
         /// <summary>
-        /// The next
+        ///     The next
         /// </summary>
         [FieldOffset(0)] internal int next;
     }

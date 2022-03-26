@@ -44,10 +44,9 @@
 
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.World;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
+namespace Alis.Core.Physics2D.Joints.Distance
 {
     /// <summary>
     ///     A distance joint constrains two points on two bodies
@@ -57,80 +56,97 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
     public class DistanceJoint : Joint
     {
         /// <summary>
-        /// The length
+        ///     The length
         /// </summary>
         private readonly float m_length;
+
         /// <summary>
-        /// The localanchora
+        ///     The localanchora
         /// </summary>
         private readonly Vector2 m_localAnchorA;
+
         /// <summary>
-        /// The localanchorb
+        ///     The localanchorb
         /// </summary>
         private readonly Vector2 m_localAnchorB;
+
         /// <summary>
-        /// The bias
+        ///     The bias
         /// </summary>
         private float m_bias;
+
         /// <summary>
-        /// The gamma
+        ///     The gamma
         /// </summary>
         private float m_gamma;
+
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private float m_impulse;
+
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private int m_indexB;
+
         /// <summary>
-        /// The invia
+        ///     The invia
         /// </summary>
         private float m_invIA;
+
         /// <summary>
-        /// The invib
+        ///     The invib
         /// </summary>
         private float m_invIB;
+
         /// <summary>
-        /// The invmassa
+        ///     The invmassa
         /// </summary>
         private float m_invMassA;
+
         /// <summary>
-        /// The invmassb
+        ///     The invmassb
         /// </summary>
         private float m_invMassB;
+
         /// <summary>
-        /// The localcentera
+        ///     The localcentera
         /// </summary>
         private Vector2 m_localCenterA;
+
         /// <summary>
-        /// The localcenterb
+        ///     The localcenterb
         /// </summary>
         private Vector2 m_localCenterB;
+
         /// <summary>
-        /// The mass
+        ///     The mass
         /// </summary>
         private float m_mass; // effective mass for the constraint.
+
         /// <summary>
-        /// The ra
+        ///     The ra
         /// </summary>
         private Vector2 m_rA;
+
         /// <summary>
-        /// The rb
+        ///     The rb
         /// </summary>
         private Vector2 m_rB;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Vector2 m_u;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DistanceJoint"/> class
+        ///     Initializes a new instance of the <see cref="DistanceJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public DistanceJoint(DistanceJointDef def)
@@ -155,12 +171,12 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
         }
 
         /// <summary>
-        /// Gets the value of the get anchor a
+        ///     Gets the value of the get anchor a
         /// </summary>
         public override Vector2 GetAnchorA => m_bodyA.GetWorldPoint(m_localAnchorA);
 
         /// <summary>
-        /// Gets the value of the get anchor b
+        ///     Gets the value of the get anchor b
         /// </summary>
         public override Vector2 GetAnchorB => m_bodyB.GetWorldPoint(m_localAnchorB);
 
@@ -187,7 +203,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
         }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The vector</returns>
@@ -195,7 +211,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
         public override Vector2 GetReactionForce(float inv_dt) => inv_dt * m_impulse * m_u;
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The float</returns>
@@ -203,7 +219,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
         public override float GetReactionTorque(float inv_dt) => 0.0f;
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(in SolverData data)
@@ -298,7 +314,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(in SolverData data)
@@ -329,7 +345,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Distance
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

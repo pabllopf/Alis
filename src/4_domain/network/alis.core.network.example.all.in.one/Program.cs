@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Network.Example.All.In.One
+namespace Alis.Core.Network.Exceptions.Example.All.In.One
 {
     /// <summary>
     ///     The program class

@@ -30,12 +30,12 @@
 using System;
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
+namespace Alis.Core.Physics2D.Joints.Weld
 {
     /// <summary>
-    /// The weld joint def class
+    ///     The weld joint def class
     /// </summary>
-    /// <seealso cref="JointDef"/>
+    /// <seealso cref="JointDef" />
     public class WeldJointDef : JointDef
     {
         /// <summary>
@@ -44,27 +44,29 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Weld
         public float damping;
 
         /// <summary>
-        /// The damping ratio
+        ///     The damping ratio
         /// </summary>
         [Obsolete("Use Joint.AngularStiffness to get stiffness & damping values", true)]
         public float dampingRatio;
 
         /// <summary>
-        /// The frequency hz
+        ///     The frequency hz
         /// </summary>
         [Obsolete("Use Joint.AngularStiffness to get stiffness & damping values", true)]
         public float frequencyHz;
 
         /// <summary>
-        /// The local anchor
+        ///     The local anchor
         /// </summary>
         public Vector2 localAnchorA;
+
         /// <summary>
-        /// The local anchor
+        ///     The local anchor
         /// </summary>
         public Vector2 localAnchorB;
+
         /// <summary>
-        /// The reference angle
+        ///     The reference angle
         /// </summary>
         public float referenceAngle;
 

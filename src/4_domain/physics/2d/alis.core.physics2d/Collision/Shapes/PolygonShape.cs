@@ -31,9 +31,8 @@
 
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision.Shapes
+namespace Alis.Core.Physics2D.Shapes
 {
     /// <summary>
     ///     A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.
@@ -41,24 +40,27 @@ namespace Alis.Core.Physics2D.Collision.Shapes
     public class PolygonShape : Shape
     {
         /// <summary>
-        /// The centroid
+        ///     The centroid
         /// </summary>
         internal Vector2 m_centroid;
+
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal int m_count;
+
         /// <summary>
-        /// The max polygon vertices
+        ///     The max polygon vertices
         /// </summary>
         internal Vector2[] m_normals = new Vector2[Settings.MaxPolygonVertices];
+
         /// <summary>
-        /// The max polygon vertices
+        ///     The max polygon vertices
         /// </summary>
         internal Vector2[] m_vertices = new Vector2[Settings.MaxPolygonVertices];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PolygonShape"/> class
+        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public PolygonShape()
@@ -69,7 +71,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PolygonShape"/> class
+        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
         /// </summary>
         /// <param name="vectors">The vectors</param>
         public PolygonShape(params Vector2[] vectors) : this()
@@ -78,7 +80,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PolygonShape"/> class
+        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
         /// </summary>
         /// <param name="hX">The </param>
         /// <param name="hY">The </param>
@@ -88,22 +90,23 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the value of the contact match
+        ///     Gets the value of the contact match
         /// </summary>
         internal override byte ContactMatch => contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         internal const byte contactMatch = 2;
 
         /// <summary>
-        /// Clones this instance
+        ///     Clones this instance
         /// </summary>
         /// <returns>The shape</returns>
         public override Shape Clone() => (Shape) MemberwiseClone();
 
         /// <summary>
-        /// Sets the as box using the specified hx
+        ///     Sets the as box using the specified hx
         /// </summary>
         /// <param name="hx">The hx</param>
         /// <param name="hy">The hy</param>
@@ -124,7 +127,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Sets the as box using the specified hx
+        ///     Sets the as box using the specified hx
         /// </summary>
         /// <param name="hx">The hx</param>
         /// <param name="hy">The hy</param>
@@ -147,13 +150,13 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the child count
+        ///     Gets the child count
         /// </summary>
         /// <returns>The int</returns>
         public override int GetChildCount() => 1;
 
         /// <summary>
-        /// Computes the centroid using the specified vs
+        ///     Computes the centroid using the specified vs
         /// </summary>
         /// <param name="vs">The vs</param>
         /// <param name="count">The count</param>
@@ -198,7 +201,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
 
 
         /// <summary>
-        /// Sets the vertices
+        ///     Sets the vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         public void Set(in Vector2[] vertices)
@@ -333,7 +336,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Describes whether this instance test point
+        ///     Describes whether this instance test point
         /// </summary>
         /// <param name="xf">The xf</param>
         /// <param name="p">The </param>
@@ -355,7 +358,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Describes whether this instance ray cast
+        ///     Describes whether this instance ray cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>
@@ -437,7 +440,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the aabb using the specified aabb
+        ///     Computes the aabb using the specified aabb
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="xf">The xf</param>
@@ -460,7 +463,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Computes the mass using the specified mass data
+        ///     Computes the mass using the specified mass data
         /// </summary>
         /// <param name="massData">The mass data</param>
         /// <param name="density">The density</param>
@@ -541,7 +544,7 @@ namespace Alis.Core.Physics2D.Collision.Shapes
         }
 
         /// <summary>
-        /// Gets the vertices
+        ///     Gets the vertices
         /// </summary>
         /// <returns>The vector array</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

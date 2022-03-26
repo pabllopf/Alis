@@ -31,7 +31,7 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     A 2D column vector.
@@ -41,21 +41,21 @@ namespace Alis.Core.Physics2D.Common
     public struct Vec2
     {
         /// <summary>
-        /// Describes whether this instance equals
+        ///     Describes whether this instance equals
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
         private bool Equals(Vec2 other) => X.Equals(other.X) && Y.Equals(other.Y);
 
         /// <summary>
-        /// Describes whether this instance equals
+        ///     Describes whether this instance equals
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
         public override bool Equals(object obj) => obj is Vec2 other && Equals(other);
 
         /// <summary>
-        /// Gets the hash code
+        ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
         public override int GetHashCode() => HashCode.Combine(X, Y);
@@ -73,7 +73,7 @@ namespace Alis.Core.Physics2D.Common
         public static implicit operator Vec2((float, float) src) => new Vec2(src.Item1, src.Item2);
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float X, Y;
 
@@ -124,7 +124,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Sets the xy
+        ///     Sets the xy
         /// </summary>
         /// <param name="xy">The xy</param>
         [Obsolete(
@@ -206,7 +206,7 @@ namespace Alis.Core.Physics2D.Common
         public static bool operator !=(Vec2 a, Vec2 b) => a.X != b.X || a.Y != b.Y;
 
         /// <summary>
-        /// Gets the value of the zero
+        ///     Gets the value of the zero
         /// </summary>
         [Obsolete("Please switch to System.Numerics.Vector2.")]
         public static Vec2 Zero
@@ -245,7 +245,7 @@ namespace Alis.Core.Physics2D.Common
         public static Vec2 Cross(float s, Vec2 a) => new Vec2(-s * a.Y, s * a.X);
 
         /// <summary>
-        /// Distances the a
+        ///     Distances the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -254,7 +254,7 @@ namespace Alis.Core.Physics2D.Common
         public static float Distance(Vec2 a, Vec2 b) => (a - b).Length();
 
         /// <summary>
-        /// Distances the squared using the specified a
+        ///     Distances the squared using the specified a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -267,7 +267,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Converts the array using the specified vertices
+        ///     Converts the array using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The result</returns>

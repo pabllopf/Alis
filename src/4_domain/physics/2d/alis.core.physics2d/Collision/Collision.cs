@@ -29,18 +29,18 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     // Structures and functions used for computing contact points, distance
     // queries, and TOI queries.
 
     /// <summary>
-    /// The collision class
+    ///     The collision class
     /// </summary>
     public class Collision
     {
         /// <summary>
-        /// Describes whether test overlap
+        ///     Describes whether test overlap
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physics2D.Collision
 
         // Sutherland-Hodgman clipping.
         /// <summary>
-        /// Clips the segment to line using the specified v out
+        ///     Clips the segment to line using the specified v out
         /// </summary>
         /// <param name="vOut">The out</param>
         /// <param name="vIn">The in</param>

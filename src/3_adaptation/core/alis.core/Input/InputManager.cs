@@ -77,7 +77,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Gets or sets the value of the temp key
         /// </summary>
-        private SFML.Window.Keyboard.Key TempKey { get; set; }
+        private Graphics2D.Windows.Keyboard.Key TempKey { get; set; }
 
         public static event EventHandler<string> OnPressKey;
 
@@ -100,8 +100,8 @@ namespace Alis.Core.Input
         {
             for (int i = 0; i < KeyboardsValues.Length; i++)
             {
-                TempKey = Enum.Parse<SFML.Window.Keyboard.Key>(KeyboardsNames[i]);
-                if (SFML.Window.Keyboard.IsKeyPressed(TempKey))
+                TempKey = Enum.Parse<Graphics2D.Windows.Keyboard.Key>(KeyboardsNames[i]);
+                if (Graphics2D.Windows.Keyboard.IsKeyPressed(TempKey))
                 {
                     if (!Keys.Contains(KeyboardsValues[i]))
                     {

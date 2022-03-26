@@ -28,65 +28,72 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Common;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The separation function
+    ///     The separation function
     /// </summary>
     internal struct SeparationFunction
     {
         /// <summary>
-        /// The proxya
+        ///     The proxya
         /// </summary>
         private DistanceProxy m_proxyA;
+
         /// <summary>
-        /// The proxyb
+        ///     The proxyb
         /// </summary>
         private DistanceProxy m_proxyB;
+
         /// <summary>
-        /// The sweepa
+        ///     The sweepa
         /// </summary>
         private Sweep m_sweepA;
+
         /// <summary>
-        /// The sweepb
+        ///     The sweepb
         /// </summary>
         private Sweep m_sweepB;
+
         /// <summary>
-        /// The type
+        ///     The type
         /// </summary>
         private SeparationFunctionType m_type;
+
         /// <summary>
-        /// The axis
+        ///     The axis
         /// </summary>
         private Vector2 m_axis;
+
         /// <summary>
-        /// The localpoint
+        ///     The localpoint
         /// </summary>
         private Vector2 m_localPoint;
 
         /// <summary>
-        /// The separation function type enum
+        ///     The separation function type enum
         /// </summary>
         private enum SeparationFunctionType
         {
             /// <summary>
-            /// The points separation function type
+            ///     The points separation function type
             /// </summary>
             Points,
+
             /// <summary>
-            /// The face separation function type
+            ///     The face separation function type
             /// </summary>
             FaceA,
+
             /// <summary>
-            /// The face separation function type
+            ///     The face separation function type
             /// </summary>
             FaceB
         }
 
         /// <summary>
-        /// Initializes the cache
+        ///     Initializes the cache
         /// </summary>
         /// <param name="cache">The cache</param>
         /// <param name="proxyA">The proxy</param>
@@ -180,7 +187,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Evaluates the index a
+        ///     Evaluates the index a
         /// </summary>
         /// <param name="indexA">The index</param>
         /// <param name="indexB">The index</param>
@@ -229,7 +236,7 @@ namespace Alis.Core.Physics2D.Collision
         }
 
         /// <summary>
-        /// Finds the min separation using the specified index a
+        ///     Finds the min separation using the specified index a
         /// </summary>
         /// <param name="indexA">The index</param>
         /// <param name="indexB">The index</param>

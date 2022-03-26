@@ -148,70 +148,75 @@ However, we can compute sin+cos of the same angle fast.
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Contacts;
-using Alis.Core.Physics2D.Dynamics.Joints;
-using Alis.Core.Physics2D.Dynamics.World.Callbacks;
-using Math = System.Math;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Contacts;
+using Alis.Core.Physics2D.Joints;
+using Alis.Core.Physics2D.World.Callbacks;
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
-    /// The island class
+    ///     The island class
     /// </summary>
     public class Island
     {
         /// <summary>
-        /// The bodycapacity
+        ///     The bodycapacity
         /// </summary>
         internal readonly int m_bodyCapacity;
+
         /// <summary>
-        /// The contactcapacity
+        ///     The contactcapacity
         /// </summary>
         internal readonly int m_contactCapacity;
+
         /// <summary>
-        /// The contacts
+        ///     The contacts
         /// </summary>
         private readonly Contact[] m_contacts;
+
         /// <summary>
-        /// The joints
+        ///     The joints
         /// </summary>
         private readonly Joint[] m_joints;
+
         /// <summary>
-        /// The listener
+        ///     The listener
         /// </summary>
         private readonly ContactListener m_listener;
 
         /// <summary>
-        /// The positions
+        ///     The positions
         /// </summary>
         private readonly Position[] m_positions;
+
         /// <summary>
-        /// The velocities
+        ///     The velocities
         /// </summary>
         private readonly Velocity[] m_velocities;
 
         /// <summary>
-        /// The bodies
+        ///     The bodies
         /// </summary>
         internal Body[] m_bodies;
 
         /// <summary>
-        /// The bodycount
+        ///     The bodycount
         /// </summary>
         internal int m_bodyCount;
+
         /// <summary>
-        /// The contactcount
+        ///     The contactcount
         /// </summary>
         internal int m_contactCount;
+
         /// <summary>
-        /// The jointcount
+        ///     The jointcount
         /// </summary>
         private int m_jointCount;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Island"/> class
+        ///     Initializes a new instance of the <see cref="Island" /> class
         /// </summary>
         /// <param name="bodyCapacity">The body capacity</param>
         /// <param name="contactCapacity">The contact capacity</param>
@@ -233,7 +238,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Clears this instance
+        ///     Clears this instance
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Clear()
@@ -244,7 +249,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Solves the step
+        ///     Solves the step
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
@@ -422,7 +427,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
                     else
                     {
                         b.m_sleepTime += h;
-                        minSleepTime = Math.Min(minSleepTime, b.m_sleepTime);
+                        minSleepTime = System.Math.Min(minSleepTime, b.m_sleepTime);
                     }
                 }
 
@@ -438,7 +443,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Solves the toi using the specified sub step
+        ///     Solves the toi using the specified sub step
         /// </summary>
         /// <param name="subStep">The sub step</param>
         /// <param name="toiIndexA">The toi index</param>
@@ -542,7 +547,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Adds the body
+        ///     Adds the body
         /// </summary>
         /// <param name="body">The body</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -554,7 +559,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Adds the contact
+        ///     Adds the contact
         /// </summary>
         /// <param name="contact">The contact</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -565,7 +570,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Adds the joint
+        ///     Adds the joint
         /// </summary>
         /// <param name="joint">The joint</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -576,7 +581,7 @@ namespace Alis.Core.Physics2D.Dynamics.World
         }
 
         /// <summary>
-        /// Reports the constraints
+        ///     Reports the constraints
         /// </summary>
         /// <param name="constraints">The constraints</param>
         public void Report(ContactVelocityConstraint[] constraints)

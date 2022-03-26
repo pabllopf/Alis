@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using SFML.Audio;
+using Alis.Core.Graphics2D.Audio;
 
 namespace Alis.Core.Components
 {

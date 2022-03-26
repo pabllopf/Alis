@@ -28,19 +28,18 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
+using Alis.Core.Physics2D.Shapes;
 
-namespace Alis.Core.Physics2D.Collision.Colliders
+namespace Alis.Core.Physics2D.Colliders
 {
     /// <summary>
-    /// The polygon and polygon collider class
+    ///     The polygon and polygon collider class
     /// </summary>
-    /// <seealso cref="Collider{PolygonShape, PolygonShape}"/>
+    /// <seealso cref="Collider{PolygonShape, PolygonShape}" />
     internal class PolygonAndPolygonCollider : Collider<PolygonShape, PolygonShape>
     {
         /// <summary>
-        /// Collides the manifold
+        ///     Collides the manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="polyA">The poly</param>
@@ -177,7 +176,7 @@ namespace Alis.Core.Physics2D.Collision.Colliders
         }
 
         /// <summary>
-        /// Finds the max separation using the specified edge index
+        ///     Finds the max separation using the specified edge index
         /// </summary>
         /// <param name="edgeIndex">The edge index</param>
         /// <param name="poly1">The poly</param>
@@ -226,7 +225,7 @@ namespace Alis.Core.Physics2D.Collision.Colliders
         }
 
         /// <summary>
-        /// Finds the incident edge using the specified c
+        ///     Finds the incident edge using the specified c
         /// </summary>
         /// <param name="c">The </param>
         /// <param name="poly1">The poly</param>

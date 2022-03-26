@@ -1,0 +1,9 @@
+<Project>
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/network/alis.core.network/**/*.cs" LinkBase="Network"/>
+        <Content Include="$(SolutionDir)/4_domain/network/alis.core.network/Runtimes/**" LinkBase="Network/Runtimes"/>
+        <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/bin/**"/>
+    </ItemGroup>
+</Project>

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Audio2D.AL;
-
 namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock.Enums
 {
     /// <summary>

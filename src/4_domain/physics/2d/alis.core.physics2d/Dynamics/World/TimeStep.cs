@@ -27,35 +27,40 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Dynamics.World
+namespace Alis.Core.Physics2D.World
 {
     /// <summary>
-    /// The time step
+    ///     The time step
     /// </summary>
     internal struct TimeStep
     {
         /// <summary>
-        /// The dt
+        ///     The dt
         /// </summary>
         internal float dt; // time step
+
         /// <summary>
-        /// The inv dt
+        ///     The inv dt
         /// </summary>
         internal float inv_dt; // inverse time step (0 if dt == 0).
+
         /// <summary>
-        /// The dt ratio
+        ///     The dt ratio
         /// </summary>
         internal float dtRatio; // dt * inv_dt0
+
         /// <summary>
-        /// The velocity iterations
+        ///     The velocity iterations
         /// </summary>
         internal int velocityIterations;
+
         /// <summary>
-        /// The position iterations
+        ///     The position iterations
         /// </summary>
         internal int positionIterations;
+
         /// <summary>
-        /// The warm starting
+        ///     The warm starting
         /// </summary>
         internal bool warmStarting;
     }

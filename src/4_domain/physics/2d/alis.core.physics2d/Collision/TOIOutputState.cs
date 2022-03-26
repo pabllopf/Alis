@@ -27,31 +27,35 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The toi output state enum
+    ///     The toi output state enum
     /// </summary>
     public enum TOIOutputState
     {
         /// <summary>
-        /// The failed toi output state
+        ///     The failed toi output state
         /// </summary>
         Failed,
+
         /// <summary>
-        /// The touching toi output state
+        ///     The touching toi output state
         /// </summary>
         Touching,
+
         /// <summary>
-        /// The separated toi output state
+        ///     The separated toi output state
         /// </summary>
         Separated,
+
         /// <summary>
-        /// The overlapped toi output state
+        ///     The overlapped toi output state
         /// </summary>
         Overlapped,
+
         /// <summary>
-        /// The unknown toi output state
+        ///     The unknown toi output state
         /// </summary>
         Unknown
     }

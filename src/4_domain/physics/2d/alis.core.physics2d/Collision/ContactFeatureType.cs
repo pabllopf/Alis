@@ -27,19 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The contact feature type enum
+    ///     The contact feature type enum
     /// </summary>
     internal enum ContactFeatureType : byte
     {
         /// <summary>
-        /// The vertex contact feature type
+        ///     The vertex contact feature type
         /// </summary>
         Vertex = 0,
+
         /// <summary>
-        /// The face contact feature type
+        ///     The face contact feature type
         /// </summary>
         Face = 1
     }

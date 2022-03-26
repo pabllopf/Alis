@@ -32,10 +32,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text.Json.Serialization;
-using Alis.Core.Settings.Configurations;
+using Alis.Core.Configurations;
+using Alis.Core.Graphics2D.Graphics;
+using Alis.Core.Graphics2D.Windows;
 using Alis.Core.Systems;
-using SFML.Graphics;
-using SFML.Window;
 using Sprite = Alis.Core.Components.Sprite;
 
 namespace Alis.Core.Managers
@@ -51,8 +51,8 @@ namespace Alis.Core.Managers
             VideoMode = new VideoMode((uint) Game.Setting.Window.Resolution.X, (uint) Game.Setting.Window.Resolution.Y);
             ScreenMode = Game.Setting.Window.ScreenMode switch
             {
-                Settings.Configurations.ScreenMode.Default => Styles.Default,
-                Settings.Configurations.ScreenMode.Resize => Styles.Resize,
+                Configurations.ScreenMode.Default => Styles.Default,
+                Configurations.ScreenMode.Resize => Styles.Resize,
                 _ => Styles.Fullscreen
             };
 
@@ -181,8 +181,8 @@ namespace Alis.Core.Managers
         private void Window_OnChangeScreenMode(object? sender, ScreenMode screenMode) =>
             ScreenMode = Game.Setting.Window.ScreenMode switch
             {
-                Settings.Configurations.ScreenMode.Default => Styles.Default,
-                Settings.Configurations.ScreenMode.Resize => Styles.Resize,
+                Configurations.ScreenMode.Default => Styles.Default,
+                Configurations.ScreenMode.Resize => Styles.Resize,
                 _ => Styles.Fullscreen
             };
 

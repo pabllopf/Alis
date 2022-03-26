@@ -29,25 +29,28 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Collision
+namespace Alis.Core.Physics2D
 {
     /// Output results for b2ShapeCast
     public struct ShapeCastOutput
     {
         /// <summary>
-        /// The point
+        ///     The point
         /// </summary>
         public Vector2 point;
+
         /// <summary>
-        /// The normal
+        ///     The normal
         /// </summary>
         public Vector2 normal;
+
         /// <summary>
-        /// The lambda
+        ///     The lambda
         /// </summary>
         public float lambda;
+
         /// <summary>
-        /// The iterations
+        ///     The iterations
         /// </summary>
         public int iterations;
     }

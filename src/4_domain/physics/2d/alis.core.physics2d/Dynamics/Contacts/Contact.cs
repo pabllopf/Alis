@@ -31,15 +31,12 @@ using System;
 using System.Diagnostics;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Collision;
-using Alis.Core.Physics2D.Collision.Shapes;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.Fixtures;
-using Alis.Core.Physics2D.Dynamics.World.Callbacks;
-using Math = Alis.Core.Physics2D.Common.Math;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.Fixtures;
+using Alis.Core.Physics2D.Shapes;
+using Alis.Core.Physics2D.World.Callbacks;
 
-namespace Alis.Core.Physics2D.Dynamics.Contacts
+namespace Alis.Core.Physics2D.Contacts
 {
     /// <summary>
     ///     The class manages contact between two shapes. A contact exists for each overlapping
@@ -49,78 +46,84 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
     public abstract class Contact
     {
         /// <summary>
-        /// The fixturea
+        ///     The fixturea
         /// </summary>
         internal readonly Fixture m_fixtureA;
+
         /// <summary>
-        /// The fixtureb
+        ///     The fixtureb
         /// </summary>
         internal readonly Fixture m_fixtureB;
 
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private readonly int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private readonly int m_indexB;
 
         // Nodes for connecting bodies.
         /// <summary>
-        /// The nodea
+        ///     The nodea
         /// </summary>
         internal readonly ContactEdge m_nodeA;
+
         /// <summary>
-        /// The nodeb
+        ///     The nodeb
         /// </summary>
         internal readonly ContactEdge m_nodeB;
 
         /// <summary>
-        /// The flags
+        ///     The flags
         /// </summary>
         internal CollisionFlags m_flags;
 
         /// <summary>
-        /// The friction
+        ///     The friction
         /// </summary>
         internal float m_friction;
 
         /// <summary>
-        /// The manifold
+        ///     The manifold
         /// </summary>
         internal Manifold m_manifold = new Manifold();
+
         /// <summary>
-        /// The next
+        ///     The next
         /// </summary>
         internal Contact m_next;
 
         // World pool and list pointers.
         /// <summary>
-        /// The prev
+        ///     The prev
         /// </summary>
         internal Contact m_prev;
+
         /// <summary>
-        /// The restitution
+        ///     The restitution
         /// </summary>
         internal float m_restitution;
 
         /// <summary>
-        /// The tangentspeed
+        ///     The tangentspeed
         /// </summary>
         internal float m_tangentSpeed;
+
         /// <summary>
-        /// The toi
+        ///     The toi
         /// </summary>
         internal float m_toi;
 
         /// <summary>
-        /// The toicount
+        ///     The toicount
         /// </summary>
         internal int m_toiCount;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Contact"/> class
+        ///     Initializes a new instance of the <see cref="Contact" /> class
         /// </summary>
         /// <param name="fA">The </param>
         /// <param name="indexA">The index</param>
@@ -153,7 +156,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the value of the manifold
+        ///     Gets the value of the manifold
         /// </summary>
         internal Manifold Manifold
         {
@@ -162,7 +165,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets or sets the value of the enabled
+        ///     Gets or sets the value of the enabled
         /// </summary>
         public bool Enabled
         {
@@ -173,7 +176,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the value of the touching
+        ///     Gets the value of the touching
         /// </summary>
         public bool Touching
         {
@@ -182,7 +185,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the value of the next
+        ///     Gets the value of the next
         /// </summary>
         public Contact Next
         {
@@ -209,7 +212,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets or sets the value of the friction
+        ///     Gets or sets the value of the friction
         /// </summary>
         public float Friction
         {
@@ -220,7 +223,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets or sets the value of the restitution
+        ///     Gets or sets the value of the restitution
         /// </summary>
         public float Restitution
         {
@@ -231,7 +234,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets or sets the value of the tangent speed
+        ///     Gets or sets the value of the tangent speed
         /// </summary>
         public float TangentSpeed
         {
@@ -242,7 +245,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the value of the child index a
+        ///     Gets the value of the child index a
         /// </summary>
         public int ChildIndexA
         {
@@ -251,7 +254,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the value of the child index b
+        ///     Gets the value of the child index b
         /// </summary>
         public int ChildIndexB
         {
@@ -260,79 +263,94 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte CircleCircle = (CircleShape.contactMatch << 2) + CircleShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte CircleEdge = (CircleShape.contactMatch << 2) + EdgeShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte CirclePolygon = (CircleShape.contactMatch << 2) + PolygonShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte CircleChain = (CircleShape.contactMatch << 2) + ChainShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte EdgeCircle = (EdgeShape.contactMatch << 2) + CircleShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte EdgeEdge = (EdgeShape.contactMatch << 2) + EdgeShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte EdgePolygon = (EdgeShape.contactMatch << 2) + PolygonShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte EdgeChain = (EdgeShape.contactMatch << 2) + ChainShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte PolygonCircle = (PolygonShape.contactMatch << 2) + CircleShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte PolygonEdge = (PolygonShape.contactMatch << 2) + EdgeShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte PolygonPolygon = (PolygonShape.contactMatch << 2) + PolygonShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte PolygonChain = (PolygonShape.contactMatch << 2) + ChainShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte ChainCircle = (ChainShape.contactMatch << 2) + CircleShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte ChainEdge = (ChainShape.contactMatch << 2) + EdgeShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte ChainPolygon = (ChainShape.contactMatch << 2) + PolygonShape.contactMatch;
+
         /// <summary>
-        /// The contact match
+        ///     The contact match
         /// </summary>
         private const byte ChainChain = (ChainShape.contactMatch << 2) + ChainShape.contactMatch;
 
         /// <summary>
-        /// Gets the manifold
+        ///     Gets the manifold
         /// </summary>
         /// <returns>The manifold</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal Manifold GetManifold() => m_manifold;
 
         /// <summary>
-        /// Gets the world manifold using the specified world manifold
+        ///     Gets the world manifold using the specified world manifold
         /// </summary>
         /// <param name="worldManifold">The world manifold</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -349,7 +367,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Sets the enabled using the specified flag
+        ///     Sets the enabled using the specified flag
         /// </summary>
         /// <param name="flag">The flag</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -366,42 +384,42 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Describes whether this instance is enabled
+        ///     Describes whether this instance is enabled
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsEnabled() => (m_flags & CollisionFlags.Enabled) == CollisionFlags.Enabled;
 
         /// <summary>
-        /// Describes whether this instance is touching
+        ///     Describes whether this instance is touching
         /// </summary>
         /// <returns>The bool</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool IsTouching() => (m_flags & CollisionFlags.Touching) == CollisionFlags.Touching;
 
         /// <summary>
-        /// Gets the next
+        ///     Gets the next
         /// </summary>
         /// <returns>The contact</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Contact GetNext() => m_next;
 
         /// <summary>
-        /// Gets the fixture a
+        ///     Gets the fixture a
         /// </summary>
         /// <returns>The fixture</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Fixture GetFixtureA() => FixtureA;
 
         /// <summary>
-        /// Gets the fixture b
+        ///     Gets the fixture b
         /// </summary>
         /// <returns>The fixture</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Fixture GetFixtureB() => FixtureB;
 
         /// <summary>
-        /// Flags the for filtering
+        ///     Flags the for filtering
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void FlagForFiltering()
@@ -410,14 +428,14 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the friction
+        ///     Gets the friction
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetFriction() => m_friction;
 
         /// <summary>
-        /// Sets the friction using the specified friction
+        ///     Sets the friction using the specified friction
         /// </summary>
         /// <param name="friction">The friction</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -427,7 +445,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Resets the friction
+        ///     Resets the friction
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ResetFriction()
@@ -436,7 +454,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Sets the restitution using the specified restitution
+        ///     Sets the restitution using the specified restitution
         /// </summary>
         /// <param name="restitution">The restitution</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -446,14 +464,14 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the restitution
+        ///     Gets the restitution
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetRestitution() => m_restitution;
 
         /// <summary>
-        /// Resets the restitution
+        ///     Resets the restitution
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ResetRestitution()
@@ -462,7 +480,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Sets the tangent speed using the specified speed
+        ///     Sets the tangent speed using the specified speed
         /// </summary>
         /// <param name="speed">The speed</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -472,28 +490,28 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Gets the tangent speed
+        ///     Gets the tangent speed
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public float GetTangentSpeed() => m_tangentSpeed;
 
         /// <summary>
-        /// Gets the child index a
+        ///     Gets the child index a
         /// </summary>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetChildIndexA() => m_indexA;
 
         /// <summary>
-        /// Gets the child index b
+        ///     Gets the child index b
         /// </summary>
         /// <returns>The int</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public int GetChildIndexB() => m_indexB;
 
         /// <summary>
-        /// Evaluates the manifold
+        ///     Evaluates the manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
         /// <param name="xfA">The xf</param>
@@ -501,7 +519,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         internal abstract void Evaluate(out Manifold manifold, in Transform xfA, in Transform xfB);
 
         /// <summary>
-        /// Creates the fixture a
+        ///     Creates the fixture a
         /// </summary>
         /// <param name="fixtureA">The fixture</param>
         /// <param name="indexA">The index</param>
@@ -535,7 +553,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Updates the listener
+        ///     Updates the listener
         /// </summary>
         /// <param name="listener">The listener</param>
         public void Update(ContactListener listener)
@@ -630,7 +648,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Describes whether this instance test overlap
+        ///     Describes whether this instance test overlap
         /// </summary>
         /// <param name="shapeA">The shape</param>
         /// <param name="indexA">The index</param>
@@ -659,7 +677,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Distances the output
+        ///     Distances the output
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="cache">The cache</param>
@@ -806,7 +824,7 @@ namespace Alis.Core.Physics2D.Dynamics.Contacts
         }
 
         /// <summary>
-        /// Describes whether this instance shape cast
+        ///     Describes whether this instance shape cast
         /// </summary>
         /// <param name="output">The output</param>
         /// <param name="input">The input</param>

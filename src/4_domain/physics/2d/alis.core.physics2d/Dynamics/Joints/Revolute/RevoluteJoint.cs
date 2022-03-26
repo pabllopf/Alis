@@ -43,12 +43,10 @@
 using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Common;
-using Alis.Core.Physics2D.Dynamics.Bodies;
-using Alis.Core.Physics2D.Dynamics.World;
-using Math = Alis.Core.Physics2D.Common.Math;
+using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Physics2D.World;
 
-namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
+namespace Alis.Core.Physics2D.Joints.Revolute
 {
     /// <summary>
     ///     A revolute joint constrains to bodies to share a common point while they
@@ -61,94 +59,112 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
     public class RevoluteJoint : Joint, IMotorisedJoint
     {
         /// <summary>
-        /// The referenceangle
+        ///     The referenceangle
         /// </summary>
         internal readonly float m_referenceAngle;
+
         /// <summary>
-        /// The angle
+        ///     The angle
         /// </summary>
         private float m_angle;
+
         /// <summary>
-        /// The axialmass
+        ///     The axialmass
         /// </summary>
         private float m_axialMass;
 
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         private Vector2 m_impulse;
 
         /// <summary>
-        /// The indexa
+        ///     The indexa
         /// </summary>
         private int m_indexA;
+
         /// <summary>
-        /// The indexb
+        ///     The indexb
         /// </summary>
         private int m_indexB;
+
         /// <summary>
-        /// The invia
+        ///     The invia
         /// </summary>
         private float m_invIA;
+
         /// <summary>
-        /// The invib
+        ///     The invib
         /// </summary>
         private float m_invIB;
+
         /// <summary>
-        /// The invmassa
+        ///     The invmassa
         /// </summary>
         private float m_invMassA;
+
         /// <summary>
-        /// The invmassb
+        ///     The invmassb
         /// </summary>
         private float m_invMassB;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         private Matrix3x2 m_K;
+
         /// <summary>
-        /// The localanchora
+        ///     The localanchora
         /// </summary>
         internal Vector2 m_localAnchorA;
+
         /// <summary>
-        /// The localanchorb
+        ///     The localanchorb
         /// </summary>
         internal Vector2 m_localAnchorB;
+
         /// <summary>
-        /// The localcentera
+        ///     The localcentera
         /// </summary>
         private Vector2 m_localCenterA;
+
         /// <summary>
-        /// The localcenterb
+        ///     The localcenterb
         /// </summary>
         private Vector2 m_localCenterB;
+
         /// <summary>
-        /// The lowerimpulse
+        ///     The lowerimpulse
         /// </summary>
         private float m_lowerImpulse;
+
         /// <summary>
-        /// The maxmotortorque
+        ///     The maxmotortorque
         /// </summary>
         private float m_maxMotorTorque;
+
         /// <summary>
-        /// The motorspeed
+        ///     The motorspeed
         /// </summary>
         private float m_motorSpeed;
+
         /// <summary>
-        /// The ra
+        ///     The ra
         /// </summary>
         private Vector2 m_rA;
+
         /// <summary>
-        /// The rb
+        ///     The rb
         /// </summary>
         private Vector2 m_rB;
+
         /// <summary>
-        /// The upperimpulse
+        ///     The upperimpulse
         /// </summary>
         private float m_upperImpulse;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RevoluteJoint"/> class
+        ///     Initializes a new instance of the <see cref="RevoluteJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public RevoluteJoint(RevoluteJointDef def)
@@ -175,12 +191,12 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
         }
 
         /// <summary>
-        /// Gets the value of the get anchor a
+        ///     Gets the value of the get anchor a
         /// </summary>
         public override Vector2 GetAnchorA => m_bodyA.GetWorldPoint(m_localAnchorA);
 
         /// <summary>
-        /// Gets the value of the get anchor b
+        ///     Gets the value of the get anchor b
         /// </summary>
         public override Vector2 GetAnchorB => m_bodyB.GetWorldPoint(m_localAnchorB);
 
@@ -264,7 +280,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
         }
 
         /// <summary>
-        /// Gets the motor speed
+        ///     Gets the motor speed
         /// </summary>
         /// <returns>The float</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -282,7 +298,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
         }
 
         /// <summary>
-        /// Sets the motor speed using the specified speed
+        ///     Sets the motor speed using the specified speed
         /// </summary>
         /// <param name="speed">The speed</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -295,14 +311,14 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
         }
 
         /// <summary>
-        /// Gets the reaction force using the specified inv dt
+        ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
         public override Vector2 GetReactionForce(float invDt) => invDt * new Vector2(m_impulse.X, m_impulse.Y);
 
         /// <summary>
-        /// Gets the reaction torque using the specified inv dt
+        ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="inv_dt">The inv dt</param>
         /// <returns>The float</returns>
@@ -355,7 +371,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
         }
 
         /// <summary>
-        /// Inits the velocity constraints using the specified data
+        ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void InitVelocityConstraints(in SolverData data)
@@ -463,7 +479,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified data
+        ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(in SolverData data)
@@ -544,7 +560,7 @@ namespace Alis.Core.Physics2D.Dynamics.Joints.Revolute
         }
 
         /// <summary>
-        /// Describes whether this instance solve position constraints
+        ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>

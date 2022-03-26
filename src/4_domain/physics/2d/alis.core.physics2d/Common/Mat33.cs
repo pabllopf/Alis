@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
     ///     A 3-by-3 matrix. Stored in column-major order.
@@ -37,7 +37,7 @@ namespace Alis.Core.Physics2D.Common
     internal struct Mat33
     {
         /// <summary>
-        /// The ez
+        ///     The ez
         /// </summary>
         internal Vector3 ex, ey, ez;
 
@@ -103,7 +103,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Gets the inverse 22 using the specified m
+        ///     Gets the inverse 22 using the specified m
         /// </summary>
         /// <param name="M">The </param>
         /// <returns>The </returns>
@@ -130,7 +130,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Gets the sym inverse 33 using the specified m
+        ///     Gets the sym inverse 33 using the specified m
         /// </summary>
         /// <param name="M">The </param>
         /// <returns>The </returns>

@@ -32,28 +32,30 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Physics2D.Common
+namespace Alis.Core.Physics2D
 {
     /// <summary>
-    /// The math class
+    ///     The math class
     /// </summary>
     internal static class Math
     {
         /// <summary>
-        /// The max value
+        ///     The max value
         /// </summary>
         internal const ushort USHRT_MAX = ushort.MaxValue;
+
         /// <summary>
-        /// The max value
+        ///     The max value
         /// </summary>
         internal const byte UCHAR_MAX = byte.MaxValue;
+
         /// <summary>
-        /// The rand limit
+        ///     The rand limit
         /// </summary>
         internal const int RAND_LIMIT = 32767;
 
         /// <summary>
-        /// The random
+        ///     The random
         /// </summary>
         private static readonly Random s_rnd = new Random();
 
@@ -81,7 +83,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Sqrts the x
+        ///     Sqrts the x
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The float</returns>
@@ -131,7 +133,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Describes whether is power of two
+        ///     Describes whether is power of two
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The result</returns>
@@ -189,7 +191,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Muls the t
+        ///     Muls the t
         /// </summary>
         /// <param name="T">The </param>
         /// <param name="v">The </param>
@@ -198,7 +200,7 @@ namespace Alis.Core.Physics2D.Common
         internal static Vector2 Mul(Transform T, Vector2 v) => T.p + Vector2.Transform(v, T.q); //Mul(T.q, v);
 
         /// <summary>
-        /// Muls the t using the specified t
+        ///     Muls the t using the specified t
         /// </summary>
         /// <param name="T">The </param>
         /// <param name="v">The </param>
@@ -214,7 +216,7 @@ namespace Alis.Core.Physics2D.Common
 
 
         /// <summary>
-        /// Muls the q
+        ///     Muls the q
         /// </summary>
         /// <param name="q">The </param>
         /// <param name="v">The </param>
@@ -223,7 +225,7 @@ namespace Alis.Core.Physics2D.Common
         internal static Vector2 Mul(Rot q, Vector2 v) => new Vector2(q.c * v.X - q.s * v.Y, q.s * v.X + q.c * v.Y);
 
         /// <summary>
-        /// Muls the t using the specified q
+        ///     Muls the t using the specified q
         /// </summary>
         /// <param name="q">The </param>
         /// <param name="v">The </param>
@@ -235,7 +237,7 @@ namespace Alis.Core.Physics2D.Common
         // v2 = A.q.Rot(B.q.Rot(v1) + B.p) + A.p
         //    = (A.q * B.q).Rot(v1) + A.q.Rot(B.p) + A.p
         /// <summary>
-        /// Muls the a
+        ///     Muls the a
         /// </summary>
         /// <param name="A">The </param>
         /// <param name="B">The </param>
@@ -252,7 +254,7 @@ namespace Alis.Core.Physics2D.Common
         // v2 = A.q' * (B.q * v1 + B.p - A.p)
         //    = A.q' * B.q * v1 + A.q' * (B.p - A.p)
         /// <summary>
-        /// Muls the t using the specified a
+        ///     Muls the t using the specified a
         /// </summary>
         /// <param name="A">The </param>
         /// <param name="B">The </param>
@@ -267,7 +269,7 @@ namespace Alis.Core.Physics2D.Common
         }
 
         /// <summary>
-        /// Muls the 22 using the specified a
+        ///     Muls the 22 using the specified a
         /// </summary>
         /// <param name="A">The </param>
         /// <param name="v">The </param>
@@ -277,18 +279,18 @@ namespace Alis.Core.Physics2D.Common
             new Vector2(A.ex.X * v.X + A.ey.X * v.X, A.ex.Y * v.X + A.ey.Y * v.Y);
 
         /// <summary>
-        /// The convert
+        ///     The convert
         /// </summary>
         [StructLayout(LayoutKind.Explicit)]
         internal struct Convert
         {
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             [FieldOffset(0)] public float x;
 
             /// <summary>
-            /// The 
+            ///     The
             /// </summary>
             [FieldOffset(0)] public int i;
         }
