@@ -11,5 +11,8 @@
         <PackageReference Include="OpenTK" Version="4.6.7"/>
     </ItemGroup>
 
+    <Import Project="$(SolutionDir)/0_config/tools.props"/>
+    <Import Project="$(SolutionDir)/0_config/fluentapi.props"/>
+
 
 </Project>

@@ -17,15 +17,6 @@
     <Import Project="$(SolutionDir)/0_config/time.props"/>
     <Import Project="$(SolutionDir)/0_config/physics2d.props"/>
     <Import Project="$(SolutionDir)/0_config/physics3d.props"/>
-
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\5_skeleton\fluent\alis.fluentapi\Alis.FluentApi.csproj"/>
-        <ProjectReference Include="..\..\..\5_skeleton\tools\alis.tools\Alis.Tools.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="CSFML"/>
-    </ItemGroup>
-
-
+    <Import Project="$(SolutionDir)/0_config/tools.props"/>
+    <Import Project="$(SolutionDir)/0_config/fluentapi.props"/>
 </Project>

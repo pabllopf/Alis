@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+
+    <Import Project="$(SolutionDir)/0_config/general.props"/>
+    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
+    <Import Project="$(SolutionDir)/0_config/licence.props"/>
+    <Import Project="$(SolutionDir)/0_config/benchmark.props"/>
+    <Import Project="$(SolutionDir)/0_config/fluentapi.props"/>
+    <Import Project="$(SolutionDir)/0_config/executable.props"/>
+
+</Project>

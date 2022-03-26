@@ -5,8 +5,9 @@
     <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
     <Import Project="$(SolutionDir)/0_config/licence.props"/>
     <Import Project="$(SolutionDir)/0_config/nuget.props"/>
+    
     <ItemGroup>
-        <ProjectReference Include="..\..\..\3_adaptation\core\alis.core\Alis.Core.csproj"/>
+        <ProjectReference Include="$(SolutionDir)/3_adaptation/core/alis.core/Alis.Core.csproj"/>
     </ItemGroup>
 
 

@@ -40,8 +40,12 @@ using Alis.Core.Physics2D.Joints.Pulley;
 using Alis.Core.Physics2D.Shapes;
 using Alis.Core.Physics2D.World.Callbacks;
 
+//TODO: Tengo que corregir las fisicas, al momento de actualizarse con las colisiones/sprites de sfml se desincroniza y termina siend un problema
+
 namespace Alis.Core.Physics2D.World
 {
+    // TODO: sacar el word de aqui y hacerlo la clase principal del modulo.
+    
     /// <summary>
     ///     The world class manages all physics entities, dynamic simulation,
     ///     and asynchronous queries.

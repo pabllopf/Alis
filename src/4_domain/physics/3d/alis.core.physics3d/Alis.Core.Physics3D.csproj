@@ -6,5 +6,7 @@
     <Import Project="$(SolutionDir)/0_config/licence.props" />
     <Import Project="$(SolutionDir)/0_config/nuget.props" />
 
+    <Import Project="$(SolutionDir)/0_config/tools.props"/>
+    <Import Project="$(SolutionDir)/0_config/fluentapi.props"/>
 
 </Project>

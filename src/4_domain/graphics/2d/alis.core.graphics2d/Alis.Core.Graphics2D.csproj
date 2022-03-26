@@ -6,14 +6,7 @@
     <Import Project="$(SolutionDir)/0_config/licence.props"/>
     <Import Project="$(SolutionDir)/0_config/nuget.props"/>
 
-    <ItemGroup>
-        <PackageReference Include="CSFML"/>
-    </ItemGroup>
-
-    <PropertyGroup>
-        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <EmbedUntrackedSources>true</EmbedUntrackedSources>
-        <IncludeSymbols>true</IncludeSymbols>
-    </PropertyGroup>
-
+    <Import Project="$(SolutionDir)/0_config/tools.props"/>
+    <Import Project="$(SolutionDir)/0_config/fluentapi.props"/>
+    
 </Project>
