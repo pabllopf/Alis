@@ -1,9 +1,14 @@
 <Project>
     <ItemGroup>
         <Compile Include="$(SolutionDir)/4_domain/physics/2d/alis.core.physics2d/**/*.cs" LinkBase="Physics2D"/>
-        <Content Include="$(SolutionDir)/4_domain/physics/2d/alis.core.physics2d/Runtimes/**" LinkBase="Physics2D/Runtimes"/>
+       
         <Compile Remove="$(SolutionDir)/4_domain/physics/2d/alis.core.physics2d/*.csproj"/>
         <Compile Remove="$(SolutionDir)/4_domain/physics/2d/alis.core.physics2d/obj/**"/>
         <Compile Remove="$(SolutionDir)/4_domain/physics/2d/alis.core.physics2d/bin/**"/>
+
+        <Content Include="$(SolutionDir)/4_domain/physics/2d/alis.core.physics2d/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
     </ItemGroup>
 </Project>

@@ -1,9 +1,13 @@
 <Project>
     <ItemGroup>
         <Compile Include="$(SolutionDir)/4_domain/cloud/alis.core.cloud/**/*.cs" LinkBase="Cloud"/>
-        <Content Include="$(SolutionDir)/4_domain/cloud/alis.core.cloud/Runtimes/**" LinkBase="Cloud/Runtimes"/>
         <Compile Remove="$(SolutionDir)/4_domain/cloud/alis.core.cloud/*.csproj"/>
         <Compile Remove="$(SolutionDir)/4_domain/cloud/alis.core.cloud/obj/**"/>
         <Compile Remove="$(SolutionDir)/4_domain/cloud/alis.core.cloud/bin/**"/>
+
+        <Content Include="$(SolutionDir)/4_domain/cloud/alis.core.cloud/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
     </ItemGroup>
 </Project>

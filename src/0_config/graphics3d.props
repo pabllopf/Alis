@@ -1,9 +1,14 @@
 <Project>
     <ItemGroup>
         <Compile Include="$(SolutionDir)/4_domain/graphics/3d/alis.core.graphics3d/**/*.cs" LinkBase="Graphics3D"/>
-        <Content Include="$(SolutionDir)/4_domain/graphics/3d/alis.core.graphics3d/Runtimes/**" LinkBase="Graphics3D/Runtimes"/>
+
         <Compile Remove="$(SolutionDir)/4_domain/graphics/3d/alis.core.graphics3d/*.csproj"/>
         <Compile Remove="$(SolutionDir)/4_domain/graphics/3d/alis.core.graphics3d/obj/**"/>
         <Compile Remove="$(SolutionDir)/4_domain/graphics/3d/alis.core.graphics3d/bin/**"/>
+
+        <Content Include="$(SolutionDir)/4_domain/graphics/3d/alis.core.graphics3d/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
     </ItemGroup>
 </Project>

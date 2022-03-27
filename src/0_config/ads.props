@@ -1,9 +1,14 @@
 <Project>
     <ItemGroup>
         <Compile Include="$(SolutionDir)/4_domain/ads/alis.core.ads/**/*.cs" LinkBase="Ads"/>
-        <Content Include="$(SolutionDir)/4_domain/ads/alis.core.ads/Runtimes/**" LinkBase="Ads/Runtimes"/>
+       
         <Compile Remove="$(SolutionDir)/4_domain/ads/alis.core.ads/*.csproj"/>
         <Compile Remove="$(SolutionDir)/4_domain/ads/alis.core.ads/obj/**"/>
         <Compile Remove="$(SolutionDir)/4_domain/ads/alis.core.ads/bin/**"/>
+
+        <Content Include="$(SolutionDir)/4_domain/ads/alis.core.ads/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
     </ItemGroup>
 </Project>

@@ -1,9 +1,13 @@
 <Project>
     <ItemGroup>
         <Compile Include="$(SolutionDir)/5_skeleton/tools/alis.tools/**/*.cs" LinkBase="Tools"/>
-        <Content Include="$(SolutionDir)/5_skeleton/tools/alis.tools/Runtimes/**" LinkBase="Tools/Runtimes"/>
         <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/*.csproj"/>
         <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/obj/**"/>
         <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/bin/**"/>
+
+        <Content Include="$(SolutionDir)/5_skeleton/tools/alis.tools/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
     </ItemGroup>
 </Project>

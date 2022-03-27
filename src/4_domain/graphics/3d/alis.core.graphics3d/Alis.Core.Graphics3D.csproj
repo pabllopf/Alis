@@ -1,18 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 
-    <Import Project="$(SolutionDir)/0_config/general.props"/>
-    <Import Project="$(SolutionDir)/0_config/runtimes.props"/>
-    <Import Project="$(SolutionDir)/0_config/licence.props"/>
-    <Import Project="$(SolutionDir)/0_config/nuget.props"/>
+    <PropertyGroup>
+      <Configurations />
+      <Platforms />
+    </PropertyGroup>
+
+
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+    <Import Project="$(SolutionDir)/0_config/nuget.props" />
 
 
     <ItemGroup>
-        <PackageReference Include="OpenTK" Version="4.6.7"/>
+        <PackageReference Include="OpenTK" Version="4.6.7" />
     </ItemGroup>
 
-    <Import Project="$(SolutionDir)/0_config/tools.props"/>
-    <Import Project="$(SolutionDir)/0_config/fluentapi.props"/>
+    <Import Project="$(SolutionDir)/0_config/tools.props" />
+    <Import Project="$(SolutionDir)/0_config/fluentapi.props" />
 
 
 </Project>
