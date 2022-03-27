@@ -27,11 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Time;
-
-/// <summary>
-///     The example class
-/// </summary>
-public class ExampleDefault
+namespace Alis.Core.Time
 {
+    /// <summary>
+    ///     The example class
+    /// </summary>
+    public class ExampleDefault
+    {
+    }
 }

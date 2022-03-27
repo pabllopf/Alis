@@ -292,6 +292,9 @@ namespace Alis.Core.Network.Exceptions.Example.Server
                 throw new Exception(message, ex);
             }
         }*/
+      /// <summary>
+      /// Disposes this instance
+      /// </summary>
       public void Dispose()
       {
 

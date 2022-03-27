@@ -27,11 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Cloud;
-
-/// <summary>
-///     The example class
-/// </summary>
-public class ExampleDefault
+namespace Alis.Core.Cloud
 {
+    /// <summary>
+    ///     The example class
+    /// </summary>
+    public class ExampleDefault
+    {
+    }
 }

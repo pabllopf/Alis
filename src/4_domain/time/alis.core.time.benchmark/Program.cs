@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
 
 using System;
 using BenchmarkDotNet.Columns;
@@ -37,8 +36,6 @@ using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
-
-#endregion
 
 namespace Alis.Core.Time.Benchmark
 {

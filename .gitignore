@@ -3,10 +3,12 @@
 .idea/
 
 /**/.vs/
+/**/.nuget/
 /**/.vscode/
 /**/.idea/
 
 /**/.vs/**
+/**/.nuget/**
 /**/.vscode/**
 /**/.idea/**
 

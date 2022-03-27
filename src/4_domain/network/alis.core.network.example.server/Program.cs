@@ -38,6 +38,10 @@ namespace Alis.Core.Network.Exceptions.Example.Server
     /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
         }

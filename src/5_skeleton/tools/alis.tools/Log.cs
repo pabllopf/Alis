@@ -30,140 +30,141 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace Alis.Tools;
-
-/// <summary>
-///     The log class
-/// </summary>
-public class Log
+namespace Alis.Tools
 {
     /// <summary>
-    ///     The assembly
+    ///     The log class
     /// </summary>
-    private string assembly;
-
-    /// <summary>
-    ///     The date time
-    /// </summary>
-    private DateTime dateTime;
-
-
-    /// <summary>
-    ///     The level
-    /// </summary>
-    private string level;
-
-    /// <summary>
-    ///     The message
-    /// </summary>
-    private string message;
-
-    /// <summary>
-    ///     The method
-    /// </summary>
-    private string method;
-
-    /// <summary>
-    ///     The stack trace
-    /// </summary>
-    private string stackTrace;
-
-    /// <summary>
-    ///     The thread
-    /// </summary>
-    private int thread;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="Log" /> class
-    /// </summary>
-    /// <param name="level">The level</param>
-    /// <param name="dateTime">The date time</param>
-    /// <param name="message">The message</param>
-    /// <param name="method">The method</param>
-    /// <param name="assembly">The assembly</param>
-    /// <param name="thread">The thread</param>
-    /// <param name="stackTrace">The stack trace</param>
-    [JsonConstructor]
-    public Log(string level, DateTime dateTime, string message, string method, string assembly, int thread,
-        string stackTrace)
+    public class Log
     {
-        this.level = level;
-        this.dateTime = dateTime;
-        this.message = message;
-        this.method = method;
-        this.assembly = assembly;
-        this.thread = thread;
-        this.stackTrace = stackTrace;
-    }
+        /// <summary>
+        ///     The assembly
+        /// </summary>
+        private string assembly;
 
-    /// <summary>
-    ///     Gets or sets the value of the level
-    /// </summary>
-    [JsonPropertyName("level")]
-    public string Level
-    {
-        get => level;
-        set => level = value;
-    }
+        /// <summary>
+        ///     The date time
+        /// </summary>
+        private DateTime dateTime;
 
 
-    /// <summary>
-    ///     Gets or sets the value of the date time
-    /// </summary>
-    [JsonPropertyName("dateTime")]
-    public DateTime DateTime
-    {
-        get => dateTime;
-        set => dateTime = value;
-    }
+        /// <summary>
+        ///     The level
+        /// </summary>
+        private string level;
 
-    /// <summary>
-    ///     Gets or sets the value of the message
-    /// </summary>
-    [JsonPropertyName("message")]
-    public string Message
-    {
-        get => message;
-        set => message = value;
-    }
+        /// <summary>
+        ///     The message
+        /// </summary>
+        private string message;
 
-    /// <summary>
-    ///     Gets or sets the value of the method
-    /// </summary>
-    [JsonPropertyName("method")]
-    public string Method
-    {
-        get => method;
-        set => method = value;
-    }
+        /// <summary>
+        ///     The method
+        /// </summary>
+        private string method;
 
-    /// <summary>
-    ///     Gets or sets the value of the assembly
-    /// </summary>
-    [JsonPropertyName("assembly")]
-    public string Assembly
-    {
-        get => assembly;
-        set => assembly = value;
-    }
+        /// <summary>
+        ///     The stack trace
+        /// </summary>
+        private string stackTrace;
 
-    /// <summary>
-    ///     Gets or sets the value of the thread
-    /// </summary>
-    [JsonPropertyName("thread")]
-    public int Thread
-    {
-        get => thread;
-        set => thread = value;
-    }
+        /// <summary>
+        ///     The thread
+        /// </summary>
+        private int thread;
 
-    /// <summary>
-    ///     Gets or sets the value of the stack trace
-    /// </summary>
-    [JsonPropertyName("stacktrace")]
-    public string StackTrace
-    {
-        get => stackTrace;
-        set => stackTrace = value;
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Log" /> class
+        /// </summary>
+        /// <param name="level">The level</param>
+        /// <param name="dateTime">The date time</param>
+        /// <param name="message">The message</param>
+        /// <param name="method">The method</param>
+        /// <param name="assembly">The assembly</param>
+        /// <param name="thread">The thread</param>
+        /// <param name="stackTrace">The stack trace</param>
+        [JsonConstructor]
+        public Log(string level, DateTime dateTime, string message, string method, string assembly, int thread,
+            string stackTrace)
+        {
+            this.level = level;
+            this.dateTime = dateTime;
+            this.message = message;
+            this.method = method;
+            this.assembly = assembly;
+            this.thread = thread;
+            this.stackTrace = stackTrace;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the level
+        /// </summary>
+        [JsonPropertyName("level")]
+        public string Level
+        {
+            get => level;
+            set => level = value;
+        }
+
+
+        /// <summary>
+        ///     Gets or sets the value of the date time
+        /// </summary>
+        [JsonPropertyName("dateTime")]
+        public DateTime DateTime
+        {
+            get => dateTime;
+            set => dateTime = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the message
+        /// </summary>
+        [JsonPropertyName("message")]
+        public string Message
+        {
+            get => message;
+            set => message = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the method
+        /// </summary>
+        [JsonPropertyName("method")]
+        public string Method
+        {
+            get => method;
+            set => method = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the assembly
+        /// </summary>
+        [JsonPropertyName("assembly")]
+        public string Assembly
+        {
+            get => assembly;
+            set => assembly = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the thread
+        /// </summary>
+        [JsonPropertyName("thread")]
+        public int Thread
+        {
+            get => thread;
+            set => thread = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the stack trace
+        /// </summary>
+        [JsonPropertyName("stacktrace")]
+        public string StackTrace
+        {
+            get => stackTrace;
+            set => stackTrace = value;
+        }
     }
 }
