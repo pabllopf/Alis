@@ -27,9 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Systems.Physics2D.Dynamics;
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Dynamics
+namespace Alis.Core.Systems.Physics2D.Test.Dynamics
 {
     /// <summary>
     ///     The test fixture proxy class
@@ -37,11 +38,17 @@ namespace Alis.Core.Physics2D.Test.Dynamics
     public class TestFixtureProxy
     {
         /// <summary>
+        ///     The fixture proxy
+        /// </summary>
+        private FixtureProxy fixtureProxy;
+
+        /// <summary>
         ///     Setup this instance
         /// </summary>
         [SetUp]
         public void Setup()
         {
+            fixtureProxy = new FixtureProxy();
         }
 
         /// <summary>

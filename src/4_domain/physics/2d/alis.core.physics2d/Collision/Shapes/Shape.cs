@@ -27,73 +27,139 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Diagnostics;
 using System.Numerics;
+using Alis.Core.Systems.Physics2D.Collision.RayCast;
+using Alis.Core.Systems.Physics2D.Shared;
 
-namespace Alis.Core.Physics2D.Shapes
+namespace Alis.Core.Systems.Physics2D.Collision.Shapes
 {
     /// <summary>
-    ///     A shape is used for collision detection. You can create a shape however you like.
-    ///     Shapes used for simulation in World are created automatically when a Fixture is created.
+    ///     A shape is used for collision detection. You can create a shape however you like. Shapes used for simulation
+    ///     in World are created automatically when a Fixture is created. Shapes may encapsulate a one or more child shapes.
+    ///     A shape is 2D geometrical object, such as a circle or polygon.
     /// </summary>
     public abstract class Shape
     {
         /// <summary>
+        ///     The density
+        /// </summary>
+        internal float DensityPrivate;
+
+        /// <summary>
+        ///     The mass data
+        /// </summary>
+        internal MassData MassDataPrivate;
+
+        /// <summary>
         ///     The radius
         /// </summary>
-        internal float m_radius;
+        internal float RadiusPrivate;
 
         /// <summary>
-        ///     Gets the value of the contact match
+        ///     The shape type
         /// </summary>
-        internal abstract byte ContactMatch { get; }
+        internal ShapeType ShapeTypePrivate;
 
         /// <summary>
-        ///     Clones this instance
+        ///     Initializes a new instance of the <see cref="Shape" /> class
         /// </summary>
-        /// <returns>The shape</returns>
+        /// <param name="type">The type</param>
+        /// <param name="radius">The radius</param>
+        /// <param name="density">The density</param>
+        protected Shape(ShapeType type, float radius = 0, float density = 0)
+        {
+            Debug.Assert(radius >= 0);
+            Debug.Assert(density >= 0);
+
+            ShapeTypePrivate = type;
+            RadiusPrivate = radius;
+            DensityPrivate = density;
+            MassDataPrivate = new MassData();
+        }
+
+        /// <summary>Get the type of this shape.</summary>
+        /// <value>The type of the shape.</value>
+        public ShapeType ShapeType => ShapeTypePrivate;
+
+        /// <summary>Get the number of child primitives.</summary>
+        public abstract int ChildCount { get; }
+
+        /// <summary>Radius of the Shape Changing the radius causes a recalculation of shape properties.</summary>
+        public float Radius
+        {
+            get => RadiusPrivate;
+            set
+            {
+                Debug.Assert(value >= 0);
+
+                if (RadiusPrivate != value)
+                {
+                    RadiusPrivate = value;
+                    ComputeProperties();
+                }
+            }
+        }
+
+        //Velcro: Moved density to the base shape. Simplifies a lot of code everywhere else
+        /// <summary>Gets or sets the density. Changing the density causes a recalculation of shape properties.</summary>
+        /// <value>The density.</value>
+        public float Density
+        {
+            get => DensityPrivate;
+            set
+            {
+                Debug.Assert(value >= 0);
+
+                if (DensityPrivate != value)
+                {
+                    DensityPrivate = value;
+                    ComputeProperties();
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Contains the properties of the shape such as:
+        ///     - Area of the shape
+        ///     - Centroid
+        ///     - Inertia
+        ///     - Mass
+        /// </summary>
+        public void GetMassData(out MassData massData)
+        {
+            massData = MassDataPrivate;
+        }
+
+        /// <summary>Clone the concrete shape</summary>
+        /// <returns>A clone of the shape</returns>
         public abstract Shape Clone();
 
-        /// <summary>
-        ///     Gets the child count
-        /// </summary>
-        /// <returns>The int</returns>
-        public abstract int GetChildCount();
+        /// <summary>Test a point for containment in this shape. Note: This only works for convex shapes.</summary>
+        /// <param name="transform">The shape world transform.</param>
+        /// <param name="point">A point in world coordinates.</param>
+        /// <returns>True if the point is inside the shape</returns>
+        public abstract bool TestPoint(ref Transform transform, ref Vector2 point);
+
+        /// <summary>Cast a ray against a child shape.</summary>
+        /// <param name="input">The ray-cast input parameters.</param>
+        /// <param name="transform">The transform to be applied to the shape.</param>
+        /// <param name="childIndex">The child shape index.</param>
+        /// <param name="output">The ray-cast results.</param>
+        /// <returns>True if the ray-cast hits the shape</returns>
+        public abstract bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
+            out RayCastOutput output);
+
+        /// <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
+        /// <param name="transform">The world transform of the shape.</param>
+        /// <param name="childIndex">The child shape index.</param>
+        /// <param name="aabb">The AABB results.</param>
+        public abstract void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb);
 
         /// <summary>
-        ///     Describes whether this instance test point
+        ///     Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed
+        ///     about the local origin, not the centroid.
         /// </summary>
-        /// <param name="xf">The xf</param>
-        /// <param name="p">The </param>
-        /// <returns>The bool</returns>
-        public abstract bool TestPoint(in Transform xf, in Vector2 p);
-
-        /// <summary>
-        ///     Describes whether this instance ray cast
-        /// </summary>
-        /// <param name="output">The output</param>
-        /// <param name="input">The input</param>
-        /// <param name="transform">The transform</param>
-        /// <param name="childIndex">The child index</param>
-        /// <returns>The bool</returns>
-        public abstract bool RayCast(
-            out RayCastOutput output,
-            in RayCastInput input,
-            in Transform transform,
-            int childIndex);
-
-        /// <summary>
-        ///     Computes the aabb using the specified aabb
-        /// </summary>
-        /// <param name="aabb">The aabb</param>
-        /// <param name="xf">The xf</param>
-        /// <param name="childIndex">The child index</param>
-        public abstract void ComputeAABB(out AABB aabb, in Transform xf, int childIndex);
-
-        /// <summary>
-        ///     Computes the mass using the specified mass data
-        /// </summary>
-        /// <param name="massData">The mass data</param>
-        /// <param name="density">The density</param>
-        public abstract void ComputeMass(out MassData massData, float density);
+        protected abstract void ComputeProperties();
     }
 }

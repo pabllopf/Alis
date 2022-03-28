@@ -27,196 +27,92 @@
 // 
 //  --------------------------------------------------------------------------
 
-//#define DEBUG
-
+using System;
+using System.Diagnostics;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+using Alis.Core.Systems.Physics2D.Collision.RayCast;
+using Alis.Core.Systems.Physics2D.Config;
+using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Physics2D.Shapes
+namespace Alis.Core.Systems.Physics2D.Collision.Shapes
 {
-    /// <summary>
-    ///     A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.
-    /// </summary>
+    /// <summary>Represents a simple non-self intersecting convex polygon. Create a convex hull from the given array of points.</summary>
     public class PolygonShape : Shape
     {
         /// <summary>
-        ///     The centroid
+        ///     The normals
         /// </summary>
-        internal Vector2 m_centroid;
+        internal Vertices NormalsPrivate;
 
         /// <summary>
-        ///     The count
+        ///     The vertices
         /// </summary>
-        internal int m_count;
+        internal Vertices VerticesPrivate;
 
-        /// <summary>
-        ///     The max polygon vertices
-        /// </summary>
-        internal Vector2[] m_normals = new Vector2[Settings.MaxPolygonVertices];
-
-        /// <summary>
-        ///     The max polygon vertices
-        /// </summary>
-        internal Vector2[] m_vertices = new Vector2[Settings.MaxPolygonVertices];
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
-        /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public PolygonShape()
+        /// <summary>Initializes a new instance of the <see cref="PolygonShape" /> class.</summary>
+        /// <param name="vertices">The vertices.</param>
+        /// <param name="density">The density.</param>
+        public PolygonShape(Vertices vertices, float density) : base(ShapeType.Polygon, Settings.PolygonRadius, density)
         {
-            m_radius = Settings.PolygonRadius;
-            m_count = 0;
-            m_centroid = Vector2.Zero;
+            SetVertices(vertices);
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="PolygonShape" /> class.</summary>
+        /// <param name="density">The density.</param>
+        public PolygonShape(float density) : base(ShapeType.Polygon, Settings.PolygonRadius, density)
+        {
         }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonShape" /> class
         /// </summary>
-        /// <param name="vectors">The vectors</param>
-        public PolygonShape(params Vector2[] vectors) : this()
+        private PolygonShape() : base(ShapeType.Polygon, Settings.PolygonRadius)
         {
-            Set(vectors);
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
+        ///     Create a convex hull from the given array of local points. The number of vertices must be in the range [3,
+        ///     Settings.MaxPolygonVertices]. Warning: the points may be re-ordered, even if they form a convex polygon Warning:
+        ///     collinear points are handled but not removed. Collinear points may lead to poor stacking behavior.
         /// </summary>
-        /// <param name="hX">The </param>
-        /// <param name="hY">The </param>
-        public PolygonShape(float hX, float hY) : this()
+        public Vertices Vertices
         {
-            SetAsBox(hX, hY);
+            get => VerticesPrivate;
+            set => SetVertices(value);
         }
 
         /// <summary>
-        ///     Gets the value of the contact match
+        ///     Gets the value of the normals
         /// </summary>
-        internal override byte ContactMatch => contactMatch;
+        public Vertices Normals => NormalsPrivate;
 
         /// <summary>
-        ///     The contact match
+        ///     Gets the value of the child count
         /// </summary>
-        internal const byte contactMatch = 2;
+        public override int ChildCount => 1;
 
         /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The shape</returns>
-        public override Shape Clone() => (Shape) MemberwiseClone();
-
-        /// <summary>
-        ///     Sets the as box using the specified hx
-        /// </summary>
-        /// <param name="hx">The hx</param>
-        /// <param name="hy">The hy</param>
-        public void SetAsBox(float hx, float hy)
-        {
-            m_count = 4;
-            m_vertices[0] = new Vector2(-hx, -hy);
-            m_vertices[1] = new Vector2(hx, -hy);
-            m_vertices[2] = new Vector2(hx, hy);
-            m_vertices[3] = new Vector2(-hx, hy);
-
-            m_normals[0] = new Vector2(0, -1);
-            m_normals[1] = new Vector2(1, 0);
-            m_normals[2] = new Vector2(0, 1);
-            m_normals[3] = new Vector2(-1, 0);
-
-            m_centroid = Vector2.Zero;
-        }
-
-        /// <summary>
-        ///     Sets the as box using the specified hx
-        /// </summary>
-        /// <param name="hx">The hx</param>
-        /// <param name="hy">The hy</param>
-        /// <param name="center">The center</param>
-        /// <param name="angle">The angle</param>
-        public void SetAsBox(float hx, float hy, in Vector2 center, float angle)
-        {
-            SetAsBox(hx, hy);
-            m_centroid = center;
-
-            Transform xf = new Transform();
-            xf.p = center;
-            xf.q = Matrex.CreateRotation(angle); // Actually about twice as fast to use our own function
-
-            for (int i = 0; i < m_count; i++)
-            {
-                m_vertices[i] = Math.Mul(xf, m_vertices[i]);
-                m_normals[i] = Vector2.Transform(m_normals[i], xf.q);
-            }
-        }
-
-        /// <summary>
-        ///     Gets the child count
-        /// </summary>
-        /// <returns>The int</returns>
-        public override int GetChildCount() => 1;
-
-        /// <summary>
-        ///     Computes the centroid using the specified vs
-        /// </summary>
-        /// <param name="vs">The vs</param>
-        /// <param name="count">The count</param>
-        /// <returns>The </returns>
-        private static Vector2 ComputeCentroid(in Vector2[] vs, int count)
-        {
-            //Debug.Assert(count >= 3);
-
-            Vector2 c = Vector2.Zero;
-            float area = 0.0f;
-
-            // pRef is the reference point for forming triangles.
-            // It's location doesn't change the result (except for rounding error).
-            Vector2 s = vs[0];
-
-            const float inv3 = 1.0f / 3.0f;
-
-            for (int i = 0; i < count; ++i)
-            {
-                // Triangle vertices.
-                Vector2 p1 = vs[0] - s;
-                Vector2 p2 = vs[i] - s;
-                Vector2 p3 = i + 1 < count ? vs[i + 1] - s : vs[0] - s;
-
-                Vector2 e1 = p2 - p1;
-                Vector2 e2 = p3 - p1;
-
-                float D = Vectex.Cross(e1, e2);
-
-                float triangleArea = 0.5f * D;
-                area += triangleArea;
-
-                // Area weighted centroid
-                c += triangleArea * inv3 * (p1 + p2 + p3);
-            }
-
-            // Centroid
-            //Debug.Assert(area > Settings.FLT_EPSILON);
-            c = 1.0f / area * c + s;
-            return c;
-        }
-
-
-        /// <summary>
-        ///     Sets the vertices
+        ///     Sets the vertices using the specified vertices
         /// </summary>
         /// <param name="vertices">The vertices</param>
-        public void Set(in Vector2[] vertices)
+        /// <exception cref="InvalidOperationException">Polygon is degenerate</exception>
+        /// <exception cref="InvalidOperationException">Polygon is degenerate</exception>
+        /// <exception cref="InvalidOperationException">You can't create a polygon with less than 3 vertices</exception>
+        private void SetVertices(Vertices vertices)
         {
-            int count = vertices.Length;
-            //Debug.Assert(3 <= count && count <= Settings.MaxPolygonVertices);
-            if (count < 3)
+            Debug.Assert(vertices.Count >= 3 && vertices.Count <= Settings.MaxPolygonVertices);
+
+            //Velcro: We throw an exception instead of setting the polygon to a box for safety reasons
+            if (vertices.Count < 3)
             {
-                SetAsBox(1f, 1f);
-                return;
+                throw new InvalidOperationException("You can't create a polygon with less than 3 vertices");
             }
 
-            int n = System.Math.Min(count, Settings.MaxPolygonVertices);
+            int n = MathUtils.Min(vertices.Count, Settings.MaxPolygonVertices);
+
             // Perform welding and copy vertices into local buffer.
-            Vector2[] ps = new Vector2[Settings.MaxPolygonVertices];
+            Vector2[] ps = new Vector2[n]; //Velcro: The temp buffer is n long instead of Settings.MaxPolygonVertices
             int tempCount = 0;
             for (int i = 0; i < n; ++i)
             {
@@ -225,7 +121,9 @@ namespace Alis.Core.Physics2D.Shapes
                 bool unique = true;
                 for (int j = 0; j < tempCount; ++j)
                 {
-                    if (Vector2.DistanceSquared(v, ps[j]) < 0.5f * Settings.LinearSlop * (0.5f * Settings.LinearSlop))
+                    Vector2 temp = ps[j];
+                    if (MathUtils.DistanceSquared(ref v, ref temp) <
+                        0.5f * Settings.LinearSlop * (0.5f * Settings.LinearSlop))
                     {
                         unique = false;
                         break;
@@ -242,9 +140,9 @@ namespace Alis.Core.Physics2D.Shapes
             if (n < 3)
             {
                 // Polygon is degenerate.
-                //Debug.Assert(false);
-                SetAsBox(1.0f, 1.0f);
-                return;
+                throw
+                    new InvalidOperationException(
+                        "Polygon is degenerate"); //Velcro: We throw exception here because we had invalid input
             }
 
             // Create the convex hull using the Gift wrapping algorithm
@@ -269,7 +167,7 @@ namespace Alis.Core.Physics2D.Shapes
 
             for (;;)
             {
-                //Debug.Assert(m < Settings.MaxPolygonVertices);
+                Debug.Assert(m < Settings.MaxPolygonVertices);
                 hull[m] = ih;
 
                 int ie = 0;
@@ -283,7 +181,7 @@ namespace Alis.Core.Physics2D.Shapes
 
                     Vector2 r = ps[ie] - ps[hull[m]];
                     Vector2 v = ps[j] - ps[hull[m]];
-                    float c = Vectex.Cross(r, v);
+                    float c = MathUtils.Cross(r, v);
                     if (c < 0.0f)
                     {
                         ie = j;
@@ -308,166 +206,98 @@ namespace Alis.Core.Physics2D.Shapes
             if (m < 3)
             {
                 // Polygon is degenerate.
-                //Debug.Assert(false);
-                SetAsBox(1.0f, 1.0f);
-                return;
+                throw
+                    new InvalidOperationException(
+                        "Polygon is degenerate"); //Velcro: We throw exception here because we had invalid input
             }
 
-            m_count = m;
+            VerticesPrivate = new Vertices(m);
 
             // Copy vertices.
             for (int i = 0; i < m; ++i)
             {
-                m_vertices[i] = ps[hull[i]];
+                VerticesPrivate.Add(ps[hull[i]]);
             }
+
+            NormalsPrivate = new Vertices(m);
 
             // Compute normals. Ensure the edges have non-zero length.
             for (int i = 0; i < m; ++i)
             {
                 int i1 = i;
-                int i2 = i + 1 < m ? i + 1 : 0;
-                Vector2 edge = m_vertices[i2] - m_vertices[i1];
-                //Debug.Assert(edge.LengthSquared() > Settings.FLT_EPSILON_SQUARED);
-                m_normals[i] = Vector2.Normalize(Vectex.Cross(edge, 1.0f));
+                int i2 = i + 1 < VerticesPrivate.Count ? i + 1 : 0;
+                Vector2 edge = VerticesPrivate[i2] - VerticesPrivate[i1];
+                Debug.Assert(edge.LengthSquared() > MathConstants.Epsilon * MathConstants.Epsilon);
+                Vector2 temp = MathUtils.Cross(edge, 1.0f);
+                temp = Vector2.Normalize(temp);
+                NormalsPrivate.Add(temp);
             }
 
-            // Compute the polygon centroid.
-            m_centroid = ComputeCentroid(m_vertices, m);
+            //Velcro: We compute all the mass data properties up front
+            ComputeProperties();
         }
 
         /// <summary>
-        ///     Describes whether this instance test point
+        ///     Sets the as box using the specified hx
         /// </summary>
-        /// <param name="xf">The xf</param>
-        /// <param name="p">The </param>
-        /// <returns>The bool</returns>
-        public override bool TestPoint(in Transform xf, in Vector2 p)
+        /// <param name="hx">The hx</param>
+        /// <param name="hy">The hy</param>
+        public void SetAsBox(float hx, float hy)
         {
-            Vector2 pLocal = Math.MulT(xf.q, p - xf.p);
+            VerticesPrivate = PolygonUtils.CreateRectangle(hx, hy);
 
-            for (int i = 0; i < m_count; ++i)
+            NormalsPrivate = new Vertices(4)
             {
-                float dot = Vector2.Dot(m_normals[i], pLocal - m_vertices[i]);
-                if (dot > 0.0f)
-                {
-                    return false;
-                }
-            }
+                new Vector2(0.0f, -1.0f),
+                new Vector2(1.0f, 0.0f),
+                new Vector2(0.0f, 1.0f),
+                new Vector2(-1.0f, 0.0f)
+            };
 
-            return true;
+            ComputeProperties();
         }
 
         /// <summary>
-        ///     Describes whether this instance ray cast
+        ///     Sets the as box using the specified hx
         /// </summary>
-        /// <param name="output">The output</param>
-        /// <param name="input">The input</param>
-        /// <param name="xf">The xf</param>
-        /// <param name="childIndex">The child index</param>
-        /// <returns>The bool</returns>
-        public override bool RayCast(
-            out RayCastOutput output,
-            in RayCastInput input,
-            in Transform xf,
-            int childIndex)
+        /// <param name="hx">The hx</param>
+        /// <param name="hy">The hy</param>
+        /// <param name="center">The center</param>
+        /// <param name="angle">The angle</param>
+        public void SetAsBox(float hx, float hy, Vector2 center, float angle)
         {
-            output = default(RayCastOutput);
-            // Put the ray into the polygon's frame of reference.
-            Vector2 p1 = Math.MulT(xf.q, input.p1 - xf.p);
-            Vector2 p2 = Math.MulT(xf.q, input.p2 - xf.p);
-            Vector2 d = p2 - p1;
+            VerticesPrivate = PolygonUtils.CreateRectangle(hx, hy);
 
-            float lower = 0.0f, upper = input.maxFraction;
-
-            int index = -1;
-
-            for (int i = 0; i < m_count; ++i)
+            NormalsPrivate = new Vertices(4)
             {
-                // p = p1 + a * d
-                // dot(normal, p - v) = 0
-                // dot(normal, p1 - v) + a * dot(normal, d) = 0
-                float numerator = Vector2.Dot(m_normals[i], m_vertices[i] - p1);
-                float denominator = Vector2.Dot(m_normals[i], d);
+                new Vector2(0.0f, -1.0f),
+                new Vector2(1.0f, 0.0f),
+                new Vector2(0.0f, 1.0f),
+                new Vector2(-1.0f, 0.0f)
+            };
 
-                if (denominator == 0.0f)
-                {
-                    if (numerator < 0.0f)
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    // Note: we want this predicate without division:
-                    // lower < numerator / denominator, where denominator < 0
-                    // Since denominator < 0, we have to flip the inequality:
-                    // lower < numerator / denominator <==> denominator * lower > numerator.
-                    if (denominator < 0.0f && numerator < lower * denominator)
-                    {
-                        // Increase lower.
-                        // The segment enters this half-space.
-                        lower = numerator / denominator;
-                        index = i;
-                    }
-                    else if (denominator > 0.0f && numerator < upper * denominator)
-                    {
-                        // Decrease upper.
-                        // The segment exits this half-space.
-                        upper = numerator / denominator;
-                    }
-                }
+            MassDataPrivate.Centroid = center;
 
-                // The use of epsilon here causes the assert on lower to trip
-                // in some cases. Apparently the use of epsilon was to make edge
-                // shapes work, but now those are handled separately.
-                //if (upper < lower - b2_epsilon)
-                if (upper < lower)
-                {
-                    return false;
-                }
+            Transform xf = new Transform
+            {
+                P = center
+            };
+            xf.Q.Set(angle);
+
+            // Transform vertices and normals.
+            for (int i = 0; i < 4; ++i)
+            {
+                VerticesPrivate[i] = MathUtils.Mul(ref xf, VerticesPrivate[i]);
+                NormalsPrivate[i] = MathUtils.Mul(ref xf.Q, NormalsPrivate[i]);
             }
 
-            //Debug.Assert(0.0f <= lower && lower <= input.maxFraction);
-
-            if (index >= 0)
-            {
-                output.fraction = lower;
-                output.normal = Vector2.Transform(m_normals[index], xf.q);
-                return true;
-            }
-
-            return false;
+            ComputeProperties();
         }
 
         /// <summary>
-        ///     Computes the aabb using the specified aabb
+        ///     Computes the properties
         /// </summary>
-        /// <param name="aabb">The aabb</param>
-        /// <param name="xf">The xf</param>
-        /// <param name="childIndex">The child index</param>
-        public override void ComputeAABB(out AABB aabb, in Transform xf, int childIndex)
-        {
-            Vector2 lower = Math.Mul(xf, m_vertices[0]);
-            Vector2 upper = lower;
-
-            for (int i = 1; i < m_count; ++i)
-            {
-                Vector2 v = Math.Mul(xf, m_vertices[i]);
-                lower = Vector2.Min(lower, v);
-                upper = Vector2.Max(upper, v);
-            }
-
-            Vector2 r = new Vector2(m_radius, m_radius);
-            aabb.lowerBound = lower - r;
-            aabb.upperBound = upper + r;
-        }
-
-        /// <summary>
-        ///     Computes the mass using the specified mass data
-        /// </summary>
-        /// <param name="massData">The mass data</param>
-        /// <param name="density">The density</param>
-        public override void ComputeMass(out MassData massData, float density)
+        protected sealed override void ComputeProperties()
         {
             // Polygon mass, centroid, and inertia.
             // Let rho be the polygon density in mass per unit area.
@@ -493,31 +323,40 @@ namespace Alis.Core.Physics2D.Shapes
             //
             // The rest of the derivation is handled by computer algebra.
 
-            //Debug.Assert(m_count >= 3);
+            Debug.Assert(VerticesPrivate.Count >= 3);
 
+            //Velcro: Early exit as polygons with 0 density does not have any properties.
+            if (DensityPrivate <= 0)
+            {
+                return;
+            }
+
+            //Velcro: Consolidated the calculate centroid and mass code to a single method.
             Vector2 center = Vector2.Zero;
             float area = 0.0f;
             float I = 0.0f;
 
-            // Get a reference point for forming triangles
-            // Use the first vertex to reduce round-off errors
-            Vector2 s = m_vertices[0];
+            // Get a reference point for forming triangles.
+            // Use the first vertex to reduce round-off errors.
+            Vector2 s = VerticesPrivate[0];
 
-            const float k_inv3 = 1.0f / 3.0f;
+            const float inv3 = 1.0f / 3.0f;
 
-            for (int i = 0; i < m_count; ++i)
+            int count = VerticesPrivate.Count;
+
+            for (int i = 0; i < count; ++i)
             {
                 // Triangle vertices.
-                Vector2 e1 = m_vertices[i] - s;
-                Vector2 e2 = i + 1 < m_count ? m_vertices[i + 1] - s : m_vertices[0] - s;
+                Vector2 e1 = VerticesPrivate[i] - s;
+                Vector2 e2 = i + 1 < count ? VerticesPrivate[i + 1] - s : VerticesPrivate[0] - s;
 
-                float D = Vectex.Cross(e1, e2);
+                float d = MathUtils.Cross(e1, e2);
 
-                float triangleArea = 0.5f * D;
+                float triangleArea = 0.5f * d;
                 area += triangleArea;
 
                 // Area weighted centroid
-                center += triangleArea * k_inv3 * (e1 + e2);
+                center += triangleArea * inv3 * (e1 + e2);
 
                 float ex1 = e1.X, ey1 = e1.Y;
                 float ex2 = e2.X, ey2 = e2.Y;
@@ -525,29 +364,77 @@ namespace Alis.Core.Physics2D.Shapes
                 float intx2 = ex1 * ex1 + ex2 * ex1 + ex2 * ex2;
                 float inty2 = ey1 * ey1 + ey2 * ey1 + ey2 * ey2;
 
-                I += 0.25f * k_inv3 * D * (intx2 + inty2);
+                I += 0.25f * inv3 * d * (intx2 + inty2);
             }
 
+            //The area is too small for the engine to handle.
+            Debug.Assert(area > MathConstants.Epsilon);
+
+            // We save the area
+            MassDataPrivate.Area = area;
+
             // Total mass
-            massData.mass = density * area;
+            MassDataPrivate.Mass = DensityPrivate * area;
 
             // Center of mass
-            //Debug.Assert(area > Settings.FLT_EPSILON);
             center *= 1.0f / area;
-            massData.center = center + s;
+            MassDataPrivate.Centroid = center + s;
 
             // Inertia tensor relative to the local origin (point s).
-            massData.I = density * I;
+            MassDataPrivate.Inertia = DensityPrivate * I;
 
             // Shift to center of mass then to original body origin.
-            massData.I += massData.mass * (Vector2.Dot(massData.center, massData.center) - Vector2.Dot(center, center));
+            MassDataPrivate.Inertia += MassDataPrivate.Mass *
+                                       (MathUtils.Dot(MassDataPrivate.Centroid, MassDataPrivate.Centroid) -
+                                        MathUtils.Dot(center, center));
         }
 
         /// <summary>
-        ///     Gets the vertices
+        ///     Describes whether this instance test point
         /// </summary>
-        /// <returns>The vector array</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Vector2[] GetVertices() => m_vertices[..m_count];
+        /// <param name="transform">The transform</param>
+        /// <param name="point">The point</param>
+        /// <returns>The bool</returns>
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
+            TestPointHelper.TestPointPolygon(VerticesPrivate, NormalsPrivate, ref point, ref transform);
+
+        /// <summary>
+        ///     Describes whether this instance ray cast
+        /// </summary>
+        /// <param name="input">The input</param>
+        /// <param name="transform">The transform</param>
+        /// <param name="childIndex">The child index</param>
+        /// <param name="output">The output</param>
+        /// <returns>The bool</returns>
+        public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
+            out RayCastOutput output) =>
+            RayCastHelper.RayCastPolygon(VerticesPrivate, NormalsPrivate, ref input, ref transform, out output);
+
+        /// <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
+        /// <param name="transform">The world transform of the shape.</param>
+        /// <param name="childIndex">The child shape index.</param>
+        /// <param name="aabb">The AABB results.</param>
+        public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
+        {
+            AabbHelper.ComputePolygonAabb(VerticesPrivate, ref transform, out aabb);
+        }
+
+        /// <summary>
+        ///     Clones this instance
+        /// </summary>
+        /// <returns>The clone</returns>
+        public override Shape Clone()
+        {
+            PolygonShape clone = new PolygonShape
+            {
+                ShapeTypePrivate = ShapeTypePrivate,
+                RadiusPrivate = RadiusPrivate,
+                DensityPrivate = DensityPrivate,
+                VerticesPrivate = new Vertices(VerticesPrivate),
+                NormalsPrivate = new Vertices(NormalsPrivate),
+                MassDataPrivate = MassDataPrivate
+            };
+            return clone;
+        }
     }
 }

@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Tools.Triangulation.Delaunay.Util
+namespace Alis.Core.Systems.Physics2D.Test.Tools.Triangulation.Delaunay.Util
 {
     /// <summary>
     ///     The test point generator class

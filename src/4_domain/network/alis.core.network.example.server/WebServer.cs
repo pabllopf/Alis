@@ -28,13 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Net.WebSockets;
-using System.Threading;
-using System.Threading.Tasks;
 
 
 namespace Alis.Core.Network.Exceptions.Example.Server

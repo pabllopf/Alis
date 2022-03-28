@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Tools.PolygonManipulation
+namespace Alis.Core.Systems.Physics2D.Test.Tools.PolygonManipulation
 {
     /// <summary>
     ///     The test simplify tools class

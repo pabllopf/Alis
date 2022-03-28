@@ -27,10 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Systems.Physics2D.Definitions;
+using Alis.Core.Systems.Physics2D.Dynamics;
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Dynamics
+namespace Alis.Core.Systems.Physics2D.Test.Dynamics
 {
     /// <summary>
     ///     The test body class
@@ -48,6 +49,7 @@ namespace Alis.Core.Physics2D.Test.Dynamics
         [SetUp]
         public void Setup()
         {
+            body = new Body(new BodyDef());
         }
 
         /// <summary>

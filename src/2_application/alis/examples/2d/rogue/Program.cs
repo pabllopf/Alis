@@ -34,7 +34,7 @@ using Alis;
 using Alis.Core.Components;
 using Alis.Core.Entities;
 using Alis.Core.Graphics2D.Graphics;
-using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Systems.Physics2D.Dynamics;
 using Sprite = Alis.Core.Components.Sprite;
 using Transform = Alis.Core.Entities.Transform;
 

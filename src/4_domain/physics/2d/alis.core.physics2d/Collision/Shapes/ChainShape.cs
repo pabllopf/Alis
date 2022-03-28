@@ -27,193 +27,239 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using System.Diagnostics;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+using Alis.Core.Systems.Physics2D.Collision.RayCast;
+using Alis.Core.Systems.Physics2D.Config;
+using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Physics2D.Shapes
+namespace Alis.Core.Systems.Physics2D.Collision.Shapes
 {
     /// <summary>
-    ///     /// The chain has one-sided collision, with the surface normal pointing to the right of the edge.
-    ///     This provides a counter-clockwise winding like the polygon shape.
-    ///     Connectivity information is used to create smooth collisions.
+    ///     A chain shape is a free form sequence of line segments. The chain has one-sided collision, with the surface
+    ///     normal pointing to the right of the edge. This provides a counter-clockwise winding like the polygon shape.
+    ///     Connectivity information is used to create smooth collisions. Warning: the chain will not collide properly if there
+    ///     are
+    ///     self-intersections.
     /// </summary>
-    /// <warning>The chain will not collide properly if there are self-intersections.</warning>
     public class ChainShape : Shape
     {
         /// <summary>
-        ///     The count
+        ///     The next vertex
         /// </summary>
-        internal int m_count;
+        private Vector2 nextVertex;
 
         /// <summary>
-        ///     The nextvertex
+        ///     The next vertex
         /// </summary>
-        internal Vector2 m_prevVertex, m_nextVertex;
+        private Vector2 prevVertex;
 
         /// <summary>
         ///     The vertices
         /// </summary>
-        internal Vector2[] m_vertices;
+        private Vertices vertices;
+
+        /// <summary>Create a new ChainShape from the vertices.</summary>
+        /// <param name="vertices">The vertices to use. Must contain 2 or more vertices.</param>
+        /// <param name="createLoop">
+        ///     Set to true to create a closed loop. It connects the first vertex to the last, and
+        ///     automatically adjusts connectivity to create smooth collisions along the chain.
+        /// </param>
+        public ChainShape(Vertices vertices, bool createLoop = false) : base(ShapeType.Chain, Settings.PolygonRadius)
+        {
+            Debug.Assert(vertices != null && vertices.Count >= 3);
+            Debug.Assert(vertices[0] !=
+                         vertices[
+                             vertices.Count -
+                             1]); //Velcro. See http://www.box2d.org/forum/viewtopic.php?f=4&t=7973&p=35363
+
+            for (int i = 1; i < vertices.Count; ++i)
+            {
+                // If the code crashes here, it means your vertices are too close together.
+                Vector2 current = vertices[i];
+                Vector2 prev = vertices[i - 1];
+                Debug.Assert(MathUtils.DistanceSquared(ref prev, ref current) >
+                             Settings.LinearSlop * Settings.LinearSlop);
+            }
+
+            Vertices = new Vertices(vertices);
+
+            //Velcro: Merged CreateLoop() and CreateChain() to this
+            if (createLoop)
+            {
+                Vertices.Add(vertices[0]);
+                PrevVertex = Vertices[Vertices.Count - 2];
+                NextVertex = Vertices[1];
+            }
+
+            ComputeProperties();
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ChainShape" /> class
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public ChainShape() => m_radius = Settings.PolygonRadius;
-
-        /// <summary>
-        ///     Gets the value of the vertices
-        /// </summary>
-        public Vector2[] Vertices
+        private ChainShape() : base(ShapeType.Chain, Settings.PolygonRadius)
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_vertices;
         }
 
-        /// <summary>
-        ///     Gets the value of the contact match
-        /// </summary>
-        internal override byte ContactMatch => contactMatch;
-
-        /// <summary>
-        ///     The contact match
-        /// </summary>
-        internal const byte contactMatch = 3;
-
-        /// <summary>
-        ///     Create a loop. This automatically adjusts connectivity.
-        /// </summary>
-        /// <param name="vertices">An array of vertices. These are copied</param>
-        public void CreateLoop(in Vector2[] vertices)
+        /// <summary>The vertices. These are not owned/freed by the chain Shape.</summary>
+        public Vertices Vertices
         {
-            int count = vertices.Length;
-            if (count < 3)
-            {
-                return;
-            }
-
-            m_count = count + 1;
-            m_vertices = new Vector2[m_count];
-            Array.Copy(vertices, m_vertices, count);
-            m_vertices[count] = m_vertices[0];
-            m_prevVertex = m_vertices[m_count - 2];
-            m_nextVertex = m_vertices[1];
+            get => vertices;
+            set => vertices = value;
         }
 
-        /// <summary>
-        ///     Create a chain with ghost vertices to connect multiple chains together.
-        /// </summary>
-        /// <param name="vertices">An array of vertices. These are copied</param>
-        public void CreateChain(in Vector2[] vertices, in Vector2 prevVertex, in Vector2 nextVertex)
+        /// <summary>Edge count = vertex count - 1</summary>
+        public override int ChildCount => Vertices.Count - 1;
+
+        /// <summary>Establish connectivity to a vertex that precedes the first vertex. Don't call this for loops.</summary>
+        public Vector2 PrevVertex
         {
-            int count = vertices.Length;
-
-            m_count = count;
-            m_vertices = new Vector2[m_count];
-            Array.Copy(vertices, m_vertices, m_count);
-
-            m_prevVertex = prevVertex;
-            m_nextVertex = nextVertex;
+            get => prevVertex;
+            set => prevVertex = value;
         }
 
-        /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The shape</returns>
-        public override Shape Clone() => (ChainShape) MemberwiseClone();
+        /// <summary>Establish connectivity to a vertex that follows the last vertex. Don't call this for loops.</summary>
+        public Vector2 NextVertex
+        {
+            get => nextVertex;
+            set => nextVertex = value;
+        }
 
-        /// <summary>
-        ///     Gets the child count
-        /// </summary>
-        /// <returns>The int</returns>
-        public override int GetChildCount() => m_count - 1;
-
+        //Velcro: The original code returned an EdgeShape for each call. To reduce garbage we merge the properties onto an existing EdgeShape
         /// <summary>
         ///     Gets the child edge using the specified edge
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <param name="index">The index</param>
-        public void GetChildEdge(out EdgeShape edge, int index)
+        internal void GetChildEdge(EdgeShape edge, int index)
         {
-            edge = new EdgeShape
+            Debug.Assert(0 <= index && index < Vertices.Count - 1);
+            Debug.Assert(edge != null);
+
+            //Velcro: It is already an edge shape
+            //edge._shapeTypePrivate = ShapeType.Edge;
+            edge.RadiusPrivate = RadiusPrivate;
+
+            edge.Vertex1 = Vertices[index + 0];
+            edge.Vertex2 = Vertices[index + 1];
+            edge.OneSided = true;
+
+            if (index > 0)
             {
-                m_radius = m_radius,
-                m_vertex0 = index > 0 ? m_vertices[index - 1] : m_prevVertex,
-                m_vertex1 = m_vertices[index + 0],
-                m_vertex2 = m_vertices[index + 1],
-                m_vertex3 = index < m_count - 2 ? m_vertices[index + 2] : m_nextVertex,
-                m_oneSided = true
-            };
+                edge.Vertex0 = Vertices[index - 1];
+            }
+            else
+            {
+                edge.Vertex0 = PrevVertex;
+            }
+
+            if (index < Vertices.Count - 2)
+            {
+                edge.Vertex3 = Vertices[index + 2];
+            }
+            else
+            {
+                edge.Vertex3 = NextVertex;
+            }
+        }
+
+        /// <summary>
+        ///     Gets the child edge using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The edge shape</returns>
+        public EdgeShape GetChildEdge(int index)
+        {
+            EdgeShape edgeShape = new EdgeShape();
+            GetChildEdge(edgeShape, index);
+            return edgeShape;
         }
 
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
-        /// <param name="xf">The xf</param>
-        /// <param name="p">The </param>
+        /// <param name="transform">The transform</param>
+        /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(in Transform xf, in Vector2 p) => false;
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
 
         /// <summary>
         ///     Describes whether this instance ray cast
         /// </summary>
-        /// <param name="output">The output</param>
         /// <param name="input">The input</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
+        /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        public override bool RayCast(
-            out RayCastOutput output,
-            in RayCastInput input,
-            in Transform transform,
-            int childIndex)
+        public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
+            out RayCastOutput output)
         {
-            EdgeShape edgeShape = new EdgeShape();
+            Debug.Assert(childIndex < Vertices.Count);
 
             int i1 = childIndex;
             int i2 = childIndex + 1;
-            if (i2 == m_count)
+
+            if (i2 == Vertices.Count)
             {
                 i2 = 0;
             }
 
-            edgeShape.m_vertex1 = m_vertices[i1];
-            edgeShape.m_vertex2 = m_vertices[i2];
+            Vector2 v1 = Vertices[i1];
+            Vector2 v2 = Vertices[i2];
 
-            return edgeShape.RayCast(out output, input, transform, 0);
+            return RayCastHelper.RayCastEdge(ref v1, ref v2, false, ref input, ref transform, out output);
         }
 
         /// <summary>
-        ///     Computes the aabb using the specified aabb
+        ///     Computes the aabb using the specified transform
         /// </summary>
-        /// <param name="aabb">The aabb</param>
-        /// <param name="xf">The xf</param>
+        /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAABB(out AABB aabb, in Transform xf, int childIndex)
+        /// <param name="aabb">The aabb</param>
+        public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
         {
+            Debug.Assert(childIndex < Vertices.Count);
+
             int i1 = childIndex;
             int i2 = childIndex + 1;
-            if (i2 == m_count)
+
+            if (i2 == Vertices.Count)
             {
                 i2 = 0;
             }
 
-            Vector2 v1 = Math.Mul(xf, m_vertices[i1]);
-            Vector2 v2 = Math.Mul(xf, m_vertices[i2]);
+            Vector2 v1 = Vertices[i1];
+            Vector2 v2 = Vertices[i2];
 
-            aabb.lowerBound = Vector2.Min(v1, v2);
-            aabb.upperBound = Vector2.Max(v1, v2);
+            AabbHelper.ComputeEdgeAabb(ref v1, ref v2, ref transform, out aabb);
         }
 
         /// <summary>
-        ///     Computes the mass using the specified mass data
+        ///     Computes the properties
         /// </summary>
-        /// <param name="massData">The mass data</param>
-        /// <param name="density">The density</param>
-        public override void ComputeMass(out MassData massData, float density)
+        protected sealed override void ComputeProperties()
         {
-            massData = default(MassData);
+            //Does nothing. Chain shapes don't have properties.
+        }
+
+        /// <summary>
+        ///     Clones this instance
+        /// </summary>
+        /// <returns>The clone</returns>
+        public override Shape Clone()
+        {
+            ChainShape clone = new ChainShape
+            {
+                ShapeTypePrivate = ShapeTypePrivate,
+                DensityPrivate = DensityPrivate,
+                RadiusPrivate = RadiusPrivate,
+                PrevVertex = PrevVertex,
+                NextVertex = NextVertex,
+                Vertices = new Vertices(Vertices)
+            };
+            return clone;
         }
     }
 }

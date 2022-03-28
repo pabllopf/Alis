@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Extensions.Controllers.Buoyancy
+namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.Buoyancy
 {
     /// <summary>
     ///     The test buoyancy controller class

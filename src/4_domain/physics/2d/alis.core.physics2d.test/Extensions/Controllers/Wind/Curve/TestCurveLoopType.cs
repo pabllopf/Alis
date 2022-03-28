@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.Wind.Curve
 {
     /// <summary>
     ///     The test curve loop type class

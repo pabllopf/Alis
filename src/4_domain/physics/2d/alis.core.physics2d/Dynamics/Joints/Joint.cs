@@ -28,338 +28,298 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.Numerics;
-using System.Runtime.CompilerServices;
-using Alis.Core.Physics2D.Bodies;
-using Alis.Core.Physics2D.Joints.Distance;
-using Alis.Core.Physics2D.Joints.Friction;
-using Alis.Core.Physics2D.Joints.Gear;
-using Alis.Core.Physics2D.Joints.Mouse;
-using Alis.Core.Physics2D.Joints.Prismatic;
-using Alis.Core.Physics2D.Joints.Pulley;
-using Alis.Core.Physics2D.Joints.Revolute;
-using Alis.Core.Physics2D.Joints.Weld;
-using Alis.Core.Physics2D.Joints.Wheel;
-using Alis.Core.Physics2D.World;
-using Alis.Core.Physics2D.World.Callbacks;
+using Alis.Core.Systems.Physics2D.Definitions.Joints;
+using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
+using Alis.Core.Systems.Physics2D.Dynamics.Solver;
 
-namespace Alis.Core.Physics2D.Joints
+namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 {
     /// <summary>
-    ///     The base joint class. Joints are used to constraint two bodies together in
-    ///     various fashions. Some joints also feature limits and motors.
+    ///     The joint class
     /// </summary>
     public abstract class Joint
     {
         /// <summary>
-        ///     The collideconnected
+        ///     The joint type
         /// </summary>
-        internal readonly bool m_collideConnected;
+        private readonly JointType jointType;
+
+        /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
+        private Body bodyA;
 
         /// <summary>
-        ///     The joint edge
+        ///     The body
         /// </summary>
-        internal readonly JointEdge m_edgeA = new JointEdge();
+        private Body bodyB;
 
         /// <summary>
-        ///     The joint edge
+        ///     The breakpoint
         /// </summary>
-        internal readonly JointEdge m_edgeB = new JointEdge();
+        private float breakpoint;
 
         /// <summary>
-        ///     The bodya
+        ///     The collide connected
         /// </summary>
-        internal Body m_bodyA;
+        private bool collideConnected;
 
         /// <summary>
-        ///     The bodyb
+        ///     The enabled
         /// </summary>
-        internal Body m_bodyB;
+        private bool enabled;
 
         /// <summary>
-        ///     The invi1
+        ///     The user data
         /// </summary>
-        protected float m_invMass1, m_invI1;
+        private object userData;
 
         /// <summary>
-        ///     The invi2
+        ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
-        protected float m_invMass2, m_invI2;
+        /// <param name="jointType">The joint type</param>
+        protected Joint(JointType jointType)
+        {
+            this.jointType = jointType;
+            breakpoint = float.MaxValue;
+
+            //Connected bodies should not collide by default
+            collideConnected = false;
+            Enabled = true;
+        }
 
         /// <summary>
-        ///     The islandflag
+        ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
-        internal bool m_islandFlag;
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        protected Joint(Body bodyA, Body bodyB, JointType jointType) : this(jointType)
+        {
+            //Can't connect a joint to the same body twice.
+            Debug.Assert(bodyA != bodyB);
 
-        // Cache here per time step to reduce cache misses.
-        /// <summary>
-        ///     The localcenter2
-        /// </summary>
-        protected Vector2 m_localCenter1, m_localCenter2;
+            BodyA = bodyA;
+            BodyB = bodyB;
+        }
 
-        /// <summary>
-        ///     The next
-        /// </summary>
-        internal Joint m_next;
-
-        /// <summary>
-        ///     The prev
-        /// </summary>
-        internal Joint m_prev;
+        /// <summary>Constructor for fixed joint</summary>
+        protected Joint(Body body, JointType jointType) : this(jointType) => BodyA = body;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
         /// <param name="def">The def</param>
-        protected Joint(JointDef def)
+        protected Joint(JointDef def) : this(def.Type)
         {
-            m_prev = null;
-            m_next = null;
-            m_bodyA = def.bodyA;
-            m_bodyB = def.bodyB;
-            m_collideConnected = def.collideConnected;
-            m_islandFlag = false;
-            UserData = def.UserData;
+            Debug.Assert(def.BodyA != def.BodyB);
+
+            jointType = def.Type;
+            BodyA = def.BodyA;
+            BodyB = def.BodyB;
+            collideConnected = def.CollideConnected;
+            IslandFlag = false;
+            userData = def.UserData;
         }
 
         /// <summary>
-        ///     Get the anchor point on body1 in world coordinates.
+        ///     The joint edge
         /// </summary>
-        /// <returns></returns>
-        public abstract Vector2 GetAnchorA { get; }
+        internal JointEdge EdgeA { get; } = new JointEdge();
 
         /// <summary>
-        ///     Get the anchor point on body2 in world coordinates.
+        ///     The joint edge
         /// </summary>
-        /// <returns></returns>
-        public abstract Vector2 GetAnchorB { get; }
+        internal JointEdge EdgeB { get; } = new JointEdge();
 
         /// <summary>
-        ///     Get/Set the user data pointer.
+        ///     The island flag
         /// </summary>
-        /// <returns></returns>
+        internal bool IslandFlag { get; set; }
+
+        /// <summary>Gets or sets the type of the joint.</summary>
+        /// <value>The type of the joint.</value>
+        public JointType JointType => jointType;
+
+        /// <summary>
+        ///     Gets or sets the value of the enabled
+        /// </summary>
+        public bool Enabled
+        {
+            get => enabled;
+            set => enabled = value;
+        }
+
+        /// <summary>Get the first body attached to this joint.</summary>
+        public Body BodyA
+        {
+            get => bodyA;
+            set => bodyA = value;
+        }
+
+        /// <summary>Get the second body attached to this joint.</summary>
+        public Body BodyB
+        {
+            get => bodyB;
+            set => bodyB = value;
+        }
+
+        /// <summary>
+        ///     Get the anchor point on bodyA in world coordinates. On some joints, this value indicate the anchor point
+        ///     within the world.
+        /// </summary>
+        public abstract Vector2 WorldAnchorA { get; set; }
+
+        /// <summary>
+        ///     Get the anchor point on bodyB in world coordinates. On some joints, this value indicate the anchor point
+        ///     within the world.
+        /// </summary>
+        public abstract Vector2 WorldAnchorB { get; set; }
+
+        /// <summary>Set the user data pointer.</summary>
+        /// <value>The data.</value>
         public object UserData
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get;
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            set;
+            get => userData;
+            set => userData = value;
         }
 
-        /// <summary>
-        ///     Linears the stiffness using the specified stiffness
-        /// </summary>
-        /// <param name="stiffness">The stiffness</param>
-        /// <param name="damping">The damping</param>
-        /// <param name="frequencyHz">The frequency hz</param>
-        /// <param name="dampingRatio">The damping ratio</param>
-        /// <param name="bodyA">The body</param>
-        /// <param name="bodyB">The body</param>
-        public static void LinearStiffness(
-            out float stiffness,
-            out float damping,
-            in float frequencyHz,
-            in float dampingRatio,
-            in Body bodyA,
-            in Body bodyB)
+        /// <summary>Set this flag to true if the attached bodies should collide.</summary>
+        public bool CollideConnected
         {
-            float massA = bodyA.GetMass();
-            float massB = bodyB.GetMass();
-            float mass;
-
-            if (massA > 0.0f && massB > 0.0f)
-            {
-                mass = massA * massB / (massA + massB);
-            }
-            else if (massA > 0.0f)
-            {
-                mass = massA;
-            }
-            else
-            {
-                mass = massB;
-            }
-
-            float omega = 2.0f * Settings.Pi * frequencyHz;
-            stiffness = mass * omega * omega;
-            damping = 2.0f * mass * dampingRatio * omega;
+            get => collideConnected;
+            set => collideConnected = value;
         }
 
         /// <summary>
-        ///     Angulars the stiffness using the specified stiffness
+        ///     The Breakpoint simply indicates the maximum Value the JointError can be before it breaks. The default value is
+        ///     float.MaxValue, which means it never breaks.
         /// </summary>
-        /// <param name="stiffness">The stiffness</param>
-        /// <param name="damping">The damping</param>
-        /// <param name="frequencyHz">The frequency hz</param>
-        /// <param name="dampingRatio">The damping ratio</param>
-        /// <param name="bodyA">The body</param>
-        /// <param name="bodyB">The body</param>
-        public static void AngularStiffness(
-            out float stiffness,
-            out float damping,
-            in float frequencyHz,
-            in float dampingRatio,
-            in Body bodyA,
-            in Body bodyB)
+        public float Breakpoint
         {
-            float IA = bodyA.GetInertia();
-            float IB = bodyB.GetInertia();
-            float I;
-
-            if (IA > 0.0f && IB > 0.0f)
-            {
-                I = IA * IB / (IA + IB);
-            }
-            else if (IA > 0.0f)
-            {
-                I = IA;
-            }
-            else
-            {
-                I = IB;
-            }
-
-            float omega = 2.0f * Settings.Pi * frequencyHz;
-            stiffness = I * omega * omega;
-            damping = 2.0f * I * dampingRatio * omega;
+            get => breakpoint;
+            set => breakpoint = value;
         }
 
-        /// <summary>
-        ///     Get the first body attached to this joint.
-        /// </summary>
-        /// <returns></returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Body GetBodyA() => m_bodyA;
+        /// <summary>Fires when the joint is broken.</summary>
+        public event Action<Joint, float> Broke;
+
+        /// <summary>Get the reaction force on body at the joint anchor in Newtons.</summary>
+        /// <param name="invDt">The inverse delta time.</param>
+        public abstract Vector2 GetReactionForce(float invDt);
+
+        /// <summary>Get the reaction torque on the body at the joint anchor in N*m.</summary>
+        /// <param name="invDt">The inverse delta time.</param>
+        public abstract float GetReactionTorque(float invDt);
 
         /// <summary>
-        ///     Get the second body attached to this joint.
+        ///     Shift the origin for any points stored in world coordinates.
         /// </summary>
-        /// <returns></returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Body GetBodyB() => m_bodyB;
-
-        /// <summary>
-        ///     Get the reaction force on body2 at the joint anchor.
-        /// </summary>
-        public abstract Vector2 GetReactionForce(float inv_dt);
-
-        /// <summary>
-        ///     Get the reaction torque on body2.
-        /// </summary>
-        public abstract float GetReactionTorque(float inv_dt);
-
-        /// <summary>
-        ///     Get the next joint the world joint list.
-        /// </summary>
-        /// <returns></returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Joint GetNext() => m_next;
-
-        /// <summary>
-        ///     Creates the def
-        /// </summary>
-        /// <param name="def">The def</param>
-        /// <exception cref="NotImplementedException">JointDef '{def.GetType().Name}' is not implemented.</exception>
-        /// <returns>The joint</returns>
-        internal static Joint Create(JointDef def)
+        public virtual void ShiftOrigin(ref Vector2 newOrigin)
         {
-            return def switch
-            {
-                DistanceJointDef d => new DistanceJoint(d),
-                MouseJointDef d => new MouseJoint(d),
-                PrismaticJointDef d => new PrismaticJoint(d),
-                RevoluteJointDef d => new RevoluteJoint(d),
-                PulleyJointDef d => new PulleyJoint(d),
-                GearJointDef d => new GearJoint(d),
-                WheelJointDef d => new WheelJoint(d),
-                WeldJointDef d => new WeldJoint(d),
-                FrictionJointDef d => new FrictionJoint(d),
-                _ => throw new NotImplementedException($"JointDef '{def.GetType().Name}' is not implemented.")
-            };
         }
+
+        /// <summary>
+        ///     Wakes the bodies
+        /// </summary>
+        protected void WakeBodies()
+        {
+            if (BodyA != null)
+            {
+                BodyA.Awake = true;
+            }
+
+            if (BodyB != null)
+            {
+                BodyB.Awake = true;
+            }
+        }
+
+        /// <summary>Return true if the joint is a fixed type.</summary>
+        public bool IsFixedType() =>
+            JointType == JointType.FixedRevolute ||
+            JointType == JointType.FixedDistance ||
+            JointType == JointType.FixedPrismatic ||
+            JointType == JointType.FixedLine ||
+            JointType == JointType.FixedMouse ||
+            JointType == JointType.FixedAngle ||
+            JointType == JointType.FixedFriction;
 
         /// <summary>
         ///     Inits the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
-        internal abstract void InitVelocityConstraints(in SolverData data);
+        internal abstract void InitVelocityConstraints(ref SolverData data);
+
+        /// <summary>
+        ///     Validates the inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        internal void Validate(float invDt)
+        {
+            if (!Enabled)
+            {
+                return;
+            }
+
+            float jointErrorSquared = GetReactionForce(invDt).LengthSquared();
+
+            if (Math.Abs(jointErrorSquared) <= breakpoint * breakpoint)
+            {
+                return;
+            }
+
+            Enabled = false;
+
+            Broke?.Invoke(this, (float) Math.Sqrt(jointErrorSquared));
+        }
 
         /// <summary>
         ///     Solves the velocity constraints using the specified data
         /// </summary>
         /// <param name="data">The data</param>
-        internal abstract void SolveVelocityConstraints(in SolverData data);
+        internal abstract void SolveVelocityConstraints(ref SolverData data);
 
-        // This returns true if the position errors are within tolerance.
-        /// <summary>
-        ///     Describes whether this instance solve position constraints
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <returns>The bool</returns>
-        internal abstract bool SolvePositionConstraints(in SolverData data);
+        /// <summary>Solves the position constraints.</summary>
+        /// <param name="data"></param>
+        /// <returns>returns true if the position errors are within tolerance.</returns>
+        internal abstract bool SolvePositionConstraints(ref SolverData data);
 
         /// <summary>
-        ///     Computes the x form using the specified xf
+        ///     Creates the def
         /// </summary>
-        /// <param name="xf">The xf</param>
-        /// <param name="center">The center</param>
-        /// <param name="localCenter">The local center</param>
-        /// <param name="angle">The angle</param>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void ComputeXForm(ref Transform xf, Vector2 center, Vector2 localCenter, float angle)
+        /// <param name="def">The def</param>
+        /// <returns>The joint</returns>
+        public static Joint Create(JointDef def)
         {
-            xf.q = Matrex.CreateRotation(angle); // Actually about twice as fast to use our own function
-            xf.p = center - Vector2.Transform(localCenter, xf.q); // Math.Mul(xf.q, localCenter);
-        }
-
-        /// <summary>
-        ///     Draws the draw
-        /// </summary>
-        /// <param name="draw">The draw</param>
-        public void Draw(DebugDraw draw)
-        {
-            Transform xf1 = m_bodyA.GetTransform();
-            Transform xf2 = m_bodyB.GetTransform();
-            Vector2 x1 = xf1.p;
-            Vector2 x2 = xf2.p;
-            Vector2 p1 = GetAnchorA;
-            Vector2 p2 = GetAnchorB;
-
-            Color color = new Color(0.5f, 0.8f, 0.8f);
-
-            switch (this)
+            switch (def.Type)
             {
-                case DistanceJoint j:
-                    draw.DrawSegment(p1, p2, color);
-                    break;
-                case PulleyJoint pulley:
-                {
-                    Vector2 s1 = pulley.GroundAnchorA;
-                    Vector2 s2 = pulley.GroundAnchorB;
-                    draw.DrawSegment(s1, p1, color);
-                    draw.DrawSegment(s2, p2, color);
-                    draw.DrawSegment(s1, s2, color);
-                }
-                    break;
-
-                case MouseJoint j:
-                {
-                    Color c = new Color();
-                    c.Set(0.0f, 1.0f, 0.0f);
-                    draw.DrawPoint(p1, 4.0f, c);
-                    draw.DrawPoint(p2, 4.0f, c);
-
-                    c.Set(0.8f, 0.8f, 0.8f);
-                    draw.DrawSegment(p1, p2, c);
-                }
-                    break;
-
+                case JointType.Distance:
+                    return new DistanceJoint((DistanceJointDef) def);
+                case JointType.FixedMouse:
+                    return new FixedMouseJoint((FixedMouseJointDef) def);
+                case JointType.Prismatic:
+                    return new PrismaticJoint((PrismaticJointDef) def);
+                case JointType.Revolute:
+                    return new RevoluteJoint((RevoluteJointDef) def);
+                case JointType.Pulley:
+                    return new PulleyJoint((PulleyJointDef) def);
+                case JointType.Gear:
+                    return new GearJoint((GearJointDef) def);
+                case JointType.Wheel:
+                    return new WheelJoint((WheelJointDef) def);
+                case JointType.Weld:
+                    return new WeldJoint((WeldJointDef) def);
+                case JointType.Friction:
+                    return new FrictionJoint((FrictionJointDef) def);
+                case JointType.Motor:
+                    return new MotorJoint((MotorJointDef) def);
                 default:
-                    draw.DrawSegment(x1, p1, color);
-                    draw.DrawSegment(p1, p2, color);
-                    draw.DrawSegment(x2, p2, color);
+                    Debug.Assert(false);
                     break;
             }
+
+            return null;
         }
     }
 }

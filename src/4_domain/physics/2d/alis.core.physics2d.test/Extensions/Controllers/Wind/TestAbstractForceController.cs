@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Extensions.Controllers.Wind
+namespace Alis.Core.Systems.Physics2D.Test.Extensions.Controllers.Wind
 {
     /// <summary>
     ///     The test abstract force controller class

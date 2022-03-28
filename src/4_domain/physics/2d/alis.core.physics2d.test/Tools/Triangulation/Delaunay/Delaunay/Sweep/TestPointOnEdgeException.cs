@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Tools.Triangulation.Delaunay.Delaunay.Sweep
+namespace Alis.Core.Systems.Physics2D.Test.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
     /// <summary>
     ///     The test point on edge exception class

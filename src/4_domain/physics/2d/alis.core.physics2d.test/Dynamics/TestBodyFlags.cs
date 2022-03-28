@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physics2D.Bodies;
+using Alis.Core.Systems.Physics2D.Dynamics;
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Dynamics
+namespace Alis.Core.Systems.Physics2D.Test.Dynamics
 {
     /// <summary>
     ///     The test body flags class

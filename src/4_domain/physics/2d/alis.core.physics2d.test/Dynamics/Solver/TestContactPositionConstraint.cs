@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Dynamics.Solver
+namespace Alis.Core.Systems.Physics2D.Test.Dynamics.Solver
 {
     /// <summary>
     ///     The test contact position constraint class

@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Extensions.PhysicsLogics.Explosion
+namespace Alis.Core.Systems.Physics2D.Test.Extensions.PhysicsLogics.Explosion
 {
     /// <summary>
     ///     The test ray data comparer class

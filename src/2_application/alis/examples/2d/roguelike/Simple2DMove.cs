@@ -57,25 +57,25 @@ namespace Roguelike
         /// <param name="key">The key</param>
         public override void OnPressKey(string key)
         {
-            Vector2 velocity = boxCollider2D.Body.GetLinearVelocity();
+            Vector2 velocity = boxCollider2D.Body.LinearVelocity;
 
             switch (key)
             {
                 case "D":
                     velocity.X = 5;
-                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    boxCollider2D.Body.LinearVelocity = velocity;
                     return;
                 case "A":
                     velocity.X = -5;
-                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    boxCollider2D.Body.LinearVelocity = velocity;
                     return;
                 case "W":
                     velocity.Y = -5;
-                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    boxCollider2D.Body.LinearVelocity = velocity;
                     return;
                 case "S":
                     velocity.Y = 5;
-                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    boxCollider2D.Body.LinearVelocity = velocity;
                     break;
             }
         }
@@ -94,25 +94,25 @@ namespace Roguelike
         /// <param name="key">The key</param>
         public override void OnReleaseKey(string key)
         {
-            Vector2 velocity = boxCollider2D.Body.GetLinearVelocity();
+            Vector2 velocity = boxCollider2D.Body.LinearVelocity;
 
             switch (key)
             {
                 case "D":
                     velocity.X = 0;
-                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    boxCollider2D.Body.LinearVelocity = velocity;
                     return;
                 case "A":
                     velocity.X = 0;
-                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    boxCollider2D.Body.LinearVelocity = velocity;
                     return;
                 case "W":
                     velocity.Y = 0;
-                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    boxCollider2D.Body.LinearVelocity = velocity;
                     return;
                 case "S":
                     velocity.Y = 0;
-                    boxCollider2D.Body.SetLinearVelocity(velocity);
+                    boxCollider2D.Body.LinearVelocity = velocity;
                     break;
             }
         }

@@ -27,28 +27,93 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Numerics;
+using System.Text.Json.Serialization;
 
-namespace Alis.Core.Physics2D.Shapes
+namespace Alis.Core.Systems.Physics2D.Collision.Shapes
 {
-    /// <summary>
-    ///     The mass data
-    /// </summary>
-    public struct MassData
+    /// <summary>This holds the mass data computed for a shape.</summary>
+    public struct MassData : IEquatable<MassData>
     {
         /// <summary>
-        ///     The mass
+        ///     Initializes a new instance of the <see cref="MassData" /> class
         /// </summary>
-        public float mass;
+        /// <param name="area">The area</param>
+        /// <param name="inertia">The inertia</param>
+        /// <param name="mass">The mass</param>
+        [JsonConstructor]
+        public MassData(float area, float inertia, float mass)
+        {
+            Area = area;
+            Inertia = inertia;
+            Mass = mass;
+            Centroid = new Vector2(0.0f, 0.0f);
+        }
+
+        /// <summary>The area of the shape</summary>
+        [JsonPropertyName("_Area")]
+        public float Area { get; set; }
+
+        /// <summary>The position of the shape's centroid relative to the shape's origin.</summary>
+        [JsonPropertyName("_Centroid")]
+        public Vector2 Centroid { get; set; }
+
+        /// <summary>The rotational inertia of the shape about the local origin.</summary>
+        [JsonPropertyName("_Inertia")]
+        public float Inertia { get; set; }
+
+        /// <summary>The mass of the shape, usually in kilograms.</summary>
+        [JsonPropertyName("_Mass")]
+        public float Mass { get; set; }
+
+        /// <summary>The equal operator</summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        public static bool operator ==(MassData left, MassData right) =>
+            Math.Abs(left.Area - right.Area) < 0.1f &&
+            Math.Abs(left.Mass - right.Mass) < 0.1f &&
+            left.Centroid == right.Centroid &&
+            Math.Abs(left.Inertia - right.Inertia) < 0.1f;
+
+        /// <summary>The not equal operator</summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        public static bool operator !=(MassData left, MassData right) => !(left == right);
 
         /// <summary>
-        ///     The center
+        ///     Describes whether this instance equals
         /// </summary>
-        public Vector2 center;
+        /// <param name="other">The other</param>
+        /// <returns>The bool</returns>
+        public bool Equals(MassData other) => this == other;
 
         /// <summary>
-        ///     The
+        ///     Describes whether this instance equals
         /// </summary>
-        public float I;
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
+        public override bool Equals(object? obj)
+        {
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            return obj is MassData data && Equals(data);
+        }
+
+        /// <summary>
+        ///     Gets the hash code
+        /// </summary>
+        /// <returns>The int</returns>
+        public override int GetHashCode()
+        {
+            int result = Area.GetHashCode();
+            result = (result * 397) ^ Centroid.GetHashCode();
+            result = (result * 397) ^ Inertia.GetHashCode();
+            result = (result * 397) ^ Mass.GetHashCode();
+            return result;
+        }
     }
 }

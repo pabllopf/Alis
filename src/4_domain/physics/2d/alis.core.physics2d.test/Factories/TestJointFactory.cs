@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Factories
+namespace Alis.Core.Systems.Physics2D.Test.Factories
 {
     /// <summary>
     ///     The test joint factory class

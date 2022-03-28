@@ -74,9 +74,9 @@ namespace GeometryDash
             //Console.WriteLine(key);
             if (key.Equals("Space") && jumping == false)
             {
-                boxCollider2D.Body.SetLinearVelocity(new Vector2(
+                boxCollider2D.Body.LinearVelocity = new Vector2(
                     0,
-                    -1000.0F));
+                    -1000.0F);
                 jumping = true;
             }
         }

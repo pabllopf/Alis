@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Shared.Optimization
+namespace Alis.Core.Systems.Physics2D.Test.Shared.Optimization
 {
     /// <summary>
     ///     The test fixed array class

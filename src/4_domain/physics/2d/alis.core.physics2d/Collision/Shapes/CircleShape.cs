@@ -27,169 +27,147 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Numerics;
-using System.Runtime.CompilerServices;
+using Alis.Core.Systems.Physics2D.Collision.RayCast;
+using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Physics2D.Shapes
+namespace Alis.Core.Systems.Physics2D.Collision.Shapes
 {
-    /// <summary>
-    ///     A circle shape.
-    /// </summary>
+    /// <summary>A circle shape.</summary>
     public class CircleShape : Shape
     {
         /// <summary>
-        ///     The
+        ///     The position
         /// </summary>
-        internal Vector2 m_p;
+        internal Vector2 Positionprivate;
+
+        /// <summary>Create a new circle with the desired radius and density.</summary>
+        /// <param name="radius">The radius of the circle.</param>
+        /// <param name="density">The density of the circle.</param>
+        /// <param name="position">Position of the shape</param>
+        public CircleShape(float radius, float density, Vector2 position = default(Vector2)) : base(ShapeType.Circle,
+            radius, density)
+        {
+            Positionprivate = position;
+            ComputeProperties();
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleShape" /> class
         /// </summary>
-        public CircleShape()
+        /// <param name="density">The density</param>
+        public CircleShape(float density) : base(ShapeType.Circle, 0, density)
         {
-            m_radius = 0;
-            m_p = Vector2.Zero;
+            ComputeProperties();
         }
 
         /// <summary>
-        ///     Gets or sets the value of the center
+        ///     Initializes a new instance of the <see cref="CircleShape" /> class
         /// </summary>
-        public Vector2 Center
+        private CircleShape() : base(ShapeType.Circle)
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_p;
-            set => m_p = value;
         }
 
         /// <summary>
-        ///     Gets or sets the value of the radius
+        ///     Gets the value of the child count
         /// </summary>
-        public float Radius
+        public override int ChildCount => 1;
+
+        /// <summary>Get or set the position of the circle</summary>
+        public Vector2 Position
         {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get => m_radius;
-            set => m_radius = value;
+            get => Positionprivate;
+            set
+            {
+                if (Positionprivate != value)
+                {
+                    Positionprivate = value;
+                    ComputeInertia();
+                }
+            }
         }
-
-        /// <summary>
-        ///     Gets the value of the contact match
-        /// </summary>
-        internal override byte ContactMatch => contactMatch;
-
-        /// <summary>
-        ///     The contact match
-        /// </summary>
-        internal const byte contactMatch = 0;
-
-        /// <summary>
-        ///     Clones this instance
-        /// </summary>
-        /// <returns>The shape</returns>
-        public override Shape Clone() => (CircleShape) MemberwiseClone();
-
-        /// <summary>
-        ///     Gets the child count
-        /// </summary>
-        /// <returns>The int</returns>
-        public override int GetChildCount() => 1;
 
         /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
         /// <param name="transform">The transform</param>
-        /// <param name="p">The </param>
+        /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(in Transform transform, in Vector2 p)
-        {
-            Vector2 center = transform.p + Vector2.Transform(m_p, transform.q); //   Math.Mul(transform.q, m_p);
-            Vector2 d = p - center;
-            return Vector2.Dot(d, d) <= m_radius * m_radius;
-        }
+        public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
+            TestPointHelper.TestPointCircle(ref Positionprivate, RadiusPrivate, ref point, ref transform);
 
         /// <summary>
         ///     Describes whether this instance ray cast
         /// </summary>
-        /// <param name="output">The output</param>
         /// <param name="input">The input</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
+        /// <param name="output">The output</param>
         /// <returns>The bool</returns>
-        public override bool RayCast(
-            out RayCastOutput output,
-            in RayCastInput input,
-            in Transform transform,
-            int childIndex)
-        {
-            output = default(RayCastOutput);
-
-            Vector2 position = transform.p + Vector2.Transform(m_p, transform.q); // Math.Mul(transform.q, m_p);
-            Vector2 s = input.p1 - position;
-            float b = Vector2.Dot(s, s) - m_radius * m_radius;
-
-            // Solve quadratic equation.
-            Vector2 r = input.p2 - input.p1;
-            float c = Vector2.Dot(s, r);
-            float rr = Vector2.Dot(r, r);
-            float sigma = c * c - rr * b;
-
-            // Check for negative discriminant and short segment.
-            if (sigma < 0.0f || rr < Settings.FLT_EPSILON)
-            {
-                return false;
-            }
-
-            // Find the point of intersection of the line with the circle.
-            float a = -(c + MathF.Sqrt(sigma));
-
-            // Is the intersection point on the segment?
-            if (0.0f <= a && a <= input.maxFraction * rr)
-            {
-                a /= rr;
-                output.fraction = a;
-                output.normal = Vector2.Normalize(s + a * r);
-                return true;
-            }
-
-            return false;
-        }
+        public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
+            out RayCastOutput output) =>
+            RayCastHelper.RayCastCircle(ref Positionprivate, RadiusPrivate, ref input, ref transform, out output);
 
         /// <summary>
-        ///     Computes the aabb using the specified aabb
+        ///     Computes the aabb using the specified transform
         /// </summary>
-        /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
         /// <param name="childIndex">The child index</param>
-        public override void ComputeAABB(out AABB aabb, in Transform transform, int childIndex)
+        /// <param name="aabb">The aabb</param>
+        public override void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb)
         {
-            Vector2 p = transform.p + Vector2.Transform(m_p, transform.q); // Math.Mul(transform.q, m_p);
-            aabb.lowerBound = new Vector2(p.X - m_radius, p.Y - m_radius);
-            aabb.upperBound = new Vector2(p.X + m_radius, p.Y + m_radius);
+            AabbHelper.ComputeCircleAabb(ref Positionprivate, RadiusPrivate, ref transform, out aabb);
         }
 
         /// <summary>
-        ///     Computes the mass using the specified mass data
+        ///     Computes the properties
         /// </summary>
-        /// <param name="massData">The mass data</param>
-        /// <param name="density">The density</param>
-        public override void ComputeMass(out MassData massData, float density)
+        protected sealed override void ComputeProperties()
         {
-            massData.mass = density * Settings.Pi * m_radius * m_radius;
-            massData.center = m_p;
+            ComputeMass();
+            ComputeInertia();
+        }
+
+        /// <summary>
+        ///     Computes the mass
+        /// </summary>
+        private void ComputeMass()
+        {
+            //Velcro: We calculate area for later consumption
+            float area = MathConstants.Pi * RadiusPrivate * RadiusPrivate;
+            MassDataPrivate.Area = area;
+            MassDataPrivate.Mass = DensityPrivate * area;
+        }
+
+        /// <summary>
+        ///     Computes the inertia
+        /// </summary>
+        private void ComputeInertia()
+        {
+            MassDataPrivate.Centroid = Positionprivate;
 
             // inertia about the local origin
-            massData.I = massData.mass * (0.5f * m_radius * m_radius + Vector2.Dot(m_p, m_p));
+            MassDataPrivate.Inertia = MassDataPrivate.Mass *
+                                      (0.5f * RadiusPrivate * RadiusPrivate +
+                                       Vector2.Dot(Positionprivate, Positionprivate));
         }
 
         /// <summary>
-        ///     Sets the center
+        ///     Clones this instance
         /// </summary>
-        /// <param name="center">The center</param>
-        /// <param name="radius">The radius</param>
-        public void Set(in Vector2 center, in float radius)
+        /// <returns>The clone</returns>
+        public override Shape Clone()
         {
-            m_p = center;
-            m_radius = radius;
+            CircleShape clone = new CircleShape
+            {
+                ShapeTypePrivate = ShapeTypePrivate,
+                RadiusPrivate = RadiusPrivate,
+                DensityPrivate = DensityPrivate,
+                Positionprivate = Positionprivate,
+                MassDataPrivate = MassDataPrivate
+            };
+            return clone;
         }
     }
 }

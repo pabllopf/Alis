@@ -67,23 +67,23 @@ namespace PingPong
             //Console.WriteLine(key);
             if (key.Equals("W"))
             {
-                boxCollider2D.Body.SetLinearVelocity(new Vector2(
-                    boxCollider2D.Body.GetLinearVelocity().X,
-                    boxCollider2D.Body.GetLinearVelocity().Y - 10.0F));
+                boxCollider2D.Body.LinearVelocity = new Vector2(
+                    boxCollider2D.Body.LinearVelocity.X,
+                    boxCollider2D.Body.LinearVelocity.Y - 10.0F);
             }
 
             if (key.Equals("D"))
             {
-                boxCollider2D.Body.SetLinearVelocity(new Vector2(
-                    boxCollider2D.Body.GetLinearVelocity().X + 1.0f,
-                    boxCollider2D.Body.GetLinearVelocity().Y));
+                boxCollider2D.Body.LinearVelocity = new Vector2(
+                    boxCollider2D.Body.LinearVelocity.X + 1.0f,
+                    boxCollider2D.Body.LinearVelocity.Y);
             }
 
             if (key.Equals("A"))
             {
-                boxCollider2D.Body.SetLinearVelocity(new Vector2(
-                    boxCollider2D.Body.GetLinearVelocity().X - 1.0f,
-                    boxCollider2D.Body.GetLinearVelocity().Y));
+                boxCollider2D.Body.LinearVelocity = new Vector2(
+                    boxCollider2D.Body.LinearVelocity.X - 1.0f,
+                    boxCollider2D.Body.LinearVelocity.Y);
             }
         }
 

@@ -31,10 +31,11 @@ using System;
 using System.Numerics;
 using Alis.Core.Graphics2D.Graphics;
 using Alis.Core.Graphics2D.Systems;
-using Alis.Core.Physics2D.Bodies;
-using Alis.Core.Physics2D.Fixtures;
-using Alis.Core.Physics2D.Shapes;
 using Alis.Core.Systems;
+using Alis.Core.Systems.Physics2D.Collision.Shapes;
+using Alis.Core.Systems.Physics2D.Definitions;
+using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Systems.Physics2D.Factories;
 
 namespace Alis.Core.Components
 {
@@ -175,6 +176,34 @@ namespace Alis.Core.Components
         /// <returns>The body</returns>
         private Body CreateBody()
         {
+            Body body = BodyFactory.CreateRectangle(
+                world: PhysicsSystem.World, 
+                width: Width * 2, 
+                height: Height * 2, 
+                density: Density, 
+                position: new Vector2(
+                    GameObject.Transform.Position.X + RelativePosition.X,
+                    GameObject.Transform.Position.Y + RelativePosition.Y), 
+                rotation: Rotation, 
+                bodyType: BodyType, 
+                userData: this.GameObject);
+            
+            body.Restitution = Restitution;
+            body.Friction = Friction;
+            body.FixedRotation = FixedRotation;
+            body.Mass = Mass;
+            body.SleepingAllowed = false;
+            body.IsBullet = true;
+            body.GravityScale = GravityScale;
+            body.LinearVelocity = LinearVelocity;
+            body.Awake = true;
+            body.IsSensor = IsTrigger;
+
+            return body;
+            
+            
+            
+            /*
             BodyDef bodyDef = new BodyDef
             {
                 enabled = IsActive,
@@ -214,7 +243,7 @@ namespace Alis.Core.Components
 
             Body body = PhysicsSystem.World.CreateBody(bodyDef);
             body.CreateFixture(fixtureDef);
-            return body;
+            return body;*/
         }
 
         /// <summary>
@@ -230,9 +259,9 @@ namespace Alis.Core.Components
         public override void BeforeUpdate()
         {
             rectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
-            rectangleShape.Rotation = Body.GetAngle();
+            rectangleShape.Rotation = Body.Rotation;
             GameObject.Transform.Position = new Vector3(Body.Position.X, Body.Position.Y, 0);
-            GameObject.Transform.Rotation = new Vector3(0, Body.GetAngle(), 0);
+            GameObject.Transform.Rotation = new Vector3(0, Body.Rotation, 0);
         }
 
         /// <summary>

@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Tools.Triangulation.Bayazit
+namespace Alis.Core.Systems.Physics2D.Test.Tools.Triangulation.Bayazit
 {
     /// <summary>
     ///     The test bayazit decomposer class

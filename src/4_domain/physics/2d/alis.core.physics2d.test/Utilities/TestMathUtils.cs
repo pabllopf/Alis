@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Utilities
+namespace Alis.Core.Systems.Physics2D.Test.Utilities
 {
     /// <summary>
     ///     The test math utils class

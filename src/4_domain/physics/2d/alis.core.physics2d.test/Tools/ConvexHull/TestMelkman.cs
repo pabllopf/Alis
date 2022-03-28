@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Tools.ConvexHull
+namespace Alis.Core.Systems.Physics2D.Test.Tools.ConvexHull
 {
     /// <summary>
     ///     The test melkman class

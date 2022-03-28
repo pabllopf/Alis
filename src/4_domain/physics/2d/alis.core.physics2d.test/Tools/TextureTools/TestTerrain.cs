@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Physics2D.Test.Tools.TextureTools
+namespace Alis.Core.Systems.Physics2D.Test.Tools.TextureTools
 {
     /// <summary>
     ///     The test terrain class
