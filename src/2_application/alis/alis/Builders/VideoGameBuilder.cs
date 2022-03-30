@@ -30,6 +30,7 @@
 using System;
 using Alis.Core;
 using Alis.Core.Managers;
+using Alis.Core.Systems;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 
@@ -64,7 +65,7 @@ namespace Alis.Builders
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The video game builder</returns>
-        public VideoGameBuilder Manager(Func<SceneManagerBuilder, SceneManager> value)
+        public VideoGameBuilder Manager(Func<SceneManagerBuilder, SceneSystem> value)
         {
             VideoGame.SceneSystem = value.Invoke(new SceneManagerBuilder());
             return this;

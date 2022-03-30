@@ -45,22 +45,13 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSystem" /> class
         /// </summary>
-        public SceneSystem()
-        {
-            Scenes = new List<Scene>(Game.Setting.Scene.MaxScenesOfGame);
-            current = this;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneSystem" /> class
-        /// </summary>
         /// <param name="scenes">The scenes</param>
         /// <exception cref="MaxSceneGame"></exception>
         public SceneSystem(List<Scene> scenes)
         {
             Scenes = scenes;
             ActiveScene = scenes[0];
-            current = this;
+            _current = this;
         }
 
         /// <summary>
@@ -74,6 +65,7 @@ namespace Alis.Core.Systems
         {
             ActiveScene = activeScene;
             Scenes = scenes;
+            _current = this;
         }
 
         /// <summary>
@@ -91,7 +83,7 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     The current
         /// </summary>
-        private static SceneSystem current;
+        private static SceneSystem _current = null!;
 
         /// <summary>
         ///     Changes the scene using the specified index
@@ -99,12 +91,12 @@ namespace Alis.Core.Systems
         /// <param name="index">The index</param>
         public static void LoadScene(int index)
         {
-            current.ActiveScene.Stop();
-            current.ActiveScene.Exit();
-            current.ActiveScene = current.Scenes[index];
-            current.ActiveScene.Awake();
-            current.ActiveScene.Start();
-            Logger.Info($"Scene changed to {current.ActiveScene.Name}");
+            _current.ActiveScene.Stop();
+            _current.ActiveScene.Exit();
+            _current.ActiveScene = _current.Scenes[index];
+            _current.ActiveScene.Awake();
+            _current.ActiveScene.Start();
+            Logger.Info($"Scene changed to {_current.ActiveScene.Name}");
         }
 
         /// <summary>
@@ -114,58 +106,88 @@ namespace Alis.Core.Systems
         public void Add(Scene scene)
         {
             Scenes.Add(scene);
-            ActiveScene ??= scene;
+            ActiveScene = scene;
         }
+
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public override void Init() => ActiveScene.Init();
+        
+        /// <summary>
+        /// Before the awake
+        /// </summary>
+        public override void BeforeAwake() => ActiveScene.BeforeAwake();
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public override void Awake() => ActiveScene?.Awake();
+        public override void Awake() => ActiveScene.Awake();
+
+        /// <summary>
+        /// Afters the awake
+        /// </summary>
+        public override void AfterAwake() => ActiveScene.AfterAwake();
+
+        /// <summary>
+        /// Before the start
+        /// </summary>
+        public override void BeforeStart()=> ActiveScene.BeforeStart();
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => ActiveScene?.Start();
+        public override void Start() => ActiveScene.Start();
+
+        /// <summary>
+        /// Afters the start
+        /// </summary>
+        public override void AfterStart()=> ActiveScene.AfterStart();
 
         /// <summary>
         ///     Before the update
         /// </summary>
-        public override void BeforeUpdate() => ActiveScene?.BeforeUpdate();
+        public override void BeforeUpdate() => ActiveScene.BeforeUpdate();
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => ActiveScene?.Update();
+        public override void Update() => ActiveScene.Update();
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => ActiveScene?.AfterUpdate();
+        public override void AfterUpdate() => ActiveScene.AfterUpdate();
 
         /// <summary>
         ///     Fixed the update
         /// </summary>
-        public override void FixedUpdate() => ActiveScene?.FixedUpdate();
+        public override void FixedUpdate() => ActiveScene.FixedUpdate();
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents() => ActiveScene?.DispatchEvents();
+        public override void DispatchEvents() => ActiveScene.DispatchEvents();
+
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
+        public override void Draw()=> ActiveScene.Draw();
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public override void Reset() => ActiveScene?.Reset();
+        public override void Reset() => ActiveScene.Reset();
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop() => ActiveScene?.Stop();
+        public override void Stop() => ActiveScene.Stop();
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => ActiveScene?.Exit();
+        public override void Exit() => ActiveScene.Exit();
 
         /// <summary>
         ///     Simple destructor

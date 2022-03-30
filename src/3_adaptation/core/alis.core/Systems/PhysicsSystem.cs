@@ -56,18 +56,38 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Gets or sets the value of the colliders
         /// </summary>
-        private static List<Collider> Colliders { get; } = new List<Collider>();
+        public static List<Collider> Colliders { get; } = new List<Collider>();
 
         /// <summary>
         ///     The world
         /// </summary>
         public static World World { get; private set; }
 
+        public override void Init()
+        {
+ 
+        }
+
+        public override void BeforeAwake()
+        {
+
+        }
+
         /// <summary>
         ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
+        }
+
+        public override void AfterAwake()
+        {
+
+        }
+
+        public override void BeforeStart()
+        {
+
         }
 
 
@@ -78,12 +98,18 @@ namespace Alis.Core.Systems
         {
         }
 
+        public override void AfterStart()
+        {
+
+        }
+
 
         /// <summary>
         ///     Befores the update
         /// </summary>
         public override void BeforeUpdate()
         {
+            World.Step((float) Game.Setting.Time.TimeStep, 8, 8);
         }
 
 
@@ -100,24 +126,14 @@ namespace Alis.Core.Systems
         /// <param name="collider">The collider</param>
         public static void UnAttach(Collider collider) => Colliders.Remove(collider);
 
+        
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void Update()
         {
-            if (Game.Setting.Debug.ShowPhysicBorders)
-            {
-                if (Colliders.Count > 0)
-                {
-                    //Colliders = Colliders.OrderBy(o => o.Level).ToList();
-                    for (int i = 0; i < Colliders.Count; i++)
-                    {
-                        RenderManager.GetWindows().Draw(Colliders[i].GetDrawable());
-                    }
-                }
-            }
-
-            World.Step((float) Game.Setting.Time.TimeStep, 8, 8);
+           
         }
 
         /// <summary>
@@ -125,6 +141,7 @@ namespace Alis.Core.Systems
         /// </summary>
         public override void AfterUpdate()
         {
+           
         }
 
 
@@ -141,6 +158,11 @@ namespace Alis.Core.Systems
         /// </summary>
         public override void DispatchEvents()
         {
+        }
+
+        public override void Draw()
+        {
+            
         }
 
 

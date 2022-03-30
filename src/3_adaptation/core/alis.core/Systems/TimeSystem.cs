@@ -56,11 +56,31 @@ namespace Alis.Core.Systems
 
         #region Awake()
 
+        public override void Init()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void BeforeAwake()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
+        }
+
+        public override void AfterAwake()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void BeforeStart()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -72,6 +92,11 @@ namespace Alis.Core.Systems
         /// </summary>
         public override void Start()
         {
+        }
+
+        public override void AfterStart()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -127,6 +152,11 @@ namespace Alis.Core.Systems
         /// </summary>
         public override void DispatchEvents()
         {
+        }
+
+        public override void Draw()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

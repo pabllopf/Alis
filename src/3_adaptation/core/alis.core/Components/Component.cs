@@ -73,15 +73,56 @@ namespace Alis.Core.Components
         public virtual void Disable()
         {
         }
+        
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public virtual void Init()
+        {
+            
+        }
+        
+        
+        /// <summary>
+        /// Befores the awake
+        /// </summary>
+        public virtual void BeforeAwake()
+        {
+        }
 
+        
+        
         /// <summary>Awakes this instance.</summary>
         public virtual void Awake()
         {
         }
 
+        /// <summary>
+        /// Afters the awake
+        /// </summary>
+        public virtual void AfterAwake()
+        {
+        }
+
+        
+        /// <summary>
+        /// Befores the start
+        /// </summary>
+        public virtual void BeforeStart()
+        {
+        }
+        
         /// <summary>Starts this instance.</summary>
         public abstract void Start();
 
+        /// <summary>
+        /// Afters the start
+        /// </summary>
+        public virtual void AfterStart()
+        {
+        }
+
+        
         /// <summary>Befores the update.</summary>
         public virtual void BeforeUpdate()
         {
@@ -104,6 +145,13 @@ namespace Alis.Core.Components
         ///     Dispatches the events
         /// </summary>
         public virtual void DispatchEvents()
+        {
+        }
+        
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
+        public virtual void Draw()
         {
         }
 

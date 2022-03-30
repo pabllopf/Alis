@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using Alis.Core.Entities;
 using Alis.Core.Systems;
 
 namespace Alis.Core
@@ -43,7 +45,7 @@ namespace Alis.Core
         {
             IsRunning = true;
             InputSystem = new InputSystem();
-            SceneSystem = new SceneSystem();
+            SceneSystem = new SceneSystem(new List<Scene>(){new Scene("Default", new List<GameObject>())});
             PhysicsSystem = new PhysicsSystem();
             RenderSystem = new RenderSystem();
         }
@@ -102,21 +104,66 @@ namespace Alis.Core
         /// <summary>Runs this instance.</summary>
         public void Run()
         {
+            #region Init()
+
+            InputSystem.Init();
+            PhysicsSystem.Init();
+            SceneSystem.Init();
+            RenderSystem.Init();
+
+            #endregion
+            
+            #region BeforeAwake()
+
+            InputSystem.BeforeAwake();
+            PhysicsSystem.BeforeAwake();
+            SceneSystem.BeforeAwake();
+            RenderSystem.BeforeAwake();
+
+            #endregion
+            
             #region Awake()
 
             InputSystem.Awake();
-            SceneSystem.Awake();
             PhysicsSystem.Awake();
+            SceneSystem.Awake();
             RenderSystem.Awake();
 
             #endregion
+            
+            #region AfterAwake()
 
+            InputSystem.AfterAwake();
+            PhysicsSystem.AfterAwake();
+            SceneSystem.AfterAwake();
+            RenderSystem.AfterAwake();
+
+            #endregion
+
+            #region BeforeStart()
+
+            InputSystem.BeforeStart();
+            PhysicsSystem.BeforeStart();
+            SceneSystem.BeforeStart();
+            RenderSystem.BeforeStart();
+
+            #endregion
+            
             #region Start()
 
             InputSystem.Start();
-            SceneSystem.Start();
             PhysicsSystem.Start();
+            SceneSystem.Start();
             RenderSystem.Start();
+
+            #endregion
+            
+            #region AfterStart()
+
+            InputSystem.AfterStart();
+            PhysicsSystem.AfterStart();
+            SceneSystem.AfterStart();
+            RenderSystem.AfterStart();
 
             #endregion
 
@@ -133,8 +180,8 @@ namespace Alis.Core
                         #region BeforeUpdate()
 
                         InputSystem.BeforeUpdate();
-                        SceneSystem.BeforeUpdate();
                         PhysicsSystem.BeforeUpdate();
+                        SceneSystem.BeforeUpdate();
                         RenderSystem.BeforeUpdate();
 
                         #endregion
@@ -142,8 +189,8 @@ namespace Alis.Core
                         #region Update()
 
                         InputSystem.Update();
-                        SceneSystem.Update();
                         PhysicsSystem.Update();
+                        SceneSystem.Update();
                         RenderSystem.Update();
 
                         #endregion
@@ -151,18 +198,27 @@ namespace Alis.Core
                         #region AfterUpdate()
 
                         InputSystem.AfterUpdate();
-                        SceneSystem.AfterUpdate();
                         PhysicsSystem.AfterUpdate();
+                        SceneSystem.AfterUpdate();
                         RenderSystem.AfterUpdate();
 
+                        #endregion
+                        
+                        #region Draw()
+
+                        InputSystem.Draw();
+                        PhysicsSystem.Draw();
+                        SceneSystem.Draw();
+                        RenderSystem.Draw();
+                        
                         #endregion
                     }
 
                     #region FixedUpdate()
 
                     InputSystem.FixedUpdate();
-                    SceneSystem.FixedUpdate();
                     PhysicsSystem.FixedUpdate();
+                    SceneSystem.FixedUpdate();
                     RenderSystem.FixedUpdate();
 
                     #endregion
@@ -170,12 +226,12 @@ namespace Alis.Core
                     #region DispatchEvents()
 
                     InputSystem.DispatchEvents();
-                    SceneSystem.DispatchEvents();
                     PhysicsSystem.DispatchEvents();
+                    SceneSystem.DispatchEvents();
                     RenderSystem.DispatchEvents();
 
                     #endregion
-
+                    
                     Setting.Time.CounterFrames();
                 }
 
@@ -185,8 +241,8 @@ namespace Alis.Core
             #region Exit()
 
             InputSystem.Exit();
-            SceneSystem.Exit();
             PhysicsSystem.Exit();
+            SceneSystem.Exit();
             RenderSystem.Exit();
 
             #endregion

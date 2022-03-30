@@ -28,9 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Builders;
 using Alis.Core.Entities;
 using Alis.Core.Managers;
+using Alis.Core.Systems;
 using Alis.FluentApi;
 using Alis.FluentApi.Words;
 
@@ -40,13 +42,13 @@ namespace Alis.Builders
     ///     The scene manager builder class
     /// </summary>
     public class SceneManagerBuilder :
-        IBuild<SceneManager>,
+        IBuild<SceneSystem>,
         IAdd<SceneManagerBuilder, Scene, Func<SceneBuilder, Scene>>
     {
         /// <summary>
         ///     Gets or sets the value of the scene manager
         /// </summary>
-        private SceneManager SceneManager { get; } = new SceneManager();
+        private SceneSystem SceneManager { get; } = new SceneSystem(new List<Scene>(){new Scene("Default", new List<GameObject>())});
 
         /// <summary>
         ///     Adds the value
@@ -65,6 +67,6 @@ namespace Alis.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The scene manager</returns>
-        public SceneManager Build() => SceneManager;
+        public SceneSystem Build() => SceneManager;
     }
 }

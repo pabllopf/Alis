@@ -47,11 +47,31 @@ namespace Alis.Core.Systems
         }
 
 
+        public override void Init()
+        {
+
+        }
+
+        public override void BeforeAwake()
+        {
+
+        }
+
         /// <summary>
         ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
+        }
+
+        public override void AfterAwake()
+        {
+
+        }
+
+        public override void BeforeStart()
+        {
+
         }
 
 
@@ -60,6 +80,11 @@ namespace Alis.Core.Systems
         /// </summary>
         public override void Start()
         {
+        }
+
+        public override void AfterStart()
+        {
+
         }
 
 
@@ -99,6 +124,11 @@ namespace Alis.Core.Systems
         /// </summary>
         public override void DispatchEvents()
         {
+        }
+
+        public override void Draw()
+        {
+
         }
 
 

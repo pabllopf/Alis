@@ -121,10 +121,7 @@ namespace Alis.Core.Components
         /// </summary>
         public Vector2 LinearVelocity { get; set; } = Vector2.Zero;
 
-        /// <summary>
-        ///     Awakes this instance
-        /// </summary>
-        public override void Awake()
+        public override void Init()
         {
             if (AutoTilling)
             {
@@ -132,18 +129,24 @@ namespace Alis.Core.Components
                 {
                     Width = GameObject.Get<Sprite>().Size.X * GameObject.Transform.Scale.X;
                     Height = GameObject.Get<Sprite>().Size.Y * GameObject.Transform.Scale.Y;
-                    Console.WriteLine($" {Width} {Height}");
                 }
             }
+        }
 
-            rectangleShape = new RectangleShape(new Vector2f(Width, Height));
-            ;
+        /// <summary>
+        ///     Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            rectangleShape = new RectangleShape(new Vector2f(Width * 2, Height * 2));
+            
             rectangleShape.Position = new Vector2f(
                 GameObject.Transform.Position.X + RelativePosition.X,
                 GameObject.Transform.Position.Y + RelativePosition.Y);
             rectangleShape.FillColor = Color.Transparent;
             rectangleShape.OutlineColor = Color.Green;
             rectangleShape.OutlineThickness = 1f;
+            
             PhysicsSystem.Attach(this);
 
 
@@ -178,8 +181,8 @@ namespace Alis.Core.Components
         {
             Body body = BodyFactory.CreateRectangle(
                 world: PhysicsSystem.World, 
-                width: Width * 2, 
-                height: Height * 2, 
+                width: Width * 2 , 
+                height: Height * 2 , 
                 density: Density, 
                 position: new Vector2(
                     GameObject.Transform.Position.X + RelativePosition.X,
@@ -251,6 +254,7 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Start()
         {
+           
         }
 
         /// <summary>
@@ -258,8 +262,6 @@ namespace Alis.Core.Components
         /// </summary>
         public override void BeforeUpdate()
         {
-            rectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
-            rectangleShape.Rotation = Body.Rotation;
             GameObject.Transform.Position = new Vector3(Body.Position.X, Body.Position.Y, 0);
             GameObject.Transform.Rotation = new Vector3(0, Body.Rotation, 0);
         }
@@ -269,6 +271,7 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Update()
         {
+            
         }
 
         /// <summary>
@@ -276,6 +279,12 @@ namespace Alis.Core.Components
         /// </summary>
         public override void AfterUpdate()
         {
+        }
+
+        public override void Draw()
+        {
+            rectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
+            rectangleShape.Rotation = Body.Rotation;
         }
 
         /// <summary>

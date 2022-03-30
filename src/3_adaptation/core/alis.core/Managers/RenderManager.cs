@@ -84,17 +84,23 @@ namespace Alis.Core.Managers
         /// <value>The sprites.</value>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>(Game.Setting.Graphic.MaxElementsRender);
 
-        /// <summary>Awakes this instance.</summary>
-        public override void Awake() => RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
+        public override void Init()
+        {
+            RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
+        }
 
-        /// <summary>Starts this instance.</summary>
-        public override void Start()
+        /// <summary>Awakes this instance.</summary>
+        public override void Awake()
         {
             if (RenderWindow is not null)
             {
                 RenderWindow.Closed += RenderWindow_Closed;
             }
+        }
 
+        /// <summary>Starts this instance.</summary>
+        public override void Start()
+        {
             Sprites = Sprites.OrderBy(o => o.Level).ToList();
         }
 
@@ -113,11 +119,32 @@ namespace Alis.Core.Managers
                         RenderWindow.Draw(Sprites[i].Drawable);
                     }
                 }
+                
+                if (Game.Setting.Debug.ShowPhysicBorders)
+                {
+                    if (PhysicsSystem.Colliders.Count > 0)
+                    {
+                        //Colliders = Colliders.OrderBy(o => o.Level).ToList();
+                        for (int i = 0; i < PhysicsSystem.Colliders.Count; i++)
+                        {
+                            RenderWindow.Draw(PhysicsSystem.Colliders[i].GetDrawable());
+                        }
+                    }
+                }
             }
+            
+            
         }
 
         /// <summary>Afters the update.</summary>
-        public override void AfterUpdate() => RenderWindow?.Display();
+        public override void AfterUpdate()
+        {
+        }
+
+        public override void Draw()
+        {
+            RenderWindow?.Display();
+        }
 
         /// <summary>Fixed the update.</summary>
         public override void FixedUpdate()

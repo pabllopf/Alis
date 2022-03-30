@@ -162,13 +162,38 @@ namespace Alis.Core.Entities
             return (T) (Components.Find(component => component.GetType().Name == name) ??
                         throw new NullReferenceException());
         }
-
+        
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public void Init() => Components.ForEach(component => component.Init());
+        
+        /// <summary>
+        /// Befores the awake
+        /// </summary>
+        public void BeforeAwake()=> Components.ForEach(component => component.BeforeAwake());
+        
         /// <summary>Awakes this instance.</summary>
         public void Awake() => Components.ForEach(component => component.Awake());
 
+        /// <summary>
+        /// Afters the awake
+        /// </summary>
+        public void AfterAwake() => Components.ForEach(component => component.AfterAwake());
+        
+        /// <summary>
+        /// Befores the start
+        /// </summary>
+        public void BeforeStart() => Components.ForEach(component => component.BeforeStart());
+        
         /// <summary>Starts this instance.</summary>
         public void Start() => Components.ForEach(component => component.Start());
 
+        /// <summary>
+        /// Afters the start
+        /// </summary>
+        public void AfterStart()=> Components.ForEach(component => component.AfterStart());
+        
         /// <summary>Befores the update.</summary>
         public void BeforeUpdate() => Components.ForEach(component =>
         {
@@ -214,6 +239,17 @@ namespace Alis.Core.Entities
             if (component.IsActive)
             {
                 component.DispatchEvents();
+            }
+        });
+        
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
+        public void Draw() => Components.ForEach(component =>
+        {
+            if (component.IsActive)
+            {
+                component.Draw();
             }
         });
 
