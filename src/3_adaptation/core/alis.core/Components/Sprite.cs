@@ -157,7 +157,12 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Update()
         {
-            sprite.Position = new Vector2f(transform.Position.X, transform.Position.Y);
+            Vector2f pos = new Vector2f(
+                (GameObject.Transform.Position.X) - ((Size.X) / 2),
+                (GameObject.Transform.Position.Y) - ((Size.Y) / 2)
+            );
+
+            sprite.Position = pos;
             sprite.Rotation = transform.Rotation.Y;
             sprite.Scale = new Vector2f(transform.Scale.X, transform.Scale.Y);
         }

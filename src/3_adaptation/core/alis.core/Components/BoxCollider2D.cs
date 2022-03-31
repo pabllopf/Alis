@@ -36,6 +36,8 @@ using Alis.Core.Systems.Physics2D.Collision.Shapes;
 using Alis.Core.Systems.Physics2D.Definitions;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Factories;
+using Alis.Core.Systems.Physics2D.Shared;
+using Transform = Alis.Core.Systems.Physics2D.Shared.Transform;
 
 namespace Alis.Core.Components
 {
@@ -138,19 +140,41 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Awake()
         {
-            rectangleShape = new RectangleShape(new Vector2f(Width * 2, Height * 2));
+            rectangleShape = new RectangleShape(new Vector2f(Width, Height));
+            //Console.WriteLine($"Name={GameObject.Name} rectangleShape.Size={rectangleShape.Size}");
+            Vector2f pos = new Vector2f(
+                (GameObject.Transform.Position.X + RelativePosition.X) - ((Width) / 2),
+                (GameObject.Transform.Position.Y + RelativePosition.Y) - ((Height) / 2)
+                );
+
+            //Vector2f pos = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
             
-            rectangleShape.Position = new Vector2f(
-                GameObject.Transform.Position.X + RelativePosition.X,
-                GameObject.Transform.Position.Y + RelativePosition.Y);
+            
+            rectangleShape.Position = pos;
             rectangleShape.FillColor = Color.Transparent;
             rectangleShape.OutlineColor = Color.Green;
             rectangleShape.OutlineThickness = 1f;
+            
+            //Console.WriteLine($"Name={GameObject.Name} rectangleShape.Position={rectangleShape.Position}");
             
             PhysicsSystem.Attach(this);
 
 
             Body = CreateBody();
+
+            Transform transform;
+            Body.GetTransform(out transform);
+            
+            
+            
+            Console.WriteLine($"Name={GameObject.Name} rectangleShape.Position={rectangleShape.Position}");
+            Console.WriteLine($"Name={GameObject.Name} rectangleShape.Size={rectangleShape.Size}");
+            Console.WriteLine($"Name={GameObject.Name} rectangleShape.Rotation={rectangleShape.Rotation}");
+
+            
+            Console.WriteLine($"Name={GameObject.Name} Body.Position={Body.Position}");
+            Console.WriteLine($"Name={GameObject.Name} Body.Size=x{Width}y{Height}");
+            Console.WriteLine($"Name={GameObject.Name} Body.Rotation={Body.Rotation}");
 
             /*
             Body = BodyFactory.CreateRectangle(
@@ -181,12 +205,12 @@ namespace Alis.Core.Components
         {
             Body body = BodyFactory.CreateRectangle(
                 world: PhysicsSystem.World, 
-                width: Width * 2 , 
-                height: Height * 2 , 
+                width: Width , 
+                height: Height, 
                 density: Density, 
                 position: new Vector2(
-                    GameObject.Transform.Position.X + RelativePosition.X,
-                    GameObject.Transform.Position.Y + RelativePosition.Y), 
+                    (GameObject.Transform.Position.X ) + RelativePosition.X,
+                    (GameObject.Transform.Position.Y ) + RelativePosition.Y), 
                 rotation: Rotation, 
                 bodyType: BodyType, 
                 userData: this.GameObject);
@@ -283,8 +307,12 @@ namespace Alis.Core.Components
 
         public override void Draw()
         {
-            rectangleShape.Position = new Vector2f(Body.Position.X, Body.Position.Y);
-            rectangleShape.Rotation = Body.Rotation;
+            Vector2f pos = new Vector2f(
+                (GameObject.Transform.Position.X + RelativePosition.X) - ((Width) / 2),
+                (GameObject.Transform.Position.Y + RelativePosition.Y) - ((Height) / 2)
+            );
+            rectangleShape.Position = pos;
+            rectangleShape.Rotation = GameObject.Transform.Rotation.Y;
         }
 
         /// <summary>

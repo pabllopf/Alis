@@ -165,7 +165,7 @@ namespace PingPong
                         .Name("Game Scene")
                         // SOUNDTRACK:
                         .Add<GameObject>(soundTrack => soundTrack
-                            .Name("Sountrack")
+                            .Name("Soundtrack")
                             .Add(new AudioSource($"{Environment.CurrentDirectory}/Assets/ping.wav"))
                             .Build())
                         // CAMERA:
@@ -189,7 +189,7 @@ namespace PingPong
                         .Add<GameObject>(topWall => topWall
                             .Name("TopWall")
                             .Transform(transform => transform
-                                .Position(-360, -240, 0)
+                                .Position(0, -240, 0)
                                 .Scale(1, 1, 1)
                                 .Rotation(0)
                                 .Build())
@@ -214,7 +214,7 @@ namespace PingPong
                         .Add<GameObject>(downWall => downWall
                             .Name("DownWall")
                             .Transform(transform => transform
-                                .Position(-360, 240, 0)
+                                .Position(0, 240, 0)
                                 .Scale(1, 1, 1)
                                 .Rotation(0)
                                 .Build())
@@ -239,7 +239,7 @@ namespace PingPong
                         .Add<GameObject>(leftWall => leftWall
                             .Name("LeftWall")
                             .Transform(transform => transform
-                                .Position(-320, -240, 0)
+                                .Position(-300, 0, 0)
                                 .Scale(1, 1, 1)
                                 .Rotation(0)
                                 .Build())
@@ -248,7 +248,7 @@ namespace PingPong
                                 Width = 20.0f,
                                 Height = 480.0f,
                                 BodyType = BodyType.Static,
-                                Density = 0.5f,
+                                Density = 1f,
                                 Rotation = 0.0f,
                                 Mass = 10.0f,
                                 RelativePosition = Vector2.Zero,
@@ -264,7 +264,7 @@ namespace PingPong
                         .Add<GameObject>(rightWall => rightWall
                             .Name("RightWall")
                             .Transform(transform => transform
-                                .Position(320, -240, 0)
+                                .Position(320, 0, 0)
                                 .Scale(1, 1, 1)
                                 .Rotation(0)
                                 .Build())
