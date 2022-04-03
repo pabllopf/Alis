@@ -28,7 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.Text.Json.Serialization;
-using Alis.FluentApi.Validations;
+using Alis.Core.FluentApi;
+using Alis.Core.FluentApi.Validations;
 using Alis.Tools;
 
 namespace Alis.Core.Configurations

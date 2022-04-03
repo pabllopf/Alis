@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The rotation interface
     /// </summary>
-    public interface IRotation<TBuilder, TArgument>
+    public interface IRotation<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Rotations the angle

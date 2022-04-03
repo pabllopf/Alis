@@ -30,8 +30,8 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Entities;
-using Alis.FluentApi;
-using Alis.FluentApi.Words;
+using Alis.Core.FluentApi;
+using Alis.Core.FluentApi.Words;
 
 namespace Alis.Core.Builders
 {

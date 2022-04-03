@@ -29,7 +29,7 @@
 
 using Alis.Core;
 using Alis.Core.Configurations;
-using Alis.FluentApi;
+using Alis.Core.FluentApi;
 using Alis.Tools;
 
 namespace Alis.Builders

@@ -27,18 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The create interface
     /// </summary>
-    public interface ICreate<TL, T>
+    public interface ICreate<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Creates the obj
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The</returns>
-        public TL Create(T obj);
+        public TBuilder Create(TArgument obj);
     }
 }

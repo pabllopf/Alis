@@ -27,18 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The has interface
     /// </summary>
-    public interface IHas<TL, T>
+    public interface IHas<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Hases the obj
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The</returns>
-        public TL Has(T obj);
+        public TBuilder Has(TArgument obj);
     }
 }

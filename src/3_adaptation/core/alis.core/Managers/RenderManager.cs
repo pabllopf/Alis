@@ -84,6 +84,9 @@ namespace Alis.Core.Managers
         /// <value>The sprites.</value>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>(Game.Setting.Graphic.MaxElementsRender);
 
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
         public override void Init()
         {
             RenderWindow = new RenderWindow(VideoMode, TitleWindow, ScreenMode);
@@ -141,6 +144,9 @@ namespace Alis.Core.Managers
         {
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public override void Draw()
         {
             RenderWindow?.Display();

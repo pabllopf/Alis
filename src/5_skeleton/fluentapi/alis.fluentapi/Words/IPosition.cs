@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The position interface
     /// </summary>
-    public interface IPosition<TBuilder, TArgument1, TArgument2, TArgument3>
+    public interface IPosition<out TBuilder, in TArgument1, in TArgument2, in TArgument3>
     {
         /// <summary>
         ///     Positions the x

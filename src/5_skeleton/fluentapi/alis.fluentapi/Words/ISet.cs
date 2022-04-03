@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The set interface
     /// </summary>
-    public interface ISet<TBuilder, TYpe, TArgument>
+    public interface ISet<out TBuilder, in TType, in TArgument>
     {
         /// <summary>
         ///     Sets the value
@@ -40,6 +40,6 @@ namespace Alis.FluentApi.Words
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public TBuilder Set<T>(TArgument value) where T : TYpe;
+        public TBuilder Set<T>(TArgument value) where T : TType;
     }
 }

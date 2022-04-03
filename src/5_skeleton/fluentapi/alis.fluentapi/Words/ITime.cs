@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The time interface
     /// </summary>
-    public interface ITime<TBuilder, TArgument>
+    public interface ITime<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Times the value

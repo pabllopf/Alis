@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The where interface
     /// </summary>
-    public interface IWhere<TBuilder, TArgument>
+    public interface IWhere<out TBuilder, in TArgument>
     {
         /// <summary>Wheres the specified value.</summary>
         /// <param name="value">The value.</param>

@@ -27,17 +27,17 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The delete interface
     /// </summary>
-    public interface IDelete<T>
+    public interface IDelete<out TBuilder>
     {
         /// <summary>
         ///     Deletes this instance
         /// </summary>
         /// <returns>The</returns>
-        public T Delete();
+        public TBuilder Delete();
     }
 }

@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The general interface
     /// </summary>
-    public interface IGeneral<TBuilder, TArgument>
+    public interface IGeneral<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Generals the value

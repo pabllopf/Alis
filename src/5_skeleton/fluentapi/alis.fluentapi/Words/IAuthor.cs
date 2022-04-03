@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The author interface
     /// </summary>
-    public interface IAuthor<TBuilder, TArgument>
+    public interface IAuthor<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Authors the value

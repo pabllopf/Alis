@@ -29,18 +29,18 @@
 
 using System;
 
-namespace Alis.FluentApi
+namespace Alis.Core.FluentApi
 {
     /// <summary>
     ///     The builder interface
     /// </summary>
-    public interface IBuilder<T>
+    public interface IBuilder<out TOrigin>
     {
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The</returns>
-        public static T Builder() =>
-            (T) (Activator.CreateInstance(typeof(T), true) ?? throw new NullReferenceException());
+        public static TOrigin Builder() =>
+            (TOrigin) (Activator.CreateInstance(typeof(TOrigin), true) ?? throw new NullReferenceException());
     }
 }

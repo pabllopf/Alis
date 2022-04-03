@@ -27,19 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The add interface
     /// </summary>
-    public interface IAdd<TBuilder, TYpe, TArgument>
+    public interface IAdd<out TBuilder, in TType, in TArgument>
     {
-        /// <summary>
-        ///     Adds the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The builder</returns>
-        public TBuilder Add<T>(TArgument value) where T : TYpe;
+        public TBuilder Add<T>(TArgument value) where T : TType;
     }
 }

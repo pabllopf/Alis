@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The is interface
     /// </summary>
-    public interface IIs<TBuilder, TYpe, TArgument>
+    public interface IIs<out TBuilder, in TType, in TArgument>
     {
         /// <summary>
         ///     Ises the value
@@ -40,6 +40,6 @@ namespace Alis.FluentApi.Words
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public TBuilder Is<T>(TArgument value) where T : TYpe;
+        public TBuilder Is<T>(TArgument value) where T : TType;
     }
 }

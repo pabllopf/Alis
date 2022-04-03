@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The transform interface
     /// </summary>
-    public interface ITransform<TBuilder, TArgument>
+    public interface ITransform<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Transforms the value

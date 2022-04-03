@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Components;
+using Alis.Core.FluentApi;
+using Alis.Core.FluentApi.Words;
 using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.FluentApi;
-using Alis.FluentApi.Words;
 
 namespace Alis.Core.Builders
 {
@@ -38,7 +38,7 @@ namespace Alis.Core.Builders
     ///     The box collider builder class
     /// </summary>
     /// <seealso cref="IBuild{TOrigin}" />
-    /// <seealso cref="ISize{BoxCollider2DBuilder, int, int}" />
+    /// <seealso cref="ISize{TBuilder,TArgument1,TArgument2}" />
     /// <seealso cref="IIsTrigger{TBuilder,TArgument}" />
     /// <seealso cref="IIsStatic{BoxCollider2DBuilder, bool}" />
     /// <seealso cref="IIsDynamic{BoxCollider2DBuilder, bool}" />

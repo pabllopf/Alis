@@ -1,11 +1,11 @@
 <Project>
     <ItemGroup>
-        <Compile Include="$(SolutionDir)/4_domain/graphics/2d/alis.core.graphics2d/**/*.cs" LinkBase="Graphics2D"/>
-        <Compile Remove="$(SolutionDir)/4_domain/graphics/2d/alis.core.graphics2d/*.csproj"/>
-        <Compile Remove="$(SolutionDir)/4_domain/graphics/2d/alis.core.graphics2d/obj/**"/>
-        <Compile Remove="$(SolutionDir)/4_domain/graphics/2d/alis.core.graphics2d/bin/**"/>
+        <Compile Include="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/**/*.cs" LinkBase="Graphics/D2"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/bin/**"/>
 
-        <Content Include="$(SolutionDir)/4_domain/graphics/2d/alis.core.graphics2d/Runtimes/**" LinkBase="Runtimes">
+        <Content Include="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>
         </Content>

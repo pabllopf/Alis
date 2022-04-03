@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The configuration interface
     /// </summary>
-    public interface IConfiguration<TBuilder, TArgument>
+    public interface IConfiguration<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Configurations the value

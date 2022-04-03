@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi
+namespace Alis.Core.FluentApi
 {
     /// <summary>
-    ///     The build interface
+    /// The build interface
     /// </summary>
-    public interface IBuild<TOrigin>
+    public interface IBuild<out TOrigin>
     {
         /// <summary>
         ///     Builds this instance

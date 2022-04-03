@@ -29,8 +29,8 @@
 
 using Alis.Core;
 using Alis.Core.Configurations;
-using Alis.FluentApi;
-using Alis.FluentApi.Words;
+using Alis.Core.FluentApi;
+using Alis.Core.FluentApi.Words;
 
 namespace Alis.Builders
 {

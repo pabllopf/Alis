@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The is active interface
     /// </summary>
-    public interface IIsActive<TBuilder, TArgument>
+    public interface IIsActive<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Ises the active

@@ -27,16 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The manager interface
     /// </summary>
-    public interface IManager<TBuilder, TYpe, TArgument>
+    public interface IManager<out TBuilder, in TType, in TArgument>
     {
         /// <summary>Withes the specified value.</summary>
         /// <param name="value">The value.</param>
         /// <returns>Return that you want.</returns>
-        public TBuilder Manager<T>(TArgument value) where T : TYpe;
+        public TBuilder Manager<T>(TArgument value) where T : TType;
     }
 }

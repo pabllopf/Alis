@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The resolution interface
     /// </summary>
-    public interface IResolution<TBuilder, TArgument1, TArgument2>
+    public interface IResolution<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
         ///     Resolutions the x

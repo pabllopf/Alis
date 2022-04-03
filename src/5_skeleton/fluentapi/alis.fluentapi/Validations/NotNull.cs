@@ -27,31 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 
-#endregion
-
-namespace Alis.FluentApi.Validations
+namespace Alis.Core.FluentApi.Validations
 {
     /// <summary>
     ///     The not null class
     /// </summary>
-    public class NotNull<T>
+    public class NotNull<TArgument>
     {
         /// <summary>
         ///     the value
         /// </summary>
         /// <param name="value">the value</param>
-        public NotNull(T value) => Value = value;
+        public NotNull(TArgument value) => Value = value;
 
         /// <summary>
         ///     Gets or sets the value of the value
         /// </summary>
-        public T Value { get; set; }
+        public TArgument Value { get; set; }
 
-        public static implicit operator NotNull<T>(T value) =>
-            new NotNull<T>(value ?? throw new ArgumentNullException(typeof(T).FullName));
+        /// <summary>
+        ///    Gets or sets the message
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static implicit operator NotNull<TArgument>(TArgument value) =>
+            new NotNull<TArgument>(value ?? throw new ArgumentNullException(typeof(TArgument).FullName));
     }
 }

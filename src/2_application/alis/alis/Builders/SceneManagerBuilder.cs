@@ -31,10 +31,9 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Builders;
 using Alis.Core.Entities;
-using Alis.Core.Managers;
+using Alis.Core.FluentApi;
+using Alis.Core.FluentApi.Words;
 using Alis.Core.Systems;
-using Alis.FluentApi;
-using Alis.FluentApi.Words;
 
 namespace Alis.Builders
 {

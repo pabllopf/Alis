@@ -56,11 +56,19 @@ namespace Alis.Core.Systems
 
         #region Awake()
 
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void Init()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Befores the awake
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void BeforeAwake()
         {
             throw new NotImplementedException();
@@ -73,11 +81,19 @@ namespace Alis.Core.Systems
         {
         }
 
+        /// <summary>
+        /// Afters the awake
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void AfterAwake()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Befores the start
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void BeforeStart()
         {
             throw new NotImplementedException();
@@ -94,6 +110,10 @@ namespace Alis.Core.Systems
         {
         }
 
+        /// <summary>
+        /// Afters the start
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void AfterStart()
         {
             throw new NotImplementedException();
@@ -154,6 +174,10 @@ namespace Alis.Core.Systems
         {
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void Draw()
         {
             throw new NotImplementedException();

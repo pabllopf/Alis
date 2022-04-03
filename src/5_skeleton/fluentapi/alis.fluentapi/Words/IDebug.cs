@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The debug interface
     /// </summary>
-    public interface IDebug<TBuilder, TArgument>
+    public interface IDebug<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Debugs the value

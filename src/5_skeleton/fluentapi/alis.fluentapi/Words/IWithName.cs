@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>Define the word "Name" </summary>
     /// <typeparam name="TBuilder">The type of the uilder.</typeparam>
     /// <typeparam name="TArgument">The type of the rgument.</typeparam>
-    public interface IWithName<TBuilder, TArgument>
+    public interface IWithName<out TBuilder, in TArgument>
     {
         /// <summary>Withes the name.</summary>
         /// <param name="value">The value.</param>

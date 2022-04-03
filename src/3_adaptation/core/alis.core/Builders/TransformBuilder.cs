@@ -29,8 +29,8 @@
 
 using System.Numerics;
 using Alis.Core.Entities;
-using Alis.FluentApi;
-using Alis.FluentApi.Words;
+using Alis.Core.FluentApi;
+using Alis.Core.FluentApi.Words;
 
 namespace Alis.Core.Builders
 {
@@ -38,7 +38,7 @@ namespace Alis.Core.Builders
     ///     The transform builder class
     /// </summary>
     /// <seealso cref="IBuild{TOrigin}" />
-    /// <seealso cref="IPosition{TransformBuilder, float, float, float}" />
+    /// <seealso cref="IPosition{TBuilder,TArgument1,TArgument2,TArgument3}" />
     /// <seealso cref="IScale{TransformBuilder, float, float, float}" />
     /// <seealso cref="IRotation{TBuilder,TArgument}" />
     /// <seealso cref="IRotation{TransformBuilder, Vector3}" />

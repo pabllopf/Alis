@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The is dynamic interface
     /// </summary>
-    public interface IIsDynamic<TBuilder, TArgument>
+    public interface IIsDynamic<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Ises the dynamic

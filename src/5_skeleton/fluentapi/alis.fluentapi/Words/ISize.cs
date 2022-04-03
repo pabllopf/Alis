@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The size interface
     /// </summary>
-    public interface ISize<TBuilder, TArgument1, TArgument2>
+    public interface ISize<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
         ///     Sizes the x

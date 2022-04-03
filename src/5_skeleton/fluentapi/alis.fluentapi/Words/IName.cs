@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The name interface
     /// </summary>
-    public interface IName<TBuilder, TArgument>
+    public interface IName<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Names the value

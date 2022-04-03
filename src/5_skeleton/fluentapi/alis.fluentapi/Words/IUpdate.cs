@@ -26,19 +26,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The update interface
     /// </summary>
-    public interface IUpdate<TL, T>
+    public interface IUpdate<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Updates the obj
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The</returns>
-        public TL Update(T obj);
+        public TBuilder Update(TArgument obj);
     }
 }

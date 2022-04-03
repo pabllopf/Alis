@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The is static interface
     /// </summary>
-    public interface IIsStatic<TBuilder, TArgument>
+    public interface IIsStatic<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Ises the static

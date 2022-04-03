@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The window interface
     /// </summary>
-    public interface IWindow<TBuilder, TArgument>
+    public interface IWindow<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Windows the value

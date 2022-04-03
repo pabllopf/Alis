@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The is trigger interface
     /// </summary>
-    public interface IIsTrigger<TBuilder, TArgument>
+    public interface IIsTrigger<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Ises the trigger

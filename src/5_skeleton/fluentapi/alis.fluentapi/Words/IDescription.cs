@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The description interface
     /// </summary>
-    public interface IDescription<TBuilder, TArgument>
+    public interface IDescription<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Descriptions the value

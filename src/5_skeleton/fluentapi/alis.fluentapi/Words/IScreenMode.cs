@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The screen mode interface
     /// </summary>
-    public interface IScreenMode<TBuilder, TArgument>
+    public interface IScreenMode<out TBuilder, in TArgument>
     {
         /// <summary>
         ///     Screens the mode using the specified value

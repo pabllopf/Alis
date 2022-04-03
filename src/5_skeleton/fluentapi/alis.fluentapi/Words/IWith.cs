@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     Simple comment
@@ -35,11 +35,12 @@ namespace Alis.FluentApi.Words
     /// <typeparam name="TBuilder">the builder</typeparam>
     /// <typeparam name="TYpe">the type</typeparam>
     /// <typeparam name="TArgument">the argument</typeparam>
-    public interface IWith<TBuilder, TYpe, TArgument>
+    /// <typeparam name="TType"></typeparam>
+    public interface IWith<out TBuilder, in TType, in TArgument>
     {
         /// <summary>Withes the specified value.</summary>
         /// <param name="value">The value.</param>
         /// <returns>Return that you want.</returns>
-        public TBuilder With<T>(TArgument value) where T : TYpe;
+        public TBuilder With<T>(TArgument value) where T : TType;
     }
 }

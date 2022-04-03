@@ -1,11 +1,11 @@
 <Project>
     <ItemGroup>
-        <Compile Include="$(SolutionDir)/4_domain/audio/3d/alis.core.audio3d/**/*.cs" LinkBase="Audio3D"/>
-        <Compile Remove="$(SolutionDir)/4_domain/audio/3d/alis.core.audio3d/*.csproj"/>
-        <Compile Remove="$(SolutionDir)/4_domain/audio/3d/alis.core.audio3d/obj/**"/>
-        <Compile Remove="$(SolutionDir)/4_domain/audio/3d/alis.core.audio3d/bin/**"/>
+        <Compile Include="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/**/*.cs" LinkBase="Audio/D3"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/bin/**"/>
 
-        <Content Include="$(SolutionDir)/4_domain/audio/3d/alis.core.audio3d/Runtimes/**" LinkBase="Runtimes">
+        <Content Include="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>
         </Content>

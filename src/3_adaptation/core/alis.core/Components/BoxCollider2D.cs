@@ -123,6 +123,9 @@ namespace Alis.Core.Components
         /// </summary>
         public Vector2 LinearVelocity { get; set; } = Vector2.Zero;
 
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
         public override void Init()
         {
             if (AutoTilling)
@@ -305,6 +308,9 @@ namespace Alis.Core.Components
         {
         }
 
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
         public override void Draw()
         {
             Vector2f pos = new Vector2f(

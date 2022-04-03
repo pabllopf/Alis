@@ -27,12 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.FluentApi.Words
+namespace Alis.Core.FluentApi.Words
 {
     /// <summary>
     ///     The manager of interface
     /// </summary>
-    public interface IManagerOf<TBuilder, TYpe, TArgument>
+    public interface IManagerOf<out TBuilder, in TType, in TArgument>
     {
         /// <summary>
         ///     Managers the of using the specified value
@@ -40,6 +40,6 @@ namespace Alis.FluentApi.Words
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        public TBuilder ManagerOf<T>(TArgument value) where T : TYpe;
+        public TBuilder ManagerOf<T>(TArgument value) where T : TType;
     }
 }
