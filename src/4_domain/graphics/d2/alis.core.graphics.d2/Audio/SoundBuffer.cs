@@ -32,6 +32,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Core.Graphics2D.Systems;
+using Alis.Exceptions;
 
 namespace Alis.Core.Graphics2D.Audio
 {
@@ -50,7 +51,7 @@ namespace Alis.Core.Graphics2D.Audio
         ///     w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64.
         /// </summary>
         /// <param name="filename">Path of the sound file to load</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public SoundBuffer(string filename) :
             base(sfSoundBuffer_createFromFile(filename))
@@ -69,7 +70,7 @@ namespace Alis.Core.Graphics2D.Audio
         ///     w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64.
         /// </summary>
         /// <param name="stream">Source stream to read from</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public SoundBuffer(Stream stream) :
             base(IntPtr.Zero)
@@ -93,7 +94,7 @@ namespace Alis.Core.Graphics2D.Audio
         ///     w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64.
         /// </summary>
         /// <param name="bytes">Byte array containing the file contents</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public SoundBuffer(byte[] bytes) :
             base(IntPtr.Zero)
@@ -121,7 +122,7 @@ namespace Alis.Core.Graphics2D.Audio
         /// <param name="samples">Array of samples</param>
         /// <param name="channelCount">Channel count</param>
         /// <param name="sampleRate">Sample rate</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public SoundBuffer(short[] samples, uint channelCount, uint sampleRate) :
             base(IntPtr.Zero)

@@ -31,6 +31,7 @@ using System;
 using Alis.Core;
 using Alis.Core.FluentApi;
 using Alis.Core.FluentApi.Words;
+using Alis.Core.Managers;
 using Alis.Core.Systems;
 
 namespace Alis.Builders

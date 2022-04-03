@@ -26,20 +26,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-#region
-
-using System;
-
-#endregion
-
-namespace Alis.Core.Exceptions
+namespace Alis.Exceptions
 {
-    /// <summary>
-    ///     The index out of bounds class
-    /// </summary>
-    /// <seealso cref="Exception" />
-    public class IndexOutOfBounds : Exception
+
+    internal class IndexOutOfBounds : System.Exception
     {
     }
 }

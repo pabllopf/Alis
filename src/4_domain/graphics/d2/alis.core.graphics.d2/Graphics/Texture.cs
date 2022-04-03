@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Core.Graphics2D.Systems;
 using Alis.Core.Graphics2D.Windows;
-using LoadingFailedException = Alis.Core.Graphics2D.Systems.LoadingFailedException;
+using Alis.Exceptions;
 
 namespace Alis.Core.Graphics2D.Graphics
 {
@@ -55,7 +55,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="width">Texture width</param>
         /// <param name="height">Texture height</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(uint width, uint height) :
             base(sfTexture_create(width, height))
@@ -71,7 +71,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the texture from a file
         /// </summary>
         /// <param name="filename">Path of the image file to load</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(string filename) :
             this(filename, new IntRect(0, 0, 0, 0))
@@ -84,14 +84,14 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="filename">Path of the image file to load</param>
         /// <param name="area">Area of the image to load</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(string filename, IntRect area) :
             base(sfTexture_createFromFile(filename, ref area))
         {
             if (CPointer == IntPtr.Zero)
             {
-                throw new LoadingFailedException("texture", filename);
+                throw new LoadingFailedException($"texture{filename}");
             }
         }
 
@@ -100,7 +100,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the texture from a file in a stream
         /// </summary>
         /// <param name="stream">Stream containing the file contents</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(Stream stream) :
             this(stream, new IntRect(0, 0, 0, 0))
@@ -113,7 +113,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="stream">Stream containing the file contents</param>
         /// <param name="area">Area of the image to load</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(Stream stream, IntRect area) :
             base(IntPtr.Zero)
@@ -134,7 +134,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the texture from an image
         /// </summary>
         /// <param name="image">Image to load to the texture</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(Image image) :
             this(image, new IntRect(0, 0, 0, 0))
@@ -147,7 +147,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="image">Image to load to the texture</param>
         /// <param name="area">Area of the image to load</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(Image image, IntRect area) :
             base(sfTexture_createFromImage(image.CPointer, ref area))
@@ -163,7 +163,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the texture from a file in memory
         /// </summary>
         /// <param name="bytes">Byte array containing the file contents</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(byte[] bytes) :
             base(IntPtr.Zero)

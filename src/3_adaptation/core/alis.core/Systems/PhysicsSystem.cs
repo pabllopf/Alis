@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Numerics;
 using System.Text.Json.Serialization;
 using Alis.Core.Components;
-using Alis.Core.Managers;
 using Alis.Core.Systems.Physics2D;
 
 namespace Alis.Core.Systems

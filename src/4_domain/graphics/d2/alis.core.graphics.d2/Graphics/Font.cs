@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Core.Graphics2D.Systems;
 using Alis.Core.Graphics2D.Windows;
-using LoadingFailedException = Alis.Core.Graphics2D.Systems.LoadingFailedException;
+using Alis.Exceptions;
 
 namespace Alis.Core.Graphics2D.Graphics
 {
@@ -62,7 +62,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the font from a file
         /// </summary>
         /// <param name="filename">Font file to load</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Font(string filename) : base(sfFont_createFromFile(filename))
         {
@@ -77,7 +77,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the font from a custom stream
         /// </summary>
         /// <param name="stream">Source stream to read from</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Font(Stream stream) : base(IntPtr.Zero)
         {
@@ -95,7 +95,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the font from a file in memory
         /// </summary>
         /// <param name="bytes">Byte array containing the file contents</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Font(byte[] bytes) : this(new MemoryStream(bytes))
         {

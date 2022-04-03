@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   LimitOfComponents.cs
+//  File:   NullArgumentException.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,19 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 
-#endregion
-
-namespace Alis.Core.Exceptions
+namespace Alis.Exceptions
 {
     /// <summary>
-    ///     The limit of components class
+    ///     The null argument exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    public class LimitOfComponents : Exception
+    internal class NullArgumentException : System.Exception
     {
     }
 }

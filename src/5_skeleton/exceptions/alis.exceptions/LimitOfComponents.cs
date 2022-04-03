@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ComponentInstancieIsTheSame.cs
+//  File:   LimitOfComponents.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,19 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 
-#endregion
-
-namespace Alis.Core.Exceptions
+namespace Alis.Exceptions
 {
     /// <summary>
-    ///     The component instancie is the same class
+    ///     The limit of components class
     /// </summary>
     /// <seealso cref="Exception" />
-    internal class ComponentInstancieIsTheSame : Exception
+    internal class LimitOfComponents : System.Exception
     {
     }
 }

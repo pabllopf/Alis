@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   GameObjectIsFull.cs
+//  File:   Program.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,19 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
-using System;
-
-#endregion
-
-namespace Alis.Core.Exceptions
+namespace Alis.Tools.Example
 {
     /// <summary>
-    ///     The game object is full class
+    ///     The program class
     /// </summary>
-    /// <seealso cref="Exception" />
-    public class GameObjectIsFull : Exception
+    public class Program
     {
+        /// <summary>
+        ///     Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
+        public static void Main(string[] args)
+        {
+        }
     }
 }

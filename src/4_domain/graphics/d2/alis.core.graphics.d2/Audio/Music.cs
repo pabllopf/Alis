@@ -32,6 +32,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Core.Graphics2D.Systems;
+using Alis.Exceptions;
 
 namespace Alis.Core.Graphics2D.Audio
 {
@@ -85,7 +86,7 @@ namespace Alis.Core.Graphics2D.Audio
         ///     Constructs a music from an audio file in memory
         /// </summary>
         /// <param name="bytes">Byte array containing the file contents</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Music(byte[] bytes) :
             base(IntPtr.Zero)

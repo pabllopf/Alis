@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ComponentDontExits.cs
+//  File:   GameObjectIsFull.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,19 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
 
 using System;
 
-#endregion
-
-namespace Alis.Core.Exceptions
+namespace Alis.Exceptions
 {
     /// <summary>
-    ///     The component dont exits class
+    ///     The game object is full class
     /// </summary>
     /// <seealso cref="Exception" />
-    internal class ComponentDontExits : Exception
+    internal class GameObjectIsFull : System.Exception
     {
     }
 }

@@ -32,11 +32,8 @@ using System.Numerics;
 using Alis.Core.Graphics2D.Graphics;
 using Alis.Core.Graphics2D.Systems;
 using Alis.Core.Systems;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Definitions;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Factories;
-using Alis.Core.Systems.Physics2D.Shared;
 using Transform = Alis.Core.Systems.Physics2D.Shared.Transform;
 
 namespace Alis.Core.Components

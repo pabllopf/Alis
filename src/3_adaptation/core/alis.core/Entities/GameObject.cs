@@ -31,8 +31,8 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Alis.Core.Components;
-using Alis.Core.Exceptions;
 using Alis.Core.Input;
+using Alis.Exceptions;
 
 namespace Alis.Core.Entities
 {

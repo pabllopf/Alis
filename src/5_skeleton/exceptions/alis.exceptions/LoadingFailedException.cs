@@ -26,27 +26,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using System;
-using System.Runtime.Serialization;
-
-namespace Alis.Core.Graphics2D.Windows
+namespace Alis.Exceptions
 {
     ////////////////////////////////////////////////////////////
     /// <summary>
     ///     Exception thrown by SFML whenever loading a resource fails
     /// </summary>
     ////////////////////////////////////////////////////////////
-    [Serializable]
-    public class LoadingFailedException : Exception
+    internal class LoadingFailedException : System.Exception
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Default constructor (unknown error)
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public LoadingFailedException() :
-            base("Failed to load a resource")
+        public LoadingFailedException() : base("Failed to load a resource")
         {
         }
 
@@ -56,8 +50,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="resourceName">Name of the resource</param>
         ////////////////////////////////////////////////////////////
-        public LoadingFailedException(string resourceName) :
-            base("Failed to load " + resourceName + " from memory")
+        public LoadingFailedException(string resourceName) : base($"Failed to load {resourceName} from memory")
         {
         }
 
@@ -68,8 +61,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="resourceName">Name of the resource</param>
         /// <param name="innerException">Exception which is the cause ofthe current exception</param>
         ////////////////////////////////////////////////////////////
-        public LoadingFailedException(string resourceName, Exception innerException) :
-            base("Failed to load " + resourceName + " from memory", innerException)
+        public LoadingFailedException(string resourceName, System.Exception innerException) :
+            base($"Failed to load {resourceName} from memory", innerException)
         {
         }
 
@@ -81,7 +74,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="filename">Path of the file</param>
         ////////////////////////////////////////////////////////////
         public LoadingFailedException(string resourceName, string filename) :
-            base("Failed to load " + resourceName + " from file " + filename)
+            base($"Failed to load {resourceName} from file {filename}")
         {
         }
 
@@ -93,20 +86,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="filename">Path of the file</param>
         /// <param name="innerException">Exception which is the cause ofthe current exception</param>
         ////////////////////////////////////////////////////////////
-        public LoadingFailedException(string resourceName, string filename, Exception innerException) :
-            base("Failed to load " + resourceName + " from file " + filename, innerException)
-        {
-        }
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Initialize an instance of the exception with serialized data
-        /// </summary>
-        /// <param name="info">Serialized data</param>
-        /// <param name="context">Contextual informations</param>
-        ////////////////////////////////////////////////////////////
-        public LoadingFailedException(SerializationInfo info, StreamingContext context) :
-            base(info, context)
+        public LoadingFailedException(string resourceName, string filename, System.Exception innerException) :
+            base($"Failed to load {resourceName} from file {filename}", innerException)
         {
         }
     }

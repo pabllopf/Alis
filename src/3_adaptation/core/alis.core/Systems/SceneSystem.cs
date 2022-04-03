@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Alis.Core.Entities;
-using Alis.Core.Exceptions;
+using Alis.Exceptions;
 using Alis.Tools;
 
 namespace Alis.Core.Systems

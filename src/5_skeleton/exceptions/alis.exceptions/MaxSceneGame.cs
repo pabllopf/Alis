@@ -27,19 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
 
-#endregion
-
-namespace Alis.Core.Exceptions
+namespace Alis.Exceptions
 {
     /// <summary>
     ///     The max scene game class
     /// </summary>
     /// <seealso cref="Exception" />
-    public class MaxSceneGame : Exception
+    internal class MaxSceneGame : System.Exception
     {
     }
 }

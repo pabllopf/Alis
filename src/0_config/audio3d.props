@@ -4,11 +4,9 @@
         <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/*.csproj"/>
         <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/obj/**"/>
         <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/bin/**"/>
-
         <Content Include="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>
         </Content>
-    
     </ItemGroup>
 </Project>

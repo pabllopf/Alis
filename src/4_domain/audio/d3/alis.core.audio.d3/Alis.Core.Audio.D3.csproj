@@ -14,6 +14,7 @@
 
     <Import Project="$(SolutionDir)/0_config/tools.props" />
     <Import Project="$(SolutionDir)/0_config/fluentapi.props" />
+    <Import Project="$(SolutionDir)/0_config/exceptions.props" />
 
 
     <ItemGroup>

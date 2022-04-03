@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   NullArgumentException.cs
+//  File:   ComponentInstancieIsTheSame.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -26,20 +26,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-#region
-
-using System;
-
-#endregion
-
-namespace Alis.Core.Exceptions
+namespace Alis.Exceptions
 {
-    /// <summary>
-    ///     The null argument exception class
-    /// </summary>
-    /// <seealso cref="Exception" />
-    public class NullArgumentException : Exception
+    internal class ComponentIsTheSame : System.Exception
     {
     }
 }

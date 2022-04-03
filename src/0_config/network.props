@@ -1,11 +1,9 @@
 <Project>
     <ItemGroup>
         <Compile Include="$(SolutionDir)/4_domain/network/alis.core.network/**/*.cs" LinkBase="Network"/>
-        
         <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/*.csproj"/>
         <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/obj/**"/>
         <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/bin/**"/>
-
         <Content Include="$(SolutionDir)/4_domain/network/alis.core.network/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>

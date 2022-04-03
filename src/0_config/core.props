@@ -1,0 +1,189 @@
+<Project>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/3_adaptation/core/alis.core/**/*.cs" LinkBase="Core"/>
+        <Compile Remove="$(SolutionDir)/3_adaptation/core/alis.core/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/3_adaptation/core/alis.core/obj/**"/>
+        <Compile Remove="$(SolutionDir)/3_adaptation/core/alis.core/bin/**"/>
+        <Content Include="$(SolutionDir)/3_adaptation/core/alis.core/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/ads/alis.core.ads/**/*.cs" LinkBase="Core/Ads"/>
+        <Compile Remove="$(SolutionDir)/4_domain/ads/alis.core.ads/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/ads/alis.core.ads/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/ads/alis.core.ads/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/ads/alis.core.ads/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/audio/d2/alis.core.audio.d2/**/*.cs" LinkBase="Core/Audio/D2"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d2/alis.core.audio.d2/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d2/alis.core.audio.d2/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d2/alis.core.audio.d2/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/audio/d2/alis.core.audio.d2/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/**/*.cs" LinkBase="Core/Audio/D3"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/audio/d3/alis.core.audio.d3/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/cloud/alis.core.cloud/**/*.cs" LinkBase="Core/Cloud"/>
+        <Compile Remove="$(SolutionDir)/4_domain/cloud/alis.core.cloud/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/cloud/alis.core.cloud/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/cloud/alis.core.cloud/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/cloud/alis.core.cloud/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/database/alis.core.database/**/*.cs" LinkBase="Core/Database"/>
+        <Compile Remove="$(SolutionDir)/4_domain/database/alis.core.database/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/database/alis.core.database/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/database/alis.core.database/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/database/alis.core.database/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/**/*.cs" LinkBase="Exceptions"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/obj/**"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/bin/**"/>
+        <Content Include="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/**/*.cs" LinkBase="FluentApi"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/obj/**"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/bin/**"/>
+        <Content Include="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/**/*.cs" LinkBase="Core/Graphics/D2"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/graphics/d2/alis.core.graphics.d2/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/graphics/d3/alis.core.graphics.d3/**/*.cs" LinkBase="Core/Graphics/D3"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d3/alis.core.graphics.d3/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d3/alis.core.graphics.d3/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/graphics/d3/alis.core.graphics.d3/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/graphics/d3/alis.core.graphics.d3/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/input/alis.core.input/**/*.cs" LinkBase="Core/Input"/>
+        <Compile Remove="$(SolutionDir)/4_domain/input/alis.core.input/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/input/alis.core.input/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/input/alis.core.input/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/input/alis.core.input/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/network/alis.core.network/**/*.cs" LinkBase="Core/Network"/>
+        <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/network/alis.core.network/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/network/alis.core.network/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/output/alis.core.output/**/*.cs" LinkBase="Core/Output"/>
+        <Compile Remove="$(SolutionDir)/4_domain/output/alis.core.output/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/output/alis.core.output/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/output/alis.core.output/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/output/alis.core.output/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/physics/d2/alis.core.physics.d2/**/*.cs" LinkBase="Core/Physics/2D"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/d2/alis.core.physics.d2/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/d2/alis.core.physics.d2/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/d2/alis.core.physics.d2/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/physics/d2/alis.core.physics.d2/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/physics/d3/alis.core.physics.d3/**/*.cs" LinkBase="Core/Physics/3D"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/d3/alis.core.physics.d3/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/d3/alis.core.physics.d3/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/physics/d3/alis.core.physics.d3/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/physics/d3/alis.core.physics.d3/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/time/alis.core.time/**/*.cs" LinkBase="Core/Time"/>
+        <Compile Remove="$(SolutionDir)/4_domain/time/alis.core.time/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/time/alis.core.time/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/time/alis.core.time/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/time/alis.core.time/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/5_skeleton/tools/alis.tools/**/*.cs" LinkBase="Tools"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/obj/**"/>
+        <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/bin/**"/>
+        <Content Include="$(SolutionDir)/5_skeleton/tools/alis.tools/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
+</Project>

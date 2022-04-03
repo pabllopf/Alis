@@ -32,6 +32,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Core.Graphics2D.Systems;
+using Alis.Exceptions;
 
 namespace Alis.Core.Graphics2D.Graphics
 {
@@ -49,7 +50,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="width">Image width</param>
         /// <param name="height">Image height</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Image(uint width, uint height) : this(width, height, Color.Black)
         {
@@ -62,7 +63,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="width">Image width</param>
         /// <param name="height">Image height</param>
         /// <param name="color">Color to fill the image with</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Image(uint width, uint height, Color color) : base(sfImage_createFromColor(width, height, color))
         {
@@ -77,7 +78,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the image from a file
         /// </summary>
         /// <param name="filename">Path of the image file to load</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Image(string filename) : base(sfImage_createFromFile(filename))
         {
@@ -92,7 +93,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the image from a file in a stream
         /// </summary>
         /// <param name="stream">Stream containing the file contents</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Image(Stream stream) :
             base(IntPtr.Zero)
@@ -113,7 +114,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the image from a file in memory
         /// </summary>
         /// <param name="bytes">Byte array containing the file contents</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Image(byte[] bytes) :
             base(IntPtr.Zero)
@@ -139,7 +140,7 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Construct the image directly from an array of pixels
         /// </summary>
         /// <param name="pixels">2 dimensions array containing the pixels</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Image(Color[,] pixels) :
             base(IntPtr.Zero)
@@ -178,7 +179,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="width">Image width</param>
         /// <param name="height">Image height</param>
         /// <param name="pixels">array containing the pixels</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Image(uint width, uint height, byte[] pixels) :
             base(IntPtr.Zero)

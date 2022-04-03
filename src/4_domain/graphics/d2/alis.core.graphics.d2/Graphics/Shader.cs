@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using Alis.Core.Graphics2D.Systems;
 using Alis.Core.Graphics2D.Windows;
-using LoadingFailedException = Alis.Core.Graphics2D.Systems.LoadingFailedException;
+using Alis.Exceptions;
 
 namespace Alis.Core.Graphics2D.Graphics
 {
@@ -67,7 +67,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="vertexShaderFilename">Path of the vertex shader file to load, or null to skip this shader</param>
         /// <param name="geometryShaderFilename">Path of the geometry shader file to load, or null to skip this shader</param>
         /// <param name="fragmentShaderFilename">Path of the fragment shader file to load, or null to skip this shader</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Shader(string vertexShaderFilename, string geometryShaderFilename, string fragmentShaderFilename) :
             base(sfShader_createFromFile(vertexShaderFilename, geometryShaderFilename, fragmentShaderFilename))
@@ -94,7 +94,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="vertexShaderStream">Source stream to read the vertex shader from, or null to skip this shader</param>
         /// <param name="geometryShaderStream">Source stream to read the geometry shader from, or null to skip this shader</param>
         /// <param name="fragmentShaderStream">Source stream to read the fragment shader from, or null to skip this shader</param>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Shader(Stream vertexShaderStream, Stream geometryShaderStream, Stream fragmentShaderStream) :
             base(IntPtr.Zero)
@@ -195,7 +195,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="geometryShader">String containing the source code of the geometry shader</param>
         /// <param name="fragmentShader">String containing the source code of the fragment shader</param>
         /// <returns>New shader instance</returns>
-        /// <exception cref="Alis.Core.Graphics2D.LoadingFailedException" />
+        /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public static Shader FromString(string vertexShader, string geometryShader, string fragmentShader)
         {

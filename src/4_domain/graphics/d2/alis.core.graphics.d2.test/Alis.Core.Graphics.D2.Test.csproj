@@ -11,6 +11,11 @@
     <Import Project="$(SolutionDir)/0_config/runtimes.props" />
     <Import Project="$(SolutionDir)/0_config/licence.props" />
     <Import Project="$(SolutionDir)/0_config/test.props" />
+    
     <Import Project="$(SolutionDir)/0_config/graphics2d.props" />
+
+    <Import Project="$(SolutionDir)/0_config/tools.props" />
+    <Import Project="$(SolutionDir)/0_config/fluentapi.props" />
+    <Import Project="$(SolutionDir)/0_config/exceptions.props" />
     
 </Project>
