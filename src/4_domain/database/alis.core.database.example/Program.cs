@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Cloud.Example
+namespace Alis.Core.Database.Example
 {
     /// <summary>
     ///     The program class

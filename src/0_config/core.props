@@ -65,6 +65,17 @@
             <Visible>True</Visible>
         </Content>
     </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="$(SolutionDir)/4_domain/diagnostics/alis.core.diagnostics/**/*.cs" LinkBase="Core/Diagnostics"/>
+        <Compile Remove="$(SolutionDir)/4_domain/diagnostics/alis.core.diagnostics/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/4_domain/diagnostics/alis.core.diagnostics/obj/**"/>
+        <Compile Remove="$(SolutionDir)/4_domain/diagnostics/alis.core.diagnostics/bin/**"/>
+        <Content Include="$(SolutionDir)/4_domain/diagnostics/alis.core.diagnostics/Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
+    </ItemGroup>
     
     <ItemGroup>
         <Compile Include="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/**/*.cs" LinkBase="Exceptions"/>

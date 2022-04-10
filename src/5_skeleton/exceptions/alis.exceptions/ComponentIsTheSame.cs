@@ -28,6 +28,10 @@
 //  --------------------------------------------------------------------------
 namespace Alis.Exceptions
 {
+    /// <summary>
+    /// The component is the same class
+    /// </summary>
+    /// <seealso cref="System.Exception"/>
     internal class ComponentIsTheSame : System.Exception
     {
     }

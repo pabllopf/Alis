@@ -29,15 +29,17 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Cloud.Test
+namespace Alis.Core.Database.Test
 {
+
     /// <summary>
-    ///     The tests class
+    /// The tests class
     /// </summary>
     public class Tests
     {
+
         /// <summary>
-        ///     Setup this instance
+        /// Setup this instance
         /// </summary>
         [SetUp]
         public void Setup()

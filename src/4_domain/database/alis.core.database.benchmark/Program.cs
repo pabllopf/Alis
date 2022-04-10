@@ -40,7 +40,7 @@ using BenchmarkDotNet.Running;
 
 #endregion
 
-namespace Alis.Core.Cloud.Benchmark
+namespace Alis.Core.Database.Benchmark
 {
     /// <summary>
     ///     The program class

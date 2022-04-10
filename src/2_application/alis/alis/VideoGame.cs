@@ -50,6 +50,10 @@ namespace Alis
             RenderSystem = new RenderManager();
         }
 
+        /// <summary>
+        /// Creates
+        /// </summary>
+        /// <returns>The video game builder</returns>
         public static VideoGameBuilder Create() => new VideoGameBuilder();
         
         /// <summary>

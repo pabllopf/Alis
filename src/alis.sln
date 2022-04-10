@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_Adaptation", "3_Adaptation", "{0D554058-5B9C-43B7-B23D-5818B46E8FC9}"
 EndProject
@@ -43,23 +43,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "D2", "D2", "{8B3FD8B0-E682-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "D3", "D3", "{27D6A482-F5B6-41F7-A8DB-55C025227DC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Engine", "1_presentation\engine\alis.engine\Alis.Engine.csproj", "{2A6E6B51-18C1-435A-B91F-55B86FE327D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Engine", "1_presentation\engine\alis.engine\Alis.Engine.csproj", "{2A6E6B51-18C1-435A-B91F-55B86FE327D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Engine.Benchmark", "1_presentation\engine\alis.engine.benchmark\Alis.Engine.Benchmark.csproj", "{8DDC844B-C9CD-44C6-B40A-55823332AA91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Engine.Benchmark", "1_presentation\engine\alis.engine.benchmark\Alis.Engine.Benchmark.csproj", "{8DDC844B-C9CD-44C6-B40A-55823332AA91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Engine.Test", "1_presentation\engine\alis.engine.test\Alis.Engine.Test.csproj", "{610E7433-4B4A-41C1-AD44-B406BEB59E92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Engine.Test", "1_presentation\engine\alis.engine.test\Alis.Engine.Test.csproj", "{610E7433-4B4A-41C1-AD44-B406BEB59E92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Installer", "1_presentation\installer\alis.installer\Alis.Installer.csproj", "{64EC39B3-06E0-40ED-B90A-E1AC06B9CA7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Installer", "1_presentation\installer\alis.installer\Alis.Installer.csproj", "{64EC39B3-06E0-40ED-B90A-E1AC06B9CA7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Installer.Benchmark", "1_presentation\installer\alis.installer.benchmark\Alis.Installer.Benchmark.csproj", "{7866FC5F-733D-454D-8E40-E24587ED2784}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Installer.Benchmark", "1_presentation\installer\alis.installer.benchmark\Alis.Installer.Benchmark.csproj", "{7866FC5F-733D-454D-8E40-E24587ED2784}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Installer.Test", "1_presentation\installer\alis.installer.test\Alis.Installer.Test.csproj", "{1894D4BC-7D5A-4A64-88FA-F2BB04D065AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Installer.Test", "1_presentation\installer\alis.installer.test\Alis.Installer.Test.csproj", "{1894D4BC-7D5A-4A64-88FA-F2BB04D065AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis", "2_application\alis\alis\Alis.csproj", "{917EDDFB-4384-4529-AA30-782C88F3E35E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis", "2_application\alis\alis\Alis.csproj", "{917EDDFB-4384-4529-AA30-782C88F3E35E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Benchmark", "2_application\alis\alis.benchmark\Alis.Benchmark.csproj", "{E89B6106-0775-4A3E-9F36-66E2DC2EC994}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Benchmark", "2_application\alis\alis.benchmark\Alis.Benchmark.csproj", "{E89B6106-0775-4A3E-9F36-66E2DC2EC994}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Test", "2_application\alis\alis.test\Alis.Test.csproj", "{52403942-DD85-419F-A345-B2E81B4D0834}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Test", "2_application\alis\alis.test\Alis.Test.csproj", "{52403942-DD85-419F-A345-B2E81B4D0834}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Time", "Time", "{6D25E8EB-8CEB-4770-B66D-297E50182C74}"
 EndProject
@@ -67,51 +67,51 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "D2", "D2", "{CB370F34-A96B-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "D3", "D3", "{123BF969-BBC6-4C39-8C0B-AF5EFE0BF0BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Time", "4_domain\time\alis.core.time\Alis.Core.Time.csproj", "{E599338C-FF01-4E34-A1A0-0097D6CE44AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Time", "4_domain\time\alis.core.time\Alis.Core.Time.csproj", "{E599338C-FF01-4E34-A1A0-0097D6CE44AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Time.Benchmark", "4_domain\time\alis.core.time.benchmark\Alis.Core.Time.Benchmark.csproj", "{9CAE7465-A39B-4C85-BEC4-055CDFC15280}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Time.Benchmark", "4_domain\time\alis.core.time.benchmark\Alis.Core.Time.Benchmark.csproj", "{9CAE7465-A39B-4C85-BEC4-055CDFC15280}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Time.Example", "4_domain\time\alis.core.time.example\Alis.Core.Time.Example.csproj", "{5E080B50-D990-4E4B-BBCF-AD654D9BECB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Time.Example", "4_domain\time\alis.core.time.example\Alis.Core.Time.Example.csproj", "{5E080B50-D990-4E4B-BBCF-AD654D9BECB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Time.Test", "4_domain\time\alis.core.time.test\Alis.Core.Time.Test.csproj", "{23229D9A-9C46-43BF-B254-A526FD898D3E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Time.Test", "4_domain\time\alis.core.time.test\Alis.Core.Time.Test.csproj", "{23229D9A-9C46-43BF-B254-A526FD898D3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Output.Test", "4_domain\output\alis.core.output.test\Alis.Core.Output.Test.csproj", "{B2803B39-D309-4F39-8D90-36BE37B79789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Output.Test", "4_domain\output\alis.core.output.test\Alis.Core.Output.Test.csproj", "{B2803B39-D309-4F39-8D90-36BE37B79789}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Output.Example", "4_domain\output\alis.core.output.example\Alis.Core.Output.Example.csproj", "{DB939C6F-D8D4-4725-A01C-E6F7ED23E488}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Output.Example", "4_domain\output\alis.core.output.example\Alis.Core.Output.Example.csproj", "{DB939C6F-D8D4-4725-A01C-E6F7ED23E488}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Output.Benchmark", "4_domain\output\alis.core.output.benchmark\Alis.Core.Output.Benchmark.csproj", "{68E03CFD-C0E9-4854-B8CB-F22198C03787}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Output.Benchmark", "4_domain\output\alis.core.output.benchmark\Alis.Core.Output.Benchmark.csproj", "{68E03CFD-C0E9-4854-B8CB-F22198C03787}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Output", "4_domain\output\alis.core.output\Alis.Core.Output.csproj", "{987E823A-C0E7-46DA-B0CA-ED102F36817B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Output", "4_domain\output\alis.core.output\Alis.Core.Output.csproj", "{987E823A-C0E7-46DA-B0CA-ED102F36817B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Input", "4_domain\input\alis.core.input\Alis.Core.Input.csproj", "{D6427A9F-5B88-49F2-B716-BB9DF23396CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Input", "4_domain\input\alis.core.input\Alis.Core.Input.csproj", "{D6427A9F-5B88-49F2-B716-BB9DF23396CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Input.Benchmark", "4_domain\input\alis.core.input.benchmark\Alis.Core.Input.Benchmark.csproj", "{74FE3D73-249F-419D-8D66-72F989DE753D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Input.Benchmark", "4_domain\input\alis.core.input.benchmark\Alis.Core.Input.Benchmark.csproj", "{74FE3D73-249F-419D-8D66-72F989DE753D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Input.Example", "4_domain\input\alis.core.input.example\Alis.Core.Input.Example.csproj", "{644B3DCD-C7E9-4EB8-AA88-DEDA6C2AFA5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Input.Example", "4_domain\input\alis.core.input.example\Alis.Core.Input.Example.csproj", "{644B3DCD-C7E9-4EB8-AA88-DEDA6C2AFA5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Input.Test", "4_domain\input\alis.core.input.test\Alis.Core.Input.Test.csproj", "{14736F27-151F-4BBC-A985-365427900D50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Input.Test", "4_domain\input\alis.core.input.test\Alis.Core.Input.Test.csproj", "{14736F27-151F-4BBC-A985-365427900D50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core", "3_adaptation\core\alis.core\Alis.Core.csproj", "{10348B01-15DF-4F9B-8D0E-0D07004DED21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core", "3_adaptation\core\alis.core\Alis.Core.csproj", "{10348B01-15DF-4F9B-8D0E-0D07004DED21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Benchmark", "3_adaptation\core\alis.core.benchmark\Alis.Core.Benchmark.csproj", "{1554B558-A3D0-429F-B295-7ED5FE23CA8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Benchmark", "3_adaptation\core\alis.core.benchmark\Alis.Core.Benchmark.csproj", "{1554B558-A3D0-429F-B295-7ED5FE23CA8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Example", "3_adaptation\core\alis.core.example\Alis.Core.Example.csproj", "{8B9FEC3D-37B3-4797-8169-BCEDFDE623DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Example", "3_adaptation\core\alis.core.example\Alis.Core.Example.csproj", "{8B9FEC3D-37B3-4797-8169-BCEDFDE623DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Test", "3_adaptation\core\alis.core.test\Alis.Core.Test.csproj", "{CE183100-0F73-4DF9-B05B-C0725A5EB05C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Test", "3_adaptation\core\alis.core.test\Alis.Core.Test.csproj", "{CE183100-0F73-4DF9-B05B-C0725A5EB05C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Network", "Network", "{5D489FBC-1F49-4007-9D5A-AA0EA6251857}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network", "4_domain\network\alis.core.network\Alis.Core.Network.csproj", "{8A7E91F7-4B9E-4FC5-9E67-658CC797A3CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network", "4_domain\network\alis.core.network\Alis.Core.Network.csproj", "{8A7E91F7-4B9E-4FC5-9E67-658CC797A3CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network.Benchmark", "4_domain\network\alis.core.network.benchmark\Alis.Core.Network.Benchmark.csproj", "{7298C4AB-1ABC-450D-83F4-7EB91E374DFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network.Benchmark", "4_domain\network\alis.core.network.benchmark\Alis.Core.Network.Benchmark.csproj", "{7298C4AB-1ABC-450D-83F4-7EB91E374DFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network.Example.All.In.One", "4_domain\network\alis.core.network.example.all.in.one\Alis.Core.Network.Example.All.In.One.csproj", "{28A2E1D8-7A8E-47C0-96BC-A0B411BBCC7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network.Example.All.In.One", "4_domain\network\alis.core.network.example.all.in.one\Alis.Core.Network.Example.All.In.One.csproj", "{28A2E1D8-7A8E-47C0-96BC-A0B411BBCC7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network.Example.Client", "4_domain\network\alis.core.network.example.client\Alis.Core.Network.Example.Client.csproj", "{21872ECB-FEC2-4538-8686-AECB5AAA2BC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network.Example.Client", "4_domain\network\alis.core.network.example.client\Alis.Core.Network.Example.Client.csproj", "{21872ECB-FEC2-4538-8686-AECB5AAA2BC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network.Example.Server", "4_domain\network\alis.core.network.example.server\Alis.Core.Network.Example.Server.csproj", "{D0852261-DCE3-4745-92A8-B32EAB5EBAD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network.Example.Server", "4_domain\network\alis.core.network.example.server\Alis.Core.Network.Example.Server.csproj", "{D0852261-DCE3-4745-92A8-B32EAB5EBAD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network.Test", "4_domain\network\alis.core.network.test\Alis.Core.Network.Test.csproj", "{1A75C804-E40F-4FF1-A6DB-66DD674051CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network.Test", "4_domain\network\alis.core.network.test\Alis.Core.Network.Test.csproj", "{1A75C804-E40F-4FF1-A6DB-66DD674051CC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{13614E77-A1AE-45F0-A8A5-95686388F1B8}"
 EndProject
@@ -119,35 +119,35 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2D", "2D", "{3B6DB6AC-96D1-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3D", "3D", "{3F82E574-FE10-4237-9D61-232DAF83198B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PingPong", "2_application\alis\examples\2d\pingpong\PingPong.csproj", "{E79F8D3C-37C0-4BDA-B9A3-FDBC5490E9B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PingPong", "2_application\alis\examples\2d\pingpong\PingPong.csproj", "{E79F8D3C-37C0-4BDA-B9A3-FDBC5490E9B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roguelike", "2_application\alis\examples\2d\roguelike\Roguelike.csproj", "{BC54ECF0-6CF5-42FF-90EF-8AA464E69C6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Roguelike", "2_application\alis\examples\2d\roguelike\Roguelike.csproj", "{BC54ECF0-6CF5-42FF-90EF-8AA464E69C6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGame", "2_application\alis\examples\3d\simplegame\SimpleGame.csproj", "{68831135-19B2-4562-BF62-567503C8E283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleGame", "2_application\alis\examples\3d\simplegame\SimpleGame.csproj", "{68831135-19B2-4562-BF62-567503C8E283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryDash", "2_application\alis\examples\2d\geometrydash\GeometryDash.csproj", "{253CA356-042B-43B9-9876-321C13367685}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeometryDash", "2_application\alis\examples\2d\geometrydash\GeometryDash.csproj", "{253CA356-042B-43B9-9876-321C13367685}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlappyBird", "2_application\alis\examples\2d\flappybird\FlappyBird.csproj", "{C34C70E5-C0FF-459E-92FB-C0131291DAB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlappyBird", "2_application\alis\examples\2d\flappybird\FlappyBird.csproj", "{C34C70E5-C0FF-459E-92FB-C0131291DAB7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cloud", "Cloud", "{23847B58-6A0E-4EC1-A792-61F6590BC32C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Cloud", "4_domain\cloud\alis.core.cloud\Alis.Core.Cloud.csproj", "{0084EF51-D562-41D3-8059-881AF4353FFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Cloud", "4_domain\cloud\alis.core.cloud\Alis.Core.Cloud.csproj", "{0084EF51-D562-41D3-8059-881AF4353FFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Cloud.Benchmark", "4_domain\cloud\alis.core.cloud.benchmark\Alis.Core.Cloud.Benchmark.csproj", "{7C7202DF-0337-4404-85E4-1AEC89627C87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Cloud.Benchmark", "4_domain\cloud\alis.core.cloud.benchmark\Alis.Core.Cloud.Benchmark.csproj", "{7C7202DF-0337-4404-85E4-1AEC89627C87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Cloud.Example", "4_domain\cloud\alis.core.cloud.example\Alis.Core.Cloud.Example.csproj", "{8D7210B2-CE00-45C5-9760-4E96A99B61EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Cloud.Example", "4_domain\cloud\alis.core.cloud.example\Alis.Core.Cloud.Example.csproj", "{8D7210B2-CE00-45C5-9760-4E96A99B61EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Cloud.Test", "4_domain\cloud\alis.core.cloud.test\Alis.Core.Cloud.Test.csproj", "{CEB8B0C2-FC06-45D2-9AF5-20F43C79F754}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Cloud.Test", "4_domain\cloud\alis.core.cloud.test\Alis.Core.Cloud.Test.csproj", "{CEB8B0C2-FC06-45D2-9AF5-20F43C79F754}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General", "General", "{00E94E18-DDBC-4296-802B-B86B1E0A0B84}"
 	ProjectSection(SolutionItems) = preProject
 		0_config\benchmark.props = 0_config\benchmark.props
+		0_config\executable.props = 0_config\executable.props
 		0_config\general.props = 0_config\general.props
 		0_config\licence.props = 0_config\licence.props
 		0_config\nuget.props = 0_config\nuget.props
 		0_config\runtimes.props = 0_config\runtimes.props
 		0_config\test.props = 0_config\test.props
-		0_config\executable.props = 0_config\executable.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Style", "Style", "{22827DAF-9E22-4278-9E17-3F3D3C1028CE}"
@@ -157,10 +157,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Style", "Style", "{22827DAF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{7188CC67-96B3-4BB1-AF56-BE95E51B3B7C}"
 	ProjectSection(SolutionItems) = preProject
+		0_config\ads.props = 0_config\ads.props
 		0_config\audio2d.props = 0_config\audio2d.props
-		0_config\graphics2d.props = 0_config\graphics2d.props
 		0_config\audio3d.props = 0_config\audio3d.props
 		0_config\cloud.props = 0_config\cloud.props
+		0_config\database.props = 0_config\database.props
+		0_config\exceptions.props = 0_config\exceptions.props
+		0_config\fluentapi.props = 0_config\fluentapi.props
+		0_config\graphics2d.props = 0_config\graphics2d.props
 		0_config\graphics3d.props = 0_config\graphics3d.props
 		0_config\input.props = 0_config\input.props
 		0_config\network.props = 0_config\network.props
@@ -168,149 +172,146 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{7188
 		0_config\physics2d.props = 0_config\physics2d.props
 		0_config\physics3d.props = 0_config\physics3d.props
 		0_config\time.props = 0_config\time.props
-		0_config\fluentapi.props = 0_config\fluentapi.props
 		0_config\tools.props = 0_config\tools.props
-		0_config\ads.props = 0_config\ads.props
-		0_config\exceptions.props = 0_config\exceptions.props
-		0_config\database.props = 0_config\database.props
+		0_config\diagnostics.props = 0_config\diagnostics.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5_Skeleton", "5_Skeleton", "{C3F726CE-7A9B-435F-8FA3-E5FF561F6707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Tools", "5_skeleton\tools\alis.tools\Alis.Tools.csproj", "{91ABCFFD-869C-4C81-8BDF-712A6E155668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Tools", "5_skeleton\tools\alis.tools\Alis.Tools.csproj", "{91ABCFFD-869C-4C81-8BDF-712A6E155668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Tools.Benchmark", "5_skeleton\tools\alis.tools.benchmark\Alis.Tools.Benchmark.csproj", "{1A95B1FA-58D4-4424-BE34-FF5A7251447F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Tools.Benchmark", "5_skeleton\tools\alis.tools.benchmark\Alis.Tools.Benchmark.csproj", "{1A95B1FA-58D4-4424-BE34-FF5A7251447F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Tools.Example", "5_skeleton\tools\alis.tools.examples\Alis.Tools.Example.csproj", "{5E92CD82-20ED-44C6-AF7E-327B99AAEF07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Tools.Example", "5_skeleton\tools\alis.tools.examples\Alis.Tools.Example.csproj", "{5E92CD82-20ED-44C6-AF7E-327B99AAEF07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Tools.Test", "5_skeleton\tools\alis.tools.test\Alis.Tools.Test.csproj", "{215D60E6-3206-484C-A283-B9852C4196EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Tools.Test", "5_skeleton\tools\alis.tools.test\Alis.Tools.Test.csproj", "{215D60E6-3206-484C-A283-B9852C4196EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RocketLeague", "2_application\alis\examples\2d\rocketleague\RocketLeague.csproj", "{1F132C28-EA13-479D-995F-7902308F82A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RocketLeague", "2_application\alis\examples\2d\rocketleague\RocketLeague.csproj", "{1F132C28-EA13-479D-995F-7902308F82A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ads", "Ads", "{45177219-8956-43B7-A1E5-4D6BCDB7641E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ads", "4_domain\ads\alis.core.ads\Alis.Core.Ads.csproj", "{E3D3AE92-441C-4FAC-A261-B4065814912E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ads", "4_domain\ads\alis.core.ads\Alis.Core.Ads.csproj", "{E3D3AE92-441C-4FAC-A261-B4065814912E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ads.Benchmark", "4_domain\ads\alis.core.ads.benchmark\Alis.Core.Ads.Benchmark.csproj", "{95ED24C8-EF42-4DBD-81CA-62F67DB665FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ads.Benchmark", "4_domain\ads\alis.core.ads.benchmark\Alis.Core.Ads.Benchmark.csproj", "{95ED24C8-EF42-4DBD-81CA-62F67DB665FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ads.Example", "4_domain\ads\alis.core.ads.example\Alis.Core.Ads.Example.csproj", "{8C25A21D-DE6F-4008-917A-9021483F1608}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ads.Example", "4_domain\ads\alis.core.ads.example\Alis.Core.Ads.Example.csproj", "{8C25A21D-DE6F-4008-917A-9021483F1608}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ads.Test", "4_domain\ads\alis.core.ads.test\Alis.Core.Ads.Test.csproj", "{7CBC447D-16DC-46AC-8BE1-FE101CDCDF6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ads.Test", "4_domain\ads\alis.core.ads.test\Alis.Core.Ads.Test.csproj", "{7CBC447D-16DC-46AC-8BE1-FE101CDCDF6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bomberman", "2_application\alis\examples\2d\bomberman\Bomberman.csproj", "{CD6278DC-1705-4B42-A369-283E851BA979}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bomberman", "2_application\alis\examples\2d\bomberman\Bomberman.csproj", "{CD6278DC-1705-4B42-A369-283E851BA979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chessmaster", "2_application\alis\examples\2d\chessmaster\Chessmaster.csproj", "{E613654B-FFE5-4FFF-9180-934DCAD74E51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chessmaster", "2_application\alis\examples\2d\chessmaster\Chessmaster.csproj", "{E613654B-FFE5-4FFF-9180-934DCAD74E51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doom", "2_application\alis\examples\2d\doom\Doom.csproj", "{DC902A0B-35FF-4112-B885-A8820C273168}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Doom", "2_application\alis\examples\2d\doom\Doom.csproj", "{DC902A0B-35FF-4112-B885-A8820C273168}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minesweeper", "2_application\alis\examples\2d\minesweeper\Minesweeper.csproj", "{2724329D-B91E-43C6-91C9-339783FBF257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Minesweeper", "2_application\alis\examples\2d\minesweeper\Minesweeper.csproj", "{2724329D-B91E-43C6-91C9-339783FBF257}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PacMan", "2_application\alis\examples\2d\pacman\PacMan.csproj", "{58E13F70-CDD0-4E3C-825C-8834CD177A90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PacMan", "2_application\alis\examples\2d\pacman\PacMan.csproj", "{58E13F70-CDD0-4E3C-825C-8834CD177A90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pinball", "2_application\alis\examples\2d\pinball\Pinball.csproj", "{A0BDA36B-C254-456F-A8E7-A995BEEFB4B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pinball", "2_application\alis\examples\2d\pinball\Pinball.csproj", "{A0BDA36B-C254-456F-A8E7-A995BEEFB4B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rogue", "2_application\alis\examples\2d\rogue\Rogue.csproj", "{F8AF54A3-1285-451B-A137-AC6BC236584D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rogue", "2_application\alis\examples\2d\rogue\Rogue.csproj", "{F8AF54A3-1285-451B-A137-AC6BC236584D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake", "2_application\alis\examples\2d\snake\Snake.csproj", "{9810B3C3-BB84-47A1-BEB8-0E9944261D76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Snake", "2_application\alis\examples\2d\snake\Snake.csproj", "{9810B3C3-BB84-47A1-BEB8-0E9944261D76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpaceInvaders", "2_application\alis\examples\2d\spaceinvaders\SpaceInvaders.csproj", "{163AB256-9E89-4A19-8071-992DBC612FDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpaceInvaders", "2_application\alis\examples\2d\spaceinvaders\SpaceInvaders.csproj", "{163AB256-9E89-4A19-8071-992DBC612FDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tetris", "2_application\alis\examples\2d\tetris\Tetris.csproj", "{9727768B-FD60-4FCB-AC0F-C5BC49F4668B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tetris", "2_application\alis\examples\2d\tetris\Tetris.csproj", "{9727768B-FD60-4FCB-AC0F-C5BC49F4668B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{CB6F6F4D-D5E1-471F-A921-B8F4FA9FC5B2}"
 	ProjectSection(SolutionItems) = preProject
 		NuGet.config = NuGet.config
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asteroids", "2_application\alis\examples\2d\asteroids\Asteroids.csproj", "{5B76A78B-016B-4E94-BA5C-024694245BDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Asteroids", "2_application\alis\examples\2d\asteroids\Asteroids.csproj", "{5B76A78B-016B-4E94-BA5C-024694245BDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Get2048Dailys", "2_application\alis\examples\2d\get2048dailys\Get2048Dailys.csproj", "{1AA10ADD-1CE7-41F0-8BAF-FB9E91BA0CF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Get2048Dailys", "2_application\alis\examples\2d\get2048dailys\Get2048Dailys.csproj", "{1AA10ADD-1CE7-41F0-8BAF-FB9E91BA0CF8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Report", "Report", "{A6C06C1A-82FD-406A-8C4D-263B374C5E35}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Updater", "Updater", "{C9695C54-98C1-495F-B8C1-C9A1D9888711}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Updater", "4_domain\updater\alis.core.updater\Alis.Core.Updater.csproj", "{42EBECB5-8CDD-4698-B7B8-6E9AE8337864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Updater", "4_domain\updater\alis.core.updater\Alis.Core.Updater.csproj", "{42EBECB5-8CDD-4698-B7B8-6E9AE8337864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Updater.Benchmark", "4_domain\updater\alis.core.updater.benchmark\Alis.Core.Updater.Benchmark.csproj", "{536997AA-86CC-42B1-B268-5CB03A810FBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Updater.Benchmark", "4_domain\updater\alis.core.updater.benchmark\Alis.Core.Updater.Benchmark.csproj", "{536997AA-86CC-42B1-B268-5CB03A810FBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Updater.Example", "4_domain\updater\alis.core.updater.example\Alis.Core.Updater.Example.csproj", "{A703FF50-E64C-424F-BFD5-3398FD83894F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Updater.Example", "4_domain\updater\alis.core.updater.example\Alis.Core.Updater.Example.csproj", "{A703FF50-E64C-424F-BFD5-3398FD83894F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Updater.Test", "4_domain\updater\alis.core.updater.test\Alis.Core.Updater.Test.csproj", "{B4AE8852-63C0-47A8-8AA4-6E0737FDBA56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Updater.Test", "4_domain\updater\alis.core.updater.test\Alis.Core.Updater.Test.csproj", "{B4AE8852-63C0-47A8-8AA4-6E0737FDBA56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Report", "4_domain\report\alis.core.report\Alis.Core.Report.csproj", "{8008FBC4-E766-47A0-9BCA-1C1E3EA11276}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Report", "4_domain\report\alis.core.report\Alis.Core.Report.csproj", "{8008FBC4-E766-47A0-9BCA-1C1E3EA11276}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Report.Benchmark", "4_domain\report\alis.core.report.benchmark\Alis.Core.Report.Benchmark.csproj", "{8E97746A-5D6D-4033-A48C-4A0533EE0FD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Report.Benchmark", "4_domain\report\alis.core.report.benchmark\Alis.Core.Report.Benchmark.csproj", "{8E97746A-5D6D-4033-A48C-4A0533EE0FD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Report.Example", "4_domain\report\alis.core.report.example\Alis.Core.Report.Example.csproj", "{A4AC6A32-8DAE-4BB8-8139-9F29F2ED30D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Report.Example", "4_domain\report\alis.core.report.example\Alis.Core.Report.Example.csproj", "{A4AC6A32-8DAE-4BB8-8139-9F29F2ED30D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Report.Test", "4_domain\report\alis.core.report.test\Alis.Core.Report.Test.csproj", "{B7BAAAED-581A-43B4-8CE6-45EFA6F1173F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Report.Test", "4_domain\report\alis.core.report.test\Alis.Core.Report.Test.csproj", "{B7BAAAED-581A-43B4-8CE6-45EFA6F1173F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.FluentApi", "5_skeleton\fluentapi\alis.fluentapi\Alis.FluentApi.csproj", "{6372A0AE-F1D2-40FC-8285-B3EFAB831F34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.FluentApi", "5_skeleton\fluentapi\alis.fluentapi\Alis.FluentApi.csproj", "{6372A0AE-F1D2-40FC-8285-B3EFAB831F34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.FluentApi.Benchmark", "5_skeleton\fluentapi\alis.fluentapi.benchmark\Alis.FluentApi.Benchmark.csproj", "{8D74E54F-1833-4252-B945-109C9AF0985B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.FluentApi.Benchmark", "5_skeleton\fluentapi\alis.fluentapi.benchmark\Alis.FluentApi.Benchmark.csproj", "{8D74E54F-1833-4252-B945-109C9AF0985B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.FluentApi.Example", "5_skeleton\fluentapi\alis.fluentapi.example\Alis.FluentApi.Example.csproj", "{4A1F5777-F7AE-4B8E-A8CE-1A778BAB5411}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.FluentApi.Example", "5_skeleton\fluentapi\alis.fluentapi.example\Alis.FluentApi.Example.csproj", "{4A1F5777-F7AE-4B8E-A8CE-1A778BAB5411}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.FluentApi.Test", "5_skeleton\fluentapi\alis.fluentapi.test\Alis.FluentApi.Test.csproj", "{B05F664A-6956-430F-8F68-0491F28F7B7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.FluentApi.Test", "5_skeleton\fluentapi\alis.fluentapi.test\Alis.FluentApi.Test.csproj", "{B05F664A-6956-430F-8F68-0491F28F7B7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.D3", "4_domain\audio\d3\alis.core.audio.d3\Alis.Core.Audio.D3.csproj", "{3A38C0DE-5C1F-445F-A371-4E64784AD5B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.D3", "4_domain\audio\d3\alis.core.audio.d3\Alis.Core.Audio.D3.csproj", "{3A38C0DE-5C1F-445F-A371-4E64784AD5B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.D3.Benchmark", "4_domain\audio\d3\alis.core.audio.d3.benchmark\Alis.Core.Audio.D3.Benchmark.csproj", "{0F5BAB46-106B-4015-A7ED-D9DB252665EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.D3.Benchmark", "4_domain\audio\d3\alis.core.audio.d3.benchmark\Alis.Core.Audio.D3.Benchmark.csproj", "{0F5BAB46-106B-4015-A7ED-D9DB252665EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.D3.Example", "4_domain\audio\d3\alis.core.audio.d3.example\Alis.Core.Audio.D3.Example.csproj", "{C0AC98C8-22DB-448C-B5FE-6E4120A3F405}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.D3.Example", "4_domain\audio\d3\alis.core.audio.d3.example\Alis.Core.Audio.D3.Example.csproj", "{C0AC98C8-22DB-448C-B5FE-6E4120A3F405}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.D3.Test", "4_domain\audio\d3\alis.core.audio.d3.test\Alis.Core.Audio.D3.Test.csproj", "{096D7BD6-109D-4909-9E22-90FBA262CF34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.D3.Test", "4_domain\audio\d3\alis.core.audio.d3.test\Alis.Core.Audio.D3.Test.csproj", "{096D7BD6-109D-4909-9E22-90FBA262CF34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.D2", "4_domain\audio\d2\alis.core.audio.d2\Alis.Core.Audio.D2.csproj", "{4E3EE3DA-30DB-4790-B2AC-D0719C59653B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.D2", "4_domain\audio\d2\alis.core.audio.d2\Alis.Core.Audio.D2.csproj", "{4E3EE3DA-30DB-4790-B2AC-D0719C59653B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.D2.Benchmark", "4_domain\audio\d2\alis.core.audio.d2.benchmark\Alis.Core.Audio.D2.Benchmark.csproj", "{45BA498E-D9BE-44CB-BEF8-09A5DD635EEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.D2.Benchmark", "4_domain\audio\d2\alis.core.audio.d2.benchmark\Alis.Core.Audio.D2.Benchmark.csproj", "{45BA498E-D9BE-44CB-BEF8-09A5DD635EEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.D2.Example", "4_domain\audio\d2\alis.core.audio.d2.example\Alis.Core.Audio.D2.Example.csproj", "{6257E122-BC7D-490F-BDA8-A1743E993126}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.D2.Example", "4_domain\audio\d2\alis.core.audio.d2.example\Alis.Core.Audio.D2.Example.csproj", "{6257E122-BC7D-490F-BDA8-A1743E993126}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.D2.Test", "4_domain\audio\d2\alis.core.audio.d2.test\Alis.Core.Audio.D2.Test.csproj", "{F2CEEA29-EA3C-43F9-98F2-9DF42AE39AD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.D2.Test", "4_domain\audio\d2\alis.core.audio.d2.test\Alis.Core.Audio.D2.Test.csproj", "{F2CEEA29-EA3C-43F9-98F2-9DF42AE39AD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphics.D2", "4_domain\graphics\d2\alis.core.graphics.d2\Alis.Core.Graphics.D2.csproj", "{2F7D07D1-C1BA-4D32-B067-BC50451EA543}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphics.D2", "4_domain\graphics\d2\alis.core.graphics.d2\Alis.Core.Graphics.D2.csproj", "{2F7D07D1-C1BA-4D32-B067-BC50451EA543}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphics.D2.Benchmark", "4_domain\graphics\d2\alis.core.graphics.d2.benchmark\Alis.Core.Graphics.D2.Benchmark.csproj", "{E945FFB8-AAE8-41B6-AC5F-D8DA54611625}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphics.D2.Benchmark", "4_domain\graphics\d2\alis.core.graphics.d2.benchmark\Alis.Core.Graphics.D2.Benchmark.csproj", "{E945FFB8-AAE8-41B6-AC5F-D8DA54611625}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphics.D2.Example", "4_domain\graphics\d2\alis.core.graphics.d2.example\Alis.Core.Graphics.D2.Example.csproj", "{FFEC1281-61FB-456C-A634-320A2CC2CDEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphics.D2.Example", "4_domain\graphics\d2\alis.core.graphics.d2.example\Alis.Core.Graphics.D2.Example.csproj", "{FFEC1281-61FB-456C-A634-320A2CC2CDEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphics.D2.Test", "4_domain\graphics\d2\alis.core.graphics.d2.test\Alis.Core.Graphics.D2.Test.csproj", "{719C207C-3D45-40AC-A538-233170DD8E79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphics.D2.Test", "4_domain\graphics\d2\alis.core.graphics.d2.test\Alis.Core.Graphics.D2.Test.csproj", "{719C207C-3D45-40AC-A538-233170DD8E79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphics.D3", "4_domain\graphics\d3\alis.core.graphics.d3\Alis.Core.Graphics.D3.csproj", "{8ED71FC9-FC0E-42A3-9CD0-C8393A29C2E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphics.D3", "4_domain\graphics\d3\alis.core.graphics.d3\Alis.Core.Graphics.D3.csproj", "{8ED71FC9-FC0E-42A3-9CD0-C8393A29C2E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphics.D3.Benchmark", "4_domain\graphics\d3\alis.core.graphics.d3.benchmark\Alis.Core.Graphics.D3.Benchmark.csproj", "{2162DF63-8516-4299-9F28-1A388FF60FDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphics.D3.Benchmark", "4_domain\graphics\d3\alis.core.graphics.d3.benchmark\Alis.Core.Graphics.D3.Benchmark.csproj", "{2162DF63-8516-4299-9F28-1A388FF60FDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphics.D3.Example", "4_domain\graphics\d3\alis.core.graphics.d3.example\Alis.Core.Graphics.D3.Example.csproj", "{07A8036B-5B9D-4328-8A7F-F8899EA9D6B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphics.D3.Example", "4_domain\graphics\d3\alis.core.graphics.d3.example\Alis.Core.Graphics.D3.Example.csproj", "{07A8036B-5B9D-4328-8A7F-F8899EA9D6B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphics.D3.Test", "4_domain\graphics\d3\alis.core.graphics.d3.test\Alis.Core.Graphics.D3.Test.csproj", "{62829211-81E5-476C-AE34-02732E482229}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphics.D3.Test", "4_domain\graphics\d3\alis.core.graphics.d3.test\Alis.Core.Graphics.D3.Test.csproj", "{62829211-81E5-476C-AE34-02732E482229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physics.D2", "4_domain\physics\d2\alis.core.physics.d2\Alis.Core.Physics.D2.csproj", "{4DB344AA-17B6-43A0-B249-381AC1BE85F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physics.D2", "4_domain\physics\d2\alis.core.physics.d2\Alis.Core.Physics.D2.csproj", "{4DB344AA-17B6-43A0-B249-381AC1BE85F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physics.D3", "4_domain\physics\d3\alis.core.physics.d3\Alis.Core.Physics.D3.csproj", "{2C33579A-64B4-4F1E-8AE1-B48F9B2430A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physics.D3", "4_domain\physics\d3\alis.core.physics.d3\Alis.Core.Physics.D3.csproj", "{2C33579A-64B4-4F1E-8AE1-B48F9B2430A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physics.D2.Benchmark", "4_domain\physics\d2\alis.core.physics.d2.benchmark\Alis.Core.Physics.D2.Benchmark.csproj", "{13A95C77-1A8B-4FB8-8B09-8D3C53CFD807}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physics.D2.Benchmark", "4_domain\physics\d2\alis.core.physics.d2.benchmark\Alis.Core.Physics.D2.Benchmark.csproj", "{13A95C77-1A8B-4FB8-8B09-8D3C53CFD807}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physics.D3.Benchmark", "4_domain\physics\d3\alis.core.physics.d3.benchmark\Alis.Core.Physics.D3.Benchmark.csproj", "{BD24C39F-74BA-472E-9024-DA154AC2F602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physics.D3.Benchmark", "4_domain\physics\d3\alis.core.physics.d3.benchmark\Alis.Core.Physics.D3.Benchmark.csproj", "{BD24C39F-74BA-472E-9024-DA154AC2F602}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physics.D2.Example", "4_domain\physics\d2\alis.core.physics.d2.example\Alis.Core.Physics.D2.Example.csproj", "{02212E35-9332-4BB9-BC14-D37E23EE440B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physics.D2.Example", "4_domain\physics\d2\alis.core.physics.d2.example\Alis.Core.Physics.D2.Example.csproj", "{02212E35-9332-4BB9-BC14-D37E23EE440B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physics.D2.Test", "4_domain\physics\d2\alis.core.physics.d2.test\Alis.Core.Physics.D2.Test.csproj", "{1AE1C13C-8FA7-4E7A-962C-368034689808}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physics.D2.Test", "4_domain\physics\d2\alis.core.physics.d2.test\Alis.Core.Physics.D2.Test.csproj", "{1AE1C13C-8FA7-4E7A-962C-368034689808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physics.D3.Example", "4_domain\physics\d3\alis.core.physics.d3.example\Alis.Core.Physics.D3.Example.csproj", "{0FFC3359-0B58-431B-813B-64DB9697B93F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physics.D3.Example", "4_domain\physics\d3\alis.core.physics.d3.example\Alis.Core.Physics.D3.Example.csproj", "{0FFC3359-0B58-431B-813B-64DB9697B93F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physics.D3.Test", "4_domain\physics\d3\alis.core.physics.d3.test\Alis.Core.Physics.D3.Test.csproj", "{6BF3E192-EE3A-4D6F-B734-247F6BF2A5C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physics.D3.Test", "4_domain\physics\d3\alis.core.physics.d3.test\Alis.Core.Physics.D3.Test.csproj", "{6BF3E192-EE3A-4D6F-B734-247F6BF2A5C9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exceptions", "Exceptions", "{B6618D43-BC54-47AC-B7DF-ECEBB7F7D64D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Exceptions", "5_skeleton\exceptions\alis.exceptions\Alis.Exceptions.csproj", "{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Exceptions", "5_skeleton\exceptions\alis.exceptions\Alis.Exceptions.csproj", "{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Exceptions.Benchmark", "5_skeleton\exceptions\alis.exceptions.benchmark\Alis.Exceptions.Benchmark.csproj", "{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Exceptions.Benchmark", "5_skeleton\exceptions\alis.exceptions.benchmark\Alis.Exceptions.Benchmark.csproj", "{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Exceptions.Example", "5_skeleton\exceptions\alis.exceptions.examples\Alis.Exceptions.Example.csproj", "{3E966BE9-2494-434F-BC64-E11E704EB671}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Exceptions.Example", "5_skeleton\exceptions\alis.exceptions.examples\Alis.Exceptions.Example.csproj", "{3E966BE9-2494-434F-BC64-E11E704EB671}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Exceptions.Test", "5_skeleton\exceptions\alis.exceptions.test\Alis.Exceptions.Test.csproj", "{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Exceptions.Test", "5_skeleton\exceptions\alis.exceptions.test\Alis.Exceptions.Test.csproj", "{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "alis", "alis", "{A6F34801-CDB4-46BC-9644-DF4DD1F1C31D}"
 	ProjectSection(SolutionItems) = preProject
@@ -319,13 +320,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "alis", "alis", "{A6F34801-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{6A957DB0-DAD2-47B6-A06C-82B629D23B58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Database", "4_domain\database\alis.core.database\Alis.Core.Database.csproj", "{F9BF23B2-002D-4D60-BE0A-357C684D6D75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Database", "4_domain\database\alis.core.database\Alis.Core.Database.csproj", "{F9BF23B2-002D-4D60-BE0A-357C684D6D75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Database.Benchmark", "4_domain\database\alis.core.database.benchmark\Alis.Core.Database.Benchmark.csproj", "{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Database.Benchmark", "4_domain\database\alis.core.database.benchmark\Alis.Core.Database.Benchmark.csproj", "{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Database.Example", "4_domain\database\alis.core.database.example\Alis.Core.Database.Example.csproj", "{3923955B-3899-4F9E-9B4E-20535D9C9B9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Database.Example", "4_domain\database\alis.core.database.example\Alis.Core.Database.Example.csproj", "{3923955B-3899-4F9E-9B4E-20535D9C9B9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Database.Test", "4_domain\database\alis.core.database.test\Alis.Core.Database.Test.csproj", "{C502244C-9172-48FF-B17B-77C239EF85FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Database.Test", "4_domain\database\alis.core.database.test\Alis.Core.Database.Test.csproj", "{C502244C-9172-48FF-B17B-77C239EF85FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Diagnostics", "Diagnostics", "{E7846CE0-C170-4D7B-A8BA-C6F24335A880}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Diagnostics", "4_domain\diagnostics\alis.core.diagnostics\Alis.Core.Diagnostics.csproj", "{FE986465-230A-4023-9505-D3524FB3DF39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Diagnostics.Benchmark", "4_domain\diagnostics\alis.core.diagnostics.benchmark\Alis.Core.Diagnostics.Benchmark.csproj", "{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Diagnostics.Test", "4_domain\diagnostics\alis.core.diagnostics.test\Alis.Core.Diagnostics.Test.csproj", "{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Diagnostics.Example", "4_domain\diagnostics\alis.core.diagnostics.example\Alis.Core.Diagnostics.Example.csproj", "{3E77C8D4-7053-4632-85C6-4EFF29A78D26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1151,6 +1162,326 @@ Global
 		{CEB8B0C2-FC06-45D2-9AF5-20F43C79F754}.osx|ARM.Build.0 = osx|ARM
 		{CEB8B0C2-FC06-45D2-9AF5-20F43C79F754}.ios|ARM.ActiveCfg = ios|ARM
 		{CEB8B0C2-FC06-45D2-9AF5-20F43C79F754}.ios|ARM.Build.0 = ios|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|x64.ActiveCfg = win|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|x64.Build.0 = win|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|x86.ActiveCfg = win|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|x86.Build.0 = win|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|ARM64.ActiveCfg = ios|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|ARM64.Build.0 = ios|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|ARM64.ActiveCfg = linux|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|ARM64.Build.0 = linux|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|x64.ActiveCfg = android|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|x64.Build.0 = android|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|x86.ActiveCfg = android|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|x86.Build.0 = android|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|ARM64.ActiveCfg = osx|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|ARM64.Build.0 = osx|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|x64.ActiveCfg = linux|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|x64.Build.0 = linux|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|x86.ActiveCfg = linux|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|x86.Build.0 = linux|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|ARM64.ActiveCfg = win|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|ARM64.Build.0 = win|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|ARM.ActiveCfg = linux|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|ARM.Build.0 = linux|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|ARM.ActiveCfg = android|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|ARM.Build.0 = android|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|ARM64.ActiveCfg = android|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|ARM64.Build.0 = android|ARM64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|x64.ActiveCfg = osx|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|x64.Build.0 = osx|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|x86.ActiveCfg = osx|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|x86.Build.0 = osx|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|ARM.ActiveCfg = win|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|ARM.Build.0 = win|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|x64.ActiveCfg = ios|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|x64.Build.0 = ios|x64
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|x86.ActiveCfg = ios|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|x86.Build.0 = ios|x86
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|ARM.ActiveCfg = osx|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|ARM.Build.0 = osx|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|ARM.ActiveCfg = ios|ARM
+		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|ARM.Build.0 = ios|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|x64.ActiveCfg = win|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|x64.Build.0 = win|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|x86.ActiveCfg = win|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|x86.Build.0 = win|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|ARM64.ActiveCfg = ios|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|ARM64.Build.0 = ios|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|ARM64.ActiveCfg = linux|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|ARM64.Build.0 = linux|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|x64.ActiveCfg = android|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|x64.Build.0 = android|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|x86.ActiveCfg = android|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|x86.Build.0 = android|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|ARM64.ActiveCfg = osx|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|ARM64.Build.0 = osx|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|x64.ActiveCfg = linux|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|x64.Build.0 = linux|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|x86.ActiveCfg = linux|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|x86.Build.0 = linux|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|ARM64.ActiveCfg = win|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|ARM64.Build.0 = win|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|ARM.ActiveCfg = linux|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|ARM.Build.0 = linux|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|ARM.ActiveCfg = android|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|ARM.Build.0 = android|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|ARM64.ActiveCfg = android|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|ARM64.Build.0 = android|ARM64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|x64.ActiveCfg = osx|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|x64.Build.0 = osx|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|x86.ActiveCfg = osx|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|x86.Build.0 = osx|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|ARM.ActiveCfg = win|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|ARM.Build.0 = win|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|x64.ActiveCfg = ios|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|x64.Build.0 = ios|x64
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|x86.ActiveCfg = ios|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|x86.Build.0 = ios|x86
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|ARM.ActiveCfg = osx|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|ARM.Build.0 = osx|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|ARM.ActiveCfg = ios|ARM
+		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|ARM.Build.0 = ios|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|x64.ActiveCfg = win|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|x64.Build.0 = win|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|x86.ActiveCfg = win|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|x86.Build.0 = win|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|ARM64.ActiveCfg = ios|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|ARM64.Build.0 = ios|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|ARM64.ActiveCfg = linux|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|ARM64.Build.0 = linux|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|x64.ActiveCfg = android|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|x64.Build.0 = android|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|x86.ActiveCfg = android|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|x86.Build.0 = android|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|ARM64.ActiveCfg = osx|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|ARM64.Build.0 = osx|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|x64.ActiveCfg = linux|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|x64.Build.0 = linux|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|x86.ActiveCfg = linux|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|x86.Build.0 = linux|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|ARM64.ActiveCfg = win|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|ARM64.Build.0 = win|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|ARM.ActiveCfg = linux|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|ARM.Build.0 = linux|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|ARM.ActiveCfg = android|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|ARM.Build.0 = android|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|ARM64.ActiveCfg = android|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|ARM64.Build.0 = android|ARM64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|x64.ActiveCfg = osx|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|x64.Build.0 = osx|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|x86.ActiveCfg = osx|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|x86.Build.0 = osx|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|ARM.ActiveCfg = win|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|ARM.Build.0 = win|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|x64.ActiveCfg = ios|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|x64.Build.0 = ios|x64
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|x86.ActiveCfg = ios|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|x86.Build.0 = ios|x86
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|ARM.ActiveCfg = osx|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|ARM.Build.0 = osx|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|ARM.ActiveCfg = ios|ARM
+		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|ARM.Build.0 = ios|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|x64.ActiveCfg = win|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|x64.Build.0 = win|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|x86.ActiveCfg = win|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|x86.Build.0 = win|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|ARM64.ActiveCfg = ios|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|ARM64.Build.0 = ios|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|ARM64.ActiveCfg = linux|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|ARM64.Build.0 = linux|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|x64.ActiveCfg = android|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|x64.Build.0 = android|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|x86.ActiveCfg = android|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|x86.Build.0 = android|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|ARM64.ActiveCfg = osx|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|ARM64.Build.0 = osx|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|x64.ActiveCfg = linux|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|x64.Build.0 = linux|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|x86.ActiveCfg = linux|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|x86.Build.0 = linux|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|ARM64.ActiveCfg = win|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|ARM64.Build.0 = win|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|ARM.ActiveCfg = linux|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|ARM.Build.0 = linux|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|ARM.ActiveCfg = android|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|ARM.Build.0 = android|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|ARM64.ActiveCfg = android|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|ARM64.Build.0 = android|ARM64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|x64.ActiveCfg = osx|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|x64.Build.0 = osx|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|x86.ActiveCfg = osx|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|x86.Build.0 = osx|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|ARM.ActiveCfg = win|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|ARM.Build.0 = win|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|x64.ActiveCfg = ios|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|x64.Build.0 = ios|x64
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|x86.ActiveCfg = ios|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|x86.Build.0 = ios|x86
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|ARM.ActiveCfg = osx|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|ARM.Build.0 = osx|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|ARM.ActiveCfg = ios|ARM
+		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|ARM.Build.0 = ios|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.win|x64.ActiveCfg = win|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.win|x64.Build.0 = win|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.win|x86.ActiveCfg = win|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.win|x86.Build.0 = win|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.ios|ARM64.ActiveCfg = ios|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.ios|ARM64.Build.0 = ios|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.linux|ARM64.ActiveCfg = linux|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.linux|ARM64.Build.0 = linux|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.android|x64.ActiveCfg = android|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.android|x64.Build.0 = android|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.android|x86.ActiveCfg = android|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.android|x86.Build.0 = android|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.osx|ARM64.ActiveCfg = osx|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.osx|ARM64.Build.0 = osx|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.linux|x64.ActiveCfg = linux|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.linux|x64.Build.0 = linux|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.linux|x86.ActiveCfg = linux|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.linux|x86.Build.0 = linux|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.win|ARM64.ActiveCfg = win|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.win|ARM64.Build.0 = win|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.linux|ARM.ActiveCfg = linux|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.linux|ARM.Build.0 = linux|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.android|ARM.ActiveCfg = android|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.android|ARM.Build.0 = android|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.android|ARM64.ActiveCfg = android|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.android|ARM64.Build.0 = android|ARM64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.osx|x64.ActiveCfg = osx|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.osx|x64.Build.0 = osx|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.osx|x86.ActiveCfg = osx|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.osx|x86.Build.0 = osx|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.win|ARM.ActiveCfg = win|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.win|ARM.Build.0 = win|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.ios|x64.ActiveCfg = ios|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.ios|x64.Build.0 = ios|x64
+		{FE986465-230A-4023-9505-D3524FB3DF39}.ios|x86.ActiveCfg = ios|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.ios|x86.Build.0 = ios|x86
+		{FE986465-230A-4023-9505-D3524FB3DF39}.osx|ARM.ActiveCfg = osx|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.osx|ARM.Build.0 = osx|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.ios|ARM.ActiveCfg = ios|ARM
+		{FE986465-230A-4023-9505-D3524FB3DF39}.ios|ARM.Build.0 = ios|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.win|x64.ActiveCfg = win|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.win|x64.Build.0 = win|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.win|x86.ActiveCfg = win|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.win|x86.Build.0 = win|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.ios|ARM64.ActiveCfg = ios|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.ios|ARM64.Build.0 = ios|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.linux|ARM64.ActiveCfg = linux|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.linux|ARM64.Build.0 = linux|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.android|x64.ActiveCfg = android|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.android|x64.Build.0 = android|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.android|x86.ActiveCfg = android|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.android|x86.Build.0 = android|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.osx|ARM64.ActiveCfg = osx|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.osx|ARM64.Build.0 = osx|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.linux|x64.ActiveCfg = linux|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.linux|x64.Build.0 = linux|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.linux|x86.ActiveCfg = linux|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.linux|x86.Build.0 = linux|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.win|ARM64.ActiveCfg = win|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.win|ARM64.Build.0 = win|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.linux|ARM.ActiveCfg = linux|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.linux|ARM.Build.0 = linux|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.android|ARM.ActiveCfg = android|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.android|ARM.Build.0 = android|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.android|ARM64.ActiveCfg = android|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.android|ARM64.Build.0 = android|ARM64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.osx|x64.ActiveCfg = osx|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.osx|x64.Build.0 = osx|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.osx|x86.ActiveCfg = osx|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.osx|x86.Build.0 = osx|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.win|ARM.ActiveCfg = win|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.win|ARM.Build.0 = win|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.ios|x64.ActiveCfg = ios|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.ios|x64.Build.0 = ios|x64
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.ios|x86.ActiveCfg = ios|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.ios|x86.Build.0 = ios|x86
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.osx|ARM.ActiveCfg = osx|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.osx|ARM.Build.0 = osx|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.ios|ARM.ActiveCfg = ios|ARM
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B}.ios|ARM.Build.0 = ios|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.win|x64.ActiveCfg = win|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.win|x64.Build.0 = win|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.win|x86.ActiveCfg = win|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.win|x86.Build.0 = win|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.ios|ARM64.ActiveCfg = ios|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.ios|ARM64.Build.0 = ios|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.linux|ARM64.ActiveCfg = linux|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.linux|ARM64.Build.0 = linux|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.android|x64.ActiveCfg = android|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.android|x64.Build.0 = android|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.android|x86.ActiveCfg = android|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.android|x86.Build.0 = android|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.osx|ARM64.ActiveCfg = osx|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.osx|ARM64.Build.0 = osx|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.linux|x64.ActiveCfg = linux|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.linux|x64.Build.0 = linux|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.linux|x86.ActiveCfg = linux|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.linux|x86.Build.0 = linux|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.win|ARM64.ActiveCfg = win|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.win|ARM64.Build.0 = win|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.linux|ARM.ActiveCfg = linux|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.linux|ARM.Build.0 = linux|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.android|ARM.ActiveCfg = android|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.android|ARM.Build.0 = android|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.android|ARM64.ActiveCfg = android|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.android|ARM64.Build.0 = android|ARM64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.osx|x64.ActiveCfg = osx|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.osx|x64.Build.0 = osx|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.osx|x86.ActiveCfg = osx|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.osx|x86.Build.0 = osx|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.win|ARM.ActiveCfg = win|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.win|ARM.Build.0 = win|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.ios|x64.ActiveCfg = ios|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.ios|x64.Build.0 = ios|x64
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.ios|x86.ActiveCfg = ios|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.ios|x86.Build.0 = ios|x86
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.osx|ARM.ActiveCfg = osx|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.osx|ARM.Build.0 = osx|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.ios|ARM.ActiveCfg = ios|ARM
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26}.ios|ARM.Build.0 = ios|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.win|x64.ActiveCfg = win|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.win|x64.Build.0 = win|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.win|x86.ActiveCfg = win|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.win|x86.Build.0 = win|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.ios|ARM64.ActiveCfg = ios|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.ios|ARM64.Build.0 = ios|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.linux|ARM64.ActiveCfg = linux|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.linux|ARM64.Build.0 = linux|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.android|x64.ActiveCfg = android|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.android|x64.Build.0 = android|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.android|x86.ActiveCfg = android|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.android|x86.Build.0 = android|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.osx|ARM64.ActiveCfg = osx|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.osx|ARM64.Build.0 = osx|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.linux|x64.ActiveCfg = linux|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.linux|x64.Build.0 = linux|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.linux|x86.ActiveCfg = linux|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.linux|x86.Build.0 = linux|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.win|ARM64.ActiveCfg = win|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.win|ARM64.Build.0 = win|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.linux|ARM.ActiveCfg = linux|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.linux|ARM.Build.0 = linux|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.android|ARM.ActiveCfg = android|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.android|ARM.Build.0 = android|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.android|ARM64.ActiveCfg = android|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.android|ARM64.Build.0 = android|ARM64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.osx|x64.ActiveCfg = osx|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.osx|x64.Build.0 = osx|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.osx|x86.ActiveCfg = osx|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.osx|x86.Build.0 = osx|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.win|ARM.ActiveCfg = win|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.win|ARM.Build.0 = win|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.ios|x64.ActiveCfg = ios|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.ios|x64.Build.0 = ios|x64
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.ios|x86.ActiveCfg = ios|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.ios|x86.Build.0 = ios|x86
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.osx|ARM.ActiveCfg = osx|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.osx|ARM.Build.0 = osx|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.ios|ARM.ActiveCfg = ios|ARM
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9}.ios|ARM.Build.0 = ios|ARM
 		{8B9FEC3D-37B3-4797-8169-BCEDFDE623DC}.win|x64.ActiveCfg = win|x64
 		{8B9FEC3D-37B3-4797-8169-BCEDFDE623DC}.win|x64.Build.0 = win|x64
 		{8B9FEC3D-37B3-4797-8169-BCEDFDE623DC}.win|x86.ActiveCfg = win|x86
@@ -3031,6 +3362,166 @@ Global
 		{610E7433-4B4A-41C1-AD44-B406BEB59E92}.osx|ARM.Build.0 = osx|ARM
 		{610E7433-4B4A-41C1-AD44-B406BEB59E92}.ios|ARM.ActiveCfg = ios|ARM
 		{610E7433-4B4A-41C1-AD44-B406BEB59E92}.ios|ARM.Build.0 = ios|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|x64.ActiveCfg = win|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|x64.Build.0 = win|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|x86.ActiveCfg = win|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|x86.Build.0 = win|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|ARM64.ActiveCfg = ios|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|ARM64.Build.0 = ios|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|ARM64.ActiveCfg = linux|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|ARM64.Build.0 = linux|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|x64.ActiveCfg = android|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|x64.Build.0 = android|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|x86.ActiveCfg = android|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|x86.Build.0 = android|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|ARM64.ActiveCfg = osx|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|ARM64.Build.0 = osx|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|x64.ActiveCfg = linux|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|x64.Build.0 = linux|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|x86.ActiveCfg = linux|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|x86.Build.0 = linux|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|ARM64.ActiveCfg = win|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|ARM64.Build.0 = win|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|ARM.ActiveCfg = linux|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|ARM.Build.0 = linux|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|ARM.ActiveCfg = android|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|ARM.Build.0 = android|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|ARM64.ActiveCfg = android|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|ARM64.Build.0 = android|ARM64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|x64.ActiveCfg = osx|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|x64.Build.0 = osx|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|x86.ActiveCfg = osx|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|x86.Build.0 = osx|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|ARM.ActiveCfg = win|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|ARM.Build.0 = win|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|x64.ActiveCfg = ios|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|x64.Build.0 = ios|x64
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|x86.ActiveCfg = ios|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|x86.Build.0 = ios|x86
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|ARM.ActiveCfg = osx|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|ARM.Build.0 = osx|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|ARM.ActiveCfg = ios|ARM
+		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|ARM.Build.0 = ios|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|x64.ActiveCfg = win|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|x64.Build.0 = win|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|x86.ActiveCfg = win|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|x86.Build.0 = win|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|ARM64.ActiveCfg = ios|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|ARM64.Build.0 = ios|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|ARM64.ActiveCfg = linux|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|ARM64.Build.0 = linux|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|x64.ActiveCfg = android|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|x64.Build.0 = android|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|x86.ActiveCfg = android|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|x86.Build.0 = android|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|ARM64.ActiveCfg = osx|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|ARM64.Build.0 = osx|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|x64.ActiveCfg = linux|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|x64.Build.0 = linux|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|x86.ActiveCfg = linux|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|x86.Build.0 = linux|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|ARM64.ActiveCfg = win|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|ARM64.Build.0 = win|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|ARM.ActiveCfg = linux|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|ARM.Build.0 = linux|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|ARM.ActiveCfg = android|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|ARM.Build.0 = android|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|ARM64.ActiveCfg = android|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|ARM64.Build.0 = android|ARM64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|x64.ActiveCfg = osx|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|x64.Build.0 = osx|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|x86.ActiveCfg = osx|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|x86.Build.0 = osx|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|ARM.ActiveCfg = win|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|ARM.Build.0 = win|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|x64.ActiveCfg = ios|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|x64.Build.0 = ios|x64
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|x86.ActiveCfg = ios|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|x86.Build.0 = ios|x86
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|ARM.ActiveCfg = osx|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|ARM.Build.0 = osx|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|ARM.ActiveCfg = ios|ARM
+		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|ARM.Build.0 = ios|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|x64.ActiveCfg = win|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|x64.Build.0 = win|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|x86.ActiveCfg = win|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|x86.Build.0 = win|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|ARM64.ActiveCfg = ios|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|ARM64.Build.0 = ios|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|ARM64.ActiveCfg = linux|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|ARM64.Build.0 = linux|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|x64.ActiveCfg = android|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|x64.Build.0 = android|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|x86.ActiveCfg = android|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|x86.Build.0 = android|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|ARM64.ActiveCfg = osx|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|ARM64.Build.0 = osx|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|x64.ActiveCfg = linux|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|x64.Build.0 = linux|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|x86.ActiveCfg = linux|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|x86.Build.0 = linux|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|ARM64.ActiveCfg = win|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|ARM64.Build.0 = win|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|ARM.ActiveCfg = linux|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|ARM.Build.0 = linux|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|ARM.ActiveCfg = android|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|ARM.Build.0 = android|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|ARM64.ActiveCfg = android|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|ARM64.Build.0 = android|ARM64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|x64.ActiveCfg = osx|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|x64.Build.0 = osx|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|x86.ActiveCfg = osx|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|x86.Build.0 = osx|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|ARM.ActiveCfg = win|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|ARM.Build.0 = win|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|x64.ActiveCfg = ios|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|x64.Build.0 = ios|x64
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|x86.ActiveCfg = ios|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|x86.Build.0 = ios|x86
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|ARM.ActiveCfg = osx|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|ARM.Build.0 = osx|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|ARM.ActiveCfg = ios|ARM
+		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|ARM.Build.0 = ios|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|x64.ActiveCfg = win|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|x64.Build.0 = win|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|x86.ActiveCfg = win|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|x86.Build.0 = win|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|ARM64.ActiveCfg = ios|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|ARM64.Build.0 = ios|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|ARM64.ActiveCfg = linux|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|ARM64.Build.0 = linux|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|x64.ActiveCfg = android|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|x64.Build.0 = android|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|x86.ActiveCfg = android|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|x86.Build.0 = android|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|ARM64.ActiveCfg = osx|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|ARM64.Build.0 = osx|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|x64.ActiveCfg = linux|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|x64.Build.0 = linux|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|x86.ActiveCfg = linux|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|x86.Build.0 = linux|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|ARM64.ActiveCfg = win|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|ARM64.Build.0 = win|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|ARM.ActiveCfg = linux|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|ARM.Build.0 = linux|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|ARM.ActiveCfg = android|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|ARM.Build.0 = android|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|ARM64.ActiveCfg = android|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|ARM64.Build.0 = android|ARM64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|x64.ActiveCfg = osx|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|x64.Build.0 = osx|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|x86.ActiveCfg = osx|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|x86.Build.0 = osx|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|ARM.ActiveCfg = win|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|ARM.Build.0 = win|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|x64.ActiveCfg = ios|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|x64.Build.0 = ios|x64
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|x86.ActiveCfg = ios|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|x86.Build.0 = ios|x86
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|ARM.ActiveCfg = osx|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|ARM.Build.0 = osx|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|ARM.ActiveCfg = ios|ARM
+		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|ARM.Build.0 = ios|ARM
 		{6372A0AE-F1D2-40FC-8285-B3EFAB831F34}.win|x64.ActiveCfg = win|x64
 		{6372A0AE-F1D2-40FC-8285-B3EFAB831F34}.win|x64.Build.0 = win|x64
 		{6372A0AE-F1D2-40FC-8285-B3EFAB831F34}.win|x86.ActiveCfg = win|x86
@@ -4231,334 +4722,22 @@ Global
 		{9727768B-FD60-4FCB-AC0F-C5BC49F4668B}.osx|ARM.Build.0 = osx|ARM
 		{9727768B-FD60-4FCB-AC0F-C5BC49F4668B}.ios|ARM.ActiveCfg = ios|ARM
 		{9727768B-FD60-4FCB-AC0F-C5BC49F4668B}.ios|ARM.Build.0 = ios|ARM
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|x64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|x64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|x86.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|x86.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|ARM64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|ARM64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|ARM.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.win|ARM.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|ARM64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|ARM64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|x64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|x64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|x86.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|x86.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|ARM.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.ios|ARM.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|ARM64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|ARM64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|x64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|x64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|x86.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|x86.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|ARM.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.linux|ARM.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|x64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|x64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|x86.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|x86.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|ARM.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|ARM.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|ARM64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.android|ARM64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|ARM64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|ARM64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|x64.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|x64.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|x86.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|x86.Build.0 = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|ARM.ActiveCfg = Debug|Any CPU
-		{A9AFDD07-CBBA-40FB-AFD4-D82B3D700EB6}.osx|ARM.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|x64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|x64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|x86.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|x86.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|ARM64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|ARM64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|ARM.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.win|ARM.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|ARM64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|ARM64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|x64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|x64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|x86.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|x86.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|ARM.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.ios|ARM.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|ARM64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|ARM64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|x64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|x64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|x86.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|x86.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|ARM.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.linux|ARM.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|x64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|x64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|x86.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|x86.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|ARM.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|ARM.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|ARM64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.android|ARM64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|ARM64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|ARM64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|x64.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|x64.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|x86.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|x86.Build.0 = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|ARM.ActiveCfg = Debug|Any CPU
-		{9C05CB97-0509-44E0-9655-4E3AEFB6EBBF}.osx|ARM.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|x64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|x64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|x86.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|x86.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|ARM64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|ARM64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|ARM.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.win|ARM.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|ARM64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|ARM64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|x64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|x64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|x86.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|x86.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|ARM.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.ios|ARM.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|ARM64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|ARM64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|x64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|x64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|x86.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|x86.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|ARM.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.linux|ARM.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|x64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|x64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|x86.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|x86.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|ARM.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|ARM.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|ARM64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.android|ARM64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|ARM64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|ARM64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|x64.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|x64.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|x86.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|x86.Build.0 = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|ARM.ActiveCfg = Debug|Any CPU
-		{3E966BE9-2494-434F-BC64-E11E704EB671}.osx|ARM.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|x64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|x64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|x86.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|x86.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|ARM64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|ARM64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|ARM.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.win|ARM.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|ARM64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|ARM64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|x64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|x64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|x86.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|x86.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|ARM.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.ios|ARM.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|ARM64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|ARM64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|x64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|x64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|x86.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|x86.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|ARM.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.linux|ARM.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|x64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|x64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|x86.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|x86.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|ARM.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|ARM.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|ARM64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.android|ARM64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|ARM64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|ARM64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|x64.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|x64.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|x86.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|x86.Build.0 = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|ARM.ActiveCfg = Debug|Any CPU
-		{5C46B6DD-8F0E-4FA2-8B04-2357C5CC2BDE}.osx|ARM.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|x64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|x64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|x86.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|x86.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|ARM64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|ARM64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|ARM.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.win|ARM.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|ARM64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|ARM64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|x64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|x64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|x86.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|x86.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|ARM.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.ios|ARM.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|ARM64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|ARM64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|x64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|x64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|x86.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|x86.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|ARM.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.linux|ARM.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|x64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|x64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|x86.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|x86.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|ARM.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|ARM.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|ARM64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.android|ARM64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|ARM64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|ARM64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|x64.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|x64.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|x86.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|x86.Build.0 = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|ARM.ActiveCfg = Debug|Any CPU
-		{F9BF23B2-002D-4D60-BE0A-357C684D6D75}.osx|ARM.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|x64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|x64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|x86.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|x86.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|ARM64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|ARM64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|ARM.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.win|ARM.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|ARM64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|ARM64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|x64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|x64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|x86.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|x86.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|ARM.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.ios|ARM.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|ARM64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|ARM64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|x64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|x64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|x86.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|x86.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|ARM.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.linux|ARM.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|x64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|x64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|x86.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|x86.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|ARM.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|ARM.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|ARM64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.android|ARM64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|ARM64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|ARM64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|x64.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|x64.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|x86.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|x86.Build.0 = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|ARM.ActiveCfg = Debug|Any CPU
-		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38}.osx|ARM.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|x64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|x64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|x86.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|x86.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|ARM64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|ARM64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|ARM.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.win|ARM.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|ARM64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|ARM64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|x64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|x64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|x86.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|x86.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|ARM.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.ios|ARM.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|ARM64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|ARM64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|x64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|x64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|x86.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|x86.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|ARM.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.linux|ARM.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|x64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|x64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|x86.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|x86.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|ARM.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|ARM.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|ARM64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.android|ARM64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|ARM64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|ARM64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|x64.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|x64.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|x86.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|x86.Build.0 = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|ARM.ActiveCfg = Debug|Any CPU
-		{3923955B-3899-4F9E-9B4E-20535D9C9B9D}.osx|ARM.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|x64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|x64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|x86.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|x86.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|ARM64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|ARM64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|ARM.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.win|ARM.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|ARM64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|ARM64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|x64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|x64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|x86.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|x86.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|ARM.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.ios|ARM.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|ARM64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|ARM64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|x64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|x64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|x86.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|x86.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|ARM.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.linux|ARM.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|x64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|x64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|x86.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|x86.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|ARM.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|ARM.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|ARM64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.android|ARM64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|ARM64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|ARM64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|x64.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|x64.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|x86.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|x86.Build.0 = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|ARM.ActiveCfg = Debug|Any CPU
-		{C502244C-9172-48FF-B17B-77C239EF85FA}.osx|ARM.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{DFFFD210-FA2C-4573-8BC4-DC5F14FCA3FB} = {C3F726CE-7A9B-435F-8FA3-E5FF561F6707}
+		{51D459E9-071A-4A39-90EE-3BD024F890A7} = {C3F726CE-7A9B-435F-8FA3-E5FF561F6707}
 		{EC8FA1B1-EA4C-45A3-ABEB-3E0EBBC0898B} = {C9BEFED7-0144-49F9-8B29-FC2B736E2AE9}
 		{1C078B0B-7D05-41A5-B92A-6B096EBD12B9} = {8040226E-AF16-4FC2-935C-50AFEC388C42}
 		{CCAF4C12-51E3-45E0-BE39-C545AFEABA1E} = {C9BEFED7-0144-49F9-8B29-FC2B736E2AE9}
+		{F580FFE4-D631-4BBA-A1E8-2518278A69D9} = {0D554058-5B9C-43B7-B23D-5818B46E8FC9}
+		{3B22565B-4479-41BE-89FF-83E3E8B67C96} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
+		{F44360EC-F746-4C32-8C7F-8CE6E8E6566C} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
+		{44FD50E5-161F-4769-8FB0-5BA1A96A359E} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
+		{86F2B5D3-F9DC-4D9A-B0A3-2F382BC4BCA3} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
+		{BE21F155-BC83-401A-85A4-EBBBDA619665} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
 		{03BD4F71-30B1-4916-B6B9-12DD4C15B79D} = {BE21F155-BC83-401A-85A4-EBBBDA619665}
 		{D44BBD37-932C-4512-9308-B650DA995BE3} = {BE21F155-BC83-401A-85A4-EBBBDA619665}
 		{8B3FD8B0-E682-4344-A424-1C2ED19BA3C0} = {86F2B5D3-F9DC-4D9A-B0A3-2F382BC4BCA3}
@@ -4572,12 +4751,6 @@ Global
 		{917EDDFB-4384-4529-AA30-782C88F3E35E} = {1C078B0B-7D05-41A5-B92A-6B096EBD12B9}
 		{E89B6106-0775-4A3E-9F36-66E2DC2EC994} = {1C078B0B-7D05-41A5-B92A-6B096EBD12B9}
 		{52403942-DD85-419F-A345-B2E81B4D0834} = {1C078B0B-7D05-41A5-B92A-6B096EBD12B9}
-		{F580FFE4-D631-4BBA-A1E8-2518278A69D9} = {0D554058-5B9C-43B7-B23D-5818B46E8FC9}
-		{3B22565B-4479-41BE-89FF-83E3E8B67C96} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
-		{86F2B5D3-F9DC-4D9A-B0A3-2F382BC4BCA3} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
-		{F44360EC-F746-4C32-8C7F-8CE6E8E6566C} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
-		{44FD50E5-161F-4769-8FB0-5BA1A96A359E} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
-		{BE21F155-BC83-401A-85A4-EBBBDA619665} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
 		{6D25E8EB-8CEB-4770-B66D-297E50182C74} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
 		{CB370F34-A96B-4E6D-80F3-20960AB100BE} = {3B22565B-4479-41BE-89FF-83E3E8B67C96}
 		{123BF969-BBC6-4C39-8C0B-AF5EFE0BF0BA} = {3B22565B-4479-41BE-89FF-83E3E8B67C96}
@@ -4620,8 +4793,6 @@ Global
 		{00E94E18-DDBC-4296-802B-B86B1E0A0B84} = {C1232734-9C1D-4210-9834-E248AE8884A3}
 		{22827DAF-9E22-4278-9E17-3F3D3C1028CE} = {C1232734-9C1D-4210-9834-E248AE8884A3}
 		{7188CC67-96B3-4BB1-AF56-BE95E51B3B7C} = {C1232734-9C1D-4210-9834-E248AE8884A3}
-		{51D459E9-071A-4A39-90EE-3BD024F890A7} = {C3F726CE-7A9B-435F-8FA3-E5FF561F6707}
-		{DFFFD210-FA2C-4573-8BC4-DC5F14FCA3FB} = {C3F726CE-7A9B-435F-8FA3-E5FF561F6707}
 		{91ABCFFD-869C-4C81-8BDF-712A6E155668} = {DFFFD210-FA2C-4573-8BC4-DC5F14FCA3FB}
 		{1A95B1FA-58D4-4424-BE34-FF5A7251447F} = {DFFFD210-FA2C-4573-8BC4-DC5F14FCA3FB}
 		{5E92CD82-20ED-44C6-AF7E-327B99AAEF07} = {DFFFD210-FA2C-4573-8BC4-DC5F14FCA3FB}
@@ -4694,6 +4865,11 @@ Global
 		{1B12BBBB-6C7E-407D-A33E-EFFD1250CA38} = {6A957DB0-DAD2-47B6-A06C-82B629D23B58}
 		{3923955B-3899-4F9E-9B4E-20535D9C9B9D} = {6A957DB0-DAD2-47B6-A06C-82B629D23B58}
 		{C502244C-9172-48FF-B17B-77C239EF85FA} = {6A957DB0-DAD2-47B6-A06C-82B629D23B58}
+		{E7846CE0-C170-4D7B-A8BA-C6F24335A880} = {5D7ECD00-02F7-467C-B308-A8F1FF7A7341}
+		{FE986465-230A-4023-9505-D3524FB3DF39} = {E7846CE0-C170-4D7B-A8BA-C6F24335A880}
+		{A83F37ED-A7E6-4CA0-9027-68FF56FBA04B} = {E7846CE0-C170-4D7B-A8BA-C6F24335A880}
+		{ABC68E32-5BF0-4828-938D-3882C1B0D5E9} = {E7846CE0-C170-4D7B-A8BA-C6F24335A880}
+		{3E77C8D4-7053-4632-85C6-4EFF29A78D26} = {E7846CE0-C170-4D7B-A8BA-C6F24335A880}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5140EC98-289B-4148-B559-C500235CFC6B}

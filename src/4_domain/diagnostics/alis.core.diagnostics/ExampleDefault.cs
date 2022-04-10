@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IndexOutOfBounds.cs
+//  File:   Example.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -26,14 +26,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-namespace Alis.Exceptions
-{
 
+namespace Alis.Core.Diagnostics
+{
     /// <summary>
-    /// The index out of bounds class
+    ///     The example class
     /// </summary>
-    /// <seealso cref="System.Exception"/>
-    internal class IndexOutOfBounds : System.Exception
+    public class ExampleDefault
     {
     }
 }

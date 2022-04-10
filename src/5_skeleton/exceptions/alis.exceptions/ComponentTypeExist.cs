@@ -28,6 +28,10 @@
 //  --------------------------------------------------------------------------
 namespace Alis.Exceptions
 {
+    /// <summary>
+    /// The component type exist class
+    /// </summary>
+    /// <seealso cref="System.Exception"/>
     internal class ComponentTypeExist : System.Exception
     {
     }

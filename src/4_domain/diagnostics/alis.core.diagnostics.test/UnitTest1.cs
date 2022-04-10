@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IndexOutOfBounds.cs
+//  File:   UnitTest1.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -26,14 +26,31 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-namespace Alis.Exceptions
-{
 
+using NUnit.Framework;
+
+namespace Alis.Core.Diagnostics.Test
+{
     /// <summary>
-    /// The index out of bounds class
+    ///     The tests class
     /// </summary>
-    /// <seealso cref="System.Exception"/>
-    internal class IndexOutOfBounds : System.Exception
+    public class Tests
     {
+        /// <summary>
+        ///     Setup this instance
+        /// </summary>
+        [SetUp]
+        public void Setup()
+        {
+        }
+
+        /// <summary>
+        ///     Tests that test 1
+        /// </summary>
+        [Test]
+        public void Test1()
+        {
+            Assert.Pass();
+        }
     }
 }
