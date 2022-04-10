@@ -70,7 +70,7 @@ namespace Roguelike
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Other Example").Transform((Transform) new Transform(new Vector3(1, 1, 0),
                                 new Vector3(100, 100, 0), new Vector3(0)))
-                            .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
+                            .Add(new Sprite(@$"{Environment.CurrentDirectory}/Assets/tile000.png"))
                             .Add(new BoxCollider2D
                             {
                                 AutoTilling = true,
@@ -90,7 +90,7 @@ namespace Roguelike
                             .Name("Other Example 2")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, -100, 0), new Vector3(0)))
                             .Add(new Sprite(
-                                @$"{Environment.CurrentDirectory}\Assets\tile000.png"))
+                                @$"{Environment.CurrentDirectory}/Assets/tile000.png"))
                             .Add(new BoxCollider2D
                             {
                                 AutoTilling = true,
@@ -110,7 +110,7 @@ namespace Roguelike
                             .Name("Other Example 3")
                             .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, 100, 0), new Vector3(0)))
                             .Add(new Sprite(
-                                @$"{Environment.CurrentDirectory}\Assets\tile000.png"))
+                                @$"{Environment.CurrentDirectory}/Assets/tile000.png"))
                             .Add(new BoxCollider2D
                             {
                                 AutoTilling = true,
@@ -129,8 +129,8 @@ namespace Roguelike
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Player")
                             .Add(new Simple2DMove())
-                            .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new AudioSource(@$"{Environment.CurrentDirectory}\Assets\menu.wav"))
+                            .Add(new Sprite(@$"{Environment.CurrentDirectory}/Assets/tile000.png"))
+                            .Add(new AudioSource(@$"{Environment.CurrentDirectory}/Assets/menu.wav"))
                             .Add(new Camera())
                             .Add(new BoxCollider2D
                             {
@@ -151,13 +151,13 @@ namespace Roguelike
                                 new Animation(new List<Texture>
                                 {
                                     new Texture(
-                                        @$"{Environment.CurrentDirectory}\Assets\tile000.png"),
+                                        @$"{Environment.CurrentDirectory}/Assets/tile000.png"),
                                     new Texture(
-                                        @$"{Environment.CurrentDirectory}\Assets\tile001.png"),
+                                        @$"{Environment.CurrentDirectory}/Assets/tile001.png"),
                                     new Texture(
-                                        @$"{Environment.CurrentDirectory}\Assets\tile002.png"),
+                                        @$"{Environment.CurrentDirectory}/Assets/tile002.png"),
                                     new Texture(
-                                        @$"{Environment.CurrentDirectory}\Assets\tile003.png")
+                                        @$"{Environment.CurrentDirectory}/Assets/tile003.png")
                                 })
                                 {
                                     Speed = 0.5f
