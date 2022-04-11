@@ -28,76 +28,59 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Graphics2D.Graphics;
+using Alis.Core.Graphics2D.Windows;
 
 namespace Alis.Core.Graphics2D.Example
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    internal class Program
+   
+    static class Program
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            /*
-            VideoGame.Builder()
-                .Configuration(config => config
-                    .General(i => i
-                        .With<Name>(name => "Alis Game Example")
-                        .With<Author>(author => "Pablo Perdomo Falcón")
-                        .Build())
-                    .Time(i => i
-                        .SetMax<TimeStep>(timeStep => 30.0f)
-                        .SetMax<FramesPerSecond>(fps => 60.0f)
-                        .Build())
-                    .Build())
+            Console.WriteLine("Press ESC key to close window");
+            var window = new SimpleWindow();
+            window.Run();
 
-                .ManagerOf<Scene>(manager => manager
-                    .Add<Scene>(scene => scene
-                    .With<Name>(name => "Main Scene")
-                        .With<GameObject>(obj => obj
-                            .With<Name>(name => "Player")
-                            .Is<Static>(state => false)
-                            .Is<Active>(state => true)
-                            .With<Sprite>(new Sprite(@"C:\\Users\\wwwam\\Documents\\Repos\\Alis\\src\\2_adaptation\\sfml\\alis.core.sfml.example\\assets\\start_button.png"))
-                        .Build())
-                        .With<GameObject>(obj => obj
-                            .With<Name>(name => "Enemy")
-                            .Is<Static>(state => false)
-                            .Is<Active>(state => true)
-                            .With<Sprite>(new Sprite(@"C:\\Users\\wwwam\\Documents\\Repos\\Alis\\src\\2_adaptation\\sfml\\alis.core.sfml.example\\assets\\start_button.png"))
-                        .Build())
-                    .Build())
-                .Build())
-            .Run();*/
+            Console.WriteLine("All done");
+        }
+    }
 
-            /*.Game.Setting.GameObject.MaxComponents = 128;
-            Core.Game.Setting.GameObject.HasDuplicateComponents = true;
-            Core.Game.Setting.GameObject.Reset();
+    class SimpleWindow
+    {
+        public void Run()
+        {
+            var mode = new VideoMode(800, 600);
+            var window = new RenderWindow(mode, "SFML works!");
+            window.KeyPressed += Window_KeyPressed;
 
-            GameObject gameObject = new GameObject("Player");
-            var i = new BoxCollider2D();
-            gameObject.Add(new BoxCollider2D());
-            //gameObject.Add(i);
-            //gameObject.Remove<BoxCollider2D>();
-            //gameObject.Remove<BoxCollider2D>();
+            var circle = new CircleShape(100f)
+            {
+                FillColor = Color.Blue
+            };
 
-            Console.WriteLine($"Name={gameObject.Name.Value}");
-            Console.WriteLine($"Tag={gameObject.Tag.Value}");
-            Console.WriteLine($"IsActive={gameObject.IsActive.Value}");
-            Console.WriteLine($"IsStatic={gameObject.IsStatic.Value}");
-            Console.WriteLine($"Size={gameObject.Size}");
-            Console.WriteLine($"Count={gameObject.Count}");
+            // Start the game loop
+            while (window.IsOpen)
+            {
+                // Process events
+                window.DispatchEvents();
+                window.Draw(circle);
 
-            //Console.WriteLine($"Has Sprite={gameObject.Contains<Sprite>()}");
-            Console.WriteLine($"Has BoxCollider2D={gameObject.Contains<BoxCollider2D>()}");
+                // Finally, display the rendered frame on screen
+                window.Display();
+            }
+        }
 
-                */
-            Console.WriteLine(@"Please press any key to close console.");
-            Console.ReadKey();
+        /// <summary>
+        /// Function called when a key is pressed
+        /// </summary>
+        private void Window_KeyPressed(object sender,KeyEventArgs e)
+        {
+            var window = (Window)sender;
+            if (e.Code == Keyboard.Key.Escape)
+            {
+                window.Close();
+            }
         }
     }
 }

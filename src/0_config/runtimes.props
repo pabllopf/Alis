@@ -1,96 +1,71 @@
 <Project>
     <!-- RUNTIMES CONFIG -->
     <!-- WINDOWS CONFIG -->
-    <PropertyGroup Condition="'$(Configurations)' == 'win'">
-        <RuntimeIdentifiers>win-x64;win-x86;win-arm;win-arm64;</RuntimeIdentifiers>
-        <DefineConstants>win</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configurations)' == 'win' and '$(Platforms)' == 'x64'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'win|x64' ">
         <RuntimeIdentifier>win-x64</RuntimeIdentifier>
         <DefineConstants>win</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configurations)' == 'win' and '$(Platforms)' == 'x86'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'win|x86' ">
         <RuntimeIdentifier>win-x86</RuntimeIdentifier>
         <DefineConstants>win</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configurations)' == 'win' and '$(Platforms)' == 'ARM64'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'win|ARM64' ">
         <RuntimeIdentifier>win-arm64</RuntimeIdentifier>
         <DefineConstants>win</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configurations)' == 'win' and '$(Platforms)' == 'ARM'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'win|ARM' ">
         <RuntimeIdentifier>win-arm</RuntimeIdentifier>
         <DefineConstants>win</DefineConstants>
     </PropertyGroup>
 
     <!-- MACOS CONFIG -->
-    <PropertyGroup Condition="'$(Configurations)' == 'osx'">
-        <RuntimeIdentifiers>osx-x64;osx-ARM64</RuntimeIdentifiers>
-        <DefineConstants>osx</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configurations)' == 'osx' and '$(Platforms)' == 'x64'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'osx|x64' ">
         <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
-        <DefineConstants>osx</DefineConstants>
+        <DefineConstants>OSXX64</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configurations)' == 'osx' and '$(Platforms)' == 'ARM64'">
-        <RuntimeIdentifier>osx-ARM64</RuntimeIdentifier>
-        <DefineConstants>osx</DefineConstants>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'osx|ARM64' ">
+        <RuntimeIdentifier>osx.11.0-arm64</RuntimeIdentifier>
+        <DefineConstants>OSXARM64</DefineConstants>
     </PropertyGroup>
 
     <!-- LINUX CONFIG -->
-    <PropertyGroup Condition="'$(Configurations)' == 'linux'">
-        <RuntimeIdentifiers>linux-arm64;linux-arm64;linux-arm</RuntimeIdentifiers>
-        <DefineConstants>linux</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configurations)' == 'linux' and '$(Platforms)' == 'x64'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'linux|x64' ">
         <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
         <DefineConstants>linux</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configurations)' == 'linux' and '$(Platforms)' == 'ARM64'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'linux|ARM64' ">
         <RuntimeIdentifier>linux-arm64</RuntimeIdentifier>
         <DefineConstants>linux</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configurations)' == 'linux' and '$(Platforms)' == 'ARM'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'linux|ARM' ">
         <RuntimeIdentifier>linux-arm</RuntimeIdentifier>
         <DefineConstants>linux</DefineConstants>
     </PropertyGroup>
 
     <!-- IOS CONFIG -->
-    <PropertyGroup Condition="'$(Configurations)' == 'ios'">
-        <RuntimeIdentifiers>ios-arm64;ios-arm</RuntimeIdentifiers>
-        <DefineConstants>ios</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configurations)' == 'ios' and '$(Platforms)' == 'ARM64'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ios|ARM64' ">
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
         <DefineConstants>ios</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configurations)' == 'ios' and '$(Platforms)' == 'ARM'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ios|ARM' ">
         <RuntimeIdentifier>ios-arm</RuntimeIdentifier>
         <DefineConstants>ios</DefineConstants>
     </PropertyGroup>
 
     <!-- ANDROID CONFIG -->
-    <PropertyGroup Condition="'$(Configurations)' == 'android'">
-        <RuntimeIdentifiers>android-arm64;android-arm</RuntimeIdentifiers>
-        <DefineConstants>android</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configurations)' == 'android' and '$(Platforms)' == 'ARM64'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'android|ARM64' ">
         <RuntimeIdentifier>android-arm64</RuntimeIdentifier>
         <DefineConstants>android</DefineConstants>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configurations)' == 'android' and '$(Platforms)' == 'ARM'">
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'android|ARM' ">
         <RuntimeIdentifier>android-arm</RuntimeIdentifier>
         <DefineConstants>android</DefineConstants>
     </PropertyGroup>

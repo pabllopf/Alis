@@ -77,26 +77,46 @@ namespace Alis.Core.Graphics2D.Systems
         ///     The window
         /// </summary>
         public const string window = "Runtimes/linux-x64/native/csfml-window";
-#elif OSX
+#elif OSXARM64
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = "Runtimes/osx-x64/native/csfml-audio";
+        public const string audio = "./Runtimes/osx.11.0-arm64/native/libcsfml-audio.dylib";
         
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string graphics = "Runtimes/osx-x64/native/csfml-graphics";
+        public const string graphics = "./Runtimes/osx.11.0-arm64/native/libcsfml-graphics.dylib";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string system = "Runtimes/osx-x64/native/csfml-system";
+        public const string system = "./Runtimes/osx.11.0-arm64/native/libcsfml-system.dylib";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string window = "Runtimes/osx-x64/native/csfml-window";
+        public const string window = "./Runtimes/osx.11.0-arm64/native/libcsfml-window.dylib";
+#elif OSX64
+        /// <summary>
+        ///     The audio
+        /// </summary>
+        public const string audio = "./Runtimes/osx-x64/native/libcsfml-audio.dylib";
+        
+        /// <summary>
+        ///     The graphics
+        /// </summary>
+        public const string graphics = "./Runtimes/osx-x64/native/libcsfml-graphics.dylib";
+
+        /// <summary>
+        ///     The system
+        /// </summary>
+        public const string system = "./Runtimes/osx-x64/native/libcsfml-system.dylib";
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public const string window = "./Runtimes/osx-x64/native/libcsfml-window.dylib";
 #elif IOS
         /// <summary>
         ///     The audio
