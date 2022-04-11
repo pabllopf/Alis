@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System.Diagnostics;
-
-#endregion
 
 namespace Alis.Core.Configurations
 {

@@ -750,8 +750,6 @@ namespace Alis.Core.Graphics2D.Graphics
         {
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the shader create from file using the specified vertex shader filename
         /// </summary>
@@ -1115,7 +1113,5 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfShader_isGeometryAvailable();
-
-        #endregion
     }
 }

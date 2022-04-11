@@ -27,10 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
-#endregion
-
 namespace Alis.Core.Components
 {
     /// <summary>

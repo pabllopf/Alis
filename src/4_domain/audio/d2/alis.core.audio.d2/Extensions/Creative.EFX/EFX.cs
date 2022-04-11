@@ -512,8 +512,6 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
 
 #pragma warning disable SA1124 // Do not use regions
 
-        #region Generated
-
 #pragma warning restore SA1124 // Do not use regions
 #pragma warning disable SA1516 // Elements should be separated by blank line
 
@@ -1874,7 +1872,5 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
             LoadDelegate<GetListenerfRefDelegate>("alGetListenerf");
 
 #pragma warning restore SA1516 // Elements should be separated by blank line
-
-        #endregion
     }
 }

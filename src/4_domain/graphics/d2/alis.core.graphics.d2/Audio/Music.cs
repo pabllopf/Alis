@@ -375,8 +375,6 @@ namespace Alis.Core.Graphics2D.Audio
             private readonly Systems.Time length;
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the music create from file using the specified filename
         /// </summary>
@@ -606,7 +604,5 @@ namespace Alis.Core.Graphics2D.Audio
         /// <returns>The systems time</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Systems.Time sfMusic_getPlayingOffset(IntPtr Music);
-
-        #endregion
     }
 }

@@ -32,8 +32,6 @@ using Alis.Core.Graphics2D.Systems;
 
 namespace Alis.Core.Graphics2D.Graphics
 {
-    #region 2D Vectors
-
     ////////////////////////////////////////////////////////////
     /// <summary>
     ///     <see cref="Vec2" /> is a struct represent a glsl vec2 value
@@ -154,10 +152,6 @@ namespace Alis.Core.Graphics2D.Graphics
         public bool Y;
     }
 
-    #endregion
-
-    #region 3D Vectors
-
     ////////////////////////////////////////////////////////////
     /// <summary>
     ///     <see cref="Vec3" /> is a struct represent a glsl vec3 value
@@ -275,10 +269,6 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <summary>Depth component of the vector</summary>
         public bool Z;
     }
-
-    #endregion
-
-    #region 4D Vectors
 
     ////////////////////////////////////////////////////////////
     /// <summary>
@@ -420,10 +410,6 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <summary>Projective/Homogenous component of the vector</summary>
         public bool W;
     }
-
-    #endregion
-
-    #region Matrices
 
     ////////////////////////////////////////////////////////////
     /// <summary>
@@ -571,6 +557,4 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         private fixed float array[4 * 4];
     }
-
-    #endregion
 }

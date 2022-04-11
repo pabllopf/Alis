@@ -311,8 +311,6 @@ namespace Alis.Core.Graphics2D.Audio
             sfSound_destroy(CPointer);
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the sound create
         /// </summary>
@@ -507,7 +505,5 @@ namespace Alis.Core.Graphics2D.Audio
         /// <returns>The systems time</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Systems.Time sfSound_getPlayingOffset(IntPtr Sound);
-
-        #endregion
     }
 }

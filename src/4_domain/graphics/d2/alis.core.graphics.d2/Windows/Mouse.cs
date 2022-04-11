@@ -153,8 +153,6 @@ namespace Alis.Core.Graphics2D.Windows
             }
         }
 
-        #region Imports
-
         /// <summary>
         ///     Describes whether sf mouse is button pressed
         /// </summary>
@@ -178,7 +176,5 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="relativeTo">The relative to</param>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfMouse_setPosition(Vector2i position, IntPtr relativeTo);
-
-        #endregion
     }
 }

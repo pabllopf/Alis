@@ -99,8 +99,6 @@ namespace Alis.Core.Graphics2D.Windows
         ////////////////////////////////////////////////////////////
         public static Vector3f GetValue(Type Sensor) => sfSensor_getValue(Sensor);
 
-        #region Imports
-
         /// <summary>
         ///     Describes whether sf sensor is available
         /// </summary>
@@ -124,7 +122,5 @@ namespace Alis.Core.Graphics2D.Windows
         /// <returns>The vector 3f</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector3f sfSensor_getValue(Type Sensor);
-
-        #endregion
     }
 }

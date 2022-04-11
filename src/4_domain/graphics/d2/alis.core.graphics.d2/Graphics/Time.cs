@@ -259,8 +259,6 @@ namespace Alis.Core.Graphics2D.Systems
         /// </summary>
         private readonly long microseconds;
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the seconds using the specified amount
         /// </summary>
@@ -308,7 +306,5 @@ namespace Alis.Core.Graphics2D.Systems
         /// <returns>The long</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern long sfTime_asMicroseconds(Time time);
-
-        #endregion
     }
 }

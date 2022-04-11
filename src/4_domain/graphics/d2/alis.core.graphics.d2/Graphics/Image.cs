@@ -386,8 +386,6 @@ namespace Alis.Core.Graphics2D.Graphics
             sfImage_destroy(CPointer);
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the image create from color using the specified width
         /// </summary>
@@ -530,7 +528,5 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <returns>The uint</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfImage_flipVertically(IntPtr CPointer);
-
-        #endregion
     }
 }

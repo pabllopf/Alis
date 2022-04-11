@@ -130,8 +130,6 @@ namespace Alis.Core.Graphics2D.Windows
         /// <summary>Video mode depth, in bits per pixel</summary>
         public uint BitsPerPixel;
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the video mode get desktop mode
         /// </summary>
@@ -154,7 +152,5 @@ namespace Alis.Core.Graphics2D.Windows
         /// <returns>The bool</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfVideoMode_isValid(VideoMode Mode);
-
-        #endregion
     }
 }

@@ -764,8 +764,6 @@ namespace Alis.Core.Graphics2D.Graphics
             GC.SuppressFinalize(myDefaultView);
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the render window create using the specified mode
         /// </summary>
@@ -1159,7 +1157,5 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <returns>The uint</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfRenderWindow_getFrameTime(IntPtr CPointer);
-
-        #endregion
     }
 }

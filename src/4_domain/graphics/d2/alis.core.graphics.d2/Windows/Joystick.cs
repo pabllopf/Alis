@@ -209,8 +209,6 @@ namespace Alis.Core.Graphics2D.Windows
             public uint ProductId;
         }
 
-        #region Imports
-
         /// <summary>
         ///     Describes whether sf joystick is connected
         /// </summary>
@@ -267,7 +265,5 @@ namespace Alis.Core.Graphics2D.Windows
         /// <returns>The identification marshal data</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IdentificationMarshalData sfJoystick_getIdentification(uint joystick);
-
-        #endregion
     }
 }

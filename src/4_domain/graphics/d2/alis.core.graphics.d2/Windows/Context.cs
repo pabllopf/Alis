@@ -111,8 +111,6 @@ namespace Alis.Core.Graphics2D.Windows
         ////////////////////////////////////////////////////////////
         public override string ToString() => "[Context]";
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the context create
         /// </summary>
@@ -143,7 +141,5 @@ namespace Alis.Core.Graphics2D.Windows
         /// <returns>The context settings</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern ContextSettings sfContext_getSettings(IntPtr View);
-
-        #endregion
     }
 }

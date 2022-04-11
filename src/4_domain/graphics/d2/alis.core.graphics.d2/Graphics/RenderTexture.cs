@@ -508,8 +508,6 @@ namespace Alis.Core.Graphics2D.Graphics
             }
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the render texture create using the specified width
         /// </summary>
@@ -728,7 +726,5 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_resetGLStates(IntPtr CPointer);
-
-        #endregion
     }
 }

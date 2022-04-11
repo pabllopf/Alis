@@ -389,8 +389,6 @@ namespace Alis.Core.Graphics2D.Graphics
             sfText_destroy(CPointer);
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the text create
         /// </summary>
@@ -619,7 +617,5 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <returns>The float rect</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfText_getLocalBounds(IntPtr CPointer);
-
-        #endregion
     }
 }

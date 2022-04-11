@@ -270,8 +270,6 @@ namespace Alis.Core.Graphics2D.Graphics
             public IntPtr Family;
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the font create from file using the specified filename
         /// </summary>
@@ -379,7 +377,5 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <returns>The info marshal data</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern InfoMarshalData sfFont_getInfo(IntPtr CPointer);
-
-        #endregion
     }
 }

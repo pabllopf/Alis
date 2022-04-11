@@ -304,8 +304,6 @@ namespace Alis.Core.Graphics2D.Audio
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void StopCallback();
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the sound recorder create using the specified on start
         /// </summary>
@@ -411,7 +409,5 @@ namespace Alis.Core.Graphics2D.Audio
         /// <returns>The uint</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundRecorder_getChannelCount(IntPtr SoundRecorder);
-
-        #endregion
     }
 }

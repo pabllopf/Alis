@@ -75,8 +75,6 @@ namespace Alis.Core.Graphics2D.Systems
         ////////////////////////////////////////////////////////////
         public Time Restart() => sfClock_restart(CPointer);
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the clock create
         /// </summary>
@@ -106,7 +104,5 @@ namespace Alis.Core.Graphics2D.Systems
         /// <returns>The time</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfClock_restart(IntPtr Clock);
-
-        #endregion
     }
 }

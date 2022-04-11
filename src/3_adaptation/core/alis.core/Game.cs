@@ -104,68 +104,40 @@ namespace Alis.Core
         /// <summary>Runs this instance.</summary>
         public void Run()
         {
-            #region Init()
-
             InputSystem.Init();
             PhysicsSystem.Init();
             SceneSystem.Init();
             RenderSystem.Init();
-
-            #endregion
-            
-            #region BeforeAwake()
 
             InputSystem.BeforeAwake();
             PhysicsSystem.BeforeAwake();
             SceneSystem.BeforeAwake();
             RenderSystem.BeforeAwake();
 
-            #endregion
-            
-            #region Awake()
-
             InputSystem.Awake();
             PhysicsSystem.Awake();
             SceneSystem.Awake();
             RenderSystem.Awake();
-
-            #endregion
-            
-            #region AfterAwake()
 
             InputSystem.AfterAwake();
             PhysicsSystem.AfterAwake();
             SceneSystem.AfterAwake();
             RenderSystem.AfterAwake();
 
-            #endregion
-
-            #region BeforeStart()
-
             InputSystem.BeforeStart();
             PhysicsSystem.BeforeStart();
             SceneSystem.BeforeStart();
             RenderSystem.BeforeStart();
-
-            #endregion
-            
-            #region Start()
 
             InputSystem.Start();
             PhysicsSystem.Start();
             SceneSystem.Start();
             RenderSystem.Start();
 
-            #endregion
-            
-            #region AfterStart()
-
             InputSystem.AfterStart();
             PhysicsSystem.AfterStart();
             SceneSystem.AfterStart();
             RenderSystem.AfterStart();
-
-            #endregion
 
             while (IsRunning)
             {
@@ -177,75 +149,47 @@ namespace Alis.Core
 
                     for (int i = 0; i < Setting.Time.MaximunAllowedTimeStep; i++)
                     {
-                        #region BeforeUpdate()
-
                         InputSystem.BeforeUpdate();
                         PhysicsSystem.BeforeUpdate();
                         SceneSystem.BeforeUpdate();
                         RenderSystem.BeforeUpdate();
-
-                        #endregion
-
-                        #region Update()
 
                         InputSystem.Update();
                         PhysicsSystem.Update();
                         SceneSystem.Update();
                         RenderSystem.Update();
 
-                        #endregion
-
-                        #region AfterUpdate()
-
                         InputSystem.AfterUpdate();
                         PhysicsSystem.AfterUpdate();
                         SceneSystem.AfterUpdate();
                         RenderSystem.AfterUpdate();
 
-                        #endregion
-                        
-                        #region Draw()
-
                         InputSystem.Draw();
                         PhysicsSystem.Draw();
                         SceneSystem.Draw();
                         RenderSystem.Draw();
-                        
-                        #endregion
                     }
-
-                    #region FixedUpdate()
 
                     InputSystem.FixedUpdate();
                     PhysicsSystem.FixedUpdate();
                     SceneSystem.FixedUpdate();
                     RenderSystem.FixedUpdate();
 
-                    #endregion
-
-                    #region DispatchEvents()
-
                     InputSystem.DispatchEvents();
                     PhysicsSystem.DispatchEvents();
                     SceneSystem.DispatchEvents();
                     RenderSystem.DispatchEvents();
 
-                    #endregion
-                    
                     Setting.Time.CounterFrames();
                 }
 
                 Setting.Time.UpdateFixedTime();
             }
 
-            #region Exit()
-
             InputSystem.Exit();
             PhysicsSystem.Exit();
             SceneSystem.Exit();
             RenderSystem.Exit();
-
-            #endregion
         }
 
 

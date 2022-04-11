@@ -228,8 +228,6 @@ namespace Alis.Core.Graphics2D.Audio
             sfSoundBuffer_destroy(CPointer);
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the sound buffer create from file using the specified filename
         /// </summary>
@@ -330,7 +328,5 @@ namespace Alis.Core.Graphics2D.Audio
         /// <returns>The systems time</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Systems.Time sfSoundBuffer_getDuration(IntPtr SoundBuffer);
-
-        #endregion
     }
 }

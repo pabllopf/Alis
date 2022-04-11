@@ -210,8 +210,6 @@ namespace Alis.Core.Graphics2D.Graphics
             sfVertexArray_destroy(CPointer);
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the vertex array create
         /// </summary>
@@ -317,7 +315,5 @@ namespace Alis.Core.Graphics2D.Graphics
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawVertexArray(IntPtr CPointer, IntPtr VertexArray,
             ref RenderStates.MarshalData states);
-
-        #endregion
     }
 }

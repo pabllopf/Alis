@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
-
-#endregion
 
 namespace Alis.Engine.Benchmark
 {

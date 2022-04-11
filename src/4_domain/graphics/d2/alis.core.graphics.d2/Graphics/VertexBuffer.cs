@@ -277,8 +277,6 @@ namespace Alis.Core.Graphics2D.Graphics
             sfVertexBuffer_destroy(CPointer);
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the vertex buffer create using the specified vertex count
         /// </summary>
@@ -407,7 +405,5 @@ namespace Alis.Core.Graphics2D.Graphics
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawVertexBuffer(IntPtr CPointer, IntPtr VertexBuffer,
             ref RenderStates.MarshalData states);
-
-        #endregion
     }
 }

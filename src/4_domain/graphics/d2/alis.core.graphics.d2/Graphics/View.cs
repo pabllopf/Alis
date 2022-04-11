@@ -222,8 +222,6 @@ namespace Alis.Core.Graphics2D.Graphics
             }
         }
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the view create
         /// </summary>
@@ -349,7 +347,5 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Factor">The factor</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfView_zoom(IntPtr View, float Factor);
-
-        #endregion
     }
 }

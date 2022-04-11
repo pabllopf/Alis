@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using NUnit.Framework;
-
-#endregion
 
 namespace Alis.Core.Graphics3D.Test
 {

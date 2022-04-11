@@ -27,11 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-#region
-
 using System;
-
-#endregion
 
 namespace Alis.Core.Graphics3D.Example
 {

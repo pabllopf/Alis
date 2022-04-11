@@ -78,8 +78,6 @@ namespace Alis.Core.Graphics2D.Windows
             return sfTouch_getPosition(Finger, IntPtr.Zero);
         }
 
-        #region Imports
-
         /// <summary>
         ///     Describes whether sf touch is down
         /// </summary>
@@ -96,7 +94,5 @@ namespace Alis.Core.Graphics2D.Windows
         /// <returns>The vector 2i</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfTouch_getPosition(uint Finger, IntPtr RelativeTo);
-
-        #endregion
     }
 }

@@ -385,8 +385,6 @@ namespace Alis.Core.Graphics2D.Audio
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate void SeekCallbackType(Systems.Time timeOffset, IntPtr UserData);
 
-        #region Imports
-
         /// <summary>
         ///     Sfs the sound stream create using the specified on get data
         /// </summary>
@@ -579,7 +577,5 @@ namespace Alis.Core.Graphics2D.Audio
         /// <returns>The systems time</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Systems.Time sfSoundStream_getPlayingOffset(IntPtr SoundStream);
-
-        #endregion
     }
 }
