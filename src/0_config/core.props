@@ -78,22 +78,22 @@
     </ItemGroup>
     
     <ItemGroup>
-        <Compile Include="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/**/*.cs" LinkBase="Exceptions"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/*.csproj"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/obj/**"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/bin/**"/>
-        <Content Include="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/Runtimes/**" LinkBase="Runtimes">
+        <Compile Include="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/**/*.cs" LinkBase="Exceptions"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/obj/**"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/bin/**"/>
+        <Content Include="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>
         </Content>
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/**/*.cs" LinkBase="FluentApi"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/*.csproj"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/obj/**"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/bin/**"/>
-        <Content Include="$(SolutionDir)/5_skeleton/fluentapi/alis.fluentapi/Runtimes/**" LinkBase="Runtimes">
+        <Compile Include="$(SolutionDir)/5_aspects/fluentapi/alis.fluentapi/**/*.cs" LinkBase="FluentApi"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/fluentapi/alis.fluentapi/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/fluentapi/alis.fluentapi/obj/**"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/fluentapi/alis.fluentapi/bin/**"/>
+        <Content Include="$(SolutionDir)/5_aspects/fluentapi/alis.fluentapi/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>
         </Content>
@@ -188,11 +188,11 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Compile Include="$(SolutionDir)/5_skeleton/tools/alis.tools/**/*.cs" LinkBase="Tools"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/*.csproj"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/obj/**"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/tools/alis.tools/bin/**"/>
-        <Content Include="$(SolutionDir)/5_skeleton/tools/alis.tools/Runtimes/**" LinkBase="Runtimes">
+        <Compile Include="$(SolutionDir)/5_aspects/tools/alis.tools/**/*.cs" LinkBase="Tools"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/tools/alis.tools/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/tools/alis.tools/obj/**"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/tools/alis.tools/bin/**"/>
+        <Content Include="$(SolutionDir)/5_aspects/tools/alis.tools/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>
         </Content>

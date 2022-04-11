@@ -1,10 +1,10 @@
 <Project>
     <ItemGroup>
-        <Compile Include="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/**/*.cs" LinkBase="Exceptions"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/*.csproj"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/obj/**"/>
-        <Compile Remove="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/bin/**"/>
-        <Content Include="$(SolutionDir)/5_skeleton/exceptions/alis.exceptions/Runtimes/**" LinkBase="Runtimes">
+        <Compile Include="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/**/*.cs" LinkBase="Exceptions"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/obj/**"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/bin/**"/>
+        <Content Include="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>
         </Content>
