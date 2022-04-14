@@ -76,13 +76,13 @@
             <Visible>True</Visible>
         </Content>
     </ItemGroup>
-    
+
     <ItemGroup>
-        <Compile Include="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/**/*.cs" LinkBase="Exceptions"/>
-        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/*.csproj"/>
-        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/obj/**"/>
-        <Compile Remove="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/bin/**"/>
-        <Content Include="$(SolutionDir)/5_aspects/exceptions/alis.exceptions/Runtimes/**" LinkBase="Runtimes">
+        <Compile Include="$(SolutionDir)/5_aspects/assertion/alis.assertion/**/*.cs" LinkBase="Assertion"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/assertion/alis.assertion/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/assertion/alis.assertion/obj/**"/>
+        <Compile Remove="$(SolutionDir)/5_aspects/assertion/alis.assertion/bin/**"/>
+        <Content Include="$(SolutionDir)/5_aspects/assertion/alis.assertion/Runtimes/**" LinkBase="Runtimes">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
             <Visible>True</Visible>
         </Content>

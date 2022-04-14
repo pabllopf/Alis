@@ -1,0 +1,1 @@
+dotnet build -t:Run -f net6.0-windows10.0.19041 ../MyMauiApp.csproj
