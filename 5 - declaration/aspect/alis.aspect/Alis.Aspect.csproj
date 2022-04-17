@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+      <Configurations />
+      <Platforms />
+    </PropertyGroup>
+
+    <Import Project="$(SolutionDir)/0_config/general.props" />
+    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
+    <Import Project="$(SolutionDir)/0_config/licence.props" />
+    <Import Project="$(SolutionDir)/0_config/nuget.props" />
+
+    <Import Project="$(SolutionDir)/0_config/audio2d.props" />
+    <Import Project="$(SolutionDir)/0_config/audio3d.props" />
+    <Import Project="$(SolutionDir)/0_config/graphics2D.props" />
+    <Import Project="$(SolutionDir)/0_config/graphics3D.props" />
+    <Import Project="$(SolutionDir)/0_config/cloud.props" />
+    <Import Project="$(SolutionDir)/0_config/input.props" />
+    <Import Project="$(SolutionDir)/0_config/output.props" />
+    <Import Project="$(SolutionDir)/0_config/network.props" />
+    <Import Project="$(SolutionDir)/0_config/time.props" />
+    <Import Project="$(SolutionDir)/0_config/physics2d.props" />
+    <Import Project="$(SolutionDir)/0_config/physics3d.props" />
+    <Import Project="$(SolutionDir)/0_config/database.props" />
+
+
+    <Import Project="$(SolutionDir)/0_config/tools.props" />
+    <Import Project="$(SolutionDir)/0_config/fluentapi.props" />
+    <Import Project="$(SolutionDir)/0_config/exceptions.props" />
+
+
+
+
+   
+</Project>
