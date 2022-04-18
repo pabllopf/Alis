@@ -1,1 +1,0 @@
-dotnet build -t:Run -f net6.0-android ../MyMauiApp.csproj

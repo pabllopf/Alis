@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis;
-
 namespace FlappyBird
 {
     /// <summary>
@@ -42,23 +40,7 @@ namespace FlappyBird
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame.Create()
-                .Settings(setting => setting
-                    .General(general => general
-                        .Author("Pablo Perdomo Falcón")
-                        .Name("Flappy Bird")
-                        .Description("Classic game made in Alis")
-                        .Build())
-                    .Window(window => window
-                        .Resolution(720, 480)
-                        .Build())
-                    .Debug(debug => debug
-                        .ShowPhysicBorders(true)
-                        .Build())
-                    .Build())
-                .Manager(sceneManager => sceneManager
-                    .Build())
-                .Run();
+           
         }
     }
 }

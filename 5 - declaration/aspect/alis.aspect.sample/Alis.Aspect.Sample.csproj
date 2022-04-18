@@ -1,17 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-      <Configurations />
-      <Platforms />
-    </PropertyGroup>
-
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/executable.props" />
-
-    <ItemGroup>
-        <ProjectReference Include="..\alis.core\Alis.Core.csproj" />
-    </ItemGroup>
-
+    <Import Project="$(SolutionDir)/.config/general.props" />
+    <Import Project="$(SolutionDir)/.config/runtimes.props" />
+    <Import Project="$(SolutionDir)/.config/licence.props" />
+    <Import Project="$(SolutionDir)/.config/executable.props" />
 </Project>

@@ -1,35 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-      <Configurations />
-      <Platforms />
-    </PropertyGroup>
-
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
-
-    <Import Project="$(SolutionDir)/0_config/audio2d.props" />
-    <Import Project="$(SolutionDir)/0_config/audio3d.props" />
-    <Import Project="$(SolutionDir)/0_config/graphics2D.props" />
-    <Import Project="$(SolutionDir)/0_config/graphics3D.props" />
-    <Import Project="$(SolutionDir)/0_config/cloud.props" />
-    <Import Project="$(SolutionDir)/0_config/input.props" />
-    <Import Project="$(SolutionDir)/0_config/output.props" />
-    <Import Project="$(SolutionDir)/0_config/network.props" />
-    <Import Project="$(SolutionDir)/0_config/time.props" />
-    <Import Project="$(SolutionDir)/0_config/physics2d.props" />
-    <Import Project="$(SolutionDir)/0_config/physics3d.props" />
-    <Import Project="$(SolutionDir)/0_config/database.props" />
-
-
-    <Import Project="$(SolutionDir)/0_config/tools.props" />
-    <Import Project="$(SolutionDir)/0_config/fluentapi.props" />
-    <Import Project="$(SolutionDir)/0_config/exceptions.props" />
-
-
-
-
-   
+    <Import Project="$(SolutionDir)/.config/general.props" />
+    <Import Project="$(SolutionDir)/.config/runtimes.props" />
+    <Import Project="$(SolutionDir)/.config/licence.props" />
+    <Import Project="$(SolutionDir)/.config/nuget.props" />
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\6 - ideation\assertion\alis.aspect.assertion\Alis.Aspect.Assertion.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\base\alis.aspect.base\Alis.Aspect.Base.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\config\alis.aspect.config\Alis.Aspect.Config.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\data\alis.aspect.data\Alis.Aspect.Data.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\debug\alis.aspect.debug\Alis.Aspect.Debug.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\fluent\alis.aspect.fluent\Alis.Aspect.Fluent.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\math\alis.aspect.math\Alis.Aspect.Math.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\memory\alis.aspect.memory\Alis.Aspect.Memory.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\resource\alis.aspect.resource\Alis.Aspect.Resource.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\security\alis.aspect.security\Alis.Aspect.Security.csproj" />
+      <ProjectReference Include="..\..\..\6 - ideation\thread\alis.aspect.thread\Alis.Aspect.Thread.csproj" />
+    </ItemGroup>
 </Project>

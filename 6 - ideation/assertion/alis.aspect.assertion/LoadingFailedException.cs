@@ -33,7 +33,7 @@ namespace Alis.Exceptions
     ///     Exception thrown by SFML whenever loading a resource fails
     /// </summary>
     ////////////////////////////////////////////////////////////
-    internal class LoadingFailedException : System.Exception
+    public class LoadingFailedException : System.Exception
     {
         ////////////////////////////////////////////////////////////
         /// <summary>

@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Math
+namespace Alis.Base
 {
-    public class Vector2
+    public class ExampleClass
     {
     
     }

@@ -1,21 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-      <Configurations />
-      <Platforms />
-    </PropertyGroup>
-
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/executable.props" />
-
-    <ItemGroup>
-        <None Update="Assets/**" CopyToOutputDirectory="PreserveNewest" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="$(SolutionDir)/2_application/alis/alis/Alis.csproj" />
-    </ItemGroup>
+    <Import Project="$(SolutionDir)/.config/general.props" />
+    <Import Project="$(SolutionDir)/.config/runtimes.props" />
+    <Import Project="$(SolutionDir)/.config/licence.props" />
+    <Import Project="$(SolutionDir)/.config/executable.props" />
+    <Import Project="$(SolutionDir)/.config/assets.props" />
+    <Import Project="$(SolutionDir)/.config/alis.props" />
 </Project>
 

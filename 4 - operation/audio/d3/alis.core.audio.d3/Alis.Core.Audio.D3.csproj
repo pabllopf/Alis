@@ -1,48 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-
-    <PropertyGroup>
-      <Configurations />
-      <Platforms />
-    </PropertyGroup>
-
-
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
-
-    <Import Project="$(SolutionDir)/0_config/tools.props" />
-    <Import Project="$(SolutionDir)/0_config/fluentapi.props" />
-    <Import Project="$(SolutionDir)/0_config/exceptions.props" />
-
-
+    <Import Project="$(SolutionDir)/.config/general.props" />
+    <Import Project="$(SolutionDir)/.config/runtimes.props" />
+    <Import Project="$(SolutionDir)/.config/licence.props" />
+    <Import Project="$(SolutionDir)/.config/nuget.props" />
     <ItemGroup>
-        <Content Condition="'$(RuntimeIdentifier)' == 'linux-x64'" Include="Runtimes/linux-x64/native/libopenal.so">
-            <Link>%(Filename)%(Extension)</Link>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <Visible>True</Visible>
-        </Content>
-
-        <Content Condition="'$(RuntimeIdentifier)' == 'linux-x64'" Include="Runtimes/linux-x64/native/libopenal.so.1">
-            <Link>%(Filename)%(Extension)</Link>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <Visible>True</Visible>
-        </Content>
-
-        <Content Condition="'$(RuntimeIdentifier)' == 'win-x32'" Include="Runtimes/win-x32/native/libopenal.dll">
-            <Link>%(Filename)%(Extension)</Link>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <Visible>True</Visible>
-        </Content>
-
-        <Content Condition="'$(RuntimeIdentifier)' == 'osx-x64'" Include="Runtimes/osx-x64/native/libopenal.dylib">
-            <Link>%(Filename)%(Extension)</Link>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <Visible>True</Visible>
-        </Content>
-
+      <ProjectReference Include="..\..\..\..\5 - declaration\aspect\alis.aspect\Alis.Aspect.csproj" />
     </ItemGroup>
-
-
 </Project>

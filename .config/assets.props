@@ -1,0 +1,5 @@
+<Project>
+    <ItemGroup>
+        <None Update="Assets/**" CopyToOutputDirectory="PreserveNewest" />
+    </ItemGroup>
+</Project>

@@ -1,19 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-
-    <PropertyGroup>
-      <Configurations />
-      <Platforms />
-    </PropertyGroup>
-
-
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
-
-    <Import Project="$(SolutionDir)/0_config/tools.props" />
-    <Import Project="$(SolutionDir)/0_config/fluentapi.props" />
-    <Import Project="$(SolutionDir)/0_config/exceptions.props" />
-    
+    <Import Project="$(SolutionDir)/.config/general.props" />
+    <Import Project="$(SolutionDir)/.config/runtimes.props" />
+    <Import Project="$(SolutionDir)/.config/licence.props" />
+    <Import Project="$(SolutionDir)/.config/nuget.props" />
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\5 - declaration\aspect\alis.aspect\Alis.Aspect.csproj" />
+    </ItemGroup>
 </Project>

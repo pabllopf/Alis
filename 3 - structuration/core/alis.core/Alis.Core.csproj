@@ -1,35 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-      <Configurations />
-      <Platforms />
-    </PropertyGroup>
-
-    <Import Project="$(SolutionDir)/0_config/general.props" />
-    <Import Project="$(SolutionDir)/0_config/runtimes.props" />
-    <Import Project="$(SolutionDir)/0_config/licence.props" />
-    <Import Project="$(SolutionDir)/0_config/nuget.props" />
-
-    <Import Project="$(SolutionDir)/0_config/audio2d.props" />
-    <Import Project="$(SolutionDir)/0_config/audio3d.props" />
-    <Import Project="$(SolutionDir)/0_config/graphics2D.props" />
-    <Import Project="$(SolutionDir)/0_config/graphics3D.props" />
-    <Import Project="$(SolutionDir)/0_config/cloud.props" />
-    <Import Project="$(SolutionDir)/0_config/input.props" />
-    <Import Project="$(SolutionDir)/0_config/output.props" />
-    <Import Project="$(SolutionDir)/0_config/network.props" />
-    <Import Project="$(SolutionDir)/0_config/time.props" />
-    <Import Project="$(SolutionDir)/0_config/physics2d.props" />
-    <Import Project="$(SolutionDir)/0_config/physics3d.props" />
-    <Import Project="$(SolutionDir)/0_config/database.props" />
-
-
-    <Import Project="$(SolutionDir)/0_config/tools.props" />
-    <Import Project="$(SolutionDir)/0_config/fluentapi.props" />
-    <Import Project="$(SolutionDir)/0_config/exceptions.props" />
-
-
-
-
-   
+    <Import Project="$(SolutionDir)/.config/general.props" />
+    <Import Project="$(SolutionDir)/.config/runtimes.props" />
+    <Import Project="$(SolutionDir)/.config/licence.props" />
+    <Import Project="$(SolutionDir)/.config/nuget.props" />
+    
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\4 - operation\ads\alis.core.ads\Alis.Core.Ads.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\ai\alis.core.ai\Alis.Core.Ai.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\audio\d2\alis.core.audio.d2\Alis.Core.Audio.D2.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\audio\d3\alis.core.audio.d3\Alis.Core.Audio.D3.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\cloud\alis.core.cloud\Alis.Core.Cloud.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\database\alis.core.database\Alis.Core.Database.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\diagnostic\alis.core.diagnostic\Alis.Core.Diagnostic.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\graphic\d2\alis.core.graphic.d2\Alis.Core.Graphic.D2.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\graphic\d3\alis.core.graphics.d3\Alis.Core.Graphics.D3.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\input\alis.core.input\Alis.Core.Input.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\network\alis.core.network\Alis.Core.Network.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\output\alis.core.output\Alis.Core.Output.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\physic\d2\alis.core.physic.d2\Alis.Core.Physic.D2.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\physic\d3\alis.core.physics.d3\Alis.Core.Physics.D3.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\report\alis.core.report\Alis.Core.Report.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\time\alis.core.time\Alis.Core.Time.csproj" />
+      <ProjectReference Include="..\..\..\4 - operation\updater\alis.core.updater\Alis.Core.Updater.csproj" />
+    </ItemGroup>
 </Project>

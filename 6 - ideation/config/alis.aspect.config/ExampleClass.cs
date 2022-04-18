@@ -27,9 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Base;
-
-public class ExampleClass
+namespace Alis.Base
 {
+    public class ExampleClass
+    {
     
+    }
 }

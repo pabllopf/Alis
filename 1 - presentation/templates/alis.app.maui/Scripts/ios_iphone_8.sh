@@ -1,1 +1,0 @@
-dotnet build -t:Run -f net6.0-ios -p:_DeviceName=:v2:udid=0118745D-9253-4B6B-95C2-F7E470B761DE ../MyMauiApp.csproj
