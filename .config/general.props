@@ -10,7 +10,17 @@
     </PropertyGroup>
     
     <PropertyGroup>
-        <BaseOutputPath>$(SolutionDir)bin/$(AssemblyName)/</BaseOutputPath>
-        <BaseIntermediateOutputPath>$(SolutionDir)obj/$(AssemblyName)/</BaseIntermediateOutputPath>
+        <BaseOutputPath>$(SolutionDir).build/bin/$(AssemblyName)/</BaseOutputPath>
+        <BaseIntermediateOutputPath>$(SolutionDir).build/obj/$(AssemblyName)/</BaseIntermediateOutputPath>
     </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="bin/**" />
+        <EmbeddedResource Remove="bin/**" />
+        <None Remove="bin/**" />
+        <Compile Remove="obj/**" />
+        <EmbeddedResource Remove="obj/**" />
+        <None Remove="obj/**" />
+    </ItemGroup>
+    
 </Project>
