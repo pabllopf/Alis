@@ -13,6 +13,8 @@
         <BaseOutputPath>$(SolutionDir).build/bin/$(AssemblyName)/</BaseOutputPath>
         <BaseIntermediateOutputPath>$(SolutionDir).build/obj/$(AssemblyName)/</BaseIntermediateOutputPath>
     </PropertyGroup>
+    
+    
 
     <ItemGroup>
         <Compile Remove="bin/**" />
@@ -21,6 +23,11 @@
         <Compile Remove="obj/**" />
         <EmbeddedResource Remove="obj/**" />
         <None Remove="obj/**" />
+
+        <Content Include="Runtimes/**" LinkBase="Runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
     </ItemGroup>
     
 </Project>
