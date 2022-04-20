@@ -319,7 +319,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{9C16
 		support.md = support.md
 		.config\alis.props = .config\alis.props
 		.config\assets.props = .config\assets.props
-		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ads.Sample", "4 - operation\ads\alis.core.ads.sample\Alis.Core.Ads.Sample.csproj", "{73B5A608-CBBF-48BE-9304-58337D514E85}"
@@ -502,6 +501,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Updater.Test.Benc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Fluent", "6 - ideation\fluent\alis.aspect.fluent\Alis.Aspect.Fluent.csproj", "{B733C64D-E512-4E42-9C01-EC85520A30B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Game", "1 - presentation\templates\alis.game\Alis.Game.csproj", "{E17580BA-3BE1-4E77-8449-ACB4F7FBFE17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		win|x64 = win|x64
@@ -512,6 +513,7 @@ Global
 		ios|x64 = ios|x64
 		ios|x86 = ios|x86
 		ios|ARM = ios|ARM
+		ios|iPhoneSimulator = ios|iPhoneSimulator
 		linux|ARM64 = linux|ARM64
 		linux|x64 = linux|x64
 		linux|x86 = linux|x86
@@ -7766,6 +7768,10 @@ Global
 		{24BBF12D-357C-4EFA-9C95-055EA57C5550}.osx|ARM.Build.0 = osx|ARM
 		{24BBF12D-357C-4EFA-9C95-055EA57C5550}.ios|ARM.ActiveCfg = ios|ARM
 		{24BBF12D-357C-4EFA-9C95-055EA57C5550}.ios|ARM.Build.0 = ios|ARM
+		{E17580BA-3BE1-4E77-8449-ACB4F7FBFE17}.ios|ARM64.ActiveCfg = Debug|iPhoneSimulator
+		{E17580BA-3BE1-4E77-8449-ACB4F7FBFE17}.ios|ARM64.Build.0 = Debug|iPhoneSimulator
+		{E17580BA-3BE1-4E77-8449-ACB4F7FBFE17}.ios|iPhoneSimulator.ActiveCfg = ios|iPhoneSimulator
+		{E17580BA-3BE1-4E77-8449-ACB4F7FBFE17}.ios|iPhoneSimulator.Build.0 = ios|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -7992,6 +7998,7 @@ Global
 		{50603B33-ADCE-4AF6-8FD4-12F93A1A8B88} = {E7590A83-04FE-4526-B413-78830E1E6DB9}
 		{F787D04B-11A0-493D-ABC8-8F4F50711376} = {E7590A83-04FE-4526-B413-78830E1E6DB9}
 		{B733C64D-E512-4E42-9C01-EC85520A30B6} = {F4941B2D-EABF-4727-98D9-0A61E08C74A5}
+		{E17580BA-3BE1-4E77-8449-ACB4F7FBFE17} = {CEEFD1CD-A75C-4F30-A4BE-BE712F8DD292}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5140EC98-289B-4148-B559-C500235CFC6B}
