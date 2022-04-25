@@ -6,4 +6,10 @@
         <ImplicitUsings>true</ImplicitUsings>
         <SupportedOSPlatformVersion>14.2</SupportedOSPlatformVersion>
     </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)/2 - application/alis/alis/Alis.csproj" />
+    </ItemGroup>
+
+    
 </Project>

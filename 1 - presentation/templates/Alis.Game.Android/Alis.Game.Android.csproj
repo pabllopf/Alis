@@ -9,4 +9,8 @@
         <ApplicationVersion>1</ApplicationVersion>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     </PropertyGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="$(SolutionDir)/2 - application/alis/alis/Alis.csproj" />
+    </ItemGroup>
 </Project>
