@@ -4,7 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>9</LangVersion>
         <Configurations>win;osx;linux;ios;android;</Configurations>
-        <Platforms>x64;x86;ARM64;ARM</Platforms>
+        <Platforms>x64;x86;ARM64;ARM;iPhoneSimulator</Platforms>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
@@ -14,8 +14,6 @@
         <BaseIntermediateOutputPath>$(SolutionDir).build/obj/$(AssemblyName)/</BaseIntermediateOutputPath>
     </PropertyGroup>
     
-    
-
     <ItemGroup>
         <Compile Remove="bin/**" />
         <EmbeddedResource Remove="bin/**" />

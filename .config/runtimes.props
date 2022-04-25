@@ -59,6 +59,10 @@
         <DefineConstants>ios</DefineConstants>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ios|iPhoneSimulator' ">
+        <DefineConstants>ios</DefineConstants>
+    </PropertyGroup>
+
     <!-- ANDROID CONFIG -->
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'android|ARM64' ">
         <RuntimeIdentifier>android-arm64</RuntimeIdentifier>
