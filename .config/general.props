@@ -9,11 +9,6 @@
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     
-    <PropertyGroup>
-        <BaseOutputPath>$(SolutionDir).build/bin/$(AssemblyName)/</BaseOutputPath>
-        <BaseIntermediateOutputPath>$(SolutionDir).build/obj/$(AssemblyName)/</BaseIntermediateOutputPath>
-    </PropertyGroup>
-    
     <ItemGroup>
         <Compile Remove="bin/**" />
         <EmbeddedResource Remove="bin/**" />

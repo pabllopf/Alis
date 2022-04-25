@@ -1,10 +1,27 @@
 namespace Alis.Game.IOS;
 
+/// <summary>
+
+/// The app delegate class
+
+/// </summary>
+
+/// <seealso cref="UIApplicationDelegate"/>
+
 [Register("AppDelegate")]
 public class AppDelegate : UIApplicationDelegate
 {
+    /// <summary>
+    /// Gets or sets the value of the window
+    /// </summary>
     public override UIWindow? Window { get; set; }
 
+    /// <summary>
+    /// Describes whether this instance finished launching
+    /// </summary>
+    /// <param name="application">The application</param>
+    /// <param name="launchOptions">The launch options</param>
+    /// <returns>The bool</returns>
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {
         // create a new window instance based on the screen size

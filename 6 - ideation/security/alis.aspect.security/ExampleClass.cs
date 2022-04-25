@@ -29,6 +29,9 @@
 
 namespace Alis.Base
 {
+    /// <summary>
+    /// The example class
+    /// </summary>
     public class ExampleClass
     {
     

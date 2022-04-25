@@ -29,6 +29,9 @@
 
 namespace Alis.Aspect.Math
 {
+    /// <summary>
+    /// The example class
+    /// </summary>
     public class Example
     {
         

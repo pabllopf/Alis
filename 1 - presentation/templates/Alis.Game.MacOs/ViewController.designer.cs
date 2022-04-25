@@ -7,9 +7,18 @@
 
 namespace Alis.Game.MacOs;
 
+/// <summary>
+
+/// The view controller class
+
+/// </summary>
+
 [Register("ViewController")]
 partial class ViewController
 {
+    /// <summary>
+    /// Releases the designer outlets
+    /// </summary>
     void ReleaseDesignerOutlets()
     {
     }

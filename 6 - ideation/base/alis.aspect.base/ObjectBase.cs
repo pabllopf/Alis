@@ -29,6 +29,9 @@
 
 namespace Alis.Base
 {
+    /// <summary>
+    /// The object base class
+    /// </summary>
     public class ObjectBase
     {
     
