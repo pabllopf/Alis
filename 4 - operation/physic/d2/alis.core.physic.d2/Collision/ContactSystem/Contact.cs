@@ -47,6 +47,50 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
     public class Contact
     {
         /// <summary>
+        ///     The edge shape
+        /// </summary>
+        private static readonly EdgeShape Edge = new EdgeShape();
+
+        /// <summary>
+        ///     The not supported
+        /// </summary>
+        private static readonly ContactType[,] Registers =
+        {
+            {
+                ContactType.Circle,
+                ContactType.EdgeAndCircle,
+                ContactType.PolygonAndCircle,
+                ContactType.ChainAndCircle
+            },
+            {
+                ContactType.EdgeAndCircle,
+                ContactType.NotSupported,
+
+                // 1,1 is invalid (no ContactType.Edge)
+                ContactType.EdgeAndPolygon,
+                ContactType.NotSupported
+
+                // 1,3 is invalid (no ContactType.EdgeAndLoop)
+            },
+            {
+                ContactType.PolygonAndCircle,
+                ContactType.EdgeAndPolygon,
+                ContactType.Polygon,
+                ContactType.ChainAndPolygon
+            },
+            {
+                ContactType.ChainAndCircle,
+                ContactType.NotSupported,
+
+                // 3,1 is invalid (no ContactType.EdgeAndLoop)
+                ContactType.ChainAndPolygon,
+                ContactType.NotSupported
+
+                // 3,3 is invalid (no ContactType.Loop)
+            }
+        };
+
+        /// <summary>
         ///     The fixture
         /// </summary>
         private Fixture fixtureA;
@@ -280,50 +324,6 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
         ///     Gets the value of the filter flag
         /// </summary>
         internal bool FilterFlag => (Flags & ContactFlags.FilterFlag) == ContactFlags.FilterFlag;
-
-        /// <summary>
-        ///     The edge shape
-        /// </summary>
-        private static readonly EdgeShape Edge = new EdgeShape();
-
-        /// <summary>
-        ///     The not supported
-        /// </summary>
-        private static readonly ContactType[,] Registers =
-        {
-            {
-                ContactType.Circle,
-                ContactType.EdgeAndCircle,
-                ContactType.PolygonAndCircle,
-                ContactType.ChainAndCircle
-            },
-            {
-                ContactType.EdgeAndCircle,
-                ContactType.NotSupported,
-
-                // 1,1 is invalid (no ContactType.Edge)
-                ContactType.EdgeAndPolygon,
-                ContactType.NotSupported
-
-                // 1,3 is invalid (no ContactType.EdgeAndLoop)
-            },
-            {
-                ContactType.PolygonAndCircle,
-                ContactType.EdgeAndPolygon,
-                ContactType.Polygon,
-                ContactType.ChainAndPolygon
-            },
-            {
-                ContactType.ChainAndCircle,
-                ContactType.NotSupported,
-
-                // 3,1 is invalid (no ContactType.EdgeAndLoop)
-                ContactType.ChainAndPolygon,
-                ContactType.NotSupported
-
-                // 3,3 is invalid (no ContactType.Loop)
-            }
-        };
 
         /// <summary>
         ///     Resets the restitution
@@ -601,7 +601,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             if (pool.Count > 0)
             {
                 c = pool.Dequeue();
-                if ((type1 >= type2 || type1 == ShapeType.Edge && type2 == ShapeType.Polygon) &&
+                if ((type1 >= type2 || (type1 == ShapeType.Edge && type2 == ShapeType.Polygon)) &&
                     !(type2 == ShapeType.Edge && type1 == ShapeType.Polygon))
                 {
                     c.Reset(fixtureA, indexA, fixtureB, indexB);
@@ -614,7 +614,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
             else
             {
                 // Edge+Polygon is non-symmetrical due to the way Erin handles collision type registration.
-                if ((type1 >= type2 || type1 == ShapeType.Edge && type2 == ShapeType.Polygon) &&
+                if ((type1 >= type2 || (type1 == ShapeType.Edge && type2 == ShapeType.Polygon)) &&
                     !(type2 == ShapeType.Edge && type1 == ShapeType.Polygon))
                 {
                     c = new Contact(fixtureA, indexA, fixtureB, indexB);

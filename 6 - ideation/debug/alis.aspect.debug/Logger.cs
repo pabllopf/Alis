@@ -37,7 +37,7 @@ using System.Text.Json;
 namespace Alis.Tools
 {
     /// <summary>
-    /// The logger class
+    ///     The logger class
     /// </summary>
     public static class Logger
     {

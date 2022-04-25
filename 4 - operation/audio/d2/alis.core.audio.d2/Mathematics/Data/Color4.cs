@@ -39,7 +39,8 @@ namespace Alis.Core.Audio2D.Mathematics.Data
     /// <summary>
     ///     Represents a color with 4 floating-point components (R, G, B, A).
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Color4 : IEquatable<Color4>
     {
         /// <summary>
@@ -118,7 +119,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="right">The right-hand side of the comparison.</param>
         /// <returns>True if left is equal to right; false otherwise.</returns>
         [Pure]
-        public static bool operator ==(Color4 left, Color4 right) => left.Equals(right);
+        public static bool operator ==(Color4 left, Color4 right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares the specified Color4 structures for inequality.
@@ -127,7 +131,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="right">The right-hand side of the comparison.</param>
         /// <returns>True if left is not equal to right; false otherwise.</returns>
         [Pure]
-        public static bool operator !=(Color4 left, Color4 right) => !left.Equals(right);
+        public static bool operator !=(Color4 left, Color4 right)
+        {
+            return !left.Equals(right);
+        }
 
         /// <summary>
         ///     Converts the specified System.Drawing.Color to a Color4 structure.
@@ -135,7 +142,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="color">The System.Drawing.Color to convert.</param>
         /// <returns>A new Color4 structure containing the converted components.</returns>
         [Pure]
-        public static implicit operator Color4(Color color) => new Color4(color.R, color.G, color.B, color.A);
+        public static implicit operator Color4(Color color)
+        {
+            return new Color4(color.R, color.G, color.B, color.A);
+        }
 
         /// <summary>
         ///     Converts the specified Color4 to a System.Drawing.Color structure.
@@ -143,20 +153,26 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="color">The Color4 to convert.</param>
         /// <returns>A new System.Drawing.Color structure containing the converted components.</returns>
         [Pure]
-        public static explicit operator Color(Color4 color) =>
-            Color.FromArgb(
+        public static explicit operator Color(Color4 color)
+        {
+            return Color.FromArgb(
                 (int) (color.A * byte.MaxValue),
                 (int) (color.R * byte.MaxValue),
                 (int) (color.G * byte.MaxValue),
                 (int) (color.B * byte.MaxValue));
+        }
 
         /// <summary>
         ///     Returns this Color4 as a Vector4. The resulting struct will have XYZW mapped to RGBA, in that order.
         /// </summary>
         /// <param name="c">The Color4 to convert.</param>
         /// <returns>The Color4, converted into a Vector4.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining), Pure]
-        public static explicit operator Vector4(Color4 c) => Unsafe.As<Color4, Vector4>(ref c);
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [Pure]
+        public static explicit operator Vector4(Color4 c)
+        {
+            return Unsafe.As<Color4, Vector4>(ref c);
+        }
 
         /// <summary>
         ///     Compares whether this Color4 structure is equal to the specified object.
@@ -164,13 +180,19 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="obj">An object to compare to.</param>
         /// <returns>True obj is a Color4 structure with the same components as this Color4; false otherwise.</returns>
         [Pure]
-        public override bool Equals(object obj) => obj is Color4 && Equals((Color4) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Color4 && Equals((Color4) obj);
+        }
 
         /// <summary>
         ///     Calculates the hash code for this Color4 structure.
         /// </summary>
         /// <returns>A System.Int32 containing the hashcode of this Color4 structure.</returns>
-        public override int GetHashCode() => HashCode.Combine(R, G, B, A);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(R, G, B, A);
+        }
 
         /// <summary>
         ///     Creates a System.String that describes this Color4 structure.
@@ -1425,10 +1447,12 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="other">The Color4 structure to compare to.</param>
         /// <returns>True if both Color4 structures contain the same components; false otherwise.</returns>
         [Pure]
-        public bool Equals(Color4 other) =>
-            R == other.R &&
-            G == other.G &&
-            B == other.B &&
-            A == other.A;
+        public bool Equals(Color4 other)
+        {
+            return R == other.R &&
+                   G == other.G &&
+                   B == other.B &&
+                   A == other.A;
+        }
     }
 }

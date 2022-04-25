@@ -112,12 +112,17 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         ///     MM:  This seems to be used by LocateNode to guess a position in the implicit linked list of
         ///     AdvancingFrontNodes near x Removed an overload that depended on this being exact
         /// </summary>
-        private AdvancingFrontNode FindSearchNode(double x) =>
+        private AdvancingFrontNode FindSearchNode(double x)
+        {
             // TODO: implement BST index 
-            Search;
+            return Search;
+        }
 
         /// <summary>We use a balancing tree to locate a node smaller or equal to given key value</summary>
-        public AdvancingFrontNode LocateNode(TriangulationPoint point) => LocateNode(point.X);
+        public AdvancingFrontNode LocateNode(TriangulationPoint point)
+        {
+            return LocateNode(point.X);
+        }
 
         /// <summary>
         ///     Locates the node using the specified x

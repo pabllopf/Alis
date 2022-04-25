@@ -71,6 +71,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="edge">The edge</param>
         /// <returns>The sink</returns>
-        public override Sink Locate(Edge edge) => this;
+        public override Sink Locate(Edge edge)
+        {
+            return this;
+        }
     }
 }

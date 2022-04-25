@@ -44,7 +44,10 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <summary>
         ///     Initializes a new instance of the <see cref="Graph{T}" /> class
         /// </summary>
-        public Graph() => comparer = EqualityComparer<T>.Default;
+        public Graph()
+        {
+            comparer = EqualityComparer<T>.Default;
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Graph{T}" /> class
@@ -83,7 +86,10 @@ namespace Alis.Core.Systems.Physics2D.Shared
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         /// <summary>Add a value to the graph</summary>
         /// <remarks>Note that this method is O(n) in worst case.</remarks>
@@ -121,7 +127,10 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <summary>Check if the specified value is contained within the graph.</summary>
         /// <remarks>Note that this method is O(n) in worst case.</remarks>
         /// <returns>True if it found the value, otherwise false.</returns>
-        public bool Contains(T value) => Find(value) != null;
+        public bool Contains(T value)
+        {
+            return Find(value) != null;
+        }
 
         /// <summary>Finds the specified value</summary>
         /// <remarks>Note that this method is O(n) in worst case.</remarks>

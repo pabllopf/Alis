@@ -70,23 +70,31 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <summary>The equal operator</summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
-        public static bool operator ==(MassData left, MassData right) =>
-            Math.Abs(left.Area - right.Area) < 0.1f &&
-            Math.Abs(left.Mass - right.Mass) < 0.1f &&
-            left.Centroid == right.Centroid &&
-            Math.Abs(left.Inertia - right.Inertia) < 0.1f;
+        public static bool operator ==(MassData left, MassData right)
+        {
+            return Math.Abs(left.Area - right.Area) < 0.1f &&
+                   Math.Abs(left.Mass - right.Mass) < 0.1f &&
+                   left.Centroid == right.Centroid &&
+                   Math.Abs(left.Inertia - right.Inertia) < 0.1f;
+        }
 
         /// <summary>The not equal operator</summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
-        public static bool operator !=(MassData left, MassData right) => !(left == right);
+        public static bool operator !=(MassData left, MassData right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        public bool Equals(MassData other) => this == other;
+        public bool Equals(MassData other)
+        {
+            return this == other;
+        }
 
         /// <summary>
         ///     Describes whether this instance equals

@@ -339,7 +339,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt) => 0.0f;
+        public override float GetReactionTorque(float invDt)
+        {
+            return 0.0f;
+        }
 
         /// <summary>
         ///     Inits the velocity constraints using the specified data

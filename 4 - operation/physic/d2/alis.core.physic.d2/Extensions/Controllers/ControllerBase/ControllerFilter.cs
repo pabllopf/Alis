@@ -56,6 +56,9 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase
         /// <summary>Determines whether this body ignores the specified controller.</summary>
         /// <param name="controller">The controller type.</param>
         /// <returns><c>true</c> if the body has the specified flag; otherwise, <c>false</c>.</returns>
-        public bool IsControllerIgnored(ControllerType controller) => (ControllerFlags & controller) == controller;
+        public bool IsControllerIgnored(ControllerType controller)
+        {
+            return (ControllerFlags & controller) == controller;
+        }
     }
 }

@@ -44,7 +44,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <summary>
         ///     Implicit cast from <see cref="Vector2f" /> to <see cref="Vec2" />
         /// </summary>
-        public static implicit operator Vec2(Vector2f vec) => new Vec2(vec);
+        public static implicit operator Vec2(Vector2f vec)
+        {
+            return new Vec2(vec);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -90,7 +93,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <summary>
         ///     Implicit cast from <see cref="Vector2i" /> to <see cref="Ivec2" />
         /// </summary>
-        public static implicit operator Ivec2(Vector2i vec) => new Ivec2(vec);
+        public static implicit operator Ivec2(Vector2i vec)
+        {
+            return new Ivec2(vec);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -164,7 +170,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <summary>
         ///     Implicit cast from <see cref="Vector3f" /> to <see cref="Vec3" />
         /// </summary>
-        public static implicit operator Vec3(Vector3f vec) => new Vec3(vec);
+        public static implicit operator Vec3(Vector3f vec)
+        {
+            return new Vec3(vec);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>

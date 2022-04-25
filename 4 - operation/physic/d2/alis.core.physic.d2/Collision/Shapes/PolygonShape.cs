@@ -154,7 +154,7 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
             for (int i = 1; i < n; ++i)
             {
                 float x = ps[i].X;
-                if (x > x0 || x == x0 && ps[i].Y < ps[i0].Y)
+                if (x > x0 || (x == x0 && ps[i].Y < ps[i0].Y))
                 {
                     i0 = i;
                     x0 = x;
@@ -395,8 +395,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
-            TestPointHelper.TestPointPolygon(VerticesPrivate, NormalsPrivate, ref point, ref transform);
+        public override bool TestPoint(ref Transform transform, ref Vector2 point)
+        {
+            return TestPointHelper.TestPointPolygon(VerticesPrivate, NormalsPrivate, ref point, ref transform);
+        }
 
         /// <summary>
         ///     Describes whether this instance ray cast
@@ -407,8 +409,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
-            out RayCastOutput output) =>
-            RayCastHelper.RayCastPolygon(VerticesPrivate, NormalsPrivate, ref input, ref transform, out output);
+            out RayCastOutput output)
+        {
+            return RayCastHelper.RayCastPolygon(VerticesPrivate, NormalsPrivate, ref input, ref transform, out output);
+        }
 
         /// <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
         /// <param name="transform">The world transform of the shape.</param>

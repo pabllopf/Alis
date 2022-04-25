@@ -41,13 +41,19 @@ namespace Alis.Core.Components
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
-        public Animation() => Textures = new List<Texture>();
+        public Animation()
+        {
+            Textures = new List<Texture>();
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         /// <param name="textures">The textures</param>
-        public Animation(List<Texture> textures) => Textures = textures;
+        public Animation(List<Texture> textures)
+        {
+            Textures = textures;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the index
@@ -68,7 +74,10 @@ namespace Alis.Core.Components
         ///     Describes whether this instance has next
         /// </summary>
         /// <returns>The bool</returns>
-        public bool HasNext() => Textures.Count > 0;
+        public bool HasNext()
+        {
+            return Textures.Count > 0;
+        }
 
         /// <summary>
         ///     Nexts the texture
@@ -96,6 +105,9 @@ namespace Alis.Core.Components
         ///     Textures this instance
         /// </summary>
         /// <returns>The texture</returns>
-        public Texture Texture() => Textures[Index];
+        public Texture Texture()
+        {
+            return Textures[Index];
+        }
     }
 }

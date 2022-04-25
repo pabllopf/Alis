@@ -40,7 +40,6 @@ namespace RocketLeague
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
         }
     }
 }

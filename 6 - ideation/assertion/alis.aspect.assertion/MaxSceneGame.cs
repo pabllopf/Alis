@@ -35,7 +35,7 @@ namespace Alis.Exceptions
     ///     The max scene game class
     /// </summary>
     /// <seealso cref="Exception" />
-    internal class MaxSceneGame : System.Exception
+    internal class MaxSceneGame : Exception
     {
     }
 }

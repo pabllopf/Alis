@@ -51,32 +51,53 @@ namespace Alis.Core.Audio2D
         ///     Initializes a new instance of the <see cref="ALCaptureDevice" /> class
         /// </summary>
         /// <param name="handle">The handle</param>
-        public ALCaptureDevice(IntPtr handle) => Handle = handle;
+        public ALCaptureDevice(IntPtr handle)
+        {
+            Handle = handle;
+        }
 
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        public override bool Equals(object obj) => obj is ALCaptureDevice device && Equals(device);
+        public override bool Equals(object obj)
+        {
+            return obj is ALCaptureDevice device && Equals(device);
+        }
 
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        public bool Equals([AllowNull] ALCaptureDevice other) => Handle.Equals(other.Handle);
+        public bool Equals([AllowNull] ALCaptureDevice other)
+        {
+            return Handle.Equals(other.Handle);
+        }
 
         /// <summary>
         ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
-        public override int GetHashCode() => HashCode.Combine(Handle);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Handle);
+        }
 
-        public static bool operator ==(ALCaptureDevice left, ALCaptureDevice right) => left.Equals(right);
+        public static bool operator ==(ALCaptureDevice left, ALCaptureDevice right)
+        {
+            return left.Equals(right);
+        }
 
-        public static bool operator !=(ALCaptureDevice left, ALCaptureDevice right) => !(left == right);
+        public static bool operator !=(ALCaptureDevice left, ALCaptureDevice right)
+        {
+            return !(left == right);
+        }
 
-        public static implicit operator IntPtr(ALCaptureDevice device) => device.Handle;
+        public static implicit operator IntPtr(ALCaptureDevice device)
+        {
+            return device.Handle;
+        }
     }
 }

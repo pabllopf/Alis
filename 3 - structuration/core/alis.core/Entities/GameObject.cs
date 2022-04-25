@@ -162,123 +162,174 @@ namespace Alis.Core.Entities
             return (T) (Components.Find(component => component.GetType().Name == name) ??
                         throw new NullReferenceException());
         }
-        
-        /// <summary>
-        /// Inits this instance
-        /// </summary>
-        public void Init() => Components.ForEach(component => component.Init());
-        
-        /// <summary>
-        /// Befores the awake
-        /// </summary>
-        public void BeforeAwake()=> Components.ForEach(component => component.BeforeAwake());
-        
-        /// <summary>Awakes this instance.</summary>
-        public void Awake() => Components.ForEach(component => component.Awake());
 
         /// <summary>
-        /// Afters the awake
+        ///     Inits this instance
         /// </summary>
-        public void AfterAwake() => Components.ForEach(component => component.AfterAwake());
-        
-        /// <summary>
-        /// Befores the start
-        /// </summary>
-        public void BeforeStart() => Components.ForEach(component => component.BeforeStart());
-        
-        /// <summary>Starts this instance.</summary>
-        public void Start() => Components.ForEach(component => component.Start());
-
-        /// <summary>
-        /// Afters the start
-        /// </summary>
-        public void AfterStart()=> Components.ForEach(component => component.AfterStart());
-        
-        /// <summary>Befores the update.</summary>
-        public void BeforeUpdate() => Components.ForEach(component =>
+        public void Init()
         {
-            if (component.IsActive)
+            Components.ForEach(component => component.Init());
+        }
+
+        /// <summary>
+        ///     Befores the awake
+        /// </summary>
+        public void BeforeAwake()
+        {
+            Components.ForEach(component => component.BeforeAwake());
+        }
+
+        /// <summary>Awakes this instance.</summary>
+        public void Awake()
+        {
+            Components.ForEach(component => component.Awake());
+        }
+
+        /// <summary>
+        ///     Afters the awake
+        /// </summary>
+        public void AfterAwake()
+        {
+            Components.ForEach(component => component.AfterAwake());
+        }
+
+        /// <summary>
+        ///     Befores the start
+        /// </summary>
+        public void BeforeStart()
+        {
+            Components.ForEach(component => component.BeforeStart());
+        }
+
+        /// <summary>Starts this instance.</summary>
+        public void Start()
+        {
+            Components.ForEach(component => component.Start());
+        }
+
+        /// <summary>
+        ///     Afters the start
+        /// </summary>
+        public void AfterStart()
+        {
+            Components.ForEach(component => component.AfterStart());
+        }
+
+        /// <summary>Befores the update.</summary>
+        public void BeforeUpdate()
+        {
+            Components.ForEach(component =>
             {
-                component.BeforeUpdate();
-            }
-        });
+                if (component.IsActive)
+                {
+                    component.BeforeUpdate();
+                }
+            });
+        }
 
         /// <summary>Updates this instance.</summary>
-        public void Update() => Components.ForEach(component =>
+        public void Update()
         {
-            if (component.IsActive)
+            Components.ForEach(component =>
             {
-                component.Update();
-            }
-        });
+                if (component.IsActive)
+                {
+                    component.Update();
+                }
+            });
+        }
 
         /// <summary>Afters the update.</summary>
-        public void AfterUpdate() => Components.ForEach(component =>
+        public void AfterUpdate()
         {
-            if (component.IsActive)
+            Components.ForEach(component =>
             {
-                component.AfterUpdate();
-            }
-        });
+                if (component.IsActive)
+                {
+                    component.AfterUpdate();
+                }
+            });
+        }
 
         /// <summary>Afters the update.</summary>
-        public void FixedUpdate() => Components.ForEach(component =>
+        public void FixedUpdate()
         {
-            if (component.IsActive)
+            Components.ForEach(component =>
             {
-                component.FixedUpdate();
-            }
-        });
+                if (component.IsActive)
+                {
+                    component.FixedUpdate();
+                }
+            });
+        }
 
         /// <summary>
         ///     Dispatches the events.
         /// </summary>
         /// <returns></returns>
-        public void DispatchEvents() => Components.ForEach(component =>
+        public void DispatchEvents()
         {
-            if (component.IsActive)
+            Components.ForEach(component =>
             {
-                component.DispatchEvents();
-            }
-        });
-        
+                if (component.IsActive)
+                {
+                    component.DispatchEvents();
+                }
+            });
+        }
+
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
-        public void Draw() => Components.ForEach(component =>
+        public void Draw()
         {
-            if (component.IsActive)
+            Components.ForEach(component =>
             {
-                component.Draw();
-            }
-        });
+                if (component.IsActive)
+                {
+                    component.Draw();
+                }
+            });
+        }
 
         /// <summary>Stops this instance.</summary>
-        public void Stop() => Components.ForEach(component =>
+        public void Stop()
         {
-            if (component.IsActive)
+            Components.ForEach(component =>
             {
-                component.Stop();
-            }
-        });
+                if (component.IsActive)
+                {
+                    component.Stop();
+                }
+            });
+        }
 
         /// <summary>
         ///     Destroys this instance.
         /// </summary>
         /// <returns></returns>
-        public void Destroy() => Components.ForEach(component =>
+        public void Destroy()
         {
-            if (component.IsActive)
+            Components.ForEach(component =>
             {
-                component.Destroy();
-            }
-        });
+                if (component.IsActive)
+                {
+                    component.Destroy();
+                }
+            });
+        }
 
         /// <summary>Resets this instance.</summary>
-        public void Reset() => Components.ForEach(component => component.Reset());
+        public void Reset()
+        {
+            Components.ForEach(component => component.Reset());
+        }
 
         /// <summary>Exits this instance.</summary>
-        public void Exit() => Components.ForEach(component => component.Exit());
+        public void Exit()
+        {
+            Components.ForEach(component => component.Exit());
+        }
 
         /// <summary>
         ///     Removes the specified component.
@@ -286,7 +337,10 @@ namespace Alis.Core.Entities
         /// <param name="component">The component.</param>
         /// <returns></returns>
         /// <exception cref="ComponentDontExits"></exception>
-        public void Remove(Component component) => Components.Remove(component);
+        public void Remove(Component component)
+        {
+            Components.Remove(component);
+        }
 
         /// <summary>
         ///     Determines whether this instance contains the object.
@@ -295,15 +349,20 @@ namespace Alis.Core.Entities
         /// <returns>
         ///     <c>true</c> if [contains]; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains<T>() where T : Component =>
-            Components.Find(component => component.GetType() == typeof(T)) is not null;
+        public bool Contains<T>() where T : Component
+        {
+            return Components.Find(component => component.GetType() == typeof(T)) is not null;
+        }
 
         /// <summary>
         ///     Describes whether this instance contains
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The bool</returns>
-        public bool Contains(string name) => Components.Find(component => component.GetType().Name == name) is not null;
+        public bool Contains(string name)
+        {
+            return Components.Find(component => component.GetType().Name == name) is not null;
+        }
 
         /// <summary>
         ///     Determines whether this instance contains the object.
@@ -312,7 +371,10 @@ namespace Alis.Core.Entities
         /// <returns>
         ///     <c>true</c> if [contains] [the specified component]; otherwise, <c>false</c>.
         /// </returns>
-        public bool Contains(Component component) => Components.Contains(component);
+        public bool Contains(Component component)
+        {
+            return Components.Contains(component);
+        }
 
         /// <summary>
         ///     Ons the press key using the specified key
@@ -355,20 +417,29 @@ namespace Alis.Core.Entities
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnPressDownKey(object? sender, string e) => OnPressDownKey(e);
+        private void OnPressDownKey(object? sender, string e)
+        {
+            OnPressDownKey(e);
+        }
 
         /// <summary>
         ///     Ons the release key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnReleaseKey(object? sender, string e) => OnReleaseKey(e);
+        private void OnReleaseKey(object? sender, string e)
+        {
+            OnReleaseKey(e);
+        }
 
         /// <summary>
         ///     Ons the press key using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void OnPressKey(object? sender, string e) => OnPressKey(e);
+        private void OnPressKey(object? sender, string e)
+        {
+            OnPressKey(e);
+        }
     }
 }

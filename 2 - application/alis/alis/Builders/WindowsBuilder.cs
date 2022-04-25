@@ -48,7 +48,10 @@ namespace Alis.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The window</returns>
-        public Window Build() => Game.Setting.Window;
+        public Window Build()
+        {
+            return Game.Setting.Window;
+        }
 
         /// <summary>
         ///     Resolutions the x

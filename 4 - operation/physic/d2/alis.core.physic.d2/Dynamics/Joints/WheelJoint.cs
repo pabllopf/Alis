@@ -532,22 +532,30 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
 
         /// <summary>Gets the torque of the motor</summary>
         /// <param name="invDt">inverse delta time</param>
-        public float GetMotorTorque(float invDt) => invDt * motorImpulse;
+        public float GetMotorTorque(float invDt)
+        {
+            return invDt * motorImpulse;
+        }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2 GetReactionForce(float invDt) =>
-            invDt * (impulse * ay + (springImpulse + lowerImpulse - upperImpulse) * ax);
+        public override Vector2 GetReactionForce(float invDt)
+        {
+            return invDt * (impulse * ay + (springImpulse + lowerImpulse - upperImpulse) * ax);
+        }
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt) => invDt * motorImpulse;
+        public override float GetReactionTorque(float invDt)
+        {
+            return invDt * motorImpulse;
+        }
 
         /// <summary>
         ///     Inits the velocity constraints using the specified data

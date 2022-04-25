@@ -56,8 +56,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting
         /// <param name="polygon2">The polygon</param>
         /// <param name="error">The error</param>
         /// <returns>A list of vertices</returns>
-        public static List<Vertices> Union(Vertices polygon1, Vertices polygon2, out PolyClipError error) =>
-            Execute(polygon1, polygon2, PolyClipType.Union, out error);
+        public static List<Vertices> Union(Vertices polygon1, Vertices polygon2, out PolyClipError error)
+        {
+            return Execute(polygon1, polygon2, PolyClipType.Union, out error);
+        }
 
         /// <summary>
         ///     Differences the polygon 1
@@ -66,8 +68,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting
         /// <param name="polygon2">The polygon</param>
         /// <param name="error">The error</param>
         /// <returns>A list of vertices</returns>
-        public static List<Vertices> Difference(Vertices polygon1, Vertices polygon2, out PolyClipError error) =>
-            Execute(polygon1, polygon2, PolyClipType.Difference, out error);
+        public static List<Vertices> Difference(Vertices polygon1, Vertices polygon2, out PolyClipError error)
+        {
+            return Execute(polygon1, polygon2, PolyClipType.Difference, out error);
+        }
 
         /// <summary>
         ///     Intersects the polygon 1
@@ -76,8 +80,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting
         /// <param name="polygon2">The polygon</param>
         /// <param name="error">The error</param>
         /// <returns>A list of vertices</returns>
-        public static List<Vertices> Intersect(Vertices polygon1, Vertices polygon2, out PolyClipError error) =>
-            Execute(polygon1, polygon2, PolyClipType.Intersect, out error);
+        public static List<Vertices> Intersect(Vertices polygon1, Vertices polygon2, out PolyClipError error)
+        {
+            return Execute(polygon1, polygon2, PolyClipType.Intersect, out error);
+        }
 
         /// <summary>
         ///     Implements "A new algorithm for Boolean operations on general polygons" available here:
@@ -437,8 +443,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting
 
         /// <summary>Needed for sorting multiple intersections points on the same edge.</summary>
         /// <remarks>Used by method <c>CalculateIntersections()</c>.</remarks>
-        private static float GetAlpha(Vector2 start, Vector2 end, Vector2 point) =>
-            (point - start).LengthSquared() / (end - start).LengthSquared();
+        private static float GetAlpha(Vector2 start, Vector2 end, Vector2 point)
+        {
+            return (point - start).LengthSquared() / (end - start).LengthSquared();
+        }
 
         /// <summary>Returns the coefficient of a simplex.</summary>
         /// <remarks>Used by method <c>CalculateSimplicalChain()</c>.</remarks>
@@ -489,8 +497,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting
         /// <param name="vec1">The vec</param>
         /// <param name="vec2">The vec</param>
         /// <returns>The bool</returns>
-        private static bool VectorEqual(Vector2 vec1, Vector2 vec2) =>
-            (vec2 - vec1).LengthSquared() <= ClipperEpsilonSquared;
+        private static bool VectorEqual(Vector2 vec1, Vector2 vec2)
+        {
+            return (vec2 - vec1).LengthSquared() <= ClipperEpsilonSquared;
+        }
 
         /// <summary>Specifies an Edge. Edges are used to represent simplicies in simplical chains</summary>
         private sealed class Edge
@@ -520,9 +530,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting
             ///     Gets the center
             /// </summary>
             /// <returns>The vector</returns>
-            public Vector2 GetCenter() => (EdgeStart + EdgeEnd) / 2f;
+            public Vector2 GetCenter()
+            {
+                return (EdgeStart + EdgeEnd) / 2f;
+            }
 
-            public static Edge operator -(Edge e) => new Edge(e.EdgeEnd, e.EdgeStart);
+            public static Edge operator -(Edge e)
+            {
+                return new Edge(e.EdgeEnd, e.EdgeStart);
+            }
 
             /// <summary>
             ///     Describes whether this instance equals
@@ -562,7 +578,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Cutting
             ///     Gets the hash code
             /// </summary>
             /// <returns>The int</returns>
-            public override int GetHashCode() => EdgeStart.GetHashCode() ^ EdgeEnd.GetHashCode();
+            public override int GetHashCode()
+            {
+                return EdgeStart.GetHashCode() ^ EdgeEnd.GetHashCode();
+            }
         }
     }
 }

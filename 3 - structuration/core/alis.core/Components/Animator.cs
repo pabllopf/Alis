@@ -88,13 +88,19 @@ namespace Alis.Core.Components
         ///     Creates the instance
         /// </summary>
         /// <returns>The animator</returns>
-        public static Animator CreateInstance() => Instance;
+        public static Animator CreateInstance()
+        {
+            return Instance;
+        }
 
         /// <summary>
         ///     Adds the animation
         /// </summary>
         /// <param name="animation">The animation</param>
-        public void Add(Animation animation) => Animations.Add(animation);
+        public void Add(Animation animation)
+        {
+            Animations.Add(animation);
+        }
 
         /// <summary>
         ///     Awakes this instance

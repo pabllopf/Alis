@@ -143,14 +143,20 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2 GetReactionForce(float invDt) => Vector2.Zero;
+        public override Vector2 GetReactionForce(float invDt)
+        {
+            return Vector2.Zero;
+        }
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt) => 0;
+        public override float GetReactionTorque(float invDt)
+        {
+            return 0;
+        }
 
         /// <summary>
         ///     Inits the velocity constraints using the specified data
@@ -191,8 +197,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         /// <param name="data">The data</param>
         /// <returns>The bool</returns>
-        internal override bool SolvePositionConstraints(ref SolverData data) =>
+        internal override bool SolvePositionConstraints(ref SolverData data)
+        {
             //no position solving for this joint
-            true;
+            return true;
+        }
     }
 }

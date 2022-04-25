@@ -207,7 +207,7 @@ namespace Alis.Core.Systems.Physics2D.Utilities
                 ua *= oneOverDenom;
 
                 // check if intersection point of the two lines is on line segment 1
-                if (!firstIsSegment || ua >= 0.0f && ua <= 1.0f)
+                if (!firstIsSegment || (ua >= 0.0f && ua <= 1.0f))
                 {
                     // numerator of second equation
                     float ub = b * e - d * f;
@@ -216,7 +216,7 @@ namespace Alis.Core.Systems.Physics2D.Utilities
                     // check if intersection point of the two lines is on line segment 2
                     // means the line segments intersect, since we know it is on
                     // segment 1 as well.
-                    if (!secondIsSegment || ub >= 0.0f && ub <= 1.0f)
+                    if (!secondIsSegment || (ub >= 0.0f && ub <= 1.0f))
                     {
                         // check if they are coincident (no collision in this case)
                         if (ua != 0f || ub != 0f)
@@ -253,9 +253,11 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="secondIsSegment">Set this to true to require that the intersection point be on the second line segment.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
         public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
-            bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint) =>
-            LineIntersect(ref point1,
+            bool firstIsSegment, bool secondIsSegment, out Vector2 intersectionPoint)
+        {
+            return LineIntersect(ref point1,
                 ref point2, ref point3, ref point4, firstIsSegment, secondIsSegment, out intersectionPoint);
+        }
 
         /// <summary>
         ///     This method detects if two line segments intersect, and, if so, the point of intersection. Note: If two line
@@ -268,9 +270,11 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
         public static bool LineIntersect(ref Vector2 point1, ref Vector2 point2, ref Vector2 point3, ref Vector2 point4,
-            out Vector2 intersectionPoint) =>
-            LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
+            out Vector2 intersectionPoint)
+        {
+            return LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
                 out intersectionPoint);
+        }
 
         /// <summary>
         ///     This method detects if two line segments intersect, and, if so, the point of intersection. Note: If two line
@@ -283,9 +287,11 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
         /// <returns>True if an intersection is detected, false otherwise.</returns>
         public static bool LineIntersect(Vector2 point1, Vector2 point2, Vector2 point3, Vector2 point4,
-            out Vector2 intersectionPoint) =>
-            LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
+            out Vector2 intersectionPoint)
+        {
+            return LineIntersect(ref point1, ref point2, ref point3, ref point4, true, true,
                 out intersectionPoint);
+        }
 
         /// <summary>
         ///     Get all intersections between a line segment and a list of vertices representing a polygon. The vertices reuse
@@ -317,7 +323,9 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="point1">The first point of the line segment to test</param>
         /// <param name="point2">The second point of the line segment to test.</param>
         /// <param name="aabb">The AABB that is used for testing intersection.</param>
-        public static Vertices LineSegmentAabbIntersect(ref Vector2 point1, ref Vector2 point2, Aabb aabb) =>
-            LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
+        public static Vertices LineSegmentAabbIntersect(ref Vector2 point1, ref Vector2 point2, Aabb aabb)
+        {
+            return LineSegmentVerticesIntersect(ref point1, ref point2, aabb.Vertices);
+        }
     }
 }

@@ -85,7 +85,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>The total point count</returns>
         ////////////////////////////////////////////////////////////
-        public override uint GetPointCount() => (uint) myPoints.Length;
+        public override uint GetPointCount()
+        {
+            return (uint) myPoints.Length;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -111,7 +114,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="index">Index of the point to get, in range [0 .. PointCount - 1]</param>
         /// <returns>index-th point of the shape</returns>
         ////////////////////////////////////////////////////////////
-        public override Vector2f GetPoint(uint index) => myPoints[index];
+        public override Vector2f GetPoint(uint index)
+        {
+            return myPoints[index];
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>

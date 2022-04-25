@@ -35,7 +35,7 @@ namespace Alis.Exceptions
     ///     The limit of components class
     /// </summary>
     /// <seealso cref="Exception" />
-    internal class LimitOfComponents : System.Exception
+    internal class LimitOfComponents : Exception
     {
     }
 }

@@ -42,6 +42,11 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
     public class SourceLatency : ALBase
     {
         /// <summary>
+        ///     The name of this AL extension.
+        /// </summary>
+        public const string ExtensionName = "AL_SOFT_source_latency";
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="SourceLatency" /> class
         /// </summary>
         static SourceLatency()
@@ -58,15 +63,13 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         }
 
         /// <summary>
-        ///     The name of this AL extension.
-        /// </summary>
-        public const string ExtensionName = "AL_SOFT_source_latency";
-
-        /// <summary>
         ///     Checks if this extension is present.
         /// </summary>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent() => AL.IsExtensionPresent(ExtensionName);
+        public static bool IsExtensionPresent()
+        {
+            return AL.IsExtensionPresent(ExtensionName);
+        }
 
         /// <summary>
         ///     Gets the source using the specified source
@@ -159,8 +162,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        public static unsafe void GetSource(int source, SourceLatencyVector2i param, long* values) =>
+        public static unsafe void GetSource(int source, SourceLatencyVector2i param, long* values)
+        {
             _GetSourcei64vPtr(source, param, values);
+        }
 
         /// <summary>
         ///     The get sourcei 64v ptr delegate
@@ -180,8 +185,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        private static void GetSource(int source, SourceLatencyVector2i param, out long values) =>
+        private static void GetSource(int source, SourceLatencyVector2i param, out long values)
+        {
             _GetSourcei64vRef(source, param, out values);
+        }
 
         /// <summary>
         ///     The get sourcei 64v ref delegate
@@ -201,8 +208,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        public static void GetSource(int source, SourceLatencyVector2i param, long[] values) =>
+        public static void GetSource(int source, SourceLatencyVector2i param, long[] values)
+        {
             _GetSourcei64vArray(source, param, values);
+        }
 
         /// <summary>
         ///     The get sourcei 64v array delegate
@@ -222,8 +231,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        public static unsafe void GetSource(int source, SourceLatencyVector2d param, double* values) =>
+        public static unsafe void GetSource(int source, SourceLatencyVector2d param, double* values)
+        {
             _GetSourcedvPtr(source, param, values);
+        }
 
         /// <summary>
         ///     The get sourcedv ptr delegate
@@ -243,8 +254,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        private static void GetSource(int source, SourceLatencyVector2d param, out double values) =>
+        private static void GetSource(int source, SourceLatencyVector2d param, out double values)
+        {
             _GetSourcedvRef(source, param, out values);
+        }
 
         /// <summary>
         ///     The get sourcedv ref delegate
@@ -264,8 +277,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        public static void GetSource(int source, SourceLatencyVector2d param, double[] values) =>
+        public static void GetSource(int source, SourceLatencyVector2d param, double[] values)
+        {
             _GetSourcedvArray(source, param, values);
+        }
 
         /// <summary>
         ///     The get sourcedv array delegate

@@ -120,7 +120,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Gravity
 
                 foreach (Body controllerBody in Bodies)
                 {
-                    if (worldBody == controllerBody || worldBody.IsStatic && controllerBody.IsStatic ||
+                    if (worldBody == controllerBody || (worldBody.IsStatic && controllerBody.IsStatic) ||
                         !controllerBody.Enabled)
                     {
                         continue;

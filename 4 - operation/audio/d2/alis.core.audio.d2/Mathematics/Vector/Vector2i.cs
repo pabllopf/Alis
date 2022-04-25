@@ -41,7 +41,8 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
     /// <remarks>
     ///     The Vector2i structure is suitable for interoperation with unmanaged code requiring two consecutive integers.
     /// </remarks>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector2i : IEquatable<Vector2i>
     {
         /// <summary>
@@ -407,7 +408,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         ///     Gets a <see cref="Vector2" /> object with the same component values as the <see cref="Vector2i" /> instance.
         /// </summary>
         /// <returns>The resulting <see cref="Vector3" /> instance.</returns>
-        public Vector2 ToVector2() => new Vector2(X, Y);
+        public Vector2 ToVector2()
+        {
+            return new Vector2(X, Y);
+        }
 
         /// <summary>
         ///     Gets a <see cref="Vector2" /> object with the same component values as the <see cref="Vector2i" /> instance.
@@ -523,7 +527,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns>True if both instances are equal; false otherwise.</returns>
-        public static bool operator ==(Vector2i left, Vector2i right) => left.Equals(right);
+        public static bool operator ==(Vector2i left, Vector2i right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares the specified instances for inequality.
@@ -531,7 +538,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns>True if both instances are not equal; false otherwise.</returns>
-        public static bool operator !=(Vector2i left, Vector2i right) => !(left == right);
+        public static bool operator !=(Vector2i left, Vector2i right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2i to OpenTK.Vector2.
@@ -539,7 +549,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2i to convert.</param>
         /// <returns>The resulting Vector2.</returns>
         [Pure]
-        public static implicit operator Vector2(Vector2i vec) => new Vector2(vec.X, vec.Y);
+        public static implicit operator Vector2(Vector2i vec)
+        {
+            return new Vector2(vec.X, vec.Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2i to OpenTK.Vector2d.
@@ -547,7 +560,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2i to convert.</param>
         /// <returns>The resulting Vector2d.</returns>
         [Pure]
-        public static implicit operator Vector2d(Vector2i vec) => new Vector2d(vec.X, vec.Y);
+        public static implicit operator Vector2d(Vector2i vec)
+        {
+            return new Vector2d(vec.X, vec.Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2i to OpenTK.Vector2h.
@@ -555,7 +571,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2i to convert.</param>
         /// <returns>The resulting Vector2h.</returns>
         [Pure]
-        public static explicit operator Vector2h(Vector2i vec) => new Vector2h(vec.X, vec.Y);
+        public static explicit operator Vector2h(Vector2i vec)
+        {
+            return new Vector2h(vec.X, vec.Y);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector2i" /> struct using a tuple containing the component
@@ -564,21 +583,35 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector2i" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector2i((int X, int Y) values) => new Vector2i(values.X, values.Y);
+        public static implicit operator Vector2i((int X, int Y) values)
+        {
+            return new Vector2i(values.X, values.Y);
+        }
 
         /// <inheritdoc />
-        public override string ToString() => string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
+        public override string ToString()
+        {
+            return string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Vector2i && Equals((Vector2i) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Vector2i && Equals((Vector2i) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Vector2i other) =>
-            X == other.X &&
-            Y == other.Y;
+        public bool Equals(Vector2i other)
+        {
+            return X == other.X &&
+                   Y == other.Y;
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(X, Y);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
 
         /// <summary>
         ///     Deconstructs the vector into it's individual components.

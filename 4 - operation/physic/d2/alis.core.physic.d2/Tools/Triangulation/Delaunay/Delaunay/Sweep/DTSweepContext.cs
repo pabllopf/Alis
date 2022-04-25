@@ -34,6 +34,13 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
      */
     internal class DtSweepContext : TriangulationContext
     {
+        // Inital triangle factor, seed triangle will extend 30% of 
+        // PointSet width to both left and right.
+        /// <summary>
+        ///     The alpha
+        /// </summary>
+        private const float Alpha = 0.3f;
+
         /// <summary>
         ///     The dt sweep point comparator
         /// </summary>
@@ -71,13 +78,6 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         ///     Gets or sets the value of the tail
         /// </summary>
         public TriangulationPoint Tail { get; set; }
-
-        // Inital triangle factor, seed triangle will extend 30% of 
-        // PointSet width to both left and right.
-        /// <summary>
-        ///     The alpha
-        /// </summary>
-        private const float Alpha = 0.3f;
 
         /// <summary>
         ///     Removes the from list using the specified triangle
@@ -163,7 +163,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The advancing front node</returns>
-        public AdvancingFrontNode LocateNode(TriangulationPoint point) => AFront.LocateNode(point);
+        public AdvancingFrontNode LocateNode(TriangulationPoint point)
+        {
+            return AFront.LocateNode(point);
+        }
 
         /// <summary>
         ///     Creates the advancing front
@@ -282,8 +285,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Swee
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The triangulation constraint</returns>
-        public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b) =>
-            new DtSweepConstraint(a, b);
+        public override TriangulationConstraint NewConstraint(TriangulationPoint a, TriangulationPoint b)
+        {
+            return new DtSweepConstraint(a, b);
+        }
 
         /// <summary>
         ///     The dt sweep basin class

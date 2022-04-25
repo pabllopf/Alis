@@ -41,7 +41,8 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
     /// <remarks>
     ///     The Vector4i structure is suitable for interoperation with unmanaged code requiring four consecutive integers.
     /// </remarks>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector4i : IEquatable<Vector4i>
     {
         /// <summary>
@@ -1464,7 +1465,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         ///     Gets a <see cref="Vector4" /> object with the same component values as the <see cref="Vector4i" /> instance.
         /// </summary>
         /// <returns>The resulting <see cref="Vector4" /> instance.</returns>
-        public Vector4 ToVector4() => new Vector4(X, Y, Z, W);
+        public Vector4 ToVector4()
+        {
+            return new Vector4(X, Y, Z, W);
+        }
 
         /// <summary>
         ///     Gets a <see cref="Vector4" /> object with the same component values as the <see cref="Vector4i" /> instance.
@@ -1596,7 +1600,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Vector4i left, Vector4i right) => left.Equals(right);
+        public static bool operator ==(Vector4i left, Vector4i right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for inequality.
@@ -1604,7 +1611,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equa lright; false otherwise.</returns>
-        public static bool operator !=(Vector4i left, Vector4i right) => !(left == right);
+        public static bool operator !=(Vector4i left, Vector4i right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     Returns a pointer to the first element of the specified instance.
@@ -1612,7 +1622,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="v">The instance.</param>
         /// <returns>A pointer to the first element of v.</returns>
         [Pure]
-        public static unsafe explicit operator int*(Vector4i v) => &v.X;
+        public static unsafe explicit operator int*(Vector4i v)
+        {
+            return &v.X;
+        }
 
         /// <summary>
         ///     Returns a pointer to the first element of the specified instance.
@@ -1634,7 +1647,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector4i to convert.</param>
         /// <returns>The resulting Vector4.</returns>
         [Pure]
-        public static implicit operator Vector4(Vector4i vec) => new Vector4(vec.X, vec.Y, vec.Z, vec.W);
+        public static implicit operator Vector4(Vector4i vec)
+        {
+            return new Vector4(vec.X, vec.Y, vec.Z, vec.W);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector4i to OpenTK.Vector4d.
@@ -1642,7 +1658,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector4i to convert.</param>
         /// <returns>The resulting Vector4d.</returns>
         [Pure]
-        public static implicit operator Vector4d(Vector4i vec) => new Vector4d(vec.X, vec.Y, vec.Z, vec.W);
+        public static implicit operator Vector4d(Vector4i vec)
+        {
+            return new Vector4d(vec.X, vec.Y, vec.Z, vec.W);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector4i to OpenTK.Vector4h.
@@ -1650,7 +1669,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector4i to convert.</param>
         /// <returns>The resulting Vector4h.</returns>
         [Pure]
-        public static explicit operator Vector4h(Vector4i vec) => new Vector4h(vec.X, vec.Y, vec.Z, vec.W);
+        public static explicit operator Vector4h(Vector4i vec)
+        {
+            return new Vector4h(vec.X, vec.Y, vec.Z, vec.W);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector4i" /> struct using a tuple containing the component
@@ -1659,25 +1681,37 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector4i" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector4i((int X, int Y, int Z, int W) values) =>
-            new Vector4i(values.X, values.Y, values.Z, values.W);
+        public static implicit operator Vector4i((int X, int Y, int Z, int W) values)
+        {
+            return new Vector4i(values.X, values.Y, values.Z, values.W);
+        }
 
         /// <inheritdoc />
-        public override string ToString() =>
-            string.Format("({0}{4} {1}{4} {2}{4} {3})", X, Y, Z, W, MathHelper.ListSeparator);
+        public override string ToString()
+        {
+            return string.Format("({0}{4} {1}{4} {2}{4} {3})", X, Y, Z, W, MathHelper.ListSeparator);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Vector4i && Equals((Vector4i) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Vector4i && Equals((Vector4i) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Vector4i other) =>
-            X == other.X &&
-            Y == other.Y &&
-            Z == other.Z &&
-            W == other.W;
+        public bool Equals(Vector4i other)
+        {
+            return X == other.X &&
+                   Y == other.Y &&
+                   Z == other.Z &&
+                   W == other.W;
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(X, Y, Z, W);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y, Z, W);
+        }
 
         /// <summary>
         ///     Deconstructs the vector into it's individual components.

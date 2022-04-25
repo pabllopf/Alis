@@ -207,7 +207,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>Local bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetLocalBounds() => sfShape_getLocalBounds(CPointer);
+        public FloatRect GetLocalBounds()
+        {
+            return sfShape_getLocalBounds(CPointer);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -220,10 +223,12 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>Global bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetGlobalBounds() =>
-            // we don't use the native getGlobalBounds function,
+        public FloatRect GetGlobalBounds()
+        {
             // because we override the object's transform
-            Transform.TransformRect(GetLocalBounds());
+            // we don't use the native getGlobalBounds function,
+            return Transform.TransformRect(GetLocalBounds());
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -254,14 +259,170 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Callback passed to the C API
         /// </summary>
         ////////////////////////////////////////////////////////////
-        private uint InternalGetPointCount(IntPtr userData) => GetPointCount();
+        private uint InternalGetPointCount(IntPtr userData)
+        {
+            return GetPointCount();
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Callback passed to the C API
         /// </summary>
         ////////////////////////////////////////////////////////////
-        private Vector2f InternalGetPoint(uint index, IntPtr userData) => GetPoint(index);
+        private Vector2f InternalGetPoint(uint index, IntPtr userData)
+        {
+            return GetPoint(index);
+        }
+
+        /// <summary>
+        ///     Sfs the shape create using the specified get point count
+        /// </summary>
+        /// <param name="getPointCount">The get point count</param>
+        /// <param name="getPoint">The get point</param>
+        /// <param name="userData">The user data</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfShape_create(GetPointCountCallbackType getPointCount,
+            GetPointCallbackType getPoint, IntPtr userData);
+
+        /// <summary>
+        ///     Sfs the shape copy using the specified shape
+        /// </summary>
+        /// <param name="Shape">The shape</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfShape_copy(IntPtr Shape);
+
+        /// <summary>
+        ///     Sfs the shape destroy using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfShape_destroy(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the shape set texture using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Texture">The texture</param>
+        /// <param name="AdjustToNewSize">The adjust to new size</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfShape_setTexture(IntPtr CPointer, IntPtr Texture, bool AdjustToNewSize);
+
+        /// <summary>
+        ///     Sfs the shape set texture rect using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Rect">The rect</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfShape_setTextureRect(IntPtr CPointer, IntRect Rect);
+
+        /// <summary>
+        ///     Sfs the shape get texture rect using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <returns>The int rect</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern IntRect sfShape_getTextureRect(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the shape set fill color using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Color">The color</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfShape_setFillColor(IntPtr CPointer, Color Color);
+
+        /// <summary>
+        ///     Sfs the shape get fill color using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <returns>The color</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern Color sfShape_getFillColor(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the shape set outline color using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Color">The color</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfShape_setOutlineColor(IntPtr CPointer, Color Color);
+
+        /// <summary>
+        ///     Sfs the shape get outline color using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <returns>The color</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern Color sfShape_getOutlineColor(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the shape set outline thickness using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Thickness">The thickness</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfShape_setOutlineThickness(IntPtr CPointer, float Thickness);
+
+        /// <summary>
+        ///     Sfs the shape get outline thickness using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <returns>The float</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern float sfShape_getOutlineThickness(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the shape get local bounds using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <returns>The float rect</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern FloatRect sfShape_getLocalBounds(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the shape update using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfShape_update(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the render window draw shape using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Shape">The shape</param>
+        /// <param name="states">The states</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_drawShape(IntPtr CPointer, IntPtr Shape,
+            ref RenderStates.MarshalData states);
+
+        /// <summary>
+        ///     Sfs the render texture draw shape using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Shape">The shape</param>
+        /// <param name="states">The states</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderTexture_drawShape(IntPtr CPointer, IntPtr Shape,
+            ref RenderStates.MarshalData states);
 
         /// <summary>
         ///     The get point count callback type
@@ -274,139 +435,5 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         private delegate Vector2f GetPointCallbackType(uint index, IntPtr UserData);
-
-        /// <summary>
-        ///     Sfs the shape create using the specified get point count
-        /// </summary>
-        /// <param name="getPointCount">The get point count</param>
-        /// <param name="getPoint">The get point</param>
-        /// <param name="userData">The user data</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfShape_create(GetPointCountCallbackType getPointCount,
-            GetPointCallbackType getPoint, IntPtr userData);
-
-        /// <summary>
-        ///     Sfs the shape copy using the specified shape
-        /// </summary>
-        /// <param name="Shape">The shape</param>
-        /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfShape_copy(IntPtr Shape);
-
-        /// <summary>
-        ///     Sfs the shape destroy using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShape_destroy(IntPtr CPointer);
-
-        /// <summary>
-        ///     Sfs the shape set texture using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Texture">The texture</param>
-        /// <param name="AdjustToNewSize">The adjust to new size</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShape_setTexture(IntPtr CPointer, IntPtr Texture, bool AdjustToNewSize);
-
-        /// <summary>
-        ///     Sfs the shape set texture rect using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Rect">The rect</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShape_setTextureRect(IntPtr CPointer, IntRect Rect);
-
-        /// <summary>
-        ///     Sfs the shape get texture rect using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <returns>The int rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntRect sfShape_getTextureRect(IntPtr CPointer);
-
-        /// <summary>
-        ///     Sfs the shape set fill color using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Color">The color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShape_setFillColor(IntPtr CPointer, Color Color);
-
-        /// <summary>
-        ///     Sfs the shape get fill color using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Color sfShape_getFillColor(IntPtr CPointer);
-
-        /// <summary>
-        ///     Sfs the shape set outline color using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Color">The color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShape_setOutlineColor(IntPtr CPointer, Color Color);
-
-        /// <summary>
-        ///     Sfs the shape get outline color using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Color sfShape_getOutlineColor(IntPtr CPointer);
-
-        /// <summary>
-        ///     Sfs the shape set outline thickness using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Thickness">The thickness</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShape_setOutlineThickness(IntPtr CPointer, float Thickness);
-
-        /// <summary>
-        ///     Sfs the shape get outline thickness using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern float sfShape_getOutlineThickness(IntPtr CPointer);
-
-        /// <summary>
-        ///     Sfs the shape get local bounds using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <returns>The float rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfShape_getLocalBounds(IntPtr CPointer);
-
-        /// <summary>
-        ///     Sfs the shape update using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShape_update(IntPtr CPointer);
-
-        /// <summary>
-        ///     Sfs the render window draw shape using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Shape">The shape</param>
-        /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_drawShape(IntPtr CPointer, IntPtr Shape,
-            ref RenderStates.MarshalData states);
-
-        /// <summary>
-        ///     Sfs the render texture draw shape using the specified c pointer
-        /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Shape">The shape</param>
-        /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderTexture_drawShape(IntPtr CPointer, IntPtr Shape,
-            ref RenderStates.MarshalData states);
     }
 }

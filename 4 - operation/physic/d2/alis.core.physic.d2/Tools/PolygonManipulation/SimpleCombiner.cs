@@ -66,7 +66,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.PolygonManipulation
                 Vector2 b = triangle[1];
                 Vector2 c = triangle[2];
 
-                if (a.X == b.X && a.Y == b.Y || b.X == c.X && b.Y == c.Y || a.X == c.X && a.Y == c.Y)
+                if ((a.X == b.X && a.Y == b.Y) || (b.X == c.X && b.Y == c.Y) || (a.X == c.X && a.Y == c.Y))
                 {
                     covered[i] = true;
                 }

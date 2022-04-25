@@ -47,7 +47,10 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         private readonly List<CurveKey> keys;
 
         /// <summary>Creates a new instance of <see cref="CurveKeyCollection" /> class.</summary>
-        public CurveKeyCollection() => keys = new List<CurveKey>();
+        public CurveKeyCollection()
+        {
+            keys = new List<CurveKey>();
+        }
 
         /// <summary>Indexer.</summary>
         /// <param name="index">The index of key in this collection.</param>
@@ -84,7 +87,10 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => keys.GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return keys.GetEnumerator();
+        }
 
         /// <summary>Adds a key to this collection.</summary>
         /// <param name="item">New key for the collection.</param>
@@ -124,7 +130,10 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         /// <summary>Determines whether this collection contains a specific key.</summary>
         /// <param name="item">The key to locate in this collection.</param>
         /// <returns><c>true</c> if the key is found; <c>false</c> otherwise.</returns>
-        public bool Contains(CurveKey item) => keys.Contains(item);
+        public bool Contains(CurveKey item)
+        {
+            return keys.Contains(item);
+        }
 
         /// <summary>Copies the keys of this collection to an array, starting at the array index provided.</summary>
         /// <param name="array">Destination array where elements will be copied.</param>
@@ -136,7 +145,10 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
 
         /// <summary>Returns an enumerator that iterates through the collection.</summary>
         /// <returns>An enumerator for the <see cref="CurveKeyCollection" />.</returns>
-        public IEnumerator<CurveKey> GetEnumerator() => keys.GetEnumerator();
+        public IEnumerator<CurveKey> GetEnumerator()
+        {
+            return keys.GetEnumerator();
+        }
 
         /// <summary>Removes specific element.</summary>
         /// <param name="item">The element</param>
@@ -144,7 +156,10 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         ///     <c>true</c> if item is successfully removed; <c>false</c> otherwise. This method also returns <c>false</c> if
         ///     item was not found.
         /// </returns>
-        public bool Remove(CurveKey item) => keys.Remove(item);
+        public bool Remove(CurveKey item)
+        {
+            return keys.Remove(item);
+        }
 
         /// <summary>Returns the count of keys in this collection.</summary>
         [DataMember]
@@ -170,7 +185,10 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         /// <summary>Finds element in the collection and returns its index.</summary>
         /// <param name="item">Element for the search.</param>
         /// <returns>Index of the element; or -1 if item is not found.</returns>
-        public int IndexOf(CurveKey item) => keys.IndexOf(item);
+        public int IndexOf(CurveKey item)
+        {
+            return keys.IndexOf(item);
+        }
 
         /// <summary>Removes element at the specified index.</summary>
         /// <param name="index">The index which element will be removed.</param>

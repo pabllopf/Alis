@@ -45,8 +45,11 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
         /// </summary>
         /// <param name="world">The world</param>
         public SimpleExplosion(World world)
-            : base(world, PhysicsLogicType.Explosion) =>
-            Power = 1; //linear
+            : base(world, PhysicsLogicType.Explosion)
+        {
+            Power = 1;
+            //linear
+        }
 
         /// <summary>
         ///     This is the power used in the power function. A value of 1 means the force applied to bodies in the explosion

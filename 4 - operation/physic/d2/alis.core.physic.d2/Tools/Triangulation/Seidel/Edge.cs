@@ -108,14 +108,20 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public bool IsAbove(Point point) => P.Orient2D(Q, point) < 0;
+        public bool IsAbove(Point point)
+        {
+            return P.Orient2D(Q, point) < 0;
+        }
 
         /// <summary>
         ///     Describes whether this instance is below
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public bool IsBelow(Point point) => P.Orient2D(Q, point) > 0;
+        public bool IsBelow(Point point)
+        {
+            return P.Orient2D(Q, point) > 0;
+        }
 
         /// <summary>
         ///     Adds the mpoint using the specified point

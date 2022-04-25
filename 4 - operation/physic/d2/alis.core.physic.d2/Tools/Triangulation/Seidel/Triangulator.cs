@@ -299,6 +299,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The point</returns>
-        private Point ShearTransform(Point point) => new Point(point.X + sheer * point.Y, point.Y);
+        private Point ShearTransform(Point point)
+        {
+            return new Point(point.X + sheer * point.Y, point.Y);
+        }
     }
 }

@@ -44,6 +44,15 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
     public sealed class TextureConverter
     {
         /// <summary>
+        ///     The closepixels length
+        /// </summary>
+        private const int ClosepixelsLength = 8;
+
+        /// <summary>This array is meant to be read-only. It's not because it is accessed very frequently.</summary>
+        private static readonly int[,] ClosePixels =
+            {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
+
+        /// <summary>
         ///     The alpha tolerance
         /// </summary>
         private uint alphaTolerance;
@@ -229,15 +238,6 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                 }
             }
         }
-
-        /// <summary>
-        ///     The closepixels length
-        /// </summary>
-        private const int ClosepixelsLength = 8;
-
-        /// <summary>This array is meant to be read-only. It's not because it is accessed very frequently.</summary>
-        private static readonly int[,] ClosePixels =
-            {{-1, -1}, {0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}};
 
         /// <summary>
         ///     Initializes the data
@@ -1017,8 +1017,8 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
                     vertex1 = polygon[i];
 
                     // Approx. check if the edge crosses our y coord.
-                    if (vertex1.Y >= y && vertex2.Y <= y ||
-                        vertex1.Y <= y && vertex2.Y >= y)
+                    if ((vertex1.Y >= y && vertex2.Y <= y) ||
+                        (vertex1.Y <= y && vertex2.Y >= y))
                     {
                         // Ignore edges that are parallel to y.
                         if (vertex1.Y != vertex2.Y)
@@ -1600,7 +1600,9 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// </summary>
         /// <param name="coord">The coord</param>
         /// <returns>The bool</returns>
-        public bool InBounds(ref Vector2 coord) =>
-            coord.X >= 0f && coord.X < width && coord.Y >= 0f && coord.Y < height;
+        public bool InBounds(ref Vector2 coord)
+        {
+            return coord.X >= 0f && coord.X < width && coord.Y >= 0f && coord.Y < height;
+        }
     }
 }

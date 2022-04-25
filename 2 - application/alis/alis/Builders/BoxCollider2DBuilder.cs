@@ -60,7 +60,10 @@ namespace Alis.Core.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The box collider</returns>
-        public BoxCollider2D Build() => BoxCollider2D;
+        public BoxCollider2D Build()
+        {
+            return BoxCollider2D;
+        }
 
         /// <summary>
         ///     Ises the active
@@ -163,8 +166,10 @@ namespace Alis.Core.Builders
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The box collider builder</returns>
-        public BoxCollider2DBuilder Size(int x, int y) =>
+        public BoxCollider2DBuilder Size(int x, int y)
+        {
             //BoxCollider2D.Size = new Vector2(x, y);
-            this;
+            return this;
+        }
     }
 }

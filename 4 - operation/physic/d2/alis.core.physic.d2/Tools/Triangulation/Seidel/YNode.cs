@@ -47,8 +47,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// <param name="lChild">The child</param>
         /// <param name="rChild">The child</param>
         public YNode(Edge edge, Node lChild, Node rChild)
-            : base(lChild, rChild) =>
+            : base(lChild, rChild)
+        {
             this.edge = edge;
+        }
 
         /// <summary>
         ///     Locates the edge

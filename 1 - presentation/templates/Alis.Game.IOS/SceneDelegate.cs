@@ -1,25 +1,50 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   SceneDelegate.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 namespace Alis.Game.IOS;
 
 /// <summary>
-
-/// The scene delegate class
-
+///     The scene delegate class
 /// </summary>
-
-/// <seealso cref="UIResponder"/>
-
-/// <seealso cref="IUIWindowSceneDelegate"/>
-
+/// <seealso cref="UIResponder" />
+/// <seealso cref="IUIWindowSceneDelegate" />
 [Register("SceneDelegate")]
 public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
 {
     /// <summary>
-    /// Gets or sets the value of the window
+    ///     Gets or sets the value of the window
     /// </summary>
-    [Export("window")] public UIWindow? Window { get; set; }
+    [Export("window")]
+    public UIWindow? Window { get; set; }
 
     /// <summary>
-    /// Wills the connect using the specified scene
+    ///     Wills the connect using the specified scene
     /// </summary>
     /// <param name="scene">The scene</param>
     /// <param name="session">The session</param>
@@ -33,7 +58,7 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
     }
 
     /// <summary>
-    /// Dids the disconnect using the specified scene
+    ///     Dids the disconnect using the specified scene
     /// </summary>
     /// <param name="scene">The scene</param>
     [Export("sceneDidDisconnect:")]
@@ -46,7 +71,7 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
     }
 
     /// <summary>
-    /// Dids the become active using the specified scene
+    ///     Dids the become active using the specified scene
     /// </summary>
     /// <param name="scene">The scene</param>
     [Export("sceneDidBecomeActive:")]
@@ -57,7 +82,7 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
     }
 
     /// <summary>
-    /// Wills the resign active using the specified scene
+    ///     Wills the resign active using the specified scene
     /// </summary>
     /// <param name="scene">The scene</param>
     [Export("sceneWillResignActive:")]
@@ -68,7 +93,7 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
     }
 
     /// <summary>
-    /// Wills the enter foreground using the specified scene
+    ///     Wills the enter foreground using the specified scene
     /// </summary>
     /// <param name="scene">The scene</param>
     [Export("sceneWillEnterForeground:")]
@@ -79,7 +104,7 @@ public class SceneDelegate : UIResponder, IUIWindowSceneDelegate
     }
 
     /// <summary>
-    /// Dids the enter background using the specified scene
+    ///     Dids the enter background using the specified scene
     /// </summary>
     /// <param name="scene">The scene</param>
     [Export("sceneDidEnterBackground:")]

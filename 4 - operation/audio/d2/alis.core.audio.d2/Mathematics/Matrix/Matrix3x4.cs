@@ -39,7 +39,8 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
     /// <summary>
     ///     Represents a 3x4 Matrix.
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Matrix3x4 : IEquatable<Matrix3x4>
     {
         /// <summary>
@@ -596,7 +597,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="scale">Single scale factor for x,y and z axes.</param>
         /// <returns>A scaling matrix.</returns>
         [Pure]
-        public static Matrix3x4 CreateScale(float scale) => CreateScale(scale, scale, scale);
+        public static Matrix3x4 CreateScale(float scale)
+        {
+            return CreateScale(scale, scale, scale);
+        }
 
         /// <summary>
         ///     Build a scaling matrix.
@@ -604,7 +608,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="scale">Scale factors for x,y and z axes.</param>
         /// <returns>A scaling matrix.</returns>
         [Pure]
-        public static Matrix3x4 CreateScale(Vector3 scale) => CreateScale(scale.X, scale.Y, scale.Z);
+        public static Matrix3x4 CreateScale(Vector3 scale)
+        {
+            return CreateScale(scale.X, scale.Y, scale.Z);
+        }
 
         /// <summary>
         ///     Build a scaling matrix.
@@ -866,8 +873,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="mat">The matrix to transpose.</param>
         /// <returns>The transpose of the given matrix.</returns>
         [Pure]
-        public static Matrix4x3 Transpose(Matrix3x4 mat) =>
-            new Matrix4x3(mat.Column0, mat.Column1, mat.Column2, mat.Column3);
+        public static Matrix4x3 Transpose(Matrix3x4 mat)
+        {
+            return new Matrix4x3(mat.Column0, mat.Column1, mat.Column2, mat.Column3);
+        }
 
         /// <summary>
         ///     Calculate the transpose of the given matrix.
@@ -889,7 +898,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix3 which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix3 operator *(Matrix3x4 left, Matrix4x3 right) => Mult(left, right);
+        public static Matrix3 operator *(Matrix3x4 left, Matrix4x3 right)
+        {
+            return Mult(left, right);
+        }
 
         /// <summary>
         ///     Matrix-scalar multiplication.
@@ -898,7 +910,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix3x4 which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix3x4 operator *(Matrix3x4 left, Matrix3x4 right) => Mult(left, right);
+        public static Matrix3x4 operator *(Matrix3x4 left, Matrix3x4 right)
+        {
+            return Mult(left, right);
+        }
 
         /// <summary>
         ///     Matrix-scalar multiplication.
@@ -907,7 +922,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix3x4 which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix3x4 operator *(Matrix3x4 left, float right) => Mult(left, right);
+        public static Matrix3x4 operator *(Matrix3x4 left, float right)
+        {
+            return Mult(left, right);
+        }
 
         /// <summary>
         ///     Matrix addition.
@@ -916,7 +934,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix3x4 which holds the result of the addition.</returns>
         [Pure]
-        public static Matrix3x4 operator +(Matrix3x4 left, Matrix3x4 right) => Add(left, right);
+        public static Matrix3x4 operator +(Matrix3x4 left, Matrix3x4 right)
+        {
+            return Add(left, right);
+        }
 
         /// <summary>
         ///     Matrix subtraction.
@@ -925,7 +946,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix3x4 which holds the result of the subtraction.</returns>
         [Pure]
-        public static Matrix3x4 operator -(Matrix3x4 left, Matrix3x4 right) => Subtract(left, right);
+        public static Matrix3x4 operator -(Matrix3x4 left, Matrix3x4 right)
+        {
+            return Subtract(left, right);
+        }
 
         /// <summary>
         ///     Compares two instances for equality.
@@ -934,7 +958,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
         [Pure]
-        public static bool operator ==(Matrix3x4 left, Matrix3x4 right) => left.Equals(right);
+        public static bool operator ==(Matrix3x4 left, Matrix3x4 right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for inequality.
@@ -943,19 +970,28 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
         [Pure]
-        public static bool operator !=(Matrix3x4 left, Matrix3x4 right) => !left.Equals(right);
+        public static bool operator !=(Matrix3x4 left, Matrix3x4 right)
+        {
+            return !left.Equals(right);
+        }
 
         /// <summary>
         ///     Returns a System.String that represents the current Matrix4.
         /// </summary>
         /// <returns>The string representation of the matrix.</returns>
-        public override string ToString() => $"{Row0}\n{Row1}\n{Row2}";
+        public override string ToString()
+        {
+            return $"{Row0}\n{Row1}\n{Row2}";
+        }
 
         /// <summary>
         ///     Returns the hashcode for this instance.
         /// </summary>
         /// <returns>A System.Int32 containing the unique hashcode for this instance.</returns>
-        public override int GetHashCode() => HashCode.Combine(Row0, Row1, Row2);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Row0, Row1, Row2);
+        }
 
         /// <summary>
         ///     Indicates whether this instance and a specified object are equal.
@@ -963,7 +999,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="obj">The object to compare to.</param>
         /// <returns>True if the instances are equal; false otherwise.</returns>
         [Pure]
-        public override bool Equals(object obj) => obj is Matrix3x4 && Equals((Matrix3x4) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Matrix3x4 && Equals((Matrix3x4) obj);
+        }
 
         /// <summary>
         ///     Indicates whether the current matrix is equal to another matrix.
@@ -971,9 +1010,11 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="other">An matrix to compare with this matrix.</param>
         /// <returns>true if the current matrix is equal to the matrix parameter; otherwise, false.</returns>
         [Pure]
-        public bool Equals(Matrix3x4 other) =>
-            Row0 == other.Row0 &&
-            Row1 == other.Row1 &&
-            Row2 == other.Row2;
+        public bool Equals(Matrix3x4 other)
+        {
+            return Row0 == other.Row0 &&
+                   Row1 == other.Row1 &&
+                   Row2 == other.Row2;
+        }
     }
 }

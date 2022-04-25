@@ -53,7 +53,10 @@ namespace Alis.Core.Components
         ///     Attaches the to using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public void AttachTo(GameObject gameObject) => GameObject = gameObject;
+        public void AttachTo(GameObject gameObject)
+        {
+            GameObject = gameObject;
+        }
 
         /// <summary>
         ///     Ons the destroy
@@ -73,56 +76,54 @@ namespace Alis.Core.Components
         public virtual void Disable()
         {
         }
-        
+
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public virtual void Init()
         {
-            
         }
-        
-        
+
+
         /// <summary>
-        /// Befores the awake
+        ///     Befores the awake
         /// </summary>
         public virtual void BeforeAwake()
         {
         }
 
-        
-        
+
         /// <summary>Awakes this instance.</summary>
         public virtual void Awake()
         {
         }
 
         /// <summary>
-        /// Afters the awake
+        ///     Afters the awake
         /// </summary>
         public virtual void AfterAwake()
         {
         }
 
-        
+
         /// <summary>
-        /// Befores the start
+        ///     Befores the start
         /// </summary>
         public virtual void BeforeStart()
         {
         }
-        
+
         /// <summary>Starts this instance.</summary>
         public abstract void Start();
 
         /// <summary>
-        /// Afters the start
+        ///     Afters the start
         /// </summary>
         public virtual void AfterStart()
         {
         }
 
-        
+
         /// <summary>Befores the update.</summary>
         public virtual void BeforeUpdate()
         {
@@ -147,9 +148,9 @@ namespace Alis.Core.Components
         public virtual void DispatchEvents()
         {
         }
-        
+
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public virtual void Draw()
         {

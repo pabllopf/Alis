@@ -41,7 +41,8 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
     /// <summary>
     ///     2-component Vector of the Half type. Occupies 4 Byte total.
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector2h : ISerializable, IEquatable<Vector2h>
     {
         /// <summary>
@@ -210,13 +211,19 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         ///     Returns this Half2 instance's contents as Vector2.
         /// </summary>
         /// <returns>The vector.</returns>
-        public Vector2 ToVector2() => new Vector2(X, Y);
+        public Vector2 ToVector2()
+        {
+            return new Vector2(X, Y);
+        }
 
         /// <summary>
         ///     Returns this Half2 instance's contents as Vector2d.
         /// </summary>
         /// <returns>The vector.</returns>
-        public Vector2d ToVector2d() => new Vector2d(X, Y);
+        public Vector2d ToVector2d()
+        {
+            return new Vector2d(X, Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2h to OpenTK.Vector2.
@@ -224,7 +231,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2h to convert.</param>
         /// <returns>The resulting Vector2.</returns>
         [Pure]
-        public static implicit operator Vector2(Vector2h vec) => new Vector2(vec.X, vec.Y);
+        public static implicit operator Vector2(Vector2h vec)
+        {
+            return new Vector2(vec.X, vec.Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2h to OpenTK.Vector2d.
@@ -232,7 +242,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2h to convert.</param>
         /// <returns>The resulting Vector2d.</returns>
         [Pure]
-        public static implicit operator Vector2d(Vector2h vec) => new Vector2d(vec.X, vec.Y);
+        public static implicit operator Vector2d(Vector2h vec)
+        {
+            return new Vector2d(vec.X, vec.Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2h to OpenTK.Vector2i.
@@ -240,7 +253,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2h to convert.</param>
         /// <returns>The resulting Vector2i.</returns>
         [Pure]
-        public static explicit operator Vector2i(Vector2h vec) => new Vector2i((int) vec.X, (int) vec.Y);
+        public static explicit operator Vector2i(Vector2h vec)
+        {
+            return new Vector2i((int) vec.X, (int) vec.Y);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector2h" /> struct using a tuple containing the component
@@ -249,7 +265,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector2h" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector2h((Half X, Half Y) values) => new Vector2h(values.X, values.Y);
+        public static implicit operator Vector2h((Half X, Half Y) values)
+        {
+            return new Vector2h(values.X, values.Y);
+        }
 
         /// <summary>
         ///     Compares the specified instances for equality.
@@ -257,7 +276,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns>True if both instances are equal; false otherwise.</returns>
-        public static bool operator ==(Vector2h left, Vector2h right) => left.Equals(right);
+        public static bool operator ==(Vector2h left, Vector2h right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares the specified instances for inequality.
@@ -265,7 +287,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns>True if both instances are not equal; false otherwise.</returns>
-        public static bool operator !=(Vector2h left, Vector2h right) => !(left == right);
+        public static bool operator !=(Vector2h left, Vector2h right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     The size in bytes for an instance of the Half2 struct is 4.
@@ -311,18 +336,29 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         }
 
         /// <inheritdoc />
-        public override string ToString() => string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
+        public override string ToString()
+        {
+            return string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Vector2h && Equals((Vector2h) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Vector2h && Equals((Vector2h) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Vector2h other) =>
-            X.Equals(other.X) &&
-            Y.Equals(other.Y);
+        public bool Equals(Vector2h other)
+        {
+            return X.Equals(other.X) &&
+                   Y.Equals(other.Y);
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(X, Y);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
 
         /// <summary>
         ///     Returns the Half2 as an array of bytes.
@@ -351,10 +387,12 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="startIndex">The starting position within value.</param>
         /// <returns>A new Half2 instance.</returns>
         [Pure]
-        public static Vector2h FromBytes(byte[] value, int startIndex) =>
-            new Vector2h(
+        public static Vector2h FromBytes(byte[] value, int startIndex)
+        {
+            return new Vector2h(
                 Half.FromBytes(value, startIndex),
                 Half.FromBytes(value, startIndex + 2));
+        }
 
         /// <summary>
         ///     Deconstructs the vector into it's individual components.

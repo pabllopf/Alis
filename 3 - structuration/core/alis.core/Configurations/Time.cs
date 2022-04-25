@@ -102,7 +102,10 @@ namespace Alis.Core.Configurations
         ///     Describes whether this instance is new frame
         /// </summary>
         /// <returns>The bool</returns>
-        internal bool IsNewFrame() => FixedTime * TimeScale / FrameCount > FixedDeltaTime;
+        internal bool IsNewFrame()
+        {
+            return FixedTime * TimeScale / FrameCount > FixedDeltaTime;
+        }
 
         /// <summary>
         ///     Updates the time step

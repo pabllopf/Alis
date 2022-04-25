@@ -39,7 +39,8 @@ namespace Alis.Core.Audio2D.Mathematics.Data
     /// <summary>
     ///     Represents a Quaternion.
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Quaternion : IEquatable<Quaternion>
     {
         /// <summary>
@@ -315,10 +316,12 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="right">The second operand.</param>
         /// <returns>The result of the addition.</returns>
         [Pure]
-        public static Quaternion Add(Quaternion left, Quaternion right) =>
-            new Quaternion(
+        public static Quaternion Add(Quaternion left, Quaternion right)
+        {
+            return new Quaternion(
                 left.Xyz + right.Xyz,
                 left.W + right.W);
+        }
 
         /// <summary>
         ///     Add two quaternions.
@@ -340,10 +343,12 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="right">The right instance.</param>
         /// <returns>The result of the operation.</returns>
         [Pure]
-        public static Quaternion Sub(Quaternion left, Quaternion right) =>
-            new Quaternion(
+        public static Quaternion Sub(Quaternion left, Quaternion right)
+        {
+            return new Quaternion(
                 left.Xyz - right.Xyz,
                 left.W - right.W);
+        }
 
         /// <summary>
         ///     Subtracts two instances.
@@ -408,14 +413,16 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="scale">The scalar.</param>
         /// <returns>A new instance containing the result of the calculation.</returns>
         [Pure]
-        public static Quaternion Multiply(Quaternion quaternion, float scale) =>
-            new Quaternion
+        public static Quaternion Multiply(Quaternion quaternion, float scale)
+        {
+            return new Quaternion
             (
                 quaternion.X * scale,
                 quaternion.Y * scale,
                 quaternion.Z * scale,
                 quaternion.W * scale
             );
+        }
 
         /// <summary>
         ///     Get the conjugate of the given quaternion.
@@ -423,7 +430,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="q">The quaternion.</param>
         /// <returns>The conjugate of the given quaternion.</returns>
         [Pure]
-        public static Quaternion Conjugate(Quaternion q) => new Quaternion(-q.Xyz, q.W);
+        public static Quaternion Conjugate(Quaternion q)
+        {
+            return new Quaternion(-q.Xyz, q.W);
+        }
 
         /// <summary>
         ///     Get the conjugate of the given quaternion.
@@ -523,8 +533,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="roll">The roll (bank), counterclockwise rotation around Z axis.</param>
         /// <returns>The quaternion.</returns>
         [Pure]
-        public static Quaternion FromEulerAngles(float pitch, float yaw, float roll) =>
-            new Quaternion(pitch, yaw, roll);
+        public static Quaternion FromEulerAngles(float pitch, float yaw, float roll)
+        {
+            return new Quaternion(pitch, yaw, roll);
+        }
 
         /// <summary>
         ///     Builds a Quaternion from the given euler angles in radians.
@@ -534,7 +546,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="eulerAngles">The counterclockwise euler angles as a vector.</param>
         /// <returns>The equivalent Quaternion.</returns>
         [Pure]
-        public static Quaternion FromEulerAngles(Vector3 eulerAngles) => new Quaternion(eulerAngles);
+        public static Quaternion FromEulerAngles(Vector3 eulerAngles)
+        {
+            return new Quaternion(eulerAngles);
+        }
 
         /// <summary>
         ///     Builds a Quaternion from the given euler angles in radians.
@@ -765,14 +780,16 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="scale">The scalar.</param>
         /// <returns>A new instance containing the result of the calculation.</returns>
         [Pure]
-        public static Quaternion operator *(float scale, Quaternion quaternion) =>
-            new Quaternion
+        public static Quaternion operator *(float scale, Quaternion quaternion)
+        {
+            return new Quaternion
             (
                 quaternion.X * scale,
                 quaternion.Y * scale,
                 quaternion.Z * scale,
                 quaternion.W * scale
             );
+        }
 
         /// <summary>
         ///     Compares two instances for equality.
@@ -780,7 +797,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Quaternion left, Quaternion right) => left.Equals(right);
+        public static bool operator ==(Quaternion left, Quaternion right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for inequality.
@@ -788,23 +808,37 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
-        public static bool operator !=(Quaternion left, Quaternion right) => !(left == right);
+        public static bool operator !=(Quaternion left, Quaternion right)
+        {
+            return !(left == right);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Quaternion && Equals((Quaternion) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Quaternion && Equals((Quaternion) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Quaternion other) =>
-            Xyz.Equals(other.Xyz) &&
-            W == other.W;
+        public bool Equals(Quaternion other)
+        {
+            return Xyz.Equals(other.Xyz) &&
+                   W == other.W;
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(Xyz, W);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Xyz, W);
+        }
 
         /// <summary>
         ///     Returns a System.String that represents the current Quaternion.
         /// </summary>
         /// <returns>A human-readable representation of the quaternion.</returns>
-        public override string ToString() => $"V: {Xyz}{MathHelper.ListSeparator} W: {W}";
+        public override string ToString()
+        {
+            return $"V: {Xyz}{MathHelper.ListSeparator} W: {W}";
+        }
     }
 }

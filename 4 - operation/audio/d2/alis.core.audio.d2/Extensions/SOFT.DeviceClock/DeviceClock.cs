@@ -41,6 +41,11 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
     public class DeviceClock : ALBase
     {
         /// <summary>
+        ///     The name of this AL extension.
+        /// </summary>
+        public const string ExtensionName = "ALC_SOFT_device_clock";
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="DeviceClock" /> class
         /// </summary>
         static DeviceClock()
@@ -57,16 +62,14 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         }
 
         /// <summary>
-        ///     The name of this AL extension.
-        /// </summary>
-        public const string ExtensionName = "ALC_SOFT_device_clock";
-
-        /// <summary>
         ///     Checks if this extension is present.
         /// </summary>
         /// <param name="device">The device to query.</param>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent(ALDevice device) => ALC.IsExtensionPresent(device, ExtensionName);
+        public static bool IsExtensionPresent(ALDevice device)
+        {
+            return ALC.IsExtensionPresent(device, ExtensionName);
+        }
 
         /// <summary>
         ///     Gets the integer using the specified device
@@ -153,8 +156,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="param">The param</param>
         /// <param name="size">The size</param>
         /// <param name="values">The values</param>
-        public static unsafe void GetInteger(ALDevice device, GetInteger64 param, int size, long* values) =>
+        public static unsafe void GetInteger(ALDevice device, GetInteger64 param, int size, long* values)
+        {
             _GetIntegerPtr(device, param, size, values);
+        }
 
         /// <summary>
         ///     The get integer ptr delegate
@@ -175,8 +180,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="param">The param</param>
         /// <param name="size">The size</param>
         /// <param name="values">The values</param>
-        private static void GetInteger(ALDevice device, GetInteger64 param, int size, ref long values) =>
+        private static void GetInteger(ALDevice device, GetInteger64 param, int size, ref long values)
+        {
             _GetIntegerRef(device, param, size, ref values);
+        }
 
         /// <summary>
         ///     The get integer ref delegate
@@ -197,8 +204,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="param">The param</param>
         /// <param name="size">The size</param>
         /// <param name="values">The values</param>
-        public static void GetInteger(ALDevice device, GetInteger64 param, int size, long[] values) =>
+        public static void GetInteger(ALDevice device, GetInteger64 param, int size, long[] values)
+        {
             _GetIntegerArray(device, param, size, values);
+        }
 
         /// <summary>
         ///     The get integer array delegate
@@ -218,8 +227,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        public static unsafe void GetSource(int source, SourceInteger64 param, long* values) =>
+        public static unsafe void GetSource(int source, SourceInteger64 param, long* values)
+        {
             _GetSourcei64vPtr(source, param, values);
+        }
 
         /// <summary>
         ///     The get sourcei 64v ptr delegate
@@ -239,8 +250,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        private static void GetSource(int source, SourceInteger64 param, ref long values) =>
+        private static void GetSource(int source, SourceInteger64 param, ref long values)
+        {
             _GetSourcei64vRef(source, param, ref values);
+        }
 
         /// <summary>
         ///     The get sourcei 64v ref delegate
@@ -260,8 +273,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        public static void GetSource(int source, SourceInteger64 param, long[] values) =>
+        public static void GetSource(int source, SourceInteger64 param, long[] values)
+        {
             _GetSourcei64vArray(source, param, values);
+        }
 
         /// <summary>
         ///     The get sourcei 64v array delegate
@@ -281,8 +296,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        public static unsafe void GetSource(int source, SourceDouble param, double* values) =>
+        public static unsafe void GetSource(int source, SourceDouble param, double* values)
+        {
             _GetSourcedvPtr(source, param, values);
+        }
 
         /// <summary>
         ///     The get sourcedv ptr delegate
@@ -302,8 +319,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        private static void GetSource(int source, SourceDouble param, ref double values) =>
+        private static void GetSource(int source, SourceDouble param, ref double values)
+        {
             _GetSourcedvRef(source, param, ref values);
+        }
 
         /// <summary>
         ///     The get sourcedv ref delegate
@@ -323,8 +342,10 @@ namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
         /// <param name="source">The source</param>
         /// <param name="param">The param</param>
         /// <param name="values">The values</param>
-        public static void GetSource(int source, SourceDouble param, double[] values) =>
+        public static void GetSource(int source, SourceDouble param, double[] values)
+        {
             _GetSourcedvArray(source, param, values);
+        }
 
         /// <summary>
         ///     The get sourcedv array delegate

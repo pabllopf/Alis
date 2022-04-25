@@ -40,6 +40,11 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EnumerateAll
     public class EnumerateAll : ALBase
     {
         /// <summary>
+        ///     The name of this AL extension.
+        /// </summary>
+        public const string ExtensionName = "ALC_ENUMERATE_ALL_EXT";
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="EnumerateAll" /> class
         /// </summary>
         static EnumerateAll()
@@ -56,22 +61,23 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EnumerateAll
         }
 
         /// <summary>
-        ///     The name of this AL extension.
-        /// </summary>
-        public const string ExtensionName = "ALC_ENUMERATE_ALL_EXT";
-
-        /// <summary>
         ///     Checks whether the extension is present.
         /// </summary>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent() => ALC.IsExtensionPresent(ALDevice.Null, ExtensionName);
+        public static bool IsExtensionPresent()
+        {
+            return ALC.IsExtensionPresent(ALDevice.Null, ExtensionName);
+        }
 
         /// <summary>
         ///     Checks whether the extension is present.
         /// </summary>
         /// <param name="device">The device to be queried.</param>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent(ALDevice device) => ALC.IsExtensionPresent(device, ExtensionName);
+        public static bool IsExtensionPresent(ALDevice device)
+        {
+            return ALC.IsExtensionPresent(device, ExtensionName);
+        }
 
         /// <summary>
         ///     Gets a named property on the context.

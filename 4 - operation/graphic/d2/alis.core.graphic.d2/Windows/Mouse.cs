@@ -88,7 +88,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="button">Button to check</param>
         /// <returns>True if the button is pressed, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsButtonPressed(Button button) => sfMouse_isButtonPressed(button);
+        public static bool IsButtonPressed(Button button)
+        {
+            return sfMouse_isButtonPressed(button);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -98,7 +101,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// cursor in desktop coordinates.
         /// <returns>Current position of the mouse</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2i GetPosition() => GetPosition(null);
+        public static Vector2i GetPosition()
+        {
+            return GetPosition(null);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -158,7 +164,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="button">The button</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfMouse_isButtonPressed(Button button);
 
         /// <summary>
@@ -166,7 +173,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="relativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfMouse_getPosition(IntPtr relativeTo);
 
         /// <summary>
@@ -174,7 +182,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="relativeTo">The relative to</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfMouse_setPosition(Vector2i position, IntPtr relativeTo);
     }
 }

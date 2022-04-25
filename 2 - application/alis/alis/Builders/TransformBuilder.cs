@@ -57,13 +57,19 @@ namespace Alis.Core.Builders
         /// <summary>
         ///     Initializes a new instance of the <see cref="TransformBuilder" /> class
         /// </summary>
-        public TransformBuilder() => transform = new Transform();
+        public TransformBuilder()
+        {
+            transform = new Transform();
+        }
 
         /// <summary>
         ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
-        public Transform Build() => transform;
+        public Transform Build()
+        {
+            return transform;
+        }
 
         /// <summary>
         ///     Positions the x

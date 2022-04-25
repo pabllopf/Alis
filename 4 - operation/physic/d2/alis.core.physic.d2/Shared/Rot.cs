@@ -74,12 +74,21 @@ namespace Alis.Core.Systems.Physics2D.Shared
         }
 
         /// <summary>Get the angle in radians</summary>
-        public float GetAngle() => (float) Math.Atan2(S, C);
+        public float GetAngle()
+        {
+            return (float) Math.Atan2(S, C);
+        }
 
         /// <summary>Get the x-axis</summary>
-        public Vector2 GetXAxis() => new Vector2(C, S);
+        public Vector2 GetXAxis()
+        {
+            return new Vector2(C, S);
+        }
 
         /// <summary>Get the y-axis</summary>
-        public Vector2 GetYAxis() => new Vector2(-S, C);
+        public Vector2 GetYAxis()
+        {
+            return new Vector2(-S, C);
+        }
     }
 }

@@ -100,7 +100,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A number that is greater than or equal to MinValue, but less than or equal to MaxValue.</param>
         /// <returns>A decimal number, x, such that 0 ≤ x ≤ MaxValue.</returns>
         [Pure]
-        public static decimal Abs(decimal n) => Math.Abs(n);
+        public static decimal Abs(decimal n)
+        {
+            return Math.Abs(n);
+        }
 
         /// <summary>
         ///     Returns the absolute value of a double number.
@@ -108,7 +111,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A number that is greater than or equal to MinValue, but less than or equal to MaxValue.</param>
         /// <returns>A double number, x, such that 0 ≤ x ≤ MaxValue.</returns>
         [Pure]
-        public static double Abs(double n) => Math.Abs(n);
+        public static double Abs(double n)
+        {
+            return Math.Abs(n);
+        }
 
         /// <summary>
         ///     Returns the absolute value of a short number.
@@ -116,7 +122,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A number that is greater than or equal to MinValue, but less than or equal to MaxValue.</param>
         /// <returns>A short number, x, such that 0 ≤ x ≤ MaxValue.</returns>
         [Pure]
-        public static short Abs(short n) => Math.Abs(n);
+        public static short Abs(short n)
+        {
+            return Math.Abs(n);
+        }
 
         /// <summary>
         ///     Returns the absolute value of a int number.
@@ -124,7 +133,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A number that is greater than or equal to MinValue, but less than or equal to MaxValue.</param>
         /// <returns>A int number, x, such that 0 ≤ x ≤ MaxValue.</returns>
         [Pure]
-        public static int Abs(int n) => Math.Abs(n);
+        public static int Abs(int n)
+        {
+            return Math.Abs(n);
+        }
 
         /// <summary>
         ///     Returns the absolute value of a long number.
@@ -132,7 +144,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A number that is greater than or equal to MinValue, but less than or equal to MaxValue.</param>
         /// <returns>A long number, x, such that 0 ≤ x ≤ MaxValue.</returns>
         [Pure]
-        public static long Abs(long n) => Math.Abs(n);
+        public static long Abs(long n)
+        {
+            return Math.Abs(n);
+        }
 
         /// <summary>
         ///     Returns the absolute value of a sbyte number.
@@ -140,7 +155,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A number that is greater than or equal to MinValue, but less than or equal to MaxValue.</param>
         /// <returns>A sbyte number, x, such that 0 ≤ x ≤ MaxValue.</returns>
         [Pure]
-        public static sbyte Abs(sbyte n) => Math.Abs(n);
+        public static sbyte Abs(sbyte n)
+        {
+            return Math.Abs(n);
+        }
 
         /// <summary>
         ///     Returns the absolute value of a float number.
@@ -148,7 +166,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A number that is greater than or equal to MinValue, but less than or equal to MaxValue.</param>
         /// <returns>A float number, x, such that 0 ≤ x ≤ MaxValue.</returns>
         [Pure]
-        public static float Abs(float n) => Math.Abs(n);
+        public static float Abs(float n)
+        {
+            return Math.Abs(n);
+        }
 
         /// <summary>
         ///     Returns the sine of the specified angle.
@@ -156,7 +177,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="radians">The specified angle.</param>
         /// <returns>Sine of the angle. If radians is equal to NaN, NegativeInfinity, or PositiveInfinity, this method returns NaN.</returns>
         [Pure]
-        public static double Sin(double radians) => Math.Sin(radians);
+        public static double Sin(double radians)
+        {
+            return Math.Sin(radians);
+        }
 
         /// <summary>
         ///     Returns the hyperbolic sine of the specified angle.
@@ -167,7 +191,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     this method returns NaN.
         /// </returns>
         [Pure]
-        public static double Sinh(double radians) => Math.Sinh(radians);
+        public static double Sinh(double radians)
+        {
+            return Math.Sinh(radians);
+        }
 
         /// <summary>
         ///     Returns the arc sine of the specified angle.
@@ -178,7 +205,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     method returns NaN.
         /// </returns>
         [Pure]
-        public static double Asin(double radians) => Math.Asin(radians);
+        public static double Asin(double radians)
+        {
+            return Math.Asin(radians);
+        }
 
         /// <summary>
         ///     Returns the cosine of the specified angle.
@@ -189,7 +219,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     NaN.
         /// </returns>
         [Pure]
-        public static double Cos(double radians) => Math.Cos(radians);
+        public static double Cos(double radians)
+        {
+            return Math.Cos(radians);
+        }
 
         /// <summary>
         ///     Returns the hyperbolic cosine of the specified angle.
@@ -200,7 +233,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     this method returns NaN.
         /// </returns>
         [Pure]
-        public static double Cosh(double radians) => Math.Cosh(radians);
+        public static double Cosh(double radians)
+        {
+            return Math.Cosh(radians);
+        }
 
         /// <summary>
         ///     Returns the arc sine of the specified angle.
@@ -211,7 +247,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     method returns NaN.
         /// </returns>
         [Pure]
-        public static double Acos(double radians) => Math.Acos(radians);
+        public static double Acos(double radians)
+        {
+            return Math.Acos(radians);
+        }
 
         /// <summary>
         ///     Returns the tangent of the specified angle.
@@ -222,7 +261,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     returns NaN.
         /// </returns>
         [Pure]
-        public static double Tan(double radians) => Math.Tan(radians);
+        public static double Tan(double radians)
+        {
+            return Math.Tan(radians);
+        }
 
         /// <summary>
         ///     Returns the hyperbolic tangent of the specified angle.
@@ -233,7 +275,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     this method returns NaN.
         /// </returns>
         [Pure]
-        public static double Tanh(double radians) => Math.Tanh(radians);
+        public static double Tanh(double radians)
+        {
+            return Math.Tanh(radians);
+        }
 
         /// <summary>
         ///     Returns the arc tangent of the specified angle.
@@ -244,7 +289,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     method returns NaN.
         /// </returns>
         [Pure]
-        public static double Atan(double radians) => Math.Atan(radians);
+        public static double Atan(double radians)
+        {
+            return Math.Atan(radians);
+        }
 
         /// <summary>
         ///     Returns the angle whose tangent is the quotient of two specified numbers.
@@ -256,7 +304,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     Cartesian plane.
         /// </returns>
         [Pure]
-        public static double Atan2(double y, double x) => Math.Atan2(y, x);
+        public static double Atan2(double y, double x)
+        {
+            return Math.Atan2(y, x);
+        }
 
         /// <summary>
         ///     Produces the full product of two 32-bit numbers.
@@ -265,7 +316,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second number to multiply.</param>
         /// <returns>The number containing the product of the specified numbers.</returns>
         [Pure]
-        public static long BigMul(int a, int b) => Math.BigMul(a, b);
+        public static long BigMul(int a, int b)
+        {
+            return Math.BigMul(a, b);
+        }
 
         /// <summary>
         ///     Returns the square root of a specified number.
@@ -273,7 +327,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">The number whose square root is to be found.</param>
         /// <returns>The positive square root of n.</returns>
         [Pure]
-        public static double Sqrt(double n) => Math.Sqrt(n);
+        public static double Sqrt(double n)
+        {
+            return Math.Sqrt(n);
+        }
 
         /// <summary>
         ///     Returns a specified number raised to the specified power.
@@ -282,7 +339,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="y">A double-precision floating-point number that specifies a power.</param>
         /// <returns>The number x raised to the power y.</returns>
         [Pure]
-        public static double Pow(double x, double y) => Math.Pow(x, y);
+        public static double Pow(double x, double y)
+        {
+            return Math.Pow(x, y);
+        }
 
         /// <summary>
         ///     Returns the smallest integral value greater than or equal to the specified number.
@@ -293,7 +353,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     instead of an integral type.
         /// </returns>
         [Pure]
-        public static decimal Ceiling(decimal n) => Math.Ceiling(n);
+        public static decimal Ceiling(decimal n)
+        {
+            return Math.Ceiling(n);
+        }
 
         /// <summary>
         ///     Returns the smallest integral value greater than or equal to the specified number.
@@ -305,7 +368,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     Note that this method returns a Double instead of an integral type.
         /// </returns>
         [Pure]
-        public static double Ceiling(double n) => Math.Ceiling(n);
+        public static double Ceiling(double n)
+        {
+            return Math.Ceiling(n);
+        }
 
         /// <summary>
         ///     Returns the largest integral value less than or equal to the specified number.
@@ -313,7 +379,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A decimal number.</param>
         /// <returns>Returns the largest integral value less than or equal to the specified decimal number.</returns>
         [Pure]
-        public static decimal Floor(decimal n) => Math.Floor(n);
+        public static decimal Floor(decimal n)
+        {
+            return Math.Floor(n);
+        }
 
         /// <summary>
         ///     Returns the largest integral value less than or equal to the specified number.
@@ -321,7 +390,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A double-precision floating-point number.</param>
         /// <returns>Returns the largest integral value less than or equal to the specified double-precision floating-point number.</returns>
         [Pure]
-        public static double Floor(double n) => Math.Floor(n);
+        public static double Floor(double n)
+        {
+            return Math.Floor(n);
+        }
 
         /// <summary>
         ///     Calculates the quotient of two integers and also returns the remainder in an output parameter.
@@ -332,7 +404,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <returns>The quotient of the specified numbers.</returns>
         /// <exception cref="DivideByZeroException">b is zero.</exception>
         [Pure]
-        public static int DivRem(int a, int b, out int result) => Math.DivRem(a, b, out result);
+        public static int DivRem(int a, int b, out int result)
+        {
+            return Math.DivRem(a, b, out result);
+        }
 
         /// <summary>
         ///     Calculates the quotient of two longs and also returns the remainder in an output parameter.
@@ -343,7 +418,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <returns>The quotient of the specified numbers.</returns>
         /// <exception cref="DivideByZeroException">b is zero.</exception>
         [Pure]
-        public static long DivRem(long a, long b, out long result) => Math.DivRem(a, b, out result);
+        public static long DivRem(long a, long b, out long result)
+        {
+            return Math.DivRem(a, b, out result);
+        }
 
         /// <summary>
         ///     Returns the natural (base e) logarithm of a specified number.
@@ -351,7 +429,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">A number whose logarithm is to be found.</param>
         /// <returns>The natural logarithm of n.</returns>
         [Pure]
-        public static double Log(double n) => Math.Log(n);
+        public static double Log(double n)
+        {
+            return Math.Log(n);
+        }
 
         /// <summary>
         ///     Returns the logarithm of a specified number in a specified base.
@@ -360,7 +441,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="newBase">The specified base.</param>
         /// <returns>The base newBase logarithm of n.</returns>
         [Pure]
-        public static double Log(double n, double newBase) => Math.Log(n, newBase);
+        public static double Log(double n, double newBase)
+        {
+            return Math.Log(n, newBase);
+        }
 
         /// <summary>
         ///     Returns the base 10 logarithm of a specified number.
@@ -368,7 +452,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="n">The specified number.</param>
         /// <returns>The base 10 log of n.</returns>
         [Pure]
-        public static double Log10(double n) => Math.Log10(n);
+        public static double Log10(double n)
+        {
+            return Math.Log10(n);
+        }
 
         /// <summary>
         ///     Returns the base 2 logarithm of a specified number.
@@ -377,7 +464,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <returns>The base 2 log of n.</returns>
         /// <remarks>This one will be implemented by System.Math from .netcore 3.0 and onwards.</remarks>
         [Pure]
-        public static double Log2(double n) => Math.Log(n, 2);
+        public static double Log2(double n)
+        {
+            return Math.Log(n, 2);
+        }
 
         /// <summary>
         ///     Returns e raised to the specified power.
@@ -388,7 +478,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     NegativeInfinity, 0 is returned.
         /// </returns>
         [Pure]
-        public static double Exp(double n) => Math.Exp(n);
+        public static double Exp(double n)
+        {
+            return Math.Exp(n);
+        }
 
         /// <summary>
         ///     Returns the remainder resulting from the division of a specified number by another specified number.
@@ -402,7 +495,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     If b = 0, NaN is returned.
         /// </returns>
         [Pure]
-        public static double IEEERemainder(double a, double b) => Math.IEEERemainder(a, b);
+        public static double IEEERemainder(double a, double b)
+        {
+            return Math.IEEERemainder(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two bytes.
@@ -411,7 +507,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two bytes to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static byte Max(byte a, byte b) => Math.Max(a, b);
+        public static byte Max(byte a, byte b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two sbytes.
@@ -420,7 +519,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two sbytes to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static sbyte Max(sbyte a, sbyte b) => Math.Max(a, b);
+        public static sbyte Max(sbyte a, sbyte b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two shorts.
@@ -429,7 +531,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two shorts to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static short Max(short a, short b) => Math.Max(a, b);
+        public static short Max(short a, short b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two ushorts.
@@ -438,7 +543,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two ushorts to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static ushort Max(ushort a, ushort b) => Math.Max(a, b);
+        public static ushort Max(ushort a, ushort b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two decimals.
@@ -447,7 +555,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two decimals to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static decimal Max(decimal a, decimal b) => Math.Max(a, b);
+        public static decimal Max(decimal a, decimal b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two ints.
@@ -456,7 +567,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two ints to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static int Max(int a, int b) => Math.Max(a, b);
+        public static int Max(int a, int b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two uints.
@@ -465,7 +579,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two uints to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static uint Max(uint a, uint b) => Math.Max(a, b);
+        public static uint Max(uint a, uint b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two floats.
@@ -474,7 +591,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two floats to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static float Max(float a, float b) => Math.Max(a, b);
+        public static float Max(float a, float b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two longs.
@@ -483,7 +603,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two longs to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static long Max(long a, long b) => Math.Max(a, b);
+        public static long Max(long a, long b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the larger of two ulongs.
@@ -492,7 +615,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two ulongs to compare.</param>
         /// <returns>Parameter a or b, whichever is larger.</returns>
         [Pure]
-        public static ulong Max(ulong a, ulong b) => Math.Max(a, b);
+        public static ulong Max(ulong a, ulong b)
+        {
+            return Math.Max(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two bytes.
@@ -501,7 +627,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two bytes to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static byte Min(byte a, byte b) => Math.Min(a, b);
+        public static byte Min(byte a, byte b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two sbytes.
@@ -510,7 +639,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two sbytes to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static sbyte Min(sbyte a, sbyte b) => Math.Min(a, b);
+        public static sbyte Min(sbyte a, sbyte b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two shorts.
@@ -519,7 +651,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two shorts to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static short Min(short a, short b) => Math.Min(a, b);
+        public static short Min(short a, short b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two ushorts.
@@ -528,7 +663,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two ushorts to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static ushort Min(ushort a, ushort b) => Math.Min(a, b);
+        public static ushort Min(ushort a, ushort b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two decimals.
@@ -537,7 +675,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two decimals to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static decimal Min(decimal a, decimal b) => Math.Min(a, b);
+        public static decimal Min(decimal a, decimal b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two ints.
@@ -546,7 +687,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two ints to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static int Min(int a, int b) => Math.Min(a, b);
+        public static int Min(int a, int b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two uints.
@@ -555,7 +699,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two uints to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static uint Min(uint a, uint b) => Math.Min(a, b);
+        public static uint Min(uint a, uint b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two floats.
@@ -564,7 +711,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two floats to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static float Min(float a, float b) => Math.Min(a, b);
+        public static float Min(float a, float b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two floats.
@@ -573,7 +723,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two floats to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static double Min(double a, double b) => Math.Min(a, b);
+        public static double Min(double a, double b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two longs.
@@ -582,7 +735,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two longs to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static long Min(long a, long b) => Math.Min(a, b);
+        public static long Min(long a, long b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Returns the smaller of two ulongs.
@@ -591,7 +747,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second of two ulongs to compare.</param>
         /// <returns>Parameter a or b, whichever is smaller.</returns>
         [Pure]
-        public static ulong Min(ulong a, ulong b) => Math.Min(a, b);
+        public static ulong Min(ulong a, ulong b)
+        {
+            return Math.Min(a, b);
+        }
 
         /// <summary>
         ///     Rounds a decimal value to a specified number of fractional digits, and uses the specified rounding convention for
@@ -608,7 +767,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <exception cref="ArgumentException">mode is not a valid value of MidpointRounding.</exception>
         /// <exception cref="OverflowException">The result is outside the range of a Decimal.</exception>
         [Pure]
-        public static decimal Round(decimal d, int digits, MidpointRounding mode) => Math.Round(d, digits, mode);
+        public static decimal Round(decimal d, int digits, MidpointRounding mode)
+        {
+            return Math.Round(d, digits, mode);
+        }
 
         /// <summary>
         ///     Rounds a double-precision floating-point value to a specified number of fractional digits, and uses the specified
@@ -624,7 +786,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <exception cref="ArgumentOutOfRangeException">digits is less than 0 or greater than 15.</exception>
         /// <exception cref="ArgumentException">mode is not a valid value of MidpointRounding.</exception>
         [Pure]
-        public static double Round(double d, int digits, MidpointRounding mode) => Math.Round(d, digits, mode);
+        public static double Round(double d, int digits, MidpointRounding mode)
+        {
+            return Math.Round(d, digits, mode);
+        }
 
         /// <summary>
         ///     Rounds a decimal value to the nearest integer, and uses the specified rounding convention for midpoint values.
@@ -639,7 +804,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <exception cref="ArgumentException">mode is not a valid value of MidpointRounding.</exception>
         /// <exception cref="OverflowException">The result is outside the range of a Decimal.</exception>
         [Pure]
-        public static decimal Round(decimal d, MidpointRounding mode) => Math.Round(d, mode);
+        public static decimal Round(decimal d, MidpointRounding mode)
+        {
+            return Math.Round(d, mode);
+        }
 
         /// <summary>
         ///     Rounds a double-precision floating-point value to the nearest integer, and uses the specified rounding convention
@@ -654,7 +822,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// </returns>
         /// <exception cref="ArgumentException">mode is not a valid value of MidpointRounding.</exception>
         [Pure]
-        public static double Round(double d, MidpointRounding mode) => Math.Round(d, mode);
+        public static double Round(double d, MidpointRounding mode)
+        {
+            return Math.Round(d, mode);
+        }
 
         /// <summary>
         ///     Rounds a decimal value to a specified number of fractional digits, and rounds midpoint values to the nearest even
@@ -666,7 +837,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <exception cref="ArgumentOutOfRangeException"> digits is less than 0 or greater than 15.</exception>
         /// <exception cref="OverflowException">The result is outside the range of a Decimal.</exception>
         [Pure]
-        public static decimal Round(decimal d, int digits) => Math.Round(d, digits);
+        public static decimal Round(decimal d, int digits)
+        {
+            return Math.Round(d, digits);
+        }
 
         /// <summary>
         ///     Rounds a double-precision floating-point value to a specified number of fractional digits, and rounds midpoint
@@ -677,7 +851,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <returns>The number nearest to value that contains a number of fractional digits equal to digits.</returns>
         /// <exception cref="ArgumentOutOfRangeException"> digits is less than 0 or greater than 15.</exception>
         [Pure]
-        public static double Round(double d, int digits) => Math.Round(d, digits);
+        public static double Round(double d, int digits)
+        {
+            return Math.Round(d, digits);
+        }
 
         /// <summary>
         ///     Rounds a decimal value to the nearest integral value, and rounds midpoint values to the nearest even number.
@@ -690,7 +867,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// </returns>
         /// <exception cref="OverflowException">The result is outside the range of a Decimal.</exception>
         [Pure]
-        public static decimal Round(decimal d) => Math.Round(d);
+        public static decimal Round(decimal d)
+        {
+            return Math.Round(d);
+        }
 
         /// <summary>
         ///     Rounds a double-precision floating-point value to the nearest integral value, and rounds midpoint values to the
@@ -703,7 +883,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     Note that this method returns a Double instead of an integral type.
         /// </returns>
         [Pure]
-        public static double Round(double d) => Math.Round(d);
+        public static double Round(double d)
+        {
+            return Math.Round(d);
+        }
 
         /// <summary>
         ///     Calculates the integral part of a specified decimal number.
@@ -711,7 +894,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="d">A number to truncate.</param>
         /// <returns>The integral part of d; that is, the number that remains after any fractional digits have been discarded.</returns>
         [Pure]
-        public static decimal Truncate(decimal d) => Math.Truncate(d);
+        public static decimal Truncate(decimal d)
+        {
+            return Math.Truncate(d);
+        }
 
         /// <summary>
         ///     Calculates the integral part of a specified double-precision floating-point number.
@@ -722,7 +908,10 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     one of the values listed in the following table.
         /// </returns>
         [Pure]
-        public static double Truncate(double d) => Math.Truncate(d);
+        public static double Truncate(double d)
+        {
+            return Math.Truncate(d);
+        }
 
         /// <summary>
         ///     Returns an integer that indicates the sign of a sbyte.
@@ -730,7 +919,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="d">A signed number.</param>
         /// <returns>If d ≤ -1 returns -1, if 1 ≤ d returns 1 and if d = 0 returns 0.</returns>
         [Pure]
-        public static int Sign(sbyte d) => Math.Sign(d);
+        public static int Sign(sbyte d)
+        {
+            return Math.Sign(d);
+        }
 
         /// <summary>
         ///     Returns an integer that indicates the sign of a short.
@@ -738,7 +930,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="d">A signed number.</param>
         /// <returns>If d ≤ -1 returns -1, if 1 ≤ d returns 1 and if d = 0 returns 0.</returns>
         [Pure]
-        public static int Sign(short d) => Math.Sign(d);
+        public static int Sign(short d)
+        {
+            return Math.Sign(d);
+        }
 
         /// <summary>
         ///     Returns an integer that indicates the sign of a int.
@@ -746,7 +941,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="d">A signed number.</param>
         /// <returns>If d ≤ -1 returns -1, if 1 ≤ d returns 1 and if d = 0 returns 0.</returns>
         [Pure]
-        public static int Sign(int d) => Math.Sign(d);
+        public static int Sign(int d)
+        {
+            return Math.Sign(d);
+        }
 
         /// <summary>
         ///     Returns an integer that indicates the sign of a float.
@@ -754,7 +952,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="d">A signed number.</param>
         /// <returns>If d ≤ -1 returns -1, if 1 ≤ d returns 1 and if d = 0 returns 0.</returns>
         [Pure]
-        public static int Sign(float d) => Math.Sign(d);
+        public static int Sign(float d)
+        {
+            return Math.Sign(d);
+        }
 
         /// <summary>
         ///     Returns an integer that indicates the sign of a decimal.
@@ -762,7 +963,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="d">A signed number.</param>
         /// <returns>If d ≤ -1 returns -1, if 1 ≤ d returns 1 and if d = 0 returns 0.</returns>
         [Pure]
-        public static int Sign(decimal d) => Math.Sign(d);
+        public static int Sign(decimal d)
+        {
+            return Math.Sign(d);
+        }
 
         /// <summary>
         ///     Returns an integer that indicates the sign of a double.
@@ -770,7 +974,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="d">A signed number.</param>
         /// <returns>If d ≤ -1 returns -1, if 1 ≤ d returns 1 and if d = 0 returns 0.</returns>
         [Pure]
-        public static int Sign(double d) => Math.Sign(d);
+        public static int Sign(double d)
+        {
+            return Math.Sign(d);
+        }
 
         /// <summary>
         ///     Returns an integer that indicates the sign of a long.
@@ -778,7 +985,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="d">A signed number.</param>
         /// <returns>If d ≤ -1 returns -1, if 1 ≤ d returns 1 and if d = 0 returns 0.</returns>
         [Pure]
-        public static int Sign(long d) => Math.Sign(d);
+        public static int Sign(long d)
+        {
+            return Math.Sign(d);
+        }
 
         /// <summary>
         ///     Returns the next power of two that is greater than or equal to the specified number.
@@ -869,7 +1079,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="k">The k.</param>
         /// <returns>n! / (k! * (n - k)!).</returns>
         [Pure]
-        public static long BinomialCoefficient(int n, int k) => Factorial(n) / (Factorial(k) * Factorial(n - k));
+        public static long BinomialCoefficient(int n, int k)
+        {
+            return Factorial(n) / (Factorial(k) * Factorial(n - k));
+        }
 
         /// <summary>
         ///     Returns an approximation of the inverse square root of left number.
@@ -992,7 +1205,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="max">The maximum allowed value.</param>
         /// <returns>min, if n is lower than min; max, if n is higher than max; n otherwise.</returns>
         [Pure]
-        public static int Clamp(int n, int min, int max) => Math.Max(Math.Min(n, max), min);
+        public static int Clamp(int n, int min, int max)
+        {
+            return Math.Max(Math.Min(n, max), min);
+        }
 
         /// <summary>
         ///     Clamps a number between a minimum and a maximum.
@@ -1002,7 +1218,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="max">The maximum allowed value.</param>
         /// <returns>min, if n is lower than min; max, if n is higher than max; n otherwise.</returns>
         [Pure]
-        public static float Clamp(float n, float min, float max) => Math.Max(Math.Min(n, max), min);
+        public static float Clamp(float n, float min, float max)
+        {
+            return Math.Max(Math.Min(n, max), min);
+        }
 
         /// <summary>
         ///     Clamps a number between a minimum and a maximum.
@@ -1012,7 +1231,10 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="max">The maximum allowed value.</param>
         /// <returns>min, if n is lower than min; max, if n is higher than max; n otherwise.</returns>
         [Pure]
-        public static double Clamp(double n, double min, double max) => Math.Max(Math.Min(n, max), min);
+        public static double Clamp(double n, double min, double max)
+        {
+            return Math.Max(Math.Min(n, max), min);
+        }
 
         /// <summary>
         ///     Scales the specified number linearly between a minimum and a maximum.
@@ -1112,8 +1334,8 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     <value>false</value>
         ///     .
         /// </returns>
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Used for early bailout."),
-         Pure]
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Used for early bailout.")]
+        [Pure]
         public static bool ApproximatelyEqualEpsilon(double a, double b, double epsilon)
         {
             const double doubleNormal = (1L << 52) * double.Epsilon;
@@ -1151,8 +1373,8 @@ namespace Alis.Core.Audio2D.Mathematics
         ///     <value>false</value>
         ///     .
         /// </returns>
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Used for early bailout."),
-         Pure]
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Used for early bailout.")]
+        [Pure]
         public static bool ApproximatelyEqualEpsilon(float a, float b, float epsilon)
         {
             const float floatNormal = (1 << 23) * float.Epsilon;
@@ -1188,8 +1410,8 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second value to compare.</param>
         /// <param name="tolerance">The tolerance within which the two values would be considered equivalent.</param>
         /// <returns>Whether or not the values can be considered equivalent within the tolerance.</returns>
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Used for early bailout."),
-         Pure]
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Used for early bailout.")]
+        [Pure]
         public static bool ApproximatelyEquivalent(float a, float b, float tolerance)
         {
             if (a == b)
@@ -1212,8 +1434,8 @@ namespace Alis.Core.Audio2D.Mathematics
         /// <param name="b">The second value to compare.</param>
         /// <param name="tolerance">The tolerance within which the two values would be considered equivalent.</param>
         /// <returns>Whether or not the values can be considered equivalent within the tolerance.</returns>
-        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Used for early bailout."),
-         Pure]
+        [SuppressMessage("ReSharper", "CompareOfFloatsByEqualityOperator", Justification = "Used for early bailout.")]
+        [Pure]
         public static bool ApproximatelyEquivalent(double a, double b, double tolerance)
         {
             if (a == b)

@@ -222,9 +222,11 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public bool Contains(Point point) =>
-            point.X > LeftPoint.X && point.X < RightPoint.X && Top.IsAbove(point) &&
-            Bottom.IsBelow(point);
+        public bool Contains(Point point)
+        {
+            return point.X > LeftPoint.X && point.X < RightPoint.X && Top.IsAbove(point) &&
+                   Bottom.IsBelow(point);
+        }
 
         /// <summary>
         ///     Gets the vertices

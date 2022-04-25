@@ -30,10 +30,9 @@
 namespace Alis.Core.Ads
 {
     /// <summary>
-    /// The example default class
+    ///     The example default class
     /// </summary>
     public class ExampleDefault
     {
-    
     }
 }

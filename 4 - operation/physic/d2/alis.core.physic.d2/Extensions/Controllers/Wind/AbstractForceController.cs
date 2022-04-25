@@ -41,6 +41,80 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
     /// <seealso cref="Controller" />
     public abstract class AbstractForceController : Controller
     {
+        /// <summary>Modes for Decay. Actual Decay must be implemented in inheriting classes</summary>
+        public enum DecayModes
+        {
+            /// <summary>
+            ///     The none decay modes
+            /// </summary>
+            None,
+
+            /// <summary>
+            ///     The step decay modes
+            /// </summary>
+            Step,
+
+            /// <summary>
+            ///     The linear decay modes
+            /// </summary>
+            Linear,
+
+            /// <summary>
+            ///     The inverse square decay modes
+            /// </summary>
+            InverseSquare,
+
+            /// <summary>
+            ///     The curve decay modes
+            /// </summary>
+            Curve
+        }
+
+        /// <summary>
+        ///     Forcetypes are used in the decay math to properly get the distance. They are also used to draw a
+        ///     representation in DebugView
+        /// </summary>
+        public enum ForceTypes
+        {
+            /// <summary>
+            ///     The point force types
+            /// </summary>
+            Point,
+
+            /// <summary>
+            ///     The line force types
+            /// </summary>
+            Line,
+
+            /// <summary>
+            ///     The area force types
+            /// </summary>
+            Area
+        }
+
+        /// <summary>
+        ///     Timing Modes Switched: Standard on/off mode using the baseclass enabled property Triggered: When the Trigger()
+        ///     method is called the force is active for a specified Impulse Length Curve: Still to be defined. The basic idea is
+        ///     having a Trigger combined with a curve for the strength
+        /// </summary>
+        public enum TimingModes
+        {
+            /// <summary>
+            ///     The switched timing modes
+            /// </summary>
+            Switched,
+
+            /// <summary>
+            ///     The triggered timing modes
+            /// </summary>
+            Triggered,
+
+            /// <summary>
+            ///     The curve timing modes
+            /// </summary>
+            Curve
+        }
+
         /// <summary>Curve to be used for Decay in Curve mode</summary>
         public Config.Extensions.Controllers.Wind.Curve.Curve DecayCurve;
 
@@ -135,80 +209,6 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
 
         /// <summary>Maximum distance a force should be applied</summary>
         public float DecayEnd { get; set; }
-
-        /// <summary>Modes for Decay. Actual Decay must be implemented in inheriting classes</summary>
-        public enum DecayModes
-        {
-            /// <summary>
-            ///     The none decay modes
-            /// </summary>
-            None,
-
-            /// <summary>
-            ///     The step decay modes
-            /// </summary>
-            Step,
-
-            /// <summary>
-            ///     The linear decay modes
-            /// </summary>
-            Linear,
-
-            /// <summary>
-            ///     The inverse square decay modes
-            /// </summary>
-            InverseSquare,
-
-            /// <summary>
-            ///     The curve decay modes
-            /// </summary>
-            Curve
-        }
-
-        /// <summary>
-        ///     Forcetypes are used in the decay math to properly get the distance. They are also used to draw a
-        ///     representation in DebugView
-        /// </summary>
-        public enum ForceTypes
-        {
-            /// <summary>
-            ///     The point force types
-            /// </summary>
-            Point,
-
-            /// <summary>
-            ///     The line force types
-            /// </summary>
-            Line,
-
-            /// <summary>
-            ///     The area force types
-            /// </summary>
-            Area
-        }
-
-        /// <summary>
-        ///     Timing Modes Switched: Standard on/off mode using the baseclass enabled property Triggered: When the Trigger()
-        ///     method is called the force is active for a specified Impulse Length Curve: Still to be defined. The basic idea is
-        ///     having a Trigger combined with a curve for the strength
-        /// </summary>
-        public enum TimingModes
-        {
-            /// <summary>
-            ///     The switched timing modes
-            /// </summary>
-            Switched,
-
-            /// <summary>
-            ///     The triggered timing modes
-            /// </summary>
-            Triggered,
-
-            /// <summary>
-            ///     The curve timing modes
-            /// </summary>
-            Curve
-        }
 
         /// <summary>
         ///     Calculate the Decay for a given body. Meant to ease force development and stick to the DRY principle and

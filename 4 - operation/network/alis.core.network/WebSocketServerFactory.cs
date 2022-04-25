@@ -71,7 +71,10 @@ namespace Alis.Core.Network
         ///     be disposed when no longer needed and can be returned to the pool.
         /// </param>
         /// </param>
-        public WebSocketServerFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
+        public WebSocketServerFactory(Func<MemoryStream> bufferFactory)
+        {
+            _bufferFactory = bufferFactory;
+        }
 
         /// <summary>
         ///     Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
@@ -97,8 +100,10 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context,
-            CancellationToken token = default(CancellationToken)) =>
-            await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
+            CancellationToken token = default(CancellationToken))
+        {
+            return await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
+        }
 
         /// <summary>
         ///     Accept web socket with options specified

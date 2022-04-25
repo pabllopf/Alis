@@ -114,7 +114,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>The total point count</returns>
         ////////////////////////////////////////////////////////////
-        public override uint GetPointCount() => myPointCount;
+        public override uint GetPointCount()
+        {
+            return myPointCount;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>

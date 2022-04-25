@@ -426,7 +426,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         }
 
         /// <summary>Square value for use in marching squares</summary>
-        private static float Square(float x) => x * x;
+        private static float Square(float x)
+        {
+            return x * x;
+        }
 
         /// <summary>
         ///     Vecs the dsq using the specified a
@@ -446,7 +449,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float VecCross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
+        private static float VecCross(Vector2 a, Vector2 b)
+        {
+            return a.X * b.Y - a.Y * b.X;
+        }
 
         /// <summary>
         ///     Look-up table to relate polygon key with the vertices that should be used for the sub polygon in marching
@@ -646,13 +652,22 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             private CxFastListNode<T> head;
 
             /// <summary>Iterator to start of list (O(1))</summary>
-            public CxFastListNode<T> Begin() => head;
+            public CxFastListNode<T> Begin()
+            {
+                return head;
+            }
 
             /// <summary>Iterator to end of list (O(1))</summary>
-            public CxFastListNode<T> End() => null;
+            public CxFastListNode<T> End()
+            {
+                return null;
+            }
 
             /// <summary>Returns first element of list (O(1))</summary>
-            public T Front() => head.GetElem();
+            public T Front()
+            {
+                return head.GetElem();
+            }
 
             /// <summary>add object to list (O(1))</summary>
             public CxFastListNode<T> Add(T value)
@@ -719,7 +734,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             ///     retrieves it
             ///     from the object pool.
             /// </summary>
-            public CxFastListNode<T> Pop() => Erase(null, head);
+            public CxFastListNode<T> Pop()
+            {
+                return Erase(null, head);
+            }
 
             /// <summary>insert object after 'node' returning an iterator to the inserted object.</summary>
             public CxFastListNode<T> Insert(CxFastListNode<T> node, T value)
@@ -801,7 +819,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             }
 
             /// <summary>returns true if 'value' is an element of the list (O(n))</summary>
-            public bool Has(T value) => Find(value) != null;
+            public bool Has(T value)
+            {
+                return Find(value) != null;
+            }
 
             // Non CxFastList Methods 
             /// <summary>
@@ -877,7 +898,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             ///     Initializes a new instance of the <see cref="CxFastListNode{T}" /> class
             /// </summary>
             /// <param name="obj">The obj</param>
-            public CxFastListNode(T obj) => Elt = obj;
+            public CxFastListNode(T obj)
+            {
+                Elt = obj;
+            }
 
             /// <summary>
             ///     The elt
@@ -893,13 +917,19 @@ namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
             ///     Elems this instance
             /// </summary>
             /// <returns>The elt</returns>
-            public T GetElem() => Elt;
+            public T GetElem()
+            {
+                return Elt;
+            }
 
             /// <summary>
             ///     Nexts this instance
             /// </summary>
             /// <returns>The next</returns>
-            public CxFastListNode<T> GetNext() => Next;
+            public CxFastListNode<T> GetNext()
+            {
+                return Next;
+            }
         }
 
         /// <summary>

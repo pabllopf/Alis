@@ -45,7 +45,10 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
     public class Curve
     {
         /// <summary>Constructs a curve.</summary>
-        public Curve() => Keys = new CurveKeyCollection();
+        public Curve()
+        {
+            Keys = new CurveKeyCollection();
+        }
 
         /// <summary>Returns <c>true</c> if this curve is constant (has zero or one points); <c>false</c> otherwise.</summary>
         [DataMember]

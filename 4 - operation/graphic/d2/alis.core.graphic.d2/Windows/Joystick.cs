@@ -89,7 +89,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="joystick">Index of the joystick to check</param>
         /// <returns>True if the joystick is connected, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsConnected(uint joystick) => sfJoystick_isConnected(joystick);
+        public static bool IsConnected(uint joystick)
+        {
+            return sfJoystick_isConnected(joystick);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -99,7 +102,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="joystick">Index of the joystick</param>
         /// <returns>Number of buttons supported by the joystick</returns>
         ////////////////////////////////////////////////////////////
-        public static uint GetButtonCount(uint joystick) => sfJoystick_getButtonCount(joystick);
+        public static uint GetButtonCount(uint joystick)
+        {
+            return sfJoystick_getButtonCount(joystick);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -110,7 +116,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="axis">Axis to check</param>
         /// <returns>True if the joystick supports the axis, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool HasAxis(uint joystick, Axis axis) => sfJoystick_hasAxis(joystick, axis);
+        public static bool HasAxis(uint joystick, Axis axis)
+        {
+            return sfJoystick_hasAxis(joystick, axis);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -121,7 +130,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="button">Button to check</param>
         /// <returns>True if the button is pressed, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsButtonPressed(uint joystick, uint button) => sfJoystick_isButtonPressed(joystick, button);
+        public static bool IsButtonPressed(uint joystick, uint button)
+        {
+            return sfJoystick_isButtonPressed(joystick, button);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -132,7 +144,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="axis">Axis to check</param>
         /// <returns>Current position of the axis, in range [-100 .. 100]</returns>
         ////////////////////////////////////////////////////////////
-        public static float GetAxisPosition(uint joystick, Axis axis) => sfJoystick_getAxisPosition(joystick, axis);
+        public static float GetAxisPosition(uint joystick, Axis axis)
+        {
+            return sfJoystick_getAxisPosition(joystick, axis);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -166,6 +181,70 @@ namespace Alis.Core.Graphics2D.Windows
 
             return retIdentification;
         }
+
+        /// <summary>
+        ///     Describes whether sf joystick is connected
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The bool</returns>
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern bool sfJoystick_isConnected(uint joystick);
+
+        /// <summary>
+        ///     Sfs the joystick get button count using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The uint</returns>
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern uint sfJoystick_getButtonCount(uint joystick);
+
+        /// <summary>
+        ///     Describes whether sf joystick has axis
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="axis">The axis</param>
+        /// <returns>The bool</returns>
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern bool sfJoystick_hasAxis(uint joystick, Axis axis);
+
+        /// <summary>
+        ///     Describes whether sf joystick is button pressed
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="button">The button</param>
+        /// <returns>The bool</returns>
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern bool sfJoystick_isButtonPressed(uint joystick, uint button);
+
+        /// <summary>
+        ///     Sfs the joystick get axis position using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <param name="axis">The axis</param>
+        /// <returns>The float</returns>
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern float sfJoystick_getAxisPosition(uint joystick, Axis axis);
+
+        /// <summary>
+        ///     Sfs the joystick update
+        /// </summary>
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfJoystick_update();
+
+        /// <summary>
+        ///     Sfs the joystick get identification using the specified joystick
+        /// </summary>
+        /// <param name="joystick">The joystick</param>
+        /// <returns>The identification marshal data</returns>
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern IdentificationMarshalData sfJoystick_getIdentification(uint joystick);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -208,62 +287,5 @@ namespace Alis.Core.Graphics2D.Windows
             /// </summary>
             public uint ProductId;
         }
-
-        /// <summary>
-        ///     Describes whether sf joystick is connected
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfJoystick_isConnected(uint joystick);
-
-        /// <summary>
-        ///     Sfs the joystick get button count using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The uint</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern uint sfJoystick_getButtonCount(uint joystick);
-
-        /// <summary>
-        ///     Describes whether sf joystick has axis
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="axis">The axis</param>
-        /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfJoystick_hasAxis(uint joystick, Axis axis);
-
-        /// <summary>
-        ///     Describes whether sf joystick is button pressed
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="button">The button</param>
-        /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfJoystick_isButtonPressed(uint joystick, uint button);
-
-        /// <summary>
-        ///     Sfs the joystick get axis position using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <param name="axis">The axis</param>
-        /// <returns>The float</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern float sfJoystick_getAxisPosition(uint joystick, Axis axis);
-
-        /// <summary>
-        ///     Sfs the joystick update
-        /// </summary>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfJoystick_update();
-
-        /// <summary>
-        ///     Sfs the joystick get identification using the specified joystick
-        /// </summary>
-        /// <param name="joystick">The joystick</param>
-        /// <returns>The identification marshal data</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IdentificationMarshalData sfJoystick_getIdentification(uint joystick);
     }
 }

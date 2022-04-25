@@ -155,9 +155,11 @@ namespace Alis.Core.Audio2D.Mathematics.Geometry
         /// <param name="point">The point to query.</param>
         /// <returns>Whether this box contains the point.</returns>
         [Pure]
-        public bool Contains(Vector2d point) =>
-            _min.X < point.X && point.X < _max.X &&
-            _min.Y < point.Y && point.Y < _max.Y;
+        public bool Contains(Vector2d point)
+        {
+            return _min.X < point.X && point.X < _max.X &&
+                   _min.Y < point.Y && point.Y < _max.Y;
+        }
 
         /// <summary>
         ///     Returns whether the box contains the specified point.
@@ -186,9 +188,11 @@ namespace Alis.Core.Audio2D.Mathematics.Geometry
         /// <param name="other">The box to query.</param>
         /// <returns>Whether this box contains the other box.</returns>
         [Pure]
-        public bool Contains(Box2d other) =>
-            _max.X >= other._min.X && _min.X <= other._max.X &&
-            _max.Y >= other._min.Y && _min.Y <= other._max.Y;
+        public bool Contains(Box2d other)
+        {
+            return _max.X >= other._min.X && _min.X <= other._max.X &&
+                   _max.Y >= other._min.Y && _min.Y <= other._max.Y;
+        }
 
         /// <summary>
         ///     Returns the distance between the nearest edge and the specified point.
@@ -283,27 +287,44 @@ namespace Alis.Core.Audio2D.Mathematics.Geometry
         /// </summary>
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
-        public static bool operator ==(Box2d left, Box2d right) => left.Equals(right);
+        public static bool operator ==(Box2d left, Box2d right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Inequality comparator.
         /// </summary>
         /// <param name="left">The left operand.</param>
         /// <param name="right">The right operand.</param>
-        public static bool operator !=(Box2d left, Box2d right) => !(left == right);
+        public static bool operator !=(Box2d left, Box2d right)
+        {
+            return !(left == right);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Box2d && Equals((Box2d) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Box2d && Equals((Box2d) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Box2d other) =>
-            _min.Equals(other._min) &&
-            _max.Equals(other._max);
+        public bool Equals(Box2d other)
+        {
+            return _min.Equals(other._min) &&
+                   _max.Equals(other._max);
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(_min, _max);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_min, _max);
+        }
 
         /// <inheritdoc />
-        public override string ToString() => $"{Min} - {Max}";
+        public override string ToString()
+        {
+            return $"{Min} - {Max}";
+        }
     }
 }

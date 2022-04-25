@@ -41,6 +41,11 @@ namespace GeometryDash
     public class Move : Component
     {
         /// <summary>
+        ///     The speed
+        /// </summary>
+        private const float speed = 9.5f;
+
+        /// <summary>
         ///     The down key
         /// </summary>
         private Keyboard downKey;
@@ -88,11 +93,6 @@ namespace GeometryDash
             get => downKey;
             set => downKey = value;
         }
-
-        /// <summary>
-        ///     The speed
-        /// </summary>
-        private const float speed = 9.5f;
 
         /// <summary>
         ///     Starts this instance

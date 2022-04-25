@@ -41,6 +41,11 @@ namespace Alis.Core.Audio2D.Extensions.EXT.Float32
     public class EXTFloat32 : ALBase
     {
         /// <summary>
+        ///     The name of this AL extension.
+        /// </summary>
+        public const string ExtensionName = "AL_EXT_float32";
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="EXTFloat32" /> class
         /// </summary>
         static EXTFloat32()
@@ -57,15 +62,13 @@ namespace Alis.Core.Audio2D.Extensions.EXT.Float32
         }
 
         /// <summary>
-        ///     The name of this AL extension.
-        /// </summary>
-        public const string ExtensionName = "AL_EXT_float32";
-
-        /// <summary>
         ///     Checks if this extension is present.
         /// </summary>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent() => AL.IsExtensionPresent(ExtensionName);
+        public static bool IsExtensionPresent()
+        {
+            return AL.IsExtensionPresent(ExtensionName);
+        }
 
         /// <summary>
         ///     This function fills a buffer with audio buffer. All the pre-defined formats are PCM buffer, but this function

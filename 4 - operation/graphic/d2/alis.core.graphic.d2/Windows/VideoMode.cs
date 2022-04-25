@@ -76,7 +76,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>True if the video mode is valid, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public bool IsValid() => sfVideoMode_isValid(this);
+        public bool IsValid()
+        {
+            return sfVideoMode_isValid(this);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -115,11 +118,13 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[VideoMode]" +
-            " Width(" + Width + ")" +
-            " Height(" + Height + ")" +
-            " BitsPerPixel(" + BitsPerPixel + ")";
+        public override string ToString()
+        {
+            return "[VideoMode]" +
+                   " Width(" + Width + ")" +
+                   " Height(" + Height + ")" +
+                   " BitsPerPixel(" + BitsPerPixel + ")";
+        }
 
         /// <summary>Video mode width, in pixels</summary>
         public uint Width;
@@ -134,7 +139,8 @@ namespace Alis.Core.Graphics2D.Windows
         ///     Sfs the video mode get desktop mode
         /// </summary>
         /// <returns>The video mode</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern VideoMode sfVideoMode_getDesktopMode();
 
         /// <summary>
@@ -142,7 +148,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="Count">The count</param>
         /// <returns>The video mode</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern unsafe VideoMode* sfVideoMode_getFullscreenModes(out uint Count);
 
         /// <summary>
@@ -150,7 +157,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="Mode">The mode</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfVideoMode_isValid(VideoMode Mode);
     }
 }

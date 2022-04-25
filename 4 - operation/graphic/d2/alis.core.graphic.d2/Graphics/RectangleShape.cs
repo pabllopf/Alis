@@ -59,7 +59,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="size">Size of the shape</param>
         ////////////////////////////////////////////////////////////
-        public RectangleShape(Vector2f size) => Size = size;
+        public RectangleShape(Vector2f size)
+        {
+            Size = size;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -68,8 +71,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="copy">Shape to copy</param>
         ////////////////////////////////////////////////////////////
         public RectangleShape(RectangleShape copy) :
-            base(copy) =>
+            base(copy)
+        {
             Size = copy.Size;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -95,7 +100,10 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     this number is always 4.
         /// </returns>
         ////////////////////////////////////////////////////////////
-        public override uint GetPointCount() => 4;
+        public override uint GetPointCount()
+        {
+            return 4;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>

@@ -38,6 +38,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
     /// </summary>
     internal class MonotoneMountain
     {
+        // Almost Pi!
+        /// <summary>
+        ///     The pi slop
+        /// </summary>
+        private const float PiSlop = 3.1f;
+
         /// <summary>
         ///     The convex points
         /// </summary>
@@ -89,12 +95,6 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
             monoPoly = new List<Point>();
             Triangles = new List<List<Point>>();
         }
-
-        // Almost Pi!
-        /// <summary>
-        ///     The pi slop
-        /// </summary>
-        private const float PiSlop = 3.1f;
 
         // Append a point to the list
         /// <summary>
@@ -223,7 +223,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        private bool Valid(Point p) => p.Neq(head) && p.Neq(tail) && IsConvex(p);
+        private bool Valid(Point p)
+        {
+            return p.Neq(head) && p.Neq(tail) && IsConvex(p);
+        }
 
         // Create the monotone polygon
         /// <summary>

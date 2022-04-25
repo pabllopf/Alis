@@ -35,7 +35,7 @@ namespace Alis.Exceptions
     ///     The null argument exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    internal class NullArgumentException : System.Exception
+    internal class NullArgumentException : Exception
     {
     }
 }

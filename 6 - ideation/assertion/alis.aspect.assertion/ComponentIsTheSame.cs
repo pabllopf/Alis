@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ComponentInstancieIsTheSame.cs
+//  File:   ComponentIsTheSame.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -26,13 +26,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
+using System;
+
 namespace Alis.Exceptions
 {
     /// <summary>
-    /// The component is the same class
+    ///     The component is the same class
     /// </summary>
-    /// <seealso cref="System.Exception"/>
-    internal class ComponentIsTheSame : System.Exception
+    /// <seealso cref="System.Exception" />
+    internal class ComponentIsTheSame : Exception
     {
     }
 }

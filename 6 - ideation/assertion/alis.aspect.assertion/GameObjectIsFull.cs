@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 
 namespace Alis.Exceptions
@@ -36,7 +35,7 @@ namespace Alis.Exceptions
     ///     The game object is full class
     /// </summary>
     /// <seealso cref="Exception" />
-    internal class GameObjectIsFull : System.Exception
+    internal class GameObjectIsFull : Exception
     {
     }
 }

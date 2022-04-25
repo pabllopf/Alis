@@ -73,20 +73,25 @@ namespace Alis.Core.Graphics2D.Systems
         /// </summary>
         /// <returns>Time elapsed since the clock was started.</returns>
         ////////////////////////////////////////////////////////////
-        public Time Restart() => sfClock_restart(CPointer);
+        public Time Restart()
+        {
+            return sfClock_restart(CPointer);
+        }
 
         /// <summary>
         ///     Sfs the clock create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfClock_create();
 
         /// <summary>
         ///     Sfs the clock destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfClock_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -94,7 +99,8 @@ namespace Alis.Core.Graphics2D.Systems
         /// </summary>
         /// <param name="Clock">The clock</param>
         /// <returns>The time</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Time sfClock_getElapsedTime(IntPtr Clock);
 
         /// <summary>
@@ -102,7 +108,8 @@ namespace Alis.Core.Graphics2D.Systems
         /// </summary>
         /// <param name="Clock">The clock</param>
         /// <returns>The time</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Time sfClock_restart(IntPtr Clock);
     }
 }

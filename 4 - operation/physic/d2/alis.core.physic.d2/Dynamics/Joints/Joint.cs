@@ -104,7 +104,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>Constructor for fixed joint</summary>
-        protected Joint(Body body, JointType jointType) : this(jointType) => BodyA = body;
+        protected Joint(Body body, JointType jointType) : this(jointType)
+        {
+            BodyA = body;
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Joint" /> class
@@ -236,14 +239,16 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>Return true if the joint is a fixed type.</summary>
-        public bool IsFixedType() =>
-            JointType == JointType.FixedRevolute ||
-            JointType == JointType.FixedDistance ||
-            JointType == JointType.FixedPrismatic ||
-            JointType == JointType.FixedLine ||
-            JointType == JointType.FixedMouse ||
-            JointType == JointType.FixedAngle ||
-            JointType == JointType.FixedFriction;
+        public bool IsFixedType()
+        {
+            return JointType == JointType.FixedRevolute ||
+                   JointType == JointType.FixedDistance ||
+                   JointType == JointType.FixedPrismatic ||
+                   JointType == JointType.FixedLine ||
+                   JointType == JointType.FixedMouse ||
+                   JointType == JointType.FixedAngle ||
+                   JointType == JointType.FixedFriction;
+        }
 
         /// <summary>
         ///     Inits the velocity constraints using the specified data

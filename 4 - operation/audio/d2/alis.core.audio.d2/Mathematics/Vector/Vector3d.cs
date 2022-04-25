@@ -41,7 +41,8 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
     /// <summary>
     ///     Represents a 3D vector using three double-precision floating-point numbers.
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector3d : IEquatable<Vector3d>
     {
         /// <summary>
@@ -487,8 +488,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Right operand.</param>
         /// <returns>The minimum Vector3d.</returns>
         [Pure]
-        public static Vector3d MagnitudeMin(Vector3d left, Vector3d right) =>
-            left.LengthSquared < right.LengthSquared ? left : right;
+        public static Vector3d MagnitudeMin(Vector3d left, Vector3d right)
+        {
+            return left.LengthSquared < right.LengthSquared ? left : right;
+        }
 
         /// <summary>
         ///     Returns the Vector3d with the minimum magnitude.
@@ -508,8 +511,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Right operand.</param>
         /// <returns>The minimum Vector3d.</returns>
         [Pure]
-        public static Vector3d MagnitudeMax(Vector3d left, Vector3d right) =>
-            left.LengthSquared >= right.LengthSquared ? left : right;
+        public static Vector3d MagnitudeMax(Vector3d left, Vector3d right)
+        {
+            return left.LengthSquared >= right.LengthSquared ? left : right;
+        }
 
         /// <summary>
         ///     Returns the Vector3d with the maximum magnitude.
@@ -665,8 +670,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Second operand.</param>
         /// <returns>The dot product of the two inputs.</returns>
         [Pure]
-        public static double Dot(Vector3d left, Vector3d right) =>
-            left.X * right.X + left.Y * right.Y + left.Z * right.Z;
+        public static double Dot(Vector3d left, Vector3d right)
+        {
+            return left.X * right.X + left.Y * right.Y + left.Z * right.Z;
+        }
 
         /// <summary>
         ///     Calculate the dot (scalar) product of two vectors.
@@ -1378,7 +1385,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Vector3d left, Vector3d right) => left.Equals(right);
+        public static bool operator ==(Vector3d left, Vector3d right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for inequality.
@@ -1386,7 +1396,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equa lright; false otherwise.</returns>
-        public static bool operator !=(Vector3d left, Vector3d right) => !(left == right);
+        public static bool operator !=(Vector3d left, Vector3d right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector3d to OpenTK.Vector3.
@@ -1394,8 +1407,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector3d to convert.</param>
         /// <returns>The resulting Vector3.</returns>
         [Pure]
-        public static explicit operator Vector3(Vector3d vec) =>
-            new Vector3((float) vec.X, (float) vec.Y, (float) vec.Z);
+        public static explicit operator Vector3(Vector3d vec)
+        {
+            return new Vector3((float) vec.X, (float) vec.Y, (float) vec.Z);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector3d to OpenTK.Vector3h.
@@ -1403,8 +1418,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector3d to convert.</param>
         /// <returns>The resulting Vector3h.</returns>
         [Pure]
-        public static explicit operator Vector3h(Vector3d vec) =>
-            new Vector3h(new Half(vec.X), new Half(vec.Y), new Half(vec.Z));
+        public static explicit operator Vector3h(Vector3d vec)
+        {
+            return new Vector3h(new Half(vec.X), new Half(vec.Y), new Half(vec.Z));
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector3d to OpenTK.Vector3i.
@@ -1412,7 +1429,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector3d to convert.</param>
         /// <returns>The resulting Vector3i.</returns>
         [Pure]
-        public static explicit operator Vector3i(Vector3d vec) => new Vector3i((int) vec.X, (int) vec.Y, (int) vec.Z);
+        public static explicit operator Vector3i(Vector3d vec)
+        {
+            return new Vector3i((int) vec.X, (int) vec.Y, (int) vec.Z);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector3d" /> struct using a tuple containing the component
@@ -1421,23 +1441,36 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector3d" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector3d((double X, double Y, double Z) values) =>
-            new Vector3d(values.X, values.Y, values.Z);
+        public static implicit operator Vector3d((double X, double Y, double Z) values)
+        {
+            return new Vector3d(values.X, values.Y, values.Z);
+        }
 
         /// <inheritdoc />
-        public override string ToString() => string.Format("({0}{3} {1}{3} {2})", X, Y, Z, MathHelper.ListSeparator);
+        public override string ToString()
+        {
+            return string.Format("({0}{3} {1}{3} {2})", X, Y, Z, MathHelper.ListSeparator);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Vector3d && Equals((Vector3d) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Vector3d && Equals((Vector3d) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Vector3d other) =>
-            X == other.X &&
-            Y == other.Y &&
-            Z == other.Z;
+        public bool Equals(Vector3d other)
+        {
+            return X == other.X &&
+                   Y == other.Y &&
+                   Z == other.Z;
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(X, Y, Z);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y, Z);
+        }
 
         /// <summary>
         ///     Deconstructs the vector into it's individual components.

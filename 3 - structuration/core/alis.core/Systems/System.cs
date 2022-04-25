@@ -33,33 +33,33 @@ namespace Alis.Core.Systems
     public abstract class System
     {
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public abstract void Init();
-        
+
         /// <summary>
-        /// Befores the awake
+        ///     Befores the awake
         /// </summary>
         public abstract void BeforeAwake();
-        
+
         /// <summary>Awakes this instance.</summary>
         public abstract void Awake();
-        
+
         /// <summary>
-        /// Afters the awake
+        ///     Afters the awake
         /// </summary>
         public abstract void AfterAwake();
 
         /// <summary>
-        /// Befores the start
+        ///     Befores the start
         /// </summary>
         public abstract void BeforeStart();
-        
+
         /// <summary>Starts this instance.</summary>
         public abstract void Start();
-        
+
         /// <summary>
-        /// Afters the start
+        ///     Afters the start
         /// </summary>
         public abstract void AfterStart();
 
@@ -79,10 +79,10 @@ namespace Alis.Core.Systems
         public abstract void DispatchEvents();
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public abstract void Draw();
-        
+
         /// <summary>Resets this instance.</summary>
         public abstract void Reset();
 

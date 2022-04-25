@@ -54,7 +54,10 @@ namespace Alis.Builders
 
         /// <summary>Builds this instance.</summary>
         /// <returns> </returns>
-        public General Build() => Game.Setting.General;
+        public General Build()
+        {
+            return Game.Setting.General;
+        }
 
         /// <summary>
         ///     Descriptions the value

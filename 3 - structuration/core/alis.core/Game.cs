@@ -45,7 +45,7 @@ namespace Alis.Core
         {
             IsRunning = true;
             InputSystem = new InputSystem();
-            SceneSystem = new SceneSystem(new List<Scene>(){new Scene("Default", new List<GameObject>())});
+            SceneSystem = new SceneSystem(new List<Scene> {new Scene("Default", new List<GameObject>())});
             PhysicsSystem = new PhysicsSystem();
             RenderSystem = new RenderSystem();
         }
@@ -215,8 +215,14 @@ namespace Alis.Core
         /// <summary>
         ///     Exits
         /// </summary>
-        public static void Exit() => IsRunning = false;
+        public static void Exit()
+        {
+            IsRunning = false;
+        }
 
-        ~Game() => Console.WriteLine(@$"Destroy Game {GetHashCode().ToString()}");
+        ~Game()
+        {
+            Console.WriteLine(@$"Destroy Game {GetHashCode().ToString()}");
+        }
     }
 }

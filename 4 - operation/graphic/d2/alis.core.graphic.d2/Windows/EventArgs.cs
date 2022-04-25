@@ -74,13 +74,15 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[KeyEventArgs]" +
-            " Code(" + Code + ")" +
-            " Alt(" + Alt + ")" +
-            " Control(" + Control + ")" +
-            " Shift(" + Shift + ")" +
-            " System(" + System + ")";
+        public override string ToString()
+        {
+            return "[KeyEventArgs]" +
+                   " Code(" + Code + ")" +
+                   " Alt(" + Alt + ")" +
+                   " Control(" + Control + ")" +
+                   " Shift(" + Shift + ")" +
+                   " System(" + System + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -99,7 +101,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="e">Text event</param>
         ////////////////////////////////////////////////////////////
-        public TextEventArgs(TextEvent e) => Unicode = char.ConvertFromUtf32((int) e.Unicode);
+        public TextEventArgs(TextEvent e)
+        {
+            Unicode = char.ConvertFromUtf32((int) e.Unicode);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -107,9 +112,11 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[TextEventArgs]" +
-            " Unicode(" + Unicode + ")";
+        public override string ToString()
+        {
+            return "[TextEventArgs]" +
+                   " Unicode(" + Unicode + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -143,10 +150,12 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[MouseMoveEventArgs]" +
-            " X(" + X + ")" +
-            " Y(" + Y + ")";
+        public override string ToString()
+        {
+            return "[MouseMoveEventArgs]" +
+                   " X(" + X + ")" +
+                   " Y(" + Y + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -184,11 +193,13 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[MouseButtonEventArgs]" +
-            " Button(" + Button + ")" +
-            " X(" + X + ")" +
-            " Y(" + Y + ")";
+        public override string ToString()
+        {
+            return "[MouseButtonEventArgs]" +
+                   " Button(" + Button + ")" +
+                   " X(" + X + ")" +
+                   " Y(" + Y + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -227,11 +238,13 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[MouseWheelEventArgs]" +
-            " Delta(" + Delta + ")" +
-            " X(" + X + ")" +
-            " Y(" + Y + ")";
+        public override string ToString()
+        {
+            return "[MouseWheelEventArgs]" +
+                   " Delta(" + Delta + ")" +
+                   " X(" + X + ")" +
+                   " Y(" + Y + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -273,12 +286,14 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[MouseWheelScrollEventArgs]" +
-            " Wheel(" + Wheel + ")" +
-            " Delta(" + Delta + ")" +
-            " X(" + X + ")" +
-            " Y(" + Y + ")";
+        public override string ToString()
+        {
+            return "[MouseWheelScrollEventArgs]" +
+                   " Wheel(" + Wheel + ")" +
+                   " Delta(" + Delta + ")" +
+                   " X(" + X + ")" +
+                   " Y(" + Y + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -316,11 +331,13 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[JoystickMoveEventArgs]" +
-            " JoystickId(" + JoystickId + ")" +
-            " Axis(" + Axis + ")" +
-            " Position(" + Position + ")";
+        public override string ToString()
+        {
+            return "[JoystickMoveEventArgs]" +
+                   " JoystickId(" + JoystickId + ")" +
+                   " Axis(" + Axis + ")" +
+                   " Position(" + Position + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -354,10 +371,12 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[JoystickButtonEventArgs]" +
-            " JoystickId(" + JoystickId + ")" +
-            " Button(" + Button + ")";
+        public override string ToString()
+        {
+            return "[JoystickButtonEventArgs]" +
+                   " JoystickId(" + JoystickId + ")" +
+                   " Button(" + Button + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -376,7 +395,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="e">Joystick button event</param>
         ////////////////////////////////////////////////////////////
-        public JoystickConnectEventArgs(JoystickConnectEvent e) => JoystickId = e.JoystickId;
+        public JoystickConnectEventArgs(JoystickConnectEvent e)
+        {
+            JoystickId = e.JoystickId;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -384,9 +406,11 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[JoystickConnectEventArgs]" +
-            " JoystickId(" + JoystickId + ")";
+        public override string ToString()
+        {
+            return "[JoystickConnectEventArgs]" +
+                   " JoystickId(" + JoystickId + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -420,10 +444,12 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[SizeEventArgs]" +
-            " Width(" + Width + ")" +
-            " Height(" + Height + ")";
+        public override string ToString()
+        {
+            return "[SizeEventArgs]" +
+                   " Width(" + Width + ")" +
+                   " Height(" + Height + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -461,11 +487,13 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[TouchEventArgs]" +
-            " Finger(" + Finger + ")" +
-            " X(" + X + ")" +
-            " Y(" + Y + ")";
+        public override string ToString()
+        {
+            return "[TouchEventArgs]" +
+                   " Finger(" + Finger + ")" +
+                   " X(" + X + ")" +
+                   " Y(" + Y + ")";
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -507,11 +535,13 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[SensorEventArgs]" +
-            " Type(" + Type + ")" +
-            " X(" + X + ")" +
-            " Y(" + Y + ")" +
-            " Z(" + Z + ")";
+        public override string ToString()
+        {
+            return "[SensorEventArgs]" +
+                   " Type(" + Type + ")" +
+                   " X(" + X + ")" +
+                   " Y(" + Y + ")" +
+                   " Z(" + Z + ")";
+        }
     }
 }

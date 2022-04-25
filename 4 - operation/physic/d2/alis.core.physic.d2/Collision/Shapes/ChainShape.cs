@@ -183,7 +183,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
+        public override bool TestPoint(ref Transform transform, ref Vector2 point)
+        {
+            return false;
+        }
 
         /// <summary>
         ///     Describes whether this instance ray cast

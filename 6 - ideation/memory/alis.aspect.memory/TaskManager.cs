@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ExampleClass.cs
+//  File:   TaskManager.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Base
 {
     /// <summary>
-    /// The example class
+    ///     The example class
     /// </summary>
     public class ExampleClass
     {
-    
     }
 }

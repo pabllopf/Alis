@@ -51,14 +51,20 @@ namespace Alis
         }
 
         /// <summary>
-        /// Creates
+        ///     Creates
         /// </summary>
         /// <returns>The video game builder</returns>
-        public static VideoGameBuilder Create() => new VideoGameBuilder();
-        
+        public static VideoGameBuilder Create()
+        {
+            return new VideoGameBuilder();
+        }
+
         /// <summary>
         ///     Destroy object.
         /// </summary>
-        ~VideoGame() => Logger.Trace($"{nameof(VideoGame)} destroyed with hashcode {GetHashCode()}");
+        ~VideoGame()
+        {
+            Logger.Trace($"{nameof(VideoGame)} destroyed with hashcode {GetHashCode()}");
+        }
     }
 }

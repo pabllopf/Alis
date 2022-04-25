@@ -99,11 +99,13 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[Vertex]" +
-            " Position(" + Position + ")" +
-            " Color(" + Color + ")" +
-            " TexCoords(" + TexCoords + ")";
+        public override string ToString()
+        {
+            return "[Vertex]" +
+                   " Position(" + Position + ")" +
+                   " Color(" + Color + ")" +
+                   " TexCoords(" + TexCoords + ")";
+        }
 
         /// <summary>2D position of the vertex</summary>
         public Vector2f Position;

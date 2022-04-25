@@ -163,7 +163,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>Blend Modes are equal</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(BlendMode left, BlendMode right) => left.Equals(right);
+        public static bool operator ==(BlendMode left, BlendMode right)
+        {
+            return left.Equals(right);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -171,7 +174,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>Blend Modes are not equal</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(BlendMode left, BlendMode right) => !left.Equals(right);
+        public static bool operator !=(BlendMode left, BlendMode right)
+        {
+            return !left.Equals(right);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -180,7 +186,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and blend mode are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj) => obj is BlendMode && Equals((BlendMode) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is BlendMode && Equals((BlendMode) obj);
+        }
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -189,13 +198,15 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="other">Blend Mode to check</param>
         /// <returns>blend modes are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(BlendMode other) =>
-            ColorSrcFactor == other.ColorSrcFactor &&
-            ColorDstFactor == other.ColorDstFactor &&
-            ColorEquation == other.ColorEquation &&
-            AlphaSrcFactor == other.AlphaSrcFactor &&
-            AlphaDstFactor == other.AlphaDstFactor &&
-            AlphaEquation == other.AlphaEquation;
+        public bool Equals(BlendMode other)
+        {
+            return ColorSrcFactor == other.ColorSrcFactor &&
+                   ColorDstFactor == other.ColorDstFactor &&
+                   ColorEquation == other.ColorEquation &&
+                   AlphaSrcFactor == other.AlphaSrcFactor &&
+                   AlphaDstFactor == other.AlphaDstFactor &&
+                   AlphaEquation == other.AlphaEquation;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -203,13 +214,15 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode() =>
-            ColorSrcFactor.GetHashCode() ^
-            ColorDstFactor.GetHashCode() ^
-            ColorEquation.GetHashCode() ^
-            AlphaSrcFactor.GetHashCode() ^
-            AlphaDstFactor.GetHashCode() ^
-            AlphaEquation.GetHashCode();
+        public override int GetHashCode()
+        {
+            return ColorSrcFactor.GetHashCode() ^
+                   ColorDstFactor.GetHashCode() ^
+                   ColorEquation.GetHashCode() ^
+                   AlphaSrcFactor.GetHashCode() ^
+                   AlphaDstFactor.GetHashCode() ^
+                   AlphaEquation.GetHashCode();
+        }
 
         /// <summary>Source blending factor for the color channels</summary>
         public Factor ColorSrcFactor;

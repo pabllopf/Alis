@@ -251,7 +251,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="filename">Path of the file to save (overwritten if already exist)</param>
         /// <returns>True if saving was successful</returns>
         ////////////////////////////////////////////////////////////
-        public bool SaveToFile(string filename) => sfImage_saveToFile(CPointer, filename);
+        public bool SaveToFile(string filename)
+        {
+            return sfImage_saveToFile(CPointer, filename);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -332,7 +335,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="y">Y coordinate of pixel in the image</param>
         /// <returns>Color of pixel (x, y)</returns>
         ////////////////////////////////////////////////////////////
-        public Color GetPixel(uint x, uint y) => sfImage_getPixel(CPointer, x, y);
+        public Color GetPixel(uint x, uint y)
+        {
+            return sfImage_getPixel(CPointer, x, y);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -373,7 +379,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() => $"[Image] Size({Size})";
+        public override string ToString()
+        {
+            return $"[Image] Size({Size})";
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -393,7 +402,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Height">The height</param>
         /// <param name="Col">The col</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfImage_createFromColor(uint Width, uint Height, Color Col);
 
         /// <summary>
@@ -403,7 +413,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Height">The height</param>
         /// <param name="Pixels">The pixels</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern unsafe IntPtr sfImage_createFromPixels(uint Width, uint Height, byte* Pixels);
 
         /// <summary>
@@ -411,7 +422,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="Filename">The filename</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfImage_createFromFile(string Filename);
 
         /// <summary>
@@ -419,7 +431,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfImage_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -428,7 +441,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="data">The data</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfImage_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
@@ -436,14 +450,16 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="Image">The image</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfImage_copy(IntPtr Image);
 
         /// <summary>
         ///     Sfs the image destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfImage_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -452,7 +468,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Filename">The filename</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfImage_saveToFile(IntPtr CPointer, string Filename);
 
         /// <summary>
@@ -461,7 +478,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Col">The col</param>
         /// <param name="Alpha">The alpha</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfImage_createMaskFromColor(IntPtr CPointer, Color Col, byte Alpha);
 
         /// <summary>
@@ -473,7 +491,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="DestY">The dest</param>
         /// <param name="SourceRect">The source rect</param>
         /// <param name="applyAlpha">The apply alpha</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfImage_copyImage(IntPtr CPointer, IntPtr Source, uint DestX, uint DestY,
             IntRect SourceRect, bool applyAlpha);
 
@@ -484,7 +503,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="X">The </param>
         /// <param name="Y">The </param>
         /// <param name="Col">The col</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfImage_setPixel(IntPtr CPointer, uint X, uint Y, Color Col);
 
         /// <summary>
@@ -494,7 +514,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="X">The </param>
         /// <param name="Y">The </param>
         /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Color sfImage_getPixel(IntPtr CPointer, uint X, uint Y);
 
         /// <summary>
@@ -502,7 +523,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfImage_getPixelsPtr(IntPtr CPointer);
 
         /// <summary>
@@ -510,7 +532,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2u sfImage_getSize(IntPtr CPointer);
 
         /// <summary>
@@ -518,7 +541,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern uint sfImage_flipHorizontally(IntPtr CPointer);
 
         /// <summary>
@@ -526,7 +550,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern uint sfImage_flipVertically(IntPtr CPointer);
     }
 }

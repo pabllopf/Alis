@@ -45,6 +45,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
     public class DynamicTreeBroadPhase : IBroadPhase
     {
         /// <summary>
+        ///     The null proxy
+        /// </summary>
+        public const int NullProxy = -1;
+
+        /// <summary>
         ///     The query callback
         /// </summary>
         private readonly Func<int, bool> queryCallback;
@@ -115,11 +120,6 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <summary>Gets the height of the tree.</summary>
         public int TreeHeight => tree.Height;
 
-        /// <summary>
-        ///     The null proxy
-        /// </summary>
-        public const int NullProxy = -1;
-
         /// <summary>Get the number of proxies.</summary>
         /// <value>The proxy count.</value>
         public int ProxyCount => proxyCount;
@@ -174,7 +174,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         /// <summary>Get user data from a proxy. Returns null if the id is invalid.</summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <returns></returns>
-        public FixtureProxy GetProxy(int proxyId) => tree.GetUserData(proxyId);
+        public FixtureProxy GetProxy(int proxyId)
+        {
+            return tree.GetUserData(proxyId);
+        }
 
         /// <summary>Test overlap of fat AABBs.</summary>
         /// <param name="proxyIdA">The proxy id A.</param>

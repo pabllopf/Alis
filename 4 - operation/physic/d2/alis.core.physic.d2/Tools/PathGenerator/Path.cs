@@ -53,7 +53,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
         private float deltaT;
 
         /// <summary>Initializes a new instance of the <see cref="Path" /> class.</summary>
-        public Path() => ControlPoints = new List<Vector2>();
+        public Path()
+        {
+            ControlPoints = new List<Vector2>();
+        }
 
         /// <summary>Initializes a new instance of the <see cref="Path" /> class.</summary>
         /// <param name="vertices">The vertices to created the path from.</param>
@@ -313,10 +316,12 @@ namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
         /// <param name="amount">The amount</param>
         /// <returns>The vector</returns>
         public static Vector2 CatmullRom(Vector2 value1, Vector2 value2, Vector2 value3, Vector2 value4,
-            float amount) =>
-            new Vector2(
+            float amount)
+        {
+            return new Vector2(
                 MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount),
                 MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount));
+        }
 
         /// <summary>Gets the normal for the given time.</summary>
         /// <param name="time">The time</param>

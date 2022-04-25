@@ -47,7 +47,8 @@ namespace Alis.Builders
         /// <summary>
         ///     Gets or sets the value of the scene manager
         /// </summary>
-        private SceneSystem SceneManager { get; } = new SceneSystem(new List<Scene>(){new Scene("Default", new List<GameObject>())});
+        private SceneSystem SceneManager { get; } =
+            new SceneSystem(new List<Scene> {new Scene("Default", new List<GameObject>())});
 
         /// <summary>
         ///     Adds the value
@@ -66,6 +67,9 @@ namespace Alis.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The scene manager</returns>
-        public SceneSystem Build() => SceneManager;
+        public SceneSystem Build()
+        {
+            return SceneManager;
+        }
     }
 }

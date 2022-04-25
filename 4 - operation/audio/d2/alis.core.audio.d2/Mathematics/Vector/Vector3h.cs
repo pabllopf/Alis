@@ -41,7 +41,8 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
     /// <summary>
     ///     3-component Vector of the Half type. Occupies 6 Byte total.
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector3h : ISerializable, IEquatable<Vector3h>
     {
         /// <summary>
@@ -378,13 +379,19 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         ///     Returns this Half3 instance's contents as Vector3.
         /// </summary>
         /// <returns>The vector.</returns>
-        public Vector3 ToVector3() => new Vector3(X, Y, Z);
+        public Vector3 ToVector3()
+        {
+            return new Vector3(X, Y, Z);
+        }
 
         /// <summary>
         ///     Returns this Half3 instance's contents as Vector3d.
         /// </summary>
         /// <returns>The vector.</returns>
-        public Vector3d ToVector3d() => new Vector3d(X, Y, Z);
+        public Vector3d ToVector3d()
+        {
+            return new Vector3d(X, Y, Z);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector3h to OpenTK.Vector3.
@@ -392,7 +399,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector3h to convert.</param>
         /// <returns>The resulting Vector3.</returns>
         [Pure]
-        public static implicit operator Vector3(Vector3h vec) => new Vector3(vec.X, vec.Y, vec.Z);
+        public static implicit operator Vector3(Vector3h vec)
+        {
+            return new Vector3(vec.X, vec.Y, vec.Z);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector3h to OpenTK.Vector3d.
@@ -400,7 +410,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector3h to convert.</param>
         /// <returns>The resulting Vector3d.</returns>
         [Pure]
-        public static implicit operator Vector3d(Vector3h vec) => new Vector3d(vec.X, vec.Y, vec.Z);
+        public static implicit operator Vector3d(Vector3h vec)
+        {
+            return new Vector3d(vec.X, vec.Y, vec.Z);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector3h to OpenTK.Vector3i.
@@ -408,7 +421,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector3h to convert.</param>
         /// <returns>The resulting Vector3i.</returns>
         [Pure]
-        public static explicit operator Vector3i(Vector3h vec) => new Vector3i((int) vec.X, (int) vec.Y, (int) vec.Z);
+        public static explicit operator Vector3i(Vector3h vec)
+        {
+            return new Vector3i((int) vec.X, (int) vec.Y, (int) vec.Z);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector3h" /> struct using a tuple containing the component
@@ -417,8 +433,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector3h" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector3h((Half X, Half Y, Half Z) values) =>
-            new Vector3h(values.X, values.Y, values.Z);
+        public static implicit operator Vector3h((Half X, Half Y, Half Z) values)
+        {
+            return new Vector3h(values.X, values.Y, values.Z);
+        }
 
         /// <summary>
         ///     Compares two instances for equality.
@@ -426,7 +444,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Vector3h left, Vector3h right) => left.Equals(right);
+        public static bool operator ==(Vector3h left, Vector3h right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for inequality.
@@ -434,7 +455,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
-        public static bool operator !=(Vector3h left, Vector3h right) => !(left == right);
+        public static bool operator !=(Vector3h left, Vector3h right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     The size in bytes for an instance of the Half3 struct is 6.
@@ -485,20 +509,31 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         }
 
         /// <inheritdoc />
-        public override string ToString() => string.Format("({0}{3} {1}{3} {2})", X.ToString(), Y.ToString(),
-            Z.ToString(), MathHelper.ListSeparator);
+        public override string ToString()
+        {
+            return string.Format("({0}{3} {1}{3} {2})", X.ToString(), Y.ToString(),
+                Z.ToString(), MathHelper.ListSeparator);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Vector3h && Equals((Vector3h) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Vector3h && Equals((Vector3h) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Vector3h other) =>
-            X.Equals(other.X) &&
-            Y.Equals(other.Y) &&
-            Z.Equals(other.Z);
+        public bool Equals(Vector3h other)
+        {
+            return X.Equals(other.X) &&
+                   Y.Equals(other.Y) &&
+                   Z.Equals(other.Z);
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(X, Y, Z);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y, Z);
+        }
 
         /// <summary>
         ///     Returns the Half3 as an array of bytes.
@@ -530,11 +565,13 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="startIndex">The starting position within value.</param>
         /// <returns>A new Half3 instance.</returns>
         [Pure]
-        public static Vector3h FromBytes(byte[] value, int startIndex) =>
-            new Vector3h(
+        public static Vector3h FromBytes(byte[] value, int startIndex)
+        {
+            return new Vector3h(
                 Half.FromBytes(value, startIndex),
                 Half.FromBytes(value, startIndex + 2),
                 Half.FromBytes(value, startIndex + 4));
+        }
 
         /// <summary>
         ///     Deconstructs the vector into it's individual components.

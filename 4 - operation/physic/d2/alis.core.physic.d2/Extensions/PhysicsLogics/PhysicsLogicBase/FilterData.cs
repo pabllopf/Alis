@@ -115,7 +115,10 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
         /// <summary>Determines whether this body ignores the the specified controller.</summary>
         /// <param name="category">The category.</param>
         /// <returns><c>true</c> if the object has the specified category; otherwise, <c>false</c>.</returns>
-        public bool IsInDisabledCategory(Category category) => (DisabledOnCategories & category) == category;
+        public bool IsInDisabledCategory(Category category)
+        {
+            return (DisabledOnCategories & category) == category;
+        }
 
         /// <summary>Adds the category.</summary>
         /// <param name="category">The category.</param>
@@ -134,6 +137,9 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
         /// <summary>Determines whether this body ignores the the specified controller.</summary>
         /// <param name="category">The category.</param>
         /// <returns><c>true</c> if the object has the specified category; otherwise, <c>false</c>.</returns>
-        public bool IsInEnabledInCategory(Category category) => (EnabledOnCategories & category) == category;
+        public bool IsInEnabledInCategory(Category category)
+        {
+            return (EnabledOnCategories & category) == category;
+        }
     }
 }

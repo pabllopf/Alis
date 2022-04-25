@@ -40,7 +40,10 @@ namespace Alis.Core.Audio2D.Core.Exceptions
         ///     Initializes a new instance of the <see cref="ExtensionNotSupportedException" /> class.
         /// </summary>
         /// <param name="extension">The name of the extension.</param>
-        public ExtensionNotSupportedException(string extension) => Extension = extension;
+        public ExtensionNotSupportedException(string extension)
+        {
+            Extension = extension;
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ExtensionNotSupportedException" /> class.
@@ -48,8 +51,10 @@ namespace Alis.Core.Audio2D.Core.Exceptions
         /// <param name="message">The error message of the ExtensionNotSupportedException.</param>
         /// <param name="extension">The name of the extension.</param>
         public ExtensionNotSupportedException(string message, string extension)
-            : base(message) =>
+            : base(message)
+        {
             Extension = extension;
+        }
 
         /// <summary>
         ///     Gets the name of the extension.

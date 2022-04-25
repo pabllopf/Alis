@@ -285,6 +285,9 @@ namespace Alis.Core.Systems.Physics2D.Factories
         /// <param name="body">The body</param>
         /// <param name="fixtureDef">The fixture def</param>
         /// <returns>The fixture</returns>
-        public static Fixture CreateFromDef(Body body, FixtureDef fixtureDef) => body.AddFixture(fixtureDef);
+        public static Fixture CreateFromDef(Body body, FixtureDef fixtureDef)
+        {
+            return body.AddFixture(fixtureDef);
+        }
     }
 }

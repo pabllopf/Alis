@@ -46,7 +46,10 @@ namespace Alis.Builders
 
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public VideoGame Build() => VideoGame;
+        public VideoGame Build()
+        {
+            return VideoGame;
+        }
 
         /// <summary>Configurations the specified value.</summary>
         /// <param name="value">The value.</param>
@@ -71,6 +74,9 @@ namespace Alis.Builders
         }
 
         /// <summary>Run the game immediately</summary>
-        public void Run() => VideoGame.Run();
+        public void Run()
+        {
+            VideoGame.Run();
+        }
     }
 }

@@ -48,6 +48,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
     public class DynamicTree<T>
     {
         /// <summary>
+        ///     The null node
+        /// </summary>
+        public const int NullNode = -1;
+
+        /// <summary>
         ///     The stack
         /// </summary>
         private readonly Stack<int> queryStack = new Stack<int>(256);
@@ -181,11 +186,6 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
                 return maxBalance;
             }
         }
-
-        /// <summary>
-        ///     The null node
-        /// </summary>
-        public const int NullNode = -1;
 
         /// <summary>
         ///     Create a proxy in the tree as a leaf node. We return the index of the node instead of a pointer so that we can

@@ -50,7 +50,10 @@ namespace Alis.Core.Graphics2D.Systems
         /// </summary>
         /// <param name="cPointer">Internal pointer to the object in the C libraries</param>
         ////////////////////////////////////////////////////////////
-        public ObjectBase(IntPtr cPointer) => myCPointer = cPointer;
+        public ObjectBase(IntPtr cPointer)
+        {
+            myCPointer = cPointer;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>

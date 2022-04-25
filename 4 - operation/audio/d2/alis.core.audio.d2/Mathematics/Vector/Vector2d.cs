@@ -41,7 +41,8 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
     /// <summary>
     ///     Represents a 2D vector using two double-precision floating-point numbers.
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector2d : IEquatable<Vector2d>
     {
         /// <summary>
@@ -408,8 +409,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Right operand.</param>
         /// <returns>The minimum Vector2d.</returns>
         [Pure]
-        public static Vector2d MagnitudeMin(Vector2d left, Vector2d right) =>
-            left.LengthSquared < right.LengthSquared ? left : right;
+        public static Vector2d MagnitudeMin(Vector2d left, Vector2d right)
+        {
+            return left.LengthSquared < right.LengthSquared ? left : right;
+        }
 
         /// <summary>
         ///     Returns the Vector2d with the minimum magnitude. If the magnitudes are equal, the second vector
@@ -431,8 +434,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Right operand.</param>
         /// <returns>The minimum Vector2d.</returns>
         [Pure]
-        public static Vector2d MagnitudeMax(Vector2d left, Vector2d right) =>
-            left.LengthSquared >= right.LengthSquared ? left : right;
+        public static Vector2d MagnitudeMax(Vector2d left, Vector2d right)
+        {
+            return left.LengthSquared >= right.LengthSquared ? left : right;
+        }
 
         /// <summary>
         ///     Returns the Vector2d with the maximum magnitude. If the magnitudes are equal, the first vector
@@ -581,7 +586,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Second operand.</param>
         /// <returns>The dot product of the two inputs.</returns>
         [Pure]
-        public static double Dot(Vector2d left, Vector2d right) => left.X * right.X + left.Y * right.Y;
+        public static double Dot(Vector2d left, Vector2d right)
+        {
+            return left.X * right.X + left.Y * right.Y;
+        }
 
         /// <summary>
         ///     Calculate the dot (scalar) product of two vectors.
@@ -906,7 +914,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The left instance.</param>
         /// <param name="right">The right instance.</param>
         /// <returns>True, if both instances are equal; false otherwise.</returns>
-        public static bool operator ==(Vector2d left, Vector2d right) => left.Equals(right);
+        public static bool operator ==(Vector2d left, Vector2d right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for ienquality.
@@ -914,7 +925,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The left instance.</param>
         /// <param name="right">The right instance.</param>
         /// <returns>True, if the instances are not equal; false otherwise.</returns>
-        public static bool operator !=(Vector2d left, Vector2d right) => !(left == right);
+        public static bool operator !=(Vector2d left, Vector2d right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2d to OpenTK.Vector2.
@@ -922,7 +936,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2d to convert.</param>
         /// <returns>The resulting Vector2.</returns>
         [Pure]
-        public static explicit operator Vector2(Vector2d vec) => new Vector2((float) vec.X, (float) vec.Y);
+        public static explicit operator Vector2(Vector2d vec)
+        {
+            return new Vector2((float) vec.X, (float) vec.Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2d to OpenTK.Vector2h.
@@ -930,7 +947,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2d to convert.</param>
         /// <returns>The resulting Vector2h.</returns>
         [Pure]
-        public static explicit operator Vector2h(Vector2d vec) => new Vector2h(new Half(vec.X), new Half(vec.Y));
+        public static explicit operator Vector2h(Vector2d vec)
+        {
+            return new Vector2h(new Half(vec.X), new Half(vec.Y));
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2d to OpenTK.Vector2i.
@@ -938,7 +958,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2d to convert.</param>
         /// <returns>The resulting Vector2i.</returns>
         [Pure]
-        public static explicit operator Vector2i(Vector2d vec) => new Vector2i((int) vec.X, (int) vec.Y);
+        public static explicit operator Vector2i(Vector2d vec)
+        {
+            return new Vector2i((int) vec.X, (int) vec.Y);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector2d" /> struct using a tuple containing the component
@@ -947,21 +970,35 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector2d" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector2d((double X, double Y) values) => new Vector2d(values.X, values.Y);
+        public static implicit operator Vector2d((double X, double Y) values)
+        {
+            return new Vector2d(values.X, values.Y);
+        }
 
         /// <inheritdoc />
-        public override string ToString() => string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
+        public override string ToString()
+        {
+            return string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Vector2d && Equals((Vector2d) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Vector2d && Equals((Vector2d) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Vector2d other) =>
-            X == other.X &&
-            Y == other.Y;
+        public bool Equals(Vector2d other)
+        {
+            return X == other.X &&
+                   Y == other.Y;
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(X, Y);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
 
         /// <summary>
         ///     Deconstructs the vector into it's individual components.

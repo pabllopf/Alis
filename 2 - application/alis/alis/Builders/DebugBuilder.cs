@@ -45,7 +45,10 @@ namespace Alis.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The debug</returns>
-        public Debug Build() => Game.Setting.Debug;
+        public Debug Build()
+        {
+            return Game.Setting.Debug;
+        }
 
         /// <summary>
         ///     Logs the level using the specified log level

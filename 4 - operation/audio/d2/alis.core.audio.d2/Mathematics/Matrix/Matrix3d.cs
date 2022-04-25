@@ -39,7 +39,8 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
     /// <summary>
     ///     Represents a 3x3 matrix containing 3D rotation and scale with double-precision components.
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Matrix3d : IEquatable<Matrix3d>
     {
         /// <summary>
@@ -382,7 +383,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         ///     Returns the scale component of this instance.
         /// </summary>
         /// <returns>The scale components.</returns>
-        public Vector3d ExtractScale() => new Vector3d(Row0.Length, Row1.Length, Row2.Length);
+        public Vector3d ExtractScale()
+        {
+            return new Vector3d(Row0.Length, Row1.Length, Row2.Length);
+        }
 
         /// <summary>
         ///     Returns the rotation component of this instance. Quite slow.
@@ -874,7 +878,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="mat">The matrix to transpose.</param>
         /// <returns>The transpose of the given matrix.</returns>
         [Pure]
-        public static Matrix3d Transpose(Matrix3d mat) => new Matrix3d(mat.Column0, mat.Column1, mat.Column2);
+        public static Matrix3d Transpose(Matrix3d mat)
+        {
+            return new Matrix3d(mat.Column0, mat.Column1, mat.Column2);
+        }
 
         /// <summary>
         ///     Calculate the transpose of the given matrix.
@@ -895,7 +902,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix3d which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix3d operator *(Matrix3d left, Matrix3d right) => Mult(left, right);
+        public static Matrix3d operator *(Matrix3d left, Matrix3d right)
+        {
+            return Mult(left, right);
+        }
 
         /// <summary>
         ///     Compares two instances for equality.
@@ -904,7 +914,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
         [Pure]
-        public static bool operator ==(Matrix3d left, Matrix3d right) => left.Equals(right);
+        public static bool operator ==(Matrix3d left, Matrix3d right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for inequality.
@@ -913,19 +926,28 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
         [Pure]
-        public static bool operator !=(Matrix3d left, Matrix3d right) => !left.Equals(right);
+        public static bool operator !=(Matrix3d left, Matrix3d right)
+        {
+            return !left.Equals(right);
+        }
 
         /// <summary>
         ///     Returns a System.String that represents the current Matrix3d.
         /// </summary>
         /// <returns>The string representation of the matrix.</returns>
-        public override string ToString() => $"{Row0}\n{Row1}\n{Row2}";
+        public override string ToString()
+        {
+            return $"{Row0}\n{Row1}\n{Row2}";
+        }
 
         /// <summary>
         ///     Returns the hashcode for this instance.
         /// </summary>
         /// <returns>A System.Int32 containing the unique hashcode for this instance.</returns>
-        public override int GetHashCode() => HashCode.Combine(Row0, Row1, Row2);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Row0, Row1, Row2);
+        }
 
         /// <summary>
         ///     Indicates whether this instance and a specified object are equal.
@@ -933,7 +955,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="obj">The object to compare to.</param>
         /// <returns>True if the instances are equal; false otherwise.</returns>
         [Pure]
-        public override bool Equals(object obj) => obj is Matrix3d && Equals((Matrix3d) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Matrix3d && Equals((Matrix3d) obj);
+        }
 
         /// <summary>
         ///     Indicates whether the current matrix is equal to another matrix.
@@ -941,9 +966,11 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="other">A matrix to compare with this matrix.</param>
         /// <returns>true if the current matrix is equal to the matrix parameter; otherwise, false.</returns>
         [Pure]
-        public bool Equals(Matrix3d other) =>
-            Row0 == other.Row0 &&
-            Row1 == other.Row1 &&
-            Row2 == other.Row2;
+        public bool Equals(Matrix3d other)
+        {
+            return Row0 == other.Row0 &&
+                   Row1 == other.Row1 &&
+                   Row2 == other.Row2;
+        }
     }
 }

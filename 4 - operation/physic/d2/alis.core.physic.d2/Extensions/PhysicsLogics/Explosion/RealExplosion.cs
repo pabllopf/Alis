@@ -65,6 +65,9 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
     /// </summary>
     public sealed class RealExplosion : PhysicsLogic
     {
+        /// <summary>Two degrees: maximum angle from edges to first ray tested</summary>
+        private const float MaxEdgeOffset = MathConstants.Pi / 90;
+
         /// <summary>
         ///     The shape data
         /// </summary>
@@ -100,9 +103,6 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
             rdc = new RayDataComparer();
             data = new List<ShapeData>();
         }
-
-        /// <summary>Two degrees: maximum angle from edges to first ray tested</summary>
-        private const float MaxEdgeOffset = MathConstants.Pi / 90;
 
         /// <summary>Activate the explosion at the specified position.</summary>
         /// <param name="pos">The position where the explosion happens </param>

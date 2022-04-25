@@ -50,7 +50,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
         /// <summary>
         ///     Initializes a new instance of the <see cref="TriangulationContext" /> class
         /// </summary>
-        protected TriangulationContext() => Terminated = false;
+        protected TriangulationContext()
+        {
+            Terminated = false;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the triangulation mode

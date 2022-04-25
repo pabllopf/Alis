@@ -1193,12 +1193,18 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// <summary>Get the world coordinates of a point given the local coordinates.</summary>
         /// <param name="localPoint">A point on the body measured relative the body's origin.</param>
         /// <returns>The same point expressed in world coordinates.</returns>
-        public Vector2 GetWorldPoint(ref Vector2 localPoint) => MathUtils.Mul(ref Xf, ref localPoint);
+        public Vector2 GetWorldPoint(ref Vector2 localPoint)
+        {
+            return MathUtils.Mul(ref Xf, ref localPoint);
+        }
 
         /// <summary>Get the world coordinates of a point given the local coordinates.</summary>
         /// <param name="localPoint">A point on the body measured relative the body's origin.</param>
         /// <returns>The same point expressed in world coordinates.</returns>
-        public Vector2 GetWorldPoint(Vector2 localPoint) => GetWorldPoint(ref localPoint);
+        public Vector2 GetWorldPoint(Vector2 localPoint)
+        {
+            return GetWorldPoint(ref localPoint);
+        }
 
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates. Note that the vector only takes the
@@ -1206,12 +1212,18 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(ref Vector2 localVector) => MathUtils.Mul(ref Xf.Q, localVector);
+        public Vector2 GetWorldVector(ref Vector2 localVector)
+        {
+            return MathUtils.Mul(ref Xf.Q, localVector);
+        }
 
         /// <summary>Get the world coordinates of a vector given the local coordinates.</summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(Vector2 localVector) => GetWorldVector(ref localVector);
+        public Vector2 GetWorldVector(Vector2 localVector)
+        {
+            return GetWorldVector(ref localVector);
+        }
 
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point. Note that the vector only takes the
@@ -1219,12 +1231,18 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
-        public Vector2 GetLocalPoint(ref Vector2 worldPoint) => MathUtils.MulT(ref Xf, worldPoint);
+        public Vector2 GetLocalPoint(ref Vector2 worldPoint)
+        {
+            return MathUtils.MulT(ref Xf, worldPoint);
+        }
 
         /// <summary>Gets a local point relative to the body's origin given a world point.</summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The corresponding local point relative to the body's origin.</returns>
-        public Vector2 GetLocalPoint(Vector2 worldPoint) => GetLocalPoint(ref worldPoint);
+        public Vector2 GetLocalPoint(Vector2 worldPoint)
+        {
+            return GetLocalPoint(ref worldPoint);
+        }
 
         /// <summary>
         ///     Gets a local vector given a world vector. Note that the vector only takes the rotation into account, not the
@@ -1232,7 +1250,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2 GetLocalVector(ref Vector2 worldVector) => MathUtils.MulT(Xf.Q, worldVector);
+        public Vector2 GetLocalVector(ref Vector2 worldVector)
+        {
+            return MathUtils.MulT(Xf.Q, worldVector);
+        }
 
         /// <summary>
         ///     Gets a local vector given a world vector. Note that the vector only takes the rotation into account, not the
@@ -1240,31 +1261,42 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2 GetLocalVector(Vector2 worldVector) => GetLocalVector(ref worldVector);
+        public Vector2 GetLocalVector(Vector2 worldVector)
+        {
+            return GetLocalVector(ref worldVector);
+        }
 
         /// <summary>Get the world linear velocity of a world point attached to this body.</summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint) =>
-            GetLinearVelocityFromWorldPoint(ref worldPoint);
+        public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint)
+        {
+            return GetLinearVelocityFromWorldPoint(ref worldPoint);
+        }
 
         /// <summary>Get the world linear velocity of a world point attached to this body.</summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint) =>
-            LinearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - Sweep.C);
+        public Vector2 GetLinearVelocityFromWorldPoint(ref Vector2 worldPoint)
+        {
+            return LinearVelocity + MathUtils.Cross(AngularVelocity, worldPoint - Sweep.C);
+        }
 
         /// <summary>Get the world velocity of a local point.</summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint) =>
-            GetLinearVelocityFromLocalPoint(ref localPoint);
+        public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint)
+        {
+            return GetLinearVelocityFromLocalPoint(ref localPoint);
+        }
 
         /// <summary>Get the world velocity of a local point.</summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint) =>
-            GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
+        public Vector2 GetLinearVelocityFromLocalPoint(ref Vector2 localPoint)
+        {
+            return GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
+        }
 
         /// <summary> Calling this will remove the body from its associated world.</summary>
         public void RemoveFromWorld()

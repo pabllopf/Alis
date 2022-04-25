@@ -53,7 +53,10 @@ namespace Alis.Core.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The game object</returns>
-        public GameObject Build() => GameObject;
+        public GameObject Build()
+        {
+            return GameObject;
+        }
 
         /// <summary>
         ///     Names the value

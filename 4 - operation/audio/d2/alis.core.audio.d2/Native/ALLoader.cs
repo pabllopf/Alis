@@ -39,14 +39,6 @@ namespace Alis.Core.Audio2D.Native
     internal static class ALLoader
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ALLoader" /> class
-        /// </summary>
-        static ALLoader()
-        {
-            RegisterDllResolver();
-        }
-
-        /// <summary>
         ///     The open al library name container
         /// </summary>
         private static readonly OpenALLibraryNameContainer ALLibraryNameContainer = new OpenALLibraryNameContainer();
@@ -55,6 +47,14 @@ namespace Alis.Core.Audio2D.Native
         ///     The registered resolver
         /// </summary>
         private static bool RegisteredResolver;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ALLoader" /> class
+        /// </summary>
+        static ALLoader()
+        {
+            RegisterDllResolver();
+        }
 
         /// <summary>
         ///     Registers the dll resolver

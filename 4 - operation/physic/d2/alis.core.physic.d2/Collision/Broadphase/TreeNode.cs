@@ -71,6 +71,9 @@ namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
         ///     Describes whether this instance is leaf
         /// </summary>
         /// <returns>The bool</returns>
-        internal bool IsLeaf() => Child1 == DynamicTree<T>.NullNode;
+        internal bool IsLeaf()
+        {
+            return Child1 == DynamicTree<T>.NullNode;
+        }
     }
 }

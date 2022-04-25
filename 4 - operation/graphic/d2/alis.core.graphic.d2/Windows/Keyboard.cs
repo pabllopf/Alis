@@ -396,7 +396,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="key">Key to check</param>
         /// <returns>True if the key is pressed, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsKeyPressed(Key key) => sfKeyboard_isKeyPressed(key);
+        public static bool IsKeyPressed(Key key)
+        {
+            return sfKeyboard_isKeyPressed(key);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -415,14 +418,16 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="Key">The key</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfKeyboard_isKeyPressed(Key Key);
 
         /// <summary>
         ///     Sfs the keyboard set virtual keyboard visible using the specified visible
         /// </summary>
         /// <param name="visible">The visible</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfKeyboard_setVirtualKeyboardVisible(bool visible);
     }
 }

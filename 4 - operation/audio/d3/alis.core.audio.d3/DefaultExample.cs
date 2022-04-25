@@ -30,10 +30,9 @@
 namespace Alis.Core.D3.Audio
 {
     /// <summary>
-    /// The default example class
+    ///     The default example class
     /// </summary>
     public class DefaultExample
     {
-    
     }
 }

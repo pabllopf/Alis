@@ -34,9 +34,7 @@ namespace Alis.Core.Graphics2D.Systems
     /// </summary>
     public static class CSFML
     {
-
 #if WIN
-        
         /// <summary>
         ///     The audio
         /// </summary>
@@ -56,7 +54,7 @@ namespace Alis.Core.Graphics2D.Systems
         ///     The window
         /// </summary>
         public const string window = "Runtimes/win-x64/native/csfml-window";
-        
+
 #elif LINUX
         /// <summary>
         ///     The audio
@@ -82,7 +80,7 @@ namespace Alis.Core.Graphics2D.Systems
         ///     The audio
         /// </summary>
         public const string audio = "./Runtimes/osx.11.0-arm64/native/libcsfml-audio.dylib";
-        
+
         /// <summary>
         ///     The graphics
         /// </summary>
@@ -137,7 +135,7 @@ namespace Alis.Core.Graphics2D.Systems
         ///     The window
         /// </summary>
         public const string window = "csfml-window";
-        
+
 #elif ANDROID
         /// <summary>
         ///     The audio

@@ -58,8 +58,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Sets
         /// <param name="points">The points</param>
         /// <param name="index">The index</param>
         public ConstrainedPointSet(List<TriangulationPoint> points, int[] index)
-            : base(points) =>
+            : base(points)
+        {
             EdgeIndex = index;
+        }
 
         /**
          * @param points - A list of all points in PointSet

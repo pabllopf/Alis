@@ -75,8 +75,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         ///     coordinate of which is specified in value3.
         /// </param>
         /// <returns>Cartesian coordinate of the specified point with respect to the axis being used.</returns>
-        public static float Barycentric(float value1, float value2, float value3, float amount1, float amount2) =>
-            value1 + (value2 - value1) * amount1 + (value3 - value1) * amount2;
+        public static float Barycentric(float value1, float value2, float value3, float amount1, float amount2)
+        {
+            return value1 + (value2 - value1) * amount1 + (value3 - value1) * amount2;
+        }
 
         /// <summary>Performs a Catmull-Rom interpolation using the specified positions.</summary>
         /// <param name="value1">The first position in the interpolation.</param>
@@ -130,7 +132,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>Distance between the two values.</returns>
-        public static float Distance(float value1, float value2) => Math.Abs(value1 - value2);
+        public static float Distance(float value1, float value2)
+        {
+            return Math.Abs(value1 - value2);
+        }
 
         /// <summary>Performs a Hermite spline interpolation.</summary>
         /// <param name="value1">Source position.</param>
@@ -179,7 +184,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         ///     more
         ///     precision around edge cases.
         /// </remarks>
-        public static float Lerp(float value1, float value2, float amount) => value1 + (value2 - value1) * amount;
+        public static float Lerp(float value1, float value2, float amount)
+        {
+            return value1 + (value2 - value1) * amount;
+        }
 
         /// <summary>
         ///     Linearly interpolates between two values. This method is a less efficient, more precise version of
@@ -204,32 +212,46 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         ///     Answer:
         ///     http://stackoverflow.com/questions/4353525/floating-point-linear-interpolation#answer-23716956
         /// </remarks>
-        public static float LerpPrecise(float value1, float value2, float amount) =>
-            (1 - amount) * value1 + value2 * amount;
+        public static float LerpPrecise(float value1, float value2, float amount)
+        {
+            return (1 - amount) * value1 + value2 * amount;
+        }
 
         /// <summary>Returns the greater of two values.</summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>The greater value.</returns>
-        public static float Max(float value1, float value2) => value1 > value2 ? value1 : value2;
+        public static float Max(float value1, float value2)
+        {
+            return value1 > value2 ? value1 : value2;
+        }
 
         /// <summary>Returns the greater of two values.</summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>The greater value.</returns>
-        public static int Max(int value1, int value2) => value1 > value2 ? value1 : value2;
+        public static int Max(int value1, int value2)
+        {
+            return value1 > value2 ? value1 : value2;
+        }
 
         /// <summary>Returns the lesser of two values.</summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>The lesser value.</returns>
-        public static float Min(float value1, float value2) => value1 < value2 ? value1 : value2;
+        public static float Min(float value1, float value2)
+        {
+            return value1 < value2 ? value1 : value2;
+        }
 
         /// <summary>Returns the lesser of two values.</summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>The lesser value.</returns>
-        public static int Min(int value1, int value2) => value1 < value2 ? value1 : value2;
+        public static int Min(int value1, int value2)
+        {
+            return value1 < value2 ? value1 : value2;
+        }
 
         /// <summary>Interpolates between two values using a cubic equation.</summary>
         /// <param name="value1">Source value.</param>
@@ -251,13 +273,19 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="radians">The angle in radians.</param>
         /// <returns>The angle in degrees.</returns>
         /// <remarks>This method uses double precission internally, though it returns single float Factor = 180 / pi</remarks>
-        public static float ToDegrees(float radians) => (float) (radians * 57.295779513082320876798154814105);
+        public static float ToDegrees(float radians)
+        {
+            return (float) (radians * 57.295779513082320876798154814105);
+        }
 
         /// <summary>Converts degrees to radians.</summary>
         /// <param name="degrees">The angle in degrees.</param>
         /// <returns>The angle in radians.</returns>
         /// <remarks>This method uses double precission internally, though it returns single float Factor = pi / 180</remarks>
-        public static float ToRadians(float degrees) => (float) (degrees * 0.017453292519943295769236907684886);
+        public static float ToRadians(float degrees)
+        {
+            return (float) (degrees * 0.017453292519943295769236907684886);
+        }
 
         /// <summary>Reduces a given angle to a value between π and -π.</summary>
         /// <param name="angle">The angle to reduce, in radians.</param>
@@ -286,6 +314,9 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <summary>Determines if value is powered by two.</summary>
         /// <param name="value">A value.</param>
         /// <returns><c>true</c> if <c>value</c> is powered by two; otherwise <c>false</c>.</returns>
-        public static bool IsPowerOfTwo(int value) => value > 0 && (value & (value - 1)) == 0;
+        public static bool IsPowerOfTwo(int value)
+        {
+            return value > 0 && (value & (value - 1)) == 0;
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull
             for (int i = 1; i < vertices.Count; ++i)
             {
                 float x = vertices[i].X;
-                if (x > x0 || x == x0 && vertices[i].Y < vertices[i0].Y)
+                if (x > x0 || (x == x0 && vertices[i].Y < vertices[i0].Y))
                 {
                     i0 = i;
                     x0 = x;

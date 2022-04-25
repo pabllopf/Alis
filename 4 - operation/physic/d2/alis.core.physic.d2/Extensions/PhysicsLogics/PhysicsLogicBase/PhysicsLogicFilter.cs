@@ -56,6 +56,9 @@ namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
         /// <summary>Determines whether this body ignores the specified controller.</summary>
         /// <param name="type">The logic type.</param>
         /// <returns><c>true</c> if the body has the specified flag; otherwise, <c>false</c>.</returns>
-        public bool IsPhysicsLogicIgnored(PhysicsLogicType type) => (ControllerIgnores & type) == type;
+        public bool IsPhysicsLogicIgnored(PhysicsLogicType type)
+        {
+            return (ControllerIgnores & type) == type;
+        }
     }
 }

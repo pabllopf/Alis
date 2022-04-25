@@ -39,34 +39,54 @@ namespace Alis.Core.Systems.Physics2D.Utilities
     public static class MathUtils
     {
         /// <summary>Perform the cross product on two vectors.</summary>
-        public static float Cross(ref Vector2 a, ref Vector2 b) => a.X * b.Y - a.Y * b.X;
+        public static float Cross(ref Vector2 a, ref Vector2 b)
+        {
+            return a.X * b.Y - a.Y * b.X;
+        }
 
         /// <summary>Perform the cross product on two vectors.</summary>
-        public static float Cross(Vector2 a, Vector2 b) => Cross(ref a, ref b);
+        public static float Cross(Vector2 a, Vector2 b)
+        {
+            return Cross(ref a, ref b);
+        }
 
         /// <summary>Perform the cross product on two vectors.</summary>
-        public static Vector3 Cross(Vector3 a, Vector3 b) =>
-            new Vector3(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
+        public static Vector3 Cross(Vector3 a, Vector3 b)
+        {
+            return new Vector3(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
+        }
 
         /// <summary>Perform the cross product on two vectors.</summary>
-        public static Vector2 Cross(Vector2 a, float s) => new Vector2(s * a.Y, -s * a.X);
+        public static Vector2 Cross(Vector2 a, float s)
+        {
+            return new Vector2(s * a.Y, -s * a.X);
+        }
 
         /// <summary>Perform the cross product on two vectors.</summary>
-        public static Vector2 Cross(float s, Vector2 a) => new Vector2(-s * a.Y, s * a.X);
+        public static Vector2 Cross(float s, Vector2 a)
+        {
+            return new Vector2(-s * a.Y, s * a.X);
+        }
 
         /// <summary>
         ///     Abses the v
         /// </summary>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 Abs(Vector2 v) => new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
+        public static Vector2 Abs(Vector2 v)
+        {
+            return new Vector2(Math.Abs(v.X), Math.Abs(v.Y));
+        }
 
         /// <summary>
         ///     Abses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Abs(float value) => Math.Abs(value);
+        public static float Abs(float value)
+        {
+            return Math.Abs(value);
+        }
 
         /// <summary>
         ///     Muls the a
@@ -74,7 +94,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Mat22 a, Vector2 v) => Mul(ref a, ref v);
+        public static Vector2 Mul(ref Mat22 a, Vector2 v)
+        {
+            return Mul(ref a, ref v);
+        }
 
         /// <summary>
         ///     Muls the a
@@ -82,8 +105,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Mat22 a, ref Vector2 v) =>
-            new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
+        public static Vector2 Mul(ref Mat22 a, ref Vector2 v)
+        {
+            return new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
+        }
 
         /// <summary>
         ///     Muls the t
@@ -91,7 +116,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="T">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Transform T, Vector2 v) => Mul(ref T, ref v);
+        public static Vector2 Mul(ref Transform T, Vector2 v)
+        {
+            return Mul(ref T, ref v);
+        }
 
         /// <summary>
         ///     Muls the t
@@ -113,7 +141,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Mat22 a, Vector2 v) => MulT(ref a, ref v);
+        public static Vector2 MulT(ref Mat22 a, Vector2 v)
+        {
+            return MulT(ref a, ref v);
+        }
 
         /// <summary>
         ///     Muls the t using the specified a
@@ -121,8 +152,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Mat22 a, ref Vector2 v) =>
-            new Vector2(v.X * a.Ex.X + v.Y * a.Ex.Y, v.X * a.Ey.X + v.Y * a.Ey.Y);
+        public static Vector2 MulT(ref Mat22 a, ref Vector2 v)
+        {
+            return new Vector2(v.X * a.Ex.X + v.Y * a.Ex.Y, v.X * a.Ey.X + v.Y * a.Ey.Y);
+        }
 
         /// <summary>
         ///     Muls the t using the specified t
@@ -130,7 +163,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="T">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Transform T, Vector2 v) => MulT(ref T, ref v);
+        public static Vector2 MulT(ref Transform T, Vector2 v)
+        {
+            return MulT(ref T, ref v);
+        }
 
         /// <summary>
         ///     Muls the t using the specified t
@@ -165,7 +201,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         }
 
         /// <summary>Multiply a matrix times a vector.</summary>
-        public static Vector3 Mul(Mat33 a, Vector3 v) => v.X * a.Ex + v.Y * a.Ey + v.Z * a.Ez;
+        public static Vector3 Mul(Mat33 a, Vector3 v)
+        {
+            return v.X * a.Ex + v.Y * a.Ey + v.Z * a.Ez;
+        }
 
         /// <summary>
         ///     Muls the a
@@ -218,8 +257,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         }
 
         /// <summary>Multiply a matrix times a vector.</summary>
-        public static Vector2 Mul22(Mat33 a, Vector2 v) =>
-            new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
+        public static Vector2 Mul22(Mat33 a, Vector2 v)
+        {
+            return new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
+        }
 
         /// <summary>Multiply two rotations: q * r</summary>
         public static Rot Mul(Rot q, Rot r)
@@ -285,15 +326,24 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <summary>Rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>
         /// <param name="v">The value</param>
-        public static Vector2 Mul(Rot q, Vector2 v) => new Vector2(q.C * v.X - q.S * v.Y, q.S * v.X + q.C * v.Y);
+        public static Vector2 Mul(Rot q, Vector2 v)
+        {
+            return new Vector2(q.C * v.X - q.S * v.Y, q.S * v.X + q.C * v.Y);
+        }
 
         /// <summary>Inverse rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>
         /// <param name="v">The value</param>
-        public static Vector2 MulT(Rot q, Vector2 v) => new Vector2(q.C * v.X + q.S * v.Y, -q.S * v.X + q.C * v.Y);
+        public static Vector2 MulT(Rot q, Vector2 v)
+        {
+            return new Vector2(q.C * v.X + q.S * v.Y, -q.S * v.X + q.C * v.Y);
+        }
 
         /// <summary>Get the skew vector such that dot(skew_vec, other) == cross(vec, other)</summary>
-        public static Vector2 Skew(Vector2 input) => new Vector2(-input.Y, input.X);
+        public static Vector2 Skew(Vector2 input)
+        {
+            return new Vector2(-input.Y, input.X);
+        }
 
         /// <summary>This function is used to ensure that a floating point number is not a NaN or infinity.</summary>
         /// <param name="x">The x.</param>
@@ -313,7 +363,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The bool</returns>
-        public static bool IsValid(this Vector2 x) => IsValid(x.X) && IsValid(x.Y);
+        public static bool IsValid(this Vector2 x)
+        {
+            return IsValid(x.X) && IsValid(x.Y);
+        }
 
         /// <summary>
         ///     Clamps the a
@@ -322,7 +375,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="low">The low</param>
         /// <param name="high">The high</param>
         /// <returns>The int</returns>
-        public static int Clamp(int a, int low, int high) => Math.Max(low, Math.Min(a, high));
+        public static int Clamp(int a, int low, int high)
+        {
+            return Math.Max(low, Math.Min(a, high));
+        }
 
         /// <summary>
         ///     Clamps the a
@@ -331,7 +387,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="low">The low</param>
         /// <param name="high">The high</param>
         /// <returns>The float</returns>
-        public static float Clamp(float a, float low, float high) => Max(low, Min(a, high));
+        public static float Clamp(float a, float low, float high)
+        {
+            return Max(low, Min(a, high));
+        }
 
         /// <summary>
         ///     Clamps the a
@@ -340,7 +399,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="low">The low</param>
         /// <param name="high">The high</param>
         /// <returns>The vector</returns>
-        public static Vector2 Clamp(Vector2 a, Vector2 low, Vector2 high) => Vector2.Max(low, Vector2.Min(a, high));
+        public static Vector2 Clamp(Vector2 a, Vector2 low, Vector2 high)
+        {
+            return Vector2.Max(low, Vector2.Min(a, high));
+        }
 
         /// <summary>
         ///     Crosses the a
@@ -377,13 +439,22 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         }
 
         /// <summary>Perform the dot product on two vectors.</summary>
-        public static float Dot(Vector3 a, Vector3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
+        public static float Dot(Vector3 a, Vector3 b)
+        {
+            return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
+        }
 
         /// <summary>Perform the dot product on two vectors.</summary>
-        public static float Dot(ref Vector2 a, ref Vector2 b) => a.X * b.X + a.Y * b.Y;
+        public static float Dot(ref Vector2 a, ref Vector2 b)
+        {
+            return a.X * b.X + a.Y * b.Y;
+        }
 
         /// <summary>Perform the dot product on two vectors.</summary>
-        public static float Dot(Vector2 a, Vector2 b) => a.X * b.X + a.Y * b.Y;
+        public static float Dot(Vector2 a, Vector2 b)
+        {
+            return a.X * b.X + a.Y * b.Y;
+        }
 
         /// <summary>
         ///     Vectors the angle using the specified p 1
@@ -391,20 +462,30 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
         /// <returns>The double</returns>
-        public static double VectorAngle(Vector2 p1, Vector2 p2) => VectorAngle(ref p1, ref p2);
+        public static double VectorAngle(Vector2 p1, Vector2 p2)
+        {
+            return VectorAngle(ref p1, ref p2);
+        }
 
         /// <summary>Returns a positive number if c is to the left of the line going from a to b.</summary>
         /// <returns>Positive number if point is left, negative if point is right, and 0 if points are collinear.</returns>
-        public static float Area(Vector2 a, Vector2 b, Vector2 c) => Area(ref a, ref b, ref c);
+        public static float Area(Vector2 a, Vector2 b, Vector2 c)
+        {
+            return Area(ref a, ref b, ref c);
+        }
 
         /// <summary>Returns a positive number if c is to the left of the line going from a to b.</summary>
         /// <returns>Positive number if point is left, negative if point is right, and 0 if points are collinear.</returns>
-        public static float Area(ref Vector2 a, ref Vector2 b, ref Vector2 c) =>
-            a.X * (b.Y - c.Y) + b.X * (c.Y - a.Y) + c.X * (a.Y - b.Y);
+        public static float Area(ref Vector2 a, ref Vector2 b, ref Vector2 c)
+        {
+            return a.X * (b.Y - c.Y) + b.X * (c.Y - a.Y) + c.X * (a.Y - b.Y);
+        }
 
         /// <summary>Determines if three vertices are collinear (ie. on a straight line)</summary>
-        public static bool IsCollinear(ref Vector2 a, ref Vector2 b, ref Vector2 c, float tolerance = 0) =>
-            FloatInRange(Area(ref a, ref b, ref c), -tolerance, tolerance);
+        public static bool IsCollinear(ref Vector2 a, ref Vector2 b, ref Vector2 c, float tolerance = 0)
+        {
+            return FloatInRange(Area(ref a, ref b, ref c), -tolerance, tolerance);
+        }
 
         /// <summary>
         ///     Crosses the s
@@ -423,20 +504,27 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="value1">The value</param>
         /// <param name="value2">The value</param>
         /// <returns>The bool</returns>
-        public static bool FloatEquals(float value1, float value2) =>
-            Math.Abs(value1 - value2) <= MathConstants.Epsilon;
+        public static bool FloatEquals(float value1, float value2)
+        {
+            return Math.Abs(value1 - value2) <= MathConstants.Epsilon;
+        }
 
         /// <summary>Checks if a floating point Value is equal to another, within a certain tolerance.</summary>
         /// <returns>True if the values are "equal", false otherwise.</returns>
-        public static bool FloatEquals(float value1, float value2, float delta) =>
-            FloatInRange(value1, value2 - delta, value2 + delta);
+        public static bool FloatEquals(float value1, float value2, float delta)
+        {
+            return FloatInRange(value1, value2 - delta, value2 + delta);
+        }
 
         /// <summary>Checks if a floating point Value is within a specified range of values (inclusive).</summary>
         /// <param name="value">The Value to check.</param>
         /// <param name="min">The minimum Value.</param>
         /// <param name="max">The maximum Value.</param>
         /// <returns>True if the Value is within the range specified, false otherwise.</returns>
-        public static bool FloatInRange(float value, float min, float max) => value >= min && value <= max;
+        public static bool FloatInRange(float value, float min, float max)
+        {
+            return value >= min && value <= max;
+        }
 
         /// <summary>
         ///     Muls the rot
@@ -444,7 +532,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="rot">The rot</param>
         /// <param name="axis">The axis</param>
         /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Rot rot, Vector2 axis) => Mul(rot, axis);
+        public static Vector2 Mul(ref Rot rot, Vector2 axis)
+        {
+            return Mul(rot, axis);
+        }
 
         /// <summary>
         ///     Muls the t using the specified rot
@@ -452,7 +543,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="rot">The rot</param>
         /// <param name="axis">The axis</param>
         /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Rot rot, Vector2 axis) => MulT(rot, axis);
+        public static Vector2 MulT(ref Rot rot, Vector2 axis)
+        {
+            return MulT(rot, axis);
+        }
 
         /// <summary>
         ///     Distances the a
@@ -496,7 +590,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="valueA">The value</param>
         /// <param name="valueB">The value</param>
         /// <returns>The float</returns>
-        public static float Max(float valueA, float valueB) => Math.Max(valueA, valueB);
+        public static float Max(float valueA, float valueB)
+        {
+            return Math.Max(valueA, valueB);
+        }
 
         /// <summary>
         ///     Maxes the value a
@@ -504,7 +601,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="valueA">The value</param>
         /// <param name="valueB">The value</param>
         /// <returns>The int</returns>
-        public static int Max(int valueA, int valueB) => Math.Max(valueA, valueB);
+        public static int Max(int valueA, int valueB)
+        {
+            return Math.Max(valueA, valueB);
+        }
 
         /// <summary>
         ///     Mins the value a
@@ -512,7 +612,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="valueA">The value</param>
         /// <param name="valueB">The value</param>
         /// <returns>The float</returns>
-        public static float Min(float valueA, float valueB) => Math.Min(valueA, valueB);
+        public static float Min(float valueA, float valueB)
+        {
+            return Math.Min(valueA, valueB);
+        }
 
         /// <summary>
         ///     Mins the value a
@@ -520,14 +623,20 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="valueA">The value</param>
         /// <param name="valueB">The value</param>
         /// <returns>The int</returns>
-        public static int Min(int valueA, int valueB) => Math.Min(valueA, valueB);
+        public static int Min(int valueA, int valueB)
+        {
+            return Math.Min(valueA, valueB);
+        }
 
         /// <summary>
         ///     Signs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        public static int Sign(float value) => Math.Sign(value);
+        public static int Sign(float value)
+        {
+            return Math.Sign(value);
+        }
 
         /// <summary>
         ///     Convert this vector into a unit vector. Returns the length.
@@ -552,34 +661,49 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Sqrt(float value) => (float) Math.Sqrt(value);
+        public static float Sqrt(float value)
+        {
+            return (float) Math.Sqrt(value);
+        }
 
         /// <summary>
         ///     Cosfs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Cosf(float value) => (float) Math.Cos(value);
+        public static float Cosf(float value)
+        {
+            return (float) Math.Cos(value);
+        }
 
         /// <summary>
         ///     Sinfs the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The float</returns>
-        public static float Sinf(float value) => (float) Math.Sin(value);
+        public static float Sinf(float value)
+        {
+            return (float) Math.Sin(value);
+        }
 
         /// <summary>
         ///     Ceils the log
         /// </summary>
         /// <param name="log">The log</param>
         /// <returns>The float</returns>
-        public static float Ceil(float log) => (float) Math.Ceiling(log);
+        public static float Ceil(float log)
+        {
+            return (float) Math.Ceiling(log);
+        }
 
         /// <summary>
         ///     Logs the log
         /// </summary>
         /// <param name="log">The log</param>
         /// <returns>The float</returns>
-        public static float Log(float log) => (float) Math.Log(log);
+        public static float Log(float log)
+        {
+            return (float) Math.Log(log);
+        }
     }
 }

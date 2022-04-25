@@ -80,13 +80,19 @@ namespace Alis.Core.Systems.Physics2D.Shared.Optimization
         ///     Gets the enumerator
         /// </summary>
         /// <returns>An enumerator of t</returns>
-        public IEnumerator<T> GetEnumerator() => Enumerate().GetEnumerator();
+        public IEnumerator<T> GetEnumerator()
+        {
+            return Enumerate().GetEnumerator();
+        }
 
         /// <summary>
         ///     Gets the enumerator
         /// </summary>
         /// <returns>The enumerator</returns>
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         /// <summary>
         ///     Indexes the of using the specified value

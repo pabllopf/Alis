@@ -155,7 +155,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() => $"[IntRect] Left({Left}) Top({Top}) Width({Width}) Height({Height})";
+        public override string ToString()
+        {
+            return $"[IntRect] Left({Left}) Top({Top}) Width({Width}) Height({Height})";
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -164,7 +167,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and rectangle are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj) => obj is IntRect && Equals((IntRect) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is IntRect && Equals((IntRect) obj);
+        }
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -173,11 +179,13 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="other">Rectangle to check</param>
         /// <returns>Rectangles are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(IntRect other) =>
-            Left == other.Left &&
-            Top == other.Top &&
-            Width == other.Width &&
-            Height == other.Height;
+        public bool Equals(IntRect other)
+        {
+            return Left == other.Left &&
+                   Top == other.Top &&
+                   Width == other.Width &&
+                   Height == other.Height;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -185,11 +193,13 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode() =>
-            unchecked((int) ((uint) Left ^
-                             (((uint) Top << 13) | ((uint) Top >> 19)) ^
-                             (((uint) Width << 26) | ((uint) Width >> 6)) ^
-                             (((uint) Height << 7) | ((uint) Height >> 25))));
+        public override int GetHashCode()
+        {
+            return unchecked((int) ((uint) Left ^
+                                    (((uint) Top << 13) | ((uint) Top >> 19)) ^
+                                    (((uint) Width << 26) | ((uint) Width >> 6)) ^
+                                    (((uint) Height << 7) | ((uint) Height >> 25))));
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -199,7 +209,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="r2">Second rect</param>
         /// <returns>r1 == r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(IntRect r1, IntRect r2) => r1.Equals(r2);
+        public static bool operator ==(IntRect r1, IntRect r2)
+        {
+            return r1.Equals(r2);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -209,7 +222,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="r2">Second rect</param>
         /// <returns>r1 != r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(IntRect r1, IntRect r2) => !r1.Equals(r2);
+        public static bool operator !=(IntRect r1, IntRect r2)
+        {
+            return !r1.Equals(r2);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -218,11 +234,13 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="r">Rectangle being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator FloatRect(IntRect r) =>
-            new FloatRect(r.Left,
+        public static explicit operator FloatRect(IntRect r)
+        {
+            return new FloatRect(r.Left,
                 r.Top,
                 r.Width,
                 r.Height);
+        }
 
         /// <summary>Left coordinate of the rectangle</summary>
         public int Left;
@@ -359,12 +377,14 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[FloatRect]" +
-            " Left(" + Left + ")" +
-            " Top(" + Top + ")" +
-            " Width(" + Width + ")" +
-            " Height(" + Height + ")";
+        public override string ToString()
+        {
+            return "[FloatRect]" +
+                   " Left(" + Left + ")" +
+                   " Top(" + Top + ")" +
+                   " Width(" + Width + ")" +
+                   " Height(" + Height + ")";
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -373,7 +393,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and rectangle are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj) => obj is FloatRect && Equals((FloatRect) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is FloatRect && Equals((FloatRect) obj);
+        }
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -382,11 +405,13 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="other">Rectangle to check</param>
         /// <returns>Rectangles are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(FloatRect other) =>
-            Left == other.Left &&
-            Top == other.Top &&
-            Width == other.Width &&
-            Height == other.Height;
+        public bool Equals(FloatRect other)
+        {
+            return Left == other.Left &&
+                   Top == other.Top &&
+                   Width == other.Width &&
+                   Height == other.Height;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -394,11 +419,13 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode() =>
-            unchecked((int) ((uint) Left ^
-                             (((uint) Top << 13) | ((uint) Top >> 19)) ^
-                             (((uint) Width << 26) | ((uint) Width >> 6)) ^
-                             (((uint) Height << 7) | ((uint) Height >> 25))));
+        public override int GetHashCode()
+        {
+            return unchecked((int) ((uint) Left ^
+                                    (((uint) Top << 13) | ((uint) Top >> 19)) ^
+                                    (((uint) Width << 26) | ((uint) Width >> 6)) ^
+                                    (((uint) Height << 7) | ((uint) Height >> 25))));
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -408,7 +435,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="r2">Second rect</param>
         /// <returns>r1 == r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(FloatRect r1, FloatRect r2) => r1.Equals(r2);
+        public static bool operator ==(FloatRect r1, FloatRect r2)
+        {
+            return r1.Equals(r2);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -418,7 +448,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="r2">Second rect</param>
         /// <returns>r1 != r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(FloatRect r1, FloatRect r2) => !r1.Equals(r2);
+        public static bool operator !=(FloatRect r1, FloatRect r2)
+        {
+            return !r1.Equals(r2);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -427,11 +460,13 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="r">Rectangle being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator IntRect(FloatRect r) =>
-            new IntRect((int) r.Left,
+        public static explicit operator IntRect(FloatRect r)
+        {
+            return new IntRect((int) r.Left,
                 (int) r.Top,
                 (int) r.Width,
                 (int) r.Height);
+        }
 
         /// <summary>Left coordinate of the rectangle</summary>
         public float Left;

@@ -48,7 +48,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="Finger">Finger index</param>
         /// <returns>True if the finger is currently touching the screen, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsDown(uint Finger) => sfTouch_isDown(Finger);
+        public static bool IsDown(uint Finger)
+        {
+            return sfTouch_isDown(Finger);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -57,7 +60,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="Finger">Finger index</param>
         /// <returns>Current position of the finger</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2i GetPosition(uint Finger) => GetPosition(Finger, null);
+        public static Vector2i GetPosition(uint Finger)
+        {
+            return GetPosition(Finger, null);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -83,7 +89,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="Finger">The finger</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfTouch_isDown(uint Finger);
 
         /// <summary>
@@ -92,7 +99,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="Finger">The finger</param>
         /// <param name="RelativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfTouch_getPosition(uint Finger, IntPtr RelativeTo);
     }
 }

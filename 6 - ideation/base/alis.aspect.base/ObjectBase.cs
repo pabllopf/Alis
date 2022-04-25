@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ExampleClass.cs
+//  File:   ObjectBase.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Base
 {
     /// <summary>
-    /// The object base class
+    ///     The object base class
     /// </summary>
     public class ObjectBase
     {
-    
     }
 }

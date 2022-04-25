@@ -50,8 +50,6 @@ namespace PingPong
 
             //boxCollider2D.Body.LinearVelocity = new Vector2(boxCollider2D.Body.LinearVelocity.X + 5, boxCollider2D.Body.LinearVelocity.Y);
 
-            
-
 
             InputManager.OnReleaseKey += OnReleaseKey;
             InputManager.OnPressKey += OnPressKey;

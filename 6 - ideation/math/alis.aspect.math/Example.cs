@@ -30,10 +30,9 @@
 namespace Alis.Aspect.Math
 {
     /// <summary>
-    /// The example class
+    ///     The example class
     /// </summary>
     public class Example
     {
-        
     }
 }

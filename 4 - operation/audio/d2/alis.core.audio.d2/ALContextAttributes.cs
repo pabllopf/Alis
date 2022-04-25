@@ -217,12 +217,14 @@ namespace Alis.Core.Audio2D
         ///     Converts the attributes to a string representation.
         /// </summary>
         /// <returns>The string representation of the attributes.</returns>
-        public override string ToString() =>
-            $"{GetOptionalString(nameof(Frequency), Frequency)}, " +
-            $"{GetOptionalString(nameof(MonoSources), MonoSources)}, " +
-            $"{GetOptionalString(nameof(StereoSources), StereoSources)}, " +
-            $"{GetOptionalString(nameof(Refresh), Refresh)}, " +
-            $"{GetOptionalString(nameof(Sync), Sync)}" +
-            $"{(AdditionalAttributes != null ? ", " + string.Join(", ", AdditionalAttributes) : string.Empty)}";
+        public override string ToString()
+        {
+            return $"{GetOptionalString(nameof(Frequency), Frequency)}, " +
+                   $"{GetOptionalString(nameof(MonoSources), MonoSources)}, " +
+                   $"{GetOptionalString(nameof(StereoSources), StereoSources)}, " +
+                   $"{GetOptionalString(nameof(Refresh), Refresh)}, " +
+                   $"{GetOptionalString(nameof(Sync), Sync)}" +
+                   $"{(AdditionalAttributes != null ? ", " + string.Join(", ", AdditionalAttributes) : string.Empty)}";
+        }
     }
 }

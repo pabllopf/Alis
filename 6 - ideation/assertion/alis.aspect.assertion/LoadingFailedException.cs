@@ -26,6 +26,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
+using System;
+
 namespace Alis.Exceptions
 {
     ////////////////////////////////////////////////////////////
@@ -33,7 +36,7 @@ namespace Alis.Exceptions
     ///     Exception thrown by SFML whenever loading a resource fails
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public class LoadingFailedException : System.Exception
+    public class LoadingFailedException : Exception
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -61,7 +64,7 @@ namespace Alis.Exceptions
         /// <param name="resourceName">Name of the resource</param>
         /// <param name="innerException">Exception which is the cause ofthe current exception</param>
         ////////////////////////////////////////////////////////////
-        public LoadingFailedException(string resourceName, System.Exception innerException) :
+        public LoadingFailedException(string resourceName, Exception innerException) :
             base($"Failed to load {resourceName} from memory", innerException)
         {
         }
@@ -86,7 +89,7 @@ namespace Alis.Exceptions
         /// <param name="filename">Path of the file</param>
         /// <param name="innerException">Exception which is the cause ofthe current exception</param>
         ////////////////////////////////////////////////////////////
-        public LoadingFailedException(string resourceName, string filename, System.Exception innerException) :
+        public LoadingFailedException(string resourceName, string filename, Exception innerException) :
             base($"Failed to load {resourceName} from file {filename}", innerException)
         {
         }

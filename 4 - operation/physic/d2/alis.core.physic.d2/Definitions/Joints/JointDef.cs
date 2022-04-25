@@ -42,7 +42,10 @@ namespace Alis.Core.Systems.Physics2D.Definitions.Joints
         ///     Initializes a new instance of the <see cref="JointDef" /> class
         /// </summary>
         /// <param name="type">The type</param>
-        protected JointDef(JointType type) => Type = type;
+        protected JointDef(JointType type)
+        {
+            Type = type;
+        }
 
         /// <summary>The first attached body.</summary>
         public Body BodyA { get; set; }

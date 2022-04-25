@@ -57,7 +57,10 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase
         ///     Initializes a new instance of the <see cref="Controller" /> class
         /// </summary>
         /// <param name="controllerType">The controller type</param>
-        protected Controller(ControllerType controllerType) => type = controllerType;
+        protected Controller(ControllerType controllerType)
+        {
+            type = controllerType;
+        }
 
         /// <summary>
         ///     Describes whether this instance is active on

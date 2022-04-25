@@ -246,56 +246,82 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="arg3">The arg</param>
         /// <param name="arg4">The arg</param>
         /// <returns>The float</returns>
-        private static float RayCastCallback(Fixture arg1, Vector2 arg2, Vector2 arg3, float arg4) => 0.0f;
+        private static float RayCastCallback(Fixture arg1, Vector2 arg2, Vector2 arg3, float arg4)
+        {
+            return 0.0f;
+        }
 
         /// <summary>
         ///     Ons the body added using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        private static void OnBodyAdded(Body body) => Console.WriteLine("World.OnBodyAdded()");
+        private static void OnBodyAdded(Body body)
+        {
+            Console.WriteLine("World.OnBodyAdded()");
+        }
 
         /// <summary>
         ///     Ons the body removed using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        private static void OnBodyRemoved(Body body) => Console.WriteLine("World.OnBodyRemoved()");
+        private static void OnBodyRemoved(Body body)
+        {
+            Console.WriteLine("World.OnBodyRemoved()");
+        }
 
         /// <summary>
         ///     Ons the joint removed using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        private static void OnJointRemoved(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+        private static void OnJointRemoved(Joint joint)
+        {
+            Console.WriteLine("Wolds.OnFixtureRemoved()");
+        }
 
         /// <summary>
         ///     Ons the joint added using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        private static void OnJointAdded(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+        private static void OnJointAdded(Joint joint)
+        {
+            Console.WriteLine("Wolds.OnFixtureRemoved()");
+        }
 
         /// <summary>
         ///     Ons the fixture removed using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        private static void OnFixtureRemoved(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+        private static void OnFixtureRemoved(Fixture fixture)
+        {
+            Console.WriteLine("Wolds.OnFixtureRemoved()");
+        }
 
         /// <summary>
         ///     Ons the fixture added using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        private static void OnFixtureAdded(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureAdded()");
+        private static void OnFixtureAdded(Fixture fixture)
+        {
+            Console.WriteLine("Wolds.OnFixtureAdded()");
+        }
 
         /// <summary>
         ///     Ons the controller removed using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
-        private static void OnControllerRemoved(Controller controller) =>
+        private static void OnControllerRemoved(Controller controller)
+        {
             Console.WriteLine("Wolds.OnControllerRemoved()");
+        }
 
         /// <summary>
         ///     Ons the controller added using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
-        private static void OnControllerAdded(Controller controller) => Console.WriteLine("Wolds.OnControllerAdded()");
+        private static void OnControllerAdded(Controller controller)
+        {
+            Console.WriteLine("Wolds.OnControllerAdded()");
+        }
 
         /// <summary>Fires whenever a body has been added</summary>
         public event BodyHandler BodyAdded;
@@ -457,7 +483,10 @@ namespace Alis.Core.Systems.Physics2D
         ///     Adds the breakable body using the specified breakable body
         /// </summary>
         /// <param name="breakableBody">The breakable body</param>
-        public void AddBreakableBody(BreakableBody breakableBody) => BreakableBodyList.Add(breakableBody);
+        public void AddBreakableBody(BreakableBody breakableBody)
+        {
+            BreakableBodyList.Add(breakableBody);
+        }
 
         /// <summary>
         ///     Removes the breakable body using the specified breakable body
@@ -621,7 +650,10 @@ namespace Alis.Core.Systems.Physics2D
         /// </summary>
         /// <param name="aabb">The AABB query box.</param>
         /// <returns>A list of fixtures that were in the affected area.</returns>
-        public List<Fixture> QueryAabb(ref Aabb aabb) => TestPointAllFixtures;
+        public List<Fixture> QueryAabb(ref Aabb aabb)
+        {
+            return TestPointAllFixtures;
+        }
 
         /// <summary>
         ///     Ray-cast the world for all fixtures in the path of the ray. Your callback controls whether you get the closest
@@ -756,7 +788,10 @@ namespace Alis.Core.Systems.Physics2D
         ///     Raises the new fixture event using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        internal void RaiseNewFixtureEvent(Fixture fixture) => FixtureAdded(fixture);
+        internal void RaiseNewFixtureEvent(Fixture fixture)
+        {
+            FixtureAdded(fixture);
+        }
 
         /// <summary>
         ///     Processes the removed joints
@@ -1386,7 +1421,10 @@ namespace Alis.Core.Systems.Physics2D
         /// <param name="fixture">The fixture</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        private bool TestPointCallback(Fixture fixture, ref Vector2 point) => !fixture.TestPoint(ref point);
+        private bool TestPointCallback(Fixture fixture, ref Vector2 point)
+        {
+            return !fixture.TestPoint(ref point);
+        }
 
         /// <summary>
         ///     Adds the joint internal using the specified joint

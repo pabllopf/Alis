@@ -40,6 +40,16 @@ namespace Alis.Core.Audio2D
     public class AL : ALBase
     {
         /// <summary>
+        ///     The al
+        /// </summary>
+        internal const string Lib = nameof(AL);
+
+        /// <summary>
+        ///     The cdecl
+        /// </summary>
+        internal const CallingConvention ALCallingConvention = CallingConvention.Cdecl;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="AL" /> class
         /// </summary>
         static AL()
@@ -54,16 +64,6 @@ namespace Alis.Core.Audio2D
         private AL()
         {
         }
-
-        /// <summary>
-        ///     The al
-        /// </summary>
-        internal const string Lib = nameof(AL);
-
-        /// <summary>
-        ///     The cdecl
-        /// </summary>
-        internal const CallingConvention ALCallingConvention = CallingConvention.Cdecl;
 
         /// <summary>
         ///     This function enables a feature of the OpenAL driver. There are no capabilities defined in OpenAL 1.1 to be
@@ -98,7 +98,10 @@ namespace Alis.Core.Audio2D
         /// <summary>This function retrieves an OpenAL string property.</summary>
         /// <param name="param">The human-readable errorstring to be returned.</param>
         /// <returns>Returns a pointer to a null-terminated string.</returns>
-        public static string GetErrorString(ALError param) => Get((ALGetString) param);
+        public static string GetErrorString(ALError param)
+        {
+            return Get((ALGetString) param);
+        }
 
         /* no functions return more than 1 result ..
         // AL_API void AL_APIENTRY alGetBooleanv( ALenum param, ALboolean* buffer );
@@ -1371,7 +1374,10 @@ namespace Alis.Core.Audio2D
         ///     Returns the <see cref="ALDistanceModel" /> of the current context.
         /// </summary>
         /// <returns>The <see cref="ALDistanceModel" /> of the current context.</returns>
-        public static ALDistanceModel GetDistanceModel() => (ALDistanceModel) Get(ALGetInteger.DistanceModel);
+        public static ALDistanceModel GetDistanceModel()
+        {
+            return (ALDistanceModel) Get(ALGetInteger.DistanceModel);
+        }
 
         /// <summary>(Helper) Returns Source state information.</summary>
         /// <param name="sid">The source to be queried.</param>

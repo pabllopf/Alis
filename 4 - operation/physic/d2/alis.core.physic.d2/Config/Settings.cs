@@ -207,18 +207,24 @@ namespace Alis.Core.Systems.Physics2D.Config
         ///     Friction mixing law. The idea is to allow either fixture to drive the friction to zero. For example, anything
         ///     slides on ice.
         /// </summary>
-        private static float DefaultMixFriction(float friction1, float friction2) =>
-            (float) Math.Sqrt(friction1 * friction2);
+        private static float DefaultMixFriction(float friction1, float friction2)
+        {
+            return (float) Math.Sqrt(friction1 * friction2);
+        }
 
         /// <summary>
         ///     Restitution mixing law. The idea is allow for anything to bounce off an inelastic surface. For example, a
         ///     superball bounces on anything.
         /// </summary>
-        private static float DefaultMixRestitution(float restitution1, float restitution2) =>
-            restitution1 > restitution2 ? restitution1 : restitution2;
+        private static float DefaultMixRestitution(float restitution1, float restitution2)
+        {
+            return restitution1 > restitution2 ? restitution1 : restitution2;
+        }
 
         /// <summary>Restitution mixing law. This picks the lowest value.</summary>
-        private static float DefaultMixRestitutionThreshold(float threshold1, float threshold2) =>
-            threshold1 < threshold2 ? threshold1 : threshold2;
+        private static float DefaultMixRestitutionThreshold(float threshold1, float threshold2)
+        {
+            return threshold1 < threshold2 ? threshold1 : threshold2;
+        }
     }
 }

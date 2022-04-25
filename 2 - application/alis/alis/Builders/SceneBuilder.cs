@@ -66,7 +66,10 @@ namespace Alis.Core.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The scene</returns>
-        public Scene Build() => Scene;
+        public Scene Build()
+        {
+            return Scene;
+        }
 
         /// <summary>
         ///     Names the value

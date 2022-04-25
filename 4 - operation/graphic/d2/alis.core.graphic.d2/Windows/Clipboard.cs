@@ -81,14 +81,16 @@ namespace Alis.Core.Graphics2D.Windows
         ///     Sfs the clipboard get unicode string
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfClipboard_getUnicodeString();
 
         /// <summary>
         ///     Sfs the clipboard set unicode string using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfClipboard_setUnicodeString(IntPtr ptr);
     }
 }

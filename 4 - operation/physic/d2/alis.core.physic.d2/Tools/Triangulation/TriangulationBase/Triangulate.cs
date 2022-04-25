@@ -73,18 +73,16 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.TriangulationBase
                         Debug.Assert(!vertices.IsCounterClockWise(),
                             "The Ear-clip algorithm expects the polygon to be clockwise.");
                     }
+
+                    if (vertices.IsCounterClockWise())
+                    {
+                        Vertices temp = new Vertices(vertices);
+                        temp.Reverse();
+                        results = EarclipDecomposer.ConvexPartition(temp, tolerance);
+                    }
                     else
                     {
-                        if (vertices.IsCounterClockWise())
-                        {
-                            Vertices temp = new Vertices(vertices);
-                            temp.Reverse();
-                            results = EarclipDecomposer.ConvexPartition(temp, tolerance);
-                        }
-                        else
-                        {
-                            results = EarclipDecomposer.ConvexPartition(vertices, tolerance);
-                        }
+                        results = EarclipDecomposer.ConvexPartition(vertices, tolerance);
                     }
 
                     break;
@@ -94,18 +92,16 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.TriangulationBase
                         Debug.Assert(vertices.IsCounterClockWise(),
                             "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
                     }
+
+                    if (!vertices.IsCounterClockWise())
+                    {
+                        Vertices temp = new Vertices(vertices);
+                        temp.Reverse();
+                        results = BayazitDecomposer.ConvexPartition(temp);
+                    }
                     else
                     {
-                        if (!vertices.IsCounterClockWise())
-                        {
-                            Vertices temp = new Vertices(vertices);
-                            temp.Reverse();
-                            results = BayazitDecomposer.ConvexPartition(temp);
-                        }
-                        else
-                        {
-                            results = BayazitDecomposer.ConvexPartition(vertices);
-                        }
+                        results = BayazitDecomposer.ConvexPartition(vertices);
                     }
 
                     break;
@@ -115,18 +111,16 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.TriangulationBase
                         Debug.Assert(vertices.IsCounterClockWise(),
                             "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
                     }
+
+                    if (!vertices.IsCounterClockWise())
+                    {
+                        Vertices temp = new Vertices(vertices);
+                        temp.Reverse();
+                        results = FlipcodeDecomposer.ConvexPartition(temp);
+                    }
                     else
                     {
-                        if (!vertices.IsCounterClockWise())
-                        {
-                            Vertices temp = new Vertices(vertices);
-                            temp.Reverse();
-                            results = FlipcodeDecomposer.ConvexPartition(temp);
-                        }
-                        else
-                        {
-                            results = FlipcodeDecomposer.ConvexPartition(vertices);
-                        }
+                        results = FlipcodeDecomposer.ConvexPartition(vertices);
                     }
 
                     break;

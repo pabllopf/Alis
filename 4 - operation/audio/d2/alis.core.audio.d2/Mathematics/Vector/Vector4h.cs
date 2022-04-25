@@ -41,7 +41,8 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
     /// <summary>
     ///     4-component Vector of the Half type. Occupies 8 Byte total.
     /// </summary>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector4h : ISerializable, IEquatable<Vector4h>
     {
         /// <summary>
@@ -1203,13 +1204,19 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         ///     Returns this Half4 instance's contents as Vector4.
         /// </summary>
         /// <returns>The vector.</returns>
-        public Vector4 ToVector4() => new Vector4(X, Y, Z, W);
+        public Vector4 ToVector4()
+        {
+            return new Vector4(X, Y, Z, W);
+        }
 
         /// <summary>
         ///     Returns this Half4 instance's contents as Vector4d.
         /// </summary>
         /// <returns>The vector.</returns>
-        public Vector4d ToVector4d() => new Vector4d(X, Y, Z, W);
+        public Vector4d ToVector4d()
+        {
+            return new Vector4d(X, Y, Z, W);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector4 to OpenTK.Half4.
@@ -1217,7 +1224,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="v4f">The Vector4 to convert.</param>
         /// <returns>The resulting Half vector.</returns>
         [Pure]
-        public static explicit operator Vector4h(Vector4 v4f) => new Vector4h(v4f);
+        public static explicit operator Vector4h(Vector4 v4f)
+        {
+            return new Vector4h(v4f);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector4d to OpenTK.Half4.
@@ -1225,7 +1235,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="v4d">The Vector4d to convert.</param>
         /// <returns>The resulting Half vector.</returns>
         [Pure]
-        public static explicit operator Vector4h(Vector4d v4d) => new Vector4h(v4d);
+        public static explicit operator Vector4h(Vector4d v4d)
+        {
+            return new Vector4h(v4d);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector4h to OpenTK.Vector4.
@@ -1233,7 +1246,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector4h to convert.</param>
         /// <returns>The resulting Vector4.</returns>
         [Pure]
-        public static implicit operator Vector4(Vector4h vec) => new Vector4(vec.X, vec.Y, vec.Z, vec.W);
+        public static implicit operator Vector4(Vector4h vec)
+        {
+            return new Vector4(vec.X, vec.Y, vec.Z, vec.W);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector4h to OpenTK.Vector4d.
@@ -1241,7 +1257,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector4h to convert.</param>
         /// <returns>The resulting Vector4d.</returns>
         [Pure]
-        public static implicit operator Vector4d(Vector4h vec) => new Vector4d(vec.X, vec.Y, vec.Z, vec.W);
+        public static implicit operator Vector4d(Vector4h vec)
+        {
+            return new Vector4d(vec.X, vec.Y, vec.Z, vec.W);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector4h to OpenTK.Vector4i.
@@ -1249,8 +1268,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector4h to convert.</param>
         /// <returns>The resulting Vector4i.</returns>
         [Pure]
-        public static explicit operator Vector4i(Vector4h vec) =>
-            new Vector4i((int) vec.X, (int) vec.Y, (int) vec.Z, (int) vec.W);
+        public static explicit operator Vector4i(Vector4h vec)
+        {
+            return new Vector4i((int) vec.X, (int) vec.Y, (int) vec.Z, (int) vec.W);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector4h" /> struct using a tuple containing the component
@@ -1259,8 +1280,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector4h" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector4h((Half X, Half Y, Half Z, Half W) values) =>
-            new Vector4h(values.X, values.Y, values.Z, values.W);
+        public static implicit operator Vector4h((Half X, Half Y, Half Z, Half W) values)
+        {
+            return new Vector4h(values.X, values.Y, values.Z, values.W);
+        }
 
         /// <summary>
         ///     Compares two instances for equality.
@@ -1268,7 +1291,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
-        public static bool operator ==(Vector4h left, Vector4h right) => left.Equals(right);
+        public static bool operator ==(Vector4h left, Vector4h right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for inequality.
@@ -1276,7 +1302,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">The first instance.</param>
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equa lright; false otherwise.</returns>
-        public static bool operator !=(Vector4h left, Vector4h right) => !(left == right);
+        public static bool operator !=(Vector4h left, Vector4h right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector4h" /> struct.
@@ -1325,8 +1354,9 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         }
 
         /// <inheritdoc />
-        public override string ToString() =>
-            string.Format
+        public override string ToString()
+        {
+            return string.Format
             (
                 "({0}{4} {1}{4} {2}{4} {3})",
                 X.ToString(),
@@ -1335,19 +1365,28 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
                 W.ToString(),
                 MathHelper.ListSeparator
             );
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Vector4h && Equals((Vector4h) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Vector4h && Equals((Vector4h) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Vector4h other) =>
-            X.Equals(other.X) &&
-            Y.Equals(other.Y) &&
-            Z.Equals(other.Z) &&
-            W.Equals(other.W);
+        public bool Equals(Vector4h other)
+        {
+            return X.Equals(other.X) &&
+                   Y.Equals(other.Y) &&
+                   Z.Equals(other.Z) &&
+                   W.Equals(other.W);
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(X, Y, Z, W);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y, Z, W);
+        }
 
         /// <summary>
         ///     Returns the Half4 as an array of bytes.
@@ -1382,12 +1421,14 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="startIndex">The starting position within value.</param>
         /// <returns>A new Half4 instance.</returns>
         [Pure]
-        public static Vector4h FromBytes(byte[] value, int startIndex) =>
-            new Vector4h(
+        public static Vector4h FromBytes(byte[] value, int startIndex)
+        {
+            return new Vector4h(
                 Half.FromBytes(value, startIndex),
                 Half.FromBytes(value, startIndex + 2),
                 Half.FromBytes(value, startIndex + 4),
                 Half.FromBytes(value, startIndex + 6));
+        }
 
         /// <summary>
         ///     Deconstructs the vector into it's individual components.

@@ -301,7 +301,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
-        private static bool Reflex(int i, Vertices vertices) => Right(i, vertices);
+        private static bool Reflex(int i, Vertices vertices)
+        {
+            return Right(i, vertices);
+        }
 
         /// <summary>
         ///     Describes whether right
@@ -309,8 +312,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The bool</returns>
-        private static bool Right(int i, Vertices vertices) =>
-            Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
+        private static bool Right(int i, Vertices vertices)
+        {
+            return Right(At(i - 1, vertices), At(i, vertices), At(i + 1, vertices));
+        }
 
         /// <summary>
         ///     Describes whether left
@@ -319,7 +324,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool Left(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) > 0;
+        private static bool Left(Vector2 a, Vector2 b, Vector2 c)
+        {
+            return MathUtils.Area(ref a, ref b, ref c) > 0;
+        }
 
         /// <summary>
         ///     Describes whether left on
@@ -328,7 +336,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
+        private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c)
+        {
+            return MathUtils.Area(ref a, ref b, ref c) >= 0;
+        }
 
         /// <summary>
         ///     Describes whether right
@@ -337,7 +348,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool Right(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) < 0;
+        private static bool Right(Vector2 a, Vector2 b, Vector2 c)
+        {
+            return MathUtils.Area(ref a, ref b, ref c) < 0;
+        }
 
         /// <summary>
         ///     Describes whether right on
@@ -346,7 +360,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool RightOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
+        private static bool RightOn(Vector2 a, Vector2 b, Vector2 c)
+        {
+            return MathUtils.Area(ref a, ref b, ref c) <= 0;
+        }
 
         /// <summary>
         ///     Squares the dist using the specified a

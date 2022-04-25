@@ -43,6 +43,11 @@ namespace Alis.Core.Graphics2D.Windows
     public class Context : CriticalFinalizerObject
     {
         /// <summary>
+        ///     The our global context
+        /// </summary>
+        private static Context ourGlobalContext;
+
+        /// <summary>
         ///     The zero
         /// </summary>
         private readonly IntPtr myThis = IntPtr.Zero;
@@ -52,7 +57,10 @@ namespace Alis.Core.Graphics2D.Windows
         ///     Default constructor
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Context() => myThis = sfContext_create();
+        public Context()
+        {
+            myThis = sfContext_create();
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -79,11 +87,6 @@ namespace Alis.Core.Graphics2D.Windows
             }
         }
 
-        /// <summary>
-        ///     The our global context
-        /// </summary>
-        private static Context ourGlobalContext;
-
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Finalizer
@@ -101,7 +104,10 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="active">True to activate, false to deactivate</param>
         /// <returns>true on success, false on failure</returns>
         ////////////////////////////////////////////////////////////
-        public bool SetActive(bool active) => sfContext_setActive(myThis, active);
+        public bool SetActive(bool active)
+        {
+            return sfContext_setActive(myThis, active);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -109,20 +115,25 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() => "[Context]";
+        public override string ToString()
+        {
+            return "[Context]";
+        }
 
         /// <summary>
         ///     Sfs the context create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfContext_create();
 
         /// <summary>
         ///     Sfs the context destroy using the specified view
         /// </summary>
         /// <param name="View">The view</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfContext_destroy(IntPtr View);
 
         /// <summary>
@@ -131,7 +142,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="View">The view</param>
         /// <param name="Active">The active</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfContext_setActive(IntPtr View, bool Active);
 
         /// <summary>
@@ -139,7 +151,8 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="View">The view</param>
         /// <returns>The context settings</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern ContextSettings sfContext_getSettings(IntPtr View);
     }
 }

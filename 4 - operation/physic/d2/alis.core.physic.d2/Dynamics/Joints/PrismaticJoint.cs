@@ -484,7 +484,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>Get the current motor force given the inverse time step, usually in N.</summary>
-        public float GetMotorForce(float invDt) => invDt * motorImpulse;
+        public float GetMotorForce(float invDt)
+        {
+            return invDt * motorImpulse;
+        }
 
         /// <summary>Set the joint limits, usually in meters.</summary>
         /// <param name="lower">The lower limit</param>
@@ -506,15 +509,20 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2 GetReactionForce(float invDt) =>
-            invDt * (impulse.X * perp + (motorImpulse + lowerImpulse - upperImpulse) * axis);
+        public override Vector2 GetReactionForce(float invDt)
+        {
+            return invDt * (impulse.X * perp + (motorImpulse + lowerImpulse - upperImpulse) * axis);
+        }
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt) => invDt * impulse.Y;
+        public override float GetReactionTorque(float invDt)
+        {
+            return invDt * impulse.Y;
+        }
 
         /// <summary>
         ///     Inits the velocity constraints using the specified data

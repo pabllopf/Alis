@@ -40,7 +40,8 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
     ///     Represents a 4x4 matrix containing 3D rotation, scale, transform, and projection with double-precision components.
     /// </summary>
     /// <seealso cref="Matrix4" />
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Matrix4d : IEquatable<Matrix4d>
     {
         /// <summary>
@@ -548,13 +549,19 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         ///     Returns the translation component of this instance.
         /// </summary>
         /// <returns>The translation.</returns>
-        public Vector3d ExtractTranslation() => Row3.Xyz;
+        public Vector3d ExtractTranslation()
+        {
+            return Row3.Xyz;
+        }
 
         /// <summary>
         ///     Returns the scale component of this instance.
         /// </summary>
         /// <returns>The scale.</returns>
-        public Vector3d ExtractScale() => new Vector3d(Row0.Xyz.Length, Row1.Xyz.Length, Row2.Xyz.Length);
+        public Vector3d ExtractScale()
+        {
+            return new Vector3d(Row0.Xyz.Length, Row1.Xyz.Length, Row2.Xyz.Length);
+        }
 
         /// <summary>
         ///     Returns the rotation component of this instance. Quite slow.
@@ -631,7 +638,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         ///     Returns the projection component of this instance.
         /// </summary>
         /// <returns>The projection.</returns>
-        public Vector4d ExtractProjection() => Column3;
+        public Vector4d ExtractProjection()
+        {
+            return Column3;
+        }
 
         /// <summary>
         ///     Build a rotation matrix from the specified axis/angle rotation.
@@ -1162,7 +1172,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="scale">Single scale factor for x,y and z axes.</param>
         /// <returns>A scaling matrix.</returns>
         [Pure]
-        public static Matrix4d Scale(double scale) => Scale(scale, scale, scale);
+        public static Matrix4d Scale(double scale)
+        {
+            return Scale(scale, scale, scale);
+        }
 
         /// <summary>
         ///     Build a scaling matrix.
@@ -1170,7 +1183,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="scale">Scale factors for x,y and z axes.</param>
         /// <returns>A scaling matrix.</returns>
         [Pure]
-        public static Matrix4d Scale(Vector3d scale) => Scale(scale.X, scale.Y, scale.Z);
+        public static Matrix4d Scale(Vector3d scale)
+        {
+            return Scale(scale.X, scale.Y, scale.Z);
+        }
 
         /// <summary>
         ///     Build a scaling matrix.
@@ -1361,13 +1377,15 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
             double upX,
             double upY,
             double upZ
-        ) =>
-            LookAt
+        )
+        {
+            return LookAt
             (
                 new Vector3d(eyeX, eyeY, eyeZ),
                 new Vector3d(targetX, targetY, targetZ),
                 new Vector3d(upX, upY, upZ)
             );
+        }
 
         /// <summary>
         ///     Build a projection matrix.
@@ -1661,8 +1679,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="mat">The matrix to transpose.</param>
         /// <returns>The transpose of the given matrix.</returns>
         [Pure]
-        public static Matrix4d Transpose(Matrix4d mat) =>
-            new Matrix4d(mat.Column0, mat.Column1, mat.Column2, mat.Column3);
+        public static Matrix4d Transpose(Matrix4d mat)
+        {
+            return new Matrix4d(mat.Column0, mat.Column1, mat.Column2, mat.Column3);
+        }
 
         /// <summary>
         ///     Calculate the transpose of the given matrix.
@@ -1684,7 +1704,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix4d which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix4d operator *(Matrix4d left, Matrix4d right) => Mult(left, right);
+        public static Matrix4d operator *(Matrix4d left, Matrix4d right)
+        {
+            return Mult(left, right);
+        }
 
         /// <summary>
         ///     Matrix-scalar multiplication.
@@ -1693,7 +1716,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix4d which holds the result of the multiplication.</returns>
         [Pure]
-        public static Matrix4d operator *(Matrix4d left, double right) => Mult(left, right);
+        public static Matrix4d operator *(Matrix4d left, double right)
+        {
+            return Mult(left, right);
+        }
 
         /// <summary>
         ///     Matrix addition.
@@ -1702,7 +1728,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix4d which holds the result of the addition.</returns>
         [Pure]
-        public static Matrix4d operator +(Matrix4d left, Matrix4d right) => Add(left, right);
+        public static Matrix4d operator +(Matrix4d left, Matrix4d right)
+        {
+            return Add(left, right);
+        }
 
         /// <summary>
         ///     Matrix subtraction.
@@ -1711,7 +1740,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">right-hand operand.</param>
         /// <returns>A new Matrix4d which holds the result of the subtraction.</returns>
         [Pure]
-        public static Matrix4d operator -(Matrix4d left, Matrix4d right) => Subtract(left, right);
+        public static Matrix4d operator -(Matrix4d left, Matrix4d right)
+        {
+            return Subtract(left, right);
+        }
 
         /// <summary>
         ///     Compares two instances for equality.
@@ -1720,7 +1752,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left equals right; false otherwise.</returns>
         [Pure]
-        public static bool operator ==(Matrix4d left, Matrix4d right) => left.Equals(right);
+        public static bool operator ==(Matrix4d left, Matrix4d right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares two instances for inequality.
@@ -1729,16 +1764,25 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="right">The second instance.</param>
         /// <returns>True, if left does not equal right; false otherwise.</returns>
         [Pure]
-        public static bool operator !=(Matrix4d left, Matrix4d right) => !left.Equals(right);
+        public static bool operator !=(Matrix4d left, Matrix4d right)
+        {
+            return !left.Equals(right);
+        }
 
         /// <inheritdoc />
-        public override string ToString() => $"{Row0}\n{Row1}\n{Row2}\n{Row3}";
+        public override string ToString()
+        {
+            return $"{Row0}\n{Row1}\n{Row2}\n{Row3}";
+        }
 
         /// <summary>
         ///     Returns the hashcode for this instance.
         /// </summary>
         /// <returns>A System.Int32 containing the unique hashcode for this instance.</returns>
-        public override int GetHashCode() => HashCode.Combine(Row0, Row1, Row2, Row3);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Row0, Row1, Row2, Row3);
+        }
 
         /// <summary>
         ///     Indicates whether this instance and a specified object are equal.
@@ -1746,7 +1790,10 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="obj">The object to compare to.</param>
         /// <returns>True if the instances are equal; false otherwise.</returns>
         [Pure]
-        public override bool Equals(object obj) => obj is Matrix4d && Equals((Matrix4d) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Matrix4d && Equals((Matrix4d) obj);
+        }
 
         /// <summary>
         ///     Indicates whether the current matrix is equal to another matrix.
@@ -1754,10 +1801,12 @@ namespace Alis.Core.Audio2D.Mathematics.Matrix
         /// <param name="other">A matrix to compare with this matrix.</param>
         /// <returns>true if the current matrix is equal to the matrix parameter; otherwise, false.</returns>
         [Pure]
-        public bool Equals(Matrix4d other) =>
-            Row0 == other.Row0 &&
-            Row1 == other.Row1 &&
-            Row2 == other.Row2 &&
-            Row3 == other.Row3;
+        public bool Equals(Matrix4d other)
+        {
+            return Row0 == other.Row0 &&
+                   Row1 == other.Row1 &&
+                   Row2 == other.Row2 &&
+                   Row3 == other.Row3;
+        }
     }
 }

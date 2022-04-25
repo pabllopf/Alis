@@ -46,13 +46,19 @@ namespace Alis.Core.Components
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
-        public AudioSource() => PathFile = "";
+        public AudioSource()
+        {
+            PathFile = "";
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
         /// <param name="pathFile">The path file</param>
-        public AudioSource(string pathFile) => PathFile = pathFile;
+        public AudioSource(string pathFile)
+        {
+            PathFile = pathFile;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the path file
@@ -76,7 +82,10 @@ namespace Alis.Core.Components
         ///     Starts this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Start() => sound?.Play();
+        public override void Start()
+        {
+            sound?.Play();
+        }
 
         /// <summary>
         ///     Updates this instance
@@ -89,11 +98,17 @@ namespace Alis.Core.Components
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop() => sound?.Pause();
+        public override void Stop()
+        {
+            sound?.Pause();
+        }
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => sound?.Stop();
+        public override void Exit()
+        {
+            sound?.Stop();
+        }
     }
 }

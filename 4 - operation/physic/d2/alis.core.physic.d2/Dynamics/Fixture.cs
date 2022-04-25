@@ -361,14 +361,19 @@ namespace Alis.Core.Systems.Physics2D.Dynamics
 
         /// <summary>Test a point for containment in this fixture.</summary>
         /// <param name="point">A point in world coordinates.</param>
-        public bool TestPoint(ref Vector2 point) => Shape.TestPoint(ref Bodyprivate.Xf, ref point);
+        public bool TestPoint(ref Vector2 point)
+        {
+            return Shape.TestPoint(ref Bodyprivate.Xf, ref point);
+        }
 
         /// <summary>Cast a ray against this Shape.</summary>
         /// <param name="output">The ray-cast results.</param>
         /// <param name="input">The ray-cast input parameters.</param>
         /// <param name="childIndex">Index of the child.</param>
-        public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex) =>
-            Shape.RayCast(ref input, ref Bodyprivate.Xf, childIndex, out output);
+        public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex)
+        {
+            return Shape.RayCast(ref input, ref Bodyprivate.Xf, childIndex, out output);
+        }
 
         /// <summary>
         ///     Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it

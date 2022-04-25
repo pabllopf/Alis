@@ -193,6 +193,9 @@ namespace Alis.Core.Input
         {
         }
 
-        ~InputManager() => Console.WriteLine(@$"Destroy InputManager {GetHashCode().ToString()}");
+        ~InputManager()
+        {
+            Console.WriteLine(@$"Destroy InputManager {GetHashCode().ToString()}");
+        }
     }
 }

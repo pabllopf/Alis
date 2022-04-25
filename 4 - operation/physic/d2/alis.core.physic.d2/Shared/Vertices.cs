@@ -80,19 +80,31 @@ namespace Alis.Core.Systems.Physics2D.Shared
 
         /// <summary>Gets the next index. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
-        public int NextIndex(int index) => index + 1 > Count - 1 ? 0 : index + 1;
+        public int NextIndex(int index)
+        {
+            return index + 1 > Count - 1 ? 0 : index + 1;
+        }
 
         /// <summary>Gets the next vertex. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
-        public Vector2 NextVertex(int index) => this[NextIndex(index)];
+        public Vector2 NextVertex(int index)
+        {
+            return this[NextIndex(index)];
+        }
 
         /// <summary>Gets the previous index. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
-        public int PreviousIndex(int index) => index - 1 < 0 ? Count - 1 : index - 1;
+        public int PreviousIndex(int index)
+        {
+            return index - 1 < 0 ? Count - 1 : index - 1;
+        }
 
         /// <summary>Gets the previous vertex. Used for iterating all the edges with wrap-around.</summary>
         /// <param name="index">The current index</param>
-        public Vector2 PreviousVertex(int index) => this[PreviousIndex(index)];
+        public Vector2 PreviousVertex(int index)
+        {
+            return this[PreviousIndex(index)];
+        }
 
         /// <summary>Gets the signed area. If the area is less than 0, it indicates that the polygon is clockwise winded.</summary>
         /// <returns>The signed area</returns>

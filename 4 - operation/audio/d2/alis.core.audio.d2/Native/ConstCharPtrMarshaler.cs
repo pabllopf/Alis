@@ -63,7 +63,10 @@ namespace Alis.Core.Audio2D.Native
         ///     Gets the native data size
         /// </summary>
         /// <returns>The int</returns>
-        public int GetNativeDataSize() => IntPtr.Size;
+        public int GetNativeDataSize()
+        {
+            return IntPtr.Size;
+        }
 
         /// <summary>
         ///     Marshals the managed to native using the specified managed obj
@@ -91,7 +94,10 @@ namespace Alis.Core.Audio2D.Native
         /// </summary>
         /// <param name="pNativeData">The native data</param>
         /// <returns>The object</returns>
-        public object MarshalNativeToManaged(IntPtr pNativeData) => Marshal.PtrToStringAnsi(pNativeData);
+        public object MarshalNativeToManaged(IntPtr pNativeData)
+        {
+            return Marshal.PtrToStringAnsi(pNativeData);
+        }
 
         // See https://docs.microsoft.com/en-us/dotnet/api/system.runtime.interopservices.custommarshalers.typetotypeinfomarshaler.getinstance
 #pragma warning disable IDE0060 // Remove unused parameter
@@ -100,7 +106,10 @@ namespace Alis.Core.Audio2D.Native
         /// </summary>
         /// <param name="cookie">The cookie</param>
         /// <returns>The custom marshaler</returns>
-        public static ICustomMarshaler GetInstance(string cookie) => Instance;
+        public static ICustomMarshaler GetInstance(string cookie)
+        {
+            return Instance;
+        }
 #pragma warning restore IDE0060 // Remove unused parameter
     }
 }

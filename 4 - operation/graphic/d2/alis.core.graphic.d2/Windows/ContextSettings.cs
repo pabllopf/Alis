@@ -113,14 +113,16 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[ContextSettings]" +
-            " DepthBits(" + DepthBits + ")" +
-            " StencilBits(" + StencilBits + ")" +
-            " AntialiasingLevel(" + AntialiasingLevel + ")" +
-            " MajorVersion(" + MajorVersion + ")" +
-            " MinorVersion(" + MinorVersion + ")" +
-            " AttributeFlags(" + AttributeFlags + ")";
+        public override string ToString()
+        {
+            return "[ContextSettings]" +
+                   " DepthBits(" + DepthBits + ")" +
+                   " StencilBits(" + StencilBits + ")" +
+                   " AntialiasingLevel(" + AntialiasingLevel + ")" +
+                   " MajorVersion(" + MajorVersion + ")" +
+                   " MinorVersion(" + MinorVersion + ")" +
+                   " AttributeFlags(" + AttributeFlags + ")";
+        }
 
         /// <summary>Depth buffer bits (0 is disabled)</summary>
         public uint DepthBits;

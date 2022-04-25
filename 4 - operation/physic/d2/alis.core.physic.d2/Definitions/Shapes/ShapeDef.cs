@@ -41,7 +41,10 @@ namespace Alis.Core.Systems.Physics2D.Definitions.Shapes
         ///     Initializes a new instance of the <see cref="ShapeDef" /> class
         /// </summary>
         /// <param name="type">The type</param>
-        protected ShapeDef(ShapeType type) => ShapeType = type;
+        protected ShapeDef(ShapeType type)
+        {
+            ShapeType = type;
+        }
 
         /// <summary>Gets or sets the density.</summary>
         public float Density { get; set; }

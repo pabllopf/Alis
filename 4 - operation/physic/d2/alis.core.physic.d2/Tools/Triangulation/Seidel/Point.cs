@@ -58,34 +58,55 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
             Prev = null;
         }
 
-        public static Point operator -(Point p1, Point p2) => new Point(p1.X - p2.X, p1.Y - p2.Y);
+        public static Point operator -(Point p1, Point p2)
+        {
+            return new Point(p1.X - p2.X, p1.Y - p2.Y);
+        }
 
-        public static Point operator +(Point p1, Point p2) => new Point(p1.X + p2.X, p1.Y + p2.Y);
+        public static Point operator +(Point p1, Point p2)
+        {
+            return new Point(p1.X + p2.X, p1.Y + p2.Y);
+        }
 
-        public static Point operator -(Point p1, float f) => new Point(p1.X - f, p1.Y - f);
+        public static Point operator -(Point p1, float f)
+        {
+            return new Point(p1.X - f, p1.Y - f);
+        }
 
-        public static Point operator +(Point p1, float f) => new Point(p1.X + f, p1.Y + f);
+        public static Point operator +(Point p1, float f)
+        {
+            return new Point(p1.X + f, p1.Y + f);
+        }
 
         /// <summary>
         ///     Crosses the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
-        public float Cross(Point p) => X * p.Y - Y * p.X;
+        public float Cross(Point p)
+        {
+            return X * p.Y - Y * p.X;
+        }
 
         /// <summary>
         ///     Dots the p
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The float</returns>
-        public float Dot(Point p) => X * p.X + Y * p.Y;
+        public float Dot(Point p)
+        {
+            return X * p.X + Y * p.Y;
+        }
 
         /// <summary>
         ///     Describes whether this instance neq
         /// </summary>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public bool Neq(Point p) => p.X != X || p.Y != Y;
+        public bool Neq(Point p)
+        {
+            return p.X != X || p.Y != Y;
+        }
 
         /// <summary>
         ///     Orients the 2 d using the specified pb

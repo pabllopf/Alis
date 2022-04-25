@@ -172,10 +172,12 @@ namespace Alis.Core.Systems.Physics2D.Shared
         /// <summary>Determines whether the AABB contains the specified point.</summary>
         /// <param name="point">The point.</param>
         /// <returns><c>true</c> if it contains the specified point; otherwise, <c>false</c>.</returns>
-        public bool Contains(ref Vector2 point) =>
+        public bool Contains(ref Vector2 point)
+        {
             //using epsilon to try and guard against float rounding errors.
-            point.X > LowerBound.X + float.Epsilon && point.X < UpperBound.X - float.Epsilon &&
-            point.Y > LowerBound.Y + float.Epsilon && point.Y < UpperBound.Y - float.Epsilon;
+            return point.X > LowerBound.X + float.Epsilon && point.X < UpperBound.X - float.Epsilon &&
+                   point.Y > LowerBound.Y + float.Epsilon && point.Y < UpperBound.Y - float.Epsilon;
+        }
 
         /// <summary>Test if the two AABBs overlap.</summary>
         /// <param name="a">The first AABB.</param>

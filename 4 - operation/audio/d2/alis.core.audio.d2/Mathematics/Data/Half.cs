@@ -50,7 +50,8 @@ namespace Alis.Core.Audio2D.Mathematics.Data
     ///     yield
     ///     predictable results.
     /// </remarks>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Half : ISerializable, IComparable<Half>, IFormattable, IEquatable<Half>
     {
         /// <summary>
@@ -308,7 +309,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         ///     The <see cref="Half" /> result of the conversion.
         /// </returns>
         [Pure]
-        public static explicit operator Half(float f) => new Half(f);
+        public static explicit operator Half(float f)
+        {
+            return new Half(f);
+        }
 
         /// <summary>
         ///     Converts a System.Double to a OpenTK.Half.
@@ -320,7 +324,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         ///     The <see cref="Half" /> result of the conversion.
         /// </returns>
         [Pure]
-        public static explicit operator Half(double d) => new Half(d);
+        public static explicit operator Half(double d)
+        {
+            return new Half(d);
+        }
 
         /// <summary>
         ///     Converts a OpenTK.Half to a System.Single.
@@ -332,7 +339,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         ///     The <see cref="float" /> result of the conversion.
         /// </returns>
         [Pure]
-        public static implicit operator float(Half h) => h.ToSingle();
+        public static implicit operator float(Half h)
+        {
+            return h.ToSingle();
+        }
 
         /// <summary>
         ///     Converts a OpenTK.Half to a System.Double.
@@ -344,11 +354,20 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         ///     The <see cref="double" /> result of the conversion.
         /// </returns>
         [Pure]
-        public static implicit operator double(Half h) => h.ToSingle();
+        public static implicit operator double(Half h)
+        {
+            return h.ToSingle();
+        }
 
-        public static bool operator ==(Half left, Half right) => left.Equals(right);
+        public static bool operator ==(Half left, Half right)
+        {
+            return left.Equals(right);
+        }
 
-        public static bool operator !=(Half left, Half right) => !(left == right);
+        public static bool operator !=(Half left, Half right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     The size in bytes for an instance of the Half struct.
@@ -382,8 +401,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// </summary>
         /// <param name="info">The object that contains a serialized <see cref="Half" /> struct.</param>
         /// <param name="context">The destination for this serialization. (This parameter is not used; specify null.).</param>
-        public Half(SerializationInfo info, StreamingContext context) =>
+        public Half(SerializationInfo info, StreamingContext context)
+        {
             _bits = (ushort) info.GetValue("bits", typeof(ushort));
+        }
 
         /// <inheritdoc />
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -411,10 +432,16 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(_bits);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(_bits);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => base.Equals(obj);
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
 
         /// <summary>
         ///     Returns a value indicating whether this instance is equal to a specified OpenTK.Half value.
@@ -475,13 +502,19 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         ///     </para>
         /// </returns>
         [Pure]
-        public int CompareTo(Half other) => ((float) this).CompareTo(other);
+        public int CompareTo(Half other)
+        {
+            return ((float) this).CompareTo(other);
+        }
 
         /// <summary>
         ///     Converts this Half into a human-legible string representation.
         /// </summary>
         /// <returns>The string representation of this instance.</returns>
-        public override string ToString() => ToSingle().ToString();
+        public override string ToString()
+        {
+            return ToSingle().ToString();
+        }
 
         /// <summary>
         ///     Converts this Half into a human-legible string representation.
@@ -490,8 +523,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="formatProvider">Culture-specific formatting information.</param>
         /// <returns>The string representation of this instance.</returns>
         [Pure]
-        public string ToString(string format, IFormatProvider formatProvider) =>
-            ToSingle().ToString(format, formatProvider);
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return ToSingle().ToString(format, formatProvider);
+        }
 
         /// <summary>
         ///     Converts the string representation of a number to a half-precision floating-point equivalent.
@@ -499,7 +534,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="s">String representation of the number to convert.</param>
         /// <returns>A new Half instance.</returns>
         [Pure]
-        public static Half Parse(string s) => (Half) float.Parse(s);
+        public static Half Parse(string s)
+        {
+            return (Half) float.Parse(s);
+        }
 
         /// <summary>
         ///     Converts the string representation of a number to a half-precision floating-point equivalent.
@@ -509,8 +547,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="provider">Culture-specific formatting information.</param>
         /// <returns>A new Half instance.</returns>
         [Pure]
-        public static Half Parse(string s, NumberStyles style, IFormatProvider provider) =>
-            (Half) float.Parse(s, style, provider);
+        public static Half Parse(string s, NumberStyles style, IFormatProvider provider)
+        {
+            return (Half) float.Parse(s, style, provider);
+        }
 
         /// <summary>
         ///     Converts the string representation of a number to a half-precision floating-point equivalent. Returns success.
@@ -548,7 +588,10 @@ namespace Alis.Core.Audio2D.Mathematics.Data
         /// <param name="h">The Half to convert.</param>
         /// <returns>The input as byte array.</returns>
         [Pure]
-        public static byte[] GetBytes(Half h) => BitConverter.GetBytes(h._bits);
+        public static byte[] GetBytes(Half h)
+        {
+            return BitConverter.GetBytes(h._bits);
+        }
 
         /// <summary>
         ///     Converts an array of bytes into Half.

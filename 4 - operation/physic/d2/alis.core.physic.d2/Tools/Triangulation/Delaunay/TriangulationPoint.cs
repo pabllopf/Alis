@@ -87,7 +87,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
-        public override string ToString() => "[" + X + "," + Y + "]";
+        public override string ToString()
+        {
+            return "[" + X + "," + Y + "]";
+        }
 
         /// <summary>
         ///     Adds the edge using the specified e

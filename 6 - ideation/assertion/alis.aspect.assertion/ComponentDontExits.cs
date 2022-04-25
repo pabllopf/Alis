@@ -27,13 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Exceptions
 {
     /// <summary>
-    /// The component dont exits class
+    ///     The component dont exits class
     /// </summary>
-    /// <seealso cref="System.Exception"/>
-    internal class ComponentDontExits : System.Exception
+    /// <seealso cref="System.Exception" />
+    internal class ComponentDontExits : Exception
     {
     }
 }

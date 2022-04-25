@@ -52,6 +52,9 @@ namespace Alis.Core.Audio2D.Core.Native
         ///     Initializes a new instance of the <see cref="SlotAttribute" /> class.
         /// </summary>
         /// <param name="index">The slot index for a wrapper function.</param>
-        public SlotAttribute(int index) => Slot = index;
+        public SlotAttribute(int index)
+        {
+            Slot = index;
+        }
     }
 }

@@ -44,7 +44,8 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
     /// <remarks>
     ///     The Vector2 structure is suitable for interoperation with unmanaged code requiring two consecutive floats.
     /// </remarks>
-    [Serializable, StructLayout(LayoutKind.Sequential)]
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector2 : IEquatable<Vector2>
     {
         /// <summary>
@@ -432,8 +433,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Right operand.</param>
         /// <returns>The minimum Vector2.</returns>
         [Pure]
-        public static Vector2 MagnitudeMin(Vector2 left, Vector2 right) =>
-            left.LengthSquared < right.LengthSquared ? left : right;
+        public static Vector2 MagnitudeMin(Vector2 left, Vector2 right)
+        {
+            return left.LengthSquared < right.LengthSquared ? left : right;
+        }
 
         /// <summary>
         ///     Returns the Vector2 with the minimum magnitude. If the magnitudes are equal, the second vector
@@ -455,8 +458,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Right operand.</param>
         /// <returns>The maximum Vector2.</returns>
         [Pure]
-        public static Vector2 MagnitudeMax(Vector2 left, Vector2 right) =>
-            left.LengthSquared >= right.LengthSquared ? left : right;
+        public static Vector2 MagnitudeMax(Vector2 left, Vector2 right)
+        {
+            return left.LengthSquared >= right.LengthSquared ? left : right;
+        }
 
         /// <summary>
         ///     Returns the Vector2 with the maximum magnitude. If the magnitudes are equal, the first vector
@@ -605,7 +610,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Second operand.</param>
         /// <returns>The dot product of the two inputs.</returns>
         [Pure]
-        public static float Dot(Vector2 left, Vector2 right) => left.X * right.X + left.Y * right.Y;
+        public static float Dot(Vector2 left, Vector2 right)
+        {
+            return left.X * right.X + left.Y * right.Y;
+        }
 
         /// <summary>
         ///     Calculate the dot (scalar) product of two vectors.
@@ -625,7 +633,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="right">Second operand.</param>
         /// <returns>The perpendicular dot product of the two inputs.</returns>
         [Pure]
-        public static float PerpDot(Vector2 left, Vector2 right) => left.X * right.Y - left.Y * right.X;
+        public static float PerpDot(Vector2 left, Vector2 right)
+        {
+            return left.X * right.Y - left.Y * right.X;
+        }
 
         /// <summary>
         ///     Calculate the perpendicular dot (scalar) product of two vectors.
@@ -950,7 +961,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns>True if both instances are equal; false otherwise.</returns>
-        public static bool operator ==(Vector2 left, Vector2 right) => left.Equals(right);
+        public static bool operator ==(Vector2 left, Vector2 right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Compares the specified instances for inequality.
@@ -958,7 +972,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="left">Left operand.</param>
         /// <param name="right">Right operand.</param>
         /// <returns>True if both instances are not equal; false otherwise.</returns>
-        public static bool operator !=(Vector2 left, Vector2 right) => !(left == right);
+        public static bool operator !=(Vector2 left, Vector2 right)
+        {
+            return !(left == right);
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Vector2" /> struct using a tuple containing the component
@@ -967,7 +984,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="values">A tuple containing the component values.</param>
         /// <returns>A new instance of the <see cref="Vector2" /> struct with the given component values.</returns>
         [Pure]
-        public static implicit operator Vector2((float X, float Y) values) => new Vector2(values.X, values.Y);
+        public static implicit operator Vector2((float X, float Y) values)
+        {
+            return new Vector2(values.X, values.Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2 to OpenTK.Vector2d.
@@ -975,7 +995,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2 to convert.</param>
         /// <returns>The resulting Vector2d.</returns>
         [Pure]
-        public static implicit operator Vector2d(Vector2 vec) => new Vector2d(vec.X, vec.Y);
+        public static implicit operator Vector2d(Vector2 vec)
+        {
+            return new Vector2d(vec.X, vec.Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2 to OpenTK.Vector2h.
@@ -983,7 +1006,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2 to convert.</param>
         /// <returns>The resulting Vector2h.</returns>
         [Pure]
-        public static explicit operator Vector2h(Vector2 vec) => new Vector2h(vec.X, vec.Y);
+        public static explicit operator Vector2h(Vector2 vec)
+        {
+            return new Vector2h(vec.X, vec.Y);
+        }
 
         /// <summary>
         ///     Converts OpenTK.Vector2 to OpenTK.Vector2i.
@@ -991,7 +1017,10 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         /// <param name="vec">The Vector2 to convert.</param>
         /// <returns>The resulting Vector2i.</returns>
         [Pure]
-        public static explicit operator Vector2i(Vector2 vec) => new Vector2i((int) vec.X, (int) vec.Y);
+        public static explicit operator Vector2i(Vector2 vec)
+        {
+            return new Vector2i((int) vec.X, (int) vec.Y);
+        }
 
         /// <summary>
         ///     The list separator
@@ -999,18 +1028,29 @@ namespace Alis.Core.Audio2D.Mathematics.Vector
         private static readonly string ListSeparator = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
 
         /// <inheritdoc />
-        public override string ToString() => string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
+        public override string ToString()
+        {
+            return string.Format("({0}{2} {1})", X, Y, MathHelper.ListSeparator);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is Vector2 && Equals((Vector2) obj);
+        public override bool Equals(object obj)
+        {
+            return obj is Vector2 && Equals((Vector2) obj);
+        }
 
         /// <inheritdoc />
-        public bool Equals(Vector2 other) =>
-            X == other.X &&
-            Y == other.Y;
+        public bool Equals(Vector2 other)
+        {
+            return X == other.X &&
+                   Y == other.Y;
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(X, Y);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
 
         /// <summary>
         ///     Deconstructs the vector into it's individual components.

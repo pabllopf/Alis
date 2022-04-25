@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ComponentTypeAlredyExist.cs
+//  File:   ComponentTypeExist.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -26,13 +26,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
+using System;
+
 namespace Alis.Exceptions
 {
     /// <summary>
-    /// The component type exist class
+    ///     The component type exist class
     /// </summary>
-    /// <seealso cref="System.Exception"/>
-    internal class ComponentTypeExist : System.Exception
+    /// <seealso cref="System.Exception" />
+    internal class ComponentTypeExist : Exception
     {
     }
 }

@@ -61,6 +61,9 @@ namespace Alis.Core.Components
         ///     Gets the drawable
         /// </summary>
         /// <returns>The drawable</returns>
-        public virtual Drawable GetDrawable() => throw new NotImplementedException();
+        public virtual Drawable GetDrawable()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

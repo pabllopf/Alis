@@ -121,7 +121,7 @@ namespace Alis.Core.Components
         public Vector2 LinearVelocity { get; set; } = Vector2.Zero;
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public override void Init()
         {
@@ -145,18 +145,18 @@ namespace Alis.Core.Components
             Vector2f pos = new Vector2f(
                 (GameObject.Transform.Position.X + RelativePosition.X) - ((Width) / 2),
                 (GameObject.Transform.Position.Y + RelativePosition.Y) - ((Height) / 2)
-                );
+            );
 
             //Vector2f pos = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
-            
-            
+
+
             rectangleShape.Position = pos;
             rectangleShape.FillColor = Color.Transparent;
             rectangleShape.OutlineColor = Color.Green;
             rectangleShape.OutlineThickness = 1f;
-            
+
             //Console.WriteLine($"Name={GameObject.Name} rectangleShape.Position={rectangleShape.Position}");
-            
+
             PhysicsSystem.Attach(this);
 
 
@@ -164,14 +164,13 @@ namespace Alis.Core.Components
 
             Transform transform;
             Body.GetTransform(out transform);
-            
-            
-            
+
+
             Console.WriteLine($"Name={GameObject.Name} rectangleShape.Position={rectangleShape.Position}");
             Console.WriteLine($"Name={GameObject.Name} rectangleShape.Size={rectangleShape.Size}");
             Console.WriteLine($"Name={GameObject.Name} rectangleShape.Rotation={rectangleShape.Rotation}");
 
-            
+
             Console.WriteLine($"Name={GameObject.Name} Body.Position={Body.Position}");
             Console.WriteLine($"Name={GameObject.Name} Body.Size=x{Width}y{Height}");
             Console.WriteLine($"Name={GameObject.Name} Body.Rotation={Body.Rotation}");
@@ -204,17 +203,17 @@ namespace Alis.Core.Components
         private Body CreateBody()
         {
             Body body = BodyFactory.CreateRectangle(
-                world: PhysicsSystem.World, 
-                width: Width , 
-                height: Height, 
-                density: Density, 
-                position: new Vector2(
-                    (GameObject.Transform.Position.X ) + RelativePosition.X,
-                    (GameObject.Transform.Position.Y ) + RelativePosition.Y), 
-                rotation: Rotation, 
-                bodyType: BodyType, 
-                userData: this.GameObject);
-            
+                PhysicsSystem.World,
+                Width,
+                Height,
+                Density,
+                new Vector2(
+                    (GameObject.Transform.Position.X) + RelativePosition.X,
+                    (GameObject.Transform.Position.Y) + RelativePosition.Y),
+                Rotation,
+                BodyType,
+                GameObject);
+
             body.Restitution = Restitution;
             body.Friction = Friction;
             body.FixedRotation = FixedRotation;
@@ -227,9 +226,8 @@ namespace Alis.Core.Components
             body.IsSensor = IsTrigger;
 
             return body;
-            
-            
-            
+
+
             /*
             BodyDef bodyDef = new BodyDef
             {
@@ -278,7 +276,6 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Start()
         {
-           
         }
 
         /// <summary>
@@ -295,7 +292,6 @@ namespace Alis.Core.Components
         /// </summary>
         public override void Update()
         {
-            
         }
 
         /// <summary>
@@ -306,7 +302,7 @@ namespace Alis.Core.Components
         }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public override void Draw()
         {
@@ -322,7 +318,10 @@ namespace Alis.Core.Components
         ///     Gets the drawable
         /// </summary>
         /// <returns>The drawable</returns>
-        public override Drawable GetDrawable() => rectangleShape;
+        public override Drawable GetDrawable()
+        {
+            return rectangleShape;
+        }
 
 
         /*

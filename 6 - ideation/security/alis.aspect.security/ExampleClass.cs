@@ -30,11 +30,9 @@
 namespace Alis.Base
 {
     /// <summary>
-    /// The example class
+    ///     The example class
     /// </summary>
     public class ExampleClass
     {
-    
     }
 }
-

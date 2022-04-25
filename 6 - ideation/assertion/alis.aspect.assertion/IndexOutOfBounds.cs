@@ -26,14 +26,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
+using System;
+
 namespace Alis.Exceptions
 {
-
     /// <summary>
-    /// The index out of bounds class
+    ///     The index out of bounds class
     /// </summary>
-    /// <seealso cref="System.Exception"/>
-    internal class IndexOutOfBounds : System.Exception
+    /// <seealso cref="System.Exception" />
+    internal class IndexOutOfBounds : Exception
     {
     }
 }

@@ -38,6 +38,16 @@ namespace Alis.Core.Audio2D
     public class ALC : ALBase
     {
         /// <summary>
+        ///     The lib
+        /// </summary>
+        internal const string Lib = AL.Lib;
+
+        /// <summary>
+        ///     The cdecl
+        /// </summary>
+        internal const CallingConvention AlcCallingConv = CallingConvention.Cdecl;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="ALC" /> class
         /// </summary>
         static ALC()
@@ -52,16 +62,6 @@ namespace Alis.Core.Audio2D
         private ALC()
         {
         }
-
-        /// <summary>
-        ///     The lib
-        /// </summary>
-        internal const string Lib = AL.Lib;
-
-        /// <summary>
-        ///     The cdecl
-        /// </summary>
-        internal const CallingConvention AlcCallingConv = CallingConvention.Cdecl;
 
         /// <summary>This function creates a context using a specified device.</summary>
         /// <param name="device">A pointer to a device.</param>
@@ -119,8 +119,10 @@ namespace Alis.Core.Audio2D
         ///     The attribute list can be NULL, or a zero terminated list of integer pairs composed of valid ALC attribute
         ///     tokens and requested values.
         /// </remarks>
-        public static ALContext CreateContext(ALDevice device, Span<int> attributeList) =>
-            CreateContext(device, ref attributeList[0]);
+        public static ALContext CreateContext(ALDevice device, Span<int> attributeList)
+        {
+            return CreateContext(device, ref attributeList[0]);
+        }
 
         /// <summary>This function creates a context using a specified device.</summary>
         /// <param name="device">A pointer to a device.</param>
@@ -130,8 +132,10 @@ namespace Alis.Core.Audio2D
         ///     The attribute list can be NULL, or a zero terminated list of integer pairs composed of valid ALC attribute
         ///     tokens and requested values.
         /// </remarks>
-        public static ALContext CreateContext(ALDevice device, ALContextAttributes attributes) =>
-            CreateContext(device, attributes.CreateAttributeArray());
+        public static ALContext CreateContext(ALDevice device, ALContextAttributes attributes)
+        {
+            return CreateContext(device, attributes.CreateAttributeArray());
+        }
 
         /// <summary>This function makes a specified context the current context.</summary>
         /// <param name="context">A pointer to the new context.</param>
@@ -335,7 +339,10 @@ namespace Alis.Core.Audio2D
         ///     ALC_ALL_DEVICES_SPECIFIER.
         /// </param>
         /// <returns>A List of strings containing the names of the Devices.</returns>
-        public static List<string> GetString(AlcGetStringList param) => GetString(ALDevice.Null, param);
+        public static List<string> GetString(AlcGetStringList param)
+        {
+            return GetString(ALDevice.Null, param);
+        }
 
         /// <summary>This function returns integers related to the context.</summary>
         /// <param name="device">a pointer to the device to be queried.</param>
@@ -434,15 +441,20 @@ namespace Alis.Core.Audio2D
         /// </summary>
         /// <param name="device">The device to check the extension is present for.</param>
         /// <returns>If the ALC_EXT_CAPTURE extension was present.</returns>
-        public static bool IsCaptureExtensionPresent(ALDevice device) => IsExtensionPresent(device, "ALC_EXT_CAPTURE");
+        public static bool IsCaptureExtensionPresent(ALDevice device)
+        {
+            return IsExtensionPresent(device, "ALC_EXT_CAPTURE");
+        }
 
         /// <summary>
         ///     Checks to see that the ALC_EXT_CAPTURE extension is present. This will always be available in 1.1 devices or later.
         /// </summary>
         /// <param name="device">The device to check the extension is present for.</param>
         /// <returns>If the ALC_EXT_CAPTURE extension was present.</returns>
-        public static bool IsCaptureExtensionPresent(ALCaptureDevice device) =>
-            IsExtensionPresent(device, "ALC_EXT_CAPTURE");
+        public static bool IsCaptureExtensionPresent(ALCaptureDevice device)
+        {
+            return IsExtensionPresent(device, "ALC_EXT_CAPTURE");
+        }
 
         /// <summary>This function opens a capture device by name. </summary>
         /// <param name="devicename">A pointer to a device name string.</param>
@@ -608,8 +620,10 @@ namespace Alis.Core.Audio2D
         /// </summary>
         /// <param name="device">The device to check the extension is present for.</param>
         /// <returns>If the ALC_ENUMERATION_EXT extension was present.</returns>
-        public static bool IsEnumerationExtensionPresent(ALDevice device) =>
-            IsExtensionPresent(device, "ALC_ENUMERATION_EXT");
+        public static bool IsEnumerationExtensionPresent(ALDevice device)
+        {
+            return IsExtensionPresent(device, "ALC_ENUMERATION_EXT");
+        }
 
         /// <summary>
         ///     Checks to see that the ALC_ENUMERATION_EXT extension is present. This will always be available in 1.1 devices or
@@ -617,8 +631,10 @@ namespace Alis.Core.Audio2D
         /// </summary>
         /// <param name="device">The device to check the extension is present for.</param>
         /// <returns>If the ALC_ENUMERATION_EXT extension was present.</returns>
-        public static bool IsEnumerationExtensionPresent(ALCaptureDevice device) =>
-            IsExtensionPresent(device, "ALC_ENUMERATION_EXT");
+        public static bool IsEnumerationExtensionPresent(ALCaptureDevice device)
+        {
+            return IsExtensionPresent(device, "ALC_ENUMERATION_EXT");
+        }
 
         /// <summary>
         ///     Gets a named property on the context.

@@ -43,6 +43,11 @@ namespace Alis.Core.Systems
     public class SceneSystem : System
     {
         /// <summary>
+        ///     The current
+        /// </summary>
+        private static SceneSystem _current = null!;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="SceneSystem" /> class
         /// </summary>
         /// <param name="scenes">The scenes</param>
@@ -81,11 +86,6 @@ namespace Alis.Core.Systems
         private Scene ActiveScene { get; set; }
 
         /// <summary>
-        ///     The current
-        /// </summary>
-        private static SceneSystem _current = null!;
-
-        /// <summary>
         ///     Changes the scene using the specified index
         /// </summary>
         /// <param name="index">The index</param>
@@ -110,88 +110,139 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
-        public override void Init() => ActiveScene.Init();
-        
+        public override void Init()
+        {
+            ActiveScene.Init();
+        }
+
         /// <summary>
-        /// Before the awake
+        ///     Before the awake
         /// </summary>
-        public override void BeforeAwake() => ActiveScene.BeforeAwake();
+        public override void BeforeAwake()
+        {
+            ActiveScene.BeforeAwake();
+        }
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public override void Awake() => ActiveScene.Awake();
+        public override void Awake()
+        {
+            ActiveScene.Awake();
+        }
 
         /// <summary>
-        /// Afters the awake
+        ///     Afters the awake
         /// </summary>
-        public override void AfterAwake() => ActiveScene.AfterAwake();
+        public override void AfterAwake()
+        {
+            ActiveScene.AfterAwake();
+        }
 
         /// <summary>
-        /// Before the start
+        ///     Before the start
         /// </summary>
-        public override void BeforeStart()=> ActiveScene.BeforeStart();
+        public override void BeforeStart()
+        {
+            ActiveScene.BeforeStart();
+        }
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => ActiveScene.Start();
+        public override void Start()
+        {
+            ActiveScene.Start();
+        }
 
         /// <summary>
-        /// Afters the start
+        ///     Afters the start
         /// </summary>
-        public override void AfterStart()=> ActiveScene.AfterStart();
+        public override void AfterStart()
+        {
+            ActiveScene.AfterStart();
+        }
 
         /// <summary>
         ///     Before the update
         /// </summary>
-        public override void BeforeUpdate() => ActiveScene.BeforeUpdate();
+        public override void BeforeUpdate()
+        {
+            ActiveScene.BeforeUpdate();
+        }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => ActiveScene.Update();
+        public override void Update()
+        {
+            ActiveScene.Update();
+        }
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => ActiveScene.AfterUpdate();
+        public override void AfterUpdate()
+        {
+            ActiveScene.AfterUpdate();
+        }
 
         /// <summary>
         ///     Fixed the update
         /// </summary>
-        public override void FixedUpdate() => ActiveScene.FixedUpdate();
+        public override void FixedUpdate()
+        {
+            ActiveScene.FixedUpdate();
+        }
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents() => ActiveScene.DispatchEvents();
+        public override void DispatchEvents()
+        {
+            ActiveScene.DispatchEvents();
+        }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
-        public override void Draw()=> ActiveScene.Draw();
+        public override void Draw()
+        {
+            ActiveScene.Draw();
+        }
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public override void Reset() => ActiveScene.Reset();
+        public override void Reset()
+        {
+            ActiveScene.Reset();
+        }
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop() => ActiveScene.Stop();
+        public override void Stop()
+        {
+            ActiveScene.Stop();
+        }
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => ActiveScene.Exit();
+        public override void Exit()
+        {
+            ActiveScene.Exit();
+        }
 
         /// <summary>
         ///     Simple destructor
         /// </summary>
-        ~SceneSystem() => Console.WriteLine(@$"Destroy SceneSystem {GetHashCode().ToString()}");
+        ~SceneSystem()
+        {
+            Console.WriteLine(@$"Destroy SceneSystem {GetHashCode().ToString()}");
+        }
     }
 }

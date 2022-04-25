@@ -40,7 +40,10 @@ namespace Alis.Core.FluentApi.Validations
         ///     the value
         /// </summary>
         /// <param name="value">the value</param>
-        public NotNull(TArgument value) => Value = value;
+        public NotNull(TArgument value)
+        {
+            Value = value;
+        }
 
         /// <summary>
         ///     Gets or sets the value of the value
@@ -48,12 +51,14 @@ namespace Alis.Core.FluentApi.Validations
         public TArgument Value { get; set; }
 
         /// <summary>
-        ///    Gets or sets the message
+        ///     Gets or sets the message
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public static implicit operator NotNull<TArgument>(TArgument value) =>
-            new NotNull<TArgument>(value ?? throw new ArgumentNullException(typeof(TArgument).FullName));
+        public static implicit operator NotNull<TArgument>(TArgument value)
+        {
+            return new NotNull<TArgument>(value ?? throw new ArgumentNullException(typeof(TArgument).FullName));
+        }
     }
 }

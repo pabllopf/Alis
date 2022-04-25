@@ -130,7 +130,10 @@ namespace Alis.Core.Audio2D.Mathematics.Geometry
         /// <param name="t">The t value, between 0.0f and 1.0f.</param>
         /// <returns>Resulting point.</returns>
         [Pure]
-        public Vector2 CalculatePoint(float t) => CalculatePoint(_points, t, Parallel);
+        public Vector2 CalculatePoint(float t)
+        {
+            return CalculatePoint(_points, t, Parallel);
+        }
 
         /// <summary>
         ///     Calculates the length of this bezier curve.
@@ -142,7 +145,10 @@ namespace Alis.Core.Audio2D.Mathematics.Geometry
         ///     value gets smaller.
         /// </remarks>
         [Pure]
-        public float CalculateLength(float precision) => CalculateLength(_points, precision, Parallel);
+        public float CalculateLength(float precision)
+        {
+            return CalculateLength(_points, precision, Parallel);
+        }
 
         /// <summary>
         ///     Calculates the length of the specified bezier curve.
@@ -154,8 +160,10 @@ namespace Alis.Core.Audio2D.Mathematics.Geometry
         ///     value gets smaller.
         /// </returns>
         [Pure]
-        public static float CalculateLength(IList<Vector2> points, float precision) =>
-            CalculateLength(points, precision, 0.0f);
+        public static float CalculateLength(IList<Vector2> points, float precision)
+        {
+            return CalculateLength(points, precision, 0.0f);
+        }
 
         /// <summary>
         ///     Calculates the length of the specified bezier curve.
@@ -199,7 +207,10 @@ namespace Alis.Core.Audio2D.Mathematics.Geometry
         /// <param name="t">The t parameter, a value between 0.0f and 1.0f.</param>
         /// <returns>Resulting point.</returns>
         [Pure]
-        public static Vector2 CalculatePoint(IList<Vector2> points, float t) => CalculatePoint(points, t, 0.0f);
+        public static Vector2 CalculatePoint(IList<Vector2> points, float t)
+        {
+            return CalculatePoint(points, t, 0.0f);
+        }
 
         /// <summary>
         ///     Calculates the point on the given bezier curve with the specified t parameter.

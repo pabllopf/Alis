@@ -40,7 +40,9 @@ namespace Alis.Core.FluentApi
         ///     Builders
         /// </summary>
         /// <returns>The</returns>
-        public static TOrigin Builder() =>
-            (TOrigin) (Activator.CreateInstance(typeof(TOrigin), true) ?? throw new NullReferenceException());
+        public static TOrigin Builder()
+        {
+            return (TOrigin) (Activator.CreateInstance(typeof(TOrigin), true) ?? throw new NullReferenceException());
+        }
     }
 }

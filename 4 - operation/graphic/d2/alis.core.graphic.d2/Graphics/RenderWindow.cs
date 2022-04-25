@@ -208,7 +208,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>The current view</returns>
         ////////////////////////////////////////////////////////////
-        public View GetView() => new View(sfRenderWindow_getView(CPointer));
+        public View GetView()
+        {
+            return new View(sfRenderWindow_getView(CPointer));
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -224,7 +227,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="view">Target view</param>
         /// <returns>Viewport rectangle, expressed in pixels in the current target</returns>
         ////////////////////////////////////////////////////////////
-        public IntRect GetViewport(View view) => sfRenderWindow_getViewport(CPointer, view.CPointer);
+        public IntRect GetViewport(View view)
+        {
+            return sfRenderWindow_getViewport(CPointer, view.CPointer);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -238,7 +244,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f MapPixelToCoords(Vector2i point) => MapPixelToCoords(point, GetView());
+        public Vector2f MapPixelToCoords(Vector2i point)
+        {
+            return MapPixelToCoords(point, GetView());
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -262,8 +271,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f MapPixelToCoords(Vector2i point, View view) =>
-            sfRenderWindow_mapPixelToCoords(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
+        public Vector2f MapPixelToCoords(Vector2i point, View view)
+        {
+            return sfRenderWindow_mapPixelToCoords(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -277,7 +288,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2i MapCoordsToPixel(Vector2f point) => MapCoordsToPixel(point, GetView());
+        public Vector2i MapCoordsToPixel(Vector2f point)
+        {
+            return MapCoordsToPixel(point, GetView());
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -298,8 +312,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2i MapCoordsToPixel(Vector2f point, View view) =>
-            sfRenderWindow_mapCoordsToPixel(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
+        public Vector2i MapCoordsToPixel(Vector2f point, View view)
+        {
+            return sfRenderWindow_mapCoordsToPixel(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -622,7 +638,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="active">True to activate, false to deactivate (true by default)</param>
         /// <returns>True if operation was successful, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public override bool SetActive(bool active) => sfRenderWindow_setActive(CPointer, active);
+        public override bool SetActive(bool active)
+        {
+            return sfRenderWindow_setActive(CPointer, active);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -641,7 +660,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>True if the window has focus, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public override bool HasFocus() => sfRenderWindow_hasFocus(CPointer);
+        public override bool HasFocus()
+        {
+            return sfRenderWindow_hasFocus(CPointer);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -668,7 +690,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </remarks>
         ////////////////////////////////////////////////////////////
         [Obsolete("Capture is deprecated, please see remarks for preferred method")]
-        public Image Capture() => new Image(sfRenderWindow_capture(CPointer));
+        public Image Capture()
+        {
+            return new Image(sfRenderWindow_capture(CPointer));
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -676,13 +701,15 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[RenderWindow]" +
-            " Size(" + Size + ")" +
-            " Position(" + Position + ")" +
-            " Settings(" + Settings + ")" +
-            " DefaultView(" + DefaultView + ")" +
-            " View(" + GetView() + ")";
+        public override string ToString()
+        {
+            return "[RenderWindow]" +
+                   " Size(" + Size + ")" +
+                   " Position(" + Position + ")" +
+                   " Settings(" + Settings + ")" +
+                   " DefaultView(" + DefaultView + ")" +
+                   " View(" + GetView() + ")";
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -691,7 +718,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="eventToFill">Variable to fill with the raw pointer to the event structure</param>
         /// <returns>True if there was an event, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        protected override bool PollEvent(out Event eventToFill) => sfRenderWindow_pollEvent(CPointer, out eventToFill);
+        protected override bool PollEvent(out Event eventToFill)
+        {
+            return sfRenderWindow_pollEvent(CPointer, out eventToFill);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -700,7 +730,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="eventToFill">Variable to fill with the raw pointer to the event structure</param>
         /// <returns>False if any error occured</returns>
         ////////////////////////////////////////////////////////////
-        protected override bool WaitEvent(out Event eventToFill) => sfRenderWindow_waitEvent(CPointer, out eventToFill);
+        protected override bool WaitEvent(out Event eventToFill)
+        {
+            return sfRenderWindow_waitEvent(CPointer, out eventToFill);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -710,7 +743,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>Relative mouse position</returns>
         ////////////////////////////////////////////////////////////
-        public override Vector2i InternalGetMousePosition() => sfMouse_getPositionRenderWindow(CPointer);
+        public override Vector2i InternalGetMousePosition()
+        {
+            return sfMouse_getPositionRenderWindow(CPointer);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -734,8 +770,10 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Finger">Finger index</param>
         /// <returns>Relative touch position</returns>
         ////////////////////////////////////////////////////////////
-        protected internal override Vector2i InternalGetTouchPosition(uint Finger) =>
-            sfTouch_getPositionRenderWindow(Finger, CPointer);
+        protected internal override Vector2i InternalGetTouchPosition(uint Finger)
+        {
+            return sfTouch_getPositionRenderWindow(Finger, CPointer);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -772,7 +810,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Style">The style</param>
         /// <param name="Params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderWindow_create(VideoMode Mode, string Title, Styles Style,
             ref ContextSettings Params);
 
@@ -784,7 +823,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Style">The style</param>
         /// <param name="Params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderWindow_createUnicode(VideoMode Mode, IntPtr Title, Styles Style,
             ref ContextSettings Params);
 
@@ -794,21 +834,24 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Handle">The handle</param>
         /// <param name="Params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderWindow_createFromHandle(IntPtr Handle, ref ContextSettings Params);
 
         /// <summary>
         ///     Sfs the render window destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_destroy(IntPtr CPointer);
 
         /// <summary>
         ///     Sfs the render window close using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_close(IntPtr CPointer);
 
         /// <summary>
@@ -816,7 +859,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderWindow_isOpen(IntPtr CPointer);
 
         /// <summary>
@@ -824,7 +868,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The context settings</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern ContextSettings sfRenderWindow_getSettings(IntPtr CPointer);
 
         /// <summary>
@@ -833,7 +878,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Evt">The evt</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderWindow_pollEvent(IntPtr CPointer, out Event Evt);
 
         /// <summary>
@@ -842,7 +888,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Evt">The evt</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderWindow_waitEvent(IntPtr CPointer, out Event Evt);
 
         /// <summary>
@@ -850,7 +897,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfRenderWindow_getPosition(IntPtr CPointer);
 
         /// <summary>
@@ -858,7 +906,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="position">The position</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setPosition(IntPtr CPointer, Vector2i position);
 
         /// <summary>
@@ -866,7 +915,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2u sfRenderWindow_getSize(IntPtr CPointer);
 
         /// <summary>
@@ -874,7 +924,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="size">The size</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setSize(IntPtr CPointer, Vector2u size);
 
         /// <summary>
@@ -882,7 +933,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="title">The title</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setTitle(IntPtr CPointer, string title);
 
         /// <summary>
@@ -890,7 +942,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="title">The title</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setUnicodeTitle(IntPtr CPointer, IntPtr title);
 
         /// <summary>
@@ -900,7 +953,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Width">The width</param>
         /// <param name="Height">The height</param>
         /// <param name="Pixels">The pixels</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern unsafe void
             sfRenderWindow_setIcon(IntPtr CPointer, uint Width, uint Height, byte* Pixels);
 
@@ -909,7 +963,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="visible">The visible</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setVisible(IntPtr CPointer, bool visible);
 
         /// <summary>
@@ -917,7 +972,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Enable">The enable</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setVerticalSyncEnabled(IntPtr CPointer, bool Enable);
 
         /// <summary>
@@ -925,7 +981,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="visible">The visible</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setMouseCursorVisible(IntPtr CPointer, bool visible);
 
         /// <summary>
@@ -933,7 +990,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="grabbed">The grabbed</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setMouseCursorGrabbed(IntPtr CPointer, bool grabbed);
 
         /// <summary>
@@ -941,7 +999,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="cursor">The cursor</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setMouseCursor(IntPtr window, IntPtr cursor);
 
         /// <summary>
@@ -949,7 +1008,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Enable">The enable</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setKeyRepeatEnabled(IntPtr CPointer, bool Enable);
 
         /// <summary>
@@ -957,7 +1017,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Limit">The limit</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setFramerateLimit(IntPtr CPointer, uint Limit);
 
         /// <summary>
@@ -965,7 +1026,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Threshold">The threshold</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setJoystickThreshold(IntPtr CPointer, float Threshold);
 
         /// <summary>
@@ -974,14 +1036,16 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Active">The active</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderWindow_setActive(IntPtr CPointer, bool Active);
 
         /// <summary>
         ///     Sfs the render window request focus using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_requestFocus(IntPtr CPointer);
 
         /// <summary>
@@ -989,14 +1053,16 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderWindow_hasFocus(IntPtr CPointer);
 
         /// <summary>
         ///     Sfs the render window display using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_display(IntPtr CPointer);
 
         /// <summary>
@@ -1004,7 +1070,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderWindow_getSystemHandle(IntPtr CPointer);
 
         /// <summary>
@@ -1012,7 +1079,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="ClearColor">The clear color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_clear(IntPtr CPointer, Color ClearColor);
 
         /// <summary>
@@ -1020,7 +1088,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="View">The view</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setView(IntPtr CPointer, IntPtr View);
 
         /// <summary>
@@ -1028,7 +1097,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderWindow_getView(IntPtr CPointer);
 
         /// <summary>
@@ -1036,7 +1106,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderWindow_getDefaultView(IntPtr CPointer);
 
         /// <summary>
@@ -1045,7 +1116,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="TargetView">The target view</param>
         /// <returns>The int rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntRect sfRenderWindow_getViewport(IntPtr CPointer, IntPtr TargetView);
 
         /// <summary>
@@ -1055,7 +1127,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="point">The point</param>
         /// <param name="View">The view</param>
         /// <returns>The vector 2f</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2f sfRenderWindow_mapPixelToCoords(IntPtr CPointer, Vector2i point, IntPtr View);
 
         /// <summary>
@@ -1065,7 +1138,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="point">The point</param>
         /// <param name="View">The view</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfRenderWindow_mapCoordsToPixel(IntPtr CPointer, Vector2f point, IntPtr View);
 
         /// <summary>
@@ -1076,7 +1150,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="vertexCount">The vertex count</param>
         /// <param name="type">The type</param>
         /// <param name="renderStates">The render states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern unsafe void sfRenderWindow_drawPrimitives(IntPtr CPointer, Vertex* vertexPtr,
             uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 
@@ -1084,21 +1159,24 @@ namespace Alis.Core.Graphics2D.Graphics
         ///     Sfs the render window push gl states using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_pushGLStates(IntPtr CPointer);
 
         /// <summary>
         ///     Sfs the render window pop gl states using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_popGLStates(IntPtr CPointer);
 
         /// <summary>
         ///     Sfs the render window reset gl states using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_resetGLStates(IntPtr CPointer);
 
         /// <summary>
@@ -1106,7 +1184,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderWindow_capture(IntPtr CPointer);
 
         /// <summary>
@@ -1114,7 +1193,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfMouse_getPositionRenderWindow(IntPtr CPointer);
 
         /// <summary>
@@ -1122,7 +1202,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfMouse_setPositionRenderWindow(Vector2i position, IntPtr CPointer);
 
         /// <summary>
@@ -1131,7 +1212,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Finger">The finger</param>
         /// <param name="RelativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfTouch_getPositionRenderWindow(uint Finger, IntPtr RelativeTo);
 
         /// <summary>
@@ -1139,7 +1221,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderWindow_saveGLStates(IntPtr CPointer);
 
         /// <summary>
@@ -1147,7 +1230,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderWindow_restoreGLStates(IntPtr CPointer);
 
         /// <summary>
@@ -1155,7 +1239,8 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
         private static extern uint sfRenderWindow_getFrameTime(IntPtr CPointer);
     }
 }

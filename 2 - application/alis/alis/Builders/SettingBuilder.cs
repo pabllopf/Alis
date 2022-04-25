@@ -52,7 +52,10 @@ namespace Alis.Builders
         ///     Builds this instance
         /// </summary>
         /// <returns>The setting</returns>
-        public Setting Build() => Game.Setting;
+        public Setting Build()
+        {
+            return Game.Setting;
+        }
 
         /// <summary>
         ///     Debugs the value

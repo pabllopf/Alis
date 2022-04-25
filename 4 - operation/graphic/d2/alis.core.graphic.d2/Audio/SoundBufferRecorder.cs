@@ -66,10 +66,12 @@ namespace Alis.Core.Graphics2D.Audio
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() =>
-            "[SoundBufferRecorder]" +
-            " SampleRate(" + SampleRate + ")" +
-            " SoundBuffer(" + SoundBuffer + ")";
+        public override string ToString()
+        {
+            return "[SoundBufferRecorder]" +
+                   " SampleRate(" + SampleRate + ")" +
+                   " SoundBuffer(" + SoundBuffer + ")";
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>

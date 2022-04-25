@@ -211,7 +211,10 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="userData">User data -- unused</param>
         /// <returns>Actual position</returns>
         ////////////////////////////////////////////////////////////
-        private long Seek(long position, IntPtr userData) => myStream.Seek(position, SeekOrigin.Begin);
+        private long Seek(long position, IntPtr userData)
+        {
+            return myStream.Seek(position, SeekOrigin.Begin);
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -220,7 +223,10 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="userData">User data -- unused</param>
         /// <returns>Current position in the stream</returns>
         ////////////////////////////////////////////////////////////
-        private long Tell(IntPtr userData) => myStream.Position;
+        private long Tell(IntPtr userData)
+        {
+            return myStream.Position;
+        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -229,6 +235,9 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="userData">User data -- unused</param>
         /// <returns>Number of bytes in the stream</returns>
         ////////////////////////////////////////////////////////////
-        private long GetSize(IntPtr userData) => myStream.Length;
+        private long GetSize(IntPtr userData)
+        {
+            return myStream.Length;
+        }
     }
 }

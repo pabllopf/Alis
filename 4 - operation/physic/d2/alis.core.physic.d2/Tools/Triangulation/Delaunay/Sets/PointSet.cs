@@ -42,7 +42,10 @@ namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Sets
         ///     Initializes a new instance of the <see cref="PointSet" /> class
         /// </summary>
         /// <param name="points">The points</param>
-        public PointSet(List<TriangulationPoint> points) => Points = new List<TriangulationPoint>(points);
+        public PointSet(List<TriangulationPoint> points)
+        {
+            Points = new List<TriangulationPoint>(points);
+        }
 
         /// <summary>
         ///     Gets or sets the value of the points

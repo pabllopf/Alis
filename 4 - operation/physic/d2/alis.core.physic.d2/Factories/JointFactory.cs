@@ -216,8 +216,10 @@ namespace Alis.Core.Systems.Physics2D.Factories
         /// <param name="bodyB">The body</param>
         /// <param name="axis">The axis</param>
         /// <returns>The wheel joint</returns>
-        public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2 axis) =>
-            CreateWheelJoint(world, bodyA, bodyB, Vector2.Zero, axis);
+        public static WheelJoint CreateWheelJoint(World world, Body bodyA, Body bodyB, Vector2 axis)
+        {
+            return CreateWheelJoint(world, bodyA, bodyB, Vector2.Zero, axis);
+        }
 
         /// <summary>
         ///     Creates the distance joint using the specified world
@@ -244,8 +246,10 @@ namespace Alis.Core.Systems.Physics2D.Factories
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
         /// <returns>The distance joint</returns>
-        public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB) =>
-            CreateDistanceJoint(world, bodyA, bodyB, Vector2.Zero, Vector2.Zero);
+        public static DistanceJoint CreateDistanceJoint(World world, Body bodyA, Body bodyB)
+        {
+            return CreateDistanceJoint(world, bodyA, bodyB, Vector2.Zero, Vector2.Zero);
+        }
 
         /// <summary>
         ///     Creates the friction joint using the specified world
@@ -271,8 +275,10 @@ namespace Alis.Core.Systems.Physics2D.Factories
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
         /// <returns>The friction joint</returns>
-        public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB) =>
-            CreateFrictionJoint(world, bodyA, bodyB, Vector2.Zero);
+        public static FrictionJoint CreateFrictionJoint(World world, Body bodyA, Body bodyB)
+        {
+            return CreateFrictionJoint(world, bodyA, bodyB, Vector2.Zero);
+        }
 
         /// <summary>
         ///     Creates the from def using the specified world

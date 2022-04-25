@@ -35,7 +35,7 @@ namespace Alis.Core.FluentApi.Words
     public interface IAdd<out TBuilder, in TType, in TArgument>
     {
         /// <summary>
-        /// Adds the value
+        ///     Adds the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>

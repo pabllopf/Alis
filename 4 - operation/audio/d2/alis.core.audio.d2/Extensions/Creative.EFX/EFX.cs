@@ -41,6 +41,11 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
     public class EFX : ALBase
     {
         /// <summary>
+        ///     The EFX extension name.
+        /// </summary>
+        public const string ExtensionName = "ALC_EXT_EFX";
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="EFX" /> class
         /// </summary>
         static EFX()
@@ -57,16 +62,14 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         }
 
         /// <summary>
-        ///     The EFX extension name.
-        /// </summary>
-        public const string ExtensionName = "ALC_EXT_EFX";
-
-        /// <summary>
         ///     Checks if this extension is present.
         /// </summary>
         /// <param name="device">The device to query.</param>
         /// <returns>Whether the extension was present or not.</returns>
-        public static bool IsExtensionPresent(ALDevice device) => ALC.IsExtensionPresent(device, ExtensionName);
+        public static bool IsExtensionPresent(ALDevice device)
+        {
+            return ALC.IsExtensionPresent(device, ExtensionName);
+        }
 
         /// <summary>
         ///     Gets a vector of integer properties from the context.
@@ -141,8 +144,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// </summary>
         /// <param name="device">The device that the context is on.</param>
         /// <returns>The version.</returns>
-        public Version GetEFXVersion(ALDevice device) =>
-            new Version(GetEFXMajorVersion(device), GetEFXMinorVersion(device));
+        public Version GetEFXVersion(ALDevice device)
+        {
+            return new Version(GetEFXMajorVersion(device), GetEFXMinorVersion(device));
+        }
 
         /// <summary>
         ///     Creates one or more auxiliary effect slots.
@@ -522,8 +527,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slots">The first element of the array to place the slots into.</param>
         /// <seealso cref="DeleteAuxiliaryEffectSlots(int, int*)" />
         /// <seealso cref="IsAuxiliaryEffectSlot" />
-        public static unsafe void GenAuxiliaryEffectSlots(int count, int* slots) =>
+        public static unsafe void GenAuxiliaryEffectSlots(int count, int* slots)
+        {
             _GenAuxiliaryEffectSlotsPtr(count, slots);
+        }
 
         /// <summary>
         ///     The gen auxiliary effect slots ptr delegate
@@ -544,8 +551,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slots">The first element of the array to place the slots into.</param>
         /// <seealso cref="DeleteAuxiliaryEffectSlots(int, ref int)" />
         /// <seealso cref="IsAuxiliaryEffectSlot" />
-        public static void GenAuxiliaryEffectSlots(int count, ref int slots) =>
+        public static void GenAuxiliaryEffectSlots(int count, ref int slots)
+        {
             _GenAuxiliaryEffectSlotsRef(count, ref slots);
+        }
 
         /// <summary>
         ///     The gen auxiliary effect slots ref delegate
@@ -566,8 +575,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slots">The first element of the array to place the slots into.</param>
         /// <seealso cref="DeleteAuxiliaryEffectSlots(int, int[])" />
         /// <seealso cref="IsAuxiliaryEffectSlot" />
-        public static void GenAuxiliaryEffectSlots(int count, int[] slots) =>
+        public static void GenAuxiliaryEffectSlots(int count, int[] slots)
+        {
             _GenAuxiliaryEffectSlotsArray(count, slots);
+        }
 
         /// <summary>
         ///     The gen auxiliary effect slots array delegate
@@ -588,8 +599,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slots">A pointer to the array of slots to delete.</param>
         /// <seealso cref="GenAuxiliaryEffectSlots(int, int*)" />
         /// <seealso cref="IsAuxiliaryEffectSlot" />
-        public static unsafe void DeleteAuxiliaryEffectSlots(int count, int* slots) =>
+        public static unsafe void DeleteAuxiliaryEffectSlots(int count, int* slots)
+        {
             _DeleteAuxiliaryEffectSlotsPtr(count, slots);
+        }
 
         /// <summary>
         ///     The delete auxiliary effect slots ptr delegate
@@ -610,8 +623,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slots">A pointer to the array of slots to delete.</param>
         /// <seealso cref="GenAuxiliaryEffectSlots(int, ref int)" />
         /// <seealso cref="IsAuxiliaryEffectSlot" />
-        public static void DeleteAuxiliaryEffectSlots(int count, ref int slots) =>
+        public static void DeleteAuxiliaryEffectSlots(int count, ref int slots)
+        {
             _DeleteAuxiliaryEffectSlotsRef(count, ref slots);
+        }
 
         /// <summary>
         ///     The delete auxiliary effect slots ref delegate
@@ -632,8 +647,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slots">A pointer to the array of slots to delete.</param>
         /// <seealso cref="GenAuxiliaryEffectSlots(int, int[])" />
         /// <seealso cref="IsAuxiliaryEffectSlot" />
-        public static void DeleteAuxiliaryEffectSlots(int count, int[] slots) =>
+        public static void DeleteAuxiliaryEffectSlots(int count, int[] slots)
+        {
             _DeleteAuxiliaryEffectSlotsArray(count, slots);
+        }
 
         /// <summary>
         ///     The delete auxiliary effect slots array delegate
@@ -652,7 +669,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// </summary>
         /// <param name="slot">The handle.</param>
         /// <returns>true if the handle is a slot handle; otherwise, false.</returns>
-        public static bool IsAuxiliaryEffectSlot(int slot) => _IsAuxiliaryEffectSlot(slot);
+        public static bool IsAuxiliaryEffectSlot(int slot)
+        {
+            return _IsAuxiliaryEffectSlot(slot);
+        }
 
         /// <summary>
         ///     The is auxiliary effect slot delegate
@@ -672,8 +692,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slot">The slot.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void AuxiliaryEffectSlot(int slot, EffectSlotInteger param, int value) =>
+        public static void AuxiliaryEffectSlot(int slot, EffectSlotInteger param, int value)
+        {
             _AuxiliaryEffectSloti(slot, param, value);
+        }
 
         /// <summary>
         ///     The auxiliary effect sloti delegate
@@ -693,8 +715,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slot">The slot.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void AuxiliaryEffectSlot(int slot, EffectSlotFloat param, float value) =>
+        public static void AuxiliaryEffectSlot(int slot, EffectSlotFloat param, float value)
+        {
             _AuxiliaryEffectSlotf(slot, param, value);
+        }
 
         /// <summary>
         ///     The auxiliary effect slotf delegate
@@ -714,8 +738,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slot">The slot.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value.</param>
-        public static unsafe void GetAuxiliaryEffectSlot(int slot, EffectSlotInteger param, int* value) =>
+        public static unsafe void GetAuxiliaryEffectSlot(int slot, EffectSlotInteger param, int* value)
+        {
             _GetAuxiliaryEffectSlotiPtr(slot, param, value);
+        }
 
         /// <summary>
         ///     The get auxiliary effect sloti ptr delegate
@@ -735,8 +761,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slot">The slot.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value.</param>
-        public static void GetAuxiliaryEffectSlot(int slot, EffectSlotInteger param, out int value) =>
+        public static void GetAuxiliaryEffectSlot(int slot, EffectSlotInteger param, out int value)
+        {
             _GetAuxiliaryEffectSlotiRef(slot, param, out value);
+        }
 
         /// <summary>
         ///     The get auxiliary effect sloti ref delegate
@@ -756,8 +784,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slot">The slot.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value.</param>
-        public static unsafe void GetAuxiliaryEffectSlot(int slot, EffectSlotFloat param, float* value) =>
+        public static unsafe void GetAuxiliaryEffectSlot(int slot, EffectSlotFloat param, float* value)
+        {
             _GetAuxiliaryEffectSlotfPtr(slot, param, value);
+        }
 
         /// <summary>
         ///     The get auxiliary effect slotf ptr delegate
@@ -777,8 +807,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="slot">The slot.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value.</param>
-        public static void GetAuxiliaryEffectSlot(int slot, EffectSlotFloat param, out float value) =>
+        public static void GetAuxiliaryEffectSlot(int slot, EffectSlotFloat param, out float value)
+        {
             _GetAuxiliaryEffectSlotfRef(slot, param, out value);
+        }
 
         /// <summary>
         ///     The get auxiliary effect slotf ref delegate
@@ -799,7 +831,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effects">A pointer to the first element of the array where the handles will be stored.</param>
         /// <seealso cref="DeleteEffects(int, int*)" />
         /// <seealso cref="IsEffect(int)" />
-        public static unsafe void GenEffects(int count, int* effects) => _GenEffectsPtr(count, effects);
+        public static unsafe void GenEffects(int count, int* effects)
+        {
+            _GenEffectsPtr(count, effects);
+        }
 
         /// <summary>
         ///     The gen effects ptr delegate
@@ -820,7 +855,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effects">A pointer to the first element of the array where the handles will be stored.</param>
         /// <seealso cref="DeleteEffects(int, ref int)" />
         /// <seealso cref="IsEffect(int)" />
-        public static void GenEffects(int count, ref int effects) => _GenEffectsRef(count, ref effects);
+        public static void GenEffects(int count, ref int effects)
+        {
+            _GenEffectsRef(count, ref effects);
+        }
 
         /// <summary>
         ///     The gen effects ref delegate
@@ -841,7 +879,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effects">A pointer to the first element of the array where the handles will be stored.</param>
         /// <seealso cref="DeleteEffects(int, int[])" />
         /// <seealso cref="IsEffect(int)" />
-        public static void GenEffects(int count, int[] effects) => _GenEffectsArray(count, effects);
+        public static void GenEffects(int count, int[] effects)
+        {
+            _GenEffectsArray(count, effects);
+        }
 
         /// <summary>
         ///     The gen effects array delegate
@@ -862,7 +903,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effects">A pointer to the first element of the array where the handles are stored.</param>
         /// <seealso cref="GenEffects(int, int*)" />
         /// <seealso cref="IsEffect(int)" />
-        public static unsafe void DeleteEffects(int count, int* effects) => _DeleteEffectsPtr(count, effects);
+        public static unsafe void DeleteEffects(int count, int* effects)
+        {
+            _DeleteEffectsPtr(count, effects);
+        }
 
         /// <summary>
         ///     The delete effects ptr delegate
@@ -883,7 +927,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effects">A pointer to the first element of the array where the handles are stored.</param>
         /// <seealso cref="GenEffects(int, ref int)" />
         /// <seealso cref="IsEffect(int)" />
-        public static void DeleteEffects(int count, ref int effects) => _DeleteEffectsRef(count, ref effects);
+        public static void DeleteEffects(int count, ref int effects)
+        {
+            _DeleteEffectsRef(count, ref effects);
+        }
 
         /// <summary>
         ///     The delete effects ref delegate
@@ -904,7 +951,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effects">A pointer to the first element of the array where the handles are stored.</param>
         /// <seealso cref="GenEffects(int, int[])" />
         /// <seealso cref="IsEffect(int)" />
-        public static void DeleteEffects(int count, int[] effects) => _DeleteEffectsArray(count, effects);
+        public static void DeleteEffects(int count, int[] effects)
+        {
+            _DeleteEffectsArray(count, effects);
+        }
 
         /// <summary>
         ///     The delete effects array delegate
@@ -925,7 +975,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <returns>true if the handle is an effect handle; otherwise, false.</returns>
         /// <seealso cref="GenEffects(int[])" />
         /// <seealso cref="DeleteEffects(int[])" />
-        public static bool IsEffect(int effect) => _IsEffect(effect);
+        public static bool IsEffect(int effect)
+        {
+            return _IsEffect(effect);
+        }
 
         /// <summary>
         ///     The is effect delegate
@@ -944,7 +997,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Effect(int effect, EffectInteger param, int value) => _Effecti(effect, param, value);
+        public static void Effect(int effect, EffectInteger param, int value)
+        {
+            _Effecti(effect, param, value);
+        }
 
         /// <summary>
         ///     The effecti delegate
@@ -963,7 +1019,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Effect(int effect, EffectFloat param, float value) => _Effectf(effect, param, value);
+        public static void Effect(int effect, EffectFloat param, float value)
+        {
+            _Effectf(effect, param, value);
+        }
 
         /// <summary>
         ///     The effectf delegate
@@ -982,8 +1041,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void Effect(int effect, EffectVector3 param, float* value) =>
+        public static unsafe void Effect(int effect, EffectVector3 param, float* value)
+        {
             _EffectfvPtr(effect, param, value);
+        }
 
         /// <summary>
         ///     The effectfv ptr delegate
@@ -1002,8 +1063,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Effect(int effect, EffectVector3 param, ref float value) =>
+        public static void Effect(int effect, EffectVector3 param, ref float value)
+        {
             _EffectfvRef(effect, param, ref value);
+        }
 
         /// <summary>
         ///     The effectfv ref delegate
@@ -1022,8 +1085,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Effect(int effect, EffectVector3 param, float[] value) =>
+        public static void Effect(int effect, EffectVector3 param, float[] value)
+        {
             _EffectfvArray(effect, param, value);
+        }
 
         /// <summary>
         ///     The effectfv array delegate
@@ -1043,8 +1108,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetEffect(int effect, EffectInteger param, int* value) =>
+        public static unsafe void GetEffect(int effect, EffectInteger param, int* value)
+        {
             _GetEffectiPtr(effect, param, value);
+        }
 
         /// <summary>
         ///     The get effecti ptr delegate
@@ -1064,8 +1131,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetEffect(int effect, EffectInteger param, out int value) =>
+        public static void GetEffect(int effect, EffectInteger param, out int value)
+        {
             _GetEffectiRef(effect, param, out value);
+        }
 
         /// <summary>
         ///     The get effecti ref delegate
@@ -1085,8 +1154,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetEffect(int effect, EffectFloat param, float* value) =>
+        public static unsafe void GetEffect(int effect, EffectFloat param, float* value)
+        {
             _GetEffectfPtr(effect, param, value);
+        }
 
         /// <summary>
         ///     The get effectf ptr delegate
@@ -1106,8 +1177,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetEffect(int effect, EffectFloat param, out float value) =>
+        public static void GetEffect(int effect, EffectFloat param, out float value)
+        {
             _GetEffectfRef(effect, param, out value);
+        }
 
         /// <summary>
         ///     The get effectf ref delegate
@@ -1127,8 +1200,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetEffect(int effect, EffectVector3 param, float* value) =>
+        public static unsafe void GetEffect(int effect, EffectVector3 param, float* value)
+        {
             _GetEffectfvPtr(effect, param, value);
+        }
 
         /// <summary>
         ///     The get effectfv ptr delegate
@@ -1148,8 +1223,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="effect">The effect.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetEffect(int effect, EffectVector3 param, out float value) =>
+        public static void GetEffect(int effect, EffectVector3 param, out float value)
+        {
             _GetEffectfvRef(effect, param, out value);
+        }
 
         /// <summary>
         ///     The get effectfv ref delegate
@@ -1170,7 +1247,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filters">A pointer to the first element of the array where the handles will be stored.</param>
         /// <seealso cref="DeleteFilters(int, int*)" />
         /// <seealso cref="IsFilter(int)" />
-        public static unsafe void GenFilters(int count, int* filters) => _GenFiltersPtr(count, filters);
+        public static unsafe void GenFilters(int count, int* filters)
+        {
+            _GenFiltersPtr(count, filters);
+        }
 
         /// <summary>
         ///     The gen filters ptr delegate
@@ -1191,7 +1271,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filters">A pointer to the first element of the array where the handles will be stored.</param>
         /// <seealso cref="DeleteFilters(int, ref int)" />
         /// <seealso cref="IsFilter(int)" />
-        public static void GenFilters(int count, ref int filters) => _GenFiltersRef(count, ref filters);
+        public static void GenFilters(int count, ref int filters)
+        {
+            _GenFiltersRef(count, ref filters);
+        }
 
         /// <summary>
         ///     The gen filters ref delegate
@@ -1212,7 +1295,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filters">A pointer to the first element of the array where the handles will be stored.</param>
         /// <seealso cref="DeleteFilters(int, int[])" />
         /// <seealso cref="IsFilter(int)" />
-        public static void GenFilters(int count, int[] filters) => _GenFiltersArray(count, filters);
+        public static void GenFilters(int count, int[] filters)
+        {
+            _GenFiltersArray(count, filters);
+        }
 
         /// <summary>
         ///     The gen filters array delegate
@@ -1233,7 +1319,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filters">A pointer to the first element of the array where the handles are stored.</param>
         /// <seealso cref="GenFilters(int, int*)" />
         /// <seealso cref="IsFilter(int)" />
-        public static unsafe void DeleteFilters(int count, int* filters) => _DeleteFiltersPtr(count, filters);
+        public static unsafe void DeleteFilters(int count, int* filters)
+        {
+            _DeleteFiltersPtr(count, filters);
+        }
 
         /// <summary>
         ///     The delete filters ptr delegate
@@ -1254,7 +1343,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filters">A pointer to the first element of the array where the handles are stored.</param>
         /// <seealso cref="GenFilters(int, ref int)" />
         /// <seealso cref="IsFilter(int)" />
-        public static void DeleteFilters(int count, ref int filters) => _DeleteFiltersRef(count, ref filters);
+        public static void DeleteFilters(int count, ref int filters)
+        {
+            _DeleteFiltersRef(count, ref filters);
+        }
 
         /// <summary>
         ///     The delete filters ref delegate
@@ -1275,7 +1367,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filters">A pointer to the first element of the array where the handles are stored.</param>
         /// <seealso cref="GenFilters(int, int[])" />
         /// <seealso cref="IsFilter(int)" />
-        public static void DeleteFilters(int count, int[] filters) => _DeleteFiltersArray(count, filters);
+        public static void DeleteFilters(int count, int[] filters)
+        {
+            _DeleteFiltersArray(count, filters);
+        }
 
         /// <summary>
         ///     The delete filters array delegate
@@ -1296,7 +1391,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <returns>true if the handle is an filter handle; otherwise, false.</returns>
         /// <seealso cref="GenFilters(int)" />
         /// <seealso cref="DeleteFilters(int[])" />
-        public static bool IsFilter(int filter) => _IsFilter(filter);
+        public static bool IsFilter(int filter)
+        {
+            return _IsFilter(filter);
+        }
 
         /// <summary>
         ///     The is filter delegate
@@ -1315,7 +1413,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filter">The filter.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Filter(int filter, FilterInteger param, int value) => _Filteri(filter, param, value);
+        public static void Filter(int filter, FilterInteger param, int value)
+        {
+            _Filteri(filter, param, value);
+        }
 
         /// <summary>
         ///     The filteri delegate
@@ -1334,7 +1435,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filter">The filter.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Filter(int filter, FilterFloat param, float value) => _Filterf(filter, param, value);
+        public static void Filter(int filter, FilterFloat param, float value)
+        {
+            _Filterf(filter, param, value);
+        }
 
         /// <summary>
         ///     The filterf delegate
@@ -1353,8 +1457,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filter">The filter.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetFilter(int filter, FilterInteger param, int* value) =>
+        public static unsafe void GetFilter(int filter, FilterInteger param, int* value)
+        {
             _GetFilteriPtr(filter, param, value);
+        }
 
         /// <summary>
         ///     The get filteri ptr delegate
@@ -1374,8 +1480,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filter">The filter.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetFilter(int filter, FilterInteger param, out int value) =>
+        public static void GetFilter(int filter, FilterInteger param, out int value)
+        {
             _GetFilteriRef(filter, param, out value);
+        }
 
         /// <summary>
         ///     The get filteri ref delegate
@@ -1395,8 +1503,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filter">The filter.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetFilter(int filter, FilterFloat param, float* value) =>
+        public static unsafe void GetFilter(int filter, FilterFloat param, float* value)
+        {
             _GetFilterfPtr(filter, param, value);
+        }
 
         /// <summary>
         ///     The get filterf ptr delegate
@@ -1416,8 +1526,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="filter">The filter.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetFilter(int filter, FilterFloat param, out float value) =>
+        public static void GetFilter(int filter, FilterFloat param, out float value)
+        {
             _GetFilterfRef(filter, param, out value);
+        }
 
         /// <summary>
         ///     The get filterf ref delegate
@@ -1437,7 +1549,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Source(int source, EFXSourceInteger param, int value) => _Sourcei(source, param, value);
+        public static void Source(int source, EFXSourceInteger param, int value)
+        {
+            _Sourcei(source, param, value);
+        }
 
         /// <summary>
         ///     The sourcei delegate
@@ -1456,7 +1571,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Source(int source, EFXSourceFloat param, float value) => _Source(source, param, value);
+        public static void Source(int source, EFXSourceFloat param, float value)
+        {
+            _Source(source, param, value);
+        }
 
         /// <summary>
         ///     The source delegate
@@ -1475,7 +1593,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Source(int source, EFXSourceBoolean param, bool value) => _Sourceb(source, param, value);
+        public static void Source(int source, EFXSourceBoolean param, bool value)
+        {
+            _Sourceb(source, param, value);
+        }
 
         /// <summary>
         ///     The sourceb delegate
@@ -1494,8 +1615,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void Source(int source, EFXSourceInteger3 param, int* value) =>
+        public static unsafe void Source(int source, EFXSourceInteger3 param, int* value)
+        {
             _SourceivPtr(source, param, value);
+        }
 
         /// <summary>
         ///     The sourceiv ptr delegate
@@ -1514,8 +1637,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Source(int source, EFXSourceInteger3 param, ref int value) =>
+        public static void Source(int source, EFXSourceInteger3 param, ref int value)
+        {
             _SourceivRef(source, param, ref value);
+        }
 
         /// <summary>
         ///     The sourceiv ref delegate
@@ -1534,8 +1659,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Source(int source, EFXSourceInteger3 param, int[] value) =>
+        public static void Source(int source, EFXSourceInteger3 param, int[] value)
+        {
             _SourceivArray(source, param, value);
+        }
 
         /// <summary>
         ///     The sourceiv array delegate
@@ -1557,8 +1684,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="value1">The first value to set the property to.</param>
         /// <param name="value2">The second value to set the property to.</param>
         /// <param name="value3">The third value to set the property to.</param>
-        public static void Source(int source, EFXSourceInteger3 param, int value1, int value2, int value3) =>
+        public static void Source(int source, EFXSourceInteger3 param, int value1, int value2, int value3)
+        {
             _Source3i(source, param, value1, value2, value3);
+        }
 
         /// <summary>
         ///     The source 3i delegate
@@ -1577,8 +1706,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetSource(int source, EFXSourceInteger param, int* value) =>
+        public static unsafe void GetSource(int source, EFXSourceInteger param, int* value)
+        {
             _GetSourceiPtr(source, param, value);
+        }
 
         /// <summary>
         ///     The get sourcei ptr delegate
@@ -1598,8 +1729,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetSource(int source, EFXSourceInteger param, out int value) =>
+        public static void GetSource(int source, EFXSourceInteger param, out int value)
+        {
             _GetSourceiRef(source, param, out value);
+        }
 
         /// <summary>
         ///     The get sourcei ref delegate
@@ -1619,8 +1752,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetSource(int source, EFXSourceFloat param, float* value) =>
+        public static unsafe void GetSource(int source, EFXSourceFloat param, float* value)
+        {
             _GetSourcefPtr(source, param, value);
+        }
 
         /// <summary>
         ///     The get sourcef ptr delegate
@@ -1640,8 +1775,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetSource(int source, EFXSourceFloat param, out float value) =>
+        public static void GetSource(int source, EFXSourceFloat param, out float value)
+        {
             _GetSourcefRef(source, param, out value);
+        }
 
         /// <summary>
         ///     The get sourcef ref delegate
@@ -1661,8 +1798,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetSource(int source, EFXSourceBoolean param, bool* value) =>
+        public static unsafe void GetSource(int source, EFXSourceBoolean param, bool* value)
+        {
             _GetSourcebPtr(source, param, value);
+        }
 
         /// <summary>
         ///     The get sourceb ptr delegate
@@ -1682,8 +1821,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetSource(int source, EFXSourceBoolean param, out bool value) =>
+        public static void GetSource(int source, EFXSourceBoolean param, out bool value)
+        {
             _GetSourcebRef(source, param, out value);
+        }
 
         /// <summary>
         ///     The get sourceb ref delegate
@@ -1703,8 +1844,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetSource(int source, EFXSourceInteger3 param, int* value) =>
+        public static unsafe void GetSource(int source, EFXSourceInteger3 param, int* value)
+        {
             _GetSourceivPtr(source, param, value);
+        }
 
         /// <summary>
         ///     The get sourceiv ptr delegate
@@ -1724,8 +1867,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetSource(int source, EFXSourceInteger3 param, ref int value) =>
+        public static void GetSource(int source, EFXSourceInteger3 param, ref int value)
+        {
             _GetSourceivRef(source, param, ref value);
+        }
 
         /// <summary>
         ///     The get sourceiv ref delegate
@@ -1745,8 +1890,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="source">The source.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetSource(int source, EFXSourceInteger3 param, int[] value) =>
+        public static void GetSource(int source, EFXSourceInteger3 param, int[] value)
+        {
             _GetSourceivArray(source, param, value);
+        }
 
         /// <summary>
         ///     The get sourceiv array delegate
@@ -1769,8 +1916,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="value2">The second value to set the property to.</param>
         /// <param name="value3">The third value to set the property to.</param>
         public static unsafe void
-            GetSource(int source, EFXSourceInteger3 param, int* value1, int* value2, int* value3) =>
+            GetSource(int source, EFXSourceInteger3 param, int* value1, int* value2, int* value3)
+        {
             _GetSource3iPtr(source, param, value1, value2, value3);
+        }
 
         /// <summary>
         ///     The get source 3i ptr delegate
@@ -1794,7 +1943,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="value2">The second value to set the property to.</param>
         /// <param name="value3">The third value to set the property to.</param>
         public static void GetSource(int source, EFXSourceInteger3 param, out int value1, out int value2,
-            out int value3) => _GetSource3iRef(source, param, out value1, out value2, out value3);
+            out int value3)
+        {
+            _GetSource3iRef(source, param, out value1, out value2, out value3);
+        }
 
         /// <summary>
         ///     The get source 3i ref delegate
@@ -1815,8 +1967,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="listener">The listener.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void Listener(int listener, EFXListenerFloat param, float value) =>
+        public static void Listener(int listener, EFXListenerFloat param, float value)
+        {
             _Listenerf(listener, param, value);
+        }
 
         /// <summary>
         ///     The listenerf delegate
@@ -1835,8 +1989,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="listener">The listener.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static unsafe void GetListener(int listener, EFXListenerFloat param, float* value) =>
+        public static unsafe void GetListener(int listener, EFXListenerFloat param, float* value)
+        {
             _GetListenerfPtr(listener, param, value);
+        }
 
         /// <summary>
         ///     The get listenerf ptr delegate
@@ -1856,8 +2012,10 @@ namespace Alis.Core.Audio2D.Extensions.Creative.EFX
         /// <param name="listener">The listener.</param>
         /// <param name="param">The named property.</param>
         /// <param name="value">The value to set the property to.</param>
-        public static void GetListener(int listener, EFXListenerFloat param, out float value) =>
+        public static void GetListener(int listener, EFXListenerFloat param, out float value)
+        {
             _GetListenerfRef(listener, param, out value);
+        }
 
         /// <summary>
         ///     The get listenerf ref delegate

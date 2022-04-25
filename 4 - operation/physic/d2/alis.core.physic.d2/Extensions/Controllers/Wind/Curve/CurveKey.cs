@@ -104,20 +104,29 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The int</returns>
-        public int CompareTo(CurveKey other) => Position.CompareTo(other.Position);
+        public int CompareTo(CurveKey other)
+        {
+            return Position.CompareTo(other.Position);
+        }
 
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        public bool Equals(CurveKey other) => this == other;
+        public bool Equals(CurveKey other)
+        {
+            return this == other;
+        }
 
         /// <summary>Compares whether two <see cref="CurveKey" /> instances are not equal.</summary>
         /// <param name="value1"><see cref="CurveKey" /> instance on the left of the not equal sign.</param>
         /// <param name="value2"><see cref="CurveKey" /> instance on the right of the not equal sign.</param>
         /// <returns><c>true</c> if the instances are not equal; <c>false</c> otherwise.</returns>
-        public static bool operator !=(CurveKey value1, CurveKey value2) => !(value1 == value2);
+        public static bool operator !=(CurveKey value1, CurveKey value2)
+        {
+            return !(value1 == value2);
+        }
 
         /// <summary>Compares whether two <see cref="CurveKey" /> instances are equal.</summary>
         /// <param name="value1"><see cref="CurveKey" /> instance on the left of the equal sign.</param>
@@ -144,21 +153,29 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
 
         /// <summary>Creates a copy of this key.</summary>
         /// <returns>A copy of this key.</returns>
-        public CurveKey Clone() => new CurveKey(Position, Value, TangentIn, TangentOut, Continuity);
+        public CurveKey Clone()
+        {
+            return new CurveKey(Position, Value, TangentIn, TangentOut, Continuity);
+        }
 
         /// <summary>
         ///     Describes whether this instance equals
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
-        public override bool Equals(object obj) => obj is CurveKey key && Equals(key);
+        public override bool Equals(object obj)
+        {
+            return obj is CurveKey key && Equals(key);
+        }
 
         /// <summary>
         ///     Gets the hash code
         /// </summary>
         /// <returns>The int</returns>
-        public override int GetHashCode() =>
-            Position.GetHashCode() ^ Value.GetHashCode() ^ TangentIn.GetHashCode() ^
-            TangentOut.GetHashCode() ^ Continuity.GetHashCode();
+        public override int GetHashCode()
+        {
+            return Position.GetHashCode() ^ Value.GetHashCode() ^ TangentIn.GetHashCode() ^
+                   TangentOut.GetHashCode() ^ Continuity.GetHashCode();
+        }
     }
 }

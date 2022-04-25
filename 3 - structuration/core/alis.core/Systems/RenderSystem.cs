@@ -48,19 +48,17 @@ namespace Alis.Core.Systems
 
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public override void Init()
         {
-
         }
 
         /// <summary>
-        /// Befores the awake
+        ///     Befores the awake
         /// </summary>
         public override void BeforeAwake()
         {
-      
         }
 
         /// <summary>
@@ -71,19 +69,17 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Afters the awake
+        ///     Afters the awake
         /// </summary>
         public override void AfterAwake()
         {
-   
         }
 
         /// <summary>
-        /// Befores the start
+        ///     Befores the start
         /// </summary>
         public override void BeforeStart()
         {
-     
         }
 
 
@@ -95,11 +91,10 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Afters the start
+        ///     Afters the start
         /// </summary>
         public override void AfterStart()
         {
-      
         }
 
 
@@ -143,11 +138,10 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public override void Draw()
         {
-   
         }
 
 
@@ -177,6 +171,9 @@ namespace Alis.Core.Systems
         /// <summary>
         ///     Destroy object.
         /// </summary>
-        ~RenderSystem() => Console.WriteLine(@$"Destroy RenderSystem {GetHashCode().ToString()}");
+        ~RenderSystem()
+        {
+            Console.WriteLine(@$"Destroy RenderSystem {GetHashCode().ToString()}");
+        }
     }
 }

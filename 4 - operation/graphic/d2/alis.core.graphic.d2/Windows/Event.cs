@@ -184,8 +184,8 @@ namespace Alis.Core.Graphics2D.Windows
     ///     Mouse wheel move event parameters
     /// </summary>
     ////////////////////////////////////////////////////////////
-    [StructLayout(LayoutKind.Sequential),
-     Obsolete("MouseWheelEvent is deprecated, please use MouseWheelScrollEvent instead")]
+    [StructLayout(LayoutKind.Sequential)]
+    [Obsolete("MouseWheelEvent is deprecated, please use MouseWheelScrollEvent instead")]
     public struct MouseWheelEvent
     {
         /// <summary>Scroll amount</summary>
@@ -345,7 +345,7 @@ namespace Alis.Core.Graphics2D.Windows
         [FieldOffset(4)] public MouseButtonEvent MouseButton;
 
         /// <summary>Arguments for mouse wheel events (MouseWheelMoved)</summary>
-        [FieldOffset(4), Obsolete("MouseWheel is deprecated, please use MouseWheelScroll instead")]
+        [FieldOffset(4)] [Obsolete("MouseWheel is deprecated, please use MouseWheelScroll instead")]
         public MouseWheelEvent MouseWheel;
 
         /// <summary>Arguments for mouse wheel scroll events (MouseWheelScrolled)</summary>

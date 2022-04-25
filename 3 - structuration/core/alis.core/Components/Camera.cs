@@ -74,17 +74,25 @@ namespace Alis.Core.Components
         ///     Creates the instance
         /// </summary>
         /// <returns>The camera</returns>
-        public static Camera CreateInstance() => Instance;
+        public static Camera CreateInstance()
+        {
+            return Instance;
+        }
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => RenderManager.SetView(View);
+        public override void Start()
+        {
+            RenderManager.SetView(View);
+        }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() =>
+        public override void Update()
+        {
             View.Center = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+        }
     }
 }

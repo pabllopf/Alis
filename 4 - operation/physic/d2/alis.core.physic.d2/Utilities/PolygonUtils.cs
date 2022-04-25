@@ -44,14 +44,16 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <summary>Build vertices to represent an axis-aligned box.</summary>
         /// <param name="hx">the half-width.</param>
         /// <param name="hy">the half-height.</param>
-        public static Vertices CreateRectangle(float hx, float hy) =>
-            new Vertices(4)
+        public static Vertices CreateRectangle(float hx, float hy)
+        {
+            return new Vertices(4)
             {
                 new Vector2(-hx, -hy),
                 new Vector2(hx, -hy),
                 new Vector2(hx, hy),
                 new Vector2(-hx, hy)
             };
+        }
 
         /// <summary>Build vertices to represent an oriented box.</summary>
         /// <param name="hx">the half-width.</param>
@@ -167,8 +169,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="radius">The radius.</param>
         /// <param name="numberOfEdges">The number of edges. The more edges, the more it resembles a circle</param>
         /// <returns></returns>
-        public static Vertices CreateCircle(float radius, int numberOfEdges) =>
-            CreateEllipse(radius, radius, numberOfEdges);
+        public static Vertices CreateCircle(float radius, int numberOfEdges)
+        {
+            return CreateEllipse(radius, radius, numberOfEdges);
+        }
 
         /// <summary>Creates a ellipse with the specified width, height and number of edges.</summary>
         /// <param name="xRadius">Width of the ellipse.</param>
@@ -370,15 +374,20 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="data">The texture data.</param>
         /// <param name="width">The texture width.</param>
         /// <returns></returns>
-        public static Vertices CreatePolygon(uint[] data, int width) => TextureConverter.DetectVertices(data, width);
+        public static Vertices CreatePolygon(uint[] data, int width)
+        {
+            return TextureConverter.DetectVertices(data, width);
+        }
 
         /// <summary>Detects the vertices by analyzing the texture data.</summary>
         /// <param name="data">The texture data.</param>
         /// <param name="width">The texture width.</param>
         /// <param name="holeDetection">if set to <c>true</c> it will perform hole detection.</param>
         /// <returns></returns>
-        public static Vertices CreatePolygon(uint[] data, int width, bool holeDetection) =>
-            TextureConverter.DetectVertices(data, width, holeDetection);
+        public static Vertices CreatePolygon(uint[] data, int width, bool holeDetection)
+        {
+            return TextureConverter.DetectVertices(data, width, holeDetection);
+        }
 
         /// <summary>Detects the vertices by analyzing the texture data.</summary>
         /// <param name="data">The texture data.</param>
@@ -389,8 +398,10 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="holeDetection">if set to <c>true</c> it will perform hole detection.</param>
         /// <returns></returns>
         public static List<Vertices> CreatePolygon(uint[] data, int width, float hullTolerance, byte alphaTolerance,
-            bool multiPartDetection, bool holeDetection) =>
-            TextureConverter.DetectVertices(data, width, hullTolerance,
+            bool multiPartDetection, bool holeDetection)
+        {
+            return TextureConverter.DetectVertices(data, width, hullTolerance,
                 alphaTolerance, multiPartDetection, holeDetection);
+        }
     }
 }

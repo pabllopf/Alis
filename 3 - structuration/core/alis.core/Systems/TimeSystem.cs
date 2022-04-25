@@ -47,7 +47,7 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void Init()
@@ -56,7 +56,7 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Befores the awake
+        ///     Befores the awake
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void BeforeAwake()
@@ -72,7 +72,7 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Afters the awake
+        ///     Afters the awake
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void AfterAwake()
@@ -81,7 +81,7 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Befores the start
+        ///     Befores the start
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void BeforeStart()
@@ -97,7 +97,7 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Afters the start
+        ///     Afters the start
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void AfterStart()
@@ -141,7 +141,7 @@ namespace Alis.Core.Systems
         }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void Draw()

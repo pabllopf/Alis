@@ -331,7 +331,10 @@ namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
         }
 
         /// <summary>Get the reaction torque given the inverse time step. Unit is N*m. This is always zero for a distance joint.</summary>
-        public override float GetReactionTorque(float invDt) => 0.0f;
+        public override float GetReactionTorque(float invDt)
+        {
+            return 0.0f;
+        }
 
         /// <summary>
         ///     Inits the velocity constraints using the specified data

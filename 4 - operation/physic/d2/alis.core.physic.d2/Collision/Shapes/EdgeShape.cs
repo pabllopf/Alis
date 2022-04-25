@@ -172,7 +172,10 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
+        public override bool TestPoint(ref Transform transform, ref Vector2 point)
+        {
+            return false;
+        }
 
         /// <summary>
         ///     Describes whether this instance ray cast
@@ -183,9 +186,11 @@ namespace Alis.Core.Systems.Physics2D.Collision.Shapes
         /// <param name="output">The output</param>
         /// <returns>The bool</returns>
         public override bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
-            out RayCastOutput output) =>
-            RayCastHelper.RayCastEdge(ref vertex1, ref vertex2, OneSided, ref input,
+            out RayCastOutput output)
+        {
+            return RayCastHelper.RayCastEdge(ref vertex1, ref vertex2, OneSided, ref input,
                 ref transform, out output);
+        }
 
         /// <summary>
         ///     Computes the aabb using the specified transform
