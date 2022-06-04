@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <!-- 
+      APPLICATION 
+  -->
+    <Import Project="$(SolutionDir)/.config/application/TargetFrameworks.props" />
+    <Import Project="$(SolutionDir)/.config/application/LangVersion.props" />
+    <Import Project="$(SolutionDir)/.config/application/Nullable.props" />
+    <Import Project="$(SolutionDir)/.config/application/AllowUnsafeBlocks.props" />
+
+    <!-- 
+        ASSEMBLY 
+    -->
+    <Import Project="$(SolutionDir)/.config/assembly/AssemblyVersion.props" />
+    <Import Project="$(SolutionDir)/.config/assembly/Company.props" />
+    <Import Project="$(SolutionDir)/.config/assembly/FileVersion.props" />
+    <Import Project="$(SolutionDir)/.config/assembly/NeutralLanguage.props" />
+    <Import Project="$(SolutionDir)/.config/assembly/Product.props" />
+
+    <!-- 
+       NUGET 
+   -->
+    <!-- Disable Packable-->
+    <Import Project="$(SolutionDir)/.config/nuget/IsNoPackable.props" />
+
+    <Import Project="$(SolutionDir)/.config/nuget/Authors.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/Copyright.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/Description.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/DocumentationFile.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/FileVersion.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/InformationalVersion.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/PackageIcon.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/PackageLicenseFile.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/PackageProjectUrl.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/PackageReleaseNotes.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/PackageRequireLicenseAcceptance.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/PackageTags.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/PackageVersion.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/RepositoryType.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/RepositoryUrl.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/Title.props" />
+    <Import Project="$(SolutionDir)/.config/nuget/Version.props" />
+
+    <!-- 
+       REFERENCE PACKAGE
+   -->
+    
+    
+    <!-- 
+      REFERENCE PROJECT
+    -->
+    <Import Project="$(SolutionDir)/.config/reference/project/Alis.props" />
+    
+</Project>

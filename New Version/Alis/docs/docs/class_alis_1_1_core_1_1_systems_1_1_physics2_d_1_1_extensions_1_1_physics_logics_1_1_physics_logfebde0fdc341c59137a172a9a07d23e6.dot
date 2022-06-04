@@ -1,0 +1,14 @@
+digraph "Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase.PhysicsLogic"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Alis.Core.Systems.Physics2\lD.Extensions.PhysicsLogics.Physics\lLogicBase.PhysicsLogic",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="The physics logic class"];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="FilterData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html",tooltip="Contains filter data that can determine whether an object should be processed or not."];
+  Node1 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Alis.Core.Systems.Physics2\lD.Extensions.PhysicsLogics.Explosion.\lRealExplosion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_real_explosion.html",tooltip="Creates a realistic explosion based on raycasting. Objects in the open will be affected,..."];
+  Node1 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Alis.Core.Systems.Physics2\lD.Extensions.PhysicsLogics.Explosion.\lSimpleExplosion",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_simple_explosion.html",tooltip="Creates a simple explosion that ignores other bodies hiding behind static bodies."];
+}

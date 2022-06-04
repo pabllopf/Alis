@@ -140,7 +140,7 @@ namespace Alis.Core.Graphics2D.Systems
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = $"csfml-audio";
+        public const string audio = "csfml-audio";
         
         /// <summary>
         ///     The graphics

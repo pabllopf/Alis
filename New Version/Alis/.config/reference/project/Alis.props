@@ -1,0 +1,5 @@
+<Project>
+    <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)/2_application/alis/alis/Alis.csproj" />
+    </ItemGroup>
+</Project>

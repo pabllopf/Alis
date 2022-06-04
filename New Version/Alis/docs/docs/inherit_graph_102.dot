@@ -1,0 +1,8 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="Alis.Core.Systems.Physics2\lD.Collision.ContactSystem.Contact",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact.html",tooltip="The class manages contact between two shapes. A contact exists for each overlapping AABB in the broad..."];
+}

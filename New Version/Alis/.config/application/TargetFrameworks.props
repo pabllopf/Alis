@@ -1,0 +1,5 @@
+<Project>
+    <PropertyGroup Condition=" $([System.Text.RegularExpressions.Regex]::IsMatch('%($(ProjectName))', '/Test/')) ">
+        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+    </PropertyGroup>
+</Project>

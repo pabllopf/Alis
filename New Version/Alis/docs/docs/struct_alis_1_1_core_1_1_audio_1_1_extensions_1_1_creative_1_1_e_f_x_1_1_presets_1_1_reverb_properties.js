@@ -1,0 +1,27 @@
+var struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties =
+[
+    [ "ReverbProperties", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#afc1ac051b409bf24ad8ba827eb2e9ea9", null ],
+    [ "Density", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a9e4b358bf67b4d306b5b066d4858a16a", null ],
+    [ "Diffusion", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a3edfc2eb88232e724bd753fb8f776482", null ],
+    [ "Gain", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a610678bcc72a77ba4c87b8a066e6865b", null ],
+    [ "GainHF", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a0e15e9d5258593508be86d781fd53374", null ],
+    [ "GainLF", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a74817cd3c0e5b775dd37f5fc78fd0445", null ],
+    [ "DecayTime", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a7f0eb4931cf484ce437eaf5598da32cf", null ],
+    [ "DecayHFRatio", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a4435e99d15ad0ac7cf11da6a12f7e464", null ],
+    [ "DecayLFRatio", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a0ba7378f432e0aeba880ce83659d596a", null ],
+    [ "ReflectionsGain", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a5194e250773154ca9181e558f6a2fcf8", null ],
+    [ "ReflectionsDelay", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a1cbf262e287b46267e0cd8df1e1aa252", null ],
+    [ "ReflectionsPan", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a9409af41b6757a6abdc74faeb4613563", null ],
+    [ "LateReverbGain", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#ae1292f289939cc0f42a51c14c50c502f", null ],
+    [ "LateReverbDelay", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#ad73d47d00fc119a29247ed51208f78f8", null ],
+    [ "LateReverbPan", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#af263e24b8d3be11b84ce7f7008b2bb96", null ],
+    [ "EchoTime", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a82028f81c9d3a12f5f991d2525ceebc1", null ],
+    [ "EchoDepth", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a10cbab0b1f55a32e7d44b6d32b2e307c", null ],
+    [ "ModulationTime", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a5d1b876e303001ec40f9fb9007d864aa", null ],
+    [ "ModulationDepth", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a2b73c91dc383ee3ea638753478480438", null ],
+    [ "AirAbsorptionGainHF", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a8073c435a610da69998f5547cd6262ba", null ],
+    [ "HFReference", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a9391faacc448ef416277e4960ed1f901", null ],
+    [ "LFReference", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a3bdf60f6909afc2a38eaa4ae1f01c0a5", null ],
+    [ "RoomRolloffFactor", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a9e8e0fbf717ed00b3f4ca8f4bbce6f2a", null ],
+    [ "DecayHFLimit", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html#a08f4d2b7090470393ae0d358027376f5", null ]
+];

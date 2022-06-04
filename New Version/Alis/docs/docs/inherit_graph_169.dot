@@ -1,0 +1,14 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node388 [label="IEnumerable",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node388 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="Alis.Core.Systems.Physics2\lD.Shared.Graph\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_graph.html",tooltip="This graph is a doubly linked circular list. It is circular to avoid branches in Add/Remove methods."];
+  Node388 -> Node390 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node390 [label="Alis.Core.Systems.Physics2\lD.Shared.Optimization.FixedArray2\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization_1_1_fixed_array2.html",tooltip="The fixed array"];
+  Node388 -> Node391 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node391 [label="Alis.Core.Systems.Physics2\lD.Shared.Optimization.FixedArray3\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization_1_1_fixed_array3.html",tooltip="The fixed array"];
+}

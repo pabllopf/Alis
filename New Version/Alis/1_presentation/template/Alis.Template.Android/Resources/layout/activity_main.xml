@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/TextNotSupported"
+        android:text="OpenGL ES 3.0 is not supported on this device."
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textScaleX="2"
+        android:textStyle="bold"
+        android:textColor="#ffff3c00"
+        android:padding="30dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
+

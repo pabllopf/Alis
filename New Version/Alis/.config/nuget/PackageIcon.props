@@ -1,0 +1,9 @@
+<Project>
+    <PropertyGroup>
+        <PackageIcon>docs/logo.png</PackageIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="$(SolutionDir)docs/resources/logo/logo.png" LinkBase="docs" Pack="true" PackagePath="docs/"/>
+    </ItemGroup>
+</Project>

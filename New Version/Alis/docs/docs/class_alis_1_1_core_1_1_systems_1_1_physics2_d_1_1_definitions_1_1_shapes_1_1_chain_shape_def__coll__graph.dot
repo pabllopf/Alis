@@ -1,0 +1,11 @@
+digraph "Alis.Core.Systems.Physics2D.Definitions.Shapes.ChainShapeDef"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Alis.Core.Systems.Physics2\lD.Definitions.Shapes.ChainShapeDef",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="A chain shape is a free form sequence of line segments. The chain has two-sided collision,..."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="ShapeDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_shapes_1_1_shape_def.html",tooltip="The shape def class"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="IDef",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$interface_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_definitions_1_1_i_def.html",tooltip="The def interface"];
+}

@@ -1,0 +1,4 @@
+var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer =
+[
+    [ "ConvexPartition", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_cdt_decomposer.html#a5fbd2379b2a409a6df463ebe40695e78", null ]
+];

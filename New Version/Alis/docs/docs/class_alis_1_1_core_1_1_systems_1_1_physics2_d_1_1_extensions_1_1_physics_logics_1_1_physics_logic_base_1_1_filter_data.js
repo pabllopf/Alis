@@ -1,0 +1,14 @@
+var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data =
+[
+    [ "IsActiveOn", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#a87197faf99e4cb75f91ad7b77054cdba", null ],
+    [ "AddDisabledCategory", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#a477b1e6a18dfcb4da3ae84378773799f", null ],
+    [ "RemoveDisabledCategory", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#a7a736c7635d45fd584e192031d2c0f20", null ],
+    [ "IsInDisabledCategory", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#ab912788080986d201244d2827a56a782", null ],
+    [ "AddEnabledCategory", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#a4438a66796761f748f24d494410299fe", null ],
+    [ "RemoveEnabledCategory", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#a09acf9cfc32cbc1283cdd4eb575cf355", null ],
+    [ "IsInEnabledInCategory", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#a173aee2da69c8b7719aa1e4f3c92ed90", null ],
+    [ "DisabledOnCategories", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#a15e61476ade2ab4f364137672298d7c7", null ],
+    [ "DisabledOnGroup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#a3ccc21141f8a52739da511bf7f929c16", null ],
+    [ "EnabledOnCategories", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#ab90aace67c430ba64b11b758fa4ad01b", null ],
+    [ "EnabledOnGroup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html#aa1c1fc0b90e045a97ea649efe75979d0", null ]
+];
