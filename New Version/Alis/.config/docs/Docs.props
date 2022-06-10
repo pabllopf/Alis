@@ -1,0 +1,15 @@
+<Project>
+    <ItemGroup>
+        <None Include="$(SolutionDir)licence.md" LinkBase="docs" Pack="true" PackagePath="docs/"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(SolutionDir)docs/resources/logo/logo.png" LinkBase="docs" Pack="true" PackagePath="docs/"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(SolutionDir)docs/resources/diagrams/ClassDiagram.cd" LinkBase="docs" Pack="true" PackagePath="docs/"/>
+    </ItemGroup>
+
+
+</Project>

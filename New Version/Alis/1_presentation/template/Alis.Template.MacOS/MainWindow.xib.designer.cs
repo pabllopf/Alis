@@ -12,11 +12,17 @@ namespace OpenGLViewSample {
 	
 	
 	// Should subclass MonoMac.AppKit.NSWindow
+	/// <summary>
+	/// The main window class
+	/// </summary>
 	[Foundation.Register("MainWindow")]
 	public partial class MainWindow {
 	}
 	
 	// Should subclass MonoMac.AppKit.NSWindowController
+	/// <summary>
+	/// The main window controller class
+	/// </summary>
 	[Foundation.Register("MainWindowController")]
 	public partial class MainWindowController {
 	}

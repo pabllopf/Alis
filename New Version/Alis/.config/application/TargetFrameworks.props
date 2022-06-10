@@ -1,5 +1,13 @@
 <Project>
-    <PropertyGroup Condition=" $([System.Text.RegularExpressions.Regex]::IsMatch('%($(ProjectName))', '/Test/')) ">
-        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
+    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == true">
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Sample')) == true">
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('Sample')) == false">
+        <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
 </Project>

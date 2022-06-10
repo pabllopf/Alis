@@ -18,14 +18,6 @@
     <Import Project="$(SolutionDir)/.config/assembly/Product.props" />
 
     <!-- 
-        BUILD GENERAL 
-    -->
-    <Import Project="$(SolutionDir)/.config/build/general/NoWarn.props" />
-    <Import Project="$(SolutionDir)/.config/build/general/TreatWarningsAsErrors.props" />
-    <Import Project="$(SolutionDir)/.config/build/general/WarningLevel.props" />
-    <Import Project="$(SolutionDir)/.config/build/general/WarningsAsErrors.props" />
-
-    <!-- 
         DOCS 
     -->
     <Import Project="$(SolutionDir)/.config/docs/Docs.props" />
@@ -52,10 +44,10 @@
     <Import Project="$(SolutionDir)/.config/nuget/Title.props" />
     <Import Project="$(SolutionDir)/.config/nuget/Version.props" />
 
-
     <!-- 
        REFERENCE PACKAGE
    -->
+    <Import Project="$(SolutionDir)/.config/reference/package/NUnit.props" />
 
     <!-- 
       REFERENCE PROJECT

@@ -29,10 +29,34 @@
 
 namespace Alis
 {
+
+    /// <summary>
+    /// The example class
+    /// </summary>
     public static class Example
     {
+
+        /// <summary>
+        /// Sums the arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <returns>The int</returns>
         public static int Sum(int arg1, int arg2)
         {
+            return arg1 + arg2;
+        }
+
+        /// <summary>
+        /// Sums the 63 using the specified arg 1
+        /// </summary>
+        /// <param name="arg1">The arg</param>
+        /// <param name="arg2">The arg</param>
+        /// <param name="other">The other</param>
+        /// <returns>The int</returns>
+        public static int Sum63(int arg1, int arg2, string other)
+        {
+
             return arg1 + arg2;
         }
     }

@@ -12,6 +12,9 @@ namespace OpenGLViewSample {
 	
 	
 	// Should subclass MonoMac.AppKit.NSResponder
+	/// <summary>
+	/// The app delegate class
+	/// </summary>
 	[Foundation.Register("AppDelegate")]
 	public partial class AppDelegate {
 	}

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using OpenTK;
 using OpenTK.Graphics;
@@ -10,11 +10,25 @@ using Android.Util;
 
 namespace Alis.Template.Android
 {
+    /// <summary>
+    /// The gl view class
+    /// </summary>
+    /// <seealso cref="AndroidGameView"/>
     class GLView1 : AndroidGameView
     {
+        /// <summary>
+        /// The ball
+        /// </summary>
         Ball ball;
+        /// <summary>
+        /// The set viewport
+        /// </summary>
         bool setViewport = true;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GLView1"/> class
+        /// </summary>
+        /// <param name="context">The context</param>
         public GLView1(Context context) : base(context)
         {
             // New GL "world" object
@@ -39,6 +53,10 @@ namespace Alis.Template.Android
         }
 
         // This gets called when the drawing surface is ready
+        /// <summary>
+        /// Ons the load using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -47,6 +65,10 @@ namespace Alis.Template.Android
             Run();
         }
 
+        /// <summary>
+        /// Ons the context set using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
         protected override void OnContextSet(EventArgs e)
         {
             base.OnContextSet(e);
@@ -63,6 +85,10 @@ namespace Alis.Template.Android
         // In this particular case, we demonstrate how to set
         // the graphics mode and fallback in case the device doesn't
         // support the defaults
+        /// <summary>
+        /// Creates the frame buffer
+        /// </summary>
+        /// <exception cref="Exception">Can't load egl, aborting</exception>
         protected override void CreateFrameBuffer()
         {
             ContextRenderingApi = GLVersion.ES3;
@@ -100,6 +126,10 @@ namespace Alis.Template.Android
         }
 
         // This gets called on each frame render
+        /// <summary>
+        /// Ons the render frame using the specified e
+        /// </summary>
+        /// <param name="e">The </param>
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             // You only need to call this if you have delegates

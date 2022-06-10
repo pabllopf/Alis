@@ -4,5 +4,27 @@
         <name>Alis</name>
     </assembly>
     <members>
+        <member name="T:Alis.Example">
+            <summary>
+            The example class
+            </summary>
+        </member>
+        <member name="M:Alis.Example.Sum(System.Int32,System.Int32)">
+            <summary>
+            Sums the arg 1
+            </summary>
+            <param name="arg1">The arg</param>
+            <param name="arg2">The arg</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Example.Sum63(System.Int32,System.Int32,System.String)">
+            <summary>
+            Sums the 63 using the specified arg 1
+            </summary>
+            <param name="arg1">The arg</param>
+            <param name="arg2">The arg</param>
+            <param name="other">The other</param>
+            <returns>The int</returns>
+        </member>
     </members>
 </doc>

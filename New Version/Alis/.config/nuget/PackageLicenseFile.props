@@ -2,8 +2,4 @@
     <PropertyGroup>
         <PackageLicenseFile>docs/licence.md</PackageLicenseFile>
     </PropertyGroup>
-
-    <ItemGroup>
-        <None Include="$(SolutionDir)licence.md" LinkBase="docs" Pack="true" PackagePath="docs/"/>
-    </ItemGroup>
 </Project>

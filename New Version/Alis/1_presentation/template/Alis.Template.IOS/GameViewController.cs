@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 using Foundation;
@@ -9,25 +9,60 @@ using OpenTK.Graphics.ES20;
 
 namespace Alis.Template.IOS
 {
+    /// <summary>
+    /// The game view controller class
+    /// </summary>
+    /// <seealso cref="GLKViewController"/>
+    /// <seealso cref="IGLKViewDelegate"/>
     [Register ("GameViewController")]
     public class GameViewController : GLKViewController, IGLKViewDelegate
     {
+        /// <summary>
+        /// The uniform enum
+        /// </summary>
         enum Uniform
         {
+            /// <summary>
+            /// The modelviewprojection matrix uniform
+            /// </summary>
             ModelViewProjection_Matrix,
+            /// <summary>
+            /// The normal matrix uniform
+            /// </summary>
             Normal_Matrix,
+            /// <summary>
+            /// The count uniform
+            /// </summary>
             Count
         }
 
+        /// <summary>
+        /// The attribute enum
+        /// </summary>
         enum Attribute
         {
+            /// <summary>
+            /// The vertex attribute
+            /// </summary>
             Vertex,
+            /// <summary>
+            /// The normal attribute
+            /// </summary>
             Normal,
+            /// <summary>
+            /// The count attribute
+            /// </summary>
             Count
         }
 
+        /// <summary>
+        /// The count
+        /// </summary>
         int[] uniforms = new int [(int)Uniform.Count];
 
+        /// <summary>
+        /// The cube vertex data
+        /// </summary>
         float[] cubeVertexData = {
             // Data layout for each line below is:
             // positionX, positionY, positionZ,     normalX, normalY, normalZ,
@@ -74,24 +109,55 @@ namespace Alis.Template.IOS
             -0.5f, 0.5f, -0.5f,        0.0f, 0.0f, -1.0f
         };
 
+        /// <summary>
+        /// The program
+        /// </summary>
         int program;
 
+        /// <summary>
+        /// The model view projection matrix
+        /// </summary>
         Matrix4 modelViewProjectionMatrix;
+        /// <summary>
+        /// The normal matrix
+        /// </summary>
         Matrix3 normalMatrix;
+        /// <summary>
+        /// The rotation
+        /// </summary>
         float rotation;
 
+        /// <summary>
+        /// The vertex array
+        /// </summary>
         uint vertexArray;
+        /// <summary>
+        /// The vertex buffer
+        /// </summary>
         uint vertexBuffer;
 
+        /// <summary>
+        /// Gets or sets the value of the context
+        /// </summary>
         EAGLContext context { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the effect
+        /// </summary>
         GLKBaseEffect effect { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameViewController"/> class
+        /// </summary>
+        /// <param name="coder">The coder</param>
         [Export ("initWithCoder:")]
         public GameViewController (NSCoder coder) : base (coder)
         {
         }
 
+        /// <summary>
+        /// Views the did load
+        /// </summary>
         public override void ViewDidLoad ()
         {
             base.ViewDidLoad ();
@@ -109,6 +175,10 @@ namespace Alis.Template.IOS
             SetupGL ();
         }
 
+        /// <summary>
+        /// Disposes the disposing
+        /// </summary>
+        /// <param name="disposing">The disposing</param>
         protected override void Dispose (bool disposing)
         {
             base.Dispose (disposing);
@@ -119,6 +189,9 @@ namespace Alis.Template.IOS
                 EAGLContext.SetCurrentContext (null);
         }
 
+        /// <summary>
+        /// Dids the receive memory warning
+        /// </summary>
         public override void DidReceiveMemoryWarning ()
         {
             base.DidReceiveMemoryWarning ();
@@ -136,11 +209,18 @@ namespace Alis.Template.IOS
             // Dispose of any resources that can be recreated.
         }
 
+        /// <summary>
+        /// Describes whether this instance prefers status bar hidden
+        /// </summary>
+        /// <returns>The bool</returns>
         public override bool PrefersStatusBarHidden ()
         {
             return true;
         }
 
+        /// <summary>
+        /// Setup the gl
+        /// </summary>
         void SetupGL ()
         {
             EAGLContext.SetCurrentContext (context);
@@ -168,6 +248,9 @@ namespace Alis.Template.IOS
             GL.Oes.BindVertexArray (0);
         }
 
+        /// <summary>
+        /// Tears the down gl
+        /// </summary>
         void TearDownGL ()
         {
             EAGLContext.SetCurrentContext (context);
@@ -184,6 +267,9 @@ namespace Alis.Template.IOS
 
         #region GLKView and GLKViewController delegate methods
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update ()
         {
             var aspect = (float)Math.Abs (View.Bounds.Size.Width / View.Bounds.Size.Height);
@@ -213,6 +299,11 @@ namespace Alis.Template.IOS
             rotation += (float)TimeSinceLastUpdate * 0.5f;
         }
 
+        /// <summary>
+        /// Draws the in rect using the specified view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <param name="rect">The rect</param>
         void IGLKViewDelegate.DrawInRect (GLKView view, CoreGraphics.CGRect rect)
         {
             GL.ClearColor (0.65f, 0.65f, 0.65f, 1.0f);
@@ -234,6 +325,10 @@ namespace Alis.Template.IOS
             GL.DrawArrays (BeginMode.Triangles, 0, 36);
         }
 
+        /// <summary>
+        /// Describes whether this instance load shaders
+        /// </summary>
+        /// <returns>The bool</returns>
         bool LoadShaders ()
         {
             int vertShader, fragShader;
@@ -298,6 +393,12 @@ namespace Alis.Template.IOS
             return true;
         }
 
+        /// <summary>
+        /// Loads the resource using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <param name="type">The type</param>
+        /// <returns>The string</returns>
         string LoadResource (string name, string type)
         {
             var path = NSBundle.MainBundle.PathForResource (name, type);
@@ -306,6 +407,13 @@ namespace Alis.Template.IOS
 
         #endregion
 
+        /// <summary>
+        /// Describes whether this instance compile shader
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="src">The src</param>
+        /// <param name="shader">The shader</param>
+        /// <returns>The bool</returns>
         bool CompileShader (ShaderType type, string src, out int shader)
         {
             shader = GL.CreateShader (type);
@@ -330,6 +438,11 @@ namespace Alis.Template.IOS
             return true;
         }
 
+        /// <summary>
+        /// Describes whether this instance link program
+        /// </summary>
+        /// <param name="prog">The prog</param>
+        /// <returns>The bool</returns>
         bool LinkProgram (int prog)
         {
             GL.LinkProgram (prog);
@@ -345,6 +458,11 @@ namespace Alis.Template.IOS
             return status != 0;
         }
 
+        /// <summary>
+        /// Describes whether this instance validate program
+        /// </summary>
+        /// <param name="prog">The prog</param>
+        /// <returns>The bool</returns>
         bool ValidateProgram (int prog)
         {
             int logLength, status = 0;

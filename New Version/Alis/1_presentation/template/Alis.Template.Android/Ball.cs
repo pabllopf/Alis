@@ -1,31 +1,88 @@
-﻿using System;
+using System;
 using OpenTK;
 using OpenTK.Graphics.ES30;
 
 namespace Alis.Template.Android
 {
+    /// <summary>
+    /// The ball class
+    /// </summary>
     public class Ball
     {
+        /// <summary>
+        /// The uniform projection
+        /// </summary>
         const int UNIFORM_PROJECTION = 0;
+        /// <summary>
+        /// The uniform light
+        /// </summary>
         const int UNIFORM_LIGHT = 1;
+        /// <summary>
+        /// The uniform view
+        /// </summary>
         const int UNIFORM_VIEW = 2;
+        /// <summary>
+        /// The uniform normal matrix
+        /// </summary>
         const int UNIFORM_NORMAL_MATRIX = 3;
+        /// <summary>
+        /// The uniform angle count
+        /// </summary>
         const int UNIFORM_ANGLE_COUNT = 4;
+        /// <summary>
+        /// The uniform count
+        /// </summary>
         const int UNIFORM_COUNT = 5;
+        /// <summary>
+        /// The uniform count
+        /// </summary>
         int[] uniforms = new int[UNIFORM_COUNT];
+        /// <summary>
+        /// The attrib vertex
+        /// </summary>
         const int ATTRIB_VERTEX = 0;
+        /// <summary>
+        /// The attrib normal
+        /// </summary>
         const int ATTRIB_NORMAL = 1;
+        /// <summary>
+        /// The attrib count
+        /// </summary>
         const int ATTRIB_COUNT = 2;
 
+        /// <summary>
+        /// The vbi
+        /// </summary>
         int vbo, vbi;
 
+        /// <summary>
+        /// The angle
+        /// </summary>
         public float xAngle = (float)-Math.PI / 2, yAngle = 0;
+        /// <summary>
+        /// The acc
+        /// </summary>
         public float xAcc, yAcc;
+        /// <summary>
+        /// The sign
+        /// </summary>
         public float xSign = 1, ySign = 1;
+        /// <summary>
+        /// The inc
+        /// </summary>
         float xInc = .0033f, yInc = .01f;
+        /// <summary>
+        /// The height
+        /// </summary>
         int Width, Height;
+        /// <summary>
+        /// The count
+        /// </summary>
         int count = 0;
 
+        /// <summary>
+        /// Inits the model
+        /// </summary>
         internal void InitModel()
         {
             GL.GenBuffers(1, out vbo);
@@ -39,6 +96,9 @@ namespace Alis.Template.Android
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         internal void Start()
         {
             GL.Enable(EnableCap.DepthTest);
@@ -46,6 +106,9 @@ namespace Alis.Template.Android
             GL.CullFace(CullFaceMode.Back);
         }
 
+        /// <summary>
+        /// Draws the model
+        /// </summary>
         internal void DrawModel()
         {
             // Update attribute values.
@@ -63,12 +126,27 @@ namespace Alis.Template.Android
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, 0);
         }
 
+        /// <summary>
+        /// The matrix
+        /// </summary>
         internal Matrix4 view = new Matrix4();
+        /// <summary>
+        /// The matrix
+        /// </summary>
         internal Matrix4 normalMatrix = new Matrix4();
+        /// <summary>
+        /// The matrix
+        /// </summary>
         internal Matrix4 projection = new Matrix4();
 
+        /// <summary>
+        /// The program
+        /// </summary>
         int program;
 
+        /// <summary>
+        /// Renders the frame
+        /// </summary>
         internal void RenderFrame()
         {
             // Replace the implementation of this method to do your own custom drawing.
@@ -95,16 +173,30 @@ namespace Alis.Template.Android
             // Validate program before drawing. This is a good check, but only really necessary in a debug build.
         }
 
+        /// <summary>
+        /// Loads the resource using the specified name
+        /// </summary>
+        /// <param name="name">The name</param>
+        /// <returns>The string</returns>
         string LoadResource(string name)
         {
             return new System.IO.StreamReader(System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(name)).ReadToEnd();
         }
 
+        /// <summary>
+        /// Loads the shaders
+        /// </summary>
         internal void LoadShaders()
         {
             LoadShaders(LoadResource("Alis.Template.Android.Shaders.Shader.vsh"), LoadResource("Alis.Template.Android.Shaders.Shader.fsh"));
         }
 
+        /// <summary>
+        /// Describes whether this instance load shaders
+        /// </summary>
+        /// <param name="vertShaderSource">The vert shader source</param>
+        /// <param name="fragShaderSource">The frag shader source</param>
+        /// <returns>The bool</returns>
         internal bool LoadShaders(string vertShaderSource, string fragShaderSource)
         {
             Console.WriteLine("load shaders");
@@ -179,6 +271,9 @@ namespace Alis.Template.Android
             return true;
         }
 
+        /// <summary>
+        /// Destroys the shaders
+        /// </summary>
         internal void DestroyShaders()
         {
             if (program != 0)
@@ -188,6 +283,13 @@ namespace Alis.Template.Android
             }
         }
 
+        /// <summary>
+        /// Describes whether compile shader
+        /// </summary>
+        /// <param name="type">The type</param>
+        /// <param name="src">The src</param>
+        /// <param name="shader">The shader</param>
+        /// <returns>The bool</returns>
         static bool CompileShader(ShaderType type, string src, out int shader)
         {
             shader = GL.CreateShader(type);
@@ -206,6 +308,11 @@ namespace Alis.Template.Android
             return true;
         }
 
+        /// <summary>
+        /// Describes whether link program
+        /// </summary>
+        /// <param name="prog">The prog</param>
+        /// <returns>The bool</returns>
         internal static bool LinkProgram(int prog)
         {
             GL.LinkProgram(prog);
@@ -218,6 +325,9 @@ namespace Alis.Template.Android
             return true;
         }
 
+        /// <summary>
+        /// Checks the gl error
+        /// </summary>
         static void CheckGLError()
         {
             ErrorCode code = GL.GetErrorCode();
@@ -225,6 +335,11 @@ namespace Alis.Template.Android
                 Console.WriteLine($"GL Error {code}");
         }
 
+        /// <summary>
+        /// Describes whether validate program
+        /// </summary>
+        /// <param name="prog">The prog</param>
+        /// <returns>The bool</returns>
         static bool ValidateProgram(int prog)
         {
             GL.ValidateProgram(prog);
@@ -248,6 +363,11 @@ namespace Alis.Template.Android
             return true;
         }
 
+        /// <summary>
+        /// Setup the projection using the specified width
+        /// </summary>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
         internal void SetupProjection(int width, int height)
         {
             Matrix4 model = Matrix4.Mult(Matrix4.CreateRotationX(-xAngle), Matrix4.CreateRotationZ(-yAngle));
@@ -268,6 +388,9 @@ namespace Alis.Template.Android
             Height = height;
         }
 
+        /// <summary>
+        /// Updates the world
+        /// </summary>
         public void UpdateWorld()
         {
             xAngle += xSign * (xInc + xAcc * xAcc);

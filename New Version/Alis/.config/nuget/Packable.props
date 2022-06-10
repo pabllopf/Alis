@@ -1,13 +1,13 @@
 <Project>
     <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample')) == true">
-        <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('Sample')) == false">
-        <OutputType>Library</OutputType>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 </Project>
