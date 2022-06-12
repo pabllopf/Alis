@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.FluentApi.Validations
+namespace Alis.Aspect.Fluent.Validations
 {
     /// <summary>
     ///     The not null class

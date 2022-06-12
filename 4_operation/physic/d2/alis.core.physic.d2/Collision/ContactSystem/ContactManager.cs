@@ -27,14 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.Broadphase;
-using Alis.Core.Systems.Physics2D.Collision.Filtering;
-using Alis.Core.Systems.Physics2D.Collision.Handlers;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Handlers;
+using Alis.Core.Physic.D2.Collision.Broadphase;
+using Alis.Core.Physic.D2.Collision.Filtering;
+using Alis.Core.Physic.D2.Collision.Handlers;
+using Alis.Core.Physic.D2.Config;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Dynamics.Handlers;
 
-namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
+namespace Alis.Core.Physic.D2.Collision.ContactSystem
 {
     /// <summary>
     ///     The contact manager class

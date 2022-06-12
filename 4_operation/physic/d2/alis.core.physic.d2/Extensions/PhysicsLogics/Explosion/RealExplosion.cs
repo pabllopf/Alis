@@ -30,15 +30,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.D2.Collision.RayCast;
+using Alis.Core.Physic.D2.Collision.Shapes;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Extensions.PhysicsLogics.PhysicsLogicBase;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Utilities;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
+namespace Alis.Core.Physic.D2.Extensions.PhysicsLogics.Explosion
 {
     // Original Code by Steven Lu - see http://www.box2d.org/forum/viewtopic.php?f=3&t=1688
     // Ported by Nicol�s Hormaz�bal

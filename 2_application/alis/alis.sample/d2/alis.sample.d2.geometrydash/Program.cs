@@ -30,16 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Alis;
-using Alis.Core.Components;
-using Alis.Core.Configurations;
-using Alis.Core.Graphics2D.Graphics;
-using Alis.Core.Systems.Physics2D.Dynamics;
 using GameObject = Alis.Core.Entities.GameObject;
 using Scene = Alis.Core.Entities.Scene;
 using Sprite = Alis.Core.Components.Sprite;
 
-namespace GeometryDash
+namespace Alis.Sample.D2.GeometryDash
 {
     /// <summary>
     ///     The program class

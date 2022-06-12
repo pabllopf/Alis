@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
+using Alis.Core.Physic.D2.Collision.ContactSystem;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Handlers
+namespace Alis.Core.Physic.D2.Collision.Handlers
 {
     /// <summary>This delegate is called when a contact is deleted</summary>
     public delegate void EndContactHandler(Contact contact);

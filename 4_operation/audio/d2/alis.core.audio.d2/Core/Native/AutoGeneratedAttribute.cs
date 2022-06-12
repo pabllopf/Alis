@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Audio2D.Core.Native
+namespace Alis.Core.Audio.D2.Core.Native
 {
     /// <summary>
     ///     Indicates that this function is generated automatically by a tool.

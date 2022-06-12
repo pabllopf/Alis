@@ -39,9 +39,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay;
+using Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Delaunay;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Polygon
 {
     /// <summary>
     ///     The polygon class

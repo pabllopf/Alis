@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Tools.Example
+namespace Alis.Core.Ads.Sample
 {
     /// <summary>
     ///     The program class

@@ -30,9 +30,9 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Mathematics.Vector;
+using Alis.Core.Audio.D2.Mathematics.Vector;
 
-namespace Alis.Core.Audio2D.Mathematics.Geometry
+namespace Alis.Core.Audio.D2.Mathematics.Geometry
 {
     /// <summary>
     ///     Defines an axis-aligned 2d box (rectangle).

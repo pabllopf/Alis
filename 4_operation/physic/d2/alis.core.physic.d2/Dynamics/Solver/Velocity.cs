@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-
-namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
+namespace Alis.Core.Physic.D2.Dynamics.Solver
 {
     /// This is an internal structure.
     public struct Velocity

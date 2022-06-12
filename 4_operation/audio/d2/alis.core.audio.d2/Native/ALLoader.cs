@@ -31,7 +31,7 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Audio2D.Native
+namespace Alis.Core.Audio.D2.Native
 {
     /// <summary>
     ///     Provides a base for ApiContext so that it can register dll intercepts.

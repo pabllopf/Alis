@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Base
+namespace Alis.Aspect.Config
 {
     /// <summary>
     ///     The example class

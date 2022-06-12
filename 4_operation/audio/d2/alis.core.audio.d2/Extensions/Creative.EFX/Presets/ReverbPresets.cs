@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Audio2D.Mathematics.Vector;
+using Alis.Core.Audio.D2.Mathematics.Vector;
 
-namespace Alis.Core.Audio2D.Extensions.Creative.EFX.Presets
+namespace Alis.Core.Audio.D2.Extensions.Creative.EFX.Presets
 {
     /// <summary>
     ///     A set of reverb presets that can be used with the extension.

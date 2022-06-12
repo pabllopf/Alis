@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D
+namespace Alis.Core.Audio.D2
 {
     /// <summary>
     ///     Defines the known OpenAL versions.

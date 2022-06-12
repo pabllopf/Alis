@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Dynamics.Joints.Misc;
 
-namespace Alis.Core.Systems.Physics2D.Definitions.Joints
+namespace Alis.Core.Physic.D2.Definitions.Joints
 {
     /// <summary>
     ///     Prismatic joint definition. This requires defining a line of motion using an axis and an anchor point. The

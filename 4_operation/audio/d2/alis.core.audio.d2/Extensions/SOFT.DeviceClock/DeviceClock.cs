@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Extensions.SOFT.DeviceClock.Enums;
-using Alis.Core.Audio2D.Native;
+using Alis.Core.Audio.D2.Extensions.SOFT.DeviceClock.Enums;
+using Alis.Core.Audio.D2.Native;
 
-namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock
+namespace Alis.Core.Audio.D2.Extensions.SOFT.DeviceClock
 {
     /// <summary>
     ///     The device clock class

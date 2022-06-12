@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Polygon;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Polygon;
+using Alis.Core.Physic.D2.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Util
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Util
 {
     /// <summary>
     ///     The polygon generator class

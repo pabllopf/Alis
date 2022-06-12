@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.D2.Config;
+using Alis.Core.Physic.D2.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
+namespace Alis.Core.Physic.D2.Dynamics.Solver
 {
     /// <summary>
     ///     The contact velocity constraint class

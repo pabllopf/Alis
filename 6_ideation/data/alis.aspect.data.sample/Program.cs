@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Tools.Example
+namespace Alis.Aspect.Data.Sample
 {
     /// <summary>
     ///     The program class

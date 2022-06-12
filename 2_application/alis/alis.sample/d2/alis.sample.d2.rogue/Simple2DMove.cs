@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Components;
 
-namespace Roguelike
+namespace Alis.Sample.D2.Rogue
 {
     /// <summary>
     ///     The simple move class

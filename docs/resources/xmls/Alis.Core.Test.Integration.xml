@@ -4,17 +4,17 @@
         <name>Alis.Core.Test.Integration</name>
     </assembly>
     <members>
-        <member name="T:Alis.Test.Tests">
+        <member name="T:Alis.Core.Test.Integration.Tests">
             <summary>
                 The tests class
             </summary>
         </member>
-        <member name="M:Alis.Test.Tests.Setup">
+        <member name="M:Alis.Core.Test.Integration.Tests.Setup">
             <summary>
                 Setup this instance
             </summary>
         </member>
-        <member name="M:Alis.Test.Tests.Test1">
+        <member name="M:Alis.Core.Test.Integration.Tests.Test1">
             <summary>
                 Tests that test 1
             </summary>

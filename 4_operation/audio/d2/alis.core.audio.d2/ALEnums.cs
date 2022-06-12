@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D
+namespace Alis.Core.Audio.D2
 {
 #pragma warning disable SA1402 // File may only contain a single type
     /// <summary>A list of valid Enable/Disable/IsEnabled parameters.</summary>

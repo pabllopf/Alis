@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Exceptions
+namespace Alis.Aspect.Assertion
 {
     /// <summary>
     ///     The max scene game class

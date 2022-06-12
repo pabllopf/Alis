@@ -29,13 +29,12 @@
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Distance;
-using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.D2.Collision.Distance;
+using Alis.Core.Physic.D2.Collision.Narrowphase;
+using Alis.Core.Physic.D2.Config;
+using Alis.Core.Physic.D2.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Collision.TOI
+namespace Alis.Core.Physic.D2.Collision.TOI
 {
     /// <summary>
     ///     The time of impact class

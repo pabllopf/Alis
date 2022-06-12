@@ -32,9 +32,9 @@ using System.Diagnostics.Contracts;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Mathematics.Vector;
+using Alis.Core.Audio.D2.Mathematics.Vector;
 
-namespace Alis.Core.Audio2D.Mathematics.Data
+namespace Alis.Core.Audio.D2.Mathematics.Data
 {
     /// <summary>
     ///     Represents a color with 4 floating-point components (R, G, B, A).

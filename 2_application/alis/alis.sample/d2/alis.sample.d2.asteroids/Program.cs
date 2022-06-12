@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace RocketLeague
+namespace Alis.Sample.D2.Asteroids
 {
     /// <summary>
     ///     The program class

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Get2048Dailys
+namespace Alis.Sample.D2.Get2048Dailys
 {
     /// <summary>
     ///     The program class

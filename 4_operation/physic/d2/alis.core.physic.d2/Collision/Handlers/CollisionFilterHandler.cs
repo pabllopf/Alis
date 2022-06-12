@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physic.D2.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Handlers
+namespace Alis.Core.Physic.D2.Collision.Handlers
 {
     /// <summary>
     ///     The collision filter handler

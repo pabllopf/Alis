@@ -29,11 +29,10 @@
 
 using System;
 using System.Diagnostics.Contracts;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 
-namespace Alis.Core.Audio2D.Mathematics.Vector
+namespace Alis.Core.Audio.D2.Mathematics.Vector
 {
     /// <summary>
     ///     Represents a 4D vector using four 32-bit integer numbers.

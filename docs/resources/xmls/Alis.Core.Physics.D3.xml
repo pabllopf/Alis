@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Physics.D3</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Physics3D.ExampleDefault">
+            <summary>
+                The example class
+            </summary>
+        </member>
+    </members>
+</doc>

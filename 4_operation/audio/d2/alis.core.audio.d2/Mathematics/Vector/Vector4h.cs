@@ -30,13 +30,12 @@
 using System;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
-using Half = Alis.Core.Audio2D.Mathematics.Data.Half;
+using Half = Alis.Core.Audio.D2.Mathematics.Data.Half;
 
-namespace Alis.Core.Audio2D.Mathematics.Vector
+namespace Alis.Core.Audio.D2.Mathematics.Vector
 {
     /// <summary>
     ///     4-component Vector of the Half type. Occupies 8 Byte total.

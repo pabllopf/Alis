@@ -29,12 +29,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using System.Text;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.D2.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
+namespace Alis.Core.Physic.D2.Tools.PathGenerator
 {
     //Contributed by Matthew Bettcher
 

@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay;
+using Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Delaunay;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay
 {
     /// <summary>
     ///     The triangulation context class

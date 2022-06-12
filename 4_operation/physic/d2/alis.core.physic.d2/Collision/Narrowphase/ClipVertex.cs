@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
+using Alis.Core.Physic.D2.Collision.ContactSystem;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
+namespace Alis.Core.Physic.D2.Collision.Narrowphase
 {
     /// <summary>Used for computing contact manifolds.</summary>
     internal struct ClipVertex

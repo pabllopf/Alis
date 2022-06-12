@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.D2.Shared
 {
     /// <summary>A 2-by-2 matrix. Stored in column-major order.</summary>
     public struct Mat22

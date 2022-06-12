@@ -30,9 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
-using Alis.Core.Audio2D.Mathematics.Vector;
+using Alis.Core.Audio.D2.Mathematics.Vector;
 
-namespace Alis.Core.Audio2D.Mathematics.Geometry
+namespace Alis.Core.Audio.D2.Mathematics.Geometry
 {
     /// <summary>
     ///     Represents a bezier curve with as many points as you want.

@@ -30,10 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Systems.Physics2D.Shared.Optimization;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Sweep;
+using Alis.Core.Physic.D2.Shared.Optimization;
+using Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Delaunay.Sweep;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Delaunay
 {
     /// <summary>
     ///     The delaunay triangle class

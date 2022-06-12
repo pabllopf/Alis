@@ -28,14 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Factories;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Tools.PolygonManipulation;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.TriangulationBase;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Factories;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Tools.PolygonManipulation;
+using Alis.Core.Physic.D2.Tools.Triangulation.TriangulationBase;
 
-namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
+namespace Alis.Core.Physic.D2.Tools.TextureTools
 {
     /// <summary>Simple class to maintain a terrain. It can keep track</summary>
     public class Terrain

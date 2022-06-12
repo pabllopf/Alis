@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Collision.Shapes
+namespace Alis.Core.Physic.D2.Collision.Shapes
 {
     /// <summary>
     ///     The shape type enum

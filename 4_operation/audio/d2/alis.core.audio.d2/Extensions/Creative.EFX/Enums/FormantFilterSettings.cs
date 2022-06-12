@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D.Extensions.Creative.EFX.Enums
+namespace Alis.Core.Audio.D2.Extensions.Creative.EFX.Enums
 {
     /// <summary>
     ///     Vocal morpher effect parameters. If both parameters are set to the same phoneme, that determines the filtering

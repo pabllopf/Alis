@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphics2D.Systems
+namespace Alis.Core.Graphic.D2.Graphics
 {
     /// <summary>
     ///     The csfml class

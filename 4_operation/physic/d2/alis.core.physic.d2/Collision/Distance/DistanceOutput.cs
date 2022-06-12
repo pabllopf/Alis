@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-
-namespace Alis.Core.Systems.Physics2D.Collision.Distance
+namespace Alis.Core.Physic.D2.Collision.Distance
 {
     /// <summary>Output for Distance.ComputeDistance().</summary>
     public struct DistanceOutput

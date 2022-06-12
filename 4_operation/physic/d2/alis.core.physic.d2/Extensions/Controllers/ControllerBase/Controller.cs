@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Extensions.PhysicsLogics.PhysicsLogicBase;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase
+namespace Alis.Core.Physic.D2.Extensions.Controllers.ControllerBase
 {
     /// <summary>
     ///     The controller class

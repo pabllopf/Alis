@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Sets
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Sets
 {
     /*
      * Extends the PointSet by adding some Constraints on how it will be triangulated<br>

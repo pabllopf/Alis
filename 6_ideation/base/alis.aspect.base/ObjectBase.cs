@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Base
+namespace Alis.Aspect.Base
 {
     /// <summary>
     ///     The object base class

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Time
+namespace Alis.Core.Updater
 {
     /// <summary>
     ///     The example class

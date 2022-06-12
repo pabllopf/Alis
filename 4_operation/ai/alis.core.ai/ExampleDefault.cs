@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Ads
+namespace Alis.Core.Ai
 {
     /// <summary>
     ///     The example default class

@@ -29,12 +29,11 @@
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.D2.Collision.RayCast;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Collision
+namespace Alis.Core.Physic.D2.Collision
 {
     /// <summary>
     ///     The ray cast helper class

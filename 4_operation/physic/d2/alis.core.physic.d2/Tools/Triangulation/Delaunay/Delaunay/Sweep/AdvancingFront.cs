@@ -36,7 +36,7 @@
 using System;
 using System.Text;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Sweep
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
     /**
      * @author Thomas Åhlen (thahlen@gmail.com)

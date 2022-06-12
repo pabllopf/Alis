@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace RocketLeague
+namespace Alis.Sample.D2.Chessmaster
 {
     /// <summary>
     ///     The program class

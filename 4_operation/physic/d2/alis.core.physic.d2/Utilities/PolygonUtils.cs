@@ -30,11 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Tools.TextureTools;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Tools.TextureTools;
+using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Utilities
+namespace Alis.Core.Physic.D2.Utilities
 {
     /// <summary>
     ///     The polygon utils class

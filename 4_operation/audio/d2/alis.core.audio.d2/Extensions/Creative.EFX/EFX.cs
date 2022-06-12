@@ -29,11 +29,11 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Extensions.Creative.EFX.Enums;
-using Alis.Core.Audio2D.Mathematics.Vector;
-using Alis.Core.Audio2D.Native;
+using Alis.Core.Audio.D2.Extensions.Creative.EFX.Enums;
+using Alis.Core.Audio.D2.Mathematics.Vector;
+using Alis.Core.Audio.D2.Native;
 
-namespace Alis.Core.Audio2D.Extensions.Creative.EFX
+namespace Alis.Core.Audio.D2.Extensions.Creative.EFX
 {
     /// <summary>
     ///     Exposes the functions of the Effects Extension.

@@ -34,7 +34,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 
-namespace Alis.Core.Audio2D.Mathematics.Data
+namespace Alis.Core.Audio.D2.Mathematics.Data
 {
     /// <summary>
     ///     The name Half is derived from half-precision floating-point number.

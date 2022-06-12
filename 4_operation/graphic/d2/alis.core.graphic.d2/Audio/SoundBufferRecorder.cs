@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 
-namespace Alis.Core.Graphics2D.Audio
+namespace Alis.Core.Graphic.D2.Audio
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

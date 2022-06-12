@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
+namespace Alis.Core.Physic.D2.Extensions.PhysicsLogics.PhysicsLogicBase
 {
     /// <summary>
     ///     The physics logic filter

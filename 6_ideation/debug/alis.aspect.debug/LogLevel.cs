@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Tools
+namespace Alis.Aspect.Debug
 {
     /// <summary>
     ///     The log level enum

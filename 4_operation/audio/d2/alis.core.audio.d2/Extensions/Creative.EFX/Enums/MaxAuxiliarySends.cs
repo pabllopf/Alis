@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D.Extensions.Creative.EFX.Enums
+namespace Alis.Core.Audio.D2.Extensions.Creative.EFX.Enums
 {
     /// <summary>
     ///     May be passed at context construction time to indicate the number of desired auxiliary effect slot sends per

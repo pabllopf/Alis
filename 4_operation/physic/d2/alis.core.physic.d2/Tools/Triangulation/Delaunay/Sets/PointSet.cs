@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay;
+using Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Delaunay;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Sets
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay.Sets
 {
     /// <summary>
     ///     The point set class

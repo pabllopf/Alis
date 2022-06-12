@@ -30,7 +30,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Alis.Core.Audio2D.Core.Native
+namespace Alis.Core.Audio.D2.Core.Native
 {
     /// <summary>
     ///     Defines the slot index for a wrapper function.

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Tools.Example
+namespace Alis.Core.Network.Sample
 {
     /// <summary>
     ///     The program class

@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.D2.Shared
 {
     /// <summary>
     ///     A transform contains translation and rotation. It is used to represent the position and orientation of rigid

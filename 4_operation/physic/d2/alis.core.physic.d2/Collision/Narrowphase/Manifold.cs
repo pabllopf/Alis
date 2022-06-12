@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared.Optimization;
+using Alis.Core.Physic.D2.Shared.Optimization;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
+namespace Alis.Core.Physic.D2.Collision.Narrowphase
 {
     /// <summary>
     ///     A manifold for two touching convex Shapes.

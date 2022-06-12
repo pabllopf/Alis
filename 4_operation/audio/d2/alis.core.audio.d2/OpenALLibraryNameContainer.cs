@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Audio2D
+namespace Alis.Core.Audio.D2
 {
     /// <summary>
     ///     Contains the library name of OpenAL.

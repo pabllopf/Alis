@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
+namespace Alis.Core.Physic.D2.Collision.Broadphase
 {
     /// <summary>
     ///     The pair

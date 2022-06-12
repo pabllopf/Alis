@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Audio2D.Core.Exceptions
+namespace Alis.Core.Audio.D2.Core.Exceptions
 {
     /// <summary>
     ///     Represents exceptions related to API extensions.

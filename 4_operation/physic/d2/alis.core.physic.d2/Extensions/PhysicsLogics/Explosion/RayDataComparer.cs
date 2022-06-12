@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
+namespace Alis.Core.Physic.D2.Extensions.PhysicsLogics.Explosion
 {
     /// <summary>This is a comparer used for detecting angle difference between rays</summary>
     internal class RayDataComparer : IComparer<float>

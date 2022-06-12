@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Audio2D.Core.Utility
+namespace Alis.Core.Audio.D2.Core.Utility
 {
     /// <summary>
     ///     The marshal utility class

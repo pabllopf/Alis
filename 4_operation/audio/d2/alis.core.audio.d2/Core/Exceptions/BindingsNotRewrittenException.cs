@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Audio2D.Core.Exceptions
+namespace Alis.Core.Audio.D2.Core.Exceptions
 {
     /// <summary>
     ///     Represents exceptions thrown when a binding method is called and the bindings have not been rewritten by

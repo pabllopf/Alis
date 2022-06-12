@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Tools.Example
+namespace Alis.Core.Database.Sample
 {
     /// <summary>
     ///     The program class

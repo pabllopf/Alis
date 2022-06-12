@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Extensions.SOFT.SourceLatency.Enums;
-using Alis.Core.Audio2D.Mathematics.Vector;
-using Alis.Core.Audio2D.Native;
+using Alis.Core.Audio.D2.Extensions.SOFT.SourceLatency.Enums;
+using Alis.Core.Audio.D2.Mathematics.Vector;
+using Alis.Core.Audio.D2.Native;
 
-namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency
+namespace Alis.Core.Audio.D2.Extensions.SOFT.SourceLatency
 {
     /// <summary>
     ///     The source latency class

@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physic.D2.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D.Definitions
+namespace Alis.Core.Physic.D2.Definitions
 {
     /// <summary>
     ///     The body def class

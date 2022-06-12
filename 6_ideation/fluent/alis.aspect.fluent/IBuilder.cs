@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.FluentApi
+namespace Alis.Aspect.Fluent
 {
     /// <summary>
     ///     The builder interface

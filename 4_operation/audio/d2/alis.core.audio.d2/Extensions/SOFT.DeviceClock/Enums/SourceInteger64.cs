@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D.Extensions.SOFT.DeviceClock.Enums
+namespace Alis.Core.Audio.D2.Extensions.SOFT.DeviceClock.Enums
 {
     /// <summary>
     ///     The source integer 64 enum

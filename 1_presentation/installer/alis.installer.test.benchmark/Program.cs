@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Engine.Benchmark
+namespace Alis.Installer.Test.Benchmark
 {
     /// <summary>
     ///     The program class

@@ -28,11 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Components;
-using Alis.Core.Systems;
-using Alis.Tools;
 
-namespace GeometryDash
+namespace Alis.Sample.D2.GeometryDash
 {
     /// <summary>
     ///     The main menu controller class

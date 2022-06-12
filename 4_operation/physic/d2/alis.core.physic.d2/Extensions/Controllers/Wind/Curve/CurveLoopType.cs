@@ -29,7 +29,7 @@
 
 using Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Physic.D2.Extensions.Controllers.Wind.Curve
 {
     /// <summary>
     ///     Defines how the <see cref="Curve" /> value is determined for position before first point or after the end

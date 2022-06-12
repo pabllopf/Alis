@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.Filtering;
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physic.D2.Collision.Filtering;
+using Alis.Core.Physic.D2.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
+namespace Alis.Core.Physic.D2.Extensions.PhysicsLogics.PhysicsLogicBase
 {
     /// <summary>Contains filter data that can determine whether an object should be processed or not.</summary>
     public abstract class FilterData

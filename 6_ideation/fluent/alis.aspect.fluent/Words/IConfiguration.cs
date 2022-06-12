@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.FluentApi.Words
+namespace Alis.Aspect.Fluent.Words
 {
     /// <summary>
     ///     The configuration interface

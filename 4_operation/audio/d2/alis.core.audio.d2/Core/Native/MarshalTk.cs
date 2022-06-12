@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Alis.Core.Audio2D.Core.Native
+namespace Alis.Core.Audio.D2.Core.Native
 {
     /// <summary>
     ///     Contains extra marshalling utilities that aren't available in the normal Marshal class.

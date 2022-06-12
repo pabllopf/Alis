@@ -38,14 +38,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Runtime.Intrinsics;
-using System.Runtime.Intrinsics.X86;
-using Alis.Core.Audio2D.Mathematics.Data;
-using Alis.Core.Audio2D.Mathematics.Vector;
+using Alis.Core.Audio.D2.Mathematics.Data;
+using Alis.Core.Audio.D2.Mathematics.Vector;
 #if NETCOREAPP3_1_OR_GREATER
 #endif
 
-namespace Alis.Core.Audio2D.Mathematics.Matrix
+namespace Alis.Core.Audio.D2.Mathematics.Matrix
 {
     /// <summary>
     ///     Represents a 4x4 matrix containing 3D rotation, scale, transform, and projection.

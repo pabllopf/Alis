@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Shared.Optimization;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Shared.Optimization;
+using Alis.Core.Physic.D2.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
+namespace Alis.Core.Physic.D2.Collision.Narrowphase
 {
     /// <summary>
     ///     The world manifold class

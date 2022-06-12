@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Audio2D.Core.Native
+namespace Alis.Core.Audio.D2.Core.Native
 {
     /// <summary>
     ///     Represents the count of a parameter.

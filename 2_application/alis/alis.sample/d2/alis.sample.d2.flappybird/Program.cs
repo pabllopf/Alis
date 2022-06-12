@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace FlappyBird
+namespace Alis.Sample.D2.FlappyBird
 {
     /// <summary>
     ///     The program class

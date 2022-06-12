@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Extensions.EXT.Double.Enums;
-using Alis.Core.Audio2D.Native;
+using Alis.Core.Audio.D2.Extensions.EXT.Double.Enums;
+using Alis.Core.Audio.D2.Native;
 
-namespace Alis.Core.Audio2D.Extensions.EXT.Double
+namespace Alis.Core.Audio.D2.Extensions.EXT.Double
 {
     /// <summary>
     ///     The ext double class

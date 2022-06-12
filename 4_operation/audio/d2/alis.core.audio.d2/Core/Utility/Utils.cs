@@ -29,7 +29,7 @@
 
 using System.Runtime.CompilerServices;
 
-namespace Alis.Core.Audio2D.Core.Utility
+namespace Alis.Core.Audio.D2.Core.Utility
 {
     /// <summary>
     ///     The utils class

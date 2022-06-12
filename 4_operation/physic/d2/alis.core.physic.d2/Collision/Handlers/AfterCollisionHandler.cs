@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Solver;
+using Alis.Core.Physic.D2.Collision.ContactSystem;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Dynamics.Solver;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Handlers
+namespace Alis.Core.Physic.D2.Collision.Handlers
 {
     /// <summary>
     ///     The after collision handler

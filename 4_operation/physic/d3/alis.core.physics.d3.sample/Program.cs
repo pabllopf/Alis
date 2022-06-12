@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Tools.Example
+namespace Alis.Core.Physics.D3.Sample
 {
     /// <summary>
     ///     The program class

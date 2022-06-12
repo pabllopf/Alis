@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Alis.Core.Audio2D
+namespace Alis.Core.Audio.D2
 {
     /// <summary>
     ///     Convenience class for handling ALContext attributes.

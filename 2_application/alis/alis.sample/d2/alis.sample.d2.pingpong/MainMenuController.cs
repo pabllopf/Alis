@@ -28,11 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Components;
-using Alis.Core.Systems;
-using Alis.Tools;
 
-namespace PingPong
+namespace Alis.Sample.D2.PingPong
 {
     /// <summary>
     ///     The main menu controller class

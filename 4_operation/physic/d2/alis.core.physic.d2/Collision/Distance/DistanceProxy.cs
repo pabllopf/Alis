@@ -29,10 +29,9 @@
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
+using Alis.Core.Physic.D2.Collision.Shapes;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Distance
+namespace Alis.Core.Physic.D2.Collision.Distance
 {
     /// <summary>A distance proxy is used by the GJK algorithm. It encapsulates any shape.</summary>
     public struct DistanceProxy

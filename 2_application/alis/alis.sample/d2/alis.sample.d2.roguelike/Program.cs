@@ -30,15 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Alis;
-using Alis.Core.Components;
-using Alis.Core.Entities;
-using Alis.Core.Graphics2D.Graphics;
-using Alis.Core.Systems.Physics2D.Dynamics;
 using Sprite = Alis.Core.Components.Sprite;
 using Transform = Alis.Core.Entities.Transform;
 
-namespace Roguelike
+namespace Alis.Sample.D2.Roguelike
 {
     /// <summary>
     ///     The program class

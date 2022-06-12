@@ -31,9 +31,9 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Mathematics.Vector;
+using Alis.Core.Audio.D2.Mathematics.Vector;
 
-namespace Alis.Core.Audio2D.Mathematics.Matrix
+namespace Alis.Core.Audio.D2.Mathematics.Matrix
 {
     /// <summary>
     ///     Represents a 3x2 matrix.

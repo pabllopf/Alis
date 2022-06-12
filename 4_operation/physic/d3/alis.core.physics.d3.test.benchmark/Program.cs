@@ -36,7 +36,7 @@ using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
 
-namespace Alis.Tools.Benchmark
+namespace Alis.Core.Physics.D3.Test.Benchmark
 {
     /// <summary>
     ///     The program class

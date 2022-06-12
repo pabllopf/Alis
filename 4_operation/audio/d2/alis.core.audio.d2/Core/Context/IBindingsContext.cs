@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Audio2D.Core.Context
+namespace Alis.Core.Audio.D2.Core.Context
 {
     /// <summary>
     ///     Provides methods for querying available functions in a bindings context.

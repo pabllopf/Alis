@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D.Extensions.Creative.EFX.Enums
+namespace Alis.Core.Audio.D2.Extensions.Creative.EFX.Enums
 {
     /// <summary>
     ///     A list of valid <see cref="int" /> Filter/GetFilter parameters.

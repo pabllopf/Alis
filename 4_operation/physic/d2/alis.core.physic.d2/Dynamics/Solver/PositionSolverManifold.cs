@@ -28,12 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.D2.Collision.Narrowphase;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
+namespace Alis.Core.Physic.D2.Dynamics.Solver
 {
     /// <summary>
     ///     The position solver manifold class

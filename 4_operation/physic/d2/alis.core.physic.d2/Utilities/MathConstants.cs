@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Systems.Physics2D.Utilities
+namespace Alis.Core.Physic.D2.Utilities
 {
     /// <summary>
     ///     The math constants class

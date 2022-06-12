@@ -27,11 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
-using Alis.Core.Systems.Physics2D.Config;
+using Alis.Core.Physic.D2.Collision.Narrowphase;
+using Alis.Core.Physic.D2.Config;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
+namespace Alis.Core.Physic.D2.Dynamics.Solver
 {
     /// <summary>
     ///     The contact position constraint class

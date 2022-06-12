@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Security;
 
-namespace Alis.Core.Graphics2D.Systems
+namespace Alis.Core.Graphic.D2.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

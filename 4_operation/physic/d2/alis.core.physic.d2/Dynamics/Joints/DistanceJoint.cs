@@ -28,15 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Definitions.Joints;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
-using Alis.Core.Systems.Physics2D.Dynamics.Solver;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.D2.Config;
+using Alis.Core.Physic.D2.Definitions.Joints;
+using Alis.Core.Physic.D2.Dynamics.Joints.Misc;
+using Alis.Core.Physic.D2.Dynamics.Solver;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
+namespace Alis.Core.Physic.D2.Dynamics.Joints
 {
     // 1-D constrained system
     // m (v2 - v1) = lambda

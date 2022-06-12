@@ -32,10 +32,10 @@ using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Xml.Serialization;
-using Alis.Core.Audio2D.Mathematics.Data;
-using Alis.Core.Audio2D.Mathematics.Matrix;
+using Alis.Core.Audio.D2.Mathematics.Data;
+using Alis.Core.Audio.D2.Mathematics.Matrix;
 
-namespace Alis.Core.Audio2D.Mathematics.Vector
+namespace Alis.Core.Audio.D2.Mathematics.Vector
 {
     /// <summary>
     ///     Represents a 4D vector using four single-precision floating-point numbers.

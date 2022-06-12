@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.D2.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Distance
+namespace Alis.Core.Physic.D2.Collision.Distance
 {
     /// <summary>Input parameters for b2ShapeCast</summary>
     public struct ShapeCastInput

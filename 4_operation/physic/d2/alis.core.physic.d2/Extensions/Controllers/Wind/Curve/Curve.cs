@@ -29,7 +29,7 @@
 
 using System;
 using System.Runtime.Serialization;
-using Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve;
+using Alis.Core.Physic.D2.Extensions.Controllers.Wind.Curve;
 
 
 // ReSharper disable once CheckNamespace

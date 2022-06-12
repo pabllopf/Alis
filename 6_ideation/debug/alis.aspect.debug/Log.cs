@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Text.Json.Serialization;
 
-namespace Alis.Tools
+namespace Alis.Aspect.Debug
 {
     /// <summary>
     ///     The log class

@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.Filtering;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
+using Alis.Core.Physic.D2.Collision.Filtering;
+using Alis.Core.Physic.D2.Collision.Shapes;
 
-namespace Alis.Core.Systems.Physics2D.Definitions
+namespace Alis.Core.Physic.D2.Definitions
 {
     /// <summary>
     ///     The fixture def class

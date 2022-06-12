@@ -30,23 +30,22 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Broadphase;
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
-using Alis.Core.Systems.Physics2D.Collision.Distance;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Collision.TOI;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Handlers;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
-using Alis.Core.Systems.Physics2D.Dynamics.Solver;
-using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.D2.Collision.Broadphase;
+using Alis.Core.Physic.D2.Collision.ContactSystem;
+using Alis.Core.Physic.D2.Collision.Distance;
+using Alis.Core.Physic.D2.Collision.RayCast;
+using Alis.Core.Physic.D2.Collision.TOI;
+using Alis.Core.Physic.D2.Config;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Dynamics.Handlers;
+using Alis.Core.Physic.D2.Dynamics.Joints;
+using Alis.Core.Physic.D2.Dynamics.Joints.Misc;
+using Alis.Core.Physic.D2.Dynamics.Solver;
+using Alis.Core.Physic.D2.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Utilities;
 
-namespace Alis.Core.Systems.Physics2D
+namespace Alis.Core.Physic.D2
 {
     /// <summary>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</summary>
     public class World

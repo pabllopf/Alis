@@ -30,9 +30,9 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Security;
-using Alis.Core.Graphics2D.Systems;
+using Alis.Core.Graphic.D2.Graphics;
 
-namespace Alis.Core.Graphics2D.Windows
+namespace Alis.Core.Graphic.D2.Windows
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

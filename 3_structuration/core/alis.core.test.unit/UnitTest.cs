@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Core.Test
+namespace Alis.Core.Test.Unit
 {
     /// <summary>
     ///     The tests class

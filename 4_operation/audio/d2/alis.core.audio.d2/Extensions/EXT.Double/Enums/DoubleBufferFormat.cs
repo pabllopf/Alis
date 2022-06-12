@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D.Extensions.EXT.Double.Enums
+namespace Alis.Core.Audio.D2.Extensions.EXT.Double.Enums
 {
     /// <summary>
     ///     Defines valid format specifiers for sound samples. This covers the additions from the multi-channel buffers

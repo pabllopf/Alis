@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-
-namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
+namespace Alis.Core.Physic.D2.Collision.Narrowphase
 {
     /// <summary>Reference face used for clipping</summary>
     public struct ReferenceFace

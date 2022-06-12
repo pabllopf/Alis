@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physic.D2.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
+namespace Alis.Core.Physic.D2.Extensions.PhysicsLogics.PhysicsLogicBase
 {
     /// <summary>
     ///     The physics logic class

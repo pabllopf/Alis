@@ -32,7 +32,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 
-namespace Alis.Core.Audio2D.Mathematics
+namespace Alis.Core.Audio.D2.Mathematics
 {
     /// <summary>
     ///     Contains common mathematical functions and constants.

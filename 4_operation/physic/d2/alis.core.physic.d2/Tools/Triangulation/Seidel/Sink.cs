@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Seidel
 {
     /// <summary>
     ///     The sink class

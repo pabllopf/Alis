@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D.Extensions.SOFT.SourceLatency.Enums
+namespace Alis.Core.Audio.D2.Extensions.SOFT.SourceLatency.Enums
 {
     /// <summary>
     ///     The source latency vector 2i enum

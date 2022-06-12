@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Audio2D.Native
+namespace Alis.Core.Audio.D2.Native
 {
     /// <summary>
     ///     The const char ptr marshaler class

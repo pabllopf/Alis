@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Systems.Physics2D.Collision.Filtering;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.D2.Collision.Filtering;
+using Alis.Core.Physic.D2.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Config
+namespace Alis.Core.Physic.D2.Config
 {
     /// <summary>
     ///     The settings class

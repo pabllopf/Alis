@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Sample.D2.Tetris</name>
+    </assembly>
+    <members>
+        <member name="T:RocketLeague.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:RocketLeague.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>

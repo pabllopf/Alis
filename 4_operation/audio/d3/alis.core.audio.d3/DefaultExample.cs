@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.D3.Audio
+namespace Alis.Core.Audio.D3
 {
     /// <summary>
     ///     The default example class

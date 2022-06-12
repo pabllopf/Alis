@@ -29,10 +29,10 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Mathematics.Vector;
-using Alis.Core.Audio2D.Native;
+using Alis.Core.Audio.D2.Mathematics.Vector;
+using Alis.Core.Audio.D2.Native;
 
-namespace Alis.Core.Audio2D
+namespace Alis.Core.Audio.D2
 {
     /// <summary>
     ///     Provides access to the OpenAL 1.1 flat API.

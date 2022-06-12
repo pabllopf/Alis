@@ -27,10 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Components;
-using Alis.Core.Input;
-
-namespace PingPong
+namespace Alis.Sample.D2.PingPong
 {
     /// <summary>
     ///     The select class

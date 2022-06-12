@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 
-namespace Alis.Core.Audio2D
+namespace Alis.Core.Audio.D2
 {
     /// <summary>
     ///     The al context

@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-
-namespace Alis.Core.Systems.Physics2D.Collision.RayCast
+namespace Alis.Core.Physic.D2.Collision.RayCast
 {
     /// <summary>Ray-cast output data.</summary>
     public struct RayCastOutput

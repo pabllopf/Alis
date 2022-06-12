@@ -28,10 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
-using System.Text.Json.Serialization;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Shapes
+namespace Alis.Core.Physic.D2.Collision.Shapes
 {
     /// <summary>This holds the mass data computed for a shape.</summary>
     public struct MassData : IEquatable<MassData>

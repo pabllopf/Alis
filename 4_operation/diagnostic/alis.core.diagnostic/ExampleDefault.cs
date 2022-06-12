@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Diagnostics
+namespace Alis.Core.Diagnostic
 {
     /// <summary>
     ///     The example class

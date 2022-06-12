@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Audio2D.Core.Platform
+namespace Alis.Core.Audio.D2.Core.Platform
 {
     /// <summary>
     ///     Defines a platform-specific exception.

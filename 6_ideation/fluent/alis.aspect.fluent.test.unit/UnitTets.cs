@@ -29,7 +29,7 @@
 
 using NUnit.Framework;
 
-namespace Alis.Tools.Test
+namespace Alis.Aspect.Fluent.Test.Unit
 {
     /// <summary>
     ///     The unit tets class

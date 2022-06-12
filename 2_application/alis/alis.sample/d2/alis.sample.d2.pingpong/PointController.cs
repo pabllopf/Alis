@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Components;
-
-namespace PingPong
+namespace Alis.Sample.D2.PingPong
 {
     /// <summary>
     ///     The point controller class

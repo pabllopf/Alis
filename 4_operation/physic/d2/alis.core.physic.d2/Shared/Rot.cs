@@ -28,9 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.D2.Shared
 {
     /// <summary>Rotation</summary>
     public struct Rot

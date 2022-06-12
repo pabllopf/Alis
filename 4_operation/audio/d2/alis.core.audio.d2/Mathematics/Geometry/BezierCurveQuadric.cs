@@ -29,9 +29,9 @@
 
 using System;
 using System.Diagnostics.Contracts;
-using Alis.Core.Audio2D.Mathematics.Vector;
+using Alis.Core.Audio.D2.Mathematics.Vector;
 
-namespace Alis.Core.Audio2D.Mathematics.Geometry
+namespace Alis.Core.Audio.D2.Mathematics.Geometry
 {
     /// <summary>
     ///     Represents a quadric bezier curve with two anchor and one control point.

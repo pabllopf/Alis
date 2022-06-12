@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Definitions.Joints;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints;
+using Alis.Core.Physic.D2.Definitions.Joints;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Dynamics.Joints;
 
-namespace Alis.Core.Systems.Physics2D.Factories
+namespace Alis.Core.Physic.D2.Factories
 {
     /// <summary>An easy to use factory for using joints.</summary>
     public static class JointFactory

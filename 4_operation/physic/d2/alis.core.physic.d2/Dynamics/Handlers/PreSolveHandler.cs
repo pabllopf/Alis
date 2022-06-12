@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
-using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
+using Alis.Core.Physic.D2.Collision.ContactSystem;
+using Alis.Core.Physic.D2.Collision.Narrowphase;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Handlers
+namespace Alis.Core.Physic.D2.Dynamics.Handlers
 {
     /// <summary>
     ///     The pre solve handler

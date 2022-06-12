@@ -29,10 +29,10 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Extensions.Creative.EnumerateAll.Enums;
-using Alis.Core.Audio2D.Native;
+using Alis.Core.Audio.D2.Extensions.Creative.EnumerateAll.Enums;
+using Alis.Core.Audio.D2.Native;
 
-namespace Alis.Core.Audio2D.Extensions.Creative.EnumerateAll
+namespace Alis.Core.Audio.D2.Extensions.Creative.EnumerateAll
 {
     /// <summary>
     ///     Exposes the API in the EnumerateAll extension.

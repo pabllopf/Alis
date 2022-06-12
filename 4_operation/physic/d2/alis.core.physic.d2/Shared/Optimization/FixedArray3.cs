@@ -31,7 +31,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-namespace Alis.Core.Systems.Physics2D.Shared.Optimization
+namespace Alis.Core.Physic.D2.Shared.Optimization
 {
     /// <summary>
     ///     The fixed array

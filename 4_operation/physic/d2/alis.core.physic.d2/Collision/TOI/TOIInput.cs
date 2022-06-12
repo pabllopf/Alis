@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.Distance;
+using Alis.Core.Physic.D2.Collision.Distance;
 
-namespace Alis.Core.Systems.Physics2D.Collision.TOI
+namespace Alis.Core.Physic.D2.Collision.TOI
 {
     /// <summary>Input parameters for CalculateTimeOfImpact</summary>
     public struct ToiInput

@@ -29,9 +29,9 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Alis.Core.Systems.Physics2D.Shared.Contracts;
+using Alis.Core.Physic.D2.Shared.Contracts;
 
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.D2.Shared
 {
     /// <summary>This graph is a doubly linked circular list. It is circular to avoid branches in Add/Remove methods.</summary>
     public class Graph<T> : IEnumerable<T>

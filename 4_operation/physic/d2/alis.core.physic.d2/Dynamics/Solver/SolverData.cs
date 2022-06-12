@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
+namespace Alis.Core.Physic.D2.Dynamics.Solver
 {
     /// <summary>
     ///     The solver data

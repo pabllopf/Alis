@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
+using Alis.Core.Physic.D2.Collision.Shapes;
 
-namespace Alis.Core.Systems.Physics2D.Definitions.Shapes
+namespace Alis.Core.Physic.D2.Definitions.Shapes
 {
     /// <summary>
     ///     A line segment (edge) shape. These can be connected in chains or loops to other edge shapes. The connectivity

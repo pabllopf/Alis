@@ -29,12 +29,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.D2.Config;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Extensions.Controllers.ControllerBase;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Velocity
+namespace Alis.Core.Physic.D2.Extensions.Controllers.Velocity
 {
     /// <summary>
     ///     Put a limit on the linear (translation - the move speed) and angular (rotation) velocity of bodies added to

@@ -27,10 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Dynamics.Joints.Misc;
 
-namespace Alis.Core.Systems.Physics2D.Definitions.Joints
+namespace Alis.Core.Physic.D2.Definitions.Joints
 {
     /// <summary>
     ///     The joint def class

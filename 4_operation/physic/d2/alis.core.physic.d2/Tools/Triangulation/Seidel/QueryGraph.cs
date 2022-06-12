@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
+namespace Alis.Core.Physic.D2.Tools.Triangulation.Seidel
 {
     // Directed Acyclic graph (DAG)
     // See "Computational Geometry", 3rd edition, by Mark de Berg et al, Chapter 6.2

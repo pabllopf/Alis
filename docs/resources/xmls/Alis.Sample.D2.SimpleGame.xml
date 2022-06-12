@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Alis.Sample.D2.Simplegame</name>
+        <name>Alis.Sample.D2.SimpleGame</name>
     </assembly>
     <members>
         <member name="T:Alis.Sample.D2.SimpleGame.Program">

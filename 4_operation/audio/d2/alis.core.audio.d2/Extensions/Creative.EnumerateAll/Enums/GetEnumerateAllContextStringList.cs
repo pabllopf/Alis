@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio2D.Extensions.Creative.EnumerateAll.Enums
+namespace Alis.Core.Audio.D2.Extensions.Creative.EnumerateAll.Enums
 {
     /// <summary>
     ///     Defines available parameters for

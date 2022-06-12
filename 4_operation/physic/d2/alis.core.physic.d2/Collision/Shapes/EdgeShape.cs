@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.D2.Collision.RayCast;
+using Alis.Core.Physic.D2.Config;
+using Alis.Core.Physic.D2.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Shapes
+namespace Alis.Core.Physic.D2.Collision.Shapes
 {
     /// <summary>
     ///     A line segment (edge) shape. These can be connected in chains or loops to other edge shapes. Edges created

@@ -30,9 +30,9 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Native;
+using Alis.Core.Audio.D2.Native;
 
-namespace Alis.Core.Audio2D
+namespace Alis.Core.Audio.D2
 {
     /// <summary>Alc = Audio Library Context.</summary>
     public class ALC : ALBase

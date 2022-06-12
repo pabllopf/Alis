@@ -31,10 +31,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text.Encodings.Web;
-using System.Text.Json;
 
-namespace Alis.Tools
+namespace Alis.Aspect.Debug
 {
     /// <summary>
     ///     The logger class

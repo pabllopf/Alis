@@ -27,12 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Audio2D.Extensions.EXT.Float32.Enums;
-using Alis.Core.Audio2D.Native;
+using Alis.Core.Audio.D2.Extensions.EXT.Float32.Enums;
+using Alis.Core.Audio.D2.Native;
 
-namespace Alis.Core.Audio2D.Extensions.EXT.Float32
+namespace Alis.Core.Audio.D2.Extensions.EXT.Float32
 {
     /// <summary>
     ///     The ext float 32 class

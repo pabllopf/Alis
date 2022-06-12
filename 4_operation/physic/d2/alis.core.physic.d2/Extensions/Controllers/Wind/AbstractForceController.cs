@@ -28,12 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
+using Alis.Core.Physic.D2.Dynamics;
+using Alis.Core.Physic.D2.Extensions.Controllers.ControllerBase;
 using Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
+namespace Alis.Core.Physic.D2.Extensions.Controllers.Wind
 {
     /// <summary>
     ///     The abstract force controller class
@@ -116,7 +115,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
         }
 
         /// <summary>Curve to be used for Decay in Curve mode</summary>
-        public Config.Extensions.Controllers.Wind.Curve.Curve DecayCurve;
+        public Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve DecayCurve;
 
         /// <summary>The Forcetype of the instance</summary>
         public ForceTypes ForceType;
@@ -128,7 +127,7 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
         ///     Curve used by Curve Mode as an animated multiplier for the force strength. Only positions between 0 and 1 are
         ///     considered as that range is stretched to have ImpulseLength.
         /// </summary>
-        public Config.Extensions.Controllers.Wind.Curve.Curve StrengthCurve;
+        public Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve StrengthCurve;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AbstractForceController" /> class
@@ -144,11 +143,11 @@ namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
             ImpulseTime = 0.0f;
             ImpulseLength = 1.0f;
             Triggered = false;
-            StrengthCurve = new Config.Extensions.Controllers.Wind.Curve.Curve();
+            StrengthCurve = new Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve();
             Variation = 0.0f;
             Randomize = new Random(1234);
             DecayMode = DecayModes.None;
-            DecayCurve = new Config.Extensions.Controllers.Wind.Curve.Curve();
+            DecayCurve = new Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve();
             DecayStart = 0.0f;
             DecayEnd = 0.0f;
 

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc
+namespace Alis.Core.Physic.D2.Dynamics.Joints.Misc
 {
     /// <summary>
     ///     The joint type enum

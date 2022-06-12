@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Components;
-
-namespace GeometryDash
+namespace Alis.Sample.D2.GeometryDash
 {
     /// <summary>
     ///     The point controller class

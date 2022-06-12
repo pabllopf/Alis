@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
+namespace Alis.Core.Physic.D2.Collision.ContactSystem
 {
     /// <summary>
     ///     The contact type enum

@@ -32,11 +32,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Security;
-using Alis.Core.Graphics2D.Systems;
-using Alis.Core.Graphics2D.Windows;
-using Alis.Exceptions;
+using Alis.Core.Graphic.D2.Windows;
 
-namespace Alis.Core.Graphics2D.Graphics
+namespace Alis.Core.Graphic.D2.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

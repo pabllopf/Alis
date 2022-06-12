@@ -30,16 +30,16 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Tools.ConvexHull;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Bayazit;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Earclip;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.FlipCode;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel;
+using Alis.Core.Physic.D2.Config;
+using Alis.Core.Physic.D2.Shared;
+using Alis.Core.Physic.D2.Tools.ConvexHull;
+using Alis.Core.Physic.D2.Tools.Triangulation.Bayazit;
+using Alis.Core.Physic.D2.Tools.Triangulation.Delaunay;
+using Alis.Core.Physic.D2.Tools.Triangulation.Earclip;
+using Alis.Core.Physic.D2.Tools.Triangulation.FlipCode;
+using Alis.Core.Physic.D2.Tools.Triangulation.Seidel;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.TriangulationBase
+namespace Alis.Core.Physic.D2.Tools.Triangulation.TriangulationBase
 {
     /// <summary>
     ///     The triangulate class
