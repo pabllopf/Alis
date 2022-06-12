@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Template.Library</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Template.Library.Class1">
+            <summary>
+            The class class
+            </summary>
+        </member>
+        <member name="M:Alis.Template.Library.Class1.sum_old_nums">
+            <summary>
+            Sums the old nums
+            </summary>
+            <returns>The int</returns>
+        </member>
+    </members>
+</doc>

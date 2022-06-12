@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_delaunay2d780bc6825eee5c89f90c568f09af0e =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_delaunay2d780bc6825eee5c89f90c568f09af0e.html#af284c05d427a3954faad5cb9598c9d4a", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_delaunay2d780bc6825eee5c89f90c568f09af0e.html#ad54305311feb4026f44026cd9054e955", null ]
-];

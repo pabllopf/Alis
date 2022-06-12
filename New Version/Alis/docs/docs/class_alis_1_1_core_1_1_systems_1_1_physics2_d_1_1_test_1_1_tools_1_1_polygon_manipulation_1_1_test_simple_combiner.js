@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_polygon_manipulation_1_1_test_simple_combiner =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_polygon_manipulation_1_1_test_simple_combiner.html#a0f410e076d0ffef9e90f73e848681ee6", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_polygon_manipulation_1_1_test_simple_combiner.html#aeacf2fafecffc01148be7ae6604a9cd2", null ]
-];

@@ -1,8 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers =
-[
-    [ "Buoyancy", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_buoyancy.html", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_buoyancy" ],
-    [ "ControllerBase", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_controller_base.html", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_controller_base" ],
-    [ "Gravity", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_gravity.html", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_gravity" ],
-    [ "Velocity", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_velocity.html", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_velocity" ],
-    [ "Wind", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind.html", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind" ]
-];

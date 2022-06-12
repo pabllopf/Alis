@@ -1,4 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_bayazit =
-[
-    [ "TestBayazitDecomposer", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_test_bayazit_decomposer.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_test_bayazit_decomposer" ]
-];

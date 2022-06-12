@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_poly_clip_error =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_poly_clip_error.html#ae2d95f158d0ab9ae40025f5d08de0613", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_poly_clip_error.html#a04a5a7ee833264fbdab324393964faf7", null ]
-];

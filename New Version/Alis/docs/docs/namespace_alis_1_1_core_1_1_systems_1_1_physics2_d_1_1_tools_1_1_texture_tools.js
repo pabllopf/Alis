@@ -1,6 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_texture_tools =
-[
-    [ "MarchingSquares", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_texture_tools_1_1_marching_squares.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_texture_tools_1_1_marching_squares" ],
-    [ "Terrain", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_texture_tools_1_1_terrain.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_texture_tools_1_1_terrain" ],
-    [ "TextureConverter", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_texture_tools_1_1_texture_converter.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_texture_tools_1_1_texture_converter" ]
-];

@@ -1,4 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_dela7f412c4ad8db75906b6b9ab1865dd864 =
-[
-    [ "DtSweepConstraint", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_dela7f412c4ad8db75906b6b9ab1865dd864.html#a8406e4e985934e3980ce6f2f6f96d92b", null ]
-];

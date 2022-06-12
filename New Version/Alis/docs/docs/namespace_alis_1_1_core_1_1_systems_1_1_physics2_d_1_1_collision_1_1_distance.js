@@ -1,9 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance =
-[
-    [ "DistanceGjk", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_distance_gjk.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_distance_gjk" ],
-    [ "DistanceInput", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_distance_input.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_distance_input" ],
-    [ "DistanceOutput", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_distance_output.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_distance_output" ],
-    [ "DistanceProxy", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_distance_proxy.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_distance_proxy" ],
-    [ "ShapeCastInput", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_shape_cast_input.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_shape_cast_input" ],
-    [ "ShapeCastOutput", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_shape_cast_output.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_distance_1_1_shape_cast_output" ]
-];

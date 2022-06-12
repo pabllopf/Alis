@@ -1,4 +1,0 @@
-var namespace_alis_1_1_core_1_1_s_f_m_l_1_1_example =
-[
-    [ "Program", "class_alis_1_1_core_1_1_s_f_m_l_1_1_example_1_1_program.html", "class_alis_1_1_core_1_1_s_f_m_l_1_1_example_1_1_program" ]
-];

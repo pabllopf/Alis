@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Aspect.Assertion</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Exceptions.ComponentDontExits">
+            <summary>
+                The component dont exits class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="T:Alis.Exceptions.ComponentIsTheSame">
+            <summary>
+                The component is the same class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="T:Alis.Exceptions.ComponentTypeExist">
+            <summary>
+                The component type exist class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="T:Alis.Exceptions.GameObjectIsFull">
+            <summary>
+                The game object is full class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="T:Alis.Exceptions.IndexOutOfBounds">
+            <summary>
+                The index out of bounds class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="T:Alis.Exceptions.LimitOfComponents">
+            <summary>
+                The limit of components class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="T:Alis.Exceptions.LoadingFailedException">
+            <summary>
+                Exception thrown by SFML whenever loading a resource fails
+            </summary>
+        </member>
+        <member name="M:Alis.Exceptions.LoadingFailedException.#ctor">
+            <summary>
+                Default constructor (unknown error)
+            </summary>
+        </member>
+        <member name="M:Alis.Exceptions.LoadingFailedException.#ctor(System.String)">
+            <summary>
+                Failure to load a resource from memory
+            </summary>
+            <param name="resourceName">Name of the resource</param>
+        </member>
+        <member name="M:Alis.Exceptions.LoadingFailedException.#ctor(System.String,System.Exception)">
+            <summary>
+                Failure to load a resource from memory
+            </summary>
+            <param name="resourceName">Name of the resource</param>
+            <param name="innerException">Exception which is the cause ofthe current exception</param>
+        </member>
+        <member name="M:Alis.Exceptions.LoadingFailedException.#ctor(System.String,System.String)">
+            <summary>
+                Failure to load a resource from a file
+            </summary>
+            <param name="resourceName">Name of the resource</param>
+            <param name="filename">Path of the file</param>
+        </member>
+        <member name="M:Alis.Exceptions.LoadingFailedException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+                Failure to load a resource from a file
+            </summary>
+            <param name="resourceName">Name of the resource</param>
+            <param name="filename">Path of the file</param>
+            <param name="innerException">Exception which is the cause ofthe current exception</param>
+        </member>
+        <member name="T:Alis.Exceptions.MaxSceneGame">
+            <summary>
+                The max scene game class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="T:Alis.Exceptions.NullArgumentException">
+            <summary>
+                The null argument exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+    </members>
+</doc>
