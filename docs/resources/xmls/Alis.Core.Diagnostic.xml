@@ -4,7 +4,7 @@
         <name>Alis.Core.Diagnostic</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Diagnostics.ExampleDefault">
+        <member name="T:Alis.Core.Diagnostic.ExampleDefault">
             <summary>
                 The example class
             </summary>

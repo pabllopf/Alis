@@ -4,7 +4,7 @@
         <name>Alis.Core.Updater</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Time.ExampleDefault">
+        <member name="T:Alis.Core.Updater.ExampleDefault">
             <summary>
                 The example class
             </summary>

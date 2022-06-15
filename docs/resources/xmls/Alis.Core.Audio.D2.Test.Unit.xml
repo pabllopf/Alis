@@ -4,22 +4,22 @@
         <name>Alis.Core.Audio.D2.Test.Unit</name>
     </assembly>
     <members>
-        <member name="T:Alis.Tools.Test.UnitTets">
+        <member name="T:Alis.Core.Audio.D2.Test.Unit.UnitTets">
             <summary>
                 The unit tets class
             </summary>
         </member>
-        <member name="T:Alis.Tools.Test.UnitTets.Tests">
+        <member name="T:Alis.Core.Audio.D2.Test.Unit.UnitTets.Tests">
             <summary>
                 The tests class
             </summary>
         </member>
-        <member name="M:Alis.Tools.Test.UnitTets.Tests.Setup">
+        <member name="M:Alis.Core.Audio.D2.Test.Unit.UnitTets.Tests.Setup">
             <summary>
                 Setup this instance
             </summary>
         </member>
-        <member name="M:Alis.Tools.Test.UnitTets.Tests.Test1">
+        <member name="M:Alis.Core.Audio.D2.Test.Unit.UnitTets.Tests.Test1">
             <summary>
                 Tests that test 1
             </summary>

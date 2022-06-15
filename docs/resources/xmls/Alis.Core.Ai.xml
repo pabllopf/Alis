@@ -4,7 +4,7 @@
         <name>Alis.Core.Ai</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Ads.ExampleDefault">
+        <member name="T:Alis.Core.Ai.ExampleDefault">
             <summary>
                 The example default class
             </summary>

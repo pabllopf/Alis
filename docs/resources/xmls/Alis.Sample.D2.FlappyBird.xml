@@ -4,12 +4,12 @@
         <name>Alis.Sample.D2.FlappyBird</name>
     </assembly>
     <members>
-        <member name="T:FlappyBird.Program">
+        <member name="T:Alis.Sample.D2.FlappyBird.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:FlappyBird.Program.Main(System.String[])">
+        <member name="M:Alis.Sample.D2.FlappyBird.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>

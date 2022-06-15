@@ -4,7 +4,7 @@
         <name>Alis.Core.Graphics.D3</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Graphics3D.example">
+        <member name="T:Alis.Core.Graphics.D3.example">
             <summary>
                 The example class
             </summary>

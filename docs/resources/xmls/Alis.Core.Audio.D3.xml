@@ -4,7 +4,7 @@
         <name>Alis.Core.Audio.D3</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.D3.Audio.DefaultExample">
+        <member name="T:Alis.Core.Audio.D3.DefaultExample">
             <summary>
                 The default example class
             </summary>

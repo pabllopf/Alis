@@ -4,7 +4,7 @@
         <name>Alis.Aspect.Base</name>
     </assembly>
     <members>
-        <member name="T:Alis.Base.ObjectBase">
+        <member name="T:Alis.Aspect.Base.ObjectBase">
             <summary>
                 The object base class
             </summary>

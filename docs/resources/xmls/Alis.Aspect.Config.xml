@@ -4,7 +4,7 @@
         <name>Alis.Aspect.Config</name>
     </assembly>
     <members>
-        <member name="T:Alis.Base.ExampleClass">
+        <member name="T:Alis.Aspect.Config.ExampleClass">
             <summary>
                 The example class
             </summary>

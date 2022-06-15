@@ -4,7 +4,7 @@
         <name>Alis.Core.Physics.D3</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Physics3D.ExampleDefault">
+        <member name="T:Alis.Core.Physics.D3.ExampleDefault">
             <summary>
                 The example class
             </summary>

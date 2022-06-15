@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project>
     <ItemGroup>
         <None Include="$(SolutionDir)licence.md" LinkBase="Docs" Pack="true" PackagePath="Docs/"/>

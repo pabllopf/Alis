@@ -1,5 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <ItemGroup>
+    <ItemGroup 
+        Condition="
+        $(AssemblyName.Equals('Alis.Engine')) OR 
+        $(AssemblyName.Equals('Alis.Engine.Test.Benchmark')) OR 
+        $(AssemblyName.Equals('Alis.Engine.Test.Integration')) OR 
+        $(AssemblyName.Equals('Alis.Engine.Test.Unit')) ">
         <ProjectReference Include="$(SolutionDir)/2_application/alis/alis/Alis.csproj" />
     </ItemGroup>
+
 </Project>

@@ -4,12 +4,12 @@
         <name>Alis.Aspect.Fluent.Sample</name>
     </assembly>
     <members>
-        <member name="T:Alis.Tools.Example.Program">
+        <member name="T:Alis.Aspect.Fluent.Sample.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:Alis.Tools.Example.Program.Main(System.String[])">
+        <member name="M:Alis.Aspect.Fluent.Sample.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>

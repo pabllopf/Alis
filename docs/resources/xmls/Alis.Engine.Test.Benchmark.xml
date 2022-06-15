@@ -4,12 +4,12 @@
         <name>Alis.Engine.Test.Benchmark</name>
     </assembly>
     <members>
-        <member name="T:Alis.Engine.Benchmark.Program">
+        <member name="T:Alis.Engine.Test.Benchmark.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:Alis.Engine.Benchmark.Program.Main(System.String[])">
+        <member name="M:Alis.Engine.Test.Benchmark.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>

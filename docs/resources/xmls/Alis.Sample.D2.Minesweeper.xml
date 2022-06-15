@@ -4,12 +4,12 @@
         <name>Alis.Sample.D2.Minesweeper</name>
     </assembly>
     <members>
-        <member name="T:RocketLeague.Program">
+        <member name="T:Alis.Sample.D2.Minesweeper.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:RocketLeague.Program.Main(System.String[])">
+        <member name="M:Alis.Sample.D2.Minesweeper.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>
