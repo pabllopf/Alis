@@ -30,4 +30,18 @@
         <ProjectReference Include="$(SolutionDir)/3_structuration/core/alis.core/Alis.Core.csproj" />
     </ItemGroup>
 
+
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Assertion.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Assertion.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Assertion.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Assertion.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/assertion/alis.aspect.assertion/Alis.Aspect.Assertion.csproj" />
+    </ItemGroup>
+    
+    
+
 </Project>
