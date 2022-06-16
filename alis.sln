@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{0B0C39B0-D
 		.config\docs\Docs.props = .config\docs\Docs.props
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{7211F41D-27C7-461A-954A-7010BAD3DE1F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "builds", "builds", "{7211F41D-27C7-461A-954A-7010BAD3DE1F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{F90708CD-3588-499D-93D9-78DF2AA56C86}"
 	ProjectSection(SolutionItems) = preProject
@@ -66,10 +66,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "target", "target", "{F025DB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "general", "general", "{74539232-F133-45A6-9D2A-6EAB3203E7E7}"
 	ProjectSection(SolutionItems) = preProject
-		.config\build\general\NoWarn.props = .config\build\general\NoWarn.props
-		.config\build\general\TreatWarningsAsErrors.props = .config\build\general\TreatWarningsAsErrors.props
-		.config\build\general\WarningLevel.props = .config\build\general\WarningLevel.props
-		.config\build\general\WarningsAsErrors.props = .config\build\general\WarningsAsErrors.props
+		.config\builds\general\NoWarn.props = .config\builds\general\NoWarn.props
+		.config\builds\general\TreatWarningsAsErrors.props = .config\builds\general\TreatWarningsAsErrors.props
+		.config\builds\general\WarningLevel.props = .config\builds\general\WarningLevel.props
+		.config\builds\general\WarningsAsErrors.props = .config\builds\general\WarningsAsErrors.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{9C887278-E5B6-492E-A95F-DDE2A2F639ED}"

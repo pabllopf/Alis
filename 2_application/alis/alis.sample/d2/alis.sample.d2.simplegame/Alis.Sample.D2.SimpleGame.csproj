@@ -1,3 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(SolutionDir)/.config/Config.props" />
+    <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)/2_application/alis/alis/Alis.csproj" />
+    </ItemGroup>
 </Project>

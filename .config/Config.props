@@ -21,10 +21,10 @@
     <!-- 
         BUILD GENERAL 
     -->
-    <Import Project="$(SolutionDir)/.config/build/general/NoWarn.props" />
-    <Import Project="$(SolutionDir)/.config/build/general/TreatWarningsAsErrors.props" />
-    <Import Project="$(SolutionDir)/.config/build/general/WarningLevel.props" />
-    <Import Project="$(SolutionDir)/.config/build/general/WarningsAsErrors.props" />
+    <Import Project="$(SolutionDir)/.config/builds/general/NoWarn.props" />
+    <Import Project="$(SolutionDir)/.config/builds/general/TreatWarningsAsErrors.props" />
+    <Import Project="$(SolutionDir)/.config/builds/general/WarningLevel.props" />
+    <Import Project="$(SolutionDir)/.config/builds/general/WarningsAsErrors.props" />
 
     <!-- 
         DOCS 
@@ -66,7 +66,6 @@
     <Import Project="$(SolutionDir)/.config/Reference/Project/Alis.props" />
 
     <!-- 
-    
       TARGET
     -->
     <Import Project="$(SolutionDir)/.config/target/BeforeBuild.props" />

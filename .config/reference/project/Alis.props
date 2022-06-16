@@ -5,8 +5,29 @@
         $(AssemblyName.Equals('Alis.Engine')) OR 
         $(AssemblyName.Equals('Alis.Engine.Test.Benchmark')) OR 
         $(AssemblyName.Equals('Alis.Engine.Test.Integration')) OR 
-        $(AssemblyName.Equals('Alis.Engine.Test.Unit')) ">
+        $(AssemblyName.Equals('Alis.Engine.Test.Unit')) OR
+        
+        $(AssemblyName.Equals('Alis.Installer')) OR 
+        $(AssemblyName.Equals('Alis.Installer.Test.Benchmark')) OR 
+        $(AssemblyName.Equals('Alis.Installer.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Installer.Test.Unit')) OR
+        
+        $(AssemblyName.Equals('Alis.Test.Benchmark')) OR 
+        $(AssemblyName.Equals('Alis.Test.Integration')) OR 
+        $(AssemblyName.Equals('Alis.Test.Unit'))">
         <ProjectReference Include="$(SolutionDir)/2_application/alis/alis/Alis.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis')) OR
+        
+        $(AssemblyName.Equals('Alis.Core.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/3_structuration/core/alis.core/Alis.Core.csproj" />
     </ItemGroup>
 
 </Project>
