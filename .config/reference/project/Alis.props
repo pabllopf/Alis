@@ -31,7 +31,38 @@
     </ItemGroup>
 
 
+    <!--
+   5_declaration
+   -->
 
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Aspect'))">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/assertion/alis.aspect.assertion/Alis.Aspect.Assertion.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/base/alis.aspect.base/Alis.Aspect.Base.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/config/alis.aspect.config/Alis.Aspect.Config.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/data/alis.aspect.data/Alis.Aspect.Data.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/debug/alis.aspect.debug/Alis.Aspect.Debug.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/fluent/alis.aspect.fluent/Alis.Aspect.Fluent.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/math/alis.aspect.math/Alis.Aspect.Math.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/memory/alis.aspect.memory/Alis.Aspect.Memory.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/resource/alis.aspect.resource/Alis.Aspect.Resource.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/security/alis.aspect.security/Alis.Aspect.Security.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/thread/alis.aspect.thread/Alis.Aspect.Thread.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+
+    <!--
+    6_ideation
+    -->
     <ItemGroup
         Condition="
         $(AssemblyName.Equals('Alis.Aspect.Assertion.Sample')) OR
@@ -40,6 +71,106 @@
         $(AssemblyName.Equals('Alis.Aspect.Assertion.Test.Unit')) 
         ">
         <ProjectReference Include="$(SolutionDir)/6_ideation/assertion/alis.aspect.assertion/Alis.Aspect.Assertion.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Base.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Base.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Base.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Base.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/base/alis.aspect.base/Alis.Aspect.Base.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Config.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Config.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Config.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Config.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/config/alis.aspect.config/Alis.Aspect.Config.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Data.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Data.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Data.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Data.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/data/alis.aspect.data/Alis.Aspect.Data.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Debug.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Debug.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Debug.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Debug.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/debug/alis.aspect.debug/Alis.Aspect.Debug.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Fluent.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Fluent.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Fluent.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Fluent.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/fluent/alis.aspect.fluent/Alis.Aspect.Fluent.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Math.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Math.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Math.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Math.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/math/alis.aspect.math/Alis.Aspect.Math.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Memory.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Memory.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Memory.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Memory.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/memory/alis.aspect.memory/Alis.Aspect.Memory.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Resource.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Resource.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Resource.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Resource.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/resource/alis.aspect.resource/Alis.Aspect.Resource.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Security.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Security.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Security.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Security.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/security/alis.aspect.security/Alis.Aspect.Security.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Thread.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Thread.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Thread.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Thread.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/thread/alis.aspect.thread/Alis.Aspect.Thread.csproj" />
     </ItemGroup>
     
     
