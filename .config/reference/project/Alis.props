@@ -1,27 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+
+    <!--
+    1_presentation
+    -->
+    
     <ItemGroup 
         Condition="
-        $(AssemblyName.Equals('Alis.Engine')) OR 
-        $(AssemblyName.Equals('Alis.Engine.Test.Benchmark')) OR 
-        $(AssemblyName.Equals('Alis.Engine.Test.Integration')) OR 
-        $(AssemblyName.Equals('Alis.Engine.Test.Unit')) OR
-        
-        $(AssemblyName.Equals('Alis.Installer')) OR 
-        $(AssemblyName.Equals('Alis.Installer.Test.Benchmark')) OR 
-        $(AssemblyName.Equals('Alis.Installer.Test.Integration')) OR
-        $(AssemblyName.Equals('Alis.Installer.Test.Unit')) OR
-        
-        $(AssemblyName.Equals('Alis.Test.Benchmark')) OR 
-        $(AssemblyName.Equals('Alis.Test.Integration')) OR 
-        $(AssemblyName.Equals('Alis.Test.Unit'))">
+        $(AssemblyName.Equals('Alis.Engine')) OR
+        $(AssemblyName.Equals('Alis.Installer'))">
         <ProjectReference Include="$(SolutionDir)/2_application/alis/alis/Alis.csproj" />
     </ItemGroup>
 
     <ItemGroup
         Condition="
-        $(AssemblyName.Equals('Alis')) OR
-        
+        $(AssemblyName.Equals('Alis.Engine.Test.Benchmark')) OR 
+        $(AssemblyName.Equals('Alis.Engine.Test.Integration')) OR 
+        $(AssemblyName.Equals('Alis.Engine.Test.Unit')) ">
+        <ProjectReference Include="$(SolutionDir)/1_presentation/engine/alis.engine/Alis.Engine.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Installer.Test.Benchmark')) OR 
+        $(AssemblyName.Equals('Alis.Installer.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Installer.Test.Unit'))">
+        <ProjectReference Include="$(SolutionDir)/1_presentation/installer/alis.installer/Alis.Installer.csproj" />
+    </ItemGroup>
+
+    <!--
+    2_application
+    -->
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis'))">
+        <ProjectReference Include="$(SolutionDir)/3_structuration/core/alis.core/Alis.Core.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Test.Unit'))">
+        <ProjectReference Include="$(SolutionDir)/2_application/alis/alis/Alis.csproj" />
+    </ItemGroup>
+    
+    <!--
+   3_structuration
+   -->
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core'))">
+        <ProjectReference Include="$(SolutionDir)/4_operation/ads/alis.core.ads/Alis.Core.Ads.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/ai/alis.core.ai/Alis.Core.Ai.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/audio/d2/alis.core.audio.d2/Alis.Core.Audio.D2.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/audio/d3/alis.core.audio.d3/Alis.Core.Audio.D3.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/cloud/alis.core.cloud/Alis.Core.Cloud.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/database/alis.core.database/Alis.Core.Database.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/diagnostic/alis.core.diagnostic/Alis.Core.Diagnostic.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/d2/alis.core.graphic.d2/Alis.Core.Graphic.D2.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/d3/alis.core.graphic.d3/Alis.Core.Graphic.D3.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/input/alis.core.input/Alis.Core.Input.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/network/alis.core.network/Alis.Core.Network.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/output/alis.core.output/Alis.Core.Output.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/physic/d2/alis.core.physic.d2/Alis.Core.Physic.D2.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/physic/d3/alis.core.physic.d3/Alis.Core.Physic.D3.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/report/alis.core.report/Alis.Core.Report.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/time/alis.core.time/Alis.Core.Time.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/updater/alis.core.updater/Alis.Core.Updater.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
         $(AssemblyName.Equals('Alis.Core.Sample')) OR
         $(AssemblyName.Equals('Alis.Core.Test.Benchmark')) OR
         $(AssemblyName.Equals('Alis.Core.Test.Integration')) OR
@@ -29,7 +77,252 @@
         ">
         <ProjectReference Include="$(SolutionDir)/3_structuration/core/alis.core/Alis.Core.csproj" />
     </ItemGroup>
+    
+    
+    <!--
+   4_operation
+   -->
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Ads'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Ads.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Ads.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Ads.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Ads.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/ads/alis.core.ads/Alis.Core.Ads.csproj" />
+    </ItemGroup>
 
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Ai'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Ai.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Ai.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Ai.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Ai.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/ai/alis.core.ai/Alis.Core.Ai.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Audio.D2'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Audio.D2.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Audio.D2.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Audio.D2.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Audio.D2.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/audio/d2/alis.core.audio.d2/Alis.Core.Audio.D2.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Audio.D3'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Audio.D3.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Audio.D3.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Audio.D3.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Audio.D3.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/audio/d3/alis.core.audio.d3/Alis.Core.Audio.D3.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Cloud'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Cloud.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Cloud.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Cloud.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Cloud.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/cloud/alis.core.cloud/Alis.Core.Cloud.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Database'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Database.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Database.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Database.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Database.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/database/alis.core.database/Alis.Core.Database.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Diagnostic'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Diagnostic.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Diagnostic.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Diagnostic.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Diagnostic.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/diagnostic/alis.core.diagnostic/Alis.Core.Diagnostic.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Graphic.D2'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Graphic.D2.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Graphic.D2.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Graphic.D2.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Graphic.D2.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/d2/alis.core.graphic.d2/Alis.Core.Graphic.D2.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Graphic.D3'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Graphic.D3.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Graphic.D3.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Graphic.D3.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Graphic.D3.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/d3/alis.core.graphic.d3/Alis.Core.Graphic.D3.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Input'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Input.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Input.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Input.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Input.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/input/alis.core.input/Alis.Core.Input.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Network'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Network.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Network.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Network.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Network.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/network/alis.core.network/Alis.Core.Network.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Output'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Output.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Output.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Output.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Output.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/output/alis.core.output/Alis.Core.Output.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Physic.D2'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Physic.D2.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Physic.D2.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Physic.D2.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Physic.D2.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/physic/d2/alis.core.physic.d2/Alis.Core.Physic.D2.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Physic.D3'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Physic.D3.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Physic.D3.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Physic.D3.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Physic.D3.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/physic/d3/alis.core.physic.d3/Alis.Core.Physic.D3.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Report'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Report.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Report.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Report.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Report.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/report/alis.core.report/Alis.Core.Report.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Time'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Time.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Time.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Time.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Time.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/time/alis.core.time/Alis.Core.Time.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="$(AssemblyName.Equals('Alis.Core.Updater'))">
+        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
+    </ItemGroup>
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Core.Updater.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Updater.Test.Benchmark')) OR
+        $(AssemblyName.Equals('Alis.Core.Updater.Test.Integration')) OR
+        $(AssemblyName.Equals('Alis.Core.Updater.Test.Unit')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/4_operation/updater/alis.core.updater/Alis.Core.Updater.csproj" />
+    </ItemGroup>
+    
 
     <!--
    5_declaration

@@ -1,3 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿ <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(SolutionDir)/.config/Config.props" />
-</Project>
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    </ItemGroup>                   
+</Project>                                                                                                                        

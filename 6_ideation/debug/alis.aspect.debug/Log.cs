@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Newtonsoft.Json;
 
 namespace Alis.Aspect.Debug
 {
@@ -98,7 +99,7 @@ namespace Alis.Aspect.Debug
         /// <summary>
         ///     Gets or sets the value of the level
         /// </summary>
-        [JsonPropertyName("level")]
+        [JsonProperty("level")]
         public string Level
         {
             get => level;
@@ -109,7 +110,7 @@ namespace Alis.Aspect.Debug
         /// <summary>
         ///     Gets or sets the value of the date time
         /// </summary>
-        [JsonPropertyName("dateTime")]
+        [JsonProperty("dateTime")]
         public DateTime DateTime
         {
             get => dateTime;
@@ -119,7 +120,7 @@ namespace Alis.Aspect.Debug
         /// <summary>
         ///     Gets or sets the value of the message
         /// </summary>
-        [JsonPropertyName("message")]
+        [JsonProperty("message")]
         public string Message
         {
             get => message;
@@ -129,7 +130,7 @@ namespace Alis.Aspect.Debug
         /// <summary>
         ///     Gets or sets the value of the method
         /// </summary>
-        [JsonPropertyName("method")]
+        [JsonProperty("method")]
         public string Method
         {
             get => method;
@@ -139,7 +140,7 @@ namespace Alis.Aspect.Debug
         /// <summary>
         ///     Gets or sets the value of the assembly
         /// </summary>
-        [JsonPropertyName("assembly")]
+        [JsonProperty("assembly")]
         public string Assembly
         {
             get => assembly;
@@ -149,7 +150,7 @@ namespace Alis.Aspect.Debug
         /// <summary>
         ///     Gets or sets the value of the thread
         /// </summary>
-        [JsonPropertyName("thread")]
+        [JsonProperty("thread")]
         public int Thread
         {
             get => thread;
@@ -159,7 +160,7 @@ namespace Alis.Aspect.Debug
         /// <summary>
         ///     Gets or sets the value of the stack trace
         /// </summary>
-        [JsonPropertyName("stacktrace")]
+        [JsonProperty("stacktrace")]
         public string StackTrace
         {
             get => stackTrace;
