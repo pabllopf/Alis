@@ -1,13 +1,13 @@
 <Project>
     <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        <TargetFrameworkSelected>net6.0</TargetFrameworkSelected>
+        <TargetFrameworkSelected>netcoreapp1.1</TargetFrameworkSelected>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample')) == true">
-        <TargetFrameworkSelected>net6.0</TargetFrameworkSelected>
+        <TargetFrameworkSelected>netcoreapp1.1</TargetFrameworkSelected>
     </PropertyGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('Sample')) == false">
-        <TargetFrameworkSelected>netstandard2.0</TargetFrameworkSelected>
+        <TargetFrameworkSelected>netstandard1.6</TargetFrameworkSelected>
     </PropertyGroup>
 </Project>

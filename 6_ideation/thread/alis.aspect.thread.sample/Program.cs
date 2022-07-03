@@ -43,6 +43,7 @@ namespace Alis.Aspect.Thread.Sample
         public static void Main(string[] args)
         {
             Console.WriteLine("Hello");
+            Console.ReadKey();
         }
     }
 }
