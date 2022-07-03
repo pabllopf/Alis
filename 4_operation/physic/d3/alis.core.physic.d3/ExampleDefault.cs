@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physics.D3
+namespace Alis.Core.Physic.D3
 {
     /// <summary>
     ///     The example class

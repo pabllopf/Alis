@@ -4,24 +4,39 @@
         <name>Alis.Aspect.Debug.Test.Unit</name>
     </assembly>
     <members>
-        <member name="T:Alis.Aspect.Debug.Test.Unit.UnitTets">
+        <member name="T:Alis.Aspect.Debug.Test.Unit.Acceptance.UnitTest3">
             <summary>
-                The unit tets class
+            The unit test class
             </summary>
         </member>
-        <member name="T:Alis.Aspect.Debug.Test.Unit.UnitTets.Tests">
+        <member name="M:Alis.Aspect.Debug.Test.Unit.Acceptance.UnitTest3.Test1">
             <summary>
-                The tests class
+            Tests that test 1
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Debug.Test.Unit.UnitTets.Tests.Setup">
+        <member name="T:Alis.Aspect.Debug.Test.Unit.Benchmark.Program">
             <summary>
-                Setup this instance
+                The program class
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Debug.Test.Unit.UnitTets.Tests.Test1">
+        <member name="T:Alis.Aspect.Debug.Test.Unit.Integration.UnitTest2">
             <summary>
-                Tests that test 1
+            The unit test class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Debug.Test.Unit.Integration.UnitTest2.Test1">
+            <summary>
+            Tests that test 1
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Debug.Test.Unit.Unit.UnitTest1">
+            <summary>
+            The unit test class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Debug.Test.Unit.Unit.UnitTest1.Test1">
+            <summary>
+            Tests that test 1
             </summary>
         </member>
     </members>

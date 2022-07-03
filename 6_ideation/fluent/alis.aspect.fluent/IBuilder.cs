@@ -40,9 +40,9 @@ namespace Alis.Aspect.Fluent
         ///     Builders
         /// </summary>
         /// <returns>The</returns>
-        public static TOrigin Builder()
-        {
+        public TOrigin Builder();
+        /*{
             return (TOrigin) (Activator.CreateInstance(typeof(TOrigin), true) ?? throw new NullReferenceException());
-        }
+        }*/
     }
 }

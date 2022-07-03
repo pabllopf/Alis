@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Aspect.Resource.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Aspect.Resource.Test.Acceptance.UnitTest3">
+            <summary>
+            The unit test class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Resource.Test.Acceptance.UnitTest3.Test1">
+            <summary>
+            Tests that test 1
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Resource.Test.Benchmark.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Resource.Test.Integration.UnitTest2">
+            <summary>
+            The unit test class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Resource.Test.Integration.UnitTest2.Test1">
+            <summary>
+            Tests that test 1
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Resource.Test.Unit.UnitTest1">
+            <summary>
+            The unit test class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Resource.Test.Unit.UnitTest1.Test1">
+            <summary>
+            Tests that test 1
+            </summary>
+        </member>
+    </members>
+</doc>

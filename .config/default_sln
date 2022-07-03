@@ -57,6 +57,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{F90708CD
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "reference", "reference", "{8285E72E-D64B-400F-B220-257546B7F22B}"
+	ProjectSection(SolutionItems) = preProject
+		.config\reference\Packages.props = .config\reference\Packages.props
+		.config\reference\Projects.props = .config\reference\Projects.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "target", "target", "{F025DB85-A618-4B9B-BE22-ACF53063C9FA}"
 	ProjectSection(SolutionItems) = preProject
@@ -70,17 +74,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "general", "general", "{7453
 		.config\builds\general\TreatWarningsAsErrors.props = .config\builds\general\TreatWarningsAsErrors.props
 		.config\builds\general\WarningLevel.props = .config\builds\general\WarningLevel.props
 		.config\builds\general\WarningsAsErrors.props = .config\builds\general\WarningsAsErrors.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "package", "package", "{9C887278-E5B6-492E-A95F-DDE2A2F639ED}"
-	ProjectSection(SolutionItems) = preProject
-		.config\reference\package\BenchmarkDotNet.props = .config\reference\package\BenchmarkDotNet.props
-		.config\reference\package\NUnit.props = .config\reference\package\NUnit.props
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "project", "project", "{3163931C-CE67-421C-8DD8-E95BB88E0B1F}"
-	ProjectSection(SolutionItems) = preProject
-		.config\reference\project\Alis.props = .config\reference\project\Alis.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".editor", ".editor", "{57268C98-DCD4-4AC2-94D6-EE6B6894CE35}"
@@ -104,8 +97,6 @@ Global
 		{8285E72E-D64B-400F-B220-257546B7F22B} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 		{F025DB85-A618-4B9B-BE22-ACF53063C9FA} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
 		{74539232-F133-45A6-9D2A-6EAB3203E7E7} = {7211F41D-27C7-461A-954A-7010BAD3DE1F}
-		{9C887278-E5B6-492E-A95F-DDE2A2F639ED} = {8285E72E-D64B-400F-B220-257546B7F22B}
-		{3163931C-CE67-421C-8DD8-E95BB88E0B1F} = {8285E72E-D64B-400F-B220-257546B7F22B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}

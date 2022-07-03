@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project>
-    <ItemGroup Condition="$(AssemblyName.Contains('Test.Benchmark')) == true">
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.1"/>
-    </ItemGroup>
-</Project>

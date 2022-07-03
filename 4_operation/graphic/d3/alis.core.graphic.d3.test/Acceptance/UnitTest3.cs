@@ -1,0 +1,18 @@
+using Xunit;
+
+namespace Alis.Core.Graphics.D3.Test.Acceptance
+{
+    /// <summary>
+    /// The unit test class
+    /// </summary>
+    public class UnitTest3
+{
+    /// <summary>
+    /// Tests that test 1
+    /// </summary>
+    [Fact]
+    public void Test1()
+    {
+    }
+}
+}

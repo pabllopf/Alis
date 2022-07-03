@@ -4,6 +4,7 @@
        APPLICATION 
    -->
     <Import Project="$(SolutionDir)/.config/application/TargetFrameworks.props" />
+    <Import Project="$(SolutionDir)/.config/application/Runtimes.props" />
     <Import Project="$(SolutionDir)/.config/application/LangVersion.props" />
     <Import Project="$(SolutionDir)/.config/application/Nullable.props" />
     <Import Project="$(SolutionDir)/.config/application/AllowUnsafeBlocks.props" />
@@ -54,16 +55,10 @@
     <Import Project="$(SolutionDir)/.config/nuget/Version.props" />
 
     <!-- 
-      REFERENCES PACKAGE
+      REFERENCES 
     -->
-    <Import Project="$(SolutionDir)/.config/Reference/Package/NUnit.props" />
-    <Import Project="$(SolutionDir)/.config/Reference/Package/BenchmarkDotNet.props" />
-
-
-    <!-- 
-      REFERENCES PROJECTS
-    -->
-    <Import Project="$(SolutionDir)/.config/Reference/Project/Alis.props" />
+    <Import Project="$(SolutionDir)/.config/Reference/Packages.props" />
+    <Import Project="$(SolutionDir)/.config/Reference/Projects.props" />
 
     <!-- 
       TARGET

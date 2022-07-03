@@ -1,0 +1,504 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Aspect.Fluent</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Aspect.Fluent.IBuild`1">
+            <summary>
+                The build interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.IBuild`1.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The origin</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.IBuilder`1">
+            <summary>
+                The builder interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.IBuilder`1.Builder">
+            <summary>
+                Builders
+            </summary>
+            <returns>The</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Validations.NotNull`1">
+            <summary>
+                The not null class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Validations.NotNull`1.#ctor(`0)">
+            <summary>
+                the value
+            </summary>
+            <param name="value">the value</param>
+        </member>
+        <member name="P:Alis.Aspect.Fluent.Validations.NotNull`1.Value">
+            <summary>
+                Gets or sets the value of the value
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Validations.NotNull`1.op_Implicit(`0)~Alis.Aspect.Fluent.Validations.NotNull{`0}">
+            <summary>
+                Gets or sets the message
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IAdd`3">
+            <summary>
+                The add interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IAdd`3.Add``1(`2)">
+            <summary>
+                Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IAuthor`2">
+            <summary>
+                The author interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IAuthor`2.Author(`1)">
+            <summary>
+                Authors the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IConfiguration`2">
+            <summary>
+                The configuration interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IConfiguration`2.Configuration(`1)">
+            <summary>
+                Configurations the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.ICreate`2">
+            <summary>
+                The create interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.ICreate`2.Create(`1)">
+            <summary>
+                Creates the obj
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IDebug`2">
+            <summary>
+                The debug interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IDebug`2.Debug(`1)">
+            <summary>
+                Debugs the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IDelete`1">
+            <summary>
+                The delete interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IDelete`1.Delete">
+            <summary>
+                Deletes this instance
+            </summary>
+            <returns>The</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IDescription`2">
+            <summary>
+                The description interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IDescription`2.Description(`1)">
+            <summary>
+                Descriptions the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IGeneral`2">
+            <summary>
+                The general interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IGeneral`2.General(`1)">
+            <summary>
+                Generals the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IHas`2">
+            <summary>
+                The has interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IHas`2.Has(`1)">
+            <summary>
+                Hases the obj
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IIs`3">
+            <summary>
+                The is interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIs`3.Is``1(`2)">
+            <summary>
+                Ises the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IIsActive`2">
+            <summary>
+                The is active interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIsActive`2.IsActive">
+            <summary>
+                Ises the active
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIsActive`2.IsActive(`1)">
+            <summary>
+                Ises the active using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IIsDynamic`2">
+            <summary>
+                The is dynamic interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIsDynamic`2.IsDynamic">
+            <summary>
+                Ises the dynamic
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIsDynamic`2.IsDynamic(`1)">
+            <summary>
+                Ises the dynamic using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IIsStatic`2">
+            <summary>
+                The is static interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIsStatic`2.IsStatic">
+            <summary>
+                Ises the static
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIsStatic`2.IsStatic(`1)">
+            <summary>
+                Ises the static using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IIsTrigger`2">
+            <summary>
+                The is trigger interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIsTrigger`2.IsTrigger">
+            <summary>
+                Ises the trigger
+            </summary>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IIsTrigger`2.IsTrigger(`1)">
+            <summary>
+                Ises the trigger using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IManager`3">
+            <summary>
+                The manager interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IManager`3.Manager``1(`2)">
+            <summary>Withes the specified value.</summary>
+            <param name="value">The value.</param>
+            <returns>Return that you want.</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IManagerOf`3">
+            <summary>
+                The manager of interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IManagerOf`3.ManagerOf``1(`2)">
+            <summary>
+                Managers the of using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IName`2">
+            <summary>
+                The name interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IName`2.Name(`1)">
+            <summary>
+                Names the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IPosition`4">
+            <summary>
+                The position interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IPosition`4.Position(`1,`2,`3)">
+            <summary>
+                Positions the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <param name="z">The </param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IResolution`3">
+            <summary>
+                The resolution interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IResolution`3.Resolution(`1,`2)">
+            <summary>
+                Resolutions the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IRotation`2">
+            <summary>
+                The rotation interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IRotation`2.Rotation(`1)">
+            <summary>
+                Rotations the angle
+            </summary>
+            <param name="angle">The angle</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IRun">
+            <summary>
+                The run interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IRun.Run">
+            <summary>
+                Runs this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IScale`4">
+            <summary>
+                The scale interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IScale`4.Scale(`1,`2,`3)">
+            <summary>
+                Scales the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <param name="z">The </param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IScreenMode`2">
+            <summary>
+                The screen mode interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IScreenMode`2.ScreenMode(`1)">
+            <summary>
+                Screens the mode using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.ISet`3">
+            <summary>
+                The set interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.ISet`3.Set``1(`2)">
+            <summary>
+                Sets the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.ISetMax`3">
+            <summary>
+                The set max interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.ISetMax`3.SetMax``1(`2)">
+            <summary>
+                Sets the max using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.ISettings`2">
+            <summary>
+                The settings interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.ISettings`2.Settings(`1)">
+            <summary>
+                Settingses the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.ISize`3">
+            <summary>
+                The size interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.ISize`3.Size(`1,`2)">
+            <summary>
+                Sizes the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.ITime`2">
+            <summary>
+                The time interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.ITime`2.Time(`1)">
+            <summary>
+                Times the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.ITransform`2">
+            <summary>
+                The transform interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.ITransform`2.Transform(`1)">
+            <summary>
+                Transforms the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IUpdate`2">
+            <summary>
+                The update interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IUpdate`2.Update(`1)">
+            <summary>
+                Updates the obj
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IWhere`2">
+            <summary>
+                The where interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IWhere`2.Where(`1)">
+            <summary>Wheres the specified value.</summary>
+            <param name="value">The value.</param>
+            <returns>
+                <br />
+            </returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IWindow`2">
+            <summary>
+                The window interface
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IWindow`2.Window(`1)">
+            <summary>
+                Windows the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IWith`3">
+            <summary>
+                Simple comment
+            </summary>
+            <typeparam name="TBuilder">the builder</typeparam>
+            <typeparam name="TYpe">the type</typeparam>
+            <typeparam name="TArgument">the argument</typeparam>
+            <typeparam name="TType"></typeparam>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IWith`3.With``1(`2)">
+            <summary>Withes the specified value.</summary>
+            <param name="value">The value.</param>
+            <returns>Return that you want.</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IWithName`2">
+            <summary>Define the word "Name" </summary>
+            <typeparam name="TBuilder">The type of the uilder.</typeparam>
+            <typeparam name="TArgument">The type of the rgument.</typeparam>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IWithName`2.WithName(`1)">
+            <summary>Withes the name.</summary>
+            <param name="value">The value.</param>
+            <returns>Return the value that you want.</returns>
+        </member>
+        <member name="T:Alis.Aspect.Fluent.Words.IWithTag`2">
+            <summary>
+                Define the word "Tag"
+            </summary>
+            <typeparam name="TBuilder">The type of the uilder.</typeparam>
+            <typeparam name="TArgument">The type of the rgument.</typeparam>
+        </member>
+        <member name="M:Alis.Aspect.Fluent.Words.IWithTag`2.WithTag(`1)">
+            <summary>Withes the tag.</summary>
+            <param name="value">The value.</param>
+            <returns>return the object that you want.</returns>
+        </member>
+    </members>
+</doc>

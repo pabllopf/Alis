@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Text.Json.Serialization;
-
 namespace Alis.Core.Output
 {
     /// <summary>
@@ -40,7 +38,6 @@ namespace Alis.Core.Output
         /// <summary>
         ///     Initializes a new instance of the <see cref="OutputSystem" /> class
         /// </summary>
-        [JsonConstructor]
         public OutputSystem()
         {
         }

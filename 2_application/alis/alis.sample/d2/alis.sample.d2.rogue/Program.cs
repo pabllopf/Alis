@@ -28,12 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Numerics;
-using Sprite = Alis.Core.Components.Sprite;
-using Transform = Alis.Core.Entities.Transform;
 
-namespace Alis.Sample.D2.Rogue
+namespace Alis.Aspect.Thread.Sample
 {
     /// <summary>
     ///     The program class
@@ -46,123 +42,7 @@ namespace Alis.Sample.D2.Rogue
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            VideoGame.Create()
-                .Settings(setting => setting
-                    .General(general => general
-                        .Author("Pedro Diaz")
-                        .Name("The best game")
-                        .Build())
-                    .Window(window => window
-                        .Resolution(640, 480)
-                        .Build())
-                    .Debug(debug => debug
-                        .ShowPhysicBorders(true)
-                        .Build())
-                    .Build())
-                .Manager(sceneManager => sceneManager
-                    .Add<Scene>(scene => scene
-                        .Name("The main menu.")
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Other Example").Transform((Transform) new Transform(new Vector3(1, 1, 0),
-                                new Vector3(100, 100, 0), new Vector3(0)))
-                            .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new BoxCollider2D
-                            {
-                                AutoTilling = true,
-                                BodyType = BodyType.Dynamic,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.0f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
-                            .Build())
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Other Example 2")
-                            .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, -100, 0), new Vector3(0)))
-                            .Add(new Sprite(
-                                @$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new BoxCollider2D
-                            {
-                                AutoTilling = true,
-                                BodyType = BodyType.Kinematic,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.0f,
-                                FixedRotation = true,
-                                GravityScale = 1.0f,
-                                IsTrigger = false
-                            })
-                            .Build())
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Other Example 3")
-                            .Transform(new Transform(new Vector3(1, 1, 0), new Vector3(-100, 100, 0), new Vector3(0)))
-                            .Add(new Sprite(
-                                @$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new BoxCollider2D
-                            {
-                                AutoTilling = true,
-                                BodyType = BodyType.Static,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.0f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
-                            .Build())
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Player")
-                            .Add(new Simple2DMove())
-                            .Add(new Sprite(@$"{Environment.CurrentDirectory}\Assets\tile000.png"))
-                            .Add(new AudioSource(@$"{Environment.CurrentDirectory}\Assets\menu.wav"))
-                            .Add(new Camera())
-                            .Add(new BoxCollider2D
-                            {
-                                AutoTilling = true,
-                                BodyType = BodyType.Dynamic,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.0f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
-                            .Add(new Animator(new List<Animation>
-                            {
-                                new Animation(new List<Texture>
-                                {
-                                    new Texture(
-                                        @$"{Environment.CurrentDirectory}\Assets\tile000.png"),
-                                    new Texture(
-                                        @$"{Environment.CurrentDirectory}\Assets\tile001.png"),
-                                    new Texture(
-                                        @$"{Environment.CurrentDirectory}\Assets\tile002.png"),
-                                    new Texture(
-                                        @$"{Environment.CurrentDirectory}\Assets\tile003.png")
-                                })
-                                {
-                                    Speed = 0.5f
-                                },
-                                new Animation()
-                            }))
-                            .Build())
-                        .Build())
-                    .Build())
-                .Run();
+            Console.WriteLine("Hello");
         }
     }
 }
