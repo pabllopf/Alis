@@ -40,6 +40,8 @@ namespace Alis.Aspect.Security.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            Console.WriteLine("Hello");
+            Console.ReadKey();
         }
     }
 }
