@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   LogType.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,25 +27,41 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Debug.Sample
+namespace Alis.Aspect.Debug
 {
     /// <summary>
-    ///     The program class
+    ///     The log type enum
     /// </summary>
-    public class Program
+    public enum LogType
     {
         /// <summary>
-        ///     Main the args
+        ///     The info log type
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Logger.Info("Example info");
-            Logger.Log("Example log");
-            Logger.Trace("Example trace");
-            Logger.Warning("Example warning");
-            Logger.Success("Example Success");
-            Logger.Exception("Example Exception");
-        }
+        Info,
+
+        /// <summary>
+        ///     The trace log type
+        /// </summary>
+        Trace,
+
+        /// <summary>
+        ///     The log log type
+        /// </summary>
+        Log,
+
+        /// <summary>
+        ///     The success log type
+        /// </summary>
+        Success,
+
+        /// <summary>
+        ///     The warning log type
+        /// </summary>
+        Warning,
+
+        /// <summary>
+        ///     The exception log type
+        /// </summary>
+        Exception
     }
 }

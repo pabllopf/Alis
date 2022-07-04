@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   LogLevel.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -26,26 +26,31 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-namespace Alis.Aspect.Debug.Sample
+namespace Alis.Aspect.Debug
 {
     /// <summary>
-    ///     The program class
+    ///     The log level enum
     /// </summary>
-    public class Program
+    public enum LogLevel
     {
         /// <summary>
-        ///     Main the args
+        ///     The info log level
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Logger.Info("Example info");
-            Logger.Log("Example log");
-            Logger.Trace("Example trace");
-            Logger.Warning("Example warning");
-            Logger.Success("Example Success");
-            Logger.Exception("Example Exception");
-        }
+        Info = 0,
+
+        /// <summary>
+        ///     The log log level
+        /// </summary>
+        Log = 1,
+
+        /// <summary>
+        ///     The normal log level
+        /// </summary>
+        Normal = 3,
+
+        /// <summary>
+        ///     The critical log level
+        /// </summary>
+        Critical = 4
     }
 }
