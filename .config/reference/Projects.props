@@ -290,7 +290,6 @@
         Condition="$(AssemblyName.Equals('Alis.Aspect'))">
         <ProjectReference Include="$(SolutionDir)/6_ideation/assertion/alis.aspect.assertion/Alis.Aspect.Assertion.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/base/alis.aspect.base/Alis.Aspect.Base.csproj" />
-        <ProjectReference Include="$(SolutionDir)/6_ideation/config/alis.aspect.config/Alis.Aspect.Config.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/data/alis.aspect.data/Alis.Aspect.Data.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/debug/alis.aspect.debug/Alis.Aspect.Debug.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/fluent/alis.aspect.fluent/Alis.Aspect.Fluent.csproj" />
@@ -326,14 +325,6 @@
         $(AssemblyName.Equals('Alis.Aspect.Base.Test')) 
         ">
         <ProjectReference Include="$(SolutionDir)/6_ideation/base/alis.aspect.base/Alis.Aspect.Base.csproj" />
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Config.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Config.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)/6_ideation/config/alis.aspect.config/Alis.Aspect.Config.csproj" />
     </ItemGroup>
 
     <ItemGroup
