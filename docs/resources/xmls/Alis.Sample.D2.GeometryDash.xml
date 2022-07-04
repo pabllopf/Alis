@@ -4,12 +4,12 @@
         <name>Alis.Sample.D2.GeometryDash</name>
     </assembly>
     <members>
-        <member name="T:Alis.Sample.D2.Get2048Dailys.Program">
+        <member name="T:Alis.Sample.D2.GeometryDash.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:Alis.Sample.D2.Get2048Dailys.Program.Main(System.String[])">
+        <member name="M:Alis.Sample.D2.GeometryDash.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>

@@ -1,13 +1,17 @@
 <Project>
-    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == true">
+    <PropertyGroup Condition="
+    $(AssemblyName.Contains('Test')) == true">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 
-    <PropertyGroup Condition="$(AssemblyName.Contains('Sample')) == true">
+    <PropertyGroup Condition="
+    $(AssemblyName.Contains('Sample')) == true">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
 
-    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('Sample')) == false">
+    <PropertyGroup Condition="
+    $(AssemblyName.Contains('Test')) == false AND 
+    $(AssemblyName.Contains('Sample')) == false">
         <OutputType>Library</OutputType>
     </PropertyGroup>
 </Project>

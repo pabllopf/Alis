@@ -6,12 +6,12 @@
     <members>
         <member name="T:Alis.Core.Graphic.D2.Test.Acceptance.UnitTest3">
             <summary>
-            The unit test class
+                The unit test class
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.Test.Acceptance.UnitTest3.Test1">
             <summary>
-            Tests that test 1
+                Tests that test 1
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.Test.Benchmark.Program">
@@ -21,22 +21,22 @@
         </member>
         <member name="T:Alis.Core.Graphic.D2.Test.Integration.UnitTest2">
             <summary>
-            The unit test class
+                The unit test class
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.Test.Integration.UnitTest2.Test1">
             <summary>
-            Tests that test 1
+                Tests that test 1
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.Test.Unit.UnitTest1">
             <summary>
-            The unit test class
+                The unit test class
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.Test.Unit.UnitTest1.Test1">
             <summary>
-            Tests that test 1
+                Tests that test 1
             </summary>
         </member>
     </members>

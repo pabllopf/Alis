@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 /*using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
@@ -37,17 +36,13 @@ using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
 */
 
-namespace Alis.Core.Graphics.D3.Test.Benchmark
+namespace Alis.Core.Graphic.D3.Test.Benchmark
 {
     /// <summary>
     ///     The program class
     /// </summary>
     public class Program
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
         /*public static void Main(string[] args)
         {
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly)

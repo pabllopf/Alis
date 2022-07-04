@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphics.D3.Sample
+namespace Alis.Core.Graphic.D3.Sample
 {
     /// <summary>
     ///     The program class

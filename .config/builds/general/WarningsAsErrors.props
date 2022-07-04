@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <WarningsAsErrors>False</WarningsAsErrors>
+        <WarningsAsErrors>true</WarningsAsErrors>
     </PropertyGroup>
 </Project>

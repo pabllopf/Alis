@@ -4,12 +4,12 @@
         <name>Alis.Sample.D2.Roguelike</name>
     </assembly>
     <members>
-        <member name="T:Alis.Aspect.Thread.Sample.Program">
+        <member name="T:Alis.Sample.D2.Roguelike.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Thread.Sample.Program.Main(System.String[])">
+        <member name="M:Alis.Sample.D2.Roguelike.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>

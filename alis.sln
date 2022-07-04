@@ -11,7 +11,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application"
 	ProjectSection(SolutionItems) = preProject
 		.config\application\AllowUnsafeBlocks.props = .config\application\AllowUnsafeBlocks.props
 		.config\application\LangVersion.props = .config\application\LangVersion.props
-		.config\application\Nullable.props = .config\application\Nullable.props
 		.config\application\OutputType.props = .config\application\OutputType.props
 		.config\application\Runtimes.props = .config\application\Runtimes.props
 		.config\application\TargetFrameworks.props = .config\application\TargetFrameworks.props

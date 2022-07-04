@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Aspect.Security.Sample
 {
     /// <summary>

@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Aspect.Thread.Sample
+namespace Alis.Sample.D2.Rogue
 {
     /// <summary>
     ///     The program class

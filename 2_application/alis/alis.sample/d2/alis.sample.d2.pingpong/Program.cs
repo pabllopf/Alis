@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Aspect.Thread.Sample
+namespace Alis.Sample.D2.PingPong
 {
     /// <summary>
     ///     The program class

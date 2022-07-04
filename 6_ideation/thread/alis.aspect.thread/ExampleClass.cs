@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   TaskManager.cs
+//  File:   ExampleClass.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -34,6 +34,5 @@ namespace Alis.Aspect.Thread
     /// </summary>
     public class ExampleClass
     {
-        
     }
 }

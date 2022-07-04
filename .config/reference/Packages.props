@@ -1,5 +1,7 @@
 <Project>
-    <ItemGroup Condition="$(AssemblyName.Contains('Test_1')) == true">
+    <ItemGroup Condition="
+        $(TargetFrameworkSelected) == 'net6.0' AND
+        $(AssemblyName.Contains('Test')) == true ">
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0"/>
         <PackageReference Include="xunit" Version="2.4.1"/>
         <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
@@ -12,9 +14,11 @@
         </PackageReference>
     </ItemGroup>
   
-  <ItemGroup Condition="$(AssemblyName.Contains('Test')) == true">
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
-    <PackageReference Include="xunit" Version="2.2.0" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
+  <ItemGroup Condition=" 
+        $(TargetFrameworkSelected) == 'netcoreapp1.1' AND
+        $(AssemblyName.Contains('Test')) == true ">
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+        <PackageReference Include="xunit" Version="2.2.0" />
+        <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
 </Project>

@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Aspect.Thread.Sample
 {
     /// <summary>
@@ -40,8 +42,8 @@ namespace Alis.Aspect.Thread.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello");
-            System.Console.ReadKey();
+            Console.WriteLine("Hello");
+            Console.ReadKey();
         }
     }
 }

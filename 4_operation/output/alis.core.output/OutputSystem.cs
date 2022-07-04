@@ -41,9 +41,5 @@ namespace Alis.Core.Output
         public OutputSystem()
         {
         }
-
-        ~OutputSystem()
-        {
-        }
     }
 }

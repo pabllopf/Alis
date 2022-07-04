@@ -1,40 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-    <!-- 
-       APPLICATION 
-   -->
+    <PropertyGroup>
+        <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+        <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+        <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+
+        <CurrentPlatform Condition="'$(PROCESSOR_ARCHITECTURE)'=='AMD64' or '$(PROCESSOR_ARCHITEW6432)'=='AMD64'">AMD64</CurrentPlatform>
+    </PropertyGroup>
+    
+    
+    
     <Import Project="$(SolutionDir)/.config/application/TargetFrameworks.props" />
     <Import Project="$(SolutionDir)/.config/application/Runtimes.props" />
     <Import Project="$(SolutionDir)/.config/application/LangVersion.props" />
-    <Import Project="$(SolutionDir)/.config/application/Nullable.props" />
     <Import Project="$(SolutionDir)/.config/application/AllowUnsafeBlocks.props" />
     <Import Project="$(SolutionDir)/.config/application/OutputType.props" />
-
-    <!-- 
-        ASSEMBLY 
-    -->
+    
     <Import Project="$(SolutionDir)/.config/assembly/AssemblyVersion.props" />
     <Import Project="$(SolutionDir)/.config/assembly/Company.props" />
     <Import Project="$(SolutionDir)/.config/assembly/FileVersion.props" />
     <Import Project="$(SolutionDir)/.config/assembly/NeutralLanguage.props" />
     <Import Project="$(SolutionDir)/.config/assembly/Product.props" />
 
-    <!-- 
-        BUILD GENERAL 
-    -->
     <Import Project="$(SolutionDir)/.config/builds/general/NoWarn.props" />
     <Import Project="$(SolutionDir)/.config/builds/general/TreatWarningsAsErrors.props" />
     <Import Project="$(SolutionDir)/.config/builds/general/WarningLevel.props" />
     <Import Project="$(SolutionDir)/.config/builds/general/WarningsAsErrors.props" />
 
-    <!-- 
-        DOCS 
-    -->
     <Import Project="$(SolutionDir)/.config/docs/Docs.props" />
-
-    <!-- 
-       NUGET 
-   -->
+    
     <Import Project="$(SolutionDir)/.config/nuget/Packable.props" />
     <Import Project="$(SolutionDir)/.config/nuget/Authors.props" />
     <Import Project="$(SolutionDir)/.config/nuget/Copyright.props" />
@@ -53,16 +47,10 @@
     <Import Project="$(SolutionDir)/.config/nuget/RepositoryUrl.props" />
     <Import Project="$(SolutionDir)/.config/nuget/Title.props" />
     <Import Project="$(SolutionDir)/.config/nuget/Version.props" />
-
-    <!-- 
-      REFERENCES 
-    -->
+    
     <Import Project="$(SolutionDir)/.config/Reference/Packages.props" />
     <Import Project="$(SolutionDir)/.config/Reference/Projects.props" />
-
-    <!-- 
-      TARGET
-    -->
+    
     <Import Project="$(SolutionDir)/.config/target/BeforeBuild.props" />
     <Import Project="$(SolutionDir)/.config/target/AfterBuild.props" />
 </Project>

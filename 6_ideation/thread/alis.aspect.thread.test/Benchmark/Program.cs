@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+
 /*using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
@@ -44,10 +44,6 @@ namespace Alis.Aspect.Thread.Test.Benchmark
     /// </summary>
     public class Program
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
         /*public static void Main(string[] args)
         {
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly)

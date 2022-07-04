@@ -1,13 +1,37 @@
 <Project>
-    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == true">
-        <TargetFrameworkSelected>netcoreapp1.1</TargetFrameworkSelected>
-    </PropertyGroup>
 
-    <PropertyGroup Condition="$(AssemblyName.Contains('Sample')) == true">
+    <PropertyGroup Condition="
+        $(IsWindows) == true AND 
+        ($(AssemblyName.Contains('Test')) == true OR
+        $(AssemblyName.Contains('Sample')) == true)
+        ">
         <TargetFrameworkSelected>netcoreapp1.1</TargetFrameworkSelected>
+        <TargetFrameworks>netcoreapp1.1; netcoreapp3.1; net5.0; net6.0</TargetFrameworks>
     </PropertyGroup>
-
-    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('Sample')) == false">
+    
+    <PropertyGroup Condition="
+        $(IsWindows) == true AND 
+        $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('Sample')) == false
+        ">
         <TargetFrameworkSelected>netstandard1.6</TargetFrameworkSelected>
+        <TargetFrameworks>netstandard1.0; netstandard1.1; netstandard1.6; netstandard2.0</TargetFrameworks>
     </PropertyGroup>
+
+    <PropertyGroup Condition="
+        $(IsOSX) == true AND 
+        ($(AssemblyName.Contains('Test')) == true OR
+        $(AssemblyName.Contains('Sample')) == true)
+        ">
+        <TargetFrameworkSelected>net6.0</TargetFrameworkSelected>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="
+        $(IsOSX) == true AND 
+        $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('Sample')) == false
+        ">
+        <TargetFrameworkSelected>netstandard2.0</TargetFrameworkSelected>
+    </PropertyGroup>
+    
 </Project>
