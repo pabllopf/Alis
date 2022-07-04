@@ -26,6 +26,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+using Alis.Core.Physic.D2.Utilities;
+using System;
 
 namespace Alis.Aspect.Math.Sample
 {
@@ -40,6 +42,8 @@ namespace Alis.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            Console.Write($"{MathConstants.Pi}");
+            Console.ReadKey();
         }
     }
 }

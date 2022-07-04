@@ -44,6 +44,7 @@ using Alis.Core.Physic.D2.Dynamics.Solver;
 using Alis.Core.Physic.D2.Extensions.Controllers.ControllerBase;
 using Alis.Core.Physic.D2.Shared;
 using Alis.Core.Physic.D2.Utilities;
+using System.Numerics;
 
 namespace Alis.Core.Physic.D2
 {
