@@ -47,6 +47,9 @@ namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay
         /// </summary>
         private double y;
 
+        /// <summary>
+        /// The edges
+        /// </summary>
         private List<DtSweepConstraint> edges;
 
         /// <summary>
@@ -58,39 +61,29 @@ namespace Alis.Core.Physic.D2.Tools.Triangulation.Delaunay
         {
             this.x = x;
             this.y = y;
+            edges = new List<DtSweepConstraint>();
         }
 
         /// <summary>
         ///     Gets or sets the value of the edges
         /// </summary>
-        public List<DtSweepConstraint> Edges { get; private set; }
+        public List<DtSweepConstraint> GetEdges() => edges;
 
         /// <summary>
         ///     Gets the value of the has edges
         /// </summary>
-        public bool HasEdges => Edges.Count >= 0;
+        public bool HasEdges() => edges.Count >= 0;
 
         /// <summary>
         ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
-        public override string ToString()
-        {
-            return "[" + x + "," + y + "]";
-        }
-
+        public override string ToString() => "[" + x + "," + y + "]";
+        
         /// <summary>
-        ///     Adds the edge using the specified e
+        /// Adds the edge.
         /// </summary>
-        /// <param name="e">The </param>
-        public void AddEdge(DtSweepConstraint e)
-        {
-            if (Edges == null)
-            {
-                Edges = new List<DtSweepConstraint>();
-            }
-
-            Edges.Add(e);
-        }
+        /// <param name="dtSweepConstraint">The dt sweep constraint.</param>
+        public void AddEdge(DtSweepConstraint dtSweepConstraint) => edges.Add(dtSweepConstraint);
     }
 }
