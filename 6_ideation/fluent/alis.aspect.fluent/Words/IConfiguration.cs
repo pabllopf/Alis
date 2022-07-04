@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IConfiguration.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    ///     The configuration interface
     /// </summary>
-    public class Program
+    public interface IConfiguration<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Main the args
+        ///     Configurations the value
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("HELLO");
-        }
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder Configuration(TArgument value);
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   ISetMax.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    ///     The set max interface
     /// </summary>
-    public class Program
+    public interface ISetMax<out TBuilder, in TType, in TArgument>
     {
         /// <summary>
-        ///     Main the args
+        ///     Sets the max using the specified value
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("HELLO");
-        }
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder SetMax<T>(TArgument value) where T : TType;
     }
 }

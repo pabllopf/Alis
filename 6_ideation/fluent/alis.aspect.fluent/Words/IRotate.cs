@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IRotate.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    ///     The rotation interface
     /// </summary>
-    public class Program
+    public interface IRotation<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Main the args
+        ///     Rotations the angle
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("HELLO");
-        }
+        /// <param name="angle">The angle</param>
+        /// <returns>The builder</returns>
+        TBuilder Rotation(TArgument angle);
     }
 }

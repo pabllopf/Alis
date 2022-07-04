@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IAdd.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    ///     The add interface
     /// </summary>
-    public class Program
+    public interface IAdd<out TBuilder, in TType, in TArgument>
     {
         /// <summary>
-        ///     Main the args
+        ///     Adds the value
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("HELLO");
-        }
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder Add<T>(TArgument value) where T : TType;
     }
 }

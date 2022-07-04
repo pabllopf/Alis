@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IWithTag.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    ///     Define the word "Tag"
     /// </summary>
-    public class Program
+    /// <typeparam name="TBuilder">The type of the uilder.</typeparam>
+    /// <typeparam name="TArgument">The type of the rgument.</typeparam>
+    public interface IWithTag<out TBuilder, in TArgument>
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("HELLO");
-        }
+        /// <summary>Withes the tag.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>return the object that you want.</returns>
+        TBuilder WithTag(TArgument value);
     }
 }

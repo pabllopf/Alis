@@ -3,6 +3,7 @@
   <!-- $(IsWindows) == true AND -->
 
   <PropertyGroup Condition="
+        '$(NETCoreSdkRuntimeIdentifier)' != 'osx-arm64' AND
         ($(AssemblyName.Contains('Test')) == true OR
         $(AssemblyName.Contains('Sample')) == true)
         ">
@@ -10,9 +11,28 @@
     </PropertyGroup>
     
     <PropertyGroup Condition="
+        '$(NETCoreSdkRuntimeIdentifier)' != 'osx-arm64' AND
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('Sample')) == false
         ">
         <TargetFrameworkSelected>netstandard1.6</TargetFrameworkSelected>
     </PropertyGroup>
+
+
+    <PropertyGroup Condition="
+        '$(NETCoreSdkRuntimeIdentifier)' == 'osx-arm64' AND
+        ($(AssemblyName.Contains('Test')) == true OR
+        $(AssemblyName.Contains('Sample')) == true)
+        ">
+        <TargetFrameworkSelected>net6.0</TargetFrameworkSelected>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="
+        '$(NETCoreSdkRuntimeIdentifier)' == 'osx-arm64' AND
+        $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('Sample')) == false
+        ">
+        <TargetFrameworkSelected>netstandard2.0</TargetFrameworkSelected>
+    </PropertyGroup>
+    
 </Project>

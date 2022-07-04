@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IIsActive.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,24 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    ///     The is active interface
     /// </summary>
-    public class Program
+    public interface IIsActive<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Main the args
+        ///     Ises the active
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("HELLO");
-        }
+        /// <returns>The builder</returns>
+        TBuilder IsActive();
+
+        /// <summary>
+        ///     Ises the active using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder IsActive(TArgument value);
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IResolution.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    ///     The resolution interface
     /// </summary>
-    public class Program
+    public interface IResolution<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        ///     Main the args
+        ///     Resolutions the x
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("HELLO");
-        }
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The builder</returns>
+        TBuilder Resolution(TArgument1 x, TArgument2 y);
     }
 }

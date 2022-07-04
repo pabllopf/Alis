@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   IWithName.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,22 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Aspect.Fluent.Words
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    /// <summary>Define the word "Name" </summary>
+    /// <typeparam name="TBuilder">The type of the uilder.</typeparam>
+    /// <typeparam name="TArgument">The type of the rgument.</typeparam>
+    public interface IWithName<out TBuilder, in TArgument>
     {
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.Write("HELLO");
-        }
+        /// <summary>Withes the name.</summary>
+        /// <param name="value">The value.</param>
+        /// <returns>Return the value that you want.</returns>
+        TBuilder WithName(TArgument value);
     }
 }
