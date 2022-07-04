@@ -1,5 +1,6 @@
 <Project>
     <PropertyGroup>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	      <WarningsNotAsErrors>1701;1702</WarningsNotAsErrors>
     </PropertyGroup>
 </Project>

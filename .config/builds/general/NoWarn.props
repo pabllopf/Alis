@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <NoWarn>False</NoWarn>
+      <NoWarn>1701</NoWarn>
     </PropertyGroup>
 </Project>
