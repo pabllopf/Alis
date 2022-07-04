@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Aspect.Base
 {
     /// <summary>
@@ -34,5 +36,10 @@ namespace Alis.Aspect.Base
     /// </summary>
     public class ObjectBase
     {
+        /// <summary>Tests this instance.</summary>
+        public void Test()
+        {
+            Console.WriteLine("Hello");
+        }
     }
 }
