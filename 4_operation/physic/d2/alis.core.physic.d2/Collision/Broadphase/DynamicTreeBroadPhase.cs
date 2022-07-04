@@ -174,10 +174,9 @@ namespace Alis.Core.Physic.D2.Collision.Broadphase
 
         /// <summary>Get the AABB for a proxy.</summary>
         /// <param name="proxyId">The proxy id.</param>
-        /// <param name="aabb">The AABB.</param>
-        public void GetFatAabb(int proxyId, out Aabb aabb)
+        public Aabb GetFatAabb(int proxyId)
         {
-            tree.GetFatAabb(proxyId, out aabb);
+            return tree.GetFatAabb(proxyId);
         }
 
         /// <summary>Get user data from a proxy. Returns null if the id is invalid.</summary>
@@ -194,8 +193,8 @@ namespace Alis.Core.Physic.D2.Collision.Broadphase
         /// <returns></returns>
         public bool TestOverlap(int proxyIdA, int proxyIdB)
         {
-            tree.GetFatAabb(proxyIdA, out Aabb aabbA);
-            tree.GetFatAabb(proxyIdB, out Aabb aabbB);
+            Aabb aabbA = tree.GetFatAabb(proxyIdA);
+            Aabb aabbB = tree.GetFatAabb(proxyIdB);
             return Aabb.TestOverlap(ref aabbA, ref aabbB);
         }
 
@@ -217,7 +216,7 @@ namespace Alis.Core.Physic.D2.Collision.Broadphase
 
                 // We have to query the tree with the fat AABB so that
                 // we don't fail to create a pair that may touch later.
-                tree.GetFatAabb(queryProxyId, out Aabb fatAabb);
+                Aabb fatAabb = tree.GetFatAabb(queryProxyId);
 
                 // Query tree, create pairs and add them pair buffer.
                 tree.Query(queryCallback, ref fatAabb);

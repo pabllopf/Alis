@@ -98,8 +98,7 @@ namespace Alis.Core.Physic.D2.Collision.Broadphase
         ///     Gets the fat aabb using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
-        /// <param name="aabb">The aabb</param>
-        void GetFatAabb(int proxyId, out Aabb aabb);
+        Aabb GetFatAabb(int proxyId);
 
         /// <summary>
         ///     Queries the callback

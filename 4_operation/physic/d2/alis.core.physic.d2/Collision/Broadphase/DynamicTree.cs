@@ -329,11 +329,10 @@ namespace Alis.Core.Physic.D2.Collision.Broadphase
 
         /// <summary>Get the fat AABB for a proxy.</summary>
         /// <param name="proxyId">The proxy id.</param>
-        /// <param name="fatAabb">The fat AABB.</param>
-        public void GetFatAabb(int proxyId, out Aabb fatAabb)
+        public Aabb GetFatAabb(int proxyId)
         {
             Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
-            fatAabb = nodes[proxyId].Aabb;
+            return nodes[proxyId].Aabb;
         }
 
         /// <summary>
