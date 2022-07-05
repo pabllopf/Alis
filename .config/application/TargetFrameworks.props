@@ -6,21 +6,15 @@
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    </PropertyGroup>
     
   <PropertyGroup Condition="
-        '$(RuntimeIdentifier)' != 'osx-arm64' AND
-        ($(AssemblyName.Contains('Test')) == true OR
-        $(AssemblyName.Contains('Sample')) == true)
+        $(AssemblyName.Contains('Test')) == true OR
+        $(AssemblyName.Contains('Sample')) == true
         ">
         <TargetFrameworkSelected>netcoreapp1.1</TargetFrameworkSelected>
     </PropertyGroup>
     
     <PropertyGroup Condition="
-        '$(RuntimeIdentifier)' != 'osx-arm64' AND
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('Sample')) == false
         ">
