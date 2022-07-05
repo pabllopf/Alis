@@ -27,6 +27,9 @@ for /r %%i in (*.csproj) do dotnet restore %%i
 
 cd .\.scripts\windows\
 
+pause
+exit
+
 :somewhere_else
 
 echo "Cancel"
