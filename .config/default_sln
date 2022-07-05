@@ -1,7 +1,6 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.2.32526.322
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{0F6ED8BC-329E-4716-8419-C8C94377C8BE}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,8 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application"
 	ProjectSection(SolutionItems) = preProject
 		.config\application\AllowUnsafeBlocks.props = .config\application\AllowUnsafeBlocks.props
 		.config\application\LangVersion.props = .config\application\LangVersion.props
-		.config\application\Nullable.props = .config\application\Nullable.props
 		.config\application\OutputType.props = .config\application\OutputType.props
+		.config\application\Runtimes.props = .config\application\Runtimes.props
 		.config\application\TargetFrameworks.props = .config\application\TargetFrameworks.props
 	EndProjectSection
 EndProject
@@ -100,15 +99,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
-	EndGlobalSection
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Debug|x64 = Debug|x64
-		Debug|x86 = Debug|x86
-		Release|Any CPU = Release|Any CPU
-		Release|x64 = Release|x64
-		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 	EndGlobalSection
 EndGlobal
