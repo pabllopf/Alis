@@ -43,11 +43,12 @@ namespace Box2D.NetStandard.Common
 		/// </summary>
 		public float T0; //time interval = [T0,1], where T0 is in [0,1]
 
-		/// <summary>
-		/// Get the interpolated transform at a specific time.
-		/// </summary>
-		/// <param name="alpha">Alpha is a factor in [0,1], where 0 indicates t0.</param>
-		public void GetTransform(out XForm xf, float alpha)
+        /// <summary>
+        /// Get the interpolated transform at a specific time.
+        /// </summary>
+        /// <param name="xf">The xf.</param>
+        /// <param name="alpha">Alpha is a factor in [0,1], where 0 indicates t0.</param>
+        public void GetTransform(out XForm xf, float alpha)
 		{
 			xf = new XForm();
 			xf.Position = (1.0f - alpha) * C0 + alpha * C;

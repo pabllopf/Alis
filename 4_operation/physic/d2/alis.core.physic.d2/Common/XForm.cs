@@ -36,12 +36,12 @@ namespace Box2D.NetStandard.Common
 		/// </summary>
 		public Mat22 R;
 
-		/// <summary>
-		/// Initialize using a position vector and a rotation matrix.
-		/// </summary>
-		/// <param name="position"></param>
-		/// <param name="R"></param>
-		public XForm(Vec2 position, Mat22 rotation)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XForm"/> struct.
+        /// </summary>
+        /// <param name="position">The position.</param>
+        /// <param name="rotation">The rotation.</param>
+        public XForm(Vec2 position, Mat22 rotation)
 		{
 			Position = position;
 			R = rotation;

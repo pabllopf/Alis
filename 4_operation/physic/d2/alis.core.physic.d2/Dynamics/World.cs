@@ -681,14 +681,14 @@ namespace Box2D.NetStandard.Dynamics
 		/// <returns></returns>
 		public int GetContactCount() { return _contactCount; }
 
-		/// <summary>
+        /// <summary>
 		/// Take a time step. This performs collision detection, integration,
 		/// and constraint solution.
 		/// </summary>
 		/// <param name="dt">The amount of time to simulate, this should not vary.</param>
-		/// <param name="iterations">For the velocity constraint solver.</param>
-		/// <param name="iterations">For the positionconstraint solver.</param>
-		public void Step(float dt, int velocityIterations, int positionIteration)
+        /// <param name="velocityIterations">The velocity iterations.</param>
+        /// <param name="positionIteration">The position iteration.</param>
+        public void Step(float dt, int velocityIterations, int positionIteration)
 		{
 			_lock = true;
 
@@ -756,19 +756,19 @@ namespace Box2D.NetStandard.Dynamics
 			}
 		}
 
-		/// <summary>
-		/// Query the world for all shapes that intersect a given segment. You provide a shap
-		/// pointer buffer of specified size. The number of shapes found is returned, and the buffer
-		/// is filled in order of intersection.
-		/// </summary>
-		/// <param name="segment">Defines the begin and end point of the ray cast, from p1 to p2.
-		/// Use Segment.Extend to create (semi-)infinite rays.</param>
-		/// <param name="shapes">A user allocated shape pointer array of size maxCount (or greater).</param>
-		/// <param name="maxCount">The capacity of the shapes array.</param>
-		/// <param name="solidShapes">Determines if shapes that the ray starts in are counted as hits.</param>
-		/// <param name="userData">Passed through the worlds contact filter, with method RayCollide. This can be used to filter valid shapes.</param>
-		/// <returns>The number of shapes found</returns>
-		public int Raycast(Segment segment, out Fixture[] fixtures, int maxCount, bool solidShapes, object userData)
+        /// <summary>
+        /// Query the world for all shapes that intersect a given segment. You provide a shap
+        /// pointer buffer of specified size. The number of shapes found is returned, and the buffer
+        /// is filled in order of intersection.
+        /// </summary>
+        /// <param name="segment">Defines the begin and end point of the ray cast, from p1 to p2.
+        /// Use Segment.Extend to create (semi-)infinite rays.</param>
+        /// <param name="fixtures">The fixtures.</param>
+        /// <param name="maxCount">The capacity of the shapes array.</param>
+        /// <param name="solidShapes">Determines if shapes that the ray starts in are counted as hits.</param>
+        /// <param name="userData">Passed through the worlds contact filter, with method RayCollide. This can be used to filter valid shapes.</param>
+        /// <returns>The number of shapes found</returns>
+        public int Raycast(Segment segment, out Fixture[] fixtures, int maxCount, bool solidShapes, object userData)
 		{
 
 			_raycastSegment = segment;

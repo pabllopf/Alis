@@ -804,11 +804,11 @@ namespace Box2D.NetStandard.Dynamics
 			return _linearVelocity;
 		}
 
-		/// <summary>
-		/// Set the angular velocity.
-		/// </summary>
-		/// <param name="omega">The new angular velocity in radians/second.</param>
-		public void SetAngularVelocity(float w)
+        /// <summary>
+        /// Sets the angular velocity.
+        /// </summary>
+        /// <param name="w">The w.</param>
+        public void SetAngularVelocity(float w)
 		{
 			_angularVelocity = w;
 		}
