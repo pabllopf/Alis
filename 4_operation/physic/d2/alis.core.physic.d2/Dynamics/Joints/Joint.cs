@@ -1,333 +1,462 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:   Joint.cs
-// 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+/*
+  Box2DX Copyright (c) 2008 Ihar Kalasouski http://code.google.com/p/box2dx
+  Box2D original C++ version Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
 
-using System;
-using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Physic.D2.Definitions.Joints;
-using Alis.Core.Physic.D2.Dynamics.Joints.Misc;
-using Alis.Core.Physic.D2.Dynamics.Solver;
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
 
-namespace Alis.Core.Physic.D2.Dynamics.Joints
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+*/
+
+using Box2D.NetStandard.Common;
+
+namespace Box2D.NetStandard.Dynamics.Joints
 {
-    /// <summary>
-    ///     The joint class
-    /// </summary>
-    public abstract class Joint
-    {
-        /// <summary>
-        ///     The joint type
-        /// </summary>
-        private readonly JointType jointType;
+	/// <summary>
+	/// The joint type enum
+	/// </summary>
+	public enum JointType
+	{
+		/// <summary>
+		/// The unknown joint joint type
+		/// </summary>
+		UnknownJoint,
+		/// <summary>
+		/// The revolute joint joint type
+		/// </summary>
+		RevoluteJoint,
+		/// <summary>
+		/// The prismatic joint joint type
+		/// </summary>
+		PrismaticJoint,
+		/// <summary>
+		/// The distance joint joint type
+		/// </summary>
+		DistanceJoint,
+		/// <summary>
+		/// The pulley joint joint type
+		/// </summary>
+		PulleyJoint,
+		/// <summary>
+		/// The mouse joint joint type
+		/// </summary>
+		MouseJoint,
+		/// <summary>
+		/// The gear joint joint type
+		/// </summary>
+		GearJoint,
+		/// <summary>
+		/// The line joint joint type
+		/// </summary>
+		LineJoint
+	}
 
-        /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
-        private Body bodyA;
+	/// <summary>
+	/// The limit state enum
+	/// </summary>
+	public enum LimitState
+	{
+		/// <summary>
+		/// The inactive limit limit state
+		/// </summary>
+		InactiveLimit,
+		/// <summary>
+		/// The at lower limit limit state
+		/// </summary>
+		AtLowerLimit,
+		/// <summary>
+		/// The at upper limit limit state
+		/// </summary>
+		AtUpperLimit,
+		/// <summary>
+		/// The equal limits limit state
+		/// </summary>
+		EqualLimits
+	}
 
-        /// <summary>
-        ///     The body
-        /// </summary>
-        private Body bodyB;
+	/// <summary>
+	/// The jacobian
+	/// </summary>
+	public struct Jacobian
+	{
+		/// <summary>
+		/// The linear
+		/// </summary>
+		public Vec2 Linear1;
+		/// <summary>
+		/// The angular
+		/// </summary>
+		public float Angular1;
+		/// <summary>
+		/// The linear
+		/// </summary>
+		public Vec2 Linear2;
+		/// <summary>
+		/// The angular
+		/// </summary>
+		public float Angular2;
 
-        /// <summary>
-        ///     The breakpoint
-        /// </summary>
-        private float breakpoint;
+		/// <summary>
+		/// Sets the zero
+		/// </summary>
+		public void SetZero()
+		{
+			Linear1.SetZero(); Angular1 = 0.0f;
+			Linear2.SetZero(); Angular2 = 0.0f;
+		}
 
-        /// <summary>
-        ///     The collide connected
-        /// </summary>
-        private bool collideConnected;
+		/// <summary>
+		/// Sets the x 1
+		/// </summary>
+		/// <param name="x1">The </param>
+		/// <param name="a1">The </param>
+		/// <param name="x2">The </param>
+		/// <param name="a2">The </param>
+		public void Set(Vec2 x1, float a1, Vec2 x2, float a2)
+		{
+			Linear1 = x1; Angular1 = a1;
+			Linear2 = x2; Angular2 = a2;
+		}
 
-        /// <summary>
-        ///     The enabled
-        /// </summary>
-        private bool enabled;
+		/// <summary>
+		/// Computes the x 1
+		/// </summary>
+		/// <param name="x1">The </param>
+		/// <param name="a1">The </param>
+		/// <param name="x2">The </param>
+		/// <param name="a2">The </param>
+		/// <returns>The float</returns>
+		public float Compute(Vec2 x1, float a1, Vec2 x2, float a2)
+		{
+			return Vec2.Dot(Linear1, x1) + Angular1 * a1 + Vec2.Dot(Linear2, x2) + Angular2 * a2;
+		}
+	}
 
-        /// <summary>
-        ///     The user data
-        /// </summary>
-        private object userData;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Joint" /> class
-        /// </summary>
-        /// <param name="jointType">The joint type</param>
-        protected Joint(JointType jointType)
-        {
-            this.jointType = jointType;
-            breakpoint = float.MaxValue;
+	/// <summary>
+	/// A joint edge is used to connect bodies and joints together
+	/// in a joint graph where each body is a node and each joint
+	/// is an edge. A joint edge belongs to a doubly linked list
+	/// maintained in each attached body. Each joint has two joint
+	/// nodes, one for each attached body.
+	/// </summary>
+	public class JointEdge
+	{
+		/// <summary>
+		/// Provides quick access to the other body attached.
+		/// </summary>
+		public Body Other;
 
-            //Connected bodies should not collide by default
-            collideConnected = false;
-            Enabled = true;
-        }
+		/// <summary>
+		/// The joint.
+		/// </summary>
+		public Joint Joint;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Joint" /> class
-        /// </summary>
-        /// <param name="bodyA">The body</param>
-        /// <param name="bodyB">The body</param>
-        /// <param name="jointType">The joint type</param>
-        protected Joint(Body bodyA, Body bodyB, JointType jointType) : this(jointType)
-        {
-            //Can't connect a joint to the same body twice.
-            Debug.Assert(bodyA != bodyB);
+		/// <summary>
+		/// The previous joint edge in the body's joint list.
+		/// </summary>
+		public JointEdge Prev;
 
-            BodyA = bodyA;
-            BodyB = bodyB;
-        }
+		/// <summary>
+		/// The next joint edge in the body's joint list.
+		/// </summary>
+		public JointEdge Next;
+	}
 
-        /// <summary>Constructor for fixed joint</summary>
-        protected Joint(Body body, JointType jointType) : this(jointType)
-        {
-            BodyA = body;
-        }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Joint" /> class
-        /// </summary>
-        /// <param name="def">The def</param>
-        protected Joint(JointDef def) : this(def.Type)
-        {
-            Debug.Assert(def.BodyA != def.BodyB);
+	/// <summary>
+	/// Joint definitions are used to construct joints.
+	/// </summary>
+	public class JointDef
+	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="JointDef"/> class
+		/// </summary>
+		public JointDef()
+		{
+			Type = JointType.UnknownJoint;
+			UserData = null;
+			Body1 = null;
+			Body2 = null;
+			CollideConnected = false;
+		}
 
-            jointType = def.Type;
-            BodyA = def.BodyA;
-            BodyB = def.BodyB;
-            collideConnected = def.CollideConnected;
-            IslandFlag = false;
-            userData = def.UserData;
-        }
+		/// <summary>
+		/// The joint type is set automatically for concrete joint types.
+		/// </summary>
+		public JointType Type;
 
-        /// <summary>
-        ///     The joint edge
-        /// </summary>
-        internal JointEdge EdgeA { get; } = new JointEdge();
+		/// <summary>
+		/// Use this to attach application specific data to your joints.
+		/// </summary>
+		public object UserData;
 
-        /// <summary>
-        ///     The joint edge
-        /// </summary>
-        internal JointEdge EdgeB { get; } = new JointEdge();
+		/// <summary>
+		/// The first attached body.
+		/// </summary>
+		public Body Body1;
 
-        /// <summary>
-        ///     The island flag
-        /// </summary>
-        internal bool IslandFlag { get; set; }
+		/// <summary>
+		/// The second attached body.
+		/// </summary>
+		public Body Body2;
 
-        /// <summary>Gets or sets the type of the joint.</summary>
-        /// <value>The type of the joint.</value>
-        public JointType JointType
-        {
-            get { return jointType; }
-        }
+		/// <summary>
+		/// Set this flag to true if the attached bodies should collide.
+		/// </summary>
+		public bool CollideConnected;
+	}
 
-        /// <summary>
-        ///     Gets or sets the value of the enabled
-        /// </summary>
-        public bool Enabled
-        {
-            get { return enabled; }
-            set { enabled = value; }
-        }
+	/// <summary>
+	/// The base joint class. Joints are used to constraint two bodies together in
+	/// various fashions. Some joints also feature limits and motors.
+	/// </summary>
+	public abstract class Joint
+	{
+		/// <summary>
+		/// The type
+		/// </summary>
+		protected JointType _type;
+		/// <summary>
+		/// The prev
+		/// </summary>
+		internal Joint _prev;
+		/// <summary>
+		/// The next
+		/// </summary>
+		internal Joint _next;
+		/// <summary>
+		/// The joint edge
+		/// </summary>
+		internal JointEdge _node1 = new JointEdge();
+		/// <summary>
+		/// The joint edge
+		/// </summary>
+		internal JointEdge _node2 = new JointEdge();
+		/// <summary>
+		/// The body
+		/// </summary>
+		internal Body _body1;
+		/// <summary>
+		/// The body
+		/// </summary>
+		internal Body _body2;
 
-        /// <summary>Get the first body attached to this joint.</summary>
-        public Body BodyA
-        {
-            get { return bodyA; }
-            set { bodyA = value; }
-        }
+		/// <summary>
+		/// The island flag
+		/// </summary>
+		internal bool _islandFlag;
+		/// <summary>
+		/// The collide connected
+		/// </summary>
+		internal bool _collideConnected;
 
-        /// <summary>Get the second body attached to this joint.</summary>
-        public Body BodyB
-        {
-            get { return bodyB; }
-            set { bodyB = value; }
-        }
+		/// <summary>
+		/// The user data
+		/// </summary>
+		protected object _userData;
 
-        /// <summary>
-        ///     Get the anchor point on bodyA in world coordinates. On some joints, this value indicate the anchor point
-        ///     within the world.
-        /// </summary>
-        public abstract Vector2 WorldAnchorA { get; set; }
+		// Cache here per time step to reduce cache misses.
+		/// <summary>
+		/// The local center
+		/// </summary>
+		protected Vec2 _localCenter1, _localCenter2;
+		/// <summary>
+		/// The inv
+		/// </summary>
+		protected float _invMass1, _invI1;
+		/// <summary>
+		/// The inv
+		/// </summary>
+		protected float _invMass2, _invI2;
 
-        /// <summary>
-        ///     Get the anchor point on bodyB in world coordinates. On some joints, this value indicate the anchor point
-        ///     within the world.
-        /// </summary>
-        public abstract Vector2 WorldAnchorB { get; set; }
+		/// <summary>
+		/// Get the type of the concrete joint.
+		/// </summary>
+		public new JointType GetType()
+		{
+			return _type;
+		}
 
-        /// <summary>Set the user data pointer.</summary>
-        /// <value>The data.</value>
-        public object UserData
-        {
-            get { return userData; }
-            set { userData = value; }
-        }
+		/// <summary>
+		/// Get the first body attached to this joint.
+		/// </summary>
+		/// <returns></returns>
+		public Body GetBody1()
+		{
+			return _body1;
+		}
 
-        /// <summary>Set this flag to true if the attached bodies should collide.</summary>
-        public bool CollideConnected
-        {
-            get { return collideConnected; }
-            set { collideConnected = value; }
-        }
+		/// <summary>
+		/// Get the second body attached to this joint.
+		/// </summary>
+		/// <returns></returns>
+		public Body GetBody2()
+		{
+			return _body2;
+		}
 
-        /// <summary>
-        ///     The Breakpoint simply indicates the maximum Value the JointError can be before it breaks. The default value is
-        ///     float.MaxValue, which means it never breaks.
-        /// </summary>
-        public float Breakpoint
-        {
-            get { return breakpoint; }
-            set { breakpoint = value; }
-        }
+		/// <summary>
+		/// Get the anchor point on body1 in world coordinates.
+		/// </summary>
+		/// <returns></returns>
+		public abstract Vec2 Anchor1 { get; }
 
-        /// <summary>Fires when the joint is broken.</summary>
-        public event Action<Joint, float> Broke;
+		/// <summary>
+		/// Get the anchor point on body2 in world coordinates.
+		/// </summary>
+		/// <returns></returns>
+		public abstract Vec2 Anchor2 { get; }
 
-        /// <summary>Get the reaction force on body at the joint anchor in Newtons.</summary>
-        /// <param name="invDt">The inverse delta time.</param>
-        public abstract Vector2 GetReactionForce(float invDt);
+		/// <summary>
+		/// Get the reaction force on body2 at the joint anchor.
+		/// </summary>		
+		public abstract Vec2 GetReactionForce(float inv_dt);
 
-        /// <summary>Get the reaction torque on the body at the joint anchor in N*m.</summary>
-        /// <param name="invDt">The inverse delta time.</param>
-        public abstract float GetReactionTorque(float invDt);
+		/// <summary>
+		/// Get the reaction torque on body2.
+		/// </summary>		
+		public abstract float GetReactionTorque(float inv_dt);
 
-        /// <summary>
-        ///     Shift the origin for any points stored in world coordinates.
-        /// </summary>
-        public virtual void ShiftOrigin(ref Vector2 newOrigin)
-        {
-        }
+		/// <summary>
+		/// Get the next joint the world joint list.
+		/// </summary>
+		/// <returns></returns>
+		public Joint GetNext()
+		{
+			return _next;
+		}
 
-        /// <summary>
-        ///     Wakes the bodies
-        /// </summary>
-        protected void WakeBodies()
-        {
-            if (BodyA != null)
-            {
-                BodyA.Awake = true;
-            }
+		/// <summary>
+		/// Get/Set the user data pointer.
+		/// </summary>
+		/// <returns></returns>
+		public object UserData
+		{
+			get { return _userData; }
+			set { _userData = value; }
+		}
 
-            if (BodyB != null)
-            {
-                BodyB.Awake = true;
-            }
-        }
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Joint"/> class
+		/// </summary>
+		/// <param name="def">The def</param>
+		protected Joint(JointDef def)
+		{
+			_type = def.Type;
+			_prev = null;
+			_next = null;
+			_body1 = def.Body1;
+			_body2 = def.Body2;
+			_collideConnected = def.CollideConnected;
+			_islandFlag = false;
+			_userData = def.UserData;
+		}
 
-        /// <summary>Return true if the joint is a fixed type.</summary>
-        public bool IsFixedType()
-        {
-            return JointType == JointType.FixedRevolute ||
-                   JointType == JointType.FixedDistance ||
-                   JointType == JointType.FixedPrismatic ||
-                   JointType == JointType.FixedLine ||
-                   JointType == JointType.FixedMouse ||
-                   JointType == JointType.FixedAngle ||
-                   JointType == JointType.FixedFriction;
-        }
+		/// <summary>
+		/// Creates the def
+		/// </summary>
+		/// <param name="def">The def</param>
+		/// <returns>The joint</returns>
+		internal static Joint Create(JointDef def)
+		{
+			Joint joint = null;
 
-        /// <summary>
-        ///     Inits the velocity constraints using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        internal abstract void InitVelocityConstraints(ref SolverData data);
+			switch (def.Type)
+			{
+				case JointType.DistanceJoint:
+					{
+						joint = new DistanceJoint((DistanceJointDef)def);
+					}
+					break;
+				case JointType.MouseJoint:
+					{
+						joint = new MouseJoint((MouseJointDef)def);
+					}
+					break;
+				case JointType.PrismaticJoint:
+					{
+						joint = new PrismaticJoint((PrismaticJointDef)def);
+					}
+					break;
+				case JointType.RevoluteJoint:
+					{
+						joint = new RevoluteJoint((RevoluteJointDef)def);
+					}
+					break;
+				case JointType.PulleyJoint:
+					{
+						joint = new PulleyJoint((PulleyJointDef)def);
+					}
+					break;
+				case JointType.GearJoint:
+					{
+						joint = new GearJoint((GearJointDef)def);
+					}
+					break;
+				case JointType.LineJoint:
+					{
+						joint = new LineJoint((LineJointDef)def);
+					}
+					break;
+				default:
+					Box2DXDebug.Assert(false);
+					break;
+			}
 
-        /// <summary>
-        ///     Validates the inv dt
-        /// </summary>
-        /// <param name="invDt">The inv dt</param>
-        internal void Validate(float invDt)
-        {
-            if (!Enabled)
-            {
-                return;
-            }
+			return joint;
+		}
 
-            float jointErrorSquared = GetReactionForce(invDt).LengthSquared();
+		/// <summary>
+		/// Destroys the joint
+		/// </summary>
+		/// <param name="joint">The joint</param>
+		internal static void Destroy(Joint joint)
+		{
+			joint = null;
+		}
 
-            if (Math.Abs(jointErrorSquared) <= breakpoint * breakpoint)
-            {
-                return;
-            }
+		/// <summary>
+		/// Inits the velocity constraints using the specified step
+		/// </summary>
+		/// <param name="step">The step</param>
+		internal abstract void InitVelocityConstraints(TimeStep step);
+		/// <summary>
+		/// Solves the velocity constraints using the specified step
+		/// </summary>
+		/// <param name="step">The step</param>
+		internal abstract void SolveVelocityConstraints(TimeStep step);
 
-            Enabled = false;
+		// This returns true if the position errors are within tolerance.
+		/// <summary>
+		/// Describes whether this instance solve position constraints
+		/// </summary>
+		/// <param name="baumgarte">The baumgarte</param>
+		/// <returns>The bool</returns>
+		internal abstract bool SolvePositionConstraints(float baumgarte);
 
-            Broke?.Invoke(this, (float) Math.Sqrt(jointErrorSquared));
-        }
-
-        /// <summary>
-        ///     Solves the velocity constraints using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        internal abstract void SolveVelocityConstraints(ref SolverData data);
-
-        /// <summary>Solves the position constraints.</summary>
-        /// <param name="data"></param>
-        /// <returns>returns true if the position errors are within tolerance.</returns>
-        internal abstract bool SolvePositionConstraints(ref SolverData data);
-
-        /// <summary>
-        ///     Creates the def
-        /// </summary>
-        /// <param name="def">The def</param>
-        /// <returns>The joint</returns>
-        public static Joint Create(JointDef def)
-        {
-            switch (def.Type)
-            {
-                case JointType.Distance:
-                    return new DistanceJoint((DistanceJointDef) def);
-                case JointType.FixedMouse:
-                    return new FixedMouseJoint((FixedMouseJointDef) def);
-                case JointType.Prismatic:
-                    return new PrismaticJoint((PrismaticJointDef) def);
-                case JointType.Revolute:
-                    return new RevoluteJoint((RevoluteJointDef) def);
-                case JointType.Pulley:
-                    return new PulleyJoint((PulleyJointDef) def);
-                case JointType.Gear:
-                    return new GearJoint((GearJointDef) def);
-                case JointType.Wheel:
-                    return new WheelJoint((WheelJointDef) def);
-                case JointType.Weld:
-                    return new WeldJoint((WeldJointDef) def);
-                case JointType.Friction:
-                    return new FrictionJoint((FrictionJointDef) def);
-                case JointType.Motor:
-                    return new MotorJoint((MotorJointDef) def);
-                default:
-                    Debug.Assert(false);
-                    break;
-            }
-
-            return null;
-        }
-    }
+		/// <summary>
+		/// Computes the x form using the specified xf
+		/// </summary>
+		/// <param name="xf">The xf</param>
+		/// <param name="center">The center</param>
+		/// <param name="localCenter">The local center</param>
+		/// <param name="angle">The angle</param>
+		internal void ComputeXForm(ref XForm xf, Vec2 center, Vec2 localCenter, float angle)
+		{
+			xf.R.Set(angle);
+			xf.Position = center - Math.Mul(xf.R, localCenter);
+		}
+	}
 }

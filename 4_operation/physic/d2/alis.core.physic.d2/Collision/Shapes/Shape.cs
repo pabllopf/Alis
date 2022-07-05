@@ -1,167 +1,196 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:   Shape.cs
-// 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+/*
+  Box2DX Copyright (c) 2009 Ihar Kalasouski http://code.google.com/p/box2dx
+  Box2D original C++ version Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 
-using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Physic.D2.Collision.RayCast;
-using Alis.Core.Physic.D2.Shared;
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
 
-namespace Alis.Core.Physic.D2.Collision.Shapes
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+*/
+
+using System;
+using Box2D.NetStandard.Common;
+
+namespace Box2D.NetStandard.Collision.Shapes
 {
-    /// <summary>
-    ///     A shape is used for collision detection. You can create a shape however you like. Shapes used for simulation
-    ///     in World are created automatically when a Fixture is created. Shapes may encapsulate a one or more child shapes.
-    ///     A shape is 2D geometrical object, such as a circle or polygon.
-    /// </summary>
-    public abstract class Shape
-    {
-        /// <summary>
-        ///     The density
-        /// </summary>
-        internal float DensityPrivate;
+	/// <summary>
+	/// This holds the mass data computed for a shape.
+	/// </summary>
+	public struct MassData
+	{
+		/// <summary>
+		/// The mass of the shape, usually in kilograms.
+		/// </summary>
+		public float Mass;
+
+		/// <summary>
+		/// The position of the shape's centroid relative to the shape's origin.
+		/// </summary>
+		public Vec2 Center;
+
+		/// <summary>
+		/// The rotational inertia of the shape.
+		/// </summary>
+		public float I;
+	}
+
+	/// <summary>
+	/// The various collision shape types supported by Box2D.
+	/// </summary>
+	public enum ShapeType
+	{
+		/// <summary>
+		/// The unknown shape shape type
+		/// </summary>
+		UnknownShape = -1,
+		/// <summary>
+		/// The circle shape shape type
+		/// </summary>
+		CircleShape,
+		/// <summary>
+		/// The polygon shape shape type
+		/// </summary>
+		PolygonShape,
+		/// <summary>
+		/// The edge shape shape type
+		/// </summary>
+		EdgeShape,
+		/// <summary>
+		/// The shape type count shape type
+		/// </summary>
+		ShapeTypeCount,
+	}
+
+	/// <summary>
+	/// Returns code from TestSegment
+	/// </summary>
+	public enum SegmentCollide
+	{
+		/// <summary>
+		/// The start inside collide segment collide
+		/// </summary>
+		StartInsideCollide = -1,
+		/// <summary>
+		/// The miss collide segment collide
+		/// </summary>
+		MissCollide = 0,
+		/// <summary>
+		/// The hit collide segment collide
+		/// </summary>
+		HitCollide = 1
+	}
+
+	/// <summary>
+	/// A shape is used for collision detection. You can create a shape however you like.
+	/// Shapes used for simulation in World are created automatically when a Fixture is created.
+	/// </summary>
+	public abstract class Shape : IDisposable
+	{
+		#region Fields
+
+		/// <summary>
+		/// The unknown shape
+		/// </summary>
+		protected ShapeType _type = ShapeType.UnknownShape;
+		/// <summary>
+		/// The radius
+		/// </summary>
+		internal float _radius;
+
+		#endregion Fields
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Shape"/> class
+		/// </summary>
+		protected Shape() { }
+
+		/// <summary>
+		/// Test a point for containment in this shape. This only works for convex shapes.
+		/// </summary>
+		/// <param name="xf">The shape world transform.</param>
+		/// <param name="p">A point in world coordinates.</param>
+		/// <returns></returns>
+		public abstract bool TestPoint(XForm xf, Vec2 p);
+
+		/// <summary>
+		/// Perform a ray cast against this shape.
+		/// </summary>
+		/// <param name="xf">The shape world transform.</param>
+		/// <param name="lambda">Returns the hit fraction. You can use this to compute the contact point
+		/// p = (1 - lambda) * segment.P1 + lambda * segment.P2.</param>
+		/// <param name="normal"> Returns the normal at the contact point. If there is no intersection, 
+		/// the normal is not set.</param>
+		/// <param name="segment">Defines the begin and end point of the ray cast.</param>
+		/// <param name="maxLambda">A number typically in the range [0,1].</param>
+		public abstract SegmentCollide TestSegment(XForm xf, out float lambda, out Vec2 normal, Segment segment, float maxLambda);
+
+		/// <summary>
+		/// Given a transform, compute the associated axis aligned bounding box for this shape.
+		/// </summary>
+		/// <param name="aabb">Returns the axis aligned box.</param>
+		/// <param name="xf">The world transform of the shape.</param>
+		public abstract void ComputeAABB(out AABB aabb, XForm xf);
 
         /// <summary>
-        ///     The mass data
+        /// Compute the mass properties of this shape using its dimensions and density.
+        /// The inertia tensor is computed about the local origin, not the centroid.
         /// </summary>
-        internal MassData MassDataPrivate;
+        /// <param name="massData">Returns the mass data for this shape</param>
+		/// <param name="density"></param>
+		public abstract void ComputeMass(out MassData massData, float density);
 
-        /// <summary>
-        ///     The radius
-        /// </summary>
-        internal float RadiusPrivate;
+		/// <summary>
+		/// Compute the volume and centroid of this shape intersected with a half plane.
+		/// </summary>
+		/// <param name="normal">Normal the surface normal.</param>
+		/// <param name="offset">Offset the surface offset along normal.</param>
+		/// <param name="xf">The shape transform.</param>
+		/// <param name="c">Returns the centroid.</param>
+		/// <returns>The total volume less than offset along normal.</returns>
+		public abstract float ComputeSubmergedArea(Vec2 normal, float offset, XForm xf, out Vec2 c);
 
-        /// <summary>
-        ///     The shape type
-        /// </summary>
-        internal ShapeType ShapeTypePrivate;
+		/// <summary>
+		/// Compute the sweep radius. This is used for conservative advancement (continuous collision detection).
+		/// </summary>
+		/// <param name="pivot">Pivot is the pivot point for rotation.</param>
+		/// <returns>The distance of the furthest point from the pivot.</returns>
+		public abstract float ComputeSweepRadius(Vec2 pivot);
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Shape" /> class
-        /// </summary>
-        /// <param name="type">The type</param>
-        /// <param name="radius">The radius</param>
-        /// <param name="density">The density</param>
-        protected Shape(ShapeType type, float radius = 0, float density = 0)
-        {
-            Debug.Assert(radius >= 0);
-            Debug.Assert(density >= 0);
+		/// <summary>
+		/// Gets the vertex using the specified index
+		/// </summary>
+		/// <param name="index">The index</param>
+		/// <returns>The vec</returns>
+		public abstract Vec2 GetVertex(int index);
 
-            ShapeTypePrivate = type;
-            RadiusPrivate = radius;
-            DensityPrivate = density;
-            MassDataPrivate = new MassData();
-        }
+		/// <summary>
+		/// Gets the support using the specified d
+		/// </summary>
+		/// <param name="d">The </param>
+		/// <returns>The int</returns>
+		public abstract int GetSupport(Vec2 d);
 
-        /// <summary>Get the type of this shape.</summary>
-        /// <value>The type of the shape.</value>
-        public ShapeType ShapeType
-        {
-            get { return ShapeTypePrivate; }
-        }
+		/// <summary>
+		/// Gets the support vertex using the specified d
+		/// </summary>
+		/// <param name="d">The </param>
+		/// <returns>The vec</returns>
+		public abstract Vec2 GetSupportVertex(Vec2 d);
 
-        /// <summary>Get the number of child primitives.</summary>
-        public abstract int ChildCount { get; }
-
-        /// <summary>Radius of the Shape Changing the radius causes a recalculation of shape properties.</summary>
-        public float Radius
-        {
-            get { return RadiusPrivate; }
-            set
-            {
-                Debug.Assert(value >= 0);
-
-                if (RadiusPrivate != value)
-                {
-                    RadiusPrivate = value;
-                    ComputeProperties();
-                }
-            }
-        }
-
-        //Velcro: Moved density to the base shape. Simplifies a lot of code everywhere else
-        /// <summary>Gets or sets the density. Changing the density causes a recalculation of shape properties.</summary>
-        /// <value>The density.</value>
-        public float Density
-        {
-            get { return DensityPrivate; }
-            set
-            {
-                Debug.Assert(value >= 0);
-
-                if (DensityPrivate != value)
-                {
-                    DensityPrivate = value;
-                    ComputeProperties();
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Contains the properties of the shape such as:
-        ///     - Area of the shape
-        ///     - Centroid
-        ///     - Inertia
-        ///     - Mass
-        /// </summary>
-        public void GetMassData(out MassData massData)
-        {
-            massData = MassDataPrivate;
-        }
-
-        /// <summary>Clone the concrete shape</summary>
-        /// <returns>A clone of the shape</returns>
-        public abstract Shape Clone();
-
-        /// <summary>Test a point for containment in this shape. Note: This only works for convex shapes.</summary>
-        /// <param name="transform">The shape world transform.</param>
-        /// <param name="point">A point in world coordinates.</param>
-        /// <returns>True if the point is inside the shape</returns>
-        public abstract bool TestPoint(ref Transform transform, ref Vector2 point);
-
-        /// <summary>Cast a ray against a child shape.</summary>
-        /// <param name="input">The ray-cast input parameters.</param>
-        /// <param name="transform">The transform to be applied to the shape.</param>
-        /// <param name="childIndex">The child shape index.</param>
-        /// <param name="output">The ray-cast results.</param>
-        /// <returns>True if the ray-cast hits the shape</returns>
-        public abstract bool RayCast(ref RayCastInput input, ref Transform transform, int childIndex,
-            out RayCastOutput output);
-
-        /// <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
-        /// <param name="transform">The world transform of the shape.</param>
-        /// <param name="childIndex">The child shape index.</param>
-        public abstract Aabb ComputeAabb(ref Transform transform, int childIndex);
-
-        /// <summary>
-        ///     Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed
-        ///     about the local origin, not the centroid.
-        /// </summary>
-        protected abstract void ComputeProperties();
-    }
+		/// <summary>
+		/// Disposes this instance
+		/// </summary>
+		public virtual void Dispose(){}
+ 	}
 }

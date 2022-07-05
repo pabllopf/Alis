@@ -1,496 +1,539 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:   Fixture.cs
-// 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software: you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
+/*
+  Box2DX Copyright (c) 2009 Ihar Kalasouski http://code.google.com/p/box2dx
+  Box2D original C++ version Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
 
-using System.Diagnostics;
-using System.Numerics;
-using Alis.Core.Physic.D2.Collision.Broadphase;
-using Alis.Core.Physic.D2.Collision.ContactSystem;
-using Alis.Core.Physic.D2.Collision.Filtering;
-using Alis.Core.Physic.D2.Collision.Handlers;
-using Alis.Core.Physic.D2.Collision.RayCast;
-using Alis.Core.Physic.D2.Collision.Shapes;
-using Alis.Core.Physic.D2.Config;
-using Alis.Core.Physic.D2.Definitions;
-using Alis.Core.Physic.D2.Shared;
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
 
-namespace Alis.Core.Physic.D2.Dynamics
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+*/
+
+using System;
+using Box2D.NetStandard.Collision;
+using Box2D.NetStandard.Collision.Shapes;
+using Box2D.NetStandard.Common;
+
+namespace Box2D.NetStandard.Dynamics
 {
-    /// <summary>
-    ///     A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transform from
-    ///     its parent. Fixtures hold additional non-geometric data such as friction, collision filters, etc. Fixtures are
-    ///     created
-    ///     via Body.CreateFixture. Warning: You cannot reuse fixtures.
-    /// </summary>
-    public class Fixture
-    {
-        /// <summary>Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.</summary>
-        public AfterCollisionHandler AfterCollision;
-
-        /// <summary>
-        ///     Fires when two fixtures are close to each other. Due to how the broadphase works, this can be quite inaccurate
-        ///     as shapes are approximated using AABBs.
-        /// </summary>
-        public BeforeCollisionHandler BeforeCollision;
-
-        /// <summary>
-        ///     The body
-        /// </summary>
-        internal Body Bodyprivate;
-
-        /// <summary>
-        ///     The collides with
-        /// </summary>
-        internal Category CollidesWithprivate;
-
-        /// <summary>
-        ///     The collision categories
-        /// </summary>
-        internal Category CollisionCategoriesprivate;
-
-        /// <summary>
-        ///     The collision group
-        /// </summary>
-        internal short CollisionGroupPrivate;
-
-        /// <summary>
-        ///     The friction
-        /// </summary>
-        internal float Frictionprivate;
-
-        /// <summary>
-        ///     The ignore ccd with
-        /// </summary>
-        private Category ignoreCcdWith;
-
-        /// <summary>
-        ///     The is sensor
-        /// </summary>
-        internal bool IsSensorPrivate;
-
-        /// <summary>
-        ///     Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is
-        ///     always the fixture that the delegate is subscribed to.
-        /// </summary>
-        public OnCollisionHandler OnCollision;
-
-        /// <summary>
-        ///     Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called
-        ///     multiple times, as a fixture can have multiple contacts. Note The first fixture argument is always the fixture that
-        ///     the
-        ///     delegate is subscribed to.
-        /// </summary>
-        public OnSeparationHandler OnSeparation;
-
-        /// <summary>
-        ///     The proxies
-        /// </summary>
-        private FixtureProxy[] proxies;
-
-        /// <summary>
-        ///     The proxy count
-        /// </summary>
-        private int proxyCount;
-
-        /// <summary>
-        ///     The restitution
-        /// </summary>
-        internal float Restitutionprivate;
-
-        /// <summary>
-        ///     The restitution threshold
-        /// </summary>
-        internal float RestitutionThresholdPrivate;
-
-        /// <summary>
-        ///     The shape
-        /// </summary>
-        internal Shape ShapePrivate;
-
-        /// <summary>
-        ///     The user data
-        /// </summary>
-        private object userData;
-
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Fixture" /> class
-        /// </summary>
-        /// <param name="def">The def</param>
-        internal Fixture(FixtureDef def)
-        {
-            userData = def.UserData;
-            Frictionprivate = def.Friction;
-            Restitutionprivate = def.Restitution;
-            RestitutionThresholdPrivate = def.RestitutionThreshold;
-
-            CollisionGroupPrivate = def.Filter.Group;
-            CollisionCategoriesprivate = def.Filter.Category;
-            CollidesWithprivate = def.Filter.CategoryMask;
-
-            //Velcro: we have support for ignoring CCD with certain groups
-            ignoreCcdWith = Settings.DefaultFixtureIgnoreCcdWith;
-
-            IsSensorPrivate = def.IsSensor;
-            ShapePrivate = def.Shape.Clone();
-
-            // Reserve proxy space
-            int childCount = Shape.ChildCount;
-            proxies = new FixtureProxy[childCount];
-            for (int i = 0; i < childCount; ++i)
-            {
-                proxies[i].Fixture = null;
-                proxies[i].ProxyId = DynamicTreeBroadPhase.NullProxy;
-            }
-
-            proxyCount = 0;
-
-            //TODO:
-            //m_density = def->density;
-        }
-
-        /// <summary>
-        ///     Gets or sets the value of the ignore ccd with
-        /// </summary>
-        public Category IgnoreCcdWith
-        {
-            get { return ignoreCcdWith; }
-            set { ignoreCcdWith = value; }
-        }
-
-        /// <summary>
-        ///     Gets the value of the proxies
-        /// </summary>
-        public FixtureProxy[] Proxies
-        {
-            get { return proxies; }
-        }
-
-        /// <summary>
-        ///     Gets the value of the proxy count
-        /// </summary>
-        public int ProxyCount
-        {
-            get { return proxyCount; }
-        }
-
-        /// <summary>Get or set the restitution threshold. This will _not_ change the restitution threshold of existing contacts.</summary>
-        public float RestitutionThreshold
-        {
-            get { return RestitutionThresholdPrivate; }
-            set { RestitutionThresholdPrivate = value; }
-        }
-
-        /// <summary>
-        ///     Defaults to 0 If Settings.UseFPECollisionCategories is set to false: Collision groups allow a certain group of
-        ///     objects to never collide (negative) or always collide (positive). Zero means no collision group. Non-zero group
-        ///     filtering always wins against the mask bits. If Settings.UseFPECollisionCategories is set to true: If 2 fixtures
-        ///     are in
-        ///     the same collision group, they will not collide.
-        /// </summary>
-        public short CollisionGroup
-        {
-            set
-            {
-                if (CollisionGroupPrivate == value)
-                {
-                    return;
-                }
-
-                CollisionGroupPrivate = value;
-                Refilter();
-            }
-            get { return CollisionGroupPrivate; }
-        }
-
-        /// <summary>
-        ///     Defaults to Category.All The collision mask bits. This states the categories that this fixture would accept
-        ///     for collision. Use Settings.UseFPECollisionCategories to change the behavior.
-        /// </summary>
-        public Category CollidesWith
-        {
-            get { return CollidesWithprivate; }
-
-            set
-            {
-                if (CollidesWithprivate == value)
-                {
-                    return;
-                }
-
-                CollidesWithprivate = value;
-                Refilter();
-            }
-        }
-
-        /// <summary>
-        ///     The collision categories this fixture is a part of. If Settings.UseFPECollisionCategories is set to false:
-        ///     Defaults to Category.Cat1 If Settings.UseFPECollisionCategories is set to true: Defaults to Category.All
-        /// </summary>
-        public Category CollisionCategories
-        {
-            get { return CollisionCategoriesprivate; }
-
-            set
-            {
-                if (CollisionCategoriesprivate == value)
-                {
-                    return;
-                }
-
-                CollisionCategoriesprivate = value;
-                Refilter();
-            }
-        }
-
-        /// <summary>
-        ///     Get the child Shape. You can modify the child Shape, however you should not change the number of vertices
-        ///     because this will crash some collision caching mechanisms.
-        /// </summary>
-        /// <value>The shape.</value>
-        public Shape Shape
-        {
-            get { return ShapePrivate; }
-        }
-
-        /// <summary>Gets or sets a value indicating whether this fixture is a sensor.</summary>
-        /// <value><c>true</c> if this instance is a sensor; otherwise, <c>false</c>.</value>
-        public bool IsSensor
-        {
-            get { return IsSensorPrivate; }
-            set
-            {
-                if (Bodyprivate != null)
-                {
-                    Bodyprivate.Awake = true;
-                }
-
-                IsSensorPrivate = value;
-            }
-        }
-
-        /// <summary>Get the parent body of this fixture. This is null if the fixture is not attached.</summary>
-        /// <value>The body.</value>
-        public Body Body
-        {
-            get { return Bodyprivate; }
-        }
-
-        /// <summary>Set the user data. Use this to store your application specific data.</summary>
-        /// <value>The user data.</value>
-        public object UserData
-        {
-            get { return userData; }
-            set { userData = value; }
-        }
-
-        /// <summary>Set the coefficient of friction. This will _not_ change the friction of existing contacts.</summary>
-        /// <value>The friction.</value>
-        public float Friction
-        {
-            get { return Frictionprivate; }
-            set
-            {
-                Debug.Assert(!float.IsNaN(value));
-
-                Frictionprivate = value;
-            }
-        }
-
-        /// <summary>Set the coefficient of restitution. This will not change the restitution of existing contacts.</summary>
-        /// <value>The restitution.</value>
-        public float Restitution
-        {
-            get { return Restitutionprivate; }
-            set
-            {
-                Debug.Assert(!float.IsNaN(value));
-
-                Restitutionprivate = value;
-            }
-        }
-
-        /// <summary>
-        ///     Contacts are persistent and will keep being persistent unless they are flagged for filtering. This methods
-        ///     flags all contacts associated with the body for filtering.
-        /// </summary>
-        private void Refilter()
-        {
-            // Flag associated contacts for filtering.
-            ContactEdge edge = Bodyprivate.ContactList;
-            while (edge != null)
-            {
-                Contact contact = edge.Contact;
-                Fixture fixtureA = contact.FixtureA;
-                Fixture fixtureB = contact.FixtureB;
-                if (fixtureA == this || fixtureB == this)
-                {
-                    contact.Flags |= ContactFlags.FilterFlag;
-                }
-
-                edge = edge.Next;
-            }
-
-            World world = Bodyprivate.World;
-
-            if (world == null)
-            {
-                return;
-            }
-
-            // Touch each proxy so that new pairs may be created
-            IBroadPhase broadPhase = world.ContactManager.BroadPhase;
-            for (int i = 0; i < proxyCount; ++i)
-            {
-                broadPhase.TouchProxy(proxies[i].ProxyId);
-            }
-        }
-
-        /// <summary>Test a point for containment in this fixture.</summary>
-        /// <param name="point">A point in world coordinates.</param>
-        public bool TestPoint(ref Vector2 point)
-        {
-            return Shape.TestPoint(ref Bodyprivate.Xf, ref point);
-        }
-
-        /// <summary>Cast a ray against this Shape.</summary>
-        /// <param name="output">The ray-cast results.</param>
-        /// <param name="input">The ray-cast input parameters.</param>
-        /// <param name="childIndex">Index of the child.</param>
-        public bool RayCast(out RayCastOutput output, ref RayCastInput input, int childIndex)
-        {
-            return Shape.RayCast(ref input, ref Bodyprivate.Xf, childIndex, out output);
-        }
-
-        /// <summary>
-        ///     Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it
-        ///     using the Shape and the body transform.
-        /// </summary>
-        /// <param name="aabb">The AABB.</param>
-        /// <param name="childIndex">Index of the child.</param>
-        public void GetAabb(out Aabb aabb, int childIndex)
-        {
-            Debug.Assert(0 <= childIndex && childIndex < proxyCount);
-            aabb = proxies[childIndex].Aabb;
-        }
-
-        /// <summary>
-        ///     Destroys this instance
-        /// </summary>
-        internal void Destroy()
-        {
-            // The proxies must be destroyed before calling this.
-            Debug.Assert(proxyCount == 0);
-
-            // Free the proxy array.
-            proxies = null;
-            ShapePrivate = null;
-
-            //Velcro: We set the userdata to null here to help prevent bugs related to stale references in GC
-            userData = null;
-
-            BeforeCollision = null;
-            OnCollision = null;
-            OnSeparation = null;
-            AfterCollision = null;
-        }
-
-        // These support body activation/deactivation.
-        /// <summary>
-        ///     Creates the proxies using the specified broad phase
-        /// </summary>
-        /// <param name="broadPhase">The broad phase</param>
-        /// <param name="xf">The xf</param>
-        internal void CreateProxies(IBroadPhase broadPhase, ref Transform xf)
-        {
-            Debug.Assert(proxyCount == 0);
-
-            // Create proxies in the broad-phase.
-            proxyCount = ShapePrivate.ChildCount;
-
-            for (int i = 0; i < proxyCount; ++i)
-            {
-                FixtureProxy proxy = new FixtureProxy();
-                proxy.Aabb = ShapePrivate.ComputeAabb(ref xf, i);
-                proxy.Fixture = this;
-                proxy.ChildIndex = i;
-
-                //Velcro note: This line needs to be after the previous two because FixtureProxy is a struct
-                proxy.ProxyId = broadPhase.AddProxy(ref proxy);
-
-                proxies[i] = proxy;
-            }
-        }
-
-        /// <summary>
-        ///     Destroys the proxies using the specified broad phase
-        /// </summary>
-        /// <param name="broadPhase">The broad phase</param>
-        internal void DestroyProxies(IBroadPhase broadPhase)
-        {
-            // Destroy proxies in the broad-phase.
-            for (int i = 0; i < proxyCount; ++i)
-            {
-                FixtureProxy proxy = proxies[i];
-                broadPhase.RemoveProxy(proxy.ProxyId);
-                proxy.ProxyId = DynamicTreeBroadPhase.NullProxy;
-            }
-
-            proxyCount = 0;
-        }
-
-        /// <summary>
-        ///     Synchronizes the broad phase
-        /// </summary>
-        /// <param name="broadPhase">The broad phase</param>
-        /// <param name="transform1">The transform</param>
-        /// <param name="transform2">The transform</param>
-        internal void Synchronize(IBroadPhase broadPhase, ref Transform transform1, ref Transform transform2)
-        {
-            if (proxyCount == 0)
-            {
-                return;
-            }
-
-            for (int i = 0; i < proxyCount; ++i)
-            {
-                FixtureProxy proxy = proxies[i];
-
-                // Compute an AABB that covers the swept Shape (may miss some rotation effect).
-                Aabb aabb1 = Shape.ComputeAabb(ref transform1, proxy.ChildIndex);
-                Aabb aabb2 = Shape.ComputeAabb(ref transform2, proxy.ChildIndex);
-
-                proxy.Aabb.Combine(ref aabb1, ref aabb2);
-
-                Vector2 displacement = aabb2.Center - aabb1.Center;
-
-                broadPhase.MoveProxy(proxy.ProxyId, ref proxy.Aabb, displacement);
-            }
-        }
-    }
+	/// <summary>
+	/// This holds contact filtering data.
+	/// </summary>
+	public struct FilterData
+	{
+		/// <summary>
+		/// The collision category bits. Normally you would just set one bit.
+		/// </summary>
+		public ushort CategoryBits;
+
+		/// <summary>
+		/// The collision mask bits. This states the categories that this
+		/// shape would accept for collision.
+		/// </summary>
+		public ushort MaskBits;
+
+		/// <summary>
+		/// Collision groups allow a certain group of objects to never collide (negative)
+		/// or always collide (positive). Zero means no collision group. Non-zero group
+		/// filtering always wins against the mask bits.
+		/// </summary>
+		public short GroupIndex;
+	}
+
+	/// <summary>
+	/// A fixture definition is used to create a fixture. This class defines an
+	/// abstract fixture definition. You can reuse fixture definitions safely.
+	/// </summary>
+	public class FixtureDef
+	{
+		/// <summary>
+		/// The constructor sets the default fixture definition values.
+		/// </summary>	
+		public FixtureDef()
+		{
+			Type = ShapeType.UnknownShape;
+			UserData = null;
+			Friction = 0.2f;
+			Restitution = 0.0f;
+			Density = 0.0f;
+			Filter.CategoryBits = 0x0001;
+			Filter.MaskBits = 0xFFFF;
+			Filter.GroupIndex = 0;
+			IsSensor = false;
+		}
+
+		/// <summary>
+		/// Holds the shape type for down-casting.
+		/// </summary>
+		public ShapeType Type;
+
+		/// <summary>
+		/// Use this to store application specific fixture data.
+		/// </summary>
+		public object UserData;
+
+		/// <summary>
+		/// The friction coefficient, usually in the range [0,1].
+		/// </summary>
+		public float Friction;
+
+		/// <summary>
+		/// The restitution (elasticity) usually in the range [0,1].
+		/// </summary>
+		public float Restitution;
+
+		/// <summary>
+		/// The density, usually in kg/m^2.
+		/// </summary>
+		public float Density;
+
+		/// <summary>
+		/// A sensor shape collects contact information but never generates a collision response.
+		/// </summary>
+		public bool IsSensor;
+
+		/// <summary>
+		/// Contact filtering data.
+		/// </summary>
+		public FilterData Filter;
+	}
+
+	/// <summary>
+	/// This structure is used to build a fixture with a circle shape.
+	/// </summary>
+	public class CircleDef : FixtureDef
+	{
+		/// <summary>
+		/// The local position
+		/// </summary>
+		public Vec2 LocalPosition;
+		/// <summary>
+		/// The radius
+		/// </summary>
+		public float Radius;
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CircleDef"/> class
+		/// </summary>
+		public CircleDef()
+		{
+			Type = ShapeType.CircleShape;
+			LocalPosition = Vec2.Zero;
+			Radius = 1.0f;
+		}
+	}
+
+	/// <summary>
+	/// Convex polygon. The vertices must be ordered so that the outside of
+	/// the polygon is on the right side of the edges (looking along the edge
+	/// from start to end).
+	/// </summary>
+	public class PolygonDef : FixtureDef
+	{
+		/// <summary>
+		/// The number of polygon vertices.
+		/// </summary>
+		public int VertexCount;
+
+		/// <summary>
+		/// The polygon vertices in local coordinates.
+		/// </summary>
+		public Vec2[] Vertices = new Vec2[Settings.MaxPolygonVertices];
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="PolygonDef"/> class
+		/// </summary>
+		public PolygonDef()
+		{
+			Type = ShapeType.PolygonShape;
+			VertexCount = 0;
+		}
+
+		/// <summary>
+		/// Build vertices to represent an axis-aligned box.
+		/// </summary>
+		/// <param name="hx">The half-width</param>
+		/// <param name="hy">The half-height.</param>
+		public void SetAsBox(float hx, float hy)
+		{
+			VertexCount = 4;
+			Vertices[0].Set(-hx, -hy);
+			Vertices[1].Set(hx, -hy);
+			Vertices[2].Set(hx, hy);
+			Vertices[3].Set(-hx, hy);
+		}
+
+
+		/// <summary>
+		/// Build vertices to represent an oriented box.
+		/// </summary>
+		/// <param name="hx">The half-width</param>
+		/// <param name="hy">The half-height.</param>
+		/// <param name="center">The center of the box in local coordinates.</param>
+		/// <param name="angle">The rotation of the box in local coordinates.</param>
+		public void SetAsBox(float hx, float hy, Vec2 center, float angle)
+		{
+			SetAsBox(hx, hy);
+
+			XForm xf = new XForm();
+			xf.Position = center;
+			xf.R.Set(angle);
+
+			for (int i = 0; i < VertexCount; ++i)
+			{
+				Vertices[i] = Common.Math.Mul(xf, Vertices[i]);
+			}
+		}
+	}
+
+	/// <summary>
+	/// This structure is used to build a chain of edges.
+	/// </summary>
+	public class EdgeDef : FixtureDef
+	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="EdgeDef"/> class
+		/// </summary>
+		public EdgeDef()
+		{
+			Type = ShapeType.EdgeShape;
+		}
+
+		/// <summary>
+		/// The start vertex.
+		/// </summary>
+		public Vec2 Vertex1;
+
+		/// <summary>
+		/// The end vertex.
+		/// </summary>
+		public Vec2 Vertex2;
+	}
+
+	/// <summary>
+	/// A fixture is used to attach a shape to a body for collision detection. A fixture
+	/// inherits its transform from its parent. Fixtures hold additional non-geometric data
+	/// such as friction, collision filters, etc.
+	/// Fixtures are created via Body.CreateFixture.
+	/// @warning you cannot reuse fixtures.
+	/// </summary>
+	public class Fixture
+	{
+		/// <summary>
+		/// The type
+		/// </summary>
+		protected ShapeType _type;
+		/// <summary>
+		/// The is sensor
+		/// </summary>
+		protected bool _isSensor;
+		/// <summary>
+		/// The proxy id
+		/// </summary>
+		protected UInt16 _proxyId;
+
+		/// <summary>
+		/// The body
+		/// </summary>
+		internal Body _body;
+		/// <summary>
+		/// The shape
+		/// </summary>
+		protected Shape _shape;
+		/// <summary>
+		/// The next
+		/// </summary>
+		internal Fixture _next;
+
+		/// <summary>
+		/// Contact filtering data. You must call b2World::Refilter to correct
+		/// existing contacts/non-contacts.
+		/// </summary>
+		public FilterData Filter;
+
+		/// <summary>
+		/// Is this fixture a sensor (non-solid)?
+		/// </summary>
+		public bool IsSensor { get { return _isSensor; } }
+
+		/// <summary>
+		/// Get the child shape. You can modify the child shape, however you should not change the
+		/// number of vertices because this will crash some collision caching mechanisms.
+		/// </summary>
+		public Shape Shape { get { return _shape; } }
+
+		/// <summary>
+		/// Get the type of this shape. You can use this to down cast to the concrete shape.
+		/// </summary>
+		public ShapeType ShapeType { get { return _type; } }
+
+		/// <summary>
+		/// Get the next fixture in the parent body's fixture list.
+		/// </summary>
+		public Fixture Next { get { return _next; } }
+
+		/// <summary>
+		/// Get the parent body of this fixture. This is NULL if the fixture is not attached.
+		/// </summary>
+		public Body Body { get { return _body; } }
+
+		/// <summary>
+		/// User data that was assigned in the fixture definition. Use this to
+		/// store your application specific data.
+		/// </summary>
+		public object UserData;
+
+		/// <summary>
+		/// Friction coefficient, usually in the range [0,1].
+		/// </summary>
+		public float Friction;
+
+		/// <summary>
+		/// Restitution (elasticity) usually in the range [0,1].
+		/// </summary>
+		public float Restitution;
+
+		/// <summary>
+		/// Density, usually in kg/m^2.
+		/// </summary>
+		public float Density;
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="Fixture"/> class
+		/// </summary>
+		public Fixture()
+		{
+			_proxyId = PairManager.NullProxy;
+		}
+
+		/// <summary>
+		/// Creates the broad phase
+		/// </summary>
+		/// <param name="broadPhase">The broad phase</param>
+		/// <param name="body">The body</param>
+		/// <param name="xf">The xf</param>
+		/// <param name="def">The def</param>
+		public void Create(BroadPhase broadPhase, Body body, XForm xf, FixtureDef def)
+		{
+			UserData = def.UserData;
+			Friction = def.Friction;
+			Restitution = def.Restitution;
+			Density = def.Density;
+
+			_body = body;
+			_next = null;
+
+			Filter = def.Filter;
+
+			_isSensor = def.IsSensor;
+
+			_type = def.Type;
+
+			// Allocate and initialize the child shape.
+			switch (_type)
+			{
+				case ShapeType.CircleShape:
+					{
+						CircleShape circle = new CircleShape();
+						CircleDef circleDef = (CircleDef)def;
+						circle._position = circleDef.LocalPosition;
+						circle._radius = circleDef.Radius;
+						_shape = circle;
+					}
+					break;
+
+				case ShapeType.PolygonShape:
+					{
+						PolygonShape polygon = new PolygonShape();
+						PolygonDef polygonDef = (PolygonDef)def;
+						polygon.Set(polygonDef.Vertices, polygonDef.VertexCount);
+						_shape = polygon;
+					}
+					break;
+
+				case ShapeType.EdgeShape:
+					{
+						EdgeShape edge = new EdgeShape();
+						EdgeDef edgeDef = (EdgeDef)def;
+						edge.Set(edgeDef.Vertex1, edgeDef.Vertex2);
+						_shape = edge;
+					}
+					break;
+
+				default:
+					Box2DXDebug.Assert(false);
+					break;
+			}
+
+			// Create proxy in the broad-phase.
+			AABB aabb;
+			_shape.ComputeAABB(out aabb, xf);
+
+			bool inRange = broadPhase.InRange(aabb);
+
+			// You are creating a shape outside the world box.
+			Box2DXDebug.Assert(inRange);
+
+			if (inRange)
+			{
+				_proxyId = broadPhase.CreateProxy(aabb, this);
+			}
+			else
+			{
+				_proxyId = PairManager.NullProxy;
+			}
+		}
+
+		/// <summary>
+		/// Destroys the broad phase
+		/// </summary>
+		/// <param name="broadPhase">The broad phase</param>
+		public void Destroy(BroadPhase broadPhase)
+		{
+			// Remove proxy from the broad-phase.
+			if (_proxyId != PairManager.NullProxy)
+			{
+				broadPhase.DestroyProxy(_proxyId);
+				_proxyId = PairManager.NullProxy;
+			}
+
+			// Free the child shape.
+			_shape.Dispose();
+			_shape = null;
+		}
+
+		/// <summary>
+		/// Describes whether this instance synchronize
+		/// </summary>
+		/// <param name="broadPhase">The broad phase</param>
+		/// <param name="transform1">The transform</param>
+		/// <param name="transform2">The transform</param>
+		/// <returns>The bool</returns>
+		internal bool Synchronize(BroadPhase broadPhase, XForm transform1, XForm transform2)
+		{
+			if (_proxyId == PairManager.NullProxy)
+			{
+				return false;
+			}
+
+			// Compute an AABB that covers the swept shape (may miss some rotation effect).
+			AABB aabb1, aabb2;
+			_shape.ComputeAABB(out aabb1, transform1);
+			_shape.ComputeAABB(out aabb2, transform2);
+
+			AABB aabb = new AABB();
+			aabb.Combine(aabb1, aabb2);
+
+			if (broadPhase.InRange(aabb))
+			{
+				broadPhase.MoveProxy(_proxyId, aabb);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		/// <summary>
+		/// Refilters the proxy using the specified broad phase
+		/// </summary>
+		/// <param name="broadPhase">The broad phase</param>
+		/// <param name="transform">The transform</param>
+		internal void RefilterProxy(BroadPhase broadPhase, XForm transform)
+		{
+			if (_proxyId == PairManager.NullProxy)
+			{
+				return;
+			}
+
+			broadPhase.DestroyProxy(_proxyId);
+
+			AABB aabb;
+			_shape.ComputeAABB(out aabb, transform);
+
+			bool inRange = broadPhase.InRange(aabb);
+
+			if (inRange)
+			{
+				_proxyId = broadPhase.CreateProxy(aabb, this);
+			}
+			else
+			{
+				_proxyId = PairManager.NullProxy;
+			}
+		}
+
+		/// <summary>
+		/// Disposes this instance
+		/// </summary>
+		public virtual void Dispose()
+		{
+			Box2DXDebug.Assert(_proxyId == PairManager.NullProxy);
+			Box2DXDebug.Assert(_shape == null);
+		}
+
+		/// <summary>
+		/// Compute the mass properties of this shape using its dimensions and density.
+		/// The inertia tensor is computed about the local origin, not the centroid.
+		/// </summary>
+		/// <param name="massData">Returns the mass data for this shape.</param>
+		public void ComputeMass(out MassData massData)
+		{
+			_shape.ComputeMass(out massData, Density);
+		}
+
+		/// <summary>
+		/// Compute the volume and centroid of this fixture intersected with a half plane.
+		/// </summary>
+		/// <param name="normal">Normal the surface normal.</param>
+		/// <param name="offset">Offset the surface offset along normal.</param>
+		/// <param name="c">Returns the centroid.</param>
+		/// <returns>The total volume less than offset along normal.</returns>
+		public float ComputeSubmergedArea(Vec2 normal, float offset, out Vec2 c)
+		{
+			return _shape.ComputeSubmergedArea(normal, offset, _body.GetXForm(), out c);
+		}
+
+		/// <summary>
+		/// Test a point for containment in this fixture. This only works for convex shapes.
+		/// </summary>
+		/// <param name="p">A point in world coordinates.</param>
+		public bool TestPoint(Vec2 p)
+		{
+			return _shape.TestPoint(_body.GetXForm(), p);
+		}
+
+		/// <summary>
+		/// Perform a ray cast against this shape.
+		/// </summary>
+		/// <param name="lambda">Returns the hit fraction. You can use this to compute the contact point
+		/// p = (1 - lambda) * segment.p1 + lambda * segment.p2.</param>
+		/// <param name="normal">Returns the normal at the contact point. If there is no intersection, the normal
+		/// is not set.</param>
+		/// <param name="segment">Defines the begin and end point of the ray cast.</param>
+		/// <param name="maxLambda">A number typically in the range [0,1].</param>
+		public SegmentCollide TestSegment(out float lambda, out Vec2 normal, Segment segment, float maxLambda)
+		{
+			return _shape.TestSegment(_body.GetXForm(), out lambda, out normal, segment, maxLambda);
+		}
+
+		/// <summary>
+		/// Get the maximum radius about the parent body's center of mass.
+		/// </summary>
+		public float ComputeSweepRadius(Vec2 pivot)
+		{
+			return _shape.ComputeSweepRadius(pivot);
+		}
+	}
 }
