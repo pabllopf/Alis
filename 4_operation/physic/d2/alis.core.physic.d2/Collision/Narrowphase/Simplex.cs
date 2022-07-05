@@ -224,7 +224,7 @@ namespace Alis.Core.Physic.D2.Collision.Narrowphase
         ///     Gets the metric
         /// </summary>
         /// <returns>The float</returns>
-        internal float GetMetric()
+        private float GetMetric()
         {
             switch (Count)
             {

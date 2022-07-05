@@ -156,8 +156,7 @@ namespace Alis.Core.Physic.D2.Collision.Shapes
         /// <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
         /// <param name="transform">The world transform of the shape.</param>
         /// <param name="childIndex">The child shape index.</param>
-        /// <param name="aabb">The AABB results.</param>
-        public abstract void ComputeAabb(ref Transform transform, int childIndex, out Aabb aabb);
+        public abstract Aabb ComputeAabb(ref Transform transform, int childIndex);
 
         /// <summary>
         ///     Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed

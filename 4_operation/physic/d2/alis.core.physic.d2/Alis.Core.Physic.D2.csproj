@@ -4,4 +4,7 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFrameworkSelected)</TargetFramework>
     </PropertyGroup>
+    <ItemGroup>
+      <Folder Include="Extensions\Controllers\Buoyancy" />
+    </ItemGroup>
 </Project>

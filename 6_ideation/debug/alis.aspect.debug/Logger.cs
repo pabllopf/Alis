@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
 
@@ -63,19 +62,12 @@ namespace Alis.Aspect.Debug
             Level = LogLevel.Info;
 
             Console.WriteLine("SYSTEM STATS \n" +
-                              $"- MachineName:    {Environment.MachineName} \n" +
-                              $"- UserName:       {Environment.UserName} \n" +
-                              $"- OSVersion:      {Environment.OSVersion} \n" +
-                              $"- 64OS:           {Environment.Is64BitOperatingSystem} \n" +
-                              $"- .NET CLR:       {Environment.Version} \n" +
-                              $"- ProcessorCount: {Environment.ProcessorCount} \n" +
-                              $"- WorkDirectory:  {Environment.CurrentDirectory} \n");
+                              $"- MachineName:    {Environment.MachineName} \n");
 
-            var path = Environment.CurrentDirectory + "/logs";
+            var path =  "./logs";
             if (!Directory.Exists(path)) Directory.CreateDirectory(path);
 
             LogFile = File.Create(path + "/" + DateTime.Now.ToString("yyyy_M_dd-HH_mm_ss") + ".json");
-            LogFile.Close();
         }
 
 
@@ -246,7 +238,7 @@ namespace Alis.Aspect.Debug
         /// <returns>The string</returns>
         private static string CreateText(LogType level, string message)
         {
-            var stack = new StackTrace();
+            /*var stack = new StackTrace();
             var assemblyQualifiedName = stack.GetFrame(2)?.GetMethod()?.ReflectedType?.AssemblyQualifiedName;
             var fullName = stack.GetFrame(2)?.GetMethod()?.ReflectedType?.FullName + "." +
                            stack.GetFrame(2)?.GetMethod()?.Name;
@@ -257,13 +249,13 @@ namespace Alis.Aspect.Debug
                     parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}, ";
                 else
                     parametersText += $"{parameters[index].ParameterType.Name} {parameters[index].Name}";
-
+*/
             var log = new Log(
                 $"{level}",
                 DateTime.Now,
                 message,
-                $"{fullName}({parametersText})",
-                assemblyQualifiedName ?? "Default",
+                $"",
+                $"",
                 Environment.CurrentManagedThreadId,
                 Environment.StackTrace);
 

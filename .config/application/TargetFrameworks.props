@@ -2,8 +2,17 @@
 
   <!-- $(IsWindows) == true AND -->
 
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <RuntimeIdentifier>osx-arm64</RuntimeIdentifier>
+    </PropertyGroup>
+    
   <PropertyGroup Condition="
-        '$(NETCoreSdkRuntimeIdentifier)' != 'osx-arm64' AND
+        '$(RuntimeIdentifier)' != 'osx-arm64' AND
         ($(AssemblyName.Contains('Test')) == true OR
         $(AssemblyName.Contains('Sample')) == true)
         ">
@@ -11,7 +20,7 @@
     </PropertyGroup>
     
     <PropertyGroup Condition="
-        '$(NETCoreSdkRuntimeIdentifier)' != 'osx-arm64' AND
+        '$(RuntimeIdentifier)' != 'osx-arm64' AND
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('Sample')) == false
         ">
@@ -20,7 +29,7 @@
 
 
     <PropertyGroup Condition="
-        '$(NETCoreSdkRuntimeIdentifier)' == 'osx-arm64' AND
+        '$(RuntimeIdentifier)' == 'osx-arm64' AND
         ($(AssemblyName.Contains('Test')) == true OR
         $(AssemblyName.Contains('Sample')) == true)
         ">
@@ -28,7 +37,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="
-        '$(NETCoreSdkRuntimeIdentifier)' == 'osx-arm64' AND
+        '$(RuntimeIdentifier)' == 'osx-arm64' AND
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('Sample')) == false
         ">
