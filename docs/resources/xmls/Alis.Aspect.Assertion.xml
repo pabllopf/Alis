@@ -4,6 +4,39 @@
         <name>Alis.Aspect.Assertion</name>
     </assembly>
     <members>
+        <member name="T:Box2D.NetStandard.Box2DXDebug">
+            <summary>
+            The box dx debug class
+            </summary>
+        </member>
+        <member name="M:Box2D.NetStandard.Box2DXDebug.Assert(System.Boolean)">
+            <summary>
+            Asserts the condition
+            </summary>
+            <param name="condition">The condition</param>
+        </member>
+        <member name="M:Box2D.NetStandard.Box2DXDebug.Assert(System.Boolean,System.String)">
+            <summary>
+            Asserts the condition
+            </summary>
+            <param name="condition">The condition</param>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Box2D.NetStandard.Box2DXDebug.Assert(System.Boolean,System.String,System.String)">
+            <summary>
+            Asserts the condition
+            </summary>
+            <param name="condition">The condition</param>
+            <param name="message">The message</param>
+            <param name="detailMessage">The detail message</param>
+        </member>
+        <member name="M:Box2D.NetStandard.Box2DXDebug.ThrowBox2DXException(System.String)">
+            <summary>
+            Throws the box 2 dx exception using the specified message
+            </summary>
+            <param name="message">The message</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
         <member name="T:Alis.Aspect.Assertion.ComponentDontExits">
             <summary>
                 The component dont exits class
