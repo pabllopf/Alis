@@ -68,11 +68,11 @@ namespace Alis.Core.Physic.D2.Collision.TOI
         /// </summary>
         /// <param name="input">The input.</param>
         /// <param name="output">The output.</param>
-        public static void CalculateTimeOfImpact(ref ToiInput input, out ToiOutput output)
+        public static ToiOutput CalculateTimeOfImpact(ref ToiInput input)
         {
             ++ToiCalls;
 
-            output = new ToiOutput
+            ToiOutput output = new ToiOutput
             {
                 State = ToiOutputState.Unknown,
                 T = input.Max
@@ -269,6 +269,7 @@ namespace Alis.Core.Physic.D2.Collision.TOI
             }
 
             ToiMaxIters = Math.Max(ToiMaxIters, iter);
+            return output;
         }
     }
 }
