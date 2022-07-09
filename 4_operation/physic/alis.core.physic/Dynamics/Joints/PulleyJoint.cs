@@ -1,23 +1,31 @@
-/*
-  Box2DX Copyright (c) 2008 Ihar Kalasouski http://code.google.com/p/box2dx
-  Box2D original C++ version Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-*/
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   PulleyJoint.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 // Pulley:
 // length1 = norm(p1 - s1)
@@ -42,516 +50,520 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-	using Box2DXMath = Math;
+    using Box2DXMath = Math;
 
     /// <summary>
-	/// The pulley joint is connected to two bodies and two fixed ground points.
-	/// The pulley supports a ratio such that:
-	/// length1 + ratio * length2 constant
-	/// Yes, the force transmitted is scaled by the ratio.
-	/// The pulley also enforces a maximum length limit on both sides. This is
-	/// useful to prevent one side of the pulley hitting the top.
-	/// </summary>
-	public class PulleyJoint : Joint
-	{
-		/// <summary>
-		/// The min pulley length
-		/// </summary>
-		public static readonly float MinPulleyLength = 2.0f;
+    ///     The pulley joint is connected to two bodies and two fixed ground points.
+    ///     The pulley supports a ratio such that:
+    ///     length1 + ratio * length2 constant
+    ///     Yes, the force transmitted is scaled by the ratio.
+    ///     The pulley also enforces a maximum length limit on both sides. This is
+    ///     useful to prevent one side of the pulley hitting the top.
+    /// </summary>
+    public class PulleyJoint : Joint
+    {
+        /// <summary>
+        ///     The min pulley length
+        /// </summary>
+        public static readonly float MinPulleyLength = 2.0f;
 
         /// <summary>
-        /// The ground
+        ///     The limit state
+        /// </summary>
+        public LimitState _limitState1;
+
+        /// <summary>
+        ///     The limit state
+        /// </summary>
+        public LimitState _limitState2;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
+        /// </summary>
+        /// <param name="def">The def</param>
+        public PulleyJoint(PulleyJointDef def)
+            : base(def)
+        {
+            Ground = Body1.GetWorld().GetGroundBody();
+            GroundAnchor1 = def.GroundAnchor1 - Ground.GetXForm().Position;
+            GroundAnchor2 = def.GroundAnchor2 - Ground.GetXForm().Position;
+            LocalAnchor1 = def.LocalAnchor1;
+            LocalAnchor2 = def.LocalAnchor2;
+
+            Box2DXDebug.Assert(def.Ratio != 0.0f);
+            Ratio = def.Ratio;
+
+            Constant = def.Length1 + Ratio * def.Length2;
+
+            MaxLength1 = Math.Min(def.MaxLength1, Constant - Ratio * MinPulleyLength);
+            MaxLength2 = Math.Min(def.MaxLength2, (Constant - MinPulleyLength) / Ratio);
+
+            Impulse = 0.0f;
+            LimitImpulse1 = 0.0f;
+            LimitImpulse2 = 0.0f;
+        }
+
+        /// <summary>
+        ///     The ground
         /// </summary>
         public Body Ground { get; }
 
         /// <summary>
-        /// The ground anchor
+        ///     The ground anchor
         /// </summary>
         public Vec2 GroundAnchor1 { get; }
 
         /// <summary>
-        /// The ground anchor
+        ///     The ground anchor
         /// </summary>
         public Vec2 GroundAnchor2 { get; }
 
         /// <summary>
-        /// The local anchor
+        ///     The local anchor
         /// </summary>
         public Vec2 LocalAnchor1 { get; }
 
         /// <summary>
-        /// The local anchor
+        ///     The local anchor
         /// </summary>
         public Vec2 LocalAnchor2 { get; }
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Vec2 U1 { get; set; }
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public Vec2 U2 { get; set; }
 
         /// <summary>
-        /// The constant
+        ///     The constant
         /// </summary>
         public float Constant { get; }
 
         /// <summary>
-        /// The max length
+        ///     The max length
         /// </summary>
         public float MaxLength1 { get; }
 
         /// <summary>
-        /// The max length
+        ///     The max length
         /// </summary>
         public float MaxLength2 { get; }
 
         // Effective masses
 
         /// <summary>
-        /// The pulley mass
+        ///     The pulley mass
         /// </summary>
         public float PulleyMass { get; set; }
 
         /// <summary>
-        /// The limit mass
+        ///     The limit mass
         /// </summary>
         public float LimitMass1 { get; set; }
 
         /// <summary>
-        /// The limit mass
+        ///     The limit mass
         /// </summary>
         public float LimitMass2 { get; set; }
 
         // Impulses for accumulation/warm starting.
 
         /// <summary>
-        /// The impulse
+        ///     The impulse
         /// </summary>
         public float Impulse { get; set; }
 
         /// <summary>
-        /// The limit impulse
+        ///     The limit impulse
         /// </summary>
         public float LimitImpulse1 { get; set; }
 
         /// <summary>
-        /// The limit impulse
+        ///     The limit impulse
         /// </summary>
         public float LimitImpulse2 { get; set; }
 
         /// <summary>
-        /// The state
+        ///     The state
         /// </summary>
         public LimitState State { get; set; }
 
         /// <summary>
-		/// The limit state
-		/// </summary>
-		public LimitState _limitState1;
-		/// <summary>
-		/// The limit state
-		/// </summary>
-		public LimitState _limitState2;
-
-		/// <summary>
-		/// Gets the value of the anchor 1
-		/// </summary>
-		public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+        ///     Gets the value of the anchor 1
+        /// </summary>
+        public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
-		/// Gets the value of the anchor 2
-		/// </summary>
-		public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+        ///     Gets the value of the anchor 2
+        /// </summary>
+        public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
         /// <summary>
-		/// Gets the reaction force using the specified inv dt
-		/// </summary>
-		/// <param name="inv_dt">The inv dt</param>
-		/// <returns>The vec</returns>
-		public override Vec2 GetReactionForce(float inv_dt)
-		{
-			Vec2 P = Impulse * U2;
-			return inv_dt * P;
-		}
-
-		/// <summary>
-		/// Gets the reaction torque using the specified inv dt
-		/// </summary>
-		/// <param name="inv_dt">The inv dt</param>
-		/// <returns>The float</returns>
-		public override float GetReactionTorque(float inv_dt) => 0.0f;
+        ///     Get the first ground anchor.
+        /// </summary>
+        public Vec2 GroundAnchorX1 => Ground.GetXForm().Position + GroundAnchor1;
 
         /// <summary>
-		/// Get the first ground anchor.
-		/// </summary>
-		public Vec2 GroundAnchorX1 => Ground.GetXForm().Position + GroundAnchor1;
+        ///     Get the second ground anchor.
+        /// </summary>
+        public Vec2 GroundAnchorX2 => Ground.GetXForm().Position + GroundAnchor2;
 
         /// <summary>
-		/// Get the second ground anchor.
-		/// </summary>
-		public Vec2 GroundAnchorX2 => Ground.GetXForm().Position + GroundAnchor2;
+        ///     Get the current length of the segment attached to body1.
+        /// </summary>
+        public float Length1
+        {
+            get
+            {
+                Vec2 p = Body1.GetWorldPoint(LocalAnchor1);
+                Vec2 s = Ground.GetXForm().Position + GroundAnchor1;
+                Vec2 d = p - s;
+                return d.Length();
+            }
+        }
 
         /// <summary>
-		/// Get the current length of the segment attached to body1.
-		/// </summary>
-		public float Length1
-		{
-			get
-			{
-				Vec2 p = Body1.GetWorldPoint(LocalAnchor1);
-				Vec2 s = Ground.GetXForm().Position + GroundAnchor1;
-				Vec2 d = p - s;
-				return d.Length();
-			}
-		}
-
-		/// <summary>
-		/// Get the current length of the segment attached to body2.
-		/// </summary>
-		public float Length2
-		{
-			get
-			{
-				Vec2 p = Body2.GetWorldPoint(LocalAnchor2);
-				Vec2 s = Ground.GetXForm().Position + GroundAnchor2;
-				Vec2 d = p - s;
-				return d.Length();
-			}
-		}
-
-		/// <summary>
-		/// Get the pulley ratio.
-		/// </summary>
-		public float Ratio { get; set; }
+        ///     Get the current length of the segment attached to body2.
+        /// </summary>
+        public float Length2
+        {
+            get
+            {
+                Vec2 p = Body2.GetWorldPoint(LocalAnchor2);
+                Vec2 s = Ground.GetXForm().Position + GroundAnchor2;
+                Vec2 d = p - s;
+                return d.Length();
+            }
+        }
 
         /// <summary>
-		/// Initializes a new instance of the <see cref="PulleyJoint"/> class
-		/// </summary>
-		/// <param name="def">The def</param>
-		public PulleyJoint(PulleyJointDef def)
-			: base(def)
-		{
-			Ground = Body1.GetWorld().GetGroundBody();
-			GroundAnchor1 = def.GroundAnchor1 - Ground.GetXForm().Position;
-			GroundAnchor2 = def.GroundAnchor2 - Ground.GetXForm().Position;
-			LocalAnchor1 = def.LocalAnchor1;
-			LocalAnchor2 = def.LocalAnchor2;
+        ///     Get the pulley ratio.
+        /// </summary>
+        public float Ratio { get; set; }
 
-			Box2DXDebug.Assert(def.Ratio != 0.0f);
-			Ratio = def.Ratio;
+        /// <summary>
+        ///     Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="inv_dt">The inv dt</param>
+        /// <returns>The vec</returns>
+        public override Vec2 GetReactionForce(float inv_dt)
+        {
+            Vec2 P = Impulse * U2;
+            return inv_dt * P;
+        }
 
-			Constant = def.Length1 + Ratio * def.Length2;
+        /// <summary>
+        ///     Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="inv_dt">The inv dt</param>
+        /// <returns>The float</returns>
+        public override float GetReactionTorque(float inv_dt)
+        {
+            return 0.0f;
+        }
 
-			MaxLength1 = Math.Min(def.MaxLength1, Constant - Ratio * MinPulleyLength);
-			MaxLength2 = Math.Min(def.MaxLength2, (Constant - MinPulleyLength) / Ratio);
+        /// <summary>
+        ///     Inits the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        internal override void InitVelocityConstraints(TimeStep step)
+        {
+            Body b1 = Body1;
+            Body b2 = Body2;
 
-			Impulse = 0.0f;
-			LimitImpulse1 = 0.0f;
-			LimitImpulse2 = 0.0f;
-		}
+            Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
-		/// <summary>
-		/// Inits the velocity constraints using the specified step
-		/// </summary>
-		/// <param name="step">The step</param>
-		internal override void InitVelocityConstraints(TimeStep step)
-		{
-			Body b1 = Body1;
-			Body b2 = Body2;
+            Vec2 p1 = b1._sweep.C + r1;
+            Vec2 p2 = b2._sweep.C + r2;
 
-			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vec2 s1 = Ground.GetXForm().Position + GroundAnchor1;
+            Vec2 s2 = Ground.GetXForm().Position + GroundAnchor2;
 
-			Vec2 p1 = b1._sweep.C + r1;
-			Vec2 p2 = b2._sweep.C + r2;
+            // Get the pulley axes.
+            U1 = p1 - s1;
+            U2 = p2 - s2;
 
-			Vec2 s1 = Ground.GetXForm().Position + GroundAnchor1;
-			Vec2 s2 = Ground.GetXForm().Position + GroundAnchor2;
+            float length1 = U1.Length();
+            float length2 = U2.Length();
 
-			// Get the pulley axes.
-			U1 = p1 - s1;
-			U2 = p2 - s2;
+            if (length1 > Settings.LinearSlop)
+            {
+                U1 *= 1.0f / length1;
+            }
+            else
+            {
+                U1.SetZero();
+            }
 
-			float length1 = U1.Length();
-			float length2 = U2.Length();
+            if (length2 > Settings.LinearSlop)
+            {
+                U2 *= 1.0f / length2;
+            }
+            else
+            {
+                U2.SetZero();
+            }
 
-			if (length1 > Settings.LinearSlop)
-			{
-				U1 *= 1.0f / length1;
-			}
-			else
-			{
-				U1.SetZero();
-			}
+            float C = Constant - length1 - Ratio * length2;
+            if (C > 0.0f)
+            {
+                State = LimitState.InactiveLimit;
+                Impulse = 0.0f;
+            }
+            else
+            {
+                State = LimitState.AtUpperLimit;
+            }
 
-			if (length2 > Settings.LinearSlop)
-			{
-				U2 *= 1.0f / length2;
-			}
-			else
-			{
-				U2.SetZero();
-			}
+            if (length1 < MaxLength1)
+            {
+                _limitState1 = LimitState.InactiveLimit;
+                LimitImpulse1 = 0.0f;
+            }
+            else
+            {
+                _limitState1 = LimitState.AtUpperLimit;
+            }
 
-			float C = Constant - length1 - Ratio * length2;
-			if (C > 0.0f)
-			{
-				State = LimitState.InactiveLimit;
-				Impulse = 0.0f;
-			}
-			else
-			{
-				State = LimitState.AtUpperLimit;
-			}
+            if (length2 < MaxLength2)
+            {
+                _limitState2 = LimitState.InactiveLimit;
+                LimitImpulse2 = 0.0f;
+            }
+            else
+            {
+                _limitState2 = LimitState.AtUpperLimit;
+            }
 
-			if (length1 < MaxLength1)
-			{
-				_limitState1 = LimitState.InactiveLimit;
-				LimitImpulse1 = 0.0f;
-			}
-			else
-			{
-				_limitState1 = LimitState.AtUpperLimit;
-			}
+            // Compute effective mass.
+            float cr1u1 = Vec2.Cross(r1, U1);
+            float cr2u2 = Vec2.Cross(r2, U2);
 
-			if (length2 < MaxLength2)
-			{
-				_limitState2 = LimitState.InactiveLimit;
-				LimitImpulse2 = 0.0f;
-			}
-			else
-			{
-				_limitState2 = LimitState.AtUpperLimit;
-			}
+            LimitMass1 = b1._invMass + b1._invI * cr1u1 * cr1u1;
+            LimitMass2 = b2._invMass + b2._invI * cr2u2 * cr2u2;
+            PulleyMass = LimitMass1 + Ratio * Ratio * LimitMass2;
+            Box2DXDebug.Assert(LimitMass1 > Settings.FltEpsilon);
+            Box2DXDebug.Assert(LimitMass2 > Settings.FltEpsilon);
+            Box2DXDebug.Assert(PulleyMass > Settings.FltEpsilon);
+            LimitMass1 = 1.0f / LimitMass1;
+            LimitMass2 = 1.0f / LimitMass2;
+            PulleyMass = 1.0f / PulleyMass;
 
-			// Compute effective mass.
-			float cr1u1 = Vec2.Cross(r1, U1);
-			float cr2u2 = Vec2.Cross(r2, U2);
+            if (step.WarmStarting)
+            {
+                // Scale impulses to support variable time steps.
+                Impulse *= step.DtRatio;
+                LimitImpulse1 *= step.DtRatio;
+                LimitImpulse2 *= step.DtRatio;
 
-			LimitMass1 = b1._invMass + b1._invI * cr1u1 * cr1u1;
-			LimitMass2 = b2._invMass + b2._invI * cr2u2 * cr2u2;
-			PulleyMass = LimitMass1 + Ratio * Ratio * LimitMass2;
-			Box2DXDebug.Assert(LimitMass1 > Settings.FltEpsilon);
-			Box2DXDebug.Assert(LimitMass2 > Settings.FltEpsilon);
-			Box2DXDebug.Assert(PulleyMass > Settings.FltEpsilon);
-			LimitMass1 = 1.0f / LimitMass1;
-			LimitMass2 = 1.0f / LimitMass2;
-			PulleyMass = 1.0f / PulleyMass;
+                // Warm starting.
+                Vec2 P1 = -(Impulse + LimitImpulse1) * U1;
+                Vec2 P2 = (-Ratio * Impulse - LimitImpulse2) * U2;
+                b1._linearVelocity += b1._invMass * P1;
+                b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
+                b2._linearVelocity += b2._invMass * P2;
+                b2._angularVelocity += b2._invI * Vec2.Cross(r2, P2);
+            }
+            else
+            {
+                Impulse = 0.0f;
+                LimitImpulse1 = 0.0f;
+                LimitImpulse2 = 0.0f;
+            }
+        }
 
-			if (step.WarmStarting)
-			{
-				// Scale impulses to support variable time steps.
-				Impulse *= step.DtRatio;
-				LimitImpulse1 *= step.DtRatio;
-				LimitImpulse2 *= step.DtRatio;
+        /// <summary>
+        ///     Solves the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        internal override void SolveVelocityConstraints(TimeStep step)
+        {
+            Body b1 = Body1;
+            Body b2 = Body2;
 
-				// Warm starting.
-				Vec2 P1 = -(Impulse + LimitImpulse1) * U1;
-				Vec2 P2 = (-Ratio * Impulse - LimitImpulse2) * U2;
-				b1._linearVelocity += b1._invMass * P1;
-				b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
-				b2._linearVelocity += b2._invMass * P2;
-				b2._angularVelocity += b2._invI * Vec2.Cross(r2, P2);
-			}
-			else
-			{
-				Impulse = 0.0f;
-				LimitImpulse1 = 0.0f;
-				LimitImpulse2 = 0.0f;
-			}
-		}
+            Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
-		/// <summary>
-		/// Solves the velocity constraints using the specified step
-		/// </summary>
-		/// <param name="step">The step</param>
-		internal override void SolveVelocityConstraints(TimeStep step)
-		{
-			Body b1 = Body1;
-			Body b2 = Body2;
+            if (State == LimitState.AtUpperLimit)
+            {
+                Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
+                Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
 
-			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+                float Cdot = -Vec2.Dot(U1, v1) - Ratio * Vec2.Dot(U2, v2);
+                float impulse = PulleyMass * (-Cdot);
+                float oldImpulse = Impulse;
+                Impulse = Box2DXMath.Max(0.0f, Impulse + impulse);
+                impulse = Impulse - oldImpulse;
 
-			if (State == LimitState.AtUpperLimit)
-			{
-				Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
-				Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
+                Vec2 P1 = -impulse * U1;
+                Vec2 P2 = -Ratio * impulse * U2;
+                b1._linearVelocity += b1._invMass * P1;
+                b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
+                b2._linearVelocity += b2._invMass * P2;
+                b2._angularVelocity += b2._invI * Vec2.Cross(r2, P2);
+            }
 
-				float Cdot = -Vec2.Dot(U1, v1) - Ratio * Vec2.Dot(U2, v2);
-				float impulse = PulleyMass * (-Cdot);
-				float oldImpulse = Impulse;
-				Impulse = Box2DXMath.Max(0.0f, Impulse + impulse);
-				impulse = Impulse - oldImpulse;
+            if (_limitState1 == LimitState.AtUpperLimit)
+            {
+                Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
 
-				Vec2 P1 = -impulse * U1;
-				Vec2 P2 = -Ratio * impulse * U2;
-				b1._linearVelocity += b1._invMass * P1;
-				b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
-				b2._linearVelocity += b2._invMass * P2;
-				b2._angularVelocity += b2._invI * Vec2.Cross(r2, P2);
-			}
+                float Cdot = -Vec2.Dot(U1, v1);
+                float impulse = -LimitMass1 * Cdot;
+                float oldImpulse = LimitImpulse1;
+                LimitImpulse1 = Box2DXMath.Max(0.0f, LimitImpulse1 + impulse);
+                impulse = LimitImpulse1 - oldImpulse;
 
-			if (_limitState1 == LimitState.AtUpperLimit)
-			{
-				Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
+                Vec2 P1 = -impulse * U1;
+                b1._linearVelocity += b1._invMass * P1;
+                b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
+            }
 
-				float Cdot = -Vec2.Dot(U1, v1);
-				float impulse = -LimitMass1 * Cdot;
-				float oldImpulse = LimitImpulse1;
-				LimitImpulse1 = Box2DXMath.Max(0.0f, LimitImpulse1 + impulse);
-				impulse = LimitImpulse1 - oldImpulse;
+            if (_limitState2 == LimitState.AtUpperLimit)
+            {
+                Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
 
-				Vec2 P1 = -impulse * U1;
-				b1._linearVelocity += b1._invMass * P1;
-				b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
-			}
+                float Cdot = -Vec2.Dot(U2, v2);
+                float impulse = -LimitMass2 * Cdot;
+                float oldImpulse = LimitImpulse2;
+                LimitImpulse2 = Box2DXMath.Max(0.0f, LimitImpulse2 + impulse);
+                impulse = LimitImpulse2 - oldImpulse;
 
-			if (_limitState2 == LimitState.AtUpperLimit)
-			{
-				Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
+                Vec2 P2 = -impulse * U2;
+                b2._linearVelocity += b2._invMass * P2;
+                b2._angularVelocity += b2._invI * Vec2.Cross(r2, P2);
+            }
+        }
 
-				float Cdot = -Vec2.Dot(U2, v2);
-				float impulse = -LimitMass2 * Cdot;
-				float oldImpulse = LimitImpulse2;
-				LimitImpulse2 = Box2DXMath.Max(0.0f, LimitImpulse2 + impulse);
-				impulse = LimitImpulse2 - oldImpulse;
+        /// <summary>
+        ///     Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="baumgarte">The baumgarte</param>
+        /// <returns>The bool</returns>
+        internal override bool SolvePositionConstraints(float baumgarte)
+        {
+            Body b1 = Body1;
+            Body b2 = Body2;
 
-				Vec2 P2 = -impulse * U2;
-				b2._linearVelocity += b2._invMass * P2;
-				b2._angularVelocity += b2._invI * Vec2.Cross(r2, P2);
-			}
-		}
+            Vec2 s1 = Ground.GetXForm().Position + GroundAnchor1;
+            Vec2 s2 = Ground.GetXForm().Position + GroundAnchor2;
 
-		/// <summary>
-		/// Describes whether this instance solve position constraints
-		/// </summary>
-		/// <param name="baumgarte">The baumgarte</param>
-		/// <returns>The bool</returns>
-		internal override bool SolvePositionConstraints(float baumgarte)
-		{
-			Body b1 = Body1;
-			Body b2 = Body2;
+            float linearError = 0.0f;
 
-			Vec2 s1 = Ground.GetXForm().Position + GroundAnchor1;
-			Vec2 s2 = Ground.GetXForm().Position + GroundAnchor2;
+            if (State == LimitState.AtUpperLimit)
+            {
+                Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+                Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
-			float linearError = 0.0f;
+                Vec2 p1 = b1._sweep.C + r1;
+                Vec2 p2 = b2._sweep.C + r2;
 
-			if (State == LimitState.AtUpperLimit)
-			{
-				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+                // Get the pulley axes.
+                U1 = p1 - s1;
+                U2 = p2 - s2;
 
-				Vec2 p1 = b1._sweep.C + r1;
-				Vec2 p2 = b2._sweep.C + r2;
+                float length1 = U1.Length();
+                float length2 = U2.Length();
 
-				// Get the pulley axes.
-				U1 = p1 - s1;
-				U2 = p2 - s2;
+                if (length1 > Settings.LinearSlop)
+                {
+                    U1 *= 1.0f / length1;
+                }
+                else
+                {
+                    U1.SetZero();
+                }
 
-				float length1 = U1.Length();
-				float length2 = U2.Length();
+                if (length2 > Settings.LinearSlop)
+                {
+                    U2 *= 1.0f / length2;
+                }
+                else
+                {
+                    U2.SetZero();
+                }
 
-				if (length1 > Settings.LinearSlop)
-				{
-					U1 *= 1.0f / length1;
-				}
-				else
-				{
-					U1.SetZero();
-				}
+                float C = Constant - length1 - Ratio * length2;
+                linearError = Box2DXMath.Max(linearError, -C);
 
-				if (length2 > Settings.LinearSlop)
-				{
-					U2 *= 1.0f / length2;
-				}
-				else
-				{
-					U2.SetZero();
-				}
+                C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
+                float impulse = -PulleyMass * C;
 
-				float C = Constant - length1 - Ratio * length2;
-				linearError = Box2DXMath.Max(linearError, -C);
+                Vec2 P1 = -impulse * U1;
+                Vec2 P2 = -Ratio * impulse * U2;
 
-				C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
-				float impulse = -PulleyMass * C;
+                b1._sweep.C += b1._invMass * P1;
+                b1._sweep.A += b1._invI * Vec2.Cross(r1, P1);
+                b2._sweep.C += b2._invMass * P2;
+                b2._sweep.A += b2._invI * Vec2.Cross(r2, P2);
 
-				Vec2 P1 = -impulse * U1;
-				Vec2 P2 = -Ratio * impulse * U2;
+                b1.SynchronizeTransform();
+                b2.SynchronizeTransform();
+            }
 
-				b1._sweep.C += b1._invMass * P1;
-				b1._sweep.A += b1._invI * Vec2.Cross(r1, P1);
-				b2._sweep.C += b2._invMass * P2;
-				b2._sweep.A += b2._invI * Vec2.Cross(r2, P2);
+            if (_limitState1 == LimitState.AtUpperLimit)
+            {
+                Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+                Vec2 p1 = b1._sweep.C + r1;
 
-				b1.SynchronizeTransform();
-				b2.SynchronizeTransform();
-			}
+                U1 = p1 - s1;
+                float length1 = U1.Length();
 
-			if (_limitState1 == LimitState.AtUpperLimit)
-			{
-				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-				Vec2 p1 = b1._sweep.C + r1;
+                if (length1 > Settings.LinearSlop)
+                {
+                    U1 *= 1.0f / length1;
+                }
+                else
+                {
+                    U1.SetZero();
+                }
 
-				U1 = p1 - s1;
-				float length1 = U1.Length();
+                float C = MaxLength1 - length1;
+                linearError = Box2DXMath.Max(linearError, -C);
+                C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
+                float impulse = -LimitMass1 * C;
 
-				if (length1 > Settings.LinearSlop)
-				{
-					U1 *= 1.0f / length1;
-				}
-				else
-				{
-					U1.SetZero();
-				}
+                Vec2 P1 = -impulse * U1;
+                b1._sweep.C += b1._invMass * P1;
+                b1._sweep.A += b1._invI * Vec2.Cross(r1, P1);
 
-				float C = MaxLength1 - length1;
-				linearError = Box2DXMath.Max(linearError, -C);
-				C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
-				float impulse = -LimitMass1 * C;
+                b1.SynchronizeTransform();
+            }
 
-				Vec2 P1 = -impulse * U1;
-				b1._sweep.C += b1._invMass * P1;
-				b1._sweep.A += b1._invI * Vec2.Cross(r1, P1);
+            if (_limitState2 == LimitState.AtUpperLimit)
+            {
+                Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+                Vec2 p2 = b2._sweep.C + r2;
 
-				b1.SynchronizeTransform();
-			}
+                U2 = p2 - s2;
+                float length2 = U2.Length();
 
-			if (_limitState2 == LimitState.AtUpperLimit)
-			{
-				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
-				Vec2 p2 = b2._sweep.C + r2;
+                if (length2 > Settings.LinearSlop)
+                {
+                    U2 *= 1.0f / length2;
+                }
+                else
+                {
+                    U2.SetZero();
+                }
 
-				U2 = p2 - s2;
-				float length2 = U2.Length();
+                float C = MaxLength2 - length2;
+                linearError = Box2DXMath.Max(linearError, -C);
+                C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
+                float impulse = -LimitMass2 * C;
 
-				if (length2 > Settings.LinearSlop)
-				{
-					U2 *= 1.0f / length2;
-				}
-				else
-				{
-					U2.SetZero();
-				}
+                Vec2 P2 = -impulse * U2;
+                b2._sweep.C += b2._invMass * P2;
+                b2._sweep.A += b2._invI * Vec2.Cross(r2, P2);
 
-				float C = MaxLength2 - length2;
-				linearError = Box2DXMath.Max(linearError, -C);
-				C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
-				float impulse = -LimitMass2 * C;
+                b2.SynchronizeTransform();
+            }
 
-				Vec2 P2 = -impulse * U2;
-				b2._sweep.C += b2._invMass * P2;
-				b2._sweep.A += b2._invI * Vec2.Cross(r2, P2);
-
-				b2.SynchronizeTransform();
-			}
-
-			return linearError < Settings.LinearSlop;
-		}
-	}
+            return linearError < Settings.LinearSlop;
+        }
+    }
 }

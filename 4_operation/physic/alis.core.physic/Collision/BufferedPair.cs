@@ -30,16 +30,17 @@
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The buffered pair
+    ///     The buffered pair
     /// </summary>
     public struct BufferedPair
     {
         /// <summary>
-        /// The proxy id
+        ///     The proxy id
         /// </summary>
         public ushort ProxyId1;
+
         /// <summary>
-        /// The proxy id
+        ///     The proxy id
         /// </summary>
         public ushort ProxyId2;
     }

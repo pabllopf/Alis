@@ -27,31 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// Used to warm start Distance.
-    /// Set count to zero on first call.
+    ///     Used to warm start Distance.
+    ///     Set count to zero on first call.
     /// </summary>
     public struct SimplexCache
     {
         /// <summary>
-        /// Length or area.
+        ///     Length or area.
         /// </summary>
-        public Single Metric;
+        public float Metric;
+
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
-        public UInt16 Count;
+        public ushort Count;
+
         /// <summary>
-        /// Vertices on shape A.
+        ///     Vertices on shape A.
         /// </summary>
         //public Byte[/*3*/] IndexA;
         public IndexArray IndexA;
+
         /// <summary>
-        /// Vertices on shape B.
+        ///     Vertices on shape B.
         /// </summary>
         //public Byte[/*3*/] IndexB;
         public IndexArray IndexB;

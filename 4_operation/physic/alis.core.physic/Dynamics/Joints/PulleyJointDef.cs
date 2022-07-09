@@ -1,16 +1,80 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   PulleyJointDef.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    /// Pulley joint definition. This requires two ground anchors,
-    /// two dynamic body anchor points, max lengths for each side,
-    /// and a pulley ratio.
+    ///     Pulley joint definition. This requires two ground anchors,
+    ///     two dynamic body anchor points, max lengths for each side,
+    ///     and a pulley ratio.
     /// </summary>
     public class PulleyJointDef : JointDef
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PulleyJointDef"/> class
+        ///     The first ground anchor in world coordinates. This point never moves.
+        /// </summary>
+        public Vec2 GroundAnchor1;
+
+        /// <summary>
+        ///     The second ground anchor in world coordinates. This point never moves.
+        /// </summary>
+        public Vec2 GroundAnchor2;
+
+        /// <summary>
+        ///     The a reference length for the segment attached to body1.
+        /// </summary>
+        public float Length1;
+
+        /// <summary>
+        ///     The local anchor point relative to body1's origin.
+        /// </summary>
+        public Vec2 LocalAnchor1;
+
+        /// <summary>
+        ///     The local anchor point relative to body2's origin.
+        /// </summary>
+        public Vec2 LocalAnchor2;
+
+        /// <summary>
+        ///     The maximum length of the segment attached to body1.
+        /// </summary>
+        public float MaxLength1;
+
+        /// <summary>
+        ///     The pulley ratio, used to simulate a block-and-tackle.
+        /// </summary>
+        public float Ratio;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PulleyJointDef" /> class
         /// </summary>
         public PulleyJointDef()
         {
@@ -26,6 +90,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Ratio = 1.0f;
             CollideConnected = true;
         }
+
+        /// <summary>
+        ///     The a reference length for the segment attached to body2.
+        /// </summary>
+        public float Length2 { get; set; }
+
+        /// <summary>
+        ///     The maximum length of the segment attached to body2.
+        /// </summary>
+        public float MaxLength2 { get; set; }
 
         /// Initialize the bodies, anchors, lengths, max lengths, and ratio using the world anchors.
         public void Initialize(Body body1, Body body2,
@@ -49,50 +123,5 @@ namespace Alis.Core.Physic.Dynamics.Joints
             MaxLength1 = C - ratio * PulleyJoint.MinPulleyLength;
             MaxLength2 = (C - PulleyJoint.MinPulleyLength) / ratio;
         }
-
-        /// <summary>
-        /// The first ground anchor in world coordinates. This point never moves.
-        /// </summary>
-        public Vec2 GroundAnchor1;
-
-        /// <summary>
-        /// The second ground anchor in world coordinates. This point never moves.
-        /// </summary>
-        public Vec2 GroundAnchor2;
-
-        /// <summary>
-        /// The local anchor point relative to body1's origin.
-        /// </summary>
-        public Vec2 LocalAnchor1;
-
-        /// <summary>
-        /// The local anchor point relative to body2's origin.
-        /// </summary>
-        public Vec2 LocalAnchor2;
-
-        /// <summary>
-        /// The a reference length for the segment attached to body1.
-        /// </summary>
-        public float Length1;
-
-        /// <summary>
-        /// The maximum length of the segment attached to body1.
-        /// </summary>
-        public float MaxLength1;
-
-        /// <summary>
-        /// The a reference length for the segment attached to body2.
-        /// </summary>
-        public float Length2 { get; set; }
-
-        /// <summary>
-        /// The maximum length of the segment attached to body2.
-        /// </summary>
-        public float MaxLength2 { get; set; }
-
-        /// <summary>
-        /// The pulley ratio, used to simulate a block-and-tackle.
-        /// </summary>
-        public float Ratio;
     }
 }

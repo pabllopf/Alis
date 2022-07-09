@@ -1,76 +1,84 @@
-/*
-  Box2DX Copyright (c) 2008 Ihar Kalasouski http://code.google.com/p/box2dx
-  Box2D original C++ version Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-*/
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   Box2DXDebug.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
 
 namespace Alis.Core.Physic
 {
-	/// <summary>
-	/// The box dx debug class
-	/// </summary>
-	public static class Box2DXDebug
-	{
-		/// <summary>
-		/// Asserts the condition
-		/// </summary>
-		/// <param name="condition">The condition</param>
-		[Conditional("DEBUG")]
-		public static void Assert(bool condition)
-		{
+    /// <summary>
+    ///     The box dx debug class
+    /// </summary>
+    public static class Box2DXDebug
+    {
+        /// <summary>
+        ///     Asserts the condition
+        /// </summary>
+        /// <param name="condition">The condition</param>
+        [Conditional("DEBUG")]
+        public static void Assert(bool condition)
+        {
             Debug.Assert(condition);
-		}
+        }
 
-		/// <summary>
-		/// Asserts the condition
-		/// </summary>
-		/// <param name="condition">The condition</param>
-		/// <param name="message">The message</param>
-		[Conditional("DEBUG")]
-		public static void Assert(bool condition, string message)
-		{
+        /// <summary>
+        ///     Asserts the condition
+        /// </summary>
+        /// <param name="condition">The condition</param>
+        /// <param name="message">The message</param>
+        [Conditional("DEBUG")]
+        public static void Assert(bool condition, string message)
+        {
             Debug.Assert(condition, message);
-		}
+        }
 
-		/// <summary>
-		/// Asserts the condition
-		/// </summary>
-		/// <param name="condition">The condition</param>
-		/// <param name="message">The message</param>
-		/// <param name="detailMessage">The detail message</param>
-		[Conditional("DEBUG")]
-		public static void Assert(bool condition, string message, string detailMessage)
-		{
+        /// <summary>
+        ///     Asserts the condition
+        /// </summary>
+        /// <param name="condition">The condition</param>
+        /// <param name="message">The message</param>
+        /// <param name="detailMessage">The detail message</param>
+        [Conditional("DEBUG")]
+        public static void Assert(bool condition, string message, string detailMessage)
+        {
             Debug.Assert(condition, message);
-		}
+        }
 
-		/// <summary>
-		/// Throws the box 2 dx exception using the specified message
-		/// </summary>
-		/// <param name="message">The message</param>
-		/// <exception cref="Exception"></exception>
-		public static void ThrowBox2DXException(String message)
-		{
-			string msg = String.Format("Error: {0}", message);
-			throw new Exception(msg);
-		}
-	}
+        /// <summary>
+        ///     Throws the box 2 dx exception using the specified message
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <exception cref="Exception"></exception>
+        public static void ThrowBox2DXException(string message)
+        {
+            string msg = string.Format("Error: {0}", message);
+            throw new Exception(msg);
+        }
+    }
 }

@@ -32,13 +32,13 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-    /// Mouse joint definition. This requires a world target point,
-    /// tuning parameters, and the time step.
+    ///     Mouse joint definition. This requires a world target point,
+    ///     tuning parameters, and the time step.
     /// </summary>
     public class MouseJointDef : JointDef
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MouseJointDef"/> class
+        ///     Initializes a new instance of the <see cref="MouseJointDef" /> class
         /// </summary>
         public MouseJointDef()
         {
@@ -50,25 +50,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
-        /// The initial world target point. This is assumed
-        /// to coincide with the body anchor initially.
+        ///     The initial world target point. This is assumed
+        ///     to coincide with the body anchor initially.
         /// </summary>
         public Vec2 Target { get; }
 
         /// <summary>
-        /// The maximum constraint force that can be exerted
-        /// to move the candidate body. Usually you will express
-        /// as some multiple of the weight (multiplier * mass * gravity).
+        ///     The maximum constraint force that can be exerted
+        ///     to move the candidate body. Usually you will express
+        ///     as some multiple of the weight (multiplier * mass * gravity).
         /// </summary>
         public float MaxForce { get; }
 
         /// <summary>
-        /// The response speed.
+        ///     The response speed.
         /// </summary>
         public float FrequencyHz { get; }
 
         /// <summary>
-        /// The damping ratio. 0 = no damping, 1 = critical damping.
+        ///     The damping ratio. 0 = no damping, 1 = critical damping.
         /// </summary>
         public float DampingRatio { get; }
     }

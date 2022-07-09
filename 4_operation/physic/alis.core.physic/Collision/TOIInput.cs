@@ -32,28 +32,32 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// Inpute parameters for TimeOfImpact
+    ///     Inpute parameters for TimeOfImpact
     /// </summary>
     public struct TOIInput
     {
         /// <summary>
-        /// The sweep
+        ///     The sweep
         /// </summary>
         public Sweep SweepA;
+
         /// <summary>
-        /// The sweep
+        ///     The sweep
         /// </summary>
         public Sweep SweepB;
+
         /// <summary>
-        /// The sweep radius
+        ///     The sweep radius
         /// </summary>
         public float SweepRadiusA;
+
         /// <summary>
-        /// The sweep radius
+        ///     The sweep radius
         /// </summary>
         public float SweepRadiusB;
+
         /// <summary>
-        /// The tolerance
+        ///     The tolerance
         /// </summary>
         public float Tolerance;
     }

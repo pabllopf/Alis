@@ -1,37 +1,69 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   Controller.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
     /// <summary>
-    /// Base class for controllers. Controllers are a convience for encapsulating common
-    /// per-step functionality.
+    ///     Base class for controllers. Controllers are a convience for encapsulating common
+    ///     per-step functionality.
     /// </summary>
     public abstract class Controller : IDisposable
     {
         /// <summary>
-        /// The prev
-        /// </summary>
-        internal Controller Prev;
-        /// <summary>
-        /// The next
-        /// </summary>
-        internal Controller Next;
-
-        /// <summary>
-        /// The world
-        /// </summary>
-        internal World World;
-        /// <summary>
-        /// The body list
-        /// </summary>
-        protected ControllerEdge BodyList;
-        /// <summary>
-        /// The body count
+        ///     The body count
         /// </summary>
         protected int BodyCount;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Controller"/> class
+        ///     The body list
+        /// </summary>
+        protected ControllerEdge BodyList;
+
+        /// <summary>
+        ///     The next
+        /// </summary>
+        internal Controller Next;
+
+        /// <summary>
+        ///     The prev
+        /// </summary>
+        internal Controller Prev;
+
+        /// <summary>
+        ///     The world
+        /// </summary>
+        internal World World;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Controller" /> class
         /// </summary>
         public Controller()
         {
@@ -40,7 +72,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Controller"/> class
+        ///     Initializes a new instance of the <see cref="Controller" /> class
         /// </summary>
         /// <param name="world">The world</param>
         public Controller(World world)
@@ -52,7 +84,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         }
 
         /// <summary>
-        /// Disposes this instance
+        ///     Disposes this instance
         /// </summary>
         public void Dispose()
         {
@@ -66,17 +98,19 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         }
 
         /// <summary>
-        /// Controllers override this to implement per-step functionality.
+        ///     Controllers override this to implement per-step functionality.
         /// </summary>
         public abstract void Step(TimeStep step);
 
         /// <summary>
-        /// Controllers override this to provide debug drawing.
+        ///     Controllers override this to provide debug drawing.
         /// </summary>
-        public virtual void Draw(DebugDraw debugDraw) { }
+        public virtual void Draw(DebugDraw debugDraw)
+        {
+        }
 
         /// <summary>
-        /// Adds a body to the controller list.
+        ///     Adds a body to the controller list.
         /// </summary>
         public void AddBody(Body body)
         {
@@ -102,7 +136,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         }
 
         /// <summary>
-        /// Removes a body from the controller list.
+        ///     Removes a body from the controller list.
         /// </summary>
         public void RemoveBody(Body body)
         {
@@ -139,11 +173,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         }
 
         /// <summary>
-        /// Removes all bodies from the controller list.
+        ///     Removes all bodies from the controller list.
         /// </summary>
         public void Clear()
         {
-
             ControllerEdge current = BodyList;
             while (current != null)
             {
@@ -168,18 +201,27 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         }
 
         /// <summary>
-        /// Get the next body in the world's body list.
+        ///     Get the next body in the world's body list.
         /// </summary>
-        internal Controller GetNext() { return Next; }
+        internal Controller GetNext()
+        {
+            return Next;
+        }
 
         /// <summary>
-        /// Get the parent world of this body.
+        ///     Get the parent world of this body.
         /// </summary>
-        internal World GetWorld() { return World; }
+        internal World GetWorld()
+        {
+            return World;
+        }
 
         /// <summary>
-        /// Get the attached body list
+        ///     Get the attached body list
         /// </summary>
-        internal ControllerEdge GetBodyList() { return BodyList; }
+        internal ControllerEdge GetBodyList()
+        {
+            return BodyList;
+        }
     }
 }

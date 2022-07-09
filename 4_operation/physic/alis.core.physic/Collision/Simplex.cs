@@ -1,32 +1,62 @@
-using System;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   Simplex.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The simplex
+    ///     The simplex
     /// </summary>
     internal struct Simplex
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         internal SimplexVertex _v1, _v2, _v3;
+
         /// <summary>
-        /// The count
+        ///     The count
         /// </summary>
         internal int _count;
 
         /// <summary>
-        /// Reads the cache using the specified cache
+        ///     Reads the cache using the specified cache
         /// </summary>
         /// <param name="cache">The cache</param>
         /// <param name="shapeA">The shape</param>
         /// <param name="transformA">The transform</param>
         /// <param name="shapeB">The shape</param>
         /// <param name="transformB">The transform</param>
-        internal unsafe void ReadCache(SimplexCache* cache, Shape shapeA, XForm transformA, Shape shapeB, XForm transformB)
+        internal unsafe void ReadCache(SimplexCache* cache, Shape shapeA, XForm transformA, Shape shapeB,
+            XForm transformB)
         {
             Box2DXDebug.Assert(0 <= cache->Count && cache->Count <= 3);
 
@@ -45,8 +75,8 @@ namespace Alis.Core.Physic.Collision
                     v->IndexB = cache->IndexB[i];
                     Vec2 wALocal = shapeA.GetVertex(v->IndexA);
                     Vec2 wBLocal = shapeB.GetVertex(v->IndexB);
-                    v->Wa = Common.Math.Mul(transformA, wALocal);
-                    v->Wb = Common.Math.Mul(transformB, wBLocal);
+                    v->Wa = Math.Mul(transformA, wALocal);
+                    v->Wb = Math.Mul(transformB, wBLocal);
                     v->W = v->Wb - v->Wa;
                     v->A = 0.0f;
                 }
@@ -72,8 +102,8 @@ namespace Alis.Core.Physic.Collision
                     v->IndexB = 0;
                     Vec2 wALocal = shapeA.GetVertex(0);
                     Vec2 wBLocal = shapeB.GetVertex(0);
-                    v->Wa = Common.Math.Mul(transformA, wALocal);
-                    v->Wb = Common.Math.Mul(transformB, wBLocal);
+                    v->Wa = Math.Mul(transformA, wALocal);
+                    v->Wb = Math.Mul(transformB, wBLocal);
                     v->W = v->Wb - v->Wa;
                     _count = 1;
                 }
@@ -81,13 +111,13 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Writes the cache using the specified cache
+        ///     Writes the cache using the specified cache
         /// </summary>
         /// <param name="cache">The cache</param>
         internal unsafe void WriteCache(SimplexCache* cache)
         {
             cache->Metric = GetMetric();
-            cache->Count = (UInt16)_count;
+            cache->Count = (ushort) _count;
             SimplexVertex** vertices = stackalloc SimplexVertex*[3];
             fixed (SimplexVertex* v1Ptr = &_v1, v2Ptr = &_v2, v3Ptr = &_v3)
             {
@@ -96,14 +126,14 @@ namespace Alis.Core.Physic.Collision
                 vertices[2] = v3Ptr;
                 for (int i = 0; i < _count; ++i)
                 {
-                    cache->IndexA[i] = (Byte)(vertices[i]->IndexA);
-                    cache->IndexB[i] = (Byte)(vertices[i]->IndexB);
+                    cache->IndexA[i] = (byte) (vertices[i]->IndexA);
+                    cache->IndexB[i] = (byte) (vertices[i]->IndexB);
                 }
             }
         }
 
         /// <summary>
-        /// Gets the closest point
+        ///     Gets the closest point
         /// </summary>
         /// <returns>The vec</returns>
         internal Vec2 GetClosestPoint()
@@ -130,7 +160,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the witness points using the specified p a
+        ///     Gets the witness points using the specified p a
         /// </summary>
         /// <param name="pA">The </param>
         /// <param name="pB">The </param>
@@ -164,7 +194,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the metric
+        ///     Gets the metric
         /// </summary>
         /// <returns>The float</returns>
         internal float GetMetric()
@@ -218,7 +248,7 @@ namespace Alis.Core.Physic.Collision
         // a1 = d12_1 / d12
         // a2 = d12_2 / d12
         /// <summary>
-        /// Solves the 2
+        ///     Solves the 2
         /// </summary>
         internal void Solve2()
         {
@@ -260,7 +290,7 @@ namespace Alis.Core.Physic.Collision
         // - edge points[1]-points[2]
         // - inside the triangle
         /// <summary>
-        /// Solves the 3
+        ///     Solves the 3
         /// </summary>
         internal void Solve3()
         {

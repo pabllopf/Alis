@@ -30,20 +30,22 @@
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
-    /// Returns code from TestSegment
+    ///     Returns code from TestSegment
     /// </summary>
     public enum SegmentCollide
     {
         /// <summary>
-        /// The start inside collide segment collide
+        ///     The start inside collide segment collide
         /// </summary>
         StartInsideCollide = -1,
+
         /// <summary>
-        /// The miss collide segment collide
+        ///     The miss collide segment collide
         /// </summary>
         MissCollide = 0,
+
         /// <summary>
-        /// The hit collide segment collide
+        ///     The hit collide segment collide
         /// </summary>
         HitCollide = 1
     }

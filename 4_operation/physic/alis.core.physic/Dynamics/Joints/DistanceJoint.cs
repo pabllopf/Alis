@@ -1,23 +1,31 @@
-/*
-  Box2DX Copyright (c) 2008 Ihar Kalasouski http://code.google.com/p/box2dx
-  Box2D original C++ version Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-*/
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   DistanceJoint.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 // 1-D constrained system
 // m (v2 - v1) = lambda
@@ -39,239 +47,242 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
-	/// A distance joint constrains two points on two bodies
-	/// to remain at a fixed distance from each other. You can view
-	/// this as a massless, rigid rod.
-	/// </summary>
-	public class DistanceJoint : Joint
-	{
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 LocalAnchor1;
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 LocalAnchor2;
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Vec2 U;
-		/// <summary>
-		/// The frequency hz
-		/// </summary>
-		public float FrequencyHz;
-		/// <summary>
-		/// The damping ratio
-		/// </summary>
-		public float DampingRatio;
-		/// <summary>
-		/// The gamma
-		/// </summary>
-		public float Gamma;
-		/// <summary>
-		/// The bias
-		/// </summary>
-		public float Bias;
-		/// <summary>
-		/// The impulse
-		/// </summary>
-		public float Impulse;
-		/// <summary>
-		/// The mass
-		/// </summary>
-		public float Mass;		// effective mass for the constraint.
-		/// <summary>
-		/// The length
-		/// </summary>
-		public float Length;
+    ///     A distance joint constrains two points on two bodies
+    ///     to remain at a fixed distance from each other. You can view
+    ///     this as a massless, rigid rod.
+    /// </summary>
+    public class DistanceJoint : Joint
+    {
+        /// <summary>
+        ///     The bias
+        /// </summary>
+        public float Bias;
 
-		/// <summary>
-		/// Gets the value of the anchor 1
-		/// </summary>
-		public override Vec2 Anchor1
-		{
-			get { return Body1.GetWorldPoint(LocalAnchor1);}
-		}
+        /// <summary>
+        ///     The damping ratio
+        /// </summary>
+        public float DampingRatio;
 
-		/// <summary>
-		/// Gets the value of the anchor 2
-		/// </summary>
-		public override Vec2 Anchor2
-		{
-			get { return Body2.GetWorldPoint(LocalAnchor2);}
-		}
+        /// <summary>
+        ///     The frequency hz
+        /// </summary>
+        public float FrequencyHz;
 
-		/// <summary>
-		/// Gets the reaction force using the specified inv dt
-		/// </summary>
-		/// <param name="invDt">The inv dt</param>
-		/// <returns>The vec</returns>
-		public override Vec2 GetReactionForce(float invDt)
-		{
-			return (invDt * Impulse) * U;
-		}
+        /// <summary>
+        ///     The gamma
+        /// </summary>
+        public float Gamma;
 
-		/// <summary>
-		/// Gets the reaction torque using the specified inv dt
-		/// </summary>
-		/// <param name="invDt">The inv dt</param>
-		/// <returns>The float</returns>
-		public override float GetReactionTorque(float invDt)
-		{
-			return 0.0f;
-		}
+        /// <summary>
+        ///     The impulse
+        /// </summary>
+        public float Impulse;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="DistanceJoint"/> class
-		/// </summary>
-		/// <param name="def">The def</param>
-		public DistanceJoint(DistanceJointDef def)
-			: base(def)
-		{
-			LocalAnchor1 = def.LocalAnchor1;
-			LocalAnchor2 = def.LocalAnchor2;
-			Length = def.Length;
-			FrequencyHz = def.FrequencyHz;
-			DampingRatio = def.DampingRatio;
-			Impulse = 0.0f;
-			Gamma = 0.0f;
-			Bias = 0.0f;
-		}
+        /// <summary>
+        ///     The length
+        /// </summary>
+        public float Length;
 
-		/// <summary>
-		/// Inits the velocity constraints using the specified step
-		/// </summary>
-		/// <param name="step">The step</param>
-		internal override void InitVelocityConstraints(TimeStep step)
-		{
-			Body b1 = Body1;
-			Body b2 = Body2;
+        /// <summary>
+        ///     The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor1;
 
-			// Compute the effective mass matrix.
-			Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
-			U = b2._sweep.C + r2 - b1._sweep.C - r1;
+        /// <summary>
+        ///     The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor2;
 
-			// Handle singularity.
-			float length = U.Length();
-			if (length > Settings.LinearSlop)
-			{
-				U *= 1.0f / length;
-			}
-			else
-			{
-				U.Set(0.0f, 0.0f);
-			}
+        /// <summary>
+        ///     The mass
+        /// </summary>
+        public float Mass; // effective mass for the constraint.
 
-			float cr1U = Vec2.Cross(r1, U);
-			float cr2U = Vec2.Cross(r2, U);
-			float invMass = b1._invMass + b1._invI * cr1U * cr1U + b2._invMass + b2._invI * cr2U * cr2U;
-			Box2DXDebug.Assert(invMass > Settings.FltEpsilon);
-			Mass = 1.0f / invMass;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public Vec2 U;
 
-			if (FrequencyHz > 0.0f)
-			{
-				float c = length - Length;
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="DistanceJoint" /> class
+        /// </summary>
+        /// <param name="def">The def</param>
+        public DistanceJoint(DistanceJointDef def)
+            : base(def)
+        {
+            LocalAnchor1 = def.LocalAnchor1;
+            LocalAnchor2 = def.LocalAnchor2;
+            Length = def.Length;
+            FrequencyHz = def.FrequencyHz;
+            DampingRatio = def.DampingRatio;
+            Impulse = 0.0f;
+            Gamma = 0.0f;
+            Bias = 0.0f;
+        }
 
-				// Frequency
-				float omega = 2.0f * Settings.Pi * FrequencyHz;
+        /// <summary>
+        ///     Gets the value of the anchor 1
+        /// </summary>
+        public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
-				// Damping coefficient
-				float d = 2.0f * Mass * DampingRatio * omega;
+        /// <summary>
+        ///     Gets the value of the anchor 2
+        /// </summary>
+        public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
-				// Spring stiffness
-				float k = Mass * omega * omega;
+        /// <summary>
+        ///     Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The vec</returns>
+        public override Vec2 GetReactionForce(float invDt)
+        {
+            return (invDt * Impulse) * U;
+        }
 
-				// magic formulas
-				Gamma = 1.0f / (step.Dt * (d + step.Dt * k));
-				Bias = c * step.Dt * k * Gamma;
+        /// <summary>
+        ///     Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param name="invDt">The inv dt</param>
+        /// <returns>The float</returns>
+        public override float GetReactionTorque(float invDt)
+        {
+            return 0.0f;
+        }
 
-				Mass = 1.0f / (invMass + Gamma);
-			}
+        /// <summary>
+        ///     Inits the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        internal override void InitVelocityConstraints(TimeStep step)
+        {
+            Body b1 = Body1;
+            Body b2 = Body2;
 
-			if (step.WarmStarting)
-			{
-				//Scale the inpulse to support a variable timestep.
-				Impulse *= step.DtRatio;
-				Vec2 p = Impulse * U;
-				b1._linearVelocity -= b1._invMass * p;
-				b1._angularVelocity -= b1._invI * Vec2.Cross(r1, p);
-				b2._linearVelocity += b2._invMass * p;
-				b2._angularVelocity += b2._invI * Vec2.Cross(r2, p);
-			}
-			else
-			{
-				Impulse = 0.0f;
-			}
-		}
+            // Compute the effective mass matrix.
+            Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            U = b2._sweep.C + r2 - b1._sweep.C - r1;
 
-		/// <summary>
-		/// Describes whether this instance solve position constraints
-		/// </summary>
-		/// <param name="baumgarte">The baumgarte</param>
-		/// <returns>The bool</returns>
-		internal override bool SolvePositionConstraints(float baumgarte)
-		{
-			if (FrequencyHz > 0.0f)
-			{
-				//There is no possition correction for soft distace constraint.
-				return true;
-			}
+            // Handle singularity.
+            float length = U.Length();
+            if (length > Settings.LinearSlop)
+            {
+                U *= 1.0f / length;
+            }
+            else
+            {
+                U.Set(0.0f, 0.0f);
+            }
 
-			Body b1 = Body1;
-			Body b2 = Body2;
+            float cr1U = Vec2.Cross(r1, U);
+            float cr2U = Vec2.Cross(r2, U);
+            float invMass = b1._invMass + b1._invI * cr1U * cr1U + b2._invMass + b2._invI * cr2U * cr2U;
+            Box2DXDebug.Assert(invMass > Settings.FltEpsilon);
+            Mass = 1.0f / invMass;
 
-			Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            if (FrequencyHz > 0.0f)
+            {
+                float c = length - Length;
 
-			Vec2 d = b2._sweep.C + r2 - b1._sweep.C - r1;
+                // Frequency
+                float omega = 2.0f * Settings.Pi * FrequencyHz;
 
-			float length = d.Normalize();
-			float c = length - Length;
-			c = Math.Clamp(c, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+                // Damping coefficient
+                float d = 2.0f * Mass * DampingRatio * omega;
 
-			float impulse = -Mass * c;
-			U = d;
-			Vec2 p = impulse * U;
+                // Spring stiffness
+                float k = Mass * omega * omega;
 
-			b1._sweep.C -= b1._invMass * p;
-			b1._sweep.A -= b1._invI * Vec2.Cross(r1, p);
-			b2._sweep.C += b2._invMass * p;
-			b2._sweep.A += b2._invI * Vec2.Cross(r2, p);
+                // magic formulas
+                Gamma = 1.0f / (step.Dt * (d + step.Dt * k));
+                Bias = c * step.Dt * k * Gamma;
 
-			b1.SynchronizeTransform();
-			b2.SynchronizeTransform();
+                Mass = 1.0f / (invMass + Gamma);
+            }
 
-			return System.Math.Abs(c) < Settings.LinearSlop;
-		}
+            if (step.WarmStarting)
+            {
+                //Scale the inpulse to support a variable timestep.
+                Impulse *= step.DtRatio;
+                Vec2 p = Impulse * U;
+                b1._linearVelocity -= b1._invMass * p;
+                b1._angularVelocity -= b1._invI * Vec2.Cross(r1, p);
+                b2._linearVelocity += b2._invMass * p;
+                b2._angularVelocity += b2._invI * Vec2.Cross(r2, p);
+            }
+            else
+            {
+                Impulse = 0.0f;
+            }
+        }
 
-		/// <summary>
-		/// Solves the velocity constraints using the specified step
-		/// </summary>
-		/// <param name="step">The step</param>
-		internal override void SolveVelocityConstraints(TimeStep step)
-		{
-			//B2_NOT_USED(step);
+        /// <summary>
+        ///     Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="baumgarte">The baumgarte</param>
+        /// <returns>The bool</returns>
+        internal override bool SolvePositionConstraints(float baumgarte)
+        {
+            if (FrequencyHz > 0.0f)
+            {
+                //There is no possition correction for soft distace constraint.
+                return true;
+            }
 
-			Body b1 = Body1;
-			Body b2 = Body2;
+            Body b1 = Body1;
+            Body b2 = Body2;
 
-			Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
-			// Cdot = dot(u, v + cross(w, r))
-			Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
-			Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
-			float cdot = Vec2.Dot(U, v2 - v1);
-			float impulse = -Mass * (cdot + Bias + Gamma * Impulse);
-			Impulse += impulse;
+            Vec2 d = b2._sweep.C + r2 - b1._sweep.C - r1;
 
-			Vec2 p = impulse * U;
-			b1._linearVelocity -= b1._invMass * p;
-			b1._angularVelocity -= b1._invI * Vec2.Cross(r1, p);
-			b2._linearVelocity += b2._invMass * p;
-			b2._angularVelocity += b2._invI * Vec2.Cross(r2, p);
-		}
-	}
+            float length = d.Normalize();
+            float c = length - Length;
+            c = Math.Clamp(c, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+
+            float impulse = -Mass * c;
+            U = d;
+            Vec2 p = impulse * U;
+
+            b1._sweep.C -= b1._invMass * p;
+            b1._sweep.A -= b1._invI * Vec2.Cross(r1, p);
+            b2._sweep.C += b2._invMass * p;
+            b2._sweep.A += b2._invI * Vec2.Cross(r2, p);
+
+            b1.SynchronizeTransform();
+            b2.SynchronizeTransform();
+
+            return System.Math.Abs(c) < Settings.LinearSlop;
+        }
+
+        /// <summary>
+        ///     Solves the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        internal override void SolveVelocityConstraints(TimeStep step)
+        {
+            //B2_NOT_USED(step);
+
+            Body b1 = Body1;
+            Body b2 = Body2;
+
+            Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+
+            // Cdot = dot(u, v + cross(w, r))
+            Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
+            Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
+            float cdot = Vec2.Dot(U, v2 - v1);
+            float impulse = -Mass * (cdot + Bias + Gamma * Impulse);
+            Impulse += impulse;
+
+            Vec2 p = impulse * U;
+            b1._linearVelocity -= b1._invMass * p;
+            b1._angularVelocity -= b1._invI * Vec2.Cross(r1, p);
+            b2._linearVelocity += b2._invMass * p;
+            b2._angularVelocity += b2._invI * Vec2.Cross(r2, p);
+        }
+    }
 }

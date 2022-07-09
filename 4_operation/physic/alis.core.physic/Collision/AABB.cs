@@ -1,19 +1,48 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   AABB.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// An axis aligned bounding box.
+    ///     An axis aligned bounding box.
     /// </summary>
     public struct Aabb
     {
         /// <summary>
-        /// The lower vertex.
+        ///     The lower vertex.
         /// </summary>
         public Vec2 LowerBound;
 
         /// <summary>
-        /// The upper vertex.
+        ///     The upper vertex.
         /// </summary>
         public Vec2 UpperBound;
 
@@ -30,22 +59,16 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// Get the center of the AABB.
-        public Vec2 Center
-        {
-            get { return 0.5f * (LowerBound + UpperBound); }
-        }
+        public Vec2 Center => 0.5f * (LowerBound + UpperBound);
 
         /// Get the extents of the AABB (half-widths).
-        public Vec2 Extents
-        {
-            get { return 0.5f * (UpperBound - LowerBound); }
-        }
+        public Vec2 Extents => 0.5f * (UpperBound - LowerBound);
 
         /// Combine two AABBs into this one.
         public void Combine(Aabb aabb1, Aabb aabb2)
         {
-            LowerBound = Common.Math.Min(aabb1.LowerBound, aabb2.LowerBound);
-            UpperBound = Common.Math.Max(aabb1.UpperBound, aabb2.UpperBound);
+            LowerBound = Math.Min(aabb1.LowerBound, aabb2.LowerBound);
+            UpperBound = Math.Max(aabb1.UpperBound, aabb2.UpperBound);
         }
 
         /// Does this aabb contain the provided AABB.
@@ -59,7 +82,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// hello
+        ///     hello
         /// </summary>
         /// <param name="output"></param>
         /// <param name="input"></param>
@@ -74,7 +97,7 @@ namespace Alis.Core.Physic.Collision
 
             Vec2 p = input.P1;
             Vec2 d = input.P2 - input.P1;
-            Vec2 absD = Common.Math.Abs(d);
+            Vec2 absD = Math.Abs(d);
 
             Vec2 normal = new Vec2(0);
 
@@ -99,7 +122,7 @@ namespace Alis.Core.Physic.Collision
 
                     if (t1 > t2)
                     {
-                        Common.Math.Swap(ref t1, ref t2);
+                        Math.Swap(ref t1, ref t2);
                         s = 1.0f;
                     }
 
@@ -112,7 +135,7 @@ namespace Alis.Core.Physic.Collision
                     }
 
                     // Pull the max down
-                    tmax = Common.Math.Min(tmax, t2);
+                    tmax = Math.Min(tmax, t2);
 
                     if (tmin > tmax)
                     {

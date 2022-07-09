@@ -30,34 +30,37 @@
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The bound class
+    ///     The bound class
     /// </summary>
     public class Bound
     {
         /// <summary>
-        /// Gets the value of the is lower
-        /// </summary>
-        public bool IsLower { get { return (Value & (ushort)1) == (ushort)0; } }
-        /// <summary>
-        /// Gets the value of the is upper
-        /// </summary>
-        public bool IsUpper { get { return (Value & (ushort)1) == (ushort)1; } }
-
-        /// <summary>
-        /// The value
-        /// </summary>
-        public ushort Value;
-        /// <summary>
-        /// The proxy id
+        ///     The proxy id
         /// </summary>
         public ushort ProxyId;
+
         /// <summary>
-        /// The stabbing count
+        ///     The stabbing count
         /// </summary>
         public ushort StabbingCount;
 
         /// <summary>
-        /// Clones this instance
+        ///     The value
+        /// </summary>
+        public ushort Value;
+
+        /// <summary>
+        ///     Gets the value of the is lower
+        /// </summary>
+        public bool IsLower => (Value & 1) == 0;
+
+        /// <summary>
+        ///     Gets the value of the is upper
+        /// </summary>
+        public bool IsUpper => (Value & 1) == 1;
+
+        /// <summary>
+        ///     Clones this instance
         /// </summary>
         /// <returns>The new bound</returns>
         public Bound Clone()

@@ -118,14 +118,8 @@ namespace Alis.Core.Physic.Sample
                 float angle = body.GetAngle();
 
                 Console.WriteLine(
-                    "Step: {3} - X: {0}, Y: {1}, Angle: {2}",
-                    new object[]
-                    {
-                        position.X.ToString(),
-                        position.Y.ToString(),
-                        angle.ToString(),
-                        i.ToString()
-                    });
+                    "Step: {3} - X: {0}, Y: {1}, Angle: {2}", position.X.ToString(), position.Y.ToString(),
+                    angle.ToString(), i.ToString());
             }
 
             // When the world destructor is called, all bodies and joints are freed. This can

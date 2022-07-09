@@ -30,14 +30,14 @@
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The pair callback class
+    ///     The pair callback class
     /// </summary>
     public abstract class PairCallback
     {
         // This should return the new pair user data. It is ok if the
         // user data is null.
         /// <summary>
-        /// Pairs the added using the specified proxy user data 1
+        ///     Pairs the added using the specified proxy user data 1
         /// </summary>
         /// <param name="proxyUserData1">The proxy user data</param>
         /// <param name="proxyUserData2">The proxy user data</param>
@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Collision
         // This should free the pair's user data. In extreme circumstances, it is possible
         // this will be called with null pairUserData because the pair never existed.
         /// <summary>
-        /// Pairs the removed using the specified proxy user data 1
+        ///     Pairs the removed using the specified proxy user data 1
         /// </summary>
         /// <param name="proxyUserData1">The proxy user data</param>
         /// <param name="proxyUserData2">The proxy user data</param>

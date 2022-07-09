@@ -30,29 +30,33 @@
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
-    /// The various collision shape types supported by Box2D.
+    ///     The various collision shape types supported by Box2D.
     /// </summary>
     public enum ShapeType
     {
         /// <summary>
-        /// The unknown shape shape type
+        ///     The unknown shape shape type
         /// </summary>
         UnknownShape = -1,
+
         /// <summary>
-        /// The circle shape shape type
+        ///     The circle shape shape type
         /// </summary>
         CircleShape,
+
         /// <summary>
-        /// The polygon shape shape type
+        ///     The polygon shape shape type
         /// </summary>
         PolygonShape,
+
         /// <summary>
-        /// The edge shape shape type
+        ///     The edge shape shape type
         /// </summary>
         EdgeShape,
+
         /// <summary>
-        /// The shape type count shape type
+        ///     The shape type count shape type
         /// </summary>
-        ShapeTypeCount,
+        ShapeTypeCount
     }
 }

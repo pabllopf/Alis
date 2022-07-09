@@ -1,23 +1,31 @@
-/*
-  Box2DX Copyright (c) 2009 Ihar Kalasouski http://code.google.com/p/box2dx
-  Box2D original C++ version Copyright (c) 2006-2009 Erin Catto http://www.gphysics.com
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-*/
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   PairManager.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 // The pair manager is used by the broad-phase to quickly add/remove/find pairs
 // of overlapping proxies. It is based closely on code provided by Pierre Terdiman.
@@ -27,390 +35,401 @@
 
 using System;
 using Alis.Core.Physic.Common;
+using Math = Alis.Core.Physic.Common.Math;
 
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-	/// The pair manager class
-	/// </summary>
-	public class PairManager
-	{
-		/// <summary>
-		/// The ushrt max
-		/// </summary>
-		public static readonly ushort NullPair = Common.Math.UshrtMax;
-		/// <summary>
-		/// The ushrt max
-		/// </summary>
-		public static readonly ushort NullProxy = Common.Math.UshrtMax;
-		/// <summary>
-		/// The max pairs
-		/// </summary>
-		public static readonly int TableCapacity = Settings.MaxPairs;	// must be a power of two
-		/// <summary>
-		/// The table capacity
-		/// </summary>
-		public static readonly int TableMask = TableCapacity - 1;
+    ///     The pair manager class
+    /// </summary>
+    public class PairManager
+    {
+        /// <summary>
+        ///     The ushrt max
+        /// </summary>
+        public static readonly ushort NullPair = Math.UshrtMax;
 
-		/// <summary>
-		/// The broad phase
-		/// </summary>
-		public BroadPhase _broadPhase;
-		/// <summary>
-		/// The callback
-		/// </summary>
-		public PairCallback _callback;
-		/// <summary>
-		/// The max pairs
-		/// </summary>
-		public Pair[] _pairs = new Pair[Settings.MaxPairs];
-		/// <summary>
-		/// The free pair
-		/// </summary>
-		public ushort _freePair;
-		/// <summary>
-		/// The pair count
-		/// </summary>
-		public int _pairCount;
+        /// <summary>
+        ///     The ushrt max
+        /// </summary>
+        public static readonly ushort NullProxy = Math.UshrtMax;
 
-		/// <summary>
-		/// The max pairs
-		/// </summary>
-		public BufferedPair[] _pairBuffer = new BufferedPair[Settings.MaxPairs];
-		/// <summary>
-		/// The pair buffer count
-		/// </summary>
-		public int _pairBufferCount;
+        /// <summary>
+        ///     The max pairs
+        /// </summary>
+        public static readonly int TableCapacity = Settings.MaxPairs; // must be a power of two
 
-		/// <summary>
-		/// The table capacity
-		/// </summary>
-		public ushort[] _hashTable = new ushort[TableCapacity];
+        /// <summary>
+        ///     The table capacity
+        /// </summary>
+        public static readonly int TableMask = TableCapacity - 1;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="PairManager"/> class
-		/// </summary>
-		public PairManager()
-		{
-			Box2DXDebug.Assert(Common.Math.IsPowerOfTwo((uint)TableCapacity) == true);
-			Box2DXDebug.Assert(TableCapacity >= Settings.MaxPairs);
-			for (int i = 0; i < TableCapacity; ++i)
-			{
-				_hashTable[i] = NullPair;
-			}
-			_freePair = 0;
-			for (int i = 0; i < Settings.MaxPairs; ++i)
-			{
-				_pairs[i] = new Pair();//todo: need some pool here
-				_pairs[i].ProxyId1 = NullProxy;
-				_pairs[i].ProxyId2 = NullProxy;
-				_pairs[i].UserData = null;
-				_pairs[i].Status = 0;
-				_pairs[i].Next = (ushort)(i + 1U);
-			}
-			_pairs[Settings.MaxPairs - 1].Next = NullPair;
-			_pairCount = 0;
-			_pairBufferCount = 0;
-		}
+        /// <summary>
+        ///     The broad phase
+        /// </summary>
+        public BroadPhase _broadPhase;
 
-		/// <summary>
-		/// Initializes the broad phase
-		/// </summary>
-		/// <param name="broadPhase">The broad phase</param>
-		/// <param name="callback">The callback</param>
-		public void Initialize(BroadPhase broadPhase, PairCallback callback)
-		{
-			_broadPhase = broadPhase;
-			_callback = callback;
-		}
+        /// <summary>
+        ///     The callback
+        /// </summary>
+        public PairCallback _callback;
 
-		/*
-		As proxies are created and moved, many pairs are created and destroyed. Even worse, the same
-		pair may be added and removed multiple times in a single time step of the physics engine. To reduce
-		traffic in the pair manager, we try to avoid destroying pairs in the pair manager until the
-		end of the physics step. This is done by buffering all the RemovePair requests. AddPair
-		requests are processed immediately because we need the hash table entry for quick lookup.
+        /// <summary>
+        ///     The free pair
+        /// </summary>
+        public ushort _freePair;
 
-		All user user callbacks are delayed until the buffered pairs are confirmed in Commit.
-		This is very important because the user callbacks may be very expensive and client logic
-		may be harmed if pairs are added and removed within the same time step.
+        /// <summary>
+        ///     The table capacity
+        /// </summary>
+        public ushort[] _hashTable = new ushort[TableCapacity];
 
-		Buffer a pair for addition.
-		We may add a pair that is not in the pair manager or pair buffer.
-		We may add a pair that is already in the pair manager and pair buffer.
-		If the added pair is not a new pair, then it must be in the pair buffer (because RemovePair was called).
-		*/
-		/// <summary>
-		/// Adds the buffered pair using the specified id 1
-		/// </summary>
-		/// <param name="id1">The id</param>
-		/// <param name="id2">The id</param>
-		public void AddBufferedPair(int id1, int id2)
-		{
-			Box2DXDebug.Assert(id1 != NullProxy && id2 != NullProxy);
-			Box2DXDebug.Assert(_pairBufferCount < Settings.MaxPairs);
+        /// <summary>
+        ///     The max pairs
+        /// </summary>
+        public BufferedPair[] _pairBuffer = new BufferedPair[Settings.MaxPairs];
 
-			Pair pair = AddPair(id1, id2);
+        /// <summary>
+        ///     The pair buffer count
+        /// </summary>
+        public int _pairBufferCount;
 
-			// If this pair is not in the pair buffer ...
-			if (pair.IsBuffered() == false)
-			{
-				// This must be a newly added pair.
-				Box2DXDebug.Assert(pair.IsFinal() == false);
+        /// <summary>
+        ///     The pair count
+        /// </summary>
+        public int _pairCount;
 
-				// Add it to the pair buffer.
-				pair.SetBuffered();
-				_pairBuffer[_pairBufferCount].ProxyId1 = pair.ProxyId1;
-				_pairBuffer[_pairBufferCount].ProxyId2 = pair.ProxyId2;
-				++_pairBufferCount;
+        /// <summary>
+        ///     The max pairs
+        /// </summary>
+        public Pair[] _pairs = new Pair[Settings.MaxPairs];
 
-				Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
-			}
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PairManager" /> class
+        /// </summary>
+        public PairManager()
+        {
+            Box2DXDebug.Assert(Math.IsPowerOfTwo((uint) TableCapacity));
+            Box2DXDebug.Assert(TableCapacity >= Settings.MaxPairs);
+            for (int i = 0; i < TableCapacity; ++i)
+            {
+                _hashTable[i] = NullPair;
+            }
 
-			// Confirm this pair for the subsequent call to Commit.
-			pair.ClearRemoved();
+            _freePair = 0;
+            for (int i = 0; i < Settings.MaxPairs; ++i)
+            {
+                _pairs[i] = new Pair(); //todo: need some pool here
+                _pairs[i].ProxyId1 = NullProxy;
+                _pairs[i].ProxyId2 = NullProxy;
+                _pairs[i].UserData = null;
+                _pairs[i].Status = 0;
+                _pairs[i].Next = (ushort) (i + 1U);
+            }
 
-			if (BroadPhase.IsValidate)
-			{
-				ValidateBuffer();
-			}
-		}
+            _pairs[Settings.MaxPairs - 1].Next = NullPair;
+            _pairCount = 0;
+            _pairBufferCount = 0;
+        }
 
-		// Buffer a pair for removal.
-		/// <summary>
-		/// Removes the buffered pair using the specified id 1
-		/// </summary>
-		/// <param name="id1">The id</param>
-		/// <param name="id2">The id</param>
-		public void RemoveBufferedPair(int id1, int id2)
-		{
-			Box2DXDebug.Assert(id1 != NullProxy && id2 != NullProxy);
-			Box2DXDebug.Assert(_pairBufferCount < Settings.MaxPairs);
+        /// <summary>
+        ///     Initializes the broad phase
+        /// </summary>
+        /// <param name="broadPhase">The broad phase</param>
+        /// <param name="callback">The callback</param>
+        public void Initialize(BroadPhase broadPhase, PairCallback callback)
+        {
+            _broadPhase = broadPhase;
+            _callback = callback;
+        }
 
-			Pair pair = Find(id1, id2);
+        /*
+        As proxies are created and moved, many pairs are created and destroyed. Even worse, the same
+        pair may be added and removed multiple times in a single time step of the physics engine. To reduce
+        traffic in the pair manager, we try to avoid destroying pairs in the pair manager until the
+        end of the physics step. This is done by buffering all the RemovePair requests. AddPair
+        requests are processed immediately because we need the hash table entry for quick lookup.
 
-			if (pair == null)
-			{
-				// The pair never existed. This is legal (due to collision filtering).
-				return;
-			}
+        All user user callbacks are delayed until the buffered pairs are confirmed in Commit.
+        This is very important because the user callbacks may be very expensive and client logic
+        may be harmed if pairs are added and removed within the same time step.
 
-			// If this pair is not in the pair buffer ...
-			if (pair.IsBuffered() == false)
-			{
-				// This must be an old pair.
-				Box2DXDebug.Assert(pair.IsFinal() == true);
+        Buffer a pair for addition.
+        We may add a pair that is not in the pair manager or pair buffer.
+        We may add a pair that is already in the pair manager and pair buffer.
+        If the added pair is not a new pair, then it must be in the pair buffer (because RemovePair was called).
+        */
+        /// <summary>
+        ///     Adds the buffered pair using the specified id 1
+        /// </summary>
+        /// <param name="id1">The id</param>
+        /// <param name="id2">The id</param>
+        public void AddBufferedPair(int id1, int id2)
+        {
+            Box2DXDebug.Assert(id1 != NullProxy && id2 != NullProxy);
+            Box2DXDebug.Assert(_pairBufferCount < Settings.MaxPairs);
 
-				pair.SetBuffered();
-				_pairBuffer[_pairBufferCount].ProxyId1 = pair.ProxyId1;
-				_pairBuffer[_pairBufferCount].ProxyId2 = pair.ProxyId2;
-				++_pairBufferCount;
+            Pair pair = AddPair(id1, id2);
 
-				Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
-			}
+            // If this pair is not in the pair buffer ...
+            if (pair.IsBuffered() == false)
+            {
+                // This must be a newly added pair.
+                Box2DXDebug.Assert(pair.IsFinal() == false);
 
-			pair.SetRemoved();
+                // Add it to the pair buffer.
+                pair.SetBuffered();
+                _pairBuffer[_pairBufferCount].ProxyId1 = pair.ProxyId1;
+                _pairBuffer[_pairBufferCount].ProxyId2 = pair.ProxyId2;
+                ++_pairBufferCount;
 
-			if (BroadPhase.IsValidate)
-			{
-				ValidateBuffer();
-			}
-		}
+                Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
+            }
 
-		/// <summary>
-		/// Commits this instance
-		/// </summary>
-		public void Commit()
-		{
-			int removeCount = 0;
+            // Confirm this pair for the subsequent call to Commit.
+            pair.ClearRemoved();
 
-			Proxy[] proxies = _broadPhase._proxyPool;
+            if (BroadPhase.IsValidate)
+            {
+                ValidateBuffer();
+            }
+        }
 
-			for (int i = 0; i < _pairBufferCount; ++i)
-			{
-				Pair pair = Find(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
-				Box2DXDebug.Assert(pair.IsBuffered());
-				pair.ClearBuffered();
+        // Buffer a pair for removal.
+        /// <summary>
+        ///     Removes the buffered pair using the specified id 1
+        /// </summary>
+        /// <param name="id1">The id</param>
+        /// <param name="id2">The id</param>
+        public void RemoveBufferedPair(int id1, int id2)
+        {
+            Box2DXDebug.Assert(id1 != NullProxy && id2 != NullProxy);
+            Box2DXDebug.Assert(_pairBufferCount < Settings.MaxPairs);
 
-				Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies && pair.ProxyId2 < Settings.MaxProxies);
+            Pair pair = Find(id1, id2);
 
-				Proxy proxy1 = proxies[pair.ProxyId1];
-				Proxy proxy2 = proxies[pair.ProxyId2];
+            if (pair == null)
+            {
+                // The pair never existed. This is legal (due to collision filtering).
+                return;
+            }
 
-				Box2DXDebug.Assert(proxy1.IsValid);
-				Box2DXDebug.Assert(proxy2.IsValid);
+            // If this pair is not in the pair buffer ...
+            if (pair.IsBuffered() == false)
+            {
+                // This must be an old pair.
+                Box2DXDebug.Assert(pair.IsFinal());
 
-				if (pair.IsRemoved())
-				{
-					// It is possible a pair was added then removed before a commit. Therefore,
-					// we should be careful not to tell the user the pair was removed when the
-					// the user didn't receive a matching add.
-					if (pair.IsFinal() == true)
-					{
-						_callback.PairRemoved(proxy1.UserData, proxy2.UserData, pair.UserData);
-					}
+                pair.SetBuffered();
+                _pairBuffer[_pairBufferCount].ProxyId1 = pair.ProxyId1;
+                _pairBuffer[_pairBufferCount].ProxyId2 = pair.ProxyId2;
+                ++_pairBufferCount;
 
-					// Store the ids so we can actually remove the pair below.
-					_pairBuffer[removeCount].ProxyId1 = pair.ProxyId1;
-					_pairBuffer[removeCount].ProxyId2 = pair.ProxyId2;
-					++removeCount;
-				}
-				else
-				{
-					Box2DXDebug.Assert(_broadPhase.TestOverlap(proxy1, proxy2) == true);
+                Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
+            }
 
-					if (pair.IsFinal() == false)
-					{
-						pair.UserData = _callback.PairAdded(proxy1.UserData, proxy2.UserData);
-						pair.SetFinal();
-					}
-				}
-			}
+            pair.SetRemoved();
 
-			for (int i = 0; i < removeCount; ++i)
-			{
-				RemovePair(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
-			}
+            if (BroadPhase.IsValidate)
+            {
+                ValidateBuffer();
+            }
+        }
 
-			_pairBufferCount = 0;
+        /// <summary>
+        ///     Commits this instance
+        /// </summary>
+        public void Commit()
+        {
+            int removeCount = 0;
 
-			if (BroadPhase.IsValidate)
-			{
-				ValidateTable();
-			}
-		}
+            Proxy[] proxies = _broadPhase._proxyPool;
 
-		/// <summary>
-		/// Finds the proxy id 1
-		/// </summary>
-		/// <param name="proxyId1">The proxy id</param>
-		/// <param name="proxyId2">The proxy id</param>
-		/// <returns>The pair</returns>
-		private Pair Find(int proxyId1, int proxyId2)
-		{
-			if (proxyId1 > proxyId2)
-				Common.Math.Swap<int>(ref proxyId1, ref proxyId2);
+            for (int i = 0; i < _pairBufferCount; ++i)
+            {
+                Pair pair = Find(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
+                Box2DXDebug.Assert(pair.IsBuffered());
+                pair.ClearBuffered();
 
-			uint hash = (uint)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
+                Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies && pair.ProxyId2 < Settings.MaxProxies);
 
-			return Find(proxyId1, proxyId2, hash);
-		}
+                Proxy proxy1 = proxies[pair.ProxyId1];
+                Proxy proxy2 = proxies[pair.ProxyId2];
 
-		/// <summary>
-		/// Finds the proxy id 1
-		/// </summary>
-		/// <param name="proxyId1">The proxy id</param>
-		/// <param name="proxyId2">The proxy id</param>
-		/// <param name="hash">The hash</param>
-		/// <returns>The pair</returns>
-		private Pair Find(int proxyId1, int proxyId2, uint hash)
-		{
-			int index = _hashTable[hash];
+                Box2DXDebug.Assert(proxy1.IsValid);
+                Box2DXDebug.Assert(proxy2.IsValid);
 
-			while (index != NullPair && Equals(_pairs[index], proxyId1, proxyId2) == false)
-			{
-				index = _pairs[index].Next;
-			}
+                if (pair.IsRemoved())
+                {
+                    // It is possible a pair was added then removed before a commit. Therefore,
+                    // we should be careful not to tell the user the pair was removed when the
+                    // the user didn't receive a matching add.
+                    if (pair.IsFinal())
+                    {
+                        _callback.PairRemoved(proxy1.UserData, proxy2.UserData, pair.UserData);
+                    }
 
-			if (index == NullPair)
-			{
-				return null;
-			}
+                    // Store the ids so we can actually remove the pair below.
+                    _pairBuffer[removeCount].ProxyId1 = pair.ProxyId1;
+                    _pairBuffer[removeCount].ProxyId2 = pair.ProxyId2;
+                    ++removeCount;
+                }
+                else
+                {
+                    Box2DXDebug.Assert(_broadPhase.TestOverlap(proxy1, proxy2));
 
-			Box2DXDebug.Assert(index < Settings.MaxPairs);
+                    if (pair.IsFinal() == false)
+                    {
+                        pair.UserData = _callback.PairAdded(proxy1.UserData, proxy2.UserData);
+                        pair.SetFinal();
+                    }
+                }
+            }
 
-			return _pairs[index];
-		}
+            for (int i = 0; i < removeCount; ++i)
+            {
+                RemovePair(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
+            }
 
-		// Returns existing pair or creates a new one.
-		/// <summary>
-		/// Adds the pair using the specified proxy id 1
-		/// </summary>
-		/// <param name="proxyId1">The proxy id</param>
-		/// <param name="proxyId2">The proxy id</param>
-		/// <returns>The pair</returns>
-		private Pair AddPair(int proxyId1, int proxyId2)
-		{
-			if (proxyId1 > proxyId2)
-				Common.Math.Swap<int>(ref proxyId1, ref proxyId2);
+            _pairBufferCount = 0;
 
-			int hash = (int)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
+            if (BroadPhase.IsValidate)
+            {
+                ValidateTable();
+            }
+        }
 
-			Pair pair = Find(proxyId1, proxyId2, (uint)hash);
-			if (pair != null)
-			{
-				return pair;
-			}
+        /// <summary>
+        ///     Finds the proxy id 1
+        /// </summary>
+        /// <param name="proxyId1">The proxy id</param>
+        /// <param name="proxyId2">The proxy id</param>
+        /// <returns>The pair</returns>
+        private Pair Find(int proxyId1, int proxyId2)
+        {
+            if (proxyId1 > proxyId2)
+                Math.Swap(ref proxyId1, ref proxyId2);
 
-			Box2DXDebug.Assert(_pairCount < Settings.MaxPairs && _freePair != NullPair);
+            uint hash = (uint) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
 
-			ushort pairIndex = _freePair;
-			pair = _pairs[pairIndex];
-			_freePair = pair.Next;
+            return Find(proxyId1, proxyId2, hash);
+        }
 
-			pair.ProxyId1 = (ushort)proxyId1;
-			pair.ProxyId2 = (ushort)proxyId2;
-			pair.Status = 0;
-			pair.UserData = null;
-			pair.Next = _hashTable[hash];
+        /// <summary>
+        ///     Finds the proxy id 1
+        /// </summary>
+        /// <param name="proxyId1">The proxy id</param>
+        /// <param name="proxyId2">The proxy id</param>
+        /// <param name="hash">The hash</param>
+        /// <returns>The pair</returns>
+        private Pair Find(int proxyId1, int proxyId2, uint hash)
+        {
+            int index = _hashTable[hash];
 
-			_hashTable[hash] = pairIndex;
+            while (index != NullPair && Equals(_pairs[index], proxyId1, proxyId2) == false)
+            {
+                index = _pairs[index].Next;
+            }
 
-			++_pairCount;
+            if (index == NullPair)
+            {
+                return null;
+            }
 
-			return pair;
-		}
+            Box2DXDebug.Assert(index < Settings.MaxPairs);
 
-		// Removes a pair. The pair must exist.
-		/// <summary>
-		/// Removes the pair using the specified proxy id 1
-		/// </summary>
-		/// <param name="proxyId1">The proxy id</param>
-		/// <param name="proxyId2">The proxy id</param>
-		/// <returns>The object</returns>
-		private object RemovePair(int proxyId1, int proxyId2)
-		{
-			Box2DXDebug.Assert(_pairCount > 0);
+            return _pairs[index];
+        }
 
-			if (proxyId1 > proxyId2) 
-				Common.Math.Swap<int>(ref proxyId1, ref proxyId2);
+        // Returns existing pair or creates a new one.
+        /// <summary>
+        ///     Adds the pair using the specified proxy id 1
+        /// </summary>
+        /// <param name="proxyId1">The proxy id</param>
+        /// <param name="proxyId2">The proxy id</param>
+        /// <returns>The pair</returns>
+        private Pair AddPair(int proxyId1, int proxyId2)
+        {
+            if (proxyId1 > proxyId2)
+                Math.Swap(ref proxyId1, ref proxyId2);
 
-			int hash = (int)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
+            int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
 
-			//uint16* node = &m_hashTable[hash];
-			ushort node = _hashTable[hash];
-			bool ion = false;
-			int ni = 0;
-			while (node != NullPair)
+            Pair pair = Find(proxyId1, proxyId2, (uint) hash);
+            if (pair != null)
+            {
+                return pair;
+            }
+
+            Box2DXDebug.Assert(_pairCount < Settings.MaxPairs && _freePair != NullPair);
+
+            ushort pairIndex = _freePair;
+            pair = _pairs[pairIndex];
+            _freePair = pair.Next;
+
+            pair.ProxyId1 = (ushort) proxyId1;
+            pair.ProxyId2 = (ushort) proxyId2;
+            pair.Status = 0;
+            pair.UserData = null;
+            pair.Next = _hashTable[hash];
+
+            _hashTable[hash] = pairIndex;
+
+            ++_pairCount;
+
+            return pair;
+        }
+
+        // Removes a pair. The pair must exist.
+        /// <summary>
+        ///     Removes the pair using the specified proxy id 1
+        /// </summary>
+        /// <param name="proxyId1">The proxy id</param>
+        /// <param name="proxyId2">The proxy id</param>
+        /// <returns>The object</returns>
+        private object RemovePair(int proxyId1, int proxyId2)
+        {
+            Box2DXDebug.Assert(_pairCount > 0);
+
+            if (proxyId1 > proxyId2)
+                Math.Swap(ref proxyId1, ref proxyId2);
+
+            int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
+
+            //uint16* node = &m_hashTable[hash];
+            ushort node = _hashTable[hash];
+            bool ion = false;
+            int ni = 0;
+            while (node != NullPair)
             {
                 if (Equals(_pairs[node], proxyId1, proxyId2))
-				{
-					//uint16 index = *node;
-					//*node = m_pairs[*node].next;
+                {
+                    //uint16 index = *node;
+                    //*node = m_pairs[*node].next;
 
-					ushort index = node;
-					node = _pairs[node].Next;										
-					if (ion)
-						_pairs[ni].Next = node;
-					else
-					{
-						_hashTable[hash] = node;
-					}
+                    ushort index = node;
+                    node = _pairs[node].Next;
+                    if (ion)
+                        _pairs[ni].Next = node;
+                    else
+                    {
+                        _hashTable[hash] = node;
+                    }
 
-					Pair pair = _pairs[index];
-					object userData = pair.UserData;
+                    Pair pair = _pairs[index];
+                    object userData = pair.UserData;
 
-					// Scrub
-					pair.Next = _freePair;
-					pair.ProxyId1 = NullProxy;
-					pair.ProxyId2 = NullProxy;
-					pair.UserData = null;
-					pair.Status = 0;
+                    // Scrub
+                    pair.Next = _freePair;
+                    pair.ProxyId1 = NullProxy;
+                    pair.ProxyId2 = NullProxy;
+                    pair.UserData = null;
+                    pair.Status = 0;
 
-					_freePair = index;
-					--_pairCount;
-					return userData;
-				}
+                    _freePair = index;
+                    --_pairCount;
+                    return userData;
+                }
 
                 //node = &m_pairs[*node].next;
                 ni = node;
@@ -418,134 +437,134 @@ namespace Alis.Core.Physic.Collision
                 ion = true;
             }
 
-			Box2DXDebug.Assert(false);
-			return null;
-		}
+            Box2DXDebug.Assert(false);
+            return null;
+        }
 
-		/// <summary>
-		/// Validates the buffer
-		/// </summary>
-		private void ValidateBuffer()
-		{
+        /// <summary>
+        ///     Validates the buffer
+        /// </summary>
+        private void ValidateBuffer()
+        {
 #if DEBUG
-			Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
+            Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
 
-			//std::sort(m_pairBuffer, m_pairBuffer + m_pairBufferCount);
-			BufferedPair[] tmp = new BufferedPair[_pairBufferCount];
-			Array.Copy(_pairBuffer, 0, tmp, 0, _pairBufferCount);
-			Array.Sort<BufferedPair>(tmp, BufferedPairSortPredicate);
-			Array.Copy(tmp, 0, _pairBuffer, 0, _pairBufferCount);
+            //std::sort(m_pairBuffer, m_pairBuffer + m_pairBufferCount);
+            BufferedPair[] tmp = new BufferedPair[_pairBufferCount];
+            Array.Copy(_pairBuffer, 0, tmp, 0, _pairBufferCount);
+            Array.Sort(tmp, BufferedPairSortPredicate);
+            Array.Copy(tmp, 0, _pairBuffer, 0, _pairBufferCount);
 
-			for (int i = 0; i < _pairBufferCount; ++i)
-			{
-				if (i > 0)
-				{
-					Box2DXDebug.Assert(Equals(_pairBuffer[i], _pairBuffer[i - 1]) == false);
-				}
+            for (int i = 0; i < _pairBufferCount; ++i)
+            {
+                if (i > 0)
+                {
+                    Box2DXDebug.Assert(Equals(_pairBuffer[i], _pairBuffer[i - 1]) == false);
+                }
 
-				Pair pair = Find(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
-				Box2DXDebug.Assert(pair.IsBuffered());
+                Pair pair = Find(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
+                Box2DXDebug.Assert(pair.IsBuffered());
 
-				Box2DXDebug.Assert(pair.ProxyId1 != pair.ProxyId2);
-				Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies);
-				Box2DXDebug.Assert(pair.ProxyId2 < Settings.MaxProxies);
+                Box2DXDebug.Assert(pair.ProxyId1 != pair.ProxyId2);
+                Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies);
+                Box2DXDebug.Assert(pair.ProxyId2 < Settings.MaxProxies);
 
-				Proxy proxy1 = _broadPhase._proxyPool[pair.ProxyId1];
-				Proxy proxy2 = _broadPhase._proxyPool[pair.ProxyId2];
+                Proxy proxy1 = _broadPhase._proxyPool[pair.ProxyId1];
+                Proxy proxy2 = _broadPhase._proxyPool[pair.ProxyId2];
 
-				Box2DXDebug.Assert(proxy1.IsValid == true);
-				Box2DXDebug.Assert(proxy2.IsValid == true);
-			}
+                Box2DXDebug.Assert(proxy1.IsValid);
+                Box2DXDebug.Assert(proxy2.IsValid);
+            }
 #endif
-		}
+        }
 
-		/// <summary>
-		/// Validates the table
-		/// </summary>
-		private void ValidateTable()
-		{
+        /// <summary>
+        ///     Validates the table
+        /// </summary>
+        private void ValidateTable()
+        {
 #if DEBUG
-			for (int i = 0; i < TableCapacity; ++i)
-			{
-				ushort index = _hashTable[i];
-				while (index != NullPair)
-				{
-					Pair pair = _pairs[index];
-					Box2DXDebug.Assert(pair.IsBuffered() == false);
-					Box2DXDebug.Assert(pair.IsFinal() == true);
-					Box2DXDebug.Assert(pair.IsRemoved() == false);
+            for (int i = 0; i < TableCapacity; ++i)
+            {
+                ushort index = _hashTable[i];
+                while (index != NullPair)
+                {
+                    Pair pair = _pairs[index];
+                    Box2DXDebug.Assert(pair.IsBuffered() == false);
+                    Box2DXDebug.Assert(pair.IsFinal());
+                    Box2DXDebug.Assert(pair.IsRemoved() == false);
 
-					Box2DXDebug.Assert(pair.ProxyId1 != pair.ProxyId2);
-					Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies);
-					Box2DXDebug.Assert(pair.ProxyId2 < Settings.MaxProxies);
+                    Box2DXDebug.Assert(pair.ProxyId1 != pair.ProxyId2);
+                    Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies);
+                    Box2DXDebug.Assert(pair.ProxyId2 < Settings.MaxProxies);
 
-					Proxy proxy1 = _broadPhase._proxyPool[pair.ProxyId1];
-					Proxy proxy2 = _broadPhase._proxyPool[pair.ProxyId2];
+                    Proxy proxy1 = _broadPhase._proxyPool[pair.ProxyId1];
+                    Proxy proxy2 = _broadPhase._proxyPool[pair.ProxyId2];
 
-					Box2DXDebug.Assert(proxy1.IsValid == true);
-					Box2DXDebug.Assert(proxy2.IsValid == true);
+                    Box2DXDebug.Assert(proxy1.IsValid);
+                    Box2DXDebug.Assert(proxy2.IsValid);
 
-					Box2DXDebug.Assert(_broadPhase.TestOverlap(proxy1, proxy2) == true);
+                    Box2DXDebug.Assert(_broadPhase.TestOverlap(proxy1, proxy2));
 
-					index = pair.Next;
-				}
-			}
+                    index = pair.Next;
+                }
+            }
 #endif
-		}
+        }
 
-		// Thomas Wang's hash, see: http://www.concentric.net/~Ttwang/tech/inthash.htm
-		// This assumes proxyId1 and proxyId2 are 16-bit.
-		/// <summary>
-		/// Hashes the proxy id 1
-		/// </summary>
-		/// <param name="proxyId1">The proxy id</param>
-		/// <param name="proxyId2">The proxy id</param>
-		/// <returns>The key</returns>
-		private uint Hash(uint proxyId1, uint proxyId2)
-		{
-			uint key = (proxyId2 << 16) | proxyId1;
-			key = ~key + (key << 15);
-			key = key ^ (key >> 12);
-			key = key + (key << 2);
-			key = key ^ (key >> 4);
-			key = key * 2057;
-			key = key ^ (key >> 16);
-			return key;
-		}
+        // Thomas Wang's hash, see: http://www.concentric.net/~Ttwang/tech/inthash.htm
+        // This assumes proxyId1 and proxyId2 are 16-bit.
+        /// <summary>
+        ///     Hashes the proxy id 1
+        /// </summary>
+        /// <param name="proxyId1">The proxy id</param>
+        /// <param name="proxyId2">The proxy id</param>
+        /// <returns>The key</returns>
+        private uint Hash(uint proxyId1, uint proxyId2)
+        {
+            uint key = (proxyId2 << 16) | proxyId1;
+            key = ~key + (key << 15);
+            key = key ^ (key >> 12);
+            key = key + (key << 2);
+            key = key ^ (key >> 4);
+            key = key * 2057;
+            key = key ^ (key >> 16);
+            return key;
+        }
 
-		/// <summary>
-		/// Describes whether this instance equals
-		/// </summary>
-		/// <param name="pair">The pair</param>
-		/// <param name="proxyId1">The proxy id</param>
-		/// <param name="proxyId2">The proxy id</param>
-		/// <returns>The bool</returns>
-		private bool Equals(Pair pair, int proxyId1, int proxyId2)
-		{
-			return pair.ProxyId1 == proxyId1 && pair.ProxyId2 == proxyId2;
-		}
+        /// <summary>
+        ///     Describes whether this instance equals
+        /// </summary>
+        /// <param name="pair">The pair</param>
+        /// <param name="proxyId1">The proxy id</param>
+        /// <param name="proxyId2">The proxy id</param>
+        /// <returns>The bool</returns>
+        private bool Equals(Pair pair, int proxyId1, int proxyId2)
+        {
+            return pair.ProxyId1 == proxyId1 && pair.ProxyId2 == proxyId2;
+        }
 
-		/// <summary>
-		/// Describes whether this instance equals
-		/// </summary>
-		/// <param name="pair1">The pair</param>
-		/// <param name="pair2">The pair</param>
-		/// <returns>The bool</returns>
-		private bool Equals(ref BufferedPair pair1, ref BufferedPair pair2)
-		{
-			return pair1.ProxyId1 == pair2.ProxyId1 && pair1.ProxyId2 == pair2.ProxyId2;
-		}
+        /// <summary>
+        ///     Describes whether this instance equals
+        /// </summary>
+        /// <param name="pair1">The pair</param>
+        /// <param name="pair2">The pair</param>
+        /// <returns>The bool</returns>
+        private bool Equals(ref BufferedPair pair1, ref BufferedPair pair2)
+        {
+            return pair1.ProxyId1 == pair2.ProxyId1 && pair1.ProxyId2 == pair2.ProxyId2;
+        }
 
-		/// <summary>
-		/// Buffereds the pair sort predicate using the specified pair 1
-		/// </summary>
-		/// <param name="pair1">The pair</param>
-		/// <param name="pair2">The pair</param>
-		/// <returns>The int</returns>
-		public static int BufferedPairSortPredicate(BufferedPair pair1, BufferedPair pair2)
-		{
-			if (pair1.ProxyId1 < pair2.ProxyId1)
-				return 1;
+        /// <summary>
+        ///     Buffereds the pair sort predicate using the specified pair 1
+        /// </summary>
+        /// <param name="pair1">The pair</param>
+        /// <param name="pair2">The pair</param>
+        /// <returns>The int</returns>
+        public static int BufferedPairSortPredicate(BufferedPair pair1, BufferedPair pair2)
+        {
+            if (pair1.ProxyId1 < pair2.ProxyId1)
+                return 1;
             if (pair1.ProxyId1 > pair2.ProxyId1)
                 return -1;
             if (pair1.ProxyId2 < pair2.ProxyId2)
@@ -554,6 +573,6 @@ namespace Alis.Core.Physic.Collision
                 return -1;
 
             return 0;
-		}
-	}
+        }
+    }
 }

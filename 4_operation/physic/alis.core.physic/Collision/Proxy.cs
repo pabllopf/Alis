@@ -30,35 +30,37 @@
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The proxy class
+    ///     The proxy class
     /// </summary>
     public class Proxy
     {
         /// <summary>
-        /// The upper bounds
+        ///     The upper bounds
         /// </summary>
-        public ushort[/*2*/] LowerBounds = new ushort[2];
+        public ushort[ /*2*/] LowerBounds = new ushort[2];
 
         /// <summary>
-        /// The upper bounds
-        /// </summary>
-        public ushort[/*2*/] UpperBounds = new ushort[2];
-
-        /// <summary>
-        /// The overlap count
+        ///     The overlap count
         /// </summary>
         public ushort OverlapCount;
+
         /// <summary>
-        /// The time stamp
+        ///     The time stamp
         /// </summary>
         public ushort TimeStamp;
+
         /// <summary>
-        /// The user data
+        ///     The upper bounds
+        /// </summary>
+        public ushort[ /*2*/] UpperBounds = new ushort[2];
+
+        /// <summary>
+        ///     The user data
         /// </summary>
         public object UserData;
 
         /// <summary>
-        /// Gets or sets the value of the next
+        ///     Gets or sets the value of the next
         /// </summary>
         public ushort Next
         {
@@ -67,8 +69,8 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Gets the value of the is valid
+        ///     Gets the value of the is valid
         /// </summary>
-        public bool IsValid { get { return OverlapCount != BroadPhase.Invalid; } }
+        public bool IsValid => OverlapCount != BroadPhase.Invalid;
     }
 }

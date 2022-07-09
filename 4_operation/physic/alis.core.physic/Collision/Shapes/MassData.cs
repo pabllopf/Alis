@@ -32,22 +32,22 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
-    /// This holds the mass data computed for a shape.
+    ///     This holds the mass data computed for a shape.
     /// </summary>
     public struct MassData
     {
         /// <summary>
-        /// The mass of the shape, usually in kilograms.
+        ///     The mass of the shape, usually in kilograms.
         /// </summary>
         public float Mass;
 
         /// <summary>
-        /// The position of the shape's centroid relative to the shape's origin.
+        ///     The position of the shape's centroid relative to the shape's origin.
         /// </summary>
         public Vec2 Center;
 
         /// <summary>
-        /// The rotational inertia of the shape.
+        ///     The rotational inertia of the shape.
         /// </summary>
         public float I;
     }

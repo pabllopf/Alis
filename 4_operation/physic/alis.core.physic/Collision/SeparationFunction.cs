@@ -1,34 +1,65 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   SeparationFunction.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-    /// The separation function
+    ///     The separation function
     /// </summary>
     internal struct SeparationFunction
     {
         /// <summary>
-        /// The type enum
+        ///     The type enum
         /// </summary>
         internal enum Type
         {
             /// <summary>
-            /// The points type
+            ///     The points type
             /// </summary>
             Points,
+
             /// <summary>
-            /// The face type
+            ///     The face type
             /// </summary>
             FaceA,
+
             /// <summary>
-            /// The face type
+            ///     The face type
             /// </summary>
             FaceB
-        };
+        }
 
         /// <summary>
-        /// Initializes the cache
+        ///     Initializes the cache
         /// </summary>
         /// <param name="cache">The cache</param>
         /// <param name="shapeA">The shape</param>
@@ -100,7 +131,7 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// Evaluates the transform a
+        ///     Evaluates the transform a
         /// </summary>
         /// <param name="transformA">The transform</param>
         /// <param name="transformB">The transform</param>
@@ -156,23 +187,27 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        /// The shape
+        ///     The shape
         /// </summary>
         internal Shape ShapeA;
+
         /// <summary>
-        /// The shape
+        ///     The shape
         /// </summary>
         internal Shape ShapeB;
+
         /// <summary>
-        /// The face type
+        ///     The face type
         /// </summary>
         internal Type FaceType;
+
         /// <summary>
-        /// The local point
+        ///     The local point
         /// </summary>
         internal Vec2 LocalPoint;
+
         /// <summary>
-        /// The axis
+        ///     The axis
         /// </summary>
         internal Vec2 Axis;
     }

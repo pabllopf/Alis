@@ -1,27 +1,56 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   PolygonDef.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// Convex polygon. The vertices must be ordered so that the outside of
-    /// the polygon is on the right side of the edges (looking along the edge
-    /// from start to end).
+    ///     Convex polygon. The vertices must be ordered so that the outside of
+    ///     the polygon is on the right side of the edges (looking along the edge
+    ///     from start to end).
     /// </summary>
     public class PolygonDef : FixtureDef
     {
         /// <summary>
-        /// The number of polygon vertices.
+        ///     The number of polygon vertices.
         /// </summary>
         public int VertexCount;
 
         /// <summary>
-        /// The polygon vertices in local coordinates.
+        ///     The polygon vertices in local coordinates.
         /// </summary>
         public Vec2[] Vertices = new Vec2[Settings.MaxPolygonVertices];
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PolygonDef"/> class
+        ///     Initializes a new instance of the <see cref="PolygonDef" /> class
         /// </summary>
         public PolygonDef()
         {
@@ -30,7 +59,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Build vertices to represent an axis-aligned box.
+        ///     Build vertices to represent an axis-aligned box.
         /// </summary>
         /// <param name="hx">The half-width</param>
         /// <param name="hy">The half-height.</param>
@@ -45,7 +74,7 @@ namespace Alis.Core.Physic.Dynamics
 
 
         /// <summary>
-        /// Build vertices to represent an oriented box.
+        ///     Build vertices to represent an oriented box.
         /// </summary>
         /// <param name="hx">The half-width</param>
         /// <param name="hy">The half-height.</param>
@@ -61,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics
 
             for (int i = 0; i < VertexCount; ++i)
             {
-                Vertices[i] = Common.Math.Mul(xf, Vertices[i]);
+                Vertices[i] = Math.Mul(xf, Vertices[i]);
             }
         }
     }

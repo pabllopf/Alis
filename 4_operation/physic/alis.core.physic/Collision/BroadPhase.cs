@@ -1,23 +1,31 @@
-/*
-  Box2DX Copyright (c) 2008 Ihar Kalasouski http://code.google.com/p/box2dx
-  Box2D original C++ version Copyright (c) 2006-2007 Erin Catto http://www.gphysics.com
-
-  This software is provided 'as-is', without any express or implied
-  warranty.  In no event will the authors be held liable for any damages
-  arising from the use of this software.
-
-  Permission is granted to anyone to use this software for any purpose,
-  including commercial applications, and to alter it and redistribute it
-  freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would be
-     appreciated but is not required.
-  2. Altered source versions must be plainly marked as such, and must not be
-     misrepresented as being the original software.
-  3. This notice may not be removed or altered from any source distribution.
-*/
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   BroadPhase.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /*
 This broad phase uses the Sweep and Prune algorithm as described in:
@@ -46,1177 +54,1210 @@ using Alis.Core.Physic.Common;
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>
-	/// The broad phase class
-	/// </summary>
-	public class BroadPhase
-	{
+    ///     The broad phase class
+    /// </summary>
+    public class BroadPhase
+    {
 #if TARGET_FLOAT32_IS_FIXED
 		public static readonly ushort BROADPHASE_MAX = (Common.Math.USHRT_MAX/2);
 #else
-		/// <summary>
-		/// The ushrt max
-		/// </summary>
-		public static readonly ushort BROADPHASE_MAX = Math.UshrtMax;
+        /// <summary>
+        ///     The ushrt max
+        /// </summary>
+        public static readonly ushort BROADPHASE_MAX = Math.UshrtMax;
 #endif
 
-		/// <summary>
-		/// The broadphase max
-		/// </summary>
-		public static readonly ushort Invalid = BROADPHASE_MAX;
-		/// <summary>
-		/// The broadphase max
-		/// </summary>
-		public static readonly ushort NullEdge = BROADPHASE_MAX;
-
-		/// <summary>
-		/// The pair manager
-		/// </summary>
-		public PairManager _pairManager;
-
-		/// <summary>
-		/// The max proxies
-		/// </summary>
-		public Proxy[] _proxyPool = new Proxy[Settings.MaxProxies];
-		/// <summary>
-		/// The free proxy
-		/// </summary>
-		public ushort _freeProxy;
-
-		/// <summary>
-		/// The bound
-		/// </summary>
-		public Bound[][] _bounds = new Bound[2][/*(2 * Settings.MaxProxies)*/];
-
-		/// <summary>
-		/// The max proxies
-		/// </summary>
-		public ushort[] _queryResults = new ushort[Settings.MaxProxies];
-		/// <summary>
-		/// The max proxies
-		/// </summary>
-		public float[] _querySortKeys = new float[Settings.MaxProxies];
-		/// <summary>
-		/// The query result count
-		/// </summary>
-		public int _queryResultCount;
-
-		/// <summary>
-		/// The world aabb
-		/// </summary>
-		public Aabb _worldAABB;
-		/// <summary>
-		/// The quantization factor
-		/// </summary>
-		public Vec2 _quantizationFactor;
-		/// <summary>
-		/// The proxy count
-		/// </summary>
-		public int _proxyCount;
-		/// <summary>
-		/// The time stamp
-		/// </summary>
-		public ushort _timeStamp;
-
-		/// <summary>
-		/// The is validate
-		/// </summary>
-		public static bool IsValidate = false;
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BroadPhase"/> class
-		/// </summary>
-		/// <param name="worldAABB">The world aabb</param>
-		/// <param name="callback">The callback</param>
-		public BroadPhase(Aabb worldAABB, PairCallback callback)
-		{
-			_pairManager = new PairManager();
-			_pairManager.Initialize(this, callback);
-
-			Box2DXDebug.Assert(worldAABB.IsValid);
-			_worldAABB = worldAABB;
-			_proxyCount = 0;
-
-			Vec2 d = worldAABB.UpperBound - worldAABB.LowerBound;
-			_quantizationFactor.X = (float)BROADPHASE_MAX / d.X;
-			_quantizationFactor.Y = (float)BROADPHASE_MAX / d.Y;
-
-			for (ushort i = 0; i < Settings.MaxProxies - 1; ++i)
-			{
-				_proxyPool[i] = new Proxy();
-				_proxyPool[i].Next = (ushort)(i + 1);
-				_proxyPool[i].TimeStamp = 0;
-				_proxyPool[i].OverlapCount = Invalid;
-				_proxyPool[i].UserData = null;
-			}
-			_proxyPool[Settings.MaxProxies - 1] = new Proxy();
-			_proxyPool[Settings.MaxProxies - 1].Next = PairManager.NullProxy;
-			_proxyPool[Settings.MaxProxies - 1].TimeStamp = 0;
-			_proxyPool[Settings.MaxProxies - 1].OverlapCount = Invalid;
-			_proxyPool[Settings.MaxProxies - 1].UserData = null;
-			_freeProxy = 0;
-
-			_timeStamp = 1;
-			_queryResultCount = 0;
-
-			for (int i = 0; i < 2; i++)
-			{
-				_bounds[i] = new Bound[(2 * Settings.MaxProxies)];
-			}
-
-			int bCount = 2 * Settings.MaxProxies;
-			for (int j = 0; j < 2; j++)
-				for (int k = 0; k < bCount; k++)
-					_bounds[j][k] = new Bound();
-		}
-
-		// Use this to see if your proxy is in range. If it is not in range,
-		// it should be destroyed. Otherwise you may get O(m^2) pairs, where m
-		// is the number of proxies that are out of range.
-		/// <summary>
-		/// Describes whether this instance in range
-		/// </summary>
-		/// <param name="aabb">The aabb</param>
-		/// <returns>The bool</returns>
-		public bool InRange(Aabb aabb)
-		{
-			Vec2 d = Math.Max(aabb.LowerBound - _worldAABB.UpperBound, _worldAABB.LowerBound - aabb.UpperBound);
-			return Math.Max(d.X, d.Y) < 0.0f;
-		}
-
-		// Create and destroy proxies. These call Flush first.
-		/// <summary>
-		/// Creates the proxy using the specified aabb
-		/// </summary>
-		/// <param name="aabb">The aabb</param>
-		/// <param name="userData">The user data</param>
-		/// <returns>The proxy id</returns>
-		public ushort CreateProxy(Aabb aabb, object userData)
-		{
-			Box2DXDebug.Assert(_proxyCount < Settings.MaxProxies);
-			Box2DXDebug.Assert(_freeProxy != PairManager.NullProxy);
-
-			ushort proxyId = _freeProxy;
-			Proxy proxy = _proxyPool[proxyId];
-			_freeProxy = proxy.Next;
-
-			proxy.OverlapCount = 0;
-			proxy.UserData = userData;
-
-			int boundCount = 2 * _proxyCount;
-
-			ushort[] lowerValues = new ushort[2], upperValues = new ushort[2];
-			ComputeBounds(out lowerValues, out upperValues, aabb);
-
-			for (int axis = 0; axis < 2; ++axis)
-			{
-				Bound[] bounds = _bounds[axis];
-				int lowerIndex, upperIndex;
-				Query(out lowerIndex, out upperIndex, lowerValues[axis], upperValues[axis], bounds, boundCount, axis);
-
-
-				//memmove(bounds + upperIndex + 2, bounds + upperIndex, (boundCount - upperIndex) * sizeof(b2Bound));				
-				Bound[] tmp = new Bound[boundCount - upperIndex];
-				for (int i = 0; i < (boundCount - upperIndex); i++)
-				{
-					tmp[i] = bounds[upperIndex + i].Clone();
-				}
-				for (int i = 0; i < (boundCount - upperIndex); i++)
-				{
-					bounds[upperIndex + 2 + i] = tmp[i];
-				}
-
-				//memmove(bounds + lowerIndex + 1, bounds + lowerIndex, (upperIndex - lowerIndex) * sizeof(b2Bound));
-				tmp = new Bound[upperIndex - lowerIndex];
-				for (int i = 0; i < (upperIndex - lowerIndex); i++)
-				{
-					tmp[i] = bounds[lowerIndex + i].Clone();
-				}
-				for (int i = 0; i < (upperIndex - lowerIndex); i++)
-				{
-					bounds[lowerIndex + 1 + i] = tmp[i];
-				}
-
-				// The upper index has increased because of the lower bound insertion.
-				++upperIndex;
-
-				// Copy in the new bounds.
-				bounds[lowerIndex].Value = lowerValues[axis];
-				bounds[lowerIndex].ProxyId = proxyId;
-				bounds[upperIndex].Value = upperValues[axis];
-				bounds[upperIndex].ProxyId = proxyId;
-
-				bounds[lowerIndex].StabbingCount = lowerIndex == 0 ? (ushort)0 : bounds[lowerIndex - 1].StabbingCount;
-				bounds[upperIndex].StabbingCount = bounds[upperIndex - 1].StabbingCount;
-
-				// Adjust the stabbing count between the new bounds.
-				for (int index = lowerIndex; index < upperIndex; ++index)
-				{
-					++bounds[index].StabbingCount;
-				}
-
-				// Adjust the all the affected bound indices.
-				for (int index = lowerIndex; index < boundCount + 2; ++index)
-				{
-					Proxy proxy_ = _proxyPool[bounds[index].ProxyId];
-					if (bounds[index].IsLower)
-					{
-						proxy_.LowerBounds[axis] = (ushort)index;
-					}
-					else
-					{
-						proxy_.UpperBounds[axis] = (ushort)index;
-					}
-				}
-			}
-
-			++_proxyCount;
-
-			Box2DXDebug.Assert(_queryResultCount < Settings.MaxProxies);
-
-			// Create pairs if the AABB is in range.
-			for (int i = 0; i < _queryResultCount; ++i)
-			{
-				Box2DXDebug.Assert(_queryResults[i] < Settings.MaxProxies);
-				Box2DXDebug.Assert(_proxyPool[_queryResults[i]].IsValid);
-
-				_pairManager.AddBufferedPair(proxyId, _queryResults[i]);
-			}
-
-			_pairManager.Commit();
-
-			if (IsValidate)
-			{
-				Validate();
-			}
-
-			// Prepare for next query.
-			_queryResultCount = 0;
-			IncrementTimeStamp();
-
-			return proxyId;
-		}
-
-		/// <summary>
-		/// Destroys the proxy using the specified proxy id
-		/// </summary>
-		/// <param name="proxyId">The proxy id</param>
-		public void DestroyProxy(int proxyId)
-		{
-			Box2DXDebug.Assert(0 < _proxyCount && _proxyCount <= Settings.MaxProxies);
-			Proxy proxy = _proxyPool[proxyId];
-			Box2DXDebug.Assert(proxy.IsValid);
-
-			int boundCount = 2 * _proxyCount;
-
-			for (int axis = 0; axis < 2; ++axis)
-			{
-				Bound[] bounds = _bounds[axis];
-
-				int lowerIndex = proxy.LowerBounds[axis];
-				int upperIndex = proxy.UpperBounds[axis];
-				ushort lowerValue = bounds[lowerIndex].Value;
-				ushort upperValue = bounds[upperIndex].Value;
-
-
-				//memmove(bounds + lowerIndex, bounds + lowerIndex + 1, (upperIndex - lowerIndex - 1) * sizeof(b2Bound));
-				Bound[] tmp = new Bound[upperIndex - lowerIndex - 1];
-				for (int i = 0; i < (upperIndex - lowerIndex - 1); i++)
-				{
-					tmp[i] = bounds[lowerIndex + 1 + i].Clone();
-				}
-				for (int i = 0; i < (upperIndex - lowerIndex - 1); i++)
-				{
-					bounds[lowerIndex + i] = tmp[i];
-				}
-
-				//memmove(bounds + upperIndex - 1, bounds + upperIndex + 1, (boundCount - upperIndex - 1) * sizeof(b2Bound));
-				tmp = new Bound[boundCount - upperIndex - 1];
-				for (int i = 0; i < (boundCount - upperIndex - 1); i++)
-				{
-					tmp[i] = bounds[upperIndex + 1 + i].Clone();
-				}
-				for (int i = 0; i < (boundCount - upperIndex - 1); i++)
-				{
-					bounds[upperIndex - 1 + i] = tmp[i];
-				}
-
-				// Fix bound indices.
-				for (int index = lowerIndex; index < boundCount - 2; ++index)
-				{
-					Proxy proxy_ = _proxyPool[bounds[index].ProxyId];
-					if (bounds[index].IsLower)
-					{
-						proxy_.LowerBounds[axis] = (ushort)index;
-					}
-					else
-					{
-						proxy_.UpperBounds[axis] = (ushort)index;
-					}
-				}
-
-				// Fix stabbing count.
-				for (int index = lowerIndex; index < upperIndex - 1; ++index)
-				{
-					--bounds[index].StabbingCount;
-				}
-
-				// Query for pairs to be removed. lowerIndex and upperIndex are not needed.
-				Query(out lowerIndex, out upperIndex, lowerValue, upperValue, bounds, boundCount - 2, axis);
-			}
-
-			Box2DXDebug.Assert(_queryResultCount < Settings.MaxProxies);
-
-			for (int i = 0; i < _queryResultCount; ++i)
-			{
-				Box2DXDebug.Assert(_proxyPool[_queryResults[i]].IsValid);
-				_pairManager.RemoveBufferedPair(proxyId, _queryResults[i]);
-			}
-
-			_pairManager.Commit();
-
-			// Prepare for next query.
-			_queryResultCount = 0;
-			IncrementTimeStamp();
-
-			// Return the proxy to the pool.
-			proxy.UserData = null;
-			proxy.OverlapCount = Invalid;
-			proxy.LowerBounds[0] = Invalid;
-			proxy.LowerBounds[1] = Invalid;
-			proxy.UpperBounds[0] = Invalid;
-			proxy.UpperBounds[1] = Invalid;
-
-			proxy.Next = _freeProxy;
-			_freeProxy = (ushort)proxyId;
-			--_proxyCount;
-
-			if (IsValidate)
-			{
-				Validate();
-			}
-		}
-
-		// Call MoveProxy as many times as you like, then when you are done
-		// call Commit to finalized the proxy pairs (for your time step).
-		/// <summary>
-		/// Moves the proxy using the specified proxy id
-		/// </summary>
-		/// <param name="proxyId">The proxy id</param>
-		/// <param name="aabb">The aabb</param>
-		public void MoveProxy(int proxyId, Aabb aabb)
-		{
-			if (proxyId == PairManager.NullProxy || Settings.MaxProxies <= proxyId)
-			{
-				Box2DXDebug.Assert(false);
-				return;
-			}
-
-			if (aabb.IsValid == false)
-			{
-				Box2DXDebug.Assert(false);
-				return;
-			}
-
-			int boundCount = 2 * _proxyCount;
-
-			Proxy proxy = _proxyPool[proxyId];
-
-			// Get new bound values
-			BoundValues newValues = new BoundValues(); ;
-			ComputeBounds(out newValues.LowerValues, out newValues.UpperValues, aabb);
-
-			// Get old bound values
-			BoundValues oldValues = new BoundValues();
-			for (int axis = 0; axis < 2; ++axis)
-			{
-				oldValues.LowerValues[axis] = _bounds[axis][proxy.LowerBounds[axis]].Value;
-				oldValues.UpperValues[axis] = _bounds[axis][proxy.UpperBounds[axis]].Value;
-			}
-
-			for (int axis = 0; axis < 2; ++axis)
-			{
-				Bound[] bounds = _bounds[axis];
-
-				int lowerIndex = proxy.LowerBounds[axis];
-				int upperIndex = proxy.UpperBounds[axis];
-
-				ushort lowerValue = newValues.LowerValues[axis];
-				ushort upperValue = newValues.UpperValues[axis];
-
-				int deltaLower = lowerValue - bounds[lowerIndex].Value;
-				int deltaUpper = upperValue - bounds[upperIndex].Value;
-
-				bounds[lowerIndex].Value = lowerValue;
-				bounds[upperIndex].Value = upperValue;
-
-				//
-				// Expanding adds overlaps
-				//
-
-				// Should we move the lower bound down?
-				if (deltaLower < 0)
-				{
-					int index = lowerIndex;
-					while (index > 0 && lowerValue < bounds[index - 1].Value)
-					{
-						Bound bound = bounds[index];
-						Bound prevBound = bounds[index - 1];
-
-						int prevProxyId = prevBound.ProxyId;
-						Proxy prevProxy = _proxyPool[prevBound.ProxyId];
-
-						++prevBound.StabbingCount;
-
-						if (prevBound.IsUpper == true)
-						{
-							if (TestOverlap(newValues, prevProxy))
-							{
-								_pairManager.AddBufferedPair(proxyId, prevProxyId);
-							}
-
-							++prevProxy.UpperBounds[axis];
-							++bound.StabbingCount;
-						}
-						else
-						{
-							++prevProxy.LowerBounds[axis];
-							--bound.StabbingCount;
-						}
-
-						--proxy.LowerBounds[axis];
-						Math.Swap<Bound>(ref bounds[index], ref bounds[index - 1]);
-						--index;
-					}
-				}
-
-				// Should we move the upper bound up?
-				if (deltaUpper > 0)
-				{
-					int index = upperIndex;
-					while (index < boundCount - 1 && bounds[index + 1].Value <= upperValue)
-					{
-						Bound bound = bounds[index];
-						Bound nextBound = bounds[index + 1];
-						int nextProxyId = nextBound.ProxyId;
-						Proxy nextProxy = _proxyPool[nextProxyId];
-
-						++nextBound.StabbingCount;
-
-						if (nextBound.IsLower == true)
-						{
-							if (TestOverlap(newValues, nextProxy))
-							{
-								_pairManager.AddBufferedPair(proxyId, nextProxyId);
-							}
-
-							--nextProxy.LowerBounds[axis];
-							++bound.StabbingCount;
-						}
-						else
-						{
-							--nextProxy.UpperBounds[axis];
-							--bound.StabbingCount;
-						}
-
-						++proxy.UpperBounds[axis];
-						Math.Swap<Bound>(ref bounds[index], ref bounds[index + 1]);
-						++index;
-					}
-				}
-
-				//
-				// Shrinking removes overlaps
-				//
-
-				// Should we move the lower bound up?
-				if (deltaLower > 0)
-				{
-					int index = lowerIndex;
-					while (index < boundCount - 1 && bounds[index + 1].Value <= lowerValue)
-					{
-						Bound bound = bounds[index];
-						Bound nextBound = bounds[index + 1];
-
-						int nextProxyId = nextBound.ProxyId;
-						Proxy nextProxy = _proxyPool[nextProxyId];
-
-						--nextBound.StabbingCount;
-
-						if (nextBound.IsUpper)
-						{
-							if (TestOverlap(oldValues, nextProxy))
-							{
-								_pairManager.RemoveBufferedPair(proxyId, nextProxyId);
-							}
-
-							--nextProxy.UpperBounds[axis];
-							--bound.StabbingCount;
-						}
-						else
-						{
-							--nextProxy.LowerBounds[axis];
-							++bound.StabbingCount;
-						}
-
-						++proxy.LowerBounds[axis];
-						Math.Swap<Bound>(ref bounds[index], ref bounds[index + 1]);
-						++index;
-					}
-				}
-
-				// Should we move the upper bound down?
-				if (deltaUpper < 0)
-				{
-					int index = upperIndex;
-					while (index > 0 && upperValue < bounds[index - 1].Value)
-					{
-						Bound bound = bounds[index];
-						Bound prevBound = bounds[index - 1];
-
-						int prevProxyId = prevBound.ProxyId;
-						Proxy prevProxy = _proxyPool[prevProxyId];
-
-						--prevBound.StabbingCount;
-
-						if (prevBound.IsLower == true)
-						{
-							if (TestOverlap(oldValues, prevProxy))
-							{
-								_pairManager.RemoveBufferedPair(proxyId, prevProxyId);
-							}
-
-							++prevProxy.LowerBounds[axis];
-							--bound.StabbingCount;
-						}
-						else
-						{
-							++prevProxy.UpperBounds[axis];
-							++bound.StabbingCount;
-						}
-
-						--proxy.UpperBounds[axis];
-						Math.Swap<Bound>(ref bounds[index], ref bounds[index - 1]);
-						--index;
-					}
-				}
-			}
-
-			if (IsValidate)
-			{
-				Validate();
-			}
-		}
-
-		/// <summary>
-		/// Commits this instance
-		/// </summary>
-		public void Commit()
-		{
-			_pairManager.Commit();
-		}
-
-		// Get a single proxy. Returns NULL if the id is invalid.
-		/// <summary>
-		/// Gets the proxy using the specified proxy id
-		/// </summary>
-		/// <param name="proxyId">The proxy id</param>
-		/// <returns>The proxy</returns>
-		public Proxy GetProxy(int proxyId)
-		{
-			if (proxyId == PairManager.NullProxy || _proxyPool[proxyId].IsValid == false)
-			{
-				return null;
-			}
-
-			return _proxyPool[proxyId];
-		}
-
-		// Query an AABB for overlapping proxies, returns the user data and
-		// the count, up to the supplied maximum count.
-		/// <summary>
-		/// Queries the aabb
-		/// </summary>
-		/// <param name="aabb">The aabb</param>
-		/// <param name="userData">The user data</param>
-		/// <param name="maxCount">The max count</param>
-		/// <returns>The count</returns>
-		public int Query(Aabb aabb, object[] userData, int maxCount)
-		{
-			ushort[] lowerValues;
-			ushort[] upperValues;
-			ComputeBounds(out lowerValues, out upperValues, aabb);
-
-			int lowerIndex, upperIndex;
-
-			Query(out lowerIndex, out upperIndex, lowerValues[0], upperValues[0], _bounds[0], 2 * _proxyCount, 0);
-			Query(out lowerIndex, out upperIndex, lowerValues[1], upperValues[1], _bounds[1], 2 * _proxyCount, 1);
-
-			Box2DXDebug.Assert(_queryResultCount < Settings.MaxProxies);
-
-			int count = 0;
-			for (int i = 0; i < _queryResultCount && count < maxCount; ++i, ++count)
-			{
-				Box2DXDebug.Assert(_queryResults[i] < Settings.MaxProxies);
-				Proxy proxy = _proxyPool[_queryResults[i]];
-				Box2DXDebug.Assert(proxy.IsValid);
-				userData[i] = proxy.UserData;
-			}
-
-			// Prepare for next query.
-			_queryResultCount = 0;
-			IncrementTimeStamp();
-
-			return count;
-		}
-
-		/// <summary>
-		/// Query a segment for overlapping proxies, returns the user data and
-        /// the count, up to the supplied maximum count.
-        /// If sortKey is provided, then it is a function mapping from proxy user Data to distances along the segment (between 0 ans 1)
-        /// Then the returned proxies are sorted on that, before being truncated to maxCount
-        /// The sortKey of a proxy is assumed to be larger than the closest point inside the proxy along the segment, this allows for early exits
-        /// Proxies with a negative sortKey are discarded
-		/// </summary>
-		/// <param name="segment"></param>
-		/// <param name="userData"></param>
-		/// <param name="maxCount"></param>
-		/// <param name="sortKey"></param>
-		/// <returns></returns>
-		public
+        /// <summary>
+        ///     The broadphase max
+        /// </summary>
+        public static readonly ushort Invalid = BROADPHASE_MAX;
+
+        /// <summary>
+        ///     The broadphase max
+        /// </summary>
+        public static readonly ushort NullEdge = BROADPHASE_MAX;
+
+        /// <summary>
+        ///     The pair manager
+        /// </summary>
+        public PairManager _pairManager;
+
+        /// <summary>
+        ///     The max proxies
+        /// </summary>
+        public Proxy[] _proxyPool = new Proxy[Settings.MaxProxies];
+
+        /// <summary>
+        ///     The free proxy
+        /// </summary>
+        public ushort _freeProxy;
+
+        /// <summary>
+        ///     The bound
+        /// </summary>
+        public Bound[][] _bounds = new Bound[2][ /*(2 * Settings.MaxProxies)*/];
+
+        /// <summary>
+        ///     The max proxies
+        /// </summary>
+        public ushort[] _queryResults = new ushort[Settings.MaxProxies];
+
+        /// <summary>
+        ///     The max proxies
+        /// </summary>
+        public float[] _querySortKeys = new float[Settings.MaxProxies];
+
+        /// <summary>
+        ///     The query result count
+        /// </summary>
+        public int _queryResultCount;
+
+        /// <summary>
+        ///     The world aabb
+        /// </summary>
+        public Aabb _worldAABB;
+
+        /// <summary>
+        ///     The quantization factor
+        /// </summary>
+        public Vec2 _quantizationFactor;
+
+        /// <summary>
+        ///     The proxy count
+        /// </summary>
+        public int _proxyCount;
+
+        /// <summary>
+        ///     The time stamp
+        /// </summary>
+        public ushort _timeStamp;
+
+        /// <summary>
+        ///     The is validate
+        /// </summary>
+        public static bool IsValidate = false;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BroadPhase" /> class
+        /// </summary>
+        /// <param name="worldAABB">The world aabb</param>
+        /// <param name="callback">The callback</param>
+        public BroadPhase(Aabb worldAABB, PairCallback callback)
+        {
+            _pairManager = new PairManager();
+            _pairManager.Initialize(this, callback);
+
+            Box2DXDebug.Assert(worldAABB.IsValid);
+            _worldAABB = worldAABB;
+            _proxyCount = 0;
+
+            Vec2 d = worldAABB.UpperBound - worldAABB.LowerBound;
+            _quantizationFactor.X = BROADPHASE_MAX / d.X;
+            _quantizationFactor.Y = BROADPHASE_MAX / d.Y;
+
+            for (ushort i = 0; i < Settings.MaxProxies - 1; ++i)
+            {
+                _proxyPool[i] = new Proxy();
+                _proxyPool[i].Next = (ushort) (i + 1);
+                _proxyPool[i].TimeStamp = 0;
+                _proxyPool[i].OverlapCount = Invalid;
+                _proxyPool[i].UserData = null;
+            }
+
+            _proxyPool[Settings.MaxProxies - 1] = new Proxy();
+            _proxyPool[Settings.MaxProxies - 1].Next = PairManager.NullProxy;
+            _proxyPool[Settings.MaxProxies - 1].TimeStamp = 0;
+            _proxyPool[Settings.MaxProxies - 1].OverlapCount = Invalid;
+            _proxyPool[Settings.MaxProxies - 1].UserData = null;
+            _freeProxy = 0;
+
+            _timeStamp = 1;
+            _queryResultCount = 0;
+
+            for (int i = 0; i < 2; i++)
+            {
+                _bounds[i] = new Bound[(2 * Settings.MaxProxies)];
+            }
+
+            int bCount = 2 * Settings.MaxProxies;
+            for (int j = 0; j < 2; j++)
+            for (int k = 0; k < bCount; k++)
+                _bounds[j][k] = new Bound();
+        }
+
+        // Use this to see if your proxy is in range. If it is not in range,
+        // it should be destroyed. Otherwise you may get O(m^2) pairs, where m
+        // is the number of proxies that are out of range.
+        /// <summary>
+        ///     Describes whether this instance in range
+        /// </summary>
+        /// <param name="aabb">The aabb</param>
+        /// <returns>The bool</returns>
+        public bool InRange(Aabb aabb)
+        {
+            Vec2 d = Math.Max(aabb.LowerBound - _worldAABB.UpperBound, _worldAABB.LowerBound - aabb.UpperBound);
+            return Math.Max(d.X, d.Y) < 0.0f;
+        }
+
+        // Create and destroy proxies. These call Flush first.
+        /// <summary>
+        ///     Creates the proxy using the specified aabb
+        /// </summary>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="userData">The user data</param>
+        /// <returns>The proxy id</returns>
+        public ushort CreateProxy(Aabb aabb, object userData)
+        {
+            Box2DXDebug.Assert(_proxyCount < Settings.MaxProxies);
+            Box2DXDebug.Assert(_freeProxy != PairManager.NullProxy);
+
+            ushort proxyId = _freeProxy;
+            Proxy proxy = _proxyPool[proxyId];
+            _freeProxy = proxy.Next;
+
+            proxy.OverlapCount = 0;
+            proxy.UserData = userData;
+
+            int boundCount = 2 * _proxyCount;
+
+            ushort[] lowerValues = new ushort[2], upperValues = new ushort[2];
+            ComputeBounds(out lowerValues, out upperValues, aabb);
+
+            for (int axis = 0; axis < 2; ++axis)
+            {
+                Bound[] bounds = _bounds[axis];
+                int lowerIndex, upperIndex;
+                Query(out lowerIndex, out upperIndex, lowerValues[axis], upperValues[axis], bounds, boundCount, axis);
+
+
+                //memmove(bounds + upperIndex + 2, bounds + upperIndex, (boundCount - upperIndex) * sizeof(b2Bound));				
+                Bound[] tmp = new Bound[boundCount - upperIndex];
+                for (int i = 0; i < (boundCount - upperIndex); i++)
+                {
+                    tmp[i] = bounds[upperIndex + i].Clone();
+                }
+
+                for (int i = 0; i < (boundCount - upperIndex); i++)
+                {
+                    bounds[upperIndex + 2 + i] = tmp[i];
+                }
+
+                //memmove(bounds + lowerIndex + 1, bounds + lowerIndex, (upperIndex - lowerIndex) * sizeof(b2Bound));
+                tmp = new Bound[upperIndex - lowerIndex];
+                for (int i = 0; i < (upperIndex - lowerIndex); i++)
+                {
+                    tmp[i] = bounds[lowerIndex + i].Clone();
+                }
+
+                for (int i = 0; i < (upperIndex - lowerIndex); i++)
+                {
+                    bounds[lowerIndex + 1 + i] = tmp[i];
+                }
+
+                // The upper index has increased because of the lower bound insertion.
+                ++upperIndex;
+
+                // Copy in the new bounds.
+                bounds[lowerIndex].Value = lowerValues[axis];
+                bounds[lowerIndex].ProxyId = proxyId;
+                bounds[upperIndex].Value = upperValues[axis];
+                bounds[upperIndex].ProxyId = proxyId;
+
+                bounds[lowerIndex].StabbingCount = lowerIndex == 0 ? (ushort) 0 : bounds[lowerIndex - 1].StabbingCount;
+                bounds[upperIndex].StabbingCount = bounds[upperIndex - 1].StabbingCount;
+
+                // Adjust the stabbing count between the new bounds.
+                for (int index = lowerIndex; index < upperIndex; ++index)
+                {
+                    ++bounds[index].StabbingCount;
+                }
+
+                // Adjust the all the affected bound indices.
+                for (int index = lowerIndex; index < boundCount + 2; ++index)
+                {
+                    Proxy proxy_ = _proxyPool[bounds[index].ProxyId];
+                    if (bounds[index].IsLower)
+                    {
+                        proxy_.LowerBounds[axis] = (ushort) index;
+                    }
+                    else
+                    {
+                        proxy_.UpperBounds[axis] = (ushort) index;
+                    }
+                }
+            }
+
+            ++_proxyCount;
+
+            Box2DXDebug.Assert(_queryResultCount < Settings.MaxProxies);
+
+            // Create pairs if the AABB is in range.
+            for (int i = 0; i < _queryResultCount; ++i)
+            {
+                Box2DXDebug.Assert(_queryResults[i] < Settings.MaxProxies);
+                Box2DXDebug.Assert(_proxyPool[_queryResults[i]].IsValid);
+
+                _pairManager.AddBufferedPair(proxyId, _queryResults[i]);
+            }
+
+            _pairManager.Commit();
+
+            if (IsValidate)
+            {
+                Validate();
+            }
+
+            // Prepare for next query.
+            _queryResultCount = 0;
+            IncrementTimeStamp();
+
+            return proxyId;
+        }
+
+        /// <summary>
+        ///     Destroys the proxy using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        public void DestroyProxy(int proxyId)
+        {
+            Box2DXDebug.Assert(0 < _proxyCount && _proxyCount <= Settings.MaxProxies);
+            Proxy proxy = _proxyPool[proxyId];
+            Box2DXDebug.Assert(proxy.IsValid);
+
+            int boundCount = 2 * _proxyCount;
+
+            for (int axis = 0; axis < 2; ++axis)
+            {
+                Bound[] bounds = _bounds[axis];
+
+                int lowerIndex = proxy.LowerBounds[axis];
+                int upperIndex = proxy.UpperBounds[axis];
+                ushort lowerValue = bounds[lowerIndex].Value;
+                ushort upperValue = bounds[upperIndex].Value;
+
+
+                //memmove(bounds + lowerIndex, bounds + lowerIndex + 1, (upperIndex - lowerIndex - 1) * sizeof(b2Bound));
+                Bound[] tmp = new Bound[upperIndex - lowerIndex - 1];
+                for (int i = 0; i < (upperIndex - lowerIndex - 1); i++)
+                {
+                    tmp[i] = bounds[lowerIndex + 1 + i].Clone();
+                }
+
+                for (int i = 0; i < (upperIndex - lowerIndex - 1); i++)
+                {
+                    bounds[lowerIndex + i] = tmp[i];
+                }
+
+                //memmove(bounds + upperIndex - 1, bounds + upperIndex + 1, (boundCount - upperIndex - 1) * sizeof(b2Bound));
+                tmp = new Bound[boundCount - upperIndex - 1];
+                for (int i = 0; i < (boundCount - upperIndex - 1); i++)
+                {
+                    tmp[i] = bounds[upperIndex + 1 + i].Clone();
+                }
+
+                for (int i = 0; i < (boundCount - upperIndex - 1); i++)
+                {
+                    bounds[upperIndex - 1 + i] = tmp[i];
+                }
+
+                // Fix bound indices.
+                for (int index = lowerIndex; index < boundCount - 2; ++index)
+                {
+                    Proxy proxy_ = _proxyPool[bounds[index].ProxyId];
+                    if (bounds[index].IsLower)
+                    {
+                        proxy_.LowerBounds[axis] = (ushort) index;
+                    }
+                    else
+                    {
+                        proxy_.UpperBounds[axis] = (ushort) index;
+                    }
+                }
+
+                // Fix stabbing count.
+                for (int index = lowerIndex; index < upperIndex - 1; ++index)
+                {
+                    --bounds[index].StabbingCount;
+                }
+
+                // Query for pairs to be removed. lowerIndex and upperIndex are not needed.
+                Query(out lowerIndex, out upperIndex, lowerValue, upperValue, bounds, boundCount - 2, axis);
+            }
+
+            Box2DXDebug.Assert(_queryResultCount < Settings.MaxProxies);
+
+            for (int i = 0; i < _queryResultCount; ++i)
+            {
+                Box2DXDebug.Assert(_proxyPool[_queryResults[i]].IsValid);
+                _pairManager.RemoveBufferedPair(proxyId, _queryResults[i]);
+            }
+
+            _pairManager.Commit();
+
+            // Prepare for next query.
+            _queryResultCount = 0;
+            IncrementTimeStamp();
+
+            // Return the proxy to the pool.
+            proxy.UserData = null;
+            proxy.OverlapCount = Invalid;
+            proxy.LowerBounds[0] = Invalid;
+            proxy.LowerBounds[1] = Invalid;
+            proxy.UpperBounds[0] = Invalid;
+            proxy.UpperBounds[1] = Invalid;
+
+            proxy.Next = _freeProxy;
+            _freeProxy = (ushort) proxyId;
+            --_proxyCount;
+
+            if (IsValidate)
+            {
+                Validate();
+            }
+        }
+
+        // Call MoveProxy as many times as you like, then when you are done
+        // call Commit to finalized the proxy pairs (for your time step).
+        /// <summary>
+        ///     Moves the proxy using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        /// <param name="aabb">The aabb</param>
+        public void MoveProxy(int proxyId, Aabb aabb)
+        {
+            if (proxyId == PairManager.NullProxy || Settings.MaxProxies <= proxyId)
+            {
+                Box2DXDebug.Assert(false);
+                return;
+            }
+
+            if (aabb.IsValid == false)
+            {
+                Box2DXDebug.Assert(false);
+                return;
+            }
+
+            int boundCount = 2 * _proxyCount;
+
+            Proxy proxy = _proxyPool[proxyId];
+
+            // Get new bound values
+            BoundValues newValues = new BoundValues();
+            ;
+            ComputeBounds(out newValues.LowerValues, out newValues.UpperValues, aabb);
+
+            // Get old bound values
+            BoundValues oldValues = new BoundValues();
+            for (int axis = 0; axis < 2; ++axis)
+            {
+                oldValues.LowerValues[axis] = _bounds[axis][proxy.LowerBounds[axis]].Value;
+                oldValues.UpperValues[axis] = _bounds[axis][proxy.UpperBounds[axis]].Value;
+            }
+
+            for (int axis = 0; axis < 2; ++axis)
+            {
+                Bound[] bounds = _bounds[axis];
+
+                int lowerIndex = proxy.LowerBounds[axis];
+                int upperIndex = proxy.UpperBounds[axis];
+
+                ushort lowerValue = newValues.LowerValues[axis];
+                ushort upperValue = newValues.UpperValues[axis];
+
+                int deltaLower = lowerValue - bounds[lowerIndex].Value;
+                int deltaUpper = upperValue - bounds[upperIndex].Value;
+
+                bounds[lowerIndex].Value = lowerValue;
+                bounds[upperIndex].Value = upperValue;
+
+                //
+                // Expanding adds overlaps
+                //
+
+                // Should we move the lower bound down?
+                if (deltaLower < 0)
+                {
+                    int index = lowerIndex;
+                    while (index > 0 && lowerValue < bounds[index - 1].Value)
+                    {
+                        Bound bound = bounds[index];
+                        Bound prevBound = bounds[index - 1];
+
+                        int prevProxyId = prevBound.ProxyId;
+                        Proxy prevProxy = _proxyPool[prevBound.ProxyId];
+
+                        ++prevBound.StabbingCount;
+
+                        if (prevBound.IsUpper)
+                        {
+                            if (TestOverlap(newValues, prevProxy))
+                            {
+                                _pairManager.AddBufferedPair(proxyId, prevProxyId);
+                            }
+
+                            ++prevProxy.UpperBounds[axis];
+                            ++bound.StabbingCount;
+                        }
+                        else
+                        {
+                            ++prevProxy.LowerBounds[axis];
+                            --bound.StabbingCount;
+                        }
+
+                        --proxy.LowerBounds[axis];
+                        Math.Swap(ref bounds[index], ref bounds[index - 1]);
+                        --index;
+                    }
+                }
+
+                // Should we move the upper bound up?
+                if (deltaUpper > 0)
+                {
+                    int index = upperIndex;
+                    while (index < boundCount - 1 && bounds[index + 1].Value <= upperValue)
+                    {
+                        Bound bound = bounds[index];
+                        Bound nextBound = bounds[index + 1];
+                        int nextProxyId = nextBound.ProxyId;
+                        Proxy nextProxy = _proxyPool[nextProxyId];
+
+                        ++nextBound.StabbingCount;
+
+                        if (nextBound.IsLower)
+                        {
+                            if (TestOverlap(newValues, nextProxy))
+                            {
+                                _pairManager.AddBufferedPair(proxyId, nextProxyId);
+                            }
+
+                            --nextProxy.LowerBounds[axis];
+                            ++bound.StabbingCount;
+                        }
+                        else
+                        {
+                            --nextProxy.UpperBounds[axis];
+                            --bound.StabbingCount;
+                        }
+
+                        ++proxy.UpperBounds[axis];
+                        Math.Swap(ref bounds[index], ref bounds[index + 1]);
+                        ++index;
+                    }
+                }
+
+                //
+                // Shrinking removes overlaps
+                //
+
+                // Should we move the lower bound up?
+                if (deltaLower > 0)
+                {
+                    int index = lowerIndex;
+                    while (index < boundCount - 1 && bounds[index + 1].Value <= lowerValue)
+                    {
+                        Bound bound = bounds[index];
+                        Bound nextBound = bounds[index + 1];
+
+                        int nextProxyId = nextBound.ProxyId;
+                        Proxy nextProxy = _proxyPool[nextProxyId];
+
+                        --nextBound.StabbingCount;
+
+                        if (nextBound.IsUpper)
+                        {
+                            if (TestOverlap(oldValues, nextProxy))
+                            {
+                                _pairManager.RemoveBufferedPair(proxyId, nextProxyId);
+                            }
+
+                            --nextProxy.UpperBounds[axis];
+                            --bound.StabbingCount;
+                        }
+                        else
+                        {
+                            --nextProxy.LowerBounds[axis];
+                            ++bound.StabbingCount;
+                        }
+
+                        ++proxy.LowerBounds[axis];
+                        Math.Swap(ref bounds[index], ref bounds[index + 1]);
+                        ++index;
+                    }
+                }
+
+                // Should we move the upper bound down?
+                if (deltaUpper < 0)
+                {
+                    int index = upperIndex;
+                    while (index > 0 && upperValue < bounds[index - 1].Value)
+                    {
+                        Bound bound = bounds[index];
+                        Bound prevBound = bounds[index - 1];
+
+                        int prevProxyId = prevBound.ProxyId;
+                        Proxy prevProxy = _proxyPool[prevProxyId];
+
+                        --prevBound.StabbingCount;
+
+                        if (prevBound.IsLower)
+                        {
+                            if (TestOverlap(oldValues, prevProxy))
+                            {
+                                _pairManager.RemoveBufferedPair(proxyId, prevProxyId);
+                            }
+
+                            ++prevProxy.LowerBounds[axis];
+                            --bound.StabbingCount;
+                        }
+                        else
+                        {
+                            ++prevProxy.UpperBounds[axis];
+                            ++bound.StabbingCount;
+                        }
+
+                        --proxy.UpperBounds[axis];
+                        Math.Swap(ref bounds[index], ref bounds[index - 1]);
+                        --index;
+                    }
+                }
+            }
+
+            if (IsValidate)
+            {
+                Validate();
+            }
+        }
+
+        /// <summary>
+        ///     Commits this instance
+        /// </summary>
+        public void Commit()
+        {
+            _pairManager.Commit();
+        }
+
+        // Get a single proxy. Returns NULL if the id is invalid.
+        /// <summary>
+        ///     Gets the proxy using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        /// <returns>The proxy</returns>
+        public Proxy GetProxy(int proxyId)
+        {
+            if (proxyId == PairManager.NullProxy || _proxyPool[proxyId].IsValid == false)
+            {
+                return null;
+            }
+
+            return _proxyPool[proxyId];
+        }
+
+        // Query an AABB for overlapping proxies, returns the user data and
+        // the count, up to the supplied maximum count.
+        /// <summary>
+        ///     Queries the aabb
+        /// </summary>
+        /// <param name="aabb">The aabb</param>
+        /// <param name="userData">The user data</param>
+        /// <param name="maxCount">The max count</param>
+        /// <returns>The count</returns>
+        public int Query(Aabb aabb, object[] userData, int maxCount)
+        {
+            ushort[] lowerValues;
+            ushort[] upperValues;
+            ComputeBounds(out lowerValues, out upperValues, aabb);
+
+            int lowerIndex, upperIndex;
+
+            Query(out lowerIndex, out upperIndex, lowerValues[0], upperValues[0], _bounds[0], 2 * _proxyCount, 0);
+            Query(out lowerIndex, out upperIndex, lowerValues[1], upperValues[1], _bounds[1], 2 * _proxyCount, 1);
+
+            Box2DXDebug.Assert(_queryResultCount < Settings.MaxProxies);
+
+            int count = 0;
+            for (int i = 0; i < _queryResultCount && count < maxCount; ++i, ++count)
+            {
+                Box2DXDebug.Assert(_queryResults[i] < Settings.MaxProxies);
+                Proxy proxy = _proxyPool[_queryResults[i]];
+                Box2DXDebug.Assert(proxy.IsValid);
+                userData[i] = proxy.UserData;
+            }
+
+            // Prepare for next query.
+            _queryResultCount = 0;
+            IncrementTimeStamp();
+
+            return count;
+        }
+
+        /// <summary>
+        ///     Query a segment for overlapping proxies, returns the user data and
+        ///     the count, up to the supplied maximum count.
+        ///     If sortKey is provided, then it is a function mapping from proxy user Data to distances along the segment (between
+        ///     0 ans 1)
+        ///     Then the returned proxies are sorted on that, before being truncated to maxCount
+        ///     The sortKey of a proxy is assumed to be larger than the closest point inside the proxy along the segment, this
+        ///     allows for early exits
+        ///     Proxies with a negative sortKey are discarded
+        /// </summary>
+        /// <param name="segment"></param>
+        /// <param name="userData"></param>
+        /// <param name="maxCount"></param>
+        /// <param name="sortKey"></param>
+        /// <returns></returns>
+        public
 #if ALLOWUNSAFE
-		unsafe 
+            unsafe
 #endif //#if ALLOWUNSAFE
-		int QuerySegment(Segment segment, object[] userData, int maxCount, SortKeyFunc sortKey)
-		{
-			float maxLambda = 1;
+            int QuerySegment(Segment segment, object[] userData, int maxCount, SortKeyFunc sortKey)
+        {
+            float maxLambda = 1;
 
-			float dx = (segment.P2.X - segment.P1.X) * _quantizationFactor.X;
-			float dy = (segment.P2.Y - segment.P1.Y) * _quantizationFactor.Y;
+            float dx = (segment.P2.X - segment.P1.X) * _quantizationFactor.X;
+            float dy = (segment.P2.Y - segment.P1.Y) * _quantizationFactor.Y;
 
-			int sx = dx < -Settings.FltEpsilon ? -1 : (dx > Settings.FltEpsilon ? 1 : 0);
-			int sy = dy < -Settings.FltEpsilon ? -1 : (dy > Settings.FltEpsilon ? 1 : 0);
+            int sx = dx < -Settings.FltEpsilon ? -1 : (dx > Settings.FltEpsilon ? 1 : 0);
+            int sy = dy < -Settings.FltEpsilon ? -1 : (dy > Settings.FltEpsilon ? 1 : 0);
 
-			Box2DXDebug.Assert(sx != 0 || sy != 0);
+            Box2DXDebug.Assert(sx != 0 || sy != 0);
 
-			float p1x = (segment.P1.X - _worldAABB.LowerBound.X) * _quantizationFactor.X;
-			float p1y = (segment.P1.Y - _worldAABB.LowerBound.Y) * _quantizationFactor.Y;
+            float p1x = (segment.P1.X - _worldAABB.LowerBound.X) * _quantizationFactor.X;
+            float p1y = (segment.P1.Y - _worldAABB.LowerBound.Y) * _quantizationFactor.Y;
 #if ALLOWUNSAFE
-			ushort* startValues = stackalloc ushort[2];
-			ushort* startValues2 = stackalloc ushort[2];
+            ushort* startValues = stackalloc ushort[2];
+            ushort* startValues2 = stackalloc ushort[2];
 #else
 			ushort[] startValues = new ushort[2];
 			ushort[] startValues2 = new ushort[2];
 #endif
 
-			int xIndex;
-			int yIndex;
+            int xIndex;
+            int yIndex;
 
-			ushort proxyId;
-			Proxy proxy;
+            ushort proxyId;
+            Proxy proxy;
 
-			// TODO_ERIN implement fast float to ushort conversion.
-			startValues[0] = (ushort)((ushort)(p1x) & (BROADPHASE_MAX - 1));
-			startValues2[0] = (ushort)((ushort)(p1x) | 1);
+            // TODO_ERIN implement fast float to ushort conversion.
+            startValues[0] = (ushort) ((ushort) (p1x) & (BROADPHASE_MAX - 1));
+            startValues2[0] = (ushort) ((ushort) (p1x) | 1);
 
-			startValues[1] = (ushort)((ushort)(p1y) & (BROADPHASE_MAX - 1));
-			startValues2[1] = (ushort)((ushort)(p1y) | 1);
+            startValues[1] = (ushort) ((ushort) (p1y) & (BROADPHASE_MAX - 1));
+            startValues2[1] = (ushort) ((ushort) (p1y) | 1);
 
-			//First deal with all the proxies that contain segment.p1
-			int lowerIndex;
-			int upperIndex;
-			Query(out lowerIndex, out upperIndex, startValues[0], startValues2[0], _bounds[0], 2 * _proxyCount, 0);
-			if (sx >= 0) xIndex = upperIndex - 1;
-			else xIndex = lowerIndex;
-			Query(out lowerIndex, out upperIndex, startValues[1], startValues2[1], _bounds[1], 2 * _proxyCount, 1);
-			if (sy >= 0) yIndex = upperIndex - 1;
-			else yIndex = lowerIndex;
+            //First deal with all the proxies that contain segment.p1
+            int lowerIndex;
+            int upperIndex;
+            Query(out lowerIndex, out upperIndex, startValues[0], startValues2[0], _bounds[0], 2 * _proxyCount, 0);
+            if (sx >= 0) xIndex = upperIndex - 1;
+            else xIndex = lowerIndex;
+            Query(out lowerIndex, out upperIndex, startValues[1], startValues2[1], _bounds[1], 2 * _proxyCount, 1);
+            if (sy >= 0) yIndex = upperIndex - 1;
+            else yIndex = lowerIndex;
 
-			//If we are using sortKey, then sort what we have so far, filtering negative keys
-			if (sortKey != null)
-			{
-				//Fill keys
-				for (int j = 0; j < _queryResultCount; j++)
-				{
-					_querySortKeys[j] = sortKey(_proxyPool[_queryResults[j]].UserData);
-				}
-				//Bubble sort keys
-				//Sorting negative values to the top, so we can easily remove them
-				int i = 0;
-				while (i < _queryResultCount - 1)
-				{
-					float a = _querySortKeys[i];
-					float b = _querySortKeys[i + 1];
-					if ((a < 0) ? (b >= 0) : (a > b && b >= 0))
-					{
-						_querySortKeys[i + 1] = a;
-						_querySortKeys[i] = b;
-						ushort tempValue = _queryResults[i + 1];
-						_queryResults[i + 1] = _queryResults[i];
-						_queryResults[i] = tempValue;
-						i--;
-						if (i == -1) i = 1;
-					}
-					else
-					{
-						i++;
-					}
-				}
-				//Skim off negative values
-				while (_queryResultCount > 0 && _querySortKeys[_queryResultCount - 1] < 0)
-					_queryResultCount--;
-			}
+            //If we are using sortKey, then sort what we have so far, filtering negative keys
+            if (sortKey != null)
+            {
+                //Fill keys
+                for (int j = 0; j < _queryResultCount; j++)
+                {
+                    _querySortKeys[j] = sortKey(_proxyPool[_queryResults[j]].UserData);
+                }
 
-			//Now work through the rest of the segment
-			for (; ; )
-			{
-				float xProgress = 0;
-				float yProgress = 0;
-				if (xIndex < 0 || xIndex >= _proxyCount * 2)
-					break;
-				if (yIndex < 0 || yIndex >= _proxyCount * 2)
-					break;
-				if (sx != 0)
-				{
-					//Move on to the next bound
-					if (sx > 0)
-					{
-						xIndex++;
-						if (xIndex == _proxyCount * 2)
-							break;
-					}
-					else
-					{
-						xIndex--;
-						if (xIndex < 0)
-							break;
-					}
-					xProgress = (_bounds[0][xIndex].Value - p1x) / dx;
-				}
-				if (sy != 0)
-				{
-					//Move on to the next bound
-					if (sy > 0)
-					{
-						yIndex++;
-						if (yIndex == _proxyCount * 2)
-							break;
-					}
-					else
-					{
-						yIndex--;
-						if (yIndex < 0)
-							break;
-					}
-					yProgress = (_bounds[1][yIndex].Value - p1y) / dy;
-				}
-				for (; ; )
-				{
-					if (sy == 0 || (sx != 0 && xProgress < yProgress))
-					{
-						if (xProgress > maxLambda)
-							break;
+                //Bubble sort keys
+                //Sorting negative values to the top, so we can easily remove them
+                int i = 0;
+                while (i < _queryResultCount - 1)
+                {
+                    float a = _querySortKeys[i];
+                    float b = _querySortKeys[i + 1];
+                    if ((a < 0) ? (b >= 0) : (a > b && b >= 0))
+                    {
+                        _querySortKeys[i + 1] = a;
+                        _querySortKeys[i] = b;
+                        ushort tempValue = _queryResults[i + 1];
+                        _queryResults[i + 1] = _queryResults[i];
+                        _queryResults[i] = tempValue;
+                        i--;
+                        if (i == -1) i = 1;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
 
-						//Check that we are entering a proxy, not leaving
-						if (sx > 0 ? _bounds[0][xIndex].IsLower : _bounds[0][xIndex].IsUpper)
-						{
-							//Check the other axis of the proxy
-							proxyId = _bounds[0][xIndex].ProxyId;
-							proxy = _proxyPool[proxyId];
-							if (sy >= 0)
-							{
-								if (proxy.LowerBounds[1] <= yIndex - 1 && proxy.UpperBounds[1] >= yIndex)
-								{
-									//Add the proxy
-									if (sortKey != null)
-									{
-										AddProxyResult(proxyId, proxy, maxCount, sortKey);
-									}
-									else
-									{
-										_queryResults[_queryResultCount] = proxyId;
-										++_queryResultCount;
-									}
-								}
-							}
-							else
-							{
-								if (proxy.LowerBounds[1] <= yIndex && proxy.UpperBounds[1] >= yIndex + 1)
-								{
-									//Add the proxy
-									if (sortKey != null)
-									{
-										AddProxyResult(proxyId, proxy, maxCount, sortKey);
-									}
-									else
-									{
-										_queryResults[_queryResultCount] = proxyId;
-										++_queryResultCount;
-									}
-								}
-							}
-						}
+                //Skim off negative values
+                while (_queryResultCount > 0 && _querySortKeys[_queryResultCount - 1] < 0)
+                    _queryResultCount--;
+            }
 
-						//Early out
-						if (sortKey != null && _queryResultCount == maxCount && _queryResultCount > 0 && xProgress > _querySortKeys[_queryResultCount - 1])
-							break;
+            //Now work through the rest of the segment
+            for (;;)
+            {
+                float xProgress = 0;
+                float yProgress = 0;
+                if (xIndex < 0 || xIndex >= _proxyCount * 2)
+                    break;
+                if (yIndex < 0 || yIndex >= _proxyCount * 2)
+                    break;
+                if (sx != 0)
+                {
+                    //Move on to the next bound
+                    if (sx > 0)
+                    {
+                        xIndex++;
+                        if (xIndex == _proxyCount * 2)
+                            break;
+                    }
+                    else
+                    {
+                        xIndex--;
+                        if (xIndex < 0)
+                            break;
+                    }
 
-						//Move on to the next bound
-						if (sx > 0)
-						{
-							xIndex++;
-							if (xIndex == _proxyCount * 2)
-								break;
-						}
-						else
-						{
-							xIndex--;
-							if (xIndex < 0)
-								break;
-						}
-						xProgress = (_bounds[0][xIndex].Value - p1x) / dx;
-					}
-					else
-					{
-						if (yProgress > maxLambda)
-							break;
+                    xProgress = (_bounds[0][xIndex].Value - p1x) / dx;
+                }
 
-						//Check that we are entering a proxy, not leaving
-						if (sy > 0 ? _bounds[1][yIndex].IsLower : _bounds[1][yIndex].IsUpper)
-						{
-							//Check the other axis of the proxy
-							proxyId = _bounds[1][yIndex].ProxyId;
-							proxy = _proxyPool[proxyId];
-							if (sx >= 0)
-							{
-								if (proxy.LowerBounds[0] <= xIndex - 1 && proxy.UpperBounds[0] >= xIndex)
-								{
-									//Add the proxy
-									if (sortKey != null)
-									{
-										AddProxyResult(proxyId, proxy, maxCount, sortKey);
-									}
-									else
-									{
-										_queryResults[_queryResultCount] = proxyId;
-										++_queryResultCount;
-									}
-								}
-							}
-							else
-							{
-								if (proxy.LowerBounds[0] <= xIndex && proxy.UpperBounds[0] >= xIndex + 1)
-								{
-									//Add the proxy
-									if (sortKey != null)
-									{
-										AddProxyResult(proxyId, proxy, maxCount, sortKey);
-									}
-									else
-									{
-										_queryResults[_queryResultCount] = proxyId;
-										++_queryResultCount;
-									}
-								}
-							}
-						}
+                if (sy != 0)
+                {
+                    //Move on to the next bound
+                    if (sy > 0)
+                    {
+                        yIndex++;
+                        if (yIndex == _proxyCount * 2)
+                            break;
+                    }
+                    else
+                    {
+                        yIndex--;
+                        if (yIndex < 0)
+                            break;
+                    }
 
-						//Early out
-						if (sortKey != null && _queryResultCount == maxCount && _queryResultCount > 0 && yProgress > _querySortKeys[_queryResultCount - 1])
-							break;
+                    yProgress = (_bounds[1][yIndex].Value - p1y) / dy;
+                }
 
-						//Move on to the next bound
-						if (sy > 0)
-						{
-							yIndex++;
-							if (yIndex == _proxyCount * 2)
-								break;
-						}
-						else
-						{
-							yIndex--;
-							if (yIndex < 0)
-								break;
-						}
-						yProgress = (_bounds[1][yIndex].Value - p1y) / dy;
-					}
-				}
+                for (;;)
+                {
+                    if (sy == 0 || (sx != 0 && xProgress < yProgress))
+                    {
+                        if (xProgress > maxLambda)
+                            break;
 
-				break;
-			}
+                        //Check that we are entering a proxy, not leaving
+                        if (sx > 0 ? _bounds[0][xIndex].IsLower : _bounds[0][xIndex].IsUpper)
+                        {
+                            //Check the other axis of the proxy
+                            proxyId = _bounds[0][xIndex].ProxyId;
+                            proxy = _proxyPool[proxyId];
+                            if (sy >= 0)
+                            {
+                                if (proxy.LowerBounds[1] <= yIndex - 1 && proxy.UpperBounds[1] >= yIndex)
+                                {
+                                    //Add the proxy
+                                    if (sortKey != null)
+                                    {
+                                        AddProxyResult(proxyId, proxy, maxCount, sortKey);
+                                    }
+                                    else
+                                    {
+                                        _queryResults[_queryResultCount] = proxyId;
+                                        ++_queryResultCount;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (proxy.LowerBounds[1] <= yIndex && proxy.UpperBounds[1] >= yIndex + 1)
+                                {
+                                    //Add the proxy
+                                    if (sortKey != null)
+                                    {
+                                        AddProxyResult(proxyId, proxy, maxCount, sortKey);
+                                    }
+                                    else
+                                    {
+                                        _queryResults[_queryResultCount] = proxyId;
+                                        ++_queryResultCount;
+                                    }
+                                }
+                            }
+                        }
 
-			int count = 0;
-			for (int i = 0; i < _queryResultCount && count < maxCount; ++i, ++count)
-			{
-				Box2DXDebug.Assert(_queryResults[i] < Settings.MaxProxies);
-				Proxy proxy_ = _proxyPool[_queryResults[i]];
-				Box2DXDebug.Assert(proxy_.IsValid);
-				userData[i] = proxy_.UserData;
-			}
+                        //Early out
+                        if (sortKey != null && _queryResultCount == maxCount && _queryResultCount > 0 &&
+                            xProgress > _querySortKeys[_queryResultCount - 1])
+                            break;
 
-			// Prepare for next query.
-			_queryResultCount = 0;
-			IncrementTimeStamp();
+                        //Move on to the next bound
+                        if (sx > 0)
+                        {
+                            xIndex++;
+                            if (xIndex == _proxyCount * 2)
+                                break;
+                        }
+                        else
+                        {
+                            xIndex--;
+                            if (xIndex < 0)
+                                break;
+                        }
 
-			return count;
-		}
+                        xProgress = (_bounds[0][xIndex].Value - p1x) / dx;
+                    }
+                    else
+                    {
+                        if (yProgress > maxLambda)
+                            break;
 
-		/// <summary>
-		/// Validates this instance
-		/// </summary>
-		public void Validate()
-		{
-			for (int axis = 0; axis < 2; ++axis)
-			{
-				Bound[] bounds = _bounds[axis];
+                        //Check that we are entering a proxy, not leaving
+                        if (sy > 0 ? _bounds[1][yIndex].IsLower : _bounds[1][yIndex].IsUpper)
+                        {
+                            //Check the other axis of the proxy
+                            proxyId = _bounds[1][yIndex].ProxyId;
+                            proxy = _proxyPool[proxyId];
+                            if (sx >= 0)
+                            {
+                                if (proxy.LowerBounds[0] <= xIndex - 1 && proxy.UpperBounds[0] >= xIndex)
+                                {
+                                    //Add the proxy
+                                    if (sortKey != null)
+                                    {
+                                        AddProxyResult(proxyId, proxy, maxCount, sortKey);
+                                    }
+                                    else
+                                    {
+                                        _queryResults[_queryResultCount] = proxyId;
+                                        ++_queryResultCount;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (proxy.LowerBounds[0] <= xIndex && proxy.UpperBounds[0] >= xIndex + 1)
+                                {
+                                    //Add the proxy
+                                    if (sortKey != null)
+                                    {
+                                        AddProxyResult(proxyId, proxy, maxCount, sortKey);
+                                    }
+                                    else
+                                    {
+                                        _queryResults[_queryResultCount] = proxyId;
+                                        ++_queryResultCount;
+                                    }
+                                }
+                            }
+                        }
 
-				int boundCount = 2 * _proxyCount;
-				ushort stabbingCount = 0;
+                        //Early out
+                        if (sortKey != null && _queryResultCount == maxCount && _queryResultCount > 0 &&
+                            yProgress > _querySortKeys[_queryResultCount - 1])
+                            break;
 
-				for (int i = 0; i < boundCount; ++i)
-				{
-					Bound bound = bounds[i];
-					Box2DXDebug.Assert(i == 0 || bounds[i - 1].Value <= bound.Value);
-					Box2DXDebug.Assert(bound.ProxyId != PairManager.NullProxy);
-					Box2DXDebug.Assert(_proxyPool[bound.ProxyId].IsValid);
+                        //Move on to the next bound
+                        if (sy > 0)
+                        {
+                            yIndex++;
+                            if (yIndex == _proxyCount * 2)
+                                break;
+                        }
+                        else
+                        {
+                            yIndex--;
+                            if (yIndex < 0)
+                                break;
+                        }
 
-					if (bound.IsLower == true)
-					{
-						Box2DXDebug.Assert(_proxyPool[bound.ProxyId].LowerBounds[axis] == i);
-						++stabbingCount;
-					}
-					else
-					{
-						Box2DXDebug.Assert(_proxyPool[bound.ProxyId].UpperBounds[axis] == i);
-						--stabbingCount;
-					}
+                        yProgress = (_bounds[1][yIndex].Value - p1y) / dy;
+                    }
+                }
 
-					Box2DXDebug.Assert(bound.StabbingCount == stabbingCount);
-				}
-			}
-		}
+                break;
+            }
 
-		/// <summary>
-		/// Computes the bounds using the specified lower values
-		/// </summary>
-		/// <param name="lowerValues">The lower values</param>
-		/// <param name="upperValues">The upper values</param>
-		/// <param name="aabb">The aabb</param>
-		private void ComputeBounds(out ushort[] lowerValues, out ushort[] upperValues, Aabb aabb)
-		{
-			lowerValues = new ushort[2];
-			upperValues = new ushort[2];
+            int count = 0;
+            for (int i = 0; i < _queryResultCount && count < maxCount; ++i, ++count)
+            {
+                Box2DXDebug.Assert(_queryResults[i] < Settings.MaxProxies);
+                Proxy proxy_ = _proxyPool[_queryResults[i]];
+                Box2DXDebug.Assert(proxy_.IsValid);
+                userData[i] = proxy_.UserData;
+            }
 
-			Box2DXDebug.Assert(aabb.UpperBound.X >= aabb.LowerBound.X);
-			Box2DXDebug.Assert(aabb.UpperBound.Y >= aabb.LowerBound.Y);
+            // Prepare for next query.
+            _queryResultCount = 0;
+            IncrementTimeStamp();
 
-			Vec2 minVertex = Math.Clamp(aabb.LowerBound, _worldAABB.LowerBound, _worldAABB.UpperBound);
-			Vec2 maxVertex = Math.Clamp(aabb.UpperBound, _worldAABB.LowerBound, _worldAABB.UpperBound);
+            return count;
+        }
 
-			// Bump lower bounds downs and upper bounds up. This ensures correct sorting of
-			// lower/upper bounds that would have equal values.
-			// TODO_ERIN implement fast float to uint16 conversion.
-			lowerValues[0] = (ushort)((ushort)(_quantizationFactor.X * (minVertex.X - _worldAABB.LowerBound.X)) & (BROADPHASE_MAX - 1));
-			upperValues[0] = (ushort)((ushort)(_quantizationFactor.X * (maxVertex.X - _worldAABB.LowerBound.X)) | 1);
+        /// <summary>
+        ///     Validates this instance
+        /// </summary>
+        public void Validate()
+        {
+            for (int axis = 0; axis < 2; ++axis)
+            {
+                Bound[] bounds = _bounds[axis];
 
-			lowerValues[1] = (ushort)((ushort)(_quantizationFactor.Y * (minVertex.Y - _worldAABB.LowerBound.Y)) & (BROADPHASE_MAX - 1));
-			upperValues[1] = (ushort)((ushort)(_quantizationFactor.Y * (maxVertex.Y - _worldAABB.LowerBound.Y)) | 1);
-		}
+                int boundCount = 2 * _proxyCount;
+                ushort stabbingCount = 0;
 
-		// This one is only used for validation.
-		/// <summary>
-		/// Describes whether this instance test overlap
-		/// </summary>
-		/// <param name="p1">The </param>
-		/// <param name="p2">The </param>
-		/// <returns>The bool</returns>
-		internal bool TestOverlap(Proxy p1, Proxy p2)
-		{
-			for (int axis = 0; axis < 2; ++axis)
-			{
-				Bound[] bounds = _bounds[axis];
+                for (int i = 0; i < boundCount; ++i)
+                {
+                    Bound bound = bounds[i];
+                    Box2DXDebug.Assert(i == 0 || bounds[i - 1].Value <= bound.Value);
+                    Box2DXDebug.Assert(bound.ProxyId != PairManager.NullProxy);
+                    Box2DXDebug.Assert(_proxyPool[bound.ProxyId].IsValid);
 
-				Box2DXDebug.Assert(p1.LowerBounds[axis] < 2 * _proxyCount);
-				Box2DXDebug.Assert(p1.UpperBounds[axis] < 2 * _proxyCount);
-				Box2DXDebug.Assert(p2.LowerBounds[axis] < 2 * _proxyCount);
-				Box2DXDebug.Assert(p2.UpperBounds[axis] < 2 * _proxyCount);
+                    if (bound.IsLower)
+                    {
+                        Box2DXDebug.Assert(_proxyPool[bound.ProxyId].LowerBounds[axis] == i);
+                        ++stabbingCount;
+                    }
+                    else
+                    {
+                        Box2DXDebug.Assert(_proxyPool[bound.ProxyId].UpperBounds[axis] == i);
+                        --stabbingCount;
+                    }
 
-				if (bounds[p1.LowerBounds[axis]].Value > bounds[p2.UpperBounds[axis]].Value)
-					return false;
+                    Box2DXDebug.Assert(bound.StabbingCount == stabbingCount);
+                }
+            }
+        }
 
-				if (bounds[p1.UpperBounds[axis]].Value < bounds[p2.LowerBounds[axis]].Value)
-					return false;
-			}
+        /// <summary>
+        ///     Computes the bounds using the specified lower values
+        /// </summary>
+        /// <param name="lowerValues">The lower values</param>
+        /// <param name="upperValues">The upper values</param>
+        /// <param name="aabb">The aabb</param>
+        private void ComputeBounds(out ushort[] lowerValues, out ushort[] upperValues, Aabb aabb)
+        {
+            lowerValues = new ushort[2];
+            upperValues = new ushort[2];
 
-			return true;
-		}
+            Box2DXDebug.Assert(aabb.UpperBound.X >= aabb.LowerBound.X);
+            Box2DXDebug.Assert(aabb.UpperBound.Y >= aabb.LowerBound.Y);
 
-		/// <summary>
-		/// Describes whether this instance test overlap
-		/// </summary>
-		/// <param name="b">The </param>
-		/// <param name="p">The </param>
-		/// <returns>The bool</returns>
-		internal bool TestOverlap(BoundValues b, Proxy p)
-		{
-			for (int axis = 0; axis < 2; ++axis)
-			{
-				Bound[] bounds = _bounds[axis];
+            Vec2 minVertex = Math.Clamp(aabb.LowerBound, _worldAABB.LowerBound, _worldAABB.UpperBound);
+            Vec2 maxVertex = Math.Clamp(aabb.UpperBound, _worldAABB.LowerBound, _worldAABB.UpperBound);
 
-				Box2DXDebug.Assert(p.LowerBounds[axis] < 2 * _proxyCount);
-				Box2DXDebug.Assert(p.UpperBounds[axis] < 2 * _proxyCount);
+            // Bump lower bounds downs and upper bounds up. This ensures correct sorting of
+            // lower/upper bounds that would have equal values.
+            // TODO_ERIN implement fast float to uint16 conversion.
+            lowerValues[0] = (ushort) ((ushort) (_quantizationFactor.X * (minVertex.X - _worldAABB.LowerBound.X)) &
+                                       (BROADPHASE_MAX - 1));
+            upperValues[0] = (ushort) ((ushort) (_quantizationFactor.X * (maxVertex.X - _worldAABB.LowerBound.X)) | 1);
 
-				if (b.LowerValues[axis] > bounds[p.UpperBounds[axis]].Value)
-					return false;
+            lowerValues[1] = (ushort) ((ushort) (_quantizationFactor.Y * (minVertex.Y - _worldAABB.LowerBound.Y)) &
+                                       (BROADPHASE_MAX - 1));
+            upperValues[1] = (ushort) ((ushort) (_quantizationFactor.Y * (maxVertex.Y - _worldAABB.LowerBound.Y)) | 1);
+        }
 
-				if (b.UpperValues[axis] < bounds[p.LowerBounds[axis]].Value)
-					return false;
-			}
+        // This one is only used for validation.
+        /// <summary>
+        ///     Describes whether this instance test overlap
+        /// </summary>
+        /// <param name="p1">The </param>
+        /// <param name="p2">The </param>
+        /// <returns>The bool</returns>
+        internal bool TestOverlap(Proxy p1, Proxy p2)
+        {
+            for (int axis = 0; axis < 2; ++axis)
+            {
+                Bound[] bounds = _bounds[axis];
 
-			return true;
-		}
+                Box2DXDebug.Assert(p1.LowerBounds[axis] < 2 * _proxyCount);
+                Box2DXDebug.Assert(p1.UpperBounds[axis] < 2 * _proxyCount);
+                Box2DXDebug.Assert(p2.LowerBounds[axis] < 2 * _proxyCount);
+                Box2DXDebug.Assert(p2.UpperBounds[axis] < 2 * _proxyCount);
 
-		/// <summary>
-		/// Queries the lower query out
-		/// </summary>
-		/// <param name="lowerQueryOut">The lower query out</param>
-		/// <param name="upperQueryOut">The upper query out</param>
-		/// <param name="lowerValue">The lower value</param>
-		/// <param name="upperValue">The upper value</param>
-		/// <param name="bounds">The bounds</param>
-		/// <param name="boundCount">The bound count</param>
-		/// <param name="axis">The axis</param>
-		private void Query(out int lowerQueryOut, out int upperQueryOut,
-					   ushort lowerValue, ushort upperValue,
-					   Bound[] bounds, int boundCount, int axis)
-		{
-			int lowerQuery = BinarySearch(bounds, boundCount, lowerValue);
-			int upperQuery = BinarySearch(bounds, boundCount, upperValue);
+                if (bounds[p1.LowerBounds[axis]].Value > bounds[p2.UpperBounds[axis]].Value)
+                    return false;
 
-			// Easy case: lowerQuery <= lowerIndex(i) < upperQuery
-			// Solution: search query range for min bounds.
-			for (int i = lowerQuery; i < upperQuery; ++i)
-			{
-				if (bounds[i].IsLower)
-				{
-					IncrementOverlapCount(bounds[i].ProxyId);
-				}
-			}
+                if (bounds[p1.UpperBounds[axis]].Value < bounds[p2.LowerBounds[axis]].Value)
+                    return false;
+            }
 
-			// Hard case: lowerIndex(i) < lowerQuery < upperIndex(i)
-			// Solution: use the stabbing count to search down the bound array.
-			if (lowerQuery > 0)
-			{
-				int i = lowerQuery - 1;
-				int s = bounds[i].StabbingCount;
+            return true;
+        }
 
-				// Find the s overlaps.
-				while (s != 0)
-				{
-					Box2DXDebug.Assert(i >= 0);
+        /// <summary>
+        ///     Describes whether this instance test overlap
+        /// </summary>
+        /// <param name="b">The </param>
+        /// <param name="p">The </param>
+        /// <returns>The bool</returns>
+        internal bool TestOverlap(BoundValues b, Proxy p)
+        {
+            for (int axis = 0; axis < 2; ++axis)
+            {
+                Bound[] bounds = _bounds[axis];
 
-					if (bounds[i].IsLower)
-					{
-						Proxy proxy = _proxyPool[bounds[i].ProxyId];
-						if (lowerQuery <= proxy.UpperBounds[axis])
-						{
-							IncrementOverlapCount(bounds[i].ProxyId);
-							--s;
-						}
-					}
-					--i;
-				}
-			}
+                Box2DXDebug.Assert(p.LowerBounds[axis] < 2 * _proxyCount);
+                Box2DXDebug.Assert(p.UpperBounds[axis] < 2 * _proxyCount);
 
-			lowerQueryOut = lowerQuery;
-			upperQueryOut = upperQuery;
-		}
-		/// <summary>
-		/// The qi
-		/// </summary>
-		int qi1 = 0;
-		/// <summary>
-		/// The qi
-		/// </summary>
-		int qi2 = 0;
-		/// <summary>
-		/// Increments the overlap count using the specified proxy id
-		/// </summary>
-		/// <param name="proxyId">The proxy id</param>
-		private void IncrementOverlapCount(int proxyId)
-		{
-			Proxy proxy = _proxyPool[proxyId];
-			if (proxy.TimeStamp < _timeStamp)
-			{
-				proxy.TimeStamp = _timeStamp;
-				proxy.OverlapCount = 1;
-				qi1++;
-			}
-			else
-			{
-				proxy.OverlapCount = 2;
-				Box2DXDebug.Assert(_queryResultCount < Settings.MaxProxies);
-				_queryResults[_queryResultCount] = (ushort)proxyId;
-				++_queryResultCount;
-				qi2++;
-			}
-		}
+                if (b.LowerValues[axis] > bounds[p.UpperBounds[axis]].Value)
+                    return false;
 
-		/// <summary>
-		/// Increments the time stamp
-		/// </summary>
-		private void IncrementTimeStamp()
-		{
-			if (_timeStamp == BROADPHASE_MAX)
-			{
-				for (ushort i = 0; i < Settings.MaxProxies; ++i)
-				{
-					_proxyPool[i].TimeStamp = 0;
-				}
-				_timeStamp = 1;
-			}
-			else
-			{
-				++_timeStamp;
-			}
-		}
+                if (b.UpperValues[axis] < bounds[p.LowerBounds[axis]].Value)
+                    return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        ///     Queries the lower query out
+        /// </summary>
+        /// <param name="lowerQueryOut">The lower query out</param>
+        /// <param name="upperQueryOut">The upper query out</param>
+        /// <param name="lowerValue">The lower value</param>
+        /// <param name="upperValue">The upper value</param>
+        /// <param name="bounds">The bounds</param>
+        /// <param name="boundCount">The bound count</param>
+        /// <param name="axis">The axis</param>
+        private void Query(out int lowerQueryOut, out int upperQueryOut,
+            ushort lowerValue, ushort upperValue,
+            Bound[] bounds, int boundCount, int axis)
+        {
+            int lowerQuery = BinarySearch(bounds, boundCount, lowerValue);
+            int upperQuery = BinarySearch(bounds, boundCount, upperValue);
+
+            // Easy case: lowerQuery <= lowerIndex(i) < upperQuery
+            // Solution: search query range for min bounds.
+            for (int i = lowerQuery; i < upperQuery; ++i)
+            {
+                if (bounds[i].IsLower)
+                {
+                    IncrementOverlapCount(bounds[i].ProxyId);
+                }
+            }
+
+            // Hard case: lowerIndex(i) < lowerQuery < upperIndex(i)
+            // Solution: use the stabbing count to search down the bound array.
+            if (lowerQuery > 0)
+            {
+                int i = lowerQuery - 1;
+                int s = bounds[i].StabbingCount;
+
+                // Find the s overlaps.
+                while (s != 0)
+                {
+                    Box2DXDebug.Assert(i >= 0);
+
+                    if (bounds[i].IsLower)
+                    {
+                        Proxy proxy = _proxyPool[bounds[i].ProxyId];
+                        if (lowerQuery <= proxy.UpperBounds[axis])
+                        {
+                            IncrementOverlapCount(bounds[i].ProxyId);
+                            --s;
+                        }
+                    }
+
+                    --i;
+                }
+            }
+
+            lowerQueryOut = lowerQuery;
+            upperQueryOut = upperQuery;
+        }
+
+        /// <summary>
+        ///     The qi
+        /// </summary>
+        private int qi1;
+
+        /// <summary>
+        ///     The qi
+        /// </summary>
+        private int qi2;
+
+        /// <summary>
+        ///     Increments the overlap count using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        private void IncrementOverlapCount(int proxyId)
+        {
+            Proxy proxy = _proxyPool[proxyId];
+            if (proxy.TimeStamp < _timeStamp)
+            {
+                proxy.TimeStamp = _timeStamp;
+                proxy.OverlapCount = 1;
+                qi1++;
+            }
+            else
+            {
+                proxy.OverlapCount = 2;
+                Box2DXDebug.Assert(_queryResultCount < Settings.MaxProxies);
+                _queryResults[_queryResultCount] = (ushort) proxyId;
+                ++_queryResultCount;
+                qi2++;
+            }
+        }
+
+        /// <summary>
+        ///     Increments the time stamp
+        /// </summary>
+        private void IncrementTimeStamp()
+        {
+            if (_timeStamp == BROADPHASE_MAX)
+            {
+                for (ushort i = 0; i < Settings.MaxProxies; ++i)
+                {
+                    _proxyPool[i].TimeStamp = 0;
+                }
+
+                _timeStamp = 1;
+            }
+            else
+            {
+                ++_timeStamp;
+            }
+        }
 
 #if ALLOWUNSAFE
-		/// <summary>
-		/// Adds the proxy result using the specified proxy id
-		/// </summary>
-		/// <param name="proxyId">The proxy id</param>
-		/// <param name="proxy">The proxy</param>
-		/// <param name="maxCount">The max count</param>
-		/// <param name="sortKey">The sort key</param>
-		public unsafe void AddProxyResult(ushort proxyId, Proxy proxy, int maxCount, SortKeyFunc sortKey)
-		{
-			float key = sortKey(proxy.UserData);
-			//Filter proxies on positive keys
-			if (key < 0)
-				return;
-			//Merge the new key into the sorted list.
-			//float32* p = std::lower_bound(m_querySortKeys,m_querySortKeys+m_queryResultCount,key);
-			fixed (float* querySortKeysPtr = _querySortKeys)
-			{
-				float* p = querySortKeysPtr;
-				while (*p < key && p < &querySortKeysPtr[_queryResultCount])
-					p++;
-				int i = (int)(p - &querySortKeysPtr[0]);
-				if (maxCount == _queryResultCount && i == _queryResultCount)
-					return;
-				if (maxCount == _queryResultCount)
-					_queryResultCount--;
-				//std::copy_backward
-				for (int j = _queryResultCount + 1; j > i; --j)
-				{
-					_querySortKeys[j] = _querySortKeys[j - 1];
-					_queryResults[j] = _queryResults[j - 1];
-				}
-				_querySortKeys[i] = key;
-				_queryResults[i] = proxyId;
-				_queryResultCount++;
-			}
-		}
+        /// <summary>
+        ///     Adds the proxy result using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        /// <param name="proxy">The proxy</param>
+        /// <param name="maxCount">The max count</param>
+        /// <param name="sortKey">The sort key</param>
+        public unsafe void AddProxyResult(ushort proxyId, Proxy proxy, int maxCount, SortKeyFunc sortKey)
+        {
+            float key = sortKey(proxy.UserData);
+            //Filter proxies on positive keys
+            if (key < 0)
+                return;
+            //Merge the new key into the sorted list.
+            //float32* p = std::lower_bound(m_querySortKeys,m_querySortKeys+m_queryResultCount,key);
+            fixed (float* querySortKeysPtr = _querySortKeys)
+            {
+                float* p = querySortKeysPtr;
+                while (*p < key && p < &querySortKeysPtr[_queryResultCount])
+                    p++;
+                int i = (int) (p - &querySortKeysPtr[0]);
+                if (maxCount == _queryResultCount && i == _queryResultCount)
+                    return;
+                if (maxCount == _queryResultCount)
+                    _queryResultCount--;
+                //std::copy_backward
+                for (int j = _queryResultCount + 1; j > i; --j)
+                {
+                    _querySortKeys[j] = _querySortKeys[j - 1];
+                    _queryResults[j] = _queryResults[j - 1];
+                }
+
+                _querySortKeys[i] = key;
+                _queryResults[i] = proxyId;
+                _queryResultCount++;
+            }
+        }
 #else
 		public void AddProxyResult(ushort proxyId, Proxy proxy, int maxCount, SortKeyFunc sortKey)
 		{
@@ -1252,35 +1293,35 @@ namespace Alis.Core.Physic.Collision
 		}
 #endif
 
-		/// <summary>
-		/// Binaries the search using the specified bounds
-		/// </summary>
-		/// <param name="bounds">The bounds</param>
-		/// <param name="count">The count</param>
-		/// <param name="value">The value</param>
-		/// <returns>The low</returns>
-		private static int BinarySearch(Bound[] bounds, int count, ushort value)
-		{
-			int low = 0;
-			int high = count - 1;
-			while (low <= high)
-			{
-				int mid = (low + high) >> 1;
-				if (bounds[mid].Value > value)
-				{
-					high = mid - 1;
-				}
-				else if (bounds[mid].Value < value)
-				{
-					low = mid + 1;
-				}
-				else
-				{
-					return (ushort)mid;
-				}
-			}
+        /// <summary>
+        ///     Binaries the search using the specified bounds
+        /// </summary>
+        /// <param name="bounds">The bounds</param>
+        /// <param name="count">The count</param>
+        /// <param name="value">The value</param>
+        /// <returns>The low</returns>
+        private static int BinarySearch(Bound[] bounds, int count, ushort value)
+        {
+            int low = 0;
+            int high = count - 1;
+            while (low <= high)
+            {
+                int mid = (low + high) >> 1;
+                if (bounds[mid].Value > value)
+                {
+                    high = mid - 1;
+                }
+                else if (bounds[mid].Value < value)
+                {
+                    low = mid + 1;
+                }
+                else
+                {
+                    return (ushort) mid;
+                }
+            }
 
-			return low;
-		}
-	}
+            return low;
+        }
+    }
 }
