@@ -28,6 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Common;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample
 {
