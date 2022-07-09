@@ -37,26 +37,6 @@
             <param name="message">The message</param>
             <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.SortKeyFunc">
-            <summary>
-            The sort key func
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Collision.BoundValues">
-            <summary>
-            The bound values class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.BoundValues.LowerValues">
-            <summary>
-            The lower values
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.BoundValues.UpperValues">
-            <summary>
-            The upper values
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Collision.Bound">
             <summary>
             The bound class
@@ -93,44 +73,24 @@
             </summary>
             <returns>The new bound</returns>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.Proxy">
+        <member name="T:Alis.Core.Physic.Collision.SortKeyFunc">
             <summary>
-            The proxy class
+            The sort key func
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Proxy.LowerBounds">
+        <member name="T:Alis.Core.Physic.Collision.BoundValues">
             <summary>
-            The upper bounds
+            The bound values class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Proxy.UpperBounds">
+        <member name="F:Alis.Core.Physic.Collision.BoundValues.LowerValues">
             <summary>
-            The upper bounds
+            The lower values
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Proxy.OverlapCount">
+        <member name="F:Alis.Core.Physic.Collision.BoundValues.UpperValues">
             <summary>
-            The overlap count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Proxy.TimeStamp">
-            <summary>
-            The time stamp
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Proxy.UserData">
-            <summary>
-            The user data
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Collision.Proxy.Next">
-            <summary>
-            Gets or sets the value of the next
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Collision.Proxy.IsValid">
-            <summary>
-            Gets the value of the is valid
+            The upper values
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.BroadPhase">
@@ -363,6 +323,21 @@
             <param name="count">The count</param>
             <param name="value">The value</param>
             <returns>The low</returns>
+        </member>
+        <member name="T:Alis.Core.Physic.Collision.BufferedPair">
+            <summary>
+            The buffered pair
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.BufferedPair.ProxyId1">
+            <summary>
+            The proxy id
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.BufferedPair.ProxyId2">
+            <summary>
+            The proxy id
+            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.Collision">
             <summary>
@@ -819,32 +794,6 @@
             The hit
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.SimplexCache">
-            <summary>
-            Used to warm start Distance.
-            Set count to zero on first call.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexCache.Metric">
-            <summary>
-            Length or area.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexCache.Count">
-            <summary>
-            The count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexCache.IndexA">
-            <summary>
-            Vertices on shape A.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexCache.IndexB">
-            <summary>
-            Vertices on shape B.
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Collision.IndexArray">
             <summary>
             The index array
@@ -1022,36 +971,6 @@
             Solves the 3
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.TOIInput">
-            <summary>
-            Inpute parameters for TimeOfImpact
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepA">
-            <summary>
-            The sweep
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepB">
-            <summary>
-            The sweep
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepRadiusA">
-            <summary>
-            The sweep radius
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepRadiusB">
-            <summary>
-            The sweep radius
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.Tolerance">
-            <summary>
-            The tolerance
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Collision.SeparationFunction">
             <summary>
             The separation function
@@ -1119,6 +1038,27 @@
             <summary>
             The axis
             </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Collision.PairCallback">
+            <summary>
+            The pair callback class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collision.PairCallback.PairAdded(System.Object,System.Object)">
+            <summary>
+            Pairs the added using the specified proxy user data 1
+            </summary>
+            <param name="proxyUserData1">The proxy user data</param>
+            <param name="proxyUserData2">The proxy user data</param>
+            <returns>The object</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collision.PairCallback.PairRemoved(System.Object,System.Object,System.Object)">
+            <summary>
+            Pairs the removed using the specified proxy user data 1
+            </summary>
+            <param name="proxyUserData1">The proxy user data</param>
+            <param name="proxyUserData2">The proxy user data</param>
+            <param name="pairUserData">The pair user data</param>
         </member>
         <member name="T:Alis.Core.Physic.Collision.Pair">
             <summary>
@@ -1212,42 +1152,6 @@
             <summary>
             The status
             </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Collision.BufferedPair">
-            <summary>
-            The buffered pair
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.BufferedPair.ProxyId1">
-            <summary>
-            The proxy id
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.BufferedPair.ProxyId2">
-            <summary>
-            The proxy id
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Collision.PairCallback">
-            <summary>
-            The pair callback class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collision.PairCallback.PairAdded(System.Object,System.Object)">
-            <summary>
-            Pairs the added using the specified proxy user data 1
-            </summary>
-            <param name="proxyUserData1">The proxy user data</param>
-            <param name="proxyUserData2">The proxy user data</param>
-            <returns>The object</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collision.PairCallback.PairRemoved(System.Object,System.Object,System.Object)">
-            <summary>
-            Pairs the removed using the specified proxy user data 1
-            </summary>
-            <param name="proxyUserData1">The proxy user data</param>
-            <param name="proxyUserData2">The proxy user data</param>
-            <param name="pairUserData">The pair user data</param>
         </member>
         <member name="T:Alis.Core.Physic.Collision.PairManager">
             <summary>
@@ -1421,12 +1325,52 @@
             <param name="pair2">The pair</param>
             <returns>The int</returns>
         </member>
+        <member name="T:Alis.Core.Physic.Collision.Proxy">
+            <summary>
+            The proxy class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Proxy.LowerBounds">
+            <summary>
+            The upper bounds
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Proxy.UpperBounds">
+            <summary>
+            The upper bounds
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Proxy.OverlapCount">
+            <summary>
+            The overlap count
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Proxy.TimeStamp">
+            <summary>
+            The time stamp
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Proxy.UserData">
+            <summary>
+            The user data
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collision.Proxy.Next">
+            <summary>
+            Gets or sets the value of the next
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collision.Proxy.IsValid">
+            <summary>
+            Gets the value of the is valid
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Collision.Shapes.CircleShape">
             <summary>
             A circle shape.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.CircleShape._position">
+        <member name="F:Alis.Core.Physic.Collision.Shapes.CircleShape.Position">
             <summary>
             The position
             </summary>
@@ -1455,7 +1399,7 @@
             <param name="maxLambda">The max lambda</param>
             <returns>The segment collide</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.ComputeAABB(Alis.Core.Physic.Collision.AABB@,Alis.Core.Physic.Common.XForm)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.ComputeAabb(Alis.Core.Physic.Collision.AABB@,Alis.Core.Physic.Common.XForm)">
             <summary>
             Computes the aabb using the specified aabb
             </summary>
@@ -1512,12 +1456,12 @@
             </summary>
             <seealso cref="T:Alis.Core.Physic.Collision.Shapes.Shape"/>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._nextEdge">
+        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape.NextEdge">
             <summary>
             The next edge
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._prevEdge">
+        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape.PrevEdge">
             <summary>
             The prev edge
             </summary>
@@ -1558,7 +1502,7 @@
             <param name="maxLambda">The max lambda</param>
             <returns>The segment collide</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.ComputeAABB(Alis.Core.Physic.Collision.AABB@,Alis.Core.Physic.Common.XForm)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.ComputeAabb(Alis.Core.Physic.Collision.AABB@,Alis.Core.Physic.Common.XForm)">
             <summary>
             Computes the aabb using the specified aabb
             </summary>
@@ -1671,29 +1615,39 @@
             <param name="pivot">The pivot</param>
             <returns>The float</returns>
         </member>
+        <member name="T:Alis.Core.Physic.Collision.Shapes.MassData">
+            <summary>
+            This holds the mass data computed for a shape.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Shapes.MassData.Mass">
+            <summary>
+            The mass of the shape, usually in kilograms.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Shapes.MassData.Center">
+            <summary>
+            The position of the shape's centroid relative to the shape's origin.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Shapes.MassData.I">
+            <summary>
+            The rotational inertia of the shape.
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Collision.Shapes.PolygonShape">
             <summary>
             A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.PolygonShape._centroid">
+        <member name="P:Alis.Core.Physic.Collision.Shapes.PolygonShape.Centroid">
             <summary>
             The centroid
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.PolygonShape._vertices">
+        <member name="P:Alis.Core.Physic.Collision.Shapes.PolygonShape.Normals">
             <summary>
             The max polygon vertices
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.PolygonShape._normals">
-            <summary>
-            The max polygon vertices
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.PolygonShape._vertexCount">
-            <summary>
-            The vertex count
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Collision.Shapes.PolygonShape.VertexCount">
@@ -1754,7 +1708,7 @@
             <param name="maxLambda">The max lambda</param>
             <returns>The segment collide</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.ComputeAABB(Alis.Core.Physic.Collision.AABB@,Alis.Core.Physic.Common.XForm)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.ComputeAabb(Alis.Core.Physic.Collision.AABB@,Alis.Core.Physic.Common.XForm)">
             <summary>
             Computes the aabb using the specified aabb
             </summary>
@@ -1817,56 +1771,6 @@
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collision.Shapes.PolygonShape"/> class
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.Shapes.MassData">
-            <summary>
-            This holds the mass data computed for a shape.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.MassData.Mass">
-            <summary>
-            The mass of the shape, usually in kilograms.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.MassData.Center">
-            <summary>
-            The position of the shape's centroid relative to the shape's origin.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.MassData.I">
-            <summary>
-            The rotational inertia of the shape.
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Collision.Shapes.ShapeType">
-            <summary>
-            The various collision shape types supported by Box2D.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.UnknownShape">
-            <summary>
-            The unknown shape shape type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.CircleShape">
-            <summary>
-            The circle shape shape type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.PolygonShape">
-            <summary>
-            The polygon shape shape type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.EdgeShape">
-            <summary>
-            The edge shape shape type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.ShapeTypeCount">
-            <summary>
-            The shape type count shape type
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Collision.Shapes.SegmentCollide">
             <summary>
             Returns code from TestSegment
@@ -1893,12 +1797,12 @@
             Shapes used for simulation in World are created automatically when a Fixture is created.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.Shape._type">
+        <member name="F:Alis.Core.Physic.Collision.Shapes.Shape.Type">
             <summary>
             The unknown shape
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.Shape._radius">
+        <member name="F:Alis.Core.Physic.Collision.Shapes.Shape.Radius">
             <summary>
             The radius
             </summary>
@@ -1928,7 +1832,7 @@
             <param name="segment">Defines the begin and end point of the ray cast.</param>
             <param name="maxLambda">A number typically in the range [0,1].</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.ComputeAABB(Alis.Core.Physic.Collision.AABB@,Alis.Core.Physic.Common.XForm)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.ComputeAabb(Alis.Core.Physic.Collision.AABB@,Alis.Core.Physic.Common.XForm)">
             <summary>
             Given a transform, compute the associated axis aligned bounding box for this shape.
             </summary>
@@ -1984,6 +1888,92 @@
         <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.Dispose">
             <summary>
             Disposes this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Collision.Shapes.ShapeType">
+            <summary>
+            The various collision shape types supported by Box2D.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.UnknownShape">
+            <summary>
+            The unknown shape shape type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.CircleShape">
+            <summary>
+            The circle shape shape type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.PolygonShape">
+            <summary>
+            The polygon shape shape type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.EdgeShape">
+            <summary>
+            The edge shape shape type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.Shapes.ShapeType.ShapeTypeCount">
+            <summary>
+            The shape type count shape type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Collision.SimplexCache">
+            <summary>
+            Used to warm start Distance.
+            Set count to zero on first call.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.SimplexCache.Metric">
+            <summary>
+            Length or area.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.SimplexCache.Count">
+            <summary>
+            The count
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.SimplexCache.IndexA">
+            <summary>
+            Vertices on shape A.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.SimplexCache.IndexB">
+            <summary>
+            Vertices on shape B.
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Collision.TOIInput">
+            <summary>
+            Inpute parameters for TimeOfImpact
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepA">
+            <summary>
+            The sweep
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepB">
+            <summary>
+            The sweep
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepRadiusA">
+            <summary>
+            The sweep radius
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepRadiusB">
+            <summary>
+            The sweep radius
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.TOIInput.Tolerance">
+            <summary>
+            The tolerance
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Common.Mat22">

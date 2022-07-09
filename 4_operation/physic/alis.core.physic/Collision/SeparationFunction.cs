@@ -1,0 +1,179 @@
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Common;
+
+namespace Alis.Core.Physic.Collision
+{
+    /// <summary>
+    /// The separation function
+    /// </summary>
+    internal struct SeparationFunction
+    {
+        /// <summary>
+        /// The type enum
+        /// </summary>
+        internal enum Type
+        {
+            /// <summary>
+            /// The points type
+            /// </summary>
+            Points,
+            /// <summary>
+            /// The face type
+            /// </summary>
+            FaceA,
+            /// <summary>
+            /// The face type
+            /// </summary>
+            FaceB
+        };
+
+        /// <summary>
+        /// Initializes the cache
+        /// </summary>
+        /// <param name="cache">The cache</param>
+        /// <param name="shapeA">The shape</param>
+        /// <param name="transformA">The transform</param>
+        /// <param name="shapeB">The shape</param>
+        /// <param name="transformB">The transform</param>
+        internal unsafe void Initialize(SimplexCache* cache,
+            Shape shapeA, XForm transformA,
+            Shape shapeB, XForm transformB)
+        {
+            ShapeA = shapeA;
+            ShapeB = shapeB;
+            int count = cache->Count;
+            Box2DXDebug.Assert(0 < count && count < 3);
+
+            if (count == 1)
+            {
+                FaceType = Type.Points;
+                Vec2 localPointA = ShapeA.GetVertex(cache->IndexA[0]);
+                Vec2 localPointB = ShapeB.GetVertex(cache->IndexB[0]);
+                Vec2 pointA = Math.Mul(transformA, localPointA);
+                Vec2 pointB = Math.Mul(transformB, localPointB);
+                Axis = pointB - pointA;
+                Axis.Normalize();
+            }
+            else if (cache->IndexB[0] == cache->IndexB[1])
+            {
+                // Two points on A and one on B
+                FaceType = Type.FaceA;
+                Vec2 localPointA1 = ShapeA.GetVertex(cache->IndexA[0]);
+                Vec2 localPointA2 = ShapeA.GetVertex(cache->IndexA[1]);
+                Vec2 localPointB = ShapeB.GetVertex(cache->IndexB[0]);
+                LocalPoint = 0.5f * (localPointA1 + localPointA2);
+                Axis = Vec2.Cross(localPointA2 - localPointA1, 1.0f);
+                Axis.Normalize();
+
+                Vec2 normal = Math.Mul(transformA.R, Axis);
+                Vec2 pointA = Math.Mul(transformA, LocalPoint);
+                Vec2 pointB = Math.Mul(transformB, localPointB);
+
+                float s = Vec2.Dot(pointB - pointA, normal);
+                if (s < 0.0f)
+                {
+                    Axis = -Axis;
+                }
+            }
+            else
+            {
+                // Two points on B and one or two points on A.
+                // We ignore the second point on A.
+                FaceType = Type.FaceB;
+                Vec2 localPointA = shapeA.GetVertex(cache->IndexA[0]);
+                Vec2 localPointB1 = shapeB.GetVertex(cache->IndexB[0]);
+                Vec2 localPointB2 = shapeB.GetVertex(cache->IndexB[1]);
+                LocalPoint = 0.5f * (localPointB1 + localPointB2);
+                Axis = Vec2.Cross(localPointB2 - localPointB1, 1.0f);
+                Axis.Normalize();
+
+                Vec2 normal = Math.Mul(transformB.R, Axis);
+                Vec2 pointB = Math.Mul(transformB, LocalPoint);
+                Vec2 pointA = Math.Mul(transformA, localPointA);
+
+                float s = Vec2.Dot(pointA - pointB, normal);
+                if (s < 0.0f)
+                {
+                    Axis = -Axis;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Evaluates the transform a
+        /// </summary>
+        /// <param name="transformA">The transform</param>
+        /// <param name="transformB">The transform</param>
+        /// <returns>The float</returns>
+        internal float Evaluate(XForm transformA, XForm transformB)
+        {
+            switch (FaceType)
+            {
+                case Type.Points:
+                {
+                    Vec2 axisA = Math.MulT(transformA.R, Axis);
+                    Vec2 axisB = Math.MulT(transformB.R, -Axis);
+                    Vec2 localPointA = ShapeA.GetSupportVertex(axisA);
+                    Vec2 localPointB = ShapeB.GetSupportVertex(axisB);
+                    Vec2 pointA = Math.Mul(transformA, localPointA);
+                    Vec2 pointB = Math.Mul(transformB, localPointB);
+                    float separation = Vec2.Dot(pointB - pointA, Axis);
+                    return separation;
+                }
+
+                case Type.FaceA:
+                {
+                    Vec2 normal = Math.Mul(transformA.R, Axis);
+                    Vec2 pointA = Math.Mul(transformA, LocalPoint);
+
+                    Vec2 axisB = Math.MulT(transformB.R, -normal);
+
+                    Vec2 localPointB = ShapeB.GetSupportVertex(axisB);
+                    Vec2 pointB = Math.Mul(transformB, localPointB);
+
+                    float separation = Vec2.Dot(pointB - pointA, normal);
+                    return separation;
+                }
+
+                case Type.FaceB:
+                {
+                    Vec2 normal = Math.Mul(transformB.R, Axis);
+                    Vec2 pointB = Math.Mul(transformB, LocalPoint);
+
+                    Vec2 axisA = Math.MulT(transformA.R, -normal);
+
+                    Vec2 localPointA = ShapeA.GetSupportVertex(axisA);
+                    Vec2 pointA = Math.Mul(transformA, localPointA);
+
+                    float separation = Vec2.Dot(pointA - pointB, normal);
+                    return separation;
+                }
+
+                default:
+                    Box2DXDebug.Assert(false);
+                    return 0.0f;
+            }
+        }
+
+        /// <summary>
+        /// The shape
+        /// </summary>
+        internal Shape ShapeA;
+        /// <summary>
+        /// The shape
+        /// </summary>
+        internal Shape ShapeB;
+        /// <summary>
+        /// The face type
+        /// </summary>
+        internal Type FaceType;
+        /// <summary>
+        /// The local point
+        /// </summary>
+        internal Vec2 LocalPoint;
+        /// <summary>
+        /// The axis
+        /// </summary>
+        internal Vec2 Axis;
+    }
+}

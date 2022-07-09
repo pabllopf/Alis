@@ -26,62 +26,7 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
-	/// <summary>
-	/// The contact create fcn
-	/// </summary>
-	public delegate Contact ContactCreateFcn(Fixture fixtureA, Fixture fixtureB);
-	/// <summary>
-	/// The contact destroy fcn
-	/// </summary>
-	public delegate void ContactDestroyFcn(ref Contact contact);
-
-	/// <summary>
-	/// The contact register
-	/// </summary>
-	public struct ContactRegister
-	{
-		/// <summary>
-		/// The create fcn
-		/// </summary>
-		public ContactCreateFcn CreateFcn;
-		/// <summary>
-		/// The destroy fcn
-		/// </summary>
-		public ContactDestroyFcn DestroyFcn;
-		/// <summary>
-		/// The primary
-		/// </summary>
-		public bool Primary;
-	}
-
-	/// <summary>
-	/// A contact edge is used to connect bodies and contacts together
-	/// in a contact graph where each body is a node and each contact
-	/// is an edge. A contact edge belongs to a doubly linked list
-	/// maintained in each attached body. Each contact has two contact
-	/// nodes, one for each attached body.
-	/// </summary>
-	public class ContactEdge
-	{
-		/// <summary>
-		/// Provides quick access to the other body attached.
-		/// </summary>
-		public Body Other;
-		/// <summary>
-		/// The contact.
-		/// </summary>
-		public Contact Contact;
-		/// <summary>
-		/// The previous contact edge in the body's contact list.
-		/// </summary>
-		public ContactEdge Prev;
-		/// <summary>
-		/// The next contact edge in the body's contact list.
-		/// </summary>
-		public ContactEdge Next;
-	}
-
-	/// <summary>
+    /// <summary>
 	/// The class manages contact between two shapes. A contact exists for each overlapping
 	/// AABB in the broad-phase (except if filtered). Therefore a contact object may exist
 	/// that has no contact points.

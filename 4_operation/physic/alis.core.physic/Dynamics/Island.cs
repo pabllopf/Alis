@@ -144,37 +144,7 @@ using Alis.Core.Physic.Dynamics.Joints;
 
 namespace Alis.Core.Physic.Dynamics
 {
-	/// <summary>
-	/// The position
-	/// </summary>
-	public struct Position
-	{
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Vec2 x;
-		/// <summary>
-		/// The 
-		/// </summary>
-		public float a;
-	}
-
-	/// <summary>
-	/// The velocity
-	/// </summary>
-	public struct Velocity
-	{
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Vec2 v;
-		/// <summary>
-		/// The 
-		/// </summary>
-		public float w;
-	}
-
-	/// <summary>
+    /// <summary>
 	/// The island class
 	/// </summary>
 	/// <seealso cref="IDisposable"/>

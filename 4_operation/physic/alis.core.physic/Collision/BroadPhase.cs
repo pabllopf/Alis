@@ -45,27 +45,6 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
-	/// <summary>
-	/// The sort key func
-	/// </summary>
-	public delegate float SortKeyFunc(object shape);
-
-
-	/// <summary>
-	/// The bound values class
-	/// </summary>
-	public class BoundValues
-	{
-		/// <summary>
-		/// The lower values
-		/// </summary>
-		public ushort[/*2*/] LowerValues = new ushort[2];
-		/// <summary>
-		/// The upper values
-		/// </summary>
-		public ushort[/*2*/] UpperValues = new ushort[2];
-	}
-
     /// <summary>
 	/// The broad phase class
 	/// </summary>
