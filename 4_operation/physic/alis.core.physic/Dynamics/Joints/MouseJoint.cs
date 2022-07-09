@@ -39,80 +39,81 @@ namespace Alis.Core.Physic.Dynamics.Joints
 	/// </summary>
 	public class MouseJoint : Joint
 	{
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 _localAnchor;
-		/// <summary>
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor { get; }
+
+        /// <summary>
 		/// The target
 		/// </summary>
 		public Vec2 _target;
-		/// <summary>
-		/// The impulse
-		/// </summary>
-		public Vec2 _impulse;
 
-		/// <summary>
-		/// The mass
-		/// </summary>
-		public Mat22 _mass;		// effective mass for point-to-point constraint.
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Vec2 _C;				// position error
-		/// <summary>
-		/// The max force
-		/// </summary>
-		public float _maxForce;
-		/// <summary>
-		/// The frequency hz
-		/// </summary>
-		public float _frequencyHz;
-		/// <summary>
-		/// The damping ratio
-		/// </summary>
-		public float _dampingRatio;
-		/// <summary>
-		/// The beta
-		/// </summary>
-		public float _beta;
-		/// <summary>
-		/// The gamma
-		/// </summary>
-		public float _gamma;
+        /// <summary>
+        /// The impulse
+        /// </summary>
+        public Vec2 Impulse { get; set; }
 
-		/// <summary>
+        /// <summary>
+        /// The mass
+        /// </summary>
+        public Mat22 Mass { get; set; }
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        public Vec2 C { get; set; }
+
+        /// <summary>
+        /// The max force
+        /// </summary>
+        public float MaxForce { get; }
+
+        /// <summary>
+        /// The frequency hz
+        /// </summary>
+        public float FrequencyHz { get; }
+
+        /// <summary>
+        /// The damping ratio
+        /// </summary>
+        public float DampingRatio { get; }
+
+        /// <summary>
+        /// The beta
+        /// </summary>
+        public float Beta { get; set; }
+
+        /// <summary>
+        /// The gamma
+        /// </summary>
+        public float Gamma { get; set; }
+
+        /// <summary>
 		/// Gets the value of the anchor 1
 		/// </summary>
-		public override Vec2 Anchor1
-		{
-			get { return _target; }
-		}
+		public override Vec2 Anchor1 => _target;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the anchor 2
 		/// </summary>
-		public override Vec2 Anchor2
-		{
-			get { return Body2.GetWorldPoint(_localAnchor); }
-		}
+		public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor);
 
-		/// <summary>
-		/// Gets the reaction force using the specified inv dt
-		/// </summary>
-		/// <param name="inv_dt">The inv dt</param>
-		/// <returns>The vec</returns>
-		public override Vec2 GetReactionForce(float inv_dt)
-		{
-			return inv_dt * _impulse;
-		}
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param>The inv dt</param>
+        /// <param name="inv_dt"></param>
+        /// <returns>The vec</returns>
+        public override Vec2 GetReactionForce(float inv_dt) => inv_dt * Impulse;
 
-		/// <summary>
-		/// Gets the reaction torque using the specified inv dt
-		/// </summary>
-		/// <param name="inv_dt">The inv dt</param>
-		/// <returns>The float</returns>
-		public override float GetReactionTorque(float inv_dt)
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param>The inv dt</param>
+        /// <param name="inv_dt"></param>
+        /// <returns>The float</returns>
+        public override float GetReactionTorque(float inv_dt)
 		{
 			return inv_dt * 0.0f;
 		}
@@ -137,16 +138,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			: base(def)
 		{
 			_target = def.Target;
-			_localAnchor = Math.MulT(Body2.GetXForm(), _target);
+			LocalAnchor = Math.MulT(Body2.GetXForm(), _target);
 
-			_maxForce = def.MaxForce;
-			_impulse.SetZero();
+			MaxForce = def.MaxForce;
+			Impulse.SetZero();
 
-			_frequencyHz = def.FrequencyHz;
-			_dampingRatio = def.DampingRatio;
+			FrequencyHz = def.FrequencyHz;
+			DampingRatio = def.DampingRatio;
 
-			_beta = 0.0f;
-			_gamma = 0.0f;
+			Beta = 0.0f;
+			Gamma = 0.0f;
 		}
 
 		/// <summary>
@@ -160,10 +161,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			float mass = b.GetMass();
 
 			// Frequency
-			float omega = 2.0f * Settings.Pi * _frequencyHz;
+			float omega = 2.0f * Settings.Pi * FrequencyHz;
 
 			// Damping coefficient
-			float d = 2.0f * mass * _dampingRatio * omega;
+			float d = 2.0f * mass * DampingRatio * omega;
 
 			// Spring stiffness
 			float k = mass * (omega * omega);
@@ -172,11 +173,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			// gamma has units of inverse mass.
 			// beta has units of inverse time.
 			Box2DXDebug.Assert(d + step.Dt * k > Settings.FltEpsilon);
-			_gamma = 1.0f / (step.Dt * (d + step.Dt * k));
-			_beta = step.Dt * k * _gamma;
+			Gamma = 1.0f / (step.Dt * (d + step.Dt * k));
+			Beta = step.Dt * k * Gamma;
 
 			// Compute the effective mass matrix.
-			Vec2 r = Math.Mul(b.GetXForm().R, _localAnchor - b.GetLocalCenter());
+			Vec2 r = Math.Mul(b.GetXForm().R, LocalAnchor - b.GetLocalCenter());
 
 			// K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
 			//      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
@@ -193,20 +194,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			K2.col1.Y = -invI * r.X * r.Y; K2.col2.Y = invI * r.X * r.X;
 
 			Mat22 K = K1 + K2;
-			K.col1.X += _gamma;
-			K.col2.Y += _gamma;
+			K.col1.X += Gamma;
+			K.col2.Y += Gamma;
 
-			_mass = K.GetInverse();
+			Mass = K.GetInverse();
 
-			_C = b._sweep.C + r - _target;
+			C = b._sweep.C + r - _target;
 
 			// Cheat with some damping
 			b._angularVelocity *= 0.98f;
 
 			// Warm starting.
-			_impulse *= step.DtRatio;
-			b._linearVelocity += invMass * _impulse;
-			b._angularVelocity += invI * Vec2.Cross(r, _impulse);
+			Impulse *= step.DtRatio;
+			b._linearVelocity += invMass * Impulse;
+			b._angularVelocity += invI * Vec2.Cross(r, Impulse);
 		}
 
 		/// <summary>
@@ -217,20 +218,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			Body b = Body2;
 
-			Vec2 r = Math.Mul(b.GetXForm().R, _localAnchor - b.GetLocalCenter());
+			Vec2 r = Math.Mul(b.GetXForm().R, LocalAnchor - b.GetLocalCenter());
 
 			// Cdot = v + cross(w, r)
 			Vec2 Cdot = b._linearVelocity + Vec2.Cross(b._angularVelocity, r);
-			Vec2 impulse = Math.Mul(_mass, -(Cdot + _beta * _C + _gamma * _impulse));
+			Vec2 impulse = Math.Mul(Mass, -(Cdot + Beta * C + Gamma * Impulse));
 
-			Vec2 oldImpulse = _impulse;
-			_impulse += impulse;
-			float maxImpulse = step.Dt * _maxForce;
-			if (_impulse.LengthSquared() > maxImpulse * maxImpulse)
+			Vec2 oldImpulse = Impulse;
+			Impulse += impulse;
+			float maxImpulse = step.Dt * MaxForce;
+			if (Impulse.LengthSquared() > maxImpulse * maxImpulse)
 			{
-				_impulse *= maxImpulse / _impulse.Length();
+				Impulse *= maxImpulse / Impulse.Length();
 			}
-			impulse = _impulse - oldImpulse;
+			impulse = Impulse - oldImpulse;
 
 			b._linearVelocity += b._invMass * impulse;
 			b._angularVelocity += b._invI * Vec2.Cross(r, impulse);

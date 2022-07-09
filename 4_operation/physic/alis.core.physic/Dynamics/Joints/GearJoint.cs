@@ -202,8 +202,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			if (type1 == JointType.RevoluteJoint)
 			{
 				Revolute1 = (RevoluteJoint)def.Joint1;
-				GroundAnchor1 = Revolute1._localAnchor1;
-				LocalAnchor1 = Revolute1._localAnchor2;
+				GroundAnchor1 = Revolute1.LocalAnchor1;
+				LocalAnchor1 = Revolute1.LocalAnchor2;
 				coordinate1 = Revolute1.JointAngle;
 			}
 			else
@@ -219,8 +219,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			if (type2 == JointType.RevoluteJoint)
 			{
 				Revolute2 = (RevoluteJoint)def.Joint2;
-				GroundAnchor2 = Revolute2._localAnchor1;
-				LocalAnchor2 = Revolute2._localAnchor2;
+				GroundAnchor2 = Revolute2.LocalAnchor1;
+				LocalAnchor2 = Revolute2.LocalAnchor2;
 				coordinate2 = Revolute2.JointAngle;
 			}
 			else

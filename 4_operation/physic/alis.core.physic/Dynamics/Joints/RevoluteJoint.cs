@@ -48,98 +48,80 @@ namespace Alis.Core.Physic.Dynamics.Joints
 	/// </summary>
 	public class RevoluteJoint : Joint
 	{
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 _localAnchor1;	// relative
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 _localAnchor2;
-		/// <summary>
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor1 { get; }
+
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor2 { get; }
+
+        /// <summary>
 		/// The impulse
 		/// </summary>
 		public Vec3 _impulse;
-		/// <summary>
-		/// The motor impulse
-		/// </summary>
-		public float _motorImpulse;
-		/// <summary>
+
+        /// <summary>
 		/// The mass
 		/// </summary>
 		public Mat33 _mass; //effective mass for p2p constraint.
-		/// <summary>
-		/// The motor mass
-		/// </summary>
-		public float _motorMass;	// effective mass for motor/limit angular constraint.
 
-		/// <summary>
-		/// The enable motor
-		/// </summary>
-		public bool _enableMotor;
-		/// <summary>
-		/// The max motor torque
-		/// </summary>
-		public float _maxMotorTorque;
-		/// <summary>
+        /// <summary>
+        /// The motor mass
+        /// </summary>
+        public float MotorMass { get; set; }
+
+        /// <summary>
+        /// The max motor torque
+        /// </summary>
+        public float MaxMotorTorque { get; set; }
+
+        /// <summary>
 		/// The motor speed
 		/// </summary>
-		public float _motorSpeed;
+        private float _motorSpeed;
 
-		/// <summary>
-		/// The enable limit
-		/// </summary>
-		public bool _enableLimit;
-		/// <summary>
-		/// The reference angle
-		/// </summary>
-		public float _referenceAngle;
-		/// <summary>
-		/// The lower angle
-		/// </summary>
-		public float _lowerAngle;
-		/// <summary>
-		/// The upper angle
-		/// </summary>
-		public float _upperAngle;
-		/// <summary>
-		/// The limit state
-		/// </summary>
-		public LimitState _limitState;
+        /// <summary>
+        /// The reference angle
+        /// </summary>
+        public float ReferenceAngle { get; }
 
-		/// <summary>
+        /// <summary>
+        /// The limit state
+        /// </summary>
+        public LimitState State { get; set; }
+
+        /// <summary>
 		/// Gets the value of the anchor 1
 		/// </summary>
-		public override Vec2 Anchor1
-		{
-			get { return Body1.GetWorldPoint(_localAnchor1); }
-		}
+		public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the anchor 2
 		/// </summary>
-		public override Vec2 Anchor2
-		{
-			get { return Body2.GetWorldPoint(_localAnchor2); }
-		}
+		public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
-		/// <summary>
-		/// Gets the reaction force using the specified inv dt
-		/// </summary>
-		/// <param name="inv_dt">The inv dt</param>
-		/// <returns>The vec</returns>
-		public override Vec2 GetReactionForce(float inv_dt)
+        /// <summary>
+        /// Gets the reaction force using the specified inv dt
+        /// </summary>
+        /// <param>The inv dt</param>
+        /// <param name="inv_dt"></param>
+        /// <returns>The vec</returns>
+        public override Vec2 GetReactionForce(float inv_dt)
 		{
 			Vec2 P = new Vec2(_impulse.X, _impulse.Y);
 			return inv_dt * P;
 		}
 
-		/// <summary>
-		/// Gets the reaction torque using the specified inv dt
-		/// </summary>
-		/// <param name="inv_dt">The inv dt</param>
-		/// <returns>The float</returns>
-		public override float GetReactionTorque(float inv_dt)
+        /// <summary>
+        /// Gets the reaction torque using the specified inv dt
+        /// </summary>
+        /// <param>The inv dt</param>
+        /// <param name="inv_dt"></param>
+        /// <returns>The float</returns>
+        public override float GetReactionTorque(float inv_dt)
 		{
 			return inv_dt * _impulse.Z;
 		}
@@ -153,7 +135,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			{
 				Body b1 = Body1;
 				Body b2 = Body2;
-				return b2._sweep.A - b1._sweep.A - _referenceAngle;
+				return b2._sweep.A - b1._sweep.A - ReferenceAngle;
 			}
 		}
 
@@ -174,38 +156,29 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <summary>
 		/// Is the joint limit enabled?
 		/// </summary>
-		public bool IsLimitEnabled
-		{
-			get { return _enableLimit; }
-		}
+		public bool IsLimitEnabled { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Enable/disable the joint limit.
 		/// </summary>
 		public void EnableLimit(bool flag)
 		{
 			Body1.WakeUp();
 			Body2.WakeUp();
-			_enableLimit = flag;
+			IsLimitEnabled = flag;
 		}
 
 		/// <summary>
 		/// Get the lower joint limit in radians.
 		/// </summary>
-		public float LowerLimit
-		{
-			get { return _lowerAngle; }
-		}
+		public float LowerLimit { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Get the upper joint limit in radians.
 		/// </summary>
-		public float UpperLimit
-		{
-			get { return _upperAngle; }
-		}
+		public float UpperLimit { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Set the joint limits in radians.
 		/// </summary>
 		public void SetLimits(float lower, float upper)
@@ -213,26 +186,23 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Box2DXDebug.Assert(lower <= upper);
 			Body1.WakeUp();
 			Body2.WakeUp();
-			_lowerAngle = lower;
-			_upperAngle = upper;
+			LowerLimit = lower;
+			UpperLimit = upper;
 		}
 
 		/// <summary>
 		/// Is the joint motor enabled?
 		/// </summary>
-		public bool IsMotorEnabled
-		{
-			get { return _enableMotor; }
-		}
+		public bool IsMotorEnabled { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Enable/disable the joint motor.
 		/// </summary>
 		public void EnableMotor(bool flag)
 		{
 			Body1.WakeUp();
 			Body2.WakeUp();
-			_enableMotor = flag;
+			IsMotorEnabled = flag;
 		}
 
 		/// <summary>
@@ -256,38 +226,35 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			Body1.WakeUp();
 			Body2.WakeUp();
-			_maxMotorTorque = torque;
+			MaxMotorTorque = torque;
 		}
 
 		/// <summary>
 		/// Get the current motor torque, usually in N-m.
 		/// </summary>
-		public float MotorTorque
-		{
-			get { return _motorImpulse; }
-		}
+		public float MotorTorque { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Initializes a new instance of the <see cref="RevoluteJoint"/> class
 		/// </summary>
 		/// <param name="def">The def</param>
 		public RevoluteJoint(RevoluteJointDef def)
 			: base(def)
 		{
-			_localAnchor1 = def.LocalAnchor1;
-			_localAnchor2 = def.LocalAnchor2;
-			_referenceAngle = def.ReferenceAngle;
+			LocalAnchor1 = def.LocalAnchor1;
+			LocalAnchor2 = def.LocalAnchor2;
+			ReferenceAngle = def.ReferenceAngle;
 
 			_impulse = new Vec3();
-			_motorImpulse = 0.0f;
+			MotorTorque = 0.0f;
 
-			_lowerAngle = def.LowerAngle;
-			_upperAngle = def.UpperAngle;
-			_maxMotorTorque = def.MaxMotorTorque;
-			_motorSpeed = def.MotorSpeed;
-			_enableLimit = def.EnableLimit;
-			_enableMotor = def.EnableMotor;
-			_limitState = LimitState.InactiveLimit;
+			LowerLimit = def.LowerAngle;
+			UpperLimit = def.UpperAngle;
+			MaxMotorTorque = def.MaxMotorTorque;
+			MotorSpeed = def.MotorSpeed;
+			IsLimitEnabled = def.EnableLimit;
+			IsMotorEnabled = def.EnableMotor;
+			State = LimitState.InactiveLimit;
 		}
 
 		/// <summary>
@@ -299,7 +266,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Body b1 = Body1;
 			Body b2 = Body2;
 
-			if (_enableMotor || _enableLimit)
+			if (IsMotorEnabled || IsLimitEnabled)
 			{
 				// You cannot create a rotation limit between bodies that
 				// both have fixed rotation.
@@ -307,8 +274,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			}
 
 			// Compute the effective mass matrix.
-			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
 			// J = [-I -r1_skew I r2_skew]
 			//     [ 0       -1 0       1]
@@ -350,65 +317,65 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			_mass.Col2.Z = _mass.Col3.Y;
 			_mass.Col3.Z = i1 + i2;
 */
-			_motorMass = 1.0f / (i1 + i2);
+			MotorMass = 1.0f / (i1 + i2);
 
-			if (_enableMotor == false)
+			if (IsMotorEnabled == false)
 			{
-				_motorImpulse = 0.0f;
+				MotorTorque = 0.0f;
 			}
 
-			if (_enableLimit)
+			if (IsLimitEnabled)
 			{
-				float jointAngle = b2._sweep.A - b1._sweep.A - _referenceAngle;
-				if (Box2DXMath.Abs(_upperAngle - _lowerAngle) < 2.0f * Settings.AngularSlop)
+				float jointAngle = b2._sweep.A - b1._sweep.A - ReferenceAngle;
+				if (Box2DXMath.Abs(UpperLimit - LowerLimit) < 2.0f * Settings.AngularSlop)
 				{
-					_limitState = LimitState.EqualLimits;
+					State = LimitState.EqualLimits;
 				}
-				else if (jointAngle <= _lowerAngle)
+				else if (jointAngle <= LowerLimit)
 				{
-					if (_limitState != LimitState.AtLowerLimit)
+					if (State != LimitState.AtLowerLimit)
 					{
 						_impulse.Z = 0.0f;
 					}
-					_limitState = LimitState.AtLowerLimit;
+					State = LimitState.AtLowerLimit;
 				}
-				else if (jointAngle >= _upperAngle)
+				else if (jointAngle >= UpperLimit)
 				{
-					if (_limitState != LimitState.AtUpperLimit)
+					if (State != LimitState.AtUpperLimit)
 					{
 						_impulse.Z = 0.0f;
 					}
-					_limitState = LimitState.AtUpperLimit;
+					State = LimitState.AtUpperLimit;
 				}
 				else
 				{
-					_limitState = LimitState.InactiveLimit;
+					State = LimitState.InactiveLimit;
 					_impulse.Z = 0.0f;
 				}
 			}
 			else
 			{
-				_limitState = LimitState.InactiveLimit;
+				State = LimitState.InactiveLimit;
 			}
 
 			if (step.WarmStarting)
 			{
 				// Scale impulses to support a variable time step.
 				_impulse *= step.DtRatio;
-				_motorImpulse *= step.DtRatio;
+				MotorTorque *= step.DtRatio;
 
 				Vec2 P = new Vec2(_impulse.X, _impulse.Y);
 
 				b1._linearVelocity -= m1 * P;
-				b1._angularVelocity -= i1 * (Vec2.Cross(r1, P) + _motorImpulse + _impulse.Z);
+				b1._angularVelocity -= i1 * (Vec2.Cross(r1, P) + MotorTorque + _impulse.Z);
 
 				b2._linearVelocity += m2 * P;
-				b2._angularVelocity += i2 * (Vec2.Cross(r2, P) + _motorImpulse + _impulse.Z);
+				b2._angularVelocity += i2 * (Vec2.Cross(r2, P) + MotorTorque + _impulse.Z);
 			}
 			else
 			{
 				_impulse.SetZero();
-				_motorImpulse = 0.0f;
+				MotorTorque = 0.0f;
 			}
 		}
 
@@ -430,24 +397,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			float i1 = b1._invI, i2 = b2._invI;
 
 			//Solve motor constraint.
-			if (_enableMotor && _limitState != LimitState.EqualLimits)
+			if (IsMotorEnabled && State != LimitState.EqualLimits)
 			{
-				float Cdot = w2 - w1 - _motorSpeed;
-				float impulse = _motorMass * -Cdot;
-				float oldImpulse = _motorImpulse;
-				float maxImpulse = step.Dt * _maxMotorTorque;
-				_motorImpulse = Box2DXMath.Clamp(_motorImpulse + impulse, -maxImpulse, maxImpulse);
-				impulse = _motorImpulse - oldImpulse;
+				float Cdot = w2 - w1 - MotorSpeed;
+				float impulse = MotorMass * -Cdot;
+				float oldImpulse = MotorTorque;
+				float maxImpulse = step.Dt * MaxMotorTorque;
+				MotorTorque = Box2DXMath.Clamp(MotorTorque + impulse, -maxImpulse, maxImpulse);
+				impulse = MotorTorque - oldImpulse;
 
 				w1 -= i1 * impulse;
 				w2 += i2 * impulse;
 			}
 
 			//Solve limit constraint.
-			if (_enableLimit && _limitState != LimitState.InactiveLimit)
+			if (IsLimitEnabled && State != LimitState.InactiveLimit)
 			{
-				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
 				// Solve point-to-point constraint
 				Vec2 Cdot1 = v2 + Vec2.Cross(w2, r2) - v1 - Vec2.Cross(w1, r1);
@@ -456,11 +423,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 				Vec3 impulse = _mass.Solve33(-Cdot);
 
-				if (_limitState == LimitState.EqualLimits)
+				if (State == LimitState.EqualLimits)
 				{
 					_impulse += impulse;
 				}
-				else if (_limitState == LimitState.AtLowerLimit)
+				else if (State == LimitState.AtLowerLimit)
 				{
 					float newImpulse = _impulse.Z + impulse.Z;
 					if (newImpulse < 0.0f)
@@ -474,7 +441,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 						_impulse.Z = 0.0f;
 					}
 				}
-				else if (_limitState == LimitState.AtUpperLimit)
+				else if (State == LimitState.AtUpperLimit)
 				{
 					float newImpulse = _impulse.Z + impulse.Z;
 					if (newImpulse > 0.0f)
@@ -499,8 +466,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			}
 			else
 			{
-				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
 				// Solve point-to-point constraint
 				Vec2 Cdot = v2 + Vec2.Cross(w2, r2) - v1 - Vec2.Cross(w1, r1);
@@ -538,35 +505,35 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			float positionError = 0.0f;
 
 			// Solve angular limit constraint.
-			if (_enableLimit && _limitState !=  LimitState.InactiveLimit)
+			if (IsLimitEnabled && State !=  LimitState.InactiveLimit)
 			{
-				float angle = b2._sweep.A - b1._sweep.A - _referenceAngle;
+				float angle = b2._sweep.A - b1._sweep.A - ReferenceAngle;
 				float limitImpulse = 0.0f;
 
-				if (_limitState == LimitState.EqualLimits)
+				if (State == LimitState.EqualLimits)
 				{
 					// Prevent large angular corrections
 					float C = Box2DXMath.Clamp(angle, -Settings.MaxAngularCorrection, Settings.MaxAngularCorrection);
-					limitImpulse = -_motorMass * C;
+					limitImpulse = -MotorMass * C;
 					angularError = Box2DXMath.Abs(C);
 				}
-				else if (_limitState == LimitState.AtLowerLimit)
+				else if (State == LimitState.AtLowerLimit)
 				{
-					float C = angle - _lowerAngle;
+					float C = angle - LowerLimit;
 					angularError = -C;
 
 					// Prevent large angular corrections and allow some slop.
 					C = Box2DXMath.Clamp(C + Settings.AngularSlop, -Settings.MaxAngularCorrection, 0.0f);
-					limitImpulse = -_motorMass * C;
+					limitImpulse = -MotorMass * C;
 				}
-				else if (_limitState == LimitState.AtUpperLimit)
+				else if (State == LimitState.AtUpperLimit)
 				{
-					float C = angle - _upperAngle;
+					float C = angle - UpperLimit;
 					angularError = C;
 
 					// Prevent large angular corrections and allow some slop.
 					C = Box2DXMath.Clamp(C - Settings.AngularSlop, 0.0f, Settings.MaxAngularCorrection);
-					limitImpulse = -_motorMass * C;
+					limitImpulse = -MotorMass * C;
 				}
 
 				b1._sweep.A -= b1._invI * limitImpulse;
@@ -578,8 +545,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 			// Solve point-to-point constraint.
 			{
-				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
 				Vec2 C = b2._sweep.C + r2 - b1._sweep.C - r1;
 				positionError = C.Length();

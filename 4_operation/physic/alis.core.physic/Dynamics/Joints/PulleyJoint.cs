@@ -59,87 +59,96 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public static readonly float MinPulleyLength = 2.0f;
 
-		/// <summary>
-		/// The ground
-		/// </summary>
-		public Body _ground;
-		/// <summary>
-		/// The ground anchor
-		/// </summary>
-		public Vec2 _groundAnchor1;
-		/// <summary>
-		/// The ground anchor
-		/// </summary>
-		public Vec2 _groundAnchor2;
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 _localAnchor1;
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 _localAnchor2;
+        /// <summary>
+        /// The ground
+        /// </summary>
+        public Body Ground { get; }
 
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Vec2 _u1;
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Vec2 _u2;
+        /// <summary>
+        /// The ground anchor
+        /// </summary>
+        public Vec2 GroundAnchor1 { get; }
 
-		/// <summary>
-		/// The constant
-		/// </summary>
-		public float _constant;
-		/// <summary>
-		/// The ratio
-		/// </summary>
-		public float _ratio;
+        /// <summary>
+        /// The ground anchor
+        /// </summary>
+        public Vec2 GroundAnchor2 { get; }
 
-		/// <summary>
-		/// The max length
-		/// </summary>
-		public float _maxLength1;
-		/// <summary>
-		/// The max length
-		/// </summary>
-		public float _maxLength2;
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor1 { get; }
 
-		// Effective masses
-		/// <summary>
-		/// The pulley mass
-		/// </summary>
-		public float _pulleyMass;
-		/// <summary>
-		/// The limit mass
-		/// </summary>
-		public float _limitMass1;
-		/// <summary>
-		/// The limit mass
-		/// </summary>
-		public float _limitMass2;
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor2 { get; }
 
-		// Impulses for accumulation/warm starting.
-		/// <summary>
-		/// The impulse
-		/// </summary>
-		public float _impulse;
-		/// <summary>
-		/// The limit impulse
-		/// </summary>
-		public float _limitImpulse1;
-		/// <summary>
-		/// The limit impulse
-		/// </summary>
-		public float _limitImpulse2;
+        /// <summary>
+        /// The 
+        /// </summary>
+        public Vec2 U1 { get; set; }
 
-		/// <summary>
-		/// The state
-		/// </summary>
-		public LimitState _state;
-		/// <summary>
+        /// <summary>
+        /// The 
+        /// </summary>
+        public Vec2 U2 { get; set; }
+
+        /// <summary>
+        /// The constant
+        /// </summary>
+        public float Constant { get; }
+
+        /// <summary>
+        /// The max length
+        /// </summary>
+        public float MaxLength1 { get; }
+
+        /// <summary>
+        /// The max length
+        /// </summary>
+        public float MaxLength2 { get; }
+
+        // Effective masses
+
+        /// <summary>
+        /// The pulley mass
+        /// </summary>
+        public float PulleyMass { get; set; }
+
+        /// <summary>
+        /// The limit mass
+        /// </summary>
+        public float LimitMass1 { get; set; }
+
+        /// <summary>
+        /// The limit mass
+        /// </summary>
+        public float LimitMass2 { get; set; }
+
+        // Impulses for accumulation/warm starting.
+
+        /// <summary>
+        /// The impulse
+        /// </summary>
+        public float Impulse { get; set; }
+
+        /// <summary>
+        /// The limit impulse
+        /// </summary>
+        public float LimitImpulse1 { get; set; }
+
+        /// <summary>
+        /// The limit impulse
+        /// </summary>
+        public float LimitImpulse2 { get; set; }
+
+        /// <summary>
+        /// The state
+        /// </summary>
+        public LimitState State { get; set; }
+
+        /// <summary>
 		/// The limit state
 		/// </summary>
 		public LimitState _limitState1;
@@ -151,27 +160,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <summary>
 		/// Gets the value of the anchor 1
 		/// </summary>
-		public override Vec2 Anchor1
-		{
-			get { return Body1.GetWorldPoint(_localAnchor1); }
-		}
+		public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the anchor 2
 		/// </summary>
-		public override Vec2 Anchor2
-		{
-			get { return Body2.GetWorldPoint(_localAnchor2); }
-		}
+		public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
-		/// <summary>
+        /// <summary>
 		/// Gets the reaction force using the specified inv dt
 		/// </summary>
 		/// <param name="inv_dt">The inv dt</param>
 		/// <returns>The vec</returns>
 		public override Vec2 GetReactionForce(float inv_dt)
 		{
-			Vec2 P = _impulse * _u2;
+			Vec2 P = Impulse * U2;
 			return inv_dt * P;
 		}
 
@@ -180,36 +183,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		/// <param name="inv_dt">The inv dt</param>
 		/// <returns>The float</returns>
-		public override float GetReactionTorque(float inv_dt)
-		{
-			return 0.0f;
-		}
+		public override float GetReactionTorque(float inv_dt) => 0.0f;
 
-		/// <summary>
+        /// <summary>
 		/// Get the first ground anchor.
 		/// </summary>
-		public Vec2 GroundAnchor1
-		{
-			get { return _ground.GetXForm().Position + _groundAnchor1; }
-		}
+		public Vec2 GroundAnchorX1 => Ground.GetXForm().Position + GroundAnchor1;
 
-		/// <summary>
+        /// <summary>
 		/// Get the second ground anchor.
 		/// </summary>
-		public Vec2 GroundAnchor2
-		{
-			get { return _ground.GetXForm().Position + _groundAnchor2; }
-		}
+		public Vec2 GroundAnchorX2 => Ground.GetXForm().Position + GroundAnchor2;
 
-		/// <summary>
+        /// <summary>
 		/// Get the current length of the segment attached to body1.
 		/// </summary>
 		public float Length1
 		{
 			get
 			{
-				Vec2 p = Body1.GetWorldPoint(_localAnchor1);
-				Vec2 s = _ground.GetXForm().Position + _groundAnchor1;
+				Vec2 p = Body1.GetWorldPoint(LocalAnchor1);
+				Vec2 s = Ground.GetXForm().Position + GroundAnchor1;
 				Vec2 d = p - s;
 				return d.Length();
 			}
@@ -222,8 +216,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			get
 			{
-				Vec2 p = Body2.GetWorldPoint(_localAnchor2);
-				Vec2 s = _ground.GetXForm().Position + _groundAnchor2;
+				Vec2 p = Body2.GetWorldPoint(LocalAnchor2);
+				Vec2 s = Ground.GetXForm().Position + GroundAnchor2;
 				Vec2 d = p - s;
 				return d.Length();
 			}
@@ -232,35 +226,32 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <summary>
 		/// Get the pulley ratio.
 		/// </summary>
-		public float Ratio
-		{
-			get { return _ratio; }
-		}
+		public float Ratio { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Initializes a new instance of the <see cref="PulleyJoint"/> class
 		/// </summary>
 		/// <param name="def">The def</param>
 		public PulleyJoint(PulleyJointDef def)
 			: base(def)
 		{
-			_ground = Body1.GetWorld().GetGroundBody();
-			_groundAnchor1 = def.GroundAnchor1 - _ground.GetXForm().Position;
-			_groundAnchor2 = def.GroundAnchor2 - _ground.GetXForm().Position;
-			_localAnchor1 = def.LocalAnchor1;
-			_localAnchor2 = def.LocalAnchor2;
+			Ground = Body1.GetWorld().GetGroundBody();
+			GroundAnchor1 = def.GroundAnchor1 - Ground.GetXForm().Position;
+			GroundAnchor2 = def.GroundAnchor2 - Ground.GetXForm().Position;
+			LocalAnchor1 = def.LocalAnchor1;
+			LocalAnchor2 = def.LocalAnchor2;
 
 			Box2DXDebug.Assert(def.Ratio != 0.0f);
-			_ratio = def.Ratio;
+			Ratio = def.Ratio;
 
-			_constant = def.Length1 + _ratio * def.Length2;
+			Constant = def.Length1 + Ratio * def.Length2;
 
-			_maxLength1 = Math.Min(def.MaxLength1, _constant - _ratio * MinPulleyLength);
-			_maxLength2 = Math.Min(def.MaxLength2, (_constant - MinPulleyLength) / _ratio);
+			MaxLength1 = Math.Min(def.MaxLength1, Constant - Ratio * MinPulleyLength);
+			MaxLength2 = Math.Min(def.MaxLength2, (Constant - MinPulleyLength) / Ratio);
 
-			_impulse = 0.0f;
-			_limitImpulse1 = 0.0f;
-			_limitImpulse2 = 0.0f;
+			Impulse = 0.0f;
+			LimitImpulse1 = 0.0f;
+			LimitImpulse2 = 0.0f;
 		}
 
 		/// <summary>
@@ -272,65 +263,65 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Body b1 = Body1;
 			Body b2 = Body2;
 
-			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
 			Vec2 p1 = b1._sweep.C + r1;
 			Vec2 p2 = b2._sweep.C + r2;
 
-			Vec2 s1 = _ground.GetXForm().Position + _groundAnchor1;
-			Vec2 s2 = _ground.GetXForm().Position + _groundAnchor2;
+			Vec2 s1 = Ground.GetXForm().Position + GroundAnchor1;
+			Vec2 s2 = Ground.GetXForm().Position + GroundAnchor2;
 
 			// Get the pulley axes.
-			_u1 = p1 - s1;
-			_u2 = p2 - s2;
+			U1 = p1 - s1;
+			U2 = p2 - s2;
 
-			float length1 = _u1.Length();
-			float length2 = _u2.Length();
+			float length1 = U1.Length();
+			float length2 = U2.Length();
 
 			if (length1 > Settings.LinearSlop)
 			{
-				_u1 *= 1.0f / length1;
+				U1 *= 1.0f / length1;
 			}
 			else
 			{
-				_u1.SetZero();
+				U1.SetZero();
 			}
 
 			if (length2 > Settings.LinearSlop)
 			{
-				_u2 *= 1.0f / length2;
+				U2 *= 1.0f / length2;
 			}
 			else
 			{
-				_u2.SetZero();
+				U2.SetZero();
 			}
 
-			float C = _constant - length1 - _ratio * length2;
+			float C = Constant - length1 - Ratio * length2;
 			if (C > 0.0f)
 			{
-				_state = LimitState.InactiveLimit;
-				_impulse = 0.0f;
+				State = LimitState.InactiveLimit;
+				Impulse = 0.0f;
 			}
 			else
 			{
-				_state = LimitState.AtUpperLimit;
+				State = LimitState.AtUpperLimit;
 			}
 
-			if (length1 < _maxLength1)
+			if (length1 < MaxLength1)
 			{
 				_limitState1 = LimitState.InactiveLimit;
-				_limitImpulse1 = 0.0f;
+				LimitImpulse1 = 0.0f;
 			}
 			else
 			{
 				_limitState1 = LimitState.AtUpperLimit;
 			}
 
-			if (length2 < _maxLength2)
+			if (length2 < MaxLength2)
 			{
 				_limitState2 = LimitState.InactiveLimit;
-				_limitImpulse2 = 0.0f;
+				LimitImpulse2 = 0.0f;
 			}
 			else
 			{
@@ -338,29 +329,29 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			}
 
 			// Compute effective mass.
-			float cr1u1 = Vec2.Cross(r1, _u1);
-			float cr2u2 = Vec2.Cross(r2, _u2);
+			float cr1u1 = Vec2.Cross(r1, U1);
+			float cr2u2 = Vec2.Cross(r2, U2);
 
-			_limitMass1 = b1._invMass + b1._invI * cr1u1 * cr1u1;
-			_limitMass2 = b2._invMass + b2._invI * cr2u2 * cr2u2;
-			_pulleyMass = _limitMass1 + _ratio * _ratio * _limitMass2;
-			Box2DXDebug.Assert(_limitMass1 > Settings.FltEpsilon);
-			Box2DXDebug.Assert(_limitMass2 > Settings.FltEpsilon);
-			Box2DXDebug.Assert(_pulleyMass > Settings.FltEpsilon);
-			_limitMass1 = 1.0f / _limitMass1;
-			_limitMass2 = 1.0f / _limitMass2;
-			_pulleyMass = 1.0f / _pulleyMass;
+			LimitMass1 = b1._invMass + b1._invI * cr1u1 * cr1u1;
+			LimitMass2 = b2._invMass + b2._invI * cr2u2 * cr2u2;
+			PulleyMass = LimitMass1 + Ratio * Ratio * LimitMass2;
+			Box2DXDebug.Assert(LimitMass1 > Settings.FltEpsilon);
+			Box2DXDebug.Assert(LimitMass2 > Settings.FltEpsilon);
+			Box2DXDebug.Assert(PulleyMass > Settings.FltEpsilon);
+			LimitMass1 = 1.0f / LimitMass1;
+			LimitMass2 = 1.0f / LimitMass2;
+			PulleyMass = 1.0f / PulleyMass;
 
 			if (step.WarmStarting)
 			{
 				// Scale impulses to support variable time steps.
-				_impulse *= step.DtRatio;
-				_limitImpulse1 *= step.DtRatio;
-				_limitImpulse2 *= step.DtRatio;
+				Impulse *= step.DtRatio;
+				LimitImpulse1 *= step.DtRatio;
+				LimitImpulse2 *= step.DtRatio;
 
 				// Warm starting.
-				Vec2 P1 = -(_impulse + _limitImpulse1) * _u1;
-				Vec2 P2 = (-_ratio * _impulse - _limitImpulse2) * _u2;
+				Vec2 P1 = -(Impulse + LimitImpulse1) * U1;
+				Vec2 P2 = (-Ratio * Impulse - LimitImpulse2) * U2;
 				b1._linearVelocity += b1._invMass * P1;
 				b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
 				b2._linearVelocity += b2._invMass * P2;
@@ -368,9 +359,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			}
 			else
 			{
-				_impulse = 0.0f;
-				_limitImpulse1 = 0.0f;
-				_limitImpulse2 = 0.0f;
+				Impulse = 0.0f;
+				LimitImpulse1 = 0.0f;
+				LimitImpulse2 = 0.0f;
 			}
 		}
 
@@ -383,22 +374,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Body b1 = Body1;
 			Body b2 = Body2;
 
-			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
-			if (_state == LimitState.AtUpperLimit)
+			if (State == LimitState.AtUpperLimit)
 			{
 				Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
 				Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
 
-				float Cdot = -Vec2.Dot(_u1, v1) - _ratio * Vec2.Dot(_u2, v2);
-				float impulse = _pulleyMass * (-Cdot);
-				float oldImpulse = _impulse;
-				_impulse = Box2DXMath.Max(0.0f, _impulse + impulse);
-				impulse = _impulse - oldImpulse;
+				float Cdot = -Vec2.Dot(U1, v1) - Ratio * Vec2.Dot(U2, v2);
+				float impulse = PulleyMass * (-Cdot);
+				float oldImpulse = Impulse;
+				Impulse = Box2DXMath.Max(0.0f, Impulse + impulse);
+				impulse = Impulse - oldImpulse;
 
-				Vec2 P1 = -impulse * _u1;
-				Vec2 P2 = -_ratio * impulse * _u2;
+				Vec2 P1 = -impulse * U1;
+				Vec2 P2 = -Ratio * impulse * U2;
 				b1._linearVelocity += b1._invMass * P1;
 				b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
 				b2._linearVelocity += b2._invMass * P2;
@@ -409,13 +400,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			{
 				Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
 
-				float Cdot = -Vec2.Dot(_u1, v1);
-				float impulse = -_limitMass1 * Cdot;
-				float oldImpulse = _limitImpulse1;
-				_limitImpulse1 = Box2DXMath.Max(0.0f, _limitImpulse1 + impulse);
-				impulse = _limitImpulse1 - oldImpulse;
+				float Cdot = -Vec2.Dot(U1, v1);
+				float impulse = -LimitMass1 * Cdot;
+				float oldImpulse = LimitImpulse1;
+				LimitImpulse1 = Box2DXMath.Max(0.0f, LimitImpulse1 + impulse);
+				impulse = LimitImpulse1 - oldImpulse;
 
-				Vec2 P1 = -impulse * _u1;
+				Vec2 P1 = -impulse * U1;
 				b1._linearVelocity += b1._invMass * P1;
 				b1._angularVelocity += b1._invI * Vec2.Cross(r1, P1);
 			}
@@ -424,13 +415,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			{
 				Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
 
-				float Cdot = -Vec2.Dot(_u2, v2);
-				float impulse = -_limitMass2 * Cdot;
-				float oldImpulse = _limitImpulse2;
-				_limitImpulse2 = Box2DXMath.Max(0.0f, _limitImpulse2 + impulse);
-				impulse = _limitImpulse2 - oldImpulse;
+				float Cdot = -Vec2.Dot(U2, v2);
+				float impulse = -LimitMass2 * Cdot;
+				float oldImpulse = LimitImpulse2;
+				LimitImpulse2 = Box2DXMath.Max(0.0f, LimitImpulse2 + impulse);
+				impulse = LimitImpulse2 - oldImpulse;
 
-				Vec2 P2 = -impulse * _u2;
+				Vec2 P2 = -impulse * U2;
 				b2._linearVelocity += b2._invMass * P2;
 				b2._angularVelocity += b2._invI * Vec2.Cross(r2, P2);
 			}
@@ -446,52 +437,52 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Body b1 = Body1;
 			Body b2 = Body2;
 
-			Vec2 s1 = _ground.GetXForm().Position + _groundAnchor1;
-			Vec2 s2 = _ground.GetXForm().Position + _groundAnchor2;
+			Vec2 s1 = Ground.GetXForm().Position + GroundAnchor1;
+			Vec2 s2 = Ground.GetXForm().Position + GroundAnchor2;
 
 			float linearError = 0.0f;
 
-			if (_state == LimitState.AtUpperLimit)
+			if (State == LimitState.AtUpperLimit)
 			{
-				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
 				Vec2 p1 = b1._sweep.C + r1;
 				Vec2 p2 = b2._sweep.C + r2;
 
 				// Get the pulley axes.
-				_u1 = p1 - s1;
-				_u2 = p2 - s2;
+				U1 = p1 - s1;
+				U2 = p2 - s2;
 
-				float length1 = _u1.Length();
-				float length2 = _u2.Length();
+				float length1 = U1.Length();
+				float length2 = U2.Length();
 
 				if (length1 > Settings.LinearSlop)
 				{
-					_u1 *= 1.0f / length1;
+					U1 *= 1.0f / length1;
 				}
 				else
 				{
-					_u1.SetZero();
+					U1.SetZero();
 				}
 
 				if (length2 > Settings.LinearSlop)
 				{
-					_u2 *= 1.0f / length2;
+					U2 *= 1.0f / length2;
 				}
 				else
 				{
-					_u2.SetZero();
+					U2.SetZero();
 				}
 
-				float C = _constant - length1 - _ratio * length2;
+				float C = Constant - length1 - Ratio * length2;
 				linearError = Box2DXMath.Max(linearError, -C);
 
 				C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
-				float impulse = -_pulleyMass * C;
+				float impulse = -PulleyMass * C;
 
-				Vec2 P1 = -impulse * _u1;
-				Vec2 P2 = -_ratio * impulse * _u2;
+				Vec2 P1 = -impulse * U1;
+				Vec2 P2 = -Ratio * impulse * U2;
 
 				b1._sweep.C += b1._invMass * P1;
 				b1._sweep.A += b1._invI * Vec2.Cross(r1, P1);
@@ -504,27 +495,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 			if (_limitState1 == LimitState.AtUpperLimit)
 			{
-				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
+				Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
 				Vec2 p1 = b1._sweep.C + r1;
 
-				_u1 = p1 - s1;
-				float length1 = _u1.Length();
+				U1 = p1 - s1;
+				float length1 = U1.Length();
 
 				if (length1 > Settings.LinearSlop)
 				{
-					_u1 *= 1.0f / length1;
+					U1 *= 1.0f / length1;
 				}
 				else
 				{
-					_u1.SetZero();
+					U1.SetZero();
 				}
 
-				float C = _maxLength1 - length1;
+				float C = MaxLength1 - length1;
 				linearError = Box2DXMath.Max(linearError, -C);
 				C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
-				float impulse = -_limitMass1 * C;
+				float impulse = -LimitMass1 * C;
 
-				Vec2 P1 = -impulse * _u1;
+				Vec2 P1 = -impulse * U1;
 				b1._sweep.C += b1._invMass * P1;
 				b1._sweep.A += b1._invI * Vec2.Cross(r1, P1);
 
@@ -533,27 +524,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 			if (_limitState2 == LimitState.AtUpperLimit)
 			{
-				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+				Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 				Vec2 p2 = b2._sweep.C + r2;
 
-				_u2 = p2 - s2;
-				float length2 = _u2.Length();
+				U2 = p2 - s2;
+				float length2 = U2.Length();
 
 				if (length2 > Settings.LinearSlop)
 				{
-					_u2 *= 1.0f / length2;
+					U2 *= 1.0f / length2;
 				}
 				else
 				{
-					_u2.SetZero();
+					U2.SetZero();
 				}
 
-				float C = _maxLength2 - length2;
+				float C = MaxLength2 - length2;
 				linearError = Box2DXMath.Max(linearError, -C);
 				C = Box2DXMath.Clamp(C + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
-				float impulse = -_limitMass2 * C;
+				float impulse = -LimitMass2 * C;
 
-				Vec2 P2 = -impulse * _u2;
+				Vec2 P2 = -impulse * U2;
 				b2._sweep.C += b2._invMass * P2;
 				b2._sweep.A += b2._invI * Vec2.Cross(r2, P2);
 

@@ -5208,52 +5208,52 @@
             this as a massless, rigid rod.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._localAnchor1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.LocalAnchor1">
             <summary>
             The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._localAnchor2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.LocalAnchor2">
             <summary>
             The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._u">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.U">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._frequencyHz">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.FrequencyHz">
             <summary>
             The frequency hz
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._dampingRatio">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.DampingRatio">
             <summary>
             The damping ratio
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._gamma">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Gamma">
             <summary>
             The gamma
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._bias">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Bias">
             <summary>
             The bias
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._impulse">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Impulse">
             <summary>
             The impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._mass">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Mass">
             <summary>
             The mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint._length">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Length">
             <summary>
             The length
             </summary>
@@ -5272,14 +5272,14 @@
             <summary>
             Gets the reaction force using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.GetReactionTorque(System.Single)">
             <summary>
             Gets the reaction torque using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Joints.DistanceJointDef)">
@@ -6180,7 +6180,7 @@
             applying huge forces.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._localAnchor">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.LocalAnchor">
             <summary>
             The local anchor
             </summary>
@@ -6190,42 +6190,42 @@
             The target
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._impulse">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.Impulse">
             <summary>
             The impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._mass">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.Mass">
             <summary>
             The mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._C">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.C">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._maxForce">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.MaxForce">
             <summary>
             The max force
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._frequencyHz">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.FrequencyHz">
             <summary>
             The frequency hz
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._dampingRatio">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.DampingRatio">
             <summary>
             The damping ratio
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._beta">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.Beta">
             <summary>
             The beta
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._gamma">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJoint.Gamma">
             <summary>
             The gamma
             </summary>
@@ -6244,14 +6244,16 @@
             <summary>
             Gets the reaction force using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param>The inv dt</param>
+            <param name="inv_dt"></param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJoint.GetReactionTorque(System.Single)">
             <summary>
             Gets the reaction torque using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param>The inv dt</param>
+            <param name="inv_dt"></param>
             <returns>The float</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJoint.SetTarget(Alis.Core.Physic.Common.Vec2)">
@@ -6631,92 +6633,87 @@
             The min pulley length
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._ground">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Ground">
             <summary>
             The ground
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._groundAnchor1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchor1">
             <summary>
             The ground anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._groundAnchor2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchor2">
             <summary>
             The ground anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._localAnchor1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LocalAnchor1">
             <summary>
             The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._localAnchor2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LocalAnchor2">
             <summary>
             The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._u1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.U1">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._u2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.U2">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._constant">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Constant">
             <summary>
             The constant
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._ratio">
-            <summary>
-            The ratio
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._maxLength1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.MaxLength1">
             <summary>
             The max length
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._maxLength2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.MaxLength2">
             <summary>
             The max length
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._pulleyMass">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.PulleyMass">
             <summary>
             The pulley mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._limitMass1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitMass1">
             <summary>
             The limit mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._limitMass2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitMass2">
             <summary>
             The limit mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._impulse">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Impulse">
             <summary>
             The impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._limitImpulse1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitImpulse1">
             <summary>
             The limit impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._limitImpulse2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitImpulse2">
             <summary>
             The limit impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._state">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.State">
             <summary>
             The state
             </summary>
@@ -6755,12 +6752,12 @@
             <param name="inv_dt">The inv dt</param>
             <returns>The float</returns>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchor1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchorX1">
             <summary>
             Get the first ground anchor.
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchor2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchorX2">
             <summary>
             Get the second ground anchor.
             </summary>
@@ -6850,12 +6847,12 @@
             The maximum length of the segment attached to body1.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJointDef.Length2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJointDef.Length2">
             <summary>
             The a reference length for the segment attached to body2.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJointDef.MaxLength2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJointDef.MaxLength2">
             <summary>
             The maximum length of the segment attached to body2.
             </summary>
@@ -6875,7 +6872,7 @@
             is provided so that infinite forces are not generated.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._localAnchor1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LocalAnchor1">
             <summary>
             The local anchor
             </summary>
@@ -6890,11 +6887,6 @@
             The impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._motorImpulse">
-            <summary>
-            The motor impulse
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._mass">
             <summary>
             The mass
@@ -6903,11 +6895,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._motorMass">
             <summary>
             The motor mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._enableMotor">
-            <summary>
-            The enable motor
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._maxMotorTorque">
@@ -6920,24 +6907,9 @@
             The motor speed
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._enableLimit">
-            <summary>
-            The enable limit
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._referenceAngle">
             <summary>
             The reference angle
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._lowerAngle">
-            <summary>
-            The lower angle
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._upperAngle">
-            <summary>
-            The upper angle
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._limitState">
@@ -6959,14 +6931,16 @@
             <summary>
             Gets the reaction force using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param>The inv dt</param>
+            <param name="inv_dt"></param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.GetReactionTorque(System.Single)">
             <summary>
             Gets the reaction torque using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param>The inv dt</param>
+            <param name="inv_dt"></param>
             <returns>The float</returns>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.JointAngle">

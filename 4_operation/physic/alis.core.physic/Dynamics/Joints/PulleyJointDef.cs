@@ -83,12 +83,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         /// The a reference length for the segment attached to body2.
         /// </summary>
-        public float Length2;
+        public float Length2 { get; set; }
 
         /// <summary>
         /// The maximum length of the segment attached to body2.
         /// </summary>
-        public float MaxLength2;
+        public float MaxLength2 { get; set; }
 
         /// <summary>
         /// The pulley ratio, used to simulate a block-and-tackle.
