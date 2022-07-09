@@ -117,9 +117,9 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="aabb">The aabb</param>
 		/// <param name="transform">The transform</param>
-		public override void ComputeAabb(out AABB aabb, XForm transform)
+		public override void ComputeAabb(out Aabb aabb, XForm transform)
 		{
-			aabb = new AABB();
+			aabb = new Aabb();
 
 			Vec2 p = transform.Position + Math.Mul(transform.R, Position);
 			aabb.LowerBound.Set(p.X - Radius, p.Y - Radius);

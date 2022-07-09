@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="worldAABB">A bounding box that completely encompasses all your shapes.</param>
 		/// <param name="gravity">The world gravity vector.</param>
 		/// <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
-		public World(AABB worldAABB, Vec2 gravity, bool doSleep)
+		public World(Aabb worldAABB, Vec2 gravity, bool doSleep)
 		{
 			_destructionListener = null;
 			_boundaryListener = null;
@@ -707,7 +707,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// @param shapes a user allocated shape pointer array of size maxCount (or greater).
 		/// @param maxCount the capacity of the shapes array.
 		/// @return the number of shapes found in aabb.
-		public int Query(AABB aabb, Fixture[] fixtures, int maxCount)
+		public int Query(Aabb aabb, Fixture[] fixtures, int maxCount)
 		{
 			//using (object[] results = new object[maxCount])
 			{
@@ -1455,7 +1455,7 @@ namespace Alis.Core.Physic.Dynamics
 						Proxy p1 = bp._proxyPool[pair.ProxyId1];
 						Proxy p2 = bp._proxyPool[pair.ProxyId2];
 
-						AABB b1 = new AABB(), b2 = new AABB();
+						Aabb b1 = new Aabb(), b2 = new Aabb();
 						b1.LowerBound.X = bp._worldAABB.LowerBound.X + invQ.X * bp._bounds[0][p1.LowerBounds[0]].Value;
 						b1.LowerBound.Y = bp._worldAABB.LowerBound.Y + invQ.Y * bp._bounds[1][p1.LowerBounds[1]].Value;
 						b1.UpperBound.X = bp._worldAABB.LowerBound.X + invQ.X * bp._bounds[0][p1.UpperBounds[0]].Value;
@@ -1492,7 +1492,7 @@ namespace Alis.Core.Physic.Dynamics
 						continue;
 					}
 
-					AABB b = new AABB();
+					Aabb b = new Aabb();
 					b.LowerBound.X = worldLower.X + invQ.X * bp._bounds[0][p.LowerBounds[0]].Value;
 					b.LowerBound.Y = worldLower.Y + invQ.Y * bp._bounds[1][p.LowerBounds[1]].Value;
 					b.UpperBound.X = worldLower.X + invQ.X * bp._bounds[0][p.UpperBounds[0]].Value;
@@ -1559,7 +1559,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// </summary>
 		/// <param name="aabb">The aabb</param>
 		/// <returns>The bool</returns>
-		public bool InRange(AABB aabb)
+		public bool InRange(Aabb aabb)
 		{
 			return _broadPhase.InRange(aabb);
 		}

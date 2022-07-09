@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="aabb">Returns the axis aligned box.</param>
 		/// <param name="xf">The world transform of the shape.</param>
-		public abstract void ComputeAabb(out AABB aabb, XForm xf);
+		public abstract void ComputeAabb(out Aabb aabb, XForm xf);
 
         /// <summary>
         /// Compute the mass properties of this shape using its dimensions and density.

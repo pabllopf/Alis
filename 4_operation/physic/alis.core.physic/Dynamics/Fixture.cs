@@ -182,7 +182,7 @@ namespace Alis.Core.Physic.Dynamics
 			}
 
 			// Create proxy in the broad-phase.
-			AABB aabb;
+			Aabb aabb;
 			_shape.ComputeAabb(out aabb, xf);
 
 			bool inRange = broadPhase.InRange(aabb);
@@ -233,11 +233,11 @@ namespace Alis.Core.Physic.Dynamics
 			}
 
 			// Compute an AABB that covers the swept shape (may miss some rotation effect).
-			AABB aabb1, aabb2;
+			Aabb aabb1, aabb2;
 			_shape.ComputeAabb(out aabb1, transform1);
 			_shape.ComputeAabb(out aabb2, transform2);
 
-			AABB aabb = new AABB();
+			Aabb aabb = new Aabb();
 			aabb.Combine(aabb1, aabb2);
 
 			if (broadPhase.InRange(aabb))
@@ -263,7 +263,7 @@ namespace Alis.Core.Physic.Dynamics
 
 			broadPhase.DestroyProxy(_proxyId);
 
-			AABB aabb;
+			Aabb aabb;
 			_shape.ComputeAabb(out aabb, transform);
 
 			bool inRange = broadPhase.InRange(aabb);

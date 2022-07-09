@@ -271,7 +271,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="aabb">The aabb</param>
 		/// <param name="xf">The xf</param>
-		public override void ComputeAabb(out AABB aabb, XForm xf)
+		public override void ComputeAabb(out Aabb aabb, XForm xf)
 		{
 			Vec2 lower = Math.Mul(xf, Vertices[0]);
 			Vec2 upper = lower;

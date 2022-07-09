@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Collision
 		/// <param name="a">The </param>
 		/// <param name="b">The </param>
 		/// <returns>The bool</returns>
-		public static bool TestOverlap(AABB a, AABB b)
+		public static bool TestOverlap(Aabb a, Aabb b)
 		{
 			Vec2 d1, d2;
 			d1 = b.LowerBound - a.UpperBound;

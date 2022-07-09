@@ -5,7 +5,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     /// An axis aligned bounding box.
     /// </summary>
-    public struct AABB
+    public struct Aabb
     {
         /// <summary>
         /// The lower vertex.
@@ -42,14 +42,14 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// Combine two AABBs into this one.
-        public void Combine(AABB aabb1, AABB aabb2)
+        public void Combine(Aabb aabb1, Aabb aabb2)
         {
             LowerBound = Common.Math.Min(aabb1.LowerBound, aabb2.LowerBound);
             UpperBound = Common.Math.Max(aabb1.UpperBound, aabb2.UpperBound);
         }
 
         /// Does this aabb contain the provided AABB.
-        public bool Contains(AABB aabb)
+        public bool Contains(Aabb aabb)
         {
             bool result = LowerBound.X <= aabb.LowerBound.X;
             result = result && LowerBound.Y <= aabb.LowerBound.Y;
@@ -90,9 +90,9 @@ namespace Alis.Core.Physic.Collision
                 }
                 else
                 {
-                    float inv_d = 1.0f / d[i];
-                    float t1 = (LowerBound[i] - p[i]) * inv_d;
-                    float t2 = (UpperBound[i] - p[i]) * inv_d;
+                    float invD = 1.0f / d[i];
+                    float t1 = (LowerBound[i] - p[i]) * invD;
+                    float t2 = (UpperBound[i] - p[i]) * invD;
 
                     // Sign of the normal vector.
                     float s = -1.0f;

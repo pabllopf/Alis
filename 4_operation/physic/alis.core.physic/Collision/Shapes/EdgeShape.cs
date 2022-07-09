@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="aabb">The aabb</param>
 		/// <param name="transform">The transform</param>
-		public override void ComputeAabb(out AABB aabb, XForm transform)
+		public override void ComputeAabb(out Aabb aabb, XForm transform)
 		{
 			Vec2 v1 = Math.Mul(transform, Vertex1);
 			Vec2 v2 = Math.Mul(transform, Vertex2);

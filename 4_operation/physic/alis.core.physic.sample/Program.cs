@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Sample
         {
             // Define the size of the world. Simulation will still work
             // if bodies reach the end of the world, but it will be slower.
-            AABB worldAABB = new AABB();
+            Aabb worldAABB = new Aabb();
             worldAABB.LowerBound.Set(-100.0f);
             worldAABB.UpperBound.Set(100.0f);
 

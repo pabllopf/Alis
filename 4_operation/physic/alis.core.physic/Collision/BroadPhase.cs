@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Collision
 		/// <summary>
 		/// The world aabb
 		/// </summary>
-		public AABB _worldAABB;
+		public Aabb _worldAABB;
 		/// <summary>
 		/// The quantization factor
 		/// </summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Collision
 		/// </summary>
 		/// <param name="worldAABB">The world aabb</param>
 		/// <param name="callback">The callback</param>
-		public BroadPhase(AABB worldAABB, PairCallback callback)
+		public BroadPhase(Aabb worldAABB, PairCallback callback)
 		{
 			_pairManager = new PairManager();
 			_pairManager.Initialize(this, callback);
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Collision
 		/// </summary>
 		/// <param name="aabb">The aabb</param>
 		/// <returns>The bool</returns>
-		public bool InRange(AABB aabb)
+		public bool InRange(Aabb aabb)
 		{
 			Vec2 d = Math.Max(aabb.LowerBound - _worldAABB.UpperBound, _worldAABB.LowerBound - aabb.UpperBound);
 			return Math.Max(d.X, d.Y) < 0.0f;
@@ -190,7 +190,7 @@ namespace Alis.Core.Physic.Collision
 		/// <param name="aabb">The aabb</param>
 		/// <param name="userData">The user data</param>
 		/// <returns>The proxy id</returns>
-		public ushort CreateProxy(AABB aabb, object userData)
+		public ushort CreateProxy(Aabb aabb, object userData)
 		{
 			Box2DXDebug.Assert(_proxyCount < Settings.MaxProxies);
 			Box2DXDebug.Assert(_freeProxy != PairManager.NullProxy);
@@ -403,7 +403,7 @@ namespace Alis.Core.Physic.Collision
 		/// </summary>
 		/// <param name="proxyId">The proxy id</param>
 		/// <param name="aabb">The aabb</param>
-		public void MoveProxy(int proxyId, AABB aabb)
+		public void MoveProxy(int proxyId, Aabb aabb)
 		{
 			if (proxyId == PairManager.NullProxy || Settings.MaxProxies <= proxyId)
 			{
@@ -640,7 +640,7 @@ namespace Alis.Core.Physic.Collision
 		/// <param name="userData">The user data</param>
 		/// <param name="maxCount">The max count</param>
 		/// <returns>The count</returns>
-		public int Query(AABB aabb, object[] userData, int maxCount)
+		public int Query(Aabb aabb, object[] userData, int maxCount)
 		{
 			ushort[] lowerValues;
 			ushort[] upperValues;
@@ -1001,7 +1001,7 @@ namespace Alis.Core.Physic.Collision
 		/// <param name="lowerValues">The lower values</param>
 		/// <param name="upperValues">The upper values</param>
 		/// <param name="aabb">The aabb</param>
-		private void ComputeBounds(out ushort[] lowerValues, out ushort[] upperValues, AABB aabb)
+		private void ComputeBounds(out ushort[] lowerValues, out ushort[] upperValues, Aabb aabb)
 		{
 			lowerValues = new ushort[2];
 			upperValues = new ushort[2];
