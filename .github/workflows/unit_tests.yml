@@ -15,26 +15,15 @@ jobs:
     runs-on: windows-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
+    name: Testing 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+      - uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
         with:
-          dotnet-version: '6.0.x'
-        
-      - name: Cache_Test
-        id: cache-test
-        uses: actions/cache@v2
-        with:
-          path: temp-test
-          key: ${{ runner.os }}-test
-      
-      - name: Restore dependencies
-        run: dotnet restore alis.sln
-      - name: Build
-        run: dotnet build alis.sln
-      - name: Run Test
-        run: dotnet test alis.sln
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - run: dotnet test alis.sln
