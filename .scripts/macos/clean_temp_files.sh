@@ -1,7 +1,6 @@
 
 cd ../../
 
-rm -rf ./.nuget/
 rm -rf ./.build/
 rm -rf ./**/obj/
 rm -rf ./**/bin/
