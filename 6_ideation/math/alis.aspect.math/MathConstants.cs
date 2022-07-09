@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Physic.D2.Utilities
+namespace Alis.Aspect.Math
 {
     /// <summary>
     ///     The math constants class
@@ -39,7 +37,7 @@ namespace Alis.Core.Physic.D2.Utilities
         /// <summary>
         ///     The pi
         /// </summary>
-        public const float Pi = (float) Math.PI;
+        public const float Pi = (float) System.Math.PI;
 
         /// <summary>
         ///     The pi

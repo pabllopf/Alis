@@ -3,6 +3,13 @@
     <Target Name="CustomBeforeBuild" BeforeTargets="Build">
     </Target>
 
+    <!--
+    <Target Name="BeforeBuild">
+        <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+        <RemoveDir Directories="$(BaseOutputPath)" />
+    </Target>
+    -->
+
 
     <!--DOCUMENT THE CODE:
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

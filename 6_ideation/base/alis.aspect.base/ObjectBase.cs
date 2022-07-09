@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+
+using System.Diagnostics;
 
 namespace Alis.Aspect.Base
 {
@@ -37,9 +38,11 @@ namespace Alis.Aspect.Base
     public class ObjectBase
     {
         /// <summary>Tests this instance.</summary>
-        public void Test()
+        public int Test()
         {
-            Console.WriteLine("Hello");
+            Debug.Assert(true);
+            Debug.WriteLine("Hello");
+            return 0;
         }
     }
 }

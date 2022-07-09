@@ -3,4 +3,10 @@
   <PropertyGroup Label="BasePath">
     <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)</SolutionDir>
   </PropertyGroup>
+
+    <PropertyGroup>
+        <OutputPath>$(SolutionDir)/.build/$(ProjectName)/bin/$(Configuration)</OutputPath>
+        <BaseIntermediateOutputPath>$(SolutionDir)/.build/$(ProjectName)/obj</BaseIntermediateOutputPath>
+        <MSBUildProjectExtensionsPath>$(SolutionDir)/.build/$(ProjectName)/obj</MSBUildProjectExtensionsPath>
+    </PropertyGroup>
 </Project>

@@ -26,7 +26,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-using Alis.Core.Physic.D2.Utilities;
+
 using System;
 
 namespace Alis.Aspect.Math.Sample

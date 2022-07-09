@@ -45,20 +45,15 @@
         Condition="$(AssemblyName.Equals('Alis.Core'))">
         <ProjectReference Include="$(SolutionDir)/4_operation/ads/alis.core.ads/Alis.Core.Ads.csproj" />
         <ProjectReference Include="$(SolutionDir)/4_operation/ai/alis.core.ai/Alis.Core.Ai.csproj" />
-        <ProjectReference Include="$(SolutionDir)/4_operation/audio/d2/alis.core.audio.d2/Alis.Core.Audio.D2.csproj" />
-        <ProjectReference Include="$(SolutionDir)/4_operation/audio/d3/alis.core.audio.d3/Alis.Core.Audio.D3.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/audio/alis.core.audio/Alis.Core.Audio.csproj" />
         <ProjectReference Include="$(SolutionDir)/4_operation/cloud/alis.core.cloud/Alis.Core.Cloud.csproj" />
         <ProjectReference Include="$(SolutionDir)/4_operation/database/alis.core.database/Alis.Core.Database.csproj" />
         <ProjectReference Include="$(SolutionDir)/4_operation/diagnostic/alis.core.diagnostic/Alis.Core.Diagnostic.csproj" />
-        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/d2/alis.core.graphic.d2/Alis.Core.Graphic.D2.csproj" />
-        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/d3/alis.core.graphic.d3/Alis.Core.Graphic.D3.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/alis.core.graphic/Alis.Core.Graphic.csproj" />
         <ProjectReference Include="$(SolutionDir)/4_operation/input/alis.core.input/Alis.Core.Input.csproj" />
         <ProjectReference Include="$(SolutionDir)/4_operation/network/alis.core.network/Alis.Core.Network.csproj" />
         <ProjectReference Include="$(SolutionDir)/4_operation/output/alis.core.output/Alis.Core.Output.csproj" />
-        <ProjectReference Include="$(SolutionDir)/4_operation/physic/d2/alis.core.physic.d2/Alis.Core.Physic.D2.csproj" />
-        <ProjectReference Include="$(SolutionDir)/4_operation/physic/d3/alis.core.physic.d3/Alis.Core.Physic.D3.csproj" />
-        <ProjectReference Include="$(SolutionDir)/4_operation/report/alis.core.report/Alis.Core.Report.csproj" />
-        <ProjectReference Include="$(SolutionDir)/4_operation/time/alis.core.time/Alis.Core.Time.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/physic/alis.core.physic/Alis.Core.Physic.csproj" />
         <ProjectReference Include="$(SolutionDir)/4_operation/updater/alis.core.updater/Alis.Core.Updater.csproj" />
     </ItemGroup>
 
@@ -99,28 +94,17 @@
     </ItemGroup>
 
     <ItemGroup
-        Condition="$(AssemblyName.Equals('Alis.Core.Audio.D2'))">
+        Condition="$(AssemblyName.Equals('Alis.Core.Audio'))">
         <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
     </ItemGroup>
     <ItemGroup
         Condition="
-        $(AssemblyName.Equals('Alis.Core.Audio.D2.Sample')) OR
-        $(AssemblyName.Equals('Alis.Core.Audio.D2.Test')) 
+        $(AssemblyName.Equals('Alis.Core.Audio.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Audio.Test')) 
         ">
-        <ProjectReference Include="$(SolutionDir)/4_operation/audio/d2/alis.core.audio.d2/Alis.Core.Audio.D2.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/audio/alis.core.audio/Alis.Core.Audio.csproj" />
     </ItemGroup>
-
-    <ItemGroup
-        Condition="$(AssemblyName.Equals('Alis.Core.Audio.D3'))">
-        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
-    </ItemGroup>
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Core.Audio.D3.Sample')) OR
-        $(AssemblyName.Equals('Alis.Core.Audio.D3.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)/4_operation/audio/d3/alis.core.audio.d3/Alis.Core.Audio.D3.csproj" />
-    </ItemGroup>
+    
 
 
     <ItemGroup
@@ -160,27 +144,15 @@
     </ItemGroup>
 
     <ItemGroup
-        Condition="$(AssemblyName.Equals('Alis.Core.Graphic.D2'))">
+        Condition="$(AssemblyName.Equals('Alis.Core.Graphic'))">
         <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
     </ItemGroup>
     <ItemGroup
         Condition="
-        $(AssemblyName.Equals('Alis.Core.Graphic.D2.Sample')) OR
-        $(AssemblyName.Equals('Alis.Core.Graphic.D2.Test')) 
+        $(AssemblyName.Equals('Alis.Core.Graphic.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Graphic.Test')) 
         ">
-        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/d2/alis.core.graphic.d2/Alis.Core.Graphic.D2.csproj" />
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="$(AssemblyName.Equals('Alis.Core.Graphic.D3'))">
-        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
-    </ItemGroup>
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Core.Graphic.D3.Sample')) OR
-        $(AssemblyName.Equals('Alis.Core.Graphic.D3.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/d3/alis.core.graphic.d3/Alis.Core.Graphic.D3.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/graphic/alis.core.graphic/Alis.Core.Graphic.csproj" />
     </ItemGroup>
 
 
@@ -222,27 +194,16 @@
 
 
     <ItemGroup
-        Condition="$(AssemblyName.Equals('Alis.Core.Physic.D2'))">
+        Condition="$(AssemblyName.Equals('Alis.Core.Physic'))">
         <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
     </ItemGroup>
+    
     <ItemGroup
         Condition="
-        $(AssemblyName.Equals('Alis.Core.Physic.D2.Sample')) OR
-        $(AssemblyName.Equals('Alis.Core.Physic.D2.Test')) 
+        $(AssemblyName.Equals('Alis.Core.Physic.Sample')) OR
+        $(AssemblyName.Equals('Alis.Core.Physic.Test')) 
         ">
-        <ProjectReference Include="$(SolutionDir)/4_operation/physic/d2/alis.core.physic.d2/Alis.Core.Physic.D2.csproj" />
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="$(AssemblyName.Equals('Alis.Core.Physic.D3'))">
-        <ProjectReference Include="$(SolutionDir)/5_declaration/aspect/alis.aspect/Alis.Aspect.csproj" />
-    </ItemGroup>
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Core.Physic.D3.Sample')) OR
-        $(AssemblyName.Equals('Alis.Core.Physic.D3.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)/4_operation/physic/d3/alis.core.physic.d3/Alis.Core.Physic.D3.csproj" />
+        <ProjectReference Include="$(SolutionDir)/4_operation/physic/alis.core.physic/Alis.Core.Physic.csproj" />
     </ItemGroup>
     
     <ItemGroup
@@ -288,16 +249,15 @@
 
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Aspect'))">
-        <ProjectReference Include="$(SolutionDir)/6_ideation/assertion/alis.aspect.assertion/Alis.Aspect.Assertion.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/base/alis.aspect.base/Alis.Aspect.Base.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/data/alis.aspect.data/Alis.Aspect.Data.csproj" />
-        <ProjectReference Include="$(SolutionDir)/6_ideation/debug/alis.aspect.debug/Alis.Aspect.Debug.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/fluent/alis.aspect.fluent/Alis.Aspect.Fluent.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/math/alis.aspect.math/Alis.Aspect.Math.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/logging/alis.aspect.logging/Alis.Aspect.Logging.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/memory/alis.aspect.memory/Alis.Aspect.Memory.csproj" />
-        <ProjectReference Include="$(SolutionDir)/6_ideation/resource/alis.aspect.resource/Alis.Aspect.Resource.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/security/alis.aspect.security/Alis.Aspect.Security.csproj" />
         <ProjectReference Include="$(SolutionDir)/6_ideation/thread/alis.aspect.thread/Alis.Aspect.Thread.csproj" />
+        <ProjectReference Include="$(SolutionDir)/6_ideation/time/alis.aspect.time/Alis.Aspect.Time.csproj" />
     </ItemGroup>
 
     <ItemGroup
@@ -311,14 +271,6 @@
     <!--
     6_ideation
     -->
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Assertion.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Assertion.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)/6_ideation/assertion/alis.aspect.assertion/Alis.Aspect.Assertion.csproj" />
-    </ItemGroup>
-
     <ItemGroup
         Condition="
         $(AssemblyName.Equals('Alis.Aspect.Base.Sample')) OR
@@ -337,20 +289,20 @@
 
     <ItemGroup
         Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Debug.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Debug.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)/6_ideation/debug/alis.aspect.debug/Alis.Aspect.Debug.csproj" />
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
         $(AssemblyName.Equals('Alis.Aspect.Fluent.Sample')) OR
         $(AssemblyName.Equals('Alis.Aspect.Fluent.Test')) 
         ">
         <ProjectReference Include="$(SolutionDir)/6_ideation/fluent/alis.aspect.fluent/Alis.Aspect.Fluent.csproj" />
     </ItemGroup>
 
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Logging.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Logging.Test')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/logging/alis.aspect.logging/Alis.Aspect.Logging.csproj" />
+    </ItemGroup>
+    
     <ItemGroup
         Condition="
         $(AssemblyName.Equals('Alis.Aspect.Math.Sample')) OR
@@ -365,14 +317,6 @@
         $(AssemblyName.Equals('Alis.Aspect.Memory.Test')) 
         ">
         <ProjectReference Include="$(SolutionDir)/6_ideation/memory/alis.aspect.memory/Alis.Aspect.Memory.csproj" />
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Resource.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Resource.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)/6_ideation/resource/alis.aspect.resource/Alis.Aspect.Resource.csproj" />
     </ItemGroup>
     
     <ItemGroup
@@ -389,6 +333,14 @@
         $(AssemblyName.Equals('Alis.Aspect.Thread.Test')) 
         ">
         <ProjectReference Include="$(SolutionDir)/6_ideation/thread/alis.aspect.thread/Alis.Aspect.Thread.csproj" />
+    </ItemGroup>
+
+    <ItemGroup
+        Condition="
+        $(AssemblyName.Equals('Alis.Aspect.Time.Sample')) OR
+        $(AssemblyName.Equals('Alis.Aspect.Time.Test')) 
+        ">
+        <ProjectReference Include="$(SolutionDir)/6_ideation/time/alis.aspect.time/Alis.Aspect.Time.csproj" />
     </ItemGroup>
     
     

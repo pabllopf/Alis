@@ -1,6 +1,5 @@
 <Project>
     <ItemGroup Condition="
-        $(TargetFrameworkSelected) == 'net6.0' AND
         $(AssemblyName.Contains('Test')) == true ">
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0"/>
         <PackageReference Include="xunit" Version="2.4.1"/>
@@ -15,7 +14,7 @@
     </ItemGroup>
   
   <ItemGroup Condition=" 
-        $(TargetFrameworkSelected) == 'netcoreapp1.1' AND
+        $(TargetFramework1) == 'netcoreapp1.1' AND
         $(AssemblyName.Contains('Test')) == true ">
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
         <PackageReference Include="xunit" Version="2.2.0" />

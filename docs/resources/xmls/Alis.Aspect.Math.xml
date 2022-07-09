@@ -4,32 +4,32 @@
         <name>Alis.Aspect.Math</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Physic.D2.Utilities.MathConstants">
+        <member name="T:Alis.Aspect.Math.MathConstants">
             <summary>
                 The math constants class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.D2.Utilities.MathConstants.Pi">
+        <member name="F:Alis.Aspect.Math.MathConstants.Pi">
             <summary>
                 The pi
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.D2.Utilities.MathConstants.TwoPi">
+        <member name="F:Alis.Aspect.Math.MathConstants.TwoPi">
             <summary>
                 The pi
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.D2.Utilities.MathConstants.MaxFloat">
+        <member name="F:Alis.Aspect.Math.MathConstants.MaxFloat">
             <summary>
                 The max value
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.D2.Utilities.MathConstants.Epsilon">
+        <member name="F:Alis.Aspect.Math.MathConstants.Epsilon">
             <summary>
                 The epsilon
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.D2.Utilities.MathConstants.Euler">
+        <member name="F:Alis.Aspect.Math.MathConstants.Euler">
             <summary>
                 The euler
             </summary>

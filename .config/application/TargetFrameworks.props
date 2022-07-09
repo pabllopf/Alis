@@ -1,41 +1,22 @@
 <Project>
-
-  <!-- $(IsWindows) == true AND -->
-
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    </PropertyGroup>
-    
   <PropertyGroup Condition="
         $(AssemblyName.Contains('Test')) == true OR
+        $(AssemblyName.Contains('App')) == true OR
+        $(AssemblyName.Contains('Template')) == true OR
         $(AssemblyName.Contains('Sample')) == true
         ">
-        <TargetFrameworkSelected>netcoreapp1.1</TargetFrameworkSelected>
+        <TargetFramework1>net5.0</TargetFramework1>
+        <TargetFramework2>net6.0</TargetFramework2>
     </PropertyGroup>
     
     <PropertyGroup Condition="
         $(AssemblyName.Contains('Test')) == false AND 
+        $(AssemblyName.Contains('App')) == false AND
+        $(AssemblyName.Contains('Template')) == false AND
         $(AssemblyName.Contains('Sample')) == false
         ">
-        <TargetFrameworkSelected>netstandard1.6</TargetFrameworkSelected>
-    </PropertyGroup>
-
-
-    <PropertyGroup Condition="
-        '$(RuntimeIdentifier)' == 'osx-arm64' AND
-        ($(AssemblyName.Contains('Test')) == true OR
-        $(AssemblyName.Contains('Sample')) == true)
-        ">
-        <TargetFrameworkSelected>net6.0</TargetFrameworkSelected>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="
-        '$(RuntimeIdentifier)' == 'osx-arm64' AND
-        $(AssemblyName.Contains('Test')) == false AND 
-        $(AssemblyName.Contains('Sample')) == false
-        ">
-        <TargetFrameworkSelected>netstandard2.0</TargetFrameworkSelected>
+        <TargetFramework1>netstandard1.0;netstandard1.1;netstandard1.2;netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6</TargetFramework1>
+        <TargetFramework2>netstandard2.0;netstandard2.1</TargetFramework2>
     </PropertyGroup>
     
 </Project>
