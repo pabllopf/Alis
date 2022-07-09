@@ -1115,7 +1115,7 @@ namespace Alis.Core.Physic.Dynamics
                         Box2DXDebug.Assert(t0 < 1.0f);
 
                         // Compute the time of impact.
-                        toi = c.ComputeTOI(b1.Sweep, b2.Sweep);
+                        toi = c.ComputeToi(b1.Sweep, b2.Sweep);
                         //b2TimeOfImpact(c->m_fixtureA->GetShape(), b1->m_sweep, c->m_fixtureB->GetShape(), b2->m_sweep);
 
                         Box2DXDebug.Assert(0.0f <= toi && toi <= 1.0f);

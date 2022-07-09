@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The step
         /// </summary>
-        public TimeStep Step;
+        private TimeStep step;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactSolver" /> class
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="contactCount">The contact count</param>
         public ContactSolver(TimeStep step, Contact[] contacts, int contactCount)
         {
-            Step = step;
+            this.step = step;
             ConstraintCount = contactCount;
 
             Constraints = new ContactConstraint[ConstraintCount];

@@ -76,13 +76,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The shape type count
         /// </summary>
-        public static readonly ContactRegister[][] s_registers =
+        public static readonly ContactRegister[][] SRegisters =
             new ContactRegister[(int) ShapeType.ShapeTypeCount][ /*(int)ShapeType.ShapeTypeCount*/];
 
         /// <summary>
         ///     The manifold
         /// </summary>
-        private Manifold _manifold = new Manifold();
+        private Manifold manifold = new Manifold();
 
         /// <summary>
         ///     The collide shape function
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Get the contact manifold.
         /// </summary>
-        public Manifold Manifold => _manifold;
+        public Manifold Manifold => manifold;
 
         /// <summary>
         ///     Is this contact solid?
@@ -200,18 +200,18 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Box2DXDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
             Box2DXDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
 
-            if (s_registers[(int) type1] == null)
-                s_registers[(int) type1] = new ContactRegister[(int) ShapeType.ShapeTypeCount];
+            if (SRegisters[(int) type1] == null)
+                SRegisters[(int) type1] = new ContactRegister[(int) ShapeType.ShapeTypeCount];
 
-            s_registers[(int) type1][(int) type2].CreateFcn = createFcn;
-            s_registers[(int) type1][(int) type2].DestroyFcn = contactDestroyFcn;
-            s_registers[(int) type1][(int) type2].Primary = true;
+            SRegisters[(int) type1][(int) type2].CreateFcn = createFcn;
+            SRegisters[(int) type1][(int) type2].DestroyFcn = contactDestroyFcn;
+            SRegisters[(int) type1][(int) type2].Primary = true;
 
             if (type1 != type2)
             {
-                s_registers[(int) type2][(int) type1].CreateFcn = createFcn;
-                s_registers[(int) type2][(int) type1].DestroyFcn = contactDestroyFcn;
-                s_registers[(int) type2][(int) type1].Primary = false;
+                SRegisters[(int) type2][(int) type1].CreateFcn = createFcn;
+                SRegisters[(int) type2][(int) type1].DestroyFcn = contactDestroyFcn;
+                SRegisters[(int) type2][(int) type1].Primary = false;
             }
         }
 
@@ -250,10 +250,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Box2DXDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
             Box2DXDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
 
-            ContactCreateFcn createFcn = s_registers[(int) type1][(int) type2].CreateFcn;
+            ContactCreateFcn createFcn = SRegisters[(int) type1][(int) type2].CreateFcn;
             if (createFcn != null)
             {
-                if (s_registers[(int) type1][(int) type2].Primary)
+                if (SRegisters[(int) type1][(int) type2].Primary)
                 {
                     return createFcn(fixtureA, fixtureB);
                 }
@@ -284,7 +284,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Box2DXDebug.Assert(ShapeType.UnknownShape < typeA && typeA < ShapeType.ShapeTypeCount);
             Box2DXDebug.Assert(ShapeType.UnknownShape < typeB && typeB < ShapeType.ShapeTypeCount);
 
-            ContactDestroyFcn destroyFcn = s_registers[(int) typeA][(int) typeB].DestroyFcn;
+            ContactDestroyFcn destroyFcn = SRegisters[(int) typeA][(int) typeB].DestroyFcn;
             destroyFcn(ref contact);
         }
 
@@ -379,7 +379,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             Box2DXDebug.Assert(CollideShapeFunction != null);
 
-            CollideShapeFunction(ref _manifold, FixtureA.Shape, bodyA.GetXForm(), FixtureB.Shape, bodyB.GetXForm());
+            CollideShapeFunction(ref manifold, FixtureA.Shape, bodyA.GetXForm(), FixtureB.Shape, bodyB.GetXForm());
         }
 
         /// <summary>
@@ -388,7 +388,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="sweepA">The sweep</param>
         /// <param name="sweepB">The sweep</param>
         /// <returns>The float</returns>
-        public float ComputeTOI(Sweep sweepA, Sweep sweepB)
+        public float ComputeToi(Sweep sweepA, Sweep sweepB)
         {
             ToiInput input = new ToiInput();
             input.SweepA = sweepA;
