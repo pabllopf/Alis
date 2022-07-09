@@ -122,12 +122,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The enable limit
         /// </summary>
-        public bool _enableLimitx;
+        public bool EnableLimitx;
 
         /// <summary>
         ///     The enable motor
         /// </summary>
-        public bool _enableMotorx;
+        public bool EnableMotorx;
 
         /// <summary>
         ///     The impulse
@@ -224,8 +224,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             UpperTranslation = def.upperTranslation;
             MaxMotorForce = Settings.FORCE_INV_SCALE(def.maxMotorForce);
             MotorSpeed = def.motorSpeed;
-            _enableLimitx = def.enableLimit;
-            _enableMotorx = def.enableMotor;
+            EnableLimitx = def.enableLimit;
+            EnableMotorx = def.enableMotor;
             LimitState = LimitState.InactiveLimit;
 
             Axis.SetZero();
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public bool IsLimitEnabled()
         {
-            return _enableLimitx;
+            return EnableLimitx;
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             Body1.WakeUp();
             Body2.WakeUp();
-            _enableLimitx = flag;
+            EnableLimitx = flag;
         }
 
         /// <summary>
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public bool IsMotorEnabled()
         {
-            return _enableMotorx;
+            return EnableMotorx;
         }
 
         /// <summary>
@@ -365,7 +365,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             Body1.WakeUp();
             Body2.WakeUp();
-            _enableMotorx = flag;
+            EnableMotorx = flag;
         }
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
 
             // Compute motor and limit terms.
-            if (_enableLimitx)
+            if (EnableLimitx)
             {
                 float jointTranslation = Vec2.Dot(Axis, d);
                 if (Math.Abs(UpperTranslation - LowerTranslation) < 2.0f * Settings.LinearSlop)
@@ -493,7 +493,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 LimitState = LimitState.InactiveLimit;
             }
 
-            if (_enableMotorx == false)
+            if (EnableMotorx == false)
             {
                 MotorImpulse = 0.0f;
             }
@@ -536,7 +536,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float w2 = b2.AngularVelocity;
 
             // Solve linear motor constraint.
-            if (_enableMotorx && LimitState != LimitState.EqualLimits)
+            if (EnableMotorx && LimitState != LimitState.EqualLimits)
             {
                 float Cdot = Vec2.Dot(Axis, v2 - v1) + A2 * w2 - A1 * w1;
                 float impulse = MotorMass * (MotorSpeed - Cdot);
@@ -558,7 +558,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float Cdot1 = Vec2.Dot(Perp, v2 - v1) + S2 * w2 - S1 * w1;
 
-            if (_enableLimitx && LimitState != LimitState.InactiveLimit)
+            if (EnableLimitx && LimitState != LimitState.InactiveLimit)
             {
                 // Solve prismatic and limit constraint in block form.
                 float Cdot2 = Vec2.Dot(Axis, v2 - v1) + A2 * w2 - A1 * w1;
@@ -644,7 +644,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vec2 r2 = Math.Mul(R2, LocalAnchor2 - LocalCenter2);
             Vec2 d = c2 + r2 - c1 - r1;
 
-            if (_enableLimitx)
+            if (EnableLimitx)
             {
                 Axis = Math.Mul(R1, LocalXAxis1);
 

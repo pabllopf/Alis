@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The body capacity
         /// </summary>
-        public readonly int BodyCapacity;
+        private readonly int BodyCapacity;
 
         /// <summary>
         ///     The body count
