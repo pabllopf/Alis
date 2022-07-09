@@ -967,7 +967,7 @@ namespace Alis.Core.Physic.Dynamics
 		private void SolveTOI(TimeStep step)
 		{
 			// Reserve an island and a queue for TOI island solution.
-			Island island = new Island(_bodyCount, Settings.MaxTOIContactsPerIsland, Settings.MaxTOIJointsPerIsland, _contactListener);
+			Island island = new Island(_bodyCount, Settings.MaxToiContactsPerIsland, Settings.MaxToiJointsPerIsland, _contactListener);
 
 			//Simple one pass queue
 			//Relies on the fact that we're only making one pass
@@ -1066,7 +1066,7 @@ namespace Alis.Core.Physic.Dynamics
 						c._flags |= Contact.CollisionFlags.Toi;
 					}
 
-					if (Settings.FLT_EPSILON < toi && toi < minTOI)
+					if (Settings.FltEpsilon < toi && toi < minTOI)
 					{
 						// This is the minimum TOI found so far.
 						minContact = c;
@@ -1074,7 +1074,7 @@ namespace Alis.Core.Physic.Dynamics
 					}
 				}
 
-				if (minContact == null || 1.0f - 100.0f * Settings.FLT_EPSILON < minTOI)
+				if (minContact == null || 1.0f - 100.0f * Settings.FltEpsilon < minTOI)
 				{
 					// No more TOI events. Done!
 					break;

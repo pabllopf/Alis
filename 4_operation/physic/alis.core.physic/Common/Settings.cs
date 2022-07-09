@@ -35,15 +35,15 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// The flt epsilon
 		/// </summary>
-		public static readonly float FLT_EPSILON = 1.192092896e-07F;//smallest such that 1.0f+FLT_EPSILON != 1.0f
+		public static readonly float FltEpsilon = 1.192092896e-07F;//smallest such that 1.0f+FLT_EPSILON != 1.0f
 		/// <summary>
 		/// The flt epsilon
 		/// </summary>
-		public static readonly float FLT_EPSILON_SQUARED = FLT_EPSILON * FLT_EPSILON;//smallest such that 1.0f+FLT_EPSILON != 1.0f
+		public static readonly float FltEpsilonSquared = FltEpsilon * FltEpsilon;//smallest such that 1.0f+FLT_EPSILON != 1.0f
 		/// <summary>
 		/// The flt max
 		/// </summary>
-		public static readonly float FLT_MAX = 3.402823466e+38F;
+		public static readonly float FltMax = 3.402823466e+38F;
 		/// <summary>
 		/// Forces the scale using the specified x
 		/// </summary>
@@ -114,12 +114,12 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// Maximum number of contacts to be handled to solve a TOI island.
 		/// </summary>
-		public static readonly int MaxTOIContactsPerIsland = 32;
+		public static readonly int MaxToiContactsPerIsland = 32;
 
 		/// <summary>
 		/// Maximum number of joints to be handled to solve a TOI island.
 		/// </summary>
-		public static readonly int MaxTOIJointsPerIsland = 32;
+		public static readonly int MaxToiJointsPerIsland = 32;
 
 		/// <summary>
 		/// A velocity threshold for elastic collisions. Any collision with a relative linear

@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Collision
                     Vec2 pointA = Common.Math.Mul(xfA, manifold.LocalPoint);
                     Vec2 pointB = Common.Math.Mul(xfB, manifold.Points[0].LocalPoint);
                     Vec2 normal = new Vec2(1.0f, 0.0f);
-                    if (Vec2.DistanceSquared(pointA, pointB) > Settings.FLT_EPSILON_SQUARED)
+                    if (Vec2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
                     {
                         normal = pointB - pointA;
                         normal.Normalize();

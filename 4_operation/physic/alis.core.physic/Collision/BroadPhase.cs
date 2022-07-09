@@ -693,8 +693,8 @@ namespace Alis.Core.Physic.Collision
 			float dx = (segment.P2.X - segment.P1.X) * _quantizationFactor.X;
 			float dy = (segment.P2.Y - segment.P1.Y) * _quantizationFactor.Y;
 
-			int sx = dx < -Settings.FLT_EPSILON ? -1 : (dx > Settings.FLT_EPSILON ? 1 : 0);
-			int sy = dy < -Settings.FLT_EPSILON ? -1 : (dy > Settings.FLT_EPSILON ? 1 : 0);
+			int sx = dx < -Settings.FltEpsilon ? -1 : (dx > Settings.FltEpsilon ? 1 : 0);
+			int sy = dy < -Settings.FltEpsilon ? -1 : (dy > Settings.FltEpsilon ? 1 : 0);
 
 			Box2DXDebug.Assert(sx != 0 || sy != 0);
 

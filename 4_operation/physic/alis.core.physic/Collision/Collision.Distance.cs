@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Collision
 				float distanceSqr = p.LengthSquared();
 
 				// Ensure the search direction is numerically fit.
-				if (distanceSqr < Settings.FLT_EPSILON_SQUARED)
+				if (distanceSqr < Settings.FltEpsilonSquared)
 				{
 					// The origin is probably contained by a line segment
 					// or triangle. Thus the shapes are overlapped.
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Collision
 				float rA = shapeA.Radius;
 				float rB = shapeB.Radius;
 
-				if (output.Distance > rA + rB && output.Distance > Settings.FLT_EPSILON)
+				if (output.Distance > rA + rB && output.Distance > Settings.FltEpsilon)
 				{
 					// Shapes are still no overlapped.
 					// Move the witness points to the outer surface.

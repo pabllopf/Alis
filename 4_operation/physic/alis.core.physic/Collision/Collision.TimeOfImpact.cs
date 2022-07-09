@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Collision
 			Sweep sweepB = input.SweepB;
 
 			Box2DXDebug.Assert(sweepA.T0 == sweepB.T0);
-			Box2DXDebug.Assert(1.0f - sweepA.T0 > Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(1.0f - sweepA.T0 > Settings.FltEpsilon);
 
 			float radius = shapeA.Radius + shapeB.Radius;
 			float tolerance = input.Tolerance;
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Collision
 				}
 
 				// Ensure significant advancement.
-				if (newAlpha < (1.0f + 100.0f * Settings.FLT_EPSILON) * alpha)
+				if (newAlpha < (1.0f + 100.0f * Settings.FltEpsilon) * alpha)
 				{
 					break;
 				}

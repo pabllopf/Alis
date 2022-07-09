@@ -128,13 +128,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
 							float kNormal = bodyA._invMass + bodyB._invMass + bodyA._invI * rnA + bodyB._invI * rnB;
 
-							Box2DXDebug.Assert(kNormal > Settings.FLT_EPSILON);
+							Box2DXDebug.Assert(kNormal > Settings.FltEpsilon);
 							ccp->NormalMass = 1.0f / kNormal;
 
 							float kEqualized = bodyA._mass * bodyA._invMass + bodyB._mass * bodyB._invMass;
 							kEqualized += bodyA._mass * bodyA._invI * rnA + bodyB._mass * bodyB._invI * rnB;
 
-							Box2DXDebug.Assert(kEqualized > Settings.FLT_EPSILON);
+							Box2DXDebug.Assert(kEqualized > Settings.FltEpsilon);
 							ccp->EqualizedMass = 1.0f / kEqualized;
 
 							Vec2 tangent = Vec2.Cross(cc.Normal, 1.0f);
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
 							float kTangent = bodyA._invMass + bodyB._invMass + bodyA._invI * rtA + bodyB._invI * rtB;
 
-							Box2DXDebug.Assert(kTangent > Settings.FLT_EPSILON);
+							Box2DXDebug.Assert(kTangent > Settings.FltEpsilon);
 							ccp->TangentMass = 1.0f / kTangent;
 
 							// Setup a velocity bias for restitution.
@@ -617,7 +617,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 						{
 							Vec2 pointA = cc.BodyA.GetWorldPoint(cc.LocalPoint);
 							Vec2 pointB = cc.BodyB.GetWorldPoint(cc.Points[0].LocalPoint);
-							if (Vec2.DistanceSquared(pointA, pointB) > Settings.FLT_EPSILON_SQUARED)
+							if (Vec2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
 							{
 								Normal = pointB - pointA;
 								Normal.Normalize();

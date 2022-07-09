@@ -406,7 +406,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				_a2 = Vec2.Cross(r2, _axis);
 
 				_motorMass = _invMass1 + _invMass2 + _invI1 * _a1 * _a1 + _invI2 * _a2 * _a2;
-				Box2DXDebug.Assert(_motorMass > Settings.FLT_EPSILON);
+				Box2DXDebug.Assert(_motorMass > Settings.FltEpsilon);
 				_motorMass = 1.0f / _motorMass;
 			}
 

@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Collision
 
 			// Find support vertex on poly2 for -normal.
 			int index = 0;
-			float minDot = Settings.FLT_MAX;
+			float minDot = Settings.FltMax;
 			for (int i = 0; i < count2; ++i)
 			{
 				float dot = Vec2.Dot(vertices2[i], normal1);
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Collision
 
 			// Find edge normal on poly1 that has the largest projection onto d.
 			int edge = 0;
-			float maxDot = -Settings.FLT_MAX;
+			float maxDot = -Settings.FltMax;
 			for (int i = 0; i < count1; ++i)
 			{
 				float dot = Vec2.Dot(normals1[i], dLocal1);
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Collision
 
 			// Find the incident edge on poly2.
 			int index = 0;
-			float minDot = Settings.FLT_MAX;
+			float minDot = Settings.FltMax;
 			for (int i = 0; i < count2; ++i)
 			{
 				float dot = Vec2.Dot(normal1, normals2[i]);

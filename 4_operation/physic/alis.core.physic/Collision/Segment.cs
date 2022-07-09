@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Collision
             Vec2 d = P2 - P1;
             Vec2 n = Vec2.Cross(d, 1.0f);
 
-            float k_slop = 100.0f * Settings.FLT_EPSILON;
+            float k_slop = 100.0f * Settings.FltEpsilon;
             float denom = -Vec2.Dot(r, n);
 
             // Cull back facing collision and ignore parallel segments.

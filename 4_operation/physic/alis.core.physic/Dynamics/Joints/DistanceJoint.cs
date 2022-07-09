@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			float cr1u = Vec2.Cross(r1, _u);
 			float cr2u = Vec2.Cross(r2, _u);
 			float invMass = b1._invMass + b1._invI * cr1u * cr1u + b2._invMass + b2._invI * cr2u * cr2u;
-			Box2DXDebug.Assert(invMass > Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(invMass > Settings.FltEpsilon);
 			_mass = 1.0f / invMass;
 
 			if (_frequencyHz > 0.0f)

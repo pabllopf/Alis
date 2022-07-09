@@ -171,7 +171,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			// magic formulas
 			// gamma has units of inverse mass.
 			// beta has units of inverse time.
-			Box2DXDebug.Assert(d + step.Dt * k > Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(d + step.Dt * k > Settings.FltEpsilon);
 			_gamma = 1.0f / (step.Dt * (d + step.Dt * k));
 			_beta = step.Dt * k * _gamma;
 

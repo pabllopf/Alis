@@ -381,7 +381,7 @@ namespace Alis.Core.Physic.Dynamics
 
 			if (allowSleep)
 			{
-				float minSleepTime = Settings.FLT_MAX;
+				float minSleepTime = Settings.FltMax;
 
 #if !TARGET_FLOAT32_IS_FIXED
 				float linTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;

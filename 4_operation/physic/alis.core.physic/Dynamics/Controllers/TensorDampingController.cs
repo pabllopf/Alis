@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public override void Step(TimeStep step)
         {
             float timestep = step.Dt;
-            if (timestep <= Settings.FLT_EPSILON)
+            if (timestep <= Settings.FltEpsilon)
                 return;
             if (timestep > MaxTimestep && MaxTimestep > 0)
                 timestep = MaxTimestep;

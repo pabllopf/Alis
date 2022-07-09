@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 				int i1 = i;
 				int i2 = i + 1 < count ? i + 1 : 0;
 				Vec2 edge = Vertices[i2] - Vertices[i1];
-				Box2DXDebug.Assert(edge.LengthSquared() > Settings.FLT_EPSILON_SQUARED);
+				Box2DXDebug.Assert(edge.LengthSquared() > Settings.FltEpsilonSquared);
 				Normals[i] = Vec2.Cross(edge, 1.0f);
 				Normals[i].Normalize();
 			}
@@ -372,7 +372,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			massData.Mass = denstity * area;
 
 			// Center of mass
-			Box2DXDebug.Assert(area > Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(area > Settings.FltEpsilon);
 			center *= 1.0f / area;
 			massData.Center = center;
 
@@ -404,7 +404,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			for (i = 0; i < VertexCount; i++)
 			{
 				depths[i] = Vec2.Dot(normalL, Vertices[i]) - offsetL;
-				bool isSubmerged = depths[i] < -Settings.FLT_EPSILON;
+				bool isSubmerged = depths[i] < -Settings.FltEpsilon;
 				if (i > 0)
 				{
 					if (isSubmerged)
@@ -626,7 +626,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			}
 
 			// Centroid
-			Box2DXDebug.Assert(area > Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(area > Settings.FltEpsilon);
 			c *= 1.0f / area;
 			return c;
 		}

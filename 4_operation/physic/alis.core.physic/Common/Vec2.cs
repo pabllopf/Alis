@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Common
 		public float Normalize()
 		{
 			float length = Length();
-			if (length < Settings.FLT_EPSILON)
+			if (length < Settings.FltEpsilon)
 			{
 				return 0.0f;
 			}

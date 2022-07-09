@@ -65,8 +65,8 @@ namespace Alis.Core.Physic.Collision
         /// <param name="input"></param>
         public void RayCast(out RayCastOutput output, RayCastInput input)
         {
-            float tmin = -Settings.FLT_MAX;
-            float tmax = Settings.FLT_MAX;
+            float tmin = -Settings.FltMax;
+            float tmax = Settings.FltMax;
 
             output = new RayCastOutput();
 
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Collision
 
             for (int i = 0; i < 2; ++i)
             {
-                if (absD[i] < Settings.FLT_EPSILON)
+                if (absD[i] < Settings.FltEpsilon)
                 {
                     // Parallel.
                     if (p[i] < LowerBound[i] || UpperBound[i] < p[i])

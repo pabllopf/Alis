@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Collision
 
 			// Find the min separating edge.
 			int normalIndex = 0;
-			float separation = -Settings.FLT_MAX;
+			float separation = -Settings.FltMax;
 			float radius = polygon.Radius + circle.Radius;
 			int vertexCount = polygon.VertexCount;
 			Vec2[] vertices = polygon.Vertices;
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Collision
 			Vec2 v2 = vertices[vertIndex2];
 
 			// If the center is inside the polygon ...
-			if (separation < Settings.FLT_EPSILON)
+			if (separation < Settings.FltEpsilon)
 			{
 				manifold.PointCount = 1;
 				manifold.Type = ManifoldType.FaceA;

@@ -594,7 +594,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 					// Use a particle solution (no rotation).
 					Vec2 u = C; u.Normalize();
 					float k = invMass1 + invMass2;
-					Box2DXDebug.Assert(k > Settings.FLT_EPSILON);
+					Box2DXDebug.Assert(k > Settings.FltEpsilon);
 					float m = 1.0f / k;
 					Vec2 impulse = m * -C;
 					float k_beta = 0.5f;

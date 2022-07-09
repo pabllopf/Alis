@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Common
 		/// <param name="t">The new initial time.</param>
 		public void Advance(float t)
 		{
-			if (T0 < t && 1.0f - T0 > Settings.FLT_EPSILON)
+			if (T0 < t && 1.0f - T0 > Settings.FltEpsilon)
 			{
 				float alpha = (t - T0) / (1.0f - T0);
 				C0 = (1.0f - alpha) * C0 + alpha * C;

@@ -344,9 +344,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			_limitMass1 = b1._invMass + b1._invI * cr1u1 * cr1u1;
 			_limitMass2 = b2._invMass + b2._invI * cr2u2 * cr2u2;
 			_pulleyMass = _limitMass1 + _ratio * _ratio * _limitMass2;
-			Box2DXDebug.Assert(_limitMass1 > Settings.FLT_EPSILON);
-			Box2DXDebug.Assert(_limitMass2 > Settings.FLT_EPSILON);
-			Box2DXDebug.Assert(_pulleyMass > Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(_limitMass1 > Settings.FltEpsilon);
+			Box2DXDebug.Assert(_limitMass2 > Settings.FltEpsilon);
+			Box2DXDebug.Assert(_pulleyMass > Settings.FltEpsilon);
 			_limitMass1 = 1.0f / _limitMass1;
 			_limitMass2 = 1.0f / _limitMass2;
 			_pulleyMass = 1.0f / _pulleyMass;

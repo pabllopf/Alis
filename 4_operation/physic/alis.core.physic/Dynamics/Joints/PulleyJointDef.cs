@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vec2 d2 = anchor2 - groundAnchor2;
             Length2 = d2.Length();
             Ratio = ratio;
-            Box2DXDebug.Assert(ratio > Settings.FLT_EPSILON);
+            Box2DXDebug.Assert(ratio > Settings.FltEpsilon);
             float C = Length1 + ratio * Length2;
             MaxLength1 = C - ratio * PulleyJoint.MinPulleyLength;
             MaxLength2 = (C - PulleyJoint.MinPulleyLength) / ratio;

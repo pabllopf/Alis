@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 //Vec2 localCentroid = Math.MulT(body.GetXForm(), areac);
                 massc.X /= mass;
                 massc.Y /= mass;
-                if (area < Settings.FLT_EPSILON)
+                if (area < Settings.FltEpsilon)
                     continue;
                 //Buoyancy
                 Vec2 buoyancyForce = -Density * area * Gravity;
