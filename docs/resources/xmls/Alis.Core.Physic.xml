@@ -5114,67 +5114,67 @@
             </summary>
             <seealso cref="T:System.IDisposable"/>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._listener">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.Listener">
             <summary>
             The listener
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._bodies">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.Bodies">
             <summary>
             The bodies
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._contacts">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.Contacts">
             <summary>
             The contacts
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._joints">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.Joints">
             <summary>
             The joints
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._positions">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.Positions">
             <summary>
             The positions
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._velocities">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.Velocities">
             <summary>
             The velocities
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._bodyCount">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.BodyCount">
             <summary>
             The body count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._jointCount">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.JointCount">
             <summary>
             The joint count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._contactCount">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.ContactCount">
             <summary>
             The contact count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._bodyCapacity">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.BodyCapacity">
             <summary>
             The body capacity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._contactCapacity">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.ContactCapacity">
             <summary>
             The contact capacity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._jointCapacity">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.JointCapacity">
             <summary>
             The joint capacity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island._positionIterationCount">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.PositionIterationCount">
             <summary>
             The position iteration count
             </summary>
@@ -5206,7 +5206,7 @@
             <param name="gravity">The gravity</param>
             <param name="allowSleep">The allow sleep</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Island.SolveTOI(Alis.Core.Physic.Dynamics.TimeStep@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Island.SolveToi(Alis.Core.Physic.Dynamics.TimeStep@)">
             <summary>
             Solves the toi using the specified sub step
             </summary>
@@ -7214,12 +7214,12 @@
             The position
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Position.x">
+        <member name="F:Alis.Core.Physic.Dynamics.Position.X">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Position.a">
+        <member name="F:Alis.Core.Physic.Dynamics.Position.A">
             <summary>
             The 
             </summary>
@@ -7234,7 +7234,7 @@
             The dt
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.Inv_Dt">
+        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.InvDt">
             <summary>
             The inv dt
             </summary>
@@ -7264,12 +7264,12 @@
             The velocity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Velocity.v">
+        <member name="F:Alis.Core.Physic.Dynamics.Velocity.V">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Velocity.w">
+        <member name="F:Alis.Core.Physic.Dynamics.Velocity.W">
             <summary>
             The 
             </summary>

@@ -35,33 +35,12 @@ namespace Alis.Core.Physic.Dynamics
 	/// </summary>
 	public class Fixture
 	{
-		/// <summary>
-		/// The type
-		/// </summary>
-		protected ShapeType _type;
-		/// <summary>
-		/// The is sensor
-		/// </summary>
-		protected bool _isSensor;
-		/// <summary>
-		/// The proxy id
-		/// </summary>
-		protected UInt16 _proxyId;
+        /// <summary>
+        /// The proxy id
+        /// </summary>
+        protected ushort ProxyId { get; set; }
 
-		/// <summary>
-		/// The body
-		/// </summary>
-		internal Body _body;
-		/// <summary>
-		/// The shape
-		/// </summary>
-		protected Shape _shape;
-		/// <summary>
-		/// The next
-		/// </summary>
-		internal Fixture _next;
-
-		/// <summary>
+        /// <summary>
 		/// Contact filtering data. You must call b2World::Refilter to correct
 		/// existing contacts/non-contacts.
 		/// </summary>
@@ -70,30 +49,30 @@ namespace Alis.Core.Physic.Dynamics
 		/// <summary>
 		/// Is this fixture a sensor (non-solid)?
 		/// </summary>
-		public bool IsSensor { get { return _isSensor; } }
+		public bool IsSensor { get; protected set; }
 
-		/// <summary>
+        /// <summary>
 		/// Get the child shape. You can modify the child shape, however you should not change the
 		/// number of vertices because this will crash some collision caching mechanisms.
 		/// </summary>
-		public Shape Shape { get { return _shape; } }
+		public Shape Shape { get; protected set; }
 
-		/// <summary>
+        /// <summary>
 		/// Get the type of this shape. You can use this to down cast to the concrete shape.
 		/// </summary>
-		public ShapeType ShapeType { get { return _type; } }
+		public ShapeType ShapeType { get; protected set; }
 
-		/// <summary>
+        /// <summary>
 		/// Get the next fixture in the parent body's fixture list.
 		/// </summary>
-		public Fixture Next { get { return _next; } }
+		public Fixture Next { get; internal set; }
 
-		/// <summary>
+        /// <summary>
 		/// Get the parent body of this fixture. This is NULL if the fixture is not attached.
 		/// </summary>
-		public Body Body { get { return _body; } }
+		public Body Body { get; internal set; }
 
-		/// <summary>
+        /// <summary>
 		/// User data that was assigned in the fixture definition. Use this to
 		/// store your application specific data.
 		/// </summary>
@@ -119,7 +98,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// </summary>
 		public Fixture()
 		{
-			_proxyId = PairManager.NullProxy;
+			ProxyId = PairManager.NullProxy;
 		}
 
 		/// <summary>
@@ -136,17 +115,17 @@ namespace Alis.Core.Physic.Dynamics
 			Restitution = def.Restitution;
 			Density = def.Density;
 
-			_body = body;
-			_next = null;
+			Body = body;
+			Next = null;
 
 			Filter = def.Filter;
 
-			_isSensor = def.IsSensor;
+			IsSensor = def.IsSensor;
 
-			_type = def.Type;
+			ShapeType = def.Type;
 
 			// Allocate and initialize the child shape.
-			switch (_type)
+			switch (ShapeType)
 			{
 				case ShapeType.CircleShape:
 					{
@@ -154,7 +133,7 @@ namespace Alis.Core.Physic.Dynamics
 						CircleDef circleDef = (CircleDef)def;
 						circle.Position = circleDef.LocalPosition;
 						circle.Radius = circleDef.Radius;
-						_shape = circle;
+						Shape = circle;
 					}
 					break;
 
@@ -163,7 +142,7 @@ namespace Alis.Core.Physic.Dynamics
 						PolygonShape polygon = new PolygonShape();
 						PolygonDef polygonDef = (PolygonDef)def;
 						polygon.Set(polygonDef.Vertices, polygonDef.VertexCount);
-						_shape = polygon;
+						Shape = polygon;
 					}
 					break;
 
@@ -172,7 +151,7 @@ namespace Alis.Core.Physic.Dynamics
 						EdgeShape edge = new EdgeShape();
 						EdgeDef edgeDef = (EdgeDef)def;
 						edge.Set(edgeDef.Vertex1, edgeDef.Vertex2);
-						_shape = edge;
+						Shape = edge;
 					}
 					break;
 
@@ -183,7 +162,7 @@ namespace Alis.Core.Physic.Dynamics
 
 			// Create proxy in the broad-phase.
 			Aabb aabb;
-			_shape.ComputeAabb(out aabb, xf);
+			Shape.ComputeAabb(out aabb, xf);
 
 			bool inRange = broadPhase.InRange(aabb);
 
@@ -192,11 +171,11 @@ namespace Alis.Core.Physic.Dynamics
 
 			if (inRange)
 			{
-				_proxyId = broadPhase.CreateProxy(aabb, this);
+				ProxyId = broadPhase.CreateProxy(aabb, this);
 			}
 			else
 			{
-				_proxyId = PairManager.NullProxy;
+				ProxyId = PairManager.NullProxy;
 			}
 		}
 
@@ -207,15 +186,15 @@ namespace Alis.Core.Physic.Dynamics
 		public void Destroy(BroadPhase broadPhase)
 		{
 			// Remove proxy from the broad-phase.
-			if (_proxyId != PairManager.NullProxy)
+			if (ProxyId != PairManager.NullProxy)
 			{
-				broadPhase.DestroyProxy(_proxyId);
-				_proxyId = PairManager.NullProxy;
+				broadPhase.DestroyProxy(ProxyId);
+				ProxyId = PairManager.NullProxy;
 			}
 
 			// Free the child shape.
-			_shape.Dispose();
-			_shape = null;
+			Shape.Dispose();
+			Shape = null;
 		}
 
 		/// <summary>
@@ -227,22 +206,22 @@ namespace Alis.Core.Physic.Dynamics
 		/// <returns>The bool</returns>
 		internal bool Synchronize(BroadPhase broadPhase, XForm transform1, XForm transform2)
 		{
-			if (_proxyId == PairManager.NullProxy)
+			if (ProxyId == PairManager.NullProxy)
 			{
 				return false;
 			}
 
 			// Compute an AABB that covers the swept shape (may miss some rotation effect).
 			Aabb aabb1, aabb2;
-			_shape.ComputeAabb(out aabb1, transform1);
-			_shape.ComputeAabb(out aabb2, transform2);
+			Shape.ComputeAabb(out aabb1, transform1);
+			Shape.ComputeAabb(out aabb2, transform2);
 
 			Aabb aabb = new Aabb();
 			aabb.Combine(aabb1, aabb2);
 
 			if (broadPhase.InRange(aabb))
 			{
-				broadPhase.MoveProxy(_proxyId, aabb);
+				broadPhase.MoveProxy(ProxyId, aabb);
 				return true;
 			}
 
@@ -256,25 +235,25 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="transform">The transform</param>
 		internal void RefilterProxy(BroadPhase broadPhase, XForm transform)
 		{
-			if (_proxyId == PairManager.NullProxy)
+			if (ProxyId == PairManager.NullProxy)
 			{
 				return;
 			}
 
-			broadPhase.DestroyProxy(_proxyId);
+			broadPhase.DestroyProxy(ProxyId);
 
 			Aabb aabb;
-			_shape.ComputeAabb(out aabb, transform);
+			Shape.ComputeAabb(out aabb, transform);
 
 			bool inRange = broadPhase.InRange(aabb);
 
 			if (inRange)
 			{
-				_proxyId = broadPhase.CreateProxy(aabb, this);
+				ProxyId = broadPhase.CreateProxy(aabb, this);
 			}
 			else
 			{
-				_proxyId = PairManager.NullProxy;
+				ProxyId = PairManager.NullProxy;
 			}
 		}
 
@@ -283,8 +262,8 @@ namespace Alis.Core.Physic.Dynamics
 		/// </summary>
 		public virtual void Dispose()
 		{
-			Box2DXDebug.Assert(_proxyId == PairManager.NullProxy);
-			Box2DXDebug.Assert(_shape == null);
+			Box2DXDebug.Assert(ProxyId == PairManager.NullProxy);
+			Box2DXDebug.Assert(Shape == null);
 		}
 
 		/// <summary>
@@ -294,7 +273,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="massData">Returns the mass data for this shape.</param>
 		public void ComputeMass(out MassData massData)
 		{
-			_shape.ComputeMass(out massData, Density);
+			Shape.ComputeMass(out massData, Density);
 		}
 
 		/// <summary>
@@ -306,7 +285,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// <returns>The total volume less than offset along normal.</returns>
 		public float ComputeSubmergedArea(Vec2 normal, float offset, out Vec2 c)
 		{
-			return _shape.ComputeSubmergedArea(normal, offset, _body.GetXForm(), out c);
+			return Shape.ComputeSubmergedArea(normal, offset, Body.GetXForm(), out c);
 		}
 
 		/// <summary>
@@ -315,7 +294,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="p">A point in world coordinates.</param>
 		public bool TestPoint(Vec2 p)
 		{
-			return _shape.TestPoint(_body.GetXForm(), p);
+			return Shape.TestPoint(Body.GetXForm(), p);
 		}
 
 		/// <summary>
@@ -329,7 +308,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="maxLambda">A number typically in the range [0,1].</param>
 		public SegmentCollide TestSegment(out float lambda, out Vec2 normal, Segment segment, float maxLambda)
 		{
-			return _shape.TestSegment(_body.GetXForm(), out lambda, out normal, segment, maxLambda);
+			return Shape.TestSegment(Body.GetXForm(), out lambda, out normal, segment, maxLambda);
 		}
 
 		/// <summary>
@@ -337,7 +316,7 @@ namespace Alis.Core.Physic.Dynamics
 		/// </summary>
 		public float ComputeSweepRadius(Vec2 pivot)
 		{
-			return _shape.ComputeSweepRadius(pivot);
+			return Shape.ComputeSweepRadius(pivot);
 		}
 	}
 }

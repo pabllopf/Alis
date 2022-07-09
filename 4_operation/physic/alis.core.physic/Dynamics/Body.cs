@@ -368,11 +368,11 @@ namespace Alis.Core.Physic.Dynamics
 			Fixture fixture = new Fixture();
 			fixture.Create(broadPhase, this, _xf, def);
 
-			fixture._next = _fixtureList;
+			fixture.Next = _fixtureList;
 			_fixtureList = fixture;
 			++_fixtureCount;
 
-			fixture._body = this;
+			fixture.Body = this;
 
 			return fixture;
 		}
@@ -417,8 +417,8 @@ namespace Alis.Core.Physic.Dynamics
 			BroadPhase broadPhase = _world._broadPhase;
 
 			fixture.Destroy(broadPhase);
-			fixture._body = null;
-			fixture._next = null;
+			fixture.Body = null;
+			fixture.Next = null;
 
 			--_fixtureCount;
 		}
