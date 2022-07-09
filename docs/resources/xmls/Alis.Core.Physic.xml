@@ -4900,34 +4900,9 @@
             @warning you cannot reuse fixtures.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Fixture._type">
-            <summary>
-            The type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Fixture._isSensor">
-            <summary>
-            The is sensor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Fixture._proxyId">
+        <member name="P:Alis.Core.Physic.Dynamics.Fixture.ProxyId">
             <summary>
             The proxy id
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Fixture._body">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Fixture._shape">
-            <summary>
-            The shape
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Fixture._next">
-            <summary>
-            The next
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Fixture.Filter">

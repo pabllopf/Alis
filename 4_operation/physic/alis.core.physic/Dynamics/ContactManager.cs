@@ -34,19 +34,19 @@ namespace Alis.Core.Physic.Dynamics
 		/// <summary>
 		/// The world
 		/// </summary>
-		public World _world;
+		public World World;
 
 		// This lets us provide broadphase proxy pair user data for
 		// contacts that shouldn't exist.
 		/// <summary>
 		/// The null contact
 		/// </summary>
-		public NullContact _nullContact;
+		public NullContact NullContact;
 
 		/// <summary>
 		/// The destroy immediate
 		/// </summary>
-		public bool _destroyImmediate;
+		public bool DestroyImmediate;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ContactManager"/> class
@@ -71,22 +71,22 @@ namespace Alis.Core.Physic.Dynamics
 
 			if (bodyA.IsStatic() && bodyB.IsStatic())
 			{
-				return _nullContact;
+				return NullContact;
 			}
 
 			if (fixtureA.Body == fixtureB.Body)
 			{
-				return _nullContact;
+				return NullContact;
 			}
 
 			if (bodyB.IsConnected(bodyA))
 			{
-				return _nullContact;
+				return NullContact;
 			}
 
-			if (_world._contactFilter != null && _world._contactFilter.ShouldCollide(fixtureA, fixtureB) == false)
+			if (World._contactFilter != null && World._contactFilter.ShouldCollide(fixtureA, fixtureB) == false)
 			{
-				return _nullContact;
+				return NullContact;
 			}
 
 			// Call the factory.
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Dynamics
 
 			if (c == null)
 			{
-				return _nullContact;
+				return NullContact;
 			}
 
 			// Contact creation may swap shapes.
@@ -105,12 +105,12 @@ namespace Alis.Core.Physic.Dynamics
 
 			// Insert into the world.
 			c._prev = null;
-			c._next = _world._contactList;
-			if (_world._contactList != null)
+			c._next = World._contactList;
+			if (World._contactList != null)
 			{
-				_world._contactList._prev = c;
+				World._contactList._prev = c;
 			}
-			_world._contactList = c;
+			World._contactList = c;
 
 			// Connect to island graph.
 
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Dynamics
 			}
 			bodyB._contactList = c._nodeB;
 
-			++_world._contactCount;
+			++World._contactCount;
 			return c;
 		}
 
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Dynamics
 			}
 
 			Contact c = pairUserData as Contact;
-			if (c == _nullContact)
+			if (c == NullContact)
 			{
 				return;
 			}
@@ -184,8 +184,8 @@ namespace Alis.Core.Physic.Dynamics
 
 			if (c.Manifold.PointCount > 0)
 			{
-				if(_world._contactListener!=null)
-					_world._contactListener.EndContact(c);
+				if(World._contactListener!=null)
+					World._contactListener.EndContact(c);
 			}
 
 			// Remove from the world.
@@ -199,9 +199,9 @@ namespace Alis.Core.Physic.Dynamics
 				c._next._prev = c._prev;
 			}
 
-			if (c == _world._contactList)
+			if (c == World._contactList)
 			{
-				_world._contactList = c._next;
+				World._contactList = c._next;
 			}
 
 			// Remove from body 1
@@ -238,7 +238,7 @@ namespace Alis.Core.Physic.Dynamics
 
 			// Call the factory.
 			Contact.Destroy(ref c);
-			--_world._contactCount;
+			--World._contactCount;
 		}
 
 		// This is the top level collision call for the time step. Here
@@ -250,7 +250,7 @@ namespace Alis.Core.Physic.Dynamics
 		public void Collide()
 		{
 			// Update awake contacts.
-			for (Contact c = _world._contactList; c != null; c = c.GetNext())
+			for (Contact c = World._contactList; c != null; c = c.GetNext())
 			{
 				Body bodyA = c._fixtureA.Body;
 				Body bodyB = c._fixtureB.Body;
@@ -259,7 +259,7 @@ namespace Alis.Core.Physic.Dynamics
 					continue;
 				}
 
-				c.Update(_world._contactListener);
+				c.Update(World._contactListener);
 			}
 		}
 	}

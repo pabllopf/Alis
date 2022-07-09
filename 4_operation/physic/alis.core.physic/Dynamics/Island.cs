@@ -579,8 +579,8 @@ namespace Alis.Core.Physic.Dynamics
 				ContactImpulse impulse = new ContactImpulse();
 				for (int j = 0; j < cc.PointCount; ++j)
 				{
-					impulse.normalImpulses[j] = cc.Points[j].NormalImpulse;
-					impulse.tangentImpulses[j] = cc.Points[j].TangentImpulse;
+					impulse.NormalImpulses[j] = cc.Points[j].NormalImpulse;
+					impulse.TangentImpulses[j] = cc.Points[j].TangentImpulse;
 				}
 
 				Listener.PostSolve(c, impulse);

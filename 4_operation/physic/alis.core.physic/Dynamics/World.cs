@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Dynamics
 			_inv_dt0 = 0.0f;
 
 			_contactManager = new ContactManager();
-			_contactManager._world = this;
+			_contactManager.World = this;
 			_broadPhase = new BroadPhase(worldAABB, _contactManager);
 
 			BodyDef bd = new BodyDef();

@@ -8,7 +8,17 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// The 
         /// </summary>
-        public float R, G, B;
+        private float r;
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        private float g;
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        private float b;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Color"/> class
@@ -18,7 +28,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="b">The </param>
         public Color(float r, float g, float b)
         {
-            R = r; G = g; B = b;
+            this.r = r; this.g = g; this.b = b;
         }
         /// <summary>
         /// Sets the r
@@ -28,7 +38,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="b">The </param>
         public void Set(float r, float g, float b)
         {
-            R = r; G = g; B = b;
+            this.r = r; 
+            this.g = g; 
+            this.b = b;
         }
     }
 }
