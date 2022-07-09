@@ -10,26 +10,26 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         /// The 
         /// </summary>
-        internal Vec2 wA;		// support point in shapeA
+        internal Vec2 Wa;		// support point in shapeA
         /// <summary>
         /// The 
         /// </summary>
-        internal Vec2 wB;		// support point in shapeB
+        internal Vec2 Wb;		// support point in shapeB
         /// <summary>
         /// The 
         /// </summary>
-        internal Vec2 w;		// wB - wA
+        internal Vec2 W;		// wB - wA
         /// <summary>
         /// The 
         /// </summary>
-        internal float a;		// barycentric coordinate for closest point
+        internal float A;		// barycentric coordinate for closest point
         /// <summary>
         /// The index
         /// </summary>
-        internal int indexA;	// wA index
+        internal int IndexA;	// wA index
         /// <summary>
         /// The index
         /// </summary>
-        internal int indexB;	// wB index
+        internal int IndexB;	// wB index
     }
 }

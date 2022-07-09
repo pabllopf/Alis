@@ -33,12 +33,24 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// The 
 		/// </summary>
-		public Vec2 C0, C; //local center of mass position
-		/// <summary>
+		public Vec2 C0; //local center of mass position
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        public Vec2 C; //local center of mass position
+
+        /// <summary>
 		/// The 
 		/// </summary>
-		public float A0, A; //world angles
-		/// <summary>
+		public float A0; //world angles
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        public float A; //world angles
+
+        /// <summary>
 		/// The 
 		/// </summary>
 		public float T0; //time interval = [T0,1], where T0 is in [0,1]

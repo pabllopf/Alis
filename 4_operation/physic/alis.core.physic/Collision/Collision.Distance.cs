@@ -70,8 +70,8 @@ namespace Alis.Core.Physic.Collision
 				int i;
 				for (i = 0; i < lastCount; ++i)
 				{
-					lastA[i] = vertices[i].indexA;
-					lastB[i] = vertices[i].indexB;
+					lastA[i] = vertices[i].IndexA;
+					lastB[i] = vertices[i].IndexB;
 				}
 
 				switch (simplex._count)
@@ -118,18 +118,18 @@ namespace Alis.Core.Physic.Collision
 
 				// Compute a tentative new simplex vertex using support points.
 				SimplexVertex* vertex = vertices + simplex._count;
-				vertex->indexA = shapeA.GetSupport(Common.Math.MulT(transformA.R, p));
-				vertex->wA = Common.Math.Mul(transformA, shapeA.GetVertex(vertex->indexA));
+				vertex->IndexA = shapeA.GetSupport(Common.Math.MulT(transformA.R, p));
+				vertex->Wa = Common.Math.Mul(transformA, shapeA.GetVertex(vertex->IndexA));
 				//Vec2 wBLocal;
-				vertex->indexB = shapeB.GetSupport(Common.Math.MulT(transformB.R, -p));
-				vertex->wB = Common.Math.Mul(transformB, shapeB.GetVertex(vertex->indexB));
-				vertex->w = vertex->wB - vertex->wA;
+				vertex->IndexB = shapeB.GetSupport(Common.Math.MulT(transformB.R, -p));
+				vertex->Wb = Common.Math.Mul(transformB, shapeB.GetVertex(vertex->IndexB));
+				vertex->W = vertex->Wb - vertex->Wa;
 
 				// Iteration count is equated to the number of support point calls.
 				++iter;
 
 				// Check for convergence.
-				float lowerBound = Vec2.Dot(p, vertex->w);
+				float lowerBound = Vec2.Dot(p, vertex->W);
 				float upperBound = distanceSqr;
 				const float k_relativeTolSqr = 0.01f * 0.01f;	// 1:100
 				if (upperBound - lowerBound <= k_relativeTolSqr * upperBound)
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Collision
 				bool duplicate = false;
 				for (i = 0; i < lastCount; ++i)
 				{
-					if (vertex->indexA == lastA[i] && vertex->indexB == lastB[i])
+					if (vertex->IndexA == lastA[i] && vertex->IndexB == lastB[i])
 					{
 						duplicate = true;
 						break;

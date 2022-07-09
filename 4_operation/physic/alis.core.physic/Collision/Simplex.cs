@@ -41,14 +41,14 @@ namespace Alis.Core.Physic.Collision
                 for (int i = 0; i < _count; ++i)
                 {
                     SimplexVertex* v = vertices[i];
-                    v->indexA = cache->IndexA[i];
-                    v->indexB = cache->IndexB[i];
-                    Vec2 wALocal = shapeA.GetVertex(v->indexA);
-                    Vec2 wBLocal = shapeB.GetVertex(v->indexB);
-                    v->wA = Common.Math.Mul(transformA, wALocal);
-                    v->wB = Common.Math.Mul(transformB, wBLocal);
-                    v->w = v->wB - v->wA;
-                    v->a = 0.0f;
+                    v->IndexA = cache->IndexA[i];
+                    v->IndexB = cache->IndexB[i];
+                    Vec2 wALocal = shapeA.GetVertex(v->IndexA);
+                    Vec2 wBLocal = shapeB.GetVertex(v->IndexB);
+                    v->Wa = Common.Math.Mul(transformA, wALocal);
+                    v->Wb = Common.Math.Mul(transformB, wBLocal);
+                    v->W = v->Wb - v->Wa;
+                    v->A = 0.0f;
                 }
 
                 // Compute the new simplex metric, if it is substantially different than
@@ -68,13 +68,13 @@ namespace Alis.Core.Physic.Collision
                 if (_count == 0)
                 {
                     SimplexVertex* v = vertices[0];
-                    v->indexA = 0;
-                    v->indexB = 0;
+                    v->IndexA = 0;
+                    v->IndexB = 0;
                     Vec2 wALocal = shapeA.GetVertex(0);
                     Vec2 wBLocal = shapeB.GetVertex(0);
-                    v->wA = Common.Math.Mul(transformA, wALocal);
-                    v->wB = Common.Math.Mul(transformB, wBLocal);
-                    v->w = v->wB - v->wA;
+                    v->Wa = Common.Math.Mul(transformA, wALocal);
+                    v->Wb = Common.Math.Mul(transformB, wBLocal);
+                    v->W = v->Wb - v->Wa;
                     _count = 1;
                 }
             }
@@ -96,8 +96,8 @@ namespace Alis.Core.Physic.Collision
                 vertices[2] = v3Ptr;
                 for (int i = 0; i < _count; ++i)
                 {
-                    cache->IndexA[i] = (Byte)(vertices[i]->indexA);
-                    cache->IndexB[i] = (Byte)(vertices[i]->indexB);
+                    cache->IndexA[i] = (Byte)(vertices[i]->IndexA);
+                    cache->IndexB[i] = (Byte)(vertices[i]->IndexB);
                 }
             }
         }
@@ -116,9 +116,9 @@ namespace Alis.Core.Physic.Collision
 #endif
                     return Vec2.Zero;
                 case 1:
-                    return _v1.w;
+                    return _v1.W;
                 case 2:
-                    return _v1.a * _v1.w + _v2.a * _v2.w;
+                    return _v1.A * _v1.W + _v2.A * _v2.W;
                 case 3:
                     return Vec2.Zero;
                 default:
@@ -143,17 +143,17 @@ namespace Alis.Core.Physic.Collision
                     break;
 
                 case 1:
-                    *pA = _v1.wA;
-                    *pB = _v1.wB;
+                    *pA = _v1.Wa;
+                    *pB = _v1.Wb;
                     break;
 
                 case 2:
-                    *pA = _v1.a * _v1.wA + _v2.a * _v2.wA;
-                    *pB = _v1.a * _v1.wB + _v2.a * _v2.wB;
+                    *pA = _v1.A * _v1.Wa + _v2.A * _v2.Wa;
+                    *pB = _v1.A * _v1.Wb + _v2.A * _v2.Wb;
                     break;
 
                 case 3:
-                    *pA = _v1.a * _v1.wA + _v2.a * _v2.wA + _v3.a * _v3.wA;
+                    *pA = _v1.A * _v1.Wa + _v2.A * _v2.Wa + _v3.A * _v3.Wa;
                     *pB = *pA;
                     break;
 
@@ -181,10 +181,10 @@ namespace Alis.Core.Physic.Collision
                     return 0.0f;
 
                 case 2:
-                    return Vec2.Distance(_v1.w, _v2.w);
+                    return Vec2.Distance(_v1.W, _v2.W);
 
                 case 3:
-                    return Vec2.Cross(_v2.w - _v1.w, _v3.w - _v1.w);
+                    return Vec2.Cross(_v2.W - _v1.W, _v3.W - _v1.W);
 
                 default:
 #if DEBUG
@@ -222,8 +222,8 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         internal void Solve2()
         {
-            Vec2 w1 = _v1.w;
-            Vec2 w2 = _v2.w;
+            Vec2 w1 = _v1.W;
+            Vec2 w2 = _v2.W;
             Vec2 e12 = w2 - w1;
 
             // w1 region
@@ -231,7 +231,7 @@ namespace Alis.Core.Physic.Collision
             if (d12_2 <= 0.0f)
             {
                 // a2 <= 0, so we clamp it to 0
-                _v1.a = 1.0f;
+                _v1.A = 1.0f;
                 _count = 1;
                 return;
             }
@@ -241,7 +241,7 @@ namespace Alis.Core.Physic.Collision
             if (d12_1 <= 0.0f)
             {
                 // a1 <= 0, so we clamp it to 0
-                _v2.a = 1.0f;
+                _v2.A = 1.0f;
                 _count = 1;
                 _v1 = _v2;
                 return;
@@ -249,8 +249,8 @@ namespace Alis.Core.Physic.Collision
 
             // Must be in e12 region.
             float inv_d12 = 1.0f / (d12_1 + d12_2);
-            _v1.a = d12_1 * inv_d12;
-            _v2.a = d12_2 * inv_d12;
+            _v1.A = d12_1 * inv_d12;
+            _v2.A = d12_2 * inv_d12;
             _count = 2;
         }
 
@@ -264,9 +264,9 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         internal void Solve3()
         {
-            Vec2 w1 = _v1.w;
-            Vec2 w2 = _v2.w;
-            Vec2 w3 = _v3.w;
+            Vec2 w1 = _v1.W;
+            Vec2 w2 = _v2.W;
+            Vec2 w3 = _v3.W;
 
             // Edge12
             // [1      1     ][a1] = [1]
@@ -308,7 +308,7 @@ namespace Alis.Core.Physic.Collision
             // w1 region
             if (d12_2 <= 0.0f && d13_2 <= 0.0f)
             {
-                _v1.a = 1.0f;
+                _v1.A = 1.0f;
                 _count = 1;
                 return;
             }
@@ -317,8 +317,8 @@ namespace Alis.Core.Physic.Collision
             if (d12_1 > 0.0f && d12_2 > 0.0f && d123_3 <= 0.0f)
             {
                 float inv_d12 = 1.0f / (d12_1 + d12_2);
-                _v1.a = d12_1 * inv_d12;
-                _v2.a = d12_1 * inv_d12;
+                _v1.A = d12_1 * inv_d12;
+                _v2.A = d12_1 * inv_d12;
                 _count = 2;
                 return;
             }
@@ -327,8 +327,8 @@ namespace Alis.Core.Physic.Collision
             if (d13_1 > 0.0f && d13_2 > 0.0f && d123_2 <= 0.0f)
             {
                 float inv_d13 = 1.0f / (d13_1 + d13_2);
-                _v1.a = d13_1 * inv_d13;
-                _v3.a = d13_2 * inv_d13;
+                _v1.A = d13_1 * inv_d13;
+                _v3.A = d13_2 * inv_d13;
                 _count = 2;
                 _v2 = _v3;
                 return;
@@ -337,7 +337,7 @@ namespace Alis.Core.Physic.Collision
             // w2 region
             if (d12_1 <= 0.0f && d23_2 <= 0.0f)
             {
-                _v2.a = 1.0f;
+                _v2.A = 1.0f;
                 _count = 1;
                 _v1 = _v2;
                 return;
@@ -346,7 +346,7 @@ namespace Alis.Core.Physic.Collision
             // w3 region
             if (d13_1 <= 0.0f && d23_1 <= 0.0f)
             {
-                _v3.a = 1.0f;
+                _v3.A = 1.0f;
                 _count = 1;
                 _v1 = _v3;
                 return;
@@ -356,8 +356,8 @@ namespace Alis.Core.Physic.Collision
             if (d23_1 > 0.0f && d23_2 > 0.0f && d123_1 <= 0.0f)
             {
                 float inv_d23 = 1.0f / (d23_1 + d23_2);
-                _v2.a = d23_1 * inv_d23;
-                _v3.a = d23_2 * inv_d23;
+                _v2.A = d23_1 * inv_d23;
+                _v3.A = d23_2 * inv_d23;
                 _count = 2;
                 _v1 = _v3;
                 return;
@@ -365,9 +365,9 @@ namespace Alis.Core.Physic.Collision
 
             // Must be in triangle123
             float inv_d123 = 1.0f / (d123_1 + d123_2 + d123_3);
-            _v1.a = d123_1 * inv_d123;
-            _v2.a = d123_2 * inv_d123;
-            _v3.a = d123_3 * inv_d123;
+            _v1.A = d123_1 * inv_d123;
+            _v2.A = d123_2 * inv_d123;
+            _v3.A = d123_3 * inv_d123;
             _count = 3;
         }
     }
