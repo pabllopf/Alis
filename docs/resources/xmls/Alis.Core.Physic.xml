@@ -6341,114 +6341,89 @@
                 drive the motion or to model joint friction.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._a1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.A1">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._a2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.A2">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._axis">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.Axis">
             <summary>
                 The perp
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._perp">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.Perp">
             <summary>
                 The perp
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._enableLimit">
-            <summary>
-                The enable limit
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._enableMotor">
-            <summary>
-                The enable motor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._impulse">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.Impulse">
             <summary>
                 The impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._K">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.K">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._limitState">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.LimitState">
             <summary>
                 The limit state
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._localAnchor1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.LocalAnchor1">
             <summary>
                 The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._localAnchor2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.LocalAnchor2">
             <summary>
                 The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._localXAxis1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.LocalXAxis1">
             <summary>
                 The local axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._localYAxis1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.LocalYAxis1">
             <summary>
                 The local axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._lowerTranslation">
-            <summary>
-                The lower translation
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._maxMotorForce">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.MaxMotorForce">
             <summary>
                 The max motor force
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._motorImpulse">
-            <summary>
-                The motor impulse
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._motorMass">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.MotorMass">
             <summary>
                 The motor mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._motorSpeed">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.motorSpeedx">
             <summary>
                 The motor speed
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._refAngle">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.RefAngle">
             <summary>
                 The ref angle
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._s1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.S1">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._s2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.S2">
             <summary>
                 The
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint._upperTranslation">
-            <summary>
-                The upper translation
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef)">
@@ -6497,7 +6472,7 @@
                 Is the joint motor enabled?
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.MotorSpeed">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.MotorSpeedx">
             <summary>
                 Get\Set the motor speed, usually in meters per second.
             </summary>

@@ -103,8 +103,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             else
             {
                 Prismatic1 = (PrismaticJoint) def.Joint1;
-                GroundAnchor1 = Prismatic1._localAnchor1;
-                LocalAnchor1 = Prismatic1._localAnchor2;
+                GroundAnchor1 = Prismatic1.LocalAnchor1;
+                LocalAnchor1 = Prismatic1.LocalAnchor2;
                 coordinate1 = Prismatic1.JointTranslation;
             }
 
@@ -120,8 +120,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             else
             {
                 Prismatic2 = (PrismaticJoint) def.Joint2;
-                GroundAnchor2 = Prismatic2._localAnchor1;
-                LocalAnchor2 = Prismatic2._localAnchor2;
+                GroundAnchor2 = Prismatic2.LocalAnchor1;
+                LocalAnchor2 = Prismatic2.LocalAnchor2;
                 coordinate2 = Prismatic2.JointTranslation;
             }
 
@@ -267,7 +267,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                Vec2 ug = Math.Mul(g1.GetXForm().R, Prismatic1._localXAxis1);
+                Vec2 ug = Math.Mul(g1.GetXForm().R, Prismatic1.LocalXAxis1);
                 Vec2 r = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
                 float crug = Vec2.Cross(r, ug);
                 Jacobian.Linear1 = -ug;
@@ -282,7 +282,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                Vec2 ug = Math.Mul(g2.GetXForm().R, Prismatic2._localXAxis1);
+                Vec2 ug = Math.Mul(g2.GetXForm().R, Prismatic2.LocalXAxis1);
                 Vec2 r = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
                 float crug = Vec2.Cross(r, ug);
                 Jacobian.Linear2 = -Ratio * ug;
