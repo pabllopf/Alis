@@ -9,26 +9,26 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <summary>
         /// The controller
         /// </summary>
-        public Controller controller;		// provides quick access to other end of this edge.
+        public Controller Controller;		// provides quick access to other end of this edge.
         /// <summary>
         /// The body
         /// </summary>
-        public Body body;					// the body
+        public Body Body;					// the body
         /// <summary>
         /// The prev body
         /// </summary>
-        public ControllerEdge prevBody;		// the previous controller edge in the controllers's joint list
+        public ControllerEdge PrevBody;		// the previous controller edge in the controllers's joint list
         /// <summary>
         /// The next body
         /// </summary>
-        public ControllerEdge nextBody;		// the next controller edge in the controllers's joint list
+        public ControllerEdge NextBody;		// the next controller edge in the controllers's joint list
         /// <summary>
         /// The prev controller
         /// </summary>
-        public ControllerEdge prevController;		// the previous controller edge in the body's joint list
+        public ControllerEdge PrevController;		// the previous controller edge in the body's joint list
         /// <summary>
         /// The next controller
         /// </summary>
-        public ControllerEdge nextController;		// the next controller edge in the body's joint list
+        public ControllerEdge NextController;		// the next controller edge in the body's joint list
     }
 }

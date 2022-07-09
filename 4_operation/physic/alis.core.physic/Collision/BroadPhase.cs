@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Collision
 		/// <summary>
 		/// The ushrt max
 		/// </summary>
-		public static readonly ushort BROADPHASE_MAX = Math.USHRT_MAX;
+		public static readonly ushort BROADPHASE_MAX = Math.UshrtMax;
 #endif
 
 		/// <summary>

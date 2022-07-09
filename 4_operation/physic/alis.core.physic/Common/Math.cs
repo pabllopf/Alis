@@ -31,15 +31,15 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// The ushrt max
 		/// </summary>
-		public static readonly ushort USHRT_MAX = 0xffff;
+		public static readonly ushort UshrtMax = 0xffff;
 		/// <summary>
 		/// The uchar max
 		/// </summary>
-		public static readonly byte UCHAR_MAX = 0xff;
+		public static readonly byte UcharMax = 0xff;
 		/// <summary>
 		/// The rand limit
 		/// </summary>
-		public static readonly int RAND_LIMIT = 32767;
+		public static readonly int RandLimit = 32767;
 
 		/// <summary>
 		/// This function is used to ensure that a floating point number is
@@ -96,14 +96,14 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// The random
 		/// </summary>
-		private static Random s_rnd = new Random();
+		private static Random _sRnd = new Random();
 		/// <summary>
 		/// Random number in range [-1,1]
 		/// </summary>
 		public static float Random()
 		{
-			float r = (float)(s_rnd.Next() & RAND_LIMIT);
-			r /= RAND_LIMIT;
+			float r = (float)(_sRnd.Next() & RandLimit);
+			r /= RandLimit;
 			r = 2.0f * r - 1.0f;
 			return r;
 		}
@@ -113,8 +113,8 @@ namespace Alis.Core.Physic.Common
 		/// </summary>
 		public static float Random(float lo, float hi)
 		{
-			float r = (float)(s_rnd.Next() & RAND_LIMIT);
-			r /= RAND_LIMIT;
+			float r = (float)(_sRnd.Next() & RandLimit);
+			r /= RandLimit;
 			r = (hi - lo) * r + lo;
 			return r;		
 		}
@@ -172,13 +172,13 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// Abses the a
 		/// </summary>
-		/// <param name="A">The </param>
+		/// <param name="a">The </param>
 		/// <returns>The </returns>
-		public static Mat22 Abs(Mat22 A)
+		public static Mat22 Abs(Mat22 a)
 		{
-			Mat22 B = new Mat22();
-			B.Set(Abs(A.col1), Abs(A.col2));
-			return B;
+			Mat22 b = new Mat22();
+			b.Set(Abs(a.col1), Abs(a.col2));
+			return b;
 		}
 
 		/// <summary>
@@ -306,10 +306,10 @@ namespace Alis.Core.Physic.Common
 		/// Multiply a matrix times a vector. If a rotation matrix is provided,
 		/// then this transforms the vector from one frame to another.
 		/// </summary>
-		public static Vec2 Mul(Mat22 A, Vec2 v)
+		public static Vec2 Mul(Mat22 a, Vec2 v)
 		{
 			Vec2 u = new Vec2();
-			u.Set(A.col1.X * v.X + A.col2.X * v.Y, A.col1.Y * v.X + A.col2.Y * v.Y);
+			u.Set(a.col1.X * v.X + a.col2.X * v.Y, a.col1.Y * v.X + a.col2.Y * v.Y);
 			return u;
 		}
 
@@ -317,35 +317,35 @@ namespace Alis.Core.Physic.Common
 		/// Multiply a matrix transpose times a vector. If a rotation matrix is provided,
 		/// then this transforms the vector from one frame to another (inverse transform).
 		/// </summary>
-		public static Vec2 MulT(Mat22 A, Vec2 v)
+		public static Vec2 MulT(Mat22 a, Vec2 v)
 		{
 			Vec2 u = new Vec2();
-			u.Set(Vec2.Dot(v, A.col1), Vec2.Dot(v, A.col2));
+			u.Set(Vec2.Dot(v, a.col1), Vec2.Dot(v, a.col2));
 			return u;
 		}
 
 		/// <summary>
 		/// A * B
 		/// </summary>
-		public static Mat22 Mul(Mat22 A, Mat22 B)
+		public static Mat22 Mul(Mat22 a, Mat22 b)
 		{
-			Mat22 C = new Mat22();
-			C.Set(Mul(A, B.col1), Mul(A, B.col2));
-			return C;
+			Mat22 c = new Mat22();
+			c.Set(Mul(a, b.col1), Mul(a, b.col2));
+			return c;
 		}
 
 		/// <summary>
 		/// A^T * B
 		/// </summary>
-		public static Mat22 MulT(Mat22 A, Mat22 B)
+		public static Mat22 MulT(Mat22 a, Mat22 b)
 		{
 			Vec2 c1 = new Vec2();
-			c1.Set(Vec2.Dot(A.col1, B.col1), Vec2.Dot(A.col2, B.col1));
+			c1.Set(Vec2.Dot(a.col1, b.col1), Vec2.Dot(a.col2, b.col1));
 			Vec2 c2 = new Vec2();
-			c2.Set(Vec2.Dot(A.col1, B.col2), Vec2.Dot(A.col2, B.col2));
-			Mat22 C = new Mat22();
-			C.Set(c1, c2);
-			return C;
+			c2.Set(Vec2.Dot(a.col1, b.col2), Vec2.Dot(a.col2, b.col2));
+			Mat22 c = new Mat22();
+			c.Set(c1, c2);
+			return c;
 		}
 
 		/// <summary>
@@ -373,9 +373,9 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// Multiply a matrix times a vector.
 		/// </summary>
-		public static Vec3 Mul(Mat33 A, Vec3 v)
+		public static Vec3 Mul(Mat33 a, Vec3 v)
 		{
-			Vec3 u = v.X * A.Col1 + v.Y * A.Col2 + v.Z * A.Col3;
+			Vec3 u = v.X * a.Col1 + v.Y * a.Col2 + v.Z * a.Col3;
 			return u;
 		}
 

@@ -38,11 +38,11 @@ namespace Alis.Core.Physic.Collision
 		/// <summary>
 		/// The ushrt max
 		/// </summary>
-		public static readonly ushort NullPair = Common.Math.USHRT_MAX;
+		public static readonly ushort NullPair = Common.Math.UshrtMax;
 		/// <summary>
 		/// The ushrt max
 		/// </summary>
-		public static readonly ushort NullProxy = Common.Math.USHRT_MAX;
+		public static readonly ushort NullProxy = Common.Math.UshrtMax;
 		/// <summary>
 		/// The max pairs
 		/// </summary>

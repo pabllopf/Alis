@@ -47,9 +47,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public override void Step(TimeStep step)
         {
             //B2_NOT_USED(step);
-            for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
+            for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
             {
-                Body body = i.body;
+                Body body = i.Body;
                 if (body.IsSleeping())
                     continue;
                 body.ApplyForce(F, body.GetWorldCenter());

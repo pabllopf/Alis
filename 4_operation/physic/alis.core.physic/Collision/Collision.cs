@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Collision
 		/// <summary>
 		/// The uchar max
 		/// </summary>
-		public static readonly byte NullFeature = Common.Math.UCHAR_MAX;
+		public static readonly byte NullFeature = Common.Math.UcharMax;
 
 		/// <summary>
 		/// Describes whether test overlap
