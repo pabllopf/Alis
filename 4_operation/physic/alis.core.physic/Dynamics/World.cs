@@ -384,31 +384,31 @@ namespace Alis.Core.Physic.Dynamics
 			Joint j = Joint.Create(def);
 
 			// Connect to the world list.
-			j._prev = null;
-			j._next = _jointList;
+			j.Prev = null;
+			j.Next = _jointList;
 			if (_jointList != null)
 			{
-				_jointList._prev = j;
+				_jointList.Prev = j;
 			}
 			_jointList = j;
 			++_jointCount;
 
 			// Connect to the bodies' doubly linked lists.
-			j._node1.Joint = j;
-			j._node1.Other = j._body2;
-			j._node1.Prev = null;
-			j._node1.Next = j._body1._jointList;
-			if (j._body1._jointList != null)
-				j._body1._jointList.Prev = j._node1;
-			j._body1._jointList = j._node1;
+			j.Node1.Joint = j;
+			j.Node1.Other = j.Body2;
+			j.Node1.Prev = null;
+			j.Node1.Next = j.Body1._jointList;
+			if (j.Body1._jointList != null)
+				j.Body1._jointList.Prev = j.Node1;
+			j.Body1._jointList = j.Node1;
 
-			j._node2.Joint = j;
-			j._node2.Other = j._body1;
-			j._node2.Prev = null;
-			j._node2.Next = j._body2._jointList;
-			if (j._body2._jointList != null)
-				j._body2._jointList.Prev = j._node2;
-			j._body2._jointList = j._node2;
+			j.Node2.Joint = j;
+			j.Node2.Other = j.Body1;
+			j.Node2.Prev = null;
+			j.Node2.Next = j.Body2._jointList;
+			if (j.Body2._jointList != null)
+				j.Body2._jointList.Prev = j.Node2;
+			j.Body2._jointList = j.Node2;
 
 			// If the joint prevents collisions, then reset collision filtering.
 			if (def.CollideConnected == false)
@@ -433,69 +433,69 @@ namespace Alis.Core.Physic.Dynamics
 		{
 			Box2DXDebug.Assert(_lock == false);
 
-			bool collideConnected = j._collideConnected;
+			bool collideConnected = j.CollideConnected;
 
 			// Remove from the doubly linked list.
-			if (j._prev != null)
+			if (j.Prev != null)
 			{
-				j._prev._next = j._next;
+				j.Prev.Next = j.Next;
 			}
 
-			if (j._next != null)
+			if (j.Next != null)
 			{
-				j._next._prev = j._prev;
+				j.Next.Prev = j.Prev;
 			}
 
 			if (j == _jointList)
 			{
-				_jointList = j._next;
+				_jointList = j.Next;
 			}
 
 			// Disconnect from island graph.
-			Body body1 = j._body1;
-			Body body2 = j._body2;
+			Body body1 = j.Body1;
+			Body body2 = j.Body2;
 
 			// Wake up connected bodies.
 			body1.WakeUp();
 			body2.WakeUp();
 
 			// Remove from body 1.
-			if (j._node1.Prev != null)
+			if (j.Node1.Prev != null)
 			{
-				j._node1.Prev.Next = j._node1.Next;
+				j.Node1.Prev.Next = j.Node1.Next;
 			}
 
-			if (j._node1.Next != null)
+			if (j.Node1.Next != null)
 			{
-				j._node1.Next.Prev = j._node1.Prev;
+				j.Node1.Next.Prev = j.Node1.Prev;
 			}
 
-			if (j._node1 == body1._jointList)
+			if (j.Node1 == body1._jointList)
 			{
-				body1._jointList = j._node1.Next;
+				body1._jointList = j.Node1.Next;
 			}
 
-			j._node1.Prev = null;
-			j._node1.Next = null;
+			j.Node1.Prev = null;
+			j.Node1.Next = null;
 
 			// Remove from body 2
-			if (j._node2.Prev != null)
+			if (j.Node2.Prev != null)
 			{
-				j._node2.Prev.Next = j._node2.Next;
+				j.Node2.Prev.Next = j.Node2.Next;
 			}
 
-			if (j._node2.Next != null)
+			if (j.Node2.Next != null)
 			{
-				j._node2.Next.Prev = j._node2.Prev;
+				j.Node2.Next.Prev = j.Node2.Prev;
 			}
 
-			if (j._node2 == body2._jointList)
+			if (j.Node2 == body2._jointList)
 			{
-				body2._jointList = j._node2.Next;
+				body2._jointList = j.Node2.Next;
 			}
 
-			j._node2.Prev = null;
-			j._node2.Next = null;
+			j.Node2.Prev = null;
+			j.Node2.Next = null;
 
 			Joint.Destroy(j);
 
@@ -809,13 +809,13 @@ namespace Alis.Core.Physic.Dynamics
 			{
 				b._flags &= ~Body.BodyFlags.Island;
 			}
-			for (Contact c = _contactList; c != null; c = c._next)
+			for (Contact c = _contactList; c != null; c = c.Next)
 			{
-				c._flags &= ~Contact.CollisionFlags.Island;
+				c.Flags &= ~Contact.CollisionFlags.Island;
 			}
-			for (Joint j = _jointList; j != null; j = j._next)
+			for (Joint j = _jointList; j != null; j = j.Next)
 			{
-				j._islandFlag = false;
+				j.IslandFlag = false;
 			}
 
 			// Build and simulate all awake islands.
@@ -862,19 +862,19 @@ namespace Alis.Core.Physic.Dynamics
 						for (ContactEdge cn = b._contactList; cn != null; cn = cn.Next)
 						{
 							// Has this contact already been added to an island?
-							if ((cn.Contact._flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.NonSolid)) != 0)
+							if ((cn.Contact.Flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.NonSolid)) != 0)
 							{
 								continue;
 							}
 
 							// Is this contact touching?
-							if ((cn.Contact._flags & Contact.CollisionFlags.Touch) == (Contact.CollisionFlags)0)
+							if ((cn.Contact.Flags & Contact.CollisionFlags.Touch) == (Contact.CollisionFlags)0)
 							{
 								continue;
 							}
 
 							island.Add(cn.Contact);
-							cn.Contact._flags |= Contact.CollisionFlags.Island;
+							cn.Contact.Flags |= Contact.CollisionFlags.Island;
 
 							Body other = cn.Other;
 
@@ -892,13 +892,13 @@ namespace Alis.Core.Physic.Dynamics
 						// Search all joints connect to this body.
 						for (JointEdge jn = b._jointList; jn != null; jn = jn.Next)
 						{
-							if (jn.Joint._islandFlag == true)
+							if (jn.Joint.IslandFlag == true)
 							{
 								continue;
 							}
 
 							island.Add(jn.Joint);
-							jn.Joint._islandFlag = true;
+							jn.Joint.IslandFlag = true;
 
 							Body other = jn.Other;
 							if ((other._flags & Body.BodyFlags.Island) != 0)
@@ -986,15 +986,15 @@ namespace Alis.Core.Physic.Dynamics
 				b._sweep.T0 = 0.0f;
 			}
 
-			for (Contact c = _contactList; c != null; c = c._next)
+			for (Contact c = _contactList; c != null; c = c.Next)
 			{
 				// Invalidate TOI
-				c._flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
+				c.Flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
 			}
 
-			for (Joint j = _jointList; j != null; j = j._next)
+			for (Joint j = _jointList; j != null; j = j.Next)
 			{
-				j._islandFlag = false;
+				j.IslandFlag = false;
 			}
 
 			// Find TOI events and solve them.
@@ -1004,9 +1004,9 @@ namespace Alis.Core.Physic.Dynamics
 				Contact minContact = null;
 				float minTOI = 1.0f;
 
-				for (Contact c = _contactList; c != null; c = c._next)
+				for (Contact c = _contactList; c != null; c = c.Next)
 				{
-					if ((int)(c._flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
+					if ((int)(c.Flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
 					{
 						continue;
 					}
@@ -1014,10 +1014,10 @@ namespace Alis.Core.Physic.Dynamics
 					// TODO_ERIN keep a counter on the contact, only respond to M TOIs per contact.
 
 					float toi = 1.0f;
-					if ((int)(c._flags & Contact.CollisionFlags.Toi) == 1)
+					if ((int)(c.Flags & Contact.CollisionFlags.Toi) == 1)
 					{
 						// This contact has a valid cached TOI.
-						toi = c._toi;
+						toi = c.Toi;
 					}
 					else
 					{
@@ -1062,8 +1062,8 @@ namespace Alis.Core.Physic.Dynamics
 						}
 
 
-						c._toi = toi;
-						c._flags |= Contact.CollisionFlags.Toi;
+						c.Toi = toi;
+						c.Flags |= Contact.CollisionFlags.Toi;
 					}
 
 					if (Settings.FltEpsilon < toi && toi < minTOI)
@@ -1090,9 +1090,9 @@ namespace Alis.Core.Physic.Dynamics
 
 				// The TOI contact likely has some new contact points.
 				minContact.Update(_contactListener);
-				minContact._flags &= ~Contact.CollisionFlags.Toi;
+				minContact.Flags &= ~Contact.CollisionFlags.Toi;
 
-				if ((minContact._flags & Contact.CollisionFlags.Touch) == 0)
+				if ((minContact.Flags & Contact.CollisionFlags.Touch) == 0)
 				{
 					// This shouldn't happen. Numerical error?
 					//b2Assert(false);
@@ -1143,19 +1143,19 @@ namespace Alis.Core.Physic.Dynamics
 						}
 
 						// Has this contact already been added to an island? Skip slow or non-solid contacts.
-						if ((int)(cEdge.Contact._flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) != 0)
+						if ((int)(cEdge.Contact.Flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) != 0)
 						{
 							continue;
 						}
 
 						// Is this contact touching? For performance we are not updating this contact.
-						if ((cEdge.Contact._flags & Contact.CollisionFlags.Touch) == 0)
+						if ((cEdge.Contact.Flags & Contact.CollisionFlags.Touch) == 0)
 						{
 							continue;
 						}
 
 						island.Add(cEdge.Contact);
-						cEdge.Contact._flags |= Contact.CollisionFlags.Island;
+						cEdge.Contact.Flags |= Contact.CollisionFlags.Island;
 
 						// Update other body.
 						Body other = cEdge.Other;
@@ -1186,14 +1186,14 @@ namespace Alis.Core.Physic.Dynamics
 							continue;
 						}
 
-						if (jEdge.Joint._islandFlag == true)
+						if (jEdge.Joint.IslandFlag == true)
 						{
 							continue;
 						}
 
 						island.Add(jEdge.Joint);
 
-						jEdge.Joint._islandFlag = true;
+						jEdge.Joint.IslandFlag = true;
 
 						Body other = jEdge.Other;
 
@@ -1257,7 +1257,7 @@ namespace Alis.Core.Physic.Dynamics
 					// may not be in the island because they were not touching.
 					for (ContactEdge cn = b._contactList; cn != null; cn = cn.Next)
 					{
-						cn.Contact._flags &= ~Contact.CollisionFlags.Toi;
+						cn.Contact.Flags &= ~Contact.CollisionFlags.Toi;
 					}
 				}
 
@@ -1265,14 +1265,14 @@ namespace Alis.Core.Physic.Dynamics
 				{
 					// Allow contacts to participate in future TOI islands.
 					Contact c = island.Contacts[i];
-					c._flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
+					c.Flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
 				}
 
 				for (int i = 0; i < island.JointCount; ++i)
 				{
 					// Allow joints to participate in future TOI islands.
 					Joint j = island.Joints[i];
-					j._islandFlag = false;
+					j.IslandFlag = false;
 				}
 
 				// Commit fixture proxy movements to the broad-phase so that new contacts are created.

@@ -66,56 +66,52 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 		/// </summary>
 		public static ContactRegister[][] s_registers =
 			new ContactRegister[(int)ShapeType.ShapeTypeCount][/*(int)ShapeType.ShapeTypeCount*/];
-		/// <summary>
-		/// The initialized
-		/// </summary>
-		public static bool s_initialized;
 
-		/// <summary>
-		/// The flags
-		/// </summary>
-		public CollisionFlags _flags;
+        /// <summary>
+        /// The initialized
+        /// </summary>
+        public static bool SInitialized { get; set; }
 
-		// World pool and list pointers.
-		/// <summary>
-		/// The prev
-		/// </summary>
-		public Contact _prev;
-		/// <summary>
-		/// The next
-		/// </summary>
-		public Contact _next;
+        /// <summary>
+        /// The flags
+        /// </summary>
+        public CollisionFlags Flags { get; set; }
 
-		// Nodes for connecting bodies.
-		/// <summary>
-		/// The node
-		/// </summary>
-		public ContactEdge _nodeA;
-		/// <summary>
-		/// The node
-		/// </summary>
-		public ContactEdge _nodeB;
+        // World pool and list pointers.
 
-		/// <summary>
-		/// The fixture
-		/// </summary>
-		public Fixture _fixtureA;
-		/// <summary>
-		/// The fixture
-		/// </summary>
-		public Fixture _fixtureB;
-		
-		/// <summary>
+        /// <summary>
+        /// The prev
+        /// </summary>
+        public Contact Prev { get; set; }
+
+        /// <summary>
+        /// The next
+        /// </summary>
+        public Contact Next { get; set; }
+
+        // Nodes for connecting bodies.
+
+        /// <summary>
+        /// The node
+        /// </summary>
+        public ContactEdge NodeA { get; }
+
+        /// <summary>
+        /// The node
+        /// </summary>
+        public ContactEdge NodeB { get; }
+
+        /// <summary>
 		/// The manifold
 		/// </summary>
-		public Manifold _manifold = new Manifold();
+        private Manifold _manifold = new Manifold();
 
-		/// <summary>
-		/// The toi
-		/// </summary>
-		public float _toi;
+        /// <summary>
+        /// The toi
+        /// </summary>
+        public float Toi { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// The collide shape delegate
 		/// </summary>
 		internal delegate void CollideShapeDelegate(
@@ -137,23 +133,23 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 		/// <param name="fB">The </param>
 		public Contact(Fixture fA, Fixture fB)
 		{
-			_flags = 0;
+			Flags = 0;
 
 			if (fA.IsSensor || fB.IsSensor)
 			{
-				_flags |= CollisionFlags.NonSolid;
+				Flags |= CollisionFlags.NonSolid;
 			}
 
-			_fixtureA = fA;
-			_fixtureB = fB;
+			FixtureA = fA;
+			FixtureB = fB;
 
-			_manifold.PointCount = 0;
+			Manifold.PointCount = 0;
 
-			_prev = null;
-			_next = null;
+			Prev = null;
+			Next = null;
 
-			_nodeA = new ContactEdge();
-			_nodeB = new ContactEdge();
+			NodeA = new ContactEdge();
+			NodeB = new ContactEdge();
 		}
 
 		/// <summary>
@@ -205,10 +201,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 		/// <returns>The contact</returns>
 		public static Contact Create(Fixture fixtureA, Fixture fixtureB)
 		{
-			if (s_initialized == false)
+			if (SInitialized == false)
 			{
 				InitializeRegisters();
-				s_initialized = true;
+				SInitialized = true;
 			}
 
 			ShapeType type1 = fixtureA.ShapeType;
@@ -237,9 +233,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 		/// <param name="contact">The contact</param>
 		public static void Destroy(ref Contact contact)
 		{
-			Box2DXDebug.Assert(s_initialized == true);
+			Box2DXDebug.Assert(SInitialized == true);
 
-			if (contact._manifold.PointCount > 0)
+			if (contact.Manifold.PointCount > 0)
 			{
 				contact.FixtureA.Body.WakeUp();
 				contact.FixtureB.Body.WakeUp();
@@ -261,15 +257,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 		/// <param name="listener">The listener</param>
 		public void Update(ContactListener listener)
 		{
-			Manifold oldManifold = _manifold.Clone();
+			Manifold oldManifold = Manifold.Clone();
 
 			Evaluate();
 
-			Body bodyA = _fixtureA.Body;
-			Body bodyB = _fixtureB.Body;
+			Body bodyA = FixtureA.Body;
+			Body bodyB = FixtureB.Body;
 
 			int oldCount = oldManifold.PointCount;
-			int newCount = _manifold.PointCount;
+			int newCount = Manifold.PointCount;
 
 			if (newCount == 0 && oldCount > 0)
 			{
@@ -280,18 +276,18 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 			// Slow contacts don't generate TOI events.
 			if (bodyA.IsStatic() || bodyA.IsBullet() || bodyB.IsStatic() || bodyB.IsBullet())
 			{
-				_flags &= ~CollisionFlags.Slow;
+				Flags &= ~CollisionFlags.Slow;
 			}
 			else
 			{
-				_flags |= CollisionFlags.Slow;
+				Flags |= CollisionFlags.Slow;
 			}
 
 			// Match old contact ids to new contact ids and copy the
 			// stored impulses to warm start the solver.
-			for (int i = 0; i < _manifold.PointCount; ++i)
+			for (int i = 0; i < Manifold.PointCount; ++i)
 			{
-				ManifoldPoint mp2 = _manifold.Points[i];
+				ManifoldPoint mp2 = Manifold.Points[i];
 				mp2.NormalImpulse = 0.0f;
 				mp2.TangentImpulse = 0.0f;
 				ContactID id2 = mp2.ID;
@@ -311,27 +307,27 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
 			if (oldCount == 0 && newCount > 0)
 			{
-				_flags |= CollisionFlags.Touch;
+				Flags |= CollisionFlags.Touch;
 				if(listener!=null)
 					listener.BeginContact(this);
 			}
 
 			if (oldCount > 0 && newCount == 0)
 			{
-				_flags &= ~CollisionFlags.Touch;
+				Flags &= ~CollisionFlags.Touch;
 				if (listener != null)
 				listener.EndContact(this);
 			}
 
-			if ((_flags & CollisionFlags.NonSolid) == 0)
+			if ((Flags & CollisionFlags.NonSolid) == 0)
 			{
 				if (listener != null)
 					listener.PreSolve(this, oldManifold);
 
 				// The user may have disabled contact.
-				if (_manifold.PointCount == 0)
+				if (Manifold.PointCount == 0)
 				{
-					_flags &= ~CollisionFlags.Touch;
+					Flags &= ~CollisionFlags.Touch;
 				}
 			}
 		}
@@ -341,12 +337,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 		/// </summary>
 		public void Evaluate()
 		{
-			Body bodyA = _fixtureA.Body;
-			Body bodyB = _fixtureB.Body;
+			Body bodyA = FixtureA.Body;
+			Body bodyB = FixtureB.Body;
 
 			Box2DXDebug.Assert(CollideShapeFunction!=null);
 
-			CollideShapeFunction(ref _manifold, _fixtureA.Shape, bodyA.GetXForm(), _fixtureB.Shape, bodyB.GetXForm());
+			CollideShapeFunction(ref _manifold, FixtureA.Shape, bodyA.GetXForm(), FixtureB.Shape, bodyB.GetXForm());
 		}
 
 		/// <summary>
@@ -360,75 +356,57 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 			TOIInput input = new TOIInput();
 			input.SweepA = sweepA;
 			input.SweepB = sweepB;
-			input.SweepRadiusA = _fixtureA.ComputeSweepRadius(sweepA.LocalCenter);
-			input.SweepRadiusB = _fixtureB.ComputeSweepRadius(sweepB.LocalCenter);
+			input.SweepRadiusA = FixtureA.ComputeSweepRadius(sweepA.LocalCenter);
+			input.SweepRadiusB = FixtureB.ComputeSweepRadius(sweepB.LocalCenter);
 			input.Tolerance = Settings.LinearSlop;
 
-			return Collision.Collision.TimeOfImpact(input, _fixtureA.Shape, _fixtureB.Shape);
+			return Collision.Collision.TimeOfImpact(input, FixtureA.Shape, FixtureB.Shape);
 		}
 
 		/// <summary>
 		/// Get the contact manifold.
 		/// </summary>
-		public Manifold Manifold
-		{
-			get { return _manifold; }
-		}
+		public Manifold Manifold => _manifold;
 
-		/// <summary>
+        /// <summary>
 		/// Get the world manifold.
 		/// </summary>		
 		public void GetWorldManifold(out WorldManifold worldManifold)
 		{
 			worldManifold = new WorldManifold();
 
-			Body bodyA = _fixtureA.Body;
-			Body bodyB = _fixtureB.Body;
-			Shape shapeA = _fixtureA.Shape;
-			Shape shapeB = _fixtureB.Shape;
+			Body bodyA = FixtureA.Body;
+			Body bodyB = FixtureB.Body;
+			Shape shapeA = FixtureA.Shape;
+			Shape shapeB = FixtureB.Shape;
 
-			worldManifold.Initialize(_manifold, bodyA.GetXForm(), shapeA.Radius, bodyB.GetXForm(), shapeB.Radius);
+			worldManifold.Initialize(Manifold, bodyA.GetXForm(), shapeA.Radius, bodyB.GetXForm(), shapeB.Radius);
 		}
 
 		/// <summary>
 		/// Is this contact solid?
 		/// </summary>
 		/// <returns>True if this contact should generate a response.</returns>
-		public bool IsSolid
-		{
-			get { return (_flags & CollisionFlags.NonSolid) == 0; }
-		}
+		public bool IsSolid => (Flags & CollisionFlags.NonSolid) == 0;
 
-		/// <summary>
+        /// <summary>
 		/// Are fixtures touching?
 		/// </summary>
-		public bool AreTouching
-		{
-			get { return (_flags & CollisionFlags.Touch) == CollisionFlags.Touch; }
-		}
+		public bool AreTouching => (Flags & CollisionFlags.Touch) == CollisionFlags.Touch;
 
-		/// <summary>
+        /// <summary>
 		/// Get the next contact in the world's contact list.
 		/// </summary>
-		public Contact GetNext()
-		{
-			return _next;
-		}
+		public Contact GetNext() => Next;
 
-		/// <summary>
+        /// <summary>
 		/// Get the first fixture in this contact.
 		/// </summary>
-		public Fixture FixtureA
-		{
-			get { return _fixtureA; }
-		}
+		public Fixture FixtureA { get; }
 
-		/// <summary>
+        /// <summary>
 		/// Get the second fixture in this contact.
 		/// </summary>
-		public Fixture FixtureB
-		{
-			get { return _fixtureB; }
-		}		
-	}
+		public Fixture FixtureB { get; }
+    }
 }

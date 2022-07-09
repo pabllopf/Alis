@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public override Vec2 Anchor2
 		{
-			get { return _body2.GetWorldPoint(_localAnchor); }
+			get { return Body2.GetWorldPoint(_localAnchor); }
 		}
 
 		/// <summary>
@@ -122,9 +122,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public void SetTarget(Vec2 target)
 		{
-			if (_body2.IsSleeping())
+			if (Body2.IsSleeping())
 			{
-				_body2.WakeUp();
+				Body2.WakeUp();
 			}
 			_target = target;
 		}
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			: base(def)
 		{
 			_target = def.Target;
-			_localAnchor = Math.MulT(_body2.GetXForm(), _target);
+			_localAnchor = Math.MulT(Body2.GetXForm(), _target);
 
 			_maxForce = def.MaxForce;
 			_impulse.SetZero();
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void InitVelocityConstraints(TimeStep step)
 		{
-			Body b = _body2;
+			Body b = Body2;
 
 			float mass = b.GetMass();
 
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void SolveVelocityConstraints(TimeStep step)
 		{
-			Body b = _body2;
+			Body b = Body2;
 
 			Vec2 r = Math.Mul(b.GetXForm().R, _localAnchor - b.GetLocalCenter());
 

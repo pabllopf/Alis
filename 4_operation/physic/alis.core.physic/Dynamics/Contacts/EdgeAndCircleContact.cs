@@ -41,9 +41,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 		{
 			Box2DXDebug.Assert(fixtureA.ShapeType == ShapeType.EdgeShape);
 			Box2DXDebug.Assert(fixtureB.ShapeType == ShapeType.CircleShape);
-			_manifold.PointCount = 0;
-			_manifold.Points[0].NormalImpulse = 0.0f;
-			_manifold.Points[0].TangentImpulse = 0.0f;
+			Manifold.PointCount = 0;
+			Manifold.Points[0].NormalImpulse = 0.0f;
+			Manifold.Points[0].TangentImpulse = 0.0f;
 			CollideShapeFunction = CollideEdgeAndCircle;
 		}
 

@@ -48,50 +48,50 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <summary>
 		/// The local anchor
 		/// </summary>
-		public Vec2 _localAnchor1;
+		public Vec2 LocalAnchor1;
 		/// <summary>
 		/// The local anchor
 		/// </summary>
-		public Vec2 _localAnchor2;
+		public Vec2 LocalAnchor2;
 		/// <summary>
 		/// The 
 		/// </summary>
-		public Vec2 _u;
+		public Vec2 U;
 		/// <summary>
 		/// The frequency hz
 		/// </summary>
-		public float _frequencyHz;
+		public float FrequencyHz;
 		/// <summary>
 		/// The damping ratio
 		/// </summary>
-		public float _dampingRatio;
+		public float DampingRatio;
 		/// <summary>
 		/// The gamma
 		/// </summary>
-		public float _gamma;
+		public float Gamma;
 		/// <summary>
 		/// The bias
 		/// </summary>
-		public float _bias;
+		public float Bias;
 		/// <summary>
 		/// The impulse
 		/// </summary>
-		public float _impulse;
+		public float Impulse;
 		/// <summary>
 		/// The mass
 		/// </summary>
-		public float _mass;		// effective mass for the constraint.
+		public float Mass;		// effective mass for the constraint.
 		/// <summary>
 		/// The length
 		/// </summary>
-		public float _length;
+		public float Length;
 
 		/// <summary>
 		/// Gets the value of the anchor 1
 		/// </summary>
 		public override Vec2 Anchor1
 		{
-			get { return _body1.GetWorldPoint(_localAnchor1);}
+			get { return Body1.GetWorldPoint(LocalAnchor1);}
 		}
 
 		/// <summary>
@@ -99,25 +99,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public override Vec2 Anchor2
 		{
-			get { return _body2.GetWorldPoint(_localAnchor2);}
+			get { return Body2.GetWorldPoint(LocalAnchor2);}
 		}
 
 		/// <summary>
 		/// Gets the reaction force using the specified inv dt
 		/// </summary>
-		/// <param name="inv_dt">The inv dt</param>
+		/// <param name="invDt">The inv dt</param>
 		/// <returns>The vec</returns>
-		public override Vec2 GetReactionForce(float inv_dt)
+		public override Vec2 GetReactionForce(float invDt)
 		{
-			return (inv_dt * _impulse) * _u;
+			return (invDt * Impulse) * U;
 		}
 
 		/// <summary>
 		/// Gets the reaction torque using the specified inv dt
 		/// </summary>
-		/// <param name="inv_dt">The inv dt</param>
+		/// <param name="invDt">The inv dt</param>
 		/// <returns>The float</returns>
-		public override float GetReactionTorque(float inv_dt)
+		public override float GetReactionTorque(float invDt)
 		{
 			return 0.0f;
 		}
@@ -129,14 +129,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		public DistanceJoint(DistanceJointDef def)
 			: base(def)
 		{
-			_localAnchor1 = def.LocalAnchor1;
-			_localAnchor2 = def.LocalAnchor2;
-			_length = def.Length;
-			_frequencyHz = def.FrequencyHz;
-			_dampingRatio = def.DampingRatio;
-			_impulse = 0.0f;
-			_gamma = 0.0f;
-			_bias = 0.0f;
+			LocalAnchor1 = def.LocalAnchor1;
+			LocalAnchor2 = def.LocalAnchor2;
+			Length = def.Length;
+			FrequencyHz = def.FrequencyHz;
+			DampingRatio = def.DampingRatio;
+			Impulse = 0.0f;
+			Gamma = 0.0f;
+			Bias = 0.0f;
 		}
 
 		/// <summary>
@@ -145,64 +145,64 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void InitVelocityConstraints(TimeStep step)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			// Compute the effective mass matrix.
-			Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
-			_u = b2._sweep.C + r2 - b1._sweep.C - r1;
+			Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+			U = b2._sweep.C + r2 - b1._sweep.C - r1;
 
 			// Handle singularity.
-			float length = _u.Length();
+			float length = U.Length();
 			if (length > Settings.LinearSlop)
 			{
-				_u *= 1.0f / length;
+				U *= 1.0f / length;
 			}
 			else
 			{
-				_u.Set(0.0f, 0.0f);
+				U.Set(0.0f, 0.0f);
 			}
 
-			float cr1u = Vec2.Cross(r1, _u);
-			float cr2u = Vec2.Cross(r2, _u);
-			float invMass = b1._invMass + b1._invI * cr1u * cr1u + b2._invMass + b2._invI * cr2u * cr2u;
+			float cr1U = Vec2.Cross(r1, U);
+			float cr2U = Vec2.Cross(r2, U);
+			float invMass = b1._invMass + b1._invI * cr1U * cr1U + b2._invMass + b2._invI * cr2U * cr2U;
 			Box2DXDebug.Assert(invMass > Settings.FltEpsilon);
-			_mass = 1.0f / invMass;
+			Mass = 1.0f / invMass;
 
-			if (_frequencyHz > 0.0f)
+			if (FrequencyHz > 0.0f)
 			{
-				float C = length - _length;
+				float c = length - Length;
 
 				// Frequency
-				float omega = 2.0f * Settings.Pi * _frequencyHz;
+				float omega = 2.0f * Settings.Pi * FrequencyHz;
 
 				// Damping coefficient
-				float d = 2.0f * _mass * _dampingRatio * omega;
+				float d = 2.0f * Mass * DampingRatio * omega;
 
 				// Spring stiffness
-				float k = _mass * omega * omega;
+				float k = Mass * omega * omega;
 
 				// magic formulas
-				_gamma = 1.0f / (step.Dt * (d + step.Dt * k));
-				_bias = C * step.Dt * k * _gamma;
+				Gamma = 1.0f / (step.Dt * (d + step.Dt * k));
+				Bias = c * step.Dt * k * Gamma;
 
-				_mass = 1.0f / (invMass + _gamma);
+				Mass = 1.0f / (invMass + Gamma);
 			}
 
 			if (step.WarmStarting)
 			{
 				//Scale the inpulse to support a variable timestep.
-				_impulse *= step.DtRatio;
-				Vec2 P = _impulse * _u;
-				b1._linearVelocity -= b1._invMass * P;
-				b1._angularVelocity -= b1._invI * Vec2.Cross(r1, P);
-				b2._linearVelocity += b2._invMass * P;
-				b2._angularVelocity += b2._invI * Vec2.Cross(r2, P);
+				Impulse *= step.DtRatio;
+				Vec2 p = Impulse * U;
+				b1._linearVelocity -= b1._invMass * p;
+				b1._angularVelocity -= b1._invI * Vec2.Cross(r1, p);
+				b2._linearVelocity += b2._invMass * p;
+				b2._angularVelocity += b2._invI * Vec2.Cross(r2, p);
 			}
 			else
 			{
-				_impulse = 0.0f;
+				Impulse = 0.0f;
 			}
 		}
 
@@ -213,37 +213,37 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <returns>The bool</returns>
 		internal override bool SolvePositionConstraints(float baumgarte)
 		{
-			if (_frequencyHz > 0.0f)
+			if (FrequencyHz > 0.0f)
 			{
 				//There is no possition correction for soft distace constraint.
 				return true;
 			}
 
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
-			Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+			Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
 			Vec2 d = b2._sweep.C + r2 - b1._sweep.C - r1;
 
 			float length = d.Normalize();
-			float C = length - _length;
-			C = Math.Clamp(C, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+			float c = length - Length;
+			c = Math.Clamp(c, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
 
-			float impulse = -_mass * C;
-			_u = d;
-			Vec2 P = impulse * _u;
+			float impulse = -Mass * c;
+			U = d;
+			Vec2 p = impulse * U;
 
-			b1._sweep.C -= b1._invMass * P;
-			b1._sweep.A -= b1._invI * Vec2.Cross(r1, P);
-			b2._sweep.C += b2._invMass * P;
-			b2._sweep.A += b2._invI * Vec2.Cross(r2, P);
+			b1._sweep.C -= b1._invMass * p;
+			b1._sweep.A -= b1._invI * Vec2.Cross(r1, p);
+			b2._sweep.C += b2._invMass * p;
+			b2._sweep.A += b2._invI * Vec2.Cross(r2, p);
 
 			b1.SynchronizeTransform();
 			b2.SynchronizeTransform();
 
-			return System.Math.Abs(C) < Settings.LinearSlop;
+			return System.Math.Abs(c) < Settings.LinearSlop;
 		}
 
 		/// <summary>
@@ -254,24 +254,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			//B2_NOT_USED(step);
 
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
-			Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+			Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
 			// Cdot = dot(u, v + cross(w, r))
 			Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
 			Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
-			float Cdot = Vec2.Dot(_u, v2 - v1);
-			float impulse = -_mass * (Cdot + _bias + _gamma * _impulse);
-			_impulse += impulse;
+			float cdot = Vec2.Dot(U, v2 - v1);
+			float impulse = -Mass * (cdot + Bias + Gamma * Impulse);
+			Impulse += impulse;
 
-			Vec2 P = impulse * _u;
-			b1._linearVelocity -= b1._invMass * P;
-			b1._angularVelocity -= b1._invI * Vec2.Cross(r1, P);
-			b2._linearVelocity += b2._invMass * P;
-			b2._angularVelocity += b2._invI * Vec2.Cross(r2, P);
+			Vec2 p = impulse * U;
+			b1._linearVelocity -= b1._invMass * p;
+			b1._angularVelocity -= b1._invI * Vec2.Cross(r1, p);
+			b2._linearVelocity += b2._invMass * p;
+			b2._angularVelocity += b2._invI * Vec2.Cross(r2, p);
 		}
 	}
 }

@@ -1884,32 +1884,32 @@
             The simplex vertex
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.wA">
+        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.Wa">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.wB">
+        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.Wb">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.w">
+        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.W">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.a">
+        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.A">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.indexA">
+        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.IndexA">
             <summary>
             The index
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.indexB">
+        <member name="F:Alis.Core.Physic.Collision.SimplexVertex.IndexB">
             <summary>
             The index
             </summary>
@@ -2105,17 +2105,17 @@
             The math class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Math.USHRT_MAX">
+        <member name="F:Alis.Core.Physic.Common.Math.UshrtMax">
             <summary>
             The ushrt max
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Math.UCHAR_MAX">
+        <member name="F:Alis.Core.Physic.Common.Math.UcharMax">
             <summary>
             The uchar max
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Math.RAND_LIMIT">
+        <member name="F:Alis.Core.Physic.Common.Math.RandLimit">
             <summary>
             The rand limit
             </summary>
@@ -2153,7 +2153,7 @@
             <param name="x">The </param>
             <returns>The float</returns>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Math.s_rnd">
+        <member name="F:Alis.Core.Physic.Common.Math._sRnd">
             <summary>
             The random
             </summary>
@@ -2202,7 +2202,7 @@
             <summary>
             Abses the a
             </summary>
-            <param name="A">The </param>
+            <param name="a">The </param>
             <returns>The </returns>
         </member>
         <member name="M:Alis.Core.Physic.Common.Math.Min(System.Single,System.Single)">
@@ -2344,17 +2344,17 @@
             The settings class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Settings.FLT_EPSILON">
+        <member name="F:Alis.Core.Physic.Common.Settings.FltEpsilon">
             <summary>
             The flt epsilon
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Settings.FLT_EPSILON_SQUARED">
+        <member name="F:Alis.Core.Physic.Common.Settings.FltEpsilonSquared">
             <summary>
             The flt epsilon
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Settings.FLT_MAX">
+        <member name="F:Alis.Core.Physic.Common.Settings.FltMax">
             <summary>
             The flt max
             </summary>
@@ -2424,12 +2424,12 @@
             This must be larger than LinearSlop.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Settings.MaxTOIContactsPerIsland">
+        <member name="F:Alis.Core.Physic.Common.Settings.MaxToiContactsPerIsland">
             <summary>
             Maximum number of contacts to be handled to solve a TOI island.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Settings.MaxTOIJointsPerIsland">
+        <member name="F:Alis.Core.Physic.Common.Settings.MaxToiJointsPerIsland">
             <summary>
             Maximum number of joints to be handled to solve a TOI island.
             </summary>
@@ -3551,17 +3551,17 @@
             Color for debug drawing. Each value has the range [0,1].
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Color.R">
+        <member name="F:Alis.Core.Physic.Dynamics.Color.r">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Color.G">
+        <member name="F:Alis.Core.Physic.Dynamics.Color.g">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Color.B">
+        <member name="F:Alis.Core.Physic.Dynamics.Color.b">
             <summary>
             The 
             </summary>
@@ -3605,12 +3605,12 @@
             sub-step forces may approach infinity for rigid body collisions. These
             match up one-to-one with the contact points in b2Manifold.
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.ContactImpulse.normalImpulses">
+        <member name="F:Alis.Core.Physic.Dynamics.ContactImpulse.NormalImpulses">
             <summary>
             The max manifold points
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.ContactImpulse.tangentImpulses">
+        <member name="F:Alis.Core.Physic.Dynamics.ContactImpulse.TangentImpulses">
             <summary>
             The max manifold points
             </summary>
@@ -3658,17 +3658,17 @@
             </summary>
             <seealso cref="T:Alis.Core.Physic.Collision.PairCallback"/>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.ContactManager._world">
+        <member name="F:Alis.Core.Physic.Dynamics.ContactManager.World">
             <summary>
             The world
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.ContactManager._nullContact">
+        <member name="F:Alis.Core.Physic.Dynamics.ContactManager.NullContact">
             <summary>
             The null contact
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.ContactManager._destroyImmediate">
+        <member name="F:Alis.Core.Physic.Dynamics.ContactManager.DestroyImmediate">
             <summary>
             The destroy immediate
             </summary>
@@ -3784,44 +3784,34 @@
             The shape type count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.s_initialized">
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.SInitialized">
             <summary>
             The initialized
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._flags">
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.Flags">
             <summary>
             The flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._prev">
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.Prev">
             <summary>
             The prev
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._next">
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.Next">
             <summary>
             The next
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._nodeA">
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.NodeA">
             <summary>
             The node
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._nodeB">
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.NodeB">
             <summary>
             The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._fixtureA">
-            <summary>
-            The fixture
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._fixtureB">
-            <summary>
-            The fixture
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._manifold">
@@ -3829,7 +3819,7 @@
             The manifold
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._toi">
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.Toi">
             <summary>
             The toi
             </summary>
@@ -4535,27 +4525,27 @@
             per-step functionality.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller._prev">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller.Prev">
             <summary>
             The prev
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller._next">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller.Next">
             <summary>
             The next
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller._world">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller.World">
             <summary>
             The world
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller._bodyList">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller.BodyList">
             <summary>
             The body list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller._bodyCount">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.Controller.BodyCount">
             <summary>
             The body count
             </summary>
@@ -4622,32 +4612,32 @@
             in a bipartite graph.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.controller">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.Controller">
             <summary>
             The controller
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.body">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.Body">
             <summary>
             The body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.prevBody">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.PrevBody">
             <summary>
             The prev body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.nextBody">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.NextBody">
             <summary>
             The next body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.prevController">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.PrevController">
             <summary>
             The prev controller
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.nextController">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.NextController">
             <summary>
             The next controller
             </summary>
@@ -5375,77 +5365,72 @@
             fixed bodies (which must be body1 on those joints).
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._ground1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Ground1">
             <summary>
             The ground
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._ground2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Ground2">
             <summary>
             The ground
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._revolute1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Revolute1">
             <summary>
             The revolute
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._prismatic1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Prismatic1">
             <summary>
             The prismatic
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._revolute2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Revolute2">
             <summary>
             The revolute
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._prismatic2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Prismatic2">
             <summary>
             The prismatic
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._groundAnchor1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.GroundAnchor1">
             <summary>
             The ground anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._groundAnchor2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.GroundAnchor2">
             <summary>
             The ground anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._localAnchor1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.LocalAnchor1">
             <summary>
             The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._localAnchor2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.LocalAnchor2">
             <summary>
             The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._J">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint.Jacobian">
             <summary>
             The 
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._constant">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Constant">
             <summary>
             The constant
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._ratio">
-            <summary>
-            The ratio
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._mass">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Mass">
             <summary>
             The mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint._impulse">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.GearJoint.Impulse">
             <summary>
             The impulse
             </summary>
@@ -5587,82 +5572,77 @@
             various fashions. Some joints also feature limits and motors.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._type">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.Type">
             <summary>
             The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._prev">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.Prev">
             <summary>
             The prev
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._next">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.Next">
             <summary>
             The next
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._node1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.Node1">
             <summary>
             The joint edge
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._node2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.Node2">
             <summary>
             The joint edge
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._body1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.Body1">
             <summary>
             The body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._body2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.Body2">
             <summary>
             The body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._islandFlag">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.IslandFlag">
             <summary>
             The island flag
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._collideConnected">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.CollideConnected">
             <summary>
             The collide connected
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._userData">
-            <summary>
-            The user data
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._localCenter1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.LocalCenter1">
             <summary>
             The local center
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._localCenter2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.LocalCenter2">
             <summary>
             The local center
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._invMass1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.InvMass1">
             <summary>
             The inv
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._invI1">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.InvI1">
             <summary>
             The inv
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._invMass2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.InvMass2">
             <summary>
             The inv
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._invI2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.InvI2">
             <summary>
             The inv
             </summary>

@@ -29,90 +29,101 @@ namespace Alis.Core.Physic.Dynamics.Joints
 	/// </summary>
 	public abstract class Joint
 	{
-		/// <summary>
-		/// The type
-		/// </summary>
-		protected JointType _type;
-		/// <summary>
-		/// The prev
-		/// </summary>
-		internal Joint _prev;
-		/// <summary>
-		/// The next
-		/// </summary>
-		internal Joint _next;
-		/// <summary>
-		/// The joint edge
-		/// </summary>
-		internal JointEdge _node1 = new JointEdge();
-		/// <summary>
-		/// The joint edge
-		/// </summary>
-		internal JointEdge _node2 = new JointEdge();
-		/// <summary>
-		/// The body
-		/// </summary>
-		internal Body _body1;
-		/// <summary>
-		/// The body
-		/// </summary>
-		internal Body _body2;
+        /// <summary>
+        /// The type
+        /// </summary>
+        protected JointType Type { get; }
 
-		/// <summary>
-		/// The island flag
-		/// </summary>
-		internal bool _islandFlag;
-		/// <summary>
-		/// The collide connected
-		/// </summary>
-		internal bool _collideConnected;
+        /// <summary>
+        /// The prev
+        /// </summary>
+        internal Joint Prev { get; set; }
 
-		/// <summary>
-		/// The user data
-		/// </summary>
-		protected object _userData;
+        /// <summary>
+        /// The next
+        /// </summary>
+        internal Joint Next { get; set; }
 
-		// Cache here per time step to reduce cache misses.
-		/// <summary>
-		/// The local center
-		/// </summary>
-		protected Vec2 _localCenter1, _localCenter2;
-		/// <summary>
-		/// The inv
-		/// </summary>
-		protected float _invMass1, _invI1;
-		/// <summary>
-		/// The inv
-		/// </summary>
-		protected float _invMass2, _invI2;
+        /// <summary>
+        /// The joint edge
+        /// </summary>
+        internal JointEdge Node1 { get; } = new JointEdge();
 
-		/// <summary>
+        /// <summary>
+        /// The joint edge
+        /// </summary>
+        internal JointEdge Node2 { get; } = new JointEdge();
+
+        /// <summary>
+        /// The body
+        /// </summary>
+        internal Body Body1 { get; set; }
+
+        /// <summary>
+        /// The body
+        /// </summary>
+        internal Body Body2 { get; set; }
+
+        /// <summary>
+        /// The island flag
+        /// </summary>
+        internal bool IslandFlag { get; set; }
+
+        /// <summary>
+        /// The collide connected
+        /// </summary>
+        internal bool CollideConnected { get; }
+
+        // Cache here per time step to reduce cache misses.
+
+        /// <summary>
+        /// The local center
+        /// </summary>
+        protected Vec2 LocalCenter1 { get; set; }
+
+        /// <summary>
+        /// The local center
+        /// </summary>
+        protected Vec2 LocalCenter2 { get; set; }
+
+        /// <summary>
+        /// The inv
+        /// </summary>
+        protected float InvMass1 { get; set; }
+
+        /// <summary>
+        /// The inv
+        /// </summary>
+        protected float InvI1 { get; set; }
+
+        /// <summary>
+        /// The inv
+        /// </summary>
+        protected float InvMass2 { get; set; }
+
+        /// <summary>
+        /// The inv
+        /// </summary>
+        protected float InvI2 { get; set; }
+
+        /// <summary>
 		/// Get the type of the concrete joint.
 		/// </summary>
-		public new JointType GetType()
-		{
-			return _type;
-		}
+		public new JointType GetType() => Type;
 
-		/// <summary>
+        /// <summary>
 		/// Get the first body attached to this joint.
 		/// </summary>
 		/// <returns></returns>
-		public Body GetBody1()
-		{
-			return _body1;
-		}
+		public Body GetBody1() => Body1;
 
-		/// <summary>
+        /// <summary>
 		/// Get the second body attached to this joint.
 		/// </summary>
 		/// <returns></returns>
-		public Body GetBody2()
-		{
-			return _body2;
-		}
+		public Body GetBody2() => Body2;
 
-		/// <summary>
+        /// <summary>
 		/// Get the anchor point on body1 in world coordinates.
 		/// </summary>
 		/// <returns></returns>
@@ -140,33 +151,29 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <returns></returns>
 		public Joint GetNext()
 		{
-			return _next;
+			return Next;
 		}
 
 		/// <summary>
 		/// Get/Set the user data pointer.
 		/// </summary>
 		/// <returns></returns>
-		public object UserData
-		{
-			get { return _userData; }
-			set { _userData = value; }
-		}
+		public object UserData { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Initializes a new instance of the <see cref="Joint"/> class
 		/// </summary>
 		/// <param name="def">The def</param>
 		protected Joint(JointDef def)
 		{
-			_type = def.Type;
-			_prev = null;
-			_next = null;
-			_body1 = def.Body1;
-			_body2 = def.Body2;
-			_collideConnected = def.CollideConnected;
-			_islandFlag = false;
-			_userData = def.UserData;
+			Type = def.Type;
+			Prev = null;
+			Next = null;
+			Body1 = def.Body1;
+			Body2 = def.Body2;
+			CollideConnected = def.CollideConnected;
+			IslandFlag = false;
+			UserData = def.UserData;
 		}
 
 		/// <summary>
@@ -227,12 +234,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// Destroys the joint
 		/// </summary>
 		/// <param name="joint">The joint</param>
-		internal static void Destroy(Joint joint)
-		{
-			joint = null;
-		}
+		internal static void Destroy(Joint joint) => joint = null;
 
-		/// <summary>
+        /// <summary>
 		/// Inits the velocity constraints using the specified step
 		/// </summary>
 		/// <param name="step">The step</param>

@@ -56,89 +56,95 @@ namespace Alis.Core.Physic.Dynamics.Joints
 	/// </summary>
 	public class GearJoint : Joint
 	{
-		/// <summary>
-		/// The ground
-		/// </summary>
-		public Body _ground1;
-		/// <summary>
-		/// The ground
-		/// </summary>
-		public Body _ground2;
+        /// <summary>
+        /// The ground
+        /// </summary>
+        public Body Ground1 { get; }
 
-		// One of these is NULL.
-		/// <summary>
-		/// The revolute
-		/// </summary>
-		public RevoluteJoint _revolute1;
-		/// <summary>
-		/// The prismatic
-		/// </summary>
-		public PrismaticJoint _prismatic1;
+        /// <summary>
+        /// The ground
+        /// </summary>
+        public Body Ground2 { get; }
 
-		// One of these is NULL.
-		/// <summary>
-		/// The revolute
-		/// </summary>
-		public RevoluteJoint _revolute2;
-		/// <summary>
-		/// The prismatic
-		/// </summary>
-		public PrismaticJoint _prismatic2;
+        // One of these is NULL.
 
-		/// <summary>
-		/// The ground anchor
-		/// </summary>
-		public Vec2 _groundAnchor1;
-		/// <summary>
-		/// The ground anchor
-		/// </summary>
-		public Vec2 _groundAnchor2;
+        /// <summary>
+        /// The revolute
+        /// </summary>
+        public RevoluteJoint Revolute1 { get; }
 
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 _localAnchor1;
-		/// <summary>
-		/// The local anchor
-		/// </summary>
-		public Vec2 _localAnchor2;
+        /// <summary>
+        /// The prismatic
+        /// </summary>
+        public PrismaticJoint Prismatic1 { get; }
 
-		/// <summary>
+        // One of these is NULL.
+
+        /// <summary>
+        /// The revolute
+        /// </summary>
+        public RevoluteJoint Revolute2 { get; }
+
+        /// <summary>
+        /// The prismatic
+        /// </summary>
+        public PrismaticJoint Prismatic2 { get; }
+
+        /// <summary>
+        /// The ground anchor
+        /// </summary>
+        public Vec2 GroundAnchor1 { get; }
+
+        /// <summary>
+        /// The ground anchor
+        /// </summary>
+        public Vec2 GroundAnchor2 { get; }
+
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor1 { get; }
+
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        public Vec2 LocalAnchor2 { get; }
+
+        /// <summary>
 		/// The 
 		/// </summary>
-		public Jacobian _J;
+		public Jacobian Jacobian;
 
-		/// <summary>
-		/// The constant
-		/// </summary>
-		public float _constant;
-		/// <summary>
-		/// The ratio
-		/// </summary>
-		public float _ratio;
+        /// <summary>
+        /// The constant
+        /// </summary>
+        public float Constant { get; }
 
-		// Effective mass
-		/// <summary>
-		/// The mass
-		/// </summary>
-		public float _mass;
+        // Effective mass
 
-		// Impulse for accumulation/warm starting.
-		/// <summary>
-		/// The impulse
-		/// </summary>
-		public float _impulse;
+        /// <summary>
+        /// The mass
+        /// </summary>
+        public float Mass { get; set; }
 
-		/// <summary>
+        // Impulse for accumulation/warm starting.
+
+        /// <summary>
+        /// The impulse
+        /// </summary>
+        public float Impulse { get; set; }
+
+        /// <summary>
 		/// Gets the value of the anchor 1
 		/// </summary>
-		public override Vec2 Anchor1 { get { return _body1.GetWorldPoint(_localAnchor1); } }
-		/// <summary>
+		public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+
+        /// <summary>
 		/// Gets the value of the anchor 2
 		/// </summary>
-		public override Vec2 Anchor2 { get { return _body2.GetWorldPoint(_localAnchor2); } }
+		public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
-		/// <summary>
+        /// <summary>
 		/// Gets the reaction force using the specified inv dt
 		/// </summary>
 		/// <param name="inv_dt">The inv dt</param>
@@ -146,7 +152,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		public override Vec2 GetReactionForce(float inv_dt)
 		{
 			// TODO_ERIN not tested
-			Vec2 P = _impulse * _J.Linear2;
+			Vec2 P = Impulse * Jacobian.Linear2;
 			return inv_dt * P;
 		}
 
@@ -158,18 +164,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		public override float GetReactionTorque(float inv_dt)
 		{
 			// TODO_ERIN not tested
-			Vec2 r = Math.Mul(_body2.GetXForm().R, _localAnchor2 - _body2.GetLocalCenter());
-			Vec2 P = _impulse * _J.Linear2;
-			float L = _impulse * _J.Angular2 - Vec2.Cross(r, P);
+			Vec2 r = Math.Mul(Body2.GetXForm().R, LocalAnchor2 - Body2.GetLocalCenter());
+			Vec2 P = Impulse * Jacobian.Linear2;
+			float L = Impulse * Jacobian.Angular2 - Vec2.Cross(r, P);
 			return inv_dt * L;
 		}
 
 		/// <summary>
 		/// Get the gear ratio.
 		/// </summary>
-		public float Ratio { get { return _ratio; } }
+		public float Ratio { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Initializes a new instance of the <see cref="GearJoint"/> class
 		/// </summary>
 		/// <param name="def">The def</param>
@@ -184,52 +190,52 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Box2DXDebug.Assert(def.Joint1.GetBody1().IsStatic());
 			Box2DXDebug.Assert(def.Joint2.GetBody1().IsStatic());
 
-			_revolute1 = null;
-			_prismatic1 = null;
-			_revolute2 = null;
-			_prismatic2 = null;
+			Revolute1 = null;
+			Prismatic1 = null;
+			Revolute2 = null;
+			Prismatic2 = null;
 
 			float coordinate1, coordinate2;
 
-			_ground1 = def.Joint1.GetBody1();
-			_body1 = def.Joint1.GetBody2();
+			Ground1 = def.Joint1.GetBody1();
+			Body1 = def.Joint1.GetBody2();
 			if (type1 == JointType.RevoluteJoint)
 			{
-				_revolute1 = (RevoluteJoint)def.Joint1;
-				_groundAnchor1 = _revolute1._localAnchor1;
-				_localAnchor1 = _revolute1._localAnchor2;
-				coordinate1 = _revolute1.JointAngle;
+				Revolute1 = (RevoluteJoint)def.Joint1;
+				GroundAnchor1 = Revolute1._localAnchor1;
+				LocalAnchor1 = Revolute1._localAnchor2;
+				coordinate1 = Revolute1.JointAngle;
 			}
 			else
 			{
-				_prismatic1 = (PrismaticJoint)def.Joint1;
-				_groundAnchor1 = _prismatic1._localAnchor1;
-				_localAnchor1 = _prismatic1._localAnchor2;
-				coordinate1 = _prismatic1.JointTranslation;
+				Prismatic1 = (PrismaticJoint)def.Joint1;
+				GroundAnchor1 = Prismatic1._localAnchor1;
+				LocalAnchor1 = Prismatic1._localAnchor2;
+				coordinate1 = Prismatic1.JointTranslation;
 			}
 
-			_ground2 = def.Joint2.GetBody1();
-			_body2 = def.Joint2.GetBody2();
+			Ground2 = def.Joint2.GetBody1();
+			Body2 = def.Joint2.GetBody2();
 			if (type2 == JointType.RevoluteJoint)
 			{
-				_revolute2 = (RevoluteJoint)def.Joint2;
-				_groundAnchor2 = _revolute2._localAnchor1;
-				_localAnchor2 = _revolute2._localAnchor2;
-				coordinate2 = _revolute2.JointAngle;
+				Revolute2 = (RevoluteJoint)def.Joint2;
+				GroundAnchor2 = Revolute2._localAnchor1;
+				LocalAnchor2 = Revolute2._localAnchor2;
+				coordinate2 = Revolute2.JointAngle;
 			}
 			else
 			{
-				_prismatic2 = (PrismaticJoint)def.Joint2;
-				_groundAnchor2 = _prismatic2._localAnchor1;
-				_localAnchor2 = _prismatic2._localAnchor2;
-				coordinate2 = _prismatic2.JointTranslation;
+				Prismatic2 = (PrismaticJoint)def.Joint2;
+				GroundAnchor2 = Prismatic2._localAnchor1;
+				LocalAnchor2 = Prismatic2._localAnchor2;
+				coordinate2 = Prismatic2.JointTranslation;
 			}
 
-			_ratio = def.Ratio;
+			Ratio = def.Ratio;
 
-			_constant = coordinate1 + _ratio * coordinate2;
+			Constant = coordinate1 + Ratio * coordinate2;
 
-			_impulse = 0.0f;
+			Impulse = 0.0f;
 		}
 
 		/// <summary>
@@ -238,59 +244,59 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void InitVelocityConstraints(TimeStep step)
 		{
-			Body g1 = _ground1;
-			Body g2 = _ground2;
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body g1 = Ground1;
+			Body g2 = Ground2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			float K = 0.0f;
-			_J.SetZero();
+			Jacobian.SetZero();
 
-			if (_revolute1!=null)
+			if (Revolute1!=null)
 			{
-				_J.Angular1 = -1.0f;
+				Jacobian.Angular1 = -1.0f;
 				K += b1._invI;
 			}
 			else
 			{
-				Vec2 ug = Math.Mul(g1.GetXForm().R, _prismatic1._localXAxis1);
-				Vec2 r = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
+				Vec2 ug = Math.Mul(g1.GetXForm().R, Prismatic1._localXAxis1);
+				Vec2 r = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
 				float crug = Vec2.Cross(r, ug);
-				_J.Linear1 = -ug;
-				_J.Angular1 = -crug;
+				Jacobian.Linear1 = -ug;
+				Jacobian.Angular1 = -crug;
 				K += b1._invMass + b1._invI * crug * crug;
 			}
 
-			if (_revolute2!=null)
+			if (Revolute2!=null)
 			{
-				_J.Angular2 = -_ratio;
-				K += _ratio * _ratio * b2._invI;
+				Jacobian.Angular2 = -Ratio;
+				K += Ratio * Ratio * b2._invI;
 			}
 			else
 			{
-				Vec2 ug = Math.Mul(g2.GetXForm().R, _prismatic2._localXAxis1);
-				Vec2 r = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+				Vec2 ug = Math.Mul(g2.GetXForm().R, Prismatic2._localXAxis1);
+				Vec2 r = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 				float crug = Vec2.Cross(r, ug);
-				_J.Linear2 = -_ratio * ug;
-				_J.Angular2 = -_ratio * crug;
-				K += _ratio * _ratio * (b2._invMass + b2._invI * crug * crug);
+				Jacobian.Linear2 = -Ratio * ug;
+				Jacobian.Angular2 = -Ratio * crug;
+				K += Ratio * Ratio * (b2._invMass + b2._invI * crug * crug);
 			}
 
 			// Compute effective mass.
 			Box2DXDebug.Assert(K > 0.0f);
-			_mass = 1.0f / K;
+			Mass = 1.0f / K;
 
 			if (step.WarmStarting)
 			{
 				// Warm starting.
-				b1._linearVelocity += b1._invMass * _impulse * _J.Linear1;
-				b1._angularVelocity += b1._invI * _impulse * _J.Angular1;
-				b2._linearVelocity += b2._invMass * _impulse * _J.Linear2;
-				b2._angularVelocity += b2._invI * _impulse * _J.Angular2;
+				b1._linearVelocity += b1._invMass * Impulse * Jacobian.Linear1;
+				b1._angularVelocity += b1._invI * Impulse * Jacobian.Angular1;
+				b2._linearVelocity += b2._invMass * Impulse * Jacobian.Linear2;
+				b2._angularVelocity += b2._invI * Impulse * Jacobian.Angular2;
 			}
 			else
 			{
-				_impulse = 0.0f;
+				Impulse = 0.0f;
 			}
 		}
 
@@ -300,18 +306,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void SolveVelocityConstraints(TimeStep step)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
-			float Cdot = _J.Compute(b1._linearVelocity, b1._angularVelocity, b2._linearVelocity, b2._angularVelocity);
+			float Cdot = Jacobian.Compute(b1._linearVelocity, b1._angularVelocity, b2._linearVelocity, b2._angularVelocity);
 
-			float impulse = _mass * (-Cdot);
-			_impulse += impulse;
+			float impulse = Mass * (-Cdot);
+			Impulse += impulse;
 
-			b1._linearVelocity += b1._invMass * impulse * _J.Linear1;
-			b1._angularVelocity += b1._invI * impulse * _J.Angular1;
-			b2._linearVelocity += b2._invMass * impulse * _J.Linear2;
-			b2._angularVelocity += b2._invI * impulse * _J.Angular2;
+			b1._linearVelocity += b1._invMass * impulse * Jacobian.Linear1;
+			b1._angularVelocity += b1._invI * impulse * Jacobian.Angular1;
+			b2._linearVelocity += b2._invMass * impulse * Jacobian.Linear2;
+			b2._angularVelocity += b2._invI * impulse * Jacobian.Angular2;
 		}
 
 		/// <summary>
@@ -323,36 +329,36 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			float linearError = 0.0f;
 
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			float coordinate1, coordinate2;
-			if (_revolute1 != null)
+			if (Revolute1 != null)
 			{
-				coordinate1 = _revolute1.JointAngle;
+				coordinate1 = Revolute1.JointAngle;
 			}
 			else
 			{
-				coordinate1 = _prismatic1.JointTranslation;
+				coordinate1 = Prismatic1.JointTranslation;
 			}
 
-			if (_revolute2 != null)
+			if (Revolute2 != null)
 			{
-				coordinate2 = _revolute2.JointAngle;
+				coordinate2 = Revolute2.JointAngle;
 			}
 			else
 			{
-				coordinate2 = _prismatic2.JointTranslation;
+				coordinate2 = Prismatic2.JointTranslation;
 			}
 
-			float C = _constant - (coordinate1 + _ratio * coordinate2);
+			float C = Constant - (coordinate1 + Ratio * coordinate2);
 
-			float impulse = _mass * (-C);
+			float impulse = Mass * (-C);
 
-			b1._sweep.C += b1._invMass * impulse * _J.Linear1;
-			b1._sweep.A += b1._invI * impulse * _J.Angular1;
-			b2._sweep.C += b2._invMass * impulse * _J.Linear2;
-			b2._sweep.A += b2._invI * impulse * _J.Angular2;
+			b1._sweep.C += b1._invMass * impulse * Jacobian.Linear1;
+			b1._sweep.A += b1._invI * impulse * Jacobian.Angular1;
+			b2._sweep.C += b2._invMass * impulse * Jacobian.Linear2;
+			b2._sweep.A += b2._invI * impulse * Jacobian.Angular2;
 
 			b1.SynchronizeTransform();
 			b2.SynchronizeTransform();

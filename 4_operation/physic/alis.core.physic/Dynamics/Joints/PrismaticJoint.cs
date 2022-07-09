@@ -187,7 +187,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public override Vec2 Anchor1
 		{
-			get { return _body1.GetWorldPoint(_localAnchor1); }
+			get { return Body1.GetWorldPoint(_localAnchor1); }
 		}
 
 		/// <summary>
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public override Vec2 Anchor2
 		{
-			get { return _body2.GetWorldPoint(_localAnchor2); }
+			get { return Body2.GetWorldPoint(_localAnchor2); }
 		}
 
 		/// <summary>
@@ -225,8 +225,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			get
 			{
-				Body b1 = _body1;
-				Body b2 = _body2;
+				Body b1 = Body1;
+				Body b2 = Body2;
 
 				Vec2 p1 = b1.GetWorldPoint(_localAnchor1);
 				Vec2 p2 = b2.GetWorldPoint(_localAnchor2);
@@ -245,8 +245,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			get
 			{
-				Body b1 = _body1;
-				Body b2 = _body2;
+				Body b1 = Body1;
+				Body b2 = Body2;
 
 				Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
 				Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
@@ -278,8 +278,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public void EnableLimit(bool flag)
 		{
-			_body1.WakeUp();
-			_body2.WakeUp();
+			Body1.WakeUp();
+			Body2.WakeUp();
 			_enableLimit = flag;
 		}
 
@@ -305,8 +305,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		public void SetLimits(float lower, float upper)
 		{
 			Box2DXDebug.Assert(lower <= upper);
-			_body1.WakeUp();
-			_body2.WakeUp();
+			Body1.WakeUp();
+			Body2.WakeUp();
 			_lowerTranslation = lower;
 			_upperTranslation = upper;
 		}
@@ -324,8 +324,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public void EnableMotor(bool flag)
 		{
-			_body1.WakeUp();
-			_body2.WakeUp();
+			Body1.WakeUp();
+			Body2.WakeUp();
 			_enableMotor = flag;
 		}
 
@@ -337,8 +337,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			get { return _motorSpeed; }
 			set
 			{
-				_body1.WakeUp();
-				_body2.WakeUp();
+				Body1.WakeUp();
+				Body2.WakeUp();
 				_motorSpeed = value;
 			}
 		}
@@ -348,8 +348,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public void SetMaxMotorForce(float force)
 		{
-			_body1.WakeUp();
-			_body2.WakeUp();
+			Body1.WakeUp();
+			Body2.WakeUp();
 			_maxMotorForce = Settings.FORCE_SCALE(1.0f) * force;
 		}
 
@@ -396,28 +396,28 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void InitVelocityConstraints(TimeStep step)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			// You cannot create a prismatic joint between bodies that
 			// both have fixed rotation.
 			Box2DXDebug.Assert(b1._invI > 0.0f || b2._invI > 0.0f);
 
-			_localCenter1 = b1.GetLocalCenter();
-			_localCenter2 = b2.GetLocalCenter();
+			LocalCenter1 = b1.GetLocalCenter();
+			LocalCenter2 = b2.GetLocalCenter();
 
 			XForm xf1 = b1.GetXForm();
 			XForm xf2 = b2.GetXForm();
 
 			// Compute the effective masses.
-			Vec2 r1 = Box2DXMath.Mul(xf1.R, _localAnchor1 - _localCenter1);
-			Vec2 r2 = Box2DXMath.Mul(xf2.R, _localAnchor2 - _localCenter2);
+			Vec2 r1 = Box2DXMath.Mul(xf1.R, _localAnchor1 - LocalCenter1);
+			Vec2 r2 = Box2DXMath.Mul(xf2.R, _localAnchor2 - LocalCenter2);
 			Vec2 d = b2._sweep.C + r2 - b1._sweep.C - r1;
 
-			_invMass1 = b1._invMass;
-			_invI1 = b1._invI;
-			_invMass2 = b2._invMass;
-			_invI2 = b2._invI;
+			InvMass1 = b1._invMass;
+			InvI1 = b1._invI;
+			InvMass2 = b2._invMass;
+			InvI2 = b2._invI;
 
 			// Compute motor Jacobian and effective mass.
 			{
@@ -425,7 +425,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				_a1 = Vec2.Cross(d + r1, _axis);
 				_a2 = Vec2.Cross(r2, _axis);
 
-				_motorMass = _invMass1 + _invMass2 + _invI1 * _a1 * _a1 + _invI2 * _a2 * _a2;
+				_motorMass = InvMass1 + InvMass2 + InvI1 * _a1 * _a1 + InvI2 * _a2 * _a2;
 				Box2DXDebug.Assert(_motorMass > Settings.FltEpsilon);
 				_motorMass = 1.0f / _motorMass;
 			}
@@ -437,8 +437,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				_s1 = Vec2.Cross(d + r1, _perp);
 				_s2 = Vec2.Cross(r2, _perp);
 
-				float m1 = _invMass1, m2 = _invMass2;
-				float i1 = _invI1, i2 = _invI2;
+				float m1 = InvMass1, m2 = InvMass2;
+				float i1 = InvI1, i2 = InvI2;
 
 				float k11 = m1 + m2 + i1 * _s1 * _s1 + i2 * _s2 * _s2;
 				float k12 = i1 * _s1 + i2 * _s2;
@@ -502,11 +502,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				float L1 = _impulse.X * _s1 + _impulse.Y + (_motorImpulse + _impulse.Z) * _a1;
 				float L2 = _impulse.X * _s2 + _impulse.Y + (_motorImpulse + _impulse.Z) * _a2;
 
-				b1._linearVelocity -= _invMass1 * P;
-				b1._angularVelocity -= _invI1 * L1;
+				b1._linearVelocity -= InvMass1 * P;
+				b1._angularVelocity -= InvI1 * L1;
 
-				b2._linearVelocity += _invMass2 * P;
-				b2._angularVelocity += _invI2 * L2;
+				b2._linearVelocity += InvMass2 * P;
+				b2._angularVelocity += InvI2 * L2;
 			}
 			else
 			{
@@ -521,8 +521,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void SolveVelocityConstraints(TimeStep step)
 		{
-			Body b1 = _body1;
-			Body b2  = _body2;
+			Body b1 = Body1;
+			Body b2  = Body2;
 
 			Vec2 v1 = b1._linearVelocity;
 			float w1 = b1._angularVelocity;
@@ -543,11 +543,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				float L1 = impulse * _a1;
 				float L2 = impulse * _a2;
 
-				v1 -= _invMass1 * P;
-				w1 -= _invI1 * L1;
+				v1 -= InvMass1 * P;
+				w1 -= InvI1 * L1;
 
-				v2 += _invMass2 * P;
-				w2 += _invI2 * L2;
+				v2 += InvMass2 * P;
+				w2 += InvI2 * L2;
 			}
 
 			Vec2 Cdot1;
@@ -586,11 +586,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				float L1 = df.X * _s1 + df.Y + df.Z * _a1;
 				float L2 = df.X * _s2 + df.Y + df.Z * _a2;
 
-				v1 -= _invMass1 * P;
-				w1 -= _invI1 * L1;
+				v1 -= InvMass1 * P;
+				w1 -= InvI1 * L1;
 
-				v2 += _invMass2 * P;
-				w2 += _invI2 * L2;
+				v2 += InvMass2 * P;
+				w2 += InvI2 * L2;
 			}
 			else
 			{
@@ -603,11 +603,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				float L1 = df.X * _s1 + df.Y;
 				float L2 = df.X * _s2 + df.Y;
 
-				v1 -= _invMass1 * P;
-				w1 -= _invI1 * L1;
+				v1 -= InvMass1 * P;
+				w1 -= InvI1 * L1;
 
-				v2 += _invMass2 * P;
-				w2 += _invI2 * L2;
+				v2 += InvMass2 * P;
+				w2 += InvI2 * L2;
 			}
 
 			b1._linearVelocity = v1;
@@ -623,8 +623,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <returns>The bool</returns>
 		internal override bool SolvePositionConstraints(float baumgarte)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			Vec2 c1 = b1._sweep.C;
 			float a1 = b1._sweep.A;
@@ -639,8 +639,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 			Mat22 R1 = new Mat22(a1), R2 = new Mat22(a2);
 
-			Vec2 r1 = Box2DXMath.Mul(R1, _localAnchor1 - _localCenter1);
-			Vec2 r2 = Box2DXMath.Mul(R2, _localAnchor2 - _localCenter2);
+			Vec2 r1 = Box2DXMath.Mul(R1, _localAnchor1 - LocalCenter1);
+			Vec2 r2 = Box2DXMath.Mul(R2, _localAnchor2 - LocalCenter2);
 			Vec2 d = c2 + r2 - c1 - r1;
 
 			if (_enableLimit)
@@ -689,8 +689,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 			if (active)
 			{
-				float m1 = _invMass1, m2 = _invMass2;
-				float i1 = _invI1, i2 = _invI2;
+				float m1 = InvMass1, m2 = InvMass2;
+				float i1 = InvI1, i2 = InvI2;
 
 				float k11 = m1 + m2 + i1 * _s1 * _s1 + i2 * _s2 * _s2;
 				float k12 = i1 * _s1 + i2 * _s2;
@@ -712,8 +712,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			}
 			else
 			{
-				float m1 = _invMass1, m2 = _invMass2;
-				float i1 = _invI1, i2 = _invI2;
+				float m1 = InvMass1, m2 = InvMass2;
+				float i1 = InvI1, i2 = InvI2;
 
 				float k11 = m1 + m2 + i1 * _s1 * _s1 + i2 * _s2 * _s2;
 				float k12 = i1 * _s1 + i2 * _s2;
@@ -732,10 +732,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			float L1 = impulse.X * _s1 + impulse.Y + impulse.Z * _a1;
 			float L2 = impulse.X * _s2 + impulse.Y + impulse.Z * _a2;
 
-			c1 -= _invMass1 * P;
-			a1 -= _invI1 * L1;
-			c2 += _invMass2 * P;
-			a2 += _invI2 * L2;
+			c1 -= InvMass1 * P;
+			a1 -= InvI1 * L1;
+			c2 += InvMass2 * P;
+			a2 += InvI2 * L2;
 
 			// TODO_ERIN remove need for this.
 			b1._sweep.C = c1;

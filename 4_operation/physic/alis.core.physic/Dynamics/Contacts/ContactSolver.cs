@@ -67,8 +67,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 			{
 				Contact contact = contacts[i];
 
-				Fixture fixtureA = contact._fixtureA;
-				Fixture fixtureB = contact._fixtureB;
+				Fixture fixtureA = contact.FixtureA;
+				Fixture fixtureB = contact.FixtureB;
 				Shape shapeA = fixtureA.Shape;
 				Shape shapeB = fixtureB.Shape;
 				float radiusA = shapeA.Radius;

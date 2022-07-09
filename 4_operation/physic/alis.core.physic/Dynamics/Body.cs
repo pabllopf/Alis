@@ -344,7 +344,7 @@ namespace Alis.Core.Physic.Dynamics
 			for (JointEdge jn = _jointList; jn != null; jn = jn.Next)
 			{
 				if (jn.Other == other)
-					return jn.Joint._collideConnected == false;
+					return jn.Joint.CollideConnected == false;
 			}
 
 			return false;

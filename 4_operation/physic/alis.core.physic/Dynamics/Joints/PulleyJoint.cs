@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public override Vec2 Anchor1
 		{
-			get { return _body1.GetWorldPoint(_localAnchor1); }
+			get { return Body1.GetWorldPoint(_localAnchor1); }
 		}
 
 		/// <summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public override Vec2 Anchor2
 		{
-			get { return _body2.GetWorldPoint(_localAnchor2); }
+			get { return Body2.GetWorldPoint(_localAnchor2); }
 		}
 
 		/// <summary>
@@ -208,7 +208,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			get
 			{
-				Vec2 p = _body1.GetWorldPoint(_localAnchor1);
+				Vec2 p = Body1.GetWorldPoint(_localAnchor1);
 				Vec2 s = _ground.GetXForm().Position + _groundAnchor1;
 				Vec2 d = p - s;
 				return d.Length();
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			get
 			{
-				Vec2 p = _body2.GetWorldPoint(_localAnchor2);
+				Vec2 p = Body2.GetWorldPoint(_localAnchor2);
 				Vec2 s = _ground.GetXForm().Position + _groundAnchor2;
 				Vec2 d = p - s;
 				return d.Length();
@@ -244,7 +244,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		public PulleyJoint(PulleyJointDef def)
 			: base(def)
 		{
-			_ground = _body1.GetWorld().GetGroundBody();
+			_ground = Body1.GetWorld().GetGroundBody();
 			_groundAnchor1 = def.GroundAnchor1 - _ground.GetXForm().Position;
 			_groundAnchor2 = def.GroundAnchor2 - _ground.GetXForm().Position;
 			_localAnchor1 = def.LocalAnchor1;
@@ -269,8 +269,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void InitVelocityConstraints(TimeStep step)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
 			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
@@ -380,8 +380,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void SolveVelocityConstraints(TimeStep step)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
 			Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
@@ -443,8 +443,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <returns>The bool</returns>
 		internal override bool SolvePositionConstraints(float baumgarte)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			Vec2 s1 = _ground.GetXForm().Position + _groundAnchor1;
 			Vec2 s2 = _ground.GetXForm().Position + _groundAnchor2;

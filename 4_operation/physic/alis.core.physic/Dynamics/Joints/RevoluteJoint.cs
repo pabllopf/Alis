@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public override Vec2 Anchor1
 		{
-			get { return _body1.GetWorldPoint(_localAnchor1); }
+			get { return Body1.GetWorldPoint(_localAnchor1); }
 		}
 
 		/// <summary>
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public override Vec2 Anchor2
 		{
-			get { return _body2.GetWorldPoint(_localAnchor2); }
+			get { return Body2.GetWorldPoint(_localAnchor2); }
 		}
 
 		/// <summary>
@@ -151,8 +151,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			get
 			{
-				Body b1 = _body1;
-				Body b2 = _body2;
+				Body b1 = Body1;
+				Body b2 = Body2;
 				return b2._sweep.A - b1._sweep.A - _referenceAngle;
 			}
 		}
@@ -165,8 +165,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			get
 			{
-				Body b1 = _body1;
-				Body b2 = _body2;
+				Body b1 = Body1;
+				Body b2 = Body2;
 				return b2._angularVelocity - b1._angularVelocity;
 			}
 		}
@@ -184,8 +184,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public void EnableLimit(bool flag)
 		{
-			_body1.WakeUp();
-			_body2.WakeUp();
+			Body1.WakeUp();
+			Body2.WakeUp();
 			_enableLimit = flag;
 		}
 
@@ -211,8 +211,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		public void SetLimits(float lower, float upper)
 		{
 			Box2DXDebug.Assert(lower <= upper);
-			_body1.WakeUp();
-			_body2.WakeUp();
+			Body1.WakeUp();
+			Body2.WakeUp();
 			_lowerAngle = lower;
 			_upperAngle = upper;
 		}
@@ -230,8 +230,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public void EnableMotor(bool flag)
 		{
-			_body1.WakeUp();
-			_body2.WakeUp();
+			Body1.WakeUp();
+			Body2.WakeUp();
 			_enableMotor = flag;
 		}
 
@@ -243,8 +243,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			get { return _motorSpeed; }
 			set
 			{
-				_body1.WakeUp();
-				_body2.WakeUp();
+				Body1.WakeUp();
+				Body2.WakeUp();
 				_motorSpeed = value;
 			}
 		}
@@ -254,8 +254,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// </summary>
 		public void SetMaxMotorTorque(float torque)
 		{
-			_body1.WakeUp();
-			_body2.WakeUp();
+			Body1.WakeUp();
+			Body2.WakeUp();
 			_maxMotorTorque = torque;
 		}
 
@@ -296,8 +296,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void InitVelocityConstraints(TimeStep step)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			if (_enableMotor || _enableLimit)
 			{
@@ -418,8 +418,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		/// <param name="step">The step</param>
 		internal override void SolveVelocityConstraints(TimeStep step)
 		{
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			Vec2 v1 = b1._linearVelocity;
 			float w1 = b1._angularVelocity;
@@ -531,8 +531,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			// TODO_ERIN block solve with limit.
 
-			Body b1 = _body1;
-			Body b2 = _body2;
+			Body b1 = Body1;
+			Body b2 = Body2;
 
 			float angularError = 0.0f;
 			float positionError = 0.0f;
