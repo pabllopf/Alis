@@ -64,11 +64,11 @@ namespace Alis.Core.Physic.Collision
             Vec2 d = P2 - P1;
             Vec2 n = Vec2.Cross(d, 1.0f);
 
-            float k_slop = 100.0f * Settings.FltEpsilon;
+            float kSlop = 100.0f * Settings.FltEpsilon;
             float denom = -Vec2.Dot(r, n);
 
             // Cull back facing collision and ignore parallel segments.
-            if (denom > k_slop)
+            if (denom > kSlop)
             {
                 // Does the segment intersect the infinite line associated with this segment?
                 Vec2 b = s - P1;
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Collision
                     float mu2 = -r.X * b.Y + r.Y * b.X;
 
                     // Does the segment intersect this segment?
-                    if (-k_slop * denom <= mu2 && mu2 <= denom * (1.0f + k_slop))
+                    if (-kSlop * denom <= mu2 && mu2 <= denom * (1.0f + kSlop))
                     {
                         a /= denom;
                         n.Normalize();

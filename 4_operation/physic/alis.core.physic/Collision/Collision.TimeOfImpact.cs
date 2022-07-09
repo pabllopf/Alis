@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Collision
         ///     The fraction between [0,1] in which the shapes first touch.
         ///     fraction=0 means the shapes begin touching/overlapped, and fraction=1 means the shapes don't touch.
         /// </returns>
-        public static float TimeOfImpact(TOIInput input, Shape shapeA, Shape shapeB)
+        public static float TimeOfImpact(ToiInput input, Shape shapeA, Shape shapeB)
         {
             Sweep sweepA = input.SweepA;
             Sweep sweepB = input.SweepB;
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Collision
 
             float alpha = 0.0f;
 
-            const int k_maxIterations = 1000; // TODO_ERIN b2Settings
+            const int kMaxIterations = 1000; // TODO_ERIN b2Settings
             int iter = 0;
             float target = 0.0f;
 
@@ -240,7 +240,7 @@ namespace Alis.Core.Physic.Collision
 
                 ++iter;
 
-                if (iter == k_maxIterations)
+                if (iter == kMaxIterations)
                 {
                     break;
                 }

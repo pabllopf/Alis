@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             // Get simplex vertices as an array.
-            SimplexVertex* vertices = &simplex._v1;
+            SimplexVertex* vertices = &simplex.V1;
 
             // These store the vertices of the last simplex so that we
             // can check for duplicates and prevent cycling.
@@ -71,11 +71,11 @@ namespace Alis.Core.Physic.Collision
 
             // Main iteration loop.
             int iter = 0;
-            const int k_maxIterationCount = 20;
-            while (iter < k_maxIterationCount)
+            const int kMaxIterationCount = 20;
+            while (iter < kMaxIterationCount)
             {
                 // Copy simplex so we can identify duplicates.
-                lastCount = simplex._count;
+                lastCount = simplex.Count;
                 int i;
                 for (i = 0; i < lastCount; ++i)
                 {
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Collision
                     lastB[i] = vertices[i].IndexB;
                 }
 
-                switch (simplex._count)
+                switch (simplex.Count)
                 {
                     case 1:
                         break;
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 // If we have 3 points, then the origin is in the corresponding triangle.
-                if (simplex._count == 3)
+                if (simplex.Count == 3)
                 {
                     break;
                 }
@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 // Compute a tentative new simplex vertex using support points.
-                SimplexVertex* vertex = vertices + simplex._count;
+                SimplexVertex* vertex = vertices + simplex.Count;
                 vertex->IndexA = shapeA.GetSupport(Math.MulT(transformA.R, p));
                 vertex->Wa = Math.Mul(transformA, shapeA.GetVertex(vertex->IndexA));
                 //Vec2 wBLocal;
@@ -140,8 +140,8 @@ namespace Alis.Core.Physic.Collision
                 // Check for convergence.
                 float lowerBound = Vec2.Dot(p, vertex->W);
                 float upperBound = distanceSqr;
-                const float k_relativeTolSqr = 0.01f * 0.01f; // 1:100
-                if (upperBound - lowerBound <= k_relativeTolSqr * upperBound)
+                const float kRelativeTolSqr = 0.01f * 0.01f; // 1:100
+                if (upperBound - lowerBound <= kRelativeTolSqr * upperBound)
                 {
                     // Converged!
                     break;
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 // New vertex is ok and needed.
-                ++simplex._count;
+                ++simplex.Count;
             }
 
 

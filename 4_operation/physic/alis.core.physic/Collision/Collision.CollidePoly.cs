@@ -202,14 +202,14 @@ namespace Alis.Core.Physic.Collision
             c = new ClipVertex[2];
 
             c[0].V = Math.Mul(xf2, vertices2[i1]);
-            c[0].ID.Features.ReferenceEdge = (byte) edge1;
-            c[0].ID.Features.IncidentEdge = (byte) i1;
-            c[0].ID.Features.IncidentVertex = 0;
+            c[0].Id.Features.ReferenceEdge = (byte) edge1;
+            c[0].Id.Features.IncidentEdge = (byte) i1;
+            c[0].Id.Features.IncidentVertex = 0;
 
             c[1].V = Math.Mul(xf2, vertices2[i2]);
-            c[1].ID.Features.ReferenceEdge = (byte) edge1;
-            c[1].ID.Features.IncidentEdge = (byte) i2;
-            c[1].ID.Features.IncidentVertex = 1;
+            c[1].Id.Features.ReferenceEdge = (byte) edge1;
+            c[1].Id.Features.IncidentEdge = (byte) i2;
+            c[1].Id.Features.IncidentVertex = 1;
         }
 
         // Find edge normal of max separation on A - return if separating axis is found
@@ -247,10 +247,10 @@ namespace Alis.Core.Physic.Collision
             XForm xf1, xf2;
             int edge1; // reference edge
             byte flip;
-            const float k_relativeTol = 0.98f;
-            const float k_absoluteTol = 0.001f;
+            const float kRelativeTol = 0.98f;
+            const float kAbsoluteTol = 0.001f;
 
-            if (separationB > k_relativeTol * separationA + k_absoluteTol)
+            if (separationB > kRelativeTol * separationA + kAbsoluteTol)
             {
                 poly1 = polyB;
                 poly2 = polyA;
@@ -327,8 +327,8 @@ namespace Alis.Core.Physic.Collision
                 {
                     ManifoldPoint cp = manifold.Points[pointCount];
                     cp.LocalPoint = Math.MulT(xf2, clipPoints2[i].V);
-                    cp.ID = clipPoints2[i].ID;
-                    cp.ID.Features.Flip = flip;
+                    cp.Id = clipPoints2[i].Id;
+                    cp.Id.Features.Flip = flip;
                     ++pointCount;
                 }
             }

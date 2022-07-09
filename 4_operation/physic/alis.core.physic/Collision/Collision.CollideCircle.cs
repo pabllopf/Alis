@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Collision
             manifold.PointCount = 1;
 
             manifold.Points[0].LocalPoint = circle2.Position;
-            manifold.Points[0].ID.Key = 0;
+            manifold.Points[0].Id.Key = 0;
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Collision
                 manifold.LocalPlaneNormal = normals[normalIndex];
                 manifold.LocalPoint = 0.5f * (v1 + v2);
                 manifold.Points[0].LocalPoint = circle.Position;
-                manifold.Points[0].ID.Key = 0;
+                manifold.Points[0].Id.Key = 0;
                 return;
             }
 
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Collision
                 manifold.LocalPlaneNormal.Normalize();
                 manifold.LocalPoint = v1;
                 manifold.Points[0].LocalPoint = circle.Position;
-                manifold.Points[0].ID.Key = 0;
+                manifold.Points[0].Id.Key = 0;
             }
             else if (u2 <= 0.0f)
             {
@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Collision
                 manifold.LocalPlaneNormal.Normalize();
                 manifold.LocalPoint = v2;
                 manifold.Points[0].LocalPoint = circle.Position;
-                manifold.Points[0].ID.Key = 0;
+                manifold.Points[0].Id.Key = 0;
             }
             else
             {
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Collision
                 manifold.LocalPlaneNormal = normals[vertIndex1];
                 manifold.LocalPoint = faceCenter;
                 manifold.Points[0].LocalPoint = circle.Position;
-                manifold.Points[0].ID.Key = 0;
+                manifold.Points[0].Id.Key = 0;
             }
         }
     }

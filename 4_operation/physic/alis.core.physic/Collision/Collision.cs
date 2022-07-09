@@ -82,13 +82,13 @@ namespace Alis.Core.Physic.Collision
             // Detect persists and removes.
             for (int i = 0; i < manifold1.PointCount; ++i)
             {
-                ContactID id = manifold1.Points[i].ID;
+                ContactId id = manifold1.Points[i].Id;
 
                 state1[i] = PointState.RemoveState;
 
                 for (int j = 0; j < manifold2.PointCount; ++j)
                 {
-                    if (manifold2.Points[j].ID.Key == id.Key)
+                    if (manifold2.Points[j].Id.Key == id.Key)
                     {
                         state1[i] = PointState.PersistState;
                         break;
@@ -99,13 +99,13 @@ namespace Alis.Core.Physic.Collision
             // Detect persists and adds.
             for (int i = 0; i < manifold2.PointCount; ++i)
             {
-                ContactID id = manifold2.Points[i].ID;
+                ContactId id = manifold2.Points[i].Id;
 
                 state2[i] = PointState.AddState;
 
                 for (int j = 0; j < manifold1.PointCount; ++j)
                 {
-                    if (manifold1.Points[j].ID.Key == id.Key)
+                    if (manifold1.Points[j].Id.Key == id.Key)
                     {
                         state2[i] = PointState.PersistState;
                         break;
@@ -147,11 +147,11 @@ namespace Alis.Core.Physic.Collision
                 vOut[numOut].V = vIn[0].V + interp * (vIn[1].V - vIn[0].V);
                 if (distance0 > 0.0f)
                 {
-                    vOut[numOut].ID = vIn[0].ID;
+                    vOut[numOut].Id = vIn[0].Id;
                 }
                 else
                 {
-                    vOut[numOut].ID = vIn[1].ID;
+                    vOut[numOut].Id = vIn[1].Id;
                 }
 
                 ++numOut;

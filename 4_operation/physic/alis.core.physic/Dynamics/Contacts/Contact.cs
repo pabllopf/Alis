@@ -327,13 +327,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 ManifoldPoint mp2 = Manifold.Points[i];
                 mp2.NormalImpulse = 0.0f;
                 mp2.TangentImpulse = 0.0f;
-                ContactID id2 = mp2.ID;
+                ContactId id2 = mp2.Id;
 
                 for (int j = 0; j < oldManifold.PointCount; ++j)
                 {
                     ManifoldPoint mp1 = oldManifold.Points[j];
 
-                    if (mp1.ID.Key == id2.Key)
+                    if (mp1.Id.Key == id2.Key)
                     {
                         mp2.NormalImpulse = mp1.NormalImpulse;
                         mp2.TangentImpulse = mp1.TangentImpulse;
@@ -390,7 +390,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <returns>The float</returns>
         public float ComputeTOI(Sweep sweepA, Sweep sweepB)
         {
-            TOIInput input = new TOIInput();
+            ToiInput input = new ToiInput();
             input.SweepA = sweepA;
             input.SweepB = sweepB;
             input.SweepRadiusA = FixtureA.ComputeSweepRadius(sweepA.LocalCenter);

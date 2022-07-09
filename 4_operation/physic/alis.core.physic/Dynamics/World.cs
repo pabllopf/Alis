@@ -674,7 +674,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public int GetPairCount()
         {
-            return _broadPhase.PairManager._pairCount;
+            return _broadPhase.PairManager.PairCount;
         }
 
         /// <summary>
@@ -1514,10 +1514,10 @@ namespace Alis.Core.Physic.Dynamics
 
                 for (int i = 0; i < PairManager.TableCapacity; ++i)
                 {
-                    ushort index = bp.PairManager._hashTable[i];
+                    ushort index = bp.PairManager.HashTable[i];
                     while (index != PairManager.NullPair)
                     {
-                        Pair pair = bp.PairManager._pairs[index];
+                        Pair pair = bp.PairManager.Pairs[index];
                         Proxy p1 = bp.ProxyPool[pair.ProxyId1];
                         Proxy p2 = bp.ProxyPool[pair.ProxyId2];
 

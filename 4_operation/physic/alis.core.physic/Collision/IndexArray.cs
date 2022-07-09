@@ -37,17 +37,17 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The
         /// </summary>
-        private byte I0;
+        private byte i0;
 
         /// <summary>
         ///     The
         /// </summary>
-        private byte I1;
+        private byte i1;
 
         /// <summary>
         ///     The
         /// </summary>
-        private byte I2;
+        private byte i2;
 
         /// <summary>
         ///     The value
@@ -59,18 +59,18 @@ namespace Alis.Core.Physic.Collision
 #if DEBUG
                 Box2DXDebug.Assert(index >= 0 && index < 3);
 #endif
-                if (index == 0) return I0;
-                if (index == 1) return I1;
-                return I2;
+                if (index == 0) return i0;
+                if (index == 1) return i1;
+                return i2;
             }
             set
             {
 #if DEBUG
                 Box2DXDebug.Assert(index >= 0 && index < 3);
 #endif
-                if (index == 0) I0 = value;
-                else if (index == 1) I1 = value;
-                else I2 = value;
+                if (index == 0) i0 = value;
+                else if (index == 1) i1 = value;
+                else i2 = value;
             }
         }
     }

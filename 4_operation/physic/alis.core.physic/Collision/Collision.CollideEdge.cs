@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Collision
                 manifold.LocalPlaneNormal.Normalize();
                 manifold.LocalPoint = v1;
                 manifold.Points[0].LocalPoint = circle.Position;
-                manifold.Points[0].ID.Key = 0;
+                manifold.Points[0].Id.Key = 0;
             }
             else if (u2 <= 0.0f)
             {
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Collision
                 manifold.LocalPlaneNormal.Normalize();
                 manifold.LocalPoint = v2;
                 manifold.Points[0].LocalPoint = circle.Position;
-                manifold.Points[0].ID.Key = 0;
+                manifold.Points[0].Id.Key = 0;
             }
             else
             {
@@ -105,7 +105,7 @@ namespace Alis.Core.Physic.Collision
                 manifold.LocalPlaneNormal = separation < 0.0f ? -normal : normal;
                 manifold.LocalPoint = 0.5f * (v1 + v2);
                 manifold.Points[0].LocalPoint = circle.Position;
-                manifold.Points[0].ID.Key = 0;
+                manifold.Points[0].Id.Key = 0;
             }
         }
 

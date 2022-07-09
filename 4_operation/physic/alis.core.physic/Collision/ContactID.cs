@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Collision
     ///     Contact ids to facilitate warm starting.
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
-    public struct ContactID
+    public struct ContactId
     {
         /// <summary>
         ///     The features

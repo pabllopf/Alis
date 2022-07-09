@@ -62,9 +62,9 @@ namespace Alis.Core.Physic.Collision
 		public static readonly ushort BROADPHASE_MAX = (Common.Math.USHRT_MAX/2);
 #else
         /// <summary>
-        ///     The ushrt max
+        ///     The max
         /// </summary>
-        public static readonly ushort BroadphaseMax = Math.UshrtMax;
+        private static readonly ushort BroadphaseMax = Math.UshrtMax;
 #endif
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The free proxy
         /// </summary>
-        public ushort FreeProxy;
+        private ushort freeProxy;
 
         /// <summary>
         ///     The bound
@@ -169,7 +169,7 @@ namespace Alis.Core.Physic.Collision
             ProxyPool[Settings.MaxProxies - 1].TimeStamp = 0;
             ProxyPool[Settings.MaxProxies - 1].OverlapCount = Invalid;
             ProxyPool[Settings.MaxProxies - 1].UserData = null;
-            FreeProxy = 0;
+            freeProxy = 0;
 
             TimeStamp = 1;
             QueryResultCount = 0;
@@ -209,18 +209,19 @@ namespace Alis.Core.Physic.Collision
         public ushort CreateProxy(Aabb aabb, object userData)
         {
             Box2DXDebug.Assert(ProxyCount < Settings.MaxProxies);
-            Box2DXDebug.Assert(FreeProxy != PairManager.NullProxy);
+            Box2DXDebug.Assert(freeProxy != PairManager.NullProxy);
 
-            ushort proxyId = FreeProxy;
-            Proxy proxy = ProxyPool[proxyId];
-            FreeProxy = proxy.Next;
+            ushort proxyId = freeProxy;
+            Proxy proxy1 = ProxyPool[proxyId];
+            freeProxy = proxy1.Next;
 
-            proxy.OverlapCount = 0;
-            proxy.UserData = userData;
+            proxy1.OverlapCount = 0;
+            proxy1.UserData = userData;
 
             int boundCount = 2 * ProxyCount;
 
-            ushort[] lowerValues = new ushort[2], upperValues = new ushort[2];
+            ushort[] lowerValues;
+            ushort[] upperValues;
             ComputeBounds(out lowerValues, out upperValues, aabb);
 
             for (int axis = 0; axis < 2; ++axis)
@@ -230,7 +231,7 @@ namespace Alis.Core.Physic.Collision
                 Query(out lowerIndex, out upperIndex, lowerValues[axis], upperValues[axis], bounds, boundCount, axis);
 
 
-                //memmove(bounds + upperIndex + 2, bounds + upperIndex, (boundCount - upperIndex) * sizeof(b2Bound));				
+                		
                 Bound[] tmp = new Bound[boundCount - upperIndex];
                 for (int i = 0; i < (boundCount - upperIndex); i++)
                 {
@@ -242,7 +243,7 @@ namespace Alis.Core.Physic.Collision
                     bounds[upperIndex + 2 + i] = tmp[i];
                 }
 
-                //memmove(bounds + lowerIndex + 1, bounds + lowerIndex, (upperIndex - lowerIndex) * sizeof(b2Bound));
+                
                 tmp = new Bound[upperIndex - lowerIndex];
                 for (int i = 0; i < (upperIndex - lowerIndex); i++)
                 {
@@ -275,14 +276,14 @@ namespace Alis.Core.Physic.Collision
                 // Adjust the all the affected bound indices.
                 for (int index = lowerIndex; index < boundCount + 2; ++index)
                 {
-                    Proxy proxy_ = ProxyPool[bounds[index].ProxyId];
+                    Proxy proxy = ProxyPool[bounds[index].ProxyId];
                     if (bounds[index].IsLower)
                     {
-                        proxy_.LowerBounds[axis] = (ushort) index;
+                        proxy.LowerBounds[axis] = (ushort) index;
                     }
                     else
                     {
-                        proxy_.UpperBounds[axis] = (ushort) index;
+                        proxy.UpperBounds[axis] = (ushort) index;
                     }
                 }
             }
@@ -321,8 +322,8 @@ namespace Alis.Core.Physic.Collision
         public void DestroyProxy(int proxyId)
         {
             Box2DXDebug.Assert(0 < ProxyCount && ProxyCount <= Settings.MaxProxies);
-            Proxy proxy = ProxyPool[proxyId];
-            Box2DXDebug.Assert(proxy.IsValid);
+            Proxy proxy1 = ProxyPool[proxyId];
+            Box2DXDebug.Assert(proxy1.IsValid);
 
             int boundCount = 2 * ProxyCount;
 
@@ -330,13 +331,13 @@ namespace Alis.Core.Physic.Collision
             {
                 Bound[] bounds = Bounds[axis];
 
-                int lowerIndex = proxy.LowerBounds[axis];
-                int upperIndex = proxy.UpperBounds[axis];
+                int lowerIndex = proxy1.LowerBounds[axis];
+                int upperIndex = proxy1.UpperBounds[axis];
                 ushort lowerValue = bounds[lowerIndex].Value;
                 ushort upperValue = bounds[upperIndex].Value;
 
 
-                //memmove(bounds + lowerIndex, bounds + lowerIndex + 1, (upperIndex - lowerIndex - 1) * sizeof(b2Bound));
+                
                 Bound[] tmp = new Bound[upperIndex - lowerIndex - 1];
                 for (int i = 0; i < (upperIndex - lowerIndex - 1); i++)
                 {
@@ -348,7 +349,7 @@ namespace Alis.Core.Physic.Collision
                     bounds[lowerIndex + i] = tmp[i];
                 }
 
-                //memmove(bounds + upperIndex - 1, bounds + upperIndex + 1, (boundCount - upperIndex - 1) * sizeof(b2Bound));
+                
                 tmp = new Bound[boundCount - upperIndex - 1];
                 for (int i = 0; i < (boundCount - upperIndex - 1); i++)
                 {
@@ -363,14 +364,14 @@ namespace Alis.Core.Physic.Collision
                 // Fix bound indices.
                 for (int index = lowerIndex; index < boundCount - 2; ++index)
                 {
-                    Proxy proxy_ = ProxyPool[bounds[index].ProxyId];
+                    Proxy proxy = ProxyPool[bounds[index].ProxyId];
                     if (bounds[index].IsLower)
                     {
-                        proxy_.LowerBounds[axis] = (ushort) index;
+                        proxy.LowerBounds[axis] = (ushort) index;
                     }
                     else
                     {
-                        proxy_.UpperBounds[axis] = (ushort) index;
+                        proxy.UpperBounds[axis] = (ushort) index;
                     }
                 }
 
@@ -399,15 +400,15 @@ namespace Alis.Core.Physic.Collision
             IncrementTimeStamp();
 
             // Return the proxy to the pool.
-            proxy.UserData = null;
-            proxy.OverlapCount = Invalid;
-            proxy.LowerBounds[0] = Invalid;
-            proxy.LowerBounds[1] = Invalid;
-            proxy.UpperBounds[0] = Invalid;
-            proxy.UpperBounds[1] = Invalid;
+            proxy1.UserData = null;
+            proxy1.OverlapCount = Invalid;
+            proxy1.LowerBounds[0] = Invalid;
+            proxy1.LowerBounds[1] = Invalid;
+            proxy1.UpperBounds[0] = Invalid;
+            proxy1.UpperBounds[1] = Invalid;
 
-            proxy.Next = FreeProxy;
-            FreeProxy = (ushort) proxyId;
+            proxy1.Next = freeProxy;
+            freeProxy = (ushort) proxyId;
             --ProxyCount;
 
             if (IsValidate)
@@ -439,27 +440,27 @@ namespace Alis.Core.Physic.Collision
 
             int boundCount = 2 * ProxyCount;
 
-            Proxy proxy = ProxyPool[proxyId];
+            Proxy proxy1 = ProxyPool[proxyId];
 
             // Get new bound values
             BoundValues newValues = new BoundValues();
-            ;
+            
             ComputeBounds(out newValues.LowerValues, out newValues.UpperValues, aabb);
 
             // Get old bound values
             BoundValues oldValues = new BoundValues();
             for (int axis = 0; axis < 2; ++axis)
             {
-                oldValues.LowerValues[axis] = Bounds[axis][proxy.LowerBounds[axis]].Value;
-                oldValues.UpperValues[axis] = Bounds[axis][proxy.UpperBounds[axis]].Value;
+                oldValues.LowerValues[axis] = Bounds[axis][proxy1.LowerBounds[axis]].Value;
+                oldValues.UpperValues[axis] = Bounds[axis][proxy1.UpperBounds[axis]].Value;
             }
 
             for (int axis = 0; axis < 2; ++axis)
             {
                 Bound[] bounds = Bounds[axis];
 
-                int lowerIndex = proxy.LowerBounds[axis];
-                int upperIndex = proxy.UpperBounds[axis];
+                int lowerIndex = proxy1.LowerBounds[axis];
+                int upperIndex = proxy1.UpperBounds[axis];
 
                 ushort lowerValue = newValues.LowerValues[axis];
                 ushort upperValue = newValues.UpperValues[axis];
@@ -504,7 +505,7 @@ namespace Alis.Core.Physic.Collision
                             --bound.StabbingCount;
                         }
 
-                        --proxy.LowerBounds[axis];
+                        --proxy1.LowerBounds[axis];
                         Math.Swap(ref bounds[index], ref bounds[index - 1]);
                         --index;
                     }
@@ -539,7 +540,7 @@ namespace Alis.Core.Physic.Collision
                             --bound.StabbingCount;
                         }
 
-                        ++proxy.UpperBounds[axis];
+                        ++proxy1.UpperBounds[axis];
                         Math.Swap(ref bounds[index], ref bounds[index + 1]);
                         ++index;
                     }
@@ -579,7 +580,7 @@ namespace Alis.Core.Physic.Collision
                             ++bound.StabbingCount;
                         }
 
-                        ++proxy.LowerBounds[axis];
+                        ++proxy1.LowerBounds[axis];
                         Math.Swap(ref bounds[index], ref bounds[index + 1]);
                         ++index;
                     }
@@ -615,7 +616,7 @@ namespace Alis.Core.Physic.Collision
                             ++bound.StabbingCount;
                         }
 
-                        --proxy.UpperBounds[axis];
+                        --proxy1.UpperBounds[axis];
                         Math.Swap(ref bounds[index], ref bounds[index - 1]);
                         --index;
                     }
@@ -721,8 +722,8 @@ namespace Alis.Core.Physic.Collision
 
             Box2DXDebug.Assert(sx != 0 || sy != 0);
 
-            float p1x = (segment.P1.X - WorldAabb.LowerBound.X) * QuantizationFactor.X;
-            float p1y = (segment.P1.Y - WorldAabb.LowerBound.Y) * QuantizationFactor.Y;
+            float p1X = (segment.P1.X - WorldAabb.LowerBound.X) * QuantizationFactor.X;
+            float p1Y = (segment.P1.Y - WorldAabb.LowerBound.Y) * QuantizationFactor.Y;
 #if ALLOWUNSAFE
             ushort* startValues = stackalloc ushort[2];
             ushort* startValues2 = stackalloc ushort[2];
@@ -735,14 +736,13 @@ namespace Alis.Core.Physic.Collision
             int yIndex;
 
             ushort proxyId;
-            Proxy proxy;
 
             // TODO_ERIN implement fast float to ushort conversion.
-            startValues[0] = (ushort) ((ushort) (p1x) & (BroadphaseMax - 1));
-            startValues2[0] = (ushort) ((ushort) (p1x) | 1);
+            startValues[0] = (ushort) ((ushort) (p1X) & (BroadphaseMax - 1));
+            startValues2[0] = (ushort) ((ushort) (p1X) | 1);
 
-            startValues[1] = (ushort) ((ushort) (p1y) & (BroadphaseMax - 1));
-            startValues2[1] = (ushort) ((ushort) (p1y) | 1);
+            startValues[1] = (ushort) ((ushort) (p1Y) & (BroadphaseMax - 1));
+            startValues2[1] = (ushort) ((ushort) (p1Y) | 1);
 
             //First deal with all the proxies that contain segment.p1
             int lowerIndex;
@@ -816,7 +816,7 @@ namespace Alis.Core.Physic.Collision
                             break;
                     }
 
-                    xProgress = (Bounds[0][xIndex].Value - p1x) / dx;
+                    xProgress = (Bounds[0][xIndex].Value - p1X) / dx;
                 }
 
                 if (sy != 0)
@@ -835,11 +835,12 @@ namespace Alis.Core.Physic.Collision
                             break;
                     }
 
-                    yProgress = (Bounds[1][yIndex].Value - p1y) / dy;
+                    yProgress = (Bounds[1][yIndex].Value - p1Y) / dy;
                 }
 
                 for (;;)
                 {
+                    Proxy proxy;
                     if (sy == 0 || (sx != 0 && xProgress < yProgress))
                     {
                         if (xProgress > maxLambda)
@@ -904,7 +905,7 @@ namespace Alis.Core.Physic.Collision
                                 break;
                         }
 
-                        xProgress = (Bounds[0][xIndex].Value - p1x) / dx;
+                        xProgress = (Bounds[0][xIndex].Value - p1X) / dx;
                     }
                     else
                     {
@@ -970,7 +971,7 @@ namespace Alis.Core.Physic.Collision
                                 break;
                         }
 
-                        yProgress = (Bounds[1][yIndex].Value - p1y) / dy;
+                        yProgress = (Bounds[1][yIndex].Value - p1Y) / dy;
                     }
                 }
 
@@ -981,9 +982,9 @@ namespace Alis.Core.Physic.Collision
             for (int i = 0; i < QueryResultCount && count < maxCount; ++i, ++count)
             {
                 Box2DXDebug.Assert(QueryResults[i] < Settings.MaxProxies);
-                Proxy proxy_ = ProxyPool[QueryResults[i]];
-                Box2DXDebug.Assert(proxy_.IsValid);
-                userData[i] = proxy_.UserData;
+                Proxy proxy = ProxyPool[QueryResults[i]];
+                Box2DXDebug.Assert(proxy.IsValid);
+                userData[i] = proxy.UserData;
             }
 
             // Prepare for next query.
@@ -1168,16 +1169,6 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// <summary>
-        ///     The qi
-        /// </summary>
-        private int qi1;
-
-        /// <summary>
-        ///     The qi
-        /// </summary>
-        private int qi2;
-
-        /// <summary>
         ///     Increments the overlap count using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
@@ -1188,7 +1179,6 @@ namespace Alis.Core.Physic.Collision
             {
                 proxy.TimeStamp = TimeStamp;
                 proxy.OverlapCount = 1;
-                qi1++;
             }
             else
             {
@@ -1196,7 +1186,6 @@ namespace Alis.Core.Physic.Collision
                 Box2DXDebug.Assert(QueryResultCount < Settings.MaxProxies);
                 QueryResults[QueryResultCount] = (ushort) proxyId;
                 ++QueryResultCount;
-                qi2++;
             }
         }
 
@@ -1228,7 +1217,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxy">The proxy</param>
         /// <param name="maxCount">The max count</param>
         /// <param name="sortKey">The sort key</param>
-        public unsafe void AddProxyResult(ushort proxyId, Proxy proxy, int maxCount, SortKeyFunc sortKey)
+        private unsafe void AddProxyResult(ushort proxyId, Proxy proxy, int maxCount, SortKeyFunc sortKey)
         {
             float key = sortKey(proxy.UserData);
             //Filter proxies on positive keys

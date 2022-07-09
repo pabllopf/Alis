@@ -34,7 +34,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     Inpute parameters for TimeOfImpact
     /// </summary>
-    public struct TOIInput
+    public struct ToiInput
     {
         /// <summary>
         ///     The sweep

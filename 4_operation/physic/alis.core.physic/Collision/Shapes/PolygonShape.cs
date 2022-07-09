@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			pRef *= 1.0f / count;
 #endif
 
-            const float k_inv3 = 1.0f / 3.0f;
+            const float kInv3 = 1.0f / 3.0f;
 
             for (int i = 0; i < VertexCount; ++i)
             {
@@ -359,24 +359,24 @@ namespace Alis.Core.Physic.Collision.Shapes
                 Vec2 e1 = p2 - p1;
                 Vec2 e2 = p3 - p1;
 
-                float D = Vec2.Cross(e1, e2);
+                float d = Vec2.Cross(e1, e2);
 
-                float triangleArea = 0.5f * D;
+                float triangleArea = 0.5f * d;
                 area += triangleArea;
 
                 // Area weighted centroid
-                center += triangleArea * k_inv3 * (p1 + p2 + p3);
+                center += triangleArea * kInv3 * (p1 + p2 + p3);
 
                 float px = p1.X, py = p1.Y;
                 float ex1 = e1.X, ey1 = e1.Y;
                 float ex2 = e2.X, ey2 = e2.Y;
 
-                float intx2 = k_inv3 * (0.25f * (ex1 * ex1 + ex2 * ex1 + ex2 * ex2) + (px * ex1 + px * ex2)) +
+                float intx2 = kInv3 * (0.25f * (ex1 * ex1 + ex2 * ex1 + ex2 * ex2) + (px * ex1 + px * ex2)) +
                               0.5f * px * px;
-                float inty2 = k_inv3 * (0.25f * (ey1 * ey1 + ey2 * ey1 + ey2 * ey2) + (py * ey1 + py * ey2)) +
+                float inty2 = kInv3 * (0.25f * (ey1 * ey1 + ey2 * ey1 + ey2 * ey2) + (py * ey1 + py * ey2)) +
                               0.5f * py * py;
 
-                I += D * (intx2 + inty2);
+                I += d * (intx2 + inty2);
             }
 
             // Total mass
@@ -485,7 +485,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             Vec2 p2 = Vertices[intoIndex2];
             Vec2 p3;
 
-            const float k_inv3 = 1.0f / 3.0f;
+            const float kInv3 = 1.0f / 3.0f;
 
             //An awkward loop from intoIndex2+1 to outIndex2
             i = intoIndex2;
@@ -501,14 +501,14 @@ namespace Alis.Core.Physic.Collision.Shapes
                     Vec2 e1 = p2 - intoVec;
                     Vec2 e2 = p3 - intoVec;
 
-                    float D = Vec2.Cross(e1, e2);
+                    float d = Vec2.Cross(e1, e2);
 
-                    float triangleArea = 0.5f * D;
+                    float triangleArea = 0.5f * d;
 
                     area += triangleArea;
 
                     // Area weighted centroid
-                    center += triangleArea * k_inv3 * (intoVec + p2 + p3);
+                    center += triangleArea * kInv3 * (intoVec + p2 + p3);
                 }
                 //
                 p2 = p3;
@@ -630,9 +630,9 @@ namespace Alis.Core.Physic.Collision.Shapes
                 Vec2 e1 = p2 - p1;
                 Vec2 e2 = p3 - p1;
 
-                float D = Vec2.Cross(e1, e2);
+                float d = Vec2.Cross(e1, e2);
 
-                float triangleArea = 0.5f * D;
+                float triangleArea = 0.5f * d;
                 area += triangleArea;
 
                 // Area weighted centroid

@@ -67,42 +67,42 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The broad phase
         /// </summary>
-        public BroadPhase _broadPhase;
+        public BroadPhase BroadPhase;
 
         /// <summary>
         ///     The callback
         /// </summary>
-        public PairCallback _callback;
+        public PairCallback Callback;
 
         /// <summary>
         ///     The free pair
         /// </summary>
-        public ushort _freePair;
+        public ushort FreePair;
 
         /// <summary>
         ///     The table capacity
         /// </summary>
-        public readonly ushort[] _hashTable = new ushort[TableCapacity];
+        public readonly ushort[] HashTable = new ushort[TableCapacity];
 
         /// <summary>
         ///     The max pairs
         /// </summary>
-        public readonly BufferedPair[] _pairBuffer = new BufferedPair[Settings.MaxPairs];
+        public readonly BufferedPair[] PairBuffer = new BufferedPair[Settings.MaxPairs];
 
         /// <summary>
         ///     The pair buffer count
         /// </summary>
-        public int _pairBufferCount;
+        public int PairBufferCount;
 
         /// <summary>
         ///     The pair count
         /// </summary>
-        public int _pairCount;
+        public int PairCount;
 
         /// <summary>
         ///     The max pairs
         /// </summary>
-        public readonly Pair[] _pairs = new Pair[Settings.MaxPairs];
+        public readonly Pair[] Pairs = new Pair[Settings.MaxPairs];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PairManager" /> class
@@ -113,23 +113,23 @@ namespace Alis.Core.Physic.Collision
             Box2DXDebug.Assert(TableCapacity >= Settings.MaxPairs);
             for (int i = 0; i < TableCapacity; ++i)
             {
-                _hashTable[i] = NullPair;
+                HashTable[i] = NullPair;
             }
 
-            _freePair = 0;
+            FreePair = 0;
             for (int i = 0; i < Settings.MaxPairs; ++i)
             {
-                _pairs[i] = new Pair(); //todo: need some pool here
-                _pairs[i].ProxyId1 = NullProxy;
-                _pairs[i].ProxyId2 = NullProxy;
-                _pairs[i].UserData = null;
-                _pairs[i].Status = 0;
-                _pairs[i].Next = (ushort) (i + 1U);
+                Pairs[i] = new Pair(); //todo: need some pool here
+                Pairs[i].ProxyId1 = NullProxy;
+                Pairs[i].ProxyId2 = NullProxy;
+                Pairs[i].UserData = null;
+                Pairs[i].Status = 0;
+                Pairs[i].Next = (ushort) (i + 1U);
             }
 
-            _pairs[Settings.MaxPairs - 1].Next = NullPair;
-            _pairCount = 0;
-            _pairBufferCount = 0;
+            Pairs[Settings.MaxPairs - 1].Next = NullPair;
+            PairCount = 0;
+            PairBufferCount = 0;
         }
 
         /// <summary>
@@ -139,8 +139,8 @@ namespace Alis.Core.Physic.Collision
         /// <param name="callback">The callback</param>
         public void Initialize(BroadPhase broadPhase, PairCallback callback)
         {
-            _broadPhase = broadPhase;
-            _callback = callback;
+            BroadPhase = broadPhase;
+            Callback = callback;
         }
 
         /*
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Collision
         public void AddBufferedPair(int id1, int id2)
         {
             Box2DXDebug.Assert(id1 != NullProxy && id2 != NullProxy);
-            Box2DXDebug.Assert(_pairBufferCount < Settings.MaxPairs);
+            Box2DXDebug.Assert(PairBufferCount < Settings.MaxPairs);
 
             Pair pair = AddPair(id1, id2);
 
@@ -179,11 +179,11 @@ namespace Alis.Core.Physic.Collision
 
                 // Add it to the pair buffer.
                 pair.SetBuffered();
-                _pairBuffer[_pairBufferCount].ProxyId1 = pair.ProxyId1;
-                _pairBuffer[_pairBufferCount].ProxyId2 = pair.ProxyId2;
-                ++_pairBufferCount;
+                PairBuffer[PairBufferCount].ProxyId1 = pair.ProxyId1;
+                PairBuffer[PairBufferCount].ProxyId2 = pair.ProxyId2;
+                ++PairBufferCount;
 
-                Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
+                Box2DXDebug.Assert(PairBufferCount <= PairCount);
             }
 
             // Confirm this pair for the subsequent call to Commit.
@@ -204,7 +204,7 @@ namespace Alis.Core.Physic.Collision
         public void RemoveBufferedPair(int id1, int id2)
         {
             Box2DXDebug.Assert(id1 != NullProxy && id2 != NullProxy);
-            Box2DXDebug.Assert(_pairBufferCount < Settings.MaxPairs);
+            Box2DXDebug.Assert(PairBufferCount < Settings.MaxPairs);
 
             Pair pair = Find(id1, id2);
 
@@ -221,11 +221,11 @@ namespace Alis.Core.Physic.Collision
                 Box2DXDebug.Assert(pair.IsFinal());
 
                 pair.SetBuffered();
-                _pairBuffer[_pairBufferCount].ProxyId1 = pair.ProxyId1;
-                _pairBuffer[_pairBufferCount].ProxyId2 = pair.ProxyId2;
-                ++_pairBufferCount;
+                PairBuffer[PairBufferCount].ProxyId1 = pair.ProxyId1;
+                PairBuffer[PairBufferCount].ProxyId2 = pair.ProxyId2;
+                ++PairBufferCount;
 
-                Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
+                Box2DXDebug.Assert(PairBufferCount <= PairCount);
             }
 
             pair.SetRemoved();
@@ -243,11 +243,11 @@ namespace Alis.Core.Physic.Collision
         {
             int removeCount = 0;
 
-            Proxy[] proxies = _broadPhase.ProxyPool;
+            Proxy[] proxies = BroadPhase.ProxyPool;
 
-            for (int i = 0; i < _pairBufferCount; ++i)
+            for (int i = 0; i < PairBufferCount; ++i)
             {
-                Pair pair = Find(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
+                Pair pair = Find(PairBuffer[i].ProxyId1, PairBuffer[i].ProxyId2);
                 Box2DXDebug.Assert(pair.IsBuffered());
                 pair.ClearBuffered();
 
@@ -266,21 +266,21 @@ namespace Alis.Core.Physic.Collision
                     // the user didn't receive a matching add.
                     if (pair.IsFinal())
                     {
-                        _callback.PairRemoved(proxy1.UserData, proxy2.UserData, pair.UserData);
+                        Callback.PairRemoved(proxy1.UserData, proxy2.UserData, pair.UserData);
                     }
 
                     // Store the ids so we can actually remove the pair below.
-                    _pairBuffer[removeCount].ProxyId1 = pair.ProxyId1;
-                    _pairBuffer[removeCount].ProxyId2 = pair.ProxyId2;
+                    PairBuffer[removeCount].ProxyId1 = pair.ProxyId1;
+                    PairBuffer[removeCount].ProxyId2 = pair.ProxyId2;
                     ++removeCount;
                 }
                 else
                 {
-                    Box2DXDebug.Assert(_broadPhase.TestOverlap(proxy1, proxy2));
+                    Box2DXDebug.Assert(BroadPhase.TestOverlap(proxy1, proxy2));
 
                     if (pair.IsFinal() == false)
                     {
-                        pair.UserData = _callback.PairAdded(proxy1.UserData, proxy2.UserData);
+                        pair.UserData = Callback.PairAdded(proxy1.UserData, proxy2.UserData);
                         pair.SetFinal();
                     }
                 }
@@ -288,10 +288,10 @@ namespace Alis.Core.Physic.Collision
 
             for (int i = 0; i < removeCount; ++i)
             {
-                RemovePair(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
+                RemovePair(PairBuffer[i].ProxyId1, PairBuffer[i].ProxyId2);
             }
 
-            _pairBufferCount = 0;
+            PairBufferCount = 0;
 
             if (BroadPhase.IsValidate)
             {
@@ -324,11 +324,11 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The pair</returns>
         private Pair Find(int proxyId1, int proxyId2, uint hash)
         {
-            int index = _hashTable[hash];
+            int index = HashTable[hash];
 
-            while (index != NullPair && Equals(_pairs[index], proxyId1, proxyId2) == false)
+            while (index != NullPair && Equals(Pairs[index], proxyId1, proxyId2) == false)
             {
-                index = _pairs[index].Next;
+                index = Pairs[index].Next;
             }
 
             if (index == NullPair)
@@ -338,7 +338,7 @@ namespace Alis.Core.Physic.Collision
 
             Box2DXDebug.Assert(index < Settings.MaxPairs);
 
-            return _pairs[index];
+            return Pairs[index];
         }
 
         // Returns existing pair or creates a new one.
@@ -361,21 +361,21 @@ namespace Alis.Core.Physic.Collision
                 return pair;
             }
 
-            Box2DXDebug.Assert(_pairCount < Settings.MaxPairs && _freePair != NullPair);
+            Box2DXDebug.Assert(PairCount < Settings.MaxPairs && FreePair != NullPair);
 
-            ushort pairIndex = _freePair;
-            pair = _pairs[pairIndex];
-            _freePair = pair.Next;
+            ushort pairIndex = FreePair;
+            pair = Pairs[pairIndex];
+            FreePair = pair.Next;
 
             pair.ProxyId1 = (ushort) proxyId1;
             pair.ProxyId2 = (ushort) proxyId2;
             pair.Status = 0;
             pair.UserData = null;
-            pair.Next = _hashTable[hash];
+            pair.Next = HashTable[hash];
 
-            _hashTable[hash] = pairIndex;
+            HashTable[hash] = pairIndex;
 
-            ++_pairCount;
+            ++PairCount;
 
             return pair;
         }
@@ -389,7 +389,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The object</returns>
         private object RemovePair(int proxyId1, int proxyId2)
         {
-            Box2DXDebug.Assert(_pairCount > 0);
+            Box2DXDebug.Assert(PairCount > 0);
 
             if (proxyId1 > proxyId2)
                 Math.Swap(ref proxyId1, ref proxyId2);
@@ -397,43 +397,43 @@ namespace Alis.Core.Physic.Collision
             int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
 
             //uint16* node = &m_hashTable[hash];
-            ushort node = _hashTable[hash];
+            ushort node = HashTable[hash];
             bool ion = false;
             int ni = 0;
             while (node != NullPair)
             {
-                if (Equals(_pairs[node], proxyId1, proxyId2))
+                if (Equals(Pairs[node], proxyId1, proxyId2))
                 {
                     //uint16 index = *node;
                     //*node = m_pairs[*node].next;
 
                     ushort index = node;
-                    node = _pairs[node].Next;
+                    node = Pairs[node].Next;
                     if (ion)
-                        _pairs[ni].Next = node;
+                        Pairs[ni].Next = node;
                     else
                     {
-                        _hashTable[hash] = node;
+                        HashTable[hash] = node;
                     }
 
-                    Pair pair = _pairs[index];
+                    Pair pair = Pairs[index];
                     object userData = pair.UserData;
 
                     // Scrub
-                    pair.Next = _freePair;
+                    pair.Next = FreePair;
                     pair.ProxyId1 = NullProxy;
                     pair.ProxyId2 = NullProxy;
                     pair.UserData = null;
                     pair.Status = 0;
 
-                    _freePair = index;
-                    --_pairCount;
+                    FreePair = index;
+                    --PairCount;
                     return userData;
                 }
 
                 //node = &m_pairs[*node].next;
                 ni = node;
-                node = _pairs[ni].Next;
+                node = Pairs[ni].Next;
                 ion = true;
             }
 
@@ -447,30 +447,30 @@ namespace Alis.Core.Physic.Collision
         private void ValidateBuffer()
         {
 #if DEBUG
-            Box2DXDebug.Assert(_pairBufferCount <= _pairCount);
+            Box2DXDebug.Assert(PairBufferCount <= PairCount);
 
             //std::sort(m_pairBuffer, m_pairBuffer + m_pairBufferCount);
-            BufferedPair[] tmp = new BufferedPair[_pairBufferCount];
-            Array.Copy(_pairBuffer, 0, tmp, 0, _pairBufferCount);
+            BufferedPair[] tmp = new BufferedPair[PairBufferCount];
+            Array.Copy(PairBuffer, 0, tmp, 0, PairBufferCount);
             Array.Sort(tmp, BufferedPairSortPredicate);
-            Array.Copy(tmp, 0, _pairBuffer, 0, _pairBufferCount);
+            Array.Copy(tmp, 0, PairBuffer, 0, PairBufferCount);
 
-            for (int i = 0; i < _pairBufferCount; ++i)
+            for (int i = 0; i < PairBufferCount; ++i)
             {
                 if (i > 0)
                 {
-                    Box2DXDebug.Assert(Equals(_pairBuffer[i], _pairBuffer[i - 1]) == false);
+                    Box2DXDebug.Assert(Equals(PairBuffer[i], PairBuffer[i - 1]) == false);
                 }
 
-                Pair pair = Find(_pairBuffer[i].ProxyId1, _pairBuffer[i].ProxyId2);
+                Pair pair = Find(PairBuffer[i].ProxyId1, PairBuffer[i].ProxyId2);
                 Box2DXDebug.Assert(pair.IsBuffered());
 
                 Box2DXDebug.Assert(pair.ProxyId1 != pair.ProxyId2);
                 Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies);
                 Box2DXDebug.Assert(pair.ProxyId2 < Settings.MaxProxies);
 
-                Proxy proxy1 = _broadPhase.ProxyPool[pair.ProxyId1];
-                Proxy proxy2 = _broadPhase.ProxyPool[pair.ProxyId2];
+                Proxy proxy1 = BroadPhase.ProxyPool[pair.ProxyId1];
+                Proxy proxy2 = BroadPhase.ProxyPool[pair.ProxyId2];
 
                 Box2DXDebug.Assert(proxy1.IsValid);
                 Box2DXDebug.Assert(proxy2.IsValid);
@@ -486,10 +486,10 @@ namespace Alis.Core.Physic.Collision
 #if DEBUG
             for (int i = 0; i < TableCapacity; ++i)
             {
-                ushort index = _hashTable[i];
+                ushort index = HashTable[i];
                 while (index != NullPair)
                 {
-                    Pair pair = _pairs[index];
+                    Pair pair = Pairs[index];
                     Box2DXDebug.Assert(pair.IsBuffered() == false);
                     Box2DXDebug.Assert(pair.IsFinal());
                     Box2DXDebug.Assert(pair.IsRemoved() == false);
@@ -498,13 +498,13 @@ namespace Alis.Core.Physic.Collision
                     Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies);
                     Box2DXDebug.Assert(pair.ProxyId2 < Settings.MaxProxies);
 
-                    Proxy proxy1 = _broadPhase.ProxyPool[pair.ProxyId1];
-                    Proxy proxy2 = _broadPhase.ProxyPool[pair.ProxyId2];
+                    Proxy proxy1 = BroadPhase.ProxyPool[pair.ProxyId1];
+                    Proxy proxy2 = BroadPhase.ProxyPool[pair.ProxyId2];
 
                     Box2DXDebug.Assert(proxy1.IsValid);
                     Box2DXDebug.Assert(proxy2.IsValid);
 
-                    Box2DXDebug.Assert(_broadPhase.TestOverlap(proxy1, proxy2));
+                    Box2DXDebug.Assert(BroadPhase.TestOverlap(proxy1, proxy2));
 
                     index = pair.Next;
                 }
