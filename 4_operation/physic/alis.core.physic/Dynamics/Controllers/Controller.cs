@@ -11,32 +11,32 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <summary>
         /// The prev
         /// </summary>
-        internal Controller _prev;
+        internal Controller Prev;
         /// <summary>
         /// The next
         /// </summary>
-        internal Controller _next;
+        internal Controller Next;
 
         /// <summary>
         /// The world
         /// </summary>
-        internal World _world;
+        internal World World;
         /// <summary>
         /// The body list
         /// </summary>
-        protected ControllerEdge _bodyList;
+        protected ControllerEdge BodyList;
         /// <summary>
         /// The body count
         /// </summary>
-        protected int _bodyCount;
+        protected int BodyCount;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Controller"/> class
         /// </summary>
         public Controller()
         {
-            _bodyList = null;
-            _bodyCount = 0;
+            BodyList = null;
+            BodyCount = 0;
         }
 
         /// <summary>
@@ -45,10 +45,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <param name="world">The world</param>
         public Controller(World world)
         {
-            _bodyList = null;
-            _bodyCount = 0;
+            BodyList = null;
+            BodyCount = 0;
 
-            _world = world;
+            World = world;
         }
 
         /// <summary>
@@ -86,12 +86,12 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             edge.controller = this;
 
             //Add edge to controller list
-            edge.nextBody = _bodyList;
+            edge.nextBody = BodyList;
             edge.prevBody = null;
-            if (_bodyList != null)
-                _bodyList.prevBody = edge;
-            _bodyList = edge;
-            ++_bodyCount;
+            if (BodyList != null)
+                BodyList.prevBody = edge;
+            BodyList = edge;
+            ++BodyCount;
 
             //Add edge to body list
             edge.nextController = body._controllerList;
@@ -107,10 +107,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public void RemoveBody(Body body)
         {
             //Assert that the controller is not empty
-            Box2DXDebug.Assert(_bodyCount > 0);
+            Box2DXDebug.Assert(BodyCount > 0);
 
             //Find the corresponding edge
-            ControllerEdge edge = _bodyList;
+            ControllerEdge edge = BodyList;
             while (edge != null && edge.body != body)
                 edge = edge.nextBody;
 
@@ -122,9 +122,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 edge.prevBody.nextBody = edge.nextBody;
             if (edge.nextBody != null)
                 edge.nextBody.prevBody = edge.prevBody;
-            if (edge == _bodyList)
-                _bodyList = edge.nextBody;
-            --_bodyCount;
+            if (edge == BodyList)
+                BodyList = edge.nextBody;
+            --BodyCount;
 
             //Remove edge from body list
             if (edge.prevController != null)
@@ -144,13 +144,13 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public void Clear()
         {
 
-            ControllerEdge current = _bodyList;
+            ControllerEdge current = BodyList;
             while (current != null)
             {
                 ControllerEdge edge = current;
 
                 //Remove edge from controller list
-                _bodyList = edge.nextBody;
+                BodyList = edge.nextBody;
 
                 //Remove edge from body list
                 if (edge.prevController != null)
@@ -164,22 +164,22 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 //m_world->m_blockAllocator.Free(edge, sizeof(b2ControllerEdge));
             }
 
-            _bodyCount = 0;
+            BodyCount = 0;
         }
 
         /// <summary>
         /// Get the next body in the world's body list.
         /// </summary>
-        internal Controller GetNext() { return _next; }
+        internal Controller GetNext() { return Next; }
 
         /// <summary>
         /// Get the parent world of this body.
         /// </summary>
-        internal World GetWorld() { return _world; }
+        internal World GetWorld() { return World; }
 
         /// <summary>
         /// Get the attached body list
         /// </summary>
-        internal ControllerEdge GetBodyList() { return _bodyList; }
+        internal ControllerEdge GetBodyList() { return BodyList; }
     }
 }

@@ -54,10 +54,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             //B2_NOT_USED(step);
             if (InvSqr)
             {
-                for (ControllerEdge i = _bodyList; i != null; i = i.nextBody)
+                for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
                 {
                     Body body1 = i.body;
-                    for (ControllerEdge j = _bodyList; j != i; j = j.nextBody)
+                    for (ControllerEdge j = BodyList; j != i; j = j.nextBody)
                     {
                         Body body2 = j.body;
                         Vec2 d = body2.GetWorldCenter() - body1.GetWorldCenter();
@@ -73,10 +73,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             }
             else
             {
-                for (ControllerEdge i = _bodyList; i != null; i = i.nextBody)
+                for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
                 {
                     Body body1 = i.body;
-                    for (ControllerEdge j = _bodyList; j != i; j = j.nextBody)
+                    for (ControllerEdge j = BodyList; j != i; j = j.nextBody)
                     {
                         Body body2 = j.body;
                         Vec2 d = body2.GetWorldCenter() - body1.GetWorldCenter();

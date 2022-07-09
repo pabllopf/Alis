@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <param name="step">The step</param>
         public override void Step(TimeStep step)
         {
-            for (ControllerEdge i = _bodyList; i != null; i = i.nextBody)
+            for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
             {
                 Body body = i.body;
                 if (body.IsSleeping())

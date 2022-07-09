@@ -50,14 +50,14 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public override void Step(TimeStep step)
         {
             //B2_NOT_USED(step);
-            if (_bodyList == null)
+            if (BodyList == null)
                 return;
 
             if (UseWorldGravity)
             {
-                Gravity = _world.Gravity;
+                Gravity = World.Gravity;
             }
-            for (ControllerEdge i = _bodyList; i != null; i = i.nextBody)
+            for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
             {
                 Body body = i.body;
                 if (body.IsSleeping())

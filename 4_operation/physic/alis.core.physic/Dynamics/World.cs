@@ -521,14 +521,14 @@ namespace Alis.Core.Physic.Dynamics
 		/// <returns>The def</returns>
 		public Controllers.Controller AddController(Controllers.Controller def)
 		{
-			def._next = _controllerList;
-			def._prev = null;
+			def.Next = _controllerList;
+			def.Prev = null;
 			if (_controllerList != null)
-				_controllerList._prev = def;
+				_controllerList.Prev = def;
 			_controllerList = def;
 			++_controllerCount;
 
-			def._world = this;
+			def.World = this;
 
 			return def;
 		}
@@ -540,12 +540,12 @@ namespace Alis.Core.Physic.Dynamics
 		public void RemoveController(Controllers.Controller controller)
 		{
 			Box2DXDebug.Assert(_controllerCount > 0);
-			if (controller._next != null)
-				controller._next._prev = controller._prev;
-			if (controller._prev != null)
-				controller._prev._next = controller._next;
+			if (controller.Next != null)
+				controller.Next.Prev = controller.Prev;
+			if (controller.Prev != null)
+				controller.Prev.Next = controller.Next;
 			if (controller == _controllerList)
-				_controllerList = controller._next;
+				_controllerList = controller.Next;
 			--_controllerCount;
 		}
 
@@ -796,7 +796,7 @@ namespace Alis.Core.Physic.Dynamics
 		private void Solve(TimeStep step)
 		{
 			// Step all controlls
-			for (Controllers.Controller controller = _controllerList; controller != null; controller = controller._next)
+			for (Controllers.Controller controller = _controllerList; controller != null; controller = controller.Next)
 			{
 				controller.Step(step);
 			}
