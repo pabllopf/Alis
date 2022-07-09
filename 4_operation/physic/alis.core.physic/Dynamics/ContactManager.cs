@@ -129,26 +129,26 @@ namespace Alis.Core.Physic.Dynamics
             c.NodeA.Other = bodyB;
 
             c.NodeA.Prev = null;
-            c.NodeA.Next = bodyA._contactList;
-            if (bodyA._contactList != null)
+            c.NodeA.Next = bodyA.ContactList;
+            if (bodyA.ContactList != null)
             {
-                bodyA._contactList.Prev = c.NodeA;
+                bodyA.ContactList.Prev = c.NodeA;
             }
 
-            bodyA._contactList = c.NodeA;
+            bodyA.ContactList = c.NodeA;
 
             // Connect to body 2
             c.NodeB.Contact = c;
             c.NodeB.Other = bodyA;
 
             c.NodeB.Prev = null;
-            c.NodeB.Next = bodyB._contactList;
-            if (bodyB._contactList != null)
+            c.NodeB.Next = bodyB.ContactList;
+            if (bodyB.ContactList != null)
             {
-                bodyB._contactList.Prev = c.NodeB;
+                bodyB.ContactList.Prev = c.NodeB;
             }
 
-            bodyB._contactList = c.NodeB;
+            bodyB.ContactList = c.NodeB;
 
             ++World._contactCount;
             return c;
@@ -227,9 +227,9 @@ namespace Alis.Core.Physic.Dynamics
                 c.NodeA.Next.Prev = c.NodeA.Prev;
             }
 
-            if (c.NodeA == bodyA._contactList)
+            if (c.NodeA == bodyA.ContactList)
             {
-                bodyA._contactList = c.NodeA.Next;
+                bodyA.ContactList = c.NodeA.Next;
             }
 
             // Remove from body 2
@@ -243,9 +243,9 @@ namespace Alis.Core.Physic.Dynamics
                 c.NodeB.Next.Prev = c.NodeB.Prev;
             }
 
-            if (c.NodeB == bodyB._contactList)
+            if (c.NodeB == bodyB.ContactList)
             {
-                bodyB._contactList = c.NodeB.Next;
+                bodyB.ContactList = c.NodeB.Next;
             }
 
             // Call the factory.

@@ -162,7 +162,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Compute the effective mass matrix.
             Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
             Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
-            U = b2._sweep.C + r2 - b1._sweep.C - r1;
+            U = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
             // Handle singularity.
             float length = U.Length();
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float cr1U = Vec2.Cross(r1, U);
             float cr2U = Vec2.Cross(r2, U);
-            float invMass = b1._invMass + b1._invI * cr1U * cr1U + b2._invMass + b2._invI * cr2U * cr2U;
+            float invMass = b1.InvMass + b1.InvI * cr1U * cr1U + b2.InvMass + b2.InvI * cr2U * cr2U;
             Box2DXDebug.Assert(invMass > Settings.FltEpsilon);
             Mass = 1.0f / invMass;
 
@@ -206,10 +206,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 //Scale the inpulse to support a variable timestep.
                 Impulse *= step.DtRatio;
                 Vec2 p = Impulse * U;
-                b1._linearVelocity -= b1._invMass * p;
-                b1._angularVelocity -= b1._invI * Vec2.Cross(r1, p);
-                b2._linearVelocity += b2._invMass * p;
-                b2._angularVelocity += b2._invI * Vec2.Cross(r2, p);
+                b1.LinearVelocity -= b1.InvMass * p;
+                b1.AngularVelocity -= b1.InvI * Vec2.Cross(r1, p);
+                b2.LinearVelocity += b2.InvMass * p;
+                b2.AngularVelocity += b2.InvI * Vec2.Cross(r2, p);
             }
             else
             {
@@ -236,7 +236,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
             Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
-            Vec2 d = b2._sweep.C + r2 - b1._sweep.C - r1;
+            Vec2 d = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
             float length = d.Normalize();
             float c = length - Length;
@@ -246,10 +246,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             U = d;
             Vec2 p = impulse * U;
 
-            b1._sweep.C -= b1._invMass * p;
-            b1._sweep.A -= b1._invI * Vec2.Cross(r1, p);
-            b2._sweep.C += b2._invMass * p;
-            b2._sweep.A += b2._invI * Vec2.Cross(r2, p);
+            b1.Sweep.C -= b1.InvMass * p;
+            b1.Sweep.A -= b1.InvI * Vec2.Cross(r1, p);
+            b2.Sweep.C += b2.InvMass * p;
+            b2.Sweep.A += b2.InvI * Vec2.Cross(r2, p);
 
             b1.SynchronizeTransform();
             b2.SynchronizeTransform();
@@ -272,17 +272,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
             // Cdot = dot(u, v + cross(w, r))
-            Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);
-            Vec2 v2 = b2._linearVelocity + Vec2.Cross(b2._angularVelocity, r2);
+            Vec2 v1 = b1.LinearVelocity + Vec2.Cross(b1.AngularVelocity, r1);
+            Vec2 v2 = b2.LinearVelocity + Vec2.Cross(b2.AngularVelocity, r2);
             float cdot = Vec2.Dot(U, v2 - v1);
             float impulse = -Mass * (cdot + Bias + Gamma * Impulse);
             Impulse += impulse;
 
             Vec2 p = impulse * U;
-            b1._linearVelocity -= b1._invMass * p;
-            b1._angularVelocity -= b1._invI * Vec2.Cross(r1, p);
-            b2._linearVelocity += b2._invMass * p;
-            b2._angularVelocity += b2._invI * Vec2.Cross(r2, p);
+            b1.LinearVelocity -= b1.InvMass * p;
+            b1.AngularVelocity -= b1.InvI * Vec2.Cross(r1, p);
+            b2.LinearVelocity += b2.InvMass * p;
+            b2.AngularVelocity += b2.InvI * Vec2.Cross(r2, p);
         }
     }
 }

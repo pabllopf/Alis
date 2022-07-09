@@ -263,7 +263,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             if (Revolute1 != null)
             {
                 Jacobian.Angular1 = -1.0f;
-                K += b1._invI;
+                K += b1.InvI;
             }
             else
             {
@@ -272,13 +272,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float crug = Vec2.Cross(r, ug);
                 Jacobian.Linear1 = -ug;
                 Jacobian.Angular1 = -crug;
-                K += b1._invMass + b1._invI * crug * crug;
+                K += b1.InvMass + b1.InvI * crug * crug;
             }
 
             if (Revolute2 != null)
             {
                 Jacobian.Angular2 = -Ratio;
-                K += Ratio * Ratio * b2._invI;
+                K += Ratio * Ratio * b2.InvI;
             }
             else
             {
@@ -287,7 +287,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float crug = Vec2.Cross(r, ug);
                 Jacobian.Linear2 = -Ratio * ug;
                 Jacobian.Angular2 = -Ratio * crug;
-                K += Ratio * Ratio * (b2._invMass + b2._invI * crug * crug);
+                K += Ratio * Ratio * (b2.InvMass + b2.InvI * crug * crug);
             }
 
             // Compute effective mass.
@@ -297,10 +297,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             if (step.WarmStarting)
             {
                 // Warm starting.
-                b1._linearVelocity += b1._invMass * Impulse * Jacobian.Linear1;
-                b1._angularVelocity += b1._invI * Impulse * Jacobian.Angular1;
-                b2._linearVelocity += b2._invMass * Impulse * Jacobian.Linear2;
-                b2._angularVelocity += b2._invI * Impulse * Jacobian.Angular2;
+                b1.LinearVelocity += b1.InvMass * Impulse * Jacobian.Linear1;
+                b1.AngularVelocity += b1.InvI * Impulse * Jacobian.Angular1;
+                b2.LinearVelocity += b2.InvMass * Impulse * Jacobian.Linear2;
+                b2.AngularVelocity += b2.InvI * Impulse * Jacobian.Angular2;
             }
             else
             {
@@ -317,16 +317,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            float Cdot = Jacobian.Compute(b1._linearVelocity, b1._angularVelocity, b2._linearVelocity,
-                b2._angularVelocity);
+            float Cdot = Jacobian.Compute(b1.LinearVelocity, b1.AngularVelocity, b2.LinearVelocity,
+                b2.AngularVelocity);
 
             float impulse = Mass * (-Cdot);
             Impulse += impulse;
 
-            b1._linearVelocity += b1._invMass * impulse * Jacobian.Linear1;
-            b1._angularVelocity += b1._invI * impulse * Jacobian.Angular1;
-            b2._linearVelocity += b2._invMass * impulse * Jacobian.Linear2;
-            b2._angularVelocity += b2._invI * impulse * Jacobian.Angular2;
+            b1.LinearVelocity += b1.InvMass * impulse * Jacobian.Linear1;
+            b1.AngularVelocity += b1.InvI * impulse * Jacobian.Angular1;
+            b2.LinearVelocity += b2.InvMass * impulse * Jacobian.Linear2;
+            b2.AngularVelocity += b2.InvI * impulse * Jacobian.Angular2;
         }
 
         /// <summary>
@@ -364,10 +364,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float impulse = Mass * (-C);
 
-            b1._sweep.C += b1._invMass * impulse * Jacobian.Linear1;
-            b1._sweep.A += b1._invI * impulse * Jacobian.Angular1;
-            b2._sweep.C += b2._invMass * impulse * Jacobian.Linear2;
-            b2._sweep.A += b2._invI * impulse * Jacobian.Angular2;
+            b1.Sweep.C += b1.InvMass * impulse * Jacobian.Linear1;
+            b1.Sweep.A += b1.InvI * impulse * Jacobian.Angular1;
+            b2.Sweep.C += b2.InvMass * impulse * Jacobian.Linear2;
+            b2.Sweep.A += b2.InvI * impulse * Jacobian.Angular2;
 
             b1.SynchronizeTransform();
             b2.SynchronizeTransform();

@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     The collision class
     /// </summary>
-    public partial class Collision
+    public static partial class Collision
     {
         // This implements 2-sided edge vs circle collision.
         /// <summary>

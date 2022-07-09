@@ -305,11 +305,11 @@ namespace Alis.Core.Physic.Dynamics
             Body b = new Body(def, this);
 
             // Add to world doubly linked list.
-            b._prev = null;
-            b._next = _bodyList;
+            b.Prev = null;
+            b.Next = _bodyList;
             if (_bodyList != null)
             {
-                _bodyList._prev = b;
+                _bodyList.Prev = b;
             }
 
             _bodyList = b;
@@ -336,8 +336,8 @@ namespace Alis.Core.Physic.Dynamics
 
             // Delete the attached joints.
             JointEdge jn = null;
-            if (b._jointList != null)
-                jn = b._jointList;
+            if (b.JointList != null)
+                jn = b.JointList;
             while (jn != null)
             {
                 JointEdge jn0 = jn;
@@ -352,7 +352,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             //Detach controllers attached to this body
-            ControllerEdge ce = b._controllerList;
+            ControllerEdge ce = b.ControllerList;
             while (ce != null)
             {
                 ControllerEdge ce0 = ce;
@@ -363,7 +363,7 @@ namespace Alis.Core.Physic.Dynamics
 
             // Delete the attached fixtures. This destroys broad-phase
             // proxies and pairs, leading to the destruction of contacts.
-            Fixture f = b._fixtureList;
+            Fixture f = b.FixtureList;
             while (f != null)
             {
                 Fixture f0 = f;
@@ -378,19 +378,19 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Remove world body list.
-            if (b._prev != null)
+            if (b.Prev != null)
             {
-                b._prev._next = b._next;
+                b.Prev.Next = b.Next;
             }
 
-            if (b._next != null)
+            if (b.Next != null)
             {
-                b._next._prev = b._prev;
+                b.Next.Prev = b.Prev;
             }
 
             if (b == _bodyList)
             {
-                _bodyList = b._next;
+                _bodyList = b.Next;
             }
 
             --_bodyCount;
@@ -427,25 +427,25 @@ namespace Alis.Core.Physic.Dynamics
             j.Node1.Joint = j;
             j.Node1.Other = j.Body2;
             j.Node1.Prev = null;
-            j.Node1.Next = j.Body1._jointList;
-            if (j.Body1._jointList != null)
-                j.Body1._jointList.Prev = j.Node1;
-            j.Body1._jointList = j.Node1;
+            j.Node1.Next = j.Body1.JointList;
+            if (j.Body1.JointList != null)
+                j.Body1.JointList.Prev = j.Node1;
+            j.Body1.JointList = j.Node1;
 
             j.Node2.Joint = j;
             j.Node2.Other = j.Body1;
             j.Node2.Prev = null;
-            j.Node2.Next = j.Body2._jointList;
-            if (j.Body2._jointList != null)
-                j.Body2._jointList.Prev = j.Node2;
-            j.Body2._jointList = j.Node2;
+            j.Node2.Next = j.Body2.JointList;
+            if (j.Body2.JointList != null)
+                j.Body2.JointList.Prev = j.Node2;
+            j.Body2.JointList = j.Node2;
 
             // If the joint prevents collisions, then reset collision filtering.
             if (def.CollideConnected == false)
             {
                 // Reset the proxies on the body with the minimum number of shapes.
-                Body b = def.Body1._fixtureCount < def.Body2._fixtureCount ? def.Body1 : def.Body2;
-                for (Fixture f = b._fixtureList; f != null; f = f.Next)
+                Body b = def.Body1.FixtureCount < def.Body2.FixtureCount ? def.Body1 : def.Body2;
+                for (Fixture f = b.FixtureList; f != null; f = f.Next)
                 {
                     f.RefilterProxy(_broadPhase, b.GetXForm());
                 }
@@ -500,9 +500,9 @@ namespace Alis.Core.Physic.Dynamics
                 j.Node1.Next.Prev = j.Node1.Prev;
             }
 
-            if (j.Node1 == body1._jointList)
+            if (j.Node1 == body1.JointList)
             {
-                body1._jointList = j.Node1.Next;
+                body1.JointList = j.Node1.Next;
             }
 
             j.Node1.Prev = null;
@@ -519,9 +519,9 @@ namespace Alis.Core.Physic.Dynamics
                 j.Node2.Next.Prev = j.Node2.Prev;
             }
 
-            if (j.Node2 == body2._jointList)
+            if (j.Node2 == body2.JointList)
             {
-                body2._jointList = j.Node2.Next;
+                body2.JointList = j.Node2.Next;
             }
 
             j.Node2.Prev = null;
@@ -536,8 +536,8 @@ namespace Alis.Core.Physic.Dynamics
             if (collideConnected == false)
             {
                 // Reset the proxies on the body with the minimum number of shapes.
-                Body b = body1._fixtureCount < body2._fixtureCount ? body1 : body2;
-                for (Fixture f = b._fixtureList; f != null; f = f.Next)
+                Body b = body1.FixtureCount < body2.FixtureCount ? body1 : body2;
+                for (Fixture f = b.FixtureList; f != null; f = f.Next)
                 {
                     f.RefilterProxy(_broadPhase, b.GetXForm());
                 }
@@ -665,7 +665,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public int GetProxyCount()
         {
-            return _broadPhase._proxyCount;
+            return _broadPhase.ProxyCount;
         }
 
         /// <summary>
@@ -674,7 +674,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public int GetPairCount()
         {
-            return _broadPhase._pairManager._pairCount;
+            return _broadPhase.PairManager._pairCount;
         }
 
         /// <summary>
@@ -867,9 +867,9 @@ namespace Alis.Core.Physic.Dynamics
             Island island = new Island(_bodyCount, _contactCount, _jointCount, _contactListener);
 
             // Clear all the island flags.
-            for (Body b = _bodyList; b != null; b = b._next)
+            for (Body b = _bodyList; b != null; b = b.Next)
             {
-                b._flags &= ~Body.BodyFlags.Island;
+                b.Flags &= ~Body.BodyFlags.Island;
             }
 
             for (Contact c = _contactList; c != null; c = c.Next)
@@ -887,9 +887,9 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Body[] stack = new Body[stackSize];
 
-                for (Body seed = _bodyList; seed != null; seed = seed._next)
+                for (Body seed = _bodyList; seed != null; seed = seed.Next)
                 {
-                    if ((seed._flags & (Body.BodyFlags.Island | Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) != 0)
+                    if ((seed.Flags & (Body.BodyFlags.Island | Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) != 0)
                     {
                         continue;
                     }
@@ -903,7 +903,7 @@ namespace Alis.Core.Physic.Dynamics
                     island.Clear();
                     int stackCount = 0;
                     stack[stackCount++] = seed;
-                    seed._flags |= Body.BodyFlags.Island;
+                    seed.Flags |= Body.BodyFlags.Island;
 
                     // Perform a depth first search (DFS) on the constraint graph.
                     while (stackCount > 0)
@@ -913,7 +913,7 @@ namespace Alis.Core.Physic.Dynamics
                         island.Add(b);
 
                         // Make sure the body is awake.
-                        b._flags &= ~Body.BodyFlags.Sleep;
+                        b.Flags &= ~Body.BodyFlags.Sleep;
 
                         // To keep islands as small as possible, we don't
                         // propagate islands across static bodies.
@@ -923,7 +923,7 @@ namespace Alis.Core.Physic.Dynamics
                         }
 
                         // Search all contacts connected to this body.
-                        for (ContactEdge cn = b._contactList; cn != null; cn = cn.Next)
+                        for (ContactEdge cn = b.ContactList; cn != null; cn = cn.Next)
                         {
                             // Has this contact already been added to an island?
                             if ((cn.Contact.Flags &
@@ -944,18 +944,18 @@ namespace Alis.Core.Physic.Dynamics
                             Body other = cn.Other;
 
                             // Was the other body already added to this island?
-                            if ((other._flags & Body.BodyFlags.Island) != 0)
+                            if ((other.Flags & Body.BodyFlags.Island) != 0)
                             {
                                 continue;
                             }
 
                             Box2DXDebug.Assert(stackCount < stackSize);
                             stack[stackCount++] = other;
-                            other._flags |= Body.BodyFlags.Island;
+                            other.Flags |= Body.BodyFlags.Island;
                         }
 
                         // Search all joints connect to this body.
-                        for (JointEdge jn = b._jointList; jn != null; jn = jn.Next)
+                        for (JointEdge jn = b.JointList; jn != null; jn = jn.Next)
                         {
                             if (jn.Joint.IslandFlag)
                             {
@@ -966,14 +966,14 @@ namespace Alis.Core.Physic.Dynamics
                             jn.Joint.IslandFlag = true;
 
                             Body other = jn.Other;
-                            if ((other._flags & Body.BodyFlags.Island) != 0)
+                            if ((other.Flags & Body.BodyFlags.Island) != 0)
                             {
                                 continue;
                             }
 
                             Box2DXDebug.Assert(stackCount < stackSize);
                             stack[stackCount++] = other;
-                            other._flags |= Body.BodyFlags.Island;
+                            other.Flags |= Body.BodyFlags.Island;
                         }
                     }
 
@@ -986,7 +986,7 @@ namespace Alis.Core.Physic.Dynamics
                         Body b = island.Bodies[i];
                         if (b.IsStatic())
                         {
-                            b._flags &= ~Body.BodyFlags.Island;
+                            b.Flags &= ~Body.BodyFlags.Island;
                         }
                     }
                 }
@@ -997,7 +997,7 @@ namespace Alis.Core.Physic.Dynamics
             // Synchronize shapes, check for out of range bodies.
             for (Body b = _bodyList; b != null; b = b.GetNext())
             {
-                if ((b._flags & (Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) != 0)
+                if ((b.Flags & (Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) != 0)
                 {
                     continue;
                 }
@@ -1046,10 +1046,10 @@ namespace Alis.Core.Physic.Dynamics
             int queueCapacity = _bodyCount;
             Body[] queue = new Body[queueCapacity];
 
-            for (Body b = _bodyList; b != null; b = b._next)
+            for (Body b = _bodyList; b != null; b = b.Next)
             {
-                b._flags &= ~Body.BodyFlags.Island;
-                b._sweep.T0 = 0.0f;
+                b.Flags &= ~Body.BodyFlags.Island;
+                b.Sweep.T0 = 0.0f;
             }
 
             for (Contact c = _contactList; c != null; c = c.Next)
@@ -1099,23 +1099,23 @@ namespace Alis.Core.Physic.Dynamics
                         }
 
                         // Put the sweeps onto the same time interval.
-                        float t0 = b1._sweep.T0;
+                        float t0 = b1.Sweep.T0;
 
-                        if (b1._sweep.T0 < b2._sweep.T0)
+                        if (b1.Sweep.T0 < b2.Sweep.T0)
                         {
-                            t0 = b2._sweep.T0;
-                            b1._sweep.Advance(t0);
+                            t0 = b2.Sweep.T0;
+                            b1.Sweep.Advance(t0);
                         }
-                        else if (b2._sweep.T0 < b1._sweep.T0)
+                        else if (b2.Sweep.T0 < b1.Sweep.T0)
                         {
-                            t0 = b1._sweep.T0;
-                            b2._sweep.Advance(t0);
+                            t0 = b1.Sweep.T0;
+                            b2.Sweep.Advance(t0);
                         }
 
                         Box2DXDebug.Assert(t0 < 1.0f);
 
                         // Compute the time of impact.
-                        toi = c.ComputeTOI(b1._sweep, b2._sweep);
+                        toi = c.ComputeTOI(b1.Sweep, b2.Sweep);
                         //b2TimeOfImpact(c->m_fixtureA->GetShape(), b1->m_sweep, c->m_fixtureB->GetShape(), b2->m_sweep);
 
                         Box2DXDebug.Assert(0.0f <= toi && toi <= 1.0f);
@@ -1178,7 +1178,7 @@ namespace Alis.Core.Physic.Dynamics
                 int queueStart = 0; // starting index for queue
                 int queueSize = 0; // elements in queue
                 queue[queueStart + queueSize++] = seed;
-                seed._flags |= Body.BodyFlags.Island;
+                seed.Flags |= Body.BodyFlags.Island;
 
                 // Perform a breadth first search (BFS) on the contact/joint graph.
                 while (queueSize > 0)
@@ -1190,7 +1190,7 @@ namespace Alis.Core.Physic.Dynamics
                     island.Add(b);
 
                     // Make sure the body is awake.
-                    b._flags &= ~Body.BodyFlags.Sleep;
+                    b.Flags &= ~Body.BodyFlags.Sleep;
 
                     // To keep islands as small as possible, we don't
                     // propagate islands across static bodies.
@@ -1200,7 +1200,7 @@ namespace Alis.Core.Physic.Dynamics
                     }
 
                     // Search all contacts connected to this body.
-                    for (ContactEdge cEdge = b._contactList; cEdge != null; cEdge = cEdge.Next)
+                    for (ContactEdge cEdge = b.ContactList; cEdge != null; cEdge = cEdge.Next)
                     {
                         // Does the TOI island still have space for contacts?
                         if (island.ContactCount == island.ContactCapacity)
@@ -1228,7 +1228,7 @@ namespace Alis.Core.Physic.Dynamics
                         Body other = cEdge.Other;
 
                         // Was the other body already added to this island?
-                        if ((int) (other._flags & Body.BodyFlags.Island) == 1)
+                        if ((int) (other.Flags & Body.BodyFlags.Island) == 1)
                         {
                             continue;
                         }
@@ -1243,10 +1243,10 @@ namespace Alis.Core.Physic.Dynamics
                         //Box2DXDebug.Assert(queueStart + queueSize < queueCapacity);
                         queue[queueStart + queueSize] = other;
                         ++queueSize;
-                        other._flags |= Body.BodyFlags.Island;
+                        other.Flags |= Body.BodyFlags.Island;
                     }
 
-                    for (JointEdge jEdge = b._jointList; jEdge != null; jEdge = jEdge.Next)
+                    for (JointEdge jEdge = b.JointList; jEdge != null; jEdge = jEdge.Next)
                     {
                         if (island.JointCount == island.JointCapacity)
                         {
@@ -1264,7 +1264,7 @@ namespace Alis.Core.Physic.Dynamics
 
                         Body other = jEdge.Other;
 
-                        if ((int) (other._flags & Body.BodyFlags.Island) == 1)
+                        if ((int) (other.Flags & Body.BodyFlags.Island) == 1)
                         {
                             continue;
                         }
@@ -1278,7 +1278,7 @@ namespace Alis.Core.Physic.Dynamics
                         //Box2DXDebug.Assert(queueStart + queueSize < queueCapacity);
                         queue[queueStart + queueSize] = other;
                         ++queueSize;
-                        other._flags |= Body.BodyFlags.Island;
+                        other.Flags |= Body.BodyFlags.Island;
                     }
                 }
 
@@ -1297,9 +1297,9 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // Allow bodies to participate in future TOI islands.
                     Body b = island.Bodies[i];
-                    b._flags &= ~Body.BodyFlags.Island;
+                    b.Flags &= ~Body.BodyFlags.Island;
 
-                    if ((int) (b._flags & (Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) == 1)
+                    if ((int) (b.Flags & (Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) == 1)
                     {
                         continue;
                     }
@@ -1322,7 +1322,7 @@ namespace Alis.Core.Physic.Dynamics
 
                     // Invalidate all contact TOIs associated with this body. Some of these
                     // may not be in the island because they were not touching.
-                    for (ContactEdge cn = b._contactList; cn != null; cn = cn.Next)
+                    for (ContactEdge cn = b.ContactList; cn != null; cn = cn.Next)
                     {
                         cn.Contact.Flags &= ~Contact.CollisionFlags.Toi;
                     }
@@ -1509,27 +1509,27 @@ namespace Alis.Core.Physic.Dynamics
             {
                 BroadPhase bp = _broadPhase;
                 Vec2 invQ = new Vec2();
-                invQ.Set(1.0f / bp._quantizationFactor.X, 1.0f / bp._quantizationFactor.Y);
+                invQ.Set(1.0f / bp.QuantizationFactor.X, 1.0f / bp.QuantizationFactor.Y);
                 Color color = new Color(0.9f, 0.9f, 0.3f);
 
                 for (int i = 0; i < PairManager.TableCapacity; ++i)
                 {
-                    ushort index = bp._pairManager._hashTable[i];
+                    ushort index = bp.PairManager._hashTable[i];
                     while (index != PairManager.NullPair)
                     {
-                        Pair pair = bp._pairManager._pairs[index];
-                        Proxy p1 = bp._proxyPool[pair.ProxyId1];
-                        Proxy p2 = bp._proxyPool[pair.ProxyId2];
+                        Pair pair = bp.PairManager._pairs[index];
+                        Proxy p1 = bp.ProxyPool[pair.ProxyId1];
+                        Proxy p2 = bp.ProxyPool[pair.ProxyId2];
 
                         Aabb b1 = new Aabb(), b2 = new Aabb();
-                        b1.LowerBound.X = bp._worldAABB.LowerBound.X + invQ.X * bp._bounds[0][p1.LowerBounds[0]].Value;
-                        b1.LowerBound.Y = bp._worldAABB.LowerBound.Y + invQ.Y * bp._bounds[1][p1.LowerBounds[1]].Value;
-                        b1.UpperBound.X = bp._worldAABB.LowerBound.X + invQ.X * bp._bounds[0][p1.UpperBounds[0]].Value;
-                        b1.UpperBound.Y = bp._worldAABB.LowerBound.Y + invQ.Y * bp._bounds[1][p1.UpperBounds[1]].Value;
-                        b2.LowerBound.X = bp._worldAABB.LowerBound.X + invQ.X * bp._bounds[0][p2.LowerBounds[0]].Value;
-                        b2.LowerBound.Y = bp._worldAABB.LowerBound.Y + invQ.Y * bp._bounds[1][p2.LowerBounds[1]].Value;
-                        b2.UpperBound.X = bp._worldAABB.LowerBound.X + invQ.X * bp._bounds[0][p2.UpperBounds[0]].Value;
-                        b2.UpperBound.Y = bp._worldAABB.LowerBound.Y + invQ.Y * bp._bounds[1][p2.UpperBounds[1]].Value;
+                        b1.LowerBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p1.LowerBounds[0]].Value;
+                        b1.LowerBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p1.LowerBounds[1]].Value;
+                        b1.UpperBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p1.UpperBounds[0]].Value;
+                        b1.UpperBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p1.UpperBounds[1]].Value;
+                        b2.LowerBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p2.LowerBounds[0]].Value;
+                        b2.LowerBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p2.LowerBounds[1]].Value;
+                        b2.UpperBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p2.UpperBounds[0]].Value;
+                        b2.UpperBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p2.UpperBounds[1]].Value;
 
                         Vec2 x1 = 0.5f * (b1.LowerBound + b1.UpperBound);
                         Vec2 x2 = 0.5f * (b2.LowerBound + b2.UpperBound);
@@ -1544,25 +1544,25 @@ namespace Alis.Core.Physic.Dynamics
             if ((flags & DebugDraw.DrawFlags.Aabb) != 0)
             {
                 BroadPhase bp = _broadPhase;
-                Vec2 worldLower = bp._worldAABB.LowerBound;
-                Vec2 worldUpper = bp._worldAABB.UpperBound;
+                Vec2 worldLower = bp.WorldAabb.LowerBound;
+                Vec2 worldUpper = bp.WorldAabb.UpperBound;
 
                 Vec2 invQ = new Vec2();
-                invQ.Set(1.0f / bp._quantizationFactor.X, 1.0f / bp._quantizationFactor.Y);
+                invQ.Set(1.0f / bp.QuantizationFactor.X, 1.0f / bp.QuantizationFactor.Y);
                 Color color = new Color(0.9f, 0.3f, 0.9f);
                 for (int i = 0; i < Settings.MaxProxies; ++i)
                 {
-                    Proxy p = bp._proxyPool[i];
+                    Proxy p = bp.ProxyPool[i];
                     if (p.IsValid == false)
                     {
                         continue;
                     }
 
                     Aabb b = new Aabb();
-                    b.LowerBound.X = worldLower.X + invQ.X * bp._bounds[0][p.LowerBounds[0]].Value;
-                    b.LowerBound.Y = worldLower.Y + invQ.Y * bp._bounds[1][p.LowerBounds[1]].Value;
-                    b.UpperBound.X = worldLower.X + invQ.X * bp._bounds[0][p.UpperBounds[0]].Value;
-                    b.UpperBound.Y = worldLower.Y + invQ.Y * bp._bounds[1][p.UpperBounds[1]].Value;
+                    b.LowerBound.X = worldLower.X + invQ.X * bp.Bounds[0][p.LowerBounds[0]].Value;
+                    b.LowerBound.Y = worldLower.Y + invQ.Y * bp.Bounds[1][p.LowerBounds[1]].Value;
+                    b.UpperBound.X = worldLower.X + invQ.X * bp.Bounds[0][p.UpperBounds[0]].Value;
+                    b.UpperBound.Y = worldLower.Y + invQ.Y * bp.Bounds[1][p.UpperBounds[1]].Value;
 
                     Vec2[] vs1 = new Vec2[4];
                     vs1[0].Set(b.LowerBound.X, b.LowerBound.Y);

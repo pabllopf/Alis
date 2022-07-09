@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     The collision class
     /// </summary>
-    public partial class Collision
+    public static partial class Collision
     {
         /// <summary>
         ///     The max toi iters

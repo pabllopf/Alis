@@ -130,7 +130,7 @@
                 The broad phase class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase.BROADPHASE_MAX">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.BroadphaseMax">
             <summary>
                 The ushrt max
             </summary>
@@ -145,57 +145,57 @@
                 The broadphase max
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._pairManager">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.PairManager">
             <summary>
                 The pair manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._proxyPool">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.ProxyPool">
             <summary>
                 The max proxies
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._freeProxy">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.FreeProxy">
             <summary>
                 The free proxy
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._bounds">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.Bounds">
             <summary>
                 The bound
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._queryResults">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.QueryResults">
             <summary>
                 The max proxies
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._querySortKeys">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.QuerySortKeys">
             <summary>
                 The max proxies
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._queryResultCount">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.QueryResultCount">
             <summary>
                 The query result count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._worldAABB">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.WorldAabb">
             <summary>
                 The world aabb
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._quantizationFactor">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.QuantizationFactor">
             <summary>
                 The quantization factor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._proxyCount">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.ProxyCount">
             <summary>
                 The proxy count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase._timeStamp">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.TimeStamp">
             <summary>
                 The time stamp
             </summary>
@@ -209,7 +209,7 @@
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collision.BroadPhase" /> class
             </summary>
-            <param name="worldAABB">The world aabb</param>
+            <param name="worldAabb">The world aabb</param>
             <param name="callback">The callback</param>
         </member>
         <member name="M:Alis.Core.Physic.Collision.BroadPhase.InRange(Alis.Core.Physic.Collision.Aabb)">
@@ -6895,7 +6895,7 @@
                 The mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint._motorSpeed">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.motorSpeed">
             <summary>
                 The motor speed
             </summary>

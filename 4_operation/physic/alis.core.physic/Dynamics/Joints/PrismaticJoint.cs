@@ -274,15 +274,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
                 Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
                 Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
-                Vec2 p1 = b1._sweep.C + r1;
-                Vec2 p2 = b2._sweep.C + r2;
+                Vec2 p1 = b1.Sweep.C + r1;
+                Vec2 p2 = b2.Sweep.C + r2;
                 Vec2 d = p2 - p1;
                 Vec2 axis = b1.GetWorldVector(_localXAxis1);
 
-                Vec2 v1 = b1._linearVelocity;
-                Vec2 v2 = b2._linearVelocity;
-                float w1 = b1._angularVelocity;
-                float w2 = b2._angularVelocity;
+                Vec2 v1 = b1.LinearVelocity;
+                Vec2 v2 = b2.LinearVelocity;
+                float w1 = b1.AngularVelocity;
+                float w2 = b2.AngularVelocity;
 
                 float speed = Vec2.Dot(d, Vec2.Cross(w1, axis)) +
                               Vec2.Dot(axis, v2 + Vec2.Cross(w2, r2) - v1 - Vec2.Cross(w1, r1));
@@ -402,7 +402,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // You cannot create a prismatic joint between bodies that
             // both have fixed rotation.
-            Box2DXDebug.Assert(b1._invI > 0.0f || b2._invI > 0.0f);
+            Box2DXDebug.Assert(b1.InvI > 0.0f || b2.InvI > 0.0f);
 
             LocalCenter1 = b1.GetLocalCenter();
             LocalCenter2 = b2.GetLocalCenter();
@@ -413,12 +413,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Compute the effective masses.
             Vec2 r1 = Box2DXMath.Mul(xf1.R, _localAnchor1 - LocalCenter1);
             Vec2 r2 = Box2DXMath.Mul(xf2.R, _localAnchor2 - LocalCenter2);
-            Vec2 d = b2._sweep.C + r2 - b1._sweep.C - r1;
+            Vec2 d = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
-            InvMass1 = b1._invMass;
-            InvI1 = b1._invI;
-            InvMass2 = b2._invMass;
-            InvI2 = b2._invI;
+            InvMass1 = b1.InvMass;
+            InvI1 = b1.InvI;
+            InvMass2 = b2.InvMass;
+            InvI2 = b2.InvI;
 
             // Compute motor Jacobian and effective mass.
             {
@@ -503,11 +503,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float L1 = _impulse.X * _s1 + _impulse.Y + (_motorImpulse + _impulse.Z) * _a1;
                 float L2 = _impulse.X * _s2 + _impulse.Y + (_motorImpulse + _impulse.Z) * _a2;
 
-                b1._linearVelocity -= InvMass1 * P;
-                b1._angularVelocity -= InvI1 * L1;
+                b1.LinearVelocity -= InvMass1 * P;
+                b1.AngularVelocity -= InvI1 * L1;
 
-                b2._linearVelocity += InvMass2 * P;
-                b2._angularVelocity += InvI2 * L2;
+                b2.LinearVelocity += InvMass2 * P;
+                b2.AngularVelocity += InvI2 * L2;
             }
             else
             {
@@ -525,10 +525,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            Vec2 v1 = b1._linearVelocity;
-            float w1 = b1._angularVelocity;
-            Vec2 v2 = b2._linearVelocity;
-            float w2 = b2._angularVelocity;
+            Vec2 v1 = b1.LinearVelocity;
+            float w1 = b1.AngularVelocity;
+            Vec2 v2 = b2.LinearVelocity;
+            float w2 = b2.AngularVelocity;
 
             // Solve linear motor constraint.
             if (_enableMotor && _limitState != LimitState.EqualLimits)
@@ -611,10 +611,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 w2 += InvI2 * L2;
             }
 
-            b1._linearVelocity = v1;
-            b1._angularVelocity = w1;
-            b2._linearVelocity = v2;
-            b2._angularVelocity = w2;
+            b1.LinearVelocity = v1;
+            b1.AngularVelocity = w1;
+            b2.LinearVelocity = v2;
+            b2.AngularVelocity = w2;
         }
 
         /// <summary>
@@ -627,11 +627,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            Vec2 c1 = b1._sweep.C;
-            float a1 = b1._sweep.A;
+            Vec2 c1 = b1.Sweep.C;
+            float a1 = b1.Sweep.A;
 
-            Vec2 c2 = b2._sweep.C;
-            float a2 = b2._sweep.A;
+            Vec2 c2 = b2.Sweep.C;
+            float a2 = b2.Sweep.A;
 
             // Solve linear limit constraint.
             float linearError = 0.0f, angularError = 0.0f;
@@ -741,10 +741,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             a2 += InvI2 * L2;
 
             // TODO_ERIN remove need for this.
-            b1._sweep.C = c1;
-            b1._sweep.A = a1;
-            b2._sweep.C = c2;
-            b2._sweep.A = a2;
+            b1.Sweep.C = c1;
+            b1.Sweep.A = a1;
+            b2.Sweep.C = c2;
+            b2.Sweep.A = a2;
             b1.SynchronizeTransform();
             b2.SynchronizeTransform();
 

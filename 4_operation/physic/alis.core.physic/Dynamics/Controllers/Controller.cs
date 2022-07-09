@@ -128,11 +128,11 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             ++BodyCount;
 
             //Add edge to body list
-            edge.NextController = body._controllerList;
+            edge.NextController = body.ControllerList;
             edge.PrevController = null;
-            if (body._controllerList != null)
-                body._controllerList.PrevController = edge;
-            body._controllerList = edge;
+            if (body.ControllerList != null)
+                body.ControllerList.PrevController = edge;
+            body.ControllerList = edge;
         }
 
         /// <summary>
@@ -165,8 +165,8 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 edge.PrevController.NextController = edge.NextController;
             if (edge.NextController != null)
                 edge.NextController.PrevController = edge.PrevController;
-            if (edge == body._controllerList)
-                body._controllerList = edge.NextController;
+            if (edge == body.ControllerList)
+                body.ControllerList = edge.NextController;
 
             //Free the edge
             edge = null;
@@ -190,8 +190,8 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                     edge.PrevController.NextController = edge.NextController;
                 if (edge.NextController != null)
                     edge.NextController.PrevController = edge.PrevController;
-                if (edge == edge.Body._controllerList)
-                    edge.Body._controllerList = edge.NextController;
+                if (edge == edge.Body.ControllerList)
+                    edge.Body.ControllerList = edge.NextController;
 
                 //Free the edge
                 //m_world->m_blockAllocator.Free(edge, sizeof(b2ControllerEdge));

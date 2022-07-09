@@ -243,7 +243,7 @@ namespace Alis.Core.Physic.Collision
         {
             int removeCount = 0;
 
-            Proxy[] proxies = _broadPhase._proxyPool;
+            Proxy[] proxies = _broadPhase.ProxyPool;
 
             for (int i = 0; i < _pairBufferCount; ++i)
             {
@@ -469,8 +469,8 @@ namespace Alis.Core.Physic.Collision
                 Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies);
                 Box2DXDebug.Assert(pair.ProxyId2 < Settings.MaxProxies);
 
-                Proxy proxy1 = _broadPhase._proxyPool[pair.ProxyId1];
-                Proxy proxy2 = _broadPhase._proxyPool[pair.ProxyId2];
+                Proxy proxy1 = _broadPhase.ProxyPool[pair.ProxyId1];
+                Proxy proxy2 = _broadPhase.ProxyPool[pair.ProxyId2];
 
                 Box2DXDebug.Assert(proxy1.IsValid);
                 Box2DXDebug.Assert(proxy2.IsValid);
@@ -498,8 +498,8 @@ namespace Alis.Core.Physic.Collision
                     Box2DXDebug.Assert(pair.ProxyId1 < Settings.MaxProxies);
                     Box2DXDebug.Assert(pair.ProxyId2 < Settings.MaxProxies);
 
-                    Proxy proxy1 = _broadPhase._proxyPool[pair.ProxyId1];
-                    Proxy proxy2 = _broadPhase._proxyPool[pair.ProxyId2];
+                    Proxy proxy1 = _broadPhase.ProxyPool[pair.ProxyId1];
+                    Proxy proxy2 = _broadPhase.ProxyPool[pair.ProxyId2];
 
                     Box2DXDebug.Assert(proxy1.IsValid);
                     Box2DXDebug.Assert(proxy2.IsValid);

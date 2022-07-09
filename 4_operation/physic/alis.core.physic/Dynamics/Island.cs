@@ -290,12 +290,12 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
 
                 // Integrate velocities.
-                b._linearVelocity += step.Dt * (gravity + b._invMass * b._force);
-                b._angularVelocity += step.Dt * b._invI * b._torque;
+                b.LinearVelocity += step.Dt * (gravity + b.InvMass * b.Force);
+                b.AngularVelocity += step.Dt * b.InvI * b.Torque;
 
                 // Reset forces.
-                b._force.Set(0.0f, 0.0f);
-                b._torque = 0.0f;
+                b.Force.Set(0.0f, 0.0f);
+                b.Torque = 0.0f;
 
                 // Apply damping.
                 // ODE: dv/dt + c * v = 0
@@ -304,8 +304,8 @@ namespace Alis.Core.Physic.Dynamics
                 // v2 = exp(-c * dt) * v1
                 // Taylor expansion:
                 // v2 = (1.0f - c * dt) * v1
-                b._linearVelocity *= Math.Clamp(1.0f - step.Dt * b._linearDamping, 0.0f, 1.0f);
-                b._angularVelocity *= Math.Clamp(1.0f - step.Dt * b._angularDamping, 0.0f, 1.0f);
+                b.LinearVelocity *= Math.Clamp(1.0f - step.Dt * b.LinearDamping, 0.0f, 1.0f);
+                b.AngularVelocity *= Math.Clamp(1.0f - step.Dt * b.AngularDamping, 0.0f, 1.0f);
             }
 
             ContactSolver contactSolver = new ContactSolver(step, Contacts, ContactCount);
@@ -341,33 +341,33 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
 
                 // Check for large velocities.
-                Vec2 translation = step.Dt * b._linearVelocity;
+                Vec2 translation = step.Dt * b.LinearVelocity;
                 if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
                 {
                     translation.Normalize();
-                    b._linearVelocity = (Settings.MaxTranslation * step.InvDt) * translation;
+                    b.LinearVelocity = (Settings.MaxTranslation * step.InvDt) * translation;
                 }
 
-                float rotation = step.Dt * b._angularVelocity;
+                float rotation = step.Dt * b.AngularVelocity;
                 if (rotation * rotation > Settings.MaxRotationSquared)
                 {
                     if (rotation < 0.0)
                     {
-                        b._angularVelocity = -step.InvDt * Settings.MaxRotation;
+                        b.AngularVelocity = -step.InvDt * Settings.MaxRotation;
                     }
                     else
                     {
-                        b._angularVelocity = step.InvDt * Settings.MaxRotation;
+                        b.AngularVelocity = step.InvDt * Settings.MaxRotation;
                     }
                 }
 
                 // Store positions for continuous collision.
-                b._sweep.C0 = b._sweep.C;
-                b._sweep.A0 = b._sweep.A;
+                b.Sweep.C0 = b.Sweep.C;
+                b.Sweep.A0 = b.Sweep.A;
 
                 // Integrate
-                b._sweep.C += step.Dt * b._linearVelocity;
-                b._sweep.A += step.Dt * b._angularVelocity;
+                b.Sweep.C += step.Dt * b.LinearVelocity;
+                b.Sweep.A += step.Dt * b.AngularVelocity;
 
                 // Compute new transform
                 b.SynchronizeTransform();
@@ -408,34 +408,34 @@ namespace Alis.Core.Physic.Dynamics
                 for (int i = 0; i < BodyCount; ++i)
                 {
                     Body b = Bodies[i];
-                    if (b._invMass == 0.0f)
+                    if (b.InvMass == 0.0f)
                     {
                         continue;
                     }
 
-                    if ((b._flags & Body.BodyFlags.AllowSleep) == 0)
+                    if ((b.Flags & Body.BodyFlags.AllowSleep) == 0)
                     {
-                        b._sleepTime = 0.0f;
+                        b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
                     }
 
-                    if ((b._flags & Body.BodyFlags.AllowSleep) == 0 ||
+                    if ((b.Flags & Body.BodyFlags.AllowSleep) == 0 ||
 #if TARGET_FLOAT32_IS_FIXED
 						Common.Math.Abs(b._angularVelocity) > Settings.AngularSleepTolerance ||
 						Common.Math.Abs(b._linearVelocity.X) > Settings.LinearSleepTolerance ||
 						Common.Math.Abs(b._linearVelocity.Y) > Settings.LinearSleepTolerance)
 #else
-                        b._angularVelocity * b._angularVelocity > angTolSqr ||
-                        Vec2.Dot(b._linearVelocity, b._linearVelocity) > linTolSqr)
+                        b.AngularVelocity * b.AngularVelocity > angTolSqr ||
+                        Vec2.Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
 #endif
                     {
-                        b._sleepTime = 0.0f;
+                        b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
                     }
                     else
                     {
-                        b._sleepTime += step.Dt;
-                        minSleepTime = Math.Min(minSleepTime, b._sleepTime);
+                        b.SleepTime += step.Dt;
+                        minSleepTime = Math.Min(minSleepTime, b.SleepTime);
                     }
                 }
 
@@ -444,9 +444,9 @@ namespace Alis.Core.Physic.Dynamics
                     for (int i = 0; i < BodyCount; ++i)
                     {
                         Body b = Bodies[i];
-                        b._flags |= Body.BodyFlags.Sleep;
-                        b._linearVelocity = Vec2.Zero;
-                        b._angularVelocity = 0.0f;
+                        b.Flags |= Body.BodyFlags.Sleep;
+                        b.LinearVelocity = Vec2.Zero;
+                        b.AngularVelocity = 0.0f;
                     }
                 }
             }
@@ -492,33 +492,33 @@ namespace Alis.Core.Physic.Dynamics
                     continue;
 
                 // Check for large velocities.
-                Vec2 translation = subStep.Dt * b._linearVelocity;
+                Vec2 translation = subStep.Dt * b.LinearVelocity;
                 if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
                 {
                     translation.Normalize();
-                    b._linearVelocity = (Settings.MaxTranslation * subStep.InvDt) * translation;
+                    b.LinearVelocity = (Settings.MaxTranslation * subStep.InvDt) * translation;
                 }
 
-                float rotation = subStep.Dt * b._angularVelocity;
+                float rotation = subStep.Dt * b.AngularVelocity;
                 if (rotation * rotation > Settings.MaxRotationSquared)
                 {
                     if (rotation < 0.0)
                     {
-                        b._angularVelocity = -subStep.InvDt * Settings.MaxRotation;
+                        b.AngularVelocity = -subStep.InvDt * Settings.MaxRotation;
                     }
                     else
                     {
-                        b._angularVelocity = subStep.InvDt * Settings.MaxRotation;
+                        b.AngularVelocity = subStep.InvDt * Settings.MaxRotation;
                     }
                 }
 
                 // Store positions for continuous collision.
-                b._sweep.C0 = b._sweep.C;
-                b._sweep.A0 = b._sweep.A;
+                b.Sweep.C0 = b.Sweep.C;
+                b.Sweep.A0 = b.Sweep.A;
 
                 // Integrate
-                b._sweep.C += subStep.Dt * b._linearVelocity;
-                b._sweep.A += subStep.Dt * b._angularVelocity;
+                b.Sweep.C += subStep.Dt * b.LinearVelocity;
+                b.Sweep.A += subStep.Dt * b.AngularVelocity;
 
                 // Compute new transform
                 b.SynchronizeTransform();
@@ -554,7 +554,7 @@ namespace Alis.Core.Physic.Dynamics
         public void Add(Body body)
         {
             Box2DXDebug.Assert(BodyCount < BodyCapacity);
-            body._islandIndex = BodyCount;
+            body.IslandIndex = BodyCount;
             Bodies[BodyCount++] = body;
         }
 

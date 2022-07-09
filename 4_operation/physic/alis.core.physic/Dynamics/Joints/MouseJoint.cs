@@ -194,8 +194,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
             //        [    0     1/m1+1/m2]           [-r1.x*r1.y r1.x*r1.x]           [-r1.x*r1.y r1.x*r1.x]
-            float invMass = b._invMass;
-            float invI = b._invI;
+            float invMass = b.InvMass;
+            float invI = b.InvI;
 
             Mat22 K1 = new Mat22();
             K1.col1.X = invMass;
@@ -215,15 +215,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Mass = K.GetInverse();
 
-            C = b._sweep.C + r - _target;
+            C = b.Sweep.C + r - _target;
 
             // Cheat with some damping
-            b._angularVelocity *= 0.98f;
+            b.AngularVelocity *= 0.98f;
 
             // Warm starting.
             Impulse *= step.DtRatio;
-            b._linearVelocity += invMass * Impulse;
-            b._angularVelocity += invI * Vec2.Cross(r, Impulse);
+            b.LinearVelocity += invMass * Impulse;
+            b.AngularVelocity += invI * Vec2.Cross(r, Impulse);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vec2 r = Math.Mul(b.GetXForm().R, LocalAnchor - b.GetLocalCenter());
 
             // Cdot = v + cross(w, r)
-            Vec2 Cdot = b._linearVelocity + Vec2.Cross(b._angularVelocity, r);
+            Vec2 Cdot = b.LinearVelocity + Vec2.Cross(b.AngularVelocity, r);
             Vec2 impulse = Math.Mul(Mass, -(Cdot + Beta * C + Gamma * Impulse));
 
             Vec2 oldImpulse = Impulse;
@@ -250,8 +250,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             impulse = Impulse - oldImpulse;
 
-            b._linearVelocity += b._invMass * impulse;
-            b._angularVelocity += b._invI * Vec2.Cross(r, impulse);
+            b.LinearVelocity += b.InvMass * impulse;
+            b.AngularVelocity += b.InvI * Vec2.Cross(r, impulse);
         }
 
         /// <summary>

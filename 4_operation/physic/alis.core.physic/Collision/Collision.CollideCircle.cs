@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     The collision class
     /// </summary>
-    public partial class Collision
+    public static partial class Collision
     {
         /// <summary>
         ///     Collides the circles using the specified manifold
@@ -165,8 +165,8 @@ namespace Alis.Core.Physic.Collision
             else
             {
                 Vec2 faceCenter = 0.5f * (v1 + v2);
-                float separation_ = Vec2.Dot(cLocal - faceCenter, normals[vertIndex1]);
-                if (separation_ > radius)
+                float dot = Vec2.Dot(cLocal - faceCenter, normals[vertIndex1]);
+                if (dot > radius)
                 {
                     return;
                 }

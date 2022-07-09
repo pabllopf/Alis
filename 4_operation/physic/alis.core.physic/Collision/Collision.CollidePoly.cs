@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Collision
     /// <summary>
     ///     The collision class
     /// </summary>
-    public partial class Collision
+    public static partial class Collision
     {
         /// <summary>
         ///     Find the separation between poly1 and poly2 for a give edge normal on poly1.

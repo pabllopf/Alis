@@ -104,127 +104,127 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The angular damping
         /// </summary>
-        internal float _angularDamping;
+        internal float AngularDamping;
 
         /// <summary>
         ///     The angular velocity
         /// </summary>
-        internal float _angularVelocity;
+        internal float AngularVelocity;
 
         /// <summary>
         ///     The contact list
         /// </summary>
-        internal ContactEdge _contactList;
+        internal ContactEdge ContactList;
 
         /// <summary>
         ///     The controller list
         /// </summary>
-        internal ControllerEdge _controllerList;
+        internal ControllerEdge ControllerList;
 
         /// <summary>
         ///     The fixture count
         /// </summary>
-        internal int _fixtureCount;
+        internal int FixtureCount;
 
         /// <summary>
         ///     The fixture list
         /// </summary>
-        internal Fixture _fixtureList;
+        internal Fixture FixtureList;
 
         /// <summary>
         ///     The flags
         /// </summary>
-        internal BodyFlags _flags;
+        internal BodyFlags Flags;
 
         /// <summary>
         ///     The force
         /// </summary>
-        internal Vec2 _force;
+        internal Vec2 Force;
 
         /// <summary>
         ///     The
         /// </summary>
-        internal float _I;
+        internal float I;
 
         /// <summary>
         ///     The inv
         /// </summary>
-        internal float _invI;
+        internal float InvI;
 
         /// <summary>
         ///     The inv mass
         /// </summary>
-        internal float _invMass;
+        internal float InvMass;
 
         /// <summary>
         ///     The island index
         /// </summary>
-        internal int _islandIndex;
+        internal int IslandIndex;
 
         /// <summary>
         ///     The joint list
         /// </summary>
-        internal JointEdge _jointList;
+        internal JointEdge JointList;
 
         /// <summary>
         ///     The linear damping
         /// </summary>
-        internal float _linearDamping;
+        internal float LinearDamping;
 
         /// <summary>
         ///     The linear velocity
         /// </summary>
-        internal Vec2 _linearVelocity;
+        internal Vec2 LinearVelocity;
 
         /// <summary>
         ///     The mass
         /// </summary>
-        internal float _mass;
+        internal float Mass;
 
         /// <summary>
         ///     The next
         /// </summary>
-        internal Body _next;
+        internal Body Next;
 
         /// <summary>
         ///     The prev
         /// </summary>
-        internal Body _prev;
+        internal Body Prev;
 
         /// <summary>
         ///     The sleep time
         /// </summary>
-        internal float _sleepTime;
+        internal float SleepTime;
 
         /// <summary>
         ///     The sweep
         /// </summary>
-        internal Sweep _sweep; // the swept motion for CCD
+        internal Sweep Sweep; // the swept motion for CCD
 
         /// <summary>
         ///     The torque
         /// </summary>
-        internal float _torque;
+        internal float Torque;
 
         /// <summary>
         ///     The type
         /// </summary>
-        private BodyType _type;
+        private BodyType type;
 
         /// <summary>
         ///     The user data
         /// </summary>
-        private object _userData;
+        private object userData;
 
         /// <summary>
         ///     The world
         /// </summary>
-        private World _world;
+        private World world;
 
         /// <summary>
         ///     The xf
         /// </summary>
-        internal XForm _xf; // the body origin transform
+        internal XForm Xf; // the body origin transform
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Body" /> class
@@ -235,37 +235,37 @@ namespace Alis.Core.Physic.Dynamics
         {
             Box2DXDebug.Assert(world._lock == false);
 
-            _flags = 0;
+            Flags = 0;
 
             if (bd.IsBullet)
             {
-                _flags |= BodyFlags.Bullet;
+                Flags |= BodyFlags.Bullet;
             }
 
             if (bd.FixedRotation)
             {
-                _flags |= BodyFlags.FixedRotation;
+                Flags |= BodyFlags.FixedRotation;
             }
 
             if (bd.AllowSleep)
             {
-                _flags |= BodyFlags.AllowSleep;
+                Flags |= BodyFlags.AllowSleep;
             }
 
             if (bd.IsSleeping)
             {
-                _flags |= BodyFlags.Sleep;
+                Flags |= BodyFlags.Sleep;
             }
 
-            _world = world;
+            this.world = world;
 
-            _xf.Position = bd.Position;
-            _xf.R.Set(bd.Angle);
+            Xf.Position = bd.Position;
+            Xf.R.Set(bd.Angle);
 
-            _sweep.LocalCenter = bd.MassData.Center;
-            _sweep.T0 = 1.0f;
-            _sweep.A0 = _sweep.A = bd.Angle;
-            _sweep.C0 = _sweep.C = Math.Mul(_xf, _sweep.LocalCenter);
+            Sweep.LocalCenter = bd.MassData.Center;
+            Sweep.T0 = 1.0f;
+            Sweep.A0 = Sweep.A = bd.Angle;
+            Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
 
             //_jointList = null;
             //_contactList = null;
@@ -273,11 +273,11 @@ namespace Alis.Core.Physic.Dynamics
             //_prev = null;
             //_next = null;
 
-            _linearVelocity = bd.LinearVelocity;
-            _angularVelocity = bd.AngularVelocity;
+            LinearVelocity = bd.LinearVelocity;
+            AngularVelocity = bd.AngularVelocity;
 
-            _linearDamping = bd.LinearDamping;
-            _angularDamping = bd.AngularDamping;
+            LinearDamping = bd.LinearDamping;
+            AngularDamping = bd.AngularDamping;
 
             //_force.Set(0.0f, 0.0f);
             //_torque = 0.0f;
@@ -291,30 +291,30 @@ namespace Alis.Core.Physic.Dynamics
             //_I = 0.0f;
             //_invI = 0.0f;
 
-            _mass = bd.MassData.Mass;
+            Mass = bd.MassData.Mass;
 
-            if (_mass > 0.0f)
+            if (Mass > 0.0f)
             {
-                _invMass = 1.0f / _mass;
+                InvMass = 1.0f / Mass;
             }
 
-            _I = bd.MassData.I;
+            I = bd.MassData.I;
 
-            if (_I > 0.0f && (_flags & BodyFlags.FixedRotation) == 0)
+            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
             {
-                _invI = 1.0f / _I;
+                InvI = 1.0f / I;
             }
 
-            if (_invMass == 0.0f && _invI == 0.0f)
+            if (InvMass == 0.0f && InvI == 0.0f)
             {
-                _type = BodyType.Static;
+                type = BodyType.Static;
             }
             else
             {
-                _type = BodyType.Dynamic;
+                type = BodyType.Dynamic;
             }
 
-            _userData = bd.UserData;
+            userData = bd.UserData;
 
             //_fixtureList = null;
             //_fixtureCount = 0;
@@ -325,7 +325,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void Dispose()
         {
-            Box2DXDebug.Assert(_world._lock == false);
+            Box2DXDebug.Assert(world._lock == false);
             // shapes and joints are destroyed in World.Destroy
         }
 
@@ -336,13 +336,13 @@ namespace Alis.Core.Physic.Dynamics
         internal bool SynchronizeFixtures()
         {
             XForm xf1 = new XForm();
-            xf1.R.Set(_sweep.A0);
-            xf1.Position = _sweep.C0 - Math.Mul(xf1.R, _sweep.LocalCenter);
+            xf1.R.Set(Sweep.A0);
+            xf1.Position = Sweep.C0 - Math.Mul(xf1.R, Sweep.LocalCenter);
 
             bool inRange = true;
-            for (Fixture f = _fixtureList; f != null; f = f.Next)
+            for (Fixture f = FixtureList; f != null; f = f.Next)
             {
-                inRange = f.Synchronize(_world._broadPhase, xf1, _xf);
+                inRange = f.Synchronize(world._broadPhase, xf1, Xf);
                 if (inRange == false)
                 {
                     break;
@@ -351,9 +351,9 @@ namespace Alis.Core.Physic.Dynamics
 
             if (inRange == false)
             {
-                _flags |= BodyFlags.Frozen;
-                _linearVelocity.SetZero();
-                _angularVelocity = 0.0f;
+                Flags |= BodyFlags.Frozen;
+                LinearVelocity.SetZero();
+                AngularVelocity = 0.0f;
 
                 // Failure
                 return false;
@@ -372,7 +372,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The bool</returns>
         internal bool IsConnected(Body other)
         {
-            for (JointEdge jn = _jointList; jn != null; jn = jn.Next)
+            for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
                 if (jn.Other == other)
                     return jn.Joint.CollideConnected == false;
@@ -388,20 +388,20 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="def">The fixture definition.</param>
         public Fixture CreateFixture(FixtureDef def)
         {
-            Box2DXDebug.Assert(_world._lock == false);
-            if (_world._lock)
+            Box2DXDebug.Assert(world._lock == false);
+            if (world._lock)
             {
                 return null;
             }
 
-            BroadPhase broadPhase = _world._broadPhase;
+            BroadPhase broadPhase = world._broadPhase;
 
             Fixture fixture = new Fixture();
-            fixture.Create(broadPhase, this, _xf, def);
+            fixture.Create(broadPhase, this, Xf, def);
 
-            fixture.Next = _fixtureList;
-            _fixtureList = fixture;
-            ++_fixtureCount;
+            fixture.Next = FixtureList;
+            FixtureList = fixture;
+            ++FixtureCount;
 
             fixture.Body = this;
 
@@ -417,8 +417,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="fixture">The fixture to be removed.</param>
         public void DestroyFixture(Fixture fixture)
         {
-            Box2DXDebug.Assert(_world._lock == false);
-            if (_world._lock)
+            Box2DXDebug.Assert(world._lock == false);
+            if (world._lock)
             {
                 return;
             }
@@ -426,15 +426,15 @@ namespace Alis.Core.Physic.Dynamics
             Box2DXDebug.Assert(fixture.Body == this);
 
             // Remove the fixture from this body's singly linked list.
-            Box2DXDebug.Assert(_fixtureCount > 0);
-            Fixture node = _fixtureList;
+            Box2DXDebug.Assert(FixtureCount > 0);
+            Fixture node = FixtureList;
             bool found = false;
             while (node != null)
             {
                 if (node == fixture)
                 {
                     //*node = fixture->m_next;
-                    _fixtureList = fixture.Next;
+                    FixtureList = fixture.Next;
                     found = true;
                     break;
                 }
@@ -445,13 +445,13 @@ namespace Alis.Core.Physic.Dynamics
             // You tried to remove a shape that is not attached to this body.
             Box2DXDebug.Assert(found);
 
-            BroadPhase broadPhase = _world._broadPhase;
+            BroadPhase broadPhase = world._broadPhase;
 
             fixture.Destroy(broadPhase);
             fixture.Body = null;
             fixture.Next = null;
 
-            --_fixtureCount;
+            --FixtureCount;
         }
 
         // TODO_ERIN adjust linear velocity and torque to account for movement of center.
@@ -463,50 +463,50 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="massData">The mass properties.</param>
         public void SetMass(MassData massData)
         {
-            Box2DXDebug.Assert(_world._lock == false);
-            if (_world._lock)
+            Box2DXDebug.Assert(world._lock == false);
+            if (world._lock)
             {
                 return;
             }
 
-            _invMass = 0.0f;
-            _I = 0.0f;
-            _invI = 0.0f;
+            InvMass = 0.0f;
+            I = 0.0f;
+            InvI = 0.0f;
 
-            _mass = massData.Mass;
+            Mass = massData.Mass;
 
-            if (_mass > 0.0f)
+            if (Mass > 0.0f)
             {
-                _invMass = 1.0f / _mass;
+                InvMass = 1.0f / Mass;
             }
 
-            _I = massData.I;
+            I = massData.I;
 
-            if (_I > 0.0f && (_flags & BodyFlags.FixedRotation) == 0)
+            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
             {
-                _invI = 1.0f / _I;
+                InvI = 1.0f / I;
             }
 
             // Move center of mass.
-            _sweep.LocalCenter = massData.Center;
-            _sweep.C0 = _sweep.C = Math.Mul(_xf, _sweep.LocalCenter);
+            Sweep.LocalCenter = massData.Center;
+            Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
 
-            BodyType oldType = _type;
-            if (_invMass == 0.0f && _invI == 0.0f)
+            BodyType oldType = type;
+            if (InvMass == 0.0f && InvI == 0.0f)
             {
-                _type = BodyType.Static;
+                type = BodyType.Static;
             }
             else
             {
-                _type = BodyType.Dynamic;
+                type = BodyType.Dynamic;
             }
 
             // If the body type changed, we need to refilter the broad-phase proxies.
-            if (oldType != _type)
+            if (oldType != type)
             {
-                for (Fixture f = _fixtureList; f != null; f = f.Next)
+                for (Fixture f = FixtureList; f != null; f = f.Next)
                 {
-                    f.RefilterProxy(_world._broadPhase, _xf);
+                    f.RefilterProxy(world._broadPhase, Xf);
                 }
             }
         }
@@ -519,68 +519,68 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void SetMassFromShapes()
         {
-            Box2DXDebug.Assert(_world._lock == false);
-            if (_world._lock)
+            Box2DXDebug.Assert(world._lock == false);
+            if (world._lock)
             {
                 return;
             }
 
             // Compute mass data from shapes. Each shape has its own density.
-            _mass = 0.0f;
-            _invMass = 0.0f;
-            _I = 0.0f;
-            _invI = 0.0f;
+            Mass = 0.0f;
+            InvMass = 0.0f;
+            I = 0.0f;
+            InvI = 0.0f;
 
             Vec2 center = Vec2.Zero;
-            for (Fixture f = _fixtureList; f != null; f = f.Next)
+            for (Fixture f = FixtureList; f != null; f = f.Next)
             {
                 MassData massData;
                 f.ComputeMass(out massData);
-                _mass += massData.Mass;
+                Mass += massData.Mass;
                 center += massData.Mass * massData.Center;
-                _I += massData.I;
+                I += massData.I;
             }
 
             // Compute center of mass, and shift the origin to the COM.
-            if (_mass > 0.0f)
+            if (Mass > 0.0f)
             {
-                _invMass = 1.0f / _mass;
-                center *= _invMass;
+                InvMass = 1.0f / Mass;
+                center *= InvMass;
             }
 
-            if (_I > 0.0f && (_flags & BodyFlags.FixedRotation) == 0)
+            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
             {
                 // Center the inertia about the center of mass.
-                _I -= _mass * Vec2.Dot(center, center);
-                Box2DXDebug.Assert(_I > 0.0f);
-                _invI = 1.0f / _I;
+                I -= Mass * Vec2.Dot(center, center);
+                Box2DXDebug.Assert(I > 0.0f);
+                InvI = 1.0f / I;
             }
             else
             {
-                _I = 0.0f;
-                _invI = 0.0f;
+                I = 0.0f;
+                InvI = 0.0f;
             }
 
             // Move center of mass.
-            _sweep.LocalCenter = center;
-            _sweep.C0 = _sweep.C = Math.Mul(_xf, _sweep.LocalCenter);
+            Sweep.LocalCenter = center;
+            Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
 
-            BodyType oldType = _type;
-            if (_invMass == 0.0f && _invI == 0.0f)
+            BodyType oldType = type;
+            if (InvMass == 0.0f && InvI == 0.0f)
             {
-                _type = BodyType.Static;
+                type = BodyType.Static;
             }
             else
             {
-                _type = BodyType.Dynamic;
+                type = BodyType.Dynamic;
             }
 
             // If the body type changed, we need to refilter the broad-phase proxies.
-            if (oldType != _type)
+            if (oldType != type)
             {
-                for (Fixture f = _fixtureList; f != null; f = f.Next)
+                for (Fixture f = FixtureList; f != null; f = f.Next)
                 {
-                    f.RefilterProxy(_world._broadPhase, _xf);
+                    f.RefilterProxy(world._broadPhase, Xf);
                 }
             }
         }
@@ -600,8 +600,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </returns>
         public bool SetXForm(Vec2 position, float angle)
         {
-            Box2DXDebug.Assert(_world._lock == false);
-            if (_world._lock)
+            Box2DXDebug.Assert(world._lock == false);
+            if (world._lock)
             {
                 return true;
             }
@@ -611,16 +611,16 @@ namespace Alis.Core.Physic.Dynamics
                 return false;
             }
 
-            _xf.R.Set(angle);
-            _xf.Position = position;
+            Xf.R.Set(angle);
+            Xf.Position = position;
 
-            _sweep.C0 = _sweep.C = Math.Mul(_xf, _sweep.LocalCenter);
-            _sweep.A0 = _sweep.A = angle;
+            Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
+            Sweep.A0 = Sweep.A = angle;
 
             bool freeze = false;
-            for (Fixture f = _fixtureList; f != null; f = f.Next)
+            for (Fixture f = FixtureList; f != null; f = f.Next)
             {
-                bool inRange = f.Synchronize(_world._broadPhase, _xf, _xf);
+                bool inRange = f.Synchronize(world._broadPhase, Xf, Xf);
 
                 if (inRange == false)
                 {
@@ -631,16 +631,16 @@ namespace Alis.Core.Physic.Dynamics
 
             if (freeze)
             {
-                _flags |= BodyFlags.Frozen;
-                _linearVelocity.SetZero();
-                _angularVelocity = 0.0f;
+                Flags |= BodyFlags.Frozen;
+                LinearVelocity.SetZero();
+                AngularVelocity = 0.0f;
 
                 // Failure
                 return false;
             }
 
             // Success
-            _world._broadPhase.Commit();
+            world._broadPhase.Commit();
             return true;
         }
 
@@ -666,7 +666,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the world transform of the body's origin.</returns>
         public XForm GetXForm()
         {
-            return _xf;
+            return Xf;
         }
 
         /// <summary>
@@ -693,7 +693,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the world position of the body's origin.</returns>
         public Vec2 GetPosition()
         {
-            return _xf.Position;
+            return Xf.Position;
         }
 
         /// <summary>
@@ -702,7 +702,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the current world rotation angle in radians.</returns>
         public float GetAngle()
         {
-            return _sweep.A;
+            return Sweep.A;
         }
 
         /// <summary>
@@ -711,7 +711,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public Vec2 GetWorldCenter()
         {
-            return _sweep.C;
+            return Sweep.C;
         }
 
         /// <summary>
@@ -720,7 +720,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public Vec2 GetLocalCenter()
         {
-            return _sweep.LocalCenter;
+            return Sweep.LocalCenter;
         }
 
         /// <summary>
@@ -729,7 +729,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="v">The new linear velocity of the center of mass.</param>
         public void SetLinearVelocity(Vec2 v)
         {
-            _linearVelocity = v;
+            LinearVelocity = v;
         }
 
         /// <summary>
@@ -738,7 +738,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the linear velocity of the center of mass.</returns>
         public Vec2 GetLinearVelocity()
         {
-            return _linearVelocity;
+            return LinearVelocity;
         }
 
         /// <summary>
@@ -747,7 +747,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="w">The w.</param>
         public void SetAngularVelocity(float w)
         {
-            _angularVelocity = w;
+            AngularVelocity = w;
         }
 
         /// <summary>
@@ -756,7 +756,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the angular velocity in radians/second.</returns>
         public float GetAngularVelocity()
         {
-            return _angularVelocity;
+            return AngularVelocity;
         }
 
         /// <summary>
@@ -773,8 +773,8 @@ namespace Alis.Core.Physic.Dynamics
                 WakeUp();
             }
 
-            _force += force;
-            _torque += Vec2.Cross(point - _sweep.C, force);
+            Force += force;
+            Torque += Vec2.Cross(point - Sweep.C, force);
         }
 
         /// <summary>
@@ -790,7 +790,7 @@ namespace Alis.Core.Physic.Dynamics
                 WakeUp();
             }
 
-            _torque += torque;
+            Torque += torque;
         }
 
         /// <summary>
@@ -807,8 +807,8 @@ namespace Alis.Core.Physic.Dynamics
                 WakeUp();
             }
 
-            _linearVelocity += _invMass * impulse;
-            _angularVelocity += _invI * Vec2.Cross(point - _sweep.C, impulse);
+            LinearVelocity += InvMass * impulse;
+            AngularVelocity += InvI * Vec2.Cross(point - Sweep.C, impulse);
         }
 
         /// <summary>
@@ -817,7 +817,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the mass, usually in kilograms (kg).</returns>
         public float GetMass()
         {
-            return _mass;
+            return Mass;
         }
 
         /// <summary>
@@ -826,7 +826,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the rotational inertia, usually in kg-m^2.</returns>
         public float GetInertia()
         {
-            return _I;
+            return I;
         }
 
         /// <summary>
@@ -836,8 +836,8 @@ namespace Alis.Core.Physic.Dynamics
         public MassData GetMassData()
         {
             MassData massData = new MassData();
-            massData.Mass = _mass;
-            massData.I = _I;
+            massData.Mass = Mass;
+            massData.I = I;
             massData.Center = GetWorldCenter();
             return massData;
         }
@@ -849,7 +849,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the same point expressed in world coordinates.</returns>
         public Vec2 GetWorldPoint(Vec2 localPoint)
         {
-            return Math.Mul(_xf, localPoint);
+            return Math.Mul(Xf, localPoint);
         }
 
         /// <summary>
@@ -859,7 +859,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the same vector expressed in world coordinates.</returns>
         public Vec2 GetWorldVector(Vec2 localVector)
         {
-            return Math.Mul(_xf.R, localVector);
+            return Math.Mul(Xf.R, localVector);
         }
 
         /// <summary>
@@ -869,7 +869,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the corresponding local point relative to the body's origin.</returns>
         public Vec2 GetLocalPoint(Vec2 worldPoint)
         {
-            return Math.MulT(_xf, worldPoint);
+            return Math.MulT(Xf, worldPoint);
         }
 
         /// <summary>
@@ -879,7 +879,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the corresponding local vector.</returns>
         public Vec2 GetLocalVector(Vec2 worldVector)
         {
-            return Math.MulT(_xf.R, worldVector);
+            return Math.MulT(Xf.R, worldVector);
         }
 
         /// <summary>
@@ -889,7 +889,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The world velocity of a point.</returns>
         public Vec2 GetLinearVelocityFromWorldPoint(Vec2 worldPoint)
         {
-            return _linearVelocity + Vec2.Cross(_angularVelocity, worldPoint - _sweep.C);
+            return LinearVelocity + Vec2.Cross(AngularVelocity, worldPoint - Sweep.C);
         }
 
         /// <summary>
@@ -908,7 +908,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The linear damping</returns>
         public float GetLinearDamping()
         {
-            return _linearDamping;
+            return LinearDamping;
         }
 
         /// <summary>
@@ -917,7 +917,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="linearDamping">The linear damping</param>
         public void SetLinearDamping(float linearDamping)
         {
-            _linearDamping = linearDamping;
+            LinearDamping = linearDamping;
         }
 
         /// <summary>
@@ -926,7 +926,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The angular damping</returns>
         public float GetAngularDamping()
         {
-            return _angularDamping;
+            return AngularDamping;
         }
 
         /// <summary>
@@ -935,7 +935,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="angularDamping">The angular damping</param>
         public void SetAngularDamping(float angularDamping)
         {
-            _angularDamping = angularDamping;
+            AngularDamping = angularDamping;
         }
 
         /// <summary>
@@ -944,7 +944,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public bool IsBullet()
         {
-            return (_flags & BodyFlags.Bullet) == BodyFlags.Bullet;
+            return (Flags & BodyFlags.Bullet) == BodyFlags.Bullet;
         }
 
         /// <summary>
@@ -955,11 +955,11 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (flag)
             {
-                _flags |= BodyFlags.Bullet;
+                Flags |= BodyFlags.Bullet;
             }
             else
             {
-                _flags &= ~BodyFlags.Bullet;
+                Flags &= ~BodyFlags.Bullet;
             }
         }
 
@@ -969,7 +969,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The bool</returns>
         public bool IsFixedRotation()
         {
-            return (_flags & BodyFlags.FixedRotation) == BodyFlags.FixedRotation;
+            return (Flags & BodyFlags.FixedRotation) == BodyFlags.FixedRotation;
         }
 
         /// <summary>
@@ -980,17 +980,17 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (fixedr)
             {
-                _angularVelocity = 0.0f;
-                _invI = 0.0f;
-                _flags |= BodyFlags.FixedRotation;
+                AngularVelocity = 0.0f;
+                InvI = 0.0f;
+                Flags |= BodyFlags.FixedRotation;
             }
             else
             {
-                if (_I > 0.0f)
+                if (I > 0.0f)
                 {
                     // Recover _invI from _I.
-                    _invI = 1.0f / _I;
-                    _flags &= BodyFlags.FixedRotation;
+                    InvI = 1.0f / I;
+                    Flags &= BodyFlags.FixedRotation;
                 }
                 // TODO: Else what?
             }
@@ -1002,7 +1002,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public bool IsStatic()
         {
-            return _type == BodyType.Static;
+            return type == BodyType.Static;
         }
 
         /// <summary>
@@ -1010,17 +1010,17 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void SetStatic()
         {
-            if (_type == BodyType.Static)
+            if (type == BodyType.Static)
                 return;
-            _mass = 0.0f;
-            _invMass = 0.0f;
-            _I = 0.0f;
-            _invI = 0.0f;
-            _type = BodyType.Static;
+            Mass = 0.0f;
+            InvMass = 0.0f;
+            I = 0.0f;
+            InvI = 0.0f;
+            type = BodyType.Static;
 
-            for (Fixture f = _fixtureList; f != null; f = f.Next)
+            for (Fixture f = FixtureList; f != null; f = f.Next)
             {
-                f.RefilterProxy(_world._broadPhase, _xf);
+                f.RefilterProxy(world._broadPhase, Xf);
             }
         }
 
@@ -1030,7 +1030,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public bool IsDynamic()
         {
-            return _type == BodyType.Dynamic;
+            return type == BodyType.Dynamic;
         }
 
         /// <summary>
@@ -1039,7 +1039,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public bool IsFrozen()
         {
-            return (_flags & BodyFlags.Frozen) == BodyFlags.Frozen;
+            return (Flags & BodyFlags.Frozen) == BodyFlags.Frozen;
         }
 
         /// <summary>
@@ -1048,7 +1048,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public bool IsSleeping()
         {
-            return (_flags & BodyFlags.Sleep) == BodyFlags.Sleep;
+            return (Flags & BodyFlags.Sleep) == BodyFlags.Sleep;
         }
 
         /// <summary>
@@ -1057,7 +1057,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The bool</returns>
         public bool IsAllowSleeping()
         {
-            return (_flags & BodyFlags.AllowSleep) == BodyFlags.AllowSleep;
+            return (Flags & BodyFlags.AllowSleep) == BodyFlags.AllowSleep;
         }
 
         /// <summary>
@@ -1068,11 +1068,11 @@ namespace Alis.Core.Physic.Dynamics
         {
             if (flag)
             {
-                _flags |= BodyFlags.AllowSleep;
+                Flags |= BodyFlags.AllowSleep;
             }
             else
             {
-                _flags &= ~BodyFlags.AllowSleep;
+                Flags &= ~BodyFlags.AllowSleep;
                 WakeUp();
             }
         }
@@ -1082,8 +1082,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void WakeUp()
         {
-            _flags &= ~BodyFlags.Sleep;
-            _sleepTime = 0.0f;
+            Flags &= ~BodyFlags.Sleep;
+            SleepTime = 0.0f;
         }
 
         /// <summary>
@@ -1092,12 +1092,12 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void PutToSleep()
         {
-            _flags |= BodyFlags.Sleep;
-            _sleepTime = 0.0f;
-            _linearVelocity.SetZero();
-            _angularVelocity = 0.0f;
-            _force.SetZero();
-            _torque = 0.0f;
+            Flags |= BodyFlags.Sleep;
+            SleepTime = 0.0f;
+            LinearVelocity.SetZero();
+            AngularVelocity = 0.0f;
+            Force.SetZero();
+            Torque = 0.0f;
         }
 
         /// <summary>
@@ -1106,7 +1106,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public Fixture GetFixtureList()
         {
-            return _fixtureList;
+            return FixtureList;
         }
 
         /// <summary>
@@ -1115,7 +1115,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public JointEdge GetJointList()
         {
-            return _jointList;
+            return JointList;
         }
 
         /// <summary>
@@ -1124,7 +1124,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The controller list</returns>
         public ControllerEdge GetControllerList()
         {
-            return _controllerList;
+            return ControllerList;
         }
 
         /// <summary>
@@ -1133,7 +1133,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public Body GetNext()
         {
-            return _next;
+            return Next;
         }
 
         /// <summary>
@@ -1142,7 +1142,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public object GetUserData()
         {
-            return _userData;
+            return userData;
         }
 
         /// <summary>
@@ -1151,7 +1151,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="data"></param>
         public void SetUserData(object data)
         {
-            _userData = data;
+            userData = data;
         }
 
         /// <summary>
@@ -1160,7 +1160,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns></returns>
         public World GetWorld()
         {
-            return _world;
+            return world;
         }
 
         /// <summary>
@@ -1168,8 +1168,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void SynchronizeTransform()
         {
-            _xf.R.Set(_sweep.A);
-            _xf.Position = _sweep.C - Math.Mul(_xf.R, _sweep.LocalCenter);
+            Xf.R.Set(Sweep.A);
+            Xf.Position = Sweep.C - Math.Mul(Xf.R, Sweep.LocalCenter);
         }
 
         /// <summary>
@@ -1179,9 +1179,9 @@ namespace Alis.Core.Physic.Dynamics
         internal void Advance(float t)
         {
             // Advance to the new safe time.
-            _sweep.Advance(t);
-            _sweep.C = _sweep.C0;
-            _sweep.A = _sweep.A0;
+            Sweep.Advance(t);
+            Sweep.C = Sweep.C0;
+            Sweep.A = Sweep.A0;
             SynchronizeTransform();
         }
     }
