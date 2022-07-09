@@ -37,7 +37,13 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         /// The upper bounds
         /// </summary>
-        public ushort[/*2*/] LowerBounds = new ushort[2], UpperBounds = new ushort[2];
+        public ushort[/*2*/] LowerBounds = new ushort[2];
+
+        /// <summary>
+        /// The upper bounds
+        /// </summary>
+        public ushort[/*2*/] UpperBounds = new ushort[2];
+
         /// <summary>
         /// The overlap count
         /// </summary>

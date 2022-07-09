@@ -10,7 +10,17 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         /// The 
         /// </summary>
-        private Byte I0, I1, I2;
+        private Byte I0;
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        private Byte I1;
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        private Byte I2;
 
         /// <summary>
         /// The value
