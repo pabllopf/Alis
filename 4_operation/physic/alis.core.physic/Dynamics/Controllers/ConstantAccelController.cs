@@ -46,9 +46,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <param name="step">The step</param>
         public override void Step(TimeStep step)
         {
-            for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
+            for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
             {
-                Body body = i.body;
+                Body body = i.Body;
                 if (body.IsSleeping())
                     continue;
                 body.SetLinearVelocity(body.GetLinearVelocity() + step.Dt * A);

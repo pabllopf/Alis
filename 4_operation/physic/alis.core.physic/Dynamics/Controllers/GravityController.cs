@@ -54,12 +54,12 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             //B2_NOT_USED(step);
             if (InvSqr)
             {
-                for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
+                for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
                 {
-                    Body body1 = i.body;
-                    for (ControllerEdge j = BodyList; j != i; j = j.nextBody)
+                    Body body1 = i.Body;
+                    for (ControllerEdge j = BodyList; j != i; j = j.NextBody)
                     {
-                        Body body2 = j.body;
+                        Body body2 = j.Body;
                         Vec2 d = body2.GetWorldCenter() - body1.GetWorldCenter();
                         float r2 = d.LengthSquared();
                         if (r2 < Settings.FLT_EPSILON)
@@ -73,12 +73,12 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             }
             else
             {
-                for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
+                for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
                 {
-                    Body body1 = i.body;
-                    for (ControllerEdge j = BodyList; j != i; j = j.nextBody)
+                    Body body1 = i.Body;
+                    for (ControllerEdge j = BodyList; j != i; j = j.NextBody)
                     {
-                        Body body2 = j.body;
+                        Body body2 = j.Body;
                         Vec2 d = body2.GetWorldCenter() - body1.GetWorldCenter();
                         float r2 = d.LengthSquared();
                         if (r2 < Settings.FLT_EPSILON)

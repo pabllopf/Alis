@@ -327,9 +327,9 @@ namespace Alis.Core.Physic.Dynamics
 			while (ce != null)
 			{
 				Controllers.ControllerEdge ce0 = ce;
-				ce = ce.nextController;
+				ce = ce.NextController;
 
-				ce0.controller.RemoveBody(b);
+				ce0.Controller.RemoveBody(b);
 			}
 
 			// Delete the attached fixtures. This destroys broad-phase

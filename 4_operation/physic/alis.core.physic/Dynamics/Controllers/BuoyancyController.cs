@@ -57,9 +57,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             {
                 Gravity = World.Gravity;
             }
-            for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
+            for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
             {
-                Body body = i.body;
+                Body body = i.Body;
                 if (body.IsSleeping())
                 {
                     //Buoyancy force is just a function of position,

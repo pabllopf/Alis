@@ -72,9 +72,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 return;
             if (timestep > MaxTimestep && MaxTimestep > 0)
                 timestep = MaxTimestep;
-            for (ControllerEdge i = BodyList; i != null; i = i.nextBody)
+            for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
             {
-                Body body = i.body;
+                Body body = i.Body;
                 if (body.IsSleeping())
                     continue;
 

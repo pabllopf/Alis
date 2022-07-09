@@ -82,22 +82,22 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         {
             ControllerEdge edge = new ControllerEdge();
 
-            edge.body = body;
-            edge.controller = this;
+            edge.Body = body;
+            edge.Controller = this;
 
             //Add edge to controller list
-            edge.nextBody = BodyList;
-            edge.prevBody = null;
+            edge.NextBody = BodyList;
+            edge.PrevBody = null;
             if (BodyList != null)
-                BodyList.prevBody = edge;
+                BodyList.PrevBody = edge;
             BodyList = edge;
             ++BodyCount;
 
             //Add edge to body list
-            edge.nextController = body._controllerList;
-            edge.prevController = null;
+            edge.NextController = body._controllerList;
+            edge.PrevController = null;
             if (body._controllerList != null)
-                body._controllerList.prevController = edge;
+                body._controllerList.PrevController = edge;
             body._controllerList = edge;
         }
 
@@ -111,28 +111,28 @@ namespace Alis.Core.Physic.Dynamics.Controllers
 
             //Find the corresponding edge
             ControllerEdge edge = BodyList;
-            while (edge != null && edge.body != body)
-                edge = edge.nextBody;
+            while (edge != null && edge.Body != body)
+                edge = edge.NextBody;
 
             //Assert that we are removing a body that is currently attached to the controller
             Box2DXDebug.Assert(edge != null);
 
             //Remove edge from controller list
-            if (edge.prevBody != null)
-                edge.prevBody.nextBody = edge.nextBody;
-            if (edge.nextBody != null)
-                edge.nextBody.prevBody = edge.prevBody;
+            if (edge.PrevBody != null)
+                edge.PrevBody.NextBody = edge.NextBody;
+            if (edge.NextBody != null)
+                edge.NextBody.PrevBody = edge.PrevBody;
             if (edge == BodyList)
-                BodyList = edge.nextBody;
+                BodyList = edge.NextBody;
             --BodyCount;
 
             //Remove edge from body list
-            if (edge.prevController != null)
-                edge.prevController.nextController = edge.nextController;
-            if (edge.nextController != null)
-                edge.nextController.prevController = edge.prevController;
+            if (edge.PrevController != null)
+                edge.PrevController.NextController = edge.NextController;
+            if (edge.NextController != null)
+                edge.NextController.PrevController = edge.PrevController;
             if (edge == body._controllerList)
-                body._controllerList = edge.nextController;
+                body._controllerList = edge.NextController;
 
             //Free the edge
             edge = null;
@@ -150,15 +150,15 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 ControllerEdge edge = current;
 
                 //Remove edge from controller list
-                BodyList = edge.nextBody;
+                BodyList = edge.NextBody;
 
                 //Remove edge from body list
-                if (edge.prevController != null)
-                    edge.prevController.nextController = edge.nextController;
-                if (edge.nextController != null)
-                    edge.nextController.prevController = edge.prevController;
-                if (edge == edge.body._controllerList)
-                    edge.body._controllerList = edge.nextController;
+                if (edge.PrevController != null)
+                    edge.PrevController.NextController = edge.NextController;
+                if (edge.NextController != null)
+                    edge.NextController.PrevController = edge.PrevController;
+                if (edge == edge.Body._controllerList)
+                    edge.Body._controllerList = edge.NextController;
 
                 //Free the edge
                 //m_world->m_blockAllocator.Free(edge, sizeof(b2ControllerEdge));
