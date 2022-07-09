@@ -667,11 +667,11 @@ namespace Alis.Core.Physic.Dynamics
 			step.PositionIterations = positionIteration;
 			if (dt > 0.0f)
 			{
-				step.Inv_Dt = 1.0f / dt;
+				step.InvDt = 1.0f / dt;
 			}
 			else
 			{
-				step.Inv_Dt = 0.0f;
+				step.InvDt = 0.0f;
 			}
 
 			step.DtRatio = _inv_dt0 * dt;
@@ -696,7 +696,7 @@ namespace Alis.Core.Physic.Dynamics
 			// Draw debug information.
 			DrawDebugData();
 
-			_inv_dt0 = step.Inv_Dt;
+			_inv_dt0 = step.InvDt;
 			_lock = false;
 		}
 
@@ -915,10 +915,10 @@ namespace Alis.Core.Physic.Dynamics
 					island.Solve(step, _gravity, _allowSleep);
 
 					// Post solve cleanup.
-					for (int i = 0; i < island._bodyCount; ++i)
+					for (int i = 0; i < island.BodyCount; ++i)
 					{
 						// Allow static bodies to participate in other islands.
-						Body b = island._bodies[i];
+						Body b = island.Bodies[i];
 						if (b.IsStatic())
 						{
 							b._flags &= ~Body.BodyFlags.Island;
@@ -1137,7 +1137,7 @@ namespace Alis.Core.Physic.Dynamics
 					for (ContactEdge cEdge = b._contactList; cEdge != null; cEdge = cEdge.Next)
 					{
 						// Does the TOI island still have space for contacts?
-						if (island._contactCount == island._contactCapacity)
+						if (island.ContactCount == island.ContactCapacity)
 						{
 							continue;
 						}
@@ -1181,7 +1181,7 @@ namespace Alis.Core.Physic.Dynamics
 
 					for (JointEdge jEdge = b._jointList; jEdge != null; jEdge = jEdge.Next)
 					{
-						if (island._jointCount == island._jointCapacity)
+						if (island.JointCount == island.JointCapacity)
 						{
 							continue;
 						}
@@ -1218,18 +1218,18 @@ namespace Alis.Core.Physic.Dynamics
 				TimeStep subStep;
 				subStep.WarmStarting = false;
 				subStep.Dt = (1.0f - minTOI) * step.Dt;
-				subStep.Inv_Dt = 1.0f / subStep.Dt;
+				subStep.InvDt = 1.0f / subStep.Dt;
 				subStep.DtRatio = 0.0f;
 				subStep.VelocityIterations = step.VelocityIterations;
 				subStep.PositionIterations = step.PositionIterations;
 
-				island.SolveTOI(ref subStep);
+				island.SolveToi(ref subStep);
 
 				// Post solve cleanup.
-				for (int i = 0; i < island._bodyCount; ++i)
+				for (int i = 0; i < island.BodyCount; ++i)
 				{
 					// Allow bodies to participate in future TOI islands.
-					Body b = island._bodies[i];
+					Body b = island.Bodies[i];
 					b._flags &= ~Body.BodyFlags.Island;
 
 					if ((int)(b._flags & (Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) == 1)
@@ -1261,17 +1261,17 @@ namespace Alis.Core.Physic.Dynamics
 					}
 				}
 
-				for (int i = 0; i < island._contactCount; ++i)
+				for (int i = 0; i < island.ContactCount; ++i)
 				{
 					// Allow contacts to participate in future TOI islands.
-					Contact c = island._contacts[i];
+					Contact c = island.Contacts[i];
 					c._flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
 				}
 
-				for (int i = 0; i < island._jointCount; ++i)
+				for (int i = 0; i < island.JointCount; ++i)
 				{
 					// Allow joints to participate in future TOI islands.
-					Joint j = island._joints[i];
+					Joint j = island.Joints[i];
 					j._islandFlag = false;
 				}
 

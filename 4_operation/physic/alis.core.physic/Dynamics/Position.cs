@@ -10,10 +10,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// The 
         /// </summary>
-        public Vec2 x;
+        public Vec2 X;
         /// <summary>
         /// The 
         /// </summary>
-        public float a;
+        public float A;
     }
 }

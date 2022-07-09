@@ -12,7 +12,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         /// The inv dt
         /// </summary>
-        public float Inv_Dt; // inverse time step (0 if dt == 0).
+        public float InvDt; // inverse time step (0 if dt == 0).
         /// <summary>
         /// The dt ratio
         /// </summary>

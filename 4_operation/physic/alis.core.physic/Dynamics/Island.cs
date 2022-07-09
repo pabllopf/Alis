@@ -153,60 +153,60 @@ namespace Alis.Core.Physic.Dynamics
 		/// <summary>
 		/// The listener
 		/// </summary>
-		public ContactListener _listener;
+		public ContactListener Listener;
 
 		/// <summary>
 		/// The bodies
 		/// </summary>
-		public Body[] _bodies;
+		public Body[] Bodies;
 		/// <summary>
 		/// The contacts
 		/// </summary>
-		public Contact[] _contacts;
+		public Contact[] Contacts;
 		/// <summary>
 		/// The joints
 		/// </summary>
-		public Joint[] _joints;
+		public Joint[] Joints;
 
 		/// <summary>
 		/// The positions
 		/// </summary>
-		public Position[] _positions;
+		public Position[] Positions;
 		/// <summary>
 		/// The velocities
 		/// </summary>
-		public Velocity[] _velocities;
+		public Velocity[] Velocities;
 
 		/// <summary>
 		/// The body count
 		/// </summary>
-		public int _bodyCount;
+		public int BodyCount;
 		/// <summary>
 		/// The joint count
 		/// </summary>
-		public int _jointCount;
+		public int JointCount;
 		/// <summary>
 		/// The contact count
 		/// </summary>
-		public int _contactCount;
+		public int ContactCount;
 
 		/// <summary>
 		/// The body capacity
 		/// </summary>
-		public int _bodyCapacity;
+		public int BodyCapacity;
 		/// <summary>
 		/// The contact capacity
 		/// </summary>
-		public int _contactCapacity;
+		public int ContactCapacity;
 		/// <summary>
 		/// The joint capacity
 		/// </summary>
-		public int _jointCapacity;
+		public int JointCapacity;
 
 		/// <summary>
 		/// The position iteration count
 		/// </summary>
-		public int _positionIterationCount;
+		public int PositionIterationCount;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Island"/> class
@@ -217,21 +217,21 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="listener">The listener</param>
 		public Island(int bodyCapacity, int contactCapacity, int jointCapacity, ContactListener listener)
 		{
-			_bodyCapacity = bodyCapacity;
-			_contactCapacity = contactCapacity;
-			_jointCapacity = jointCapacity;
+			BodyCapacity = bodyCapacity;
+			ContactCapacity = contactCapacity;
+			JointCapacity = jointCapacity;
 			//__bodyCount = 0;
 			//_contactCount = 0;
 			//_jointCount = 0;
 
-			_listener = listener;
+			Listener = listener;
 
-			_bodies = new Body[bodyCapacity];
-			_contacts = new Contact[contactCapacity];
-			_joints = new Joint[jointCapacity];
+			Bodies = new Body[bodyCapacity];
+			Contacts = new Contact[contactCapacity];
+			Joints = new Joint[jointCapacity];
 
-			_velocities = new Velocity[_bodyCapacity];
-			_positions = new Position[_bodyCapacity];
+			Velocities = new Velocity[BodyCapacity];
+			Positions = new Position[BodyCapacity];
 		}
 
 		/// <summary>
@@ -240,11 +240,11 @@ namespace Alis.Core.Physic.Dynamics
 		public void Dispose()
 		{
 			// Warning: the order should reverse the constructor order.
-			_positions = null;
-			_velocities = null;
-			_joints = null;
-			_contacts = null;
-			_bodies = null;
+			Positions = null;
+			Velocities = null;
+			Joints = null;
+			Contacts = null;
+			Bodies = null;
 		}
 
 		/// <summary>
@@ -252,9 +252,9 @@ namespace Alis.Core.Physic.Dynamics
 		/// </summary>
 		public void Clear()
 		{
-			_bodyCount = 0;
-			_contactCount = 0;
-			_jointCount = 0;
+			BodyCount = 0;
+			ContactCount = 0;
+			JointCount = 0;
 		}
 
 		/// <summary>
@@ -266,9 +266,9 @@ namespace Alis.Core.Physic.Dynamics
 		public void Solve(TimeStep step, Vec2 gravity, bool allowSleep)
 		{
 			// Integrate velocities and apply damping.
-			for (int i = 0; i < _bodyCount; ++i)
+			for (int i = 0; i < BodyCount; ++i)
 			{
-				Body b = _bodies[i];
+				Body b = Bodies[i];
 
 				if (b.IsStatic())
 					continue;
@@ -292,22 +292,22 @@ namespace Alis.Core.Physic.Dynamics
 				b._angularVelocity *= Common.Math.Clamp(1.0f - step.Dt * b._angularDamping, 0.0f, 1.0f);
 			}
 
-			ContactSolver contactSolver = new ContactSolver(step, _contacts, _contactCount);
+			ContactSolver contactSolver = new ContactSolver(step, Contacts, ContactCount);
 
 			// Initialize velocity constraints.
 			contactSolver.InitVelocityConstraints(step);
 
-			for (int i = 0; i < _jointCount; ++i)
+			for (int i = 0; i < JointCount; ++i)
 			{
-				_joints[i].InitVelocityConstraints(step);
+				Joints[i].InitVelocityConstraints(step);
 			}
 
 			// Solve velocity constraints.
 			for (int i = 0; i < step.VelocityIterations; ++i)
 			{
-				for (int j = 0; j < _jointCount; ++j)
+				for (int j = 0; j < JointCount; ++j)
 				{
-					_joints[j].SolveVelocityConstraints(step);
+					Joints[j].SolveVelocityConstraints(step);
 				}
 				contactSolver.SolveVelocityConstraints();
 			}
@@ -316,9 +316,9 @@ namespace Alis.Core.Physic.Dynamics
 			contactSolver.FinalizeVelocityConstraints();
 
 			// Integrate positions.
-			for (int i = 0; i < _bodyCount; ++i)
+			for (int i = 0; i < BodyCount; ++i)
 			{
-				Body b = _bodies[i];
+				Body b = Bodies[i];
 
 				if (b.IsStatic())
 					continue;
@@ -328,7 +328,7 @@ namespace Alis.Core.Physic.Dynamics
 				if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
 				{
 					translation.Normalize();
-					b._linearVelocity = (Settings.MaxTranslation * step.Inv_Dt) * translation;
+					b._linearVelocity = (Settings.MaxTranslation * step.InvDt) * translation;
 				}
 
 				float rotation = step.Dt * b._angularVelocity;
@@ -336,11 +336,11 @@ namespace Alis.Core.Physic.Dynamics
 				{
 					if (rotation < 0.0)
 					{
-						b._angularVelocity = -step.Inv_Dt * Settings.MaxRotation;
+						b._angularVelocity = -step.InvDt * Settings.MaxRotation;
 					}
 					else
 					{
-						b._angularVelocity = step.Inv_Dt * Settings.MaxRotation;
+						b._angularVelocity = step.InvDt * Settings.MaxRotation;
 					}
 				}
 
@@ -364,9 +364,9 @@ namespace Alis.Core.Physic.Dynamics
 				bool contactsOkay = contactSolver.SolvePositionConstraints(Settings.ContactBaumgarte);
 
 				bool jointsOkay = true;
-				for (int j = 0; j < _jointCount; ++j)
+				for (int j = 0; j < JointCount; ++j)
 				{
-					bool jointOkay = _joints[j].SolvePositionConstraints(Settings.ContactBaumgarte);
+					bool jointOkay = Joints[j].SolvePositionConstraints(Settings.ContactBaumgarte);
 					jointsOkay = jointsOkay && jointOkay;
 				}
 
@@ -388,9 +388,9 @@ namespace Alis.Core.Physic.Dynamics
 				float angTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
 #endif
 
-				for (int i = 0; i < _bodyCount; ++i)
+				for (int i = 0; i < BodyCount; ++i)
 				{
-					Body b = _bodies[i];
+					Body b = Bodies[i];
 					if (b._invMass == 0.0f)
 					{
 						continue;
@@ -424,9 +424,9 @@ namespace Alis.Core.Physic.Dynamics
 
 				if (minSleepTime >= Settings.TimeToSleep)
 				{
-					for (int i = 0; i < _bodyCount; ++i)
+					for (int i = 0; i < BodyCount; ++i)
 					{
-						Body b = _bodies[i];
+						Body b = Bodies[i];
 						b._flags |= Body.BodyFlags.Sleep;
 						b._linearVelocity = Vec2.Zero;
 						b._angularVelocity = 0.0f;
@@ -439,27 +439,27 @@ namespace Alis.Core.Physic.Dynamics
 		/// Solves the toi using the specified sub step
 		/// </summary>
 		/// <param name="subStep">The sub step</param>
-		public void SolveTOI(ref TimeStep subStep)
+		public void SolveToi(ref TimeStep subStep)
 		{
-			ContactSolver contactSolver = new ContactSolver(subStep, _contacts, _contactCount);
+			ContactSolver contactSolver = new ContactSolver(subStep, Contacts, ContactCount);
 
 			// No warm starting is needed for TOI events because warm
 			// starting impulses were applied in the discrete solver.
 
 			// Warm starting for joints is off for now, but we need to
 			// call this function to compute Jacobians.
-			for (int i = 0; i < _jointCount; ++i)
+			for (int i = 0; i < JointCount; ++i)
 			{
-				_joints[i].InitVelocityConstraints(subStep);
+				Joints[i].InitVelocityConstraints(subStep);
 			}
 
 			// Solve velocity constraints.
 			for (int i = 0; i < subStep.VelocityIterations; ++i)
 			{
 				contactSolver.SolveVelocityConstraints();
-				for (int j = 0; j < _jointCount; ++j)
+				for (int j = 0; j < JointCount; ++j)
 				{
-					_joints[j].SolveVelocityConstraints(subStep);
+					Joints[j].SolveVelocityConstraints(subStep);
 				}
 			}
 
@@ -467,9 +467,9 @@ namespace Alis.Core.Physic.Dynamics
 			// because they can be quite large.
 
 			// Integrate positions.
-			for (int i = 0; i < _bodyCount; ++i)
+			for (int i = 0; i < BodyCount; ++i)
 			{
-				Body b = _bodies[i];
+				Body b = Bodies[i];
 
 				if (b.IsStatic())
 					continue;
@@ -479,7 +479,7 @@ namespace Alis.Core.Physic.Dynamics
 				if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
 				{
 					translation.Normalize();
-					b._linearVelocity = (Settings.MaxTranslation * subStep.Inv_Dt) * translation;
+					b._linearVelocity = (Settings.MaxTranslation * subStep.InvDt) * translation;
 				}
 
 				float rotation = subStep.Dt * b._angularVelocity;
@@ -487,11 +487,11 @@ namespace Alis.Core.Physic.Dynamics
 				{
 					if (rotation < 0.0)
 					{
-						b._angularVelocity = -subStep.Inv_Dt * Settings.MaxRotation;
+						b._angularVelocity = -subStep.InvDt * Settings.MaxRotation;
 					}
 					else
 					{
-						b._angularVelocity = subStep.Inv_Dt * Settings.MaxRotation;
+						b._angularVelocity = subStep.InvDt * Settings.MaxRotation;
 					}
 				}
 
@@ -510,14 +510,14 @@ namespace Alis.Core.Physic.Dynamics
 			}
 
 			// Solve position constraints.
-			const float k_toiBaumgarte = 0.75f;
+			const float kToiBaumgarte = 0.75f;
 			for (int i = 0; i < subStep.PositionIterations; ++i)
 			{
-				bool contactsOkay = contactSolver.SolvePositionConstraints(k_toiBaumgarte);
+				bool contactsOkay = contactSolver.SolvePositionConstraints(kToiBaumgarte);
 				bool jointsOkay = true;
-				for (int j = 0; j < _jointCount; ++j)
+				for (int j = 0; j < JointCount; ++j)
 				{
-					bool jointOkay = _joints[j].SolvePositionConstraints(k_toiBaumgarte);
+					bool jointOkay = Joints[j].SolvePositionConstraints(kToiBaumgarte);
 					jointsOkay = jointsOkay && jointOkay;
 				}
 
@@ -536,9 +536,9 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="body">The body</param>
 		public void Add(Body body)
 		{
-			Box2DXDebug.Assert(_bodyCount < _bodyCapacity);
-			body._islandIndex = _bodyCount;
-			_bodies[_bodyCount++] = body;
+			Box2DXDebug.Assert(BodyCount < BodyCapacity);
+			body._islandIndex = BodyCount;
+			Bodies[BodyCount++] = body;
 		}
 
 		/// <summary>
@@ -547,8 +547,8 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="contact">The contact</param>
 		public void Add(Contact contact)
 		{
-			Box2DXDebug.Assert(_contactCount < _contactCapacity);
-			_contacts[_contactCount++] = contact;
+			Box2DXDebug.Assert(ContactCount < ContactCapacity);
+			Contacts[ContactCount++] = contact;
 		}
 
 		/// <summary>
@@ -557,8 +557,8 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="joint">The joint</param>
 		public void Add(Joint joint)
 		{
-			Box2DXDebug.Assert(_jointCount < _jointCapacity);
-			_joints[_jointCount++] = joint;
+			Box2DXDebug.Assert(JointCount < JointCapacity);
+			Joints[JointCount++] = joint;
 		}
 
 		/// <summary>
@@ -567,14 +567,14 @@ namespace Alis.Core.Physic.Dynamics
 		/// <param name="constraints">The constraints</param>
 		public void Report(ContactConstraint[] constraints)
 		{
-			if (_listener == null)
+			if (Listener == null)
 			{
 				return;
 			}
 
-			for (int i = 0; i < _contactCount; ++i)
+			for (int i = 0; i < ContactCount; ++i)
 			{
-				Contact c = _contacts[i];
+				Contact c = Contacts[i];
 				ContactConstraint cc = constraints[i];
 				ContactImpulse impulse = new ContactImpulse();
 				for (int j = 0; j < cc.PointCount; ++j)
@@ -583,7 +583,7 @@ namespace Alis.Core.Physic.Dynamics
 					impulse.tangentImpulses[j] = cc.Points[j].TangentImpulse;
 				}
 
-				_listener.PostSolve(c, impulse);
+				Listener.PostSolve(c, impulse);
 			}
 		}
 	}
