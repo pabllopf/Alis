@@ -79,9 +79,19 @@ namespace Alis.Core.Physic.Common
 			return x;
 		}
 
-		/// <summary>
-		/// The col
-		/// </summary>
-		public Vec3 Col1, Col2, Col3;
-	}
+        /// <summary>
+        /// The col
+        /// </summary>
+        public Vec3 Col1 { get; set; }
+
+        /// <summary>
+        /// The col
+        /// </summary>
+        public Vec3 Col2 { get; set; }
+
+        /// <summary>
+        /// The col
+        /// </summary>
+        public Vec3 Col3 { get; set; }
+    }
 }

@@ -510,8 +510,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				float k12 = i1 * _s1 * _a1 + i2 * _s2 * _a2;
 				float k22 = m1 + m2 + i1 * _a1 * _a1 + i2 * _a2 * _a2;
 
-				_K.Col1.Set(k11, k12);
-				_K.Col2.Set(k12, k22);
+				_K.col1.Set(k11, k12);
+				_K.col2.Set(k12, k22);
 			}
 
 			// Compute motor and limit terms.
@@ -634,8 +634,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				}
 
 				// f2(1) = invK(1,1) * (-Cdot(1) - K(1,2) * (f2(2) - f1(2))) + f1(1)
-				float b = -Cdot1 - (_impulse.Y - f1.Y) * _K.Col2.X;
-				float f2r = b / _K.Col1.X + f1.X;
+				float b = -Cdot1 - (_impulse.Y - f1.Y) * _K.col2.X;
+				float f2r = b / _K.col1.X + f1.X;
 				_impulse.X = f2r;
 
 				df = _impulse - f1;
@@ -653,7 +653,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			else
 			{
 				// Limit is inactive, just solve the prismatic constraint in block form.
-				float df = (-Cdot1) / _K.Col1.X;
+				float df = (-Cdot1) / _K.col1.X;
 				_impulse.X += df;
 
 				Vec2 P = df * _perp;
@@ -752,8 +752,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				float k12 = i1 * _s1 * _a1 + i2 * _s2 * _a2;
 				float k22 = m1 + m2 + i1 * _a1 * _a1 + i2 * _a2 * _a2;
 
-				_K.Col1.Set(k11, k12);
-				_K.Col2.Set(k12, k22);
+				_K.col1.Set(k11, k12);
+				_K.col2.Set(k12, k22);
 
 				Vec2 C = new Vec2();
 				C.X = C1;

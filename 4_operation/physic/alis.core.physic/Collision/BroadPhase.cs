@@ -100,9 +100,9 @@ namespace Alis.Core.Physic.Collision
 		public Bound Clone()
 		{
 			Bound newBound = new Bound();
-			newBound.Value = this.Value;
-			newBound.ProxyId = this.ProxyId;
-			newBound.StabbingCount = this.StabbingCount;
+			newBound.Value = Value;
+			newBound.ProxyId = ProxyId;
+			newBound.StabbingCount = StabbingCount;
 			return newBound;
 		}
 	}
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Collision
 		/// <summary>
 		/// The ushrt max
 		/// </summary>
-		public static readonly ushort BROADPHASE_MAX = Common.Math.USHRT_MAX;
+		public static readonly ushort BROADPHASE_MAX = Math.USHRT_MAX;
 #endif
 
 		/// <summary>
@@ -244,13 +244,13 @@ namespace Alis.Core.Physic.Collision
 				_proxyPool[i] = new Proxy();
 				_proxyPool[i].Next = (ushort)(i + 1);
 				_proxyPool[i].TimeStamp = 0;
-				_proxyPool[i].OverlapCount = BroadPhase.Invalid;
+				_proxyPool[i].OverlapCount = Invalid;
 				_proxyPool[i].UserData = null;
 			}
 			_proxyPool[Settings.MaxProxies - 1] = new Proxy();
 			_proxyPool[Settings.MaxProxies - 1].Next = PairManager.NullProxy;
 			_proxyPool[Settings.MaxProxies - 1].TimeStamp = 0;
-			_proxyPool[Settings.MaxProxies - 1].OverlapCount = BroadPhase.Invalid;
+			_proxyPool[Settings.MaxProxies - 1].OverlapCount = Invalid;
 			_proxyPool[Settings.MaxProxies - 1].UserData = null;
 			_freeProxy = 0;
 
@@ -278,8 +278,8 @@ namespace Alis.Core.Physic.Collision
 		/// <returns>The bool</returns>
 		public bool InRange(AABB aabb)
 		{
-			Vec2 d = Common.Math.Max(aabb.LowerBound - _worldAABB.UpperBound, _worldAABB.LowerBound - aabb.UpperBound);
-			return Common.Math.Max(d.X, d.Y) < 0.0f;
+			Vec2 d = Math.Max(aabb.LowerBound - _worldAABB.UpperBound, _worldAABB.LowerBound - aabb.UpperBound);
+			return Math.Max(d.X, d.Y) < 0.0f;
 		}
 
 		// Create and destroy proxies. These call Flush first.
@@ -479,11 +479,11 @@ namespace Alis.Core.Physic.Collision
 
 			// Return the proxy to the pool.
 			proxy.UserData = null;
-			proxy.OverlapCount = BroadPhase.Invalid;
-			proxy.LowerBounds[0] = BroadPhase.Invalid;
-			proxy.LowerBounds[1] = BroadPhase.Invalid;
-			proxy.UpperBounds[0] = BroadPhase.Invalid;
-			proxy.UpperBounds[1] = BroadPhase.Invalid;
+			proxy.OverlapCount = Invalid;
+			proxy.LowerBounds[0] = Invalid;
+			proxy.LowerBounds[1] = Invalid;
+			proxy.UpperBounds[0] = Invalid;
+			proxy.UpperBounds[1] = Invalid;
 
 			proxy.Next = _freeProxy;
 			_freeProxy = (ushort)proxyId;
@@ -583,7 +583,7 @@ namespace Alis.Core.Physic.Collision
 						}
 
 						--proxy.LowerBounds[axis];
-						Common.Math.Swap<Bound>(ref bounds[index], ref bounds[index - 1]);
+						Math.Swap<Bound>(ref bounds[index], ref bounds[index - 1]);
 						--index;
 					}
 				}
@@ -618,7 +618,7 @@ namespace Alis.Core.Physic.Collision
 						}
 
 						++proxy.UpperBounds[axis];
-						Common.Math.Swap<Bound>(ref bounds[index], ref bounds[index + 1]);
+						Math.Swap<Bound>(ref bounds[index], ref bounds[index + 1]);
 						++index;
 					}
 				}
@@ -658,7 +658,7 @@ namespace Alis.Core.Physic.Collision
 						}
 
 						++proxy.LowerBounds[axis];
-						Common.Math.Swap<Bound>(ref bounds[index], ref bounds[index + 1]);
+						Math.Swap<Bound>(ref bounds[index], ref bounds[index + 1]);
 						++index;
 					}
 				}
@@ -694,7 +694,7 @@ namespace Alis.Core.Physic.Collision
 						}
 
 						--proxy.UpperBounds[axis];
-						Common.Math.Swap<Bound>(ref bounds[index], ref bounds[index - 1]);
+						Math.Swap<Bound>(ref bounds[index], ref bounds[index - 1]);
 						--index;
 					}
 				}
@@ -1108,8 +1108,8 @@ namespace Alis.Core.Physic.Collision
 			Box2DXDebug.Assert(aabb.UpperBound.X >= aabb.LowerBound.X);
 			Box2DXDebug.Assert(aabb.UpperBound.Y >= aabb.LowerBound.Y);
 
-			Vec2 minVertex = Common.Math.Clamp(aabb.LowerBound, _worldAABB.LowerBound, _worldAABB.UpperBound);
-			Vec2 maxVertex = Common.Math.Clamp(aabb.UpperBound, _worldAABB.LowerBound, _worldAABB.UpperBound);
+			Vec2 minVertex = Math.Clamp(aabb.LowerBound, _worldAABB.LowerBound, _worldAABB.UpperBound);
+			Vec2 maxVertex = Math.Clamp(aabb.UpperBound, _worldAABB.LowerBound, _worldAABB.UpperBound);
 
 			// Bump lower bounds downs and upper bounds up. This ensures correct sorting of
 			// lower/upper bounds that would have equal values.

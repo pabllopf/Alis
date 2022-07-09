@@ -1512,51 +1512,6 @@
             </summary>
             <seealso cref="T:Alis.Core.Physic.Collision.Shapes.Shape"/>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._v1">
-            <summary>
-            The 
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._v2">
-            <summary>
-            The 
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._length">
-            <summary>
-            The length
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._normal">
-            <summary>
-            The normal
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._direction">
-            <summary>
-            The direction
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._cornerDir1">
-            <summary>
-            The corner dir
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._cornerDir2">
-            <summary>
-            The corner dir
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._cornerConvex1">
-            <summary>
-            The corner convex
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._cornerConvex2">
-            <summary>
-            The corner convex
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collision.Shapes.EdgeShape._nextEdge">
             <summary>
             The next edge
@@ -2036,12 +1991,12 @@
             A 2-by-2 matrix. Stored in column-major order.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Mat22.Col1">
+        <member name="F:Alis.Core.Physic.Common.Mat22.col1">
             <summary>
             The col
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Mat22.Col2">
+        <member name="F:Alis.Core.Physic.Common.Mat22.col2">
             <summary>
             The col
             </summary>
@@ -2140,17 +2095,17 @@
             2-by-2 matrix equation.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Mat33.Col1">
+        <member name="P:Alis.Core.Physic.Common.Mat33.Col1">
             <summary>
             The col
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Mat33.Col2">
+        <member name="P:Alis.Core.Physic.Common.Mat33.Col2">
             <summary>
             The col
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Mat33.Col3">
+        <member name="P:Alis.Core.Physic.Common.Mat33.Col3">
             <summary>
             The col
             </summary>
@@ -2889,12 +2844,12 @@
             It is used to represent the position and orientation of rigid frames.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.XForm.Position">
+        <member name="P:Alis.Core.Physic.Common.XForm.Position">
             <summary>
             The position
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.XForm.R">
+        <member name="P:Alis.Core.Physic.Common.XForm.R">
             <summary>
             The 
             </summary>
@@ -6097,40 +6052,6 @@
             <param name="baumgarte">The baumgarte</param>
             <returns>The bool</returns>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Joints.MouseJointDef">
-            <summary>
-            Mouse joint definition. This requires a world target point,
-            tuning parameters, and the time step.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.MouseJointDef"/> class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.Target">
-            <summary>
-            The initial world target point. This is assumed
-            to coincide with the body anchor initially.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.MaxForce">
-            <summary>
-            The maximum constraint force that can be exerted
-            to move the candidate body. Usually you will express
-            as some multiple of the weight (multiplier * mass * gravity).
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.FrequencyHz">
-            <summary>
-            The response speed.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.DampingRatio">
-            <summary>
-            The damping ratio. 0 = no damping, 1 = critical damping.
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Dynamics.Joints.MouseJoint">
             <summary>
             A mouse joint is used to make a point on a body track a
@@ -6242,6 +6163,40 @@
             </summary>
             <param name="baumgarte">The baumgarte</param>
             <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Physic.Dynamics.Joints.MouseJointDef">
+            <summary>
+            Mouse joint definition. This requires a world target point,
+            tuning parameters, and the time step.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.MouseJointDef"/> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.Target">
+            <summary>
+            The initial world target point. This is assumed
+            to coincide with the body anchor initially.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.MaxForce">
+            <summary>
+            The maximum constraint force that can be exerted
+            to move the candidate body. Usually you will express
+            as some multiple of the weight (multiplier * mass * gravity).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.FrequencyHz">
+            <summary>
+            The response speed.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MouseJointDef.DampingRatio">
+            <summary>
+            The damping ratio. 0 = no damping, 1 = critical damping.
+            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef">
             <summary>

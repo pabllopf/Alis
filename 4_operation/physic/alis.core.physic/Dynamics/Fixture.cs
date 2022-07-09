@@ -439,11 +439,9 @@ namespace Alis.Core.Physic.Dynamics
 				broadPhase.MoveProxy(_proxyId, aabb);
 				return true;
 			}
-			else
-			{
-				return false;
-			}
-		}
+
+            return false;
+        }
 
 		/// <summary>
 		/// Refilters the proxy using the specified broad phase

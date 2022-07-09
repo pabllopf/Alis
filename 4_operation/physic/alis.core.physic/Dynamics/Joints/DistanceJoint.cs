@@ -211,8 +211,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Body b2 = _body2;
 
 			// Compute the effective mass matrix.
-			Vec2 r1 = Common.Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Common.Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+			Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
 			_u = b2._sweep.C + r2 - b1._sweep.C - r1;
 
 			// Handle singularity.
@@ -284,14 +284,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Body b1 = _body1;
 			Body b2 = _body2;
 
-			Vec2 r1 = Common.Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Common.Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+			Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
 
 			Vec2 d = b2._sweep.C + r2 - b1._sweep.C - r1;
 
 			float length = d.Normalize();
 			float C = length - _length;
-			C = Common.Math.Clamp(C, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+			C = Math.Clamp(C, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
 
 			float impulse = -_mass * C;
 			_u = d;
@@ -319,8 +319,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			Body b1 = _body1;
 			Body b2 = _body2;
 
-			Vec2 r1 = Common.Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-			Vec2 r2 = Common.Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+			Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
+			Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
 
 			// Cdot = dot(u, v + cross(w, r))
 			Vec2 v1 = b1._linearVelocity + Vec2.Cross(b1._angularVelocity, r1);

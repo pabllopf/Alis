@@ -29,52 +29,11 @@ namespace Alis.Core.Physic.Collision.Shapes
 	/// <seealso cref="Shape"/>
 	public class EdgeShape : Shape
 	{
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Vec2 _v1;
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Vec2 _v2;
+        // Unit vector halfway between m_direction and m_prevEdge.m_direction:
 
-		/// <summary>
-		/// The length
-		/// </summary>
-		public float _length;
+        // Unit vector halfway between m_direction and m_nextEdge.m_direction:
 
-		/// <summary>
-		/// The normal
-		/// </summary>
-		public Vec2 _normal;
-
-		/// <summary>
-		/// The direction
-		/// </summary>
-		public Vec2 _direction;
-
-		// Unit vector halfway between m_direction and m_prevEdge.m_direction:
-		/// <summary>
-		/// The corner dir
-		/// </summary>
-		public Vec2 _cornerDir1;
-
-		// Unit vector halfway between m_direction and m_nextEdge.m_direction:
-		/// <summary>
-		/// The corner dir
-		/// </summary>
-		public Vec2 _cornerDir2;
-
-		/// <summary>
-		/// The corner convex
-		/// </summary>
-		public bool _cornerConvex1;
-		/// <summary>
-		/// The corner convex
-		/// </summary>
-		public bool _cornerConvex2;
-
-		/// <summary>
+        /// <summary>
 		/// The next edge
 		/// </summary>
 		public EdgeShape _nextEdge;
@@ -115,15 +74,15 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <param name="v2">The </param>
 		public void Set(Vec2 v1, Vec2 v2)
 		{
-			_v1 = v1;
-			_v2 = v2;
+			Vertex1 = v1;
+			Vertex2 = v2;
 
-			_direction = _v2 - _v1;
-			_length = _direction.Normalize();
-			_normal = Vec2.Cross(_direction, 1.0f);
+			DirectionVector = Vertex2 - Vertex1;
+			Length = DirectionVector.Normalize();
+			NormalVector = Vec2.Cross(DirectionVector, 1.0f);
 
-			_cornerDir1 = _normal;
-			_cornerDir2 = -1.0f * _normal;
+			Corner1Vector = NormalVector;
+			Corner2Vector = -1.0f * NormalVector;
 		}
 
 		/// <summary>
@@ -132,12 +91,9 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <param name="transform">The transform</param>
 		/// <param name="p">The </param>
 		/// <returns>The bool</returns>
-		public override bool TestPoint(XForm transform, Vec2 p)
-		{
-			return false;
-		}
+		public override bool TestPoint(XForm transform, Vec2 p) => false;
 
-		/// <summary>
+        /// <summary>
 		/// Tests the segment using the specified transform
 		/// </summary>
 		/// <param name="transform">The transform</param>
@@ -149,11 +105,11 @@ namespace Alis.Core.Physic.Collision.Shapes
 		public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vec2 normal, Segment segment, float maxLambda)
 		{
 			Vec2 r = segment.P2 - segment.P1;
-			Vec2 v1 = Common.Math.Mul(transform, _v1);
-			Vec2 d = Common.Math.Mul(transform, _v2) - v1;
+			Vec2 v1 = Math.Mul(transform, Vertex1);
+			Vec2 d = Math.Mul(transform, Vertex2) - v1;
 			Vec2 n = Vec2.Cross(d, 1.0f);
 
-			float k_slop = 100.0f * Common.Settings.FLT_EPSILON;
+			float k_slop = 100.0f * Settings.FLT_EPSILON;
 			float denom = -Vec2.Dot(r, n);
 
 			// Cull back facing collision and ignore parallel segments.
@@ -191,12 +147,12 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <param name="transform">The transform</param>
 		public override void ComputeAABB(out AABB aabb, XForm transform)
 		{
-			Vec2 v1 = Common.Math.Mul(transform, _v1);
-			Vec2 v2 = Common.Math.Mul(transform, _v2);
+			Vec2 v1 = Math.Mul(transform, Vertex1);
+			Vec2 v2 = Math.Mul(transform, Vertex2);
 
 			Vec2 r = new Vec2(_radius, _radius);
-			aabb.LowerBound = Common.Math.Min(v1, v2) - r;
-			aabb.UpperBound = Common.Math.Max(v1, v2) + r;
+			aabb.LowerBound = Math.Min(v1, v2) - r;
+			aabb.UpperBound = Math.Max(v1, v2) + r;
 		}
 
 		/// <summary>
@@ -207,7 +163,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		public override void ComputeMass(out MassData massData, float density)
 		{
 			massData.Mass = 0.0f;
-			massData.Center = _v1;
+			massData.Center = Vertex1;
 			massData.I = 0.0f;
 		}
 
@@ -220,8 +176,8 @@ namespace Alis.Core.Physic.Collision.Shapes
 		public void SetPrevEdge(EdgeShape edge, Vec2 cornerDir, bool convex)
 		{
 			_prevEdge = edge;
-			_cornerDir1 = cornerDir;
-			_cornerConvex1 = convex;
+			Corner1Vector = cornerDir;
+			Corner1IsConvex = convex;
 		}
 
 		/// <summary>
@@ -233,8 +189,8 @@ namespace Alis.Core.Physic.Collision.Shapes
 		public void SetNextEdge(EdgeShape edge, Vec2 cornerDir, bool convex)
 		{
 			_nextEdge = edge;
-			_cornerDir2 = cornerDir;
-			_cornerConvex2 = convex;
+			Corner2Vector = cornerDir;
+			Corner2IsConvex = convex;
 		}
 
 		/// <summary>
@@ -252,35 +208,29 @@ namespace Alis.Core.Physic.Collision.Shapes
 			Vec2 v0 = offset * normal;
 			//b2Vec2 v0 = xf.position + (offset - b2Dot(normal, xf.position)) * normal;
 
-			Vec2 v1 = Common.Math.Mul(xf, _v1);
-			Vec2 v2 = Common.Math.Mul(xf, _v2);
+			Vec2 v1 = Math.Mul(xf, Vertex1);
+			Vec2 v2 = Math.Mul(xf, Vertex2);
 
 			float d1 = Vec2.Dot(normal, v1) - offset;
 			float d2 = Vec2.Dot(normal, v2) - offset;
 
 			if (d1 > 0.0f)
-			{
-				if (d2 > 0.0f)
+            {
+                if (d2 > 0.0f)
 				{
 					c = new Vec2();
 					return 0.0f;
 				}
-				else
-				{
-					v1 = -d2 / (d1 - d2) * v1 + d1 / (d1 - d2) * v2;
-				}
-			}
+
+                v1 = -d2 / (d1 - d2) * v1 + d1 / (d1 - d2) * v2;
+            }
 			else
 			{
 				if (d2 > 0.0f)
 				{
 					v2 = -d2 / (d1 - d2) * v1 + d1 / (d1 - d2) * v2;
 				}
-				else
-				{
-					//Nothing
-				}
-			}
+            }
 
 			// v0,v1,v2 represents a fully submerged triangle
 			float k_inv3 = 1.0f / 3.0f;
@@ -297,80 +247,53 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <summary>
 		/// Gets the value of the length
 		/// </summary>
-		public float Length
-		{
-			get { return _length; }
-		}
+		public float Length { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the vertex 1
 		/// </summary>
-		public Vec2 Vertex1
-		{
-			get { return _v1; }
-		}
+		public Vec2 Vertex1 { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the vertex 2
 		/// </summary>
-		public Vec2 Vertex2
-		{
-			get { return _v2; }
-		}
+		public Vec2 Vertex2 { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the normal vector
 		/// </summary>
-		public Vec2 NormalVector
-		{
-			get { return _normal; }
-		}
+		public Vec2 NormalVector { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the direction vector
 		/// </summary>
-		public Vec2 DirectionVector
-		{
-			get { return _direction; }
-		}
+		public Vec2 DirectionVector { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the corner 1 vector
 		/// </summary>
-		public Vec2 Corner1Vector
-		{
-			get { return _cornerDir1; }
-		}
+		public Vec2 Corner1Vector { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the corner 2 vector
 		/// </summary>
-		public Vec2 Corner2Vector
-		{
-			get { return _cornerDir2; }
-		}
+		public Vec2 Corner2Vector { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the support using the specified d
 		/// </summary>
 		/// <param name="d">The </param>
 		/// <returns>The int</returns>
-		public override int GetSupport(Vec2 d)
-		{
-			return Vec2.Dot(_v1, d) > Vec2.Dot(_v2, d) ? 0 : 1;
-		}
+		public override int GetSupport(Vec2 d) => Vec2.Dot(Vertex1, d) > Vec2.Dot(Vertex2, d) ? 0 : 1;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the support vertex using the specified d
 		/// </summary>
 		/// <param name="d">The </param>
 		/// <returns>The vec</returns>
-		public override Vec2 GetSupportVertex(Vec2 d)
-		{
-			return Vec2.Dot(_v1, d) > Vec2.Dot(_v2, d) ? _v1 : _v2;
-		}
+		public override Vec2 GetSupportVertex(Vec2 d) => Vec2.Dot(Vertex1, d) > Vec2.Dot(Vertex2, d) ? Vertex1 : Vertex2;
 
-		/// <summary>
+        /// <summary>
 		/// Gets the vertex using the specified index
 		/// </summary>
 		/// <param name="index">The index</param>
@@ -378,36 +301,29 @@ namespace Alis.Core.Physic.Collision.Shapes
 		public override Vec2 GetVertex(int index)
 		{
 			Box2DXDebug.Assert(0 <= index && index < 2);
-			if (index == 0) return _v1;
-			else return _v2;
-		}
+			return index == 0 ? Vertex1 : Vertex2;
+        }
 
 		/// <summary>
 		/// Gets the value of the corner 1 is convex
 		/// </summary>
-		public bool Corner1IsConvex
-		{
-			get { return _cornerConvex1; }
-		}
+		public bool Corner1IsConvex { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the corner 2 is convex
 		/// </summary>
-		public bool Corner2IsConvex
-		{
-			get { return _cornerConvex2; }
-		}
+		public bool Corner2IsConvex { get; set; }
 
-		/// <summary>
+        /// <summary>
 		/// Computes the sweep radius using the specified pivot
 		/// </summary>
 		/// <param name="pivot">The pivot</param>
 		/// <returns>The float</returns>
 		public override float ComputeSweepRadius(Vec2 pivot)
 		{
-			float ds1 = Vec2.DistanceSquared(_v1, pivot);
-			float ds2 = Vec2.DistanceSquared(_v2, pivot);
-			return Common.Math.Sqrt(Common.Math.Max(ds1, ds2));
+			float ds1 = Vec2.DistanceSquared(Vertex1, pivot);
+			float ds2 = Vec2.DistanceSquared(Vertex2, pivot);
+			return Math.Sqrt(Math.Max(ds1, ds2));
 		}
 	}
 }

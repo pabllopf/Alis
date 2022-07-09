@@ -160,8 +160,8 @@ namespace Alis.Core.Physic.Collision.Shapes
 			// Transform vertices and normals.
 			for (int i = 0; i < _vertexCount; ++i)
 			{
-				_vertices[i] = Common.Math.Mul(xf, _vertices[i]);
-				_normals[i] = Common.Math.Mul(xf.R, _normals[i]);
+				_vertices[i] = Math.Mul(xf, _vertices[i]);
+				_normals[i] = Math.Mul(xf.R, _normals[i]);
 			}
 		}
 
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <returns>The bool</returns>
 		public override bool TestPoint(XForm xf, Vec2 p)
 		{
-			Vec2 pLocal = Common.Math.MulT(xf.R, p - xf.Position);
+			Vec2 pLocal = Math.MulT(xf.R, p - xf.Position);
 
 			int vc = _vertexCount;
 			for (int i = 0; i < vc; ++i)
@@ -220,8 +220,8 @@ namespace Alis.Core.Physic.Collision.Shapes
 
 			float lower = 0.0f, upper = maxLambda;
 
-			Vec2 p1 = Common.Math.MulT(xf.R, segment.P1 - xf.Position);
-			Vec2 p2 = Common.Math.MulT(xf.R, segment.P2 - xf.Position);
+			Vec2 p1 = Math.MulT(xf.R, segment.P1 - xf.Position);
+			Vec2 p2 = Math.MulT(xf.R, segment.P2 - xf.Position);
 			Vec2 d = p2 - p1;
 			int index = -1;
 
@@ -272,7 +272,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			if (index >= 0)
 			{
 				lambda = lower;
-				normal = Common.Math.Mul(xf.R, _normals[index]);
+				normal = Math.Mul(xf.R, _normals[index]);
 				return SegmentCollide.HitCollide;
 			}
 
@@ -287,14 +287,14 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <param name="xf">The xf</param>
 		public override void ComputeAABB(out AABB aabb, XForm xf)
 		{
-			Vec2 lower = Common.Math.Mul(xf, _vertices[0]);
+			Vec2 lower = Math.Mul(xf, _vertices[0]);
 			Vec2 upper = lower;
 
 			for (int i = 1; i < _vertexCount; ++i)
 			{
-				Vec2 v = Common.Math.Mul(xf, _vertices[i]);
-				lower = Common.Math.Min(lower, v);
-				upper = Common.Math.Max(upper, v);
+				Vec2 v = Math.Mul(xf, _vertices[i]);
+				lower = Math.Min(lower, v);
+				upper = Math.Max(upper, v);
 			}
 
 			Vec2 r = new Vec2(_radius);
@@ -386,7 +386,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			massData.Mass = denstity * area;
 
 			// Center of mass
-			Box2DXDebug.Assert(area > Common.Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(area > Settings.FLT_EPSILON);
 			center *= 1.0f / area;
 			massData.Center = center;
 
@@ -408,7 +408,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			Vec2 normalL = Math.MulT(xf.R, normal);
 			float offsetL = offset - Vec2.Dot(normal, xf.Position);
 
-			float[] depths = new float[Common.Settings.MaxPolygonVertices];
+			float[] depths = new float[Settings.MaxPolygonVertices];
 			int diveCount = 0;
 			int intoIndex = -1;
 			int outoIndex = -1;
@@ -418,7 +418,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			for (i = 0; i < _vertexCount; i++)
 			{
 				depths[i] = Vec2.Dot(normalL, _vertices[i]) - offsetL;
-				bool isSubmerged = depths[i] < -Common.Settings.FLT_EPSILON;
+				bool isSubmerged = depths[i] < -Settings.FLT_EPSILON;
 				if (i > 0)
 				{
 					if (isSubmerged)
@@ -448,16 +448,14 @@ namespace Alis.Core.Physic.Collision.Shapes
 						//Completely submerged
 						MassData md;
 						ComputeMass(out md, 1f);
-						c = Common.Math.Mul(xf, md.Center);
+						c = Math.Mul(xf, md.Center);
 						return md.Mass;
 					}
-					else
-					{
-						// Completely dry
-						// TODO: Shouldn't return break only?
-						c = new Vec2();
-						return 0;
-					}
+
+                    // Completely dry
+                    // TODO: Shouldn't return break only?
+                    c = new Vec2();
+                    return 0;
                 case 1:
 					if (intoIndex == -1)
 					{
@@ -519,7 +517,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			//Normalize and transform centroid
 			center *= 1.0f / area;
 
-			c = Common.Math.Mul(xf, center);
+			c = Math.Mul(xf, center);
 
 			return area;
 		}
@@ -536,10 +534,10 @@ namespace Alis.Core.Physic.Collision.Shapes
 			float sr = Vec2.DistanceSquared(_vertices[0], pivot);
 			for (int i = 1; i < vCount; ++i)
 			{
-				sr = Common.Math.Max(sr, Vec2.DistanceSquared(_vertices[i], pivot));
+				sr = Math.Max(sr, Vec2.DistanceSquared(_vertices[i], pivot));
 			}
 
-			return Common.Math.Sqrt(sr);
+			return Math.Sqrt(sr);
 		}
 
 		/// <summary>
@@ -642,7 +640,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			}
 
 			// Centroid
-			Box2DXDebug.Assert(area > Common.Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(area > Settings.FLT_EPSILON);
 			c *= 1.0f / area;
 			return c;
 		}

@@ -29,15 +29,20 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// The col
 		/// </summary>
-		public Vec2 Col1, Col2;
+		public Vec2 col1;
 
-		/// <summary>
+        /// <summary>
+        /// The col
+        /// </summary>
+        public Vec2 col2;
+
+        /// <summary>
 		/// Construct this matrix using columns.
 		/// </summary>
 		public Mat22(Vec2 c1, Vec2 c2)
 		{
-			Col1 = c1;
-			Col2 = c2;
+			col1 = c1;
+			col2 = c2;
 		}
 
 		/// <summary>
@@ -45,8 +50,8 @@ namespace Alis.Core.Physic.Common
 		/// </summary>
 		public Mat22(float a11, float a12, float a21, float a22)
 		{
-			Col1.X = a11; Col1.Y = a21;
-			Col2.X = a12; Col2.Y = a22;
+			col1.X = a11; col1.Y = a21;
+			col2.X = a12; col2.Y = a22;
 		}
 
 		/// <summary>
@@ -56,8 +61,8 @@ namespace Alis.Core.Physic.Common
 		public Mat22(float angle)
 		{
 			float c = (float)System.Math.Cos(angle), s = (float)System.Math.Sin(angle);
-			Col1.X = c; Col2.X = -s;
-			Col1.Y = s; Col2.Y = c;
+			col1.X = c; col2.X = -s;
+			col1.Y = s; col2.Y = c;
 		}
 
 		/// <summary>
@@ -65,8 +70,8 @@ namespace Alis.Core.Physic.Common
 		/// </summary>
 		public void Set(Vec2 c1, Vec2 c2)
 		{
-			Col1 = c1;
-			Col2 = c2;
+			col1 = c1;
+			col2 = c2;
 		}
 
 		/// <summary>
@@ -76,8 +81,8 @@ namespace Alis.Core.Physic.Common
 		public void Set(float angle)
 		{
 			float c = (float)System.Math.Cos(angle), s = (float)System.Math.Sin(angle);
-			Col1.X = c; Col2.X = -s;
-			Col1.Y = s; Col2.Y = c;
+			col1.X = c; col2.X = -s;
+			col1.Y = s; col2.Y = c;
 		}
 
 		/// <summary>
@@ -85,8 +90,8 @@ namespace Alis.Core.Physic.Common
 		/// </summary>
 		public void SetIdentity()
 		{
-			Col1.X = 1.0f; Col2.X = 0.0f;
-			Col1.Y = 0.0f; Col2.Y = 1.0f;
+			col1.X = 1.0f; col2.X = 0.0f;
+			col1.Y = 0.0f; col2.Y = 1.0f;
 		}
 
 		/// <summary>
@@ -94,8 +99,8 @@ namespace Alis.Core.Physic.Common
 		/// </summary>
 		public void SetZero()
 		{
-			Col1.X = 0.0f; Col2.X = 0.0f;
-			Col1.Y = 0.0f; Col2.Y = 0.0f;
+			col1.X = 0.0f; col2.X = 0.0f;
+			col1.Y = 0.0f; col2.Y = 0.0f;
 		}
 
 		/// <summary>
@@ -103,7 +108,7 @@ namespace Alis.Core.Physic.Common
 		/// </summary>
 		public float GetAngle()
 		{
-			return (float)System.Math.Atan2(Col1.Y, Col1.X);
+			return (float)System.Math.Atan2(col1.Y, col1.X);
 		}
 
 		/// <summary>
@@ -111,13 +116,13 @@ namespace Alis.Core.Physic.Common
 		/// </summary>
 		public Mat22 GetInverse()
 		{
-			float a = Col1.X, b = Col2.X, c = Col1.Y, d = Col2.Y;
+			float a = col1.X, b = col2.X, c = col1.Y, d = col2.Y;
 			Mat22 B = new Mat22();
 			float det = a * d - b * c;
 			Box2DXDebug.Assert(det != 0.0f);
 			det = 1.0f / det;
-			B.Col1.X = det * d; B.Col2.X = -det * b;
-			B.Col1.Y = -det * c; B.Col2.Y = det * a;
+			B.col1.X = det * d; B.col2.X = -det * b;
+			B.col1.Y = -det * c; B.col2.Y = det * a;
 			return B;
 		}
 
@@ -127,7 +132,7 @@ namespace Alis.Core.Physic.Common
 		/// </summary>
 		public Vec2 Solve(Vec2 b)
 		{
-			float a11 = Col1.X, a12 = Col2.X, a21 = Col1.Y, a22 = Col2.Y;
+			float a11 = col1.X, a12 = col2.X, a21 = col1.Y, a22 = col2.Y;
 			float det = a11 * a22 - a12 * a21;
 			Box2DXDebug.Assert(det != 0.0f);
 			det = 1.0f / det;
@@ -151,7 +156,7 @@ namespace Alis.Core.Physic.Common
 		public static Mat22 operator +(Mat22 A, Mat22 B)
 		{
 			Mat22 C = new Mat22();
-			C.Set(A.Col1 + B.Col1, A.Col2 + B.Col2);
+			C.Set(A.col1 + B.col1, A.col2 + B.col2);
 			return C;
 		}
 	}

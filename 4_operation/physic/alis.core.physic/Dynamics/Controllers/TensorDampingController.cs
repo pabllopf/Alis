@@ -47,10 +47,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// Sets damping independantly along the x and y axes
         public void SetAxisAligned(float xDamping, float yDamping)
         {
-            T.Col1.X = -xDamping;
-            T.Col1.Y = 0;
-            T.Col2.X = 0;
-            T.Col2.Y = -yDamping;
+            T.col1.X = -xDamping;
+            T.col1.Y = 0;
+            T.col2.X = 0;
+            T.col2.Y = -yDamping;
             if (xDamping > 0 || yDamping > 0)
             {
                 MaxTimestep = 1 / Math.Max(xDamping, yDamping);

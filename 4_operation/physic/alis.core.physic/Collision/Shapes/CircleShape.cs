@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <returns>The bool</returns>
 		public override bool TestPoint(XForm transform, Vec2 p)
 		{
-			Vec2 center = transform.Position + Common.Math.Mul(transform.R, _position);
+			Vec2 center = transform.Position + Math.Mul(transform.R, _position);
 			Vec2 d = p - center;
 			return Vec2.Dot(d, d) <= _radius * _radius;
 		}
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			lambda = 0f;
 			normal = Vec2.Zero;
 
-			Vec2 position = transform.Position + Common.Math.Mul(transform.R, _position);
+			Vec2 position = transform.Position + Math.Mul(transform.R, _position);
 			Vec2 s = segment.P1 - position;
 			float b = Vec2.Dot(s, s) - _radius * _radius;
 
@@ -91,13 +91,13 @@ namespace Alis.Core.Physic.Collision.Shapes
 			float sigma = c * c - rr * b;
 
 			// Check for negative discriminant and short segment.
-			if (sigma < 0.0f || rr < Common.Settings.FLT_EPSILON)
+			if (sigma < 0.0f || rr < Settings.FLT_EPSILON)
 			{
 				return SegmentCollide.MissCollide;
 			}
 
 			// Find the point of intersection of the line with the circle.
-			float a = -(c + Common.Math.Sqrt(sigma));
+			float a = -(c + Math.Sqrt(sigma));
 
 			// Is the intersection point on the segment?
 			if (0.0f <= a && a <= maxLambda * rr)
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		{
 			aabb = new AABB();
 
-			Vec2 p = transform.Position + Common.Math.Mul(transform.R, _position);
+			Vec2 p = transform.Position + Math.Mul(transform.R, _position);
 			aabb.LowerBound.Set(p.X - _radius, p.Y - _radius);
 			aabb.UpperBound.Set(p.X + _radius, p.Y + _radius);
 		}
@@ -210,14 +210,11 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="pivot">The pivot</param>
 		/// <returns>The float</returns>
-		public override float ComputeSweepRadius(Vec2 pivot)
-		{
-			return Vec2.Distance(_position, pivot);
-		}
+		public override float ComputeSweepRadius(Vec2 pivot) => Vec2.Distance(_position, pivot);
 
-		/// <summary>
+        /// <summary>
 		/// Get the vertex count.
 		/// </summary>
-		public int VertexCount { get { return 1; } }
-	}
+		public int VertexCount => 1;
+    }
 }

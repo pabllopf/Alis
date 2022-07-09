@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Common
 		public static Vec2 Abs(Vec2 a)
 		{
 			Vec2 b = new Vec2();
-			b.Set(Math.Abs(a.X), Math.Abs(a.Y));
+			b.Set(Abs(a.X), Abs(a.Y));
 			return b;
 		}
 
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Common
 		public static Mat22 Abs(Mat22 A)
 		{
 			Mat22 B = new Mat22();
-			B.Set(Math.Abs(A.Col1), Math.Abs(A.Col2));
+			B.Set(Abs(A.col1), Abs(A.col2));
 			return B;
 		}
 
@@ -212,8 +212,8 @@ namespace Alis.Core.Physic.Common
 		public static Vec2 Min(Vec2 a, Vec2 b)
 		{
 			Vec2 c = new Vec2();
-			c.X = Math.Min(a.X, b.X);
-			c.Y = Math.Min(a.Y, b.Y);
+			c.X = Min(a.X, b.X);
+			c.Y = Min(a.Y, b.Y);
 			return c;
 		}
 
@@ -248,8 +248,8 @@ namespace Alis.Core.Physic.Common
 		public static Vec2 Max(Vec2 a, Vec2 b)
 		{
 			Vec2 c = new Vec2();
-			c.X = Math.Max(a.X, b.X);
-			c.Y = Math.Max(a.Y, b.Y);
+			c.X = Max(a.X, b.X);
+			c.Y = Max(a.Y, b.Y);
 			return c;
 		}
 
@@ -262,7 +262,7 @@ namespace Alis.Core.Physic.Common
 		/// <returns>The float</returns>
 		public static float Clamp(float a, float low, float high)
 		{
-			return Math.Max(low, Math.Min(a, high));
+			return Max(low, Min(a, high));
 		}
 
 		/// <summary>
@@ -274,7 +274,7 @@ namespace Alis.Core.Physic.Common
 		/// <returns>The int</returns>
 		public static int Clamp(int a, int low, int high)
 		{
-			return Math.Max(low, Math.Min(a, high));
+			return Max(low, Min(a, high));
 		}
 
 		/// <summary>
@@ -286,7 +286,7 @@ namespace Alis.Core.Physic.Common
 		/// <returns>The vec</returns>
 		public static Vec2 Clamp(Vec2 a, Vec2 low, Vec2 high)
 		{
-			return Math.Max(low, Math.Min(a, high));
+			return Max(low, Min(a, high));
 		}
 
 		/// <summary>
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Common
 		public static Vec2 Mul(Mat22 A, Vec2 v)
 		{
 			Vec2 u = new Vec2();
-			u.Set(A.Col1.X * v.X + A.Col2.X * v.Y, A.Col1.Y * v.X + A.Col2.Y * v.Y);
+			u.Set(A.col1.X * v.X + A.col2.X * v.Y, A.col1.Y * v.X + A.col2.Y * v.Y);
 			return u;
 		}
 
@@ -320,7 +320,7 @@ namespace Alis.Core.Physic.Common
 		public static Vec2 MulT(Mat22 A, Vec2 v)
 		{
 			Vec2 u = new Vec2();
-			u.Set(Vec2.Dot(v, A.Col1), Vec2.Dot(v, A.Col2));
+			u.Set(Vec2.Dot(v, A.col1), Vec2.Dot(v, A.col2));
 			return u;
 		}
 
@@ -330,7 +330,7 @@ namespace Alis.Core.Physic.Common
 		public static Mat22 Mul(Mat22 A, Mat22 B)
 		{
 			Mat22 C = new Mat22();
-			C.Set(Math.Mul(A, B.Col1), Math.Mul(A, B.Col2));
+			C.Set(Mul(A, B.col1), Mul(A, B.col2));
 			return C;
 		}
 
@@ -340,9 +340,9 @@ namespace Alis.Core.Physic.Common
 		public static Mat22 MulT(Mat22 A, Mat22 B)
 		{
 			Vec2 c1 = new Vec2();
-			c1.Set(Vec2.Dot(A.Col1, B.Col1), Vec2.Dot(A.Col2, B.Col1));
+			c1.Set(Vec2.Dot(A.col1, B.col1), Vec2.Dot(A.col2, B.col1));
 			Vec2 c2 = new Vec2();
-			c2.Set(Vec2.Dot(A.Col1, B.Col2), Vec2.Dot(A.Col2, B.Col2));
+			c2.Set(Vec2.Dot(A.col1, B.col2), Vec2.Dot(A.col2, B.col2));
 			Mat22 C = new Mat22();
 			C.Set(c1, c2);
 			return C;
@@ -356,7 +356,7 @@ namespace Alis.Core.Physic.Common
 		/// <returns>The vec</returns>
 		public static Vec2 Mul(XForm T, Vec2 v)
 		{
-			return T.Position + Math.Mul(T.R, v);
+			return T.Position + Mul(T.R, v);
 		}
 
 		/// <summary>
@@ -367,7 +367,7 @@ namespace Alis.Core.Physic.Common
 		/// <returns>The vec</returns>
 		public static Vec2 MulT(XForm T, Vec2 v)
 		{
-			return Math.MulT(T.R, v - T.Position);
+			return MulT(T.R, v - T.Position);
 		}
 
 		/// <summary>

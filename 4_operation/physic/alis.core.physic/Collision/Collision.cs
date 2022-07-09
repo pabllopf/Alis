@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Collision
 		public static void GetPointStates(PointState[/*b2_maxManifoldPoints*/] state1, PointState[/*b2_maxManifoldPoints*/] state2,
 					  Manifold manifold1, Manifold manifold2)
 		{
-			for (int i = 0; i < Common.Settings.MaxManifoldPoints; ++i)
+			for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
 			{
 				state1[i] = PointState.NullState;
 				state2[i] = PointState.NullState;
@@ -237,10 +237,10 @@ namespace Alis.Core.Physic.Collision
 		public ManifoldPoint Clone()
 		{
 			ManifoldPoint newPoint = new ManifoldPoint();
-			newPoint.LocalPoint = this.LocalPoint;
-			newPoint.NormalImpulse = this.NormalImpulse;
-			newPoint.TangentImpulse = this.TangentImpulse;
-			newPoint.ID = this.ID;
+			newPoint.LocalPoint = LocalPoint;
+			newPoint.NormalImpulse = NormalImpulse;
+			newPoint.TangentImpulse = TangentImpulse;
+			newPoint.ID = ID;
 			return newPoint;
 		}
 	}
@@ -310,15 +310,15 @@ namespace Alis.Core.Physic.Collision
 		public Manifold Clone()
 		{
 			Manifold newManifold = new Manifold();
-			newManifold.LocalPlaneNormal = this.LocalPlaneNormal;
-			newManifold.LocalPoint = this.LocalPoint;
-			newManifold.Type = this.Type;
-			newManifold.PointCount = this.PointCount;
-			int pointCount = this.Points.Length;
+			newManifold.LocalPlaneNormal = LocalPlaneNormal;
+			newManifold.LocalPoint = LocalPoint;
+			newManifold.Type = Type;
+			newManifold.PointCount = PointCount;
+			int pointCount = Points.Length;
 			ManifoldPoint[] tmp = new ManifoldPoint[pointCount];
 			for (int i = 0; i < pointCount; i++)
 			{
-				tmp[i] = this.Points[i].Clone();
+				tmp[i] = Points[i].Clone();
 			}
 			newManifold.Points = tmp;
 			return newManifold;
@@ -358,7 +358,7 @@ namespace Alis.Core.Physic.Collision
 			Vec2 d = P2 - P1;
 			Vec2 n = Vec2.Cross(d, 1.0f);
 
-			float k_slop = 100.0f * Common.Settings.FLT_EPSILON;
+			float k_slop = 100.0f * Settings.FLT_EPSILON;
 			float denom = -Vec2.Dot(r, n);
 
 			// Cull back facing collision and ignore parallel segments.
@@ -461,8 +461,8 @@ namespace Alis.Core.Physic.Collision
 		/// <param name="input"></param>
 		public void RayCast(out RayCastOutput output, RayCastInput input)
 		{
-			float tmin = -Common.Settings.FLT_MAX;
-			float tmax = Common.Settings.FLT_MAX;
+			float tmin = -Settings.FLT_MAX;
+			float tmax = Settings.FLT_MAX;
 
 			output = new RayCastOutput();
 
@@ -476,7 +476,7 @@ namespace Alis.Core.Physic.Collision
 
 			for (int i = 0; i < 2; ++i)
 			{
-				if (absD[i] < Common.Settings.FLT_EPSILON)
+				if (absD[i] < Settings.FLT_EPSILON)
 				{
 					// Parallel.
 					if (p[i] < LowerBound[i] || UpperBound[i] < p[i])
@@ -566,7 +566,7 @@ namespace Alis.Core.Physic.Collision
 		/// <summary>
 		/// World contact point (point of intersection).
 		/// </summary>
-		public Vec2[] Points = new Vec2[Common.Settings.MaxManifoldPoints];
+		public Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
 
 		/// <summary>
 		/// Clones this instance
@@ -575,8 +575,8 @@ namespace Alis.Core.Physic.Collision
 		public WorldManifold Clone()
 		{
 			WorldManifold newManifold = new WorldManifold();
-			newManifold.Normal = this.Normal;
-			this.Points.CopyTo(newManifold.Points, 0);
+			newManifold.Normal = Normal;
+			Points.CopyTo(newManifold.Points, 0);
 			return newManifold;
 		}
 
@@ -598,7 +598,7 @@ namespace Alis.Core.Physic.Collision
 						Vec2 pointA = Common.Math.Mul(xfA, manifold.LocalPoint);
 						Vec2 pointB = Common.Math.Mul(xfB, manifold.Points[0].LocalPoint);
 						Vec2 normal = new Vec2(1.0f, 0.0f);
-						if (Vec2.DistanceSquared(pointA, pointB) > Common.Settings.FLT_EPSILON_SQUARED)
+						if (Vec2.DistanceSquared(pointA, pointB) > Settings.FLT_EPSILON_SQUARED)
 						{
 							normal = pointB - pointA;
 							normal.Normalize();

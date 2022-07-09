@@ -274,21 +274,17 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
 			ContactCreateFcn createFcn = s_registers[(int)type1][(int)type2].CreateFcn;
 			if (createFcn != null)
-			{
-				if (s_registers[(int)type1][(int)type2].Primary)
+            {
+                if (s_registers[(int)type1][(int)type2].Primary)
 				{
 					return createFcn(fixtureA, fixtureB);
 				}
-				else
-				{
-					return createFcn(fixtureB, fixtureA);
-				}
-			}
-			else
-			{
-				return null;
-			}
-		}
+
+                return createFcn(fixtureB, fixtureA);
+            }
+
+            return null;
+        }
 
 		/// <summary>
 		/// Destroys the contact
@@ -421,7 +417,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 			input.SweepB = sweepB;
 			input.SweepRadiusA = _fixtureA.ComputeSweepRadius(sweepA.LocalCenter);
 			input.SweepRadiusB = _fixtureB.ComputeSweepRadius(sweepB.LocalCenter);
-			input.Tolerance = Common.Settings.LinearSlop;
+			input.Tolerance = Settings.LinearSlop;
 
 			return Collision.Collision.TimeOfImpact(input, _fixtureA.Shape, _fixtureB.Shape);
 		}

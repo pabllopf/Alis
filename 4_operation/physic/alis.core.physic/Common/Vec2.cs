@@ -74,15 +74,12 @@ namespace Alis.Core.Physic.Common
 		public float this[int i]
 		{
 			get
-			{
-				if (i == 0) return X;
-				else if (i == 1) return Y;
-				else
-				{
-					Box2DXDebug.Assert(false, "Incorrect Vec2 element!");
-					return 0;
-				}
-			}
+            {
+                if (i == 0) return X;
+                if (i == 1) return Y;
+                Box2DXDebug.Assert(false, "Incorrect Vec2 element!");
+                return 0;
+            }
 			set
 			{
 				if (i == 0) X = value;
@@ -314,7 +311,7 @@ namespace Alis.Core.Physic.Common
 		public static float DistanceSquared(Vec2 a, Vec2 b)
 		{
 			Vec2 c = a - b;
-			return Vec2.Dot(c, c);
+			return Dot(c, c);
 		}
 	}
 }

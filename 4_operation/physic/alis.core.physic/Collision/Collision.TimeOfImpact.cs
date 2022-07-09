@@ -97,8 +97,8 @@ namespace Alis.Core.Physic.Collision
 				FaceType = Type.Points;
 				Vec2 localPointA = ShapeA.GetVertex(cache->IndexA[0]);
 				Vec2 localPointB = ShapeB.GetVertex(cache->IndexB[0]);
-				Vec2 pointA = Common.Math.Mul(transformA, localPointA);
-				Vec2 pointB = Common.Math.Mul(transformB, localPointB);
+				Vec2 pointA = Math.Mul(transformA, localPointA);
+				Vec2 pointB = Math.Mul(transformB, localPointB);
 				Axis = pointB - pointA;
 				Axis.Normalize();
 			}
@@ -113,9 +113,9 @@ namespace Alis.Core.Physic.Collision
 				Axis = Vec2.Cross(localPointA2 - localPointA1, 1.0f);
 				Axis.Normalize();
 
-				Vec2 normal = Common.Math.Mul(transformA.R, Axis);
-				Vec2 pointA = Common.Math.Mul(transformA, LocalPoint);
-				Vec2 pointB = Common.Math.Mul(transformB, localPointB);
+				Vec2 normal = Math.Mul(transformA.R, Axis);
+				Vec2 pointA = Math.Mul(transformA, LocalPoint);
+				Vec2 pointB = Math.Mul(transformB, localPointB);
 
 				float s = Vec2.Dot(pointB - pointA, normal);
 				if (s < 0.0f)
@@ -135,9 +135,9 @@ namespace Alis.Core.Physic.Collision
 				Axis = Vec2.Cross(localPointB2 - localPointB1, 1.0f);
 				Axis.Normalize();
 
-				Vec2 normal = Common.Math.Mul(transformB.R, Axis);
-				Vec2 pointB = Common.Math.Mul(transformB, LocalPoint);
-				Vec2 pointA = Common.Math.Mul(transformA, localPointA);
+				Vec2 normal = Math.Mul(transformB.R, Axis);
+				Vec2 pointB = Math.Mul(transformB, LocalPoint);
+				Vec2 pointA = Math.Mul(transformA, localPointA);
 
 				float s = Vec2.Dot(pointA - pointB, normal);
 				if (s < 0.0f)
@@ -159,25 +159,25 @@ namespace Alis.Core.Physic.Collision
 			{
 				case Type.Points:
 					{
-						Vec2 axisA = Common.Math.MulT(transformA.R, Axis);
-						Vec2 axisB = Common.Math.MulT(transformB.R, -Axis);
+						Vec2 axisA = Math.MulT(transformA.R, Axis);
+						Vec2 axisB = Math.MulT(transformB.R, -Axis);
 						Vec2 localPointA = ShapeA.GetSupportVertex(axisA);
 						Vec2 localPointB = ShapeB.GetSupportVertex(axisB);
-						Vec2 pointA = Common.Math.Mul(transformA, localPointA);
-						Vec2 pointB = Common.Math.Mul(transformB, localPointB);
+						Vec2 pointA = Math.Mul(transformA, localPointA);
+						Vec2 pointB = Math.Mul(transformB, localPointB);
 						float separation = Vec2.Dot(pointB - pointA, Axis);
 						return separation;
 					}
 
 				case Type.FaceA:
 					{
-						Vec2 normal = Common.Math.Mul(transformA.R, Axis);
-						Vec2 pointA = Common.Math.Mul(transformA, LocalPoint);
+						Vec2 normal = Math.Mul(transformA.R, Axis);
+						Vec2 pointA = Math.Mul(transformA, LocalPoint);
 
-						Vec2 axisB = Common.Math.MulT(transformB.R, -normal);
+						Vec2 axisB = Math.MulT(transformB.R, -normal);
 
 						Vec2 localPointB = ShapeB.GetSupportVertex(axisB);
-						Vec2 pointB = Common.Math.Mul(transformB, localPointB);
+						Vec2 pointB = Math.Mul(transformB, localPointB);
 
 						float separation = Vec2.Dot(pointB - pointA, normal);
 						return separation;
@@ -185,13 +185,13 @@ namespace Alis.Core.Physic.Collision
 
 				case Type.FaceB:
 					{
-						Vec2 normal = Common.Math.Mul(transformB.R, Axis);
-						Vec2 pointB = Common.Math.Mul(transformB, LocalPoint);
+						Vec2 normal = Math.Mul(transformB.R, Axis);
+						Vec2 pointB = Math.Mul(transformB, LocalPoint);
 
-						Vec2 axisA = Common.Math.MulT(transformA.R, -normal);
+						Vec2 axisA = Math.MulT(transformA.R, -normal);
 
 						Vec2 localPointA = ShapeA.GetSupportVertex(axisA);
-						Vec2 pointA = Common.Math.Mul(transformA, localPointA);
+						Vec2 pointA = Math.Mul(transformA, localPointA);
 
 						float separation = Vec2.Dot(pointA - pointB, normal);
 						return separation;
@@ -257,7 +257,7 @@ namespace Alis.Core.Physic.Collision
 			Sweep sweepB = input.SweepB;
 
 			Box2DXDebug.Assert(sweepA.T0 == sweepB.T0);
-			Box2DXDebug.Assert(1.0f - sweepA.T0 > Common.Settings.FLT_EPSILON);
+			Box2DXDebug.Assert(1.0f - sweepA.T0 > Settings.FLT_EPSILON);
 
 			float radius = shapeA._radius + shapeB._radius;
 			float tolerance = input.Tolerance;
@@ -312,11 +312,11 @@ namespace Alis.Core.Physic.Collision
 					// to create additional clearance.
 					if (separation > radius)
 					{
-						target = Common.Math.Max(radius - tolerance, 0.75f * radius);
+						target = Math.Max(radius - tolerance, 0.75f * radius);
 					}
 					else
 					{
-						target = Common.Math.Max(separation - tolerance, 0.02f * radius);
+						target = Math.Max(separation - tolerance, 0.02f * radius);
 					}
 				}
 
@@ -397,7 +397,7 @@ namespace Alis.Core.Physic.Collision
 
 						float f = fcn.Evaluate(xfA, xfB);
 
-						if (Common.Math.Abs(f - target) < 0.025f * tolerance)
+						if (Math.Abs(f - target) < 0.025f * tolerance)
 						{
 							newAlpha = x;
 							break;
@@ -420,11 +420,11 @@ namespace Alis.Core.Physic.Collision
 						Box2DXDebug.Assert(rootIterCount < 50);
 					}
 
-					MaxToiRootIters = Common.Math.Max(MaxToiRootIters, rootIterCount);
+					MaxToiRootIters = Math.Max(MaxToiRootIters, rootIterCount);
 				}
 
 				// Ensure significant advancement.
-				if (newAlpha < (1.0f + 100.0f * Common.Settings.FLT_EPSILON) * alpha)
+				if (newAlpha < (1.0f + 100.0f * Settings.FLT_EPSILON) * alpha)
 				{
 					break;
 				}
@@ -439,7 +439,7 @@ namespace Alis.Core.Physic.Collision
 				}
 			}
 
-			MaxToiIters = Common.Math.Max(MaxToiIters, iter);
+			MaxToiIters = Math.Max(MaxToiIters, iter);
 
 			return alpha;
 		}

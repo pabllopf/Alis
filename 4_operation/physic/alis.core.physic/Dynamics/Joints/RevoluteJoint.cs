@@ -414,6 +414,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			float m1 = b1._invMass, m2 = b2._invMass;
 			float i1 = b1._invI, i2 = b2._invI;
 
+
+            float col1x = m1 + m2 + r1.Y * r1.Y * i1 + r2.Y * r2.Y * i2;
+            float col2x = -r1.Y * r1.X * i1 - r2.Y * r2.X * i2;
+            float col3x = -r1.Y * i1 - r2.Y * i2;
+            
+            float col1y = _mass.Col2.X;
+            float col2y = m1 + m2 + r1.X * r1.X * i1 + r2.X * r2.X * i2;
+            float col3y = r1.X * i1 + r2.X * i2;
+            
+            float col1z = _mass.Col3.X;
+            float col2z = _mass.Col3.Y;
+            float col3z = i1 + i2;
+
+            _mass.Col1 = new Vec3(col1x, col1y, col1z);
+            _mass.Col2 = new Vec3(col2x, col2y, col2z);
+            _mass.Col3 = new Vec3(col3x, col3y, col3z);
+            
+            /*
 			_mass.Col1.X = m1 + m2 + r1.Y * r1.Y * i1 + r2.Y * r2.Y * i2;
 			_mass.Col2.X = -r1.Y * r1.X * i1 - r2.Y * r2.X * i2;
 			_mass.Col3.X = -r1.Y * i1 - r2.Y * i2;
@@ -423,7 +441,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			_mass.Col1.Z = _mass.Col3.X;
 			_mass.Col2.Z = _mass.Col3.Y;
 			_mass.Col3.Z = i1 + i2;
-
+*/
 			_motorMass = 1.0f / (i1 + i2);
 
 			if (_enableMotor == false)
@@ -507,7 +525,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			if (_enableMotor && _limitState != LimitState.EqualLimits)
 			{
 				float Cdot = w2 - w1 - _motorSpeed;
-				float impulse = _motorMass * (-Cdot);
+				float impulse = _motorMass * -Cdot;
 				float oldImpulse = _motorImpulse;
 				float maxImpulse = step.Dt * _maxMotorTorque;
 				_motorImpulse = Box2DXMath.Clamp(_motorImpulse + impulse, -maxImpulse, maxImpulse);
@@ -670,7 +688,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 					float k = invMass1 + invMass2;
 					Box2DXDebug.Assert(k > Settings.FLT_EPSILON);
 					float m = 1.0f / k;
-					Vec2 impulse = m * (-C);
+					Vec2 impulse = m * -C;
 					float k_beta = 0.5f;
 					b1._sweep.C -= k_beta * invMass1 * impulse;
 					b2._sweep.C += k_beta * invMass2 * impulse;
@@ -679,16 +697,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				}
 
 				Mat22 K1 = new Mat22();
-				K1.Col1.X = invMass1 + invMass2; K1.Col2.X = 0.0f;
-				K1.Col1.Y = 0.0f; K1.Col2.Y = invMass1 + invMass2;
+				K1.col1.X = invMass1 + invMass2; K1.col2.X = 0.0f;
+				K1.col1.Y = 0.0f; K1.col2.Y = invMass1 + invMass2;
 
 				Mat22 K2 = new Mat22();
-				K2.Col1.X = invI1 * r1.Y * r1.Y; K2.Col2.X = -invI1 * r1.X * r1.Y;
-				K2.Col1.Y = -invI1 * r1.X * r1.Y; K2.Col2.Y = invI1 * r1.X * r1.X;
+				K2.col1.X = invI1 * r1.Y * r1.Y; K2.col2.X = -invI1 * r1.X * r1.Y;
+				K2.col1.Y = -invI1 * r1.X * r1.Y; K2.col2.Y = invI1 * r1.X * r1.X;
 
 				Mat22 K3 = new Mat22();
-				K3.Col1.X = invI2 * r2.Y * r2.Y; K3.Col2.X = -invI2 * r2.X * r2.Y;
-				K3.Col1.Y = -invI2 * r2.X * r2.Y; K3.Col2.Y = invI2 * r2.X * r2.X;
+				K3.col1.X = invI2 * r2.Y * r2.Y; K3.col2.X = -invI2 * r2.X * r2.Y;
+				K3.col1.Y = -invI2 * r2.X * r2.Y; K3.col2.Y = invI2 * r2.X * r2.X;
 
 				Mat22 K = K1 + K2 + K3;
 				Vec2 impulse_ = K.Solve(-C);

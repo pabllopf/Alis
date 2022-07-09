@@ -341,8 +341,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 				Body b1 = _body1;
 				Body b2 = _body2;
 
-				Vec2 r1 = Common.Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
-				Vec2 r2 = Common.Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
+				Vec2 r1 = Math.Mul(b1.GetXForm().R, _localAnchor1 - b1.GetLocalCenter());
+				Vec2 r2 = Math.Mul(b2.GetXForm().R, _localAnchor2 - b2.GetLocalCenter());
 				Vec2 p1 = b1._sweep.C + r1;
 				Vec2 p2 = b2._sweep.C + r2;
 				Vec2 d = p2 - p1;

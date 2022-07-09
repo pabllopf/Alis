@@ -30,11 +30,12 @@ namespace Alis.Core.Physic.Common
 		/// <summary>
 		/// The position
 		/// </summary>
-		public Vec2 Position;
-		/// <summary>
-		/// The 
-		/// </summary>
-		public Mat22 R;
+		public Vec2 Position { get; set; }
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        public Mat22 R { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="XForm"/> struct.
@@ -66,7 +67,7 @@ namespace Alis.Core.Physic.Common
 		/// Calculate the angle that the rotation matrix represents.
 		public float GetAngle()
 		{
-			return Math.Atan2(R.Col1.Y, R.Col1.X);
+			return Math.Atan2(R.col1.Y, R.col1.X);
 		}
 
 		/// <summary>

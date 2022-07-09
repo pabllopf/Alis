@@ -82,9 +82,9 @@ namespace Alis.Core.Physic.Collision
 				Box2DXDebug.Assert(index >= 0 && index < 3);
 #endif
 				if (index == 0) return I0;
-				else if (index == 1) return I1;
-				else return I2;
-			}
+                if (index == 1) return I1;
+                return I2;
+            }
 			set
 			{
 #if DEBUG
@@ -227,7 +227,7 @@ namespace Alis.Core.Physic.Collision
 				{
 					float metric1 = cache->Metric;
 					float metric2 = GetMetric();
-					if (metric2 < 0.5f * metric1 || 2.0f * metric1 < metric2 || metric2 < Common.Settings.FLT_EPSILON)
+					if (metric2 < 0.5f * metric1 || 2.0f * metric1 < metric2 || metric2 < Settings.FLT_EPSILON)
 					{
 						// Reset the simplex.
 						_count = 0;
@@ -619,7 +619,7 @@ namespace Alis.Core.Physic.Collision
 				float distanceSqr = p.LengthSquared();
 
 				// Ensure the search direction is numerically fit.
-				if (distanceSqr < Common.Settings.FLT_EPSILON_SQUARED)
+				if (distanceSqr < Settings.FLT_EPSILON_SQUARED)
 				{
 					// The origin is probably contained by a line segment
 					// or triangle. Thus the shapes are overlapped.
@@ -694,7 +694,7 @@ namespace Alis.Core.Physic.Collision
 				float rA = shapeA._radius;
 				float rB = shapeB._radius;
 
-				if (output.Distance > rA + rB && output.Distance > Common.Settings.FLT_EPSILON)
+				if (output.Distance > rA + rB && output.Distance > Settings.FLT_EPSILON)
 				{
 					// Shapes are still no overlapped.
 					// Move the witness points to the outer surface.

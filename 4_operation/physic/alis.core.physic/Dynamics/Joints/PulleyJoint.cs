@@ -349,8 +349,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 			_constant = def.Length1 + _ratio * def.Length2;
 
-			_maxLength1 = Common.Math.Min(def.MaxLength1, _constant - _ratio * PulleyJoint.MinPulleyLength);
-			_maxLength2 = Common.Math.Min(def.MaxLength2, (_constant - PulleyJoint.MinPulleyLength) / _ratio);
+			_maxLength1 = Math.Min(def.MaxLength1, _constant - _ratio * MinPulleyLength);
+			_maxLength2 = Math.Min(def.MaxLength2, (_constant - MinPulleyLength) / _ratio);
 
 			_impulse = 0.0f;
 			_limitImpulse1 = 0.0f;

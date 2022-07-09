@@ -1380,7 +1380,7 @@ namespace Alis.Core.Physic.Dynamics
 
 						Vec2 center = Common.Math.Mul(xf, circle._position);
 						float radius = circle._radius;
-						Vec2 axis = xf.R.Col1;
+						Vec2 axis = xf.R.col1;
 
 						_debugDraw.DrawSolidCircle(center, radius, axis, color);
 					}

@@ -41,10 +41,10 @@ namespace Alis.Core.Physic.Collision
 		public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edge, XForm transformA, CircleShape circle, XForm transformB)
 		{
 			manifold.PointCount = 0;
-			Vec2 cLocal = Common.Math.MulT(transformA, Common.Math.Mul(transformB, circle._position));
-			Vec2 normal = edge._normal;
-			Vec2 v1 = edge._v1;
-			Vec2 v2 = edge._v2;
+			Vec2 cLocal = Math.MulT(transformA, Math.Mul(transformB, circle._position));
+			Vec2 normal = edge.NormalVector;
+			Vec2 v1 = edge.Vertex1;
+			Vec2 v2 = edge.Vertex2;
 			float radius = edge._radius + circle._radius;
 
 			// Barycentric coordinates
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Collision
 		public static void CollidePolyAndEdge(ref Manifold manifold, PolygonShape polygon, XForm transformA, EdgeShape edge, XForm transformB)
 		{
 			PolygonShape polygonB = new PolygonShape();
-			polygonB.SetAsEdge(edge._v1, edge._v2);
+			polygonB.SetAsEdge(edge.Vertex1, edge.Vertex2);
 
 			CollidePolygons(ref manifold, polygon, transformA, polygonB, transformB);
 		}

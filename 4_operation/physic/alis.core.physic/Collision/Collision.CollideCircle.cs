@@ -42,8 +42,8 @@ namespace Alis.Core.Physic.Collision
 		{
 			manifold.PointCount = 0;
 
-			Vec2 p1 = Common.Math.Mul(xf1, circle1._position);
-			Vec2 p2 = Common.Math.Mul(xf2, circle2._position);
+			Vec2 p1 = Math.Mul(xf1, circle1._position);
+			Vec2 p2 = Math.Mul(xf2, circle2._position);
 
 			Vec2 d = p2 - p1;
 			float distSqr = Vec2.Dot(d, d);
@@ -76,8 +76,8 @@ namespace Alis.Core.Physic.Collision
 			manifold.PointCount = 0;
 
 			// Compute circle position in the frame of the polygon.
-			Vec2 c = Common.Math.Mul(xf2, circle._position);
-			Vec2 cLocal = Common.Math.MulT(xf1, c);
+			Vec2 c = Math.Mul(xf2, circle._position);
+			Vec2 cLocal = Math.MulT(xf1, c);
 
 			// Find the min separating edge.
 			int normalIndex = 0;
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Collision
 			Vec2 v2 = vertices[vertIndex2];
 
 			// If the center is inside the polygon ...
-			if (separation < Common.Settings.FLT_EPSILON)
+			if (separation < Settings.FLT_EPSILON)
 			{
 				manifold.PointCount = 1;
 				manifold.Type = ManifoldType.FaceA;

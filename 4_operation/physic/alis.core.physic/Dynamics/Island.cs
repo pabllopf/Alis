@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Dynamics
 
 				// Check for large velocities.
 				Vec2 translation = step.Dt * b._linearVelocity;
-				if (Common.Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
+				if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
 				{
 					translation.Normalize();
 					b._linearVelocity = (Settings.MaxTranslation * step.Inv_Dt) * translation;

@@ -240,13 +240,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
 							float kNormal = bodyA._invMass + bodyB._invMass + bodyA._invI * rnA + bodyB._invI * rnB;
 
-							Box2DXDebug.Assert(kNormal > Common.Settings.FLT_EPSILON);
+							Box2DXDebug.Assert(kNormal > Settings.FLT_EPSILON);
 							ccp->NormalMass = 1.0f / kNormal;
 
 							float kEqualized = bodyA._mass * bodyA._invMass + bodyB._mass * bodyB._invMass;
 							kEqualized += bodyA._mass * bodyA._invI * rnA + bodyB._mass * bodyB._invI * rnB;
 
-							Box2DXDebug.Assert(kEqualized > Common.Settings.FLT_EPSILON);
+							Box2DXDebug.Assert(kEqualized > Settings.FLT_EPSILON);
 							ccp->EqualizedMass = 1.0f / kEqualized;
 
 							Vec2 tangent = Vec2.Cross(cc.Normal, 1.0f);
@@ -258,13 +258,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
 							float kTangent = bodyA._invMass + bodyB._invMass + bodyA._invI * rtA + bodyB._invI * rtB;
 
-							Box2DXDebug.Assert(kTangent > Common.Settings.FLT_EPSILON);
+							Box2DXDebug.Assert(kTangent > Settings.FLT_EPSILON);
 							ccp->TangentMass = 1.0f / kTangent;
 
 							// Setup a velocity bias for restitution.
 							ccp->VelocityBias = 0.0f;
 							float vRel = Vec2.Dot(cc.Normal, vB + Vec2.Cross(wB, ccp->RB) - vA - Vec2.Cross(wA, ccp->RA));
-							if (vRel < -Common.Settings.VelocityThreshold)
+							if (vRel < -Settings.VelocityThreshold)
 							{
 								ccp->VelocityBias = -cc.Restitution * vRel;
 							}
@@ -295,8 +295,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 							if (k11 * k11 < k_maxConditionNumber * (k11 * k22 - k12 * k12))
 							{
 								// K is safe to invert.
-								cc.K.Col1.Set(k11, k12);
-								cc.K.Col2.Set(k12, k22);
+								cc.K.col1.Set(k11, k12);
+								cc.K.col2.Set(k12, k22);
 								cc.NormalMass = cc.K.GetInverse();
 							}
 							else
@@ -560,7 +560,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 								x.X = -cp1->NormalMass * b.X;
 								x.Y = 0.0f;
 								vn1 = 0.0f;
-								vn2 = c.K.Col1.Y * x.X + b.Y;
+								vn2 = c.K.col1.Y * x.X + b.Y;
 
 								if (x.X >= 0.0f && vn2 >= 0.0f)
 								{
@@ -601,7 +601,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 								//
 								x.X = 0.0f;
 								x.Y = -cp2->NormalMass * b.Y;
-								vn1 = c.K.Col2.X * x.Y + b.X;
+								vn1 = c.K.col2.X * x.Y + b.X;
 								vn2 = 0.0f;
 
 								if (x.Y >= 0.0f && vn1 >= 0.0f)

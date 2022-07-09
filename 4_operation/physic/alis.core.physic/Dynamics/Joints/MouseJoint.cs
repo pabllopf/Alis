@@ -31,49 +31,7 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
-	/// <summary>
-	/// Mouse joint definition. This requires a world target point,
-	/// tuning parameters, and the time step.
-	/// </summary>
-	public class MouseJointDef : JointDef
-	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="MouseJointDef"/> class
-		/// </summary>
-		public MouseJointDef()
-		{
-			Type = JointType.MouseJoint;
-			Target.Set(0.0f, 0.0f);
-			MaxForce = 0.0f;
-			FrequencyHz = 5.0f;
-			DampingRatio = 0.7f;
-		}
-
-		/// <summary>
-		/// The initial world target point. This is assumed
-		/// to coincide with the body anchor initially.
-		/// </summary>
-		public Vec2 Target;
-
-		/// <summary>
-		/// The maximum constraint force that can be exerted
-		/// to move the candidate body. Usually you will express
-		/// as some multiple of the weight (multiplier * mass * gravity).
-		/// </summary>
-		public float MaxForce;
-
-		/// <summary>
-		/// The response speed.
-		/// </summary>
-		public float FrequencyHz;
-
-		/// <summary>
-		/// The damping ratio. 0 = no damping, 1 = critical damping.
-		/// </summary>
-		public float DampingRatio;
-	}
-
-	/// <summary>
+    /// <summary>
 	/// A mouse joint is used to make a point on a body track a
 	/// specified world point. This a soft constraint with a maximum
 	/// force. This allows the constraint to stretch and without
@@ -179,7 +137,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			: base(def)
 		{
 			_target = def.Target;
-			_localAnchor = Common.Math.MulT(_body2.GetXForm(), _target);
+			_localAnchor = Math.MulT(_body2.GetXForm(), _target);
 
 			_maxForce = def.MaxForce;
 			_impulse.SetZero();
@@ -218,7 +176,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			_beta = step.Dt * k * _gamma;
 
 			// Compute the effective mass matrix.
-			Vec2 r = Common.Math.Mul(b.GetXForm().R, _localAnchor - b.GetLocalCenter());
+			Vec2 r = Math.Mul(b.GetXForm().R, _localAnchor - b.GetLocalCenter());
 
 			// K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
 			//      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
@@ -227,16 +185,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
 			float invI = b._invI;
 
 			Mat22 K1 = new Mat22();
-			K1.Col1.X = invMass; K1.Col2.X = 0.0f;
-			K1.Col1.Y = 0.0f; K1.Col2.Y = invMass;
+			K1.col1.X = invMass; K1.col2.X = 0.0f;
+			K1.col1.Y = 0.0f; K1.col2.Y = invMass;
 
 			Mat22 K2 = new Mat22();
-			K2.Col1.X = invI * r.Y * r.Y; K2.Col2.X = -invI * r.X * r.Y;
-			K2.Col1.Y = -invI * r.X * r.Y; K2.Col2.Y = invI * r.X * r.X;
+			K2.col1.X = invI * r.Y * r.Y; K2.col2.X = -invI * r.X * r.Y;
+			K2.col1.Y = -invI * r.X * r.Y; K2.col2.Y = invI * r.X * r.X;
 
 			Mat22 K = K1 + K2;
-			K.Col1.X += _gamma;
-			K.Col2.Y += _gamma;
+			K.col1.X += _gamma;
+			K.col2.Y += _gamma;
 
 			_mass = K.GetInverse();
 
@@ -259,7 +217,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 		{
 			Body b = _body2;
 
-			Vec2 r = Common.Math.Mul(b.GetXForm().R, _localAnchor - b.GetLocalCenter());
+			Vec2 r = Math.Mul(b.GetXForm().R, _localAnchor - b.GetLocalCenter());
 
 			// Cdot = v + cross(w, r)
 			Vec2 Cdot = b._linearVelocity + Vec2.Cross(b._angularVelocity, r);

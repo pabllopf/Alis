@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Collision
 		/// <summary>
 		/// The table capacity
 		/// </summary>
-		public static readonly int TableMask = PairManager.TableCapacity - 1;
+		public static readonly int TableMask = TableCapacity - 1;
 
 		/// <summary>
 		/// The broad phase
@@ -211,30 +211,30 @@ namespace Alis.Core.Physic.Collision
 		/// <summary>
 		/// The table capacity
 		/// </summary>
-		public ushort[] _hashTable = new ushort[PairManager.TableCapacity];
+		public ushort[] _hashTable = new ushort[TableCapacity];
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="PairManager"/> class
 		/// </summary>
 		public PairManager()
 		{
-			Box2DXDebug.Assert(Common.Math.IsPowerOfTwo((uint)PairManager.TableCapacity) == true);
-			Box2DXDebug.Assert(PairManager.TableCapacity >= Settings.MaxPairs);
-			for (int i = 0; i < PairManager.TableCapacity; ++i)
+			Box2DXDebug.Assert(Common.Math.IsPowerOfTwo((uint)TableCapacity) == true);
+			Box2DXDebug.Assert(TableCapacity >= Settings.MaxPairs);
+			for (int i = 0; i < TableCapacity; ++i)
 			{
-				_hashTable[i] = PairManager.NullPair;
+				_hashTable[i] = NullPair;
 			}
 			_freePair = 0;
 			for (int i = 0; i < Settings.MaxPairs; ++i)
 			{
 				_pairs[i] = new Pair();//todo: need some pool here
-				_pairs[i].ProxyId1 = PairManager.NullProxy;
-				_pairs[i].ProxyId2 = PairManager.NullProxy;
+				_pairs[i].ProxyId1 = NullProxy;
+				_pairs[i].ProxyId2 = NullProxy;
 				_pairs[i].UserData = null;
 				_pairs[i].Status = 0;
 				_pairs[i].Next = (ushort)(i + 1U);
 			}
-			_pairs[Settings.MaxPairs - 1].Next = PairManager.NullPair;
+			_pairs[Settings.MaxPairs - 1].Next = NullPair;
 			_pairCount = 0;
 			_pairBufferCount = 0;
 		}
@@ -273,7 +273,7 @@ namespace Alis.Core.Physic.Collision
 		/// <param name="id2">The id</param>
 		public void AddBufferedPair(int id1, int id2)
 		{
-			Box2DXDebug.Assert(id1 != PairManager.NullProxy && id2 != PairManager.NullProxy);
+			Box2DXDebug.Assert(id1 != NullProxy && id2 != NullProxy);
 			Box2DXDebug.Assert(_pairBufferCount < Settings.MaxPairs);
 
 			Pair pair = AddPair(id1, id2);
@@ -310,7 +310,7 @@ namespace Alis.Core.Physic.Collision
 		/// <param name="id2">The id</param>
 		public void RemoveBufferedPair(int id1, int id2)
 		{
-			Box2DXDebug.Assert(id1 != PairManager.NullProxy && id2 != PairManager.NullProxy);
+			Box2DXDebug.Assert(id1 != NullProxy && id2 != NullProxy);
 			Box2DXDebug.Assert(_pairBufferCount < Settings.MaxPairs);
 
 			Pair pair = Find(id1, id2);
@@ -417,7 +417,7 @@ namespace Alis.Core.Physic.Collision
 			if (proxyId1 > proxyId2)
 				Common.Math.Swap<int>(ref proxyId1, ref proxyId2);
 
-			uint hash = (uint)(Hash((uint)proxyId1, (uint)proxyId2) & PairManager.TableMask);
+			uint hash = (uint)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
 
 			return Find(proxyId1, proxyId2, hash);
 		}
@@ -433,12 +433,12 @@ namespace Alis.Core.Physic.Collision
 		{
 			int index = _hashTable[hash];
 
-			while (index != PairManager.NullPair && Equals(_pairs[index], proxyId1, proxyId2) == false)
+			while (index != NullPair && Equals(_pairs[index], proxyId1, proxyId2) == false)
 			{
 				index = _pairs[index].Next;
 			}
 
-			if (index == PairManager.NullPair)
+			if (index == NullPair)
 			{
 				return null;
 			}
@@ -460,7 +460,7 @@ namespace Alis.Core.Physic.Collision
 			if (proxyId1 > proxyId2)
 				Common.Math.Swap<int>(ref proxyId1, ref proxyId2);
 
-			int hash = (int)(Hash((uint)proxyId1, (uint)proxyId2) & PairManager.TableMask);
+			int hash = (int)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
 
 			Pair pair = Find(proxyId1, proxyId2, (uint)hash);
 			if (pair != null)
@@ -468,7 +468,7 @@ namespace Alis.Core.Physic.Collision
 				return pair;
 			}
 
-			Box2DXDebug.Assert(_pairCount < Settings.MaxPairs && _freePair != PairManager.NullPair);
+			Box2DXDebug.Assert(_pairCount < Settings.MaxPairs && _freePair != NullPair);
 
 			ushort pairIndex = _freePair;
 			pair = _pairs[pairIndex];
@@ -501,15 +501,15 @@ namespace Alis.Core.Physic.Collision
 			if (proxyId1 > proxyId2) 
 				Common.Math.Swap<int>(ref proxyId1, ref proxyId2);
 
-			int hash = (int)(Hash((uint)proxyId1, (uint)proxyId2) & PairManager.TableMask);
+			int hash = (int)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
 
 			//uint16* node = &m_hashTable[hash];
 			ushort node = _hashTable[hash];
 			bool ion = false;
 			int ni = 0;
-			while (node != PairManager.NullPair)
-			{
-				if (Equals(_pairs[node], proxyId1, proxyId2))
+			while (node != NullPair)
+            {
+                if (Equals(_pairs[node], proxyId1, proxyId2))
 				{
 					//uint16 index = *node;
 					//*node = m_pairs[*node].next;
@@ -528,8 +528,8 @@ namespace Alis.Core.Physic.Collision
 
 					// Scrub
 					pair.Next = _freePair;
-					pair.ProxyId1 = PairManager.NullProxy;
-					pair.ProxyId2 = PairManager.NullProxy;
+					pair.ProxyId1 = NullProxy;
+					pair.ProxyId2 = NullProxy;
 					pair.UserData = null;
 					pair.Status = 0;
 
@@ -537,14 +537,12 @@ namespace Alis.Core.Physic.Collision
 					--_pairCount;
 					return userData;
 				}
-				else
-				{
-					//node = &m_pairs[*node].next;
-					ni = node;
-					node = _pairs[ni].Next;
-					ion = true;
-				}
-			}
+
+                //node = &m_pairs[*node].next;
+                ni = node;
+                node = _pairs[ni].Next;
+                ion = true;
+            }
 
 			Box2DXDebug.Assert(false);
 			return null;
@@ -593,10 +591,10 @@ namespace Alis.Core.Physic.Collision
 		private void ValidateTable()
 		{
 #if DEBUG
-			for (int i = 0; i < PairManager.TableCapacity; ++i)
+			for (int i = 0; i < TableCapacity; ++i)
 			{
 				ushort index = _hashTable[i];
-				while (index != PairManager.NullPair)
+				while (index != NullPair)
 				{
 					Pair pair = _pairs[index];
 					Box2DXDebug.Assert(pair.IsBuffered() == false);
@@ -674,17 +672,14 @@ namespace Alis.Core.Physic.Collision
 		{
 			if (pair1.ProxyId1 < pair2.ProxyId1)
 				return 1;
-			else if (pair1.ProxyId1 > pair2.ProxyId1)
-				return -1;
-			else
-			{
-				if (pair1.ProxyId2 < pair2.ProxyId2)
-					return 1;
-				else if (pair1.ProxyId2 > pair2.ProxyId2)
-					return -1;
-			}
+            if (pair1.ProxyId1 > pair2.ProxyId1)
+                return -1;
+            if (pair1.ProxyId2 < pair2.ProxyId2)
+                return 1;
+            if (pair1.ProxyId2 > pair2.ProxyId2)
+                return -1;
 
-			return 0;
+            return 0;
 		}
 	}
 }
