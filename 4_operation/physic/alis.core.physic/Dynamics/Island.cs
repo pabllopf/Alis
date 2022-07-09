@@ -413,13 +413,13 @@ namespace Alis.Core.Physic.Dynamics
                         continue;
                     }
 
-                    if ((b.Flags & Body.BodyFlags.AllowSleep) == 0)
+                    if ((b.Flags & BodyFlags.AllowSleep) == 0)
                     {
                         b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
                     }
 
-                    if ((b.Flags & Body.BodyFlags.AllowSleep) == 0 ||
+                    if ((b.Flags & BodyFlags.AllowSleep) == 0 ||
 #if TARGET_FLOAT32_IS_FIXED
 						Common.Math.Abs(b._angularVelocity) > Settings.AngularSleepTolerance ||
 						Common.Math.Abs(b._linearVelocity.X) > Settings.LinearSleepTolerance ||
@@ -444,7 +444,7 @@ namespace Alis.Core.Physic.Dynamics
                     for (int i = 0; i < BodyCount; ++i)
                     {
                         Body b = Bodies[i];
-                        b.Flags |= Body.BodyFlags.Sleep;
+                        b.Flags |= BodyFlags.Sleep;
                         b.LinearVelocity = Vec2.Zero;
                         b.AngularVelocity = 0.0f;
                     }

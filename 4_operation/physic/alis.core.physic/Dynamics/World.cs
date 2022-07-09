@@ -869,7 +869,7 @@ namespace Alis.Core.Physic.Dynamics
             // Clear all the island flags.
             for (Body b = _bodyList; b != null; b = b.Next)
             {
-                b.Flags &= ~Body.BodyFlags.Island;
+                b.Flags &= ~BodyFlags.Island;
             }
 
             for (Contact c = _contactList; c != null; c = c.Next)
@@ -889,7 +889,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 for (Body seed = _bodyList; seed != null; seed = seed.Next)
                 {
-                    if ((seed.Flags & (Body.BodyFlags.Island | Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) != 0)
+                    if ((seed.Flags & (BodyFlags.Island | BodyFlags.Sleep | BodyFlags.Frozen)) != 0)
                     {
                         continue;
                     }
@@ -903,7 +903,7 @@ namespace Alis.Core.Physic.Dynamics
                     island.Clear();
                     int stackCount = 0;
                     stack[stackCount++] = seed;
-                    seed.Flags |= Body.BodyFlags.Island;
+                    seed.Flags |= BodyFlags.Island;
 
                     // Perform a depth first search (DFS) on the constraint graph.
                     while (stackCount > 0)
@@ -913,7 +913,7 @@ namespace Alis.Core.Physic.Dynamics
                         island.Add(b);
 
                         // Make sure the body is awake.
-                        b.Flags &= ~Body.BodyFlags.Sleep;
+                        b.Flags &= ~BodyFlags.Sleep;
 
                         // To keep islands as small as possible, we don't
                         // propagate islands across static bodies.
@@ -944,14 +944,14 @@ namespace Alis.Core.Physic.Dynamics
                             Body other = cn.Other;
 
                             // Was the other body already added to this island?
-                            if ((other.Flags & Body.BodyFlags.Island) != 0)
+                            if ((other.Flags & BodyFlags.Island) != 0)
                             {
                                 continue;
                             }
 
                             Box2DXDebug.Assert(stackCount < stackSize);
                             stack[stackCount++] = other;
-                            other.Flags |= Body.BodyFlags.Island;
+                            other.Flags |= BodyFlags.Island;
                         }
 
                         // Search all joints connect to this body.
@@ -966,14 +966,14 @@ namespace Alis.Core.Physic.Dynamics
                             jn.Joint.IslandFlag = true;
 
                             Body other = jn.Other;
-                            if ((other.Flags & Body.BodyFlags.Island) != 0)
+                            if ((other.Flags & BodyFlags.Island) != 0)
                             {
                                 continue;
                             }
 
                             Box2DXDebug.Assert(stackCount < stackSize);
                             stack[stackCount++] = other;
-                            other.Flags |= Body.BodyFlags.Island;
+                            other.Flags |= BodyFlags.Island;
                         }
                     }
 
@@ -986,7 +986,7 @@ namespace Alis.Core.Physic.Dynamics
                         Body b = island.Bodies[i];
                         if (b.IsStatic())
                         {
-                            b.Flags &= ~Body.BodyFlags.Island;
+                            b.Flags &= ~BodyFlags.Island;
                         }
                     }
                 }
@@ -997,7 +997,7 @@ namespace Alis.Core.Physic.Dynamics
             // Synchronize shapes, check for out of range bodies.
             for (Body b = _bodyList; b != null; b = b.GetNext())
             {
-                if ((b.Flags & (Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) != 0)
+                if ((b.Flags & (BodyFlags.Sleep | BodyFlags.Frozen)) != 0)
                 {
                     continue;
                 }
@@ -1048,7 +1048,7 @@ namespace Alis.Core.Physic.Dynamics
 
             for (Body b = _bodyList; b != null; b = b.Next)
             {
-                b.Flags &= ~Body.BodyFlags.Island;
+                b.Flags &= ~BodyFlags.Island;
                 b.Sweep.T0 = 0.0f;
             }
 
@@ -1178,7 +1178,7 @@ namespace Alis.Core.Physic.Dynamics
                 int queueStart = 0; // starting index for queue
                 int queueSize = 0; // elements in queue
                 queue[queueStart + queueSize++] = seed;
-                seed.Flags |= Body.BodyFlags.Island;
+                seed.Flags |= BodyFlags.Island;
 
                 // Perform a breadth first search (BFS) on the contact/joint graph.
                 while (queueSize > 0)
@@ -1190,7 +1190,7 @@ namespace Alis.Core.Physic.Dynamics
                     island.Add(b);
 
                     // Make sure the body is awake.
-                    b.Flags &= ~Body.BodyFlags.Sleep;
+                    b.Flags &= ~BodyFlags.Sleep;
 
                     // To keep islands as small as possible, we don't
                     // propagate islands across static bodies.
@@ -1228,7 +1228,7 @@ namespace Alis.Core.Physic.Dynamics
                         Body other = cEdge.Other;
 
                         // Was the other body already added to this island?
-                        if ((int) (other.Flags & Body.BodyFlags.Island) == 1)
+                        if ((int) (other.Flags & BodyFlags.Island) == 1)
                         {
                             continue;
                         }
@@ -1243,7 +1243,7 @@ namespace Alis.Core.Physic.Dynamics
                         //Box2DXDebug.Assert(queueStart + queueSize < queueCapacity);
                         queue[queueStart + queueSize] = other;
                         ++queueSize;
-                        other.Flags |= Body.BodyFlags.Island;
+                        other.Flags |= BodyFlags.Island;
                     }
 
                     for (JointEdge jEdge = b.JointList; jEdge != null; jEdge = jEdge.Next)
@@ -1264,7 +1264,7 @@ namespace Alis.Core.Physic.Dynamics
 
                         Body other = jEdge.Other;
 
-                        if ((int) (other.Flags & Body.BodyFlags.Island) == 1)
+                        if ((int) (other.Flags & BodyFlags.Island) == 1)
                         {
                             continue;
                         }
@@ -1278,7 +1278,7 @@ namespace Alis.Core.Physic.Dynamics
                         //Box2DXDebug.Assert(queueStart + queueSize < queueCapacity);
                         queue[queueStart + queueSize] = other;
                         ++queueSize;
-                        other.Flags |= Body.BodyFlags.Island;
+                        other.Flags |= BodyFlags.Island;
                     }
                 }
 
@@ -1297,9 +1297,9 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // Allow bodies to participate in future TOI islands.
                     Body b = island.Bodies[i];
-                    b.Flags &= ~Body.BodyFlags.Island;
+                    b.Flags &= ~BodyFlags.Island;
 
-                    if ((int) (b.Flags & (Body.BodyFlags.Sleep | Body.BodyFlags.Frozen)) == 1)
+                    if ((int) (b.Flags & (BodyFlags.Sleep | BodyFlags.Frozen)) == 1)
                     {
                         continue;
                     }

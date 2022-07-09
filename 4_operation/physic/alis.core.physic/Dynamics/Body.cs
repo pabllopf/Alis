@@ -44,64 +44,6 @@ namespace Alis.Core.Physic.Dynamics
     public class Body : IDisposable
     {
         /// <summary>
-        ///     The body flags enum
-        /// </summary>
-        [Flags]
-        public enum BodyFlags
-        {
-            /// <summary>
-            ///     The frozen body flags
-            /// </summary>
-            Frozen = 0x0002,
-
-            /// <summary>
-            ///     The island body flags
-            /// </summary>
-            Island = 0x0004,
-
-            /// <summary>
-            ///     The sleep body flags
-            /// </summary>
-            Sleep = 0x0008,
-
-            /// <summary>
-            ///     The allow sleep body flags
-            /// </summary>
-            AllowSleep = 0x0010,
-
-            /// <summary>
-            ///     The bullet body flags
-            /// </summary>
-            Bullet = 0x0020,
-
-            /// <summary>
-            ///     The fixed rotation body flags
-            /// </summary>
-            FixedRotation = 0x0040
-        }
-
-        /// <summary>
-        ///     The body type enum
-        /// </summary>
-        public enum BodyType
-        {
-            /// <summary>
-            ///     The static body type
-            /// </summary>
-            Static,
-
-            /// <summary>
-            ///     The dynamic body type
-            /// </summary>
-            Dynamic,
-
-            /// <summary>
-            ///     The max types body type
-            /// </summary>
-            MaxTypes
-        }
-
-        /// <summary>
         ///     The angular damping
         /// </summary>
         internal float AngularDamping;

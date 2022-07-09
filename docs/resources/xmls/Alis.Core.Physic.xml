@@ -2874,182 +2874,127 @@
                 A rigid body. These are created via World.CreateBody.
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Body.BodyFlags">
-            <summary>
-                The body flags enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.Frozen">
-            <summary>
-                The frozen body flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.Island">
-            <summary>
-                The island body flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.Sleep">
-            <summary>
-                The sleep body flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.AllowSleep">
-            <summary>
-                The allow sleep body flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.Bullet">
-            <summary>
-                The bullet body flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.FixedRotation">
-            <summary>
-                The fixed rotation body flags
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Body.BodyType">
-            <summary>
-                The body type enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyType.Static">
-            <summary>
-                The static body type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyType.Dynamic">
-            <summary>
-                The dynamic body type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyType.MaxTypes">
-            <summary>
-                The max types body type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._angularDamping">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.AngularDamping">
             <summary>
                 The angular damping
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._angularVelocity">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.AngularVelocity">
             <summary>
                 The angular velocity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._contactList">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.ContactList">
             <summary>
                 The contact list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._controllerList">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.ControllerList">
             <summary>
                 The controller list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._fixtureCount">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.FixtureCount">
             <summary>
                 The fixture count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._fixtureList">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.FixtureList">
             <summary>
                 The fixture list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._flags">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.Flags">
             <summary>
                 The flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._force">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.Force">
             <summary>
                 The force
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._I">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.I">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._invI">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.InvI">
             <summary>
                 The inv
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._invMass">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.InvMass">
             <summary>
                 The inv mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._islandIndex">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.IslandIndex">
             <summary>
                 The island index
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._jointList">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.JointList">
             <summary>
                 The joint list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._linearDamping">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.LinearDamping">
             <summary>
                 The linear damping
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._linearVelocity">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.LinearVelocity">
             <summary>
                 The linear velocity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._mass">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.Mass">
             <summary>
                 The mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._next">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.Next">
             <summary>
                 The next
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._prev">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.Prev">
             <summary>
                 The prev
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._sleepTime">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.SleepTime">
             <summary>
                 The sleep time
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._sweep">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.Sweep">
             <summary>
                 The sweep
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._torque">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.Torque">
             <summary>
                 The torque
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._type">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._userData">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.userData">
             <summary>
                 The user data
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._world">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.world">
             <summary>
                 The world
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body._xf">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.Xf">
             <summary>
                 The xf
             </summary>
@@ -3521,6 +3466,61 @@
                 other moving bodies? Note that all bodies are prevented from tunneling through
                 static bodies.
                 @warning You should use this flag sparingly since it increases processing time.
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Dynamics.BodyFlags">
+            <summary>
+                The body flags enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyFlags.Frozen">
+            <summary>
+                The frozen body flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyFlags.Island">
+            <summary>
+                The island body flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyFlags.Sleep">
+            <summary>
+                The sleep body flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyFlags.AllowSleep">
+            <summary>
+                The allow sleep body flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyFlags.Bullet">
+            <summary>
+                The bullet body flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyFlags.FixedRotation">
+            <summary>
+                The fixed rotation body flags
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Dynamics.BodyType">
+            <summary>
+            Body type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyType.Static">
+            <summary>
+                The static body type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyType.Dynamic">
+            <summary>
+                The dynamic body type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.BodyType.MaxTypes">
+            <summary>
+                The max types body type
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.BoundaryListener">
@@ -5900,107 +5900,107 @@
                 model joint friction.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._a1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.A1">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._a2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.A2">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._axis">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.Axis">
             <summary>
                 The perp
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._perp">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.Perp">
             <summary>
                 The perp
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._enableLimit">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._enableLimitx">
             <summary>
                 The enable limit
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._enableMotor">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._enableMotorx">
             <summary>
                 The enable motor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._impulse">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.Impulse">
             <summary>
                 The impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._K">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.K">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._limitState">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.LimitState">
             <summary>
                 The limit state
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._localAnchor1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.LocalAnchor1">
             <summary>
                 The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._localAnchor2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.LocalAnchor2">
             <summary>
                 The local anchor
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._localXAxis1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.LocalXAxis1">
             <summary>
                 The local axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._localYAxis1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.LocalYAxis1">
             <summary>
                 The local axis
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._lowerTranslation">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.LowerTranslation">
             <summary>
                 The lower translation
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._maxMotorForce">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.MaxMotorForce">
             <summary>
                 The max motor force
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._motorImpulse">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.MotorImpulse">
             <summary>
                 The motor impulse
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._motorMass">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.MotorMass">
             <summary>
                 The motor mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._motorSpeed">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.MotorSpeed">
             <summary>
                 The motor speed
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._s1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.S1">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._s2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.S2">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._upperTranslation">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.UpperTranslation">
             <summary>
                 The upper translation
             </summary>
@@ -6025,14 +6025,14 @@
             <summary>
                 Gets the reaction force using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.LineJoint.GetReactionTorque(System.Single)">
             <summary>
                 Gets the reaction torque using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt"></param>
             <returns>The float</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.LineJoint.GetJointTranslation">
