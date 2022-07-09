@@ -1378,8 +1378,8 @@ namespace Alis.Core.Physic.Dynamics
 					{
 						CircleShape circle = (CircleShape)fixture.Shape;
 
-						Vec2 center = Common.Math.Mul(xf, circle._position);
-						float radius = circle._radius;
+						Vec2 center = Common.Math.Mul(xf, circle.Position);
+						float radius = circle.Radius;
 						Vec2 axis = xf.R.col1;
 
 						_debugDraw.DrawSolidCircle(center, radius, axis, color);
@@ -1389,8 +1389,8 @@ namespace Alis.Core.Physic.Dynamics
 				case ShapeType.PolygonShape:
 					{
 						PolygonShape poly = (PolygonShape)fixture.Shape;
-						int vertexCount = poly._vertexCount;
-						Vec2[] localVertices = poly._vertices;
+						int vertexCount = poly.VertexCount;
+						Vec2[] localVertices = poly.Vertices;
 
 						Box2DXDebug.Assert(vertexCount <= Settings.MaxPolygonVertices);
 						Vec2[] vertices = new Vec2[Settings.MaxPolygonVertices];

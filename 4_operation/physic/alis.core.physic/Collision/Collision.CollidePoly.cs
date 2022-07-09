@@ -34,12 +34,12 @@ namespace Alis.Core.Physic.Collision
 		/// </summary>
 		public static float EdgeSeparation(PolygonShape poly1, XForm xf1, int edge1, PolygonShape poly2, XForm xf2)
 		{
-			int count1 = poly1._vertexCount;
-			Vec2[] vertices1 = poly1._vertices;
-			Vec2[] normals1 = poly1._normals;
+			int count1 = poly1.VertexCount;
+			Vec2[] vertices1 = poly1.Vertices;
+			Vec2[] normals1 = poly1.Normals;
 
-			int count2 = poly2._vertexCount;
-			Vec2[] vertices2 = poly2._vertices;
+			int count2 = poly2.VertexCount;
+			Vec2[] vertices2 = poly2.Vertices;
 
 			Box2DXDebug.Assert(0 <= edge1 && edge1 < count1);
 
@@ -71,11 +71,11 @@ namespace Alis.Core.Physic.Collision
 		/// </summary>
 		public static float FindMaxSeparation(ref int edgeIndex, PolygonShape poly1, XForm xf1, PolygonShape poly2, XForm xf2)
 		{
-			int count1 = poly1._vertexCount;
-			Vec2[] normals1 = poly1._normals;
+			int count1 = poly1.VertexCount;
+			Vec2[] normals1 = poly1.Normals;
 
 			// Vector pointing from the centroid of poly1 to the centroid of poly2.
-			Vec2 d = Math.Mul(xf2, poly2._centroid) - Math.Mul(xf1, poly1._centroid);
+			Vec2 d = Math.Mul(xf2, poly2.Centroid) - Math.Mul(xf1, poly1.Centroid);
 			Vec2 dLocal1 = Math.MulT(xf1.R, d);
 
 			// Find edge normal on poly1 that has the largest projection onto d.
@@ -161,12 +161,12 @@ namespace Alis.Core.Physic.Collision
 		public static void FindIncidentEdge(out ClipVertex[] c,
 			PolygonShape poly1, XForm xf1, int edge1, PolygonShape poly2, XForm xf2)
 		{
-			int count1 = poly1._vertexCount;
-			Vec2[] normals1 = poly1._normals;
+			int count1 = poly1.VertexCount;
+			Vec2[] normals1 = poly1.Normals;
 
-			int count2 = poly2._vertexCount;
-			Vec2[] vertices2 = poly2._vertices;
-			Vec2[] normals2 = poly2._normals;
+			int count2 = poly2.VertexCount;
+			Vec2[] vertices2 = poly2.Vertices;
+			Vec2[] normals2 = poly2.Normals;
 
 			Box2DXDebug.Assert(0 <= edge1 && edge1 < count1);
 
@@ -221,7 +221,7 @@ namespace Alis.Core.Physic.Collision
 			PolygonShape polyA, XForm xfA, PolygonShape polyB, XForm xfB)
 		{
 			manifold.PointCount = 0;
-			float totalRadius = polyA._radius + polyB._radius;
+			float totalRadius = polyA.Radius + polyB.Radius;
 
 			int edgeA = 0;
 			float separationA = FindMaxSeparation(ref edgeA, polyA, xfA, polyB, xfB);
@@ -265,8 +265,8 @@ namespace Alis.Core.Physic.Collision
 			ClipVertex[] incidentEdge;
 			FindIncidentEdge(out incidentEdge, poly1, xf1, edge1, poly2, xf2);
 
-			int count1 = poly1._vertexCount;
-			Vec2[] vertices1 = poly1._vertices;
+			int count1 = poly1.VertexCount;
+			Vec2[] vertices1 = poly1.Vertices;
 
 			Vec2 v11 = vertices1[edge1];
 			Vec2 v12 = edge1 + 1 < count1 ? vertices1[edge1 + 1] : vertices1[0];

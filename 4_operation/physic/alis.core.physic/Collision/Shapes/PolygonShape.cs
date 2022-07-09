@@ -30,77 +30,63 @@ namespace Alis.Core.Physic.Collision.Shapes
 	/// </summary>
 	public class PolygonShape : Shape
 	{
-		/// <summary>
-		/// The centroid
-		/// </summary>
-		internal Vec2 _centroid;
-		/// <summary>
-		/// The max polygon vertices
-		/// </summary>
-		internal Vec2[] _vertices = new Vec2[Settings.MaxPolygonVertices];
-		/// <summary>
-		/// The max polygon vertices
-		/// </summary>
-		internal Vec2[] _normals = new Vec2[Settings.MaxPolygonVertices];
+        /// <summary>
+        /// The centroid
+        /// </summary>
+        internal Vec2 Centroid { get; set; }
 
-		/// <summary>
-		/// The vertex count
-		/// </summary>
-		internal int _vertexCount;
+        /// <summary>
+        /// The max polygon vertices
+        /// </summary>
+        internal Vec2[] Normals { get; } = new Vec2[Settings.MaxPolygonVertices];
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the vertex count
 		/// </summary>
-		public int VertexCount
-		{
-			get { return _vertexCount; }
-		}
+		public int VertexCount { get; internal set; }
 
-		/// <summary>
+        /// <summary>
 		/// Gets the value of the vertices
 		/// </summary>
-		public Vec2[] Vertices
-		{
-			get { return _vertices; }
-		}
+		public Vec2[] Vertices { get; } = new Vec2[Settings.MaxPolygonVertices];
 
-		/// <summary>
+        /// <summary>
 		/// Copy vertices. This assumes the vertices define a convex polygon.
 		/// It is assumed that the exterior is the the right of each edge.
 		/// </summary>
 		public void Set(Vec2[] vertices, int count)
 		{
 			Box2DXDebug.Assert(3 <= count && count <= Settings.MaxPolygonVertices);
-			_vertexCount = count;
+			VertexCount = count;
 
 			int i;
 			// Copy vertices.
-			for (i = 0; i < _vertexCount; ++i)
+			for (i = 0; i < VertexCount; ++i)
 			{
-				_vertices[i] = vertices[i];
+				Vertices[i] = vertices[i];
 			}
 
 			// Compute normals. Ensure the edges have non-zero length.
-			for (i = 0; i < _vertexCount; ++i)
+			for (i = 0; i < VertexCount; ++i)
 			{
 				int i1 = i;
 				int i2 = i + 1 < count ? i + 1 : 0;
-				Vec2 edge = _vertices[i2] - _vertices[i1];
+				Vec2 edge = Vertices[i2] - Vertices[i1];
 				Box2DXDebug.Assert(edge.LengthSquared() > Settings.FLT_EPSILON_SQUARED);
-				_normals[i] = Vec2.Cross(edge, 1.0f);
-				_normals[i].Normalize();
+				Normals[i] = Vec2.Cross(edge, 1.0f);
+				Normals[i].Normalize();
 			}
 
 #if DEBUG
 			// Ensure the polygon is convex and the interior
 			// is to the left of each edge.
-			for (i = 0; i < _vertexCount; ++i)
+			for (i = 0; i < VertexCount; ++i)
 			{
 				int i1 = i;
 				int i2 = i + 1 < count ? i + 1 : 0;
-				Vec2 edge = _vertices[i2] - _vertices[i1];
+				Vec2 edge = Vertices[i2] - Vertices[i1];
 
-				for (int j = 0; j < _vertexCount; ++j)
+				for (int j = 0; j < VertexCount; ++j)
 				{
 					// Don't check vertices on the current edge.
 					if (j == i1 || j == i2)
@@ -108,7 +94,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 						continue;
 					}
 
-					Vec2 r = _vertices[j] - _vertices[i1];
+					Vec2 r = Vertices[j] - Vertices[i1];
 
 					// Your polygon is non-convex (it has an indentation) or
 					// has colinear edges.
@@ -119,7 +105,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 #endif
 
 			// Compute the polygon centroid.
-			_centroid = ComputeCentroid(_vertices, _vertexCount);
+			Centroid = ComputeCentroid(Vertices, VertexCount);
 		}
 
 		/// <summary>
@@ -129,16 +115,16 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <param name="hy">The half-height.</param>
 		public void SetAsBox(float hx, float hy)
 		{
-			_vertexCount = 4;
-			_vertices[0].Set(-hx, -hy);
-			_vertices[1].Set(hx, -hy);
-			_vertices[2].Set(hx, hy);
-			_vertices[3].Set(-hx, hy);
-			_normals[0].Set(0.0f, -1.0f);
-			_normals[1].Set(1.0f, 0.0f);
-			_normals[2].Set(0.0f, 1.0f);
-			_normals[3].Set(-1.0f, 0.0f);
-			_centroid = new Vec2(0);
+			VertexCount = 4;
+			Vertices[0].Set(-hx, -hy);
+			Vertices[1].Set(hx, -hy);
+			Vertices[2].Set(hx, hy);
+			Vertices[3].Set(-hx, hy);
+			Normals[0].Set(0.0f, -1.0f);
+			Normals[1].Set(1.0f, 0.0f);
+			Normals[2].Set(0.0f, 1.0f);
+			Normals[3].Set(-1.0f, 0.0f);
+			Centroid = new Vec2(0);
 		}
 
 
@@ -158,10 +144,10 @@ namespace Alis.Core.Physic.Collision.Shapes
 			xf.R.Set(angle);
 
 			// Transform vertices and normals.
-			for (int i = 0; i < _vertexCount; ++i)
+			for (int i = 0; i < VertexCount; ++i)
 			{
-				_vertices[i] = Math.Mul(xf, _vertices[i]);
-				_normals[i] = Math.Mul(xf.R, _normals[i]);
+				Vertices[i] = Math.Mul(xf, Vertices[i]);
+				Normals[i] = Math.Mul(xf.R, Normals[i]);
 			}
 		}
 
@@ -172,13 +158,13 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <param name="v2">The </param>
 		public void SetAsEdge(Vec2 v1, Vec2 v2)
 		{
-			_vertexCount = 2;
-			_vertices[0] = v1;
-			_vertices[1] = v2;
-			_centroid = 0.5f * (v1 + v2);
-			_normals[0] = Vec2.Cross(v2 - v1, 1.0f);
-			_normals[0].Normalize();
-			_normals[1] = -_normals[0];
+			VertexCount = 2;
+			Vertices[0] = v1;
+			Vertices[1] = v2;
+			Centroid = 0.5f * (v1 + v2);
+			Normals[0] = Vec2.Cross(v2 - v1, 1.0f);
+			Normals[0].Normalize();
+			Normals[1] = -Normals[0];
 		}
 
 		/// <summary>
@@ -191,10 +177,10 @@ namespace Alis.Core.Physic.Collision.Shapes
 		{
 			Vec2 pLocal = Math.MulT(xf.R, p - xf.Position);
 
-			int vc = _vertexCount;
+			int vc = VertexCount;
 			for (int i = 0; i < vc; ++i)
 			{
-				float dot = Vec2.Dot(_normals[i], pLocal - _vertices[i]);
+				float dot = Vec2.Dot(Normals[i], pLocal - Vertices[i]);
 				if (dot > 0.0f)
 				{
 					return false;
@@ -225,13 +211,13 @@ namespace Alis.Core.Physic.Collision.Shapes
 			Vec2 d = p2 - p1;
 			int index = -1;
 
-			for (int i = 0; i < _vertexCount; ++i)
+			for (int i = 0; i < VertexCount; ++i)
 			{
 				// p = p1 + a * d
 				// dot(normal, p - v) = 0
 				// dot(normal, p1 - v) + a * dot(normal, d) = 0
-				float numerator = Vec2.Dot(_normals[i], _vertices[i] - p1);
-				float denominator = Vec2.Dot(_normals[i], d);
+				float numerator = Vec2.Dot(Normals[i], Vertices[i] - p1);
+				float denominator = Vec2.Dot(Normals[i], d);
 
 				if (denominator == 0.0f)
 				{
@@ -272,7 +258,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			if (index >= 0)
 			{
 				lambda = lower;
-				normal = Math.Mul(xf.R, _normals[index]);
+				normal = Math.Mul(xf.R, Normals[index]);
 				return SegmentCollide.HitCollide;
 			}
 
@@ -285,19 +271,19 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="aabb">The aabb</param>
 		/// <param name="xf">The xf</param>
-		public override void ComputeAABB(out AABB aabb, XForm xf)
+		public override void ComputeAabb(out AABB aabb, XForm xf)
 		{
-			Vec2 lower = Math.Mul(xf, _vertices[0]);
+			Vec2 lower = Math.Mul(xf, Vertices[0]);
 			Vec2 upper = lower;
 
-			for (int i = 1; i < _vertexCount; ++i)
+			for (int i = 1; i < VertexCount; ++i)
 			{
-				Vec2 v = Math.Mul(xf, _vertices[i]);
+				Vec2 v = Math.Mul(xf, Vertices[i]);
 				lower = Math.Min(lower, v);
 				upper = Math.Max(upper, v);
 			}
 
-			Vec2 r = new Vec2(_radius);
+			Vec2 r = new Vec2(Radius);
 			aabb.LowerBound = lower - r;
 			aabb.UpperBound = upper + r;
 		}
@@ -333,7 +319,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 			//
 			// The rest of the derivation is handled by computer algebra.
 
-			Box2DXDebug.Assert(_vertexCount >= 3);
+			Box2DXDebug.Assert(VertexCount >= 3);
 
 			Vec2 center = new Vec2(0);
 			float area = 0.0f;
@@ -354,12 +340,12 @@ namespace Alis.Core.Physic.Collision.Shapes
 
 			const float k_inv3 = 1.0f / 3.0f;
 
-			for (int i = 0; i < _vertexCount; ++i)
+			for (int i = 0; i < VertexCount; ++i)
 			{
 				// Triangle vertices.
 				Vec2 p1 = pRef;
-				Vec2 p2 = _vertices[i];
-				Vec2 p3 = i + 1 < _vertexCount ? _vertices[i + 1] : _vertices[0];
+				Vec2 p2 = Vertices[i];
+				Vec2 p3 = i + 1 < VertexCount ? Vertices[i + 1] : Vertices[0];
 
 				Vec2 e1 = p2 - p1;
 				Vec2 e2 = p3 - p1;
@@ -415,9 +401,9 @@ namespace Alis.Core.Physic.Collision.Shapes
 
 			bool lastSubmerged = false;
 			int i;
-			for (i = 0; i < _vertexCount; i++)
+			for (i = 0; i < VertexCount; i++)
 			{
-				depths[i] = Vec2.Dot(normalL, _vertices[i]) - offsetL;
+				depths[i] = Vec2.Dot(normalL, Vertices[i]) - offsetL;
 				bool isSubmerged = depths[i] < -Settings.FLT_EPSILON;
 				if (i > 0)
 				{
@@ -459,29 +445,29 @@ namespace Alis.Core.Physic.Collision.Shapes
                 case 1:
 					if (intoIndex == -1)
 					{
-						intoIndex = _vertexCount - 1;
+						intoIndex = VertexCount - 1;
 					}
 					else
 					{
-						outoIndex = _vertexCount - 1;
+						outoIndex = VertexCount - 1;
 					}
 					break;
 			}
-			int intoIndex2 = (intoIndex + 1) % _vertexCount;
-			int outoIndex2 = (outoIndex + 1) % _vertexCount;
+			int intoIndex2 = (intoIndex + 1) % VertexCount;
+			int outoIndex2 = (outoIndex + 1) % VertexCount;
 
 			float intoLambda = (0 - depths[intoIndex]) / (depths[intoIndex2] - depths[intoIndex]);
 			float outoLambda = (0 - depths[outoIndex]) / (depths[outoIndex2] - depths[outoIndex]);
 
-			Vec2 intoVec = new Vec2(_vertices[intoIndex].X * (1 - intoLambda) + _vertices[intoIndex2].X * intoLambda,
-							_vertices[intoIndex].Y * (1 - intoLambda) + _vertices[intoIndex2].Y * intoLambda);
-			Vec2 outoVec = new Vec2(_vertices[outoIndex].X * (1 - outoLambda) + _vertices[outoIndex2].X * outoLambda,
-							_vertices[outoIndex].Y * (1 - outoLambda) + _vertices[outoIndex2].Y * outoLambda);
+			Vec2 intoVec = new Vec2(Vertices[intoIndex].X * (1 - intoLambda) + Vertices[intoIndex2].X * intoLambda,
+							Vertices[intoIndex].Y * (1 - intoLambda) + Vertices[intoIndex2].Y * intoLambda);
+			Vec2 outoVec = new Vec2(Vertices[outoIndex].X * (1 - outoLambda) + Vertices[outoIndex2].X * outoLambda,
+							Vertices[outoIndex].Y * (1 - outoLambda) + Vertices[outoIndex2].Y * outoLambda);
 
 			//Initialize accumulator
 			float area = 0;
 			Vec2 center = new Vec2(0);
-			Vec2 p2 = _vertices[intoIndex2];
+			Vec2 p2 = Vertices[intoIndex2];
 			Vec2 p3;
 
 			const float k_inv3 = 1.0f / 3.0f;
@@ -490,11 +476,11 @@ namespace Alis.Core.Physic.Collision.Shapes
 			i = intoIndex2;
 			while (i != outoIndex2)
 			{
-				i = (i + 1) % _vertexCount;
+				i = (i + 1) % VertexCount;
 				if (i == outoIndex2)
 					p3 = outoVec;
 				else
-					p3 = _vertices[i];
+					p3 = Vertices[i];
 				//Add the triangle formed by intoVec,p2,p3
 				{
 					Vec2 e1 = p2 - intoVec;
@@ -529,12 +515,12 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <returns>The float</returns>
 		public override float ComputeSweepRadius(Vec2 pivot)
 		{
-			int vCount = _vertexCount;
+			int vCount = VertexCount;
 			Box2DXDebug.Assert(vCount > 0);
-			float sr = Vec2.DistanceSquared(_vertices[0], pivot);
+			float sr = Vec2.DistanceSquared(Vertices[0], pivot);
 			for (int i = 1; i < vCount; ++i)
 			{
-				sr = Math.Max(sr, Vec2.DistanceSquared(_vertices[i], pivot));
+				sr = Math.Max(sr, Vec2.DistanceSquared(Vertices[i], pivot));
 			}
 
 			return Math.Sqrt(sr);
@@ -546,10 +532,10 @@ namespace Alis.Core.Physic.Collision.Shapes
 		public override int GetSupport(Vec2 d)
 		{
 			int bestIndex = 0;
-			float bestValue = Vec2.Dot(_vertices[0], d);
-			for (int i = 1; i < _vertexCount; ++i)
+			float bestValue = Vec2.Dot(Vertices[0], d);
+			for (int i = 1; i < VertexCount; ++i)
 			{
-				float value = Vec2.Dot(_vertices[i], d);
+				float value = Vec2.Dot(Vertices[i], d);
 				if (value > bestValue)
 				{
 					bestIndex = i;
@@ -568,10 +554,10 @@ namespace Alis.Core.Physic.Collision.Shapes
 		public override Vec2 GetSupportVertex(Vec2 d)
 		{
 			int bestIndex = 0;
-			float bestValue = Vec2.Dot(_vertices[0], d);
-			for (int i = 1; i < _vertexCount; ++i)
+			float bestValue = Vec2.Dot(Vertices[0], d);
+			for (int i = 1; i < VertexCount; ++i)
 			{
-				float value = Vec2.Dot(_vertices[i], d);
+				float value = Vec2.Dot(Vertices[i], d);
 				if (value > bestValue)
 				{
 					bestIndex = i;
@@ -579,7 +565,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 				}
 			}
 
-			return _vertices[bestIndex];
+			return Vertices[bestIndex];
 		}
 
 		/// <summary>
@@ -589,8 +575,8 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <returns>The vec</returns>
 		public override Vec2 GetVertex(int index)
 		{
-			Box2DXDebug.Assert(0 <= index && index < _vertexCount);
-			return _vertices[index];
+			Box2DXDebug.Assert(0 <= index && index < VertexCount);
+			return Vertices[index];
 		}
 
 		/// <summary>
@@ -650,8 +636,8 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		public PolygonShape()
 		{
-			_type = ShapeType.PolygonShape; 
-			_radius = Settings.PolygonRadius;
+			Type = ShapeType.PolygonShape; 
+			Radius = Settings.PolygonRadius;
 
 			/*Box2DXDebug.Assert(def.Type == ShapeType.PolygonShape);
 			_type = ShapeType.PolygonShape;

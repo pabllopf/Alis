@@ -24,92 +24,22 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
-	/// <summary>
-	/// This holds the mass data computed for a shape.
-	/// </summary>
-	public struct MassData
-	{
-		/// <summary>
-		/// The mass of the shape, usually in kilograms.
-		/// </summary>
-		public float Mass;
-
-		/// <summary>
-		/// The position of the shape's centroid relative to the shape's origin.
-		/// </summary>
-		public Vec2 Center;
-
-		/// <summary>
-		/// The rotational inertia of the shape.
-		/// </summary>
-		public float I;
-	}
-
-	/// <summary>
-	/// The various collision shape types supported by Box2D.
-	/// </summary>
-	public enum ShapeType
-	{
-		/// <summary>
-		/// The unknown shape shape type
-		/// </summary>
-		UnknownShape = -1,
-		/// <summary>
-		/// The circle shape shape type
-		/// </summary>
-		CircleShape,
-		/// <summary>
-		/// The polygon shape shape type
-		/// </summary>
-		PolygonShape,
-		/// <summary>
-		/// The edge shape shape type
-		/// </summary>
-		EdgeShape,
-		/// <summary>
-		/// The shape type count shape type
-		/// </summary>
-		ShapeTypeCount,
-	}
-
-	/// <summary>
-	/// Returns code from TestSegment
-	/// </summary>
-	public enum SegmentCollide
-	{
-		/// <summary>
-		/// The start inside collide segment collide
-		/// </summary>
-		StartInsideCollide = -1,
-		/// <summary>
-		/// The miss collide segment collide
-		/// </summary>
-		MissCollide = 0,
-		/// <summary>
-		/// The hit collide segment collide
-		/// </summary>
-		HitCollide = 1
-	}
-
-	/// <summary>
+    /// <summary>
 	/// A shape is used for collision detection. You can create a shape however you like.
 	/// Shapes used for simulation in World are created automatically when a Fixture is created.
 	/// </summary>
 	public abstract class Shape : IDisposable
 	{
-		#region Fields
-
-		/// <summary>
+        /// <summary>
 		/// The unknown shape
 		/// </summary>
-		protected ShapeType _type = ShapeType.UnknownShape;
-		/// <summary>
+		protected ShapeType Type = ShapeType.UnknownShape;
+		
+        /// <summary>
 		/// The radius
 		/// </summary>
-		internal float _radius;
-
-		#endregion Fields
-
+		internal float Radius;
+        
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Shape"/> class
 		/// </summary>
@@ -140,7 +70,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="aabb">Returns the axis aligned box.</param>
 		/// <param name="xf">The world transform of the shape.</param>
-		public abstract void ComputeAABB(out AABB aabb, XForm xf);
+		public abstract void ComputeAabb(out AABB aabb, XForm xf);
 
         /// <summary>
         /// Compute the mass properties of this shape using its dimensions and density.

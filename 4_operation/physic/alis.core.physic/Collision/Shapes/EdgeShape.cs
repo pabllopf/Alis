@@ -36,19 +36,20 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
 		/// The next edge
 		/// </summary>
-		public EdgeShape _nextEdge;
+		public EdgeShape NextEdge;
+        
 		/// <summary>
 		/// The prev edge
 		/// </summary>
-		public EdgeShape _prevEdge;
+		public EdgeShape PrevEdge;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="EdgeShape"/> class
 		/// </summary>
 		public EdgeShape()
 		{
-			_type = ShapeType.EdgeShape;
-			_radius = Settings.PolygonRadius;
+			Type = ShapeType.EdgeShape;
+			Radius = Settings.PolygonRadius;
 		}
 
 		/// <summary>
@@ -56,14 +57,14 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		public override void Dispose()
 		{
-			if (_prevEdge != null)
+			if (PrevEdge != null)
 			{
-				_prevEdge._nextEdge = null;
+				PrevEdge.NextEdge = null;
 			}
 
-			if (_nextEdge != null)
+			if (NextEdge != null)
 			{
-				_nextEdge._prevEdge = null;
+				NextEdge.PrevEdge = null;
 			}
 		}
 
@@ -109,11 +110,11 @@ namespace Alis.Core.Physic.Collision.Shapes
 			Vec2 d = Math.Mul(transform, Vertex2) - v1;
 			Vec2 n = Vec2.Cross(d, 1.0f);
 
-			float k_slop = 100.0f * Settings.FLT_EPSILON;
+			float kSlop = 100.0f * Settings.FLT_EPSILON;
 			float denom = -Vec2.Dot(r, n);
 
 			// Cull back facing collision and ignore parallel segments.
-			if (denom > k_slop)
+			if (denom > kSlop)
 			{
 				// Does the segment intersect the infinite line associated with this segment?
 				Vec2 b = segment.P1 - v1;
@@ -124,7 +125,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 					float mu2 = -r.X * b.Y + r.Y * b.X;
 
 					// Does the segment intersect this segment?
-					if (-k_slop * denom <= mu2 && mu2 <= denom * (1.0f + k_slop))
+					if (-kSlop * denom <= mu2 && mu2 <= denom * (1.0f + kSlop))
 					{
 						a /= denom;
 						n.Normalize();
@@ -145,12 +146,12 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="aabb">The aabb</param>
 		/// <param name="transform">The transform</param>
-		public override void ComputeAABB(out AABB aabb, XForm transform)
+		public override void ComputeAabb(out AABB aabb, XForm transform)
 		{
 			Vec2 v1 = Math.Mul(transform, Vertex1);
 			Vec2 v2 = Math.Mul(transform, Vertex2);
 
-			Vec2 r = new Vec2(_radius, _radius);
+			Vec2 r = new Vec2(Radius, Radius);
 			aabb.LowerBound = Math.Min(v1, v2) - r;
 			aabb.UpperBound = Math.Max(v1, v2) + r;
 		}
@@ -175,7 +176,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <param name="convex">The convex</param>
 		public void SetPrevEdge(EdgeShape edge, Vec2 cornerDir, bool convex)
 		{
-			_prevEdge = edge;
+			PrevEdge = edge;
 			Corner1Vector = cornerDir;
 			Corner1IsConvex = convex;
 		}
@@ -188,7 +189,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <param name="convex">The convex</param>
 		public void SetNextEdge(EdgeShape edge, Vec2 cornerDir, bool convex)
 		{
-			_nextEdge = edge;
+			NextEdge = edge;
 			Corner2Vector = cornerDir;
 			Corner2IsConvex = convex;
 		}
@@ -233,10 +234,10 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
 
 			// v0,v1,v2 represents a fully submerged triangle
-			float k_inv3 = 1.0f / 3.0f;
+			float kInv3 = 1.0f / 3.0f;
 
 			// Area weighted centroid
-			c = k_inv3 * (v0 + v1 + v2);
+			c = kInv3 * (v0 + v1 + v2);
 
 			Vec2 e1 = v1 - v0;
 			Vec2 e2 = v2 - v0;

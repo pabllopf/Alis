@@ -24,34 +24,7 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
-	/// <summary>
-	/// Inpute parameters for TimeOfImpact
-	/// </summary>
-	public struct TOIInput
-	{
-		/// <summary>
-		/// The sweep
-		/// </summary>
-		public Sweep SweepA;
-		/// <summary>
-		/// The sweep
-		/// </summary>
-		public Sweep SweepB;
-		/// <summary>
-		/// The sweep radius
-		/// </summary>
-		public float SweepRadiusA;
-		/// <summary>
-		/// The sweep radius
-		/// </summary>
-		public float SweepRadiusB;
-		/// <summary>
-		/// The tolerance
-		/// </summary>
-		public float Tolerance;
-	}
-
-	/// <summary>
+    /// <summary>
 	/// The separation function
 	/// </summary>
 	internal struct SeparationFunction
@@ -259,7 +232,7 @@ namespace Alis.Core.Physic.Collision
 			Box2DXDebug.Assert(sweepA.T0 == sweepB.T0);
 			Box2DXDebug.Assert(1.0f - sweepA.T0 > Settings.FLT_EPSILON);
 
-			float radius = shapeA._radius + shapeB._radius;
+			float radius = shapeA.Radius + shapeB.Radius;
 			float tolerance = input.Tolerance;
 
 			float alpha = 0.0f;

@@ -346,8 +346,8 @@ namespace Alis.Core.Physic.Dynamics
 					{
 						CircleShape circle = new CircleShape();
 						CircleDef circleDef = (CircleDef)def;
-						circle._position = circleDef.LocalPosition;
-						circle._radius = circleDef.Radius;
+						circle.Position = circleDef.LocalPosition;
+						circle.Radius = circleDef.Radius;
 						_shape = circle;
 					}
 					break;
@@ -377,7 +377,7 @@ namespace Alis.Core.Physic.Dynamics
 
 			// Create proxy in the broad-phase.
 			AABB aabb;
-			_shape.ComputeAABB(out aabb, xf);
+			_shape.ComputeAabb(out aabb, xf);
 
 			bool inRange = broadPhase.InRange(aabb);
 
@@ -428,8 +428,8 @@ namespace Alis.Core.Physic.Dynamics
 
 			// Compute an AABB that covers the swept shape (may miss some rotation effect).
 			AABB aabb1, aabb2;
-			_shape.ComputeAABB(out aabb1, transform1);
-			_shape.ComputeAABB(out aabb2, transform2);
+			_shape.ComputeAabb(out aabb1, transform1);
+			_shape.ComputeAabb(out aabb2, transform2);
 
 			AABB aabb = new AABB();
 			aabb.Combine(aabb1, aabb2);
@@ -458,7 +458,7 @@ namespace Alis.Core.Physic.Dynamics
 			broadPhase.DestroyProxy(_proxyId);
 
 			AABB aabb;
-			_shape.ComputeAABB(out aabb, transform);
+			_shape.ComputeAabb(out aabb, transform);
 
 			bool inRange = broadPhase.InRange(aabb);
 

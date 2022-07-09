@@ -41,11 +41,11 @@ namespace Alis.Core.Physic.Collision
 		public static void CollideEdgeAndCircle(ref Manifold manifold, EdgeShape edge, XForm transformA, CircleShape circle, XForm transformB)
 		{
 			manifold.PointCount = 0;
-			Vec2 cLocal = Math.MulT(transformA, Math.Mul(transformB, circle._position));
+			Vec2 cLocal = Math.MulT(transformA, Math.Mul(transformB, circle.Position));
 			Vec2 normal = edge.NormalVector;
 			Vec2 v1 = edge.Vertex1;
 			Vec2 v2 = edge.Vertex2;
-			float radius = edge._radius + circle._radius;
+			float radius = edge.Radius + circle.Radius;
 
 			// Barycentric coordinates
 			float u1 = Vec2.Dot(cLocal - v1, v2 - v1);
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Collision
 				manifold.LocalPlaneNormal = cLocal - v1;
 				manifold.LocalPlaneNormal.Normalize();
 				manifold.LocalPoint = v1;
-				manifold.Points[0].LocalPoint = circle._position;
+				manifold.Points[0].LocalPoint = circle.Position;
 				manifold.Points[0].ID.Key = 0;
 			}
 			else if (u2 <= 0.0f)
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Collision
 				manifold.LocalPlaneNormal = cLocal - v2;
 				manifold.LocalPlaneNormal.Normalize();
 				manifold.LocalPoint = v2;
-				manifold.Points[0].LocalPoint = circle._position;
+				manifold.Points[0].LocalPoint = circle.Position;
 				manifold.Points[0].ID.Key = 0;
 			}
 			else
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Collision
 				manifold.Type = ManifoldType.FaceA;
 				manifold.LocalPlaneNormal = separation < 0.0f ? -normal : normal;
 				manifold.LocalPoint = 0.5f * (v1 + v2);
-				manifold.Points[0].LocalPoint = circle._position;
+				manifold.Points[0].LocalPoint = circle.Position;
 				manifold.Points[0].ID.Key = 0;
 			}
 		}

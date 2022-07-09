@@ -27,41 +27,7 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
-	/// <summary>
-	/// Used to warm start Distance.
-	/// Set count to zero on first call.
-	/// </summary>
-	public struct SimplexCache
-	{
-		/// <summary>
-		/// Length or area.
-		/// </summary>
-		public Single Metric;
-		/// <summary>
-		/// The count
-		/// </summary>
-		public UInt16 Count;
-		/// <summary>
-		/// Vertices on shape A.
-		/// </summary>
-		//public Byte[/*3*/] IndexA;
-		public IndexArray IndexA;
-		/// <summary>
-		/// Vertices on shape B.
-		/// </summary>
-		//public Byte[/*3*/] IndexB;
-		public IndexArray IndexB;
-
-		//public SimplexCache(byte init)
-		//{
-		//	Metric = 0;
-		//	Count = 0;
-		//	IndexA = new Byte[3];
-		//	IndexB = new Byte[3];
-		//}
-	}
-
-	/// <summary>
+    /// <summary>
 	/// The index array
 	/// </summary>
 	public struct IndexArray
@@ -691,8 +657,8 @@ namespace Alis.Core.Physic.Collision
 			// Apply radii if requested.
 			if (input.UseRadii)
 			{
-				float rA = shapeA._radius;
-				float rB = shapeB._radius;
+				float rA = shapeA.Radius;
+				float rB = shapeB.Radius;
 
 				if (output.Distance > rA + rB && output.Distance > Settings.FLT_EPSILON)
 				{

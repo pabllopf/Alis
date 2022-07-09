@@ -442,7 +442,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 			Shape shapeA = _fixtureA.Shape;
 			Shape shapeB = _fixtureB.Shape;
 
-			worldManifold.Initialize(_manifold, bodyA.GetXForm(), shapeA._radius, bodyB.GetXForm(), shapeB._radius);
+			worldManifold.Initialize(_manifold, bodyA.GetXForm(), shapeA.Radius, bodyB.GetXForm(), shapeB.Radius);
 		}
 
 		/// <summary>

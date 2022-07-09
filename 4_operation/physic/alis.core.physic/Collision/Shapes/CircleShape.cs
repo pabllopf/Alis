@@ -32,14 +32,14 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <summary>
 		/// The position
 		/// </summary>
-		internal Vec2 _position;
+		internal Vec2 Position;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CircleShape"/> class
 		/// </summary>
 		public CircleShape()			
 		{
-			_type = ShapeType.CircleShape;
+			Type = ShapeType.CircleShape;
 		}
 
 		/// <summary>
@@ -50,9 +50,9 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <returns>The bool</returns>
 		public override bool TestPoint(XForm transform, Vec2 p)
 		{
-			Vec2 center = transform.Position + Math.Mul(transform.R, _position);
+			Vec2 center = transform.Position + Math.Mul(transform.R, Position);
 			Vec2 d = p - center;
-			return Vec2.Dot(d, d) <= _radius * _radius;
+			return Vec2.Dot(d, d) <= Radius * Radius;
 		}
 
 		// Collision Detection in Interactive 3D Environments by Gino van den Bergen
@@ -73,9 +73,9 @@ namespace Alis.Core.Physic.Collision.Shapes
 			lambda = 0f;
 			normal = Vec2.Zero;
 
-			Vec2 position = transform.Position + Math.Mul(transform.R, _position);
+			Vec2 position = transform.Position + Math.Mul(transform.R, Position);
 			Vec2 s = segment.P1 - position;
-			float b = Vec2.Dot(s, s) - _radius * _radius;
+			float b = Vec2.Dot(s, s) - Radius * Radius;
 
 			// Does the segment start inside the circle?
 			if (b < 0.0f)
@@ -117,13 +117,13 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="aabb">The aabb</param>
 		/// <param name="transform">The transform</param>
-		public override void ComputeAABB(out AABB aabb, XForm transform)
+		public override void ComputeAabb(out AABB aabb, XForm transform)
 		{
 			aabb = new AABB();
 
-			Vec2 p = transform.Position + Math.Mul(transform.R, _position);
-			aabb.LowerBound.Set(p.X - _radius, p.Y - _radius);
-			aabb.UpperBound.Set(p.X + _radius, p.Y + _radius);
+			Vec2 p = transform.Position + Math.Mul(transform.R, Position);
+			aabb.LowerBound.Set(p.X - Radius, p.Y - Radius);
+			aabb.UpperBound.Set(p.X + Radius, p.Y + Radius);
 		}
 
 		/// <summary>
@@ -135,11 +135,11 @@ namespace Alis.Core.Physic.Collision.Shapes
 		{
 			massData = new MassData();
 
-			massData.Mass = density * Settings.Pi * _radius * _radius;
-			massData.Center = _position;
+			massData.Mass = density * Settings.Pi * Radius * Radius;
+			massData.Center = Position;
 
 			// inertia about the local origin
-			massData.I = massData.Mass * (0.5f * _radius * _radius + Vec2.Dot(_position, _position));
+			massData.I = massData.Mass * (0.5f * Radius * Radius + Vec2.Dot(Position, Position));
 		}		
 
 		/// <summary>
@@ -152,25 +152,25 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <returns>The area</returns>
 		public override float ComputeSubmergedArea(Vec2 normal, float offset, XForm xf, out Vec2 c)
 		{
-			Vec2 p = Math.Mul(xf, _position);
+			Vec2 p = Math.Mul(xf, Position);
 			float l = -(Vec2.Dot(normal, p) - offset);
-			if (l < -_radius + Settings.FLT_EPSILON)
+			if (l < -Radius + Settings.FLT_EPSILON)
 			{
 				//Completely dry
 				c = new Vec2();
 				return 0;
 			}
-			if (l > _radius)
+			if (l > Radius)
 			{
 				//Completely wet
 				c = p;
-				return Settings.Pi * _radius * _radius;
+				return Settings.Pi * Radius * Radius;
 			}
 
 			//Magic
-			float r2 = _radius * _radius;
+			float r2 = Radius * Radius;
 			float l2 = l * l;
-			float area = r2 * ((float)System.Math.Asin(l / _radius) + Settings.Pi / 2) +
+			float area = r2 * ((float)System.Math.Asin(l / Radius) + Settings.Pi / 2) +
 				l * Math.Sqrt(r2 - l2);
 			float com = -2.0f / 3.0f * (float)System.Math.Pow(r2 - l2, 1.5f) / area;
 
@@ -191,18 +191,15 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// <summary>
 		/// Get the supporting vertex in the given direction.
 		/// </summary>
-		public override Vec2 GetSupportVertex(Vec2 d)
-		{
-			return _position;
-		}
+		public override Vec2 GetSupportVertex(Vec2 d) => Position;
 
-		/// <summary>
+        /// <summary>
 		/// Get a vertex by index. Used by Distance.
 		/// </summary>
 		public override Vec2 GetVertex(int index)
 		{
 			Box2DXDebug.Assert(index == 0);
-			return _position;
+			return Position;
 		}
 
 		/// <summary>
@@ -210,7 +207,7 @@ namespace Alis.Core.Physic.Collision.Shapes
 		/// </summary>
 		/// <param name="pivot">The pivot</param>
 		/// <returns>The float</returns>
-		public override float ComputeSweepRadius(Vec2 pivot) => Vec2.Distance(_position, pivot);
+		public override float ComputeSweepRadius(Vec2 pivot) => Vec2.Distance(Position, pivot);
 
         /// <summary>
 		/// Get the vertex count.
