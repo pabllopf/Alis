@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Use this to attach application specific data to your joints.
         /// </summary>
-        public object UserData;
+        public readonly object UserData;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JointDef" /> class

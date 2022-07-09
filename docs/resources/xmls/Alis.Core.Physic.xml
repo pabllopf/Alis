@@ -3880,7 +3880,7 @@
                 Adds the type using the specified create fcn
             </summary>
             <param name="createFcn">The create fcn</param>
-            <param name="destoryFcn">The destory fcn</param>
+            <param name="contactDestroyFcn">The destory fcn</param>
             <param name="type1">The type</param>
             <param name="type2">The type</param>
         </member>
@@ -4127,22 +4127,22 @@
             </summary>
             <seealso cref="T:System.IDisposable" />
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.s_PositionSolverManifold">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.SPositionSolverManifold">
             <summary>
                 The position solver manifold
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver._constraintCount">
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.ConstraintCount">
             <summary>
                 The constraint count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver._constraints">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Constraints">
             <summary>
                 The constraints
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver._step">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Step">
             <summary>
                 The step
             </summary>
@@ -4182,32 +4182,6 @@
             </summary>
             <param name="baumgarte">The baumgarte</param>
             <returns>The bool</returns>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.PositionSolverManifold">
-            <summary>
-                The position solver manifold class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.PositionSolverManifold.Normal">
-            <summary>
-                The normal
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.PositionSolverManifold.Points">
-            <summary>
-                The max manifold points
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.PositionSolverManifold.Separations">
-            <summary>
-                The max manifold points
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Contacts.ContactConstraint)">
-            <summary>
-                Initializes the cc
-            </summary>
-            <param name="cc">The cc</param>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Contacts.EdgeAndCircleContact">
             <summary>
@@ -4377,6 +4351,32 @@
                 Destroys the contact
             </summary>
             <param name="contact">The contact</param>
+        </member>
+        <member name="T:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold">
+            <summary>
+                The position solver manifold class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Normal">
+            <summary>
+                The normal
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Points">
+            <summary>
+                The max manifold points
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Separations">
+            <summary>
+                The max manifold points
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Contacts.ContactConstraint)">
+            <summary>
+                Initializes the cc
+            </summary>
+            <param name="cc">The cc</param>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController">
             <summary>
@@ -6621,12 +6621,12 @@
                 The min pulley length
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._limitState1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitState1">
             <summary>
                 The limit state
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint._limitState2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitState2">
             <summary>
                 The limit state
             </summary>

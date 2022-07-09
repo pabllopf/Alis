@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The allow sleep
         /// </summary>
-        private bool _allowSleep;
+        private readonly bool _allowSleep;
 
         /// <summary>
         ///     The body count
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The contact manager
         /// </summary>
-        private ContactManager _contactManager;
+        private readonly ContactManager _contactManager;
 
         // This is for debugging the solver.
         /// <summary>
@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The ground body
         /// </summary>
-        private Body _groundBody;
+        private readonly Body _groundBody;
 
         // This is used to compute the time step ratio to
         // support a variable time step.

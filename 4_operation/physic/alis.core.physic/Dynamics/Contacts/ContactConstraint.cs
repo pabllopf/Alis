@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public ContactConstraintPoint[] Points = new ContactConstraintPoint[Settings.MaxManifoldPoints];
+        public readonly ContactConstraintPoint[] Points = new ContactConstraintPoint[Settings.MaxManifoldPoints];
 
         /// <summary>
         ///     The radius

@@ -44,12 +44,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Enable/disable the joint limit.
         /// </summary>
-        public bool EnableLimit;
+        public readonly bool EnableLimit;
 
         /// <summary>
         ///     Enable/disable the joint motor.
         /// </summary>
-        public bool EnableMotor;
+        public readonly bool EnableMotor;
 
         /// <summary>
         ///     The local anchor point relative to body1's origin.
@@ -69,17 +69,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The lower translation limit, usually in meters.
         /// </summary>
-        public float LowerTranslation;
+        public readonly float LowerTranslation;
 
         /// <summary>
         ///     The maximum motor torque, usually in N-m.
         /// </summary>
-        public float MaxMotorForce;
+        public readonly float MaxMotorForce;
 
         /// <summary>
         ///     The desired motor speed in radians per second.
         /// </summary>
-        public float MotorSpeed;
+        public readonly float MotorSpeed;
 
         /// <summary>
         ///     The constrained angle between the bodies: body2_angle - body1_angle.
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The upper translation limit, usually in meters.
         /// </summary>
-        public float UpperTranslation;
+        public readonly float UpperTranslation;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PrismaticJointDef" /> class

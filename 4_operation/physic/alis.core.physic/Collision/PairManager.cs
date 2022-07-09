@@ -82,12 +82,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The table capacity
         /// </summary>
-        public ushort[] _hashTable = new ushort[TableCapacity];
+        public readonly ushort[] _hashTable = new ushort[TableCapacity];
 
         /// <summary>
         ///     The max pairs
         /// </summary>
-        public BufferedPair[] _pairBuffer = new BufferedPair[Settings.MaxPairs];
+        public readonly BufferedPair[] _pairBuffer = new BufferedPair[Settings.MaxPairs];
 
         /// <summary>
         ///     The pair buffer count
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The max pairs
         /// </summary>
-        public Pair[] _pairs = new Pair[Settings.MaxPairs];
+        public readonly Pair[] _pairs = new Pair[Settings.MaxPairs];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PairManager" /> class

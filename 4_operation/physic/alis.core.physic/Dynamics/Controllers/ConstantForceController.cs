@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <summary>
         ///     The force to apply
         /// </summary>
-        private Vec2 F;
+        private readonly Vec2 F;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConstantForceController" /> class

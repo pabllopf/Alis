@@ -40,10 +40,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <summary>
         ///     Specifies the strength of the gravitiation force
         /// </summary>
-        public float G;
+        public readonly float G;
 
         /// If true, gravity is proportional to r^-2, otherwise r^-1
-        public bool InvSqr;
+        public readonly bool InvSqr;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GravityController" /> class

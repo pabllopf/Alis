@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The polygon vertices in local coordinates.
         /// </summary>
-        public Vec2[] Vertices = new Vec2[Settings.MaxPolygonVertices];
+        public readonly Vec2[] Vertices = new Vec2[Settings.MaxPolygonVertices];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonDef" /> class

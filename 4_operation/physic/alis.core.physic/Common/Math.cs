@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The random
         /// </summary>
-        private static Random _sRnd = new Random();
+        private static readonly Random _sRnd = new Random();
 
         /// <summary>
         ///     This function is used to ensure that a floating point number is

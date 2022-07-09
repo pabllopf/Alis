@@ -55,12 +55,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     A sensor shape collects contact information but never generates a collision response.
         /// </summary>
-        public bool IsSensor;
+        public readonly bool IsSensor;
 
         /// <summary>
         ///     The restitution (elasticity) usually in the range [0,1].
         /// </summary>
-        public float Restitution;
+        public readonly float Restitution;
 
         /// <summary>
         ///     Holds the shape type for down-casting.
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Use this to store application specific fixture data.
         /// </summary>
-        public object UserData;
+        public readonly object UserData;
 
         /// <summary>
         ///     The constructor sets the default fixture definition values.

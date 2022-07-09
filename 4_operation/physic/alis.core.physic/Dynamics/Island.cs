@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The body capacity
         /// </summary>
-        public int BodyCapacity;
+        public readonly int BodyCapacity;
 
         /// <summary>
         ///     The body count
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The contact capacity
         /// </summary>
-        public int ContactCapacity;
+        public readonly int ContactCapacity;
 
         /// <summary>
         ///     The contact count
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The joint capacity
         /// </summary>
-        public int JointCapacity;
+        public readonly int JointCapacity;
 
         /// <summary>
         ///     The joint count
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The listener
         /// </summary>
-        public ContactListener Listener;
+        public readonly ContactListener Listener;
 
         /// <summary>
         ///     The position iteration count
@@ -394,7 +394,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            Report(contactSolver._constraints);
+            Report(contactSolver.Constraints);
 
             if (allowSleep)
             {
@@ -544,7 +544,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            Report(contactSolver._constraints);
+            Report(contactSolver.Constraints);
         }
 
         /// <summary>

@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The world
         /// </summary>
-        private World world;
+        private readonly World world;
 
         /// <summary>
         ///     The xf

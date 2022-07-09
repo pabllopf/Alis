@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Use this to store application specific body data.
         /// </summary>
-        public object UserData;
+        public readonly object UserData;
 
         /// <summary>
         ///     The world position of the body. Avoid creating bodies at the origin
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The world angle of the body in radians.
         /// </summary>
-        public float Angle;
+        public readonly float Angle;
 
         /// The linear velocity of the body in world co-ordinates.
         public Vec2 LinearVelocity;
@@ -91,37 +91,37 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The angular velocity
         /// </summary>
-        public float AngularVelocity;
+        public readonly float AngularVelocity;
 
         /// <summary>
         ///     Linear damping is use to reduce the linear velocity. The damping parameter
         ///     can be larger than 1.0f but the damping effect becomes sensitive to the
         ///     time step when the damping parameter is large.
         /// </summary>
-        public float LinearDamping;
+        public readonly float LinearDamping;
 
         /// <summary>
         ///     Angular damping is use to reduce the angular velocity. The damping parameter
         ///     can be larger than 1.0f but the damping effect becomes sensitive to the
         ///     time step when the damping parameter is large.
         /// </summary>
-        public float AngularDamping;
+        public readonly float AngularDamping;
 
         /// <summary>
         ///     Set this flag to false if this body should never fall asleep. Note that
         ///     this increases CPU usage.
         /// </summary>
-        public bool AllowSleep;
+        public readonly bool AllowSleep;
 
         /// <summary>
         ///     Is this body initially sleeping?
         /// </summary>
-        public bool IsSleeping;
+        public readonly bool IsSleeping;
 
         /// <summary>
         ///     Should this body be prevented from rotating? Useful for characters.
         /// </summary>
-        public bool FixedRotation;
+        public readonly bool FixedRotation;
 
         /// <summary>
         ///     Is this a fast moving body that should be prevented from tunneling through
@@ -129,6 +129,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     static bodies.
         ///     @warning You should use this flag sparingly since it increases processing time.
         /// </summary>
-        public bool IsBullet;
+        public readonly bool IsBullet;
     }
 }

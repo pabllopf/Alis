@@ -80,12 +80,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The pair manager
         /// </summary>
-        public PairManager PairManager;
+        public readonly PairManager PairManager;
 
         /// <summary>
         ///     The max proxies
         /// </summary>
-        public Proxy[] ProxyPool = new Proxy[Settings.MaxProxies];
+        public readonly Proxy[] ProxyPool = new Proxy[Settings.MaxProxies];
 
         /// <summary>
         ///     The free proxy
@@ -95,17 +95,17 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The bound
         /// </summary>
-        public Bound[][] Bounds = new Bound[2][ /*(2 * Settings.MaxProxies)*/];
+        public readonly Bound[][] Bounds = new Bound[2][ /*(2 * Settings.MaxProxies)*/];
 
         /// <summary>
         ///     The max proxies
         /// </summary>
-        public ushort[] QueryResults = new ushort[Settings.MaxProxies];
+        public readonly ushort[] QueryResults = new ushort[Settings.MaxProxies];
 
         /// <summary>
         ///     The max proxies
         /// </summary>
-        public float[] QuerySortKeys = new float[Settings.MaxProxies];
+        public readonly float[] QuerySortKeys = new float[Settings.MaxProxies];
 
         /// <summary>
         ///     The query result count
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The is validate
         /// </summary>
-        public static bool IsValidate = false;
+        public static readonly bool IsValidate = false;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BroadPhase" /> class

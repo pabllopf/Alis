@@ -39,18 +39,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The first revolute/prismatic joint attached to the gear joint.
         /// </summary>
-        public Joint Joint1;
+        public readonly Joint Joint1;
 
         /// <summary>
         ///     The second revolute/prismatic joint attached to the gear joint.
         /// </summary>
-        public Joint Joint2;
+        public readonly Joint Joint2;
 
         /// <summary>
         ///     The gear ratio.
         ///     @see GearJoint for explanation.
         /// </summary>
-        public float Ratio;
+        public readonly float Ratio;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GearJointDef" /> class

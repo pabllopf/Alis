@@ -181,7 +181,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The ref angle
         /// </summary>
-        public float RefAngle;
+        public readonly float RefAngle;
 
         /// <summary>
         ///     The

@@ -39,11 +39,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public float[] NormalImpulses = new float[Settings.MaxManifoldPoints];
+        public readonly float[] NormalImpulses = new float[Settings.MaxManifoldPoints];
 
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public float[] TangentImpulses = new float[Settings.MaxManifoldPoints];
+        public readonly float[] TangentImpulses = new float[Settings.MaxManifoldPoints];
     }
 }

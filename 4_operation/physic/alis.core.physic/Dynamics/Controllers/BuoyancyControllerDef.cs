@@ -37,28 +37,28 @@ namespace Alis.Core.Physic.Dynamics.Controllers
     public class BuoyancyControllerDef
     {
         /// Linear drag co-efficient
-        public float AngularDrag;
+        public readonly float AngularDrag;
 
         /// The fluid density
-        public float Density;
+        public readonly float Density;
 
         /// Gravity vector, if the world's gravity is not used
         public Vec2 Gravity;
 
         /// Linear drag co-efficient
-        public float LinearDrag;
+        public readonly float LinearDrag;
 
         /// The outer surface normal
         public Vec2 Normal;
 
         /// The height of the fluid surface along the normal
-        public float Offset;
+        public readonly float Offset;
 
         /// If false, bodies are assumed to be uniformly dense, otherwise use the shapes densities
-        public bool UseDensity; //False by default to prevent a gotcha
+        public readonly bool UseDensity; //False by default to prevent a gotcha
 
         /// If true, gravity is taken from the world instead of the gravity parameter.
-        public bool UseWorldGravity;
+        public readonly bool UseWorldGravity;
 
         /// Fluid velocity, for drag calculations
         public Vec2 Velocity;

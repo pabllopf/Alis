@@ -46,22 +46,22 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The position solver manifold
         /// </summary>
-        private static PositionSolverManifold s_PositionSolverManifold = new PositionSolverManifold();
+        private static readonly PositionSolverManifold SPositionSolverManifold = new PositionSolverManifold();
 
         /// <summary>
         ///     The constraint count
         /// </summary>
-        public int _constraintCount;
+        public int ConstraintCount { get; }
 
         /// <summary>
         ///     The constraints
         /// </summary>
-        public ContactConstraint[] _constraints;
+        public ContactConstraint[] Constraints;
 
         /// <summary>
         ///     The step
         /// </summary>
-        public TimeStep _step;
+        public TimeStep Step;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactSolver" /> class
@@ -71,15 +71,15 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="contactCount">The contact count</param>
         public ContactSolver(TimeStep step, Contact[] contacts, int contactCount)
         {
-            _step = step;
-            _constraintCount = contactCount;
+            Step = step;
+            ConstraintCount = contactCount;
 
-            _constraints = new ContactConstraint[_constraintCount];
-            for (int i = 0; i < _constraintCount; i++)
-                _constraints[i] = new ContactConstraint();
+            Constraints = new ContactConstraint[ConstraintCount];
+            for (int i = 0; i < ConstraintCount; i++)
+                Constraints[i] = new ContactConstraint();
 
             //int count = 0;
-            for (int i = 0; i < _constraintCount; ++i)
+            for (int i = 0; i < ConstraintCount; ++i)
             {
                 Contact contact = contacts[i];
 
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 WorldManifold worldManifold = new WorldManifold();
                 worldManifold.Initialize(manifold, bodyA.Xf, radiusA, bodyB.Xf, radiusB);
 
-                ContactConstraint cc = _constraints[i];
+                ContactConstraint cc = Constraints[i];
                 cc.BodyA = bodyA;
                 cc.BodyB = bodyB;
                 cc.Manifold = manifold;
@@ -221,7 +221,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void Dispose()
         {
-            _constraints = null;
+            Constraints = null;
         }
 
         /// <summary>
@@ -233,9 +233,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             unsafe
             {
                 // Warm start.
-                for (int i = 0; i < _constraintCount; ++i)
+                for (int i = 0; i < ConstraintCount; ++i)
                 {
-                    ContactConstraint c = _constraints[i];
+                    ContactConstraint c = Constraints[i];
 
                     Body bodyA = c.BodyA;
                     Body bodyB = c.BodyB;
@@ -281,9 +281,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void SolveVelocityConstraints()
         {
-            for (int i = 0; i < _constraintCount; ++i)
+            for (int i = 0; i < ConstraintCount; ++i)
             {
-                ContactConstraint c = _constraints[i];
+                ContactConstraint c = Constraints[i];
                 Body bodyA = c.BodyA;
                 Body bodyB = c.BodyB;
                 float wA = bodyA.AngularVelocity;
@@ -464,7 +464,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 //
                                 x.X = -cp1->NormalMass * b.X;
                                 x.Y = 0.0f;
+/*
                                 vn1 = 0.0f;
+*/
                                 vn2 = c.K.col1.Y * x.X + b.Y;
 
                                 if (x.X >= 0.0f && vn2 >= 0.0f)
@@ -507,7 +509,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 x.X = 0.0f;
                                 x.Y = -cp2->NormalMass * b.Y;
                                 vn1 = c.K.col2.X * x.Y + b.X;
+/*
                                 vn2 = 0.0f;
+*/
 
                                 if (x.Y >= 0.0f && vn1 >= 0.0f)
                                 {
@@ -587,9 +591,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void FinalizeVelocityConstraints()
         {
-            for (int i = 0; i < _constraintCount; ++i)
+            for (int i = 0; i < ConstraintCount; ++i)
             {
-                ContactConstraint c = _constraints[i];
+                ContactConstraint c = Constraints[i];
                 Manifold m = c.Manifold;
 
                 for (int j = 0; j < c.PointCount; ++j)
@@ -609,25 +613,25 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             float minSeparation = 0.0f;
 
-            for (int i = 0; i < _constraintCount; ++i)
+            for (int i = 0; i < ConstraintCount; ++i)
             {
-                ContactConstraint c = _constraints[i];
+                ContactConstraint c = Constraints[i];
                 Body bodyA = c.BodyA;
                 Body bodyB = c.BodyB;
 
                 float invMassA = bodyA.Mass * bodyA.InvMass;
-                float invIA = bodyA.Mass * bodyA.InvI;
+                float invIa = bodyA.Mass * bodyA.InvI;
                 float invMassB = bodyB.Mass * bodyB.InvMass;
-                float invIB = bodyB.Mass * bodyB.InvI;
+                float invIb = bodyB.Mass * bodyB.InvI;
 
-                s_PositionSolverManifold.Initialize(c);
-                Vec2 normal = s_PositionSolverManifold.Normal;
+                SPositionSolverManifold.Initialize(c);
+                Vec2 normal = SPositionSolverManifold.Normal;
 
                 // Solver normal constraints
                 for (int j = 0; j < c.PointCount; ++j)
                 {
-                    Vec2 point = s_PositionSolverManifold.Points[j];
-                    float separation = s_PositionSolverManifold.Separations[j];
+                    Vec2 point = SPositionSolverManifold.Points[j];
+                    float separation = SPositionSolverManifold.Separations[j];
 
                     Vec2 rA = point - bodyA.Sweep.C;
                     Vec2 rB = point - bodyB.Sweep.C;
@@ -645,11 +649,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     Vec2 P = impulse * normal;
 
                     bodyA.Sweep.C -= invMassA * P;
-                    bodyA.Sweep.A -= invIA * Vec2.Cross(rA, P);
+                    bodyA.Sweep.A -= invIa * Vec2.Cross(rA, P);
                     bodyA.SynchronizeTransform();
 
                     bodyB.Sweep.C += invMassB * P;
-                    bodyB.Sweep.A += invIB * Vec2.Cross(rB, P);
+                    bodyB.Sweep.A += invIb * Vec2.Cross(rB, P);
                     bodyB.SynchronizeTransform();
                 }
             }
@@ -659,87 +663,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             return minSeparation >= -1.5f * Settings.LinearSlop;
         }
 
-        /// <summary>
-        ///     The position solver manifold class
-        /// </summary>
-        internal class PositionSolverManifold
-        {
-            /// <summary>
-            ///     The normal
-            /// </summary>
-            internal Vec2 Normal;
-
-            /// <summary>
-            ///     The max manifold points
-            /// </summary>
-            internal Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
-
-            /// <summary>
-            ///     The max manifold points
-            /// </summary>
-            internal float[] Separations = new float[Settings.MaxManifoldPoints];
-
-            /// <summary>
-            ///     Initializes the cc
-            /// </summary>
-            /// <param name="cc">The cc</param>
-            internal void Initialize(ContactConstraint cc)
-            {
-                Box2DXDebug.Assert(cc.PointCount > 0);
-
-                switch (cc.Type)
-                {
-                    case ManifoldType.Circles:
-                    {
-                        Vec2 pointA = cc.BodyA.GetWorldPoint(cc.LocalPoint);
-                        Vec2 pointB = cc.BodyB.GetWorldPoint(cc.Points[0].LocalPoint);
-                        if (Vec2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
-                        {
-                            Normal = pointB - pointA;
-                            Normal.Normalize();
-                        }
-                        else
-                        {
-                            Normal.Set(1.0f, 0.0f);
-                        }
-
-                        Points[0] = 0.5f * (pointA + pointB);
-                        Separations[0] = Vec2.Dot(pointB - pointA, Normal) - cc.Radius;
-                    }
-                        break;
-
-                    case ManifoldType.FaceA:
-                    {
-                        Normal = cc.BodyA.GetWorldVector(cc.LocalPlaneNormal);
-                        Vec2 planePoint = cc.BodyA.GetWorldPoint(cc.LocalPoint);
-
-                        for (int i = 0; i < cc.PointCount; ++i)
-                        {
-                            Vec2 clipPoint = cc.BodyB.GetWorldPoint(cc.Points[i].LocalPoint);
-                            Separations[i] = Vec2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
-                            Points[i] = clipPoint;
-                        }
-                    }
-                        break;
-
-                    case ManifoldType.FaceB:
-                    {
-                        Normal = cc.BodyB.GetWorldVector(cc.LocalPlaneNormal);
-                        Vec2 planePoint = cc.BodyB.GetWorldPoint(cc.LocalPoint);
-
-                        for (int i = 0; i < cc.PointCount; ++i)
-                        {
-                            Vec2 clipPoint = cc.BodyA.GetWorldPoint(cc.Points[i].LocalPoint);
-                            Separations[i] = Vec2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
-                            Points[i] = clipPoint;
-                        }
-
-                        // Ensure normal points from A to B
-                        Normal = -Normal;
-                    }
-                        break;
-                }
-            }
-        }
+        
     }
 }

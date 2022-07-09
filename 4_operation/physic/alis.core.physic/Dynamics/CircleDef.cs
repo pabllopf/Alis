@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The radius
         /// </summary>
-        public float Radius;
+        public readonly float Radius;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleDef" /> class

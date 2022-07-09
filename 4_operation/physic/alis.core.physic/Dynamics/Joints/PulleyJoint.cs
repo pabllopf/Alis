@@ -70,12 +70,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The limit state
         /// </summary>
-        public LimitState _limitState1;
+        public LimitState LimitState1;
 
         /// <summary>
         ///     The limit state
         /// </summary>
-        public LimitState _limitState2;
+        public LimitState LimitState2;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
@@ -322,22 +322,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (length1 < MaxLength1)
             {
-                _limitState1 = LimitState.InactiveLimit;
+                LimitState1 = LimitState.InactiveLimit;
                 LimitImpulse1 = 0.0f;
             }
             else
             {
-                _limitState1 = LimitState.AtUpperLimit;
+                LimitState1 = LimitState.AtUpperLimit;
             }
 
             if (length2 < MaxLength2)
             {
-                _limitState2 = LimitState.InactiveLimit;
+                LimitState2 = LimitState.InactiveLimit;
                 LimitImpulse2 = 0.0f;
             }
             else
             {
-                _limitState2 = LimitState.AtUpperLimit;
+                LimitState2 = LimitState.AtUpperLimit;
             }
 
             // Compute effective mass.
@@ -408,7 +408,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 b2.AngularVelocity += b2.InvI * Vec2.Cross(r2, P2);
             }
 
-            if (_limitState1 == LimitState.AtUpperLimit)
+            if (LimitState1 == LimitState.AtUpperLimit)
             {
                 Vec2 v1 = b1.LinearVelocity + Vec2.Cross(b1.AngularVelocity, r1);
 
@@ -423,7 +423,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 b1.AngularVelocity += b1.InvI * Vec2.Cross(r1, P1);
             }
 
-            if (_limitState2 == LimitState.AtUpperLimit)
+            if (LimitState2 == LimitState.AtUpperLimit)
             {
                 Vec2 v2 = b2.LinearVelocity + Vec2.Cross(b2.AngularVelocity, r2);
 
@@ -505,7 +505,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 b2.SynchronizeTransform();
             }
 
-            if (_limitState1 == LimitState.AtUpperLimit)
+            if (LimitState1 == LimitState.AtUpperLimit)
             {
                 Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
                 Vec2 p1 = b1.Sweep.C + r1;
@@ -534,7 +534,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 b1.SynchronizeTransform();
             }
 
-            if (_limitState2 == LimitState.AtUpperLimit)
+            if (LimitState2 == LimitState.AtUpperLimit)
             {
                 Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
                 Vec2 p2 = b2.Sweep.C + r2;

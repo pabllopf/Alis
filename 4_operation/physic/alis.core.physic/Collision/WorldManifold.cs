@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     World contact point (point of intersection).
         /// </summary>
-        public Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
+        public readonly Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
 
         /// <summary>
         ///     Clones this instance

@@ -49,12 +49,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     A flag to enable joint limits.
         /// </summary>
-        public bool EnableLimit;
+        public readonly bool EnableLimit;
 
         /// <summary>
         ///     A flag to enable the joint motor.
         /// </summary>
-        public bool EnableMotor;
+        public readonly bool EnableMotor;
 
         /// <summary>
         ///     The local anchor point relative to body1's origin.
@@ -69,18 +69,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The lower angle for the joint limit (radians).
         /// </summary>
-        public float LowerAngle;
+        public readonly float LowerAngle;
 
         /// <summary>
         ///     The maximum motor torque used to achieve the desired motor speed.
         ///     Usually in N-m.
         /// </summary>
-        public float MaxMotorTorque;
+        public readonly float MaxMotorTorque;
 
         /// <summary>
         ///     The desired motor speed. Usually in radians per second.
         /// </summary>
-        public float MotorSpeed;
+        public readonly float MotorSpeed;
 
         /// <summary>
         ///     The body2 angle minus body1 angle in the reference state (radians).
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The upper angle for the joint limit (radians).
         /// </summary>
-        public float UpperAngle;
+        public readonly float UpperAngle;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RevoluteJointDef" /> class

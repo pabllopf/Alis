@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The shape type count
         /// </summary>
-        public static ContactRegister[][] s_registers =
+        public static readonly ContactRegister[][] s_registers =
             new ContactRegister[(int) ShapeType.ShapeTypeCount][ /*(int)ShapeType.ShapeTypeCount*/];
 
         /// <summary>
@@ -191,10 +191,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     Adds the type using the specified create fcn
         /// </summary>
         /// <param name="createFcn">The create fcn</param>
-        /// <param name="destoryFcn">The destory fcn</param>
+        /// <param name="contactDestroyFcn">The destory fcn</param>
         /// <param name="type1">The type</param>
         /// <param name="type2">The type</param>
-        public static void AddType(ContactCreateFcn createFcn, ContactDestroyFcn destoryFcn,
+        public static void AddType(ContactCreateFcn createFcn, ContactDestroyFcn contactDestroyFcn,
             ShapeType type1, ShapeType type2)
         {
             Box2DXDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
@@ -204,13 +204,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 s_registers[(int) type1] = new ContactRegister[(int) ShapeType.ShapeTypeCount];
 
             s_registers[(int) type1][(int) type2].CreateFcn = createFcn;
-            s_registers[(int) type1][(int) type2].DestroyFcn = destoryFcn;
+            s_registers[(int) type1][(int) type2].DestroyFcn = contactDestroyFcn;
             s_registers[(int) type1][(int) type2].Primary = true;
 
             if (type1 != type2)
             {
                 s_registers[(int) type2][(int) type1].CreateFcn = createFcn;
-                s_registers[(int) type2][(int) type1].DestroyFcn = destoryFcn;
+                s_registers[(int) type2][(int) type1].DestroyFcn = contactDestroyFcn;
                 s_registers[(int) type2][(int) type1].Primary = false;
             }
         }

@@ -61,12 +61,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The damping ratio
         /// </summary>
-        public float DampingRatio;
+        public readonly float DampingRatio;
 
         /// <summary>
         ///     The frequency hz
         /// </summary>
-        public float FrequencyHz;
+        public readonly float FrequencyHz;
 
         /// <summary>
         ///     The gamma
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The length
         /// </summary>
-        public float Length;
+        public readonly float Length;
 
         /// <summary>
         ///     The local anchor

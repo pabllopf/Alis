@@ -44,12 +44,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The damping ratio. 0 = no damping, 1 = critical damping.
         /// </summary>
-        public float DampingRatio;
+        public readonly float DampingRatio;
 
         /// <summary>
         ///     The response speed.
         /// </summary>
-        public float FrequencyHz;
+        public readonly float FrequencyHz;
 
         /// <summary>
         ///     The equilibrium length between the anchor points.

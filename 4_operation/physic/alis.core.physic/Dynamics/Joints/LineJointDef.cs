@@ -44,12 +44,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Enable/disable the joint limit.
         /// </summary>
-        public bool enableLimit;
+        public readonly bool enableLimit;
 
         /// <summary>
         ///     Enable/disable the joint motor.
         /// </summary>
-        public bool enableMotor;
+        public readonly bool enableMotor;
 
         /// <summary>
         ///     The local anchor point relative to body1's origin.
@@ -69,22 +69,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The lower translation limit, usually in meters.
         /// </summary>
-        public float lowerTranslation;
+        public readonly float lowerTranslation;
 
         /// <summary>
         ///     The maximum motor torque, usually in N-m.
         /// </summary>
-        public float maxMotorForce;
+        public readonly float maxMotorForce;
 
         /// <summary>
         ///     The desired motor speed in radians per second.
         /// </summary>
-        public float motorSpeed;
+        public readonly float motorSpeed;
 
         /// <summary>
         ///     The upper translation limit, usually in meters.
         /// </summary>
-        public float upperTranslation;
+        public readonly float upperTranslation;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="LineJointDef" /> class
