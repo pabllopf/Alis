@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_texture_tools_1_1_test_vertices_detection_type =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_texture_tools_1_1_test_vertices_detection_type.html#a2af309d4ebcbf0a6d6310a1af8bf718d", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_texture_tools_1_1_test_vertices_detection_type.html#a644e9caeb5929021af5fbcf4b54bb55d", null ]
-];

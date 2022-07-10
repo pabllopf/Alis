@@ -1,5 +1,0 @@
-var namespace_alis_1_1_core_1_1_audio_1_1_core_1_1_exceptions =
-[
-    [ "BindingsNotRewrittenException", "class_alis_1_1_core_1_1_audio_1_1_core_1_1_exceptions_1_1_bindings_not_rewritten_exception.html", "class_alis_1_1_core_1_1_audio_1_1_core_1_1_exceptions_1_1_bindings_not_rewritten_exception" ],
-    [ "ExtensionNotSupportedException", "class_alis_1_1_core_1_1_audio_1_1_core_1_1_exceptions_1_1_extension_not_supported_exception.html", "class_alis_1_1_core_1_1_audio_1_1_core_1_1_exceptions_1_1_extension_not_supported_exception" ]
-];

@@ -1,8 +1,0 @@
-digraph "Graphical Class Hierarchy"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="Alis.Core.Systems.Physics2\lD.Dynamics.Joints.Misc.JointEdge",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_misc_1_1_joint_edge.html",tooltip="A joint edge is used to connect bodies and joints together in a joint graph where each body is a node..."];
-}

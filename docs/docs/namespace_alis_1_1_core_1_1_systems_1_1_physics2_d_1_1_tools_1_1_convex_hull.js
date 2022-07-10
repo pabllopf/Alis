@@ -1,7 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull =
-[
-    [ "ChainHull", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_chain_hull.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_chain_hull" ],
-    [ "GiftWrap", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_gift_wrap" ],
-    [ "Melkman", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_melkman.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_melkman" ],
-    [ "PointComparer", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_point_comparer.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_point_comparer" ]
-];

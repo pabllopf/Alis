@@ -1,5 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting =
-[
-    [ "Simple", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple.html", "namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple" ],
-    [ "TestYuPengClipper", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_test_yu_peng_clipper.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_test_yu_peng_clipper" ]
-];

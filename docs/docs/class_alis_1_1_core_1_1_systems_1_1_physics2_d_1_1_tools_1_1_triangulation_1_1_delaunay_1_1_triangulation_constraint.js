@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_triangulation_constraint =
-[
-    [ "P", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_triangulation_constraint.html#a921dc3ccada26da41115dc737ed975e6", null ],
-    [ "Q", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_triangulation_constraint.html#ae4d859c7e6575d441946665a77503b74", null ]
-];

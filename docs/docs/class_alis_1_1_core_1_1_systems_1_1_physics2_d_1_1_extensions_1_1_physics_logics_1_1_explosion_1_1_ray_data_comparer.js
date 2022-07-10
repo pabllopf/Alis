@@ -1,4 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_ray_data_comparer =
-[
-    [ "Compare", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_ray_data_comparer.html#af1df0448f117c31ca7087a5470218c8f", null ]
-];

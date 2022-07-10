@@ -1,4 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_config =
-[
-    [ "TestSettings", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_config_1_1_test_settings.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_config_1_1_test_settings" ]
-];

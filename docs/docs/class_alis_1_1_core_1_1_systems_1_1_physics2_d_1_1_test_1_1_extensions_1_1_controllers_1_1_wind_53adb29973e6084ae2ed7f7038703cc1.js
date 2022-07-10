@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_53adb29973e6084ae2ed7f7038703cc1 =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_53adb29973e6084ae2ed7f7038703cc1.html#ac395cd8bcc51fecd859e409a99061ac3", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_53adb29973e6084ae2ed7f7038703cc1.html#a162b7a1b8a2b2fb683f2b242295ff9e5", null ]
-];

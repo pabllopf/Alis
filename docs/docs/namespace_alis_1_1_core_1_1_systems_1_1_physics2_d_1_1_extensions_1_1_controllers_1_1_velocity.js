@@ -1,4 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_controllers_1_1_velocity =
-[
-    [ "VelocityLimitController", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_controllers_1_1_velocity_1_1_velocity_limit_controller.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_controllers_1_1_velocity_1_1_velocity_limit_controller" ]
-];

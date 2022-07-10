@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_dynamics_1_1_solver_1_1_test_position_solver_manifold =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_dynamics_1_1_solver_1_1_test_position_solver_manifold.html#a784e343dd69768dbc9b1a26bce9dad04", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_dynamics_1_1_solver_1_1_test_position_solver_manifold.html#a8a171f30f9fd7bab067670f1abae90a4", null ]
-];

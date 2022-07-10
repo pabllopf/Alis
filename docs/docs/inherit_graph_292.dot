@@ -1,8 +1,0 @@
-digraph "Graphical Class Hierarchy"
-{
- // LATEX_PDF_SIZE
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  rankdir="LR";
-  Node0 [label="Alis.Core.Systems.Physics2\lD.Tools.ConvexHull.GiftWrap",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html",tooltip="Giftwrap convex hull algorithm. O(n * h) time complexity, where n is the number of points and h is th..."];
-}

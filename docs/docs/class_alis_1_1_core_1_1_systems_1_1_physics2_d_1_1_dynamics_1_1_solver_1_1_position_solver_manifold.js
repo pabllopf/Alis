@@ -1,4 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_solver_1_1_position_solver_manifold =
-[
-    [ "Initialize", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_solver_1_1_position_solver_manifold.html#aec83483df003cd52b13921759edee60f", null ]
-];

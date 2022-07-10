@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_test_cdt_decomposer =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_test_cdt_decomposer.html#a1aa71db9bfe3f73c835c4473769f7575", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_test_cdt_decomposer.html#a0f7899f7e124c866688d81ffcd477f42", null ]
-];

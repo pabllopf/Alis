@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_test_curve_key =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_test_curve_key.html#af8f000b72642b43b73e99ec680d0138b", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_1_1_curve_1_1_test_curve_key.html#a3450b851d1809c904ea20520481f3306", null ]
-];

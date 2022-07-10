@@ -1,4 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_dela06a2acdfdbecb46b9089445cbaf53c3a =
-[
-    [ "Compare", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_dela06a2acdfdbecb46b9089445cbaf53c3a.html#a9ada1f7f6009bf7283edd1eb4cf317dc", null ]
-];

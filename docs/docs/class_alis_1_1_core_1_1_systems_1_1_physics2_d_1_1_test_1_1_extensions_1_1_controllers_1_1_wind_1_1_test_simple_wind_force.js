@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_1_1_test_simple_wind_force =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_1_1_test_simple_wind_force.html#ae09b039815c2eb1cbc9fe037d1785e77", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_wind_1_1_test_simple_wind_force.html#a53ccca4d5155d42a603dc0caa0032d10", null ]
-];

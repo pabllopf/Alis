@@ -1,7 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic =
-[
-    [ "PhysicsLogic", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic.html#ae4c9b076a891f9e39d4269074e3c9ddf", null ],
-    [ "IsActiveOn", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic.html#a4e64204f754baebf59a4e5a789a9f7e4", null ],
-    [ "type", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic.html#a44fb0f53bdf359ba9353a98838817045", null ],
-    [ "World", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic.html#a4254734e609f2932e778f715365cf2ae", null ]
-];

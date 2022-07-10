@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_cutting_tools =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_cutting_tools.html#a4a36abbb60047499ed0ef8c7a1b25b6c", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_cutting_1_1_simple_1_1_test_cutting_tools.html#add0d5b7ad0e906050d03633b9d75e49b", null ]
-];

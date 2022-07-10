@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_physics_logics_1_1_ex5cc49d64d9dcb22c3434a6dd3190ba2b =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_physics_logics_1_1_ex5cc49d64d9dcb22c3434a6dd3190ba2b.html#a64908a56495f1ccf1bde44d1d907bfe1", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_physics_logics_1_1_ex5cc49d64d9dcb22c3434a6dd3190ba2b.html#a5fa820fa5ea0dc7fe46d8af357a58650", null ]
-];

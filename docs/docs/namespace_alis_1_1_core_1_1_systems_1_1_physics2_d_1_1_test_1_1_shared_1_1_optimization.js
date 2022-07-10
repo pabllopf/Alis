@@ -1,6 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_shared_1_1_optimization =
-[
-    [ "TestFixedArray2", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_shared_1_1_optimization_1_1_test_fixed_array2.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_shared_1_1_optimization_1_1_test_fixed_array2" ],
-    [ "TestFixedArray3", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_shared_1_1_optimization_1_1_test_fixed_array3.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_shared_1_1_optimization_1_1_test_fixed_array3" ],
-    [ "TestIPoolable", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_shared_1_1_optimization_1_1_test_i_poolable.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_shared_1_1_optimization_1_1_test_i_poolable" ]
-];
