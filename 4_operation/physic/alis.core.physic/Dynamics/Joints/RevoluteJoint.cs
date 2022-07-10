@@ -59,12 +59,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The impulse
         /// </summary>
-        public Vec3 Impulse { get; set; }
+        private Vec3 Impulse { get; set; }
 
         /// <summary>
         ///     The mass
         /// </summary>
-        public Mat33 Mass { get; set; }
+        private Mat33 Mass { get; set; }
 
         /// <summary>
         ///     The motor speed
@@ -107,22 +107,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The motor mass
         /// </summary>
-        public float MotorMass { get; set; }
+        private float MotorMass { get; set; }
 
         /// <summary>
         ///     The max motor torque
         /// </summary>
-        public float MaxMotorTorque { get; set; }
+        private float MaxMotorTorque { get; set; }
 
         /// <summary>
         ///     The reference angle
         /// </summary>
-        public float ReferenceAngle { get; }
+        private float ReferenceAngle { get; }
 
         /// <summary>
         ///     The limit state
         /// </summary>
-        public LimitState State { get; set; }
+        private LimitState State { get; set; }
 
         /// <summary>
         ///     Gets the value of the anchor 1
@@ -204,23 +204,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param>The inv dt</param>
-        /// <param name="inv_dt"></param>
+        /// <param name="invDt"></param>
         /// <returns>The vec</returns>
-        public override Vec2 GetReactionForce(float inv_dt)
+        public override Vec2 GetReactionForce(float invDt)
         {
-            Vec2 P = new Vec2(Impulse.X, Impulse.Y);
-            return inv_dt * P;
+            return invDt * new Vec2(Impulse.X, Impulse.Y);
         }
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param>The inv dt</param>
-        /// <param name="inv_dt"></param>
+        /// <param name="invDt"></param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float inv_dt)
+        public override float GetReactionTorque(float invDt)
         {
-            return inv_dt * Impulse.Z;
+            return invDt * Impulse.Z;
         }
 
         /// <summary>
@@ -271,19 +270,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="step">The step</param>
         internal override void InitVelocityConstraints(TimeStep step)
         {
-            Body b1 = Body1;
-            Body b2 = Body2;
+            Body body1 = Body1;
+            Body body2 = Body2;
 
             if (IsMotorEnabled || IsLimitEnabled)
             {
                 // You cannot create a rotation limit between bodies that
                 // both have fixed rotation.
-                Box2DXDebug.Assert(b1.InvI > 0.0f || b2.InvI > 0.0f);
+                Box2DXDebug.Assert(body1.InvI > 0.0f || body2.InvI > 0.0f);
             }
 
             // Compute the effective mass matrix.
-            Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vec2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+            Vec2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
 
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
@@ -294,23 +293,23 @@ namespace Alis.Core.Physic.Dynamics.Joints
             //     [  -r1y*i1*r1x-r2y*i2*r2x, m1+r1x^2*i1+m2+r2x^2*i2,           r1x*i1+r2x*i2]
             //     [          -r1y*i1-r2y*i2,           r1x*i1+r2x*i2,                   i1+i2]
 
-            float m1 = b1.InvMass, m2 = b2.InvMass;
-            float i1 = b1.InvI, i2 = b2.InvI;
+            float m1 = body1.InvMass, m2 = body2.InvMass;
+            float i1 = body1.InvI, i2 = body2.InvI;
 
 
-            float col1x = m1 + m2 + r1.Y * r1.Y * i1 + r2.Y * r2.Y * i2;
-            float col2x = -r1.Y * r1.X * i1 - r2.Y * r2.X * i2;
-            float col3x = -r1.Y * i1 - r2.Y * i2;
+            float col1X = m1 + m2 + mulR1.Y * mulR1.Y * i1 + mulR2.Y * mulR2.Y * i2;
+            float col2X = -mulR1.Y * mulR1.X * i1 - mulR2.Y * mulR2.X * i2;
+            float col3X = -mulR1.Y * i1 - mulR2.Y * i2;
 
-            float col1y = Mass.Col2.X;
-            float col2y = m1 + m2 + r1.X * r1.X * i1 + r2.X * r2.X * i2;
-            float col3y = r1.X * i1 + r2.X * i2;
+            float col1Y = Mass.Col2.X;
+            float col2Y = m1 + m2 + mulR1.X * mulR1.X * i1 + mulR2.X * mulR2.X * i2;
+            float col3Y = mulR1.X * i1 + mulR2.X * i2;
 
-            float col1z = Mass.Col3.X;
-            float col2z = Mass.Col3.Y;
-            float col3z = i1 + i2;
+            float col1Z = Mass.Col3.X;
+            float col2Z = Mass.Col3.Y;
+            float col3Z = i1 + i2;
             
-            Mass = new Mat33(new Vec3(col1x, col1y, col1z), new Vec3(col2x, col2y, col2z), new Vec3(col3x, col3y, col3z));
+            Mass = new Mat33(new Vec3(col1X, col1Y, col1Z), new Vec3(col2X, col2Y, col2Z), new Vec3(col3X, col3Y, col3Z));
             
             /*
 			_mass.Col1.X = m1 + m2 + r1.Y * r1.Y * i1 + r2.Y * r2.Y * i2;
@@ -332,7 +331,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (IsLimitEnabled)
             {
-                float jointAngle = b2.Sweep.A - b1.Sweep.A - ReferenceAngle;
+                float jointAngle = body2.Sweep.A - body1.Sweep.A - ReferenceAngle;
                 if (Box2DXMath.Abs(UpperLimit - LowerLimit) < 2.0f * Settings.AngularSlop)
                 {
                     State = LimitState.EqualLimits;
@@ -372,13 +371,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Impulse *= step.DtRatio;
                 MotorTorque *= step.DtRatio;
 
-                Vec2 P = new Vec2(Impulse.X, Impulse.Y);
+                Vec2 p = new Vec2(Impulse.X, Impulse.Y);
 
-                b1.LinearVelocity -= m1 * P;
-                b1.AngularVelocity -= i1 * (Vec2.Cross(r1, P) + MotorTorque + Impulse.Z);
+                body1.LinearVelocity -= m1 * p;
+                body1.AngularVelocity -= i1 * (Vec2.Cross(mulR1, p) + MotorTorque + Impulse.Z);
 
-                b2.LinearVelocity += m2 * P;
-                b2.AngularVelocity += i2 * (Vec2.Cross(r2, P) + MotorTorque + Impulse.Z);
+                body2.LinearVelocity += m2 * p;
+                body2.AngularVelocity += i2 * (Vec2.Cross(mulR2, p) + MotorTorque + Impulse.Z);
             }
             else
             {
@@ -407,8 +406,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             //Solve motor constraint.
             if (IsMotorEnabled && State != LimitState.EqualLimits)
             {
-                float Cdot = w2 - w1 - MotorSpeed;
-                float impulse = MotorMass * -Cdot;
+                float cdot = w2 - w1 - MotorSpeed;
+                float impulse = MotorMass * -cdot;
                 float oldImpulse = MotorTorque;
                 float maxImpulse = step.Dt * MaxMotorTorque;
                 MotorTorque = Box2DXMath.Clamp(MotorTorque + impulse, -maxImpulse, maxImpulse);
@@ -425,11 +424,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
                 // Solve point-to-point constraint
-                Vec2 Cdot1 = v2 + Vec2.Cross(w2, r2) - v1 - Vec2.Cross(w1, r1);
-                float Cdot2 = w2 - w1;
-                Vec3 Cdot = new Vec3(Cdot1.X, Cdot1.Y, Cdot2);
+                Vec2 cdot1 = v2 + Vec2.Cross(w2, r2) - v1 - Vec2.Cross(w1, r1);
+                float cdot2 = w2 - w1;
+                Vec3 cdot = new Vec3(cdot1.X, cdot1.Y, cdot2);
 
-                Vec3 impulse = Mass.Solve33(-Cdot);
+                Vec3 impulse = Mass.Solve33(-cdot);
 
                 if (State == LimitState.EqualLimits)
                 {
@@ -440,7 +439,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     float newImpulse = Impulse.Z + impulse.Z;
                     if (newImpulse < 0.0f)
                     {
-                        Vec2 reduced = Mass.Solve22(-Cdot1);
+                        Vec2 reduced = Mass.Solve22(-cdot1);
                         impulse.X = reduced.X;
                         impulse.Y = reduced.Y;
                         impulse.Z = -Impulse.Z;
@@ -452,7 +451,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     float newImpulse = Impulse.Z + impulse.Z;
                     if (newImpulse > 0.0f)
                     {
-                        Vec2 reduced = Mass.Solve22(-Cdot1);
+                        Vec2 reduced = Mass.Solve22(-cdot1);
                         impulse.X = reduced.X;
                         impulse.Y = reduced.Y;
                         impulse.Z = -Impulse.Z;
@@ -460,13 +459,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     }
                 }
 
-                Vec2 P = new Vec2(impulse.X, impulse.Y);
+                Vec2 p = new Vec2(impulse.X, impulse.Y);
 
-                v1 -= m1 * P;
-                w1 -= i1 * (Vec2.Cross(r1, P) + impulse.Z);
+                v1 -= m1 * p;
+                w1 -= i1 * (Vec2.Cross(r1, p) + impulse.Z);
 
-                v2 += m2 * P;
-                w2 += i2 * (Vec2.Cross(r2, P) + impulse.Z);
+                v2 += m2 * p;
+                w2 += i2 * (Vec2.Cross(r2, p) + impulse.Z);
             }
             else
             {
@@ -474,8 +473,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
                 // Solve point-to-point constraint
-                Vec2 Cdot = v2 + Vec2.Cross(w2, r2) - v1 - Vec2.Cross(w1, r1);
-                Vec2 impulse = Mass.Solve22(-Cdot);
+                Vec2 cdot = v2 + Vec2.Cross(w2, r2) - v1 - Vec2.Cross(w1, r1);
+                Vec2 impulse = Mass.Solve22(-cdot);
                 
                 Impulse = new Vec3(impulse.X, impulse.Y, Impulse.Z);
 
@@ -501,8 +500,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             // TODO_ERIN block solve with limit.
 
-            Body b1 = Body1;
-            Body b2 = Body2;
+            Body body1 = Body1;
+            Body body2 = Body2;
 
             float angularError = 0.0f;
             float positionError = 0.0f;
@@ -510,100 +509,100 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Solve angular limit constraint.
             if (IsLimitEnabled && State != LimitState.InactiveLimit)
             {
-                float angle = b2.Sweep.A - b1.Sweep.A - ReferenceAngle;
+                float angle = body2.Sweep.A - body1.Sweep.A - ReferenceAngle;
                 float limitImpulse = 0.0f;
 
                 if (State == LimitState.EqualLimits)
                 {
                     // Prevent large angular corrections
-                    float C = Box2DXMath.Clamp(angle, -Settings.MaxAngularCorrection, Settings.MaxAngularCorrection);
-                    limitImpulse = -MotorMass * C;
-                    angularError = Box2DXMath.Abs(C);
+                    float c = Box2DXMath.Clamp(angle, -Settings.MaxAngularCorrection, Settings.MaxAngularCorrection);
+                    limitImpulse = -MotorMass * c;
+                    angularError = Box2DXMath.Abs(c);
                 }
                 else if (State == LimitState.AtLowerLimit)
                 {
-                    float C = angle - LowerLimit;
-                    angularError = -C;
+                    float c = angle - LowerLimit;
+                    angularError = -c;
 
                     // Prevent large angular corrections and allow some slop.
-                    C = Box2DXMath.Clamp(C + Settings.AngularSlop, -Settings.MaxAngularCorrection, 0.0f);
-                    limitImpulse = -MotorMass * C;
+                    c = Box2DXMath.Clamp(c + Settings.AngularSlop, -Settings.MaxAngularCorrection, 0.0f);
+                    limitImpulse = -MotorMass * c;
                 }
                 else if (State == LimitState.AtUpperLimit)
                 {
-                    float C = angle - UpperLimit;
-                    angularError = C;
+                    float c = angle - UpperLimit;
+                    angularError = c;
 
                     // Prevent large angular corrections and allow some slop.
-                    C = Box2DXMath.Clamp(C - Settings.AngularSlop, 0.0f, Settings.MaxAngularCorrection);
-                    limitImpulse = -MotorMass * C;
+                    c = Box2DXMath.Clamp(c - Settings.AngularSlop, 0.0f, Settings.MaxAngularCorrection);
+                    limitImpulse = -MotorMass * c;
                 }
 
-                b1.Sweep.A -= b1.InvI * limitImpulse;
-                b2.Sweep.A += b2.InvI * limitImpulse;
+                body1.Sweep.A -= body1.InvI * limitImpulse;
+                body2.Sweep.A += body2.InvI * limitImpulse;
 
-                b1.SynchronizeTransform();
-                b2.SynchronizeTransform();
+                body1.SynchronizeTransform();
+                body2.SynchronizeTransform();
             }
 
             // Solve point-to-point constraint.
             {
-                Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-                Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+                Vec2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+                Vec2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
 
-                Vec2 C = b2.Sweep.C + r2 - b1.Sweep.C - r1;
-                positionError = C.Length();
+                Vec2 body2SweepC = body2.Sweep.C + mulR2 - body1.Sweep.C - mulR1;
+                positionError = body2SweepC.Length();
 
-                float invMass1 = b1.InvMass, invMass2 = b2.InvMass;
-                float invI1 = b1.InvI, invI2 = b2.InvI;
+                float invMass1 = body1.InvMass, invMass2 = body2.InvMass;
+                float invI1 = body1.InvI, invI2 = body2.InvI;
 
                 // Handle large detachment.
-                float k_allowedStretch = 10.0f * Settings.LinearSlop;
-                if (C.LengthSquared() > k_allowedStretch * k_allowedStretch)
+                float kAllowedStretch = 10.0f * Settings.LinearSlop;
+                if (body2SweepC.LengthSquared() > kAllowedStretch * kAllowedStretch)
                 {
                     // Use a particle solution (no rotation).
-                    Vec2 u = C;
-                    u.Normalize();
-                    float k = invMass1 + invMass2;
-                    Box2DXDebug.Assert(k > Settings.FltEpsilon);
-                    float m = 1.0f / k;
-                    Vec2 impulse = m * -C;
-                    float k_beta = 0.5f;
-                    b1.Sweep.C -= k_beta * invMass1 * impulse;
-                    b2.Sweep.C += k_beta * invMass2 * impulse;
+                    Vec2 sweepC = body2SweepC;
+                    sweepC.Normalize();
+                    float mass12 = invMass1 + invMass2;
+                    Box2DXDebug.Assert(mass12 > Settings.FltEpsilon);
+                    float divideMass12 = 1.0f / mass12;
+                    Vec2 impulseLocal = divideMass12 * -body2SweepC;
+                    float kBeta = 0.5f;
+                    body1.Sweep.C -= kBeta * invMass1 * impulseLocal;
+                    body2.Sweep.C += kBeta * invMass2 * impulseLocal;
 
-                    C = b2.Sweep.C + r2 - b1.Sweep.C - r1;
+                    body2SweepC = body2.Sweep.C + mulR2 - body1.Sweep.C - mulR1;
                 }
 
-                Mat22 K1 = new Mat22();
-                K1.col1.X = invMass1 + invMass2;
-                K1.col2.X = 0.0f;
-                K1.col1.Y = 0.0f;
-                K1.col2.Y = invMass1 + invMass2;
+                Mat22 k1 = new Mat22
+                {
+                    col1 = new Vec2(invMass1 + invMass2, 0.0f),
+                    col2 = new Vec2(0.0f, invMass1 + invMass2)
+                };
+                
+                Mat22 k2 = new Mat22();
+                k2.col1.X = invI1 * mulR1.Y * mulR1.Y;
+                k2.col2.X = -invI1 * mulR1.X * mulR1.Y;
+                k2.col1.Y = -invI1 * mulR1.X * mulR1.Y;
+                k2.col2.Y = invI1 * mulR1.X * mulR1.X;
 
-                Mat22 K2 = new Mat22();
-                K2.col1.X = invI1 * r1.Y * r1.Y;
-                K2.col2.X = -invI1 * r1.X * r1.Y;
-                K2.col1.Y = -invI1 * r1.X * r1.Y;
-                K2.col2.Y = invI1 * r1.X * r1.X;
+                Mat22 k3 = new Mat22();
+                k3.col1.X = invI2 * mulR2.Y * mulR2.Y;
+                k3.col2.X = -invI2 * mulR2.X * mulR2.Y;
+                k3.col1.Y = -invI2 * mulR2.X * mulR2.Y;
+                k3.col2.Y = invI2 * mulR2.X * mulR2.X;
 
-                Mat22 K3 = new Mat22();
-                K3.col1.X = invI2 * r2.Y * r2.Y;
-                K3.col2.X = -invI2 * r2.X * r2.Y;
-                K3.col1.Y = -invI2 * r2.X * r2.Y;
-                K3.col2.Y = invI2 * r2.X * r2.X;
+                Mat22 k = k1 + k2 + k3;
+                Vec2 impulse = k.Solve(-body2SweepC);
 
-                Mat22 K = K1 + K2 + K3;
-                Vec2 impulse_ = K.Solve(-C);
+                body1.Sweep.C -= body1.InvMass * impulse;
+                body1.Sweep.A -= body1.InvI * Vec2.Cross(mulR1, impulse);
 
-                b1.Sweep.C -= b1.InvMass * impulse_;
-                b1.Sweep.A -= b1.InvI * Vec2.Cross(r1, impulse_);
+                body2.Sweep.C += body2.InvMass * impulse;
+                body2.Sweep.A += body2.InvI * Vec2.Cross(mulR2, impulse);
 
-                b2.Sweep.C += b2.InvMass * impulse_;
-                b2.Sweep.A += b2.InvI * Vec2.Cross(r2, impulse_);
-
-                b1.SynchronizeTransform();
-                b2.SynchronizeTransform();
+                body1.SynchronizeTransform();
+                body2.SynchronizeTransform();
             }
 
             return positionError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;

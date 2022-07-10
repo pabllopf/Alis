@@ -6183,7 +6183,7 @@
                 applying huge forces.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint._target">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.MouseJoint.Target">
             <summary>
                 The target
             </summary>
@@ -6254,7 +6254,7 @@
                 Gets the reaction force using the specified inv dt
             </summary>
             <param>The inv dt</param>
-            <param name="inv_dt"></param>
+            <param name="invDt"></param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJoint.GetReactionTorque(System.Single)">
@@ -6262,7 +6262,7 @@
                 Gets the reaction torque using the specified inv dt
             </summary>
             <param>The inv dt</param>
-            <param name="inv_dt"></param>
+            <param name="invDt"></param>
             <returns>The float</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJoint.SetTarget(Alis.Core.Physic.Common.Vec2)">
@@ -6401,17 +6401,17 @@
                 The motor speed
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.RefAngle">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.refAngle">
             <summary>
                 The ref angle
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.S1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.s1">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.S2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.s2">
             <summary>
                 The
             </summary>
@@ -6476,14 +6476,14 @@
             <summary>
                 Gets the reaction force using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.GetReactionTorque(System.Single)">
             <summary>
                 Gets the reaction torque using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.EnableLimit(System.Boolean)">
@@ -6751,14 +6751,14 @@
             <summary>
                 Gets the reaction force using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GetReactionTorque(System.Single)">
             <summary>
                 Gets the reaction torque using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
@@ -6956,7 +6956,7 @@
                 Gets the reaction force using the specified inv dt
             </summary>
             <param>The inv dt</param>
-            <param name="inv_dt"></param>
+            <param name="invDt"></param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.GetReactionTorque(System.Single)">
@@ -6964,7 +6964,7 @@
                 Gets the reaction torque using the specified inv dt
             </summary>
             <param>The inv dt</param>
-            <param name="inv_dt"></param>
+            <param name="invDt"></param>
             <returns>The float</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableLimit(System.Boolean)">
