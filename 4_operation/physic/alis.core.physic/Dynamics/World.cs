@@ -50,6 +50,16 @@ namespace Alis.Core.Physic.Dynamics
         private readonly bool allowSleep;
 
         /// <summary>
+        ///     The contact manager
+        /// </summary>
+        private readonly ContactManager contactManager;
+
+        /// <summary>
+        ///     The ground body
+        /// </summary>
+        private readonly Body groundBody;
+
+        /// <summary>
         ///     The body count
         /// </summary>
         private int bodyCount;
@@ -90,11 +100,6 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal IContactListener ContactListener;
 
-        /// <summary>
-        ///     The contact manager
-        /// </summary>
-        private readonly ContactManager contactManager;
-
         // This is for debugging the solver.
         /// <summary>
         ///     The continuous physics
@@ -125,11 +130,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     The gravity
         /// </summary>
         private Vec2 gravity;
-
-        /// <summary>
-        ///     The ground body
-        /// </summary>
-        private readonly Body groundBody;
 
         // This is used to compute the time step ratio to
         // support a variable time step.
@@ -235,7 +235,10 @@ namespace Alis.Core.Physic.Dynamics
         {
             DestroyBody(groundBody);
             if (BroadPhase is IDisposable)
+            {
                 (BroadPhase as IDisposable).Dispose();
+            }
+
             BroadPhase = null;
         }
 
@@ -337,7 +340,10 @@ namespace Alis.Core.Physic.Dynamics
             // Delete the attached joints.
             JointEdge jn = null;
             if (b.JointList != null)
+            {
                 jn = b.JointList;
+            }
+
             while (jn != null)
             {
                 JointEdge jn0 = jn;
@@ -395,7 +401,10 @@ namespace Alis.Core.Physic.Dynamics
 
             --bodyCount;
             if (b is IDisposable)
+            {
                 (b as IDisposable).Dispose();
+            }
+
             b = null;
         }
 
@@ -429,7 +438,10 @@ namespace Alis.Core.Physic.Dynamics
             j.Node1.Prev = null;
             j.Node1.Next = j.Body1.JointList;
             if (j.Body1.JointList != null)
+            {
                 j.Body1.JointList.Prev = j.Node1;
+            }
+
             j.Body1.JointList = j.Node1;
 
             j.Node2.Joint = j;
@@ -437,7 +449,10 @@ namespace Alis.Core.Physic.Dynamics
             j.Node2.Prev = null;
             j.Node2.Next = j.Body2.JointList;
             if (j.Body2.JointList != null)
+            {
                 j.Body2.JointList.Prev = j.Node2;
+            }
+
             j.Body2.JointList = j.Node2;
 
             // If the joint prevents collisions, then reset collision filtering.
@@ -554,7 +569,10 @@ namespace Alis.Core.Physic.Dynamics
             def.Next = controllerList;
             def.Prev = null;
             if (controllerList != null)
+            {
                 controllerList.Prev = def;
+            }
+
             controllerList = def;
             ++controllerCount;
 
@@ -571,11 +589,20 @@ namespace Alis.Core.Physic.Dynamics
         {
             Box2DxDebug.Assert(controllerCount > 0);
             if (controller.Next != null)
+            {
                 controller.Next.Prev = controller.Prev;
+            }
+
             if (controller.Prev != null)
+            {
                 controller.Prev.Next = controller.Next;
+            }
+
             if (controller == controllerList)
+            {
                 controllerList = controller.Next;
+            }
+
             --controllerCount;
         }
 
@@ -839,7 +866,9 @@ namespace Alis.Core.Physic.Dynamics
             int count = Raycast(segment, out fixture, maxCount, solidShapes, userData);
 
             if (count == 0)
+            {
                 return null;
+            }
 
             Box2DxDebug.Assert(count == 1);
 
@@ -1606,7 +1635,9 @@ namespace Alis.Core.Physic.Dynamics
             World world = body.GetWorld();
 
             if (world.ContactFilter != null && !world.ContactFilter.RayCollide(world.raycastUserData, fixture))
+            {
                 return -1;
+            }
 
             float lambda;
 
@@ -1614,9 +1645,14 @@ namespace Alis.Core.Physic.Dynamics
                 fixture.TestSegment(out lambda, out world.raycastNormal, world.raycastSegment, 1);
 
             if (world.raycastSolidShape && collide == SegmentCollide.MissCollide)
+            {
                 return -1;
+            }
+
             if (!world.raycastSolidShape && collide != SegmentCollide.HitCollide)
+            {
                 return -1;
+            }
 
             return lambda;
         }

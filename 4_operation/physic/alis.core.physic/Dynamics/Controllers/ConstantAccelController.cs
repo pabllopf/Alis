@@ -61,7 +61,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             {
                 Body body = i.Body;
                 if (body.IsSleeping())
+                {
                     continue;
+                }
+
                 body.SetLinearVelocity(body.GetLinearVelocity() + step.Dt * A);
             }
         }

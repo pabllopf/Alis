@@ -137,9 +137,13 @@ namespace Alis.Core.Physic.Collision
             for (;;)
             {
                 if (increment == -1)
+                {
                     edge = bestEdge - 1 >= 0 ? bestEdge - 1 : count1 - 1;
+                }
                 else
+                {
                     edge = bestEdge + 1 < count1 ? bestEdge + 1 : 0;
+                }
 
                 s = EdgeSeparation(poly1, xf1, edge, poly2, xf2);
 
@@ -235,12 +239,16 @@ namespace Alis.Core.Physic.Collision
             int edgeA = 0;
             float separationA = FindMaxSeparation(ref edgeA, polyA, xfA, polyB, xfB);
             if (separationA > totalRadius)
+            {
                 return;
+            }
 
             int edgeB = 0;
             float separationB = FindMaxSeparation(ref edgeB, polyB, xfB, polyA, xfA);
             if (separationB > totalRadius)
+            {
                 return;
+            }
 
             PolygonShape poly1; // reference poly
             PolygonShape poly2; // incident poly
@@ -306,13 +314,17 @@ namespace Alis.Core.Physic.Collision
             np = ClipSegmentToLine(out clipPoints1, incidentEdge, -sideNormal, sideOffset1);
 
             if (np < 2)
+            {
                 return;
+            }
 
             // Clip to negative box side 1
             np = ClipSegmentToLine(out clipPoints2, clipPoints1, sideNormal, sideOffset2);
 
             if (np < 2)
+            {
                 return;
+            }
 
             // Now clipPoints2 contains the clipped points.
             manifold.LocalPlaneNormal = localNormal;

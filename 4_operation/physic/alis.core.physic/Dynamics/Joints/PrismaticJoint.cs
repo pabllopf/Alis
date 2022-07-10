@@ -109,6 +109,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class PrismaticJoint : Joint
     {
         /// <summary>
+        ///     The ref angle
+        /// </summary>
+        private readonly float refAngle;
+
+        /// <summary>
         ///     The
         /// </summary>
         private float a1;
@@ -122,11 +127,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The perp
         /// </summary>
         public Vec2 Axis;
-
-        /// <summary>
-        ///     The perp
-        /// </summary>
-        public Vec2 Perp;
 
         /// <summary>
         ///     The impulse
@@ -179,9 +179,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private float motorSpeedx;
 
         /// <summary>
-        ///     The ref angle
+        ///     The perp
         /// </summary>
-        private readonly float refAngle;
+        public Vec2 Perp;
 
         /// <summary>
         ///     The
@@ -246,7 +246,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vec2 worldPoint2 = body2.GetWorldPoint(LocalAnchor2);
                 Vec2 distance = worldPoint2 - worldPoint1;
                 Vec2 worldVector = body1.GetWorldVector(LocalXAxis1);
-                
+
                 return Vec2.Dot(distance, worldVector);
             }
         }
@@ -272,9 +272,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vec2 body2LinearVelocity = body2.LinearVelocity;
                 float body1AngularVelocity = body1.AngularVelocity;
                 float body2AngularVelocity = body2.AngularVelocity;
-                
+
                 return Vec2.Dot(distance, Vec2.Cross(body1AngularVelocity, worldVector)) +
-                       Vec2.Dot(worldVector, body2LinearVelocity + Vec2.Cross(body2AngularVelocity, mul2) - body1LinearVelocity - Vec2.Cross(body1AngularVelocity, mul1));
+                       Vec2.Dot(worldVector,
+                           body2LinearVelocity + Vec2.Cross(body2AngularVelocity, mul2) - body1LinearVelocity -
+                           Vec2.Cross(body1AngularVelocity, mul1));
             }
         }
 

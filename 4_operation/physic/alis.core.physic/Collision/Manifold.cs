@@ -67,7 +67,9 @@ namespace Alis.Core.Physic.Collision
         public Manifold()
         {
             for (int i = 0; i < Settings.MaxManifoldPoints; i++)
+            {
                 Points[i] = new ManifoldPoint();
+            }
         }
 
         /// <summary>

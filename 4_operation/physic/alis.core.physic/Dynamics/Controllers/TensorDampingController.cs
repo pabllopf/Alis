@@ -79,14 +79,22 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         {
             float timestep = step.Dt;
             if (timestep <= Settings.FltEpsilon)
+            {
                 return;
+            }
+
             if (timestep > maxTimestep && maxTimestep > 0)
+            {
                 timestep = maxTimestep;
+            }
+
             for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
             {
                 Body body = i.Body;
                 if (body.IsSleeping())
+                {
                     continue;
+                }
 
                 Vec2 damping = body.GetWorldVector(Math.Mul(T, body.GetLocalVector(body.GetLinearVelocity())));
                 body.SetLinearVelocity(body.GetLinearVelocity() + timestep * damping);

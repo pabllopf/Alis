@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Dynamics
     /// You should strive to make your callbacks efficient because there may be
     /// many callbacks per time step.
     /// @warning You cannot create/destroy Box2DX entities inside these callbacks.
-    public interface ContactListener
+    public interface IContactListener
     {
         /// Called when two fixtures begin to touch.
         void BeginContact(Contact contact);

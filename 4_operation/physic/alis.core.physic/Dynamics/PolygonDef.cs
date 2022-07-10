@@ -40,14 +40,14 @@ namespace Alis.Core.Physic.Dynamics
     public class PolygonDef : FixtureDef
     {
         /// <summary>
-        ///     The number of polygon vertices.
-        /// </summary>
-        public int VertexCount;
-
-        /// <summary>
         ///     The polygon vertices in local coordinates.
         /// </summary>
         public readonly Vec2[] Vertices = new Vec2[Settings.MaxPolygonVertices];
+
+        /// <summary>
+        ///     The number of polygon vertices.
+        /// </summary>
+        public int VertexCount;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonDef" /> class

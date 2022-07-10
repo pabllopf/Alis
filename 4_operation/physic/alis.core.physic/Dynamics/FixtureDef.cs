@@ -38,6 +38,21 @@ namespace Alis.Core.Physic.Dynamics
     public class FixtureDef
     {
         /// <summary>
+        ///     A sensor shape collects contact information but never generates a collision response.
+        /// </summary>
+        public readonly bool IsSensor;
+
+        /// <summary>
+        ///     The restitution (elasticity) usually in the range [0,1].
+        /// </summary>
+        public readonly float Restitution;
+
+        /// <summary>
+        ///     Use this to store application specific fixture data.
+        /// </summary>
+        public readonly object UserData;
+
+        /// <summary>
         ///     The density, usually in kg/m^2.
         /// </summary>
         public float Density;
@@ -53,24 +68,9 @@ namespace Alis.Core.Physic.Dynamics
         public float Friction;
 
         /// <summary>
-        ///     A sensor shape collects contact information but never generates a collision response.
-        /// </summary>
-        public readonly bool IsSensor;
-
-        /// <summary>
-        ///     The restitution (elasticity) usually in the range [0,1].
-        /// </summary>
-        public readonly float Restitution;
-
-        /// <summary>
         ///     Holds the shape type for down-casting.
         /// </summary>
         public ShapeType Type;
-
-        /// <summary>
-        ///     Use this to store application specific fixture data.
-        /// </summary>
-        public readonly object UserData;
 
         /// <summary>
         ///     The constructor sets the default fixture definition values.

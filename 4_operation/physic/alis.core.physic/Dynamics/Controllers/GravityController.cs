@@ -73,7 +73,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                         Vec2 d = body2.GetWorldCenter() - body1.GetWorldCenter();
                         float r2 = d.LengthSquared();
                         if (r2 < Settings.FltEpsilon)
+                        {
                             continue;
+                        }
 
                         Vec2 f = G / r2 / Math.Sqrt(r2) * body1.GetMass() * body2.GetMass() * d;
                         body1.ApplyForce(f, body1.GetWorldCenter());
@@ -92,7 +94,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                         Vec2 d = body2.GetWorldCenter() - body1.GetWorldCenter();
                         float r2 = d.LengthSquared();
                         if (r2 < Settings.FltEpsilon)
+                        {
                             continue;
+                        }
+
                         Vec2 f = G / r2 * body1.GetMass() * body2.GetMass() * d;
                         body1.ApplyForce(f, body1.GetWorldCenter());
                         body2.ApplyForce(-1.0f * f, body2.GetWorldCenter());

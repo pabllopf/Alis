@@ -80,14 +80,14 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             new ContactRegister[(int) ShapeType.ShapeTypeCount][ /*(int)ShapeType.ShapeTypeCount*/];
 
         /// <summary>
-        ///     The manifold
-        /// </summary>
-        private Manifold manifold = new Manifold();
-
-        /// <summary>
         ///     The collide shape function
         /// </summary>
         internal CollideShapeDelegate CollideShapeFunction;
+
+        /// <summary>
+        ///     The manifold
+        /// </summary>
+        private Manifold manifold = new Manifold();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Contact" /> class
@@ -201,7 +201,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Box2DxDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
 
             if (SRegisters[(int) type1] == null)
+            {
                 SRegisters[(int) type1] = new ContactRegister[(int) ShapeType.ShapeTypeCount];
+            }
 
             SRegisters[(int) type1][(int) type2].CreateFcn = createFcn;
             SRegisters[(int) type1][(int) type2].DestroyFcn = contactDestroyFcn;
@@ -346,20 +348,26 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 Flags |= CollisionFlags.Touch;
                 if (listener != null)
+                {
                     listener.BeginContact(this);
+                }
             }
 
             if (oldCount > 0 && newCount == 0)
             {
                 Flags &= ~CollisionFlags.Touch;
                 if (listener != null)
+                {
                     listener.EndContact(this);
+                }
             }
 
             if ((Flags & CollisionFlags.NonSolid) == 0)
             {
                 if (listener != null)
+                {
                     listener.PreSolve(this, oldManifold);
+                }
 
                 // The user may have disabled contact.
                 if (Manifold.PointCount == 0)

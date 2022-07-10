@@ -37,14 +37,14 @@ namespace Alis.Core.Physic.Collision
     public class WorldManifold
     {
         /// <summary>
-        ///     World vector pointing from A to B.
-        /// </summary>
-        public Vec2 Normal;
-
-        /// <summary>
         ///     World contact point (point of intersection).
         /// </summary>
         public readonly Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
+
+        /// <summary>
+        ///     World vector pointing from A to B.
+        /// </summary>
+        public Vec2 Normal;
 
         /// <summary>
         ///     Clones this instance

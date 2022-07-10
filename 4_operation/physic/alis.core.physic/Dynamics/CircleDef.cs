@@ -38,14 +38,14 @@ namespace Alis.Core.Physic.Dynamics
     public class CircleDef : FixtureDef
     {
         /// <summary>
-        ///     The local position
-        /// </summary>
-        public Vec2 LocalPosition;
-
-        /// <summary>
         ///     The radius
         /// </summary>
         public readonly float Radius;
+
+        /// <summary>
+        ///     The local position
+        /// </summary>
+        public Vec2 LocalPosition;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleDef" /> class

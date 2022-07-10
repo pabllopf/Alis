@@ -57,10 +57,14 @@ namespace Alis.Core.Physic.Collision
             d2 = a.LowerBound - b.UpperBound;
 
             if (d1.X > 0.0f || d1.Y > 0.0f)
+            {
                 return false;
+            }
 
             if (d2.X > 0.0f || d2.Y > 0.0f)
+            {
                 return false;
+            }
 
             return true;
         }
@@ -136,8 +140,15 @@ namespace Alis.Core.Physic.Collision
             float distance1 = Vec2.Dot(normal, vIn[1].V) - offset;
 
             // If the points are behind the plane
-            if (distance0 <= 0.0f) vOut[numOut++] = vIn[0];
-            if (distance1 <= 0.0f) vOut[numOut++] = vIn[1];
+            if (distance0 <= 0.0f)
+            {
+                vOut[numOut++] = vIn[0];
+            }
+
+            if (distance1 <= 0.0f)
+            {
+                vOut[numOut++] = vIn[1];
+            }
 
             // If the points are on different sides of the plane
             if (distance0 * distance1 < 0.0f)

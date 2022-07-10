@@ -42,14 +42,8 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// The fluid density
         public readonly float Density;
 
-        /// Gravity vector, if the world's gravity is not used
-        public Vec2 Gravity;
-
         /// Linear drag co-efficient
         public readonly float LinearDrag;
-
-        /// The outer surface normal
-        public Vec2 Normal;
 
         /// The height of the fluid surface along the normal
         public readonly float Offset;
@@ -59,6 +53,12 @@ namespace Alis.Core.Physic.Dynamics.Controllers
 
         /// If true, gravity is taken from the world instead of the gravity parameter.
         public readonly bool UseWorldGravity;
+
+        /// Gravity vector, if the world's gravity is not used
+        public Vec2 Gravity;
+
+        /// The outer surface normal
+        public Vec2 Normal;
 
         /// Fluid velocity, for drag calculations
         public Vec2 Velocity;

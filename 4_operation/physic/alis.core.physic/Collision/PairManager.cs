@@ -65,6 +65,21 @@ namespace Alis.Core.Physic.Collision
         public static readonly int TableMask = TableCapacity - 1;
 
         /// <summary>
+        ///     The table capacity
+        /// </summary>
+        public readonly ushort[] HashTable = new ushort[TableCapacity];
+
+        /// <summary>
+        ///     The max pairs
+        /// </summary>
+        public readonly BufferedPair[] PairBuffer = new BufferedPair[Settings.MaxPairs];
+
+        /// <summary>
+        ///     The max pairs
+        /// </summary>
+        public readonly Pair[] Pairs = new Pair[Settings.MaxPairs];
+
+        /// <summary>
         ///     The broad phase
         /// </summary>
         public BroadPhase BroadPhase;
@@ -80,16 +95,6 @@ namespace Alis.Core.Physic.Collision
         public ushort FreePair;
 
         /// <summary>
-        ///     The table capacity
-        /// </summary>
-        public readonly ushort[] HashTable = new ushort[TableCapacity];
-
-        /// <summary>
-        ///     The max pairs
-        /// </summary>
-        public readonly BufferedPair[] PairBuffer = new BufferedPair[Settings.MaxPairs];
-
-        /// <summary>
         ///     The pair buffer count
         /// </summary>
         public int PairBufferCount;
@@ -98,11 +103,6 @@ namespace Alis.Core.Physic.Collision
         ///     The pair count
         /// </summary>
         public int PairCount;
-
-        /// <summary>
-        ///     The max pairs
-        /// </summary>
-        public readonly Pair[] Pairs = new Pair[Settings.MaxPairs];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PairManager" /> class
@@ -308,7 +308,9 @@ namespace Alis.Core.Physic.Collision
         private Pair Find(int proxyId1, int proxyId2)
         {
             if (proxyId1 > proxyId2)
+            {
                 Math.Swap(ref proxyId1, ref proxyId2);
+            }
 
             uint hash = (uint) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
 
@@ -351,7 +353,9 @@ namespace Alis.Core.Physic.Collision
         private Pair AddPair(int proxyId1, int proxyId2)
         {
             if (proxyId1 > proxyId2)
+            {
                 Math.Swap(ref proxyId1, ref proxyId2);
+            }
 
             int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
 
@@ -392,7 +396,9 @@ namespace Alis.Core.Physic.Collision
             Box2DxDebug.Assert(PairCount > 0);
 
             if (proxyId1 > proxyId2)
+            {
                 Math.Swap(ref proxyId1, ref proxyId2);
+            }
 
             int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
 
@@ -410,7 +416,9 @@ namespace Alis.Core.Physic.Collision
                     ushort index = node;
                     node = Pairs[node].Next;
                     if (ion)
+                    {
                         Pairs[ni].Next = node;
+                    }
                     else
                     {
                         HashTable[hash] = node;
@@ -564,13 +572,24 @@ namespace Alis.Core.Physic.Collision
         public static int BufferedPairSortPredicate(BufferedPair pair1, BufferedPair pair2)
         {
             if (pair1.ProxyId1 < pair2.ProxyId1)
+            {
                 return 1;
+            }
+
             if (pair1.ProxyId1 > pair2.ProxyId1)
+            {
                 return -1;
+            }
+
             if (pair1.ProxyId2 < pair2.ProxyId2)
+            {
                 return 1;
+            }
+
             if (pair1.ProxyId2 > pair2.ProxyId2)
+            {
                 return -1;
+            }
 
             return 0;
         }

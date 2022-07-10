@@ -52,21 +52,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public readonly bool EnableMotor;
 
         /// <summary>
-        ///     The local anchor point relative to body1's origin.
-        /// </summary>
-        public Vec2 LocalAnchor1;
-
-        /// <summary>
-        ///     The local anchor point relative to body2's origin.
-        /// </summary>
-        public Vec2 LocalAnchor2;
-
-        /// <summary>
-        ///     The local translation axis in body1.
-        /// </summary>
-        public Vec2 LocalAxis1;
-
-        /// <summary>
         ///     The lower translation limit, usually in meters.
         /// </summary>
         public readonly float LowerTranslation;
@@ -85,6 +70,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The upper translation limit, usually in meters.
         /// </summary>
         public readonly float UpperTranslation;
+
+        /// <summary>
+        ///     The local anchor point relative to body1's origin.
+        /// </summary>
+        public Vec2 LocalAnchor1;
+
+        /// <summary>
+        ///     The local anchor point relative to body2's origin.
+        /// </summary>
+        public Vec2 LocalAnchor2;
+
+        /// <summary>
+        ///     The local translation axis in body1.
+        /// </summary>
+        public Vec2 LocalAxis1;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="LineJointDef" /> class

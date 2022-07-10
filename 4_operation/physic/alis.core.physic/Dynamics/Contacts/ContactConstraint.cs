@@ -38,6 +38,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     public class ContactConstraint
     {
         /// <summary>
+        ///     The max manifold points
+        /// </summary>
+        public readonly ContactConstraintPoint[] Points = new ContactConstraintPoint[Settings.MaxManifoldPoints];
+
+        /// <summary>
         ///     The body
         /// </summary>
         public Body BodyA;
@@ -86,11 +91,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The point count
         /// </summary>
         public int PointCount;
-
-        /// <summary>
-        ///     The max manifold points
-        /// </summary>
-        public readonly ContactConstraintPoint[] Points = new ContactConstraintPoint[Settings.MaxManifoldPoints];
 
         /// <summary>
         ///     The radius

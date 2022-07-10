@@ -395,7 +395,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vec2 v2 = b2.LinearVelocity + Vec2.Cross(b2.AngularVelocity, r2);
 
                 float cdot = -Vec2.Dot(U1, v1) - Ratio * Vec2.Dot(U2, v2);
-                float impulse = PulleyMass * (-cdot);
+                float impulse = PulleyMass * -cdot;
                 float oldImpulse = Impulse;
                 Impulse = Box2DXMath.Max(0.0f, Impulse + impulse);
                 impulse = Impulse - oldImpulse;

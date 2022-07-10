@@ -115,11 +115,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vec2 Axis;
 
         /// <summary>
-        ///     The perp
-        /// </summary>
-        public Vec2 Perp;
-
-        /// <summary>
         ///     The enable limit
         /// </summary>
         public bool EnableLimitx;
@@ -188,6 +183,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The motor speed
         /// </summary>
         public float MotorSpeed;
+
+        /// <summary>
+        ///     The perp
+        /// </summary>
+        public Vec2 Perp;
 
         /// <summary>
         ///     The
@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             else
             {
                 // Limit is inactive, just solve the prismatic constraint in block form.
-                float df = (-cdot1) / K.Col1.X;
+                float df = -cdot1 / K.Col1.X;
                 Impulse.X += df;
 
                 Vec2 p = df * Perp;
@@ -715,7 +715,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
                 float k11 = m1 + m2 + i1 * S1 * S1 + i2 * s2 * s2;
 
-                float impulse1 = (-c1) / k11;
+                float impulse1 = -c1 / k11;
                 impulse.X = impulse1;
                 impulse.Y = 0.0f;
             }

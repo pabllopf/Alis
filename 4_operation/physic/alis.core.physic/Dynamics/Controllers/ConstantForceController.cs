@@ -62,7 +62,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             {
                 Body body = i.Body;
                 if (body.IsSleeping())
+                {
                     continue;
+                }
+
                 body.ApplyForce(f, body.GetWorldCenter());
             }
         }

@@ -320,7 +320,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float cdot = jacobian.Compute(b1.LinearVelocity, b1.AngularVelocity, b2.LinearVelocity,
                 b2.AngularVelocity);
 
-            float impulse = Mass * (-cdot);
+            float impulse = Mass * -cdot;
             Impulse += impulse;
 
             b1.LinearVelocity += b1.InvMass * impulse * jacobian.Linear1;
@@ -362,7 +362,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float c = Constant - (coordinate1 + Ratio * coordinate2);
 
-            float impulse = Mass * (-c);
+            float impulse = Mass * -c;
 
             b1.Sweep.C += b1.InvMass * impulse * jacobian.Linear1;
             b1.Sweep.A += b1.InvI * impulse * jacobian.Angular1;

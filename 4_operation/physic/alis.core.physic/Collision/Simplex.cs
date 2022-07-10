@@ -136,8 +136,8 @@ namespace Alis.Core.Physic.Collision
                 vertices[2] = v3Ptr;
                 for (int i = 0; i < Count; ++i)
                 {
-                    cache->IndexA[i] = (byte) (vertices[i]->IndexA);
-                    cache->IndexB[i] = (byte) (vertices[i]->IndexB);
+                    cache->IndexA[i] = (byte) vertices[i]->IndexA;
+                    cache->IndexB[i] = (byte) vertices[i]->IndexB;
                 }
             }
         }

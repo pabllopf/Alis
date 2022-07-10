@@ -202,13 +202,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Col1 = new Vec2(invMass, 0.0f),
                 Col2 = new Vec2(0.0f, invMass)
             };
-            
+
             Mat22 k2 = new Mat22
             {
                 Col1 = new Vec2(invI * effectiveMass.Y * effectiveMass.Y, -invI * effectiveMass.X * effectiveMass.Y),
                 Col2 = new Vec2(-invI * effectiveMass.X * effectiveMass.Y, invI * effectiveMass.X * effectiveMass.X)
             };
-            
+
             Mat22 k = k1 + k2;
             k.Col1.X += Gamma;
             k.Col2.Y += Gamma;

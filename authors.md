@@ -3,12 +3,10 @@ Project Authors
 
 This is where your explain when the project started, for which client, and list all devteams who contributes to it.
 
-
 ## Project technical leads:
 
 * John Foo - position - City (Country)
 * Bar Doe - position - City (Country)
-
 
 ## Developers:
 
@@ -28,4 +26,5 @@ This is where your explain when the project started, for which client, and list 
     * Bar Doe - position - City (Country)
 
 ## Special thanks to
+
 Have fun here =] (optional item)

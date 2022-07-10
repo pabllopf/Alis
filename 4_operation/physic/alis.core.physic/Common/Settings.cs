@@ -196,18 +196,18 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The max translation
         /// </summary>
-        public static readonly float MaxTranslationSquared = (MaxTranslation * MaxTranslation);
+        public static readonly float MaxTranslationSquared = MaxTranslation * MaxTranslation;
 
         /// <summary>
         ///     The maximum angular velocity of a body. This limit is very large and is used
         ///     to prevent numerical problems. You shouldn't need to adjust this.
         /// </summary>
-        public static readonly float MaxRotation = (0.5f * Pi);
+        public static readonly float MaxRotation = 0.5f * Pi;
 
         /// <summary>
         ///     The max rotation
         /// </summary>
-        public static readonly float MaxRotationSquared = (MaxRotation * MaxRotation);
+        public static readonly float MaxRotationSquared = MaxRotation * MaxRotation;
 
         /// <summary>
         ///     This scale factor controls how fast overlap is resolved. Ideally this would be 1 so

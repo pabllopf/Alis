@@ -35,6 +35,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class JointDef
     {
         /// <summary>
+        ///     Use this to attach application specific data to your joints.
+        /// </summary>
+        public readonly object UserData;
+
+        /// <summary>
         ///     The first attached body.
         /// </summary>
         public Body Body1;
@@ -53,11 +58,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The joint type is set automatically for concrete joint types.
         /// </summary>
         public JointType Type;
-
-        /// <summary>
-        ///     Use this to attach application specific data to your joints.
-        /// </summary>
-        public readonly object UserData;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="JointDef" /> class

@@ -160,24 +160,34 @@ namespace Alis.Core.Physic.Dynamics
     public class Island : IDisposable
     {
         /// <summary>
-        ///     The bodies
-        /// </summary>
-        public Body[] Bodies;
-
-        /// <summary>
         ///     The body capacity
         /// </summary>
         private readonly int bodyCapacity;
 
         /// <summary>
-        ///     The body count
-        /// </summary>
-        public int BodyCount;
-
-        /// <summary>
         ///     The contact capacity
         /// </summary>
         public readonly int ContactCapacity;
+
+        /// <summary>
+        ///     The joint capacity
+        /// </summary>
+        public readonly int JointCapacity;
+
+        /// <summary>
+        ///     The listener
+        /// </summary>
+        public readonly IContactListener Listener;
+
+        /// <summary>
+        ///     The bodies
+        /// </summary>
+        public Body[] Bodies;
+
+        /// <summary>
+        ///     The body count
+        /// </summary>
+        public int BodyCount;
 
         /// <summary>
         ///     The contact count
@@ -190,11 +200,6 @@ namespace Alis.Core.Physic.Dynamics
         public Contact[] Contacts;
 
         /// <summary>
-        ///     The joint capacity
-        /// </summary>
-        public readonly int JointCapacity;
-
-        /// <summary>
         ///     The joint count
         /// </summary>
         public int JointCount;
@@ -203,11 +208,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     The joints
         /// </summary>
         public Joint[] Joints;
-
-        /// <summary>
-        ///     The listener
-        /// </summary>
-        public readonly IContactListener Listener;
 
         /// <summary>
         ///     The position iteration count
@@ -287,7 +287,9 @@ namespace Alis.Core.Physic.Dynamics
                 Body b = Bodies[i];
 
                 if (b.IsStatic())
+                {
                     continue;
+                }
 
                 // Integrate velocities.
                 b.LinearVelocity += step.Dt * (gravity + b.InvMass * b.Force);
@@ -338,14 +340,16 @@ namespace Alis.Core.Physic.Dynamics
                 Body b = Bodies[i];
 
                 if (b.IsStatic())
+                {
                     continue;
+                }
 
                 // Check for large velocities.
                 Vec2 translation = step.Dt * b.LinearVelocity;
                 if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
                 {
                     translation.Normalize();
-                    b.LinearVelocity = (Settings.MaxTranslation * step.InvDt) * translation;
+                    b.LinearVelocity = Settings.MaxTranslation * step.InvDt * translation;
                 }
 
                 float rotation = step.Dt * b.AngularVelocity;
@@ -489,14 +493,16 @@ namespace Alis.Core.Physic.Dynamics
                 Body b = Bodies[i];
 
                 if (b.IsStatic())
+                {
                     continue;
+                }
 
                 // Check for large velocities.
                 Vec2 translation = subStep.Dt * b.LinearVelocity;
                 if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
                 {
                     translation.Normalize();
-                    b.LinearVelocity = (Settings.MaxTranslation * subStep.InvDt) * translation;
+                    b.LinearVelocity = Settings.MaxTranslation * subStep.InvDt * translation;
                 }
 
                 float rotation = subStep.Dt * b.AngularVelocity;

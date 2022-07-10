@@ -44,6 +44,11 @@ namespace Alis.Core.Physic.Dynamics
     public class Body : IDisposable
     {
         /// <summary>
+        ///     The world
+        /// </summary>
+        private readonly World world;
+
+        /// <summary>
         ///     The angular damping
         /// </summary>
         internal float AngularDamping;
@@ -157,11 +162,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     The user data
         /// </summary>
         private object userData;
-
-        /// <summary>
-        ///     The world
-        /// </summary>
-        private readonly World world;
 
         /// <summary>
         ///     The xf
@@ -317,7 +317,9 @@ namespace Alis.Core.Physic.Dynamics
             for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
                 if (jn.Other == other)
+                {
                     return jn.Joint.CollideConnected == false;
+                }
             }
 
             return false;
@@ -953,7 +955,10 @@ namespace Alis.Core.Physic.Dynamics
         public void SetStatic()
         {
             if (type == BodyType.Static)
+            {
                 return;
+            }
+
             Mass = 0.0f;
             InvMass = 0.0f;
             I = 0.0f;

@@ -54,11 +54,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class DistanceJoint : Joint
     {
         /// <summary>
-        ///     The bias
-        /// </summary>
-        public float Bias;
-
-        /// <summary>
         ///     The damping ratio
         /// </summary>
         public readonly float DampingRatio;
@@ -69,6 +64,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public readonly float FrequencyHz;
 
         /// <summary>
+        ///     The length
+        /// </summary>
+        private readonly float length;
+
+        /// <summary>
+        ///     The bias
+        /// </summary>
+        public float Bias;
+
+        /// <summary>
         ///     The gamma
         /// </summary>
         public float Gamma;
@@ -77,11 +82,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The impulse
         /// </summary>
         public float Impulse;
-
-        /// <summary>
-        ///     The length
-        /// </summary>
-        private readonly float length;
 
         /// <summary>
         ///     The local anchor
@@ -99,9 +99,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public float Mass; // effective mass for the constraint.
 
 
-     
         /// <summary>
-        /// The vector 
+        ///     The vector
         /// </summary>
         public Vec2 U;
 
@@ -139,7 +138,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <returns>The vec</returns>
         public override Vec2 GetReactionForce(float invDt)
         {
-            return (invDt * Impulse) * U;
+            return invDt * Impulse * U;
         }
 
         /// <summary>

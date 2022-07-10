@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   bodyType.cs
+//  File:   BodyType.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -30,7 +30,7 @@
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// Body type
+    ///     Body type
     /// </summary>
     public enum BodyType
     {

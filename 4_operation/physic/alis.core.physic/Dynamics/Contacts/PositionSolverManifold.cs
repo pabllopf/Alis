@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   exa.cs
+//  File:   PositionSolverManifold.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -32,86 +32,86 @@ using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
-   /// <summary>
-        ///     The position solver manifold class
+    /// <summary>
+    ///     The position solver manifold class
+    /// </summary>
+    internal class PositionSolverManifold
+    {
+        /// <summary>
+        ///     The max manifold points
         /// </summary>
-        internal class PositionSolverManifold
+        internal readonly Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
+
+        /// <summary>
+        ///     The max manifold points
+        /// </summary>
+        internal readonly float[] Separations = new float[Settings.MaxManifoldPoints];
+
+        /// <summary>
+        ///     The normal
+        /// </summary>
+        internal Vec2 Normal;
+
+        /// <summary>
+        ///     Initializes the cc
+        /// </summary>
+        /// <param name="cc">The cc</param>
+        internal void Initialize(ContactConstraint cc)
         {
-            /// <summary>
-            ///     The normal
-            /// </summary>
-            internal Vec2 Normal;
+            Box2DxDebug.Assert(cc.PointCount > 0);
 
-            /// <summary>
-            ///     The max manifold points
-            /// </summary>
-            internal readonly Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
-
-            /// <summary>
-            ///     The max manifold points
-            /// </summary>
-            internal readonly float[] Separations = new float[Settings.MaxManifoldPoints];
-
-            /// <summary>
-            ///     Initializes the cc
-            /// </summary>
-            /// <param name="cc">The cc</param>
-            internal void Initialize(ContactConstraint cc)
+            switch (cc.Type)
             {
-                Box2DxDebug.Assert(cc.PointCount > 0);
-
-                switch (cc.Type)
+                case ManifoldType.Circles:
                 {
-                    case ManifoldType.Circles:
+                    Vec2 pointA = cc.BodyA.GetWorldPoint(cc.LocalPoint);
+                    Vec2 pointB = cc.BodyB.GetWorldPoint(cc.Points[0].LocalPoint);
+                    if (Vec2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
                     {
-                        Vec2 pointA = cc.BodyA.GetWorldPoint(cc.LocalPoint);
-                        Vec2 pointB = cc.BodyB.GetWorldPoint(cc.Points[0].LocalPoint);
-                        if (Vec2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
-                        {
-                            Normal = pointB - pointA;
-                            Normal.Normalize();
-                        }
-                        else
-                        {
-                            Normal.Set(1.0f, 0.0f);
-                        }
-
-                        Points[0] = 0.5f * (pointA + pointB);
-                        Separations[0] = Vec2.Dot(pointB - pointA, Normal) - cc.Radius;
+                        Normal = pointB - pointA;
+                        Normal.Normalize();
                     }
-                        break;
-
-                    case ManifoldType.FaceA:
+                    else
                     {
-                        Normal = cc.BodyA.GetWorldVector(cc.LocalPlaneNormal);
-                        Vec2 planePoint = cc.BodyA.GetWorldPoint(cc.LocalPoint);
-
-                        for (int i = 0; i < cc.PointCount; ++i)
-                        {
-                            Vec2 clipPoint = cc.BodyB.GetWorldPoint(cc.Points[i].LocalPoint);
-                            Separations[i] = Vec2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
-                            Points[i] = clipPoint;
-                        }
+                        Normal.Set(1.0f, 0.0f);
                     }
-                        break;
 
-                    case ManifoldType.FaceB:
-                    {
-                        Normal = cc.BodyB.GetWorldVector(cc.LocalPlaneNormal);
-                        Vec2 planePoint = cc.BodyB.GetWorldPoint(cc.LocalPoint);
-
-                        for (int i = 0; i < cc.PointCount; ++i)
-                        {
-                            Vec2 clipPoint = cc.BodyA.GetWorldPoint(cc.Points[i].LocalPoint);
-                            Separations[i] = Vec2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
-                            Points[i] = clipPoint;
-                        }
-
-                        // Ensure normal points from A to B
-                        Normal = -Normal;
-                    }
-                        break;
+                    Points[0] = 0.5f * (pointA + pointB);
+                    Separations[0] = Vec2.Dot(pointB - pointA, Normal) - cc.Radius;
                 }
+                    break;
+
+                case ManifoldType.FaceA:
+                {
+                    Normal = cc.BodyA.GetWorldVector(cc.LocalPlaneNormal);
+                    Vec2 planePoint = cc.BodyA.GetWorldPoint(cc.LocalPoint);
+
+                    for (int i = 0; i < cc.PointCount; ++i)
+                    {
+                        Vec2 clipPoint = cc.BodyB.GetWorldPoint(cc.Points[i].LocalPoint);
+                        Separations[i] = Vec2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
+                        Points[i] = clipPoint;
+                    }
+                }
+                    break;
+
+                case ManifoldType.FaceB:
+                {
+                    Normal = cc.BodyB.GetWorldVector(cc.LocalPlaneNormal);
+                    Vec2 planePoint = cc.BodyB.GetWorldPoint(cc.LocalPoint);
+
+                    for (int i = 0; i < cc.PointCount; ++i)
+                    {
+                        Vec2 clipPoint = cc.BodyA.GetWorldPoint(cc.Points[i].LocalPoint);
+                        Separations[i] = Vec2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
+                        Points[i] = clipPoint;
+                    }
+
+                    // Ensure normal points from A to B
+                    Normal = -Normal;
+                }
+                    break;
             }
         }
+    }
 }

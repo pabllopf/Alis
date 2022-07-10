@@ -49,11 +49,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         private static readonly PositionSolverManifold SPositionSolverManifold = new PositionSolverManifold();
 
         /// <summary>
-        ///     The constraint count
-        /// </summary>
-        public int ConstraintCount { get; }
-
-        /// <summary>
         ///     The constraints
         /// </summary>
         public ContactConstraint[] Constraints;
@@ -76,7 +71,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             Constraints = new ContactConstraint[ConstraintCount];
             for (int i = 0; i < ConstraintCount; i++)
+            {
                 Constraints[i] = new ContactConstraint();
+            }
 
             //int count = 0;
             for (int i = 0; i < ConstraintCount; ++i)
@@ -217,6 +214,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         }
 
         /// <summary>
+        ///     The constraint count
+        /// </summary>
+        public int ConstraintCount { get; }
+
+        /// <summary>
         ///     Disposes this instance
         /// </summary>
         public void Dispose()
@@ -314,7 +316,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                             // Compute tangent force
                             float vt = Vec2.Dot(dv, tangent);
-                            float lambda = ccp->TangentMass * (-vt);
+                            float lambda = ccp->TangentMass * -vt;
 
                             // b2Clamp the accumulated force
                             float maxFriction = friction * ccp->NormalImpulse;
@@ -640,7 +642,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     minSeparation = Math.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float clamp = baumgarte * Math.Clamp(separation + Settings.LinearSlop, -Settings.MaxLinearCorrection,
+                    float clamp = baumgarte * Math.Clamp(separation + Settings.LinearSlop,
+                        -Settings.MaxLinearCorrection,
                         0.0f);
 
                     // Compute normal impulse
@@ -662,7 +665,5 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             // push the separation above -Settings.LinearSlop.
             return minSeparation >= -1.5f * Settings.LinearSlop;
         }
-
-        
     }
 }

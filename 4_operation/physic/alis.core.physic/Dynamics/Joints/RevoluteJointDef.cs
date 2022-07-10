@@ -57,16 +57,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public readonly bool EnableMotor;
 
         /// <summary>
-        ///     The local anchor point relative to body1's origin.
-        /// </summary>
-        public Vec2 LocalAnchor1;
-
-        /// <summary>
-        ///     The local anchor point relative to body2's origin.
-        /// </summary>
-        public Vec2 LocalAnchor2;
-
-        /// <summary>
         ///     The lower angle for the joint limit (radians).
         /// </summary>
         public readonly float LowerAngle;
@@ -83,14 +73,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public readonly float MotorSpeed;
 
         /// <summary>
-        ///     The body2 angle minus body1 angle in the reference state (radians).
-        /// </summary>
-        public float ReferenceAngle;
-
-        /// <summary>
         ///     The upper angle for the joint limit (radians).
         /// </summary>
         public readonly float UpperAngle;
+
+        /// <summary>
+        ///     The local anchor point relative to body1's origin.
+        /// </summary>
+        public Vec2 LocalAnchor1;
+
+        /// <summary>
+        ///     The local anchor point relative to body2's origin.
+        /// </summary>
+        public Vec2 LocalAnchor2;
+
+        /// <summary>
+        ///     The body2 angle minus body1 angle in the reference state (radians).
+        /// </summary>
+        public float ReferenceAngle;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RevoluteJointDef" /> class

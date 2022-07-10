@@ -123,7 +123,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             edge.NextBody = BodyList;
             edge.PrevBody = null;
             if (BodyList != null)
+            {
                 BodyList.PrevBody = edge;
+            }
+
             BodyList = edge;
             ++BodyCount;
 
@@ -131,7 +134,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             edge.NextController = body.ControllerList;
             edge.PrevController = null;
             if (body.ControllerList != null)
+            {
                 body.ControllerList.PrevController = edge;
+            }
+
             body.ControllerList = edge;
         }
 
@@ -146,27 +152,46 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             //Find the corresponding edge
             ControllerEdge edge = BodyList;
             while (edge != null && edge.Body != body)
+            {
                 edge = edge.NextBody;
+            }
 
             //Assert that we are removing a body that is currently attached to the controller
             Box2DxDebug.Assert(edge != null);
 
             //Remove edge from controller list
             if (edge.PrevBody != null)
+            {
                 edge.PrevBody.NextBody = edge.NextBody;
+            }
+
             if (edge.NextBody != null)
+            {
                 edge.NextBody.PrevBody = edge.PrevBody;
+            }
+
             if (edge == BodyList)
+            {
                 BodyList = edge.NextBody;
+            }
+
             --BodyCount;
 
             //Remove edge from body list
             if (edge.PrevController != null)
+            {
                 edge.PrevController.NextController = edge.NextController;
+            }
+
             if (edge.NextController != null)
+            {
                 edge.NextController.PrevController = edge.PrevController;
+            }
+
             if (edge == body.ControllerList)
+            {
                 body.ControllerList = edge.NextController;
+            }
 
             //Free the edge
             edge = null;
@@ -187,11 +212,19 @@ namespace Alis.Core.Physic.Dynamics.Controllers
 
                 //Remove edge from body list
                 if (edge.PrevController != null)
+                {
                     edge.PrevController.NextController = edge.NextController;
+                }
+
                 if (edge.NextController != null)
+                {
                     edge.NextController.PrevController = edge.PrevController;
+                }
+
                 if (edge == edge.Body.ControllerList)
+                {
                     edge.Body.ControllerList = edge.NextController;
+                }
 
                 //Free the edge
                 //m_world->m_blockAllocator.Free(edge, sizeof(b2ControllerEdge));

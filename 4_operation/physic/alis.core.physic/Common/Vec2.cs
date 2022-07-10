@@ -83,15 +83,29 @@ namespace Alis.Core.Physic.Common
         {
             get
             {
-                if (i == 0) return X;
-                if (i == 1) return Y;
+                if (i == 0)
+                {
+                    return X;
+                }
+
+                if (i == 1)
+                {
+                    return Y;
+                }
+
                 Box2DxDebug.Assert(false, "Incorrect Vec2 element!");
                 return 0;
             }
             set
             {
-                if (i == 0) X = value;
-                else if (i == 1) Y = value;
+                if (i == 0)
+                {
+                    X = value;
+                }
+                else if (i == 1)
+                {
+                    Y = value;
+                }
                 else
                 {
                     Box2DxDebug.Assert(false, "Incorrect Vec2 element!");

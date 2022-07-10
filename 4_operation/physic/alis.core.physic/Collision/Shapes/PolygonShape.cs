@@ -39,6 +39,106 @@ namespace Alis.Core.Physic.Collision.Shapes
     public class PolygonShape : Shape
     {
         /// <summary>
+        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
+        /// </summary>
+        public PolygonShape()
+        {
+            Type = ShapeType.PolygonShape;
+            Radius = Settings.PolygonRadius;
+
+            /*Box2DXDebug.Assert(def.Type == ShapeType.PolygonShape);
+            _type = ShapeType.PolygonShape;
+            PolygonDef poly = (PolygonDef)def;
+
+            // Get the vertices transformed into the body frame.
+            _vertexCount = poly.VertexCount;
+            Box2DXDebug.Assert(3 <= _vertexCount && _vertexCount <= Settings.MaxPolygonVertices);
+
+            // Copy vertices.
+            for (int i = 0; i < _vertexCount; ++i)
+            {
+                _vertices[i] = poly.Vertices[i];
+            }
+
+            // Compute normals. Ensure the edges have non-zero length.
+            for (int i = 0; i < _vertexCount; ++i)
+            {
+                int i1 = i;
+                int i2 = i + 1 < _vertexCount ? i + 1 : 0;
+                Vec2 edge = _vertices[i2] - _vertices[i1];
+                Box2DXDebug.Assert(edge.LengthSquared() > Common.Settings.FLT_EPSILON * Common.Settings.FLT_EPSILON);
+                _normals[i] = Vec2.Cross(edge, 1.0f);
+                _normals[i].Normalize();
+            }
+
+#if DEBUG
+            // Ensure the polygon is convex.
+            for (int i = 0; i < _vertexCount; ++i)
+            {
+                for (int j = 0; j < _vertexCount; ++j)
+                {
+                    // Don't check vertices on the current edge.
+                    if (j == i || j == (i + 1) % _vertexCount)
+                    {
+                        continue;
+                    }
+
+                    // Your polygon is non-convex (it has an indentation).
+                    // Or your polygon is too skinny.
+                    float s = Vec2.Dot(_normals[i], _vertices[j] - _vertices[i]);
+                    Box2DXDebug.Assert(s < -Settings.LinearSlop);
+                }
+            }
+
+            // Ensure the polygon is counter-clockwise.
+            for (int i = 1; i < _vertexCount; ++i)
+            {
+                float cross = Vec2.Cross(_normals[i - 1], _normals[i]);
+
+                // Keep asinf happy.
+                cross = Common.Math.Clamp(cross, -1.0f, 1.0f);
+
+                // You have consecutive edges that are almost parallel on your polygon.
+                float angle = (float)System.Math.Asin(cross);
+                Box2DXDebug.Assert(angle > Settings.AngularSlop);
+            }
+#endif
+
+            // Compute the polygon centroid.
+            _centroid = ComputeCentroid(poly.Vertices, poly.VertexCount);
+
+            // Compute the oriented bounding box.
+            ComputeOBB(out _obb, _vertices, _vertexCount);
+
+            // Create core polygon shape by shifting edges inward.
+            // Also compute the min/max radius for CCD.
+            for (int i = 0; i < _vertexCount; ++i)
+            {
+                int i1 = i - 1 >= 0 ? i - 1 : _vertexCount - 1;
+                int i2 = i;
+
+                Vec2 n1 = _normals[i1];
+                Vec2 n2 = _normals[i2];
+                Vec2 v = _vertices[i] - _centroid; ;
+
+                Vec2 d = new Vec2();
+                d.X = Vec2.Dot(n1, v) - Settings.ToiSlop;
+                d.Y = Vec2.Dot(n2, v) - Settings.ToiSlop;
+
+                // Shifting the edge inward by b2_toiSlop should
+                // not cause the plane to pass the centroid.
+
+                // Your shape has a radius/extent less than b2_toiSlop.
+                Box2DXDebug.Assert(d.X >= 0.0f);
+                Box2DXDebug.Assert(d.Y >= 0.0f);
+                Mat22 A = new Mat22();
+                A.Col1.X = n1.X; A.Col2.X = n1.Y;
+                A.Col1.Y = n2.X; A.Col2.Y = n2.Y;
+                _coreVertices[i] = A.Solve(d) + _centroid;
+            }*/
+        }
+
+        /// <summary>
         ///     The centroid
         /// </summary>
         internal Vec2 Centroid { get; set; }
@@ -493,9 +593,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             {
                 i = (i + 1) % VertexCount;
                 if (i == outoIndex2)
+                {
                     p3 = outoVec;
+                }
                 else
+                {
                     p3 = Vertices[i];
+                }
+
                 //Add the triangle formed by intoVec,p2,p3
                 {
                     Vec2 e1 = p2 - intoVec;
@@ -643,106 +748,6 @@ namespace Alis.Core.Physic.Collision.Shapes
             Box2DxDebug.Assert(area > Settings.FltEpsilon);
             c *= 1.0f / area;
             return c;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="PolygonShape" /> class
-        /// </summary>
-        public PolygonShape()
-        {
-            Type = ShapeType.PolygonShape;
-            Radius = Settings.PolygonRadius;
-
-            /*Box2DXDebug.Assert(def.Type == ShapeType.PolygonShape);
-            _type = ShapeType.PolygonShape;
-            PolygonDef poly = (PolygonDef)def;
-
-            // Get the vertices transformed into the body frame.
-            _vertexCount = poly.VertexCount;
-            Box2DXDebug.Assert(3 <= _vertexCount && _vertexCount <= Settings.MaxPolygonVertices);
-
-            // Copy vertices.
-            for (int i = 0; i < _vertexCount; ++i)
-            {
-                _vertices[i] = poly.Vertices[i];
-            }
-
-            // Compute normals. Ensure the edges have non-zero length.
-            for (int i = 0; i < _vertexCount; ++i)
-            {
-                int i1 = i;
-                int i2 = i + 1 < _vertexCount ? i + 1 : 0;
-                Vec2 edge = _vertices[i2] - _vertices[i1];
-                Box2DXDebug.Assert(edge.LengthSquared() > Common.Settings.FLT_EPSILON * Common.Settings.FLT_EPSILON);
-                _normals[i] = Vec2.Cross(edge, 1.0f);
-                _normals[i].Normalize();
-            }
-
-#if DEBUG
-            // Ensure the polygon is convex.
-            for (int i = 0; i < _vertexCount; ++i)
-            {
-                for (int j = 0; j < _vertexCount; ++j)
-                {
-                    // Don't check vertices on the current edge.
-                    if (j == i || j == (i + 1) % _vertexCount)
-                    {
-                        continue;
-                    }
-
-                    // Your polygon is non-convex (it has an indentation).
-                    // Or your polygon is too skinny.
-                    float s = Vec2.Dot(_normals[i], _vertices[j] - _vertices[i]);
-                    Box2DXDebug.Assert(s < -Settings.LinearSlop);
-                }
-            }
-
-            // Ensure the polygon is counter-clockwise.
-            for (int i = 1; i < _vertexCount; ++i)
-            {
-                float cross = Vec2.Cross(_normals[i - 1], _normals[i]);
-
-                // Keep asinf happy.
-                cross = Common.Math.Clamp(cross, -1.0f, 1.0f);
-
-                // You have consecutive edges that are almost parallel on your polygon.
-                float angle = (float)System.Math.Asin(cross);
-                Box2DXDebug.Assert(angle > Settings.AngularSlop);
-            }
-#endif
-
-            // Compute the polygon centroid.
-            _centroid = ComputeCentroid(poly.Vertices, poly.VertexCount);
-
-            // Compute the oriented bounding box.
-            ComputeOBB(out _obb, _vertices, _vertexCount);
-
-            // Create core polygon shape by shifting edges inward.
-            // Also compute the min/max radius for CCD.
-            for (int i = 0; i < _vertexCount; ++i)
-            {
-                int i1 = i - 1 >= 0 ? i - 1 : _vertexCount - 1;
-                int i2 = i;
-
-                Vec2 n1 = _normals[i1];
-                Vec2 n2 = _normals[i2];
-                Vec2 v = _vertices[i] - _centroid; ;
-
-                Vec2 d = new Vec2();
-                d.X = Vec2.Dot(n1, v) - Settings.ToiSlop;
-                d.Y = Vec2.Dot(n2, v) - Settings.ToiSlop;
-
-                // Shifting the edge inward by b2_toiSlop should
-                // not cause the plane to pass the centroid.
-
-                // Your shape has a radius/extent less than b2_toiSlop.
-                Box2DXDebug.Assert(d.X >= 0.0f);
-                Box2DXDebug.Assert(d.Y >= 0.0f);
-                Mat22 A = new Mat22();
-                A.Col1.X = n1.X; A.Col2.X = n1.Y;
-                A.Col1.Y = n2.X; A.Col2.Y = n2.Y;
-                _coreVertices[i] = A.Solve(d) + _centroid;
-            }*/
         }
 
         /*// http://www.geometrictools.com/Documentation/MinimumAreaRectangle.pdf

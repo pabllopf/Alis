@@ -57,16 +57,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
     public class RevoluteJoint : Joint
     {
         /// <summary>
-        ///     The impulse
-        /// </summary>
-        private Vec3 Impulse { get; set; }
-
-        /// <summary>
-        ///     The mass
-        /// </summary>
-        private Mat33 Mass { get; set; }
-
-        /// <summary>
         ///     The motor speed
         /// </summary>
         private float motorSpeed;
@@ -93,6 +83,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
             IsMotorEnabled = def.EnableMotor;
             State = LimitState.InactiveLimit;
         }
+
+        /// <summary>
+        ///     The impulse
+        /// </summary>
+        private Vec3 Impulse { get; set; }
+
+        /// <summary>
+        ///     The mass
+        /// </summary>
+        private Mat33 Mass { get; set; }
 
         /// <summary>
         ///     The local anchor
@@ -308,9 +308,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float col1Z = Mass.Col3.X;
             float col2Z = Mass.Col3.Y;
             float col3Z = i1 + i2;
-            
-            Mass = new Mat33(new Vec3(col1X, col1Y, col1Z), new Vec3(col2X, col2Y, col2Z), new Vec3(col3X, col3Y, col3Z));
-            
+
+            Mass = new Mat33(new Vec3(col1X, col1Y, col1Z), new Vec3(col2X, col2Y, col2Z),
+                new Vec3(col3X, col3Y, col3Z));
+
             /*
 			_mass.Col1.X = m1 + m2 + r1.Y * r1.Y * i1 + r2.Y * r2.Y * i2;
 			_mass.Col2.X = -r1.Y * r1.X * i1 - r2.Y * r2.X * i2;
@@ -475,7 +476,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // Solve point-to-point constraint
                 Vec2 cdot = v2 + Vec2.Cross(w2, r2) - v1 - Vec2.Cross(w1, r1);
                 Vec2 impulse = Mass.Solve22(-cdot);
-                
+
                 Impulse = new Vec3(impulse.X, impulse.Y, Impulse.Z);
 
                 v1 -= m1 * impulse;
@@ -579,7 +580,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     Col1 = new Vec2(invMass1 + invMass2, 0.0f),
                     Col2 = new Vec2(0.0f, invMass1 + invMass2)
                 };
-                
+
                 Mat22 k2 = new Mat22();
                 k2.Col1.X = invI1 * mulR1.Y * mulR1.Y;
                 k2.Col2.X = -invI1 * mulR1.X * mulR1.Y;
