@@ -25,6 +25,4 @@ jobs:
           6.0.x
     
     - name: Get tag name
-        env: 
-          TAG_NAME: grep -Eo '[0-9]\.[0-9]+.[0-9]+' ./Directory.Build.props
-        run: echo '$TAG_NAME'
+        run: ./.scripts/macos/publish_to_github.sh
