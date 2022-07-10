@@ -58,3 +58,4 @@
 *.mdb.meta
 *FodyWeavers.xml
 *FodyWeavers.xsd
+*.htm
