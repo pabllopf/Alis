@@ -1,4 +1,10 @@
+#!/bin/bash
+
 echo "start"
 
-cat ./Directory.Build.props
+year=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ./Directory.Build.props)
+
+echo "year is $year"
+
+
 
