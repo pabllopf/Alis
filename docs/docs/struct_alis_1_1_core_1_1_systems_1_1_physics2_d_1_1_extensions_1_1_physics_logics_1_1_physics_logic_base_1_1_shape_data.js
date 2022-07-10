@@ -1,6 +1,0 @@
-var struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_shape_data =
-[
-    [ "Body", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_shape_data.html#abdd7fc45c14640436a140ce605c3ba64", null ],
-    [ "Max", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_shape_data.html#a2bc39e2e9932a15f95d23b3389093275", null ],
-    [ "Min", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_shape_data.html#a80f800725bd8e0a4c640a04735e10e49", null ]
-];

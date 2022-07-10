@@ -1,6 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_polygon_generator =
-[
-    [ "RandomCircleSweep", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_polygon_generator.html#a5f39156808f1f54d4b4f00d622b2d234", null ],
-    [ "RandomCircleSweep2", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_polygon_generator.html#a4225a28d0a1c3879796c2e246a445c05", null ],
-    [ "Rng", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_polygon_generator.html#a06bd74ef583239badc3bdf431dd406a7", null ]
-];

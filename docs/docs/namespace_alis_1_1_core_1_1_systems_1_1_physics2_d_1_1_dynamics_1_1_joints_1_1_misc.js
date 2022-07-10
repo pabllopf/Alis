@@ -1,4 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_misc =
-[
-    [ "JointEdge", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_misc_1_1_joint_edge.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_dynamics_1_1_joints_1_1_misc_1_1_joint_edge" ]
-];

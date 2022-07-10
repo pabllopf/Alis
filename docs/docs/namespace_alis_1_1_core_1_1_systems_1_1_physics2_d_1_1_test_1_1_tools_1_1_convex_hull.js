@@ -1,7 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull =
-[
-    [ "TestChainHull", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull_1_1_test_chain_hull.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull_1_1_test_chain_hull" ],
-    [ "TestGiftWrap", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull_1_1_test_gift_wrap.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull_1_1_test_gift_wrap" ],
-    [ "TestMelkman", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull_1_1_test_melkman.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull_1_1_test_melkman" ],
-    [ "TestPointComparer", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull_1_1_test_point_comparer.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_convex_hull_1_1_test_point_comparer" ]
-];

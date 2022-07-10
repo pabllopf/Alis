@@ -1,8 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase =
-[
-    [ "DynamicTree", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_dynamic_tree" ],
-    [ "DynamicTreeBroadPhase", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_dynamic_tree_broad_phase.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_dynamic_tree_broad_phase" ],
-    [ "IBroadPhase", "interface_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_i_broad_phase.html", "interface_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_i_broad_phase" ],
-    [ "Pair", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_pair.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_pair" ],
-    [ "TreeNode", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_tree_node.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_broadphase_1_1_tree_node" ]
-];

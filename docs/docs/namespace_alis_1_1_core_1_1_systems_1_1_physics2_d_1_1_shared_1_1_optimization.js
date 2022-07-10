@@ -1,6 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization =
-[
-    [ "FixedArray2", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization_1_1_fixed_array2.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization_1_1_fixed_array2" ],
-    [ "FixedArray3", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization_1_1_fixed_array3.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization_1_1_fixed_array3" ],
-    [ "IPoolable", "interface_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization_1_1_i_poolable.html", "interface_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_shared_1_1_optimization_1_1_i_poolable" ]
-];

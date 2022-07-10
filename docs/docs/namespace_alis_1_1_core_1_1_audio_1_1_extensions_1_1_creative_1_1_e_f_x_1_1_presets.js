@@ -1,5 +1,0 @@
-var namespace_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets =
-[
-    [ "ReverbPresets", "class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_presets.html", "class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_presets" ],
-    [ "ReverbProperties", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties.html", "struct_alis_1_1_core_1_1_audio_1_1_extensions_1_1_creative_1_1_e_f_x_1_1_presets_1_1_reverb_properties" ]
-];

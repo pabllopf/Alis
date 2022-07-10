@@ -1,6 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator =
-[
-    [ "UniformDistribution", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator.html#ac4b12d4fa7215180a0587c9d3724febc", null ],
-    [ "UniformGrid", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator.html#aa5250fa6dd4bff5f3a3c9960381e9cf4", null ],
-    [ "Rng", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator.html#ab6d4754cb3a06a48d037255dacb86876", null ]
-];

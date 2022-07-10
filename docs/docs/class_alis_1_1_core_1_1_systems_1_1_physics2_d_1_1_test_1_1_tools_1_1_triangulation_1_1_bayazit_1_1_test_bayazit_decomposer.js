@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_test_bayazit_decomposer =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_test_bayazit_decomposer.html#a2ff7200cb1260305db493b581987448e", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_test_bayazit_decomposer.html#aa2d523e16d23439ad1c8fd0f4ef1bb78", null ]
-];

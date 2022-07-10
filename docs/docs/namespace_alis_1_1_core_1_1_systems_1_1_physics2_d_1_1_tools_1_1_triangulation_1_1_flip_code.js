@@ -1,4 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_flip_code =
-[
-    [ "FlipcodeDecomposer", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_flip_code_1_1_flipcode_decomposer.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_flip_code_1_1_flipcode_decomposer" ]
-];

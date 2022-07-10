@@ -1,4 +1,0 @@
-var namespace_alis_1_1_core_1_1_audio_1_1_extensions_1_1_s_o_f_t_1_1_source_latency =
-[
-    [ "SourceLatency", "class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_s_o_f_t_1_1_source_latency_1_1_source_latency.html", "class_alis_1_1_core_1_1_audio_1_1_extensions_1_1_s_o_f_t_1_1_source_latency_1_1_source_latency" ]
-];

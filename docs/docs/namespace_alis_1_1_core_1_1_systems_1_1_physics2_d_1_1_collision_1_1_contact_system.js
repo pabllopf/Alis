@@ -1,8 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system =
-[
-    [ "Contact", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact" ],
-    [ "ContactEdge", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact_edge.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact_edge" ],
-    [ "ContactFeature", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact_feature.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact_feature" ],
-    [ "ContactId", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact_id.html", "struct_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact_id" ],
-    [ "ContactManager", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact_manager.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_collision_1_1_contact_system_1_1_contact_manager" ]
-];

@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_controller_base_1_1_test_controller =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_controller_base_1_1_test_controller.html#a8ba5cce76da99f571f4b0975eeafe214", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_controllers_1_1_controller_base_1_1_test_controller.html#a5579bdcd59de0ad13a51bc1d34489690", null ]
-];

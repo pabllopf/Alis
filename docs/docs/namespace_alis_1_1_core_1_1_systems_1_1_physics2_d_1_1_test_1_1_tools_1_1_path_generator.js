@@ -1,6 +1,0 @@
-var namespace_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_path_generator =
-[
-    [ "TestLinkFactory", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_path_generator_1_1_test_link_factory.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_path_generator_1_1_test_link_factory" ],
-    [ "TestPath", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_path_generator_1_1_test_path.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_path_generator_1_1_test_path" ],
-    [ "TestPathManager", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_path_generator_1_1_test_path_manager.html", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_tools_1_1_path_generator_1_1_test_path_manager" ]
-];

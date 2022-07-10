@@ -1,5 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_test_real_explosion =
-[
-    [ "Setup", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_test_real_explosion.html#a8b270c6a553c0434f8eaf92ced828786", null ],
-    [ "Test1", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_test_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_test_real_explosion.html#a23d5cdfde134b491c97adec1cf307ccb", null ]
-];

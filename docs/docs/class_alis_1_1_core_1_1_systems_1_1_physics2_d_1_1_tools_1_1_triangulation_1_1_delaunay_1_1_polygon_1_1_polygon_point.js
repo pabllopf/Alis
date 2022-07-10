@@ -1,6 +1,0 @@
-var class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point =
-[
-    [ "PolygonPoint", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point.html#a6fa95bc92de5c705b5a51703c6c02546", null ],
-    [ "Next", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point.html#a54c1fa0df1815d55dafc5b1d63b1ce3a", null ],
-    [ "Previous", "class_alis_1_1_core_1_1_systems_1_1_physics2_d_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point.html#a3a18aafcfc08f5b7353246615ebac4a6", null ]
-];
