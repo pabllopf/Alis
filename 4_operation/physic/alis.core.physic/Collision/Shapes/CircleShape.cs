@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         public override Vec2 GetVertex(int index)
         {
-            Box2DXDebug.Assert(index == 0);
+            Box2DxDebug.Assert(index == 0);
             return Position;
         }
 

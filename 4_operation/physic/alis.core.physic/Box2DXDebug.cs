@@ -35,7 +35,7 @@ namespace Alis.Core.Physic
     /// <summary>
     ///     The box dx debug class
     /// </summary>
-    public static class Box2DXDebug
+    public static class Box2DxDebug
     {
         /// <summary>
         ///     Asserts the condition
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic
         /// </summary>
         /// <param name="message">The message</param>
         /// <exception cref="Exception"></exception>
-        public static void ThrowBox2DXException(string message)
+        public static void ThrowBox2DxException(string message)
         {
             string msg = string.Format("Error: {0}", message);
             throw new Exception(msg);

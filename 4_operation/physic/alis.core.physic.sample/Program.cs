@@ -47,18 +47,18 @@ namespace Alis.Core.Physic.Sample
         {
             // Define the size of the world. Simulation will still work
             // if bodies reach the end of the world, but it will be slower.
-            Aabb worldAABB = new Aabb();
-            worldAABB.LowerBound.Set(-100.0f);
-            worldAABB.UpperBound.Set(100.0f);
+            Aabb worldAabb = new Aabb();
+            worldAabb.LowerBound.Set(-100.0f);
+            worldAabb.UpperBound.Set(100.0f);
 
             // Define the gravity vector.
             Vec2 gravity = new Vec2(0.0f, -10.0f);
 
             // Do we want to let bodies sleep?
-            const bool DoSleep = true;
+            const bool doSleep = true;
 
             // Construct a world object, which will hold and simulate the rigid bodies.
-            World world = new World(worldAABB, gravity, DoSleep);
+            World world = new World(worldAabb, gravity, doSleep);
 
             // Define the ground body.
             BodyDef groundBodyDef = new BodyDef();
@@ -102,16 +102,16 @@ namespace Alis.Core.Physic.Sample
             // Prepare for simulation. Typically we use a time step of 1/60 of a
             // second (60Hz) and 10 iterations. This provides a high quality simulation
             // in most game scenarios.
-            const float TimeStep = 1.0f / 60.0f;
-            const int VelocityIterations = 8;
-            const int PositionIterations = 1;
+            const float timeStep = 1.0f / 60.0f;
+            const int velocityIterations = 8;
+            const int positionIterations = 1;
 
             // This is our little game loop.
             for (int i = 0; i < 100; ++i)
             {
                 // Instruct the world to perform a single step of simulation. It is
                 // generally best to keep the time step and iterations fixed.
-                world.Step(TimeStep, VelocityIterations, PositionIterations);
+                world.Step(timeStep, velocityIterations, positionIterations);
 
                 // Now print the position and angle of the body.
                 Vec2 position = body.GetPosition();

@@ -32,7 +32,7 @@ namespace Alis
     /// <summary>
     ///     The example class
     /// </summary>
-    public class example
+    public class Example
     {
     }
 }

@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public void RemoveBody(Body body)
         {
             //Assert that the controller is not empty
-            Box2DXDebug.Assert(BodyCount > 0);
+            Box2DxDebug.Assert(BodyCount > 0);
 
             //Find the corresponding edge
             ControllerEdge edge = BodyList;
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 edge = edge.NextBody;
 
             //Assert that we are removing a body that is currently attached to the controller
-            Box2DXDebug.Assert(edge != null);
+            Box2DxDebug.Assert(edge != null);
 
             //Remove edge from controller list
             if (edge.PrevBody != null)

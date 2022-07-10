@@ -163,7 +163,7 @@ namespace Alis.Core.Physic.Dynamics
                     break;
 
                 default:
-                    Box2DXDebug.Assert(false);
+                    Box2DxDebug.Assert(false);
                     break;
             }
 
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Dynamics
             bool inRange = broadPhase.InRange(aabb);
 
             // You are creating a shape outside the world box.
-            Box2DXDebug.Assert(inRange);
+            Box2DxDebug.Assert(inRange);
 
             if (inRange)
             {
@@ -269,8 +269,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public virtual void Dispose()
         {
-            Box2DXDebug.Assert(ProxyId == PairManager.NullProxy);
-            Box2DXDebug.Assert(Shape == null);
+            Box2DxDebug.Assert(ProxyId == PairManager.NullProxy);
+            Box2DxDebug.Assert(Shape == null);
         }
 
         /// <summary>

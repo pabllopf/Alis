@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // magic formulas
             // gamma has units of inverse mass.
             // beta has units of inverse time.
-            Box2DXDebug.Assert(coefficient + step.Dt * stiffness > Settings.FltEpsilon);
+            Box2DxDebug.Assert(coefficient + step.Dt * stiffness > Settings.FltEpsilon);
             Gamma = 1.0f / (step.Dt * (coefficient + step.Dt * stiffness));
             Beta = step.Dt * stiffness * Gamma;
 
@@ -199,19 +199,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Mat22 k1 = new Mat22
             {
-                col1 = new Vec2(invMass, 0.0f),
-                col2 = new Vec2(0.0f, invMass)
+                Col1 = new Vec2(invMass, 0.0f),
+                Col2 = new Vec2(0.0f, invMass)
             };
             
             Mat22 k2 = new Mat22
             {
-                col1 = new Vec2(invI * effectiveMass.Y * effectiveMass.Y, -invI * effectiveMass.X * effectiveMass.Y),
-                col2 = new Vec2(-invI * effectiveMass.X * effectiveMass.Y, invI * effectiveMass.X * effectiveMass.X)
+                Col1 = new Vec2(invI * effectiveMass.Y * effectiveMass.Y, -invI * effectiveMass.X * effectiveMass.Y),
+                Col2 = new Vec2(-invI * effectiveMass.X * effectiveMass.Y, invI * effectiveMass.X * effectiveMass.X)
             };
             
             Mat22 k = k1 + k2;
-            k.col1.X += Gamma;
-            k.col2.Y += Gamma;
+            k.Col1.X += Gamma;
+            k.Col2.Y += Gamma;
 
             Mass = k.GetInverse();
 

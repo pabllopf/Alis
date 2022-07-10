@@ -40,7 +40,17 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The
         /// </summary>
-        internal SimplexVertex V1, V2, V3;
+        internal SimplexVertex V1;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        internal SimplexVertex V2;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        internal SimplexVertex V3;
 
         /// <summary>
         ///     The count
@@ -58,7 +68,7 @@ namespace Alis.Core.Physic.Collision
         internal unsafe void ReadCache(SimplexCache* cache, Shape shapeA, XForm transformA, Shape shapeB,
             XForm transformB)
         {
-            Box2DXDebug.Assert(0 <= cache->Count && cache->Count <= 3);
+            Box2DxDebug.Assert(0 <= cache->Count && cache->Count <= 3);
 
             // Copy data from cache.
             Count = cache->Count;
@@ -142,7 +152,7 @@ namespace Alis.Core.Physic.Collision
             {
                 case 0:
 #if DEBUG
-                    Box2DXDebug.Assert(false);
+                    Box2DxDebug.Assert(false);
 #endif
                     return Vec2.Zero;
                 case 1:
@@ -153,7 +163,7 @@ namespace Alis.Core.Physic.Collision
                     return Vec2.Zero;
                 default:
 #if DEBUG
-                    Box2DXDebug.Assert(false);
+                    Box2DxDebug.Assert(false);
 #endif
                     return Vec2.Zero;
             }
@@ -169,7 +179,7 @@ namespace Alis.Core.Physic.Collision
             switch (Count)
             {
                 case 0:
-                    Box2DXDebug.Assert(false);
+                    Box2DxDebug.Assert(false);
                     break;
 
                 case 1:
@@ -188,7 +198,7 @@ namespace Alis.Core.Physic.Collision
                     break;
 
                 default:
-                    Box2DXDebug.Assert(false);
+                    Box2DxDebug.Assert(false);
                     break;
             }
         }
@@ -203,7 +213,7 @@ namespace Alis.Core.Physic.Collision
             {
                 case 0:
 #if DEBUG
-                    Box2DXDebug.Assert(false);
+                    Box2DxDebug.Assert(false);
 #endif
                     return 0.0f;
 
@@ -218,7 +228,7 @@ namespace Alis.Core.Physic.Collision
 
                 default:
 #if DEBUG
-                    Box2DXDebug.Assert(false);
+                    Box2DxDebug.Assert(false);
 #endif
                     return 0.0f;
             }

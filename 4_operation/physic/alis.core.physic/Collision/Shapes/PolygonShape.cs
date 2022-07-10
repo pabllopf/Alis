@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         public void Set(Vec2[] vertices, int count)
         {
-            Box2DXDebug.Assert(3 <= count && count <= Settings.MaxPolygonVertices);
+            Box2DxDebug.Assert(3 <= count && count <= Settings.MaxPolygonVertices);
             VertexCount = count;
 
             int i;
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 int i1 = i;
                 int i2 = i + 1 < count ? i + 1 : 0;
                 Vec2 edge = Vertices[i2] - Vertices[i1];
-                Box2DXDebug.Assert(edge.LengthSquared() > Settings.FltEpsilonSquared);
+                Box2DxDebug.Assert(edge.LengthSquared() > Settings.FltEpsilonSquared);
                 Normals[i] = Vec2.Cross(edge, 1.0f);
                 Normals[i].Normalize();
             }
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     // Your polygon is non-convex (it has an indentation) or
                     // has colinear edges.
                     float s = Vec2.Cross(edge, r);
-                    Box2DXDebug.Assert(s > 0.0f);
+                    Box2DxDebug.Assert(s > 0.0f);
                 }
             }
 #endif
@@ -262,7 +262,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 }
             }
 
-            Box2DXDebug.Assert(0.0f <= lower && lower <= maxLambda);
+            Box2DxDebug.Assert(0.0f <= lower && lower <= maxLambda);
 
             if (index >= 0)
             {
@@ -328,7 +328,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             //
             // The rest of the derivation is handled by computer algebra.
 
-            Box2DXDebug.Assert(VertexCount >= 3);
+            Box2DxDebug.Assert(VertexCount >= 3);
 
             Vec2 center = new Vec2(0);
             float area = 0.0f;
@@ -383,7 +383,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             massData.Mass = denstity * area;
 
             // Center of mass
-            Box2DXDebug.Assert(area > Settings.FltEpsilon);
+            Box2DxDebug.Assert(area > Settings.FltEpsilon);
             center *= 1.0f / area;
             massData.Center = center;
 
@@ -530,7 +530,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override float ComputeSweepRadius(Vec2 pivot)
         {
             int vCount = VertexCount;
-            Box2DXDebug.Assert(vCount > 0);
+            Box2DxDebug.Assert(vCount > 0);
             float sr = Vec2.DistanceSquared(Vertices[0], pivot);
             for (int i = 1; i < vCount; ++i)
             {
@@ -589,7 +589,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>The vec</returns>
         public override Vec2 GetVertex(int index)
         {
-            Box2DXDebug.Assert(0 <= index && index < VertexCount);
+            Box2DxDebug.Assert(0 <= index && index < VertexCount);
             return Vertices[index];
         }
 
@@ -601,7 +601,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>The </returns>
         public static Vec2 ComputeCentroid(Vec2[] vs, int count)
         {
-            Box2DXDebug.Assert(count >= 3);
+            Box2DxDebug.Assert(count >= 3);
 
             Vec2 c = new Vec2(0f);
             float area = 0f;
@@ -640,7 +640,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
 
             // Centroid
-            Box2DXDebug.Assert(area > Settings.FltEpsilon);
+            Box2DxDebug.Assert(area > Settings.FltEpsilon);
             c *= 1.0f / area;
             return c;
         }

@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Common
         /// <summary>
         ///     The random
         /// </summary>
-        private static readonly Random _sRnd = new Random();
+        private static readonly Random SRnd = new Random();
 
         /// <summary>
         ///     This function is used to ensure that a floating point number is
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public static float Random()
         {
-            float r = _sRnd.Next() & RandLimit;
+            float r = SRnd.Next() & RandLimit;
             r /= RandLimit;
             r = 2.0f * r - 1.0f;
             return r;
@@ -106,7 +106,7 @@ namespace Alis.Core.Physic.Common
         /// </summary>
         public static float Random(float lo, float hi)
         {
-            float r = _sRnd.Next() & RandLimit;
+            float r = SRnd.Next() & RandLimit;
             r /= RandLimit;
             r = (hi - lo) * r + lo;
             return r;
@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Common
         public static Mat22 Abs(Mat22 a)
         {
             Mat22 b = new Mat22();
-            b.Set(Abs(a.col1), Abs(a.col2));
+            b.Set(Abs(a.Col1), Abs(a.Col2));
             return b;
         }
 
@@ -302,7 +302,7 @@ namespace Alis.Core.Physic.Common
         public static Vec2 Mul(Mat22 a, Vec2 v)
         {
             Vec2 u = new Vec2();
-            u.Set(a.col1.X * v.X + a.col2.X * v.Y, a.col1.Y * v.X + a.col2.Y * v.Y);
+            u.Set(a.Col1.X * v.X + a.Col2.X * v.Y, a.Col1.Y * v.X + a.Col2.Y * v.Y);
             return u;
         }
 
@@ -313,7 +313,7 @@ namespace Alis.Core.Physic.Common
         public static Vec2 MulT(Mat22 a, Vec2 v)
         {
             Vec2 u = new Vec2();
-            u.Set(Vec2.Dot(v, a.col1), Vec2.Dot(v, a.col2));
+            u.Set(Vec2.Dot(v, a.Col1), Vec2.Dot(v, a.Col2));
             return u;
         }
 
@@ -323,7 +323,7 @@ namespace Alis.Core.Physic.Common
         public static Mat22 Mul(Mat22 a, Mat22 b)
         {
             Mat22 c = new Mat22();
-            c.Set(Mul(a, b.col1), Mul(a, b.col2));
+            c.Set(Mul(a, b.Col1), Mul(a, b.Col2));
             return c;
         }
 
@@ -333,9 +333,9 @@ namespace Alis.Core.Physic.Common
         public static Mat22 MulT(Mat22 a, Mat22 b)
         {
             Vec2 c1 = new Vec2();
-            c1.Set(Vec2.Dot(a.col1, b.col1), Vec2.Dot(a.col2, b.col1));
+            c1.Set(Vec2.Dot(a.Col1, b.Col1), Vec2.Dot(a.Col2, b.Col1));
             Vec2 c2 = new Vec2();
-            c2.Set(Vec2.Dot(a.col1, b.col2), Vec2.Dot(a.col2, b.col2));
+            c2.Set(Vec2.Dot(a.Col1, b.Col2), Vec2.Dot(a.Col2, b.Col2));
             Mat22 c = new Mat22();
             c.Set(c1, c2);
             return c;

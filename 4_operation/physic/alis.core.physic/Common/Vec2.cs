@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Common
             {
                 if (i == 0) return X;
                 if (i == 1) return Y;
-                Box2DXDebug.Assert(false, "Incorrect Vec2 element!");
+                Box2DxDebug.Assert(false, "Incorrect Vec2 element!");
                 return 0;
             }
             set
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Common
                 else if (i == 1) Y = value;
                 else
                 {
-                    Box2DXDebug.Assert(false, "Incorrect Vec2 element!");
+                    Box2DxDebug.Assert(false, "Incorrect Vec2 element!");
                 }
             }
         }

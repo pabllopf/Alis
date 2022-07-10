@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Collision
 
                     default:
 #if DEBUG
-                        Box2DXDebug.Assert(false);
+                        Box2DxDebug.Assert(false);
 #endif
                         break;
                 }

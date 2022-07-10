@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
     public class BuoyancyController : Controller
     {
         /// Linear drag co-efficient
-        public readonly float AngularDrag;
+        private readonly float angularDrag;
 
         /// The fluid density
         public readonly float Density;
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             Density = buoyancyControllerDef.Density;
             Velocity = buoyancyControllerDef.Velocity;
             LinearDrag = buoyancyControllerDef.LinearDrag;
-            AngularDrag = buoyancyControllerDef.AngularDrag;
+            angularDrag = buoyancyControllerDef.AngularDrag;
             UseDensity = buoyancyControllerDef.UseDensity;
             UseWorldGravity = buoyancyControllerDef.UseWorldGravity;
             Gravity = buoyancyControllerDef.Gravity;
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 body.ApplyForce(dragForce, areac);
                 //Angular drag
                 //TODO: Something that makes more physical sense?
-                body.ApplyTorque(-body.GetInertia() / body.GetMass() * area * body.GetAngularVelocity() * AngularDrag);
+                body.ApplyTorque(-body.GetInertia() / body.GetMass() * area * body.GetAngularVelocity() * angularDrag);
             }
         }
 

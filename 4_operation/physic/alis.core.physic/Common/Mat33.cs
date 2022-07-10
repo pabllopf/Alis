@@ -61,7 +61,7 @@ namespace Alis.Core.Physic.Common
         public Vec3 Solve33(Vec3 b)
         {
             float det = Vec3.Dot(Col1, Vec3.Cross(Col2, Col3));
-            Box2DXDebug.Assert(det != 0.0f);
+            Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
             Vec3 x = new Vec3();
             x.X = det * Vec3.Dot(b, Vec3.Cross(Col2, Col3));
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Common
         {
             float a11 = Col1.X, a12 = Col2.X, a21 = Col1.Y, a22 = Col2.Y;
             float det = a11 * a22 - a12 * a21;
-            Box2DXDebug.Assert(det != 0.0f);
+            Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
             Vec2 x = new Vec2();
             x.X = det * (a22 * b.X - a12 * b.Y);

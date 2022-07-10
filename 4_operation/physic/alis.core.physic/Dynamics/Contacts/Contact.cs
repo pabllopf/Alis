@@ -197,8 +197,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public static void AddType(ContactCreateFcn createFcn, ContactDestroyFcn contactDestroyFcn,
             ShapeType type1, ShapeType type2)
         {
-            Box2DXDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
-            Box2DXDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
 
             if (SRegisters[(int) type1] == null)
                 SRegisters[(int) type1] = new ContactRegister[(int) ShapeType.ShapeTypeCount];
@@ -247,8 +247,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ShapeType type1 = fixtureA.ShapeType;
             ShapeType type2 = fixtureB.ShapeType;
 
-            Box2DXDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
-            Box2DXDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
 
             ContactCreateFcn createFcn = SRegisters[(int) type1][(int) type2].CreateFcn;
             if (createFcn != null)
@@ -270,7 +270,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="contact">The contact</param>
         public static void Destroy(ref Contact contact)
         {
-            Box2DXDebug.Assert(SInitialized);
+            Box2DxDebug.Assert(SInitialized);
 
             if (contact.Manifold.PointCount > 0)
             {
@@ -281,8 +281,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ShapeType typeA = contact.FixtureA.ShapeType;
             ShapeType typeB = contact.FixtureB.ShapeType;
 
-            Box2DXDebug.Assert(ShapeType.UnknownShape < typeA && typeA < ShapeType.ShapeTypeCount);
-            Box2DXDebug.Assert(ShapeType.UnknownShape < typeB && typeB < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < typeA && typeA < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < typeB && typeB < ShapeType.ShapeTypeCount);
 
             ContactDestroyFcn destroyFcn = SRegisters[(int) typeA][(int) typeB].DestroyFcn;
             destroyFcn(ref contact);
@@ -292,7 +292,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     Updates the listener
         /// </summary>
         /// <param name="listener">The listener</param>
-        public void Update(ContactListener listener)
+        public void Update(IContactListener listener)
         {
             Manifold oldManifold = Manifold.Clone();
 
@@ -377,7 +377,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;
 
-            Box2DXDebug.Assert(CollideShapeFunction != null);
+            Box2DxDebug.Assert(CollideShapeFunction != null);
 
             CollideShapeFunction(ref manifold, FixtureA.Shape, bodyA.GetXForm(), FixtureB.Shape, bodyB.GetXForm());
         }

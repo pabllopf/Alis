@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float wA = bodyA.AngularVelocity;
                 float wB = bodyB.AngularVelocity;
 
-                Box2DXDebug.Assert(manifold.PointCount > 0);
+                Box2DxDebug.Assert(manifold.PointCount > 0);
 
                 WorldManifold worldManifold = new WorldManifold();
                 worldManifold.Initialize(manifold, bodyA.Xf, radiusA, bodyB.Xf, radiusB);
@@ -144,13 +144,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                             float kNormal = bodyA.InvMass + bodyB.InvMass + bodyA.InvI * rnA + bodyB.InvI * rnB;
 
-                            Box2DXDebug.Assert(kNormal > Settings.FltEpsilon);
+                            Box2DxDebug.Assert(kNormal > Settings.FltEpsilon);
                             ccp->NormalMass = 1.0f / kNormal;
 
                             float kEqualized = bodyA.Mass * bodyA.InvMass + bodyB.Mass * bodyB.InvMass;
                             kEqualized += bodyA.Mass * bodyA.InvI * rnA + bodyB.Mass * bodyB.InvI * rnB;
 
-                            Box2DXDebug.Assert(kEqualized > Settings.FltEpsilon);
+                            Box2DxDebug.Assert(kEqualized > Settings.FltEpsilon);
                             ccp->EqualizedMass = 1.0f / kEqualized;
 
                             Vec2 tangent = Vec2.Cross(cc.Normal, 1.0f);
@@ -162,7 +162,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                             float kTangent = bodyA.InvMass + bodyB.InvMass + bodyA.InvI * rtA + bodyB.InvI * rtB;
 
-                            Box2DXDebug.Assert(kTangent > Settings.FltEpsilon);
+                            Box2DxDebug.Assert(kTangent > Settings.FltEpsilon);
                             ccp->TangentMass = 1.0f / kTangent;
 
                             // Setup a velocity bias for restitution.
@@ -200,8 +200,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             if (k11 * k11 < kMaxConditionNumber * (k11 * k22 - k12 * k12))
                             {
                                 // K is safe to invert.
-                                cc.K.col1.Set(k11, k12);
-                                cc.K.col2.Set(k12, k22);
+                                cc.K.Col1.Set(k11, k12);
+                                cc.K.Col2.Set(k12, k22);
                                 cc.NormalMass = cc.K.GetInverse();
                             }
                             else
@@ -298,7 +298,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Vec2 tangent = Vec2.Cross(normal, 1.0f);
                 float friction = c.Friction;
 
-                Box2DXDebug.Assert(c.PointCount == 1 || c.PointCount == 2);
+                Box2DxDebug.Assert(c.PointCount == 1 || c.PointCount == 2);
 
                 unsafe
                 {
@@ -392,7 +392,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             ContactConstraintPoint* cp2 = &pointsPtr[1];
 
                             Vec2 a = new Vec2(cp1->NormalImpulse, cp2->NormalImpulse);
-                            Box2DXDebug.Assert(a.X >= 0.0f && a.Y >= 0.0f);
+                            Box2DxDebug.Assert(a.X >= 0.0f && a.Y >= 0.0f);
 
                             // Relative velocity at contact
                             Vec2 dv1 = vB + Vec2.Cross(wB, cp1->Rb) - vA - Vec2.Cross(wA, cp1->Ra);
@@ -467,7 +467,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 /*
                                 vn1 = 0.0f;
 */
-                                vn2 = c.K.col1.Y * x.X + b.Y;
+                                vn2 = c.K.Col1.Y * x.X + b.Y;
 
                                 if (x.X >= 0.0f && vn2 >= 0.0f)
                                 {
@@ -508,7 +508,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 //
                                 x.X = 0.0f;
                                 x.Y = -cp2->NormalMass * b.Y;
-                                vn1 = c.K.col2.X * x.Y + b.X;
+                                vn1 = c.K.Col2.X * x.Y + b.X;
 /*
                                 vn2 = 0.0f;
 */

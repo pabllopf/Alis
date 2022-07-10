@@ -177,12 +177,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the reaction force on body2 at the joint anchor.
         /// </summary>
-        public abstract Vec2 GetReactionForce(float inv_dt);
+        public abstract Vec2 GetReactionForce(float invDt);
 
         /// <summary>
         ///     Get the reaction torque on body2.
         /// </summary>
-        public abstract float GetReactionTorque(float inv_dt);
+        public abstract float GetReactionTorque(float invDt);
 
         /// <summary>
         ///     Get the next joint the world joint list.
@@ -240,7 +240,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
                     break;
                 default:
-                    Box2DXDebug.Assert(false);
+                    Box2DxDebug.Assert(false);
                     break;
             }
 

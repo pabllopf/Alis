@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <summary>
         ///     The force to apply
         /// </summary>
-        private readonly Vec2 F;
+        private readonly Vec2 f;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConstantForceController" /> class
@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <param name="def">The def</param>
         public ConstantForceController(ConstantForceControllerDef def)
         {
-            F = def.F;
+            f = def.F;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 Body body = i.Body;
                 if (body.IsSleeping())
                     continue;
-                body.ApplyForce(F, body.GetWorldCenter());
+                body.ApplyForce(f, body.GetWorldCenter());
             }
         }
     }

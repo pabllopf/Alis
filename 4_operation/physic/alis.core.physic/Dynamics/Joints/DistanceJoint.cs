@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The length
         /// </summary>
-        private readonly float Length;
+        private readonly float length;
 
         /// <summary>
         ///     The local anchor
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             LocalAnchor1 = def.LocalAnchor1;
             LocalAnchor2 = def.LocalAnchor2;
-            Length = def.Length;
+            length = def.Length;
             FrequencyHz = def.FrequencyHz;
             DampingRatio = def.DampingRatio;
             Impulse = 0.0f;
@@ -180,12 +180,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float cr1U = Vec2.Cross(r1, U);
             float cr2U = Vec2.Cross(r2, U);
             float invMass = b1.InvMass + b1.InvI * cr1U * cr1U + b2.InvMass + b2.InvI * cr2U * cr2U;
-            Box2DXDebug.Assert(invMass > Settings.FltEpsilon);
+            Box2DxDebug.Assert(invMass > Settings.FltEpsilon);
             Mass = 1.0f / invMass;
 
             if (FrequencyHz > 0.0f)
             {
-                float c = length - Length;
+                float c = length - this.length;
 
                 // Frequency
                 float omega = 2.0f * Settings.Pi * FrequencyHz;
@@ -241,7 +241,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vec2 d = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
             float length = d.Normalize();
-            float c = length - Length;
+            float c = length - this.length;
             c = Math.Clamp(c, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
 
             float impulse = -Mass * c;

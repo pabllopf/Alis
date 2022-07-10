@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             LocalAnchor1 = def.LocalAnchor1;
             LocalAnchor2 = def.LocalAnchor2;
 
-            Box2DXDebug.Assert(def.Ratio != 0.0f);
+            Box2DxDebug.Assert(def.Ratio != 0.0f);
             Ratio = def.Ratio;
 
             Constant = def.Length1 + Ratio * def.Length2;
@@ -347,9 +347,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             LimitMass1 = body1.InvMass + body1.InvI * cr1U1 * cr1U1;
             LimitMass2 = body2.InvMass + body2.InvI * cr2U2 * cr2U2;
             PulleyMass = LimitMass1 + Ratio * Ratio * LimitMass2;
-            Box2DXDebug.Assert(LimitMass1 > Settings.FltEpsilon);
-            Box2DXDebug.Assert(LimitMass2 > Settings.FltEpsilon);
-            Box2DXDebug.Assert(PulleyMass > Settings.FltEpsilon);
+            Box2DxDebug.Assert(LimitMass1 > Settings.FltEpsilon);
+            Box2DxDebug.Assert(LimitMass2 > Settings.FltEpsilon);
+            Box2DxDebug.Assert(PulleyMass > Settings.FltEpsilon);
             LimitMass1 = 1.0f / LimitMass1;
             LimitMass2 = 1.0f / LimitMass2;
             PulleyMass = 1.0f / PulleyMass;

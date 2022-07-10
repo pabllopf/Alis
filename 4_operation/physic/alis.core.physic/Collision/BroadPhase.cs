@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Collision
             PairManager = new PairManager();
             PairManager.Initialize(this, callback);
 
-            Box2DXDebug.Assert(worldAabb.IsValid);
+            Box2DxDebug.Assert(worldAabb.IsValid);
             WorldAabb = worldAabb;
             ProxyCount = 0;
 
@@ -208,8 +208,8 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The proxy id</returns>
         public ushort CreateProxy(Aabb aabb, object userData)
         {
-            Box2DXDebug.Assert(ProxyCount < Settings.MaxProxies);
-            Box2DXDebug.Assert(freeProxy != PairManager.NullProxy);
+            Box2DxDebug.Assert(ProxyCount < Settings.MaxProxies);
+            Box2DxDebug.Assert(freeProxy != PairManager.NullProxy);
 
             ushort proxyId = freeProxy;
             Proxy proxy1 = ProxyPool[proxyId];
@@ -290,13 +290,13 @@ namespace Alis.Core.Physic.Collision
 
             ++ProxyCount;
 
-            Box2DXDebug.Assert(QueryResultCount < Settings.MaxProxies);
+            Box2DxDebug.Assert(QueryResultCount < Settings.MaxProxies);
 
             // Create pairs if the AABB is in range.
             for (int i = 0; i < QueryResultCount; ++i)
             {
-                Box2DXDebug.Assert(QueryResults[i] < Settings.MaxProxies);
-                Box2DXDebug.Assert(ProxyPool[QueryResults[i]].IsValid);
+                Box2DxDebug.Assert(QueryResults[i] < Settings.MaxProxies);
+                Box2DxDebug.Assert(ProxyPool[QueryResults[i]].IsValid);
 
                 PairManager.AddBufferedPair(proxyId, QueryResults[i]);
             }
@@ -321,9 +321,9 @@ namespace Alis.Core.Physic.Collision
         /// <param name="proxyId">The proxy id</param>
         public void DestroyProxy(int proxyId)
         {
-            Box2DXDebug.Assert(0 < ProxyCount && ProxyCount <= Settings.MaxProxies);
+            Box2DxDebug.Assert(0 < ProxyCount && ProxyCount <= Settings.MaxProxies);
             Proxy proxy1 = ProxyPool[proxyId];
-            Box2DXDebug.Assert(proxy1.IsValid);
+            Box2DxDebug.Assert(proxy1.IsValid);
 
             int boundCount = 2 * ProxyCount;
 
@@ -385,11 +385,11 @@ namespace Alis.Core.Physic.Collision
                 Query(out lowerIndex, out upperIndex, lowerValue, upperValue, bounds, boundCount - 2, axis);
             }
 
-            Box2DXDebug.Assert(QueryResultCount < Settings.MaxProxies);
+            Box2DxDebug.Assert(QueryResultCount < Settings.MaxProxies);
 
             for (int i = 0; i < QueryResultCount; ++i)
             {
-                Box2DXDebug.Assert(ProxyPool[QueryResults[i]].IsValid);
+                Box2DxDebug.Assert(ProxyPool[QueryResults[i]].IsValid);
                 PairManager.RemoveBufferedPair(proxyId, QueryResults[i]);
             }
 
@@ -428,13 +428,13 @@ namespace Alis.Core.Physic.Collision
         {
             if (proxyId == PairManager.NullProxy || Settings.MaxProxies <= proxyId)
             {
-                Box2DXDebug.Assert(false);
+                Box2DxDebug.Assert(false);
                 return;
             }
 
             if (aabb.IsValid == false)
             {
-                Box2DXDebug.Assert(false);
+                Box2DxDebug.Assert(false);
                 return;
             }
 
@@ -673,14 +673,14 @@ namespace Alis.Core.Physic.Collision
             Query(out lowerIndex, out upperIndex, lowerValues[0], upperValues[0], Bounds[0], 2 * ProxyCount, 0);
             Query(out lowerIndex, out upperIndex, lowerValues[1], upperValues[1], Bounds[1], 2 * ProxyCount, 1);
 
-            Box2DXDebug.Assert(QueryResultCount < Settings.MaxProxies);
+            Box2DxDebug.Assert(QueryResultCount < Settings.MaxProxies);
 
             int count = 0;
             for (int i = 0; i < QueryResultCount && count < maxCount; ++i, ++count)
             {
-                Box2DXDebug.Assert(QueryResults[i] < Settings.MaxProxies);
+                Box2DxDebug.Assert(QueryResults[i] < Settings.MaxProxies);
                 Proxy proxy = ProxyPool[QueryResults[i]];
-                Box2DXDebug.Assert(proxy.IsValid);
+                Box2DxDebug.Assert(proxy.IsValid);
                 userData[i] = proxy.UserData;
             }
 
@@ -720,7 +720,7 @@ namespace Alis.Core.Physic.Collision
             int sx = dx < -Settings.FltEpsilon ? -1 : (dx > Settings.FltEpsilon ? 1 : 0);
             int sy = dy < -Settings.FltEpsilon ? -1 : (dy > Settings.FltEpsilon ? 1 : 0);
 
-            Box2DXDebug.Assert(sx != 0 || sy != 0);
+            Box2DxDebug.Assert(sx != 0 || sy != 0);
 
             float p1X = (segment.P1.X - WorldAabb.LowerBound.X) * QuantizationFactor.X;
             float p1Y = (segment.P1.Y - WorldAabb.LowerBound.Y) * QuantizationFactor.Y;
@@ -981,9 +981,9 @@ namespace Alis.Core.Physic.Collision
             int count = 0;
             for (int i = 0; i < QueryResultCount && count < maxCount; ++i, ++count)
             {
-                Box2DXDebug.Assert(QueryResults[i] < Settings.MaxProxies);
+                Box2DxDebug.Assert(QueryResults[i] < Settings.MaxProxies);
                 Proxy proxy = ProxyPool[QueryResults[i]];
-                Box2DXDebug.Assert(proxy.IsValid);
+                Box2DxDebug.Assert(proxy.IsValid);
                 userData[i] = proxy.UserData;
             }
 
@@ -1009,22 +1009,22 @@ namespace Alis.Core.Physic.Collision
                 for (int i = 0; i < boundCount; ++i)
                 {
                     Bound bound = bounds[i];
-                    Box2DXDebug.Assert(i == 0 || bounds[i - 1].Value <= bound.Value);
-                    Box2DXDebug.Assert(bound.ProxyId != PairManager.NullProxy);
-                    Box2DXDebug.Assert(ProxyPool[bound.ProxyId].IsValid);
+                    Box2DxDebug.Assert(i == 0 || bounds[i - 1].Value <= bound.Value);
+                    Box2DxDebug.Assert(bound.ProxyId != PairManager.NullProxy);
+                    Box2DxDebug.Assert(ProxyPool[bound.ProxyId].IsValid);
 
                     if (bound.IsLower)
                     {
-                        Box2DXDebug.Assert(ProxyPool[bound.ProxyId].LowerBounds[axis] == i);
+                        Box2DxDebug.Assert(ProxyPool[bound.ProxyId].LowerBounds[axis] == i);
                         ++stabbingCount;
                     }
                     else
                     {
-                        Box2DXDebug.Assert(ProxyPool[bound.ProxyId].UpperBounds[axis] == i);
+                        Box2DxDebug.Assert(ProxyPool[bound.ProxyId].UpperBounds[axis] == i);
                         --stabbingCount;
                     }
 
-                    Box2DXDebug.Assert(bound.StabbingCount == stabbingCount);
+                    Box2DxDebug.Assert(bound.StabbingCount == stabbingCount);
                 }
             }
         }
@@ -1040,8 +1040,8 @@ namespace Alis.Core.Physic.Collision
             lowerValues = new ushort[2];
             upperValues = new ushort[2];
 
-            Box2DXDebug.Assert(aabb.UpperBound.X >= aabb.LowerBound.X);
-            Box2DXDebug.Assert(aabb.UpperBound.Y >= aabb.LowerBound.Y);
+            Box2DxDebug.Assert(aabb.UpperBound.X >= aabb.LowerBound.X);
+            Box2DxDebug.Assert(aabb.UpperBound.Y >= aabb.LowerBound.Y);
 
             Vec2 minVertex = Math.Clamp(aabb.LowerBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
             Vec2 maxVertex = Math.Clamp(aabb.UpperBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
@@ -1071,10 +1071,10 @@ namespace Alis.Core.Physic.Collision
             {
                 Bound[] bounds = Bounds[axis];
 
-                Box2DXDebug.Assert(p1.LowerBounds[axis] < 2 * ProxyCount);
-                Box2DXDebug.Assert(p1.UpperBounds[axis] < 2 * ProxyCount);
-                Box2DXDebug.Assert(p2.LowerBounds[axis] < 2 * ProxyCount);
-                Box2DXDebug.Assert(p2.UpperBounds[axis] < 2 * ProxyCount);
+                Box2DxDebug.Assert(p1.LowerBounds[axis] < 2 * ProxyCount);
+                Box2DxDebug.Assert(p1.UpperBounds[axis] < 2 * ProxyCount);
+                Box2DxDebug.Assert(p2.LowerBounds[axis] < 2 * ProxyCount);
+                Box2DxDebug.Assert(p2.UpperBounds[axis] < 2 * ProxyCount);
 
                 if (bounds[p1.LowerBounds[axis]].Value > bounds[p2.UpperBounds[axis]].Value)
                     return false;
@@ -1098,8 +1098,8 @@ namespace Alis.Core.Physic.Collision
             {
                 Bound[] bounds = Bounds[axis];
 
-                Box2DXDebug.Assert(p.LowerBounds[axis] < 2 * ProxyCount);
-                Box2DXDebug.Assert(p.UpperBounds[axis] < 2 * ProxyCount);
+                Box2DxDebug.Assert(p.LowerBounds[axis] < 2 * ProxyCount);
+                Box2DxDebug.Assert(p.UpperBounds[axis] < 2 * ProxyCount);
 
                 if (b.LowerValues[axis] > bounds[p.UpperBounds[axis]].Value)
                     return false;
@@ -1148,7 +1148,7 @@ namespace Alis.Core.Physic.Collision
                 // Find the s overlaps.
                 while (s != 0)
                 {
-                    Box2DXDebug.Assert(i >= 0);
+                    Box2DxDebug.Assert(i >= 0);
 
                     if (bounds[i].IsLower)
                     {
@@ -1183,7 +1183,7 @@ namespace Alis.Core.Physic.Collision
             else
             {
                 proxy.OverlapCount = 2;
-                Box2DXDebug.Assert(QueryResultCount < Settings.MaxProxies);
+                Box2DxDebug.Assert(QueryResultCount < Settings.MaxProxies);
                 QueryResults[QueryResultCount] = (ushort) proxyId;
                 ++QueryResultCount;
             }

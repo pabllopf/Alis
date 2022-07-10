@@ -64,8 +64,8 @@ namespace Alis.Core.Physic.Collision
             Sweep sweepA = input.SweepA;
             Sweep sweepB = input.SweepB;
 
-            Box2DXDebug.Assert(sweepA.T0 == sweepB.T0);
-            Box2DXDebug.Assert(1.0f - sweepA.T0 > Settings.FltEpsilon);
+            Box2DxDebug.Assert(sweepA.T0 == sweepB.T0);
+            Box2DxDebug.Assert(1.0f - sweepA.T0 > Settings.FltEpsilon);
 
             float radius = shapeA.Radius + shapeB.Radius;
             float tolerance = input.Tolerance;
@@ -224,7 +224,7 @@ namespace Alis.Core.Physic.Collision
 
                         ++rootIterCount;
 
-                        Box2DXDebug.Assert(rootIterCount < 50);
+                        Box2DxDebug.Assert(rootIterCount < 50);
                     }
 
                     MaxToiRootIters = Math.Max(MaxToiRootIters, rootIterCount);

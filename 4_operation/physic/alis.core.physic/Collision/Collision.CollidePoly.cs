@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Collision
             int count2 = poly2.VertexCount;
             Vec2[] vertices2 = poly2.Vertices;
 
-            Box2DXDebug.Assert(0 <= edge1 && edge1 < count1);
+            Box2DxDebug.Assert(0 <= edge1 && edge1 < count1);
 
             // Convert normal from poly1's frame into poly2's frame.
             Vec2 normal1World = Math.Mul(xf1.R, normals1[edge1]);
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Collision
             Vec2[] vertices2 = poly2.Vertices;
             Vec2[] normals2 = poly2.Normals;
 
-            Box2DXDebug.Assert(0 <= edge1 && edge1 < count1);
+            Box2DxDebug.Assert(0 <= edge1 && edge1 < count1);
 
             // Get the normal of the reference edge in poly2's frame.
             Vec2 normal1 = Math.MulT(xf2.R, Math.Mul(xf1.R, normals1[edge1]));

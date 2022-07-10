@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The body capacity
         /// </summary>
-        private readonly int BodyCapacity;
+        private readonly int bodyCapacity;
 
         /// <summary>
         ///     The body count
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The listener
         /// </summary>
-        public readonly ContactListener Listener;
+        public readonly IContactListener Listener;
 
         /// <summary>
         ///     The position iteration count
@@ -231,9 +231,9 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="contactCapacity">The contact capacity</param>
         /// <param name="jointCapacity">The joint capacity</param>
         /// <param name="listener">The listener</param>
-        public Island(int bodyCapacity, int contactCapacity, int jointCapacity, ContactListener listener)
+        public Island(int bodyCapacity, int contactCapacity, int jointCapacity, IContactListener listener)
         {
-            BodyCapacity = bodyCapacity;
+            this.bodyCapacity = bodyCapacity;
             ContactCapacity = contactCapacity;
             JointCapacity = jointCapacity;
             //__bodyCount = 0;
@@ -246,8 +246,8 @@ namespace Alis.Core.Physic.Dynamics
             Contacts = new Contact[contactCapacity];
             Joints = new Joint[jointCapacity];
 
-            Velocities = new Velocity[BodyCapacity];
-            Positions = new Position[BodyCapacity];
+            Velocities = new Velocity[this.bodyCapacity];
+            Positions = new Position[this.bodyCapacity];
         }
 
         /// <summary>
@@ -553,7 +553,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="body">The body</param>
         public void Add(Body body)
         {
-            Box2DXDebug.Assert(BodyCount < BodyCapacity);
+            Box2DxDebug.Assert(BodyCount < bodyCapacity);
             body.IslandIndex = BodyCount;
             Bodies[BodyCount++] = body;
         }
@@ -564,7 +564,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="contact">The contact</param>
         public void Add(Contact contact)
         {
-            Box2DXDebug.Assert(ContactCount < ContactCapacity);
+            Box2DxDebug.Assert(ContactCount < ContactCapacity);
             Contacts[ContactCount++] = contact;
         }
 
@@ -574,7 +574,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="joint">The joint</param>
         public void Add(Joint joint)
         {
-            Box2DXDebug.Assert(JointCount < JointCapacity);
+            Box2DxDebug.Assert(JointCount < JointCapacity);
             Joints[JointCount++] = joint;
         }
 

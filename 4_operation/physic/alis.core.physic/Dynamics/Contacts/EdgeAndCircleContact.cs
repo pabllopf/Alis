@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public EdgeAndCircleContact(Fixture fixtureA, Fixture fixtureB)
             : base(fixtureA, fixtureB)
         {
-            Box2DXDebug.Assert(fixtureA.ShapeType == ShapeType.EdgeShape);
-            Box2DXDebug.Assert(fixtureB.ShapeType == ShapeType.CircleShape);
+            Box2DxDebug.Assert(fixtureA.ShapeType == ShapeType.EdgeShape);
+            Box2DxDebug.Assert(fixtureB.ShapeType == ShapeType.CircleShape);
             Manifold.PointCount = 0;
             Manifold.Points[0].NormalImpulse = 0.0f;
             Manifold.Points[0].TangentImpulse = 0.0f;

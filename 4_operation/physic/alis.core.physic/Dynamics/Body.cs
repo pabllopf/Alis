@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The
         /// </summary>
-        internal float I;
+        private float I;
 
         /// <summary>
         ///     The inv
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="world">The world</param>
         internal Body(BodyDef bd, World world)
         {
-            Box2DXDebug.Assert(world._lock == false);
+            Box2DxDebug.Assert(world.Lock == false);
 
             Flags = 0;
 
@@ -267,7 +267,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void Dispose()
         {
-            Box2DXDebug.Assert(world._lock == false);
+            Box2DxDebug.Assert(world.Lock == false);
             // shapes and joints are destroyed in World.Destroy
         }
 
@@ -284,7 +284,7 @@ namespace Alis.Core.Physic.Dynamics
             bool inRange = true;
             for (Fixture f = FixtureList; f != null; f = f.Next)
             {
-                inRange = f.Synchronize(world._broadPhase, xf1, Xf);
+                inRange = f.Synchronize(world.BroadPhase, xf1, Xf);
                 if (inRange == false)
                 {
                     break;
@@ -330,13 +330,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="def">The fixture definition.</param>
         public Fixture CreateFixture(FixtureDef def)
         {
-            Box2DXDebug.Assert(world._lock == false);
-            if (world._lock)
+            Box2DxDebug.Assert(world.Lock == false);
+            if (world.Lock)
             {
                 return null;
             }
 
-            BroadPhase broadPhase = world._broadPhase;
+            BroadPhase broadPhase = world.BroadPhase;
 
             Fixture fixture = new Fixture();
             fixture.Create(broadPhase, this, Xf, def);
@@ -359,16 +359,16 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="fixture">The fixture to be removed.</param>
         public void DestroyFixture(Fixture fixture)
         {
-            Box2DXDebug.Assert(world._lock == false);
-            if (world._lock)
+            Box2DxDebug.Assert(world.Lock == false);
+            if (world.Lock)
             {
                 return;
             }
 
-            Box2DXDebug.Assert(fixture.Body == this);
+            Box2DxDebug.Assert(fixture.Body == this);
 
             // Remove the fixture from this body's singly linked list.
-            Box2DXDebug.Assert(FixtureCount > 0);
+            Box2DxDebug.Assert(FixtureCount > 0);
             Fixture node = FixtureList;
             bool found = false;
             while (node != null)
@@ -385,9 +385,9 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // You tried to remove a shape that is not attached to this body.
-            Box2DXDebug.Assert(found);
+            Box2DxDebug.Assert(found);
 
-            BroadPhase broadPhase = world._broadPhase;
+            BroadPhase broadPhase = world.BroadPhase;
 
             fixture.Destroy(broadPhase);
             fixture.Body = null;
@@ -405,8 +405,8 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="massData">The mass properties.</param>
         public void SetMass(MassData massData)
         {
-            Box2DXDebug.Assert(world._lock == false);
-            if (world._lock)
+            Box2DxDebug.Assert(world.Lock == false);
+            if (world.Lock)
             {
                 return;
             }
@@ -448,7 +448,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 for (Fixture f = FixtureList; f != null; f = f.Next)
                 {
-                    f.RefilterProxy(world._broadPhase, Xf);
+                    f.RefilterProxy(world.BroadPhase, Xf);
                 }
             }
         }
@@ -461,8 +461,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void SetMassFromShapes()
         {
-            Box2DXDebug.Assert(world._lock == false);
-            if (world._lock)
+            Box2DxDebug.Assert(world.Lock == false);
+            if (world.Lock)
             {
                 return;
             }
@@ -494,7 +494,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 // Center the inertia about the center of mass.
                 I -= Mass * Vec2.Dot(center, center);
-                Box2DXDebug.Assert(I > 0.0f);
+                Box2DxDebug.Assert(I > 0.0f);
                 InvI = 1.0f / I;
             }
             else
@@ -522,7 +522,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 for (Fixture f = FixtureList; f != null; f = f.Next)
                 {
-                    f.RefilterProxy(world._broadPhase, Xf);
+                    f.RefilterProxy(world.BroadPhase, Xf);
                 }
             }
         }
@@ -542,8 +542,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </returns>
         public bool SetXForm(Vec2 position, float angle)
         {
-            Box2DXDebug.Assert(world._lock == false);
-            if (world._lock)
+            Box2DxDebug.Assert(world.Lock == false);
+            if (world.Lock)
             {
                 return true;
             }
@@ -562,7 +562,7 @@ namespace Alis.Core.Physic.Dynamics
             bool freeze = false;
             for (Fixture f = FixtureList; f != null; f = f.Next)
             {
-                bool inRange = f.Synchronize(world._broadPhase, Xf, Xf);
+                bool inRange = f.Synchronize(world.BroadPhase, Xf, Xf);
 
                 if (inRange == false)
                 {
@@ -582,7 +582,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Success
-            world._broadPhase.Commit();
+            world.BroadPhase.Commit();
             return true;
         }
 
@@ -962,7 +962,7 @@ namespace Alis.Core.Physic.Dynamics
 
             for (Fixture f = FixtureList; f != null; f = f.Next)
             {
-                f.RefilterProxy(world._broadPhase, Xf);
+                f.RefilterProxy(world.BroadPhase, Xf);
             }
         }
 

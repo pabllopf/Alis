@@ -44,47 +44,47 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Enable/disable the joint limit.
         /// </summary>
-        public readonly bool enableLimit;
+        public readonly bool EnableLimit;
 
         /// <summary>
         ///     Enable/disable the joint motor.
         /// </summary>
-        public readonly bool enableMotor;
+        public readonly bool EnableMotor;
 
         /// <summary>
         ///     The local anchor point relative to body1's origin.
         /// </summary>
-        public Vec2 localAnchor1;
+        public Vec2 LocalAnchor1;
 
         /// <summary>
         ///     The local anchor point relative to body2's origin.
         /// </summary>
-        public Vec2 localAnchor2;
+        public Vec2 LocalAnchor2;
 
         /// <summary>
         ///     The local translation axis in body1.
         /// </summary>
-        public Vec2 localAxis1;
+        public Vec2 LocalAxis1;
 
         /// <summary>
         ///     The lower translation limit, usually in meters.
         /// </summary>
-        public readonly float lowerTranslation;
+        public readonly float LowerTranslation;
 
         /// <summary>
         ///     The maximum motor torque, usually in N-m.
         /// </summary>
-        public readonly float maxMotorForce;
+        public readonly float MaxMotorForce;
 
         /// <summary>
         ///     The desired motor speed in radians per second.
         /// </summary>
-        public readonly float motorSpeed;
+        public readonly float MotorSpeed;
 
         /// <summary>
         ///     The upper translation limit, usually in meters.
         /// </summary>
-        public readonly float upperTranslation;
+        public readonly float UpperTranslation;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="LineJointDef" /> class
@@ -92,15 +92,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public LineJointDef()
         {
             Type = JointType.LineJoint;
-            localAnchor1.SetZero();
-            localAnchor2.SetZero();
-            localAxis1.Set(1.0f, 0.0f);
-            enableLimit = false;
-            lowerTranslation = 0.0f;
-            upperTranslation = 0.0f;
-            enableMotor = false;
-            maxMotorForce = 0.0f;
-            motorSpeed = 0.0f;
+            LocalAnchor1.SetZero();
+            LocalAnchor2.SetZero();
+            LocalAxis1.Set(1.0f, 0.0f);
+            EnableLimit = false;
+            LowerTranslation = 0.0f;
+            UpperTranslation = 0.0f;
+            EnableMotor = false;
+            MaxMotorForce = 0.0f;
+            MotorSpeed = 0.0f;
         }
 
         /// <summary>
@@ -111,9 +111,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             Body1 = body1;
             Body2 = body2;
-            localAnchor1 = body1.GetLocalPoint(anchor);
-            localAnchor2 = body2.GetLocalPoint(anchor);
-            localAxis1 = body1.GetLocalVector(axis);
+            LocalAnchor1 = body1.GetLocalPoint(anchor);
+            LocalAnchor2 = body2.GetLocalPoint(anchor);
+            LocalAxis1 = body1.GetLocalVector(axis);
         }
     }
 }

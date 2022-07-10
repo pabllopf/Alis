@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         ///     Typically one wants maxTimestep to be 1/(max eigenvalue of T), so that damping will never cause something to
         ///     reverse direction
         /// </summary>
-        private float MaxTimestep;
+        private float maxTimestep;
 
         /// <summary>
         ///     Tensor to use in damping model
@@ -57,17 +57,17 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// Sets damping independantly along the x and y axes
         public void SetAxisAligned(float xDamping, float yDamping)
         {
-            T.col1.X = -xDamping;
-            T.col1.Y = 0;
-            T.col2.X = 0;
-            T.col2.Y = -yDamping;
+            T.Col1.X = -xDamping;
+            T.Col1.Y = 0;
+            T.Col2.X = 0;
+            T.Col2.Y = -yDamping;
             if (xDamping > 0 || yDamping > 0)
             {
-                MaxTimestep = 1 / Math.Max(xDamping, yDamping);
+                maxTimestep = 1 / Math.Max(xDamping, yDamping);
             }
             else
             {
-                MaxTimestep = 0;
+                maxTimestep = 0;
             }
         }
 
@@ -80,8 +80,8 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             float timestep = step.Dt;
             if (timestep <= Settings.FltEpsilon)
                 return;
-            if (timestep > MaxTimestep && MaxTimestep > 0)
-                timestep = MaxTimestep;
+            if (timestep > maxTimestep && maxTimestep > 0)
+                timestep = maxTimestep;
             for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
             {
                 Body body = i.Body;

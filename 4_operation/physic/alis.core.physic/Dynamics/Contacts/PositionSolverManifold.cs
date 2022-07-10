@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             /// <param name="cc">The cc</param>
             internal void Initialize(ContactConstraint cc)
             {
-                Box2DXDebug.Assert(cc.PointCount > 0);
+                Box2DxDebug.Assert(cc.PointCount > 0);
 
                 switch (cc.Type)
                 {

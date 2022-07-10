@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Collision
             get
             {
 #if DEBUG
-                Box2DXDebug.Assert(index >= 0 && index < 3);
+                Box2DxDebug.Assert(index >= 0 && index < 3);
 #endif
                 if (index == 0) return i0;
                 if (index == 1) return i1;
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Collision
             set
             {
 #if DEBUG
-                Box2DXDebug.Assert(index >= 0 && index < 3);
+                Box2DxDebug.Assert(index >= 0 && index < 3);
 #endif
                 if (index == 0) i0 = value;
                 else if (index == 1) i1 = value;

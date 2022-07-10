@@ -237,7 +237,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public void SetLimits(float lower, float upper)
         {
-            Box2DXDebug.Assert(lower <= upper);
+            Box2DxDebug.Assert(lower <= upper);
             Body1.WakeUp();
             Body2.WakeUp();
             LowerLimit = lower;
@@ -277,7 +277,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 // You cannot create a rotation limit between bodies that
                 // both have fixed rotation.
-                Box2DXDebug.Assert(body1.InvI > 0.0f || body2.InvI > 0.0f);
+                Box2DxDebug.Assert(body1.InvI > 0.0f || body2.InvI > 0.0f);
             }
 
             // Compute the effective mass matrix.
@@ -564,7 +564,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     Vec2 sweepC = body2SweepC;
                     sweepC.Normalize();
                     float mass12 = invMass1 + invMass2;
-                    Box2DXDebug.Assert(mass12 > Settings.FltEpsilon);
+                    Box2DxDebug.Assert(mass12 > Settings.FltEpsilon);
                     float divideMass12 = 1.0f / mass12;
                     Vec2 impulseLocal = divideMass12 * -body2SweepC;
                     float kBeta = 0.5f;
@@ -576,21 +576,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
                 Mat22 k1 = new Mat22
                 {
-                    col1 = new Vec2(invMass1 + invMass2, 0.0f),
-                    col2 = new Vec2(0.0f, invMass1 + invMass2)
+                    Col1 = new Vec2(invMass1 + invMass2, 0.0f),
+                    Col2 = new Vec2(0.0f, invMass1 + invMass2)
                 };
                 
                 Mat22 k2 = new Mat22();
-                k2.col1.X = invI1 * mulR1.Y * mulR1.Y;
-                k2.col2.X = -invI1 * mulR1.X * mulR1.Y;
-                k2.col1.Y = -invI1 * mulR1.X * mulR1.Y;
-                k2.col2.Y = invI1 * mulR1.X * mulR1.X;
+                k2.Col1.X = invI1 * mulR1.Y * mulR1.Y;
+                k2.Col2.X = -invI1 * mulR1.X * mulR1.Y;
+                k2.Col1.Y = -invI1 * mulR1.X * mulR1.Y;
+                k2.Col2.Y = invI1 * mulR1.X * mulR1.X;
 
                 Mat22 k3 = new Mat22();
-                k3.col1.X = invI2 * mulR2.Y * mulR2.Y;
-                k3.col2.X = -invI2 * mulR2.X * mulR2.Y;
-                k3.col1.Y = -invI2 * mulR2.X * mulR2.Y;
-                k3.col2.Y = invI2 * mulR2.X * mulR2.X;
+                k3.Col1.X = invI2 * mulR2.Y * mulR2.Y;
+                k3.Col2.X = -invI2 * mulR2.X * mulR2.Y;
+                k3.Col1.Y = -invI2 * mulR2.X * mulR2.Y;
+                k3.Col2.Y = invI2 * mulR2.X * mulR2.X;
 
                 Mat22 k = k1 + k2 + k3;
                 Vec2 impulse = k.Solve(-body2SweepC);

@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public CircleContact(Fixture fixtureA, Fixture fixtureB)
             : base(fixtureA, fixtureB)
         {
-            Box2DXDebug.Assert(fixtureA.ShapeType == ShapeType.CircleShape);
-            Box2DXDebug.Assert(fixtureB.ShapeType == ShapeType.CircleShape);
+            Box2DxDebug.Assert(fixtureA.ShapeType == ShapeType.CircleShape);
+            Box2DxDebug.Assert(fixtureB.ShapeType == ShapeType.CircleShape);
             CollideShapeFunction = CollideCircles;
         }
 

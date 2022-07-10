@@ -329,7 +329,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <returns>The vec</returns>
         public override Vec2 GetVertex(int index)
         {
-            Box2DXDebug.Assert(0 <= index && index < 2);
+            Box2DxDebug.Assert(0 <= index && index < 2);
             return index == 0 ? Vertex1 : Vertex2;
         }
 

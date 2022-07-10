@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Jacobian Jacobian;
+        private Jacobian jacobian;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GearJoint" /> class
@@ -79,10 +79,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             JointType type1 = def.Joint1.GetType();
             JointType type2 = def.Joint2.GetType();
 
-            Box2DXDebug.Assert(type1 == JointType.RevoluteJoint || type1 == JointType.PrismaticJoint);
-            Box2DXDebug.Assert(type2 == JointType.RevoluteJoint || type2 == JointType.PrismaticJoint);
-            Box2DXDebug.Assert(def.Joint1.GetBody1().IsStatic());
-            Box2DXDebug.Assert(def.Joint2.GetBody1().IsStatic());
+            Box2DxDebug.Assert(type1 == JointType.RevoluteJoint || type1 == JointType.PrismaticJoint);
+            Box2DxDebug.Assert(type2 == JointType.RevoluteJoint || type2 == JointType.PrismaticJoint);
+            Box2DxDebug.Assert(def.Joint1.GetBody1().IsStatic());
+            Box2DxDebug.Assert(def.Joint2.GetBody1().IsStatic());
 
             Revolute1 = null;
             Prismatic1 = null;
@@ -223,27 +223,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
-        /// <param name="inv_dt">The inv dt</param>
+        /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vec2 GetReactionForce(float inv_dt)
+        public override Vec2 GetReactionForce(float invDt)
         {
             // TODO_ERIN not tested
-            Vec2 P = Impulse * Jacobian.Linear2;
-            return inv_dt * P;
+            Vec2 p = Impulse * jacobian.Linear2;
+            return invDt * p;
         }
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
-        /// <param name="inv_dt">The inv dt</param>
+        /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float inv_dt)
+        public override float GetReactionTorque(float invDt)
         {
             // TODO_ERIN not tested
             Vec2 r = Math.Mul(Body2.GetXForm().R, LocalAnchor2 - Body2.GetLocalCenter());
-            Vec2 P = Impulse * Jacobian.Linear2;
-            float L = Impulse * Jacobian.Angular2 - Vec2.Cross(r, P);
-            return inv_dt * L;
+            Vec2 p = Impulse * jacobian.Linear2;
+            float l = Impulse * jacobian.Angular2 - Vec2.Cross(r, p);
+            return invDt * l;
         }
 
         /// <summary>
@@ -257,50 +257,50 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            float K = 0.0f;
-            Jacobian.SetZero();
+            float k = 0.0f;
+            jacobian.SetZero();
 
             if (Revolute1 != null)
             {
-                Jacobian.Angular1 = -1.0f;
-                K += b1.InvI;
+                jacobian.Angular1 = -1.0f;
+                k += b1.InvI;
             }
             else
             {
                 Vec2 ug = Math.Mul(g1.GetXForm().R, Prismatic1.LocalXAxis1);
                 Vec2 r = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
                 float crug = Vec2.Cross(r, ug);
-                Jacobian.Linear1 = -ug;
-                Jacobian.Angular1 = -crug;
-                K += b1.InvMass + b1.InvI * crug * crug;
+                jacobian.Linear1 = -ug;
+                jacobian.Angular1 = -crug;
+                k += b1.InvMass + b1.InvI * crug * crug;
             }
 
             if (Revolute2 != null)
             {
-                Jacobian.Angular2 = -Ratio;
-                K += Ratio * Ratio * b2.InvI;
+                jacobian.Angular2 = -Ratio;
+                k += Ratio * Ratio * b2.InvI;
             }
             else
             {
                 Vec2 ug = Math.Mul(g2.GetXForm().R, Prismatic2.LocalXAxis1);
                 Vec2 r = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
                 float crug = Vec2.Cross(r, ug);
-                Jacobian.Linear2 = -Ratio * ug;
-                Jacobian.Angular2 = -Ratio * crug;
-                K += Ratio * Ratio * (b2.InvMass + b2.InvI * crug * crug);
+                jacobian.Linear2 = -Ratio * ug;
+                jacobian.Angular2 = -Ratio * crug;
+                k += Ratio * Ratio * (b2.InvMass + b2.InvI * crug * crug);
             }
 
             // Compute effective mass.
-            Box2DXDebug.Assert(K > 0.0f);
-            Mass = 1.0f / K;
+            Box2DxDebug.Assert(k > 0.0f);
+            Mass = 1.0f / k;
 
             if (step.WarmStarting)
             {
                 // Warm starting.
-                b1.LinearVelocity += b1.InvMass * Impulse * Jacobian.Linear1;
-                b1.AngularVelocity += b1.InvI * Impulse * Jacobian.Angular1;
-                b2.LinearVelocity += b2.InvMass * Impulse * Jacobian.Linear2;
-                b2.AngularVelocity += b2.InvI * Impulse * Jacobian.Angular2;
+                b1.LinearVelocity += b1.InvMass * Impulse * jacobian.Linear1;
+                b1.AngularVelocity += b1.InvI * Impulse * jacobian.Angular1;
+                b2.LinearVelocity += b2.InvMass * Impulse * jacobian.Linear2;
+                b2.AngularVelocity += b2.InvI * Impulse * jacobian.Angular2;
             }
             else
             {
@@ -317,16 +317,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            float Cdot = Jacobian.Compute(b1.LinearVelocity, b1.AngularVelocity, b2.LinearVelocity,
+            float cdot = jacobian.Compute(b1.LinearVelocity, b1.AngularVelocity, b2.LinearVelocity,
                 b2.AngularVelocity);
 
-            float impulse = Mass * (-Cdot);
+            float impulse = Mass * (-cdot);
             Impulse += impulse;
 
-            b1.LinearVelocity += b1.InvMass * impulse * Jacobian.Linear1;
-            b1.AngularVelocity += b1.InvI * impulse * Jacobian.Angular1;
-            b2.LinearVelocity += b2.InvMass * impulse * Jacobian.Linear2;
-            b2.AngularVelocity += b2.InvI * impulse * Jacobian.Angular2;
+            b1.LinearVelocity += b1.InvMass * impulse * jacobian.Linear1;
+            b1.AngularVelocity += b1.InvI * impulse * jacobian.Angular1;
+            b2.LinearVelocity += b2.InvMass * impulse * jacobian.Linear2;
+            b2.AngularVelocity += b2.InvI * impulse * jacobian.Angular2;
         }
 
         /// <summary>
@@ -360,14 +360,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 coordinate2 = Prismatic2.JointTranslation;
             }
 
-            float C = Constant - (coordinate1 + Ratio * coordinate2);
+            float c = Constant - (coordinate1 + Ratio * coordinate2);
 
-            float impulse = Mass * (-C);
+            float impulse = Mass * (-c);
 
-            b1.Sweep.C += b1.InvMass * impulse * Jacobian.Linear1;
-            b1.Sweep.A += b1.InvI * impulse * Jacobian.Angular1;
-            b2.Sweep.C += b2.InvMass * impulse * Jacobian.Linear2;
-            b2.Sweep.A += b2.InvI * impulse * Jacobian.Angular2;
+            b1.Sweep.C += b1.InvMass * impulse * jacobian.Linear1;
+            b1.Sweep.A += b1.InvI * impulse * jacobian.Angular1;
+            b2.Sweep.C += b2.InvMass * impulse * jacobian.Linear2;
+            b2.Sweep.A += b2.InvI * impulse * jacobian.Angular2;
 
             b1.SynchronizeTransform();
             b2.SynchronizeTransform();

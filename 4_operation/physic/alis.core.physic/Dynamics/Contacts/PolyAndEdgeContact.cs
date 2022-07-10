@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public PolyAndEdgeContact(Fixture fixtureA, Fixture fixtureB)
             : base(fixtureA, fixtureB)
         {
-            Box2DXDebug.Assert(fixtureA.ShapeType == ShapeType.PolygonShape);
-            Box2DXDebug.Assert(fixtureB.ShapeType == ShapeType.EdgeShape);
+            Box2DxDebug.Assert(fixtureA.ShapeType == ShapeType.PolygonShape);
+            Box2DxDebug.Assert(fixtureB.ShapeType == ShapeType.EdgeShape);
             CollideShapeFunction = CollidePolyAndEdgeContact;
         }
 

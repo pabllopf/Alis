@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Common
         /// Calculate the angle that the rotation matrix represents.
         public float GetAngle()
         {
-            return Math.Atan2(R.col1.Y, R.col1.X);
+            return Math.Atan2(R.Col1.Y, R.Col1.X);
         }
 
         /// <summary>
