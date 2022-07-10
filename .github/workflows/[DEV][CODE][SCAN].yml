@@ -2,10 +2,8 @@
 name: "[DEV][CODE][SCAN]"
 
 on:
-  push:
-    branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
+  schedule:
+    - cron: '30 1 * * *'
 
 jobs:
   analyze:
