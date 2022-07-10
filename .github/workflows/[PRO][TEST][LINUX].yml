@@ -1,13 +1,11 @@
 # Run test of the framework.
-name: [PRO][TEST][LINUX]
+name: "[PRO][TEST][LINUX]"
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  schedule:
-    - cron: '0 1 ** *'
   
 jobs:
   Test:
@@ -15,7 +13,6 @@ jobs:
     name: UBUNTU-LATEST
     runs-on: ubuntu-latest
 
-    name: Testing 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,5 +26,5 @@ jobs:
             5.0.x
             6.0.x
       
-      - name: Test
+      - name: Dotnet test
         run: dotnet test alis.sln
