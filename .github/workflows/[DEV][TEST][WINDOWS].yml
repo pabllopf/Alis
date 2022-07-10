@@ -6,8 +6,6 @@ on:
     branches: [ develop ]
   pull_request:
     branches: [ develop ]
-  schedule:
-    - cron: '0 2 ** *'
   
 jobs:
   Test:
