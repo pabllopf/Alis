@@ -30,6 +30,3 @@ jobs:
         PROJECT_FILE_PATH:  ./6_ideation/time/alis.aspect.time/alis.aspect.time.csproj
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
         NUGET_KEY: ${{secrets.NUGET}}
-        NUGET_SOURCE: https://api.nuget.org
-        TAG_COMMIT: true
-        TAG_FORMAT: v*
