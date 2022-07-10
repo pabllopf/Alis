@@ -7,7 +7,7 @@
     <PropertyGroup>
         <AssemblyVersion>0.0.1</AssemblyVersion>
     </PropertyGroup>
-
+    
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
         <AppendRuntimeIdentifierToOutputPath>true</AppendRuntimeIdentifierToOutputPath>
