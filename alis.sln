@@ -105,12 +105,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E102FFE-9727-458C-9361-4588C4157572}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\discover_vulnerabilities.yml = .github\workflows\discover_vulnerabilities.yml
-		.github\workflows\documentation.yml = .github\workflows\documentation.yml
-		.github\workflows\publish_nugets.yml = .github\workflows\publish_nugets.yml
-		.github\workflows\unit_tests.yml = .github\workflows\unit_tests.yml
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issue_template", "issue_template", "{063D29E8-51CF-4155-B23F-8510CA62512A}"
 	ProjectSection(SolutionItems) = preProject
