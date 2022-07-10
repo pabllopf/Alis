@@ -1,5 +1,5 @@
 # Run test of the framework.
-name: [DEV][TEST][WINDOWS]
+name: "[DEV][TEST][WINDOWS]"
 
 on:
   push:
@@ -8,14 +8,13 @@ on:
     branches: [ develop ]
   schedule:
     - cron: '0 2 ** *'
-    
+  
 jobs:
   Test:
-
+  
     name: WINDOWS-LATEST
     runs-on: windows-latest
 
-    name: Testing 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,5 +28,5 @@ jobs:
             5.0.x
             6.0.x
       
-      - name: Test
+      - name: Dotnet test
         run: dotnet test alis.sln
