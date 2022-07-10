@@ -24,8 +24,8 @@ jobs:
           5.0.x
           6.0.x
     
-    - name: alis.aspect.time.csproj
-      uses: rohith/publish-nuget@v2
+    - name: "alis.aspect.time.csproj"
+      uses: brandedoutcast/publish-nuget@v2
       with:
         PROJECT_FILE_PATH:  ./6_ideation/time/alis.aspect.time.csproj
         BUILD_CONFIGURATION: Release
