@@ -25,4 +25,4 @@ jobs:
           6.0.x
     
     - name: Get tag name
-        run: ./.scripts/macos/publish_to_github.sh
+      run: ./.scripts/macos/publish_to_github.sh
