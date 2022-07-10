@@ -24,23 +24,13 @@ jobs:
           5.0.x
           6.0.x
     
-    - name: Publish Alis.Core Nuget
+    - name: alis.aspect.time.csproj
       uses: rohith/publish-nuget@v2
       with:
-        PROJECT_FILE_PATH:  ./Core/Core.csproj
+        PROJECT_FILE_PATH:  ./6_ideation/time/alis.aspect.time.csproj
+        BUILD_CONFIGURATION: Release
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
         NUGET_KEY: ${{secrets.NUGET}}
-        
-    - name: Publish Alis.Core-SFML Nuget
-      uses: rohith/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH:  ./Core-SFML/Core-SFML.csproj
-        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-        NUGET_KEY: ${{secrets.NUGET}}
-        
-    - name: Publish Alis.Tools Nuget
-      uses: rohith/publish-nuget@v2
-      with:
-        PROJECT_FILE_PATH:  ./Tools/Tools.csproj
-        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
-        NUGET_KEY: ${{secrets.NUGET}}
+        NUGET_SOURCE: https://api.nuget.org
+        TAG_COMMIT: true
+        TAG_FORMAT: v*
