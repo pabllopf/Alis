@@ -1,11 +1,11 @@
 # Discover vulnerabilities of code.
-name: "[PRO] [DISCOVER] [VULNERABILITIES]"
+name: "[DEV][CODE][SCAN]"
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   analyze:
