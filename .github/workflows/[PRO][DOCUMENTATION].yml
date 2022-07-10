@@ -1,12 +1,10 @@
-name: Documentation
+name: "[PRO][DOCUMENTATION]"
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-  schedule:
-    - cron: '0 0 ** *'
 
 jobs:
   Generating_Documentation:
@@ -15,22 +13,12 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    
-    - name: Cache_doc
-      id: cache-doc
-      uses: actions/cache@v2
-      with:
-        path: temp-doc
-        key: ${{ runner.os }}-doc
-      
-    - name: Change Directory 
-      run: cd scripts
-      
+
     - name: Show Directory 
       run: dir
       
     - name: Build Doc
-      run: .\\scripts\\Document_Web.bat
+      run: .\\.scripts\\windows\\create_web.bat
     
     - name: Update web
       run: |
