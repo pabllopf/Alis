@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The length
         /// </summary>
-        public readonly float Length;
+        private readonly float Length;
 
         /// <summary>
         ///     The local anchor
@@ -98,8 +98,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public float Mass; // effective mass for the constraint.
 
+
+     
         /// <summary>
-        ///     The
+        /// The vector 
         /// </summary>
         public Vec2 U;
 

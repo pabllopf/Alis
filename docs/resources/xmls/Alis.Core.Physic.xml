@@ -132,7 +132,7 @@
         </member>
         <member name="F:Alis.Core.Physic.Collision.BroadPhase.BroadphaseMax">
             <summary>
-                The ushrt max
+                The max
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Collision.BroadPhase.Invalid">
@@ -155,7 +155,7 @@
                 The max proxies
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase.FreeProxy">
+        <member name="F:Alis.Core.Physic.Collision.BroadPhase.freeProxy">
             <summary>
                 The free proxy
             </summary>
@@ -319,16 +319,6 @@
             <param name="boundCount">The bound count</param>
             <param name="axis">The axis</param>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase.qi1">
-            <summary>
-                The qi
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.BroadPhase.qi2">
-            <summary>
-                The qi
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.Collision.BroadPhase.IncrementOverlapCount(System.Int32)">
             <summary>
                 Increments the overlap count using the specified proxy id
@@ -383,7 +373,7 @@
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.ClipVertex.ID">
+        <member name="F:Alis.Core.Physic.Collision.ClipVertex.Id">
             <summary>
                 The id
             </summary>
@@ -525,7 +515,7 @@
                 The max toi root iters
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Collision.TimeOfImpact(Alis.Core.Physic.Collision.TOIInput,Alis.Core.Physic.Collision.Shapes.Shape,Alis.Core.Physic.Collision.Shapes.Shape)">
+        <member name="M:Alis.Core.Physic.Collision.Collision.TimeOfImpact(Alis.Core.Physic.Collision.ToiInput,Alis.Core.Physic.Collision.Shapes.Shape,Alis.Core.Physic.Collision.Shapes.Shape)">
             <summary>
                 Compute the time when two shapes begin to touch or touch at a closer distance.
                 TOI considers the shape radii. It attempts to have the radii overlap by the tolerance.
@@ -538,17 +528,17 @@
                 fraction=0 means the shapes begin touching/overlapped, and fraction=1 means the shapes don't touch.
             </returns>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.ContactID">
+        <member name="T:Alis.Core.Physic.Collision.ContactId">
             <summary>
                 Contact ids to facilitate warm starting.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.ContactID.Features">
+        <member name="F:Alis.Core.Physic.Collision.ContactId.Features">
             <summary>
                 The features
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.ContactID.Key">
+        <member name="F:Alis.Core.Physic.Collision.ContactId.Key">
             <summary>
                 Used to quickly compare contact ids.
             </summary>
@@ -630,17 +620,17 @@
                 The index array
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.IndexArray.I0">
+        <member name="F:Alis.Core.Physic.Collision.IndexArray.i0">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.IndexArray.I1">
+        <member name="F:Alis.Core.Physic.Collision.IndexArray.i1">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.IndexArray.I2">
+        <member name="F:Alis.Core.Physic.Collision.IndexArray.i2">
             <summary>
                 The
             </summary>
@@ -705,7 +695,7 @@
                 provide reliable contact forces, especially for high speed collisions.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.ManifoldPoint.ID">
+        <member name="F:Alis.Core.Physic.Collision.ManifoldPoint.Id">
             <summary>
                 Uniquely identifies a contact point between two shapes.
             </summary>
@@ -890,42 +880,42 @@
                 The table capacity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager._broadPhase">
+        <member name="F:Alis.Core.Physic.Collision.PairManager.BroadPhase">
             <summary>
                 The broad phase
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager._callback">
+        <member name="F:Alis.Core.Physic.Collision.PairManager.Callback">
             <summary>
                 The callback
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager._freePair">
+        <member name="F:Alis.Core.Physic.Collision.PairManager.FreePair">
             <summary>
                 The free pair
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager._hashTable">
+        <member name="F:Alis.Core.Physic.Collision.PairManager.HashTable">
             <summary>
                 The table capacity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager._pairBuffer">
+        <member name="F:Alis.Core.Physic.Collision.PairManager.PairBuffer">
             <summary>
                 The max pairs
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager._pairBufferCount">
+        <member name="F:Alis.Core.Physic.Collision.PairManager.PairBufferCount">
             <summary>
                 The pair buffer count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager._pairCount">
+        <member name="F:Alis.Core.Physic.Collision.PairManager.PairCount">
             <summary>
                 The pair count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager._pairs">
+        <member name="F:Alis.Core.Physic.Collision.PairManager.Pairs">
             <summary>
                 The max pairs
             </summary>
@@ -1794,22 +1784,22 @@
                 The simplex
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Simplex._v1">
+        <member name="F:Alis.Core.Physic.Collision.Simplex.V1">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Simplex._v2">
+        <member name="F:Alis.Core.Physic.Collision.Simplex.V2">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Simplex._v3">
+        <member name="F:Alis.Core.Physic.Collision.Simplex.V3">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.Simplex._count">
+        <member name="F:Alis.Core.Physic.Collision.Simplex.Count">
             <summary>
                 The count
             </summary>
@@ -1925,32 +1915,32 @@
                 The sort key func
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.TOIInput">
+        <member name="T:Alis.Core.Physic.Collision.ToiInput">
             <summary>
                 Inpute parameters for TimeOfImpact
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepA">
+        <member name="F:Alis.Core.Physic.Collision.ToiInput.SweepA">
             <summary>
                 The sweep
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepB">
+        <member name="F:Alis.Core.Physic.Collision.ToiInput.SweepB">
             <summary>
                 The sweep
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepRadiusA">
+        <member name="F:Alis.Core.Physic.Collision.ToiInput.SweepRadiusA">
             <summary>
                 The sweep radius
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.SweepRadiusB">
+        <member name="F:Alis.Core.Physic.Collision.ToiInput.SweepRadiusB">
             <summary>
                 The sweep radius
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.TOIInput.Tolerance">
+        <member name="F:Alis.Core.Physic.Collision.ToiInput.Tolerance">
             <summary>
                 The tolerance
             </summary>
@@ -3787,12 +3777,12 @@
                 The touch collision flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.s_registers">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.SRegisters">
             <summary>
                 The shape type count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact._manifold">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.manifold">
             <summary>
                 The manifold
             </summary>
@@ -3914,7 +3904,7 @@
                 Evaluates this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.ComputeTOI(Alis.Core.Physic.Common.Sweep,Alis.Core.Physic.Common.Sweep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.ComputeToi(Alis.Core.Physic.Common.Sweep,Alis.Core.Physic.Common.Sweep)">
             <summary>
                 Computes the toi using the specified sweep a
             </summary>
@@ -4142,7 +4132,7 @@
                 The constraints
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Step">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.step">
             <summary>
                 The step
             </summary>
@@ -5268,7 +5258,7 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.U">
             <summary>
-                The
+            The vector 
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Joints.DistanceJointDef)">
@@ -5920,12 +5910,12 @@
                 The perp
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._enableLimitx">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.EnableLimitx">
             <summary>
                 The enable limit
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint._enableMotorx">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.EnableMotorx">
             <summary>
                 The enable motor
             </summary>

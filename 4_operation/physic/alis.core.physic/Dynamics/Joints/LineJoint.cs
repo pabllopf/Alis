@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        public float S2;
+        private float S2;
 
         /// <summary>
         ///     The upper translation
@@ -556,13 +556,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 w2 += InvI2 * L2;
             }
 
-            float Cdot1 = Vec2.Dot(Perp, v2 - v1) + S2 * w2 - S1 * w1;
+            float cdot1 = Vec2.Dot(Perp, v2 - v1) + S2 * w2 - S1 * w1;
 
             if (EnableLimitx && LimitState != LimitState.InactiveLimit)
             {
                 // Solve prismatic and limit constraint in block form.
                 float Cdot2 = Vec2.Dot(Axis, v2 - v1) + A2 * w2 - A1 * w1;
-                Vec2 Cdot = new Vec2(Cdot1, Cdot2);
+                Vec2 Cdot = new Vec2(cdot1, Cdot2);
 
                 Vec2 f1 = Impulse;
                 Vec2 df = K.Solve(-Cdot);
@@ -578,7 +578,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 }
 
                 // f2(1) = invK(1,1) * (-Cdot(1) - K(1,2) * (f2(2) - f1(2))) + f1(1)
-                float b = -Cdot1 - (Impulse.Y - f1.Y) * K.col2.X;
+                float b = -cdot1 - (Impulse.Y - f1.Y) * K.col2.X;
                 float f2r = b / K.col1.X + f1.X;
                 Impulse.X = f2r;
 
@@ -597,7 +597,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             else
             {
                 // Limit is inactive, just solve the prismatic constraint in block form.
-                float df = (-Cdot1) / K.col1.X;
+                float df = (-cdot1) / K.col1.X;
                 Impulse.X += df;
 
                 Vec2 P = df * Perp;
@@ -627,26 +627,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            Vec2 c1 = b1.Sweep.C;
+            Vec2 invMass1 = b1.Sweep.C;
             float a1 = b1.Sweep.A;
 
-            Vec2 c2 = b2.Sweep.C;
+            Vec2 invMass2 = b2.Sweep.C;
             float a2 = b2.Sweep.A;
 
             // Solve linear limit constraint.
             float linearError = 0.0f, angularError = 0.0f;
             bool active = false;
-            float C2 = 0.0f;
+            float clamp = 0.0f;
 
-            Mat22 R1 = new Mat22(a1), R2 = new Mat22(a2);
+            var mat22 = new Mat22(a1);
+            var mat23 = new Mat22(a2);
 
-            Vec2 r1 = Math.Mul(R1, LocalAnchor1 - LocalCenter1);
-            Vec2 r2 = Math.Mul(R2, LocalAnchor2 - LocalCenter2);
-            Vec2 d = c2 + r2 - c1 - r1;
+            Vec2 r1 = Math.Mul(mat22, LocalAnchor1 - LocalCenter1);
+            Vec2 r2 = Math.Mul(mat23, LocalAnchor2 - LocalCenter2);
+            Vec2 d = invMass2 + r2 - invMass1 - r1;
 
             if (EnableLimitx)
             {
-                Axis = Math.Mul(R1, LocalXAxis1);
+                Axis = Math.Mul(mat22, LocalXAxis1);
 
                 A1 = Vec2.Cross(d + r1, Axis);
                 A2 = Vec2.Cross(r2, Axis);
@@ -655,14 +656,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 if (Math.Abs(UpperTranslation - LowerTranslation) < 2.0f * Settings.LinearSlop)
                 {
                     // Prevent large angular corrections
-                    C2 = Math.Clamp(translation, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+                    clamp = Math.Clamp(translation, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
                     linearError = Math.Abs(translation);
                     active = true;
                 }
                 else if (translation <= LowerTranslation)
                 {
                     // Prevent large linear corrections and allow some slop.
-                    C2 = Math.Clamp(translation - LowerTranslation + Settings.LinearSlop,
+                    clamp = Math.Clamp(translation - LowerTranslation + Settings.LinearSlop,
                         -Settings.MaxLinearCorrection, 0.0f);
                     linearError = LowerTranslation - translation;
                     active = true;
@@ -670,14 +671,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 else if (translation >= UpperTranslation)
                 {
                     // Prevent large linear corrections and allow some slop.
-                    C2 = Math.Clamp(translation - UpperTranslation - Settings.LinearSlop, 0.0f,
+                    clamp = Math.Clamp(translation - UpperTranslation - Settings.LinearSlop, 0.0f,
                         Settings.MaxLinearCorrection);
                     linearError = translation - UpperTranslation;
                     active = true;
                 }
             }
 
-            Perp = Math.Mul(R1, LocalYAxis1);
+            Perp = Math.Mul(mat22, LocalYAxis1);
 
             S1 = Vec2.Cross(d + r1, Perp);
             S2 = Vec2.Cross(r2, Perp);
@@ -703,7 +704,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
                 Vec2 C = new Vec2();
                 C.X = C1;
-                C.Y = C2;
+                C.Y = clamp;
 
                 impulse = K.Solve(-C);
             }
@@ -723,15 +724,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float L1 = impulse.X * S1 + impulse.Y * A1;
             float L2 = impulse.X * S2 + impulse.Y * A2;
 
-            c1 -= InvMass1 * P;
+            invMass1 -= InvMass1 * P;
             a1 -= InvI1 * L1;
-            c2 += InvMass2 * P;
+            invMass2 += InvMass2 * P;
             a2 += InvI2 * L2;
 
             // TODO_ERIN remove need for this.
-            b1.Sweep.C = c1;
+            b1.Sweep.C = invMass1;
             b1.Sweep.A = a1;
-            b2.Sweep.C = c2;
+            b2.Sweep.C = invMass2;
             b2.Sweep.A = a2;
             b1.SynchronizeTransform();
             b2.SynchronizeTransform();
