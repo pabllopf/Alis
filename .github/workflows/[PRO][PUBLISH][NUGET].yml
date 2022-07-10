@@ -28,7 +28,6 @@ jobs:
       uses: brandedoutcast/publish-nuget@v2
       with:
         PROJECT_FILE_PATH:  ./6_ideation/time/alis.aspect.time.csproj
-        BUILD_CONFIGURATION: Release
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
         NUGET_KEY: ${{secrets.NUGET}}
         NUGET_SOURCE: https://api.nuget.org
