@@ -1,43 +1,71 @@
 # Discover vulnerabilities of code.
-name: "Discover_Vulnerabilities"
+name: "[PRO] [DISCOVER] [VULNERABILITIES]"
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ master ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ master ]
 
 jobs:
-  job1: 
-    name: Testing Vulnerabilities
-    runs-on: windows-2019
+  analyze:
+    name: UBUNTU-LATEST
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
     strategy:
       fail-fast: false
       matrix:
         language: [ 'csharp' ]
+        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
+        # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2
+      with:
+        languages: ${{ matrix.language }}
+        # If you wish to specify custom queries, you can do so here or in a config file.
+        # By default, queries listed here will override any specified in a config file.
+        # Prefix the list here with "+" to use these queries and those in the config file.
         
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
+        # Details on CodeQL's query packs refer to : https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
+        # queries: security-extended,security-and-quality
+
         
-      - name: Cache_Ubuntu_Code
-        id: cache-ubuntu-code
-        uses: actions/cache@v2
-        with:
-          path: temp-ubuntu-code
-          key: ${{ runner.os }}-ubuntu-code
+    # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
+    # If this step fails, then you should remove it and run the build manually (see below)
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
 
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
-        with:
-          languages: ${{ matrix.language }}
+    # ℹ️ Command-line programs to run using the OS shell.
+    # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+    #   If the Autobuild fails above, remove it and uncomment the following three lines. 
+    #   modify them (or add more) to build your code if your project, please refer to the EXAMPLE below for guidance.
 
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v1
+    # - run: |
+    #   echo "Run, Build Application using script"
+    #   ./location_of_script_within_repo/buildscript.sh
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+
+
+
