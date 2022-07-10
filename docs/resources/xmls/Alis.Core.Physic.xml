@@ -4,25 +4,25 @@
         <name>Alis.Core.Physic</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Physic.Box2DXDebug">
+        <member name="T:Alis.Core.Physic.Box2DxDebug">
             <summary>
                 The box dx debug class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Box2DXDebug.Assert(System.Boolean)">
+        <member name="M:Alis.Core.Physic.Box2DxDebug.Assert(System.Boolean)">
             <summary>
                 Asserts the condition
             </summary>
             <param name="condition">The condition</param>
         </member>
-        <member name="M:Alis.Core.Physic.Box2DXDebug.Assert(System.Boolean,System.String)">
+        <member name="M:Alis.Core.Physic.Box2DxDebug.Assert(System.Boolean,System.String)">
             <summary>
                 Asserts the condition
             </summary>
             <param name="condition">The condition</param>
             <param name="message">The message</param>
         </member>
-        <member name="M:Alis.Core.Physic.Box2DXDebug.Assert(System.Boolean,System.String,System.String)">
+        <member name="M:Alis.Core.Physic.Box2DxDebug.Assert(System.Boolean,System.String,System.String)">
             <summary>
                 Asserts the condition
             </summary>
@@ -30,7 +30,7 @@
             <param name="message">The message</param>
             <param name="detailMessage">The detail message</param>
         </member>
-        <member name="M:Alis.Core.Physic.Box2DXDebug.ThrowBox2DXException(System.String)">
+        <member name="M:Alis.Core.Physic.Box2DxDebug.ThrowBox2DxException(System.String)">
             <summary>
                 Throws the box 2 dx exception using the specified message
             </summary>
@@ -860,6 +860,21 @@
                 The table capacity
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Collision.PairManager.HashTable">
+            <summary>
+                The table capacity
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.PairManager.PairBuffer">
+            <summary>
+                The max pairs
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.PairManager.Pairs">
+            <summary>
+                The max pairs
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Collision.PairManager.BroadPhase">
             <summary>
                 The broad phase
@@ -875,16 +890,6 @@
                 The free pair
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager.HashTable">
-            <summary>
-                The table capacity
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager.PairBuffer">
-            <summary>
-                The max pairs
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collision.PairManager.PairBufferCount">
             <summary>
                 The pair buffer count
@@ -893,11 +898,6 @@
         <member name="F:Alis.Core.Physic.Collision.PairManager.PairCount">
             <summary>
                 The pair count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.PairManager.Pairs">
-            <summary>
-                The max pairs
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Collision.PairManager.#ctor">
@@ -1062,6 +1062,11 @@
                 The upper bounds
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Collision.Proxy.UpperBounds">
+            <summary>
+                The upper bounds
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Collision.Proxy.OverlapCount">
             <summary>
                 The overlap count
@@ -1070,11 +1075,6 @@
         <member name="F:Alis.Core.Physic.Collision.Proxy.TimeStamp">
             <summary>
                 The time stamp
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Proxy.UpperBounds">
-            <summary>
-                The upper bounds
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Collision.Proxy.UserData">
@@ -1495,6 +1495,11 @@
                 A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.
             </summary>
         </member>
+        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collision.Shapes.PolygonShape" /> class
+            </summary>
+        </member>
         <member name="P:Alis.Core.Physic.Collision.Shapes.PolygonShape.Centroid">
             <summary>
                 The centroid
@@ -1620,11 +1625,6 @@
             <param name="vs">The vs</param>
             <param name="count">The count</param>
             <returns>The </returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collision.Shapes.PolygonShape" /> class
-            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.Shapes.SegmentCollide">
             <summary>
@@ -1950,14 +1950,14 @@
                 This is used to compute the current state of a contact manifold.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.WorldManifold.Normal">
-            <summary>
-                World vector pointing from A to B.
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collision.WorldManifold.Points">
             <summary>
                 World contact point (point of intersection).
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.WorldManifold.Normal">
+            <summary>
+                World vector pointing from A to B.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Collision.WorldManifold.Clone">
@@ -1977,12 +1977,12 @@
                 A 2-by-2 matrix. Stored in column-major order.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Mat22.col1">
+        <member name="F:Alis.Core.Physic.Common.Mat22.Col1">
             <summary>
                 The col
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Mat22.col2">
+        <member name="F:Alis.Core.Physic.Common.Mat22.Col2">
             <summary>
                 The col
             </summary>
@@ -2048,8 +2048,8 @@
         <member name="M:Alis.Core.Physic.Common.Mat22.op_Addition(Alis.Core.Physic.Common.Mat22,Alis.Core.Physic.Common.Mat22)">
             <summary>
             </summary>
-            <param name="A"></param>
-            <param name="B"></param>
+            <param name="a"></param>
+            <param name="b"></param>
             <returns></returns>
         </member>
         <member name="T:Alis.Core.Physic.Common.Mat33">
@@ -2115,7 +2115,7 @@
                 The rand limit
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Common.Math._sRnd">
+        <member name="F:Alis.Core.Physic.Common.Math.SRnd">
             <summary>
                 The random
             </summary>
@@ -2864,6 +2864,11 @@
                 A rigid body. These are created via World.CreateBody.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Body.world">
+            <summary>
+                The world
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Body.AngularDamping">
             <summary>
                 The angular damping
@@ -2977,11 +2982,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Body.userData">
             <summary>
                 The user data
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.world">
-            <summary>
-                The world
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Body.Xf">
@@ -3495,7 +3495,7 @@
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.BodyType">
             <summary>
-            Body type
+                Body type
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.BodyType.Static">
@@ -3529,14 +3529,14 @@
                 This structure is used to build a fixture with a circle shape.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.CircleDef.LocalPosition">
-            <summary>
-                The local position
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.CircleDef.Radius">
             <summary>
                 The radius
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.CircleDef.LocalPosition">
+            <summary>
+                The local position
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.CircleDef.#ctor">
@@ -3613,7 +3613,7 @@
                 The max manifold points
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.ContactListener">
+        <member name="T:Alis.Core.Physic.Dynamics.IContactListener">
             Implement this class to get contact information. You can use these results for
             things like sounds and game logic. You can also get contact results by
             traversing the contact lists after the time step. However, you might miss
@@ -3624,13 +3624,13 @@
             many callbacks per time step.
             @warning You cannot create/destroy Box2DX entities inside these callbacks.
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.ContactListener.BeginContact(Alis.Core.Physic.Dynamics.Contacts.Contact)">
+        <member name="M:Alis.Core.Physic.Dynamics.IContactListener.BeginContact(Alis.Core.Physic.Dynamics.Contacts.Contact)">
             Called when two fixtures begin to touch.
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.ContactListener.EndContact(Alis.Core.Physic.Dynamics.Contacts.Contact)">
+        <member name="M:Alis.Core.Physic.Dynamics.IContactListener.EndContact(Alis.Core.Physic.Dynamics.Contacts.Contact)">
             Called when two fixtures cease to touch.
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.ContactListener.PreSolve(Alis.Core.Physic.Dynamics.Contacts.Contact,Alis.Core.Physic.Collision.Manifold)">
+        <member name="M:Alis.Core.Physic.Dynamics.IContactListener.PreSolve(Alis.Core.Physic.Dynamics.Contacts.Contact,Alis.Core.Physic.Collision.Manifold)">
             This is called after a contact is updated. This allows you to inspect a
             contact before it goes to the solver. If you are careful, you can modify the
             contact manifold (e.g. disable contact).
@@ -3642,7 +3642,7 @@
             get an EndContact callback. However, you may get a BeginContact callback
             the next step.
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.ContactListener.PostSolve(Alis.Core.Physic.Dynamics.Contacts.Contact,Alis.Core.Physic.Dynamics.ContactImpulse)">
+        <member name="M:Alis.Core.Physic.Dynamics.IContactListener.PostSolve(Alis.Core.Physic.Dynamics.Contacts.Contact,Alis.Core.Physic.Dynamics.ContactImpulse)">
             This lets you inspect a contact after the solver is finished. This is useful
             for inspecting impulses.
             Note: the contact manifold does not include time of impact impulses, which can be
@@ -3782,14 +3782,14 @@
                 The shape type count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.manifold">
-            <summary>
-                The manifold
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollideShapeFunction">
             <summary>
                 The collide shape function
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.manifold">
+            <summary>
+                The manifold
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.#ctor">
@@ -3893,7 +3893,7 @@
             </summary>
             <param name="contact">The contact</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.Update(Alis.Core.Physic.Dynamics.ContactListener)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.Update(Alis.Core.Physic.Dynamics.IContactListener)">
             <summary>
                 Updates the listener
             </summary>
@@ -3930,6 +3930,11 @@
         <member name="T:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint">
             <summary>
                 The contact constraint class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.Points">
+            <summary>
+                The max manifold points
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.BodyA">
@@ -3980,11 +3985,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.PointCount">
             <summary>
                 The point count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.Points">
-            <summary>
-                The max manifold points
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.Radius">
@@ -4122,11 +4122,6 @@
                 The position solver manifold
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.ConstraintCount">
-            <summary>
-                The constraint count
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Constraints">
             <summary>
                 The constraints
@@ -4144,6 +4139,11 @@
             <param name="step">The step</param>
             <param name="contacts">The contacts</param>
             <param name="contactCount">The contact count</param>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.ConstraintCount">
+            <summary>
+                The constraint count
+            </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Dispose">
             <summary>
@@ -4347,11 +4347,6 @@
                 The position solver manifold class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Normal">
-            <summary>
-                The normal
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Points">
             <summary>
                 The max manifold points
@@ -4360,6 +4355,11 @@
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Separations">
             <summary>
                 The max manifold points
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Normal">
+            <summary>
+                The normal
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Contacts.ContactConstraint)">
@@ -4373,20 +4373,14 @@
                 Calculates buoyancy forces for fluids in the form of a half plane.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.AngularDrag">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.angularDrag">
             Linear drag co-efficient
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Density">
             The fluid density
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Gravity">
-            Gravity vector, if the world's gravity is not used
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.LinearDrag">
             Linear drag co-efficient
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Normal">
-            The outer surface normal
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Offset">
             The height of the fluid surface along the normal
@@ -4396,6 +4390,12 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.UseWorldGravity">
             If true, gravity is taken from the world instead of the gravity parameter.
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Gravity">
+            Gravity vector, if the world's gravity is not used
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Normal">
+            The outer surface normal
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Velocity">
             Fluid velocity, for drag calculations
@@ -4429,14 +4429,8 @@
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.Density">
             The fluid density
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.Gravity">
-            Gravity vector, if the world's gravity is not used
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.LinearDrag">
             Linear drag co-efficient
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.Normal">
-            The outer surface normal
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.Offset">
             The height of the fluid surface along the normal
@@ -4446,6 +4440,12 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.UseWorldGravity">
             If true, gravity is taken from the world instead of the gravity parameter.
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.Gravity">
+            Gravity vector, if the world's gravity is not used
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.Normal">
+            The outer surface normal
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef.Velocity">
             Fluid velocity, for drag calculations
@@ -4492,7 +4492,7 @@
             </summary>
             <seealso cref="T:Alis.Core.Physic.Dynamics.Controllers.Controller" />
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ConstantForceController.F">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ConstantForceController.f">
             <summary>
                 The force to apply
             </summary>
@@ -4685,7 +4685,7 @@
             </summary>
             <seealso cref="T:Alis.Core.Physic.Dynamics.Controllers.Controller" />
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.TensorDampingController.MaxTimestep">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.TensorDampingController.maxTimestep">
             <summary>
                 Set this to a positive number to clamp the maximum amount of damping done.
                 Typically one wants maxTimestep to be 1/(max eigenvalue of T), so that damping will never cause something to
@@ -5036,6 +5036,21 @@
                 abstract fixture definition. You can reuse fixture definitions safely.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.FixtureDef.IsSensor">
+            <summary>
+                A sensor shape collects contact information but never generates a collision response.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.FixtureDef.Restitution">
+            <summary>
+                The restitution (elasticity) usually in the range [0,1].
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.FixtureDef.UserData">
+            <summary>
+                Use this to store application specific fixture data.
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.FixtureDef.Density">
             <summary>
                 The density, usually in kg/m^2.
@@ -5051,24 +5066,9 @@
                 The friction coefficient, usually in the range [0,1].
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.FixtureDef.IsSensor">
-            <summary>
-                A sensor shape collects contact information but never generates a collision response.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.FixtureDef.Restitution">
-            <summary>
-                The restitution (elasticity) usually in the range [0,1].
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.FixtureDef.Type">
             <summary>
                 Holds the shape type for down-casting.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.FixtureDef.UserData">
-            <summary>
-                Use this to store application specific fixture data.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.FixtureDef.#ctor">
@@ -5082,24 +5082,34 @@
             </summary>
             <seealso cref="T:System.IDisposable" />
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island.Bodies">
-            <summary>
-                The bodies
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island.BodyCapacity">
+        <member name="F:Alis.Core.Physic.Dynamics.Island.bodyCapacity">
             <summary>
                 The body capacity
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island.BodyCount">
-            <summary>
-                The body count
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Island.ContactCapacity">
             <summary>
                 The contact capacity
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Island.JointCapacity">
+            <summary>
+                The joint capacity
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Island.Listener">
+            <summary>
+                The listener
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Island.Bodies">
+            <summary>
+                The bodies
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Island.BodyCount">
+            <summary>
+                The body count
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Island.ContactCount">
@@ -5112,11 +5122,6 @@
                 The contacts
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island.JointCapacity">
-            <summary>
-                The joint capacity
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Island.JointCount">
             <summary>
                 The joint count
@@ -5125,11 +5130,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Island.Joints">
             <summary>
                 The joints
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Island.Listener">
-            <summary>
-                The listener
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Island.PositionIterationCount">
@@ -5147,7 +5147,7 @@
                 The velocities
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Island.#ctor(System.Int32,System.Int32,System.Int32,Alis.Core.Physic.Dynamics.ContactListener)">
+        <member name="M:Alis.Core.Physic.Dynamics.Island.#ctor(System.Int32,System.Int32,System.Int32,Alis.Core.Physic.Dynamics.IContactListener)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Island" /> class
             </summary>
@@ -5211,11 +5211,6 @@
                 this as a massless, rigid rod.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Bias">
-            <summary>
-                The bias
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.DampingRatio">
             <summary>
                 The damping ratio
@@ -5226,6 +5221,16 @@
                 The frequency hz
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.length">
+            <summary>
+                The length
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Bias">
+            <summary>
+                The bias
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Gamma">
             <summary>
                 The gamma
@@ -5234,11 +5239,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Impulse">
             <summary>
                 The impulse
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Length">
-            <summary>
-                The length
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.LocalAnchor1">
@@ -5258,7 +5258,7 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.U">
             <summary>
-            The vector 
+                The vector
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Joints.DistanceJointDef)">
@@ -5368,7 +5368,7 @@
                 fixed bodies (which must be body1 on those joints).
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint.Jacobian">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.GearJoint.jacobian">
             <summary>
                 The
             </summary>
@@ -5463,14 +5463,14 @@
             <summary>
                 Gets the reaction force using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The vec</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.GetReactionTorque(System.Single)">
             <summary>
                 Gets the reaction torque using the specified inv dt
             </summary>
-            <param name="inv_dt">The inv dt</param>
+            <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
@@ -5753,6 +5753,11 @@
                 Joint definitions are used to construct joints.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointDef.UserData">
+            <summary>
+                Use this to attach application specific data to your joints.
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.JointDef.Body1">
             <summary>
                 The first attached body.
@@ -5771,11 +5776,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Joints.JointDef.Type">
             <summary>
                 The joint type is set automatically for concrete joint types.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointDef.UserData">
-            <summary>
-                Use this to attach application specific data to your joints.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.JointDef.#ctor">
@@ -5905,11 +5905,6 @@
                 The perp
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.Perp">
-            <summary>
-                The perp
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.EnableLimitx">
             <summary>
                 The enable limit
@@ -5980,12 +5975,17 @@
                 The motor speed
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.Perp">
+            <summary>
+                The perp
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.S1">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.S2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJoint.s2">
             <summary>
                 The
             </summary>
@@ -6119,49 +6119,49 @@
                 anchors and a local axis helps when saving and loading a game.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.enableLimit">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.EnableLimit">
             <summary>
                 Enable/disable the joint limit.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.enableMotor">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.EnableMotor">
             <summary>
                 Enable/disable the joint motor.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.localAnchor1">
-            <summary>
-                The local anchor point relative to body1's origin.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.localAnchor2">
-            <summary>
-                The local anchor point relative to body2's origin.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.localAxis1">
-            <summary>
-                The local translation axis in body1.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.lowerTranslation">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.LowerTranslation">
             <summary>
                 The lower translation limit, usually in meters.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.maxMotorForce">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.MaxMotorForce">
             <summary>
                 The maximum motor torque, usually in N-m.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.motorSpeed">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.MotorSpeed">
             <summary>
                 The desired motor speed in radians per second.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.upperTranslation">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.UpperTranslation">
             <summary>
                 The upper translation limit, usually in meters.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.LocalAnchor1">
+            <summary>
+                The local anchor point relative to body1's origin.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.LocalAnchor2">
+            <summary>
+                The local anchor point relative to body2's origin.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LineJointDef.LocalAxis1">
+            <summary>
+                The local translation axis in body1.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.LineJointDef.#ctor">
@@ -6331,7 +6331,12 @@
                 drive the motion or to model joint friction.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.A1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.refAngle">
+            <summary>
+                The ref angle
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.a1">
             <summary>
                 The
             </summary>
@@ -6342,11 +6347,6 @@
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.Axis">
-            <summary>
-                The perp
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.Perp">
             <summary>
                 The perp
             </summary>
@@ -6401,9 +6401,9 @@
                 The motor speed
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.refAngle">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.Perp">
             <summary>
-                The ref angle
+                The perp
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.s1">
@@ -6545,21 +6545,6 @@
                 Enable/disable the joint motor.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.LocalAnchor1">
-            <summary>
-                The local anchor point relative to body1's origin.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.LocalAnchor2">
-            <summary>
-                The local anchor point relative to body2's origin.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.LocalAxis1">
-            <summary>
-                The local translation axis in body1.
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.LowerTranslation">
             <summary>
                 The lower translation limit, usually in meters.
@@ -6575,14 +6560,29 @@
                 The desired motor speed in radians per second.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.ReferenceAngle">
-            <summary>
-                The constrained angle between the bodies: body2_angle - body1_angle.
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.UpperTranslation">
             <summary>
                 The upper translation limit, usually in meters.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.LocalAnchor1">
+            <summary>
+                The local anchor point relative to body1's origin.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.LocalAnchor2">
+            <summary>
+                The local anchor point relative to body2's origin.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.LocalAxis1">
+            <summary>
+                The local translation axis in body1.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.ReferenceAngle">
+            <summary>
+                The constrained angle between the bodies: body2_angle - body1_angle.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef.#ctor">
@@ -6850,16 +6850,6 @@
                 is provided so that infinite forces are not generated.
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.Impulse">
-            <summary>
-                The impulse
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.Mass">
-            <summary>
-                The mass
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.motorSpeed">
             <summary>
                 The motor speed
@@ -6870,6 +6860,16 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint" /> class
             </summary>
             <param name="def">The def</param>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.Impulse">
+            <summary>
+                The impulse
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.Mass">
+            <summary>
+                The mass
+            </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LocalAnchor1">
             <summary>
@@ -7031,16 +7031,6 @@
                 A flag to enable the joint motor.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.LocalAnchor1">
-            <summary>
-                The local anchor point relative to body1's origin.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.LocalAnchor2">
-            <summary>
-                The local anchor point relative to body2's origin.
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.LowerAngle">
             <summary>
                 The lower angle for the joint limit (radians).
@@ -7057,14 +7047,24 @@
                 The desired motor speed. Usually in radians per second.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.ReferenceAngle">
-            <summary>
-                The body2 angle minus body1 angle in the reference state (radians).
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.UpperAngle">
             <summary>
                 The upper angle for the joint limit (radians).
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.LocalAnchor1">
+            <summary>
+                The local anchor point relative to body1's origin.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.LocalAnchor2">
+            <summary>
+                The local anchor point relative to body2's origin.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.ReferenceAngle">
+            <summary>
+                The body2 angle minus body1 angle in the reference state (radians).
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef.#ctor">
@@ -7085,14 +7085,14 @@
                 from start to end).
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.PolygonDef.VertexCount">
-            <summary>
-                The number of polygon vertices.
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.PolygonDef.Vertices">
             <summary>
                 The polygon vertices in local coordinates.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.PolygonDef.VertexCount">
+            <summary>
+                The number of polygon vertices.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.PolygonDef.#ctor">
@@ -7187,132 +7187,132 @@
                 and asynchronous queries.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._allowSleep">
+        <member name="F:Alis.Core.Physic.Dynamics.World.allowSleep">
             <summary>
                 The allow sleep
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._bodyCount">
-            <summary>
-                The body count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._bodyList">
-            <summary>
-                The body list
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._boundaryListener">
-            <summary>
-                The boundary listener
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._broadPhase">
-            <summary>
-                The broad phase
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._contactCount">
-            <summary>
-                The contact count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._contactFilter">
-            <summary>
-                The contact filter
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._contactList">
-            <summary>
-                The contact list
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._contactListener">
-            <summary>
-                The contact listener
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._contactManager">
+        <member name="F:Alis.Core.Physic.Dynamics.World.contactManager">
             <summary>
                 The contact manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._continuousPhysics">
-            <summary>
-                The continuous physics
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._controllerCount">
-            <summary>
-                The controller count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._controllerList">
-            <summary>
-                The controller list
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._debugDraw">
-            <summary>
-                The debug draw
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._destructionListener">
-            <summary>
-                The destruction listener
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._gravity">
-            <summary>
-                The gravity
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._groundBody">
+        <member name="F:Alis.Core.Physic.Dynamics.World.groundBody">
             <summary>
                 The ground body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._inv_dt0">
+        <member name="F:Alis.Core.Physic.Dynamics.World.bodyCount">
+            <summary>
+                The body count
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.bodyList">
+            <summary>
+                The body list
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.boundaryListener">
+            <summary>
+                The boundary listener
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.BroadPhase">
+            <summary>
+                The broad phase
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.ContactCount">
+            <summary>
+                The contact count
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.ContactFilter">
+            <summary>
+                The contact filter
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.ContactList">
+            <summary>
+                The contact list
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.ContactListener">
+            <summary>
+                The contact listener
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.continuousPhysics">
+            <summary>
+                The continuous physics
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.controllerCount">
+            <summary>
+                The controller count
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.controllerList">
+            <summary>
+                The controller list
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.debugDraw">
+            <summary>
+                The debug draw
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.destructionListener">
+            <summary>
+                The destruction listener
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.gravity">
+            <summary>
+                The gravity
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.World.invDt0">
             <summary>
                 The inv dt0
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._jointCount">
+        <member name="F:Alis.Core.Physic.Dynamics.World.jointCount">
             <summary>
                 The joint count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._jointList">
+        <member name="F:Alis.Core.Physic.Dynamics.World.jointList">
             <summary>
                 The joint list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._lock">
+        <member name="F:Alis.Core.Physic.Dynamics.World.Lock">
             <summary>
                 The lock
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._raycastNormal">
+        <member name="F:Alis.Core.Physic.Dynamics.World.raycastNormal">
             <summary>
                 The raycast normal
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._raycastSegment">
+        <member name="F:Alis.Core.Physic.Dynamics.World.raycastSegment">
             <summary>
                 The raycast segment
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._raycastSolidShape">
+        <member name="F:Alis.Core.Physic.Dynamics.World.raycastSolidShape">
             <summary>
                 The raycast solid shape
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._raycastUserData">
+        <member name="F:Alis.Core.Physic.Dynamics.World.raycastUserData">
             <summary>
                 The raycast user data
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World._warmStarting">
+        <member name="F:Alis.Core.Physic.Dynamics.World.warmStarting">
             <summary>
                 The warm starting
             </summary>
@@ -7321,7 +7321,7 @@
             <summary>
                 Construct a world object.
             </summary>
-            <param name="worldAABB">A bounding box that completely encompasses all your shapes.</param>
+            <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
             <param name="gravity">The world gravity vector.</param>
             <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
         </member>
@@ -7354,7 +7354,7 @@
             </summary>
             <param name="filter"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SetContactListener(Alis.Core.Physic.Dynamics.ContactListener)">
+        <member name="M:Alis.Core.Physic.Dynamics.World.SetContactListener(Alis.Core.Physic.Dynamics.IContactListener)">
             <summary>
                 Register a contact event listener
             </summary>
@@ -7557,7 +7557,7 @@
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SolveTOI(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.World.SolveToi(Alis.Core.Physic.Dynamics.TimeStep)">
             <summary>
                 Solves the toi using the specified step
             </summary>

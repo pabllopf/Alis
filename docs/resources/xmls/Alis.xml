@@ -4,7 +4,7 @@
         <name>Alis</name>
     </assembly>
     <members>
-        <member name="T:Alis.example">
+        <member name="T:Alis.Example">
             <summary>
                 The example class
             </summary>

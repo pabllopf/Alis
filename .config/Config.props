@@ -5,47 +5,47 @@
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     </PropertyGroup>
     
-    <Import Project="$(SolutionDir)/.config/application/TargetFrameworks.props" />
-    <Import Project="$(SolutionDir)/.config/application/Runtimes.props" />
-    <Import Project="$(SolutionDir)/.config/application/LangVersion.props" />
-    <Import Project="$(SolutionDir)/.config/application/AllowUnsafeBlocks.props" />
-    <Import Project="$(SolutionDir)/.config/application/OutputType.props" />
+    <Import Project="$(SolutionDir).config/application/TargetFrameworks.props" />
+    <Import Project="$(SolutionDir).config/application/Runtimes.props" />
+    <Import Project="$(SolutionDir).config/application/LangVersion.props" />
+    <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props" />
+    <Import Project="$(SolutionDir).config/application/OutputType.props" />
     
-    <Import Project="$(SolutionDir)/.config/assembly/AssemblyVersion.props" />
-    <Import Project="$(SolutionDir)/.config/assembly/Company.props" />
-    <Import Project="$(SolutionDir)/.config/assembly/FileVersion.props" />
-    <Import Project="$(SolutionDir)/.config/assembly/NeutralLanguage.props" />
-    <Import Project="$(SolutionDir)/.config/assembly/Product.props" />
+    <Import Project="$(SolutionDir).config/assembly/AssemblyVersion.props" />
+    <Import Project="$(SolutionDir).config/assembly/Company.props" />
+    <Import Project="$(SolutionDir).config/assembly/FileVersion.props" />
+    <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props" />
+    <Import Project="$(SolutionDir).config/assembly/Product.props" />
 
-    <Import Project="$(SolutionDir)/.config/builds/general/NoWarn.props" />
-    <Import Project="$(SolutionDir)/.config/builds/general/TreatWarningsAsErrors.props" />
-    <Import Project="$(SolutionDir)/.config/builds/general/WarningLevel.props" />
-    <Import Project="$(SolutionDir)/.config/builds/general/WarningsAsErrors.props" />
+    <Import Project="$(SolutionDir).config/builds/general/NoWarn.props" />
+    <Import Project="$(SolutionDir).config/builds/general/TreatWarningsAsErrors.props" />
+    <Import Project="$(SolutionDir).config/builds/general/WarningLevel.props" />
+    <Import Project="$(SolutionDir).config/builds/general/WarningsAsErrors.props" />
 
-    <Import Project="$(SolutionDir)/.config/docs/Docs.props" />
+    <Import Project="$(SolutionDir).config/docs/Docs.props" />
     
-    <Import Project="$(SolutionDir)/.config/nuget/Packable.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/Authors.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/Copyright.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/Description.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/DocumentationFile.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/FileVersion.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/InformationalVersion.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/PackageIcon.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/PackageLicenseFile.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/PackageProjectUrl.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/PackageReleaseNotes.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/PackageRequireLicenseAcceptance.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/PackageTags.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/PackageVersion.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/RepositoryType.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/RepositoryUrl.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/Title.props" />
-    <Import Project="$(SolutionDir)/.config/nuget/Version.props" />
+    <Import Project="$(SolutionDir).config/nuget/Packable.props" />
+    <Import Project="$(SolutionDir).config/nuget/Authors.props" />
+    <Import Project="$(SolutionDir).config/nuget/Copyright.props" />
+    <Import Project="$(SolutionDir).config/nuget/Description.props" />
+    <Import Project="$(SolutionDir).config/nuget/DocumentationFile.props" />
+    <Import Project="$(SolutionDir).config/nuget/FileVersion.props" />
+    <Import Project="$(SolutionDir).config/nuget/InformationalVersion.props" />
+    <Import Project="$(SolutionDir).config/nuget/PackageIcon.props" />
+    <Import Project="$(SolutionDir).config/nuget/PackageLicenseFile.props" />
+    <Import Project="$(SolutionDir).config/nuget/PackageProjectUrl.props" />
+    <Import Project="$(SolutionDir).config/nuget/PackageReleaseNotes.props" />
+    <Import Project="$(SolutionDir).config/nuget/PackageRequireLicenseAcceptance.props" />
+    <Import Project="$(SolutionDir).config/nuget/PackageTags.props" />
+    <Import Project="$(SolutionDir).config/nuget/PackageVersion.props" />
+    <Import Project="$(SolutionDir).config/nuget/RepositoryType.props" />
+    <Import Project="$(SolutionDir).config/nuget/RepositoryUrl.props" />
+    <Import Project="$(SolutionDir).config/nuget/Title.props" />
+    <Import Project="$(SolutionDir).config/nuget/Version.props" />
     
-    <Import Project="$(SolutionDir)/.config/Reference/Packages.props" />
-    <Import Project="$(SolutionDir)/.config/Reference/Projects.props" />
+    <Import Project="$(SolutionDir).config/Reference/Packages.props" />
+    <Import Project="$(SolutionDir).config/Reference/Projects.props" />
     
-    <Import Project="$(SolutionDir)/.config/target/BeforeBuild.props" />
-    <Import Project="$(SolutionDir)/.config/target/AfterBuild.props" />
+    <Import Project="$(SolutionDir).config/target/BeforeBuild.props" />
+    <Import Project="$(SolutionDir).config/target/AfterBuild.props" />
 </Project>
