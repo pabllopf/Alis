@@ -26,5 +26,4 @@ jobs:
     
     - name: Get tag name
         run: |
-        TAG_NAME=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ./Directory.Build.props)
-        echo "$TAG_NAME"
+        TAG_NAME=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ./Directory.Build.props); echo "$TAG_NAME"
