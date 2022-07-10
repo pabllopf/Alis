@@ -2,11 +2,16 @@
 .vscode/
 .idea/
 
+.build/
+/**/.build/
+
 /**/.vs/
+/**/.nuget/
 /**/.vscode/
 /**/.idea/
 
 /**/.vs/**
+/**/.nuget/**
 /**/.vscode/**
 /**/.idea/**
 

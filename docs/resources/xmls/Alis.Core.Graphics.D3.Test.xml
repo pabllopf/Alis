@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Graphics.D3.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Graphics.D3.Test.Benchmark.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+    </members>
+</doc>

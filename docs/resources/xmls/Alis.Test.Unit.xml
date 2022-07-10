@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Test.Unit</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Test.Unit.Tests">
+            <summary>
+            The tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Unit.Tests.Setup">
+            <summary>
+            Setup this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Unit.Tests.Test1">
+            <summary>
+            Tests that test 1
+            </summary>
+        </member>
+    </members>
+</doc>

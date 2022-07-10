@@ -1,0 +1,5 @@
+<Project>
+    <PropertyGroup>
+        <PackageLicenseFile>docs/licence.md</PackageLicenseFile>
+    </PropertyGroup>
+</Project>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <PropertyGroup Label="BasePath">
+    <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)</SolutionDir>
+  </PropertyGroup>
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>true</AppendRuntimeIdentifierToOutputPath>
+        <OutputPath>$(MSBuildThisFileDirectory).build/$(MSBuildProjectName)</OutputPath>
+        <BaseOutputPath>bin</BaseOutputPath>
+        <BaseIntermediateOutputPath>obj</BaseIntermediateOutputPath>
+        <MSBUildProjectExtensionsPath>$(MSBuildThisFileDirectory).build/$(MSBuildProjectName)/obj</MSBUildProjectExtensionsPath>
+    </PropertyGroup>
+</Project>

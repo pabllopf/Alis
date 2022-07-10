@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Aspect.Math.Test.Integration</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Aspect.Math.Test.Integration.UnitTets">
+            <summary>
+                The unit tets class
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Math.Test.Integration.UnitTets.Tests">
+            <summary>
+                The tests class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Test.Integration.UnitTets.Tests.Setup">
+            <summary>
+                Setup this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Test.Integration.UnitTets.Tests.Test1">
+            <summary>
+                Tests that test 1
+            </summary>
+        </member>
+    </members>
+</doc>

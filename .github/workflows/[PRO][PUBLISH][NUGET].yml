@@ -1,0 +1,46 @@
+name: "[PRO][PUBLISH][NUGET]"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  Nugets:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: |
+          2.1.x
+          3.1.x
+          5.0.x
+          6.0.x
+    
+    - name: Publish Alis.Core Nuget
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH:  ./Core/Core.csproj
+        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+        NUGET_KEY: ${{secrets.NUGET}}
+        
+    - name: Publish Alis.Core-SFML Nuget
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH:  ./Core-SFML/Core-SFML.csproj
+        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+        NUGET_KEY: ${{secrets.NUGET}}
+        
+    - name: Publish Alis.Tools Nuget
+      uses: rohith/publish-nuget@v2
+      with:
+        PROJECT_FILE_PATH:  ./Tools/Tools.csproj
+        VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+        NUGET_KEY: ${{secrets.NUGET}}

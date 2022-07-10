@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+    <Target Name="CustomBeforeBuild" BeforeTargets="Build">
+    </Target>
+
+    <!--
+    <Target Name="BeforeBuild">
+        <RemoveDir Directories="$(BaseIntermediateOutputPath)" />
+        <RemoveDir Directories="$(BaseOutputPath)" />
+    </Target>
+    -->
+
+
+    <!--DOCUMENT THE CODE:
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+        <Exec Command="dotnet tool install - -global dotnet-document - -version 0.1.4-alpha" ContinueOnError="True" IgnoreExitCode="True" ConsoleToMSBuild="true" />
+        <Exec Command="dotnet document apply &quot;$(ProjectDir)$(AssemblyName).csproj&quot;" ContinueOnError="True" IgnoreExitCode="True" ConsoleToMSBuild="true" />
+    </Target>
+     -->
+
+</Project>

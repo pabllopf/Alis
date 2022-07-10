@@ -1,0 +1,5 @@
+<Project>
+    <PropertyGroup>
+        <Authors>$(Company)</Authors>
+    </PropertyGroup>
+</Project>
