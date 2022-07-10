@@ -11,7 +11,6 @@
     <Import Project="$(SolutionDir).config/application/AllowUnsafeBlocks.props" />
     <Import Project="$(SolutionDir).config/application/OutputType.props" />
     
-    <Import Project="$(SolutionDir).config/assembly/AssemblyVersion.props" />
     <Import Project="$(SolutionDir).config/assembly/Company.props" />
     <Import Project="$(SolutionDir).config/assembly/FileVersion.props" />
     <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props" />

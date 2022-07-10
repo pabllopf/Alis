@@ -5,6 +5,10 @@
   </PropertyGroup>
 
     <PropertyGroup>
+        <AssemblyVersion>1.3.7</AssemblyVersion>
+    </PropertyGroup>
+
+    <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
         <AppendRuntimeIdentifierToOutputPath>true</AppendRuntimeIdentifierToOutputPath>
         <OutputPath>$(MSBuildThisFileDirectory).build/$(MSBuildProjectName)</OutputPath>

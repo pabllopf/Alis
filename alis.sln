@@ -20,7 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assembly", "assembly", "{9444A5E5-647C-451D-97B2-0C480EA31258}"
 	ProjectSection(SolutionItems) = preProject
-		.config\assembly\AssemblyVersion.props = .config\assembly\AssemblyVersion.props
 		.config\assembly\Company.props = .config\assembly\Company.props
 		.config\assembly\FileVersion.props = .config\assembly\FileVersion.props
 		.config\assembly\NeutralLanguage.props = .config\assembly\NeutralLanguage.props
