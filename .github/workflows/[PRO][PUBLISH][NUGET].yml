@@ -25,7 +25,7 @@ jobs:
           6.0.x
     
     - name: "alis.aspect.time.csproj"
-      uses: brandedoutcast/publish-nuget@v2
+      uses: rohith/publish-nuget@v2
       with:
         PROJECT_FILE_PATH:  ./6_ideation/time/alis.aspect.time/alis.aspect.time.csproj
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
