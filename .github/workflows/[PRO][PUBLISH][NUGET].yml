@@ -27,6 +27,6 @@ jobs:
     - name: "alis.aspect.time.csproj"
       uses: rohith/publish-nuget@v2
       with:
-        PROJECT_FILE_PATH:  ./6_ideation/time/alis.aspect.time/alis.aspect.time.csproj
+        PROJECT_FILE_PATH:  ./6_ideation/time/alis.aspect.time/Alis.Aspect.Time.csproj
         VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
         NUGET_KEY: ${{secrets.NUGET}}
