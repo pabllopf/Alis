@@ -746,26 +746,6 @@
                 The pair class
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.Pair.PairStatus">
-            <summary>
-                The pair status enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Pair.PairStatus.PairBuffered">
-            <summary>
-                The pair buffered pair status
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Pair.PairStatus.PairRemoved">
-            <summary>
-                The pair removed pair status
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.Pair.PairStatus.PairFinal">
-            <summary>
-                The pair final pair status
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collision.Pair.Next">
             <summary>
                 The next
@@ -1026,6 +1006,26 @@
             <param name="pair1">The pair</param>
             <param name="pair2">The pair</param>
             <returns>The int</returns>
+        </member>
+        <member name="T:Alis.Core.Physic.Collision.PairStatus">
+            <summary>
+                The pair status enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.PairStatus.PairBuffered">
+            <summary>
+                The pair buffered pair status
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.PairStatus.PairRemoved">
+            <summary>
+                The pair removed pair status
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.PairStatus.PairFinal">
+            <summary>
+                The pair final pair status
+            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.PointState">
             <summary>
@@ -4717,52 +4717,7 @@
                 entities in your game.
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags">
-            <summary>
-                The draw flags enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags.Shape">
-            <summary>
-                The shape draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags.Joint">
-            <summary>
-                The joint draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags.CoreShape">
-            <summary>
-                The core shape draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags.Aabb">
-            <summary>
-                The aabb draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags.Obb">
-            <summary>
-                The obb draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags.Pair">
-            <summary>
-                The pair draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags.CenterOfMass">
-            <summary>
-                The center of mass draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags.Controller">
-            <summary>
-                The controller draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw._drawFlags">
+        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags">
             <summary>
                 The draw flags
             </summary>
@@ -4777,12 +4732,12 @@
                 Gets or sets the value of the flags
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.AppendFlags(Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags)">
+        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.AppendFlags(Alis.Core.Physic.Dynamics.DrawFlags)">
             <summary>
                 Append flags to the current flags.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.ClearFlags(Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags)">
+        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.ClearFlags(Alis.Core.Physic.Dynamics.DrawFlags)">
             <summary>
                 Clear flags from the current flags.
             </summary>
@@ -4835,6 +4790,51 @@
             <summary>
                 Called when any shape is about to be destroyed due
                 to the destruction of its parent body.
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Dynamics.DrawFlags">
+            <summary>
+                The draw flags enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Shape">
+            <summary>
+                The shape draw flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Joint">
+            <summary>
+                The joint draw flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.CoreShape">
+            <summary>
+                The core shape draw flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Aabb">
+            <summary>
+                The aabb draw flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Obb">
+            <summary>
+                The obb draw flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Pair">
+            <summary>
+                The pair draw flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.CenterOfMass">
+            <summary>
+                The center of mass draw flags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Controller">
+            <summary>
+                The controller draw flags
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.EdgeDef">

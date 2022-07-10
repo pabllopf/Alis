@@ -1459,11 +1459,11 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            DebugDraw.DrawFlags flags = _debugDraw.Flags;
+            DrawFlags flags = _debugDraw.Flags;
 
-            if ((flags & DebugDraw.DrawFlags.Shape) != 0)
+            if ((flags & DrawFlags.Shape) != 0)
             {
-                bool core = (flags & DebugDraw.DrawFlags.CoreShape) == DebugDraw.DrawFlags.CoreShape;
+                bool core = (flags & DrawFlags.CoreShape) == DrawFlags.CoreShape;
 
                 for (Body b = _bodyList; b != null; b = b.GetNext())
                 {
@@ -1486,7 +1486,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            if ((flags & DebugDraw.DrawFlags.Joint) != 0)
+            if ((flags & DrawFlags.Joint) != 0)
             {
                 for (Joint j = _jointList; j != null; j = j.GetNext())
                 {
@@ -1497,7 +1497,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            if ((flags & DebugDraw.DrawFlags.Controller) != 0)
+            if ((flags & DrawFlags.Controller) != 0)
             {
                 for (Controller c = _controllerList; c != null; c = c.GetNext())
                 {
@@ -1505,7 +1505,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            if ((flags & DebugDraw.DrawFlags.Pair) != 0)
+            if ((flags & DrawFlags.Pair) != 0)
             {
                 BroadPhase bp = _broadPhase;
                 Vec2 invQ = new Vec2();
@@ -1541,7 +1541,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
             }
 
-            if ((flags & DebugDraw.DrawFlags.Aabb) != 0)
+            if ((flags & DrawFlags.Aabb) != 0)
             {
                 BroadPhase bp = _broadPhase;
                 Vec2 worldLower = bp.WorldAabb.LowerBound;
@@ -1581,7 +1581,7 @@ namespace Alis.Core.Physic.Dynamics
                 _debugDraw.DrawPolygon(vs, 4, new Color(0.3f, 0.9f, 0.9f));
             }
 
-            if ((flags & DebugDraw.DrawFlags.CenterOfMass) != 0)
+            if ((flags & DrawFlags.CenterOfMass) != 0)
             {
                 for (Body b = _bodyList; b != null; b = b.GetNext())
                 {

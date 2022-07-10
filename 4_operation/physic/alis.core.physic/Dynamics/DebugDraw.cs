@@ -39,63 +39,16 @@ namespace Alis.Core.Physic.Dynamics
     public abstract class DebugDraw
     {
         /// <summary>
-        ///     The draw flags enum
-        /// </summary>
-        [Flags]
-        public enum DrawFlags
-        {
-            /// <summary>
-            ///     The shape draw flags
-            /// </summary>
-            Shape = 0x0001, // draw shapes
-
-            /// <summary>
-            ///     The joint draw flags
-            /// </summary>
-            Joint = 0x0002, // draw joint connections
-
-            /// <summary>
-            ///     The core shape draw flags
-            /// </summary>
-            CoreShape = 0x0004, // draw core (TOI) shapes       // should be removed in this revision?
-
-            /// <summary>
-            ///     The aabb draw flags
-            /// </summary>
-            Aabb = 0x0008, // draw axis aligned bounding boxes
-
-            /// <summary>
-            ///     The obb draw flags
-            /// </summary>
-            Obb = 0x0010, // draw oriented bounding boxes       // should be removed in this revision?
-
-            /// <summary>
-            ///     The pair draw flags
-            /// </summary>
-            Pair = 0x0020, // draw broad-phase pairs
-
-            /// <summary>
-            ///     The center of mass draw flags
-            /// </summary>
-            CenterOfMass = 0x0040, // draw center of mass frame
-
-            /// <summary>
-            ///     The controller draw flags
-            /// </summary>
-            Controller = 0x0080 // draw center of mass frame
-        }
-
-        /// <summary>
         ///     The draw flags
         /// </summary>
-        protected DrawFlags _drawFlags;
+        protected DrawFlags DrawFlags;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DebugDraw" /> class
         /// </summary>
         public DebugDraw()
         {
-            _drawFlags = 0;
+            DrawFlags = 0;
         }
 
         /// <summary>
@@ -103,8 +56,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public DrawFlags Flags
         {
-            get { return _drawFlags; }
-            set { _drawFlags = value; }
+            get { return DrawFlags; }
+            set { DrawFlags = value; }
         }
 
         /// <summary>
@@ -112,7 +65,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void AppendFlags(DrawFlags flags)
         {
-            _drawFlags |= flags;
+            DrawFlags |= flags;
         }
 
         /// <summary>
@@ -120,7 +73,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void ClearFlags(DrawFlags flags)
         {
-            _drawFlags &= ~flags;
+            DrawFlags &= ~flags;
         }
 
         /// <summary>

@@ -37,28 +37,6 @@ namespace Alis.Core.Physic.Collision
     public class Pair
     {
         /// <summary>
-        ///     The pair status enum
-        /// </summary>
-        [Flags]
-        public enum PairStatus
-        {
-            /// <summary>
-            ///     The pair buffered pair status
-            /// </summary>
-            PairBuffered = 0x0001,
-
-            /// <summary>
-            ///     The pair removed pair status
-            /// </summary>
-            PairRemoved = 0x0002,
-
-            /// <summary>
-            ///     The pair final pair status
-            /// </summary>
-            PairFinal = 0x0004
-        }
-
-        /// <summary>
         ///     The next
         /// </summary>
         public ushort Next;

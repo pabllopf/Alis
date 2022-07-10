@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        public Jacobian Jacobian;
+        private Jacobian Jacobian;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GearJoint" /> class
