@@ -15,7 +15,7 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
-    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('Sample')) == false">
+    <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('Sample')) == false AND $(AssemblyName.Contains('Template')) == false AND $(AssemblyName.Contains('App')) == false">
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 </Project>
