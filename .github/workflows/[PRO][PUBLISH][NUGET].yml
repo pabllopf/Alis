@@ -28,4 +28,4 @@ jobs:
       run: ./.scripts/macos/publish_to_github.sh
       
     - name: delete package 
-      run: dotnet nuget delete Alis.0.0.1.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --non-interactive
+      run: dotnet nuget delete Alis 0.0.1 -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --non-interactive
