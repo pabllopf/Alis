@@ -27,6 +27,5 @@ jobs:
     - name: uild packages
       run: ./.scripts/macos/publish_to_github.sh
       
-      
-    - name: delete package 
-      run: dotnet nuget delete Alis 0.0.1 -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --non-interactive
+    - name: publish nugets
+      run: dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
