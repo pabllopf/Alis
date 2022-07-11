@@ -50,5 +50,5 @@ fi
 
 for i in `find . -name "*.csproj" -type f`; do
     echo "Write default value of csproj = $i"
-    dotnet pack -c Release $i -o .
+    dotnet pack -c Release $i -o ./.publish/$versionFinal/
 done
