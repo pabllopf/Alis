@@ -15,4 +15,4 @@ for i in `find . -name "*.csproj" -type f`; do
     dotnet pack --no-build -c Release $i -o .
 done
 
-dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate -n 1
+
