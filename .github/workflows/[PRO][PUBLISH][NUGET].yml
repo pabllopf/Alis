@@ -24,8 +24,9 @@ jobs:
           5.0.x
           6.0.x
     
-    - name: uild packages
+    - name: Build packages
       run: ./.scripts/macos/publish_to_github.sh
       
     - name: publish nugets
+      if: failure()
       run: dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
