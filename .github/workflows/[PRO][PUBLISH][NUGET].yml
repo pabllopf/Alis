@@ -24,5 +24,8 @@ jobs:
           5.0.x
           6.0.x
     
-    - name: Get tag name
+    - name: uild packages
       run: ./.scripts/macos/publish_to_github.sh
+      
+    - name: publish nugets
+      run: dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate -n 1
