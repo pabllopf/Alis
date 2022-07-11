@@ -1,10 +1,18 @@
 #!/bin/bash
 
-echo "start"
+echo "STARTING PROCESS"
 
-year=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ./Directory.Build.props)
+version=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ./Directory.Build.props)
 
-echo "year is $year"
+echo "CURRENT VERSION '$version'"
 
+dotnet restore alis.sln
 
+dotnet build --configuration Release alis.sln
 
+for i in `find . -name "*.csproj" -type f`; do
+    echo "Write default value of csproj = $i"
+    dotnet pack --no-build -c Release $i -o .
+done
+
+dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate -n 1
