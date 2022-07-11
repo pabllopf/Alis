@@ -29,3 +29,6 @@ jobs:
       
     - name: publish nugets
       run: dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate -n 1
+      
+    - name: delete package 
+      run: dotnet nuget delete *.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}}
