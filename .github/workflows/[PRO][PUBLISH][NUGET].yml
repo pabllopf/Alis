@@ -28,29 +28,22 @@ jobs:
       run: ./.scripts/macos/publish_to_github.sh
       
     - name: publish nugets
-      if: failure()
       run: dotnet nuget push *.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
 
     - name: git config user.name github-actions
-      if: failure()
       run: git config user.name github-actions
          
     - name: git config user.email github-actions@github.com
-      if: failure()
       run: git config user.email github-actions@github.com
       
     - name: git config core.autocrlf false
-      if: failure()
       run: git config core.autocrlf false
 
     - name:  git add .
-      if: failure()
       run:  git add .
 
     - name:  git commit -m "generated automatic publish nuget org packages"
-      if: failure()
       run:  git commit -m "generated automatic publish nuget org packages"
 
     - name:  git push
-      if: failure()
       run:  git push
