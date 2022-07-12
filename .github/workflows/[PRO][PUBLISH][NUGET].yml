@@ -24,8 +24,11 @@ jobs:
           5.0.x
           6.0.x
     
-    - name: Define filename to update version
-      run: filename="./Directory.Build.props"
+    - name: Define file name to update version
+      run: echo "FILENAME=$(echo './Directory.Build.props')" >> $env:GITHUB_ENV
+    
+    - name: Print the file name to update version
+      run: echo ${{ env.FILENAME }}
       
     - name: current version
       run: version=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' $filename)
