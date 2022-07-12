@@ -1,5 +1,5 @@
 # Discover vulnerabilities of code.
-name: "[PRO][STALE][ISSUES]"
+name: "[PRO][CHECK][ISSUES]"
 on:
   schedule:
     - cron: '30 1 * * *'
