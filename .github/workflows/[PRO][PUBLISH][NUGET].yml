@@ -66,7 +66,7 @@ jobs:
 
       - name: Create the next version
         #run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
-        run: echo "VERSIONFINAL=$(((VERSIONFINAL=0.0.0)))" >> $GITHUB_ENV
+        run: echo "VERSIONFINAL=$(echo '0.0.0')" >> $GITHUB_ENV
         
       - name: Print the next version
         run: echo $VERSIONFINAL
