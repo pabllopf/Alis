@@ -79,7 +79,10 @@ jobs:
           automatic_release_tag: "v${{ env.VERSIONFINAL }}"
           prerelease: false
           title: "New version  ${{ env.VERSIONFINAL }} !!!"
-          files: licence.md
+          files: |
+            licence.md
+            ./.publish/0.0.4/*.nupkg
+
 
 
 
