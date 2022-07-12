@@ -7,91 +7,100 @@ on:
     branches: [ master ]
 
 jobs:
-  Nugets:
-
+  Checkout:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      
-    - name: Setup dotnet
-      uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: |
-          2.1.x
-          3.1.x
-          5.0.x
-          6.0.x
-    
-    - name: Define file name to update version
-      run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
-    
-    - name: Print the file name to update version
-      run: echo $FILENAME
-      
-    - name: Get the current version
-      run: echo "VERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
-      
-    - name: Print the current version
-      run: echo ${VERSION}
-      
-    - name: Get mayor version
-      run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
-      
-    - name: Print mayor version
-      run: echo ${ env.MAYOR }
-      
-    - name: Get minor version
-      run: echo "MINOR=$(echo ${{ env.VERSION }} | cut -f2 -d.)" >> $GITHUB_ENV
-      
-    - name: Print minor version
-      run: echo ${ env.MINOR }
-      
-    - name: Get alpha version
-      run: echo "ALPHA=$(echo ${{ env.VERSION }} | cut -f3 -d.)" >> $GITHUB_ENV
-      
-    - name: Print current alpha version
-      run: echo ${{ env.ALPHA }}
+      - name: Checkout
+        uses: actions/checkout@v3
         
-    - name: Increment version
-      run: ((${{ env.ALPHA }}=${{ env.ALPHA }}+1))
-      
-    - name: Alpha version incremented
-      run: echo ${{ env.ALPHA }}
-      
-    - name: Check alpha version
-      run: if [[ "$alpha" -gt 9 ]]; then ((minor=minor+1)); ((alpha=0)); fi
-      
-    - name: check minor version
-      run: if [[ "$minor" -gt 9 ]]; then ((mayor=mayor+1)); ((minor=0)); fi
-      
-    - name: generate next version
-      run: versionFinal=$(echo "$mayor.$minor.$alpha")
-      
-    - name: write in filename the next version
-      run: sed -i "s/$version/$versionFinal/" $filename
-      
-    - name: create packages
-      run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$versionFinal/; done
-      
-    - name: publish nugets
-      run: dotnet nuget push ./.publish/$versionFinal/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
+  Setup:
+    needs: Checkout
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+          
+  Publish:
+    needs: Setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Define file name to update version
+        run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
 
-    - name: git config user.name github-actions
-      run: git config user.name github-actions
-         
-    - name: git config user.email github-actions@github.com
-      run: git config user.email github-actions@github.com
-      
-    - name: git config core.autocrlf false
-      run: git config core.autocrlf false
+      - name: Print the file name to update version
+        run: echo $FILENAME
 
-    - name:  git add .
-      run:  git add .
+      - name: Get the current version
+        run: echo "VERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
 
-    - name:  git commit -m "generated automatic publish nuget org packages"
-      run:  git commit -m "generated automatic publish nuget org packages"
+      - name: Print the current version
+        run: echo $VERSION
 
-    - name:  git push
-      run:  git push
+      - name: Get mayor version
+        run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
+
+      - name: Print mayor version
+        run: echo $MAYOR
+
+      - name: Get minor version
+        run: echo "MINOR=$(echo ${{ env.VERSION }} | cut -f2 -d.)" >> $GITHUB_ENV
+
+      - name: Print minor version
+        run: echo $MINOR
+
+      - name: Get alpha version
+        run: echo "ALPHA=$(echo ${{ env.VERSION }} | cut -f3 -d.)" >> $GITHUB_ENV
+
+      - name: Print current alpha version
+        run: echo $ALPHA
+
+      - name: Increment version
+        run: ((ALPHA=ALPHA+1))
+
+      - name: Alpha version incremented
+        run: echo $ALPHA
+
+      - name: Check alpha version
+        run: if [[ "$ALPHA" -gt 9 ]]; then ((MINOR=MINOR+1)); ((ALPHA=0)); fi
+
+      - name: Check minor version
+        run: if [[ "$MINOR" -gt 9 ]]; then ((MAYOR=MAYOR+1)); ((MINOR=0)); fi
+
+      - name: Create the next version
+        run: echo "VERSIONFINAL=$(echo '$MAYOR.$MINOR.$ALPHA')" >> $GITHUB_ENV
+        
+      - name: Print the next version
+        run: echo $VERSIONFINAL
+
+      - name: Write in filename the next version
+        run: sed -i "s/$VERSION/$VERSIONFINAL/" $FILENAME
+
+      - name: Create packages
+        run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/; done
+
+      - name: Publish nugets
+        run: dotnet nuget push ./.publish/$versionFinal/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
+
+      - name: git config user.name github-actions
+        run: git config user.name github-actions
+
+      - name: git config user.email github-actions@github.com
+        run: git config user.email github-actions@github.com
+
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
+
+      - name:  git add .
+        run:  git add .
+
+      - name:  git commit -m "generated automatic publish nuget org packages"
+        run:  git commit -m "generated automatic publish nuget org packages"
+
+      - name:  git push
+        run:  git push
