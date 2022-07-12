@@ -1,4 +1,4 @@
-name: "[PRO][CHANGESLOG][RELEASE]"
+name: "[PRO][CHANGESLOG]"
 on:
   push:
     branches:
@@ -76,9 +76,9 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v$VERSIONFINAL"
-          prerelease: true
-          title: "New version $VERSIONFINAL !!!"
+          automatic_release_tag: "v${{ env.VERSIONFINAL }}"
+          prerelease: false
+          title: "New version  ${{ env.VERSIONFINAL }} !!!"
           files: licence.md
 
 
