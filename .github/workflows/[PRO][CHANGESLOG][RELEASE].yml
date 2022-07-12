@@ -1,4 +1,4 @@
-name: "[PRO][CHANGESLOG]"
+name: "[PRO][CHANGESLOG][RELEASE]"
 on:
   push:
     branches:
@@ -20,9 +20,8 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: true
-          title: "Development Build"
-          files: |
-            licence.md
+          title: "Development"
+          files: licence.md
 
 
 
