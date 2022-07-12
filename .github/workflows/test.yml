@@ -74,6 +74,9 @@ jobs:
         
       - name: Print the next version
         run: echo $VERSIONFINAL
-        
+      
+      - name: default version
+        run: echo "VERSION=$(0.0.1)" >> $GITHUB_ENV
+
       - name: Publish nugets
         run: dotnet nuget push ./.publish/$VERSION/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
