@@ -28,13 +28,13 @@ jobs:
       run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
     
     - name: Print the file name to update version
-      run: echo ${{ env.FILENAME }}
+      run: echo ${FILENAME}
       
     - name: Get the current version
       run: echo "VERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
       
     - name: Print the current version
-      run: echo ${ env.VERSION }
+      run: echo ${VERSION}
       
     - name: Get mayor version
       run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
