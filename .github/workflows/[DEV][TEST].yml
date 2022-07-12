@@ -1,5 +1,5 @@
 # Run test of the framework.
-name: "[DEV][TEST][LINUX]"
+name: "[DEV][TEST]"
 
 on:
   push:
