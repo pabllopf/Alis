@@ -65,7 +65,8 @@ jobs:
         run: if [[ "$MINOR" -gt 9 ]]; then echo "MAYOR=$(((MAYOR=MAYOR+1)))" >> $GITHUB_ENV; echo "MINOR=$(((MINOR=0)))" >> $GITHUB_ENV; fi
 
       - name: Create the next version
-        run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
+        #run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
+        run: echo "VERSIONFINAL=$(((VERSIONFINAL=0.0.0)))" >> $GITHUB_ENV
         
       - name: Print the next version
         run: echo $VERSIONFINAL
