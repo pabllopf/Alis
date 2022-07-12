@@ -120,4 +120,5 @@ jobs:
             6.0.x
       - name: Dotnet test
         run: dotnet test alis.sln
+        
     
