@@ -27,6 +27,30 @@ jobs:
     - name: Build packages
       run: ./.scripts/macos/publish_to_github.sh
       
+    - name: filename
+      run: filename="./Directory.Build.props"
+      
+    - name: current version
+      run: version=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' $filename)
+    
+    - name: increment version
+      run: ((alpha=alpha+1))
+      
+    - name: check alpha version
+      run: if [[ "$alpha" -gt 9 ]]; then ((minor=minor+1)); ((alpha=0)); fi
+      
+    - name: check minor version
+      run: if [[ "$minor" -gt 9 ]]; then ((mayor=mayor+1)); ((minor=0)); fi
+      
+    - name: generate next version
+      run: versionFinal=$(echo "$mayor.$minor.$alpha")
+      
+    - name: write in filename the next version
+      run: sed -i "s/$version/$versionFinal/" $filename
+      
+    - name: create packages
+      run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$versionFinal/; done
+      
     - name: publish nugets
       run: dotnet nuget push ./.publish/$versionFinal/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
 
