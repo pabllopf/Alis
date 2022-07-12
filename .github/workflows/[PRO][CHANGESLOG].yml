@@ -6,16 +6,12 @@ on:
     branches: [ master ]
 
 jobs:
-  generate-changelog:
+  Release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
-        fetch-depth: 0
-    - uses: BobAnkh/auto-generate-changelog@master
+        fetch-depth: 50
+    - uses: fregante/release-with-changelog@v3
       with:
-        REPO_NAME: 'pabllopf/alis'
-        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        PATH: 'CHANGELOG.md'
-        COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
-        TYPE: 'feat:Feature,fix:Bug Fixes,docs:Documentation,refactor:Refactor,perf:Performance Improvements'
+        token: ${{ secrets.GITHUB_TOKEN }}
