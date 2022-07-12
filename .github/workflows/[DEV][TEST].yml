@@ -1,24 +1,20 @@
-name: "[PRO][PUBLISH]"
+# Run test of the framework.
+name: "[DEV][TEST][LINUX]"
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
   pull_request:
-    branches: [ master ]
-
-jobs: 
-
-  #
-  # comment code
-  #
-
+    branches: [ develop ]
+  
+jobs:
   CommentCode:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        ref: master
+        ref: develop
 
     - name: Setup dotnet
       uses: actions/setup-dotnet@v2
@@ -44,141 +40,34 @@ jobs:
          git commit -m "generated automatic comments on code by actions"
          git push
 
-  #
-  # TEST WINDOWS
-  #
-  Windows_Latest:
-    needs: CommentCode
-    runs-on: windows-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
-            6.0.x
-      - name: Dotnet test
-        run: dotnet test alis.sln
-    
-  Windows_v2019:
-    needs: CommentCode
-    runs-on: windows-2019
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
-            6.0.x
-      - name: Dotnet test
-        run: dotnet test alis.sln
-  
-  Windows_v2016:
-    needs: CommentCode
-    runs-on: windows-2016
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
-            6.0.x
-      - name: Dotnet test
-        run: dotnet test alis.sln
-
-
-
-  #
-  # TEST MACOS
-  #
-  Macos_Latest:
-    needs: CommentCode
-    runs-on: macos-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
-            6.0.x
-      - name: Dotnet test
-        run: dotnet test alis.sln
-
-  Macos_v12_0:
-    needs: CommentCode
-    runs-on: macos-12
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
-            6.0.x
-      - name: Dotnet test
-        run: dotnet test alis.sln
-
-  Macos_v10_15:
-    needs: CommentCode
-    runs-on: macos-10.15
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
-            6.0.x
-      - name: Dotnet test
-        run: dotnet test alis.sln
-
-
-  #
-  # TEST LINUX
-  #
-
-  Linux_latest:
+  Fast_Test:
     needs: CommentCode
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: develop
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+
+  Linux_Latest:
+    needs: Fast_Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -191,13 +80,13 @@ jobs:
         run: dotnet test alis.sln
 
   Linux_v22_04:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: develop
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -210,13 +99,13 @@ jobs:
         run: dotnet test alis.sln
 
   Linux_v18_04:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: develop
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -228,20 +117,15 @@ jobs:
       - name: Dotnet test
         run: dotnet test alis.sln
 
-
-  #
-  # PUBLISH ON NUGET.ORG
-  #
-
-  Publish_On_Nuget_Org:
-    runs-on: ubuntu-latest
+  Macos_Latest:
+    needs: Fast_Test
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: master
-        
-      - name: Install dotnet
+          ref: develop
+      - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
@@ -249,82 +133,100 @@ jobs:
             3.1.x
             5.0.x
             6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+  Macos_v12_0:
+    needs: Fast_Test
+    runs-on: macos-12
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+  Macos_v10_15:
+    needs: Fast_Test
+    runs-on: macos-10.15
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+  Windows_Latest:
+    needs: Fast_Test
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
     
-      - name: Define file name to update version
-        run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
-
-      - name: Print the file name to update version
-        run: echo $FILENAME
-
-      - name: Get the current version
-        run: echo "VERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
-
-      - name: Print the current version
-        run: echo $VERSION
-
-      - name: Get mayor version
-        run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
-
-      - name: Print mayor version
-        run: echo $MAYOR
-
-      - name: Get minor version
-        run: echo "MINOR=$(echo ${{ env.VERSION }} | cut -f2 -d.)" >> $GITHUB_ENV
-
-      - name: Print minor version
-        run: echo $MINOR
-
-      - name: Get alpha version
-        run: echo "ALPHA=$(echo ${{ env.VERSION }} | cut -f3 -d.)" >> $GITHUB_ENV
-
-      - name: Print current alpha version
-        run: echo $ALPHA
-
-      - name: Increment version
-        run: echo "ALPHA=$(((ALPHA=ALPHA+1)))" >> $GITHUB_ENV 
-
-      - name: Alpha version incremented
-        run: echo $ALPHA
-
-      - name: Check alpha version
-        run: if [[ "$ALPHA" -gt 9 ]]; then echo "MINOR=$(((MINOR=MINOR+1)))" >> $GITHUB_ENV ; echo "ALPHA=$(((ALPHA=0)))" >> $GITHUB_ENV ; fi
-
-      - name: Check minor version
-        run: if [[ "$MINOR" -gt 9 ]]; then echo "MAYOR=$(((MAYOR=MAYOR+1)))" >> $GITHUB_ENV; echo "MINOR=$(((MINOR=0)))" >> $GITHUB_ENV; fi
-
-      - name: Create the next version
-        run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
-        #run: echo "VERSIONFINAL=$(echo '0.0.0')" >> $GITHUB_ENV
-        
-      - name: Print the next version
-        run: echo $VERSIONFINAL
-
-      - name: Write in filename the next version
-        run: sed -i "s/$VERSION/$VERSIONFINAL/" $FILENAME
-        
-      - name: View the file content
-        run: cat $FILENAME
-        
-      - name: Create packages
-        run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/; done
-
-      - name: Publish nugets
-        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
-
-      - name: git config user.name github-actions
-        run: git config user.name github-actions
-
-      - name: git config user.email github-actions@github.com
-        run: git config user.email github-actions@github.com
-
-      - name: git config core.autocrlf false
-        run: git config core.autocrlf false
-
-      - name:  git add .
-        run:  git add .
-
-      - name:  git commit -m "generated automatic publish nuget org packages"
-        run:  git commit -m "generated automatic publish nuget org packages"
-
-      - name:  git push
-        run:  git push
+  Windows_v2019:
+    needs: Fast_Test
+    runs-on: windows-2019
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
+  
+  Windows_v2016:
+    needs: Fast_Test
+    runs-on: windows-2016
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
