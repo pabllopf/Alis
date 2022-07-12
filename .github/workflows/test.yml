@@ -76,4 +76,4 @@ jobs:
         run: echo $VERSIONFINAL
         
       - name: Publish nugets
-        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.NUGET}} --skip-duplicate
+        run: dotnet nuget push ./.publish/$VERSION/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
