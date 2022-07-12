@@ -37,25 +37,28 @@ jobs:
       run: echo ${{ env.VERSION }}
       
     - name: Get mayor version
-      run: echo "MAYOR=$(echo $version | cut -f1 -d.)" >> $GITHUB_ENV
+      run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
       
     - name: Print mayor version
       run: echo ${{ env.MAYOR }}
       
     - name: Get minor version
-      run: echo "MINOR=$(echo $version | cut -f2 -d.)" >> $GITHUB_ENV
+      run: echo "MINOR=$(echo ${{ env.VERSION }} | cut -f2 -d.)" >> $GITHUB_ENV
       
     - name: Print minor version
       run: echo ${{ env.MINOR }}
       
     - name: Get alpha version
-      run: echo "ALPHA=$(echo $version | cut -f3 -d.)" >> $GITHUB_ENV
+      run: echo "ALPHA=$(echo ${{ env.VERSION }} | cut -f3 -d.)" >> $GITHUB_ENV
       
-    - name: Print alpha version
+    - name: Print current alpha version
       run: echo ${{ env.ALPHA }}
         
     - name: Increment version
       run: ((${{ env.ALPHA }}=${{ env.ALPHA }}+1))
+      
+    - name: Alpha version incremented
+      run: echo ${{ env.ALPHA }}
       
     - name: Check alpha version
       run: if [[ "$alpha" -gt 9 ]]; then ((minor=minor+1)); ((alpha=0)); fi
