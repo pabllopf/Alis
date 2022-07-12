@@ -1,7 +1,9 @@
 name: "[PRO][CHANGESLOG]"
 on:
-  release:
-    types: [created, edited]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   generate-changelog:
