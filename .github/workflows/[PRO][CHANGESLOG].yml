@@ -6,12 +6,16 @@ on:
     branches: [ master ]
 
 jobs:
-  Release:
+  release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        fetch-depth: 50
-    - uses: fregante/release-with-changelog@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v0.1.14
+        with:
+          body: ${{steps.github_release.outputs.changelog}}
