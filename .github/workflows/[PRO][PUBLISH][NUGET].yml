@@ -53,16 +53,16 @@ jobs:
         run: echo $ALPHA
 
       - name: Increment version
-        run: echo "ALPHA=$(((ALPHA=ALPHA+1)))" >> $GITHUB_ENV 
+        run: echo "ALPHA=$(((ALPHA=10)))" >> $GITHUB_ENV 
 
       - name: Alpha version incremented
         run: echo $ALPHA
 
       - name: Check alpha version
-        run: if [[ "$ALPHA" -gt 9 ]]; then ((MINOR=MINOR+1)); ((ALPHA=0)); fi
+        run: if [[ "$ALPHA" -gt 9 ]]; then echo "MINOR=$(((MINOR=MINOR+1)))" >> $GITHUB_ENV ; echo "ALPHA=$(((ALPHA=0)))" >> $GITHUB_ENV ; fi
 
       - name: Check minor version
-        run: if [[ "$MINOR" -gt 9 ]]; then ((MAYOR=MAYOR+1)); ((MINOR=0)); fi
+        run: if [[ "$MINOR" -gt 9 ]]; then echo "MAYOR=$(((MAYOR=MAYOR+1)))" >> $GITHUB_ENV; echo "MINOR=$(((MINOR=0)))" >> $GITHUB_ENV; fi
 
       - name: Create the next version
         run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
@@ -72,7 +72,10 @@ jobs:
 
       - name: Write in filename the next version
         run: sed -i "s/$VERSION/$VERSIONFINAL/" $FILENAME
-
+        
+      - name: View the file content
+        run: cat $FILENAME
+        
       - name: Create packages
         run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/; done
 
