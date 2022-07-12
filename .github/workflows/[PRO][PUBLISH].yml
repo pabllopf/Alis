@@ -258,7 +258,7 @@ jobs:
   #
 
   Publish_On_Nuget_Org:
-    needs: [ Linux_latest Linux_v22_04 Linux_v18_04 ]
+    needs: [ Linux_latest, Linux_v22_04, Linux_v18_04 ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
