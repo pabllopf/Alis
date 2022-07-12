@@ -9,7 +9,7 @@ on:
   
 jobs:
   Latest:
-    name: MACOS-LATEST
+    name: macos-latest
     runs-on: macos-latest
     steps:
       - name: Checkout
@@ -26,7 +26,7 @@ jobs:
         run: dotnet test alis.sln
 
   v12_0:
-    name: MACOS-12
+    name: macos-12
     runs-on: macos-12
     steps:
       - name: Checkout
@@ -43,7 +43,7 @@ jobs:
         run: dotnet test alis.sln
 
   v10_15:
-    name: MACOS-10.15
+    name: macos-10.15
     runs-on: macos-10.15
     steps:
       - name: Checkout
