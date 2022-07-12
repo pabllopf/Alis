@@ -8,15 +8,12 @@ on:
     branches: [ master ]
   
 jobs:
-  Test:
-  
+  Latest:
     name: MACOS-LATEST
     runs-on: macos-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -25,6 +22,39 @@ jobs:
             3.1.x
             5.0.x
             6.0.x
-      
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+  v12_0:
+    name: MACOS-12
+    runs-on: macos-12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+  v10_15:
+    name: MACOS-10.15
+    runs-on: macos-10.15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
       - name: Dotnet test
         run: dotnet test alis.sln
