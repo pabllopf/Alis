@@ -33,6 +33,9 @@ jobs:
 
     - name: Comment code
       run: dotnet document apply ./alis.sln 
+
+    - name: create a file to save the log
+      run: date > ./.publish/generated.txt
     
     - name: git config user.name github-actions
       run: git config user.name github-actions
@@ -46,8 +49,8 @@ jobs:
     - name:  git add .
       run:  git add .
 
-    - name:  git commit -m "Create the packages of version '$VERSION'."
-      run: git commit -m "Create the packages of version '$VERSION'."
+    - name:  git commit -m "Add comments to code by ations"
+      run: git commit -m "Add comments to code by ations"
 
     - name:  git push
       run:  git push
