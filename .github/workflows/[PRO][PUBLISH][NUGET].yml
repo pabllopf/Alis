@@ -53,7 +53,7 @@ jobs:
         run: echo $ALPHA
 
       - name: Increment version
-        run: $ALPHA=$ALPHA+1
+        run: echo "ALPHA=$(((ALPHA=ALPHA+1)))" >> $GITHUB_ENV 
 
       - name: Alpha version incremented
         run: echo $ALPHA
