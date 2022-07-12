@@ -30,6 +30,9 @@ jobs:
 
     - name: Comment code
       run: dotnet document apply ./alis.sln 
+
+    - name: create a file to save the log
+      run: date > ./.publish/generated.txt
     
     - name: Commit the changes of document code
       run: |
