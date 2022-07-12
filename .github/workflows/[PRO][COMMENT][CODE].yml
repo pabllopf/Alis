@@ -1,0 +1,40 @@
+name: "[PRO][COMMENT][CODE]"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  CommentCode:
+    name: "CommentCode"
+    runs-on: windows-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: |
+          2.1.x
+          3.1.x
+          5.0.x
+          6.0.x
+
+    - name: Install tool
+      run: dotnet tool install --global dotnet-document --version 0.1.4-alpha
+
+    - name: Comment code
+      run: dotnet document apply ./Alis.sln 
+    
+    - name: Commit the changes of document code
+      run: |
+         git config user.name github-actions
+         git config user.email github-actions@github.com
+         git config core.autocrlf false
+         git add .
+         git commit -m "generated automatic comments on code by actions"
+         git push
+        
