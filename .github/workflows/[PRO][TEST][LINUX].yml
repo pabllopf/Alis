@@ -10,7 +10,7 @@ on:
  
 jobs:
   Latest:
-    name: ubuntu-latest
+    name: "ubuntu-latest"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,8 +26,8 @@ jobs:
       - name: Dotnet test
         run: dotnet test alis.sln
 
-  v22.04:
-    name: ubuntu-22.04
+  v22_04:
+    name: "ubuntu-22.04"
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
@@ -43,8 +43,8 @@ jobs:
       - name: Dotnet test
         run: dotnet test alis.sln
 
-  v18.04:
-    name: ubuntu-18.04
+  v18_04:
+    name: "ubuntu-18.04"
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
