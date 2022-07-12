@@ -44,11 +44,35 @@ jobs:
          git commit -m "generated automatic comments on code by actions"
          git push
 
+
+  #
+  # FAST TEST
+  #
+  Fast_Test:
+    needs: CommentCode
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+
   #
   # TEST WINDOWS
   #
   Windows_Latest:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -67,7 +91,7 @@ jobs:
         run: dotnet test alis.sln
     
   Windows_v2019:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: windows-2019
     steps:
       - name: Checkout repository
@@ -86,7 +110,7 @@ jobs:
         run: dotnet test alis.sln
   
   Windows_v2016:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: windows-2016
     steps:
       - name: Checkout repository
@@ -110,7 +134,7 @@ jobs:
   # TEST MACOS
   #
   Macos_Latest:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: macos-latest
     steps:
       - name: Checkout repository
@@ -129,7 +153,7 @@ jobs:
         run: dotnet test alis.sln
 
   Macos_v12_0:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: macos-12
     steps:
       - name: Checkout repository
@@ -148,7 +172,7 @@ jobs:
         run: dotnet test alis.sln
 
   Macos_v10_15:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: macos-10.15
     steps:
       - name: Checkout repository
@@ -172,7 +196,7 @@ jobs:
   #
 
   Linux_latest:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -191,7 +215,7 @@ jobs:
         run: dotnet test alis.sln
 
   Linux_v22_04:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
@@ -210,7 +234,7 @@ jobs:
         run: dotnet test alis.sln
 
   Linux_v18_04:
-    needs: CommentCode
+    needs: Fast_Test
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout repository
@@ -234,6 +258,7 @@ jobs:
   #
 
   Publish_On_Nuget_Org:
+    needs: [ Linux_latest Linux_v22_04 Linux_v18_04 ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
