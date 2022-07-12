@@ -22,8 +22,7 @@ jobs:
           prerelease: true
           title: "Development Build"
           files: |
-            LICENSE.md
-            ./.publish/0.0.4/*.nupkg
+            licence.md
 
 
 
