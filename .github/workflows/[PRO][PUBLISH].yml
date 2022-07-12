@@ -156,7 +156,7 @@ jobs:
   # CREATE PACKAGES
   #
   Create_Packages:
-    needs: [ Windows_Latest, Windows_v2019, Windows_v2016, Macos_Latest, Macos_v12_0, Macos_v10_15, Linux_latest, Linux_v22_04, Linux_v18_04 ]
+    needs: [ Windows_Latest, Macos_Latest, Linux_latest ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
