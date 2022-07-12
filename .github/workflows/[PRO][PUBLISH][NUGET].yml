@@ -80,7 +80,7 @@ jobs:
         run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/; done
 
       - name: Publish nugets
-        run: dotnet nuget push ./.publish/$versionFinal/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
+        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
 
       - name: git config user.name github-actions
         run: git config user.name github-actions
