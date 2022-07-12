@@ -30,13 +30,34 @@ jobs:
     - name: Print the file name to update version
       run: echo ${{ env.FILENAME }}
       
-    - name: current version
-      run: version=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' $filename)
-    
-    - name: increment version
-      run: ((alpha=alpha+1))
+    - name: Get the current version
+      run: echo "VERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
       
-    - name: check alpha version
+    - name: Print the current version
+      run: echo ${{ env.VERSION }}
+      
+    - name: Get mayor version
+      run: echo "MAYOR=$(echo $version | cut -f1 -d.)" >> $GITHUB_ENV
+      
+    - name: Print mayor version
+      run: echo ${{ env.MAYOR }}
+      
+    - name: Get minor version
+      run: echo "MINOR=$(echo $version | cut -f2 -d.)" >> $GITHUB_ENV
+      
+    - name: Print minor version
+      run: echo ${{ env.MINOR }}
+      
+    - name: Get alpha version
+      run: echo "ALPHA=$(echo $version | cut -f3 -d.)" >> $GITHUB_ENV
+      
+    - name: Print alpha version
+      run: echo ${{ env.ALPHA }}
+        
+    - name: Increment version
+      run: ((${{ env.ALPHA }}=${{ env.ALPHA }}+1))
+      
+    - name: Check alpha version
       run: if [[ "$alpha" -gt 9 ]]; then ((minor=minor+1)); ((alpha=0)); fi
       
     - name: check minor version
