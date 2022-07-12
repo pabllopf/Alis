@@ -1,4 +1,4 @@
-name: "[PRO][PUBLISH][NUGET]"
+name: "[PRO][PUBLISH]"
 
 on:
   push:

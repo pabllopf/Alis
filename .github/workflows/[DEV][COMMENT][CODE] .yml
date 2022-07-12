@@ -29,7 +29,7 @@ jobs:
       run: dotnet tool install --global dotnet-document --version 0.1.4-alpha
 
     - name: Comment code
-      run: dotnet document apply alis.sln 
+      run: dotnet document apply ./alis.sln 
     
     - name: Commit the changes of document code
       run: |
