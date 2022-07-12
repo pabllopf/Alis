@@ -1,0 +1,80 @@
+name: "test"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs: 
+  #
+  # comment code
+  #
+  Publish_On_Github_Packages:
+    needs: Create_Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+        
+      - name: Install dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            2.1.x
+            3.1.x
+            5.0.x
+            6.0.x
+    
+      - name: Define file name to update version
+        run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
+
+      - name: Print the file name to update version
+        run: echo $FILENAME
+
+      - name: Get the current version
+        run: echo "VERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
+
+      - name: Print the current version
+        run: echo $VERSION
+
+      - name: Get mayor version
+        run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
+
+      - name: Print mayor version
+        run: echo $MAYOR
+
+      - name: Get minor version
+        run: echo "MINOR=$(echo ${{ env.VERSION }} | cut -f2 -d.)" >> $GITHUB_ENV
+
+      - name: Print minor version
+        run: echo $MINOR
+
+      - name: Get alpha version
+        run: echo "ALPHA=$(echo ${{ env.VERSION }} | cut -f3 -d.)" >> $GITHUB_ENV
+
+      - name: Print current alpha version
+        run: echo $ALPHA
+
+      - name: Increment version
+        run: echo "ALPHA=$(((ALPHA=ALPHA+1)))" >> $GITHUB_ENV 
+
+      - name: Alpha version incremented
+        run: echo $ALPHA
+
+      - name: Check alpha version
+        run: if [[ "$ALPHA" -gt 9 ]]; then echo "MINOR=$(((MINOR=MINOR+1)))" >> $GITHUB_ENV ; echo "ALPHA=$(((ALPHA=0)))" >> $GITHUB_ENV ; fi
+
+      - name: Check minor version
+        run: if [[ "$MINOR" -gt 9 ]]; then echo "MAYOR=$(((MAYOR=MAYOR+1)))" >> $GITHUB_ENV; echo "MINOR=$(((MINOR=0)))" >> $GITHUB_ENV; fi
+
+      - name: Create the next version
+        run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
+        
+      - name: Print the next version
+        run: echo $VERSIONFINAL
+        
+      - name: Publish nugets
+        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.NUGET}} --skip-duplicate
