@@ -11,7 +11,6 @@ jobs:
   # comment code
   #
   Publish_On_Github_Packages:
-    needs: Create_Packages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
