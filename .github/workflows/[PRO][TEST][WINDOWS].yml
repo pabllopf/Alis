@@ -2,18 +2,20 @@
 name: "[PRO][TEST][WINDOWS]"
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_run:
+    workflows: ["[PRO][COMMENT][CODE]"]
+    types:
+      - completed
   
 jobs:
   Latest:
     name: windows-latest
     runs-on: windows-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -29,8 +31,10 @@ jobs:
     name: windows-2019
     runs-on: windows-2019
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -46,8 +50,10 @@ jobs:
     name: windows-2016
     runs-on: windows-2016
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:

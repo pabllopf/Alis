@@ -2,18 +2,20 @@
 name: "[PRO][TEST][MACOS]"
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_run:
+    workflows: ["[PRO][COMMENT][CODE]"]
+    types:
+      - completed
   
 jobs:
   Latest:
     name: macos-latest
     runs-on: macos-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -29,8 +31,10 @@ jobs:
     name: macos-12
     runs-on: macos-12
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -46,8 +50,10 @@ jobs:
     name: macos-10.15
     runs-on: macos-10.15
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:

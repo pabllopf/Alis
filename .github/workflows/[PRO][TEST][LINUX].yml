@@ -2,19 +2,20 @@
 name: "[PRO][TEST][LINUX]"
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  
+  workflow_run:
+    workflows: ["[PRO][COMMENT][CODE]"]
+    types:
+      - completed
  
 jobs:
   Latest:
     name: "ubuntu-latest"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -30,8 +31,10 @@ jobs:
     name: "ubuntu-22.04"
     runs-on: ubuntu-22.04
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -47,8 +50,10 @@ jobs:
     name: "ubuntu-18.04"
     runs-on: ubuntu-18.04
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          ref: master
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:

@@ -2,10 +2,8 @@
 name: "[DEV][CODE][SCAN]"
 
 on:
-  push:
-    branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
+  schedule:
+    - cron: '30 1 * * *'
 
 jobs:
   analyze:
@@ -26,6 +24,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
+      with:
+        ref: develop
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
