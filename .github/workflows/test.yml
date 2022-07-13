@@ -92,6 +92,9 @@ jobs:
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
       
+      - name: create a file to save the log
+        run: date > ./.publish/generated.txt
+
       - name: git config user.name github-actions
         run: git config user.name github-actions
 
