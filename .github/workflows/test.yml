@@ -72,6 +72,21 @@ jobs:
       - name: Print the next version
         run: echo $VERSIONFINAL
 
+      - name: git config user.name github-actions
+        run: git config user.name github-actions
+
+      - name: git config user.email github-actions@github.com
+        run: git config user.email github-actions@github.com
+
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
+
+      - name:  git tag -a <tag_name> HEAD
+        run:  git tag -a v${{ env.VERSIONFINAL }} HEAD 
+
+      - name:  git push
+        run:  git push
+
       - name: Update CHANGELOG
         id: changelog
         uses: Requarks/changelog-action@v1
