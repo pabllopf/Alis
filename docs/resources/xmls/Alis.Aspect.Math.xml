@@ -34,92 +34,12 @@
                 The euler
             </summary>
         </member>
-        <member name="T:Alis.Aspect.Math.Mat22">
-            <summary>
-                A 2-by-2 matrix. Stored in column-major order.
-            </summary>
-        </member>
-        <member name="F:Alis.Aspect.Math.Mat22.Col1">
-            <summary>
-                The col
-            </summary>
-        </member>
-        <member name="F:Alis.Aspect.Math.Mat22.Col2">
-            <summary>
-                The col
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.#ctor(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
-            <summary>
-                Construct this matrix using columns.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.#ctor(System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-                Construct this matrix using scalars.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.#ctor(System.Single)">
-            <summary>
-                Construct this matrix using an angle.
-                This matrix becomes an orthonormal rotation matrix.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.Set(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
-            <summary>
-                Initialize this matrix using columns.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.Set(System.Single)">
-            <summary>
-                Initialize this matrix using an angle.
-                This matrix becomes an orthonormal rotation matrix.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.SetIdentity">
-            <summary>
-                Set this to the identity matrix.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.SetZero">
-            <summary>
-                Set this matrix to all zeros.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.GetAngle">
-            <summary>
-                Extract the angle from this matrix (assumed to be a rotation matrix).
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.GetInverse">
-            <summary>
-                Compute the inverse of this matrix, such that inv(A) * A = identity.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.Solve(Alis.Aspect.Math.Vec2)">
-            <summary>
-                Solve A * x = b, where b is a column vector. This is more efficient
-                than computing the inverse in one-shot cases.
-            </summary>
-        </member>
-        <member name="P:Alis.Aspect.Math.Mat22.Identity">
-            <summary>
-                Gets the value of the identity
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat22.op_Addition(Alis.Aspect.Math.Mat22,Alis.Aspect.Math.Mat22)">
-            <summary>
-            </summary>
-            <param name="a"></param>
-            <param name="b"></param>
-            <returns></returns>
-        </member>
         <member name="T:Alis.Aspect.Math.Mat33">
             <summary>
                 A 3-by-3 matrix. Stored in column-major order.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Mat33.#ctor(Alis.Aspect.Math.Vec3,Alis.Aspect.Math.Vec3,Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Mat33.#ctor(Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3)">
             <summary>
                 Construct this matrix using columns.
             </summary>
@@ -129,13 +49,13 @@
                 Set this matrix to all zeros.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Mat33.Solve33(Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Mat33.Solve33(Alis.Aspect.Math.Vector3)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient
                 than computing the inverse in one-shot cases.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Mat33.Solve22(Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Mat33.Solve22(Alis.Aspect.Math.Vector2)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient
                 than computing the inverse in one-shot cases. Solve only the upper
@@ -233,14 +153,14 @@
             <param name="a">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Abs(Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Math.Abs(Alis.Aspect.Math.Vector2)">
             <summary>
                 Abses the a
             </summary>
             <param name="a">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Abs(Alis.Aspect.Math.Mat22)">
+        <member name="M:Alis.Aspect.Math.Math.Abs(Alis.Aspect.Math.Matrix2x2)">
             <summary>
                 Abses the a
             </summary>
@@ -263,7 +183,7 @@
             <param name="b">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Min(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Math.Min(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Mins the a
             </summary>
@@ -287,7 +207,7 @@
             <param name="b">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Max(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Math.Max(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Maxes the a
             </summary>
@@ -313,7 +233,7 @@
             <param name="high">The high</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Clamp(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Math.Clamp(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Clamps the a
             </summary>
@@ -330,29 +250,29 @@
             <param name="a">The </param>
             <param name="b">The </param>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Mat22,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Multiply a matrix times a vector. If a rotation matrix is provided,
                 then this transforms the vector from one frame to another.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Mat22,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Multiply a matrix transpose times a vector. If a rotation matrix is provided,
                 then this transforms the vector from one frame to another (inverse transform).
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Mat22,Alis.Aspect.Math.Mat22)">
+        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Matrix2x2)">
             <summary>
                 A * B
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Mat22,Alis.Aspect.Math.Mat22)">
+        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Matrix2x2)">
             <summary>
                 A^T * B
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
             <summary>
                 Muls the t
             </summary>
@@ -360,7 +280,7 @@
             <param name="v">The </param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
             <summary>
                 Muls the t using the specified t
             </summary>
@@ -368,7 +288,7 @@
             <param name="v">The </param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Mat33,Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Mat33,Alis.Aspect.Math.Vector3)">
             <summary>
                 Multiply a matrix times a vector.
             </summary>
@@ -395,6 +315,86 @@
             <summary>
                 The
             </summary>
+        </member>
+        <member name="T:Alis.Aspect.Math.Matrix2x2">
+            <summary>
+                A 2-by-2 matrix. Stored in column-major order.
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Math.Matrix2x2.Col1">
+            <summary>
+                The col
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Math.Matrix2x2.Col2">
+            <summary>
+                The col
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.#ctor(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+            <summary>
+                Construct this matrix using columns.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+                Construct this matrix using scalars.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.#ctor(System.Single)">
+            <summary>
+                Construct this matrix using an angle.
+                This matrix becomes an orthonormal rotation matrix.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.Set(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+            <summary>
+                Initialize this matrix using columns.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.Set(System.Single)">
+            <summary>
+                Initialize this matrix using an angle.
+                This matrix becomes an orthonormal rotation matrix.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.SetIdentity">
+            <summary>
+                Set this to the identity matrix.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.SetZero">
+            <summary>
+                Set this matrix to all zeros.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.GetAngle">
+            <summary>
+                Extract the angle from this matrix (assumed to be a rotation matrix).
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.GetInverse">
+            <summary>
+                Compute the inverse of this matrix, such that inv(A) * A = identity.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.Solve(Alis.Aspect.Math.Vector2)">
+            <summary>
+                Solve A * x = b, where b is a column vector. This is more efficient
+                than computing the inverse in one-shot cases.
+            </summary>
+        </member>
+        <member name="P:Alis.Aspect.Math.Matrix2x2.Identity">
+            <summary>
+                Gets the value of the identity
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix2x2.op_Addition(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Matrix2x2)">
+            <summary>
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <returns></returns>
         </member>
         <member name="T:Alis.Aspect.Math.Settings">
             <summary>
@@ -632,99 +632,99 @@
             </summary>
             <param name="t">The new initial time.</param>
         </member>
-        <member name="T:Alis.Aspect.Math.Vec2">
+        <member name="T:Alis.Aspect.Math.Vector2">
             <summary>
                 A 2D column vector.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Equals(Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.Equals(Alis.Aspect.Math.Vector2)">
             <summary>
                 Describes whether this instance equals
             </summary>
             <param name="other">The other</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Equals(System.Object)">
+        <member name="M:Alis.Aspect.Math.Vector2.Equals(System.Object)">
             <summary>
                 Describes whether this instance equals
             </summary>
             <param name="obj">The obj</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.GetHashCode">
+        <member name="M:Alis.Aspect.Math.Vector2.GetHashCode">
             <summary>
                 Gets the hash code
             </summary>
             <returns>The int</returns>
         </member>
-        <member name="F:Alis.Aspect.Math.Vec2.X">
+        <member name="F:Alis.Aspect.Math.Vector2.X">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Vec2.Y">
+        <member name="F:Alis.Aspect.Math.Vector2.Y">
             <summary>
                 The
             </summary>
         </member>
-        <member name="P:Alis.Aspect.Math.Vec2.Item(System.Int32)">
+        <member name="P:Alis.Aspect.Math.Vector2.Item(System.Int32)">
             <summary>
                 The assert
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.#ctor(System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector2.#ctor(System.Single)">
             <summary>
                 Construct using coordinates.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.#ctor(System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector2.#ctor(System.Single,System.Single)">
             <summary>
                 Construct using coordinates.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.SetZero">
+        <member name="M:Alis.Aspect.Math.Vector2.SetZero">
             <summary>
                 Set this vector to all zeros.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Set(System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector2.Set(System.Single,System.Single)">
             <summary>
                 Set this vector to some specified coordinates.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Set(System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector2.Set(System.Single)">
             <summary>
                 Sets the xy
             </summary>
             <param name="xy">The xy</param>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Length">
+        <member name="M:Alis.Aspect.Math.Vector2.Length">
             <summary>
                 Get the length of this vector (the norm).
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.LengthSquared">
+        <member name="M:Alis.Aspect.Math.Vector2.LengthSquared">
             <summary>
                 Get the length squared. For performance, use this instead of
                 Length (if possible).
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Normalize">
+        <member name="M:Alis.Aspect.Math.Vector2.Normalize">
             <summary>
                 Convert this vector into a unit vector. Returns the length.
             </summary>
         </member>
-        <member name="P:Alis.Aspect.Math.Vec2.IsValid">
+        <member name="P:Alis.Aspect.Math.Vector2.IsValid">
             <summary>
                 Does this vector contain finite coordinates?
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.op_UnaryNegation(Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.op_UnaryNegation(Alis.Aspect.Math.Vector2)">
             <summary>
                 Negate this vector.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.op_Addition(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.op_Addition(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Hello
             </summary>
@@ -732,7 +732,7 @@
             <param name="v2"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.op_Subtraction(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.op_Subtraction(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Hello
             </summary>
@@ -740,7 +740,7 @@
             <param name="v2"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.op_Multiply(Alis.Aspect.Math.Vec2,System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector2.op_Multiply(Alis.Aspect.Math.Vector2,System.Single)">
             <summary>
                 operator
             </summary>
@@ -748,55 +748,55 @@
             <param name="a"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.op_Multiply(System.Single,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.op_Multiply(System.Single,Alis.Aspect.Math.Vector2)">
             <summary>
             </summary>
             <param name="a"></param>
             <param name="v1"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.op_Equality(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.op_Equality(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
             </summary>
             <param name="a"></param>
             <param name="b"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.op_Inequality(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.op_Inequality(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
             </summary>
             <param name="a"></param>
             <param name="b"></param>
             <returns></returns>
         </member>
-        <member name="P:Alis.Aspect.Math.Vec2.Zero">
+        <member name="P:Alis.Aspect.Math.Vector2.Zero">
             <summary>
                 Gets the value of the zero
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Dot(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.Dot(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Peform the dot product on two vectors.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Cross(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.Cross(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Perform the cross product on two vectors. In 2D this produces a scalar.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Cross(Alis.Aspect.Math.Vec2,System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector2.Cross(Alis.Aspect.Math.Vector2,System.Single)">
             <summary>
                 Perform the cross product on a vector and a scalar.
                 In 2D this produces a vector.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Cross(System.Single,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.Cross(System.Single,Alis.Aspect.Math.Vector2)">
             <summary>
                 Perform the cross product on a scalar and a vector.
                 In 2D this produces a vector.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.Distance(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.Distance(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Distances the a
             </summary>
@@ -804,7 +804,7 @@
             <param name="b">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec2.DistanceSquared(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Vec2)">
+        <member name="M:Alis.Aspect.Math.Vector2.DistanceSquared(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Distances the squared using the specified a
             </summary>
@@ -812,72 +812,72 @@
             <param name="b">The </param>
             <returns>The float</returns>
         </member>
-        <member name="T:Alis.Aspect.Math.Vec3">
+        <member name="T:Alis.Aspect.Math.Vector3">
             <summary>
                 A 2D column vector with 3 elements.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.#ctor(System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector3.#ctor(System.Single,System.Single,System.Single)">
             <summary>
                 Construct using coordinates.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.SetZero">
+        <member name="M:Alis.Aspect.Math.Vector3.SetZero">
             <summary>
                 Set this vector to all zeros.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.Set(System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector3.Set(System.Single,System.Single,System.Single)">
             <summary>
                 Set this vector to some specified coordinates.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.Dot(Alis.Aspect.Math.Vec3,Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Vector3.Dot(Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3)">
             <summary>
                 Perform the dot product on two vectors.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.Cross(Alis.Aspect.Math.Vec3,Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Vector3.Cross(Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3)">
             <summary>
                 Perform the cross product on two vectors.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.op_UnaryNegation(Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Vector3.op_UnaryNegation(Alis.Aspect.Math.Vector3)">
             <summary>
                 Negate this vector.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.op_Addition(Alis.Aspect.Math.Vec3,Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Vector3.op_Addition(Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3)">
             <summary>
                 Add two vectors component-wise.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.op_Subtraction(Alis.Aspect.Math.Vec3,Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Vector3.op_Subtraction(Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3)">
             <summary>
                 Subtract two vectors component-wise.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.op_Multiply(Alis.Aspect.Math.Vec3,System.Single)">
+        <member name="M:Alis.Aspect.Math.Vector3.op_Multiply(Alis.Aspect.Math.Vector3,System.Single)">
             <summary>
                 Multiply this vector by a scalar.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Vec3.op_Multiply(System.Single,Alis.Aspect.Math.Vec3)">
+        <member name="M:Alis.Aspect.Math.Vector3.op_Multiply(System.Single,Alis.Aspect.Math.Vector3)">
             <summary>
                 Multiply this vector by a scalar.
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Vec3.X">
+        <member name="F:Alis.Aspect.Math.Vector3.X">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Vec3.Y">
+        <member name="F:Alis.Aspect.Math.Vector3.Y">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Vec3.Z">
+        <member name="F:Alis.Aspect.Math.Vector3.Z">
             <summary>
                 The
             </summary>
@@ -898,7 +898,7 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.XForm.#ctor(Alis.Aspect.Math.Vec2,Alis.Aspect.Math.Mat22)">
+        <member name="M:Alis.Aspect.Math.XForm.#ctor(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Matrix2x2)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Aspect.Math.XForm" /> struct.
             </summary>
@@ -910,7 +910,7 @@
                 Set this to the identity transform.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.XForm.Set(Alis.Aspect.Math.Vec2,System.Single)">
+        <member name="M:Alis.Aspect.Math.XForm.Set(Alis.Aspect.Math.Vector2,System.Single)">
             Set this based on the position and angle.
         </member>
         <member name="M:Alis.Aspect.Math.XForm.GetAngle">

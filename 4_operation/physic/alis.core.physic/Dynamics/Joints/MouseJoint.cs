@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The mass
         /// </summary>
-        public Mat22 Mass { get; set; }
+        public Matrix2X2 Mass { get; set; }
 
         /// <summary>
         ///     The
@@ -197,19 +197,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float invMass = body2.InvMass;
             float invI = body2.InvI;
 
-            Mat22 k1 = new Mat22
+            Matrix2X2 k1 = new Matrix2X2
             {
                 Col1 = new Vector2(invMass, 0.0f),
                 Col2 = new Vector2(0.0f, invMass)
             };
 
-            Mat22 k2 = new Mat22
+            Matrix2X2 k2 = new Matrix2X2
             {
                 Col1 = new Vector2(invI * effectiveMass.Y * effectiveMass.Y, -invI * effectiveMass.X * effectiveMass.Y),
                 Col2 = new Vector2(-invI * effectiveMass.X * effectiveMass.Y, invI * effectiveMass.X * effectiveMass.X)
             };
 
-            Mat22 k = k1 + k2;
+            Matrix2X2 k = k1 + k2;
             k.Col1.X += Gamma;
             k.Col2.Y += Gamma;
 

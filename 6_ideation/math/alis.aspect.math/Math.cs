@@ -167,9 +167,9 @@ namespace Alis.Aspect.Math
         /// </summary>
         /// <param name="a">The </param>
         /// <returns>The </returns>
-        public static Mat22 Abs(Mat22 a)
+        public static Matrix2X2 Abs(Matrix2X2 a)
         {
-            Mat22 b = new Mat22();
+            Matrix2X2 b = new Matrix2X2();
             b.Set(Abs(a.Col1), Abs(a.Col2));
             return b;
         }
@@ -299,7 +299,7 @@ namespace Alis.Aspect.Math
         ///     Multiply a matrix times a vector. If a rotation matrix is provided,
         ///     then this transforms the vector from one frame to another.
         /// </summary>
-        public static Vector2 Mul(Mat22 a, Vector2 v)
+        public static Vector2 Mul(Matrix2X2 a, Vector2 v)
         {
             Vector2 u = new Vector2();
             u.Set(a.Col1.X * v.X + a.Col2.X * v.Y, a.Col1.Y * v.X + a.Col2.Y * v.Y);
@@ -310,7 +310,7 @@ namespace Alis.Aspect.Math
         ///     Multiply a matrix transpose times a vector. If a rotation matrix is provided,
         ///     then this transforms the vector from one frame to another (inverse transform).
         /// </summary>
-        public static Vector2 MulT(Mat22 a, Vector2 v)
+        public static Vector2 MulT(Matrix2X2 a, Vector2 v)
         {
             Vector2 u = new Vector2();
             u.Set(Vector2.Dot(v, a.Col1), Vector2.Dot(v, a.Col2));
@@ -320,9 +320,9 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     A * B
         /// </summary>
-        public static Mat22 Mul(Mat22 a, Mat22 b)
+        public static Matrix2X2 Mul(Matrix2X2 a, Matrix2X2 b)
         {
-            Mat22 c = new Mat22();
+            Matrix2X2 c = new Matrix2X2();
             c.Set(Mul(a, b.Col1), Mul(a, b.Col2));
             return c;
         }
@@ -330,13 +330,13 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     A^T * B
         /// </summary>
-        public static Mat22 MulT(Mat22 a, Mat22 b)
+        public static Matrix2X2 MulT(Matrix2X2 a, Matrix2X2 b)
         {
             Vector2 c1 = new Vector2();
             c1.Set(Vector2.Dot(a.Col1, b.Col1), Vector2.Dot(a.Col2, b.Col1));
             Vector2 c2 = new Vector2();
             c2.Set(Vector2.Dot(a.Col1, b.Col2), Vector2.Dot(a.Col2, b.Col2));
-            Mat22 c = new Mat22();
+            Matrix2X2 c = new Matrix2X2();
             c.Set(c1, c2);
             return c;
         }

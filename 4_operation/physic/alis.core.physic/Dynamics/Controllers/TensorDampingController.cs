@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         ///     (-a 0;0 -b)		Differing x and y damping. Useful e.g. for top-down wheels.
         ///     By the way, tensor in this case just means matrix, don't let the terminology get you down.
         /// </summary>
-        private Mat22 T;
+        private Matrix2X2 T;
 
         /// Sets damping independantly along the x and y axes
         public void SetAxisAligned(float xDamping, float yDamping)

@@ -132,7 +132,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        public Mat22 K;
+        public Matrix2X2 K;
 
         /// <summary>
         ///     The limit state
@@ -638,8 +638,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             bool active = false;
             float clamp = 0.0f;
 
-            var mat22 = new Mat22(a1);
-            var mat23 = new Mat22(a2);
+            var mat22 = new Matrix2X2(a1);
+            var mat23 = new Matrix2X2(a2);
 
             Vector2 r1 = Math.Mul(mat22, LocalAnchor1 - LocalCenter1);
             Vector2 r2 = Math.Mul(mat23, LocalAnchor2 - LocalCenter2);

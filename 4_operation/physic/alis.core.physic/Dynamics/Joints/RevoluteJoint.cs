@@ -575,25 +575,25 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     body2SweepC = body2.Sweep.C + mulR2 - body1.Sweep.C - mulR1;
                 }
 
-                Mat22 k1 = new Mat22
+                Matrix2X2 k1 = new Matrix2X2
                 {
                     Col1 = new Vector2(invMass1 + invMass2, 0.0f),
                     Col2 = new Vector2(0.0f, invMass1 + invMass2)
                 };
 
-                Mat22 k2 = new Mat22();
+                Matrix2X2 k2 = new Matrix2X2();
                 k2.Col1.X = invI1 * mulR1.Y * mulR1.Y;
                 k2.Col2.X = -invI1 * mulR1.X * mulR1.Y;
                 k2.Col1.Y = -invI1 * mulR1.X * mulR1.Y;
                 k2.Col2.Y = invI1 * mulR1.X * mulR1.X;
 
-                Mat22 k3 = new Mat22();
+                Matrix2X2 k3 = new Matrix2X2();
                 k3.Col1.X = invI2 * mulR2.Y * mulR2.Y;
                 k3.Col2.X = -invI2 * mulR2.X * mulR2.Y;
                 k3.Col1.Y = -invI2 * mulR2.X * mulR2.Y;
                 k3.Col2.Y = invI2 * mulR2.X * mulR2.X;
 
-                Mat22 k = k1 + k2 + k3;
+                Matrix2X2 k = k1 + k2 + k3;
                 Vector2 impulse = k.Solve(-body2SweepC);
 
                 body1.Sweep.C -= body1.InvMass * impulse;

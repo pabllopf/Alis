@@ -43,14 +43,14 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     The
         /// </summary>
-        public Mat22 R { get; }
+        public Matrix2X2 R { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="XForm" /> struct.
         /// </summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The rotation.</param>
-        private XForm(Vector2 position, Mat22 rotation)
+        private XForm(Vector2 position, Matrix2X2 rotation)
         {
             Position = position;
             R = rotation;
@@ -81,6 +81,6 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Gets the value of the identity
         /// </summary>
-        public static XForm Identity => new XForm(Vector2.Zero, Mat22.Identity);
+        public static XForm Identity => new XForm(Vector2.Zero, Matrix2X2.Identity);
     }
 }
