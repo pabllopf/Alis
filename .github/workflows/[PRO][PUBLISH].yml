@@ -462,15 +462,62 @@ jobs:
       - name: Print the next version
         run: echo $VERSIONFINAL
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: git config user.name github-actions
+        run: git config user.name github-actions
+
+      - name: git config user.email github-actions@github.com
+        run: git config user.email github-actions@github.com
+
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
+
+      - name:  git tag -a <tag_name> HEAD -m "my version 1.4"
+        run:  git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
+
+      - name:  git push --tags
+        run:  git push --tags
+
+      - name: Update CHANGELOG
+        id: changelog
+        uses: Requarks/changelog-action@v1
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v${{ env.VERSIONFINAL }}"
+          token: ${{ github.token }}
+          tag: "v${{ env.VERSIONFINAL }}"
+          writeToFile: true
+
+      - uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ steps.changelog.outputs.changes }}
+          token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
-          title: "v${{ env.VERSIONFINAL }} has arrived !!!"
+          name: "v${{ env.VERSIONFINAL }} has arrived !!!"
+          tag_name: "v${{ env.VERSIONFINAL }}"
+          generate_release_notes: true
+          append_body: true
           files: |
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
+      
+      - name: create a file to save the log
+        run: date > ./.publish/generated.txt
+
+      - name: git config user.name github-actions
+        run: git config user.name github-actions
+
+      - name: git config user.email github-actions@github.com
+        run: git config user.email github-actions@github.com
+
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
+
+      - name:  git add .
+        run:  git add .
+
+      - name:  git commit -m "Create changelog '$VERSIONFINAL'."
+        run: git commit -m "Create changelog '$VERSIONFINAL'."
+
+      - name:  git push
+        run:  git push
 
       # https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular/
       # https://github.com/marketplace/actions/labeler
