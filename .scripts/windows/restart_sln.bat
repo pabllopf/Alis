@@ -18,10 +18,13 @@ dotnet new sln -o . -n Alis --force
 for /r %%i in (*.csproj) do dotnet sln Alis.sln add %%i
 
 rd /s /q .nuget
+rd /s /q .build
 
 FOR /d /r . %%d IN (bin) DO @IF EXIST "%%d" rd /s /q "%%d"
 
 FOR /d /r . %%d IN (obj) DO @IF EXIST "%%d" rd /s /q "%%d"
+
+for /r %%i in (*.csproj) do type default_csproj.props > %%i
 
 for /r %%i in (*.csproj) do dotnet restore %%i
 
