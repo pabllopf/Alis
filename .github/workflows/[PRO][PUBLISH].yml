@@ -462,14 +462,12 @@ jobs:
       - name: Print the next version
         run: echo $VERSIONFINAL
 
-      #- uses: "marvinpinto/action-automatic-releases@latest"
-      #  with:
-      #    repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #    automatic_release_tag: "v${{ env.VERSIONFINAL }}"
-      #    prerelease: false
-      #    title: "v${{ env.VERSIONFINAL }} has arrived !!!"
-      #   files: |
-      #      ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "v${{ env.VERSIONFINAL }}"
+          prerelease: false
+          title: "v${{ env.VERSIONFINAL }} has arrived !!!"
 
       - name: Automatic label
         uses: actions/labeler@v4
@@ -492,6 +490,10 @@ jobs:
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
 
+
+      # https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular/
+      # https://github.com/marketplace/actions/labeler
+      # 
 
       #feat: (new feature for the user, not a new feature for build script)
       #fix: (bug fix for the user, not a fix to a build script)
