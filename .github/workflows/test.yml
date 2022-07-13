@@ -72,12 +72,6 @@ jobs:
       - name: Print the next version
         run: echo $VERSIONFINAL
 
-      - name: Create tag
-        uses: Klemensas/action-autotag@stable
-        with:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          version: "v${{ env.VERSIONFINAL }}"
-
       - name: Update CHANGELOG
         id: changelog
         uses: Requarks/changelog-action@v1
