@@ -74,9 +74,9 @@ jobs:
 
       - name: Create tag
         uses: Klemensas/action-autotag@stable
-          with:
-            GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-            version: "v${{ env.VERSIONFINAL }}"
+        with:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          version: "v${{ env.VERSIONFINAL }}"
 
       - name: Update CHANGELOG
         id: changelog
