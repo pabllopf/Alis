@@ -468,28 +468,9 @@ jobs:
           automatic_release_tag: "v${{ env.VERSIONFINAL }}"
           prerelease: false
           title: "v${{ env.VERSIONFINAL }} has arrived !!!"
-
-      - name: Automatic label
-        uses: actions/labeler@v4
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          name: "v${{ env.VERSIONFINAL }} has arrived !!!"
-          tag_name: "v${{ env.VERSIONFINAL }}"
-          body: ${{steps.github_release.outputs.changelog}}
           files: |
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
-
 
       # https://nitayneeman.com/posts/understanding-semantic-commit-messages-using-git-and-angular/
       # https://github.com/marketplace/actions/labeler

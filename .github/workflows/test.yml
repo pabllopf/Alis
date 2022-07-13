@@ -1,4 +1,4 @@
-name: "Release"
+name: "RELEASE"
 
 on:
   push:
@@ -6,16 +6,11 @@ on:
   pull_request:
     branches: [ master ]
 
-jobs: 
-  #
-  # comment code
-  #
-  Release:
-    runs-on: "ubuntu-latest"
-
+jobs:
+  release:
+    runs-on: ubuntu-latest
     steps:
-      
-      - name: Checkout repository
+       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           ref: master
@@ -77,25 +72,24 @@ jobs:
       - name: Print the next version
         run: echo $VERSIONFINAL
 
-      #- uses: "marvinpinto/action-automatic-releases@latest"
-      #  with:
-      #    repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #    automatic_release_tag: "v${{ env.VERSIONFINAL }}"
-      #    prerelease: false
-      #    title: "v${{ env.VERSIONFINAL }} has arrived !!!"
-
       - name: Build Changelog
         id: github_release
         uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          configuration: "configuration.json"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
+      - uses: "softprops/action-gh-release@latest"
         with:
+          body: ${{steps.github_release.outputs.changelog}}
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
           name: "v${{ env.VERSIONFINAL }} has arrived !!!"
           tag_name: "v${{ env.VERSIONFINAL }}"
-          body: ${{steps.github_release.outputs.changelog}}
+          generate_release_notes: true
+          append_body: true
           files: |
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
+          
