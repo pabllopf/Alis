@@ -107,24 +107,10 @@ jobs:
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
       
-      - name: create a file to save the log
-        run: date > ./.publish/generated.txt
-
-      - name: git config user.name github-actions
-        run: git config user.name github-actions
-
-      - name: git config user.email github-actions@github.com
-        run: git config user.email github-actions@github.com
-
-      - name: git config core.autocrlf false
-        run: git config core.autocrlf false
-
-      - name:  git add .
-        run:  git add .
-
-      - name:  git commit -m "Create changelog '$VERSIONFINAL'."
-        run: git commit -m "Create changelog '$VERSIONFINAL'."
-
-      - name:  git push
-        run:  git push
+      - name: Commit CHANGELOG.md
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: main
+          commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
+          file_pattern: CHANGELOG.md
           
