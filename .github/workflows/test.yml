@@ -81,8 +81,8 @@ jobs:
       - name: git config core.autocrlf false
         run: git config core.autocrlf false
 
-      - name:  git tag -a <tag_name> HEAD
-        run:  git tag -a v${{ env.VERSIONFINAL }} HEAD 
+      - name:  git tag -a <tag_name> HEAD -m "my version 1.4"
+        run:  git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
 
       - name:  git push
         run:  git push
