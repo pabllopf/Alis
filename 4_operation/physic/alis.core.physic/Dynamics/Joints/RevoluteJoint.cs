@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The mass
         /// </summary>
-        private Mat33 Mass { get; set; }
+        private Matrix3X3 Mass { get; set; }
 
         /// <summary>
         ///     The local anchor
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float col2Z = Mass.Col3.Y;
             float col3Z = i1 + i2;
 
-            Mass = new Mat33(new Vector3(col1X, col1Y, col1Z), new Vector3(col2X, col2Y, col2Z),
+            Mass = new Matrix3X3(new Vector3(col1X, col1Y, col1Z), new Vector3(col2X, col2Y, col2Z),
                 new Vector3(col3X, col3Y, col3Z));
 
             /*

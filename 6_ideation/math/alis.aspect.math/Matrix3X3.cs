@@ -32,12 +32,12 @@ namespace Alis.Aspect.Math
     /// <summary>
     ///     A 3-by-3 matrix. Stored in column-major order.
     /// </summary>
-    public struct Mat33
+    public struct Matrix3X3
     {
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
-        public Mat33(Vector3 c1, Vector3 c2, Vector3 c3)
+        public Matrix3X3(Vector3 c1, Vector3 c2, Vector3 c3)
         {
             Col1 = c1;
             Col2 = c2;

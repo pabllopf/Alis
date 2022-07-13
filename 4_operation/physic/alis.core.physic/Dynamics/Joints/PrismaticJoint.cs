@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        public Mat33 K;
+        public Matrix3X3 K;
 
         /// <summary>
         ///     The limit state
