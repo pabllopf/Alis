@@ -72,17 +72,16 @@ jobs:
       - name: Print the next version
         run: echo $VERSIONFINAL
 
-      - name: Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v3
+      - name: Update CHANGELOG
+        id: changelog
+        uses: Requarks/changelog-action@v1
         with:
-          configuration: "./.github/config_changelog.json"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ github.token }}
+          tag: ${{ github.ref_name }}
 
       - uses: softprops/action-gh-release@v1
         with:
-          body: ${{steps.github_release.outputs.changelog}}
+          body: ${{ steps.changelog.outputs.changes }}
           token: "${{ secrets.GITHUB_TOKEN }}"
           prerelease: false
           name: "v${{ env.VERSIONFINAL }} has arrived !!!"
@@ -92,4 +91,22 @@ jobs:
           files: |
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
+      
+      - name: git config user.name github-actions
+        run: git config user.name github-actions
+
+      - name: git config user.email github-actions@github.com
+        run: git config user.email github-actions@github.com
+
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
+
+      - name:  git add .
+        run:  git add .
+
+      - name:  git commit -m "Create changelog '$VERSIONFINAL'."
+        run: git commit -m "Create changelog '$VERSIONFINAL'."
+        
+      - name:  git push
+        run:  git push
           
