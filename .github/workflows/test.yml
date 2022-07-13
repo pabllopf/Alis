@@ -77,17 +77,12 @@ jobs:
       - name: Print the next version
         run: echo $VERSIONFINAL
 
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "v${{ env.VERSIONFINAL }}"
-          prerelease: false
-          title: "v${{ env.VERSIONFINAL }} has arrived !!!"
-
-      - name: Automatic label
-        uses: actions/labeler@v4
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+      #- uses: "marvinpinto/action-automatic-releases@latest"
+      #  with:
+      #    repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #    automatic_release_tag: "v${{ env.VERSIONFINAL }}"
+      #    prerelease: false
+      #    title: "v${{ env.VERSIONFINAL }} has arrived !!!"
 
       - name: Build Changelog
         id: github_release

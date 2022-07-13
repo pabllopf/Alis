@@ -1,0 +1,24 @@
+name: "[PRO][LABELS]"
+
+on:
+  push:
+    branches: [ master]
+  pull_request:
+    branches: [ master]
+
+jobs: 
+  #
+  # comment code
+  #
+  Label:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+        
+      - name: Automatic label
+        uses: actions/labeler@v4
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
