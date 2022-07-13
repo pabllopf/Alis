@@ -467,9 +467,15 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "v${{ env.VERSIONFINAL }}"
           prerelease: false
-          title: "New version  ${{ env.VERSIONFINAL }} !!!"
+          title: "v${{ env.VERSIONFINAL }} has arrived !!!"
           files: |
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
+
+      - name: Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   #
   # CREATE THE COMMIT
@@ -558,8 +564,8 @@ jobs:
       - name:  git add .
         run:  git add .
 
-      - name:  git commit -m "Write the file  to update '$VERSION'."
-        run: git commit -m "Write the file  to update '$VERSION'."
+      - name:  git commit -m "Write the file  to update '$VERSIONFINAL'."
+        run: git commit -m "Write the file  to update '$VERSIONFINAL'."
 
       - name:  git push
         run:  git push
