@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -50,11 +50,11 @@ namespace Alis.Core.Physic.Collision
         {
             manifold.PointCount = 0;
 
-            Vec2 p1 = Math.Mul(xf1, circle1.Position);
-            Vec2 p2 = Math.Mul(xf2, circle2.Position);
+            Vector2 p1 = Math.Mul(xf1, circle1.Position);
+            Vector2 p2 = Math.Mul(xf2, circle2.Position);
 
-            Vec2 d = p2 - p1;
-            float distSqr = Vec2.Dot(d, d);
+            Vector2 d = p2 - p1;
+            float distSqr = Vector2.Dot(d, d);
             float radius = circle1.Radius + circle2.Radius;
             if (distSqr > radius * radius)
             {
@@ -84,20 +84,20 @@ namespace Alis.Core.Physic.Collision
             manifold.PointCount = 0;
 
             // Compute circle position in the frame of the polygon.
-            Vec2 c = Math.Mul(xf2, circle.Position);
-            Vec2 cLocal = Math.MulT(xf1, c);
+            Vector2 c = Math.Mul(xf2, circle.Position);
+            Vector2 cLocal = Math.MulT(xf1, c);
 
             // Find the min separating edge.
             int normalIndex = 0;
             float separation = -Settings.FltMax;
             float radius = polygon.Radius + circle.Radius;
             int vertexCount = polygon.VertexCount;
-            Vec2[] vertices = polygon.Vertices;
-            Vec2[] normals = polygon.Normals;
+            Vector2[] vertices = polygon.Vertices;
+            Vector2[] normals = polygon.Normals;
 
             for (int i = 0; i < vertexCount; ++i)
             {
-                float s = Vec2.Dot(normals[i], cLocal - vertices[i]);
+                float s = Vector2.Dot(normals[i], cLocal - vertices[i]);
                 if (s > radius)
                 {
                     // Early out.
@@ -114,8 +114,8 @@ namespace Alis.Core.Physic.Collision
             // Vertices that subtend the incident face.
             int vertIndex1 = normalIndex;
             int vertIndex2 = vertIndex1 + 1 < vertexCount ? vertIndex1 + 1 : 0;
-            Vec2 v1 = vertices[vertIndex1];
-            Vec2 v2 = vertices[vertIndex2];
+            Vector2 v1 = vertices[vertIndex1];
+            Vector2 v2 = vertices[vertIndex2];
 
             // If the center is inside the polygon ...
             if (separation < Settings.FltEpsilon)
@@ -130,11 +130,11 @@ namespace Alis.Core.Physic.Collision
             }
 
             // Compute barycentric coordinates
-            float u1 = Vec2.Dot(cLocal - v1, v2 - v1);
-            float u2 = Vec2.Dot(cLocal - v2, v1 - v2);
+            float u1 = Vector2.Dot(cLocal - v1, v2 - v1);
+            float u2 = Vector2.Dot(cLocal - v2, v1 - v2);
             if (u1 <= 0.0f)
             {
-                if (Vec2.DistanceSquared(cLocal, v1) > radius * radius)
+                if (Vector2.DistanceSquared(cLocal, v1) > radius * radius)
                 {
                     return;
                 }
@@ -149,7 +149,7 @@ namespace Alis.Core.Physic.Collision
             }
             else if (u2 <= 0.0f)
             {
-                if (Vec2.DistanceSquared(cLocal, v2) > radius * radius)
+                if (Vector2.DistanceSquared(cLocal, v2) > radius * radius)
                 {
                     return;
                 }
@@ -164,8 +164,8 @@ namespace Alis.Core.Physic.Collision
             }
             else
             {
-                Vec2 faceCenter = 0.5f * (v1 + v2);
-                float dot = Vec2.Dot(cLocal - faceCenter, normals[vertIndex1]);
+                Vector2 faceCenter = 0.5f * (v1 + v2);
+                float dot = Vector2.Dot(cLocal - faceCenter, normals[vertIndex1]);
                 if (dot > radius)
                 {
                     return;

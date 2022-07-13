@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The shape world transform.</param>
         /// <param name="p">A point in world coordinates.</param>
         /// <returns></returns>
-        public abstract bool TestPoint(XForm xf, Vec2 p);
+        public abstract bool TestPoint(XForm xf, Vector2 p);
 
         /// <summary>
         ///     Perform a ray cast against this shape.
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </param>
         /// <param name="segment">Defines the begin and end point of the ray cast.</param>
         /// <param name="maxLambda">A number typically in the range [0,1].</param>
-        public abstract SegmentCollide TestSegment(XForm xf, out float lambda, out Vec2 normal, Segment segment,
+        public abstract SegmentCollide TestSegment(XForm xf, out float lambda, out Vector2 normal, Segment segment,
             float maxLambda);
 
         /// <summary>
@@ -110,34 +110,34 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The shape transform.</param>
         /// <param name="c">Returns the centroid.</param>
         /// <returns>The total volume less than offset along normal.</returns>
-        public abstract float ComputeSubmergedArea(Vec2 normal, float offset, XForm xf, out Vec2 c);
+        public abstract float ComputeSubmergedArea(Vector2 normal, float offset, XForm xf, out Vector2 c);
 
         /// <summary>
         ///     Compute the sweep radius. This is used for conservative advancement (continuous collision detection).
         /// </summary>
         /// <param name="pivot">Pivot is the pivot point for rotation.</param>
         /// <returns>The distance of the furthest point from the pivot.</returns>
-        public abstract float ComputeSweepRadius(Vec2 pivot);
+        public abstract float ComputeSweepRadius(Vector2 pivot);
 
         /// <summary>
         ///     Gets the vertex using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The vec</returns>
-        public abstract Vec2 GetVertex(int index);
+        public abstract Vector2 GetVertex(int index);
 
         /// <summary>
         ///     Gets the support using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The int</returns>
-        public abstract int GetSupport(Vec2 d);
+        public abstract int GetSupport(Vector2 d);
 
         /// <summary>
         ///     Gets the support vertex using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The vec</returns>
-        public abstract Vec2 GetSupportVertex(Vec2 d);
+        public abstract Vector2 GetSupportVertex(Vector2 d);
     }
 }

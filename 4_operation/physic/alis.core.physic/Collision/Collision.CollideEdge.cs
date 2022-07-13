@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -50,20 +50,20 @@ namespace Alis.Core.Physic.Collision
             CircleShape circle, XForm transformB)
         {
             manifold.PointCount = 0;
-            Vec2 cLocal = Math.MulT(transformA, Math.Mul(transformB, circle.Position));
-            Vec2 normal = edge.NormalVector;
-            Vec2 v1 = edge.Vertex1;
-            Vec2 v2 = edge.Vertex2;
+            Vector2 cLocal = Math.MulT(transformA, Math.Mul(transformB, circle.Position));
+            Vector2 normal = edge.NormalVector;
+            Vector2 v1 = edge.Vertex1;
+            Vector2 v2 = edge.Vertex2;
             float radius = edge.Radius + circle.Radius;
 
             // Barycentric coordinates
-            float u1 = Vec2.Dot(cLocal - v1, v2 - v1);
-            float u2 = Vec2.Dot(cLocal - v2, v1 - v2);
+            float u1 = Vector2.Dot(cLocal - v1, v2 - v1);
+            float u2 = Vector2.Dot(cLocal - v2, v1 - v2);
 
             if (u1 <= 0.0f)
             {
                 // Behind v1
-                if (Vec2.DistanceSquared(cLocal, v1) > radius * radius)
+                if (Vector2.DistanceSquared(cLocal, v1) > radius * radius)
                 {
                     return;
                 }
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Collision
             else if (u2 <= 0.0f)
             {
                 // Ahead of v2
-                if (Vec2.DistanceSquared(cLocal, v2) > radius * radius)
+                if (Vector2.DistanceSquared(cLocal, v2) > radius * radius)
                 {
                     return;
                 }
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Collision
             }
             else
             {
-                float separation = Vec2.Dot(cLocal - v1, normal);
+                float separation = Vector2.Dot(cLocal - v1, normal);
                 if (separation < -radius || radius < separation)
                 {
                     return;

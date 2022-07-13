@@ -42,7 +42,7 @@ namespace Alis.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.Write($"{MathConstants.Pi}");
+            Console.Write($"{Constant.Pi}");
             Console.ReadKey();
         }
     }

@@ -47,7 +47,7 @@
 // J = [ug cross(r, ug)]
 // K = J * invM * JT = invMass + invI * cross(r, ug)^2
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -169,22 +169,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The ground anchor
         /// </summary>
-        public Vec2 GroundAnchor1 { get; }
+        public Vector2 GroundAnchor1 { get; }
 
         /// <summary>
         ///     The ground anchor
         /// </summary>
-        public Vec2 GroundAnchor2 { get; }
+        public Vector2 GroundAnchor2 { get; }
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vec2 LocalAnchor1 { get; }
+        public Vector2 LocalAnchor1 { get; }
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vec2 LocalAnchor2 { get; }
+        public Vector2 LocalAnchor2 { get; }
 
         /// <summary>
         ///     The constant
@@ -208,12 +208,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
         /// <summary>
         ///     Get the gear ratio.
@@ -225,10 +225,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vec2 GetReactionForce(float invDt)
+        public override Vector2 GetReactionForce(float invDt)
         {
             // TODO_ERIN not tested
-            Vec2 p = Impulse * jacobian.Linear2;
+            Vector2 p = Impulse * jacobian.Linear2;
             return invDt * p;
         }
 
@@ -240,9 +240,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override float GetReactionTorque(float invDt)
         {
             // TODO_ERIN not tested
-            Vec2 r = Math.Mul(Body2.GetXForm().R, LocalAnchor2 - Body2.GetLocalCenter());
-            Vec2 p = Impulse * jacobian.Linear2;
-            float l = Impulse * jacobian.Angular2 - Vec2.Cross(r, p);
+            Vector2 r = Math.Mul(Body2.GetXForm().R, LocalAnchor2 - Body2.GetLocalCenter());
+            Vector2 p = Impulse * jacobian.Linear2;
+            float l = Impulse * jacobian.Angular2 - Vector2.Cross(r, p);
             return invDt * l;
         }
 
@@ -267,9 +267,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                Vec2 ug = Math.Mul(g1.GetXForm().R, Prismatic1.LocalXAxis1);
-                Vec2 r = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-                float crug = Vec2.Cross(r, ug);
+                Vector2 ug = Math.Mul(g1.GetXForm().R, Prismatic1.LocalXAxis1);
+                Vector2 r = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+                float crug = Vector2.Cross(r, ug);
                 jacobian.Linear1 = -ug;
                 jacobian.Angular1 = -crug;
                 k += b1.InvMass + b1.InvI * crug * crug;
@@ -282,9 +282,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                Vec2 ug = Math.Mul(g2.GetXForm().R, Prismatic2.LocalXAxis1);
-                Vec2 r = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
-                float crug = Vec2.Cross(r, ug);
+                Vector2 ug = Math.Mul(g2.GetXForm().R, Prismatic2.LocalXAxis1);
+                Vector2 r = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+                float crug = Vector2.Cross(r, ug);
                 jacobian.Linear2 = -Ratio * ug;
                 jacobian.Angular2 = -Ratio * crug;
                 k += Ratio * Ratio * (b2.InvMass + b2.InvI * crug * crug);

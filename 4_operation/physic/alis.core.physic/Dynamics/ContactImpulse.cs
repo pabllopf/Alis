@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics
 {

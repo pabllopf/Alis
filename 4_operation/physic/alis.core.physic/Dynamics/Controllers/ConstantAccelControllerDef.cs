@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -37,6 +37,6 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <summary>
         ///     The force to apply
         /// </summary>
-        public Vec2 A;
+        public Vector2 A;
     }
 }

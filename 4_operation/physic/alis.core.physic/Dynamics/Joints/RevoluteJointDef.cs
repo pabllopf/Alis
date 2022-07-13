@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -80,12 +80,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local anchor point relative to body1's origin.
         /// </summary>
-        public Vec2 LocalAnchor1;
+        public Vector2 LocalAnchor1;
 
         /// <summary>
         ///     The local anchor point relative to body2's origin.
         /// </summary>
-        public Vec2 LocalAnchor2;
+        public Vector2 LocalAnchor2;
 
         /// <summary>
         ///     The body2 angle minus body1 angle in the reference state (radians).
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Initialize the bodies, anchors, and reference angle using the world
         ///     anchor.
         /// </summary>
-        public void Initialize(Body body1, Body body2, Vec2 anchor)
+        public void Initialize(Body body1, Body body2, Vector2 anchor)
         {
             Body1 = body1;
             Body2 = body2;

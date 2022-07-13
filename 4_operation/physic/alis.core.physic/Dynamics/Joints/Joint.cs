@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -103,12 +103,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local center
         /// </summary>
-        protected Vec2 LocalCenter1 { get; set; }
+        protected Vector2 LocalCenter1 { get; set; }
 
         /// <summary>
         ///     The local center
         /// </summary>
-        protected Vec2 LocalCenter2 { get; set; }
+        protected Vector2 LocalCenter2 { get; set; }
 
         /// <summary>
         ///     The inv
@@ -134,13 +134,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Get the anchor point on body1 in world coordinates.
         /// </summary>
         /// <returns></returns>
-        public abstract Vec2 Anchor1 { get; }
+        public abstract Vector2 Anchor1 { get; }
 
         /// <summary>
         ///     Get the anchor point on body2 in world coordinates.
         /// </summary>
         /// <returns></returns>
-        public abstract Vec2 Anchor2 { get; }
+        public abstract Vector2 Anchor2 { get; }
 
         /// <summary>
         ///     Get/Set the user data pointer.
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the reaction force on body2 at the joint anchor.
         /// </summary>
-        public abstract Vec2 GetReactionForce(float invDt);
+        public abstract Vector2 GetReactionForce(float invDt);
 
         /// <summary>
         ///     Get the reaction torque on body2.
@@ -283,7 +283,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="center">The center</param>
         /// <param name="localCenter">The local center</param>
         /// <param name="angle">The angle</param>
-        internal void ComputeXForm(ref XForm xf, Vec2 center, Vec2 localCenter, float angle)
+        internal void ComputeXForm(ref XForm xf, Vector2 center, Vector2 localCenter, float angle)
         {
             xf.R.Set(angle);
             xf.Position = center - Math.Mul(xf.R, localCenter);

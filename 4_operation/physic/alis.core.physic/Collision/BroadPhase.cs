@@ -49,7 +49,7 @@ Bullet (http:/www.bulletphysics.com).
 #define ALLOWUNSAFE
 //#define TARGET_FLOAT32_IS_FIXED
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The quantization factor
         /// </summary>
-        public Vec2 QuantizationFactor;
+        public Vector2 QuantizationFactor;
 
         /// <summary>
         ///     The proxy count
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Collision
             WorldAabb = worldAabb;
             ProxyCount = 0;
 
-            Vec2 d = worldAabb.UpperBound - worldAabb.LowerBound;
+            Vector2 d = worldAabb.UpperBound - worldAabb.LowerBound;
             QuantizationFactor.X = BroadphaseMax / d.X;
             QuantizationFactor.Y = BroadphaseMax / d.Y;
 
@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The bool</returns>
         public bool InRange(Aabb aabb)
         {
-            Vec2 d = Math.Max(aabb.LowerBound - WorldAabb.UpperBound, WorldAabb.LowerBound - aabb.UpperBound);
+            Vector2 d = Math.Max(aabb.LowerBound - WorldAabb.UpperBound, WorldAabb.LowerBound - aabb.UpperBound);
             return Math.Max(d.X, d.Y) < 0.0f;
         }
 
@@ -1091,8 +1091,8 @@ namespace Alis.Core.Physic.Collision
             Box2DxDebug.Assert(aabb.UpperBound.X >= aabb.LowerBound.X);
             Box2DxDebug.Assert(aabb.UpperBound.Y >= aabb.LowerBound.Y);
 
-            Vec2 minVertex = Math.Clamp(aabb.LowerBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
-            Vec2 maxVertex = Math.Clamp(aabb.UpperBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
+            Vector2 minVertex = Math.Clamp(aabb.LowerBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
+            Vector2 maxVertex = Math.Clamp(aabb.UpperBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
 
             // Bump lower bounds downs and upper bounds up. This ensures correct sorting of
             // lower/upper bounds that would have equal values.

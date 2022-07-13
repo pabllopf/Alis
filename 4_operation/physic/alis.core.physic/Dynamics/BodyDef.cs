@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -48,10 +48,10 @@ namespace Alis.Core.Physic.Dynamics
             MassData.Mass = 0.0f;
             MassData.I = 0.0f;
             UserData = null;
-            Position = new Vec2();
+            Position = new Vector2();
             Position.Set(0.0f, 0.0f);
             Angle = 0.0f;
-            LinearVelocity = new Vec2(0f, 0f);
+            LinearVelocity = new Vector2(0f, 0f);
             AngularVelocity = 0.0f;
             LinearDamping = 0.0f;
             AngularDamping = 0.0f;
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     The world position of the body. Avoid creating bodies at the origin
         ///     since this can lead to many overlapping shapes.
         /// </summary>
-        public Vec2 Position;
+        public Vector2 Position;
 
         /// <summary>
         ///     The world angle of the body in radians.
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Dynamics
         public readonly float Angle;
 
         /// The linear velocity of the body in world co-ordinates.
-        public Vec2 LinearVelocity;
+        public Vector2 LinearVelocity;
 
         // The angular velocity of the body.
         /// <summary>

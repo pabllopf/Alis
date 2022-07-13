@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -83,8 +83,8 @@ namespace Alis.Core.Physic.Collision
                     SimplexVertex* v = vertices[i];
                     v->IndexA = cache->IndexA[i];
                     v->IndexB = cache->IndexB[i];
-                    Vec2 wALocal = shapeA.GetVertex(v->IndexA);
-                    Vec2 wBLocal = shapeB.GetVertex(v->IndexB);
+                    Vector2 wALocal = shapeA.GetVertex(v->IndexA);
+                    Vector2 wBLocal = shapeB.GetVertex(v->IndexB);
                     v->Wa = Math.Mul(transformA, wALocal);
                     v->Wb = Math.Mul(transformB, wBLocal);
                     v->W = v->Wb - v->Wa;
@@ -110,8 +110,8 @@ namespace Alis.Core.Physic.Collision
                     SimplexVertex* v = vertices[0];
                     v->IndexA = 0;
                     v->IndexB = 0;
-                    Vec2 wALocal = shapeA.GetVertex(0);
-                    Vec2 wBLocal = shapeB.GetVertex(0);
+                    Vector2 wALocal = shapeA.GetVertex(0);
+                    Vector2 wBLocal = shapeB.GetVertex(0);
                     v->Wa = Math.Mul(transformA, wALocal);
                     v->Wb = Math.Mul(transformB, wBLocal);
                     v->W = v->Wb - v->Wa;
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Collision
         ///     Gets the closest point
         /// </summary>
         /// <returns>The vec</returns>
-        internal Vec2 GetClosestPoint()
+        internal Vector2 GetClosestPoint()
         {
             switch (Count)
             {
@@ -154,18 +154,18 @@ namespace Alis.Core.Physic.Collision
 #if DEBUG
                     Box2DxDebug.Assert(false);
 #endif
-                    return Vec2.Zero;
+                    return Vector2.Zero;
                 case 1:
                     return V1.W;
                 case 2:
                     return V1.A * V1.W + V2.A * V2.W;
                 case 3:
-                    return Vec2.Zero;
+                    return Vector2.Zero;
                 default:
 #if DEBUG
                     Box2DxDebug.Assert(false);
 #endif
-                    return Vec2.Zero;
+                    return Vector2.Zero;
             }
         }
 
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         /// <param name="pA">The </param>
         /// <param name="pB">The </param>
-        internal unsafe void GetWitnessPoints(Vec2* pA, Vec2* pB)
+        internal unsafe void GetWitnessPoints(Vector2* pA, Vector2* pB)
         {
             switch (Count)
             {
@@ -221,10 +221,10 @@ namespace Alis.Core.Physic.Collision
                     return 0.0f;
 
                 case 2:
-                    return Vec2.Distance(V1.W, V2.W);
+                    return Vector2.Distance(V1.W, V2.W);
 
                 case 3:
-                    return Vec2.Cross(V2.W - V1.W, V3.W - V1.W);
+                    return Vector2.Cross(V2.W - V1.W, V3.W - V1.W);
 
                 default:
 #if DEBUG
@@ -262,12 +262,12 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         internal void Solve2()
         {
-            Vec2 w1 = V1.W;
-            Vec2 w2 = V2.W;
-            Vec2 e12 = w2 - w1;
+            Vector2 w1 = V1.W;
+            Vector2 w2 = V2.W;
+            Vector2 e12 = w2 - w1;
 
             // w1 region
-            float d122 = -Vec2.Dot(w1, e12);
+            float d122 = -Vector2.Dot(w1, e12);
             if (d122 <= 0.0f)
             {
                 // a2 <= 0, so we clamp it to 0
@@ -277,7 +277,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             // w2 region
-            float d121 = Vec2.Dot(w2, e12);
+            float d121 = Vector2.Dot(w2, e12);
             if (d121 <= 0.0f)
             {
                 // a1 <= 0, so we clamp it to 0
@@ -304,17 +304,17 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         internal void Solve3()
         {
-            Vec2 w1 = V1.W;
-            Vec2 w2 = V2.W;
-            Vec2 w3 = V3.W;
+            Vector2 w1 = V1.W;
+            Vector2 w2 = V2.W;
+            Vector2 w3 = V3.W;
 
             // Edge12
             // [1      1     ][a1] = [1]
             // [w1.e12 w2.e12][a2] = [0]
             // a3 = 0
-            Vec2 e12 = w2 - w1;
-            float w1E12 = Vec2.Dot(w1, e12);
-            float w2E12 = Vec2.Dot(w2, e12);
+            Vector2 e12 = w2 - w1;
+            float w1E12 = Vector2.Dot(w1, e12);
+            float w2E12 = Vector2.Dot(w2, e12);
             float d121 = w2E12;
             float d122 = -w1E12;
 
@@ -322,9 +322,9 @@ namespace Alis.Core.Physic.Collision
             // [1      1     ][a1] = [1]
             // [w1.e13 w3.e13][a3] = [0]
             // a2 = 0
-            Vec2 e13 = w3 - w1;
-            float w1E13 = Vec2.Dot(w1, e13);
-            float w3E13 = Vec2.Dot(w3, e13);
+            Vector2 e13 = w3 - w1;
+            float w1E13 = Vector2.Dot(w1, e13);
+            float w3E13 = Vector2.Dot(w3, e13);
             float d131 = w3E13;
             float d132 = -w1E13;
 
@@ -332,18 +332,18 @@ namespace Alis.Core.Physic.Collision
             // [1      1     ][a2] = [1]
             // [w2.e23 w3.e23][a3] = [0]
             // a1 = 0
-            Vec2 e23 = w3 - w2;
-            float w2E23 = Vec2.Dot(w2, e23);
-            float w3E23 = Vec2.Dot(w3, e23);
+            Vector2 e23 = w3 - w2;
+            float w2E23 = Vector2.Dot(w2, e23);
+            float w3E23 = Vector2.Dot(w3, e23);
             float d231 = w3E23;
             float d232 = -w2E23;
 
             // Triangle123
-            float n123 = Vec2.Cross(e12, e13);
+            float n123 = Vector2.Cross(e12, e13);
 
-            float d1231 = n123 * Vec2.Cross(w2, w3);
-            float d1232 = n123 * Vec2.Cross(w3, w1);
-            float d1233 = n123 * Vec2.Cross(w1, w2);
+            float d1231 = n123 * Vector2.Cross(w2, w3);
+            float d1232 = n123 * Vector2.Cross(w3, w1);
+            float d1233 = n123 * Vector2.Cross(w1, w2);
 
             // w1 region
             if (d122 <= 0.0f && d132 <= 0.0f)

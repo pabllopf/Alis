@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -59,12 +59,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local anchor point relative to body1's origin.
         /// </summary>
-        public Vec2 LocalAnchor1;
+        public Vector2 LocalAnchor1;
 
         /// <summary>
         ///     The local anchor point relative to body2's origin.
         /// </summary>
-        public Vec2 LocalAnchor2;
+        public Vector2 LocalAnchor2;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DistanceJointDef" /> class
@@ -82,13 +82,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Initialize the bodies, anchors, and length using the world anchors.
         /// </summary>
-        public void Initialize(Body body1, Body body2, Vec2 anchor1, Vec2 anchor2)
+        public void Initialize(Body body1, Body body2, Vector2 anchor1, Vector2 anchor2)
         {
             Body1 = body1;
             Body2 = body2;
             LocalAnchor1 = body1.GetLocalPoint(anchor1);
             LocalAnchor2 = body2.GetLocalPoint(anchor2);
-            Vec2 d = anchor2 - anchor1;
+            Vector2 d = anchor2 - anchor1;
             Length = d.Length();
         }
     }

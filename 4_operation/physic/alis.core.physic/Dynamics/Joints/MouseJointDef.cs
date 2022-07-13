@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The initial world target point. This is assumed
         ///     to coincide with the body anchor initially.
         /// </summary>
-        public Vec2 Target { get; }
+        public Vector2 Target { get; }
 
         /// <summary>
         ///     The maximum constraint force that can be exerted

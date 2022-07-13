@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -65,12 +65,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The local plane normal
         /// </summary>
-        public Vec2 LocalPlaneNormal;
+        public Vector2 LocalPlaneNormal;
 
         /// <summary>
         ///     The local point
         /// </summary>
-        public Vec2 LocalPoint;
+        public Vector2 LocalPoint;
 
         /// <summary>
         ///     The manifold
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vec2 Normal;
+        public Vector2 Normal;
 
         /// <summary>
         ///     The normal mass

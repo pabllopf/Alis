@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -39,17 +39,17 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The
         /// </summary>
-        internal Vec2 Wa; // support point in shapeA
+        internal Vector2 Wa; // support point in shapeA
 
         /// <summary>
         ///     The
         /// </summary>
-        internal Vec2 Wb; // support point in shapeB
+        internal Vector2 Wb; // support point in shapeB
 
         /// <summary>
         ///     The
         /// </summary>
-        internal Vec2 W; // wB - wA
+        internal Vector2 W; // wB - wA
 
         /// <summary>
         ///     The

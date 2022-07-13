@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -55,28 +55,28 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public readonly bool UseWorldGravity;
 
         /// Gravity vector, if the world's gravity is not used
-        public Vec2 Gravity;
+        public Vector2 Gravity;
 
         /// The outer surface normal
-        public Vec2 Normal;
+        public Vector2 Normal;
 
         /// Fluid velocity, for drag calculations
-        public Vec2 Velocity;
+        public Vector2 Velocity;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BuoyancyControllerDef" /> class
         /// </summary>
         public BuoyancyControllerDef()
         {
-            Normal = new Vec2(0, 1);
+            Normal = new Vector2(0, 1);
             Offset = 0;
             Density = 0;
-            Velocity = new Vec2(0, 0);
+            Velocity = new Vector2(0, 0);
             LinearDrag = 0;
             AngularDrag = 0;
             UseDensity = false;
             UseWorldGravity = true;
-            Gravity = new Vec2(0, 0);
+            Gravity = new Vector2(0, 0);
         }
     }
 }

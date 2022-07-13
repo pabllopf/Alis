@@ -35,7 +35,7 @@
 // Identity used:
 // w k % (rx i + ry j) = w * (-ry i + rx j)
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The target
         /// </summary>
-        public Vec2 Target;
+        public Vector2 Target;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MouseJoint" /> class
@@ -75,12 +75,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vec2 LocalAnchor { get; }
+        public Vector2 LocalAnchor { get; }
 
         /// <summary>
         ///     The impulse
         /// </summary>
-        public Vec2 Impulse { get; set; }
+        public Vector2 Impulse { get; set; }
 
         /// <summary>
         ///     The mass
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        public Vec2 C { get; set; }
+        public Vector2 C { get; set; }
 
         /// <summary>
         ///     The max force
@@ -120,12 +120,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vec2 Anchor1 => Target;
+        public override Vector2 Anchor1 => Target;
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor);
+        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor);
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param>The inv dt</param>
         /// <param name="invDt"></param>
         /// <returns>The vec</returns>
-        public override Vec2 GetReactionForce(float invDt)
+        public override Vector2 GetReactionForce(float invDt)
         {
             return invDt * Impulse;
         }
@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Use this to update the target point.
         /// </summary>
-        public void SetTarget(Vec2 target)
+        public void SetTarget(Vector2 target)
         {
             if (Body2.IsSleeping())
             {
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Beta = step.Dt * stiffness * Gamma;
 
             // Compute the effective mass matrix.
-            Vec2 effectiveMass = Math.Mul(body2.GetXForm().R, LocalAnchor - body2.GetLocalCenter());
+            Vector2 effectiveMass = Math.Mul(body2.GetXForm().R, LocalAnchor - body2.GetLocalCenter());
 
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
@@ -199,14 +199,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             Mat22 k1 = new Mat22
             {
-                Col1 = new Vec2(invMass, 0.0f),
-                Col2 = new Vec2(0.0f, invMass)
+                Col1 = new Vector2(invMass, 0.0f),
+                Col2 = new Vector2(0.0f, invMass)
             };
 
             Mat22 k2 = new Mat22
             {
-                Col1 = new Vec2(invI * effectiveMass.Y * effectiveMass.Y, -invI * effectiveMass.X * effectiveMass.Y),
-                Col2 = new Vec2(-invI * effectiveMass.X * effectiveMass.Y, invI * effectiveMass.X * effectiveMass.X)
+                Col1 = new Vector2(invI * effectiveMass.Y * effectiveMass.Y, -invI * effectiveMass.X * effectiveMass.Y),
+                Col2 = new Vector2(-invI * effectiveMass.X * effectiveMass.Y, invI * effectiveMass.X * effectiveMass.X)
             };
 
             Mat22 k = k1 + k2;
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // Warm starting.
             Impulse *= step.DtRatio;
             body2.LinearVelocity += invMass * Impulse;
-            body2.AngularVelocity += invI * Vec2.Cross(effectiveMass, Impulse);
+            body2.AngularVelocity += invI * Vector2.Cross(effectiveMass, Impulse);
         }
 
         /// <summary>
@@ -234,13 +234,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             Body b = Body2;
 
-            Vec2 r = Math.Mul(b.GetXForm().R, LocalAnchor - b.GetLocalCenter());
+            Vector2 r = Math.Mul(b.GetXForm().R, LocalAnchor - b.GetLocalCenter());
 
             // Cdot = v + cross(w, r)
-            Vec2 cdot = b.LinearVelocity + Vec2.Cross(b.AngularVelocity, r);
-            Vec2 impulse = Math.Mul(Mass, -(cdot + Beta * C + Gamma * Impulse));
+            Vector2 cdot = b.LinearVelocity + Vector2.Cross(b.AngularVelocity, r);
+            Vector2 impulse = Math.Mul(Mass, -(cdot + Beta * C + Gamma * Impulse));
 
-            Vec2 oldImpulse = Impulse;
+            Vector2 oldImpulse = Impulse;
             Impulse += impulse;
             float maxImpulse = step.Dt * MaxForce;
             if (Impulse.LengthSquared() > maxImpulse * maxImpulse)
@@ -251,7 +251,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             impulse = Impulse - oldImpulse;
 
             b.LinearVelocity += b.InvMass * impulse;
-            b.AngularVelocity += b.InvI * Vec2.Cross(r, impulse);
+            b.AngularVelocity += b.InvI * Vector2.Cross(r, impulse);
         }
 
         /// <summary>

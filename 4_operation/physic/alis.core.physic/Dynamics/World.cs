@@ -28,13 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;
-using Math = Alis.Core.Physic.Common.Math;
+using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -129,7 +129,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The gravity
         /// </summary>
-        private Vec2 gravity;
+        private Vector2 gravity;
 
         // This is used to compute the time step ratio to
         // support a variable time step.
@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The raycast normal
         /// </summary>
-        private Vec2 raycastNormal;
+        private Vector2 raycastNormal;
 
         /// <summary>
         ///     The raycast segment
@@ -185,7 +185,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
         /// <param name="gravity">The world gravity vector.</param>
         /// <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
-        public World(Aabb worldAabb, Vec2 gravity, bool doSleep)
+        public World(Aabb worldAabb, Vector2 gravity, bool doSleep)
         {
             destructionListener = null;
             boundaryListener = null;
@@ -222,7 +222,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Get\Set global gravity vector.
         /// </summary>
-        public Vec2 Gravity
+        public Vector2 Gravity
         {
             get { return gravity; }
             set { gravity = value; }
@@ -856,12 +856,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="solidShapes">Determines if shapes that the ray starts in are counted as hits.</param>
         /// <param name="userData"></param>
         /// <returns>Returns the colliding shape shape, or null if not found.</returns>
-        public Fixture RaycastOne(Segment segment, out float lambda, out Vec2 normal, bool solidShapes, object userData)
+        public Fixture RaycastOne(Segment segment, out float lambda, out Vector2 normal, bool solidShapes, object userData)
         {
             int maxCount = 1;
             Fixture[] fixture;
             lambda = 0.0f;
-            normal = new Vec2();
+            normal = new Vector2();
 
             int count = Raycast(segment, out fixture, maxCount, solidShapes, userData);
 
@@ -1389,10 +1389,10 @@ namespace Alis.Core.Physic.Dynamics
             Body b2 = joint.GetBody2();
             XForm xf1 = b1.GetXForm();
             XForm xf2 = b2.GetXForm();
-            Vec2 x1 = xf1.Position;
-            Vec2 x2 = xf2.Position;
-            Vec2 p1 = joint.Anchor1;
-            Vec2 p2 = joint.Anchor2;
+            Vector2 x1 = xf1.Position;
+            Vector2 x2 = xf2.Position;
+            Vector2 p1 = joint.Anchor1;
+            Vector2 p2 = joint.Anchor2;
 
             Color color = new Color(0.5f, 0.8f, 0.8f);
 
@@ -1405,8 +1405,8 @@ namespace Alis.Core.Physic.Dynamics
                 case JointType.PulleyJoint:
                 {
                     PulleyJoint pulley = (PulleyJoint) joint;
-                    Vec2 s1 = pulley.GroundAnchorX1;
-                    Vec2 s2 = pulley.GroundAnchorX2;
+                    Vector2 s1 = pulley.GroundAnchorX1;
+                    Vector2 s2 = pulley.GroundAnchorX2;
                     debugDraw.DrawSegment(s1, p1, color);
                     debugDraw.DrawSegment(s2, p2, color);
                     debugDraw.DrawSegment(s1, s2, color);
@@ -1442,9 +1442,9 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     CircleShape circle = (CircleShape) fixture.Shape;
 
-                    Vec2 center = Math.Mul(xf, circle.Position);
+                    Vector2 center = Math.Mul(xf, circle.Position);
                     float radius = circle.Radius;
-                    Vec2 axis = xf.R.Col1;
+                    Vector2 axis = xf.R.Col1;
 
                     debugDraw.DrawSolidCircle(center, radius, axis, color);
                 }
@@ -1454,10 +1454,10 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     PolygonShape poly = (PolygonShape) fixture.Shape;
                     int vertexCount = poly.VertexCount;
-                    Vec2[] localVertices = poly.Vertices;
+                    Vector2[] localVertices = poly.Vertices;
 
                     Box2DxDebug.Assert(vertexCount <= Settings.MaxPolygonVertices);
-                    Vec2[] vertices = new Vec2[Settings.MaxPolygonVertices];
+                    Vector2[] vertices = new Vector2[Settings.MaxPolygonVertices];
 
                     for (int i = 0; i < vertexCount; ++i)
                     {
@@ -1537,7 +1537,7 @@ namespace Alis.Core.Physic.Dynamics
             if ((flags & DrawFlags.Pair) != 0)
             {
                 BroadPhase bp = BroadPhase;
-                Vec2 invQ = new Vec2();
+                Vector2 invQ = new Vector2();
                 invQ.Set(1.0f / bp.QuantizationFactor.X, 1.0f / bp.QuantizationFactor.Y);
                 Color color = new Color(0.9f, 0.9f, 0.3f);
 
@@ -1560,8 +1560,8 @@ namespace Alis.Core.Physic.Dynamics
                         b2.UpperBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p2.UpperBounds[0]].Value;
                         b2.UpperBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p2.UpperBounds[1]].Value;
 
-                        Vec2 x1 = 0.5f * (b1.LowerBound + b1.UpperBound);
-                        Vec2 x2 = 0.5f * (b2.LowerBound + b2.UpperBound);
+                        Vector2 x1 = 0.5f * (b1.LowerBound + b1.UpperBound);
+                        Vector2 x2 = 0.5f * (b2.LowerBound + b2.UpperBound);
 
                         debugDraw.DrawSegment(x1, x2, color);
 
@@ -1573,10 +1573,10 @@ namespace Alis.Core.Physic.Dynamics
             if ((flags & DrawFlags.Aabb) != 0)
             {
                 BroadPhase bp = BroadPhase;
-                Vec2 worldLower = bp.WorldAabb.LowerBound;
-                Vec2 worldUpper = bp.WorldAabb.UpperBound;
+                Vector2 worldLower = bp.WorldAabb.LowerBound;
+                Vector2 worldUpper = bp.WorldAabb.UpperBound;
 
-                Vec2 invQ = new Vec2();
+                Vector2 invQ = new Vector2();
                 invQ.Set(1.0f / bp.QuantizationFactor.X, 1.0f / bp.QuantizationFactor.Y);
                 Color color = new Color(0.9f, 0.3f, 0.9f);
                 for (int i = 0; i < Settings.MaxProxies; ++i)
@@ -1593,7 +1593,7 @@ namespace Alis.Core.Physic.Dynamics
                     b.UpperBound.X = worldLower.X + invQ.X * bp.Bounds[0][p.UpperBounds[0]].Value;
                     b.UpperBound.Y = worldLower.Y + invQ.Y * bp.Bounds[1][p.UpperBounds[1]].Value;
 
-                    Vec2[] vs1 = new Vec2[4];
+                    Vector2[] vs1 = new Vector2[4];
                     vs1[0].Set(b.LowerBound.X, b.LowerBound.Y);
                     vs1[1].Set(b.UpperBound.X, b.LowerBound.Y);
                     vs1[2].Set(b.UpperBound.X, b.UpperBound.Y);
@@ -1602,7 +1602,7 @@ namespace Alis.Core.Physic.Dynamics
                     debugDraw.DrawPolygon(vs1, 4, color);
                 }
 
-                Vec2[] vs = new Vec2[4];
+                Vector2[] vs = new Vector2[4];
                 vs[0].Set(worldLower.X, worldLower.Y);
                 vs[1].Set(worldUpper.X, worldLower.Y);
                 vs[2].Set(worldUpper.X, worldUpper.Y);

@@ -34,8 +34,8 @@
 #define DEBUG
 
 using System;
-using Alis.Core.Physic.Common;
-using Math = Alis.Core.Physic.Common.Math;
+using Alis.Aspect.Math;
+using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Collision
 {

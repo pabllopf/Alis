@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The position of the shape's centroid relative to the shape's origin.
         /// </summary>
-        public Vec2 Center;
+        public Vector2 Center;
 
         /// <summary>
         ///     The rotational inertia of the shape.

@@ -28,13 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;
-using Math = Alis.Core.Physic.Common.Math;
+using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The force
         /// </summary>
-        internal Vec2 Force;
+        internal Vector2 Force;
 
         /// <summary>
         ///     The
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The linear velocity
         /// </summary>
-        internal Vec2 LinearVelocity;
+        internal Vector2 LinearVelocity;
 
         /// <summary>
         ///     The mass
@@ -475,7 +475,7 @@ namespace Alis.Core.Physic.Dynamics
             I = 0.0f;
             InvI = 0.0f;
 
-            Vec2 center = Vec2.Zero;
+            Vector2 center = Vector2.Zero;
             for (Fixture f = FixtureList; f != null; f = f.Next)
             {
                 MassData massData;
@@ -495,7 +495,7 @@ namespace Alis.Core.Physic.Dynamics
             if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
             {
                 // Center the inertia about the center of mass.
-                I -= Mass * Vec2.Dot(center, center);
+                I -= Mass * Vector2.Dot(center, center);
                 Box2DxDebug.Assert(I > 0.0f);
                 InvI = 1.0f / I;
             }
@@ -542,7 +542,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Return false if the movement put a shape outside the world. In this case the
         ///     body is automatically frozen.
         /// </returns>
-        public bool SetXForm(Vec2 position, float angle)
+        public bool SetXForm(Vector2 position, float angle)
         {
             Box2DxDebug.Assert(world.Lock == false);
             if (world.Lock)
@@ -617,7 +617,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Set the world body origin position.
         /// </summary>
         /// <param name="position">The new position of the body.</param>
-        public void SetPosition(Vec2 position)
+        public void SetPosition(Vector2 position)
         {
             SetXForm(position, GetAngle());
         }
@@ -635,7 +635,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the world body origin position.
         /// </summary>
         /// <returns>Return the world position of the body's origin.</returns>
-        public Vec2 GetPosition()
+        public Vector2 GetPosition()
         {
             return Xf.Position;
         }
@@ -653,7 +653,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the world position of the center of mass.
         /// </summary>
         /// <returns></returns>
-        public Vec2 GetWorldCenter()
+        public Vector2 GetWorldCenter()
         {
             return Sweep.C;
         }
@@ -662,7 +662,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the local position of the center of mass.
         /// </summary>
         /// <returns></returns>
-        public Vec2 GetLocalCenter()
+        public Vector2 GetLocalCenter()
         {
             return Sweep.LocalCenter;
         }
@@ -671,7 +671,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Set the linear velocity of the center of mass.
         /// </summary>
         /// <param name="v">The new linear velocity of the center of mass.</param>
-        public void SetLinearVelocity(Vec2 v)
+        public void SetLinearVelocity(Vector2 v)
         {
             LinearVelocity = v;
         }
@@ -680,7 +680,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the linear velocity of the center of mass.
         /// </summary>
         /// <returns>Return the linear velocity of the center of mass.</returns>
-        public Vec2 GetLinearVelocity()
+        public Vector2 GetLinearVelocity()
         {
             return LinearVelocity;
         }
@@ -710,7 +710,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="force">The world force vector, usually in Newtons (N).</param>
         /// <param name="point">The world position of the point of application.</param>
-        public void ApplyForce(Vec2 force, Vec2 point)
+        public void ApplyForce(Vector2 force, Vector2 point)
         {
             if (IsSleeping())
             {
@@ -718,7 +718,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             Force += force;
-            Torque += Vec2.Cross(point - Sweep.C, force);
+            Torque += Vector2.Cross(point - Sweep.C, force);
         }
 
         /// <summary>
@@ -744,7 +744,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         /// <param name="point">The world position of the point of application.</param>
-        public void ApplyImpulse(Vec2 impulse, Vec2 point)
+        public void ApplyImpulse(Vector2 impulse, Vector2 point)
         {
             if (IsSleeping())
             {
@@ -752,7 +752,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             LinearVelocity += InvMass * impulse;
-            AngularVelocity += InvI * Vec2.Cross(point - Sweep.C, impulse);
+            AngularVelocity += InvI * Vector2.Cross(point - Sweep.C, impulse);
         }
 
         /// <summary>
@@ -791,7 +791,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>Return the same point expressed in world coordinates.</returns>
-        public Vec2 GetWorldPoint(Vec2 localPoint)
+        public Vector2 GetWorldPoint(Vector2 localPoint)
         {
             return Math.Mul(Xf, localPoint);
         }
@@ -801,7 +801,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>Return the same vector expressed in world coordinates.</returns>
-        public Vec2 GetWorldVector(Vec2 localVector)
+        public Vector2 GetWorldVector(Vector2 localVector)
         {
             return Math.Mul(Xf.R, localVector);
         }
@@ -811,7 +811,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>Return the corresponding local point relative to the body's origin.</returns>
-        public Vec2 GetLocalPoint(Vec2 worldPoint)
+        public Vector2 GetLocalPoint(Vector2 worldPoint)
         {
             return Math.MulT(Xf, worldPoint);
         }
@@ -821,7 +821,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>Return the corresponding local vector.</returns>
-        public Vec2 GetLocalVector(Vec2 worldVector)
+        public Vector2 GetLocalVector(Vector2 worldVector)
         {
             return Math.MulT(Xf.R, worldVector);
         }
@@ -831,9 +831,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vec2 GetLinearVelocityFromWorldPoint(Vec2 worldPoint)
+        public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint)
         {
-            return LinearVelocity + Vec2.Cross(AngularVelocity, worldPoint - Sweep.C);
+            return LinearVelocity + Vector2.Cross(AngularVelocity, worldPoint - Sweep.C);
         }
 
         /// <summary>
@@ -841,7 +841,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vec2 GetLinearVelocityFromLocalPoint(Vec2 localPoint)
+        public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint)
         {
             return GetLinearVelocityFromWorldPoint(GetWorldPoint(localPoint));
         }

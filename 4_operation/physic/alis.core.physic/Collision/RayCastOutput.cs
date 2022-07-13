@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The normal
         /// </summary>
-        public Vec2 Normal;
+        public Vector2 Normal;
 
         /// <summary>
         ///     The fraction

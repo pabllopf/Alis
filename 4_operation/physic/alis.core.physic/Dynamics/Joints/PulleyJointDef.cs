@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -41,12 +41,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The first ground anchor in world coordinates. This point never moves.
         /// </summary>
-        public Vec2 GroundAnchor1;
+        public Vector2 GroundAnchor1;
 
         /// <summary>
         ///     The second ground anchor in world coordinates. This point never moves.
         /// </summary>
-        public Vec2 GroundAnchor2;
+        public Vector2 GroundAnchor2;
 
         /// <summary>
         ///     The a reference length for the segment attached to body1.
@@ -56,12 +56,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local anchor point relative to body1's origin.
         /// </summary>
-        public Vec2 LocalAnchor1;
+        public Vector2 LocalAnchor1;
 
         /// <summary>
         ///     The local anchor point relative to body2's origin.
         /// </summary>
-        public Vec2 LocalAnchor2;
+        public Vector2 LocalAnchor2;
 
         /// <summary>
         ///     The maximum length of the segment attached to body1.
@@ -103,8 +103,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         /// Initialize the bodies, anchors, lengths, max lengths, and ratio using the world anchors.
         public void Initialize(Body body1, Body body2,
-            Vec2 groundAnchor1, Vec2 groundAnchor2,
-            Vec2 anchor1, Vec2 anchor2,
+            Vector2 groundAnchor1, Vector2 groundAnchor2,
+            Vector2 anchor1, Vector2 anchor2,
             float ratio)
         {
             Body1 = body1;
@@ -113,9 +113,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             GroundAnchor2 = groundAnchor2;
             LocalAnchor1 = body1.GetLocalPoint(anchor1);
             LocalAnchor2 = body2.GetLocalPoint(anchor2);
-            Vec2 d1 = anchor1 - groundAnchor1;
+            Vector2 d1 = anchor1 - groundAnchor1;
             Length1 = d1.Length();
-            Vec2 d2 = anchor2 - groundAnchor2;
+            Vector2 d2 = anchor2 - groundAnchor2;
             Length2 = d2.Length();
             Ratio = ratio;
             Box2DxDebug.Assert(ratio > Settings.FltEpsilon);

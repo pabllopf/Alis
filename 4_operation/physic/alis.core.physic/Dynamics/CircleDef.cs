@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The local position
         /// </summary>
-        public Vec2 LocalPosition;
+        public Vector2 LocalPosition;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleDef" /> class
@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Dynamics
         public CircleDef()
         {
             Type = ShapeType.CircleShape;
-            LocalPosition = Vec2.Zero;
+            LocalPosition = Vector2.Zero;
             Radius = 1.0f;
         }
     }

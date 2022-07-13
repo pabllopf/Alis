@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -39,12 +39,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Closest point on shapeA.
         /// </summary>
-        public Vec2 PointA;
+        public Vector2 PointA;
 
         /// <summary>
         ///     Closest point on shapeB.
         /// </summary>
-        public Vec2 PointB;
+        public Vector2 PointB;
 
         /// <summary>
         ///     The distance

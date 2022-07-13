@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -39,12 +39,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The
         /// </summary>
-        public Vec2 P1;
+        public Vector2 P1;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vec2 P2;
+        public Vector2 P2;
 
         /// <summary>
         ///     The max fraction

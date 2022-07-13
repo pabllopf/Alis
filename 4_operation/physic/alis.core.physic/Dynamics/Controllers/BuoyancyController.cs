@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -55,13 +55,13 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public readonly bool UseWorldGravity;
 
         /// Gravity vector, if the world's gravity is not used
-        public Vec2 Gravity;
+        public Vector2 Gravity;
 
         /// The outer surface normal
-        public Vec2 Normal;
+        public Vector2 Normal;
 
         /// Fluid velocity, for drag calculations
-        public Vec2 Velocity;
+        public Vector2 Velocity;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BuoyancyController" /> class
@@ -107,13 +107,13 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                     continue;
                 }
 
-                Vec2 areac = new Vec2(0, 0);
-                Vec2 massc = new Vec2(0, 0);
+                Vector2 areac = new Vector2(0, 0);
+                Vector2 massc = new Vector2(0, 0);
                 float area = 0;
                 float mass = 0;
                 for (Fixture shape = body.GetFixtureList(); shape != null; shape = shape.Next)
                 {
-                    Vec2 sc;
+                    Vector2 sc;
                     float sarea = shape.ComputeSubmergedArea(Normal, Offset, out sc);
                     area += sarea;
                     areac.X += sarea * sc.X;
@@ -145,10 +145,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 }
 
                 //Buoyancy
-                Vec2 buoyancyForce = -Density * area * Gravity;
+                Vector2 buoyancyForce = -Density * area * Gravity;
                 body.ApplyForce(buoyancyForce, massc);
                 //Linear drag
-                Vec2 dragForce = body.GetLinearVelocityFromWorldPoint(areac) - Velocity;
+                Vector2 dragForce = body.GetLinearVelocityFromWorldPoint(areac) - Velocity;
                 dragForce *= -LinearDrag * area;
                 body.ApplyForce(dragForce, areac);
                 //Angular drag
@@ -164,8 +164,8 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public override void Draw(DebugDraw debugDraw)
         {
             float r = 1000;
-            Vec2 p1 = Offset * Normal + Vec2.Cross(Normal, r);
-            Vec2 p2 = Offset * Normal - Vec2.Cross(Normal, r);
+            Vector2 p1 = Offset * Normal + Vector2.Cross(Normal, r);
+            Vector2 p2 = Offset * Normal - Vector2.Cross(Normal, r);
 
             Color color = new Color(0, 0, 0.8f);
 

@@ -46,7 +46,7 @@
 // K = invMass + invI * cross(r, u)^2
 // 0 <= impulse
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -111,32 +111,32 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The ground anchor
         /// </summary>
-        public Vec2 GroundAnchor1 { get; }
+        public Vector2 GroundAnchor1 { get; }
 
         /// <summary>
         ///     The ground anchor
         /// </summary>
-        public Vec2 GroundAnchor2 { get; }
+        public Vector2 GroundAnchor2 { get; }
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vec2 LocalAnchor1 { get; }
+        public Vector2 LocalAnchor1 { get; }
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vec2 LocalAnchor2 { get; }
+        public Vector2 LocalAnchor2 { get; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vec2 U1 { get; set; }
+        public Vector2 U1 { get; set; }
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vec2 U2 { get; set; }
+        public Vector2 U2 { get; set; }
 
         /// <summary>
         ///     The constant
@@ -195,22 +195,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
         /// <summary>
         ///     Get the first ground anchor.
         /// </summary>
-        public Vec2 GroundAnchorX1 => Ground.GetXForm().Position + GroundAnchor1;
+        public Vector2 GroundAnchorX1 => Ground.GetXForm().Position + GroundAnchor1;
 
         /// <summary>
         ///     Get the second ground anchor.
         /// </summary>
-        public Vec2 GroundAnchorX2 => Ground.GetXForm().Position + GroundAnchor2;
+        public Vector2 GroundAnchorX2 => Ground.GetXForm().Position + GroundAnchor2;
 
         /// <summary>
         ///     Get the current length of the segment attached to body1.
@@ -219,9 +219,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             get
             {
-                Vec2 p = Body1.GetWorldPoint(LocalAnchor1);
-                Vec2 s = Ground.GetXForm().Position + GroundAnchor1;
-                Vec2 d = p - s;
+                Vector2 p = Body1.GetWorldPoint(LocalAnchor1);
+                Vector2 s = Ground.GetXForm().Position + GroundAnchor1;
+                Vector2 d = p - s;
                 return d.Length();
             }
         }
@@ -233,9 +233,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             get
             {
-                Vec2 p = Body2.GetWorldPoint(LocalAnchor2);
-                Vec2 s = Ground.GetXForm().Position + GroundAnchor2;
-                Vec2 d = p - s;
+                Vector2 p = Body2.GetWorldPoint(LocalAnchor2);
+                Vector2 s = Ground.GetXForm().Position + GroundAnchor2;
+                Vector2 d = p - s;
                 return d.Length();
             }
         }
@@ -250,9 +250,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vec2 GetReactionForce(float invDt)
+        public override Vector2 GetReactionForce(float invDt)
         {
-            Vec2 p = Impulse * U2;
+            Vector2 p = Impulse * U2;
             return invDt * p;
         }
 
@@ -275,14 +275,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body body1 = Body1;
             Body body2 = Body2;
 
-            Vec2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
-            Vec2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+            Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+            Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
 
-            Vec2 body1SweepC = body1.Sweep.C + mulR1;
-            Vec2 body2SweepC = body2.Sweep.C + mulR2;
+            Vector2 body1SweepC = body1.Sweep.C + mulR1;
+            Vector2 body2SweepC = body2.Sweep.C + mulR2;
 
-            Vec2 groundAnchor1 = Ground.GetXForm().Position + GroundAnchor1;
-            Vec2 groundAnchor2 = Ground.GetXForm().Position + GroundAnchor2;
+            Vector2 groundAnchor1 = Ground.GetXForm().Position + GroundAnchor1;
+            Vector2 groundAnchor2 = Ground.GetXForm().Position + GroundAnchor2;
 
             // Get the pulley axes.
             U1 = body1SweepC - groundAnchor1;
@@ -341,8 +341,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
 
             // Compute effective mass.
-            float cr1U1 = Vec2.Cross(mulR1, U1);
-            float cr2U2 = Vec2.Cross(mulR2, U2);
+            float cr1U1 = Vector2.Cross(mulR1, U1);
+            float cr2U2 = Vector2.Cross(mulR2, U2);
 
             LimitMass1 = body1.InvMass + body1.InvI * cr1U1 * cr1U1;
             LimitMass2 = body2.InvMass + body2.InvI * cr2U2 * cr2U2;
@@ -362,12 +362,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 LimitImpulse2 *= step.DtRatio;
 
                 // Warm starting.
-                Vec2 p1 = -(Impulse + LimitImpulse1) * U1;
-                Vec2 p2 = (-Ratio * Impulse - LimitImpulse2) * U2;
+                Vector2 p1 = -(Impulse + LimitImpulse1) * U1;
+                Vector2 p2 = (-Ratio * Impulse - LimitImpulse2) * U2;
                 body1.LinearVelocity += body1.InvMass * p1;
-                body1.AngularVelocity += body1.InvI * Vec2.Cross(mulR1, p1);
+                body1.AngularVelocity += body1.InvI * Vector2.Cross(mulR1, p1);
                 body2.LinearVelocity += body2.InvMass * p2;
-                body2.AngularVelocity += body2.InvI * Vec2.Cross(mulR2, p2);
+                body2.AngularVelocity += body2.InvI * Vector2.Cross(mulR2, p2);
             }
             else
             {
@@ -386,56 +386,56 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            Vec2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vec2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vector2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vector2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
             if (State == LimitState.AtUpperLimit)
             {
-                Vec2 v1 = b1.LinearVelocity + Vec2.Cross(b1.AngularVelocity, r1);
-                Vec2 v2 = b2.LinearVelocity + Vec2.Cross(b2.AngularVelocity, r2);
+                Vector2 v1 = b1.LinearVelocity + Vector2.Cross(b1.AngularVelocity, r1);
+                Vector2 v2 = b2.LinearVelocity + Vector2.Cross(b2.AngularVelocity, r2);
 
-                float cdot = -Vec2.Dot(U1, v1) - Ratio * Vec2.Dot(U2, v2);
+                float cdot = -Vector2.Dot(U1, v1) - Ratio * Vector2.Dot(U2, v2);
                 float impulse = PulleyMass * -cdot;
                 float oldImpulse = Impulse;
                 Impulse = Box2DXMath.Max(0.0f, Impulse + impulse);
                 impulse = Impulse - oldImpulse;
 
-                Vec2 p1 = -impulse * U1;
-                Vec2 p2 = -Ratio * impulse * U2;
+                Vector2 p1 = -impulse * U1;
+                Vector2 p2 = -Ratio * impulse * U2;
                 b1.LinearVelocity += b1.InvMass * p1;
-                b1.AngularVelocity += b1.InvI * Vec2.Cross(r1, p1);
+                b1.AngularVelocity += b1.InvI * Vector2.Cross(r1, p1);
                 b2.LinearVelocity += b2.InvMass * p2;
-                b2.AngularVelocity += b2.InvI * Vec2.Cross(r2, p2);
+                b2.AngularVelocity += b2.InvI * Vector2.Cross(r2, p2);
             }
 
             if (LimitState1 == LimitState.AtUpperLimit)
             {
-                Vec2 v1 = b1.LinearVelocity + Vec2.Cross(b1.AngularVelocity, r1);
+                Vector2 v1 = b1.LinearVelocity + Vector2.Cross(b1.AngularVelocity, r1);
 
-                float cdot = -Vec2.Dot(U1, v1);
+                float cdot = -Vector2.Dot(U1, v1);
                 float impulse = -LimitMass1 * cdot;
                 float oldImpulse = LimitImpulse1;
                 LimitImpulse1 = Box2DXMath.Max(0.0f, LimitImpulse1 + impulse);
                 impulse = LimitImpulse1 - oldImpulse;
 
-                Vec2 p1 = -impulse * U1;
+                Vector2 p1 = -impulse * U1;
                 b1.LinearVelocity += b1.InvMass * p1;
-                b1.AngularVelocity += b1.InvI * Vec2.Cross(r1, p1);
+                b1.AngularVelocity += b1.InvI * Vector2.Cross(r1, p1);
             }
 
             if (LimitState2 == LimitState.AtUpperLimit)
             {
-                Vec2 v2 = b2.LinearVelocity + Vec2.Cross(b2.AngularVelocity, r2);
+                Vector2 v2 = b2.LinearVelocity + Vector2.Cross(b2.AngularVelocity, r2);
 
-                float cdot = -Vec2.Dot(U2, v2);
+                float cdot = -Vector2.Dot(U2, v2);
                 float impulse = -LimitMass2 * cdot;
                 float oldImpulse = LimitImpulse2;
                 LimitImpulse2 = Box2DXMath.Max(0.0f, LimitImpulse2 + impulse);
                 impulse = LimitImpulse2 - oldImpulse;
 
-                Vec2 p2 = -impulse * U2;
+                Vector2 p2 = -impulse * U2;
                 b2.LinearVelocity += b2.InvMass * p2;
-                b2.AngularVelocity += b2.InvI * Vec2.Cross(r2, p2);
+                b2.AngularVelocity += b2.InvI * Vector2.Cross(r2, p2);
             }
         }
 
@@ -449,18 +449,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body body1 = Body1;
             Body body2 = Body2;
 
-            Vec2 groundAnchor1 = Ground.GetXForm().Position + GroundAnchor1;
-            Vec2 groundAnchor2 = Ground.GetXForm().Position + GroundAnchor2;
+            Vector2 groundAnchor1 = Ground.GetXForm().Position + GroundAnchor1;
+            Vector2 groundAnchor2 = Ground.GetXForm().Position + GroundAnchor2;
 
             float linearError = 0.0f;
 
             if (State == LimitState.AtUpperLimit)
             {
-                Vec2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
-                Vec2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+                Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+                Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
 
-                Vec2 body1SweepC = body1.Sweep.C + mulR1;
-                Vec2 body2SweepC = body2.Sweep.C + mulR2;
+                Vector2 body1SweepC = body1.Sweep.C + mulR1;
+                Vector2 body2SweepC = body2.Sweep.C + mulR2;
 
                 // Get the pulley axes.
                 U1 = body1SweepC - groundAnchor1;
@@ -493,13 +493,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 c = Box2DXMath.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
                 float impulse = -PulleyMass * c;
 
-                Vec2 p1 = -impulse * U1;
-                Vec2 p2 = -Ratio * impulse * U2;
+                Vector2 p1 = -impulse * U1;
+                Vector2 p2 = -Ratio * impulse * U2;
 
                 body1.Sweep.C += body1.InvMass * p1;
-                body1.Sweep.A += body1.InvI * Vec2.Cross(mulR1, p1);
+                body1.Sweep.A += body1.InvI * Vector2.Cross(mulR1, p1);
                 body2.Sweep.C += body2.InvMass * p2;
-                body2.Sweep.A += body2.InvI * Vec2.Cross(mulR2, p2);
+                body2.Sweep.A += body2.InvI * Vector2.Cross(mulR2, p2);
 
                 body1.SynchronizeTransform();
                 body2.SynchronizeTransform();
@@ -507,8 +507,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (LimitState1 == LimitState.AtUpperLimit)
             {
-                Vec2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
-                Vec2 body1SweepC = body1.Sweep.C + mulR1;
+                Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+                Vector2 body1SweepC = body1.Sweep.C + mulR1;
 
                 U1 = body1SweepC - groundAnchor1;
                 float length1 = U1.Length();
@@ -527,17 +527,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 c = Box2DXMath.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
                 float impulse = -LimitMass1 * c;
 
-                Vec2 p1 = -impulse * U1;
+                Vector2 p1 = -impulse * U1;
                 body1.Sweep.C += body1.InvMass * p1;
-                body1.Sweep.A += body1.InvI * Vec2.Cross(mulR1, p1);
+                body1.Sweep.A += body1.InvI * Vector2.Cross(mulR1, p1);
 
                 body1.SynchronizeTransform();
             }
 
             if (LimitState2 == LimitState.AtUpperLimit)
             {
-                Vec2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
-                Vec2 body2SweepC = body2.Sweep.C + mulR2;
+                Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+                Vector2 body2SweepC = body2.Sweep.C + mulR2;
 
                 U2 = body2SweepC - groundAnchor2;
                 float length2 = U2.Length();
@@ -556,9 +556,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 c = Box2DXMath.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
                 float impulse = -LimitMass2 * c;
 
-                Vec2 p2 = -impulse * U2;
+                Vector2 p2 = -impulse * U2;
                 body2.Sweep.C += body2.InvMass * p2;
-                body2.Sweep.A += body2.InvI * Vec2.Cross(mulR2, p2);
+                body2.Sweep.A += body2.InvI * Vector2.Cross(mulR2, p2);
 
                 body2.SynchronizeTransform();
             }

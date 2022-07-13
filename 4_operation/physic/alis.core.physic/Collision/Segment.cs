@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -54,25 +54,25 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Ray cast against this segment with another segment.
         /// </summary>
-        public bool TestSegment(out float lambda, out Vec2 normal, Segment segment, float maxLambda)
+        public bool TestSegment(out float lambda, out Vector2 normal, Segment segment, float maxLambda)
         {
             lambda = 0f;
-            normal = new Vec2();
+            normal = new Vector2();
 
-            Vec2 s = segment.P1;
-            Vec2 r = segment.P2 - s;
-            Vec2 d = P2 - P1;
-            Vec2 n = Vec2.Cross(d, 1.0f);
+            Vector2 s = segment.P1;
+            Vector2 r = segment.P2 - s;
+            Vector2 d = P2 - P1;
+            Vector2 n = Vector2.Cross(d, 1.0f);
 
             float kSlop = 100.0f * Settings.FltEpsilon;
-            float denom = -Vec2.Dot(r, n);
+            float denom = -Vector2.Dot(r, n);
 
             // Cull back facing collision and ignore parallel segments.
             if (denom > kSlop)
             {
                 // Does the segment intersect the infinite line associated with this segment?
-                Vec2 b = s - P1;
-                float a = Vec2.Dot(b, n);
+                Vector2 b = s - P1;
+                float a = Vector2.Dot(b, n);
 
                 if (0.0f <= a && a <= maxLambda * denom)
                 {
@@ -96,11 +96,11 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The starting point.
         /// </summary>
-        public Vec2 P1;
+        public Vector2 P1;
 
         /// <summary>
         ///     The ending point.
         /// </summary>
-        public Vec2 P2;
+        public Vector2 P2;
     }
 }

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                     continue;
                 }
 
-                Vec2 damping = body.GetWorldVector(Math.Mul(T, body.GetLocalVector(body.GetLinearVelocity())));
+                Vector2 damping = body.GetWorldVector(Math.Mul(T, body.GetLocalVector(body.GetLinearVelocity())));
                 body.SetLinearVelocity(body.GetLinearVelocity() + timestep * damping);
             }
         }

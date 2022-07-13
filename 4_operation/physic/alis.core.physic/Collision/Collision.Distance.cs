@@ -29,8 +29,8 @@
 
 #define DEBUG
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Collision
                 }
 
                 // Compute closest point.
-                Vec2 p = simplex.GetClosestPoint();
+                Vector2 p = simplex.GetClosestPoint();
                 float distanceSqr = p.LengthSquared();
 
                 // Ensure the search direction is numerically fit.
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Collision
                 ++iter;
 
                 // Check for convergence.
-                float lowerBound = Vec2.Dot(p, vertex->W);
+                float lowerBound = Vector2.Dot(p, vertex->W);
                 float upperBound = distanceSqr;
                 const float kRelativeTolSqr = 0.01f * 0.01f; // 1:100
                 if (upperBound - lowerBound <= kRelativeTolSqr * upperBound)
@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Collision
             {
                 // Prepare output.
                 simplex.GetWitnessPoints(&doPtr->PointA, &doPtr->PointB);
-                doPtr->Distance = Vec2.Distance(doPtr->PointA, doPtr->PointB);
+                doPtr->Distance = Vector2.Distance(doPtr->PointA, doPtr->PointB);
                 doPtr->Iterations = iter;
             }
 
@@ -194,7 +194,7 @@ namespace Alis.Core.Physic.Collision
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.
                     output.Distance -= rA + rB;
-                    Vec2 normal = output.PointB - output.PointA;
+                    Vector2 normal = output.PointB - output.PointA;
                     normal.Normalize();
                     output.PointA += rA * normal;
                     output.PointB -= rB * normal;
@@ -203,7 +203,7 @@ namespace Alis.Core.Physic.Collision
                 {
                     // Shapes are overlapped when radii are considered.
                     // Move the witness points to the middle.
-                    Vec2 p = 0.5f * (output.PointA + output.PointB);
+                    Vector2 p = 0.5f * (output.PointA + output.PointB);
                     output.PointA = p;
                     output.PointB = p;
                     output.Distance = 0.0f;

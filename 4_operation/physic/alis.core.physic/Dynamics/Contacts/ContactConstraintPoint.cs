@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -39,17 +39,17 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The local point
         /// </summary>
-        public Vec2 LocalPoint;
+        public Vector2 LocalPoint;
 
         /// <summary>
         ///     The ra
         /// </summary>
-        public Vec2 Ra;
+        public Vector2 Ra;
 
         /// <summary>
         ///     The rb
         /// </summary>
-        public Vec2 Rb;
+        public Vector2 Rb;
 
         /// <summary>
         ///     The normal impulse

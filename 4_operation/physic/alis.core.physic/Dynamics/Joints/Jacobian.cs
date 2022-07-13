@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The linear
         /// </summary>
-        public Vec2 Linear1;
+        public Vector2 Linear1;
 
         /// <summary>
         ///     The angular
@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The linear
         /// </summary>
-        public Vec2 Linear2;
+        public Vector2 Linear2;
 
         /// <summary>
         ///     The angular
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="a1">The </param>
         /// <param name="x2">The </param>
         /// <param name="a2">The </param>
-        public void Set(Vec2 x1, float a1, Vec2 x2, float a2)
+        public void Set(Vector2 x1, float a1, Vector2 x2, float a2)
         {
             Linear1 = x1;
             Angular1 = a1;
@@ -90,9 +90,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="x2">The </param>
         /// <param name="a2">The </param>
         /// <returns>The float</returns>
-        public float Compute(Vec2 x1, float a1, Vec2 x2, float a2)
+        public float Compute(Vector2 x1, float a1, Vector2 x2, float a2)
         {
-            return Vec2.Dot(Linear1, x1) + Angular1 * a1 + Vec2.Dot(Linear2, x2) + Angular2 * a2;
+            return Vector2.Dot(Linear1, x1) + Angular1 * a1 + Vector2.Dot(Linear2, x2) + Angular2 * a2;
         }
     }
 }

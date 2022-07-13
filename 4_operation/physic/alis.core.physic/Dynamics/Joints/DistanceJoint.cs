@@ -42,7 +42,7 @@
 // K = J * invM * JT
 //   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -86,12 +86,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vec2 LocalAnchor1;
+        public Vector2 LocalAnchor1;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vec2 LocalAnchor2;
+        public Vector2 LocalAnchor2;
 
         /// <summary>
         ///     The mass
@@ -102,7 +102,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The vector
         /// </summary>
-        public Vec2 U;
+        public Vector2 U;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="DistanceJoint" /> class
@@ -124,19 +124,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vec2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vec2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vec2 GetReactionForce(float invDt)
+        public override Vector2 GetReactionForce(float invDt)
         {
             return invDt * Impulse * U;
         }
@@ -161,8 +161,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b2 = Body2;
 
             // Compute the effective mass matrix.
-            Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vector2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
             U = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
             // Handle singularity.
@@ -176,8 +176,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 U.Set(0.0f, 0.0f);
             }
 
-            float cr1U = Vec2.Cross(r1, U);
-            float cr2U = Vec2.Cross(r2, U);
+            float cr1U = Vector2.Cross(r1, U);
+            float cr2U = Vector2.Cross(r2, U);
             float invMass = b1.InvMass + b1.InvI * cr1U * cr1U + b2.InvMass + b2.InvI * cr2U * cr2U;
             Box2DxDebug.Assert(invMass > Settings.FltEpsilon);
             Mass = 1.0f / invMass;
@@ -206,11 +206,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 //Scale the inpulse to support a variable timestep.
                 Impulse *= step.DtRatio;
-                Vec2 p = Impulse * U;
+                Vector2 p = Impulse * U;
                 b1.LinearVelocity -= b1.InvMass * p;
-                b1.AngularVelocity -= b1.InvI * Vec2.Cross(r1, p);
+                b1.AngularVelocity -= b1.InvI * Vector2.Cross(r1, p);
                 b2.LinearVelocity += b2.InvMass * p;
-                b2.AngularVelocity += b2.InvI * Vec2.Cross(r2, p);
+                b2.AngularVelocity += b2.InvI * Vector2.Cross(r2, p);
             }
             else
             {
@@ -234,10 +234,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vector2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
-            Vec2 d = b2.Sweep.C + r2 - b1.Sweep.C - r1;
+            Vector2 d = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
             float length = d.Normalize();
             float c = length - this.length;
@@ -245,12 +245,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float impulse = -Mass * c;
             U = d;
-            Vec2 p = impulse * U;
+            Vector2 p = impulse * U;
 
             b1.Sweep.C -= b1.InvMass * p;
-            b1.Sweep.A -= b1.InvI * Vec2.Cross(r1, p);
+            b1.Sweep.A -= b1.InvI * Vector2.Cross(r1, p);
             b2.Sweep.C += b2.InvMass * p;
-            b2.Sweep.A += b2.InvI * Vec2.Cross(r2, p);
+            b2.Sweep.A += b2.InvI * Vector2.Cross(r2, p);
 
             b1.SynchronizeTransform();
             b2.SynchronizeTransform();
@@ -269,21 +269,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body b1 = Body1;
             Body b2 = Body2;
 
-            Vec2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vec2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vector2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
             // Cdot = dot(u, v + cross(w, r))
-            Vec2 v1 = b1.LinearVelocity + Vec2.Cross(b1.AngularVelocity, r1);
-            Vec2 v2 = b2.LinearVelocity + Vec2.Cross(b2.AngularVelocity, r2);
-            float cdot = Vec2.Dot(U, v2 - v1);
+            Vector2 v1 = b1.LinearVelocity + Vector2.Cross(b1.AngularVelocity, r1);
+            Vector2 v2 = b2.LinearVelocity + Vector2.Cross(b2.AngularVelocity, r2);
+            float cdot = Vector2.Dot(U, v2 - v1);
             float impulse = -Mass * (cdot + Bias + Gamma * Impulse);
             Impulse += impulse;
 
-            Vec2 p = impulse * U;
+            Vector2 p = impulse * U;
             b1.LinearVelocity -= b1.InvMass * p;
-            b1.AngularVelocity -= b1.InvI * Vec2.Cross(r1, p);
+            b1.AngularVelocity -= b1.InvI * Vector2.Cross(r1, p);
             b2.LinearVelocity += b2.InvMass * p;
-            b2.AngularVelocity += b2.InvI * Vec2.Cross(r2, p);
+            b2.AngularVelocity += b2.InvI * Vector2.Cross(r2, p);
         }
     }
 }

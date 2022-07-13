@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -39,12 +39,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     World contact point (point of intersection).
         /// </summary>
-        public readonly Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
+        public readonly Vector2[] Points = new Vector2[Settings.MaxManifoldPoints];
 
         /// <summary>
         ///     World vector pointing from A to B.
         /// </summary>
-        public Vec2 Normal;
+        public Vector2 Normal;
 
         /// <summary>
         ///     Clones this instance
@@ -73,10 +73,10 @@ namespace Alis.Core.Physic.Collision
             {
                 case ManifoldType.Circles:
                 {
-                    Vec2 pointA = Math.Mul(xfA, manifold.LocalPoint);
-                    Vec2 pointB = Math.Mul(xfB, manifold.Points[0].LocalPoint);
-                    Vec2 normal = new Vec2(1.0f, 0.0f);
-                    if (Vec2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
+                    Vector2 pointA = Math.Mul(xfA, manifold.LocalPoint);
+                    Vector2 pointB = Math.Mul(xfB, manifold.Points[0].LocalPoint);
+                    Vector2 normal = new Vector2(1.0f, 0.0f);
+                    if (Vector2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
                     {
                         normal = pointB - pointA;
                         normal.Normalize();
@@ -84,25 +84,25 @@ namespace Alis.Core.Physic.Collision
 
                     Normal = normal;
 
-                    Vec2 cA = pointA + radiusA * normal;
-                    Vec2 cB = pointB - radiusB * normal;
+                    Vector2 cA = pointA + radiusA * normal;
+                    Vector2 cB = pointB - radiusB * normal;
                     Points[0] = 0.5f * (cA + cB);
                 }
                     break;
 
                 case ManifoldType.FaceA:
                 {
-                    Vec2 normal = Math.Mul(xfA.R, manifold.LocalPlaneNormal);
-                    Vec2 planePoint = Math.Mul(xfA, manifold.LocalPoint);
+                    Vector2 normal = Math.Mul(xfA.R, manifold.LocalPlaneNormal);
+                    Vector2 planePoint = Math.Mul(xfA, manifold.LocalPoint);
 
                     // Ensure normal points from A to B.
                     Normal = normal;
 
                     for (int i = 0; i < manifold.PointCount; ++i)
                     {
-                        Vec2 clipPoint = Math.Mul(xfB, manifold.Points[i].LocalPoint);
-                        Vec2 cA = clipPoint + (radiusA - Vec2.Dot(clipPoint - planePoint, normal)) * normal;
-                        Vec2 cB = clipPoint - radiusB * normal;
+                        Vector2 clipPoint = Math.Mul(xfB, manifold.Points[i].LocalPoint);
+                        Vector2 cA = clipPoint + (radiusA - Vector2.Dot(clipPoint - planePoint, normal)) * normal;
+                        Vector2 cB = clipPoint - radiusB * normal;
                         Points[i] = 0.5f * (cA + cB);
                     }
                 }
@@ -110,17 +110,17 @@ namespace Alis.Core.Physic.Collision
 
                 case ManifoldType.FaceB:
                 {
-                    Vec2 normal = Math.Mul(xfB.R, manifold.LocalPlaneNormal);
-                    Vec2 planePoint = Math.Mul(xfB, manifold.LocalPoint);
+                    Vector2 normal = Math.Mul(xfB.R, manifold.LocalPlaneNormal);
+                    Vector2 planePoint = Math.Mul(xfB, manifold.LocalPoint);
 
                     // Ensure normal points from A to B.
                     Normal = -normal;
 
                     for (int i = 0; i < manifold.PointCount; ++i)
                     {
-                        Vec2 clipPoint = Math.Mul(xfA, manifold.Points[i].LocalPoint);
-                        Vec2 cA = clipPoint - radiusA * normal;
-                        Vec2 cB = clipPoint + (radiusB - Vec2.Dot(clipPoint - planePoint, normal)) * normal;
+                        Vector2 clipPoint = Math.Mul(xfA, manifold.Points[i].LocalPoint);
+                        Vector2 cA = clipPoint - radiusA * normal;
+                        Vector2 cB = clipPoint + (radiusB - Vector2.Dot(clipPoint - planePoint, normal)) * normal;
                         Points[i] = 0.5f * (cA + cB);
                     }
                 }

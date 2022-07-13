@@ -30,10 +30,10 @@
 //#define B2_DEBUG_SOLVER
 
 using System;
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
-using Math = Alis.Core.Physic.Common.Math;
+using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -93,8 +93,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float friction = Settings.MixFriction(fixtureA.Friction, fixtureB.Friction);
                 float restitution = Settings.MixRestitution(fixtureA.Restitution, fixtureB.Restitution);
 
-                Vec2 vA = bodyA.LinearVelocity;
-                Vec2 vB = bodyB.LinearVelocity;
+                Vector2 vA = bodyA.LinearVelocity;
+                Vector2 vB = bodyB.LinearVelocity;
                 float wA = bodyA.AngularVelocity;
                 float wB = bodyB.AngularVelocity;
 
@@ -134,8 +134,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             ccp->Ra = worldManifold.Points[j] - bodyA.Sweep.C;
                             ccp->Rb = worldManifold.Points[j] - bodyB.Sweep.C;
 
-                            float rnA = Vec2.Cross(ccp->Ra, cc.Normal);
-                            float rnB = Vec2.Cross(ccp->Rb, cc.Normal);
+                            float rnA = Vector2.Cross(ccp->Ra, cc.Normal);
+                            float rnB = Vector2.Cross(ccp->Rb, cc.Normal);
                             rnA *= rnA;
                             rnB *= rnB;
 
@@ -150,10 +150,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             Box2DxDebug.Assert(kEqualized > Settings.FltEpsilon);
                             ccp->EqualizedMass = 1.0f / kEqualized;
 
-                            Vec2 tangent = Vec2.Cross(cc.Normal, 1.0f);
+                            Vector2 tangent = Vector2.Cross(cc.Normal, 1.0f);
 
-                            float rtA = Vec2.Cross(ccp->Ra, tangent);
-                            float rtB = Vec2.Cross(ccp->Rb, tangent);
+                            float rtA = Vector2.Cross(ccp->Ra, tangent);
+                            float rtB = Vector2.Cross(ccp->Rb, tangent);
                             rtA *= rtA;
                             rtB *= rtB;
 
@@ -164,8 +164,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                             // Setup a velocity bias for restitution.
                             ccp->VelocityBias = 0.0f;
-                            float vRel = Vec2.Dot(cc.Normal,
-                                vB + Vec2.Cross(wB, ccp->Rb) - vA - Vec2.Cross(wA, ccp->Ra));
+                            float vRel = Vector2.Dot(cc.Normal,
+                                vB + Vector2.Cross(wB, ccp->Rb) - vA - Vector2.Cross(wA, ccp->Ra));
                             if (vRel < -Settings.VelocityThreshold)
                             {
                                 ccp->VelocityBias = -cc.Restitution * vRel;
@@ -183,10 +183,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             float invMassB = bodyB.InvMass;
                             float invIb = bodyB.InvI;
 
-                            float rn1A = Vec2.Cross(ccp1->Ra, cc.Normal);
-                            float rn1B = Vec2.Cross(ccp1->Rb, cc.Normal);
-                            float rn2A = Vec2.Cross(ccp2->Ra, cc.Normal);
-                            float rn2B = Vec2.Cross(ccp2->Rb, cc.Normal);
+                            float rn1A = Vector2.Cross(ccp1->Ra, cc.Normal);
+                            float rn1B = Vector2.Cross(ccp1->Rb, cc.Normal);
+                            float rn2A = Vector2.Cross(ccp2->Ra, cc.Normal);
+                            float rn2B = Vector2.Cross(ccp2->Rb, cc.Normal);
 
                             float k11 = invMassA + invMassB + invIa * rn1A * rn1A + invIb * rn1B * rn1B;
                             float k22 = invMassA + invMassB + invIa * rn2A * rn2A + invIb * rn2B * rn2B;
@@ -245,8 +245,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     float invIa = bodyA.InvI;
                     float invMassB = bodyB.InvMass;
                     float invIb = bodyB.InvI;
-                    Vec2 normal = c.Normal;
-                    Vec2 tangent = Vec2.Cross(normal, 1.0f);
+                    Vector2 normal = c.Normal;
+                    Vector2 tangent = Vector2.Cross(normal, 1.0f);
 
                     fixed (ContactConstraintPoint* pointsPtr = c.Points)
                     {
@@ -257,10 +257,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 ContactConstraintPoint* ccp = &pointsPtr[j];
                                 ccp->NormalImpulse *= step.DtRatio;
                                 ccp->TangentImpulse *= step.DtRatio;
-                                Vec2 p = ccp->NormalImpulse * normal + ccp->TangentImpulse * tangent;
-                                bodyA.AngularVelocity -= invIa * Vec2.Cross(ccp->Ra, p);
+                                Vector2 p = ccp->NormalImpulse * normal + ccp->TangentImpulse * tangent;
+                                bodyA.AngularVelocity -= invIa * Vector2.Cross(ccp->Ra, p);
                                 bodyA.LinearVelocity -= invMassA * p;
-                                bodyB.AngularVelocity += invIb * Vec2.Cross(ccp->Rb, p);
+                                bodyB.AngularVelocity += invIb * Vector2.Cross(ccp->Rb, p);
                                 bodyB.LinearVelocity += invMassB * p;
                             }
                         }
@@ -290,14 +290,14 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 Body bodyB = c.BodyB;
                 float wA = bodyA.AngularVelocity;
                 float wB = bodyB.AngularVelocity;
-                Vec2 vA = bodyA.LinearVelocity;
-                Vec2 vB = bodyB.LinearVelocity;
+                Vector2 vA = bodyA.LinearVelocity;
+                Vector2 vB = bodyB.LinearVelocity;
                 float invMassA = bodyA.InvMass;
                 float invIa = bodyA.InvI;
                 float invMassB = bodyB.InvMass;
                 float invIb = bodyB.InvI;
-                Vec2 normal = c.Normal;
-                Vec2 tangent = Vec2.Cross(normal, 1.0f);
+                Vector2 normal = c.Normal;
+                Vector2 tangent = Vector2.Cross(normal, 1.0f);
                 float friction = c.Friction;
 
                 Box2DxDebug.Assert(c.PointCount == 1 || c.PointCount == 2);
@@ -312,10 +312,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             ContactConstraintPoint* ccp = &pointsPtr[j];
 
                             // Relative velocity at contact
-                            Vec2 dv = vB + Vec2.Cross(wB, ccp->Rb) - vA - Vec2.Cross(wA, ccp->Ra);
+                            Vector2 dv = vB + Vector2.Cross(wB, ccp->Rb) - vA - Vector2.Cross(wA, ccp->Ra);
 
                             // Compute tangent force
-                            float vt = Vec2.Dot(dv, tangent);
+                            float vt = Vector2.Dot(dv, tangent);
                             float lambda = ccp->TangentMass * -vt;
 
                             // b2Clamp the accumulated force
@@ -324,13 +324,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             lambda = newImpulse - ccp->TangentImpulse;
 
                             // Apply contact impulse
-                            Vec2 p = lambda * tangent;
+                            Vector2 p = lambda * tangent;
 
                             vA -= invMassA * p;
-                            wA -= invIa * Vec2.Cross(ccp->Ra, p);
+                            wA -= invIa * Vector2.Cross(ccp->Ra, p);
 
                             vB += invMassB * p;
-                            wB += invIb * Vec2.Cross(ccp->Rb, p);
+                            wB += invIb * Vector2.Cross(ccp->Rb, p);
 
                             ccp->TangentImpulse = newImpulse;
                         }
@@ -341,10 +341,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             ContactConstraintPoint ccp = c.Points[0];
 
                             // Relative velocity at contact
-                            Vec2 dv = vB + Vec2.Cross(wB, ccp.Rb) - vA - Vec2.Cross(wA, ccp.Ra);
+                            Vector2 dv = vB + Vector2.Cross(wB, ccp.Rb) - vA - Vector2.Cross(wA, ccp.Ra);
 
                             // Compute normal impulse
-                            float vn = Vec2.Dot(dv, normal);
+                            float vn = Vector2.Dot(dv, normal);
                             float lambda = -ccp.NormalMass * (vn - ccp.VelocityBias);
 
                             // Clamp the accumulated impulse
@@ -352,12 +352,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             lambda = newImpulse - ccp.NormalImpulse;
 
                             // Apply contact impulse
-                            Vec2 p = lambda * normal;
+                            Vector2 p = lambda * normal;
                             vA -= invMassA * p;
-                            wA -= invIa * Vec2.Cross(ccp.Ra, p);
+                            wA -= invIa * Vector2.Cross(ccp.Ra, p);
 
                             vB += invMassB * p;
-                            wB += invIb * Vec2.Cross(ccp.Rb, p);
+                            wB += invIb * Vector2.Cross(ccp.Rb, p);
                             ccp.NormalImpulse = newImpulse;
                         }
                         else
@@ -393,18 +393,18 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             ContactConstraintPoint* cp1 = &pointsPtr[0];
                             ContactConstraintPoint* cp2 = &pointsPtr[1];
 
-                            Vec2 a = new Vec2(cp1->NormalImpulse, cp2->NormalImpulse);
+                            Vector2 a = new Vector2(cp1->NormalImpulse, cp2->NormalImpulse);
                             Box2DxDebug.Assert(a.X >= 0.0f && a.Y >= 0.0f);
 
                             // Relative velocity at contact
-                            Vec2 dv1 = vB + Vec2.Cross(wB, cp1->Rb) - vA - Vec2.Cross(wA, cp1->Ra);
-                            Vec2 dv2 = vB + Vec2.Cross(wB, cp2->Rb) - vA - Vec2.Cross(wA, cp2->Ra);
+                            Vector2 dv1 = vB + Vector2.Cross(wB, cp1->Rb) - vA - Vector2.Cross(wA, cp1->Ra);
+                            Vector2 dv2 = vB + Vector2.Cross(wB, cp2->Rb) - vA - Vector2.Cross(wA, cp2->Ra);
 
                             // Compute normal velocity
-                            float vn1 = Vec2.Dot(dv1, normal);
-                            float vn2 = Vec2.Dot(dv2, normal);
+                            float vn1 = Vector2.Dot(dv1, normal);
+                            float vn2 = Vector2.Dot(dv2, normal);
 
-                            Vec2 b;
+                            Vector2 b;
                             b.X = vn1 - cp1->VelocityBias;
                             b.Y = vn2 - cp2->VelocityBias;
                             b -= Math.Mul(c.K, a);
@@ -423,21 +423,21 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 //
                                 // x' = - inv(A) * b'
                                 //
-                                Vec2 x = -Math.Mul(c.NormalMass, b);
+                                Vector2 x = -Math.Mul(c.NormalMass, b);
 
                                 if (x.X >= 0.0f && x.Y >= 0.0f)
                                 {
                                     // Resubstitute for the incremental impulse
-                                    Vec2 d = x - a;
+                                    Vector2 d = x - a;
 
                                     // Apply incremental impulse
-                                    Vec2 p1 = d.X * normal;
-                                    Vec2 p2 = d.Y * normal;
+                                    Vector2 p1 = d.X * normal;
+                                    Vector2 p2 = d.Y * normal;
                                     vA -= invMassA * (p1 + p2);
-                                    wA -= invIa * (Vec2.Cross(cp1->Ra, p1) + Vec2.Cross(cp2->Ra, p2));
+                                    wA -= invIa * (Vector2.Cross(cp1->Ra, p1) + Vector2.Cross(cp2->Ra, p2));
 
                                     vB += invMassB * (p1 + p2);
-                                    wB += invIb * (Vec2.Cross(cp1->Rb, p1) + Vec2.Cross(cp2->Rb, p2));
+                                    wB += invIb * (Vector2.Cross(cp1->Rb, p1) + Vector2.Cross(cp2->Rb, p2));
 
                                     // Accumulate
                                     cp1->NormalImpulse = x.X;
@@ -474,16 +474,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 if (x.X >= 0.0f && vn2 >= 0.0f)
                                 {
                                     // Resubstitute for the incremental impulse
-                                    Vec2 d = x - a;
+                                    Vector2 d = x - a;
 
                                     // Apply incremental impulse
-                                    Vec2 p1 = d.X * normal;
-                                    Vec2 p2 = d.Y * normal;
+                                    Vector2 p1 = d.X * normal;
+                                    Vector2 p2 = d.Y * normal;
                                     vA -= invMassA * (p1 + p2);
-                                    wA -= invIa * (Vec2.Cross(cp1->Ra, p1) + Vec2.Cross(cp2->Ra, p2));
+                                    wA -= invIa * (Vector2.Cross(cp1->Ra, p1) + Vector2.Cross(cp2->Ra, p2));
 
                                     vB += invMassB * (p1 + p2);
-                                    wB += invIb * (Vec2.Cross(cp1->Rb, p1) + Vec2.Cross(cp2->Rb, p2));
+                                    wB += invIb * (Vector2.Cross(cp1->Rb, p1) + Vector2.Cross(cp2->Rb, p2));
 
                                     // Accumulate
                                     cp1->NormalImpulse = x.X;
@@ -518,16 +518,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 if (x.Y >= 0.0f && vn1 >= 0.0f)
                                 {
                                     // Resubstitute for the incremental impulse
-                                    Vec2 d = x - a;
+                                    Vector2 d = x - a;
 
                                     // Apply incremental impulse
-                                    Vec2 p1 = d.X * normal;
-                                    Vec2 p2 = d.Y * normal;
+                                    Vector2 p1 = d.X * normal;
+                                    Vector2 p2 = d.Y * normal;
                                     vA -= invMassA * (p1 + p2);
-                                    wA -= invIa * (Vec2.Cross(cp1->Ra, p1) + Vec2.Cross(cp2->Ra, p2));
+                                    wA -= invIa * (Vector2.Cross(cp1->Ra, p1) + Vector2.Cross(cp2->Ra, p2));
 
                                     vB += invMassB * (p1 + p2);
-                                    wB += invIb * (Vec2.Cross(cp1->Rb, p1) + Vec2.Cross(cp2->Rb, p2));
+                                    wB += invIb * (Vector2.Cross(cp1->Rb, p1) + Vector2.Cross(cp2->Rb, p2));
 
                                     // Accumulate
                                     cp1->NormalImpulse = x.X;
@@ -558,16 +558,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 if (vn1 >= 0.0f && vn2 >= 0.0f)
                                 {
                                     // Resubstitute for the incremental impulse
-                                    Vec2 d = x - a;
+                                    Vector2 d = x - a;
 
                                     // Apply incremental impulse
-                                    Vec2 p1 = d.X * normal;
-                                    Vec2 p2 = d.Y * normal;
+                                    Vector2 p1 = d.X * normal;
+                                    Vector2 p2 = d.Y * normal;
                                     vA -= invMassA * (p1 + p2);
-                                    wA -= invIa * (Vec2.Cross(cp1->Ra, p1) + Vec2.Cross(cp2->Ra, p2));
+                                    wA -= invIa * (Vector2.Cross(cp1->Ra, p1) + Vector2.Cross(cp2->Ra, p2));
 
                                     vB += invMassB * (p1 + p2);
-                                    wB += invIb * (Vec2.Cross(cp1->Rb, p1) + Vec2.Cross(cp2->Rb, p2));
+                                    wB += invIb * (Vector2.Cross(cp1->Rb, p1) + Vector2.Cross(cp2->Rb, p2));
 
                                     // Accumulate
                                     cp1->NormalImpulse = x.X;
@@ -627,16 +627,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 float invIb = bodyB.Mass * bodyB.InvI;
 
                 SPositionSolverManifold.Initialize(c);
-                Vec2 normal = SPositionSolverManifold.Normal;
+                Vector2 normal = SPositionSolverManifold.Normal;
 
                 // Solver normal constraints
                 for (int j = 0; j < c.PointCount; ++j)
                 {
-                    Vec2 point = SPositionSolverManifold.Points[j];
+                    Vector2 point = SPositionSolverManifold.Points[j];
                     float separation = SPositionSolverManifold.Separations[j];
 
-                    Vec2 rA = point - bodyA.Sweep.C;
-                    Vec2 rB = point - bodyB.Sweep.C;
+                    Vector2 rA = point - bodyA.Sweep.C;
+                    Vector2 rB = point - bodyB.Sweep.C;
 
                     // Track max constraint error.
                     minSeparation = Math.Min(minSeparation, separation);
@@ -649,14 +649,14 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     // Compute normal impulse
                     float impulse = -c.Points[j].EqualizedMass * clamp;
 
-                    Vec2 p = impulse * normal;
+                    Vector2 p = impulse * normal;
 
                     bodyA.Sweep.C -= invMassA * p;
-                    bodyA.Sweep.A -= invIa * Vec2.Cross(rA, p);
+                    bodyA.Sweep.A -= invIa * Vector2.Cross(rA, p);
                     bodyA.SynchronizeTransform();
 
                     bodyB.Sweep.C += invMassB * p;
-                    bodyB.Sweep.A += invIb * Vec2.Cross(rB, p);
+                    bodyB.Sweep.A += invIb * Vector2.Cross(rB, p);
                     bodyB.SynchronizeTransform();
                 }
             }

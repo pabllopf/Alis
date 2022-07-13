@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -290,7 +290,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="offset">Offset the surface offset along normal.</param>
         /// <param name="c">Returns the centroid.</param>
         /// <returns>The total volume less than offset along normal.</returns>
-        public float ComputeSubmergedArea(Vec2 normal, float offset, out Vec2 c)
+        public float ComputeSubmergedArea(Vector2 normal, float offset, out Vector2 c)
         {
             return Shape.ComputeSubmergedArea(normal, offset, Body.GetXForm(), out c);
         }
@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Test a point for containment in this fixture. This only works for convex shapes.
         /// </summary>
         /// <param name="p">A point in world coordinates.</param>
-        public bool TestPoint(Vec2 p)
+        public bool TestPoint(Vector2 p)
         {
             return Shape.TestPoint(Body.GetXForm(), p);
         }
@@ -317,7 +317,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </param>
         /// <param name="segment">Defines the begin and end point of the ray cast.</param>
         /// <param name="maxLambda">A number typically in the range [0,1].</param>
-        public SegmentCollide TestSegment(out float lambda, out Vec2 normal, Segment segment, float maxLambda)
+        public SegmentCollide TestSegment(out float lambda, out Vector2 normal, Segment segment, float maxLambda)
         {
             return Shape.TestSegment(Body.GetXForm(), out lambda, out normal, segment, maxLambda);
         }
@@ -325,7 +325,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Get the maximum radius about the parent body's center of mass.
         /// </summary>
-        public float ComputeSweepRadius(Vec2 pivot)
+        public float ComputeSweepRadius(Vector2 pivot)
         {
             return Shape.ComputeSweepRadius(pivot);
         }

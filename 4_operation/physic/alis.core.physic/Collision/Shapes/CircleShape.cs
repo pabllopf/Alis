@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The position
         /// </summary>
-        internal Vec2 Position;
+        internal Vector2 Position;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleShape" /> class
@@ -61,11 +61,11 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(XForm transform, Vec2 p)
+        public override bool TestPoint(XForm transform, Vector2 p)
         {
-            Vec2 center = transform.Position + Math.Mul(transform.R, Position);
-            Vec2 d = p - center;
-            return Vec2.Dot(d, d) <= Radius * Radius;
+            Vector2 center = transform.Position + Math.Mul(transform.R, Position);
+            Vector2 d = p - center;
+            return Vector2.Dot(d, d) <= Radius * Radius;
         }
 
         // Collision Detection in Interactive 3D Environments by Gino van den Bergen
@@ -81,15 +81,15 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="segment">The segment</param>
         /// <param name="maxLambda">The max lambda</param>
         /// <returns>The segment collide</returns>
-        public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vec2 normal, Segment segment,
+        public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vector2 normal, Segment segment,
             float maxLambda)
         {
             lambda = 0f;
-            normal = Vec2.Zero;
+            normal = Vector2.Zero;
 
-            Vec2 position = transform.Position + Math.Mul(transform.R, Position);
-            Vec2 s = segment.P1 - position;
-            float b = Vec2.Dot(s, s) - Radius * Radius;
+            Vector2 position = transform.Position + Math.Mul(transform.R, Position);
+            Vector2 s = segment.P1 - position;
+            float b = Vector2.Dot(s, s) - Radius * Radius;
 
             // Does the segment start inside the circle?
             if (b < 0.0f)
@@ -99,9 +99,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
 
             // Solve quadratic equation.
-            Vec2 r = segment.P2 - segment.P1;
-            float c = Vec2.Dot(s, r);
-            float rr = Vec2.Dot(r, r);
+            Vector2 r = segment.P2 - segment.P1;
+            float c = Vector2.Dot(s, r);
+            float rr = Vector2.Dot(r, r);
             float sigma = c * c - rr * b;
 
             // Check for negative discriminant and short segment.
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         {
             aabb = new Aabb();
 
-            Vec2 p = transform.Position + Math.Mul(transform.R, Position);
+            Vector2 p = transform.Position + Math.Mul(transform.R, Position);
             aabb.LowerBound.Set(p.X - Radius, p.Y - Radius);
             aabb.UpperBound.Set(p.X + Radius, p.Y + Radius);
         }
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             massData.Center = Position;
 
             // inertia about the local origin
-            massData.I = massData.Mass * (0.5f * Radius * Radius + Vec2.Dot(Position, Position));
+            massData.I = massData.Mass * (0.5f * Radius * Radius + Vector2.Dot(Position, Position));
         }
 
         /// <summary>
@@ -164,14 +164,14 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="xf">The xf</param>
         /// <param name="c">The </param>
         /// <returns>The area</returns>
-        public override float ComputeSubmergedArea(Vec2 normal, float offset, XForm xf, out Vec2 c)
+        public override float ComputeSubmergedArea(Vector2 normal, float offset, XForm xf, out Vector2 c)
         {
-            Vec2 p = Math.Mul(xf, Position);
-            float l = -(Vec2.Dot(normal, p) - offset);
+            Vector2 p = Math.Mul(xf, Position);
+            float l = -(Vector2.Dot(normal, p) - offset);
             if (l < -Radius + Settings.FltEpsilon)
             {
                 //Completely dry
-                c = new Vec2();
+                c = new Vector2();
                 return 0;
             }
 
@@ -198,7 +198,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Get the supporting vertex index in the given direction.
         /// </summary>
-        public override int GetSupport(Vec2 d)
+        public override int GetSupport(Vector2 d)
         {
             return 0;
         }
@@ -206,7 +206,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Get the supporting vertex in the given direction.
         /// </summary>
-        public override Vec2 GetSupportVertex(Vec2 d)
+        public override Vector2 GetSupportVertex(Vector2 d)
         {
             return Position;
         }
@@ -214,7 +214,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Get a vertex by index. Used by Distance.
         /// </summary>
-        public override Vec2 GetVertex(int index)
+        public override Vector2 GetVertex(int index)
         {
             Box2DxDebug.Assert(index == 0);
             return Position;
@@ -225,9 +225,9 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="pivot">The pivot</param>
         /// <returns>The float</returns>
-        public override float ComputeSweepRadius(Vec2 pivot)
+        public override float ComputeSweepRadius(Vector2 pivot)
         {
-            return Vec2.Distance(Position, pivot);
+            return Vector2.Distance(Position, pivot);
         }
     }
 }

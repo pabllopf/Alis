@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -39,19 +39,19 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The lower vertex.
         /// </summary>
-        public Vec2 LowerBound;
+        public Vector2 LowerBound;
 
         /// <summary>
         ///     The upper vertex.
         /// </summary>
-        public Vec2 UpperBound;
+        public Vector2 UpperBound;
 
         /// Verify that the bounds are sorted.
         public bool IsValid
         {
             get
             {
-                Vec2 d = UpperBound - LowerBound;
+                Vector2 d = UpperBound - LowerBound;
                 bool valid = d.X >= 0.0f && d.Y >= 0.0f;
                 valid = valid && LowerBound.IsValid && UpperBound.IsValid;
                 return valid;
@@ -59,10 +59,10 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// Get the center of the AABB.
-        public Vec2 Center => 0.5f * (LowerBound + UpperBound);
+        public Vector2 Center => 0.5f * (LowerBound + UpperBound);
 
         /// Get the extents of the AABB (half-widths).
-        public Vec2 Extents => 0.5f * (UpperBound - LowerBound);
+        public Vector2 Extents => 0.5f * (UpperBound - LowerBound);
 
         /// Combine two AABBs into this one.
         public void Combine(Aabb aabb1, Aabb aabb2)
@@ -95,11 +95,11 @@ namespace Alis.Core.Physic.Collision
 
             output.Hit = false;
 
-            Vec2 p = input.P1;
-            Vec2 d = input.P2 - input.P1;
-            Vec2 absD = Math.Abs(d);
+            Vector2 p = input.P1;
+            Vector2 d = input.P2 - input.P1;
+            Vector2 absD = Math.Abs(d);
 
-            Vec2 normal = new Vec2(0);
+            Vector2 normal = new Vector2(0);
 
             for (int i = 0; i < 2; ++i)
             {

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -37,6 +37,6 @@ namespace Alis.Core.Physic.Dynamics.Controllers
     public class ConstantForceControllerDef
     {
         /// The force to apply
-        public Vec2 F;
+        public Vector2 F;
     }
 }

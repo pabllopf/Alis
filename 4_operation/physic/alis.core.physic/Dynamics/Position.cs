@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The
         /// </summary>
-        public Vec2 X;
+        public Vector2 X;
 
         /// <summary>
         ///     The

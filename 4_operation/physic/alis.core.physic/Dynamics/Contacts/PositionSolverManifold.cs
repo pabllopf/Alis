@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        internal readonly Vec2[] Points = new Vec2[Settings.MaxManifoldPoints];
+        internal readonly Vector2[] Points = new Vector2[Settings.MaxManifoldPoints];
 
         /// <summary>
         ///     The max manifold points
@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The normal
         /// </summary>
-        internal Vec2 Normal;
+        internal Vector2 Normal;
 
         /// <summary>
         ///     Initializes the cc
@@ -64,9 +64,9 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 case ManifoldType.Circles:
                 {
-                    Vec2 pointA = cc.BodyA.GetWorldPoint(cc.LocalPoint);
-                    Vec2 pointB = cc.BodyB.GetWorldPoint(cc.Points[0].LocalPoint);
-                    if (Vec2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
+                    Vector2 pointA = cc.BodyA.GetWorldPoint(cc.LocalPoint);
+                    Vector2 pointB = cc.BodyB.GetWorldPoint(cc.Points[0].LocalPoint);
+                    if (Vector2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
                     {
                         Normal = pointB - pointA;
                         Normal.Normalize();
@@ -77,19 +77,19 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     }
 
                     Points[0] = 0.5f * (pointA + pointB);
-                    Separations[0] = Vec2.Dot(pointB - pointA, Normal) - cc.Radius;
+                    Separations[0] = Vector2.Dot(pointB - pointA, Normal) - cc.Radius;
                 }
                     break;
 
                 case ManifoldType.FaceA:
                 {
                     Normal = cc.BodyA.GetWorldVector(cc.LocalPlaneNormal);
-                    Vec2 planePoint = cc.BodyA.GetWorldPoint(cc.LocalPoint);
+                    Vector2 planePoint = cc.BodyA.GetWorldPoint(cc.LocalPoint);
 
                     for (int i = 0; i < cc.PointCount; ++i)
                     {
-                        Vec2 clipPoint = cc.BodyB.GetWorldPoint(cc.Points[i].LocalPoint);
-                        Separations[i] = Vec2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
+                        Vector2 clipPoint = cc.BodyB.GetWorldPoint(cc.Points[i].LocalPoint);
+                        Separations[i] = Vector2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
                         Points[i] = clipPoint;
                     }
                 }
@@ -98,12 +98,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 case ManifoldType.FaceB:
                 {
                     Normal = cc.BodyB.GetWorldVector(cc.LocalPlaneNormal);
-                    Vec2 planePoint = cc.BodyB.GetWorldPoint(cc.LocalPoint);
+                    Vector2 planePoint = cc.BodyB.GetWorldPoint(cc.LocalPoint);
 
                     for (int i = 0; i < cc.PointCount; ++i)
                     {
-                        Vec2 clipPoint = cc.BodyA.GetWorldPoint(cc.Points[i].LocalPoint);
-                        Separations[i] = Vec2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
+                        Vector2 clipPoint = cc.BodyA.GetWorldPoint(cc.Points[i].LocalPoint);
+                        Separations[i] = Vector2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
                         Points[i] = clipPoint;
                     }
 

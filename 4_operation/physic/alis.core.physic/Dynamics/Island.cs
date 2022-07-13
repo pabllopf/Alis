@@ -146,10 +146,10 @@ However, we can compute sin+cos of the same angle fast.
 */
 
 using System;
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
-using Math = Alis.Core.Physic.Common.Math;
+using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -279,7 +279,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
         /// <param name="allowSleep">The allow sleep</param>
-        public void Solve(TimeStep step, Vec2 gravity, bool allowSleep)
+        public void Solve(TimeStep step, Vector2 gravity, bool allowSleep)
         {
             // Integrate velocities and apply damping.
             for (int i = 0; i < BodyCount; ++i)
@@ -345,8 +345,8 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // Check for large velocities.
-                Vec2 translation = step.Dt * b.LinearVelocity;
-                if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
+                Vector2 translation = step.Dt * b.LinearVelocity;
+                if (Vector2.Dot(translation, translation) > Settings.MaxTranslationSquared)
                 {
                     translation.Normalize();
                     b.LinearVelocity = Settings.MaxTranslation * step.InvDt * translation;
@@ -430,7 +430,7 @@ namespace Alis.Core.Physic.Dynamics
 						Common.Math.Abs(b._linearVelocity.Y) > Settings.LinearSleepTolerance)
 #else
                         b.AngularVelocity * b.AngularVelocity > angTolSqr ||
-                        Vec2.Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
+                        Vector2.Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
 #endif
                     {
                         b.SleepTime = 0.0f;
@@ -449,7 +449,7 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         Body b = Bodies[i];
                         b.Flags |= BodyFlags.Sleep;
-                        b.LinearVelocity = Vec2.Zero;
+                        b.LinearVelocity = Vector2.Zero;
                         b.AngularVelocity = 0.0f;
                     }
                 }
@@ -498,8 +498,8 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 // Check for large velocities.
-                Vec2 translation = subStep.Dt * b.LinearVelocity;
-                if (Vec2.Dot(translation, translation) > Settings.MaxTranslationSquared)
+                Vector2 translation = subStep.Dt * b.LinearVelocity;
+                if (Vector2.Dot(translation, translation) > Settings.MaxTranslationSquared)
                 {
                     translation.Normalize();
                     b.LinearVelocity = Settings.MaxTranslation * subStep.InvDt * translation;

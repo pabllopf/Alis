@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Common;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The polygon vertices in local coordinates.
         /// </summary>
-        public readonly Vec2[] Vertices = new Vec2[Settings.MaxPolygonVertices];
+        public readonly Vector2[] Vertices = new Vector2[Settings.MaxPolygonVertices];
 
         /// <summary>
         ///     The number of polygon vertices.
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="hy">The half-height.</param>
         /// <param name="center">The center of the box in local coordinates.</param>
         /// <param name="angle">The rotation of the box in local coordinates.</param>
-        public void SetAsBox(float hx, float hy, Vec2 center, float angle)
+        public void SetAsBox(float hx, float hy, Vector2 center, float angle)
         {
             SetAsBox(hx, hy);
 

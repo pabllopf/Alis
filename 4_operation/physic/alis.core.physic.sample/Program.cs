@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Common;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Sample
             worldAabb.UpperBound.Set(100.0f);
 
             // Define the gravity vector.
-            Vec2 gravity = new Vec2(0.0f, -10.0f);
+            Vector2 gravity = new Vector2(0.0f, -10.0f);
 
             // Do we want to let bodies sleep?
             const bool doSleep = true;
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Sample
                 world.Step(timeStep, velocityIterations, positionIterations);
 
                 // Now print the position and angle of the body.
-                Vec2 position = body.GetPosition();
+                Vector2 position = body.GetPosition();
                 float angle = body.GetAngle();
 
                 Console.WriteLine(

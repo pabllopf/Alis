@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -39,12 +39,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     The local plane normal
         /// </summary>
-        public Vec2 LocalPlaneNormal;
+        public Vector2 LocalPlaneNormal;
 
         /// <summary>
         ///     Usage depends on manifold type.
         /// </summary>
-        public Vec2 LocalPoint;
+        public Vector2 LocalPoint;
 
         /// <summary>
         ///     The number of manifold points.

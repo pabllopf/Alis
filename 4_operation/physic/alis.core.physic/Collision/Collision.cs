@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Common;
+using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The bool</returns>
         public static bool TestOverlap(Aabb a, Aabb b)
         {
-            Vec2 d1, d2;
+            Vector2 d1, d2;
             d1 = b.LowerBound - a.UpperBound;
             d2 = a.LowerBound - b.UpperBound;
 
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="normal">The normal</param>
         /// <param name="offset">The offset</param>
         /// <returns>The num out</returns>
-        public static int ClipSegmentToLine(out ClipVertex[ /*2*/] vOut, ClipVertex[ /*2*/] vIn, Vec2 normal,
+        public static int ClipSegmentToLine(out ClipVertex[ /*2*/] vOut, ClipVertex[ /*2*/] vIn, Vector2 normal,
             float offset)
         {
             vOut = new ClipVertex[2];
@@ -136,8 +136,8 @@ namespace Alis.Core.Physic.Collision
             int numOut = 0;
 
             // Calculate the distance of end points to the line
-            float distance0 = Vec2.Dot(normal, vIn[0].V) - offset;
-            float distance1 = Vec2.Dot(normal, vIn[1].V) - offset;
+            float distance0 = Vector2.Dot(normal, vIn[0].V) - offset;
+            float distance1 = Vector2.Dot(normal, vIn[1].V) - offset;
 
             // If the points are behind the plane
             if (distance0 <= 0.0f)
