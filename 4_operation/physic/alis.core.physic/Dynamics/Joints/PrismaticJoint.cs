@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The impulse
         /// </summary>
-        public Vec3 Impulse;
+        public Vector3 Impulse;
 
         /// <summary>
         ///     The
@@ -550,10 +550,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // Solve prismatic and limit constraint in block form.
                 float cdot2;
                 cdot2 = Vector2.Dot(Axis, v2 - v1) + A2 * w2 - a1 * w1;
-                Vec3 cdot = new Vec3(cdot1.X, cdot1.Y, cdot2);
+                Vector3 cdot = new Vector3(cdot1.X, cdot1.Y, cdot2);
 
-                Vec3 f1 = Impulse;
-                Vec3 df = K.Solve33(-cdot);
+                Vector3 f1 = Impulse;
+                Vector3 df = K.Solve33(-cdot);
                 Impulse += df;
 
                 if (LimitState == LimitState.AtLowerLimit)
@@ -674,7 +674,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             s1 = Vector2.Cross(distance + r1, Perp);
             s2 = Vector2.Cross(r2, Perp);
 
-            Vec3 impulse;
+            Vector3 impulse;
             Vector2 c1 = new Vector2();
             c1.X = Vector2.Dot(Perp, distance);
             c1.Y = body2SweepA - body1SweepA - refAngle;
@@ -698,7 +698,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 K.Col2.Set(k12, k22, k23);
                 K.Col3.Set(k13, k23, k33);
 
-                Vec3 c = new Vec3();
+                Vector3 c = new Vector3();
                 c.X = c1.X;
                 c.Y = c1.Y;
                 c.Z = c2;

@@ -32,12 +32,12 @@ namespace Alis.Aspect.Math
     /// <summary>
     ///     A 2D column vector with 3 elements.
     /// </summary>
-    public struct Vec3
+    public struct Vector3
     {
         /// <summary>
         ///     Construct using coordinates.
         /// </summary>
-        public Vec3(float x, float y, float z)
+        public Vector3(float x, float y, float z)
         {
             X = x;
             Y = y;
@@ -67,7 +67,7 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Perform the dot product on two vectors.
         /// </summary>
-        public static float Dot(Vec3 a, Vec3 b)
+        public static float Dot(Vector3 a, Vector3 b)
         {
             return a.X * b.X + a.Y * b.Y + a.Z * b.Z;
         }
@@ -75,49 +75,49 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Perform the cross product on two vectors.
         /// </summary>
-        public static Vec3 Cross(Vec3 a, Vec3 b)
+        public static Vector3 Cross(Vector3 a, Vector3 b)
         {
-            return new Vec3(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
+            return new Vector3(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
         }
 
         /// <summary>
         ///     Negate this vector.
         /// </summary>
-        public static Vec3 operator -(Vec3 v)
+        public static Vector3 operator -(Vector3 v)
         {
-            return new Vec3(-v.X, -v.Y, -v.Z);
+            return new Vector3(-v.X, -v.Y, -v.Z);
         }
 
         /// <summary>
         ///     Add two vectors component-wise.
         /// </summary>
-        public static Vec3 operator +(Vec3 v1, Vec3 v2)
+        public static Vector3 operator +(Vector3 v1, Vector3 v2)
         {
-            return new Vec3(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+            return new Vector3(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
         }
 
         /// <summary>
         ///     Subtract two vectors component-wise.
         /// </summary>
-        public static Vec3 operator -(Vec3 v1, Vec3 v2)
+        public static Vector3 operator -(Vector3 v1, Vector3 v2)
         {
-            return new Vec3(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+            return new Vector3(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
         }
 
         /// <summary>
         ///     Multiply this vector by a scalar.
         /// </summary>
-        public static Vec3 operator *(Vec3 v, float s)
+        public static Vector3 operator *(Vector3 v, float s)
         {
-            return new Vec3(v.X * s, v.Y * s, v.Z * s);
+            return new Vector3(v.X * s, v.Y * s, v.Z * s);
         }
 
         /// <summary>
         ///     Multiply this vector by a scalar.
         /// </summary>
-        public static Vec3 operator *(float s, Vec3 v)
+        public static Vector3 operator *(float s, Vector3 v)
         {
-            return new Vec3(v.X * s, v.Y * s, v.Z * s);
+            return new Vector3(v.X * s, v.Y * s, v.Z * s);
         }
 
         /// <summary>

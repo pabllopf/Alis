@@ -366,9 +366,9 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Multiply a matrix times a vector.
         /// </summary>
-        public static Vec3 Mul(Mat33 a, Vec3 v)
+        public static Vector3 Mul(Mat33 a, Vector3 v)
         {
-            Vec3 u = v.X * a.Col1 + v.Y * a.Col2 + v.Z * a.Col3;
+            Vector3 u = v.X * a.Col1 + v.Y * a.Col2 + v.Z * a.Col3;
             return u;
         }
 

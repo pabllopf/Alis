@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             LocalAnchor2 = def.LocalAnchor2;
             ReferenceAngle = def.ReferenceAngle;
 
-            Impulse = new Vec3();
+            Impulse = new Vector3();
             MotorTorque = 0.0f;
 
             LowerLimit = def.LowerAngle;
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The impulse
         /// </summary>
-        private Vec3 Impulse { get; set; }
+        private Vector3 Impulse { get; set; }
 
         /// <summary>
         ///     The mass
@@ -309,8 +309,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float col2Z = Mass.Col3.Y;
             float col3Z = i1 + i2;
 
-            Mass = new Mat33(new Vec3(col1X, col1Y, col1Z), new Vec3(col2X, col2Y, col2Z),
-                new Vec3(col3X, col3Y, col3Z));
+            Mass = new Mat33(new Vector3(col1X, col1Y, col1Z), new Vector3(col2X, col2Y, col2Z),
+                new Vector3(col3X, col3Y, col3Z));
 
             /*
 			_mass.Col1.X = m1 + m2 + r1.Y * r1.Y * i1 + r2.Y * r2.Y * i2;
@@ -341,7 +341,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 {
                     if (State != LimitState.AtLowerLimit)
                     {
-                        Impulse = new Vec3(Impulse.X, Impulse.Y, 0.0f);
+                        Impulse = new Vector3(Impulse.X, Impulse.Y, 0.0f);
                     }
 
                     State = LimitState.AtLowerLimit;
@@ -350,7 +350,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 {
                     if (State != LimitState.AtUpperLimit)
                     {
-                        Impulse = new Vec3(Impulse.X, Impulse.Y, 0.0f);
+                        Impulse = new Vector3(Impulse.X, Impulse.Y, 0.0f);
                     }
 
                     State = LimitState.AtUpperLimit;
@@ -358,7 +358,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 else
                 {
                     State = LimitState.InactiveLimit;
-                    Impulse = new Vec3(Impulse.X, Impulse.Y, 0.0f);
+                    Impulse = new Vector3(Impulse.X, Impulse.Y, 0.0f);
                 }
             }
             else
@@ -427,9 +427,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 // Solve point-to-point constraint
                 Vector2 cdot1 = v2 + Vector2.Cross(w2, r2) - v1 - Vector2.Cross(w1, r1);
                 float cdot2 = w2 - w1;
-                Vec3 cdot = new Vec3(cdot1.X, cdot1.Y, cdot2);
+                Vector3 cdot = new Vector3(cdot1.X, cdot1.Y, cdot2);
 
-                Vec3 impulse = Mass.Solve33(-cdot);
+                Vector3 impulse = Mass.Solve33(-cdot);
 
                 if (State == LimitState.EqualLimits)
                 {
@@ -444,7 +444,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                         impulse.X = reduced.X;
                         impulse.Y = reduced.Y;
                         impulse.Z = -Impulse.Z;
-                        Impulse = new Vec3(reduced.X, reduced.Y, 0.0f);
+                        Impulse = new Vector3(reduced.X, reduced.Y, 0.0f);
                     }
                 }
                 else if (State == LimitState.AtUpperLimit)
@@ -456,7 +456,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                         impulse.X = reduced.X;
                         impulse.Y = reduced.Y;
                         impulse.Z = -Impulse.Z;
-                        Impulse = new Vec3(reduced.X, reduced.Y, 0.0f);
+                        Impulse = new Vector3(reduced.X, reduced.Y, 0.0f);
                     }
                 }
 
@@ -477,7 +477,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2 cdot = v2 + Vector2.Cross(w2, r2) - v1 - Vector2.Cross(w1, r1);
                 Vector2 impulse = Mass.Solve22(-cdot);
 
-                Impulse = new Vec3(impulse.X, impulse.Y, Impulse.Z);
+                Impulse = new Vector3(impulse.X, impulse.Y, Impulse.Z);
 
                 v1 -= m1 * impulse;
                 w1 -= i1 * Vector2.Cross(r1, impulse);

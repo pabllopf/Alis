@@ -37,7 +37,7 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
-        public Mat33(Vec3 c1, Vec3 c2, Vec3 c3)
+        public Mat33(Vector3 c1, Vector3 c2, Vector3 c3)
         {
             Col1 = c1;
             Col2 = c2;
@@ -58,15 +58,15 @@ namespace Alis.Aspect.Math
         ///     Solve A * x = b, where b is a column vector. This is more efficient
         ///     than computing the inverse in one-shot cases.
         /// </summary>
-        public Vec3 Solve33(Vec3 b)
+        public Vector3 Solve33(Vector3 b)
         {
-            float det = Vec3.Dot(Col1, Vec3.Cross(Col2, Col3));
+            float det = Vector3.Dot(Col1, Vector3.Cross(Col2, Col3));
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-            Vec3 x = new Vec3();
-            x.X = det * Vec3.Dot(b, Vec3.Cross(Col2, Col3));
-            x.Y = det * Vec3.Dot(Col1, Vec3.Cross(b, Col3));
-            x.Z = det * Vec3.Dot(Col1, Vec3.Cross(Col2, b));
+            Vector3 x = new Vector3();
+            x.X = det * Vector3.Dot(b, Vector3.Cross(Col2, Col3));
+            x.Y = det * Vector3.Dot(Col1, Vector3.Cross(b, Col3));
+            x.Z = det * Vector3.Dot(Col1, Vector3.Cross(Col2, b));
             return x;
         }
 
@@ -90,16 +90,16 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     The col
         /// </summary>
-        public Vec3 Col1 { get; set; }
+        public Vector3 Col1 { get; set; }
 
         /// <summary>
         ///     The col
         /// </summary>
-        public Vec3 Col2 { get; set; }
+        public Vector3 Col2 { get; set; }
 
         /// <summary>
         ///     The col
         /// </summary>
-        public Vec3 Col3 { get; set; }
+        public Vector3 Col3 { get; set; }
     }
 }
