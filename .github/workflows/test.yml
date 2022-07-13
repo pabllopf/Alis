@@ -79,7 +79,6 @@ jobs:
           token: ${{ github.token }}
           tag: "v${{ env.VERSIONFINAL }}"
 
-
       - uses: softprops/action-gh-release@v1
         with:
           body: ${{ steps.changelog.outputs.changes }}
