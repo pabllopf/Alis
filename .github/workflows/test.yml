@@ -80,7 +80,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: "softprops/action-gh-release@latest"
+      - uses: softprops/action-gh-release@v1
         with:
           body: ${{steps.github_release.outputs.changelog}}
           token: "${{ secrets.GITHUB_TOKEN }}"
