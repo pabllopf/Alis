@@ -484,7 +484,7 @@ jobs:
           token: ${{ github.token }}
           tag: "v${{ env.VERSIONFINAL }}"
           writeToFile: true
-          excludeTypes: [chore, perf]
+          excludeTypes: chore, perf
 
       - uses: softprops/action-gh-release@v1
         with:
