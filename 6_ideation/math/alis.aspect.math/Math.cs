@@ -167,9 +167,9 @@ namespace Alis.Aspect.Math
         /// </summary>
         /// <param name="a">The </param>
         /// <returns>The </returns>
-        public static Matrix2X2 Abs(Matrix2X2 a)
+        public static Matrix22 Abs(Matrix22 a)
         {
-            Matrix2X2 b = new Matrix2X2();
+            Matrix22 b = new Matrix22();
             b.Set(Abs(a.Col1), Abs(a.Col2));
             return b;
         }
@@ -299,7 +299,7 @@ namespace Alis.Aspect.Math
         ///     Multiply a matrix times a vector. If a rotation matrix is provided,
         ///     then this transforms the vector from one frame to another.
         /// </summary>
-        public static Vector2 Mul(Matrix2X2 a, Vector2 v)
+        public static Vector2 Mul(Matrix22 a, Vector2 v)
         {
             Vector2 u = new Vector2();
             u.Set(a.Col1.X * v.X + a.Col2.X * v.Y, a.Col1.Y * v.X + a.Col2.Y * v.Y);
@@ -310,7 +310,7 @@ namespace Alis.Aspect.Math
         ///     Multiply a matrix transpose times a vector. If a rotation matrix is provided,
         ///     then this transforms the vector from one frame to another (inverse transform).
         /// </summary>
-        public static Vector2 MulT(Matrix2X2 a, Vector2 v)
+        public static Vector2 MulT(Matrix22 a, Vector2 v)
         {
             Vector2 u = new Vector2();
             u.Set(Vector2.Dot(v, a.Col1), Vector2.Dot(v, a.Col2));
@@ -320,9 +320,9 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     A * B
         /// </summary>
-        public static Matrix2X2 Mul(Matrix2X2 a, Matrix2X2 b)
+        public static Matrix22 Mul(Matrix22 a, Matrix22 b)
         {
-            Matrix2X2 c = new Matrix2X2();
+            Matrix22 c = new Matrix22();
             c.Set(Mul(a, b.Col1), Mul(a, b.Col2));
             return c;
         }
@@ -330,13 +330,13 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     A^T * B
         /// </summary>
-        public static Matrix2X2 MulT(Matrix2X2 a, Matrix2X2 b)
+        public static Matrix22 MulT(Matrix22 a, Matrix22 b)
         {
             Vector2 c1 = new Vector2();
             c1.Set(Vector2.Dot(a.Col1, b.Col1), Vector2.Dot(a.Col2, b.Col1));
             Vector2 c2 = new Vector2();
             c2.Set(Vector2.Dot(a.Col1, b.Col2), Vector2.Dot(a.Col2, b.Col2));
-            Matrix2X2 c = new Matrix2X2();
+            Matrix22 c = new Matrix22();
             c.Set(c1, c2);
             return c;
         }
@@ -366,7 +366,7 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Multiply a matrix times a vector.
         /// </summary>
-        public static Vector3 Mul(Matrix3X3 a, Vector3 v)
+        public static Vector3 Mul(Matrix33 a, Vector3 v)
         {
             Vector3 u = v.X * a.Col1 + v.Y * a.Col2 + v.Z * a.Col3;
             return u;

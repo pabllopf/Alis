@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        public Matrix3X3 K;
+        public Matrix33 K;
 
         /// <summary>
         ///     The limit state
@@ -629,8 +629,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             bool active = false;
             float c2 = 0.0f;
 
-            var mat22R1 = new Matrix2X2(body1SweepA);
-            var mat22R2 = new Matrix2X2(body2SweepA);
+            var mat22R1 = new Matrix22(body1SweepA);
+            var mat22R2 = new Matrix22(body2SweepA);
 
             Vector2 r1 = Box2DXMath.Mul(mat22R1, LocalAnchor1 - LocalCenter1);
             Vector2 r2 = Box2DXMath.Mul(mat22R2, LocalAnchor2 - LocalCenter2);

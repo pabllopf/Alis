@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The
         /// </summary>
-        public Matrix2X2 K;
+        public Matrix22 K;
 
         /// <summary>
         ///     The local plane normal
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The normal mass
         /// </summary>
-        public Matrix2X2 NormalMass;
+        public Matrix22 NormalMass;
 
         /// <summary>
         ///     The point count
