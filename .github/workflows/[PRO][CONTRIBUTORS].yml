@@ -1,23 +1,25 @@
 name: "[PRO][CONTRIBUTORS]"
 on:
-  schedule:
-    - cron:  '20 20 * * *'
   push:
-    branches:
-     - master
-
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: "0 0 * * *"
+  
 jobs:
-  add-contributors:
+  main:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: BobAnkh/add-contributors@master
-      with:
-        CONTRIBUTOR: '### Contributors'
-        COLUMN_PER_ROW: '6'
-        ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        IMG_WIDTH: '100'
-        FONT_SIZE: '14'
-        PATH: '/README.md'
-        COMMIT_MESSAGE: 'docs(README): update contributors'
-        AVATAR_SHAPE: 'round'
+      - uses: minicli/action-contributors@v2
+        name: 'Update a projects CONTRIBUTORS file'
+        env:
+          CONTRIB_REPOSITORY: 'pabllopf/alis'
+          CONTRIB_OUTPUT_FILE: 'CONTRIBUTORS.md'
+      
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: 'CONTRIBUTORS.md'
+          commit-msg: Update contributors by actions
+          github-token: ${{ secrets.GITHUB_TOKEN }}
