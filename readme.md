@@ -26,6 +26,28 @@
 | Discover Vulnerabilities | Automatically detect common vulnerability and coding errors. | Every day at 1:00 am | ![Discover_Vulnerabilities](https://github.com/pabllopf/Alis/workflows/Discover_Vulnerabilities/badge.svg) |
 | Automatic Documentation | Generates the documentation automatically and publishes it on the web. | Every day at 2:00 am | ![Automatic_Documentation](https://github.com/pabllopf/Alis/workflows/Automatic_Documentation/badge.svg) |
 
+
+## Collaborators
+
+<!-- readme: collaborators -start -->
+<!-- readme: collaborators -end -->
+
+## Contributors
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
+## Sponsors
+
+<!-- readme: sponsors -start -->
+<!-- readme: sponsors -end -->
+
+## Bots
+
+<!-- readme: bots -start -->
+<!-- readme: bots -end -->
+
+
 ## Graphics(Editor)
 
 | System | OpenGL | Directx11 | Vulkan | Metal |
