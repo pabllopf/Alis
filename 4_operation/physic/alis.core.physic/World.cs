@@ -29,15 +29,16 @@
 
 using System;
 using Alis.Aspect.Logging;
+using Alis.Aspect.Time;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;
-using Math = Alis.Aspect.Math.Math;
 
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Core.Physic
 {
     /// <summary>
     ///     The world class manages all physics entities, dynamic simulation,

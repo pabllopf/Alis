@@ -4,9 +4,39 @@
         <name>Alis.Aspect.Time</name>
     </assembly>
     <members>
-        <member name="T:Alis.Aspect.Time.ExampleDefault">
+        <member name="T:Alis.Aspect.Time.TimeStep">
             <summary>
-                The example class
+                The time step
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Time.TimeStep.Dt">
+            <summary>
+                The dt
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Time.TimeStep.InvDt">
+            <summary>
+                The inv dt
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Time.TimeStep.DtRatio">
+            <summary>
+                The dt ratio
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Time.TimeStep.VelocityIterations">
+            <summary>
+                The velocity iterations
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Time.TimeStep.PositionIterations">
+            <summary>
+                The position iterations
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Time.TimeStep.WarmStarting">
+            <summary>
+                The warm starting
             </summary>
         </member>
     </members>
