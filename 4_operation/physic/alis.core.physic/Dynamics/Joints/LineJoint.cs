@@ -87,7 +87,9 @@
 // Now compute impulse to be applied:
 // df = f2 - f1
 
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
+using Alis.Aspect.Time;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {

@@ -939,8 +939,5 @@
                 Gets the value of the identity
             </summary>
         </member>
-        <member name="T:Alis.Core.Systems.Physics2D.Utilities.Helper">
-            <summary>Contains commonly used precalculated values and mathematical operations.</summary>
-        </member>
     </members>
 </doc>

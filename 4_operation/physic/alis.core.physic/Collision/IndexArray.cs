@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Logging;
+
 namespace Alis.Core.Physic.Collision
 {
     /// <summary>

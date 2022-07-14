@@ -35,7 +35,9 @@
 // Identity used:
 // w k % (rx i + ry j) = w * (-ry i + rx j)
 
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
+using Alis.Aspect.Time;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {

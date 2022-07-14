@@ -49,6 +49,7 @@ Bullet (http:/www.bulletphysics.com).
 #define ALLOWUNSAFE
 //#define TARGET_FLOAT32_IS_FIXED
 
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision

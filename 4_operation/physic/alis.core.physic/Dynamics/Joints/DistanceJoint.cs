@@ -42,7 +42,9 @@
 // K = J * invM * JT
 //   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
 
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
+using Alis.Aspect.Time;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {

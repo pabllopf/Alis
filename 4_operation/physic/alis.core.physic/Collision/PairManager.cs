@@ -34,6 +34,7 @@
 #define DEBUG
 
 using System;
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Math = Alis.Aspect.Math.Math;
 

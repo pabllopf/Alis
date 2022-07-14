@@ -29,6 +29,7 @@
 
 #define DEBUG
 
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Collision.Shapes
