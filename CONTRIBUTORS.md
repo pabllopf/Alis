@@ -10,4 +10,5 @@ Shout out to our top contributors!
 - [GabrielRT01](https://api.github.com/users/GabrielRT01)
 - [cannt](https://api.github.com/users/cannt)
 - [RaulLozanoPonce](https://api.github.com/users/RaulLozanoPonce)
+- [github-actions[bot]](https://api.github.com/users/github-actions%5Bbot%5D)
 - [suarez0965](https://api.github.com/users/suarez0965)
