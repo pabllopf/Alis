@@ -1,30 +1,14 @@
-Project Authors
-===============
+## Authors
 
-This is where your explain when the project started, for which client, and list all devteams who contributes to it.
-
-## Project technical leads:
-
-* John Foo - position - City (Country)
-* Bar Doe - position - City (Country)
-
-## Developers:
-
-* John Foo - position - City (Country)
-* Bar Doe - position - City (Country)
-
-## All other contributors and their affiliations:
-
-* Team Name - City (Country)
-
-    * John Foo - position - City (Country)
-    * Bar Doe - position - City (Country)
-
-* Team Name - City (Country)
-
-    * John Foo - position - City (Country)
-    * Bar Doe - position - City (Country)
-
-## Special thanks to
-
-Have fun here =] (optional item)
+<!-- readme: pabllopf -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/pabllopf">
+            <img src="https://avatars.githubusercontent.com/u/48176121?v=4" width="75;" alt="pabllopf"/>
+            <br />
+            <sub><b>Pablo Perdomo Falcón</b></sub>
+        </a>
+    </td></tr>
+</table>
+<!-- readme: pabllopf -end -->
