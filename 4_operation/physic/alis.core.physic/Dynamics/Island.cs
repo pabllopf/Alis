@@ -146,6 +146,7 @@ However, we can compute sin+cos of the same angle fast.
 */
 
 using System;
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;

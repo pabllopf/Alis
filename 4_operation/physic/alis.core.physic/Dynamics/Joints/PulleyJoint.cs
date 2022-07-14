@@ -46,6 +46,7 @@
 // K = invMass + invI * cross(r, u)^2
 // 0 <= impulse
 
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints

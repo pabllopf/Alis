@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Aspect.Logging;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {

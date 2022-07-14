@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints

@@ -40,6 +40,7 @@
 // J = [0 0 -1 0 0 1]
 // K = invI1 + invI2
 
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
 namespace Alis.Core.Physic.Dynamics.Joints

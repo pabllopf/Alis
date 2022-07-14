@@ -30,6 +30,7 @@
 //#define B2_DEBUG_SOLVER
 
 using System;
+using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;

@@ -4,39 +4,6 @@
         <name>Alis.Core.Physic</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Physic.Box2DxDebug">
-            <summary>
-                The box dx debug class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Box2DxDebug.Assert(System.Boolean)">
-            <summary>
-                Asserts the condition
-            </summary>
-            <param name="condition">The condition</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Box2DxDebug.Assert(System.Boolean,System.String)">
-            <summary>
-                Asserts the condition
-            </summary>
-            <param name="condition">The condition</param>
-            <param name="message">The message</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Box2DxDebug.Assert(System.Boolean,System.String,System.String)">
-            <summary>
-                Asserts the condition
-            </summary>
-            <param name="condition">The condition</param>
-            <param name="message">The message</param>
-            <param name="detailMessage">The detail message</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Box2DxDebug.ThrowBox2DxException(System.String)">
-            <summary>
-                Throws the box 2 dx exception using the specified message
-            </summary>
-            <param name="message">The message</param>
-            <exception cref="T:System.Exception"></exception>
-        </member>
         <member name="T:Alis.Core.Physic.Collision.Aabb">
             <summary>
                 An axis aligned bounding box.
