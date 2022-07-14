@@ -29,7 +29,7 @@
 
 using Xunit;
 
-namespace Alis.Aspect.Memory.Test.Unit.Integration
+namespace Alis.Aspect.Memory.Test.Integration
 {
     /// <summary>
     ///     The unit test class

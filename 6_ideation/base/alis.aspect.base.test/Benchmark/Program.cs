@@ -36,7 +36,7 @@ using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
 */
 
-namespace Alis.Aspect.Base.Test.Unit.Benchmark
+namespace Alis.Aspect.Base.Test.Benchmark
 {
     /// <summary>
     ///     The program class

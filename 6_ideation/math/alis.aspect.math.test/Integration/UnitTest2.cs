@@ -29,7 +29,7 @@
 
 using Xunit;
 
-namespace Alis.Aspect.Math.Test.Unit.Integration
+namespace Alis.Aspect.Math.Test.Integration
 {
     /// <summary>
     ///     The unit test class

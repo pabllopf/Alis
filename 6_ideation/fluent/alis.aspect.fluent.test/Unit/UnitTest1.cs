@@ -29,7 +29,7 @@
 
 using Xunit;
 
-namespace Alis.Aspect.Fluent.Test.Unit.Unit
+namespace Alis.Aspect.Fluent.Test.Unit
 {
     /// <summary>
     ///     The unit test class

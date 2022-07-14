@@ -34,49 +34,6 @@
                 The euler
             </summary>
         </member>
-        <member name="T:Alis.Aspect.Math.Mat33">
-            <summary>
-                A 3-by-3 matrix. Stored in column-major order.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat33.#ctor(Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3)">
-            <summary>
-                Construct this matrix using columns.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat33.SetZero">
-            <summary>
-                Set this matrix to all zeros.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat33.Solve33(Alis.Aspect.Math.Vector3)">
-            <summary>
-                Solve A * x = b, where b is a column vector. This is more efficient
-                than computing the inverse in one-shot cases.
-            </summary>
-        </member>
-        <member name="M:Alis.Aspect.Math.Mat33.Solve22(Alis.Aspect.Math.Vector2)">
-            <summary>
-                Solve A * x = b, where b is a column vector. This is more efficient
-                than computing the inverse in one-shot cases. Solve only the upper
-                2-by-2 matrix equation.
-            </summary>
-        </member>
-        <member name="P:Alis.Aspect.Math.Mat33.Col1">
-            <summary>
-                The col
-            </summary>
-        </member>
-        <member name="P:Alis.Aspect.Math.Mat33.Col2">
-            <summary>
-                The col
-            </summary>
-        </member>
-        <member name="P:Alis.Aspect.Math.Mat33.Col3">
-            <summary>
-                The col
-            </summary>
-        </member>
         <member name="T:Alis.Aspect.Math.Math">
             <summary>
                 The math class
@@ -160,7 +117,7 @@
             <param name="a">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Abs(Alis.Aspect.Math.Matrix2x2)">
+        <member name="M:Alis.Aspect.Math.Math.Abs(Alis.Aspect.Math.Matrix22)">
             <summary>
                 Abses the a
             </summary>
@@ -250,24 +207,24 @@
             <param name="a">The </param>
             <param name="b">The </param>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Vector2)">
             <summary>
                 Multiply a matrix times a vector. If a rotation matrix is provided,
                 then this transforms the vector from one frame to another.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Vector2)">
             <summary>
                 Multiply a matrix transpose times a vector. If a rotation matrix is provided,
                 then this transforms the vector from one frame to another (inverse transform).
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Matrix2x2)">
+        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Matrix22)">
             <summary>
                 A * B
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Matrix2x2)">
+        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Matrix22)">
             <summary>
                 A^T * B
             </summary>
@@ -288,7 +245,7 @@
             <param name="v">The </param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Mat33,Alis.Aspect.Math.Vector3)">
+        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix33,Alis.Aspect.Math.Vector3)">
             <summary>
                 Multiply a matrix times a vector.
             </summary>
@@ -316,85 +273,128 @@
                 The
             </summary>
         </member>
-        <member name="T:Alis.Aspect.Math.Matrix2x2">
+        <member name="T:Alis.Aspect.Math.Matrix22">
             <summary>
                 A 2-by-2 matrix. Stored in column-major order.
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Matrix2x2.Col1">
+        <member name="F:Alis.Aspect.Math.Matrix22.Col1">
             <summary>
                 The col
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Matrix2x2.Col2">
+        <member name="F:Alis.Aspect.Math.Matrix22.Col2">
             <summary>
                 The col
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.#ctor(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Matrix22.#ctor(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Construct this matrix using columns.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.#ctor(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Matrix22.#ctor(System.Single,System.Single,System.Single,System.Single)">
             <summary>
                 Construct this matrix using scalars.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.#ctor(System.Single)">
+        <member name="M:Alis.Aspect.Math.Matrix22.#ctor(System.Single)">
             <summary>
                 Construct this matrix using an angle.
                 This matrix becomes an orthonormal rotation matrix.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.Set(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Matrix22.Set(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Initialize this matrix using columns.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.Set(System.Single)">
+        <member name="M:Alis.Aspect.Math.Matrix22.Set(System.Single)">
             <summary>
                 Initialize this matrix using an angle.
                 This matrix becomes an orthonormal rotation matrix.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.SetIdentity">
+        <member name="M:Alis.Aspect.Math.Matrix22.SetIdentity">
             <summary>
                 Set this to the identity matrix.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.SetZero">
+        <member name="M:Alis.Aspect.Math.Matrix22.SetZero">
             <summary>
                 Set this matrix to all zeros.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.GetAngle">
+        <member name="M:Alis.Aspect.Math.Matrix22.GetAngle">
             <summary>
                 Extract the angle from this matrix (assumed to be a rotation matrix).
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.GetInverse">
+        <member name="M:Alis.Aspect.Math.Matrix22.GetInverse">
             <summary>
                 Compute the inverse of this matrix, such that inv(A) * A = identity.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.Solve(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Matrix22.Solve(Alis.Aspect.Math.Vector2)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient
                 than computing the inverse in one-shot cases.
             </summary>
         </member>
-        <member name="P:Alis.Aspect.Math.Matrix2x2.Identity">
+        <member name="P:Alis.Aspect.Math.Matrix22.Identity">
             <summary>
                 Gets the value of the identity
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Matrix2x2.op_Addition(Alis.Aspect.Math.Matrix2x2,Alis.Aspect.Math.Matrix2x2)">
+        <member name="M:Alis.Aspect.Math.Matrix22.op_Addition(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Matrix22)">
             <summary>
             </summary>
             <param name="a"></param>
             <param name="b"></param>
             <returns></returns>
+        </member>
+        <member name="T:Alis.Aspect.Math.Matrix33">
+            <summary>
+                A 3-by-3 matrix. Stored in column-major order.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix33.#ctor(Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3,Alis.Aspect.Math.Vector3)">
+            <summary>
+                Construct this matrix using columns.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix33.SetZero">
+            <summary>
+                Set this matrix to all zeros.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix33.Solve33(Alis.Aspect.Math.Vector3)">
+            <summary>
+                Solve A * x = b, where b is a column vector. This is more efficient
+                than computing the inverse in one-shot cases.
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Matrix33.Solve22(Alis.Aspect.Math.Vector2)">
+            <summary>
+                Solve A * x = b, where b is a column vector. This is more efficient
+                than computing the inverse in one-shot cases. Solve only the upper
+                2-by-2 matrix equation.
+            </summary>
+        </member>
+        <member name="P:Alis.Aspect.Math.Matrix33.Col1">
+            <summary>
+                The col
+            </summary>
+        </member>
+        <member name="P:Alis.Aspect.Math.Matrix33.Col2">
+            <summary>
+                The col
+            </summary>
+        </member>
+        <member name="P:Alis.Aspect.Math.Matrix33.Col3">
+            <summary>
+                The col
+            </summary>
         </member>
         <member name="T:Alis.Aspect.Math.Settings">
             <summary>
@@ -898,7 +898,7 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.XForm.#ctor(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Matrix2x2)">
+        <member name="M:Alis.Aspect.Math.XForm.#ctor(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Matrix22)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Aspect.Math.XForm" /> struct.
             </summary>
