@@ -45,5 +45,15 @@ namespace Alis.Aspect.Math.Test.Unit {
             Assert.Equal(3, m.Col1.Y);
             Assert.Equal(4, m.Col2.Y);
         }
+        
+     
+        /// <summary>
+        /// Tests the matrix 22 solve
+        /// </summary>
+        [Fact]
+        public void TestMatrix22Solve() 
+        {
+            Assert.Equal(1, 1);
+        }
     }
 }
