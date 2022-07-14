@@ -1,14 +1,26 @@
-# Contributors
+## Owner
 
-Shout out to our top contributors!
+<!-- readme: pabllopf -start -->
+<!-- readme: pabllopf -end -->
 
-- [pabllopf](https://api.github.com/users/pabllopf)
-- [Claudia2000pf](https://api.github.com/users/Claudia2000pf)
-- [SPEEDCROW98](https://api.github.com/users/SPEEDCROW98)
-- [RicardoVillarta](https://api.github.com/users/RicardoVillarta)
-- [Chgv99](https://api.github.com/users/Chgv99)
-- [github-actions[bot]](https://api.github.com/users/github-actions%5Bbot%5D)
-- [GabrielRT01](https://api.github.com/users/GabrielRT01)
-- [cannt](https://api.github.com/users/cannt)
-- [RaulLozanoPonce](https://api.github.com/users/RaulLozanoPonce)
-- [suarez0965](https://api.github.com/users/suarez0965)
+## Sponsors
+
+<!-- readme: sponsors -start -->
+<!-- readme: sponsors -end -->
+
+## Collaborators
+
+<!-- readme: collaborators -start -->
+<!-- readme: collaborators -end -->
+
+## Contributors
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
+## Bots
+
+<!-- readme: bots -start -->
+<!-- readme: bots -end -->
+
+
