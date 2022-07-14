@@ -110,3 +110,40 @@ disability, ethnicity, sex characteristics, gender identity and expression, leve
 socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/CODE_OF_CONDUCT.md)
+
+
+
+## Authors
+
+<!-- readme: pabllopf -start -->
+<!-- readme: pabllopf -end -->
+
+## Sponsors
+
+<!-- readme: sponsors -start -->
+<!-- readme: sponsors -end -->
+
+## Collaborators
+
+<!-- readme: collaborators -start -->
+<!-- readme: collaborators -end -->
+
+## Contributors
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
+
+## Bots
+
+<!-- readme: bots -start -->
+<!-- readme: bots -end -->
+
+
+
+
+
+
+
+
+
+
