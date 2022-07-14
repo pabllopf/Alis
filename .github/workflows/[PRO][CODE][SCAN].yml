@@ -5,6 +5,7 @@ on:
   schedule:
     - cron: '30 1 * * *'
     
+    
 jobs:
   analyze:
     name: CODE SCAN
