@@ -37,6 +37,7 @@ using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;
+using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic
 {

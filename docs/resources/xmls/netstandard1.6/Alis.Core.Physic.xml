@@ -2069,7 +2069,7 @@
                 The xf
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.#ctor(Alis.Core.Physic.Dynamics.BodyDef,Alis.Core.Physic.Dynamics.World)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.#ctor(Alis.Core.Physic.Dynamics.BodyDef,Alis.Core.Physic.World)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Body" /> class
             </summary>
@@ -3212,7 +3212,7 @@
                 The step
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.#ctor(Alis.Core.Physic.Dynamics.TimeStep,Alis.Core.Physic.Dynamics.Contacts.Contact[],System.Int32)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.#ctor(Alis.Aspect.Time.TimeStep,Alis.Core.Physic.Dynamics.Contacts.Contact[],System.Int32)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Contacts.ContactSolver" /> class
             </summary>
@@ -3230,7 +3230,7 @@
                 Disposes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
@@ -3486,7 +3486,7 @@
             </summary>
             <param name="buoyancyControllerDef">The buoyancy controller def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Step(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Step(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Steps the step
             </summary>
@@ -3552,7 +3552,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.ConstantAccelController.Step(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.ConstantAccelController.Step(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Steps the step
             </summary>
@@ -3583,7 +3583,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.ConstantForceController.Step(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.ConstantForceController.Step(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Steps the step
             </summary>
@@ -3633,7 +3633,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Controllers.Controller" /> class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.#ctor(Alis.Core.Physic.Dynamics.World)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.#ctor(Alis.Core.Physic.World)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Controllers.Controller" /> class
             </summary>
@@ -3644,7 +3644,7 @@
                 Disposes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.Step(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.Step(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Controllers override this to implement per-step functionality.
             </summary>
@@ -3740,7 +3740,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.GravityController.Step(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.GravityController.Step(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Steps the step
             </summary>
@@ -3785,7 +3785,7 @@
         <member name="M:Alis.Core.Physic.Dynamics.Controllers.TensorDampingController.SetAxisAligned(System.Single,System.Single)">
             Sets damping independantly along the x and y axes
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.TensorDampingController.Step(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.TensorDampingController.Step(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Steps the step
             </summary>
@@ -4246,7 +4246,7 @@
                 Clears this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Island.Solve(Alis.Core.Physic.Dynamics.TimeStep,Alis.Aspect.Math.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Island.Solve(Alis.Aspect.Time.TimeStep,Alis.Aspect.Math.Vector2,System.Boolean)">
             <summary>
                 Solves the step
             </summary>
@@ -4254,7 +4254,7 @@
             <param name="gravity">The gravity</param>
             <param name="allowSleep">The allow sleep</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Island.SolveToi(Alis.Core.Physic.Dynamics.TimeStep@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Island.SolveToi(Alis.Aspect.Time.TimeStep@)">
             <summary>
                 Solves the toi using the specified sub step
             </summary>
@@ -4371,7 +4371,7 @@
             <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
@@ -4384,7 +4384,7 @@
             <param name="baumgarte">The baumgarte</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.SolveVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the velocity constraints using the specified step
             </summary>
@@ -4553,13 +4553,13 @@
             <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.SolveVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the velocity constraints using the specified step
             </summary>
@@ -4800,13 +4800,13 @@
             </summary>
             <param name="joint">The joint</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.SolveVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the velocity constraints using the specified step
             </summary>
@@ -5170,13 +5170,13 @@
                 Get the motor speed, usually in meters per second.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.LineJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.LineJoint.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.LineJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.LineJoint.SolveVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the velocity constraints using the specified step
             </summary>
@@ -5350,13 +5350,13 @@
                 Use this to update the target point.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJoint.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.MouseJoint.SolveVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the velocity constraints using the specified step
             </summary>
@@ -5586,13 +5586,13 @@
                 Set the maximum motor force, usually in N.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.SolveVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the velocity constraints using the specified step
             </summary>
@@ -5841,13 +5841,13 @@
             <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.SolveVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the velocity constraints using the specified step
             </summary>
@@ -6067,13 +6067,13 @@
                 Set the maximum motor torque, usually in N-m.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.InitVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.InitVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SolveVelocityConstraints(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SolveVelocityConstraints(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the velocity constraints using the specified step
             </summary>
@@ -6211,41 +6211,6 @@
                 The
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.TimeStep">
-            <summary>
-                The time step
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.Dt">
-            <summary>
-                The dt
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.InvDt">
-            <summary>
-                The inv dt
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.DtRatio">
-            <summary>
-                The dt ratio
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.VelocityIterations">
-            <summary>
-                The velocity iterations
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.PositionIterations">
-            <summary>
-                The position iterations
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.WarmStarting">
-            <summary>
-                The warm starting
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Dynamics.Velocity">
             <summary>
                 The velocity
@@ -6261,143 +6226,143 @@
                 The
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.World">
+        <member name="T:Alis.Core.Physic.World">
             <summary>
                 The world class manages all physics entities, dynamic simulation,
                 and asynchronous queries.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.allowSleep">
+        <member name="F:Alis.Core.Physic.World.allowSleep">
             <summary>
                 The allow sleep
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.contactManager">
+        <member name="F:Alis.Core.Physic.World.contactManager">
             <summary>
                 The contact manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.groundBody">
+        <member name="F:Alis.Core.Physic.World.groundBody">
             <summary>
                 The ground body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.bodyCount">
+        <member name="F:Alis.Core.Physic.World.bodyCount">
             <summary>
                 The body count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.bodyList">
+        <member name="F:Alis.Core.Physic.World.bodyList">
             <summary>
                 The body list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.boundaryListener">
+        <member name="F:Alis.Core.Physic.World.boundaryListener">
             <summary>
                 The boundary listener
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.BroadPhase">
+        <member name="F:Alis.Core.Physic.World.BroadPhase">
             <summary>
                 The broad phase
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.ContactCount">
+        <member name="F:Alis.Core.Physic.World.ContactCount">
             <summary>
                 The contact count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.ContactFilter">
+        <member name="F:Alis.Core.Physic.World.ContactFilter">
             <summary>
                 The contact filter
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.ContactList">
+        <member name="F:Alis.Core.Physic.World.ContactList">
             <summary>
                 The contact list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.ContactListener">
+        <member name="F:Alis.Core.Physic.World.ContactListener">
             <summary>
                 The contact listener
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.continuousPhysics">
+        <member name="F:Alis.Core.Physic.World.continuousPhysics">
             <summary>
                 The continuous physics
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.controllerCount">
+        <member name="F:Alis.Core.Physic.World.controllerCount">
             <summary>
                 The controller count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.controllerList">
+        <member name="F:Alis.Core.Physic.World.controllerList">
             <summary>
                 The controller list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.debugDraw">
+        <member name="F:Alis.Core.Physic.World.debugDraw">
             <summary>
                 The debug draw
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.destructionListener">
+        <member name="F:Alis.Core.Physic.World.destructionListener">
             <summary>
                 The destruction listener
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.gravity">
+        <member name="F:Alis.Core.Physic.World.gravity">
             <summary>
                 The gravity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.invDt0">
+        <member name="F:Alis.Core.Physic.World.invDt0">
             <summary>
                 The inv dt0
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.jointCount">
+        <member name="F:Alis.Core.Physic.World.jointCount">
             <summary>
                 The joint count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.jointList">
+        <member name="F:Alis.Core.Physic.World.jointList">
             <summary>
                 The joint list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.Lock">
+        <member name="F:Alis.Core.Physic.World.Lock">
             <summary>
                 The lock
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.raycastNormal">
+        <member name="F:Alis.Core.Physic.World.raycastNormal">
             <summary>
                 The raycast normal
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.raycastSegment">
+        <member name="F:Alis.Core.Physic.World.raycastSegment">
             <summary>
                 The raycast segment
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.raycastSolidShape">
+        <member name="F:Alis.Core.Physic.World.raycastSolidShape">
             <summary>
                 The raycast solid shape
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.raycastUserData">
+        <member name="F:Alis.Core.Physic.World.raycastUserData">
             <summary>
                 The raycast user data
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.World.warmStarting">
+        <member name="F:Alis.Core.Physic.World.warmStarting">
             <summary>
                 The warm starting
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.#ctor(Alis.Core.Physic.Collision.Aabb,Alis.Aspect.Math.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Physic.Collision.Aabb,Alis.Aspect.Math.Vector2,System.Boolean)">
             <summary>
                 Construct a world object.
             </summary>
@@ -6405,42 +6370,42 @@
             <param name="gravity">The world gravity vector.</param>
             <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.World.Gravity">
+        <member name="P:Alis.Core.Physic.World.Gravity">
             <summary>
                 Get\Set global gravity vector.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.Dispose">
+        <member name="M:Alis.Core.Physic.World.Dispose">
             <summary>
                 Destruct the world. All physics entities are destroyed.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SetDestructionListener(Alis.Core.Physic.Dynamics.DestructionListener)">
+        <member name="M:Alis.Core.Physic.World.SetDestructionListener(Alis.Core.Physic.Dynamics.DestructionListener)">
             <summary>
                 Register a destruction listener.
             </summary>
             <param name="listener"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SetBoundaryListener(Alis.Core.Physic.Dynamics.BoundaryListener)">
+        <member name="M:Alis.Core.Physic.World.SetBoundaryListener(Alis.Core.Physic.Dynamics.BoundaryListener)">
             <summary>
                 Register a broad-phase boundary listener.
             </summary>
             <param name="listener"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SetContactFilter(Alis.Core.Physic.Dynamics.ContactFilter)">
+        <member name="M:Alis.Core.Physic.World.SetContactFilter(Alis.Core.Physic.Dynamics.ContactFilter)">
             <summary>
                 Register a contact filter to provide specific control over collision.
                 Otherwise the default filter is used (b2_defaultFilter).
             </summary>
             <param name="filter"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SetContactListener(Alis.Core.Physic.Dynamics.IContactListener)">
+        <member name="M:Alis.Core.Physic.World.SetContactListener(Alis.Core.Physic.Dynamics.IContactListener)">
             <summary>
                 Register a contact event listener
             </summary>
             <param name="listener"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SetDebugDraw(Alis.Core.Physic.Dynamics.DebugDraw)">
+        <member name="M:Alis.Core.Physic.World.SetDebugDraw(Alis.Core.Physic.Dynamics.DebugDraw)">
             <summary>
                 Register a routine for debug drawing. The debug draw functions are called
                 inside the World.Step method, so make sure your renderer is ready to
@@ -6448,7 +6413,7 @@
             </summary>
             <param name="debugDraw"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.CreateBody(Alis.Core.Physic.Dynamics.BodyDef)">
+        <member name="M:Alis.Core.Physic.World.CreateBody(Alis.Core.Physic.Dynamics.BodyDef)">
             <summary>
                 Create a rigid body given a definition. No reference to the definition
                 is retained.
@@ -6457,7 +6422,7 @@
             <param name="def"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.DestroyBody(Alis.Core.Physic.Dynamics.Body)">
+        <member name="M:Alis.Core.Physic.World.DestroyBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
                 Destroy a rigid body given a definition. No reference to the definition
                 is retained. This function is locked during callbacks.
@@ -6466,7 +6431,7 @@
             </summary>
             <param name="b"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.CreateJoint(Alis.Core.Physic.Dynamics.Joints.JointDef)">
+        <member name="M:Alis.Core.Physic.World.CreateJoint(Alis.Core.Physic.Dynamics.Joints.JointDef)">
             <summary>
                 Create a joint to constrain bodies together. No reference to the definition
                 is retained. This may cause the connected bodies to cease colliding.
@@ -6475,109 +6440,109 @@
             <param name="def"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.DestroyJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
+        <member name="M:Alis.Core.Physic.World.DestroyJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
             <summary>
                 Destroy a joint. This may cause the connected bodies to begin colliding.
                 @warning This function is locked during callbacks.
             </summary>
             <param name="j"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.AddController(Alis.Core.Physic.Dynamics.Controllers.Controller)">
+        <member name="M:Alis.Core.Physic.World.AddController(Alis.Core.Physic.Dynamics.Controllers.Controller)">
             <summary>
                 Adds the controller using the specified def
             </summary>
             <param name="def">The def</param>
             <returns>The def</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.RemoveController(Alis.Core.Physic.Dynamics.Controllers.Controller)">
+        <member name="M:Alis.Core.Physic.World.RemoveController(Alis.Core.Physic.Dynamics.Controllers.Controller)">
             <summary>
                 Removes the controller using the specified controller
             </summary>
             <param name="controller">The controller</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetGroundBody">
+        <member name="M:Alis.Core.Physic.World.GetGroundBody">
             <summary>
                 The world provides a single static ground body with no collision shapes.
                 You can use this to simplify the creation of joints and static shapes.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetBodyList">
+        <member name="M:Alis.Core.Physic.World.GetBodyList">
             <summary>
                 Get the world body list. With the returned body, use Body.GetNext to get
                 the next body in the world list. A null body indicates the end of the list.
             </summary>
             <returns>The head of the world body list.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetJointList">
+        <member name="M:Alis.Core.Physic.World.GetJointList">
             <summary>
                 Get the world joint list. With the returned joint, use Joint.GetNext to get
                 the next joint in the world list. A null joint indicates the end of the list.
             </summary>
             <returns>The head of the world joint list.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetControllerList">
+        <member name="M:Alis.Core.Physic.World.GetControllerList">
             <summary>
                 Gets the controller list
             </summary>
             <returns>The controller list</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetControllerCount">
+        <member name="M:Alis.Core.Physic.World.GetControllerCount">
             <summary>
                 Gets the controller count
             </summary>
             <returns>The controller count</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.Refilter(Alis.Core.Physic.Dynamics.Fixture)">
+        <member name="M:Alis.Core.Physic.World.Refilter(Alis.Core.Physic.Dynamics.Fixture)">
             <summary>
                 Re-filter a fixture. This re-runs contact filtering on a fixture.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SetWarmStarting(System.Boolean)">
+        <member name="M:Alis.Core.Physic.World.SetWarmStarting(System.Boolean)">
             <summary>
                 Enable/disable warm starting. For testing.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SetContinuousPhysics(System.Boolean)">
+        <member name="M:Alis.Core.Physic.World.SetContinuousPhysics(System.Boolean)">
             <summary>
                 Enable/disable continuous physics. For testing.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.Validate">
+        <member name="M:Alis.Core.Physic.World.Validate">
             <summary>
                 Perform validation of internal data structures.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetProxyCount">
+        <member name="M:Alis.Core.Physic.World.GetProxyCount">
             <summary>
                 Get the number of broad-phase proxies.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetPairCount">
+        <member name="M:Alis.Core.Physic.World.GetPairCount">
             <summary>
                 Get the number of broad-phase pairs.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetBodyCount">
+        <member name="M:Alis.Core.Physic.World.GetBodyCount">
             <summary>
                 Get the number of bodies.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetJointCount">
+        <member name="M:Alis.Core.Physic.World.GetJointCount">
             <summary>
                 Get the number joints.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.GetContactCount">
+        <member name="M:Alis.Core.Physic.World.GetContactCount">
             <summary>
                 Get the number of contacts (each may have 0 or more contact points).
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.Step(System.Single,System.Int32,System.Int32)">
+        <member name="M:Alis.Core.Physic.World.Step(System.Single,System.Int32,System.Int32)">
             <summary>
                 Take a time step. This performs collision detection, integration,
                 and constraint solution.
@@ -6586,7 +6551,7 @@
             <param name="velocityIterations">The velocity iterations.</param>
             <param name="positionIteration">The position iteration.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.Query(Alis.Core.Physic.Collision.Aabb,Alis.Core.Physic.Dynamics.Fixture[],System.Int32)">
+        <member name="M:Alis.Core.Physic.World.Query(Alis.Core.Physic.Collision.Aabb,Alis.Core.Physic.Dynamics.Fixture[],System.Int32)">
             Query the world for all shapes that potentially overlap the
             provided AABB. You provide a shape pointer buffer of specified
             size. The number of shapes found is returned.
@@ -6595,7 +6560,7 @@
             @param maxCount the capacity of the shapes array.
             @return the number of shapes found in aabb.
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.Raycast(Alis.Core.Physic.Collision.Segment,Alis.Core.Physic.Dynamics.Fixture[]@,System.Int32,System.Boolean,System.Object)">
+        <member name="M:Alis.Core.Physic.World.Raycast(Alis.Core.Physic.Collision.Segment,Alis.Core.Physic.Dynamics.Fixture[]@,System.Int32,System.Boolean,System.Object)">
             <summary>
                 Query the world for all shapes that intersect a given segment. You provide a shap
                 pointer buffer of specified size. The number of shapes found is returned, and the buffer
@@ -6614,7 +6579,7 @@
             </param>
             <returns>The number of shapes found</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.RaycastOne(Alis.Core.Physic.Collision.Segment,System.Single@,Alis.Aspect.Math.Vector2@,System.Boolean,System.Object)">
+        <member name="M:Alis.Core.Physic.World.RaycastOne(Alis.Core.Physic.Collision.Segment,System.Single@,Alis.Aspect.Math.Vector2@,System.Boolean,System.Object)">
             <summary>
                 Performs a raycast as with Raycast, finding the first intersecting shape.
             </summary>
@@ -6631,25 +6596,25 @@
             <param name="userData"></param>
             <returns>Returns the colliding shape shape, or null if not found.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.Solve(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.World.Solve(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.SolveToi(Alis.Core.Physic.Dynamics.TimeStep)">
+        <member name="M:Alis.Core.Physic.World.SolveToi(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the toi using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.DrawJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
+        <member name="M:Alis.Core.Physic.World.DrawJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
             <summary>
                 Draws the joint using the specified joint
             </summary>
             <param name="joint">The joint</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.DrawFixture(Alis.Core.Physic.Dynamics.Fixture,Alis.Aspect.Math.XForm,Alis.Core.Physic.Dynamics.Color,System.Boolean)">
+        <member name="M:Alis.Core.Physic.World.DrawFixture(Alis.Core.Physic.Dynamics.Fixture,Alis.Aspect.Math.XForm,Alis.Core.Physic.Dynamics.Color,System.Boolean)">
             <summary>
                 Draws the fixture using the specified fixture
             </summary>
@@ -6658,19 +6623,19 @@
             <param name="color">The color</param>
             <param name="core">The core</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.DrawDebugData">
+        <member name="M:Alis.Core.Physic.World.DrawDebugData">
             <summary>
                 Draws the debug data
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.RaycastSortKey(System.Object)">
+        <member name="M:Alis.Core.Physic.World.RaycastSortKey(System.Object)">
             <summary>
                 Raycasts the sort key using the specified data
             </summary>
             <param name="data">The data</param>
             <returns>The lambda</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.World.InRange(Alis.Core.Physic.Collision.Aabb)">
+        <member name="M:Alis.Core.Physic.World.InRange(Alis.Core.Physic.Collision.Aabb)">
             <summary>
                 Describes whether this instance in range
             </summary>
