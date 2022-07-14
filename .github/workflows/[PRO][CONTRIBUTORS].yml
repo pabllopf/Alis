@@ -11,19 +11,6 @@ jobs:
   Create:
     runs-on: ubuntu-latest
     steps:
-      - uses: minicli/action-contributors@v2
-        name: 'Update a projects CONTRIBUTORS file'
-        env:
-          CONTRIB_REPOSITORY: 'pabllopf/alis'
-          CONTRIB_OUTPUT_FILE: 'CONTRIBUTORS.md'
-      
-      - name: Update resources
-        uses: test-room-7/action-update-file@v1
-        with:
-          file-path: 'CONTRIBUTORS.md'
-          commit-msg: Update contributors by actions
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          
       - uses: akhilmhdh/contributors-readme-action@v2.3.4
         with:
           image_size: 75
