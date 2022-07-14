@@ -1,4 +1,4 @@
-name: [PRO][CONTRIBUTORS]
+name: "[PRO][CONTRIBUTORS]"
 on:
   schedule:
     - cron:  '20 20 * * *'
