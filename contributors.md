@@ -1,4 +1,4 @@
-## Contributors
+# Contributors
 <!-- readme: contributors -start -->
 <table>
 <tr>

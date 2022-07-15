@@ -1,4 +1,4 @@
-## Authors
+# Authors
 
 <!-- readme: pabllopf -start -->
 <table>

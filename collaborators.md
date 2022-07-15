@@ -1,4 +1,4 @@
-## Collaborators
+# Collaborators
 
 <!-- readme: collaborators -start -->
 <table>

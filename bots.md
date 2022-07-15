@@ -1,4 +1,4 @@
-## Bots
+# Bots
 
 <!-- readme: bots -start -->
 <table>
