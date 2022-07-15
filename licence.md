@@ -1,7 +1,8 @@
-# Licence 
+# Licence
 
 ## GNU GENERAL PUBLIC LICENSE V3
-> Version 3, 29 June 2007
+
+> 29 June 2007
 
 ### Preamble
 
@@ -66,7 +67,7 @@ patents cannot be used to render the program non-free.
 The precise terms and conditions for copying, distribution and
 modification follow.
 
-### TERMS AND CONDITIONS
+### Terms and Conditions
 
 #### 0. Definitions
 
