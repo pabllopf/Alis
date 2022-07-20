@@ -122,7 +122,6 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                     float shapeDensity = 0;
                     if (UseDensity)
                     {
-                        //TODO: Expose density publicly
                         shapeDensity = shape.Density;
                     }
                     else
@@ -153,7 +152,6 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 dragForce *= -LinearDrag * area;
                 body.ApplyForce(dragForce, areac);
                 //Angular drag
-                //TODO: Something that makes more physical sense?
                 body.ApplyTorque(-body.GetInertia() / body.GetMass() * area * body.GetAngularVelocity() * angularDrag);
             }
         }

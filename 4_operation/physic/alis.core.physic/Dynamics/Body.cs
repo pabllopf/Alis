@@ -937,7 +937,6 @@ namespace Alis.Core.Physic.Dynamics
                     InvI = 1.0f / I;
                     Flags &= BodyFlags.FixedRotation;
                 }
-                // TODO: Else what?
             }
         }
 

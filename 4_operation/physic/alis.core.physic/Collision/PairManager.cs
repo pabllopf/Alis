@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Collision
             FreePair = 0;
             for (int i = 0; i < Settings.MaxPairs; ++i)
             {
-                Pairs[i] = new Pair(); //todo: need some pool here
+                Pairs[i] = new Pair(); 
                 Pairs[i].ProxyId1 = NullProxy;
                 Pairs[i].ProxyId2 = NullProxy;
                 Pairs[i].UserData = null;

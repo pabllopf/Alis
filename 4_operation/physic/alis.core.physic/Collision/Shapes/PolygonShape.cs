@@ -553,7 +553,6 @@ namespace Alis.Core.Physic.Collision.Shapes
                     }
 
                     // Completely dry
-                    // TODO: Shouldn't return break only?
                     c = new Vector2();
                     return 0;
                 case 1:
