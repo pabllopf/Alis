@@ -38,6 +38,9 @@ namespace Alis.Core.Graphic.Sample
     /// </summary>
     public class Program
     {
+        /// <summary>
+        /// The window
+        /// </summary>
         private static RenderWindow window;
         
         /// <summary>
@@ -58,6 +61,11 @@ namespace Alis.Core.Graphic.Sample
             }
         }
 
+        /// <summary>
+        /// Windows the on closed using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private static void WindowOnClosed(object sender, EventArgs e)
         {
             window.Close();
