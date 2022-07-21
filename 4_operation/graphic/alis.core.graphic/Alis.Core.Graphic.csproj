@@ -5,7 +5,9 @@
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
     <ItemGroup>
-      <Folder Include="D2\SDL" />
-      <Folder Include="D2\SFML" />
+        <Content Include="$(SolutionDir)/4_operation/graphic/alis.core.graphic/runtimes/**" LinkBase="runtimes">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+            <Visible>True</Visible>
+        </Content>
     </ItemGroup>
 </Project>

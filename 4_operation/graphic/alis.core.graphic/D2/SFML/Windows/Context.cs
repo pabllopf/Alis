@@ -28,19 +28,17 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Core.Graphics2D.Systems;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
-namespace Alis.Core.Graphics2D.Windows
+namespace Alis.Core.Graphic.D2.SFML.Windows
 {
     //////////////////////////////////////////////////////////////////
     /// <summary>
     ///     This class defines a .NET interface to an SFML OpenGL Context
     /// </summary>
     //////////////////////////////////////////////////////////////////
-    public class Context : CriticalFinalizerObject
+    public class Context 
     {
         /// <summary>
         ///     The our global context

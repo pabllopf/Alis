@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:   e.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -28,40 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Graphic.D2.SFML.Graphics;
-using Alis.Core.Graphic.D2.SFML.Windows;
 
-namespace Alis.Core.Graphic.Sample
+namespace Alis.Core.Graphic.D2.SFML
 {
-    /// <summary>
-    ///     The program class
-    /// </summary>
-    public class Program
+    /// <summary>Allows managed code to call into unmanaged code without a stack walk. This class cannot be inherited.</summary>
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Interface | AttributeTargets.Delegate, AllowMultiple = true, Inherited = false)]
+    public sealed class SuppressUnmanagedCodeSecurityAttribute : Attribute
     {
-        private static RenderWindow window;
-        
-        /// <summary>
-        ///     Main the args
-        /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Start");
-            window= new RenderWindow(new VideoMode(800, 600), "SFML window");
-            window.SetVisible(true);
-            window.Closed += WindowOnClosed;
-            while (window.IsOpen)
-            {
-                window.DispatchEvents();
-                window.Clear(Color.Red);
-                window.Display();
-            }
-        }
-
-        private static void WindowOnClosed(object sender, EventArgs e)
-        {
-            window.Close();
-            Console.WriteLine("Close");
-        }
     }
 }

@@ -29,10 +29,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Core.Graphics2D.Systems;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
-namespace Alis.Core.Graphics2D.Windows
+namespace Alis.Core.Graphic.D2.SFML.Windows
 {
     /// <summary>
     ///     The cursor class
@@ -211,7 +210,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfCursor_createFromSystem(CursorType type);
 
         /// <summary>
@@ -222,7 +221,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="hotspot">The hotspot</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfCursor_createFromPixels(IntPtr pixels, Vector2u size, Vector2u hotspot);
 
         /// <summary>
@@ -230,7 +229,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfCursor_destroy(IntPtr CPointer);
     }
 }

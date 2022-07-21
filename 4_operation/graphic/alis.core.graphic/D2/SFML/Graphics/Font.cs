@@ -31,12 +31,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Core.Graphics2D.Systems;
-using Alis.Core.Graphics2D.Windows;
-using Alis.Exceptions;
+using Alis.Core.Graphic.D2.SFML.Windows;
 
-namespace Alis.Core.Graphics2D.Graphics
+namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>
@@ -266,7 +263,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Filename">The filename</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_createFromFile(string Filename);
 
         /// <summary>
@@ -275,7 +272,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -285,7 +282,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
@@ -294,7 +291,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="Font">The font</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_copy(IntPtr Font);
 
         /// <summary>
@@ -302,7 +299,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfFont_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -315,7 +312,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="outlineThickness">The outline thickness</param>
         /// <returns>The glyph</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern Glyph sfFont_getGlyph(IntPtr CPointer, uint codePoint, uint characterSize, bool bold,
             float outlineThickness);
 
@@ -328,7 +325,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="characterSize">The character size</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern float sfFont_getKerning(IntPtr CPointer, uint first, uint second, uint characterSize);
 
         /// <summary>
@@ -338,7 +335,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="characterSize">The character size</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern float sfFont_getLineSpacing(IntPtr CPointer, uint characterSize);
 
         /// <summary>
@@ -348,7 +345,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="characterSize">The character size</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern float sfFont_getUnderlinePosition(IntPtr CPointer, uint characterSize);
 
         /// <summary>
@@ -358,7 +355,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="characterSize">The character size</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern float sfFont_getUnderlineThickness(IntPtr CPointer, uint characterSize);
 
         /// <summary>
@@ -368,7 +365,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="characterSize">The character size</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_getTexture(IntPtr CPointer, uint characterSize);
 
         /// <summary>
@@ -377,7 +374,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The info marshal data</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern InfoMarshalData sfFont_getInfo(IntPtr CPointer);
 
         ////////////////////////////////////////////////////////////

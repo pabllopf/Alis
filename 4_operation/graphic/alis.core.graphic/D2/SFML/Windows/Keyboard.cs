@@ -29,10 +29,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Core.Graphics2D.Systems;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
-namespace Alis.Core.Graphics2D.Windows
+namespace Alis.Core.Graphic.D2.SFML.Windows
 {
     ////////////////////////////////////////////////////////////
     /// <summary>
@@ -419,7 +418,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// <param name="Key">The key</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern bool sfKeyboard_isKeyPressed(Key Key);
 
         /// <summary>
@@ -427,7 +426,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="visible">The visible</param>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfKeyboard_setVirtualKeyboardVisible(bool visible);
     }
 }

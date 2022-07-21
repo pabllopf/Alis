@@ -29,9 +29,8 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Security;
 
-namespace Alis.Core.Graphics2D.Systems
+namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>
@@ -336,7 +335,7 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="Amount">The amount</param>
         /// <returns>The time</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern Time sfSeconds(float Amount);
 
         /// <summary>
@@ -345,7 +344,7 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="Amount">The amount</param>
         /// <returns>The time</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern Time sfMilliseconds(int Amount);
 
         /// <summary>
@@ -354,7 +353,7 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="Amount">The amount</param>
         /// <returns>The time</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern Time sfMicroseconds(long Amount);
 
         /// <summary>
@@ -363,7 +362,7 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="time">The time</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern float sfTime_asSeconds(Time time);
 
         /// <summary>
@@ -372,7 +371,7 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="time">The time</param>
         /// <returns>The int</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern int sfTime_asMilliseconds(Time time);
 
         /// <summary>
@@ -381,7 +380,7 @@ namespace Alis.Core.Graphics2D.Systems
         /// <param name="time">The time</param>
         /// <returns>The long</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern long sfTime_asMicroseconds(Time time);
     }
 }

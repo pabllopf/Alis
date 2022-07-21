@@ -29,10 +29,8 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Security;
-using Alis.Core.Graphics2D.Systems;
 
-namespace Alis.Core.Graphics2D.Graphics
+namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
     /// <summary>
     ///     The vertex buffer class
@@ -294,7 +292,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="usage">The usage</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfVertexBuffer_create(uint vertexCount, PrimitiveType type, UsageSpecifier usage);
 
         /// <summary>
@@ -303,7 +301,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="copy">The copy</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfVertexBuffer_copy(IntPtr copy);
 
         /// <summary>
@@ -311,7 +309,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexBuffer_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -320,7 +318,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern uint sfVertexBuffer_getVertexCount(IntPtr CPointer);
 
         /// <summary>
@@ -332,7 +330,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="offset">The offset</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern unsafe bool sfVertexBuffer_update(IntPtr CPointer, Vertex* vertices, uint vertexCount,
             uint offset);
 
@@ -343,7 +341,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern bool sfVertexBuffer_updateFromVertexBuffer(IntPtr CPointer, IntPtr other);
 
         /// <summary>
@@ -352,7 +350,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="other">The other</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexBuffer_swap(IntPtr CPointer, IntPtr other);
 
         /// <summary>
@@ -361,7 +359,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern uint sfVertexBuffer_getNativeHandle(IntPtr CPointer);
 
         /// <summary>
@@ -370,7 +368,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="primitiveType">The primitive type</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexBuffer_setPrimitiveType(IntPtr CPointer, PrimitiveType primitiveType);
 
         /// <summary>
@@ -379,7 +377,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The primitive type</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern PrimitiveType sfVertexBuffer_getPrimitiveType(IntPtr CPointer);
 
         /// <summary>
@@ -388,7 +386,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="usageType">The usage type</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexBuffer_setUsage(IntPtr CPointer, UsageSpecifier usageType);
 
         /// <summary>
@@ -397,7 +395,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The usage specifier</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern UsageSpecifier sfVertexBuffer_getUsage(IntPtr CPointer);
 
         /// <summary>
@@ -405,7 +403,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// </summary>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern bool sfVertexBuffer_isAvailable();
 
         /// <summary>
@@ -415,7 +413,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="VertexArray">The vertex array</param>
         /// <param name="states">The states</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_drawVertexBuffer(IntPtr CPointer, IntPtr VertexArray,
             ref RenderStates.MarshalData states);
 
@@ -426,7 +424,7 @@ namespace Alis.Core.Graphics2D.Graphics
         /// <param name="VertexBuffer">The vertex buffer</param>
         /// <param name="states">The states</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawVertexBuffer(IntPtr CPointer, IntPtr VertexBuffer,
             ref RenderStates.MarshalData states);
     }

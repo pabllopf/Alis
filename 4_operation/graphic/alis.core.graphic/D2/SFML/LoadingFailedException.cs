@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Exceptions
+namespace Alis.Core.Graphic.D2.SFML
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

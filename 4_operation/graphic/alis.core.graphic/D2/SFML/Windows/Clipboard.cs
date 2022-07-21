@@ -29,11 +29,10 @@
 
 using System;
 using System.Runtime.InteropServices;
-using System.Security;
 using System.Text;
-using Alis.Core.Graphics2D.Systems;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
-namespace Alis.Core.Graphics2D.Windows
+namespace Alis.Core.Graphic.D2.SFML.Windows
 {
     /// <summary>
     ///     The clipboard class
@@ -82,7 +81,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfClipboard_getUnicodeString();
 
         /// <summary>
@@ -90,7 +89,7 @@ namespace Alis.Core.Graphics2D.Windows
         /// </summary>
         /// <param name="ptr">The ptr</param>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+         [SuppressUnmanagedCodeSecurity]
         private static extern void sfClipboard_setUnicodeString(IntPtr ptr);
     }
 }
