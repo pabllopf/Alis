@@ -79,42 +79,42 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = "./Runtimes/osx.11.0-arm64/native/libcsfml-audio.dylib";
+        public const string audio = "./runtimes/osx.11.0-arm64/native/libcsfml-audio.dylib";
 
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string graphics = "./Runtimes/osx.11.0-arm64/native/libcsfml-graphics.dylib";
+        public const string graphics = "./runtimes/osx.11.0-arm64/native/libcsfml-graphics.dylib";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string system = "./Runtimes/osx.11.0-arm64/native/libcsfml-system.dylib";
+        public const string system = "./runtimes/osx.11.0-arm64/native/libcsfml-system.dylib";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string window = "./Runtimes/osx.11.0-arm64/native/libcsfml-window.dylib";
+        public const string window = "./runtimes/osx.11.0-arm64/native/libcsfml-window.dylib";
 #elif OSX64
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = "./Runtimes/osx-x64/native/libcsfml-audio.dylib";
+        public const string audio = "./runtimes/osx-x64/native/libcsfml-audio.dylib";
         
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string graphics = "./Runtimes/osx-x64/native/libcsfml-graphics.dylib";
+        public const string graphics = "./runtimes/osx-x64/native/libcsfml-graphics.dylib";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string system = "./Runtimes/osx-x64/native/libcsfml-system.dylib";
+        public const string system = "./runtimes/osx-x64/native/libcsfml-system.dylib";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string window = "./Runtimes/osx-x64/native/libcsfml-window.dylib";
+        public const string window = "./runtimes/osx-x64/native/libcsfml-window.dylib";
 #elif IOS
         /// <summary>
         ///     The audio

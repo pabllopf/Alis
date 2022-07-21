@@ -6,8 +6,8 @@
     </PropertyGroup>
     <ItemGroup>
         <Content Include="$(SolutionDir)/4_operation/graphic/alis.core.graphic/runtimes/**" LinkBase="runtimes">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-            <Visible>True</Visible>
+            <IsAssembly>true</IsAssembly>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
 </Project>
