@@ -197,7 +197,10 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Does this vector contain finite coordinates?
         /// </summary>
-        public bool IsValid => Math.IsValid(X) && Math.IsValid(Y);
+        public bool IsValid
+        {
+            get { return Math.IsValid(X) && Math.IsValid(Y); }
+        }
 
         /// <summary>
         ///     Negate this vector.
@@ -283,7 +286,10 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Gets the value of the zero
         /// </summary>
-        public static Vector2 Zero => new Vector2(0, 0);
+        public static Vector2 Zero
+        {
+            get { return new Vector2(0, 0); }
+        }
 
         /// <summary>
         ///     Peform the dot product on two vectors.

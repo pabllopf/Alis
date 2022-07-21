@@ -54,7 +54,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Get the vertex count.
         /// </summary>
-        public int VertexCount => 1;
+        public int VertexCount
+        {
+            get { return 1; }
+        }
 
         /// <summary>
         ///     Describes whether this instance test point

@@ -4,4 +4,8 @@
     <PropertyGroup>
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
+    <ItemGroup>
+      <Folder Include="D2\SDL" />
+      <Folder Include="D2\SFML" />
+    </ItemGroup>
 </Project>

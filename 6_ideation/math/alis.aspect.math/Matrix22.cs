@@ -171,7 +171,10 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Gets the value of the identity
         /// </summary>
-        public static Matrix22 Identity => new Matrix22(1, 0, 0, 1);
+        public static Matrix22 Identity
+        {
+            get { return new Matrix22(1, 0, 0, 1); }
+        }
 
         /// <summary>
         /// </summary>

@@ -81,6 +81,9 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Gets the value of the identity
         /// </summary>
-        public static XForm Identity => new XForm(Vector2.Zero, Matrix22.Identity);
+        public static XForm Identity
+        {
+            get { return new XForm(Vector2.Zero, Matrix22.Identity); }
+        }
     }
 }

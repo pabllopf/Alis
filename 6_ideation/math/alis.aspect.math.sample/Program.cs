@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
 
 namespace Alis.Aspect.Math.Sample
 {
@@ -43,8 +42,6 @@ namespace Alis.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
-            
             Console.Write($"{Constant.Pi}");
             Console.ReadKey();
         }

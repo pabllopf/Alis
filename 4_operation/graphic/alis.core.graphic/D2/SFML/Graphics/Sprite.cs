@@ -1,0 +1,322 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   Sprite.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.Runtime.InteropServices;
+using System.Security;
+using Alis.Core.Graphics2D.Systems;
+
+namespace Alis.Core.Graphics2D.Graphics
+{
+    ////////////////////////////////////////////////////////////
+    /// <summary>
+    ///     This class defines a sprite : texture, transformations,
+    ///     color, and draw on screen
+    /// </summary>
+    /// <remarks>
+    ///     See also the note on coordinates and undistorted rendering in SFML.Graphics.Transformable.
+    /// </remarks>
+    ////////////////////////////////////////////////////////////
+    public class Sprite : Transformable, Drawable
+    {
+        /// <summary>
+        ///     The my texture
+        /// </summary>
+        private Texture myTexture;
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Default constructor
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        public Sprite() :
+            base(sfSprite_create())
+        {
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Construct the sprite from a source texture
+        /// </summary>
+        /// <param name="texture">Source texture to assign to the sprite</param>
+        ////////////////////////////////////////////////////////////
+        public Sprite(Texture texture) :
+            base(sfSprite_create())
+        {
+            Texture = texture;
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Construct the sprite from a source texture
+        /// </summary>
+        /// <param name="texture">Source texture to assign to the sprite</param>
+        /// <param name="rectangle">Sub-rectangle of the texture to assign to the sprite</param>
+        ////////////////////////////////////////////////////////////
+        public Sprite(Texture texture, IntRect rectangle) :
+            base(sfSprite_create())
+        {
+            Texture = texture;
+            TextureRect = rectangle;
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Construct the sprite from another sprite
+        /// </summary>
+        /// <param name="copy">Sprite to copy</param>
+        ////////////////////////////////////////////////////////////
+        public Sprite(Sprite copy) :
+            base(sfSprite_copy(copy.CPointer))
+        {
+            Origin = copy.Origin;
+            Position = copy.Position;
+            Rotation = copy.Rotation;
+            Scale = copy.Scale;
+            Texture = copy.Texture;
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Global color of the object
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        public Color Color
+        {
+            get => sfSprite_getColor(CPointer);
+            set => sfSprite_setColor(CPointer, value);
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Source texture displayed by the sprite
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        public Texture Texture
+        {
+            get => myTexture;
+            set
+            {
+                myTexture = value;
+                sfSprite_setTexture(CPointer, value != null ? value.CPointer : IntPtr.Zero, false);
+            }
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Sub-rectangle of the source image displayed by the sprite
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        public IntRect TextureRect
+        {
+            get => sfSprite_getTextureRect(CPointer);
+            set => sfSprite_setTextureRect(CPointer, value);
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Draw the sprite to a render target
+        /// </summary>
+        /// <param name="target">Render target to draw to</param>
+        /// <param name="states">Current render states</param>
+        ////////////////////////////////////////////////////////////
+        public void Draw(RenderTarget target, RenderStates states)
+        {
+            states.Transform *= Transform;
+            RenderStates.MarshalData marshaledStates = states.Marshal();
+
+            if (target is RenderWindow)
+            {
+                sfRenderWindow_drawSprite(((RenderWindow) target).CPointer, CPointer, ref marshaledStates);
+            }
+            else if (target is RenderTexture)
+            {
+                sfRenderTexture_drawSprite(((RenderTexture) target).CPointer, CPointer, ref marshaledStates);
+            }
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Get the local bounding rectangle of the entity.
+        ///     The returned rectangle is in local coordinates, which means
+        ///     that it ignores the transformations (translation, rotation,
+        ///     scale, ...) that are applied to the entity.
+        ///     In other words, this function returns the bounds of the
+        ///     entity in the entity's coordinate system.
+        /// </summary>
+        /// <returns>Local bounding rectangle of the entity</returns>
+        ////////////////////////////////////////////////////////////
+        public FloatRect GetLocalBounds()
+        {
+            return sfSprite_getLocalBounds(CPointer);
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Get the global bounding rectangle of the entity.
+        ///     The returned rectangle is in global coordinates, which means
+        ///     that it takes in account the transformations (translation,
+        ///     rotation, scale, ...) that are applied to the entity.
+        ///     In other words, this function returns the bounds of the
+        ///     sprite in the global 2D world's coordinate system.
+        /// </summary>
+        /// <returns>Global bounding rectangle of the entity</returns>
+        ////////////////////////////////////////////////////////////
+        public FloatRect GetGlobalBounds()
+        {
+            // because we override the object's transform
+            // we don't use the native getGlobalBounds function,
+            return Transform.TransformRect(GetLocalBounds());
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Provide a string describing the object
+        /// </summary>
+        /// <returns>String description of the object</returns>
+        ////////////////////////////////////////////////////////////
+        public override string ToString()
+        {
+            return $"[Sprite] Color({Color}) Texture({Texture}) TextureRect({TextureRect})";
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Handle the destruction of the object
+        /// </summary>
+        /// <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+        ////////////////////////////////////////////////////////////
+        protected override void Destroy(bool disposing)
+        {
+            sfSprite_destroy(CPointer);
+        }
+
+        /// <summary>
+        ///     Sfs the sprite create
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfSprite_create();
+
+        /// <summary>
+        ///     Sfs the sprite copy using the specified sprite
+        /// </summary>
+        /// <param name="Sprite">The sprite</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfSprite_copy(IntPtr Sprite);
+
+        /// <summary>
+        ///     Sfs the sprite destroy using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfSprite_destroy(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the sprite set color using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Color">The color</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfSprite_setColor(IntPtr CPointer, Color Color);
+
+        /// <summary>
+        ///     Sfs the sprite get color using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <returns>The color</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern Color sfSprite_getColor(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the render window draw sprite using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Sprite">The sprite</param>
+        /// <param name="states">The states</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_drawSprite(IntPtr CPointer, IntPtr Sprite,
+            ref RenderStates.MarshalData states);
+
+        /// <summary>
+        ///     Sfs the render texture draw sprite using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Sprite">The sprite</param>
+        /// <param name="states">The states</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderTexture_drawSprite(IntPtr CPointer, IntPtr Sprite,
+            ref RenderStates.MarshalData states);
+
+        /// <summary>
+        ///     Sfs the sprite set texture using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Texture">The texture</param>
+        /// <param name="AdjustToNewSize">The adjust to new size</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfSprite_setTexture(IntPtr CPointer, IntPtr Texture, bool AdjustToNewSize);
+
+        /// <summary>
+        ///     Sfs the sprite set texture rect using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <param name="Rect">The rect</param>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern void sfSprite_setTextureRect(IntPtr CPointer, IntRect Rect);
+
+        /// <summary>
+        ///     Sfs the sprite get texture rect using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <returns>The int rect</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern IntRect sfSprite_getTextureRect(IntPtr CPointer);
+
+        /// <summary>
+        ///     Sfs the sprite get local bounds using the specified c pointer
+        /// </summary>
+        /// <param name="CPointer">The pointer</param>
+        /// <returns>The float rect</returns>
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
+        [SuppressUnmanagedCodeSecurity]
+        private static extern FloatRect sfSprite_getLocalBounds(IntPtr CPointer);
+    }
+}

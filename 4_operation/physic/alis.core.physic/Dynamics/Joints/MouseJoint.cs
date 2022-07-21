@@ -122,12 +122,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vector2 Anchor1 => Target;
+        public override Vector2 Anchor1
+        {
+            get { return Target; }
+        }
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor);
+        public override Vector2 Anchor2
+        {
+            get { return Body2.GetWorldPoint(LocalAnchor); }
+        }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt

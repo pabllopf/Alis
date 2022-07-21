@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.Sample
+namespace Alis.Tools.Example
 {
     /// <summary>
     ///     The program class

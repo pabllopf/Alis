@@ -71,6 +71,9 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Gets the value of the is valid
         /// </summary>
-        public bool IsValid => OverlapCount != BroadPhase.Invalid;
+        public bool IsValid
+        {
+            get { return OverlapCount != BroadPhase.Invalid; }
+        }
     }
 }

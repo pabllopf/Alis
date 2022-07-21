@@ -165,18 +165,27 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Get the contact manifold.
         /// </summary>
-        public Manifold Manifold => manifold;
+        public Manifold Manifold
+        {
+            get { return manifold; }
+        }
 
         /// <summary>
         ///     Is this contact solid?
         /// </summary>
         /// <returns>True if this contact should generate a response.</returns>
-        public bool IsSolid => (Flags & CollisionFlags.NonSolid) == 0;
+        public bool IsSolid
+        {
+            get { return (Flags & CollisionFlags.NonSolid) == 0; }
+        }
 
         /// <summary>
         ///     Are fixtures touching?
         /// </summary>
-        public bool AreTouching => (Flags & CollisionFlags.Touch) == CollisionFlags.Touch;
+        public bool AreTouching
+        {
+            get { return (Flags & CollisionFlags.Touch) == CollisionFlags.Touch; }
+        }
 
         /// <summary>
         ///     Get the first fixture in this contact.
