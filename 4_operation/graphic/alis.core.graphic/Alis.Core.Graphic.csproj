@@ -4,10 +4,4 @@
     <PropertyGroup>
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
-    <ItemGroup>
-        <Content Include="$(SolutionDir)/4_operation/graphic/alis.core.graphic/runtimes/**" LinkBase="runtimes">
-            <IsAssembly>true</IsAssembly>
-            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
 </Project>

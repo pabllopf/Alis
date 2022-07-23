@@ -11,7 +11,7 @@
     -->
 
 
-    <!--DOCUMENT THE CODE:
+    <!--DOCUMENT THE CODE: 
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
         <Exec Command="dotnet tool install - -global dotnet-document - -version 0.1.4-alpha" ContinueOnError="True" IgnoreExitCode="True" ConsoleToMSBuild="true" />
         <Exec Command="dotnet document apply &quot;$(ProjectDir)$(AssemblyName).csproj&quot;" ContinueOnError="True" IgnoreExitCode="True" ConsoleToMSBuild="true" />

@@ -8,6 +8,13 @@
     <PropertyGroup Condition="'$(NETCoreSdkRuntimeIdentifier)' == 'osx-arm64'">
         <DefineConstants>$(DefineConstants);OSXARM64</DefineConstants>
     </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="$(ProjectDir)/runtimes/**" LinkBase="runtimes">
+            <IsAssembly>true</IsAssembly>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
     
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props" />
     <Import Project="$(SolutionDir).config/application/Runtimes.props" />
