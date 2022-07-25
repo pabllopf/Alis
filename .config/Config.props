@@ -10,10 +10,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="$(ProjectDir)/runtimes/**" LinkBase="runtimes">
-            <IsAssembly>true</IsAssembly>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
+        <None Update="$(ProjectDir)/runtimes/**" LinkBase="runtimes" 
+              CopyToOutputDirectory="Always"  
+              CopyToPublishDirectory="Always"/>
     </ItemGroup>
     
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props" />
