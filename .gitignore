@@ -32,7 +32,6 @@
 /**/**/_/**
 
 **/.DS_Store
-**/**/**/**/.xml
 **/**/**/**/.xsd
 
 *DS_Store
@@ -59,4 +58,3 @@
 *FodyWeavers.xml
 *FodyWeavers.xsd
 *.htm
-*.xml
