@@ -13,12 +13,27 @@ using OpenTK.Graphics.OpenGL;
 
 namespace alis
 {
+    /// <summary>
+    /// The open gl manager class
+    /// </summary>
     public class OpenGLManager
     {
+        /// <summary>
+        /// The red
+        /// </summary>
         private static float red;
+        /// <summary>
+        /// The green
+        /// </summary>
         private static float green;
+        /// <summary>
+        /// The blue
+        /// </summary>
         private static float blue;
         
+        /// <summary>
+        /// Renders
+        /// </summary>
         public static void Render()
         {
             GL.ClearColor (red, green, blue, 1.0f);
