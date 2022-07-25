@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup Condition="">
+      <PackageReference Include="OpenTK.Graphics" Version="4.0.0-pre9.4" />
+    </ItemGroup>
+
+</Project>
