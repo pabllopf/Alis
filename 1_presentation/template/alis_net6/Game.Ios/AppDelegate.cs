@@ -3,9 +3,16 @@ using Foundation;
 
 namespace MetalPerformanceShadersHelloWorld {
 	
+	/// <summary>
+	/// The app delegate class
+	/// </summary>
+	/// <seealso cref="UIApplicationDelegate"/>
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate {
 
+		/// <summary>
+		/// Gets or sets the value of the window
+		/// </summary>
 		public override UIWindow Window {
 			get;
 			set;

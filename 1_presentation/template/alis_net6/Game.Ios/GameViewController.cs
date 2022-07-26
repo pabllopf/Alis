@@ -9,23 +9,51 @@ using MetalPerformanceShaders;
 using UIKit;
 
 namespace MetalPerformanceShadersHelloWorld {
+	/// <summary>
+	/// The game view controller class
+	/// </summary>
+	/// <seealso cref="UIViewController"/>
+	/// <seealso cref="IMTKViewDelegate"/>
+	/// <seealso cref="INSCoding"/>
 	public partial class GameViewController : UIViewController, IMTKViewDelegate, INSCoding {
 		// view
+		/// <summary>
+		/// The mtk view
+		/// </summary>
 		MTKView mtkView;
 
 		// renderer
+		/// <summary>
+		/// The device
+		/// </summary>
 		IMTLDevice device;
+		/// <summary>
+		/// The command queue
+		/// </summary>
 		IMTLCommandQueue commandQueue;
 
+		/// <summary>
+		/// The clock
+		/// </summary>
 		System.Diagnostics.Stopwatch clock;
 
+		/// <summary>
+		/// The blue
+		/// </summary>
 		float red, green, blue;
 		
+		/// <summary>
+		/// Initializes a new instance of the <see cref="GameViewController"/> class
+		/// </summary>
+		/// <param name="coder">The coder</param>
 		[Export ("initWithCoder:")]
 		public GameViewController (NSCoder coder) : base (coder)
 		{
 		}
 
+		/// <summary>
+		/// Views the did load
+		/// </summary>
 		public override void ViewDidLoad ()
 		{
 #pragma warning disable CA1416
@@ -74,6 +102,10 @@ namespace MetalPerformanceShadersHelloWorld {
 		
 		
 
+		/// <summary>
+		/// Draws the view
+		/// </summary>
+		/// <param name="view">The view</param>
 		public void Draw (MTKView view)
 		{
 			view.ClearColor = new MTLClearColor(red, green, blue, 1.0f);
@@ -152,6 +184,11 @@ namespace MetalPerformanceShadersHelloWorld {
 			//commandBuffer.WaitUntilCompleted();*/
 		}
 
+		/// <summary>
+		/// Drawables the size will change using the specified view
+		/// </summary>
+		/// <param name="view">The view</param>
+		/// <param name="size">The size</param>
 		public void DrawableSizeWillChange (MTKView view, CGSize size)
 		{
 			// Called whenever view changes orientation or layout is changed

@@ -9,11 +9,22 @@ namespace HelloAndroid
 	// the ConfigurationChanges flags set here keep the EGL context
 	// from being destroyed whenever the device is rotated or the
 	// keyboard is shown (highly recommended for all GL apps)
+	/// <summary>
+	/// The gl native es 30 activity class
+	/// </summary>
+	/// <seealso cref="Activity"/>
 	[Activity (ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden, MainLauncher = true)]
 	public class GLNativeES30Activity : Activity
 	{
+		/// <summary>
+		/// The gl view
+		/// </summary>
 		private GLSurfaceView mGLView;
 
+		/// <summary>
+		/// Ons the create using the specified bundle
+		/// </summary>
+		/// <param name="bundle">The bundle</param>
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
@@ -31,6 +42,9 @@ namespace HelloAndroid
 			SetContentView (mGLView);
 		}
 
+		/// <summary>
+		/// Ons the pause
+		/// </summary>
 		protected override void OnPause ()
 		{
 			base.OnPause ();
@@ -42,6 +56,9 @@ namespace HelloAndroid
 			mGLView.OnPause ();
 		}
 
+		/// <summary>
+		/// Ons the resume
+		/// </summary>
 		protected override void OnResume ()
 		{
 			base.OnResume ();

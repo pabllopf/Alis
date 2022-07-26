@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using AppKit;
 using Foundation;
@@ -9,27 +9,60 @@ using CoreAnimation;
 
 namespace DrawCube
 {
+    /// <summary>
+    /// The game view controller class
+    /// </summary>
+    /// <seealso cref="NSViewController"/>
+    /// <seealso cref="IMTKViewDelegate"/>
     public partial class GameViewController : NSViewController, IMTKViewDelegate
     {
         // view
+        /// <summary>
+        /// The mtk view
+        /// </summary>
         MTKView mtkView;
 
         // renderer
+        /// <summary>
+        /// The device
+        /// </summary>
         IMTLDevice device;
+        /// <summary>
+        /// The command queue
+        /// </summary>
         IMTLCommandQueue commandQueue;
+        /// <summary>
+        /// The pipeline state
+        /// </summary>
         IMTLRenderPipelineState pipelineState;
+        /// <summary>
+        /// The vertex buffer
+        /// </summary>
         IMTLBuffer vertexBuffer;
         
+        /// <summary>
+        /// The view
+        /// </summary>
         Matrix4x4 proj, view;
 
+        /// <summary>
+        /// The blue
+        /// </summary>
         float red, green, blue;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameViewController"/> class
+        /// </summary>
+        /// <param name="coder">The coder</param>
         [Export ("initWithCoder:")]
         public GameViewController (NSCoder coder) : base (coder)
         {
         }
 
 
+        /// <summary>
+        /// Views the did load
+        /// </summary>
         public override void ViewDidLoad()
         {
             Game.exampleshareclass.print();
@@ -62,11 +95,20 @@ namespace DrawCube
             
         }
 
+        /// <summary>
+        /// Drawables the size will change using the specified view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <param name="size">The size</param>
         public void DrawableSizeWillChange(MTKView view, CoreGraphics.CGSize size)
         {
 
         }
 
+        /// <summary>
+        /// Draws the view
+        /// </summary>
+        /// <param name="view">The view</param>
         public void Draw(MTKView view)
         {
             view.ClearColor = new MTLClearColor(red, green, blue, 1.0f);

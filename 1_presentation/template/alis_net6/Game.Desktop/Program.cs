@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Graphics.ES30;
 using OpenTK.Mathematics;
@@ -7,10 +7,20 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace Game.Desktop
 {
+    /// <summary>
+    /// The program class
+    /// </summary>
     public static class Program
     {
+        /// <summary>
+        /// The blue
+        /// </summary>
         private static float red, green, blue;
         
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
             
@@ -43,6 +53,10 @@ namespace Game.Desktop
             
         }
 
+        /// <summary>
+        /// Windowses the on render frame using the specified obj
+        /// </summary>
+        /// <param name="obj">The obj</param>
         private static void WindowsOnRenderFrame(FrameEventArgs obj)
         {
             GL.Clear(ClearBufferMask.ColorBufferBit);

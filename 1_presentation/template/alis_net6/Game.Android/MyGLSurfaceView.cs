@@ -3,11 +3,25 @@ using Android.Opengl;
 
 namespace HelloAndroid
 {
+	/// <summary>
+	/// The my gl surface view class
+	/// </summary>
+	/// <seealso cref="GLSurfaceView"/>
 	class MyGLSurfaceView : GLSurfaceView
 	{
+		/// <summary>
+		/// The renderer
+		/// </summary>
 		private MyGLRenderer mRenderer;
+		/// <summary>
+		/// The touch scale factor
+		/// </summary>
 		private const float TOUCH_SCALE_FACTOR = 180.0f / 320;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="MyGLSurfaceView"/> class
+		/// </summary>
+		/// <param name="context">The context</param>
 		public MyGLSurfaceView (Context context) : base (context)
 		{
 			// Create an OpenGL ES 3.0 context.
