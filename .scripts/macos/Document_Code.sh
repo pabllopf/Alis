@@ -1,8 +1,13 @@
+#!/bin/bash
+
 cd ../../
 
-/usr/local/share/dotnet/dotnet tool install --global dotnet-document --version 0.1.4-alpha
-/usr/local/share/dotnet/dotnet document apply ./alis.sln 
+dotnet tool install --global dotnet-document --version 0.1.4-alpha
 
-cd ./.scripts/macos/
+for i in `find . -name "*.sln" -type f`; do
+    echo "$i"
+    dotnet document apply ./alis.sln 
+done
 
-exit
+cd ./.scripts/macos/ || exit
+

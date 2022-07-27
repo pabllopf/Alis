@@ -123,12 +123,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB}"
 	ProjectSection(SolutionItems) = preProject
 		.scripts\macos\document_code.sh = .scripts\macos\document_code.sh
-		.scripts\macos\publish.sh = .scripts\macos\publish.sh
 		.scripts\macos\restart_nuget.sh = .scripts\macos\restart_nuget.sh
 		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
 		.scripts\macos\trust_certificates.sh = .scripts\macos\trust_certificates.sh
 		.scripts\macos\clean_temp_files.sh = .scripts\macos\clean_temp_files.sh
-		.scripts\macos\publish_to_github.sh = .scripts\macos\publish_to_github.sh
 		.scripts\macos\create_web.sh = .scripts\macos\create_web.sh
 	EndProjectSection
 EndProject
