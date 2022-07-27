@@ -24,6 +24,9 @@ jobs:
           3.1.x
           5.0.x
           6.0.x
+          
+    - name: Dotnet install workload
+      run: dotnet workload install wasm-tools macos maui-maccatalyst android  tvos maui maccatalyst 
 
     - name: Install tool
       run: dotnet tool install --global dotnet-document --version 0.1.4-alpha
@@ -59,6 +62,9 @@ jobs:
             3.1.x
             5.0.x
             6.0.x
+      - name: Dotnet install workload
+        run: dotnet workload install wasm-tools macos maui-maccatalyst android  tvos maui maccatalyst     
+      
       - name: Dotnet test
         run: dotnet test alis.sln
 
@@ -99,6 +105,9 @@ jobs:
             3.1.x
             5.0.x
             6.0.x
+            
+      - name: Dotnet install workload
+        run: dotnet workload install wasm-tools macos maui-maccatalyst android  tvos maui maccatalyst 
       - name: Dotnet test
         run: dotnet test alis.sln
 
@@ -118,6 +127,9 @@ jobs:
             3.1.x
             5.0.x
             6.0.x
+            
+      - name: Dotnet install workload
+        run: dotnet workload install wasm-tools macos maui-maccatalyst android  tvos maui maccatalyst 
       - name: Dotnet test
         run: dotnet test alis.sln
         
