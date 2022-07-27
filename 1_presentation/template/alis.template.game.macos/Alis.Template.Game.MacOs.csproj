@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-macos</TargetFramework>
+    <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)1_presentation/template/alis.template.game/Alis.Template.Game.csproj" />
+    </ItemGroup>
+</Project>

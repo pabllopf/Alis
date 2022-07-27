@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Aspect.Math.Test</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Aspect.Math.Test.Acceptance.UnitTest3">
+            <summary>
+                The unit test class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Test.Acceptance.UnitTest3.Test1">
+            <summary>
+                Tests that test 1
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Math.Test.Benchmark.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Math.Test.Integration.UnitTest2">
+            <summary>
+                The unit test class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Test.Integration.UnitTest2.Test1">
+            <summary>
+                Tests that test 1
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Math.Test.Unit.Matrix22Test">
+            <summary>
+            The matrix 22 test class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Test.Unit.Matrix22Test.TestMatrix22">
+            <summary>
+            Tests that test matrix 22
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Math.Test.Unit.Matrix22Test.TestMatrix22Solve">
+            <summary>
+            Tests the matrix 22 solve
+            </summary>
+        </member>
+    </members>
+</doc>
