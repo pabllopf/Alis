@@ -20,13 +20,11 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: |
-          2.1.x
-          3.1.x
           5.0.x
           6.0.x
           
     - name: Dotnet install workload
-      run: dotnet workload install wasm-tools macos maui-maccatalyst android  tvos maui maccatalyst 
+      run: dotnet workload install wasm-tools macos android ios
 
     - name: Install tool
       run: dotnet tool install --global dotnet-document --version 0.1.4-alpha
@@ -63,7 +61,7 @@ jobs:
             5.0.x
             6.0.x
       - name: Dotnet install workload
-        run: dotnet workload install wasm-tools macos maui-maccatalyst android  tvos maui maccatalyst     
+        run: dotnet workload install wasm-tools macos android ios
       
       - name: Dotnet test
         run: dotnet test alis.sln
@@ -107,7 +105,7 @@ jobs:
             6.0.x
             
       - name: Dotnet install workload
-        run: dotnet workload install wasm-tools macos maui-maccatalyst android  tvos maui maccatalyst 
+        run: dotnet workload install wasm-tools macos android ios
       - name: Dotnet test
         run: dotnet test alis.sln
 
@@ -129,7 +127,7 @@ jobs:
             6.0.x
             
       - name: Dotnet install workload
-        run: dotnet workload install wasm-tools macos maui-maccatalyst android  tvos maui maccatalyst 
+        run: dotnet workload install wasm-tools macos android ios
       - name: Dotnet test
         run: dotnet test alis.sln
         
