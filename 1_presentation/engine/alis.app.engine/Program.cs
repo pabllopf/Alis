@@ -31,12 +31,15 @@ using System;
 
 namespace Alis.App.Engine
 {
-    /// <summary>Run the engine</summary>
+    /// <summary>
+    /// The program class
+    /// </summary>
     public static class Program
     {
-        /// <summary>Mains the specified arguments.</summary>
-        /// <param name="args">The arguments.</param>
-        /// <returns>Return -1 or 0</returns>
+        /// <summary>
+        /// Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         [STAThread]
         public static void Main(string[] args)
         {
