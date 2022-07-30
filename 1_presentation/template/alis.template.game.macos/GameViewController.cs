@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using Alis.Template.Game.Android;
 using AppKit;
 using CoreAnimation;
 using Foundation;
@@ -64,8 +65,6 @@ namespace Alis.Template.Game.MacOs
         /// </summary>
         public override void ViewDidLoad()
         {
-            Game.exampleshareclass.print();
-            
             // Set the view to use the default device
             device = MTLDevice.SystemDefault;
 
@@ -110,35 +109,7 @@ namespace Alis.Template.Game.MacOs
         /// <param name="view">The view</param>
         public void Draw(MTKView view)
         {
-            view.ClearColor = new MTLClearColor(red, green, blue, 1.0f);
-			
-            // Create a new command buffer for each renderpass to the current drawable
-            IMTLCommandBuffer commandBuffer = commandQueue.CommandBuffer();
-			
-            // Obtain a renderPassDescriptor generated from the view's drawable textures
-            MTLRenderPassDescriptor renderPassDescriptor = view.CurrentRenderPassDescriptor;
-			
-            // Create a render command encoder so we can render into something
-            IMTLRenderCommandEncoder commandEncoder = commandBuffer.CreateRenderCommandEncoder(renderPassDescriptor);
-			
-            commandEncoder.EndEncoding();
-
-            ICAMetalDrawable drawable = view.CurrentDrawable;
-			
-            commandBuffer.PresentDrawable(drawable);
-			
-            commandBuffer.Commit();
-
-            red += 0.01f;
-            if (red >= 1.0f)
-                red -= 1.0f;
-            green += 0.02f;
-            if (green >= 1.0f)
-                green -= 1.0f;
-            blue += 0.03f;
-            if (blue >= 1.0f)
-                blue -= 1.0f;
-
+            RenderManager.OnDrawFrame(view, commandQueue);
         }
         
     }

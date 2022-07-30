@@ -28,9 +28,7 @@ namespace Alis.Template.Game.Android
 		protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-			
-			Game.exampleshareclass.print();
-			
+            
 			//set up notitle 
 			RequestWindowFeature(WindowFeatures.NoTitle);  
 			//set up full screen

@@ -80,6 +80,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".editor", ".editor", "{5726
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		nuget.config = nuget.config
+		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5-16C4-4B00-95FC-DC5B630309A0}"
@@ -121,14 +122,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".scripts", ".scripts", "{53
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB}"
 	ProjectSection(SolutionItems) = preProject
-		.scripts\macos\document_code.sh = .scripts\macos\document_code.sh
-		.scripts\macos\publish.sh = .scripts\macos\publish.sh
 		.scripts\macos\restart_nuget.sh = .scripts\macos\restart_nuget.sh
 		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
-		.scripts\macos\trust_certificates.sh = .scripts\macos\trust_certificates.sh
-		.scripts\macos\clean_temp_files.sh = .scripts\macos\clean_temp_files.sh
-		.scripts\macos\publish_to_github.sh = .scripts\macos\publish_to_github.sh
-		.scripts\macos\create_web.sh = .scripts\macos\create_web.sh
+		.scripts\macos\restart_permissions.sh = .scripts\macos\restart_permissions.sh
+		.scripts\macos\generate_comments.sh = .scripts\macos\generate_comments.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"

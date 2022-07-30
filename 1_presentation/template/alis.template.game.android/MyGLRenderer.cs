@@ -19,10 +19,7 @@ namespace Alis.Template.Game.Android
 		private float[] mProjMatrix = new float[16];
 
 		
-		/// <summary>
-		/// The blue
-		/// </summary>
-		float red, green, blue;
+		
 		
 		/// <summary>
 		/// Ons the draw frame using the specified gl
@@ -30,20 +27,8 @@ namespace Alis.Template.Game.Android
 		/// <param name="gl">The gl</param>
 		public void OnDrawFrame (Javax.Microedition.Khronos.Opengles.IGL10 gl)
 		{
-			GLES30.GlClearColor(red, green, blue, 1.0f);
-			GLES30.GlClear ((int)GLES30.GlColorBufferBit);
-			
-			red += 0.01f;
-			if (red >= 1.0f)
-				red -= 1.0f;
-			green += 0.02f;
-			if (green >= 1.0f)
-				green -= 1.0f;
-			blue += 0.03f;
-			if (blue >= 1.0f)
-				blue -= 1.0f;
-			
-		}
+            RenderManager.OnDrawFrame();
+        }
 
 		/// <summary>
 		/// Ons the surface changed using the specified gl

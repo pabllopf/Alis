@@ -58,19 +58,7 @@ namespace Alis.Template.Game.Desktop
         /// <param name="obj">The obj</param>
         private static void WindowsOnRenderFrame(FrameEventArgs obj)
         {
-            GL.Clear(ClearBufferMask.ColorBufferBit);
             
-            OpenTK.Graphics.ES20.GL.ClearColor(red, green, blue, 1.0f);
-            
-            red += 0.01f;
-            if (red >= 1.0f)
-                red -= 1.0f;
-            green += 0.02f;
-            if (green >= 1.0f)
-                green -= 1.0f;
-            blue += 0.03f;
-            if (blue >= 1.0f)
-                blue -= 1.0f;
         }
     }
 }
