@@ -16,7 +16,7 @@
         $(AssemblyName.Contains('Sample')) == false
         ">
         <TargetFrameworkVersion>1.3</TargetFrameworkVersion>
-        <TargetFramework1>netstandard1.3;netstandard1.4;netstandard1.5;netstandard1.6;netstandard2.0</TargetFramework1>
+        <TargetFramework1>netstandard2.0</TargetFramework1>
         <TargetFramework2>netstandard2.1</TargetFramework2>
     </PropertyGroup>
 </Project>

@@ -1,0 +1,199 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   WebSocketServerFactory.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.WebSockets;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+using Alis.Core.Network.Exceptions;
+using Alis.Core.Network.Internal;
+
+namespace Alis.Core.Network
+{
+    /// <summary>
+    ///     Web socket server factory used to open web socket server connections
+    /// </summary>
+    public class WebSocketServerFactory : IWebSocketServerFactory
+    {
+        /// <summary>
+        ///     The buffer factory
+        /// </summary>
+        private readonly Func<MemoryStream> _bufferFactory;
+
+        /// <summary>
+        ///     The buffer pool
+        /// </summary>
+        private readonly IBufferPool _bufferPool;
+
+        /// <summary>
+        ///     Initialises a new instance of the WebSocketServerFactory class without caring about internal buffers
+        /// </summary>
+        public WebSocketServerFactory()
+        {
+            _bufferPool = new BufferPool();
+            _bufferFactory = _bufferPool.GetBuffer;
+        }
+
+        /// <summary>
+        ///     Initialises a new instance of the WebSocketClientFactory class with control over internal buffer creation
+        /// </summary>
+        /// <param name="bufferFactory"></param>
+        public WebSocketServerFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
+
+        /// <summary>
+        ///     Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
+        /// </summary>
+        /// <param name="stream">The network stream</param>
+        /// <param name="token">The optional cancellation token</param>
+        /// <returns>Http data read from the stream</returns>
+        public async Task<WebSocketHttpContext> ReadHttpHeaderFromStreamAsync(Stream stream,
+            CancellationToken token = default(CancellationToken))
+        {
+            string header = await HttpHelper.ReadHttpHeaderAsync(stream, token);
+            string path = HttpHelper.GetPathFromHeader(header);
+            bool isWebSocketRequest = HttpHelper.IsWebSocketUpgradeRequest(header);
+            IList<string> subProtocols = HttpHelper.GetSubProtocols(header);
+            return new WebSocketHttpContext(isWebSocketRequest, subProtocols, header, path, stream);
+        }
+
+        /// <summary>
+        ///     Accept web socket with default options
+        ///     Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
+        /// </summary>
+        /// <param name="context">The http context used to initiate this web socket request</param>
+        /// <param name="token">The optional cancellation token</param>
+        /// <returns>A connected web socket</returns>
+        public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context,
+            CancellationToken token = default(CancellationToken)) =>
+            await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
+
+        /// <summary>
+        ///     Accept web socket with options specified
+        ///     Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
+        /// </summary>
+        /// <param name="context">The http context used to initiate this web socket request</param>
+        /// <param name="options">The web socket options</param>
+        /// <param name="token">The optional cancellation token</param>
+        /// <returns>A connected web socket</returns>
+        public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, WebSocketServerOptions options,
+            CancellationToken token = default(CancellationToken))
+        {
+            Guid guid = Guid.NewGuid();
+            Events.Log.AcceptWebSocketStarted(guid);
+            await PerformHandshakeAsync(guid, context.HttpHeader, options.SubProtocol, context.Stream, token);
+            Events.Log.ServerHandshakeSuccess(guid);
+            string secWebSocketExtensions = null;
+            return new WebSocketImplementation(guid, _bufferFactory, context.Stream, options.KeepAliveInterval,
+                secWebSocketExtensions, options.IncludeExceptionInCloseResponse, false, options.SubProtocol);
+        }
+
+        /// <summary>
+        ///     Checks the web socket version using the specified http header
+        /// </summary>
+        /// <param name="httpHeader">The http header</param>
+        /// <exception cref="WebSocketVersionNotSupportedException"></exception>
+        /// <exception cref="WebSocketVersionNotSupportedException">Cannot find "Sec-WebSocket-Version" in http header</exception>
+        private static void CheckWebSocketVersion(string httpHeader)
+        {
+            Regex webSocketVersionRegex = new Regex("Sec-WebSocket-Version: (.*)", RegexOptions.IgnoreCase);
+
+            // check the version. Support version 13 and above
+            const int WebSocketVersion = 13;
+            Match match = webSocketVersionRegex.Match(httpHeader);
+            if (match.Success)
+            {
+                int secWebSocketVersion = Convert.ToInt32(match.Groups[1].Value.Trim());
+                if (secWebSocketVersion < WebSocketVersion)
+                {
+                    throw new WebSocketVersionNotSupportedException(string.Format(
+                        "WebSocket Version {0} not suported. Must be {1} or above", secWebSocketVersion,
+                        WebSocketVersion));
+                }
+            }
+            else
+            {
+                throw new WebSocketVersionNotSupportedException("Cannot find \"Sec-WebSocket-Version\" in http header");
+            }
+        }
+
+        /// <summary>
+        ///     Performs the handshake using the specified guid
+        /// </summary>
+        /// <param name="guid">The guid</param>
+        /// <param name="httpHeader">The http header</param>
+        /// <param name="subProtocol">The sub protocol</param>
+        /// <param name="stream">The stream</param>
+        /// <param name="token">The token</param>
+        /// <exception cref="SecWebSocketKeyMissingException">Unable to read "Sec-WebSocket-Key" from http header</exception>
+        private static async Task PerformHandshakeAsync(Guid guid, string httpHeader, string subProtocol, Stream stream,
+            CancellationToken token)
+        {
+            try
+            {
+                Regex webSocketKeyRegex = new Regex("Sec-WebSocket-Key: (.*)", RegexOptions.IgnoreCase);
+                CheckWebSocketVersion(httpHeader);
+
+                Match match = webSocketKeyRegex.Match(httpHeader);
+                if (match.Success)
+                {
+                    string secWebSocketKey = match.Groups[1].Value.Trim();
+                    string setWebSocketAccept = HttpHelper.ComputeSocketAcceptString(secWebSocketKey);
+                    string response = "HTTP/1.1 101 Switching Protocols\r\n"
+                                      + "Connection: Upgrade\r\n"
+                                      + "Upgrade: websocket\r\n"
+                                      + (subProtocol != null ? $"Sec-WebSocket-Protocol: {subProtocol}\r\n" : "")
+                                      + $"Sec-WebSocket-Accept: {setWebSocketAccept}";
+
+                    Events.Log.SendingHandshakeResponse(guid, response);
+                    await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
+                }
+                else
+                {
+                    throw new SecWebSocketKeyMissingException("Unable to read \"Sec-WebSocket-Key\" from http header");
+                }
+            }
+            catch (WebSocketVersionNotSupportedException ex)
+            {
+                Events.Log.WebSocketVersionNotSupported(guid, ex.ToString());
+                string response = "HTTP/1.1 426 Upgrade Required\r\nSec-WebSocket-Version: 13" + ex.Message;
+                await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Events.Log.BadRequest(guid, ex.ToString());
+                await HttpHelper.WriteHttpHeaderAsync("HTTP/1.1 400 Bad Request", stream, token);
+                throw;
+            }
+        }
+    }
+}
