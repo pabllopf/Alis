@@ -79,21 +79,19 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".editor", ".editor", "{57268C98-DCD4-4AC2-94D6-EE6B6894CE35}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		nuget.config = nuget.config
-		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5-16C4-4B00-95FC-DC5B630309A0}"
 	ProjectSection(SolutionItems) = preProject
-		acknowledgments.md = acknowledgments.md
 		authors.md = authors.md
+		bots.md = bots.md
 		changelog.md = changelog.md
 		code_of_conduct.md = code_of_conduct.md
-		codeowners.md = codeowners.md
+		collaborators.md = collaborators.md
 		contributing.md = contributing.md
 		contributors.md = contributors.md
 		readme.md = readme.md
-		security.md = security.md
+		sponsors.md = sponsors.md
 		support.md = support.md
 	EndProjectSection
 EndProject
@@ -130,6 +128,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E
 		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
 		.scripts\macos\restart_permissions.sh = .scripts\macos\restart_permissions.sh
 		.scripts\macos\generate_comments.sh = .scripts\macos\generate_comments.sh
+		.scripts\macos\install_env.sh = .scripts\macos\install_env.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"
@@ -154,6 +153,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015E
 		.scripts\windows\restart_nuget.bat = .scripts\windows\restart_nuget.bat
 		.scripts\windows\restart_sln.bat = .scripts\windows\restart_sln.bat
 		.scripts\windows\trust_certificates.bat = .scripts\windows\trust_certificates.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-CC32-4BFE-838E-4A2E1764DAF4}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+		nuget.config = nuget.config
 	EndProjectSection
 EndProject
 Global
