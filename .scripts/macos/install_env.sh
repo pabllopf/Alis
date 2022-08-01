@@ -6,13 +6,7 @@ select yn in "Yes" "No"; do
         Yes ) 
           
           cd ../../
-          
-          cd ./tools/macos/rider
-          
-          
-          
-          cd ../../../
-          
+                    
           dotnet new sln -o . -n Alis --force
           
           cp ./.config/default_sln  ./Alis.sln
