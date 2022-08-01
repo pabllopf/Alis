@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UnitTest1.cs
+//  File:   DirectionalLight.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,21 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
 
-namespace Alis.Aspect.Base.Test.Unit
+using System;
+
+namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The unit test class
+    ///     The directional light class
     /// </summary>
-    public class UnitTest1
+    /// <seealso cref="Light" />
+    public class DirectionalLight : Light
     {
         /// <summary>
-        ///     Tests that test 1
+        ///     Starts this instance
         /// </summary>
-        [Fact]
-        public void Test1()
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
         {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
+        {
+            throw new NotImplementedException();
         }
     }
 }

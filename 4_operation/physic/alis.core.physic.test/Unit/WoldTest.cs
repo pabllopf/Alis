@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
+using Alis.Core.Physic.Collision;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Unit
@@ -34,14 +36,17 @@ namespace Alis.Core.Physic.Test.Unit
     /// <summary>
     ///     The unit test class
     /// </summary>
-    public class UnitTest1
+    public class WoldTest
     {
+        
         /// <summary>
-        ///     Tests that test 1
+        /// Test get proxy count.
         /// </summary>
         [Fact]
-        public void Test1()
+        public void Test_GetProxyCount_Method()
         {
+            World world = new World(new Aabb(), Vector2.Zero, false);
+            Assert.Equal(0, world.GetProxyCount());
         }
     }
 }

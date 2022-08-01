@@ -106,10 +106,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E10
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059}"
 	ProjectSection(SolutionItems) = preProject
-		.github\workflows\discover_vulnerabilities.yml = .github\workflows\discover_vulnerabilities.yml
-		.github\workflows\documentation.yml = .github\workflows\documentation.yml
-		.github\workflows\publish_nugets.yml = .github\workflows\publish_nugets.yml
-		.github\workflows\unit_tests.yml = .github\workflows\unit_tests.yml
+		.github\workflows\[DEV][CODE][SCAN].yml = .github\workflows\[DEV][CODE][SCAN].yml
+		.github\workflows\[DEV][TEST].yml = .github\workflows\[DEV][TEST].yml
+		.github\workflows\[PRO][CHECK][ISSUES].yml = .github\workflows\[PRO][CHECK][ISSUES].yml
+		.github\workflows\[PRO][CODE][SCAN].yml = .github\workflows\[PRO][CODE][SCAN].yml
+		.github\workflows\[PRO][CONTRIBUTORS].yml = .github\workflows\[PRO][CONTRIBUTORS].yml
+		.github\workflows\[PRO][CREATE][WEB].yml = .github\workflows\[PRO][CREATE][WEB].yml
+		.github\workflows\[PRO][NEW][CONTRIBUTORS].yml = .github\workflows\[PRO][NEW][CONTRIBUTORS].yml
+		.github\workflows\[PRO][PUBLISH].yml = .github\workflows\[PRO][PUBLISH].yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issue_template", "issue_template", "{063D29E8-51CF-4155-B23F-8510CA62512A}"
@@ -150,15 +154,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015E
 		.scripts\windows\restart_nuget.bat = .scripts\windows\restart_nuget.bat
 		.scripts\windows\restart_sln.bat = .scripts\windows\restart_sln.bat
 		.scripts\windows\trust_certificates.bat = .scripts\windows\trust_certificates.bat
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".workflows", ".workflows", "{7E069A61-1025-4C61-9A49-A3CC4DBB8033}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\[DEV][CODE][SCAN].yml = .github\workflows\[DEV][CODE][SCAN].yml
-		.github\workflows\[DEV][TEST].yml = .github\workflows\[DEV][TEST].yml
-		.github\workflows\[PRO][CHECK][ISSUES].yml = .github\workflows\[PRO][CHECK][ISSUES].yml
-		.github\workflows\[PRO][CODE][SCAN].yml = .github\workflows\[PRO][CODE][SCAN].yml
-		.github\workflows\[PRO][PUBLISH].yml = .github\workflows\[PRO][PUBLISH].yml
 	EndProjectSection
 EndProject
 Global

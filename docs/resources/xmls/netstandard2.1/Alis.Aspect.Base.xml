@@ -9,8 +9,12 @@
                 The object base class
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Base.ObjectBase.Test">
-            <summary>Tests this instance.</summary>
+        <member name="M:Alis.Aspect.Base.ObjectBase.GetHashCode(System.Object)">
+            <summary>
+               The object base class
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

@@ -37,12 +37,14 @@ namespace Alis.Aspect.Base
     /// </summary>
     public class ObjectBase
     {
-        /// <summary>Tests this instance.</summary>
-        public int Test()
+        /// <summary>
+        ///    The object base class
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static int GetHashCode(object obj)
         {
-            Debug.Assert(true);
-            Debug.WriteLine("Hello");
-            return 0;
+            return obj?.GetHashCode() ?? 0;
         }
     }
 }

@@ -29,12 +29,12 @@
                 Tests that test 1
             </summary>
         </member>
-        <member name="T:Alis.Aspect.Base.Test.Unit.UnitTest1">
+        <member name="T:Alis.Aspect.Base.Test.Unit.ObjectBaseTest">
             <summary>
                 The unit test class
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Base.Test.Unit.UnitTest1.Test1">
+        <member name="M:Alis.Aspect.Base.Test.Unit.ObjectBaseTest.Test_When_Return_HashCode">
             <summary>
                 Tests that test 1
             </summary>
