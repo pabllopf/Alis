@@ -5,7 +5,7 @@
     </PropertyGroup>
     
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
-        <TargetFrameworks>$(TargetFrameworks);net6.0-windows10.0.19041.0;net6.0-android</TargetFrameworks>
+        <TargetFrameworks>$(TargetFrameworks);net6.0;net6.0-ios;net6.0-android;net6.0-macos</TargetFrameworks>
     </PropertyGroup>
 
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('osx'))">
@@ -16,7 +16,7 @@
         <TargetFrameworks>$(TargetFrameworks);net6.0-android;</TargetFrameworks>
     </PropertyGroup>
     
-    <PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
+    <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
         <DefineConstants>$(DefineConstants);WINDOWS;LINUX</DefineConstants>
     </PropertyGroup>
 
@@ -43,7 +43,7 @@
         '$(TargetFramework)' != 'net6.0-ios' AND 
         '$(TargetFramework)' != 'net6.0-macos' ) AND 
         ( $([MSBuild]::IsOSPlatform('osx')) OR $([MSBuild]::IsOSPlatform('windows')) OR $([MSBuild]::IsOSPlatform('linux')) )">
-        <PackageReference Include="OpenTK" Version="4.7.4" />
+        <PackageReference Include="OpenTK.Graphics" Version="4.7.4" />
     </ItemGroup>
     
     <ItemGroup Condition=" ( '$(TargetFramework)' == 'netstandard2.1' AND 

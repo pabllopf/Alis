@@ -41,9 +41,6 @@ using CoreAnimation;
 
 #if WINDOWS || LINUX
 using OpenTK.Graphics.OpenGL4;
-using OpenTK.Windowing.Common;
-using OpenTK.Windowing.Desktop;
-using OpenTK.Windowing.GraphicsLibraryFramework;
 #endif
 
 namespace Alis.Template.Game.Android
@@ -83,7 +80,7 @@ namespace Alis.Template.Game.Android
 #if WINDOWS || LINUX
             GL.Clear(ClearBufferMask.ColorBufferBit);
             
-            OpenTK.Graphics.ES20.GL.ClearColor(red, green, blue, 1.0f);
+            GL.ClearColor(red, green, blue, 1.0f);
             
             red += 0.01f;
             if (red >= 1.0f)

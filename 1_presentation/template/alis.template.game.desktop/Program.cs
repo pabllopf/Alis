@@ -1,4 +1,5 @@
 using System;
+using Alis.Template.Game.Android;
 using OpenTK.Graphics.ES30;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
@@ -42,7 +43,6 @@ namespace Alis.Template.Game.Desktop
             
             using (windows =  new Window(gameWindowSettings, nativeWindowSettings))
             {
-                windows.RenderFrame += WindowsOnRenderFrame;
                 Console.WriteLine("Version: " + GL.GetString(StringName.Version));
                 windows.Run();
             }
@@ -51,14 +51,6 @@ namespace Alis.Template.Game.Desktop
             Console.WriteLine("pass");
             
         }
-
-        /// <summary>
-        /// Windowses the on render frame using the specified obj
-        /// </summary>
-        /// <param name="obj">The obj</param>
-        private static void WindowsOnRenderFrame(FrameEventArgs obj)
-        {
-            
-        }
+        
     }
 }

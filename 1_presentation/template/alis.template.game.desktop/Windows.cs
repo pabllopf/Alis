@@ -1,3 +1,4 @@
+using Alis.Template.Game.Android;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
@@ -137,6 +138,9 @@ namespace Alis.Template.Game.Desktop
         {
             base.OnRenderFrame(e);
 
+            RenderManager.OnDrawFrame();
+            
+            /*
             // This clears the image, using what you set as GL.ClearColor earlier.
             // OpenGL provides several different types of data that can be rendered.
             // You can clear multiple buffers by using multiple bit flags.
@@ -167,7 +171,10 @@ namespace Alis.Template.Game.Desktop
             // This avoids screen tearing, a visual artifact that can happen if the buffer is modified while being displayed.
             // After drawing, call this function to swap the buffers. If you don't, it won't display what you've rendered.
             SwapBuffers();
+            */
 
+            
+            SwapBuffers();
             // And that's all you have to do for rendering! You should now see a yellow triangle on a black screen.
         }
 
