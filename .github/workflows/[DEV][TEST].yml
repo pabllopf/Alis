@@ -78,7 +78,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet install workload
-        run: dotnet workload install macos android ios
+        run: dotnet workload install macos android
       
       - name: Dotnet test
         run: dotnet test alis.sln
