@@ -13,7 +13,7 @@ jobs:
     steps:
     
       - name: "authors.md"
-        uses: akhilmhdh/contributors-readme-action@v2.3.4
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
         with:
           image_size: 75
           readme_path: "authors.md"
@@ -21,7 +21,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
       - name: "sponsors.md"
-        uses: akhilmhdh/contributors-readme-action@v2.3.4
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
         with:
           image_size: 75
           readme_path: "sponsors.md"
@@ -29,7 +29,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             
       - name: "bots.md"
-        uses: akhilmhdh/contributors-readme-action@v2.3.4
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
         with:
           image_size: 75
           readme_path: "bots.md"
@@ -37,7 +37,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: "contributors.md"
-        uses: akhilmhdh/contributors-readme-action@v2.3.4
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
         with:
           image_size: 75
           readme_path: "contributors.md"
@@ -45,7 +45,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
      
       - name: "collaborators.md"
-        uses: akhilmhdh/contributors-readme-action@v2.3.4
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
         with:
           image_size: 75
           readme_path: "collaborators.md"
@@ -53,7 +53,7 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
             
       - name: "readme.md"
-        uses: akhilmhdh/contributors-readme-action@v2.3.4
+        uses: akhilmhdh/contributors-readme-action@v2.3.6
         with:
           image_size: 75
           readme_path: "readme.md"
