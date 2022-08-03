@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {

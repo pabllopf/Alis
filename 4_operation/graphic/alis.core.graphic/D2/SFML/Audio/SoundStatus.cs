@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Graphic.D2.SFML.Audio
+namespace Alis.Core.Graphic.D2.SFML.Audio
 {
     /// <summary>
     ///     Enumeration of all possible sound states
