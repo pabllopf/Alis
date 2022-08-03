@@ -16,13 +16,13 @@
         </member>
         <member name="M:Alis.Core.Components.Animator.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.Animator.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
@@ -57,13 +57,13 @@
         </member>
         <member name="M:Alis.Core.Components.AudioSource.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.AudioSource.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
@@ -75,13 +75,13 @@
         </member>
         <member name="M:Alis.Core.Components.BoxCollider2D.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.BoxCollider2D.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
@@ -93,13 +93,13 @@
         </member>
         <member name="M:Alis.Core.Components.Camera.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.Camera.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
@@ -111,13 +111,13 @@
         </member>
         <member name="M:Alis.Core.Components.CircleCollider.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.CircleCollider.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
@@ -355,13 +355,13 @@
         </member>
         <member name="M:Alis.Core.Components.Sprite.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.Sprite.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>

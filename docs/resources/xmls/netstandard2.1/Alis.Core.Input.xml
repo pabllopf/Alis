@@ -15311,7 +15311,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.ArcadeUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.ArcadeUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.ArcadeUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.ArcadeUsagePage.CreateUsage(System.UInt16)">
@@ -15329,7 +15329,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.AuxiliaryDisplayUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.AuxiliaryDisplayUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.AuxiliaryDisplayUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.AuxiliaryDisplayUsagePage.CreateUsage(System.UInt16)">
@@ -15347,7 +15347,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.BarCodeScannerUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.BarCodeScannerUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.BarCodeScannerUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.BarCodeScannerUsagePage.CreateUsage(System.UInt16)">
@@ -15365,7 +15365,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.BatterySystemUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.BatterySystemUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.BatterySystemUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.BatterySystemUsagePage.CreateUsage(System.UInt16)">
@@ -15383,7 +15383,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.BrailleDisplayUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.BrailleDisplayUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.BrailleDisplayUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.BrailleDisplayUsagePage.CreateUsage(System.UInt16)">
@@ -15401,7 +15401,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.ButtonUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.ButtonUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.ButtonUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.ButtonUsagePage.CreateUsage(System.UInt16)">
@@ -15419,7 +15419,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.CameraControlUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.CameraControlUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.CameraControlUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.CameraControlUsagePage.CreateUsage(System.UInt16)">
@@ -15437,7 +15437,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.ConsumerUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.ConsumerUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.ConsumerUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.ConsumerUsagePage.CreateUsage(System.UInt16)">
@@ -15455,7 +15455,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.DigitizerUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.DigitizerUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.DigitizerUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.DigitizerUsagePage.CreateUsage(System.UInt16)">
@@ -15473,7 +15473,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.EyeAndHeadTrackersUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.EyeAndHeadTrackersUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.EyeAndHeadTrackersUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.EyeAndHeadTrackersUsagePage.CreateUsage(System.UInt16)">
@@ -15491,7 +15491,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.FastIDentityOnlineAllianceUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.FastIDentityOnlineAllianceUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.FastIDentityOnlineAllianceUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.FastIDentityOnlineAllianceUsagePage.CreateUsage(System.UInt16)">
@@ -15509,7 +15509,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.GameUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.GameUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.GameUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.GameUsagePage.CreateUsage(System.UInt16)">
@@ -15527,7 +15527,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.GenericDesktopUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.GenericDesktopUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.GenericDesktopUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.GenericDesktopUsagePage.CreateUsage(System.UInt16)">
@@ -15545,7 +15545,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.GenericDeviceUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.GenericDeviceUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.GenericDeviceUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.GenericDeviceUsagePage.CreateUsage(System.UInt16)">
@@ -15563,7 +15563,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.HapticsUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.HapticsUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.HapticsUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.HapticsUsagePage.CreateUsage(System.UInt16)">
@@ -15581,7 +15581,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.KeyboardKeypadUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.KeyboardKeypadUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.KeyboardKeypadUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.KeyboardKeypadUsagePage.CreateUsage(System.UInt16)">
@@ -15599,7 +15599,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.LEDsUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.LEDsUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.LEDsUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.LEDsUsagePage.CreateUsage(System.UInt16)">
@@ -15617,7 +15617,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.LightingAndIlluminationUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.LightingAndIlluminationUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.LightingAndIlluminationUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.LightingAndIlluminationUsagePage.CreateUsage(System.UInt16)">
@@ -15635,7 +15635,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MagneticStripeReadingMSRDevicesUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MagneticStripeReadingMSRDevicesUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MagneticStripeReadingMSRDevicesUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MagneticStripeReadingMSRDevicesUsagePage.CreateUsage(System.UInt16)">
@@ -15653,7 +15653,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MedicalInstrumentsUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MedicalInstrumentsUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MedicalInstrumentsUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MedicalInstrumentsUsagePage.CreateUsage(System.UInt16)">
@@ -15671,7 +15671,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MonitorEnumeratedValuesUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MonitorEnumeratedValuesUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MonitorEnumeratedValuesUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MonitorEnumeratedValuesUsagePage.CreateUsage(System.UInt16)">
@@ -15689,7 +15689,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MonitorReservedUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MonitorReservedUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MonitorReservedUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MonitorReservedUsagePage.CreateUsage(System.UInt16)">
@@ -15707,7 +15707,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MonitorUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MonitorUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.MonitorUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.MonitorUsagePage.CreateUsage(System.UInt16)">
@@ -15725,7 +15725,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.OrdinalUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.OrdinalUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.OrdinalUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.OrdinalUsagePage.CreateUsage(System.UInt16)">
@@ -15743,7 +15743,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.PhysicalInterfaceDeviceUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.PhysicalInterfaceDeviceUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.PhysicalInterfaceDeviceUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.PhysicalInterfaceDeviceUsagePage.CreateUsage(System.UInt16)">
@@ -15761,7 +15761,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.PowerDeviceUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.PowerDeviceUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.PowerDeviceUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.PowerDeviceUsagePage.CreateUsage(System.UInt16)">
@@ -15779,7 +15779,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.ReservedPointOfSaleUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.ReservedPointOfSaleUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.ReservedPointOfSaleUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.ReservedPointOfSaleUsagePage.CreateUsage(System.UInt16)">
@@ -15797,7 +15797,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.SensorUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.SensorUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.SensorUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.SensorUsagePage.CreateUsage(System.UInt16)">
@@ -15815,7 +15815,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.SimulationUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.SimulationUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.SimulationUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.SimulationUsagePage.CreateUsage(System.UInt16)">
@@ -15833,7 +15833,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.SportUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.SportUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.SportUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.SportUsagePage.CreateUsage(System.UInt16)">
@@ -15851,7 +15851,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.TelephonyUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.TelephonyUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.TelephonyUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.TelephonyUsagePage.CreateUsage(System.UInt16)">
@@ -15869,7 +15869,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.UnicodeUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.UnicodeUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.UnicodeUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.UnicodeUsagePage.CreateUsage(System.UInt16)">
@@ -15887,7 +15887,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.VESAVirtualUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.VESAVirtualUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.VESAVirtualUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.VESAVirtualUsagePage.CreateUsage(System.UInt16)">
@@ -15905,7 +15905,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.VRUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.VRUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.VRUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.VRUsagePage.CreateUsage(System.UInt16)">
@@ -15923,7 +15923,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.WeighingDevicesUsagePage.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.WeighingDevicesUsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Pages.WeighingDevicesUsagePage" /> class
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Pages.WeighingDevicesUsagePage.CreateUsage(System.UInt16)">
@@ -15936,22 +15936,22 @@
         </member>
         <member name="F:DevDecoder.HIDDevices.Control._maximumValue">
             <summary>
-            The maximum value
+                The maximum value
             </summary>
         </member>
         <member name="F:DevDecoder.HIDDevices.Control._minimumValue">
             <summary>
-            The minimum value
+                The minimum value
             </summary>
         </member>
         <member name="F:DevDecoder.HIDDevices.Control._usages">
             <summary>
-            The usages
+                The usages
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.Control.#ctor(Alis.Core.Input.Device,HidSharp.Reports.DataValue,System.Int32)">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Control"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.Control" /> class
             </summary>
             <param name="device">The device</param>
             <param name="value">The value</param>
@@ -16096,7 +16096,7 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.Control.Normalise(System.Int32)">
             <summary>
-            Normalises the value
+                Normalises the value
             </summary>
             <param name="value">The value</param>
             <returns>The double</returns>
@@ -16451,12 +16451,12 @@
         </member>
         <member name="F:DevDecoder.HIDDevices.UsagePage.Usages">
             <summary>
-            The usage
+                The usage
             </summary>
         </member>
         <member name="M:DevDecoder.HIDDevices.UsagePage.#ctor(System.UInt16,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.UsagePage"/> class
+                Initializes a new instance of the <see cref="T:DevDecoder.HIDDevices.UsagePage" /> class
             </summary>
             <param name="id">The id</param>
             <param name="name">The name</param>
@@ -16473,6 +16473,12 @@
             </summary>
             <value>The name.</value>
         </member>
+        <member name="P:DevDecoder.HIDDevices.UsagePage.All">
+            <summary>
+                Gets all currently available usage pages.
+            </summary>
+            <returns>A collection of usage pages.</returns>
+        </member>
         <member name="M:DevDecoder.HIDDevices.UsagePage.GetEnumerator">
             <inheritdoc />
         </member>
@@ -16484,48 +16490,42 @@
         </member>
         <member name="M:DevDecoder.HIDDevices.UsagePage.Get(System.UInt16)">
             <summary>
-            Gets the id
+                Gets the id
             </summary>
             <param name="id">The id</param>
             <returns>The usage page</returns>
         </member>
         <member name="M:DevDecoder.HIDDevices.UsagePage.Get(System.Enum)">
             <summary>
-            Gets the usage
+                Gets the usage
             </summary>
             <param name="usage">The usage</param>
             <returns>The usage page</returns>
         </member>
         <member name="M:DevDecoder.HIDDevices.UsagePage.Get(System.UInt32)">
             <summary>
-            Gets the full id
+                Gets the full id
             </summary>
             <param name="fullId">The full id</param>
             <returns>The usage page</returns>
         </member>
-        <member name="P:DevDecoder.HIDDevices.UsagePage.All">
-            <summary>
-                Gets all currently available usage pages.
-            </summary>
-            <returns>A collection of usage pages.</returns>
-        </member>
         <member name="M:DevDecoder.HIDDevices.UsagePage.GetUsage(System.UInt16)">
             <summary>
-            Gets the usage using the specified id
+                Gets the usage using the specified id
             </summary>
             <param name="id">The id</param>
             <returns>The usage</returns>
         </member>
         <member name="M:DevDecoder.HIDDevices.UsagePage.CreateUsage(System.UInt16)">
             <summary>
-            Creates the usage using the specified id
+                Creates the usage using the specified id
             </summary>
             <param name="id">The id</param>
             <returns>The usage</returns>
         </member>
         <member name="M:DevDecoder.HIDDevices.UsagePage.Equals(System.Object)">
             <summary>
-            EXAMPLE
+                EXAMPLE
             </summary>
             <param name="obj"></param>
             <returns></returns>
@@ -16608,7 +16608,7 @@
         </member>
         <member name="M:Alis.Core.Input.Attributes.ControlAttribute.Matches(DevDecoder.HIDDevices.Control)">
             <summary>
-            Describes whether this instance matches
+                Describes whether this instance matches
             </summary>
             <param name="control">The control</param>
             <returns>The bool</returns>
@@ -16626,7 +16626,7 @@
         </member>
         <member name="F:Alis.Core.Input.Attributes.DeviceAttribute._releaseNumberRegex">
             <summary>
-            The release number regex
+                The release number regex
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Attributes.DeviceAttribute.#ctor(System.Object[])">
@@ -16653,7 +16653,7 @@
         </member>
         <member name="M:Alis.Core.Input.Attributes.DeviceAttribute.Matches(Alis.Core.Input.Device)">
             <summary>
-            Describes whether this instance matches
+                Describes whether this instance matches
             </summary>
             <param name="device">The device</param>
             <returns>The bool</returns>
@@ -16669,14 +16669,14 @@
         </member>
         <member name="M:Alis.Core.Input.ControlChange.#ctor(DevDecoder.HIDDevices.Control,System.ValueTuple{HidSharp.Reports.DataValue,System.Int64})">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.ControlChange"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.ControlChange" /> class
             </summary>
             <param name="control">The control</param>
             <param name="value">The value</param>
         </member>
         <member name="M:Alis.Core.Input.ControlChange.#ctor(DevDecoder.HIDDevices.Control,System.Double,System.Double,System.Int64)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.ControlChange"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.ControlChange" /> class
             </summary>
             <param name="control">The control</param>
             <param name="previousValue">The previous value</param>
@@ -16715,7 +16715,7 @@
         </member>
         <member name="M:Alis.Core.Input.ControlChange.Update(System.ValueTuple{HidSharp.Reports.DataValue,System.Int64})">
             <summary>
-            Updates the value
+                Updates the value
             </summary>
             <param name="value">The value</param>
             <returns>The control change</returns>
@@ -16760,7 +16760,8 @@
         </member>
         <member name="T:Alis.Core.Input.Controllers.ControlInfo">
             <summary>
-                Class ControlInfo is used to indicate the relationship between a <seealso cref="T:DevDecoder.HIDDevices.Control" /> and a
+                Class ControlInfo is used to indicate the relationship between a <seealso cref="T:DevDecoder.HIDDevices.Control" />
+                and a
                 property on a <seealso cref="T:Alis.Core.Input.Controllers.Controller" />.  These are normally generated automatically, but can be created
                 manually when creating a custom controller.
             </summary>
@@ -16825,17 +16826,17 @@
             <seealso cref="T:System.Collections.Generic.IReadOnlyCollection`1" />
             <seealso cref="T:System.IDisposable" />
             <summary>
-            The controller class
+                The controller class
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.s_defaultConverters">
             <summary>
-            The type converter
+                The type converter
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller._values">
             <summary>
-            The control value
+                The control value
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.Mapping">
@@ -16845,22 +16846,22 @@
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller._subscription">
             <summary>
-            The subscription
+                The subscription
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller._valuesSubject">
             <summary>
-            The values subject
+                The values subject
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.#cctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.#ctor(Alis.Core.Input.Device,Alis.Core.Input.Controllers.ControlInfo[])">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller" /> class
             </summary>
             <param name="device">The device</param>
             <param name="controls">The controls</param>
@@ -16930,14 +16931,14 @@
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.IsMapped(System.String)">
             <summary>
-            Describes whether this instance is mapped
+                Describes whether this instance is mapped
             </summary>
             <param name="propertyName">The property name</param>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.GetValue``1(System.String)">
             <summary>
-            Gets the value using the specified property name
+                Gets the value using the specified property name
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="propertyName">The property name</param>
@@ -16973,14 +16974,14 @@
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ChangesSince(System.Int64)">
             <summary>
-            Changeses the since using the specified timestamp
+                Changeses the since using the specified timestamp
             </summary>
             <param name="timestamp">The timestamp</param>
             <returns>A read only list of control value</returns>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.Create``1(Alis.Core.Input.Device)">
             <summary>
-            Creates the device
+                Creates the device
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="device">The device</param>
@@ -16988,7 +16989,7 @@
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.Create(Alis.Core.Input.Device,System.Type)">
             <summary>
-            Creates the device
+                Creates the device
             </summary>
             <param name="device">The device</param>
             <param name="deviceType">The device type</param>
@@ -17003,7 +17004,7 @@
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.Register(System.Type,Alis.Core.Input.Controllers.CreateControllerDelegate{Alis.Core.Input.Controllers.Controller})">
             <summary>
-                Registers a control creation delegate which creates controls 
+                Registers a control creation delegate which creates controls
             </summary>
             <param name="type">The controller type.</param>
             <param name="createControllerDelegate">The create controller delegate.</param>
@@ -17018,33 +17019,33 @@
         </member>
         <member name="T:Alis.Core.Input.Controllers.Controller.ControllerInfo">
             <summary>
-            The controller info class
+                The controller info class
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.s_infos">
             <summary>
-            The controller info
+                The controller info
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.s_constructorTypes">
             <summary>
-            The control info
+                The control info
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.CreateController">
             <summary>
-            The create controller
+                The create controller
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ControllerInfo.#ctor(Alis.Core.Input.Controllers.CreateControllerDelegate{Alis.Core.Input.Controllers.Controller})">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller.ControllerInfo"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller.ControllerInfo" /> class
             </summary>
             <param name="createControllerDelegate">The create controller delegate</param>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ControllerInfo.#ctor(System.Reflection.ConstructorInfo,System.Collections.Generic.IReadOnlyList{Alis.Core.Input.Attributes.DeviceAttribute},System.Collections.Generic.IReadOnlyDictionary{System.String,Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData})">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller.ControllerInfo"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller.ControllerInfo" /> class
             </summary>
             <param name="constructor">The constructor</param>
             <param name="deviceAttributes">The device attributes</param>
@@ -17052,21 +17053,21 @@
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ControllerInfo.Register(System.Type,Alis.Core.Input.Controllers.CreateControllerDelegate{Alis.Core.Input.Controllers.Controller})">
             <summary>
-            Registers the type
+                Registers the type
             </summary>
             <param name="type">The type</param>
             <param name="createControllerDelegate">The create controller delegate</param>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ControllerInfo.Get``1">
             <summary>
-            Gets
+                Gets
             </summary>
             <typeparam name="T">The </typeparam>
             <returns>The controller info</returns>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ControllerInfo.Get(System.Type)">
             <summary>
-            Gets the type
+                Gets the type
             </summary>
             <param name="type">The type</param>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
@@ -17075,7 +17076,7 @@
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ControllerInfo.GetMapping(Alis.Core.Input.Device,System.Collections.Generic.IReadOnlyList{Alis.Core.Input.Attributes.DeviceAttribute},System.Collections.Generic.IReadOnlyDictionary{System.String,Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData})">
             <summary>
-            Gets the mapping using the specified device
+                Gets the mapping using the specified device
             </summary>
             <param name="device">The device</param>
             <param name="deviceAttributes">The device attributes</param>
@@ -17084,37 +17085,37 @@
         </member>
         <member name="T:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData">
             <summary>
-            The property data class
+                The property data class
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.s_converterCache">
             <summary>
-            The type converter
+                The type converter
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.Controls">
             <summary>
-            The controls
+                The controls
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.Converter">
             <summary>
-            The converter
+                The converter
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.IsRequired">
             <summary>
-            The is required
+                The is required
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.ReturnType">
             <summary>
-            The return type
+                The return type
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.#ctor(System.Reflection.PropertyInfo)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData" /> class
             </summary>
             <param name="propertyInfo">The property info</param>
         </member>
@@ -17130,7 +17131,7 @@
         </member>
         <member name="M:Alis.Core.Input.Controllers.ControlValue.#ctor(Alis.Core.Input.ControlChange,Alis.Core.Input.Controllers.ControlInfo,System.Object)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.ControlValue"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.ControlValue" /> class
             </summary>
             <param name="change">The change</param>
             <param name="info">The info</param>
@@ -17356,7 +17357,7 @@
         </member>
         <member name="M:Alis.Core.Input.Converters.BooleanConverter.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.BooleanConverter"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.BooleanConverter" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Converters.BooleanConverter.Convert(System.Globalization.CultureInfo,System.Double)">
@@ -17450,12 +17451,12 @@
         </member>
         <member name="M:Alis.Core.Input.Converters.DirectionConverter.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.DirectionConverter"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.DirectionConverter" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Converters.DirectionConverter.Convert(System.Globalization.CultureInfo,System.Double)">
             <summary>
-            Converts the culture
+                Converts the culture
             </summary>
             <param name="culture">The culture</param>
             <param name="value">The value</param>
@@ -17476,7 +17477,7 @@
         </member>
         <member name="M:Alis.Core.Input.Converters.LeftTriggerConverter.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.LeftTriggerConverter"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.LeftTriggerConverter" /> class
             </summary>
         </member>
         <member name="T:Alis.Core.Input.Converters.RangeConverter">
@@ -17550,7 +17551,7 @@
         </member>
         <member name="M:Alis.Core.Input.Converters.RightTriggerConverter.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.RightTriggerConverter"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.RightTriggerConverter" /> class
             </summary>
         </member>
         <member name="T:Alis.Core.Input.Converters.SignedConverter">
@@ -17569,7 +17570,7 @@
         </member>
         <member name="M:Alis.Core.Input.Converters.SignedConverter.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.SignedConverter"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.SignedConverter" /> class
             </summary>
         </member>
         <member name="T:Alis.Core.Input.Device">
@@ -17583,42 +17584,42 @@
         </member>
         <member name="F:Alis.Core.Input.Device._cache">
             <summary>
-            The cache
+                The cache
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Device._changes">
             <summary>
-            The changes
+                The changes
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Device._controls">
             <summary>
-            The controls
+                The controls
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Device._device">
             <summary>
-            The device
+                The device
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Device._usages">
             <summary>
-            The usages
+                The usages
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Device._cancellationTokenSource">
             <summary>
-            The cancellation token source
+                The cancellation token source
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Device._connectedSubject">
             <summary>
-            The connected subject
+                The connected subject
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Device.#ctor(Alis.Core.Input.Devices,HidSharp.HidDevice,System.Byte[])">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Device"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Device" /> class
             </summary>
             <param name="devices">The devices</param>
             <param name="device">The device</param>
@@ -17678,7 +17679,7 @@
         </member>
         <member name="P:Alis.Core.Input.Device.RawReportDescriptor">
             <summary>
-            Gets the value of the raw report descriptor
+                Gets the value of the raw report descriptor
             </summary>
         </member>
         <member name="P:Alis.Core.Input.Device.Controls">
@@ -17749,7 +17750,7 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.Controllers``1(DynamicData.IObservableCache{Alis.Core.Input.Device,System.String},System.Func{``0,System.Boolean})">
             <summary>
-            Controllerses the devices
+                Controllerses the devices
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="devices">The devices</param>
@@ -17758,7 +17759,7 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.Controllers(DynamicData.IObservableCache{Alis.Core.Input.Device,System.String},System.Type,System.Func{Alis.Core.Input.Controllers.Controller,System.Boolean})">
             <summary>
-            Controllerses the devices
+                Controllerses the devices
             </summary>
             <param name="devices">The devices</param>
             <param name="controllerType">The controller type</param>
@@ -17778,7 +17779,7 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.Connected(DynamicData.IObservableCache{Alis.Core.Input.Device,System.String},System.Func{Alis.Core.Input.Device,System.Boolean})">
             <summary>
-            Connecteds the devices
+                Connecteds the devices
             </summary>
             <param name="devices">The devices</param>
             <param name="predicate">The predicate</param>
@@ -17786,7 +17787,7 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.DeviceUsagesAll(DynamicData.IObservableCache{Alis.Core.Input.Device,System.String},Alis.Core.Input.Usage[])">
             <summary>
-                Filters devices, such that the device must implement all supplied 
+                Filters devices, such that the device must implement all supplied
             </summary>
             <param name="devices">The device collection.</param>
             <param name="usages">The required device usages.</param>
@@ -17802,7 +17803,7 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.ControlUsagesAll(DynamicData.IObservableCache{Alis.Core.Input.Device,System.String},Alis.Core.Input.Usage[])">
             <summary>
-                Filters devices, such that the device must have controls that implement all supplied 
+                Filters devices, such that the device must have controls that implement all supplied
             </summary>
             <param name="devices">The device collection.</param>
             <param name="usages">The required device usages.</param>
@@ -17818,15 +17819,18 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.UsagesAll(Alis.Core.Input.Device,Alis.Core.Input.Usage[])">
             <summary>
-                Checks that the device implements all supplied 
+                Checks that the device implements all supplied
             </summary>
             <param name="device">The device.</param>
             <param name="usages">The required device usages.</param>
-            <returns><see langword="true"/> if the specified device implements all the supplied usages; otherwise <see langword="false"/>.</returns>
+            <returns>
+                <see langword="true" /> if the specified device implements all the supplied usages; otherwise
+                <see langword="false" />.
+            </returns>
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.UsagesAny(Alis.Core.Input.Device,Alis.Core.Input.Usage[])">
             <summary>
-            Describes whether usages any
+                Describes whether usages any
             </summary>
             <param name="device">The device</param>
             <param name="usages">The usages</param>
@@ -17834,11 +17838,14 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.ControlUsagesAll(Alis.Core.Input.Device,Alis.Core.Input.Usage[])">
             <summary>
-                Checks that the device has controls that implement all the supplied 
+                Checks that the device has controls that implement all the supplied
             </summary>
             <param name="device">The device.</param>
             <param name="usages">The required device usages.</param>
-            <returns><see langword="true"/> if the specified device has controls that implement all the supplied usages; otherwise <see langword="false"/>.</returns>
+            <returns>
+                <see langword="true" /> if the specified device has controls that implement all the supplied usages; otherwise
+                <see langword="false" />.
+            </returns>
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.ControlUsagesAny(Alis.Core.Input.Device,Alis.Core.Input.Usage[])">
             <summary>
@@ -17846,11 +17853,14 @@
             </summary>
             <param name="device">The device.</param>
             <param name="usages">The required device usages.</param>
-            <returns><see langword="true"/> if the specified device has controls that implement at least one of the supplied usages; otherwise <see langword="false"/>.</returns>
+            <returns>
+                <see langword="true" /> if the specified device has controls that implement at least one of the supplied
+                usages; otherwise <see langword="false" />.
+            </returns>
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.Controller``1(Alis.Core.Input.Device)">
             <summary>
-            controller 
+                controller
             </summary>
             <param name="device"></param>
             <typeparam name="T"></typeparam>
@@ -17858,7 +17868,7 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.Controller(Alis.Core.Input.Device,System.Type)">
             <summary>
-            Controllers the device
+                Controllers the device
             </summary>
             <param name="device">The device</param>
             <param name="controllerType">The controller type</param>
@@ -17866,7 +17876,7 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.ContainsAll``1(System.Collections.Generic.IEnumerable{``0},``0[])">
             <summary>
-            Describes whether contains all
+                Describes whether contains all
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="enumerable">The enumerable</param>
@@ -17875,7 +17885,7 @@
         </member>
         <member name="M:Alis.Core.Input.DeviceExtensions.ContainsAll``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEqualityComparer{``0},``0[])">
             <summary>
-            Describes whether contains all
+                Describes whether contains all
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="enumerable">The enumerable</param>
@@ -17893,22 +17903,22 @@
         </member>
         <member name="F:Alis.Core.Input.Devices.Logger">
             <summary>
-            The logger
+                The logger
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Devices._controllers">
             <summary>
-            The controllers
+                The controllers
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Devices._eventSubscription">
             <summary>
-            The event subscription
+                The event subscription
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Devices._refreshingBehaviorSubject">
             <summary>
-            The refreshing behavior subject
+                The refreshing behavior subject
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Devices.#ctor(Microsoft.Extensions.Logging.ILogger{Alis.Core.Input.Devices})">
@@ -17994,7 +18004,7 @@
         </member>
         <member name="F:Alis.Core.Input.Event.s_all">
             <summary>
-            The event
+                The event
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Event.RefreshFailure">
@@ -18044,22 +18054,22 @@
         </member>
         <member name="F:Alis.Core.Input.Event.s_idCounter">
             <summary>
-            The idcounter
+                The idcounter
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Event._descriptionResource">
             <summary>
-            The description resource
+                The description resource
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Event._id">
             <summary>
-            The id
+                The id
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Event._messageResource">
             <summary>
-            The message resource
+                The message resource
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Event.Level">
@@ -18069,14 +18079,14 @@
         </member>
         <member name="M:Alis.Core.Input.Event.#ctor(System.String,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Event"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Event" /> class
             </summary>
             <param name="messageResource">The message resource</param>
             <param name="descriptionResource">The description resource</param>
         </member>
         <member name="M:Alis.Core.Input.Event.#ctor(Microsoft.Extensions.Logging.LogLevel,System.String,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Event"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Event" /> class
             </summary>
             <param name="level">The level</param>
             <param name="messageResource">The message resource</param>
@@ -18108,7 +18118,7 @@
         </member>
         <member name="M:Alis.Core.Input.Event.TryGet(System.Int32,Alis.Core.Input.Event@)">
             <summary>
-            hello
+                hello
             </summary>
             <param name="id"></param>
             <param name="event"></param>
@@ -18116,21 +18126,21 @@
         </member>
         <member name="M:Alis.Core.Input.Event.Get(System.Int32)">
             <summary>
-            Gets the id
+                Gets the id
             </summary>
             <param name="id">The id</param>
             <returns>The event</returns>
         </member>
         <member name="M:Alis.Core.Input.Event.Log(Microsoft.Extensions.Logging.ILogger,System.Object[])">
             <summary>
-            Logs the logger
+                Logs the logger
             </summary>
             <param name="logger">The logger</param>
             <param name="args">The args</param>
         </member>
         <member name="M:Alis.Core.Input.Event.Log(Microsoft.Extensions.Logging.ILogger,System.Exception,System.Object[])">
             <summary>
-            Logs the logger
+                Logs the logger
             </summary>
             <param name="logger">The logger</param>
             <param name="exception">The exception</param>
@@ -18157,7 +18167,7 @@
         </member>
         <member name="M:Alis.Core.Input.Usage.#ctor(DevDecoder.HIDDevices.UsagePage,System.UInt16,System.String,Alis.Core.Input.UsageTypes)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.Usage"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Usage" /> class
             </summary>
             <param name="page">The page</param>
             <param name="id">The id</param>
@@ -18202,21 +18212,21 @@
         </member>
         <member name="M:Alis.Core.Input.Usage.Equals(Alis.Core.Input.Usage)">
             <summary>
-            Describes whether this instance equals
+                Describes whether this instance equals
             </summary>
             <param name="other">The other</param>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Input.Usage.Get(System.Enum)">
             <summary>
-            Gets the usage
+                Gets the usage
             </summary>
             <param name="usage">The usage</param>
             <returns>The usage</returns>
         </member>
         <member name="M:Alis.Core.Input.Usage.Get(System.UInt32)">
             <summary>
-            Gets the full id
+                Gets the full id
             </summary>
             <param name="fullId">The full id</param>
             <returns>The usage</returns>
@@ -18269,13 +18279,13 @@
         </member>
         <member name="T:Alis.Core.Input.UsageType">
             <summary>
-            The usage type class
+                The usage type class
             </summary>
-            <seealso cref="T:System.IEquatable`1"/>
+            <seealso cref="T:System.IEquatable`1" />
         </member>
         <member name="F:Alis.Core.Input.UsageType.s_usageTypes">
             <summary>
-            The usage type
+                The usage type
             </summary>
         </member>
         <member name="F:Alis.Core.Input.UsageType.LC">
@@ -18360,7 +18370,7 @@
         </member>
         <member name="M:Alis.Core.Input.UsageType.#ctor(Alis.Core.Input.UsageTypes,Alis.Core.Input.UsageTypeGroup,System.String,System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Input.UsageType"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.UsageType" /> class
             </summary>
             <param name="usageTypes">The usage types</param>
             <param name="usageTypeGroup">The usage type group</param>

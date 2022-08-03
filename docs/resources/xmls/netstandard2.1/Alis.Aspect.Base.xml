@@ -11,7 +11,7 @@
         </member>
         <member name="M:Alis.Aspect.Base.ObjectBase.GetHashCode(System.Object)">
             <summary>
-               The object base class
+                The object base class
             </summary>
             <param name="obj"></param>
             <returns></returns>

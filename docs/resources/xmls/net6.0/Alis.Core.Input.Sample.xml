@@ -6,72 +6,72 @@
     <members>
         <member name="T:HIDDevices.Sample.ISample">
             <summary>
-            The sample interface
+                The sample interface
             </summary>
         </member>
         <member name="P:HIDDevices.Sample.ISample.FullName">
             <summary>
-            Gets the value of the full name
+                Gets the value of the full name
             </summary>
         </member>
         <member name="P:HIDDevices.Sample.ISample.Description">
             <summary>
-            Gets the value of the description
+                Gets the value of the description
             </summary>
         </member>
         <member name="P:HIDDevices.Sample.ISample.ShortNames">
             <summary>
-            Gets the value of the short names
+                Gets the value of the short names
             </summary>
         </member>
         <member name="M:HIDDevices.Sample.ISample.ExecuteAsync(System.Threading.CancellationToken)">
             <summary>
-            Executes the token
+                Executes the token
             </summary>
             <param name="token">The token</param>
         </member>
         <member name="T:HIDDevices.Sample.Program">
             <summary>
-            The program class
+                The program class
             </summary>
         </member>
         <member name="M:HIDDevices.Sample.Program.Main(System.String[])">
             <summary>
-            Main the args
+                Main the args
             </summary>
             <param name="args">The args</param>
         </member>
         <member name="T:HIDDevices.Sample.Sample">
             <summary>
-            The sample class
+                The sample class
             </summary>
-            <seealso cref="T:HIDDevices.Sample.ISample"/>
+            <seealso cref="T:HIDDevices.Sample.ISample" />
         </member>
         <member name="F:HIDDevices.Sample.Sample._logger">
             <summary>
-            The logger
+                The logger
             </summary>
         </member>
         <member name="F:HIDDevices.Sample.Sample._shortNames">
             <summary>
-            The short names
+                The short names
             </summary>
         </member>
         <member name="M:HIDDevices.Sample.Sample.#ctor(System.String,System.String[])">
             <summary>
-            Initializes a new instance of the <see cref="T:HIDDevices.Sample.Sample"/> class
+                Initializes a new instance of the <see cref="T:HIDDevices.Sample.Sample" /> class
             </summary>
             <param name="fullName">The full name</param>
             <param name="shortNames">The short names</param>
         </member>
         <member name="P:HIDDevices.Sample.Sample.Logger">
             <summary>
-            Gets the value of the logger
+                Gets the value of the logger
             </summary>
         </member>
         <member name="P:HIDDevices.Sample.Sample.LogLevel">
             <summary>
-            Gets or sets the value of the log level
+                Gets or sets the value of the log level
             </summary>
         </member>
         <member name="P:HIDDevices.Sample.Sample.FullName">
@@ -93,7 +93,7 @@
         </member>
         <member name="M:HIDDevices.Sample.Sample.CreateLogger``1(Microsoft.Extensions.Logging.LogLevel)">
             <summary>
-            Creates the logger using the specified log level
+                Creates the logger using the specified log level
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="logLevel">The log level</param>
@@ -115,9 +115,9 @@
         </member>
         <member name="T:HIDDevices.Sample.Samples.DependencyInjectionSample">
             <summary>
-            The dependency injection sample class
+                The dependency injection sample class
             </summary>
-            <seealso cref="T:HIDDevices.Sample.Sample"/>
+            <seealso cref="T:HIDDevices.Sample.Sample" />
         </member>
         <member name="P:HIDDevices.Sample.Samples.DependencyInjectionSample.Description">
             <inheritdoc />
@@ -127,15 +127,15 @@
         </member>
         <member name="M:HIDDevices.Sample.Samples.DependencyInjectionSample.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
-            Configures the services using the specified services
+                Configures the services using the specified services
             </summary>
             <param name="services">The services</param>
         </member>
         <member name="T:HIDDevices.Sample.Samples.GameLoopSample">
             <summary>
-            The game loop sample class
+                The game loop sample class
             </summary>
-            <seealso cref="T:HIDDevices.Sample.Sample"/>
+            <seealso cref="T:HIDDevices.Sample.Sample" />
         </member>
         <member name="P:HIDDevices.Sample.Samples.GameLoopSample.Description">
             <inheritdoc />
@@ -145,25 +145,25 @@
         </member>
         <member name="T:HIDDevices.Sample.SimpleConsoleLogger`1">
             <summary>
-            The simple console logger class
+                The simple console logger class
             </summary>
-            <seealso cref="T:Microsoft.Extensions.Logging.ILogger`1"/>
+            <seealso cref="T:Microsoft.Extensions.Logging.ILogger`1" />
         </member>
         <member name="F:HIDDevices.Sample.SimpleConsoleLogger`1.Name">
             <summary>
-            The name
+                The name
             </summary>
         </member>
         <member name="M:HIDDevices.Sample.SimpleConsoleLogger`1.#ctor(Microsoft.Extensions.Logging.LogLevel,System.String)">
             <summary>
-            Initializes a new instance of the class
+                Initializes a new instance of the class
             </summary>
             <param name="logLevel">The log level</param>
             <param name="name">The name</param>
         </member>
         <member name="P:HIDDevices.Sample.SimpleConsoleLogger`1.LogLevel">
             <summary>
-            Gets or sets the value of the log level
+                Gets or sets the value of the log level
             </summary>
         </member>
         <member name="M:HIDDevices.Sample.SimpleConsoleLogger`1.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">

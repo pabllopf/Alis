@@ -480,20 +480,6 @@
                 The length
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Audio.SoundStatus">
-            <summary>
-                Enumeration of all possible sound states
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Audio.SoundStatus.Stopped">
-            <summary>Sound is not playing</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Audio.SoundStatus.Paused">
-            <summary>Sound is paused</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Audio.SoundStatus.Playing">
-            <summary>Sound is playing</summary>
-        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Audio.Sound">
             <summary>
                 Regular sound that can be played in the audio environment
@@ -1321,6 +1307,20 @@
                 The stop callback
             </summary>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Audio.SoundStatus">
+            <summary>
+                Enumeration of all possible sound states
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Audio.SoundStatus.Stopped">
+            <summary>Sound is not playing</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Audio.SoundStatus.Paused">
+            <summary>Sound is paused</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Audio.SoundStatus.Playing">
+            <summary>Sound is playing</summary>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Audio.SoundStream">
             <summary>
                 Abstract base class for streamed audio sources
@@ -1846,6 +1846,72 @@
         <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.BlendMode.AlphaEquation">
             <summary>Blending equation for the alpha channel</summary>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2">
+            <summary>
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2" /> is a struct represent a glsl bvec2 value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2.#ctor(System.Boolean,System.Boolean)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2" /> from its coordinates
+            </summary>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3">
+            <summary>
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3" /> is a struct represent a glsl bvec3 value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3.#ctor(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3" /> from its coordinates
+            </summary>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+            <param name="z">Z coordinate</param>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3.Z">
+            <summary>Depth component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4">
+            <summary>
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4" /> is a struct represent a glsl bvec4 value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4" /> from its coordinates
+            </summary>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+            <param name="z">Z coordinate</param>
+            <param name="w">W coordinate</param>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.Z">
+            <summary>Depth component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.W">
+            <summary>Projective/Homogenous component of the vector</summary>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.CircleShape">
             <summary>
                 Specialized shape representing a circle
@@ -2168,6 +2234,31 @@
             <param name="index">Index of the point to change, in range [0 .. PointCount - 1]</param>
             <param name="point">New position of the point</param>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.CSFML">
+            <summary>
+                The csfml class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.CSFML.audio">
+            <summary>
+                The audio
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.CSFML.graphics">
+            <summary>
+                The graphics
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.CSFML.system">
+            <summary>
+                The system
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.CSFML.window">
+            <summary>
+                The window
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Drawable">
             <summary>
                 Interface for every object that can be drawn to a render window
@@ -2181,6 +2272,112 @@
             </summary>
             <param name="target">Render target to draw to</param>
             <param name="states">Current render states</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect">
+            <summary>
+                IntRect is an utility class for manipulating 2D rectangles
+                with float coordinates
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+                Construct the rectangle from its coordinates
+            </summary>
+            <param name="left">Left coordinate of the rectangle</param>
+            <param name="top">Top coordinate of the rectangle</param>
+            <param name="width">Width of the rectangle</param>
+            <param name="height">Height of the rectangle</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Vector2f,Alis.Core.Graphic.D2.SFML.Graphics.Vector2f)">
+            <summary>
+                Construct the rectangle from position and size
+            </summary>
+            <param name="position">Position of the top-left corner of the rectangle</param>
+            <param name="size">Size of the rectangle</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Contains(System.Single,System.Single)">
+            <summary>
+                Check if a point is inside the rectangle's area
+            </summary>
+            <param name="x">X coordinate of the point to test</param>
+            <param name="y">Y coordinate of the point to test</param>
+            <returns>True if the point is inside</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Intersects(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)">
+            <summary>
+                Check intersection between two rectangles
+            </summary>
+            <param name="rect"> Rectangle to test</param>
+            <returns>True if rectangles overlap</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Intersects(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect,Alis.Core.Graphic.D2.SFML.Graphics.FloatRect@)">
+            <summary>
+                Check intersection between two rectangles
+            </summary>
+            <param name="rect"> Rectangle to test</param>
+            <param name="overlap">Rectangle to be filled with overlapping rect</param>
+            <returns>True if rectangles overlap</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Equals(System.Object)">
+            <summary>
+                Compare rectangle and object and checks if they are equal
+            </summary>
+            <param name="obj">Object to check</param>
+            <returns>Object and rectangle are equal</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Equals(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)">
+            <summary>
+                Compare two rectangles and checks if they are equal
+            </summary>
+            <param name="other">Rectangle to check</param>
+            <returns>Rectangles are equal</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.GetHashCode">
+            <summary>
+                Provide a integer describing the object
+            </summary>
+            <returns>Integer description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.op_Equality(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect,Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)">
+            <summary>
+                Operator == overload ; check rect equality
+            </summary>
+            <param name="r1">First rect</param>
+            <param name="r2">Second rect</param>
+            <returns>r1 == r2</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.op_Inequality(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect,Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)">
+            <summary>
+                Operator != overload ; check rect inequality
+            </summary>
+            <param name="r1">First rect</param>
+            <param name="r2">Second rect</param>
+            <returns>r1 != r2</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.op_Explicit(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)~Alis.Core.Graphic.D2.SFML.Graphics.IntRect">
+            <summary>
+                Explicit casting to another rectangle type
+            </summary>
+            <param name="r">Rectangle being casted</param>
+            <returns>Casting result</returns>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Left">
+            <summary>Left coordinate of the rectangle</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Top">
+            <summary>Top coordinate of the rectangle</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Width">
+            <summary>Width of the rectangle</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Height">
+            <summary>Height of the rectangle</summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Font">
             <summary>
@@ -2409,308 +2606,6 @@
         <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Font.InfoMarshalData.Family">
             <summary>
                 The family
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2" /> is a struct represent a glsl vec2 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.op_Implicit(Alis.Core.Graphic.D2.SFML.Graphics.Vector2f)~Alis.Core.Graphic.D2.SFML.Graphics.Vec2">
-            <summary>
-                Implicit cast from <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2f" /> to <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2" />
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.#ctor(System.Single,System.Single)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Vector2f)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2" /> from a standard SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2f" />
-            </summary>
-            <param name="vec">A standard SFML 2D vector</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2" /> is a struct represent a glsl ivec2 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.op_Implicit(Alis.Core.Graphic.D2.SFML.Graphics.Vector2i)~Alis.Core.Graphic.D2.SFML.Graphics.Ivec2">
-            <summary>
-                Implicit cast from <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2i" /> to <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2" />
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.#ctor(System.Int32,System.Int32)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Vector2i)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2" /> from a standard SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2i" />
-            </summary>
-            <param name="vec">A standard SFML 2D integer vector</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2" /> is a struct represent a glsl bvec2 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2.#ctor(System.Boolean,System.Boolean)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec2.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3" /> is a struct represent a glsl vec3 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.op_Implicit(Alis.Core.Graphic.D2.SFML.Graphics.Vector3f)~Alis.Core.Graphic.D2.SFML.Graphics.Vec3">
-            <summary>
-                Implicit cast from <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector3f" /> to <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3" />
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.#ctor(System.Single,System.Single,System.Single)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-            <param name="z">Z coordinate</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Vector3f)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3" /> from a standard SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector3f" />
-            </summary>
-            <param name="vec">A standard SFML 3D vector</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.Z">
-            <summary>Depth component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3" /> is a struct represent a glsl ivec3 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3.#ctor(System.Int32,System.Int32,System.Int32)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-            <param name="z">Z coordinate</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3.Z">
-            <summary>Depth component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3" /> is a struct represent a glsl bvec3 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3.#ctor(System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-            <param name="z">Z coordinate</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec3.Z">
-            <summary>Depth component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec4">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec4" /> is a struct represent a glsl vec4 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.#ctor(System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec4" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-            <param name="z">Z coordinate</param>
-            <param name="w">W coordinate</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Color)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec4" /> from a <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" />
-            </summary>
-            <remarks>
-                The <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" />'s values will be normalized from 0..255 to 0..1
-            </remarks>
-            <param name="color">A SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" /> to be translated to a 4D floating-point vector</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.Z">
-            <summary>Depth component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.W">
-            <summary>Projective/Homogenous component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4" /> is a struct represent a glsl ivec4 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-            <param name="z">Z coordinate</param>
-            <param name="w">W coordinate</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Color)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4" /> from a <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" />
-            </summary>
-            <param name="color">A SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" /> to be translated to a 4D integer vector</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.Z">
-            <summary>Depth component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.W">
-            <summary>Projective/Homogenous component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4" /> is a struct represent a glsl bvec4 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.#ctor(System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-            <param name="z">Z coordinate</param>
-            <param name="w">W coordinate</param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.Y">
-            <summary>Vertical component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.Z">
-            <summary>Depth component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Bvec4.W">
-            <summary>Projective/Homogenous component of the vector</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3" /> is a struct representing a glsl mat3 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Mat3.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3" /> from its components
-            </summary>
-            <remarks>
-                Arguments are in row-major order
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Mat3.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Transform)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3" /> from a SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Transform" />
-            </summary>
-            <param name="transform">A SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Transform" /></param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Mat3.array">
-            <summary>
-                The array
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat4">
-            <summary>
-                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat4" /> is a struct representing a glsl mat4 value
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Graphic.D2.SFML.Graphics.Mat4.Identity">
-            <summary>
-                Provides easy-access to an identity matrix
-            </summary>
-            <remarks>
-                Keep in mind that a Mat4 cannot be modified after construction
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Mat4.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat4" /> from its components
-            </summary>
-            <remarks>
-                Arguments are in row-major order
-            </remarks>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Mat4.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Transform)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3" /> from a SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Transform" /> and expand it to a 4x4 matrix
-            </summary>
-            <param name="transform">A SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Transform" /></param>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Mat4.array">
-            <summary>
-                The array
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Glyph">
@@ -3028,88 +2923,51 @@
             <param name="CPointer">The pointer</param>
             <returns>The uint</returns>
         </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase">
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream">
             <summary>
-                The ObjectBase class is an abstract base for every
-                SFML object. It's meant for internal use only
+                Structure that contains InputStream callbacks
+                (directly maps to a CSFML sfInputStream)
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.myCPointer">
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.ReadCallbackType">
             <summary>
-                The zero
+                Type of callback to read data from the current stream
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.#ctor(System.IntPtr)">
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.SeekCallbackType">
             <summary>
-                Construct the object from a pointer to the C library object
-            </summary>
-            <param name="cPointer">Internal pointer to the object in the C libraries</param>
-        </member>
-        <member name="P:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.CPointer">
-            <summary>
-                Access to the internal pointer of the object.
-                For internal use only
+                Type of callback to seek the current stream's position
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.Dispose">
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.TellCallbackType">
             <summary>
-                Explicitly dispose the object
+                Type of callback to return the current stream's position
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.Finalize">
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.GetSizeCallbackType">
             <summary>
-                Dispose the object
+                Type of callback to return the current stream's size
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.Dispose(System.Boolean)">
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.Read">
             <summary>
-                Destroy the object
-            </summary>
-            <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.Destroy(System.Boolean)">
-            <summary>
-                Destroy the object (implementation is left to each derived class)
-            </summary>
-            <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType">
-            <summary>
-                Types of primitives that a VertexArray can render.
-                Points and lines have no area, therefore their thickness
-                will always be 1 pixel, regardless the current transform
-                and view.
+                Function that is called to read data from the stream
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.Points">
-            List of individual points
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.Seek">
+            <summary>
+                Function that is called to seek the stream
+            </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.Lines">
-            List of individual lines
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.Tell">
+            <summary>
+                Function that is called to return the positon
+            </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.LineStrip">
-            List of connected lines, a point uses the previous point to form a line
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.Triangles">
-            List of individual triangles
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.TriangleStrip">
-            List of connected triangles, a point uses the two previous points to form a triangle
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.TriangleFan">
-            List of connected triangles, a point uses the common center and the previous point to form a triangle
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.Quads">
-            List of individual quads
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.LinesStrip">
-            List of connected lines, a point uses the previous point to form a line
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.TrianglesStrip">
-            List of connected triangles, a point uses the two previous points to form a triangle
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.TrianglesFan">
-            List of connected triangles, a point uses the common center and the previous point to form a triangle
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.GetSize">
+            <summary>
+                Function that is called to return the size
+            </summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.IntRect">
             <summary>
@@ -3217,111 +3075,227 @@
         <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.IntRect.Height">
             <summary>Height of the rectangle</summary>
         </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect">
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2">
             <summary>
-                IntRect is an utility class for manipulating 2D rectangles
-                with float coordinates
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2" /> is a struct represent a glsl ivec2 value
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.#ctor(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.op_Implicit(Alis.Core.Graphic.D2.SFML.Graphics.Vector2i)~Alis.Core.Graphic.D2.SFML.Graphics.Ivec2">
             <summary>
-                Construct the rectangle from its coordinates
+                Implicit cast from <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2i" /> to <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2" />
             </summary>
-            <param name="left">Left coordinate of the rectangle</param>
-            <param name="top">Top coordinate of the rectangle</param>
-            <param name="width">Width of the rectangle</param>
-            <param name="height">Height of the rectangle</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Vector2f,Alis.Core.Graphic.D2.SFML.Graphics.Vector2f)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.#ctor(System.Int32,System.Int32)">
             <summary>
-                Construct the rectangle from position and size
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2" /> from its coordinates
             </summary>
-            <param name="position">Position of the top-left corner of the rectangle</param>
-            <param name="size">Size of the rectangle</param>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Contains(System.Single,System.Single)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Vector2i)">
             <summary>
-                Check if a point is inside the rectangle's area
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2" /> from a standard SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2i" />
             </summary>
-            <param name="x">X coordinate of the point to test</param>
-            <param name="y">Y coordinate of the point to test</param>
-            <returns>True if the point is inside</returns>
+            <param name="vec">A standard SFML 2D integer vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Intersects(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)">
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec2.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3">
             <summary>
-                Check intersection between two rectangles
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3" /> is a struct represent a glsl ivec3 value
             </summary>
-            <param name="rect"> Rectangle to test</param>
-            <returns>True if rectangles overlap</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Intersects(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect,Alis.Core.Graphic.D2.SFML.Graphics.FloatRect@)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3.#ctor(System.Int32,System.Int32,System.Int32)">
             <summary>
-                Check intersection between two rectangles
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3" /> from its coordinates
             </summary>
-            <param name="rect"> Rectangle to test</param>
-            <param name="overlap">Rectangle to be filled with overlapping rect</param>
-            <returns>True if rectangles overlap</returns>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+            <param name="z">Z coordinate</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.ToString">
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec3.Z">
+            <summary>Depth component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4">
             <summary>
-                Provide a string describing the object
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4" /> is a struct represent a glsl ivec4 value
             </summary>
-            <returns>String description of the object</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Equals(System.Object)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
-                Compare rectangle and object and checks if they are equal
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4" /> from its coordinates
             </summary>
-            <param name="obj">Object to check</param>
-            <returns>Object and rectangle are equal</returns>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+            <param name="z">Z coordinate</param>
+            <param name="w">W coordinate</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Equals(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Color)">
             <summary>
-                Compare two rectangles and checks if they are equal
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4" /> from a <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" />
             </summary>
-            <param name="other">Rectangle to check</param>
-            <returns>Rectangles are equal</returns>
+            <param name="color">A SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" /> to be translated to a 4D integer vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.GetHashCode">
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.Z">
+            <summary>Depth component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Ivec4.W">
+            <summary>Projective/Homogenous component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3">
             <summary>
-                Provide a integer describing the object
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3" /> is a struct representing a glsl mat3 value
             </summary>
-            <returns>Integer description of the object</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.op_Equality(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect,Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Mat3.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-                Operator == overload ; check rect equality
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3" /> from its components
             </summary>
-            <param name="r1">First rect</param>
-            <param name="r2">Second rect</param>
-            <returns>r1 == r2</returns>
+            <remarks>
+                Arguments are in row-major order
+            </remarks>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.op_Inequality(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect,Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Mat3.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Transform)">
             <summary>
-                Operator != overload ; check rect inequality
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3" /> from a SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Transform" />
             </summary>
-            <param name="r1">First rect</param>
-            <param name="r2">Second rect</param>
-            <returns>r1 != r2</returns>
+            <param name="transform">A SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Transform" /></param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.op_Explicit(Alis.Core.Graphic.D2.SFML.Graphics.FloatRect)~Alis.Core.Graphic.D2.SFML.Graphics.IntRect">
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Mat3.array">
             <summary>
-                Explicit casting to another rectangle type
+                The array
             </summary>
-            <param name="r">Rectangle being casted</param>
-            <returns>Casting result</returns>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Left">
-            <summary>Left coordinate of the rectangle</summary>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat4">
+            <summary>
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat4" /> is a struct representing a glsl mat4 value
+            </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Top">
-            <summary>Top coordinate of the rectangle</summary>
+        <member name="P:Alis.Core.Graphic.D2.SFML.Graphics.Mat4.Identity">
+            <summary>
+                Provides easy-access to an identity matrix
+            </summary>
+            <remarks>
+                Keep in mind that a Mat4 cannot be modified after construction
+            </remarks>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Width">
-            <summary>Width of the rectangle</summary>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Mat4.#ctor(System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat4" /> from its components
+            </summary>
+            <remarks>
+                Arguments are in row-major order
+            </remarks>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.FloatRect.Height">
-            <summary>Height of the rectangle</summary>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Mat4.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Transform)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Mat3" /> from a SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Transform" /> and expand it to a 4x4 matrix
+            </summary>
+            <param name="transform">A SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Transform" /></param>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Mat4.array">
+            <summary>
+                The array
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase">
+            <summary>
+                The ObjectBase class is an abstract base for every
+                SFML object. It's meant for internal use only
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.myCPointer">
+            <summary>
+                The zero
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.#ctor(System.IntPtr)">
+            <summary>
+                Construct the object from a pointer to the C library object
+            </summary>
+            <param name="cPointer">Internal pointer to the object in the C libraries</param>
+        </member>
+        <member name="P:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.CPointer">
+            <summary>
+                Access to the internal pointer of the object.
+                For internal use only
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.Dispose">
+            <summary>
+                Explicitly dispose the object
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.Finalize">
+            <summary>
+                Dispose the object
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.Dispose(System.Boolean)">
+            <summary>
+                Destroy the object
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase.Destroy(System.Boolean)">
+            <summary>
+                Destroy the object (implementation is left to each derived class)
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType">
+            <summary>
+                Types of primitives that a VertexArray can render.
+                Points and lines have no area, therefore their thickness
+                will always be 1 pixel, regardless the current transform
+                and view.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.Points">
+            List of individual points
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.Lines">
+            List of individual lines
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.LineStrip">
+            List of connected lines, a point uses the previous point to form a line
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.Triangles">
+            List of individual triangles
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.TriangleStrip">
+            List of connected triangles, a point uses the two previous points to form a triangle
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.TriangleFan">
+            List of connected triangles, a point uses the common center and the previous point to form a triangle
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.Quads">
+            List of individual quads
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.LinesStrip">
+            List of connected lines, a point uses the previous point to form a line
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.TrianglesStrip">
+            List of connected triangles, a point uses the two previous points to form a triangle
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType.TrianglesFan">
+            List of connected triangles, a point uses the common center and the previous point to form a triangle
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.RectangleShape">
             <summary>
@@ -5975,31 +5949,6 @@
                 The get point callback type
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.CSFML">
-            <summary>
-                The csfml class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.CSFML.audio">
-            <summary>
-                The audio
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.CSFML.graphics">
-            <summary>
-                The graphics
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.CSFML.system">
-            <summary>
-                The system
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.CSFML.window">
-            <summary>
-                The window
-            </summary>
-        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Sprite">
             <summary>
                 This class defines a sprite : texture, transformations,
@@ -6171,52 +6120,6 @@
             </summary>
             <param name="CPointer">The pointer</param>
             <returns>The float rect</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream">
-            <summary>
-                Structure that contains InputStream callbacks
-                (directly maps to a CSFML sfInputStream)
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.ReadCallbackType">
-            <summary>
-                Type of callback to read data from the current stream
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.SeekCallbackType">
-            <summary>
-                Type of callback to seek the current stream's position
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.TellCallbackType">
-            <summary>
-                Type of callback to return the current stream's position
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.GetSizeCallbackType">
-            <summary>
-                Type of callback to return the current stream's size
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.Read">
-            <summary>
-                Function that is called to read data from the stream
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.Seek">
-            <summary>
-                Function that is called to seek the stream
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.Tell">
-            <summary>
-                Function that is called to return the positon
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.InputStream.GetSize">
-            <summary>
-                Function that is called to return the size
-            </summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.StreamAdaptor">
             <summary>
@@ -7491,7 +7394,6 @@
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.GetHashCode">
             <summary>
-            
             </summary>
             <returns></returns>
         </member>
@@ -7770,6 +7672,103 @@
                 Handle the destruction of the object
             </summary>
             <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2">
+            <summary>
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2" /> is a struct represent a glsl vec2 value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.op_Implicit(Alis.Core.Graphic.D2.SFML.Graphics.Vector2f)~Alis.Core.Graphic.D2.SFML.Graphics.Vec2">
+            <summary>
+                Implicit cast from <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2f" /> to <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2" />
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.#ctor(System.Single,System.Single)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2" /> from its coordinates
+            </summary>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Vector2f)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec2" /> from a standard SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2f" />
+            </summary>
+            <param name="vec">A standard SFML 2D vector</param>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec2.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3">
+            <summary>
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3" /> is a struct represent a glsl vec3 value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.op_Implicit(Alis.Core.Graphic.D2.SFML.Graphics.Vector3f)~Alis.Core.Graphic.D2.SFML.Graphics.Vec3">
+            <summary>
+                Implicit cast from <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector3f" /> to <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3" />
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3" /> from its coordinates
+            </summary>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+            <param name="z">Z coordinate</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Vector3f)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec3" /> from a standard SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector3f" />
+            </summary>
+            <param name="vec">A standard SFML 3D vector</param>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec3.Z">
+            <summary>Depth component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec4">
+            <summary>
+                <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec4" /> is a struct represent a glsl vec4 value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec4" /> from its coordinates
+            </summary>
+            <param name="x">X coordinate</param>
+            <param name="y">Y coordinate</param>
+            <param name="z">Z coordinate</param>
+            <param name="w">W coordinate</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Color)">
+            <summary>
+                Construct the <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Vec4" /> from a <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" />
+            </summary>
+            <remarks>
+                The <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" />'s values will be normalized from 0..255 to 0..1
+            </remarks>
+            <param name="color">A SFML <see cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Color" /> to be translated to a 4D floating-point vector</param>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.X">
+            <summary>Horizontal component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.Y">
+            <summary>Vertical component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.Z">
+            <summary>Depth component of the vector</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Vec4.W">
+            <summary>Projective/Homogenous component of the vector</summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Vector2f">
             <summary>
@@ -9355,6 +9354,50 @@
             </summary>
             <param name="CPointer">The pointer</param>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Event">
+            <summary>
+                Event defines a system event and its parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Type">
+            <summary>Type of event (see EventType enum)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Size">
+            <summary>Arguments for size events (Resized)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Key">
+            <summary>Arguments for key events (KeyPressed, KeyReleased)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Text">
+            <summary>Arguments for text events (TextEntered)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.MouseMove">
+            <summary>Arguments for mouse move events (MouseMoved)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.MouseButton">
+            <summary>Arguments for mouse button events (MouseButtonPressed, MouseButtonReleased)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.MouseWheel">
+            <summary>Arguments for mouse wheel events (MouseWheelMoved)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.MouseWheelScroll">
+            <summary>Arguments for mouse wheel scroll events (MouseWheelScrolled)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.JoystickMove">
+            <summary>Arguments for joystick axis events (JoystickMoved)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.JoystickButton">
+            <summary>Arguments for joystick button events (JoystickButtonPressed, JoystickButtonReleased)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.JoystickConnect">
+            <summary>Arguments for joystick connect events (JoystickConnected, JoystickDisconnected)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Touch">
+            <summary>Arguments for touch events (TouchBegan, TouchMoved, TouchEnded)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Sensor">
+            <summary>Arguments for sensor events (SensorChanged)</summary>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.EventType">
             <summary>
                 Enumeration of the different types of events
@@ -9428,512 +9471,6 @@
         </member>
         <member name="F:Alis.Core.Graphic.D2.SFML.Windows.EventType.SensorChanged">
             <summary>Event triggered when a sensor is changed</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent">
-            <summary>
-                Keyboard event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.Code">
-            <summary>Code of the key (see KeyCode enum)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.Alt">
-            <summary>Is the Alt modifier pressed?</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.Control">
-            <summary>Is the Control modifier pressed?</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.Shift">
-            <summary>Is the Shift modifier pressed?</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.System">
-            <summary>Is the System modifier pressed?</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.TextEvent">
-            <summary>
-                Text event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TextEvent.Unicode">
-            <summary>UTF-32 value of the character</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEvent">
-            <summary>
-                Mouse move event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEvent.X">
-            <summary>X coordinate of the mouse cursor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEvent.Y">
-            <summary>Y coordinate of the mouse cursor</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent">
-            <summary>
-                Mouse buttons event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent.Button">
-            <summary>Code of the button (see MouseButton enum)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent.X">
-            <summary>X coordinate of the mouse cursor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent.Y">
-            <summary>Y coordinate of the mouse cursor</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent">
-            <summary>
-                Mouse wheel move event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent.Delta">
-            <summary>Scroll amount</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent.X">
-            <summary>X coordinate of the mouse cursor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent.Y">
-            <summary>Y coordinate of the mouse cursor</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent">
-            <summary>
-                Mouse wheel scroll event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent.Wheel">
-            <summary>Mouse Wheel which triggered the event</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent.Delta">
-            <summary>Scroll amount</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent.X">
-            <summary>X coordinate of the mouse cursor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent.Y">
-            <summary>Y coordinate of the mouse cursor</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent">
-            <summary>
-                Joystick axis move event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent.JoystickId">
-            <summary>Index of the joystick which triggered the event</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent.Axis">
-            <summary>Joystick axis (see JoyAxis enum)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent.Position">
-            <summary>Current position of the axis</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent">
-            <summary>
-                Joystick buttons event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent.JoystickId">
-            <summary>Index of the joystick which triggered the event</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent.Button">
-            <summary>Index of the button</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEvent">
-            <summary>
-                Joystick connect event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEvent.JoystickId">
-            <summary>Index of the joystick which triggered the event</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.SizeEvent">
-            <summary>
-                Size event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SizeEvent.Width">
-            <summary>New width of the window</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SizeEvent.Height">
-            <summary>New height of the window</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.TouchEvent">
-            <summary>
-                Touch event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEvent.Finger">
-            <summary>Index of the finger in case of multi-touch events</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEvent.X">
-            <summary>X position of the touch, relative to the left of the owner window</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEvent.Y">
-            <summary>Y position of the touch, relative to the top of the owner window</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent">
-            <summary>
-                Sensor event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent.Type">
-            <summary>Type of the sensor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent.X">
-            <summary>Current value of the sensor on X axis</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent.Y">
-            <summary>Current value of the sensor on Y axis</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent.Z">
-            <summary>Current value of the sensor on Z axis</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Event">
-            <summary>
-                Event defines a system event and its parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Type">
-            <summary>Type of event (see EventType enum)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Size">
-            <summary>Arguments for size events (Resized)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Key">
-            <summary>Arguments for key events (KeyPressed, KeyReleased)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Text">
-            <summary>Arguments for text events (TextEntered)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.MouseMove">
-            <summary>Arguments for mouse move events (MouseMoved)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.MouseButton">
-            <summary>Arguments for mouse button events (MouseButtonPressed, MouseButtonReleased)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.MouseWheel">
-            <summary>Arguments for mouse wheel events (MouseWheelMoved)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.MouseWheelScroll">
-            <summary>Arguments for mouse wheel scroll events (MouseWheelScrolled)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.JoystickMove">
-            <summary>Arguments for joystick axis events (JoystickMoved)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.JoystickButton">
-            <summary>Arguments for joystick button events (JoystickButtonPressed, JoystickButtonReleased)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.JoystickConnect">
-            <summary>Arguments for joystick connect events (JoystickConnected, JoystickDisconnected)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Touch">
-            <summary>Arguments for touch events (TouchBegan, TouchMoved, TouchEnded)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Event.Sensor">
-            <summary>Arguments for sensor events (SensorChanged)</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs">
-            <summary>
-                Keyboard event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.Alt">
-            <summary>Is the Alt modifier pressed?</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.Code">
-            <summary>Code of the key (see KeyCode enum)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.Control">
-            <summary>Is the Control modifier pressed?</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.Shift">
-            <summary>Is the Shift modifier pressed?</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.System">
-            <summary>Is the System modifier pressed?</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.KeyEvent)">
-            <summary>
-                Construct the key arguments from a key event
-            </summary>
-            <param name="e">Key event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.TextEventArgs">
-            <summary>
-                Text event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TextEventArgs.Unicode">
-            <summary>UTF-16 value of the character</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.TextEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.TextEvent)">
-            <summary>
-                Construct the text arguments from a text event
-            </summary>
-            <param name="e">Text event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.TextEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs">
-            <summary>
-                Mouse move event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs.X">
-            <summary>X coordinate of the mouse cursor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs.Y">
-            <summary>Y coordinate of the mouse cursor</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEvent)">
-            <summary>
-                Construct the mouse move arguments from a mouse move event
-            </summary>
-            <param name="e">Mouse move event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs">
-            <summary>
-                Mouse buttons event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.Button">
-            <summary>Code of the button (see MouseButton enum)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.X">
-            <summary>X coordinate of the mouse cursor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.Y">
-            <summary>Y coordinate of the mouse cursor</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent)">
-            <summary>
-                Construct the mouse button arguments from a mouse button event
-            </summary>
-            <param name="e">Mouse button event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs">
-            <summary>
-                Mouse wheel event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.Delta">
-            <summary>Scroll amount</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.X">
-            <summary>X coordinate of the mouse cursor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.Y">
-            <summary>Y coordinate of the mouse cursor</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent)">
-            <summary>
-                Construct the mouse wheel arguments from a mouse wheel event
-            </summary>
-            <param name="e">Mouse wheel event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs">
-            <summary>
-                Mouse wheel scroll event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.Delta">
-            <summary>Scroll amount</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.Wheel">
-            <summary>Mouse Wheel which triggered the event</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.X">
-            <summary>X coordinate of the mouse cursor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.Y">
-            <summary>Y coordinate of the mouse cursor</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent)">
-            <summary>
-                Construct the mouse wheel scroll arguments from a mouse wheel scroll event
-            </summary>
-            <param name="e">Mouse wheel scroll event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs">
-            <summary>
-                Joystick axis move event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.Axis">
-            <summary>Joystick axis (see JoyAxis enum)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.JoystickId">
-            <summary>Index of the joystick which triggered the event</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.Position">
-            <summary>Current position of the axis</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent)">
-            <summary>
-                Construct the joystick move arguments from a joystick move event
-            </summary>
-            <param name="e">Joystick move event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs">
-            <summary>
-                Joystick buttons event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs.Button">
-            <summary>Index of the button</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs.JoystickId">
-            <summary>Index of the joystick which triggered the event</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent)">
-            <summary>
-                Construct the joystick button arguments from a joystick button event
-            </summary>
-            <param name="e">Joystick button event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEventArgs">
-            <summary>
-                Joystick connection/disconnection event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEventArgs.JoystickId">
-            <summary>Index of the joystick which triggered the event</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEvent)">
-            <summary>
-                Construct the joystick connect arguments from a joystick connect event
-            </summary>
-            <param name="e">Joystick button event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs">
-            <summary>
-                Size event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs.Height">
-            <summary>New height of the window</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs.Width">
-            <summary>New width of the window</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.SizeEvent)">
-            <summary>
-                Construct the size arguments from a size event
-            </summary>
-            <param name="e">Size event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs">
-            <summary>
-                Touch event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.Finger">
-            <summary>Index of the finger in case of multi-touch events</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.X">
-            <summary>X position of the touch, relative to the left of the owner window</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.Y">
-            <summary>Y position of the touch, relative to the top of the owner window</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.TouchEvent)">
-            <summary>
-                Construct the touch arguments from a touch event
-            </summary>
-            <param name="e">Touch event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs">
-            <summary>
-                Sensor event parameters
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.Type">
-            <summary>Type of the sensor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.X">
-            <summary>Current value of the sensor on X axis</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.Y">
-            <summary>Current value of the sensor on Y axis</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.Z">
-            <summary>Current value of the sensor on Z axis</summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.SensorEvent)">
-            <summary>
-                Construct the sensor arguments from a sensor event
-            </summary>
-            <param name="e">Sensor event</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.ToString">
-            <summary>
-                Provide a string describing the object
-            </summary>
-            <returns>String description of the object</returns>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Joystick">
             <summary>
@@ -10120,6 +9657,108 @@
             <summary>
                 The product id
             </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent">
+            <summary>
+                Joystick buttons event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent.JoystickId">
+            <summary>Index of the joystick which triggered the event</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent.Button">
+            <summary>Index of the button</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs">
+            <summary>
+                Joystick buttons event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs.Button">
+            <summary>Index of the button</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs.JoystickId">
+            <summary>Index of the joystick which triggered the event</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent)">
+            <summary>
+                Construct the joystick button arguments from a joystick button event
+            </summary>
+            <param name="e">Joystick button event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEvent">
+            <summary>
+                Joystick connect event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEvent.JoystickId">
+            <summary>Index of the joystick which triggered the event</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEventArgs">
+            <summary>
+                Joystick connection/disconnection event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEventArgs.JoystickId">
+            <summary>Index of the joystick which triggered the event</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEvent)">
+            <summary>
+                Construct the joystick connect arguments from a joystick connect event
+            </summary>
+            <param name="e">Joystick button event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent">
+            <summary>
+                Joystick axis move event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent.JoystickId">
+            <summary>Index of the joystick which triggered the event</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent.Axis">
+            <summary>Joystick axis (see JoyAxis enum)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent.Position">
+            <summary>Current position of the axis</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs">
+            <summary>
+                Joystick axis move event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.Axis">
+            <summary>Joystick axis (see JoyAxis enum)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.JoystickId">
+            <summary>Index of the joystick which triggered the event</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.Position">
+            <summary>Current position of the axis</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent)">
+            <summary>
+                Construct the joystick move arguments from a joystick move event
+            </summary>
+            <param name="e">Joystick move event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Keyboard">
             <summary>
@@ -10492,6 +10131,58 @@
             </summary>
             <param name="visible">The visible</param>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent">
+            <summary>
+                Keyboard event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.Code">
+            <summary>Code of the key (see KeyCode enum)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.Alt">
+            <summary>Is the Alt modifier pressed?</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.Control">
+            <summary>Is the Control modifier pressed?</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.Shift">
+            <summary>Is the Shift modifier pressed?</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEvent.System">
+            <summary>Is the System modifier pressed?</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs">
+            <summary>
+                Keyboard event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.Alt">
+            <summary>Is the Alt modifier pressed?</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.Code">
+            <summary>Code of the key (see KeyCode enum)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.Control">
+            <summary>Is the Control modifier pressed?</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.Shift">
+            <summary>Is the Shift modifier pressed?</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.System">
+            <summary>Is the System modifier pressed?</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.KeyEvent)">
+            <summary>
+                Construct the key arguments from a key event
+            </summary>
+            <param name="e">Key event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Mouse">
             <summary>
                 Give access to the real-time state of the mouse
@@ -10593,6 +10284,166 @@
             <param name="position">The position</param>
             <param name="relativeTo">The relative to</param>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent">
+            <summary>
+                Mouse buttons event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent.Button">
+            <summary>Code of the button (see MouseButton enum)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent.X">
+            <summary>X coordinate of the mouse cursor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent.Y">
+            <summary>Y coordinate of the mouse cursor</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs">
+            <summary>
+                Mouse buttons event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.Button">
+            <summary>Code of the button (see MouseButton enum)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.X">
+            <summary>X coordinate of the mouse cursor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.Y">
+            <summary>Y coordinate of the mouse cursor</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent)">
+            <summary>
+                Construct the mouse button arguments from a mouse button event
+            </summary>
+            <param name="e">Mouse button event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEvent">
+            <summary>
+                Mouse move event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEvent.X">
+            <summary>X coordinate of the mouse cursor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEvent.Y">
+            <summary>Y coordinate of the mouse cursor</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs">
+            <summary>
+                Mouse move event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs.X">
+            <summary>X coordinate of the mouse cursor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs.Y">
+            <summary>Y coordinate of the mouse cursor</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEvent)">
+            <summary>
+                Construct the mouse move arguments from a mouse move event
+            </summary>
+            <param name="e">Mouse move event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseMoveEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent">
+            <summary>
+                Mouse wheel move event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent.Delta">
+            <summary>Scroll amount</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent.X">
+            <summary>X coordinate of the mouse cursor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent.Y">
+            <summary>Y coordinate of the mouse cursor</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs">
+            <summary>
+                Mouse wheel event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.Delta">
+            <summary>Scroll amount</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.X">
+            <summary>X coordinate of the mouse cursor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.Y">
+            <summary>Y coordinate of the mouse cursor</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEvent)">
+            <summary>
+                Construct the mouse wheel arguments from a mouse wheel event
+            </summary>
+            <param name="e">Mouse wheel event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent">
+            <summary>
+                Mouse wheel scroll event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent.Wheel">
+            <summary>Mouse Wheel which triggered the event</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent.Delta">
+            <summary>Scroll amount</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent.X">
+            <summary>X coordinate of the mouse cursor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent.Y">
+            <summary>Y coordinate of the mouse cursor</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs">
+            <summary>
+                Mouse wheel scroll event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.Delta">
+            <summary>Scroll amount</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.Wheel">
+            <summary>Mouse Wheel which triggered the event</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.X">
+            <summary>X coordinate of the mouse cursor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.Y">
+            <summary>Y coordinate of the mouse cursor</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEvent)">
+            <summary>
+                Construct the mouse wheel scroll arguments from a mouse wheel scroll event
+            </summary>
+            <param name="e">Mouse wheel scroll event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.MouseWheelScrollEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Sensor">
             <summary>
                 Give access to the real-time state of sensors
@@ -10666,6 +10517,137 @@
             <param name="Sensor">The sensor</param>
             <returns>The vector 3f</returns>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent">
+            <summary>
+                Sensor event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent.Type">
+            <summary>Type of the sensor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent.X">
+            <summary>Current value of the sensor on X axis</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent.Y">
+            <summary>Current value of the sensor on Y axis</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEvent.Z">
+            <summary>Current value of the sensor on Z axis</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs">
+            <summary>
+                Sensor event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.Type">
+            <summary>Type of the sensor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.X">
+            <summary>Current value of the sensor on X axis</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.Y">
+            <summary>Current value of the sensor on Y axis</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.Z">
+            <summary>Current value of the sensor on Z axis</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.SensorEvent)">
+            <summary>
+                Construct the sensor arguments from a sensor event
+            </summary>
+            <param name="e">Sensor event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.SensorEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.SizeEvent">
+            <summary>
+                Size event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SizeEvent.Width">
+            <summary>New width of the window</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SizeEvent.Height">
+            <summary>New height of the window</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs">
+            <summary>
+                Size event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs.Height">
+            <summary>New height of the window</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs.Width">
+            <summary>New width of the window</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.SizeEvent)">
+            <summary>
+                Construct the size arguments from a size event
+            </summary>
+            <param name="e">Size event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Styles">
+            <summary>
+                Enumeration of window creation styles
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.None">
+            <summary>No border / title bar (this flag and all others are mutually exclusive)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Titlebar">
+            <summary>Title bar + fixed border</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Resize">
+            <summary>Titlebar + resizable border + maximize button</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Close">
+            <summary>Titlebar + close button</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Fullscreen">
+            <summary>Fullscreen mode (this flag and all others are mutually exclusive))</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Default">
+            <summary>Default window style (titlebar + resize + close)</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.TextEvent">
+            <summary>
+                Text event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TextEvent.Unicode">
+            <summary>UTF-32 value of the character</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.TextEventArgs">
+            <summary>
+                Text event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TextEventArgs.Unicode">
+            <summary>UTF-16 value of the character</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.TextEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.TextEvent)">
+            <summary>
+                Construct the text arguments from a text event
+            </summary>
+            <param name="e">Text event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.TextEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Touch">
             <summary>
                 Give access to the real-time state of the touches
@@ -10708,6 +10690,46 @@
             <param name="Finger">The finger</param>
             <param name="RelativeTo">The relative to</param>
             <returns>The vector 2i</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.TouchEvent">
+            <summary>
+                Touch event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEvent.Finger">
+            <summary>Index of the finger in case of multi-touch events</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEvent.X">
+            <summary>X position of the touch, relative to the left of the owner window</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEvent.Y">
+            <summary>Y position of the touch, relative to the top of the owner window</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs">
+            <summary>
+                Touch event parameters
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.Finger">
+            <summary>Index of the finger in case of multi-touch events</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.X">
+            <summary>X position of the touch, relative to the left of the owner window</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.Y">
+            <summary>Y position of the touch, relative to the top of the owner window</summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.#ctor(Alis.Core.Graphic.D2.SFML.Windows.TouchEvent)">
+            <summary>
+                Construct the touch arguments from a touch event
+            </summary>
+            <param name="e">Touch event</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.TouchEventArgs.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.VideoMode">
             <summary>
@@ -10781,29 +10803,6 @@
             </summary>
             <param name="Mode">The mode</param>
             <returns>The bool</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Styles">
-            <summary>
-                Enumeration of window creation styles
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.None">
-            <summary>No border / title bar (this flag and all others are mutually exclusive)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Titlebar">
-            <summary>Title bar + fixed border</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Resize">
-            <summary>Titlebar + resizable border + maximize button</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Close">
-            <summary>Titlebar + close button</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Fullscreen">
-            <summary>Fullscreen mode (this flag and all others are mutually exclusive))</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Styles.Default">
-            <summary>Default window style (titlebar + resize + close)</summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Window">
             <summary>
