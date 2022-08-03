@@ -7,21 +7,21 @@
     
     <ItemGroup 
         Condition="
-        $(AssemblyName.Equals('Alis.Engine')) OR
-        $(AssemblyName.Equals('Alis.Installer'))">
+        $(AssemblyName.Equals('Alis.App.Engine')) OR
+        $(AssemblyName.Equals('Alis.App.Installer'))">
         <ProjectReference Include="$(SolutionDir)2_application/alis/alis/Alis.csproj" />
     </ItemGroup>
 
     <ItemGroup
         Condition="
-        $(AssemblyName.Equals('Alis.Engine.Test')) ">
-        <ProjectReference Include="$(SolutionDir)1_presentation/engine/alis.engine/Alis.Engine.csproj" />
+        $(AssemblyName.Equals('Alis.App.Engine.Test')) ">
+        <ProjectReference Include="$(SolutionDir)1_presentation/engine/alis.app.engine/Alis.App.Engine.csproj" />
     </ItemGroup>
     
     <ItemGroup
         Condition="
-        $(AssemblyName.Equals('Alis.Installer.Test'))">
-        <ProjectReference Include="$(SolutionDir)1_presentation/installer/alis.installer/Alis.Installer.csproj" />
+        $(AssemblyName.Equals('Alis.App.Installer.Test'))">
+        <ProjectReference Include="$(SolutionDir)1_presentation/installer/alis.app.installer/Alis.App.Installer.csproj" />
     </ItemGroup>
 
     <!--
@@ -34,6 +34,12 @@
     <ItemGroup
         Condition="
         $(AssemblyName.Equals('Alis.Test'))">
+        <ProjectReference Include="$(SolutionDir)2_application/alis/alis/Alis.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup
+        Condition="$(AssemblyName.Contains('Alis.Sample'))">
         <ProjectReference Include="$(SolutionDir)2_application/alis/alis/Alis.csproj" />
     </ItemGroup>
     
